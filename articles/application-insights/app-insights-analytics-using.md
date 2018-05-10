@@ -1,9 +1,9 @@
 ---
-title: "Pomocí analýzy – nástroj výkonné vyhledávání systému Azure Application Insights | Microsoft Docs"
-description: "Pomocí analýzy, nástroj výkonné diagnostické vyhledávání služby Application Insights. "
+title: Pomocí analýzy – nástroj výkonné vyhledávání systému Azure Application Insights | Microsoft Docs
+description: 'Pomocí analýzy, nástroj výkonné diagnostické vyhledávání služby Application Insights. '
 services: application-insights
-documentationcenter: 
-author: danhadari
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="using-analytics-in-application-insights"></a>Pomocí analýzy ve službě Application Insights
 [Analýza](app-insights-analytics.md) je výkonný vyhledávání funkcí [Application Insights](app-insights-overview.md). Tyto stránek popisují dotazovací jazyk analýzy protokolů.
@@ -109,7 +109,7 @@ Pokud se domníváte, že nevidíte všechny výsledky, které jste očekávali,
 
   * [prvních 100 pomocí časového razítka](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/top-operator) 
   * [trvat 100](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/take-operator)
-  * [summarize ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
+  * [Shrnutí ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 
   * [kde časové razítko > ago(3d)](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)
 
 (Má více než 10 TIS řádků? Zvažte použití [průběžné exportovat](app-insights-export-telemetry.md) místo. Analýza je určená pro analýzy, nikoli načítání nezpracovaná data.)
@@ -143,7 +143,7 @@ To znamená, že když jste sestavili řídicí panel vám pomohu při monitorov
 Tabulka, která se řídicím panelu můžete připnout, pokud má čtyři nebo méně sloupců. Zobrazí se pouze horních sedm řádků.
 
 ### <a name="dashboard-refresh"></a>Obnovení řídicího panelu
-Graf připnuli k řídicímu panelu, se automaticky aktualizují podle opětovné spuštění dotazu přibližně každých hodin. Můžete také kliknutím na tlačítko Aktualizovat.
+Graf připnuli k řídicímu panelu, se automaticky aktualizují podle opětovné spuštění dotazu přibližně za hodinu. Můžete také kliknutím na tlačítko Aktualizovat.
 
 ### <a name="automatic-simplifications"></a>Automatické zjednodušení
 
@@ -205,7 +205,7 @@ Například pokud ověřený uživatelé se budou identifikovat telemetrie alias
 ### <a name="define-your-data-schema"></a>Definování schématu dat
 
 1. Klikněte na tlačítko **nastavení** (v horní části vlevo) a potom **zdroje dat**. 
-2. Přidání zdroje dat, postupujte podle pokynů. Zobrazí se výzva k zadání ukázkových dat, která by měla obsahovat aspoň deset řádků. Je pak opravit schématu.
+2. Přidání zdroje dat, postupujte podle pokynů. Zobrazí se výzva k zadání ukázkových dat, která by měla obsahovat alespoň 10 řádků. Je pak opravit schématu.
 
 Definuje zdroj dat, který pak můžete importovat jednotlivé tabulky.
 

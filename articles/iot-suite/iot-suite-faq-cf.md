@@ -1,13 +1,13 @@
 ---
-title: "Připojen objekt pro vytváření řešení časté otázky – Azure | Microsoft Docs"
-description: "Nejčastější dotazy pro připojené vytváření IoT Suite"
-services: 
+title: Připojen objekt pro vytváření řešení časté otázky – Azure | Microsoft Docs
+description: Nejčastější dotazy pro akcelerátoru řešení připojen objekt pro vytváření
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 12ebd8b8dfa90ab736190e842b35744dbf1c5b96
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Nejčastější dotazy pro IoT Suite připojené vytváření předkonfigurovaného řešení
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro připojení objektu pro vytváření řešení akcelerátoru
 
-Viz také Obecné [– nejčastější dotazy](iot-suite-faq.md) pro IoT Suite.
+Viz také Obecné [– nejčastější dotazy](iot-suite-faq.md) pro akcelerátorů řešení IoT.
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>Kde najdu zdrojový kód pro předkonfigurované řešení?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Kde najdu zdrojového kódu pro řešení akcelerátoru
 
 Zdrojový kód je uložen v úložišti GitHub následující:
 
-* [Připojené objekt pro vytváření předkonfigurovaného řešení](https://github.com/Azure/azure-iot-connected-factory)
+* [Připojené objekt pro vytváření řešení akcelerátoru](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>Co je OPC UA?
 
@@ -40,7 +40,7 @@ OPC Unified architektura (uživatelský Agent), vydané v 2008, je nezávislý n
 * Technologie
 * Procesy
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Proč Microsoft zvolit OPC UA pro připojené objekt pro vytváření předkonfigurovaného řešení?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Proč Microsoft zvolit OPC UA pro akcelerátor připojen objekt pro vytváření řešení?
 
 Microsoft zvolili OPC UA, protože je otevřený, bez chráněné, platformu nezávislé, oborových rozpoznána a osvědčené standardem. Je požadavek na Industrie 4.0 (RAMI4.0) referenční Architektura řešení zajistit interoperabilitu mezi širokou škálu výrobní procesy a vybavení. Microsoft setkává vyžádání z jeho zákazníci vytvářet řešení Industrie 4.0. Podpora OPC UA pomáhá snížit bariéry pro zákazníky, abyste dosáhli svých cílů a poskytuje okamžité obchodní hodnotu k nim.
 
@@ -74,7 +74,7 @@ Pokud jste nasadili řešení od www.azureiotsuite.com, nemůžete se přihlási
 1. Je uživatelské jméno používané k: `docker`.
 1. K použití hesla, závisí na verzi, kterou jste použili k nasazení:
     * Pro řešení nasazuje pomocí skriptu build.ps1 před 1. června 2017, je heslo: `Passw0rd`.
-    * Řešení nasazuje pomocí skriptu build.ps1 po 1. června 2017, můžete najít v heslo `<name of your deployment>.config.user` souboru. Heslo je uloženo v **VmAdminPassword** nastavení. Heslo je generována náhodně v době nasazení nezadáte pomocí `build.ps1` skript parametr`-VmAdminPassword`
+    * Řešení nasazuje pomocí skriptu build.ps1 po 1. června 2017, můžete najít v heslo `<name of your deployment>.config.user` souboru. Heslo je uloženo v **VmAdminPassword** nastavení. Heslo je generována náhodně v době nasazení nezadáte pomocí `build.ps1` skript parametr `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Jak zastavení a spuštění všech procesů docker v simulaci virtuálního počítače?
 
@@ -100,7 +100,7 @@ Pokud jste nasadili s řešením `build.ps1` skript v [úložiště](https://git
 
 Můžete také získat připojovací řetězec pomocí portálu Azure. V rámci služby IoT Hub prostředku ve skupině prostředků vašeho nasazení vyhledejte nastavení připojovacího řetězce.
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Zařízení IoT Hub, která používá simulace připojené vytváření?
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Zařízení IoT Hub, která používá simulace připojen objekt pro vytváření?
 
 Simulace vlastní zaregistruje následující zařízení:
 
@@ -111,7 +111,7 @@ Simulace vlastní zaregistruje následující zařízení:
 * proxy.rio.corp.contoso
 * proxy.seattle.corp.contoso
 * publisher.beijing.corp.contoso
-* publisher.capetown.corp.contoso
+* Publisher.capetown.corp.contoso
 * publisher.mumbai.corp.contoso
 * publisher.munich0.corp.contoso
 * publisher.rio.corp.contoso
@@ -136,7 +136,7 @@ S [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/too
 Zkontrolujte data odeslaná vydavatele zařízení:
 
 * publisher.beijing.corp.contoso
-* publisher.capetown.corp.contoso
+* Publisher.capetown.corp.contoso
 * publisher.mumbai.corp.contoso
 * publisher.munich0.corp.contoso
 * publisher.rio.corp.contoso
@@ -144,15 +144,15 @@ Zkontrolujte data odeslaná vydavatele zařízení:
 
 Pokud se žádná data, odeslané do služby IoT Hub, nastane problém s simulace. Jako první krok analysis byste měli provést analýzu souborů protokolu součásti simulace. V tématu [načtení dat protokolu z komponenty simulace?](#how-can-i-get-log-data-from-the-simulation-components) V dalším kroku pokusí zastavit a spustit simulaci a v případě stále nejsou žádná data odesílá, aktualizujte simulaci úplně. V tématu [jak aktualizovat simulace ve virtuálním počítači?](#how-do-i-update-the-simulation-in-the-vm)
 
-### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak povolit interaktivní mapu v mém řešení připojených vytváření?
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Jak povolit interaktivní mapu v mém řešení připojen objekt pro vytváření?
 
-Pokud chcete povolit interaktivní mapu ve vašem řešení připojených objekt pro vytváření, musí mít existující rozhraní API map Bing pro plán Enterprise.
+Pokud chcete povolit interaktivní mapu ve vašem řešení připojen objekt pro vytváření, musí mít existující rozhraní API map Bing pro plán Enterprise.
 
-Při nasazení z [www.azureiotsuite.com](http://www.azureiotsuite.com), proces nasazení ověří, že vaše předplatné má povoleno rozhraní API map Bing pro plán Enterprise a interaktivní mapu automaticky nasadí do připojeného objektu pro vytváření. Pokud tomu tak není, můžete stále povolit interaktivní mapu ve vašem nasazení následujícím způsobem:
+Při nasazení z [www.azureiotsuite.com](http://www.azureiotsuite.com), proces nasazení ověří, že vaše předplatné má povoleno rozhraní API map Bing pro plán Enterprise a interaktivní mapu automaticky nasadí do připojen objekt pro vytváření. Pokud tomu tak není, můžete stále povolit interaktivní mapu ve vašem nasazení následujícím způsobem:
 
-Při nasazení pomocí `build.ps1` skript v továrně připojené úložiště GitHub a budete mít rozhraní API map Bing pro plánu podnikového, nastavte proměnnou prostředí `$env:MapApiQueryKey` v okně sestavení na klíč dotazu plánu. Interaktivní mapu se pak automaticky povolí.
+Při nasazení pomocí `build.ps1` skript v Githubu objekt pro vytváření připojení úložiště a mít rozhraní API map Bing pro plán Enterprise, nastavte proměnnou prostředí `$env:MapApiQueryKey` v okně sestavení na klíč dotazu plánu. Interaktivní mapu se pak automaticky povolí.
 
-Pokud nemáte rozhraní API map Bing pro plán Enterprise, nasadit řešení připojených factory z [www.azureiotsuite.com](http://www.azureiotsuite.com) nebo pomocí `build.ps1` skriptu. Pak přidejte rozhraní API map Bing pro plánu podnikového do vašeho předplatného, jak je popsáno v [vytvoření rozhraní API map Bing pro účet organizace?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Vyhledání klíče dotazu tohoto účtu, jak je popsáno v [získání rozhraní API map Bing pro Enterprise QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) a uložte tento klíč. Přejděte na portál Azure a přístup k prostředku služby App Service ve vašem nasazení připojené objekt pro vytváření. Přejděte na **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** na klíč dotazu, který jste získali. Uložte nastavení a potom přejděte na **přehled** a restartujte službu aplikace.
+Pokud nemáte rozhraní API map Bing pro plán Enterprise, nasaďte řešení připojen objekt pro vytváření z [www.azureiotsuite.com](http://www.azureiotsuite.com) nebo pomocí `build.ps1` skriptu. Pak přidejte rozhraní API map Bing pro plánu podnikového do vašeho předplatného, jak je popsáno v [vytvoření rozhraní API map Bing pro účet organizace?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Vyhledání klíče dotazu tohoto účtu, jak je popsáno v [získání rozhraní API map Bing pro Enterprise QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) a uložte tento klíč. Přejděte na portál Azure a přístup k prostředku služby App Service ve vašem nasazení připojen objekt pro vytváření. Přejděte na **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** na klíč dotazu, který jste získali. Uložte nastavení a potom přejděte na **přehled** a restartujte službu aplikace.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Vytvoření rozhraní API map Bing pro účet Enterprise
 
@@ -162,7 +162,7 @@ Můžete získat bezplatný *vnitřní transakce úroveň 1 mapy Bing pro podnik
 
 ### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Získání rozhraní API map Bing pro Enterprise QueryKey
 
-Po vytvoření rozhraní API map Bing pro plánu podnikového přidáte do skupiny prostředků vašeho řešení připojených factory na webu Azure portal mapy Bing pro prostředek Enterprise.
+Po vytvoření rozhraní API map Bing pro plánu podnikového Přidání mapy Bing pro prostředek Enterprise do skupiny prostředků vašeho připojen objekt pro vytváření řešení na portálu Azure.
 
 1. Na portálu Azure přejděte do skupiny prostředků, která obsahuje vaše rozhraní API map Bing pro plán Enterprise.
 
@@ -182,13 +182,13 @@ Chcete-li povolit interaktivní mapu při ladění místně, nastavte hodnotu na
 
 Chcete-li změnit statický obrázek ukazuje vstupně-výstupní operace domovské stránky řídicího panelu, nahraďte image `WebApp\Content\img\world.jpg`. Pak znovu sestavili a nasadili webové aplikace.
 
-### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Jak používat jiný OPC UA zařízení s připojené vytváření?
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Jak používat jiný OPC UA zařízení s připojen objekt pro vytváření?
 
-Chcete-li Neodesílat telemetrická data z jiných OPC UA zařízení k vytváření připojené:
+Chcete-li Neodesílat telemetrická data z jiných OPC UA zařízení k vytváření připojení:
 
-1. [Konfigurace nové stanice v topologii připojené factory](iot-suite-connected-factory-configure.md) v `ContosoTopologyDescription.json` souboru.
+1. [Konfigurace nové stanice v topologii připojen objekt pro vytváření](iot-suite-connected-factory-configure.md) v `ContosoTopologyDescription.json` souboru.
 
-1. Ingestování telemetrická data v připojených factory kompatibilní formátu JSON:
+1. Ingestování telemetrická data ve formátu JSON kompatibilní Factory připojení:
 
     ```json
     [
@@ -204,14 +204,14 @@ Chcete-li Neodesílat telemetrická data z jiných OPC UA zařízení k vytvář
     ]
     ```
 
-1. Formát `<timestamp>` je:`2017-12-08T19:24:51.886753Z`
+1. Formát `<timestamp>` je: `2017-12-08T19:24:51.886753Z`
 
-1. Restartujte připojené objekt pro vytváření služby App Service.
+1. Restartujte službu aplikace připojené objekt pro vytváření.
 
 ### <a name="next-steps"></a>Další postup
 
-Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
+Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Přehled řešení předkonfigurované prediktivní údržby](iot-suite-predictive-overview.md)
-* [Přehled připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-overview.md)
+* [– Přehled akcelerátoru řešení prediktivní údržby](iot-suite-predictive-overview.md)
+* [Připojené přehled akcelerátoru objekt pro vytváření řešení](iot-suite-connected-factory-overview.md)
 * [Zabezpečení IoT od základů](securing-iot-ground-up.md)

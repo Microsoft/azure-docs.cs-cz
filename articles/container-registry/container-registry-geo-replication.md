@@ -6,23 +6,17 @@ author: stevelas
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
-ms.date: 10/24/2017
+ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 6b82f49d2bf4ed321f5e847d11780535e01531f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace ve službě Azure Container Registry
 
-Společnosti, které chcete místní přítomnosti nebo zálohu aktivní zvolit ke spouštění služeb z několika oblastmi Azure. Jako osvědčený postup umístění registru kontejneru v jednotlivých oblastech, kde se spouštějí bitové kopie umožňuje operace, zavřete sítě, povolení rychlé, spolehlivé image vrstvy přenosy.
-
-Geografická replikace umožňuje registru kontejner Azure jako jeden registru, obsluhovat více oblastí s více hlavních regionální registrech.
-
-> [!IMPORTANT]
-> Funkce geografické replikace ve službě Azure Container Registry je aktuálně ve verzi **Preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
->
+Společnosti, které chcete místní přítomnosti nebo zálohu aktivní zvolit ke spouštění služeb z několika oblastmi Azure. Jako osvědčený postup umístění registru kontejneru v jednotlivých oblastech, kde se spouštějí bitové kopie umožňuje operace, zavřete sítě, povolení rychlé, spolehlivé image vrstvy přenosy. Geografická replikace umožňuje registru kontejner Azure jako jeden registru, obsluhovat více oblastí s více hlavních regionální registrech.
 
 Registr geograficky replikované poskytuje následující výhody:
 

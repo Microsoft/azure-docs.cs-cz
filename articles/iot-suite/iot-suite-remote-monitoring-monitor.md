@@ -1,7 +1,7 @@
 ---
-title: "Rozšířené monitorování v řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak monitorování zařízení s řídicím panelu řešení vzdáleného monitorování."
-services: 
+title: Rozšířené monitorování v řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak monitorování zařízení s řídicím panelu řešení vzdáleného monitorování.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,17 +12,17 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fe0d936b4ee0d7703222c86c00959869b99f7851
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Proveďte pokročilé monitorování pomocí řešení vzdáleného monitorování
 
 Tento kurz ukazuje možnosti řídicím panelu vzdáleného monitorování. Zavádět tyto možnosti, tento kurz používá scénáři v aplikaci Contoso IoT.
 
-V tomto kurzu použijete dvě Simulovaná zařízení vůz Contoso se dozvíte, jak monitorovat zařízení na řídicím panelu předkonfigurované řešení. Jako operátor Contoso budete muset sledování umístění a chování vašeho dodávky v poli.
+V tomto kurzu použijete dvě Simulovaná zařízení vůz Contoso se dozvíte, jak monitorovat zařízení na řídicím panelu akcelerátoru řešení. Jako operátor Contoso budete muset sledování umístění a chování vašeho dodávky v poli.
 
 V tomto kurzu se naučíte:
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 Chcete-li v tomto kurzu, je třeba nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasadit předkonfigurované řešení vzdáleného monitorování](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="choose-the-devices-to-display"></a>Vyberte zařízení k zobrazení
 
@@ -57,7 +57,7 @@ Pokud chcete vytvořit, upravit a odstranit filtry, zvolte **Správa filtrů**.
 
 ## <a name="view-real-time-telemetry"></a>Zobrazení telemetrie v reálném čase
 
-Předkonfigurované řešení používá podrobné v reálném čase telemetrická data v grafu ve **řídicí panel** stránky. Telemetrie graf zobrazuje telemetrické informace pro aktuální filtr vybraná zařízení:
+Řešení akcelerátoru ukazuje zeměpisný podrobné v reálném čase telemetrická data v grafu na **řídicí panel** stránky. Telemetrie graf zobrazuje telemetrické informace pro aktuální filtr vybraná zařízení:
 
 ![Výkresu nákladní vůz telemetrie](media/iot-suite-remote-monitoring-monitor/dashboardtelemetryview.png)
 
@@ -65,39 +65,41 @@ Hodnoty telemetrická data k zobrazení, vyberte typ telemetrie v horní části
 
 ![Výkresu nákladní vůz telemetrie](media/iot-suite-remote-monitoring-monitor/dashboardselecttelemetry.png)
 
-Pozastavit za provozu telemetrická zobrazení, zvolte **Flowing**. Chcete-li znovu povolit za provozu zobrazení, zvolte **pozastavení**:
+<!-- 05/01 - this features appears to have been removed
+To pause the live telemetry display, choose **Flowing**. To re-enable the live display, choose **Pause**:
 
-![Pozastavení a restartujte zobrazení telemetrie](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)
+![Pause and restart telemetry display](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)-->
 
 ## <a name="use-the-map"></a>Použití mapy
 
 Mapa zobrazuje informace o simulovaných dodávky vybrána aktuální filtr. Můžete přiblížení a posouvání mapě zobrazíte umístění podrobně vyšší nebo nižší. Ikony zařízení na mapě označují žádné **výstrahy** nebo **upozornění** , které jsou aktivní pro zařízení. Souhrn počtu **výstrahy** a **upozornění** zobrazí nalevo od mapy.
 
-Chcete-li zobrazit podrobnosti o zařízení, posouvání a přiblížení mapy najít zařízení a pak klikněte na zařízení na mapě. Podrobnosti patří:
+<!-- 05/01 - cannot select a deice on the map
+To view the device details, pan and zoom the map to locate the devices, then click the device on the map. The details include:
 
-* Poslední hodnoty telemetrie
-* Metody zařízení podporuje.
-* Vlastnosti zařízení
+* Recent telemetry values
+* Methods the device supports
+* Device properties
 
-![Zobrazit podrobnosti o zařízení na řídicím panelu](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)
+![View device details on the dashboard](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)-->
 
-## <a name="view-alarms-from-your-devices"></a>Zobrazit výstrahy z vašich zařízení
+## <a name="view-alerts-from-your-devices"></a>Zobrazit výstrahy z vašich zařízení
 
-Mapy označuje zařízení v aktuální filtr s **výstrahy** a **upozornění**. **Systému výstrahy** panelu zobrazí podrobné informace o poslední výstrahy ze všech zařízení:
+Mapy označuje zařízení v aktuální filtr s **výstrahy** a **upozornění**. **Výstrahy** panelu zobrazí podrobné informace o nedávných výstrah ze všech zařízení:
 
-![Zobrazení systému výstrahy na řídicím panelu](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
+![Zobrazit výstrahy systému na řídicím panelu](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
 
-Můžete použít **systému výstrahy** filtru upravit časové rozpětí pro poslední výstrahy. Ve výchozím nastavení panelu zobrazí výstrahy z za poslední hodinu:
+Můžete použít **řídicí panel** filtru upravit časové rozpětí pro poslední výstrahy. Ve výchozím nastavení zobrazí na panelu oznámení z za poslední hodinu:
 
-![Filtrování podle času signály](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
+![Filtrování výstrah podle času](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
 
 ## <a name="view-the-system-kpis"></a>Zobrazení systému klíčové ukazatele výkonu.
 
 **Řídicí panel** stránka zobrazuje systému klíčové ukazatele výkonu:
 
-![Filtrování podle času signály](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
+![Řídicího panelu klíčových ukazatelů výkonu](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
 
-Můžete použít **klíčového ukazatele výkonu systému** filtru upravit časové rozpětí pro agregaci klíčového ukazatele výkonu. Ve výchozím nastavení zobrazí na panelu klíčových ukazatelů výkonu agregovat přes za poslední hodinu.
+Můžete použít **řídicí panel** filtru upravit časové rozpětí pro agregaci klíčového ukazatele výkonu. Ve výchozím nastavení zobrazí na panelu klíčových ukazatelů výkonu agregovat přes za poslední hodinu.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 7d7cd8a197a89781a75f47bb4b4e2ec8fe7c3cb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 # <a name="secure-your-iot-deployment"></a>Zabezpečení nasazení IoT
 
 Tento článek poskytuje další úroveň podrobností pro zabezpečení infrastruktury založené na Azure IoT Internet věcí (IoT). Odkazuje úrovně podrobnosti implementace pro konfiguraci a nasazení jednotlivých součástí. Poskytuje taky porovnání a možnosti mezi různé konkurenční metody.
@@ -12,7 +28,7 @@ Zabezpečení Azure IoT nasazení je možné rozdělit do těchto tří zabezpe�
 
 ## <a name="secure-device-provisioning-and-authentication"></a>Zabezpečené zřizování zařízení a ověřování
 
-Azure IoT Suite zabezpečuje zařízení IoT pomocí následujících dvou metod:
+Akcelerátorů řešení IoT zabezpečit zařízení IoT pomocí následujících dvou metod:
 
 * Tím, že pro každé zařízení, která umožňuje zařízením komunikovat s centrem IoT poskytuje jedinečnou identitu klíč (tokeny zabezpečení).
 * Pomocí na zařízení [certifikát X.509] [ lnk-x509] a privátní klíč jako prostředek k ověření zařízení do služby IoT Hub. Tato metoda ověřování zajišťuje, že privátní klíč v zařízení není znám mimo zařízení kdykoli, poskytuje vyšší úroveň zabezpečení.

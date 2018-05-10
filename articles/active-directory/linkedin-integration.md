@@ -6,18 +6,17 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 9ab59033fd032cfccd2602a1a518e51a08e09581
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Účet připojení LinkedIn Microsoft aplikace a služby
 V tomto článku se můžete naučit ke správě připojení účtu LinkedIn pro vašeho klienta v Centru správy služby Azure Active Directory (Azure AD). 
@@ -26,7 +25,7 @@ V tomto článku se můžete naučit ke správě připojení účtu LinkedIn pro
 > Funkce připojení účtu LinkedIn se zrovna vydávají pro klienty Azure AD. Když je vrátit ke klientovi, povolí se ve výchozím nastavení. Není k dispozici pro Spojené státy government zákazníků a organizace s Exchange Online poštovním schránkám hostovaným v Austrálie, Kanada, Čína, Francie, Německo, Indie, Jižní Korea, Spojené království, Japonsko a Jihoafrická republika. Podpora pro tyto umístění poštovní schránky bude brzo.  Aktuální zobrazení informací o zavedení, najdete v článku [plán Office 365](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc) stránky.
 
 ## <a name="benefit-to-users"></a>Využívat pro uživatele
-Po uživatelé připojit svůj účet LinkedIn, LinkedIn informace slouží k zobrazení přizpůsobené informace a funkce v různých Microsoft aplikací nebo služeb. Uživatelé mohou vidět informace o osoby, že fungují s kartou profil společnosti Microsoft, i když jsou uživatelé mimo vaši organizaci. V čase bude také jejich prostředí LinkedIn více relevantní a šité na míru k jejich práci. Například můžete LinkedIn navrhovat nová připojení na základě kdo uživatelé pracovat, nebo na přehledy o osoby na základě jejich kalendáře daný den.
+Po uživatelé připojit svůj účet LinkedIn, LinkedIn informace slouží k zobrazení přizpůsobené informace a funkce v různých Microsoft aplikací nebo služeb. Uživatelé mohou vidět informace o osoby, že fungují s kartou profil společnosti Microsoft, i když jsou uživatelé mimo vaši organizaci. V čase bude také jejich prostředí LinkedIn více relevantní a šité na míru k jejich práci. Například můžete LinkedIn navrhovat nová připojení na základě kdo uživatelé pracovat s nebo plochy přehledy o osoby v jejich kalendáře daný den.
 
 ## <a name="how-linkedin-account-connections-appear-to-the-user"></a>Jak LinkedIn účet připojení zobrazí uživateli
 Připojení účtu LinkedIn povolit uživatelům zobrazit veřejné informace o LinkedIn profilu v některé z aplikace Microsoft. Uživatelé ve vašem klientovi se mohou připojit jejich LinkedIn a Microsoft pracovní či školní účty zobrazíte další informace o profilu LinkedIn. Další informace najdete v tématu [LinkedIn informace a funkce v Microsoft aplikace a služby](https://go.microsoft.com/fwlink/?linkid=850740).

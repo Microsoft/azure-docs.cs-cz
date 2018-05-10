@@ -1,18 +1,18 @@
 ---
-title: "Událost mřížky a Event Hubs integrace se službou Azure"
-description: "Popisuje, jak používat Azure událostí mřížky a Event Hubs k migraci dat do SQL Data Warehouse"
+title: Událost mřížky a Event Hubs integrace se službou Azure
+description: Popisuje, jak používat Azure událostí mřížky a Event Hubs k migraci dat do SQL Data Warehouse
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: dba17a860dffd87b3784c53cf288b7a312c77e33
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 60857327685fca9a5f97588ab51909ce2537d68f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Datový proud velkých objemů dat do datového skladu
 
@@ -118,77 +118,51 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 1. Otevřete [EventHubsCaptureEventGridDemo ukázkový projekt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) ve Visual Studio 2017 (15.3.2 nebo vyšší).
 
-2. V Průzkumníku řešení klikněte pravým tlačítkem na **FunctionDWDumper**a vyberte **publikovat**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na **FunctionEGDWDumper**a vyberte **publikovat**.
 
    ![Publikování aplikace – funkce](media/event-grid-event-hubs-integration/publish-function-app.png)
 
-3. Vyberte **aplikaci Azure funkce** a **vyberte existující**. Vyberte **OK**.
+1. Vyberte **aplikaci Azure funkce** a **vyberte existující**. Vyberte **publikování**.
 
    ![Cílové aplikace – funkce](media/event-grid-event-hubs-integration/pick-target.png)
 
-4. Vyberte aplikaci funkce, které jste nasadili prostřednictvím šablony. Vyberte **OK**.
+1. Vyberte aplikaci funkce, které jste nasadili prostřednictvím šablony. Vyberte **OK**.
 
    ![Vyberte aplikaci, – funkce](media/event-grid-event-hubs-integration/select-function-app.png)
 
-5. Když Visual Studio nakonfiguroval profil, vyberte **publikovat**.
+1. Když Visual Studio nakonfiguroval profil, vyberte **publikovat**.
 
    ![Vyberte publikování](media/event-grid-event-hubs-integration/select-publish.png)
 
-6. Po publikování funkce, přejděte na [portál Azure](https://portal.azure.com/). Vyberte prostředek skupiny a funkce aplikace.
-
-   ![Zobrazit aplikaci – funkce](media/event-grid-event-hubs-integration/view-function-app.png)
-
-7. Vyberte funkci.
-
-   ![Vyberte funkci](media/event-grid-event-hubs-integration/select-function.png)
-
-8. Získáte adresu URL pro tuto funkci. Tato adresa URL musíte při vytváření odběru událostí.
-
-   ![Získat adresu URL funkce](media/event-grid-event-hubs-integration/get-function-url.png)
-
-9. Zkopírujte hodnotu.
-
-   ![Zkopírujte adresu URL](media/event-grid-event-hubs-integration/copy-url.png)
+Po publikování funkci, budete připraveni k odběru události.
 
 ## <a name="subscribe-to-the-event"></a>Přihlášení k odběru události
 
-Rozhraní příkazového řádku Azure nebo na portálu můžete použít k odběru události. Tento článek ukazuje obou přístupů.
+1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte prostředek skupiny a funkce aplikace.
 
-### <a name="portal"></a>Portál
+   ![Zobrazit aplikaci – funkce](media/event-grid-event-hubs-integration/view-function-app.png)
 
-1. Obor názvů služby Event Hubs, vyberte **událostí mřížky** na levé straně.
+1. Vyberte funkci.
 
-   ![Vyberte události mřížky](media/event-grid-event-hubs-integration/select-event-grid.png)
+   ![Vyberte funkci](media/event-grid-event-hubs-integration/select-function.png)
 
-2. Přidáte odběr událostí.
+1. Vyberte **předplatné přidat mřížky událostí**.
 
-   ![Přidání odběru událostí](media/event-grid-event-hubs-integration/add-event-subscription.png)
+   ![Přidat předplatné](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-3. Zadejte hodnoty pro událost odběru. Použijte adresu URL funkce Azure, který jste zkopírovali. Vyberte **Vytvořit**.
+9. Zadejte název předplatného mřížky události. Použití **obory názvů centra událostí** jako typ události. Zadejte hodnoty vyberte instanci služby Event Hubs obor názvů. Zadaná hodnota nechte koncový bod odběratele. Vyberte **Vytvořit**.
 
-   ![Zadejte hodnoty předplatného](media/event-grid-event-hubs-integration/provide-values.png)
-
-### <a name="azure-cli"></a>Azure CLI
-
-K odběru události, spusťte následující příkazy (které vyžadují verzi 2.0.24 nebo novější z příkazového řádku Azure CLI):
-
-```azurecli-interactive
-namespaceid=$(az resource show --namespace Microsoft.EventHub --resource-type namespaces --name <your-EventHubs-namespace> --resource-group rgDataMigrationSample --query id --output tsv)
-az eventgrid event-subscription create \
-  --resource-id $namespaceid \
-  --name captureEventSub \
-  --endpoint <your-function-endpoint>
-```
+   ![Vytvoření odběru](media/event-grid-event-hubs-integration/set-subscription-values.png)
 
 ## <a name="run-the-app-to-generate-data"></a>Spusťte aplikaci pro generování dat
 
-Dokončení nastavení centra událostí, SQL data warehouse, aplikaci Azure funkce a předplatného události. Řešení je připraven k migraci dat z centra událostí do datového skladu. Než spustíte aplikaci, která generuje data pro centra událostí, musíte nakonfigurovat několik hodnot.
+Dokončili jste nastavení centra událostí, SQL data warehouse, aplikaci Azure funkce a předplatného události. Řešení je připraven k migraci dat z centra událostí do datového skladu. Než spustíte aplikaci, která generuje data pro centra událostí, musíte nakonfigurovat několik hodnot.
 
 1. Na portálu zvolte svůj obor názvů centra událostí. Vyberte **připojovací řetězce**.
 
    ![Vyberte připojovací řetězce](media/event-grid-event-hubs-integration/event-hub-connection.png)
 
-2. Select **RootManageSharedAccessKey**
+2. Vyberte **RootManageSharedAccessKey**
 
    ![Vyberte klíč](media/event-grid-event-hubs-integration/show-root-key.png)
 
@@ -198,10 +172,10 @@ Dokončení nastavení centra událostí, SQL data warehouse, aplikaci Azure fun
 
 4. Přejděte zpět do projektu sady Visual Studio. Otevřete v projektu WindTurbineDataGenerator **program.cs**.
 
-5. Nahraďte dvě konstantní hodnoty. Použijte zkopírovaný hodnotu pro **EventHubConnectionString**. Použijte název centra událostí pro **EventHubName**.
+5. Nahraďte dvě konstantní hodnoty. Použijte zkopírovaný hodnotu pro **EventHubConnectionString**. Použití **hubdatamigration** název centra událostí.
 
    ```cs
-   private const string EventHubConnectionString = "Endpoint=sb://tfdatamigratens.servicebus.windows.net/...";
+   private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 

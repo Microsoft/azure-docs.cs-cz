@@ -1,8 +1,8 @@
 ---
-title: "Odesílání úloh výstřižek Azure Media výřez | Microsoft Docs"
-description: "Postup odeslání úlohy výstřižek z média výřez Azure"
+title: Odesílání úloh výstřižek Azure Media výřez | Microsoft Docs
+description: Postup odeslání úlohy výstřižek z média výřez Azure
 services: media-services
-keywords: "klip; subclip; kódování; média"
+keywords: klip; subclip; kódování; média
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Odesílání úloh výstřižek z média výřez Azure
 Vyžaduje Azure výřez média **submitSubclipCallback** metody k implementaci pro zpracování výstřižek úlohy odeslání. Tato funkce je pro implementaci HTTP POST výstupu výřez k webové službě. Tato webová služba je, kde můžete odeslat úlohy kódování. Výstup výřez je buď Media Encoder Standard kódování přednastavených vykreslené úloh nebo REST API datové části pro dynamické manifestu filtrovat volání. Tento model průchozí je nutné, protože přihlašovací údaje účtu media services nejsou zabezpečené v prohlížeči klienta.

@@ -1,6 +1,6 @@
 ---
 title: Zřídit Malinová platformy pro vzdálené monitorování v Node.js – Azure | Microsoft Docs
-description: Popisuje, jak se připojit k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js malin platformy zařízení.
+description: Popisuje, jak se připojit k používání aplikace napsané v Node.js akcelerátoru řešení vzdáleného monitorování malin platformy zařízení.
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 7f489a6b26edb9a58b21d318785d3804197b33cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a47cc34e6791ae03f4da968e3d44660b47e1214d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Připojte zařízení malin pí k předkonfigurovaného řešení vzdáleného monitorování (Node.js)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojení zařízení malin platformy pro vzdálené monitorování akcelerátoru řešení (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit fyzického zařízení k předkonfigurovaného řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálními prostředků omezení.
+Tento kurz ukazuje, jak se připojit ke vzdálené monitorování akcelerátoru řešení fyzického zařízení. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálními prostředků omezení.
 
 ### <a name="required-hardware"></a>Požadovaný hardware
 

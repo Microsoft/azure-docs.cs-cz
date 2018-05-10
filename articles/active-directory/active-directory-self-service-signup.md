@@ -1,26 +1,24 @@
 ---
-title: "Samoobslužná služba nebo zkušební registrace v Azure Active Directory | Microsoft Docs"
-description: "Použít samoobslužné registrace v klienta služby Azure Active Directory (Azure AD)"
+title: Samoobslužná služba nebo zkušební registrace v Azure Active Directory | Microsoft Docs
+description: Použít samoobslužné registrace v klienta služby Azure Active Directory (Azure AD)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/28/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 9f2b541d5028596f9beabc7fd82001b4c9dacad4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 67fd5ba9be2de1f79511c806ffaa0ae3001bfdcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je samoobslužné registrace pro Azure Active Directory?
 Tento článek vysvětluje samoobslužné registrace a jak ho podporují v Azure Active Directory (Azure AD). Pokud chcete převzít kontrolu nad název domény klienta z nespravovaných Azure AD najdete v tématu [převzít kontrolu nad adresář nespravované jako správce](domains-admin-takeover.md).

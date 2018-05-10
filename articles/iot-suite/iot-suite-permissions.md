@@ -1,12 +1,12 @@
 ---
-title: Azure IoT Suite a Azure Active Directory | Microsoft Docs
-description: "Popisuje, jak Azure IoT Suite využívá Azure Active Directory ke správě oprávnění."
-services: 
+title: Akcelerátorů řešení Azure IoT a Azure Active Directory | Microsoft Docs
+description: Popisuje, jak akcelerátorů řešení Azure IoT používá ke správě oprávnění nástroje Azure Active Directory.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e5804cda921e9d598d0ed02c4fafccdb40fbe7a5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b7360ca4df63cac114b0eb1f93375367da6735cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Oprávnění na webu azureiotsuite.com
 
@@ -29,35 +29,35 @@ Přihlaste se na prvním [azureiotsuite.com][lnk-azureiotsuite], lokality Určuj
 
 1. Nejprve k naplnění seznamu klientů vidět vedle vaše uživatelské jméno, lokality zjistí z Azure které AAD klienty patří do. V současné době lokality může obsahovat pouze tokeny uživatele pro jednoho klienta v čase. Proto že při přepnutí klientů pomocí rozevíracího seznamu v pravém horním rohu webu v protokoly na tohoto tenanta získat tokeny pro tohoto klienta.
 
-2. V dalším kroku webu zjistí z Azure, které odběry byla přidružena vybraného klienta. Při vytváření nové předkonfigurované řešení zobrazit dostupných předplatných.
+2. V dalším kroku webu zjistí z Azure, které odběry byla přidružena vybraného klienta. Když vytvoříte nový akcelerátor řešení zobrazí dostupných předplatných.
 
-3. Nakonec webu načte všechny prostředky v skupiny prostředků a předplatná označené jako předkonfigurovaná řešení a naplní dlaždice na domovské stránce.
+3. Nakonec webu načte všechny prostředky v skupiny prostředků a předplatná označené jako řešení akcelerátorů a naplní dlaždice na domovské stránce.
 
-Následující části popisují role, která řídí přístup k předkonfigurovaných řešení.
+Následující části popisují role, která řídí přístup k akcelerátorů řešení.
 
 ## <a name="aad-roles"></a>Role AAD
 
-Role AAD zřídit předkonfigurované řešení možnost řídit a spravovat uživatele v předkonfigurované řešení.
+Role AAD akcelerátorů řešení zřídit možnost řídit a spravovat uživatele v akcelerátor řešení.
 
-Další informace o rolích správce můžete najít v AAD v [přiřazení rolí správce ve službě Azure AD][lnk-aad-admin]. Aktuální článek se týká **globálního správce** a **uživatele** role directory používaného předkonfigurovaných řešení.
+Další informace o rolích správce můžete najít v AAD v [přiřazení rolí správce ve službě Azure AD][lnk-aad-admin]. Aktuální článek se týká **globálního správce** a **uživatele** role directory používaného akcelerátorů řešení.
 
 ### <a name="global-administrator"></a>Globální správce
 
 Může být mnoho globální správci za klienta AAD:
 
 * Při vytváření klienta služby AAD se ve výchozím nastavení globální správce tohoto klienta.
-* Globální správce můžete zřídit předkonfigurované řešení úrovně basic a standard.
+* Globální správce můžete zřídit akcelerátorů úrovně basic a standard řešení.
 
 ### <a name="domain-user"></a>Uživatel domény
 
 Může být velký počet uživatelů domény na klienta AAD:
 
-* Uživatel domény můžete zřídit základní předkonfigurované řešení prostřednictvím [azureiotsuite.com] [ lnk-azureiotsuite] lokality.
-* Uživatel domény můžete vytvořit základní předkonfigurované řešení pomocí rozhraní příkazového řádku.
+* Uživatel domény můžete zřídit akcelerátor základní řešení prostřednictvím [azureiotsuite.com] [ lnk-azureiotsuite] lokality.
+* Uživatel domény můžete vytvořit akcelerátor základní řešení pomocí rozhraní příkazového řádku.
 
 ### <a name="guest-user"></a>Uživatele Guest
 
-Může být velký počet uživatelů typu Host za klienta AAD. Uživatele typu Host mají omezenou sadu oprávnění v tenantovi AAD. V důsledku toho uživatele typu Host nejde zřídit předkonfigurované řešení v tenantovi AAD.
+Může být velký počet uživatelů typu Host za klienta AAD. Uživatele typu Host mají omezenou sadu oprávnění v tenantovi AAD. V důsledku toho uživatele typu Host nejde zřídit akcelerátor řešení v tenantovi AAD.
 
 Další informace týkající se uživatelů a rolí v AAD najdete v následujících zdrojích informací:
 
@@ -93,8 +93,8 @@ Podívejte se na následující diagram pokyny:
 
 Pokud jste si jisti, že máte předplatné Azure, ověření klienta mapování pro vaše předplatné a ujistěte se, že je vybrána správná klienta v rozevírací nabídce. Pokud jste ověřit správnost požadované klienta, postupujte podle na předchozím obrázku a ověřit mapování vaše předplatné a tohoto klienta AAD.
 
-## <a name="next-steps"></a>Další kroky
-Pokračujte ve čtení o IoT Suite, najdete v tématu jak můžete [přizpůsobení předkonfigurovaného řešení][lnk-customize].
+## <a name="next-steps"></a>Další postup
+Pokračujte ve čtení o akcelerátorů řešení IoT, najdete v tématu jak můžete [přizpůsobit akcelerátor řešení][lnk-customize].
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 

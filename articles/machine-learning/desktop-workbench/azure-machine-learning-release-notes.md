@@ -9,21 +9,32 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: e30943426ad68171e1464f828a9c8672b06c975a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Novinky ve službě Azure Machine Learning
 
-V tomto článku, další informace o nové verze pro [služby Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
+V tomto článku, další informace o nových verzí systému [Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
+
+
+## <a name="2018-05-sprint-5"></a>2018-05 (sprintu 5)
+
+V této verzi Azure Machine Learning můžete:
++ Obrázky Featurize quantized verzi ResNet 50 cvičení třídění na základě těchto funkcí a [nasazení tohoto modelu na FPGA v Azure](../service/how-to-deploy-fpga-web-service.md) pro inferencing s velmi nízkou latencí.
+
++ Rychle sestavení a nasazení vysoce přesné strojového učení a modely hloubkové learning pomocí [vlastní Azure Machine Learning balíčky](../service/reference-python-package-overview.md) pro následující domény:
+  + [Vize počítače](../service/how-to-build-deploy-image-classification-models.md)
+  + [Analýza textu](../service/how-to-build-deploy-text-classification-models.md)
+  + [Prognózy](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (sprintu 4)
 **Číslo verze**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 
-Vítá vás páté aktualizaci vytvoří nástroje Azure Machine Learning Workbench. Řadu následující aktualizace jsou vytvářeny jako přímý výsledky váš názor. Uchovávejte je Připravujeme!
+Řadu následující aktualizace jsou vytvářeny jako přímý výsledky váš názor. Uchovávejte je Připravujeme!
 
 **Upozorňují na důležité nové funkce a změny**
 

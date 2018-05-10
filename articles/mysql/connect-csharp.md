@@ -1,6 +1,6 @@
 ---
-title: "Připojení k Azure Database for MySQL z jazyka C#"
-description: "V tomto rychlém startu najdete vzorový kód jazyka C# (.NET), který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL."
+title: Připojení k Azure Database for MySQL z jazyka C#
+description: V tomto rychlém startu najdete vzorový kód jazyka C# (.NET), který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 services: MySQL
 author: ajlam
 ms.author: andrela
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 040585d3dee4821e6b150b1ba41574aa8436ba75
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8ac1e3a7bb092f2eab64caeab61b10852533dd6b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí .NET (jazyk C#)
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v jazyce C#. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí jazyka C# a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -49,7 +49,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
  ![Název serveru Azure Database for MySQL](./media/connect-csharp/1_server-overview-name-login.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazů `CREATE TABLE` a `INSERT INTO` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazů `CREATE TABLE` a `INSERT INTO` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 
@@ -114,7 +114,7 @@ namespace AzureMySqlExample
 
 ## <a name="read-data"></a>Čtení dat
 
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `SELECT` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.createcommand) a metodu [ExecuteReaderAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand.executereaderasync) pro spuštění databázových příkazů. Dál tento kód použije [ReadAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) k přechodu na záznamy ve výsledcích. Potom tento kód použije GetInt32 a GetString k parsování hodnot v záznamu.
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `SELECT` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand) a metodu [ExecuteReaderAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync) pro spuštění databázových příkazů. Dál tento kód použije [ReadAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbdatareader.readasync#System_Data_Common_DbDataReader_ReadAsync) k přechodu na záznamy ve výsledcích. Potom tento kód použije GetInt32 a GetString k parsování hodnot v záznamu.
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 
@@ -171,7 +171,7 @@ namespace AzureMySqlExample
 ```
 
 ## <a name="update-data"></a>Aktualizace dat
-Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `UPDATE` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
+Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu `UPDATE` jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 
@@ -223,7 +223,7 @@ namespace AzureMySqlExample
 ## <a name="delete-data"></a>Odstranění dat
 Pomocí následujícího kódu se připojte a odstraňte data s využitím příkazu `DELETE` jazyka SQL. 
 
-Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/en-us/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
+Tento kód pro navázání připojení k MySQL využívá třídu `MySqlConnection` s metodou [OpenAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.openasync#System_Data_Common_DbConnection_OpenAsync). Potom tento kód použije metodu [CreateCommand()](https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection.createcommand), nastaví vlastnost CommandText a volá metodu [ExecuteNonQueryAsync()](https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync) pro spuštění databázových příkazů. 
 
 Parametry `Server`, `Database`, `UserID` a `Password` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze. 
 

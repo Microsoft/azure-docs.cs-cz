@@ -145,6 +145,12 @@
           items:
             - name: Řešení potíží s replikací z Azure do Azure
               href: azure-to-azure-troubleshoot-errors.md
+            - name: Řešení potíží s rozšířením Azure Site Recovery
+              href: site-recovery-extension-troubleshoot.md
+        - name: Spravovat
+          items:
+            - name: Automatická aktualizace rozšíření služby mobility
+              href: azure-to-azure-autoupdate.md
     - name: VMware/fyzické prostředky do Azure
       items:
         - name: Sítě
@@ -171,8 +177,6 @@
               href: vmware-azure-set-up-process-server-scale.md
         - name: Zotavení po havárii
           items:
-            - name: Zotavení virtuálních počítačů VMware po havárii s podporou více tenantů a CSP
-              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
             - name: Replikace virtuálních počítačů VMware do Azure s využitím PowerShellu
               href: vmware-azure-disaster-recovery-powershell.md
             - name: Zotavení po havárii fyzických serverů do Azure
@@ -193,12 +197,14 @@
               href: vmware-azure-exclude-disk.md
             - name: Povolení replikace virtuálních počítačů VMware
               href: vmware-azure-enable-replication.md
+            - name: Víceklientské prostředí s CSP pro virtuální počítače VMWare
+              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: Nasazení služby Mobility
           items:
+            - name: Přehled služby Mobility
+              href: vmware-azure-install-mobility-service.md
             - name: Nasazení služby Mobility s využitím System Center Configuration Manageru
               href: vmware-azure-mobility-install-configuration-mgr.md
-            - name: Nasazení služby Mobility s využitím Azure Automation DSC
-              href: vmware-azure-mobility-deploy-automation-dsc.md
         - name: Převzetí služeb při selhání a navrácení služeb po obnovení
           items:
             - name: Spuštění postupu zotavení po havárii do Azure

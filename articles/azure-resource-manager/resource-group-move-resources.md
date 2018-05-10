@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8ad73132839aaa77166c115feff9a70db864ba12
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -53,7 +53,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Pokud klient ID pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody sjednotit klienta ID: 
+  Pokud klient ID pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody sjednotit klienta ID:
 
   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
   * [Postup přidružení nebo přidat předplatné Azure do Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
@@ -118,7 +118,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Mapy Bingu
 * CDN
 * Cloudové služby - viz [omezení nasazení Classic](#classic-deployment-limitations)
-* Kognitivní služby
+* Cognitive Services
 * Content Moderator
 * Data Catalog
 * Objekt pro vytváření dat – V1 můžete přesunout, ale přesun V2 (preview) nepodporuje.
@@ -166,12 +166,12 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * Azure Database for MySQL
 * BizTalk Services
 * Certifikáty – App Service Certificate lze přesunout, ale mají nahrané certifikáty [omezení](#app-service-limitations).
-* Container Service
+* Kubernetes služby
 * DevTest Labs – přesunout do nové skupiny prostředků v rámci stejného předplatného je povoleno, ale přesunutí křížové předplatného není povolená.
 * Dynamics LCS
 * ExpressRoute
 * Nástroje pro vyrovnávání zatížení – viz [omezení pro vyrovnávání zatížení](#lb-limitations)
-* Spravované aplikace
+* Managed Applications
 * Najdete v části spravované disky - [omezení virtuální počítače](#virtual-machines-limitations)
 * Veřejná IP adresa - najdete v části [omezení veřejnou IP adresu](#pip-limitations)
 * Trezor služeb zotavení – také proveďte není přesunout prostředky výpočty, síť a úložiště přidružený k trezoru služeb zotavení, najdete v části [služeb zotavení omezení](#recovery-services-limitations).
@@ -203,13 +203,13 @@ Virtuální síť nemůžete přesunout do jiného předplatného, pokud virtuá
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 
-Omezení pro přesun prostředků služby App Service se liší v závislosti na tom, jestli jsou přesun prostředků v rámci předplatného nebo do nového předplatného. 
+Omezení pro přesun prostředků služby App Service se liší v závislosti na tom, jestli jsou přesun prostředků v rámci předplatného nebo do nového předplatného.
 
 Omezení popsaná v těchto částech platí pro nahraném certifikáty, není služby App Service Certificate. Služby App Service Certificate můžete přesunout do nové skupiny prostředků nebo předplatného bez omezení. Pokud máte více webových aplikací, které používají stejný certifikát služby aplikace, nejprve přesunout všechny webové aplikace, pak přesuňte certifikát.
 
 ### <a name="moving-within-the-same-subscription"></a>Přesunutí v rámci stejného předplatného.
 
-Při přesunu webové aplikace _v rámci stejného předplatného_, nemůžete přesunout nahrané certifikáty SSL. Ale webové aplikace do nové skupiny prostředků můžete přesunout bez přesouvání jeho odeslaný certifikát SSL a funkce SSL vaší aplikace stále funguje. 
+Při přesunu webové aplikace _v rámci stejného předplatného_, nemůžete přesunout nahrané certifikáty SSL. Ale webové aplikace do nové skupiny prostředků můžete přesunout bez přesouvání jeho odeslaný certifikát SSL a funkce SSL vaší aplikace stále funguje.
 
 Pokud chcete přesunout certifikát SSL s webovou aplikaci, postupujte podle těchto kroků:
 
@@ -227,7 +227,7 @@ Při přesunu webové aplikace _ve předplatných_, platí následující omezen
     - Nahrané nebo importované certifikáty SSL
     - Prostředí App Service
 - Všechny prostředky služby App Service ve skupině prostředků je třeba přesunout společně.
-- Prostředky aplikace služby lze přesunout pouze ze skupiny prostředků, ve které byly původně vytvořili. Pokud prostředek služby App Service je již v jeho původní skupin prostředků, je nutné je přesunout zpět do této původní skupiny prostředků nejprve a pak ho lze přesunout mezi odběry. 
+- Prostředky aplikace služby lze přesunout pouze ze skupiny prostředků, ve které byly původně vytvořili. Pokud prostředek služby App Service je již v jeho původní skupin prostředků, je nutné je přesunout zpět do této původní skupiny prostředků nejprve a pak ho lze přesunout mezi odběry.
 
 ## <a name="classic-deployment-limitations"></a>Omezení nasazení Classic
 

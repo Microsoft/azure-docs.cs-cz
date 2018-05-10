@@ -1,6 +1,6 @@
 ---
-title: "Nasazení řešení zařízení simulace - Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak při zřizování řešení simulace zařízení z azureiotsuite.com."
+title: Nasazení řešení zařízení simulace - Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak při zřizování řešení simulace zařízení z azureiotsuite.com.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: da9fb95ed5d3387c98c3274a53769d3f5f945371
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 52890c51b06777a2d74fcf143bee4e5e8919ba75
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-the-azure-iot-device-simulation-solution"></a>Nasazení řešení simulace zařízení Azure IoT
 
@@ -39,15 +39,15 @@ Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný ú
 
 Před nasazením řešení k předplatnému Azure, musíte zvolit některé možnosti konfigurace:
 
-1. Přihlaste se k [azureiotsuite.com](https://www.azureiotsuite.com) pomocí vaší Azure přihlašovací údaje účtu a klikněte na tlačítko  **+**  k vytvoření nové řešení:
+1. Přihlaste se k [azureiotsuite.com](https://www.azureiotsuite.com) pomocí vaší Azure přihlašovací údaje účtu a klikněte na tlačítko **+** k vytvoření nové řešení:
 
-    ![Vytvořte nové řešení](media/iot-suite-device-simulation-deploy/createnewsolution.png)
+    ![Vytvořit nové řešení](media/iot-suite-device-simulation-deploy/createnewsolution.png)
 
 1. Klikněte na tlačítko **vyberte** na **zařízení simulace** dlaždice:
 
     ![Zvolte simulace zařízení](media/iot-suite-device-simulation-deploy/select.png)
 
-1. Na **řešení simulace vytvořit zařízení** stránky, zadejte **název řešení** pro vaše řešení simulace zařízení.
+1. Na **simulace zařízení vytvořit řešení** stránky, zadejte **název řešení** pro vaše řešení simulace zařízení.
 
 1. Vyberte **Předplatné** a **Oblast**, které chcete při zřizování řešení použít.
 
@@ -74,7 +74,7 @@ Po dokončení procesu zřizování se můžete přihlásit řešení simulace z
 
 1. Řídicí panel řešení simulace zařízení zobrazí v prohlížeči.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

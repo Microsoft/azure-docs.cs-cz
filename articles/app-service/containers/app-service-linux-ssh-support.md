@@ -1,12 +1,12 @@
 ---
-title: "Podpora SSH pro Azure App Service v systému Linux | Microsoft Docs"
-description: "Další informace o použití SSH s Azure App Service v systému Linux."
-keywords: azure app service, web app, linux, oss
+title: Podpora SSH pro Azure App Service v systému Linux | Microsoft Docs
+description: Další informace o použití SSH s Azure App Service v systému Linux.
+keywords: služby Azure app service, webové aplikace, linux, operačních systémů
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 905c257ab40057f05081e54e8680bd818023d886
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: cf27e852f5ec9b7e12b0c678e9940596bc57b385
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v systému Linux
 
@@ -30,6 +30,10 @@ Aplikační služby v systému Linux poskytuje podporu SSH do kontejneru aplikac
 ![Zásobníky modulu runtime](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
 Můžete taky použití SSH se vlastních bitových kopií Docker včetně SSH serveru v rámci bitové kopie a její konfiguraci, jak je popsáno v tomto článku.
+
+> [!NOTE] 
+> Můžete také připojit ke kontejneru aplikaci přímo z místní vývojovém počítači pomocí protokolu SSH, SFTP nebo Visual Studio Code (pro živé ladění aplikace Node.js). Další informace najdete v tématu [vzdálené ladění a SSH ve službě App Service v systému Linux](https://aka.ms/linux-debug).
+>
 
 ## <a name="making-a-client-connection"></a>Navazování připojení klienta
 

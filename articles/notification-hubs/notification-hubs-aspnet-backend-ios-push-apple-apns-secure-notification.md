@@ -1,10 +1,10 @@
 ---
-title: "Azure Notification Hubs zabezpečené Push"
-description: "Naučte se odesílání zabezpečené nabízených oznámení do aplikace pro iOS z Azure. Ukázky kódu jsou vytvořeny v Objective-C a C#."
+title: Azure Notification Hubs zabezpečené Push
+description: Naučte se odesílání zabezpečené nabízených oznámení do aplikace pro iOS z Azure. Ukázky kódu jsou vytvořeny v Objective-C a C#.
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: e5f09fb3716303bb21fe7442aa6fa8832174838e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/25/2018
+ms.author: dimazaid
+ms.openlocfilehash: d3ba967a164a35af5bf66f7e74d5f95b5dc2a37f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs zabezpečené Push
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Na vysoké úrovni tok je následující:
    * Zařízení kontaktuje back-end vyžaduje zabezpečené datové části.
    * Aplikace můžete zobrazit datové části jako upozornění na zařízení.
 
-Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení ukládá ověřovací token do místního úložiště, po přihlášení uživatele. Zaručí se tím úplně jednoduché prostředí, protože zařízení můžete načíst pomocí tohoto tokenu zabezpečení datové na oznámení. Pokud vaše aplikace nejsou uložené tokeny ověřování v zařízení, nebo pokud tyto tokeny můžete vypršela platnost, by měla aplikace zařízení při přijetí oznámení zobrazit obecné oznámení uživateli zobrazuje výzvu spusťte aplikaci. Aplikace pak ověřuje uživatele a ukazuje datová část oznámení.
+Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokládáme, že zařízení ukládá ověřovací token do místního úložiště, po přihlášení uživatele. Zaručí se tím uživatelům prostředí, protože zařízení můžete načíst pomocí tohoto tokenu zabezpečení datové na oznámení. Pokud vaše aplikace nejsou uložené tokeny ověřování v zařízení, nebo pokud tyto tokeny můžete vypršela platnost, by měla aplikace zařízení při přijetí oznámení zobrazit obecné oznámení uživateli zobrazuje výzvu spusťte aplikaci. Aplikace pak ověřuje uživatele a ukazuje datová část oznámení.
 
 V tomto kurzu zabezpečení nabízené ukazuje, jak bezpečně odesílání nabízených oznámení. Tento kurz je založený na [upozornění uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) kurzu, a proto kroky musí dokončit v tomto kurzu první.
 
@@ -54,11 +54,11 @@ V tomto kurzu zabezpečení nabízené ukazuje, jak bezpečně odesílání nab�
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-ios-project"></a>Upravit projekt pro iOS
-Teď, když změnit váš back-end aplikace k odesílání jen na *id* oznámení, budete muset změnit své aplikace pro iOS ke zpracování tohoto oznámení a zpětné volání váš back-end pro načtení zabezpečenou zprávu, který se má zobrazit.
+Teď, když změnit váš back-end aplikace k odesílání jen na *ID* oznámení, budete muset změnit své aplikace pro iOS ke zpracování tohoto oznámení a zpětné volání váš back-end pro načtení zabezpečenou zprávu, který se má zobrazit.
 
 K dosažení tohoto cíle, musíme zapisovat logiku načíst zabezpečený obsah z back-end aplikace.
 
-1. V **AppDelegate.m**, ujistěte se, že aplikace se zaregistruje pro tichou oznámení, zpracuje id oznámení odeslaných z back-end. Přidat **UIRemoteNotificationTypeNewsstandContentAvailability** v didFinishLaunchingWithOptions možnost:
+1. V **AppDelegate.m**, zajistěte, aby aplikace zaregistruje pro tichou oznámení, zpracuje ID oznámení odeslaných z back-end. Přidat **UIRemoteNotificationTypeNewsstandContentAvailability** v didFinishLaunchingWithOptions možnost:
    
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
 2. Ve vašem **AppDelegate.m** přidat oddíl implementace v horní části s následující prohlášení:

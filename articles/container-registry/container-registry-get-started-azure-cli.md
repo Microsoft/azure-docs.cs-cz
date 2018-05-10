@@ -3,17 +3,17 @@ title: Rychlý start – Vytvoření privátního registru Dockeru v Azure pomoc
 description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí Azure CLI.
 services: container-registry
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 8426d395d294144135c1c11593ecaf7fdc5bee69
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ed5c2d0b925d92f318b36b36d060ebc923499ee5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Rychlý start: Vytvoření registru kontejnerů pomocí Azure CLI
 

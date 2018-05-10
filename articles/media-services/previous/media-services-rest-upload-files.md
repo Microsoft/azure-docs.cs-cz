@@ -1,11 +1,11 @@
 ---
-title: "Nahrání souborů do účtu Azure Media Services pomocí REST | Microsoft Docs"
-description: "Další informace o získání mediálního obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky."
+title: Nahrání souborů do účtu Azure Media Services pomocí REST | Microsoft Docs
+description: Další informace o získání mediálního obsahu ve službě Media Services pomocí vytvoření a odeslání prostředky.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: juliako
 ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Media Services pomocí REST
 > [!div class="op_single_selector"]
@@ -53,9 +53,9 @@ Při použití Media Services REST API, platí následující aspekty:
 * Při přístupu k entity pomocí Media Services REST API, musíte nastavit specifická pole hlaviček a hodnoty ve své žádosti HTTP. Další informace najdete v tématu [instalační program pro Media Services REST API vývoj](media-services-rest-how-to-use.md). <br/>Kolekce Postman použili v tomto kurzu má na starosti nastavení všechny potřebné hlavičky.
 * Služba Media Services použije hodnotu vlastnosti IAssetFile.Name při sestavování adresy URL pro streamování obsah (například http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hodnota **název** vlastnost nemůže mít žádné z následujících [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '.' pro příponu názvu souboru.
 * Délka názvu nesmí být větší než 260 znaků.
-* Maximální velikost souboru podporovaná při zpracování ve službě Media Services je omezená. V tématu [to](media-services-quotas-and-limitations.md) článku podrobnosti o omezení velikosti souboru.
+* Maximální velikost souboru podporovaná při zpracování ve službě Media Services je omezená. Podrobnosti o omezení velikosti souboru najdete v [tomto článku](media-services-quotas-and-limitations.md).
 
-## <a name="set-up-postman"></a>Nastavit Postman
+## <a name="set-up-postman"></a>Nastavení nástroje Postman
 
 Pokyny o tom, jak nastavit Postman pro účely tohoto kurzu, najdete v části [konfigurace Postman](media-rest-apis-with-postman.md).
 
@@ -184,7 +184,7 @@ Jako příklad používáme Postman k nahrání souboru malé MP4. Na odesílán
 Žádost o odeslání není součástí **AzureMedia** kolekce. 
 
 Vytvoření a nastavení novou žádost:
-1. Stiskněte klávesu  **+** , chcete-li vytvořit novou kartu požadavku.
+1. Stiskněte klávesu **+**, chcete-li vytvořit novou kartu požadavku.
 2. Vyberte **PUT** operace a vložení **{{UploadURL}}** v adrese URL.
 2. Nechte **autorizace** kartě, jako je (nenastavujte na **nosného tokenu**).
 3. V **hlavičky** kartě, zadejte: **klíč**: "x-ms-blob-type" a **hodnotu**: "BlockBlob".

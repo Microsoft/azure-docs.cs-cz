@@ -1,25 +1,23 @@
 ---
-title: "Jak konfigurovat výstrahy zabezpečení | Microsoft Docs"
-description: "Zjistěte, jak konfigurovat výstrahy zabezpečení pro rozšíření Azure Privileged Identity Management."
+title: Jak konfigurovat výstrahy zabezpečení | Microsoft Docs
+description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro rozšíření Azure Privileged Identity Management.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 4e0c911a-36c6-42a0-8f79-a01c03d2d04f
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: 8037942cb3700f8e46d3be24b5fed04004333335
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f77567d35d3916ab1660134959d2d26916e08a0a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak konfigurovat výstrahy zabezpečení v Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Výstrahy zabezpečení

@@ -3,7 +3,7 @@ title: Mapa aplikace ve službě Azure Application Insights | Microsoft Docs
 description: Monitorování topologie komplexních aplikací s aplikací mapy
 services: application-insights
 documentationcenter: ''
-author: SoubhagyaDash
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: mbullwin
-ms.openlocfilehash: 4b95cd947cd977208dee32d18fbc6a1fb099ff3b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.author: mbullwin; Soubhagya.Dash
+ms.openlocfilehash: a02d345c0f624f2d1694b4b9622bf3c82c009429
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Rychlou kontrolu distribuované aplikace
 Mapy aplikací umožňuje přímé kritické body nebo selhání hotspotům pro všechny součásti distribuované aplikace. Každý uzel na mapě představuje komponentu aplikace nebo jeho závislé součásti; a má stav klíčového ukazatele výkonu a výstrahy stavu. Můžete kliknutím z libovolné součásti podrobnější diagnostiku, jako je například události Application Insights. Pokud vaše aplikace používá služby Azure, můžete také kliknutím na Azure diagnostics, jako je například doporučení Poradce pro databáze systému SQL.
@@ -114,7 +114,7 @@ Ve výchozím nastavení mapy souhrn všech dat k dispozici pro vybrané časov�
 ## <a name="save-filters"></a>Uložit filtry
 Pokud chcete uložit filtry, které jste použili, filtrované zobrazení na připnout [řídicí panel](app-insights-dashboards.md).
 
-![Připnout na řídicí panel](./media/app-insights-app-map/12.png)
+![Připnutí na řídicí panel](./media/app-insights-app-map/12.png)
 
 ## <a name="error-pane"></a>Podokno chyby
 Při kliknutí na uzel v mapě, zobrazí se podokno k chybě na pravé straně shrnutí selhání pro tento uzel. Chyby jsou nejprve seskupené podle ID operace a potom seskupené podle ID problému.
@@ -123,10 +123,10 @@ Při kliknutí na uzel v mapě, zobrazí se podokno k chybě na pravé straně s
 
 Kliknutím na selhání přejdete k nejnovější instanci tohoto selhání.
 
-## <a name="resource-health"></a>Stav prostředku
+## <a name="resource-health"></a>Stav prostředků
 Pro některé typy prostředků v horní části podokna chyba se zobrazí stav prostředku. Například kliknutím na uzel SQL se zobrazí stav databáze a všechny výstrahy, které mají aktivováno.
 
-![Stav prostředku](./media/app-insights-app-map/resource-health.png)
+![Stav prostředků](./media/app-insights-app-map/resource-health.png)
 
 Můžete kliknout na název prostředku zobrazíte standardní přehled metriky pro tento prostředek.
 
@@ -134,7 +134,7 @@ Můžete kliknout na název prostředku zobrazíte standardní přehled metriky 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
-## <a name="feedback"></a>Odezva
+## <a name="feedback"></a>Váš názor
 Zadejte prosím zpětnou vazbu prostřednictvím možnosti portálu zpětné vazby.
 
 ![Obrázek MapLink-1](./media/app-insights-app-map/13.png)

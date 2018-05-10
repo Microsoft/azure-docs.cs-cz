@@ -1,24 +1,24 @@
 ---
-title: "Použití centra oznámení s PHP"
-description: "Naučte se používat Azure Notification Hubs z PHP back-end."
+title: Použití centra oznámení s PHP
+description: Naučte se používat Azure Notification Hubs z PHP back-end.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0156f994-96d0-4878-b07b-49b7be4fd856
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: php
 ms.devlang: php
 ms.topic: article
-ms.date: 06/07/2016
-ms.author: yuaxu
-ms.openlocfilehash: c27b6308ff528224a0398e0ff40537db05417bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 930da7cca312ac6233b337dd7ddac478c3bbee7b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Jak používat centra oznámení z PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -31,7 +31,7 @@ V tomto tématu ukážeme postup:
 * Postupujte podle [kurzu Začínáme Get](notification-hubs-ios-apple-push-notification-apns-get-started.md) pro vaši mobilní platformu podle volby implementace části back-end v jazyce PHP.
 
 ## <a name="client-interface"></a>Rozhraní klienta
-Rozhraní hlavní klienta může poskytovat stejné metody, které jsou k dispozici v [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx), to vám umožní přímo převést všechny výukové programy a ukázky aktuálně k dispozici na tomto webu a přispěli Komunita na Internetu.
+Rozhraní hlavní klienta může poskytovat stejné metody, které jsou k dispozici v [.NET SDK centra oznámení](http://msdn.microsoft.com/library/jj933431.aspx), který umožňuje přímo přeložit všechny výukové programy a ukázky aktuálně k dispozici na tomto webu a přispěli komunity na Internetu.
 
 K dispozici v kódu lze najít [PHP REST obálku ukázka].
 
@@ -45,10 +45,10 @@ K odeslání iOS nativní oznámení:
     $hub->sendNotification($notification, null);
 
 ## <a name="implementation"></a>Implementace
-Pokud jste ještě není, postupujte podle našich [kurzu Začínáme Get] až na poslední část, kde je nutné implementovat back-end.
+Pokud jste ještě není, postupujte podle kroků [kurzu Začínáme Get] až na poslední část, kde je nutné implementovat back-end.
 Navíc pokud chcete, můžete použít kód z [PHP REST obálku ukázka] a přejít přímo na [dokončit kurz](#complete-tutorial) části.
 
-Všechny podrobnosti implementace úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části jsme se popisují implementaci PHP hlavní kroky potřebné pro přístup k koncové body REST centra oznámení:
+Všechny podrobnosti implementace úplné obálku REST naleznete na [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). V této části popisují jsme PHP implementace hlavní kroky potřebné pro přístup k koncové body REST centra oznámení:
 
 1. Analýza připojovacího řetězce
 2. Vygenerování tokenu autorizace
@@ -132,9 +132,9 @@ Dejte nám nejdřív definice třídy představující oznámení.
         }
     }
 
-Tato třída je kontejner pro nativní oznámení text, nebo sadu vlastností v případě šablony oznámení a sadu hlaviček, který obsahuje formátu (nativní platforma nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost Apple vypršení platnosti a WNS hlavičky).
+Tato třída je kontejner pro nativní oznámení text, nebo sadu vlastností v případě šablony oznámení a sadu hlavičky, která obsahuje formátu (nativní platforma nebo šablony) a vlastnosti specifické pro platformu (např. vlastnost Apple vypršení platnosti a WNS hlavičky).
 
-Naleznete [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a na konkrétní oznámení platformách formátů pro všechny možnosti, které jsou k dispozici.
+Odkazovat [dokumentaci rozhraní API REST centra oznámení](http://msdn.microsoft.com/library/dn495827.aspx) a na konkrétní oznámení platformách formátů pro všechny možnosti, které jsou k dispozici.
 
 Díky této třídy, jsme nyní můžete napsat odesílání oznámení metody uvnitř **NotificationHub** třídy.
 

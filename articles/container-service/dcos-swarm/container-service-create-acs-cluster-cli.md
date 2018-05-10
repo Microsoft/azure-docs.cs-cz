@@ -1,19 +1,19 @@
 ---
-title: "Nasazení clusteru kontejneru Dockeru – Azure CLI"
-description: "Nasazení řešení Kubernetes, DC/OS nebo Docker Swarm ve službě Azure Container Service pomocí Azure CLI 2.0"
+title: Nasazení clusteru kontejneru Dockeru – Azure CLI
+description: Nasazení řešení Kubernetes, DC/OS nebo Docker Swarm ve službě Azure Container Service pomocí Azure CLI 2.0
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 40d5ea0e7abce165659219db8842ab64ac75fda7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 037834fa94a4ef6ecf6ab87055ed1369a3c8f1fb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-a-docker-container-hosting-solution-using-the-azure-cli-20"></a>Nasazení řešení hostování kontejnerů Dockeru pomocí Azure CLI 2.0
 
@@ -38,7 +38,7 @@ Postupujte podle zobrazených výzev a interaktivně se přihlaste. Další způ
 
 ### <a name="set-your-azure-subscription"></a>Nastavení předplatného Azure
 
-Pokud máte více než jedno předplatné Azure, nastavte výchozí předplatné. Například:
+Pokud máte více než jedno předplatné Azure, nastavte výchozí předplatné. Příklad:
 
 ```
 az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
@@ -46,7 +46,7 @@ az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-Doporučujeme vytvořit skupinu prostředků pro každý cluster. Zadejte oblast Azure, ve které je Azure Container Service [k dispozici](https://azure.microsoft.com/en-us/regions/services/). Například:
+Doporučujeme vytvořit skupinu prostředků pro každý cluster. Zadejte oblast Azure, ve které je Azure Container Service [k dispozici](https://azure.microsoft.com/regions/services/). Příklad:
 
 ```azurecli
 az group create -n acsrg1 -l "westus"

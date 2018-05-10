@@ -1,74 +1,74 @@
 ---
-title: "Řešení potíží s zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak k řešení potíží a opravám problémů zařízení v řešení vzdáleného monitorování."
-services: 
+title: Řešení potíží s zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak k řešení potíží a opravám problémů zařízení v řešení vzdáleného monitorování.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a959276ea61ec0e44ad45197019dfc80f26b768e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>Řešení potíží a opravám problémů zařízení
 
 V tomto kurzu se dozvíte, jak používat **údržby** stránky v řešení k řešení potíží a opravám problémů zařízení. Zavádět tyto možnosti, tento kurz používá scénáři v aplikaci Contoso IoT.
 
-Contoso je testování novou **prototypu** zařízení v poli. Jako operátor Contoso, si všimnete během testování, které **prototypu** zařízení je aktivován neočekávaně teploty alarmů na řídicím panelu. Teď musíte prozkoumat chování tento vadný **prototypu** zařízení.
+Contoso je testování novou **prototypu** zařízení v poli. Jako operátor Contoso, si všimnete během testování, které **prototypu** zařízení je aktivován neočekávaně teploty výstrahy na řídicím panelu. Teď musíte prozkoumat chování tento vadný **prototypu** zařízení.
 
 V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
-> * Použití **údržby** stránky k prozkoumání varování
+> * Použití **údržby** stránky k prozkoumání výstrahy
 > * Volání metody zařízení k nápravě problému
 
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li v tomto kurzu, je třeba nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasadit předkonfigurované řešení vzdáleného monitorování](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="use-the-maintenance-dashboard"></a>Řídicí panel údržby
 
-Na **řídicí panel** stránky zjistíte, že existují pocházejících z přidruženo pravidlo výstrahy neočekávané teploty **prototypu** zařízení:
+Na **řídicí panel** stránky zjistíte, že existují neočekávané teploty výstrahy, které pocházejí z přidruženo pravidlo **prototypu** zařízení:
 
 ![Výstrahy zobrazuje na řídicím panelu](media/iot-suite-remote-monitoring-maintain/dashboardalarm.png)
 
-Chcete-li prozkoumat další potíže, zvolte **prozkoumat alarmů** možnost vedle varování:
+Chcete-li prozkoumat další potíže, zvolte **prozkoumat upozornění** možnost vedle výstrahy:
 
-![Prozkoumejte alarmů na řídicím panelu](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
+![Prozkoumat upozornění z řídicího panelu](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-Ukazuje, zobrazení podrobností o varování:
+Zobrazení podrobností výstrahy se zobrazuje:
 
-* Pokud bylo spuštěno na upozornění
-* Informace o zařízení spojených s varováním stavu
-* Telemetrická data ze zařízení spojených s varováním
+* Kdy byla výstraha
+* Informace o zařízení spojených s výstrahou stavu
+* Telemetrická data ze zařízení spojených s výstrahou
 
-![Podrobnosti výstrahy](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
+![Podrobnosti upozornění](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
 
-Aby vzali na vědomí na upozornění, vyberte **poplašný výskytů** a zvolte **potvrzení**. Tato akce umožní dalšími operátory viděli na upozornění a jsou na něm pracovat.
+Aby vzali na vědomí výstrahu, vyberte **výstrahy výskytů** a zvolte **potvrzení**. Tato akce umožní dalšími operátory viděli jste, výstrahy a jsou na něm pracovat.
 
-![Potvrdit signály](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
+![Potvrdit výstrahy](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
-Po potvrzení na upozornění, stav výskytu změní na **potvrzeno**.
+Po potvrzení výstrahy, stav výskytu změní na **potvrzeno**.
 
-V seznamu se zobrazí **prototypu** zodpovědná za ohlásí teplotní alarm zařízení:
+V seznamu se zobrazí **prototypu** zodpovědná za aktivuje výstraha teploty zařízení:
 
-![Seznam zařízení způsobuje varování](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
+![Vytvořte seznam zařízení, která způsobila výstrahu](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
 
 ## <a name="remediate-the-issue"></a>Opravte problém
 
 Oprava problému s **prototypu** zařízení, je třeba volat **DecreaseTemperature** metoda v zařízení.
 
-Tak, aby fungoval na zařízení, vyberte ho v seznamu zařízení a potom zvolte **plán**. **Prototypu** model zařízení určuje čtyři metody musí podporovat zařízení:
+Tak, aby fungoval na zařízení, vyberte ho v seznamu zařízení a potom zvolte **úlohy**. **Prototypu** model zařízení určuje šesti metody musí podporovat zařízení:
 
 ![Zobrazení metod, které podporuje zařízení](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -90,7 +90,7 @@ V tomto kurzu jste viděli, jak:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Použití **údržby** stránky k prozkoumání varování
+> * Použití **údržby** stránky k prozkoumání výstrahy
 > * Volání metody zařízení k nápravě problému
 
 Nyní jste se naučili jak spravovat zařízení problémy, navrhované dalším krokem je další postup [testování řešení s Simulovaná zařízení](iot-suite-remote-monitoring-test.md).

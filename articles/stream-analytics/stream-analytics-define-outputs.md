@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/26/2018
-ms.openlocfilehash: 3bd87090df048f2b67de88f5202998af02d42491
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 05/07/2018
+ms.openlocfilehash: 54bf0cd80d1fcc6d761f977484a1a5539d581361
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Pochopení výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupů, které jsou k dispozici pro úlohu služby Azure Stream Analytics. Výstupy umožňují ukládat a uložte výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýza a datových skladů vaše data. 
@@ -48,7 +48,7 @@ Stream Analytics podporuje [Azure Data Lake Store](https://azure.microsoft.com/s
 | Formát data | Volitelné. Pokud se v cestě předponu používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány soubory. Příklad: Rrrr/MM/DD |
 |Formát času | Volitelné. Pokud token čas se používá v cestě předponu, zadejte formát času, ve kterém jsou uspořádány soubory. Aktuálně jedinou podporovanou hodnotou je HH. |
 | Formát serializace události | Formát serializace pro výstupní data. Jsou podporovány JSON, CSV a Avro.| 
-| Encoding | Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. V tuto chvíli je jediným podporovaným formátem kódování UTF-8.|
+| Kódování | Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. V tuto chvíli je jediným podporovaným formátem kódování UTF-8.|
 | Oddělovač | Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje řadu běžných oddělovačů pro serializaci dat sdíleného svazku clusteru. Podporované hodnoty jsou čárku, středník, místo, karta a, svislá čára.|
 | Formát | Platí jenom pro serializaci JSON. Řádcích: Určuje, že výstup je formátován tak, že každý objekt JSON oddělených nový řádek. Pole určuje, zda je výstup naformátovaný jako pole objektů JSON. Toto pole je zavřený jenom v případě, že je úloha pozastavena nebo Stream Analytics se přesunul další časový interval. Obecně platí, je vhodnější použít řádku oddělené formát JSON, protože nevyžaduje žádné zvláštní zpracování, při výstupní soubor je stále zápisu do.|
 
@@ -86,22 +86,24 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytvoření vý
 | Účet úložiště | Název účtu úložiště, kde jsou odesílání výstupu. |
 | Klíč účtu úložiště | Tajný klíč přidružený k účtu úložiště. |
 | Kontejner úložiště | Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené ve službě Microsoft Azure Blob. Při nahrávání do objektu blob ve službě Blob, je nutné zadat kontejner pro tento objekt blob. |
-| Vzor cesty | Volitelné. Vzor cesty souborů používá k zápisu objektů BLOB v rámci zadaného kontejneru. </br> Ve vzoru cestu můžete použít jednu nebo více instancí následujících 2 proměnných pro určení četnosti, které jsou napsané objekty BLOB: </br> {date}, {time} </br> Příklad 1: cluster1/logs / {date} / {time} </br> Příklad 2: cluster1/logs / {date} <BR> <BR> Pojmenovávání souborů zahrnuje následující konvence: </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> Příklad výstupní soubory: </br>Myoutput/20170901/00/45434_gguid_1.csv </br> Myoutput/20170901/01/45434_gguid_1.csv |
+| Vzor cesty | Volitelné. Vzor cesty souborů používá k zápisu objektů BLOB v rámci zadaného kontejneru. </br></br> Ve vzoru cestu můžete použít jeden nebo více instancí datum čas proměnných pro určení četnosti, které jsou napsané objekty BLOB: </br> {date}, {time} </br> </br>Může také zadat jeden název pole {sloupec} z vašich dat na objekty BLOB oddílu, kde je název pole alfanumerické znaky a může obsahovat mezery, pomlčky a podtržítka. Omezení na vlastních polích, patří: <ul><li>Případ nezaložené (nelze rozdíly mezi sloupci "ID" a sloupec "id")</li><li>Vnořená pole nejsou povolené (místo toho použít alias v dotazu úlohy k "vyrovnání" pole)</li><li>Výrazy nelze použít jako název pole</li></ul>Příklady: <ul><li>Příklad 1: cluster1/logs / {date} / {time}</li><li>Příklad 2: cluster1/logs / {date}</li><li>Příklad 3: cluster1 / {client_id} / {date} / {time}</li><li>Příklad 4: cluster1 / {myField} kde je dotaz: Vyberte data.myField jako myField vstup z;</li></ul><BR> Pojmenovávání souborů zahrnuje následující konvence: </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> Příklad výstupní soubory: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Formát data | Volitelné. Pokud se v cestě předponu používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány soubory. Příklad: Rrrr/MM/DD |
 | Formát času | Volitelné. Pokud token čas se používá v cestě předponu, zadejte formát času, ve kterém jsou uspořádány soubory. Aktuálně jedinou podporovanou hodnotou je HH. |
 | Formát serializace události | Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro.
-| Encoding | Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. V tuto chvíli je jediným podporovaným formátem kódování UTF-8. |
+| Kódování | Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. V tuto chvíli je jediným podporovaným formátem kódování UTF-8. |
 | Oddělovač | Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje řadu běžných oddělovačů pro serializaci dat sdíleného svazku clusteru. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
 | Formát | Platí jenom pro serializaci JSON. Řádcích: Určuje, že výstup je formátován tak, že každý objekt JSON oddělených nový řádek. Pole určuje, zda je výstup naformátovaný jako pole objektů JSON. Toto pole je zavřený jenom v případě, že je úloha pozastavena nebo Stream Analytics se přesunul další časový interval. Obecně platí, je vhodnější použít řádku oddělené formát JSON, protože nevyžaduje žádné zvláštní zpracování, při výstupní soubor je stále zápisu do. |
 
 Při použití úložiště objektů blob jako výstup, je vytvořen nový soubor do objektu BLOB v následujících případech:
 
-* Pokud velikost souboru přesahuje maximální počet povolených bloků. Maximální povolený počet bloků může dosaženo bez dosažení objektů blob maximální povolenou velikost. Pokud je vysoká míra výstupních, zobrazí se další bajtů za bloku a velikost souboru je větší. Pokud je míra výstupních nízké, každý blok má méně dat a velikost souboru je menší.
+* Pokud velikost souboru přesahuje maximální počet povolených bloků (aktuálně 50 000). Maximální povolený počet bloků může dosaženo bez dosažení objektů blob maximální povolenou velikost. Pokud je vysoká míra výstupních, zobrazí se další bajtů za bloku a velikost souboru je větší. Pokud je míra výstupních nízké, každý blok má méně dat a velikost souboru je menší.
 * Pokud dojde ke změně schématu ve výstupu a formát výstupu vyžaduje pevného schématu (sdíleného svazku clusteru a Avro).  
-* Pokud je restartován úlohu buď externě nebo interní restartování úlohy.  
+* Pokud se restartuje úlohu, buď externě uživatelem ji zastavuje a potom ji spustit, nebo interně pro obnovení systému údržby nebo chyba.  
 * Pokud dotaz je plně rozdělena na oddíly, nový soubor se vytvoří pro každý oddíl výstup.  
 * Pokud soubor nebo kontejneru účtu úložiště je odstraněno uživatelem.  
 * Je-li výstup čas oddíly pomocí předpony vzorek cesty, nový objekt blob se používá při dotaz přesune do příští hodiny.
+* Pokud výstup je rozdělena na oddíly pomocí vlastních polí, vytvoří se nový objekt blob za klíč oddílu, pokud neexistuje.
+*   Pokud výstup je rozdělena na oddíly pomocí vlastního pole, které překročí mohutnost klíče oddílu 8000, mohou být vytvořeny nové objektů blob na klíč oddílu.
 
 ## <a name="event-hub"></a>Centrum událostí
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) služba je vysoce škálovatelná publikování a odběru na přijímač událostí. Ho může shromažďovat miliony událostí za sekundu. Jedno použití centra událostí jako výstup je, když se stane vstup streamování jiné úlohy, výstup úlohy Stream Analytics.
@@ -117,7 +119,7 @@ Existuje několik parametrů, které jsou potřeba ke konfiguraci datové proudy
 | Klíč zásad centra událostí | Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů centra událostí. |
 | Sloupec klíče oddílu [Nepovinné] | Tento sloupec obsahuje klíč oddílu centra událostí výstupu. |
 | Formát serializace události | Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro. |
-| Encoding | Znakové sady UTF-8 pro sdílený svazek clusteru a JSON, je jediným podporovaným formátem kódování v tuto chvíli. |
+| Kódování | Znakové sady UTF-8 pro sdílený svazek clusteru a JSON, je jediným podporovaným formátem kódování v tuto chvíli. |
 | Oddělovač | Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
 | Formát | Platí jenom pro serializaci JSON. Řádcích: Určuje, že výstup je formátován tak, že každý objekt JSON oddělených nový řádek. Pole určuje, zda je výstup naformátovaný jako pole objektů JSON. Toto pole je zavřený jenom v případě, že je úloha pozastavena nebo Stream Analytics se přesunul další časový interval. Obecně platí, je vhodnější použít řádku oddělené formát JSON, protože nevyžaduje žádné zvláštní zpracování, při výstupní soubor je stále zápisu do. |
 
@@ -218,7 +220,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Název zásad fronty |Když vytvoříte frontu, můžete také vytvořit zásady sdíleného přístupu na kartě Konfigurace fronty. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad fronty |Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů Service Bus |
 | Formát serializace události |Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro. |
-| Encoding |Pro sdílený svazek clusteru a JSON UTF-8 v tuto chvíli je jediným podporovaným formátem kódování |
+| Kódování |Pro sdílený svazek clusteru a JSON UTF-8 v tuto chvíli je jediným podporovaným formátem kódování |
 | Oddělovač |Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
 | Formát |Platí jenom pro typ formátu JSON. Řádcích: Určuje, že výstup je formátován tak, že každý objekt JSON oddělených nový řádek. Pole určuje, zda je výstup naformátovaný jako pole objektů JSON. |
 
@@ -237,7 +239,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytváření v�
 | Název zásad tématu |Když vytvoříte téma, můžete také vytvořit zásady sdíleného přístupu na kartě konfigurace tématu. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče |
 | Klíč zásad tématu |Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů Service Bus |
 | Formát serializace události |Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro. |
-| Encoding |Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. Znakové sady UTF-8 v tuto chvíli je jediným podporovaným formátem kódování |
+| Kódování |Pokud používáte formát CSV nebo formátu JSON, kódování musí být zadán. Znakové sady UTF-8 v tuto chvíli je jediným podporovaným formátem kódování |
 | Oddělovač |Platí jenom pro serializaci sdílených svazků clusteru. Stream Analytics podporuje celou řadu běžných oddělovačů pro serializaci dat ve formátu CSV. Podporované hodnoty jsou čárkami, středník, adresní prostor, karta a svislá čára. |
 
 Počet oddílů je [na základě Service Bus SKU a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečný celočíselnou hodnotu pro každý oddíl.

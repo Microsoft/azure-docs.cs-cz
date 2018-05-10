@@ -1,7 +1,7 @@
 ---
-title: "Schéma zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "Tento článek popisuje schématu JSON, který definuje simulované zařízení v řešení vzdáleného monitorování."
-services: 
+title: Schéma zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: Tento článek popisuje schématu JSON, který definuje simulované zařízení v řešení vzdáleného monitorování.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 364698a529623958695f93a245bab28a89f6bd4c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 24aeb9c3f73d04a3d05f09ebd2ba0859a38e7ad8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schéma modelu zařízení
 
@@ -29,7 +29,7 @@ V následujících článcích se vztahují k aktuální článku:
 * [Implementace chování modelu zařízení](iot-suite-remote-monitoring-device-behavior.md) popisuje soubory JavaScript, kterou použijete k implementaci chování simulované zařízení.
 * [Vytvoření nového simulovaného zařízení](iot-suite-remote-monitoring-test.md) vloží ho všechny společně a ukazuje, jak nasadit nový typ simulované zařízení do řešení.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 >[!div class="checklist"]
 > * Použít soubor JSON definovat model simulovaného zařízení
@@ -85,8 +85,8 @@ V `Simulation` části definujete vnitřní stav simulované zařízení. Všech
 
 Definice stavu zařízení má dva elementy:
 
-* `InitialState`Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
-* `Script`identifikuje soubor JavaScript, která běží na plán, který chcete aktualizovat stav zařízení. Tento soubor skriptu můžete náhodně přeskupit telemetrie hodnoty poslal zařízení.
+* `InitialState` Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
+* `Script` identifikuje soubor JavaScript, která běží na plán, který chcete aktualizovat stav zařízení. Tento soubor skriptu můžete náhodně přeskupit telemetrie hodnoty poslal zařízení.
 
 Další informace o soubor JavaScript, která aktualizuje objekt stavu zařízení, najdete v části [pochopit chování modelu zařízení](iot-suite-remote-monitoring-device-behavior.md).
 
@@ -104,10 +104,10 @@ Následující příklad ukazuje definici objektu stavu zařízení pro chladič
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:10",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -155,9 +155,9 @@ Následující příklad odešle zprávu telemetrie JSON každých 10 sekund s `
 ]
 ```
 
-`MessageTemplate`definuje strukturu JSON zprávy odeslané simulované zařízení. Zástupné symboly v `MessageTemplate` použijte syntaxi `${NAME}` kde `NAME` je klíč z [objekt stavu zařízení](#simulation). Musí být v uvozovkách řetězců, čísel neměli.
+`MessageTemplate` definuje strukturu JSON zprávy odeslané simulované zařízení. Zástupné symboly v `MessageTemplate` použijte syntaxi `${NAME}` kde `NAME` je klíč z [objekt stavu zařízení](#simulation). Musí být v uvozovkách řetězců, čísel neměli.
 
-`MessageSchema`definuje schéma zprávy odeslané simulované zařízení. Schéma zprávy je také publikovaný do služby IoT Hub, aby znovu použít informace interpretovat příchozí telemetrii back-end aplikace.
+`MessageSchema` definuje schéma zprávy odeslané simulované zařízení. Schéma zprávy je také publikovaný do služby IoT Hub, aby znovu použít informace interpretovat příchozí telemetrii back-end aplikace.
 
 V současné době můžete použít pouze schémata zpráva JSON. Polí uvedených ve schématu může být z následujících typů:
 
@@ -167,7 +167,7 @@ V současné době můžete použít pouze schémata zpráva JSON. Polí uveden�
 * Logická hodnota
 * Integer
 * Dvojitý
-* Datum a čas
+* DateTime
 
 Posílat telemetrické zprávy v různých intervalech, přidat více typů telemetrie tak, aby `Telemetry` pole. Následující příklad odesílá data teploty a vlhkosti každých 10 sekund a stav světlým každou minutu:
 

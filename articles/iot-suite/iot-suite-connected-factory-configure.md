@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace topologie připojené factory | Microsoft Docs"
-description: "Postup konfigurace topologii připojené vytváření předkonfigurovaného řešení."
-services: 
+title: Konfigurace topologie připojení Factory | Microsoft Docs
+description: Postup konfigurace topologii akcelerátor připojen objekt pro vytváření řešení.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 4230914c6fb35201a8c162e2e7ecb31262d2bdca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="configure-the-connected-factory-preconfigured-solution"></a>Nakonfigurujte připojené objekt pro vytváření předkonfigurovaného řešení
+# <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurace akcelerátoru řešení připojen objekt pro vytváření
 
-Připojené objekt pro vytváření předkonfigurovaného řešení zobrazuje simulované řídicí panel pro fiktivní společnost Contoso. Tuto společnost má objekty Factory globálně v mnoha globální umístění.
+Akcelerátor připojen objekt pro vytváření řešení zobrazuje simulované řídicí panel pro fiktivní společnost Contoso. Tuto společnost má objekty Factory globálně v mnoha globální umístění.
 
-Tento článek používá Contoso jako příklad k popisu konfiguraci topologie připojené vytváření řešení.
+Tento článek používá Contoso jako příklad k popisu konfiguraci topologie připojen objekt pro vytváření řešení.
 
 ## <a name="simulated-factories-configuration"></a>Konfigurace simulované objekty Factory
 
@@ -34,19 +34,19 @@ Každý objekt pro vytváření Contoso má produkční řádky, které se sklá
 * Test stanice
 * Balení stanice
 
-Tyto servery OPC UA mít OPC UA uzly a [OPC vydavatele](https://github.com/Azure/iot-edge-opc-publisher) odešle hodnoty tyto uzly do připojeného objektu pro vytváření. To zahrnuje následující:
+Tyto servery OPC UA mít OPC UA uzly a [OPC vydavatele](https://github.com/Azure/iot-edge-opc-publisher) odešle hodnoty tyto uzly k vytváření připojení. To zahrnuje následující:
 
 * Aktuální operační stav například aktuální spotřeby energie.
 * Provozní informace, jako je počet produktů, vytváří.
 
-Řídicí panel můžete přejít k podrobnostem topologie factory Contoso z globální zobrazení na úrovni zobrazení stanice. Řídicí panel připojené factory umožňuje:
+Řídicí panel můžete přejít k podrobnostem topologie factory Contoso z globální zobrazení na úrovni zobrazení stanice. Řídicí panel umožňuje vytváření připojení:
 
 * Vizualizace OEE a klíčového ukazatele výkonu obrázků pro jednotlivé úrovně v topologii.
 * Vizualizace aktuální hodnoty OPC UA uzlů v stanice.
 * Agregace OEE a klíčového ukazatele výkonu údaje z úrovně stanice na globální úrovni.
 * Vizualizace výstrah a akce lze provádět, pokud hodnoty dosáhnout specifické prahové hodnoty.
 
-## <a name="connected-factory-topology"></a>Připojené vytváření topologie
+## <a name="connected-factory-topology"></a>Připojené objekt pro vytváření topologie
 
 Tato topologie objekty Factory, řádky výroby a stanice je hierarchická:
 
@@ -66,7 +66,7 @@ Každý uzel v topologii má společnou sadu vlastností, které definují:
 
 ## <a name="topology-configuration-file"></a>Topologie konfiguračního souboru
 
-Konfigurovat vlastnosti uvedené v předchozí části, připojené vytváření řešení používá konfigurační soubor s názvem [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
+Konfigurovat vlastnosti uvedené v předchozí části, připojen objekt pro vytváření řešení používá konfigurační soubor s názvem [ContosoTopologyDescription.json](https://github.com/Azure/azure-iot-connected-factory/blob/master/WebApp/Contoso/Topology/ContosoTopologyDescription.json).
 
 Tento soubor můžete najít ve zdrojovém kódu řešení v `WebApp/Contoso/Topology` složky.
 
@@ -114,13 +114,13 @@ Běžné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<produ
 
   Jednoznačně identifikuje uzlu topologie.
 
-`<factory_configuration>`má vlastnost:
+`<factory_configuration>` má vlastnost:
 
 * **Umístění** (typ `<location_definition>`)
 
   Určuje, kde se nachází objekt pro vytváření.
 
-`<station_configuration>`má vlastnosti:
+`<station_configuration>` má vlastnosti:
 
 * **OpcUri** (zadejte řetězec)
 
@@ -129,7 +129,7 @@ Běžné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<produ
 
 * **OpcNodes**, což jsou pole OPC UA uzlů (typ `<opc_node_description>`)
 
-`<location_definition>`má vlastnosti:
+`<location_definition>` má vlastnosti:
 
 * **Města** (zadejte řetězec)
 
@@ -147,7 +147,7 @@ Běžné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<produ
 
   Zeměpisná délka umístění
 
-`<performance_definition>`má vlastnosti:
+`<performance_definition>` má vlastnosti:
 
 * **Minimální** (double – typ)
 
@@ -193,7 +193,7 @@ Běžné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<produ
   * **CallOpcMethod**: uzel informace a parametry metody OPC UA volat ve formátu "NodeId nadřazeného uzlu, NodeId metoda k volání, identifikátor URI serveru OPC UA."
   * **OpenWebPage**: adresa URL, které se zobrazí v okně prohlížeče.
 
-`<opc_node_description>`obsahuje informace o OPC UA uzly v stanice (OPC UA server). Uzly, které představují žádné existující OPC UA uzly, ale slouží jako úložiště v logice výpočetní připojeného objektu pro vytváření jsou také platné. Má následující vlastnosti:
+`<opc_node_description>` obsahuje informace o OPC UA uzly v stanice (OPC UA server). Uzly, které představují žádné existující OPC UA uzly, ale slouží jako úložiště v logice výpočetní objektu pro vytváření připojení jsou také platné. Má následující vlastnosti:
 
 * **NodeId** (zadejte řetězec)
 
@@ -259,7 +259,7 @@ Běžné vlastnosti `<global_configuration>`, `<factory_configuration>`, `<produ
 
   Definuje sadu akcí, které můžete provést jako odpověď na maximální výstrahy.
 
-Na úrovni stanice, můžete také zjistit **simulace** objekty. Tyto objekty se používají pouze ke konfiguraci simulace připojené objekt pro vytváření a nepoužívejte ke konfiguraci skutečné topologie.
+Na úrovni stanice, můžete také zjistit **simulace** objekty. Tyto objekty se používají pouze ke konfiguraci simulace připojen objekt pro vytváření a neměl by sloužit ke konfiguraci skutečné topologie.
 
 ## <a name="how-the-configuration-data-is-used-at-runtime"></a>Použití konfiguračních dat za běhu
 
@@ -267,14 +267,14 @@ Všechny vlastnosti používané v konfiguračním souboru je možné seskupit d
 
 ### <a name="visual-appearance"></a>Vzhled
 
-Vlastnosti v této kategorii definujte vzhled připojené vytváření řídicího panelu. Příklady obsahují:
+Vlastnosti v této kategorii definujte vzhled připojen objekt pro vytváření řídicího panelu. Příklady obsahují:
 
 * Název
 * Popis
 * Image
 * Umístění
 * Jednotky
-* Viditelné
+* Viditelný
 
 ### <a name="internal-topology-tree-addressing"></a>Adresování stromu interní topologie
 
@@ -282,18 +282,18 @@ WebApp udržuje slovníku interních datových obsahujícího informace o všech
 
 ### <a name="oeekpi-computation"></a>Výpočet OEE/klíčového ukazatele výkonu
 
-Údaje OEE nebo klíčový ukazatel výkonu pro simulaci připojené factory jsou parametry podle:
+Údaje OEE nebo klíčový ukazatel výkonu pro simulaci připojen objekt pro vytváření jsou parametry podle:
 
 * Hodnoty uzlu OPC UA mají být zahrnuty do výpočtu.
 * Jak na obrázku se počítá z hodnot telemetrie.
 
-Připojené factory používá vzorce OEE jako publikováno http://oeeindustrystandard.oeefoundation.org.
+Připojené Factory používá vzorce OEE jako publikováno http://oeeindustrystandard.oeefoundation.org.
 
 OPC UA uzlu objekty v stanice povolit označování pro použití v výpočet OEE/klíčového ukazatele výkonu. **Relevance** vlastnost určuje, pro které obrázek OEE nebo klíčový ukazatel výkonu je třeba použít hodnota OPC UA uzlu. **OpCode** vlastnost definuje, jak je hodnota součástí výpočet.
 
 ### <a name="alert-handling"></a>Výstrahy zpracování
 
-Připojené factory podporuje mechanismus jednoduché minima a maxima na základě prahové hodnoty generování výstrah. Existuje několik předdefinovaných akcí, které můžete konfigurovat v reakci na tyto výstrahy. Následující vlastnosti řídit tento mechanismus:
+Připojené Factory podporuje mechanismus jednoduché minima a maxima na základě prahové hodnoty generování výstrah. Existuje několik předdefinovaných akcí, které můžete konfigurovat v reakci na tyto výstrahy. Následující vlastnosti řídit tento mechanismus:
 
 * Maximum
 * Minimální
@@ -302,23 +302,23 @@ Připojené factory podporuje mechanismus jednoduché minima a maxima na základ
 
 ## <a name="correlating-to-telemetry-data"></a>Korelace na telemetrická data
 
-Pro některé operace, například vizualizace poslední hodnotu nebo vytváření dotazů přehledy časové řady WebApp požadavkům adresovacímu schématu ingestovaný telemetrická data. Telemetrická data odesílaná do připojené factory také musí být uložen v interních datových strukturách. Dvě vlastnosti povolení tyto operace jsou na stanici (OPC UA server) a na úrovni OPC UA uzlu:
+Pro některé operace, například vizualizace poslední hodnotu nebo vytváření dotazů přehledy časové řady WebApp požadavkům adresovacímu schématu ingestovaný telemetrická data. Telemetrická data odesílaná do připojené Factory také musí být uložen v interních datových strukturách. Dvě vlastnosti povolení tyto operace jsou na stanici (OPC UA server) a na úrovni OPC UA uzlu:
 
 * **OpcUri**
 
   Identifikuje (globálně jedinečný) serveru OPC UA telemetrii pochází z. Ingestovaný zprávy, tato vlastnost se odešlou jako **ApplicationUri**.
 
-* **NodeId**
+* **nodeId**
 
   Hodnota uzlu na serveru OPC UA identifikuje. Musí být ve formátu vlastnosti uvedené ve specifikaci OPC UA. Ingestovaný zprávy, tato vlastnost se odešlou jako **NodeId**.
 
-Zkontrolujte [to](https://github.com/Azure/iot-edge-opc-publisher) GitHub stránce Další informace o tom, jak je telemetrická data konzumována k objektu pro vytváření připojené pomocí OPC vydavatele.
+Zkontrolujte [to](https://github.com/Azure/iot-edge-opc-publisher) GitHub stránce Další informace o tom, jak je k vytváření připojení pomocí vydavatele OPC konzumována telemetrická data.
 
 ## <a name="example-how-kpi1-is-calculated"></a>Příklad: Jak se počítá KPI1
 
 Konfigurace v `ContosoTopologyDescription.json` soubor řídí způsob výpočtu obrázky OEE/klíčového ukazatele výkonu. Následující příklad ukazuje, jak řídit vlastnosti v tomto souboru výpočet KPI1.
 
-Objekt pro vytváření KPI1 se používá k měření Počet úspěšně v připojeno vyrobila produkty za poslední hodinu. Každé stanici (OPC UA server) v simulaci připojené factory poskytuje do uzlu OPC UA (`NodeId: "ns=2;i=385"`), který nabízí telemetrii k výpočtu tento klíčový ukazatel výkonu.
+V připojené KPI1 Factory se používá k měření počtu úspěšně vyrobenou produktů za poslední hodinu. Každé stanici (OPC UA server) v simulaci připojené Factory poskytuje do uzlu OPC UA (`NodeId: "ns=2;i=385"`), který nabízí telemetrii k výpočtu tento klíčový ukazatel výkonu.
 
 Konfigurace pro tento uzel OPC UA vypadá následující fragment kódu:
 
@@ -339,10 +339,10 @@ Tato konfigurace umožňuje dotazování telemetrie hodnot tohoto uzlu pomocí s
 * Průměr všech hodnot.
 * Součet všech hodnot pro všechny jedinečné **OpcUri** (**ApplicationUri**), **NodeId** dvojice v dané časový interval.
 
-Jeden vlastnosti **NumberOfManufactureredProducts** hodnota uzlu je, že jenom zvýší. Chcete-li vypočítat počet produktů, byl vyroben v časový interval, připojení používá objekt pro vytváření **OpCode** **SubMaxMin**. Výpočet načte minimální hodnota na začátku časový interval a maximální hodnota na konci časový interval.
+Jeden vlastnosti **NumberOfManufactureredProducts** hodnota uzlu je, že jenom zvýší. Vypočítat počet produktů, byl vyroben v časový interval, vytváření připojení používá **OpCode** **SubMaxMin**. Výpočet načte minimální hodnota na začátku časový interval a maximální hodnota na konci časový interval.
 
 **OpCode** v konfiguraci nakonfiguruje logice výpočetní vypočítat výsledek rozdíl maximální a minimální hodnoty. Tyto výsledky jsou pak nahromadění dolní až kořenové úrovni (globální) a na řídicím panelu.
 
 ## <a name="next-steps"></a>Další postup
 
-Navrhované A dalším krokem je další postup [nasazení brány v systému Windows nebo Linux připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-gateway-deployment.md).
+Navrhované A dalším krokem je další postup [nasazení brány v systému Windows nebo Linux pro akcelerátoru řešení připojen objekt pro vytváření](iot-suite-connected-factory-gateway-deployment.md).

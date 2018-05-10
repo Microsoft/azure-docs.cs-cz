@@ -1,35 +1,35 @@
 ---
-title: "Řešení Office 365 v Operations Management Suite (OMS) | Microsoft Docs"
-description: "Tento článek poskytuje podrobné informace o konfiguraci a použití v OMS řešení Office 365.  Obsahuje podrobný popis záznamů Office 365 vytvořené v analýzy protokolů."
+title: Řešení pro správu Office 365 v Azure | Microsoft Docs
+description: Tento článek poskytuje podrobné informace o konfiguraci a použití řešení Office 365 v Azure.  Obsahuje podrobný popis záznamů Office 365 vytvořené v analýzy protokolů.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="office-365-solution-in-operations-management-suite-oms"></a>Řešení Office 365 v Operations Management Suite (OMS)
+# <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
 ![Logo Office 365](media/oms-solution-office-365/icon.png)
 
-Řešení Office 365 pro Operations Management Suite (OMS) umožňuje monitorovat prostředí Office 365 v analýzy protokolů.  
+Řešení pro správu Office 365 umožňuje monitorovat prostředí Office 365 v analýzy protokolů.
 
 - Monitorování aktivit uživatelů na účty služeb Office 365 a analyzovat vzorce používání a také identifikovat trendy chování. Například můžete rozbalit konkrétní využití scénáře, jako jsou například soubory, které jsou sdíleny mimo vaši organizaci nebo nejoblíbenější webů služby SharePoint.
 - Monitorování aktivit správce sledovat změny v konfiguraci nebo operations vysoká oprávnění.
 - Zjištění a prozkoumat chování nežádoucí uživatele, který lze přizpůsobit potřebám vaší organizace.
 - Předvedení auditu a dodržování předpisů. Například můžete sledovat přístup operací se soubory na důvěrné soubory, které vám můžou pomoct se proces auditu a dodržování předpisů.
-- Proveďte provozní řešení potíží pomocí příkazu vyhledávání OMS nad data Office 365 aktivit vaší organizace.
+- Provádět provozní řešení problémů pomocí [protokolu hledání](../log-analytics/log-analytics-log-search.md) nad data Office 365 aktivit vaší organizace.
 
 ## <a name="prerequisites"></a>Požadavky
 Toto je požadované před toto řešení je nainstalován a nakonfigurován.
@@ -47,7 +47,7 @@ Toto řešení nenainstaluje žádné sady management Pack v připojených skupi
 ## <a name="configuration"></a>Konfigurace
 Jednou budete [do svého předplatného přidáte řešení Office 365](../log-analytics/log-analytics-add-solutions.md), budete muset připojit k předplatné služeb Office 365.
 
-1. Přidat do řešení pro správu výstrah do pracovního prostoru OMS pomocí procesu popsaného v tématu [přidat řešení](../log-analytics/log-analytics-add-solutions.md).
+1. Přidat do řešení pro správu výstrah do pracovního prostoru analýzy protokolů pomocí procesu popsaného v tématu [přidat řešení](../log-analytics/log-analytics-add-solutions.md).
 2. Přejděte na **nastavení** na portálu OMS.
 3. V části **připojené zdroje**, vyberte **Office 365**.
 4. Klikněte na **připojení Office 365**.<br>![Spojení jednotlivých Office 365](media/oms-solution-office-365/configure.png)
@@ -63,7 +63,7 @@ Jednou budete [do svého předplatného přidáte řešení Office 365](../log-a
 Odešle Office 365 [webhooku oznámení](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobná data k analýze protokolů pokaždé, když se vytvoří záznam.
 
 ## <a name="using-the-solution"></a>Použití řešení
-Když přidáte do pracovního prostoru OMS řešení Office 365 **Office 365** dlaždice budou přidány do řídicího panelu OMS. Na této dlaždici se zobrazuje počet a grafické vyjádření počtu počítačů ve vašem prostředí a jejich kompatibilita s aktualizacemi.<br><br>
+Když přidáte do pracovního prostoru analýzy protokolů řešení Office 365 **Office 365** dlaždice budou přidány do řídicího panelu. Na této dlaždici se zobrazuje počet a grafické vyjádření počtu počítačů ve vašem prostředí a jejich kompatibilita s aktualizacemi.<br><br>
 ![Dlaždice souhrnu Office 365](media/oms-solution-office-365/tile.png)  
 
 Klikněte na **Office 365** dlaždici otevřete **Office 365** řídicího panelu.
@@ -100,7 +100,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | ResultStatus | Určuje, zda akce (zadaná ve vlastnosti operace) byla úspěšná, nebo ne. Možné hodnoty jsou úspěšné, PartiallySucceded nebo se nezdařilo. Aktivita správce systému Exchange, má hodnotu buď True nebo False. |
 | ID uživatele | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, která byla vygenerována v záznamu protokolována; například my_name@my_domain_name. Všimněte si, že zaznamenává aktivity prováděné účty systému (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou také zahrnuty. | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost obsahuje jedinečné ID passport (PUID) pro události se provádí uživatelů na SharePoint, Onedrivu pro firmy a Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a událostech provádí účty systému|
-| UserType | Typ uživatele, který provádí operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Regulární<br>Rezervováno<br>ServicePrincipal<br>Systémový |
+| UserType | Typ uživatele, který provádí operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Regulární<br>Rezervováno<br>ServicePrincipal<br>Systémový |
 
 
 ### <a name="azure-active-directory-base"></a>Základní Azure Active Directory
@@ -135,7 +135,7 @@ Tyto záznamy jsou vytvořen při změna nebo přidání jsou objekty služby Az
 | OfficeWorkload | Azureactivedirectory selhala |
 | recordType     | Azureactivedirectory selhala |
 | AADTarget | Uživatel, který na byla provedena akce (identifikovaný vlastnost operace). |
-| Objektu actor | Uživatel nebo objektu služby, která akci provedla. |
+| Objekt actor | Uživatel nebo objektu služby, která akci provedla. |
 | ActorContextId | Organizace, který je součástí objektu actor identifikátor GUID. |
 | ActorIpAddress | Objektu actor IP adresu ve formátu adresy IPV4 nebo IPV6. |
 | InterSystemsId | Identifikátor GUID, které sledují akce mezi komponentami v rámci služby Office 365. |
@@ -280,9 +280,9 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 | Dotaz | Popis |
 | --- | --- |
-|Počet všech operací na předplatné služeb Office 365 |Typ = OfficeActivity &#124; míra count() operací |
+|Počet všech operací na předplatné služeb Office 365 |Typ = OfficeActivity &#124; měření count() operací |
 |Použití webů služby SharePoint|Typ = OfficeActivity OfficeWorkload = sharepoint &#124; měření count() jako počet podle SiteUrl &#124; řazení počet asc|
-|Operace se soubory přístup podle typu uživatele|Typ = OfficeActivity OfficeWorkload = sharepoint operaci = FileAccessed &#124; míra count() podle UserType|
+|Operace se soubory přístup podle typu uživatele|Typ = OfficeActivity OfficeWorkload = sharepoint operaci = FileAccessed &#124; měření count() podle UserType|
 |Hledání s konkrétní – klíčové slovo|Typ = OfficeActivity OfficeWorkload = azureactivedirectory selhala "Test"|
 |Externí akce monitorování na Exchange|Typ = OfficeActivity OfficeWorkload = exchange ExternalAccess = true|
 
@@ -294,13 +294,13 @@ Pokud vaše řešení Office 365 není shromažďování dat podle očekávání
 
 | Status | Popis |
 |:--|:--|
-| Aktivní | Předplatné služeb Office 365 je aktivní a zatížení se úspěšně připojil k vaším pracovním prostorem OMS. |
-| Čekající na vyřízení | Je aktivní předplatné služeb Office 365, ale zatížení není dosud připojen k vaším pracovním prostorem OMS úspěšně. Při prvním připojení předplatné služeb Office 365, všechny úlohy bude tento stav dokud úspěšně připojeno. Počkejte prosím 24 hodin pro všechny úlohy přepnout na aktivní. |
-| Neaktivní | Předplatné služeb Office 365 je v neaktivním stavu. Zkontrolujte stránku Správce služeb Office 365 podrobnosti. Po aktivaci předplatné služeb Office 365, zrušit propojení s vaším pracovním prostorem OMS a propojit jej znovu a začít přijímat data. |
+| Aktivní | Předplatné služeb Office 365 je aktivní a zatížení se úspěšně připojil k pracovní prostor analýzy protokolů. |
+| Čekající na vyřízení | Je aktivní předplatné služeb Office 365, ale zatížení není dosud připojen do pracovního prostoru analýzy protokolů úspěšně. Při prvním připojení předplatné služeb Office 365, všechny úlohy bude tento stav dokud úspěšně připojeno. Počkejte prosím 24 hodin pro všechny úlohy přepnout na aktivní. |
+| Neaktivní | Předplatné služeb Office 365 je v neaktivním stavu. Zkontrolujte stránku Správce služeb Office 365 podrobnosti. Po aktivaci předplatné služeb Office 365, odpojit z pracovního prostoru analýzy protokolů a propojit jej znovu a začít přijímat data. |
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../log-analytics/log-analytics-log-searches.md).
 * [Vytvořit vlastní řídicí panely](../log-analytics/log-analytics-dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
 * [Vytvářet výstrahy](../log-analytics/log-analytics-alerts.md) proaktivně oznámení důležité aktivit Office 365.  

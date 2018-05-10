@@ -1,9 +1,9 @@
 ---
-title: "Datový Model aplikace Azure Statistika Telemetrie - Telemetrických závislostí | Microsoft Docs"
-description: "Application Insights datový model pro telemetrických závislostí"
+title: Datový Model aplikace Azure Statistika Telemetrie - Telemetrických závislostí | Microsoft Docs
+description: Application Insights datový model pro telemetrických závislostí
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrických závislostí: Application Insights datový model
 
 Telemetrických závislostí (v [Application Insights](app-insights-overview.md)) představuje interakci monitorované součásti pomocí vzdáleného součásti, jako je například SQL nebo koncový bod HTTP.
 
-## <a name="name"></a>Name (Název)
+## <a name="name"></a>Název
 
 Název příkazu iniciovala s toto volání závislostí. Mohutnost nízkou hodnotu. Příklady jsou název uložené procedury a šablonu cesty URL.
 
@@ -38,7 +38,7 @@ Příkaz iniciovaná toto volání závislostí. Příklady jsou příkaz jazyka
 
 Název typu závislosti. Hodnota nízkou mohutnost pro logické seskupení závislosti a výklad další pole jako commandName a resultCode. Příklady jsou SQL, Azure table a HTTP.
 
-## <a name="target"></a>cíl
+## <a name="target"></a>Cíl
 
 Cílovou lokalitu volání závislostí. Příklady jsou název serveru, adresa hostitele. Další informace najdete v tématu [korelace](application-insights-correlation.md) stránky.
 
@@ -63,7 +63,7 @@ Kód výsledku volání závislostí. Příklady kódu chyby SQL a stavový kód
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Nastavení sledování závislostí [.NET](app-insights-asp-net-dependencies.md).
 - Nastavení sledování závislostí [Java](app-insights-java-agent.md).

@@ -55,6 +55,8 @@
       href: app-service-web-tutorial-content-delivery-network.md
     - name: Ověřování uživatelů
       href: app-service-web-tutorial-auth-aad.md
+    - name: Nasazení aplikací do Azure App Service s využitím VSTS a CI/CD
+      href: 'https://docs.microsoft.com/learn/deploy-apps-to-azure/index'
 - name: Ukázky
   items:
     - name: Azure CLI
@@ -177,6 +179,8 @@
           href: web-sites-backup.md
         - name: Obnovení zálohy
           href: web-sites-restore.md
+        - name: Obnovení snímku
+          href: app-service-web-restore-snapshots.md
         - name: Klonování aplikace
           href: app-service-web-app-cloning.md
         - name: Přesunutí prostředků

@@ -53,6 +53,7 @@
 #### [-mailová pozvánka](active-directory-b2b-invitation-email.md)
 #### [Uplatnění pozvánky](active-directory-b2b-redemption-experience.md)
 #### [Přidání uživatelů B2B bez pozvánky](active-directory-b2b-add-user-without-invite.md)
+#### [Povolení nebo blokování pozvánek](active-directory-b2b-allow-deny-list.md)
 #### [Podmíněný přístup pro B2B](active-directory-b2b-mfa-instructions.md)
 #### [Zásady sdílení B2B](active-directory-b2b-delegate-invitations.md)
 #### [Přidání uživatele B2B do role](active-directory-b2b-add-guest-to-role.md)
@@ -273,6 +274,7 @@
 ### [Jednotky pro správu](active-directory-administrative-units-management.md)
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
 ### [Správa účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md)
+### [Zabezpečení privilegovaných rolí](admin-roles-best-practices.md)
 
 ## Kontroly přístupu
 ### [Přehled kontrol přístupu](active-directory-azure-ad-controls-access-reviews-overview.md)
@@ -287,6 +289,7 @@
 ## Zabezpečení identit
 ### [Podmíněný přístup](active-directory-conditional-access-azure-portal.md)
 #### [Podmínky](active-directory-conditional-access-conditions.md)
+#### [Podmínky umístění](active-directory-conditional-access-locations.md)
 #### [Ovládací prvky](active-directory-conditional-access-controls.md)
 #### [Začínáme](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Osvědčené postupy](active-directory-conditional-access-best-practices.md)
@@ -332,7 +335,8 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
 ### [Řešení potíží s chybějící nebo nedostupnou položkou Active Directory](active-directory-troubleshooting.md)

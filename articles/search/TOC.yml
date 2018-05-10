@@ -2,11 +2,13 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o službě Azure Search
+    - name: Co je Azure Search?
       href: search-what-is-azure-search.md
 - name: Šablony Rychlý start
   expanded: true
   items:
+    - name: Vyzkoušení kognitivního vyhledávání
+      href: cognitive-search-quickstart-blob.md
     - name: Vytvoření služby
       href: search-create-service-portal.md
     - name: Portál
@@ -37,13 +39,15 @@
           href: search-fiddler.md
 - name: Kurzy
   items:
-    - name: 1. Indexování Azure SQL Database
+    - name: Index s využitím kognitivního vyhledávání
+      href: cognitive-search-tutorial-blob.md
+    - name: Indexování Azure SQL Database
       href: search-indexer-tutorial.md
-    - name: 2. Indexování objektů blob Azure
+    - name: Indexování objektů blob Azure
       href: search-semi-structured-data.md
-    - name: 3. Přidání synonym v .NET
+    - name: Přidání synonym v .NET
       href: search-synonyms-tutorial-sdk.md
-    - name: 4. Průvodce portálem
+    - name: Průvodce portálem
       href: search-get-started-portal.md
 - name: Ukázky
   items:
@@ -53,14 +57,18 @@
       href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
 - name: Koncepty
   items:
+    - name: Kognitivní vyhledávání (Preview)
+      href: cognitive-search-concept-intro.md
     - name: Fulltextové vyhledávání
       href: search-lucene-query-architecture.md
+    - name: Lingvistická analýza
+      href: search-analyzers.md
     - name: Indexování
       href: search-what-is-data-import.md
     - name: Definice indexu
       href: search-what-is-an-index.md
-    - name: Lingvistická analýza
-      href: search-analyzers.md
+    - name: Indexery
+      href: search-indexer-overview.md
 - name: Návody
   items:
     - name: Plánování a návrh
@@ -123,8 +131,6 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
     - name: Indexování dat
       items:
-        - name: Přehled indexerů
-          href: search-indexer-overview.md
         - name: Indexer pro Azure Blob Storage
           href: search-howto-indexing-azure-blob-storage.md
         - name: Indexer pro Azure Table Storage
@@ -141,7 +147,25 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Mapování polí v indexerech
           href: search-indexer-field-mappings.md
-    - name: Search
+        - name: Opětovné sestavení indexu
+          href: search-howto-reindex.md
+    - name: Kognitivní vyhledávání (Preview)
+      items:
+        - name: Definování dovedností
+          href: cognitive-search-defining-skillset.md
+        - name: Odkaz na poznámku
+          href: cognitive-search-concept-annotations-syntax.md
+        - name: Mapování na pole indexu
+          href: cognitive-search-output-field-mapping.md
+        - name: Zpracování a extrahování informací z obrázků
+          href: cognitive-search-concept-image-scenarios.md
+        - name: Integrace vlastních dovedností
+          href: cognitive-search-custom-skill-interface.md
+        - name: Příklad – vlastní dovednosti
+          href: cognitive-search-create-custom-skill-example.md
+        - name: Rady pro řešení potíží
+          href: cognitive-search-concept-troubleshooting.md
+    - name: Fulltextové vyhledávání
       items:
         - name: Konstrukce základních dotazů
           href: search-query-overview.md
@@ -157,7 +181,7 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
         - name: Návrhy
           href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
-        - name: Synonyma (ve verzi Preview)
+        - name: Synonyma (Preview)
           href: search-synonyms.md
     - name: Filtry
       items:
@@ -165,7 +189,7 @@
           href: search-filters.md
         - name: Filtry omezujících vlastností
           href: search-filters-facets.md
-        - name: Syntaxe výrazů OData
+        - name: Syntaxe výrazů filtru
           href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
     - name: Správa a analýzy
       items:
@@ -187,10 +211,41 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
     - name: REST
       href: /rest/api/searchservice
+      items:
+        - name: 2016-09-01-Preview
+          href: search-api-2016-09-01-preview.md
     - name: REST (správa)
       href: /rest/api/searchmanagement
-    - name: Rozhraní REST služby (Preview)
-      href: search-api-2016-09-01-preview.md
+    - name: Kognitivní vyhledávání (Preview)
+      items:
+        - name: 2017-11-11-Preview (REST)
+          href: search-api-2017-11-11-preview.md
+          items:
+            - name: Vytvoření dovedností (Preview)
+              href: ref-create-skillset.md
+            - name: Vytvoření indexeru (Preview)
+              href: ref-create-indexer.md
+        - name: Předdefinované dovednosti
+          href: cognitive-search-predefined-skills.md
+          items:
+            - name: Extrakce klíčových frází
+              href: cognitive-search-skill-keyphrases.md
+            - name: Rozpoznávání jazyka
+              href: cognitive-search-skill-language-detection.md
+            - name: Rozpoznávání pojmenovaných entit
+              href: cognitive-search-skill-named-entity-recognition.md
+            - name: Sloučení textu
+              href: cognitive-search-skill-textmerger.md
+            - name: Rozdělení textu
+              href: cognitive-search-skill-textsplit.md
+            - name: Mínění
+              href: cognitive-search-skill-sentiment.md
+            - name: Analýza obrázků
+              href: cognitive-search-skill-image-analysis.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: Shaper
+              href: cognitive-search-skill-shaper.md
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy
@@ -199,6 +254,8 @@
       href: 'https://azure.microsoft.com/pricing/details/search/'
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: Dokumentace ke kognitivnímu vyhledávání
+      href: cognitive-search-resources-documentation.md
     - name: Studijní materiály a kurzy
       items:
         - name: Videa a kurzy

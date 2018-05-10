@@ -1,6 +1,6 @@
 ---
-title: "Dokumentace k sadě Azure IoT Suite – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Dokumentace k sadě Azure IoT Suite zahrnuje příručky Začínáme, články s návody, kurzy a referenční materiály k rozhraní API."
+title: Dokumentace k akcelerátorům řešení Azure IoT – kurzy, reference k rozhraní API | Microsoft Docs
+description: Dokumentace k akcelerátorům řešení Azure IoT zahrnuje příručky Začínáme, články s návody, kurzy a referenční materiály k rozhraní API.
 services: iot-suite
 author: czeumault
 manager: carolz
@@ -9,72 +9,81 @@ ms.service: iot-suite
 ms.topic: landing-page
 ms.date: 11/27/2017
 ms.author: carolz
-ms.openlocfilehash: 8cb979f645f0c1405ebd424d39cc2d67c5b59ba0
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 62a414697e5ce217f1533d64020d4ce06c222d10
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="iot-suite-documentation"></a>Dokumentace k IoT Suite
+# <a name="iot-solution-accelerators-documentation"></a>Dokumentace k akcelerátorům řešení IoT
 
-Se sadou Microsoft Azure IoT Suite dokážete rychle začít. Použijte předkonfigurovaná řešení a zrychlete vývoj vašeho řešení pro Internet věcí (IoT). Přidávejte nová zařízení – a připojujte ta existující – prostřednictvím sad SDK zařízení pro různé platformy, včetně Linuxu, Windows a operačních systémů pracujících v reálném čase. Snadno škálujte z několika málo senzorů na miliony současně připojených zařízení a spolehněte se na celosvětovou dostupnost služby Azure – na velikosti projektu vůbec nezáleží.
+Začněte rychle s využitím akcelerátorů řešení IoT při sestavování vašich řešení IoT. Přidávejte nová zařízení – a připojujte ta existující – prostřednictvím sad SDK zařízení pro různé platformy, včetně Linuxu, Windows a operačních systémů pracujících v reálném čase. Snadno škálujte z několika málo senzorů na miliony současně připojených zařízení a spolehněte se na celosvětovou dostupnost služby Azure – vůbec přitom nezáleží na velikosti projektu.
 
-<ul class="panelContent cardsFTitle">
+<h2>Prozkoumat</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="/azure/iot-suite/iot-suite-what-are-preconfigured-solutions">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/iot-suite.svg" alt="Learn about IoT Suite" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Informace k sadě IoT Suite</h3>
+                        <p>Další informace o akcelerátorech řešení, klíčových scénářích a o tom, jak začít</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-what-are-solution-accelerators">Přehled akcelerátorů řešení</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">Nasazení akcelerátoru řešení</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">Možnosti předem připravených řešení</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">Možnosti monitorování</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">Možnosti správy pravidel</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-automate">Možnosti správy zařízení</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
+</ul> 
+
+---
+
+<h2>Připojení</h2>
+<ul class="panelContent cardsW">
     <li>
-        <a href="https://azure.microsoft.com/resources/videos/index/?sort=newest&tag=internet-of-things">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="Azure Video Library" />
-                        </div>
-                    </div>
                     <div class="cardText">
-                        <h3>Knihovna videí k Azure</h3>
+                        <p>Další informace o připojení vašich zařízení k akcelerátoru řešení</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">Přehled modelů zařízení</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">Přizpůsobení simulovaných zařízení</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">Připojení fyzických zařízení</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        </a>
     </li>
-    <li>
-        <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="Deploy the remote monitoring preconfigured solution" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Nasazení předkonfigurovaného řešení vzdáleného monitorování</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>    
 </ul>
+
+---
+
+<h2>Přizpůsobení</h2>
+<ul class="panelContent cardsW">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <p>Další informace o přizpůsobení akcelerátoru řešení</p>
+                        <ul>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy-local">Spuštění řešení v místním prostředí</a></li>
+                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-customize#presentation-and-visualization">Přizpůsobení uživatelského rozhraní</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul> 
 
 ---
 

@@ -1,25 +1,20 @@
 ---
 title: Řešení potíží s kódy chyb pro rozšíření Azure MFA serveru NPS | Microsoft Docs
-description: Získat pomoc při řešení problémů s příponou NPS pro Azure Multi-Factor Authentication s konkrétní řešení pro běžné chybové zprávy
+description: Získat pomoc při řešení problémů s příponou NPS pro Azure Multi-Factor Authentication
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: c82c96136dc5c1030deeae6a71e196aba2747490
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Vyřešte chybové zprávy z NPS rozšíření pro Azure Multi-Factor Authentication
 
@@ -27,7 +22,7 @@ Pokud narazíte na chyby s příponou NPS pro Azure Multi-Factor Authentication,
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Řešení potíží pro běžné chyby
 
-| Kód chyby | Řešení potíží |
+| Kód chyby | Postup při řešení potíží |
 | ---------- | --------------------- |
 | **CONTACT_SUPPORT** | [Obraťte se na podporu](#contact-microsoft-support)a zmínili seznam kroků pro shromažďování protokolů. Zadejte co nejvíce informací můžete o co se stalo před chybou, včetně id klienta a hlavní název uživatele (UPN). |
 | **CLIENT_CERT_INSTALL_ERROR** | Pravděpodobně problém s jak byl nainstalován klientský certifikát nebo ve spojení s vašeho klienta. Postupujte podle pokynů v [řešení potíží s příponou MFA NPS](howto-mfa-nps-extension.md#troubleshooting) k prozkoumání problémů certifikátu klienta. |
@@ -44,7 +39,7 @@ Pokud narazíte na chyby s příponou NPS pro Azure Multi-Factor Authentication,
 
 ### <a name="alternate-login-id-errors"></a>Alternativního přihlašovacího ID chyby
 
-| Kód chyby | Chybová zpráva | Řešení potíží |
+| Kód chyby | Chybová zpráva | Postup při řešení potíží |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: userObjectSid vyhledávání se nezdařilo | Ověřte, zda uživatel existuje v místní instanci služby Active Directory. Pokud používáte vztahy důvěryhodnosti mezi doménovými strukturami, [obraťte se na podporu](#contact-microsoft-support) pro další pomoc. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Alternativní LoginId vyhledávání se nezdařilo | Ověřte, zda LDAP_ALTERNATE_LOGINID_ATTRIBUTE nastaveno [atribut platný active directory](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Pokud LDAP_FORCE_GLOBAL_CATALOG nastaven na hodnotu True, nebo LDAP_LOOKUP_FORESTS je konfigurována s hodnotou není prázdný, ověřte, že jste nakonfigurovali na globální katalog a zda je atribut AlternateLoginId přidány k němu. <br><br> Pokud je nakonfigurované LDAP_LOOKUP_FORESTS neprázdnou hodnotu, ověřte, že hodnota správná. Pokud existuje více než jeden název doménové struktury, musí být odděleny názvy oddělte středníkem, ne mezery. <br><br> Pokud tyto kroky nejsou opravit problém, [obraťte se na podporu](#contact-microsoft-support) pro další pomoc. |
@@ -53,7 +48,7 @@ Pokud narazíte na chyby s příponou NPS pro Azure Multi-Factor Authentication,
 
 ## <a name="errors-your-users-may-encounter"></a>Chyby vaši uživatelé setkat.
 
-| Kód chyby | Chybová zpráva | Řešení potíží |
+| Kód chyby | Chybová zpráva | Postup při řešení potíží |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | Volající klient nemá oprávnění k přístupu k provést ověřování pro uživatele | Zkontrolujte, zda doména klienta a doménu hlavní název uživatele (UPN) jsou stejné. Například, ujistěte se, že user@contoso.com se pokusil o ověření klienta Contoso. Hlavní název uživatele představuje platného uživatele pro klienta v Azure. |
 | **AuthenticationMethodNotConfigured** | Použití zadané metody ověřování nebyl nakonfigurovaný pro tohoto uživatele | Mít uživatele, přidání nebo ověřte své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). |
@@ -85,8 +80,8 @@ Pokud některé z těchto chyb narazíte, doporučujeme vám [obraťte se na pod
 | Kód chyby | Chybová zpráva |
 | ---------- | ------------- |
 | **InvalidParameter** | Požadavek nesmí mít hodnotu null |
-| **InvalidParameter** | ObjectId nesmí být null nebo prázdná pro ReplicationScope: {0} |
-| **InvalidParameter** | Délka NázevSpolečnosti \{0} \ je delší než maximální povolenou délku {1} |
+| **InvalidParameter** | ObjectId nesmí být null nebo prázdná pro ReplicationScope:{0} |
+| **InvalidParameter** | Délka NázevSpolečnosti \{0} \ je delší než maximální povolená délka {1} |
 | **InvalidParameter** | UserPrincipalName nesmí být null nebo prázdný |
 | **InvalidParameter** | Zadané hodnoty TenantId není ve správném formátu |
 | **InvalidParameter** | ID relace nesmí být null nebo prázdný |

@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 8eada6b88c320396b30ecdeb96c95e4ec61679ce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
 Můžete zobrazit telemetrická data odesílaná ze zařízení **zařízení** stránky v řešení.
@@ -41,4 +57,4 @@ Chcete-li volat metody na zařízení, použijte **zařízení** stránky v ře�
 
 ## <a name="next-steps"></a>Další postup
 
-Článek [přizpůsobení předkonfigurovaného řešení vzdáleného monitorování](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) popisuje několik způsobů, jak přizpůsobit předkonfigurovaného řešení.
+Článek [přizpůsobit vzdálené monitorování akcelerátoru řešení](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) popisuje několik způsobů, jak přizpůsobit akcelerátoru řešení.

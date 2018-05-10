@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: baea799dbab2625e64140a565064b3c41310b4ad
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí trvanlivý funkcí (Azure Functions)
 
@@ -50,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-Pro jazyky rozhraní .NET, funkce výstup vazby lze spustit také nové instance. V takovém případě můžete použít všechny JSON serializovatelný objekt, který má výše tři parametry jako pole. Zvažte například následující funkce Node.js:
+Pro jazyky rozhraní .NET, funkce výstup vazby lze spustit také nové instance. V takovém případě můžete použít všechny JSON serializovatelný objekt, který má výše tři parametry jako pole. Zvažte například následující funkce JavaScript:
 
 ```js
 module.exports = function (context, input) {
@@ -100,9 +100,6 @@ public static async Task Run(
 }
 ```
 
-> [!NOTE]
-> Instance dotazu je aktuálně podporuje jenom pro orchestrator funkcí jazyka C#.
-
 ## <a name="terminating-instances"></a>Ukončení instance
 
 Spuštěné instance orchestration můžete ukončit pomocí [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) třídy. Jsou dva parametry `instanceId` a `reason` řetězce, který se zapisují do protokolů a stav instance. Ukončenou instance se zastaví také nedosáhne Další `await` bod, nebo se ukončí okamžitě pokud už je na `await`. 
@@ -117,9 +114,6 @@ public static Task Run(
     return client.TerminateAsync(instanceId, reason);
 }
 ```
-
-> [!NOTE]
-> Instance ukončení aktuálně je podporována pouze pro orchestrator funkcí jazyka C#.
 
 > [!NOTE]
 > Ukončení instance nejsou aktuálně rozšířena. Aktivita funkce a dílčí orchestrations se spustí až do ukončení bez ohledu na to, zda byla ukončena orchestration instance, která je volána.
@@ -146,9 +140,6 @@ public static Task Run(
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
 }
 ```
-
-> [!NOTE]
-> Vyvolání událostí je momentálně podporován pouze pro orchestrator funkcí jazyka C#.
 
 > [!WARNING]
 > Pokud není žádná instance orchestration se zadaným *instance ID* nebo pokud není instance čekání na zadaný *název události*, zpráva o události se zahodí. Další informace o tomto chování najdete v tématu [potíže Githubu](https://github.com/Azure/azure-functions-durable-extension/issues/29).

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Podpora protokolu HTTP nebo 2 v Azure CDN
 
@@ -29,7 +29,7 @@ Příklady výhod HTTP/2:
 
 *   **Multiplexní a souběžnost**
 
-    Pomocí protokolu HTTP 1.1, více provádění více požadavků prostředků vyžaduje více připojení TCP a každé připojení má zatížení s ním spojená. HTTP/2 umožňuje více prostředky vyžadované na jednoho připojení TCP.
+    Pomocí protokolu HTTP 1.1, provádění více požadavků prostředků vyžaduje více připojení TCP a každé připojení má zatížení s ním spojená. HTTP/2 umožňuje více prostředky vyžadované na jednoho připojení TCP.
 
 *   **Komprese záhlaví**
 
@@ -37,12 +37,12 @@ Příklady výhod HTTP/2:
 
 *   **Datový proud závislosti**
 
-    Datový proud závislosti umožňují klientu označení serveru, který prostředků mají prioritu.
+    Datový proud závislosti povolit klientovi pokyn k serveru prostředky, ke kterým mají prioritu.
 
 
 ## <a name="http2-browser-support"></a>Podpora prohlížeče HTTP/2
 
-Všechny hlavní prohlížeče v jejich aktuální verze implementovat podporu protokolu HTTP nebo 2. Nepodporovaná prohlížečů bude automaticky záložnímu HTTP/1.1.
+Všechny hlavní prohlížeče v jejich aktuální verze implementovat podporu protokolu HTTP nebo 2. Nepodporovaná prohlížeče automaticky záložnímu HTTP/1.1.
 
 |Prohlížeč|Minimální verze|
 |-------------|------------|
@@ -54,7 +54,7 @@ Všechny hlavní prohlížeče v jejich aktuální verze implementovat podporu p
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>Povolení podpory protokolu HTTP nebo 2 v Azure CDN
 
-Aktuálně je aktivní pro podporu protokolu HTTP/2 **Azure CDN společnosti Akamai** a **Azure CDN společnosti Verizon** profily. Žádná další akce je vyžadována od zákazníků.
+Podpora protokolu HTTP/2 je v současné době aktivní pro všechny profily Azure CDN. Žádná další akce je vyžadována od zákazníků.
 
 ## <a name="next-steps"></a>Další kroky
 

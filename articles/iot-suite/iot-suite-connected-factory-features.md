@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: fea9ccc53bd019039cf1e989d72db7a218e4517c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0bd023e73088897303fe0f9de47641cd6ea0389
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-iot-suite-connected-factory"></a>Co je Azure IoT Suite připojené Factory?
 
@@ -51,7 +51,7 @@ Připojené Factory zahrnuje následující funkce:
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 - [Statistiky Azure řady čas](../time-series-insights/time-series-insights-overview.md) určené pro ukládání, vizualizace a dotazování velké objemy dat časové řady. Připojen objekt pro vytváření využívá tuto službu.
-- Připojené factory se integruje s to služby umožňuje provádět analýzy v reálném čase, přímý vašich dat zařízení.
+- Připojené Factory se integruje s to služby umožňuje provádět analýzy v reálném čase, přímý vašich dat zařízení.
 
 ## <a name="rules-and-alerts"></a>Pravidla a oznámení
 
@@ -65,11 +65,11 @@ Připojené Factory zahrnuje následující funkce:
 ## <a name="customizability"></a>Možnosti přizpůsobení
 
 - [Přizpůsobení](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md) řešení podle konkrétních podnikových požadavků.
-- Úplné řešení zdrojového kódu dostupná na Githubu. Najdete v článku [připojené vytváření předkonfigurovaného řešení](https://github.com/Azure/azure-iot-connected-factory) úložiště.
+- Úplné řešení zdrojového kódu dostupná na Githubu. Najdete v článku [připojen objekt pro vytváření předkonfigurovaného řešení](https://github.com/Azure/azure-iot-connected-factory) úložiště.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o připojené objekt pro vytváření předkonfigurovaného řešení přečíst v následujících článcích:
+Další informace o vytváření připojení předkonfigurované řešení přečíst v následujících článcích:
 
-* [Návod připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-sample-walkthrough.md)
-* [Nasazení brány pro připojené vytváření]( iot-suite-connected-factory-gateway-deployment.md)
+* [Připojené Factory návod pro předkonfigurované řešení](iot-suite-connected-factory-sample-walkthrough.md)
+* [Nasaďte bránu pro připojení objektu pro vytváření]( iot-suite-connected-factory-gateway-deployment.md)

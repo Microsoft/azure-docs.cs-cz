@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s SAP cloudové platformy identitu ověřování | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudové platformy identitu ověřování."
+title: 'Kurz: Azure Active Directory integrace s SAP cloudové platformy identitu ověřování | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudové platformy identitu ověřování.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0c7dd884eaadd1fba4fcbc19b6c9cf92c68a59ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 69a8eba2e099e9333d19d139fb5af503fd582dda
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Kurz: Azure Active Directory integrace s SAP cloudové platformy identitu ověřování
 
@@ -126,21 +126,25 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. Pokud chcete nakonfigurovat aplikace **IDP** spustil v režimu **SAP cloudové platformy identitu ověřování domény a adresy URL** v části **identifikátor** pole Zadejte adresu URL pomocí následujícího vzorce: `https://<entity-id>.accounts.ondemand.com`.  
+3. Pokud chcete nakonfigurovat aplikace **IDP** spustil v režimu **SAP cloudové platformy identitu ověřování domény a adresy URL** část, proveďte následující kroky:  
 
     ![SAP cloudové platformy identitu ověřování domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url.png)
 
-    > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tato hodnota se skutečným identifikátorem. Obraťte se [tým podpory SAP cloudové platformy identitu ověřování klienta](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) získat tuto hodnotu. Pokud nerozumíte tuto hodnotu, přečtěte si dokumentaci SAP cloudové platformy identitu ověřování o [konfigurace klienta SAML 2.0](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
+    a. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující: `<IAS-tenant-id>.accounts.ondemand.com`
 
-4. Pokud chcete nakonfigurovat aplikace **SP** initiated režimu, vyberte **zobrazit upřesňující nastavení adresy URL**. 
+    b. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující: `https://<IAS-tenant-id>.accounts.ondemand.com/saml2/idp/acs/<IAS-tenant-id>.accounts.ondemand.com`
+
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se [tým podpory SAP cloudové platformy identitu ověřování klienta](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) k získání těchto hodnot. Pokud nerozumíte hodnota identifikátoru, přečtěte si dokumentaci SAP cloudové platformy identitu ověřování o [konfigurace klienta SAML 2.0](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html).
+
+4. Pokud chcete nakonfigurovat aplikace **SP** initiated režimu, vyberte **zobrazit upřesňující nastavení adresy URL**.
 
     ![SAP cloudové platformy identitu ověřování domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-sapcloudauth-tutorial/tutorial_sapcpia_url1.png)
 
-    V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí následujícího vzorce: `https://<entity-id>.accounts.ondemand.com/admin`.
+    V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí následujícího vzorce: `{YOUR BUSINESS APPLICATION URL}`.
 
-    > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se [tým podpory SAP cloudové platformy identitu ověřování klienta](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) získat tuto hodnotu.
+    > [!NOTE]
+    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Použijte prosím vaše konkrétní obchodní aplikace přihlašovací adresa URL. Obraťte se [tým podpory SAP cloudové platformy identitu ověřování klienta](https://cloudplatform.sap.com/capabilities/security/trustcenter.html) Pokud máte jakékoli nejistých.
 
 5. V **SAML podpisový certifikát** vyberte **soubor XML s metadaty**. Uložte soubor metadat ve vašem počítači.
 
@@ -271,7 +275,7 @@ Když vyberete dlaždici SAP cloudové platformy Identity ověřování na pří
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -289,4 +293,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sapcloudauth-tutorial/tutorial_general_203.png
-

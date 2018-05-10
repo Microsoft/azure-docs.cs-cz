@@ -1,9 +1,9 @@
 ---
-title: "Analýza vzory navigační uživatele s toky uživatele ve službě Azure Application Insights | Microsoft docs"
-description: "Analýza, jak uživatelé přecházejí mezi stránkami a funkce vaší webové aplikace."
+title: Analýza vzory navigační uživatele s toky uživatele ve službě Azure Application Insights | Microsoft docs
+description: Analýza, jak uživatelé přecházejí mezi stránkami a funkce vaší webové aplikace.
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mbullwin; daviste
-ms.openlocfilehash: 63139bfb190959284cb5d25df1a8dd91bd7d913f
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 5913039d3ab288c2fc8366073b340538989512ee
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analýza vzory navigační uživatele s toky uživatele ve službě Application Insights
 

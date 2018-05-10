@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceeec6991aaac64211301313c1bb8dc5f5faa1c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bc446dfeee86fa1183892cba8068709f8fd277d5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Přehled SAP HANA (velké instance) a architektura v Azure
 
@@ -68,7 +68,7 @@ Několik společné definice se často používá v architektuře a technické p
 - **Klienta**: získá do izolované zákazník nasazené v HANA velké Instance razítka *klienta.* Klient je izolované sítě, úložiště a výpočetní vrstvy od ostatních klientů. Úložiště a výpočetní jednotky přiřazené různými klienty nelze zobrazit navzájem ani vzájemně komunikovat na úrovni HANA velké Instance razítka. Zákazník může rozhodnout pro nasazení do jiných klientů. Dokonce i pak není žádná komunikace mezi klienty na úrovni HANA velké Instance razítka.
 - **Kategorie SKU**: pro HANA velké Instance, nabízí tyto dvě kategorie SKU:
     - **Typ I třídy**: S72, S72m, S144, S144m, S192 a S192m
-    - **Zadejte třídu II**: S384, S384m, S384xm, S576, S768 a S960
+    - **Zadejte třídu II**: S384, S384m, S384xm, S576m, S768m a S960m
 
 
 Jsou k dispozici na tom, jak nasadit SAP úlohy v cloudu různé další prostředky. Pokud máte v plánu provést nasazení SAP HANA v Azure, budete muset být zkušenosti s a s ohledem na zásady služby Azure IaaS a nasazení SAP zatížení v Azure IaaS. Než budete pokračovat, najdete v části [použití SAP řešení na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace. 
@@ -144,9 +144,9 @@ Od července 2017 je k dispozici v několika konfigurace v oblasti USA – zápa
 |---| Na Azure S192m SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken  |  4.0 TB |  16 TB | Dostupné |
 |---| Na Azure S384m SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  6.0 TB |  18 TB | Dostupné |
 |---| Na Azure S384xm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  8.0 TB |  22 TB |  Dostupné |
-|---| Na Azure S576 SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  12.0 TB |  28 TB | Dostupné |
-|---| Na Azure S768 SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  16.0 TB |  36 TB | Dostupné |
-|---| Na Azure S960 SAP HANA<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 jader procesoru a 960 procesoru vláken |  20.0 TB |  46 TB | Dostupné |
+|---| Na Azure S576m SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  12.0 TB |  28 TB | Dostupné |
+|---| Na Azure S768m SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  16.0 TB |  36 TB | Dostupné |
+|---| Na Azure S960m SAP HANA<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 jader procesoru a 960 procesoru vláken |  20.0 TB |  46 TB | Dostupné |
 
 - Jader procesoru = součet jiný-technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů.
 - Vláken procesoru = součet výpočetní vláken poskytované technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů. Všechny jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
@@ -157,7 +157,7 @@ Konkrétní konfigurace vybrali jsou závislé na zatížení, prostředky proce
 Všechny nabídky základní hardware jsou certifikované SAP HANA TDI. Dvěma různými třídami hardwaru dělí SKU do:
 
 - S72 S72m, S144, S144m, S192 a S192m, které jsou označovány jako "Typ I třídy" z jednotky SKU.
-- S384, S384m, S384xm, S576, S768 a S960, které se označují jako "Typ třídy II" z jednotky SKU.
+- S384, S384m, S384xm, S576m, S768m a S960m, které se označují jako "Typ třídy II" z jednotky SKU.
 
 Dokončení HANA velké Instance razítka není přidělen výhradně pro jednoho zákazníka&#39;s použití. Tuto skutečnost se vztahuje na stojany s výpočetní a úložnou kapacitu připojené prostřednictvím síťových prostředcích infrastruktury také nasazené v Azure. Velké Instance HANA infrastruktury, jako je například Azure, nasadí různých zákazníků &quot;klienty&quot; , které jsou izolované od sebe navzájem v následující tři úrovně:
 
@@ -335,25 +335,25 @@ HANA velké instanci typu I třídy se dodává s čtyřikrát paměti svazek ja
 
 Viz následující tabulka uvádí přidělení úložiště. V tabulce jsou uvedeny hrubý kapacity pro jiné svazky zadaná u jiné Instance velké HANA jednotek.
 
-| HANA velké Instance SKU | hana/data | hana/log | / sdílené Hana | Hana/log/zálohování |
+| HANA velké Instance SKU | Hana nebo dat | Hana a protokolování | / sdílené Hana | Hana/log/zálohování |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
-| S192 | 4,608 GB | 1024 GB | 1 536 GB | 1024 GB |
+| S192 | 4 608 GB | 1024 GB | 1 536 GB | 1024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
-| S576 | 20 000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
-| S768 | 28,000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
-| S960 | 36,000 GB | 4,100 GB | 2 050 GB | 4,100 GB |
+| S576m | 20 000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
+| S768m | 28,000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
+| S960m | 36,000 GB | 4,100 GB | 2 050 GB | 4,100 GB |
 
 
 Skutečné nasazené svazky se může lišit v závislosti na nasazení a nástroje, který se používá k zobrazení velikosti svazků.
 
 Pokud jste rozdělit HANA velké Instance SKU, může vypadat několik příkladů možné dělení částí:
 
-| Oddíl paměti v GB | hana/data | hana/log | / sdílené Hana | Hana/log/zálohování |
+| Oddíl paměti v GB | Hana nebo dat | Hana a protokolování | / sdílené Hana | Hana/log/zálohování |
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |

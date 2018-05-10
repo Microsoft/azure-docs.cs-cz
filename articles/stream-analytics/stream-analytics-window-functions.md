@@ -1,6 +1,6 @@
 ---
 title: Úvod do Azure Stream Analytics oddílová funkce
-description: Tento článek popisuje tři oddílová funkce (přeskakujícího, vše, klouzavé) používané v úlohy Azure Stream Analytics.
+description: Tento článek popisuje čtyři funkce oddílová (přeskakujícího, vše, klouzavé, relace), které se používají v úlohy Azure Stream Analytics.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,35 +8,48 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: c6f5dbe49cb60e3c7b2bc6562acf2d7fd79096ec
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 05/07/2018
+ms.openlocfilehash: 2650058e277bc0338c779655ce381be046fb120a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="introduction-to-stream-analytics-window-functions"></a>Úvod do okna Stream Analytics funkce
-V mnoha reálném čase streamování scénáře je potřeba provádět operace pouze na data obsažená v dočasné systému windows. Nativní podpora pro oddílová funkce je klíčovou funkcí Azure Stream Analytics, která přemísťuje se ručička na vývojáře produktivitu při vytváření úlohy zpracování komplexní datového proudu. Stream Analytics umožňuje vývojářům používat [ **Přeskakujícího**](https://msdn.microsoft.com/library/dn835055.aspx), [ **Hopping** ](https://msdn.microsoft.com/library/dn835041.aspx) a [ **posuvné** ](https://msdn.microsoft.com/library/dn835051.aspx) windows k provádění dočasné operací na datový proud. Je to, že všechny [okno](https://msdn.microsoft.com/library/dn835019.aspx) operations výstup výsledků na **end** okna. Výstup okna bude jedinou událost podle používá agregační funkci. Události budou mít časové razítko konce okna a všechny funkce okna jsou definovány s pevnou délkou. Nakonec je důležité si uvědomit, že je třeba používat všechny funkce okno v [ **GROUP BY** ](https://msdn.microsoft.com/library/dn835023.aspx) klauzule.
+# <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do služby Stream Analytics oddílová funkce
+Ve scénářích streamování čas provádění operací na data obsažená v dočasné windows je běžný vzor. Stream Analytics má nativní podporu pro oddílová funkce umožňují vývojářům úlohy zpracování Autor komplexní datového proudu s minimálním úsilím.
+
+Existují čtyři typy dočasné Windows vybírat: [ **Přeskakujícího**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [ **Hopping**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [  **Klouzavé**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics), a [ **relace** ](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics) systému windows.  Použijte okno funkcí v [ **GROUP BY** ](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics) klauzule syntaxe dotazů v úlohách Stream Analytics.
+
+Všechny [oddílová](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics) operations výstup výsledků v **end** okna. Výstup okna bude jedinou událost podle používá agregační funkci. Výstupní událost může mít časové razítko konce okna a všechny funkce okna jsou definovány s pevnou délkou. 
 
 ![Stream Analytics okno funkce koncepty](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
 ## <a name="tumbling-window"></a>Přeskakující okno
-Přeskakujícího okna, které funkce se používají pro segment datový proud do různých čas segmentů a provádět funkce proti, jako je například následující příklad. Klíče differentiators z Přeskakující okno se, že zopakují, se nepřekrývají, a událost nemůže patřit do více než jeden přeskakující okno.
+Přeskakujícího okna, které funkce se používají pro segment datový proud do různých čas segmentů a provádět funkce proti, jako je například následující příklad. Klíče differentiators z Přeskakující okno se, že zopakují, proveďte není překrývají a událost nemůže patřit do více než jeden přeskakující okno.
 
-![Funkce okno analýzy datového proudu přeskakujícího Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
+![Stream Analytics přeskakující okno](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Skákající okno
-Skákající okno funkce směrování dál v čase prostřednictvím uplynutí určité doby. To může být snadno si je představit jako Přeskakující windows, které může dojít k překrytí, takže události můžou patřit do více než jednu sadu výsledků Hopping okno. Vytvoření okna Hopping stejné jako Přeskakující okno jeden by jednoduše zadejte velikost skoku tak, aby byla stejná jako velikost okna. 
+Skákající okno funkce směrování dál v čase prostřednictvím uplynutí určité doby. To může být snadno si je představit jako Přeskakující windows, které může dojít k překrytí, takže události můžou patřit do více než jednu sadu výsledků Hopping okno. Vytvoření okna Hopping stejný jako Přeskakující okno, zadejte velikost skoku tak, aby byla stejná jako velikost okna. 
 
-![Stream Analytics okno funkce skákající Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
+![Stream Analytics skákající okno](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Posuvné okno
-Posuvné okno funkce, na rozdíl od Přeskakujícího nebo posílání windows, vytvořit výstup **pouze** při výskytu události. Každý okno bude mít aspoň jednu událost a okna nepřetržitě přesune dál € (Epsilon –). Jako posílání Windows události může patřit do více než jeden klouzavé okna.
+Posuvné okno funkce, na rozdíl od Přeskakujícího nebo posílání windows, vytvořit výstup **pouze** při výskytu události. Každý okno bude mít aspoň jednu událost a okna nepřetržitě přesune dál € (Epsilon –). Jako posílání windows, můžete události patří do více než jeden posuvné okno.
 
-![Stream Analytics okno funkce klouzavé Úvod](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
+![Stream Analytics posuvné okno](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
-## <a name="getting-help-with-window-functions"></a>Získání nápovědy k okno funkce
-Další podporu naleznete v našem [fóru služby Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+## <a name="session-window-preview"></a>Okno relace (Preview)
+Funkce okno relace skupiny události, které přicházejí na podobné dobu, filtrování časová období, kdy se žádná data. Má tři hlavní parametry: Vypršel časový limit, maximální délka trvání a klíč rozdělení (volitelné).
+
+![Stream Analytics relace okna](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
+
+Okno Relace začíná, když dojde k první události. Pokud jiné události dojde v rámci zadaného časového limitu od poslední události ingestovaný, okno rozšiřuje zahrnout novou událost. V opačném případě dojde-li žádné události v časovém limitu, pak zavření okna na časový limit.
+
+Pokud v rámci zadaného časového limitu zachovat výskytu události, zachovat okno relace rozšíření, dokud nebude dosaženo maximální délka trvání. Maximální délka trvání intervalů kontrola, zda jsou nastaveny na stejnou velikost jako zadaná maximální doba trvání. Například pokud maximální doba trvání je 10, kontroly, je-li okno překročit maximální doba trvání bude dojít při t = 0, 10, 20, 30, atd.
+
+Pokud je zadaný klíč oddílu, události, které jsou seskupeny dohromady pomocí klíče a okno relace se použije ke každé skupině nezávisle. Toto rozdělení do oddílů je užitečné v případě, kdy potřebujete různé relace windows pro různé uživatele nebo zařízení.
+
 
 ## <a name="next-steps"></a>Další postup
 * [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)

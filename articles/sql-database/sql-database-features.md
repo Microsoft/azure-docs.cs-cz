@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bf9069df55352b4d7884e989be741fc42e06bfdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7e3b084f833b6d84e5c5102555eb586e306e9de8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -51,7 +51,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Uživatelů s omezením](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ano | Ano |
 | [Řízení toku klíčová slova jazyka](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Ano | Ano |
 | [Mezi databázové dotazy](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – najdete v části [elastické dotazy](sql-database-elastic-query-overview.md) | Ano, plus [elastické dotazy](sql-database-elastic-query-overview.md) |
-| [Transakce mezi databázemi](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne | Ano |
+| [Transakce mezi databázemi](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne | Ano – najdete v části [propojené rozdíly serveru](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#linked-servers) |
 | [Kurzory](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Ano |Ano | 
 | [Komprese dat](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | Ano |Ano |
 | [Databázového e-mailu](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Ne | Ano |
@@ -69,8 +69,8 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Příkazy DML](https://docs.microsoft.com/sql/t-sql/queries/queries) | Ano | Ano |
 | [Aktivační události DML](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | Většina - najdete jednotlivé příkazy |  Ano |
 | [Zobrazení dynamické správy](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Většina - najdete v části jednotlivých zobrazení dynamické správy |  Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
-|[Dynamické maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Ano](sql-database-dynamic-data-masking-get-started.md)| Ano |
-| [Elastické fondy](sql-database-elastic-pool.md) | Ano | jedna Instance pro spravované může mít více databází, které sdílejí stejnou fondu prostředků |
+|[Dynamické maskování dat](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Ano](sql-database-dynamic-data-masking-get-started.md)| [Ano](sql-database-dynamic-data-masking-get-started.md) |
+| [Elastické fondy](sql-database-elastic-pool.md) | Ano | Předdefinované – jedna Instance pro spravované může mít více databází, které sdílejí stejnou fondu prostředků |
 | [Oznamování událostí](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Ne – najdete v části [výstrahy](sql-database-insights-alerts-portal.md) | Ano |
 | [Výrazy](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Ano | Ano |
 | [Rozšířené události](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Některé - najdete v části [rozšířené události v databázi SQL](sql-database-xevent-db-diff-from-svr.md) | Ano – najdete v části [rozšířené události rozdíly ](sql-database-managed-instance-transact-sql-information.md#extended-events) |
@@ -83,7 +83,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Geografická replikace](sql-database-geo-replication-overview.md) | Ano | Ne |
 | [Zpracování grafu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ano | Ano |
 | [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [Premium a Critial obchodní vrstvy](sql-database-in-memory.md) | Ne |
-| [Podpora data JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Ano | Ano |
+| [Podpora data JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [Jazykové elementy](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina - najdete jednotlivé elementy |  Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Odkazované servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – najdete v části [elastické dotazu](sql-database-elastic-query-horizontal-partitioning.md) | Pouze pro SQL Server a databáze SQL |
 | [Přesouvání protokolu](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) |[Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) |
@@ -103,7 +103,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Na základě zásad správy](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Ne | Ne |
 | [Predikáty](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Ano | Ano |
 | [Služby R](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Verze Preview; v tématu [co je nového v machine learning](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Ne |
-| [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Ne | Ne |
+| [Správce zdrojů](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Ne | Ano |
 | [OBNOVENÍ příkazů](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Ne | Ano – najdete v části [obnovit rozdíly](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
 | [Obnovit databázi ze zálohy](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Z automatizované zálohování jenom - najdete na stránce [obnovení databáze SQL](sql-database-recovery-using-backups.md) | Z automatizované zálohování - najdete na stránce [obnovení databáze SQL](sql-database-recovery-using-backups.md) a z úplné zálohy - najdete na stránce [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Zabezpečení na úrovni řádků](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | Ano | Ano |
@@ -132,7 +132,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Systémové tabulky](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | Některé - najdete v části jednotlivé tabulky | Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Zobrazení katalogu systému](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Některé – viz jednotlivých zobrazení | Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Dočasné tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | Místní a obor databáze globální dočasné tabulky. | Místní a obor instance globální dočasné tabulky. |
-| [Dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | Ano | Ano |
+| [Dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables) |
 |Detekce hrozeb|  [Ano](sql-database-threat-detection.md)|[Ano](sql-database-managed-instance-threat-detection.md)|
 | [Příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Ne | Ne |
 | [Proměnné](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ano | Ano |

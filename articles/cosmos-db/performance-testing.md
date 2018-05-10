@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 3b908f1df9228505b2f3bce18bd42d9b502844c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e4995146433d0090849fe17175b152a6e45809f4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Výkonu a možností škálování testování pomocí Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Pro zkompilování a spuštění vzorového .NET je nejrychlejší způsob, jak 
     Press any key to exit...
 
 
-**Krok 4 (v případě potřeby):** propustnost hlášené (RU/s) z nástroje musí být stejná nebo vyšší než zřízené propustnosti kolekce. Pokud není, zvýšení DegreeOfParallelism v malých přírůstcích vám můžou pomoct dosáhne omezení. Pokud náhorních plošinách propustnost z vaší klientské aplikace, spusťte více instancí aplikace na další klientské počítače. Pokud potřebujete pomoc s Tento krok, e-mailu askcosmosdb@microsoft.com nebo soubor lístek podpory z [portál Azure](https://portal.azure.com).
+**Krok 4 (v případě potřeby):** propustnost hlášené (RU/s) z nástroje musí být stejná nebo vyšší než zřízené propustnosti kolekce nebo sady kolekcí. Pokud není, zvýšení DegreeOfParallelism v malých přírůstcích vám můžou pomoct dosáhne omezení. Pokud náhorních plošinách propustnost z vaší klientské aplikace, spusťte více instancí aplikace na další klientské počítače. Pokud potřebujete pomoc s Tento krok, e-mailu askcosmosdb@microsoft.com nebo soubor lístek podpory z [portál Azure](https://portal.azure.com).
 
 Až budete mít aplikaci spuštěnou, můžete zkusit jiný [indexování zásady](indexing-policies.md) a [úrovně konzistence](consistency-levels.md) pochopit jejich dopad na propustnosti a latence. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace sad testů nebo výrobní aplikace.
 

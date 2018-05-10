@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -29,34 +29,46 @@ ms.lasthandoff: 03/30/2018
 
 ![Průzkumníku metrik Application Insights](media/functions-monitoring/metrics-explorer.png)
 
-Funkce má také integrované monitorování, který nepoužívá Application Insights. Doporučujeme vám Application Insights, protože nabízí další data a lepší způsoby, jak analyzovat data. Informace o integrované monitorování najdete v tématu [poslední části tohoto článku](#monitoring-without-application-insights).
+Funkce má také [integrované monitorování, které nepoužívá Application Insights](#monitoring-without-application-insights). Doporučujeme vám Application Insights, protože nabízí další data a lepší způsoby, jak analyzovat data.
 
-## <a name="enable-application-insights-integration"></a>Povolit integraci Application Insights
+## <a name="application-insights-pricing-and-limits"></a>Application Insights ceny a omezení
 
-Pro funkce aplikace k odesílání dat do služby Application Insights musí znát klíč instrumentace Application Insights instance. Existují dva způsoby vytvoření tohoto připojení v [portál Azure](https://portal.azure.com):
+Můžete vyzkoušet Application Insights integrace s aplikacemi funkce zdarma. Však není denní limit množství dat, které můžete zadarmo zpracování a může dosáhl tento limit během testování. Azure poskytuje portál a e-mailová oznámení, pokud jste vyčerpali denního limitu.  Ale pokud byste zapomněli na tyto výstrahy a dosáhl limitu, nové protokoly se nezobrazí v dotazech Application Insights. Proto buďte vědomi tento limit, aby se zabránilo zbytečným čas řešení problémů. Další informace najdete v tématu [spravovat cen a datový svazek ve službě Application Insights](../application-insights/app-insights-pricing.md).
 
-* [Vytvořit připojenou instanci Application Insights, když vytvoříte aplikaci funkce](#new-function-app).
-* [Připojení instance Application Insights do existující aplikace funkce](#existing-function-app).
+## <a name="enable-app-insights-integration"></a>Povolit integraci statistiky aplikace
+
+Pro funkce aplikace k odesílání dat do služby Application Insights musí znát klíč instrumentace prostředek Application Insights. Klíč musí být k dispozici v nastavení aplikace s názvem APPINSIGHTS_INSTRUMENTATIONKEY.
+
+Můžete nastavit toto připojení v [portál Azure](https://portal.azure.com):
+
+* [Automaticky pro novou aplikaci funkce](#new-function-app)
+* [Ručně připojit prostředek App Insights](#manually-connect-an-app-insights-resource)
 
 ### <a name="new-function-app"></a>Nová aplikace funkcí
 
-Povolit Application Insights na aplikaci funkce **vytvořit** stránky:
+1. Přejděte do aplikaci funkce **vytvořit** stránky.
 
 1. Nastavte **Application Insights** přepínač **na**.
 
 2. Vyberte **Application Insights umístění**.
 
+   Vyberte oblast, který je nejblíže k aplikaci funkce oblast v [Azure geography](https://azure.microsoft.com/global-infrastructure/geographies/) kam chcete data uložit.
+
    ![Povolit Application Insights při vytváření aplikace – funkce](media/functions-monitoring/enable-ai-new-function-app.png)
 
-### <a name="existing-function-app"></a>Stávající aplikace – funkce
+3. Zadejte další požadované informace.
 
-Získat klíč instrumentace a uložit ho v aplikaci funkce:
+1. Vyberte **Vytvořit**.
 
-1. Vytvoření instance služby Application Insights. Nastavte typ aplikace na **Obecné**.
+Dalším krokem je [zakázat integrované protokolování](#disable-built-in-logging).
 
-   ![Vytvoření instance služby Application Insights, zadejte obecné](media/functions-monitoring/ai-general.png)
+### <a name="manually-connect-an-app-insights-resource"></a>Ručně připojit prostředek App Insights 
 
-2. Zkopírovat klíč instrumentace z **Essentials** stránku instance Application Insights. Najeďte myší na konci zobrazená hodnota klíče získat **kliknutím zkopírujte** tlačítko.
+1. Vytvořte prostředek Application Insights. Nastavte typ aplikace na **Obecné**.
+
+   ![Vytvořte prostředek Application Insights, zadejte obecné](media/functions-monitoring/ai-general.png)
+
+2. Zkopírovat klíč instrumentace z **Essentials** stránky prostředku Application Insights. Najeďte myší na konci zobrazená hodnota klíče získat **kliknutím zkopírujte** tlačítko.
 
    ![Zkopírovat klíč instrumentace Application Insights](media/functions-monitoring/copy-ai-key.png)
 
@@ -70,13 +82,46 @@ Získat klíč instrumentace a uložit ho v aplikaci funkce:
 
 Pokud povolíte Application Insights, doporučujeme zakázat [vestavěné protokolování, který používá úložiště Azure](#logging-to-storage). Integrované protokolování je užitečné pro testování s světla úlohy, ale není určen pro použití v provozním prostředí vysokým zatížením. Pro produkční monitorování, se doporučuje Application Insights. Pokud integrované protokolování se používá v produkčním prostředí, mohou být neúplné kvůli omezování na Azure Storage záznam protokolování.
 
-Chcete-li zakázat vestavěné protokolování, odstraňte `AzureWebJobsDashboard` nastavení aplikace. Informace o tom, jak odstranit aplikaci nastavení na portálu Azure najdete v tématu **nastavení aplikace** části [jak spravovat aplikaci funkce](functions-how-to-use-azure-function-app-settings.md#settings).
+Chcete-li zakázat vestavěné protokolování, odstraňte `AzureWebJobsDashboard` nastavení aplikace. Informace o tom, jak odstranit aplikaci nastavení na portálu Azure najdete v tématu **nastavení aplikace** části [jak spravovat aplikaci funkce](functions-how-to-use-azure-function-app-settings.md#settings). Před odstraněním nastavení aplikace, ujistěte se, že žádné existující funkce ve stejné aplikaci funkce jej použít pro Azure Storage aktivační události nebo vazby.
 
-Když povolíte Application Insights a integrované protokolování zakázat, **monitorování** kartě pro funkce na portálu Azure přejdete do služby Application Insights.
+## <a name="view-telemetry-in-monitor-tab"></a>Zobrazení telemetrie na kartě monitorování
 
-## <a name="view-telemetry-data"></a>Telemetrická data zobrazení
+Poté, co jste nastavili Application Insights integrace jak je znázorněno v předchozích částech, můžete zobrazit telemetrická data v **monitorování** kartě.
 
-Přejděte na připojenou instanci Application Insights z funkce aplikace na portálu, vyberte **Application Insights** odkaz na aplikaci funkce **přehled** stránky.
+1. Na stránce funkce aplikace, vyberte funkci, která byla spuštěna nejméně jednou po Application Insights byla nakonfigurovaná a pak vyberte **monitorování** kartě.
+
+   ![Vyberte kartu Sledování](media/functions-monitoring/monitor-tab.png)
+
+2. Vyberte **aktualizovat** pravidelně, dokud se zobrazí seznam volání funkce.
+
+   To může trvat až 5 minut v seznamu se objeví vzhledem ke způsobu telemetrická data dávky klienta pro přenos do serveru. (Tato prodleva se nevztahuje na [živý datový proud metriky](../application-insights/app-insights-live-stream.md). Této službě se připojí k hostiteli funkce při načtení stránky, takže protokoly streamovaných přímo na stránku.)
+
+   ![Seznam volání](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+2. Pokud chcete zobrazit protokoly pro vyvolání konkrétní funkce, vyberte **datum** sloupec odkaz pro tohoto volání.
+
+   ![Podrobnosti o volání propojení](media/functions-monitoring/invocation-details-link-ai.png)
+
+   Protokolování výstupu pro tohoto volání se zobrazí v nová stránka.
+
+   ![Podrobnosti volání](media/functions-monitoring/invocation-details-ai.png)
+
+Obě stránky (vyvolání seznamu a podrobností) odkazu Application Insights Analytics dotaz, který načte data:
+
+![Spustit ve službě Application Insights](media/functions-monitoring/run-in-ai.png)
+
+![Seznam volání Analytics Statistika aplikací](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+Z těchto dotazů, uvidíte, že seznamu vyvolání je omezená na poslední 30 dnů delší než 20 řádků (`where timestamp > ago(30d) | take 20`) a seznam podrobnosti o volání je za posledních 30 dnů bez omezení.
+
+Další informace najdete v tématu [dotaz telemetrická data](#query-telemetry-data) dále v tomto článku.
+
+## <a name="view-telemetry-in-app-insights"></a>Zobrazení telemetrie ve službě App Insights
+
+Otevřete Application Insights z funkce aplikace na portálu Azure, vyberte **Application Insights** na odkaz v **nakonfigurované funkce** části funkce aplikace **přehled** stránky.
+
+![Application Insights odkaz na stránce Přehled](media/functions-monitoring/ai-link.png)
+
 
 Informace o tom, jak použít Application Insights, najdete v článku [Application Insights dokumentaci](https://docs.microsoft.com/azure/application-insights/). Tato část uvádí některé příklady, jak chcete zobrazit data ve službě Application Insights. Pokud jste již obeznámeni s Application Insights, můžete přejít přímo na [části o konfiguraci a přizpůsobení telemetrická data](#configure-categories-and-log-levels).
 
@@ -256,7 +301,7 @@ Jak je uvedeno v předchozí části, modul runtime agreguje data o spuštění 
 
 ## <a name="configure-sampling"></a>Konfigurace vzorkování
 
-Application Insights obsahuje [vzorkování](../application-insights/app-insights-sampling.md) funkce, která může chránit z generovala příliš mnoho telemetrická data v některých případech o zátěž ve špičce. Pokud počet položek telemetrie, které překročí na určenou míru, Application Insights se začne náhodně některé z příchozích položek ignorovat. Můžete nakonfigurovat vzorkování v *host.json*.  Tady je příklad:
+Application Insights obsahuje [vzorkování](../application-insights/app-insights-sampling.md) funkce, která může chránit z generovala příliš mnoho telemetrická data v některých případech o zátěž ve špičce. Pokud počet položek telemetrie, které překročí na určenou míru, Application Insights se začne náhodně některé z příchozích položek ignorovat. Výchozí nastavení pro maximální počet položek za sekundu, které je 5. Můžete nakonfigurovat vzorkování v *host.json*.  Tady je příklad:
 
 ```json
 {
@@ -489,13 +534,19 @@ Ohlásit problém s Application Insights integraci funkcí, nebo zajistěte, aby
 
 ## <a name="monitoring-without-application-insights"></a>Monitorování bez Application Insights
 
-Doporučujeme, abyste Application Insights pro monitorování funkce, protože nabízí další data a lepší způsoby, jak analyzovat data. Ale můžete také najít protokoly a telemetrická data v Azure stránky portálu pro funkce aplikace.
+Doporučujeme, abyste Application Insights pro monitorování funkce, protože nabízí další data a lepší způsoby, jak analyzovat data. Ale pokud dáváte přednost integrované protokolování systému, který používá Azure Storage, můžete použít.
 
 ### <a name="logging-to-storage"></a>Protokolování do úložiště
 
-Integrované protokolování používá účet úložiště určeného připojovací řetězec `AzureWebJobsDashboard` nastavení aplikace. Pokud nastavení této aplikace je nakonfigurovaný, zobrazí se protokolování dat na portálu Azure. V prostředků úložiště, přejděte na soubory, vyberte soubor služby pro funkci a potom přejděte na `LogFiles > Application > Functions > Function > your_function` k naleznete v souboru protokolu. Na stránce funkce aplikace, vyberte funkci a pak vyberte **monitorování** kartě a získat seznam spuštěních funkce. Vyberte funkce provádění ke kontrole doba trvání, vstupních dat, chyb a přidružené soubory protokolu.
+Integrované protokolování používá účet úložiště určeného připojovací řetězec `AzureWebJobsDashboard` nastavení aplikace. Na stránce funkce aplikace, vyberte funkci a pak vyberte **monitorování** kartě a zachovat v klasickém zobrazení.
 
-Pokud používáte Application Insights a máte [integrované protokolování zakázáno](#disable-built-in-logging), **monitorování** kartě přejdete do služby Application Insights.
+![Umožňuje přepnout do klasického zobrazení](media/functions-monitoring/switch-to-classic-view.png)
+
+ Zobrazí seznam spuštěních funkce. Vyberte funkce provádění ke kontrole doba trvání, vstupních dat, chyb a přidružené soubory protokolu.
+
+Pokud jste povolili službu Application Insights dříve, ale nyní chcete přejít zpět do vestavěné protokolování, zakažte Application Insights ručně a pak vyberte **monitorování** kartě. Zakázat integrace Application Insights, odstraňte nastavení aplikace APPINSIGHTS_INSTRUMENTATIONKEY.
+
+I když **monitorování** kartě se zobrazují data Application Insights, data protokolu můžete podívat v systému souborů, pokud jste to ještě [zakázáno integrované protokolování](#disable-built-in-logging). V prostředků úložiště, přejděte na soubory, vyberte soubor služby pro funkci a potom přejděte na `LogFiles > Application > Functions > Function > your_function` k naleznete v souboru protokolu.
 
 ### <a name="real-time-monitoring"></a>Sledování v reálném čase
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tdykstra
-ms.openlocfilehash: 6e7fdd4faa4213681813733aa8afe81d56835862
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 50e517e5719fb102fd91072abe59d3908176278e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Trvale funkce publikování do mřížky událostí Azure (preview)
 
@@ -220,7 +220,7 @@ Najdete v souborech protokolů z funkce, kterou jste vytvořili na portálu Azur
         "functionName": "Sample",
         "instanceId": "055d045b1c8a415b94f7671d8df693a6",
         "reason": "",
-        "eventType": 0
+        "runtimeStatus": "Running"
     },
     "eventType": "orchestratorEvent",
     "eventTime": "2018-04-20T09:28:19.6492068Z",
@@ -239,7 +239,7 @@ Najdete v souborech protokolů z funkce, kterou jste vytvořili na portálu Azur
         "functionName": "Sample",
         "instanceId": "055d045b1c8a415b94f7671d8df693a6",
         "reason": "",
-        "eventType": 1
+        "runtimeStatus": "Completed"
     },
     "eventType": "orchestratorEvent",
     "eventTime": "2018-04-20T09:28:36.5061317Z",
@@ -261,7 +261,7 @@ Následující seznam popisuje schéma události životního cyklu:
     * **%{FunctionName/**: název funkce produktu Orchestrator.
     * **identifikátor instanceId**: identifikátor instanceId trvanlivý funkce.
     * **důvod**: další data přidružená k události sledování. Další informace najdete v tématu [diagnostiky trvanlivý funkcí (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-diagnostics)
-    * **Typ události**: Orchestration běhový stav. 0: operačním systémem, 1: dokončení 2: ContinuedAsNew, 3: selhal, 4: zrušení 5: ukončeno, 6: čekající na vyřízení. 
+    * **runtimeStatus**: Orchestration běhový stav. Spuštěna, byla dokončena, se nezdařilo, došlo ke zrušení. 
 * **Typ události**: "orchestratorEvent"
 * **eventTime**: událost čas (UTC).
 * **dataVersion**: verzi schématu události životního cyklu.

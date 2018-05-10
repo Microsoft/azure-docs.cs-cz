@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření aplikace Azure Service Fabric typu kontejner v Linuxu | Dokumentace Microsoftu"
-description: "Vytvoříte svou první aplikaci typu kontejner pro Linux na platformě Azure Service Fabric.  Sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner."
+title: Vytvoření aplikace Azure Service Fabric typu kontejner v Linuxu | Dokumentace Microsoftu
+description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platformě Azure Service Fabric. Sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: get-started-article
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0e7e0f1262ee8c31bc6e71b49e9ef62129887f2c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ba4e5996a87596c88822d96faf3e80e8243ad78b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric.  Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/).  Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 ## <a name="prerequisites"></a>Požadavky
 * Vývojový počítač s:
@@ -38,7 +38,7 @@ Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric n
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru
 Sestavte image založenou na [imagi Pythonu](https://hub.docker.com/_/python/), která se nachází na Docker Hubu. 
 
-Definujte kontejner Dockeru v souboru Dockerfile. Soubor Dockerfile obsahuje pokyny k nastavení prostředí uvnitř kontejneru, načtení aplikace, kterou chcete pustit, a mapování portů. Soubor Dockerfile je vstupem příkazu `docker build`, který vytvoří image. 
+Zadejte kontejner Dockeru v souboru Dockerfile. Soubor Dockerfile obsahuje pokyny k nastavení prostředí uvnitř kontejneru, načtení aplikace, kterou chcete spustit, a mapování portů. Soubor Dockerfile je vstupem příkazu `docker build`, který vytvoří image. 
 
 Vytvořte prázdný adresář a soubor *Dockerfile* (bez přípony souboru). Do souboru *Dockerfile* přidejte následující a uložte změny:
 
@@ -67,13 +67,13 @@ CMD ["python", "app.py"]
 
 Další informace najdete v [referenčních informacích k souboru Dockerfile](https://docs.docker.com/engine/reference/builder/).
 
-## <a name="create-a-simple-web-application"></a>Vytvoření jednoduché webové aplikace
-Vytvořte webovou aplikaci Flask, která naslouchá na portu 80 a vrací „Hello World!“.  Ve stejném adresáři vytvořte soubor *requirements.txt*.  Přidejte do něj následující a uložte změny:
+## <a name="create-a-basic-web-application"></a>Vytvoření základní webové aplikace
+Vytvořte webovou aplikaci Flask, která naslouchá na portu 80 a vrací „Hello World!“. Ve stejném adresáři vytvořte soubor *requirements.txt*. Přidejte do něj následující a uložte změny:
 ```
 Flask
 ```
 
-Vytvořte také soubor *app.py* a přidejte do něj následující:
+Vytvořte také soubor *app.py* a přidejte do něj následující fragment kódu:
 
 ```python
 from flask import Flask
@@ -96,7 +96,7 @@ Spuštěním příkazu `docker build` vytvořte image spouštějící vaši webo
 docker build -t helloworldapp .
 ```
 
-Tento příkaz sestaví novou image podle pokynů ve vašem souboru Dockerfile a pojmenuje ji (označení -t) „helloworldapp“. Sestavení image si z Docker Hubu přetáhne základní image a vytvoří novou image, která přidá vaši aplikaci nad základní image.  
+Tento příkaz sestaví novou image podle pokynů ve vašem souboru Dockerfile a pojmenuje ji (označení -t) `helloworldapp`. Pro sestavení image kontejneru se nejprve z Docker Hubu stáhne základní image, do které se přidá aplikace. 
 
 Po dokončení příkazu pro sestavení spusťte příkaz `docker images` a zobrazte informace o nové imagi:
 
@@ -108,7 +108,7 @@ helloworldapp                 latest              86838648aab6        2 minutes 
 ```
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
-Než kontejnerizovanou aplikaci nahrajete do registru kontejneru, ověřte, že se spustí místně.  
+Než kontejnerizovanou aplikaci nahrajete do registru kontejneru, ověřte, že se spustí místně. 
 
 Spusťte aplikaci s mapováním portu 4000 vašeho počítače na zpřístupněný port 80 kontejneru:
 
@@ -118,7 +118,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Parametr *name* udává název spuštěného kontejneru (namísto ID kontejneru).
 
-Připojte se ke spuštěnému kontejneru.  Otevřete webový prohlížeč a přejděte na vrácenou IP adresu na portu 4000, například http://localhost:4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na vrácenou IP adresu na portu 4000, například http://localhost:4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 
@@ -139,7 +139,7 @@ Po ověření, že se aplikace spustí v Dockeru, nahrajte image do vašeho regi
 
 Spusťte příkaz `docker login` a přihlaste se ke svému registru kontejnerů pomocí [přihlašovacích údajů registru](../container-registry/container-registry-authentication.md).
 
-Následující příklad předá ID a heslo [instančního objektu](../active-directory/active-directory-application-objects.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace.  Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
+Následující příklad předá ID a heslo [instančního objektu](../active-directory/active-directory-application-objects.md) Azure Active Directory. Instanční objekt jste k registru mohli přiřadit například pro účely scénáře automatizace. Nebo se můžete přihlásit pomocí uživatelského jména a hesla registru.
 
 ```bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
@@ -160,9 +160,9 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="package-the-docker-image-with-yeoman"></a>Zabalení image Dockeru pomocí Yeomana
 Sada Service Fabric SDK pro Linux zahrnuje generátor [Yeoman](http://yeoman.io/), který usnadňuje vytvoření aplikace a přidání image kontejneru. Použijme Yeomana k vytvoření aplikace *SimpleContainerApp* s jediným kontejnerem Dockeru.
 
-Pokud chcete vytvořit aplikaci Service Fabric typu kontejner, otevřete okno terminálu a spusťte příkaz `yo azuresfcontainer`.  
+Pokud chcete vytvořit aplikaci Service Fabric typu kontejner, otevřete okno terminálu a spusťte příkaz `yo azuresfcontainer`. 
 
-Pojmenujte aplikaci (například mycontainer) a aplikační službu (například myservice).
+Pojmenujte aplikaci (například `mycontainer`) a aplikační službu (například `myservice`).
 
 Jako název image zadejte adresu URL image kontejneru v registru kontejneru (například myregistry.azurecr.io/samples/helloworldapp). 
 
@@ -173,7 +173,7 @@ Jako počet instancí zadejte 1.
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
 ## <a name="configure-port-mapping-and-container-repository-authentication"></a>Konfigurace mapování portů a ověřování úložiště kontejnerů
-Vaše kontejnerizovaná služba potřebuje koncový bod pro komunikaci.  Nyní přidejte protokol, port a typ do části `Endpoint` v souboru ServiceManifest.xml pod značku Resources (Prostředky). Pro účely tohoto článku kontejnerizovaná služba naslouchá na portu 4000: 
+Vaše kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Nyní přidejte protokol, port a typ do části `Endpoint` v souboru ServiceManifest.xml pod značku Resources (Prostředky). Pro účely tohoto článku kontejnerizovaná služba naslouchá na portu 4000: 
 
 ```xml
 
@@ -189,7 +189,7 @@ Vaše kontejnerizovaná služba potřebuje koncový bod pro komunikaci.  Nyní p
  
 Pokud zadáte `UriScheme`, koncový bod kontejneru se automaticky zaregistruje ve Službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml najdete na konci tohoto článku. 
 
-Nakonfigurujte v kontejneru mapování portů na hostitele určením zásady `PortBinding` v části `ContainerHostPolicies` souboru APplicationManifest.xml.  Pro účely tohoto článku je `ContainerPort` nastaven na 80 (kontejner zpřístupňuje port 80, jak je zadáno v souboru Dockerfile) a `EndpointRef` je myserviceTypeEndpoint (koncový bod definovaný v manifestu služby).  Příchozí požadavky na službu na portu 4000 se mapují na port 80 v kontejneru.  Pokud se váš kontejner potřebuje ověřovat v privátním úložišti, přidejte `RepositoryCredentials`.  Pro účely tohoto článku přidejte název a heslo účtu pro registr kontejneru myregistry.azurecr.io. Zajistěte, aby se zásada přidala pod značku ServiceManifestImport odpovídající správnému balíčku služby.
+Nakonfigurujte v kontejneru mapování portů na hostitele určením zásady `PortBinding` v části `ContainerHostPolicies` souboru APplicationManifest.xml. Pro účely tohoto článku je `ContainerPort` nastaven na 80 (kontejner zpřístupňuje port 80, jak je zadáno v souboru Dockerfile) a `EndpointRef` je myserviceTypeEndpoint (koncový bod definovaný v manifestu služby). Příchozí požadavky na službu na portu 4000 se mapují na port 80 v kontejneru. Pokud se váš kontejner potřebuje ověřovat v privátním úložišti, přidejte `RepositoryCredentials`. Pro účely tohoto článku přidejte název a heslo účtu pro registr kontejneru myregistry.azurecr.io. Zajistěte, aby se zásada přidala pod značku ServiceManifestImport odpovídající správnému balíčku služby.
 
 ```xml
    <ServiceManifestImport>
@@ -203,7 +203,7 @@ Nakonfigurujte v kontejneru mapování portů na hostitele určením zásady `Po
    </ServiceManifestImport>
 ``` 
 ## <a name="configure-docker-healthcheck"></a>Konfigurace dockeru HEALTHCHECK 
-Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru **dockerfile** použitém při generování image kontejneru. 
+Počínaje v6.1 Service Fabric automaticky integruje události [dockeru HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) do sestavy stavu systému. To znamená, že pokud váš kontejner má **HEALTHCHECK** povolený, Service Fabric oznámí stav vždy, když se změní stav kontejneru (nahlášený Dockerem). Pokud *health_status* je *healthy*, v [Service Fabric Exploreru](service-fabric-visualizing-your-cluster.md) se zobrazí sestava stavu **OK**. Pokud *health_status* je *unhealthy*, zobrazí se **UPOZORNĚNÍ**. Pokyn **HEALTHCHECK** odkazující na aktuální kontrolu, která se provede pro monitorování stavu kontejneru, musí být uvedený v souboru Dockerfile použitém při generování image kontejneru. 
 
 ![HealthCheckHealthy][1]
 
@@ -252,7 +252,7 @@ Pomocí instalačního skriptu, který je součástí šablony, zkopírujte bal�
 
 Otevřete prohlížeč a přejdete k Service Fabric Exploreru na adrese http://localhost:19080/Explorer (pokud používáte Vagrant v Mac OS X, místo localhost použijte privátní IP adresu virtuálního počítače). Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
-Připojte se ke spuštěnému kontejneru.  Otevřete webový prohlížeč a přejděte na vrácenou IP adresu na portu 4000, například http://localhost:4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč a přejděte na vrácenou IP adresu na portu 4000, například http://localhost:4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 
@@ -348,7 +348,7 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto článku.
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="myservice">
-      <!-- On a local development cluster, set InstanceCount to 1.  On a multi-node production 
+      <!-- On a local development cluster, set InstanceCount to 1. On a multi-node production 
       cluster, set InstanceCount to -1 for the container service to run on every node in 
       the cluster.
       -->
@@ -363,7 +363,7 @@ Tady jsou kompletní manifesty aplikace a služby použité v tomto článku.
 
 Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pomocí Yeomana, proveďte následující kroky:
 
-1. Změňte adresář na kořenovou složku stávající aplikace.  Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
+1. Změňte adresář na kořenovou složku stávající aplikace. Například `cd ~/YeomanSamples/MyApplication`, pokud `MyApplication` je aplikace vytvořená pomocí Yeomanu.
 2. Spusťte `yo azuresfcontainer:AddService`.
 
 <a id="manually"></a>
@@ -371,7 +371,7 @@ Pokud chcete přidat další službu kontejneru do aplikace již vytvořené pom
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurace časového intervalu před vynuceným ukončením kontejneru
 
-Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.   Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
+Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
 
 
 ```json
@@ -391,7 +391,7 @@ Výchozí časový interval je nastavený na 10 sekund. Vzhledem k tomu, že je 
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurace modulu runtime pro odebrání nepoužívaných imagí kontejneru
 
-Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru.  Pokud chcete tuto funkci povolit, aktualizujte část `Hosting` v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
+Cluster Service Fabric můžete nakonfigurovat tak, aby z uzlu odebral nepoužívané image kontejneru. Tato konfigurace umožňuje znovu získat místo na disku v případě, že je na uzlu příliš mnoho imagí kontejneru. Pokud chcete tuto funkci povolit, aktualizujte část `Hosting` v manifestu clusteru, jak je znázorněno v následujícím fragmentu kódu: 
 
 
 ```json
@@ -416,7 +416,7 @@ Image, které se nesmí odstranit, můžete zadat v rámci parametru `ContainerI
 
 ## <a name="configure-container-image-download-time"></a>Konfigurace doby stahování image kontejneru
 
-Ve výchozím nastavení modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přidělí 20 minut. Pro většinu imagí kontejnerů to stačí. U větších imagí nebo při pomalém síťovém připojení může být potřeba prodloužit čas, po který se čeká, než dojde ke zrušení stahování a extrakce imagí. Můžete k tomu použít atribut **ContainerImageDownloadTimeout** v části **Hosting** manifestu clusteru, jak ukazuje následující fragment kódu:
+Modul runtime Service Fabric pro stažení a extrakci imagí kontejneru přidělí 20 minut. Pro většinu imagí kontejnerů to stačí. U větších imagí nebo při pomalém síťovém připojení může být potřeba prodloužit čas, po který se čeká, než dojde ke zrušení stahování a extrakce imagí. Tento časový limit se nastavuje pomocí atributu **ContainerImageDownloadTimeout** v části **Hosting** manifestu clusteru, jak ukazuje následující fragment kódu:
 
 ```json
 {
@@ -439,8 +439,25 @@ Jako pomoc s diagnostikou selhání spuštění kontejneru Service Fabric (verze
  <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
 ```
 
-Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se při svém selhání zachovají. Pokud je zadaná hodnota záporná, zachovají se všechny kontejnery, které selhaly. Když atribut **ContainersRetentionCount** není zadaný, nezachovají se žádné kontejnery. Atribut **ContainersRetentionCount** také podporuje parametry aplikace, takže uživatelé mohou zadat různé hodnoty pro testovací a produkční clustery. Při použití této funkce se doporučuje použít omezení umístění a cílit službu kontejneru na konkrétní uzel. Zabrání se tak přesunu služby kontejneru na jiné uzly. Všechny kontejnery zachované pomocí této funkce je nutné ručně odebrat.
+Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se při svém selhání zachovají. Pokud je zadaná hodnota záporná, zachovají se všechny kontejnery, které selhaly. Když atribut **ContainersRetentionCount** není zadaný, nezachovají se žádné kontejnery. Atribut **ContainersRetentionCount** také podporuje parametry aplikace, takže uživatelé mohou zadat různé hodnoty pro testovací a produkční clustery. Při použití této funkce použijte omezení umístění, aby služba kontejneru cílila na konkrétní uzel. Zabrání se tak přesunu služby kontejneru na jiné uzly. Všechny kontejnery zachované pomocí této funkce je nutné ručně odebrat.
 
+## <a name="start-the-docker-daemon-with-custom-arguments"></a>Spuštění démona Dockeru s vlastními argumenty
+
+V modulu runtime Service Fabric verze 6.2 a novější můžete spustit démona Dockeru s vlastními argumenty. Pokud zadáte vlastní argumenty, Service Fabric do modulu Dockeru nepředá žádné další argumenty s výjimkou argumentu `--pidfile`. Proto by se `--pidfile` nemělo předávat jako argument. Kromě toho by tento argument měl umožnit, aby démon Dockeru i nadále naslouchal kanálu s výchozím názvem ve Windows (nebo unixovému soketu domény v Linuxu), aby se zajistila komunikace Service Fabric s démonem. Vlastní argumenty se zadávají v manifestu clusteru v části **Hosting** v rámci části **ContainerServiceArguments**. Příklad je znázorněný v následujícím fragmentu kódu: 
+ 
+
+```json
+{ 
+   "name": "Hosting", 
+        "parameters": [ 
+          { 
+            "name": "ContainerServiceArguments", 
+            "value": "-H localhost:1234 -H unix:///var/run/docker.sock" 
+          } 
+        ] 
+} 
+
+```
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o spouštění [kontejnerů v Service Fabric](service-fabric-containers-overview.md).

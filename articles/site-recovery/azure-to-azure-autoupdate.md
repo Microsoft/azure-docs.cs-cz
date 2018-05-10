@@ -8,15 +8,15 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: rajanaki
-ms.openlocfilehash: 45f2e2927f699769bb385038c04d4dd23e075a9a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d9b653e4766746d2142a7e1040d6d60ec2aacc44
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Automatické aktualizace služby Mobility rozšíření Azure do Azure replikace
 
-Azure Site Recovery má měsíční cadence verzi jsou přidány vylepšení stávajících funkcí nebo nové, kde jsou pevné známé problémy, pokud existuje. To by znamenalo, že zůstat aktuální službou, budete muset na měsíční cadence plánování pro nasazení těchto oprav. Aby se zabránilo selhání hlavičky přidružené k upgradu, uživatelé mohou místo toho možnost obnovení lokality ke správě aktualizací součástí. Podle popisu v [referenční architektura](azure-to-azure-architecture.md) pro zotavení po havárii Azure do Azure, získá službu Mobility nainstalovat na všechny Azure virtuální počítače, pro které je povolená replikace při replikaci virtuálních počítačů z jedné Azure oblast na jiný. Tento dokument podrobně popisuje následující:
+Azure Site Recovery má měsíční cadence verzi jsou přidány vylepšení stávajících funkcí nebo nové, kde jsou pevné známé problémy, pokud existuje. To by znamenalo, že zůstat aktuální službou, budete muset naplánovat nasazení těchto oprav měsíčně. Aby se zabránilo selhání hlavičky přidružené k upgradu, uživatelé mohou místo toho možnost obnovení lokality ke správě aktualizací součástí. Podle popisu v [referenční architektura](azure-to-azure-architecture.md) pro zotavení po havárii Azure do Azure, získá službu Mobility nainstalovat na všechny Azure virtuální počítače, pro které je povolená replikace při replikaci virtuálních počítačů z jedné Azure oblast na jiný. Jakmile povolíte automatických aktualizací, získá rozšíření služby Mobility aktualizováno každých novou verzi. Tento dokument podrobně popisuje následující:
 
 - Jak funguje automatické aktualizace?
 - Povolit automatické aktualizace
@@ -25,6 +25,9 @@ Azure Site Recovery má měsíční cadence verzi jsou přidány vylepšení st�
 ## <a name="how-does-automatic-update-work"></a>Jak funguje automatické aktualizace
 
 Jakmile povolíte Site Recovery ke správě aktualizací, globální runbook (který je využíván službou Azure services) se nasazuje přes účet automation, který je vytvořen ve stejném předplatném jako trezor. Jeden účet automation se používá pro konkrétní trezoru. Sada runbook zkontroluje pro každý virtuální počítač v trezoru, pro kterou jsou automatické aktualizace zapnuté ON a zahájí upgrade rozšíření služby Mobility, pokud je k dispozici novější verze. Výchozí plán recurrs runbook každý den v 12:00 AM podle časového pásma geograficky replikovaného virtuálního počítače. Plán sad runbook můžete také upravit prostřednictvím účtu automation uživatelem, v případě potřeby. 
+
+> [!NOTE]
+> Povolení funkce Automatické aktualizace nevyžaduje restartování virtuální počítače Azure a nemá vliv na probíhající replikace.
 
 ## <a name="enable-automatic-updates"></a>Povolit automatické aktualizace
 

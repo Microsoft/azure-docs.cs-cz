@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 26c77b706f17f49eff782e6d0d73087050739874
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
 
@@ -40,8 +40,18 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, znám
 
 
 ### <a name="prerequisites"></a>Požadavky
-- Nainstalovat Azure zásobníku [aktualizovat 1802](azure-stack-update-1802.md) před instalací aktualizace 1803 zásobník Azure.    
+- Nainstalovat Azure zásobníku [aktualizovat 1802](azure-stack-update-1802.md) před instalací aktualizace 1803 zásobník Azure.   
 
+- Nainstalujte **opravu AzS Hotfix – 1.0.180312.1-sestavení 20180222.2** před instalací aktualizace 1803 zásobník Azure. Tato oprava hotfix aktualizace programu Windows Defender a je k dispozici při stahování aktualizací pro Azure zásobníku.
+
+  Chcete-li nainstalovat opravu hotfix, postupujte podle běžné postupy pro [instalace aktualizací pro Azure zásobníku](azure-stack-apply-updates.md). Název aktualizace zobrazí jako **opravu AzS Hotfix – 1.0.180312.1**a obsahuje následující soubory: 
+    - PUPackageHotFix_20180222.2-1.exe
+    - PUPackageHotFix_20180222.2-1.bin
+    - Metadata.xml
+
+  Po nahrávání těchto souborů do účtu úložiště a kontejneru, spusťte instalaci z dlaždice aktualizace v portálu pro správu. 
+  
+  Na rozdíl od aktualizace zásobníku Azure instalací této aktualizace se nemění verzi Azure zásobníku. Pokud chcete potvrdit, instalaci této aktualizace, zobrazí se seznam **nainstalované aktualizace**.
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
 - Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).

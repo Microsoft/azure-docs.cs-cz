@@ -8,18 +8,17 @@ manager: michael.tillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 1cfd85eda9ef59a2265a991cabe5f1b6ee83563d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynutit zásady pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
@@ -192,7 +191,7 @@ Učebna aplikace | Skupiny vytvořené v aplikaci učebny splňovat pravidla pro
 Power BI | Zásady pojmenování vyhovují pracovních prostorů Power BI.    
 Yammer | Yammer připojené skupiny nevynucují nakonfigurovaná pravidla pro názvy. Pro organizace s názvy zásad povolená vytvoří Yammer starší verze Yammer skupin, které nejsou připojené k Office 365 pro skupiny, které nebudou vyhovovat pravidla pro názvy.
 StaffHub  | Týmy StaffHub nepostupujte podle pravidla pro názvy, ale nemá podkladové skupiny Office 365. Název týmu StaffHub nevztahuje předpony a přípony a nekontroluje vlastní blokované slova. Ale StaffHub použít předpony a přípony a odebere blokované slova z podkladové skupiny Office 365.
-Exchange PowerShell | Zásady pojmenování vyhovují rutiny Exchange PowerShell. Uživatelé obdrží odpovídající chybové zprávy se navrhované předpony a přípony a pro vlastní blokované slova, pokud nemáte postupují pravidla pro názvy v název skupiny a skupiny alias (mailNickname).
+Prostředí PowerShell systému Exchange | Zásady pojmenování vyhovují rutiny Exchange PowerShell. Uživatelé obdrží odpovídající chybové zprávy se navrhované předpony a přípony a pro vlastní blokované slova, pokud nemáte postupují pravidla pro názvy v název skupiny a skupiny alias (mailNickname).
 Rutiny služby Azure Active Directory PowerShell. | Rutiny služby Azure Active Directory PowerShell jsou kompatibilní s názvy zásad. Uživatelé obdrží odpovídající chybové zprávy se navrhované předpony a přípony a pro vlastní blokované slova, pokud nemáte postupují zásady vytváření názvů v názvech skupin a alias skupiny.
 Centrum pro správu systému Exchange | Centrum pro správu systému Exchange je kompatibilní s názvy zásad. Uživatelé obdrží odpovídající chybové zprávy se navrhované předpony a přípony a pro vlastní blokované slova, pokud nemáte postupují zásady vytváření názvů v název skupiny a skupiny alias.
 Centrum pro správu Office 365 | Centrum pro správu Office 365 je kompatibilní s názvy zásad. Když uživatel vytvoří nebo názvy skupin úpravy, pravidla pro názvy se automaticky použije a uživatelům zobrazit příslušné chyby při jejich zadejte vlastní blokované slova. Do centra pro správu Office 365 ještě nezobrazí náhled pravidla pro názvy a nevrací chyby vlastní blokované aplikace word, když uživatel zadá název skupiny.

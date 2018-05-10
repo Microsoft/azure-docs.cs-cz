@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
-ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 897b45782dee14099d5d7a7b12c49e2bfd60b309
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnit skupiny pomocí mapování skupin závislostí
 
@@ -24,18 +24,18 @@ Tento článek popisuje, jak k zpřesnění skupinu vizualizací závislosti vš
 # <a name="prepare-the-group-for-dependency-visualization"></a>Příprava skupiny pro vizualizaci závislostí
 Chcete-li zobrazit závislosti skupiny, musíte stáhnout a nainstalovat agenty na každý na místním počítači, který je součástí skupiny. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [OMS brány](../log-analytics/log-analytics-oms-gateway.md) na ně.
 
-### <a name="download-and-install-the-vm-agents"></a>Stáhněte a nainstalujte agenty virtuálních počítačů
+### <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
 1. V **přehled**, klikněte na tlačítko **spravovat** > **skupiny**, přejděte na požadovanou skupinu.
 2. V seznamu počítačů v **agent služby Dependency** sloupce, klikněte na tlačítko **vyžaduje instalaci** zobrazíte pokyny o tom, jak stáhnout a nainstalovat agenty.
 3. Na **závislosti** stránky, stáhněte a nainstalujte Microsoft Monitoring Agent (MMA) a agent závislost na každý virtuální počítač, který je součástí skupiny.
-4. Zkopírujte ID a klíč. Je třeba tyto při instalaci MMA na místní počítače.
+4. Zkopírujte ID a klíč pracovního prostoru. Je třeba tyto při instalaci MMA na místní počítače.
 
-### <a name="install-the-mma"></a>Nainstalujte
+### <a name="install-the-mma"></a>Instalace agenta MMA
 
 Instalace agenta na počítači s Windows:
 
-1. Poklikejte na stažený agenta.
-2. Na **úvodní** stránce klikněte na **Další**. Na **licenční podmínky** klikněte na tlačítko **souhlasím** tak, aby přijímal licence.
+1. Dvakrát klikněte na staženého agenta.
+2. Na **úvodní** stránce klikněte na **Další**. Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
 3. V **cílovou složku**, zachovat, nebo upravit výchozí instalační složku > **Další**. 
 4. V **možnosti instalace agenta**, vyberte **Azure Log Analytics** > **Další**. 
 5. Klikněte na tlačítko **přidat** přidat nový pracovní prostor analýzy protokolů. Vložte ID a klíč, který jste zkopírovali z portálu. Klikněte na **Další**.
@@ -49,13 +49,13 @@ Instalace agenta na počítač s Linuxem:
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
 
-### <a name="install-the-dependency-agent"></a>Nainstalujte agenta závislostí
+### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 1. K instalaci agenta závislost na počítači s Windows, klikněte dvakrát na instalační soubor a postupujte podle pokynů průvodce.
 2. Pro instalaci agenta závislost na počítač s Linuxem nainstalujte jako kořenového adresáře pomocí následujícího příkazu:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[Další informace](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) o operačních systémech podporovaných produktem agenta závislostí. 
+[Další informace](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) o operačních systémech podporovaných produktem agenta závislostí. 
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Upřesnit skupiny založené na vizualizace závislostí
 Po instalaci agentů na všech počítačích skupiny, můžete vizualizovat závislosti skupiny a upřesnit pomocí následujících níže uvedených pokynů.
@@ -69,7 +69,7 @@ Po instalaci agentů na všech počítačích skupiny, můžete vizualizovat zá
     - Procesy uvnitř počítače, můžete rozšířit každého pole počítač k zobrazení procesů
     - Vlastnosti, například plně kvalifikovaný název domény, operační systém, atd. adresa MAC každého počítače, můžete kliknutím na každého pole počítače chcete zobrazit podrobnosti
 
-     ![Zobrazení skupiny závislosti](./media/how-to-create-group-dependencies/view-group-dependencies.png)
+     ![Zobrazení skupinových závislostí](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Chcete-li zobrazit podrobnější závislosti, klikněte na tlačítko časový rozsah a upravit ho. Ve výchozím nastavení rozsahu představuje jednu hodinu. Můžete upravit časové rozmezí, nebo zadejte počáteční a koncová data a doby trvání.
 4. Ověření závislé počítačů, procesů běžících v rámci každý počítač a identifikovat počítače, které by měla být přidat nebo odebrat ze skupiny.

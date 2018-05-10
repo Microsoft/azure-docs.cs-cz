@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: daee95c177ecddfea1cf7d6d162906fcc86938b4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4238d241ec5daacd06485b118a8ccf9b68a9d6d9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Element Microsoft.Common.TextBox uživatelského rozhraní
 Ovládací prvek, který lze upravit neformátovaný text.
@@ -51,7 +51,7 @@ Ovládací prvek, který lze upravit neformátovaný text.
 ## <a name="sample-output"></a>Ukázkový výstup
 
 ```json
-"foobar"
+"my value"
 ```
 
 ## <a name="next-steps"></a>Další postup

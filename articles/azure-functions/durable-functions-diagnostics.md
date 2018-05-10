@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f2fc1c87a0eee9e822ffc997f67320ed23dd5916
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4829ea88e0b6507159c192c111acf8ec7e5088e2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika trvanlivý funkcí (Azure Functions)
 
@@ -68,7 +68,7 @@ Podrobností sledování dat do služby Application Insights vygenerované se d�
 
 Ve výchozím nastavení jsou všechny sledování události vygenerované. Objem dat může snížit nastavení `Host.Triggers.DurableTask` k `"Warning"` nebo `"Error"` v takovém případě sledování událostí bude pouze být vygenerované pro výjimečné situace.
 
-> [!WARNING]
+> [!NOTE]
 > Ve výchozím nastavení je telemetrie Application Insights vzorkovat modulu runtime Azure Functions tak, aby se zabránilo generování dat příliš často. To může způsobit informace o sledování být ztraceny, pokud v krátké době dojde k mnoha události životního cyklu. [Monitorování funkce Azure článku](functions-monitoring.md#configure-sampling) vysvětluje, jak pro konfiguraci tohoto chování.
 
 ### <a name="single-instance-query"></a>Jedna instance dotazu
@@ -124,6 +124,8 @@ Výsledkem je seznam instance ID a jejich aktuální stav modulu runtime.
 
 Je důležité mějte orchestrator opětovného přehrání chování při zápisu protokoly přímo z funkce produktu orchestrator. Zvažte například následující funkce orchestrator:
 
+#### <a name="c"></a>C#
+
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
@@ -137,6 +139,22 @@ public static async Task Run(
     await ctx.CallActivityAsync("F3");
     log.Info("Done!");
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context){
+    context.log("Calling F1.");
+    yield context.df.callActivityAsync("F1");
+    context.log("Calling F2.");
+    yield context.df.callActivityAsync("F2");
+    context.log("Calling F3.");
+    yield context.df.callActivityAsync("F3");
+    context.log("Done!");
+});
 ```
 
 Výsledná data protokolu bude vypadat podobně jako následující:
@@ -181,6 +199,49 @@ Calling F2.
 Calling F3.
 Done!
 ```
+
+> [!NOTE]
+> `IsReplaying` Vlastnost dosud nejsou k dispozici v jazyce JavaScript.
+
+## <a name="custom-status"></a>Vlastní stav
+
+Stav vlastní orchestration umožňuje nastavit vlastní stav hodnotu funkce produktu orchestrator. Tento stav je k dispozici prostřednictvím rozhraní API dotazu stav protokolu HTTP nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API. Stav vlastní orchestration umožňuje bohatší monitorování pro orchestrator funkce. Například může obsahovat kód funkce orchestrator `DurableOrchestrationContext.SetCustomStatus` volání se aktualizovat průběh dlouho běžící operace. Klienta, například na webové stránce nebo jiné externí systém, pak pravidelně dotazovat dotazu stav HTTP rozhraní API pro širší informace o průběhu. Ukázka použití `DurableOrchestrationContext.SetCustomStatus` najdete níže:
+
+```csharp
+public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
+{
+    // ...do work...
+
+    // update the status of the orchestration with some arbitrary data
+    var customStatus = new { completionPercentage = 90.0, status = "Updating database records" };
+    ctx.SetCustomStatus(customStatus);
+
+    // ...do more work...
+}
+```
+
+Je spuštěn orchestration, externích klientů můžete načíst tento vlastní stav:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/instance123
+
+```
+
+Klienti získají následující odpověď: 
+
+```http
+{
+  "runtimeStatus": "Running",
+  "input": null,
+  "customStatus": { "completionPercentage": 90.0, "status": "Updating database records" },
+  "output": null,
+  "createdTime": "2017-10-06T18:30:24Z",
+  "lastUpdatedTime": "2017-10-06T19:40:30Z"
+}
+```
+
+> [!WARNING]
+>  Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni nevešla sloupec Azure Table Storage. Externí úložiště můžete použít, pokud potřebujete větší datovou část.
 
 ## <a name="debugging"></a>Ladění
 

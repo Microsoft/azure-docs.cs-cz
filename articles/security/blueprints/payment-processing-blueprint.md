@@ -3,7 +3,7 @@ title: Azure zabezpečení a dodržování předpisů plán, podle kterého - vy
 description: Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 2f1e00a8-0dd6-477f-9453-75424d06a1df
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 
@@ -43,7 +43,7 @@ Základní architektura se skládá z následujících součástí:
 - **Nasazení šablony**. V tomto nasazení [šablon Azure Resource Manageru](/azure/azure-resource-manager/resource-group-overview#template-deployment) se používají k automaticky nasazení komponent architektury do Microsoft Azure tak, že zadáte parametry konfigurace během instalace.
 - **Automatizované skripty nasazení**. Tyto skripty pomoct nasadit řešení začátku do konce. Skripty se zabývají:
     - Instalace modulu a [globálního správce](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) instalační skript se používá k instalaci a ověřte, zda jsou správně nakonfigurovány požadované moduly prostředí PowerShell a rolí globálního správce.
-    - Instalace skriptu prostředí PowerShell slouží k nasazení řešení začátku do konce, poskytnuto prostřednictvím soubor .zip a souboru .bacpac, které obsahují předdefinovaných ukázkovou webovou aplikaci s [ukázkové databáze SQL](https://github.com/Microsoft/azure-sql-security-sample). obsah. Zdrojový kód pro toto řešení je k dispozici ke kontrole [ úložiště kódu plán, podle kterého][code-repo]. 
+    - Instalace skriptu prostředí PowerShell slouží k nasazení řešení začátku do konce, poskytnuto prostřednictvím soubor .zip a souboru .bacpac, které obsahují předdefinovaných ukázkovou webovou aplikaci s [ukázkové databáze SQL](https://github.com/Microsoft/azure-sql-security-sample). obsah. Zdrojový kód pro toto řešení je k dispozici ke kontrole [úložiště kódu plán, podle kterého] [kódu úložišti]. 
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 
@@ -299,7 +299,7 @@ Výchozí nasazení slouží jako základní úroveň center doporučení zabezp
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
-Součásti pro nasazení tohoto řešení jsou k dispozici [úložiště kódu PCI plán, podle kterého][code-repo]. Nasazení základní architektury vyžaduje několik kroků proveden prostřednictvím v5 Microsoft PowerShell. Pro připojení k webu, zadejte vlastní název domény (například contoso.com). Je to určeno, pomocí `-customHostName` přepínače v kroku 2. Další informace najdete v tématu [koupit vlastní název domény pro Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Vlastní název domény není nutné úspěšně nasadit a provozovat řešení, ale bude možné připojit se k webu pro demonstrační účely.
+Součásti pro nasazení tohoto řešení jsou k dispozici v [kód úložišti PCI plán, podle kterého] [kódu úložišti]. Nasazení základní architektury vyžaduje několik kroků proveden prostřednictvím v5 Microsoft PowerShell. Pro připojení k webu, zadejte vlastní název domény (například contoso.com). Je to určeno, pomocí `-customHostName` přepínače v kroku 2. Další informace najdete v tématu [koupit vlastní název domény pro Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Vlastní název domény není nutné úspěšně nasadit a provozovat řešení, ale bude možné připojit se k webu pro demonstrační účely.
 
 Skripty přidávat uživatele domény klienta služby Azure AD, který určíte. Doporučujeme vytvořit nový klient Azure AD, které chcete použít jako testu.
 
@@ -384,11 +384,3 @@ Je zodpovědností ponechá kopii zákazníků [matice souhrn odpovědnost](http
 - Všechny názvy zákazníků, záznamy transakce a všechna související data na této stránce jsou smyšlené, vytvoří pro účely této základní architektury a jenom ilustrativní. Je určen žádný skutečný vztah nebo připojení a žádné vyvozovat.  
 - Toto řešení společně vyvinula společnost Microsoft a konzultace ohledně Avyan a je k dispozici v části [licencí MIT](https://opensource.org/licenses/MIT).
 - Toto řešení posoudili Coalfire, auditor PCI-DSS společnosti Microsoft. [Zkontrolovat dodržování předpisů PCI](https://aka.ms/pciblueprintcrm32) poskytuje nezávislé, třetích stran kontrolu řešení a součásti, které je třeba vzít v úvahu. 
-
-### <a name="document-authors"></a>Autoři dokumentu
-
-- *František Simorjay (Microsoft)*  
-- *Gururaj Pandurangi (Avyan poradě)*
-
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Úložiště kódu"

@@ -1,12 +1,12 @@
 ---
-title: "Zřídit malin platformy pro vzdálené monitorování pomocí C - Azure | Microsoft Docs"
-description: "Popisuje, jak se připojit k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v c malin platformy zařízení"
+title: Zřídit malin platformy pro vzdálené monitorování pomocí C - Azure | Microsoft Docs
+description: Popisuje, jak se připojit k používání aplikace napsané v c akcelerátoru řešení vzdáleného monitorování malin platformy zařízení
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc50a33f-9fb9-42d7-b1b8-eb5cff19335e
 ms.service: iot-suite
 ms.devlang: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: e3fb95bc5084bb633541f70a5e68cc8d6af83298
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 79a97dda31308cdd0ffeb1196a8a11e0f431803e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Připojte zařízení malin pí k předkonfigurovaného řešení vzdáleného monitorování (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Připojení zařízení malin platformy pro vzdálené monitorování akcelerátoru řešení (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit fyzického zařízení k předkonfigurovaného řešení vzdáleného monitorování. Stejně jako u aplikací nejvíce embedded, které jsou spuštěné na omezené zařízení, kód klienta pro aplikaci malin platformy zařízení je napsána v C. V tomto kurzu vytvoříte aplikaci na platformy malin systémem Raspbian operačního systému.
+Tento kurz ukazuje, jak se připojit ke vzdálené monitorování akcelerátoru řešení fyzického zařízení. Stejně jako u aplikací nejvíce embedded, které jsou spuštěné na omezené zařízení, kód klienta pro aplikaci malin platformy zařízení je napsána v C. V tomto kurzu vytvoříte aplikaci na platformy malin systémem Raspbian operačního systému.
 
 ### <a name="required-hardware"></a>Požadovaný hardware
 
@@ -49,7 +49,7 @@ Musíte klient SSH na umožňují vzdálený přístup na příkazovém řádku 
 
 Tento článek předpokládá, že jste nainstalovali nejnovější verzi [Raspbian operačního systému na vaše malin pí](https://www.raspberrypi.org/learning/software-guide/quickstart/).
 
-Následující kroky ukazují, jak připravit vaše malin platformy pro vytvoření aplikace C, která se připojuje k předkonfigurovaného řešení:
+Následující kroky ukazují, jak připravit vaše malin platformy pro vytvoření aplikace C, která se připojuje k akcelerátoru řešení:
 
 1. Připojte se k malin pí pomocí **ssh**. Další informace najdete v tématu [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) na [web Pi malin](https://www.raspberrypi.org/).
 

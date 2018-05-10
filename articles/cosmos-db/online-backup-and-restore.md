@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f8ddc9c57df878137ee1ff1b6431e40acfd5eb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení databáze Cosmos Azure
 Azure Cosmos DB automaticky provede zálohování všech dat v pravidelných intervalech. Automatické zálohování se provádějí bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy se ukládají odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikovat pro odolnost proti místní havárie. Automatické zálohování jsou určené pro scénáře, pokud omylem odstraníte vaší Cosmos DB kontejneru a později vyžadují obnovení dat nebo řešení zotavení po havárii.  
@@ -50,7 +50,11 @@ Následující obrázek ukazuje pravidelné úplné zálohy všech Cosmos DB ent
 ## <a name="backup-retention-period"></a>Doba uchovávání záloh
 Jak je popsáno výše, bude Azure Cosmos DB na úrovni oddílu trvá snímky dat každé čtyři hodiny. V každém okamžiku jsou uchovány pouze posledních dvou snímků. Ale pokud kolekce a databáze se odstraní, jsme zachovat existující snímky pro všechny odstraněné oddíly v rámci dané kolekce a databáze po dobu 30 dnů.
 
-Pokud chcete zachovat vlastní snímky, můžete použít metodu exportu možnosti JSON v Azure Cosmos DB [nástroj pro migraci dat](import-data.md#export-to-json-file) naplánovat další zálohy.
+Pro rozhraní API pro SQL, pokud chcete zachovat vlastní snímky, můžete použít export do formátu JSON možnost v Azure Cosmos DB [nástroj pro migraci dat](import-data.md#export-to-json-file) naplánovat další zálohy.
+
+> [!NOTE]
+> Pokud jste "Zřídit propustnost pro sadu kontejnery na úrovni databáze" – mít na paměti, se odehrává na úrovni Úplná účet databáze obnovení. Je také potřeba zajistit pro přístup do 8 hodin k naší podpoře Pokud omylem odstraněn váš kontejner – kolekce, tabulka nebo grafu v případě používat tato nová funkce. 
+
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Obnovení databáze z online zálohování
 Pokud omylem odstraníte databáze nebo kolekce, můžete [souboru lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nebo [volání podpory Azure](https://azure.microsoft.com/support/options/) k obnovení dat z poslední automatické zálohování. Pokud je nutné obnovit databázi z důvodu problému s poškozením dat (zahrnuje případech, kde jsou odstraněny dokumenty v rámci kolekce), najdete v části [zpracování poškození dat](#handling-data-corruption) jako je třeba provést další kroky, aby se zabránilo poškozená data přepsání existující zálohy. Pro konkrétní snímek zálohy obnovit Cosmos DB vyžaduje, aby data byla k dispozici po dobu trvání cyklu zálohování pro tento snímek.

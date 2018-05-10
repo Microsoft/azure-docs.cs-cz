@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: asgang
-ms.openlocfilehash: 44f2016dacf1433cfe3a61058a167c42700e37d6
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9bfe181b2271f4e8af6f43e1728167712dade8ee
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-azure-site-recovery-extension-failures-issues-with-the-agent-or-extension"></a>Řešení potíží s selhání rozšíření Azure Site Recovery: problémy s agenta nebo rozšíření
 
@@ -31,6 +31,13 @@ Kód chyby: "151076"
 **Příčina 2: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Příčina 3: [rozšíření Site Recovery se nepodařilo aktualizovat nebo načíst](#the-site-recovery-extension-fails-to-update-or-load)**  
 
+Chybová zpráva: "předchozí lokality obnovení rozšíření trvá operace déle, než se očekávalo."<br>
+Kód chyby: "150066"<br>
+
+**Příčina 1: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**Příčina 2: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**Příčina 3: [stav rozšíření Site Recovery je nesprávný](#the-site-recovery-extension-fails-to-update-or-load)**  
+
 ## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Ochrana se nezdaří, protože agent virtuálního počítače je reagovat
 
 Chybová zpráva: "úloha vypršel při sledování pro spuštění operace rozšíření."<br>
@@ -43,7 +50,11 @@ Můžete zkontrolovat stav agenta hosta Azure v [portál Azure](https://portal.a
 **Příčina 2: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
+Chybová zpráva: "úloha vypršel při sledování pro spuštění operace rozšíření."<br>
+Kód chyby: "151095"<br>
 
+Tato situace nastat při stará verze agenta na počítači systému Linux. Proveďte následující krok řešení potíží.<br>
+  **Příčina 1: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent byl nainstalován ve virtuálním počítači, ale je reagovat (pro virtuální počítače Windows)

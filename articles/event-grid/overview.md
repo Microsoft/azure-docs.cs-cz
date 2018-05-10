@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Úvod do Azure událostí mřížky
 
@@ -24,11 +24,15 @@ Událost mřížky v současné době podporuje následující oblasti:
 
 * Asie a Tichomoří – jihovýchod
 * Asie – východ
+* Austrálie – východ
+* Austrálie – jihovýchod
 * Střed USA
 *   Východ USA
 *   Východní USA 2
 * Evropa – západ
 * Evropa – sever
+* Japonsko – východ
+* Japonsko – západ
 *   Západní střed USA
 *   Západní USA
 *   Západní USA 2
@@ -45,10 +49,13 @@ Následující služby Azure v současné době podporují odesílání událost
 * Vlastní témata
 * Event Hubs
 * IoT Hub
+* Media Services
 * Skupiny prostředků (operace správy)
 * Service Bus
 * Objekt Blob úložiště
 * Úložiště pro obecné účely v2 (GPv2)
+
+Odkazy na články, které ukazují, jak používat jednotlivé zdroje událostí naleznete v tématu [zdroje událostí v mřížce událostí Azure](event-sources.md).
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
@@ -57,11 +64,15 @@ Následující služby Azure v současné době podporují zpracování událost
 * Azure Automation
 * Azure Functions
 * Event Hubs
+* Hybridní připojení
 * Logic Apps
 * Microsoft Flow
+* Queue Storage
 * WebHooky
 
 Při použití Azure Functions jako obslužná rutina, používejte aktivační událost mřížky místo obecné aktivace protokolu HTTP. Event Grid automaticky ověřuje aktivační události funkcí Event Grid. U obecných aktivačních událostí HTTP je potřeba implementovat [odpověď ověření](security-authentication.md#webhook-event-delivery).
+
+Odkazy na články, které ukazují, jak používat každý obslužná rutina události, najdete v části [obslužné rutiny událostí v mřížce událostí Azure](event-handlers.md).
 
 ## <a name="concepts"></a>Koncepty
 

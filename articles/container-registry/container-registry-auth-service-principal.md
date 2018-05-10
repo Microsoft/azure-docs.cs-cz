@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 2dd96880292f98d6635ae5223b34cf3b78c81e16
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 16af83522dd55744c485f6dd3696481e16da1b22
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure kontejneru registru ověřování s objekty služby
 
@@ -51,7 +51,7 @@ Jakmile máte objekt služby, že jste udělen přístup ke kontejneru registr, 
 
 Při konfiguraci jednotlivých aplikacím používat přihlašovací údaje hlavní služby je mimo rámec tohoto článku, najdete pokyny pro některé určitým službám a platformy tady:
 
-* [Ověření pomocí Azure kontejneru registru z Azure Container Service (AKS)](container-registry-auth-aks.md)
+* [Ověření pomocí Azure kontejneru registru ze služby Azure Kubernetes (AKS)](container-registry-auth-aks.md)
 * [Ověření pomocí Azure kontejneru registru z instancí Azure kontejneru (ACI)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->

@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 828489510cea16ebba1944c0e6d1fc88f9375fc7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 V tomto článku jsou uvedeny některé z běžných termínů používaných v článcích IoT Hub.
 
 ## <a name="advanced-message-queueing-protocol"></a>Pokročilé Message Queueing Protocol
 [Rozšířené zpráv služby Řízení front Protocol (AMQP)](https://www.amqp.org/) je jedním z zasílání zpráv protokoly, které [IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o zasílání zpráv protokolů, které podporuje Centrum IoT najdete v tématu [odesílat a přijímat zprávy službou IoT Hub](iot-hub-devguide-messaging.md).
+
+## <a name="automatic-device-management"></a>Správa automatického zařízení
+Automatická správa zařízení ve službě Azure IoT Hub automatizuje řadu opakovaných a složitější úlohy správy loďstev velké zařízení přes celého jejich životních cyklů. S automatickou správu zařízení můžete cílí na skupiny zařízení, na základě jejich vlastností, zadejte požadované konfigurace a nechat IoT Hub, aktualizujte si zařízení vždy, když se do oboru.  Se skládá z [konfigurací automatické zařízení](iot-hub-auto-device-config.md) a [IoT Edge automatické nasazení](../iot-edge/how-to-deploy-monitor.md).
+
+## <a name="automatic-device-configuration"></a>Konfigurace automatického zařízení
+Můžete použít váš back-end řešení [konfigurací automatické zařízení](iot-hub-auto-device-config.md) přiřadit sadu požadovaných vlastností [dvojčata zařízení](#device-twin) a zprávy o stavu pomocí systému metriky a vlastní metriky. 
 
 ## <a name="azure-cli"></a>Azure CLI
 [Rozhraní příkazového řádku Azure](../cli-install-nodejs.md) je nástroj příkaz napříč platformami, open source, založený na prostředí pro vytváření a správu prostředků v Microsoft Azure. Tato verze rozhraní příkazového řádku je implementovaná pomocí Node.js.
@@ -65,6 +71,9 @@ Cloudové brány umožňuje připojení pro zařízení, která nelze se připoj
 
 ## <a name="cloud-to-device"></a>Cloud-zařízení
 Odkazuje na zprávy odeslané ze služby IoT hub na připojené zařízení. Tyto zprávy jsou často příkazy, které dáte pokyn zařízení o provedení akce. Další informace najdete v tématu [odesílat a přijímat zprávy službou IoT Hub](iot-hub-devguide-messaging.md).
+
+## <a name="configuration"></a>Konfigurace
+V kontextu [konfigurace automatického zařízení](iot-hub-auto-device-config.md), konfigurace v rámci služby IoT Hub definuje požadovanou konfiguraci pro skupinu zařízení dvojčata a poskytuje sadu metriky pro zprávy o stavu a průběhu.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 V kódu aplikace použijete připojovací řetězce pro zapouzdření informace požadované pro připojení ke koncovému bodu. Připojovací řetězec obvykle zahrnuje adresu koncového bodu a informace o zabezpečení, ale připojovací řetězec, který formáty lišit ve službách. Existují dva typy připojovacího řetězce, které jsou spojené s touto službou IoT Hub:
@@ -181,8 +190,8 @@ Back-end řešení IoT Hub je plně spravovaná služba Azure, která umožňuje
 ## <a name="iot-hub-resource-provider-rest-api"></a>Zprostředkovatel prostředků služby IoT Hub rozhraní REST API
 Můžete použít [IoT Hub prostředků zprostředkovatele REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) ke správě centra IoT v vaše [předplatného Azure](#subscription) provádění operací, jako je například vytváření, aktualizace a odstranění rozbočovače.
 
-## <a name="iot-suite"></a>IoT Suite
-Azure IoT Suite balíčky současně více služeb Azure s předkonfigurovaných řešení. Tato předkonfigurovaná řešení umožňují rychle začít používat začátku do konce implementace běžné scénáře IoT. Další informace najdete v tématu [co je Azure IoT Suite?](../iot-suite/iot-suite-overview.md)
+## <a name="iot-solution-accelerators"></a>Akcelerátorů řešení IoT
+Azure IoT řešení akcelerátorů balíček společně více služeb Azure do řešení. Tato řešení umožňují rychle začít používat začátku do konce implementace běžné scénáře IoT. Další informace najdete v tématu [co jsou akcelerátorů řešení Azure IoT?](../iot-suite/iot-suite-overview.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Rozšíření IoT pro Azure CLI 2.0
 [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nástroj pro různé platformy, příkazového řádku. Tento nástroj umožňuje spravovat zařízení pomocí [registru identit](#identity-registry), odesílání a příjem zpráv a soubory z vašich zařízení a sledovat vaše operace centra IoT.

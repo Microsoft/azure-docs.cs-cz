@@ -1,25 +1,25 @@
 ---
-title: "Nasazení, monitorování modulů pro hraniční Azure IoT | Microsoft Docs"
-description: "Správa modulů, které se spouštějí na hraniční zařízení"
+title: Nasazení, monitorování modulů pro hraniční Azure IoT | Microsoft Docs
+description: Správa modulů, které se spouštějí na hraniční zařízení
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 6d024dfdd661d6bebe7d163b96659d6e169cc5cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku – náhled
 
 Azure IoT Edge umožňuje přesunout analytics na okraj a poskytuje rozhraní, které je cloudu, takže můžete spravovat a monitorovat vaši IoT hraniční zařízení bez nutnosti fyzicky přístup každé z nich. Možnost vzdáleně spravovat zařízení je velmi důležité jako řešení Internetu věcí stále roste větší a složitější. Azure IoT okraj je navržen pro podporu obchodních cílů, bez ohledu na to, kolik zařízení přidáte.
 
-Můžete spravovat jednotlivých zařízení a nasadit modulů na jeden po druhém. Ale pokud chcete provést změny zařízení ve velkém měřítku, můžete vytvořit **IoT Edge nasazení**. Nasazení jsou dynamické procesy, které vám umožní nasadit více modulů do více zařízení najednou, sledovat stav a stav moduly a provést změny podle potřeby. 
+Můžete spravovat jednotlivých zařízení a nasadit modulů na jeden po druhém. Ale pokud chcete provést změny zařízení ve velkém měřítku, můžete vytvořit **IoT okraj automatického nasazení**, který je součástí Automatická správa zařízení IoT hub. Nasazení jsou dynamické procesy, které vám umožní nasadit více modulů do více zařízení najednou, sledovat stav a stav moduly a provést změny podle potřeby. 
 
 ## <a name="identify-devices-using-tags"></a>Identifikovat zařízení pomocí značek
 
@@ -67,7 +67,7 @@ Chcete-li přidat modul ze služby Azure Stream Analytics, postupujte takto:
 1. Vyberte **Uložit** přidat modul pro nasazení. 
 
 Chcete-li přidat vlastní kód jako modul, nebo ručně přidat modul služby Azure, postupujte takto:
-1. Vyberte **přidání okraj IoT modulu**.
+1. Vyberte **Add IoT Edge module** (Přidat modul IoT Edge).
 1. Poskytnout modul **název**.
 1. Pro **Image URI** zadejte bitovou kopii kontejner Docker pro modul. 
 1. Zadejte všechny **možnosti vytvoření kontejneru** který mají být odeslány do kontejneru. Další informace najdete v tématu [docker vytvořit][lnk-docker-create].
@@ -166,7 +166,7 @@ Při odstranění nasazení aplikace na jejich další nejvyšší prioritou nas
 1. Vyberte **Odstranit**.
 1. Na řádku bude informovat, že tato akce bude toto nasazení odstranit a vrátit do předchozího stavu pro všechna zařízení.  To znamená, že bude použít nasazení s nižší prioritou.  Pokud je cílem není žádné další nasazení, odebere se žádné moduly. Pokud k tomu, aby zákazníci, potřebují k vytvoření nasazení s nulové moduly a nasaďte ho na stejné zařízení. Vyberte **Ano** Pokud chcete pokračovat. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [nasazení modulů do hraniční zařízení][lnk-deployments].
 

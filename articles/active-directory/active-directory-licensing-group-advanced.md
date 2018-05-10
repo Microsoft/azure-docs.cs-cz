@@ -1,32 +1,30 @@
 ---
-title: "Azure Active Directory na základě skupin licencí další scénáře | Microsoft Docs"
-description: "Další scénáře pro Azure Active Directory na základě skupiny licencí"
+title: Azure Active Directory na základě skupin licencí další scénáře | Microsoft Docs
+description: Další scénáře pro Azure Active Directory na základě skupiny licencí
 services: active-directory
-keywords: "Licencování Azure AD"
-documentationcenter: 
+keywords: Licencování Azure AD
+documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: piotrci
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf18076c81ecf7471771674fe40d36dba3b9866d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bb8bd727618eda2a887cc9e1b739889204eb87fa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, použití skupin ke správě licencování v Azure Active Directory
 
 Použijte následující informace a příklady pro získání rozsáhlejšími znalostmi na základě skupiny licencování Azure Active Directory (Azure AD).
 
-## <a name="usage-location"></a>Umístění využití
+## <a name="usage-location"></a>Místo použití
 
 Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí určit **umístění využití** vlastnost na uživatele. V [portálu Azure](https://portal.azure.com), můžete zadat v **uživatele** &gt; **profil** &gt; **nastavení**.
 
@@ -43,7 +41,7 @@ Můžete například vytvořit skupinu dynamické pro některé sadu produkty, k
 
 Licence jsou přiřazeny uživateli krátce po budou přidány do skupiny. Při změně atributu, uživatel odejde skupiny a jsou odebrány licence.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Podívejte se na příklad řešení správy identity místně, rozhodne, které uživatelé by měli mít přístup k webovým službám společnosti Microsoft. Používá **extensionAttribute1** k uložení řetězcovou hodnotu představující licence, musí mít uživatel. Azure AD Connect synchronizuje se službou Azure AD.
 
@@ -139,7 +137,7 @@ Skript prostředí PowerShell můžete použít ke kontrole, pokud uživatelé m
 
 1. Spustit `connect-msolservice` rutiny k ověření a připojení ke klientovi.
 
-2. `Get-MsolAccountSku`umožňuje zjistit všechny licence zřízené produktu v klientovi.
+2. `Get-MsolAccountSku` umožňuje zjistit všechny licence zřízené produktu v klientovi.
 
   ![Snímek obrazovky rutinu Get-Msolaccountsku](media/active-directory-licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -230,7 +228,7 @@ Pokud chcete použít, na základě skupiny licencí, je vhodné se seznámit s 
 
 - Na základě skupiny licencování nezaznamenává chyby, pokud licenci nelze přiřadit uživateli kvůli konfiguraci proxy duplicitní adresa v systému Exchange Online; tyto uživatele jsou přeskočeny při přiřazení licence. Další informace o tom, jak identifikovat a vyřešit tento problém, naleznete v části [v této části](./active-directory-licensing-group-problem-resolution-azure-portal.md#license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o scénáře pro správu licencí prostřednictvím na základě skupin licencí najdete v tématu:
 

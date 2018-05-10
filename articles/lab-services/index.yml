@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k Azure Lab Services (dříve DevTest Labs) ve verzi Preview
+metadata:
+  title: Dokumentace ke službě Azure Lab Services – kurzy, reference k rozhraní API | Microsoft Docs
+  description: Naučte se využívat Azure Lab Services k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu. Kurzy, ukázky a další materiály Azure ukazují, jak vytvářet, spravovat a zabezpečovat testovací prostředí.
+  services: lab-services
+  author: spelluru
+  manager: 
+  ms.service: lab-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/06/2018
+  ms.author: spelluru
+  ms.openlocfilehash: f06102399cac6ef1b6b31155dff32999a923e173
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Naučte se využívat Azure Lab Services k rychlému nastavení testovacího prostředí pro vývoj, testování, hackathon nebo učebnu pro váš tým nebo studenty v cloudu. Kurzy, ukázky a další materiály Azure ukazují, jak vytvářet, spravovat a zabezpečovat testovací prostředí.
+sections:
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se vytvářet a využívat <b>testovací prostředí pro učebnu</b> pomocí Azure Lab Services.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/lab-services/tutorial-setup-lab-account">Nastavení účtu testovacího prostředí</a>
+    - html: <a href="/azure/lab-services/tutorial-setup-classroom-lab">Nastavení testovacího prostředí v učebně</a>
+    - html: <a href="/azure/lab-services/tutorial-connect-virtual-machine-classroom-lab">Přístup k testovacímu prostředí v učebně</a>
+  - type: paragraph
+    text: Naučte se vytvářet a využívat <b>vlastní testovací prostředí</b> pomocí Azure Lab Services.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Nastavení vlastního testovacího prostředí</a>
+    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Přístup k vlastnímu testovacímu prostředí</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Následující ukázky použijte při práci s Lab Services.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-devtestlab/tree/master/Samples">Šablony Resource Manageru</a>
+    - html: <a href="/azure/lab-services/samples-cli">Azure CLI</a>
+    - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/cli/azure/lab">Azure CLI</a></p><p><a href="/powershell/module/azurerm.devtestlabs/#devtest_labs">Azure PowerShell</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/dtl">REST API</a></p>

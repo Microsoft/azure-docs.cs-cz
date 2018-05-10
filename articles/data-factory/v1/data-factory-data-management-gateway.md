@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 07d720db85a152f08cfeb278b91cce3b10d73800
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -276,30 +276,30 @@ Je možné zapnout/vypnout funkci Automatické aktualizace provedením následuj
 
 [Pro jeden uzel brány]
 1. Spusťte prostředí Windows PowerShell v počítači s bránou.
-2. Přejděte do složky C:\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript.
+2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
 3. Spusťte následující příkaz, který zapnout automatickou aktualizaci funkci vypnout (zakázat).   
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off
     ```
 4. Chcete-li zpátky na:
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on  
+    .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
 [Pro více uzly vysoce dostupnou a škálovatelnou brány (preview)](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Spusťte prostředí Windows PowerShell v počítači s bránou.
-2. Přejděte do složky C:\Program Files\Microsoft Data správy Gateway\2.0\PowerShellScript.
+2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
 3. Spusťte následující příkaz, který zapnout automatickou aktualizaci funkci vypnout (zakázat).   
 
     Pro bránu s funkci vysoké dostupnosti (preview) se vyžaduje navíc AuthKey param.
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
 4. Chcete-li zpátky na:
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
     ```
 
 ## <a name="configuration-manager"></a>Configuration Manager

@@ -9,24 +9,36 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Směrování událostí služby Blob Storage – Azure CLI
+    - name: Události služby Blob Storage – Azure CLI
       href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Směrování událostí služby Blob Storage – PowerShell
+    - name: Události služby Blob Storage – PowerShell
       href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Vytvoření vlastní události – Azure CLI
+    - name: Vlastní události – Azure CLI
       href: custom-event-quickstart.md
-    - name: Vytvoření vlastní události – Azure PowerShell
+    - name: Vlastní události – PowerShell
       href: custom-event-quickstart-powershell.md
-    - name: Vytvoření vlastní události – Azure Portal
+    - name: Vlastní události – portál
       href: custom-event-quickstart-portal.md
+    - name: Odesílání událostí do služby Queue Storage
+      href: custom-event-to-queue-storage.md
 - name: Kurzy
   items:
-    - name: Monitorování změn virtuálních počítačů pomocí aplikací logiky
+    - name: E-mail při změně virtuálního počítače
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: Změna velikosti nahraných obrázků
       href: resize-images-on-storage-blob-upload-event.md
     - name: Aktivace runbooku Automation
       href: ensure-tags-exists-on-new-virtual-machines.md
+    - name: E-mail při přidání zařízení IoT Hub
+      href: publish-iot-hub-events-to-logic-apps.md
+    - name: Reakce na události služby Service Bus
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Streamování dat z Event Hubs
+      href: event-grid-event-hubs-integration.md
+    - name: Směrování událostí Media Services
+      href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Směrování na hybridnímu připojení
+      href: custom-event-to-hybrid-connection.md
 - name: Ukázky
   items:
     - name: Azure CLI
@@ -43,22 +55,22 @@
       href: security-authentication.md
     - name: Doručování a opakované pokusy
       href: delivery-and-retry.md
+    - name: Zdroje událostí
+      href: event-sources.md
+    - name: Obslužné rutiny událostí
+      href: event-handlers.md
 - name: Návody
   items:
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
-    - name: Příjem událostí pro koncový bod HTTP
+    - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
-    - name: Streamování dat z Event Hubs do datového skladu
-      href: event-grid-event-hubs-integration.md
-    - name: Odesílání oznámení o událostech služby IoT Hub
-      href: publish-iot-hub-events-to-logic-apps.md
-    - name: Naslouchání událostem služby Service Bus s využitím Functions a Logic Apps
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Monitorování doručování událostí
       href: monitor-event-delivery.md
     - name: Dotazování na odběry událostí
       href: query-event-subscriptions.md
+    - name: Mapování vlastních polí na schéma
+      href: input-mappings.md
     - name: Použití schématu CloudEvents
       href: cloudevents-schema.md
 - name: Referenční informace
@@ -84,8 +96,12 @@
           href: event-schema-event-hubs.md
         - name: IoT Hub
           href: event-schema-iot-hub.md
+        - name: Media Services
+          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Skupiny prostředků
           href: event-schema-resource-groups.md
+        - name: Service Bus
+          href: event-schema-service-bus.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

@@ -1,6 +1,6 @@
 ---
-title: "Získávání protokolů, kubelet z Azure Container Service (AKS)"
-description: "Získání protokolů kubelet z uzlů clusteru Azure Container Service (AKS)"
+title: Získávání protokolů, kubelet z Azure Kubernetes služby (AKS)
+description: Získání protokolů kubelet z uzlů clusteru Azure Kubernetes služby (AKS)
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 56e20a9f9d17eac01e6f85007db41dcc417f83e4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: 0467be7e91fdbf4685fc41a375ea86a503e26009
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-kubelet-logs-from-azure-container-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Container Service (AKS)
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Kubernetes služby (AKS)
 
-V některých případech může potřebujete získat kubelet protokoly z uzlu Azure Container Service (AKS) pro účely odstraňování potíží. Tento dokument podrobně popisuje jednou z možností pro stahování tyto protokoly.
+V některých případech může potřebujete získat kubelet protokoly z uzlu Azure Kubernetes služby (AKS) pro účely odstraňování potíží. Tento dokument podrobně popisuje jednou z možností pro stahování tyto protokoly.
 
 ## <a name="create-an-ssh-connection"></a>Vytvoření připojení SSH
 
-Nejprve vytvořte připojení SSH s uzlem, na kterém budete muset kubelet protokoly pro vyžádání obsahu. Tato operace je podrobně popsaná v [SSH do uzlů clusteru Azure Container Service (AKS)] [ aks-ssh] dokumentu.
+Nejprve vytvořte připojení SSH s uzlem, na kterém budete muset kubelet protokoly pro vyžádání obsahu. Tato operace je podrobně popsaná v [SSH do uzlů clusteru Azure Kubernetes služby (AKS)] [ aks-ssh] dokumentu.
 
-## <a name="get-kubelet-logs"></a>Získávání protokolů, kubelet
+## <a name="get-kubelet-logs"></a>Získání protokolů kubelet
 
 Po připojení k uzlu, spusťte následující příkaz, který kubelet protokoly pro vyžádání obsahu.
 

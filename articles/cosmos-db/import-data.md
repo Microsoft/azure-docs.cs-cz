@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 9c4908775ab9a471201cc4bb0c35ab863f5d6d50
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Nástroj pro migraci dat
 
@@ -433,7 +433,7 @@ Chcete-li importovat na jedinou kolekci, zadejte název kolekce, do které data 
 Jakmile názvy kolekce byly nastaveny, vyberte požadované propustnost kolekcí (400 RUs na 250 000 RUs). Pro nejlepší výkon import zvolte vyšší propustnost. Další informace o úrovně výkonu najdete v tématu [úrovně výkonu v Azure Cosmos DB](performance-levels.md). Všechny import do kolekcí s propustností > 10 000 RUs vyžadují klíč oddílu. Pokud zvolíte možnost mít více než 250 000 RUs, musíte do souboru požadavek na portálu pro svůj účet vyšší.
 
 > [!NOTE]
-> Propustnost nastavení se vztahuje pouze k vytvoření kolekce. Pokud existuje zadané kolekci, se nezmění jeho propustnost.
+> Propustnost nastavení platí jenom pro kolekci nebo vytvoření databáze. Pokud existuje zadané kolekci, se nezmění jeho propustnost.
 > 
 > 
 

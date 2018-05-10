@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Cassandra API s využitím .NET – Azure Cosmos DB | Microsoft Docs'
+title: 'Rychlý start: Cassandra API s využitím .NET – Azure Cosmos DB | Dokumentace Microsoftu'
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí webu Azure Portal a technologie .NET.
 services: cosmos-db
 author: SnehaGunda
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 4baa5a7dd8f7ad9865ac88203584d12345a30f4b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3445551ba259f7cbe794870b8b6475399a274bea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí .NET a Azure Cosmos DB
 
@@ -140,7 +140,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     Řádek 15 souboru Program.cs by teď měl vypadat nějak takto: 
 
-    `private const string CassandraContactPoint = "cosmos-db-quickstarts.documents.azure.com"; //  DnsName`
+    `private const string CassandraContactPoint = "cosmos-db-quickstarts.cassandra.cosmosdb.azure.com"; //  DnsName`
 
 5. Uložte soubor Program.cs.
     
@@ -161,7 +161,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     
     Teď můžete otevřít Průzkumníka dat na webu Azure Portal a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
 
-    ![Zobrazení dat v Průzkumníkovi dat](./media/create-cassandra-dotnet/data-explorer.png)
+    ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-dotnet/data-explorer.png)
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 

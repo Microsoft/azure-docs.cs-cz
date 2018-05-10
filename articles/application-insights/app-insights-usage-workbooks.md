@@ -1,9 +1,9 @@
 ---
-title: "Prozkoumat a sdílet data o využití s interaktivní sešity ve službě Azure Application Insights | Microsoft docs"
-description: "Demografické údaje analýzy uživatelů vaší webové aplikace."
+title: Prozkoumat a sdílet data o využití s interaktivní sešity ve službě Azure Application Insights | Microsoft docs
+description: Demografické údaje analýzy uživatelů vaší webové aplikace.
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3edaefa942b834a070c55fe28daf60c74ea9f59d
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.author: mbullwin; daviste
+ms.openlocfilehash: a871378b3e2cc0b34c925593c6f01952de3aa08e
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Prozkoumat a sdílet data o využití s interaktivní sešity ve službě Application Insights
 
@@ -114,9 +114,9 @@ Chcete-li připnout odkaz k sešitu na řídicí panel služby Azure:
 2. Klikněte na tlačítko "..." vedle sešit, který chcete připnout
 3. Klikněte na tlačítko **připnout na řídicí panel**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Pokud chcete povolit použití možnosti, zahájit odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [stránky zobrazení](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
 - Pokud jste již odeslat vlastní události nebo zobrazení stránky, prozkoumejte využití nástroje se dozvíte, jak uživatelé používat služby.
     - [Uživatelé, relace, události](app-insights-usage-segmentation.md)

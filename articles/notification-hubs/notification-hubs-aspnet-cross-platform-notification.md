@@ -1,24 +1,24 @@
 ---
-title: "Odesílat oznámení napříč platformami uživatelům s Azure Notification Hubs (ASP.NET)"
-description: "Zjistěte, jak používat šablony Notification Hubs k odesílání v jedné žádosti, bez ohledu na platformu oznámení, že cílem všechny platformy."
+title: Odesílat oznámení napříč platformami uživatelům s Azure Notification Hubs (ASP.NET)
+description: Zjistěte, jak používat šablony Notification Hubs k odesílání v jedné žádosti, bez ohledu na platformu oznámení, že cílem všechny platformy.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 3c6dde338cb154f0cbe02642e4ff0f81d070aa25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Odesílat oznámení napříč platformami uživatelům s centry oznámení
 V předchozích kurzu [upozorněte uživatele s Notification Hubs], jste se dozvěděli, jak nabízená oznámení pro všechna zařízení, které jsou registrovány pro konkrétního ověřeného uživatele. V tomto kurzu bylo potřeba víc požadavků na odeslání oznámení do každé podporované klientské platformy. Centra oznámení Azure podporuje šablony, pomocí kterých můžete zadat, jak chce dostávat oznámení konkrétní zařízení. Tato metoda zjednodušuje odesílání oznámení napříč platformami. 
@@ -81,16 +81,16 @@ Odesílat oznámení napříč platformami pomocí šablon, postupujte takto:
             return Request.CreateResponse(HttpStatusCode.OK);
         }
    
-    Tento kód odešle oznámení na všechny platformy ve stejnou dobu, aniž byste museli zadat nativní datové části. Notification Hubs sestavení a doručí správné datové části pro každé zařízení poskytnutým *značky* hodnoty zadané v registrovaných šablony.
+    Tento kód odešle oznámení na všechny platformy ve stejnou dobu, bez dochází k určení nativní datové části. Notification Hubs sestavení a doručí správné datové části pro každé zařízení poskytnutým *značky* hodnoty zadané v registrovaných šablony.
 
 4. Znovu publikujte projektu WebApi back-end.
 
 5. Znovu spustit klientskou aplikaci a potom ověřit, že registrace proběhla úspěšně.
 
 6. (Volitelné) Nasazení aplikace klienta do druhé zařízení a pak spusťte aplikaci.
-    Všimněte si, že na každém zařízení se zobrazí oznámení.
+    Oznámení se zobrazí na každé zařízení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste dokončili tento kurz, získáte další informace o Notification Hubs a šablon v těchto tématech:
 
 * [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.

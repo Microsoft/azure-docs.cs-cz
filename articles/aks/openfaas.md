@@ -1,6 +1,6 @@
 ---
-title: Použití OpenFaaS s Azure Container Service (AKS)
-description: Nasazení a používání OpenFaaS s Azure Container Service (AKS)
+title: OpenFaaS pomocí služby Azure Kubernetes (AKS)
+description: Nasazení a používání OpenFaaS s Azure Kubernetes služby (AKS)
 services: container-service
 author: justindavies
 manager: timlt
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: d531bb40421716bf9fb3c253a3e76207b2806912
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.openlocfilehash: 778fa5ddcdf8006d28c092746e4ac17a497baa5f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-openfaas-on-aks"></a>Pomocí OpenFaaS na AKS
 
-[OpenFaaS] [ open-faas] je architektura pro vytváření bez serveru funkce nad kontejnery. Jako Opensourcový projekt získala rozsáhlé přijetí v rámci komunity. Tento dokument podrobně popisuje instalaci a použití OpenFaas v clusteru Azure Container Service (AKS).
+[OpenFaaS] [ open-faas] je architektura pro vytváření bez serveru funkce nad kontejnery. Jako Opensourcový projekt získala rozsáhlé přijetí v rámci komunity. Tento dokument podrobně popisuje instalaci a použití OpenFaas v clusteru Azure Kubernetes služby (AKS).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Aby bylo možné provést kroky v tomto článku, budete potřebovat následující.
 
 * Základní znalosti o Kubernetes.
-* Clusteru Azure Container Service (AKS) a přihlašovací údaje AKS nakonfigurované ve vývojovém systému.
+* Cluster služby Azure Kubernetes služby (AKS) a přihlašovací údaje AKS nakonfigurované ve vývojovém systému.
 * Azure CLI nainstalován ve vývojovém systému.
 * Nástroje příkazového řádku Gitu v systému nainstalována.
 
@@ -39,7 +39,7 @@ git clone https://github.com/openfaas/faas-netes
 Přejděte do adresáře klonovaný úložiště.
 
 ```azurecli-interactive
-cd faas-netes 
+cd faas-netes
 ```
 
 ## <a name="deploy-openfaas"></a>Nasazení OpenFaaS
@@ -54,7 +54,7 @@ kubectl create namespace openfaas
 
 Vytvoření druhého oboru názvů pro funkce OpenFaaS.
 
-```azurecli-interactive 
+```azurecli-interactive
 kubectl create namespace openfaas-fn
 ```
 
@@ -64,7 +64,7 @@ Graf Helm pro OpenFaaS je součástí klonovaný úložiště. Tento graf použi
 helm install --namespace openfaas -n openfaas \
   --set functionNamespace=openfaas-fn, \
   --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/ 
+  --set rbac=false chart/openfaas/
 ```
 
 Výstup:
@@ -95,7 +95,7 @@ Pro přístup k bráně OpenFaaS se vytvoří veřejnou IP adresu. Chcete-li zí
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-Výstup. 
+Výstup.
 
 ```console
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
@@ -105,7 +105,7 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 
 Chcete-li otestovat OpenFaaS systému, procházejte k externí IP adresu na portu 8080, `http://52.186.64.52:8080` v tomto příkladu.
 
-![OpenFaaS UI](media/container-service-serverless/openfaas.png)
+![OpenFaaS uživatelského rozhraní](media/container-service-serverless/openfaas.png)
 
 Nainstalujte rozhraní příkazového řádku OpenFaaS. Tento exmaple použití brew naleznete [dokumentaci k rozhraní příkazového řádku OpenFaaS] [ open-faas-cli] další možnosti.
 
@@ -130,8 +130,8 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 Výstup:
 
 ```console
- _   _      _ _            _                        
-| | | | ___| | | ___      / \    _____   _ _ __ ___ 
+ _   _      _ _            _
+| | | | ___| | | ___      / \    _____   _ _ __ ___
 | |_| |/ _ \ | |/ _ \    / _ \  |_  / | | | '__/ _ \
 |  _  |  __/ | | (_) |  / ___ \  / /| |_| | | |  __/
 |_| |_|\___|_|_|\___/  /_/   \_\/___|\__,_|_|  \___|
@@ -140,7 +140,7 @@ Výstup:
 
 ## <a name="create-second-function"></a>Vytvořte druhý – funkce
 
-Teď vytvořte druhý funkce. Tento příklad se nasadí pomocí rozhraní příkazového řádku OpenFaaS a obsahuje bitovou kopii vlastní kontejner a načítání dat z databáze Cosmos. Několik položek je potřeba nakonfigurovat před vytvořením funkce. 
+Teď vytvořte druhý funkce. Tento příklad se nasadí pomocí rozhraní příkazového řádku OpenFaaS a obsahuje bitovou kopii vlastní kontejner a načítání dat z databáze Cosmos. Několik položek je potřeba nakonfigurovat před vytvořením funkce.
 
 Nejprve vytvořte novou skupinu prostředků pro databázi Cosmos.
 
@@ -148,13 +148,13 @@ Nejprve vytvořte novou skupinu prostředků pro databázi Cosmos.
 az group create --name serverless-backing --location eastus
 ```
 
-Nasadit CosmosDB instanci typu `MongoDB`. Instance potřebuje jedinečný název, aktualizujte `openfaas-cosmos` něco jedinečné pro vaše prostředí. 
+Nasadit CosmosDB instanci typu `MongoDB`. Instance potřebuje jedinečný název, aktualizujte `openfaas-cosmos` něco jedinečné pro vaše prostředí.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-Získání Cosmos připojovací řetězec databáze a uloží jej v proměnné. 
+Získání Cosmos připojovací řetězec databáze a uloží jej v proměnné.
 
 Aktualizujte hodnotu `--resource-group` argument na název vaší skupiny prostředků a `--name` argument na název vaší databáze Cosmos.
 
@@ -180,7 +180,7 @@ Nyní naplníte databázi Cosmos s testovacích datech. Vytvořte soubor s názv
 }
 ```
 
-Použití *mongoimport* nástroj k načtení instance CosmosDB s daty. 
+Použití *mongoimport* nástroj k načtení instance CosmosDB s daty.
 
 V případě potřeby nainstalujte nástroje pro MongoDB. Následující příklad nainstaluje tyto nástroje pomocí brew najdete [dokumentace k MongoDB] [ install-mongo] pro další možnosti.
 
@@ -232,7 +232,7 @@ Můžete také otestovat funkci v rámci rozhraní OpenFaaS.
 
 ## <a name="next-steps"></a>Další kroky
 
-Výchozí nasazení OpenFaas musí být uzamčena pro OpenFaaS brány a funkce. [Příspěvek blogu Alex Ellis](https://blog.alexellis.io/lock-down-openfaas/) obsahuje další podrobnosti o možnostech konfigurace zabezpečeného. 
+Výchozí nasazení OpenFaas musí být uzamčena pro OpenFaaS brány a funkce. [Příspěvek blogu Alex Ellis](https://blog.alexellis.io/lock-down-openfaas/) obsahuje další podrobnosti o možnostech konfigurace zabezpečeného.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

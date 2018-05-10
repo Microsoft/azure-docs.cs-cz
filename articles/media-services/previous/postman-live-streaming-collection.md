@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: juliako
 ms.openlocfilehash: ea88d6a85fb0b22d12c9d30baf23c33074666568
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>Import kolekce Postman s operacemi Live Streaming
 

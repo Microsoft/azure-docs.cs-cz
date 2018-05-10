@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 976b1c6b65036faeff3c4cc21e91ccf798eb0df3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b2660a98139068a8472c018de5cfbd29d6867c5a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů v úložišti objektů Blob v Azure s Azure Search
 Tento článek ukazuje, jak používat Azure Search k indexování dokumentů (například soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené v úložišti objektů Blob Azure. Nejprve vysvětluje základní informace o nastavení a konfiguraci indexer objektů blob. Poté nabízí podrobnější zkoumání chování, a scénáře, můžete se setkat.
@@ -279,7 +279,7 @@ Můžete také pokračovat indexování Pokud chyby v libovolném bodě zpracov�
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Přírůstkové indexování a odstranění duplicit
-Při nastavování objektu blob indexer spouštět podle plánu, znovu indexovat pouze změněné objekty BLOB, určeného objektu blob `LastModified` časové razítko.
+Při nastavování objektu blob indexer spouštět podle plánu, ho reindexes pouze změněné objekty BLOB, určeného objektu blob `LastModified` časové razítko.
 
 > [!NOTE]
 > Nemáte zadejte zásady detekce změn – přírůstkové indexování se povolí automaticky.

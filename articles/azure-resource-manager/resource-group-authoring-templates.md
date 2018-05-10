@@ -1,6 +1,6 @@
 ---
-title: "Struktura šablony Azure Resource Manager a syntaxe | Microsoft Docs"
-description: "Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON."
+title: Struktura šablony Azure Resource Manager a syntaxe | Microsoft Docs
+description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/14/2017
+ms.date: 05/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0bc5abd768be0fa5876aaef108cd71a15d94510
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 3b70817f973f0bfbdcec2aa8c76a431eec308bcf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu a syntaxe šablon Azure Resource Manager
 Tento článek popisuje strukturu šablony Azure Resource Manager. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto částech. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).
@@ -32,6 +32,7 @@ Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
+    "functions": {  },
     "resources": [  ],
     "outputs": {  }
 }
@@ -43,8 +44,9 @@ Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
 | contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Můžete zadat jakoukoli hodnotu pro tento element. Při nasazení prostředků pomocí šablony, tuto hodnotu lze zajistit, aby se používal správnou šablonu. |
 | parameters |Ne |Hodnoty, které jsou k dispozici při nasazení pro přizpůsobení nasazení prostředků. |
 | proměnné |Ne |Hodnoty, které se používá jako fragmenty JSON v šabloně, které zjednodušují výrazy jazyka šablony. |
-| Prostředky |Ano |Typy prostředků, které jsou nasazené nebo aktualizovány v skupinu prostředků. |
-| Výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
+| functions |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
+| prostředků |Ano |Typy prostředků, které jsou nasazené nebo aktualizovány v skupinu prostředků. |
+| výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příklad obsahuje úplnou syntaxí šablony:
 
@@ -92,6 +94,25 @@ Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příkl
             }
         ]
     },
+    "functions": [
+      {
+        "namespace": "<namespace-for-your-function>",
+        "members": {
+          "<function-name>": {
+            "parameters": [
+              {
+                "name": "<parameter-name>",
+                "type": "<type-of-parameter-value>"
+              }
+            ],
+            "output": {
+              "type": "<type-of-output-value>",
+              "value": "<function-expression>"
+            }
+          }
+        }
+      }
+    ],
     "resources": [
       {
           "condition": "<boolean-value-whether-to-deploy>",
@@ -185,7 +206,60 @@ Následující příklad ukazuje definici jednoduché proměnné:
 
 Informace o definování proměnné najdete v tématu [části proměnných šablon Azure Resource Manager](resource-manager-templates-variables.md).
 
-## <a name="resources"></a>Zdroje
+## <a name="functions"></a>Functions
+
+V rámci šablony můžete vytvořit své vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Obvykle můžete definovat složitý výraz, který nechcete opakování v celé vaší šablony. Vytvořit uživatelsky definované funkce z výrazů a [funkce](resource-group-template-functions.md) jsou podporovány v šablonách.
+
+Při definování uživatele funkce, platí určitá omezení:
+
+* Funkce nemá přístup k proměnné.
+* Funkci nelze použít [odkazu funkci](resource-group-template-functions-resource.md#reference).
+* Parametry pro funkci nemůžou mít výchozí hodnoty.
+
+Funkce vyžadují hodnotu oboru názvů, aby nedošlo ke konfliktu názvů s šablony funkcí. Následující příklad ukazuje funkci, která vrátí název účtu úložiště:
+
+```json
+"functions": [
+  {
+    "namespace": "contoso",
+    "members": {
+      "uniqueName": {
+        "parameters": [
+          {
+            "name": "namePrefix",
+            "type": "string"
+          }
+        ],
+        "output": {
+          "type": "string",
+          "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id))]"
+        }
+      }
+    }
+  }
+],
+```
+
+Volání funkce s:
+
+```json
+"resources": [
+  {
+    "name": "[contoso.uniqueName(parameters('storageNamePrefix'))]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2016-01-01",
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "location": "South Central US",
+    "tags": {},
+    "properties": {}
+  }
+]
+```
+
+## <a name="resources"></a>Zdroje a prostředky
 V části prostředky definujete prostředky, které jsou nasazené a aktualizovat. V této části můžete získat složité, protože je potřeba pochopit, typy, které nasazujete zadejte správné hodnoty.
 
 ```json
@@ -232,7 +306,7 @@ Také jste omezeni na:
 
 Některá omezení šablony můžete překročit pomocí vnořené šablony. Další informace najdete v tématu [použití propojených šablon při nasazování prostředků Azure](resource-group-linked-templates.md). Abyste snížili počet parametrů, proměnné nebo výstupů, můžete sloučit několik hodnot do objektu. Další informace najdete v tématu [objektů jako parametry](resource-manager-objects-as-parameters.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
 * Podrobnosti o funkcích, které můžete použít z v rámci šablon najdete v tématu [funkce šablon Azure Resource Manager](resource-group-template-functions.md).
 * Pokud chcete kombinovat několik šablon během nasazení, přečtěte si téma [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).

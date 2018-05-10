@@ -1,10 +1,26 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpečení Internetu věcí od základů
 
 Internet věcí (IoT) představuje jedinečné výzvy zabezpečení, ochrany osobních údajů a dodržování předpisů pro firmy po celém světě. Na rozdíl od tradičních internetový technologie, kde tyto problémy základem softwaru a o tom, jak je implementována IoT se vztahuje na co se stane, když internetový a fyzické světů sloučit. Ochrana řešení IoT vyžaduje zajištění zabezpečené zřizování zařízení, zabezpečené připojení mezi tato zařízení a cloudu a ochranu zabezpečení dat v cloudu při zpracování a úložiště. Pracovat se tyto funkce, ale jsou zařízení s omezenými zdroji, geografické rozptýlení nasazení a velký počet zařízení v rámci řešení.
 
-Tento článek popisuje, jak Microsoft Azure IoT Suite nabízí zabezpečení a privátní cloudové řešení Internetu věcí. Azure IoT Suite nabízí úplného začátku do konce řešení, se zabezpečení, které jsou součástí každé fáze od základů. Ve společnosti Microsoft, vývoj softwaru zabezpečení je součástí softwaru inženýrství postupem je integrován do společnosti Microsoft desetiletí dlouho prostředí vývoje zabezpečení softwaru. Aby to životního cyklu SDL (Security Development) je základní vývoj metodika, spolu s hostitelem služby zabezpečení na úrovni infrastruktury, například provozní zajištění zabezpečení (OSA) a Microsoft jejichž šíření tým Dcu, Microsoft Security Response Center a Microsoft Malware Protection Center.
+Tento článek popisuje, jak akcelerátorů řešení IoT poskytují zabezpečení a privátní cloudového řešení Internetu věcí. Řešení akcelerátorů poskytovat úplného začátku do konce řešení, se zabezpečení, které jsou součástí každé fáze od základů. Ve společnosti Microsoft, vývoj softwaru zabezpečení je součástí softwaru inženýrství postupem je integrován do společnosti Microsoft desetiletí dlouho prostředí vývoje zabezpečení softwaru. Aby to životního cyklu SDL (Security Development) je základní vývoj metodika, spolu s hostitelem služby zabezpečení na úrovni infrastruktury, například provozní zajištění zabezpečení (OSA) a Microsoft jejichž šíření tým Dcu, Microsoft Security Response Center a Microsoft Malware Protection Center.
 
-Azure IoT Suite nabízí jedinečné funkce této zkontrolujte zřizování, připojení k a ukládání dat ze zařízení IoT snadný a transparentní a nejvyšší všech, zabezpečení. Tento článek prozkoumá funkce zabezpečení Azure IoT Suite a strategie nasazení k zajištění zabezpečení, ochrany osobních údajů a dodržování předpisů problémy řešeny.
+Akcelerátorů řešení nabízejí jedinečné funkce, že zkontrolujte zřizování, připojení k a ukládání dat ze zařízení IoT snadný a transparentní a nejvyšší všech, zabezpečení. Tento článek prozkoumá funkce zabezpečení akcelerátorů řešení Azure IoT a strategie nasazení k zajištění zabezpečení, ochrany osobních údajů a dodržování předpisů problémy řešeny.
 
 ## <a name="introduction"></a>Úvod
 
@@ -26,17 +42,17 @@ Microsoft Azure nabízí řešení kompletní cloud, který kombinuje neustále 
 
 Systémy společnosti Microsoft zadejte zjišťování neoprávněných vniknutí průběžné a prevence, zabránění útoku služby, regulární průnikům testování a forenzní nástroje, které pomáhají identifikovat a zmírnit hrozby. [Služba Multi-Factor authentication](../articles/active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro koncové uživatele pro přístup k síti. A pro aplikace a poskytovateli hostitele, společnost Microsoft nabízí řízení přístupu, monitorování, proti malwaru, zjišťování ohrožení zabezpečení, opravy a konfigurace správy.
 
-Microsoft Azure IoT Suite využívá zabezpečení a o ochraně osobních údajů, které jsou součástí platformy Azure společně s procesy SDL a OSA pro zabezpečený vývoj a provoz veškerého softwaru společnosti Microsoft. Tyto postupy obsahují infrastrukturu ochrany, ochrany sítě a identita a Správa funkce, které jsou zásadní pro zabezpečení řešení.
+Řešení akcelerátorů využít výhod zabezpečení a o ochraně osobních údajů, které jsou součástí platformy Azure společně s procesy SDL a OSA pro zabezpečený vývoj a provoz veškerého softwaru společnosti Microsoft. Tyto postupy obsahují infrastrukturu ochrany, ochrany sítě a identita a Správa funkce, které jsou zásadní pro zabezpečení řešení.
 
-[Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) v rámci [IoT Suite](../articles/iot-suite/iot-suite-what-is-azure-iot.md) nabízí plně spravovanou službu, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi zařízeními IoT a službám Azure, jako [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) a [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) pomocí přihlašovacích údajů na zařízení zabezpečení a řízení přístupu.
+[Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) v rámci [akcelerátorů řešení IoT](../articles/iot-suite/iot-suite-what-is-azure-iot.md) nabízí plně spravovanou službu, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi zařízeními IoT a službám Azure, jako [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) a [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) pomocí přihlašovacích údajů na zařízení zabezpečení a řízení přístupu.
 
-Pro komunikaci nejlépe zabezpečení a ochrany osobních údajů funkcí integrovaných do Azure IoT Suite, v tomto článku dojde-li suite do tří oblastí primární zabezpečení.
+Pro komunikaci nejlépe zabezpečení a ochrany osobních údajů funkcí integrovaných do akcelerátorů řešení Azure IoT, v tomto článku dojde-li suite do tří oblastí primární zabezpečení.
 
-![Azure IoT Suite](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
+![Akcelerátory řešení Azure IoT](media/iot-security-ground-up/securing-iot-ground-up-fig3.png)
 
 ### <a name="secure-device-provisioning-and-authentication"></a>Zabezpečené zřizování zařízení a ověřování
 
-Azure IoT Suite zabezpečuje zařízení, když se v poli tím, že poskytuje klíč jedinečnou identitu pro každé zařízení, který můžete použít IoT infrastruktura pro komunikaci se zařízením, když je v operaci. Proces je rychlý a snadný nastavit. Generovaný klíč s ID zařízení vybrané uživatelem je základem token používá v veškerou komunikaci mezi zařízením a Azure IoT Hub.
+Řešení akcelerátorů zabezpečit zařízení, když jsou se v poli tím, že poskytuje klíč jedinečnou identitu pro každé zařízení, který můžete použít IoT infrastruktura pro komunikaci se zařízením, když je v operaci. Proces je rychlý a snadný nastavit. Generovaný klíč s ID zařízení vybrané uživatelem je základem token používá v veškerou komunikaci mezi zařízením a Azure IoT Hub.
 
 ID zařízení může být přidružen zařízení během výrobní (která je, nainstalovaný v modulu hardwarového vztahu důvěryhodnosti), nebo mohou využít stávající pevné identity jako proxy server (například procesoru sériová čísla). Vzhledem k tomu, že změna tento identifikační údaje v zařízení není jednoduchý, je potřeba zavést ID logického zařízení v případě, že základní změny hardwaru zařízení, ale logického zařízení zůstává stejná. V některých případech může dojít přidružení identitu zařízení v době nasazení zařízení (například technika ověřené pole fyzicky nakonfiguruje nové zařízení při komunikaci se serverem back-end řešení). [Registru identit Azure IoT Hub](../articles/iot-hub/iot-hub-devguide.md) poskytuje zabezpečené úložiště identit zařízení a zabezpečení klíčů pro řešení. Jednotlivé nebo skupiny identit zařízení lze přidat na seznam povolených nebo blokovaných, povolení plnou kontrolu nad přístup k zařízení.
 
@@ -64,9 +80,9 @@ Funkce zabezpečení další připojení:
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Zabezpečené zpracování a úložiště v cloudu
 
-Z šifrované komunikace pro zpracování dat v cloudu Azure IoT Suite pomáhá zabezpečit data. Poskytuje flexibilitu při implementaci další šifrování a správy klíčů zabezpečení.
+Z šifrované komunikace pro zpracování dat v cloudu akcelerátorů řešení pomohou zabezpečit data. Poskytuje flexibilitu při implementaci další šifrování a správy klíčů zabezpečení.
 
-Pomocí Azure Active Directory (AAD) pro ověřování uživatelů a autorizaci, Azure IoT Suite můžete poskytnout model na základě zásad autorizace pro data v cloudu, povolení správy snadný přístup, které je možné auditovat a zkontrolovat. Tento model taky umožňuje téměř rychlých odvolání přístupu k datům v cloudu a zařízení připojená k Azure IoT Suite.
+Pomocí Azure Active Directory (AAD) pro ověřování uživatelů a autorizaci, akcelerátorů řešení Azure IoT může poskytnout model na základě zásad autorizace pro data v cloudu, povolení správy snadný přístup, které je možné auditovat a zkontrolovat. Tento model taky umožňuje téměř rychlých odvolání přístupu k datům v cloudu a zařízení připojená k akcelerátorů řešení Azure IoT.
 
 Jakmile jsou data v cloudu, můžete zpracovat a uložené v pracovním postupu žádné uživatelem definované. Přístup pro každou část dat je řízen s Azure Active Directory, v závislosti na služby úložiště používá.
 
@@ -76,11 +92,11 @@ Všechny klíče používané IoT infrastruktury jsou uložené v cloudu v zabez
 
 Internet věcí začíná vaší věcí – věcí, které vás zajímají firmy. IoT může poskytnout úžasné hodnota obchodní nebo snížení nákladů, zvýšit výnosy a transformace firmy. Úspěch této transformace do značné míry závisí na výběr správné zprostředkovatele software a služby IoT. To znamená, hledání zprostředkovatele, který pouze catalyzes Tato transformace požadavky a pochopení obchodních potřeb, ale také poskytuje služeb a softwaru, které jsou vytvořené s nástroji zabezpečení, ochrany osobních údajů, průhlednost a dodržování předpisů jako hlavní faktorů. Společnost Microsoft rozsáhlých zkušeností s vývoj a nasazení zabezpečené softwaru a služeb a nadále vedoucí postavení v této nové stáří Internet věcí.
 
-Microsoft Azure IoT Suite sestavení v bezpečnostní opatření návrh povolení zabezpečeného sledování prostředků pro zlepšení efektivity, jednotky provozní výkon a povolit inovace a využít pokročilé data analytics k transformaci firmy. S jeho vrstveného přístupu k zabezpečení, více funkce zabezpečení a vzory návrhu Azure IoT Suite pomůže nasadit infrastrukturu, která může být důvěryhodný transformace každého podnikání.
+Řešení akcelerátorů sestavení v bezpečnostní opatření návrh povolení zabezpečeného sledování prostředků pro zlepšení efektivity, provozní výkon disku a povolit inovace a využít pokročilé datové analýzy k transformaci firmy. S jeho vrstveného přístupu k zabezpečení, více funkce zabezpečení a vzory návrhu akcelerátorů řešení pomůže nasadit infrastrukturu, která může být důvěryhodný transformace každého podnikání.
 
 ## <a name="additional-information"></a>Další informace
 
-Každé předkonfigurované řešení Azure IoT Suite vytváří instance služby Azure, jako například:
+Každé řešení akcelerátoru vytváří instance služby Azure, například:
 
 * [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): bránu, která se připojuje cloudu do zařízení. Je možné škálovat na miliony připojení na rozbočovače a procesu ohromné objemy dat s podporou ověřování podle zařízení pomáhá vám zabezpečit vaše řešení.
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): škálovatelné a plně indexované databázová služba pro částečně strukturovaných dat, který spravuje metadata pro zařízení, zřídíte, jako je například atributy, konfiguraci a vlastnosti zabezpečení. Azure Cosmos DB nabízí vysoce výkonné a vysokou propustností zpracování, bez ohledu na schéma indexování dat a bohaté rozhraní SQL.

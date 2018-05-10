@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 8a642b569389d960e7a3a1fa2c7cb0f2d87bd809
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 707f25a71a22f136a3cfc537ec3dd939e06dea08
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Solr clusterů systému HDInsight Hadoop
 
@@ -87,7 +87,7 @@ Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
      > [!IMPORTANT]
-     > Kroky později v tomto dokumentu používají tunelového propojení protokolu SSL pro připojení k Solr webového uživatelského rozhraní. Při těchto krocích, musí vytvořit tunelové propojení protokolu SSL a pak nakonfigurujte prohlížeč tak, aby ho použít.
+     > Kroky později v tomto dokumentu používají tunelového propojení SSH pro připojení k Solr webového uživatelského rozhraní. Při těchto krocích, musí vytvořit tunelového propojení SSH a pak nakonfigurujte prohlížeč tak, aby ho použít.
      >
      > Další informace najdete v tématu [používání tunelového propojení SSH s HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) dokumentu.
 

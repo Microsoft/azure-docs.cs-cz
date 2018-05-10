@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e461eaebaafab6f8a95bed333928d017c540d4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Vytvoření, změnit nebo odstranit síťové rozhraní
 
 Naučte se vytvářet, měnit nastavení pro a odstranit síťové rozhraní. Síťové rozhraní umožňuje virtuální počítač Azure ke komunikaci s Internetem, Azure a místních prostředků. Při vytváření virtuálního počítače pomocí portálu Azure, portál vytvoří jedno síťové rozhraní s výchozím nastavením pro vás. Místo toho můžete vytvořit síťových rozhraní s vlastním nastavením a přidejte jeden nebo víc síťových rozhraní k virtuálnímu počítači při jeho vytvoření. Můžete také změnit výchozí nastavení síťového rozhraní pro existující rozhraní sítě. Tento článek vysvětluje, jak vytvořit pomocí vlastních nastavení síťového rozhraní, změňte existující nastavení, jako je například přiřazení sítě filtru (skupina zabezpečení sítě), přiřazení podsítě, nastavení serveru DNS a předávání IP a odstranit síťové rozhraní.
 
 Pokud třeba chcete přidat, změnit nebo odebírat IP adresy pro síťové rozhraní, najdete v části [Správa IP adres](virtual-network-network-interface-addresses.md). Pokud potřebujete přidat síťová rozhraní pro aplikace, nebo odeberte síťová rozhraní z virtuálních počítačů najdete v tématu [přidat nebo odebrat síťových rozhraní](virtual-network-network-interface-vm.md).
-
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -37,7 +36,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 - Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
-Účet, který se přihlaste do Azure se musí být přiřazen na minimální, oprávnění pro roli Přispěvatel sítě pro vaše předplatné. Další informace o přiřazování rolí a oprávnění na účty, najdete v části [předdefinované role pro řízení přístupu Azure na základě rolí](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+Účet přihlásit nebo připojit k Azure, musí být přiřazená k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role nebo [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
 
 ## <a name="create-a-network-interface"></a>Vytvořit rozhraní sítě
 
@@ -88,7 +87,7 @@ Můžete zobrazit a po jejím vytvoření změnit většinu nastavení pro síť
     - **Vlastnosti:** zobrazí klíč nastavení o rozhraní sítě, včetně jeho adresy MAC (prázdný, pokud síťové rozhraní není připojen k virtuálnímu počítači) a předplatné v existuje.
     - **Pravidla efektivní zabezpečení:** pravidla zabezpečení jsou uvedeny, pokud síťové rozhraní je připojena k spuštěného virtuálního počítače a skupiny NSG je přidružena k rozhraní sítě, podsítě je přiřazena k nebo obojí. Další informace o co se zobrazí, najdete v části [zobrazit efektivní zabezpečení pravidla](#view-effective-security-rules). Další informace o skupinách Nsg najdete v tématu [skupin zabezpečení sítě](security-overview.md).
     - **Efektivní trasy:** jsou uvedeny trasy, pokud síťové rozhraní je připojena k spuštěného virtuálního počítače. Trasy představují kombinaci Azure výchozích tras, všechny trasy definované uživatelem a všechny trasy protokolu BGP, které mohou existovat podsítě, který je přiřazen síťové rozhraní. Další informace o co se zobrazí, najdete v části [zobrazit účinné postupy](#view-effective-routes). Další informace o Azure výchozí trasy a trasy definované uživatelem, najdete v části [Přehled směrování](virtual-networks-udr-overview.md).
-    - **Obecná nastavení Azure Resource Manager:** Další informace o běžných nastavení Azure Resource Manager, najdete v části [protokol aktivit](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [přístup k ovládacímu prvku (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [značky](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags), [Zamkne](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [skriptu pro automatizaci](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+    - **Obecná nastavení Azure Resource Manager:** Další informace o běžných nastavení Azure Resource Manager, najdete v části [protokol aktivit](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [přístup k ovládacímu prvku (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Zamkne](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a [skriptu pro automatizaci](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Příkazy**
 
@@ -204,7 +203,7 @@ Při odstranění rozhraní sítě, jsou vydávány žádné MAC nebo IP adresy 
 
 ## <a name="resolve-connectivity-issues"></a>Vyřešte problémy s připojením
 
-Pokud nejste schopni komunikovat do nebo z virtuálního počítače, pravidla zabezpečení skupiny u zabezpečení sítě nebo trasy efektivní pro rozhraní sítě může být příčinou problému. Máte problém vyřešit pomocí následujících možností:
+Pokud jste schopen komunikovat do nebo z virtuálního počítače, pravidla zabezpečení skupiny zabezpečení sítě nebo trasy efektivní pro rozhraní sítě, může být příčinou problému. Máte problém vyřešit pomocí následujících možností:
 
 ### <a name="view-effective-security-rules"></a>Zobrazení pravidla efektivní zabezpečení
 
@@ -240,11 +239,30 @@ Další směrování funkci sledovací proces sítě Azure můžete také pomů�
 - Azure CLI: [az sítě seskupování zobrazit – platné – trasy – tabulka](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
 
-## <a name="next-steps"></a>Další postup
-K vytvoření virtuálního počítače s více síťových rozhraní nebo IP adresy, najdete v následujících článcích:
+## <a name="permissions"></a>Oprávnění
 
-|Úkol|Nástroj|
-|---|---|
-|Vytvoření virtuálního počítače s několika síťovými kartami|[Rozhraní příkazového řádku](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [prostředí PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Vytvoření jednoho virtuálního počítače síťový adaptér s více adresami IPv4|[Rozhraní příkazového řádku](virtual-network-multiple-ip-addresses-cli.md), [prostředí PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|Vytvoření jednoho virtuálního počítače síťový adaptér s privátní adresou IPv6 (za pro vyrovnávání zatížení Azure)|[Rozhraní příkazového řádku](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [prostředí PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [šablony Azure Resource Manageru](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+K provádění úloh na síťová rozhraní, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena odpovídající oprávnění uvedených v následující tabulce:
+
+| Akce                                                                     | Název                                                      |
+| ---------                                                                  | -------------                                             |
+| Microsoft.Network/networkInterfaces/read                                   | Získat rozhraní sítě                                     |
+| Microsoft.Network/networkInterfaces/write                                  | Vytvořit nebo aktualizovat rozhraní sítě                        |
+| Microsoft.Network/networkInterfaces/join/action                            | K virtuálnímu počítači připojit síťové rozhraní           |
+| Microsoft.Network/networkInterfaces/delete                                 | Odstranit síťové rozhraní                                  |
+| Microsoft.Network/networkInterfaces/joinViaPrivateIp/action                | Připojte prostředek k síťovému rozhraní prostřednictvím servi...     |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action             | Získat platná směrovací tabulka rozhraní sítě               |
+| Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action  | Získat skupiny efektivní zabezpečení rozhraní sítě           |
+| Microsoft.Network/networkInterfaces/loadBalancers/read                     | Získat nástroje pro vyrovnávání zatížení rozhraní sítě                      |
+| Microsoft.Network/networkInterfaces/serviceAssociations/read               | Získejte přidružení služby                                   |
+| Microsoft.Network/networkInterfaces/serviceAssociations/write              | Vytvořit nebo aktualizovat služby přidružení                    |
+| Microsoft.Network/networkInterfaces/serviceAssociations/delete             | Odstraňte přidružení služby                                |
+| Microsoft.Network/networkInterfaces/serviceAssociations/validate/action    | Ověření služby přidružení                              |
+| Microsoft.Network/networkInterfaces/ipconfigurations/read                  | Získat konfiguraci IP rozhraní sítě                    |
+
+## <a name="next-steps"></a>Další postup
+
+- Vytvoření virtuálního počítače s více síťovými kartami pomocí [rozhraní příkazového řádku Azure](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [prostředí PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Vytvořte jeden síťový adaptér virtuálního počítače s více IPv4 adres pomocí [rozhraní příkazového řádku Azure](virtual-network-multiple-ip-addresses-cli.md) nebo [prostředí PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+- Vytvoření jednoho virtuálního počítače síťový adaptér s privátní adresy (za pro vyrovnávání zatížení Azure) IPv6 pomocí [rozhraní příkazového řádku Azure](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [prostředí PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo [šablony Azure Resource Manageru](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Vytvoření sítě pomocí rozhraní [prostředí PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablony Resource Manageru](template-samples.md)
+- Vytvoření a použití [Azure zásad](policy-samples.md) pro virtuální sítě

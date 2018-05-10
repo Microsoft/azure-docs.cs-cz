@@ -1,13 +1,13 @@
 ---
-title: "Aplikační služba Azure v systému Linux – nejčastější dotazy | Microsoft Docs"
-description: "Aplikační služba Azure v systému Linux – nejčastější dotazy."
-keywords: "služby Azure app service, webové aplikace, – nejčastější dotazy, linux, operačních systémů"
+title: Aplikační služba Azure v systému Linux – nejčastější dotazy | Microsoft Docs
+description: Aplikační služba Azure v systému Linux – nejčastější dotazy.
+keywords: služby Azure app service, webové aplikace, – nejčastější dotazy, linux, operačních systémů
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-on-linux-faq"></a>V systému Linux nejčastější dotazy týkající se služby Azure App Service
 
@@ -46,6 +46,10 @@ Tato akce je stejná jako Docker restartování.
 **Můžete použít Secure Shell (SSH) pro připojení k aplikaci kontejneru virtuální počítač (VM)?**
 
 Ano, můžete to udělat pomocí zdrojové lokality řízení správy (SCM).
+
+> [!NOTE] 
+> Můžete také připojit ke kontejneru aplikaci přímo z místní vývojovém počítači pomocí protokolu SSH, SFTP nebo Visual Studio Code (pro živé ladění aplikace Node.js). Další informace najdete v tématu [vzdálené ladění a SSH ve službě App Service v systému Linux](https://aka.ms/linux-debug).
+>
 
 **Jak můžete vytvořit plán služby App Service Linux prostřednictvím sady SDK nebo šablonu Azure Resource Manager?**
 
@@ -155,8 +159,8 @@ Pro nastavení aplikace můžete použít pouze písmena (A-Z, a – z), čísla
 
 Můžete odeslat si na [fóru pro zpětnou vazbu webové aplikace](https://aka.ms/webapps-uservoice). Přidejte "[Linux]" na název vaší představu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Co je Azure App Service v systému Linux?](app-service-linux-intro.md)
-* [Nastavení přípravných prostředí v Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Průběžné nasazování pomocí webové aplikace pro kontejnery](./app-service-linux-ci-cd.md)

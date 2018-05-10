@@ -1,6 +1,6 @@
 ---
-title: Vzdáleného sledování nejčastější dotazy k Azure IoT Suite | Microsoft Docs
-description: Nejčastější dotazy pro předkonfigurované řešení vzdáleného sledování IoT Suite
+title: Accelerator řešení vzdáleného monitorování – nejčastější dotazy | Microsoft Docs
+description: Nejčastější dotazy pro vzdálené monitorování řešení akcelerátoru
 services: iot-suite
 suite: iot-suite
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1cc260710d025428a1ca77c41c104dc172447e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>Nejčastější dotazy pro předkonfigurované řešení vzdáleného sledování IoT Suite
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy pro vzdálené monitorování řešení akcelerátoru
 
 Viz také Obecné [– nejčastější dotazy](iot-suite-faq.md).
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Kolik stojí zřídit nové řešení vzdáleného monitorování?
 
-Nové předkonfigurované řešení nabízí dvě možnosti nasazení:
+Nový akcelerátor řešení nabízí dvě možnosti nasazení:
 
 * A *základní* možnost určená pro vývojáře, kteří hledají nižší náklady na vývoj nebo zákazníci chtějí vytvořit ukázku nebo testování konceptu.
 * A *standardní* možnost určený pro podniky chtějí nasadit infrastrukturu produkční prostředí.
@@ -44,15 +44,11 @@ Jednotlivé možnosti nasazení odpoví na různé potřeby. Základní nasazen�
 
 Další informace najdete v tématu [upgradu mapy klíč zobrazit zařízení na mapě dynamické](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Kolik bezplatných rozhraní API Map Bing můžu zřídit v jednom předplatném?
-
-Dvě. Můžete vytvořit pouze dvě vnitřní transakce úroveň 1 mapy Bing pro podnikových plánů v předplatné Azure. Ve výchozím nastavení s plánem vnitřní transakce úrovně 1 se zřídí řešení vzdáleného monitorování. V důsledku toho můžete v daném předplatném zřídit nanejvýš dvě předkonfigurovaná řešení vzdáleného monitorování bez možnosti úprav.
-
 ### <a name="next-steps"></a>Další postup
 
-Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
+Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Prozkoumejte možnosti předkonfigurovaného řešení vzdáleného monitorování](iot-suite-remote-monitoring-explore.md)
-* [Přehled řešení předkonfigurované prediktivní údržby](iot-suite-predictive-overview.md)
-* [Přehled připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-overview.md)
+* [Prozkoumejte možnosti vzdáleného monitorování řešení akcelerátoru](iot-suite-remote-monitoring-explore.md)
+* [– Přehled akcelerátoru řešení prediktivní údržby](iot-suite-predictive-overview.md)
+* [Připojené přehled akcelerátoru objekt pro vytváření řešení](iot-suite-connected-factory-overview.md)
 * [Zabezpečení IoT od základů](securing-iot-ground-up.md)

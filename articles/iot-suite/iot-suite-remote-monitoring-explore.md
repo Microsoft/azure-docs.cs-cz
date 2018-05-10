@@ -1,24 +1,24 @@
 ---
-title: "Začínáme s řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "Tento kurz používá simulované scénáře zavádět předkonfigurovaného řešení vzdáleného monitorování. Tyto scénáře se vytvoří při prvním nasazení předkonfigurovaného řešení vzdáleného monitorování."
-services: 
+title: Začínáme s řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: Tento kurz používá simulované scénáře zavádět vzdálené monitorování akcelerátoru řešení. Tyto scénáře jsou vytvořeny při nasazení vzdálené monitorování akcelerátoru řešení poprvé.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 720269ad22bfe4a7f5871c934be77b680627e2f7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Prozkoumejte možnosti předkonfigurovaného řešení vzdáleného monitorování
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Prozkoumejte možnosti vzdáleného monitorování řešení akcelerátoru
 
 Tento kurz ukazuje klíčové funkce řešení vzdáleného monitorování. K zavedení tyto možnosti, kurz umožňující prezentovat běžné scénáře zákazníka pomocí simulované aplikace IoT pro společnosti nazývané Contoso.
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
 > * Vizualizace a filtrování zařízení na řídicím panelu
-> * Reakce na alarm
+> * Reakce na výstrahy
 > * Aktualizace firmwaru v zařízení
 > * Uspořádání vaše prostředky
 > * Zastavit a spustit Simulovaná zařízení
@@ -41,14 +41,14 @@ Následující video ukazuje návod řešení vzdáleného monitorování:
 
 K dokončení tohoto kurzu potřebujete nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasadit předkonfigurované řešení vzdáleného monitorování](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Nasazení IoT ukázkové společnosti Contoso
 
 Můžete použít Contoso ukázka IoT nasazení k pochopení základních scénářů vzdáleném řešení monitorování, poskytuje se na pole. Tyto scénáře jsou založeny na skutečném IoT nasazení. S největší pravděpodobností zvolíte přizpůsobení řešení vzdáleného monitorování podle specifických požadavků, ale ukázkové společnosti Contoso umožňuje získejte základní informace.
 
 > [!NOTE]
-> Pokud jste použili rozhraní příkazového řádku nasadíte předkonfigurované řešení, soubor `deployment-{your deployment name}-output.json` obsahuje informace o nasazení, jako je například adresa URL pro přístup k nasazené vzorku.
+> Pokud jste použili rozhraní příkazového řádku k nasazení řešení akcelerátoru, soubor `deployment-{your deployment name}-output.json` obsahuje informace o nasazení, jako je například adresa URL pro přístup k nasazené vzorku.
 
 Ukázka Contoso zřídí sadu simulované zařízení a pravidel tak, aby fungoval s nimi. Jakmile porozumíte základní scénáře, můžete dál zkoumat více funkcí řešení v [provést rozšířené monitorování zařízení pomocí řešení vzdáleného monitorování](iot-suite-remote-monitoring-monitor.md).
 
@@ -67,7 +67,7 @@ Následující tabulka obsahuje souhrn typů zřízené zařízení:
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
 | Chladič            | Přetížení teploty, vlhkosti,            | Typ, verze firmwaru modelu               | Umístění, Floor, kanceláře | Restartování, firmwaru aktualizace, verze nouzový ventil zvýšení nároků                          |
 | Při vytváření prototypu zařízení | Teplotní, zatížení, geografického umístění        | Typ, verze firmwaru modelu               | Umístění, režimu          | Restartování, aktualizaci firmwaru zařízení přesunutí, zastavte zařízení, teploty vydání, zvýšení teploty |
-| Modul             | Nádrž paliva úrovně, chladicí senzor, vibrace | Typ, verze firmwaru modelu               | Umístění, Floor, kanceláře | Restartovat, aktualizaci firmwaru, prázdný nádrž, výplň nádrž                                              |
+| Modul             | Nádrž paliva úrovně, chladicí senzor, vibrace | Typ, verze firmwaru modelu               | Umístění, Floor, kanceláře | Aktualizace firmwaru, prázdný nádrž, výplň nádrž                                              |
 | Vůz              | Teplotní nákladní geografického umístění, rychlosti,     | Typ, verze firmwaru modelu               | Umístění, zatížení          | Nižší nákladní teploty, zvýšení nákladní teploty, aktualizaci firmwaru                         |
 | Hodnocení           | Floor, vibrace, teploty              | Typ, verze firmwaru, Model, geografického umístění | Umístění kanceláře        | Hodnocení zastavení, spuštění hodnocení, aktualizaci firmwaru                                               |
 
@@ -80,51 +80,43 @@ Operátory společnosti Contoso znát prahové hodnoty, které určují, jestli 
 
 | Název pravidla | Popis | Mezní hodnota | Závažnost | Ovlivněné zařízení |
 | --------- | ----------- | --------- | -------- | ---------------- |
-| Přetížení chladič příliš vysoká. | Výstrahy, pokud dochlazovače dosáhnout vyšší než normální přetížení úrovně   |P>250 psi       | Kritická | Dochlazovače            |
+| Přetížení chladič příliš vysoká. | Výstrahy, pokud dochlazovače dosáhnout vyšší než normální přetížení úrovně   |P > 250 psi       | Kritická | Dochlazovače            |
 | Při vytváření prototypu zařízení temp příliš vysoká.  | Výstrahy, pokud při vytváření prototypu zařízení dosáhnout vyšší než normální teploty úrovně  |T>80&deg; F |Kritická | Při vytváření prototypu zařízení |
 | Modul nádrž prázdný  | Výstrahy, pokud modul nádrž přejde prázdný                     | F < 5 galonech. | Informace     | Moduly             |
-| Vyšší než normální nákladní teploty | Výstrahy, pokud je vyšší než normální teploty nákladní vůz společnosti                 | T<45&deg; F |Upozornění  | Dodávky              |
+| Vyšší než normální nákladní teploty | Výstrahy, pokud je vyšší než normální teploty nákladní vůz společnosti                 | T &LT; 45&deg; F |Upozornění  | Dodávky              |
 | Hodnocení vibrace zastavena      | Výstrahy, pokud hodnocení zcela zastaví (podle vibrace úroveň)                     | V < 0,1 mm |Upozornění  | Výtahy           |
 
 ### <a name="operate-the-contoso-sample-deployment"></a>Provoz nasazení ukázkové společnosti Contoso
 
-Nyní jste viděli počáteční nastavení v ukázce Contoso. Následující části popisují v ukázce Contoso tři scénáře, které ilustrují, jak použít operátor předkonfigurovaného řešení.
+Nyní jste viděli počáteční nastavení v ukázce Contoso. Následující části popisují v ukázce Contoso tři scénáře, které ilustrují, jak použít operátor akcelerátoru řešení.
 
-## <a name="respond-to-a-pressure-alarm"></a>Reakce na výstrahy přetížení
+## <a name="respond-to-a-pressure-alert"></a>Reagovat na upozornění na přetížení
 
-Tento scénář popisuje, jak identifikovat a reagovat na alarm, která se spustí při chladič zařízení. Chladič se nachází v Redmondu s sebou, při vytváření 43, floor 2.
+Tento scénář popisuje, jak identifikovat a reagovat na upozornění, že se aktivuje chladič zařízení. Chladič se nachází v Redmondu s sebou, při vytváření 43, floor 2.
 
-Jakožto Obsluha zobrazí v řídicím panelu, je alarm související s tlak chladič. Můžete posouvání a přiblížení na mapě zobrazíte další podrobnosti.
+Jakožto Obsluha zobrazí v řídicím panelu, je výstrahy související s tlak chladič. Můžete posouvání a přiblížení na mapě zobrazíte další podrobnosti.
 
-1. Na **řídicí panel** stránky v **systému výstrahy** mřížky, můžete zobrazit **chladič přetížení příliš vysoké** alarmů. Chladič také zvýrazní na mapě:
+1. Na **řídicí panel** stránky v **výstrahy** mřížky, můžete zobrazit **chladič přetížení příliš vysoké** výstrahy. Chladič také zvýrazní na mapě:
 
     ![Řídicí panel zobrazuje výstrahy zatížení a zařízení na mapě](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
 
-1. Chcete-li zobrazit podrobnosti o zařízení a telemetrie, klikněte na tlačítko zvýrazněná chladič na mapě. Telemetrii ukazuje Špička zatížení:
+1. Přejděte na **údržby** vyberte **údržby** v navigační nabídce. Na **údržby** stránky, můžete zobrazit podrobnosti o pravidlo, který aktivoval výstrahu chladič přetížení.
 
-    ![Vyberte zařízení na mapě zobrazíte podrobnosti](media/iot-suite-remote-monitoring-explore/dashboarddetail.png)
+1. Počet, kolikrát má výstraha, potvrzování a otevřené a uzavřené výstrahy jsou uvedeny v seznamu výstrah.
 
-1. Zavřít **zařízení podrobností**.
+    ![Stránka údržby zobrazuje seznam výstrah, které mají aktivaci](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. Přejděte na **údržby** vyberte **údržby** v navigační nabídce.
-
-Na **údržby** stránky, můžete zobrazit podrobnosti o pravidlo, které spustí alarm přetížení chladič.
-
-1. Počet pokusů, které se aktivuje na upozornění, potvrzování a otevřené a uzavřené výstrahy jsou uvedeny v seznamu oznámení.
-
-    ![Stránka údržby zobrazuje seznam výstrahy, které mají aktivaci](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
-
-1. První alarmů v seznamu je nejnovějšího. Klikněte na tlačítko **chladič přetížení příliš vysoké** výstrahy zobrazíte přiřazená zařízení a telemetrie. Telemetrii ukazuje špičky přetížení pro chladič:
+1. Poslední upozornění v seznamu je nejnovějšího. Klikněte na tlačítko **chladič přetížení příliš vysoké** výstrahy zobrazíte přiřazená zařízení a telemetrie. Telemetrii ukazuje špičky přetížení pro chladič:
 
     ![Stránka údržby zobrazuje telemetrická data pro vybrané výstrahy](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
-Určili jste nyní problém, který aktivuje na upozornění a přidružené zařízení. Další kroky jako operátor, se na upozornění na vědomí a zmírnit problém.
+Určili jste nyní problém, který aktivoval výstrahu a přidružené zařízení. Jakožto Obsluha další kroky jsou výstrahy na vědomí a zmírnit problém.
 
-1. K označení, že nyní pracujete na varování, změnit **poplašný stav** k **potvrzeno**:
+1. Označuje, zda jste nyní pracuje na výstrahu, změňte **výstrahy stavu** k **potvrzeno**:
 
-    ![Vyberte a potvrdit varování](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
+    ![Vyberte a potvrdit výstrahy](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
 
-1. Tak, aby fungoval na chladič, vyberte ho a potom zvolte **plán**. Vyberte **EmergencyValveRelease**, přidejte název úlohy **ChillerPressureRelease**a zvolte **použít**. Tato nastavení vytvořit úlohu, která okamžitě spustí:
+1. Tak, aby fungoval na chladič, vyberte ho a potom zvolte **úlohy**. Vyberte **Run – metoda**, pak **EmergencyValveRelease**, přidejte název úlohy **ChillerPressureRelease**a zvolte **použít**. Tato nastavení vytvořit úlohu, která okamžitě spustí:
 
     ![Vyberte zařízení a naplánovat akci.](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
@@ -136,11 +128,11 @@ Nakonec ověřte, zda hodnoty telemetrie z chladič zpět na normální.
 
 1. Chcete-li zobrazit mřížky výstrahy, přejděte na **řídicí panel** stránky.
 
-1. Zobrazení telemetrie zařízení, vyberte zařízení, pro původní alarmů na mapě a potvrďte, že je zpět na normální.
+1. Zobrazení telemetrie zařízení, vyberte zařízení, pro původní výstrahu na mapě a potvrďte, že je zpět na normální.
 
-1. Incident zavřete, přejděte na **údržby** vyberte na upozornění a nastaví stav na **uzavřeno**:
+1. Incident zavřete, přejděte na **údržby** vyberte výstrahu a nastaví stav na **uzavřeno**:
 
-    ![Vyberte a zavřete upozornění](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
+    ![Vyberte a zavřete výstrahu](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
 
 ## <a name="update-device-firmware"></a>Aktualizaci firmwaru zařízení
 
@@ -159,7 +151,7 @@ K provádění úloh správy nutné zařízení, použijte **zařízení** strá
 
     ![Vyberte zařízení, na stránce zařízení](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. Klikněte **plán** tlačítko a potom zvolte **aktualizaci firmwaru**. Zadejte hodnoty pro **název úlohy**, **verzi firmwaru**, a **Firmware URI**. Zvolte **použít** naplánování úlohy spustit nyní:
+1. Klikněte **úlohy** tlačítko, zvolte **Run – metoda**a potom vyberte **aktualizaci firmwaru**. Zadejte hodnoty pro **název úlohy**, **verzi firmwaru**, a **Firmware URI**. Zvolte **použít** naplánování úlohy spustit nyní:
 
     ![Naplánovat aktualizaci firmwaru na zařízení](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
@@ -176,17 +168,18 @@ Můžete použít **údržby** stránky sledovat úlohu při jeho spuštění.
 
 1. Vyhledejte události související s úkol, který jste vytvořili. Ověřte, že byl proces aktualizace firmwaru správně spuštěné.
 
-Můžete vytvořit filtr ověřit verzi firmwaru správně aktualizován.
+<!-- 05/01 broken 
+You can create a filter to verify the firmware version updated correctly.
 
-1. Chcete-li vytvořit filtr, přejděte na **zařízení** a vyberte **Správa filtrů**:
+1. To create a filter, navigate to the **Devices** page and select **Manage device groups**:
 
-    ![Správa zařízení filtrů](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Manage device groups](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
-1. Vytvořte filtr, který obsahuje pouze zařízení s novou verzí firmwaru:
+1. Create a filter that includes only devices with the new firmware version:
 
-    ![Vytvoření filtru zařízení](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
+    ![Create device filter](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
 
-1. Vraťte se na **zařízení** stránky a ověřte, že zařízení má na novou verzi firmwaru.
+1. Return to the **Devices** page and verify that the device has the new firmware version. -->
 
 ## <a name="organize-your-assets"></a>Uspořádání vaše prostředky
 
@@ -203,7 +196,7 @@ Názvy značek pro použití s zařízení můžete vytvořit.
 
     ![Zobrazit všechna zařízení](media/iot-suite-remote-monitoring-explore/devicesalldevices.png)
 
-1. Vyberte **dodávky** a **při vytváření prototypu** zařízení. Zvolte **značky**:
+1. Vyberte **dodávky** a **při vytváření prototypu** zařízení. Zvolte **úlohy**:
 
     ![Vyberte zařízení, která prototypu a vůz](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
@@ -211,19 +204,19 @@ Názvy značek pro použití s zařízení můžete vytvořit.
 
     ![Přidání značky na prototypu a vůz zařízení](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
-1. Vyberte **chladič**, **hodnocení**, a **modul** zařízení. Zvolte **značky**:
+1. Vyberte **chladič**, **hodnocení**, a **modul** zařízení. Zvolte **úlohy**:
 
     ![Vyberte zařízení, která chladič, modul a hodnocení](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. Zvolte **značka** a poté vytvořit novou značku text názvem **FieldService** s hodnotou **SmartBuilding**. Zvolte název pro úlohu. Pak klikněte na tlačítko **Uložit**:
+1. Zvolte **značka** a poté vytvořit novou značku text názvem **FieldService** s hodnotou **SmartBuilding**. Zvolte název pro úlohu. Pak klikněte na tlačítko **použít**:
 
     ![Přidání značky do zařízení chladič, modul a hodnocení](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 
 Hodnoty značky můžete použít pro vytvoření filtrů.
 
-1. Na **zařízení** vyberte **Správa filtrů**:
+1. Na **zařízení** vyberte **Správa skupin zařízení**:
 
-    ![Správa zařízení filtrů](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Správa skupin zařízení](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
 1. Vytvořit nový filtr, který používá název značky **FieldService** a hodnotu **SmartBuilding**. Uložení se filtr jako **čipové vytváření**.
 
@@ -237,9 +230,17 @@ V nabídce nastavení můžete použít k zastavení Simulovaná zařízení. To
 
 1. Vyberte **nastavení** ikonu.
 
-1. Potom přepněte **systémem** zapnout nebo vypnout:
+1. Potom přepněte **Flowing** zapnout nebo vypnout:
 
     ![Nabídka Nastavení](media/iot-suite-remote-monitoring-explore/settings.png)
+
+## <a name="customize-the-ui"></a>Přizpůsobení uživatelského rozhraní
+
+V nabídce nastavení můžete použít základní customisations na akcelerátoru řešení vzdáleného monitorování. Můžete:
+
+- Přepínat mezi světlým a tmavým motivů.
+- Změňte název řešení.
+- Nahrajte vlastní logo.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -247,7 +248,7 @@ V tomto kurzu jste se dozvěděli na:
 
 >[!div class="checklist"]
 > * Vizualizace a filtrování zařízení na řídicím panelu
-> * Reakce na alarm
+> * Reakce na výstrahy
 > * Aktualizace firmwaru v zařízení
 > * Uspořádání vaše prostředky
 > * Zastavit a spustit Simulovaná zařízení

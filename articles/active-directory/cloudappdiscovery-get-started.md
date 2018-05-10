@@ -9,15 +9,16 @@ manager: mtillman
 tags: ignite
 ms.service: active-directory
 ms.workload: identity
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: a4ba0e384c17845a1298d283a947a4e04396d6da
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: MT
+ms.openlocfilehash: 3e4907cbeaf06a519761d76a41708eacd3843ed4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Nastavení ve službě Azure AD Cloud App Discovery
 

@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 2c6f5cf2d89da0c2418ac58ca5d47a8aa05e732f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-best-practices"></a>Osvědčené postupy pro zabezpečení Internetu věcí
 
 Zabezpečení infrastruktury Internetu věcí (IoT) vyžaduje přísných strategii zabezpečení do hloubky. Tato strategie vyžaduje, abyste k zabezpečení dat v cloudu, chránit integritu dat v průběhu přenosu prostřednictvím veřejného Internetu a bezpečně zřizovat zařízení. Jednotlivé úrovně sestavení větší zajištění zabezpečení v celé infrastruktury.
@@ -7,7 +23,7 @@ Zabezpečení infrastruktury Internetu věcí (IoT) vyžaduje přísných strate
 Tato strategie zabezpečení do hloubky můžete vyvinuté a provést s aktivní účast různé přehrávače spojené s výrobní, vývoj a nasazení zařízení IoT a infrastruktury. Následuje stručný popis těchto přehrávače.
 
 * **Výrobce hardwaru IoT/integrátor**: tyto přehrávače jsou obvykle výrobců hardwaru IoT nasazuje integrátorem ty se hardware od různých výrobců a dodavatelů poskytuje hardwaru pro nasazení služby IoT vytvořené nebo integrované jinými dodavateli.
-* **Vývojář řešení IoT**: vývoj řešení IoT se obvykle provádí vývojář řešení. Tento vývojář může součástí interní týmu nebo systémový integrátor (SI) specializované této aktivity. Vývojář řešení IoT můžete vyvíjet různé součásti řešení IoT od začátku, integrovat různé součásti dodávaných nebo open-source nebo přijmout předkonfigurované řešení s menšími přizpůsobení.
+* **Vývojář řešení IoT**: vývoj řešení IoT se obvykle provádí vývojář řešení. Tento vývojář může součástí interní týmu nebo systémový integrátor (SI) specializované této aktivity. Vývojář řešení IoT můžete vyvíjet různé součásti řešení IoT od začátku, integrovat různé součásti dodávaných nebo open-source nebo přijmout akcelerátorů řešení s menšími přizpůsobení.
 * **Nástroje pro nasazení řešení IoT**: vyvinutý řešení po IoT, musí být nasazen v poli. Tento proces zahrnuje nasazení hardwaru, propojení zařízení a nasazování řešení v hardwarových zařízeních nebo v cloudu.
 * **Operátor řešení IoT**: po IoT řešení nasazeno, vyžaduje dlouhodobé provoz, sledování, upgradu a údržby. Tyto úlohy lze provést interní tým, který obsahuje informace o technologii odborníky, hardwarových operací a údržby týmů a odborníky domény, kteří monitorování správné chování celé infrastruktury IoT.
 

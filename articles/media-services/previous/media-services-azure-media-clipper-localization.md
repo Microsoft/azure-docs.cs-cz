@@ -1,8 +1,8 @@
 ---
-title: "Konfigurace Azure Media výřez lokalizace | Microsoft Docs"
-description: "Další informace o Azure Media výřez podporované jazyky a podpora lokalizace"
+title: Konfigurace Azure Media výřez lokalizace | Microsoft Docs
+description: Další informace o Azure Media výřez podporované jazyky a podpora lokalizace
 services: media-services
-keywords: "klip; subclip; kódování; média"
+keywords: klip; subclip; kódování; média
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: dd0fc87741befd92cc41d0129fafcbc64db7ec9e
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="configure-localization"></a>Konfigurace lokalizace
 Azure Media výřez je k dispozici v 18 jazycích. Nastavení jazyka pomůcky, je nutné definovat `language` parametr během inicializace. Předejte v řetězci požadovaný jazyk kódu z následujícího seznamu:
@@ -137,7 +137,7 @@ Například následující ukázka definuje lokalizované anglickou řetězce:
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Najdete v části Další kroky pro konfiguraci Azure Media výřez:
 - [Načítání prostředků do Azure Media výřez](media-services-azure-media-clipper-load-assets.md)
 - [Konfigurace vlastní klávesové zkratky](media-services-azure-media-clipper-keyboard-shortcuts.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -34,7 +34,7 @@ K vytvoření pracovního prostoru budete muset:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Určení potřebného počtu pracovních prostorů
 Pracovní prostor je prostředek Azure v podobě kontejneru, ve kterém se data shromažďují, agregují, analyzují a zobrazují na webu Azure Portal.
 
-V rámci jednoho předplatného Azure můžete mít více pracovních prostorů a přístup k více než jednomu pracovnímu prostoru. Dříve jste mohli analyzovat data pouze z aktuálního pracovního prostoru a to omezovalo možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného. Teď můžete provádět [dotazování napříč několika pracovními prostory](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search) a získat tak zobrazení svých dat v rámci celého systému. Tato část popisuje případy, kdy je užitečné mít víc než jeden pracovní prostor.
+V rámci jednoho předplatného Azure můžete mít více pracovních prostorů a přístup k více než jednomu pracovnímu prostoru. Dříve jste mohli analyzovat data pouze z aktuálního pracovního prostoru a to omezovalo možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného. Teď můžete provádět [dotazování napříč několika pracovními prostory](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) a získat tak zobrazení svých dat v rámci celého systému. Tato část popisuje případy, kdy je užitečné mít víc než jeden pracovní prostor.
 
 V současné době pracovní prostor nabízí:
 

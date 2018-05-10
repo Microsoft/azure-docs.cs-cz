@@ -1,45 +1,45 @@
 ---
-title: "Služba Azure Notification Hubs vyřadit diagnostiku oznámení"
-description: "Zjistěte, jak diagnostikovat běžné problémy s vynechaných oznámení v Azure Notification Hubs."
+title: Služba Azure Notification Hubs vyřadit diagnostiku oznámení
+description: Zjistěte, jak diagnostikovat běžné problémy s vynechaných oznámení v Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: Mobile
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: 
+editor: spelluru
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 3925208fe56bcd9513ec4c0f21aa1e2dd8fbf9c5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: bc9ef70560f0485da81c1f54aa955cee76d280ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Diagnostika vynechaných oznámení v Notification Hubs
 
 Jedním z nejčastějších dotazů od zákazníků Azure Notification Hubs je řešení problémů s při nezobrazí oznámení odesílaných z aplikace na klientských zařízeních. Chtějí vědět, kde a proč byly vyřazeny oznámení a informace o vyřešení problému. V tomto článku jsou uvedeny proč oznámení může získat vyřadit nebo nebyla přijata zařízení. Zjistěte, jak analyzovat a určit hlavní příčinu. 
 
-Je důležité nejdřív pochopíte, jak Notification Hubs doručí oznámení do zařízení.
+Je důležité nejdřív pochopíte, jak služba Notification Hubs doručí oznámení do zařízení.
 
 ![Architektura centra oznámení][0]
 
 V toku typické odesílání oznámení, je zpráva odeslána z *back-end aplikace* do centra oznámení. Centra oznámení nepodporuje některé zpracování na všechny registrace. Zpracování bere v úvahu nakonfigurované značky a značky výrazy k určení "cíle." Cíle jsou všechny registrace, které je potřeba příjem nabízených oznámení. Tyto registrace může zahrnovat všechny nebo naše podporovaných platforem: iOS, Google, Windows, Windows Phone, Kindle a Baidu pro Android v Číně.
 
-Se cíli navázat Notification Hubs doručí oznámení *nabízená oznámení služby* pro platformu zařízení. Mezi příklady patří služby Apple Push Notification (APNs) Apple a zasílání zpráv cloudu Firebase (FCM) pro Google. Oznámení centra oznámení oznámení rozdělit do několika dávek registrací. Centra oznámení ověřuje službou příslušných nabízená oznámení na základě pověření, která jste nastavili na portálu Azure v části **Konfigurace centra oznámení**. Nabízená oznámení služby pak dopředný oznámení k příslušné *klientských zařízení*. 
+S cíle navázat, služba Notification Hubs doručí oznámení *nabízená oznámení služby* pro platformu zařízení. Mezi příklady patří služby Apple Push Notification (APNs) Apple a zasílání zpráv cloudu Firebase (FCM) pro Google. Oznámení centra oznámení oznámení rozdělit do několika dávek registrací. Centra oznámení ověřuje službou příslušných nabízená oznámení na základě pověření, která jste nastavili na portálu Azure v části **Konfigurace centra oznámení**. Nabízená oznámení služby pak dopředný oznámení k příslušné *klientských zařízení*. 
 
-Všimněte si, že konečné fáze doručení dochází mezi služby nabízených oznámení platformy a zařízení. Všechny čtyři hlavní součásti v procesu nabízené oznámení (klient, back-end aplikace, centra oznámení a službu platformy push notification service) může způsobit oznámení, které chcete vyřadit. Další informace o architektuře Notification Hubs najdete v tématu [Notification Hubs přehled].
+Konečné fáze doručení dochází mezi služby nabízených oznámení platformy a zařízení. Všechny čtyři hlavní součásti v procesu nabízené oznámení (klient, back-end aplikace, centra oznámení a službu platformy push notification service) může způsobit oznámení, které chcete vyřadit. Další informace o architektuře Notification Hubs najdete v tématu [Notification Hubs přehled].
 
 Nepodařilo se doručit oznámení mohou nastat během počáteční testovací/pracovní fáze. Vyřazené oznámení v této fázi může znamenat problém konfigurace. Pokud dojde k selhání doručovat oznámení v provozním prostředí, může být vyřazen některá nebo všechna oznámení. V takovém případě je uvedené hlubší aplikace nebo vzor problém pro zasílání zpráv. 
 
 V další části zjistí scénáře, ve kterých oznámení může dojít ke ztrátě, od běžné až více výjimečných.
 
 ## <a name="notification-hubs-misconfiguration"></a>Chybné konfigurace centra oznámení
-Úspěšně odesílat oznámení do služby příslušných nabízených oznámení, Notification Hubs potřebuje ke svému ověření v kontextu pro vývojáře aplikace. Pro tuto funkci používat vytvoří vývojář vývojářského účtu s příslušné platformy (Google, Apple, Windows a tak dále). Vývojář pak zaregistruje jejich používání s platformou, kde získat přihlašovací údaje. 
+Úspěšně odesílat oznámení do služby příslušných nabízených oznámení, služba Notification Hubs potřebuje ke svému ověření v kontextu pro vývojáře aplikace. Pro tuto funkci používat vytvoří vývojář vývojářského účtu s příslušné platformy (Google, Apple, Windows a tak dále). Vývojář pak zaregistruje jejich používání s platformou, kde získat přihlašovací údaje. 
 
 Přihlašovací údaje platformy je nutné přidat na portál Azure. Pokud nejsou žádná oznámení se blíží zařízení, musí být prvním krokem k zajištění, že správné přihlašovací údaje jsou nakonfigurované v Notification Hubs. Přihlašovací údaje musí odpovídat aplikaci, která se vytvoří pod účtem vývojáře specifické pro platformu. 
 
@@ -88,7 +88,7 @@ Zde jsou některé běžné chybné konfigurace zkontrolujte:
 
 * **Neplatný registrace**
 
-    Pokud do centra oznámení byla nakonfigurována správně, a pokud všechny značky nebo výrazy, značky se používaly správně, platný cíle nebyly nalezeny. Oznámení by měly být odeslány na tyto cíle. Centra oznámení potom vyvolá několik zpracování dávky paralelně. Každé dávky odesílá zprávy sadu registrací. 
+    Pokud do centra oznámení byla nakonfigurována správně, a pokud všechny značky nebo výrazy, značky se používaly správně, platný cíle nebyly nalezeny. Oznámení by měly být odeslány na tyto cíle. Služba Notification Hubs poté vyvolá několik zpracování dávky paralelně. Každé dávky odesílá zprávy sadu registrací. 
 
     > [!NOTE]
     > Protože je zpracovávána paralelně, pořadí, ve kterém oznámení se doručují není zaručena. 
@@ -102,7 +102,7 @@ Zde jsou některé běžné chybné konfigurace zkontrolujte:
     Chcete-li získat další informace o selhání doručení pokus proti registrace, můžete použít rozhraní API REST centra oznámení [za zpráva Telemetrie: získat telemetrické zprávy oznámení](https://msdn.microsoft.com/library/azure/mt608135.aspx) a [zpětnou vazbu systém PNS](https://msdn.microsoft.com/library/azure/mt705560.aspx). Ukázkový kód, najdete [příklad odesílání REST](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample).
 
 ## <a name="push-notification-service-issues"></a>Nabízená oznámení problémů služby
-Po obdržení zprávy oznámení pomocí služby nabízených oznámení platformy, je zodpovědností služby nabízených oznámení pro doručení oznámení do zařízení. V tomto okamžiku Notification Hubs je mimo na obrázku a nemá žádnou kontrolu nad, když nebo oznámení je doručit do zařízení. 
+Po obdržení zprávy oznámení pomocí služby nabízených oznámení platformy, je zodpovědností služby nabízených oznámení pro doručení oznámení do zařízení. Služba Notification Hubs v tomto okamžiku je mimo na obrázku a nemá žádnou kontrolu nad, když nebo oznámení je doručit do zařízení. 
 
 Protože oznámení služby platformy robustní, zpravidla oznámení k dosažení zařízení ze služby nabízených oznámení za několik sekund. Pokud službu nabízených oznámení je omezování, platí Notification Hubs exponenciální strategie back vypnout. Pokud služby nabízených oznámení zůstane nedostupný 30 minut, jsme zavedené zásady vypršení platnosti a trvale vyřadit tyto zprávy. 
 
@@ -120,7 +120,7 @@ Zde jsou cesty k určení kořenové příčiny vynechaných oznámení v Notifi
    
     Ověřte přihlašovací údaje v příslušných nabízená oznámení služby portál pro vývojáře (APNs, FCM, oznámení služby systému Windows a tak dále). Další informace najdete v tématu [Začínáme s Azure Notification Hubs].
 
-* **portál Azure Portal**
+* **Azure Portal**
    
     Zkontrolujte a shodovat s pověřeními s těmi, které jste získali z nabízené oznámení služby portálu pro vývojáře na portálu Azure přejděte na **zásady přístupu** kartě. 
    
@@ -146,7 +146,7 @@ Zde jsou cesty k určení kořenové příčiny vynechaných oznámení v Notifi
     Mnoho zákazníků použít [Service Bus Explorer] zobrazení a správa jejich centra oznámení. Service Bus Explorer je otevřený projekt. Ukázky najdete [Service Bus Explorer kód].
 
 ### <a name="verify-message-notifications"></a>Ověřte oznamování pomocí zpráv
-* **portál Azure Portal**
+* **Azure Portal**
    
     Odeslat zkušební oznámení pro klienty bez nutnosti služby back-end fungovaly, v části **podporu + Poradce při potížích s**, vyberte **testovací odeslání**. 
    
@@ -226,7 +226,7 @@ Tato zpráva znamená, že buď neplatné přihlašovací údaje jsou nakonfigur
    
         ![Řídicí panel Přehled centra oznámení][5]
    
-    2. Na **monitorování** kartě, můžete přidat mnoho další metriky specifické pro platformu pro nemůže podrobně. Můžete si prohlédnout konkrétně všechny chyby související s služby nabízených oznámení, které se vrátí, když se pokusí odeslat oznámení služby nabízených oznámení centra oznámení. 
+    2. Na **monitorování** kartě, můžete přidat mnoho další metriky specifické pro platformu pro nemůže podrobně. Můžete si prohlédnout konkrétně všechny chyby související s služby nabízených oznámení, které se vrátí, když se služba Notification Hubs pokusí odeslat oznámení služby nabízených oznámení. 
    
         ![Protokol činnosti Azure portálu][6]
    

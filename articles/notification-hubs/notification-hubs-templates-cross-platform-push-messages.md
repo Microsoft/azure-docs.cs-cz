@@ -3,22 +3,22 @@ title: Šablony
 description: Toto téma vysvětluje šablon pro Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 3e587bdf0efc7c5b416183640abb19286a5cff31
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="templates"></a>Šablony
 ## <a name="overview"></a>Přehled
@@ -50,9 +50,9 @@ Podobně jako datové části můžete vytvořit pro platformy (Android) GCM a M
 
 Tento požadavek vynutí back-end aplikace k vytvoření různých datových částí pro každou platformu a efektivně zajišťuje back-end zodpovědná za součástí prezentační vrstvy aplikace. Některé aspekty patří lokalizace a grafické rozložení (hlavně u aplikací pro Windows Store, které obsahují oznámení pro různé typy dlaždic).
 
-Funkce šablony Notification Hubs umožňuje klientskou aplikaci vytvořit speciální registrace, nazývá šablona registrace, které obsahují, kromě sadu značky, šablony. Funkce šablony Notification Hubs umožňuje klientskou aplikaci pro přidružení zařízení se šablonami, zda pracujete s instalací (doporučeno) nebo registrací. Informace pouze nezávislé na platformě zadané v předchozích příkladech datové části, je skutečný zpráva s výstrahou (Hello!). Šablona je sada pokynů pro Centrum oznámení o tom, jak formátování zprávy nezávislé na platformě pro registraci tohoto konkrétního klienta aplikace. V předchozím příkladu nezávislé zpráva platformy je jedinou vlastností: **zpráva = Hello!**.
+Funkce šablony Notification Hubs umožňuje klientskou aplikaci vytvořit speciální registrace, nazývá šablona registrace, které obsahují, kromě sadu značky, šablony. Funkce šablony Notification Hubs umožňuje klientskou aplikaci pro přidružení zařízení se šablonami, zda pracujete s instalací (doporučeno) nebo registrací. Informace pouze nezávislé na platformě zadané v předchozích příkladech datové části, je skutečný zpráva s výstrahou (Hello!). Šablona je sada pokynů pro Centrum oznámení o tom, jak formátování zprávy nezávislé na platformě pro registraci tohoto konkrétního klienta aplikace. V předchozím příkladu zpráva nezávislé na platformě je jedinou vlastností: **zpráva = Hello!**.
 
-Následující obrázek znázorňuje proces výše:
+Následující obrázek znázorňuje proces:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
@@ -74,7 +74,7 @@ Všimněte si, že skutečné zpráva nahradí výraz $(zprávy). Tento výraz d
 
 Pokud pracujete s modelem instalace, instalace "šablony" klíč obsahuje JSON více šablon. Pokud pracujete s modelem registrace, klientská aplikace můžete vytvořit více registrace Chcete-li použít několik šablon; například šablonu pro oznámení a šablonu pro dlaždici aktualizací. Klientské aplikace můžete také kombinovat nativní registrace (registrace s žádnou šablonu) a šablony registrace.
 
-Centra oznámení odešle jedno oznámení ke každé šabloně bez ohledu, jestli patří do stejné klientské aplikace. Toto chování lze přeložit nezávislé na platformě oznámení do další oznámení. Například stejnou platformu nezávislé zprávu do centra oznámení můžete bezproblémově přeložit v informační výstrahy a aktualizace dlaždice, bez nutnosti back-end zajímat ho. Všimněte si, že některé platformy (například iOS) může sbalit několik oznámení do stejného zařízení, pokud jsou odesílány v krátké době.
+Centra oznámení odešle jedno oznámení ke každé šabloně bez ohledu, jestli patří do stejné klientské aplikace. Toto chování lze přeložit nezávislé na platformě oznámení do další oznámení. Například stejná zpráva nezávislé na platformě k centru oznámení můžete bezproblémově přeložit v informační výstrahy a aktualizace dlaždice, bez nutnosti back-end zajímat ho. Některé platformy (například iOS) může sbalit několik oznámení do stejného zařízení, pokud jsou odesílány v krátké době.
 
 ## <a name="using-templates-for-personalization"></a>Pomocí šablon pro přizpůsobení
 Další výhodou použití šablony je schopnost provádět přizpůsobení za registraci oznámení pomocí centra oznámení. Představte si třeba počasí aplikaci, která zobrazuje dlaždici počasí na určité místo. Uživatel může zvolit c nebo Fahrenheita stupňů a jednoho nebo pětidenního prognózy. Pomocí šablon, každou instalaci klienta aplikace můžete zaregistrovat pro formát požadované (1 den Celsius, 1 den Fahrenheita, 5 dní c, 5 dní Fahrenheita kurzy), a back-end odeslat zprávu, která obsahuje všechny informace potřebné k vyplnění těchto šablon (například pět dní prognózy s c a Fahrenheita stupních).
@@ -126,9 +126,9 @@ V následující tabulce jsou povolené v šablonách jazyk:
 
 Výraz může být libovolná z předchozí formuláře.
 
-Pokud používáte zřetězení, musí být uzavřena celý výraz s {}. Například {$(prop) + '-' + $(prop2)}. |
+Pokud používáte zřetězení, celý výraz musí být uzavřena s {}. Například {$(prop) + '-' + $(prop2)}. |
 
-Například následující není platné šablony XML:
+Například následující šablony není platné šablony XML:
 
     <tile>
       <visual>
@@ -139,7 +139,7 @@ Například následující není platné šablony XML:
     </tile>
 
 
-Jak je vysvětleno výše při použití zřetězení, výrazy musí být uzavřen do složených závorek. Příklad:
+Jak je popsáno dříve, při použití zřetězení, musí být výrazy uzavřen do složených závorek. Příklad:
 
     <tile>
       <visual>

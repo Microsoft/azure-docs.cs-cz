@@ -8,8 +8,10 @@
 ## [Vytvoření oboru názvů](relay-create-namespace-portal.md)
 ## [Vytvoření hybridní lokální/cloudové aplikace](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hybridní připojení
-### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Node](relay-hybrid-connections-node-get-started.md)
+### [.NET Websockets](relay-hybrid-connections-dotnet-get-started.md)
+### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+### [Node Websockets](relay-hybrid-connections-node-get-started.md)
+### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
 ## [WCF Relay](relay-wcf-dotnet-get-started.md)
 ## [Kurz pro WCF Relay](service-bus-relay-tutorial.md)
 ## [Kurz pro WCF Relay REST](service-bus-relay-rest-tutorial.md)

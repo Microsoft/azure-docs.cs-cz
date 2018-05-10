@@ -1,8 +1,8 @@
 ---
-title: "Začínáme s Azure Media výřez | Microsoft Docs"
-description: "Začínáme s Azure výřez média, nástroj pro tvorbu videosoubory z AMS prostředků"
+title: Začínáme s Azure Media výřez | Microsoft Docs
+description: Začínáme s Azure výřez média, nástroj pro tvorbu videosoubory z AMS prostředků
 services: media-services
-keywords: "klip; subclip; kódování; média"
+keywords: klip; subclip; kódování; média
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: ac64d97aeeef6147aa62658c9ee440bf058f4db1
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Vytvoření klipů pomocí Azure Media výřez
 Tato část uvádí základní kroky Začínáme se službou Azure Media výřez. Části obsahují podrobnosti o tom, jak konfigurovat Azure Media výřez.
@@ -87,24 +87,24 @@ var subclipper = new subclipper({
 ```
 
 Parametry pro volání metody inicializace jsou:
-- `selector`{POTŘEBY řetězec}: výběr CSS odpovídající elementu HTML, kde má být vykreslen widgetu.
-- `restVersion`{POTŘEBY řetězec}: verze rozhraní API REST služby Azure Media k cíli. Verze REST definuje formát výstupu generované widgetu. V současné době se podporuje jenom 2.0.
-- `submitSubclipCallback`{POVINNÉ, promise} Funkce zpětného volání, která je volána, když po kliknutí na tlačítko "Odeslat" widgetu. Funkce zpětného volání by měl očekávat výstup generovaný ve widgetu (konfigurace úlohu vykreslování nebo definici filtru). Další informace najdete v tématu Odeslání subclip zpětného volání.
-- `logLevel`{VOLITELNÉ, {'informace o', "Upozornit", "Chyba"}}: úroveň protokolování, který se má zobrazit v konzole prohlížeče. Výchozí hodnota: Chyba
-- `minimumMarkerGap`{VOLITELNÉ, int}: minimální velikost subclip (v sekundách). Poznámka: hodnota by měla být větší nebo rovna hodnotě 6, což je také výchozí.
-- `singleBitrateMp4Profile`{Objekt volitelné, JSON} Profil mp4 jednou přenosovou rychlostí pro vykreslení úlohy konfigurace generované widgetu. Pokud není zadaná, použije [výchozí profil MP4 jednou přenosovou rychlostí](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p).
-- `multiBitrateMp4Profile`{Objekt volitelné, JSON} Profil mp4 přenosovou rychlostí více pro vykreslení úlohy konfigurace generované widgetu. Pokud není zadaná, použije [výchozí profil MP4 více přenosovými rychlostmi](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p).
-- `keymap`{Objekt volitelné, json} Umožňuje přizpůsobení klávesových zkratek widgetu. Další informace najdete v tématu [přizpůsobitelné klávesové zkratky](media-services-azure-media-clipper-keyboard-shortcuts.md).
-- `assetsPanelLoaderCallback`{VOLITELNÉ, promise} Funkce zpětného volání, která je volána načíst (asynchronně) novou stránku prostředků do podokna prostředky pokaždé, když uživatel posune do dolní části podokna. Další informace najdete v tématu Asset podokně zavaděč zpětného volání.
-- `height`{VOLITELNÉ, number} Celková výška widgetu (minimální výška je 600 px bez podokně prostředky a 850 px s podokně prostředky).
-- `subclippingMode`(Volitelné tam, {"vše", 'vykreslení' barvy, 'filtr'}): režimy subclipping povoleny. Výchozí hodnota je všechny.
-- `filterAssetsTypes`(Volitelné, logická hodnota): filterAssetsTypes umožňuje zobrazit nebo skrýt rozevíracího seznamu filtrů z podokna prostředky. Výchozí hodnota je true.
-- `speedLevels`(Volitelná pole): speedLevels umožňuje nastavení úrovně jinou rychlost pro přehrávání videa, najdete v části [dokumentace Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) Další informace.
-- `resetOnJobDone`(Volitelné, logická hodnota): resetOnJobDone umožňuje výřez resetovat subclipper počáteční stav, když je úloha odeslána úspěšně.
-- `autoplayVideo`(Volitelné, logická hodnota): autoplayVideo umožňuje výřez automatické přehrávání videa na zatížení. Výchozí hodnota je true.
-- `language`{VOLITELNÝ, řetězec}: jazyk nastaví jazyk widgetu. Pokud není zadaný, pokusí se widgetu lokalizaci zprávy podle jazyka prohlížeče. Pokud žádný jazyk v prohlížeči, widgetu výchozí angličtině. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) části.
-- `languages`{VOLITELNÉ, JSON}: Parametr jazyky nahradí výchozí slovník jazyky vlastní slovník definovaných uživatelem. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) části.
-- `extraLanguages`(Volitelné, JSON): Parametr extraLanaguages přidá do slovníku výchozí nové jazyky. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) části.
+- `selector` {POTŘEBY řetězec}: výběr CSS odpovídající elementu HTML, kde má být vykreslen widgetu.
+- `restVersion` {POTŘEBY řetězec}: verze rozhraní API REST služby Azure Media k cíli. Verze REST definuje formát výstupu generované widgetu. V současné době se podporuje jenom 2.0.
+- `submitSubclipCallback` {POVINNÉ, promise} Funkce zpětného volání, která je volána, když po kliknutí na tlačítko "Odeslat" widgetu. Funkce zpětného volání by měl očekávat výstup generovaný ve widgetu (konfigurace úlohu vykreslování nebo definici filtru). Další informace najdete v tématu Odeslání subclip zpětného volání.
+- `logLevel` {VOLITELNÉ, {'informace o', "Upozornit", "Chyba"}}: úroveň protokolování, který se má zobrazit v konzole prohlížeče. Výchozí hodnota: Chyba
+- `minimumMarkerGap` {VOLITELNÉ, int}: minimální velikost subclip (v sekundách). Poznámka: hodnota by měla být větší nebo rovna hodnotě 6, což je také výchozí.
+- `singleBitrateMp4Profile` {Objekt volitelné, JSON} Profil mp4 jednou přenosovou rychlostí pro vykreslení úlohy konfigurace generované widgetu. Pokud není zadaná, použije [výchozí profil MP4 jednou přenosovou rychlostí](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-single-bitrate-1080p).
+- `multiBitrateMp4Profile` {Objekt volitelné, JSON} Profil mp4 přenosovou rychlostí více pro vykreslení úlohy konfigurace generované widgetu. Pokud není zadaná, použije [výchozí profil MP4 více přenosovými rychlostmi](https://docs.microsoft.com/azure/media-services/media-services-mes-preset-h264-multiple-bitrate-1080p).
+- `keymap` {Objekt volitelné, json} Umožňuje přizpůsobení klávesových zkratek widgetu. Další informace najdete v tématu [přizpůsobitelné klávesové zkratky](media-services-azure-media-clipper-keyboard-shortcuts.md).
+- `assetsPanelLoaderCallback` {VOLITELNÉ, promise} Funkce zpětného volání, která je volána načíst (asynchronně) novou stránku prostředků do podokna prostředky pokaždé, když uživatel posune do dolní části podokna. Další informace najdete v tématu Asset podokně zavaděč zpětného volání.
+- `height` {VOLITELNÉ, number} Celková výška widgetu (minimální výška je 600 px bez podokně prostředky a 850 px s podokně prostředky).
+- `subclippingMode` (Volitelné tam, {"vše", 'vykreslení' barvy, 'filtr'}): režimy subclipping povoleny. Výchozí hodnota je všechny.
+- `filterAssetsTypes` (Volitelné, logická hodnota): filterAssetsTypes umožňuje zobrazit nebo skrýt rozevíracího seznamu filtrů z podokna prostředky. Výchozí hodnota je true.
+- `speedLevels` (Volitelná pole): speedLevels umožňuje nastavení úrovně jinou rychlost pro přehrávání videa, najdete v části [dokumentace Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions) Další informace.
+- `resetOnJobDone` (Volitelné, logická hodnota): resetOnJobDone umožňuje výřez resetovat subclipper počáteční stav, když je úloha odeslána úspěšně.
+- `autoplayVideo` (Volitelné, logická hodnota): autoplayVideo umožňuje výřez automatické přehrávání videa na zatížení. Výchozí hodnota je true.
+- `language` {VOLITELNÝ, řetězec}: jazyk nastaví jazyk widgetu. Pokud není zadaný, pokusí se widgetu lokalizaci zprávy podle jazyka prohlížeče. Pokud žádný jazyk v prohlížeči, widgetu výchozí angličtině. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) části.
+- `languages` {VOLITELNÉ, JSON}: Parametr jazyky nahradí výchozí slovník jazyky vlastní slovník definovaných uživatelem. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) části.
+- `extraLanguages` (Volitelné, JSON): Parametr extraLanaguages přidá do slovníku výchozí nové jazyky. Další informace najdete v tématu [konfigurace lokalizace](media-services-azure-media-clipper-localization.md) části.
 
 ## <a name="typescript-definition"></a>Definice typeScript
 A [TypeScript](https://www.typescriptlang.org/) najdete soubor definice pro výřez [zde](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts).
@@ -118,7 +118,7 @@ Tato část popisuje plochy rozhraní API poskytované výřez.
 - `setHeight(height)`: Nastaví celkový výšku widgetu v pixelech (minimální výška je 600 px bez podokně prostředky a 850 px s podokně prostředky).
 - `version`: získá verzi pomůcky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Najdete v části Další kroky pro konfiguraci Azure Media výřez:
 - [Načítání prostředků do Azure Media výřez](media-services-azure-media-clipper-load-assets.md)
 - [Konfigurace vlastní klávesové zkratky](media-services-azure-media-clipper-keyboard-shortcuts.md)

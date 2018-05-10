@@ -80,6 +80,8 @@ items:
         href: unique-keys.md
       - name: Databáze bez serveru
         href: serverless-computing-database.md
+      - name: Přehled BulkExecutoru
+        href: bulk-executor-overview.md
       - name: Zabezpečení
         href: database-security.md
         items:
@@ -87,8 +89,6 @@ items:
             href: database-encryption-at-rest.md
           - name: Zabezpečení přístupu k datům
             href: secure-access-to-data.md
-      - name: Celkové náklady na vlastnictví
-        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Případy použití
         href: use-cases.md
         items:
@@ -171,6 +171,10 @@ items:
                 href: multi-region-writers.md
           - name: Průvodce postupy
             items:
+              - name: BulkExecutor – .NET
+                href: bulk-executor-dot-net.md
+              - name: BulkExecutor – Java
+                href: bulk-executor-java.md
               - name: Dotaz
                 items:
                   - name: Zpracování dotazů SQL
@@ -247,6 +251,10 @@ items:
                 href: sql-api-sdk-node.md
               - name: Python
                 href: sql-api-sdk-python.md
+              - name: BulkExecutor – .NET
+                href: sql-api-sdk-bulk-executor-dot-net.md
+              - name: BulkExecutor – Java
+                href: sql-api-sdk-bulk-executor-java.md
               - name: REST
                 href: /rest/api/cosmos-db/
               - name: Poskytovatel prostředků REST
@@ -257,8 +265,6 @@ items:
             items:
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-              - name: Dokument o indexování bez schémat
-                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: SQL Playground
                 href: 'https://aka.ms/cosmos-db-playground'
       - name: Dokumentace k rozhraní MongoDB API
@@ -433,6 +439,8 @@ items:
         href: set-throughput.md
       - name: Podpora brány firewall
         href: firewall-support.md
+      - name: Nastavení koncového bodu služby virtuální sítě
+        href: vnet-service-endpoint.md
       - name: Metriky
         href: use-metrics.md
       - name: Monitorování smluv SLA
@@ -465,3 +473,5 @@ items:
         href: faq.md
       - name: Vysvětlení konzistence dat pomocí baseballu
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+      - name: Dokumenty white paper
+        href: whitepapers.md

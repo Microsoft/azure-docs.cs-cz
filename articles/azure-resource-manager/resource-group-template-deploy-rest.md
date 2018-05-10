@@ -1,6 +1,6 @@
 ---
-title: "Nasazení prostředků pomocí rozhraní API REST a šablony | Microsoft Docs"
-description: "Nasazení prostředky do Azure pomocí Azure Resource Manageru a REST API Resource Manageru. Prostředky jsou definovány v šabloně Resource Manageru."
+title: Nasazení prostředků pomocí rozhraní API REST a šablony | Microsoft Docs
+description: Nasazení prostředky do Azure pomocí Azure Resource Manageru a REST API Resource Manageru. Prostředky jsou definovány v šabloně Resource Manageru.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,22 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/10/2017
+ms.date: 05/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: b46b36805c2f33b1e066bbee2d0333113a26922a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bf2fc2aeb094a828fa1efe6904b897f3a4ab46d8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API
-> [!div class="op_single_selector"]
-> * [PowerShell](resource-group-template-deploy.md)
-> * [Azure CLI](resource-group-template-deploy-cli.md)
-> * [Azure Portal](resource-group-template-deploy-portal.md)
-> * [REST API](resource-group-template-deploy-rest.md)
-> 
-> 
 
 Tento článek vysvětluje, jak používat rozhraní REST API služby Správce prostředků pomocí šablony Resource Manageru k nasazení vašich prostředků Azure.  
 
@@ -44,47 +37,79 @@ Tento článek vysvětluje, jak používat rozhraní REST API služby Správce p
 [!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
 
 ## <a name="deploy-with-the-rest-api"></a>Nasazení pomocí rozhraní REST API
-1. Nastavit [společné parametry a hlavičky](https://docs.microsoft.com/rest/api/index), včetně ověřování tokenů.
-2. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte svoje ID předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](https://docs.microsoft.com/rest/api/resources/resourcegroups#ResourceGroups_CreateOrUpdate).
-   
-        PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
-          <common headers>
-          {
-            "location": "West US",
-            "tags": {
-               "tagname1": "tagvalue1"
-            }
-          }
-3. Ověření nasazení před provedením spuštěním [ověření nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Validate) operaci. Při testování nasazení, zadejte parametry přesně stejně jako při provádění nasazení (zobrazené v dalším kroku).
+1. Nastavit [společné parametry a hlavičky](/rest/api/azure/), včetně ověřování tokenů.
+
+2. Pokud nemáte existující skupinu prostředků, vytvořte skupinu prostředků. Zadejte svoje ID předplatného, název nové skupiny prostředků a umístění, které potřebujete pro vaše řešení. Další informace najdete v tématu [vytvořte skupinu prostředků](/rest/api/resources/resourcegroups/createorupdate).
+
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
+  {
+    "location": "West US",
+    "tags": {
+      "tagname1": "tagvalue1"
+    }
+  }
+  ```
+
+3. Ověření nasazení před provedením spuštěním [ověření nasazení šablony](/rest/api/resources/deployments/validate) operaci. Při testování nasazení, zadejte parametry přesně stejně jako při provádění nasazení (zobrazené v dalším kroku).
+
 4. Vytvořte nasazení. Zadejte svoje ID předplatného, název skupiny prostředků, název nasazení a odkaz na šablonu. Informace o souboru šablony najdete v tématu [soubor parametrů](#parameter-file). Další informace o rozhraní REST API pro vytvoření skupiny prostředků najdete v tématu [vytvořit šablonu nasazení](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_CreateOrUpdate). Upozornění **režimu** je nastaven na **přírůstkové**. Chcete-li spustit kompletní nasazení, nastavte **režimu** k **Complete**. Buďte opatrní při používání dokončení režimu jako nechtěně může odstranit prostředky, které nejsou ve vaší šabloně.
-   
-        PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
-          <common headers>
-          {
-            "properties": {
-              "templateLink": {
-                "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
-                "contentVersion": "1.0.0.0"
-              },
-              "mode": "Incremental",
-              "parametersLink": {
-                "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
-                "contentVersion": "1.0.0.0"
-              }
-            }
-          }
-   
-      Pokud chcete protokolovat obsah odpovědi, obsah žádosti nebo obojí, zahrnout **debugSetting** v požadavku.
-   
-        "debugSetting": {
-          "detailLevel": "requestContent, responseContent"
-        }
-   
-      Můžete nastavit účtu úložiště používat token sdílený přístupový podpis (SAS). Další informace najdete v tématu [delegování přístupu k pomocí sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
-5. Získáte stav nasazení šablony. Další informace najdete v tématu [získat informace o nasazení šablony](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get).
-   
-          GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
-           <common headers>
+
+  ```HTTP
+  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
+  {
+    "properties": {
+      "templateLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "mode": "Incremental",
+      "parametersLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+        "contentVersion": "1.0.0.0"
+      }
+    }
+  }
+  ```
+
+    Pokud chcete protokolovat obsah odpovědi, obsah žádosti nebo obojí, zahrnout **debugSetting** v požadavku.
+
+  ```HTTP
+  "debugSetting": {
+    "detailLevel": "requestContent, responseContent"
+  }
+  ```
+
+    Můžete nastavit účtu úložiště používat token sdílený přístupový podpis (SAS). Další informace najdete v tématu [delegování přístupu k pomocí sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+
+5. Získáte stav nasazení šablony. Další informace najdete v tématu [získat informace o nasazení šablony](/rest/api/resources/deployments/get).
+
+  ```HTTP
+  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
+  ```
+
+## <a name="redeploy-when-deployment-fails"></a>Znovu nasaďte při selhání nasazení
+
+Pro nasazení, které nesplní můžete určit, že se k předchozímu nasazení z historie nasazení automaticky nasazovat. Chcete-li použít tuto možnost, vaše nasazení musí mít jedinečné názvy, je možné zjistit v historii. Pokud nemáte jedinečné názvy, aktuální neúspěšné nasazení přepsat dříve úspěšné nasazení v historii. Tuto možnost můžete použít pouze u nasazení kořenové úrovni. Nasazení ze šablony vnořené nejsou k dispozici pro opakované nasazení.
+
+Pokud chcete znovu zavést poslední úspěšné nasazení, pokud se aktuální nasazení nezdaří, použijte:
+
+```HTTP
+"onErrorDeployment": {
+  "type": "LastSuccessful",
+},
+```
+
+Chcete-li znovu nasadit konkrétní nasazení, pokud se aktuální nasazení nezdaří, použijte:
+
+```HTTP
+"onErrorDeployment": {
+  "type": "SpecificDeployment",
+  "deploymentName": "<deploymentname>"
+}
+```
+
+Zadané nasazení musí mít bylo úspěšné.
 
 ## <a name="parameter-file"></a>Soubor parametrů
 

@@ -4,17 +4,17 @@
   expanded: true
   items:
     - name: Informace o službě Azure Machine Learning
-      href: ../desktop-workbench/overview-what-is-azure-ml.md
+      href: overview-what-is-azure-ml.md
     - name: Přehled správy modelů
       href: ../desktop-workbench/model-management-overview.md
     - name: Další produkty ML
-      href: ../desktop-workbench/overview-more-machine-learning.md
+      href: overview-more-machine-learning.md
     - name: Co je nového
       href: ../desktop-workbench/azure-machine-learning-release-notes.md
 - name: Šablony Rychlý start
   items:
     - name: Instalace a spuštění
-      href: ../desktop-workbench/quickstart-installation.md
+      href: quickstart-installation.md
 - name: Kurzy
   items:
     - name: 1. Příprava dat
@@ -29,6 +29,8 @@
   items:
     - name: Klíčové koncepty
       href: ../desktop-workbench/overview-general-concepts.md
+    - name: Akcelerace FPGA
+      href: concept-accelerate-with-fpgas.md
 - name: Návody
   items:
     - name: Hlavní úlohy rozhraní příkazového řádku
@@ -92,8 +94,10 @@
           href: ../desktop-workbench/how-to-read-write-files.md
         - name: Použití knihovny MMLSpark
           href: ../desktop-workbench/how-to-use-mmlspark.md
-    - name: Zprovoznění modelů
+    - name: Modely nasazení a využití
       items:
+        - name: Nasazení modelů do FPGA
+          href: how-to-deploy-fpga-web-service.md
         - name: Nastavení správy modelů
           href: ../desktop-workbench/deployment-setup-configuration.md
         - name: Škálování clusterů a služeb
@@ -142,6 +146,31 @@
           href: ../desktop-workbench/scenario-deep-learning-for-predictive-maintenance.md
 - name: Referenční informace
   items:
+    - name: Balíčky Pythonu
+      href: reference-python-package-overview.md
+      items:
+        - name: Počítačové zpracování obrazu
+          items:
+            - name: Přehled balíčků a instalace
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision'
+            - name: Vytváření a nasazování modelů klasifikace obrázků
+              href: how-to-build-deploy-image-classification-models.md
+            - name: Přesnost modelů
+              href: how-to-improve-accuracy-for-computer-vision-models.md
+        - name: Prognózování
+          items:
+            - name: Přehled a instalace
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/forecasting-overview'
+            - name: Vytváření a nasazování modelů prognóz
+              href: how-to-build-deploy-forecast-models.md
+        - name: Akcelerace FPGA
+          href: reference-fpga-package-overview.md
+        - name: Analýza textu
+          items:
+            - name: Přehled a instalace
+              href: 'https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics'
+            - name: Vytváření a nasazování modelů klasifikace textu
+              href: how-to-build-deploy-text-classification-models.md
     - name: Příprava dat
       items:
         - name: Rozšíření Pythonu pro přípravu dat
@@ -191,13 +220,13 @@
     - name: Nejčastější dotazy
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Potíže a jejich řešení
-      href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
+      href: known-issues-and-troubleshooting-guide.md
     - name: Podpora a školení
-      href: ../desktop-workbench/support-for-aml-services.md
+      href: support-for-aml-services.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny
-      href: ../desktop-workbench/aml-pricing.md
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: Dostupnost v oblastech
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Vědecké zpracování týmových dat

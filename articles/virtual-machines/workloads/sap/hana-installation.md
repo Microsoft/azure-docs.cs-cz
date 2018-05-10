@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef85c098058c97e5ec6d758fcf1dab5b1a87786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Postup instalace a konfigurace SAP HANA (velké instance) na Azure
 
 Toto jsou některé důležité definice potřebujete vědět, než se pustíte do čtení této příručky. V [přehled SAP HANA (velké instance) a architektura v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) zavedli jsme dvěma různými třídami velké Instance HANA jednotek s:
 
 - S72, S72m, S144, S144m, S192 a S192m, které označujeme jako typu Type I třídy, z jednotky SKU.
-- S384, S384m, S384xm, S576, S768 a S960, které označujeme jako typ II třída z jednotky SKU.
+- S384, S384m, S384xm, S576m, S768m a S960m, které označujeme jako typ II třída z jednotky SKU.
 
 Specifikátor třídy se bude používat v dokumentaci velké Instance HANA nakonec odkazovat na různé možnosti a požadavky založené na HANA velké Instance SKU.
 
@@ -54,7 +54,7 @@ V konkrétní, zkontrolujte následující parametry a nakonec upravený tak, ab
 - net.core.rmem_max = 16777216
 - net.core.wmem_max = 16777216
 - net.core.rmem_default = 16777216
-- net.core.wmem_default = 16777216
+- NET.Core.wmem_default = 16777216
 - net.core.optmem_max = 16777216
 - net.ipv4.tcp_rmem = 65536 16777216 16777216
 - net.ipv4.tcp_wmem = 65536 16777216 16777216
@@ -100,11 +100,11 @@ Zásady vytváření názvů svazky úložiště jsou uvedeny v následující t
 
 | Využití úložiště | Název připojení | Název svazku | 
 | --- | --- | ---|
-| HANA data | /hana/data/SID/mnt0000<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA protokolu | /hana/log/SID/mnt0000<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA data | /Hana/data/SID/mnt0000<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA protokolu | /Hana/log/SID/mnt0000<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
 | Záloha protokolu HANA | /Hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | Sdílené HANA | /Hana/Shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
-| USR/sap | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
+| USR/sap | /USR/SAP/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
 Kde SID = instance HANA ID systému 
 
@@ -139,7 +139,7 @@ Výstup příkaz df -h na jednotce, S72m HANA velké Instance bude vypadat:
 Chcete-li optimalizovat SAP HANA do úložiště používá pod, je třeba nastavit také následující konfigurační parametry SAP HANA:
 
 - max_parallel_io_requests 128
-- async_read_submit on
+- async_read_submit na
 - async_write_submit_active on
 - async_write_submit_blocks all
  
@@ -147,7 +147,7 @@ Verze SAP HANA 1.0 až SPS12, tyto parametry lze nastavit při instalaci databá
 
 Také můžete nakonfigurovat parametry po instalaci databáze SAP HANA pomocí rozhraní hdbparam. 
 
-S SAP HANA 2.0 se již nepoužívá rozhraní hdbparam. V důsledku parametry musí být nastavena pomocí příkazů SQL. Podrobnosti najdete v tématu [&#2399079; Poznámka SAP: odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
+S SAP HANA 2.0 se již nepoužívá rozhraní hdbparam. V důsledku parametry musí být nastavena pomocí příkazů SQL. Podrobnosti najdete v tématu [2399079 # Poznámka SAP: odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
 
 ## <a name="operating-system"></a>Operační systém
@@ -234,7 +234,7 @@ V YAST přejděte do údržba softwaru a vyhledejte smt. Vyberte smt, který aut
 ![SMT v yast](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Výběr pro instalaci smtserver přijměte. Po instalaci, přejděte na konfigurace serveru SMT a zadejte přihlašovací údaje organizace z centra zákazníka SUSE, který jste získali dříve. Jako adresu URL serveru SMT také zadejte název hostitele vašeho virtuálního počítače Azure. V této ukázce bylo https://smtserver, jak je uvedeno v další grafiky.
+Výběr pro instalaci smtserver přijměte. Po instalaci, přejděte na konfigurace serveru SMT a zadejte přihlašovací údaje organizace z centra zákazníka SUSE, který jste získali dříve. Jako adresu URL serveru SMT také zadejte název hostitele vašeho virtuálního počítače Azure. V této ukázce bylo https://smtserver jak je uvedeno v další grafiky.
 
 ![Konfigurace serveru SMT](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

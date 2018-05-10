@@ -1,9 +1,9 @@
 ---
-title: "Inteligentní detekce - anomálie výkonu | Microsoft Docs"
-description: "Application Insights provede inteligentní analýzu aplikace telemetrie a zobrazí upozornění na potenciální problémy. Tato funkce vyžaduje žádné nastavení."
+title: Inteligentní detekce - anomálie výkonu | Microsoft Docs
+description: Application Insights provede inteligentní analýzu aplikace telemetrie a zobrazí upozornění na potenciální problémy. Tato funkce vyžaduje žádné nastavení.
 services: application-insights
 documentationcenter: windows
-author: antonfrMSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; antonfr
+ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní detekce - anomálie výkonu
 
@@ -87,7 +87,7 @@ E-mailů o inteligentní detekce anomálií výkonu jsou omezeny na jednu e-mail
   * Ne.  Jsme nemáte potvrzení zjišťování každých chování, které můžete zvážit neobvyklé.
 
 
-* *Pokud dělat nemáte nic v odezvy oznámení, bude získat připomenutí?*
+* *Pokud dělat nemáte nic v reakci na oznámení, bude získat připomenutí?*
   * Ne, dostanete zprávu o každém problému pouze jednou. Pokud potíže potrvají, bude aktualizována Inteligentní detekce kanálu okno.
 * *Ztrátou e-mailu. Kde najdu oznámení na portálu*
   * V přehledu nástroje Application Insights vaší aplikace, klikněte **Inteligentní detekce** dlaždici. Existuje budete moci najít všechna oznámení až do 90 dnů zpět.
@@ -132,7 +132,7 @@ Oznámení snížení času odezvy poskytuje:
 * Odkazy k diagnostice problému.
   * Trasování profileru k zobrazení, kde je operace čas strávený (odkaz je k dispozici, pokud profileru trasování příklady, které byly shromážděny pro tuto operaci během období detekce). 
   * Sestavy pro zvýšení výkonu v Průzkumníku metrika, kde můžete vyfiltrování a rozčlenění čas nebo filtry rozsahu pro tuto operaci.
-  * Vyhledávání pro toto volání a zobrazte vlastnosti konkrétní volání.
+  * Vyhledávání pro toto volání zobrazíte vlastnosti konkrétní volání.
   * Selhání sestavy - li počet > 1 to znamenat, že došlo k chybám při této operaci, která může přispět ke snížení výkonu.
 
 ## <a name="dependency-duration-degradation"></a>Snížení doby trvání závislosti
@@ -152,7 +152,7 @@ Všimněte si, že se dozvíte:
 * Odkazy k diagnostice problému
   * Sestavy pro zvýšení výkonu v Průzkumníku Metrika pro tuto závislost
   * Vyhledejte tuto závislost volá zobrazíte vlastnosti volání
-  * Selhání sestavy - li počet > 1 to znamená, že bylo došlo k chybě závislosti volání během zjišťování dobu, po kterou může přispět ke snížení doby trvání. 
+  * Selhání sestav – Pokud počet > 1, to znamená, že došlo k selhání závislosti volá během zjišťování dobu, po kterou může přispět ke snížení doby trvání. 
   * Otevřete Analytics s dotazy, které vypočítat této doby trvání závislosti a počet  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>Inteligentní detekce pomalé provádění schémat 

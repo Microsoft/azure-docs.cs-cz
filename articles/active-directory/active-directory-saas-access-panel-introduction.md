@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/04/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8ea85a0906071d6b30f176de7509e5f346b513
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 442bfa7081865b2549c07a9436296ba2385a0b66
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 
@@ -81,6 +81,7 @@ Pro přihlášení k založené na heslech jednotné přihlašování, musíte p
 - Přihlaste se do aplikace přímo pomocí aplikace **přihlašovací adresa URL**. Pokud použijete adresu URL aplikace, rozšíření akci rozpozná a vám dává možnost přihlášení z rozšíření.
 - Můžete spustit kterýkoli aplikací na přístupovém panelu pomocí *rychlého vyhledávání* funkce rozšíření. 
 - Rozšíření se dozvíte, poslední tři aplikace, které můžete spustit v **nedávno použité** části.
+- Můžete použít interní společnosti adresy URL při vzdálené prostřednictvím [Proxy aplikace](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started)
 
 > [!NOTE]
 > Další funkce jsou dostupné pouze pro okraj a Chrome, Firefox.

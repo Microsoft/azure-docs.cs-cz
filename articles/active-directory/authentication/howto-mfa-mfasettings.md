@@ -1,24 +1,20 @@
 ---
 title: Konfigurace Azure Multi-Factor Authentication | Microsoft Docs
-description: Tento článek popisuje postup konfigurace nastavení ověřování Azure Multi-Factor Authentication pro sestavy, upozornění na podvod, jednorázové přeskočení, vlastní hlasové zprávy, ukládání do mezipaměti, důvěryhodné IP adresy a hesla aplikací.
+description: Tento článek popisuje, jak konfigurovat nastavení ověřování Azure Multi-Factor Authentication na portálu Azure
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: f587800d3b1d205107b6c8091ca424b01b9e67e6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 

@@ -1,25 +1,23 @@
 ---
-title: "Další kroky pro správu přístupu pomocí skupin | Microsoft Docs"
-description: "Jak rozšířené-pro správu skupin zabezpečení a použití těchto skupin můžete spravovat přístup k prostředku."
+title: Další kroky pro správu přístupu pomocí skupin | Microsoft Docs
+description: Jak rozšířené-pro správu skupin zabezpečení a použití těchto skupin můžete spravovat přístup k prostředku.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 44350a3c-8ea1-4da1-aaac-7fc53933dd21
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: curtand
 ms.custom: it-pro
-ms.openlocfilehash: 177e31b8b8aff90cd91135d02eb3a2d8c85e2c33
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4703ab5d9f4b8593e758764e50455672e368e18
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="managing-owners-for-a-group"></a>Správa vlastníků pro skupinu
 Jakmile vlastník prostředku přiřazena přístup k prostředku skupině služby Azure AD, vlastník skupiny je spravovaný členství ve skupině. Vlastník prostředku deleguje efektivně oprávnění přiřazovat uživatele k prostředku vlastníkovi skupiny.

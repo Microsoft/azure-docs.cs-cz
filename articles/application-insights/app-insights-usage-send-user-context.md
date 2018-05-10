@@ -1,9 +1,9 @@
 ---
-title: "Odeslat uživatelský kontext ID povolit použití možnosti v Azure Application Insights | Microsoft Docs"
-description: "Sledovat, jak se uživatelé přesunou prostřednictvím služby přiřazením, každý z nich jedinečný, trvalé řetězec ID ve službě Application Insights."
+title: Odeslat uživatelský kontext ID povolit použití možnosti v Azure Application Insights | Microsoft Docs
+description: Sledovat, jak se uživatelé přesunou prostřednictvím služby přiřazením, každý z nich jedinečný, trvalé řetězec ID ve službě Application Insights.
 services: application-insights
-documentationcenter: 
-author: abgreg
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
 ms.topic: article
 ms.date: 08/02/2017
-ms.author: mbullwin
-ms.openlocfilehash: fe4481cf851fc021b3073a6d9d6254f546218785
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: mbullwin;abgreg
+ms.openlocfilehash: 196eeb7b5a817ff932f99c7db86ead5625b5f206
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 #  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslat uživatelský kontext ID umožňující použití prostředí ve službě Azure Application Insights
 

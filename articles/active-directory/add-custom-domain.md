@@ -1,24 +1,22 @@
 ---
-title: "Přidat vlastní doménu do služby Azure AD | Microsoft Docs"
-description: "Vysvětluje, jak přidat vlastní doménu v Azure Active Directory."
+title: Přidat vlastní doménu do služby Azure AD | Microsoft Docs
+description: Vysvětluje, jak přidat vlastní doménu v Azure Active Directory.
 services: active-directory
 author: curtand
 manager: mtillman
-ms.assetid: 0a90c3c5-4e0e-43bd-a606-6ee00f163038
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: e7b85d5f4cd19c94fe904f16090e174d87ea120b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 37890ac856a6b6bd89acc17973327b239a583997
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Rychlý úvod: Přidání vlastního názvu domény do Azure Active Directory
 
@@ -64,10 +62,10 @@ Teď můžete [přiřazovat uživatelská jména, která obsahují vlastní náz
 ## <a name="troubleshooting"></a>Řešení potíží
 Pokud nemůžete ověřit vlastní název domény, zkuste následující kroky řešení potíží:
 
-1. **Počkejte hodinu**. Záznamy DNS musí rozšířit před Azure AD můžete ověřit doménu. Tento proces může trvat hodinu nebo déle.
+1. **Počkejte hodinu**. Záznamy DNS musí rozšířit před Azure AD můžete ověřit doménu. Tento proces může trvat hodinu i déle.
 2. **Zkontrolujte, jestli je zadán záznam DNS a jestli je správně**. Tento krok proveďte na webu registrátora názvu domény. Azure AD nelze ověřit název domény, pokud 
   * Položku DNS není k dispozici v souboru zóny DNS
-  * Není přesnou shodu s položku DNS, které poskytuje Azure AD, můžete. 
+  * Položka DNS se přesně neshoduje s položkou DNS, kterou vám poskytla služba Azure AD. 
   
   Pokud nemáte přístup k aktualizaci záznamů DNS domény u registrátora názvu domény, poskytněte položku DNS osobě nebo týmu z vaší organizace, kteří tento přístup mají, a požádejte je, aby položku DNS přidali.
 3. **Odstraňte název domény z jiného adresáře ve službě Azure AD**. Název domény můžete ověřit jenom v jediném adresáři. Pokud se název domény je aktuálně ověřit v jiném adresáři, ho nelze ověřit v adresáři nové dokud je neodstraní na jiný. Další informace o odstraňování názvů domén najdete v článku [Správa vlastních názvů domén](active-directory-domains-manage-azure-portal.md).    
@@ -79,10 +77,10 @@ Opakujte kroky v tomto článku pro přidání jednotlivých názvů domén.
 
 [Správa vlastních názvů domén](active-directory-domains-manage-azure-portal.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tento rychlý start když jste se naučili jak přidat vlastní doménu do služby Azure AD. 
 
 Na následující odkaz můžete přidat nové vlastní domény ve službě Azure AD na portálu Azure.
 
 > [!div class="nextstepaction"]
-> [Přidat vlastní doménu](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/QuickStart) 
+> [Přidání vlastní domény](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/QuickStart) 

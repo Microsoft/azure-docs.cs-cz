@@ -1,6 +1,6 @@
 ---
-title: Upgrade clusteru Azure Container Service (AKS)
-description: Upgrade clusteru Azure Container Service (AKS)
+title: Upgrade clusteru služby Azure Kubernetes služby (AKS)
+description: Upgrade clusteru služby Azure Kubernetes služby (AKS)
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 5f5cfc49bd7b5e1c06adf97bc6f6ba88fc81f77a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 3fae465512501b0642d0215df7b73c9879a1a3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="upgrade-an-azure-container-service-aks-cluster"></a>Upgrade clusteru Azure Container Service (AKS)
+# <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru služby Azure Kubernetes služby (AKS)
 
-Služba Azure Container Service (AKS) usnadňuje provádění běžných úloh správy, včetně upgradu clusterů Kubernetes.
+Služba Azure Kubernetes (AKS) umožňuje snadno provádět běžné úlohy správy, včetně upgrade Kubernetes clustery.
 
 ## <a name="upgrade-an-aks-cluster"></a>Upgrade clusteru AKS
 
@@ -100,7 +100,7 @@ Výstup:
 }
 ```
 
-Potvrďte, že upgrade bylo úspěšně dokončeno s `az aks show` příkaz.
+Ověřte úspěšné provedení upgradu pomocí příkazu `az aks show`.
 
 ```azurecli-interactive
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table

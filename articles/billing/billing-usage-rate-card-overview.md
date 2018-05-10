@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/9/2017
 ms.author: mobandyo
-ms.openlocfilehash: 7b573c906ee4ced803369606c3e318fd452a426a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: d94536bd0ab10c3e380855b66bc10dc9af6195a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Prostřednictvím kódu programu pohled na použití Azure pomocí rozhraní API Správce Azure fakturace
 Používáte rozhraní API Správce Azure fakturace k získání dat využití a prostředků do vašeho nástrojů pro analýzu dat upřednostňované. Rozhraní API RateCard a využití prostředků Azure vám může pomoct přesně předpovědět a náklady na správu. Rozhraní API jsou implementovány jako poskytovatel prostředků a součástí řady rozhraní API vystavené pomocí Správce prostředků Azure.  
@@ -73,5 +73,5 @@ Tady jsou některé scénáře, které lze vytvořit pomocí kombinace využití
 
 * Další informace o Azure Resource Manager najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md). 
 
-* Další informace o sadě nástrojů pro potřeby můžete získat představu o cloudu tráví, najdete v článku Gartner [trhu Průvodce pro finanční správy IT (ITFM) nástroje](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb).
+
 

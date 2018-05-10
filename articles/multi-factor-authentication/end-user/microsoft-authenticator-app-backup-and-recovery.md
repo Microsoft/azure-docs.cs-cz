@@ -14,11 +14,11 @@ ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
 ms.custom: end-user
-ms.openlocfilehash: 8fa9a24b5b402ebebb69bc69f7cda47092436642
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e25ccdad5285bfaa96f538aca415746942523d85
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovací údaje účtu v aplikaci Microsoft Authenticator
 **Platí pro:**
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/28/2018
 Aplikace Microsoft Authenticator zálohuje vaše přihlašovací údaje účtu a související aplikace nastavení, například pořadí vaše účty, do cloudu. Po dokončení zálohování, můžete také použít aplikace k obnovení vaše informace o nové zařízení, potenciálně zabraňující získávání uzamčena na více systémů nebo nutnosti opětného vytváření účtů.
 
 >[!IMPORTANT]
-> Pro každé umístění úložiště zálohy je nutné jeden osobní účet Microsoft a jeden účet serveru služby iCloud. Ale v tomto umístění úložiště, můžete zálohovat některé účty. Například můžete mít osobního účtu, školní účet a účet třetích stran, jako je Facebook, Google a tak dále.<br><br>Ukládají se jenom přihlašovací údaje účtu, který zahrnuje svoje uživatelské jméno a ověřovací kód účtu 8 číslic, které je nutné k prokázání své identity v aplikaci Microsoft Authenticator. Neukládejte jsme všechny ostatní informace související s vaše účty, včetně e-mailů a souborů. Můžeme také nemáte přidružit nebo sdílet vaše účty žádným způsobem nebo jiné produkty nebo služby. A nakonec nebude váš správce IT získat žádné informace o všech těchto účtů.
+> Pro každé umístění úložiště zálohy je nutné jeden osobní účet Microsoft a jeden účet serveru služby iCloud. Ale v tomto umístění úložiště, můžete zálohovat některé účty. Například můžete mít osobního účtu, školní účet a účet třetích stran, jako je Facebook, Google a tak dále.<br><br>Ukládají se jenom svoje osobní, tak i 3. stran přihlašovací údaje, které zahrnují vaše uživatelské jméno a ověřovací kód účtu, které je nutné k prokázání své identity. Neukládejte jsme všechny ostatní informace související s vaše účty, včetně e-mailů a souborů. Můžeme také nemáte přidružit nebo sdílet vaše účty žádným způsobem nebo jiné produkty nebo služby. A nakonec nebude váš správce IT získat žádné informace o všech těchto účtů.
 
 ## <a name="back-up-your-account-credentials"></a>Zálohovat přihlašovací údaje účtu
 Předtím, než můžete zálohovat přihlašovací údaje, musí mít obě:

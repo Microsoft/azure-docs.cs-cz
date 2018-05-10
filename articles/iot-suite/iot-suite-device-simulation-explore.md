@@ -1,6 +1,6 @@
 ---
 title: Začínáme s řešením zařízení simulace - Azure | Microsoft Docs
-description: Simulace řešení IoT Suite je nástroj, který lze použít pro vývoj a testování řešení IoT. Služba simulace je samostatný nabídky, můžete použít ve spojení s další předkonfigurovaných řešení nebo použít s vlastní řešení.
+description: Simulace řešení IoT řešení akcelerátorů je nástroj, který lze použít pro vývoj a testování řešení IoT. Služba simulace je samostatný nabídka, která používá ve spojení s další řešení akcelerátorů nebo použít s vlastní řešení.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,15 +12,15 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7dfd56d06e180dd163fa84d4289e6daf4baefc51
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Návod simulace zařízení
 
-Simulace zařízení Azure IoT je nástroj, který lze použít pro vývoj a testování řešení IoT. Simulace zařízení je samostatný nabídky, které můžete ve spojení s další předkonfigurovaných řešení nebo vlastní řešení.
+Simulace zařízení Azure IoT je nástroj, který lze použít pro vývoj a testování řešení IoT. Simulace zařízení je samostatný nabídky, které můžete ve spojení s další řešení akcelerátorů nebo vlastní řešení.
 
 Tento kurz vás provede procesem některé funkce simulace zařízení. Se dozvíte, jak funguje a můžete ji použít k testování své vlastní řešení IoT.
 
@@ -39,7 +39,7 @@ Pokud jste nenasadili simulace zařízení ještě by se měla Dokončit [nasaze
 
 ## <a name="configuring-device-simulation"></a>Konfigurace simulace zařízení
 
-Můžete nakonfigurovat a spustit simulaci zařízení zcela od v řídicím panelu. Otevřete řídicí panel ze sady IoT Suite [zřízení řešení](https://www.azureiotsuite.com/) stránky. Klikněte na tlačítko **spusťte** v rámci vaší nové zařízení simulace nasazení.
+Můžete nakonfigurovat a spustit simulaci zařízení zcela od v řídicím panelu. Otevřete řídicí panel z akcelerátorů řešení IoT [zřízení řešení](https://www.azureiotsuite.com/) stránky. Klikněte na tlačítko **spusťte** v rámci vaší nové zařízení simulace nasazení.
 
 ### <a name="target-iot-hub"></a>Cíl služby IoT Hub
 

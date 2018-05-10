@@ -1,11 +1,10 @@
 ---
 title: Exportovat do SQL z Azure Application Insights | Microsoft Docs
-description: "Nepřetržitě exportujte data Application Insights do SQL pomocí služby Stream Analytics."
+description: Nepřetržitě exportujte data Application Insights do SQL pomocí služby Stream Analytics.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
-editor: mrbullwinkle
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
 ms.author: mbullwin
-ms.openlocfilehash: 8d008727d964df56d128265b632dafa4ab776f98
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: e410bb87d017a7659c3eaffbedef378aaf7f5716
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do SQL z Application Insights pomocí služby Stream Analytics
 Tento článek ukazuje, jak přesunout data telemetrie z [Azure Application Insights] [ start] do Azure SQL database pomocí [průběžné exportovat] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -32,7 +31,7 @@ Začneme s se předpokládá, že už máte aplikaci, kterou chcete monitorovat.
 V tomto příkladu použijeme data zobrazit na stránce, ale stejného vzoru lze snadno rozšířit na jiné datové typy, jako jsou vlastní události a výjimky. 
 
 ## <a name="add-application-insights-to-your-application"></a>Přidejte Application Insights do vaší aplikace
-Abyste mohli začít:
+Jak začít:
 
 1. [Nastavte Application Insights pro webové stránky](app-insights-javascript.md). 
    
@@ -171,10 +170,10 @@ Cesta předpony vzor Určuje, jak Stream Analytics vyhledá vstupní soubory v �
 
 V tomto příkladu:
 
-* `webapplication27`je název prostředku Application Insights **vše na malá písmena**. 
-* `1234...`je klíč instrumentace prostředku Application Insights **s pomlčkami odebrat**. 
-* `PageViews`je typ dat, který chcete analyzovat. Dostupné typy závisí na filtr, který nastavíte v průběžné exportovat. Zkontrolujte exportovaná data zobrazit dostupné typy a zobrazit [Exportovat datový model](app-insights-export-data-model.md).
-* `/{date}/{time}`vzor zapsána oznámena.
+* `webapplication27` je název prostředku Application Insights **vše na malá písmena**. 
+* `1234...` je klíč instrumentace prostředku Application Insights **s pomlčkami odebrat**. 
+* `PageViews` je typ dat, který chcete analyzovat. Dostupné typy závisí na filtr, který nastavíte v průběžné exportovat. Zkontrolujte exportovaná data zobrazit dostupné typy a zobrazit [Exportovat datový model](app-insights-export-data-model.md).
+* `/{date}/{time}` vzor zapsána oznámena.
 
 Chcete-li získat název a iKey prostředku Application Insights, otevřete Essentials na stránku s jeho přehled nebo otevřete nastavení.
 

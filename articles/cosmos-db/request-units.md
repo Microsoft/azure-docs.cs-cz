@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2b69b3b5fee0d1148a762f817d9c5a8bc67806e7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 
@@ -32,9 +32,9 @@ Zajistit předvídatelný výkon, budete muset rezervovat propustnost v jednotk�
 Po přečtení tohoto článku, budete moct odpovězte si na následující otázky:  
 
 * Co jsou jednotek žádosti a poplatky žádosti v Azure Cosmos DB?
-* Jak určit kapacitu jednotky žádosti pro kontejner v Azure Cosmos DB?
+* Jak určit kapacitu jednotky žádosti z kontejneru nebo sadu kontejnery v Azure Cosmos DB?
 * Jak odhadnout, že je jednotka žádosti Moje aplikace?
-* Co se stane, když I překročit kapacitu jednotky žádosti pro kontejner v Azure Cosmos DB?
+* Co se stane, když I překročit kapacitu jednotky žádosti z kontejneru nebo sady kontejnerů v Azure Cosmos DB?
 
 Jak Azure Cosmos DB je více modelu databáze; je důležité si uvědomit, že v tomto článku se vztahují na všechny datové modely a rozhraní API v Azure Cosmos DB. Tento článek používá obecné podmínky, jako *kontejneru* a *položky* k obecnému kolekce, grafu, nebo tabulka a dokumentu, uzel nebo entity, v uvedeném pořadí.
 
@@ -50,14 +50,19 @@ Doporučujeme začít následujícím videem, kde Azure manažer programu DB Cos
 > 
 
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Určení požadavku jednotka kapacity v Azure Cosmos DB
-Při spouštění nový kontejner je zadat počet jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené. Na základě zřízené propustnosti, Azure Cosmos DB přiděluje fyzické oddíly pro hostování vašeho kontejneru a rozdělení/rebalances dat napříč oddíly ho s růstem.
 
-Kontejnery Azure Cosmos DB lze vytvořit jako pevný nebo neomezená. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Chcete-li vytvořit kontejner neomezená musíte zadat minimální propustnost 1000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony odlišné hodnoty). Výběrem klíč oddílu s mnoha jedinečných hodnot je zajistit, že kontejner a tabulka/grafika a žádosti o je možné rozšířit jednotně pomocí Azure Cosmos DB. 
+Můžete zadat počet jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené pro jednotlivé kontejner nebo pro sadu kontejnery. Podle zřízené propustnosti, bude Azure Cosmos DB přidělit fyzické oddíly ho s růstem hostovat vaše kontejnery a rozdělení nebo rebalances data napříč oddíly.
+
+Při přiřazování RU za sekundu na úrovni jednotlivých kontejneru, kontejnery se dá vytvořit jako *pevné* nebo *neomezená*. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner neomezená, musíte zadat minimální propustnost 1000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony odlišné hodnoty). Výběrem klíč oddílu s mnoha jedinečných hodnot je zajistit, že kontejner a tabulka/grafika a žádosti o je možné rozšířit jednotně pomocí Azure Cosmos DB. 
+
+Při přiřazování RU za sekundu napříč sadu kontejnery, kontejnery, které patří do této skupiny jsou považovány za *neomezená* kontejnery a musíte zadat klíč oddílu.
+
+![Zřizování jednotek žádosti pro jednotlivé kontejnery a sadu kontejnery][6]
 
 > [!NOTE]
 > Klíč oddílu je logické hranice a není fyzický jeden. Proto není potřeba omezit počet hodnoty klíče jedinečné oddílu. Ve skutečnosti je lepší má více jedinečných hodnot klíče oddílu menší, než databázi Cosmos Azure má další možnosti vyrovnávání zatížení.
 
-Zde je fragment kódu pro vytvoření kontejneru s 3 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+Zde je fragment kódu pro vytvoření kontejneru s 3 000 jednotek žádosti za sekundu pro kontejner jednotlivých pomocí sady .NET SDK rozhraní SQL API:
 
 ```csharp
 DocumentCollection myCollection = new DocumentCollection();
@@ -70,12 +75,41 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 3000 });
 ```
 
-Azure Cosmos DB funguje ve model rezervace propustnost. To znamená, že se účtují pro množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako vaše aplikace je zatížení, data a využití vzory změnu, je možné snadno škálovat nahoru a dolů množství vyhrazené RUs prostřednictvím sady SDK nebo pomocí [portálu Azure](https://portal.azure.com).
+Zde je fragment kódu pro zřizování 100 000 žádostí jednotek za sekundu napříč sadu kontejnery pomocí rozhraní SQL API .NET SDK:
 
-Každý kontejner je namapována na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kontejner do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+```csharp
+// Provision 100,000 RU/sec at the database level. 
+// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
+// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
+Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
+
+DocumentCollection sharedCollection1 = new DocumentCollection();
+sharedCollection1.Id = "sharedCollection1";
+sharedCollection1.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
+
+DocumentCollection sharedCollection2 = new DocumentCollection();
+sharedCollection2.Id = "sharedCollection2";
+sharedCollection2.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
+
+DocumentCollection dedicatedCollection = new DocumentCollection();
+dedicatedCollection.Id = "dedicatedCollection";
+dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
+```
+
+
+Azure Cosmos DB funguje ve model rezervace propustnost. To znamená, že se účtují pro množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako vaše aplikace je zatížení, data a využití vzory změnu, je možné snadno škálovat nahoru a dolů počet vyhrazené RUs prostřednictvím sady SDK nebo pomocí [portálu Azure](https://portal.azure.com).
+
+Každý kontejner, nebo sadu kontejnery, je namapovaný na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kontejner do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
 
 ```csharp
 // Fetch the resource to be updated
+// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
 Offer offer = client.CreateOfferQuery()
                 .Where(r => r.ResourceLink == collection.SelfLink)    
                 .AsEnumerable()
@@ -88,28 +122,28 @@ offer = new OfferV2(offer, 5000);
 await client.ReplaceOfferAsync(offer);
 ```
 
-Neexistuje žádný vliv na dostupnost vaší kontejneru při změně propustnost. Nové vyhrazenou propustností je obvykle efektivní během několika sekund na použití nové propustnost.
+Neexistuje žádný vliv na dostupnost vaší kontejneru nebo sadu kontejnery, když změníte propustnost. Nové vyhrazenou propustností je obvykle efektivní během několika sekund na použití nové propustnost.
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Izolace propustnost v globálně distribuované databáze
 
-Při replikaci databáze k více než jedné oblasti Azure Cosmos DB poskytuje izolaci propustnost zajistit, aby využití RU v jedné oblasti neměla vliv RU využití v jiné oblasti. Například pokud zapsat data do jedné oblasti a čtení dat z jiné oblasti, RUs, které se použije k provedení operace zápisu v oblasti *A* nepřebírají od RUs používat pro operace čtení v oblasti *B*. RUs nejsou rozdělit do oblasti, ve kterých jste nasadili. Každou oblast, ve kterém se replikují databáze má v plné výši RUs zřízený. Další informace o globální replikace najdete v tématu [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
+Při replikaci databáze k více než jedné oblasti Azure Cosmos DB poskytuje izolaci propustnost zajistit, aby využití RU v jedné oblasti neměla vliv RU využití v jiné oblasti. Například pokud zapsat data do jedné oblasti a čtení dat z jiné oblasti, RUs, které se použije k provedení operace zápisu v oblasti *A* nepřebírají od RUs používat pro operace čtení v oblasti *B*. RUs nejsou rozdělit do oblasti, ve kterých jste nasadili. Každou oblast, ve kterém se replikují databáze má úplné počet RUs zřízený. Další informace o globální replikace najdete v tématu [distribuci dat globálně pomocí Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="request-unit-considerations"></a>Aspekty jednotek žádosti
-Při odhadování počet jednotek žádosti a zajišťují pro váš kontejner Azure Cosmos DB, je důležité vzít v úvahu následující proměnné:
+Při odhadování počet jednotek žádosti a zajišťují, je důležité vzít v úvahu následující proměnné:
 
 * **Velikost položky**. Jak roste počet jednotek žádosti použití číst nebo zapisovat data se taky zvýší.
 * **Počet vlastností položky**. Za předpokladu, že výchozí indexování všech vlastností, jednotek použití k zápisu zvýšení dokumentu nebo uzel nebo entity jako zvyšuje počet vlastnost.
 * **Konzistenci dat**. Při použití modelů konzistence dat, například silným nebo typu s ohraničenou Prošlostí, jednotek další žádosti spotřebování ke čtení položek.
-* **Indexované vlastnosti**. Zásadu indexu na každý kontejner určuje vlastnosti, které jsou uloženy ve výchozím nastavení. Omezení počtu indexované vlastnosti nebo povolením Opožděné indexování můžete snížit spotřebu jednotky vaší žádosti.
+* **Indexované vlastnosti**. Zásadu indexu na každý kontejner určuje vlastnosti, které jsou uloženy ve výchozím nastavení. Vaší spotřeby jednotek žádosti pro operace zápisu můžete snížit počet indexované vlastnosti nebo povolením Opožděné indexování.
 * **Indexování dokumentů**. Ve výchozím nastavení je každá položka automaticky indexovaný. Pokud zvolíte možnost Ne indexování některých položek spotřebujete méně jednotek žádosti.
-* **Dotaz vzory**. Složitost dotazu má dopad na tom, kolik jednotek žádosti se spotřebovávají pro operace. Počet predikáty, povaha predikáty, projekce, počet UDF a velikost zdroje dat – všechny ovlivnit náklady na operace dotazů.
+* **Dotaz vzory**. Složitost dotazu má dopad na tom, kolik jednotek žádosti se spotřebovávají pro operace. Počet výsledků dotazu, počet predikáty, povaha predikáty, projekce, počet UDF a velikost zdroje dat – všechny ovlivnit náklady na operace dotazů.
 * **Použití skriptu**.  Stejně jako u dotazů, využívat jednotek žádosti podle složitosti operací během provádění uložené procedury a triggery. Když budete vyvíjet aplikace, zkontrolujte hlavičky požadavku poplatků abyste lépe pochopili, jak každou operaci spotřebovává požadavek jednotky kapacity.
 
 ## <a name="estimating-throughput-needs"></a>Odhad potřeb propustnost
 Jednotka žádosti je normalizovaný míru náklady na zpracování požadavku. Jednotka jedné žádosti představuje kapacity zpracování požadovaná pro čtení (prostřednictvím id nebo vlastní odkaz) jeden 1 KB položky skládající se z 10 jedinečnou vlastnost hodnot (s výjimkou vlastnosti systému). Požadavek na vytvoření (Vložit), nahraďte nebo odstranění stejnou položku spotřebuje další zpracování ze služby a tím více jednotek žádosti.   
 
 > [!NOTE]
-> Směrný plán pro 1 KB požadavků 1 jednotka položky odpovídá jednoduché GET vlastní odkaz nebo id položky.
+> Vlastní odkaz nebo id položky odpovídá jednoduché GET účaří požadavků 1 jednotka pro položku 1 KB.
 > 
 > 
 
@@ -177,8 +211,8 @@ Pomocí nástroje je jednoduchý:
 1. Nahrajte jednu nebo více reprezentativní položek (například dokument ukázka JSON).
    
     ![Nahrání položky do kalkulačky jednotek žádosti][2]
-2. Chcete-li odhadnout požadavky na úložiště dat, zadejte celkový počet položek (například dokumenty, tabulky a grafy) byste měli uložit.
-3. Zadejte počet vytvoření, čtení, aktualizace a odstranění operace, které budete potřebovat (na základě za sekundu). K zjištění přibližné hodnoty poplatky jednotek žádosti operací aktualizace položky, nahrajte kopii ukázkové položky z kroku 1 výše, zahrnuje typické pole aktualizace.  Například pokud položka aktualizace obvykle upravit dvě vlastnosti s názvem *lastLogin* a *userVisits*, pak jednoduše zkopírovat ukázkové položky, aktualizujte hodnoty pro tyto dvě vlastnosti a odeslat kopírovaných položek.
+2. Chcete-li odhadnout požadavky na úložiště dat, zadejte celkový počet položek (například dokumenty, řádky nebo vrcholy) byste měli uložit.
+3. Zadejte počet vytvoření, čtení, aktualizace a odstranění operace, které budete potřebovat (na základě za sekundu). K zjištění přibližné hodnoty poplatky jednotek žádosti operací aktualizace položky, nahrajte kopii ukázkové položky z kroku 1 výše, zahrnuje typické pole aktualizace.  Například pokud položka aktualizace obvykle upravit dvě vlastnosti s názvem *lastLogin* a *userVisits*, potom položku ukázka zkopírovat, aktualizujte hodnoty pro tyto dvě vlastnosti a odeslat kopírovaných položek.
    
     ![Zadejte požadavky na propustnost v kalkulačky jednotek žádosti][3]
 4. Klikněte na tlačítko Vypočítat a podívejte se na výsledky.
@@ -299,7 +333,7 @@ Pomocí těchto informací můžete odhadnout požadavky pro tuto aplikaci zadan
 | Vyberte jídlo skupinou |10 |700 |
 | Vyberte nejvyšší 10 |15 |Celkem 150 |
 
-V takovém případě byste měli průměrnou propustností požadavek 1,275 RU/s.  Zaokrouhlení až nejbližší 100 by zřídit 1 300 RU/s pro tuto aplikaci kontejneru.
+V takovém případě byste měli průměrnou propustností požadavek 1,275 RU/s.  Zaokrouhlení až nejbližší 100 by zřídit 1 300 RU/s pro tuto aplikaci kontejneru (nebo sadu kontejnery).
 
 ## <a id="RequestRateTooLarge"></a> Překročení omezení vyhrazenou propustností v Azure Cosmos DB
 Odvolat, že spotřeba jednotek žádosti vyhodnotí s rychlostí za sekundu. Pro aplikace, které překračují rychlost jednotky zřízené požadavků požadavků, bude rychlost limited dokud rychlost klesne pod úroveň zřízené propustnosti. Když žádost získá míra limited, server ho preventivně skončí požadavek s `RequestRateTooLargeException` (kód stavu HTTP 429) a vrátí `x-ms-retry-after-ms` hlavičky, která určuje množství času v milisekundách, která uživatel musí čekat, než požadavek.
@@ -310,7 +344,7 @@ Odvolat, že spotřeba jednotek žádosti vyhodnotí s rychlostí za sekundu. Pr
 
 Pokud používáte klienta SDK rozhraní .NET a LINQ dotazů a potom ve většině případů není nutné řešit výjimku, jako aktuální verze rozhraní .NET Client SDK implicitně zachytí této odpovědi, respektuje záhlaví zadaný server opakovat po a opakuje žádost automaticky. Pokud váš účet je současně přistupuje více klientů, další pokus bude úspěšné.
 
-Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků, nemusí stačit výchozí chování opakování a vyvolá výjimku klienta `DocumentClientException` stavem code 429 k aplikaci. V takových případech můžete zvážit zpracování opakování chování a logiku zpracování rutiny chyb aplikace nebo zvyšte zřízené propustnosti pro kontejner.
+Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků, nemusí stačit výchozí chování opakování a vyvolá výjimku klienta `DocumentClientException` stavem code 429 k aplikaci. V takových případech můžete chtít zvažte zpracování opakování chování a logiku zpracování rutiny chyb aplikace nebo zvýšit propustnost zřízené pro kontejner (nebo sadu kontejnery).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o vyhrazenou propustností s databázemi Azure Cosmos DB najdete v těchto zdrojích:
@@ -326,3 +360,4 @@ Začínáme s škálování a výkon testování pomocí Azure Cosmos DB, najdet
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+[6]: ./media/request-units/provisioning_set_containers.png

@@ -54,6 +54,12 @@
 ### [Migrace na rozhraní .NET 2.0](key-vault-dotnet2api-release-notes.md)
 ### [Uložení tajných kódů webové aplikace](vs-secure-secret-appsettings.md)
 ### [Ověření služby pomocí .NET](service-to-service-authentication.md)
+### Práce se sadou Visual Studio
+#### [Použití připojené služby Key Vault](vs-key-vault-add-connected-service.md)
+#### [Začínáme s projekty ASP.NET](vs-key-vault-aspnet-get-started.md)
+#### [Co se stalo s mým projektem ASP.NET?](vs-key-vault-aspnet-what-happened.md)
+#### [Začínáme s projekty ASP.NET Core](vs-key-vault-aspnet-core-get-started.md)
+#### [Co se stalo s mým projektem ASP.NET Core?](vs-key-vault-aspnet-core-what-happened.md)
 
 # Zdroje a prostředky
 ## [Přehled služby](https://azure.microsoft.com/services/key-vault/)

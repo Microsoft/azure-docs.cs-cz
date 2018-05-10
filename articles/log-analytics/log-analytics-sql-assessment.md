@@ -1,11 +1,11 @@
 ---
-title: "Optimalizace prostředí systému SQL Server s nástrojem Azure Log Analytics | Microsoft Docs"
-description: "S Azure Log Analytics můžete řešení kontroly stavu SQL pro vyhodnocení rizik a stavu prostředí v pravidelných intervalech."
+title: Optimalizace prostředí systému SQL Server s nástrojem Azure Log Analytics | Microsoft Docs
+description: S Azure Log Analytics můžete řešení kontroly stavu SQL pro vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizace prostředí SQL s řešením kontroly stavu serveru SQL v analýzy protokolů
 
@@ -54,7 +54,7 @@ K provedení kontroly stavu na serverech systému SQL Server, vyžadují agenta 
 
 1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Pokud server není již monitorován pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovaný pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrované se službou analýzy protokolů, je možné serveru vícedomé s analýzy protokolů pro shromažďování dat a předání do služby a je stále sledovány serverem Operations Manager.  
-3. Jinak, pokud skupině pro správu nástroje Operations Manager je integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat pomocí služby podle kroků v části [přidat počítače spravované agentem](log-analytics-om-agents.md#connecting-operations-manager-to-oms) po povolení řešení v pracovním prostoru.  
+3. Jinak, pokud skupině pro správu nástroje Operations Manager je integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat pomocí služby podle kroků v části [přidat počítače spravované agentem](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení v pracovním prostoru.  
 
 Agent na serveru SQL Server, které sestavy ke skupině pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené, se pak odešlou přímo ze serveru pro správu ke službě Analýza protokolů.  Data není zapsán do databáze nástroje Operations Manager.  
 

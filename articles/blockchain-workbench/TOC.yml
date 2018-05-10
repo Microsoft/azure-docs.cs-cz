@@ -1,0 +1,46 @@
+- name: Azure Blockchain Workbench (Public Preview)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o aplikaci Azure Blockchain Workbench
+      href: blockchain-workbench-overview.md
+- name: Koncepty
+  items:
+    - name: Architektura
+      href: blockchain-workbench-architecture.md
+    - name: Vzory integrace
+      href: blockchain-workbench-integration-patterns.md
+- name: Návody
+  items:
+    - name: Nasazení Workbenche
+      href: blockchain-workbench-deploy.md
+    - name: Správa uživatelů Workbenche
+      href: blockchain-workbench-manage-users.md
+    - name: Vytvoření blockchainové aplikace
+      href: blockchain-workbench-create-app.md
+    - name: Použití blockchainové aplikace
+      href: blockchain-workbench-use.md
+    - name: Použití rozhraní API Workbenche
+      href: blockchain-workbench-use-API.md
+    - name: Řešení potíží s aplikacemi
+      href: blockchain-workbench-troubleshooting.md
+    - name: Získání informací o databázi Workbenche
+      href: blockchain-workbench-getdb-details.md
+    - name: Konfigurace brány firewall databáze SQL Workbenche
+      href: blockchain-workbench-database-firewall.md
+    - name: Použití dat Workbenche v Excelu
+      href: blockchain-workbench-data-excel.md
+    - name: Použití dat Workbenche v Power BI
+      href: blockchain-workbench-data-powerbi.md
+    - name: Použití dat Workbenche v sadě SQL Management Studio
+      href: blockchain-workbench-data-sql-management-studio.md
+- name: Referenční informace
+  items:
+    - name: Konfigurace
+      href: blockchain-workbench-configuration-overview.md
+    - name: Zobrazení databáze
+      href: blockchain-workbench-database-views.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
+    - name: Rozhraní API pro zasílání zpráv
+      href: blockchain-workbench-messages-overview.md

@@ -1,22 +1,22 @@
 ---
-title: "Používání událostí služby IoT Hub na aktivaci Azure Logic Apps | Microsoft Docs"
-description: "Pomocí služby Směrování událostí Azure událostí mřížky, vytvořte automatizované procesy k provádění akcí Azure Logic Apps na základě událostí služby IoT Hub."
+title: Používání událostí služby IoT Hub na aktivaci Azure Logic Apps | Microsoft Docs
+description: Pomocí služby Směrování událostí Azure událostí mřížky, vytvořte automatizované procesy k provádění akcí Azure Logic Apps na základě událostí služby IoT Hub.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: f54db95b0dfe5dc39c8e2a85375e56a93d1562ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: MT
+ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Odesílání e-mailová oznámení o událostech Azure IoT Hub pomocí Logic Apps
 
@@ -156,7 +156,7 @@ Před odchodem z návrháře aplikace logiky, zkopírujte adresu URL, kterou apl
 V této části můžete nakonfigurovat službu IoT Hub publikovat události, kdy k nim dojde. 
 
 1. Na portálu Azure přejděte do služby IoT hub. 
-2. Vyberte **událostí mřížky**.
+2. Vyberte **události**.
 
    ![Otevřete tak podrobnosti události mřížky](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 

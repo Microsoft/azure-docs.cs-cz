@@ -1,9 +1,9 @@
 ---
-title: "Řešení potíží s analýzy využití ve službě Azure Application Insights"
-description: "Řešení potíží s Průvodce – analýza využití serveru a aplikace s Application Insights."
+title: Řešení potíží s analýzy využití ve službě Azure Application Insights
+description: Řešení potíží s Průvodce – analýza využití serveru a aplikace s Application Insights.
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb5f3052301b23eb10cd6b84ab6fae98bcc7ea18
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: mbullwin;daviste
+ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="troubleshoot-usage-analytics-in-application-insights"></a>Řešení potíží s analýzy využití ve službě Application Insights
 Máte otázky o [nástroje analýzy využití ve službě Application Insights](app-insights-usage-overview.md): [uživatele, relace, události](app-insights-usage-segmentation.md), [nálevky](usage-funnels.md), [uživatele toků](app-insights-usage-flows.md), [Uchování](app-insights-usage-retention.md), nebo kohorty? Zde jsou některé odpovědi.
@@ -37,7 +37,7 @@ Nástroje pro analýzu využití není aktuálně podporován počítání uživ
 ## <a name="naming-events"></a>Pojmenování události
 **Moje aplikace má tisíce zobrazení různé stránky a názvy vlastních událostí. Je obtížné rozlišit mezi nimi a nástroje pro analýzu využití často přestat reagovat. Jak můžete tyto problémy pojmenování řešit?**
 
-Zobrazení stránky a názvy vlastních událostí se používají v rámci nástrojů pro analýzu využití. Pojmenování události a je velmi důležité k získání hodnoty z těchto nástrojů. Cílem je rovnováhu mezi s názvy příliš málo, příliš obecný ("tlačítko kliknutí na") a má příliš mnoho, příliš konkrétní názvy ("tlačítko Upravit klikli na http://www.contoso.com/index").
+Zobrazení stránky a názvy vlastních událostí se používají v rámci nástrojů pro analýzu využití. Pojmenování události a je velmi důležité k získání hodnoty z těchto nástrojů. Cílem je rovnováhu mezi s názvy příliš málo, příliš obecný ("tlačítko kliknutí na") a má příliš mnoho, příliš konkrétní názvy ("na kliknutí na tlačítko Upravit http://www.contoso.com/index").
 
 Žádné změny k zobrazení stránky a názvy vlastní události, které vaše aplikace odesílá, budete muset změnit zdrojový kód a znovu ho zaveďte vaší aplikace. **Všechny telemetrická data ve službě Application Insights se uchovávají po dobu 90 dnů a nelze ji odstranit**, takže změny názvy událostí bude trvat 90 dnů se plně projeví. Za 90 dní po provedení změny názvu názvy staré a nové události se zobrazí v telemetrii, proto upravte dotazy a komunikaci v rámci týmů, odpovídajícím způsobem.
 

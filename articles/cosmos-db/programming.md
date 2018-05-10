@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 25ae6bde2ca89b2f944a8879c746dcedcf798ec2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure programování na straně serveru Cosmos DB: uložené procedury, triggery databáze a UDF
 
-Zjistěte, jak Azure Cosmos DB language-integrated, transakční provádění jazyka JavaScript umožňuje vývojářům zápisu **uložené procedury**, **aktivační události**, a **uživatelsky definované funkce (UDF)**  nativně v [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Tato integrace JavaScriptu umožňuje psát databáze programu aplikační logiky, která může být dodána a provedeny přímo na databázi oddílů pro úložiště. 
+Zjistěte, jak Azure Cosmos DB language-integrated, transakční provádění jazyka JavaScript umožňuje vývojářům zápisu **uložené procedury**, **aktivační události**, a **uživatelsky definované funkce (UDF)**  nativně v [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript. Integrace JavaScriptu umožňuje psát logiku programu, která může být dodána a spustit přímo v databázi oddílů pro úložiště. 
 
 Doporučujeme začít následujícím videem, kde Andrew Liu obsahuje úvod do Azure Cosmos DB serverové databáze programovací model. 
 
@@ -58,7 +58,7 @@ Vytvoření a spuštění databáze aktivační události, uložené procedury a
 Tento kurz používá [Node.js SDK Q lišící](http://azure.github.io/azure-documentdb-node-q/) pro ilustraci syntaxi a použití uložené procedury, triggery a UDF.   
 
 ## <a name="stored-procedures"></a>Uložené procedury
-### <a name="example-write-a-simple-stored-procedure"></a>Příklad: Zápis jednoduché uložené procedury
+### <a name="example-write-a-stored-procedure"></a>Příklad: Zápis uložené procedury
 Začněme jednoduché uložené procedury, jež vrátí odpověď "Hello World".
 
     var helloWorldStoredProc = {
@@ -96,7 +96,7 @@ Po registraci uloženou proceduru můžete spustit proti kolekci a přečtěte s
         });
 
 
-Objekt context poskytuje přístup ke všem operacím, které lze provést na úložiště Cosmos databáze, a také přístup k objektům požadavku a odpovědi. V takovém případě jsme použili objektu odpovědi nastavit text odpovědi, která byla odeslána zpět klientovi. Další informace najdete v tématu [server Azure Cosmos DB JavaScript dokumentaci k sadě SDK](http://azure.github.io/azure-documentdb-js-server/).  
+Objekt context poskytuje přístup ke všem operacím, které lze provést na úložiště Cosmos databáze, a také přístup k objektům požadavku a odpovědi. V takovém případě použijete objekt odpovědi nastavit text odpovědi, která byla odeslána zpět klientovi. Další informace najdete v tématu [server Azure Cosmos DB JavaScript dokumentaci k sadě SDK](http://azure.github.io/azure-documentdb-js-server/).  
 
 Dejte nám rozbalte v tomto příkladu a přidání dalších funkcí vztahující se k databázi uložené procedury. Uložené procedury můžete vytvořit, aktualizovat, číst, dotazování a odstraňovat dokumenty a přílohy v kolekci.    
 
@@ -122,7 +122,7 @@ Další fragment kódu ukazuje, jak pomocí objektu context můžete pracovat s 
 
 Tuto uloženou proceduru vezme jako vstupní documentToCreate textu dokumentu má být vytvořen v aktuální kolekci. Všechny tyto operace jsou asynchronní a závisí na zpětná volání funkce jazyka JavaScript. Funkce zpětného volání má dva parametry, jeden pro objekt chyby v případě, kdy se operace nezdaří a jeden pro vytvořený objekt. Uvnitř zpětné volání uživatelé mohou zpracovat výjimku nebo vyvolána chyba. V případě, že není k dispozici zpětné volání a dojde k chybě, modul runtime Azure Cosmos DB vyvolá chybu.   
 
-V předchozím příkladu zpětné volání vrátí chybu, pokud operace se nezdařila. Jinak nastaví id vytvořený dokumentu jako text odpovědi klientovi. Zde je, jak se spustí tuto uloženou proceduru s vstupní parametry.
+V předchozím příkladu zpětné volání vrátí chybu, pokud operace se nezdařila. Jinak nastaví ID vytvořený dokumentu jako text odpovědi klientovi. Zde je, jak se spustí tuto uloženou proceduru s vstupní parametry.
 
     // register the stored procedure
     client.createStoredProcedureAsync('dbs/testdb/colls/testColl', createDocumentStoredProc)
@@ -148,16 +148,16 @@ V předchozím příkladu zpětné volání vrátí chybu, pokud operace se nezd
     });
 
 
-Všimněte si, že tuto uloženou proceduru lze upravit tak, aby pole těla dokumentu jako vstup a k jejich vytvoření všechno ve stejném spuštění uložené procedury místo více síťové požadavky pro každý z nich vytvoření jednotlivě. To lze použít k implementaci efektivní hromadné – Importér pro DB Cosmos (popsané později v tomto kurzu).   
+Tuto uloženou proceduru lze upravit tak, aby pole těla dokumentu jako vstup a k jejich vytvoření všechno ve stejném spuštění uložené procedury místo více požadavků pro každý z nich vytvoření jednotlivě. Tuto uloženou proceduru lze použít k implementaci efektivní hromadné – Importér pro DB Cosmos (popsané později v tomto kurzu).   
 
-Popisuje příklad ukázal, jak lze pomocí uložených procedur. Později v tomto kurzu obsahuje triggery a uživatelem definovaných funkcí (UDF).
+Popisuje příklad ukázal, jak lze pomocí uložených procedur. Dále se dozvíte o triggery a uživatelem definovaných funkcí (UDF) později v tomto kurzu.
 
 ## <a name="database-program-transactions"></a>Databáze programu transakce
 Transakce v typické databáze může být definováno jako posloupnost operací provést jako jednu logickou jednotku práce. Poskytuje každou transakci **ACID záruky**. Je kyselina dobře známé zkratku, který zastupuje čtyři vlastnosti - nedělitelnost, konzistence, izolace a odolnost.  
 
 Stručně řečeno, nedělitelnost zaručuje, že všechny práci v transakci je považován za jednu jednotku kde buď všechny klade nebo hodnotu none. Konzistence zajišťuje, že data jsou vždycky ve funkčním stavu interní napříč transakce. Izolace zaručuje, že žádné dvě transakce konfliktu s jinými – obecně, většina komerčních systémy poskytují více úrovní izolace, které lze použít podle potřeb aplikace. Odolnost zajistí, že všechny změny, která je potvrzena v databázi vždy bude k dispozici.   
 
-V Cosmos databáze JavaScript je hostován ve stejném prostoru paměti jako databáze. Proto požadavky provedené v rámci uložené procedury a triggery provést ve stejném oboru relace databáze. To umožňuje Cosmos DB zaručit kyseliny pro všechny operace, které jsou součástí jedné uložené procedury nebo aktivační událost. Vezměte v úvahu následující uložené procedury definice:
+V Cosmos databáze JavaScript je hostován ve stejném prostoru paměti jako databáze. Proto požadavky provedené v rámci uložené procedury a triggery provést ve stejném oboru relace databáze. Tato funkce umožňuje Cosmos DB zaručit kyseliny pro všechny operace, které jsou součástí jedné uložené procedury nebo aktivační událost. Vezměte v úvahu následující uložené procedury definice:
 
     // JavaScript source code
     var exchangeItemsSproc = {
@@ -232,14 +232,14 @@ Transakce je úzce a nativně integrováno programovací model Cosmos DB jazyka 
 Pokud žádné výjimka, která je rozšířena ze skriptu, bude Cosmos DB JavaScript runtime vrátit zpět celou transakci. Jak ukazuje předchozí příklad, došlo k výjimce je efektivně ekvivalentní "Transakce vrácení zpět" v Cosmos DB.
 
 ### <a name="data-consistency"></a>Konzistence dat
-Uložené procedury a triggery jsou vždy provést u primární repliky kontejneru Azure Cosmos DB. Tím se zajistí, že čtení z uvnitř uložené procedury nabídka silnou konzistenci. Dotazy pomocí uživatelsky definované funkce mohou být provedeny u primární nebo sekundární repliku, ale je zajištěno pro splnění úrovně konzistence požadovaný výběrem příslušné repliky.
+Uložené procedury a triggery jsou vždy provést u primární repliky kontejneru Azure Cosmos DB. Tím se zajistí, že čtení z uvnitř uložené procedury nabídka silnou konzistenci. Dotazy pomocí uživatelsky definované funkce mohou být provedeny u primární nebo sekundární repliku, ale zajistěte pro splnění úrovně konzistence požadovaný výběrem příslušné repliky.
 
 ## <a name="bounded-execution"></a>Ohraničené provádění
 Všechny operace Cosmos DB musí dokončit v rámci serveru zadané trvání časového limitu požadavku. Toto omezení platí i pro funkce jazyka JavaScript (uložené procedury, triggery a uživatelem definované funkce). Pokud se tento časový limit operace nebude dokončena, transakce je vrácena zpět. Funkce jazyka JavaScript musí dokončit v časovém limitu nebo implementovat modelu na základě pokračování pro spuštění dávky nebo obnovení.  
 
 Aby bylo možné zjednodušit vývoj uložených procedur a aktivačních událostí ke zpracování časových limitů, všechny funkce v rámci kolekce objektu (vytvořit, číst, nahraďte a odstranění dokumentů a přílohy) vrátí logickou hodnotu hodnotu této představuje jestli tuto operaci dokončí. Pokud je tato hodnota false, je to znamenat, že je časový limit vyprší a, musíte si provádění zabalit postupu.  Operace zařazených do fronty před první operace nepřijatelného úložiště je zaručeno dokončení, pokud uložená procedura se dokončí za dobu a fronty nejsou žádné další žádosti.  
 
-Funkce jazyka JavaScript jsou také vázaný na spotřeby prostředků. Cosmos DB si vyhrazuje propustnosti na kolekci podle zřízené velikost databázového účtu. Propustnost se vyjadřuje jako normalizované jednotka procesoru, paměti a jednotek žádosti nebo RUs spotřeba vstupně-výstupní operace. Funkce jazyka JavaScript může potenciálně spotřebovávat velký počet RUs během krátké doby a může získat míra limited, pokud bude dosažen limit kolekce. Uložené procedury náročná může také umístí do karantény k zajištění dostupnosti primitivní databázových operací.  
+Funkce jazyka JavaScript jsou také vázaný na spotřeby prostředků. Cosmos DB si vyhrazuje propustnosti na kolekci nebo pro sadu kontejnery. Propustnost se vyjadřuje jako normalizované jednotka procesoru, paměti a jednotek žádosti nebo RUs spotřeba vstupně-výstupní operace. Funkce jazyka JavaScript může potenciálně spotřebovávat velký počet RUs během krátké doby a může získat míra limited, pokud bude dosažen limit kolekce. Uložené procedury náročná může také umístí do karantény k zajištění dostupnosti primitivní databázových operací.  
 
 ### <a name="example-bulk-importing-data-into-a-database-program"></a>Příklad: Hromadný import dat do databáze programu
 Dole je příklad uložené procedury, jež je zapsán do hromadného importu dokumenty do kolekce. Všimněte si, jak uloženou proceduru zpracovává ohraničené provádění kontrolou logickou hodnotu návratová hodnota z createDocument a pak používá k sledování a pokračovat v průběhu napříč dávek počet dokumentů vložen do každé volání uložené procedury.
@@ -349,7 +349,7 @@ A odpovídající kód Node.js registrace klienta pro aktivační událost:
 
 Předběžné aktivační události nemůže mít žádné vstupní parametry. Objekt požadavku můžete použít k manipulaci zprávu požadavku přidruženou operaci. Zde předběžné aktivační události je spuštěn s vytvoření dokumentu a tělo zprávy požadavku obsahuje dokumentu, který má být vytvořen ve formátu JSON.   
 
-Když jsou registrované aktivačních událostí, mohou uživatelé zadat operace, které můžete spustit s. Této aktivační události byl vytvořen s TriggerOperation.Create, což znamená, že následující není povoleno.
+Když jsou registrované aktivačních událostí, mohou uživatelé zadat operace, které můžete spustit s. Této aktivační události byl vytvořen s TriggerOperation.Create, což znamená, že v operaci nahrazení, jak je znázorněno v následujícím kódu pomocí aktivační událost není povoleno.
 
     var options = { preTriggerInclude: "validateDocumentContents" };
 
@@ -434,7 +434,7 @@ Aktivační událost lze zaregistrovat, jak znázorňuje následující ukázka.
 
 Této aktivační události dotazuje na dokument metadat a aktualizuje s podrobnostmi o nově vytvořený dokumentu.  
 
-Je jednou z věcí, je důležité si uvědomit **transakcí** provádění aktivační události do databáze. Cosmos. Této aktivační události po spuštění v rámci stejné transakci jako vytváření původního dokumentu. Proto pokud jsme z po aktivační události (například pokud nelze aktualizovat dokument metadat) způsobí výjimku, celá transakce se nezdaří a vrácena zpět. Žádné dokumentu se vytvoří a bude vrácen výjimku.  
+Je jednou z věcí, je důležité si uvědomit **transakcí** provádění aktivační události do databáze. Cosmos. Této aktivační události po spuštění v rámci stejné transakci jako vytváření původního dokumentu. Pokud tedy můžete vyvolat výjimku z po aktivační událost (indikované nejde aktualizovat dokument metadat), je celá transakce se nezdaří a vrácena zpět. Žádné dokumentu se vytvoří a bude vrácen výjimku.  
 
 ## <a id="udf"></a>Uživatelem definované funkce
 Uživatelem definované funkce (UDF) slouží k rozšíření gramatiky jazyka dotazů Azure Cosmos DB SQL a implementovat vlastní obchodní logiku. Je možné volat jedině z uvnitř dotazy. Tyto nemají přístup k objektu kontextu a jsou určené pro použití jako jen výpočetní JavaScript. Proto UDF lze spustit na sekundárních replikách služby Cosmos DB.  
@@ -479,7 +479,7 @@ UDF lze následně použít v dotazech jako následující ukázka:
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript language-integrated query rozhraní API
-Kromě vydávat dotazy pomocí gramatiky SQL Azure Cosmos DB, SDK na straně serveru umožňuje provádět optimalizované dotazy pomocí rozhraní fluent JavaScript bez znalostí SQL. Dotaz jazyka JavaScript, který rozhraní API umožňuje prostřednictvím kódu programu vytvořit dotazy předáním predikátem funkce do chainable funkce volá s pro pole built-ins a Oblíbené knihovny JavaScript jako lodash ECMAScript5 na syntaxi. Dotazy jsou analyzovat pomocí prostředí JavaScript runtime spouštění efektivně pomocí Azure Cosmos DB indexy.
+Kromě vydávat dotazy pomocí gramatiky SQL Azure Cosmos DB, SDK na straně serveru umožňuje provádět optimalizované dotazy pomocí rozhraní fluent JavaScript bez znalostí SQL. Dotaz jazyka JavaScript, který rozhraní API umožňuje prostřednictvím kódu programu vytvořit dotazy předáním predikátem funkce do chainable funkce volá s pro pole built-ins a Oblíbené knihovny JavaScript jako Lodash ECMAScript5 na syntaxi. Dotazy jsou analyzovat pomocí prostředí JavaScript runtime spouštění efektivně pomocí Azure Cosmos DB indexy.
 
 > [!NOTE]
 > `__` (dvojité podtržítko) je alias `getContext().getCollection()`.
@@ -503,7 +503,7 @@ Začíná value() zřetězené volání, které musí být ukončena.
 <b>Filtr (predicateFunction [, možnosti] [, zpětného volání])</b>
 <ul>
 <li>
-Filtry vstupu pomocí funkce predikátu, která vrátí hodnotu true nebo false, chcete-li filtrovat a konec vstupu dokumenty do výsledné sady. To se chová podobně jako klauzule WHERE v příkazu SQL.
+Filtry vstupu pomocí funkce predikátu, která vrátí hodnotu true nebo false, chcete-li filtrovat a konec vstupu dokumenty do výsledné sady. Tato funkce se chová podobně jako klauzule WHERE v příkazu SQL.
 </li>
 </ul>
 </li>
@@ -511,7 +511,7 @@ Filtry vstupu pomocí funkce predikátu, která vrátí hodnotu true nebo false,
 <b>mapy (transformationFunction [, možnosti] [, zpětného volání])</b>
 <ul>
 <li>
-Platí projekci zadané transformační funkce, který se mapuje na objekt jazyka JavaScript nebo hodnota každou vstupní položku. To se chová podobně jako v klauzuli SELECT v systému SQL.
+Platí projekci zadané transformační funkce, který se mapuje na objekt jazyka JavaScript nebo hodnota každou vstupní položku. Tato funkce se chová podobně jako v klauzuli SELECT v systému SQL.
 </li>
 </ul>
 </li>
@@ -519,7 +519,7 @@ Platí projekci zadané transformační funkce, který se mapuje na objekt jazyk
 <b>pluck ([propertyName] [, možnosti] [, zpětného volání])</b>
 <ul>
 <li>
-Toto je zástupce pro mapu, která extrahuje hodnotu jedinou vlastnost z každé vstupní položky.
+Tato funkce je zkratka pro mapu, která extrahuje hodnotu jedinou vlastnost z každé vstupní položky.
 </li>
 </ul>
 </li>
@@ -527,7 +527,7 @@ Toto je zástupce pro mapu, která extrahuje hodnotu jedinou vlastnost z každé
 <b>vyrovnání ([isShallow] [, možnosti] [, zpětného volání])</b>
 <ul>
 <li>
-Kombinuje a vyrovná pole z každé vstupní položky do jednoho pole. To se chová podobně jako označit více v technologii LINQ.
+Kombinuje a vyrovná pole z každé vstupní položky do jednoho pole. Tato funkce se chová podobně jako označit více v technologii LINQ.
 </li>
 </ul>
 </li>
@@ -535,7 +535,7 @@ Kombinuje a vyrovná pole z každé vstupní položky do jednoho pole. To se cho
 <b>sortBy ([predikát] [, možnosti] [, zpětného volání])</b>
 <ul>
 <li>
-Vytvořit novou sadu dokumentů podle řazení dokumenty v datovém proudu vstupní dokument ve vzestupném pořadí pomocí daného predikátu. To se chová podobně jako klauzuli ORDER BY v systému SQL.
+Vytvořit novou sadu dokumentů podle řazení dokumenty v datovém proudu vstupní dokument ve vzestupném pořadí pomocí daného predikátu. Tato funkce se chová podobně jako klauzuli ORDER BY v systému SQL.
 </li>
 </ul>
 </li>
@@ -543,7 +543,7 @@ Vytvořit novou sadu dokumentů podle řazení dokumenty v datovém proudu vstup
 <b>sortbydescending – ([predikát] [, možnosti] [, zpětného volání])</b>
 <ul>
 <li>
-Vytvořit novou sadu dokumentů podle řazení dokumenty v datovém proudu vstupní dokument v sestupném pořadí pomocí daného predikátu. To se chová podobně jako klauzuli ORDER BY x DESC v systému SQL.
+Vytvořit novou sadu dokumentů podle řazení dokumenty v datovém proudu vstupní dokument v sestupném pořadí pomocí daného predikátu. Tato funkce se chová podobně jako klauzuli ORDER BY x DESC v systému SQL.
 </li>
 </ul>
 </li>
@@ -627,9 +627,9 @@ Jako s dotazy SQL dokumentu vlastnosti klíče (například `doc.id`) malých a 
 |---|---|---|
 |VYBERTE *<br>Z dokumentace| __.map(Function(DOC) { <br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc;<br>});|1|
 |Vyberte docs.id, docs.message jako msg, docs.actions <br>Z dokumentace|__.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actions:doc.Actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|2|
-|VYBERTE *<br>Z dokumentace<br>WHERE docs.id="X998_Y998"|__.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>});|3|
+|VYBERTE *<br>Z dokumentace<br>WHERE docs.id="X998_Y998"|__.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>});|3|
 |VYBERTE *<br>Z dokumentace<br>KDE ARRAY_CONTAINS (dokumentace. Značky, 123)|__.Filter(Function(x) {<br>&nbsp;&nbsp;&nbsp;&nbsp;Vrátí x.Tags & & x.Tags.indexOf(123) > -1;<br>});|4|
-|Vyberte docs.id, docs.message jako msg<br>Z dokumentace<br>WHERE docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return doc.id ==="X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|5|
+|Vyberte docs.id, docs.message jako msg<br>Z dokumentace<br>WHERE docs.id="X998_Y998"|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc.id === "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.map(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>.Value();|5|
 |SELECT VALUE – značka<br>Z dokumentace<br>Připojte značky v dokumentaci. Značky<br>Docs._ts ORDER BY|__.chain()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Filter(Function(DOC) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí dokumentů. Značky & & Array.IsArray – (dokumentů. Značky);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.sortBy(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vrátí doc._ts;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;.pluck("Tags")<br>&nbsp;&nbsp;&nbsp;&nbsp;.flatten()<br>&nbsp;&nbsp;&nbsp;&nbsp;.Value()|6|
 
 V následujících popisech popisují každý dotaz v předchozí tabulce.
@@ -648,7 +648,7 @@ Azure Cosmos DB [JavaScript serveru straně API](http://azure.github.io/azure-do
 JavaScript uložené procedury a triggery jsou v izolovaném prostoru tak, aby důsledky jeden skript není pronikly na druhý bez průchodu přes transakci izolace snímku na úrovni databáze. Prostředí runtime jsou ve fondu, ale čištění kontextu po každé spuštění. Proto jsou zaručeno bezpečné z jakékoli nezamýšleným vedlejší účinky od sebe navzájem.
 
 ### <a name="pre-compilation"></a>Předkompilace
-Uložené procedury, triggery a UDF jsou implicitně předkompilovaných na formát kódu byte předejdete tak náklady na kompilace v době každé vyvolání skriptu. To zajišťuje volání uložené procedury jsou rychlé a nízkým nárokům mít.
+Uložené procedury, triggery a UDF jsou implicitně předkompilovaných na formát kódu byte předejdete tak náklady na kompilace v době každé vyvolání skriptu. Předběžné kompilace zajišťuje volání uložené procedury je rychlá a nízkým nárokům mít.
 
 ## <a name="client-sdk-support"></a>Podpora klienta SDK
 Kromě Azure Cosmos DB [Node.js](sql-api-sdk-node.md) rozhraní API, Azure Cosmos DB má [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript ](http://azure.github.io/azure-documentdb-js/), a [Python SDK](sql-api-sdk-python.md) pro rozhraní SQL API. Uložené procedury, triggery a UDF lze vytvořit a spustit některé z těchto sad SDK také používá. Následující příklad ukazuje postup vytvoření a provedení uložené procedury pomocí klienta rozhraní .NET. Všimněte si, jak jsou typy .NET předaný do uložené procedury jako JSON a čtení zpět.
@@ -723,7 +723,7 @@ A následující příklad ukazuje, jak vytvořit uživatelem definované funkce
     }
 
 ## <a name="rest-api"></a>REST API
-Všechny operace Azure Cosmos databáze lze provést RESTful způsobem. Uložené procedury, triggery a uživatelem definované funkce může být registrováno v rámci kolekce pomocí HTTP POST. Následuje příklad toho, jak zaregistrovat uložené procedury:
+Všechny operace Azure Cosmos databáze lze provést RESTful způsobem. Uložené procedury, triggery a uživatelem definované funkce může být registrováno v rámci kolekce pomocí HTTP POST. Následující příklad ukazuje, jak zaregistrovat uložené procedury:
 
     POST https://<url>/sprocs/ HTTP/1.1
     authorization: <<auth>>
@@ -757,7 +757,7 @@ Tato uložená procedura může poté provést po vydání požadavku POST s jeh
     [ { "name": "TestDocument", "book": "Autumn of the Patriarch"}, "Price", 200 ]
 
 
-Zde vstup uložené procedury je předán v textu požadavku. Všimněte si, že vstup je předán jako pole JSON vstupních parametrů. Uložená procedura přijímá první vstup jako dokument, který je text odpovědi. Odpovědi, které obdržíme, vypadá takto:
+Zde vstup uložené procedury je předán v textu požadavku. Vstup je předán jako pole JSON vstupních parametrů. Uložená procedura přijímá první vstup jako dokument, který je text odpovědi. Odpověď, který obdržíte vypadá takto:
 
     HTTP/1.1 200 OK
 
@@ -773,7 +773,7 @@ Zde vstup uložené procedury je předán v textu požadavku. Všimněte si, že
     }
 
 
-Na rozdíl od uložené procedury, aktivační události nelze spustit přímo. Místo toho jsou spouštěny jako součást operace v dokumentu. Můžeme určit aktivačních událostí ke spuštění s žádostí pomocí hlaviček protokolu HTTP. Následující kód ukazuje požadavek na vytvoření dokumentu.
+Na rozdíl od uložené procedury, aktivační události nelze spustit přímo. Místo toho jsou spouštěny jako součást operace v dokumentu. Můžete zadat aktivačních událostí ke spuštění s žádostí pomocí hlaviček protokolu HTTP. Následující kód ukazuje požadavek na vytvoření dokumentu.
 
     POST https://<url>/docs/ HTTP/1.1
     authorization: <<auth>>
@@ -793,9 +793,9 @@ Na rozdíl od uložené procedury, aktivační události nelze spustit přímo. 
 Předběžné aktivační událost ke spuštění s požadavkem je zde uvedená v hlavičce x-ms-documentdb-pre-trigger-include. Žádné aktivační události po odpovídajícím způsobem, jsou uvedeny v hlavičce x-ms-documentdb-post-trigger-include. Obě před a po aktivační události lze zadat pro daný požadavek.
 
 ## <a name="sample-code"></a>Ukázka kódu
-Můžete najít další příklady kódu na straně serveru (včetně [hromadné odstranění](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), a [aktualizace](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) na našem [úložiště GitHub](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
+Můžete najít další příklady kódu na straně serveru (včetně [hromadné odstranění](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js), a [aktualizace](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) v [úložiště GitHub](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
 
-Chcete sdílet vaše Super uložené procedury? Pošlete nám žádost o přijetí změn! 
+Chcete sdílet vaše Super uložené procedury? přispívat do úložiště a vytvořte žádost o přijetí změn! 
 
 ## <a name="next-steps"></a>Další postup
 Až budete mít jeden nebo více uložené procedury, triggery a uživatelem definované funkce vytvoření, můžete je načíst a zobrazit je na portálu Azure pomocí Průzkumníku dat.

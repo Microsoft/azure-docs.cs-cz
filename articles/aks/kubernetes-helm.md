@@ -1,6 +1,6 @@
 ---
-title: "Nasazení kontejnerů s Helm v Kubernetes v Azure"
-description: "Pomocí nástroje balení Helm nasazení kontejnerů v clusteru s podporou Kubernetes v AKS"
+title: Nasazení kontejnerů s Helm v Kubernetes v Azure
+description: Pomocí nástroje balení Helm nasazení kontejnerů v clusteru s podporou Kubernetes v AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6a8565c70097b3ac9a419b652a652824adebba88
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
-ms.translationtype: MT
+ms.openlocfilehash: c46bd64b3fec06e4ba4050542f27ba3e70862e45
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-helm-with-azure-container-service-aks"></a>Použití Helm s Azure Container Service (AKS)
+# <a name="use-helm-with-azure-kubernetes-service-aks"></a>Helm pomocí služby Azure Kubernetes (AKS)
 
 [Helm] [ helm] je nástroj balení open source, který vám pomůže nainstalovat a spravovat životní cyklus aplikace Kubernetes. Podobně jako správce balíčku Linux jako *byt č* a *Yum*, Helm slouží ke správě Kubernetes grafy, které jsou balíčky předkonfigurované Kubernetes prostředků.
 

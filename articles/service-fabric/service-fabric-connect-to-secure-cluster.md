@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0ce01b62fde690934d97fdefb7720e1be5512f4a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2ddb72f267fc46d7980007d41c5d512f50eaf47e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -319,7 +319,7 @@ K dosažení [Service Fabric Explorer](service-fabric-visualizing-your-cluster.m
 
 Úplná adresa URL je také dostupná v podokně clusteru essentials na portálu Azure.
 
-Pro připojení k zabezpečení clusteru v systému Windows nebo OS X pomocí prohlížeče, můžete importovat certifikát klienta a prohlížeč zobrazí výzvu pro certifikát, který chcete použít pro připojení ke clusteru.  Na počítačích s Linuxem bude mít certifikát pomocí nastavení pokročilé prohlížeče (každým prohlížečem, který má jiné mechanismy) lze importovat a přejděte do umístění certifikátu tehe na disku.
+Pro připojení k zabezpečení clusteru v systému Windows nebo OS X pomocí prohlížeče, můžete importovat certifikát klienta a prohlížeč zobrazí výzvu pro certifikát, který chcete použít pro připojení ke clusteru.  Na počítačích s Linuxem bude mít certifikát pomocí nastavení pokročilé prohlížeče (každým prohlížečem, který má jiné mechanismy) lze importovat a přejděte do umístění certifikátu na disku.
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Připojení ke clusteru zabezpečené pomocí Azure Active Directory
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a360b41b24f4aca3c3aba29387ecd55faf881b7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0e4c4c9e950610526a29e02d70827a1279d9686a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Správa nákladů kontrolou datový svazek a uchovávání v analýzy protokolů
 Analýzy protokolů je navržený tak, aby škálování a podpora shromažďování, indexování a ukládání masivní objemy dat za den z jakéhokoli zdroje ve vašem podniku nebo nasazené v Azure.  To může být primární ovladač pro vaši organizaci, je základní ovladač nakonec efektivitu nákladů. Za tímto účelem je jeho důležité si uvědomit, že náklady na pracovním prostoru Analytisc protokolu není právě na základě objemu dat shromažďovaných, je také závislý na plán vybraný a jak dlouho jste se rozhodli uložit data generovaná z připojených zdrojů.  
@@ -33,14 +33,15 @@ Náklady na dat může být výrazně v závislosti na následujících faktorec
 - Období data se uchovávají v pracovním prostoru  
 - Počet řešení pro správu povolena, zdroj dat a četnosti kolekce 
 
-Jako poskytuje odhad množství dat, které shromáždí naleznete v dokumentaci pro každé řešení.   
+> [!NOTE]
+> Jako poskytuje odhad množství dat, které shromáždí naleznete v dokumentaci pro každé řešení.   
 
-Pokud jste na "Free" cenovou úroveň, je omezený na 7 dní uchovávání dat. Pro "Za GB (samostatně)" nebo "za-(OMS)" úrovně uzlu za posledních 31 dní je k dispozici data shromážděná a uchování je možné zvýšit až na 2 roky. Pokud vyberete delší dobu uchovávání účtovány poplatky. Plánu úrovně Free má denní limit přijímání 500 MB, a najít konzistentně překročit objemy povolené svazku, můžete změnit pracovní prostor za GB nebo úrovně uzlu za ke shromažďování dat nad rámec tohoto limitu. Můžete změnit typ vašeho plánu kdykoli a další informace o cenách najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/log-analytics/). 
+Pokud jste na *volné* plán, je omezený na 7 dní uchovávání dat. Pro *samostatné* nebo *zaplacenou* vrstvy, shromažďovaných dat je k dispozici za posledních 31 dní. *Volné* plán má denní limit přijímání 500 MB, a pokud najít konzistentně překročit objemy povolené svazku, můžete změnit pracovního prostoru na placený plán ke shromažďování dat nad rámec tohoto limitu. 
 
 > [!NOTE]
-> V dubnu 2018 jsme [zavedená](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro Azure monitorování. Tento model přijme jednoduchého modelu "průběžnými platbami" v celém portfoliu kompletní monitorování služby. Další informace o [nový cenový model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak k [posoudit dopad přesun k tomuto modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vaší způsobů využití a [postupy, který se přidá do nového modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
+> Pokud zvolíte možnost vybrat delší doby uchování pro úroveň placené účtovány poplatky. Můžete změnit typ vašeho plánu kdykoli a další informace o cenách najdete v tématu [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Bez ohledu na cenovou modelu nebo vrstvy Správa objem dat je fundmental řízení náklady. Kromě zajištění dostatečného možnost volby a konfigurace specifického řešení, v rámci analýzy protokolů jsou dva způsoby, ve kterých můžete objem dat být omezené a lépe řídit náklady jedná se o denní uchování zakončení a data.  
+Jsou dva způsoby, ve kterých můžete objem dat být omezené a lépe řídit vaše náklady, jedná se o denní uchování zakončení a data.  
 
 ## <a name="review-estimated-cost"></a>Zkontrolujte odhadované náklady
 Díky protokolu analýzy ho snadno zjistit, co jsou náklady na pravděpodobně být založené na poslední vzorce používání.  Chcete-li to provést, proveďte následující kroky.  
@@ -54,9 +55,9 @@ Odsud můžete zkontrolovat datový svazek pro daný měsíc. To zahrnuje všech
 Log Analytics poplatky budou přidány do faktury Azure. Zobrazí podrobnosti o vašem Azure účtovat pošle části fakturace na portálu Azure nebo v [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
 
 ## <a name="daily-cap"></a>Denní zakončení
-Při vytváření pracovního prostoru analýzy protokolů z portálu Azure a vybrat *volné* plán, je nastavený na 500 MB za den limit. Neexistuje žádné omezení pro jiných cenových plánů. Můžete nakonfigurovat denní zakončení a omezit denní přijímání vašeho pracovního prostoru, ale použijte pozor, jak je vaším cílem by neměl být narazí denního limitu.  V opačném případě v tomto okamžiku dojde ke ztrátě dat pro zbytek dne a ovlivní schopnost sledovat podmínky stavu prostředků podpůrné služby IT.  Denní zakončení je určena pro použití jako způsob, jak zůstat v rámci svého limitu, nebo když chcete omezit jednoduše neplánované poplatky za pracovního prostoru a spravovat neočekávané zvýšení objemu dat ze spravované prostředky.  
+Při vytváření pracovního prostoru analýzy protokolů z portálu Azure a vybrat *volné* plán, je nastavený na 500 MB za den limit. Neexistuje žádné omezení pro jiných cenových plánů. Můžete nakonfigurovat denní zakončení a omezit denní přijímání vašeho pracovního prostoru, ale použijte pozor, jak je vaším cílem by neměl být narazí denního limitu.  Jinak ke ztrátě dat pro zbytek den, což může mít vliv na ostatní služby Azure a řešení, jejichž funkce může záviset na aktuální dat, který je k dispozici v pracovním prostoru.  Výsledkem je budete moci sledovat a přijímat upozorní, když dopad podmínky stavu prostředků podpůrné služby IT.  Denní zakončení je určena pro použití jako způsob, jak zůstat v rámci svého limitu, nebo když chcete omezit jednoduše neplánované poplatky za pracovního prostoru a spravovat neočekávané zvýšení objemu dat ze spravované prostředky.  
 
-Po dosažení denního limitu pro zbytek den zastaví kolekci fakturovatelný datových typů.  Nápis informující o upozornění se zobrazí v horní části stránky pro vybraný pracovní prostor analýzy protokolů a operace událost je odeslána do *operace* tabulky v části **LogManagement** kategorie. Shromažďování dat obnoví po době obnovení definované v části *denního limitu bude nastavena na*. Doporučujeme, abyste definování pravidlo výstrahy založené na události tuto operaci, nakonfigurován tak, aby informovala, že bylo dosaženo denního limitu data. 
+Po dosažení denního limitu pro zbytek den zastaví kolekci fakturovatelný datových typů. Nápis informující o upozornění se zobrazí v horní části stránky pro vybraný pracovní prostor analýzy protokolů a operace událost je odeslána do *operace* tabulky v části **LogManagement** kategorie. Shromažďování dat obnoví po době obnovení definované v části *denního limitu bude nastavena na*. Doporučujeme, abyste definování pravidlo výstrahy založené na události tuto operaci, nakonfigurován tak, aby informovala, že bylo dosaženo denního limitu data. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifikovat jaké denní limit dat k definování 
 Zkontrolujte [protokolu analýzy využití a odhadované náklady](log-analytics-usage.md) pochopit trend přijímání dat a co je denní cap svazku definovat. Dát pozor, je nutné zvážit, protože nebude možné po dosažení limitu bude monitorování vašich prostředků. 

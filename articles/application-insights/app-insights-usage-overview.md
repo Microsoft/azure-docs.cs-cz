@@ -1,9 +1,9 @@
 ---
-title: "Analýza využití pomocí služby Azure Application Insights | Microsoft docs"
-description: "Porozumět uživatelům a co dělají s vaší aplikací."
+title: Analýza využití pomocí služby Azure Application Insights | Microsoft docs
+description: Porozumět uživatelům a co dělají s vaší aplikací.
 services: application-insights
-documentationcenter: 
-author: botatoes
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9f3eb14340205709b5409a3d16d631cc2d02eb32
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 79f4f77f08653c40591137268b87dc2feeb0acf6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -26,7 +26,7 @@ Funkce web nebo mobilní aplikace, které jsou nejčastěji používané? Vaši 
 
 Dosažení co nejlepších výsledků je získat nainstalováním Application Insights v kódu aplikace serveru i na webových stránkách. Klientské a serverové součásti vaší aplikace odesílat telemetrii zpět na portál Azure pro analýzu.
 
-1. **Serverový kód:** nainstalovat modul vhodné pro vaše [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), nebo [jiných](app-insights-platforms.md) aplikace.
+1. **Serverový kód:** nainstalovat modul vhodné pro vaše [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), nebo [jiné](app-insights-platforms.md) aplikace.
 
     * *Nechcete instalovat serverový kód? Právě [vytvořte prostředek Azure Application Insights](app-insights-create-new-resource.md).*
 

@@ -1,11 +1,11 @@
 ---
-title: "Šifrování svůj obsah pomocí šifrování úložiště pomocí rozhraní REST API pro AMS"
-description: "Zjistěte, jak k zašifrování obsahu pomocí šifrování úložiště pomocí rozhraní REST API pro AMS."
+title: Šifrování svůj obsah pomocí šifrování úložiště pomocí rozhraní REST API pro AMS
+description: Zjistěte, jak k zašifrování obsahu pomocí šifrování úložiště pomocí rozhraní REST API pro AMS.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: a0a79f3d-76a1-4994-9202-59b91a2230e0
 ms.service: media-services
 ms.workload: media
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
 ms.openlocfilehash: 2fd4c91a8151067c0e9cc9000c158e48cb2cd8a5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Šifrování svůj obsah pomocí šifrování úložiště
 
@@ -178,7 +178,7 @@ Jedna z hodnot musí nastavit při vytváření obsahu je typ klíče. Při pou�
 
 Následující příklad ukazuje, jak vytvořit **ContentKey** s **ContentKeyType** nastavit šifrování úložiště ("1") a **ProtectionKeyType** nastaven na hodnotu "0" k označení, že klíč ochrany Id je kryptografický otisk certifikátu X.509.  
 
-Vyžádat
+Žádost
 
     POST https://media.windows.net/api/ContentKeys HTTP/1.1
     Content-Type: application/json
@@ -228,7 +228,7 @@ Odpověď:
 ## <a name="create-an-asset"></a>Vytvořit prostředek
 Následující příklad ukazuje, jak vytvořit prostředek.
 
-**HTTP Request**
+**Požadavek HTTP**
 
     POST https://media.windows.net/api/Assets HTTP/1.1
     Content-Type: application/json
@@ -300,7 +300,7 @@ Odpověď:
 
 Po odeslání souboru digitálního média do kontejneru objektů blob, kterou použijete **SLOUČENÍ** HTTP žádost o aktualizaci AssetFile s informacemi o souboru média (není zobrazen v tomto článku). 
 
-**HTTP Request**
+**Požadavek HTTP**
 
     POST https://media.windows.net/api/Files HTTP/1.1
     Content-Type: application/json

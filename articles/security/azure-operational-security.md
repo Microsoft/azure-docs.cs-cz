@@ -1,12 +1,12 @@
 ---
-title: "Zabezpečení provozu Azure | Microsoft Docs"
-description: "Další informace o Microsoft Operations Management Suite (OMS), jeho služby a jak to funguje."
+title: Zabezpečení provozu Azure | Microsoft Docs
+description: Další informace o Microsoft Operations Management Suite (OMS), jeho služby a jak to funguje.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 8528eeb4eac8397beaa3d0dca37ce9eb33167b32
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d5bea758a0b2a950f51ec443707d9d32dee9cbc4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
 ## <a name="introduction"></a>Úvod
@@ -68,7 +68,7 @@ Základní funkce OMS poskytuje sada služeb, které běží v Azure. Každá sl
 | :------------- | :-------------|
 | Log Analytics | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
 |Automation | Automatizace ručních procesů a vynucení konfigurací pro fyzické a virtuální počítače |
-| Zálohování | Zálohování a obnovení důležitá data. |
+| Backup | Zálohování a obnovení důležitá data. |
 | Site Recovery | Poskytnutí vysoké dostupnosti pro důležitá data |
 
 ### <a name="log-analytics"></a>Log Analytics
@@ -193,7 +193,7 @@ Tyto protokoly jsou vygenerované prostředek a nabízí bohatou a často data o
 
 Například protokoly událostí systému Windows jsou jednu kategorii protokolů diagnostiky pro virtuální počítače a objektů blob, table a queue protokoly jsou kategorie diagnostické protokoly pro účty úložiště.
 
-Diagnostické protokoly se liší od [protokol aktivit (dříve označované jako protokol auditů nebo operační protokol)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Protokol aktivit poskytuje náhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Diagnostické protokoly získat přehled o operace, aby prostředku provedeny sám sebe.
+Diagnostické protokoly se liší od [protokol aktivit (dříve označované jako protokol auditů nebo operační protokol)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Protokol aktivit poskytuje náhled do činnosti, které byly provedeny v prostředky ve vašem předplatném. Diagnostické protokoly poskytují přehled o operacích, které provedly samotné vaše prostředky.
 
 ### <a name="metrics"></a>Metriky
 
@@ -263,7 +263,7 @@ Fakturovatelný jsou tyto akce prováděné Storage Analytics:
 
 Následující typy požadavků na ověření a anonymní přihlášeni.
 
-| Ověření  | Anonymní|
+| Ověřeno  | Anonymní|
 | :------------- | :-------------|
 | Úspěšné požadavky | Úspěšné požadavky |
 |Neúspěšné požadavky, včetně vypršení časového limitu, omezení šířky pásma, sítě, autorizace a dalších chyb | Požadavky pomocí sdíleného přístupového podpisu (SAS), včetně žádostí úspěšné a neúspěšné |

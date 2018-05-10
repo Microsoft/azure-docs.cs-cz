@@ -199,6 +199,8 @@
           href: use-remote-desktop.md
         - name: Připojení virtuálního počítače k Azure Active Directory
           href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+        - name: Přihlášení pomocí přihlašovacích údajů Azure Active Directory
+          href: login-using-aad.md
         - name: Aktualizace a opravy
           items:
             - name: Infrastruktura aktualizací Red Hatu

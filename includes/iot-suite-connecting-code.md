@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: c835b5594676edc39b85a1b10cc04afc7486731d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>Určení chování zařízení IoT
 
 Klientská knihovna serializéru služby IoT Hub používá model k určení formátu zpráv, které si zařízení vyměňuje se službou IoT Hub.
@@ -78,7 +94,7 @@ Klientská knihovna serializéru služby IoT Hub používá model k určení for
 
 Nyní přidejte kód, který implementuje chování definované v modelu.
 
-1. Přidejte následující obsluhu zpětného volání, která se spustí, když zařízení do předkonfigurovaného řešení odešle nové hodnoty požadovaných vlastností:
+1. Přidejte následující obslužná rutina zpětného volání, která se spustí v případě, že zařízení odeslal nové hodnoty hlášené vlastností akcelerátoru řešení:
 
     ```c
     /* Callback after sending reported properties */
@@ -221,7 +237,7 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
     }
     ```
 
-1. Přidejte následující funkce, které odešle zprávu s vlastnostmi předkonfigurovaného řešení:
+1. Přidejte následující funkce, které odešle zprávu s vlastností akcelerátoru řešení:
 
     ```c
     static void sendMessage(IOTHUB_CLIENT_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size, char* schema)
@@ -260,7 +276,7 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
     }
     ```
 
-1. Přidejte následující funkci, která vaše zařízení připojí k předkonfigurovanému řešení v cloudu a umožní výměnu dat. Tato funkce provádí následující kroky:
+1. Přidejte následující funkci k připojení zařízení k řešení akcelerátoru v cloudu a vyměňovat data. Tato funkce provádí následující kroky:
 
     - Inicializuje platformu.
     - Zaregistruje v knihovně serializace obor názvů Contoso.
@@ -396,7 +412,7 @@ Nyní přidejte kód, který implementuje chování definované v modelu.
     }
     ```
 
-    Tady je pro srovnání ukázková zpráva **telemetrie** odeslaná do předkonfigurovaného řešení:
+    Pro referenci tady je ukázka **Telemetrie** zpráva odeslaná do akcelerátoru řešení:
 
     ```
     Device: [myCDevice],

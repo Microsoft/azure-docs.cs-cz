@@ -1,322 +1,118 @@
 ---
-title: Více hlavní databázi architektury s Azure Cosmos DB | Microsoft Docs
-description: Další informace o návrhu architektury aplikací s místní čtení a zápisu v různých geografických oblastech s Azure Cosmos DB.
+title: Více hlavních serverů v globálním měřítku s Azure Cosmos DB | Microsoft Docs
+description: ''
 services: cosmos-db
-documentationcenter: ''
-author: SnehaGunda
+author: rimman
 manager: kfile
-ms.assetid: 706ced74-ea67-45dd-a7de-666c3c893687
 ms.service: cosmos-db
-ms.devlang: multiple
+ms.workload: data-services
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/23/2017
-ms.author: sngun
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e8853d521173a9a8d3c925361e43ce469471918
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.date: 05/07/2018
+ms.author: rimman
+ms.openlocfilehash: 2da6b4e957c7e44f399866fd11853363f7424e7d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="multi-master-globally-replicated-database-architectures-with-azure-cosmos-db"></a>Více hlavní globálně replikované databáze architektury s Azure Cosmos DB
-Podporuje Azure Cosmos DB připraveného [globální replikace](distribute-data-globally.md), která umožňuje distribuci dat do několika oblastí přístup s nízkou latencí kdekoli v zatížení. Tento model se často používá pro vydavatele nebo příjemce zatížení tam, kde je zapisovač v jedné zeměpisné oblasti a globálně distribuované čtečky v jiných oblastech (čtení). 
+# <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Více hlavní v globálním měřítku s Azure Cosmos DB 
+ 
+Vývoj globálně distribuované aplikace, které reagují s místní latence při zachování konzistentní zobrazení dat po celém světě je náročné problém. Zákazníci použít globálně distribuované databáze, protože potřebují k zlepšení latence přístupu dat, dosáhnout dat vysoké dostupnosti a ujistěte se zaručenou zotavení po havárii a, (4) ke splnění svých podnikových požadavků. Více hlavního serveru v Azure Cosmos DB poskytuje vysokou úrovní dostupnosti (99.999 %), latence jednociferné milisekundu k zápisu dat a škálovatelnost integrovanou konfliktní komplexní a flexibilní řešení podpory. Tyto funkce výrazně usnadňuje vývoj globálně distribuované aplikace. Pro globálně distribuované aplikace je zásadní podpora více hlavních serverů. 
 
-Podpora globální replikace databáze Cosmos Azure můžete taky vytvářet aplikace, ve kterých jsou globálně distribuované zapisovače a čtečky. Tento dokument popisuje vzor, který umožňuje dosažení místní zápisu a čtení místní pro distribuované zapisovače pomocí Azure Cosmos DB.
+![Více hlavních architektura](./media/multi-region-writers/multi-master-architecture.png)
 
-## <a id="ExampleScenario"></a>Publikování obsahu – příklad scénáře
-Podívejme se na scénář skutečných popisují, jak můžete používat vzory globálně distribuované více region nebo více master čtení zápisu s Azure Cosmos DB. Vezměte v úvahu vytvořené v Azure Cosmos DB platforma pro publikování obsahu. Tady jsou některé požadavky, které tuto platformu musí splňovat pro vysoký výkon uživatele pro vydavatele a spotřebitelé.
+S podporou více hlavních databázi Cosmos Azure můžete provést zápisy na kontejnery data (například kolekcí, grafy, tabulky) distribuované kdekoliv na světě. Můžete aktualizovat data v libovolné oblasti, která souvisí s vaším účtem databáze. Tyto aktualizace dat můžete rozšířit asynchronně. Kromě rychlý přístup a latence zápisu u ke svým datům, více hlavní taky nabízí praktické řešení pro převzetí služeb při selhání a vyrovnávání zatížení problémy. Souhrnně s Azure Cosmos DB získáte latence zápisu < 10 ms v 99th percentilu kdekoli v world, 99.999 % zápisu a čtení dostupnost kdekoli v celém světě a schopnost škálování obě zápisu a čtení propustnost kdekoli po celém světě.   
 
-* Autoři a Odběratelé, kteří jsou rozloženy na světě. 
-* Autoři články (zápisu) musíte publikovat své místní oblast (nejbližší)
-* Autoři mají čtečky nebo odběratele, jejich článků kteří distribuují po celém světě. 
-* Odběratelé, kteří měli obdržet oznámení, při publikování nových článků.
-* Odběratelé, kteří musí být možné číst články ze své místní oblast. Musí být také možné přidat recenze na tyto články. 
-* Každý, kdo včetně autora články musí být možné zobrazit všechny recenze připojená k články z místní oblast. 
+## <a name="a-simple-multi-master-example--content-publishing"></a>Publikování jednoduchý více hlavních příklad – obsahu  
 
-Za předpokladu, že miliony s až miliardy článků, vydavatelům a spotřebitelům brzy máme boji s problémy měřítka společně s zaručující polohu přístupu. Stejně jako u většiny problémů škálovatelnost řešení spočívá ve strategii je dobré rozdělení. V dalším kroku podíváme, jak model články, zkontrolujte a oznámení jako dokumenty, nakonfigurovat účty Azure Cosmos DB a implementovat vrstva přístupu k datům. 
+Podívejme se na reálného scénáře, který popisuje, jak používat více hlavních podporu s Azure Cosmos DB. Vezměte v úvahu vytvořené v Azure Cosmos DB platforma pro publikování obsahu. Tady jsou některé požadavky, které tuto platformu musí splňovat pro vysoký výkon uživatele pro vydavatele a spotřebitelé. 
 
-Pokud vás zajímají další informace o vytváření oddílů a klíče oddílů, najdete v části [vytváření oddílů a škálování v Azure Cosmos DB](partition-data.md).
+* Autoři a Odběratelé, kteří se šíří po celém světě.  
 
-## <a id="ModelingNotifications"></a>Modelování oznámení
-Oznámení jsou datových kanálů specifické pro uživatele. Proto přístupové vzorce pro dokumenty oznámení jsou vždy v rámci jednoho uživatele. Například by "post oznámení pro uživatele" nebo "načíst všechna oznámení pro daného uživatele". Ano, bude optimální volbou oddíly klíč pro tento typ `UserId`.
+* Autoři musíte publikovat články (zápisu) na jejich místní oblast (nejbližší).  
 
-    class Notification 
-    { 
-        // Unique ID for Notification. 
-        public string Id { get; set; }
+* Autoři mají čtečky nebo odběratele, jejich článků kteří distribuují po celém světě.  
 
-        // The user Id for which notification is addressed to. 
-        public string UserId { get; set; }
+* Odběratelé, kteří měli obdržet oznámení, při publikování nových článků.  
 
-        // The partition Key for the resource. 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.UserId; 
-            }
-        }
+* Odběratelé, kteří musí být možné číst články ze své místní oblast. Musí být také možné přidat recenze na tyto články.  
 
-        // Subscription for which this notification is raised. 
-        public string SubscriptionFilter { get; set; }
+* Každý, kdo včetně autora články musí být možné zobrazit všechny recenze připojená k články z místní oblast.  
 
-        // Subject of the notification. 
-        public string ArticleId { get; set; } 
-    }
+Za předpokladu, že miliony s až miliardy článků, vydavatelům a spotřebitelům brzy máme boji s problémy měřítka společně s zaručující polohu přístupu. Případ použití je ideální kandidátem pro Azure Cosmos DB více hlavní server. 
 
-## <a id="ModelingSubscriptions"></a>Odběry modelování
-Odběry můžete vytvořit pro různé kritéria jako určitou kategorii články zájmu nebo konkrétní vydavatele. Proto `SubscriptionFilter` je vhodná pro klíč oddílu.
+## <a name="benefits-of-having-multi-master-support"></a>Výhody použití více hlavních podpory 
 
-    class Subscriptions 
-    { 
-        // Unique ID for Subscription 
-        public string Id { get; set; }
+Podpora více hlavních je základem pro globálně distribuované aplikace. Se skládá z několika hlavní [více hlavní oblasti](distribute-data-globally.md) který rovnoměrně účastnit model zápisu odkudkoli (aktivní – aktivní vzor) a slouží k zajištění, že dat je k dispozici kdykoli potřebujete kde. Aktualizace provedené oblast jednotlivých rozšířeny asynchronně ke všem oblastem (které jsou naopak hlavní oblasti v vlastní). Oblastí Azure Cosmos DB jako hlavní oblasti v konfiguraci s více hlavních operační automaticky fungovat sloučit data všech replik a zajistit [globální konzistence a integrita dat](consistency-levels.md). Následující obrázek znázorňuje replikace pro čtení a zápis pro jeden hlavní a mult hlavní.
 
-        // Subscription source. Could be Author | Category etc. 
-        public string SubscriptionFilter { get; set; }
+![Hlavní jeden a více hlavních serverů](./media/multi-region-writers/single-vs-multi-master.png)
 
-        // subscribing User. 
-        public string UserId { get; set; }
+Implementuje více hlavní sami přidá zatížení na vývojáři. Ve velkém měřítku zákazníci, kteří zkuste implementovat více hlavní na své vlastní může trávit stovky hodin konfiguraci a testování konfiguraci více hlavních serverů po celém světě a mnoho má vyhrazený sadu engineers, jehož jediným úlohy je monitorovat a spravovat více hlavní data replikace. Vytváření a správu více hlavních serverů instalační program na vlastní trvá čas prostředky mimo innovating ve vlastní aplikace a výsledkem mnohem vyšší náklady. Azure Cosmos DB poskytuje více hlavních podporu "out-of-the-box" a odstraní tato dodatečná režie vývojáři.  
 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.SubscriptionFilter; 
-            } 
-        } 
-    }
+Souhrnně více hlavní poskytuje následující výhody:
 
-## <a id="ModelingArticles"></a>Články modelování
-Jakmile článek identifikuje prostřednictvím oznámení, další dotazy jsou obvykle založené na `Article.Id`. Výběr `Article.Id` jako oddíl klíč tak poskytuje nejlepší distribuce pro ukládání články v kolekci Azure Cosmos DB. 
+* **Lepší zotavení po havárii, zapisovat dostupnosti a převzetí služeb při selhání**-více hlavní lze zachovat vysokou dostupnost důležitých databáze ve větší míře. Například více hlavních databázi můžete replikovat data z jedné oblasti v oblasti převzetí služeb při selhání při primární oblasti stane nedostupným kvůli výpadku nebo regionální po havárii. Oblast převzetí služeb při selhání bude sloužit jako hlavní plně funkční oblast pro podporu aplikace. Více hlavní poskytuje větší "funkční schopnost" ochrany s ohledem na přírodní katastrofy, výpadky napájení, nebo napadení nebo obojí, protože zbývající oblasti může být v geograficky různých více hlavních serverů s > 99.999 % dostupnosti zaručenou zápisu. 
 
-    class Article 
-    { 
-        // Unique ID for Article 
-        public string Id { get; set; }
-        
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.Id; 
-            } 
-        }
-        
-        // Author of the article
-        public string Author { get; set; }
+* **Vylepšené latence zápisu pro koncové uživatele** – Čím bližší data (který obsluhujete) je pro koncového uživatele, tím lepší bude zkušenosti. Například pokud máte uživatele v Evropě, ale databáze se nachází v USA nebo Austrálie, přidané latence je přibližně 140 ms a 300 ms pro příslušné oblasti. Zpoždění nepřijatelné spustit s mnoha oblíbených hry, bankovnictví požadavky nebo interaktivní aplikací (web nebo mobilní). Latence hraje obrovské součástí v dojem zákazníka prostředí vysoce kvalitní a ukázalo se jako ovlivnit chování uživatelů do určité míry znatelné. Zlepšuje technologie a zejména s nástupem AR, VR a MR nutnosti i další prostředí dokonalé a živoucí vývojáři teď potřeba vytvořit systémy softwaru s latencí přísné požadavky. Místně dostupné aplikace a data (obsah pro aplikace) je proto důležité. S více hlavní v Azure Cosmos DB výkonu je jako rychlostí, jakou regulární místní čte a zapisuje a rozšířené globálně pomocí geo rozdělení.  
 
-        // Category/genre of the article
-        public string Category { get; set; }
+* **Vylepšené škálovatelnosti zápisu a zápisu propustnost** – více hlavní získáte vyšší propustnost a vyšší využití při nabízí více modelů konzistence správnost zaručuje a zálohovaná SLA. 
 
-        // Tags associated with the article
-        public string[] Tags { get; set; }
+  ![Škálování propustnost zápisu s více hlavní](./media/multi-region-writers/scale-write-throughput.png)
 
-        // Title of the article
-        public string Title { get; set; }
-        
-        //... 
-    }
+* **Lepší podpory pro odpojené prostředí (například hraniční zařízení)** -více hlavní umožňuje uživatelům replikovat všechny nebo podmnožinu dat z hraniční zařízení na nejbližší oblast v odpojeném prostředí. Tento scénář je typické pro prodej vynutit automatizace systémy, kde k jednotlivcům přenosný počítač (odpojené zařízení) ukládá část dat souvisejících s jednotlivé prodejce. Hlavní oblasti v cloudu, které jsou umístěny kdekoliv na světě můžou fungovat jako cíl kopírování ze vzdáleného hraniční zařízení.  
 
-## <a id="ModelingReviews"></a>Zkontroluje modelování
-Jako články jsou recenze většinou zapisovat a číst v kontextu článku. Výběr `ArticleId` jako oddíl klíč poskytuje nejlepší distribuce a efektivní přístup recenze přidružené článku. 
+* **Vyrovnávání zatížení** -s více hlavní zatížení napříč aplikace může být znovu vyrovnána přesunutím uživatele nebo úlohy ze velkém zatížení oblasti do oblasti, kde je zatížení rovnoměrně rozdělené. Zapsat kapacity lze snadno rozšířit přidáním nové oblasti a pak přepínání některé zápisy do nové oblasti. 
 
-    class Review 
-    { 
-        // Unique ID for Review 
-        public string Id { get; set; }
+* **Lepší využití zřízená kapacita** – s více hlavní pro úlohy náročné na zápis a smíšený, může vyčerpat zřízená kapacita nad několika oblastmi...  V některých případech je možné znovu distribuovat čtení a zápisy více stejně, takže vyžaduje méně propustnost zřízení a za následek více finanční úspoře pro zákazníky.  
 
-        // Article Id of the review 
-        public string ArticleId { get; set; }
+* **Jednodušší a pružnější aplikace architektury** -aplikace Přesun do více hlavních konfigurace získat zaručit odolnost data.  S Azure DB Cosmos skrytí všech složitost se může podstatně zjednodušit návrh aplikace a architektura. 
 
-        public string PartitionKey 
-        { 
-            get 
-            { 
-                return this.ArticleId; 
-            } 
-        }
-        
-        //Reviewer Id 
-        public string UserId { get; set; }
-        public string ReviewText { get; set; }
-        
-        public int Rating { get; set; } }
-    }
+* **Bez rizika, testování převzetí služeb při selhání** – testování převzetí služeb při selhání nebude mít žádné snížení na propustnost zápisu. S více hlavní server jsou jiných oblastí úplné hlavních serverů, takže převzetí služeb při selhání nebude mít mnoho dopad na propustnost zápisu.  
 
-## <a id="DataAccessMethods"></a>Metody pro přístup k vrstvě
-Nyní Podíváme se na hlavní data musíme implementovat metody přístupu. Tady je seznam metod, `ContentPublishDatabase` musí:
+* **Snížit celkové náklady na Ownership(TCO) a DevOps** -splňuje škálovatelnost, výkon, globální distribuční cíli doby obnovení jsou obvykle nákladné z důvodu nákladné doplňky nebo údržbu infrastruktury zálohování, která je umístěná až po havárii narazilo. S více master Azure Cosmos DB zálohovaná špičkový SLA vývojáři už vyžadují vytváření a údržbu "spojovací logiku back-end" sami a získat jistotu spuštěné jejich kritické úlohy. 
 
-    class ContentPublishDatabase 
-    { 
-        public async Task CreateSubscriptionAsync(string userId, string category);
-    
-        public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId);
-    
-        public async Task<Article> ReadArticleAsync(string articleId);
-    
-        public async Task WriteReviewAsync(string articleId, string userId, string reviewText, int rating);
-    
-        public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId); 
-    }
+## <a name="use-cases-where-multi-master-support-is-needed"></a>Případy použití, kde je potřeba více hlavních podpory
 
-## <a id="Architecture"></a>Konfigurace účtu Azure Cosmos DB
-Zaručit místní čte a zapisuje, jsme musí oddílu data nejen v oddílu klíče, ale také podle vzoru zeměpisné přístup do oblasti. Model spoléhá na nutnosti geograficky replikované Azure Cosmos DB databázového účtu pro každou oblast. Například se dvěma oblastmi, zde je instalace s pro zápisy více oblasti:
+Existují množství případy použití pro více hlavní server v Azure Cosmos DB: 
 
-| Název účtu | Oblast zápisu | Oblast čtení |
-| --- | --- | --- |
-| `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |
-| `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |
+* **IoT** -více master Azure Cosmos DB umožňuje pro zjednodušenou implementaci distribuované zpracování dat IoT. Geograficky distribuovaná edge nasazení, která používají CRDT konflikt bez replikovaných dat typy často potřebují sledovat časových řad dat z více umístění. Každé zařízení může adresami na jednu z nejbližšího oblasti a zařízení můžete cestování (například automobilu) a můžete dynamicky přesunutí k zápisu do jiné oblasti.  
 
-Následující diagram znázorňuje, jak provádět čtení a zápisu v typické aplikaci s tímto nastavením:
+* **E-Commerce** -zajistit vysoký výkon uživatele ve scénářích elektronické obchodování musí mít vysokou dostupnost a odolnost proti selhání scénáře. V případě, že oblast selže, chcete uživatelské relace, nákupních košíků, aktivní, že seznamy muset být bezproblémově zachyceny pomocí jiné oblasti bez ztráty stavu. Do té doby je správně zvládnout aktualizace provedené uživatelem (například přidá a odebere z nákupního košíku musí přenos přes). S více hlavní server může řádně, zpracovávat takových scénářů s plynulý přechod mezi aktivní oblasti při zachování konzistentní zobrazení z hlediska uživatele Azure Cosmos DB. 
 
-![Azure Cosmos DB více hlavních architektura](./media/multi-region-writers/multi-master.png)
+* **Zjišťování podvodu nebo anomálií** -často aplikace, které monitorování aktivity uživatelů nebo aktivitu na účtu jsou globálně distribuované a musí udržovat přehled o několik událostí současně. Při vytváření a údržbu skóre pro uživatele, musíte aktualizovat akce z různých zeměpisných oblastech současně zachovat vložený riziko metriky skóre. Azure Cosmos DB můžete zajistit, že vývojáři nemusí zpracovávat scénáře konfliktů na úrovni aplikace. 
 
-Zde je fragment kódu znázorňující k chybě při inicializaci klienty v DAL, spuštěné v `West US` oblast.
-    
-    ConnectionPolicy writeClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
-    writeClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
-    writeClientPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
+* **Spolupráce** – pro aplikace, které pořadí založeny na době Oblíbené články například zboží na prodej nebo na médiu, který se má používat atd. Sledování oblíbenosti přes geografické oblasti můžete získat složitá, zvláště pokud licenční poplatky musí být čas placené nebo skutečné inzerování rozhodnutí, která má být provedeno. Řazení, řazení a vytváření sestav v mnoha oblastech po celém světě, v reálném čase s Azure Cosmos DB umožňuje vývojářům poskytovat funkce s malým množstvím úsilí a to bez kompromisů v latenci. 
 
-    DocumentClient writeClient = new DocumentClient(
-        new Uri("https://contentpubdatabase-usa.documents.azure.com"), 
-        writeRegionAuthKey,
-        writeClientPolicy);
+* **Měření** – počítání a regulační využití (například volání rozhraní API používá minut transakcí za sekundu) můžete provedeny globálně s jednoduchost pomocí více master Azure Cosmos DB. Řešení konfliktů předdefinované zaručuje i přesnost počtů a nařízení v reálném čase. 
 
-    ConnectionPolicy readClientPolicy = new ConnectionPolicy { ConnectionMode = ConnectionMode.Direct, ConnectionProtocol = Protocol.Tcp };
-    readClientPolicy.PreferredLocations.Add(LocationNames.NorthEurope);
-    readClientPolicy.PreferredLocations.Add(LocationNames.WestUS);
+* **Přizpůsobení** – jestli jste zachování geograficky rozptýlené čítače, které aktivují akcí, například věrného body nálezů nebo implementace přizpůsobené uživatelské relace zobrazení, vysokou dostupnost a zjednodušená zeměpisné polohy počítání poskytované Azure Cosmos DB, umožňuje aplikacím doručit vysoký výkon s jednoduchost. 
 
-    DocumentClient readClient = new DocumentClient(
-        new Uri("https://contentpubdatabase-europe.documents.azure.com"),
-        readRegionAuthKey,
-        readClientPolicy);
+## <a name="conflict-resolution-with-multi-master"></a>Řešení konfliktů s více hlavní 
 
-V předchozí instalaci může předat vrstva přístupu k datům všech zápisů místní účet, podle které se nasadí. Čtení ze oba účty, a získat globální zobrazení dat provádí čtení. Tuto metodu lze rozšířit na jako v mnoha oblastech podle potřeby. Zde je ukázka, instalační program s tři zeměpisné oblasti:
+S více hlavní server na výzvu je často, dva (nebo více) repliky stejného záznamu může být aktualizován současně jiné uživatelé vytvářející obsah ve dvou nebo více různých oblastech. Souběžných zápisy může vést k dvě různé verze stejného záznamu a bez řešení konfliktů předdefinované a vlastní aplikace musí provádět řešení konfliktů. Chcete-li vyřešit tento nekonzistence.  
 
-| Název účtu | Oblast zápisu | Oblast pro čtení 1 | Přečtěte si oblasti 2 |
-| --- | --- | --- | --- |
-| `contentpubdatabase-usa.documents.azure.com` | `West US` |`North Europe` |`Southeast Asia` |
-| `contentpubdatabase-europe.documents.azure.com` | `North Europe` |`West US` |`Southeast Asia` |
-| `contentpubdatabase-asia.documents.azure.com` | `Southeast Asia` |`North Europe` |`West US` |
+**Příklad** -Předpokládejme, že používáte Azure Cosmos DB jako úložiště trvalosti pro aplikaci nákupního košíku a tato aplikace je nasazená ve dvou oblastí: Východ USA a západní USA.  Pokud přibližně ve stejnou dobu, uživateli v síti San Franciscu přidá položku do jeho nákupní košík (například kniha) při procesu správy inventáře ve východní USA by způsobila neplatnost na jinou položku nákupní košík (například nové telefonní číslo) pro tomuto uživateli v reakci s upplier oznámení, že datum vydání měl byla zpožděna. V čase T1 nákupní košík záznamy v dvou oblastí se liší. Databáze bude používat jeho replikace a mechanismus řešení konfliktu k odstranění této nekonzistence a nakonec se být vybrána jedna z dvou verzích nákupní košík. Pomocí heuristické metody řešení konfliktu nejčastěji použít více databází (například poslední zápis wins), není možné pro uživatele nebo aplikace k předvídání, která verze bude vybrána. V obou případech dojde ke ztrátě dat nebo může dojít k neočekávanému chování. Pokud je vybraná verze oblast – východ, dojde ke ztrátě pak výběr uživatele nové položky nákupu (to znamená, kniha) a pokud je vybrána této oblasti, pak dříve vybrané položky (telefon) je stále v košíku. V obou případech informace budou ztraceny. Nakonec jiný proces kontroly nákupního košíku mezi časy T1 a T2 bude také Nedeterministický chování. Například byste mohli proces na pozadí, který vybere sklad plnění a aktualizuje košíku přesouvání náklady vytvořit výsledky, které je v konfliktu s případný obsah košíku. Pokud je proces spuštěný v této oblasti a alternativní 1 se změní na skutečnost, ho by výpočetní přesouvání náklady na dvě položky, i když košíku brzy může mít pouze pro jednu položku seznamu. 
 
-## <a id="DataAccessImplementation"></a>Data access layer implementace
-Nyní Podíváme se na provádění vrstva přístupu k datům (DAL) pro aplikaci se dvěma oblastmi s možností zápisu. DAL musí implementovat následující kroky:
+Azure Cosmos DB implementuje logiku pro zpracování konfliktní zápisy v databázovém stroji sám sebe. Nabízí Azure Cosmos DB **konflikt komplexní a flexibilní řešení podpory** tím, že nabízí několik konflikt překladu modely, včetně automatického (bez konfliktů CRDT replikované datové typy), poslední zápis Wins (LWW) a (vlastní Uložené procedury) pro automatické rozpoznávání konfliktů. Modely řešení konfliktu poskytovat záruku správnosti a konzistence a odebrání zatížení vývojáři k vezměte v úvahu konzistence, dostupnosti, výkonu, latenci replikace a komplexní kombinace události geo-převzetí služeb při selhání a je v konfliktu mezi oblastmi zápisu.  
 
-* Vytvoření více instancí `DocumentClient` pro jednotlivé účty. Se dvěma oblastmi jeden má každá instance vrstvy DAL `writeClient` a jeden `readClient`. 
-* Podle oblasti nasazené aplikace, konfigurace koncových bodů pro `writeclient` a `readClient`. Například DAL nasazené v `West US` používá `contentpubdatabase-usa.documents.azure.com` pro provádění zápisy. DAL nasazené v `NorthEurope` používá `contentpubdatabase-europ.documents.azure.com` pro zápis.
+  ![Řešení konfliktů mult-master](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
 
-V předchozí instalaci se dá implementovat datové metody přístupu. Zápis předávat operace zápisu do odpovídajících `writeClient`.
+Budete mít 3 typy modelů konflikt řešení, které nabízí Azure Cosmos DB. Sémantika modely řešení konfliktu jsou následující: 
 
-    public async Task CreateSubscriptionAsync(string userId, string category)
-    {
-        await this.writeClient.CreateDocumentAsync(this.contentCollection, new Subscriptions
-        {
-            UserId = userId,
-            SubscriptionFilter = category
-        });
-    }
+**Automatické** -Toto je výchozí zásady řešení konfliktů. Výběrem této zásady způsobí, že Azure DB Cosmos automaticky vyřešit konfliktní aktualizace na straně serveru a zadejte silné konzistence typu případné záruky. Interně Azure Cosmos DB implementuje řešení konfliktů automatické ve využívání konflikt-bez-replikovat – datové typy (CRDTs) v databázovém stroji.  
 
-    public async Task WriteReviewAsync(string articleId, string userId, string reviewText, int rating)
-    {
-        await this.writeClient.CreateDocumentAsync(this.contentCollection, new Review
-        {
-            UserId = userId,
-            ArticleId = articleId,
-            ReviewText = reviewText,
-            Rating = rating
-        });
-    }
+**Poslední-Write-Wins (LWW)** – výběr těchto zásad vám umožní při řešení konfliktů na základě některé definovaná systémem synchronizována vlastnost časového razítka, nebo vlastní vlastnosti definované na verzi konfliktní záznamy. Řešení konfliktů se odehrává na straně serveru a verzí s nejnovější časové razítko je vybrán jako vítěz.  
 
-Pro čtení, oznámení a recenze, můžete musí číst od oblasti a sjednocení výsledky jak je znázorněno v následujícím fragmentu kódu:
+**Vlastní** -zaregistrujete logiku aplikace definovaná konflikt řešení tak, že zaregistrujete uloženou proceduru. Uložená – procedura se získat volána po zjištění konfliktu aktualizace pod dohledem databázových transakcí na straně serveru. Pokud vyberete možnost ale nezdaří jejich registrace uložené procedury (nebo pokud uložená procedura vyvolá výjimku za běhu), můžete používat všechny konfliktní verze prostřednictvím kanálu konflikty a jejich řešení jednotlivě.  
 
-    public async Task<IEnumerable<Notification>> ReadNotificationFeedAsync(string userId)
-    {
-        IDocumentQuery<Notification> writeAccountNotification = (
-            from notification in this.writeClient.CreateDocumentQuery<Notification>(this.contentCollection) 
-            where notification.UserId == userId 
-            select notification).AsDocumentQuery();
-        
-        IDocumentQuery<Notification> readAccountNotification = (
-            from notification in this.readClient.CreateDocumentQuery<Notification>(this.contentCollection) 
-            where notification.UserId == userId 
-            select notification).AsDocumentQuery();
+## <a name="next-steps"></a>Další postup  
 
-        List<Notification> notifications = new List<Notification>();
+V tomto článku dozvědí použití globálně distribuované více hlavní s Azure Cosmos DB. Další podívejte se na následující prostředky: 
 
-        while (writeAccountNotification.HasMoreResults || readAccountNotification.HasMoreResults)
-        {
-            IList<Task<FeedResponse<Notification>>> results = new List<Task<FeedResponse<Notification>>>();
+* [Další informace o tom, jak Azure Cosmos DB podporuje globální distribuční](distribute-data-globally.md)  
 
-            if (writeAccountNotification.HasMoreResults)
-            {
-                results.Add(writeAccountNotification.ExecuteNextAsync<Notification>());
-            }
+* [Další informace o automatické převzetí služeb při selhání v Azure Cosmos DB](regional-failover.md)  
 
-            if (readAccountNotification.HasMoreResults)
-            {
-                results.Add(readAccountNotification.ExecuteNextAsync<Notification>());
-            }
+* [Další informace o globální konzistence s Azure Cosmos DB](consistency-levels.md)  
 
-            IList<FeedResponse<Notification>> notificationFeedResult = await Task.WhenAll(results);
-
-            foreach (FeedResponse<Notification> feed in notificationFeedResult)
-            {
-                notifications.AddRange(feed);
-            }
-        }
-        return notifications;
-    }
-
-    public async Task<IEnumerable<Review>> ReadReviewsAsync(string articleId)
-    {
-        IDocumentQuery<Review> writeAccountReviews = (
-            from review in this.writeClient.CreateDocumentQuery<Review>(this.contentCollection) 
-            where review.ArticleId == articleId 
-            select review).AsDocumentQuery();
-        
-        IDocumentQuery<Review> readAccountReviews = (
-            from review in this.readClient.CreateDocumentQuery<Review>(this.contentCollection) 
-            where review.ArticleId == articleId 
-            select review).AsDocumentQuery();
-
-        List<Review> reviews = new List<Review>();
-        
-        while (writeAccountReviews.HasMoreResults || readAccountReviews.HasMoreResults)
-        {
-            IList<Task<FeedResponse<Review>>> results = new List<Task<FeedResponse<Review>>>();
-
-            if (writeAccountReviews.HasMoreResults)
-            {
-                results.Add(writeAccountReviews.ExecuteNextAsync<Review>());
-            }
-
-            if (readAccountReviews.HasMoreResults)
-            {
-                results.Add(readAccountReviews.ExecuteNextAsync<Review>());
-            }
-
-            IList<FeedResponse<Review>> notificationFeedResult = await Task.WhenAll(results);
-
-            foreach (FeedResponse<Review> feed in notificationFeedResult)
-            {
-                reviews.AddRange(feed);
-            }
-        }
-
-        return reviews;
-    }
-
-Proto výběr dobrý klíč rozdělení a statické dělení založené na účet, můžete dosáhnout více oblast místní zápisů a čtení pomocí Azure Cosmos DB.
-
-## <a id="NextSteps"></a>Další kroky
-V tomto článku jsme popsané, jak je používat vzory globálně distribuované čtení zápisu více oblasti s Azure DB Cosmos jako vzorový scénář pomocí publikování obsahu.
-
-* Další informace o tom, jak Azure Cosmos DB podporuje [globální distribuční](distribute-data-globally.md)
-* Další informace o [automatickou a ruční převzetí služeb při selhání v Azure Cosmos DB](regional-failover.md)
-* Další informace o [globální konzistence s Azure Cosmos DB](consistency-levels.md)
-* Vývoj s více oblastí pomocí [Azure Cosmos DB - rozhraní SQL API](tutorial-global-distribution-sql-api.md)
-* Vývoj s více oblastí pomocí [Azure Cosmos DB - MongoDB rozhraní API](tutorial-global-distribution-MongoDB.md)
-* Vývoj s více oblastí pomocí [Azure Cosmos DB - API tabulky](tutorial-global-distribution-table.md)
+* Vývoj s několika oblastí pomocí Azure Cosmos DB - [rozhraní SQL API](tutorial-global-distribution-sql-api.md), [MongoDB rozhraní API](tutorial-global-distribution-mongodb.md), nebo [tabulky rozhraní API](tutorial-global-distribution-table.md)  

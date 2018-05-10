@@ -1,9 +1,9 @@
 ---
-title: "Datový Model aplikace Azure Statistika Telemetrie - metriky Telemetrie | Microsoft Docs"
-description: "Application Insights datový model pro metriky telemetrie"
+title: Datový Model aplikace Azure Statistika Telemetrie - metriky Telemetrie | Microsoft Docs
+description: Application Insights datový model pro metriky telemetrie
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 4139e3675e2202cc42b6b8d7ff7562e9c9d693bb
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 3feb1e79ba4e4666cbe9ffc77136520922728710
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metriky telemetrie: Application Insights datový model
 
@@ -40,7 +40,7 @@ Metrika představující systém a proces čítače:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhající práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | čas spuštění průměrný počet požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhající práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Počet požadavků čekajících na zpracování ve frontě
 
-## <a name="name"></a>Jméno
+## <a name="name"></a>Název
 
 Název metriky, kterou jste chtěli vidět v portálu Application Insights a uživatelského rozhraní. 
 
@@ -52,11 +52,11 @@ Jednu hodnotu pro měření. Součet jednotlivými měřeními pro agregaci.
 
 Váha metriky agregovaná metrika. Neměla by být nastavená pro měření.
 
-## <a name="min"></a>Min
+## <a name="min"></a>Min.
 
 Minimální hodnota agregovaná metrika. Neměla by být nastavená pro měření.
 
-## <a name="max"></a>Maximum
+## <a name="max"></a>Max.
 
 Maximální hodnota agregovaná metrika. Neměla by být nastavená pro měření.
 

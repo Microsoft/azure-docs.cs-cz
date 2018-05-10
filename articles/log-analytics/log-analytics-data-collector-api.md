@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 167c36d2fa9bc182b6e37c0f47f838fde1ba01df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d42069e8ed72a834973b56df55488955d62e71f2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Odesílání dat k analýze protokolů s rozhraním API týkající se kolekce dat protokolu HTTP (verze public preview)
 Tento článek ukazuje, jak používat rozhraní API sady kolekcí dat protokolu HTTP k odesílání dat k analýze protokolů z klienta pro REST API.  Popisuje, jak formátu data shromažďovaná společností skriptu nebo aplikaci, její zahrnutí do žádost a mít této žádosti autorizovat analýzy protokolů.  Příklady jsou uvedené pro prostředí PowerShell, C# a Python.
@@ -57,7 +57,7 @@ Chcete-li použít rozhraní API sady kolekcí dat protokolu HTTP, vytvořte po�
 | Záhlaví | Popis |
 |:--- |:--- |
 | Autorizace |Podpis autorizace. Dále v tomto článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC SHA256. |
-| Log-Type |Zadejte typ záznamu dat, která je odesílána. Typ protokolu v současné době podporuje pouze alfanumerické znaky. Nepodporuje se číslice nebo speciální znaky. |
+| Typ protokolu |Zadejte typ záznamu dat, která je odesílána. Typ protokolu v současné době podporuje pouze alfanumerické znaky. Nepodporuje se číslice nebo speciální znaky. Omezení velikosti pro tento parametr je 100 znaků. |
 | x-ms-date |Datum, kdy byl požadavek zpracovat, v dokumentu RFC 1123 formátu. |
 | čas generované pole |Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole a její obsah se používají pro **TimeGenerated**. Pokud toto pole není určena, výchozí hodnota pro **TimeGenerated** je čas, který je konzumována zprávy. Obsah zprávy pole by mělo vyhovovat formátu ISO 8601 rrrr-MM-ddTHH. |
 

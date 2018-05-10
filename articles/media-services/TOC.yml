@@ -1,0 +1,10 @@
+- name: Azure Media Services v3 (Preview)
+  href: latest/media-services-overview.md
+- name: Azure Media Services v2 (GA)
+  href: previous/media-services-overview.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=media'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'

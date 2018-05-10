@@ -316,22 +316,24 @@
           href: compute-linked-services.md
     - name: Tok řízení
       items:
-        - name: Aktivita podmínky Když
-          href: control-flow-if-condition-activity.md
-        - name: Aktivita Until
-          href: control-flow-until-activity.md
-        - name: Aktivita webu
-          href: control-flow-web-activity.md
-        - name: Aktivita vyhledávání
-          href: control-flow-lookup-activity.md
-        - name: Aktivita získání metadat
-          href: control-flow-get-metadata-activity.md
         - name: Aktivita spuštění kanálu
           href: control-flow-execute-pipeline-activity.md
+        - name: Aktivita filtrování
+          href: control-flow-filter-activity.md
         - name: Aktivita For Each
           href: control-flow-for-each-activity.md
+        - name: Aktivita získání metadat
+          href: control-flow-get-metadata-activity.md
+        - name: Aktivita podmínky Když
+          href: control-flow-if-condition-activity.md
+        - name: Aktivita vyhledávání
+          href: control-flow-lookup-activity.md
+        - name: Aktivita Until
+          href: control-flow-until-activity.md
         - name: Aktivita Wait
           href: control-flow-wait-activity.md
+        - name: Aktivita webu
+          href: control-flow-web-activity.md
         - name: Jazyk výrazů
           href: control-flow-expression-language-functions.md
         - name: Systémové proměnné

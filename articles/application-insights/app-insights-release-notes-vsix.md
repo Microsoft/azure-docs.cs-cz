@@ -1,9 +1,9 @@
 ---
-title: "Poznámky k verzi pro rozšíření sady Visual Studio pro Developer Analytics"
-description: "Nejnovější aktualizace pro Visual Studio tools for Developer Analytics."
+title: Poznámky k verzi pro rozšíření sady Visual Studio pro Developer Analytics
+description: Nejnovější aktualizace pro Visual Studio tools for Developer Analytics.
 services: application-insights
-documentationcenter: 
-author: acearun
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: mbullwin
-ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; aruna
+ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Poznámky k verzi pro Developer Analytics Tools
 
@@ -210,7 +210,7 @@ Pokud máte aplikace ASP.NET pomocí Application Insights SDK, proveďte násled
 3. Pokud nemáte registraci s Application Insights, otevře se v okně vyhledávání v režimu telemetrie relace ladění.
 4. Klikněte **vyhledávání** ikonu zobrazíte místní telemetrie.
 
-![Nahrát dokončení](./media/app-insights-release-notes-vsix/LocalSearch.png)
+![Nahrávání je dokončené.](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
 ## <a name="version-42"></a>Verzi 4.2
 V této verzi jsme přidali funkce, aby hledání snadnější v souvislosti s událostí, data s možností přejít ke kódu od více dat událostí a nijak namáhavá prostředí odeslání protokolování dat do služby Application Insights. Toto rozšíření se aktualizuje jednou měsíčně. Pokud máte zpětnou vazbu nebo funkce požadavky, odešle do aidevtools@microsoft.com.
@@ -247,7 +247,7 @@ Přidali jsme novou kartu, s předdefinované dotazy pro všechna data souvisej�
 ### <a name="forward-and-back-history-in-search"></a>Vpřed a zpět v historii hledání
 Nyní můžete přejít přepínat mezi výsledky hledání.
 
-![Vrať se](./media/app-insights-release-notes-vsix/GoBAck.png)
+![Přejít zpátky](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ## <a name="version-41"></a>Verze 4.1
 Tato verze obsahuje mnoho nových funkcí a aktualizace. Musíte mít nainstalovanou na něj nainstalovat tuto verzi Update 1.
@@ -289,8 +289,3 @@ Už muset přihlásit k Azure a přidejte Application Insights balíčky do proj
 
 ![Dialogové okno Nový projekt](./media/app-insights-release-notes-vsix/newproject.png)
 
-### <a name="device-support"></a>Podpora zařízení
-V *Connect();* 2015, jsme [oznámeno](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/) že našich zkušeností vývojáře mobilních zařízení je HockeyApp. HockeyApp pomáhá distribuovat sestavení pro beta verzi pro vaše testery, shromažďovat a analyzovat všechny havárií z vaší aplikace a shromáždit názory přímo z vašich zákazníků.
-HockeyApp podporuje aplikace na platformě, podle toho, která jste se rozhodli sestavení, zda který být iOS, Android, nebo Windows nebo řešení pro různé platformy jako Xamarin, Cordova a Unity.
-
-V budoucích verzích rozšíření Application Insights, budete zavedeme lepší integrace mezi HockeyApp a Visual Studio. Teď můžete začít s HockeyApp stačí přidat odkaz na NuGet. Najdete v článku [dokumentace](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) Další informace.

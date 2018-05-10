@@ -3,7 +3,7 @@ title: Azure platebních zpracování plán, podle kterého – požadavky na fy
 description: PCI DSS požadavek 9
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 91595a69-e9ce-4f9c-8388-10224165d9c0
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: b702f3d3a06b1d47c2853ab51ccf4872441da03d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>Požadavky fyzického přístupu pro prostředí kompatibilní s rozhraním PCI DSS 
 ## <a name="pci-dss-requirement-9"></a>PCI DSS požadavek 9

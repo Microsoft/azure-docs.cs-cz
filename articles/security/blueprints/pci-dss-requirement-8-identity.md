@@ -1,9 +1,9 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na Identity"
-description: "PCI DSS požadavek 8"
+title: Azure platebních zpracování plán, podle kterého – požadavky na Identity
+description: PCI DSS požadavek 8
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 1a398601-8c48-4f8e-b3d4-eba94edad61c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: f77cc3c9926b5316913c70e5f4412383e55c5193
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: a83040a6b5174307ea73e5473165835458d217f6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="identity-requirements-for-pci-dss-compliant-environments"></a>Požadavky identity kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-8"></a>PCI DSS požadavek 8
@@ -42,8 +42,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje případ použití a popis pro správné použití správců pro ukázkové nasazení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore poskytuje případ použití a popis pro správné použití správců pro ukázkové nasazení.|
 
 
 
@@ -55,8 +55,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore implementuje Azure Active Directory a řízení přístupu Azure Active Directory Role-Based (RBAC) aby všichni uživatelé mít jedinečné ID. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore implementuje Azure Active Directory a řízení přístupu Azure Active Directory Role-Based (RBAC) aby všichni uživatelé mít jedinečné ID. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -68,8 +68,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore implementuje Azure Active Directory a řízení přístupu Azure Active Directory Role-Based (RBAC) aby všichni uživatelé mít jedinečné ID. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore implementuje Azure Active Directory a řízení přístupu Azure Active Directory Role-Based (RBAC) aby všichni uživatelé mít jedinečné ID. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -81,8 +81,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Active Directory pro správu uživatelů. Odvolání uživatelů můžete udělat ve službě Active Directory.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Active Directory pro správu uživatelů. Odvolání uživatelů můžete udělat ve službě Active Directory.|
 
 
 
@@ -94,8 +94,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Active Directory pro správu uživatelů. `-enableADDomainPasswordPolicy` Možnost lze nastavit zajistit hesla vyprší za 90 dní.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Active Directory pro správu uživatelů. `-enableADDomainPasswordPolicy` Možnost lze nastavit zajistit hesla vyprší za 90 dní.|
 
 
 
@@ -109,8 +109,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure přijal zásady použít podnikové a organizační zabezpečení, včetně zásad zabezpečení informací. Zásady byla schválena, publikována a přenést do Microsoft Azure. Zásady zabezpečení informací vyžaduje, aby přístup k prostředkům Microsoft Azure udělit oprávnění podle obchodního oprávnění s vlastník majetku autorizace a omezené na základě zásady "potřeba vědět" a "minimálními oprávněními". Kromě toho zásady také řeší požadavky na přístup správy životního cyklu, včetně zřizování přístupu, ověřování, autorizaci přístupu, odebrání přístupová práva a pravidelně přístup ke recenze. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore implementovala Azure Active Directory a řízení přístupu Azure Active Directory Role-Based spravovat přístup uživatelů k instalaci. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure přijal zásady použít podnikové a organizační zabezpečení, včetně zásad zabezpečení informací. Zásady byla schválena, publikována a přenést do Microsoft Azure. Zásady zabezpečení informací vyžaduje, aby přístup k prostředkům Microsoft Azure udělit oprávnění podle obchodního oprávnění s vlastník majetku autorizace a omezené na základě zásady "potřeba vědět" a "minimálními oprávněními". Kromě toho zásady také řeší požadavky na přístup správy životního cyklu, včetně zřizování přístupu, ověřování, autorizaci přístupu, odebrání přístupová práva a pravidelně přístup ke recenze. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Ukázkové společnosti Contoso Webstore implementovala Azure Active Directory a řízení přístupu Azure Active Directory Role-Based spravovat přístup uživatelů k instalaci. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -122,8 +122,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore implementovala zrušte oddělení povinností (ZATRAVNIT) pro všechny uživatele ukázce. Další informace najdete v tématu ""Azure Active Directory identitu ochrany"v [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore implementovala zrušte oddělení povinností (ZATRAVNIT) pro všechny uživatele ukázce. Další informace najdete v tématu ""Azure Active Directory identitu ochrany"v [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -135,8 +135,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření, vynucení a monitorování zásad hesel je kompatibilní s PCI DSS požadavky zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření, vynucení a monitorování zásad hesel je kompatibilní s PCI DSS požadavky zákazníků.|
 
 
 
@@ -148,8 +148,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření, vynucení a monitorování zásad hesel je kompatibilní s PCI DSS požadavky zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření, vynucení a monitorování zásad hesel je kompatibilní s PCI DSS požadavky zákazníků.|
 
 
 
@@ -164,8 +164,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | K poskytování snadného použití pro ukázku byla zakázána Contoso Webstore implementace pro službu Multi-Factor authentication. Služba Multi-Factor authentication lze implementovat pomocí [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | K poskytování snadného použití pro ukázku byla zakázána Contoso Webstore implementace pro službu Multi-Factor authentication. Služba Multi-Factor authentication lze implementovat pomocí [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/).|
 
 
 
@@ -177,8 +177,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zavedla postupy správy klíčů, můžete spravovat kryptografické klíče v průběhu jejich životního cyklu (např. generace, distribuční, odvolání). Microsoft Azure pomocí podnikové infrastruktury PKI společnosti Microsoft. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zavedla postupy správy klíčů, můžete spravovat kryptografické klíče v průběhu jejich životního cyklu (např. generace, distribuční, odvolání). Microsoft Azure pomocí podnikové infrastruktury PKI společnosti Microsoft. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -191,8 +191,8 @@ Efektivita hesla je do značné míry návrhu a implementace systému ověřová
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zavedla postupy správy klíčů, můžete spravovat kryptografické klíče v průběhu jejich životního cyklu (např. generace, distribuční, odvolání). Microsoft Azure pomocí podnikové infrastruktury PKI společnosti Microsoft. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure zavedla postupy správy klíčů, můžete spravovat kryptografické klíče v průběhu jejich životního cyklu (např. generace, distribuční, odvolání). Microsoft Azure pomocí podnikové infrastruktury PKI společnosti Microsoft. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -207,8 +207,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením.|
 
 
 
@@ -220,8 +220,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Active Directory pro správu uživatelů. `-enableADDomainPasswordPolicy` Možnost lze nastavit zajistit hesla vyprší alespoň jednou za 90 dní.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore využívá Azure Active Directory pro správu uživatelů. `-enableADDomainPasswordPolicy` Možnost lze nastavit zajistit hesla vyprší alespoň jednou za 90 dní.|
 
 
 
@@ -233,8 +233,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -246,8 +246,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore vynucuje silná hesla, popsané v Průvodci nasazením. Další informace najdete v tématu [pokyny PCI - Identity Management](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -263,8 +263,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure správci jsou nutné k použití vícefaktorového ověřování pro přístup k při provádění údržby a správy Azure systémů a serverů. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure správci jsou nutné k použití vícefaktorového ověřování pro přístup k při provádění údržby a správy Azure systémů a serverů. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
 
 
 
@@ -279,8 +279,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure správci jsou nutné k použití vícefaktorového ověřování pro přístup k při provádění údržby a správy Azure systémů a serverů. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure správci jsou nutné k použití vícefaktorového ověřování pro přístup k při provádění údržby a správy Azure systémů a serverů. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
 
 
 
@@ -293,8 +293,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Azure správci jsou nutné k použití vícefaktorového ověřování pro přístup k při provádění údržby a správy Azure systémů a serverů. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Azure správci jsou nutné k použití vícefaktorového ověřování pro přístup k při provádění údržby a správy Azure systémů a serverů. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
 
 
 
@@ -310,8 +310,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za následující pokyny a dokumentace a komunikaci procedury ověřování a zásady pro všechny uživatele.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za následující pokyny a dokumentace a komunikaci procedury ověřování a zásady pro všechny uživatele.|
 
 
 
@@ -326,8 +326,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku.|
 
 
 
@@ -342,8 +342,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici pro zákazníky, kteří Microsoft Azure. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Není k dispozici pro zákazníky, kteří Microsoft Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici pro zákazníky, kteří Microsoft Azure. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Není k dispozici pro zákazníky, kteří Microsoft Azure.|
 
 
 
@@ -357,8 +357,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku. Veškerý přístup ke správě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), která pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Během nasazení Contoso Webstore vytvoří tři účty: admin, sqladmin a edna (výchozí uživatelská přihlášení k webové aplikaci během provádění ukázku). Služba Multi-Factor authentication není implementována pro ukázku. Veškerý přístup ke správě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/), která pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. |
 
 
 
@@ -373,8 +373,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore chrání všechna data držitele karty s Azure Key Vault a šifrování záznamů popsané v dokumentaci k nasazení. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore chrání všechna data držitele karty s Azure Key Vault a šifrování záznamů popsané v dokumentaci k nasazení. Další informace najdete v tématu [pokyny PCI - šifrování](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -386,8 +386,8 @@ Alternativně hesla přístupová hesla musí mít složitosti a síly ekvivalen
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění, že zásady zabezpečení a provozních postupů k identifikaci a ověření jsou dokumentovány používán a ví, že všechny dotčené strany.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění, že zásady zabezpečení a provozních postupů k identifikaci a ověření jsou dokumentovány používán a ví, že všechny dotčené strany.|
 
 
 

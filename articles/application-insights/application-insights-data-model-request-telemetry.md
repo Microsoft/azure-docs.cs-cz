@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights Telemetrická Data modelu - požadavku Telemetrie | Microsoft Docs"
-description: "Aplikace Insights datový model pro požadavek telemetrie"
+title: Azure Application Insights Telemetrická Data modelu - požadavku Telemetrie | Microsoft Docs
+description: Aplikace Insights datový model pro požadavek telemetrie
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0073f38097ffbebd669754eac5f2d48a620941bf
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: e0bdaf132474d8e5eaac6a9c65093d27d673d343
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Žádosti o telemetrie: Application Insights datový model
 
@@ -24,7 +24,7 @@ Položku telemetrie požadavku (v [Application Insights](app-insights-overview.m
 
 Žádost o telemetrie podporuje standardní rozšíření modelu s použitím vlastní `properties` a `measurements`.
 
-## <a name="name"></a>Name (Název)
+## <a name="name"></a>Název
 
 Název žádosti představuje kód trasu pro zpracování požadavku. Hodnota nízkou mohutnost umožňující lepší seskupování požadavků. Pro požadavky HTTP představuje metodu HTTP a šablonu cesty URL jako `GET /values/{id}` bez skutečnou `id` hodnotu.
 
@@ -78,7 +78,7 @@ Si můžete přečíst další výsledek na žádost kód a kód stavu v [přís
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Psát vlastní požadavek telemetrii](app-insights-api-custom-events-metrics.md#trackrequest)
 - V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.

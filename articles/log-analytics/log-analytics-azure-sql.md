@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d6bc7824687f5418f1270e22b216f8637578aa6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 722a10e853f6d61bb5349e92754954e3bb199225
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Monitorování databáze Azure SQL pomocí analýzy SQL Azure (Preview) v analýzy protokolů
 
@@ -136,7 +136,8 @@ Prostřednictvím doba trvání dotazu a dotaz počká perspektivy mohou korelov
 
 ### <a name="analyze-data-and-create-alerts"></a>Analyzovat data a vytvářet výstrahy
 
-Výstrahy můžete snadno vytvořit s dat pocházejících z prostředků Azure SQL Database. Tady jsou některé užitečné [hledání protokolů](log-analytics-log-searches.md) dotazy, které můžete použít pro výstrahy:
+Můžete snadno [vytvářet výstrahy](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) s dat pocházejících z prostředků Azure SQL Database. Tady jsou některé užitečné [hledání protokolů](log-analytics-log-searches.md) dotazy, které můžete používat s výstrahu protokolu:
+
 
 
 *Vysoký počet jednotek DTU na databázi Azure SQL*
@@ -157,18 +158,7 @@ AzureMetrics
 | render timechart
 ```
 
-Tyto dotazy na základě výstrahy můžete výstrahy na specifické prahové hodnoty pro Azure SQL Database a elastické fondy. Konfigurace oznámení pro pracovní prostor analýzy protokolů:
 
-#### <a name="to-configure-an-alert-for-your-workspace"></a>Konfigurace oznámení pro pracovní prostor
-
-1. Přejděte na [portálu OMS](http://mms.microsoft.com/) a přihlaste se.
-2. Otevřete pracovní prostor, který jste nakonfigurovali pro řešení.
-3. Na stránce Přehled klikněte na **analýzy SQL Azure (Preview)** dlaždici.
-4. Spusťte jeden z příkladů dotazů.
-5. V protokolu hledání, klikněte na **výstrahy**.  
-![Vytvořit výstrahu pro vyhledávání](./media/log-analytics-azure-sql/create-alert01.png)
-6. Na **přidat pravidlo výstrahy** nakonfigurujte příslušné vlastnosti a specifické prahové hodnoty, které chcete a pak klikněte na tlačítko **Uložit**. 
-![Přidání pravidla výstrahy](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>Další postup
 

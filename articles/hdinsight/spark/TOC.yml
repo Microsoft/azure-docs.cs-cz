@@ -1,27 +1,32 @@
 - name: Dokumentace ke službě HDInsight
   href: /azure/hdinsight
-- name: Spark ve službě HDInsight
+- name: Přehled
   items:
-    - name: Přehled
+    - name: Informace o Sparku v HDInsightu
       href: apache-spark-overview.md
     - name: Součásti systému Hadoop ve službě HDInsight
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Začínáme
+- name: Šablony Rychlý start
   items:
-    - name: Vytvoření clusteru Spark
+    - name: Vytvoření clusteru Spark – portál
+      href: apache-spark-jupyter-spark-sql-use-portal.md
+    - name: Vytvoření clusteru Spark – PowerShell
+      href: apache-spark-jupyter-spark-sql-use-powershell.md
+    - name: Vytvoření clusteru Spark – šablona
       href: apache-spark-jupyter-spark-sql.md
+- name: Kurzy
+  items:
     - name: Spouštění dotazů v clusteru Spark
       href: apache-spark-load-data-run-query.md
     - name: Analýza dat pomocí nástrojů BI
       href: apache-spark-use-bi-tools.md
-    - name: Správa prostředků clusteru
-      href: apache-spark-resource-manager.md
-    - name: Ladění sparkových úloh
-      href: apache-spark-job-debugging.md
-    - name: Instalace aplikací HDInsight
-      href: ../hdinsight-apps-install-applications.md
-      maintainContext: true
+    - name: Spuštění úlohy streamování
+      href: apache-spark-eventhub-streaming.md
+    - name: Vytvoření aplikace strojového učení
+      href: apache-spark-ipython-notebook-machine-learning.md
+    - name: Vytvoření sparkové aplikace s využitím IntelliJ
+      href: apache-spark-create-standalone-application.md
 - name: Postup
   items:
     - name: Použití úložiště clusteru
@@ -34,8 +39,6 @@
           maintainContext: true
     - name: Vývoj
       items:
-        - name: Vytvoření samostatné aplikace
-          href: apache-spark-create-standalone-application.md
         - name: Použití interaktivního prostředí Sparku
           href: apache-spark-shell.md
         - name: Vzdálené úlohy s Livy
@@ -110,8 +113,6 @@
           href: apache-spark-streaming-exactly-once.md
     - name: Spark a Machine Learning
       items:
-        - name: Předpověď výkonu HVAC
-          href: apache-spark-ipython-notebook-machine-learning.md
         - name: Předpověď výsledků kontroly potravin
           href: apache-spark-machine-learning-mllib-ipython.md
         - name: Analýza webových protokolů
@@ -205,6 +206,8 @@
           maintainContext: true
     - name: Spravovat
       items:
+        - name: Správa prostředků clusteru
+          href: apache-spark-resource-manager.md
         - name: Konfigurace nastavení Sparku
           href: apache-spark-settings.md
         - name: Optimalizace sparkových úloh
@@ -311,6 +314,8 @@
           maintainContext: true
     - name: Řešení potíží
       items:
+        - name: Ladění sparkových úloh
+          href: apache-spark-job-debugging.md
         - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

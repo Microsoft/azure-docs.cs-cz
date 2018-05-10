@@ -3,8 +3,8 @@ title: Azure Application Insights pro konzolové aplikace | Microsoft Docs
 description: Sledování webových aplikací pro dostupnosti, výkonu a využití.
 services: application-insights
 documentationcenter: .net
-author: lmolkova
-manager: bfung
+author: mrbullwinkle
+manager: carmonm
 ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
 ms.workload: tbd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova; mbullwin
-ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c0bbb8b7c2f1e4a7609fde1f8c1487794d3d5897
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro rozhraní .NET Konzolová aplikace
 [Application Insights](app-insights-overview.md) umožňuje monitorování vaší webové aplikace pro dostupnosti, výkonu a využití.

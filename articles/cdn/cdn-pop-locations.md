@@ -1,6 +1,6 @@
 ---
 title: Azure CDN POP umístění podle oblasti | Microsoft Docs
-description: Tento článek obsahuje seznam umístění Azure CDN POP, seřazené podle oblasti Azure CDN společnosti Verizon a Azure CDN společnosti Akamai.
+description: Tento článek obsahuje seznam umístění Azure CDN POP, seřazené podle oblasti pro produkty Azure CDN.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -12,42 +12,41 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
-ms.author: mazha
-ms.openlocfilehash: a1c1408438ca2b74c63a77041849b9dc86f3b70b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.date: 05/07/2018
+ms.author: v-deasim
+ms.openlocfilehash: 8be750c309ed5a33dd658e5f1b41b0626e4f2357
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-cdn-pop-locations-by-region"></a>Azure CDN POP umístění podle oblasti
 > [!div class="op_single_selector"]
-> * [Umístění POP podle oblasti](cdn-pop-locations.md)
-> * [Umístění POP podle zkratka](cdn-pop-abbreviations.md)
+> * [Lokality POP podle oblastí](cdn-pop-locations.md)
+> * [Lokality POP podle zkratek](cdn-pop-abbreviations.md)
 > 
 
 
-Tento článek obsahuje seznam aktuálních point of presence (POP) umístění, seřazené podle oblasti pro **Azure CDN společnosti Verizon** a **Azure CDN společnosti Akamai**.
+V tomto článku jsou uvedené aktuální umístění (POP) bodů přítomnosti seřazené podle oblasti produktů Azure Content Delivery Network (CDN).
 
 > [!IMPORTANT]
 > Umístění POP města **Azure CDN společnosti Akamai** nejsou uvedeny jednotlivě.  
 > 
-> Vzhledem k tomu, že oba poskytovatelé odlišné způsoby vytváření své infrastruktury CDN, doporučujeme, abyste před použitím umístění POP rozhodnout, které produktů Azure CDN používat. Místo toho zvažte jejich funkcí a výkonu koncového uživatele. Testování výkonu obou zprostředkovatelům vybrat správné produktů Azure CDN pro vaše uživatele. 
+> Protože všech produktů Azure CDN má odlišné způsob vytváření infrastruktury jeho CDN, společnost Microsoft doporučuje před použitím umístění POP rozhodnout, které produktů Azure CDN používat. Místo toho zvažte její funkce a výkonu koncového uživatele. Testování výkonu s všech produktů Azure CDN vybrat správný produkt pro uživatele. 
 > 
 
-| Oblast | Verizon | Akamai |
-| --- | --- | --- |
-| Severní Amerika | Atlanta, GA<br />Boston, MA<br />Chicagu, IL<br />Dallas, TX<br />Ostravy, CO<br />Los Angeles, certifikační Autority<br />Miami, FL<br />New York, NY<br />Philadelphia, PA<br />Síť San Jose, certifikační Autority<br />Seattle, WA<br />Washington, DC<br />Puebla, Mexico<br />Querétaro, Mexico | Kanada<br />Mexiko<br />Spojené státy |
-| Jižní Amerika | Buenos Aires, Argentiny<br />Rio de Janeiro, Brazílie<br />Sao Paulo, Brazílie<br />Valparaíso, základě<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Quito, Ecuador<br />Lima, Peru | Brazílie<br />Peru |
-| Severní a východní Evropa | Kodaň, Dánsko<br />Helsinki, Finsko<br />Riga, Lotyšsko<br />Varšava, Polsko<br />Stockholm, Švédsko | Dánsko<br />Polsko<br />Švédsko<br /> |
-| Západní Evropa | Vídeň, Rakousko<br />Paříž, Francie<br />Frankfurt, Německo<br />Amsterodam, Nizozemsko<br />Londýn, Spojené království | Rakousko<br />Francie<br />Německo<br />Irsko<br />Nizozemsko<br />Švýcarsko<br />Spojené království |
-| Jižní Evropa | Milán, Itálie<br />Madrid, Španělsko | Itálie<br />Španělsko |
-| Afrika | Johannesburg, Jihoafrická republika | |
-| Střední východ | Maskat, Omán<br />Fujirah, Spojené arabské emiráty | Katar |
-| Asie | Hongkong<br />Bangalore, Indie<br />Čennaj, Indie<br />Dillí, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie<br />Batam, Indonésie<br />Jakarta, Indonésie<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Korejská Seoul, – jih<br />Kaohsiung, Taiwan | Hongkong<br />Indie<br />Indonésie<br />Japonsko<br />Malajsie<br />Filipíny<br />Singapur<br />Tchaj-wan<br />Thajsko<br />Vietnam |
-| Austrálie a Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Austrálie<br />Nový Zéland |
+| Oblast | Microsoft | Verizon | Akamai |
+| --- | --- | --- | --- |
+| Severní Amerika | Toronto, Kanada<br />Querétaro, Mexico<br />Síť SAN Juan, Portoriko<br />Ashburn, VA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicagu, IL, USA<br /> Dallas, TX, USA<br />Ostravy, CO, USA<br />Los Angeles, certifikační Autority, USA<br />OPOLE, FL, USA<br />New York, NY, USA<br />Phoenix, AZ, USA<br />Quincy, WA, USA<br />Síť SAN Antonio, TX, USA<br />Santa Clara, certifikační Autority, USA<br />| Puebla, Mexico<br />Querétaro, Mexico<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicagu, IL, USA<br />Dallas, TX, USA<br />Ostravy, CO, USA<br />Los Angeles, certifikační Autority, USA<br />OPOLE, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />Síť San Jose, certifikační Autority, USA<br />Seattle, WA, USA<br />Řadič domény, Washington, USA | Kanada<br />Mexiko<br />USA |
+| Jižní Amerika | Campinas, Brazílie<br />Rio de Janeiro, Brazílie<br />Santiago, základě | Buenos Aires, Argentiny<br />Rio de Janeiro, Brazílie<br />Sao Paulo, Brazílie<br />Valparaíso, základě<br />Barranquilla, Kolumbie<br />Medellin, Kolumbie<br />Rights reserved<br />Lima, Peru | Brazílie<br />Peru |
+| Evropa | Vídeň, Rakousko<br />Brusel, Belgie<br />Praha, Česká republika<br />Kodaň, Dánsko<br /> Helsinki, Finsko<br />Marseille, Francie<br />Paříž, Francie<br />Frankfurt, Německo<br />Atény, Řecko<br />Dublin, Irsko<br />Milán, Itálie<br />Amsterodam, Nizozemsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Curych, Švýcarsko<br />Durhamovy, Spojené království<br />Londýn, Spojené království<br />Manchester, Spojené království | Vídeň, Rakousko<br />Kodaň, Dánsko<br />Helsinki, Finsko<br />Paříž, Francie<br />Frankfurt, Německo<br />Milán, Itálie<br />Riga, Lotyšsko<br />Amsterodam, Nizozemsko<br />Varšava, Polsko<br />Madrid, Španělsko<br />Stockholm, Švédsko<br />Londýn, Spojené království | Rakousko<br />Dánsko<br />Francie<br />Německo<br />Irsko<br />Itálie<br />Nizozemsko<br />Polsko<br />Španělsko<br />Švédsko<br />Švýcarsko<br />Spojené království |
+| Afrika | Kapské město, Jihoafrická republika<br />Johannesburg, Jihoafrická republika | Johannesburg, Jihoafrická republika | |
+| Střední východ | | Maskat, Omán<br />Fujirah, Spojené arabské emiráty | Katar |
+| Indie | Čennaj, Indie<br />Bombaj, Indie | Bangalore, Indie<br />Čennaj, Indie<br />Dillí, Indie<br />Bombaj, Indie<br />Nové Dillí, Indie<br /> | Indie |
+| Asie | Hongkong<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Busan, Korejská<br />Kuala Lumpur, Malajsie<br />Manila, Filipíny<br />Singapur<br />Korejská Seoul, – jih<br />Taipei, Tchaj-wan<br />Bangkok, Thajsko | Hongkong<br />Batam, Indonésie<br />Jakarta, Indonésie<br />Ósaka, Japonsko<br />Tokio, Japonsko<br />Singapur<br />Korejská Seoul, – jih<br />Kaohsiung, Tchaj-wan | Hongkong<br />Indonésie<br />Japonsko<br />Malajsie<br />Filipíny<br />Singapur<br />Tchaj-wan<br />Thajsko<br />Vietnam |
+| Austrálie a Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Melbourne, Austrálie<br />Sydney, Austrálie<br />Auckland, Nový Zéland | Austrálie<br />Nový Zéland |
 
 
-## <a name="see-also"></a>Viz také
-* [Chcete-li získat nejnovější IP adresy pro vytvoření seznamu povolených Azure API uzly okraj CDN](https://docs.microsoft.com/rest/api/cdn/edgenodes)
+## <a name="next-steps"></a>Další postup
+* Chcete-li získat nejnovější IP adresy pro vytvoření seznamu povolených, přečtěte si téma [rozhraní API služby Azure CDN Edge uzly](https://docs.microsoft.com/rest/api/cdn/edgenodes).
 

@@ -1,24 +1,24 @@
 ---
-title: "Směrování a značky výrazy"
-description: "Toto téma vysvětluje směrování a značky výrazy pro Azure notification hubs."
+title: Směrování a značky výrazy
+description: Toto téma vysvětluje směrování a značky výrazy pro Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-and-tag-expressions"></a>Výrazy směrování a značka
 ## <a name="overview"></a>Přehled
@@ -33,7 +33,7 @@ Back-end aplikace můžete zvolit registrace k cíli s konkrétní oznámení n�
 3. **Značka výraz**: všechny registrace, jejichž sadu značky odpovídají zadaným výrazem přijímat oznámení.
 
 ## <a name="tags"></a>Značky
-Značku může být libovolný řetězec, až 120 znaků, který obsahuje alfanumerické znaky a následující jiných než alfanumerických znaků: '_', ' @', '#', '. ',':', '-'. Následující příklad ukazuje aplikace, ze kterého můžete přijímat oznámení informačního nápisu o konkrétní Hudba skupinách. V tomto scénáři popisek registrace pomocí značek, které představují různé pruhy, stejně jako na následujícím obrázku je jednoduchý způsob, jak oznámení trasy.
+Značku může být libovolný řetězec, až 120 znaků, který obsahuje alfanumerické znaky a následující jiných než alfanumerických znaků: '_', ' @', '#', '. ',':', '-'. Následující příklad ukazuje aplikace, ze kterého můžete přijímat oznámení informačního nápisu o konkrétní Hudba skupinách. V tomto scénáři je jednoduchý způsob, jak oznámení trasy popisek registrace pomocí značek, které představují různé pruhy, stejně jako na následujícím obrázku:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -69,11 +69,11 @@ Když může být kódován více obavy ve značkách (například "band_Beatles
 Úplné podrobný kurz o tom, jak používat značky pro odeslání do zájmových skupin, najdete v části [novinkách](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
 
 ## <a name="using-tags-to-target-users"></a>Pomocí značek pro cílové uživatele
-Jiný způsob, jak používat značky je identifikace všechna zařízení z určitého uživatele. Registrace může být označené značku, která obsahuje id uživatele, stejně jako na následujícím obrázku:
+Jiný způsob, jak používat značky je identifikace všechna zařízení z určitého uživatele. Registrace může být označené značku, která obsahuje ID uživatele, stejně jako na následujícím obrázku:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-Na tomto obrázku dosáhne uid:Alice zpráva označí všechny registrace s příznakem uid:Alice; proto všechna zařízení od Alice.
+Na tomto obrázku, označí zprávu uid: Alice dosáhne všechny registrace s příznakem uid:Alice; proto všechna zařízení od Alice.
 
 ## <a name="tag-expressions"></a>Značka výrazy
 Existují případy, ve kterých má oznámení cílit sadu registrací identifikovanou není jedinou značku, ale logický výraz na značky.

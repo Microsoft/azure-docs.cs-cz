@@ -1,12 +1,12 @@
 ---
-title: "Kontrolní seznam zabezpečení Azure databáze | Microsoft Docs"
-description: "Tento článek obsahuje sadu kontrolní seznam pro zabezpečení databáze Azure."
+title: Kontrolní seznam zabezpečení Azure databáze | Microsoft Docs
+description: Tento článek obsahuje sadu kontrolní seznam pro zabezpečení databáze Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 37523506369ece144183dba76feb8b23b6c1acb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-checklist"></a>Kontrolní seznam zabezpečení Azure databáze
 
@@ -32,7 +32,7 @@ Mezi ně patří:
 -   Zabezpečené připojení k databázi pomocí zabezpečené připojovací řetězce
 -   Použijte správu přístupu
 -   Šifrování dat
--   Auditování databáze SQL
+-   Auditování služby SQL Database
 -   Detekce hrozeb databáze SQL
 
 ## <a name="introduction"></a>Úvod
@@ -57,8 +57,8 @@ Doporučujeme, abyste si přečetli [osvědčené postupy zabezpečení databáz
 ## <a name="conclusion"></a>Závěr
 Databáze Azure je platforma robustní databáze, s celou řadu funkcí zabezpečení, které splňují mnoho organizace i regulačních požadavků. Data můžete snadno chránit tak řízení fyzický přístup k datům a pomocí různých možností zabezpečení dat na soubor-, sloupec- nebo nízkoúrovňové transparentní šifrování dat, šifrování na úrovni buněk nebo zabezpečení na úrovni řádků. Vždy šifrovaný také umožní operace proti šifrovaná data, zjednodušuje proces aktualizace aplikace. Přístup k auditování protokoly aktivity databáze SQL se pak poskytuje informace, které potřebujete, abyste mohli vědět, jak a kdy je přístup k datům.
 
-## <a name="next-steps"></a>Další kroky
-Můžete zvýšit ochranu databáze před uživateli se zlými úmysly a neoprávněným přístupem pomocí několika jednoduchých kroků. V tomto kurzu jste postup:
+## <a name="next-steps"></a>Další postup
+Ochranu databáze před uživateli se zlými úmysly nebo neoprávněným přístupem můžete zlepšit v několika jednoduchých krocích. V tomto kurzu se naučíte:
 
 - Nastavit [pravidla brány firewall](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) vašeho serveru nebo databáze.
 - Ochrana dat s [šifrování](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).

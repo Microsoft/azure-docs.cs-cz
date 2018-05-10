@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff059b27dc2bdcbfa8cecad1e46e9c2f268ef8c7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Kurz: Azure Active Directory integrace s Adobe přihlášení
 
@@ -103,7 +103,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. Na **Adobe přihlašovací domény a adresy URL** část, proveďte následující kroky:
@@ -115,8 +115,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Adobe přihlašovací klienta](https://helpx.adobe.com/in/contact/support.html) k získání těchto hodnot. 
- 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Adobe přihlašovací klienta](https://helpx.adobe.com/in/contact/support.html) k získání těchto hodnot.
+
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -127,15 +127,34 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 6. Na **Adobe přihlašovací konfigurace** klikněte na tlačítko **nakonfigurovat přihlašovací Adobe** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. V okně prohlížeče jiný web Přihlaste se na váš web společnosti Adobe přihlášení jako správce.
+7. Před konfigurací, budete muset kontaktovat [tým podpory Adobe přihlašovací klienta](https://helpx.adobe.com/in/contact/support.html) do seznamu povolených IP adres vaši doménu v Adobe přihlášení. Použijte následujících kroků pro přidání domény:
 
-8. V nabídce SAML, klikněte na tlačítko **nastavení účtu**a potom klikněte na **SAML nastavení**.
+    a. [Tým podpory přihlašovací klienta Adobe](https://helpx.adobe.com/in/contact/support.html) vám pošle náhodně generované token. Pro vaši doménu, bude token jako: **adobe-sign ověření = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
+
+    b. Je nutné publikovat tokenu ověření v záznamu DNS text a upozornit [tým podpory Adobe přihlašovací klienta](https://helpx.adobe.com/in/contact/support.html).
+    
+    > [!NOTE]
+    > Můžete očekávat, může to trvat několik dnů nebo možná nebude. Všimněte si, že zpoždění šíření DNS znamená, že hodnota publikovaná ve službě DNS, nemusí být zobrazeny pro hodinu nebo déle. Očekáváme, že váš správce IT by měl být seznámeni o tom, jak publikovat tento token v záznamu DNS text.
+    
+    c. Jakmile můžete upozornit [tým podpory Adobe přihlašovací klienta](https://helpx.adobe.com/in/contact/support.html) prostřednictvím lístku podpory po token je publikována, budou ověřit doménu a přidejte ke svému účtu.
+    
+    d. Obecné kroky, které můžete použít k publikování token v záznamu DNS-
+
+    * Přihlaste se k účtu domény
+    * Najděte stránku pro aktualizaci záznamu DNS. Tato stránka může být volána správu DNS, Správa název serveru nebo Upřesnit nastavení.
+    * Vyhledání záznamů TXT pro vaši doménu.
+    * Přidejte záznam TXT s hodnotou úplné tokenu poskytl Adobe
+    * Uložte provedené změny.
+
+8. V okně prohlížeče jiný web Přihlaste se na váš web společnosti Adobe přihlášení jako správce.
+
+9. V nabídce SAML, klikněte na tlačítko **nastavení účtu**a potom klikněte na **SAML nastavení**.
    
     ![Účet](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "účtu")
 
-9. V **SAML nastavení** část, proveďte následující kroky:
+10. V **SAML nastavení** část, proveďte následující kroky:
   
     ![Nastavení SAML](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "nastavení SAML")
    
@@ -265,4 +284,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-

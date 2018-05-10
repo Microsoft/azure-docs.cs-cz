@@ -3,7 +3,7 @@ title: Azure platebních zpracování plán, podle kterého - CHD požadavky
 description: PCI DSS požadavek 3
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 9736f7c8-c632-4b86-8b8a-6e4f45c1a7aa
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 3bbed692bfccaa2a3296ba4697c66e9069b6e914
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 7ff8a412b16025afe2640b73b51d9b2a2fdca354
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>CHD požadavky pro kompatibilní se standardem PCI DSS prostředí
 ## <a name="pci-dss-requirement-3"></a>PCI DSS požadavek 3

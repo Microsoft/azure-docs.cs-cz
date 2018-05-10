@@ -18,7 +18,7 @@
 ## Automatizace
 ### [Přehled Azure Automation](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
-## Zálohování
+## Backup
 ### [Přehled služby Backup](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Přehled služby Site Recovery](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -32,8 +32,8 @@
 ### [Webové vyhodnocení směrného plánu](oms-security-web-baseline-assessment.md)
 
 ## Použití řešení
-### [Řešení pro správu](operations-management-suite-solutions.md)
-### [Cílová řešení](operations-management-suite-solution-targeting.md)
+### [Řešení pro správu](../monitoring/monitoring-solutions.md)
+### [Cílová řešení](../monitoring/monitoring-solution-targeting.md)
 ### Přehledy a analýza
 #### [Posouzení AD](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Stav replikace AD](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -46,10 +46,10 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Analýza služby Service Fabric](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Mapa služeb
-##### [Názorný postup](operations-management-suite-walkthrough-servicemap.md)
-##### [Použití](operations-management-suite-service-map.md)
-##### [Konfigurace](operations-management-suite-service-map-configure.md)
-##### [Integrace s nástrojem Operations Manager](operations-management-suite-service-map-scom.md)
+##### [Názorný postup](../monitoring/monitoring-walkthrough-servicemap.md)
+##### [Použití](../monitoring/monitoring-service-map.md)
+##### [Konfigurace](../monitoring/monitoring-service-map-configure.md)
+##### [Integrace s nástrojem Operations Manager](../monitoring/monitoring-service-map-scom.md)
 #### [Posouzení SQL](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Upgrade Analytics](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -62,12 +62,12 @@
 #### [Posouzení antimalwaru](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Vytváření řešení
-### [Návrh a sestavení](operations-management-suite-solutions-creating.md)
-### [Soubor řešení](operations-management-suite-solutions-solution-file.md)
-### [Prostředky služby Automation](operations-management-suite-solutions-resources-automation.md)
-### [Prohledávání protokolu a upozornění](operations-management-suite-solutions-resources-searches-alerts.md)
-### [Zobrazení](operations-management-suite-solutions-resources-views.md)
-### [Osvědčené postupy](operations-management-suite-solutions-best-practices.md)
+### [Návrh a sestavení](../monitoring/monitoring-solutions-creating.md)
+### [Soubor řešení](../monitoring/monitoring-solutions-solution-file.md)
+### [Prostředky služby Automation](../monitoring/monitoring-solutions-resources-automation.md)
+### [Prohledávání protokolu a upozornění](../monitoring/monitoring-solutions-resources-searches-alerts.md)
+### [Zobrazení](../monitoring/monitoring-solutions-resources-views.md)
+### [Osvědčené postupy](../monitoring/monitoring-solutions-best-practices.md)
 
 ## Scénáře správy
 ### [Shromažďování analytických dat z runbooků](operations-management-suite-runbook-datacollect.md)

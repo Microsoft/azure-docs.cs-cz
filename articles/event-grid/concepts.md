@@ -6,29 +6,31 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/24/2018
 ms.author: babanisa
-ms.openlocfilehash: e5499fca98118de6ef8e08c8ce278b90520425e6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8ddde98b448f4d6d6f24a2ee47acf9240593622c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v mřížce Azure událostí
 
-Hlavní koncepty v mřížce událostí Azure jsou:
+Tento článek popisuje hlavní koncepty v mřížce událostí Azure.
 
 ## <a name="events"></a>Události
 
-Událost je nejmenší množství informací, která plně popisuje něco, kterým došlo v systému. Každý událost má běžné informace, jako jsou: Zdroj události, čas události trvalo místní a jedinečný identifikátor. Každé události má také konkrétní informace, které jsou pouze relevantní pro konkrétní typ události. Například událost o nový soubor vytváří ve službě Azure Storage obsahuje podrobnosti o souboru, jako `lastTimeModified` hodnotu. Nebo událost o virtuální počítač restartování obsahuje název virtuálního počítače a důvody, proč restartování. Každá událost je omezená na 64 KB dat.
+Událost je nejmenší množství informací, která plně popisuje něco, kterým došlo v systému. Každý událost má běžné informace, jako jsou: Zdroj události, čas události trvalo místní a jedinečný identifikátor. Každé události má také konkrétní informace, které jsou pouze relevantní pro konkrétní typ události. Například událost o nový soubor vytváří ve službě Azure Storage obsahuje podrobnosti o souboru, například `lastTimeModified` hodnotu. Nebo událost Event Hubs má adresu URL souboru zachycení. Každá událost je omezená na 64 KB dat.
 
 ## <a name="event-sourcespublishers"></a>Zdroje nebo zdroje událostí
 
 Zdroje událostí je, kde se stane události. Zdroj události pro vytvoření události objektu blob je například Azure Storage. Prostředky infrastruktury Azure virtuálního počítače je zdroj události pro události se virtuální počítač. Zdroje událostí jsou zodpovědní za publikování událostí do mřížky událostí.
 
+Informace o implementaci některé z podporovaných zdrojů mřížky událostí najdete v tématu [zdroje událostí v mřížce událostí Azure](event-sources.md).
+
 ## <a name="topics"></a>Témata
 
-Vydavatelé zařadit do témata události. Téma obsahuje koncový bod kde vydavatele odesílá události. Reagovat na určitých typech událostí, Odběratelé, kteří rozhodněte, které témata týkající se přihlásit k odběru. Témata týkající se také nabízí schématu událostí, takže Odběratelé, kteří můžete zjistit, jak využívat události správně.
+Vydavatelé zařadit do témata události. Téma mřížky událostí obsahuje koncový bod kde vydavatele odesílá události. Reagovat na určitých typech událostí, Odběratelé, kteří rozhodněte, které témata týkající se přihlásit k odběru. Témata také poskytují schématu událostí tak, aby odběratelé, kteří můžou zjistit, jak využívat události správně.
 
 Témata týkající se systému jsou předdefinované témata poskytovaném službami Azure. Vlastní témata jsou aplikace a témata třetích stran.
 
@@ -42,17 +44,19 @@ Předplatné dá pokyn událostí mřížky, na které události se na téma má
 
 Z hlediska mřížce událost obslužné rutiny události je na místě, kde událost je odeslána. Obslužná rutina trvá některé další akce ke zpracování události. Událost mřížky podporuje více typů odběratele. V závislosti na typu odběratele následuje událostí mřížky různé mechanismy pro zaručit doručení události. Pro obslužné rutiny událostí webhooku protokolu HTTP, je událost opakovat, dokud obslužná rutina vrátí stavový kód `200 – OK`. Pro fronty Azure Storage jsou události opakovat, dokud služba fronty je schopna úspěšně zpracovat nabízené zprávy do fronty.
 
+Informace o implementaci některé z podporovaných obslužných rutin událostí mřížky najdete v tématu [obslužné rutiny událostí v mřížce událostí Azure](event-handlers.md).
+
 ## <a name="filters"></a>Filtry
 
-Když se přihlásíte k odběru téma, můžete filtrovat události, které se odesílají do koncového bodu. Můžete filtrovat podle typu události nebo vzor subjektu. Další informace najdete v tématu [schématu odběru událostí mřížky](subscription-creation-schema.md).
+Když se přihlásíte k odběru téma události mřížky, můžete filtrovat události, které se odesílají do koncového bodu. Můžete filtrovat podle typu události nebo vzor subjektu. Další informace najdete v tématu [schématu odběru událostí mřížky](subscription-creation-schema.md).
 
 ## <a name="security"></a>Zabezpečení
 
-Událost mřížky zajišťuje zabezpečení registrace k tématům a publikování témata. Při přihlášení k odběru, musí mít odpovídající oprávnění na prostředek nebo téma. Při publikování, musíte mít tokenu SAS nebo ověření pomocí klíče pro téma. Další informace najdete v tématu [mřížky událostí zabezpečení a ověřování](security-authentication.md).
+Událost mřížky zajišťuje zabezpečení registrace k tématům a publikování témata. Při přihlášení k odběru, musí mít odpovídající oprávnění k tématu mřížky prostředku nebo událostí. Při publikování, musíte mít tokenu SAS nebo ověření pomocí klíče pro téma. Další informace najdete v tématu [mřížky událostí zabezpečení a ověřování](security-authentication.md).
 
 ## <a name="failed-delivery"></a>Neúspěšné doručení
 
-Když mřížky událostí nelze potvrdit, že událost byla přijata bodem odběratele, redelivers události. Další informace najdete v tématu [doručení zpráv událostí mřížky a zkuste to znovu](delivery-and-retry.md).
+Pokud události mřížky nelze potvrdit, že událost byla přijata bodem odběratele, redelivers události. Další informace najdete v tématu [doručení zpráv událostí mřížky a zkuste to znovu](delivery-and-retry.md).
 
 ## <a name="next-steps"></a>Další postup
 

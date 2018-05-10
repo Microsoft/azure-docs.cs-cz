@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Skupiny počítačů v analýzy protokolů protokolu hledání
 
@@ -56,14 +56,6 @@ Použijte následující postup k vytvoření skupiny počítačů z protokolu h
 2. Otevřete **hledání protokolů** a pak klikněte na **uložená hledání** v horní části obrazovky.
 3. Klikněte na tlačítko **přidat** a zadejte hodnoty pro každou vlastnost pro skupinu počítačů.
 4. Vyberte **uložit tento dotaz jako skupinu počítačů** a klikněte na tlačítko **OK**.
-
-
-Použijte následující postup k vytvoření skupiny počítačů z protokolu hledání na portálu OMS.
-
-1. Otevřete **hledání protokolů** a vytvořte hledání protokolů pro skupinu počítačů.  
-2. Klikněte **Uložit** tlačítka v horní části obrazovky.
-3. Vyberte **Ano** k **uložit tento dotaz jako skupinu počítačů**.
-5. Zadejte hodnoty pro každou vlastnost pro skupinu počítačů. 
 
 
 
@@ -136,7 +128,7 @@ V pracovním prostoru analýzy protokolů pro každý členství ve skupině po�
 | Počítač |Název členského počítače. |
 | Skupina |Název skupiny. |
 | GroupFullName |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
-| GroupSource |Zdroj této skupině se shromážděných z. <br><br>ActiveDirectory<br>SLUŽBY WSUS<br>WSUSClientTargeting |
+| GroupSource |Zdroj této skupině se shromážděných z. <br><br>Active Directory<br>SLUŽBY WSUS<br>WSUSClientTargeting |
 | GroupSourceName |Název zdroje, který skupině nebyla shromážděna z.  U služby Active Directory je to název domény. |
 | ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro jiné agenty jde AOI -\<ID pracovního prostoru\> |
 | TimeGenerated |Datum a čas vytvoření nebo aktualizovat skupiny počítačů. |

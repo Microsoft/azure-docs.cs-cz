@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: db16a4ba2177e92fa4500af0969c44471004ba73
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručení zpráv událostí mřížky a zkuste to znovu 
 
@@ -35,7 +35,7 @@ Následující kódy odpovědi HTTP znamenat, že událost byla doručena úspě
 
 ### <a name="failure-codes"></a>Selhání kódy
 
-Následující kódy odpovědi HTTP znamenat, že události doručení pokus se nezdařil. Mřížky událostí se pokusí znovu odeslat událost. 
+Následující kódy odpovědi HTTP znamenat, že události doručení pokus se nezdařil. 
 
 - 400 – Chybný požadavek
 - 401 unauthorized
@@ -46,9 +46,9 @@ Následující kódy odpovědi HTTP znamenat, že události doručení pokus se 
 - 503 – Nedostupná služba
 - 504 – Časový limit brány
 
-Další kód odpovědi nebo nedostatek odpověď znamená chybu. Událost mřížky opakuje doručení. 
+Pokud události mřížky obdrží chybu, která označuje, že koncový bod není k dispozici, pokusí se znovu odeslat událost. 
 
-## <a name="retry-intervals"></a>Opakujte intervaly
+## <a name="retry-intervals-and-duration"></a>Opakovat intervalech a doba trvání
 
 Událost mřížky používá zásady opakování exponenciálního omezení rychlosti pro odeslání události. Pokud vaše webhooku neodpovídá nebo vrací kód chyby, opakování mřížky události doručení podle plánu, následující:
 
@@ -62,9 +62,7 @@ Událost mřížky používá zásady opakování exponenciálního omezení ryc
 
 Událost mřížky přidá malé náhodné přeskupování všechny intervalech zkuste to znovu. Po jedné hodině události doručení proběhne jednou za hodinu.
 
-## <a name="retry-duration"></a>Opakujte doba trvání
-
-Azure mřížky událostí vyprší všechny události, které nejsou doručeny do 24 hodin.
+Ve výchozím nastavení události mřížky vyprší platnost všechny události, které nejsou doručeny do 24 hodin.
 
 ## <a name="next-steps"></a>Další postup
 

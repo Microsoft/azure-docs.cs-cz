@@ -13,12 +13,14 @@
 
 ## Správa služby Data Lake Analytics
 ### [Azure Portal](data-lake-analytics-manage-use-portal.md)
-### [Azure CLI](data-lake-analytics-manage-use-cli.md)
-### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
-### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
-### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
-### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### Příkazový řádek
+#### [Azure CLI](data-lake-analytics-manage-use-cli.md)
+#### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
+### Sady SDK
+#### [.NET](data-lake-analytics-manage-use-dotnet-sdk.md)
+#### [Python](data-lake-analytics-manage-use-python-sdk.md)
+#### [Java](data-lake-analytics-manage-use-java-sdk.md)
+#### [Node.js](data-lake-analytics-manage-use-nodejs.md)
 ### [Zásady](data-lake-analytics-policies.md)
 ### [Přístup k diagnostickým protokolům](data-lake-analytics-diagnostic-logs.md)
 ### [Úprava omezení kvót](data-lake-analytics-quota-limits.md)
@@ -36,6 +38,7 @@
 #### [Průvodce programovatelností](data-lake-analytics-u-sql-programmability-guide.md)
 
 ### Visual Studio
+#### [Instalace](data-lake-analytics-data-lake-tools-install.md)
 #### [Procházení a zobrazování úloh](data-lake-analytics-data-lake-tools-view-jobs.md)
 #### [Ladění vlastního kódu v C#](data-lake-analytics-debug-u-sql-jobs.md)
 #### [Řešení potíží s opakovanými úlohami](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

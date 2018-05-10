@@ -1,12 +1,12 @@
 ---
-title: "Dílčí orchestrations pro odolná funkce – Azure"
-description: "Způsob volání orchestrations z orchestrations v rozšíření trvanlivý funkce pro Azure Functions."
+title: Dílčí orchestrations pro odolná funkce – Azure
+description: Způsob volání orchestrations z orchestrations v rozšíření trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 5184bef81d1cd6ca7b41c1634def24031a4a5942
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 7545a371749ed9af88f08af23cce3a513f494374
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Dílčí orchestrations trvanlivý funkcí (Azure Functions)
 
@@ -28,7 +28,10 @@ Funkce produktu orchestrator můžete volat jinou funkci orchestrator voláním 
 
 Funkce dílčí orchestrator chovají stejně jako funkce aktivitu z hlediska volajícího. Se můžete vrátit hodnotu, způsobí výjimku a může být očekáváno orchestrator funkcí nadřazené.
 
-## <a name="example"></a>Příklad
+> [!NOTE]
+> `CallSubOrchestratorAsync` a `CallSubOrchestratorWithRetryAsync` metody ještě nejsou k dispozici v jazyce JavaScript.
+
+## <a name="example"></a>Příklad:
 
 Následující příklad ilustruje scénářem IoT ("Internet věcí") tam, kde existuje více zařízení, které musí být zřízená. Neexistuje konkrétní orchestration, který je potřeba pro každé zařízení, které může vypadat přibližně takto:
 
@@ -76,7 +79,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jaké úlohu centra jsou a způsob jejich konfigurace](durable-functions-task-hubs.md)

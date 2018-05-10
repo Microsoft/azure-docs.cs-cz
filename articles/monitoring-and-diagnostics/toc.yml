@@ -65,8 +65,12 @@
           href: insights-alerts-command-line-interface.md
         - name: Konfigurace klasických upozornění pomocí Azure PowerShellu
           href: insights-alerts-powershell.md
+        - name: Nastavení klasického upozornění metrik pro volání webhooku
+          href: insights-webhooks-alerts.md
         - name: Akce webhooku pro výstrahy protokolu
           href: monitor-alerts-unified-log-webhook.md
+        - name: Vytvoření upozornění na protokol pomocí šablony Resource Manageru
+          href: monitor-alerts-unified-log-template.md
         - name: Vytvoření novějšího upozornění na metriku pomocí šablony Resource Manageru
           href: monitoring-create-metric-alerts-with-templates.md
         - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
@@ -85,6 +89,8 @@
           href: monitoring-alerts-rate-limiting.md
         - name: Vytvoření skupiny akcí s využitím Resource Manageru
           href: monitoring-create-action-group-with-resource-manager-template.md
+        - name: Implementace akce aplikace logiky
+          href: monitoring-action-groups-logic-app.md
     - name: Použití diagnostických protokolů
       items:
         - name: Archiv
@@ -125,6 +131,8 @@
           href: insights-powershell-samples.md
     - name: Použití rozšíření diagnostiky Azure
       items:
+        - name: Odeslání do Azure Storage
+          href: azure-diagnostics-storage.md
         - name: Odeslání do Application Insights
           href: azure-diagnostics-configure-application-insights.md
         - name: Odeslání do Event Hubs
@@ -175,6 +183,13 @@
       href: monitoring-activity-log-schema.md
     - name: Schéma rozšíření Azure Diagnostics
       href: azure-diagnostics-schema.md
+      items:
+        - name: 1.3 a novější
+          href: azure-diagnostics-schema-1dot3-and-later.md
+        - name: 1.2
+          href: azure-diagnostics-schema-1dot2.md
+        - name: 1
+          href: azure-diagnostics-schema-1dot0.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

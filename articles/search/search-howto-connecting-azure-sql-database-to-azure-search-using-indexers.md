@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa24c3197af28101b2f3a0acda6d0ae81b9e96d5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5545b2e40777496ab8c808a8c2692b346d3509c5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
 
@@ -50,7 +50,7 @@ V závislosti na několika různými faktory týkající se dat používání Az
 |----------|---------|
 | Data pocházejí z jedné tabulky nebo zobrazení | Pokud data je rozmístěny na několika tabulkám, můžete vytvořit jediné zobrazení data. Ale pokud používáte zobrazení, nebudete moci používat SQL Server integrovaného detekce změn aktualizovat index s přírůstkové změny položku. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
 | Datové typy jsou kompatibilní | Většina, ale ne všechny typy SQL jsou podporovány v indexu Azure Search. Seznam najdete v tématu [mapování datové typy](#TypeMapping). |
-| Synchronizace dat v reálném čase není vyžadováno | Indexer znovu mohou indexu tabulku maximálně každých pět minut. Pokud potřebujete projeví v indexu během několika sekund nebo minut jeden data často mění a změny, doporučujeme používat [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [.NET SDK](search-import-data-dotnet.md) tak, aby nabízel aktualizované řádky přímo. |
+| Synchronizace dat v reálném čase není vyžadováno | Indexer můžete přeindexování tabulku maximálně každých pět minut. Pokud potřebujete projeví v indexu během několika sekund nebo minut jeden data často mění a změny, doporučujeme používat [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [.NET SDK](search-import-data-dotnet.md) tak, aby nabízel aktualizované řádky přímo. |
 | Přírůstkové indexování je možné | Pokud máte velké sady dat a plán spuštění indexeru podle plánu, musí být schopni efektivně identifikovat nové, změněné nebo odstraněné řádky Azure Search. Bez přírůstkové indexování je povoleno pouze pokud jste indexu na vyžádání (ne podle plánu), nebo indexování méně než 100 000 řádků. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
 
 > [!NOTE] 
@@ -178,7 +178,7 @@ Můžete přidat, změnit nebo odstranit plán pro existujícího indexeru pomoc
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Zachycení nové, změny a odstranění řádků
 
-Služba Azure Search používá **přírůstkové indexování** -li se vyhnout opětovné indexování celou tabulku nebo zobrazení pokaždé, když spustí indexer. Vyhledávání systému Azure nabízí že dva změnit zásady detekce pro podporu přírůstkové indexování. 
+Služba Azure Search používá **přírůstkové indexování** -li se vyhnout přeindexování celou tabulku nebo zobrazení pokaždé, když spustí indexer. Vyhledávání systému Azure nabízí že dva změnit zásady detekce pro podporu přírůstkové indexování. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Zásady sledování změn s integrací SQL
 Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), doporučujeme používat **SQL integrované změnit způsob sledování**. Toto je zásada maximální efektivitou. Kromě toho umožňuje Azure Search k identifikaci odstraněných řádků bez nutnosti do tabulky přidat sloupec explicitní "obnovitelného odstranění".

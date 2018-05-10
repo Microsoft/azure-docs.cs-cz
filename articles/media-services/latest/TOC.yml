@@ -1,0 +1,73 @@
+- name: Dokumentace ke službě Media Services
+  href: ./index.yml
+- name: Přehled
+  items:
+    - name: Informace o Media Services
+      href: media-services-overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Streamování videosouborů s využitím .NET
+      href: stream-files-dotnet-quickstart.md
+- name: Kurzy
+  items:
+    - name: 'Nahrávání, kódování a streamování'
+      href: stream-files-tutorial-with-api.md
+    - name: Analýza videa
+      href: analyze-videos-tutorial-with-api.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódu Azure
+      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+    - name: Azure CLI
+      href: cli-samples.md
+- name: Koncepty
+  items:
+    - name: Prostředky
+      href: assets-concept.md
+    - name: Adaptivní žebříček přenosových rychlostí Autogen
+      href: autogen-bitrate-ladder.md
+    - name: Inteligentní funkce médií
+      href: intelligence-concept.md
+    - name: Účty úložiště
+      href: storage-account-concept.md
+    - name: Transformace a úlohy
+      href: transform-concept.md
+    - name: Reakce na události
+      href: reacting-to-media-services-events.md
+- name: Návody
+  items:
+    - name: Vytvoření účtu – rozhraní příkazového řádku
+      href: create-account-cli-how-to.md
+    - name: Přístup k rozhraním API – rozhraní příkazového řádku
+      href: access-api-cli-how-to.md
+    - name: Události stavu úloh – rozhraní příkazového řádku
+      href: job-state-events-cli-how-to.md
+    - name: Nahrání obsahu – .NET
+      items:
+        - name: Z HTTP(s)
+          href: job-input-from-http-how-to.md
+        - name: Z místního souboru
+          href: job-input-from-local-file-how-to.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI 2.0
+      href: 'https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest'
+    - name: REST
+      href: 'https://go.microsoft.com/fwlink/p/?linkid=873030'
+    - name: Schémata událostí
+      href: media-services-event-schemas.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md
+    - name: Kvóty a omezení
+      href: limits-quotas-constraints.md

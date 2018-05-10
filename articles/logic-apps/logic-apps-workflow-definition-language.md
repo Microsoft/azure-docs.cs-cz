@@ -3,7 +3,7 @@ title: Pracovní postup schema Definition Language - Azure Logic Apps | Microsof
 description: Zápis definice vlastní pracovní postup pro Azure Logic Apps s jazykem definice pracovního postupu
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -12,13 +12,13 @@ ms.workload: logic-apps
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: reference
-ms.date: 04/25/2018
+ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 7c253fd83bcc1f1dde93ac6ef0c26da1fa1a9a4b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definice pracovního postupu aplikace logiky se schématem jazyk definic workflowů funkce
 
@@ -54,7 +54,7 @@ Zde je podrobný strukturu pro definici pracovního postupu:
 
 ## <a name="parameters"></a>Parametry
 
-V `parameters` část, definovat všechny parametry, které přijímají vstupy pro pracovní postup za běhu. Než tyto parametry můžete použít v dalších částech pracovního postupu, ujistěte se, že deklarujete všech parametrů v těchto oddílech.
+V `parameters` část, definovat všechny parametry pracovního postupu, které vaše aplikace logiky používá v nasazení pro přijetí vstupy. Deklarace parametrů a hodnoty parametrů jsou požadovány v nasazení. Než tyto parametry můžete použít v dalších částech pracovního postupu, ujistěte se, že deklarujete všech parametrů v těchto oddílech. 
 
 Tady je obecnou strukturu pro definici parametru:  
 
@@ -80,7 +80,7 @@ Tady je obecnou strukturu pro definici parametru:
 | allowedValues | Ne | Stejné jako `type` | Pole s hodnotami, které může přijmout parametr |  
 | zprostředkovatele identity | Ne | Objekt JSON | Žádné další parametr podrobnosti, například název nebo popis čitelný pro vaše aplikace logiky, nebo data návrhu používá Visual Studio nebo jiných nástrojů |  
 ||||
-  
+
 ## <a name="triggers-and-actions"></a>Aktivační události a akce  
 
 V definici pracovního postupu `triggers` a `actions` části definovat volání, které dojít během provádění pracovní postup. Syntaxe a další informace o těchto částech najdete v tématu [pracovního postupu triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
@@ -88,6 +88,9 @@ V definici pracovního postupu `triggers` a `actions` části definovat volání
 ## <a name="outputs"></a>Výstupy 
 
 V `outputs` část, definovat data, která pracovní postup může vrátit po dokončení spuštění. Například sledovat konkrétní stav nebo hodnota z každé spuštění, zadejte, že tato data vrátí výstup pracovního postupu. 
+
+> [!NOTE]
+> Když reagovat na příchozí požadavky z rozhraní API služby REST, nepoužívejte `outputs`. Místo toho použijte `Response` typ akce. Další informace najdete v tématu [pracovního postupu triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 Tady je obecnou strukturu pro definici výstup: 
 
@@ -108,9 +111,6 @@ Tady je obecnou strukturu pro definici výstup:
 ||||| 
 
 Chcete-li získat výstup z pracovního postupu spustit, zkontrolujte historie spouštění aplikace logiky a podrobnosti na portálu Azure nebo použijte [pracovního postupu REST API](https://docs.microsoft.com/rest/api/logic/workflows). Můžete také předat výstup do externími systémy, například PowerBI tak, že můžete vytvořit řídicí panely. 
-
-> [!NOTE]
-> Když reagovat na příchozí požadavky z rozhraní API služby REST, nepoužívejte `outputs`. Místo toho použijte `Response` typ akce. Další informace najdete v tématu [pracovního postupu triggery a akce](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
 <a name="expressions"></a>
 
@@ -217,9 +217,10 @@ V [výrazy](#expressions) a [funkce](#functions), operátory provádějí konkr�
 
 <a name="functions"></a>
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
-Některé výrazy získat své hodnoty z modulu runtime akce, které možná ještě neexistuje, když se spustí aplikace logiky. Pokud chcete odkazovat nebo pracovat s těmito hodnotami ve výrazech, můžete použít *funkce*. Například můžete použít matematické funkce pro výpočty, například [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkci, která vrátí součet z celých čísel nebo obtékaných objektů. 
+Některé výrazy získat své hodnoty z modulu runtime akce, které možná ještě neexistuje, když se spustí aplikace logiky. Pokud chcete odkazovat nebo pracovat s těmito hodnotami ve výrazech, můžete použít [ *funkce*](../logic-apps/workflow-definition-language-functions-reference.md). Například můžete použít matematické funkce pro výpočty, například [add()](../logic-apps/workflow-definition-language-functions-reference.md#add) funkci, která vrátí součet z celých čísel nebo obtékaných objektů. Podrobné informace o každé funkci, najdete v článku [abecedně řazená referenční dokumentace článku](../logic-apps/workflow-definition-language-functions-reference.md).
+Nebo pokračujte ve čtení o funkcích a jejich obecné účely.
 
 Zde jsou po pár příklad úlohy, které můžete provádět pomocí funkce: 
 

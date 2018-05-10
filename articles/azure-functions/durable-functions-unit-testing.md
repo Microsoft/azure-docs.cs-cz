@@ -1,12 +1,12 @@
 ---
-title: "Azure testování částí trvanlivý funkce"
-description: "Zjistěte, jak k jednotce otestovat trvanlivý funkce."
+title: Azure testování částí trvanlivý funkce
+description: Zjistěte, jak k jednotce otestovat trvanlivý funkce.
 services: functions
 author: kadimitr
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: kadimitr
-ms.openlocfilehash: a8d2a2281dcaf6e5e308ad4a2aafb167f9ba9121
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7de9a6f0d4dfcb45932b89504c0d38c3c70283e9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="durable-functions-unit-testing"></a>Trvanlivý testování částí funkce
 
@@ -128,7 +128,7 @@ Po spojení všechny kroky, bude mít testování částí následující kód:
 
 ## <a name="unit-testing-orchestrator-functions"></a>Funkce orchestrator testování částí
 
-Funkce Orchestrator jsou i další zajímavé pro jednotku testování, protože mají obvykle mnohem víc obchodní logiku. V současné době Orchestrator funkce se dají implementovat pouze v jazyce C#.
+Funkce Orchestrator jsou i další zajímavé pro jednotku testování, protože mají obvykle mnohem víc obchodní logiku.
 
 V této části jednotka testy ověří výstup `E1_HelloSequence` Orchestrator funkce:
 
@@ -179,7 +179,7 @@ A testování částí ověří formát výstupu:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o xUnit](http://xunit.github.io/docs/getting-started-dotnet-core)

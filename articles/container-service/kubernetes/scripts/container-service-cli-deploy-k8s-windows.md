@@ -4,7 +4,7 @@ description: Ukázkový skript Azure CLI – Vytvoření clusteru ACS Kubernetes
 services: container-service
 documentationcenter: ''
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: acs, azure-container-service
 keywords: Docker, Kontejnery, mikroslužby, Kubernetes, DC/OS, Azure
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 3711d53f0dfa7aef1bf30354461fd5db61d51a62
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a2cc6e7f79f2443f1e203576673f0c2353b75ac8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-an-azure-container-service-kubernetes-windows-cluster"></a>Vytvoření clusteru Azure Container Service Kubernetes s Windows
 

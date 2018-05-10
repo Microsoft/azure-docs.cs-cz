@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 33d8a36cc88bd1c263f2c4a38a59e04e1253357c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac013cf234fdc7249d4d71992435adcc27fcc64e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -90,10 +90,10 @@ S vaší IoT DevKit MXChip připojené k počítači:
 ## <a name="next-steps"></a>Další postup
 
 Jste se naučili, jak:
-- Připojte zařízení MXChip IoT DevKit vaše Azure IoT Suite.
+- Připojte zařízení MXChip IoT DevKit k vaší akcelerátoru řešení vzdáleného monitorování Azure IoT.
 - Pomocí funkce dvojčata zařízení Azure IoT smysl a řídit barva RGB DIODU DevKit.
 
 Tady jsou navrhované další kroky:
 
-* [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT vzdálené monitorování přehled řešení akcelerátoru](https://docs.microsoft.com/azure/iot-suite/)
 * [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

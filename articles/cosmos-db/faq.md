@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 6d783a5b36fd71fbcc020025e21aed49e8fd6e05
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -190,7 +190,7 @@ Kromě běžné kódy chyb MongoDB rozhraní API MongoDB má svou vlastní speci
 
 | Chyba               | Kód  | Popis  | Řešení  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Celkový počet jednotek žádosti použití překročilo četnost zřízené požadavek jednotky pro kolekci a byla omezena. | Zvažte škálování propustnost kolekce z portálu Azure nebo opakováním. |
+| TooManyRequests     | 16500 | Celkový počet jednotek žádosti použití překročilo četnost zřízené požadavek jednotky pro kolekci a byla omezena. | Vezměte v úvahu škálování propustnost přiřazené kontejner nebo sadu kontejnery z Azure portálu nebo Probíhá opakování znovu. |
 | ExceededMemoryLimit | 16501 | Jako víceklientské služby překročil operaci přidělení paměti klienta. | Snížit rozsah operaci prostřednictvím konkrétnější kritéria dotazu nebo se obraťte na podporu [portál Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Příklad:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {název: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {stáří: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ## <a name="develop-with-the-table-api"></a>Vývoj s tabulkou rozhraní API
@@ -386,7 +386,7 @@ Rozhraní API tabulka poskytuje stejné funkce dotazu jako Azure Table storage. 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Kdy je třeba změnit TableThroughput pro rozhraní API tabulky?
 Měli byste změnit TableThroughput, pokud platí některá z následujících podmínek:
 * Provádění extrakce, transformace a načítání (ETL) dat, nebo chcete nahrát velké množství dat v krátkém čase. 
-* Budete potřebovat další propustnost z kontejneru na back-end. Například můžete zjistit, že používané propustnost je větší než zřízené propustnosti a jste jsou získávání omezené. Další informace najdete v tématu [sadu propustnost pro Azure Cosmos DB kontejnery](set-throughput.md).
+* Budete potřebovat další propustnost z kontejneru nebo ze sady kontejnerů v back-end. Například můžete zjistit, že používané propustnost je větší než zřízené propustnosti a jste jsou získávání omezené. Další informace najdete v tématu [sadu propustnost pro Azure Cosmos DB kontejnery](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Je možné škálovat nebo snižovat propustnost tabulka tabulky API? 
 Ano, můžete na portálu Azure Cosmos DB škálování podokně škálování propustnost. Další informace najdete v tématu [sadu propustnost](set-throughput.md).
@@ -401,7 +401,7 @@ Ano, pokud TableThroughput prostřednictvím app.config nepotlačí a nepoužív
 Cena závisí na přidělené TableThroughput. 
 
 ### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Jak pracovat, žádné omezení pro tabulky v tabulce API nabídky? 
-Pokud rychlost požadavků překročí kapacitu zřízené propustnosti pro základní kontejner, dojde k chybě a sady SDK opakování volání použitím zásady opakování.
+Pokud rychlost požadavků překročí kapacitu zřízené propustnosti pro základní kontejner nebo sadu kontejnery, dojde k chybě a sady SDK opakování volání použitím zásady opakování.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Proč je muset zvolit propustnost kromě PartitionKey a RowKey využívat výhod nabídku API tabulky databáze Cosmos Azure?
 Azure Cosmos DB nastaví výchozí propustnost pro váš kontejner, pokud nezadáte jednoho v souboru app.config nebo přes portál. 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 66c07b757a034501eb66a4b23fc4c75bb94f8b10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analýzy dat pro metriky mezi všechny prostředky webové aplikace Azure
 
@@ -57,7 +57,7 @@ Na rozdíl od většině ostatních řešení pro analýzu protokolu není data 
 Proveďte následující postup pro konfiguraci Azure Web Apps Analytics řešení pro vaše pracovní prostory.
 
 1. Povolit řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
-2. [Povolit protokolování metriky prostředků Azure k OMS pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+2. [Povolit protokolování metriky prostředků Azure k analýze protokolů pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Řešení Azure Web Apps analýzy shromažďuje dvě sady metriky z Azure:
 
@@ -77,10 +77,6 @@ Proveďte následující postup pro konfiguraci Azure Web Apps Analytics řešen
   - Procento paměti
 
 Metriky plánu služby App Service jsou shromažďovány pouze pokud používáte vyhrazené tarifu. To se nevztahuje na volné nebo sdílené plány služby App Service.
-
-Pokud přidáte řešení pomocí portálu OMS, uvidíte následující dlaždice. Budete muset [povolit protokolování metriky prostředků Azure k OMS pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
-
-![Provádění Assessment oznámení](./media/log-analytics-azure-web-apps-analytics/performing-assessment.png)
 
 Po dokončení konfigurace řešení, začněte dat předávaných do pracovního prostoru do 15 minut.
 

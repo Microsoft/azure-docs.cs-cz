@@ -4,14 +4,14 @@
   items:
     - name: Informace o službě VPN Gateway
       href: vpn-gateway-about-vpngateways.md
-- name: Ukázky
-  items:
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Kurzy
   items:
     - name: Vytvoření a správa služby VPN Gateway
       href: vpn-gateway-tutorial-create-gateway-powershell.md
+- name: Ukázky
+  items:
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Koncepty
   items:
     - name: Plánování a návrh pro VPN Gateway

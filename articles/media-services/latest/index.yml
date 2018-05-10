@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure Media Services v3 (Preview)
+metadata:
+  document_id: 
+  title: Dokumentace ke službě Azure Media Services v3 – kurzy, reference k rozhraní API | Microsoft Docs
+  meta.description: Learn how to stream on-demand, broadcast live, and analyze your videos with Media Services. Tutorials, API references, and more.
+  services: media-services
+  author: Juliako
+  manager: cfowler
+  ms.service: media-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03-20-2018
+  ms.author: juliako
+  ms.openlocfilehash: 1ac829c8d9643401cada1f7cd558a39b63da87c2
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Naučíte se streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Zjistíte, jak vytvořit účet Media Services, spustit kódování videí a použít k jejich přehrávání Azure Media Player:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/media-services.svg
+      text: Streamování videosouborů
+      href: /azure/media-services/latest/stream-files-dotnet-quickstart
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučíte se streamovat soubory a analyzovat videa s využitím Media Services.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/media-services/latest/stream-files-tutorial-with-api">Nahrávání, kódování a streamování videí</a>
+    - html: <a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">Analýza videí</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest">Azure CLI</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/media/">REST API</a></p>

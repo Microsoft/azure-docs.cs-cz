@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: a6d6e0b7ea844f0a4d60ae7a157ac76dc8bdb8f8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -85,7 +85,7 @@ Pomocí Azure pro testovací prostředí a vývojových prostředí umožňuje o
 
 [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) služby používá [řízení přístupu](../role-based-access-control/overview.md) (RBAC). Pomocí RBAC, můžete v rámci týmu oddělit povinností do rolí, která udělují pouze úroveň přístupu, které jsou nutné, aby uživatelé pro svou práci. RBAC se dodává s předdefinované role (vlastník, uživatel lab a Přispěvatel). Tyto role můžete použít i k přiřazení práv pro externí partnery a výrazně zjednodušit spolupráci.
 
-Protože DevTest Labs používá RBAC, je možné vytvořit další, [vlastní role](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nejen zjednodušuje správu oprávnění, se zjednodušuje proces získávání prostředí zřízený. Pomáhá také řešit potíže s další typické výzvy týmy, které pracují na vývojových a testovacích prostředí. Vyžaduje určitou přípravu, ale z dlouhodobého hlediska, ji budou usnadnily pro váš tým.
+Protože DevTest Labs používá RBAC, je možné vytvořit další, [vlastní role](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md). DevTest Labs nejen zjednodušuje správu oprávnění, se zjednodušuje proces získávání prostředí zřízený. Pomáhá také řešit potíže s další typické výzvy týmy, které pracují na vývojových a testovacích prostředí. Vyžaduje určitou přípravu, ale z dlouhodobého hlediska, ji budou usnadnily pro váš tým.
 
 Azure DevTest Labs funkce patří:
 

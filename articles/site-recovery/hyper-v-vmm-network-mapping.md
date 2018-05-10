@@ -1,18 +1,18 @@
 ---
-title: "O mapování sítě pro replikaci virtuálního počítače technologie Hyper-V (s VMM) do Azure pomocí Site Recovery | Microsoft Docs"
-description: "Popisuje, jak nastavit mapování sítě pro replikaci virtuálních počítačů technologie Hyper-V spravované v cloudech VMM s Azure Site Recovery."
+title: O mapování sítě pro replikaci virtuálního počítače technologie Hyper-V (s VMM) do Azure pomocí Site Recovery | Microsoft Docs
+description: Popisuje, jak nastavit mapování sítě pro replikaci virtuálních počítačů technologie Hyper-V spravované v cloudech VMM s Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f7c6e3eeb8db75a3857e687fecc9ee2748e92696
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Příprava mapování sítí pro replikaci virtuálních počítačů Hyper-V do Azure
 
@@ -55,8 +55,8 @@ Tady je příklad pro ilustraci tento mechanismus. Podívejme se na organizaci s
 
 **Umístění** | **Server VMM** | **Sítě virtuálních počítačů** | **Mapovat na**
 ---|---|---|---
-New York | VMM NewYork| VMNetwork1-NewYork | Mapovat do Chicaga VMNetwork1
- |  | VMNetwork2-NewYork | Není mapováno
+New York | VMM NewYork| VMNetwork1 NewYork | Mapovat do Chicaga VMNetwork1
+ |  | VMNetwork2 NewYork | Není mapováno
 Chicago | VMM Chicago| VMNetwork1 Chicago | Mapovat na VMNetwork1 NewYork
  | | VMNetwork1 Chicago | Není mapováno
 
@@ -73,16 +73,16 @@ Zde je, jak jsou cloudy VMM nastavit v našem příkladu organizace a logické s
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
-SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+GoldCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1 NewYork</p><p>LogicalNetwork1 Chicago</p>
+SilverCloud2 | <p>Není k dispozici</p><p></p> | <p>LogicalNetwork1 NewYork</p><p>LogicalNetwork1 Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Nastavení sítě logické a virtuální počítač
 
 **Umístění** | **Logické sítě** | **Přidružené sítě virtuálních počítačů**
 ---|---|---
-New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
-Chicago | LogicalNetwork1-Chicago | VMNetwork1 Chicago
- | LogicalNetwork2Chicago | VMNetwork2-Chicago
+New York | LogicalNetwork1 NewYork | VMNetwork1 NewYork
+Chicago | LogicalNetwork1 Chicago | VMNetwork1 Chicago
+ | LogicalNetwork2Chicago | VMNetwork2 Chicago
 
 ### <a name="target-network-settings"></a>Nastavení cílové sítě
 
@@ -92,7 +92,7 @@ Na základě tohoto nastavení, když vyberete Cílová síť virtuálních poč
 ---|---|---|---
 VMNetwork1 Chicago | SilverCloud1 | SilverCloud2 | Dostupné
  | GoldCloud1 | GoldCloud2 | Dostupné
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici
+VMNetwork2 Chicago | SilverCloud1 | SilverCloud2 | Není k dispozici
  | GoldCloud1 | GoldCloud2 | Dostupné
 
 
@@ -104,14 +104,14 @@ Pokud má cílová síť více podsítí a jedna z těchto podsítí má stejný
 Pokud chcete zobrazit, co se stane, že v případě navrácení služeb po obnovení (zpětná replikace), Předpokládejme, že VMNetwork1 NewYork je namapována na VMNetwork1-Chicagu s následujícím nastavením.
 
 
-**VM** | **Připojení k síti virtuálních počítačů**
+**VIRTUÁLNÍ POČÍTAČ** | **Připojení k síti virtuálních počítačů**
 ---|---
-VM1 | VMNetwork1-Network
+VM1 | VMNetwork1 sítě
 Virtuálního počítače 2 (repliky VM1) | VMNetwork1 Chicago
 
 S těmito nastaveními pojďme si shrnout, co se stane, že v několika možných scénářích.
 
-Scénář | Výsledek
+**Scénář** | **Výsledek**
 ---|---
 Žádná změna v vlastnosti sítě virtuálních počítačů 2 po převzetí služeb při selhání. | Zůstane připojené ke zdrojové síti virtuálních počítačů 1.
 Vlastnosti sítě virtuálních počítačů 2 se změní po převzetí služeb při selhání a není připojen. | 1 virtuální počítač není připojen.

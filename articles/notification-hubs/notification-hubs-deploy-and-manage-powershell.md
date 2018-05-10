@@ -1,24 +1,24 @@
 ---
-title: "Nasazení a správa Notification Hubs pomocí PowerShellu"
-description: "Jak vytvořit a spravovat pomocí prostředí PowerShell pro automatizaci centra oznámení"
+title: Nasazení a správa Notification Hubs pomocí PowerShellu
+description: Jak vytvořit a spravovat pomocí prostředí PowerShell pro automatizaci centra oznámení
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: d2350d8021925278d6362c8227d408476a569319
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a správa Notification Hubs pomocí PowerShellu
 ## <a name="overview"></a>Přehled
@@ -32,7 +32,6 @@ Pokud potřebujete vytvořit nový obor názvů sběrnice služby pro vaše cent
 Správa centra oznámení není podporována přímo pomocí rutin obsažených v prostředí Azure PowerShell. Nejlepším postupem z prostředí PowerShell se tak, aby odkazovaly Microsoft.Azure.NotificationHubs.dll sestavení. Sestavení je distribuován s [balíček Microsoft Azure Notification Hubs NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ## <a name="prerequisites"></a>Požadavky
-Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 
 * Předplatné Azure. Azure je platforma, na základě předplatného. Další informace o získání předplatného najdete v tématu [možnostech nákupu], [nabízí člen], nebo [bezplatné zkušební verze].
 * Počítač s prostředím Azure PowerShell. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell].
@@ -73,7 +72,7 @@ catch [System.Exception]
 ## <a name="create-the-namespacemanager-class"></a>Vytvořte třídu NamespaceManager
 Pokud chcete zřídit Notification Hubs, vytvořte instanci [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) třída ze sady SDK. 
 
-Můžete použít [Get-AzureSBAuthorizationRule] rutiny zahrnuté do prostředí Azure PowerShell k načtení autorizační pravidlo, které slouží k poskytování připojovací řetězec. Odkaz na uložíme `NamespaceManager` instance v `$NamespaceManager` proměnné. Budeme používat `$NamespaceManager` ke zřízení centra oznámení.
+Můžete použít [Get-AzureSBAuthorizationRule] rutiny zahrnuté do prostředí Azure PowerShell k načtení autorizační pravidlo, které slouží k poskytování připojovací řetězec. Odkaz na `NamespaceManager` instance je uložen v `$NamespaceManager` proměnné. `$NamespaceManager` slouží ke zřízení centra oznámení.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -89,10 +88,10 @@ Chcete-li zřídit nového centra oznámení, použijte [rozhraní API .NET pro 
 
 V této části skriptu nastavíte čtyři lokální proměnné. 
 
-1. `$Namespace`: Nastavením název oboru názvů, kde chcete vytvořit centrum oznámení.
-2. `$Path`: Nastavte tuto cestu na název nového centra oznámení.  Například "MyHub".    
-3. `$WnsPackageSid`: Tuto možnost nastavíte na identifikátor SID balíčku pro vás aplikace pro Windows z [Centrum vývojářů pro Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
-4. `$WnsSecretkey`: Tuto možnost nastavíte na tajný klíč pro vás aplikace pro Windows z [Centrum vývojářů pro Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+1. `$Namespace` : Nastavením název oboru názvů, kde chcete vytvořit centrum oznámení.
+2. `$Path` : Nastavte tuto cestu na název nového centra oznámení.  Například "MyHub".    
+3. `$WnsPackageSid` : Tuto možnost nastavíte na identifikátor SID pro aplikace pro Windows balíčku z [Centrum vývojářů pro Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+4. `$WnsSecretkey`: Tuto možnost nastavíte na tajný klíč pro aplikace pro Windows z [Centrum vývojářů pro Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
 
 Tyto proměnné se používají k připojení k oboru názvů a vytvoření nového centra oznámení pro zpracování oznámení služby oznámení Windows (WNS) s přihlašovacími údaji WNS pro aplikaci systému Windows nakonfigurována. Informace o získání balíčku SID a tajný klíč najdete [Začínáme s Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu. 
 
@@ -145,7 +144,7 @@ else
 
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další prostředky
 * [Správa služby Service Bus pomocí prostředí PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 * [Postup vytvoření fronty, témata a odběry pomocí skriptu prostředí PowerShell služby Service Bus](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 * [Postup vytvoření Namespace Service Bus a centra událostí pomocí skriptu prostředí PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)

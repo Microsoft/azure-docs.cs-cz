@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Graph API s využitím Pythonu – Azure Cosmos DB | Dokumentace Microsoftu'
+title: 'Rychlý start: Graph API s využitím Pythonu – Azure Cosmos DB | Microsoft Docs'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Graph API k vytvoření aplikace pomocí webu Azure Portal a Pythonu.
 services: cosmos-db
 documentationcenter: python
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: aa1d70d33e1f9cefee4d06ea182ffb3fc960e07a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f668b233cd2bb44012c6132fee55626ddc3597e0
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze grafů pomocí Pythonu a webu Azure Portal
 
@@ -47,24 +47,7 @@ Než budete moct vytvořit databázi grafu, je potřeba pomocí služby Azure Co
 
 ## <a name="add-a-graph"></a>Přidání grafu
 
-Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi grafu. 
-
-1. Klikněte na **Průzkumník dat** > **Nový graf**.
-
-    Úplně vpravo se zobrazí oblast **Přidat graf**. Pokud ji nevidíte, možná se budete muset posunout doprava.
-
-    ![Průzkumník dat na portálu Azure – stránka Přidat graf](./media/create-graph-python/azure-cosmosdb-data-explorer-graph.png)
-
-2. Na stránce **Přidat graf** zadejte nastavení pro nový graf.
-
-    Nastavení|Navrhovaná hodnota|Popis
-    ---|---|---
-    ID databáze|sample-database|Jako název nové databáze zadejte *sample-database*. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky `/ \ # ?` ani koncové mezery.
-    ID grafu|sample-graph|Jako název nové kolekce zadejte *sample-graph*. Názvy grafů mají stejné požadavky na znaky jako ID databází.
-    Kapacita úložiště|Pevná (10 GB)|Nechte zadanou výchozí hodnotu **Pevná (10 GB)**. Tato hodnota je kapacita úložiště databáze.
-    Propustnost|400 RU/s|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.
-
-3. Po vyplnění formuláře klikněte na **OK**.
+[!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
@@ -90,7 +73,7 @@ Teď přejděme k práci s kódem. Naklonujeme aplikaci Graph API z GitHubu, na
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru `connect.py` ve složce C:\git-samples\azure-cosmos-db-graph-python-getting-started\. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru connect.py ve složce C:\git-samples\azure-cosmos-db-graph-python-getting-started\. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information). 
 
 * `client` konzoly Gremlin se inicializuje na řádku 104 v `connect.py`:
 
@@ -188,19 +171,19 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Kontrola a přidání ukázkových dat
 
-Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
+Teď můžete přejít zpět do Průzkumníka dat a zobrazit vrcholy přidané do grafu a přidat další datové body.
 
 1. Klikněte na **Průzkumník dat**, rozbalte **sample-graph**, klikněte na **Graf** a potom klikněte na **Použít filtr**. 
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   ![Vytváření nových dokumentů v Průzkumníkovi dat na portálu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
 2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte uživatele **ben** a všimněte si, že je propojený s uživatelem robin. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
-   ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
+   ![Nové vrcholy v grafu v Průzkumníkovi dat na webu Azure Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
 3. Teď přidáme několik nových uživatelů. Klikněte na tlačítko **Nový vrchol** a přidejte do grafu data.
 
-   ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   ![Vytváření nových dokumentů v Průzkumníkovi dat na portálu Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. Zadejte popisek *person* (osoba).
 
@@ -241,11 +224,11 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 13. Do pole **Cíl** zadejte *rakesh*, do pole **Popisek hrany** zadejte *knows* (zná) a potom klikněte na symbol zaškrtnutí.
 
-   ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+   ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníkovi dat](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Teď vyberte ze seznamu výsledků uživatele **rakesh** a zobrazí se propojení mezi uživateli ashley a rakesh. 
 
-   ![Dva propojené vrcholy v Průzkumníku dat](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+   ![Dva propojené vrcholy v Průzkumníkovi dat](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
 
    Tím je dokončená část tohoto kurzu věnovaná vytváření prostředků. Můžete pokračovat přidáním vrcholů do grafu, úpravou existujících vrcholů nebo změnou dotazů. Teď si projdeme metriky, které služba Azure Cosmos DB nabízí, a pak vyčistíme prostředky. 
 
@@ -259,7 +242,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
+V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníka dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 
 > [!div class="nextstepaction"]
 > [Dotazování pomocí konzoly Gremlin](tutorial-query-graph.md)

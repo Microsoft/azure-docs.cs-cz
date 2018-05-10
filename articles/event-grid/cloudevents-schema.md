@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: babanisa
-ms.openlocfilehash: a2612d2154ea5b991f549a0678374336e1a95c40
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: MT
+ms.openlocfilehash: a882073fce28be1b93a6c9118c40398062f61bc5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents s událostí mřížky
 
@@ -89,6 +89,8 @@ Mřížky událostí můžete použít pro vstupní i výstupní událostí ve s
 | Formát mřížky událostí  | Formát CloudEvents
 | Formát CloudEvents | Formát mřížky událostí
 | Formát mřížky událostí  | Formát mřížky událostí
+
+Pro všechny události schémata událostí mřížky vyžaduje ověření, při publikování do mřížky téma události a při vytváření předplatného služby událostí. Další informace najdete v tématu [mřížky událostí zabezpečení a ověřování](security-authentication.md).
 
 ### <a name="input-schema"></a>Vstupní schéma
 

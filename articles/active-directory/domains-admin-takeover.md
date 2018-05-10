@@ -6,31 +6,29 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: cd11ea68f298395236abf83295b939462ba00964
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1185fef53797a88ae929e35be56d2bc79067b49
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad adresář nespravované jako správce v Azure Active Directory
-Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS do adresář nespravované v Azure Active Directory (Azure AD). Když samoobslužný uživatel zaregistruje cloudovou službu, která používá Azure AD, jsou přidány do nespravovaných Azure AD directory založené na jejich e-mailovou doménu. Další informace o samoobslužné nebo "virální" registrace pro služby najdete v tématu [co je samoobslužné registrace pro Azure Active Directory?]()
+Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS do adresář nespravované v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virální" registrace pro služby najdete v tématu [co je samoobslužné registrace pro Azure Active Directory?]()
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Rozhodněte, jak chcete převzít kontrolu nad adresář nespravované
-Během procesu převzetí správce může prokázat vlastnictví, jak je popsáno v [přidání vlastního názvu domény do Azure AD](add-custom-domain.md). Další části popisují pohledu správce podrobněji, ale tady je Shrnutí:
+Během procesu převzetí správce můžete vlastnictví prokázat způsobem popsaným v tématu [Přidání vlastního názvu domény do Azure AD](add-custom-domain.md). Další části popisují prostředí pro správu podrobněji, ale tady je shrnutí:
 
-* Když provádíte ["interní" Správce převzetí](#internal-admin-takeover) z nespravovaných adresář služby Azure, se přidají jako globální správce adresáře, nespravované. Žádné uživatele domény a plány služby se migrují do libovolného adresáře, který spravujete.
+* Když provedete [interní převzetí správce](#internal-admin-takeover) nespravovaného adresáře Azure, přidáte se jako globální správce tohoto nespravovaného adresáře. Do žádného jiného adresáře, který spravujete, se nemigrují žádní uživatelé, domény ani plány služeb.
 
-* Když provádíte ["externí" Správce převzetí](#external-admin-takeover) z nespravovaných adresář služby Azure, přidáte do adresáře Azure spravované název domény DNS nespravované adresáře. Když přidáte název domény, vytvoří se mapování uživatelů k prostředkům v adresáři spravované Azure tak, aby uživatelé mohou i nadále přístup ke službám bez přerušení. 
+* Když provedete [externí převzetí správce](#external-admin-takeover) nespravovaného adresáře Azure, přidáte název domény DNS nespravovaného adresáře do svého spravovaného adresáře Azure. Když přidáte název domény, ve vašem spravovaném adresáři Azure se vytvoří mapování uživatelů na prostředky, aby uživatelé měli i nadále přístup ke službám bez přerušení. 
 
 ## <a name="internal-admin-takeover"></a>Interní správce převzetí
 

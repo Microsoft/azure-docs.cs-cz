@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vault
 Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -235,32 +235,32 @@ Následující tabulka obsahuje seznam operací (operationName) a odpovídajíc�
 | operationName | Příkaz REST API |
 | --- | --- |
 | Authentication |Přes koncový bod služby Azure Active Directory |
-| VaultGet |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
-| VaultPut |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
-| VaultDelete |[Odstranění trezoru klíčů](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |
+| VaultGet |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| VaultPut |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| VaultDelete |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | VaultPatch |[Aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[Výpis všech trezorů klíčů ve skupině prostředků](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx) |
-| KeyCreate |[Vytvoření klíče](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx) |
-| KeyGet |[Získání informací o klíči](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx) |
-| KeyImport |[Import klíče do trezoru](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx) |
-| KeyBackup |[Zálohování klíče](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx). |
-| KeyDelete |[Odstranění klíče](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx) |
-| KeyRestore |[Obnovení klíče](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx) |
-| KeySign |[Podpis klíčem](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx) |
-| KeyVerify |[Ověření pomocí klíče](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx) |
-| KeyWrap |[Zabalení klíče](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx) |
-| KeyUnwrap |[Rozbalení klíče](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx) |
-| KeyEncrypt |[Šifrování pomocí klíče](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
-| KeyDecrypt |[Dešifrování pomocí klíče](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
-| KeyUpdate |[Aktualizace klíče](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[Výpis klíčů v trezoru](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[Výpis verzí klíče](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
-| SecretSet |[Vytvoření tajného kódu](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
-| SecretGet |[Získání tajného kódu](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
-| SecretUpdate |[Aktualizace tajného kódu](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
-| SecretDelete |[Odstranění tajného kódu](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx) |
-| SecretList |[Výpis tajných kódů v trezoru](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
-| SecretListVersions |[Výpis verzí tajného kódu](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
+| VaultList |[Výpis všech trezorů klíčů ve skupině prostředků](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| KeyCreate |[Vytvoření klíče](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| KeyGet |[Získání informací o klíči](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| KeyImport |[Import klíče do trezoru](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| KeyBackup |[Zálohování klíče](https://msdn.microsoft.com/library/azure/dn878058.aspx). |
+| KeyDelete |[Odstranění klíče](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| KeyRestore |[Obnovení klíče](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| KeySign |[Podpis klíčem](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| KeyVerify |[Ověření pomocí klíče](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| KeyWrap |[Zabalení klíče](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| KeyUnwrap |[Rozbalení klíče](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| KeyEncrypt |[Šifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| KeyDecrypt |[Dešifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| KeyUpdate |[Aktualizace klíče](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| KeyList |[Výpis klíčů v trezoru](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| KeyListVersions |[Výpis verzí klíče](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| SecretSet |[Vytvoření tajného kódu](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| SecretGet |[Získání tajného kódu](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| SecretUpdate |[Aktualizace tajného kódu](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| SecretDelete |[Odstranění tajného kódu](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| SecretList |[Výpis tajných kódů v trezoru](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| SecretListVersions |[Výpis verzí tajného kódu](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>Použití Log Analytics
 

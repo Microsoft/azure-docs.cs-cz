@@ -12,21 +12,21 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8fc014efab898bf0ab3d8cd5eaa83dce53ee275b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8bb27cca9e976ff8433793ef378cc6a43449d4bb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Nastavení služby IoT Hub Device Provisioning pomocí šablony Azure Resource Manageru
 
-Pomocí [Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) můžete prostřednictvím kódu programu nastavit cloudové prostředky Azure potřebné ke zřizování zařízení. Tyto kroky ukazují, jak vytvořit centrum IoT, novou službu IoT Hub Device Provisioning a vzájemně tyto dvě služby propojit pomocí šablony Azure Resource Manageru. V tomto rychlém startu se k provedení kroků potřebných k vytvoření skupiny prostředků a nasazení šablony používá [Azure CLI 2.0](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy-cli), ale můžete k tomu snadno použít i [Azure Portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby nebo jiné programovací jazyky. 
+Pomocí [Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) můžete prostřednictvím kódu programu nastavit cloudové prostředky Azure potřebné ke zřizování zařízení. Tyto kroky ukazují, jak vytvořit centrum IoT, novou službu IoT Hub Device Provisioning a vzájemně tyto dvě služby propojit pomocí šablony Azure Resource Manageru. V tomto rychlém startu se k provedení kroků potřebných k vytvoření skupiny prostředků a nasazení šablony používá [Azure CLI 2.0](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli), ale můžete k tomu snadno použít i [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), .NET, Ruby nebo jiné programovací jazyky. 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-- Tento rychlý start vyžaduje, abyste používali Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
+- Tento rychlý start vyžaduje, abyste používali Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Přihlášení k Azure a vytvoření skupiny prostředků
@@ -116,7 +116,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
    ```
 
-4. Centrum IoT vytvoříte přidáním následujících řádků do kolekce **resources** (prostředky). Kód JSON určuje minimum vlastností potřebných k vytvoření centra IoT. Vlastnosti **name** (název) a **location** (umístění) se předávají jako parametry. Další informace o vlastnostech, které můžete pro centrum IoT v šabloně zadat, najdete v [referenčních informacích k šabloně Microsoft.Devices/IotHubs](https://docs.microsoft.com/en-us/azure/templates/microsoft.devices/iothubs).
+4. Centrum IoT vytvoříte přidáním následujících řádků do kolekce **resources** (prostředky). Kód JSON určuje minimum vlastností potřebných k vytvoření centra IoT. Vlastnosti **name** (název) a **location** (umístění) se předávají jako parametry. Další informace o vlastnostech, které můžete pro centrum IoT v šabloně zadat, najdete v [referenčních informacích k šabloně Microsoft.Devices/IotHubs](https://docs.microsoft.com/azure/templates/microsoft.devices/iothubs).
 
    ```json
         {
@@ -136,9 +136,9 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
    ``` 
 
-5. Službu zřizování vytvoříte přidáním následujících řádků za specifikaci centra IoT v kolekci **resources** (prostředky). Vlastnosti **name** (název) a **location** (umístění) služby zřizování se předávají v parametrech. V kolekci **iotHubs** zadejte centra IoT, která se mají se službou zřizování propojit. Pro každé propojené centrum IoT musíte zadat minimálně vlastnosti **connectionString** (připojovací řetězec) a **location** (umístění). Pro každé centrum IoT můžete nastavit také vlastnosti jako **allocationWeight** (váha přidělení) a **applyAllocationPolicy** (použít zásady přidělování) a pro samotnou službu zřizování můžete nastavit vlastnosti jako **allocationPolicy** (zásady přidělování) a **authorizationPolicies** (zásady autorizace). Další informace najdete v [referenčních informacích k šabloně Microsoft.Devices/provisioningServices](https://docs.microsoft.com/en-us/azure/templates/microsoft.devices/provisioningservices).
+5. Službu zřizování vytvoříte přidáním následujících řádků za specifikaci centra IoT v kolekci **resources** (prostředky). Vlastnosti **name** (název) a **location** (umístění) služby zřizování se předávají v parametrech. V kolekci **iotHubs** zadejte centra IoT, která se mají se službou zřizování propojit. Pro každé propojené centrum IoT musíte zadat minimálně vlastnosti **connectionString** (připojovací řetězec) a **location** (umístění). Pro každé centrum IoT můžete nastavit také vlastnosti jako **allocationWeight** (váha přidělení) a **applyAllocationPolicy** (použít zásady přidělování) a pro samotnou službu zřizování můžete nastavit vlastnosti jako **allocationPolicy** (zásady přidělování) a **authorizationPolicies** (zásady autorizace). Další informace najdete v [referenčních informacích k šabloně Microsoft.Devices/provisioningServices](https://docs.microsoft.com/azure/templates/microsoft.devices/provisioningservices).
 
-   Vlastnost **dependsOn** slouží k zajištění, že Resource Manager vytvoří nejprve centrum IoT a až pak službu zřizování. Šablona vyžaduje připojovací řetězec centra IoT určující jeho propojení se službou zřizování, takže je nejprve potřeba vytvořit centrum a jeho klíče. Šablona vytváří připojovací řetězec pomocí funkcí jako **concat** a **listKeys**. Další informace najdete v tématu [Funkce šablon Azure Resource Manageru](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-functions).
+   Vlastnost **dependsOn** slouží k zajištění, že Resource Manager vytvoří nejprve centrum IoT a až pak službu zřizování. Šablona vyžaduje připojovací řetězec centra IoT určující jeho propojení se službou zřizování, takže je nejprve potřeba vytvořit centrum a jeho klíče. Šablona vytváří připojovací řetězec pomocí funkcí jako **concat** a **listKeys**. Další informace najdete v tématu [Funkce šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions).
 
    ```json
         {
@@ -301,7 +301,7 @@ Pomocí šablony JSON ve své skupině prostředků vytvořte službu zřizován
 
 Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte nasazení.
 
-1. Šablonu nasadíte spuštěním následujícího [příkazu pro spuštění nasazení](https://docs.microsoft.com/en-us/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create):
+1. Šablonu nasadíte spuštěním následujícího [příkazu pro spuštění nasazení](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create):
     
     ```azurecli
      az group deployment create -g {your resource group name} --template-file template.json --parameters @parameters.json
@@ -312,7 +312,7 @@ Pomocí následujících příkazů Azure CLI nasaďte své šablony a ověřte 
    ![Výstup zřizování](./media/quick-setup-auto-provision-rm/output.png) 
 
 
-2. Pokud chcete nasazení ověřit, spusťte následující [příkaz pro výpis prostředků](https://docs.microsoft.com/en-us/cli/azure/resource?view=azure-cli-latest#az_resource_list) a ve výstupu vyhledejte novou službu zřizování a centrum IoT:
+2. Pokud chcete nasazení ověřit, spusťte následující [příkaz pro výpis prostředků](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az_resource_list) a ve výstupu vyhledejte novou službu zřizování a centrum IoT:
 
     ```azurecli
      az resource list -g {your resource group name}

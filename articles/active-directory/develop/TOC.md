@@ -102,14 +102,13 @@
 ### Webové aplikace
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [Jádro ASP.NET](https://azure.microsoft.com/resources/samples/active-directory-aspnetcore-webapp-openidconnect-v2)
-#### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
+#### [NodeJS](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs)
 ### Webová rozhraní API
 #### [ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
 #### [Jádro ASP.NET](https://azure.microsoft.com/en-us/resources/samples/active-directory-dotnet-native-aspnetcore-v2)
+#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
 ### Jednostránkové aplikace
 #### [JavaScript](guidedsetups/active-directory-javascriptspa.md)
-### Webová rozhraní API
-#### [NodeJS](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)
 ### Komunikace mezi službami
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Průvodci

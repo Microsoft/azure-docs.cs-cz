@@ -1,6 +1,6 @@
 ---
-title: "Správě Azure Kubernetes clusteru pomocí webového uživatelského rozhraní"
-description: "Pomocí řídicího panelu Kubernetes v AKS"
+title: Správě Azure Kubernetes clusteru pomocí webového uživatelského rozhraní
+description: Pomocí řídicího panelu Kubernetes v AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 47608993320d987822422ea103e4e2043de2d2e8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ab137c8397f747ba07475910cd4461d88951d6be
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Řídicí panel Kubernetes s Azure Container Service (AKS)
+# <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Řídicí panel Kubernetes s Azure Kubernetes služby (AKS)
 
 Rozhraní příkazového řádku Azure lze spustit Kubernetes řídicího panelu. Tento dokument provede řídicím panelu Kubernetes počínaje rozhraní příkazového řádku Azure a také provede některých operací základní řídicího panelu. Další informace o řídicím panelu najdete Kubernetes [Kubernetes webového uživatelského rozhraní řídicí panel][kubernetes-dashboard].
 
@@ -63,13 +63,13 @@ Kromě vytváření a aplikace pro zobrazení, řídicí panel Kubernetes slouž
 
 Chcete-li upravit nasazení, klikněte na tlačítko **nasazení** v levé nabídce a potom vyberte **NGINX** nasazení. Nakonec vyberte **upravit** v pravém horním navigačním panelu.
 
-![Kubernetes Edit](./media/container-service-kubernetes-ui/view-deployment.png)
+![Upravit Kubernetes](./media/container-service-kubernetes-ui/view-deployment.png)
 
 Vyhledejte `spec.replica` tuto hodnotu změnit hodnotu, která by měla být 1, 3. Při tom repliky nasazení NGINX zvýší se od 1 do 3.
 
 Vyberte **aktualizace** Jakmile budete připraveni.
 
-![Kubernetes Edit](./media/container-service-kubernetes-ui/edit-deployment.png)
+![Upravit Kubernetes](./media/container-service-kubernetes-ui/edit-deployment.png)
 
 ## <a name="next-steps"></a>Další postup
 

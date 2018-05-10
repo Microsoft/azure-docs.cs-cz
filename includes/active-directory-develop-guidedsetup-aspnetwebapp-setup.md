@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/04/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: abb118610afa55834a3a6792c0a5503a1abfd09e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 1c51d70a3747da6a8f51c5fc6341c1975cebbdb7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -40,9 +40,9 @@ Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování pros
 2. Přidat *balíčky NuGet middleware OWIN* pomocí následujícího příkazu v okně konzoly Správce balíčků:
 
     ```powershell
-    Install-Package Microsoft.Owin.Security.OpenIdConnect
-    Install-Package Microsoft.Owin.Security.Cookies
-    Install-Package Microsoft.Owin.Host.SystemWeb
+    Install-Package Microsoft.Owin.Security.OpenIdConnect -Version 3.1.0
+    Install-Package Microsoft.Owin.Security.Cookies -Version 3.1.0
+    Install-Package Microsoft.Owin.Host.SystemWeb -Version 3.1.0
     ```
     
 <!--start-collapse-->
@@ -60,9 +60,11 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
 >
 >> Zajistěte, aby byl vybranou třídu třídy pro spuštění OWIN a není standardní C# třídu. To můžete ověřit kontrolou, pokud se zobrazí `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` výše obor názvů.
 
-1. Přidat *OWIN* a *Microsoft.IdentityModel* odkazuje na `Startup.cs`:
+1. Přidat *OWIN* a *Microsoft.IdentityModel* odkazuje na `Startup.cs` tak, aby na pomocí deklarace stane toto:
 
     ```csharp
+    using System;
+    using System.Threading.Tasks;
     using Microsoft.Owin;
     using Owin;
     using Microsoft.IdentityModel.Protocols;
@@ -76,19 +78,19 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
 
     ```csharp
     public class Startup
-    {        
+    {
         // The Client ID is used by the application to uniquely identify itself to Azure AD.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
-    
+
         // RedirectUri is the URL where the user will be redirected to after they sign in.
         string redirectUri = System.Configuration.ConfigurationManager.AppSettings["RedirectUri"];
-    
+
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
-    
+
         // Authority is the URL for authority, composed by Azure Active Directory v2 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
-    
+
         /// <summary>
         /// Configure OWIN to use OpenIdConnect 
         /// </summary>
@@ -96,7 +98,7 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
         public void Configuration(IAppBuilder app)
         {
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
-    
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
                 app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
@@ -122,7 +124,7 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
                 }
             );
         }
-    
+
         /// <summary>
         /// Handle failed authentication requests by redirecting the user to the home page with an error in the query string
         /// </summary>
@@ -135,7 +137,7 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
             return Task.FromResult(0);
         }
     }
-    
+
     ```
 
 

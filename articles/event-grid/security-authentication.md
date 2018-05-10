@@ -6,27 +6,27 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 4b9ab8aaef091573d204b8de58115cc03707aa01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Události zabezpečení mřížky a ověřování 
 
 Azure mřížky událostí má tři typy ověřování:
 
 * Odběry událostí
-* Publikování události
+* Publikování událostí
 * Doručení události Webhooku
 
 ## <a name="webhook-event-delivery"></a>Události Webhooku doručení
 
 Webhooky jsou jedním z mnoha způsoby, jak přijímat události z události mřížky Azure. Až o novou událost připravena, odešle Webhooku mřížky událostí nakonfigurovaný koncový bod HTTP s událostí v textu požadavku HTTP.
 
-Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Mřížky událostí není doručovat události Webhooku koncových bodů, které nebyly ověření proběhlo úspěšně.
+Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, odešle požadavek POST s kódem jednoduché ověření prokázat vlastnictví koncový bod. Vaše aplikace musí odpovídat tak, že odezva zpět ověřovacího kódu. Mřížky událostí není doručovat události Webhooku koncových bodů, které nebyly ověření proběhlo úspěšně. Pokud používáte rozhraní API služby třetích stran (jako je [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci prostřednictvím kódu programu echo ověřovacího kódu. Pro tyto služby můžete ručně ověřit předplatné pomocí ověření adresy URL, která je odesláno jako událost ověření předplatného. Zkopírujte tuto adresu URL a odešlete požadavek GET buď prostřednictvím klienta REST nebo webový prohlížeč.
 
 ### <a name="validation-details"></a>Podrobnosti o ověření
 
@@ -34,6 +34,7 @@ Při registraci svůj vlastní koncový bod Webhooku s událostí mřížky, ode
 * Události obsahuje hodnotu hlavičky "Æg typu události: SubscriptionValidation".
 * V textu události má stejné schéma jako ostatní události událostí mřížky.
 * Data události obsahuje vlastnost s náhodně generované řetězec "validationCode". Například "validationCode: acb13...".
+* Data události zahrnuje vlastnost "validationUrl" pomocí adresy URL pro ručně ověření předplatného.
 * Toto pole obsahuje pouze událost ověření. Další události jsou zasílány v samostatné žádosti po vracení ověřovacího kódu.
 
 V následujícím příkladu je uveden příklad SubscriptionValidationEvent:
@@ -44,7 +45,8 @@ V následujícím příkladu je uveden příklad SubscriptionValidationEvent:
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "subject": "",
   "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
+    "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=B2E34264-7D71-453A-B5FB-B62D0FDC85EE&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1BNqCxBBSSE9OnNSfZM4%2b5H9zDegKMY6uJ%2fO2DFRkwQ%3d"
   },
   "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
   "eventTime": "2018-01-25T22:12:19.4556811Z",
@@ -60,6 +62,9 @@ K prokázání vlastnictví koncový bod, vracení ověřovacího kódu ve vlast
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Nebo ručně ověřit předplatné odesláním požadavek GET na adresu URL ověření. Událost odběru zůstane ve stavu čekání na vyřízení, dokud ověřit.
+
 ### <a name="event-delivery-security"></a>Události doručení zabezpečení
 
 Váš koncový bod webhooku můžete zabezpečit přidáním parametry dotazu na adresu URL webhooku při vytváření předplatného služby událostí. Nastavte jednu z těchto parametrů dotazu jako tajný klíč [přístupový token](https://en.wikipedia.org/wiki/Access_token) webhooku můžete rozpoznat událost pochází z událostí mřížky s platné oprávnění. Mřížky události bude obsahovat tyto parametry dotazu v každé události doručení do webhooku.

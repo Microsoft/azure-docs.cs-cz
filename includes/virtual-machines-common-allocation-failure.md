@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 6377b79d986d32fba8f84c670d6b69d5eda98b8a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24d89b617c347bc9443b437c92cb034acb3e05cb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 Při vytvoření virtuálního počítače (VM), restartujte zastaveném (deallocated) virtuálních počítačů nebo změnit velikost virtuálního počítače Microsoft Azure přiřadí výpočetní prostředky do vašeho předplatného. Nemůžeme se průběžně investice do další infrastrukturu a funkce a ujistěte se, že vždy obsahuje všechny typy virtuálních počítačů jsou dostupné pro podporu poptávku zákazníků. Však může někdy dojít k selhání přidělení prostředků z důvodu nebývalá rostoucích požadavků na služby Azure v určitých oblastí. Tento problém může vzniknout při pokusu o vytvoření nebo spusťte virtuální počítače v oblasti, když virtuální počítače zobrazovat následující kód chyby a zpráva:
 
@@ -80,7 +80,7 @@ Jak jsme rozšířit infrastrukturu Azure, můžeme nasadit novější generace 
 |----------------------|----------------------------|--------------------|
 |Av1-series|[Av2-series](../articles/virtual-machines/windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 nebo DSv1-series (D1 na D5)|[Dv3 nebo DSv3-series](../articles/virtual-machines/windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 nebo DSv1-series (D11 k D14)|[Ev3 nebo ESv3-series](../articles/virtual-machines/windows/sizes-memory.md#esv3-series-sup1sup)|
+|Dv1 nebo DSv1-series (D11 k D14)|[Ev3 nebo ESv3-series](../articles/virtual-machines/windows/sizes-memory.md#ev3-series)|
 |D15v2 nebo DS15v2|Pokud používáte model nasazení Manager theResource Pokud chcete využít větší velikosti virtuálních počítačů, zvažte přesunutí D16v3/DS16v3 nebo D32v3/DS32v3. Tyto jsou určená ke spuštění na nejnovější hardwaru generace. Pokud používáte model nasazení Resource Manager a ujistěte se, že je vaše instance virtuálních počítačů izolované hardware vyhrazený pro jednoho zákazníka, zvažte přechod na nový izolované velikosti virtuálních počítačů, E64i_v3 nebo E64is_v3, které jsou určená ke spuštění na nejnovější hardwaru generace. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Chyby v přidělení pro velká nasazení (více než 500 jader)

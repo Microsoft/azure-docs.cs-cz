@@ -1,6 +1,6 @@
 ---
-title: Azure Container Service pomocí Kafka v HDInsight | Microsoft Docs
-description: Další informace o použití Kafka v HDInsight z bitové kopie kontejneru hostované v Azure Container Service (AKS).
+title: Pomocí služby Azure Kubernetes Kafka v HDInsight | Microsoft Docs
+description: Další informace o použití Kafka v HDInsight z bitové kopie kontejneru hostované v Azure Kubernetes služby (AKS).
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/08/2018
+ms.date: 05/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 16513cbd775e200a0821e8786ae823b82c67e437
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f54039a0e702aa3c789363969120e000760f6ef5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="use-azure-container-services-with-kafka-on-hdinsight"></a>Pomocí služby Azure kontejneru Kafka v HDInsight
+# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Pomocí služby Azure Kubernetes Kafka v HDInsight
 
-Naučte se používat Azure kontejneru služby (AKS) s Kafka na clusteru HDInsight. Kroky v tomto dokumentu používají k ověření připojení s Kafka hostované v AKS aplikace Node.js. Tato aplikace používá [kafka uzlu](https://www.npmjs.com/package/kafka-node) balíček ke komunikaci s Kafka. Používá [Socket.io](https://socket.io/) pro událost řízené zasílání zpráv mezi prohlížeče klienta a hostované ve AKS back-end.
+Naučte se používat Azure Kubernetes služby (AKS) s Kafka na clusteru HDInsight. Kroky v tomto dokumentu používají k ověření připojení s Kafka hostované v AKS aplikace Node.js. Tato aplikace používá [kafka uzlu](https://www.npmjs.com/package/kafka-node) balíček ke komunikaci s Kafka. Používá [Socket.io](https://socket.io/) pro událost řízené zasílání zpráv mezi prohlížeče klienta a hostované ve AKS back-end.
 
-[Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Azure Container Service spravuje hostovaného prostředí Kubernetes a umožňuje snadno a rychle nasadit kontejnerizované aplikace. Pomocí virtuální síť Azure, můžete připojit dvě služby.
+[Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Služba Azure Kubernetes spravuje hostovaného prostředí Kubernetes a umožňuje snadno a rychle nasadit kontejnerizované aplikace. Pomocí virtuální síť Azure, můžete připojit dvě služby.
 
 > [!NOTE]
-> Účelem tohoto dokumentu je na kroky potřebné k povolení služby Azure kontejneru ke komunikaci s Kafka v HDInsight. Příkladem samotné je právě základní klientskou Kafka prokázat, že konfigurace funguje.
+> Účelem tohoto dokumentu je na kroky potřebné k povolení služby Azure Kubernetes ke komunikaci s Kafka v HDInsight. Příkladem samotné je právě základní klientskou Kafka prokázat, že konfigurace funguje.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,10 +37,10 @@ Naučte se používat Azure kontejneru služby (AKS) s Kafka na clusteru HDInsig
 Tento dokument předpokládá, že jste obeznámeni s vytváření a používání následujících služeb Azure:
 
 * Kafka v HDInsightu
-* Azure Container Service
+* Služba Azure Kubernetes
 * Virtuální sítě Azure
 
-Tento dokument předpokládá také je třeba projít [kurz služby Azure kontejneru](../../aks/tutorial-kubernetes-prepare-app.md). V tomto kurzu vytvoří kontejner služby, vytvoří cluster Kubernetes kontejneru registru a nakonfiguruje `kubectl` nástroj.
+Tento dokument předpokládá také je třeba projít [kurz služby Azure Kubernetes](../../aks/tutorial-kubernetes-prepare-app.md). V tomto kurzu vytvoří kontejner služby, vytvoří cluster Kubernetes kontejneru registru a nakonfiguruje `kubectl` nástroj.
 
 ## <a name="architecture"></a>Architektura
 
@@ -56,12 +56,12 @@ Následující diagram znázorňuje topologii sítě použitou v tomto dokumentu
 > [!IMPORTANT]
 > Rozlišení názvů není povoleno mezi peered sítí, takže adresování IP se používá. Ve výchozím nastavení je vrátit názvy hostitelů místo IP adresy, pokud se klienti připojují nakonfigurovaná Kafka v HDInsight. Kafka používat IP upravit kroky v tomto dokumentu místo toho inzerování.
 
-## <a name="create-an-azure-container-service-aks"></a>Vytvoření služby Azure kontejneru (AKS)
+## <a name="create-an-azure-kubernetes-service-aks"></a>Vytvoření služby Azure Kubernetes (AKS)
 
 Pokud již nemáte AKS clusteru, použijte jednu z následujících dokumentech se dozvíte, jak chcete vytvořit:
 
-* [Nasazení clusteru Azure Container Service (AKS) - portálu](../../aks/kubernetes-walkthrough-portal.md)
-* [Nasazení clusteru Azure Container Service (AKS) - rozhraní příkazového řádku](../../aks/kubernetes-walkthrough.md)
+* [Nasazení clusteru Azure Kubernetes služby (AKS) - portálu](../../aks/kubernetes-walkthrough-portal.md)
+* [Nasazení clusteru Azure Kubernetes služby (AKS) - rozhraní příkazového řádku](../../aks/kubernetes-walkthrough.md)
 
 > [!NOTE]
 > AKS vytvoří virtuální síť během instalace. Tato síť je peered jako byla vytvořena pro HDInsight v další části.
@@ -154,11 +154,11 @@ Pomocí následujících kroků nakonfigurujte Kafka inzerovat IP adresy místo 
 
 ## <a name="test-the-configuration"></a>Otestujte konfiguraci
 
-V tomto okamžiku Kafka a Azure Container Service jsou v komunikaci prostřednictvím peered virtuální sítě. K otestování tohoto připojení, použijte následující kroky:
+V tomto okamžiku Kafka a Azure Kubernetes služby jsou v komunikaci prostřednictvím peered virtuální sítě. K otestování tohoto připojení, použijte následující kroky:
 
 1. Vytvořte téma Kafka, které používá testovací aplikace. Informace o vytváření Kafka témata najdete v tématu [vytvoření clusteru s podporou Kafka](apache-kafka-get-started.md) dokumentu.
 
-2. Stáhněte si ukázková aplikace z [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test). 
+2. Stáhněte si ukázková aplikace z [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test).
 
 3. Upravit `index.js` soubor a změňte následující řádky:
 
@@ -184,7 +184,7 @@ V tomto okamžiku Kafka a Azure Container Service jsou v komunikaci prostřednic
     ```
 
     > [!NOTE]
-    > Pokud neznáte název registru kontejner Azure nebo jsou obeznámeni s pomocí rozhraní příkazového řádku Azure pro práci s Azure Container Service, podívejte se [AKS kurzy](../../aks/tutorial-kubernetes-prepare-app.md).
+    > Pokud neznáte název registru kontejner Azure nebo jsou obeznámeni s pomocí rozhraní příkazového řádku Azure pro práci s Kubernetes službu Azure najdete v článku [AKS kurzy](../../aks/tutorial-kubernetes-prepare-app.md).
 
 6. Označit místní `kafka-aks-test` bitovou kopii s loginServer z ACR. Také přidat `:v1` se označuje verzi obrázku:
 

@@ -9,11 +9,11 @@ ms.custom: load & move data
 ms.date: 04/10/2018
 ms.author: carlrab
 ms.topic: article
-ms.openlocfilehash: 4279630816b6d5f7cf15b7555bf951d3f2a5f95a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd9554a18775cf98f4415ebd5d4b0d52edc53718
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importovat soubor souboru BACPAC pro novou databázi SQL Azure
 
@@ -113,6 +113,8 @@ Můžete také použít těchto průvodců:
 * Informace o tom, k připojení a dotazování importované SQL Database, najdete v části [připojit k SQL Database přes SQL Server Management Studio a provedení ukázkového dotazu T-SQL](sql-database-connect-query-ssms.md).
 * Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 * Informace celého systému SQL Server databáze procesu migrace, včetně doporučení výkonu, naleznete v [migrovat do databáze SQL serveru do Azure SQL Database](sql-database-cloud-migrate.md).
+* Další informace o správě a sdílení úložiště klíčů a sdíleného přístupu signitures bezpečně, najdete v [Průvodce zabezpečením úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-security-guide). 
 
 
+  
 

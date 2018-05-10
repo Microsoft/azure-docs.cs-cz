@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5c0726ea0da288d5306e28b101e4d3b59605b443
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>Virtuální počítače s nízkou prioritou na sady škálování (preview)
 
@@ -27,24 +27,28 @@ Pomocí na škálovací sady virtuálních počítačů s nízkou prioritou umo�
 
 Velikost dostupné kapacity zemědělsky nevyužitá může lišit v závislosti na velikosti, oblast, denní dobu a další. Při nasazení virtuálních počítačů s nízkou prioritou na škálování nastaví, bude Azure přidělit virtuálních počítačů, pokud je dostupná kapacita, ale neexistuje žádné SLA pro tyto virtuální počítače. Sada škálování nízkou prioritu je nasazena v domény selhání jednoho a nabízí že zaručuje bez vysoké dostupnosti.
 
-> [!NOTE]
-> Nastaví nízkou prioritu škálování jsou ve verzi preview a připravené pro vaše vývojová a testovací scénáře. 
-
 ## <a name="eviction-policy"></a>Zásady vyřazení
 
-Pokud vaše nízkou prioritu škálovací sady virtuálních počítačů jsou vyřazování, se bude přesunut do zastaveném (nepřiřazeném) stavu, ve výchozím nastavení. Tato zásada vyřazení můžete znovu nasadit vyřazené instancí, ale neexistuje žádná záruka, který bude úspěšné přidělení. Zastavený virtuální počítače budou započítává vaší kvóty instance sady škálování a vám bude účtována pro základní disky. 
+Při vytváření sady škálování nízkou prioritu, můžete nastavit zásady vyřazení *Deallocate* (výchozí) nebo *odstranit*. 
 
-Pokud chcete virtuální počítače ve vaší nízkou prioritu měřítku nastavena na odstraněn v případě jejich vyřazování, můžete nastavit zásady vyřazení pro odstranění v vaše [šablony Azure Resource Manageru](#use-azure-resource-manager-templates). Se zásadami vyřazení nastavena na hodnotu odstranit můžete vytvořit nové virtuální počítače zvýšením počtu vlastnost škálování sady instance. Vyřazené virtuálních počítačů se odstraní spolu s jejich základní disky, a proto vám nebude nic účtováno pro úložiště. Můžete také použít funkci automatického škálování sad škálování pro automatické zkuste a kompenzovat vyřazené virtuálních počítačů, ale neexistuje žádná záruka, který bude úspěšné přidělení. Doporučuje se, že pouze používáte funkci Automatické škálování na nízkou prioritu škálovací sady při nastavení zásad vyřazení odstranit předejdete náklady na vaše disky a stiskne maximální kvóty. 
+*Deallocate* zásad přesune vyřazené virtuální počítače do stavu zastavena navrácena umožňuje znovu nasaďte vyřazené instancí. Neexistuje však záruka, že bude úspěšné přidělení. Deallocated virtuální počítače budou započítává vaší škálování nastavení instance kvóty a vám bude účtována pro základní disky. 
+
+Pokud chcete virtuální počítače ve vaší nízkou prioritu měřítku nastavena na odstraněn v případě jejich vyřazování, můžete nastavit zásady vyřazení na *odstranit*. Se zásadami vyřazení nastavena na hodnotu odstranit můžete vytvořit nové virtuální počítače zvýšením počtu vlastnost škálování sady instance. Vyřazené virtuálních počítačů se odstraní spolu s jejich základní disky, a proto vám nebude nic účtováno pro úložiště. Můžete také použít funkci automatického škálování sad škálování pro automatické zkuste a kompenzovat vyřazené virtuálních počítačů, ale neexistuje žádná záruka, který bude úspěšné přidělení. Doporučuje se, že pouze používáte funkci Automatické škálování na nízkou prioritu škálovací sady při nastavení zásad vyřazení odstranit předejdete náklady na vaše disky a stiskne maximální kvóty. 
 
 > [!NOTE]
-> Během ve verzi preview bude možné nastavit zásady vyřazení pomocí [šablon Azure Resource Manageru](#use-azure-resource-manager-templates). 
+> Během ve verzi preview bude možné nastavit zásady vyřazení pomocí [portál Azure](#use-the-azure-portal) a [šablon Azure Resource Manageru](#use-azure-resource-manager-templates). 
 
 ## <a name="deploying-low-priority-vms-on-scale-sets"></a>Nastaví nízkou prioritu virtuální počítače na škálování nasazení
 
 Chcete-li nasadit nízkou prioritu virtuálních počítačů na sady škálování, můžete nastavit nový *s prioritou* příznak, který *nízká*. Všechny virtuální počítače ve škálovací sadě se nastaví na nízkou prioritu. Vytvořit měřítko nastavit s virtuálními počítači nízkou prioritu, použijte jednu z následujících metod:
+- [Azure Portal](#use-the-azure-portal)
 - [Azure CLI 2.0](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Šablony Azure Resource Manageru](#use-azure-resource-manager-templates)
+
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
+
+Proces vytvoření sadě škálování, kterou používá virtuální počítače s nízkou prioritou je stejný jako podrobné v [Začínáme článku](quick-create-portal.md). Při nasazení sady škálování, můžete nastavit příznak nízkou prioritu a zásady vyřazení: ![vytvořit měřítko nastavit s virtuálními počítači s nízkou prioritou](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
 ## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
 
@@ -77,7 +81,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Pomocí šablony Azure Resource Manageru
 
-Proces vytvoření sadě škálování, kterou používá virtuální počítače s nízkou prioritou je stejný jako v článku na získávání Začínáme pro podrobné [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Přidat vlastnosti "priority", která má *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* prostředků zadejte v šabloně a *nízká* jako hodnotu. Nezapomeňte použít *2017-10-30-preview* verze rozhraní API nebo vyšší. 
+Proces vytvoření sadě škálování, kterou používá virtuální počítače s nízkou prioritou je stejný jako v článku na získávání Začínáme pro podrobné [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). Přidat vlastnosti "priority", která má *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* prostředků zadejte v šabloně a *nízká* jako hodnotu. Nezapomeňte použít *2018-03-01* verze rozhraní API nebo vyšší. 
 
 Aby bylo možné nastavit zásady vyřazení k odstranění, přidejte parametr "evictionPolicy" a nastavte ji na *odstranit*.
 
@@ -88,7 +92,7 @@ Následující příklad vytvoří škálování nízkou prioritu Linux nastaven
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   "name": "myScaleSet",
   "location": "East US 2",
-  "apiVersion": "2017-12-01",
+  "apiVersion": "2018-03-01",
   "sku": {
     "name": "Standard_DS2_v2",
     "capacity": "2"
@@ -121,6 +125,23 @@ Následující příklad vytvoří škálování nízkou prioritu Linux nastaven
   }
 }
 ```
+## <a name="faq"></a>Nejčastější dotazy
+
+### <a name="can-i-convert-existing-scale-sets-to-low-priority-scale-sets"></a>Můžete převést existující sady škálování na nízkou prioritu škálovací sady?
+Ne, nastavení příznaku nízkou prioritu je podporována pouze v okamžiku vytvoření.
+
+### <a name="can-i-create-a-scale-set-with-both-regular-vms-and-low-priority-vms"></a>Můžete vytvořit škálování s regulární virtuálních počítačů a virtuálních počítačů s nízkou prioritou
+Ne, škálovací sadu nepodporuje více než jeden typ s prioritou.
+
+### <a name="how-is-quota-managed-for-low-priority-vms"></a>Spravováni kvótu pro virtuální počítače s nízkou prioritou
+Nízkou prioritu virtuálních počítačů a virtuálních počítačů regulární sdílet stejný fond kvóty. 
+
+### <a name="can-i-use-autoscale-with-low-priority-scale-sets"></a>Můžete použít automatické škálování s nízkou prioritou škálovací sady?
+Ano, můžete nastavit automatické škálování pravidla v sadě škálování nízkou prioritu. Pokud vaše virtuální počítače jsou vyřazování, automatické škálování můžete zkusit vytvořit nové virtuální počítače s nízkou prioritou. Nezapomeňte, že jste se nezaručuje, ale tato kapacita. 
+
+### <a name="does-autoscale-work-with-both-eviction-policies-deallocate-and-delete"></a>Škálování funguje s obě zásady vyřazení (zrušit přidělení a odstranit)?
+Doporučujeme nastavit zásady vaší vyřazení odstranit při použití automatického škálování. To je proto deallocated instance počítají proti spočítat kapacity v sadě škálování. Při použití automatického škálování, bude pravděpodobně stiskněte váš cílový počet instancí rychle z důvodu deallocated, vyřazené instance. 
+
 ## <a name="next-steps"></a>Další postup
 Teď, když jste vytvořili škálování nastavit s virtuálními počítači nízkou prioritu, zkuste nasazení naše [automatické škálování šablony pomocí nízkou prioritu](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri).
 

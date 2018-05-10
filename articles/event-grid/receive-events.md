@@ -1,18 +1,18 @@
 ---
-title: "Přijímat události z události mřížky Azure pro koncový bod HTTP"
-description: "Popisuje, jak ověřit koncový bod protokolu HTTP, pak přijímat a deserializaci události z události mřížky Azure"
+title: Přijímat události z události mřížky Azure pro koncový bod HTTP
+description: Popisuje, jak ověřit koncový bod protokolu HTTP, pak přijímat a deserializaci události z události mřížky Azure
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 179f7c46186762eed2f7f8ac90620ac2fec9caf3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: db79629c5f806fe50d22200574c29052a485dd06
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
@@ -27,9 +27,9 @@ Tento článek popisuje, jak [ověření koncový bod HTTP](security-authenticat
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-Pokud vyvíjíte v rozhraní .net, [Přidat závislost](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) na funkce pro `Microsoft.Azure.EventGrid` [balíček Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Sady SDK pro jiné jazyky jsou dostupné prostřednictvím [publikování sady SDK](./sdk-overview.md#publish-sdks) odkaz. Tyto balíčky obsahovat modely pro typy nativní události, jako například `EventGridEvent`, `StorageBlobCreatedEventData`, a `EventHubCaptureFileCreatedEventData`.
+Pokud vyvíjíte v rozhraní .NET, [Přidat závislost](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) na funkce pro `Microsoft.Azure.EventGrid` [balíček Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Sady SDK pro jiné jazyky jsou dostupné prostřednictvím [publikování sady SDK](./sdk-overview.md#data-plane-sdks) odkaz. Tyto balíčky obsahovat modely pro typy nativní události, jako například `EventGridEvent`, `StorageBlobCreatedEventData`, a `EventHubCaptureFileCreatedEventData`.
 
-To provedete kliknutím na odkaz "zobrazení soubory. ve vaší funkci Azure (na portálu Azure functions pravé většina podokno) a vytvořte soubor s názvem souboru project.json. Přidejte následující obsah `project.json` souboru a uložte jej:
+Klikněte na odkaz "zobrazení soubory. ve vaší funkci Azure (na portálu Azure functions pravé většina podokno) a vytvořte soubor s názvem souboru project.json. Přidejte následující obsah `project.json` souboru a uložte jej:
 
  ```json
 {
@@ -41,19 +41,17 @@ To provedete kliknutím na odkaz "zobrazení soubory. ve vaší funkci Azure (na
     }
    }
 }
-
 ```
 
-![Přidání balíčku Nuget](./media/receive-events/add-dependencies.png)
+![Přidání balíčku NuGet](./media/receive-events/add-dependencies.png)
 
 ## <a name="endpoint-validation"></a>Koncový bod ověření
 
-První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` události. Pokaždé, když se vytvoří nový odběr událostí, odešle událost mřížky událost ověření koncový bod s `validationCode` v datovou částí. Koncový bod je potřeba echo tomto zpět v textu odpovědi na [prokázat koncový bod je platná a ve vlastnictví můžete](security-authentication.md#webhook-event-delivery). Pokud používáte [aktivační událost mřížky](../azure-functions/functions-bindings-event-grid.md) místo WebHook, jehož aktivuje funkce, koncový bod ověření zpracovává za vás.
+První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` události. Pokaždé, když se uživatel přihlásí k události, odešle událost mřížky událost ověření koncový bod s `validationCode` v datovou částí. Koncový bod je potřeba echo tomto zpět v textu odpovědi na [prokázat koncový bod je platná a ve vlastnictví můžete](security-authentication.md#webhook-event-delivery). Pokud používáte [aktivační událost mřížky](../azure-functions/functions-bindings-event-grid.md) místo WebHook, jehož aktivuje funkce, koncový bod ověření zpracovává za vás. Pokud používáte rozhraní API služby třetích stran (jako je [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci prostřednictvím kódu programu echo ověřovacího kódu. Pro tyto služby můžete ručně ověřit předplatné pomocí ověření adresy URL, která je odesláno jako událost ověření předplatného. Zkopírujte tuto adresu URL v `validationUrl` vlastnost a odesílání GET vyžádat buď prostřednictvím klienta REST nebo webový prohlížeč.
 
-Použijte následující kód pro zpracování ověření předplatného:
+Chcete-li prostřednictvím kódu programu echo ověřovacího kódu, použijte následující kód:
 
 ```csharp
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -102,7 +100,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -122,7 +119,6 @@ module.exports = function (context, req) {
     }
     context.done();
 };
-
 ```
 
 ### <a name="test-validation-response"></a>Test ověření odpovědi
@@ -130,7 +126,6 @@ module.exports = function (context, req) {
 Testování funkce odpovědi ověření zadáním nebo vložením událost vzorku do pole testování pro funkci:
 
 ```json
-
 [{
   "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
@@ -143,7 +138,6 @@ Testování funkce odpovědi ověření zadáním nebo vložením událost vzork
   "metadataVersion": "1",
   "dataVersion": "1"
 }]
-
 ```
 
 Po kliknutí na tlačítko spustit, výstup by měl být 200 OK a `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` v textu:
@@ -152,10 +146,9 @@ Po kliknutí na tlačítko spustit, výstup by měl být 200 OK a `{"ValidationR
 
 ## <a name="handle-blob-storage-events"></a>Zpracování událostí úložiště objektů Blob
 
-Nyní jsme můžete rozšířit funkce pro zpracování `Microsoft.Storage.BlobCreated`:
+Teď umožňuje rozšířit funkci pro zpracování `Microsoft.Storage.BlobCreated`:
 
 ```cs
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -211,7 +204,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 
 module.exports = function (context, req) {
@@ -245,7 +237,6 @@ module.exports = function (context, req) {
 Otestovat novou funkčnost funkce umístěním [událostí úložiště objektů Blob](./event-schema-blob-storage.md#example-event) do testovací pole a spuštění:
 
 ```json
-
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/xstoretestaccount",
   "subject": "/blobServices/default/containers/testcontainer/blobs/testfile.txt",
@@ -269,23 +260,21 @@ Otestovat novou funkčnost funkce umístěním [událostí úložiště objektů
   "dataVersion": "",
   "metadataVersion": "1"
 }]
-
 ```
 
 Byste měli vidět výstup URL objektu blob v protokolu funkce:
 
 ![Výstup protokolu](./media/receive-events/blob-event-response.png)
 
-Tuto funkci za provozu můžete také otestovat vytvořením účtu úložiště Blob nebo obecné účely V2 účtu úložiště (GPv2) [přidávání a událostí předplatné](../storage/blobs/storage-blob-event-quickstart.md)a nastavení koncového bodu na adresu URL, funkce:
+Můžete také otestovat vytvořením účtu úložiště Blob nebo obecné účely V2 účtu úložiště (GPv2) [přidávání a událostí předplatné](../storage/blobs/storage-blob-event-quickstart.md)a nastavení koncového bodu na adresu URL, funkce:
 
-![URL – funkce](./media/receive-events/function-url.png)
+![Adresa URL funkce](./media/receive-events/function-url.png)
 
 ## <a name="handle-custom-events"></a>Popisovač vlastní události
 
-Nakonec umožňuje rozšířit funkce jednou tak, aby ho může také zpracovat vlastních událostí. Přidáme kontrolu pro vlastní událost `Contoso.Items.ItemReceived`. Poslední kód by měl vypadat takto:
+Nakonec umožňuje rozšířit funkce jednou tak, aby ho může také zpracovat vlastních událostí. Přidání kontroly pro událost `Contoso.Items.ItemReceived`. Poslední kód by měl vypadat jako:
 
 ```cs
-
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -354,7 +343,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 ```
 
 ```javascript
-
 var http = require('http');
 var t = require('tcomb');
 
@@ -401,7 +389,6 @@ module.exports = function (context, req) {
 Nakonec testovací rozšířeného funkce dokáže zpracovat teď vaše vlastní typ události:
 
 ```json
-
 [{
     "subject": "Contoso/foo/bar/items",
     "eventType": "Microsoft.EventGrid.CustomEventType",
@@ -415,7 +402,6 @@ Nakonec testovací rozšířeného funkce dokáže zpracovat teď vaše vlastní
     "dataVersion": "",
     "metadataVersion": "1"
 }]
-
 ```
 
 Můžete také otestovat tuto funkci za provozu pomocí [odeslání vlastní události s CURL z portálu](./custom-event-quickstart-portal.md) nebo [publikování na vlastní téma](./post-to-custom-topic.md) pomocí některé služby nebo aplikace, které vystavit koncový bod například [Postman](https://www.getpostman.com/). Vytvořte vlastní téma a odběr událostí s koncovým bodem nastavit jako adresu URL funkce.

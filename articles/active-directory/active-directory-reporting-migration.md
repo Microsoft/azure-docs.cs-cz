@@ -1,25 +1,23 @@
 ---
-title: "Najít sestavy aktivity uživatele Azure Active Directory na portálu Azure | Microsoft Docs"
-description: "Zjistěte, kde jsou sestavy aktivity uživatele Azure Active Directory na portálu Azure."
+title: Najít sestavy aktivity uživatele Azure Active Directory na portálu Azure | Microsoft Docs
+description: Zjistěte, kde jsou sestavy aktivity uživatele Azure Active Directory na portálu Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
+editor: ''
 ms.service: active-directory
-ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: 
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 23c186e268e9a43982ec6c34d350900793fad8de
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 985bdc3c00549844958c23a83496a019d7a31944
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Najít sestavy aktivity na portálu Azure
 
@@ -95,7 +93,7 @@ Následující tabulka seznamy Azure AD neobvyklé aktivity zabezpečení sestav
 
 | Sestava neobvyklé aktivity Azure AD |  Typ události riziko ochranu identity|
 | :--- | :--- |
-| Uživatelé s uniklé přihlašovací údaje | Uniklé přihlašovací údaje |
+| Uživatelé s uniklými přihlašovacími údaji | Uniklé přihlašovací údaje |
 | Nestandardní přihlašovací aktivita | Nemožná cesta do netypických míst |
 | Přihlášení z možných nakažených zařízení | Přihlášení z nakažených zařízení|
 | Přihlášení z neznámých zdrojů | Přihlášení z anonymních IP adres |
@@ -151,6 +149,6 @@ Chcete-li zobrazit **využití aplikace** sestavy na **Azure Active Directory** 
 
 ![Sestava podnikové aplikace přihlášení](./media/active-directory-reporting-migration/199.png "podnikové aplikace přihlášení sestavy")
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](active-directory-reporting-azure-portal.md).

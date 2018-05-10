@@ -1,12 +1,12 @@
 ---
-title: "Kontrolní seznam zabezpečení Azure service fabric | Microsoft Docs"
-description: "Tento článek obsahuje sadu kontrolní seznam pro zabezpečení zabezpečení prostředků infrastruktury Azure."
+title: Kontrolní seznam zabezpečení Azure service fabric | Microsoft Docs
+description: Tento článek obsahuje sadu kontrolní seznam pro zabezpečení zabezpečení prostředků infrastruktury Azure.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 526f10bab30b7d0fae796e47f5a27a58428b9a3b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ef404b106d600f5cb25a46319d75c8978148b466
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Kontrolní seznam zabezpečení Azure Service Fabric
 Tento článek poskytuje snadno použitelnou kontrolní seznam, který vám pomůže zabezpečit vaše prostředí Azure Service Fabric.
@@ -46,7 +46,7 @@ Následující kontrolní seznam použijte při Ujistěte se, že nebyly přehl�
 |Key Vault| <ul><li>Používá ke správě certifikátů pro clusterů Service Fabric v Azure.  </li></ul>|
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Proces upgradu Service Fabric Cluster a očekávání od vás](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade)
 - [Správu aplikací Service Fabric v sadě Visual Studio](https://docs.microsoft.com/azure/service-fabric/service-fabric-manage-application-in-visual-studio).
 - [Stav služby Fabric modelu ÚVOD](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction).

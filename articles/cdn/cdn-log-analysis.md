@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: rli; v-deasim
-ms.openlocfilehash: 3f475c5cc9b766ea9aa5bd39d4a378e8deed5e35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 61fbe6e29df787048a9694138d3c9095f5cba76b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Analýza vzorů využití Azure CDN
 
@@ -26,7 +26,7 @@ Jakmile povolíte CDN pro vaši aplikaci, můžete sledovat využití CDN, zkont
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Základní analýza prostřednictvím Azure diagnostických protokolů
 
-Základní analýza je k dispozici pro všechny koncové body CDN patřící do Verizon (Standard a Premium) a profilů CDN Akamai (Standard). Azure diagnostics protokoly umožňují základní analýza být exportovány do úložiště Azure, služby event hubs nebo analýzy protokolů. Analýzy protokolů nabízí řešení grafů, které jsou uživatelsky konfigurovatelného a přizpůsobit. Další informace najdete v tématu [Azure diagnostické protokoly](cdn-azure-diagnostic-logs.md).
+Základní analýza je k dispozici pro koncové body CDN pro všechny cenové úrovně. Azure diagnostics protokoly umožňují základní analýza být exportovány do úložiště Azure, služby event hubs nebo analýza protokolů Azure. Azure Log Analytics nabízí řešení grafů, které jsou uživatelsky konfigurovatelného a přizpůsobit. Další informace o Azure diagnostických protokolů najdete v tématu [Azure diagnostické protokoly](cdn-azure-diagnostic-logs.md).
 
 ## <a name="verizon-core-reports"></a>Verizon základní sestavy
 
@@ -36,7 +36,7 @@ Jako uživatel Azure CDN s **Azure CDN Standard od společnosti Verizon** nebo *
 
 Jako uživatel Azure CDN s **Azure CDN Standard od společnosti Verizon** nebo **Azure CDN Premium od společnosti Verizon** profilu, můžete zobrazit na doplňkovém portálu Verizon Verizon vlastní sestavy. Verizon vlastní sestavy je přístupná prostřednictvím **spravovat** možnost z portálu Azure. Verizon vlastní sestavy stránky zobrazuje počet přístupů nebo data přenesená pro každý okraj CName, který patří do profilu Azure CDN. Data lze seskupovat podle kódu nebo mezipaměti stav odpovědi HTTP přes období. Další informace najdete v tématu [vlastní sestavy od společnosti Verizon](cdn-verizon-custom-reports.md).
 
-## <a name="verizon-premium-reports"></a>Verizon premium sestavy
+## <a name="azure-cdn-premium-from-verizon-reports"></a>Azure CDN Premium od společnosti Verizon sestavy
 
 S **Azure CDN Premium od společnosti Verizon**, lze rovněž použít následující sestavy:
    * [Rozšířené sestavy HTTP](cdn-advanced-http-reports.md)

@@ -1,5 +1,5 @@
 ---
-title: Nahrávání, vypisování a odstraňování objektů blob s využitím služby Azure Storage pomocí JavaScriptu a HTML v prohlížeči
+title: Rychlý start Azure – Vytvoření objektu blob v úložišti objektů pomocí JavaScriptu a HTML v prohlížeči
 description: Zjistěte, jak pomocí instance třídy BlobService nahrávat, vypisovat a odstraňovat objekty blob s využitím JavaScriptu na stránce HTML.
 services: storage
 keywords: storage, javascript, html
@@ -10,23 +10,18 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: 83db6539e6ad8ec8e18d99bf7eedbc037d95509e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3d01788050779ea5d6e67b345f048775f8e98e9e
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-with-azure-storage-using-javascripthtml-in-the-browser"></a>Rychlý start: Nahrávání, vypisování a odstraňování objektů blob s využitím služby Azure Storage pomocí JavaScriptu a HTML v prohlížeči
-Tento rychlý start předvádí správu objektů blob z kódu spuštěného zcela v prohlížeči a také požadovaná bezpečnostní opatření pro zajištění chráněného přístupu k účtu úložiště objektů blob. K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rychlý start: Nahrávání, vypisování a odstraňování objektů blob pomocí JavaScriptu a HTML v prohlížeči
+Tento rychlý start předvádí správu objektů blob z kódu spuštěného zcela v prohlížeči. Níže použitý přístup ukazuje, jak používat požadovaná bezpečnostní opatření pro zajištění chráněného přístupu k účtu úložiště objektů blob. K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
-
-### <a name="copy-security-settings"></a>Kopírování nastavení zabezpečení
-V průběhu tohoto rychlého startu budete potřebovat několik hodnot souvisejících se zabezpečením, abyste mohli vytvořit token zabezpečení. Tyto hodnoty můžete zkopírovat z portálu do textového editoru pro pozdější použití. 
-
-Na portálu vyberte účet úložiště a vyhledejte část **Nastavení**. V části Nastavení vyberte **Přístupové klíče** a poznamenejte si hodnoty **Název účtu úložiště** a **Klíč** pod nadpisem **key1**. (Pomocí tlačítka Kopírovat napravo od vstupního pole můžete hodnotu zkopírovat do schránky.)
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Nastavení pravidel CORS pro účet úložiště 
 Než vaše webová aplikace získá přístup k úložišti objektů blob z klienta, musí se účet nakonfigurovat tak, aby umožňoval [sdílení prostředků různého původu](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) neboli CORS. 
@@ -55,7 +50,7 @@ Dále pomocí služby Azure Cloud Shell vytvoříte token zabezpečení.
 ## <a name="create-a-shared-access-signature"></a>Vytvoření sdíleného přístupového podpisu
 Sdílený přístupový podpis (SAS) se používá v kódu spuštěném v prohlížeči k ověřování požadavků na úložiště objektů blob. Díky použití SAS se klient může ověřit, aniž by měl přístupový klíč nebo připojovací řetězec účtu. Další informace o SAS najdete v tématu [Použití sdílených přístupových podpisů (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
 
-SAS můžete vytvořit pomocí Azure CLI ve službě Azure Cloud Shell. Následující tabulka obsahuje popis parametrů, pro které je potřeba zadat hodnoty, aby se vygeneroval SAS.
+SAS můžete vytvořit pomocí Azure CLI ve službě Azure Cloud Shell nebo pomocí Průzkumníka služby Azure Storage. Následující tabulka obsahuje popis parametrů, pro které je potřeba zadat hodnoty, aby se pomocí CLI vygeneroval SAS.
 
 | Parametr      |Popis  | Zástupný symbol |
 |----------------|-------------|-------------|
@@ -121,7 +116,7 @@ Nakonec v příkazovém řádku zadejte příkaz `npm start` a spusťte webový 
 npm start
 ```
 
-### <a name="get-the-blob-storage-client-scripts"></a>Získání klientských skriptů pro úložiště objektů blob
+### <a name="get-the-blob-storage-client-library"></a>Získání klientské knihovny pro úložiště objektů blob
 [Stáhněte klientské knihovny pro JavaScript](https://aka.ms/downloadazurestoragejs), extrahujte obsah souboru zip a umístěte soubory skriptů ze složky *bundle* do složky *scripts*.
 
 ### <a name="add-the-client-script-reference-to-the-page"></a>Přidání odkazu na klientský skript do stránky
@@ -153,7 +148,7 @@ Tento kód na stránku přidá následující položky:
 - element *INPUT* sloužící k nahrání souboru
 - zástupná hodnota pro kód specifický pro úložiště
 
-### <a name="create-a-blob-service"></a>Vytvoření služby Blob Service 
+### <a name="create-an-instance-of-blobservice"></a>Vytvoření instance třídy BlobService 
 Třída [BlobService](https://azure.github.io/azure-storage-node/BlobService.html) poskytuje rozhraní pro službu Azure Blob Storage. K vytvoření instance služby je potřeba zadat název účtu úložiště a SAS vygenerovaný v předchozím kroku.
 
 ```javascript
@@ -184,7 +179,7 @@ document.getElementById('create-button').addEventListener('click', () => {
 ```
 
 ### <a name="upload-a-blob"></a>Nahrání objektu blob
-Pokud chcete nahrát objekt blob přes formulář HTML, nejprve získejte odkaz na vybraný soubor přes pole `files` elementu *INPUT*, jehož *type* (typ) je nastavený na *file* (soubor).
+Pokud chcete nahrát objekt blob přes formulář HTML, získejte odkaz na vybraný soubor z elementu *INPUT*. Vybraný soubor je k dispozici prostřednictvím pole `files` elementu, jehož *type* (typ) je nastavený na *file* (soubor).
 
 Ve skriptu můžete přidat odkaz na element HTML a předat vybraný soubor do služby Blob Service.
 
@@ -227,6 +222,9 @@ document.getElementById('list-button').addEventListener('click', () => {
     
 });
 ```
+
+Metoda *listBlobsSegmented* vrátí kolekci objektů blob. Ve výchozím nastavení je objem kolekce nastavený na 5 000 objektů blob, ale tuto hodnotu si můžete nastavit podle svých potřeb. Příklad [continuationSample](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js#L132) ukazuje, jak pracovat s velkým množstvím objektů blob a jak klientská knihovna podporuje stránkování. 
+
 
 ### <a name="delete-blobs"></a>Odstranění objektů blob
 Objekt blob, který jste nahráli, můžete odstranit zavoláním metody [deleteBlobIfExists](https://azure.github.io/azure-storage-node/BlobService.html#deleteBlobIfExists__anchor).

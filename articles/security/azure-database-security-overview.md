@@ -1,12 +1,12 @@
 ---
-title: "Přehled zabezpečení databáze Azure | Microsoft Docs"
-description: "Tento článek obsahuje přehled Azure databáze funkce zabezpečení."
+title: Přehled zabezpečení databáze Azure | Microsoft Docs
+description: Tento článek obsahuje přehled Azure databáze funkce zabezpečení.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: b5e9e412fddf727237b008e37238fa2c547694de
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-overview"></a>Přehled zabezpečení databáze Azure
 
@@ -211,7 +211,7 @@ Osoby zabezpečení nebo jiné určený správce můžete získat okamžité ode
 Azure Marketplace je internetové tržiště aplikací a služeb, kde start-upy a nezávislí dodavatelé softwaru můžou nabízet svoje řešením zákazníkům Azure z celého světa.
 Azure Marketplace spojuje ekosystémy partnerů Microsoft Azure do jediné unifikované platformy, abychom svým zákazníkům a partnerům mohli poskytovat lepší služby. Klikněte na tlačítko [sem](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1) na první pohled databáze zabezpečovací produkty k dispozici v Azure Marketplace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [zabezpečení vaší databázi SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).
 - Další informace o [služby Azure Security Center a Azure SQL Database](https://docs.microsoft.com/azure/security-center/security-center-sql-database).

@@ -1,24 +1,24 @@
 ---
-title: "Rozdíly a důležité informace pro virtuální počítače v Azure zásobníku | Microsoft Docs"
-description: "Další informace o rozdílech a důležité informace při práci s virtuálními počítači v Azure zásobníku."
+title: Rozdíly a důležité informace pro virtuální počítače v Azure zásobníku | Microsoft Docs
+description: Další informace o rozdílech a důležité informace při práci s virtuálními počítači v Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 05/04/2018
 ms.author: brenduns
-ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 8c9fd7d5824e5d315a7dd30e5052fe10802d197e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Důležité informace pro virtuální počítače v Azure zásobníku
 
@@ -28,7 +28,7 @@ Virtuální počítače jsou na vyžádání, škálovatelných výpočetních p
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Tahák: rozdíly virtuálního počítače
 
-| Funkce | Azure (global) | Azure Stack |
+| Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |
 | Bitové kopie virtuálních počítačů | Azure Marketplace obsahuje bitové kopie, které můžete použít k vytvoření virtuálního počítače. Najdete v článku [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) stránky pro zobrazení seznamu bitových kopií, které jsou k dispozici v Azure Marketplace. | Ve výchozím nastavení nejsou k dispozici všechny Image, k dispozici v zásobníku Azure marketplace. Správce cloudu Azure zásobníku by měla publikovat nebo před uživatelé používají stáhli bitové kopie do zásobníku Azure marketplace. |
 | Velikosti virtuálních počítačů | Azure podporuje širokou škálu velikostí pro virtuální počítače. Další informace o dostupných velikostí a možnosti, naleznete [velikosti virtuálních počítačů Windows](../../virtual-machines/virtual-machines-windows-sizes.md) a [velikostí virtuálních počítačů Linux](../../virtual-machines/linux/sizes.md) témata. | Azure zásobníku podporuje podmnožinu velikostí virtuálních počítačů, které jsou k dispozici v Azure. Chcete-li zobrazit seznam podporovaných velikostí, naleznete [velikostí virtuálních počítačů](#virtual-machine-sizes) tohoto článku. |
@@ -61,7 +61,7 @@ Následující tabulka uvádí virtuální počítače, které jsou podporovány
 |Optimalizované z hlediska paměti|Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Optimalizované z hlediska paměti|DSv2-series-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Velikosti virtuálních počítačů a jejich přidružených prostředků počty jsou konzistentní mezi zásobník Azure a Azure. Například tato konzistence zahrnuje množství paměti, počet jader a číslo nebo velikost datových disků, které lze vytvořit. Výkon stejnou velikost virtuálního počítače v Azure zásobníku však závisí na základní charakteristiky konkrétní prostředí Azure zásobníku.
+Velikosti virtuálních počítačů a jejich přidružených prostředků počty jsou konzistentní mezi zásobník Azure a Azure. Tato konzistence zahrnuje množství paměti, počet jader a číslo nebo velikost datových disků, které lze vytvořit. Výkon stejnou velikost virtuálního počítače v Azure zásobníku však závisí na základní charakteristiky konkrétní prostředí Azure zásobníku.
 
 ## <a name="virtual-machine-extensions"></a>Rozšíření virtuálních počítačů
 
@@ -93,6 +93,17 @@ Get-AzureRmResourceProvider | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
 Seznam podporovaných prostředků typy a verze rozhraní API se může lišit, pokud operátor cloudu aktualizuje na novější verzi prostředí Azure zásobníku.
+
+## <a name="windows-activation"></a>Aktivace systému Windows
+
+Produkty Windows musí být použity v souladu s práva k použití produktu a licenční podmínky společnosti Microsoft. Používá Azure zásobníku [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) k aktivaci systému Windows Server virtuálních počítačů (VM). 
+ - Protože Azure zásobníku hostitele aktivuje s klíče AVMA pro Windows Server 2016, všechny virtuální počítače, Windows serverem 2012 nebo později budou automaticky aktivována.
+ - Virtuální počítače, které spuštění systému Windows Server 2008 R2 nejsou aktivovány automaticky a musí být aktivované touto metodou [aktivaci pomocí kódu MAK](https://technet.microsoft.com/library/ff793438.aspx). 
+
+Microsoft Azure aktivace služby správy KLÍČŮ používá k aktivaci virtuální počítače Windows. Pokud přesunete virtuální počítač z Azure zásobníku pro Azure a dojde k aktivaci problémy, projděte si téma [řešení potíží s Windows Azure virtuálního počítače při potížích s aktivací](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Další informace naleznete na [selhání aktivace řešení potíží s Windows na virtuálních počítačích Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) příspěvek blogu týmu podpory Azure.
+
+
+
 
 ## <a name="next-steps"></a>Další postup
 

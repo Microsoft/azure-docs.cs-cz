@@ -1,13 +1,13 @@
 ---
-title: "K vytvoření kompletní virtuální počítač s Linuxem v Azure použijte Ansible | Microsoft Docs"
-description: "Další informace o použití Ansible k vytváření a správě dokončení prostředí Linux virtuálního počítače v Azure"
+title: K vytvoření kompletní virtuální počítač s Linuxem v Azure použijte Ansible | Microsoft Docs
+description: Další informace o použití Ansible k vytváření a správě dokončení prostředí Linux virtuálního počítače v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 5efb666652bf124160df836b5d12305903d907ba
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 22b580e74ec412763b9c34a7fa2fea97c8a277d0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Vytvořte dokončení prostředí Linux virtuálního počítače v Azure s Ansible
 Ansible umožňuje automatizovat nasazení a konfigurace prostředků ve vašem prostředí. Ansible můžete použít ke správě virtuálních počítačů (VM) v Azure, stejně jako jiný prostředek. Tento článek ukazuje, jak vytvořit úplný prostředí Linux a podpůrné prostředky s Ansible. Můžete si také přečíst postup [vytvořit základní virtuální počítač s Ansible](ansible-create-vm.md).
@@ -29,7 +29,7 @@ Ansible umožňuje automatizovat nasazení a konfigurace prostředků ve vašem 
 Ke správě prostředků Azure s Ansible, budete potřebovat následující:
 
 - Ansible a moduly Azure Python SDK v systému hostitele.
-    - Nainstalujte Ansible [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73), a [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
+    - Nainstalujte Ansible [CentOS 7.4](ansible-install-configure.md#centos-74), [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), a [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
 - Přihlašovací údaje Azure a Ansible nakonfigurovat jejich použití.
     - [Vytvořit přihlašovací údaje Azure a nakonfigurovat Ansible](ansible-install-configure.md#create-azure-credentials)
 - Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. 

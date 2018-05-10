@@ -1,0 +1,93 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě HDInsight
+metadata:
+  title: Dokumentace ke službě Azure HDInsight – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Naučte se používat Hadoop v HDInsightu. Z dokumentace se dozvíte, jak pomocí Hadoopu, Sparku, Kafka, HBase a dalších technologií zpracovávat, analyzovat a zkoumat velké objemy dat.
+  services: hdinsight
+  author: nitinme
+  manager: cgronlun
+  ms.service: hdinsight
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2018
+  ms.author: nitinme
+  ms.openlocfilehash: e3a366cd933b8667b39df146d80d07d5548138bc
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm a R.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Apache Kafka ve službě HDInsight (17:19)
+    href: https://azure.microsoft.com/resources/videos/azure-friday-apache-kafka-on-hdinsight-ga/
+    width: 250
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Naučte se vytvořit cluster HDInsight a spouštět úlohy:'
+  - type: list
+    style: icon64
+    items:
+    - image:
+        src: media/index/hadoop_r.svg
+      text: Hadoop
+      href: /azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal
+    - image:
+        src: media/index/spark_r.svg
+      text: Spark
+      href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql-use-portal
+    - image:
+        src: media/index/kafka_r.svg
+      text: Kafka
+      href: /azure/hdinsight/kafka/apache-kafka-get-started
+    - image:
+        src: media/index/hbase_r.svg
+      text: HBase
+      href: /azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux
+    - image:
+        src: media/index/hive_r.svg
+      text: Interaktivní dotaz
+      href: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
+    - image:
+        src: media/index/storm_r.svg
+      text: Storm
+      href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
+    - image:
+        src: media/index/r-server_r.svg
+      text: R Server
+      href: /azure/hdinsight/r-server/r-server-get-started
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se používat Azure HDInsight v různých scénářích:'
+  - type: list
+    style: unordered
+    items:
+    - html: 'Hadoop: <a href="/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux">Provádění operací ETL</a> | <a href="/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-adf">Vytváření clusterů na vyžádání</a>'
+    - html: 'Spark: <a href="/azure/hdinsight/spark/apache-spark-load-data-run-query">Spouštění interaktivních dotazů</a> | <a href="/azure/hdinsight/spark/apache-spark-use-bi-tools">Vizualizace dat</a> | <a href="/azure/hdinsight/spark/apache-spark-ipython-notebook-machine-learning">Strojové učení</a>'
+    - html: 'Kafka: <a href="/azure/hdinsight/hdinsight-apache-kafka-spark-structured-streaming">Strukturované streamování s využitím Kafka</a> | <a href="/azure/hdinsight/hdinsight-apache-storm-with-kafka">Použití se Stormem v HDInsightu</a> | <a href="/azure/hdinsight/kafka/apache-kafka-producer-consumer-api">Použití rozhraní Kafka Producer and Consumer API</a>'
+    - html: 'HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Vytváření clusterů HBase ve virtuální síti</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Použití Apache Phoenixu</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Připojení ke Sparku</a>'
+    - html: 'Interactive Query: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Propojení s Power BI s využitím Direct Query</a>'
+    - html: 'Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Vytvoření topologie Stormu v Javě</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Nasazení topologií Stormu v HDInsightu</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Zápis ze Stormu do služby Data Lake Store</a>'
+    - html: 'R Server: <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Použití Nástrojů R pro Visual Studio</a>'
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/resourcemanager/azurerm.hdinsight/v2.3.0/azurerm.hdinsight">Azure PowerShell</a></p>
+    - title: Jazyky
+      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight">.NET (Hadoop)</a></p><p><a href="https://www.nuget.org/packages/Microsoft.HBase.Client/">.NET (HBase)</a></p><p><a href="https://archive.codeplex.com/?p=hadoopsdk">.NET (Avro)</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/hdinsight/">REST API</a></p><p><a href="https://docs.microsoft.com/rest/api/hdinsightspark/">REST API (Spark)</a></p>

@@ -8,12 +8,6 @@
   items:
     - name: Vytvoření profilu Traffic Manageru
       href: traffic-manager-create-profile.md
-- name: Ukázky
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Kurzy
   items:
     - name: Směrování provozu na základě geografického umístění koncového bodu
@@ -24,6 +18,12 @@
       href: traffic-manager-configure-weighted-routing-method.md
     - name: Směrování provozu do prioritního koncového bodu
       href: traffic-manager-configure-priority-routing-method.md
+- name: Ukázky
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Koncepty
   items:
     - name: Metody směrování

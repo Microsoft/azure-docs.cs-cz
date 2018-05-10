@@ -1,9 +1,9 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – požadavky na šifrování"
-description: "PCI DSS požadavek 4"
+title: Azure platebních zpracování plán, podle kterého – požadavky na šifrování
+description: PCI DSS požadavek 4
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 43f75ba9-cb4e-49ab-b3f4-09e48310bc18
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 3eb5b663558c2a68c13368b179ff942dd3c53716
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 6de3290fc2147e3c8ed63642b6e8470093898ef6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>Požadavky na šifrování pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-4"></a>PCI DSS požadavek 4
@@ -52,8 +52,8 @@ V sítích, které jsou snadno přístupné pomocí jednotlivcům se zlými úmy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení PaaS, které implementuje silné šifrování pro nasazení následujícím způsobem:<br /><br />Aby splňoval požadavky šifrovaná data na rest, [Azure Storage](https://azure.microsoft.com/services/storage/) používá následující:<br /><br /><ul><li>[Šifrování služby úložiště Azure (SSE) pro Data v klidovém stavu](/azure/storage/storage-service-encryption)</li><li>SQL Database: Instanci SQL databáze PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).</li><li>[Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Použití Azure Key Vault zarovnaná s Azure Government, PCI DSS a HIPAA požadavky.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore je řešení PaaS, které implementuje silné šifrování pro nasazení následujícím způsobem:<br /><br />Aby splňoval požadavky šifrovaná data na rest, [Azure Storage](https://azure.microsoft.com/services/storage/) používá následující:<br /><br /><ul><li>[Šifrování služby úložiště Azure (SSE) pro Data v klidovém stavu](/azure/storage/storage-service-encryption)</li><li>SQL Database: Instanci SQL databáze PaaS se používá k prezentují databáze bezpečnostní opatření. Další informace najdete v tématu [pokyny PCI - Azure SQL Database](payment-processing-blueprint.md#azure-sql-database).</li><li>[Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Použití Azure Key Vault zarovnaná s Azure Government, PCI DSS a HIPAA požadavky.|
 
 
 
@@ -65,8 +65,8 @@ V sítích, které jsou snadno přístupné pomocí jednotlivcům se zlými úmy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Bezdrátové sítě a SNMP nejsou implementované v řešení.|
 
 
 
@@ -78,8 +78,8 @@ V sítích, které jsou snadno přístupné pomocí jednotlivcům se zlými úmy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Contoso Webstore nemá žádné zasílání zpráv řešení implementována, která může odesílat data nechráněné primární účet číslo (PANORAMOVÁNÍ).|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Contoso Webstore nemá žádné zasílání zpráv řešení implementována, která může odesílat data nechráněné primární účet číslo (PANORAMOVÁNÍ).|
 
 
 
@@ -91,8 +91,8 @@ V sítích, které jsou snadno přístupné pomocí jednotlivcům se zlými úmy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědný za dokumentaci a šifrování přenosů obsahující data držitele karty zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědný za dokumentaci a šifrování přenosů obsahující data držitele karty zákazníků.|
 
 
 

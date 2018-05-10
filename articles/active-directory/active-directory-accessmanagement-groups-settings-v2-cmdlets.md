@@ -1,26 +1,24 @@
 ---
-title: "Příklady prostředí PowerShell pro správu skupin v Azure Active Directory | Microsoft Docs"
-description: "Tato stránka obsahuje příklady prostředí PowerShell, které vám pomohou spravovat vaše skupiny ve službě Azure Active Directory"
-keywords: "Azure AD, Azure Active Directory, prostředí PowerShell, správu skupin, skupiny"
+title: Příklady prostředí PowerShell pro správu skupin v Azure Active Directory | Microsoft Docs
+description: Tato stránka obsahuje příklady prostředí PowerShell, které vám pomohou spravovat vaše skupiny ve službě Azure Active Directory
+keywords: Azure AD, Azure Active Directory, prostředí PowerShell, správu skupin, skupiny
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 7a5023dc-2727-4c25-8254-b531fc3244ac
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: 3f57e1a0ded679325c8c739e73cc79f69c037191
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 312efd6233546ae32e498907e04fbf8aea73f7b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Verze 2 rutiny služby Azure Active Directory pro správu skupin
 > [!div class="op_single_selector"]
@@ -263,7 +261,7 @@ Pokud skupinu je vytvořen, určité koncové body umožňují koncovému uživa
 * Správce protokolu SSL 
 * správce webového serveru 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Můžete najít další dokumentaci k Azure Active Directory PowerShell na [rutiny služby Azure Active Directory](/powershell/azure/install-adv2?view=azureadps-2.0).
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)

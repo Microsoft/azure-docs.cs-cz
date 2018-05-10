@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ec2399c955f718186bbedc0e4bad61ccc61fd972
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí v Azure App Service
 <a name="Overview"></a>
@@ -30,11 +30,7 @@ Při nasazení vaší webové aplikace, webové aplikace na Linuxu, mobilní bac
 * Nasazení aplikace do patice nejprve a odkládací do provozu zajišťuje, že jsou všechny instance přihrádky jestli před prohazují do produkčního prostředí. Tím se eliminuje výpadek při nasazení aplikace. Přesměrování provozu je bezproblémové a jsou v důsledku operace prohození vyřadit žádné požadavky. Tento celý pracovní postup je možné automatizovat tak, že nakonfigurujete [Prohodit automaticky](#Auto-Swap) při swap předběžné ověření není potřeba.
 * Po prohození slot s dříve dvoufázové instalace aplikace teď má předchozí produkční aplikaci. Pokud změny, které jsou vzájemně zaměněny na produkční slot není podle očekávání, můžete provést stejný prohození okamžitě k získání "poslední známé funkční web" zpět.
 
-Každá úroveň plánu služby App Service podporuje různé počty nasazovací sloty. Chcete-li zjistit počet přihrádek podporuje vrstvy vaší aplikace naleznete v tématu [omezení služby App](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits).
-
-* Pokud vaše aplikace obsahuje více sloty, nelze změnit úroveň.
-* Škálování není k dispozici pro nevýrobní prostředí sloty.
-* Správa propojeného prostředku není podporován pro nevýrobní sloty. V [portálu Azure](http://go.microsoft.com/fwlink/?LinkId=529715) pouze se vyhnout této potenciální dopad na produkční slot dočasně přesunutím mimo produkční slot k jiné vrstvě plán služby App Service. Všimněte si, že jiný produkční slot musí znovu sdílet stejné vrstvě s produkční slot předtím, než můžete zaměnit dva sloty.
+Každá úroveň plánu služby App Service podporuje různé počty nasazovací sloty. Chcete-li zjistit počet přihrádek podporuje vrstvy vaší aplikace naleznete v tématu [omezení služby App](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). Škálování aplikace k jiné vrstvě, vrstvě cíl musí podporovat počet sloty, které vaše aplikace se již používá. Například pokud vaše aplikace obsahuje více než 5 sloty, je nelze škálovat se dolů k **standardní** vrstvy, protože **standardní** vrstvy podporuje jenom 5 nasazovací sloty.
 
 <a name="Add"></a>
 

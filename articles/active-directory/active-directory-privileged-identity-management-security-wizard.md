@@ -1,25 +1,23 @@
 ---
-title: "Průvodce Azure AD Privileged Identity Management zabezpečení"
-description: "Při prvním použití Azure Active Directory Privileged Identity Management rozšíření, zobrazí se Průvodce zabezpečení. Tento článek popisuje kroky pro pomocí průvodce."
+title: Průvodce Azure AD Privileged Identity Management zabezpečení
+description: Při prvním použití Azure Active Directory Privileged Identity Management rozšíření, zobrazí se Průvodce zabezpečení. Tento článek popisuje kroky pro pomocí průvodce.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: a53a3719-8cc7-4fc7-8164-aafca192871b
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 02/27/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 4a45e1bdbce299dce38a01a17a65024dc41a353f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4b3856d74b1109b20a1ff9f93b76ee36b66ee312
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management 
 Pokud jste první osobou ke spuštění Azure Privileged Identity Management (PIM) pro vaši organizaci, zobrazí se průvodce. Průvodce vám pomůže pochopit bezpečnostní rizika privilegované identity a jak používat PIM k omezení těchto rizik. Nepotřebujete žádné změny existujících přiřazení role v průvodci, pokud chcete provést později.
@@ -40,6 +38,6 @@ Po provedení změn, Průvodce zobrazí. Při příštím vy nebo jiný správce
 * Pokud chcete přidat nebo odebrat uživatele z role nebo změnit přiřazení z trvalé na oprávněné, přečtěte si informace v [jak přidat nebo odebrat roli uživatele](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
 * Pokud chcete poskytnout přístup ke správě PIM více uživatelů, přečtěte si informace v [poskytnout přístup ke správě v PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

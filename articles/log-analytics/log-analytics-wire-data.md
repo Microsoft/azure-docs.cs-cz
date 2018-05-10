@@ -1,11 +1,11 @@
 ---
-title: "Propojit řešení dat v Log Analytics | Microsoft Docs"
-description: "Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager a agenti připojená k systému Windows. Data sítě spolu s daty protokolu ke korelaci data."
+title: Propojit řešení dat v Log Analytics | Microsoft Docs
+description: Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager a agenti připojená k systému Windows. Data sítě spolu s daty protokolu ke korelaci data.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
-ms.translationtype: MT
+ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení přenosu dat 2.0 (Preview) v analýzy protokolů
 
@@ -58,8 +58,8 @@ Data kabelové sítě získává data od agenta nástroje Microsoft závislostí
 
 | **Připojené zdroje** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br> Kromě [agenta OMS](log-analytics-windows-agent.md), Agent služby Microsoft Dependency vyžadují agentů v systému Windows. Najdete v článku [podporované operační systémy](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Agenti systému Linux | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Linux agent.<br><br> Kromě [agenta OMS](log-analytics-quick-collect-linux-computer.md), agenty Linux vyžadují Microsoft Agent závislostí. Najdete v článku [podporované operační systémy](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
+| Agenti systému Windows | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br> Kromě [agenta OMS](log-analytics-windows-agent.md), Agent služby Microsoft Dependency vyžadují agentů v systému Windows. Najdete v článku [podporované operační systémy](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
+| Agenti systému Linux | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Linux agent.<br><br> Kromě [agenta OMS](log-analytics-quick-collect-linux-computer.md), agenty Linux vyžadují Microsoft Agent závislostí. Najdete v článku [podporované operační systémy](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Analyzuje Data kabelové sítě a shromažďuje data z agentů systému Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Je nutné přímé připojení z počítače agenta System Center Operations Manager k analýze protokolů. K analýze protokolů se předají data ze skupiny pro správu. |
 | Účet služby Azure Storage | Ne | Data kabelové sítě shromažďuje data z počítačů agentů, takže není žádná data z něj shromažďovat ze služby Azure Storage. |
 
@@ -115,7 +115,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 7.0 | 3.10.0-123 |
 | 7.1 | 3.10.0-229 |
@@ -124,7 +124,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 6.0 | 2.6.32-71 |
 | 6.1 | 2.6.32-131 |
@@ -138,7 +138,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="red-hat-linux-5"></a>Red Hat Linux 5
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 5.8 | 2.6.18-308 |
 | 5.9 | 2.6.18-348 |
@@ -149,7 +149,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 6.2 | Oracle 2.6.32-300 (UEK R1) |
 | 6.3 | Oracle 2.6.39-200 (UEK R2) |
@@ -159,7 +159,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="oracle-linux-5"></a>Oracle Linux 5
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 5.8 | Oracle 2.6.32-300 (UEK R1) |
 | 5.9 | Oracle 2.6.39-300 (UEK R2) |
@@ -170,7 +170,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 11 | 2.6.27 |
 | 11 SP1 | 2.6.32 |
@@ -180,7 +180,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 #### <a name="suse-linux-10"></a>SUSE Linux 10
 
-| Verze operačního systému | Verze jádra |
+| **Verze operačního systému** | **Verze jádra** |
 | --- | --- |
 | 10 SP4 | 2.6.16.60 |
 
@@ -219,7 +219,7 @@ Nainstalujte z příkazového řádku pomocí možnosti z v následující tabul
 
 InstallDependencyAgent Windows.exe /?
 
-| **Flag** | **Popis** |
+| **Příznak** | **Popis** |
 | --- | --- |
 | <code>/?</code> | Získejte seznam možností příkazového řádku. |
 | <code>/S</code> | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
@@ -244,7 +244,7 @@ Pokud chcete zobrazit seznam příznaky instalace, spusťte instalační program
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Flag** | **Popis** |
+| **Příznak** | **Popis** |
 | --- | --- |
 | <code>-help</code> | Získejte seznam možností příkazového řádku. |
 | <code>-s</code> | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
@@ -252,7 +252,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Soubory pro agenta závislosti jsou umístěny v adresáři pro následující:
 
-| Soubory | **Umístění** |
+| **Soubory** | **Umístění** |
 | --- | --- |
 | Soubory jádra | /OPT/Microsoft/Dependency-Agent |
 | Soubory protokolu | /var/OPT/Microsoft/Dependency-Agent/log |
@@ -364,7 +364,7 @@ Sada management pack je s názvem Microsoft.IntelligencePacks.ApplicationDepende
 
 ## <a name="using-the-solution"></a>Použití řešení
 
-Instalace a konfigurace řešení
+**Instalace a konfigurace řešení**
 
 Použijte následující informace k instalaci a konfiguraci řešení.
 

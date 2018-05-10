@@ -1,11 +1,87 @@
 # [Základy Azure IoT](../iot-fundamentals/index.yml)
-# [Dokumentace ke službě IoT Hub](index.md)
+# [Dokumentace ke službě IoT Hub](index.yml)
 
 # Přehled
-## [Co je Azure IoT Hub?](iot-hub-what-is-iot-hub.md)
-## [Přehled správy zařízení](iot-hub-device-management-overview.md)
+## [Co je Azure IoT Hub?](about-iot-hub.md)
 
-# [Začínáme](iot-hub-get-started.md)
+# Šablony Rychlý start
+## [Odesílání telemetrie (Node.js)](quickstart-send-telemetry-node.md)
+## [Odesílání telemetrie (.NET)](quickstart-send-telemetry-dotnet.md)
+## [Odesílání telemetrie (Java)](quickstart-send-telemetry-java.md)
+## [Odesílání telemetrie (Java)](quickstart-send-telemetry-python.md)
+## [Řízení zařízení (Node.js)](quickstart-control-device-node.md)
+## [Řízení zařízení (.NET)](quickstart-control-device-dotnet.md)
+## [Řízení zařízení (Java)](quickstart-control-device-java.md)
+## [Řízení zařízení (Python)](quickstart-control-device-python.md)
+
+# Kurzy
+
+<!-- These will all be replaced by the new MVC tutorials as we write them -->
+## [Směrování zpráv](tutorial-routing.md)
+## Odesílání zpráv z cloudu do zařízení
+### [.NET](iot-hub-csharp-csharp-c2d.md)
+### [Java](iot-hub-java-java-c2d.md)
+### [Node.js](iot-hub-node-node-c2d.md)
+### [Python](iot-hub-python-python-c2d.md)
+## Začínáme s dvojčaty zařízení
+### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-twin-getstarted.md)
+### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-twin-getstarted.md)
+### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-getstarted.md)
+### [Java back-end / zařízení Java](iot-hub-java-java-twin-getstarted.md)
+### [Back-end Python / zařízení Python](iot-hub-python-twin-getstarted.md)
+## Začínáme se správou zařízení
+### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-device-management-get-started.md)
+### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-device-management-get-started.md)
+### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-device-management-get-started.md)
+### [Java back-end / zařízení Java](iot-hub-java-java-device-management-getstarted.md)
+### [Back-end Python / zařízení Python](iot-hub-python-python-device-management-get-started.md)
+## Jak používat vlastnosti dvojčat
+### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-twin-how-to-configure.md)
+### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-twin-how-to-configure.md)
+### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
+### [Java back-end / zařízení Java](iot-hub-java-java-twin-how-to-configure.md)
+### [Back-end Python / zařízení Python](iot-hub-python-python-twin-how-to-configure.md)
+## Použití úloh zařízení k aktualizaci firmwaru zařízení
+### [Back-end Node / zařízení Node](iot-hub-node-node-firmware-update.md)
+### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-firmware-update.md)
+### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-firmware-update.md)
+### [Java back-end / zařízení Java](iot-hub-java-java-firmware-update.md)
+### [Back-end Python / zařízení Python](iot-hub-python-python-firmware-update.md)
+
+### [Hromadná správa zařízení IoT](iot-hub-bulk-identity-mgmt.md)
+
+# Koncepty
+## [Přehled správy zařízení](iot-hub-device-management-overview.md)
+## [Porovnání služeb IoT Hub a Event Hubs](iot-hub-compare-event-hubs.md)
+## [Výběr správné úrovně](iot-hub-scaling.md)
+## [Vysoká dostupnost a zotavení po havárii](iot-hub-ha-dr.md)
+## [Podpora dalších protokolů](iot-hub-protocol-gateway.md)
+## [Porovnání směrování událostí a zpráv](iot-hub-event-grid-routing-comparison.md)
+
+## [Příručka pro vývojáře](iot-hub-devguide.md)
+### [Průvodce funkcemi ze zařízení do cloudu](iot-hub-devguide-d2c-guidance.md)
+### [Průvodce funkcemi z cloudu do zařízení](iot-hub-devguide-c2d-guidance.md)
+### [Odesílání a příjem zpráv](iot-hub-devguide-messaging.md)
+#### [Odeslání zpráv ze zařízení do cloudu do IoT Hubu](iot-hub-devguide-messages-d2c.md)
+#### [Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu](iot-hub-devguide-messages-read-builtin.md)
+#### [Reakce na události služby IoT Hub](iot-hub-event-grid.md)
+#### [Použití vlastních koncových bodů a pravidel směrování pro zprávy ze zařízení do cloudu](iot-hub-devguide-messages-read-custom.md)
+#### [Odesílání zpráv z cloudu do zařízení z IoT Hubu](iot-hub-devguide-messages-c2d.md)
+#### [Vytvoření a čtení zpráv IoT Hubu](iot-hub-devguide-messages-construct.md)
+#### [Volba komunikačního protokolu](iot-hub-devguide-protocols.md)
+### [Odeslání souborů ze zařízení](iot-hub-devguide-file-upload.md)
+### [Správa identit zařízení](iot-hub-devguide-identity-registry.md)
+### [Řízení přístupu k IoT Hubu](iot-hub-devguide-security.md)
+### [Principy dvojčat zařízení](iot-hub-devguide-device-twins.md)
+### [Vyvolání přímých metod v zařízení](iot-hub-devguide-direct-methods.md)
+### [Plánování úloh na několika zařízeních](iot-hub-devguide-jobs.md)
+### [Koncové body IoT Hubu](iot-hub-devguide-endpoints.md)
+### [Dotazovací jazyk](iot-hub-devguide-query-language.md)
+### [Kvóty a omezování](iot-hub-devguide-quotas-throttling.md)
+### [Příklady cen](iot-hub-devguide-pricing.md)
+### [Sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md)
+### [Podpora MQTT](iot-hub-mqtt-support.md)
+### [Glosář](iot-hub-devguide-glossary.md)
 
 ## Nastavení zařízení
 ### [Simulace zařízení na počítači](iot-hub-get-started-simulated.md)
@@ -14,39 +90,36 @@
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 #### [iOS (Swift)](quickstart-send-telemetry-ios.md)
+## [Použití sady SDK pro zařízení IoT pro C](iot-hub-device-sdk-c-intro.md)
+### [Použití IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
+### [Použití serializátoru](iot-hub-device-sdk-c-serializer.md)
 
-### [Použití online simulátoru](iot-hub-raspberry-pi-web-simulator-get-started.md)
+## [Zabezpečení od počátku](iot-hub-security-ground-up.md)
+## [Osvědčené postupy zabezpečení](iot-hub-security-best-practices.md)
+## [Architektura zabezpečení](iot-hub-security-architecture.md)
+## [Zabezpečení nasazení IoT](iot-hub-security-deployment.md)
+## Zabezpečení pomocí certifikátů webu X.509
+### [Přehled zabezpečení pomocí certifikátu webu X.509](iot-hub-x509ca-overview.md)
+#### [Koncepty zabezpečení pomocí certifikátu webu X.509](iot-hub-x509ca-concept.md)
+### [Začínáme se zabezpečením pomocí certifikátu webu X.509](iot-hub-security-x509-get-started.md)
+#### [Vytvoření certifikátů – PowerShell](iot-hub-security-x509-create-certificates.md)
 
-### [Použití fyzického zařízení](iot-hub-get-started-physical.md)
-#### [Raspberry Pi s Pythonem](iot-hub-raspberry-pi-kit-python-get-started.md)
-#### [Raspberry Pi s Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
-#### [Raspberry Pi s C](iot-hub-raspberry-pi-kit-c-get-started.md)
 
-#### [MXChip IoT DevKit s Arduino](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+### Rozšířené scénáře IoT
+#### [Správa zasílání zpráv cloudových zařízení pomocí iothub-exploreru](iot-hub-explorer-cloud-device-messaging.md)
+#### [Uložení zpráv IoT Hub do úložiště dat Azure](iot-hub-store-data-in-azure-table-storage.md)
+#### [Vizualizace dat ve službě Power BI](iot-hub-live-data-visualization-in-power-bi.md)
+#### [Vizualizace dat s využitím Web Apps](iot-hub-live-data-visualization-in-web-apps.md)
+#### [Předpověď počasí s využitím Azure Machine Learningu](iot-hub-weather-forecast-machine-learning.md)
+#### [Správa zařízení s využitím iothub-exploreru](iot-hub-device-management-iothub-explorer.md)
+#### [Správa zařízení s využitím rozšíření IoT pro Azure CLI 2.0](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
+#### [Vzdálené monitorování a oznámení s využitím Logic Apps](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-#### [Intel Edison s Node.js](iot-hub-intel-edison-kit-node-get-started.md)
-#### [Intel Edison s C](iot-hub-intel-edison-kit-c-get-started.md)
-
-#### [Adafruit Feather HUZZAH ESP8266 s Arduinem](iot-hub-arduino-huzzah-esp8266-get-started.md)
-#### [Sparkfun ESP8266 Thing Dev s Arduinem](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
-#### [Adafruit Feather M0 s Arduinem](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-
-## Rozšířené scénáře IoT
-### [Správa zasílání zpráv cloudových zařízení pomocí iothub-exploreru](iot-hub-explorer-cloud-device-messaging.md)
-### [Uložení zpráv IoT Hub do úložiště dat Azure](iot-hub-store-data-in-azure-table-storage.md)
-### [Vizualizace dat ve službě Power BI](iot-hub-live-data-visualization-in-power-bi.md)
-### [Vizualizace dat s využitím Web Apps](iot-hub-live-data-visualization-in-web-apps.md)
-### [Předpověď počasí s využitím Azure Machine Learningu](iot-hub-weather-forecast-machine-learning.md)
-### [Správa zařízení s využitím iothub-exploreru](iot-hub-device-management-iothub-explorer.md)
-### [Správa zařízení s využitím rozšíření IoT pro Azure CLI 2.0](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
-### [Vzdálené monitorování a oznámení s využitím Logic Apps](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-
-## Použití MXChip IoT DevKit
-### [Překlad hlasové zprávy pomocí Azure Cognitive Services](iot-hub-arduino-iot-devkit-az3166-translator.md)
-### [Načtení zprávy Twitteru s využitím Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
-### [Odeslání zprávy serveru MQTT s využitím rozhraní API Eclipse Paho](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
-### [Monitorování magnetických senzorů a odesílání e-mailových oznámení pomocí Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
-### [Ovládání MXChip IoT DevKit RGB LED s využitím dvojčat zařízení Azure](iot-hub-arduino-iot-devkit-az3166-devkit-state.md)
+### Použití MXChip IoT DevKit
+#### [Překlad hlasové zprávy pomocí Azure Cognitive Services](iot-hub-arduino-iot-devkit-az3166-translator.md)
+#### [Načtení zprávy Twitteru s využitím Azure Functions](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+#### [Odeslání zprávy serveru MQTT s využitím rozhraní API Eclipse Paho](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
+#### [Monitorování magnetických senzorů a odesílání e-mailových oznámení pomocí Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # Návody
 ## Plánování
@@ -79,7 +152,6 @@
 #### [Kvóty a omezování](iot-hub-devguide-quotas-throttling.md)
 #### [Příklady cen](iot-hub-devguide-pricing.md)
 #### [Sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md)
-#### [Vývoj pro mobilní zařízení](iot-hub-how-to-develop-for-mobile-devices.md)
 #### [Podpora MQTT](iot-hub-mqtt-support.md)
 #### [Glosář](iot-hub-devguide-glossary.md)
 ### [Použití sady SDK pro zařízení IoT pro C](iot-hub-device-sdk-c-intro.md)
@@ -140,38 +212,51 @@
 #### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-schedule-jobs.md)
 #### [Java back-end / zařízení Java](iot-hub-java-java-schedule-jobs.md)
 #### [Back-end Python / zařízení Python](iot-hub-python-python-schedule-jobs.md)
+## Nahrání souborů ze zařízení
+### [.NET](iot-hub-csharp-csharp-file-upload.md)
+### [Java](iot-hub-java-java-file-upload.md)
+### [Node.js](iot-hub-node-node-file-upload.md)
+### [Python](iot-hub-python-python-file-upload.md)
 
-## Spravovat
-### Vytvoření centra IoT 
-#### [Použití webu Azure Portal](iot-hub-create-through-portal.md)
-#### [Použití Azure Powershellu](iot-hub-create-using-powershell.md)
-#### [Použití rozhraní příkazového řádku Azure](iot-hub-create-using-cli.md)
-#### [Použití rozhraní příkazového řádku](iot-hub-create-using-cli-nodejs.md)
-#### [Použití rozhraní REST API](iot-hub-rm-rest.md)
-#### [Použití šablony z Azure PowerShellu](iot-hub-rm-template-powershell.md)
-#### [Použití šablony z rozhraní .NET](iot-hub-rm-template.md)
-### Konfigurace odesílání souborů
-#### [Použití webu Azure Portal](iot-hub-configure-file-upload.md)
-#### [Použití Azure Powershellu](iot-hub-configure-file-upload-powershell.md)
-#### [Použití rozhraní příkazového řádku Azure](iot-hub-configure-file-upload-cli.md)
-### [Monitorování s diagnostikou](iot-hub-monitor-resource-health.md)
-#### [Migrace do nastavení diagnostiky](iot-hub-migrate-to-diagnostics-settings.md)
-#### [Monitorování operací](iot-hub-operations-monitoring.md)
-### [Upgrade IoT Hubu](iot-hub-upgrade.md)
-### [Metriky využití](iot-hub-metrics.md)
-### [Hromadná správa zařízení IoT](iot-hub-bulk-identity-mgmt.md)
-### [Konfigurace filtrování IP](iot-hub-ip-filtering.md)
+## Úlohy vysílání a plánování
+### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-schedule-jobs.md)
+### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-schedule-jobs.md)
+### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-schedule-jobs.md)
+### [Java back-end / zařízení Java](iot-hub-java-java-schedule-jobs.md)
+### [Back-end Python / zařízení Python](iot-hub-python-python-schedule-jobs.md)
 
-## Zabezpečení
-### [Zabezpečení od počátku](iot-hub-security-ground-up.md)
-### [Osvědčené postupy zabezpečení](iot-hub-security-best-practices.md)
-### [Architektura zabezpečení](iot-hub-security-architecture.md)
-### [Zabezpečení nasazení IoT](iot-hub-security-deployment.md)
-### Zabezpečení pomocí certifikátů webu X.509
-#### [Přehled zabezpečení pomocí certifikátu webu X.509](iot-hub-x509ca-overview.md)
-##### [Koncepty zabezpečení pomocí certifikátu webu X.509](iot-hub-x509ca-concept.md)
-#### [Začínáme se zabezpečením pomocí certifikátu webu X.509](iot-hub-security-x509-get-started.md)
-##### [Vytvoření certifikátů – PowerShell](iot-hub-security-x509-create-certificates.md)
+## Vytvoření centra IoT 
+### [Použití webu Azure Portal](iot-hub-create-through-portal.md)
+### [Použití Azure Powershellu](iot-hub-create-using-powershell.md)
+### [Použití rozhraní příkazového řádku Azure](iot-hub-create-using-cli.md)
+### [Použití rozhraní příkazového řádku](iot-hub-create-using-cli-nodejs.md)
+### [Použití rozhraní REST API](iot-hub-rm-rest.md)
+### [Použití šablony z Azure PowerShellu](iot-hub-rm-template-powershell.md)
+### [Použití šablony z rozhraní .NET](iot-hub-rm-template.md)
+## Konfigurace odesílání souborů
+### [Použití webu Azure Portal](iot-hub-configure-file-upload.md)
+### [Použití Azure Powershellu](iot-hub-configure-file-upload-powershell.md)
+### [Použití rozhraní příkazového řádku Azure](iot-hub-configure-file-upload-cli.md)
+## [Monitorování s diagnostikou](iot-hub-monitor-resource-health.md)
+### [Migrace do nastavení diagnostiky](iot-hub-migrate-to-diagnostics-settings.md)
+### [Monitorování operací](iot-hub-operations-monitoring.md)
+## Použití skutečných zařízení
+### [Začínáme](iot-hub-get-started.md)
+### [Použití online simulátoru](iot-hub-raspberry-pi-web-simulator-get-started.md)
+### [Použití fyzického zařízení](iot-hub-get-started-physical.md)
+#### [Raspberry Pi s Pythonem](iot-hub-raspberry-pi-kit-python-get-started.md)
+#### [Raspberry Pi s Node.js](iot-hub-raspberry-pi-kit-node-get-started.md)
+#### [Raspberry Pi s C](iot-hub-raspberry-pi-kit-c-get-started.md)
+#### [MXChip IoT DevKit s Arduino](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+#### [Intel Edison s Node.js](iot-hub-intel-edison-kit-node-get-started.md)
+#### [Intel Edison s C](iot-hub-intel-edison-kit-c-get-started.md)
+#### [Adafruit Feather HUZZAH ESP8266 s Arduinem](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [Sparkfun ESP8266 Thing Dev s Arduinem](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [Adafruit Feather M0 s Arduinem](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+## [Upgrade IoT Hubu](iot-hub-upgrade.md)
+## [Metriky využití](iot-hub-metrics.md)
+## [Konfigurace filtrování IP](iot-hub-ip-filtering.md)
+## [Konfigurace zařízení ve velkém měřítku](iot-hub-auto-device-config.md)
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=iot-hub)
@@ -192,13 +277,13 @@
 
 # Související
 ## Řešení 
-### [Předkonfigurovaná řešení IoT Suite](/azure/iot-suite) 
+### [Akcelerátory řešení IoT](/azure/iot-suite) 
 ### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## Služby platformy 
 ### [IoT Hub](/azure/iot-hub) 
 ### [Služba IoT Hub Device Provisioning](/azure/iot-dps)
 ### [Sady SDK pro služby IoT](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
-### [Location Based Services](/azure/location-based-services) 
+### [Maps](/azure/azure-maps) 
 ### [Time Series Insights](/azure/time-series-insights) 
 ## Edge 
 ### [IoT Edge](/azure/iot-edge) 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/22/2018
+ms.date: 05/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 82069b31ee51e0dd60691edca490b1a60384288a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
 Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token. 
@@ -164,6 +164,8 @@ Aktualizujte tokeny můžete zrušena nebo odvolat kdykoli z různých důvodů.
 
 > [!NOTE]
 >Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření).  Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
+>
+> Důvěrné klienti nejsou vliv odvolání změnu hesla.  Důvěrné klienta s tokenem aktualizace vydané před změnu hesla budou nadále abl získat další tokeny pomocí tohoto tokenu obnovení. 
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 

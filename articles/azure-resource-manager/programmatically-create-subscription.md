@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: 8d1eb3229f22b2da3a356562250fedb3c35c4816
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Vytváření předplatných Azure Enterprise (preview) prostřednictvím kódu programu
 
@@ -49,7 +49,7 @@ Po přidání k zápisu Azure EA jako vlastníka účtu Azure používá účet 
 - Máte jeden nebo více EA nebo EA vývoje/testování předplatných, což znamená, že jste alespoň jednou prošli ruční registrace
 - Jste přihlášení k majiteli účtu *domovský adresář*, což je adresáře, který odběry jsou vytvořené v ve výchozím nastavení
 
-Pokud jsou výše uvedené dvě podmínky splněny, `enrollmentAccount` prostředků se vrátí, a můžete začít vytvářet odběry pod tímto účtem. Všechny odběry pod účtem, se účtují směrem EA registrace, který účet je v.
+Pokud výše uvedených tří podmínek jsou splněny, `enrollmentAccount` prostředků se vrátí, a můžete začít vytvářet odběry pod tímto účtem. Všechny odběry pod účtem, se účtují směrem EA registrace, který účet je v.
 
 # <a name="resttabrest"></a>[REST](#tab/rest)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 834488e259caf60ae96450fcf7c8188c5ffb0bc5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e21a8251cc4a85232b92faa05d01d0f73410e496
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkce šablony Azure Resource Manager
 Tento článek popisuje všechny funkce, které můžete použít v šablonu Azure Resource Manager.
@@ -28,6 +28,8 @@ Přidání funkce v šablonách uzavřené v závorkách: `[` a `]`, v uvedeném
 Výraz šablony nesmí překročit 24,576 znaků.
 
 Šablony funkcí a jejich parametrů se velká a malá písmena. Například správce prostředků přeloží **variables('var1')** a **VARIABLES('VAR1')** jako stejné. Při hodnocení, pokud funkci výslovně upraví případ (například toUpper nebo toLower), funkce zachovává malá a velká. Některé typy prostředků může mít případu požadavky bez ohledu na to, jak se vyhodnocují funkce.
+
+Vytvoření vlastní funkce naleznete v tématu [uživatelsky definované funkce](resource-group-authoring-templates.md#functions).
 
 <a id="array" />
 <a id="coalesce" />

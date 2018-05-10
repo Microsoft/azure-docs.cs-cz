@@ -1,20 +1,20 @@
 ---
-title: "Zjišťování, jaký software je nainstalovaný na počítačích, pomocí Azure Automation | Dokumentace Microsoftu"
-description: "Využijte řešení Inventory ke zjišťování, jaký software je nainstalovaný na počítačích napříč prostředím."
+title: Zjišťování, jaký software je nainstalovaný na počítačích, pomocí Azure Automation | Dokumentace Microsoftu
+description: Využijte řešení Inventory ke zjišťování, jaký software je nainstalovaný na počítačích napříč prostředím.
 services: automation
 keywords: inventory, automation, change, tracking
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: bd9fdc237a3c6f1c2a57ddf0f4448d7c3402a798
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 
@@ -23,7 +23,9 @@ V tomto kurzu se naučíte zjistit, jaký software je nainstalovaný ve vašem p
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Připojení virtuálního počítače k řešení Change Tracking a Inventory
+> * Povolení řešení
+> * Připojení virtuálního počítače Azure
+> * Připojení virtuálního počítače mimo Azure
 > * Zobrazení nainstalovaného softwaru
 > * Vyhledávání nainstalovaného softwaru v protokolech inventáře
 
@@ -41,10 +43,11 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
-Pro účely tohoto kurzu je nejprve potřeba povolit pro váš virtuální počítač řešení Change Tracking a Inventory. Pokud jste už dříve pro virtuální počítač povolili řešení **Change Tracking**, tento krok není nezbytný.
+Pro účely tohoto kurzu je nejprve potřeba povolit řešení Change Tracking a Inventory. Pokud jste už dříve povolili řešení **Change Tracking**, tento krok není nezbytný.
 
-1. V nabídce vlevo vyberte **Virtuální počítače** a ze seznamu vyberte virtuální počítač.
-2. V nabídce vlevo v části **Operace** klikněte na **Inventory**. Otevře se stránka **Povolit řešení Change Tracking a Inventory**.
+Přejděte do svého účtu Automation a v části **SPRÁVA KONFIGURACE** vyberte **Inventory**.
+
+Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Banner konfigurace připojení k řešení Inventory](./media/automation-tutorial-installed-software/enableinventory.png)
 
@@ -57,15 +60,31 @@ Povolení řešení může trvat až 15 minut. Během této doby byste neměli z
 Po povolení řešení začnou do Log Analytics proudit informace o nainstalovaném softwaru a změnách na virtuálních počítačích.
 Zpřístupnění dat pro analýzu může trvat 30 minut až 6 hodin.
 
+## <a name="onboard-a-vm"></a>Připojení virtuálního počítače
+
+Ve svém účtu Automation přejděte do části **Inventory** v části **SPRÁVA KONFIGURACE**.
+
+Vyberte **+ Přidat virtuální počítač Azure**. Otevře se stránka **Virtuální počítače**, na které můžete ze seznamu vybrat stávající virtuální počítače. Vyberte virtuální počítač, který chcete připojit. Na stránce, která se otevře, kliknutím na **Povolit** povolte řešení na virtuálním počítači. Na virtuální počítač se nasadí agent Microsoft Management Agent, který se nakonfiguruje ke komunikaci s pracovním prostorem Log Analytics, který jste nakonfigurovali při povolování řešení. Dokončení připojování může trvat několik minut. V tuto chvíli můžete ze seznamu vybrat nový virtuální počítač a připojit další virtuální počítač.
+
+## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
+
+Pokud chcete přidat počítače mimo Azure, nainstalujte agenta pro [Windows](../log-analytics/log-analytics-agent-windows.md) nebo [Linux](automation-linux-hrw-install.md) v závislosti na vašem operačním systému. Jakmile bude agent nainstalovaný, přejděte ve svém účtu Automation do části **Inventory** v části **SPRÁVA KONFIGURACE**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
+
+* **Povolit na všech dostupných počítačích** – Tato možnost povolí řešení na všech počítačích, které se aktuálně hlásí do vašeho pracovního prostoru Log Analytics.
+* **Povolit na všech dostupných i budoucích počítačích** – Tato možnost povolí řešení na všech počítačích, které se hlásí do vašeho pracovního prostoru Log Analytics, a následně i na všech počítačích, které se do pracovního prostoru přidají v budoucnu.
+* **Povolit na vybraných počítačích** – Tato možnost povolí řešení pouze na vybraných počítačích.
+
+![Správa počítačů](./media/automation-tutorial-installed-software/manage-machines.png)
+
 ## <a name="view-installed-software"></a>Zobrazení nainstalovaného softwaru
 
 Jakmile budou řešení Change Tracking a Inventory povolená, můžete zobrazit výsledky na stránce **Inventory**.
 
-Ve vašem virtuálním počítači v části **OPERACE** vyberte **Inventory**.
+Ve svém účtu Automation v části **SPRÁVA KONFIGURACE** vyberte **Inventory**.
 
 Na stránce **Inventory** klikněte na kartu **Software**.
 
-Na kartě **Software** je tabulkový seznam nalezeného softwaru. Software se seskupuje podle názvu a verze.
+Na kartě **Software** je tabulka obsahující seznam nalezeného softwaru. Software se seskupuje podle názvu a verze.
 
 V tabulce jsou zobrazené základní podrobnosti o jednotlivých záznamech softwaru. Mezi tyto podrobnosti patří název softwaru, verze, vydavatel, čas poslední aktualizace (nejnovější čas aktualizace hlášený počítačem ve skupině) a počítače (počet počítačů s tímto softwarem).
 
@@ -83,28 +102,29 @@ Pokud například vyhledáte Contoso, vrátí se veškerý software, jehož náz
 Inventarizace generuje data protokolu, která se odesílají do Log Analytics. Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna **Inventory** vyberte **Log Analytics**.
 
 Data řešení Inventory se ukládají jako typ **ConfigurationData** (Konfigurační data).
-Následující ukázkový dotaz Log Analytics vrátí vydavatele, kteří obsahují text Microsoft, a počet záznamů softwaru (seskupených podle názvu softwaru nebo počítače) pro jednotlivé vydavatele.
+Následující ukázkový dotaz Log Analytics vrátí výsledky inventáře, kde se Publisher (Vydavatel) rovná Microsoft Corporation.
 
-```
+```loganalytics
 ConfigurationData
-| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 | where ConfigDataType == "Software"
-| search Publisher:"Microsoft"
-| summarize count() by Publisher
+| where Publisher == "Microsoft Corporation"
+| summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
 Další informace o provozu a prohledávání souborů protokolů v Log Analytics najdete na stránce [Azure Log Analytics](https://docs.loganalytics.io/index).
 
 ### <a name="single-machine-inventory"></a>Inventarizace jediného počítače
 
-Pokud chcete zobrazit inventář softwaru pro jediný počítač, můžete ze stránky prostředku virtuálního počítače Azure přejít k inventáři nebo pomocí Log Analytics vyfiltrovat odpovídající počítač. Následující příklad dotazu Log Analytics vrátí seznam softwaru pro počítač ContosoVM.
+Pokud chcete zobrazit inventář softwaru pro jediný počítač, můžete ze stránky prostředku virtuálního počítače Azure přejít k inventáři nebo pomocí Log Analytics vyfiltrovat odpovídající počítač.
+Následující příklad dotazu Log Analytics vrátí seznam softwaru pro počítač ContosoVM.
 
-```
+```loganalytics
 ConfigurationData
-| where ConfigDataType == "Software" 
+| where ConfigDataType == "Software"
 | summarize arg_max(TimeGenerated, *) by SoftwareName, CurrentVersion
 | where Computer =="ContosoVM"
 | render table
+| summarize by Publisher, SoftwareName
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -112,7 +132,9 @@ ConfigurationData
 V tomto kurzu jste zjistili, jak zobrazovat inventář softwaru, a například jste se naučili:
 
 > [!div class="checklist"]
-> * Připojení virtuálního počítače k řešení Change Tracking a Inventory
+> * Povolení řešení
+> * Připojení virtuálního počítače Azure
+> * Připojení virtuálního počítače mimo Azure
 > * Zobrazení nainstalovaného softwaru
 > * Vyhledávání nainstalovaného softwaru v protokolech inventáře
 

@@ -1,6 +1,6 @@
 ---
-title: Průběžné nasazování volaných s Kubernetes v Azure Container Service
-description: Jak automatizovat proces průběžné nasazování s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes v Azure Container Service
+title: Průběžné nasazování volaných s Kubernetes ve službě Azure Kubernetes Service
+description: Jak automatizovat proces průběžné nasazování s volaných k nasazení a upgrade kontejnerizované aplikace na Kubernetes ve službě Azure Kubernetes Service
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Průběžné nasazování pomocí volaných a Azure Container Service
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Průběžné nasazování pomocí volaných a Kubernetes služby Azure
 
-Tento dokument ukazuje, jak nastavit průběžné nasazování základní pracovní postup mezi volaných a cluster Azure Container Service (AKS).
+Tento dokument ukazuje, jak nastavit průběžné nasazování základní pracovní postup mezi volaných a cluster Azure Kubernetes služby (AKS).
 
 Příklad pracovního postupu zahrnuje následující kroky:
 
@@ -33,7 +33,7 @@ Příklad pracovního postupu zahrnuje následující kroky:
 Aby bylo možné dokončit kroky v tomto článku potřebujete následující položky.
 
 - Základní znalosti Kubernetes, Git, CI/CD a kontejner Azure registru (ACR).
-- [Clusteru Azure Container Service (AKS)] [ aks-quickstart] a [AKS pověření nakonfigurované] [ aks-credentials] ve vývojovém systému.
+- [Clusteru Azure Kubernetes služby (AKS)] [ aks-quickstart] a [AKS pověření nakonfigurované] [ aks-credentials] ve vývojovém systému.
 - [Registru Azure kontejneru registru (ACR)][acr-quickstart], název ACR přihlášení serveru a [ACR pověření] [ acr-authentication] nabízení a vyžadování přístup.
 - Azure CLI nainstalován ve vývojovém systému.
 - Docker nainstalován ve vývojovém systému.

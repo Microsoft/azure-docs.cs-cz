@@ -1,26 +1,26 @@
 ---
-title: "Trvanlivý Přehled funkce – Azure (preview)"
-description: "Úvod do rozšíření trvanlivý funkce pro Azure Functions."
+title: Přehled funkce trvanlivý – Azure
+description: Úvod do rozšíření trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d253562e0ecb0d53739a4cdc5f9747e33d7e1171
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="durable-functions-overview-preview"></a>Trvanlivý přehled funkcí (preview)
+# <a name="durable-functions-overview"></a>Trvanlivý přehled funkcí
 
 *Trvanlivý funkce* je rozšířením [Azure Functions](functions-overview.md) a [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) který umožňuje zapisovat stavová funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartování za vás.
 
@@ -31,7 +31,7 @@ Rozšíření umožňuje definovat stavová pracovních postupů v nový typ vol
 * Budou automaticky kontrolní bod jejich probíhá vždy, když funkce čeká. Místní stavu dojde ke ztrátě nikdy, pokud proces recykluje nebo virtuální počítač se restartuje.
 
 > [!NOTE]
-> Trvanlivý funkce je ve verzi preview a je rozšíření rozšířené pro funkce Azure, která není vhodná pro všechny aplikace. Zbývající část tohoto článku předpokládá, že máte silné znalost [Azure Functions](functions-overview.md) koncepty a problémů součástí vývoj aplikací bez serveru.
+> Trvanlivý funkce je rozšíření rozšířené pro funkce Azure, která není vhodná pro všechny aplikace. Zbývající část tohoto článku předpokládá, že máte silné znalost [Azure Functions](functions-overview.md) koncepty a problémů součástí vývoj aplikací bez serveru.
 
 Případem primárního použití pro funkce trvanlivý je zjednodušení spolupráce komplexní, stavová problémy s aplikacemi bez serveru. Následující části popisují některé vzory Typická aplikace, které můžete využít trvanlivý funkce.
 
@@ -42,6 +42,8 @@ Případem primárního použití pro funkce trvanlivý je zjednodušení spolup
 ![Diagram řetězení – funkce](media/durable-functions-overview/function-chaining.png)
 
 Trvanlivý funkce umožňuje implementovat tento vzor výstižně v kódu.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -60,6 +62,19 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```js
+const df = require("durable-functions");
+
+module.exports = df(function*(ctx) {
+    const x = yield ctx.df.callActivityAsync("F1");
+    const y = yield ctx.df.callActivityAsync("F2", x);
+    const z = yield ctx.df.callActivityAsync("F3", y);
+    return yield ctx.df.callActivityAsync("F4", z);
+});
+```
+
 Hodnoty "F1", "F2", "F3" a "F4" jsou názvy jiných funkcí v aplikaci funkce. Tok řízení je implementovaná pomocí normální imperativní kódování konstrukce. To znamená kód provede shora dolů a může zahrnovat existující sémantiku toku řízení jazyk, jako jsou podmínky a smyčky.  Chyba při zpracování logiky můžou být součástí try/catch/finally – bloky.
 
 `ctx` Parametr ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) poskytuje metody pro vyvolání jiných funkcí podle názvu, předávání parametrů a vrátí výstup funkce. Pokaždé, když kód zavolá metodu `await`, rozhraní trvanlivý funkce *kontrolní body* průběh aktuální instance funkce. Pokud proces nebo virtuální počítač recykluje v polovině prostřednictvím provádění, instance funkce obnoví z předchozí `await` volání. Další informace o toto chování restartovat později.
@@ -70,7 +85,9 @@ Hodnoty "F1", "F2", "F3" a "F4" jsou názvy jiných funkcí v aplikaci funkce. T
 
 ![Diagram FAN odesílacího/fan v](media/durable-functions-overview/fan-out-fan-in.png)
 
-S normální funkce ventilační lze provést tak, že funkce Odeslat více zpráv do fronty. Zpět v ventilační je však mnohem víc náročné. Nutné napsat kód pro můžete sledovat, kdy funkce aktivované protokolem fronty ukončení a uložení výstupy funkce. Trvanlivý funkce rozšíření zpracovává tento vzor kódem poměrně jednoduché.
+S normální funkce ventilační lze provést tak, že funkce Odeslat více zpráv do fronty. Zpět v ventilační je však mnohem víc náročné. Nutné napsat kód můžete sledovat, kdy funkce aktivované protokolem fronty ukončení a uložení výstupy funkce. Trvanlivý funkce rozšíření zpracovává tento vzor kódem poměrně jednoduché.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -91,6 +108,28 @@ public static async Task Run(DurableOrchestrationContext ctx)
     int sum = parallelTasks.Sum(t => t.Result);
     await ctx.CallActivityAsync("F3", sum);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```js
+const df = require("durable-functions");
+
+module.exports = df(function*(ctx) {
+    const parallelTasks = [];
+
+    // get a list of N work items to process in parallel
+    const workBatch = yield ctx.df.callActivityAsync("F1");
+    for (let i = 0; i < workBatch.length; i++) {
+        parallelTasks.push(ctx.df.callActivityAsync("F2", workBatch[i]));
+    }
+
+    yield ctx.df.task.all(parallelTasks);
+
+    // aggregate all N outputs and send result to F3
+    const sum = parallelTasks.reduce((prev, curr) => prev + curr, 0);
+    yield ctx.df.callActivityAsync("F3", sum);
+});
 ```
 
 Pracovní fan-out je distribuován do více instancí funkce `F2`, a práce je sledován pomocí dynamického seznamu úloh. .NET `Task.WhenAll` rozhraní API se nazývá čekání na všechny volané funkce ukončíte. Pak se `F2`funkce výstupy se agregují ze seznamu úkolů dynamické a na předaný `F3` funkce.
@@ -163,6 +202,8 @@ Příklad by Prohodit starší scénář rozhraní API HTTP asynchronní. Místo
 
 Pomocí trvanlivý funkcí, lze vytvořit více monitorů, které sledovat libovolný koncové body v několika řádků kódu. Monitorování můžete ukončit provádění, pokud nějaká podmínka splníte nebo ukončí se [DurableOrchestrationClient](durable-functions-instance-management.md), a jejich interval čekání se dá změnit podle nějaká podmínka (tj. exponenciálního omezení rychlosti.) Následující kód implementuje základní monitorování.
 
+#### <a name="c"></a>C#
+
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
 {
@@ -189,6 +230,34 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```js
+const df = require("durable-functions");
+const df = require("moment");
+
+module.exports = df(function*(ctx) {
+    const jobId = ctx.df.getInput();
+    const pollingInternal = getPollingInterval();
+    const expiryTime = getExpiryTime();
+
+    while (moment.utc(ctx.df.currentUtcDateTime).isBefore(expiryTime)) {
+        const jobStatus = yield ctx.df.callActivityAsync("GetJobStatus", jobId);
+        if (jobStatus === "Completed") {
+            // Perform action when condition met
+            yield ctx.df.callActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        const nextCheck = moment.utc(ctx.df.currentUtcDateTime).add(pollingInterval, 's');
+        yield ctx.df.createTimer(nextCheck.toDate());
+    }
+
+    // Perform further work here, or let the orchestration end
+});
+```
+
 Odeslaná žádost, je vytvořena nová instance orchestration pro ID tohoto úlohy. Instance dotazuje stavu, dokud je splněna podmínka a smyčky je byl ukončen. Trvanlivý časovač se používá k řízení interval dotazování. Pak lze provádět další práci, nebo můžete ukončit orchestration. Když `ctx.CurrentUtcDateTime` překračuje `expiryTime`, skončení monitorování.
 
 ## <a name="pattern-5-human-interaction"></a>Vzor #5: Zásahem ze strany
@@ -200,6 +269,8 @@ Příkladem obchodní proces, který zahrnuje zásahem ze strany je proces schva
 ![Diagram zásahem ze strany](media/durable-functions-overview/approval.png)
 
 Tento vzor můžete implementovat pomocí funkce produktu orchestrator. Orchestrator využije [trvanlivý časovače](durable-functions-timers.md) požádat o schválení a zvýšení v případě vypršení časového limitu. By počkejte [externí událostí](durable-functions-external-events.md), který bude oznámení generované některé zásahem ze strany.
+
+#### <a name="c"></a>C#
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -224,7 +295,39 @@ public static async Task Run(DurableOrchestrationContext ctx)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```js
+const df = require("durable-functions");
+const moment = require('moment');
+
+module.exports = df(function*(ctx) {
+    yield ctx.df.callActivityAsync("RequestApproval");
+
+    const dueTime = moment.utc(ctx.df.currentUtcDateTime).add(72, 'h');
+    const durableTimeout = ctx.df.createTimer(dueTime.toDate());
+
+    const approvalEvent = ctx.df.waitForExternalEvent("ApprovalEvent");
+    if (approvalEvent === yield ctx.df.Task.any([approvalEvent, durableTimeout])) {
+        durableTimeout.cancel();
+        yield ctx.df.callActivityAsync("ProcessApproval", approvalEvent.result);
+    } else {
+        yield ctx.df.callActivityAsync("Escalate");
+    }
+});
+```
+
 Trvanlivý časovač se vytvoří voláním `ctx.CreateTimer`. Doručení pomocí `ctx.WaitForExternalEvent`. A `Task.WhenAny` nazývá se můžete rozhodnout, jestli chcete-li postoupit (vypršení časového limitu se stane nejprve) nebo zpracovat schválení (schválení je obdrženy předtím, než časový limit).
+
+Externích klientských lze doručit oznámení událostí buď pomocí funkce orchestrator čekání [integrované rozhraní API HTTP](durable-functions-http-api.md#raise-event) nebo pomocí [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) rozhraní API z Další funkce:
+
+```csharp
+public static async Task Run(string instanceId, DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
 
 ## <a name="the-technology"></a>Technologie
 
@@ -244,7 +347,7 @@ Chování opětovného přehrání vytvoří omezení na typu kód, který můž
 
 ## <a name="language-support"></a>Podpora jazyků
 
-C# se v současné době pouze podporovaných jazycích pro odolná funkce. To zahrnuje orchestrator funkce a funkce aktivity. V budoucnu přidáme podpora pro všechny jazyky, které podporuje Azure Functions. Azure Functions najdete v části [seznam problémů úložiště GitHub](https://github.com/Azure/azure-functions-durable-extension/issues) chcete zobrazit nejnovější stav naše další jazyková podpora práce.
+Aktuálně C# (funkce v1 a v2) a JavaScript (pouze funkce v2) jsou pouze podporované jazyky pro odolná funkce. To zahrnuje orchestrator funkce a funkce aktivity. V budoucnu přidáme podpora pro všechny jazyky, které podporuje Azure Functions. Azure Functions najdete v části [seznam problémů úložiště GitHub](https://github.com/Azure/azure-functions-durable-extension/issues) chcete zobrazit nejnovější stav naše další jazyková podpora práce.
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 
@@ -275,7 +378,7 @@ Funkce Orchestrator plán aktivita funkce a jejich odpovědi prostřednictvím z
 
 ## <a name="known-issues-and-faq"></a>Známé problémy a nejčastější dotazy
 
-Obecně platí, by měly být všechny známé problémy sledovány v [Githubu problémy](https://github.com/Azure/azure-functions-durable-extension/issues) seznamu. Pokud dojde k potížím a nelze najít problém v Githubu, otevřete nový problém a obsahovat podrobný popis problému. I v případě, že chcete stačí položit dotaz, klidně si otevřete potíže Githubu a označit ji jako dotaz.
+Všechny známé problémy, které mají být sledovány v [Githubu problémy](https://github.com/Azure/azure-functions-durable-extension/issues) seznamu. Pokud dojde k potížím a nelze najít problém v Githubu, otevřete nový problém a obsahovat podrobný popis problému.
 
 ## <a name="next-steps"></a>Další postup
 

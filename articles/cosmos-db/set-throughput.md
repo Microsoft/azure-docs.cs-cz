@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 05/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bede91ed3ffc456740a0eb63ed7a15278e99ebe2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Nastavování a získávání propustnost pro Azure Cosmos DB kontejnery
 
-Propustnost lze nastavit pro Azure Cosmos DB kontejnerů na portálu Azure nebo pomocí sady SDK klienta. 
+Propustnost lze nastavit pro Azure Cosmos DB kontejnerů nebo sadu kontejnery na portálu Azure nebo pomocí sady SDK klienta. 
 
 Následující tabulka uvádí k dispozici pro kontejnery propustnost:
 
@@ -31,15 +31,18 @@ Následující tabulka uvádí k dispozici pro kontejnery propustnost:
             <td valign="top"><p></p></td>
             <td valign="top"><p><strong>Jeden oddíl kontejneru</strong></p></td>
             <td valign="top"><p><strong>Oddílů kontejneru</strong></p></td>
+            <td valign="top"><p><strong>Sadu kontejnery</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>Minimální propustnost</p></td>
             <td valign="top"><p>400 jednotek žádosti za sekundu</p></td>
             <td valign="top"><p>1 000 jednotek žádosti za sekundu</p></td>
+            <td valign="top"><p>50 000 jednotek žádosti za sekundu</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maximální propustnost</p></td>
             <td valign="top"><p>10 000 jednotek žádosti za sekundu</p></td>
+            <td valign="top"><p>Unlimited</p></td>
             <td valign="top"><p>Unlimited</p></td>
         </tr>
     </tbody>
@@ -62,6 +65,7 @@ Následující fragment kódu načte aktuální propustnost a změní na 500 RU/
 
 ```csharp
 // Fetch the offer of the collection whose throughput needs to be updated
+// To change the throughput for a set of containers, use the database's selflink instead of the collection's selflink
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -82,6 +86,7 @@ Následující fragment kódu načte aktuální propustnost a změní na 500 RU/
 
 ```Java
 // find offer associated with this collection
+// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
 Iterator < Offer > it = client.queryOffers(
     String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
 assertThat(it.hasNext(), equalTo(true));
@@ -131,7 +136,7 @@ Nejjednodušší způsob, jak získat dobrý odhad požadavku poplatky jednotky 
 ![Rozhraní API MongoDB portálu metriky][1]
 
 ### <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení omezení vyhrazenou propustností v rozhraní API MongoDB
-Aplikace, které překračují zřízená propustnost pro kontejner bude míra limited, dokud spotřebu klesne pod zřízená propustnost. Když dojde k omezení míry, back-end se ukončí ho preventivně požadavek s `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením `Too Many Requests` kód chyby. Pokud se zobrazuje řada `Too Many Requests` kódy chyb, možná budete chtít buď přidejte logiku opakovaných pokusů v zpracování rutiny chyb aplikace nebo [zvýšit zřízené propustnosti pro kontejner](set-throughput.md).
+Aplikace, které překračují zřízená propustnost pro kontejner nebo sadu kontejnery bude míra limited, dokud spotřebu klesne pod zřízená propustnost. Když dojde k omezení míry, back-end se ukončí ho preventivně požadavek s `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením `Too Many Requests` kód chyby. Pokud se zobrazuje řada `Too Many Requests` kódy chyb, možná budete chtít buď přidejte logiku opakovaných pokusů v zpracování rutiny chyb aplikace nebo [zvýšit zřízené propustnosti pro kontejner](set-throughput.md).
 
 ## <a name="throughput-faq"></a>Propustnost – nejčastější dotazy
 
@@ -139,7 +144,7 @@ Aplikace, které překračují zřízená propustnost pro kontejner bude míra l
 
 400 RU/s je k dispozici minimální propustnost kontejnerům Cosmos DB tvořené jedním oddílem (je 1000 RU/s minimum pro kontejnery oddílů). Žádost jednotky jsou nastaveny v intervalech 100 RU/s, ale propustnost nelze nastavit na 100 RU/s nebo jakoukoli hodnotu menší než 400 RU/s. Pokud hledáte nákladově efektivní metodu pro vývoj a testování Cosmos DB, můžete použít bezplatnou [emulátoru DB Cosmos Azure](local-emulator.md), které můžete nasadit místně bez nákladů. 
 
-**Jak lze nastavit pomocí rozhraní API MongoDB througput?**
+**Jak lze nastavit pomocí rozhraní API MongoDB propustnost?**
 
 Nedojde k rozšíření rozhraní API MongoDB nastavit propustnost. Doporučuje se používat rozhraní SQL API, jak je znázorněno v [nastavení propustnost pomocí rozhraní SQL API pro .NET](#set-throughput-sdk).
 

@@ -1,12 +1,12 @@
 ---
-title: "Přehled diagnostiky Azure App Service | Microsoft Docs"
-description: "Zjistěte, jak můžete potíže s vaší webové aplikace s diagnostikou služby App Service."
-keywords: "služby App service, služby azure app service, diagnostiky, podpora, webové aplikace, řešení potíží s návody pro Svépomocné řešení"
+title: Přehled diagnostiky Azure App Service | Microsoft Docs
+description: Zjistěte, jak můžete potíže s vaší webové aplikace s diagnostikou služby App Service.
+keywords: služby App service, služby azure app service, diagnostiky, podpora, webové aplikace, řešení potíží s návody pro Svépomocné řešení
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: jen7714
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 9526817ce7969edcd5e9c56ec153bb4e3ebaa501
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 50e0e9f5edc18aac42ee80e232f70e09736124bc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky Azure App Service 
 
@@ -26,11 +26,13 @@ Pokud používáte webovou aplikaci, kterou chcete připravit pro všechny probl
  
 I když toto prostředí je užitečný zejména, pokud máte problémy s s vaší webové aplikace za posledních 24 hodin, bude k dispozici pro vás k analýze za všech okolností diagnostiky grafy. Další nástroje pro odstraňování potíží a odkazy na dokumentaci užitečné a fóra nacházejí v pravém sloupci.
 
+Diagnostika služby App Service funguje pro pouze vaší aplikace v systému Windows, ale také aplikace na [Linux/kontejnery](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro), [App Service Environment](https://docs.microsoft.com/en-us/azure/app-service/environment/intro), a [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview). 
+
 ## <a name="open-app-service-diagnostics"></a>Otevřete App Service diagnostics
 
-Chcete-li získat přístup k službě App Service diagnostics, přejděte na webové aplikace služby App Service v [portál Azure](https://portal.azure.com). 
+Pro přístup k Diagnostika služby App Service, přejděte do služby App Service aplikace nebo služby App Service Environment ve [portál Azure](https://portal.azure.com). V levém navigačním panelu, klikněte na **Diagnostikujte a řešení problémů**. 
 
-V levém navigačním panelu, klikněte na **Diagnostikujte a řešení problémů**.
+U Azure Functions, přejděte do aplikace pro funkce a v horním navigačním panelu a potom klikněte na **funkce** a vyberte **Diagnostikujte a řešení problémů** z **monitorování**části. 
 
 ![Domovská stránka](./media/app-service-diagnostics/Homepage1.png)
 
@@ -46,13 +48,22 @@ Pokud problém s konkrétní problém kategorie během posledních 24 hodin, mů
 
 ## <a name="tile-shortcuts"></a>Dlaždice zástupců
 
-Pokud znáte přesně jaký druh řešení potíží s informací, které hledáte, dlaždice zástupce přejdete přímo na úplné diagnostiky sestavu kategorii problému, která vás zajímá. Ve srovnání s checkup stavu, dlaždice zástupce jsou další přímo, ale menší na základě přístup k vaší diagnostiky metriky.  
+Pokud znáte přesně jaký druh řešení potíží s informací, které hledáte, dlaždice zástupce přejdete přímo na úplné diagnostiky sestavu kategorii problému, která vás zajímá. Ve srovnání s checkup stavu, dlaždice zástupce jsou další přímo, ale menší na základě přístup k vaší diagnostiky metriky. Jako součást zkratky dlaždice, to je také naleznete **diagnostické nástroje** který pokročilejší nástroje, které vám pomůže prozkoumat problémy související s problémy kódu aplikace, pomalost, připojovací řetězce a další. 
 
 ![Dlaždice zástupců](./media/app-service-diagnostics/TileShortcuts4.png)
 
 ## <a name="diagnostic-report"></a>Diagnostická zpráva
 
-Jestli chcete získat další informace po spuštění [stavu checkup](#health-checkup) nebo jste klikli na jednom z [dlaždici zkratky](#tile-shortcuts), úplné diagnostiky sestava zobrazí relevantní vykreslená metriky z posledních 24 hodin. Pokud vaše aplikace dojde k nějakému výpadku, je reprezentována oranžovou pod časovou osu. Můžete vybrat jednu z výpadky způsobené nástrojem získat analyzovaných připomínky o výpadek spolu s navrhovanými řešeními. 
+Jestli chcete získat další informace po spuštění [stavu checkup](#health-checkup) nebo jste klikli na jednom z [dlaždici zkratky](#tile-shortcuts), úplné diagnostiky sestava zobrazí relevantní vykreslená metriky z posledních 24 hodin. Pokud vaše aplikace dojde k nějakému výpadku, je reprezentována oranžovou pod časovou osu. Můžete vybrat jednu z oranžové řádky vyberte výpadek viz poznámky o tomto výpadky a navrhované kroky pro řešení potíží. 
 
 ![Diagnostická zpráva](./media/app-service-diagnostics/DiagnosticReport5.png)
+
+
+## <a name="investigating-application-code-issues"></a>Zkoumání problémů s kódu aplikací
+
+Protože mnoho problémů aplikace souvisí s problémy v kódu aplikace, služby App Service diagnostics integruje s [Application Insights](https://azure.microsoft.com/services/application-insights/) zvýrazněte výjimky a problémy závislosti ke korelaci vybrané výpadek. Application Insights se musí aktivovat samostatně. 
+
+Chcete-li zobrazit výjimky Application Insights a závislosti, vyberte **webové aplikace dolů** nebo **webové aplikace pomalé** dlaždici zástupce. 
+
+![Application Insights](./media/app-service-diagnostics/AppInsights6.png)
 

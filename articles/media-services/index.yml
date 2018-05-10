@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure Media Services
+metadata:
+  document_id: 
+  title: Dokumentace ke službě Azure Media Services | Microsoft Docs
+  meta.description: Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.
+  services: media-services
+  author: juliako
+  manager: cfowler
+  ms.service: media-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04-21-2018
+  ms.author: juliako
+  ms.openlocfilehash: 6bee2f17db6d1f79dd2ba84a278ff6a82b871a9e
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to.
+sections:
+- title: 
+  items:
+  - type: list
+    style: cards
+    className: cardsA
+    items:
+    - html: <a href="/azure/media-services/latest/"> <br><strong>Azure Media Services v3 (Preview)</strong></a> <p>Naučíte se streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.</p>
+    - html: <a href="/azure/media-services/previous/"> <br><strong>Azure Media Services v2 (GA)</strong></a> <p>Naučíte se streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v2.</p>
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Zjistíte, jak vytvořit účet Media Services, spustit kódování videí a použít k jejich přehrávání Azure Media Player:'
+  - type: list
+    style: ordered
+    items:
+    - html: 'Streamované soubory: <a href="/azure/media-services/latest/stream-files-dotnet-quickstart">v3</a> | <a href="/azure/media-services/previous/media-services-portal-vod-get-started">v2</a>'
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se streamovat soubory a analyzovat videa s využitím Media Services:'
+  - type: list
+    style: ordered
+    items:
+    - html: 'Nahrávání, kódování a streamování videí: <a href="/azure/media-services/latest/stream-files-tutorial-with-api">v3</a> | <a href="/azure/media-services/previous/media-services-dotnet-get-started">v2</a>'
+    - html: 'Analýza videí: <a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">v3</a> | <a href="/azure/media-services/previous/media-services-analytics-overview">v2</a>'

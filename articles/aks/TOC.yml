@@ -1,4 +1,4 @@
-- name: Azure Container Service (AKS)
+- name: Azure Kubernetes Service (AKS)
   href: ./index.yml
 - name: Přehled
   items:
@@ -25,9 +25,7 @@
       href: tutorial-kubernetes-scale.md
     - name: 6. Aktualizace aplikace
       href: tutorial-kubernetes-app-update.md
-    - name: 7. Monitorování pomocí Log Analytics
-      href: tutorial-kubernetes-monitor.md
-    - name: 8. Upgrade clusteru
+    - name: 7. Upgrade clusteru
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: Koncepty
   items:
@@ -57,12 +55,16 @@
           href: azure-files-dynamic-pv.md
     - name: Konfigurace sítí
       items:
+        - name: Přehled sítí
+          href: networking-overview.md
         - name: Statická IP adresa
           href: static-ip.md
         - name: Interní nástroj pro vyrovnávání zatížení
           href: internal-lb.md
         - name: Ingress a protokol TLS
           href: ingress.md
+        - name: Směrování aplikace HTTP
+          href: http-application-routing.md
     - name: Zabezpečení a ověřování
       items:
         - name: Vytvoření instančního objektu

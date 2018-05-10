@@ -13,34 +13,35 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/20/2018
   ms.author: bryanla
-  ms.openlocfilehash: a86827616c96dd877a88fdd89cb5b0205c2cface
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.openlocfilehash: 80c88340e31ef6650dee13819dda316b4d9bcb4d
+  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/28/2018
+  ms.lasthandoff: 05/08/2018
 abstract:
   description: Vítejte v tématu Microsoft Azure a internet věcí (IoT). Azure IoT je komplexní kolekce služeb a řešení navržených k tomu, aby vám pomohly vytvářet kompletní aplikace IoT v Azure. Azure IoT nabízí širokou škálu možností a nástrojů, které jsou přizpůsobené potřebám vašeho oboru a firemním prostředkům a dovednostem, od plně hostovaných a spravovaných řešení SaaS (Software as a Service) a specializovaných nabídek PaaS (Platform as a Service) až po technologie pro sestavování inteligentních hraničních zařízení.
 sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: Tato rychlá zprovoznění vám ukážou, jak se rychle a snadno seznámit s Azure IoT.
+    text: Projděte si tyto články, ve kterých se rychle a snadno seznámíte s Azure IoT.
   - type: list
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">Další informace o vytvoření nové aplikace Azure IoT Central</a>
+    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">Postup při nasazení akcelerátoru řešení vzdáleného monitorování</a>
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">Vytvoření centra IoT a připojení vašeho prvního simulovaného zařízení do Azure (Node.js)</a>
     - html: <a href="/azure/iot-edge/quickstart-linux">Nasazení prvního modulu IoT Edge a zpracování dat v simulovaném zařízení se systémem Windows, Linux nebo Mac</a>
-    - html: <a href="/azure/location-based-services/quick-demo-map-app">Spuštění aplikace hledání v mapách s využitím služeb Azure Location Based Services (Preview)</a>
+    - html: <a href="/azure/azure-maps/quick-demo-map-app">Spuštění aplikace hledání v mapách s využitím Azure Mapa</a>
     - html: <a href="/azure/time-series-insights/time-series-quickstart">Prozkoumání služby Time Series Insights</a>
 - title: Technologie a řešení
   items:
   - type: paragraph
-    text: Nabídky SaaS a předkonfigurovaná řešení vám umožní rychle začít.
+    text: Nabídky SaaS a akcelerátory řešení vám umožní rychle začít.
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/iot-suite">IoT Suite</a>
+    - html: <a href="/azure/iot-suite">Akcelerátory řešení IoT</a>
     - html: <a href="/azure/iot-central">IoT Central</a>
   - type: paragraph
     text: Sestavování s využitím nabídek PaaS (Platform as a Service)
@@ -49,11 +50,11 @@ sections:
     items:
     - html: <a href="/azure/iot-hub">IoT Hub</a>
     - html: <a href="/azure/iot-dps">Služby IoT Hub Device Provisioning</a>
-    - html: <a href="/azure/location-based-services">Azure Location Based Services</a>
+    - html: <a href="/azure/azure-maps">Azure Maps</a>
     - html: <a href="/azure/time-series-insights">Azure Time Series Insights</a>
     - html: <a href="/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks">Sady SDK pro služby IoT</a>
   - type: paragraph
-    text: Sestavování inteligentních hraničních zařízení
+    text: Vytváření řešení se zařízeními IoT a edge computingem
   - type: list
     style: unordered
     items:
@@ -99,4 +100,4 @@ sections:
     - title: Jazyky
       html: <p><a href="/azure/iot-hub/iot-hub-devguide-sdks">Sady Azure IoT SDK pro .Net, C, Javu, Node.js, Python</a></p>
     - title: REST
-      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">Služba IoT Hub Device Provisioning</a></p><p><a href="/rest/api/location-based-services-management/">Správa Location Based Services</a></p><p><a href="/rest/api/location-based-services/">Zprovoznění Location Based Services</a></p><p><a href="/rest/api/time-series-insights-management/">Správa Time Series Insights</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>
+      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">Služba IoT Hub Device Provisioning</a></p><p><a href="/rest/api/location-based-services-management/">Správa map</a></p><p><a href="/rest/api/location-based-services/">Funkční služba Maps</a></p><p><a href="/rest/api/time-series-insights-management/">Správa Time Series Insights</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>

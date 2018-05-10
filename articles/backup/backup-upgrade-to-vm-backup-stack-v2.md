@@ -13,11 +13,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
 ms.author: trinadhk, sogup
-ms.openlocfilehash: 224cd365e6b3ca4fd963b530dbaa289b763d53ee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1e5515486afac5a6d84a35bca33f55ae98e287d3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Upgrade na modelu nasazení Azure Resource Manager pro zálohování zásobník virtuálního počítače Azure
 Model nasazení Resource Manager pro upgrade na zálohování zásobník virtuálního počítače (VM) obsahuje následující vylepšení funkce:
@@ -45,8 +45,6 @@ Ve výchozím nastavení jsou snímky v sedm dní. Tato funkce umožňuje obnove
 
 ## <a name="considerations-before-upgrade"></a>Důležité informace před provedením upgradu
 * Upgrade zásobníku zálohování virtuálních počítačů je jedním směrovou. Proto všechny zálohy, přejděte do tohoto datového toku. Protože je povolena na úrovni předplatného, všechny virtuální počítače přejít do tohoto datového toku. Všechny nové funkce přidané jsou založené na stejné zásobníku. Uvolní možnost řízení, které to na úrovni zásady pochází v budoucnosti.
-
-* U virtuálních počítačů s prémiové disky během a do prvního dokončení zálohování, ujistěte se, že v účtu úložiště není dostatek místa. Musí být roven velikost virtuálního počítače.
 
 * Snímky jsou uložené místně pro zvýšení vytvoření bodu obnovení a také pro urychlení obnovení. Proto zobrazí náklady na úložiště, které odpovídají snímky během období sedmi dnů.
 

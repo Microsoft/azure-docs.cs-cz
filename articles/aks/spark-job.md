@@ -1,6 +1,6 @@
 ---
-title: Spustit úlohu Apache Spark s Azure Container Service (AKS)
-description: Spustit úlohu Apache Spark pomocí Azure Container Service (AKS)
+title: Spustit úlohu Apache Spark s Azure Kubernetes služby (AKS)
+description: Spustit úlohu Apache Spark pomocí Azure Kubernetes služby (AKS)
 services: container-service
 author: lenadroid
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 627cb80a055fb4b66fcc428a1de87d754af6991e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fbeddb60ce968ff0d32e2ddb6a4f62d2036d80aa
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Spuštěné úlohy Apache Spark na AKS
 
-[Apache Spark] [ apache-spark] je rychlé stroj pro zpracování velkých dat. Od [Spark 2.3.0 verze][spark-latest-release], Apache Spark podporuje nativní integrace s Kubernetes clustery. Azure Container Service (AKS) je prostředí spravované Kubernetes běžící v Azure. Tento dokument podrobně popisuje přípravu a spuštění úlohy Apache Spark v clusteru Azure Container Service (AKS).
+[Apache Spark] [ apache-spark] je rychlé stroj pro zpracování velkých dat. Od [Spark 2.3.0 verze][spark-latest-release], Apache Spark podporuje nativní integrace s Kubernetes clustery. Služba Azure Kubernetes (AKS) je prostředí spravované Kubernetes běžící v Azure. Tento dokument podrobně popisuje přípravu a spuštění úlohy Apache Spark v Azure Kubernetes služby (AKS) clusteru.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,7 @@ Aby bylo možné provést kroky v tomto článku, budete potřebovat následují
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Spark je použitý pro zpracování velkých dat a vyžaduje, aby Kubernetes uzly mají velikost pro splnění požadavků prostředky Spark. Doporučujeme minimální velikost `Standard_D3_v2` pro uzly Azure Container Service (AKS).
+Spark je použitý pro zpracování velkých dat a vyžaduje, aby Kubernetes uzly mají velikost pro splnění požadavků prostředky Spark. Doporučujeme minimální velikost `Standard_D3_v2` pro uzly Azure Kubernetes služby (AKS).
 
 Pokud budete potřebovat AKS clusteru, který splňuje toto minimální doporučení, spusťte následující příkazy.
 

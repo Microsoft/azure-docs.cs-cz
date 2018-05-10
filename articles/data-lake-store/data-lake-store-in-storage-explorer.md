@@ -16,15 +16,15 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: a02844c678c08d8aefbceb16d3908faeffd755fb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Správa prostředků Azure Data Lake Store pomocí Průzkumníka služby Storage
 
-[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview) je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data. K datům můžete získat přístup odkudkoli přes protokol HTTP nebo HTTPS. Data Lake Store v Průzkumníku služby Azure Storage umožňuje přistupovat k datům a prostředkům Data Lake Store a spravovat je spolu s dalšími entitami Azure, jako jsou objekty blob a fronty. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě.
+[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data. K datům můžete získat přístup odkudkoli přes protokol HTTP nebo HTTPS. Data Lake Store v Průzkumníku služby Azure Storage umožňuje přistupovat k datům a prostředkům Data Lake Store a spravovat je spolu s dalšími entitami Azure, jako jsou objekty blob a fronty. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě.
 
 Další výhodou je, že ke správě dat Data Lake Store nepotřebujete mít oprávnění k předplatnému. V Průzkumníku služby Storage můžete připojit cestu Data Lake Store k uzlu **Místní a připojené**, pokud vám k tomu někdo udělí oprávnění.
 
@@ -32,7 +32,7 @@ Další výhodou je, že ke správě dat Data Lake Store nepotřebujete mít opr
 K dokončení kroků v tomto článku budete potřebovat následující:
 
 *   Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial).
-*   Účet Azure Data Lake Store. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal).
+*   Účet Azure Data Lake Store. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 ## <a name="install-storage-explorer"></a>Instalace Průzkumníka služby Storage
 
@@ -197,7 +197,7 @@ Pokud máte adresu URL, můžete ji zadat do adresního řádku v Průzkumníku 
 
 ## <a name="next-steps"></a>Další kroky
 * Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](http://www.storageexplorer.com).
-* Zjistěte, jak [spravovat službu Azure Cosmos DB v Průzkumníku služby Azure Storage](https://docs.microsoft.com/en-us/azure/cosmos-db/storage-explorer).
-* [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-* [Začínáme s Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview).
+* Zjistěte, jak [spravovat službu Azure Cosmos DB v Průzkumníku služby Azure Storage](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
+* [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+* [Začínáme s Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).
 * Podívejte se na [video na YouTube věnované používání služby Azure Cosmos DB v Průzkumníku služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).

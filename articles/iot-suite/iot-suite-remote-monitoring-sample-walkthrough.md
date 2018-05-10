@@ -1,12 +1,12 @@
 ---
-title: "Architektura řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "Návod architektura předkonfigurovaného řešení vzdáleného monitorování."
-services: 
+title: Architektura řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: Návod architektury vzdálené monitorování akcelerátoru řešení.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="remote-monitoring-preconfigured-solution-architecture"></a>Předkonfigurované architektury řešení vzdáleného monitorování
+# <a name="remote-monitoring-solution-accelerator-architecture"></a>Vzdálené monitorování řešení akcelerátoru architektura
 
-Vzdálené sady IoT Suite monitorování [předkonfigurované řešení](iot-suite-what-are-preconfigured-solutions.md) implementuje řešení monitorování v začátku do konce pro víc počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](iot-suite-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
+Vzdálené monitorování [řešení akcelerátoru](iot-suite-what-are-solution-accelerators.md) implementuje řešení monitorování v začátku do konce pro víc počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](iot-suite-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
 
 Tento článek vás provede některými z klíčových prvků řešení vzdáleného monitorování, aby vám pomohl pochopit, jak toto řešení funguje. Díky tomu budete moct:
 
@@ -33,13 +33,13 @@ Tento článek vás provede některými z klíčových prvků řešení vzdálen
 
 ## <a name="logical-architecture"></a>Logická architektura
 
-Následující diagram popisuje logické součásti tohoto řešení vzdáleného monitorování předkonfigurované překrývajícím [architektuře IoT](iot-suite-what-is-azure-iot.md):
+Následující diagram popisuje logické součásti tohoto vzdáleného monitorování akcelerátoru řešení překrývajícím [architektuře IoT](iot-suite-what-is-azure-iot.md):
 
 ![Logická architektura](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 ## <a name="why-microservices"></a>Proč mikroslužeb?
 
-Architektura Cloud má vyvinuly vzhledem k tomu, že společnost Microsoft vydala první předkonfigurovaných řešení. [Mikroslužeb](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) této služby jako osvědčené postupy pro zajištění škálování a flexibilitu, aniž by došlo ke ztrátě vývoj rychlostí. Tento vzor architektury několika služeb Microsoft interně použít s skvělé spolehlivosti a škálovatelnosti výsledky. Aktualizované předkonfigurovaná řešení uveďte tyto learnings do praxe, mohou také těžit z nich.
+Architektura Cloud má vyvinuly vzhledem k tomu, že společnost Microsoft vydala první akcelerátorů řešení. [Mikroslužeb](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) této služby jako osvědčené postupy pro zajištění škálování a flexibilitu, aniž by došlo ke ztrátě vývoj rychlostí. Tento vzor architektury několika služeb Microsoft interně použít s skvělé spolehlivosti a škálovatelnosti výsledky. Aktualizované řešení akcelerátorů uveďte tyto learnings do praxe, mohou také těžit z nich.
 
 > [!TIP]
 > Další informace o architekturách mikroslužeb najdete v tématech věnovaných [architektuře aplikací .NET](https://www.microsoft.com/net/learn/architecture) a [mikroslužbám jako revoluci v aplikacích, kterou umožnil cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
@@ -67,7 +67,7 @@ Můžete zřídit fyzické zařízení na řídicím panelu portálu řešení.
 
 ### <a name="iot-hub-and-the-iot-manager-microservice"></a>IoT Hub a mikroslužbu manager IoT
 
-[Služby IoT hub](../iot-hub/index.md) ingestuje dat odesílaných ze zařízení do cloudu a můžete ho `telemetry-agent` mikroslužby.
+[Služby IoT hub](../iot-hub/index.yml) ingestuje dat odesílaných ze zařízení do cloudu a můžete ho `telemetry-agent` mikroslužby.
 
 Služba IoT Hub v řešení také:
 
@@ -112,11 +112,11 @@ RESTful koncový bod poskytl tento mikroslužbu použijte ke správě telemetrie
 
 ### <a name="storage"></a>Úložiště
 
-[Adaptéru úložiště](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroslužbu je adaptér před službu hlavní úložiště používá pro předkonfigurované řešení. Poskytuje jednoduché kolekce a klíč hodnota úložiště.
+[Adaptéru úložiště](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroslužbu je adaptér před hlavní úložiště službě, kterou používá akcelerátoru řešení. Poskytuje jednoduché kolekce a klíč hodnota úložiště.
 
-Standardní nasazení předkonfigurované řešení používá Cosmos DB jako jeho hlavní úložiště služby.
+Standardní nasazení akcelerátoru řešení používá Cosmos DB jako jeho hlavní úložiště služby.
 
-Databázi Cosmos DB ukládá data do předkonfigurovaného řešení. **Adaptéru úložiště** mikroslužbu funguje jako adaptér pro ostatní mikroslužeb v řešení pro přístup ke službě úložiště.
+Databázi Cosmos DB ukládá data do akcelerátoru řešení. **Adaptéru úložiště** mikroslužbu funguje jako adaptér pro ostatní mikroslužeb v řešení pro přístup ke službě úložiště.
 
 ## <a name="presentation"></a>Prezentace
 
@@ -128,19 +128,19 @@ Databázi Cosmos DB ukládá data do předkonfigurovaného řešení. **Adaptér
 * Je navržen s šablon stylů CSS.
 * Komunikuje s veřejné mikroslužeb přístupných prostřednictvím volání AJAX.
 
-Uživatelské rozhraní uvede všechny funkce předkonfigurované řešení a komunikuje s dalšími službami, jako například:
+Uživatelské rozhraní uvede všechny funkce akcelerátoru řešení a komunikuje s dalšími službami, jako například:
 
 * [Ověřování](https://github.com/Azure/pcs-auth-dotnet) mikroslužbu pro ochranu dat uživatele.
 * [Iothub-manager](https://github.com/Azure/iothub-manager-dotnet) mikroslužbu seznamu a správa zařízení IoT.
 
 [Uživatelského rozhraní config](https://github.com/Azure/pcs-config-dotnet) mikroslužbu umožňuje uživatelské rozhraní pro ukládání a načítání nastavení konfigurace.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete prozkoumat zdrojový kód a vývojáře dokumentaci, začněte s jedním dva hlavní úložišť GitHub:
 
-* [Předkonfigurované řešení pro vzdálené monitorování s Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
-* [Předkonfigurované řešení pro vzdálené monitorování s Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
-* [Předkonfigurované řešení pro vzdálené monitorování architekturu)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
+* [Akcelerátor řešení pro vzdálené monitorování s Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
+* [Akcelerátor řešení pro vzdálené monitorování s Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
+* [Solution accelerator pro vzdálené monitorování architekturu)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
-Další koncepční informace o předkonfigurovaného řešení vzdáleného monitorování najdete v tématu [přizpůsobení předkonfigurovaného řešení](iot-suite-remote-monitoring-customize.md).
+Další koncepční informace o vzdálené monitorování akcelerátoru řešení najdete v tématu [přizpůsobit akcelerátoru řešení](iot-suite-remote-monitoring-customize.md).

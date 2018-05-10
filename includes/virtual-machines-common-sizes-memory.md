@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 75b89ad7f118d107f570b5e323d61bbc9b94bc40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysoký poměr paměti procesor, který se výborně hodí pro servery relační databáze, středních a velkých mezipaměti a analýzy v paměti. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -26,9 +26,9 @@ Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysok�
 
 * 2.3 GHz (Broadwell) procesoru Ev3-series funkce E5-2673 v4 v konfiguraci technologie hyper-threaded, poskytuje lepší nabízená hodnota pro nejobecnější účel úlohy a převedení Ev3 do zarovnání s obecné účely virtuální počítače většinu ostatních cloudů.  Paměť se rozšířila (z 7 GiB/virtuální procesory na 8 GiB/virtuální procesory) při omezení diskových a síťových byly upraveny na základě za jádra souladu s přechodem na Hyper-threadingem.  Ev3 je postupujte podle až do velikosti virtuálních počítačů velkého množství paměti D/Dv2 rodiny.
 
-## <a name="esv3-series-sup1sup"></a>Esv3-series <sup>1</sup>
+## <a name="esv3-series"></a>Esv3-series 
 
-ACU: 160–190
+ACU: 160-190 <sup>1</sup>
 
 Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell), jejichž frekvence se s technologií Intel Turbo Boost 2.0 může zvýšit až na 3,5 GHz, a používají službu Premium Storage. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
@@ -51,9 +51,9 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 <sup>3</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
 
 
-## <a name="ev3-series-sup1sup"></a>Ev3-series <sup>1</sup>
+## <a name="ev3-series"></a>Ev3-series 
 
-ACU: 160–190 
+ACU: 160-190 <sup>1</sup>
 
 Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) a s technologií Intel Turbo Boost 2.0 se jejich frekvence může zvýšit až na 3,5 GHz. Instance Ev3-series jsou ideální pro podnikové aplikace s vysokými nároky na paměť.
 
@@ -75,9 +75,9 @@ Instance Ev3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-2673
 <sup>2</sup> omezené základní velikostí, které jsou k dispozici. 
 
 
-## <a name="m-series-sup1sup"></a>M-series <sup>1</sup>
+## <a name="m-series"></a>M-Series 
 
-ACU: 160–180
+ACU: 160-180 <sup>1</sup>
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -95,9 +95,9 @@ ACU: 160–180
 <sup>4</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
 <br>
 
-## <a name="gs-series-sup1sup"></a>GS-series <sup>1</sup>
+## <a name="gs-series"></a>Řada GS 
 
-ACU: 180–240
+ACU: 180-240 <sup>1</sup>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
@@ -131,9 +131,9 @@ ACU: 180–240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2-series <sup>1</sup>
+## <a name="dsv2-series"></a>DSv2-series 
 
-ACU: 210–250
+ACU: 210 – 250 <sup>1</sup>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,9 +174,9 @@ ACU: 210–250
 
 <br>
 
-## <a name="ds-series-sup1sup"></a>DS-series <sup>1</sup>
+## <a name="ds-series"></a>DS-series 
 
-ACU: 160
+ACU: 160 <sup>1</sup>
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

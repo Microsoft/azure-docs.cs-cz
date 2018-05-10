@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 13b1c5b9ae05a6c2d11420812efc1af17912aa28
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 073ac7cf2d8d8d5dac6a5a4f9b9d4e3d1af6f095
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Odeslání zprávy na MQTT server
 
@@ -93,5 +93,5 @@ Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https:
 
 Teď, když jste se naučili konfigurace vaší Iot DevKit MXChip jako klient MQTT a používat k odesílání zpráv do broker MQTT MQTT klientské knihovny, tady jsou navrhované další kroky:
 
-* [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT vzdálené monitorování přehled řešení akcelerátoru](https://docs.microsoft.com/azure/iot-suite/)
 * [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4db14bc250bf9d6740380f3c4376f43d6f315b01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 390559922b3b8fb293d1c8b38f36dfd0a1df9ebd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Volání rozhraní Microsoft Graph API z aplikace pro univerzální platformu Windows (UWP)
 
-Tato příručka ukazuje, jak získat přístupový token a pak použít tento toke přístup k volání Microsoft Graph API nebo jiná rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nativní aplikace pro univerzální platformu Windows (XAML).
+Tato příručka ukazuje, jak získat přístupový token a pak použít tento token přístupu k volání rozhraní Microsoft Graph API nebo jiná rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nativní aplikace pro univerzální platformu Windows (XAML).
 
 Na konci tohoto průvodce bude moci volat chráněné API používání osobních účtů (včetně live.com, outlook.com a dalších) a také pracovní a školní účty z jakékoli společnosti nebo organizace, která má Azure Active Directory vaší aplikace.  
 
@@ -33,7 +33,7 @@ Na konci tohoto průvodce bude moci volat chráněné API používání osobníc
 
 ![Jak funguje tato příručka](media/active-directory-mobileanddesktopapp-windowsuniversalplatform-introduction/uwp-intro.png)
 
-Ukázkové aplikace vytvořené v této příručce umožňuje univerzální platformu Windows aplikace k dotazování Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu v2 Azure Active Directory. V tomto scénáři se token přidá na požadavky HTTP přes autorizační hlavičky. Získání tokenu a obnovení, jsou zpracovávány pomocí knihovny Microsoft ověřování (MSAL).
+Ukázkové aplikace vytvořené v této příručce umožňuje aplikace UPW do dotazu Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu v2 Azure Active Directory. V tomto scénáři se token přidá na požadavky HTTP přes autorizační hlavičky. Token pořízení a obnovení, jsou zpracovávány pomocí knihovny Microsoft ověřování (MSAL).
 
 ### <a name="nuget-packages"></a>Balíčky NuGet
 
@@ -46,9 +46,9 @@ Tato příručka používá následující balíčky NuGet:
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Tato část obsahuje podrobné pokyny pro vytvoření nového projektu do ukazují, jak integrovat aplikace Windows Desktop .NET (XAML) s *přihlášení se společností Microsoft* , může se dotázat webovým rozhraním API, které vyžadují token.
+Tato část obsahuje podrobné pokyny k integraci aplikace Windows Desktop .NET (XAML) s *přihlášení se společností Microsoft* , může se dotázat webovým rozhraním API, které vyžadují token, jako je například Microsoft Graph API.
 
-Aplikace vytvořené v této příručce zpřístupní tlačítko graf a zobrazit výsledky na obrazovce a odhlášení tlačítko.
+Aplikace vytvořené v této příručce se zobrazí tlačítko používá k dotazování rozhraní Graph API, odhlašování tlačítka a textová pole, které zobrazují výsledky volání.
 
 > Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip) a pokračujte [registrace aplikace](#register-your-application "kroku registrace aplikace") krok před provedením konfigurace ukázka kódu.
 
@@ -61,7 +61,7 @@ Aplikace vytvořené v této příručce zpřístupní tlačítko graf a zobrazi
 5. Pokud se zobrazí výzva, klesl volné a vyberte všechny verze pro *cíl* a *minimální* verzi a klikněte na 'Ok':<br/><br/>![Minimální a cílové verze](media/active-directory-uwp-v2.md/vs-minimum-target.png)
 
 ## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>Do projektu přidejte knihovny ověřování společnosti Microsoft (MSAL)
-1. V sadě Visual Studio: **nástroje** > **Správce balíčků Nuget** > **Konzola správce balíčků**
+1. V sadě Visual Studio: **nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**
 2. Zkopírujte a vložte následující příkaz v okně konzoly Správce balíčků:
 
     ```powershell
@@ -83,8 +83,8 @@ Tento krok vám pomůže vytvořit třídu pro zpracování interakci s MSAL kni
 2. Přidejte následující dva řádky do třídy aplikace (uvnitř <code>sealed partial class App : Application</code> bloku):
 
     ```csharp
-    //Below is the clientId of your app registration. 
-    //You have to replace the below with the Application Id for your app registration
+    // Below is the clientId of your app registration. 
+    // You have to replace the below with the Application Id for your app registration
     private static string ClientId = "your_client_id_here";
     
     public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
@@ -120,15 +120,15 @@ V této části ukazuje, jak používat MSAL k získání tokenu pro rozhraní M
     ```csharp
     using Microsoft.Identity.Client;
     ```
-2. Nahraďte kód vaší <code>MainPage</code> třídy následujícím kódem:
+2. Nahraďte kód vaší <code>MainPage</code> třídy pomocí:
 
     ```csharp
     public sealed partial class MainPage : Page
     {
-        //Set the API Endpoint to Graph 'me' endpoint
+        // Set the API Endpoint to Graph 'me' endpoint
         string graphAPIEndpoint = "https://graph.microsoft.com/v1.0/me";
     
-        //Set the scope for API call to user.read
+        // Set the scope for API call to user.read
         string[] scopes = new string[] { "user.read" };
     
         public MainPage()
@@ -212,7 +212,7 @@ Nakonec `AcquireTokenSilentAsync` metoda se nezdaří. Příčiny chyby může b
         try
         {
             var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
-            //Add the token in Authorization header
+            // Add the token in Authorization header
             request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             response = await httpClient.SendAsync(request);
             var content = await response.Content.ReadAsStringAsync();
@@ -304,30 +304,30 @@ Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Micro
 
 Pokud chcete povolit integrované ověřování systému Windows při použití s federované domény Azure Active Directory, musíte povolit manifest aplikace další možnosti:
 
-1. Dvakrát klikněte na tlačítko **Package.appxmanifest**
+1. Klikněte dvakrát na **Package.appxmanifest**
 2. Vyberte **možnosti** kartě a ujistěte se, že jsou povoleny následující nastavení:
 
     - Enterprise Authentication
     - Privátní sítě (klient a Server)
     - Sdílené uživatelské certifikáty 
 
-3. Potom otevřete **App.xaml.cs**a přidejte následující v konstruktoru aplikace:
+3. Potom otevřete **App.xaml.cs**a přidejte následující řádek v konstruktoru aplikace:
 
     ```csharp
     App.PublicClientApp.UseCorporateNetwork = true;
     ```
 
 > [!IMPORTANT]
-> Integrované ověřování systému Windows není nakonfigurována ve výchozím nastavení pro tuto ukázku, protože aplikace požaduje *Enterprise Authentication* nebo *sdílené uživatelské certifikáty* funkce vyžadují vyšší úroveň verificationby Windows Store a ne všechny vývojáře chcete vyšší úroveň ověřování. Povolte toto nastavení, pouze pokud je potřeba integrované ověřování systému Windows s federované domény Azure Active Directory.
+> Integrované ověřování systému Windows není nakonfigurována ve výchozím nastavení pro tuto ukázku, protože aplikace požaduje *Enterprise Authentication* nebo *sdílené uživatelské certifikáty* funkce vyžadují vyšší úroveň ověřování Windows Store a ne všechny vývojáři chcete vyšší úroveň ověřování. Povolte toto nastavení, pouze pokud je potřeba integrované ověřování systému Windows s federované domény Azure Active Directory.
 
 
 ## <a name="test-your-code"></a>Otestujte svůj kód
 
-Chcete-li otestovat aplikaci, stiskněte klávesu `F5` spustit projekt v sadě Visual Studio. Hlavní okno by měl zobrazit:
+Chcete-li otestovat aplikaci, stiskněte `F5` spustit projekt v sadě Visual Studio. Hlavní okno by měl zobrazit:
 
 ![Uživatelské rozhraní aplikace](media/active-directory-uwp-v2.md/testapp-ui.png)
 
-Až budete připraveni k testování, klikněte na tlačítko *volání Microsoft Graph API* a přihlaste se pomocí Microsoft Azure Active Directory (účet organizace) nebo účet Account Microsoft (live.com, outlook.com). Pokud je poprvé, zobrazí se okno s výzvou, uživatel k přihlášení:
+Až budete připraveni k testování, klikněte na tlačítko *volání Microsoft Graph API* a přihlaste se pomocí Microsoft Azure Active Directory (účet organizace) nebo účet Account Microsoft (live.com, outlook.com). Pokud je poprvé, zobrazí se okno s dotazem k přihlášení:
 
 ![Přihlašovací stránka](media/active-directory-uwp-v2.md/sign-in-page.png)
 
@@ -365,18 +365,18 @@ Chcete-li získat přístup k kalendářům uživatele v rámci aplikace, přide
 
 ### <a name="issue-1"></a>Problém 1:
 Může zobrazit jedna z těchto chyb při přihlášení ve vaší aplikaci na federovanou doménu Active Directory Azure:
- - "V žádosti se našel žádný platný klientský certifikát.
+ - V žádosti se našel žádný platný klientský certifikát.
  - Nenašly se žádné platné certifikáty v úložišti certifikátů uživatele.
- - Zkuste to prosím znovu výběr různá ověřovací metody. "
+ - Zkuste to znovu výběr různá ověřovací metody.
 
 **Příčina:** funkce Enterprise a certifikáty nejsou povolené.
 
 **Řešení:** postupujte podle kroků v [integrované ověřování na federované domény](#enable-integrated-authentication-on-federated-domains-optional)
 
 ### <a name="issue-2"></a>Problém 2:
-Hřívací zařízení povolíte [integrované ověřování na federované domény](#enable-integrated-authentication-on-federated-domains-optional) a pokuste se použít Windows Hello na počítači s Windows 10 k přihlášení prostředí s více-factor-konfigurace ověřování, se zobrazí seznam certifikátů , ale pokud se rozhodnete použít svůj PIN kód, okno kód PIN nikdy zobrazí.
+Po povolení [integrované ověřování na federované domény](#enable-integrated-authentication-on-federated-domains-optional) a pokuste se použít Windows Hello na počítači s Windows 10 na přihlášení prostředí s více-factor-konfigurace ověřování, se zobrazí seznam certifikátů, ale pokud se rozhodnete použít svůj PIN kód, okno kód PIN nikdy zobrazí.
 
-**Příčina:** jedná se o známé omezení s zprostředkovatele webového ověření v UWP aplikací běžících na Windows 10 desktop (funguje dobře v systému Windows 10 Mobile)
+**Příčina:** známé omezení s zprostředkovatele webového ověření v UWP aplikací běžících na Windows 10 desktop (funguje dobře v systému Windows 10 Mobile)
 
-**Alternativní řešení:** jako alternativní řešení, uživatelé musí vybrat přihlásit pomocí jiné možnosti a potom vyberte *Přihlaste se pomocí uživatelského jména a hesla* místo toho vyberte zadejte heslo a potom projděte phone ověřování.
+**Alternativní řešení:** uživatelé muset vybrat přihlásit pomocí jiné možnosti a potom vyberte *Přihlaste se pomocí uživatelského jména a hesla* místo toho vyberte zadejte heslo a potom projděte phone ověřování.
 

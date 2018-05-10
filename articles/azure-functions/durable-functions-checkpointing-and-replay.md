@@ -1,12 +1,12 @@
 ---
-title: "Kontrolní body a opětovného přehrání trvanlivý funkcí – Azure"
-description: "Zjistěte, jak vytváření kontrolních bodů a odpovědi funguje v rozšíření trvanlivý funkce pro Azure Functions."
+title: Kontrolní body a opětovného přehrání trvanlivý funkcí – Azure
+description: Zjistěte, jak vytváření kontrolních bodů a odpovědi funguje v rozšíření trvanlivý funkce pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 39cdb9b2c6eae9a3176aedc64b8d187e298fdfdd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Kontrolní body a opětovného přehrání trvanlivý funkcí (Azure Functions)
 
@@ -28,7 +28,9 @@ Přestože to trvanlivý funkce zajišťuje spolehlivé provádění orchestrati
 
 ## <a name="orchestration-history"></a>Historie Orchestration
 
-Předpokládejme, že máte následující funkce produktu orchestrator.
+Předpokládejme, že máte následující funkce orchestrator:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -46,7 +48,22 @@ public static async Task<List<string>> Run(
 }
 ```
 
-Na každé `await` prohlášení, kontrolní body trvanlivý Framework úloh stav spuštění funkce do úložiště tabulek. Tento stav se, co se označuje jako *orchestration historie*.
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const output = [];
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Tokyo"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "Seattle"));
+    output.push(yield context.df.callActivityAsync("E1_SayHello", "London"));
+
+    return output;
+});
+```
+
+Na každé `await` (C#) nebo `yield` – příkaz (JavaScript), kontrolní body trvanlivý Framework úloh stav spuštění funkce do úložiště tabulek. Tento stav se, co se označuje jako *orchestration historie*.
 
 ## <a name="history-table"></a>Tabulka historie
 
@@ -63,7 +80,7 @@ Po dokončení kontrolního bodu funkce orchestrator je zdarma odeberou z pamět
 
 Po dokončení zpracování se v historii funkce uvedena výše vypadá podobně jako následující ve službě Azure Table Storage (zkratka pro účely obrázek):
 
-| PartitionKey (identifikátor InstanceId)                     | Typ události             | časové razítko               | Vstup | Name (Název)             | výsledek                                                    | Status | 
+| PartitionKey (identifikátor InstanceId)                     | Typ události             | Časové razítko               | Vstup | Název             | Výsledek                                                    | Status | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | Hodnotu Null  | E1_HelloSequence |                                                           |                     | 
@@ -79,7 +96,7 @@ Po dokončení zpracování se v historii funkce uvedena výše vypadá podobně
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     | 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     | 
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919Z |       |                  | "" "Hello Praha!" ""                                       |                     | 
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokio!" ",""Hello Seattle!" ",""Hello Praha!" "]" | byla dokončena           | 
+| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044Z |       |                  | "[""Hello Tokio!" ",""Hello Seattle!" ",""Hello Praha!" "]" | Dokončené           | 
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     | 
 
 Několik poznámky na hodnoty ve sloupcích:
@@ -141,7 +158,7 @@ Chování při spuštění v rámci popsaného by vám pomohou pochopit, proč k
 
 Pokud vás zajímají další informace o tom, jak rozhraní trvanlivý úloh provede orchestrator funkce, nejlepším krokem je prostudovat [trvanlivý úloh zdrojového kódu na Githubu](https://github.com/Azure/durabletask). Konkrétně, najdete v části [TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) a [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Další informace o instanci správy](durable-functions-instance-management.md)

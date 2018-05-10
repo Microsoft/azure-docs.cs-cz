@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření klipů pomocí Azure Media výřez | Microsoft Docs"
-description: "Přehled Azure Media výřez, nástroj pro vytváření média klipů z prostředků"
+title: Vytvoření klipů pomocí Azure Media výřez | Microsoft Docs
+description: Přehled Azure Media výřez, nástroj pro vytváření média klipů z prostředků
 services: media-services
-keywords: "klip; subclip; kódování; média"
+keywords: klip; subclip; kódování; média
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: f3822386d0d16b1feaf16853424329558a18f910
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Vytvoření klipů pomocí Azure Media výřez
 Azure Media výřez je volné knihovna JavaScript, která umožňuje vývojářům webů jejich uživatelům poskytnout rozhraní pro vytváření klipů média. Tento nástroj lze integrovat do žádné webové stránce a poskytuje rozhraní API pro načítání prostředků a odesílání úloh výstřižek.
@@ -33,7 +33,7 @@ Následující obrázek ukazuje rozhraní výřez: ![výřez médií Azure](medi
 
 ## <a name="release-notes"></a>Poznámky k verzi
 Najdete v příspěvku blogu výřez různé známé problémy a protokol změn pro nejnovější verzi výřez v následujícím seznamu:
-- [Příspěvek blogu](https://azure.microsoft.com/blog/azure-media-clipper/)
+- [příspěvek blogu](https://azure.microsoft.com/blog/azure-media-clipper/)
 - [Seznam známých problémů](https://amp.azure.net/libs/amc/latest/docs/known_issues.html)
 - [Protokol změn](https://amp.azure.net/libs/amc/latest/docs/changelog.html)
 
@@ -64,11 +64,11 @@ Pomůcka výřez je k dispozici v těchto jazycích 18:
 - Korejština
 - polština
 - Portugalština (Brazílie)
-- Portugalština (Portugalsko)
+- portugalština (Portugalsko)
 - ruština
 - Španělština
 - švédština
 - turečtina
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Chcete-li začít používat Azure Media výřez, přečtěte si [Začínáme](media-services-azure-media-clipper-getting-started.md) článku podrobnosti o tom, jak nasadit widgetu.

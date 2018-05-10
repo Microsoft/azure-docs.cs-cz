@@ -1,11 +1,11 @@
 ---
-title: "Směrování zpráv službou Azure IoT Hub (Java) | Microsoft Docs"
-description: "Postupy zpracování zpráv typu zařízení cloud Azure IoT Hub pomocí pravidel směrování a vlastní koncové body k odeslání zprávy do dalších služeb back-end."
+title: Směrování zpráv službou Azure IoT Hub (Java) | Microsoft Docs
+description: Postupy zpracování zpráv typu zařízení cloud Azure IoT Hub pomocí pravidel směrování a vlastní koncové body k odeslání zprávy do dalších služeb back-end.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bd9af5f9-a740-4780-a2a6-8c0e2752cf48
 ms.service: iot-hub
 ms.devlang: java
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: 92ab10e5b8487e03d92b69114a2e3c5302f95ed6
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ff45e9d717b93f89eb8f751294788f08a2fd4592
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-java"></a>Směrování zpráv službou IoT Hub (Java)
 
@@ -30,7 +30,7 @@ V tomto kurzu vychází uvedeném v kódu [Začínáme se službou IoT Hub] kurz
 
 Na konci tohoto kurzu můžete spustit tři aplikace konzoly v jazyce Java:
 
-* **simulated-device**, upravenou verzi aplikace vytvořená v [Začínáme se službou IoT Hub] kurzu posílání zpráv typu zařízení cloud datového bodu za sekundu a interaktivní zařízení cloud zprávy každých 10 sekund. Tato aplikace používá protokol AMQP ke komunikaci se službou IoT Hub.
+* **simulated-device**, upravenou verzi aplikace vytvořená v [Začínáme se službou IoT Hub] kurzu posílání zpráv typu zařízení cloud datového bodu za sekundu a interaktivní zařízení cloud zprávy každých 10 sekund. . Tato aplikace používá protokol AMQP ke komunikaci se službou IoT Hub.
 * **Read-d2c-messages** zobrazuje telemetrické zprávy odesílané aplikace zařízení.
 * **čtení kritické fronty** zrušte fronty kritické zprávy z fronty Service Bus připojit ke službě IoT hub.
 
@@ -208,7 +208,7 @@ V tomto kurzu jste zjistili, jak spolehlivě odesláním zprávy typu zařízen�
 
 [Odesílání zpráv typu cloud zařízení s centrem IoT] [ lnk-c2d] ukazuje, jak k odesílání zpráv do vašeho zařízení z back end vašeho řešení.
 
-Příklady dokončení začátku do konce řešení, které pomocí služby IoT Hub, najdete v sekci [Azure IoT Suite][lnk-suite].
+Příklady dokončení začátku do konce řešení, které pomocí služby IoT Hub, najdete v sekci [akcelerátoru řešení Azure IoT vzdálené monitorování][lnk-suite].
 
 Další informace o vývoji řešení službou IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub].
 

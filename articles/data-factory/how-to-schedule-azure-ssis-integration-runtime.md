@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: 2ccde1a4eaff391dccf1b5f624257479acb263cb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4f7806e1155a0129d67f8848b9ba8c4d07cb126d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Naplánování spuštění a zastavení z modulu runtime integrace Azure SSIS 
 Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má poplatků, s ním spojená. Tedy chcete spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavte ji, pokud tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)). Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Zde jsou základní kroky popsané v tomto článku:
@@ -69,7 +69,7 @@ Pokud nemáte účet Azure Automation, vytvořte podle pokynů v tomto kroku. Po
 
 ### <a name="import-data-factory-modules"></a>Naimportovat moduly objektu pro vytváření dat
 
-1. Vyberte **moduly** v **SDÍLENÉ prostředky** v levé nabídce a ověřte, jestli máte **AzureRM.Profile** a **AzureRM.DataFactoryV2** v seznamu modulů. Pokud nejsou v seznamu, vyberte **procházet galerii** na panelu nástrojů a pokračujte následujícími kroky.
+1. Vyberte **moduly** v **SDÍLENÉ prostředky** v levé nabídce a ověřte, jestli máte **AzureRM.Profile** a **AzureRM.DataFactoryV2** v seznamu modulů.
 
     > [!IMPORTANT]
     > V současné době můžete použít pouze **AzureRM.DataFactoryV2 0.5.2** a **AzureRM.Profile 4.5.0** moduly.

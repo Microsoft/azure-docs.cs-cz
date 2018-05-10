@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/18/2018
   ms.author: garye
-  ms.openlocfilehash: dfd5d283afd61126bca4348bf02ffb8e968fd19f
-  ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+  ms.openlocfilehash: 24a4fcff8cac84361de08aa4add9b3dfbd2055fb
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/19/2018
+  ms.lasthandoff: 05/07/2018
 abstract:
   description: Služby Azure Machine Learning (Preview) umožňují sestavovat, nasazovat a spravovat modely strojového učení a AI s využitím libovolných knihoven a nástrojů Pythonu. K ukládání a zpracování dat můžete využít širokou škálu dat a výpočetních služeb v Azure.
 sections:
@@ -64,6 +64,8 @@ sections:
     style: cards
     className: cardsD
     items:
+    - title: Balíčky
+      html: <p><a href="reference-python-package-overview#amlpcv">Počítačové zpracování obrazu</a></p><p><a href="reference-python-package-overview#amlpf">Prognózování</a></p><p><a href="reference-python-package-overview#amlrealtimeai">Akcelerace FPGA</a></p><p><a href="reference-python-package-overview#amlpta">Analýza textu</a></p>
     - title: Jazyky
       html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
     - title: REST

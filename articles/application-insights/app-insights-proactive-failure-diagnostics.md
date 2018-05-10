@@ -1,9 +1,9 @@
 ---
-title: "Inteligentní detekce - selhání anomálie ve službě Application Insights | Microsoft Docs"
-description: "Vás upozorní na neobvyklé změny v počet neúspěšných požadavků do vaší webové aplikace a obsahuje diagnostiky analýzu. Není nutné konfigurovat."
+title: Inteligentní detekce - selhání anomálie ve službě Application Insights | Microsoft Docs
+description: Vás upozorní na neobvyklé změny v počet neúspěšných požadavků do vaší webové aplikace a obsahuje diagnostiky analýzu. Není nutné konfigurovat.
 services: application-insights
-documentationcenter: 
-author: yorac
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
-ms.author: mbullwin
-ms.openlocfilehash: ca484f4d11cf8ab18db2d0c6152f369a90311f10
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; yossiy
+ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní detekce - anomálií selhání
 [Application Insights](app-insights-overview.md) automaticky vás upozorní skoro v reálném čase, pokud dojde neobvyklé zvýšení počet neúspěšných žádostí vaší webové aplikace. Zjistí neobvyklého nárůstu počet požadavků HTTP nebo závislostí volání, které jsou hlášeny jako se nezdařilo. Pro žádosti neúspěšné požadavky jsou obvykle s kódy odpovědí 400 nebo vyšší. Můžete rychlou kontrolu a diagnostikovat problém, analýzu charakteristiky selhání a související telemetrii je součástí oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Tato funkce musí žádné nastavení ani konfigurace, protože využívá algoritmy strojového učení k předpovědi je míra selhání normální.
@@ -61,7 +61,7 @@ Výsledný analysis vám bude zaslána jako výstrahu, pokud jste ji nakonfiguro
 
 Podobně jako [výstrahy, můžete nastavit ručně](app-insights-alerts.md), můžete zkontrolovat stav výstrahy a nakonfigurovat ho v okně výstrahy prostředku Application Insights. Ale na rozdíl od ostatních výstrah, nemusíte nastavení nebo konfigurace Inteligentní detekce. Pokud chcete, můžete zakázat nebo změnit jeho cíl e-mailové adresy.
 
-## <a name="configure-alerts"></a>Konfigurace výstrah
+## <a name="configure-alerts"></a>Konfigurace upozornění
 Můžete zakázat Inteligentní detekce, změnit příjemců e-mailu, vytvořit webhook, jehož nebo vyjádřit výslovný souhlas pro podrobnější výstražné zprávy.
 
 Otevřete stránku výstrahy. Selhání anomálie se dodává spolu s všechny výstrahy, které jste si nastavili ručně, a zobrazí se, zda právě probíhá její stav výstrahy.
@@ -140,7 +140,7 @@ Inteligentní detekce anomálií selhání doplňuje jiné podobné avšak odli�
 
 * Máme potlačení výstrahy na našem nevyřízených položek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Tyto diagnostické nástroje můžete zkontrolovat telemetrie z vaší aplikace:
 
 * [Metriky explorer](app-insights-metrics-explorer.md)

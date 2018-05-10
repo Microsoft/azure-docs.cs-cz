@@ -1,12 +1,12 @@
 ---
 title: Azure Advanced detekce hrozeb. | Microsoft Docs
-description: "Další informace o ochrany identit a možnosti."
+description: Další informace o ochrany identit a možnosti.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure Advanced Threat detekce
 ## <a name="introduction"></a>Úvod
@@ -56,7 +56,7 @@ Tento dokument white paper se zaměřuje na technologie platformy Azure a ovlád
 
 [Azure Active Directory Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) je funkce [Azure AD Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) edici, která poskytuje přehled o rizikových událostech a potenciální ohrožení zabezpečení, které ovlivňují identity ve vaší organizaci. Microsoft má byla zabezpečení cloudových identit pro přes deset a s Azure AD Identity Protection společnosti Microsoft je zpřístupnění tyto systémy stejné ochrany podnikových zákazníků. Ochrana identit využívá možností detekce anomálií existující Azure AD je k dispozici prostřednictvím [neobvyklé aktivity sestav Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)a zavádí nové typy událostí rizik, které můžete zjišťovat anomálie v reálném čase.
 
-Ochrany identit používá ke zjišťování anomálií a rizik události, které může znamenat, že byl napaden identity algoritmů adaptivní strojového učení a heuristiky. Na základě těchto dat Identity Protection generuje sestavy a výstrahy, které vám umožní prozkoumat tyto události riziko a proveďte odpovídající nápravu nebo zmírnění akce.
+Služba Identity Protection používá ke zjištění anomálií a rizikových událostí, které by mohly naznačovat napadení identity, adaptivní algoritmy a heuristiku služby Machine Learning. Na základě těchto dat Identity Protection generuje sestavy a výstrahy, které vám umožní prozkoumat tyto události riziko a proveďte odpovídající nápravu nebo zmírnění akce.
 
 Ale Azure Active Directory Identity Protection je větší než nástroj pro monitorování a vytváření sestav. Na základě riziko událostí, vypočítá ochrany identit úroveň rizika uživatele pro každého uživatele, což umožňuje konfigurovat zásady na základě riziko k automatické ochraně identity vaší organizace.
 
@@ -181,7 +181,7 @@ Telemetrická data proudí z více zdrojů, například Azure, Office 365, Micro
 
 Výzkumní pracovníci také od třetích stran dostávají informace z analýzy hrozeb, které se sdílí mezi většinou poskytovatelů a předplatitelů cloudových služeb do kanálů analýzy hrozeb. Služba Azure Security Center vás pomocí těchto informací může upozornit na hrozby známých útočníků. Možné příklady:
 
--   **Využití Power Machine Learning -** Azure Security Center má přístup k velká množství dat o síti aktivita v cloudu, který můžete použít k detekci hrozeb cílení na vaše nasazení Azure. Například:
+-   **Využití Power Machine Learning -** Azure Security Center má přístup k velká množství dat o síti aktivita v cloudu, který můžete použít k detekci hrozeb cílení na vaše nasazení Azure. Příklad:
 
 -   **Útok hrubou silou detekce -** Machine learning se používá k vytvoření historických vzor pokusů vzdálený přístup, umožňující zjistit útoky hrubou silou na porty SSH, RDP a SQL.
 
@@ -368,7 +368,7 @@ S nástroji, které pomáhají možnost odhalit stínové IT, vyhodnocování ri
 
  </tr>
  <tr>
-   <td>Ovládací prvek</td>
+   <td>Řízení</td>
    <td>Zmírnění rizik pomocí nastavení zásad a výstrahy k dosažení maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security svoje uživatele migrovat do alternativních bezpečné, schválené cloudových aplikací.</td>
 
  </tr>
@@ -378,7 +378,7 @@ S nástroji, které pomáhají možnost odhalit stínové IT, vyhodnocování ri
 
  </tr>
  <tr>
-   <td>Ovládací prvek</td>
+   <td>Řízení</td>
    <td>Zmírnění rizik pomocí nastavení zásad a výstrahy k dosažení maximální kontroly nad síťovými přenosy v cloudu. Pomocí Cloud App Security svoje uživatele migrovat do alternativních bezpečné, schválené cloudových aplikací.</td>
 
  </tr>

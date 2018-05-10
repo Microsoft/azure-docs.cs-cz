@@ -1,0 +1,177 @@
+- name: Dokumentace ke službě Lab Services
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o Lab Services
+      href: lab-services-overview.md
+    - name: Porovnání typů testovacího prostředí
+      href: compare-lab-types.md
+- name: Kurzy
+  items:
+    - name: DevTest Labs
+      items:
+        - name: 1. Nastavení vlastního testovacího prostředí
+          href: tutorial-create-custom-lab.md
+        - name: 2. Přístup k vlastnímu testovacímu prostředí
+          href: tutorial-use-custom-lab.md
+    - name: Testovací prostředí v učebnách
+      items:
+        - name: 1. Nastavení účtu testovacího prostředí
+          href: tutorial-setup-lab-account.md
+        - name: 2. Nastavení testovacího prostředí v učebně
+          href: tutorial-setup-classroom-lab.md
+        - name: 3. Přístup k testovacímu prostředí v učebně
+          href: tutorial-connect-virtual-machine-classroom-lab.md
+- name: Ukázky
+  items:
+    - name: DevTest Labs
+      items:
+        - name: Šablony Resource Manageru
+          href: 'https://github.com/Azure/azure-devtestlab/tree/master/Samples'
+        - name: Azure PowerShell
+          href: samples-powershell.md
+        - name: Azure CLI
+          href: samples-cli.md
+- name: Koncepty
+  items:
+    - name: DevTest Labs
+      href: devtest-lab-concepts.md
+      items:
+        - name: Použití testovacích prostředí pro vývojáře
+          href: devtest-lab-developer-lab.md
+        - name: Použití testovacích prostředí pro testovací účely
+          href: devtest-lab-test-env.md
+        - name: Použití testovacích prostředí pro školení
+          href: devtest-lab-training-lab.md
+        - name: DevTest Labs
+          href: devtest-lab-overview.md
+- name: Návody
+  items:
+    - name: Testovací prostředí v učebnách
+      items:
+        - name: Správa účtů testovacího prostředí
+          href: how-to-manage-lab-accounts.md
+        - name: Správa testovacích prostředí v učebnách
+          href: how-to-manage-classroom-labs.md
+        - name: Přístup k testovacím prostředím v učebnách
+          href: how-to-use-classroom-lab.md
+    - name: DevTest Labs
+      items:
+        - name: Vytvoření vlastního testovacího prostředí
+          href: devtest-lab-create-lab.md
+        - name: Vytvoření virtuálního počítače ve vlastním testovacím prostředí
+          href: devtest-lab-create-first-vm.md
+        - name: Nastavení zásad pro vlastní testovací prostředí
+          href: devtest-lab-get-started-with-lab-policies.md
+        - name: Použití virtuálních počítačů ve vlastním testovacím prostředí
+          items:
+            - name: Vytvoření virtuálních počítačů
+              href: devtest-lab-add-vm.md
+            - name: Vytvoření a správa nárokovatelných virtuálních počítačů
+              href: devtest-lab-add-claimable-vm.md
+            - name: Vytvoření a správa virtuálních počítačů pomocí Azure CLI
+              href: devtest-lab-vmcli.md
+            - name: Vytvoření virtuálního počítače pomocí šablony Resource Manageru
+              href: devtest-lab-use-resource-manager-template.md
+            - name: Restartování virtuálního počítače
+              href: devtest-lab-restart-vm.md
+        - name: Použití prostředí ve vlastním testovacím prostředí
+          items:
+            - name: Vytvoření prostředí
+              href: devtest-lab-create-environment-from-arm.md
+        - name: Zabezpečený přístup k testovacím prostředím
+          items:
+            - name: Přidání uživatelů a vlastníků testovacího prostředí
+              href: devtest-lab-add-devtest-user.md
+            - name: Přizpůsobení oprávnění s vlastními rolemi
+              href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+        - name: Konfigurace vlastního testovacího prostředí
+          items:
+            - name: Nastavení zásad a plánů
+              href: devtest-lab-set-lab-policy.md
+            - name: Konfigurace správy nákladů
+              href: devtest-lab-configure-cost-management.md
+            - name: Konfigurace imagí na Azure Marketplace
+              href: devtest-lab-configure-marketplace-images.md
+            - name: Povolení licencované image
+              href: devtest-lab-enable-licensed-images.md
+            - name: Přidání značek do vlastního testovacího prostředí
+              href: devtest-lab-add-tag.md
+            - name: Zveřejnění oznámení ve vlastním testovacím prostředí
+              href: devtest-lab-announcements.md
+            - name: Přidání informací o podpoře do vlastního testovacího prostředí
+              href: devtest-lab-internal-support-message.md
+        - name: Výběr vlastní image nebo vzorce
+          href: devtest-lab-comparing-vm-base-image-types.md
+        - name: Správa vlastních imagí
+          items:
+            - name: Vytvoření vlastní image z virtuálního počítače
+              href: devtest-lab-create-custom-image-from-vm-using-portal.md
+            - name: Vytvoření vlastní image z VHD pomocí webu Azure Portal
+              href: devtest-lab-create-template.md
+            - name: Vytvoření vlastní image z VHD pomocí PowerShellu
+              href: devtest-lab-create-custom-image-from-vhd-using-powershell.md
+            - name: Nahrání souboru VHD pomocí AzCopy
+              href: devtest-lab-upload-vhd-using-azcopy.md
+            - name: Nahrání souboru VHD pomocí PowerShellu
+              href: devtest-lab-upload-vhd-using-powershell.md
+            - name: Nahrání souboru VHD pomocí Průzkumníka služby Storage
+              href: devtest-lab-upload-vhd-using-storage-explorer.md
+        - name: Správa opětovně využitelných šablon
+          items:
+            - name: Přidání úložiště Git pro artefakty a šablony
+              href: devtest-lab-add-artifact-repo.md
+            - name: Správa vzorců
+              href: devtest-lab-manage-formulas.md
+        - name: Správa artefaktů
+          items:
+            - name: Přidání vlastních artefaktů
+              href: devtest-lab-artifact-author.md
+            - name: Diagnostika selhání artefaktů
+              href: devtest-lab-troubleshoot-artifact-failure.md
+        - name: Správa virtuálních sítí
+          items:
+            - name: Konfigurace virtuálních sítí
+              href: devtest-lab-configure-vnet.md
+            - name: Výběr možnosti konfigurace IP
+              href: devtest-lab-shared-ip.md
+        - name: Správa datových disků
+          items:
+            - name: Připojení a odpojení datových disků
+              href: devtest-lab-attach-detach-data-disk.md
+        - name: Škálování testovacího prostředí
+          href: devtest-lab-scale-lab.md
+        - name: Integrace s CI/CD
+          items:
+            - name: Integrace testovacího prostředí do kanálu CI/CD VSTS
+              href: devtest-lab-integrate-ci-cd-vsts.md
+        - name: Vytvoření nebo úprava testovacích prostředí pomocí šablony Resource Manageru
+          href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
+- name: Referenční informace
+  items:
+    - name: CLI 2.0
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/dtl/'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Devtest Labs – nejčastější dotazy
+      href: devtest-lab-faq.md
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
+    - name: Blog týmu
+      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'

@@ -179,6 +179,8 @@
           href: automation-invoke-runbook-from-omsla-alert.md
         - name: Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
           href: automation-deploy-template-runbook.md
+        - name: Integrace služby Azure Automation se službou Event Grid a Microsoft Teams
+          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
     - name: Monitorování
       items:
         - name: Předávání dat úloh Azure Automation do Log Analytics

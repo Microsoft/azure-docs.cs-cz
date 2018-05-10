@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/27/2018
-ms.openlocfilehash: fd373093264122fda45697acc81929d3c723c957
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/07/2018
+ms.openlocfilehash: 44a7c0721d8a0683162d2219bff0e4a4ecb117e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využít paralelizace dotazu v Azure Stream Analytics
 Tento článek ukazuje, jak chcete využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak se škálovat úlohy Stream Analytics nakonfigurováním vstupní oddíly a ladění analytics definice dotazu.
@@ -35,7 +35,15 @@ Veškerý vstup Azure Stream Analytics můžete využít výhod vytváření odd
 
 ### <a name="outputs"></a>Výstupy
 
-Při práci s Stream Analytics můžete využít výhod dělení na oddíly pro většinu výstup jímky. Další informace o oddílech výstup je k dispozici na [dělení části stránky výstup](stream-analytics-define-outputs.md#partitioning).
+Při práci s Stream Analytics můžete využít oddíly v výstupy:
+-   Azure Data Lake Storage
+-   Azure Functions
+-   Tabulka Azure
+-   Úložiště objektů BLOB (můžete nastavit klíč oddílu explicitně)
+-   CosmosDB (třeba explicitně nastaven klíč oddílu)
+-   Centrum EventHub (třeba explicitně nastaven klíč oddílu)
+-   IoT Hub (třeba explicitně nastaven klíč oddílu)
+-   Service Bus
 
 Výstupy PowerBI, SQL a datový sklad SQL nepodporují dělení. Ale můžete můžete stále oddílu vstup jak je popsáno v [v této části](#multi-step-query-with-different-partition-by-values) 
 
@@ -54,13 +62,13 @@ Další informace o oddílech najdete v následujících článcích:
 
 3. Většina našich výstupu můžete využít výhod rozdělení do oddílů, ale pokud používáte výstupní typ, které nepodporují dělení úlohu nebudou plně paralelní. Odkazovat [výstup části](#outputs) další podrobnosti.
 
-4. Počet vstupních oddílů musí být roven počtu oddílů výstup. Výstup úložiště objektů BLOB aktuálně nepodporuje oddíly. Ale to nevadí, protože dědí schéma rozdělení oddílů nadřazeného dotazu. Zde jsou příklady oddílu hodnot, které umožňují plně paralelní úlohy:  
+4. Počet vstupních oddílů musí být roven počtu oddílů výstup. Výstup úložiště objektů BLOB může podporovat oddíly a dědí schéma rozdělení oddílů nadřazeného dotazu. Pokud klíč oddílu pro objekt Blob úložiště je zadán, data rozdělena na oddíly vstupní tedy stále plně paralelní výsledek. Zde jsou příklady oddílu hodnot, které umožňují plně paralelní úlohy:
 
    * 8 oddíly vstupní centra událostí a Centrum událostí 8 výstupní oddíly
-   * 8 oddíly vstupní centra událostí a výstup úložiště objektů blob  
-   * 8 Iot hub vstupní oddílů a 8 oddíly výstupu centra událostí
-   * 8 oddíly vstupní úložiště objektů blob a výstup úložiště objektů blob  
-   * 8 blob oddílů pro úložiště a 8 oddíly výstupu centra událostí  
+   * 8 oddíly vstupní centra událostí a výstup úložiště objektů blob
+   * 8 vstupní oddíly centra událostí a výstup úložiště objektů blob rozdělena na oddíly pomocí vlastního pole libovolný mohutností
+   * 8 oddíly vstupní úložiště objektů blob a výstup úložiště objektů blob
+   * 8 blob oddílů pro úložiště a 8 oddíly výstupu centra událostí
 
 Následující části popisují některé ukázkové scénáře, které jsou jednoduše paralelně zpracovatelné.
 

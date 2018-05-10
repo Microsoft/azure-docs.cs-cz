@@ -1,6 +1,6 @@
 ---
-title: SSH do uzlů clusteru Azure Container Service (AKS)
-description: Vytvoření připojení SSH pomocí clusteru služby Azure Container Service (AKS) uzly
+title: SSH do uzlů clusteru Azure Kubernetes služby (AKS)
+description: Vytvoření připojení SSH pomocí clusteru služby Azure Kubernetes služby (AKS) uzly
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>SSH do uzlů clusteru Azure Container Service (AKS)
+# <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH do uzlů clusteru Azure Kubernetes služby (AKS)
 
-V některých případech může potřebujete přístup k uzlu Azure Container Service (AKS) pro údržby, shromáždění protokolů nebo jiné řešení potíží operace. Uzlů Azure Container Service (AKS) nejsou vystaveny v Internetu. Vytvoření připojení SSH pomocí do uzlu AKS použijte kroky popsané v tomto dokumentu.
+V některých případech může potřebujete přístup k uzlu Azure Kubernetes služby (AKS) pro údržby, shromáždění protokolů nebo jiné řešení potíží operace. Uzlů Azure Kubernetes služby (AKS) nejsou vystaveny v Internetu. Vytvoření připojení SSH pomocí do uzlu AKS použijte kroky popsané v tomto dokumentu.
 
 ## <a name="get-aks-node-address"></a>Získat adresu AKS uzlu
 

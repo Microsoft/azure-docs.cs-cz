@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 37d1397b0601e09b12c0c05ff0adc6a916d66d70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e1f8a907c8bf64497f7439e5b635ad336cd23a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční dokumentace - IoT Hub kvóty a omezení
 
@@ -49,6 +49,8 @@ Následující tabulka obsahuje vynucené omezení. Hodnoty se vztahují k rozbo
 | Twin aktualizace (zařízení a modul)<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
 | Úlohy operations<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (min/100/unit) | 1.67/sec/Unit (min/100/unit) | 83.33/sec/Unit (5000/minimální/unit) |
 | Úlohy na zařízení operaci propustnost<sup>1</sup> | 10 za sekundu | Vyšší 10 za sekundu nebo 1/sec/jednotka | 50/sec/jednotka |
+| Konfigurace a nasazení edge<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 0.33/sec/Unit (20/minimální/unit) | 0.33/sec/Unit (20/minimální/unit) | 0.33/sec/Unit (20/minimální/unit) |
+
 
 <sup>1</sup>tato funkce není k dispozici v základní vrstvě služby IoT Hub. Další informace najdete v tématu [jak vybrat správné IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>omezení velikosti měření je 8 KB.
 
@@ -76,6 +78,9 @@ IoT Hub vynucuje jiné provozní omezení:
 | Zasílání zpráv typu zařízení cloud | Maximální velikost 256 KB |
 | Zasílání zpráv typu cloud zařízení<sup>1</sup> | Maximální velikost 64 KB. Maximální počet čekajících zpráv pro doručení je 50. |
 | Přímá metoda<sup>1</sup> | Přímá metoda maximální velikost datové části je 128 KB. |
+| Konfigurace | 20 konfigurace za rozbočovače. |
+| Nasazení Edge | 20 nasazení na rozbočovače. 20 moduly pro nasazení. |
+| Dvojčata | Maximální velikost za část twin (značky, požadované vlastnosti, hlášené vlastnosti) je 8 KB |
 
 <sup>1</sup>tato funkce není k dispozici v základní vrstvě služby IoT Hub. Další informace najdete v tématu [jak vybrat správné IoT Hub](iot-hub-scaling.md).
 

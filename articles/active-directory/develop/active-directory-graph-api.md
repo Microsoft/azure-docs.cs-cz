@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: c0f5110fe73fb48cf6cf5307de08045bd843cb5a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 00ca193b281f0a8d24935dd8673cae4e05b4d167
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]
@@ -50,7 +50,7 @@ Azure AD Graph API poskytuje následující funkce:
 * **Zabezpečené obory oprávnění**: Azure AD Graph API zpřístupní obory oprávnění, které umožňují zabezpečený přístup k datům Azure AD pomocí OAuth 2.0. Podporuje celou řadu typů aplikace klienta, včetně:
   
   * uživatelská rozhraní, které jsou uvedeny Delegovaný přístup k datům prostřednictvím autorizace od přihlášeného uživatele (delegovaný)
-  * řízení aplikace služby nebo démon, operace na pozadí bez přihlášeného uživatele je k dispozici a používat definované aplikací přístupu podle rolí
+  * Služba nebo démon aplikace, které fungují na pozadí bez přihlášeného uživatele být přítomen a pomocí řízení přístupu na základě rolí definované aplikací
     
     Obě delegovat a oprávnění aplikací představují oprávnění vystavené Azure AD Graph API a může požadovat klientské aplikace prostřednictvím funkce oprávnění registrace aplikace [portál Azure](https://portal.azure.com). [Azure AD Graph API oprávnění obory](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) poskytuje informace o co je k dispozici pro použití klientské aplikace.
 

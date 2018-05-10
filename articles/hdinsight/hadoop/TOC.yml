@@ -1,8 +1,8 @@
 - name: Dokumentace ke službě HDInsight
   href: /azure/hdinsight
-- name: Hadoop v HDInsightu
+- name: Přehled
   items:
-    - name: Přehled
+    - name: Informace o Hadoopu v HDInsightu
       href: apache-hadoop-introduction.md
     - name: Architektura Hadoop ve službě HDInsight
       href: ../hdinsight-hadoop-architecture.md
@@ -10,20 +10,32 @@
     - name: Součásti systému Hadoop ve službě HDInsight
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Začínáme
+- name: Rychlý start
   items:
-    - name: Začínáme se systémem Hadoop
+    - name: Vytvoření clusteru Hadoop – portál
+      href: apache-hadoop-linux-create-cluster-get-started-portal.md
+    - name: Vytvoření clusteru Hadoop – Resource Manager
       href: apache-hadoop-linux-tutorial-get-started.md
-    - name: Izolovaný prostor (sandbox) systému Hadoop
-      href: apache-hadoop-emulator-get-started.md
-    - name: Instalace aplikací HDInsight
-      href: ../hdinsight-apps-install-applications.md
+- name: Kurzy
+  items:
+    - name: Provádění operací ETL
+      href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
+    - name: Vytváření clusterů na vyžádání
+      href: ../hdinsight-hadoop-create-linux-clusters-adf.md
+      maintainContext: true
+- name: Koncepty
+  items:
     - name: Plánování kapacity clusteru
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
+    - name: Dostupnost a spolehlivost
+      href: ../hdinsight-high-availability-linux.md
+      maintainContext: true
 - name: Postup
   items:
+    - name: Použití izolovaného prostoru (sandboxu) Hadoopu
+      href: apache-hadoop-emulator-get-started.md
     - name: Použití úložiště clusteru
       items:
         - name: S využitím Azure Storage
@@ -144,9 +156,6 @@
         - name: Analýza uložených tweetů
           href: ../hdinsight-analyze-twitter-data-linux.md
           maintainContext: true
-        - name: Analýza údajů o zpoždění letů
-          href: ../hdinsight-analyze-flight-delay-data-linux.md
-          maintainContext: true
         - name: Generování doporučení pomocí Mahout
           href: apache-hadoop-mahout-linux-mac.md
         - name: Analýza webových protokolů pomocí Hivu
@@ -164,6 +173,9 @@
           maintainContext: true
     - name: Rozšíření clusterů
       items:
+        - name: Instalace aplikací HDInsight
+          href: ../hdinsight-apps-install-applications.md
+          maintainContext: true
         - name: Přizpůsobení clusterů pomocí Bootstrap
           href: ../hdinsight-hadoop-customize-cluster-bootstrap.md
           maintainContext: true
@@ -260,9 +272,6 @@
             - name: Použití šablon Azure Resource Manageru
               href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
               maintainContext: true
-        - name: Vytváření clusterů na vyžádání
-          href: ../hdinsight-hadoop-create-linux-clusters-adf.md
-          maintainContext: true
         - name: Použití clusterů Hadoop
           href: ../hdinsight-administer-use-portal-linux.md
           maintainContext: true
@@ -329,9 +338,6 @@
           maintainContext: true
         - name: Migrace do vývojových nástrojů Resource Manageru
           href: ../hdinsight-hadoop-development-using-azure-resource-manager.md
-          maintainContext: true
-        - name: Dostupnost a spolehlivost
-          href: ../hdinsight-high-availability-linux.md
           maintainContext: true
         - name: Upgrade clusteru HDInsight na novější verzi
           href: ../hdinsight-upgrade-cluster.md

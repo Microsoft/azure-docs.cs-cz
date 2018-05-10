@@ -1,12 +1,12 @@
 ---
-title: "Přehled předkonfigurovaných řešení Azure IoT Suite | Dokumentace Microsoftu"
-description: "Popis předkonfigurovaných řešení Azure IoT Suite a jejich architektury spolu s odkazy na další prostředky"
-services: 
+title: Přehled předkonfigurovaných řešení Azure IoT Suite | Dokumentace Microsoftu
+description: Popis předkonfigurovaných řešení Azure IoT Suite a jejich architektury spolu s odkazy na další prostředky
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: b29c5fe9543c5fe6da9ff52da6549fdcacff868f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b7b9f61a8fb46d5d591b317049cfd60b723a7e77
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Co je Azure IoT Suite?
 
@@ -97,7 +97,7 @@ Když nasadíte předkonfigurované řešení, proces zřizování konfiguruje c
 * [Azure Time Series Insights](../time-series-insights/index.yml). Předkonfigurovaná řešení používají tuto službu k analýze a zobrazování telemetrických dat z vašich zařízení.
 * [Azure Container Service](../container-service/index.yml). Tato služba v předkonfigurovaných řešeních hostuje a spravuje mikroslužby.
 * [Azure Cosmos DB](../cosmos-db/index.yml) a [Azure Storage](../storage/index.yml) pro ukládání dat.
-* [Azure Stream Analytics](../stream-analytics/index.md). Předkonfigurované řešení prediktivní údržby využívá tuto službu ke zpracování příchozích telemetrických dat, vytváření agregací a zjišťování událostí. Toto předkonfigurované řešení dále s využitím analýzy datových proudů zpracovává informační zprávy, které obsahují například metadata nebo odezvy zařízení na příkazy.
+* [Azure Stream Analytics](../stream-analytics/index.yml). Předkonfigurované řešení prediktivní údržby využívá tuto službu ke zpracování příchozích telemetrických dat, vytváření agregací a zjišťování událostí. Toto předkonfigurované řešení dále s využitím analýzy datových proudů zpracovává informační zprávy, které obsahují například metadata nebo odezvy zařízení na příkazy.
 * [Azure Web Apps](../app-service/index.yml). Tato služba v předkonfigurovaných řešeních hostuje vlastní kód aplikací.
 
 Informace o tom, jak vypadá architektura typického řešení IoT, najdete v tématu [Microsoft Azure a Internet věcí (IoT)](iot-suite-what-is-azure-iot.md).

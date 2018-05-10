@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření spravované aplikace Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu"
-description: "Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace."
+title: Vytvoření spravované aplikace Azure pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2017
+ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 46ea192220ced18b25d60030527d1f76fb37962a
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Vytvoření a nasazení spravované aplikace Azure pomocí rozhraní příkazového řádku Azure
 
@@ -75,7 +75,7 @@ Po dokončení příkazu máte definici spravované aplikace ve vaší skupině 
 Některé z parametrů použitých v předchozím příkladu:
 
 * **resource-group:** Název skupiny prostředků, kde se vytvoří definice spravované aplikace.
-* **lock-level:** Typ zámku nastaveného pro spravovanou skupinu prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst.
+* **lock-level:** Typ zámku nastaveného pro spravovanou skupinu prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
 * **authorizations:** Popisuje ID objektu zabezpečení a ID definice role, které slouží k udělení oprávnění pro spravovanou skupinu prostředků. tento parametr je zadaný ve formátu `<principalId>:<roleDefinitionId>`. Pro tuto vlastnost je také možné zadat několik hodnot. Pokud je potřeba několik hodnot, měly by být zadané ve tvaru `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Jednotlivé hodnoty jsou oddělené mezerou.
 * **package-file-uri:** Umístění balíčku .zip, který obsahuje požadované soubory. Tento balíček obsahuje minimálně soubory **mainTemplate.json** a **createUiDefinition.json**. **mainTemplate.json** definuje prostředky Azure, které jsou zřízené jako součást spravované aplikace. Šablona se nijak neliší od běžné šablony Resource Manageru. **createUiDefinition.json** generuje uživatelské rozhraní pro uživatele, kteří vytvářejí spravované aplikace prostřednictvím portálu.
 

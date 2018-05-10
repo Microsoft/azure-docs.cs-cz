@@ -1,25 +1,25 @@
 ---
-title: "Vytvoření Image virtuálních počítačů Azure Linux s balírna | Microsoft Docs"
-description: "Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačích s Linuxem v Azure"
+title: Vytvoření Image virtuálních počítačů Azure Linux s balírna | Microsoft Docs
+description: Další informace o použití balírna k vytvoření bitové kopie virtuálních počítačích s Linuxem v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d7ba6a493cca3dd14829e6527136af6df424c05
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak používat balírna k vytvoření bitové kopie virtuálních počítačů Linux v Azure
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci systému Linux a verzi operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro aplikaci v prostředích a nejběžnější distribuce, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit svým potřebám. Tento článek popisuje, jak používat nástroj open source [balírna](https://www.packer.io/) definovat a vytvářet vlastní bitové kopie v Azure.
@@ -211,9 +211,11 @@ az vm create \
     --generate-ssh-keys
 ```
 
+Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo oblasti než balírna image, zadejte ID bitové kopie místo název bitové kopie. Můžete získat ID bitové kopie s [az image zobrazit](/cli/azure/image#az-image-show).
+
 Jak dlouho trvá několik minut pro vytvoření virtuálního počítače. Po vytvoření virtuálního počítače, poznamenejte si `publicIpAddress` zobrazí pomocí rozhraní příkazového řádku Azure. Tato adresa se používá pro přístup k webu NGINX prostřednictvím webového prohlížeče.
 
-Povolit webový provoz připojit virtuální počítač, otevřete port 80 z Internetu s [az virtuálních počítačů open-port](/cli/azure/vm#open-port):
+Pokud chcete umožnit přístup k virtuálnímu počítači webovému provozu, otevřete port 80 z internetu pomocí příkazu [az vm open-port](/cli/azure/vm#open-port):
 
 ```azurecli
 az vm open-port \
@@ -223,7 +225,7 @@ az vm open-port \
 ```
 
 ## <a name="test-vm-and-nginx"></a>Testovací virtuální počítač a NGINX
-Nyní můžete otevřít webový prohlížeč a zadejte `http://publicIpAddress` na panelu Adresa. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Výchozí NGINX stránky se zobrazí jako v následujícím příkladu:
+Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat `http://publicIpAddress`. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Výchozí NGINX stránky se zobrazí jako v následujícím příkladu:
 
 ![Výchozí web NGINX](./media/build-image-with-packer/nginx.png) 
 

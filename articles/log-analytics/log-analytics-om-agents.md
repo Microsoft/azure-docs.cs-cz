@@ -1,6 +1,6 @@
 ---
 title: Připojení nástroje Operations Manager k analýze protokolů | Microsoft Docs
-description: Pokud chcete zachovat existující investic do služby System Center Operations Manager a používat rozšířené možnosti s analýzy protokolů, můžete integrovat nástroje Operations Manager s vaším pracovním prostorem OMS.
+description: Pokud chcete zachovat existující investic do služby System Center Operations Manager a používat rozšířené možnosti s analýzy protokolů, kterou můžete integrovat nástroje Operations Manager se pracovního prostoru.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,40 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 84eabef06b4d2ad71e6d9a947a77589f9159e030
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager k analýze protokolů
-Pokud chcete zachovat existující investic do služby System Center Operations Manager a používat rozšířené možnosti s analýzy protokolů, můžete integrovat nástroje Operations Manager s vaším pracovním prostorem OMS.  To umožňuje že využít příležitostí OMS a nadále používat nástroj Operations Manager:
+Pokud chcete zachovat existující investic do služby System Center Operations Manager a používat rozšířené možnosti s analýzy protokolů, kterou můžete integrovat se pracovní prostor analýzy protokolů nástroje Operations Manager.  To umožňuje že využít příležitostí analýzy protokolů a nadále používat nástroj Operations Manager:
 
-* Pokračovat v monitorování stavu vašich IT služeb s nástrojem Operations Manager
+* Monitorování stavu vašich IT služeb s nástrojem Operations Manager
 * Udržovat integrace s vašimi řešeními ITSM podpora správy incidentů a problémů
 * Správa životního cyklu agenty nasazené do místní a virtuální počítače IaaS veřejného cloudu, které můžete monitorovat pomocí nástroje Operations Manager
 
-Integrace s nástrojem System Center Operations Manager přidá hodnotu strategie operace služby s použitím zrychlení a zefektivnění OMS v shromažďování, ukládání a analýzu dat z nástroje Operations Manager.  OMS pomáhá korelaci a usilovat identifikace chyb, problémů a zpřístupnění opakování na podporu vašeho stávajícího procesu správy problém.   Flexibilitu vyhledávacího webu na výkon a vyhledejte události dat výstrah pomocí podrobných řídicích panelů a možnosti vytváření sestav ke zveřejnění těchto dat smysluplnějšími způsoby, ukazuje síly, které přináší OMS v complimenting nástroje Operations Manager.
+Integrace s nástrojem System Center Operations Manager přidá hodnotu strategie operace služby s použitím zrychlení a zefektivnění analýzy protokolů v shromažďování, ukládání a analýzu dat z nástroje Operations Manager.  Porovnejte pomáhá analýzy protokolů a pracovat na identifikace chyb, problémů a zpřístupnění opakování na podporu vašeho stávajícího procesu správy problém.  Flexibilitu vyhledávacího webu na výkon a vyhledejte události upozornění, že data, pomocí podrobných řídicích panelů a možnosti vytváření sestav ke zveřejnění těchto dat smysluplnějšími způsoby, ukazuje sílu analýzy protokolů přináší v complimenting nástroje Operations Manager.
 
-Agenty do skupiny pro správu nástroje Operations Manager reporting shromažďování dat ze serverů, na základě analýzy protokolů zdroje dat a řešení, které jste povolili ve vašem předplatném OMS.  V závislosti na řešení jste povolili, data z těchto řešení buď odešlou přímo z serveru pro správu nástroje Operations Manager k webové službě OMS nebo z důvodu objem dat shromážděných v systému spravováno agentem, jsou odesílány přímo z agenta OMS webové služby. Server pro správu předává OMS data přímo k webové službě OMS; nikdy je zapsán do databáze OperationsManager nebo OperationsManagerDW.  Pokud server pro správu dojde ke ztrátě připojení k webové službě OMS, se ukládá do mezipaměti data místně, dokud komunikace je navázat znovu s OMS.  Pokud server pro správu offline z důvodu plánované údržby nebo neplánovanému výpadku, jinému serveru pro správu ve skupině pro správu obnoví připojení k OMS.  
+Agenty do skupiny pro správu nástroje Operations Manager reporting shromažďování dat ze serverů, na základě analýzy protokolů zdroje dat a řešení, které jste povolili v pracovním prostoru.  V závislosti na řešení povolené, svá data jsou buď odesílány přímo z serveru pro správu nástroje Operations Manager ke službě nebo z důvodu objem dat shromážděných v systému spravované pomocí agentů jsou odesílány přímo z agenta k analýze protokolů. Server pro správu předává data přímo ke službě; nikdy je zapsán do databáze provozních nebo datového skladu.  Pokud server pro správu ztratí spojení s analýzy protokolů, se ukládá do mezipaměti data místně, dokud komunikace je navázat znovu s analýzy protokolů.  Pokud server pro správu offline z důvodu plánované údržby nebo neplánovanému výpadku, jinému serveru pro správu ve skupině pro správu obnoví připojení k analýze protokolů.  
 
-Následující diagram znázorňuje připojení mezi servery pro správu a agentů skupiny pro správu System Center Operations Manager a OMS, včetně směr a portů.   
+Následující diagram znázorňuje připojení mezi agenty a servery pro správu ve skupině pro správu System Center Operations Manager a analýzy protokolů, včetně směr a portů.   
 
-![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
+![OMS – operace manager integrace – diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, servery pro správu lze nakonfigurovat pro připojení k bráně OMS shromážděná data v závislosti na řešení, které jste povolili odesílat a přijímat informace o konfiguraci.  Další informace a kroky pro konfiguraci skupiny pro správu nástroje Operations Manager ke komunikaci přes bránu OMS ke službě OMS najdete v tématu [počítače připojit k OMS pomocí brány OMS](log-analytics-oms-gateway.md).  
+Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, servery pro správu lze nakonfigurovat pro připojení k bráně OMS pro informace o konfiguraci příjem a odesílání shromážděná data v závislosti na řešení povoleno.  Další informace a kroky pro konfiguraci skupiny pro správu nástroje Operations Manager ke komunikaci přes bránu OMS ke službě Analýza protokolů najdete v tématu [počítače připojit k OMS pomocí brány OMS](log-analytics-oms-gateway.md).  
 
 ## <a name="system-requirements"></a>Požadavky na systém
 Než začnete, zkontrolujte následující podrobnosti k ověření, že splňujete požadavky.
 
-* OMS podporuje pouze Operations Manager 2016 UR6 Operations Manager 2012 SP1 a vyšší a UR2 Operations Manager 2012 R2 a vyšší.  V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
+* Log Analytics podporuje jenom System Center Operations Manager 1801, Operations Manager 2016 Operations Manager 2012 SP1 UR6 a je větší a UR2 Operations Manager 2012 R2 a vyšší.  V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Všichni agenti nástroje Operations Manager musí splňovat požadavky na minimální podporu. Zkontrolujte, zda jsou agenti na minimální aktualizace, v opačném případě může selhat provoz agenta Windows a mnoho chyb může vyplnit protokolu událostí nástroje Operations Manager.
-* Předplatné OMS.  Další informace najdete v tématu [začít pracovat s analýzy protokolů](log-analytics-get-started.md).
+* Pracovní prostor analýzy protokolů.  Další informace najdete v tématu [začít pracovat s analýzy protokolů](log-analytics-get-started.md).
 
 ### <a name="network"></a>Síť
-Informace o následující seznam konfigurace proxy a firewall informace požadované pro agenta nástroje Operations Manager, servery pro správu a konzole Operations console ke komunikaci s OMS.  Provoz z jednotlivých součástí je odchozí z vaší sítě do služby OMS.     
+Informace o následující seznam konfigurace proxy a firewall informace požadované pro agenta nástroje Operations Manager, servery pro správu a konzole Operations console ke komunikaci s analýzy protokolů.  Provoz z jednotlivých součástí je odchozí z vaší sítě ke službě Analýza protokolů.     
 
 |Prostředek | Číslo portu| Vynechat kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
@@ -67,36 +67,49 @@ Informace o následující seznam konfigurace proxy a firewall informace požado
 |\*.microsoftonline.com| 80 a 443||  
 |\*.mms.microsoft.com| 80 a 443||  
 |login.windows.net| 80 a 443||  
+|portal.loganalytics.io| 80 a 443||
+|api.loganalytics.io| 80 a 443||
+|docs.loganalytics.io| 80 a 443||  
 
+## <a name="connecting-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager k Log Analytics
+Proveďte následující řadu postup konfigurace skupiny pro správu nástroje Operations Manager pro připojení k jednomu z vašich pracovních prostorů analýzy protokolů.
 
-## <a name="connecting-operations-manager-to-oms"></a>Připojení nástroje Operations Manager k OMS
-Proveďte následující řadu postup konfigurace skupiny pro správu nástroje Operations Manager pro připojení k jednomu z vašich pracovních prostorů OMS.
+Pokud je to první, kdy je registrace skupiny pro správu nástroje Operations Manager s pracovní prostor analýzy protokolů a muset komunikovat se službou service přes proxy server nebo server brány OMS, můžete zadat konfiguraci proxy serveru pro servery pro správu Skupina pro správu není k dispozici v konzoli Operations console.  Skupina pro správu musí být úspěšně registrován u služby, než tato možnost je k dispozici.  Je potřeba aktualizovat konfiguraci proxy serveru systému použití příkazu Netsh v systému konzoli Operations console z systémem pro konfiguraci integrace a všechny servery pro správu ve skupině pro správu.  
+
+1. Otevření příkazového řádku se zvýšenými oprávněními.
+   a. Přejděte na **spustit** a typ **cmd**.
+   b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
+2. Zadejte následující příkaz a stiskněte klávesu **Enter**:
+
+    `netsh winhttp set proxy <proxy>:<port>`
+
+Po dokončení těchto kroků integrovat analýzy protokolů, můžete odebrat konfiguraci spuštěním `netsh winhttp reset proxy` a potom pomocí **konfigurovat proxy server** možnost v konzoli Operations console zadat proxy server nebo OMS Server brány. 
 
 1. V konzole nástroje Operations Manager, vyberte **správy** prostoru.
 2. Rozbalte uzel Operations Management Suite a klikněte na tlačítko **připojení**.
 3. Klikněte **registraci ve službě Operations Management Suite** odkaz.
 4. Na **Průvodce registrací ve službě Operations Management Suite: ověřování** stránky, zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, která souvisí s vaším předplatným OMS a klikněte na **přihlášení**.
-5. Poté, co jste úspěšně přihlášeni, na **Průvodce registrací ve službě Operations Management Suite: Vyberte pracovní prostor** stránky, zobrazí se výzva k výběru vaším pracovním prostorem OMS.  Pokud máte více než jednoho pracovního prostoru, vyberte pracovní prostor, které chcete zaregistrovat u skupiny pro správu nástroje Operations Manager z rozevíracího seznamu a pak klikněte na **Další**.
+5. Poté, co jste úspěšně přihlášeni, na **Průvodce registrací ve službě Operations Management Suite: Vyberte pracovní prostor** stránky, zobrazí se výzva k výběru pracovní prostor analýzy protokolů.  Pokud máte více než jednoho pracovního prostoru, vyberte pracovní prostor, které chcete zaregistrovat u skupiny pro správu nástroje Operations Manager z rozevíracího seznamu a pak klikněte na **Další**.
    
    > [!NOTE]
-   > Nástroj Operations Manager podporuje jenom jeden pracovní prostor OMS najednou. Připojení a počítače, které byly zaregistrované k OMS s předchozí pracovního prostoru jsou vyřazeny z OMS.
+   > Nástroj Operations Manager podporuje jenom jeden pracovní prostor analýzy protokolů najednou. Připojení a počítače, které byly registrovány k analýze protokolů předchozí pracovního prostoru jsou vyřazeny z analýzy protokolů.
    > 
    > 
 6. Na **Průvodce registrací ve službě Operations Management Suite: Souhrn** , potvrďte nastavení a pokud jsou správné, klikněte na tlačítko **vytvořit**.
 7. Na **Průvodce registrací ve službě Operations Management Suite: dokončení** klikněte na tlačítko **Zavřít**.
 
 ### <a name="add-agent-managed-computers"></a>Přidání počítačů spravovaných agentem
-Jakmile nakonfigurujete integraci s vaším pracovním prostorem OMS, to jenom naváže připojení se OMS, je od agentů skupiny pro správu sestav nebyla shromážděna žádná data. Tím nedojde k ní až po dokončení konfigurace, které konkrétní počítače spravované pomocí agentů shromažďuje data pro analýzu protokolu. Objekty počítače můžete vybrat buď jednotlivě nebo můžete vybrat skupinu, která obsahuje objekty počítače Windows. Nelze vybrat skupinu, která obsahuje instancí jiné třídy, jako jsou logické disky nebo databáze SQL.
+Jakmile nakonfigurujete integraci s pracovní prostor analýzy protokolů, to jenom naváže připojení se službou, je od agentů skupiny pro správu sestav nebyla shromážděna žádná data. Tím nedojde k ní až po dokončení konfigurace, které konkrétní počítače spravované pomocí agentů shromažďuje data pro analýzu protokolu. Objekty počítače můžete vybrat buď jednotlivě nebo můžete vybrat skupinu, která obsahuje objekty počítače Windows. Nelze vybrat skupinu, která obsahuje instancí jiné třídy, jako jsou logické disky nebo databáze SQL.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 2. Rozbalte uzel Operations Management Suite a klikněte na tlačítko **připojení**.
 3. Klikněte **přidat počítač nebo skupinu** odkaz v části Akce záhlaví na pravé straně v podokně.
-4. V **hledání počítače** dialogové okno, můžete vyhledat počítače nebo skupiny sledovaných nástrojem Operations Manager. Vyberte počítače nebo skupiny mohl připojit k OMS, klikněte na **přidat**a potom klikněte na **OK**.
+4. V **hledání počítače** dialogové okno, můžete vyhledat počítače nebo skupiny sledovaných nástrojem Operations Manager. Vyberte počítače nebo skupiny k analýze protokolů zařadit do provozu, klikněte na **přidat**a potom klikněte na **OK**.
 
 Můžete zobrazit počítače a skupiny, které jsou nakonfigurované ke shromažďování dat z uzlu spravované počítače v rámci služby Operations Management Suite **správy** prostoru v konzoli Operations Console.  Tady můžete přidat nebo odebrat počítače a skupiny podle potřeby.
 
-### <a name="configure-oms-proxy-settings-in-the-operations-console"></a>Konfigurace nastavení proxy serveru OMS v konzoli Operations console
-Pokud je interní proxy server mezi skupinou správy a OMS webové služby, proveďte následující kroky.  Tato nastavení jsou centrálně spravovat ze skupiny pro správu a distribuci do spravovaných agentem systémy, které jsou zahrnuty v oboru ke shromažďování dat pro OMS.  To je výhodné pro při určité řešení Nepoužívat server pro správu a odesílání dat přímo OMS webové služby.
+### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurace nastavení proxy serveru v konzoli Operations console
+Pokud je interní proxy server mezi skupinou správy a protokolu Analytics služby, proveďte následující kroky.  Tato nastavení jsou centrálně spravovat ze skupiny pro správu a distribuci do spravovaných agentem systémy, které jsou zahrnuty v oboru ke shromažďování dat pro analýzy protokolů.  To je výhodné pro při určité řešení Nepoužívat server pro správu a odesílání dat přímo ke službě.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 2. Rozbalte Operations Management Suite a pak klikněte na tlačítko **připojení**.
@@ -114,57 +127,58 @@ Pokud proxy server vyžaduje ověřování, proveďte následující postup pro 
 7. Klikněte na tlačítko **OK** zavřete **přidat účet Spustit jako** pole.
 8. Klikněte na tlačítko **Uložit** uložte změny a dokončete průvodce.
 
-Po vytvoření připojení a nakonfigurujete, jaké agenty bude shromažďovat a odesílat data OMS, tyto konfigurace platí ve skupině pro správu, nemusí v pořadí:
+Po vytvoření připojení a nakonfigurujete, jaké agenty bude shromažďovat a odesílat data analýzy protokolů, tyto konfigurace platí ve skupině pro správu, nemusí v pořadí:
 
 * Účet Spustit jako **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** je vytvořena.  Je přidružen k profilu spustit jako **Microsoft System Center Advisor spustit jako profil Blob** a je zacílený na dvě třídy - **Server kolekce** a **skupina správy nástroje Operations Manager**.
-* Jsou vytvořeny dva konektory.  První je s názvem **Microsoft.SystemCenter.Advisor.DataConnector** a je automaticky nakonfigurovaný pomocí odběr, který předává všechny výstrahy generované z instancí všechny třídy ve skupině pro správu k analýze protokolů OMS. Je druhý konektor **konektor služby Advisor**, který zodpovídá za komunikaci s webovou službou OMS a sdílení dat.
+* Jsou vytvořeny dva konektory.  První je s názvem **Microsoft.SystemCenter.Advisor.DataConnector** a je automaticky nakonfigurovaný pomocí odběr, který předává všechny výstrahy generované z instancí všechny třídy ve skupině pro správu k analýze protokolů. Je druhý konektor **konektor služby Advisor**, který zodpovídá za komunikaci s webovou službou OMS a sdílení dat.
 * Agenty a skupiny, které jste vybrali pro shromažďování dat ve skupině pro správu je přidat do **monitorování skupiny serveru serveru Microsoft System Center Advisor**.
 
 ## <a name="management-pack-updates"></a>Aktualizace sad Management pack
-Po dokončení konfigurace skupiny pro správu nástroje Operations Manager naváže připojení se službou OMS.  Server pro správu synchronizuje pomocí webové služby a získat aktualizovanou konfiguraci informace ve formě sady management Pack pro řešení, které jste povolili, které se integrují s nástrojem Operations Manager.   Nástroj Operations Manager kontroluje aktualizace těchto sad management Pack a automaticky stáhnout a importuje je, pokud jsou k dispozici.  Existují dvě pravidla na konkrétní kterého ovládacího prvku toto chování:
+Po dokončení konfigurace skupiny pro správu nástroje Operations Manager vytvoří připojení ke službě Analýza protokolů.  Server pro správu synchronizuje pomocí webové služby a získat aktualizovanou konfiguraci informace ve formě sady management Pack pro řešení, které jste povolili, které se integrují s nástrojem Operations Manager.   Nástroj Operations Manager kontroluje aktualizace těchto sad management Pack a automaticky stáhnout a importuje je, pokud jsou k dispozici.  Existují dvě pravidla na konkrétní kterého ovládacího prvku toto chování:
 
-* **Microsoft.SystemCenter.Advisor.MPUpdate** -aktualizace základní sady management Pack pro OMS. Ve výchozím nastavení spouští každých 12 hodin.
+* **Microsoft.SystemCenter.Advisor.MPUpdate** -aktualizace základní sady management Pack pro analýzu protokolu. Ve výchozím nastavení spouští každých 12 hodin.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** -aktualizace řešení management Pack, která je povolena v pracovním prostoru. Ve výchozím nastavení spouští každých pět (5) minut.
 
 Tyto dvě pravidla buď zabránit automatické stahování zakázáním je nebo upravit frekvenci jak často se serverem pro správu synchronizuje s OMS k určení, pokud je k dispozici nové sady management pack a by měl být stažen můžete přepsat.  Postupujte podle kroků [postupu přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změnit **frekvence** parametr s hodnotou v sekundách, pokud chcete změnit plán synchronizace, nebo upravit **povoleno** parametr zakázání pravidla.  Vybrat přepsání pro všechny objekty třídy skupina správy nástroje Operations Manager.
 
-Pokud chcete pokračovat následující stávajícího procesu řízení změn pro řízení verzí management pack v provozní skupina pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou povoleny aktualizace. Pokud máte na vývoj nebo skupiny pro správu QA ve vašem prostředí a má připojení k Internetu, můžete tuto skupinu pro správu nakonfigurovat pracovním prostorem OMS pro podporu tohoto scénáře.  To umožňuje kontrola a vyhodnocení iterativní verze sady management Pack OMS před uvolněním je do provozní skupina pro správu.
+Pokud chcete pokračovat následující stávajícího procesu řízení změn pro řízení verzí management pack v provozní skupina pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou povoleny aktualizace. Pokud máte na vývoj nebo skupiny pro správu QA ve vašem prostředí a má připojení k Internetu, můžete tuto skupinu pro správu nakonfigurovat pracovní prostor analýzy protokolů pro podporu tohoto scénáře.  To umožňuje kontrola a vyhodnocení iterativní verze sady management Pack analýzy protokolů před uvolněním je do provozní skupina pro správu.
 
-## <a name="switch-an-operations-manager-group-to-a-new-oms-workspace"></a>Přepnout na nový pracovní prostor OMS skupinu nástroje Operations Manager
-1. Přihlaste se k předplatnému OMS a vytvořit pracovní prostor v [Microsoft Operations Management Suite](http://oms.microsoft.com/).
-2. Otevřete konzolu nástroje Operations Manager pomocí účtu, který je členem role Správci nástroje Operations Manager a vyberte **správy** prostoru.
-3. Rozbalte Operations Management Suite a vyberte **připojení**.
-4. Vyberte **znovu nakonfigurovat operace Management Suite** odkaz na straně středním podokně.
-5. Postupujte podle **Průvodce registrací ve službě Operations Management Suite** a zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružen nový pracovní prostor OMS.
+## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Přepnout na nový pracovní prostor Log Analytics skupinu nástroje Operations Manager
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **analýzy protokolů** a pak vytvořit pracovní prostor.  
+3. Otevřete konzolu nástroje Operations Manager pomocí účtu, který je členem role Správci nástroje Operations Manager a vyberte **správy** prostoru.
+4. Rozbalte Operations Management Suite a vyberte **připojení**.
+5. Vyberte **znovu nakonfigurovat operace Management Suite** odkaz na straně středním podokně.
+6. Postupujte podle **Průvodce registrací ve službě Operations Management Suite** a zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružen nový pracovní prostor analýzy protokolů.
    
    > [!NOTE]
    > **Průvodce registrací ve službě Operations Management Suite: Vyberte pracovní prostor** stránky uvede existující pracovní prostor, který je používán.
    > 
    > 
 
-## <a name="validate-operations-manager-integration-with-oms"></a>Ověření integrace nástroje Operations Manager s OMS
-Existuje několik různých způsobů, můžete ověřit, že vaše OMS k integraci nástroje Operations Manager byla úspěšně dokončena.
+## <a name="validate-operations-manager-integration-with-log-analytics"></a>Ověření integrace nástroje Operations Manager s analýzy protokolů
+Existuje několik různých způsobů, můžete ověřit, že analýzy protokolů pro integraci nástroje Operations Manager byla úspěšně dokončena.
 
-### <a name="to-confirm-integration-from-the-oms-portal"></a>Potvrďte integrace z portálu OMS
-1. Na portálu OMS, klikněte **nastavení** dlaždici
-2. Vyberte **připojené zdroje**.
-3. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu označené počet agentů a stavu, pokud byl naposled přijal data.
+### <a name="to-confirm-integration-from-the-azure-portal"></a>Potvrďte integrace z portálu Azure
+1. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu.
+2. V seznamu analýzy protokolů pracovních prostorů vyberte použít pracovní prostor.  
+3. Vyberte **upřesňující nastavení**, vyberte **připojené zdroje**a potom vyberte **System Center**. 
+4. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu označené počet agentů a stavu, pokud byl naposled přijal data.
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
-4. Poznámka: **ID pracovního prostoru** hodnotu levé straně stránky nastavení.  Ověření proti níže skupiny pro správu nástroje Operations Manager.  
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Potvrďte integrace z konzole Operations console
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 2. Vyberte **sady Management Pack** a v **vyhledejte:** textového pole zadejte **Advisor** nebo **Intelligence**.
 3. V závislosti na řešení, které jste povolili zobrazí odpovídající sada management pack uvedené ve výsledcích hledání.  Například pokud jste povolili řešení pro správu výstrah, sada management pack Microsoft System Center Advisor výstrahy Management je v seznamu.
-4. Z **monitorování** zobrazit, přejděte do **Operations Management Suite\Health stavu** zobrazení.  Vyberte server pro správu v části **stav serveru pro správu** podokně a v **podrobné zobrazení** podokně potvrďte hodnotu pro vlastnost **identifikátor URI ověřovací služby** odpovídá pracovním prostorem OMS ID.
+4. Z **monitorování** zobrazit, přejděte do **Operations Management Suite\Health stavu** zobrazení.  Vyberte server pro správu v části **stav serveru pro správu** podokně a v **podrobné zobrazení** podokně potvrďte hodnotu pro vlastnost **identifikátor URI ověřovací služby** odpovídá ID pracovního prostoru analýzy protokolů
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
-## <a name="remove-integration-with-oms"></a>Odebrat integraci s OMS
-Když už nepotřebujete integrace mezi vaší skupiny pro správu nástroje Operations Manager a pracovní prostor OMS, existuje několik kroků potřebných k správně odebrání připojení a konfiguraci ve skupině pro správu. Následující postup se aktualizovat pracovní prostor OMS odstraněním odkaz na skupiny pro správu, odstraňte OMS konektory a pak odstraňte sady management Pack, podpůrné OMS.   
+## <a name="remove-integration-with-log-analytics"></a>Odebrat integraci s analýzy protokolů
+Když už nepotřebujete integrace mezi vaší skupině pro správu nástroje Operations Manager a pracovní prostor analýzy protokolů, existuje několik kroků potřebných k správně odebrání připojení a konfiguraci ve skupině pro správu. Následující postup se aktualizovat pracovní prostor analýzy protokolů odstraněním odkaz na skupiny pro správu, odstraňte konektory analýzy protokolů a pak odstraňte podporu integrace se službou sady management Pack.   
 
-Sady Management Pack pro řešení jste povolili které integrovat s nástrojem Operations Manager a sady management Pack, který je potřeba pro podporu integrace se službou OMS nelze snadno odstranit ze skupiny pro správu.  Je to proto, že některé sady management Pack OMS mají závislosti na jiných sadách pro správu související.  Chcete-li odstranit sady management Pack se závislostí na jiných sadách management Pack, stáhněte skript [odebrat sadu management pack se závislostmi](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z centra skriptů TechNet.  
+Sady Management Pack pro řešení jste povolili které integrovat s nástrojem Operations Manager a sady management Pack, který je potřeba pro podporu integrace se službou analýzy protokolů nelze snadno odstranit ze skupiny pro správu.  Je to proto, že některé sady management Pack analýzy protokolů mají závislosti na jiných sadách pro správu související.  Chcete-li odstranit sady management Pack se závislostí na jiných sadách management Pack, stáhněte skript [odebrat sadu management pack se závislostmi](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z centra skriptů TechNet.  
 
 1. Otevřete příkazové prostředí nástroje Operations Manager pomocí účtu, který je členem role Správci nástroje Operations Manager.
    
@@ -293,7 +307,10 @@ Chcete-li odstranit dva konektory - Microsoft.SystemCenter.Advisor.DataConnector
     Remove-Connector $connectorName
 ```
 
-V budoucnu Pokud plánujete připojení skupiny pro správu k pracovnímu prostoru OMS, budete muset znovu naimportovat `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` soubor sady management pack z nejnovější kumulativní aktualizace, které jsou použity k vaší skupině pro správu.  Tento soubor můžete najít `%ProgramFiles%\Microsoft System Center 2012` nebo `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` složky.
+V budoucnu Pokud plánujete připojení skupiny pro správu do pracovního prostoru analýzy protokolů, budete muset znovu naimportovat `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` soubor sady management pack.  Tento soubor v závislosti na verzi System Center Operations Manager ve vašem prostředí nasazená, najdete v následujícím umístění:
+
+* Na zdrojovém médiu v části `\ManagementPacks` složku pro System Center 2016 - Operations Manager a vyšší.
+* Z nejnovější kumulativní u skupiny pro správu.  Pro Operations Manager 2012 se zdrojové složky` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a 2012 R2, je umístěn v `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>Další postup
 Přidání funkcí a shromažďování dat najdete v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).

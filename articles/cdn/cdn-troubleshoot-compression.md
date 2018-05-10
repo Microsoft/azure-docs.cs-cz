@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s kompresí souborů v Azure CDN | Microsoft Docs"
-description: "Vyřešte problémy s kompresí souborů Azure CDN."
+title: Řešení potíží s kompresí souborů v Azure CDN | Microsoft Docs
+description: Vyřešte problémy s kompresí souborů Azure CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5ef8a8262eb40aa827161764f03a63d031e43273
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 14d50cb7cac77af75dd4b7293812154d1f24e47c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
 Tento článek vám pomůže vyřešit problémy s [komprese souboru CDN](cdn-improve-performance.md).
@@ -42,7 +42,7 @@ Existuje několik možných příčin, včetně:
 * Typ požadovaný soubor není povolená komprese.
 * Požadavek HTTP neobsahuje hlavičku požaduje typ platný komprese.
 
-## <a name="troubleshooting-steps"></a>Řešení potíží
+## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 > [!TIP]
 > Stejně jako u nasazení nové koncové body, provést změny konfigurace CDN některé čas potřebný k šíření přes síť.  Obvykle změny se použijí během 90 minut.  Pokud je poprvé, které jste nastavili komprese pro koncový bod CDN, měli byste zvážit čekání 1 – 2 hodiny jistotu komprese, které se mají nastavení rozšíří do bodů POP. 
 > 
@@ -61,9 +61,9 @@ Nejdřív by měl provedeme kontrolu rychlé správností v požadavku.  Můžet
 
 ![Hlavičky žádosti CDN](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profile"></a>Ověřte nastavení komprese (profil CDN úrovně Standard)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ověřte nastavení komprese (standardní profily CDN)
 > [!NOTE]
-> Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN Standard od společnosti Verizon** nebo **Azure CDN Standard od společnosti Akamai** profilu. 
+> Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Verizon**, nebo **Azure CDN Standard od společnosti Akamai** profilu. 
 > 
 > 
 
@@ -74,7 +74,7 @@ Přejděte na váš koncový bod v [portál Azure](https://portal.azure.com) a k
 
 ![Nastavení komprese CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profile"></a>Ověřte nastavení komprese (profil Premium CDN)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>Ověřte nastavení komprese (profily Premium CDN)
 > [!NOTE]
 > Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN Premium od společnosti Verizon** profilu.
 > 
@@ -88,9 +88,9 @@ Přejděte na váš koncový bod v [portál Azure](https://portal.azure.com) a k
 
 ![Nastavení komprese CDN premium](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>Ověřte, že obsah se uloží do mezipaměti
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>Ověřte, zda že je obsah v mezipaměti (profilů Verizon CDN)
 > [!NOTE]
-> Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN společnosti Verizon** profil (Standard nebo Premium).
+> Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN Standard od společnosti Verizon** nebo **Azure CDN Premium od společnosti Verizon** profilu.
 > 
 > 
 
@@ -101,9 +101,9 @@ Používání nástrojů pro vývojáře v prohlížeči, zkontrolujte hlavičky
 
 ![Hlavičky odpovědi CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>Ověřte, že soubor splňuje požadavky na velikost
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Ověřte, že soubor splňuje požadavky na velikost (Verizon profilů CDN)
 > [!NOTE]
-> Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN společnosti Verizon** profil (Standard nebo Premium).
+> Tento krok platí jenom v případě, že je váš profil CDN **Azure CDN Standard od společnosti Verizon** nebo **Azure CDN Premium od společnosti Verizon** profilu.
 > 
 > 
 

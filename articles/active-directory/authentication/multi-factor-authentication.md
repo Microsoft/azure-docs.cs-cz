@@ -1,27 +1,23 @@
 ---
 title: Další informace o dvoustupňovém ověřování v Azure MFA | Microsoft Docs
-description: 'Co je Azure Multi-Factor Authentication, proč použít vícefaktorové ověřování, další informace o vícefaktorového ověřování klienta a různé metody a verze, které jsou k dispozici. '
-keywords: Úvod do MFA, mfa přehled, co je mfa
+description: Co je Azure Multi-Factor Authentication, proč používat vícefaktorové ověřování a různé metody a verze, které jsou k dispozici.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: c40d7a34-1274-4496-96b0-784850c06e9b
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: joflore
-ms.openlocfilehash: 74441b5053a9c7c25d94406293828fe92f210bee
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 2bf2cbefb2b60ad5278bdee7bd97aff1ed6212a4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="what-is-azure-multi-factor-authentication"></a>Co je Azure Multi-Factor Authentication?
+
 Dvoustupňové ověření je metoda ověřování, který vyžaduje více než jednu metodu ověřování a přidá velmi důležitou druhou vrstvu zabezpečení uživatelská přihlášení a transakce. Funguje tím, že jakékoliv dva nebo více z následujících metod ověřování:
 
 * Něco znáte (obvykle heslo)

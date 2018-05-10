@@ -3,7 +3,7 @@ title: Azure platebních zpracování plán, podle kterého – požadavky na za
 description: PCI DSS požadavek 6
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 79889fdb-52d2-42db-9117-6e2f33d501e0
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: cd9054afc359d7568fcd08f983f374e0b2bc3792
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 2f6f1bfc853f261eecf5357cef5d3e3d972781b1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>Požadavky na systém pro kompatibilní se standardem PCI DSS prostředí zabezpečení 
 ## <a name="pci-dss-requirement-6"></a>PCI DSS požadavek 6

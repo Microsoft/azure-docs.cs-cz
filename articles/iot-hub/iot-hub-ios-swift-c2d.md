@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 032412c329e79ec671f59a049da7d8ddc0b9dd08
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 23dbd1f359f947b8e87ab4115887120dfd55907a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Odesílání zpráv typu cloud zařízení službou IoT Hub (iOS)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -47,8 +47,8 @@ Pro absolvování tohoto kurzu potřebujete:
 - Aktivní účet Azure. (Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].)
 - Aktivním centrem IoT v Azure. 
 - Ukázka kódu z [ukázek Azure](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) .
-- Nejnovější verzi [XCode](https://developer.apple.com/xcode/), nejnovější verzi iOS SDK. Tento rychlý start byla testována s XCode 9.3 a iOS 11.3.
-- Nejnovější verzi [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
+- Nejnovější verze [XCode](https://developer.apple.com/xcode/) používající nejnovější verzi sady SDK pro iOS. Tento rychlý start byl testován s XCode 9.3 a iOS 11.3.
+- Nejnovější verze [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 
 
 ## <a name="simulate-an-iot-device"></a>Simulovat zařízení s IoT
@@ -56,23 +56,23 @@ V této části můžete simulovat zařízení se systémem iOS spuštěná Swif
 
 Toto je ukázkový ukázka zařízení, které vytvoříte v následujícím článku [odeslání telemetrie ze zařízení do služby IoT hub]. Pokud už máte tuto spuštěná, můžete tuto část přeskočit.
 
-### <a name="install-cocoapods"></a>Nainstalujte CocoaPods
+### <a name="install-cocoapods"></a>Instalace CocoaPods
 
-CocoaPods Správa závislostí pro iOS projekty, které používat knihovny třetích stran.
+CocoaPods spravují závislosti pro projekty iOS využívající knihovny třetích stran.
 
-Okno terminálu přejděte do složky Azure-IoT-Samples-iOS, která jste si stáhli v požadavky. Pak přejděte do projektu vzorku:
+V okně terminálu přejděte do složky Azure-IoT-Samples-iOS, kterou jste stáhli v rámci požadavků. Pak přejděte do ukázkového projektu:
 
 ```sh
 cd quickstart/sample-device
 ```
 
-Ujistěte se, že je uzavřena XCode, a poté spusťte následující příkaz pro instalaci CocoaPods, které jsou deklarované v **podfile** souboru:
+Ujistěte se, že je XCode zavřené, a pak spuštěním následujícího příkazu nainstalujte CocoaPods deklarované v souboru **podfile**:
 
 ```sh
 pod install
 ```
 
-Společně s instalací pracovními stanicemi soustředěnými kolem požadované pro svůj projekt, instalační příkaz také vytvořit soubor pracovní prostor XCode, který je již nakonfigurována pro použití pracovními stanicemi soustředěnými kolem závislosti. 
+Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vytvořil také soubor pracovního prostoru XCode, který je předem nakonfigurovaný tak, aby používal pody pro závislosti. 
 
 ### <a name="run-the-sample-device-application"></a>Spuštění ukázkové aplikace zařízení 
 
@@ -82,28 +82,28 @@ Společně s instalací pracovními stanicemi soustředěnými kolem požadovan�
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
     ```
 
-1. Otevřete pracovní prostor ukázka v XCode.
+1. Otevřete ukázkový pracovní prostor v XCode.
 
    ```sh
    open "MQTT Client Sample.xcworkspace"
    ```
 
 2. Rozbalte **MQTT klienta ukázka** projekt a potom složku se stejným názvem.  
-3. Otevřete **ViewController.swift** pro úpravy v XCode. 
+3. Otevřete soubor **ViewController.swift** pro úpravy v XCode. 
 4. Vyhledejte **connectionString** proměnné a hodnotu s připojením zařízení aktualizujte řetězce, které jste zkopírovali v prvním kroku.
 5. Uložte provedené změny. 
-6. Spusťte projekt v emulátoru zařízení pomocí **sestavit a spustit** tlačítko nebo klíče se seznamem **příkaz + r**. 
+6. Spusťte projekt v emulátoru zařízení pomocí tlačítka **Build and run** (Sestavit a spustit) nebo kombinace kláves **command + r**. 
 
-   ![Spusťte projekt](media/quickstart-send-telemetry-ios/run-sample.png)
+   ![Spuštění projektu](media/quickstart-send-telemetry-ios/run-sample.png)
 
 
 ## <a name="simulate-a-service-device"></a>Simulovat zařízení služby
 
 V této části můžete simulovat druhé zařízení iOS s Swift aplikaci, která odesílá zprávy typu cloud zařízení prostřednictvím služby IoT hub. Tato konfigurace je užitečná pro scénáře IoT níž se nachází jeden iPhone nebo iPad funguje jako řadič pro ostatní zařízení se systémem iOS připojené do služby IoT hub. 
 
-### <a name="install-cocoapods"></a>Nainstalujte CocoaPods
+### <a name="install-cocoapods"></a>Instalace CocoaPods
 
-CocoaPods Správa závislostí pro iOS projekty, které používat knihovny třetích stran.
+CocoaPods spravují závislosti pro projekty iOS využívající knihovny třetích stran.
 
 Přejděte do složky ukázek Azure IoT iOS, který jste si stáhli v požadavky. Potom přejděte na ukázkový projekt služby:
 
@@ -111,13 +111,13 @@ Přejděte do složky ukázek Azure IoT iOS, který jste si stáhli v požadavky
 cd quickstart/sample-service
 ```
 
-Ujistěte se, že je uzavřena XCode, a poté spusťte následující příkaz pro instalaci CocoaPods, které jsou deklarované v **podfile** souboru:
+Ujistěte se, že je XCode zavřené, a pak spuštěním následujícího příkazu nainstalujte CocoaPods deklarované v souboru **podfile**:
 
 ```sh
 pod install
 ```
 
-Společně s instalací pracovními stanicemi soustředěnými kolem požadované pro svůj projekt, instalační příkaz také vytvořit soubor pracovní prostor XCode, který je již nakonfigurována pro použití pracovními stanicemi soustředěnými kolem závislosti.
+Kromě instalace požadovaných podů pro váš projekt příkaz k instalaci vytvořil také soubor pracovního prostoru XCode, který je předem nakonfigurovaný tak, aby používal pody pro závislosti.
 
 ### <a name="run-the-sample-service-application"></a>Spuštění ukázkové aplikace služby
 
@@ -127,14 +127,14 @@ Společně s instalací pracovními stanicemi soustředěnými kolem požadovan�
     az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
     ```
 
-2. Otevřete pracovní prostor ukázka v XCode.
+2. Otevřete ukázkový pracovní prostor v XCode.
 
    ```sh
    open AzureIoTServiceSample.xcworkspace
    ```
 
 3. Rozbalte **AzureIoTServiceSample** projekt a poté rozbalte složku se stejným názvem.  
-4. Otevřete **ViewController.swift** pro úpravy v XCode. 
+4. Otevřete soubor **ViewController.swift** pro úpravy v XCode. 
 5. Vyhledejte **connectionString** proměnnou a aktualizace hodnotu s služby připojovací řetězec, který jste zkopírovali dříve.
 6. Uložte provedené změny. 
 7. V Xcode změňte nastavení emulátoru na zařízení iOS jiný než můžete použít ke spuštění zařízení IoT. XCode nelze spustit více emulátorů stejného typu. 
@@ -143,7 +143,7 @@ Společně s instalací pracovními stanicemi soustředěnými kolem požadovan�
 
 8. Spusťte projekt v emulátoru zařízení pomocí **sestavit a spustit** tlačítko nebo klíče se seznamem **příkaz + r**. 
 
-   ![Spusťte projekt](media/iot-hub-ios-swift-c2d/run-app.png)
+   ![Spuštění projektu](media/iot-hub-ios-swift-c2d/run-app.png)
 
 
 ## <a name="send-a-cloud-to-device-message"></a>Odeslání zprávy typu cloud zařízení
@@ -166,7 +166,7 @@ Výstup by měl vypadat jako v následujícím příkladu:
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak odesílat a přijímat zprávy typu cloud zařízení. 
 
-Příklady dokončení začátku do konce řešení, které pomocí služby IoT Hub, najdete v sekci [Azure IoT Suite].
+Příklady dokončení začátku do konce řešení, které pomocí služby IoT Hub, najdete v sekci [akcelerátoru řešení Azure IoT vzdálené monitorování].
 
 Další informace o vývoji řešení službou IoT Hub, najdete v článku [Příručka vývojáře pro službu IoT Hub].
 
@@ -185,4 +185,4 @@ Další informace o vývoji řešení službou IoT Hub, najdete v článku [Př�
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure portal]: https://portal.azure.com
-[Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[akcelerátoru řešení Azure IoT vzdálené monitorování]: https://azure.microsoft.com/documentation/suites/iot-suite/

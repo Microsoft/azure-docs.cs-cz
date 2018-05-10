@@ -1,9 +1,9 @@
 ---
-title: "Datový Model aplikace Azure Statistika Telemetrie - Telemetrie výjimek | Microsoft Docs"
-description: "Application Insights datový model pro telemetrie výjimek"
+title: Datový Model aplikace Azure Statistika Telemetrie - Telemetrie výjimek | Microsoft Docs
+description: Application Insights datový model pro telemetrie výjimek
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3c3c3a39c7986cc771fe4baf60ad9b316888f6ed
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 036670c46a0ff40dd7b20a03c90f10513395cd71
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: Application Insights datový model
 
@@ -32,7 +32,7 @@ Maximální délka: 1024 znaků
 
 Úroveň závažnosti trasování. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
-## <a name="exception-details"></a>Podrobnosti o výjimce
+## <a name="exception-details"></a>Podrobnosti výjimky
 
 (Chcete-li být rozšířené)
 
@@ -44,7 +44,7 @@ Maximální délka: 1024 znaků
 
 [!INCLUDE [application-insights-data-model-measurements](../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
 - Zjistěte, jak [diagnostikovat výjimky ve webových aplikacích pomocí služby Application Insights](app-insights-asp-net-exceptions.md).

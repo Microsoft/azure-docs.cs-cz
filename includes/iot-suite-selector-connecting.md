@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 43acf33ec7787378595ad62540a868100bf587f7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 > [!div class="op_single_selector"]
 > * [C ve Windows](../articles/iot-suite/iot-suite-connecting-devices.md)
 > * [C v Linuxu](../articles/iot-suite/iot-suite-connecting-devices-linux.md)
@@ -5,7 +21,7 @@
 > * [Node.js v Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-node.md)
 > * [C v Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-V tomto kurzu budete implementovat **chladič** zařízení, která odesílá následující telemetrii na vzdálené monitorování [předkonfigurované řešení](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md):
+V tomto kurzu budete implementovat **chladič** zařízení, která odesílá následující telemetrii na vzdálené monitorování [řešení akcelerátoru](../articles/iot-suite/iot-suite-what-are-solution-accelerators.md):
 
 * Teplota
 * přetížení
@@ -23,11 +39,11 @@ K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než napíšete kód pro vaše zařízení, nasaďte předkonfigurované řešení vzdáleného monitorování a přidejte nový fyzického zařízení k řešení.
+Než napíšete kód pro vaše zařízení, nasaďte vaše vzdálené monitorování akcelerátoru řešení a přidejte nový fyzického zařízení k řešení.
 
-### <a name="deploy-your-remote-monitoring-preconfigured-solution"></a>Nasadit předkonfigurované řešení vzdáleného monitorování
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Nasazení vaší vzdálené monitorování řešení akcelerátoru
 
-**Chladič** zařízení v tomto kurzu vytvoříte odesílá data do instance [vzdálené monitorování](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) předkonfigurované řešení. Pokud jste ještě nezřídili předkonfigurovaného řešení vzdáleného monitorování v účtu Azure, najdete v části [nasadit předkonfigurované řešení vzdáleného monitorování](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
+**Chladič** zařízení v tomto kurzu vytvoříte odesílá data do instance [vzdálené monitorování](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) akcelerátoru řešení. Pokud jste ještě nezřídili vzdálené monitorování akcelerátoru řešení v účtu Azure, najdete v části [nasazení vzdálené monitorování řešení akcelerátoru](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
 
 Při procesu nasazení pro dokončení řešení vzdáleného monitorování, klikněte na tlačítko **spusťte** otevřete řídicí panel řešení v prohlížeči.
 
@@ -38,7 +54,7 @@ Při procesu nasazení pro dokončení řešení vzdáleného monitorování, kl
 > [!NOTE]
 > Pokud jste již přidali zařízení ve vašem řešení, můžete tento krok přeskočit. Dalším krokem však vyžaduje připojovací řetězec zařízení. Můžete načíst připojovací řetězec zařízení z [portál Azure](https://portal.azure.com) nebo pomocí [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) nástroj příkazového řádku.
 
-Aby se zařízení mohlo připojit k předkonfigurovanému řešení, musí se identifikovat ve službě IoT Hub pomocí platných přihlašovacích údajů. Máte možnost uložit zařízení připojovací řetězec, který obsahuje tyto přihlašovací údaje, když přidáte zařízení řešení. Připojovací řetězec zařízení můžete zahrnout do klientské aplikace později v tomto kurzu.
+U zařízení pro připojení k akcelerátoru řešení se musí identifikovat do služby IoT Hub pomocí platných přihlašovacích údajů. Máte možnost uložit zařízení připojovací řetězec, který obsahuje tyto přihlašovací údaje, když přidáte zařízení řešení. Připojovací řetězec zařízení můžete zahrnout do klientské aplikace později v tomto kurzu.
 
 Chcete-li přidat zařízení do řešení vzdáleného monitorování, proveďte následující kroky na **zařízení** stránky v řešení:
 
@@ -54,9 +70,9 @@ Chcete-li přidat zařízení do řešení vzdáleného monitorování, proveďt
 
     ![Načíst přihlašovací údaje](media/iot-suite-selector-connecting/credentials.png)
 
-Nyní jste přidali fyzického zařízení k předkonfigurovaného řešení vzdáleného monitorování a jsou uvedené jeho zařízení připojovací řetězec. V následujících částech můžete implementovat aplikace klienta, která používá zařízení připojovací řetězec pro připojení k řešení.
+Nyní jste přidali fyzického zařízení pro vzdálené monitorování akcelerátoru řešení a jsou uvedené jeho zařízení připojovací řetězec. V následujících částech můžete implementovat aplikace klienta, která používá zařízení připojovací řetězec pro připojení k řešení.
 
-Klientská aplikace implementuje integrované **chladič** model zařízení. Model zařízení předkonfigurované řešení určuje toto zařízení:
+Klientská aplikace implementuje integrované **chladič** model zařízení. Model zařízení akcelerátoru řešení určuje toto zařízení:
 
 * Vlastnosti zařízení sestav řešení. Například **chladič** zařízení hlásí informace o jeho firmware a umístění.
 * Typy telemetrických dat, které zařízení odesílá do řešení. Například **chladič** zařízení odesílá přetížení hodnoty, vlhkosti a teploty.

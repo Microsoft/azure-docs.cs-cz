@@ -1,9 +1,9 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého – přehled"
-description: "Azure platebních zpracování plán, podle kterého - matice odpovědnosti zákazníka (přehled)"
+title: Azure platebních zpracování plán, podle kterého – přehled
+description: Azure platebních zpracování plán, podle kterého - matice odpovědnosti zákazníka (přehled)
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 23cf68d8-bebd-4ac4-a194-39e052281c0e
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 49acce706f09fe08b257ce8a8554de5da20060a1
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 4c36f50b5c4ceba911003ec7a633dcab8724c6e0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="pci-dss-requirements---high-level-overview"></a>Požadavky na PCI DSS – přehled
 

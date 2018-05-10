@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 59e23344d235bac8f69bba76cfff2922bc41fd0f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 10e7c6a8e9e92a559352886095e367585dc484ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro webovou aplikaci
 
@@ -142,7 +142,7 @@ Když teď máte zaregistrovanou webovou aplikaci a vytvořené zásady, musíte
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Ukázková webová aplikace ASP.NET je jednoduchá aplikace seznamu úkolů umožňující vytvoření a aktualizaci seznamu úkolů. Aplikace umožňuje uživatelům zaregistrovat se k používání aplikace ve vašem tenantovi Azure AD B2C s využitím [komponent middlewaru Microsoft OWIN](https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/). Díky vytvoření zásady Azure AD B2C můžou uživatelé jako svou identitu pro přístup k aplikaci použít účet na sociální síti nebo si můžou vytvořit účet. 
+Ukázková webová aplikace ASP.NET je jednoduchá aplikace seznamu úkolů umožňující vytvoření a aktualizaci seznamu úkolů. Aplikace umožňuje uživatelům zaregistrovat se k používání aplikace ve vašem tenantovi Azure AD B2C s využitím [komponent middlewaru Microsoft OWIN](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/). Díky vytvoření zásady Azure AD B2C můžou uživatelé jako svou identitu pro přístup k aplikaci použít účet na sociální síti nebo si můžou vytvořit účet. 
 
 Ukázkové řešení obsahuje dva projekty:
 

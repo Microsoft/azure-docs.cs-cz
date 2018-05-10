@@ -1,26 +1,24 @@
 ---
-title: "Vyřešit problémy s licencí pro skupinu v Azure Active Directory | Microsoft Docs"
-description: "Jak identifikovat a vyřešit problémy přiřazení licencí, pokud používáte Azure Active Directory na základě skupiny licencí"
+title: Vyřešit problémy s licencí pro skupinu v Azure Active Directory | Microsoft Docs
+description: Jak identifikovat a vyřešit problémy přiřazení licencí, pokud používáte Azure Active Directory na základě skupiny licencí
 services: active-directory
-keywords: "Licencování Azure AD"
-documentationcenter: 
+keywords: Licencování Azure AD
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bd28eeb8d67dc0dcb3303fdb0e3c20b32f7c431
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e91b0a79e7b45ce7e0de1b7cf4aa3123550692af
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licence pro skupinu v Azure Active Directory
 
@@ -52,7 +50,7 @@ Při použití na základě skupiny licencí, může dojít k chybám stejné, a
 
 V následujících oddílech popis každý potenciální problém a způsobu jeho řešení.
 
-## <a name="not-enough-licenses"></a>Není dostatek licencí
+## <a name="not-enough-licenses"></a>Nedostatek licencí
 
 **Problém:** nejsou k dispozici dostatek dostupné licence pro jeden z produktů, které je zadána ve skupině. Budete muset zakoupit další licence pro produkt nebo uvolněte nevyužitých licencí z jiné uživatele nebo skupiny.
 
@@ -77,7 +75,7 @@ Rozhodnutí o tom, jak vyřešit konfliktní licence k produktům vždy patří 
 
 **Prostředí PowerShell:** rutiny prostředí PowerShell, ohlaste tuto chybu jako _MutuallyExclusiveViolation_.
 
-## <a name="other-products-depend-on-this-license"></a>Další produkty závisí na tuto licenci
+## <a name="other-products-depend-on-this-license"></a>Na této licenci závisí další produkty.
 
 **Problém:** jeden z produktů, které je zadána ve skupině obsahuje plán služeb, který musí být povolen pro jiný plán služby, v jiném produktu, funkce. K této chybě dojde, když se pokusí odebrat základní plán služby Azure AD. Například to může dojít v případě odeberte uživatele ze skupiny.
 
@@ -155,7 +153,7 @@ V závislosti na tom, jaké kroky jste provést k vyřešení chyby může být 
 
 Například pokud některé licence se uvolní odebráním přiřazením přímé licencí od uživatelů, budete muset spustit zpracování skupiny, které se dříve nepodařilo plně všechny členy uživatelské licence. Opětovné zpracování skupinu, přejděte do podokna skupiny, otevřete **licence**a pak vyberte **znovu zpracovat** tlačítka na panelu nástrojů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o scénáře pro správu licencí pomocí skupin, naleznete v následujících tématech:
 

@@ -1,8 +1,8 @@
 ---
-title: "Pomocí Azure Media výřez na portálu | Microsoft Docs"
-description: "Vytvořit klipy pomocí Azure Media výřez z portálu Azure"
+title: Pomocí Azure Media výřez na portálu | Microsoft Docs
+description: Vytvořit klipy pomocí Azure Media výřez z portálu Azure
 services: media-services
-keywords: "klip; subclip; kódování; média"
+keywords: klip; subclip; kódování; média
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 1deca68cd6a61ede7536c4d5544036a10c54209b
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Vytvoření klipů s Azure Media výřez v portálu.
 Azure Media výřez portálu slouží k vytvoření klipů z prostředků ve svých účtů media services. Chcete-li začít, přejděte na svůj účet mediálních služeb v portálu. Potom vyberte **Subclip** kartě.
@@ -39,5 +39,5 @@ Následující obrázek ukazuje výřez v dynamické manifestu režim filtru na 
 ## <a name="submitting-clipping-jobs"></a>Odesílání úloh výstřižek
 Po skončení skládání klip, vyberte tlačítko pro spuštění úlohy odeslání odpovídající úloha výstřižek nebo dynamické manifestu volání.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Chcete-li začít používat Azure Media výřez, přečtěte si [Začínáme](media-services-azure-media-clipper-getting-started.md) článku podrobnosti o tom, jak nasadit widgetu.

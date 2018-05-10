@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ba48a9072a85e7d8e6e9fb17957efbf27711df8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -103,7 +103,7 @@ Služba hlavní ověřování založené na AAD aplikace tokenu, postupujte podl
     - Klíč aplikace
     - ID tenanta
 
-2. **[Zřízení správcem služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**  pro Server SQL Azure na portálu Azure, pokud jste tak dosud neučinili. AAD správce může být AAD uživatele nebo skupinu AAD aplikace. Pokud udělit skupině s MSI roli správce, přeskočte krok 3 a 4 níže jako správce bude mít plný přístup k databázi.
+2. **[Zřízení správcem služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro Server SQL Azure na portálu Azure, pokud jste tak dosud neučinili. AAD správce může být AAD uživatele nebo skupinu AAD aplikace. Pokud udělit skupině s MSI roli správce, přeskočte krok 3 a 4 níže jako správce bude mít plný přístup k databázi.
 
 3. **Vytvořte uživatele databáze s omezením pro objekt služby**, propojením do datového skladu z/do které chcete kopírovat data pomocí nástroje, například aplikace SSMS s AAD identity s nejméně ALTER žádné oprávnění uživatele a provádění následující T-SQL . Další informace v databázi s omezením uživatele z [zde](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -114,7 +114,7 @@ Služba hlavní ověřování založené na AAD aplikace tokenu, postupujte podl
 4. **Udělte nezbytná oprávnění objektu služby** obvyklým způsobem pro uživatele SQL, například spuštěním níže:
 
     ```sql
-    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your application name];
     ```
 
 5. Ve službě ADF nakonfigurujte služby Azure SQL Data Warehouse propojená.
@@ -151,6 +151,9 @@ Služba hlavní ověřování založené na AAD aplikace tokenu, postupujte podl
 
 Objekt pro vytváření dat může být přidružen [identita spravované služby (MSI)](data-factory-service-identity.md), který představuje tuto konkrétní data factory. Tato identita služby můžete použít pro ověřování Azure SQL Data Warehouse, která umožní tento určený objekt pro vytváření pro přístup a kopírování dat z/do datového skladu.
 
+> [!IMPORTANT]
+> Všimněte si, že PolyBase není aktuálně podporováno MSI authentcation.
+
 Použití Instalační služby MSI na základě tokenu ověřování AAD aplikace, postupujte takto:
 
 1. **Vytvoření skupiny ve službě Azure AD a nastavte objektu pro vytváření MSI jako člena skupiny**.
@@ -163,7 +166,7 @@ Použití Instalační služby MSI na základě tokenu ověřování AAD aplikac
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Zřízení správcem služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**  pro Server SQL Azure na portálu Azure, pokud jste tak dosud neučinili.
+2. **[Zřízení správcem služby Azure Active Directory](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  pro Server SQL Azure na portálu Azure, pokud jste tak dosud neučinili.
 
 3. **Vytvořte uživatele databáze s omezením pro skupinu AAD**, propojením do datového skladu z/do které chcete kopírovat data pomocí nástroje, například aplikace SSMS s AAD identity s nejméně ALTER žádné oprávnění uživatele a provádění následující T-SQL. Další informace v databázi s omezením uživatele z [zde](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -174,7 +177,7 @@ Použití Instalační služby MSI na základě tokenu ověřování AAD aplikac
 4. **Udělit skupině AAD nezbytná oprávnění** obvyklým způsobem pro uživatele SQL, například spuštěním níže:
 
     ```sql
-    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
 5. Ve službě ADF nakonfigurujte služby Azure SQL Data Warehouse propojená.
@@ -381,7 +384,7 @@ Pomocí **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybas
 * Pokud vaše zdrojového úložiště dat a formát není podporován původně polybase, můžete použít **[připravený kopírování pomocí PolyBase](#staged-copy-using-polybase)** místo toho funkci. Také poskytuje lepší propustnosti automaticky převod dat do formátu kompatibilní s funkcí PolyBase a ukládání dat v úložišti objektů Blob v Azure. Potom načte data do SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Všimněte si, podporuje se jen PolyBase authentcation Azure SQL Data Warehouse SQL, ale není ověřování Azure Active Directory.
+> Všimněte si, že PolyBase není aktuálně podporována pro spravované Identity služby (MSI) na základě tokenu authentcation AAD aplikace.
 
 ### <a name="direct-copy-using-polybase"></a>Přímé kopírování pomocí PolyBase
 

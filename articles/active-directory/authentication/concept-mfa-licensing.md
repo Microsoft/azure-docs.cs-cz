@@ -1,25 +1,20 @@
 ---
 title: Verze služby Azure MFA a spotřeba plány | Microsoft Docs
-description: Informace o vícefaktorového ověřování klienta a různé metody a verze, které jsou k dispozici. Podrobnosti o jednotlivých plánu spotřeby
-keywords: ''
+description: Informace o vícefaktorového ověřování klienta a různé metody a verze, které jsou k dispozici.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: c5ed3674c724b30962fbd52b9955ec89c35745d1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: ec1a3e7e3e8969e161854a9f386d4b2e767ee48a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak získat Azure Multi-Factor Authentication
 

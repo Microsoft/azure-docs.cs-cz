@@ -4,14 +4,14 @@ description: Poskytuje přehled kolekce zařízení a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 05/03/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99f34bce942626cd931c9270192766cc76105f5b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="collector-appliance"></a>Kolekce zařízení
 
@@ -73,7 +73,7 @@ Kromě toho kontroly také pokusí se ověřit připojení k následujícím adr
 *.oneget.org:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
 *.windows.net:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
 *.windowsazure.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
-*.powershellgallery.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
+*. powershellgallery.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
 *.msecnd.net:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
 *.visualstudio.com:443 | Vyžaduje ke stažení powershell na základě vCenter PowerCLI modulu. | PowerCLI instalace se nezdaří. Nainstalujte modul ručně.
 
@@ -89,7 +89,7 @@ Kolekce musí být synchronizována s čas serveru internet k zajištění, že 
 
 Služba Azure migraci kolekce by měla být spuštěna v počítači. Tato služba je spuštěna automaticky, když se počítač spustí. Pokud tato služba neběží, můžete spustit *Azure migraci kolekce* služby v Ovládacích panelech. Kolekce služba je zodpovědná k připojení k serveru vCenter, shromažďování dat metadata a výkon počítače a jeho odeslání ke službě.
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5 
+### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
 
 Modul prostředí powershell VMware PowerCLI musí být nainstalovaný, aby kolekce komunikovat se serverem vCenter a dotazy na podrobnosti o počítači a jejich data výkonu. Modul prostředí powershell je automaticky stažen a nainstalován jako součást předběžné kontroly. Automatické stahování vyžaduje několik adresy URL seznam povolených adres, které je nutné zadat buď nedaří získat přístup pomocí povolených je, nebo ruční instalace modulu.
 
@@ -103,7 +103,7 @@ Instalace modulu ručně pomocí následujících kroků:
 
 Kolekce musí připojit k systému vCenter Server a moct dotaz pro virtuální počítače, jejich metadat a jejich čítače výkonu. Tato data se v projektu používá k výpočtu posouzení.
 
-1. Pro připojení k systému vCenter Server, účet jen pro čtení s oprávněními podle údaje v následující tabulce slouží ke spuštění zjišťování. 
+1. Pro připojení k systému vCenter Server, účet jen pro čtení s oprávněními podle údaje v následující tabulce slouží ke spuštění zjišťování.
 
     |Úkol  |Požadované role nebo účtu  |Oprávnění  |
     |---------|---------|---------|
@@ -118,13 +118,13 @@ Kolekce musí připojit k systému vCenter Server a moct dotaz pro virtuální p
 > Pouze vCenter Server 5.5, 6.0 a verze 6.5 oficiálně podporovaných verzích.
 
 > [!IMPORTANT]
-> Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky tak, aby všechny čítače jsou shromažďovány správně. Pokud máte vCenter nastavit na nižší úrovni, mohou být pouze několik čítače shromažďovány úplně, se zbytkem nastaven na hodnotu 0. Posouzení pak může zobrazovat neúplná data. 
+> Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky tak, aby všechny čítače jsou shromažďovány správně. Pokud máte vCenter nastavit na nižší úrovni, mohou být pouze několik čítače shromažďovány úplně, se zbytkem nastaven na hodnotu 0. Posouzení pak může zobrazovat neúplná data.
 
 ### <a name="selecting-the-scope-for-discovery"></a>Výběr rozsahu zjišťování
 
 Po připojení k serveru vCenter, můžete vybrat obor zjišťování. Výběr obor vyhledá všechny virtuální počítače z cesty zadané vCenter inventáře.
 
-1. Datové centrum, složku nebo hostiteli ESXi, může být oboru. 
+1. Datové centrum, složku nebo hostiteli ESXi, může být oboru.
 2. Můžete vybrat pouze jeden obor. Pokud chcete vybrat víc virtuálních počítačů, můžete dokončit jeden zjišťování a restartujte proces zjišťování nového oboru.
 3. Můžete vybrat pouze v rozsahu, který má *menší než 1 500 virtuálních počítačů*.
 
@@ -141,21 +141,22 @@ Jakmile se spustí zjišťování, jsou zjišťovány vCenter virtuální počí
 
 ### <a name="what-data-is-collected"></a>Jaká data se shromažďují?
 
-Úlohy kolekce zjistí následující statické metadata o vybraných virtuálních počítačů. 
+Úlohy kolekce zjistí následující statické metadata o vybraných virtuálních počítačů.
 
 1. Název zobrazení virtuálních počítačů (na vCenter)
 2. Cesta inventáře Virtuálního počítače (hostitele nebo složku v systému vCenter)
 3. IP adresa
 4. Adresa MAC
+5. Operační systém
 5. Počet jader, disků, síťových adaptérů
-6. Paměť RAM, velikosti disků
+6. Velikost paměti, velikosti disků
 7. A čítače výkonu virtuálních počítačů, disku a sítě, jak je uvedeno v následující tabulce.
 
 Následující tabulka uvádí čítače výkonu, které se shromažďují a také zobrazuje výsledky hodnocení, které jsou vliv, pokud nejsou zjištěny jednotlivých čítačů.
 
 |Čítač                                  |Úroveň    |Úroveň za zařízení  |Dopad hodnocení                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
-|cpu.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
+|CPU.Usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
 |mem.usage.average                        | 1       |Není k dispozici                |Doporučená velikost virtuálního počítače a náklady                    |
 |virtualDisk.read.average                 | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
 |virtualDisk.write.average                | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
@@ -190,7 +191,7 @@ Kolekce můžete upgradovat na nejnovější verzi bez stahování vajíčka je�
 2. Pro zajištění zabezpečené stažené opravy hotfix, otevřete příkazové okno správce a spusťte následující příkaz pro vytvoření hodnotu hash pro souboru ZIP. Generované hodnoty hash shodovat se symbolem hash uvedených na konkrétní verzi:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
+
     (příklad použití C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256)
 3. Soubor zip zkopírujte do Azure migraci kolekce virtuální počítač (kolekce zařízení).
 4. Klikněte pravým tlačítkem na soubor zip a vyberte možnost Extrahovat vše.

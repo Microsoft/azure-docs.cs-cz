@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ec08d617b461240062190ec7fdb919f051675798
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c02835e8712c79ea540d7560da111f54abbeed23
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
 
@@ -49,7 +49,7 @@ Tento krok zahrnuje přidání jedinečných artefaktů zabezpečení zařízen�
 
 - Zařízení založená na X.509:
     - [Certifikát X.509 vydaný pro zařízení](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx) ve formě souboru *.pem* nebo *.cer*. K jednotlivé registraci musíte použít *listový certifikát* pro váš systém X.509, zatímco pro skupiny registrací musíte použít *kořenový certifikát* nebo ekvivalentní *certifikát podpisovatele*.
-    - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. Pro zařízení založená na X.509 se ID registrace odvodí z běžného názvu certifikátu. Další informace o těchto požadavcích najdete v tématu [Koncepty zařízení](https://docs.microsoft.com/en-us/azure/iot-dps/concepts-device).
+    - *ID registrace*, které slouží k jednoznačné identifikaci zařízení v oboru názvů nebo oboru. Toto ID může, ale nemusí být stejné jako ID zařízení. ID je povinné pro každé zařízení. Pro zařízení založená na X.509 se ID registrace odvodí z běžného názvu certifikátu. Další informace o těchto požadavcích najdete v tématu [Koncepty zařízení](https://docs.microsoft.com/azure/iot-dps/concepts-device).
 
 Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsoby:
 

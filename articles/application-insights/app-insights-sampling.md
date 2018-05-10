@@ -3,7 +3,7 @@ title: Vzorkování telemetrii ve službě Azure Application Insights | Microsof
 description: Jak zajistit, aby svazek telemetrie pod kontrolou.
 services: application-insights
 documentationcenter: windows
-author: vgorbenko
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
-ms.author: mbullwin
-ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: mbullwin; vitalyg
+ms.openlocfilehash: 53753a3202362c73356e8e39bfca9d813f6387e0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -38,7 +38,7 @@ Vzorkování snižuje náklady na provoz a data a umožňuje vyhnout se omezení
 ## <a name="types-of-sampling"></a>Typy vzorkování
 Existují tři metody vzorkování alternativní:
 
-* **Adaptivního vzorkování** automaticky přizpůsobí objem telemetrická data odesílaná ze sady SDK v aplikaci ASP.NET. Od verze sady SDK v 2.0.0-beta3 Toto je výchozí metoda vzorkování. Adaptivního vzorkování je aktuálně k dispozici pouze pro telemetrických dat na straně serveru technologie ASP.NET. Pro Asp.NET Core aplikace které se budou zaměřovat úplné Framework, je k dispozici od verze 1.0.0 Microsoft.ApplicationInsights.AspNetCore SDK adaptivního vzorkování. Pro Asp.NET Core aplikace které se budou zaměřovat NetCore je k dispozici z 2.2.0-beta1 sady Microsoft.ApplicationInsights.AspNetCore SDK adaptivního vzorkování.
+* **Adaptivního vzorkování** automaticky přizpůsobí objem telemetrická data odesílaná ze sady SDK v aplikaci ASP.NET. Od verze sady SDK v 2.0.0-beta3 Toto je výchozí metoda vzorkování. Adaptivního vzorkování je aktuálně k dispozici pouze pro telemetrických dat na straně serveru technologie ASP.NET. Pro aplikace Asp.NET Core cílení úplné Framework je k dispozici od verze 1.0.0 Microsoft.ApplicationInsights.AspNetCore SDK adaptivního vzorkování. Pro aplikace Asp.NET Core cílení NetCore je k dispozici z 2.2.0-beta1 sady Microsoft.ApplicationInsights.AspNetCore SDK adaptivního vzorkování.
 
 * **Míry vzorkování** snižuje objem telemetrická data odesílaná ze svého technologie ASP.NET nebo Java serveru a z prohlížečů uživatelů. Můžete nastavit rychlost. Klient a server bude synchronizovat jejich vzorkování tak, že v hledání, mohou procházet mezi zobrazení související stránky a požadavky.
 * **Přijímání vzorkování** funguje na portálu Azure. Zahodí některé telemetrická data přenášená z vaší aplikace na vzorkovací frekvenci, který nastavíte. Nedojde k omezení přenosy telemetrie z vaší aplikace, ale umožňuje udržovat v rámci měsíční kvóta. Hlavní výhodou přijímání vzorkování je, že nastavíte vzorkovací frekvenci bez opětovného nasazení aplikace a funguje jednotně pro všechny servery a klienty. 

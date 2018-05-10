@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Node.js webového rozhraní API Začínáme | Microsoft Docs"
-description: "Jak sestavit webové Node.js REST API, které se integruje se službou Azure AD pro ověřování."
+title: Azure AD Node.js webového rozhraní API Začínáme | Microsoft Docs
+description: Jak sestavit webové Node.js REST API, které se integruje se službou Azure AD pro ověřování.
 services: active-directory
 documentationcenter: nodejs
-author: craigshoemaker
+author: celestedg
 manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: cshoe
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 2ed0874b79601976e0d5a73fe82c7c03331d9bea
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: a8438dcd1f37cfc6b259cfc7831805a0476446ea
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-nodejs-web-api-getting-started"></a>Azure AD Node.js webového rozhraní API Začínáme
 

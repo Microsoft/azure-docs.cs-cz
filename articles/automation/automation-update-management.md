@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c4b05044b0894e565ec4136f368314cb22041a7b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 3bd3c4f6501000f2490bc26cf7c6ff0345d3e7cc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -133,7 +133,7 @@ Pokud agenta není schopna komunikovat s analýzy protokolů a je nakonfigurová
 
 Stav nově přidaných agentů systému Linux bude po provedení vyhodnocení **Aktualizovaný**. Tento proces může trvat až 6 hodin.
 
-Pokud chcete potvrdit skupinu správy nástroje Operations Manager komunikuje s analýzy protokolů, najdete v části [ověření integrace nástroje Operations Manager s analýzy protokolů](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms).
+Pokud chcete potvrdit skupinu správy nástroje Operations Manager komunikuje s analýzy protokolů, najdete v části [ověření integrace nástroje Operations Manager s analýzy protokolů](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics).
 
 ## <a name="data-collection"></a>Shromažďování dat
 

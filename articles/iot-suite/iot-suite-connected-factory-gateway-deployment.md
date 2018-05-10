@@ -1,12 +1,12 @@
 ---
-title: "Nasazení brány připojené factory - Azure | Microsoft Docs"
-description: "K nasazení brány v systému Windows nebo Linux pro umožnění připojení k připojené objekt pro vytváření předkonfigurovaného řešení."
-services: 
+title: Nasazení brány připojené Factory - Azure | Microsoft Docs
+description: Postup nasazení brány na pro umožnění připojení k akcelerátoru řešení připojen objekt pro vytváření systému Windows nebo Linux.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 956da99a5d67d7a2225ab3ea64b4e5a9d41ee3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>Nasazení hraniční brány pro připojené objekt pro vytváření předkonfigurovaného řešení v systému Windows nebo Linux
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Nasazení vstupní brána pro připojení objektu pro vytváření řešení akcelerátor v systému Windows nebo Linux
 
-Budete potřebovat dvě součásti softwaru k nasazení hraniční brány pro *připojené factory* předkonfigurované řešení:
+Budete potřebovat dvě součásti softwaru k nasazení hraniční brány pro *připojen objekt pro vytváření* akcelerátoru řešení:
 
-- *OPC Proxy* naváže připojení k připojené pro vytváření. Proxy server OPC potom počká, než pro příkazy a ovládání zprávy z integrované OPC prohlížeče, který běží na portálu řešení připojených objekt pro vytváření.
+- *OPC Proxy* naváže připojení k připojené pro vytváření. Proxy server OPC potom počká, než pro příkazy a ovládání zprávy z integrované OPC prohlížeče, který běží na portálu řešení připojen objekt pro vytváření.
 
 - *OPC vydavatele* připojí k existující místní OPC UA servery a předává telemetrické zprávy z nich připojený objekt pro vytváření. Můžete připojit k OPC classic zařízení pomocí [OPC classic adaptér OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
@@ -37,14 +37,14 @@ Obě součásti jsou open source a jsou k dispozici jako zdroj na Githubu a jako
 
 Není nutné veřejnou IP adresu nebo otevřít příchozí porty v bráně firewall pro žádné komponenty. Komponenty OPC Proxy a OPC vydavatele používat jenom odchozí port 443.
 
-Kroky v tomto článku ukazují, jak nasadit vstupní brána pomocí Docker v systému Windows nebo Linux. Brána umožňuje připojení k připojené objekt pro vytváření předkonfigurovaného řešení. Můžete taky komponenty bez připojeného objektu pro vytváření.
+Kroky v tomto článku ukazují, jak nasadit vstupní brána pomocí Docker v systému Windows nebo Linux. Brána umožňuje připojení k akcelerátoru řešení připojen objekt pro vytváření. Můžete taky komponenty bez připojen objekt pro vytváření.
 
 > [!NOTE]
 > Obě součásti lze použít jako moduly v [Azure IoT Edge](https://github.com/Azure/iot-edge).
 
 ## <a name="choose-a-gateway-device"></a>Vyberte zařízení brány
 
-Pokud ještě nemáte zařízení brány, Microsoft doporučuje že zakoupit komerční brány jednoho z jeho partnerů. Seznam zařízení brány, které jsou kompatibilní s připojené vytváření řešení, najdete v článku [katalogu zařízení Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postupujte podle pokynů, které jsou součástí zařízení nastavit bránu.
+Pokud ještě nemáte zařízení brány, Microsoft doporučuje že zakoupit komerční brány jednoho z jeho partnerů. Seznam zařízení brány, které jsou kompatibilní s připojen objekt pro vytváření řešení, najdete v článku [katalogu zařízení Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postupujte podle pokynů, které jsou součástí zařízení nastavit bránu.
 
 Alternativně použijte následující pokyny k ruční konfiguraci ze stávajících zařízení brány.
 
@@ -75,7 +75,7 @@ Další informace najdete v článku [použít svazky](https://docs.docker.com/e
 
 Před instalací komponenty OPC, proveďte následující kroky při přípravě svého prostředí:
 
-1. K dokončení nasazení brány, potřebujete **iothubowner** připojovací řetězec služby IoT Hub ve vašem nasazení připojené objekt pro vytváření. V [portál Azure](http://portal.azure.com/), přejděte do služby IoT Hub ve skupině prostředků vytvořili při nasazení řešení připojených objekt pro vytváření. Klikněte na tlačítko **zásady sdíleného přístupu** k přístupu **iothubowner** připojovací řetězec:
+1. K dokončení nasazení brány, potřebujete **iothubowner** připojovací řetězec služby IoT Hub ve vašem nasazení připojen objekt pro vytváření. V [portál Azure](http://portal.azure.com/), přejděte do služby IoT Hub ve skupině prostředků vytvořili při nasazení řešení připojen objekt pro vytváření. Klikněte na tlačítko **zásady sdíleného přístupu** k přístupu **iothubowner** připojovací řetězec:
 
     ![Najděte připojovací řetězec služby IoT Hub](./media/iot-suite-connected-factory-gateway-deployment/image2.png)
 
@@ -143,33 +143,33 @@ OPC Proxy uloží připojovací řetězec během instalace. Při dalším spušt
 
 ## <a name="enable-your-gateway"></a>Povolit bránu
 
-Proveďte následující kroky k povolení bránu v připojených objekt pro vytváření předkonfigurovaného řešení:
+Proveďte následující kroky k povolení bránu ve akcelerátoru připojen objekt pro vytváření řešení:
 
-1. Když obě komponenty běží, přejdete **připojit vlastní OPC UA Server** na portálu řešení připojených objekt pro vytváření. Tato stránka je dostupný jenom pro správce v řešení. Zadejte adresu URL koncového bodu vydavatele (opc.tcp://publisher: 62222) a klikněte na tlačítko **Connect**.
+1. Když obě komponenty běží, přejdete **připojit vlastní OPC UA Server** na portálu řešení připojen objekt pro vytváření. Tato stránka je dostupný jenom pro správce v řešení. Zadejte adresu URL koncového bodu vydavatele (opc.tcp://publisher: 62222) a klikněte na tlačítko **Connect**.
 
-1. Vytvořte vztah důvěryhodnosti mezi portálem připojené objekt pro vytváření a OPC vydavatele. Když se zobrazí varování týkající se certifikátu, klikněte na tlačítko **pokračovat**. V dalším kroku, zobrazí chyba, není OPC vydavateli důvěřujete webového uživatelský Agent klienta. Chcete-li tuto chybu vyřešit, zkopírujte **uživatelský Agent webového klienta** certifikátu z `<SharedFolder>/CertificateStores/rejected/certs` složku pro `<SharedFolder>/CertificateStores/trusted/certs` složky na bráně. Není nutné restartovat bránu.
+1. Vytvořte vztah důvěryhodnosti mezi portálem připojen objekt pro vytváření a OPC vydavatele. Když se zobrazí varování týkající se certifikátu, klikněte na tlačítko **pokračovat**. V dalším kroku, zobrazí chyba, není OPC vydavateli důvěřujete webového uživatelský Agent klienta. Chcete-li tuto chybu vyřešit, zkopírujte **uživatelský Agent webového klienta** certifikátu z `<SharedFolder>/CertificateStores/rejected/certs` složku pro `<SharedFolder>/CertificateStores/trusted/certs` složky na bráně. Není nutné restartovat bránu.
 
 Již se můžete připojit k bráně z cloudu a jste připraveni přidat servery OPC UA k řešení.
 
 ## <a name="add-your-own-opc-ua-servers"></a>Přidat vlastní OPC UA servery
 
-Přidání vlastního OPC UA serverů pro připojené vytváření předkonfigurovaného řešení:
+Přidání vlastního OPC UA serverů do akcelerátor připojen objekt pro vytváření řešení:
 
-1. Vyhledejte **připojit serverem OPC UA** na portálu řešení připojených objekt pro vytváření.
+1. Vyhledejte **připojit serverem OPC UA** na portálu řešení připojen objekt pro vytváření.
 
     1. Spuštění, které chcete připojit k serveru OPC UA. Ujistěte se, že váš server OPC UA dostupný z OPC vydavatele a Proxy OPC spuštěné v kontejneru (viz předchozí komentáře o překladu názvů).
     1. Zadejte adresu URL koncového bodu serveru OPC UA (`opc.tcp://<host>:<port>`) a klikněte na tlačítko **Connect**.
-    1. Jako součást instalace připojení je vytvořen vztah důvěryhodnosti mezi portálem připojené factory (OPC UA klienta) a OPC UA serveru, který se pokoušíte připojit. Na řídicím panelu připojené factory získáte **nelze ověřit certifikát serveru se chcete připojit** upozornění. Když se zobrazí varování týkající se certifikátu, klikněte na tlačítko **pokračovat**.
-    1. Obtížnější instalační program je konfiguraci certifikátu, který se pokoušíte připojit k serveru OPC UA. Pro počítače na základě OPC UA serverů, můžete v řídicím panelu můžete potvrdit obdržet právě dialog s upozorněním. Pro systémy embedded OPC UA server najdete v dokumentaci OPC UA serveru k vyhledání jak tento úkol probíhá. Tuto úlohu dokončit, musíte certifikát klienta OPC UA portálu připojené objekt pro vytváření. Správce můžete na stáhnout tento certifikát **připojit serverem OPC UA** stránky:
+    1. Jako součást instalace připojení je vytvořen vztah důvěryhodnosti mezi portálem připojen objekt pro vytváření (OPC UA klienta) a OPC UA serveru, který se pokoušíte připojit. V řídicím panelu Factory připojený dostanete **nelze ověřit certifikát serveru se chcete připojit** upozornění. Když se zobrazí varování týkající se certifikátu, klikněte na tlačítko **pokračovat**.
+    1. Obtížnější instalační program je konfiguraci certifikátu, který se pokoušíte připojit k serveru OPC UA. Pro počítače na základě OPC UA serverů, můžete v řídicím panelu můžete potvrdit obdržet právě dialog s upozorněním. Pro systémy embedded OPC UA server najdete v dokumentaci OPC UA serveru k vyhledání jak tento úkol probíhá. Tuto úlohu dokončit, musíte certifikát klienta OPC UA portálu připojen objekt pro vytváření. Správce můžete na stáhnout tento certifikát **připojit serverem OPC UA** stránky:
 
         ![Portál řešení](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. Procházet uzlů stromu OPC UA OPC UA serveru, klikněte pravým tlačítkem na OPC uzly, které chcete odeslat hodnoty pro vytváření připojené a vyberte **publikování**.
+1. Procházet uzlů stromu OPC UA OPC UA serveru, klikněte pravým tlačítkem na OPC uzly, které chcete odeslat hodnoty pro vytváření připojení a vyberte **publikování**.
 
-1. Telemetrická data jsou nyní z zařízení brány. Můžete zobrazit telemetrii v **umístění objektu pro vytváření** zobrazení portálu připojené factory pod **nový objekt pro vytváření**.
+1. Telemetrická data jsou nyní z zařízení brány. Můžete zobrazit telemetrii v **umístění objektu pro vytváření** zobrazení připojen objekt pro vytváření portálu pod **nový objekt pro vytváření**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o architektuře připojené objekt pro vytváření předkonfigurovaného řešení najdete v tématu [připojené factory návod pro předkonfigurované řešení](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+Další informace o architektuře akcelerátor připojen objekt pro vytváření řešení najdete v tématu [připojen objekt pro vytváření řešení akcelerátoru návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 
 Další informace o [OPC vydavatele odkaz na implementaci](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

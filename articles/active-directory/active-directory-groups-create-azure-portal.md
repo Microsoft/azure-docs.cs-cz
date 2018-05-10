@@ -1,25 +1,23 @@
 ---
-title: "Vytvoření skupiny pro uživatele v Azure Active Directory | Microsoft Docs"
-description: "Postup vytvoření skupiny ve službě Azure Active Directory a přidání členů do skupiny"
+title: Vytvoření skupiny pro uživatele v Azure Active Directory | Microsoft Docs
+description: Postup vytvoření skupiny ve službě Azure Active Directory a přidání členů do skupiny
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: cc5f232a-1e77-45c2-b28b-1fcb4621725c
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 656e0e16167a73ef3c3eab21d6896f5fc280e375
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8f1722ab753287068e65e3d386e1d1a1bf40d742
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Vytvořte skupinu a přidejte členy v Azure Active Directory
 > [!div class="op_single_selector"]

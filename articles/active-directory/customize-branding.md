@@ -1,25 +1,24 @@
 ---
-title: "Přizpůsobit přihlašovací stránku pro klienta služby Azure Active Directory | Microsoft Docs"
-description: "Informace o postupu přidání firemního brandingu na stránky Azure přihlášení"
+title: Přizpůsobit přihlašovací stránku pro klienta služby Azure Active Directory | Microsoft Docs
+description: Informace o postupu přidání firemního brandingu na stránky Azure přihlášení
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.component: users-groups-roles
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 03a6b82f769ed9a36c5d3ff9934de75d1536e1ae
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Rychlé spuštění: Přidání firemního brandingu na přihlašovací stránku ve službě Azure AD
 Mnoho společností chce předcházet zmatení uživatele a upřednostňuje jednotný vzhled všech webů a služeb, které spravují. Azure Active Directory (Azure AD) tuto možnost nabízí a umožňuje přizpůsobení vzhledu stránku přihlášení s svoje firemní logo a vlastní barevná schémata. Na přihlašovací stránce se zobrazí při přihlášení k aplikacím založené na webu, například Office 365, které používají Azure AD jako zprostředkovatele identity. Budete používat tuto stránku k zadání pověření.
@@ -33,7 +32,7 @@ Mnoho společností chce předcházet zmatení uživatele a upřednostňuje jedn
 
 <!--You can customize the following elements on the sign-in page: <attach image>-->
 
-Firemního brandingu přizpůsobení zobrazí na přihlašovací stránce služby Azure AD, když uživatelé přistupují k adresy URL konkrétního klienta, jako [ *https://outlook.com/contoso.com*](https://outlook.com/contoso.com).
+Firemního brandingu přizpůsobení zobrazí na přihlašovací stránce služby Azure AD, když uživatelé přistupují k adresy URL konkrétního klienta, jako [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com).
 
 Když uživatelé navštíví www.office.com, například na přihlašovací stránce nezobrazí žádné firemního brandingu přizpůsobení, protože uživatel nebyl ještě zadali přihlašovací údaje. Jakmile uživatel zadá své ID uživatele nebo vyberete dlaždici uživatele, zobrazí se firemního brandingu.
 

@@ -1,24 +1,24 @@
 ---
-title: "Převzetí služeb při selhání a selhání zálohování virtuálních počítačů Hyper-V replikovat do sekundárního datového centra pomocí Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak převzetí služeb při selhání Hyper-V virtuální počítače na sekundární místní lokalitu a navrácení služeb po obnovení primární lokality, službou Azure Site Recovery"
+title: Převzetí služeb při selhání a selhání zálohování virtuálních počítačů Hyper-V replikovat do sekundárního datového centra pomocí Site Recovery | Microsoft Docs
+description: Zjistěte, jak převzetí služeb při selhání Hyper-V virtuální počítače na sekundární místní lokalitu a navrácení služeb po obnovení primární lokality, službou Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 3740ec9917499f6a1e87905befe86598a18f68e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f4207b8def3a5cd240b7a3ecdffde34a27f2a833
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a selhání zálohování virtuálních počítačů Hyper-V replikovat na sekundární místní lokalitu
 
 [Azure Site Recovery](site-recovery-overview.md) služby spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení místního počítače a virtuální počítače Azure (VM).
 
-Tento článek popisuje, jak k převzetí služeb virtuálního počítače technologie Hyper-V spravované v cloudu System Center Virtual Machine Manager (VMM), pro sekundární lokalita VMM. Po převzetí služeb při selhání navrátíte služby po obnovení do místní lokality, až bude dostupná. V tomto článku se dozvíte, jak:
+Tento článek popisuje, jak k převzetí služeb virtuálního počítače technologie Hyper-V spravované v cloudu System Center Virtual Machine Manager (VMM), pro sekundární lokalita VMM. Po převzetí služeb při selhání navrátíte služby po obnovení do místní lokality, až bude dostupná. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Selhání virtuálního počítače technologie Hyper-V z primárního cloudu VMM do sekundární cloudu VMM

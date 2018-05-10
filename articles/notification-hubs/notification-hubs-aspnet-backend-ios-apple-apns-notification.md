@@ -1,10 +1,10 @@
 ---
-title: "Upozornění uživatelů centra oznámení Azure pro iOS pomocí backendu .NET"
-description: "Zjistěte, jak odesílat nabízená oznámení pro uživatele v Azure. Ukázky kódu jsou vytvořeny v Objective-C a rozhraní API .NET pro back-end."
+title: Nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs | Microsoft Docs
+description: Zjistěte, jak odesílat nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs.
 documentationcenter: ios
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
@@ -12,25 +12,33 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/13/2018
+ms.author: dimazaid
+ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Upozornění uživatelů centra oznámení Azure pro iOS pomocí backendu .NET
+# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-## <a name="overview"></a>Přehled
-Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, multiplatform a nabízené škálovanou infrastrukturu, která výrazně zjednodušuje implementaci nabízená oznámení spotřebních a podnikových aplikací pro mobilní platformy. V tomto kurzu se dozvíte, jak se dají pomocí Azure Notification Hubs posílat nabízená oznámení specifickým uživatelům aplikace na specifickém zařízení. Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+V tomto kurzu se dozvíte, jak se dají pomocí Azure Notification Hubs posílat nabízená oznámení specifickým uživatelům aplikace na specifickém zařízení. Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
-> [!NOTE]
-> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). V tomto kurzu je také předpokladem pro [zabezpečení Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) kurzu.
-> Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mobilní aplikace začít pracovat s nabízené](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
-> 
-> 
+V tomto kurzu proveďte následující kroky:
+
+> [!div class="checklist"]
+> * Vytvoření projektu WebAPI
+> * Ověřování klientů na back-end WebAPI
+> * Registrace pro oznámení pomocí back-end WebAPI
+> * Odesílání oznámení z back-end WebAPI
+> * Publikování nový back-end WebAPI
+> * Upravit aplikaci s iOS
+> * Testování aplikace
+
+## <a name="prerequisites"></a>Požadavky
+V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali vaše Centrum oznámení, jak je popsáno v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). V tomto kurzu je také předpokladem pro [zabezpečení Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) kurzu.
+Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mobilní aplikace začít pracovat s nabízené](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -38,25 +46,26 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
 1. Otevřete aplikaci zobrazení jednu stránku, kterou jste vytvořili v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
    
    > [!NOTE]
-   > V této části předpokládáme, že váš projekt je nakonfigurovaný s názvem prázdné organizace. Pokud ne, budete muset předřazení název vaší organizace na všechny názvy tříd.
+   > Této části se předpokládá, že váš projekt je nakonfigurovaný s názvem prázdné organizace. Pokud ne, budete muset předřazení název vaší organizace na všechny názvy tříd.
    > 
    > 
-2. Ve vaší Main.storyboard přidáte součásti znázorněno na snímku obrazovky níže z objektu knihovny.
+2. V `Main.storyboard`, přidejte součásti ukazuje snímek obrazovky z objektu knihovny.
    
     ![][1]
    
    * **Uživatelské jméno**: UITextField A s zástupný text *zadejte uživatelské jméno*bezprostředně pod odesílání výsledky popisku a omezená na levý a pravý okraj a pod návěští odesílání výsledky.
    * **Heslo**: UITextField A s zástupný text *zadejte heslo*, bezprostředně pod uživatelské jméno textové pole a omezené levý a pravý okraj a pod textové pole uživatelské jméno. Zkontrolujte **zabezpečení zadávání textu** možnost v atributu Inspector, v části *vrátit klíč*.
    * **Přihlaste se**: A UIButton s názvem bez přípony bezprostředně pod textové pole heslo a zrušte zaškrtnutí políčka **povoleno** možnost Inspector atributy, v části *obsahu ovládacího prvku*
-   * **WNS**: štítek a přepínače, které umožňují odesílání oznámení služby oznámení Windows, pokud byla instalace v centru. Najdete v článku [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu.
-   * **GCM**: štítek a přepínače povolíte odesílání oznámení pro Google Cloud Messaging, pokud byla instalace v rozbočovači. V tématu [Začínáme Android](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.
+   * **WNS**: popisek a přepínače, které umožňují odesílání oznámení služby oznámení Windows, pokud ji byla nastavena na rozbočovači. Najdete v článku [Windows Začínáme](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) kurzu.
+   * **GCM**: popisek a přepínače, které umožňují odesílání oznámení pro Google Cloud Messaging, pokud ji byla nastavena na rozbočovači. V tématu [Začínáme Android](notification-hubs-android-push-notification-google-gcm-get-started.md) kurzu.
    * **APNS**: štítek a přepínače povolíte odesílání oznámení do služby Apple platformy oznámení.
-   * **Uživatelské jméno Recipent**: UITextField A s zástupný text *značky uživatelské jméno příjemce*, bezprostředně pod GCM popisku a omezené levý a pravý okraj a pod popisek GCM.
+   * **Příjemce Username:A** UITextField s zástupný text *značky uživatelské jméno příjemce*, bezprostředně pod GCM popisku a omezené levý a pravý okraj a pod popisek GCM.
 
     Některé součásti byly přidány v [Začínáme s Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) kurzu.
 
 1. **CTRL** přetáhněte z komponenty v zobrazení ViewController.h a přidejte tyto nové výstupy.
    
+    ```obj-c
         @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
         @property (weak, nonatomic) IBOutlet UITextField *PasswordField;
         @property (weak, nonatomic) IBOutlet UITextField *RecipientField;
@@ -72,11 +81,15 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
         @property (weak, nonatomic) IBOutlet UISwitch *APNSSwitch;
    
         - (IBAction)LogInAction:(id)sender;
-2. V ViewController.h, přidejte následující `#define` pod příkazy pro import. Nahraďte *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol cílová adresa URL můžete použít k nasazení vašeho back-end aplikace v předchozí části. Například *http://you_backend.azurewebsites.net*.
+    ```
+2. V ViewController.h, přidejte následující `#define` po příkazy pro import. Nahraďte *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol cílová adresa URL můžete použít k nasazení vašeho back-end aplikace v předchozí části. Například *http://you_backend.azurewebsites.net*.
    
+    ```obj-c
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    ```
 3. V projektu, vytvořte novou **Touch kakao třída** s názvem **RegisterClient** rozhraní s ASP.NET back-end jste vytvořili. Vytvořte třídu, která dědí z `NSObject`. V RegisterClient.h přidejte následující kód.
-   
+
+    ```obj-c   
         @interface RegisterClient : NSObject
    
         @property (strong, nonatomic) NSString* authenticationHeader;
@@ -87,8 +100,10 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
         -(instancetype) initWithEndpoint:(NSString*)Endpoint;
    
         @end
-4. V aktualizaci RegisterClient.m `@interface` části:
-   
+    ```
+4. V `RegisterClient.m`, aktualizovat `@interface` části:
+
+    ```obj-c   
         @interface RegisterClient ()
    
         @property (strong, nonatomic) NSURLSession* session;
@@ -102,8 +117,10 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
                     tags:(NSSet*)tags andCompletion:(void(^)(NSURLResponse*, NSError*))completion;
    
         @end
-5. Nahraďte `@implementation` část v RegisterClient.m následujícím kódem.
+    ```
+5. Nahraďte `@implementation` část v RegisterClient.m následujícím kódem:
 
+    ```obj-c
         @implementation RegisterClient
 
         // Globals used by RegisterClient
@@ -260,19 +277,23 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
         }
 
         @end
+    ```
 
-    Výše uvedený kód implementuje logiku popsané v článku pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) pomocí NSURLSession k provedení REST zavolá na váš back-end aplikace a NSUserDefaults ukládat místně registrationId vrácený centra oznámení.
+    Tento kód implementuje logiku popsané v článku pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) pomocí NSURLSession k provedení REST zavolá na váš back-end aplikace a NSUserDefaults ukládat místně registrationId vrácené Centrum oznámení.
 
-    Všimněte si, že tato třída vyžaduje, aby jeho vlastnost **authorizationHeader** nastavit správné fungování. Tato vlastnost je nastavena **ViewController** třída po přihlášení.
+    Tato třída vyžaduje, aby jeho vlastnost **authorizationHeader** nastavit správné fungování. Tato vlastnost je nastavena **ViewController** třída po přihlášení.
 
 1. V ViewController.h, přidejte `#import` příkaz pro RegisterClient.h. Pak přidejte deklaraci pro token zařízení a odkaz na `RegisterClient` instance v `@interface` části:
-   
+
+    ```obj-c   
         #import "RegisterClient.h"
    
         @property (strong, nonatomic) NSData* deviceToken;
         @property (strong, nonatomic) RegisterClient* registerClient;
+    ```
 2. V ViewController.m, přidejte deklaraci soukromá metoda v `@interface` části:
    
+    ```obj-c
         @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
    
         // create the Authorization header to perform Basic authentication with your app back-end
@@ -280,14 +301,13 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
                         AndPassword:(NSString*)password;
    
         @end
+    ```
 
-> [!NOTE]
-> Následující fragment kódu není schéma zabezpečeného ověřování, doporučujeme nahradit implementace **createAndSetAuthenticationHeaderWithUsername:AndPassword:** s vaší konkrétní ověřovací mechanismus, který generuje ověřovací token pro registraci klienta třídu, například OAuth, služby Active Directory.
-> 
-> 
-
-1. Potom v `@implementation` části ViewController.m přidejte následující kód, který přidá implementaci nastavení hlavičku tokenu a ověření zařízení.
+    > [!NOTE]
+    > Následující fragment kódu není schéma zabezpečeného ověřování, doporučujeme nahradit implementace **createAndSetAuthenticationHeaderWithUsername:AndPassword:** s vaší konkrétní ověřovací mechanismus, který generuje ověřovací token pro registraci klienta třídu, například OAuth, služby Active Directory.
+1. Potom v `@implementation` části `ViewController.m`, přidejte následující kód, který přidá implementaci nastavení hlavičku tokenu a ověření zařízení.
    
+    ```obj-c
         -(void) setDeviceToken: (NSData*) deviceToken
         {
             _deviceToken = deviceToken;
@@ -310,27 +330,72 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
             [textField resignFirstResponder];
             return YES;
         }
+    ```
    
-    Všimněte si, jak nastavení token zařízení povolí tlačítko přihlásit. Je to proto, že v rámci akce přihlášení se zaregistruje řadiče zobrazení pro nabízená oznámení s back-end aplikace. Proto jsme nechcete, aby akce přihlášení být přístupné, dokud token zařízení správně nastavit. Přihlášení z registraci nabízených můžete oddělit tak dlouho, dokud první se stane před jeho.
+    Všimněte si, jak nastavení token zařízení povolí tlačítko přihlásit. Je to proto, že v rámci akce přihlášení se zaregistruje řadiče zobrazení pro nabízená oznámení s back-end aplikace. Proto nechcete, aby akce přihlášení být přístupné, dokud token zařízení správně nastavit. Přihlášení z registraci nabízených můžete oddělit tak dlouho, dokud první se stane před jeho.
 2. V ViewController.m, použijte následující fragmenty implementovat metodu akce pro vaše **protokolu v** tlačítko a metody k odeslání zprávy oznámení pomocí ASP.NET back-end.
    
-       - (IBAction) LogInAction: odesílatele (id) {/ / vytvoření záhlaví ověření a nastavte ji zaregistrovat klienta NSString * uživatelské jméno = sám sebou. UsernameField.text;   Heslo NSString * = sám sebou. PasswordField.text;
+    ```obj-c
+       - (IBAction)LogInAction:(id)sender {
+           // create authentication header and set it in register client
+           NSString* username = self.UsernameField.text;
+           NSString* password = self.PasswordField.text;
    
-           [vlastní createAndSetAuthenticationHeaderWithUsername:username AndPassword:password];
+           [self createAndSetAuthenticationHeaderWithUsername:username AndPassword:password];
    
-           __weak ViewController * selfie = vlastní;   [self.registerClient registerWithDeviceToken:self.deviceToken značky: nil andCompletion:^(NSError* error) {Pokud (! chyby) {dispatch_async(dispatch_get_main_queue(), ^ {selfie. SendNotificationButton.enabled = YES;               [samoobslužné MessageBox:@"Success" message:@"Registered úspěšně!"];});}}];}
+           __weak ViewController* selfie = self;
+           [self.registerClient registerWithDeviceToken:self.deviceToken tags:nil
+               andCompletion:^(NSError* error) {
+               if (!error) {
+                   dispatch_async(dispatch_get_main_queue(),
+                   ^{
+                       selfie.SendNotificationButton.enabled = YES;
+                       [self MessageBox:@"Success" message:@"Registered successfully!"];
+                   });
+               }
+           }];
+       }
 
-        -SendNotificationASPNETBackend (void): (NSString*) pns UsernameTag: (NSString*) usernameTag zpráva: (NSString*) zpráva {NSURLSession* relace = [NSURLSession sessionWithConfiguration: delegateQueue:nil delegáta: nil [NSURLSessionConfiguration defaultSessionConfiguration]];
+        - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag
+                    Message:(NSString*)message
+        {
+            NSURLSession* session = [NSURLSession
+                sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil
+                delegateQueue:nil];
 
-            Předat značce systém pns a uživatelské jméno jako parametry s adresou URL REST ASP.NET back-end nsurl, který * requestURL = [nsurl, který URLWithString: [NSString stringWithFormat:@"%@/api/notifications? pns = % @& to_tag = % @", BACKEND_ENDPOINT, systém pns, usernameTag]];
+            // Pass the pns and username tag as parameters with the REST URL to the ASP.NET backend
+            NSURL* requestURL = [NSURL URLWithString:[NSString
+                stringWithFormat:@"%@/api/notifications?pns=%@&to_tag=%@", BACKEND_ENDPOINT, pns,
+                usernameTag]];
 
-            Žádost o NSMutableURLRequest * = [NSMutableURLRequest requestWithURL:requestURL];    [požadavku setHTTPMethod:@"POST"];
+            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
+            [request setHTTPMethod:@"POST"];
 
-            Získat imitované authenticationheader od klienta registrace NSString * authorizationHeaderValue = [NSString stringWithFormat:@"Basic % @", self.registerClient.authenticationHeader];    [požadavku setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
+            // Get the mock authenticationheader from the register client
+            NSString* authorizationHeaderValue = [NSString stringWithFormat:@"Basic %@",
+                self.registerClient.authenticationHeader];
+            [request setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization"];
 
-            Přidat obsah zprávy oznámení [požadavku setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];    [požadavku setHTTPBody: [zpráva dataUsingEncoding:NSUTF8StringEncoding]];
+            //Add the notification message body
+            [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
 
-            Spustit odesílání oznámení REST API na dataTask ASP.NET back-end NSURLSessionDataTask * = [completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) dataTaskWithRequest:request relace {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) odpovědi;        Pokud (Chyba || httpResponse.statusCode! = 200) {NSString* stav = [NSString stringWithFormat:@"Error stav pro % @: % d\nError: %@\n", systém pns, httpResponse.statusCode, chyba];            dispatch_async(dispatch_get_main_queue(), ^ {/ / Append textové protože všechna volání 3 systém PNS mohou mít i informace o zobrazení [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
+            // Execute the send notification REST API on the ASP.NET Backend
+            NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
+                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
+            {
+                NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) response;
+                if (error || httpResponse.statusCode != 200)
+                {
+                    NSString* status = [NSString stringWithFormat:@"Error Status for %@: %d\nError: %@\n",
+                                        pns, httpResponse.statusCode, error];
+                    dispatch_async(dispatch_get_main_queue(),
+                    ^{
+                        // Append text because all 3 PNS calls may also have information to view
+                        [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];
+                    });
+                    NSLog(status);
+                }
 
                 if (data != NULL)
                 {
@@ -338,17 +403,19 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
                     [xmlParser setDelegate:self];
                     [xmlParser parse];
                 }
-            }];    [obnovit dataTask]; }
-
+            }];
+            [dataTask resume];
+        }
+    ```
 
 1. Akce pro aktualizace **odeslat oznámení** tlačítko pomocí ASP.NET back-end a poslat jakékoli PNS povoleno přepínač.
 
+    ```obj-c
         - (IBAction)SendNotificationMessage:(id)sender
         {
             //[self SendNotificationRESTAPI];
             [self SendToEnabledPlatforms];
         }
-
 
         -(void)SendToEnabledPlatforms
         {
@@ -365,17 +432,19 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
             if ([self.APNSSwitch isOn])
                 [self SendNotificationASPNETBackend:@"apns" UsernameTag:self.RecipientField.text Message:json];
         }
-
-
+    ```
 
 1. Ve funkci **ViewDidLoad**, přidejte následující instance RegisterClient instance a nastavit delegáta u textových polí.
    
+    ```obj-c
        self.UsernameField.delegate = self;
        self.PasswordField.delegate = self;
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
-2. Nyní ve **AppDelegate.m**, odeberte všechny obsah metody **aplikace: didRegisterForPushNotificationWithDeviceToken:** a nahraďte ji následujícím a ujistěte se, že řadiče zobrazení obsahuje nejnovější token zařízení načíst ze služby APN:
+    ```
+2. Nyní ve **AppDelegate.m**, odeberte všechny obsah metody `application:didRegisterForPushNotificationWithDeviceToken:` a nahraďte ji následujícím a ujistěte se, že řadiče zobrazení obsahuje nejnovější token zařízení načíst ze služby APN:
    
+    ```obj-c
        // Add import to the top of the file
        #import "ViewController.h"
    
@@ -385,25 +454,35 @@ Podpora nabízená oznámení v Azure umožňuje přístup snadné použití, mu
            ViewController* rvc = (ViewController*) self.window.rootViewController;
            rvc.deviceToken = deviceToken;
        }
+    ```
 3. Nakonec v **AppDelegate.m**, zajistěte, aby byla následující metodu:
-   
+
+    ```obj-c   
        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
            NSLog(@"%@", userInfo);
            [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
        }
+    ```
 
 ## <a name="test-the-application"></a>Testování aplikace
-1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízených oznámení nebude fungovat v simulátoru).
-2. V aplikaci pro iOS uživatelského rozhraní zadejte uživatelské jméno a heslo. Mohou to být libovolný řetězec, ale musí být obě stejnou hodnotu řetězce. Pak klikněte na tlačítko **protokolu v**.
+1. V XCode spusťte aplikaci na fyzickém zařízení iOS (nabízených oznámení v simulátoru nefungují).
+2. V aplikaci pro iOS uživatelského rozhraní zadejte stejnou hodnotu pro uživatelské jméno a heslo. Pak klikněte na tlačítko **protokolu v**.
    
     ![][2]
 3. Měli byste vidět vyskakovací okno s informacemi o registraci úspěch. Klikněte na **OK**.
    
     ![][3]
 4. V **značky uživatelské jméno příjemce* textové pole, zadejte název značky uživatele použít s registrací z jiného zařízení.
-5. Zadejte zprávu oznámení a klikněte na tlačítko **odeslat oznámení**.  Jenom zařízení, která mají registrace pomocí značky jméno příjemce uživatele přijímat oznámení.  Pouze odesláním pro tyto uživatele.
+5. Zadejte zprávu oznámení a klikněte na tlačítko **odeslat oznámení**. Jenom zařízení, která mají registrace pomocí značky jméno příjemce uživatele přijímat oznámení. Pouze odesláním pro tyto uživatele.
    
     ![][4]
+
+## <a name="next-steps"></a>Další postup
+V tomto kurzu jste zjistili, jak pro nabízená oznámení pro konkrétní uživatele, kteří mají značkám přidruženým jejich registrace. Informace o tom pro nabízená oznámení na základě polohy, přechodu na následující kurzu: 
+
+> [!div class="nextstepaction"]
+>[Nabízená oznámení na základě polohy](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
+
 
 [1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-interface.png
 [2]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-user-pwd.png

@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: 72eb329c03893f801e112ad33bca0c57c5ee46a0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Informační kanál procesor změnu .NET SDK: Stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -31,6 +31,8 @@ ms.lasthandoff: 04/28/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+> * [BulkExecutor - rozhraní .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -48,6 +50,7 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Zlepšení stability.
+  * Oprava pro zpracování zrušené úlohy problém, který může vést k zastavena pozorovatelů na některé oddíly.
 * Podpora pro ruční vytváření kontrolních bodů.
 * Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21 a vyšší.
 
@@ -70,7 +73,14 @@ ms.lasthandoff: 04/28/2018
 
 ### <a name="pre-release-builds"></a>Předběžné verze sestavení
 
+### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-prerelease
+* Méně závažné změny rozhraní API:
+  * Odebrat ChangeFeedProcessorOptions.IsAutoCheckpointEnabled, která byla označena jako zastaralé.
+
 ### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* Zlepšení stability:
+  * Lepší zpracování inicializace úložiště zapůjčení. Pokud zapůjčení úložiště je prázdné, pouze jedna instance procesoru můžete inicializovat ho, bude čekat ostatní.
+  * Další obnovení zapůjčení stabilní/efektivní a verze. Obnovení a uvolněním jeden oddíl zapůjčení je nezávislé na jiné obnovení. V v1, které bylo provedeno postupně pro všechny oddíly.
 * Nové rozhraní API v2:
   * Tvůrce vzor flexibilní konstrukce procesoru: Třída ChangeFeedProcessorBuilder.
     * Může trvat libovolnou kombinací parametrů.
@@ -83,6 +93,7 @@ ms.lasthandoff: 04/28/2018
     * IPartitionProcessor – vlastní zpracování změny na oddíl.
 * Protokolování - používá [LibLog](https://github.com/damianh/LibLog) knihovny.
 * 100 % zpětně kompatibilní s rozhraním API v1.
+* Nový kód základní.
 * Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21.1 a vyšší.
 
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat

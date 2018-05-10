@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: ef947ada93e9520e53cecf2dfc26bb1ad01155c7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 54be18f2b114f4bb3ac9dd71e4517ee8806339bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 > [!IMPORTANT]
-> Toto je funkce **Azure CDN Premium od společnosti Verizon**a není k dispozici standardní produkty Azure CDN. Srovnání funkcí CDN najdete v článku [Funkce produktu Azure CDN](../articles/cdn/cdn-features.md). 
+> Toto je funkce **Azure CDN Premium od společnosti Verizon** pouze a není k dispozici standardní produkty Azure CDN. Srovnání funkcí CDN najdete v článku [Funkce produktu Azure CDN](../articles/cdn/cdn-features.md). 
 > 
 > 
 

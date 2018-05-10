@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: v-deasim
-ms.openlocfilehash: 09efd5cd54fbd05d85939b3ae08bfbb37e91058d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-sas"></a>Pomocí SAS Azure CDN
 
@@ -49,7 +49,7 @@ Další informace o nastavení parametrů najdete v tématu [SAS parametr aspekt
 
 ### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Možnost 1: Použití SAS s průchozí do úložiště objektů blob z Azure CDN
 
-Tato možnost je nejjednodušší a používá jeden token SAS, která je předat z Azure CDN na původním serveru. Je podporován **Azure CDN společnosti Verizon** a **Azure CDN společnosti Akamai**. 
+Tato možnost je nejjednodušší a používá jeden token SAS, která je předat z Azure CDN na původním serveru. Je podporován **Azure CDN Standard od společnosti Verizon** a **Azure CDN Standard od společnosti Akamai** profily. 
  
 1. Vyberte koncový bod, vyberte **ukládání do mezipaměti pravidla**, pak vyberte **do mezipaměti každou jedinečnou adresu URL** z **ukládání do mezipaměti řetězce dotazu** seznamu.
 

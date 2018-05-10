@@ -1,0 +1,80 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure DevOps Project
+metadata:
+  document_id: 
+  title: Dokumentace ke službě Azure DevOps Project – rychlá zprovoznění a kurzy
+  meta.description: 
+  services: devops-project
+  author: mlearned
+  manager: douge
+  ms.service: devops-project
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/30/2018
+  ms.author: mlearned
+  ms.openlocfilehash: c3021a8d08938deceb9ec2154ddec014bd067508
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Azure DevOps Project představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu kontinuální integrace (CI) a průběžného doručování (CD) do Azure.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/_img/azure-devops-project-aspnetcore/fullbrowser.png
+      width: 250
+    title: Vytvoření CI/CD s využitím služby Azure DevOps Project (8:53)
+    href: https://channel9.msdn.com/Events/Connect/2017/T174/player/
+    width: 250
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Naučte se sestavit typ vaší aplikace a nasadit ho do zvolené služby Azure:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media\logo_net.svg
+      text: .NET
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-aspnetcore
+    - image:
+        src: media\logo_nodejs.svg
+      text: Node.js
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-nodejs
+    - image:
+        src: media\logo_java.svg
+      text: Java
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-java
+    - image:
+        src: media\logo_python.svg
+      text: Python
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-python
+    - image:
+        src: media\logo_php.svg
+      text: PHP
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-php
+    - image:
+        src: media\logo_ruby.svg
+      text: Ruby
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-ruby
+    - image:
+        src: media\logo_gopher.svg
+      text: Přejít
+      href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/azure-devops-project-go
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se využívat Azure DevOps Project k vytváření kanálů verzí VSTS
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-github">Používání vlastního kódu s využitím GitHubu</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-vms">Nasazení aplikace ASP.NET do Azure Virtual Machines</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-sqldb">Nasazení aplikace ASP.NET a Azure SQL Database</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-aks">Nasazení vaší aplikace do prostředí Azure Container Service a Kubernetes</a>
+    - html: <a href="https://docs.microsoft.com/vsts/build-release/actions/azure-devops-project-servicefabric">Nasazení vaší aplikace do Azure Service Fabric</a>

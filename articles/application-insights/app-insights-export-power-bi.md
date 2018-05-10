@@ -1,9 +1,9 @@
 ---
-title: "Export do služby Power BI ze služby Azure Application Insights | Microsoft Docs"
-description: "Analytické dotazy lze zobrazit v Power BI."
+title: Export do služby Power BI ze služby Azure Application Insights | Microsoft Docs
+description: Analytické dotazy lze zobrazit v Power BI.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Kanálu Power BI z Application Insights
 [Power BI](http://www.powerbi.com/) je sada nástrojů, firmy, která pomáhá analyzovat data a sdílet uplatnitelné. Bohaté řídicí panely jsou k dispozici na každé zařízení. Můžete kombinovat data z mnoha zdrojů, včetně analytické dotazy z [Azure Application Insights](app-insights-overview.md).
@@ -121,8 +121,8 @@ Pokud snižuje datovou sadu pocházejících z dotazu Analytics nesplňuje vaše
 
 1. Vytvoření [klíč rozhraní API](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Aktualizujte Power BI M skript, který jste exportovali z Analytics nahrazením adresu URL správce prostředků Azure Application Insights API.
-   * Nahraďte **https://management.azure.com/subscriptions/...**
-   * s **https://api.applicationinsights.io/beta/apps/...**
+   * Nahraďte  **https://management.azure.com/subscriptions/...**
+   * s  **https://api.applicationinsights.io/beta/apps/...**
 3. Nakonec aktualizujte přihlašovací údaje k základní a používání vašeho klíče rozhraní API.
   
 
@@ -139,7 +139,7 @@ Pokud snižuje datovou sadu pocházejících z dotazu Analytics nesplňuje vaše
 Pokud vaše aplikace odešle velké množství dat, můžete použít funkci adaptivního vzorkování, která odesílá pouze procento vaší telemetrie. Totéž platí, pokud jste ručně nastavili vzorkování buď v sadě SDK, nebo na přijímání. [Další informace o vzorkování](app-insights-sampling.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Power BI - Další informace](http://www.powerbi.com/learning/)
 * [Analýza kurzu](app-insights-analytics-tour.md)
 

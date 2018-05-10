@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 8bcc1b2c76ff1e312d1435997ef6d677656510d8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřesením, zatřesením pro Tweet – načíst zprávu Twitter s funkcemi Azure!
 
@@ -188,6 +188,6 @@ Pokud dochází k problémům, podívejte se na [nejčastější dotazy k](https
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili DevKit zařízení připojit k vaší Azure IoT Suite a načtení tweet, zde jsou navrhované další kroky:
+Teď, když jste se naučili DevKit zařízení připojit k vaší akcelerátoru řešení Azure IoT vzdálené monitorování a načtení tweet, zde jsou navrhované další kroky:
 
-* [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT vzdálené monitorování přehled řešení akcelerátoru](https://docs.microsoft.com/azure/iot-suite/)

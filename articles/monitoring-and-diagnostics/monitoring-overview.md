@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 16478d0223f59abb239d39fa27453e41b6980727
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Monitorování aplikací Azure a prostředky
 
@@ -60,7 +60,7 @@ Základní monitorování poskytuje základní, vyžaduje monitorování napří
 
 Metriky, které jsou k dispozici, zadejte statistiku výkonu pro různé prostředky a i operační systém uvnitř virtuálního počítače. Můžete zobrazit tato data s jedním z průzkumníci na portálu Azure a vytvářet výstrahy založené na tyto metriky. Monitorování Azure poskytuje že nejrychlejší metriky kanálu (5 minut na 1 minutu), takže byste měli používat pro čas kritické výstrahy a oznámení.
 
-Můžete také odeslat tyto metriky a trendů a podrobné analýzy protokolů Azure Log Analytics nebo vytvořit další pravidla výstrah jako proaktivně upozornění na důležité problémy v důsledku této analýzy.  
+Můžete také odeslat tyto metriky a protokoly k analýze protokolů Azure pro analýzu trendů a podrobný nebo vytvořit další pravidla výstrah jako proaktivně upozornění na důležité problémy v důsledku této analýzy.  
 
 > [!NOTE]
 > Odesílání vícerozměrných metriky k analýze protokolů prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.

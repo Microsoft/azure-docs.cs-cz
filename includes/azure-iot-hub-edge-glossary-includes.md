@@ -1,3 +1,6 @@
+## <a name="automatic-device-management"></a>Správa automatického zařízení
+Automatická správa zařízení ve službě Azure IoT Hub automatizuje řadu opakovaných a složitější úlohy správy loďstev velké zařízení přes celého jejich životních cyklů. S automatickou správu zařízení můžete cílí na skupiny zařízení, na základě jejich vlastností, zadejte požadované konfigurace a nechat IoT Hub, aktualizujte si zařízení vždy, když se do oboru.  Se skládá z [konfigurací automatické zařízení](/articles/iot-hub/iot-hub-auto-device-config.md) a [IoT Edge automatické nasazení](/articles/iot-edge/how-to-deploy-monitor.md).
+
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge umožňuje řízené cloudové nasazení služby Azure a kódu pro konkrétní řešení pro místní zařízení. IoT hraniční zařízení můžete shromažďovat data z jiných zařízení a provádět výpočty a analýzy, předtím, než odešle data do cloudu. Další informace najdete v tématu [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/).
 
@@ -7,8 +10,8 @@ Součást zodpovědná za nasazení a monitorování modulů IoT Edge runtime.
 ## <a name="iot-edge-device"></a>Zařízení IoT Edge
 IoT hraniční zařízení mít IoT Edge nainstalován modul runtime a jsou označeny jako "IoT hraniční zařízení" v podrobností o zařízení. Zjistěte, jak [nasazení Azure IoT Edge v simulovaném zařízení v systému Linux – Náhled](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
-## <a name="iot-edge-deployment"></a>Nasazení IoT Edge
-Nasazení služby IoT Edge nakonfiguruje cíl sadu IoT hraniční zařízení pro spuštění sady IoT Edge moduly. Každé nasazení nepřetržitě zajišťuje, aby všechna zařízení, které odpovídají jeho cílovou podmínku běží Zadaná sada modulů, i když nové zařízení se vytvoří nebo jsou upraveny tak, aby odpovídaly cílovou podmínku. Každé zařízení IoT Edge pouze obdrží nejvyšší prioritou nasazení jejichž cílovou podmínku splňuje. Další informace o [IoT Edge nasazení](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+## <a name="iot-edge-automatic-deployment"></a>Okraj IoT automatického nasazení
+Automatické nasazení IoT Edge nakonfiguruje cíl sadu IoT hraniční zařízení pro spuštění sady IoT Edge moduly. Každé nasazení nepřetržitě zajišťuje, aby všechna zařízení, které odpovídají jeho cílovou podmínku běží Zadaná sada modulů, i když nové zařízení se vytvoří nebo jsou upraveny tak, aby odpovídaly cílovou podmínku. Každé zařízení IoT Edge pouze obdrží nejvyšší prioritou nasazení jejichž cílovou podmínku splňuje. Další informace o [IoT okraj automatického nasazení](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
 ## <a name="iot-edge-deployment-manifest"></a>Okraj IoT – manifest nasazení
 Dokument Json obsahující informace, která se mají zkopírovat jeden nebo více IoT hraniční zařízení modulu twin(s) nasadit sadu moduly, trasy a přidružené modulu požadované vlastnosti.

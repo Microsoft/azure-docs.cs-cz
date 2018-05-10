@@ -1,0 +1,55 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Azure Maps
+metadata:
+  document_id: 
+  title: Dokumentace ke službě Azure Maps | Microsoft Docs
+  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
+  services: azure-maps
+  author: philmea
+  manager: timlt
+  ms.service: azure-maps
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2018
+  ms.author: philmea
+  ms.openlocfilehash: 5561f4720a396a90dbffe08e420d3b9ee66ec206
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Služba Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s čerstvými mapovými daty, které jsou nezbytné k zajištění geografického kontextu pro webové a mobilní aplikace. Tato služba představuje sadu rozhraní REST API, které jsou kompatibilní s rozhraním Azure One API, doprovázenou webovým ovládáním v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Spusťte aplikaci hledání v mapách s využitím Azure Mapa.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/sql-database/media/index/portal.svg
+      text: Spustit ukázkovou aplikaci mapy
+      href: /azure/azure-maps/quick-demo-map-app
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Vytvoření geoprostorové webové aplikace pro hledání bodů zájmu a tras do umístění s využitím Azure Maps
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/azure-maps/tutorial-search-location">Hledání bodů zájmu</a>
+    - html: <a href="/azure/azure-maps/tutorial-route-location">Trasa k bodu zájmu</a>
+    - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Trasy podle způsobu cesty</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsW
+    items:
+    - title: Jazyky
+      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Rozhraní API pro mapové ovládací prvky – Javascript</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/">Funkční rozhraní API – REST</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">Rozhraní API pro správu – REST</a></p>

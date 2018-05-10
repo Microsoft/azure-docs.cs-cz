@@ -1,7 +1,7 @@
 ---
-title: "Simulace zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s předkonfigurovaného řešení vzdáleného monitorování."
-services: 
+title: Simulace zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s vzdálené monitorování akcelerátoru řešení.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,15 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: MT
+ms.openlocfilehash: 5cbd1738bd53179cb9705a86886b6cf811e9988a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
-V tomto kurzu se dozvíte, jak přizpůsobit mikroslužbu simulátoru zařízení v předkonfigurovaného řešení vzdáleného monitorování. Chcete-li zobrazit možnosti v simulátoru zařízení, tento kurz používá dva scénáře v aplikaci Contoso IoT.
+V tomto kurzu se dozvíte, jak přizpůsobit mikroslužbu simulátoru zařízení ve vzdálené monitorování akcelerátoru řešení. Chcete-li zobrazit možnosti v simulátoru zařízení, tento kurz používá dva scénáře v aplikaci Contoso IoT.
+
+Následující video obsahuje přehled možností pro přizpůsobení mikroslužbu simulátoru zařízení:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 V prvního scénáře Contoso chce otestovat nového inteligentní žárovek zařízení. Pokud chcete provést testy, vytvořte nového simulovaného zařízení s následujícími charakteristikami:
 
@@ -32,7 +36,7 @@ V prvního scénáře Contoso chce otestovat nového inteligentní žárovek za�
 | Také průraznost               | 0 až 100.                    |
 | Odhadovaný zbývající dobu životnosti | Odpočítávání 10 000 hodiny |
 
-*Telemetry*
+*Telemetrie*
 
 Následující tabulka obsahuje data že žárovek sestav v cloudu jako datový proud:
 
@@ -68,7 +72,7 @@ Následující tabulka uvádí počáteční stav zařízení:
 
 Druhý scénář, přidáte nový typ telemetrie a Contoso existující **chladič** zařízení.
 
-V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s předkonfigurovaného řešení vzdáleného monitorování:
+V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s vzdálené monitorování akcelerátoru řešení:
 
 V tomto kurzu se naučíte:
 
@@ -86,7 +90,7 @@ Následující video ukazuje návod simulované a skutečné zařízení připoj
 
 Chcete-li v tomto kurzu, je třeba:
 
-* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasadit předkonfigurované řešení vzdáleného monitorování](iot-suite-remote-monitoring-deploy.md) kurzu.
+* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
 
 * Sada Visual Studio 2017. Pokud nemáte nainstalované Visual Studio 2017, si můžete stáhnout bezplatnou [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
@@ -221,7 +225,7 @@ V tomto kurzu pracujete s **zařízení simulace** a **adaptéru úložiště** 
 1. Klonování verze .NET **adaptéru úložiště** úložiště, spusťte následující příkaz:
 
     ```cmd
-    git clone https://github.com/Azure/storage-adapter.git
+    git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
     Služba simulace zařízení používá službu úložiště adaptér pro připojení ke službě Cosmos DB v Azure. Řešení vzdáleného monitorování ukládá simulované zařízení konfigurační data do databáze Cosmos DB.
@@ -261,7 +265,7 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
     | Zdroj                      | Cíl                   |
     | --------------------------- | ----------------------------- |
     | chiller-01.json             | lightbulb-01.json             |
-    | scripts/chiller-01-state.js | skripty nebo žárovek-01-state.js |
+    | skripty nebo chladič-01-state.js | skripty nebo žárovek-01-state.js |
     | scripts/reboot-method.js    | scripts/SwitchOn-method.js    |
 
 ### <a name="define-the-characteristics-of-the-new-device-type"></a>Definovat vlastnosti nového typu zařízení
@@ -289,10 +293,10 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
         "temperature_unit": "F",
         "status": "on"
       },
-      "Script": {
+      "Interval": "00:00:20",
+      "Scripts": {
         "Type": "javascript",
-        "Path": "lightbulb-01-state.js",
-        "Interval": "00:00:20"
+        "Path": "lightbulb-01-state.js"
       }
     },
     ```
@@ -474,7 +478,7 @@ Nyní jste připraveni k testování nového typu simulované žárovek spuště
 
     ![Počet připojených zařízení](media/iot-suite-remote-monitoring-test/connecteddevices.png)
 
-1. V prohlížeči přejděte na **řídicí panel** pro vaše řešení vzdáleného monitorování. V panelu telemetrii na **řídicí panel**, vyberte **teploty**. Teplotní dvě Simulovaná zařízení zobrazí v grafu:
+1. V prohlížeči přejděte na **řídicí panel** pro vaše řešení vzdáleného monitorování. V panelu telemetrii na **řídicí panel**, vyberte **teploty**. Teplotní všechna Simulovaná zařízení zobrazí v grafu:
 
     ![Teplotní telemetrie](media/iot-suite-remote-monitoring-test/telemetry.png)
 
@@ -532,7 +536,7 @@ Následující kroky předpokládají, že byl úložiště volána **žárovek*
     publish.cmd
     ```
 
-1. Chcete-li ověřit nahrávání, přejděte na [https://hub.docker.com/](https://hub.docker.com/). Vyhledání vašeho **žárovek** úložiště a zvolte **podrobnosti**. Zvolte **značky**:
+1. Chcete-li ověřit nahrávání, přejděte na [ https://hub.docker.com/ ](https://hub.docker.com/). Vyhledání vašeho **žárovek** úložiště a zvolte **podrobnosti**. Zvolte **značky**:
 
     ![Úložiště docker hub](media/iot-suite-remote-monitoring-test/dockerhub.png)
 

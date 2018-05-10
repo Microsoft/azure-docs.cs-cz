@@ -12,10 +12,6 @@
       href: dns-getstarted-powershell.md
     - name: Vytvoření záznamu a zóny DNS – CLI
       href: dns-getstarted-cli.md
-- name: Ukázky
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
 - name: Kurzy
   items:
     - name: Vytvoření privátní zóny DNS a záznamu
@@ -24,6 +20,10 @@
       href: dns-delegate-domain-azure-dns.md
     - name: Vytvoření vlastních záznamů DNS pro webovou aplikaci
       href: dns-web-sites-custom-domain.md
+- name: Ukázky
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
 - name: Koncepty
   items:
     - name: Záznamy a zóny DNS

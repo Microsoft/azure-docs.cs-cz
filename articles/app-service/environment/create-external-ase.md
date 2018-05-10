@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření externího Azure App Service environment"
-description: "Vysvětluje, jak k vytvoření prostředí služby App Service při vytváření aplikace nebo samostatné"
+title: Vytvoření externího Azure App Service environment
+description: Vysvětluje, jak k vytvoření prostředí služby App Service při vytváření aplikace nebo samostatné
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 439fadeb01ccad58642492eb49ef25f866a9a9dd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: debfff03ea9a4de4fb2cd69779d58709a6a3a34f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externího App Service environment #
 
@@ -55,7 +55,7 @@ Externí App Service Environment má veřejné VIP, což znamená, že všechny 
 
 ## <a name="create-an-ase-and-an-app-service-plan-together"></a>Vytvořit App Service Environment a plán služby App Service společně ##
 
-Plán služby App Service je kontejner aplikací. Když vytvoříte aplikaci v App Service, zvolte nebo vytvořte plán služby App Service. V prostředí, v kontejneru modelu podržte plány služby App Service a plány služby App Service uchování aplikace.
+Plán služby App Service je kontejner aplikací. Když vytvoříte aplikaci v App Service, zvolte nebo vytvořte plán služby App Service. Služby App Service Environment podržte plány služby App Service a plány služby App Service uchování aplikace.
 
 Vytvořit App Service Environment, když vytvoříte plán služby App Service:
 
@@ -67,13 +67,66 @@ Vytvořit App Service Environment, když vytvoříte plán služby App Service:
 
 3. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat souvisejících prostředků Azure jako jednotku. Skupiny prostředků také jsou užitečné, když vytvoříte pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
 
-4. Vyberte plán služby App Service a pak vyberte **vytvořit nový**.
+4. Vyberte operačním systému. 
+
+    * Hostování Linux aplikace v App Service Environment je nová funkce preview, takže doporučujeme Linux aplikace nepřidávejte do app Service Environment právě probíhající úlohy v produkčním prostředí. 
+    * Přidání Linux aplikace do app Service Environment znamená, že App Service Environment bude také v režimu preview. 
+
+5. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linux webové aplikace a webové aplikace pro Windows, nelze stejný plán služby App Service, ale může být ve stejné App Service Environment. 
 
     ![Nový plán služby App Service][2]
 
+6. V **umístění** rozevíracího seznamu vyberte oblast, kde chcete vytvořit App Service Environment. Pokud vyberete existující App Service Environment, se nevytvoří nové App Service Environment. Plán služby App Service je vytvořen v App Service Environment, kterou jste vybrali. 
+
+    > [!NOTE]
+    > Linux na App Service Environment je povolena pouze v oblastech, 6, v tuto chvíli: **západní Evropa, západní USA, Východ USA, Severní Evropa, Austrálie – východ, Asie a Tichomoří – jihovýchod.** Protože Linux na App Service Environment je funkce preview, nevybírejte App Service Environment, který jste vytvořili než tato verze preview.
+    >
+
+7. Vyberte **cenová úroveň**a vyberte jednu z **izolovaná** ceny SKU. Pokud se rozhodnete **izolovaná** karty SKU a umístění, které není App Service Environment, nové App Service Environment se vytvoří v tomto umístění. Chcete-li spustit proces vytvoření App Service Environment, vyberte **vyberte**. **Izolovaná** SKU je k dispozici pouze ve spojení s App Service Environment. Také nemůžete použít jiné cenové SKU App Service Environment jiné než **izolovaná**. 
+
+    * Pro systém Linux na verzi preview pro App Service Environment 50 % sleva uplatní na izolované SKU (bude žádné slevy na dvojrozměrném poplatek za App Service Environment, sám sebe).
+
+    ![Výběr cenové úrovně][3]
+
+8. Zadejte název pro vaše App Service Environment. Tento název se používá v názvu adresovatelné pro vaše aplikace. Pokud je název App Service Environment _appsvcenvdemo_, je název domény *. appsvcenvdemo.p.azurewebsites.net*. Pokud vytvoříte aplikaci s názvem *mytestapp*, je adresovatelné v mytestapp.appsvcenvdemo.p.azurewebsites.net. Prázdné znaky nelze použít v názvu. Pokud používáte velká písmena, název domény je celkový počet malých verzi tímto názvem.
+
+    ![Nový název plánu aplikační služby][4]
+
+9. Zadejte vaše Azure podrobnosti virtuální sítě. Vyberte buď **vytvořit nový** nebo **vyberte existující**. Vyberte stávající virtuální síť možnost je dostupná pouze v případě, že máte virtuální síť ve vybrané oblasti. Pokud vyberete **vytvořit nový**, zadejte název virtuální sítě. Vytvoří se nové virtuální sítě Resource Manageru s tímto názvem. Používá adresní prostor `192.168.250.0/23` ve vybrané oblasti. Pokud vyberete **vybrat existující**, budete muset:
+
+    a. Blok adres virtuální sítě, vyberte, pokud máte více než jednou.
+
+    b. Zadejte nový název podsítě.
+
+    c. Vyberte velikost podsítě. *Mějte na paměti, vyberte velikost dostatečně velký pro přizpůsobení budoucímu růstu vašeho App Service Environment.* Doporučujeme, abyste `/25`, která je 128 adresy a dokáže zpracovat App Service Environment maximální velikost. Nedoporučujeme `/28`, například, protože nejsou k dispozici pouze 16 adres. Infrastruktura používá minimálně sedm adresy a sítě Azure používá jiný 5. V `/28` podsíť, která jste ponechaná na maximální škálování 4 instancí plánu služby App Service pro externí App Service Environment a jenom 3, instance plán služby App Service pro ILB App Service Environment.
+
+    d. Vyberte rozsah IP adres podsítě.
+
+10. Vyberte **vytvořit** vytvořit App Service Environment. Tento proces také vytvoří plán aplikační služby a aplikace. App Service Environment, plán služby App Service a aplikace jsou všechny v rámci stejného předplatného a také ve stejné skupině prostředků. Pokud vaše App Service Environment musí skupinu samostatné prostředků nebo pokud potřebujete App Service Environment ILB, postupujte podle kroků pro vytvoření App Service Environment samostatně.
+
+## <a name="create-an-ase-and-a-linux-web-app-using-a-custom-docker-image-together"></a>Vytvořit App Service Environment a Linux webovou aplikaci pomocí vlastní image Docker společně
+
+1. V [portál Azure](https://portal.azure.com/), **vytvořit prostředek** > **Web + mobilní** > **webovou aplikaci pro kontejnery.** 
+
+    ![Vytvoření webové aplikace][7]
+
+2. Vyberte své předplatné. Aplikace a App Service Environment se vytvoří ve stejné předplatných.
+
+3. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat souvisejících prostředků Azure jako jednotku. Skupiny prostředků také jsou užitečné, když vytvoříte pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
+
+4. Vyberte plán služby App Service a pak vyberte **vytvořit nový**. Linux webové aplikace a webové aplikace pro Windows, nelze stejný plán služby App Service, ale může být ve stejné App Service Environment. 
+
+    ![Nový plán služby App Service][8]
+
 5. V **umístění** rozevíracího seznamu vyberte oblast, kde chcete vytvořit App Service Environment. Pokud vyberete existující App Service Environment, se nevytvoří nové App Service Environment. Plán služby App Service je vytvořen v App Service Environment, kterou jste vybrali. 
 
-6. Vyberte **cenová úroveň**a vyberte jednu z **izolovaná** ceny SKU. Pokud se rozhodnete **izolovaná** karty SKU a umístění, které není App Service Environment, nové App Service Environment se vytvoří v tomto umístění. Chcete-li spustit proces vytvoření App Service Environment, vyberte **vyberte**. **Izolovaná** SKU je k dispozici pouze ve spojení s App Service Environment. Také nemůžete použít jiné cenové SKU App Service Environment jiné než **izolovaná**.
+    > [!NOTE]
+    > Linux na App Service Environment je povolena pouze v oblastech, 6, v tuto chvíli: **západní Evropa, západní USA, Východ USA, Severní Evropa, Austrálie – východ, Asie a Tichomoří – jihovýchod.** Protože Linux na App Service Environment je funkce preview, nevybírejte App Service Environment, který jste vytvořili než tato verze preview.
+    >
+
+6. Vyberte **cenová úroveň**a vyberte jednu z **izolovaná** ceny SKU. Pokud se rozhodnete **izolovaná** karty SKU a umístění, které není App Service Environment, nové App Service Environment se vytvoří v tomto umístění. Chcete-li spustit proces vytvoření App Service Environment, vyberte **vyberte**. **Izolovaná** SKU je k dispozici pouze ve spojení s App Service Environment. Také nemůžete použít jiné cenové SKU App Service Environment jiné než **izolovaná**. 
+
+    * Pro systém Linux na verzi preview pro App Service Environment 50 % sleva uplatní na izolované SKU (bude žádné slevy na dvojrozměrném poplatek za App Service Environment, sám sebe).
 
     ![Výběr cenové úrovně][3]
 
@@ -91,7 +144,13 @@ Vytvořit App Service Environment, když vytvoříte plán služby App Service:
 
     d. Vyberte rozsah IP adres podsítě.
 
-9. Vyberte **vytvořit** vytvořit App Service Environment. Tento proces také vytvoří plán aplikační služby a aplikace. App Service Environment, plán služby App Service a aplikace jsou všechny v rámci stejného předplatného a také ve stejné skupině prostředků. Pokud vaše App Service Environment musí skupinu samostatné prostředků nebo pokud potřebujete App Service Environment ILB, postupujte podle kroků pro vytvoření App Service Environment samostatně.
+9.  Vyberte možnost "Konfigurace kontejneru."
+    * Zadejte název vlastní image (můžete použít Azure kontejneru registru, úložiště Docker Hub a vlastní privátní registru). Pokud nechcete použít vlastní vlastní kontejner, můžete právě uvést váš kód a použít předdefinované bitovou kopii službou App Service pro systémy Linux, postupujte podle pokynů výše. 
+
+    ! [Konfigurace kontejneru] [9]
+
+10. Vyberte **vytvořit** vytvořit App Service Environment. Tento proces také vytvoří plán aplikační služby a aplikace. App Service Environment, plán služby App Service a aplikace jsou všechny v rámci stejného předplatného a také ve stejné skupině prostředků. Pokud vaše App Service Environment musí skupinu samostatné prostředků nebo pokud potřebujete App Service Environment ILB, postupujte podle kroků pro vytvoření App Service Environment samostatně.
+
 
 ## <a name="create-an-ase-by-itself"></a>Vytvořit App Service Environment samostatně ##
 
@@ -111,7 +170,9 @@ Pokud vytvoříte samostatné App Service Environment, má nic v ní. Prázdný 
 
 5. Vyberte virtuální síť a umístění. Můžete vytvořit novou virtuální síť nebo vybrat stávající virtuální síť: 
 
-    * Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Nové virtuální sítě má 192.168.250.0/23 rozsah adres a podsíť s názvem výchozí. Podsíť je definován jako 192.168.250.0/24. Můžete vybrat pouze virtuální sítě Resource Manageru. **VIP typ** výběr určuje, zda vaše App Service Environment jsou přímo přístupné z Internetu (externí) nebo, pokud používá ILB. Další informace o těchto možnostech najdete v tématu [vytvoření a použití vyrovnávání zatížení interní služby App Service environment][MakeILBASE]. 
+    * Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Pokud máte v úmyslu hostování aplikací Linux na tento App Service Environment, se momentálně jsou podporovány pouze tyto oblasti 6: **západní Evropa, západní USA, Východ USA, Severní Evropa, Austrálie – východ, Asie a Tichomoří – jihovýchod.** 
+    
+    * Nové virtuální sítě má 192.168.250.0/23 rozsah adres a podsíť s názvem výchozí. Podsíť je definován jako 192.168.250.0/24. Můžete vybrat pouze virtuální sítě Resource Manageru. **VIP typ** výběr určuje, zda vaše App Service Environment jsou přímo přístupné z Internetu (externí) nebo, pokud používá ILB. Další informace o těchto možnostech najdete v tématu [vytvoření a použití vyrovnávání zatížení interní služby App Service environment][MakeILBASE]. 
 
       * Pokud vyberete **externí** pro **VIP typ**, můžete vybrat kolik externí IP adresy v systému je vytvořena s pro účely založená na protokolu IP. 
     
@@ -132,6 +193,9 @@ Další informace o ASEv1 najdete v tématu [Úvod do služby App Service Enviro
 [4]: ./media/how_to_create_an_external_app_service_environment/createexternalase-embeddedcreate.png
 [5]: ./media/how_to_create_an_external_app_service_environment/createexternalase-standalonecreate.png
 [6]: ./media/how_to_create_an_external_app_service_environment/createexternalase-network.png
+[7]: ./media/how_to_create_an_external_app_service_environment/createexternalase-createwafc.png
+[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-aspcreatewafc.png
+[8]: ./media/how_to_create_an_external_app_service_environment/createexternalase-configurecontainer.png
 
 
 

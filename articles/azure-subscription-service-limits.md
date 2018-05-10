@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: f8b97aeb4c37578b884c924bd1919a59fa0f1cf8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.openlocfilehash: 28b6f6c269dfb1550b4ed12af3366b483d402f86
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé z nejběžnějších omezení Microsoft Azure, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V čase v seznamu rozbalit a aktualizovat tak, aby pokrývalo více platformou.
@@ -52,7 +52,8 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Application Insights](#application-insights-limits)
 * [Automation](#automation-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
-* [Azure událostí mřížky](#azure-event-grid-limits)
+* [Azure Event Grid](#azure-event-grid-limits)
+* [Azure mapy](#azure-maps-limits)
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
@@ -61,7 +62,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Cloud Services](#cloud-services-limits)
 * [Container Instances](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
-* [Službu kontejneru (AKS)](#container-service-aks-limits)
+* [Kubernetes služby](#container-service-aks-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
@@ -69,7 +70,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
-* [Služba zřizování zařízení IoT Hub](#iot-hub-device-provisioning-service-limits)
+* [Služba IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
 * [Media Services](#media-services-limits)
@@ -129,7 +130,7 @@ V následující tabulce jsou funkcí a omezení Basic, Standard a Premium [úro
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
-### <a name="container-service-aks-limits"></a>Omezuje služby kontejneru (AKS)
+### <a name="kubernetes-service-limits"></a>Omezení služby Kubernetes
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Síťová omezení
@@ -281,6 +282,9 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="azure-event-grid-limits"></a>Azure omezení událostí mřížky
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
+### <a name="azure-maps-limits"></a>Omezení Azure mapy
+[!INCLUDE [maps-limits](../includes/maps-limits.md)]
+
 ### <a name="storsimple-system-limits"></a>Omezení systému StorSimple
 [!INCLUDE [storsimple-limits-table](../includes/storsimple-limits-table.md)]
 
@@ -305,7 +309,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 ### <a name="key-vault-limits"></a>Omezení Key Vault
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Multi-factor Authentication
+### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Omezení automatizace

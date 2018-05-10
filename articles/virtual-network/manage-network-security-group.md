@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -34,6 +34,8 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 - Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.28 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
+Musí mít účet přihlásit nebo připojit k Azure s přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
+
 ## <a name="work-with-network-security-groups"></a>Práce se skupinami zabezpečení sítě
 
 Můžete vytvořit, [zobrazit všechny](#view-all-network-security-groups), [zobrazit podrobnosti o](#view-details-of-a-network-security-group), [změnit](#change-a-network-security-group), a [odstranit](#delete-a-network-security-group) skupinu zabezpečení sítě. Můžete také [přidružit nebo zrušit přidružení](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) skupinu zabezpečení sítě z rozhraní sítě nebo podsítě.
@@ -44,7 +46,7 @@ Je omezena na tom, kolik skupin zabezpečení, které můžete vytvořit na umí
 
 1. V levém horním rohu portálu, vyberte **+ vytvořit prostředek**.
 2. Vyberte **sítě**, pak vyberte **skupinu zabezpečení sítě**.
-3. Zadejte **název** pro skupinu zabezpečení sítě, vyberte vaše **předplatné**, vytvořte novou **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **Umístění**a potom vyberte **vytvořit**. 
+3. Zadejte **název** pro skupinu zabezpečení sítě, vyberte vaše **předplatné**, vytvořte novou **skupiny prostředků**, nebo vyberte existující skupinu prostředků, vyberte **Umístění**a potom vyberte **vytvořit**.
 
 **Příkazy**
 
@@ -67,7 +69,7 @@ Do vyhledávacího pole v horní části portálu, zadejte *skupin zabezpečení
 3. Další informace o běžných nastavení Azure uvedené, naleznete v následujících článcích:
     *   [Protokol aktivit](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [Značky](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [Značky](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zámky.](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Skriptu pro automatizaci](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -211,7 +213,7 @@ Když chcete změnit některá nastavení, jako je například značky a oprávn
 
 ### <a name="delete-an-application-security-group"></a>Odstranit skupinu zabezpečení aplikací
 
-Skupina zabezpečení aplikace nelze odstranit, pokud má všech síťových rozhraní v ní. Změna nastavení síťového rozhraní, nebo odstranění rozhraní sítě, je nutné odebrat ze skupiny zabezpečení aplikace všech síťových rozhraní. Podrobnosti najdete v tématu [přidat nebo odebrat síťové rozhraní ze skupin zabezpečení aplikací](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) nebo [odstranit síťové rozhraní](virtual-network-network-interface.md#delete-a-network-interface).
+Skupina zabezpečení aplikace nelze odstranit, pokud má všech síťových rozhraní v ní. Odeberte všechna síťová rozhraní ze skupiny zabezpečení aplikace Změna nastavení síťového rozhraní, nebo odstranění rozhraní sítě. Podrobnosti najdete v tématu [přidat nebo odebrat síťové rozhraní ze skupin zabezpečení aplikací](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) nebo [odstranit síťové rozhraní](virtual-network-network-interface.md#delete-a-network-interface).
 
 **Příkazy**
 
@@ -220,18 +222,33 @@ Skupina zabezpečení aplikace nelze odstranit, pokud má všech síťových roz
 
 ## <a name="permissions"></a>Oprávnění
 
-K provádění úloh na skupiny zabezpečení sítě, pravidla zabezpečení a skupiny zabezpečení aplikací, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušná oprávnění uvedených v následující tabulce:
+K provádění úloh na skupiny zabezpečení sítě, pravidla zabezpečení a skupiny zabezpečení aplikací, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušná oprávnění uvedené v následujících tabulkách:
 
-|Operace                                                       |   Název operace                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/ruleTables/read                              |   Načíst skupinu zabezpečení sítě                              |
-|Microsoft.Network/ruleTables/write                             |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                 |
-|Microsoft.Network/ruleTables/delete                            |   Odstranit skupinu zabezpečení sítě                           |
-|Microsoft.Network/ruleTables/join/action                       |   Připojit skupinu zabezpečení sítě                             |
-|Microsoft.Network/ruleTables/rules/read                       |   Získat pravidlo                                    |
-|Microsoft.Network/ruleTables/rules/write                      |   Vytvořit nebo aktualizovat pravidlo                       |
-|Microsoft.Network/ruleTables/rules/delete                     |   Odstranit pravidlo                                 |
-|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   Načíst skupinu zabezpečení sítě rozhraní efektivní sítě  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   Získá další segment z virtuálního počítače                  |
+### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 
-*Spojit skupinu zabezpečení sítě* operaci je nutný k přidružení skupiny zabezpečení sítě k podsíti.
+| Akce                                                        |   Název                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/ruleTables/read                             |   Načíst skupinu zabezpečení sítě                                          |
+| Microsoft.Network/ruleTables/write                            |   Vytvořit nebo aktualizovat skupinu zabezpečení sítě                             |
+| Microsoft.Network/ruleTables/delete                           |   Odstranit skupinu zabezpečení sítě                                       |
+| Microsoft.Network/ruleTables/join/action                      |   Přidružte skupinu zabezpečení sítě pro podsíť nebo síť rozhraní |
+| Microsoft.Network/ruleTables/rules/read                       |   Získat pravidlo                                                            |
+| Microsoft.Network/ruleTables/rules/write                      |   Vytvořit nebo aktualizovat pravidlo                                               |
+| Microsoft.Network/ruleTables/rules/delete                     |   Odstranit pravidlo                                                         |
+| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   Načíst skupinu zabezpečení sítě rozhraní efektivní sítě              |
+| Microsoft.Network/networkWatchers/nextHop/action              |   Získá další segment z virtuálního počítače                                         |
+
+### <a name="application-security-groups"></a>Skupiny zabezpečení aplikací
+
+| Akce                                                                     | Název                                                     |
+| --------------------------------------------------------------             | -------------------------------------------              |
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | Připojení konfiguraci IP adres do skupiny zabezpečení služby aplikace|
+| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Pravidlo zabezpečení připojení do skupiny zabezpečení služby aplikace    |
+| Microsoft.Network/applicationSecurityGroups/read                           | Získat skupinu zabezpečení aplikací                        |
+| Microsoft.Network/applicationSecurityGroups/write                          | Vytvořit nebo aktualizovat skupinu zabezpečení aplikací           |
+| Microsoft.Network/applicationSecurityGroups/delete                         | Odstranit skupinu zabezpečení aplikací                     |
+
+## <a name="next-steps"></a>Další postup
+
+- Vytvoření sítě nebo pomocí skupiny zabezpečení aplikací [prostředí PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablony Resource Manageru](template-samples.md)
+- Vytvoření a použití [Azure zásad](policy-samples.md) pro virtuální sítě

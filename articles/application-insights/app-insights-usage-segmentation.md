@@ -1,9 +1,9 @@
 ---
-title: "Analýza uživatelů, relací a událostí ve službě Azure Application Insights | Microsoft docs"
-description: "Demografické údaje analýzy uživatelů vaší webové aplikace."
+title: Analýza uživatelů, relací a událostí ve službě Azure Application Insights | Microsoft docs
+description: Demografické údaje analýzy uživatelů vaší webové aplikace.
 services: application-insights
-documentationcenter: 
-author: botatoes
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: mbullwin; daviste
-ms.openlocfilehash: 1a5380cac08ab32cfea4cf457aed1fb1510099ed
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3ac738d6b3c0f1f3579a9b644a03a01f1509173a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Analýza uživatelů, relací a událostí ve službě Application Insights
 

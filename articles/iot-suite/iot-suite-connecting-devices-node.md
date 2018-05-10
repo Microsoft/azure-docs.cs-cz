@@ -1,7 +1,7 @@
 ---
 title: Zřízení zařízení pro vzdálené monitorování v Node.js – Azure | Microsoft Docs
-description: Popisuje, jak se připojit zařízení k Azure IoT Suite předkonfigurované řešení vzdáleného monitorování pomocí aplikace napsané v Node.js.
-services: ''
+description: Popisuje, jak se připojit zařízení k používání aplikace napsané v Node.js akcelerátoru řešení vzdáleného monitorování.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: df89150867a3c95116ba8ca8cd684af4b32a36de
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0edc2d71d5f2ceac9c631fedaa160ca7291e9d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Připojte zařízení k monitorování předkonfigurované řešení vzdáleného (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Připojte zařízení k vzdálené monitorování akcelerátoru řešení (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-V tomto kurzu se dozvíte, jak se připojit fyzického zařízení k předkonfigurovaného řešení vzdáleného monitorování. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálními prostředků omezení.
+Tento kurz ukazuje, jak se připojit ke vzdálené monitorování akcelerátoru řešení fyzického zařízení. V tomto kurzu použijete Node.js, který je vhodný pro prostředí s minimálními prostředků omezení.
 
 ## <a name="create-a-nodejs-solution"></a>Vytvoření řešení Node.js
 
@@ -175,7 +175,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
 
 1. Přidejte následující funkci pro zpracování **FirmwareUpdate** přímé volání metod z řešení. Funkce ověřuje parametrů předaných v datové části přímá metoda a poté asynchronně spustí simulaci aktualizace firmwaru:
 
-    ```node.js
+    ```nodejs
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -204,7 +204,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
 
 1. Přidejte následující funkci k simulaci toku aktualizace firmwaru dlouho běžící, který sestavy průběhu řešení:
 
-    ```node.js
+    ```nodejs
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -282,7 +282,7 @@ Ujistěte se, že [Node.js](https://nodejs.org/) verze 4.0.0 nebo novější je 
 
 1. Přidejte následující kód do Neodesílat telemetrická data do řešení. Klientská aplikace přidá vlastnosti zprávy k identifikaci schéma zpráva:
 
-    ```node.js
+    ```nodejs
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();

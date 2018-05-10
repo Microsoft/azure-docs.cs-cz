@@ -1,25 +1,20 @@
 ---
-title: Doprovodné materiály zabezpečení pro MFA | Microsoft Docs
+title: Doprovodné materiály zabezpečení pro ověřování Azure Multi-Factor Authentication
 description: Tento dokument obsahuje pokyny ohledně použití Azure MFA s účty Azure
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: 3be7d968-96bb-4320-8701-869fd04a2595
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: 50e6cd3c067e09ebf9ace442894d5d066141e0b6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 76e622f500ee954852d7b42268318d35bb2133a4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Bezpečnostní pokyny k používání ověřování Azure Multi-Factor Authentication s účty Azure AD
 

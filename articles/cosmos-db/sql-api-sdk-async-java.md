@@ -13,11 +13,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: b80ad9837939af5406989d08e18f6f3d9fe3064f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -31,8 +31,8 @@ ms.lasthandoff: 04/28/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor - rozhraní .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, že poskytuje asynchronní operace se podporuje [Netty knihovny](http://netty.io/). Již existující [SQL API Java SDK](sql-api-sdk-java.md) nepodporuje asynchronní operace. 
 
@@ -63,7 +63,7 @@ SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, 
 * Opravte předejdete předání relace token při čtení hlavní prostředky.
 * Přidat další příklady.
 * Přidat další testu typovou úlohou scénáře.
-* Soubory hlaviček pevné Java pro správné javadoc generování.
+* Soubory hlaviček pevné Java pro generování doc správné java.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK s podporou začátku do konce neblokující vstupně-výstupní operace pomocí [Netty knihovny](http://netty.io/) v režimu brány. 
@@ -71,7 +71,7 @@ SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, 
 ## <a name="release-and-retirement-dates"></a>Datum vydání a vyřazování z provozu
 Microsoft bude poskytovat oznámení alespoň **dobu 12 měsíců** předem vyřazení sady SDK k funkce smooth přechodu na novější nebo podporované verzi.
 
-Nové funkce a funkce a optimalizace, jsou přidány pouze v aktuální sadě SDK, jako takový je doporučujeme, aby vždy upgradu na nejnovější verze sady SDK v míře.
+Nové funkce a funkce a optimalizace, jsou přidány pouze v aktuální sadě SDK. Proto se doporučuje, že jste vždy upgrade na nejnovější verzi sady SDK co nejdříve.
 
 Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službou.
 

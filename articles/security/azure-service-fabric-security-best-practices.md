@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric osvědčené postupy zabezpečení | Microsoft Docs"
-description: "Tento článek obsahuje sadu osvědčené postupy pro zabezpečení Azure Service Fabric."
+title: Azure Service Fabric osvědčené postupy zabezpečení | Microsoft Docs
+description: Tento článek obsahuje sadu osvědčené postupy pro zabezpečení Azure Service Fabric.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b908589903d243b2d284e2a23b6111785229c16f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric osvědčené postupy zabezpečení
 Nasazení aplikace v Azure je rychlý, snadný a nákladově efektivní. Před nasazením cloudové aplikace do produkčního prostředí, projděte si seznam důležité a doporučené osvědčené postupy pro implementaci zabezpečeného clustery ve vaší aplikaci.
@@ -126,7 +126,7 @@ Konfigurace Replikátor nakonfigurovat Replikátor, která zodpovídá za vytvo�
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurace protokolu SSL pro Azure Service Fabric
 Proces ověřování serveru [ověřuje](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) clusteru koncových bodů správy klient pro správu. Klient pro správu poté rozpozná, že je rozhovoru s skutečné clusteru. Tento certifikát také poskytuje [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) pro rozhraní API pro správu protokolu HTTPS a pro Service Fabric Explorer přes protokol HTTPS.
-Je nutné získat vlastní název domény pro váš cluster. Pokud budete požadovat certifikát od certifikační autority, název subjektu certifikátu musí odpovídat názvu vlastní domény, který používáte pro váš cluster.
+Pro svůj cluster musíte získat název vlastní domény. Pokud budete požadovat certifikát od certifikační autority, název subjektu certifikátu musí odpovídat názvu vlastní domény, který používáte pro váš cluster.
 
 Konfigurace protokolu SSL pro aplikaci, musíte nejdřív získat certifikát SSL, který podepsala certifikační Autority. Tato certifikační Autorita je důvěryhodná třetí strany, která vydává certifikáty SSL z bezpečnostních důvodů. Pokud ještě nemáte certifikát SSL, budete muset získat jeden ze společnosti, která prodává certifikáty SSL.
 
@@ -182,6 +182,6 @@ Po vytvoření aplikace, které chcete cluster představují, přiřadit uživat
 
 Azure Service Fabric podporuje dva typy řízení přístupu pro klienty, které jsou připojené k [cluster Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm): správce a uživatele. Správce clusteru můžete použít řízení přístupu omezit přístup k určité operace clusteru pro různé skupiny uživatelů. Řízení přístupu umožňuje clusteru bezpečnější.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Nastavit Service Fabric [vývojového prostředí](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started).
 - Další informace o [možnosti podpory Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).

@@ -1,7 +1,7 @@
 ---
-title: "Simulované zařízení chování v řešení vzdáleného monitorování - Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak definovat chování simulované zařízení v řešení vzdáleného monitorování pomocí jazyka JavaScript."
-services: 
+title: Simulované zařízení chování v řešení vzdáleného monitorování - Azure | Microsoft Docs
+description: Tento článek popisuje, jak definovat chování simulované zařízení v řešení vzdáleného monitorování pomocí jazyka JavaScript.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e5846893166c3e65b75e84d02849c2b8ab78e079
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2a2cbe5379adbd2c4ad6534b621871ecc30bfc81
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementace chování modelu zařízení
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/09/2018
 - **Stav** JavaScript soubory, které spustit v pevných intervalech aktualizovat vnitřní stav zařízení.
 - **Metoda** JavaScript soubory, které jsou spuštěny při řešení volá metodu na zařízení.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 >[!div class="checklist"]
 > * Řízení stavu simulovaného zařízení
@@ -36,8 +36,8 @@ V tomto článku se dozvíte, jak:
 
 [Simulace](iot-suite-remote-monitoring-device-schema.md#simulation) části schéma modelu zařízení definuje vnitřní stav simulované zařízení:
 
-- `InitialState`Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
-- `Script`identifikuje soubor JavaScript, která běží na plán, který chcete aktualizovat stav zařízení.
+- `InitialState` Definuje počáteční hodnoty pro všechny vlastnosti objektu stavu zařízení.
+- `Script` identifikuje soubor JavaScript, která běží na plán, který chcete aktualizovat stav zařízení.
 
 Následující příklad ukazuje definici objektu stavu zařízení pro chladič simulované zařízení:
 
@@ -53,10 +53,10 @@ Následující příklad ukazuje definici objektu stavu zařízení pro chladič
     "pressure_unit": "psig",
     "simulation_state": "normal_pressure"
   },
-  "Script": {
+  "Interval": "00:00:05",
+  "Scripts": {
     "Type": "javascript",
-    "Path": "chiller-01-state.js",
-    "Interval": "00:00:05"
+    "Path": "chiller-01-state.js"
   }
 }
 ```
@@ -66,7 +66,7 @@ Stav simulované zařízení, jak je definována v `InitialState` části, je ud
 Následující příklad zobrazuje obrys typické `main` funkce:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   // Use the previous device state to
   // generate the new device state
@@ -78,9 +78,9 @@ function main(context, previousState) {
 
 `context` Parametr má následující vlastnosti:
 
-- `currentTime`jako řetězec ve formátu`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, například`Simulated.Chiller.123`
-- `deviceModel`, například`Chiller`
+- `currentTime` jako řetězec ve formátu `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, například `Simulated.Chiller.123`
+- `deviceModel`, například `Chiller`
 
 `state` Parametr obsahuje stav zařízení, která jsou spravovaná službou simulace zařízení. Tato hodnota je `state` vrácený z předchozího volání `main`.
 
@@ -108,7 +108,7 @@ function restoreState(previousState) {
   }
 }
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
   restoreState(previousState);
 
@@ -133,7 +133,7 @@ function vary(avg, percentage, min, max) {
 }
 
 
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     restoreState(previousState);
 
@@ -192,28 +192,31 @@ Stav simulované zařízení, jak je definována v `InitialState` části schém
 Následující příklad zobrazuje obrys typické `main` funkce:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
 }
 ```
 
 `context` Parametr má následující vlastnosti:
 
-- `currentTime`jako řetězec ve formátu`yyyy-MM-dd'T'HH:mm:sszzz`
-- `deviceId`, například`Simulated.Chiller.123`
-- `deviceModel`, například`Chiller`
+- `currentTime` jako řetězec ve formátu `yyyy-MM-dd'T'HH:mm:sszzz`
+- `deviceId`, například `Simulated.Chiller.123`
+- `deviceModel`, například `Chiller`
 
 `state` Parametr obsahuje stav zařízení, která jsou spravovaná službou simulace zařízení.
 
-Existují dvě globální funkce, které můžete použít při provádění chování metody:
+`properties` Parametr obsahuje vlastnosti zařízení, které je zapsáno v jako hlášen vlastnostech dvojče zařízení IoT Hub.
 
-- `updateState`Aktualizovat stav uchovávat službou simulace.
-- `sleep`Chcete-li pozastavit provádění simulovat dlouhotrvající úlohy.
+Existují tři globální funkce, které můžete použít při provádění chování metody:
+
+- `updateState` Aktualizovat stav uchovávat službou simulace.
+- `updateProperty` Chcete-li aktualizovat jedné vlastnosti zařízení.
+- `sleep` Chcete-li pozastavit provádění simulovat dlouhotrvající úlohy.
 
 Následující příklad ukazuje, zkrácený verzi **IncreasePressure method.js** skript používá chladič simulované zařízení:
 
 ```javascript
-function main(context, previousState) {
+function main(context, previousState, previousProperties) {
 
     log("Starting 'Increase Pressure' method simulation (5 seconds)");
 

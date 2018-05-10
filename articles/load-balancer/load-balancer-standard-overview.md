@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -59,7 +59,7 @@ Projděte si v následující tabulce základní informace o rozdílech mezi ná
 | HA porty | Interní zátěže. | / |
 | Ve výchozím nastavení zabezpečení | Výchozí zavřít pro veřejné IP adresy a nástroj pro vyrovnávání zatížení koncové body a skupiny zabezpečení sítě musí použije k explicitně povolených pro přenosy na toku | Výchozí otevřená, skupinu zabezpečení sítě volitelné |
 | Odchozí připojení | Více frontends s každé pravidlo výslovný nesouhlas s. Odchozí scénář _musí_ explicitně vytvořit pro virtuální počítač, abyste mohli použít odchozí připojení.  [Koncové body služby virtuální síť](../virtual-network/virtual-network-service-endpoints-overview.md) dostupný bez odchozí připojení a zpracování dat není započítávat.  Všechny veřejné IP adresy, včetně služeb Azure PaaS není k dispozici jako koncové body služby virtuální sítě, musí být dosaženo přes odchozí připojení a počtu ke zpracování dat. Když virtuální počítač je obsluhuje pouze k interním pro vyrovnávání zatížení, nejsou k dispozici odchozí připojení přes výchozí překládat pomocí SNAT. Odchozí překládat pomocí SNAT programování je transportní protokol konkrétní na základě protokolu Příchozí pravidlo Vyrovnávání zatížení. | Jeden front-endu, náhodně vybrané, pokud existuje více frontends.  Když virtuální počítač je obsluhuje pouze interní nástroj pro vyrovnávání zatížení, použije se výchozí překládat pomocí SNAT. |
-| Více frontends | Příchozí a odchozí | Pouze příchozí |
+| Několik front-endů | Příchozí a odchozí | Pouze příchozí |
 | Operace správy | Většinu operací < 30 sekund | 60-90 sekund typické |
 | SLA | 99,99 % pro cestu k datům s dva virtuální počítače v pořádku | Implicitní v SLA k Virtuálním počítačům | 
 | Ceny | Účtovat na základě počtu pravidel, zpracování dat příchozí nebo odchozí přidružené prostředků  | Bez poplatků |
@@ -137,7 +137,7 @@ Toto jsou klíčové principů pamatovat při práci s nástroj pro vyrovnáván
 - odchozí scénáře jsou explicitní a odchozí připojení neexistuje, dokud není zadán.
 - pravidla Vyrovnávání zatížení odvození, jak programovat překládat pomocí SNAT. Pravidla Vyrovnávání zatížení jsou specifická pro protokol. Překládat pomocí SNAT je specifická pro protokol a konfigurace musí tuto skutečnost místo vytvoření vedlejším účinkem.
 
-#### <a name="multiple-frontends"></a>Více frontends
+#### <a name="multiple-frontends"></a>Několik front-endů
 Pokud chcete další překládat pomocí SNAT porty, protože je očekávána nebo se již vyskytuje vysokého zatížení pro odchozí připojení, můžete také přidat přírůstkové inventáře port překládat pomocí SNAT nakonfigurováním dalších frontends, pravidla a back-endové fondy stejný virtuální počítač prostředky.
 
 #### <a name="control-which-frontend-is-used-for-outbound"></a>Ovládací prvek front-end, který se používá pro odchozí
@@ -218,11 +218,12 @@ Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu 
 
 ## <a name="limitations"></a>Omezení
 
-- Instance back-end pro vyrovnávání zatížení nemohou být umístěny v peered virtuálních sítí v tuto chvíli. Všechny instance back-end musí být ve stejné oblasti.
 - SKU nejsou měnitelný. Skladová položka existující prostředek nesmí změnit.
 - Prostředek virtuálního počítače samostatnou sadu dostupnosti prostředků nebo prostředek sady škálování virtuálního počítače, můžete odkazovat jednoho identifikátoru SKU, nikdy obě.
-- [Azure monitorování výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md) nejsou podporovány v tuto chvíli.
+- Pravidlo Vyrovnávání zatížení nemůžou zahrnovat dvě virtuální sítě.  Frontends a jejich související back-end instance se musí nacházet ve stejné virtuální síti.  
+- Frontends nástroje pro vyrovnávání zatížení nejsou přístupné napříč vztahy globální virtuální sítě.
 - [Přesunutí operací předplatné](../azure-resource-manager/resource-group-move-resources.md) nejsou podporovány pro standardní SKU LB a PIP prostředky.
+- Webové role pracovního procesu bez virtuální sítě a další služby platformy Microsoft může být přístupné, pokud se používá pouze k interním standardní pro vyrovnávání zatížení z důvodu vedlejším účinkem z jak pre-VNet služby a jiné platformy služeb funkce. Nesmí spoléhají na to, jak příslušné služby sám sebe nebo základní platformy můžete změnit bez předchozího upozornění. Musí vždy předpokládat, budete muset vytvořit [odchozí připojení](load-balancer-outbound-connections.md) explicitně v případě, že při použití k interní standardní pro vyrovnávání zatížení jenom.
 
 ## <a name="next-steps"></a>Další postup
 

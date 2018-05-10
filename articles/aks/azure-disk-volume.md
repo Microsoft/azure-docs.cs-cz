@@ -1,6 +1,6 @@
 ---
-title: "Disky systému Azure pomocí AKS"
-description: "Disky systému Azure pomocí AKS"
+title: Disky systému Azure pomocí AKS
+description: Disky systému Azure pomocí AKS
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a2f46aba80ad47335b7cd9b5e8d615c1d895cccb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 33d9a01f063ee8ad531a3f7e01dcfbf1c4ba8901
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="volumes-with-azure-disks"></a>Svazky s disky systému Azure
 
-Aplikace založené na kontejneru často potřebují přístup a uchovávat data v svazku externí data. Disky systému Azure můžete použít jako tohle úložiště dat externí. Tento článek údaje pomocí Azure disku jako svazek Kubernetes na clusteru Azure Container Service (AKS).
+Aplikace založené na kontejneru často potřebují přístup a uchovávat data v svazku externí data. Disky systému Azure můžete použít jako tohle úložiště dat externí. Tento článek údaje pomocí Azure disku jako svazek Kubernetes v clusteru služby Azure Kubernetes služby (AKS).
 
 Další informace o svazcích Kubernetes najdete v tématu [Kubernetes svazky][kubernetes-volumes].
 
@@ -38,7 +38,7 @@ MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
 myAKSCluster                         eastus      Succeeded
 ```
 
-Použití [vytvoření disku az] [ az-disk-create] příkaz pro vytvoření disku s Azure. 
+Použití [vytvoření disku az] [ az-disk-create] příkaz pro vytvoření disku s Azure.
 
 V tomto příkladu, aktualizovat `--resource-group` s názvem skupiny prostředků a `--name` název svého výběru.
 
@@ -58,7 +58,7 @@ Po vytvoření disku, měli byste vidět výstup podobný následujícímu. Tato
 
 ## <a name="mount-disk-as-volume"></a>Připojte disk jako svazek
 
-Připojte Azure disk do vaší pod konfigurací svazku ve specifikaci kontejneru. 
+Připojte Azure disk do vaší pod konfigurací svazku ve specifikaci kontejneru.
 
 Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s tímto obsahem. Aktualizace `diskName` s názvem nově vytvořený disku a `diskURI` s ID disku. Také si poznamenejte `mountPath`, jedná se o cestu, kde je Azure disk připojený v pod.
 

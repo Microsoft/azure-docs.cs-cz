@@ -3,8 +3,8 @@ title: Azure diagnostické protokoly | Microsoft Docs
 description: Zákazníka můžete povolit analýzy protokolů pro Azure CDN.
 services: cdn
 documentationcenter: ''
-author: ''
-manager: ''
+author: dksimpson
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: v-deasim
-ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: rli
+ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -28,7 +28,7 @@ S Azure diagnostické protokoly můžete zobrazit analýzu základní a uložit 
  - Azure Event Hubs
  - [Pracovní prostor analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-Tato funkce je k dispozici pro všechny koncové body CDN patřící do Verizon (Standard a Premium) a profilů CDN Akamai (Standard). 
+Tato funkce je dostupná na koncové body CDN pro všechny cenové úrovně. 
 
 Azure diagnostics protokoly umožňují, aby můžete využívat požadovaným způsobem exportu metriky základní informace o využití z koncový bod CDN do různých zdrojů. Například můžete provést následující typy dat exportu:
 
@@ -156,10 +156,10 @@ Než se dostanete k základní analytická data z účtu úložiště Azure, mus
 
 **Popis polí:**
 
-|hodnota|description|
+|Hodnota|Popis|
 |-------|---------|
 |ID předplatného    |ID předplatného Azure ve formátu Guid.|
-|Prostředek |Název skupiny název skupiny prostředků, do které patří prostředky CDN.|
+|Název skupiny prostředků |Název skupiny prostředků, do které patří prostředky CDN.|
 |Název profilu |Název profilu CDN|
 |Název koncového bodu |Název koncového bodu CDN|
 |Rok|  4 číslice reprezentace roku, například 2017|
@@ -276,47 +276,49 @@ Můžete přetáhnout a vyřadit typy grafů a zadejte podrobnosti dat, který c
     
 ## <a name="log-data-delays"></a>Zpoždění data protokolu
 
-Verizon protokolu data zpoždění | Akamai protokolu data zpoždění
---- | ---
-Data protokolu Verizon je zpožděno 1 hodinu a trvat až 2 hodin zahájíte zobrazování po dokončení šíření koncový bod. | Data protokolu Akamai je zpožděn 24 hodin; Pokud byla vytvořena více než 24 hodinami, trvá spustit zobrazování až 2 hodin. Pokud byl nedávno vytvořen, může trvat až 25 hodin pro protokoly spuštění, které jsou uvedeny.
+Následující tabulka uvádí protokolu zpoždění data pro **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, a **Azure CDN Standard nebo Premium od společnosti Verizon**.
+
+Zpoždění data protokolu Microsoft | Verizon protokolu data zpoždění | Akamai protokolu data zpoždění
+--- | --- | ---
+Zpožděn 1 hodina. | Zpožděn 1 hodinu a může trvat až 2 hodin zahájíte zobrazování po dokončení šíření koncový bod. | Zpoždění po 24 hodinách; Pokud byla vytvořena více než 24 hodinami, trvá spustit zobrazování až 2 hodin. Pokud byl nedávno vytvořen, může trvat až 25 hodin pro protokoly spuštění, které jsou uvedeny.
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Typy protokolů diagnostiky pro CDN základní analýza
 
 Nabízíme aktuálně pouze základní analýza protokoly, které obsahují metriky ukazující statistiky odpovědi HTTP a odchozí statistiky, jak je vidět z CDN POP nebo okrajů.
 
 ### <a name="core-analytics-metrics-details"></a>Základní analýza metriky podrobnosti
-Následující tabulka uvádí seznam metriky, které jsou k dispozici v protokolech analytics jádra. Ne všechny metriky jsou k dispozici od všech poskytovatelů, i když tyto rozdíly jsou minimální. V následující tabulce také ukazuje, pokud daná metrika je k dispozici od zprostředkovatele. Všimněte si, že jsou k dispozici pro jenom ty koncové body CDN mající přenosy na těchto metriky.
+Následující tabulka uvádí seznam metriky, které jsou k dispozici v základní analýzy protokolů pro **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, a **Azure CDN Standard nebo Premium od společnosti Verizon**. Ne všechny metriky jsou k dispozici od všech poskytovatelů, i když tyto rozdíly jsou minimální. Tabulka zobrazuje také, zda daná metrika je k dispozici od zprostředkovatele. Všimněte si, že jsou k dispozici pro jenom ty koncové body CDN mající přenosy na těchto metriky.
 
 
-|Metrika                     | Popis   | Verizon  | Akamai 
-|---------------------------|---------------|---|---|
-| RequestCountTotal         |Celkový počet přístupů požadavek během tohoto období| Ano  |Ano   |
-| RequestCountHttpStatus2xx |Počet všech požadavků, které 2xx kód HTTP (například 200, 202)              | Ano  |Ano   |
-| RequestCountHttpStatus3xx | Počet všech požadavků, které 3xx kód HTTP (například 300, 302)              | Ano  |Ano   |
-| RequestCountHttpStatus4xx |Počet všech požadavků, které 4xx kód HTTP (například 400, 404)               | Ano   |Ano   |
-| RequestCountHttpStatus5xx | Počet všech požadavků, jejichž výsledkem kód HTTP 5xx (například 500, 504)              | Ano  |Ano   |
-| RequestCountHttpStatusOthers |  Počet všechny ostatní kódy HTTP (mimo 2xx 5xx) | Ano  |Ano   |
-| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem 200 kód odpovědi HTTP              |Ne   |Ano   |
-| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem 206 kód odpovědi HTTP              |Ne   |Ano   |
-| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem 302 kód odpovědi HTTP              |Ne   |Ano   |
-| RequestCountHttpStatus304 |  Počet všech požadavků, jejichž výsledkem 304 kód odpovědi HTTP             |Ne   |Ano   |
-| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem kódu odpovědi HTTP 404              |Ne   |Ano   |
-| RequestCountCacheHit |Počet všech požadavků, jejichž výsledkem požadavků mezipaměti. Asset zpracování přímo z POP do klienta.               | Ano  |Ne   |
-| RequestCountCacheMiss | Počet všech požadavků, která byla vygenerována v neúspěšnému přístupu do mezipaměti. To znamená asset nebyla nalezena na serveru POP nejbližší klientovi a proto byla načtena z tohoto počátku.              |Ano   | Ne  |
-| RequestCountCacheNoCache | Počet všech požadavků na prostředek, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici.              |Ano   | Ne  |
-| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nebudou moci ukládat do mezipaměti asset Cache-Control a Expires hlavičky, které označují, že by neměl být uložen do mezipaměti, na serveru POP nebo klient HTTP                |Ano   |Ne   |
-| RequestCountCacheOthers | Počet všech požadavků stavem mezipaměti, které nejsou pokryty výše.              |Ano   | Ne  |
-| EgressTotal | Odchozí přenosy dat v GB              |Ano   |Ano   |
-| EgressHttpStatus2xx | Odchozí datové přenosy * pro odpovědi s stavové kódy HTTP 2xx v GB            |Ano   |Ne   |
-| EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 3xx v GB              |Ano   |Ne   |
-| EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 4xx v GB               |Ano   | Ne  |
-| EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 5xx v GB               |Ano   |  Ne |
-| EgressHttpStatusOthers | Odchozí přenosy dat pro odpovědi s ostatních stavových kódech HTTP v GB                |Ano   |Ne   |
-| EgressCacheHit |  Odchozí přenosy dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na CDN POP nebo okrajů  |Ano   |  Ne |
-| EgressCacheMiss | Odchozí přenosy dat pro odpovědi, které nebyly na nejbližší server POP najít a načíst ze zdrojového serveru              |Ano   |  Ne |
-| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici.                |Ano   |Ne   |
-| EgressCacheUncacheable | Odchozí datové přenosy pro prostředky, které nebudou moci ukládat do mezipaměti Cache-Control nebo Expires hlavičky assetu. Označuje, že by neměl být uložené v mezipaměti, na serveru POP nebo klienta HTTP.                   |Ano   | Ne  |
-| EgressCacheOthers |  Odchozí datové přenosy s dalšími scénáři mezipaměti.             |Ano   | Ne  |
+|Metrika                     | Popis | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|----------|---------|--------|
+| RequestCountTotal         | Celkový počet přístupů k žádosti o během této doby. | Ano | Ano |Ano |
+| RequestCountHttpStatus2xx | Počet všech požadavků, které 2xx kód HTTP (například 200, 202). | Ano | Ano |Ano |
+| RequestCountHttpStatus3xx | Počet všech požadavků, které 3xx kód HTTP (například 300, 302). | Ano | Ano |Ano |
+| RequestCountHttpStatus4xx | Počet všech požadavků, které 4xx kód HTTP (například 400, 404). | Ano | Ano |Ano |
+| RequestCountHttpStatus5xx | Počet všech požadavků, jejichž výsledkem kód HTTP 5xx (například 500, 504). | Ano | Ano |Ano |
+| RequestCountHttpStatusOthers | Počet všechny ostatní kódy HTTP (mimo 2xx 5xx). | Ano | Ano |Ano |
+| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem 200 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem 206 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem 302 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus304 | Počet všech požadavků, jejichž výsledkem 304 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem odpovědi kódu HTTP 404. | Ano | Ne  |Ano |
+| RequestCountCacheHit | Počet všech požadavků, jejichž výsledkem požadavků mezipaměti. Asset zpracování přímo z POP do klienta. | Ano | Ano | Ne  |
+| RequestCountCacheMiss | Počet všech požadavků, která byla vygenerována v neúspěšnému přístupu do mezipaměti. To znamená asset nebyla nalezena na serveru POP nejbližší klientovi a proto byla načtena z tohoto počátku. | Ano | Ano | Ne |
+| RequestCountCacheNoCache | Počet všech požadavků na prostředek, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici. | Ano | Ano | Ne |
+| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nebudou moci ukládat do mezipaměti asset Cache-Control a Expires hlavičky, které označují, že by neměl být uložené v mezipaměti, na serveru POP nebo klienta HTTP. | Ano | Ano | Ne |
+| RequestCountCacheOthers | Počet všech požadavků stavem mezipaměti, které nejsou pokryty výše. | Ne | Ano | Ne  |
+| EgressTotal | Odchozí přenosy dat v GB | Ano |Ano |Ano |
+| EgressHttpStatus2xx | Odchozí datové přenosy * pro odpovědi s stavové kódy HTTP 2xx v GB. | Ano | Ano | Ne  |
+| EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 3xx v GB. | Ano | Ano | Ne  |
+| EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 4xx v GB. | Ano | Ano | Ne  |
+| EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 5xx v GB. | Ano | Ano | Ne |
+| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s ostatních stavových kódech HTTP v GB. | Ano | Ano | Ne  |
+| EgressCacheHit | Odchozí přenos dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na CDN POP nebo okraje. | Ano | Ano | Ne |
+| EgressCacheMiss. | Přenos odchozích dat pro odpovědi, které nebyly na nejbližší server POP najít a načíst ze zdrojového serveru. | Ano | Ano | Ne |
+| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici. | Ano | Ano | Ne |
+| EgressCacheUncacheable | Odchozí datové přenosy pro prostředky, které nebudou moci ukládat do mezipaměti Cache-Control nebo Expires hlavičky assetu. Označuje, že by neměl být uložené v mezipaměti, na serveru POP nebo klienta HTTP. | Ano | Ano | Ne |
+| EgressCacheOthers | Odchozí datové přenosy s dalšími scénáři mezipaměti. | Ne | Ano | Ne |
 
 * Odchozí přenosy dat odkazuje na provoz klientovi předána ze serverů CDN POP.
 
@@ -368,7 +370,7 @@ Všechny protokoly se ukládají ve formátu JSON a každá položka má polí s
 }
 ```
 
-Kde 'čas' představuje čas zahájení hodinu hranic, pro který je hlášen statistik. Pokud metriky není podporována zprostředkovatelem CDN, místo hodnotu double nebo celé číslo, nebude hodnotu null. Tato hodnota null ukazuje na nepřítomnost metriky a se liší od hodnoty 0. Není jednu sadu tyto metriky v každé doméně nakonfigurovaný v koncovém bodě.
+Kde *čas* představuje čas zahájení hodinu hranic, pro který je hlášen statistik. Pokud metriky není podporována zprostředkovatelem CDN, místo hodnotu double nebo celé číslo, nebude hodnotu null. Tato hodnota null ukazuje na nepřítomnost metriky a se liší od hodnoty 0. Není jednu sadu tyto metriky v každé doméně nakonfigurovaný v koncovém bodě.
 
 Příklad vlastnosti:
 

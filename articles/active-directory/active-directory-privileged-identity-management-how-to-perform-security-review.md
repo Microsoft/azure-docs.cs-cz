@@ -1,25 +1,23 @@
 ---
-title: "Postup kontrola přístupu | Microsoft Docs"
-description: "Zjistěte, jak provést kontrolu s aplikací Azure Privileged Identity Management."
+title: Postup kontrola přístupu | Microsoft Docs
+description: Zjistěte, jak provést kontrolu s aplikací Azure Privileged Identity Management.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 49ee2feb-7d2e-4acf-82c1-40ff23062862
+editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: billmath
+ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: d9885fc286e31100e14a5c8a1001df079829dcbe
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b3cc71fc11a567c0c5c62b220e25be4169bd8348
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Jak provádět kontrola přístupu v Azure AD Privileged Identity Management
 Azure Active Directory (AD) Privileged Identity Management zjednodušuje, jak spravovat podniky privilegovaný přístup k prostředkům v Azure AD a dalším službám Microsoft online jako je Office 365 nebo Microsoft Intune.  
@@ -33,7 +31,7 @@ Můžete použít aplikaci Azure AD Privileged Identity Management (PIM) v [port
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Vyberte své uživatelské jméno v pravém horním rohu portálu Azure a vyberte adresář, kde vám budou pracovat.
-3. Vyberte **všechny služby** a pomocí textového pole filtru k vyhledání **Azure AD Privileged Identity Management**.
+3. Vyberte **Všechny služby** a pomocí textového pole Filtr najděte **Azure AD Privileged Identity Management**.
 4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.
 
 ## <a name="approve-or-deny-access"></a>Schválí nebo zamítne přístup

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0e91cf994306c115911d9dd9cf0018f7947502d8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: eec5d0eb3c9cb0ae6e3e7f4eadfc58c4ab039cfd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analýza dat zpoždění letu pomocí Hive v HDInsight
 Hive zajišťuje spuštěných úloh Hadoop MapReduce prostřednictvím SQL jako skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování, a analýze velkých objemů dat.
@@ -259,7 +259,8 @@ Odesílání datového souboru a soubory skript HiveQL (viz [příloha B](#appen
     <tr><td>Filtrovat období</td><td>Leden</td></tr>
     <tr><td>Pole</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *poskytovatel*, *FlightNum*, *OriginAirportID*, *Původu*, *OriginCityName*, *OriginState*, *DestAirportID*, *cíle*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (zrušte zaškrtnutí všech ostatních polí)</td></tr>
     </table>
-3. Klikněte na tlačítko **Stáhnout**.
+
+3. Klikněte na **Stáhnout**.
 4. Rozbalte soubor **C:\Tutorials\FlightDelay\2013Data** složky. Každý soubor je soubor CSV a je přibližně 60GB.
 5. Přejmenujte soubor na název v měsíci, který obsahuje data. Například by s názvem souboru, který obsahuje data leden *January.csv*.
 6. Opakujte kroky 2 a 5 na stažení souboru pro každou dobu 12 měsíců v 2013. Budete potřebovat minimálně jeden soubor ke spuštění tohoto kurzu.
@@ -273,6 +274,7 @@ Odesílání datového souboru a soubory skript HiveQL (viz [příloha B](#appen
     <tr><td>$storageAccountName</td><td>Kam chcete nahrát data do účtu úložiště Azure.</td></tr>
     <tr><td>$blobContainerName</td><td>Kam chcete nahrát data do kontejneru objektů Blob.</td></tr>
     </table>
+    
 2. Otevřete Azure PowerShell ISE.
 3. Vložte následující skript do podokna skriptu:
 

@@ -14,29 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 30160088d9c770400f342e67527e1cf1cabc4f6b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bb757ab115d03ab04dac4468d23f446696a971a9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Omezit přístup k obsahu Azure CDN podle země
 
 ## <a name="overview"></a>Přehled
-Když si uživatel vyžádá obsah, ve výchozím nastavení, je zpracovat obsah bez ohledu na to, kde uživatel provedené této žádosti z. V některých případech můžete chtít omezit přístup k vašemu obsahu podle země. Toto téma vysvětluje, jak používat **filtrování geograficky** funkci chcete-li nakonfigurovat službu, kterou chcete povolit nebo blokovat přístup podle země.
+Když si uživatel vyžádá obsah, ve výchozím nastavení, je zpracovat obsah bez ohledu na to, kde uživatel provedené této žádosti z. V některých případech můžete chtít omezit přístup k vašemu obsahu podle země. Tento článek vysvětluje, jak používat *filtrování geograficky* funkci chcete-li nakonfigurovat službu, kterou chcete povolit nebo blokovat přístup podle země.
 
 > [!IMPORTANT]
-> Verizon a Akamai produkty nabízí stejnou funkčnost geograficky filtrování, ale mají malý rozdíl v te země kódy, které podporují. Odkaz na rozdíly najdete v kroku 3.
+> Produkty Azure CDN všechny nabízí stejnou funkčnost geograficky filtrování, ale mají malý rozdíl v te země kódy, které podporují. Odkaz na rozdíly najdete v kroku 3.
 
 
-Informace o aspektech, které platí pro konfiguraci tohoto typu omezení najdete v tématu [aspekty](cdn-restrict-access-by-country.md#considerations) na konci tohoto tématu.  
+Informace o aspektech, které platí pro konfiguraci tohoto typu omezení najdete v tématu [aspekty](cdn-restrict-access-by-country.md#considerations).  
 
 ![Filtrování podle země](./media/cdn-filtering/cdn-country-filtering-akamai.png)
 
 ## <a name="step-1-define-the-directory-path"></a>Krok 1: Definování cesta k adresáři
+> [!IMPORTANT]
+> **Azure CDN Standard od společnosti Microsoft** profily nepodporují filtrování geograficky na základě cesty.
+>
+
+
 Vyberte koncový bod služby v rámci portálu a najít na kartě filtrování geograficky v levé navigaci k vyhledání této funkce.
 
-Při konfiguraci filtr země, zadejte relativní cestu k umístění, do které se uživatelům povoluje nebo odepírá přístup. Filtrování geograficky můžete použít pro všechny soubory s "/" nebo vybrané složky zadáním cesty k adresáři "/ obrázky /". Můžete taky použít filtrování geograficky do jednoho souboru zadáním soubor a ponechat si do adresy koncové lomítko "/ obrazky/Mesto.png".
+Při konfiguraci filtr země, zadejte relativní cestu k umístění, do které se uživatelům povoluje nebo odepírá přístup. Můžete použít geograficky filtrování pro všechny soubory s lomítkem (/) nebo vybrané složky zadáním cesty adresářů */pictures/*. Můžete taky použít filtrování geograficky do jednoho souboru zadáním soubor a ponechat si do adresy koncové lomítko */pictures/city.png*.
 
 Příklad filtru cesta adresáře:
 
@@ -60,10 +65,13 @@ Například pravidlo blokování /Photos/Štrasburku/bude filtrovat soubory vče
 
 
 ### <a name="country-codes"></a>Kódy zemí
-**Filtrování geograficky** funkce používá k definování zemí, ze kterých se žádost o povolené nebo blokované pro zabezpečené adresář kódy zemí. Zjistíte, kódy zemí v [kódy zemí CDN Azure](https://msdn.microsoft.com/library/mt761717.aspx). 
+Funkce filtrování geograficky používá kódy zemí k definování zemí, ze kterých se žádost o povolené nebo blokované pro zabezpečené adresář. I když všechny produkty Azure CDN nabízí stejnou funkčnost geograficky filtrování, je malý rozdíl v zemi kódy, které podporují. Informace najdete v tématu [kódy zemí CDN Azure](https://msdn.microsoft.com/library/mt761717.aspx). 
 
-## <a id="considerations"></a>Důležité informace
-* Verizon nebo několik minut s Akamai, změny ve vaší zemi filtrování k provedení změn konfigurace může trvat až 90 minut.
+## <a name="considerations"></a>Požadavky
+* Změny konfigurace filtrování země se projeví okamžitě:
+   * Pro **Azure CDN Standard od společnosti Microsoft** profily, šíření obvykle dokončení dobu 10 minut. 
+   * Pro **Azure CDN Standard od společnosti Akamai** profily, šíření obvykle dokončení během jedné minuty. 
+   * Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle dokončení během 90 minut.  
 * Tato funkce nepodporuje zástupné znaky (například ' *').
 * Konfigurace filtrování geograficky spojené s relativní cestou bude rekurzivně této cesty.
 * Pouze jedno pravidlo můžete použít stejné relativní cestu (nemůžete vytvořit více filtrů země, které odkazují na stejné relativní cestě. Do složky, ale může mít více filtrů země. Toto je vzhledem k povaze rekurzivní země filtrů. Jinými slovy podsložkou dříve nakonfigurované složky lze přiřadit jiné zemi filtru.

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: fcc77104103cea91f5eecb972e1d6e872c933015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a724057981b5b389011ffc4c2fc93994c2b8be9e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojování Cosmos databáze s Azure Search pomocí indexerů
 
@@ -271,7 +271,7 @@ Pokud používáte vlastní dotaz, ujistěte se, že `_ts` vlastnost se promít�
 
 <a name="IncrementalProgress"></a>
 ### <a name="incremental-progress-and-custom-queries"></a>Přírůstkové průběh a vlastní dotazy
-Přírůstkové průběh během indexování zajistí, že pokud indexer provádění přeruší přechodných chyb nebo provádění časový limit, indexeru můžete vyzvedávat kde bylo přerušeno při příštím spuštění, aniž by museli znovu indexu celou kolekci od začátku. To je zvlášť důležité při indexování rozsáhlých kolekcí. 
+Přírůstkové průběh během indexování zajistí, že pokud indexer provádění přeruší přechodných chyb nebo provádění časový limit, indexeru můžete vyzvedávat kde bylo přerušeno při příštím spuštění, aniž by museli o přeindexování celou kolekci od začátku. To je zvlášť důležité při indexování rozsáhlých kolekcí. 
 
 Povolit přírůstkové průběh při použití vlastního dotazu, ujistěte se, že váš dotaz řadí výsledky podle `_ts` sloupce. To umožňuje pravidelné kontroly směřující která Azure Search používá k zajištění přírůstkové průběh v případě selhání.   
 

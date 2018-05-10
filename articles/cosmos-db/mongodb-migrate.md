@@ -3,7 +3,7 @@ title: Použít mongoimport a mongorestore s rozhraním API pro Azure Cosmos DB 
 description: Další informace o použití mongoimport a mongorestore pro import dat do rozhraní API pro MongoDB účet
 keywords: mongoimport mongorestore
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 documentationcenter: ''
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
-ms.author: anhoh
+ms.date: 05/07/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 5c87483e384a09591aca496292638d7b68476beb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 36d098a76e57b65ba82c24ed81ebbe3d21489a9f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Data pro Import MongoDB 
 
@@ -28,7 +28,7 @@ Pokud chcete migrovat data z MongoDB do účtu Azure Cosmos DB, aby je bylo mož
 * Stáhněte si buď *mongoimport.exe* nebo *mongorestore.exe* z [MongoDB stažení softwaru](https://www.mongodb.com/download-center).
 * Získat [připojovací řetězec API pro MongoDB](connect-mongodb-account.md).
 
-Pokud importujete data z MongoDB a plánujete používat s Azure Cosmos DB, měli byste použít [nástroj pro migraci dat](import-data.md) k importu dat.
+Pokud importujete data z MongoDB a plánujete používat s Azure Cosmos DB SQL API, měli byste použít [nástroj pro migraci dat](import-data.md) k importu dat.
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -39,7 +39,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zvýšit propustnost: trvání migrace dat závisí na množství propustnost nastavení pro kolekce. Ujistěte se, že zvýšit propustnost pro větší dat migrace. Po dokončení migrace, snížit propustnosti, abyste ušetřili náklady. Další informace o zvýšení propustnosti v [portál Azure](https://portal.azure.com), najdete v části [úrovně výkonu a cenové úrovně v Azure Cosmos DB](performance-levels.md).
+* Zvýšit propustnost: trvání migrace dat závisí na množství propustnosti, můžete nastavit pro jednotlivé kolekce nebo sady kolekcí. Ujistěte se, že zvýšit propustnost pro větší dat migrace. Po dokončení migrace, snížit propustnosti, abyste ušetřili náklady. Další informace o zvýšení propustnosti v [portál Azure](https://portal.azure.com), najdete v části [úrovně výkonu a cenové úrovně v Azure Cosmos DB](performance-levels.md).
 
 * Povolte protokol SSL: Azure Cosmos DB má vysokými nároky na zabezpečení a standardy. Je nutné povolit protokol SSL, pokud při práci s vaším účtem. Postupy ve zbývající části článku zahrnují jak povolit SSL pro mongoimport a mongorestore.
 
@@ -47,10 +47,11 @@ Tento kurz se zabývá následujícími úkony:
 
 1. V [portál Azure](https://portal.azure.com), v levém podokně klikněte na tlačítko **Azure Cosmos DB** položku.
 2. V **odběry** podokně, vyberte název účtu.
-3. V **připojovací řetězec** okně klikněte na tlačítko **připojovací řetězec**.  
-V pravém podokně obsahuje všechny informace, které potřebujete k úspěšnému připojení k vašemu účtu.
+3. V **připojovací řetězec** okně klikněte na tlačítko **připojovací řetězec**.
 
-    ![Okno řetězec připojení](./media/mongodb-migrate/ConnectionStringBlade.png)
+   V pravém podokně obsahuje všechny informace, které potřebujete k úspěšnému připojení k vašemu účtu.
+
+   ![Okno řetězec připojení](./media/mongodb-migrate/ConnectionStringBlade.png)
 
 ## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>Import dat do rozhraní API pro MongoDB pomocí mongoimport
 
@@ -80,9 +81,27 @@ Příklad:
 
 1. Předem vytvořit a škálovat vaše kolekce:
         
-    * Ve výchozím nastavení zřídí Azure Cosmos DB nové kolekce MongoDB s 1 000 jednotek žádosti (ruština). Před zahájením migrace pomocí mongoimport, mongorestore nebo mongomirror, předem vytvořit všechny kolekce z [portál Azure](https://portal.azure.com) nebo z MongoDB ovladače a nástroje. Pokud vaše kolekce je větší než 10 GB, nezapomeňte vytvořit [horizontálně dělené/oddíly kolekce](partition-data.md) s klíčem odpovídající horizontálního oddílu.
+    * Ve výchozím nastavení zřídí Azure Cosmos DB nové kolekce MongoDB s 1 000 jednotek žádosti (RUs za sekundu). Před zahájením migrace pomocí mongoimport, mongorestore nebo mongomirror, předem vytvořit všechny kolekce z [portál Azure](https://portal.azure.com) nebo z MongoDB ovladače a nástroje. Pokud vaše kolekce je větší než 10 GB, nezapomeňte vytvořit [horizontálně dělené/oddíly kolekce](partition-data.md) s klíčem odpovídající horizontálního oddílu.
 
-    * Z [portál Azure](https://portal.azure.com), zvýšit propustnost vaší kolekce z 1 000 RUs pro kolekce tvořené jedním oddílem a odpovídající 2500 RUs pro horizontálně dělenou kolekci jenom pro migraci. S vyšší propustnost můžete vyhnout, omezení a migraci za kratší dobu. S každou hodinu fakturace v Azure Cosmos DB, můžete snížit propustnost ihned po migraci tak, aby ušetřili náklady.
+    * Z [portál Azure](https://portal.azure.com), zvýšit propustnost vaší kolekce z 1 000 RUs za sekundu pro kolekce tvořené jedním oddílem a odpovídající 2500 RUs za sekundu pro horizontálně dělenou kolekci jenom pro migraci. S vyšší propustnost můžete vyhnout, omezení a migraci za kratší dobu. S každou hodinu fakturace v Azure Cosmos DB, můžete snížit propustnost ihned po migraci tak, aby ušetřili náklady.
+
+    * Kromě zřizování RUs za sekundu na úrovni kolekce mohou také vytvářet RU za sekundu pro sadu kolekce na nadřazené úrovni databáze. To vyžaduje předběžné vytvoření databáze a kolekce, jakož i definice horizontálního oddílu klíč pro každou kolekci.
+
+    * Můžete vytvořit horizontálně dělené kolekce prostřednictvím vaše oblíbené nástroje, ovladače nebo sady SDK. V tomto příkladu používáme k vytvoření horizontálně dělené kolekce prostředí Mongo:
+
+        ```
+        db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+        ```
+    
+        Výsledky:
+
+        ```JSON
+        {
+            "_t" : "ShardCollectionResponse",
+            "ok" : 1,
+            "collectionsharded" : "admin.people"
+        }
+        ```
 
 2. Přibližná RU náklady pro jednotlivý dokument zápis vypočítejte:
 
@@ -92,7 +111,7 @@ Příklad:
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
-    c. Spustit ```db.runCommand({getLastRequestStatistics: 1})``` a obdržíte odpověď podobné následujícímu:
+    c. Spustit ```db.runCommand({getLastRequestStatistics: 1})``` a obdržíte odpověď takto:
      
         ```
         globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})
@@ -111,7 +130,7 @@ Příklad:
     
     a. Zapnutí podrobného protokolování z prostředí MongoDB pomocí tohoto příkazu: ```setVerboseShell(true)```
     
-    b. Spusťte jednoduchý dotaz pro databázi: ```db.coll.find().limit(1)```. Zobrazí odpověď podobné následujícímu:
+    b. Spusťte jednoduchý dotaz pro databázi: ```db.coll.find().limit(1)```. Obdržíte odpověď takto:
 
         ```
         Fetched 1 record(s) in 100(ms)

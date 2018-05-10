@@ -1,9 +1,9 @@
 ---
-title: "Azure platebních zpracování plán, podle kterého - požadavky zásad"
-description: "PCI DSS požadavek 12"
+title: Azure platebních zpracování plán, podle kterého - požadavky zásad
+description: PCI DSS požadavek 12
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: a79d59d8-20e3-4efe-8686-c8f4ed80e220
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 05e9ed7c886d37a024db1eedbc541705b7d8a9a9
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 2fb238e9b95180d6156159c87ec008a71943e698
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="policy-requirements-for-pci-dss-compliant-environments"></a>Požadavky zásad pro PCI DSS kompatibilní prostředí  
 ## <a name="pci-dss-requirement-12"></a>PCI DSS požadavek 12
@@ -38,8 +38,8 @@ Silné zabezpečení zásady předurčuje zabezpečení pro celou entitu a infor
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytvoření a udržování zásad zabezpečení informací zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytvoření a udržování zásad zabezpečení informací zákazníků.|
 
 
 
@@ -51,8 +51,8 @@ Silné zabezpečení zásady předurčuje zabezpečení pro celou entitu a infor
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností nejméně jednou ročně aktualizaci jejich zásady zabezpečení informací, nebo pokud existují změny v prostředí datového svá držitele karty (CDE) zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností nejméně jednou ročně aktualizaci jejich zásady zabezpečení informací, nebo pokud existují změny v prostředí datového svá držitele karty (CDE) zákazníků.|
 
 
 
@@ -68,8 +68,8 @@ Silné zabezpečení zásady předurčuje zabezpečení pro celou entitu a infor
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností implementace proces pro posouzení rizik, které řeší všechny hrozby uvedené v požadavek 12.2 zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností implementace proces pro posouzení rizik, které řeší všechny hrozby uvedené v požadavek 12.2 zákazníků.|
 
 
 
@@ -85,8 +85,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -98,8 +98,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -111,8 +111,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -124,8 +124,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -137,8 +137,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -150,8 +150,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -163,8 +163,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědná za určení umístění v síti přijatelné pro cloudové virtuální počítače, úložiště a podpůrné služby zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědná za určení umístění v síti přijatelné pro cloudové virtuální počítače, úložiště a podpůrné služby zákazníků.|
 
 
 
@@ -176,8 +176,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědná za určení umístění v síti přijatelné pro cloudové virtuální počítače, úložiště a podpůrné služby zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědná za určení umístění v síti přijatelné pro cloudové virtuální počítače, úložiště a podpůrné služby zákazníků.|
 
 
 
@@ -189,8 +189,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá Microsoft podnikové AD relace zámku funkce, které vynucuje výpisů relace uzamčení po určité době nečinnosti. Připojení k síti je ukončen po 30 minutách nečinnosti. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Microsoft Azure používá Microsoft podnikové AD relace zámku funkce, které vynucuje výpisů relace uzamčení po určité době nečinnosti. Připojení k síti je ukončen po 30 minutách nečinnosti. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -202,8 +202,8 @@ Zajistěte, aby že tyto zásady používání potřebovat.
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -216,8 +216,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění, aby pracovníky přístup k datům držitele karty prostřednictvím vzdáleného přístupu technologie bylo zakázáno kopírování, přesunutí a ukládání dat držitele karty na místních pevných discích a vyměnitelná média elektronické, pokud není explicitně povoleno pro definované obchodní potřeby.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění, aby pracovníky přístup k datům držitele karty prostřednictvím vzdáleného přístupu technologie bylo zakázáno kopírování, přesunutí a ukládání dat držitele karty na místních pevných discích a vyměnitelná média elektronické, pokud není explicitně povoleno pro definované obchodní potřeby.|
 
 
 
@@ -229,8 +229,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -247,8 +247,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci, kteří jsou poskytovatelé jsou zodpovědný za dokumentaci jejich program PCI dodržování předpisů.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci, kteří jsou poskytovatelé jsou zodpovědný za dokumentaci jejich program PCI dodržování předpisů.|
 
 
 
@@ -260,8 +260,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností definice a přiřazení informací povinnosti v oblasti zabezpečení svým zaměstnancům zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností definice a přiřazení informací povinnosti v oblasti zabezpečení svým zaměstnancům zákazníků.|
 
 
 
@@ -273,8 +273,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností definice a přiřazení informací povinnosti v oblasti zabezpečení svým zaměstnancům zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností definice a přiřazení informací povinnosti v oblasti zabezpečení svým zaměstnancům zákazníků.|
 
 
 
@@ -286,8 +286,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností definice a přiřazení informací povinnosti v oblasti zabezpečení svým zaměstnancům zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností definice a přiřazení informací povinnosti v oblasti zabezpečení svým zaměstnancům zákazníků.|
 
 
 
@@ -299,8 +299,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -312,8 +312,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -325,8 +325,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad diktování správné použití, implementaci a ověřování pro kritické technologie v rámci jejich CDE zákazníků.|
 
 
 
@@ -338,8 +338,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad, které obaluje sledování zabezpečení pracovníků, s přístupem k CDE zákazníků.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností pro vytváření a údržbu zásad, které obaluje sledování zabezpečení pracovníků, s přístupem k CDE zákazníků.|
 
 
 
@@ -354,8 +354,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění pracovníci přijímat a potvrdit zabezpečení informací a zvýšení povědomí PCI-DSS cvičení nejméně jednou ročně.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění pracovníci přijímat a potvrdit zabezpečení informací a zvýšení povědomí PCI-DSS cvičení nejméně jednou ročně.|
 
 
 
@@ -367,8 +367,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění pracovníci přijímat a potvrdit zabezpečení informací a zvýšení povědomí PCI-DSS cvičení nejméně jednou ročně.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění pracovníci přijímat a potvrdit zabezpečení informací a zvýšení povědomí PCI-DSS cvičení nejméně jednou ročně.|
 
 
 
@@ -383,8 +383,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění pracovníci s přístupem k CDE podstoupit důkladné kontroly.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění pracovníci s přístupem k CDE podstoupit důkladné kontroly.|
 
 
 
@@ -396,8 +396,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědná za monitorování soulad s normami PCI pro poskytovatele služeb, se kterými se sdílí data držitele karty, nebo může mít vliv na zabezpečení CDE zákazníků. Zákazníci musí zachovat poskytuje seznam všech služeb v rámci jejich CDE používají.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědná za monitorování soulad s normami PCI pro poskytovatele služeb, se kterými se sdílí data držitele karty, nebo může mít vliv na zabezpečení CDE zákazníků. Zákazníci musí zachovat poskytuje seznam všech služeb v rámci jejich CDE používají.|
 
 
 
@@ -410,8 +410,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědná za monitorování soulad s normami PCI pro poskytovatele služeb, se kterými se sdílí data držitele karty, nebo může mít vliv na zabezpečení CDE zákazníků. Zákazníci musí zachovat poskytuje seznam všech služeb v rámci jejich CDE používají.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědná za monitorování soulad s normami PCI pro poskytovatele služeb, se kterými se sdílí data držitele karty, nebo může mít vliv na zabezpečení CDE zákazníků. Zákazníci musí zachovat poskytuje seznam všech služeb v rámci jejich CDE používají.|
 
 
 
@@ -426,8 +426,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou odpovědné za údržbu napsané smluv se to v úvahu odpovědnost za údržbu zabezpečení dat držitele karty služeb.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou odpovědné za údržbu napsané smluv se to v úvahu odpovědnost za údržbu zabezpečení dat držitele karty služeb.|
 
 
 
@@ -439,8 +439,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění, že je vytvořených procesů pro zapojení poskytovatelé služeb včetně správné kvůli opatrností před engagement.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci jsou zodpovědní za zajištění, že je vytvořených procesů pro zapojení poskytovatelé služeb včetně správné kvůli opatrností před engagement.|
 
 
 
@@ -452,8 +452,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci zodpovídá za údržbu program k monitorování stavu kompatibility poskytovatelé služeb PCI DSS nejméně jednou ročně.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci zodpovídá za údržbu program k monitorování stavu kompatibility poskytovatelé služeb PCI DSS nejméně jednou ročně.|
 
 
 
@@ -465,8 +465,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností ponechá kopii zákazníků [matice souhrn odpovědnost](https://aka.ms/pciblueprintcrm32), který popisuje PCI DSS požadavky, které zodpovídají zákazníka a ty, které zodpovídají Microsoft Azure.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností ponechá kopii zákazníků [matice souhrn odpovědnost](https://aka.ms/pciblueprintcrm32), který popisuje PCI DSS požadavky, které zodpovídají zákazníka a ty, které zodpovídají Microsoft Azure.|
 
 
 
@@ -481,8 +481,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci, které jsou poskytovatelé jsou zodpovědní za to jejich zodpovědnosti pro údržbu soulad s normami PCI v úvahu. |
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci, které jsou poskytovatelé jsou zodpovědní za to jejich zodpovědnosti pro údržbu soulad s normami PCI v úvahu. |
 
 
 
@@ -494,8 +494,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -514,8 +514,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -528,8 +528,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -541,8 +541,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -554,8 +554,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -567,8 +567,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -580,8 +580,8 @@ Tam, kde existuje potřeba oprávnění business, zásady používání musí vy
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Je zodpovědností vývoj IR plány zákazníků a testování, které považovat všechny ovládací prvky zákazníků týkající se sdílené touch body a všem aplikacím zákazníka využívání infrastruktury Azure a. Je zodpovědností zákazníka poskytnout přesná kontaktní informace do Azure, v případě incidentu je třeba ohlásit k nim, který může mít vliv na jejich aplikace nebo data.|
 
 
 
@@ -603,8 +603,8 @@ Recenze musí zahrnovat následující procesy:
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci, kteří jsou poskytovatelé jsou zodpovědný za dokumentaci jejich recenze procesy pro potvrzení PCI dodržování předpisů řízení výkonu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci, kteří jsou poskytovatelé jsou zodpovědný za dokumentaci jejich recenze procesy pro potvrzení PCI dodržování předpisů řízení výkonu.|
 
 
 
@@ -622,8 +622,8 @@ Recenze musí zahrnovat následující procesy:
 
 |||
 |---|---|
-| **Zprostředkovatel<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
-| **Zákazník<br />(PCI &#8209; DSS&nbsp;plán, podle kterého)** | Zákazníci, kteří jsou poskytovatelé jsou zodpovědný za dokumentaci jejich recenze procesy pro potvrzení PCI dodržování předpisů řízení výkonu.|
+| **Provider<br />(Microsoft&nbsp;Azure)** | Není k dispozici. |
+| **Zákazník<br />(PCI&#8209;DSS&nbsp;plán, podle kterého)** | Zákazníci, kteří jsou poskytovatelé jsou zodpovědný za dokumentaci jejich recenze procesy pro potvrzení PCI dodržování předpisů řízení výkonu.|
 
 
 

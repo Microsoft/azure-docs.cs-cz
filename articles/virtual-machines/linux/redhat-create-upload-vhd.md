@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: e0e0fdbb3702ec16e9d5a33659c1ddbee589b989
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9893ab83584e2fc93ea9cf29c0b74b957080d5ad
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou popsané v tomto článku jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou popsané v tomto článku jsou virtuální počítače Hyper-V, na základě jádra (KVM) a VMware. Další informace o požadavcích na podmínky pro účasti v programu Red Hat přístup ke cloudu najdete v tématu [webu přístup do cloudu Red Hat](http://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [systémem RHEL v Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure).
@@ -159,7 +159,7 @@ V této části předpokládá, že jste již získat soubor ISO z webu Red Hat 
 
 5. Ujistěte se, že síťové služby se spustí při spuštění spuštěním následujícího příkazu:
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 6. Registrujte předplatné Red Hat povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
@@ -411,7 +411,7 @@ V této části předpokládá, že jste již získat soubor ISO z webu Red Hat 
 
 6. Ujistěte se, že síťové služby se spustí při spuštění spuštěním následujícího příkazu:
 
-        # chkconfig network on
+        # sudo systemctl enable network
 
 7. Registrujte předplatné Red Hat povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
@@ -665,7 +665,7 @@ V této části se předpokládá, že jste již nainstalovali RHEL virtuálníh
 
 3. Ujistěte se, že síťové služby se spustí při spuštění spuštěním následujícího příkazu:
 
-        # sudo chkconfig network on
+        # sudo systemctl enable network
 
 4. Registrujte předplatné Red Hat povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 

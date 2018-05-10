@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 17479fce776b0786e2fa32054eec8b0456871aae
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d9378a084d8ff421539a445986a5a18d073f3ce6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkaz – koncové body centra IoT
 
@@ -88,7 +88,7 @@ IoT Hub podporuje pouze zápis dat do Azure Storage kontejnerů jako objekty BLO
 * Dávka dosáhne určité velikosti.
 * Nebo uplynutí časového intervalu.
 
-Centrum IoT se nepodporuje zápisu objektu blob prázdný, pokud nejsou žádná data k zápisu.
+IoT Hub budou zapisovat do prázdný objekt blob, pokud nejsou žádná data k zápisu.
 
 IoT Hub výchozí nastavení této zásady vytváření názvů souborů:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 35877831c7f63c20fee2f2bc3838e73bb98328c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4e7b7b6af1f41eb0077d8a8605eb2a553c251f8e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílacího/fan v scénář v trvanlivý funkce – příklad zálohování cloudu
 
@@ -57,7 +57,13 @@ Následující části popisují konfiguraci a kódu, které se používají pro
 
 Tady je kód, který implementuje funkce orchestrator:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
 Tato funkce orchestrator v podstatě provede následující akce:
 
@@ -67,9 +73,11 @@ Tato funkce orchestrator v podstatě provede následující akce:
 4. Čeká se na všechny nahrávání k dokončení.
 5. Vrátí součet celkový počet bajtů, které byly odeslány do úložiště objektů Blob Azure.
 
-Upozornění `await Task.WhenAll(tasks);` řádku. Všechna volání do `E2_CopyFileToBlob` funkce byly *není* očekáváno. To je úmyslné umožnit, aby se spouštěly paralelně. Když jsme předat tuto řadu úloh, které se `Task.WhenAll`, se nám získat zpět úlohu, která se nedokončí *dokud byly dokončeny všechny operace kopírování*. Pokud jste obeznámeni s Task Parallel Library (TPL) v rozhraní .NET, není to pro vás nový. Rozdíl je, že tyto úlohy mohou běžet na víc virtuálních počítačů současně, a rozšíření trvanlivý funkce zajišťuje, že provádění začátku do konce odolné vůči recyklace procesu.
+Upozornění `await Task.WhenAll(tasks);` (C#) a `yield context.df.Task.all(tasks);` řádku (JS). Všechna volání do `E2_CopyFileToBlob` funkce byly *není* očekáváno. To je úmyslné umožnit, aby se spouštěly paralelně. Když jsme předat tuto řadu úloh, které se `Task.WhenAll`, se nám získat zpět úlohu, která se nedokončí *dokud byly dokončeny všechny operace kopírování*. Pokud jste obeznámeni s Task Parallel Library (TPL) v rozhraní .NET, není to pro vás nový. Rozdíl je, že tyto úlohy mohou běžet na víc virtuálních počítačů současně, a rozšíření trvanlivý funkce zajišťuje, že provádění začátku do konce odolné vůči recyklace procesu.
 
-Po čeká na z `Task.WhenAll`, víme, že všechna volání funkce dokončili a aby vrátil hodnoty zpět do us. Každé volání `E2_CopyFileToBlob` vrátí počet bajtů nahráli, takže výpočet počet bajtů celkový součet je řádu přidání všechny ty společně návratové hodnoty.
+Úlohy jsou velmi podobné JavaScript konceptu lišící. Ale `Promise.all` má několik rozdílů z `Task.WhenAll`. Koncept `Task.WhenAll` byly přesně přes jako součást `durable-functions` modul JavaScript a je určena výhradně k němu.
+
+Po čeká na z `Task.WhenAll` (nebo je z `context.df.Task.all`), víme, že všechna volání funkce dokončili a aby vrátil hodnoty zpět do us. Každé volání `E2_CopyFileToBlob` vrátí počet bajtů nahráli, takže výpočet počet bajtů celkový součet je řádu přidání všechny ty společně návratové hodnoty.
 
 ## <a name="helper-activity-functions"></a>Podpůrné funkce aktivity
 
@@ -79,7 +87,15 @@ Podpůrné funkce aktivitu, stejně jako u jiných ukázky, jsou právě běžn�
 
 A tady je implementace:
 
+### <a name="c"></a>C#
+
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
+
+Javascriptovou implementaci `E2_GetFileList` používá `readdirp` modul k rekurzivnímu přečíst strukturu adresáře.
 
 > [!NOTE]
 > Možná se ptáte, proč nelze stačí vložit tento kód přímo do funkce produktu orchestrator. Vám může, ale to by rozdělit jednu ze základních pravidel orchestrator funkcí, které je, že by měly nikdy dělat vstupně-výstupní operace, včetně místního systému souborů.
@@ -88,9 +104,17 @@ A tady je implementace:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-Implementace je také poměrně jednoduché. Se stane, používat některé pokročilé funkce vazeb Azure Functions (to znamená, použití `Binder` parametr), ale nemusíte si dělat starosti o tyto podrobnosti pro účely tohoto návodu.
+Implementace C# je také poměrně jednoduché. Se stane, používat některé pokročilé funkce vazeb Azure Functions (to znamená, použití `Binder` parametr), ale nemusíte si dělat starosti o tyto podrobnosti pro účely tohoto návodu.
+
+### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
+
+### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+Javascriptovou implementaci nemá přístup k `Binder` funkce Azure Functions, proto [sada SDK úložiště Azure pro uzel](https://github.com/Azure/azure-storage-node) jeho probíhá. Všimněte si, že vyžaduje sadu SDK `AZURE_STORAGE_CONNECTION_STRING` nastavení aplikace.
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
 Implementace načte soubor z disku a asynchronně datové proudy obsah do objektu blob se stejným názvem v kontejneru "zálohování". Vrácená hodnota je počet bajtů, které jsou zkopírovány do úložiště, pak používány orchestrator funkce pro výpočet agregační součet.
 

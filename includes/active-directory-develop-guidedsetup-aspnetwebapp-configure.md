@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/04/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c1971e1eb3abc653ad8bdc6af772c699f8549019
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 7c052f30e564700b0a99b76342dc6c34ec5983b7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
+
 Registrace vaší aplikace a přidat informace o registraci aplikace do vašeho řešení, máte dvě možnosti:
 
 ### <a name="option-1-express-mode"></a>Možnost 1: Expresní režim
 
 Pomocí následujícího postupu můžete rychle registrace vaší aplikace:
+
 1. Registrace vaší aplikace pomocí [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure)
 2.  Zadejte název vaší aplikace a e-mailu
 3.  Ujistěte se, že je zaškrtnuté políčko pro instalaci na základě
@@ -38,20 +40,21 @@ Registrace vaší aplikace a přidat informace o registraci aplikace do vašeho 
 
 1. Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app) zaregistrovat aplikaci
 2. Zadejte název vaší aplikace a e-mailu 
-3.  Ujistěte se, že není zaškrtnuto políčko pro instalaci na základě
-4.  Klikněte na tlačítko `Add Platform`, zvolte položku `Web`
-5.  Přejděte zpět do Visual Studio a v Průzkumníku řešení vyberte projekt a podívejte se na okno vlastností (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
-6.  Změna SSL povoleno `True`
-7.  Zkopírujte adresu URL protokolu SSL a přidejte tuto adresu URL do seznamu adres URL pro přesměrování v portálu pro registraci seznam adres URL pro přesměrování:<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-8.  Přidejte následující v `web.config` umístěné v kořenové složce části `configuration\appSettings`:
+3. Ujistěte se, že není zaškrtnuto políčko pro instalaci na základě
+4. Klikněte na tlačítko `Add Platform`, zvolte položku `Web`
+5. Přejděte zpět do Visual Studio a v Průzkumníku řešení vyberte projekt a podívejte se na okno vlastností (Pokud se nezobrazí okno Vlastnosti stisknutím klávesy F4)
+6. Změna SSL povoleno `True`
+7. Klikněte pravým tlačítkem na projekt v sadě Visual Studio, a potom vyberte **vlastnosti**a **webové** kartě. V *servery* části změnit *adresa Url projektu* jako adresu URL protokolu SSL
+8. Zkopírujte adresu URL protokolu SSL a přidejte tuto adresu URL do seznamu adres URL pro přesměrování v portálu pro registraci seznam adres URL pro přesměrování:<br/><br/>![Vlastnosti projektu](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+9. Přidejte následující v `web.config` umístěné v kořenové složce části `configuration\appSettings`:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="redirectUri" value="Enter_the_Redirect_URL_here" />
     <add key="Tenant" value="common" />
-    <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
+    <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" />
     ```
 
-9. Nahraďte `ClientId` s ID aplikace, který jste právě zaregistrovali
-10. Nahraďte `redirectUri` pomocí adresy URL protokolu SSL vašeho projektu 
+10. Nahraďte `ClientId` s ID aplikace, který jste právě zaregistrovali
+11. Nahraďte `redirectUri` pomocí adresy URL protokolu SSL vašeho projektu
 

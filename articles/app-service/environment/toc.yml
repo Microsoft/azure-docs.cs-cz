@@ -30,6 +30,8 @@
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
       href: app-service-app-service-environment-intro.md
+    - name: Diagnostika
+      href: ../app-service-diagnostics.md
 - name: Návody
   items:
     - name: Použití ASE
@@ -81,7 +83,7 @@
       href: /powershell
     - name: REST API
       href: /rest/api/appservice/
-- name: Zdroje
+- name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'

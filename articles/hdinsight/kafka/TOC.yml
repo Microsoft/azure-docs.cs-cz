@@ -1,19 +1,34 @@
 - name: Dokumentace k Azure HDInsightu
   href: /azure/hdinsight
-- name: Kafka v HDInsightu
+- name: Přehled
   items:
-    - name: Přehled
+    - name: Informace o Kafka v HDInsightu
       href: apache-kafka-introduction.md
     - name: Správa verzí komponent
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Začínáme
+- name: Šablony Rychlý start
   items:
-    - name: Vytvoření clusteru Kafka
+    - name: Vytvoření clusteru Kafka – portál
       href: apache-kafka-get-started.md
-    - name: Instalace aplikací HDInsight
-      href: ../hdinsight-apps-install-applications.md
+    - name: Vytvoření clusteru Kafka – PowerShell
+      href: apache-kafka-quickstart-powershell.md
+    - name: Vytvoření clusteru Kafka – šablona
+      href: apache-kafka-quickstart-resource-manager-template.md
+- name: Kurzy
+  items:
+    - name: Kafka a Spark
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
+    - name: Kafka a Storm
+      href: ../hdinsight-apache-storm-with-kafka.md
+      maintainContext: true
+    - name: Rozhraní Kafka Producer and Consumer API
+      href: apache-kafka-producer-consumer-api.md
+    - name: Rozhraní Kafka Streams API
+      href: apache-kafka-streams-api.md
+- name: Koncepty
+  items:
     - name: Plánování kapacity
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -23,6 +38,11 @@
       href: apache-kafka-high-availability.md
 - name: Postup
   items:
+    - name: Povolení automatického vytváření témat
+      href: apache-kafka-auto-create-topics.md
+    - name: Instalace aplikací HDInsight
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: Použití Kafky ve virtuální síti
       href: apache-kafka-connect-vpn-gateway.md
     - name: Replikace dat Kafky
@@ -31,17 +51,11 @@
       href: apache-kafka-log-analytics-operations-management.md
     - name: Vytváření streamovacích kanálů
       items:
-        - name: Kafka a Spark (strukturované streamování)
-          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-          maintainContext: true
-        - name: Strukturované streamování z Kafka do Azure Cosmos DB
+        - name: 'Spark, Kafka a Azure Cosmos DB'
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
           maintainContext: true
         - name: Kafka a Spark (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
-          maintainContext: true
-        - name: Kafka a Storm
-          href: ../hdinsight-apache-storm-with-kafka.md
           maintainContext: true
         - name: Použití Kafka s Azure Container Service
           href: apache-kafka-azure-container-services.md
@@ -49,10 +63,6 @@
           href: apache-kafka-azure-functions.md
     - name: Vývoj
       items:
-        - name: Použití rozhraní Kafka Producer and Consumer API
-          href: apache-kafka-producer-consumer-api.md
-        - name: Použití rozhraní Kafka Streams API
-          href: apache-kafka-streams-api.md
         - name: Použití prázdných hraničních uzlů
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

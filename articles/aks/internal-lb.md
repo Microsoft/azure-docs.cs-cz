@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Azure Container Service (AKS) interní zátěže
-description: Použijte Vyrovnávání zatížení interní s Azure Container Service (AKS).
+title: Vytvoření Azure Kubernetes služby (AKS) interní zátěže
+description: Použijte Vyrovnávání zatížení interní s Azure Kubernetes služby (AKS).
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7b9ecdb5364f7c0f5bb68ce693e53bc2c5327337
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: MT
+ms.openlocfilehash: 6a657df82e1670f7a9d604dd5166ab53bb38bf74
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-an-internal-load-balancer-with-azure-container-service-aks"></a>Použijte Vyrovnávání zatížení interní s Azure Container Service (AKS)
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použijte Vyrovnávání zatížení interní s Azure Kubernetes služby (AKS)
 
-Vyrovnávání zatížení pro vnitřní zpřístupní Kubernetes služby k aplikacím spuštěným ve stejné virtuální síti jako Kubernetes cluster. Tento dokument údaje vytváření interní nástroj s Azure Container Service (AKS).
+Vyrovnávání zatížení pro vnitřní zpřístupní Kubernetes služby k aplikacím spuštěným ve stejné virtuální síti jako Kubernetes cluster. Tento dokument údaje vytváření interní nástroj s Azure Kubernetes služby (AKS).
 
 ## <a name="create-internal-load-balancer"></a>Vytvoření interní zátěže.
 
@@ -38,11 +38,11 @@ spec:
     app: azure-vote-front
 ```
 
-Po nasazení Vyrovnávání zatížení Azure se vytvoří a k dispozici ve stejné virtuální síti jako AKS cluster. 
+Po nasazení Vyrovnávání zatížení Azure se vytvoří a k dispozici ve stejné virtuální síti jako AKS cluster.
 
 ![Obrázek AKS interní vyrovnávání zátěže](media/internal-lb/internal-lb.png)
 
-Při načítání službu podrobnosti, IP adresu v `EXTERNAL-IP` sloupec je IP adresa služby Vyrovnávání zatížení interní. 
+Při načítání službu podrobnosti, IP adresu v `EXTERNAL-IP` sloupec je IP adresa služby Vyrovnávání zatížení interní.
 
 ```console
 $ kubectl get service azure-vote-front
@@ -71,7 +71,7 @@ spec:
     app: azure-vote-front
 ```
 
-Při načítání podrobností o služby, IP adresa na `EXTERNAL-IP` zadaná IP adresa musí být stejný. 
+Při načítání podrobností o služby, IP adresa na `EXTERNAL-IP` zadaná IP adresa musí být stejný.
 
 ```console
 $ kubectl get service azure-vote-front

@@ -1,19 +1,19 @@
 ---
-title: "Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure | Dokumentace Microsoftu"
-description: "Tento článek vás provede postupem vytvoření definice zásady pro identifikaci prostředků, které nedodržují předpisy."
+title: Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure | Dokumentace Microsoftu
+description: Tento článek vás provede postupem vytvoření definice zásady pro identifikaci prostředků, které nedodržují předpisy.
 services: azure-policy
-keywords: 
-author: bandersmsft
-ms.author: banders
-ms.date: 01/10/2018
+keywords: ''
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 04/18/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4287b139f26d17e58f6caffbadb2c7da2a9b7b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 6bb9eddb6a663e1f230c9c46835661ad20c02cfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure
 Prvním krokem k porozumění dodržování předpisů v Azure je zjištění stavu vašich prostředků. Tento rychlý start vás provede procesem vytvoření přiřazení zásady pro identifikaci virtuálních počítačů, které nepoužívají spravované disky.
@@ -71,15 +71,14 @@ Pokud nějaké stávající prostředky nedodržují předpisy tohoto nového p�
 
 Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zjistí hodnotu True, takové prostředky se označí jako nekompatibilní s příslušnou zásadou. Na předchozím obrázku jsou zobrazené nekompatibilní prostředky. Následující tabulka ukazuje, jak různé akce zásad pracují s vyhodnocením podmínek pro zjištění výsledného stavu. Přestože se logika vyhodnocení na webu Azure Portal nezobrazuje, výsledné stavy dodržování předpisů se zobrazují. Výsledný stav je buď kompatibilní, nebo nekompatibilní.
 
-|Prostředek  |Výsledek vyhodnocení podmínky v zásadě  |Akce v zásadě   |Stav dodržování předpisů  |
-|-----------|---------|---------|---------|
-|Existuje     |True     |Odepřít     |Neodpovídající |
-|Existuje     |False    |Odepřít     |Odpovídající     |
-|Existuje     |True     |Připojit   |Neodpovídající |
-|Existuje     |False    |Připojit   |Odpovídající     |
-|Existuje     |True     |Auditování    |Neodpovídající |
-|Existuje     |False    |Auditování    |Neodpovídající |
+| **Stav prostředku** | **Akce** | **Vyhodnocení zásad** | **Stav dodržování předpisů** |
+| --- | --- | --- | --- |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Nevyhovující předpisům |
+| Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Odpovídající |
+| Nová | Audit, AuditIfNotExist\* | True | Nevyhovující předpisům |
+| Nová | Audit, AuditIfNotExist\* | False | Odpovídající |
 
+\* Akce Append, DeployIfNotExist a AuditIfNotExist vyžadují, aby byl příkaz IF nastaven na TRUE. Tyto akce také vyžadují, aby existovala podmínka, která musí nabývat hodnoty FALSE, aby byla zásada vyhodnocena jako Nevyhovující předpisům. Pokud má hodnotu TRUE, aktivuje podmínka IF vyhodnocení podmínky existence pro související prostředky.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Další příručky v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na portálu Azure Portal.

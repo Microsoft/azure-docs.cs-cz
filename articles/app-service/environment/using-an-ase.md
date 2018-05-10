@@ -1,6 +1,6 @@
 ---
-title: "Pomocí služby Azure App Service environment"
-description: "Jak vytvářet, publikovat a škálování aplikací v Azure App Service environment"
+title: Pomocí služby Azure App Service environment
+description: Jak vytvářet, publikovat a škálování aplikací v Azure App Service environment
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-an-app-service-environment"></a>Použití služby App Service environment #
 
@@ -58,19 +58,28 @@ K vytvoření webové aplikace v App Service Environment:
 
 4. Zadejte název pro novou skupinu prostředků, nebo vyberte **použít existující** a vyberte z rozevíracího seznamu.
 
+5. Vyberte operačním systému. 
+
+    * Hostování Linux aplikace v App Service Environment je nová funkce preview, takže doporučujeme Linux aplikace nepřidávejte do app Service Environment právě probíhající úlohy v produkčním prostředí. 
+    * Přidání Linux aplikace do app Service Environment znamená, že App Service Environment bude také v režimu preview. 
+
 5. Vybrat existující plán aplikační služby ve vaší App Service Environment, nebo vytvořte novou pomocí následujících kroků:
 
     a. Vyberte **vytvořit nový**.
 
     b. Zadejte název pro plán služby App Service.
 
-    c. Vyberte vaše App Service Environment ve **umístění** rozevíracího seznamu.
+    c. Vyberte vaše App Service Environment ve **umístění** rozevíracího seznamu. Hostování Linux aplikace v App Service Environment je povolena pouze v oblastech, 6, v tuto chvíli: **západní Evropa, západní USA, Východ USA, Severní Evropa, Austrálie – východ, Asie a Tichomoří – jihovýchod.** 
 
     d. Vyberte **izolovaná** cenová úroveň. Vyberte **vyberte**.
 
     e. Vyberte **OK**.
     
     ![Izolované cenové úrovně][2]
+
+    > [!NOTE]
+    > Linux webové aplikace a webové aplikace pro Windows, nelze stejný plán služby App Service, ale může být ve stejné App Service Environment. 
+    >
 
 6. Vyberte **Vytvořit**.
 

@@ -1,11 +1,11 @@
 ---
-title: "Zvýšení výkonu komprimací souborů v Azure CDN | Microsoft Docs"
-description: "Naučte se zlepšit rychlost přenosu souborů a zvýšit výkon načtení stránky komprimací souborů v Azure CDN."
+title: Zvýšení výkonu komprimací souborů v Azure CDN | Microsoft Docs
+description: Naučte se zlepšit rychlost přenosu souborů a zvýšit výkon načtení stránky komprimací souborů v Azure CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: mazha
-ms.openlocfilehash: 743d1db803cdb58ae8fa37430ccffa10ca003f93
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 41e40c7e740e06654e7660c208db52fc2617d4b5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Zvýšení výkonu komprimací souborů v Azure CDN
 Kompresí souborů je jednoduchá ale účinná metoda a zvýšit rychlost přenosu souborů zvyšuje výkon načtení stránky snižuje velikost souboru před odesláním ze serveru. Kompresí souborů může snížit náklady na šířku pásma a poskytnout rychlejšího prostředí pro vaše uživatele.
@@ -26,19 +26,24 @@ Kompresí souborů je jednoduchá ale účinná metoda a zvýšit rychlost přen
 Existují dva způsoby, jak povolit kompresi souboru:
 
 - Povolte kompresi na původním serveru. V takovém případě CDN předá podél komprimovaných souborů a doručí aktualizace na klienty, kteří požadují je.
-- Povolte kompresi přímo na serveru edge CDN. V takovém případě CDN komprimaci soubory a slouží pro koncové uživatele, i když nejsou komprimované serverem původu.
+- Povolte kompresi přímo na serveru CDN POP ("komprese za chodu"). V takovém případě CDN komprimaci soubory a slouží pro koncového uživatele, i v případě, že nebyly komprimované serverem původu.
 
 > [!IMPORTANT]
-> Změny konfigurace CDN může trvat nějakou dobu šířit přes síť. Pro **Azure CDN společnosti Akamai** profily, šíření obvykle dokončení v části jednu minutu.  Pro **Azure CDN společnosti Verizon** profily, šíření obvykle dokončení během 90 minut. Pokud jste nastavení komprese pro koncový bod CDN poprvé, zvažte, zda nevyčkat 1 – 2 hodiny, než při řešení problému Ujistěte se, že rozšíření nastavení komprese do bodů POP.
+> Změny konfigurace CDN může trvat nějakou dobu rozšíří v rámci sítě: 
+- Pro **Azure CDN Standard od společnosti Microsoft** profily, šíření obvykle dokončení dobu 10 minut. 
+- Pro **Azure CDN Standard od společnosti Akamai** profily, šíření obvykle dokončení během jedné minuty. 
+- Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle dokončení během 90 minut. 
+>
+> Pokud jste nastavení komprese pro koncový bod CDN poprvé, zvažte, zda nevyčkat 1 – 2 hodiny, než při řešení problému Ujistěte se, že rozšíření nastavení komprese do bodů POP.
 > 
 > 
 
 ## <a name="enabling-compression"></a>Povolení komprese
 CDN úrovně standard a premium poskytují stejnou funkcionalitu kompresi, ale uživatelské rozhraní se liší. Další informace o rozdílech mezi CDN úrovně standard a premium najdete v tématu [přehled CDN Azure](cdn-overview.md).
 
-### <a name="standard-tier"></a>Úroveň Standard
+### <a name="standard-cdn-profiles"></a>Standardní profily CDN 
 > [!NOTE]
-> Tato část se týká **Azure CDN Standard od společnosti Verizon** a **Azure CDN Standard od společnosti Akamai** profily.
+> Tato část se týká **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Verizon**, a **Azure CDN Standard od společnosti Akamai** profily.
 > 
 > 
 
@@ -63,7 +68,7 @@ CDN úrovně standard a premium poskytují stejnou funkcionalitu kompresi, ale u
  
 5. Po provedení změny, vyberte **Uložit**.
 
-### <a name="premium-tier"></a>Úroveň Premium
+### <a name="premium-cdn-profiles"></a>Profily CDN Premium
 > [!NOTE]
 > V této části se vztahují pouze na **Azure CDN Premium od společnosti Verizon** profily.
 > 
@@ -90,25 +95,37 @@ CDN úrovně standard a premium poskytují stejnou funkcionalitu kompresi, ale u
 
 ## <a name="compression-rules"></a>Komprese pravidla
 
-### <a name="azure-cdn-from-verizon-profiles-both-standard-and-premium-tiers"></a>Azure CDN společnosti Verizon profilů (úrovně standard a premium)
+### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard od společnosti Microsoft profily
 
-Pro **Azure CDN společnosti Verizon** profilů, pouze vhodné soubory jsou komprimovány. Způsobilé k komprese, musíte do souboru:
+Pro **Azure CDN Standard od společnosti Microsoft** profily, všechny soubory jsou způsobilé pro kompresi. Ale musí být soubor typu MIME, který byl [nakonfigurované pro kompresi](#enabling-compression).
+
+Tyto profily podporují následující kódování komprese:
+- GZIP (GNU zip)
+- brotli 
+ 
+Pokud požadavek podporuje více než jeden typ komprese, tyto typy komprese mají přednost před brotli komprese.
+
+Když žádost o prostředek určuje kompresi gzip a výsledky žádosti v k neúspěšnému přístupu do mezipaměti, provede Azure CDN kompresi gzip prostředku přímo na serveru POP. Potom je zpracovat komprimovaný soubor z mezipaměti.
+
+### <a name="azure-cdn-from-verizon-profiles"></a>Azure CDN společnosti Verizon profily
+
+Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profilů, pouze vhodné soubory jsou komprimovány. Způsobilé k komprese, musíte do souboru:
 - Být větší než 128 bajtů
 - Být menší než 1 MB
  
 Tyto profily podporují následující kódování komprese:
-- gzip (GNU zip)
+- GZIP (GNU zip)
 - DEFLATE
 - bzip2
 - brotli 
  
 Pokud požadavek podporuje více než jeden typ komprese, tyto typy komprese mají přednost před brotli komprese.
 
-Pokud požadavek na prostředek určuje brotli komprese (`Accept-Encoding: br` hlavičky protokolu HTTP) a výsledky žádosti v neúspěšnému přístupu do mezipaměti, Azure CDN provede kompresi brotli prostředku na původním serveru. Potom je komprimovaný soubor zpracovat přímo z mezipaměti.
+Pokud požadavek na prostředek určuje brotli komprese (hlavičky protokolu HTTP je `Accept-Encoding: br`) a výsledky žádosti v neúspěšnému přístupu do mezipaměti, Azure CDN provede kompresi brotli prostředku přímo na serveru POP. Potom je zpracovat komprimovaný soubor z mezipaměti.
 
-### <a name="azure-cdn-from-akamai-profiles"></a>Azure CDN společnosti Akamai profily
+### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard od Akamai profily
 
-Pro **Azure CDN společnosti Akamai** profily, všechny soubory jsou způsobilé pro kompresi. Ale musí být soubor typu MIME, který byl [nakonfigurované pro kompresi](#enabling-compression).
+Pro **Azure CDN Standard od společnosti Akamai** profily, všechny soubory jsou způsobilé pro kompresi. Ale musí být soubor typu MIME, který byl [nakonfigurované pro kompresi](#enabling-compression).
 
 Tyto profily podporovat kódování gzip komprese jenom. Když koncový bod profilu služby požádá o soubor s kódováním gzip, vždy na vyžádání z tohoto počátku, a to bez ohledu na žádost klienta. 
 
@@ -116,7 +133,7 @@ Tyto profily podporovat kódování gzip komprese jenom. Když koncový bod prof
 Následující tabulky popisují chování Azure CDN komprese pro každý scénář:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Komprese je zakázána nebo jej nelze komprese souboru
-| Klient požádal formátu (prostřednictvím hlavičky Accept-Encoding) | Formát souboru do mezipaměti | CDN odpověď klientovi | Poznámky k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Klient požádal formátu (prostřednictvím hlavičky Accept-Encoding) | Formát souboru do mezipaměti | CDN odpověď klientovi | Poznámky k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Komprimované |Komprimované |Komprimované | |
 | Komprimované |Nekomprimované |Nekomprimované | |
@@ -130,7 +147,7 @@ Následující tabulky popisují chování Azure CDN komprese pro každý scén�
 | --- | --- | --- | --- |
 | Komprimované |Komprimované |Komprimované |CDN transcodes mezi podporované formáty. |
 | Komprimované |Nekomprimované |Komprimované |CDN provede komprese. |
-| Komprimované |Není v mezipaměti |Komprimované |CDN provede kompresi, pokud zdroj vrátí nekomprimovaného souboru. <br/>**Azure CDN společnosti Verizon** předá nekomprimovaného souboru na první požadavek a pak komprimuje a ukládá do mezipaměti souborů pro následné požadavky. <br/>Soubory s Cache-Control: nikdy jsou komprimované záhlaví bez mezipaměti. |
+| Komprimované |Není v mezipaměti |Komprimované |CDN provede kompresi, pokud zdroj vrátí nekomprimovaného souboru. <br/>**Azure CDN společnosti Verizon** předá nekomprimovaného souboru na první požadavek a pak komprimuje a ukládá do mezipaměti souborů pro následné požadavky. <br/>Soubory s `Cache-Control: no-cache` se nikdy komprimované záhlaví. |
 | Nekomprimované |Komprimované |Nekomprimované |CDN provede dekomprese. |
 | Nekomprimované |Nekomprimované |Nekomprimované | |
 | Nekomprimované |Není v mezipaměti |Nekomprimované | |
@@ -138,9 +155,9 @@ Následující tabulky popisují chování Azure CDN komprese pro každý scén�
 ## <a name="media-services-cdn-compression"></a>Komprese CDN služby Media Services
 Pro koncové body povolené pro streamování Media Services CDN je ve výchozím nastavení pro následující typy MIME povolená komprese: 
 - application/vnd.ms-sstr+xml 
-- application/dash+xml
-- application/vnd.apple.mpegurl
-- application/f4m+xml 
+- aplikace/dash + xml
+- application/vnd.Apple.mpegurl
+- aplikace nebo f4m + xml 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Řešení potíží s kompresí souborů v síti CDN](cdn-troubleshoot-compression.md)    

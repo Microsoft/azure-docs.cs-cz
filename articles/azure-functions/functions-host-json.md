@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1dec6f2da4f6fcbeb38585fc6a1cfcd9d622c4a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Host.JSON odkazu pro Azure Functions
 
@@ -139,10 +139,50 @@ Ovládací prvky [vzorkování funkce ve službě Application Insights](function
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
+|Hodnotu IsEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
 |maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začne.| 
 
-## <a name="eventhub"></a>eventHub
+## <a name="durabletask"></a>durableTask
+
+Nastavení konfigurace pro [trvanlivý funkce](durable-functions-overview.md).
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub",
+    "ControlQueueBatchSize": 32,
+    "PartitionCount": 4,
+    "ControlQueueVisibilityTimeout": "00:05:00",
+    "WorkItemQueueVisibilityTimeout": "00:05:00",
+    "MaxConcurrentActivityFunctions": 10,
+    "MaxConcurrentOrchestratorFunctions": 10,
+    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
+    "TraceInputsAndOutputs": false,
+    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+    "EventGridKeySettingName":  "EventGridKey"
+  }
+}
+```
+
+Úloha rozbočovače názvy musí začínat písmenem a obsahovat jenom písmena a čísla. Pokud není zadáno, je výchozí název rozbočovače úlohy pro funkce aplikace **DurableFunctionsHub**. Další informace najdete v tématu [úloh centra](durable-functions-task-hubs.md).
+
+|Vlastnost  |Výchozí | Popis |
+|---------|---------|---------|
+|hubName|DurableFunctionsHub|Alternativní [úloh centra](durable-functions-task-hubs.md) názvy lze izolovat více trvanlivý funkce aplikace od sebe navzájem, i když používají stejný back-endu úložiště.|
+|ControlQueueBatchSize|32|Počet zpráv načítat z fronty řízení najednou.|
+|PartitionCount |4|Počet oddílů pro frontu ovládacího prvku. Může být kladné celé číslo mezi 1 a 16.|
+|ControlQueueVisibilityTimeout |5 minut|Časový limit viditelnosti vyjmutou řízení fronty zpráv.|
+|WorkItemQueueVisibilityTimeout |5 minut|Časový limit viditelnosti vyjmutou pracovní položka fronty zpráv.|
+|MaxConcurrentActivityFunctions |10 x počet procesorů do aktuálního počítače|Maximální počet funkcí aktivity, které mohou být zpracovány současně na jednom hostiteli instanci.|
+|MaxConcurrentOrchestratorFunctions |10 x počet procesorů do aktuálního počítače|Maximální počet funkcí aktivity, které mohou být zpracovány současně na jednom hostiteli instanci.|
+|AzureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, který má připojovací řetězec úložiště Azure používat ke správě základní prostředky Azure Storage.|
+|TraceInputsAndOutputs |false (nepravda)|Hodnota, která určuje, zda chcete trasovat vstupy a výstupy volání funkce. Výchozí chování při trasování funkce zpracování událostí je zahrnují počet bajtů v serializovaných vstupy a výstupy pro volání funkcí. To poskytuje minimální informace o jak vstupy a výstupy vypadat bez nadměrnému nárůstu velikosti protokolů nebo neúmyslně odhalení citlivých informací do protokolů. Nastavení této vlastnosti na hodnotu true způsobí, že výchozí funkce protokolování do protokolu celý obsah funkce vstupy a výstupy.|
+|EventGridTopicEndpoint ||Adresa URL koncového bodu Azure událostí mřížky vlastní tématu. Pokud je tato vlastnost nastavena, orchestration životní cyklus oznámení události publikují k tomuto koncovému bodu.|
+|EventGridKeySettingName ||Název nastavení aplikace, který obsahuje klíč používaný pro ověřování s vlastní téma Azure událostí mřížky v `EventGridTopicEndpoint`.
+
+Mnoho z těchto je pro optimalizaci výkonu. Další informace najdete v tématu [výkonu a možností škálování](durable-functions-perf-and-scale.md).
+
+## <a name="eventhub"></a>Centrum EventHub
 
 Nastavení konfigurace pro [centra událostí triggerů a vazeb](functions-bindings-event-hubs.md).
 
@@ -150,7 +190,7 @@ Nastavení konfigurace pro [centra událostí triggerů a vazeb](functions-bindi
 
 ## <a name="functions"></a>functions
 
-Seznam funkcí, které budou spouštět úlohy hostitele.  Prázdné pole znamená spustit všechny funkce.  Určený k použití pouze tehdy, když [spuštěn místně](functions-run-local.md). V aplikacích pro funkce, použijte *function.json* `disabled` vlastnost spíše než tuto vlastnost v *host.json*.
+Seznam funkcí, které budou spouštět úlohy hostitele. Prázdné pole znamená spustit všechny funkce. Určený k použití pouze tehdy, když [spuštěn místně](functions-run-local.md). V aplikacích pro funkce, použijte *function.json* `disabled` vlastnost spíše než tuto vlastnost v *host.json*.
 
 ```json
 {
@@ -190,7 +230,7 @@ Nastavení konfigurace pro [monitorování stavu hostitele](https://github.com/A
 |healthCheckInterval|10 sekund|Kontroluje, časový interval mezi stavy pravidelných pozadí. | 
 |healthCheckWindow|2 minuty|Posuvné okno čas používá ve spojení s `healthCheckThreshold` nastavení.| 
 |healthCheckThreshold|6|Maximální počet kontrolou stavu může selhat, než je zahájeno recyklaci hostitele.| 
-|counterThreshold|0.80|Prahová hodnota, na které čítač výkonu, který se bude zvažovat není v pořádku.| 
+|counterThreshold|0,80|Prahová hodnota, na které čítač výkonu, který se bude zvažovat není v pořádku.| 
 
 ## <a name="http"></a>http
 
@@ -242,7 +282,7 @@ Nastavení konfigurace pro [úložiště fronty triggerů a vazeb](functions-bin
 
 [!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
-## <a name="servicebus"></a>serviceBus
+## <a name="servicebus"></a>Sběrnice
 
 Nastavení konfigurace pro [Service Bus triggerů a vazeb](functions-bindings-service-bus.md).
 
@@ -299,21 +339,6 @@ Sadu [sdíleného adresáře kód](functions-reference-csharp.md#watched-directo
     "watchDirectories": [ "Shared" ]
 }
 ```
-
-## <a name="durabletask"></a>durableTask
-
-[Úloha rozbočovače](durable-functions-task-hubs.md) název [trvanlivý funkce](durable-functions-overview.md).
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub"
-  }
-}
-```
-
-Úloha rozbočovače názvy musí začínat písmenem a obsahovat jenom písmena a čísla. Pokud není zadáno, je výchozí název rozbočovače úlohy pro funkce aplikace **DurableFunctionsHub**. Další informace najdete v tématu [úloh centra](durable-functions-task-hubs.md).
-
 
 ## <a name="next-steps"></a>Další postup
 

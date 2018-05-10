@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: af92eec8b6461563a366805d5eb4cbb964b028a5
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: ff47060ddfee458279c9fed0fd3fcafcf35229d2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Vlastní instalace pro modul runtime integrace Azure SSIS
 
@@ -32,6 +32,10 @@ Můžete nainstalovat součásti volné nebo bez licence i placené nebo licenco
 -   Pokud chcete použít `gacutil.exe` instalace sestavení v globální mezipaměti sestavení (GAC), budete muset poskytnout ho jako součást vašeho vlastní nastavení, nebo použijte kopie poskytnuté v kontejneru verzi Public Preview.
 
 -   Pokud potřebujete připojení k vaší IR Azure SSIS s vlastní instalace k virtuální síti, podporuje se jenom virtuální síť Azure Resource Manager. Klasické virtuální sítě není podporován.
+
+-   Sdílená složka pro správu není aktuálně podporována u na infračerveného signálu Azure SSIS.
+
+-   Pokud chcete namapovat sdílené složky na jednotku ve vašem vlastní nastavení `net use` příkaz není aktuálně podporován. V důsledku toho nelze použít příkaz jako `net use d: \\fileshareserver\sharename`. Místo toho použijte `cmdkey` příkaz – například `cmdkey /add:fileshareserver /user:yyy /pass:zzz` – Pokud chcete přístup `\\fileshareserver\folder` přímo ve vašich balíčcích.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -121,7 +125,7 @@ Chcete-li přizpůsobit vaší Azure SSIS reakcí na Incidenty, potřebujete ná
 
        1. A `Sample` složky, která obsahuje vlastní instalační program a nainstalujte základní úkolů na každém uzlu vaší Azure SSIS infračerveného signálu. Úloha se nic nestane. ale režimu spánku na několik sekund. Složka také obsahuje `gacutil` složky, která obsahuje `gacutil.exe`.
 
-       2. A `UserScenarios` složky, která obsahuje osm vlastní nastavení pro reálný uživatel scénáře.
+       2. A `UserScenarios` složky, která obsahuje některá vlastní nastavení pro reálný uživatel scénáře.
 
     ![Obsah kontejneru verzi public preview](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
 
@@ -133,17 +137,17 @@ Chcete-li přizpůsobit vaší Azure SSIS reakcí na Incidenty, potřebujete ná
 
        3. `EXCEL` Složky, která obsahuje vlastní instalační program a nainstalujte open-source sestavení (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, a `ExcelDataReader.dll`) na každém uzlu vaší Azure SSIS infračerveného signálu.
 
-       4. `MSDTC` Složky, která obsahuje vlastní instalace k úpravě konfigurace sítě a zabezpečení pro instanci Microsoft Distributed Transaction Coordinator služba MSDTC () na každém uzlu vaší infračerveného signálu. Azure SSIS.
+       4. `MSDTC` Složky, která obsahuje vlastní instalace k úpravě konfigurace sítě a zabezpečení pro instanci Microsoft Distributed Transaction Coordinator služba MSDTC () na každém uzlu vaší Azure SSIS infračerveného signálu.
 
-       5. `ORACLE ENTERPRISE` Složky, která obsahuje vlastní instalační skript (`main.cmd`) a konfigurační soubor bezobslužné instalace (`client.rsp`) k instalaci ovladačů Oracle OCI na každém uzlu vaší Azure SSIS IR Enterprise Edition (soukromém náhledu). Tato instalace vám umožní používat Správce připojení Oracle, zdroj a cíl. Nejprve je nutné stáhnout `winx64_12102_client.zip` z [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) a nahrajte ji společně s `main.cmd` a `client.rsp` do vašeho kontejneru. Používáte-li se připojit k Oracle TNS, budete také muset stáhnout `tnsnames.ora`, upravovat a nahrajte ho do kontejneru, takže je možné zkopírovat do instalační složky Oracle během instalace.
+       5. `ORACLE ENTERPRISE` Složky, která obsahuje vlastní instalační skript (`main.cmd`) a konfigurační soubor bezobslužné instalace (`client.rsp`) k instalaci ovladačů Oracle OCI na každém uzlu vaší Azure SSIS IR Enterprise Edition. Tato instalace vám umožní používat Správce připojení Oracle, zdroj a cíl. Nejdřív, například stáhnout nejnovější verzi klienta Oracle - `winx64_12102_client.zip` – [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) a nahrajte ji společně s `main.cmd` a `client.rsp` do vašeho kontejneru. Používáte-li se připojit k Oracle TNS, budete také muset stáhnout `tnsnames.ora`, upravovat a nahrajte ho do kontejneru, takže je možné zkopírovat do instalační složky Oracle během instalace.
 
-       6. `ORACLE STANDARD` Složky, která obsahuje vlastní instalační skript (`main.cmd`) k instalaci ovladačů Oracle ODP.NET na každém uzlu vaší Azure SSIS infračerveného signálu. Tato instalace vám umožní používat Správce připojení ADO.NET, zdroj a cíl. Nejprve stáhnout `ODP.NET_Managed_ODAC122cR1.zip` z [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)a nahrajte ji společně s `main.cmd` do vašeho kontejneru.
+       6. `ORACLE STANDARD` Složky, která obsahuje vlastní instalační skript (`main.cmd`) k instalaci ovladačů Oracle ODP.NET na každém uzlu vaší Azure SSIS infračerveného signálu. Tato instalace vám umožní používat Správce připojení ADO.NET, zdroj a cíl. Nejprve stáhnout nejnovější ovladač Oracle ODP.NET – například `ODP.NET_Managed_ODAC122cR1.zip` – [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)a nahrajte ji společně s `main.cmd` do vašeho kontejneru.
 
-       7. `SAP BW` Složky, která obsahuje vlastní instalační skript (`main.cmd`) k instalaci konektoru sestavení SAP .NET (`librfc32.dll`) na každém uzlu vaší Azure SSIS IR Enterprise Edition (soukromém náhledu). Tato instalace vám umožní používat Správce připojení SAP BW, zdroj a cíl. Nejprve nahrát 64bitovou nebo 32bitovou verzi `librfc32.dll` z instalační složky SAP do kontejneru, společně s `main.cmd`. Skript pak zkopíruje sestavení SAP do `%windir%\SysWow64` nebo `%windir%\System32` složky během instalace.
+       7. `SAP BW` Složky, která obsahuje vlastní instalační skript (`main.cmd`) k instalaci konektoru sestavení SAP .NET (`librfc32.dll`) na každém uzlu vaší Azure SSIS IR Enterprise Edition. Tato instalace vám umožní používat Správce připojení SAP BW, zdroj a cíl. Nejprve nahrát 64bitovou nebo 32bitovou verzi `librfc32.dll` z instalační složky SAP do kontejneru, společně s `main.cmd`. Skript pak zkopíruje sestavení SAP do `%windir%\SysWow64` nebo `%windir%\System32` složky během instalace.
 
        8. A `STORAGE` složky, která obsahuje vlastní instalační program a nainstalujte prostředí Azure PowerShell v každém uzlu vaší Azure SSIS infračerveného signálu. Tato instalace vám umožňuje nasazení a spuštění služby SSIS balíčky, které používají [skriptů prostředí PowerShell k manipulaci s účtu úložiště Azure](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell). Kopírování `main.cmd`, ukázku `AzurePowerShell.msi` (nebo nainstalujte nejnovější verzi) a `storage.ps1` do vašeho kontejneru. Použijte PowerShell.dtsx jako šablonu pro balíčky. Kombinuje šabloně balíček [úloh stáhnout Azure Blob](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), které stahování `storage.ps1` jako skript prostředí PowerShell upravitelnými a [úlohy spustit proces](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) , která se spouští skript na každém uzlu.
 
-       9. A `TERADATA` složky, která obsahuje vlastní instalační skript (`main.cmd)`, jeho přidružený soubor (`install.cmd`) a instalační balíčky (`.msi`). Tyto soubory instalace konektorů, rozhraní API TPT a ovladač ODBC Teradata na každém uzlu vaší Azure SSIS IR Enterprise Edition (soukromém náhledu). Tato instalace vám umožní používat Správce připojení Teradata, zdroj a cíl. Nejprve stáhněte soubor zip 15.x Teradata nástroje a nástroje (TTU) (například `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com)a odešlete ji spolu s výše `.cmd` a `.msi` soubory do vašeho kontejneru.
+       9. A `TERADATA` složky, která obsahuje vlastní instalační skript (`main.cmd)`, jeho přidružený soubor (`install.cmd`) a instalační balíčky (`.msi`). Tyto soubory instalace konektorů, rozhraní API TPT a ovladač ODBC Teradata na každém uzlu vaší Azure SSIS IR Enterprise Edition. Tato instalace vám umožní používat Správce připojení Teradata, zdroj a cíl. Nejprve stáhněte soubor zip 15.x Teradata nástroje a nástroje (TTU) (například `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) z [Teradata](http://partnerintelligence.teradata.com)a odešlete ji spolu s výše `.cmd` a `.msi` soubory do vašeho kontejneru.
 
     ![Složky ve složce uživatelské scénáře](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

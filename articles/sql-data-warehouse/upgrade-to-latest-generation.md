@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8ca8156d98932e0e7313375cadc1ace2a3088881
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 58d65ef05ed872bb357070de9866253baea5dc70
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 Upgrade na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
@@ -68,7 +68,13 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
    
    Druhým krokem procesu upgradu je migrace dat ("upgrade - Online"). Migrace dat je proces online skapat pozadí, které pomalu přesune sloupcová data z původní architektury úložiště do nové architektury úložiště využívat místní mezipaměti SSD. Během této doby bude online pro dotazování a načítání datového skladu. Všechna vaše data, bude k dispozici pro dotazy bez ohledu na to, jestli ho byla migrována nebo ne. Migrace dat se stane s různými rychlostí v závislosti na vaší velikost dat, vaše úroveň výkonu a počet segmentů columnstore. 
 
-5. **Volitelné doporučení:** urychlit proces na pozadí migrace dat, doporučuje se okamžitě vynutit přesun dat spuštěním [opětovné sestavení Alter Index](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) ve všech tabulkách columnstore v větší SLO a prostředků Třída. Tato operace je offline ve srovnání s skapat proces na pozadí; migrace dat však budou být mnohem rychlejší kde lze poté využít všech výhod nové architektury rozšířené úložiště s vysokou kvalitu rowgroups po dokončení. 
+5. **Najít váš datový sklad Gen2** pomocí okna procházení databáze SQL. 
+
+> [!NOTE]
+> Není aktuálně problém kde Gen2 data, která sklady se nezobrazí v SQL data warehouse Procházet okna. Najít nově upgradovaný Gen2 datového skladu pomocí okna procházení databáze SQL. Aktivně pracujeme na tuto opravu.
+> 
+
+6. **Volitelné doporučení:** urychlit proces na pozadí migrace dat, doporučuje se okamžitě vynutit přesun dat spuštěním [opětovné sestavení Alter Index](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-index) ve všech tabulkách columnstore v větší SLO a prostředků Třída. Tato operace je offline ve srovnání s skapat proces na pozadí; migrace dat však budou být mnohem rychlejší kde lze poté využít všech výhod nové architektury rozšířené úložiště s vysokou kvalitu rowgroups po dokončení. 
 
 Následující dotaz vygeneruje požadované příkazy Alter Index Rebuild urychlit proces migrace dat:
 

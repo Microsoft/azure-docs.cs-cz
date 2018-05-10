@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: bwren
-ms.openlocfilehash: 1e22aab85976fcab8ec270bdea1b8988b4d3bfe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="management-solutions-in-azure"></a>Řešení pro správu v Azure
 Řešení pro správu využívají služby v Azure a poskytnout další aspekty operaci určitá aplikace nebo služby. Tento článek poskytuje stručný přehled řešení pro správu ve službě Azure a podrobnosti o používání a nainstalujete.
 
 Řešení pro správu obvykle shromažďovat informace do analýzy protokolů a zadejte protokolu vyhledávání a zobrazení k analýze shromážděná data. Může využít i jiné služby, jako je například k provádění akcí týkající se aplikace nebo služby Azure Automation.
 
-Řešení pro správu můžete přidat do vašeho předplatného Azure pro všechny aplikace a služby, které používáte. Jsou obvykle dostupná na adrese žádné náklady, ale shromažďování dat, který může vyvolat poplatky za používání. Kromě řešení od společnosti Microsoft, partnery a zákazníky, můžete [vytvořit řešení pro správu](../operations-management-suite/operations-management-suite-solutions-creating.md) k použití ve svém vlastním prostředí nebo přístupná zákazníkům prostřednictvím komunitou.
+Řešení pro správu můžete přidat do vašeho předplatného Azure pro všechny aplikace a služby, které používáte. Jsou obvykle dostupná na adrese žádné náklady, ale shromažďování dat, který může vyvolat poplatky za používání. Kromě řešení od společnosti Microsoft, partnery a zákazníky, můžete [vytvořit řešení pro správu](../monitoring/monitoring-solutions-creating.md) k použití ve svém vlastním prostředí nebo přístupná zákazníkům prostřednictvím komunitou.
 
 ## <a name="using-management-solutions"></a>Pomocí řešení pro správu
 **Přehled** stránky pro každý pracovní prostor analýzy protokolů zobrazí dlaždice pro každé řešení nainstalován v pracovním prostoru. Klikněte na dlaždici pro řešení otevřete jeho zobrazení, která obsahuje více podrobné analýzy jeho shromážděná data.

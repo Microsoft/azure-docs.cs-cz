@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 6d440a49cb30210d3c0eed7d24e4811cc56925b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Novější metriky výstrahy pro služby Azure na portálu Azure
 Azure monitorování teď podporuje nový typ metriky výstrahy. Novější výstrahy se liší od [classic metriky výstrahy](insights-alerts-portal.md) několika způsoby:
@@ -35,7 +35,7 @@ Naučte se vytvářet upozornění na novější metriky na portálu Azure, najd
 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, prostředí PowerShell, rozhraní příkazového řádku, REST podporu
-V současné době můžete vytvořit novější metriky výstrahy pouze na portálu Azure [REST API](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template) nebo [šablony Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) je již brzy.
+V současné době můžete vytvořit novější metriky výstrahy pouze na portálu Azure [REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) nebo [šablony Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) je již brzy.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metriky a dimenze podporována
 Novější metriky výstrahy podporují generování výstrah pro metriky, které používají dimenze. Dimenze můžete použít k filtrování vaší metrika se používá k správnou úroveň. Všechny podporované metriky společně s příslušné dimenze můžete prozkoumali a vizualizována z [monitorování Azure – metriky Explorer (Preview)](monitoring-metric-charts.md).

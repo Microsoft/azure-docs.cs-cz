@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: e3fb06309dabd7f66d5873e4c5faa48b468854f6
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5bc578d617edd093a3b7eec7903209bfdb9ebfce
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure (VM)
 
@@ -319,7 +319,7 @@ K instalaci replikaci systému SAP HANA, postupujte podle kapitoly 4 příručky
     * Vyberte další součásti k instalaci -> 1
     * Zadejte instalační cestu [/ hana/sdílené]: -> zadejte
     * Zadejte název místního hostitele [.]: -> zadejte
-    * Opravdu chcete přidat další hostitele do systému? (y/n) [n]: -> ENTER
+    * Opravdu chcete přidat další hostitele do systému? (Ano/Ne) [n]: -> zadejte
     * Zadejte ID systému SAP HANA: <SID of HANA e.g. HN1>
     * Zadejte čísla Instance [00]:   
   Čísla HANA Instance. Pokud používá šablony Azure nebo Ruční nasazení a potom použít 03
@@ -328,7 +328,7 @@ K instalaci replikaci systému SAP HANA, postupujte podle kapitoly 4 příručky
   Vyberte systém využití
     * Zadejte umístění datových svazků [/ hana/data/HN1]: -> zadejte
     * Zadejte umístění protokolu svazků [/ hana/log/HN1]: -> zadejte
-    * Omezení přidělení paměti maximální? [n]: -> ENTER
+    * Omezení přidělení paměti maximální? [n]: -> zadejte
     * Zadejte název hostitele certifikát pro hostitele,..." [...]: -> Zadejte
     * Zadejte SAP hostitele agenta uživatele (sapadm) heslo:
     * Potvrďte SAP hostitele agenta uživatele (sapadm) heslo:
@@ -340,7 +340,7 @@ K instalaci replikaci systému SAP HANA, postupujte podle kapitoly 4 příručky
     * Zadejte ID ze skupiny uživatelů (sapsys) [79]: -> zadejte
     * Zadejte heslo k databázi uživatelů (systém):
     * Potvrďte heslo k databázi uživatelů (systém):
-    * Restartování systému po restartování počítače? [n]: -> ENTER
+    * Restartování systému po restartování počítače? [n]: -> zadejte
     * Chcete pokračovat? (Ano/Ne):   
   Ověřit, souhrn a zadejte y můžete pokračovat
 
@@ -502,7 +502,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    
    sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
    
-   sudo crm configure colocation col_saphana_ip_<b>HN1</b>_HDB<b>03</b> 2000: g_ip_<b>HN1</b>_HDB<b>03</b>:Started \
+   sudo crm configure colocation col_saphana_ip_<b>HN1</b>_HDB<b>03</b> 4000: g_ip_<b>HN1</b>_HDB<b>03</b>:Started \
      msl_SAPHana_<b>HN1</b>_HDB<b>03</b>:Master  
    
    sudo crm configure order ord_SAPHana_<b>HN1</b>_HDB<b>03</b> 2000: cln_SAPHanaTopology_<b>HN1</b>_HDB<b>03</b> \

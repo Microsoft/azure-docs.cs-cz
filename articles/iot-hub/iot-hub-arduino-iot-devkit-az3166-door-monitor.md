@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: ed0718f2d9d5093442001005e43551e7e9749eef
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: d25948aeab4170e67133a8e7f538089fca28407d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="door-monitor"></a>Dvířka monitorování          
 
@@ -210,7 +210,7 @@ Pokud narazíte na problémy, podívejte se na [nejčastější dotazy k](https:
 
 ## <a name="next-steps"></a>Další postup
 
-Jste se naučili postup DevKit zařízení připojit k vaší Azure IoT Suite a služby sendgrid vám umožňuje používat k odesílání e-mailu. Tady jsou navrhované další kroky:
+Jste se naučili postup DevKit zařízení připojit k vaší akcelerátoru řešení Azure IoT vzdálené monitorování a služby sendgrid vám umožňuje používat k odesílání e-mailu. Tady jsou navrhované další kroky:
 
-* [Přehled služby Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
+* [Azure IoT vzdálené monitorování přehled řešení akcelerátoru](https://docs.microsoft.com/azure/iot-suite/)
 * [Připojte zařízení MXChip IoT DevKit do aplikace Microsoft IoT centrální](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

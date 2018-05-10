@@ -1,24 +1,20 @@
 ---
-title: MFA software development kit vlastních aplikací | Microsoft Docs
+title: Sada Azure MFA software development kit pro vlastní aplikace
 description: Tento článek ukazuje, jak stáhnout a použít Azure MFA SDK k povolení dvoustupňové ověřování pro vaše vlastní aplikace.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: 1c152f67-be02-42a5-a0c7-246fb6b34377
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: 28efd5a5e9e757f3e2eae64fc770393608c9c028
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 28b48df27bf9b2f7176b886ef684f9281b3c4f37
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Vytváření služby Multi-Factor Authentication do vlastní aplikace (SDK)
 

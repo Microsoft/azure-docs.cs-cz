@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: c3d6ed2c011cc6be1098ae5e693ee6d904efaa3b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: c12b52c6b8862d00d51b51a5a120292f89c3ac1f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -40,11 +40,11 @@ Existuje více [odchozí scénáře](#scenarios). Tyto scénáře můžete kombi
 
 Azure nástroj pro vyrovnávání zatížení a související prostředky jsou explicitně definován při použití [Azure Resource Manager](#arm).  Azure aktuálně poskytuje tři různých způsobů dosažení odchozí připojení pro prostředky Azure Resource Manager. 
 
-| Scénář | Metoda | Popis |
-| --- | --- | --- |
-| [1. Virtuální počítač s adresu veřejná IP adresa na úrovni Instance (s nebo bez nástroj pro vyrovnávání zatížení)](#ilpip) | Překládat pomocí SNAT, port vydávají nepoužívá |Azure používá veřejnou IP adresu, které jsou přiřazené ke konfiguraci IP adresy z instance síťový adaptér. Instance má všechny dočasné porty, které jsou k dispozici. |
-| [2. Veřejné nástroj pro vyrovnávání zatížení, které jsou přidružené k virtuálnímu počítači (žádná Instance úroveň veřejná IP adresa v instanci)](#lb) | Překládat pomocí SNAT s port vydávají (PAT) pomocí frontends nástroj pro vyrovnávání zatížení |Azure sdílí veřejnou IP adresu veřejné frontends nástroj pro vyrovnávání zatížení s více privátních IP adres. Azure používá dočasné porty frontends k Jan. |
-| [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádná Instance úroveň veřejná IP adresa)](#defaultsnat) | Překládat pomocí SNAT s port vydávají (PAT) | Azure automaticky označí veřejnou IP adresu pro překládat pomocí SNAT, sdílí tato veřejná IP adresa s více privátních IP adres skupiny dostupnosti a používá dočasné porty tato veřejná IP adresa. Toto je záložní scénář pro uvedených scénářů. Pokud potřebujete viditelnost a kontrolu se nedoporučuje. |
+| Scénář | Metoda | Protokoly IP | Popis |
+| --- | --- | --- | --- |
+| [1. Virtuální počítač s adresu veřejná IP adresa na úrovni Instance (s nebo bez nástroj pro vyrovnávání zatížení)](#ilpip) | Překládat pomocí SNAT, port vydávají nepoužívá | PROTOKOL TCP, UDP, ICMP, ESP | Azure používá veřejnou IP adresu, které jsou přiřazené ke konfiguraci IP adresy z instance síťový adaptér. Instance má všechny dočasné porty, které jsou k dispozici. |
+| [2. Veřejné nástroj pro vyrovnávání zatížení, které jsou přidružené k virtuálnímu počítači (žádná Instance úroveň veřejná IP adresa v instanci)](#lb) | Překládat pomocí SNAT s port vydávají (PAT) pomocí frontends nástroj pro vyrovnávání zatížení | TCP, UDP |Azure sdílí veřejnou IP adresu veřejné frontends nástroj pro vyrovnávání zatížení s více privátních IP adres. Azure používá dočasné porty frontends k Jan. |
+| [3. Samostatný virtuální počítač (žádná služba Vyrovnávání zatížení, žádná Instance úroveň veřejná IP adresa)](#defaultsnat) | Překládat pomocí SNAT s port vydávají (PAT) | TCP, UDP | Azure automaticky označí veřejnou IP adresu pro překládat pomocí SNAT, sdílí tato veřejná IP adresa s více privátních IP adres skupiny dostupnosti a používá dočasné porty tato veřejná IP adresa. Toto je záložní scénář pro uvedených scénářů. Pokud potřebujete viditelnost a kontrolu se nedoporučuje. |
 
 Pokud nechcete, aby virtuální počítač ke komunikaci s koncovými body mimo Azure v rámci prostor veřejných IP adres, můžete použít skupiny zabezpečení sítě (Nsg) k blokování přístupu podle potřeby. V části [nelze navázat odchozí připojení](#preventoutbound) podrobněji popisuje skupiny Nsg. Pokyny k návrhu, implementaci a správu virtuálních sítí bez jakékoli odchozí přístup je mimo rámec tohoto článku.
 
@@ -243,7 +243,7 @@ Pokud skupina NSG blokuje žádostí o stav testu z výchozí značka AZURE_LOAD
 
 ## <a name="limitations"></a>Omezení
 - DisableOutboundSnat není k dispozici možnost, při konfiguraci portálu pravidlo Vyrovnávání zatížení.  Místo toho použijte nástroje REST, šablonu nebo klienta.
-- Webové role pracovního procesu mimo virtuální síť, která může být dostupný, pokud slouží pouze k interním standardní pro vyrovnávání zatížení z důvodu vedlejším účinkem z jak funkce služby pre-VNet. Musíte žádné spoléhat na to jako u příslušné služby sám sebe nebo základní platformu mohou změnit bez předchozího upozornění. Musí vždy předpokládat, že je nutné v případě potřeby při použití k interní standardní pro vyrovnávání zatížení pouze explicitně vytvořit odchozí připojení. 
+- Webové role pracovního procesu bez virtuální sítě a další služby platformy Microsoft může být přístupné, pokud se používá pouze k interním standardní pro vyrovnávání zatížení z důvodu vedlejším účinkem z jak pre-VNet služby a jiné platformy služeb funkce. Nesmí spoléhají na tomuto vedlejšímu efektu jako příslušné služby sám sebe nebo základní platformu mohou změnit bez předchozího upozornění. Musí vždy předpokládat, že je nutné v případě potřeby při použití k interní standardní pro vyrovnávání zatížení pouze explicitně vytvořit odchozí připojení. [Výchozí překládat pomocí SNAT](#defaultsnat) scénář 3 popsané v tomto článku není k dispozici.
 
 ## <a name="next-steps"></a>Další postup
 

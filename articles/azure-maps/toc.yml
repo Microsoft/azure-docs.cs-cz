@@ -1,0 +1,120 @@
+- name: Základy Azure IoT
+  href: ../iot-fundamentals/index.yml
+- name: Dokumentace ke službě Azure Maps
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o službě Azure Maps
+      href: about-azure-maps.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření aplikace mapy
+      href: quick-demo-map-app.md
+- name: Kurzy
+  items:
+    - name: 1. Hledání bodu zájmu
+      href: tutorial-search-location.md
+    - name: 2. Trasa do cíle
+      href: tutorial-route-location.md
+    - name: 3. Několik tras podle způsobu cesty
+      href: tutorial-prioritized-routes.md
+- name: Koncepty
+  items:
+    - name: Úrovně přiblížení a mřížka dlaždic
+      href: zoom-levels-and-tile-grid.md
+    - name: Zajištění geokódování
+      href: geocoding-coverage.md
+    - name: Zajištění provozu
+      href: traffic-coverage.md
+    - name: Zajištění vykreslování
+      href: render-coverage.md
+    - name: Zajištění směrování
+      href: routing-coverage.md
+    - name: Podporované jazyky
+      href: supported-languages.md
+- name: Návody
+  items:
+    - name: Správa účtů Maps
+      items:
+        - name: Správa účtů a klíčů
+          href: how-to-manage-account-keys.md
+    - name: Získání dat map z rozhraní REST API
+      items:
+        - name: Hledání adresy
+          href: how-to-search-for-address.md
+    - name: Vytvoření javascriptových map
+      items:
+        - name: Použití mapového ovládacího prvku
+          href: how-to-use-map-control.md
+        - name: Vytvoření mapy
+          href: map-create.md
+        - name: Přidání špendlíku
+          href: map-add-pin.md
+        - name: Přidání místního okna
+          href: map-add-popup.md
+        - name: Přidání obrazce
+          href: map-add-shape.md
+        - name: Přidat vlastního HTML
+          href: map-add-custom-html.md
+        - name: Zobrazení výsledků hledání
+          href: map-search-location.md
+        - name: Získání informací ze souřadnice
+          href: map-get-information-from-coordinate.md
+        - name: Zobrazení pokynů pro trasu z A do B
+          href: map-route.md
+        - name: Zobrazení provozu
+          href: map-show-traffic.md
+        - name: Interakce s využitím událostí myši
+          href: map-events.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API služeb – REST
+      href: 'https://docs.microsoft.com/rest/api/maps/'
+    - name: Rozhraní API pro mapové ovládací prvky – Javascript
+      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+- name: Související
+  items:
+    - name: Řešení
+      items:
+        - name: Předkonfigurovaná řešení IoT Suite
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Služby platformy
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: Služba IoT Hub Device Provisioning
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Sady SDK pro služby
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: Sady SDK pro zařízení IoT
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Zdroje a prostředky
+  items:
+    - name: Centrum pro vývojáře Azure IoT
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-location-based-services'
+    - name: Technické případové studie
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos'

@@ -3,8 +3,8 @@ documentType: LandingData
 title: Azure pro kontejnery
 metadata:
   document_id: 
-  title: "Azure pro kontejnery – Kurzy, reference k rozhraní API"
-  description: "Začněte s vývojem aplikací pomocí Azure s využitím níže uvedených zdrojů, mezi kterými najdete skvělé rychlé starty, kurzy a nástroje pro kontejnery."
+  title: Azure pro kontejnery – Kurzy, reference k rozhraní API
+  description: Začněte s vývojem aplikací pomocí Azure s využitím níže uvedených zdrojů, mezi kterými najdete skvělé rychlé starty, kurzy a nástroje pro kontejnery.
   keywords: Azure, Containers, Docker, API, Kubernetes
   author: bketelsen
   ms.author: brketels
@@ -17,15 +17,16 @@ metadata:
   ms.technology: azure
   ms.devlang: multiple
   ms.service: multiple
-  ms.openlocfilehash: c455ee4d6c315de9d2366ff9a9d672639c1026cf
-  ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+  ms.openlocfilehash: 39de19dc8c536d33150b9da368a2236ef8571ef3
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/09/2018
+  ms.lasthandoff: 05/07/2018
 sections:
 - items:
   - type: markdown
-    text: "Začněte s vývojem aplikací pomocí Azure s využitím níže uvedených zdrojů, mezi kterými najdete skvělé kurzy a nástroje pro kontejnery.\n"
+    text: >
+      Začněte s vývojem aplikací pomocí Azure s využitím níže uvedených zdrojů, mezi kterými najdete skvělé kurzy a nástroje pro kontejnery.
 - items:
   - type: list
     style: cards
@@ -33,41 +34,41 @@ sections:
     columns: 2
     items:
     - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-      html: "<p>Vytvoření kontejnerizované aplikace pomocí služby Azure Container Instances</p>"
+      html: <p>Vytvoření kontejnerizované aplikace pomocí služby Azure Container Instances</p>
       image:
         src: https://docs.microsoft.com/media/common/i_get-started.svg
-      title: "Začínáme"
+      title: Začínáme
     - href: https://docs.microsoft.com/azure/container-service/kubernetes/cli-samples
-      html: "<p>Ukázky v Azure CLI pro službu Azure Container Service</p>"
+      html: <p>Ukázky v Azure CLI pro službu Azure Container Service</p>
       image:
         src: https://docs.microsoft.com/media/common/i_code-samples.svg
-      title: "Ukázky kódů"
-- title: "Zprovoznění během 5 minut"
+      title: Ukázky kódů
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se používat kontejnery pomocí služeb Azure."
+    text: Naučte se používat kontejnery pomocí služeb Azure.
   - type: list
     style: cards
     className: cardsM
     columns: 2
     items:
     - href: ../aks/kubernetes-walkthrough.md
-      title: "Vytvoření clusteru Kubernetes pomocí služby Azure Container Service (AKS)"
+      title: Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service (AKS)
       image:
         src: /azure/media/index/ContainerService.svg
     - href: https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers
-      title: "Nasazení aplikace typu kontejner pro Windows s využitím Service Fabric"
+      title: Nasazení aplikace typu kontejner pro Windows s využitím Service Fabric
       image:
         src: /azure/media/index/Fabric.svg
     - href: https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go
-      title: "Vytvoření kontejnerizované aplikace pomocí služby Azure Web Apps for Containers"
+      title: Vytvoření kontejnerizované aplikace pomocí služby Azure Web Apps for Containers
       image:
         src: https://docs.microsoft.com/media/logos/logo_linux.svg
     - href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-      title: "Vytvoření privátního registru Dockeru ve službě Azure Container Registry"
+      title: Vytvoření privátního registru Dockeru ve službě Azure Container Registry
       image:
         src: /azure/media/index/container-registry.svg
-- title: "Bezplatné školicí video k Azure a kontejnerům od PluralSightu"
+- title: Bezplatné školicí video k Azure a kontejnerům od PluralSightu
   items:
   - type: list
     style: cards
@@ -77,26 +78,26 @@ sections:
     - href: https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-      title: "Microsoft Azure Virtual Machines – Začínáme"
-- title: "Ukázky"
+      title: Microsoft Azure Virtual Machines – Začínáme
+- title: Ukázky
   items:
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"https://azure.microsoft.com/resources/samples/app-service-java-deploy-image-from-acr-to-linux/\">Začínáme se službou App Service – Správa webové aplikace v Linuxu pomocí služby Container Registry – v Javě</a>"
-    - html: "<a href=\"https://azure.microsoft.com/resources/samples/service-fabric-containers/\">Ukázky kontejnerů Service Fabric</a>"
-    - html: "<a href=\"https://azure.microsoft.com/resources/samples/container-service-python-manage/\">Nasazení kontejneru Dockeru v clusteru Azure a připojení k němu</a>"
-- title: "Podrobné kurzy"
+    - html: <a href="https://azure.microsoft.com/resources/samples/app-service-java-deploy-image-from-acr-to-linux/">Začínáme se službou App Service – Správa webové aplikace v Linuxu pomocí služby Container Registry – v Javě</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/service-fabric-containers/">Ukázky kontejnerů Service Fabric</a>
+    - html: <a href="https://azure.microsoft.com/resources/samples/container-service-python-manage/">Nasazení kontejneru Dockeru v clusteru Azure a připojení k němu</a>
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Informace o používání služby Azure Container Service (AKS)"
+    text: Informace o používání služby Azure Kubernetes Service (AKS)
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-prepare-app\">Vytvoření imagí kontejneru z aplikace</a>"
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-prepare-acr\">Nahrání imagí kontejneru do Azure Container Registry</a>"
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-deploy-cluster\">Nasazení clusteru AKS</a>"
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-deploy-application\">Spuštění imagí kontejneru v Kubernetes</a>"
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-scale\">Škálování aplikace a infrastruktury Kubernetes</a>"
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-app-update\">Aktualizace aplikace běžící v Kubernetes</a>"
-    - html: "<a href=\"/azure/aks/tutorial-kubernetes-monitor\">Monitorování Kubernetes pomocí Log Analytics</a>"
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Vytvoření imagí kontejneru z aplikace</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Nahrání imagí kontejneru do Azure Container Registry</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">Nasazení clusteru AKS</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Spuštění imagí kontejneru v Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-scale">Škálování aplikace a infrastruktury Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizace aplikace běžící v Kubernetes</a>
+    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">Monitorování Kubernetes pomocí Log Analytics</a>

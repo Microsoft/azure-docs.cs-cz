@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure IoT Hub dvojčata zařízení (Java) | Microsoft Docs"
-description: "Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace zařízení a sady SDK pro jazyk Java k implementaci aplikační služby, které přidá značky a spustí dotaz IoT Hub služby Azure IoT."
+title: Začínáme s Azure IoT Hub dvojčata zařízení (Java) | Microsoft Docs
+description: Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace zařízení a sady SDK pro jazyk Java k implementaci aplikační služby, které přidá značky a spustí dotaz IoT Hub služby Azure IoT.
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 6d306d4742a53789d8e69c80d7fbdfc4e1ade4bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8611b55f6e4f33f8946d8c7c481163166d24049c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčata zařízení (Java)
 
@@ -40,8 +40,6 @@ Pro absolvování tohoto kurzu potřebujete:
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
-
-Pokud dáváte přednost pro vytvoření identity zařízení prostřednictvím kódu programu, najdete v příslušné části [připojení zařízení do služby IoT hub pomocí jazyka Java](iot-hub-java-java-getstarted.md#create-a-device-identity) článku.
 
 ## <a name="create-the-service-app"></a>Vytvořit aplikaci aplikační služby
 
@@ -349,7 +347,7 @@ Nyní jste připraveni ke spuštění aplikace konzoly.
 
     Nyní zařízení odeslal **connectivityType** vlastnost ke službě IoT Hub, druhý dotaz vrátí zařízení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidat metadata zařízení jako značky z back-end aplikace a aplikace na zařízení zapsal do sestavy informace o připojení k zařízení v dvojče zařízení. Také jste zjistili, jak dotazovat informací o zařízení twin pomocí dotazu jazyka SQL jako IoT Hub.
 

@@ -1,11 +1,11 @@
 ---
-title: "Odeslání souborů ze zařízení do služby Azure IoT Hub s .NET | Microsoft Docs"
-description: "Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro .NET. Odeslané soubory jsou uloženy v kontejneru objektů blob úložiště Azure."
+title: Odeslání souborů ze zařízení do služby Azure IoT Hub s .NET | Microsoft Docs
+description: Postup nahrání souborů ze zařízení do cloudu pomocí zařízení Azure IoT SDK pro .NET. Odeslané soubory jsou uloženy v kontejneru objektů blob úložiště Azure.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: 4362512121ca426fcae6716c74e1f8effa0986f1
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 901b4b6c631d47a6c37eb232f66d8350faa9be76
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Odeslání souborů ze zařízení do cloudu službou IoT Hub pomocí rozhraní .NET
 
@@ -36,7 +36,7 @@ V tomto kurzu vychází kód [odesílání zpráv typu Cloud-zařízení s centr
 * Data vibrace odebírána data v vysoká frekvence
 * Určitou formu předběžně zpracované dat
 
-Tyto soubory jsou obvykle dávkové zpracování v cloudu pomocí nástrojů, jako [Azure Data Factory](../data-factory/introduction.md) nebo [Hadoop](../hdinsight/index.md) zásobníku. Pokud budete potřebovat k nahrání souborů ze zařízení, když můžete nadále používat zabezpečení a spolehlivost služby IoT Hub.
+Tyto soubory jsou obvykle dávkové zpracování v cloudu pomocí nástrojů, jako [Azure Data Factory](../data-factory/introduction.md) nebo [Hadoop](../hdinsight/index.yml) zásobníku. Pokud budete potřebovat k nahrání souborů ze zařízení, když můžete nadále používat zabezpečení a spolehlivost služby IoT Hub.
 
 Na konci tohoto kurzu můžete spustit dvě aplikace konzoly .NET:
 

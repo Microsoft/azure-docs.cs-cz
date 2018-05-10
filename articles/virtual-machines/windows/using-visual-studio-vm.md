@@ -1,6 +1,6 @@
 ---
-title: "Na virtuálním počítači Azure pomocí sady Visual Studio | Microsoft Docs"
-description: "Pomocí sady Visual Studio na virtuální počítač Azure."
+title: Na virtuálním počítači Azure pomocí sady Visual Studio | Microsoft Docs
+description: Pomocí sady Visual Studio na virtuální počítač Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -15,11 +15,11 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: e5b289b2be982653461c4f5b933e1ec444fa9716
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3e37edbf8d29441541e77ed0660dc9a71618fdee
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio bitové kopie v Azure
 V předkonfigurovaných Azure virtuálního počítače (VM) pomocí sady Visual Studio je rychlý a snadný způsob, jak přechod od nic k prostředí vývoj nahoru a spuštěna. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -29,12 +29,13 @@ Jste nováčky v prostředí Azure? [Vytvořte si bezplatný účet Azure](https
 ## <a name="what-configurations-and-versions-are-available"></a>Jaké konfigurace a verzí jsou k dispozici?
 Bitové kopie pro nejnovější hlavní verze, Visual Studio 2017 a Visual Studio 2015, najdete v Azure Marketplace. Pro každou hlavní verzi uvidíte, původně vydaná verze (RTW) a nejnovější aktualizovaných verzí. Každý z těchto verzí nabízí Visual Studio Enterprise a edice Visual Studio Community. Tyto bitové kopie se aktualizovaly nejméně každý měsíc, aby obsahovaly nejnovější aktualizace Visual Studio a systému Windows. Při názvy imagí zůstávají stejné, obsahuje popis každé bitové kopie verze nainstalovaného produktu a datum "od" image.
 
-| Prodejní verze              | Edice            | Verze produktu     |
-|:-----------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: Nejnovější (verze 15,5) |    Enterprise, Community     |      Verze 15.6.0     |
-|         Visual Studio 2017: RTW           |    Enterprise, Community     |      Verze 15.0.10    |
-|   Visual Studio 2015: Nejnovější (Update 3)   |    Enterprise, Community     |  Verze 14.0.25431.01  |
-|         Visual Studio 2015: RTW           |              Žádný            | (Jeho platnost pro obsluhu) |
+| Prodejní verze                                              | Edice                     |     Verze produktu     |
+|:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
+| Visual Studio 2017: Nejnovější (verze 15.7)                    |    Enterprise, komunity     |      Verze 15.7.0     |
+| Visual Studio 2017: Nejnovější verze Preview (verze 15.8 Preview 1) |    Enterprise, komunity     |      Verze 15.8.1     |
+|         Visual Studio 2017: RTW                              |    Enterprise, komunity     |      Verze 15.0.13    |
+|   Visual Studio 2015: Nejnovější (Update 3)                      |    Enterprise, komunity     |  Verze 14.0.25431.01  |
+|         Visual Studio 2015: RTW                              |             Žádný             | (Jeho platnost pro obsluhu) |
 
 > [!NOTE]
 > V souladu s Microsoft obsluhy zásad původně vydaná verze (RTW) sady Visual Studio 2015 vypršela pro obsluhu. Visual Studio 2015 Update 3 je jediný zbývající verze nabízí pro produktovou řadu sady Visual Studio 2015.
@@ -106,7 +107,7 @@ Další informace najdete v tématu [vytvořte bitovou kopii spravované zobecn�
 
 Kromě toho vývojářských úloh nebo technologie potřebovat další škálování, jako jsou typy konfigurací vývoj a konfigurací s více počítači. Azure DevTest Labs můžete použít k vytvoření _recepty_ který automatizovat vytváření vašeho "zlaté Image." DevTest Labs můžete také použít ke správě zásad pro virtuální počítače běžící vašeho týmu. [Pomocí Azure DevTest Labs pro vývojáře](/azure/devtest-lab/devtest-lab-developer-lab) je nejlepší zdroj pro další informace o DevTest Labs.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když víte o předkonfigurovaných bitové kopie sady Visual Studio, dalším krokem je vytvoření nového virtuálního počítače:
 
 * [Vytvoření virtuálního počítače prostřednictvím portálu Azure](quick-create-portal.md)

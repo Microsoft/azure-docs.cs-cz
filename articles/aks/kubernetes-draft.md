@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f474921acbd3a5082afea03dd982bcfa9c52dcda
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-draft-with-azure-container-service-aks"></a>Použít koncept s Azure Container Service (AKS)
+# <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použít koncept se službou Azure Kubernetes (AKS)
 
 Koncept je otevřený nástroj, který pomáhá obsahovat a nasazení těchto kontejnerů v clusteru s podporou Kubernetes, můžete ponechat volné soustředit se na vývojáře cyklus – "vnitřní smyčka" vměstnány vývoj. Koncept funguje, jako je vyvíjen kód, ale před potvrzením do správy verzí. S koncept můžete rychle znovu nasadit aplikace do Kubernetes jsou prováděny změny kódu. Další informace o návrhu najdete v tématu [koncept dokumentaci na Githubu][draft-documentation].
 
@@ -27,7 +27,7 @@ Podrobně popsané kroky v tomto dokumentu předpokládají, že jste vytvořili
 
 Budete také potřebovat privátní registru Docker v registru kontejner Azure (ACR). Pokyny pro nasazení ACR instance najdete v tématu [Azure kontejneru registru Quickstart][acr-quickstart].
 
-Helm musí být nainstalována také v AKS clusteru. Další informace o instalaci helm najdete v tématu [Helm použití s Azure Container Service (AKS)][aks-helm].
+Helm musí být nainstalována také v AKS clusteru. Další informace o instalaci helm najdete v tématu [Helm použití s Azure Kubernetes služby (AKS)][aks-helm].
 
 Nakonec je nutné nainstalovat [Docker](https://www.docker.com).
 

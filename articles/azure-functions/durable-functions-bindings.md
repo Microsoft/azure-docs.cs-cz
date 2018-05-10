@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f3952ce87394270051bd37fae271162abc04a675
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro odolná funkce (Azure Functions)
 
@@ -36,17 +36,12 @@ Když píšete orchestrator funkce v skriptovací jazyky (například na portál
 {
     "name": "<Name of input parameter in function signature>",
     "orchestration": "<Optional - name of the orchestration>",
-    "version": "<Optional - version label of this orchestrator function>",
     "type": "orchestrationTrigger",
     "direction": "in"
 }
 ```
 
 * `orchestration` je název orchestration. Toto je hodnota, které musí klienti používat, když chtějí spusťte nové instance této funkce produktu orchestrator. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
-* `version` představuje popisek verze nástroje orchestration. Klienti, kteří spustit novou instanci třídy orchestration musí obsahovat odpovídající verze popisku. Tato vlastnost je nepovinná. Pokud není zadaný, použije se prázdný řetězec. Další informace o Správa verzí, naleznete v části [Správa verzí](durable-functions-versioning.md).
-
-> [!NOTE]
-> Nastavení hodnot pro `orchestration` nebo `version` vlastnosti se nedoporučuje v tuto chvíli.
 
 Interně tato vazba aktivační událost dotazuje řadu fronty ve výchozí účet úložiště pro aplikaci funkce. Tyto fronty jsou podrobnosti implementace interní rozšíření, a proto nejsou výslovně nakonfigurovaná tak, aby ve vlastnostech vazby.
 
@@ -69,12 +64,11 @@ Aktivační událost orchestration vazby podporuje vstup a výstupy. Zde jsou n�
 * **vstupy** -Orchestration funkce podporují pouze [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) jako typ parametru. Deserializace vstupy přímo v podpis funkce není podporována. Musíte použít kód [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1) metoda načíst orchestrator funkce vstupy. JSON Serializovatelné typy musí být tyto vstupy.
 * **výstupy** -aktivační události Orchestration podporují výstupní hodnoty, jakož i vstupy. Návratová hodnota funkce slouží k přiřazení výstupní hodnotu a musí být serializovatelný JSON. Pokud funkce vrátí `Task` nebo `void`, `null` hodnoty se uloží jako výstup.
 
-> [!NOTE]
-> Aktivační události Orchestration jsou podporovány pouze v jazyce C# v tuto chvíli.
-
 ### <a name="trigger-sample"></a>Ukázka aktivační události
 
-Následuje příklad, jak může vypadat nejjednodušší orchestrator funkce "Hello, World" C#:
+Následuje příklad, jak může vypadat nejjednodušší orchestrator funkce "Hello World":
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -85,7 +79,23 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    return `Hello ${name}!`;
+});
+```
+
+> [!NOTE]
+> JavaScript orchestrators by měl používat `return`. `durable-functions` Knihovny postará volání `context.done` metoda.
+
 Většina funkcí orchestrator volání funkce aktivity, zde je příklad "Hello World", které ukazuje, jak zavolat funkci aktivity:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -96,6 +106,18 @@ public static async Task<string> Run(
     string result = await context.CallActivityAsync<string>("SayHello", name);
     return result;
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df(function*(context) {
+    const name = context.df.getInput();
+    const result = yield context.df.callActivityAsync("SayHello", name);
+    return result;
+});
 ```
 
 ## <a name="activity-triggers"></a>Aktivační události aktivity
@@ -110,17 +132,12 @@ Pokud používáte portál Azure pro vývoj, aktivační události aktivity defi
 {
     "name": "<Name of input parameter in function signature>",
     "activity": "<Optional - name of the activity>",
-    "version": "<Optional - version label of this activity function>",
     "type": "activityTrigger",
     "direction": "in"
 }
 ```
 
 * `activity` je název aktivity. Toto je hodnota, která orchestrator funkce používaná k volání této funkce aktivity. Tato vlastnost je nepovinná. Pokud není zadaný, použije se název funkce.
-* `version` je verze popisek aktivity. Orchestrator funkce, které vyvolání aktivity musí obsahovat odpovídající verze popisku. Tato vlastnost je nepovinná. Pokud není zadaný, použije se prázdný řetězec. Další informace najdete v tématu [Správa verzí](durable-functions-versioning.md).
-
-> [!NOTE]
-> Nastavení hodnot pro `activity` nebo `version` vlastnosti se nedoporučuje v tuto chvíli.
 
 Interně tato vazba aktivační událost dotazuje fronty ve výchozí účet úložiště pro aplikaci funkce. Tato fronta je podrobností interní implementace rozšíření, proto není explicitně konfigurován ve vlastnostech vazby.
 
@@ -144,12 +161,11 @@ Aktivační událost aktivity vazby podporuje vstup a výstupy, stejně jako akt
 * **výstupy** – aktivita funkce podporují výstupní hodnoty, jakož i vstupy. Návratová hodnota funkce slouží k přiřazení výstupní hodnotu a musí být serializovatelný JSON. Pokud funkce vrátí `Task` nebo `void`, `null` hodnoty se uloží jako výstup.
 * **metadata** – aktivita funkce můžete vázat na `string instanceId` parametr získat ID instance nadřazené orchestration.
 
-> [!NOTE]
-> Aktivační události aktivity nejsou aktuálně podporované v Node.js funkce.
-
 ### <a name="trigger-sample"></a>Ukázka aktivační události
 
-Následuje příklad, jak může vypadat jednoduché funkce aktivity "Hello, World" C#:
+Následuje příklad, jak může vypadat jednoduché funkce aktivity "Hello World":
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -160,7 +176,17 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```javascript
+module.exports = function(context) {
+    context.done(null, `Hello ${context.bindings.name}!`);
+};
+```
+
 Výchozí typ parametru pro `ActivityTriggerAttribute` vazba je `DurableActivityContext`. Aktivační události aktivity také podpora vazbu přímo do formátu JSON serializeable typy (včetně primitivní typy), tak může zjednodušit stejnou funkci jako však zahrnuje:
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("SayHello")]
@@ -168,6 +194,14 @@ public static string SayHello([ActivityTrigger] string name)
 {
     return $"Hello {name}!";
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+
+```javascript
+module.exports = function(context, name) {
+    context.done(null, `Hello ${name}!`);
+};
 ```
 
 ### <a name="passing-multiple-parameters"></a>Předávání více parametrů 
@@ -302,9 +336,9 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 }
 ```
 
-#### <a name="nodejs-sample"></a>Ukázku Node.js
+#### <a name="javascript-sample"></a>Ukázka JavaScript
 
-Následující příklad ukazuje, jak použít klienta trvanlivý orchestration vytvoření vazby na spuštění nové instance funkce z Node.js funkce:
+Následující příklad ukazuje, jak použít klienta trvanlivý orchestration vytvoření vazby na spuštění nové instance funkce z funkce JavaScript:
 
 ```js
 module.exports = function (context, input) {

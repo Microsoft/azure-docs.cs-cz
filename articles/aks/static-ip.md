@@ -1,6 +1,6 @@
 ---
-title: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS)
-description: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS).
+title: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS)
+description: Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS).
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 623ba423d4f60fee0d18ad9455cc06effeff482a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: MT
+ms.openlocfilehash: da1fc4cd31a4b4f13da5b527e2a62e147799bfef
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-a-static-ip-address-with-the-azure-container-service-aks-load-balancer"></a>Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Container Service (AKS)
+# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS)
 
-V některých případech může například při načtení Azure Container Service (AKS) se znovu vytvoří vyrovnávání nebo se znovu vytvoří Kubernetes služby s typem nástroj pro vyrovnávání zatížení změnit veřejnou IP adresu služby Kubernetes. Tento dokument podrobnosti konfigurace statickou IP adresu pro vaše Kubernetes služby.
+V některých případech může například při spouštění služby Kubernetes Azure (AKS) se znovu vytvoří vyrovnávání nebo se znovu vytvoří Kubernetes služby s typem nástroj pro vyrovnávání zatížení změnit veřejnou IP adresu služby Kubernetes. Tento dokument podrobnosti konfigurace statickou IP adresu pro vaše Kubernetes služby.
 
 ## <a name="create-static-ip-address"></a>Vytvořte statické IP adresy
 
@@ -116,7 +116,7 @@ Events:
 ```
 
 <!-- LINKS - External -->
-[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/ 
+[kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

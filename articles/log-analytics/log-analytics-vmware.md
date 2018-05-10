@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 98969cf2f6604843bc1502990222264e7acc363b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware monitorování (Preview) v analýzy protokolů
 
@@ -37,7 +37,7 @@ Použijte následující informace k instalaci a konfiguraci řešení.
 * Přidat řešení VMware monitorování k předplatnému pomocí procesu popsaného v tématu [přidat řešení pro správu](log-analytics-add-solutions.md#add-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Podporované hostitelé VMware ESXi
-vSphere 5.5 hostitele ESXi a 6.0
+vSphere hostitele ESXi 5.5, 6.0 a verze 6.5
 
 #### <a name="prepare-a-linux-server"></a>Připravte Linux server
 Vytvořte operační systém Linux virtuálního počítače z hostitele ESXi přijímat všechna data syslog. [Agenta OMS Linux](log-analytics-linux-agents.md) je bod kolekce pro všechna data syslog hostitele ESXi. Několika hostitelích ESXi slouží k předávání protokolů do jednoho serveru Linux, jako v následujícím příkladu.  
@@ -45,7 +45,7 @@ Vytvořte operační systém Linux virtuálního počítače z hostitele ESXi p�
    ![tok procesu Syslog](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Konfigurace sběru syslog
-1. Nastavte syslog předávání VSphere. Podrobné informace, které pomohou nastavit předávání syslog, najdete v části [konfigurace syslog na ESXi 5.x a 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejděte na **konfigurace hostitele ESXi** > **softwaru** > **upřesňující nastavení** > **Syslog**.
+1. Nastavte syslog předávání VSphere. Podrobné informace, které pomohou nastavit předávání syslog, najdete v části [konfigurace syslog na ESXi 5.0 a vyšší (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322). Přejděte na **konfigurace hostitele ESXi** > **softwaru** > **upřesňující nastavení** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. V *Syslog.global.logHost* pole, přidejte Linux server a číslo portu *1514*. Například `tcp://hostname:1514` nebo `tcp://123.456.789.101:1514`
 3. Otevřete bránu firewall hostitele ESXi pro syslog. **Konfigurace hostitele ESXi** > **softwaru** > **profil zabezpečení** > **brány Firewall** a otevřete **Vlastnosti**.  

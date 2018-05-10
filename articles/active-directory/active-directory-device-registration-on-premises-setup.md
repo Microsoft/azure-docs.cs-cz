@@ -16,11 +16,11 @@ ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 8c692323803247cd54d27f369ea749e462fbc359
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0ce4497a8bebf9078363509c1f962728ab4189f8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 Pokud požadujete uživatelům připojení k pracovní ploše svých osobních zařízení pro službu Azure Active Directory (Azure AD) device registration service, můžete svoje zařízení označit jako známé pro vaši organizaci. Toto je podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2.
@@ -86,7 +86,7 @@ Postupujte podle kroků v seznamu úkolů povolit a nakonfigurovat službu Azure
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Část 3: Zpětný zápis zařízení povolit ve službě Azure AD
 | Úkol | Referenční informace |
 | --- | --- |
-| Dokončení druhé části "Povolení zpětného zápisu zařízení v Azure AD Connect." Po dokončení se vraťte do této příručce. |[Povolení zpětného zápisu zařízení v Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
+| Dokončení druhé části "Povolení zpětného zápisu zařízení v Azure AD Connect." Po dokončení se vraťte do této příručce. |[Povolení zpětného zápisu zařízení v Azure AD Connect](./connect/active-directory-aadconnect-feature-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Nepovinné] Část 4: Povolení služby Multi-Factor Authentication
 Důrazně doporučujeme nakonfigurovat jednu z několik možností pro službu Multi-Factor Authentication. Pokud chcete vyžadovat Vícefaktorové ověřování, přečtěte si téma [vybrat řešení zabezpečení Multi-Factor Authentication pro vás](authentication/concept-mfa-whichversion.md). Obsahuje popis jednotlivých řešení a odkazy, které vám pomohou při konfiguraci řešení podle svého výběru.

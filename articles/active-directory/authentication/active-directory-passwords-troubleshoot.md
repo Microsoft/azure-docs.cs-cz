@@ -2,25 +2,19 @@
 title: Řešení potíží – Azure Active Directory resetování hesla pomocí samoobslužné služby
 description: Řešení problémů s Azure AD samoobslužného resetování hesel
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: b6f201c7c4aab477b2dbd7462653494f956ecc61
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: d3e43d3484d321c93b4ac3b0e2b947b69af5d2c6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Řešení potíží s samoobslužné resetování hesla
 

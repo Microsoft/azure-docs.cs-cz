@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Promapp | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Promapp."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Promapp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4a0630bf015361833ed3a6949ea7b29450d53701
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b8a15143d38b7d835f85b8d196af5f33f5de18b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Kurz: Azure Active Directory integrace s Promapp
 
@@ -113,23 +113,22 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
     |--|
-    | `https://demo.promapp.com/TENANTNAME`|
-    | `https://go.promapp.com/TENANTNAME`|
-    | `https://demoau.promapp.com/TENANTNAME`|
-    | `https://au.promapp.com/TENANTNAME`|
-    | `https://demous.promapp.com/TENANTNAME`|
-    | `https://us.promapp.com/TENANTNAME`|
-    | `https://dev.promapp.com/TENANTNAME`|
-    | `https://test.promapp.com/TENANTNAME`|
-    | `https://staging.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME/`|
+    | `https://au.promapp.com/TENANTNAME/`|
+    | `https://us.promapp.com/TENANTNAME/`|
+    | `https://eu.promapp.com/TENANTNAME/`|
+    | `https://ca.promapp.com/TENANTNAME/`|
     
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
+    > [!NOTE] 
+    > V současné době integrace Azure AD s Promapp pouze byla nakonfigurována pro ověřování služby initiated například přejdete na adresu URL Promapp zahájí proces ověřování. Ale adresa URL odpovědi je povinné pole.
+    
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory Promapp klienta](https://www.promapp.com/about-us/contact-us/) k získání těchto hodnot.
@@ -240,13 +239,9 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-Cílem této části je testování konfigurace Azure AD jednotného přihlašování k použití na přístupovém panelu.
+K testování aplikace v **SP** iniciované režimu, budete muset spustit ověřování z vaší lokality Promapp. To můžete provést kliknutím na tlačítko "přihlášení pomocí jednotného přihlašování, na přihlašovací stránku a přitom **volitelné** je povolený režim.
 
-K testování aplikace v **IDP** initiated režimu, po kliknutí na dlaždici Promapp na přístupovém panelu jste měli získat automaticky přihlášení k aplikaci Promapp.
-
-K testování aplikace v **SP** iniciované režimu, budete muset spustit ověřování z vaší lokality Promapp. To lze provést pomocí prázdné pole hesla při přihlášení a přitom **volitelné** je povolený režim.
-
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

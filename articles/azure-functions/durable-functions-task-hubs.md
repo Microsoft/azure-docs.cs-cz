@@ -1,12 +1,12 @@
 ---
-title: "Úloha centra v trvanlivý funkce – Azure"
-description: "Zjistěte, jaké úlohu rozbočovači je v rozšíření trvanlivý funkce pro Azure Functions. Naučte se konfigurovat konfigurace úloh rozbočovače."
+title: Úloha centra v trvanlivý funkce – Azure
+description: Zjistěte, jaké úlohu rozbočovači je v rozšíření trvanlivý funkce pro Azure Functions. Naučte se konfigurovat konfigurace úloh rozbočovače.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: b241bad7b0060551eba5e78efbb1b729bf5d0098
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 563667684accf8b434052cd412bf6e93c77ea63a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Úloha centra trvanlivý funkcí (Azure Functions)
 
@@ -35,6 +35,7 @@ Rozbočovač úloha se skládá z následujících prostředků úložiště:
 * Jednu či více front ovládacího prvku.
 * Jedna fronta pracovní položku.
 * Tabulka jeden historie.
+* Jedna instance tabulka.
 * Jeden kontejner úložiště obsahující jeden nebo více objektů BLOB zapůjčení.
 
 Všechny tyto prostředky se vytvoří automaticky v výchozí účet úložiště Azure při orchestrator nebo funkce aktivity spustit nebo mají naplánované spuštění. [Výkonu a možností škálování](durable-functions-perf-and-scale.md) článek vysvětluje, jak se používají tyto prostředky.
@@ -56,7 +57,7 @@ Všechny tyto prostředky se vytvoří automaticky v výchozí účet úložišt
 > [!NOTE]
 > Název je jedna úloha rozbočovače co odlišuje od jiného existuje více úkolů centra v účtu sdílené úložiště. Pokud máte víc aplikací funkce sdílení účet sdílené úložiště, budete muset nakonfigurovat odlišné názvy pro každý rozbočovač úloh v *host.json* soubory.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak zpracovat Správa verzí](durable-functions-versioning.md)
