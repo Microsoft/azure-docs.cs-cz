@@ -27,9 +27,11 @@
           href: service-fabric-tutorial-create-dotnet-app.md
         - name: 2. Nasazení aplikace
           href: service-fabric-tutorial-deploy-app-to-party-cluster.md
-        - name: 3. Konfigurace CI/CD
+        - name: 3. Povolení HTTPS
+          href: service-fabric-tutorial-dotnet-app-enable-https-endpoint.md
+        - name: 4. Konfigurace CI/CD
           href: service-fabric-tutorial-deploy-app-with-cicd-vsts.md
-        - name: 4. Monitorování a diagnostika
+        - name: 5. Monitorování a diagnostika
           href: service-fabric-tutorial-monitoring-aspnet.md
     - name: Nasazení aplikace v Javě
       items:
@@ -561,36 +563,42 @@
           href: service-fabric-patch-orchestration-application-linux.md
     - name: Monitorování a diagnóza
       items:
-        - name: Analýza s využitím OMS
+        - name: Monitorování aplikací
           items:
-            - name: Nastavení OMS Log Analytics
-              href: service-fabric-diagnostics-oms-setup.md
-            - name: Přidání agenta OMS
-              href: service-fabric-diagnostics-oms-agent.md
-            - name: Monitorování pomocí OMS
-              href: service-fabric-diagnostics-event-analysis-oms.md
+            - name: Analýza s využitím Application Insights
+              href: service-fabric-diagnostics-event-analysis-appinsights.md
+            - name: Přidání protokolování do aplikace
+              href: service-fabric-how-to-diagnostics-log.md
+            - name: Agregace událostí s využitím EventFlow
+              href: service-fabric-diagnostics-event-aggregation-eventflow.md
             - name: Monitorování kontejnerů
               href: service-fabric-diagnostics-oms-containers.md
-        - name: Analýza s využitím Application Insights
-          href: service-fabric-diagnostics-event-analysis-appinsights.md
-        - name: Agregace událostí – EventFlow
-          href: service-fabric-diagnostics-event-aggregation-eventflow.md
-        - name: Agregace událostí – Azure Diagnostics
+        - name: Monitorování clusterů
           items:
-            - name: Windows
+            - name: Dotazování rozhraní API EventStoru
+              href: service-fabric-diagnostics-eventstore-query.md
+            - name: Diagnostika Azure pro Windows
               href: service-fabric-diagnostics-event-aggregation-wad.md
-            - name: Linux
+            - name: Diagnostika Azure pro Linux
               href: service-fabric-diagnostics-event-aggregation-lad.md
-        - name: Sledování výkonu s využitím WAD
-          href: service-fabric-diagnostics-perf-wad.md
-        - name: Reportování a kontrola stavu
-          href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
-        - name: Přidání protokolování do vaší služby
-          href: service-fabric-how-to-diagnostics-log.md
-        - name: Řešení potíží se systémovými stavovými sestavami
-          href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
-        - name: Zobrazení stavových sestav
-          href: service-fabric-view-entities-aggregated-health.md
+            - name: Nastavení OMS Log Analytics
+              href: service-fabric-diagnostics-oms-setup.md
+            - name: Monitorování pomocí OMS
+              href: service-fabric-diagnostics-event-analysis-oms.md
+        - name: Monitorování infrastruktury
+          items:
+            - name: Sledování výkonu s využitím WAD
+              href: service-fabric-diagnostics-perf-wad.md
+            - name: Monitorování výkonu pomocí agenta OMS
+              href: service-fabric-diagnostics-oms-agent.md
+        - name: Monitorování stavu
+          items:
+            - name: Reportování a kontrola stavu
+              href: service-fabric-diagnostics-how-to-report-and-check-service-health.md
+            - name: Řešení potíží se systémovými stavovými sestavami
+              href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
+            - name: Zobrazení stavových sestav
+              href: service-fabric-view-entities-aggregated-health.md
         - name: Řešení potíží s místním clusterem
           href: service-fabric-troubleshoot-local-cluster-setup.md
 - name: Referenční informace
