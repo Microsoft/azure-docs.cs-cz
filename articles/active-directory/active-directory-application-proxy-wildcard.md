@@ -15,15 +15,15 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a5466a0b5027fa8fe0edec3c9663e6cd1aafc9a3
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Zástupný znak aplikace v proxy aplikace služby Azure Active Directory 
 
-V Azure Active Directory (Azure AD), konfigurace velký počet místní aplikace může být nezvladatelné a zavádí nepotřebné rizika pro chyby konfigurace, pokud řada z nich vyžaduje stejné nastavení. S [Azure AD Application Proxy](active-directory-application-proxy-get-started.md), tento problém můžete vyřešit pomocí zástupných znaků publikování aplikací k publikování a správě mnoho aplikací najednou. Toto je řešení, které vám umožní:
+V Azure Active Directory (Azure AD), konfigurace velký počet místní aplikace může být nezvladatelné a zavádí nepotřebné rizika pro chyby konfigurace, pokud řada z nich vyžaduje stejné nastavení. S [Azure AD Application Proxy](manage-apps/application-proxy.md), tento problém můžete vyřešit pomocí zástupných znaků publikování aplikací k publikování a správě mnoho aplikací najednou. Toto je řešení, které vám umožní:
 
 -   Zjednodušení vaše režijní náklady na správu
 -   Snižte počet potenciální chyby konfigurace
@@ -51,7 +51,7 @@ Pokud máte další aplikace s jinou konfiguraci nastavení, musíte publikovat 
 Vytváření aplikací se zástupnými znaky je založena na stejné [publikování toku aplikace](application-proxy-publish-azure-portal.md) , je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, jestli jste zahrnuli zástupný znak v adresy URL a potenciálně Konfigurace jednotného přihlašování.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 ### <a name="custom-domains"></a>Vlastní domény
 

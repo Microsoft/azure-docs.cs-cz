@@ -9,11 +9,11 @@ ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: b3ff1991d76b3ab5b4b3c44f4fbe28fbb986d4bd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4bdd0ef182e0d18409ca608a645ff4011f00f9fa
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zařadit řešení správy aktualizací, sledování změn a inventáře
 
@@ -45,9 +45,15 @@ Vyberte **Správa aktualizací** pod **správy aktualizací**. Vybraný pracovn�
 
 Každé řešení používá konfigurace oboru v pracovním prostoru pro cílové počítače, které získání řešení. Konfigurace obor je skupina jednoho nebo více uložená hledání, která se používá k omezení oboru řešení, aby konkrétní počítače. Pro přístup k oboru konfigurace, v účtu Automation v části **související prostředky**, vyberte **prostoru**. V pracovním prostoru v **zdroje dat pracovního prostoru**, vyberte **konfigurace oboru**.
 
-Dvě konfigurace oboru vytvořily ve výchozím nastavení **vlastnost MicrosoftDefaultScopeConfig ChangeTracking** a **MicrosoftDefaultScopeConfig aktualizace**.
+Pokud vybraný pracovní prostor nemá řešení správy aktualizací nebo sledování změn ještě se vytvoří následující konfigurace oboru:
 
-## <a name="saved-searches"></a>Uložená hledání
+* **Vlastnost MicrosoftDefaultScopeConfig ChangeTracking**
+
+* **MicrosoftDefaultScopeConfig aktualizace**
+
+Pokud vybraný pracovní prostor již řešení. Řešení není znovu nasadit, a konfigurace oboru není přidána.
+
+## <a name="saved-searches"></a>Uložené výsledky hledání
 
 Když počítač přidán do správy aktualizací nebo řešení inventáře a sledování změn, budou přidány do mezi dvěma uložená hledání v pracovním prostoru. Tato uložená hledání jsou dotazy, které obsahují počítače, které jsou cílem těchto řešení.
 
@@ -60,7 +66,7 @@ Přejděte na svůj účet Automation a vyberte **uložená hledání** pod **Ob
 
 Vyberte buď uloženého hledání, chcete-li zobrazit dotaz používá k naplnění skupiny. Následující obrázek ukazuje dotaz a jeho výsledky:
 
-![Uložená hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
+![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
 ## <a name="onboard-an-azure-machine"></a>Zařadit počítač Azure
 
@@ -68,7 +74,7 @@ Vyberte buď uloženého hledání, chcete-li zobrazit dotaz používá k napln�
 
 Klikněte na tlačítko **+ přidat virtuální počítač Azure**, vyberte virtuální počítač ze seznamu. Na **správy aktualizací** klikněte na tlačítko **povolit**. Tento postup přidá aktuální virtuální počítač do skupiny počítačů, které jsou uložené hledání řešení.
 
-## <a name="onboard-a-non-azure-machine"></a>Zařadit počítače mimo Azure
+## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
 
 Účet, vyberte z vaší automatizace **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **správy aktualizací**.
 
@@ -80,7 +86,7 @@ Klikněte na tlačítko **počítače mimo Azure přidat**. Otevře se nové okn
 
 Vyberte **spravovat počítače**. Otevře **spravovat počítače** stránky. Tato stránka umožňuje povolit řešení na vybranou skupinu počítačů, všechny dostupné počítače, nebo povolit řešení pro všechny aktuální počítače a jeho povolení pro všechny budoucí počítače.
 
-![Uložená hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
+![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
 
 ### <a name="selected-machines"></a>Vybrané počítače
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: jejiang
-ms.openlocfilehash: fcd821c91a8c94792eeed83940abe1c72d0b2fb8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f35aa14286874d7c152509a69bd171b95b19e22b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Pomocí nástroje Azure Data Lake pro Visual Studio Code
 
@@ -28,7 +28,7 @@ Další nástroje Azure Data Lake pro Visual Studio Code (kód VS) k vytvářen�
 
 <a href="https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode"><img src="./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Nástroje Azure Data Lake pro VSCode podporuje Windows, Linux a systému MacOS.  
 
@@ -449,6 +449,10 @@ Nástroje data Lake pro VS Code podporuje následující funkce:
 
     ![Nástroje data Lake pro Visual Studio Code syntaxe označuje](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
+   >[!NOTE]
+   >V rámci přípravy pro nové obecné Data Protection nařízení (GDPR) do vliv na 25 může 2018, se doporučuje, aby uživatelé nástroje Azure Data Lake pro Visual Studio Code upgradovat na verzi 0.2.13 nebo novější. Tato verze zahrnuje změny v závislosti na požadavcích ochrany nejnovější data. Všimněte si, že nejsou k dispozici pro předchozí verze stáhnout a jsou zastaralé. 
+ 
+   
 ## <a name="next-steps"></a>Další postup
 - [Vývoj U-SQL s Python, R a CSharp pro Azure Data Lake Analytics v VSCode](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [U-SQL místní spuštění a místní ladění s kódem jazyka Visual Studio](data-lake-tools-for-vscode-local-run-and-debug.md)

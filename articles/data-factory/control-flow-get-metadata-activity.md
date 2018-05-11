@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 91ef3f9f15797c8c0c599e8c01070369e1af0b58
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -38,6 +38,9 @@ Následující funkce jsou k dispozici v toku řízení:
 
 GetMetaData – aktivity trvá datovou sadu jako požadované vstup a výstupy jako výstup aktivity k dispozici informace metadat. V současné době jsou podporovány následující konektory spolu s odpovídající dá načíst metadata:
 
+>[!NOTE]
+>Pokud spustíte GetMetaData – aktivity v modulu Runtime Self-hosted integrace, podporuje se nejnovější funkce ve verzi 3.6 nebo vyšší. 
+
 ### <a name="supported-connectors"></a>Podporované konektory
 
 **Úložiště souborů:**
@@ -45,11 +48,11 @@ GetMetaData – aktivity trvá datovou sadu jako požadované vstup a výstupy j
 | Konektor nebo Metadata | Název položky<br>(soubor nebo složku) | itemType<br>(soubor nebo složku) | velikost<br>(soubor) | vytvořené<br>(soubor nebo složku) | Změněno<br>(soubor nebo složku) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | Počet sloupců<br>(soubor) | existuje<br>(soubor nebo složku) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
-| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | w | √ | √ | √/√ |
+| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | w | √ | √ | √/√ |
+| Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | w | √ | √ | √/√ |
+| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | w | √ | √ | √/√ |
+| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | w | √ | √ | √/√ |
 
 **Relační databáze:**
 
@@ -123,7 +126,7 @@ V seznamu polí GetMetaData – aktivita načíst lze zadat následující typy 
 
 GetMetaData – aktivita aktuálně můžete získat následující typy informací metadat.
 
-Vlastnost | Popis | Požaduje se
+Vlastnost | Popis | Požadované
 -------- | ----------- | --------
 Seznam polí | Seznam typů požadované informace metadat. Zobrazit podrobnosti v [Metadata možnosti](#metadata-options) části na podporované metadat. | Ano 
 Datové sady | Referenční datová sada je jejichž metadat aktivity mají být načteny aktivitou GetMetaData –. V tématu [podporované schopnosti](#supported-capabilities) části na podporované konektory a odkazovat na konektoru téma na datovou sadu syntaxe podrobnosti. | Ano

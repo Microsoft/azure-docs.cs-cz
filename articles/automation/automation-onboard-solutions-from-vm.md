@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zařadit řešení správy aktualizací, sledování změn a inventáře z virtuální počítač Azure
 
@@ -42,11 +42,17 @@ Přejděte do jiných řešení a klikněte na tlačítko **povolit**, analýzy 
 
 Každé řešení používá konfigurace oboru v pracovním prostoru pro cílové počítače, které získání řešení. Konfigurace obor je skupina jednoho nebo více uložená hledání, která se používá k omezení oboru řešení, aby konkrétní počítače. Pro přístup k oboru konfigurace, v účtu Automation v části **související prostředky**, vyberte **prostoru** pak v pracovním prostoru v **zdroje dat pracovního prostoru**, Vyberte **konfigurace oboru**.
 
-Konfigurace dvou oboru vytvořily ve výchozím nastavení jsou **vlastnost MicrosoftDefaultScopeConfig ChangeTracking** a **MicrosoftDefaultScopeConfig aktualizace**.
+Pokud vybraný pracovní prostor nemá řešení správy aktualizací nebo sledování změn ještě se vytvoří následující konfigurace oboru:
+
+* **Vlastnost MicrosoftDefaultScopeConfig ChangeTracking**
+
+* **MicrosoftDefaultScopeConfig aktualizace**
+
+Pokud vybraný pracovní prostor již řešení. Řešení není znovu nasadit, a konfigurace oboru není přidána.
 
 Klikněte na výpustky (...) na žádném z konfigurací a vyberte **upravit**. Na **konfiguraci úpravy rozsahu** vyberte **vyberte skupiny počítačů** otevřete **skupiny počítačů** stránky. Tato stránka zobrazuje uložená hledání, které se používají k vytvoření konfigurace oboru.
 
-## <a name="saved-searches"></a>Uložená hledání
+## <a name="saved-searches"></a>Uložené výsledky hledání
 
 Když počítač přidán do správy aktualizací nebo řešení inventáře a sledování změn, budou přidány do mezi dvěma uložená hledání v pracovním prostoru. Tato uložená hledání jsou dotazy, které obsahují počítače, které jsou cílem těchto řešení.
 
@@ -59,7 +65,7 @@ Přejděte do pracovního prostoru a vyberte **uložená hledání** pod **Obecn
 
 Vyberte buď uloženého hledání, chcete-li zobrazit dotaz používá k naplnění skupiny. Následující obrázek ukazuje dotaz a jeho výsledky.
 
-![Uložená hledání](media/automation-onboard-solutions-from-vm/logsearch.png)
+![Uložené výsledky hledání](media/automation-onboard-solutions-from-vm/logsearch.png)
 
 ## <a name="next-steps"></a>Další postup
 

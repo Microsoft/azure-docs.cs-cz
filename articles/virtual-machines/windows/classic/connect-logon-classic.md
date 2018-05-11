@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: bcbebc216dbd63acfb33cf72ba774d088149a3a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ecc65d2d4802ae826f3260b66b26e0bbe414e6
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Přihlášení k virtuálnímu počítači s Windows pomocí portálu Azure
 Na portálu Azure můžete použít **Connect** tlačítko spuštění relace vzdálené plochy a přihlaste se k virtuální počítač s Windows.
@@ -40,22 +40,24 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 1. Přihlaste se k portálu Azure.
 2. Klikněte na virtuální počítač, který chcete získat přístup. Název je uveden v **všechny prostředky** podokně.
 
-    ![Virtual-machine-locations](./media/connect-logon/azureportaldashboard.png)
+    ![Virtuální počítač – umístění](./media/connect-logon/azureportaldashboard.png)
 
-3. Klikněte na tlačítko **Connect** na panelu příkazů na řídicím panelu virtuálního počítače.
-
-    ![Připojit ikonu pro virtuální počítač](./media/connect-logon/virtualmachine_dashboard_connect.png)
-
-<!-- Don't know if this still applies
-     I think we can zap this.
-> [!TIP]
-> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
->
->
--->
-
-## <a name="log-on-to-the-virtual-machine"></a>Přihlášení k virtuálnímu počítači
-[!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
+1. Klikněte **Connect** tlačítko na stránce vlastností virtuálního počítače. 
+2. V **připojit k virtuálnímu počítači** , zachovat, vyberte požadované možnosti a klikněte na tlačítko **soubor RDP Stáhnout**.
+2. Otevřete stažený soubor RDP a klikněte na tlačítko **Connect** po zobrazení výzvy. 
+2. Zobrazí se upozornění, že soubor `.rdp` je od neznámého vydavatele. To je normální. Pokračujte kliknutím na **Připojit** v okně Připojení ke vzdálené ploše.
+   
+    ![Snímek obrazovky upozornění na neznámého vydavatele](./media/connect-logon/rdp-warn.png)
+3. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte přihlašovací údaje k účtu virtuálního počítače a pak klikněte na **OK**.
+   
+     **Místní účet** – Většinou je to uživatelské jméno a heslo k místnímu účtu, které jste zadávali při vytváření virtuálního počítače. V tomto případě je doménou název virtuálního počítače ve formátu *název_virtuálního_počítače*&#92;*uživatelské_jméno*.  
+   
+    **Virtuální počítač připojený k doméně** – Pokud virtuální počítač patří do domény, zadejte uživatelské jméno ve formátu *doména*&amp;#92;*uživatelské_jméno*. Účet také musí být členem skupiny Administrators nebo musí mít udělené oprávnění ke vzdálenému přístupu k virtuálnímu počítači.
+   
+    **Řadič domény** – Pokud je virtuální počítač řadičem domény, zadejte uživatelské jméno a heslo účtu správce domény pro danou doménu.
+4. Kliknutím na **Ano** ověřte identitu virtuálního počítače a dokončete přihlášení.
+   
+   ![Snímek obrazovky zobrazující zprávu o ověření identity virtuálního počítače](./media/connect-logon/cert-warning.png)
 
 ## <a name="next-steps"></a>Další postup
 * Pokud **Connect** tlačítko je neaktivní nebo máte další problémy s připojením ke vzdálené ploše, zkuste resetuje se konfigurace. Klikněte na tlačítko **obnovte vzdálený přístup** na řídicím panelu virtuálního počítače.

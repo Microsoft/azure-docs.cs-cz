@@ -197,8 +197,6 @@
           href: ../desktop-workbench/data-prep-appendix10-sample-custom-column-transforms-python.md
         - name: Rozhraní API pro spuštění přípravy dat
           href: ../desktop-workbench/data-prep-python-execution-api.md
-        - name: Operacionalizace přípravy dat
-          href: ../desktop-workbench/data-prep-operationalization.md
     - name: Experimentování
       items:
         - name: Konfigurace služby Experimentování

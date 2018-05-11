@@ -1,24 +1,24 @@
 ---
-title: "Konfigurace protokolů CHAP pro zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje, jak nakonfigurovat výzvu ověřování protokol CHAP (Handshake) na zařízení StorSimple."
+title: Konfigurace protokolů CHAP pro zařízení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje, jak nakonfigurovat výzvu ověřování protokol CHAP (Handshake) na zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 61e0877187759d76b6f7efcef0a5ed8bec8500fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolů CHAP pro vaše zařízení StorSimple
 
@@ -77,8 +77,8 @@ Cíl v jednosměrný ověřování ověřuje iniciátor. Toto ověřování vyž
 4. V **Upřesnit nastavení** dialogové okno:
    
    1. Vyberte **povolit CHAP přihlásit** zaškrtávací políčko.
-   2. V **název** pole, zadejte uživatelské jméno, které jste zadali pro iniciátoru CHAP portálu classic.
-   3. V **tajný klíč cíle** pole, zadejte heslo, které jste zadali pro iniciátoru CHAP portálu classic.
+   2. V **název** pole, zadejte uživatelské jméno, které jste zadali pro iniciátoru CHAP na portálu Azure.
+   3. V **tajný klíč cíle** pole, zadejte heslo, které jste zadali pro iniciátoru CHAP na portálu Azure.
    4. Klikněte na **OK**.
       
        ![Upřesňující nastavení, obecné](./media/storsimple-configure-chap/IC740946.png)
@@ -131,8 +131,8 @@ V obousměrné ověřování cíl ověřuje iniciátoru a pak iniciátoru ověř
 8. V **Upřesnit vlastnosti** dialogové okno:
    
    1. Vyberte **povolit CHAP přihlásit** zaškrtávací políčko.
-   2. V **název** pole, zadejte uživatelské jméno, které jste zadali pro iniciátoru CHAP portálu classic.
-   3. V **tajný klíč cíle** pole, zadejte heslo, které jste zadali pro iniciátoru CHAP portálu classic.
+   2. V **název** pole, zadejte uživatelské jméno, které jste zadali pro iniciátoru CHAP na portálu Azure.
+   3. V **tajný klíč cíle** pole, zadejte heslo, které jste zadali pro iniciátoru CHAP na portálu Azure.
    4. Vyberte **provést vzájemné ověřování** zaškrtávací políčko.
       
        ![Upřesnit nastavení vzájemného ověření](./media/storsimple-configure-chap/IC740950.png)
@@ -166,7 +166,7 @@ Můžete ověřit, jestli se používá protokol CHAP podle následujících kro
    
     ![Podrobnosti o oblíbeného cíle](./media/storsimple-configure-chap/IC740952.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o [zabezpečení zařízení StorSimple](storsimple-8000-security.md).
 * Další informace o [pomocí služby StorSimple Manager zařízení ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).

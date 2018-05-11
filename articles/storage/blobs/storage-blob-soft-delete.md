@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: mihauss
-ms.openlocfilehash: 649838af1d4c753ac1d82a66c855ef313f14e85b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="soft-delete-for-azure-storage-blobs-preview"></a>Obnovitelného odstranění pro objekty BLOB Azure Storage (Preview)
 
@@ -106,7 +106,7 @@ Chcete-li obnovit objekt blob konkrétní logicky odstraněného snímku můžet
 
 Pokud chcete zobrazit doporučené odstraněné objekty BLOB a objektů blob snímky, můžete zahrnout odstraněná data v **seznamu objektů blob**. Můžete zobrazit jenom logicky odstraněné základní objektů BLOB nebo zahrnují také snímky logicky odstraněných objektů blob. Pro všechny logicky odstraněná data můžete zobrazit čas, kdy byla odstraněna data a také počet dní, než bude trvale platnost data.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Následuje výstup konzoly .NET skript, který odešle, přepíše, snímky, odstranění a obnovení odstranit objekt blob s názvem "HelloWorld", když logicky zapnutá:
 
@@ -183,7 +183,7 @@ Jakmile jste zrušení odstranění snímků objekt blob, můžete kliknout na *
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Prostředí Power Shell
 Pokud chcete povolit obnovitelného odstranění, aktualizujte vlastnosti služby klienta objektů blob. Následující příklad povolí obnovitelného odstranění pro podmnožinu účtů v předplatném:
 
 ```powershell
@@ -292,7 +292,7 @@ Ano, je možné konfigurovat pro stávající a nové účty úložiště obnovi
 
 **Pokud odstranit celý klienta nebo kontejner s obnovitelným odstraněním zapnutá, bude všech přidružených objektů BLOB uložit?**
 
-Ne, pokud odstraníte celý klienta nebo kontejner, všechny související objekty BLOB se trvale odstraní. Informace o tom, k ochraně před náhodného odstranění účtu úložiště, naleznete v článku Azure Resource Manager [prostředky zámku na zabránit neočekávané změny](/azure-resource-manager/resource-group-lock-resources.md).
+Ne, pokud odstraníte celý klienta nebo kontejner, všechny související objekty BLOB se trvale odstraní. Informace o tom, k ochraně před náhodného odstranění účtu úložiště, naleznete v článku Azure Resource Manager [prostředky zámku na zabránit neočekávané změny](../../azure-resource-manager/resource-group-lock-resources.md).
 
 **Můžete zobrazit metriky kapacity pro odstraněná data?**
 

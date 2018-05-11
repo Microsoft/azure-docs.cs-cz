@@ -32,6 +32,16 @@
       href: use-deep-learning-dsvm.md
     - name: Použití virtuálního počítače s geografickou umělou inteligencí pro datové vědy
       href: use-geo-ai-dsvm.md
+- name: Pokyny Enterprise
+  items:
+    - name: Přehled
+      href: dsvm-enterprise-overview.md
+    - name: Škálování
+      href: dsvm-pools.md
+    - name: Integrace Active Directory
+      href: dsvm-common-identity.md
+    - name: Přihlašovací údaje pro zabezpečený přístup k prostředkům
+      href: dsvm-secure-access-keys.md
 - name: Referenční informace
   expanded: true
   items:

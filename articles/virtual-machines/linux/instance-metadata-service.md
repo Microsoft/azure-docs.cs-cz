@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: af35bbeb203df90878408add030c47291cd94db9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e57470e108faf68cecca703b2200acf357d2f721
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Služba Azure Instance metadat
 
@@ -73,10 +73,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Ve výchozím nastavení, Instance služby metadat vrací data ve formátu JSON (`Content-Type: application/json`). Ale jiné rozhraní API vrátit data v různých formátech, pokud požadovaný.
 V následující tabulce je odkazem na jiných formátů dat, které můžou podporovat rozhraní API.
 
-Rozhraní API | Výchozí formát dat | Ostatní formáty
+API | Výchozí formát dat | Ostatní formáty
 --------|---------------------|--------------
-/instance | JSON | Text
-/scheduledevents | JSON | Žádné
+/instance | json | text
+/scheduledevents | json | Žádné
 
 Pro přístup k odpovědi jiné než výchozí formát, zadejte požadovaný formát jako parametr řetězce dotazu v žádosti. Příklad:
 
@@ -95,7 +95,7 @@ Kód stavu HTTP | Důvod
 ----------------|-------
 200 OK |
 400 – Chybný požadavek | Chybí `Metadata: true` záhlaví
-404 – Nenalezeno | Požadovaný element neexistuje. 
+404 Nenalezeno | Požadovaný element neexistuje. 
 405 – Metoda není povoleno | Pouze `GET` a `POST` jsou podporovány požadavky
 429 příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu
 Chyba 500 služby     | Po určité době opakujte
@@ -283,19 +283,19 @@ Následující kategorie dat jsou k dispozici prostřednictvím služby Instance
 
 Data | Popis | Verze zavedená 
 -----|-------------|-----------------------
-location | Oblast Azure virtuální počítač běží v | 2017-04-02 
-jméno | Název virtuálního počítače | 2017-04-02
+umístění | Oblast Azure virtuální počítač běží v | 2017-04-02 
+Název | Název virtuálního počítače | 2017-04-02
 nabídka | Nabízí informace o image virtuálního počítače. Tato hodnota je jenom pro Image nasadit z Galerie obrázků Azure k dispozici. | 2017-04-02
 Vydavatele | Vydavatel image virtuálního počítače | 2017-04-02
 SKU | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
-verze | Verze bitové kopie virtuálního počítače | 2017-04-02
+Verze | Verze bitové kopie virtuálního počítače | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 platformUpdateDomain |  [Aktualizace domény](manage-availability.md) je virtuální počítač spuštěný | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) je virtuální počítač spuštěný | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač. | 2017-04-02
 vmSize | [Velikost virtuálního počítače](sizes.md) | 2017-04-02
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-tags | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
+Značky | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro virtuální počítač  | 2017-08-01
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro virtuální počítač | 2017-08-01
 placementGroupId | [Umístění skupiny](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) váš virtuální počítač měřítka nastavit | 2017-08-01
 vmScaleSetName | [Název virtuálního počítače ScaleSet] (.. /.. / virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) váš virtuální počítač měřítka nastavit | 2017-12-01
@@ -379,7 +379,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků ve virtuálním počítači 
 
-Jazyk | Příklad: 
+Jazyk | Příklad 
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 Přejít  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
@@ -387,11 +387,12 @@ Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
-PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
+Prostředí Power Shell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 Perl       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.pl
 Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
+Puppet | https://github.com/keirans/azuremetadata
     
 
 ## <a name="faq"></a>Nejčastější dotazy

@@ -6,13 +6,13 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/08/2016
+ms.date: 05/10/2016
 ms.author: sethm
-ms.openlocfilehash: 0759decec9d80f1f836110a8907049213ca1eed6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 387801d971a349562c8a6aefc2f8d615edfd2f3a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata
 
@@ -21,7 +21,7 @@ Azure Service Bus používá více zpráv zprostředkovatelé ke zpracování zp
 Informace o interní informace o Service Bus, najdete v článku [architektura služby Service Bus] [ Service Bus architecture] článku.
 
 > [!NOTE]
-> Vytváření oddílů je k dispozici při vytváření entity pro všechny fronty a témata v základní nebo standardní SKU. Není k dispozici pro zasílání zpráv skladová položka Premium, ale žádné existující dělené entity na úrovni Premium bude fungovat podle očekávání.
+> Vytváření oddílů je k dispozici při vytváření entity pro všechny fronty a témata v základní nebo standardní SKU. Není k dispozici pro zasílání zpráv skladová položka Premium, ale žádné dřívější dělené entity v oborech názvů Premium bude fungovat podle očekávání.
  
 Není možné změnit možnost vytváření oddílů v žádné stávající fronta nebo téma; možnost lze nastavit pouze při vytváření entity.
 
@@ -37,15 +37,13 @@ Není k dispozici bez dalších nákladů při odesílání zprávy, která se n
 
 Pokud chcete používat oddílů front a témat s Azure Service Bus, použít sadu Azure SDK verze 2.2 nebo vyšší, nebo zadat `api-version=2013-10` nebo novější ve své žádosti HTTP.
 
-### <a name="standard"></a>Standard
+### <a name="standard"></a>Úroveň Standard
 
 Na vrstvě Standard zasílání zpráv můžete vytvořit front Service Bus a témat v 1, 2, 3, 4 nebo velikostí 5 GB (výchozí hodnota je 1 GB). S oddíly povolená, vytvoří Service Bus 16 kopie (16 oddíly) entity pro každého GB je zadat. Jako takový, když vytvoříte frontu, který je 5 GB velikost, s 16 oddíly maximální velikost fronty stane (5 \* 16) = 80 GB. Zobrazí maximální velikost fronty oddílů nebo téma prohlížením jeho položku [portál Azure][Azure portal]v **přehled** okno této entity.
 
 ### <a name="premium"></a>Premium
 
-V oboru názvů úrovně Premium můžete vytvořit front Service Bus a témat v 1, 2, 3, 4, 5, 10, 20, 40 nebo velikosti 80 GB (výchozí hodnota je 1 GB). Service Bus s oddíly, ve výchozím nastavení povolená, vytvoří dva oddíly na entity. Zobrazí maximální velikost fronty oddílů nebo téma prohlížením jeho položku [portál Azure][Azure portal]v **přehled** okno této entity.
-
-Další informace o vytváření oddílů v zasílání zpráv úrovně Premium najdete v tématu [Service Bus Premium a Standard zasílání zpráv úrovně](service-bus-premium-messaging.md). 
+V oboru názvů úrovně Premium vytváření oddílů není podporováno. Můžete však vytvořit front Service Bus a témat v 1, 2, 3, 4, 5, 10, 20, 40 nebo velikosti 80 GB (výchozí hodnota je 1 GB). Zobrazí velikost fronta nebo téma prohlížením jeho položku [portál Azure][Azure portal]v **přehled** okno této entity.
 
 ### <a name="create-a-partitioned-entity"></a>Vytvoření oddílů entity
 
@@ -59,7 +57,7 @@ td.EnablePartitioning = true;
 ns.CreateTopic(td);
 ```
 
-Alternativně můžete vytvořit oddílů fronta nebo téma v [portál Azure] [ Azure portal] nebo v sadě Visual Studio. Když vytvoříte na portálu, fronta nebo téma **povolit vytváření oddílů** možnost v fronta nebo téma **vytvořit** ve výchozím nastavení je zaškrtnuté políčko dialogové okno. Pouze můžete zakázat tuto možnost v entitě úrovně Standard; ve vrstvě | Premium dělení je vždy povolena. V sadě Visual Studio, klikněte **povolit vytváření oddílů** zaškrtnout políčko **novou frontu** nebo **nové téma** dialogové okno.
+Alternativně můžete vytvořit oddílů fronta nebo téma v [portál Azure][Azure portal]. Když vytvoříte na portálu, fronta nebo téma **povolit vytváření oddílů** možnost v fronta nebo téma **vytvořit** ve výchozím nastavení je zaškrtnuté políčko dialogové okno. Pouze můžete zakázat tuto možnost v entitě úrovně Standard; ve vrstvě | Premium není podporováno vytváření oddílů a políčka nemá žádný vliv. 
 
 ## <a name="use-of-partition-keys"></a>Použití klíče oddílů
 Pokud zpráva zařazených do fronty do oddílů fronta nebo téma, Service Bus zkontroluje přítomnost klíč oddílu. V případě, že některou najde, vybere fragment na základě tohoto klíče. Pokud nenajde klíč oddílu, vybere fragment založený na interní algoritmu.

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 98d285bf8ec92e7b6baf709d4796ce2f4420c4f2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd8130ac12f9c7c2095f9329dc4ce8a34187cf62
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Použití profilů verze rozhraní API s Ruby v Azure zásobníku
 
@@ -36,7 +36,7 @@ Profil aplikace API je kombinací zprostředkovatelé prostředků a verze aktua
  - Pokud chcete použít nejnovější verzi rozhraní api služby, použijte **nejnovější** profil konkrétní gem. Například pokud chcete použít nejnovější verzi rozhraní api služby výpočetní samostatně, použijte **nejnovější** profilu **výpočetní** gem.
  - Chcete-li použít konkrétní verzi rozhraní api pro službu, použijte konkrétních verzí rozhraní API definované uvnitř gem.
 
-> [!note] 
+> [!Note]   
 > Můžete sloučit všechny možností ve stejné aplikaci.
 
 ## <a name="install-the-azure-ruby-sdk"></a>Nainstalujte si Azure SDK Ruby
@@ -88,7 +88,7 @@ Abyste mohli používat Ruby Azure SDK zásobníkem Azure, musíte zadat násled
 | ID tenanta | AZURE_TENANT_ID | Hodnota zásobník Azure [ID klienta](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | ID klienta | AZURE_CLIENT_ID | Služba ID hlavní aplikace se neuloží, když instanční objekt byl vytvořen v předchozí části tohoto dokumentu.  |
 | ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) je, jak přistupovat k nabídky v Azure zásobníku. |
-| Tajný klíč klienta | AZURE_CLIENT_SECRET | Aplikace služby hlavní tajný klíč uložit při vytvoření objektu služby. |
+| Tajný kód klienta | AZURE_CLIENT_SECRET | Aplikace služby hlavní tajný klíč uložit při vytvoření objektu služby. |
 | Koncový bod služby Resource Manager | ARM_ENDPOINT | V tématu [zásobníku Azure resource manager endpoin](#The-azure-stack-resource-manager-endpoint).  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Koncový bod služby zásobník Azure resource manager
@@ -96,7 +96,8 @@ Abyste mohli používat Ruby Azure SDK zásobníkem Azure, musíte zadat násled
 Microsoft Azure Resource Manager je rozhraní správy, které umožňuje správcům nasadit, spravovat a sledovat prostředků Azure. Azure Resource Manager může zpracovávat tyto úlohy, jako se skupinou, nikoli samostatně, v rámci jedné operace.
 
 Z koncového bodu Resource Manager můžete získat informace metadat. Koncový bod vrátí soubor JSON s informacemi potřebnými pro spouštění vašeho kódu.
-  > [!note]  
+
+  > [!Note]  
   > **ResourceManagerUrl** je v Azure zásobníku Development Kit (ASDK): `https://management.local.azurestack.external/`  
   > **ResourceManagerUrl** v integrované systémy: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > Pro načtení metadat vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -208,7 +209,7 @@ Můžete použít následující ukázky najít v Githubu repositoreis jako odka
 
 Ke spuštění ukázky, ujistěte se, že jste nainstalovali Ruby. Pokud používáte Visual Studio Code, stáhněte sadu SDK Ruby jako také rozšíření. 
 
-> [!note]  
+> [!Note]  
 > Můžete získat úložiště pro ukázku v "[prostředky spravovat Azure a skupiny prostředků s Ruby](https://github.com/Azure-Samples/resource-manager-ruby-resources-and-groups/tree/master/Hybrid)".
 
 1. Naklonujte úložiště.
@@ -231,7 +232,7 @@ Ke spuštění ukázky, ujistěte se, že jste nainstalovali Ruby. Pokud použí
   Hodnoty jsou:
   - ID tenanta
   - ID klienta
-  - Tajný klíč klienta
+  - Tajný kód klienta
   - ID předplatného
   - Koncový bod služby Resource Manager
 
@@ -243,7 +244,7 @@ Ke spuštění ukázky, ujistěte se, že jste nainstalovali Ruby. Pokud použí
   - Export AZURE_SUBSCRIPTION_ID = {svoje id předplatného}
   - Export ARM_ENDPOINT = {AzureStack Resource manager adresa url}
 
-  > [!note]  
+  > [!Note]  
   > V systému Windows použijte místo exportu sady.
 
 4. Zkontrolujte, zda že umístění proměnná je nastavená na vaše AzureStack umístění. Například místní = "local"

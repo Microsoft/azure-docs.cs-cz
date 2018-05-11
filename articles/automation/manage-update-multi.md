@@ -3,16 +3,17 @@ title: Správa aktualizací pro několik virtuálních počítačů Azure
 description: Toto téma popisuje, jak se spravují aktualizace pro virtuální počítače Azure.
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ce3d0501900cf8b60daee9aff6eeeaf62fa29409
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ae5d2e38f11abfabda067e9affbf81159002cb99
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -23,7 +24,7 @@ Správa aktualizací umožňuje spravovat aktualizace a opravy pro počítače s
 - Naplánovat instalaci požadovaných aktualizací
 - Zkontrolovat výsledky nasazení a ověřit, jestli se aktualizace úspěšně použily pro všechny virtuální počítače, pro které je povolená správa aktualizací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud chcete použít správu aktualizací, budete potřebovat:
 

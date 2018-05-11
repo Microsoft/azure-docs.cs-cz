@@ -15,15 +15,15 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bb341c5700f573e61cdbbe992aa0b0eb99389b2f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f480553e6a8ca09872cd638537bc6fb98e793d8b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování na základě záhlaví pro jednotné přihlašování s Proxy aplikace a PingAccess
 
-Azure Proxy aplikace služby Active Directory a PingAccess společně společně poskytují zákazníkům Azure Active Directory přístup k i další aplikace. PingAccess rozšíří [stávající nabídky Proxy aplikace](active-directory-application-proxy-get-started.md) zahrnout jednoho přístupového přihlášení do aplikace, které používají hlavičky pro ověřování.
+Azure Proxy aplikace služby Active Directory a PingAccess společně společně poskytují zákazníkům Azure Active Directory přístup k i další aplikace. PingAccess rozšíří [stávající nabídky Proxy aplikace](manage-apps/application-proxy.md) zahrnout jednoho přístupového přihlášení do aplikace, které používají hlavičky pro ověřování.
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>Co je PingAccess pro Azure AD?
 

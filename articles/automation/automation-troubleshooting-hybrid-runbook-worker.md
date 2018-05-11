@@ -3,16 +3,17 @@ title: Řešení potíží s Azure Automation Hybrid Runbook Worker
 description: Popisují příznaky, příčiny a řešení nejběžnějších problémů hybridní pracovní proces Runbooku ve službě Azure Automation.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 37b61dfa8c8b760943f5a4561cc7f9f0db309a61
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5c0cbf1a5cc421ad73fa47e790b5d35042222a91
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>Tipy pro odstraňování potíží pro hybridní pracovní proces Runbooku
 

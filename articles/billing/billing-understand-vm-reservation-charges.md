@@ -3,8 +3,8 @@ title: Pochopení aplikace slevu vyhrazenou instancí virtuálního počítače 
 description: Zjistěte, jak je vyhrazená Instance virtuálního počítače Azure slevu použito pro spuštěných virtuálních počítačů.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikdesai
+author: yashesvi
+manager: yashar
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
-ms.author: vikdesai
-ms.openlocfilehash: 6e551fddfc5ba8924cd8c71a1775307e7569b847
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: yashar
+ms.openlocfilehash: ddf6e6a869fb2961db6b626878f9433fdc00a55f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-how-the-reserved-virtual-machine-instance-discount-is-applied"></a>Pochopit, jak se použije slevu vyhrazenou instanci virtuálního počítače
 Po nákupu vyhrazenou instanci virtuálního počítače slevu rezervace automaticky použita pro virtuální počítače odpovídající atributy a objemu rezervace. Rezervace obsahuje náklady na infrastrukturu virtuálních počítačů. Následující tabulka znázorňuje náklady pro virtuální počítač po zakoupení rezervace. Ve všech případech musíte platit za úložiště a sítě normální tempem.
 
 | Typ virtuálního počítače  | Poplatky za spolu s rezervací |    
-|-----------------------|--------------------------------------------| 
+|-----------------------|--------------------------------------------|
 |Virtuální počítače s Linuxem bez další software | Rezervace obsahuje náklady na infrastrukturu virtuálních počítačů.|
 |Virtuální počítače s Linuxem pomocí softwaru poplatky (například Red Hat) | Rezervace obsahuje náklady na infrastrukturu. Budou se vám účtovat další software.|
 |Virtuální počítače Windows bez další software |Rezervace obsahuje náklady na infrastrukturu. Budou se vám účtovat pro software systému Windows.|
@@ -53,8 +53,10 @@ Další informace o vyhrazenou instancí virtuálního počítače, naleznete v 
 - [Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí virtuálního počítače](billing-save-compute-costs-reservations.md)
 - [Pochopení vyhrazenou instanci využití pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Pochopení vyhrazenou instanci využití pro podnikového zápisu](billing-understand-reserved-instance-usage-ea.md)
+- [Pochopení využití vyhrazenou instanci odběrů zprostředkovatele kryptografických služeb](https://docs.microsoft.com/partner-center/azure-reservations)
 - [Náklady na software Windows není součástí vyhrazené instance](billing-reserved-instance-windows-software-costs.md)
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktovat podporu
 
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.

@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Podporu pro replikaci technologie Hyper-V do Azure.
 
@@ -23,9 +23,9 @@ Tento článek obsahuje souhrn podporovaných součásti a nastavení pro zotave
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
 **Scénář** | **Podrobnosti**
---- | --- 
+--- | ---
 Technologie Hyper-V s nástrojem Virtual Machine Manager | Můžete provést zotavení po havárii do Azure pro virtuální počítače spuštěné v hostitelích Hyper-V, které jsou spravovány v prostředcích infrastruktury nástroje System Center Virtual Machine Manager.<br/><br/> Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell.<br/><br/> Pokud hostitele Hyper-V jsou spravovány nástrojem Virtual Machine Manager, můžete také provést zotavení po havárii na sekundární místní lokalitu. Další informace o tomto scénáři, přečtěte si [v tomto kurzu](tutorial-vmm-to-vmm.md).
-Technologie Hyper-V bez nástroje Virtual Machine Manager | Můžete provést zotavení po havárii do Azure pro virtuální počítače spuštěné v hostitelích Hyper-V, které nejsou spravovány nástrojem Virtual Machine Manager.<br/><br/> Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell. 
+Technologie Hyper-V bez nástroje Virtual Machine Manager | Můžete provést zotavení po havárii do Azure pro virtuální počítače spuštěné v hostitelích Hyper-V, které nejsou spravovány nástrojem Virtual Machine Manager.<br/><br/> Můžete nasadit tento scénář na portálu Azure nebo pomocí prostředí PowerShell.
 
 
 ## <a name="on-premises-servers"></a>Místní servery
@@ -39,7 +39,7 @@ Technologie Hyper-V (spouštění s nástrojem Virtual Machine Manager) | Nástr
 ## <a name="replicated-vms"></a>Replikované virtuální počítače
 
 
-Následující tabulka shrnuje podporu virtuálních počítačů. Site Recovery podporuje jakékoli úlohy spuštěné na podporovaném operačním systému. 
+Následující tabulka shrnuje podporu virtuálních počítačů. Site Recovery podporuje jakékoli úlohy spuštěné na podporovaném operačním systému.
 
  **Komponenta** | **Podrobnosti**
 --- | ---
@@ -78,14 +78,15 @@ Více síťovými Kartami | Ano | Ano
 Rezervovaná IP adresa | Ano | Ano
 IPv4 | Ano | Ano
 Zachovat zdrojové IP adresy | Ano | Ano
-Koncové body služby Azure virtuální sítě<br/><br/> (Brány firewall úložiště azure a virtuální sítě) | Ne | Ne
+Koncové body služby Azure virtuální sítě<br/> (bez brány firewall pro Azure Storage) | Ano | Ano
+Akcelerované síťové služby | Ne | Ne
 
 
 ## <a name="hyper-v-host-storage"></a>Úložiště pro hostitele Hyper-V
 
 **Úložiště** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | --- | ---
-NFS | Není k dispozici | Není k dispozici
+NFS | není k dispozici | není k dispozici
 SMB 3.0 | Ano | Ano
 SÍŤ SAN (ISCSI) | Ano | Ano
 S více cestami (MPIO). Test se:<br></br> Microsoft DSM EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM pro CLARiiON | Ano | Ano
@@ -94,15 +95,15 @@ S více cestami (MPIO). Test se:<br></br> Microsoft DSM EMC PowerPath 5.7 SP4<br
 
 **Úložiště** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | ---
-VMDK | Není k dispozici | Není k dispozici
+VMDK | není k dispozici | není k dispozici
 VHD/VHDX | Ano | Ano
 2. generace virtuálních počítačů | Ano | Ano
 ROZHRANÍM EFI/UEFI| Ano | Ano
 Sdílený disk clusteru | Ne | Ne
 Šifrované disku | Ne | Ne
-NFS | Není k dispozici | Není k dispozici
+NFS | není k dispozici | není k dispozici
 SMB 3.0 | Ne | Ne
-RDM | Není k dispozici | Není k dispozici
+RDM | není k dispozici | není k dispozici
 Disk > 1 TB | Ano, až 4095 GB | Ano, až 4095 GB
 Disku: logický a fyzický sektor 4 kB | Není podporováno: FIN 1 nebo generace 2 | Není podporováno: FIN 1 nebo generace 2
 Disku: 4K logické a fyzického sektoru 512 bajtů | Ano |  Ano
@@ -112,7 +113,7 @@ Přidat nebo odebrat aktivní disku | Ne | Ne
 Vyloučení disku | Ano | Ano
 S více cestami (MPIO) | Ano | Ano
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Účet Azure
 
 **Komponenta** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | ---
@@ -125,14 +126,14 @@ Objekty blob bloku | Ne | Ne
 Šifrování v klidovém stavu (SSE)| Ano | Ano
 Premium Storage | Ano | Ano
 Import a export služby | Ne | Ne
-Virtuální sítě služby koncové body Azure (Azure Storage brány firewall a virtuální sítě) na cíl, aby účet úložiště mezipaměti používané pro replikaci dat | Ne | Ne
+Azure Storage brány firewall pro virtuální sítě, které jsou nakonfigurované na cílový účet úložiště nebo mezipaměti úložiště (používá se k uložení dat replikace) | Ne | Ne
 
 
 ## <a name="azure-compute-features"></a>Funkce výpočtů Azure
 
 **Funkce** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | ---
-Skupiny dostupnosti | Ano | Ano
+Sady dostupnosti | Ano | Ano
 ROZBOČOVAČE | Ano | Ano  
 Managed Disks | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků není podporována. | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků není podporována.
 
@@ -153,15 +154,15 @@ Sdílený virtuální pevný disk | Nepodporuje se | Pokud nepodporované Kontro
 FC disku | Nepodporuje se | Pokud nepodporované Kontrola předpokladů selže.
 Formát pevného disku | VIRTUÁLNÍ PEVNÝ DISK <br/><br/> VHDX | Při selhání do Azure, Site Recovery automaticky převede na virtuální pevný disk VHDX. Pokud žádnou zpět na místní, virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Než povolíte replikaci pro virtuální počítač, musí se zakázat nástroj BitLocker.
-název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
+Název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
 Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 se typ disku operačního systému basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku jsou podporovány.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Trezor služeb zotavení
 
 **Akce** |  **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
---- | --- | --- 
-Přesunutí trezoru rámci skupiny prostředků<br/><br/> V rámci a napříč odběrů | Ne | Ne 
-Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků<br/><br/> V rámci a napříč odběrů | Ne | Ne 
+--- | --- | ---
+Přesunutí trezoru rámci skupiny prostředků<br/><br/> V rámci a napříč odběrů | Ne | Ne
+Přesunout úložiště, sítě, virtuální počítače Azure mezi skupinami prostředků<br/><br/> V rámci a napříč odběrů | Ne | Ne
 
 
 ## <a name="provider-and-agent"></a>Zprostředkovatel a agent
@@ -179,4 +180,4 @@ Agent služeb zotavení Microsoft Azure | Koordinuje replikaci mezi virtuální 
 
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak [Příprava Azure](tutorial-prepare-azure.md) pro zotavení po havárii virtuálních počítačů technologie Hyper-V na místě. 
+Zjistěte, jak [Příprava Azure](tutorial-prepare-azure.md) pro zotavení po havárii virtuálních počítačů technologie Hyper-V na místě.

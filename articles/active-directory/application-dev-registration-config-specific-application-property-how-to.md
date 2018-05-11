@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cb85971d6d3d4dade69b9dc04e070c67341533a5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Postup vyplňte konkrétní pole vyvinul vlastní aplikace
 
-V tomto článku poskytují stručný popis všechna dostupná pole ve formuláři pro registraci aplikace v [portál Azure](https://portal.azure.com).
+Tento článek poskytuje stručný popis všechna dostupná pole ve formuláři pro registraci aplikace v [portál Azure](https://portal.azure.com).
 
 ## <a name="register-a-new-application"></a>Zaregistrujte novou aplikaci
 
@@ -43,7 +43,7 @@ V tomto článku poskytují stručný popis všechna dostupná pole ve formulá�
 | |**Nativní**: aplikace, která může být nainstalována na počítači nebo zařízení uživatele           |
 | Přihlašovací adresa URL      | Adresa URL, kde můžete uživatelům přihlásit a používat vaši aplikaci                                  |
 
-Jakmile jste vyplnili pole výše, zaregistrovat aplikaci na portálu Azure a budete přesměrováni na stránku aplikace. **Nastavení** stisknutí tlačítka na panelu aplikace otevře se stránka nastavení, který má více polí můžete přizpůsobit vaší aplikace. Následující tabulka popisuje všechna pole na stránce nastavení. Všimněte si, že by vidět jenom podmnožinu těchto polí, v závislosti na tom, jestli jste vytvořili webovou aplikaci nebo nativní aplikaci.
+Jakmile jste vyplnili pole výše, aplikace je zaregistrován na portálu Azure a budete přesměrováni na stránku aplikace. **Nastavení** stisknutí tlačítka na panelu aplikace otevře se stránka nastavení, který má více polí můžete přizpůsobit vaší aplikace. Následující tabulka popisuje všechna pole na stránce nastavení. Všimněte si, že by vidět jenom podmnožinu těchto polí, v závislosti na tom, jestli jste vytvořili webovou aplikaci nebo nativní aplikaci.
 
 | Pole           | Popis                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,9 +53,9 @@ Jakmile jste vyplnili pole výše, zaregistrovat aplikaci na portálu Azure a bu
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná při registraci aplikace.                                                                                                                                                                                                                                              |
 | Adresa URL – odhlášení      | Tuto adresu URL odhlásit jediné odhlášení. Azure AD odešle žádost o odhlášení tato adresa URL Pokud uživatel zruší zaškrtnutí jejich relace s Azure AD pomocí jiných zaregistrovanou aplikaci.                                                                                                                                       |
 | Více tenantů  | Tento přepínač určuje, zda aplikace mohou být využívána víc klientů. Obvykle to znamená, že externími organizacemi moci používat vaši aplikaci zaregistrujete na jejich klienta a udělení přístupu k datům jejich organizace.                                                                   |
-| Adresy URL odpovědí      | Odpověď se adresy URL koncových bodů kde Azure AD vrátí všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
-| Identifikátory URI pro přesměrování   | Nativních aplikací, to je, kde uživatel být odeslat následující úspěšném ověření. Azure kontrolu služby Active Directory, který poskytuje identifikátor URI aplikace přesměrování v požadavku OAuth 2.0 odpovídá jednomu z registrovaných hodnoty na portálu.                                                            |
+| Adresy URL pro odpověď      | Odpověď se adresy URL koncových bodů kde Azure AD vrátí všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
+| Identifikátory URI pro přesměrování   | U nativních aplikací je to kam je uživateli odeslána po úspěšném ověření. Azure kontrolu služby Active Directory, který poskytuje identifikátor URI aplikace přesměrování v požadavku OAuth 2.0 odpovídá jednomu z registrovaných hodnoty na portálu.                                                            |
 | Klíče            | Můžete vytvořit klíče prostřednictvím kódu programu přístup k webovému rozhraní API pro zabezpečené službou Azure AD bez nutnosti zásahu uživatele. Z \* \*klíče\* \* stránky, zadejte klíče popis a datum vypršení platnosti a uložte ke generování klíče. Zajistěte, aby ji uložit někde bezpečný, protože nebudete moci později přístup.             |
 
 ## <a name="next-steps"></a>Další postup
-[Správa aplikací pomocí Azure Active Directory](active-directory-enable-sso-scenario.md)
+[Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md)

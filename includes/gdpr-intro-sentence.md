@@ -5,4 +5,4 @@ MS.Service: zásad azure ms.topic: zahrnují ms.date: 04/24/2018 ms.author: lizr
 ---
 
 >[!Note] 
-> Tento článek obsahuje postup, jak můžete odstranit ze zařízení osobní data a slouží k podpoře vaší povinností podle GDPR. Pokud hledáte obecné informace o GDPR, přečtěte si téma [GDPR části portálu služby důvěřovat](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> Tento článek popisuje kroky, jak odstranit osobní data ze zařízení nebo služby a slouží k podpoře vaší povinností podle GDPR. Pokud hledáte obecné informace o GDPR, přečtěte si téma [GDPR části portálu služby důvěřovat](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

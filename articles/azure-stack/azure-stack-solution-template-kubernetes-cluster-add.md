@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c66b0d7ea5ade90c6bb8f88006f2a09bd407deaa
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f74d378359ec66b76fd53b95ab898f1cec9b07f7
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -77,6 +77,9 @@ Přidejte následující obrázek Ubuntu Server Marketplace:
     - **SKLADOVÁ POLOŽKA**: 16.04 LTS
     - **Verze**: 16.04.201802220
 
+    > [!Note]  
+    > Více než jedna verze Ubuntu Server 16.04 LTS nemusí být zobrazeny. Musíte přidat verzi, která odpovídá. Kubernetes Cluster vyžaduje přesnou verzi položky.
+
 6. Vyberte **stáhnout.**
 
 ## <a name="add-a-custom-script-for-linux"></a>Přidat vlastní skript pro Linux
@@ -95,6 +98,9 @@ Přidejte Kubernetes Cluster z Marketplace:
     - **Nabízejí**: vlastní skript pro Linux 2.0
     - **Verze**: 2.0.3
     - **Vydavatel**: Microsoft Corp.
+
+    > [!Note]  
+    > Více než jedna verze vlastní skript pro Linux nemusí být zobrazeny. Musíte přidat verzi, která odpovídá. Kubernetes Cluster vyžaduje přesnou verzi položky.
 
 6. Vyberte **stáhnout.**
 
@@ -138,6 +144,8 @@ Odebrání položky Kubernetes clusteru:
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení clusteru Kubernetes Azure zásobníku](/user/azure-stack-solution-template-kubernetes-deploy.md)
+[Nasazení clusteru Kubernetes Azure zásobníku](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+
+
 
 [Přehled nabídky služeb v Azure zásobníku](azure-stack-offer-services-overview.md)

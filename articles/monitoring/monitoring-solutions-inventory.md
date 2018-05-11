@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/09/2018
 ms.author: bwren
-ms.openlocfilehash: cab92187c6c36dc4670e202b15b35db8ad510239
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ab07a11883b3462c4b9d0f9adab6c55e4fe49d78
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti o shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od společnosti Microsoft k dispozici s odkazy na jejich podrobnou dokumentaci.  Také obsahuje informace o jejich metoda a frekvenci shromažďování dat do analýzy protokolů.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům připojení a toku dat pro řešení pro správu jiný, můžete použít informace v tomto článku. 
@@ -43,18 +43,18 @@ Vysvětlení sloupců jsou následující:
 | [Activity Log Analytics](../log-analytics/log-analytics-activity.md) | Azure | | | | | | v oznámení |
 | [Posouzení AD](../log-analytics/log-analytics-ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
 | [Stav replikace AD](../log-analytics/log-analytics-ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dní |
-| [Stav agenta](../operations-management-suite/oms-solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
+| [Stav agenta](../operations-management-suite/oms-solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minutu |
 | [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Nagios) |Linux |&#8226; | | | | |v případě přijetí |
-| [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
+| [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Zabbix) |Linux |&#8226; | | | | |1 minutu |
 | [Výstrahy správy](../log-analytics/log-analytics-solution-alert-management.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
-| [Azure Site Recovery](../site-recovery/site-recovery-overview.md) | Azure | | | | | | neuvedeno |
+| [Azure Site Recovery](../site-recovery/site-recovery-overview.md) | Azure | | | | | | nevztahuje se |
 | [Konektor služby Statistika aplikace (Preview)](../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | v oznámení |
-| [Automatizace hybridní pracovní proces](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | neuvedeno |
+| [Automatizace hybridní pracovní proces](../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | nevztahuje se |
 | [Analýza brány Azure aplikace](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
 | **Řešení pro správu** | **Platforma** | **Agent monitorování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence kolekce** |
 | [Skupina zabezpečení sítě Azure Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
-| [Analýza Azure SQL (Preview)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 minuta |
-| [Backup](../backup/backup-introduction-to-azure-backup.md) | Azure |  |  |  |  |  | neuvedeno |
+| [Analýza Azure SQL (Preview)](../log-analytics/log-analytics-azure-sql.md) | Windows | | | | | | 1 minutu |
+| [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | v oznámení |
 | [Kapacitu a výkon (Preview)](../log-analytics/log-analytics-capacity.md) |Windows |&#8226; |&#8226; | | |&#8226; |v případě přijetí |
 | [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |každou hodinu |
 | [Sledování změn](../log-analytics/log-analytics-change-tracking.md) |Linux |&#8226; | | | | |každou hodinu |
@@ -75,7 +75,7 @@ Vysvětlení sloupců jsou následující:
 | [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |aspoň 2 časy denně a 15 minut po instalaci aktualizace |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 dny |
 | [VMware monitorování (Preview)](../log-analytics/log-analytics-vmware.md) | Linux | &#8226; |  |  |  |  | 3 minuty |
-| [Data kabelové sítě 2.0 (Preview)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2 / 8.1 nebo novější) |&#8226; |&#8226; | | | | 1 minuta |
+| [Data kabelové sítě 2.0 (Preview)](../log-analytics/log-analytics-wire-data.md) |Windows (2012 R2 / 8.1 nebo novější) |&#8226; |&#8226; | | | | 1 minutu |
 
 
 

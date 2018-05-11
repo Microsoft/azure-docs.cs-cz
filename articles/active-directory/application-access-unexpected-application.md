@@ -1,11 +1,11 @@
 ---
-title: "Neočekávané aplikace v seznamu aplikací | Microsoft Docs"
-description: "Jak zobrazit všechny aplikace ve vašem klientovi a pochopit, jak aplikace se objeví v seznamu všechny aplikace v rámci podnikové aplikace"
+title: Neočekávané aplikace v seznamu aplikací | Microsoft Docs
+description: Jak zobrazit všechny aplikace ve vašem klientovi a pochopit, jak aplikace se objeví v seznamu všechny aplikace v rámci podnikové aplikace
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: ef04e557aca69e5a15bb38d816ca9f9b9ffaf502
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 75fb5fcb98605a080efa2c9232d186c9a81acf2b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Neočekávané aplikace v seznamu Moje aplikace
 
@@ -122,4 +122,4 @@ K **zakažte všechny operace souhlasu budoucí uživatele v adresáři celý**,
 6.  Zakažte všechny budoucí uživatele souhlasu operace nastavením **uživatelé můžou aplikace přistupovat ke svým datům** přepnutím **ne** a klikněte na tlačítko **Uložit** tlačítko.
 
 ## <a name="next-steps"></a>Další postup
-[Správa aplikací pomocí Azure Active Directory](active-directory-enable-sso-scenario.md)
+[Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md)

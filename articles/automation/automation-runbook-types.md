@@ -1,18 +1,19 @@
 ---
-title: "Typy Runbooků služby Azure Automation"
-description: "Popisuje různé typy sad runbook, které můžete použít v Azure Automation a důležité informace, které byste měli vzít v úvahu při určování, který typ používat. "
+title: Typy Runbooků služby Azure Automation
+description: 'Popisuje různé typy sad runbook, které můžete použít v Azure Automation a důležité informace, které byste měli vzít v úvahu při určování, který typ používat. '
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f3a6b15891a4a1564073d149a198f6789b407342
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 800380c68e1bb1314021ab60f92ccd3b392dbe32
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Typy runbooků služby Azure Automation
 Služby Azure Automation podporuje několik typů sad runbook, které jsou popsány v následující tabulce.  V níže uvedených částech poskytují další informace o jednotlivých typech včetně důležité informace týkající se použití každé.
@@ -58,7 +59,7 @@ Powershellové runbooky jsou založené na prostředí Windows PowerShell.  Př�
 Toto jsou aktuální známé problémy s Powershellovými runbooky.
 
 * Powershellové runbooky nelze načíst nezašifrované [variabilní prostředek](automation-variables.md) s hodnotou null.
-* Nelze načíst Powershellové runbooky [variabilní prostředek](automation-variables.md) s  *~*  v názvu.
+* Nelze načíst Powershellové runbooky [variabilní prostředek](automation-variables.md) s *~* v názvu.
 * Get-Process ve smyčce v prostředí PowerShell runbook může dojít k chybě po přibližně 80 iterací. 
 * Powershellový runbook může selhat, pokud se pokusí o velmi velké množství dat najednou zapisovat do výstupního datového proudu.   Tento problém můžete vyřešit obvykle podle výstupu pouze informace, které je třeba při práci s rozsáhlé objekty.  Například místo výstup podobný vytvořeného *Get-Process*, výstup můžete právě povinná pole s *Get-Process | Vyberte název_procesu procesoru*.
 

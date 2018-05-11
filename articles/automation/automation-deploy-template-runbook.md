@@ -3,17 +3,18 @@ title: Nasadit šablonu Azure Resource Manager v runbooku automatizace Azure
 description: Jak nasadit šablonu Azure Resource Manageru uložená v úložišti Azure ze sady runbook
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: 7b3198c6ea60004a5a747256096c7f6aec68c711
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b6571b87e5753adcd03d7916218ed5a085fb6f82
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
 
@@ -23,7 +24,7 @@ Díky tomu je možné automatizovat nasazení prostředků Azure. Je možné uch
 
 V tomto tématu, vytvoříme runbook prostředí PowerShell, která používá šablonu Resource Manageru uložená v [Azure Storage](../storage/common/storage-introduction.md) nasadit nový účet úložiště Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -229,7 +230,7 @@ Můžete zjistit, zda byl vytvořen nový účet úložiště tak, že spustíte
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 A to je vše! Teď můžete použít šablony Azure Automation a úložiště Azure a Resource Manager k nasazení všech vašich prostředků Azure.
 

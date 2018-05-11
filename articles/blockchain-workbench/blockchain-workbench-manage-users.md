@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c17a406a0fd6f1172599ac0379c6afc139403148
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a426f7f424bc1941890c80a83997d8e08b368884
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Správa uživatelů v Azure Blockchain Workbench
 
 Azure Blockchain Workbench zahrnuje správu uživatelů pro osoby a organizace, které jsou součástí vaší consortium.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Nasazení Blockchain Workbench je vyžadován. V tématu [nasazení Azure Blockchain Workbench](blockchain-workbench-deploy.md) podrobnosti o nasazení.
 
@@ -68,20 +68,18 @@ Přidání uživatelů do **správci** skupiny v adresáři služby Azure AD:
 
 Pomocí aplikace Blockchain Workbench pro správu uživatelů a organizací, které jsou součástí vaší consortium. Můžete přidat nebo odebrat uživatelům aplikací a rolí.
 
-[Otevřete Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url) v váš prohlížeč a přihlaste se jako správce.
+1. [Otevřete Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url) v váš prohlížeč a přihlaste se jako správce.
 
-![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
+    ![Blockchain Workbench](media/blockchain-workbench-manage-users/blockchain-workbench-applications.png)
 
-### <a name="managing-members-in-applications"></a>Správa členy v aplikacích
+    Členové se přidají do všech aplikací. Jednu nebo více rolí aplikace k zahájení kontrakty nebo provést akce, mohou mít členové.
 
-Členové se přidají do všech aplikací. Jednu nebo více rolí aplikace k zahájení kontrakty nebo provést akce, mohou mít členové.
+2. Chcete-li spravovat členy pro aplikaci, vyberte dlaždici aplikace v **aplikace** podokně.
 
-Chcete-li přidat členy do aplikace, vyberte dlaždici aplikace v **aplikace** podokně.
+    Počet členů, které jsou přidružené k vybrané aplikace se odrazí v dlaždici členy.
 
-![Vybrat aplikaci](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
+    ![Vybrat aplikaci](media/blockchain-workbench-manage-users/blockchain-workbench-select-application.png)
 
-> [!NOTE]
-> Počet členů, které jsou přidružené k vybrané aplikace se odrazí v dlaždici členy.
 
 #### <a name="add-member-to-application"></a>Přidání člena do aplikace
 

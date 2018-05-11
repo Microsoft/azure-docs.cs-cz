@@ -1,8 +1,8 @@
 ---
-title: "Řešení potíží s synchronizace souboru Azure (preview) | Microsoft Docs"
-description: "Řešení běžných problémů s Azure synchronizace souboru."
+title: Řešení potíží s synchronizace souboru Azure (preview) | Microsoft Docs
+description: Řešení běžných problémů s Azure synchronizace souboru.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Řešení potíží s synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -28,12 +28,20 @@ Tento článek slouží můžete odstraňovat potíže a řešit problémy, kter
 1. Komentáře části tohoto článku.
 2. [Fórum pro Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Soubory Azure UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Podporu společnosti Microsoft. K vytvoření nové žádosti o podporu, na portálu Azure na **pomoci** vyberte **Nápověda a podpora** tlačítko a potom vyberte **nová žádost o podporu**.
+4. podporu Microsoftu. K vytvoření nové žádosti o podporu, na portálu Azure na **pomoci** vyberte **Nápověda a podpora** tlačítko a potom vyberte **nová žádost o podporu**.
 
 ## <a name="storage-sync-service-object-management"></a>Správa objektu synchronizační služby úložiště
 Pokud uděláte přesun prostředků z jednoho předplatného do jiného předplatného, souborových prostředků synchronizace (Služba synchronizace úložiště) se bude blokovat přesouvání. 
 
 ## <a name="agent-installation-and-server-registration"></a>Instalace a server registrace agenta
+### <a name="during-server-registration-get-the-error-the-term-find-azurermresource-is-not-recognized-as-the-name"></a>Během registrace serveru zobrazí chybová zpráva "termín 'najít AzureRMResource' nebyl rozpoznán jako název..."
+Problém je, že rutina najít AzureRMResource byl změněn v AzureRM IPv6.  Další verzi agenta synchronizace bude opraven pro podporu AzureRM IPv6.  Do té doby můžete alternativně vyřešit tento problém podle:
+1. Zastavit aktuální ServerRegistration.exe prostřednictvím volby Správce úloh
+2. Otevřete příkazový řádek prostředí PowerShell jako správce
+3. PS C:\> AzureRM odinstalace modulu
+4. PS C:\> install-module-name AzureRM - RequiredVersion 5.7.0
+5. Spusťte C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.
+
 <a id="agent-installation-failures"></a>**Řešení chyb instalace agenta**  
 V případě selhání instalace agenta Azure Sync soubor na příkazovém řádku se zvýšenými oprávněními spusťte následující příkaz, který zapnout protokolování během instalace agenta:
 
@@ -131,7 +139,7 @@ Get-AzureRmStorageSyncServerEndpoint -SubscriptionId mysubguid -ResourceGroupNam
 Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -VolumeFreeSpacePercent 60
 ```
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchronizovat
 <a id="afs-change-detection"></a>**Pokud soubor vytvořili přímo v mé sdílenou složku Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá souboru pro synchronizaci servery ve skupině synchronizace?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 

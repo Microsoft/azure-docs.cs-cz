@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3d9f9cd835056b61ee72ddde5add285f47665ac1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro IntelliJ
 
@@ -34,7 +34,7 @@ Chcete-li vytvořit projekt, podívejte se [vytvoření aplikací Spark pomocí 
 > Tento modul plug-in můžete použít k vytvoření a odeslání aplikací pouze pro cluster služby HDInsight Spark na systému Linux.
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - Cluster Apache Spark v HDInsight Linux. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 - Oracle Java Development Kit. Můžete nainstalovat z [Oracle webu](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
@@ -86,7 +86,7 @@ Můžete propojit normální clusteru pomocí Ambari spravované uživatelské j
    > ![Průzkumník úložišť v IntelliJ](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
 
    
-3. Můžete zobrazit v clusteru s podporou propojené **HDInsight** uzlu, pokud vstupní informace jsou správná. Teď můžete odeslat žádost této propojené clusteru.
+3. Můžete zobrazit v clusteru s podporou propojené **HDInsight** uzlu, pokud je vstupní informace správné. Teď můžete odeslat žádost této propojené clusteru.
 
    ![propojené clusteru](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
@@ -256,7 +256,7 @@ Můžete převést stávající Spark Scala aplikace, který jste vytvořili v I
 
 3. Uložte změny. Aplikace by teď měly být kompatibilní s Azure nástrojů pro IntelliJ. Můžete otestovat ji kliknutím pravým tlačítkem na název projektu v prohlížeči projektu. V rozbalovacím má teď možnost **odesílání aplikací Spark na HDInsight**.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Chyba při místním spuštění: *použijte prosím větší velikost haldy*
 V 1.6 Spark Pokud používáte Java SDK 32-bit při místním spuštění, může dojít k následujícím chybám:
@@ -283,11 +283,15 @@ Tyto chyby dojít, protože velikost haldy není dostatečně velký pro Spark k
 ![Přidání možnosti do pole "Možnosti virtuálního počítače" v IntelliJ](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Nejčastější dotazy
-Chcete-li odeslat aplikace do Azure Data Lake Store, zvolte **interaktivní** režimu během procesu Azure přihlášení. Pokud vyberete **automatizovaná** režimu, můžete dojde k chybě.
+Při propojení clusteru, I Navrhněte zadat přihlašovací údaje úložiště.
 
-![interaktivní přihlášení](./media/apache-spark-intellij-tool-plugin/interative-signin.png)
+![Propojit clusteru, zadejte přihlašovací údaje úložiště](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
 
-Nyní jsme ho vyřešil. Můžete použít Cluster služby Azure Data Lake odeslat vaší aplikace s libovolnou metodu přihlášení.
+Existují dva režimy k odeslání úlohy. Pokud je k dispozici úložiště přihlašovacích údajů, dávkovém režimu se použije k odeslání úlohy. Jinak se použije interaktivním režimu. Pokud cluster je zaneprázdněný, můžete získat následující chyba.
+
+![Chyba příkazu get Intellij při clusteru zaneprázdněn](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
+
+![Chyba příkazu get Intellij při clusteru zaneprázdněn](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback-and-known-issues"></a>Zpětná vazba a známé problémy
 V současné době Spark výstupů zobrazení přímo není podporováno.

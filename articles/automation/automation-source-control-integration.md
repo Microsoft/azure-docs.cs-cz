@@ -1,20 +1,21 @@
 ---
-title: "Zdroj integrace ovládacích prvků ve službě Azure Automation"
-description: "Tento článek popisuje integrace ovládacích prvků zdrojového s Githubu ve službě Azure Automation."
+title: Zdroj integrace ovládacích prvků ve službě Azure Automation
+description: Tento článek popisuje integrace ovládacích prvků zdrojového s Githubu ve službě Azure Automation.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 96b4f38ea990edcb23ae792d40651672a921a7c7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 29ec32c933f3dbe07a844bd99a1f5aa3fa57d61b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
+# <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu v Azure Automation
 Integrace ovládacích prvků zdrojového umožňuje přidružit sady runbook ve vašem účtu Automation se úložištěm řízení zdrojů Githubu. Správa zdrojového kódu umožňuje snadno spolupracovat s týmem, sledovat změny a vrátit zpět na dřívější verze sadu runbook. Například Správa zdrojového kódu umožňuje synchronizovat různých větví ve správě zdrojového kódu do vaší vývoj, testovací nebo produkční účty Automation, což usnadňuje povýšit kód, který byl testován v vývojové prostředí pro vaše produkční automatizace účet.
 
 Správa zdrojového kódu umožňuje nabízené kódu do správy zdrojového kódu ve službě Azure Automation nebo runbooků od správy zdrojového kódu pro Azure Automation pro vyžádání obsahu. Tento článek popisuje, jak nastavit zdrojového kódu ve vašem prostředí Azure Automation. Začneme konfigurací Azure Automation pro přístup k vaší úložiště GitHub a provede různé operace, které lze provést pomocí integrace ovládacích prvků zdrojového. 
@@ -34,13 +35,13 @@ Pokud již máte účet GitHub a úložiště, který chcete propojit s Azure Au
    
 1. **Správy zdrojového kódu** otevře, kde můžete nakonfigurovat údaje o vašem účtu GitHub se stránka. Níže je uvedený seznam parametrů ke konfiguraci:  
    
-   | **Parameter** | **Popis** |
+   | **Parametr** | **Popis** |
    |:--- |:--- |
    | Vyberte zdroj |Vyberte zdroj. V současné době pouze **Githubu** je podporována. |
    | Autorizace |Klikněte **Autorizovat** tlačítko k udělení přístupu službě Azure Automation se svým úložištěm GitHub. Pokud jste již přihlášení k účtu GitHub v jiném okně, jsou použita pověření tohoto účtu. Po ověření je úspěšné, stránky se zobrazí vaše uživatelské jméno Githubu pod **autorizace vlastnost**. |
    | Vyberte úložiště |Vyberte ze seznamu dostupných úložišť úložiště GitHub. |
    | Zvolte větev |Vyberte ze seznamu dostupných větví větev. Pouze **hlavní** větev se zobrazí, pokud jste nevytvořili žádné větve. |
-   | Cesta ke složce sady Runbook |Cesta ke složce runbook Určuje cestu v úložišti GitHub, ze kterého chcete push nebo pull kódu. Musí být zadána ve formátu **/název_složky/subfoldername**. Jenom runbooky ve složce cesty sady runbook se budou synchronizovat s účtu Automation. Sady Runbook v podsložkách cesty ke složce runbook bude **není** synchronizovat. Použití  **/**  k synchronizaci všech sad runbook v rámci úložiště. |
+   | Cesta ke složce sady Runbook |Cesta ke složce runbook Určuje cestu v úložišti GitHub, ze kterého chcete push nebo pull kódu. Musí být zadána ve formátu **/název_složky/subfoldername**. Jenom runbooky ve složce cesty sady runbook se budou synchronizovat s účtu Automation. Sady Runbook v podsložkách cesty ke složce runbook bude **není** synchronizovat. Použití **/** k synchronizaci všech sad runbook v rámci úložiště. |
 3. Například, pokud máte úložiště s názvem **PowerShellScripts** složku s názvem, který obsahuje **RootFolder**, která obsahuje složku s názvem **podsložky**. K synchronizaci každé úrovni složky, můžete použít následující řetězce:
    
    1. Pro synchronizaci runbooků **úložiště**, je cesta ke složce sady runbook */*
@@ -57,7 +58,7 @@ Pokud již máte účet GitHub a úložiště, který chcete propojit s Azure Au
    
    * Proměnná **Microsoft.Azure.Automation.SourceControl.Connection** obsahuje hodnoty připojovacího řetězce, jak je uvedeno níže.  
      
-     | **Parameter** | **Hodnota** |
+     | **Parametr** | **Hodnota** |
      |:--- |:--- |
      | Název |Microsoft.Azure.Automation.SourceControl.Connection |
      | Typ |Řetězec |
@@ -65,7 +66,7 @@ Pokud již máte účet GitHub a úložiště, který chcete propojit s Azure Au
 
     * Proměnná **Microsoft.Azure.Automation.SourceControl.OAuthToken**, obsahuje zabezpečené zašifrovanou hodnotu vaší OAuthToken.  
 
-    |**Parameter**            |**Hodnota** |
+    |**Parametr**            |**Hodnota** |
     |:---|:---|
     | Název  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
     | Typ | Unknown(Encrypted) |
@@ -92,7 +93,7 @@ Runbook se změnami umožňuje odešlete změny, které jste provedli v sadě ru
 
 1. Když kliknete na tlačítko **vrácení se změnami**, zobrazí se výzva k potvrzení, klikněte na **Ano** pokračujte.  
    
-    ![Zpráva vrácení se změnami](media/automation-source-control-integration/automation_07_CheckinMessage.png)
+    ![Zpráva pro vrácení se změnami](media/automation-source-control-integration/automation_07_CheckinMessage.png)
 2. Vrácení se změnami spouští runbook řízení zdroj: **synchronizace MicrosoftAzureAutomationAccountToGitHubV1**. Tato sada runbook se připojuje k webu GitHub a nabízených oznámení změny ve službě Azure Automation se svým úložištěm. Chcete-li zobrazit rezervovanou v historii úlohy, přejděte zpět na **integrace ovládacích prvků zdrojového** a kliknutím otevřete stránku úložiště synchronizace. Tato stránka zobrazuje všechny vaše úlohy řízení zdrojů.  Vyberte úlohu chcete zobrazit a kliknutím zobrazíte podrobnosti.  
    
     ![Vrácení se změnami sadu Runbook](media/automation-source-control-integration/automation_08_CheckinRunbook.png)

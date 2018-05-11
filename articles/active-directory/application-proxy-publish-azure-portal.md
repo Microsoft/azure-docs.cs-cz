@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 22ef129830941ee7001dd5e0be1501bf9d755eb7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b9750212925294dec2220e6ef3e6e19d3bc7c3c6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikování aplikací pomocí proxy aplikace služby Azure AD
 
@@ -27,7 +27,7 @@ Proxy aplikace služby Azure Active Directory (AD) umožňuje podporují zaměst
 
 Tento článek vás provede kroky k publikování aplikace místně pomocí Proxy aplikace. Po dokončení tohoto článku, bude mít přístup k aplikaci vzdáleně vaši uživatelé. A budete moci konfigurovat další funkce pro aplikaci jako jednotné přihlašování, přizpůsobené informace a požadavky na zabezpečení.
 
-Pokud jste ještě Proxy aplikace, další informace o této funkci s článkem [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](active-directory-application-proxy-get-started.md).
+Pokud jste ještě Proxy aplikace, další informace o této funkci s článkem [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md).
 
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>Publikování aplikace místně pro vzdálený přístup

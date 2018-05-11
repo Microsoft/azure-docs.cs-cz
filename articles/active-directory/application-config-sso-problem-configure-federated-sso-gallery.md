@@ -1,11 +1,11 @@
 ---
-title: "Problém konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD | Microsoft Docs"
-description: "Některé běžné problémy, kterým může dojít při konfiguraci federovaný jeden adres přihlášení pomocí SAML pro aplikace, které jsou uvedeny v galerii aplikací Azure AD"
+title: Problém konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD | Microsoft Docs
+description: Některé běžné problémy, kterým může dojít při konfiguraci federovaný jeden adres přihlášení pomocí SAML pro aplikace, které jsou uvedeny v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 581b3c4ff7cc7b25f238602560f30280efa34edd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém konfigurace federované jednotné přihlašování pro aplikaci Galerie Azure AD
 
@@ -108,4 +108,4 @@ Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načten
 Naučte se přizpůsobovat deklarací identity atributu SAML odeslaných do vaší aplikace, najdete v tématu [deklarací mapování v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Další informace.
 
 ## <a name="next-steps"></a>Další postup
-[Správa aplikací pomocí Azure Active Directory](active-directory-enable-sso-scenario.md)
+[Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md)

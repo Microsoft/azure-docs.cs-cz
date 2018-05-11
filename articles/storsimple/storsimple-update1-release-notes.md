@@ -1,11 +1,11 @@
 ---
-title: "Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 1.2 | Microsoft Docs"
-description: "Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizace 1.2."
+title: Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 1.2 | Microsoft Docs
+description: Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizace 1.2.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6c9aae87-6f77-44b8-b7fa-ebbdc9d8517c
 ms.service: storsimple
 ms.devlang: NA
@@ -15,16 +15,13 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2856cda1fde04ab61b4cf15ad0dcc3db2a9df68
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 67603c04cf7b5f45517d16620e5b79241aaae94d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizovat 1.2 poznámky k verzi pro vaše zařízení řady StorSimple 8000
-> [!NOTE]
-> Portálu classic pro StorSimple je zastaralý. Váš správce zařízení StorSimple se automaticky přesune na nový portál Azure podle plánu vyřazení. Obdržíte e-mailu a portálu oznámení pro přesunutí. Tento dokument také vyřadí brzy k dispozici. Dotazy týkající se přechodu, najdete v části [– nejčastější dotazy: přesunout do portálu Azure](storsimple-8000-move-azure-portal-faq.md).
-
 
 ## <a name="overview"></a>Přehled
 Následující poznámky k verzi popisují nové funkce a identifikovat kritická otevřené problémy pro StorSimple 8000 řady aktualizace 1.2. Také obsahují seznam softwaru zařízení StorSimple, ovladačů a aktualizace firmwaru disku součástí této verze. 
@@ -77,8 +74,8 @@ Následující tabulka obsahuje souhrn problémy, které jsme vyřešili v aktua
 | 7 |Monitorování LED |V některých případech monitorování LED zadní straně zařízení neobsahoval pokyn správný stav. Modré DIODU byl vypnut. DATA 0 a 1 LED dat byly přerušované, i když nebyla nakonfigurovaná tato rozhraní. Tento problém byl opraven a monitorování LED teď správný stav. |Update 1 |Ano |Ne |
 | 8 |Monitorování LED |V některých případech po použití Update 1 modrý indikátor v aktivním řadiči vypnuté a díky tomu je obtížné určit řadič služby active. Tento problém byl opraven v této verzi opravy. |Aktualizace 1.2 |Ano |Ne |
 | 9 |Síťová rozhraní |V předchozích verzích se může zařízení StorSimple pomocí směrovat brány nakonfigurovat přejít do režimu offline. V této verzi metriky rozhraní data 0 byl provedené nejnižší; Proto i v případě jiných síťových rozhraní povolenou podporu cloudu, veškerý provoz cloudu ze zařízení, budou směrovány prostřednictvím Data 0. |Update 1 |Ano |Ano |
-| 10 |Zálohování |Oprava verze 1.1 aktualizace byl opraven chyby v Update 1, který chybu způsobil zálohy selhávat po 24 dní. |Aktualizace 1.1 |Ano |Ano |
-| 11 |Zálohování |Chyby v předchozích verzích za následek nízký výkon pro cloudové snímky s nízkou změnu sazby. V tomto vydání opravy byl opraven této chyby. |Aktualizace 1.2 |Ano |Ano |
+| 10 |Zálohy |Oprava verze 1.1 aktualizace byl opraven chyby v Update 1, který chybu způsobil zálohy selhávat po 24 dní. |Aktualizace 1.1 |Ano |Ano |
+| 11 |Zálohy |Chyby v předchozích verzích za následek nízký výkon pro cloudové snímky s nízkou změnu sazby. V tomto vydání opravy byl opraven této chyby. |Aktualizace 1.2 |Ano |Ano |
 | 12 |Aktualizace |Chyby v Update 1, který ohlásil selhání upgradu a způsobila řadiče uvést do režimu obnovení, byl opraven v této verzi opravy. |Aktualizace 1.2 |Ano |Ano |
 
 ## <a name="known-issues-in-update-12"></a>Známé problémy v aktualizaci 1.2
@@ -94,7 +91,7 @@ Následující tabulka obsahuje souhrn známých problémů v této verzi.
 | 6 |Webový proxy server |Pokud vaše konfigurace webového proxy serveru má zadaný protokol HTTPS, bude mít vliv na komunikaci služby zařízení a zařízení přejde do režimu offline. Podpora balíčky se budou generovat také v procesu spotřebovávat značné množství prostředků vašeho zařízení. |Ujistěte se, že má adresu URL webového proxy serveru HTTP jako zadaný protokol. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
 | 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrované zařízení, budete muset restartujte řadič active na vašem zařízení. | |Ano |Ne |
 | 8 |Cloud vysokou latencí a vysokou vstupně-výstupní úlohy |Když v zařízení StorSimple dojde kombinaci cloudu velmi vysoké latenci (pořadí sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejděte do sníženou stavu a vstupně-výstupních operací může selhat s chybou "zařízení není připraveno". |Je nutné ručně restartovat řadiče zařízení nebo provádět převzetí služeb při selhání zařízení obnovit z této situaci. |Ano |Ne |
-| 9 |Azure PowerShell |Při použití rutiny StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - nejprve 1 - čekání** vyberte první objekt tak, že můžete vytvořit nový **VolumeContainer** objektu, rutina vrátí všechny objekty. |Zabalit rutinu v závorkách následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - nejprve 1 - čekání** |Ano |Ano |
+| 9 |Azure PowerShell |Při použití rutiny StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - nejprve 1 - čekání** vyberte první objekt tak, že můžete vytvořit nový **VolumeContainer** objekt, rutina vrátí všechny objekty. |Zabalit rutinu v závorkách následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - First 1 - čekání** |Ano |Ano |
 | 10 |Migrace |Při předávání více kontejnery svazků pro migraci, je přesné jenom pro první kontejneru svazků ETA pro poslední zálohu. Kromě toho paralelní migrace se spustí po první 4 záloh v první kontejneru svazků jsou migrovány. |Doporučujeme, abyste současně migrovat jeden kontejner svazků. |Ano |Ne |
 | 11 |Migrace |Po obnovení nejsou svazky přidání do zásad zálohování nebo skupinu virtuálního disku. |Musíte přidat tyto svazky do zásad zálohování k vytvoření zálohy. |Ano |Ano |
 | 12 |Migrace |Po dokončení migrace řad 5000/7000 zařízení nesmí mít přístup k kontejnery migrovaná data. |Doporučujeme, abyste po dokončení a potvrdit migrace odstraňte kontejnery migrovaná data. |Ano |Ne |
@@ -113,6 +110,6 @@ Tato verze aktualizuje ovladače a firmware disku na svém zařízení.
 ## <a name="virtual-device-updates-in-update-12"></a>Aktualizace virtuální zařízení v aktualizaci 1.2
 Tuto aktualizaci nelze nainstalovat na virtuální zařízení. Nové virtuální zařízení bude potřeba vytvořit. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nainstalujte aktualizace 1.2 zařízení](storsimple-install-update-1.md).
 

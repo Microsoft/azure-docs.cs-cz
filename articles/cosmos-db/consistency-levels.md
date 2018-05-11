@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Data přizpůsobitelné úrovně konzistence v Azure Cosmos DB
 Azure Cosmos DB slouží od základů až s globální distribuce v paměti pro každý datový model. Je navržen pro nabízejí předvídatelný s nízkou latencí záruky a více dobře definovaný volný konzistence modelů. V současné době Azure Cosmos DB poskytuje pět úrovně konzistence: silnou, s ohraničenou odolností, založenou relace, konzistentní Předpona a případnou. Typu ohraničenou prošlostí, relace, konzistentní předponu a případné jsou označovány jako "volný konzistence modely", jako poskytují menší konzistence než silné, což je většina vysoce konzistentní modelu, který je k dispozici. 
@@ -44,7 +44,7 @@ Následující tabulka uvádí konkrétní záruky, které poskytují jednotliv�
 | Úrovně konzistence | Záruky |
 | --- | --- |
 | Silné | Linearizability. Čtení je zaručeno vrátit nejnovější verzi položky.|
-| Omezená neaktuálnost | Konzistentní předpona Prodleva čtení mezi zápisy podle předpon k nebo intervalu t |
+| Omezená neaktuálnost | Konzistentní předpona Funkce lag čtení za zápisy maximálně tisíc předpony nebo t interval |
 | Relace   | Konzistentní předpona Monotónní čtení, monotónní zápisy, čtení zápisů, zápisy po čtení |
 | Konzistentní předpona | Vrácené aktualizace jsou předponou všech aktualizací bez mezer |
 | Nahodilé  | Čtení mimo pořadí |
@@ -120,8 +120,8 @@ Ve výchozím nastavení pro uživatelem definované prostředky úroveň konzis
 | Indexování režimu | Čtení | Dotazy |
 | --- | --- | --- |
 | Konzistentní (výchozí) |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Vyberte, ze silného typu s ohraničenou prošlostí, relaci nebo případné |
-| Lazy |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Nahodilé |
-| Žádný |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Neuvedeno |
+| Opožděné |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Nahodilé |
+| Žádný |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Nejde použít |
 
 Jako s požadavky na čtení, můžete snížit úroveň konzistence požadavku specifického dotazu v každé rozhraní API.
 

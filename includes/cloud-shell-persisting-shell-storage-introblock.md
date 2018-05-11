@@ -11,12 +11,15 @@ Při počáteční spuštění prostředí cloudu vás vyzve k přidružit nové
 
 Když používáte základní nastavení a vyberte pouze předplatné, cloudové prostředí vytvoří tři zdroje vaším jménem v podporované oblasti, které je nejblíže můžete:
 * Skupina prostředků: `cloud-shell-storage-<region>`
-* Účet úložiště:`cs<uniqueGuid>`
-* Sdílené složky:`cs-<user>-<domain>-com-<uniqueGuid>`
+* Účet úložiště: `cs<uniqueGuid>`
+* Sdílené složky: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![Nastavení předplatného](../articles/cloud-shell/media/persisting-shell-storage/basic-storage.png)
 
 Sdílené složky připojí jako `clouddrive` ve vaší `$Home` adresáře. Toto je jednorázová akce a sdílené složky automaticky připojí v následné relace. 
+
+> [!NOTE]
+> Pro zabezpečení každý uživatel by měl zřídit vlastní úložiště.  Pro řízení přístupu na základě role (RBAC), musí mít uživatelé přístup Přispěvatel nebo vyšší.
 
 V Bash, sdílené složky také obsahuje bitovou kopii 5 GB, který je vytvořen který automaticky dál data ve vaší `$Home` adresáře. 
 
@@ -37,10 +40,10 @@ Související úložiště Azure, které účty se musí nacházet ve stejné ob
 Vyhledání vašeho přiřazené oblasti, které jste se:
 * V dialogovém okně "rozšířené úložiště nastavení" Zobrazit Poznámka
 * Odkaz na název účtu úložiště vytvořeném pro vás (např: `cloud-shell-storage-westus`)
-* Spustit `env` a vyhledejte proměnné`ACC_LOCATION`
+* Spustit `env` a vyhledejte proměnné `ACC_LOCATION`
 
 Počítač prostředí cloudu neexistuje v následujících oblastech:
-|Oblast|Oblast|
+|Plošný|Oblast|
 |---|---|
 |Amerika|Východ USA, střed USA – Jih, západ USA|
 |Evropa|Severní Evropa, Západní Evropa|

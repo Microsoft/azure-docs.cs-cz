@@ -3,16 +3,17 @@ title: Předávání data pro vytváření sestav k analýze protokolů Azure Au
 description: Tento článek ukazuje, jak odeslat požadovaného stavu konfigurace (DSC) data pro vytváření sestav k Log Analytics k poskytování správy a další aspekty.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ac0da2b73341f0c6ed4f1e99e077996525890ab7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e87420c6f390d607ce6f0f57df4634a134a93d63
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Předávání data pro vytváření sestav k analýze protokolů Azure Automation DSC.
 
@@ -25,7 +26,7 @@ Stav dodržování předpisů se zobrazí na portálu Azure nebo v prostředí P
 * Vazbu mezi stav dodržování předpisů v účtech Automation
 * Vizualizace historii uzlu dodržování předpisů v čase
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Chcete-li zahájit odesílání sestav Automation DSC k analýze protokolů, je třeba:
 
@@ -140,7 +141,7 @@ Diagnostika z Azure Automation vytvoří dvě kategorie záznamů v analýzy pro
 | ID prostředku |Určuje účet Azure Automation. |
 | ResultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
-| ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
+| Skupina prostředků | Název skupiny prostředků pro účet služby Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |Identifikátor GUID, který se o Id korelace sestavy dodržování předpisů. |
@@ -171,12 +172,12 @@ Diagnostika z Azure Automation vytvoří dvě kategorie záznamů v analýzy pro
 | ID prostředku |Určuje účet Azure Automation. |
 | ResultDescription | Popis pro tuto operaci. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
-| ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
+| Skupina prostředků | Název skupiny prostředků pro účet služby Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |Identifikátor GUID, který se o Id korelace sestavy dodržování předpisů. |
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Odeslání dat Automation DSC k analýze protokolů, lze získat lepší přehled o stavu uzly Automation DSC podle:
 

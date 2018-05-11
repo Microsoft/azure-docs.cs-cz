@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect: Časté otázky – | Microsoft Docs"
-description: "Tato stránka obsahuje časté otázky k Azure AD Connect."
+title: 'Azure Active Directory Connect: Časté otázky – | Microsoft Docs'
+description: Tato stránka obsahuje časté otázky k Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 05/09/2018
 ms.author: billmath
-ms.openlocfilehash: 07b0209ef94f91c00b98b8801323a58cd9d14494
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 46a9bf47b4998c4d5be47f67556fbdb3ba7b71db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Nejčastější dotazy pro Azure Active Directory Connect
 
@@ -57,7 +57,7 @@ Ne, Azure AD Connect nepodporuje místními doménovými strukturami nebo domén
 **Otázka: je čistě IPv6 prostředí podporovaná?**  
 Ne, Azure AD Connect nepodporuje čistý prostředí IPv6.
 
-## <a name="federation"></a>metadata
+## <a name="federation"></a>Federace
 **Otázka: Co mám dělat, když se zobrazí e-mailu, zpráva se žádostí o obnovení certifikátu Moje Office 365**  
 Použijte pokyny, které je uvedené v [obnovení certifikátů](active-directory-aadconnect-o365-certs.md) téma o tom, jak obnovit certifikát.
 
@@ -99,7 +99,69 @@ Aktuálně nepodporujeme změna atributů HTML přihlašovací stránky. Právě
 **Otázka: je způsob, jak zabránit souběžných relací?**</br>
 Ne.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="auto-upgrade"></a>Automatický upgrade
+
+**Otázka: jaké jsou výhody a důsledky použití automatické aktualizace?**</br>
+Doporučujeme všem zákazníkům, aby povolte automatický upgrade pro jejich instalaci Azure AD Connect. Výhody se, že vždy obdrží nejnovější opravy, včetně aktualizací zabezpečení chyb zabezpečení, které byly nalezeny ve službě Azure AD Connect. Proces upgradu je bezproblémově a proběhne automaticky, jakmile je k dispozici nová verze. Jsme zajišťují mnoho tisíc zákazníků Azure AD Connect prostřednictvím automatický upgrade s každou novou verzi.
+
+Proces automatického upgradu vždy nejprve vytvoří, jestli má tento nárok pro automatický upgrade instalace (to zahrnuje hledá vlastní změny pravidel, konkrétní faktorech prostředí atd.) a pokud ano, je upgrade provádět a testovat. Pokud testy naznačují, že upgrade nebyl úspěšný, se získat automaticky obnovit předchozí verzi.
+
+V závislosti na velikosti prostředí proces může trvat několik hodin a při upgradu se stane, bude provedena žádná synchronizace mezi Windows Server AD a Azure AD.
+
+**Otázka: zobrazila e-mailu zobrazuje oznámení, který již nefunguje Moje automatický upgrade a potřebuji nainstalovat novou verzi. Proč je potřeba to udělat?**</br>
+Poslední rok jsme vydali verzi služby Azure AD Connect, který za určitých okolností může mít zakázán funkci automatického upgradu na vašem serveru. Tento problém vyřešili ve službě Azure AD Connect verze 1.1.750.0, který byl vydán na konci poslední měsíc. Potřebujeme zákazníci, kteří mohou mít byla postižené tímto problémem ručně upgradovat na nejnovější verzi služby Azure AD Connect zmírnit problém. Postup při ručním upgradu, musíte stáhnout a spustit nejnovější verzi souboru AADConnect.msi.
+ 
+-  Pokud vaše aktuální verze je starší než 1.1.750.0, musíte provést upgrade na nejnovější verzi [který můžete stáhnout zde](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+- Pokud vaše verze Azure AD Connect je 1.1.750.0 nebo novější, není nutné provádět žádnou akci zmírnit upgradu problém automaticky, jak jste už na verzi, která má pro tuto opravu. 
+
+**Otázka: zobrazila e-mailu zobrazuje oznámení pro upgrade na nejnovější verzi a znovu povolte automatický upgrade. Počítač nachází v 1.1.654.0, je nutné upgradovat?** </br>    
+Ano, musíte upgradovat na 1.1.750 nebo novější znovu povolte automatický upgrade. Zde je odkaz, který vysvětluje, jak upgradovat na novější verzi
+
+**Otázka: zobrazila e-mailu zobrazuje oznámení pro upgrade na nejnovější verzi a znovu povolte automatický upgrade. I použili prostředí PowerShell povolit automatický upgrade, stále nutné nainstalovat nejnovější verzi?**</br>    
+Ano, stále musíte upgradovat na verzi 1.1.750.0 nebo novější. Povolení automatického upgradu služby pomocí prostředí PowerShell není problém automatického upgradu z verzí před 1.1.750 zmírnit
+
+**Otázka: Chcete provést upgrade na novější verzi, ale nejste si jisti, kteří nainstalovali Azure AD Connect a nemáme uživatelské jméno a heslo.  To potřebujeme?**</br>
+Nemusíte znát uživatelské jméno a heslo, které bylo původně použít k upgradu Azure AD Connect – všechny účet Azure AD, který má roli globálního správce lze použít.
+
+**Otázka: jak najít, kterou verzi služby Azure AD Connect jsem na?**</br>   
+Pokud chcete ověřit, která verze služby Azure AD Connect je nainstalovaná na serveru, přejděte do ovládacích panelů a vyhledat nainstalovaná verze systému Microsoft Azure AD Connect v programy > programy a funkce.":
+
+![Verze](media/active-directory-aadconnect-faq/faq1.png)
+
+**Otázka: jak provádět upgrade na nejnovější verzi služby AADConnect?**</br>    
+To [článku](active-directory-aadconnect-upgrade-previous-version.md) vysvětluje, jak upgradovat na novější verzi. 
+
+**Otázka: jsme již provedli upgrade na nejnovější verzi služby AADConnect poslední rok, potřebujeme upgrade znovu?**</br> Azure AD Connect týmy provede časté aktualizace služby a je důležité, zda je server aktuální pomocí nejnovější verze, abyste mohli využívat výhod oprav chyb a aktualizace zabezpečení, jakož i nové funkce. Pokud povolíte automatický upgrade softwaru verze se aktualizují automaticky. Najít historie verzí služby Azure AD Connect, postupujte podle to [odkaz](active-directory-aadconnect-version-history.md).
+
+**Otázka: jak dlouho bude trvat k provedení upgradu a jaký bude dopad na Moji uživatelé?**</br>    
+Čas potřebný k upgradu závisí na velikosti vašeho klienta a pro větší organizace může být vhodné to provést v večer nebo o víkendech. Všimněte si, že během upgradu žádná aktivita synchronizace probíhá.
+
+**Otázka: I domníváte po upgradu na službu AADConnect, ale na portálu Office stále uvádí DirSync.  Wny je to?**</br>    
+Tým Office pracuje, chcete-li získat aktualizace portálu Office tak, aby odrážela aktuální název produktu – nevyjadřuje které synchronizační nástroj služby používáte.
+
+**Otázka: po kontrole stavu automatický Upgrade a zobrazuje "pozastaveno". Proč ji je pozastaveno? By měl povolit ji?**</br>     
+Chyby byla zavedena v předchozí verzi, která za určitých okolností by nechte stav upgradu automaticky nastavena na "pozastavenou". Ruční povolení ho je technicky možné ale komplexní několik kroků, by vyžadovaly, takže nainstalujte nejnovější verzi služby Azure AD Connect je nejlepší věcí, které můžete provést
+
+**Otázka: Moje společnost má požadavky na správu striktní změny a chcete řídit, kdy je vložena. Můžete řídit, kdy se spustí automatický Upgrade?**</br> Ne, je dnes žádné takové funkce se jedná o něco, co jsme hodnocení pro budoucí použití.
+
+**Otázka: bude získat e-mailu, pokud se nezdařilo automatický upgrade? Jak bude vědět, že bylo úspěšné.**</br>     
+Nebudete upozorněni, v důsledku upgradu, to je něco, co jsme hodnocení pro budoucí použití.
+
+**Q:do publikujete časová osa, když plánujete push na automatické upgrady?**</br>    
+Automatický upgrade je prvním krokem v procesu naše verze novější verze, takže vždy, když je nová verze jsme předá automatické upgrady. Novější verze služby Azure AD Connect jsou předběžně oznámené v [přehled Azure AD](../../active-directory/whats-new.md).
+
+**Otázka: automatický upgrade upgradu AAD Connect Health?**</br>   Ano, upgrade automaticky upgraduje i AAD Connect Health
+
+**Otázka: máte také automatický upgrade AAD Connect servery v pracovní režimu?**</br>   
+Ne, které nelze automatický upgrade server služby Azure AD Connect, který je v pracovním režimu.
+
+**Otázka: Pokud automatický Upgrade selže a server AAD Connect se nespustí, co je třeba udělat?**</br>   
+Ve výjimečných případech se nespustí služba Azure AD Connect po provedení upgradu. V těchto případech Restartujte prosím server, které obvykle opravy problému. Pokud služba Azure AD Connect stále není možné spustit, otevřete prosím lístek podpory. Tady je [odkaz](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) to vysvětluje, jak to provést. 
+
+**Otázka: nejste si jisti, jaké jsou rizika při upgradu na novější verzi služby Azure AD Connect. Můžete na pomoc při upgradu volat?**</br>
+Pokud potřebujete pomoc, upgrade na novější verzi služby Azure AD Connect, otevřete prosím lístek podpory, zde je [odkaz](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) který ukazuje, jak to udělat.
+
+## <a name="troubleshooting"></a>Poradce při potížích
 **Otázka: jak můžete získat pomoc s Azure AD Connect?**
 
 [Znalostní bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)

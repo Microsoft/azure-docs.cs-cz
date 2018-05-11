@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2180c0da4dc77e854a9b73eb31472feae7c7c3ad
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: efedbf89a6d15a13db5bc86fef9f270e0c84e13b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam každému dokumentu zapsána o různých funkcích týkající se aplikace v Azure Active Directory (Azure AD).
@@ -30,9 +30,9 @@ Je stručný úvod do každé oblasti hlavní funkce, jakož i pokyny na článk
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Úvod do správy problémů aplikace, které řeší Azure AD |[Správa aplikací pomocí služby Azure Active Directory (AD)](active-directory-enable-sso-scenario.md) |
+| Úvod do správy problémů aplikace, které řeší Azure AD |[Správa aplikací pomocí služby Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Přehled různých funkcí ve službě Azure AD, vztahuje k povolování jednotné přihlašování, definovat, kdo má přístup k aplikacím a jak uživatelé spustí aplikace |[Přístup k aplikaci a jednotné přihlašování v Azure Active Directory](active-directory-appssoaccess-whatis.md) |
-| Podívejte se na různé kroky při integraci aplikace do služby Azure AD |[Integrace s aplikacemi Azure Active Directory](active-directory-integrating-applications-getting-started.md)<br /><br />[Povolení jednotného přihlašování k aplikacím SaaS](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Správa přístupu k aplikacím](active-directory-managing-access-to-apps.md) |
+| Podívejte se na různé kroky při integraci aplikace do služby Azure AD |[Integrace s aplikacemi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Povolení jednotného přihlašování k aplikacím SaaS](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Správa přístupu k aplikacím](active-directory-managing-access-to-apps.md) |
 | Technické vysvětlení, jak jsou reprezentována aplikací ve službě Azure AD |[Jak a proč se aplikace přidávají do služby Azure AD](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Řešení potíží s články
@@ -78,8 +78,8 @@ Pokud máte aplikace ve vaší privátní sítě, které je nutné mít přístu
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Přehled proxy aplikace služby Azure AD a jak to funguje |[Poskytuje zabezpečený vzdálený přístup k místním aplikacím](active-directory-application-proxy-get-started.md) |
-| Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](active-directory-application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](active-directory-application-proxy-silent-installation.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](active-directory-application-proxy-publish.md)<br /><br />[Jak používat vlastní název domény](active-directory-application-proxy-custom-domains.md) |
+| Přehled proxy aplikace služby Azure AD a jak to funguje |[Poskytuje zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md) |
+| Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](active-directory-application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](active-directory-application-proxy-silent-installation.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md)<br /><br />[Jak používat vlastní název domény](active-directory-application-proxy-custom-domains.md) |
 | Postup povolení jednoho přihlášení a podmíněného přístupu pro aplikace publikované s Proxy aplikace |[Jednotné přihlášení pomocí Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[Podmíněný přístup a Proxy aplikací](application-proxy-enable-remote-access-sharepoint.md) |
 | Pokyny k použití aplikace Proxy pro tyto scénáře |[Jak podporovat nativní klientské aplikace](active-directory-application-proxy-native-client.md)<br /><br />[Jak podporovat deklaracemi identity aplikace](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Jak podporovat aplikace, které jsou publikovány v samostatných sítí a umístění](active-directory-application-proxy-connectors-azure-portal.md) |
 | Průvodce řešením potíží pro Proxy aplikace |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
@@ -121,7 +121,7 @@ Cloud App Discovery pomáhá IT oddělení informace, které aplikace SaaS jsou 
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Obecný přehled o tom, jak funguje |[Vyhledání aplikace neschválená cloudových aplikací s Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md) |
+| Obecný přehled o tom, jak funguje |[Vyhledání aplikace neschválená cloudových aplikací s Cloud App Discovery](manage-apps/cloud-app-discovery.md) |
 | Podrobnější informace o tom, jak funguje, se odpovědi na dotazy na ochranu osobních údajů |[Zabezpečení a důležité informace o ochraně osobních údajů](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
 | Nejčastější dotazy |[Nejčastější dotazy ke Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
 | Podrobné pokyny pro nasazení Cloud App Discovery |[Příručka pro nasazení zásad skupiny](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[Průvodci nasazením aplikace System Center](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[Instalace na Proxy serverech s vlastní porty](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |

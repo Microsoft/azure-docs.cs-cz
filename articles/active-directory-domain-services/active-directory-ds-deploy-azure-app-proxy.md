@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: Nasazení Proxy aplikace služby Azure Active Directory | Microsoft Docs"
-description: "Použít proxy aplikace služby Azure AD na spravované domény Azure Active Directory Domain Services"
+title: 'Azure Active Directory Domain Services: Nasazení Proxy aplikace služby Azure Active Directory | Microsoft Docs'
+description: Použít proxy aplikace služby Azure AD na spravované domény Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 13141549b5b1b77f45dd6fa1c7560b9f9d0e9b72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure AD Application Proxy na spravované doméně služby Azure AD Domain Services
 Proxy aplikace služby Azure Active Directory (AD) umožňuje podporují zaměstnanci na vzdálených pracovištích a publikování aplikací místní přístup přes internet. S Azure AD Domain Services můžete nyní navýšení a shift starší aplikace spuštěné místně službám infrastruktury Azure. Potom můžete publikovat tyto aplikace pomocí Azure AD Application Proxy poskytnout zabezpečený vzdálený přístup na uživatele ve vaší organizaci.
 
-Pokud jste ještě Azure AD Application Proxy, další informace o této funkci se v následujícím článku: [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../active-directory/active-directory-application-proxy-get-started.md).
+Pokud jste ještě Azure AD Application Proxy, další informace o této funkci se v následujícím článku: [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../active-directory/manage-apps/application-proxy.md).
 
 
 ## <a name="before-you-begin"></a>Než začnete

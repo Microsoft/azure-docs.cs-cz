@@ -1,8 +1,8 @@
 ---
-title: "GDPR v proxy aplikace služby Azure Active Directory | Microsoft Docs"
-description: "Další informace o GDPR v proxy aplikace služby Azure Active Directory."
+title: GDPR v proxy aplikace služby Azure Active Directory | Microsoft Docs
+description: Další informace o GDPR v proxy aplikace služby Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
@@ -15,11 +15,11 @@ ms.date: 02/16/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5e99fba2f226e1e9b401bd8ef5b3b85a5e8c6a7c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: a3df15743b4918d72fac5f8769a2d3ee721a452f
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="gdpr-in-the-azure-active-directory-application-proxy"></a>GDPR v proxy aplikace služby Azure Active Directory  
 
@@ -49,15 +49,15 @@ Můžete najít v protokolech událostí connect v `C:\ProgramData\Microsoft\Mic
 
 Existují tři různé typy požadavků, které může vést pro: 
 
-- Odstranění
-- Zobrazení
-- Export
+- Odstranit
+- Zobrazit
+- Exportovat
  
 Zobrazení procesů / export požadavky, musíte projít všechny soubory protokolu a vyhledejte odpovídající položky. 
 
 Protože protokoly jsou textové soubory, můžete vyhledávat podle, například pomocí `findstr` příkazu najděte záznamy související s uživateli. Vzhledem k tomu může být v protokolech hledat následující pole: 
 
-- ID uživatele
+- UserId
 - Typ uživatelské jméno, nakonfigurované pro všechny aplikace pomocí omezeného delegování protokolu Kerberos:
     - Hlavní název uživatele (UPN)
     - Místní hlavní název uživatele (UPN)
@@ -80,5 +80,5 @@ Chcete-li vypnout konektor protokoly, budete muset upravit `C:\Program Files\Mic
 
 ## <a name="next-steps"></a>Další postup
 
-Přehled proxy aplikace služby Azure AD najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](active-directory-application-proxy-get-started.md).
+Přehled proxy aplikace služby Azure AD najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md).
 

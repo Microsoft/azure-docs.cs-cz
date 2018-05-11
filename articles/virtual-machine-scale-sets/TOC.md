@@ -29,6 +29,8 @@
 ### [Azure CLI 2.0](tutorial-autoscale-cli.md)
 ### [Azure PowerShell](tutorial-autoscale-powershell.md)
 ### [Šablona](tutorial-autoscale-template.md)
+## Nasazení aplikací na do škálovací sady virtuálních počítačů Azure s vlastní imagí Packeru
+### [Azure CLI 2.0](https://docs.microsoft.com/learn/deploy-custom-vmss-app/index)
 
 # Ukázky
 ## [Azure CLI 2.0](cli-samples.md)

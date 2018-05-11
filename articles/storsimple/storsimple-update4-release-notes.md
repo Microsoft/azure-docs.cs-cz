@@ -1,12 +1,12 @@
 ---
-title: "Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 4 | Microsoft Docs"
-description: "Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizací 4."
+title: Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 4 | Microsoft Docs
+description: Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizací 4.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Poznámky k verzi zařízení StorSimple 8000 řady aktualizací 4
-> [!NOTE]
-> Portál Classic pro StorSimple je zastaralý. Vaši Správci zařízení StorSimple se automaticky přesunou na nový Azure Portal podle plánu ukončování používání. O tomto přesunu vás budeme informovat prostřednictvím e-mailu a oznámení na portálu. Tento dokument zanedlouho také nebude k dispozici. Pokud máte jakékoli dotazy k tomuto přesunu, přečtěte si [Nejčastější dotazy: Přesun na Azure Portal](storsimple-8000-move-azure-portal-faq.md).
-
 
 ## <a name="overview"></a>Přehled
 
@@ -75,7 +72,7 @@ Následující tabulka obsahuje souhrn problémy, které jsme vyřešili v aktua
 | 3 |Balíček pro podporu |V předchozí verzi byly problémy související s podporu balíček, který by způsobilo System.OutOfMemory výjimky nebo jiné chyby, které vedly k nedodržení vytvoření balíčku podpory. Tyto chyby budou opraveny v této verzi. |Ano |Ano |
 | 4 |Monitorování |V předchozí verzi existuje problém související s monitorování grafy pro místně připnuli svazky kde byl spotřeby ukazuje EB. Tato chyba se vyřeší v této verzi. |Ano |Ano |
 | 5 |Migrace |V předchozí verzi nebyly k dispozici několik problémy související s spolehlivost migrace z řady 5000 7000 zařízení řady 8000. Mít byly tyto problémy řešeny v této verzi. |Ano |Ano |
-| 6 |Aktualizace |V předchozích verzích, pokud došlo k chybě aktualizace, pak se řadiče přejde do režimu obnovení a proto uživatele nelze pokračovat v aktualizaci a by bylo potřeba kontaktovat Microsoft Support. <br> Toto chování se změnilo v této verzi. Pokud má uživatel k selhání aktualizace po oběma řadičům běží stejná verze (aktualizace 4), pak se řadiče nepřecházejí do režimu obnovení. Pokud uživatel zaznamená této chybě, doporučujeme, abyste chvilku počkejte a pak zkuste znovu aktualizovat. Opakovaném může být úspěšné. V případě selhání opakovaném se měli kontaktovat Microsoft Support. |Ano |Ano |
+| 6 |Aktualizovat |V předchozích verzích, pokud došlo k chybě aktualizace, pak se řadiče přejde do režimu obnovení a proto uživatele nelze pokračovat v aktualizaci a by bylo potřeba kontaktovat Microsoft Support. <br> Toto chování se změnilo v této verzi. Pokud má uživatel k selhání aktualizace po oběma řadičům běží stejná verze (aktualizace 4), pak se řadiče nepřecházejí do režimu obnovení. Pokud uživatel zaznamená této chybě, doporučujeme, abyste chvilku počkejte a pak zkuste znovu aktualizovat. Opakovaném může být úspěšné. V případě selhání opakovaném se měli kontaktovat Microsoft Support. |Ano |Ano |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Známé problémy v aktualizaci 4 z předchozích verzí

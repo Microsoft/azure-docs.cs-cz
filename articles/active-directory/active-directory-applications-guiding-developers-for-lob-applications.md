@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/14/2018
 ms.author: kgremban
 ms.custom: seohack1
-ms.openlocfilehash: 804c135afae97ffc8b2cf78c31fd8c3653e9911d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 66102836b954bf4fafc4379cf573658d89e0d409
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Vyvíjet-obchodní aplikace pro Azure Active Directory
 Tato příručka poskytuje přehled vývoje-obchodní aplikace (LoB) pro Azure Active Directory (AD). Předpokládanou cílovou skupinou je globální správci Active Directory nebo Office 365.
@@ -77,7 +77,7 @@ Pro aplikace, které důvěřujete můžete zjednodušit uživatelské prostřed
 Další informace o souhlas uživatele a souhlasu prostředí v Azure, najdete v části [integrace aplikací s Azure Active Directory](active-directory-integrating-applications.md).
 
 ## <a name="related-articles"></a>Související články
-* [Povolit zabezpečený vzdálený přístup k místním aplikacím s proxy aplikace služby Azure AD](active-directory-application-proxy-get-started.md)
+* [Povolit zabezpečený vzdálený přístup k místním aplikacím s proxy aplikace služby Azure AD](manage-apps/application-proxy.md)
 * [Verze Preview Azure podmíněného přístupu pro aplikace SaaS](active-directory-conditional-access-azure-portal-get-started.md)
 * [Správa přístupu k aplikacím s Azure AD](active-directory-managing-access-to-apps.md)
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)

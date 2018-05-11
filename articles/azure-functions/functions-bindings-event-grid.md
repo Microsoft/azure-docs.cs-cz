@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f12cdf2fc8a1aa3b7e8bc3c5eeb338601a8f2ffe
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
 Tento článek vysvětluje, jak bude zpracováván [událostí mřížky](../event-grid/overview.md) události v Azure Functions.
 
-Mřížky událostí je služba Azure, která odešle požadavky HTTP s oznámením o událostech, které ve dojde *vydavatelů*. Vydavatel je služba nebo prostředek, který pochází událost. Například účet úložiště objektů blob v Azure je vydavatelem a nahrání objektu blob nebo odstranění je událost. Některé [služby Azure mají integrovanou podporu pro publikování událostí do mřížky událostí](../event-grid/overview.md#event-sources). 
+Mřížky událostí je služba Azure, která odešle požadavky HTTP s oznámením o událostech, které ve dojde *vydavatelů*. Vydavatel je služba nebo prostředek, který pochází událost. Například účet úložiště objektů blob v Azure je vydavatel, a [nahrání objektu blob nebo odstranění je událost](../storage/blobs/storage-blob-event-overview.md). Některé [služby Azure mají integrovanou podporu pro publikování událostí do mřížky událostí](../event-grid/overview.md#event-sources). 
 
 Událost *obslužné rutiny* přijímat a zpracovávat události. Azure Functions je jedním z několika [služby Azure, které mají integrovanou podporu pro zpracování událostí mřížky událostí](../event-grid/overview.md#event-handlers). V tomto článku zjistěte, jak použít aktivační událost INSTEAD mřížky události k vyvolání funkce při přijetí události z události mřížky.
 
@@ -43,7 +43,7 @@ If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` typ
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Podívejte se na příklad konkrétní jazyk pro aktivační procedury mřížky událostí:
 

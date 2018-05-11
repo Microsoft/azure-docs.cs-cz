@@ -1,11 +1,11 @@
 ---
-title: "Požadavky na identit pro hybridní cloudové identity návrhu Azure | Microsoft Docs"
-description: "Identifikace obchodních potřeb společnosti, které povede k definování požadavky návrhu hybridní identity."
-documentationcenter: 
+title: Požadavky na identit pro hybridní cloudové identity návrhu Azure | Microsoft Docs
+description: Identifikace obchodních potřeb společnosti, které povede k definování požadavky návrhu hybridní identity.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: de690978-84ef-41ad-9dfe-785722d343a1
 ms.service: active-directory
 ms.devlang: na
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5741a5024b5f5105a71d9404191601b951a301e4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Stanovení požadavků na identit pro hybridní řešení identit
 Prvním krokem při navrhování řešení hybridní identity je určit požadavky na obchodní organizace, která bude mít využívání tohoto řešení.  Hybridní identita se spustí jako podpůrné role (podporuje jiných řešení cloud tím, že poskytuje ověřování) a přejde na, zadejte nové a zajímavé funkce, které odemknutí nové úlohy pro uživatele.  Tyto úlohy nebo služby, které chcete použít pro vaše uživatele se určují požadavky na návrh hybridní identity.  Tyto služby a úlohy muset využívají hybridní identita jak místně a v cloudu.  
 
 Musíte si projít klíčové aspekty podniku, aby porozumět, co je nyní požadavek a co společnosti plánuje do budoucna. Pokud nemáte dlouhodobou strategii pro návrhu hybridní identity viditelnost, je pravděpodobné, že vaše řešení nebude škálovatelné podle podnikání růst a měnit.   T mu obrázek níže znázorňuje příklad architektury hybridní identity a úlohy, které jsou odemykají pro uživatele. Toto je jenom jako příklad nových možností, které můžete odemknout a doručit s strategie plnou hybridní identity. 
 
-Některé součásti, které jsou součástí architektury hybridní identity![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
+Některé součásti, které jsou součástí architektury hybridní identity ![](./media/hybrid-id-design-considerations/hybrid-identity-architechture.png)
 
 ## <a name="determine-business-needs"></a>Určení obchodních potřeb
 Každá společnost má jiné požadavky, i když jsou tyto společnosti součástí stejného odvětví, skutečné obchodní, které požadavky se mohou lišit. Vždy můžete využít osvědčené postupy v odvětví, ale výsledku jsou to obchodní potřeby společnosti, které povede k definování požadavky návrhu hybridní identity. 
@@ -56,7 +56,7 @@ Musíte taky zajímat, cloudové služby, které vaše společnost může mít. 
 * Tato integrace je aktuálně v produkčním prostředí, nebo je pilotní nasazení?
 
 > [!NOTE]
-> Pokud nemáte přesné mapování u všech aplikací a cloudové služby, můžete použít nástroj Cloud App Discovery. Tento nástroj můžete poskytnout přehled o všech vaší organizace a příjemce cloudových aplikací vaše IT oddělení. Díky tomu se dají mnohem jednodušeji než dřív objevit ve vaší organizaci skryté IT činnosti, včetně vzorců používání a všech přístupů uživatelů ke cloudovým aplikacím. Získat Začínáme najdete [Cloud app discovery](active-directory-cloudappdiscovery-whatis.md).
+> Pokud nemáte přesné mapování u všech aplikací a cloudové služby, můžete použít nástroj Cloud App Discovery. Tento nástroj můžete poskytnout přehled o všech vaší organizace a příjemce cloudových aplikací vaše IT oddělení. Díky tomu se dají mnohem jednodušeji než dřív objevit ve vaší organizaci skryté IT činnosti, včetně vzorců používání a všech přístupů uživatelů ke cloudovým aplikacím. Získat Začínáme najdete [Cloud app discovery](manage-apps/cloud-app-discovery.md).
 > 
 > 
 
@@ -65,7 +65,7 @@ Dále musíte vyhodnotit požadavky na integraci identity. Je důležité určit
 
 * Bude vaše organizace používat federační, standardní ověřování nebo obojí?
 * Je federation požadavek?  Z důvodu následující:
-  * Kerberos-based SSO
+  * Jednotné přihlašování založené na protokolu Kerberos
   * Má vaše společnost místní aplikace (buď vytvořen interní nebo 3. stran), která používá SAML nebo podobné možnosti federace.
   * Vícefaktorové ověřování pomocí čipové karty. RSA SecurID atd.
   * Pravidla klientské přístupu, které řeší níže uvedené otázky:

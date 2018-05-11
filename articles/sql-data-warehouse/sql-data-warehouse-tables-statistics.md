@@ -7,14 +7,14 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 05/09/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistiky pro tabulky v Azure SQL Data Warehouse
 Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci dotazu na tabulky v Azure SQL Data Warehouse.
@@ -22,24 +22,46 @@ Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci
 ## <a name="why-use-statistics"></a>Proč používat statistiky?
 Více Azure SQL Data Warehouse ví o vašich dat, tím rychleji se spouštět dotazy na ho. Shromažďování statistik na vaše data a pak ho načítání do SQL Data Warehouse je jedním z nejdůležitějších kroků, které můžete provést za účelem optimalizace své dotazy. Je to proto Optimalizátor dotazů SQL Data Warehouse je na základě nákladů pro optimalizaci. Porovná náklady na různé plány dotazů a potom vybere plán s nejnižší náklady, což je ve většině případů plán, který provede nejrychlejší. Například pokud pro optimalizaci odhadne, že datum, kdy jsou filtrování v dotazu vrátí jeden řádek, ho vyberte jiný plán než pokud odhadne, vybraným datem vrátí 1 milionu řádků.
 
-Proces vytváření a aktualizaci statistiky je aktuálně ruční proces, ale je snadné provést.  Brzy bude moct vytvářet a aktualizovat statistiku jednoho sloupce a indexy automaticky.  Pomocí následujících informací můžete výrazně automatizovat správu statistik na vaše data. 
+## <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
+Při vytvoření automatického statistiky možnost na AUTO_CREATE_STATISTICS, SQL Data Warehouse analyzuje příchozí uživatelských dotazů, kde jeden sloupec statistiky jsou vytvořeny pro sloupce, které chybí statistiky. Optimalizátor dotazů vytvoří statistiky na jednotlivých sloupců v dotazu podmínka predikátu nebo připojení k ke zlepšení odhady mohutnost pro plán dotazu. Automatické vytváření statistik je nyní ve výchozím nastavení zapnutá.
 
-## <a name="scenarios"></a>Scénáře
-Vytvoření jen Vzorkovaná statistiku pro každý sloupec je snadný způsob, jak začít pracovat. Zastaralé statistiky vést k výkonu zhoršené dotazu. Aktualizuje statistické údaje pro všechny sloupce s růstem data však může spotřebovat paměti. 
+Můžete zkontrolovat, jestli váš datový sklad má nakonfigurovaný tak, že spustíte následující příkaz:
 
-Toto jsou doporučení pro různé scénáře:
-| **Scénář** | Doporučení |
-|:--- |:--- |
-| **Začínáme** | Aktualizovat všechny sloupce po migraci do SQL Data Warehouse |
-| **Nejdůležitější sloupec pro statistiky** | Distribuční klíč s algoritmem hash |
-| **Druhý nejdůležitější sloupec pro statistiky** | Klíč oddílu |
-| **Další důležité sloupce pro statistiky** | Spojí datum, časté, GROUP BY, HAVING a kde |
-| **Četnosti aktualizací statistik**  | Konzervativní: denně <br></br> Poté, co načítání nebo transformace dat |
-| **Vzorkování** |  Menší než 1 miliardy řádků, použijte výchozí vzorkování (20 procent) <br></br> S více než 1 miliardy řádků je dobré statistiky v rozsahu % 2 |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+Pokud datového skladu nemá AUTO_CREATE_STATISTICS nakonfigurované, doporučujeme vám povolení tuto vlastnost tak, že spustíte následující příkaz:
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+Následující příkazy se aktivuje automatické vytváření statistik: vyberte, vyberte příkaz INSERT, funkce CTAS, aktualizace, odstranění a VYSVĚTLIT když obsahuje spojení nebo je zjištěna přítomnost predikátu. 
+
+> [!NOTE]
+> Automatické vytváření statistik nejsou vytvořeny na dočasné nebo externí tabulky.
+> 
+
+Automatické vytváření statistik se generuje synchronně, pokud vaše sloupce již nemají statistiky pro ně byly vytvořeny by vám mohla vzniknout výkon mírnou sníženou dotazů. Vytvoření statistiky může trvat několik sekund na jeden sloupec v závislosti na velikosti tabulky. Aby se zabránilo snížení výkonu, zejména v srovnávací testy výkonu, měření se ujistěte, že statistiky byly vytvořeny nejdřív spuštěním úlohy srovnávacího testu před profilace systému.
+
+> [!NOTE]
+> Vytvoření statistiky se taky zaznamená [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) v kontextu jiného uživatele.
+> 
+
+Když se vytváří automatické statistiky, bude mít formu: _WA_Sys_< id sloupce 8 číslic v šestnáctkové soustavě > _ < id tabulky 8 číslic v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny tak, že spustíte následující příkaz:
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
 
 ## <a name="updating-statistics"></a>Aktualizuje statistické údaje
 
 Jeden osvědčeným postupem je aktualizovat statistiku sloupců s kalendářními daty každý den při přidávání nová data. Každé nové řádky času jsou načtená do datového skladu, nové zatížení kalendářní data nebo data transakcí se přidají. Tyto změnit distribuci dat a proveďte statistiku zastaralá. Naopak statistiky země sloupec v tabulce zákazníka může být nikdy potřeba aktualizovat, protože rozdělení hodnot nemění obecně. Za předpokladu, že distribuce je konstantní mezi odběrateli, přidávání nových řádků do tabulky variace není chystáte změnit rozdělení data. Ale pokud váš datový sklad obsahuje pouze jeden země a připojte ve data z nové země, výsledkem data z několika zemích, které ukládají, pak budete muset aktualizovat statistiku na sloupci země.
+
+Toto jsou doporučení aktualizaci statistiky:
+
+| **Četnosti aktualizací statistik** | Konzervativní: denně <br></br> Poté, co načítání nebo transformace dat || **Vzorkování** |  Menší než 1 miliardy řádků, použijte výchozí vzorkování (20 procent) <br></br> S více než 1 miliardy řádků, je dobré statistiky v rozsahu 2 procent |
 
 Jedním ze základních otázek a požádejte, když se řešení potíží s dotazu je, **"Jsou statistiku aktuální?"**
 

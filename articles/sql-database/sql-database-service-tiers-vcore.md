@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/09/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: be5ecfdd4465d721dee49c4963cb2267b2b0a40a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>na základě vCore nákupní model pro Azure SQL Database (preview)
 
@@ -58,20 +58,20 @@ Základě vCore nákupu modelu (preview) Zákazníci mzdy pro:
 
 ## <a name="choosing-service-tier-compute-memory-storage-and-io-resources"></a>Výběr vrstvy služeb, výpočetní, paměť, úložiště a vstupně-výstupní operace prostředky
 
-Převádění na základě vCore nákupní model (preview) umožňuje nezávisle škálovat výpočetní a úložnou kapacitu, shodovat s místními výkonu a optimalizovat ceny. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore.
+Převádění na základě vCore nákupní model (preview) umožňuje nezávisle škálovat výpočetní a úložnou kapacitu, shodovat s místními výkonu a optimalizovat ceny. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore ve vrstvě obecné účely; Každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore v kritické obchodní vrstvy.
 
 Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstvami:
 
 ||**Obecné účely**|**Kritické obchodní**|
 |---|---|---|
-|Nejvhodnější pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
-|Compute|1 až 16 vCore|1 až 16 vCore|
-|Memory (Paměť)|7 GB za jádra |7 GB za jádra |
+|Nejlepší pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
+|Vypočítat|1 až 16 vCore|1 až 16 vCore|
+|Paměť|7 GB za jádra |7 GB za jádra |
 |Úložiště|Vzdálené úložiště Premium, 5 GB – 4 TB|Místní úložiště SSD, 5 GB – 1 TB|
 |Propustnost vstupně-výstupní operace (přibližnou)|500 IOPS na vCore s 7500 maximální IOPS|5000 IOPS za jádra|
 |Dostupnost|1 repliky, bez škálování pro čtení|repliky 3, 1 [čtení škálování](sql-database-read-scale-out.md), zónu redundantní HA|
-|Zálohování|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení) *|
-|V paměti|neuvedeno|Podporováno|
+|Zálohy|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení) *|
+|V paměti|Není k dispozici|Podporováno|
 |||
 
 \* Během preview doba uchovávání záloh není Konfigurovatelný a je nastaven na 7 dní.
@@ -123,14 +123,14 @@ Následující tabulka obsahuje pokyny pro migraci konkrétních scénářů:
 
 |Aktuální úroveň služby|Cílové úrovně služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
-|Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
-|Premium|Pro důležité obchodní informace|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
-|Standard|Pro důležité obchodní informace|Upgrade|Musíte migrovat sekundární nejprve|
-|Pro důležité obchodní informace|Standard|Downgradovat|Musíte migrovat nejprve primární|
-|Premium|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
-|Obecné účely|Premium|Upgrade|Musíte migrovat sekundární nejprve|
-|Pro důležité obchodní informace|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
-|Obecné účely|Pro důležité obchodní informace|Upgrade|Musíte migrovat sekundární nejprve|
+|Úroveň Standard|Pro obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Premium|Obchodně klíčové|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Úroveň Standard|Obchodně klíčové|Upgradovat|Musíte migrovat sekundární nejprve|
+|Obchodně klíčové|Úroveň Standard|Downgradovat|Musíte migrovat nejprve primární|
+|Premium|Pro obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Pro obecné účely|Premium|Upgradovat|Musíte migrovat sekundární nejprve|
+|Obchodně klíčové|Pro obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Pro obecné účely|Obchodně klíčové|Upgradovat|Musíte migrovat sekundární nejprve|
 ||||
 
 \* Každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore

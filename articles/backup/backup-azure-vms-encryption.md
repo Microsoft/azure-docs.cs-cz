@@ -1,11 +1,11 @@
 ---
-title: "Zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup"
-description: "Tento článek komunikuje o činnosti zálohování a obnovení pro virtuální počítače, šifrován pomocí Azure Disk Encryption."
+title: Zálohování a obnovení šifrovaných virtuálních počítačů pomocí Azure Backup
+description: Tento článek komunikuje o činnosti zálohování a obnovení pro virtuální počítače, šifrován pomocí Azure Disk Encryption.
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: JPallavi
 manager: vijayts
-editor: 
+editor: ''
 ms.assetid: 8387f186-7d7b-400a-8fc3-88a85403ea63
 ms.service: backup
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
 ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a1a3c5eb5550967e0a0e045ec508a86cd80ee03
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c788720e046c2efef954ef77f7b52854439b7515
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Zálohování a obnovení šifrovaných virtuálních počítačů s Azure Backup
 V tomto článku bude zmíněn kroky pro zálohování a obnovení virtuálních počítačů (VM) pomocí Azure Backup. Také poskytuje podrobnosti o podporovaných scénářích, požadavky a řešení potíží pro chybových případech.
@@ -37,12 +37,12 @@ V tomto článku bude zmíněn kroky pro zálohování a obnovení virtuálních
    | **Nespravovaná virtuální počítače**  | Ano | Ano  |
    | **Spravovaných virtuálních počítačů**  | Ano | Ano  |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 * Virtuální počítač byl zašifrován pomocí [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 
 * Byl vytvořen trezoru služeb zotavení a replikace úložiště byla nastavena pomocí následujících kroků v [Příprava prostředí pro zálohování](backup-azure-arm-vms-prepare.md).
 
-* Byl zadán zálohování [oprávnění pro přístup k trezoru klíčů](#provide-permissions-to-azure-backup) obsahující klíče a tajné klíče pro šifrovaná virtuálních počítačů.
+* Byl zadán zálohování [oprávnění pro přístup k trezoru klíčů](#provide-permissions-to-backup) obsahující klíče a tajné klíče pro šifrovaná virtuálních počítačů.
 
 ## <a name="backup-encrypted-vm"></a>Šifrované zálohování virtuálních počítačů
 Pomocí následujících kroků nastavte cíle zálohování, definovat zásady, konfigurovat položky a spustit zálohování.
@@ -108,7 +108,7 @@ Pomocí následujících kroků k poskytování odpovídající oprávnění pro
      
 3. Vyberte **zásady přístupu**a potom vyberte **přidat nový**.
 
-    ![Přidat nové](./media/backup-azure-vms-encryption/select-key-vault-access-policy.png)
+    ![Přidat nový](./media/backup-azure-vms-encryption/select-key-vault-access-policy.png)
     
 4. Vyberte **vyberte objekt**a pak zadejte **služba správy zálohování** do vyhledávacího pole. 
 
@@ -138,10 +138,10 @@ Pro obnovení šifrovaných virtuálních počítačů, nejprve obnovit disky po
 * Postupujte podle kroků prostředí PowerShell v [vytvoření virtuálního počítače z obnovené disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) vytvoření úplné virtuálního počítače z obnovené disků.
 * Nebo, [pomocí šablony můžete upravit obnovený virtuální počítač](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm) k vytvoření virtuálních počítačů z obnovené disků. Šablony lze použít pouze pro body obnovení vytvořené po 26. dubna 2017.
 
-## <a name="troubleshooting-errors"></a>Řešení potíží s chybami
-| Operace | Detaily chyby | Řešení |
+## <a name="troubleshooting-errors"></a>Řešení chyb
+| Operace | Podrobnosti o chybě | Řešení |
 | --- | --- | --- |
 |Backup | Zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování virtuálních počítačů. šifrovaná. | Zálohování je nutné zadat položek tato oprávnění podle [kroky v předchozí části](#provide-permissions-to-azure-backup). Nebo můžete provést kroky pro prostředí PowerShell v části "Povolení ochrany" v dokumentaci k prostředí PowerShell na [AzureRM.RecoveryServices.Backup použití rutiny pro zálohování virtuálních počítačů](backup-azure-vms-automation.md#back-up-azure-vms). |  
-| Obnovení |Tento šifrovaný virtuální počítač nelze obnovit, protože neexistuje v trezoru klíčů, které jsou přidružené k tento virtuální počítač. |Vytvoření trezoru klíčů pomocí [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md). V tématu [obnovení klíče trezoru klíčů a tajný klíč pomocí Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud jejich nejsou k dispozici. |
-| Obnovení |Tento šifrovaný virtuální počítač nelze obnovit, protože klíč a tajný klíč přidružený tohoto virtuálního počítače neexistují. |V tématu [obnovení klíče trezoru klíčů a tajný klíč pomocí Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud jejich nejsou k dispozici. |
-| Obnovení |Zálohování nemá oprávnění pro přístup k prostředkům ve vašem předplatném. |Jak je uvedeno nahoře, obnovit disky nejprve pomocí kroků v části "Obnovení zálohovaných disky" v [zvolte obnovení konfigurace virtuálního počítače](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Potom pomocí prostředí PowerShell k [vytvoření virtuálního počítače z obnovené disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |
+| Obnovit |Tento šifrovaný virtuální počítač nelze obnovit, protože neexistuje v trezoru klíčů, které jsou přidružené k tento virtuální počítač. |Vytvoření trezoru klíčů pomocí [Začínáme s Azure Key Vault](../key-vault/key-vault-get-started.md). V tématu [obnovení klíče trezoru klíčů a tajný klíč pomocí Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud jejich nejsou k dispozici. |
+| Obnovit |Tento šifrovaný virtuální počítač nelze obnovit, protože klíč a tajný klíč přidružený tohoto virtuálního počítače neexistují. |V tématu [obnovení klíče trezoru klíčů a tajný klíč pomocí Azure Backup](backup-azure-restore-key-secret.md) obnovit klíč a tajný klíč, pokud jejich nejsou k dispozici. |
+| Obnovit |Zálohování nemá oprávnění pro přístup k prostředkům ve vašem předplatném. |Jak je uvedeno nahoře, obnovit disky nejprve pomocí kroků v části "Obnovení zálohovaných disky" v [zvolte obnovení konfigurace virtuálního počítače](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Potom pomocí prostředí PowerShell k [vytvoření virtuálního počítače z obnovené disků](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |

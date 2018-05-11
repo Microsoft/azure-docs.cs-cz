@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure funkce škálování a hostování
 
@@ -54,7 +54,7 @@ Spotřeba plán je výchozí plán hostování a nabízí následující výhody
 - Platí se pouze až nebudou spuštěny funkcí.
 - Automaticky škálovat, i během období vysoké zatížení.
 
-## <a name="app-service-plan"></a>Plán služby App Service
+## <a name="app-service-plan"></a>plán služby App Service
 
 V plánu služby App Service vaše funkce aplikace běží na vyhrazených virtuálních počítačích na Basic, Standard, Premium a izolované SKU, podobně jako webové aplikace, rozhraní API Apps a Mobile Apps. Vyhrazených virtuálních počítačích jsou přiděleny aplikace služby App Service, což znamená, že na hostiteli funkce vždy běží. Plány služby App Service podporovat Linux.
 
@@ -95,9 +95,7 @@ V plánu spotřeby řadičem škálování automaticky přizpůsobí prostředk�
 Při spotřeby hostování plán, jsou uloženy soubory kódu funkce na Azure sdílených složek v účtu úložiště hlavní funkce. Pokud odstraníte účet úložiště hlavní funkce aplikace, soubory kódu funkce jsou odstraněny a nelze jej obnovit.
 
 > [!NOTE]
-> Pokud používáte aktivační události objektu blob na plánu spotřeby, může být až 10 minut zpoždění při zpracování nové objekty BLOB, pokud aplikaci funkce přešel nečinnosti. Po aplikaci funkce běží, objekty BLOB jsou zpracovávány okamžitě. Abyste se vyhnuli Tato počáteční prodleva, zvažte jednu z následujících možností:
-> - Hostování aplikace funkce na plán služby App Service s povolenou funkci Always On.
-> - Použijte jiný mechanismus pro aktivaci objektu blob zpracování, např. předplatné mřížky událostí nebo zprávu fronty, který obsahuje název objektu blob. Příklad, naleznete v části [příklady pro tento objekt blob vstupní vazby](functions-bindings-storage-blob.md#input---example).
+> Pokud používáte aktivační události objektu blob na plánu spotřeby, může být až 10 minut zpoždění při zpracování nové objekty BLOB, pokud aplikaci funkce přešel nečinnosti. Po aplikaci funkce běží, objekty BLOB jsou zpracovávány okamžitě. Abyste se vyhnuli Tato prodleva studený start, použijte plán služby App Service s povolenou funkci Always On, nebo použijte aktivační událost mřížky. Další informace najdete v tématu [článek odkaz na objekt blob aktivační událost vazby](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Modul runtime škálování
 

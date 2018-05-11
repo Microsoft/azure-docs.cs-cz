@@ -2,7 +2,7 @@
 title: Ukázek Azure rychlý start monitorování 2.0 rozhraní příkazového řádku. | Dokumenty Microsoft
 description: Vzorové příkazy rozhraní příkazového řádku 2.0 pro funkce monitorování Azure. Azure monitorování je služba Microsoft Azure, který umožňuje odeslat oznámení o výstrahách, volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data a škálování cloudové služby, virtuální počítače a webové aplikace.
 author: kamathashwin
-manager: orenr
+manager: ''
 editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/09/2018
 ms.author: ashwink
-ms.openlocfilehash: 475ee794d2b67639b447a1ca66b12d3d589425cb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -23,7 +23,7 @@ ms.lasthandoff: 05/10/2018
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Ukázek Azure rychlý start monitorování 2.0 rozhraní příkazového řádku
 Tento článek ukazuje ukázku, že příkazy rozhraní příkazového řádku (CLI) můžete získat přístup k funkcím Azure monitorování. Azure monitorování umožňuje škálování cloudové služby, virtuální počítače a webových aplikací a odesílat oznámení o výstrahách nebo volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Pokud jste ještě nenainstalovali rozhraní příkazového řádku Azure, postupujte podle pokynů pro [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli). Můžete také použít [prostředí cloudu Azure](/azure/cloud-shell) spustit rozhraní příkazového řádku jako interaktivní možnosti v prohlížeči. 
 
@@ -89,18 +89,17 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>Práce s výstrahami
+## <a name="work-with-alerts"></a>Práce s výstrahami 
+[!NOTE] Pouze výstrahy (klasické) je v současné době podporovaný v rozhraní příkazového řádku. 
 
-Informace v části slouží k práci s výstrahami.
-
-### <a name="get-alert-rules-in-a-resource-group"></a>Získat pravidla výstrah ve skupině prostředků
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>Získat pravidla výstrah (klasické) ve skupině prostředků
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-rule"></a>Vytvoření metriky pravidlo výstrahy
+### <a name="create-a-metric-alert-classic-rule"></a>Vytvoření metriky pravidlo výstrahy (klasické)
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -110,7 +109,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-an-alert-rule"></a>Odstranit pravidlo výstrahy
+### <a name="delete-an-alert-classic-rule"></a>Odstranit pravidlo výstrahy (klasické)
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>

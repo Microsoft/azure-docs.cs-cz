@@ -3,16 +3,17 @@ title: Předávání dat úloh Azure Automation do Log Analytics
 description: Tento článek ukazuje, jak odesílat stav úlohy a runbook proudy úlohy k Azure Log Analytics k poskytování správy a další aspekty.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 116096fb27af299545a0f9a6adf57d794bbb2f6e
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: f96419ea1e6cb8a6f15ba67948b2a139f647dd6c
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů
 Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů. Protokoly úlohy a datové proudy úlohy jsou viditelné na portálu Azure nebo v prostředí PowerShell pro jednotlivé úlohy a to umožňuje provádět jednoduché šetření. Pomocí analýzy protokolů můžete nyní:
@@ -97,12 +98,12 @@ Diagnostika z Azure Automation vytvoří dva typy záznamů v analýzy protokol�
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
 | ID prostředku |Určuje id prostředku účet Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
-| ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
+| Skupina prostředků | Název skupiny prostředků pro účet služby Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
 
-### <a name="job-streams"></a>Job Streams
+### <a name="job-streams"></a>Datové proudy úlohy
 | Vlastnost | Popis |
 | --- | --- |
 | TimeGenerated |Datum a čas provedení úlohy runbooku. |
@@ -120,7 +121,7 @@ Diagnostika z Azure Automation vytvoří dva typy záznamů v analýzy protokol�
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
 | ID prostředku |Určuje id prostředku účet Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
-| ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
+| Skupina prostředků | Název skupiny prostředků pro účet služby Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
@@ -157,7 +158,7 @@ Nakonec můžete vizualizovat historii úlohy v čase. Tento dotaz můžete pou�
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Graf stav historie úlohy analýzy protokolů](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Odeslání dat datového proudu a stav úlohy automatizace k analýze protokolů, lze získat lepší přehled o stavu vaší automatizace úloh podle:
 + Nastavení výstrah upozornění v případě, že se vyskytl problém.
 + Pomocí vlastních zobrazení a vyhledávací dotazy k vizualizaci výsledky sady runbook, stav úlohy sady runbook a další související klíčové ukazatele nebo metriky.  

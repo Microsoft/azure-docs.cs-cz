@@ -5,16 +5,18 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 05/09/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 100e0457627a04414ad2f0780a346933b11f4376
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 842083f0f69552fb9076423386353dbb4dae73b5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-1. Kliknutím na **Připojit** vytvoříte a stáhnete soubor protokolu Remote Desktop Protocol (.rdp). Kliknutím na **Otevřít** tento soubor použijete.
+1. Klikněte **Connect** tlačítko na stránce vlastností virtuálního počítače. 
+2. V **připojit k virtuálnímu počítači** , zachovat, vyberte požadované možnosti a klikněte na tlačítko **soubor RDP Stáhnout**.
+2. Otevřete stažený soubor RDP a klikněte na tlačítko **Connect** po zobrazení výzvy. 
 2. Zobrazí se upozornění, že soubor `.rdp` je od neznámého vydavatele. To je normální. Pokračujte kliknutím na **Připojit** v okně Připojení ke vzdálené ploše.
    
     ![Snímek obrazovky upozornění na neznámého vydavatele](./media/virtual-machines-log-on-win-server/rdp-warn.png)

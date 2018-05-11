@@ -3,16 +3,17 @@ title: Začínáme s Azure Automation DSC.
 description: Vysvětlení a příklady nejběžnější úlohy v Azure Automation požadovaného stavu konfigurace (DSC)
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0a00050712aa62f3b12e4af4c3da3a1dc0e60219
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7ab5c7f2f3676392b8fa0cc0b2a1c8f66d8ef3a9
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Začínáme s Azure Automation DSC.
 
@@ -20,7 +21,7 @@ Tento článek vysvětluje, jak provádět běžné úkoly s Azure Automation po
 
 Tento článek obsahuje podrobný návod, jak pomocí Azure Automation DSC. Pokud chcete ukázkové prostředí, které jsou již nastaveny bez kroků popsaných v tomto článku, můžete použít následující šablonu Resource Manager: Tato šablona nastavuje dokončené prostředí Azure Automation DSC, včetně virtuálního počítače Azure, který je spravuje Azure Automation DSC.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Abyste mohli dokončit příklady v tomto článku, je potřeba splnit následující nástroje:
 

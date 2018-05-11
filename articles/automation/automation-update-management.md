@@ -3,16 +3,17 @@ title: Řešení pro správu aktualizací v Azure
 description: Tento článek vám objasní, jak toto řešení používat ke správě aktualizací pro počítače s Windows a Linuxem.
 services: automation
 ms.service: automation
+ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 5c76114484d10873eeb2d7a4516d4196b1d8aaf6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e23db77a1be1650c0a10e45b8b38d232e41428f6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -244,12 +245,12 @@ Následující tabulka obsahuje ukázkový protokol hledání aktualizace zázna
 
 | Dotaz | Popis |
 | --- | --- |
-|Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;Počítače, název, KBID, klasifikace, PublishedDate projektu |Všechny počítače s chybějícími aktualizacemi</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType = "Windows"</br>OSType == "Linux" |
-| Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;kde počítač == "ContosoVM1.contoso.com"</br>&#124;Počítače, název, KBID, produktu, PublishedDate projektu |Chybějící aktualizace v určitém počítači (nahraďte hodnotu názvem svého počítače)|
-| Událost</br>&#124;kde EventLevelName == "Chyba" a každý počítač v ((aktualizace &#124; where (klasifikace == "Aktualizace zabezpečení" nebo klasifikaci == "Kritické aktualizace")</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false </br>&#124;DISTINCT Computer)) |Chybové události pro počítače s chybějícími požadovanými důležitými aktualizacemi nebo aktualizacemi zabezpečení |
-| Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;odlišné název |Konkrétní chybějící aktualizace ve všech počítačích |
+|Aktualizovat</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;Počítače, název, KBID, klasifikace, PublishedDate projektu |Všechny počítače s chybějícími aktualizacemi</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType = "Windows"</br>OSType == "Linux" |
+| Aktualizovat</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;kde počítač == "ContosoVM1.contoso.com"</br>&#124;Počítače, název, KBID, produktu, PublishedDate projektu |Chybějící aktualizace v určitém počítači (nahraďte hodnotu názvem svého počítače)|
+| Událost</br>&#124;kde EventLevelName == "Chyba" a každý počítač v ((aktualizace &#124; where (klasifikace == "Aktualizace zabezpečení" nebo klasifikaci == "Kritické aktualizace")</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false </br>&#124;DISTINCT Computer)) |Chybové události pro počítače s chybějícími důležitými aktualizacemi nebo požadovanými aktualizacemi zabezpečení |
+| Aktualizovat</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;odlišné název |Konkrétní chybějící aktualizace pro všechny počítače |
 | UpdateRunProgress</br>&#124;kde InstallationStatus == "se nezdařilo" </br>&#124;shrnout AggregatedValue = count() pomocí počítače, název, UpdateRunName |Počítače s aktualizacemi, které se nezdařilo spustit aktualizaci</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType = "Windows"</br>OSType == "Linux" |
-| Aktualizace</br>&#124;kde OSType == "Linux"</br>&#124;kde UpdateState! = "Není skutečně potřeba" a (klasifikace == "Kritické aktualizace" nebo klasifikaci == "Aktualizace zabezpečení")</br>&#124;shrnout AggregatedValue = count() počítačem. |Seznam všechny počítače se systémem Linux, které mají k dispozici aktualizace balíčku, který řeší chybu zabezpečení, důležité aktualizace nebo zabezpečení |
+| Aktualizovat</br>&#124;kde OSType == "Linux"</br>&#124;kde UpdateState! = "Není skutečně potřeba" a (klasifikace == "Kritické aktualizace" nebo klasifikaci == "Aktualizace zabezpečení")</br>&#124;shrnout AggregatedValue = count() počítačem. |Seznam všechny počítače se systémem Linux, které mají k dispozici aktualizace balíčku, který řeší chybu zabezpečení, důležité aktualizace nebo zabezpečení |
 | UpdateRunProgress</br>&#124;kde UpdateRunName == "DeploymentName"</br>&#124;shrnout AggregatedValue = count() počítačem.|Počítače aktualizované při této hromadné postupné aktualizaci (nahraďte hodnotu názvem vašeho nasazení aktualizací) |
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
@@ -278,7 +279,7 @@ Při nasazování aktualizace pro počítač s Linuxem, můžete vybrat klasifik
 
 Nasazení aktualizací pomocí klasifikace aktualizace nemusí fungovat na openSUSE Linux z důvodu jiného oprav modelu použít.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Tato část obsahuje informace, které vám pomohou s řešením potíží s řešením pro správu aktualizací.
 

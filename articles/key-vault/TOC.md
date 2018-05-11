@@ -63,7 +63,13 @@
 
 # Zdroje a prostředky
 ## [Přehled služby](https://azure.microsoft.com/services/key-vault/)
-## [Informace o klíčích, tajných kódech a certifikátech](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates)
+## [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
+### [Začínáme s certifikáty](certificate-scenarios.md)
+#### [Metody vytvoření certifikátu](create-certificate.md)
+#### [Monitorování a správa vytvoření certifikátu](create-certificate-scenarios.md)
+## [Ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
+## [Běžné parametry a záhlaví](common-parameters-and-headers.md)
+## [Verze Key Vault](key-vault-versions.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)
 ## [Ukázky kódu](https://www.microsoft.com/download/details.aspx?id=45343)

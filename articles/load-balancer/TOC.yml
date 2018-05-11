@@ -76,7 +76,6 @@
         - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6 (šablona)
           href: load-balancer-ipv6-internet-template.md
     - name: Konfigurace interního nástroje pro vyrovnávání zatížení
-      href: load-balancer-get-started-ilb-arm-portal.md
       items:
         - name: Konfigurace interního nástroje pro vyrovnávání zatížení (PowerShell)
           href: load-balancer-get-started-ilb-arm-ps.md

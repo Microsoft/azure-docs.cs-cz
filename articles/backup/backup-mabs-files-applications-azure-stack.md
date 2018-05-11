@@ -13,16 +13,21 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 5/9/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 905f6b13928d11243202059af0ad255971102da8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a907335ace1f6ea9ec427327d28ca9be5ce02fcc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací v Azure zásobníku
 Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
+
+> [!NOTE]
+> I když jsou podobné serveru Azure Backup a System Center Data Protection Manager (DPM), aplikace DPM není podporována pro použití s Azure zásobníku.
+>
+
 
 ## <a name="azure-backup-server-protection-matrix"></a>Systém ochrany Azure Backup Serveru
 Azure Backup Server chrání následující úlohy virtuálního počítače Azure zásobníku.
@@ -49,7 +54,7 @@ K instalaci serveru Azure Backup na virtuálním počítači Azure zásobníku, 
 Azure Backup Server spustit na virtuálním počítači Azure zásobníku, použijte velikosti A2 nebo větší. Pomoc při výběru velikost virtuálního počítače, stáhněte si [kalkulačky velikost virtuálního počítače Azure zásobníku](https://www.microsoft.com/download/details.aspx?id=56832).
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuální sítě na virtuálních počítačích Azure zásobníku
-Všechny virtuální počítače, které jsou používány Azure zásobník úlohy musí patřit do stejné virtuální síti Azure a předplatné Azure. 
+Všechny virtuální počítače, které jsou používány Azure zásobník úlohy musí patřit do stejné virtuální síti Azure a předplatné Azure.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Ukládání zálohovaných dat na místní disk a v Azure
 Azure Backup Server ukládá zálohovaná data na disky Azure připojené k virtuálnímu počítači, pro provozní obnovení. Jakmile disky a prostoru úložiště jsou připojené k virtuálnímu počítači, serveru Azure Backup spravuje úložiště za vás. Velikost úložiště zálohování dat závisí na počtu a velikosti disků připojených ke každému [virtuální počítač Azure zásobníku](../azure-stack/user/azure-stack-storage-overview.md). Každý velikost virtuálního počítače Azure zásobník má maximální počet disků, které je možné připojit k virtuálnímu počítači. A2 je například čtyři disky. A3 je osmi disky. A4 je 16 disků. Znovu Určuje velikost a počet disků fondu úložiště celkový zálohování.
@@ -82,9 +87,9 @@ Pokud chcete změnit měřítko nasazení, máte následující možnosti:
 
 ## <a name="bare-metal-recovery-for-azure-stack-vm"></a>Úplné obnovení systému pro virtuální počítač Azure zásobníku
 
-Zálohy úplného obnovení (BMR) chrání soubory operačního systému a všechna data nepostradatelný svazek, kromě dat uživatele. Zálohování BMR zahrnuje zálohu stavu systému. Následující postupy popisují, jak k obnovení dat o úplné obnovení systému. 
+Zálohy úplného obnovení (BMR) chrání soubory operačního systému a všechna data nepostradatelný svazek, kromě dat uživatele. Zálohování BMR zahrnuje zálohu stavu systému. Následující postupy popisují, jak k obnovení dat o úplné obnovení systému.
 
-### <a name="run-recovery-on-the-azure-backup-server"></a>Spustit obnovení na Azure Backup Server 
+### <a name="run-recovery-on-the-azure-backup-server"></a>Spustit obnovení na Azure Backup Server
 
 Otevřete konzolu serveru Azure Backup.
 
@@ -102,9 +107,9 @@ V konzole serveru Azure Backup:
 
 ### <a name="restore-the-machine"></a>Tento počítač obnovit
 
-1. Na virtuálním počítači, ve které chcete obnovit BMR otevřete řádek se zvýšenými oprávněními a zadejte následující příkazy. **/bootore** Určuje, že prostředí Windows RE spustí automaticky při příštím spuštění systému.
+1. Na virtuálním počítači, ve které chcete obnovit BMR otevřete řádek se zvýšenými oprávněními a zadejte následující příkazy. **/boottore** Určuje, že prostředí Windows RE spustí automaticky při příštím spuštění systému.
 ```
-Reagent /boottore
+Reagentc /boottore
 shutdown /r /t 0
 ```
 

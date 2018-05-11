@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 18748aafa2b70d349f9914e2a8afc1c7477ca26e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -31,11 +31,9 @@ Aktivita vyhledávání můžete číst a vrátí obsah konfigurační soubor, t
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Následující zdroje dat jsou aktuálně podporovány pro vyhledávání:
+Následující zdroje dat jsou podporovány pro vyhledávání. Maximální počet řádků, se může vracet vyhledávání aktivita **5000**a až do **2MB** velikost. A právě maximální doba trvání aktivity vyhledávání před vypršením časového limitu je jedna hodina.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
-
-Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až do **2MB** velikost.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -58,16 +56,17 @@ Maximální počet řádků vrácených vyhledávání aktivity je **5000**a až
 ```
 
 ## <a name="type-properties"></a>Vlastnosti typu
-Název | Popis | Typ | Povinné?
+Název | Popis | Typ | Požadováno?
 ---- | ----------- | ---- | --------
 Datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získáte podrobnosti o z části "Vlastnosti datové sady" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
 source | Obsahuje vlastnosti specifické pro datové sady zdroje, stejný jako zdroj kopie aktivity. Získáte podrobnosti o z části "Zkopírovat vlastnosti aktivity" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
 firstRowOnly | Určuje, jestli se mají vracet pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí hodnota je `true`.
 
-Je třeba počítat s následujícím:
+**Je třeba počítat s následujícím:**
 
 1. Zdrojový sloupec s typem ByteArray není podporován.
 2. Struktura není podporována v definici datové sady. Pro soubory ve formátu textu konkrétně můžete řádek záhlaví zadejte název sloupce.
+3. Pokud je zdrojem vyhledávání soubory JSON `jsonPathDefinition` nastavení znovu shaping objekt JSON není podporováno, celý objekty budou načteny.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Výsledek vyhledávání aktivity použít následné aktivity
 
@@ -103,7 +102,7 @@ Výsledek vyhledávání je vrácený v `output` části aktivity při spuštěn
     } 
     ```
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 V tomto příkladu aktivity kopírování kopíruje data z tabulky SQL ve vaší instanci databáze SQL Azure do Azure Blob storage. Název tabulky SQL je uložené v souboru JSON v úložišti objektů Blob. Aktivita vyhledávání vyhledá název tabulky za běhu. Tento přístup umožňuje JSON má být změněn dynamicky bez nutnosti znovu nasaďte kanály ani datové sady. 
 
 Tento příklad ukazuje vyhledávání pouze první řádek. Vyhledávání pro všechny řádky a zřetězit výsledky pomocí příkazu ForEach aktivity, najdete v části Ukázky [kopírovat více tabulek hromadné pomocí Azure Data Factory](tutorial-bulk-copy.md).

@@ -3,16 +3,17 @@ title: Spuštění a zastavení virtuálních počítačů během počítačem n
 description: Toto řešení správy virtuální počítač spustí a zastaví virtuální počítače Azure Resource Manager podle plánu a proaktivně monitoruje z analýzy protokolů.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 1a7a711c9b255aabdae76d28908d81f349aebe4a
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 410f76d406ab65ff1732525a501fe007eeeb5f6a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Spuštění a zastavení virtuálních počítačů během počítačem nepracujete řešení (preview) ve službě Azure Automation
 
@@ -24,7 +25,7 @@ Toto řešení poskytuje možnost decentralizované automatizace pro uživatele,
 * Naplánovat virtuální počítače na spuštění a zastavení ve vzestupném pořadí pomocí značek Azure (není podporováno pro klasické virtuální počítače).
 * Automaticky zastaví virtuální počítače na základě nízké využití procesoru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Runbooky pracují s [účtem Spustit jako Azure](automation-create-runas-account.md). Účet Spustit jako je preferovanou metodou ověřování, protože používá ověřování certifikátem místo hesla, která může vypršení platnosti nebo často mění.
 * Toto řešení spravuje jenom virtuální počítače, které jsou ve stejném předplatném jako účet Azure Automation.
@@ -168,7 +169,7 @@ Teď, když máte plán pro zastavení virtuálních počítačů na základě v
 
 Toto řešení zahrnuje předkonfigurovaná sady runbook, plány a integrace s analýzy protokolů, můžete přizpůsobit spuštění a vypnutí virtuálních počítačů tak, aby vyhovovala vašim obchodním potřebám.
 
-### <a name="runbooks"></a>Runbooky
+### <a name="runbooks"></a>Sady Runbook
 
 Následující tabulka uvádí sady runbook nasadit do vašeho účtu Automation pomocí tohoto řešení. Kód runbook by neměla měnit. Místo toho napište vlastní sadu runbook pro nové funkce.
 
@@ -181,9 +182,9 @@ Zahrnout všechny nadřízené runbooky *WhatIf* parametr. Pokud nastavíte hodn
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volat z nadřízeného runbooku. Tato sada runbook vytvoří výstrahy na základě za prostředků pro scénář AutoStop.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True nebo False  | Vytvoří nebo aktualizuje Azure pravidla výstrah na virtuálních počítačích v cílových skupinách, předplatné nebo prostředek. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
-|AutoStop_Disable | žádný | Zakáže AutoStop výstrahy a výchozí plán.|
+|AutoStop_Disable | Žádné | Zakáže AutoStop výstrahy a výchozí plán.|
 |AutoStop_StopVM_Child | WebHookData | Volat z nadřízeného runbooku. Pravidla výstrah volat tuto sadu runbook k zastavení virtuálního počítače.|
-|Bootstrap_Main | žádný | Použít jednou nastavit bootstrap konfigurace, třeba webhookURI, které nejsou obvykle přístupné ze Správce prostředků Azure. Tato sada runbook se po úspěšném nasazení automaticky odebere.|
+|Bootstrap_Main | Žádné | Použít jednou nastavit bootstrap konfigurace, třeba webhookURI, které nejsou obvykle přístupné ze Správce prostředků Azure. Tato sada runbook se po úspěšném nasazení automaticky odebere.|
 |ScheduledStartStop_Child | VMName <br> Akce: Spuštění nebo zastavení <br> ResourceGroupName | Volat z nadřízeného runbooku. Provede spuštění nebo zastavení akce pro naplánované zastavení.|
 |ScheduledStartStop_Parent | Akce: Spuštění nebo zastavení <br>VMList <br> WhatIf: True nebo False | Tato akce ovlivní všechny virtuální počítače v rámci předplatného. Upravit **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** provést pouze na tyto cílové skupiny prostředků. Můžete také vyloučit konkrétní virtuálních počítačů tím, že aktualizuje **External_ExcludeVMNames** proměnné.<br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*.<br> *WhatIf* ověří logiky sad runbook bez spuštění.|
 |SequencedStartStop_Parent | Akce: Spuštění nebo zastavení <br> WhatIf: True nebo False<br>VMList| Vytvoření značky s názvem **SequenceStart** a **SequenceStop** na každý virtuální počítač, pro které chcete do pořadí spuštění a zastavení aktivity. Hodnota značky musí být celé kladné číslo (1, 2, 3), který odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br> VMList: Čárkami oddělený seznam virtuálních počítačů. Například *vm1, virtuálního počítače 2, vm3*. <br> *WhatIf* ověří logiky sad runbook bez spuštění. <br> **Poznámka:**: virtuální počítače musí být v rámci skupiny prostředků, které jsou definované jako External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames a External_ExcludeVMNames v proměnné automatizace Azure. Musí mít odpovídající značky pro akce se projeví.|
@@ -263,7 +264,7 @@ Volající |  Kdo operaci zahájil. Možnou hodnotou je e-mailová adresa nebo s
 Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams.|
 JobId | Identifikátor GUID, který je ID úlohy runbooku.|
 operationName | Určuje typ operace prováděné v Azure. Hodnota pro automatizaci je úloha.|
-ResourceGroup | Určuje název skupiny prostředků příslušné úlohy runbooku.|
+Skupina prostředků | Určuje název skupiny prostředků příslušné úlohy runbooku.|
 resourceId | Určuje ID prostředku v Azure. V případě služby Automation je hodnotou účet služby Automation přidružený k příslušnému runbooku.|
 ResourceProvider | Určuje službu Azure poskytující prostředky, které můžete nasadit a spravovat. Službě Automation odpovídá hodnota Azure Automation.|
 ResourceType | Určuje typ prostředku v Azure. V případě služby Automation je hodnotou účet služby Automation přidružený k příslušnému runbooku.|

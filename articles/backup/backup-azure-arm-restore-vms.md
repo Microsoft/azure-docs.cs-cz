@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Obnovení virtuálních počítačů pomocí portálu Azure
 Ochrana dat pomocí snímky dat na definovaných intervalech. Tyto snímky jsou známé jako body obnovení a byly uloženy do trezory služeb zotavení. Pokud je nutné opravit nebo znovu vytvořit virtuální počítač (VM), můžete obnovit virtuální počítač z jakýchkoli bodů obnovení uložené. Pokud obnovíte bod obnovení, můžete:
@@ -90,12 +90,12 @@ Obnovení virtuálního počítače nebo všechny disky z virtuálního počíta
 
     **Obnovení** okno ukazuje, že je nastavena bodu obnovení.
 
-9. Pokud jste již existuje, přejdete do **obnovení** okno. Ujistěte se, že [je vybrán bod obnovení](#select-restore-point-for-restore)a vyberte **obnovit konfiguraci**. **Obnovit konfiguraci** otevře se okno.
+9. Pokud jste již existuje, přejdete do **obnovení** okno. Ujistěte se, že [je vybrán bod obnovení](#select-a-restore-point-for-restore)a vyberte **obnovit konfiguraci**. **Obnovit konfiguraci** otevře se okno.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Zvolte obnovení konfigurace virtuálního počítače
 Po výběru bodu obnovení, vyberte takovou konfiguraci obnovení virtuálního počítače. Ke konfiguraci obnovený virtuální počítač, můžete portál Azure nebo PowerShell.
 
-1. Pokud jste již existuje, přejdete do **obnovení** okno. Ujistěte se, že [je vybrán bod obnovení](#select-restore-point-for-restore)a vyberte **obnovit konfiguraci**. **Obnovit konfiguraci** otevře se okno.
+1. Pokud jste již existuje, přejdete do **obnovení** okno. Ujistěte se, že [je vybrán bod obnovení](#select-a-restore-point-for-restore)a vyberte **obnovit konfiguraci**. **Obnovit konfiguraci** otevře se okno.
 
     ![Obnovení Průvodce konfigurací](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. Na **obnovit konfiguraci** okno, máte dvě možnosti:

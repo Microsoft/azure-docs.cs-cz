@@ -9,11 +9,11 @@ ms.date: 05/07/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: ''
-ms.openlocfilehash: 3750bc409753868566c91c01cf6093f439c599f9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -24,9 +24,9 @@ Schéma používá zásad Azure naleznete zde: [https://schema.management.azure.
 JSON použijete k vytvoření definice zásady. Definice zásad obsahuje prvky pro:
 
 - režim
-- parameters
+- parametry
 - Zobrazovaný název
-- description
+- Popis
 - Pravidlo zásad
   - logické vyhodnocení
   - Platnost
@@ -66,7 +66,7 @@ Například následujícím kódu JSON zobrazuje zásadu, která omezuje, kdy js
 
 Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samples.md).
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>Režim
 
 **Režimu** Určuje, jaké typy prostředků se vyhodnotí pro zásadu. Podporované režimy jsou:
 
@@ -227,7 +227,7 @@ Podporovány jsou následující pole:
 
 Zásady je vyhodnocení existující prostředky na pozadí, nastaví **akce** k `/write` autorizace akce u typu prostředku.
 
-### <a name="effect"></a>Efekt
+### <a name="effect"></a>Účinek
 
 Zásady podporuje následující typy vliv:
 
@@ -256,120 +256,61 @@ Příklad audit, když není nasazený rozšíření virtuálního počítače, 
 
 Vlastnost aliasy používáte pro přístup k vlastnosti specifické pro typ prostředku. Aliasy umožňují omezit, jaké hodnoty nebo podmínky jsou povoleny pro vlastnost prostředku. Každý alias mapuje cesty v různých verzích rozhraní API pro typ daného prostředku. Modul zásad během hodnocení zásad, získá vlastnost cesty pro tuto verzi rozhraní API.
 
-**Microsoft.Cache/Redis**
+Seznam aliasy vždy roste. Chcete-li zjistit, jaké aliasy jsou aktuálně podporovány zásadami Azure, použijte jednu z následujících metod:
 
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Cache/Redis/enableNonSslPort | Jestli port serveru Redis bez ssl (6379) je povoleno nastavení. |
-| Microsoft.Cache/Redis/shardCount | Nastavte počet horizontálních oddílů má být vytvořena na clusteru Cache ve verzi Premium.  |
-| Microsoft.Cache/Redis/sku.capacity | Nastavení velikosti mezipaměti Redis k nasazení.  |
-| Microsoft.Cache/Redis/sku.family | Nastavte řada SKU používat. |
-| Microsoft.Cache/Redis/sku.name | Nastavte typ Redis Cache k nasazení. |
+- Azure PowerShell
 
-**Microsoft.Cdn/profiles**
+  ```azurepowershell-interactive
+  # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.CDN/profiles/sku.name | Nastavte název cenovou úroveň. |
+  $azContext = Get-AzureRmContext
+  $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+  $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+  $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+  $authHeader = @{
+      'Content-Type'='application/json'
+      'Authorization'='Bearer ' + $token.AccessToken
+  }
 
-**Microsoft.Compute/disks**
+  # Invoke the REST API
+  $response = Invoke-RestMethod -Uri 'https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases' -Method Get -Headers $authHeader
 
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Compute/imageOffer | Nastavte nabídku marketplace image použitá k vytvoření virtuálního počítače nebo image platformy. |
-| Microsoft.Compute/imagePublisher | Nastavte vydavatele image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageSku | Nastavte SKU image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageVersion | Nastavte verzi image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
+  # Create an Array List to hold discovered aliases
+  $aliases = New-Object System.Collections.ArrayList
 
+  foreach ($ns in $response.value) {
+      foreach ($rT in $ns.resourceTypes) {
+          if ($rT.aliases) {
+              foreach ($obj in $rT.aliases) {
+                  $alias = [PSCustomObject]@{
+                      Namespace       = $ns.namespace
+                      resourceType    = $rT.resourceType
+                      alias           = $obj.name
+                  }
+                  $aliases.Add($alias) | Out-Null
+              }
+          }
+      }
+  }
 
-**Microsoft.Compute/virtualMachines**
+  # Output the list, sort, and format. You can customize with Where-Object to limit as desired.
+  $aliases | Sort-Object -Property Namespace, resourceType, alias | Format-Table
+  ```
 
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | Nastavte identifikátor image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageOffer | Nastavte nabídku marketplace image použitá k vytvoření virtuálního počítače nebo image platformy. |
-| Microsoft.Compute/imagePublisher | Nastavte vydavatele image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageSku | Nastavte SKU image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageVersion | Nastavte verzi image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/licenseType | Nastavení, která obrázku nebo je licencovaný místní disk. Tato hodnota se používá pouze pro bitové kopie, které obsahují operační systém Windows Server.  |
-| Microsoft.Compute/virtualMachines/imageOffer | Nastavte nabídku marketplace image použitá k vytvoření virtuálního počítače nebo image platformy. |
-| Microsoft.Compute/virtualMachines/imagePublisher | Nastavte vydavatele image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/virtualMachines/imageSku | Nastavte SKU image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/virtualMachines/imageVersion | Nastavte verzi image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/virtualMachines/osDisk.Uri | Nastavte identifikátor URI virtuálního pevného disku. |
-| Microsoft.Compute/virtualMachines/sku.name | Nastavení velikosti virtuálního počítače. |
-| Microsoft.Compute/virtualMachines/availabilitySet.id | Nastaví dostupnost nastavit id pro virtuální počítač. |
+- Azure CLI
 
-**Microsoft.Compute/virtualMachines/extensions**
+  ```azurecli-interactive
+  # Login first with az login if not using Cloud Shell
 
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Compute/virtualMachines/extensions/publisher | Nastavte název rozšíření vydavatele. |
-| Microsoft.Compute/virtualMachines/extensions/type | Nastavte typ rozšíření. |
-| Microsoft.Compute/virtualMachines/extensions/typeHandlerVersion | Nastavte verzi rozšíření. |
+  # Get Azure Policy aliases for a specific Namespace
+  az provider show --namespace Microsoft.Automation --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
+  ```
 
-**Microsoft.Compute/virtualMachineScaleSets**
+- Rozhraní API REST nebo ARMClient
 
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Compute/imageId | Nastavte identifikátor image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageOffer | Nastavte nabídku marketplace image použitá k vytvoření virtuálního počítače nebo image platformy. |
-| Microsoft.Compute/imagePublisher | Nastavte vydavatele image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageSku | Nastavte SKU image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/imageVersion | Nastavte verzi image platformy nebo marketplace image použitá k vytvoření virtuálního počítače. |
-| Microsoft.Compute/licenseType | Nastavení, která obrázku nebo je licencovaný místní disk. Tato hodnota se používá pouze pro bitové kopie, které obsahují operační systém Windows Server. |
-| Microsoft.Compute/VirtualMachineScaleSets/computerNamePrefix | Nastavte předpony názvu počítače pro všechny virtuální počítače v sadě škálování. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.imageUrl | Nastavte identifikátor URI objektu blob bitové kopie uživatele. |
-| Microsoft.Compute/VirtualMachineScaleSets/osdisk.vhdContainers | Nastavte adresy URL kontejneru, které se používají k uložení disku operačního systému pro škálovací sadu. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.name | Nastavení velikosti virtuálních počítačů v sadě škálování. |
-| Microsoft.Compute/VirtualMachineScaleSets/sku.tier | Nastavte úroveň virtuálních počítačů v sadě škálování. |
-
-**Microsoft.Network/applicationGateways**
-
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Network/applicationGateways/sku.name | Nastavení velikosti brány. |
-
-**Microsoft.Network/virtualNetworkGateways**
-
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Network/virtualNetworkGateways/gatewayType | Nastavte typ tuto bránu virtuální sítě. |
-| Microsoft.Network/virtualNetworkGateways/sku.name | Nastavte název SKU brány. |
-
-**Microsoft.Sql/servers**
-
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Sql/servers/version | Nastavte verzi serveru. |
-
-**Microsoft.Sql/databases**
-
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Sql/servers/databases/edition | Nastavte edici databáze. |
-| Microsoft.Sql/servers/databases/elasticPoolName | Sada název fondu elastické databáze je v. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveId | Nastavte úroveň cíle ID databáze nakonfigurované služby. |
-| Microsoft.Sql/servers/databases/requestedServiceObjectiveName | Nastavte název cíle na úrovni služby nakonfigurované databáze.  |
-
-**Microsoft.Sql/elasticpools**
-
-| Alias | Popis |
-| ----- | ----------- |
-| servery nebo elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Nastavte celkový sdílené DTU fondu elastické databáze. |
-| servery nebo elasticpools | Microsoft.Sql/servers/elasticPools/edition | Nastavte edici elastického fondu. |
-
-**Microsoft.Storage/storageAccounts.**
-
-| Alias | Popis |
-| ----- | ----------- |
-| Microsoft.Storage/storageAccounts/accessTier | Nastavte úroveň přístupu, které se používá pro fakturaci. |
-| Microsoft.Storage/storageAccounts/accountType | Název SKU nastavte. |
-| Microsoft.Storage/storageAccounts/enableBlobEncryption | Nastavte, jestli služba šifruje data, jak je uložen v úložišti služby objektů blob. |
-| Microsoft.Storage/storageAccounts/enableFileEncryption | Nastavte, jestli služba šifruje data, jak je uložen v úložišti služby souboru. |
-| Microsoft.Storage/storageAccounts/sku.name | Název SKU nastavte. |
-| Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | Nastavte, aby umožňovala pouze provoz https pro službu úložiště. |
-| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Zkontrolujte, zda je povoleno koncový bod služby virtuální sítě. |
+  ```http
+  GET https://management.azure.com/providers/?api-version=2017-08-01&$expand=resourceTypes/aliases
+  ```
 
 ## <a name="initiatives"></a>Iniciativy
 

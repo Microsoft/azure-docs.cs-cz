@@ -1,24 +1,24 @@
 ---
-title: "Nasazení služby Správce zařízení StorSimple v Azure | Microsoft Docs"
-description: "Vysvětluje, jak vytvářet a odstraňovat služby StorSimple Manager zařízení na portálu Azure a popisuje, jak spravovat registrační klíč služby."
+title: Nasazení služby Správce zařízení StorSimple v Azure | Microsoft Docs
+description: Vysvětluje, jak vytvářet a odstraňovat služby StorSimple Manager zařízení na portálu Azure a popisuje, jak spravovat registrační klíč služby.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby Správce zařízení StorSimple pro řadu zařízení StorSimple 8000
 
@@ -29,7 +29,9 @@ Služba Správce zařízení StorSimple běží v Microsoft Azure a připojí k 
 Tento kurz popisuje kroky potřebné k vytváření, odstraňování, migrace služby a správu registrační klíč služby. Informace obsažené v tomto článku se vztahuje pouze na řadu zařízení StorSimple 8000. Další informace o pole virtuální zařízení StorSimple, přejděte na [nasazení služby StorSimple Manager zařízení pro vaše pole virtuální zařízení StorSimple](storsimple-virtual-array-manage-service.md).
 
 > [!NOTE]
-> Všechny klasické Správci zařízení StorSimple byly automaticky přesunout do nového portálu Azure. Pokud máte nějaké dotazy, přečtěte si téma [– nejčastější dotazy: přesunout do portálu Azure](storsimple-8000-move-azure-portal-faq.md). Rutiny prostředí PowerShell Azure Service Management (ASM) nejsou podporovány po přechodu na nový portál Azure. Skripty ke správě svých zařízení a potom přejděte na Aktualizovat [skriptů založených na používání Azure Resource Manager SDK ke správě zařízení StorSimple](storsimple-8000-automation-azurerm-scripts.md) Další informace. Nový portál Azure podporuje zařízení se systémem aktualizace 5.0 nebo novější. Pokud zařízení není aktuální, okamžitou instalaci aktualizací 5. Další informace, přejděte na [instalaci aktualizací 5](storsimple-8000-install-update-5.md). Pokud používáte zařízení s StorSimple cloudu (8010/8020), nejde aktualizovat o cloudu zařízení. Použijte nejnovější verzi softwaru se vytvořit nové zařízení cloudu s 5.0 aktualizace a pak převzetí služeb při selhání pro vytvoření nové zařízení cloudu. Všechna zařízení se systémem aktualizace 4.0 nebo starší, budou mít [snižuje funkčnost správy](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
+> -  Portál Azure podporuje zařízení se systémem aktualizace 5.0 nebo novější. Pokud zařízení není aktuální, okamžitou instalaci aktualizací 5. Další informace, přejděte na [instalaci aktualizací 5](storsimple-8000-install-update-5.md). 
+> - Pokud používáte zařízení s StorSimple cloudu (8010/8020), nejde aktualizovat o cloudu zařízení. Použijte nejnovější verzi softwaru se vytvořit nové zařízení cloudu s 5.0 aktualizace a pak převzetí služeb při selhání pro vytvoření nové zařízení cloudu. 
+> - Všechna zařízení se systémem aktualizace 4.0 nebo starší, budou mít [snižuje funkčnost správy](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0). 
 
 ## <a name="create-a-service"></a>Vytvoření služby
 Postup vytvoření služby StorSimple Manager zařízení, musíte mít:
@@ -38,11 +40,7 @@ Postup vytvoření služby StorSimple Manager zařízení, musíte mít:
 * Aktivní účet úložiště Microsoft Azure
 * Fakturační informace, které se používá pro správu přístupu
 
-Jsou povoleny pouze odběry ke smlouvě Enterprise. Microsoft Sponsorship odběry, které byly povoleny v portálu Azure classic nejsou podporovány na portálu Azure. Zobrazí se následující zpráva a při použití nepodporované předplatného:
-
-![Předplatné není platný](./media/storsimple-8000-manage-service/subscription-not-valid.jpg)
-
-Můžete také vygenerovat výchozí účet úložiště při vytváření služby.
+Jsou povoleny pouze odběry ke smlouvě Enterprise. Můžete také vygenerovat výchozí účet úložiště při vytváření služby.
 
 Jeden služby můžete spravovat více zařízení. Zařízení, ale nemůžou zahrnovat víc služeb. Velký podnik může mít víc instancí služby pro práci s různých předplatných, organizace nebo i umístění nasazení. 
 
@@ -78,11 +76,11 @@ Proveďte následující kroky pro odstranění služby.
 
 2. Tím přejdete do okna služby StorSimple Manager zařízení. Klikněte na **Odstranit**.
 
-    ![Odstranění služby](./media/storsimple-8000-manage-service/deletessdevman2.png)
+    ![Odstranit službu](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
 3. Klikněte na tlačítko **Ano** v potvrzení oznámení. To může trvat několik minut, než službu, kterou chcete odstranit.
 
-    ![Potvrzení odstranění](./media/storsimple-8000-manage-service/deletessdevman3.png)
+    ![Potvrdit odstranění](./media/storsimple-8000-manage-service/deletessdevman3.png)
 
 ## <a name="get-the-service-registration-key"></a>Získání registračního klíče služby
 
@@ -149,8 +147,7 @@ Tento krok se provádí v prostředí Windows PowerShell pro rozhraní StorSimpl
 
 > [!NOTE]
 > Žádné operace lze provést na webu Azure portal služby StorSimple Manager, dokud se nedokončí výměny klíčů.
-> 
-> 
+
 
 Pokud používáte konzole sériového portu zařízení pro připojení k rozhraní Windows PowerShell, proveďte následující kroky.
 
@@ -177,12 +174,12 @@ Proveďte následující kroky k aktualizaci šifrování dat služby ve vašem 
 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>Chcete-li aktualizovat šifrovacího klíče dat služby na fyzických zařízení
 1. Pomocí Windows Powershellu pro StorSimple pro připojení ke konzole. Výběrem možnosti 1 přihlaste s úplným přístupem.
-2. Na příkazovém řádku zadejte:`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. Na příkazovém řádku zadejte:  `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
 3. Zadejte šifrovací klíč dat služby, který jste získali v [krok 2: použití Windows Powershellu pro StorSimple zahájíte změny klíče šifrování dat služby](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Chcete-li aktualizovat šifrovacího klíče dat služby na všechna zařízení 8010/8020 cloudu
 1. Stažení a instalace [aktualizace CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) skript prostředí PowerShell. 
-2. Otevřete prostředí PowerShell a na příkazovém řádku zadejte:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+2. Otevřete prostředí PowerShell a na příkazovém řádku zadejte:  `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Tento skript zajistí, že tento šifrovací klíč dat služby je nastaven na všechna zařízení 8010/8020 cloudu v rámci Správce zařízení.
 
@@ -191,7 +188,7 @@ Na portálu Azure jsou podporovány pouze zařízení StorSimple se systémem ak
 
 | Operace                                                                                                                       | Podporováno      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Registrovat zařízení                                                                                                               | Ano            |
+| Registrování zařízení                                                                                                               | Ano            |
 | Konfigurace nastavení zařízení, jako je například obecné, sítě a zabezpečení                                                                | Ano            |
 | Kontrola, stáhnout a nainstalovat aktualizace                                                                                             | Ano            |
 | Deaktivovat zařízení                                                                                                               | Ano            |
@@ -200,7 +197,7 @@ Na portálu Azure jsou podporovány pouze zařízení StorSimple se systémem ak
 | Vytvářet, upravovat a odstraňovat svazku                                                                                             | Ne             |
 | Vytvářet, upravovat a odstraňovat zásady zálohování                                                                                      | Ne             |
 | Proveďte ruční zálohy                                                                                                            | Ne             |
-| Proveďte zálohu naplánované                                                                                                         | Neuvedeno |
+| Proveďte zálohu naplánované                                                                                                         | Nejde použít |
 | Obnovení z záloh                                                                                                        | Ne             |
 | Klonovat na zařízení se systémem aktualizace 3.0 a novějších <br> Zdrojového zařízení používá verzi před aktualizací 3.0.                                | Ano            |
 | Klonovat na zařízení se systémem verze starší než Update 3.0                                                                          | Ne             |

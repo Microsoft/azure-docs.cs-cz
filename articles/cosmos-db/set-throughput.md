@@ -11,17 +11,103 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 05/09/2018
 ms.author: sngun
-ms.openlocfilehash: bede91ed3ffc456740a0eb63ed7a15278e99ebe2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fadbe5d2777bc5c8551558be80e77dd2785044a2
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Nastavování a získávání propustnost pro Azure Cosmos DB kontejnery
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavování a získávání propustnost pro Azure Cosmos DB kontejnery a databáze
 
-Propustnost lze nastavit pro Azure Cosmos DB kontejnerů nebo sadu kontejnery na portálu Azure nebo pomocí sady SDK klienta. 
+Propustnost můžete nastavit pro kontejner Azure Cosmos DB nebo sadu kontejnerů pomocí portálu Azure nebo pomocí sady SDK klienta. Při zřizování propustnost pro sadu kontejnery těchto kontejnerech sdílet zřízené propustnosti. Zřizování propustnost pro jednotlivé kontejnery bude zaručit rezervace propustnost pro tento konkrétní kontejner. Na druhé straně zřizování propustnost pro databázi můžete sdílet propustnost mezi všechny kontejnery, které patří do dané databáze. V databázi Azure Cosmos DB může mít sadu kontejnery, které sdílejí propustnost a také kontejnery, které mají vyhrazené propustnost. 
+
+Podle zřízené propustnosti, bude Azure Cosmos DB přidělit fyzické oddíly ho s růstem hostovat vaše kontejnery a rozdělení nebo rebalances data napříč oddíly.
+
+Při přiřazování RU za sekundu na úrovni jednotlivých kontejneru, kontejnery se dá vytvořit jako *pevné* nebo *neomezená*. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner neomezená, musíte zadat minimální propustnost 1000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony odlišné hodnoty). Výběrem klíč oddílu s mnoha jedinečných hodnot je zajistit, že kontejner a tabulka/grafika a žádosti o je možné rozšířit jednotně pomocí Azure Cosmos DB. 
+
+Při přiřazování RU za sekundu napříč sadu kontejnery, kontejnery, které patří do této skupiny jsou považovány za *neomezená* kontejnery a musíte zadat klíč oddílu.
+
+![Zřizování jednotek žádosti pro jednotlivé kontejnery a sadu kontejnery](./media/request-units/provisioning_set_containers.png)
+
+Tento článek vás provede kroky potřebné ke konfiguraci propustnosti na různých úrovních pro účet Azure Cosmos DB. 
+
+## <a name="provision-throughput-by-using-azure-portal"></a>Propustnost zřídit pomocí portálu Azure
+
+### <a name="provision-throughput-for-a-container-collectiongraphtable"></a>Zřízení propustnost pro kontejner (kolekce nebo grafu nebo tabulky)
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
+2. Levé navigaci, vyberte **všechny prostředky** a najít váš účet Azure Cosmos DB.  
+3. Můžete nakonfigurovat propustnost při vytváření kontejneru (kolekce, graf, tabulku) nebo propustnost aktualizace pro existující kontejner.  
+4. Chcete-li přiřadit propustnost při vytváření kontejneru, otevřete **Průzkumníku dat** a vyberte **nové kolekce** (nový graf, nové tabulky pro jiná rozhraní API)  
+5. Vyplňte formulář **přidat kolekce** okno. Pole v tomto okně jsou popsané v následující tabulce:  
+
+   |**Nastavení**  |**Popis**  |
+   |---------|---------|
+   |ID databáze  |  Zadejte jedinečný název pro identifikaci vaší databáze. Databáze je logický kontejner jednu nebo více kolekcí. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat /, \, #,?, nebo koncové mezery. |
+   |ID kolekce  | Zadejte jedinečný název pro identifikaci vaší kolekce. ID kolekcí mají stejné požadavky na znaky jako názvy databází. |
+   |Kapacita úložiště   | Tato hodnota představuje kapacitu úložiště databáze. Při zřizování propustnost pro jednotlivé kolekce, kapacity úložiště může být **Fixed (10 GB)** nebo **neomezený**. Neomezené úložiště kapacity vyžaduje, abyste nastavit klíč oddílu pro vaše data.  |
+   |Propustnost   | Každý kolekce a databáze může mít propustnost v jednotek žádosti za sekundu.  Kapacitu dlouhodobého úložiště minimální propustnost je 400 jednotek žádosti za sekundu (RU/s), neomezené úložiště kapacity minimální propustnost je nastavena na 1000 RU/s.|
+
+6. Po zadání hodnoty těchto polí, vyberte **OK** uložte nastavení.  
+
+   ![Sada propustnost pro kolekce](./media/set-throughput/set-throughput-for-container.png)
+
+7. Pokud chcete aktualizovat propustnost pro existující kontejner, rozbalte databázi a kontejneru a pak klikněte na **nastavení**. V novém okně zadejte novou hodnotu propustnosti a pak vyberte **Uložit**.  
+
+   ![Aktualizace propustnost pro kolekce](./media/set-throughput/update-throughput-for-container.png)
+
+### <a name="provision-throughput-for-a-set-of-containers-or-at-the-database-level"></a>Zřízení propustnost pro sadu kontejnerů nebo na úrovni databáze
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
+2. Levé navigaci, vyberte **všechny prostředky** a najít váš účet Azure Cosmos DB.  
+3. Můžete nakonfigurovat propustnost při vytváření databáze nebo aktualizace propustnost pro existující databázi.  
+4. Chcete-li přiřadit propustnost při vytváření databáze, otevřete **Průzkumníku dat** a vyberte **novou databázi**  
+5. Vyplnění **id databáze** hodnotu, zkontrolujte **zřídit propustnost** řádku a nakonfigurovat hodnotu propustnosti. Databáze může být zřízen hodnotou minimální propustnost 50 000 RU/s.  
+
+   ![Nastavit propustnost s novou možnost databáze](./media/set-throughput/set-throughput-with-new-database-option.png)
+
+6. Pokud chcete aktualizovat propustnost pro existující databázi, rozbalte databázi a kontejneru a pak klikněte na **škálování**. V novém okně zadejte novou hodnotu propustnosti a pak vyberte **Uložit**.  
+
+   ![Propustnost aktualizací pro databázi](./media/set-throughput/update-throughput-for-database.png)
+
+### <a name="provision-throughput-for-a-set-of-containers-as-well-as-for-an-individual-container-in-a-database"></a>Zřízení propustnost pro sadu kontejnery stejně jako u jednotlivých kontejner v databázi
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
+2. Levé navigaci, vyberte **všechny prostředky** a najít váš účet Azure Cosmos DB.  
+3. Vytvoření databáze a přiřadit propustnost. Otevřete **Průzkumníku dat** a vyberte **novou databázi**  
+4. Vyplnění **id databáze** hodnotu, zkontrolujte **zřídit propustnost** řádku a nakonfigurovat hodnotu propustnosti. Databáze může být zřízen hodnotou minimální propustnost 50 000 RU/s.  
+
+   ![Nastavit propustnost s novou možnost databáze](./media/set-throughput/set-throughput-with-new-database-option.png)
+
+5. Dále vytvořte kolekci v databázi, kterou jste vytvořili v výše krok. Pokud chcete vytvořit kolekci, klikněte pravým tlačítkem na databázi a vyberte **nové kolekce**.  
+
+6. V **přidat kolekce** okno, zadejte název kolekce a klíč oddílu. Volitelně můžete zřídit propustnost pro tento konkrétní kontejner, pokud se rozhodnete přiřadit hodnotu propustnosti, propustnost přiřazené k databázi se sdílí do kolekce.  
+
+   ![Volitelně můžete nastavit propustnost kontejneru](./media/set-throughput/optionally-set-throughput-for-the-container.png)
+
+## <a name="considerations-when-provisioning-throughput"></a>Informace týkající se zřizování propustnost
+
+Tady jsou některé aspekty, které vám pomohou rozhodnout, strategie rezervace propustnost.
+
+Vezměte v úvahu zřizování propustnosti na úrovni databáze, (který je pro sadu kontejnery) v následujících případech:
+
+* Pokud máte tucet nebo více počet kontejnerů, které by mohly sdílet propustnost v rámci některé nebo všechny z nich.  
+
+* Když provádíte migraci z jednoho klienta databáze, která je určená pro spuštění na IaaS hostované virtuální počítače nebo na místní (pro příklad, NoSQL nebo relačních databází) k databázi Cosmos Azure a mají mnoho kontejnerů.  
+
+* Pokud budete chtít zvážit neplánované špičky v úlohách pomocí ve fondu propustnosti na úrovni databáze.  
+
+* Místo nastavení propustnosti na jednotlivé kontejneru vás zajímá při získávání agregovanou propustnost mezi sadu kontejnery v databázi.
+
+Vezměte v úvahu zřizování propustnost na kontejner jednotlivých v následujících případech:
+
+* Pokud máte menší počet kontejnerů Azure Cosmos DB.  
+
+* Pokud chcete získat zaručenou propustnost do daného kontejneru zajišťoval SLA.
+
+## <a name="throughput-ranges"></a>Propustnost rozsahů
 
 Následující tabulka uvádí k dispozici pro kontejnery propustnost:
 
@@ -42,41 +128,76 @@ Následující tabulka uvádí k dispozici pro kontejnery propustnost:
         <tr>
             <td valign="top"><p>Maximální propustnost</p></td>
             <td valign="top"><p>10 000 jednotek žádosti za sekundu</p></td>
-            <td valign="top"><p>Unlimited</p></td>
-            <td valign="top"><p>Unlimited</p></td>
+            <td valign="top"><p>Neomezeno</p></td>
+            <td valign="top"><p>Neomezeno</p></td>
         </tr>
     </tbody>
 </table>
 
-## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Chcete-li nastavit propustnost pomocí portálu Azure
-
-1. V novém okně, otevřete [portál Azure](https://portal.azure.com).
-2. Na levém panelu klikněte na tlačítko **Azure Cosmos DB**, nebo klikněte na tlačítko **všechny služby** v dolní části, posuňte se k **databáze**a pak klikněte na tlačítko **Azure Cosmos DB**.
-3. Vyberte svůj účet Cosmos DB.
-4. V novém okně klikněte na **Průzkumníku dat** v navigační nabídce.
-5. V novém okně rozbalte databázi a kontejneru a pak klikněte na tlačítko **škálování & nastavení**.
-6. V novém okně zadejte novou hodnotu propustnost v **propustnost** pole a pak klikněte na **Uložit**.
-
 <a id="set-throughput-sdk"></a>
 
-## <a name="to-set-the-throughput-by-using-the-sql-api-for-net"></a>Chcete-li nastavit propustnost pomocí rozhraní SQL API pro .NET
+## <a name="set-throughput-by-using-sql-api-for-net"></a>Nastavit propustnost pomocí rozhraní API pro SQL pro .NET
 
-Následující fragment kódu načte aktuální propustnost a změní na 500 RU/s. Úplný příklad najdete v článku [CollectionManagement](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L188-L216) projektu na Githubu.
+Zde je fragment kódu pro vytvoření kontejneru s 3 000 jednotek žádosti za sekundu pro kontejner jednotlivých pomocí sady .NET SDK rozhraní SQL API:
 
 ```csharp
-// Fetch the offer of the collection whose throughput needs to be updated
-// To change the throughput for a set of containers, use the database's selflink instead of the collection's selflink
+DocumentCollection myCollection = new DocumentCollection();
+myCollection.Id = "coll";
+myCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(
+    UriFactory.CreateDatabaseUri("db"),
+    myCollection,
+    new RequestOptions { OfferThroughput = 3000 });
+```
+
+Zde je fragment kódu pro zřizování 100 000 žádostí jednotek za sekundu napříč sadu kontejnery pomocí rozhraní SQL API .NET SDK:
+
+```csharp
+// Provision 100,000 RU/sec at the database level. 
+// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
+// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
+Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
+
+DocumentCollection sharedCollection1 = new DocumentCollection();
+sharedCollection1.Id = "sharedCollection1";
+sharedCollection1.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
+
+DocumentCollection sharedCollection2 = new DocumentCollection();
+sharedCollection2.Id = "sharedCollection2";
+sharedCollection2.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
+
+DocumentCollection dedicatedCollection = new DocumentCollection();
+dedicatedCollection.Id = "dedicatedCollection";
+dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
+
+await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
+```
+
+Azure Cosmos DB funguje ve model rezervace propustnost. To znamená, že se účtují pro množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako vaše aplikace je zatížení, data a využití vzory změnu, je možné snadno škálovat nahoru a dolů počet vyhrazené RUs prostřednictvím sady SDK nebo pomocí [portálu Azure](https://portal.azure.com).
+
+Každý kontejner, nebo sadu kontejnery, je namapovaný na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kontejner do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
+
+```csharp
+// Fetch the resource to be updated
+// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
 Offer offer = client.CreateOfferQuery()
-    .Where(r => r.ResourceLink == collection.SelfLink)    
-    .AsEnumerable()
-    .SingleOrDefault();
+                .Where(r => r.ResourceLink == collection.SelfLink)    
+                .AsEnumerable()
+                .SingleOrDefault();
 
-// Set the throughput to the new value, for example 500 request units per second
-offer = new OfferV2(offer, 500);
+// Set the throughput to 5000 request units per second
+offer = new OfferV2(offer, 5000);
 
-// Now persist these changes to the collection by replacing the original offer resource
+// Now persist these changes to the database by replacing the original resource
 await client.ReplaceOfferAsync(offer);
 ```
+
+Neexistuje žádný vliv na dostupnost vaší kontejneru nebo sadu kontejnery, když změníte propustnost. Nové vyhrazenou propustností je obvykle efektivní během několika sekund na použití nové propustnost.
 
 <a id="set-throughput-java"></a>
 
@@ -105,7 +226,7 @@ client.replaceOffer(offer);
 
 Rozhraní API MongoDB podporuje vlastního příkazu *getLastRequestStatistics*, pro načítání poplatky požadavku pro danou operaci.
 
-Například v prostředí Mongo provést operaci chcete ověřit žádost zdarma pro.
+Například v prostředí Mongo provést operaci, kterou chcete ověřit žádost zdarma pro.
 ```
 > db.sample.find()
 ```
@@ -122,7 +243,7 @@ Potom spusťte příkaz *getLastRequestStatistics*.
 }
 ```
 
-Myslete na to, jedné metody odhadnout velikost vyhrazenou propustností požadované aplikací je záznam zřizování jednotky žádosti přidružené spuštěným typických operací pro položku reprezentativní používá vaše aplikace a pak odhadnout počet operací, které předpokládáte provést každou sekundu.
+Jednou z možností k odhadování množství vyhrazenou propustností požadované aplikací je záznam zřizování jednotky žádosti přidružené spuštěným typických operací pro položku reprezentativní používá vaše aplikace a pak odhad počtu operace předpokládáte provést každou sekundu.
 
 > [!NOTE]
 > Pokud máte typy položek, které se výrazně liší z hlediska velikosti a počtu indexované vlastnosti, potom si poznamenejte poplatků jednotek žádosti příslušné operace spojené s každou *typ* typické položky.
@@ -136,7 +257,7 @@ Nejjednodušší způsob, jak získat dobrý odhad požadavku poplatky jednotky 
 ![Rozhraní API MongoDB portálu metriky][1]
 
 ### <a id="RequestRateTooLargeAPIforMongoDB"></a> Překročení omezení vyhrazenou propustností v rozhraní API MongoDB
-Aplikace, které překračují zřízená propustnost pro kontejner nebo sadu kontejnery bude míra limited, dokud spotřebu klesne pod zřízená propustnost. Když dojde k omezení míry, back-end se ukončí ho preventivně požadavek s `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením `Too Many Requests` kód chyby. Pokud se zobrazuje řada `Too Many Requests` kódy chyb, možná budete chtít buď přidejte logiku opakovaných pokusů v zpracování rutiny chyb aplikace nebo [zvýšit zřízené propustnosti pro kontejner](set-throughput.md).
+Aplikace, které překračují zřízená propustnost pro kontejner nebo sadu kontejnery bude míra limited, dokud spotřebu klesne pod zřízená propustnost. Když dojde k omezení míry, back-end se ukončí požadavek s `16500` kód chyby - `Too Many Requests`. Ve výchozím nastavení, rozhraní API MongoDB automaticky opakovat až 10krát před vrácením `Too Many Requests` kód chyby. Pokud se zobrazuje řada `Too Many Requests` kódy chyb, možná budete chtít buď přidejte logiku opakovaných pokusů v zpracování rutiny chyb aplikace nebo [zvýšit zřízené propustnosti pro kontejner](set-throughput.md).
 
 ## <a name="throughput-faq"></a>Propustnost – nejčastější dotazy
 
@@ -150,6 +271,8 @@ Nedojde k rozšíření rozhraní API MongoDB nastavit propustnost. Doporučuje 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o zřizování a probíhající planetu měřítku s Cosmos DB, najdete v části [dělení a škálování s Cosmos DB](partition-data.md).
+* Další informace o odhad jednotky propustnosti a požadavku najdete v tématu [požadavku jednotky & odhadnout propustnost v Azure Cosmos DB](request-units.md)
+
+* Další informace o zřizování a probíhající planetu měřítku s Cosmos DB, najdete v části [dělení a škálování s Cosmos DB](partition-data.md).
 
 [1]: ./media/set-throughput/api-for-mongodb-metrics.png

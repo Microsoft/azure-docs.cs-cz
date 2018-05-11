@@ -4,19 +4,17 @@ description: Tento dokument obsahuje přehled a příklady podrobné informace o
 services: machine-learning
 author: euangMS
 ms.author: euang
-manager: lanceo
-ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 05/09/2018
+ms.openlocfilehash: 6363d39b2dfbd36ccebff6780e35caf58ca84dda
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Rozšíření dat přípravy Python
 Azure Machine Learning Data přípravy jako způsob vyplnění funkce mezery mezi integrované funkce, zahrnuje rozšíření na více úrovních. V tomto dokumentu jsme popisují rozšiřitelnost prostřednictvím skript v jazyce Python. 
@@ -24,14 +22,10 @@ Azure Machine Learning Data přípravy jako způsob vyplnění funkce mezery mez
 ## <a name="custom-code-steps"></a>Kroky vlastního kódu 
 Data přípravy má následující vlastní kroky, kde uživatelé můžete napsat kód:
 
-* Soubor čtečky *
-* Zapisovač *
 * Přidání sloupců
 * Rozšířený filtr
 * Transformace toku dat
 * Transformace oddílu
-
-* Tyto kroky nejsou aktuálně podporovány při provádění Spark.
 
 ## <a name="code-block-types"></a>Typy blok kódu 
 Pro každý z těchto kroků jsme podporují dva typy kódu bloku. Nejprve podporujeme výraz úplné Python, který je provést, protože je. Za druhé podporujeme modul Python, kde voláme určitou funkci známé podpisem kódu, který zadáte.
@@ -158,74 +152,6 @@ Příklady
     row.ColumnA + row.ColumnB  
     row["ColumnA"] + row["ColumnB"]
 ```
-
-## <a name="file-reader"></a>Čtečka souboru 
-### <a name="purpose"></a>Účel 
-Bodem čtečky souboru rozšíření vám umožní plně řízení procesu čtení souboru do datový tok. Systém volá váš kód a předá v seznamu souborů, které by měl zpracovat. Vytvořte a vraťte Pandas dataframe musí kód. 
-
->[!NOTE]
->Tento bod rozšíření nefunguje v Spark. 
-
-
-### <a name="how-to-use"></a>Způsob použití 
-Přístup tento bod rozšíření z **otevřít zdroj dat** průvodce. Zvolte **souboru** na první stránce a pak vyberte umístění souboru. Na **zvolte soubor parametrů** stránky v **typ souboru** rozevíracího seznamu vyberte **vlastního souboru (skript)**. 
-
-Váš kód je uveden Pandas dataframe, s názvem "df", který obsahuje informace o souborech, které potřebujete ke čtení. Pokud jste se rozhodli otevřete adresář, který obsahuje několik souborů, dataframe obsahuje více než jeden řádek.  
-
-Tato dataframe má následující sloupce:
-
-- Cesta: Soubor čtení.
-- PathHint: Zjistíte, kde je umístěn soubor. Hodnoty: Místní, AzureBlobStorage a AzureDataLakeStorage.
-- AuthenticationType: Typ ověření použitý pro přístup k souboru. Hodnoty: None, SasToken a OAuthToken.
-- AuthenticationValue: Obsahuje jeden nebo token, který má být použit.
-
-### <a name="syntax"></a>Syntaxe 
-Výraz 
-
-```python
-    paths = df['Path'].tolist()  
-    df = pd.read_csv(paths[0])
-```
-
-
-Modul  
-```python
-PathHint = Local  
-def read(df):  
-    paths = df['Path'].tolist()  
-    filedf = pd.read_csv(paths[0])  
-    return filedf  
-```
- 
-
-## <a name="writer"></a>Modul pro zápis 
-### <a name="purpose"></a>Účel 
-Bod rozšíření zapisovače vám umožní plně řízení procesu zápisu dat z datového toku. Systém volá váš kód a předá dataframe. Váš kód můžete použít dataframe při zápisu dat, ale chcete. 
-
->[!NOTE]
->Bod rozšíření zapisovače nefunguje v Spark.
-
-
-### <a name="how-to-use"></a>Způsob použití 
-Tento bod rozšíření můžete přidat pomocí bloku zápisu toku dat (skript). Je k dispozici na nejvyšší úrovni **transformace** nabídky.
-
-### <a name="syntax"></a>Syntaxe 
-Výraz
-
-```python
-    df.to_csv('c:\\temp\\output.csv')
-```
-
-Modul
-
-```python
-def write(df):  
-    df.to_csv('c:\\temp\\output.csv')  
-    return df
-```
- 
- 
-Tento blok vlastní zápisu může existovat uprostřed seznam kroků. Pokud používáte modul, funkce zápisu musí vracet dataframe, který je vstupu pro krok, který následuje. 
 
 ## <a name="add-column"></a>Přidání sloupců 
 ### <a name="purpose"></a>Účel

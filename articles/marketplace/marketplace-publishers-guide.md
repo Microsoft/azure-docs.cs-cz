@@ -1,6 +1,6 @@
 ---
 title: Průvodce Azure Marketplace a AppSource vydavatele
-description: Podrobný průvodce a publikování kontrolní seznamy pro nové vydavatelé pro Azure Marketplace
+description: Přehled Azure Marketplace a AppSource jsou pro vydavatele aplikace a služby
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -12,10 +12,10 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0e91e0b561093d3a82298f7d59b8c12ed02a81f4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 30847ff20abf6654e58a0e72a12f04dcd88d5871
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -87,7 +87,7 @@ Každý výkladní skříň podporuje více publikování možnosti a nabídka t
 |---------|---------|---------|
 |**seznam**    |    Obraťte se na mě konzultační služby     |  Azure Marketplace, AppSource       |
 |**Zkušební verze**   |     Bezplatnou zkušební verzi, zkušební verze SaaS, interaktivní ukázku a vyzkoušejte    |  Azure Marketplace, AppSource       |
-|**Transakce**     |   Virtuální počítač, šablona řešení spravované aplikace      |    Azure Marketplace     |
+|**Transakce**     |   Virtuální počítač, šablona řešení, spravované aplikace, kontejnery, odběry SaaS      |    Azure Marketplace     |
 
 
 
@@ -163,97 +163,6 @@ Výpis vaši nabídku v výkladní skříň marketplace je launchpad pro společ
 Další informace o našich GTM výhody a způsoby, jak růst společnosti v marketplace naleznete [GTM výhody na webu MPN](https://partner.microsoft.com/en-US/reach-customers/gtm).
 
 
-### <a name="determine-the-listing-type-right-for-your-offer"></a>Určuje typ výpis pro vaši nabídku
-
-Každý výkladní skříň podporuje více publikování možnosti a nabídka typů. Vyberte typ nabídky, který nejlépe představuje vaše aplikace a podrobnosti ze služby. Všechny možnosti publikování získáte přístup k vést sdílení partnery. 
-
-
-#### <a name="list"></a>Seznam
-
-Obraťte se na mě možnost použijte, pokud zapojení úrovni zkušební verze nebo transakce není možné. Výhodou tohoto přístupu je, že umožňuje vydavatelé s řešením na trhu pro okamžitě začne zájemce, které můžete by měla vycházet do základní nabídky zahájíte setrvačníku vaší firmy. Nevýhodou je ale, že je omezená, porovnání s jinými typy nabídka zákaznické engagement.
-
->[!IMPORTANT]
->Zákaznické engagement je nejvhodnější zkušební verzi a nabízí Transact. Obraťte se na mě hodnotu realizace, která se zobrazí, pokud si zvolíte tento typ výpis, zajistěte proto že realizace cíl je nakonfigurována a jste připraveni k maximalizaci zájemce. 
-
-Nabídka se primárně skládá z profesionální služby (například hodnocení, implementace, pracovních konferencí), použijte nabídnout služby konzultace ohledně typu. Nabídka oboru, doba trvání a cena musí být vyřešeny, musí být pro jednoho zákazníka a musí být provedeny v lokalitě.
-
-#### <a name="trial"></a>Zkušební verze
-
-Poskytnutí zkušební prostředí zvyšuje úroveň engagement nabízí zákazníkům, a proto bohatší ohrožení vašeho řešení. Bezplatnou zkušební verzí umožňuje zákazníkům prozkoumat řešení než kdybyste kupovali. Zkušební prostředí bude mít vyšší pravděpodobnost povýšení v obchodní poutače a byste měli očekávat další a bohatší zájemců od zákazníků oznámeních podporujících zapojení uživatelů.
- 
-Všechny zkušební možnosti jsou nasazeny na zkušební prostředí nebo předplatné Azure, nikoli prostředí nebo předplatné zákazníka. Zkušební verze by měla být zákazníka vedených bez jakékoli další nákupy a minimální, pokud existuje, další konfiguraci k dokončení jednoduchou případ použití. Zkušební verze musí zahrnovat bezplatnou podporou aspoň po dobu trvání zkušebního období. Uživatelé zkušební verze by měla vycházet a monitorovat podél záměrné vyhodnocení cesty pro dosažení co nejlepších výsledků. Vydavatelé se doporučuje použít marketplace zájemců i intelligence v aplikaci vydavatele vlastní ke sledování a správě uživatelé zkušební verze.
-
-Existují tři scénáře typické zkušební verze:
-
-**Bezplatná zkušební verze**
-
-Při řešení nebo aplikace nabízí volné zkuste, založené na SaaS zkušební verzi, použijte k bezplatné zkušební verzi. Tato možnost jednotky vysoce kvalitní zájemců od zúčastněných zákazníků, můžete spustit setrvačníku vaší firmy. Bezplatné zkušební verze lze zobrazit jako omezeného použití nebo omezené trvání zkušebními účty. Jejich by měla obsahovat volání akce pro urychlení převod na placené použijte váš software.
-
-|**Zkušební verze možnost**  |**Klíčové výhody**  |**Tuto možnost zvolte, pokud...**  |
-|---------|---------|---------|
-|**Bezplatná zkušební verze**    |     Umožňuje zákazník zkuste svůj produkt před jejich zakoupení s automatickou metodu převést na placené použití. Taky umožňuje důkazy konceptu pro odběratele a společné zapojení týmy prodeje společnosti Microsoft. |     Řešení je virtuální počítač nebo šablona řešení.<br><br> Řešení je SaaS nabídky a nabízejí víceklientské SaaS produktu. <br><br>Máte při prvním spuštění ke zprovoznění zákazníka a rychlý. <br><br>Máte jednoho klienta, ale přidáváte zákazníkům jako uživatele typu Host.|
-
-**Vyzkoušejte**
-
-Test jednotky použijte, pokud je řešení nasazeno přes jeden nebo více virtuálních počítačů prostřednictvím IaaS nebo SaaS aplikací. Výhodou tohoto přístupu je automatického zřizování virtuální zařízení nebo couched v hostovaného "lightswitchem" řešení pro vyhodnocení zákazníků bez dalších poplatků zákazník prostředí celého řešení. Zákazník nemusí být stávající zákazník Azure, ke generování špičkových zájemců.
-
-Existují další výhody test jednotky:
-
-- uživatelé k jenom zobrazit nabídkám s test jednotky jsou vylepšení 27 % uživatele vyhledávání na webu marketplace. 
-- Nabízí se test jednotky generování zájemců 38 % více než nabízí bez. 
-- 36 % nové akvizicích zákazníků na webu marketplace pocházet od zákazníků, kteří trvalo test jednotky. 
-- Test jednotky povolit Microsoft prodejci pole pro lepší pochopení vašeho produktu pro společné prodává úsilí.
-
-|**Zkušební verze možnost**  |**Klíčové výhody**  |**Tuto možnost zvolte, pokud...**  |
-|---------|---------|---------|
-|**Vyzkoušejte**     |     Umožňuje zákazník zkuste svůj produkt před jejich zakoupení. Také poskytuje návodné vašeho řešení na předem nakonfigurovaných nastavení. |   Řešení je virtuální počítač, šablona řešení nebo SaaS aplikace pomocí jednoho klienta, nebo je složitý zřídit. <br><br>Nemáte metodu pro zkušební verzi převést na placené nabídku. |
-
-**Interaktivní Demo**
-
-Využít zákazníky prostřednictvím návodné produktu pomocí interaktivní ukázka. Výhodou této možnosti je, že můžete zadat zkušební prostředí bez komplikované zřizování pro komplexní řešení. Tato možnost dává zákazníkům vzhled ohledně řešení. A umožňuje vydavatelů dostávat zájemce, které můžete by měla vycházet do základní nabídky zahájíte setrvačníku vaší firmy. 
-
-|**Zkušební verze možnost**  |**Klíčové výhody**  |**Tuto možnost zvolte, pokud...**  |
-|---------|---------|---------|
-|**Interaktivní demo**    |  Umožňuje zákazníkům zobrazíte vašeho produktu v akci bez složitost instalačního programu.       |    Řešení vyžaduje složité nastavení, která by byla těžko dosáhnout v zkušebního období.     |
-
-#### <a name="transaction"></a>Transakce
-
-V Azure Marketplace, používat *virtuální počítač* při nasazení řešení jako virtuální zařízení do předplatného zákazníka. Virtuální počítače jsou plně obchodování povoleno prostřednictvím průběžnými platbami nebo povoleno BYOL licencování modely. Společnost Microsoft je hostitelem transakce obchodování a bills zákazník jménem vydavatele. Vydavatel získá výhodou využívat upřednostňované platebních vztah zákazníka se společností Microsoft, včetně smlouvy Enterprise. 
-
->[!NOTE]
->V tomto okamžiku peněžních závazků smlouvu Enterprise Agreement lze proti Azure využití virtuální zařízení, ale není pro vydavatele softwaru licenční poplatky.
-
-Použijte *šablona řešení Azure* při řešení vyžaduje další automatizaci nasazení a konfigurace nad rámec tohoto virtuálního zařízení. Řešení šablon můžete automatizovat zřizování jeden nebo více prostředků virtuálního počítače a můžete zřizovat prostředky sítě a úložiště. Řešení šablon nabízejí výhod automatizace na jednu virtuální počítače a na celé řešení založené na IaaS prostředí. Další informace o vytváření šablony řešení [Githubu](https://github.com/MicrosoftDocs/azure-docs).
-
-Použijte *Azure aplikaci spravovanou zásadou* když nasazujete virtuální počítač nebo celé řešení založené na IaaS předplatné zákazníka – a vydavatele nebo zákazníkovi chce řešení, která má být spravováno aplikací třetích stran (například SI nebo MSP). Další informace o vytváření spravované aplikace [Azure spravované aplikace – přehled](https://docs.microsoft.com/azure/managed-applications/overview). Seznam častých dotazů najdete v tématu [Marketplace nejčastější dotazy k](https://azure.microsoft.com/marketplace/faq/).
-
->[!NOTE]
-> Spravované aplikace musí být nasadit přes Marketplace. Pokud vám záleží hlavně komunikaci zákazníků, Všimněte si, že je můžete oslovení zúčastněných zákazníků Pokud máte povoleno sdílení realizace.
-
-#### <a name="azure-certified-program"></a>Azure Certified programu
-
-Program Azure certifikované jsou testovány všechny virtuální počítače, které jsou publikovány v Azure Marketplace. Program:
-
-- Zaručuje zákazníky, že virtuální počítač je kompatibilní s platformou Azure a Marketplace prodávané modelu.
-- Testy pro dodržování předpisů zabezpečení online bitové kopie, včetně virů a malwaru.
-- Umožňuje badging na úrovni nabídka k vylepšení povýšení zákazníkům společnosti Microsoft enterprise jako ověřená řešení.
-- Další informace najdete v tématu [Microsoft Azure certifikované](https://azure.microsoft.com/en-us/marketplace/programs/certified/).
-
-
-#### <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>Publikování procesy produktu pro systém Office, Dynamics a Power BI
-Pro AppSource aplikace, které rozšiřují Office, Dynamics a Power BI můžete další informace o specifických požadavků v dokumentaci k jednotlivým produktům v této části. 
-
-
-|Produkt |Informace o publikování  |
-|---------|---------|
-|Office 365     |    Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).     |
-|Dynamics 365 Finance a operace  |   Když vytváříte pro Enterprise Edition, zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
-|Dynamics 365 pro zákaznické Engagement |Zkontrolujte [publikování proces a pokyny](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource). |
-|Power BI   |     Zkontrolujte [publikování proces a pokyny]( https://docs.microsoft.com/power-bi/developer/office-store).    |
-|Cortana Intelligence     |    Další informace o [Cortana v AppSource](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
-|AppSource konzultace ohledně nabídky     |  Zkontrolujte [pokyny a zjistěte, jak odeslat nabídku](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf).    |
-
-
 ### <a name="requirements-by-listing-type"></a>Požadavky tak, že uvedete typu
 
 #### <a name="prerequisites-for-marketplace-publishing"></a>Předpoklady pro publikování na webu Marketplace
@@ -262,15 +171,15 @@ Pro AppSource aplikace, které rozšiřují Office, Dynamics a Power BI můžete
 
 |**Požadavek**  |**Podrobnosti**  |**Povinných nebo doporučených**  |
 |---------|---------|---------|
-|**Azure Active Directory (AAD)**    |  Aplikace musí umožňovat Azure Active Directory federované jednotné přihlašování (AAD federované jednotné přihlašování) s souhlasu povolena. Přejděte sem pro informace o tom, jak povolit AAD federovaného jednotného přihlašování     |    Požaduje se   |
+|**Azure Active Directory (AAD)**    |  Aplikace musí umožňovat Azure Active Directory federované jednotné přihlašování (AAD federované jednotné přihlašování) s souhlasu povolena. Přejděte sem pro informace o tom, jak povolit AAD federovaného jednotného přihlašování     |    Požadované   |
 |**Integrace s cloudové služby společnosti Microsoft**    |  Aplikace by měla integraci s jinými službami Microsoft Cloud jako služby Microsoft Power BI, Cortana Intelligence nebo Microsoft Azure, jako je Internet věcí       |    Doporučené    |
-|**Cílová skupina**    |  Obchodní uživatelům a vlastníkům obchodních musí být AppSource nabídky     |    Požaduje se   |
-|**Software jako služba (SaaS) aplikace pro firmy**    |  Aplikace musí být: <ul><li>SaaS obchodní aplikace</li><li>Zaměřuje obchodní – proces</li><li>Cílem obchodní zákazníkům</li><li>Povolit uživatelům přihlásit se přes jejich pracovní přihlašovací údaje (uživatelské jméno a heslo)</li></ul>       |    Požaduje se    |
-|**Bezplatné zkušební období a zkušební verze**    |  Zákazník musí být schopen používají vaši aplikaci zdarma po omezenou dobu. Bezplatnou zkušební verzi můžete provést jednu z dvou formách: <ul><li>Zadejte možnost "zkuste" tak, že zákazníci můžete zahájit zkušební verze z AppSource</li><li>Mají zákazníci "žádost o zkušební verzi" z v rámci AppSource</li></ul> V obou metod musí bezplatné zkušební verze nabídnout zákazníkům minimální množství času můžete vyzkoušet na aplikaci pro bez dalších nákladů.      |    Požaduje se    |
-|**Snadno konfigurovat, kompletních řešení**    |  Aplikace musí být snadno a rychle konfigurace a nastavení (nejsou potřeba žádné přizpůsobení)     |    Požaduje se   |
-|**Vést správy**    |  Pro příjem zájemců z Marketplace, je nutné povolit aplikaci CRM (Marketo, Microsoft Dynamics nebo Salesforce) tak, aby přijímal realizace data.       |    Požaduje se    |
-|**Zásady ochrany osobních údajů a podmínky použití**    |  Vaše zásady ochrany osobních údajů musí být dostupný přes veřejnou adresu URL. Vaše podmínky použití, musí být zadán jako text během publikování.     |    Požaduje se   |
-|**Podpora**    |  Vaši nabídku musí obsahovat adresu URL veřejně dostupné podpory, kde pomoc zákazníkům. Zkušební verze musí být zadána v bez dalších nákladů podpory pro zkušební doby.     |    Požaduje se   |
+|**Cílová skupina**    |  Obchodní uživatelům a vlastníkům obchodních musí být AppSource nabídky     |    Požadované   |
+|**Software jako služba (SaaS) aplikace pro firmy**    |  Aplikace musí být: <ul><li>SaaS obchodní aplikace</li><li>Zaměřuje obchodní – proces</li><li>Cílem obchodní zákazníkům</li><li>Povolit uživatelům přihlásit se přes jejich pracovní přihlašovací údaje (uživatelské jméno a heslo)</li></ul>       |    Požadované    |
+|**Bezplatné zkušební období a zkušební verze**    |  Zákazník musí být schopen používají vaši aplikaci zdarma po omezenou dobu. Bezplatnou zkušební verzi můžete provést jednu z dvou formách: <ul><li>Zadejte možnost "zkuste" tak, že zákazníci můžete zahájit zkušební verze z AppSource</li><li>Mají zákazníci "žádost o zkušební verzi" z v rámci AppSource</li></ul> V obou metod musí bezplatné zkušební verze nabídnout zákazníkům minimální množství času můžete vyzkoušet na aplikaci pro bez dalších nákladů.      |    Požadované    |
+|**Snadno konfigurovat, kompletních řešení**    |  Aplikace musí být snadno a rychle konfigurace a nastavení (nejsou potřeba žádné přizpůsobení)     |    Požadované   |
+|**Vést správy**    |  Pro příjem zájemců z Marketplace, je nutné povolit aplikaci CRM (Marketo, Microsoft Dynamics nebo Salesforce) tak, aby přijímal realizace data.       |    Požadované    |
+|**Zásady ochrany osobních údajů a podmínky použití**    |  Vaše zásady ochrany osobních údajů musí být dostupný přes veřejnou adresu URL. Vaše podmínky použití, musí být zadán jako text během publikování.     |    Požadované   |
+|**Podpora**    |  Vaši nabídku musí obsahovat adresu URL veřejně dostupné podpory, kde pomoc zákazníkům. Zkušební verze musí být zadána v bez dalších nákladů podpory pro zkušební doby.     |    Požadované   |
 
 **Azure Marketplace: Požadavky pro možnosti publikování**
 
@@ -298,6 +207,23 @@ Pro AppSource aplikace, které rozšiřují Office, Dynamics a Power BI můžete
 |---------|---------|---------|
 |**Fakturace a měření**    |  Virtuální počítač musí podporovat model použití vlastní licence nebo na základě využití, měsíční fakturace.       |    Transakce    |
 |**Azure kompatibilní virtuální pevný disk (VHD)**     |   Virtuální počítače musí být založený na [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) nebo [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).    |   Transakce      |
+
+#### <a name="prerequisites-specific-to-transaction-publishing-for-containers"></a>Konkrétní požadavky na publikování transakce pro kontejnery
+
+
+|**Požadavek**  |**Podrobnosti** |**Možnost publikování**  |
+|---------|---------|---------|
+|**Fakturace a měření**   |  Vaše kontejneru musí podporovat buď uvolněte nebo Bring Your Own License modely fakturace.       |  Transakce       |
+|**Bitové kopie založené na docker**    |   Kontejner Image musí být založená na formát obrázku Docker a musí být vyžádány z Azure kontejneru registrech.      |  Transakce       |
+
+#### <a name="prerequisites-specific-to-transation-publishing-for-saas-app-subscriptions"></a>Konkrétní požadavky na publikování transakce odběrů aplikace SaaS
+
+|**Požadavek**  |**Podrobnosti** |**Možnost publikování**  |
+|---------|---------|---------|
+|**Fakturace a měření**    |   Vaši nabídku je cenově paušálně měsíční. V tuto chvíli nejsou podporovány na základě využití ceny a na základě využití možnosti "true-up".      |   Transakce      |
+|**Zrušení**  |   Kdykoli je možné zrušit zákazník vaši nabídku.      |   Transakce      |
+|**Cílová stránka transakce**     |   Hostujete stránku cílová Azure související transakci, kde uživatelé mohou vytvářet a spravovat své účty služby SaaS.      |    Transakce     |
+|**Předplatné SaaS rozhraní API**    |   Vystavit služby, které mohou komunikovat s předplatným SaaS vytvářet, aktualizovat a odstraňovat plán uživatelského účtu a služby. Důležité změny rozhraní API musí podporovat do 24 hodin. Méně závažné změny rozhraní API, budou vydané pravidelně.      |     Transakce    |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Konkrétní požadavky na konzultace ohledně publikování služby
 
@@ -364,11 +290,11 @@ Před zahájením procesu publikování, je vhodné se seznámit s požadované 
 
 |Budete potřebovat toto publikování artefaktů  |Pro tento typ nabídky  |
 |---------|---------|
-|**Název (maximálně 50 znaků)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace)       |
-|**Souhrn (maximálně 200 znaků)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace)       |
-|**Dlouhý souhrn (maximálně 256 znaků)**     |   Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace)      |
-|**Popis ve formátu HTML (maximální počet znaků 3000)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace)       |
-|**Loga společnosti (40 x 40, 90 x 90, 115 x 115, 255 x 115, 815 x 290)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace)       |
+|**Název (maximálně 50 znaků)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace), kontejnery, odběry SaaS       |
+|**Souhrn (maximálně 200 znaků)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace), kontejnery, odběry SaaS       |
+|**Dlouhý souhrn (maximálně 256 znaků)**     |   Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace), kontejnery, odběry SaaS      |
+|**Popis ve formátu HTML (maximální počet znaků 3000)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace), kontejnery, odběry SaaS      |
+|**Loga společnosti (40 x 40, 90 x 90, 115 x 115, 255 x 115, 815 x 290)**    |  Transakce: virtuální počítače, aplikace Azure (šablony řešení a spravované aplikace), kontejnery, odběry SaaS     |
 
 
 **SKU**
@@ -380,6 +306,7 @@ Před zahájením procesu publikování, je vhodné se seznámit s požadované 
 |**Podrobnosti operačního systému**    |   Transakce: virtuální počítače      |
 |**Porty a protokoly v použití**    |  Transakce: virtuální počítače       |
 |**Disk verze a URL SAS pro každý virtuální pevný disk používá**   |  Transakce: virtuální počítače       |
+|**Azure podrobnosti úložiště bitové kopie kontejneru registru (ACR), včetně ID odběru, název skupiny prostředků, název registru, název úložiště, uživatelské jméno, heslo a obrázek značky (volitelné)** | Transakce: kontejnery |
 
 
 #### <a name="using-azure-active-directory-to-enable-trials"></a>Pomocí služby Azure Active Directory povolit zkušební verze

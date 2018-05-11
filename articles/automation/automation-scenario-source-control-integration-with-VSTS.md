@@ -7,13 +7,14 @@ author: eamonoreilly
 ms.author: eamono
 keywords: služby VSTS, Azure powershell zdrojového kódu automatizace
 ms.service: automation
+ms.component: process-automation
 ms.topic: article
 ms.date: 03/19/2017
-ms.openlocfilehash: a60143db03e5f89685a25f26789003de30d91f4c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: edd9174a9141c4db36a1b25d5f1147f9c7b2e2c2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation scénář – integrace ovládacích prvků zdrojového automatizace s Visual Studio Team Services
 
@@ -24,11 +25,11 @@ Tento článek popisuje postup pro integraci služby VSTS prostředí Azure Auto
 
 Tento scénář se skládá ze dvou Powershellové runbooky, které můžete importovat přímo z [Galerie Runbooků](automation-runbook-gallery.md) v portálu Azure nebo stažení [Galerie prostředí PowerShell](https://www.powershellgallery.com).
 
-### <a name="runbooks"></a>Runbooky
+### <a name="runbooks"></a>Sady Runbook
 
-Runbook | Popis| 
+Sada Runbook | Popis| 
 --------|------------|
-Sync-VSTS | Import sady runbook nebo konfigurace z služby VSTS zdrojového kódu, pokud se provádí vrácení se změnami. Je-li spustit ručně, naimportuje a publikuje všechny sady runbook nebo konfigurace do účtu Automation.| 
+Služby synchronizace VSTS | Import sady runbook nebo konfigurace z služby VSTS zdrojového kódu, pokud se provádí vrácení se změnami. Je-li spustit ručně, naimportuje a publikuje všechny sady runbook nebo konfigurace do účtu Automation.| 
 Sync-VSTSGit | Import sady runbook nebo konfigurace ze služby VSTS ve správě zdrojového Git Pokud se provádí vrácení se změnami. Je-li spustit ručně, naimportuje a publikuje všechny sady runbook nebo konfigurace do účtu Automation.|
 
 ### <a name="variables"></a>Proměnné
@@ -61,7 +62,7 @@ Integrace s služby VSTS (synchronizace-VSTS.ps1) mají následující parametry
 Parametr | Popis| 
 --------|------------|
 WebhookData | Tato položka obsahuje vrácení se změnami informace odesílané ze služby hák služby VSTS. Tento parametr by měl ponechat prázdné.| 
-ResourceGroup | Toto je název skupiny prostředků, zda má účet automation v.|
+Skupina prostředků | Toto je název skupiny prostředků, zda má účet automation v.|
 AutomationAccountName | Název účtu služby automation, který je synchronizován s služby VSTS.|
 VSFolder | Název složky v služby VSTS existuje sady runbook a konfigurace.|
 VSAccount | Název účtu, Visual Studio Team Services.| 
@@ -74,7 +75,7 @@ Pokud používáte služby VSTS s GITEM (synchronizace-VSTSGit.ps1) bude trvat n
 
 Parametr | Popis|
 --------|------------|
-WebhookData | To bude obsahovat informace o vrácení se změnami z hák služby VSTS služby. Tento parametr by měl ponechat prázdné.| ResourceGroup | Tento název skupiny prostředků, zda má účet automation v.|
+WebhookData | To bude obsahovat informace o vrácení se změnami z hák služby VSTS služby. Tento parametr by měl ponechat prázdné.| Skupina prostředků | Tento název skupiny prostředků, zda má účet automation v.|
 AutomationAccountName | Název účtu služby automation, který je synchronizován s služby VSTS.|
 VSAccount | Název účtu, Visual Studio Team Services.|
 VSProject | Název projektu v služby VSTS existuje sady runbook a konfigurace.|

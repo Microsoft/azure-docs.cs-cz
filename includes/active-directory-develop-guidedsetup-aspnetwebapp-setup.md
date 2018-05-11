@@ -2,24 +2,17 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
-documentationcenter: dev-center-name
 author: andretms
-manager: mtillman
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 05/04/2018
+ms.date: 05/08/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 1c51d70a3747da6a8f51c5fc6341c1975cebbdb7
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 5d3af1800e18e3686e69d4a25131c68d3bdc805b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -29,7 +22,7 @@ Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování pros
 
 ### <a name="create-your-aspnet-project"></a>Vytvoření projektu ASP.NET
 
-1. V sadě Visual Studio: `File` > `New` > `Project`<br/>
+1. V sadě Visual Studio: `File` > `New` > `Project`
 2. V části *Visual C# \Web*, vyberte `ASP.NET Web Application (.NET Framework)`.
 3. Název aplikace a klikněte na tlačítko *OK*
 4. Vyberte `Empty` a zaškrtněte políčko Přidat `MVC` odkazy
@@ -40,11 +33,11 @@ Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování pros
 2. Přidat *balíčky NuGet middleware OWIN* pomocí následujícího příkazu v okně konzoly Správce balíčků:
 
     ```powershell
-    Install-Package Microsoft.Owin.Security.OpenIdConnect -Version 3.1.0
-    Install-Package Microsoft.Owin.Security.Cookies -Version 3.1.0
-    Install-Package Microsoft.Owin.Host.SystemWeb -Version 3.1.0
+    Install-Package Microsoft.Owin.Security.OpenIdConnect
+    Install-Package Microsoft.Owin.Security.Cookies
+    Install-Package Microsoft.Owin.Host.SystemWeb
     ```
-    
+
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>O tyto knihovny
 >Výše uvedené knihovny povolit jednotné přihlašování (SSO) prostřednictvím ověřování na základě souborů cookie pomocí OpenID Connect. Po dokončení ověření a token představující uživatele je odeslána do vaší aplikace, middlewaru OWIN, který vytvoří soubor cookie relace. Tento soubor cookie v prohlížeči pak používá na následné žádosti, takže uživatel nebude muset znovu zadejte heslo a je potřeba žádné další ověření.
@@ -54,20 +47,19 @@ Tato část uvádí kroky pro instalaci a konfiguraci kanálu ověřování pros
 Následující postup slouží k vytváření middleware OWIN při spuštění třída ke konfiguraci ověřování OpenID Connect. Tato třída bude provedena automaticky při spuštění procesu služby IIS.
 
 > [!TIP]
-> Pokud nemá projektu `Startup.cs` souboru v kořenové složce:<br/>
-> 1. Klikněte pravým tlačítkem na kořenové složky projektu: >    `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Název `Startup.cs`<br/>
+> Pokud nemá projektu `Startup.cs` souboru v kořenové složce:
+> 1. Klikněte pravým tlačítkem na kořenové složky projektu: > `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Název `Startup.cs`
 >
 >> Zajistěte, aby byl vybranou třídu třídy pro spuštění OWIN a není standardní C# třídu. To můžete ověřit kontrolou, pokud se zobrazí `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` výše obor názvů.
 
-1. Přidat *OWIN* a *Microsoft.IdentityModel* odkazuje na `Startup.cs` tak, aby na pomocí deklarace stane toto:
+1. Přidat *OWIN* a *Microsoft.IdentityModel* odkazuje na `Startup.cs`:
 
     ```csharp
-    using System;
-    using System.Threading.Tasks;
     using Microsoft.Owin;
     using Owin;
-    using Microsoft.IdentityModel.Protocols;
+    using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+    using Microsoft.IdentityModel.Tokens;
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OpenIdConnect;
@@ -100,7 +92,7 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
             app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
-                app.UseOpenIdConnectAuthentication(
+            app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
                 {
                     // Sets the ClientId, authority, RedirectUri as obtained from web.config
@@ -109,13 +101,16 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
                     RedirectUri = redirectUri,
                     // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
                     PostLogoutRedirectUri = redirectUri,
-                    Scope = OpenIdConnectScopes.OpenIdProfile,
+                    Scope = OpenIdConnectScope.OpenIdProfile,
                     // ResponseType is set to request the id_token - which contains basic information about the signed-in user
-                    ResponseType = OpenIdConnectResponseTypes.IdToken,
+                    ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
                     // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
-                    TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters() { ValidateIssuer = false },
+                    TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidateIssuer = false
+                    },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
                     {
@@ -137,9 +132,7 @@ Následující postup slouží k vytváření middleware OWIN při spuštění t
             return Task.FromResult(0);
         }
     }
-
     ```
-
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Další informace

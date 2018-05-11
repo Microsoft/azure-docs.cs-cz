@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 353762f33da8e5d48f6b70df3b790287eeab7ff9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -124,6 +124,20 @@ Pokud je disk disková jednotka používané pro úložiště vyskytne selhání
 
 ## <a name="compute-isolation"></a>Výpočetní izolace
 Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise. Tyto instance výpočetní a služby nabízejí izolace na více úrovních k zabezpečení dat, aniž by došlo ke ztrátě flexibilitu při konfiguraci této poptávky zákazníků.
+
+### <a name="isolated-virtual-machine-sizes"></a>Izolované velikostí virtuálních počítačů
+Výpočtů Azure nabízí velikostí virtuálního počítače, které jsou izolované typu konkrétní hardware a vyhrazenou pro jednoho zákazníka.  Tyto velikosti virtuálního počítače jsou nejvhodnější pro úlohy, které vyžadují vysokou míru izolaci od ostatních zákazníků pro úlohy zahrnující elementy jako dodržování předpisů a zákonné požadavky.  Zákazníci také možné dále rozdělit prostředky těchto virtuálních počítačů izolované pomocí [podporu pro vnořené virtuální počítače Azure](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).
+
+Použití izolované velikost zaručuje, že virtuální počítač bude pouze jeden systémem tuto instanci konkrétní server.  Aktuální nabídky izolované virtuálního počítače patří:
+* Standard_E64is_v3
+* Standard_E64i_v3
+* Standard_M128ms
+* Standard_GS5
+* Na úrovni Standard_G5
+* Standard_DS15_v2
+* Standard_D15_v2
+
+Další informace o jednotlivých izolované velikost dostupné [zde](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Technologie Hyper-V a kořenové OS izolaci mezi kořenové virtuálních počítačů & hostované virtuální počítače
 Výpočetní platformě Azure je založena na virtualizaci počítače, což znamená, že veškerý kód zákazníka provede ve virtuálním počítači technologie Hyper-V. Na každém uzlu Azure (nebo koncový bod sítě) je Hypervisor, který běží přímo nad hardwarem a rozděluje uzlu do proměnné číslo z hostované virtuální počítače (VM).

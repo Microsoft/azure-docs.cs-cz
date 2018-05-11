@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 71d920ea1c143ed65510b77e1804e9c5e38cc180
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7cf865f0ce75d8308d6d42306e8e05852f763cae
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -24,7 +24,7 @@ ms.lasthandoff: 05/10/2018
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-> [!note]  
+> [!Note]  
 > Kubernetes kontejneru služby Azure (ACS) v zásobníku Azure je v privátní Preview verzi. Operátor vaší zásobník Azure bude muset požádat o přístup k položce Kubernetes Marketplace potřebná k provedení podle pokynů v tomto článku.
 
 V následujícím článku zjistí pomocí šablony Azure Resource Manager řešení k nasazení a zřizování prostředků pro Kubernetes v rámci jediné koordinované operace. Budete potřebovat ke shromažďování požadované informace o instalaci aplikace Azure zásobníku generovat šablony a pak nasadit do cloudu.
@@ -39,7 +39,7 @@ Můžete použít Kubernetes na:
 - Návrh aplikace zjednodušit a zlepšit jeho spolehlivost různé Helm aplikace. [Helm](https://github.com/kubernetes/helm) je nástroj balení open source, který vám pomůže nainstalovat a spravovat životní cyklus aplikace Kubernetes.
 - Snadno monitorování a Diagnostika stavu z vašich aplikací s měřítkem a upgradovat funkce.
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadované součásti 
 
 Abyste mohli začít, ujistěte se, máte příslušná oprávnění a že vaše zásobník Azure je připravený.
 
@@ -121,7 +121,7 @@ Poskytněte přístup k hlavní službě k vašemu předplatnému, aby objekt za
 
 6. Zadejte **předpona DNS hlavní profil** , je jedinečný pro danou oblast. Toto musí být jedinečný pro oblast název, například `k8s-12345`. Zkuste zvolili, je stejná jako skupina prostředků název jako nejlepší postup.
 
-    > [!note]  
+    > [!Note]  
     > Pro každý cluster použijte předponu DNS nových a jedinečných hlavní profilu.
 
 7. Zadejte počet agentů v clusteru. Tato hodnota se označuje jako **počet profilu fondu agentů**. Může to být od 1 do 32

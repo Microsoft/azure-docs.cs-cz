@@ -3,16 +3,17 @@ title: Grafické vytváření obsahu v Azure Automation.
 description: Vytváření grafického obsahu umožňuje vytváření runbooků pro automatizaci Azure bez práce s kódem. Tento článek obsahuje úvod do vytváření grafického obsahu a všechny podrobnosti, které jsou potřebné k zahájení vytváření grafický runbook.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 14e4ac42015aeca3042fac12211b3ddfb7cca774
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cc51fabaffd0f9de5c2a460922dadc0abf74577e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafické vytváření obsahu v Azure Automation.
 
@@ -45,7 +46,7 @@ Ovládacím prvku knihovna slouží k výběru [aktivity](#activities) přidat d
 | Sekce | Popis |
 |:--- |:--- |
 | Rutiny |Zahrnuje všechny rutiny, které lze použít v sadě runbook. Rutiny jsou uspořádané podle modulu. Všechny moduly, které jste nainstalovali v účtu automation jsou k dispozici. |
-| Runbooky |Obsahuje sady runbook ve vašem účtu automation. Tyto sady runbook lze přidat na plátno, který se má použít jako podřízené sady runbook. Jenom runbooky stejného typu jádro jako runbook upravovaný jsou uvedeny; pro grafický jsou zobrazeny pouze pomocí prostředí PowerShell runbooky sady runbook, zatímco pro runbooky pracovních postupů grafické prostředí PowerShell jsou zobrazeny pouze PowerShell založené na pracovním postupu sady runbook. |
+| Sady Runbook |Obsahuje sady runbook ve vašem účtu automation. Tyto sady runbook lze přidat na plátno, který se má použít jako podřízené sady runbook. Jenom runbooky stejného typu jádro jako runbook upravovaný jsou uvedeny; pro grafický jsou zobrazeny pouze pomocí prostředí PowerShell runbooky sady runbook, zatímco pro runbooky pracovních postupů grafické prostředí PowerShell jsou zobrazeny pouze PowerShell založené na pracovním postupu sady runbook. |
 | Prostředky |Zahrnuje [prostředky automation](http://msdn.microsoft.com/library/dn939988.aspx) ve vašem účtu automation, který lze použít v sadě runbook. Když přidáte prostředek k sadě runbook, přidá aktivitu pracovního postupu, který získá vybrané asset. V případě proměnné prostředků můžete vybrat, jestli chcete přidat aktivitu získat proměnnou nebo nastavit proměnnou. |
 | Řízení sady Runbook |Zahrnuje řízení aktivity sady runbook, které lze použít v aktuální sadě runbook. A *spojení* trvá více vstupů a čeká na všechny dokončili před pokračováním pracovního postupu. A *kód* aktivita běží jeden nebo více řádků kódu prostředí PowerShell nebo pracovního postupu Powershellu v závislosti na typ grafický runbook. Tuto aktivitu můžete použít pro vlastní kód nebo pro funkce, které je obtížné dosáhnout s ostatními aktivitami. |
 
@@ -109,7 +110,7 @@ Pokud zadáte hodnotu pro parametr, můžete vybrat zdroj dat k určení, jak je
 
 | Zdroj dat | Popis |
 |:--- |:--- |
-| Konstanta |Zadejte hodnotu pro parametr. To je dostupná jenom pro následující typy dat: Int32, Int64, řetězec, logická hodnota, datum a čas, přepínač. |
+| Konstantní hodnota |Zadejte hodnotu pro parametr. To je dostupná jenom pro následující typy dat: Int32, Int64, řetězec, logická hodnota, datum a čas, přepínač. |
 | Výstup aktivity |Výstup z aktivity, která předchází aktuální aktivity v pracovním postupu. Jsou uvedeny všechny platné aktivity. Vyberte aktivitu používat jeho výstup pro hodnotu parametru. Pokud aktivita výstupy objekt s více vlastností, potom můžete zadat název vlastnosti po výběru aktivity. |
 | Vstup z Runbooku |Vyberte vstupní parametr runbooku jako vstup pro parametr aktivity. |
 | Variabilní prostředek |Vyberte proměnné Automation jako vstup. |
@@ -117,7 +118,7 @@ Pokud zadáte hodnotu pro parametr, můžete vybrat zdroj dat k určení, jak je
 | Asset certifikátu |Vyberte certifikát Automation jako vstup. |
 | Asset připojení |Vyberte připojení Automation jako vstup. |
 | Powershellový výraz |Zadat jednoduchý [Powershellový výraz](#powershell-expressions). Vyhodnotí výraz se před aktivity a výsledek použít pro hodnotu parametru. Proměnné můžete použít k odkazování na výstup aktivity nebo vstupní parametr runbooku. |
-| Není nakonfigurované |Vymaže hodnotu, která byla nastavena. |
+| Není konfigurováno |Vymaže hodnotu, která byla nastavena. |
 
 #### <a name="optional-additional-parameters"></a>Další volitelné parametry
 

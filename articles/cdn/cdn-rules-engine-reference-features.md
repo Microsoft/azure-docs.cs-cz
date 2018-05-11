@@ -4,7 +4,7 @@ description: Referenční dokumentace pro Azure CDN pravidla modul funkce.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -12,10 +12,10 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: fe1f61c7242cf4213b19e9496d557ae7a2253fe8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e1e002b51aa5a93e7fcc800f5cf48ac401c5cb2d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -184,7 +184,7 @@ Název | Účel
 Hodnota|Výsledek
 --|--
 Povoleno | Hlavička odpovědi stáří je zahrnutý v odpovědi odeslat žadatel.
-Zakázáno | Hlavička odpovědi stáří je vyloučen z odpovědi odeslat žadatel.
+Zakázané | Hlavička odpovědi stáří je vyloučen z odpovědi odeslat žadatel.
 
 **Výchozí chování**: zakázáno.
 
@@ -201,7 +201,7 @@ Parametry omezení šířky pásma určit, jestli rychlost přenosu dat pro pož
 Hodnota|Výsledek
 --|--
 Povoleno|Umožňuje bodů POP na případném dalším sdílení dodržovat požadavky omezení šířky pásma.
-Zakázáno|Způsobí, že bodů POP ignorovat parametry omezení šířky pásma. Požadovaný obsah je obvykle obsluhovat (tedy bez omezení šířky pásma).
+Zakázané|Způsobí, že bodů POP ignorovat parametry omezení šířky pásma. Požadovaný obsah je obvykle obsluhovat (tedy bez omezení šířky pásma).
 
 **Výchozí chování:** povolena.
  
@@ -233,7 +233,7 @@ Prebuf sekund|Nastavte tuto možnost na počet sekund pro bodů POP počkat, dok
 Hodnota|Výsledek
 --|--
 Povoleno|I v případě, že obsah byl dříve uložené v mezipaměti bodů POP způsobí, že všechny požadavky na Přejít na zdrojový server.
-Zakázáno|Způsobí, že bodů POP do mezipaměti prostředky podle zásady ukládání do mezipaměti definované v jeho hlavičky odpovědi.
+Zakázané|Způsobí, že bodů POP do mezipaměti prostředky podle zásady ukládání do mezipaměti definované v jeho hlavičky odpovědi.
 
 **Výchozí chování:**
 
@@ -318,7 +318,7 @@ Typ|Popis
 --|--
  Zahrnout|  Označuje, že každý zadaný parametr by měl být součástí klíče mezipaměti. Jedinečný klíč mezipaměti se vygeneruje pro každý požadavek, který obsahuje jedinečná hodnota pro parametr řetězce dotazu definované v této funkce. 
  Zahrnout všechny  |Vyplývá, že je pro každý požadavek pro prostředek, který obsahuje řetězec dotazu jedinečný jedinečné klíče mezipaměti. Tento typ konfigurace se nedoporučuje obvykle, protože může vést k malým procentem přístupů do mezipaměti. Nízký počet přístupů k mezipaměti zvyšuje zatížení na původním serveru, protože se musí poskytovat další požadavky. Tato konfigurace duplikuje chování ukládání do mezipaměti, které jsou známé jako "jedinečný mezipaměti" na stránce ukládání do mezipaměti řetězce dotazu. 
- Vyloučit | Znamená, že pouze zadané parametry je vyloučena z klíče mezipaměti. Všechny ostatní parametrů řetězce dotazu jsou součástí klíče mezipaměti. 
+ Vyjmout | Znamená, že pouze zadané parametry je vyloučena z klíče mezipaměti. Všechny ostatní parametrů řetězce dotazu jsou součástí klíče mezipaměti. 
  Vyloučit všechny výsledky kategorie  |Označuje, že všechny parametrů řetězce dotazu jsou vyloučeny z klíče mezipaměti. Tato konfigurace duplikuje "standard-cache" výchozí chování na stránce ukládání do mezipaměti řetězce dotazu ukládání do mezipaměti.  
 
 Stroj pravidel umožňuje přizpůsobit způsobem, ve kterém se implementuje ukládání do mezipaměti řetězce dotazu. Například můžete zadat, že ukládání do mezipaměti řetězce dotazu se provádí pouze v určitých umístění nebo typy souborů.
@@ -356,7 +356,7 @@ Tento typ konfigurace by generovat následující dotaz řetězec parametr-klí�
 
     /800001/Origin/folder/asset.htm?sessionid=1234&language=EN&userid=01
 
-##### <a name="exclude"></a>Vyloučit
+##### <a name="exclude"></a>Vyjmout
 
 Ukázková konfigurace:
 
@@ -400,7 +400,7 @@ Nová cesta|Zadejte relativní cestu k nové klíče mezipaměti. Relativní ces
 </br>
 
 ---
-### <a name="comment"></a>Poznámka
+### <a name="comment"></a>Komentář
 **Účel:** umožňuje Poznámka přidávaného v pravidle.
 
 Jedno použití pro tuto funkci je poskytnout další informace o obecné účely pravidlo nebo proč konkrétní vyhovují podmínce nebo funkce byla přidána do pravidla.
@@ -431,7 +431,7 @@ Ponechat výchozí konfiguraci pro HTTP velké platformu, protože snižuje zat�
 Hodnota|Výsledek
 --|--
 Povoleno|Obnoví výchozí chování. Výchozí chování je vynutit POP zahájíte načítání na pozadí prostředku ze zdrojového serveru. Po kterém asset bude v místní mezipaměti na serveru POP.
-Zakázáno|POP bránit v provádění načítání na pozadí pro asset. Výsledkem je, že další požadavek pro tento prostředek z této oblasti způsobí, že POP k vyžádání ze zdrojového serveru zákazníka.
+Zakázané|POP bránit v provádění načítání na pozadí pro asset. Výsledkem je, že další požadavek pro tento prostředek z této oblasti způsobí, že POP k vyžádání ze zdrojového serveru zákazníka.
 
 **Výchozí chování:** povolena.
 
@@ -533,7 +533,7 @@ X-ES-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 Hodnota|Výsledek
 -|-
 Povoleno|Požadavky pro ladění hlavičky odpovědi mezipaměti bude vracet odpovědi obsahující hlavičku X-ES-Debug.
-Zakázáno|Hlavička odpovědi X-ES-Debug budou vyloučeny z odpovědi.
+Zakázané|Hlavička odpovědi X-ES-Debug budou vyloučeny z odpovědi.
 
 **Výchozí chování:** zakázané.
 
@@ -590,7 +590,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže b�
 Hodnota | Výsledek
 ------|-------
 Povoleno| Způsobí, že všechny požadavky, které splňují kritéria přiřazování zamítnutí 403 Zakázáno odpovědi.
-Zakázáno| Obnoví výchozí chování. Výchozí chování je umožnit zdrojový server určit typ odpovědi, který bude vrácen.
+Zakázané| Obnoví výchozí chování. Výchozí chování je umožnit zdrojový server určit typ odpovědi, který bude vrácen.
 
 **Výchozí chování**: zakázáno
 
@@ -650,7 +650,7 @@ Informace o klíči:
 Hodnota|Výsledek
 -|-
 Povoleno|Požadavky můžete přesměrovat.
-Zakázáno|Požadavky nebude přesměrovat.
+Zakázané|Požadavky nebude přesměrovat.
 
 **Výchozí chování:** zakázané.
 
@@ -723,7 +723,7 @@ Informace o klíči:
 Hodnota|Výsledek
 --|--
 Povoleno|Umožňuje ne mezipaměť klienta HTTP žádosti předají na zdrojový server, a na zdrojový server vrátí hlavičky odpovědi a text prostřednictvím POP zpět do klienta protokolu HTTP.
-Zakázáno|Obnoví výchozí chování. Výchozí chování je zabránit požadavků na mezipaměť ne předávaná na zdrojový server.
+Zakázané|Obnoví výchozí chování. Výchozí chování je zabránit požadavků na mezipaměť ne předávaná na zdrojový server.
 
 Pro všechny přenosy produkční důrazně doporučujeme opustit tuto funkci ve svém výchozím zakázáno stavu. Původ servery, jinak nebude Stíněný, z koncoví uživatelé, kteří mohou nechtěně aktivovat mnoho požadavků bez mezipaměti, při aktualizaci webové stránky, nebo z mnoha přehrávače oblíbených médií, které jsou kódované hlavička ne mezipaměti s každou video žádost odeslat. Tuto funkci však může být užitečné pro použití určitých mimo produkční pracovní nebo testování adresářů, aby bylo možné povolit čerstvého obsahu, který mají být vyžádány na vyžádání ze zdrojového serveru.
 
@@ -785,7 +785,7 @@ Ve výchozím nastavení tento kód stavu se vrátí, pokud zadaný rozsah bajt�
 Hodnota|Výsledek
 -|-
 Povoleno|Zabrání bodů POP reagovat na požadavek neplatný rozsah bajtů s 416 požadovaný rozsah nelze uspokojit stavový kód. Servery se místo toho doručování požadovaný prostředek a vrátit 200 OK klientovi.
-Zakázáno|Obnoví výchozí chování. Výchozí chování je respektovat 416 požadovaný rozsah nelze uspokojit stavový kód.
+Zakázané|Obnoví výchozí chování. Výchozí chování je respektovat 416 požadovaný rozsah nelze uspokojit stavový kód.
 
 **Výchozí chování:** zakázané.
 
@@ -846,7 +846,7 @@ Z důvodu způsobem v mezipaměti, které jsou sledovány nastavení nemůže b�
 Hodnota|Výsledek
 -|-
 Povoleno|Umožňuje ukládání řetězce dotazů při nahrávání adresy URL v přístupu k protokolu. Pokud adresu URL neobsahuje řetězec dotazu, tato možnost nebude mít vliv.
-Zakázáno|Obnoví výchozí chování. Výchozí chování je ignorovat řetězce dotazů při zaznamenávání adresy URL v přístupu k protokolu.
+Zakázané|Obnoví výchozí chování. Výchozí chování je ignorovat řetězce dotazů při zaznamenávání adresy URL v přístupu k protokolu.
 
 **Výchozí chování:** zakázané.
 
@@ -882,11 +882,11 @@ Požadavky, které se předávají do zdrojového serveru se projeví změny pro
 
 Na hlavička požadavku je možné provádět jednu z následujících akcí:
 
-Možnost|Popis|Příklad:
+Možnost|Popis|Příklad
 -|-|-
 Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky žádosti.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Hodnota hlavičky požadavku (stroj pravidel):**<br/>Value2 <br/>**Nová hodnota hlavičky žádosti:** <br/>Value1Value2
 Přepsat|Hodnota hlavičky požadavku se nastaví na zadanou hodnotu.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Hodnota hlavičky požadavku (stroj pravidel):**<br/>Value2<br/>**Nová hodnota hlavičky žádosti:**<br/> Value2 <br/>
-Odstranění|Odstraní určenou hlavičku požadavku.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Upravte konfiguraci hlavičky požadavku klienta:**<br/>Odstraňte v hlavičce žádosti.<br/>**Výsledek:**<br/>Zadaný požadavek záhlaví nebudou předávány na zdrojový server.
+Odstranit|Odstraní určenou hlavičku požadavku.|**Hodnota hlavičky požadavku (klient):**<br/>value1<br/>**Upravte konfiguraci hlavičky požadavku klienta:**<br/>Odstraňte v hlavičce žádosti.<br/>**Výsledek:**<br/>Zadaný požadavek záhlaví nebudou předávány na zdrojový server.
 
 Informace o klíči:
 
@@ -920,11 +920,11 @@ Ve výchozím nastavení jsou definovány hodnoty hlavičky odpovědi původním
 
 Na hlavičku odpovědi je možné provádět jednu z následujících akcí:
 
-Možnost|Popis|Příklad:
+Možnost|Popis|Příklad
 -|-|-
 Připojit|Zadaná hodnota přidá na konec existující hodnotu hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br />value1<br/>**Hodnota hlavičky odpovědi (stroj pravidel):**<br/>Value2<br/>**Nová hodnota hlavičky odpovědi:**<br/>Value1Value2
 Přepsat|Hodnota hlavičky odpovědi se nastaví na zadanou hodnotu.|**Hodnota hlavičky odpovědi (klient):**<br/>value1<br/>**Hodnota hlavičky odpovědi (stroj pravidel):**<br/>Value2 <br/>**Nová hodnota hlavičky odpovědi:**<br/>Value2 <br/>
-Odstranění|Odstraní zadané hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br/>value1<br/>**Upravte konfiguraci hlavičky odpovědi klienta:**<br/>Odstraňte dotyčném hlavičku odpovědi.<br/>**Výsledek:**<br/>Zadané hlavičky odpovědi nebude předají do žadatel.
+Odstranit|Odstraní zadané hlavičky odpovědi.|**Hodnota hlavičky odpovědi (klient):**<br/>value1<br/>**Upravte konfiguraci hlavičky odpovědi klienta:**<br/>Odstraňte dotyčném hlavičku odpovědi.<br/>**Výsledek:**<br/>Zadané hlavičky odpovědi nebude předají do žadatel.
 
 Informace o klíči:
 
@@ -942,7 +942,7 @@ Informace o klíči:
     - Délka obsahu
     - rozsah obsahu
     - datum
-    - server
+    - Server
     - přípojného
     - kódování přenosu
     - upgrade
@@ -964,7 +964,7 @@ Toto částečné mezipaměti může potom použít ke splnění nové požadavk
 Hodnota|Výsledek
 -|-
 Povoleno|Požadavky můžete vygenerovat obsahu částečně v mezipaměti.
-Zakázáno|Požadavky můžete generovat jenom plně v mezipaměti verzi požadovaného obsahu.
+Zakázané|Požadavky můžete generovat jenom plně v mezipaměti verzi požadovaného obsahu.
 
 **Výchozí chování:** zakázané.
 
@@ -1022,7 +1022,7 @@ Platné hodnoty jsou:
 Hodnota|Výsledek
 --|--
 Povoleno|Způsobí, že POP, znovu načíst asset ze zdrojového serveru.
-Zakázáno|Obnoví výchozí chování. Výchozí chování je poskytovat až platný mezipaměti prostředky na vyžádání.
+Zakázané|Obnoví výchozí chování. Výchozí chování je poskytovat až platný mezipaměti prostředky na vyžádání.
 Tato funkce není vyžadován pro správné ukládání do mezipaměti a doručování obsahu, ale můžou být užitečné jako alternativní řešení. Například dynamického obsahu generátory na počátku serverech může nechtěně způsobit odpovědí 0 bajtů, které jsou odesílány do bodů POP. Tyto typy odpovědí jsou obvykle ukládají do mezipaměti podle bodů POP. Pokud znáte odpovědi 0 bajtů se nikdy platné odezvy 
 
 takový obsah pak tato funkce zabránit tyto typy prostředků zpracování vašim klientům.
@@ -1084,7 +1084,7 @@ Ujistěte se, že zadaná hlavička název neodpovídá žádnému tyto názvy:
 Hodnota|Výsledek
 -|-
 Povoleno|Zastaralé obsah je žadateli zpracovat, když dojde k chybě při připojení ke zdrojovému serveru.
-Zakázáno|Chyba na zdrojový server se předají do žadatel.
+Zakázané|Chyba na zdrojový server se předají do žadatel.
 
 **Výchozí chování:** zakázáno
 
@@ -1124,7 +1124,7 @@ Tato funkce má přednost před většinu funkcí s výjimkou funkce přepisová
 Hodnota | Výsledek
 ------|---------
 Povoleno | Chrání požadovaný obsah s ověřováním na základě tokenu. Pouze požadavky od klientů, které poskytují platný token a splňovat požadavky na jeho bude dodržet. FTP transakce jsou vyloučeny z ověřování na základě tokenu.
-Zakázáno| Obnoví výchozí chování. Výchozí chování je umožnit konfiguraci ověřování na základě tokenu k určení, zda požadavek nebude zabezpečené.
+Zakázané| Obnoví výchozí chování. Výchozí chování je umožnit konfiguraci ověřování na základě tokenu k určení, zda požadavek nebude zabezpečené.
 
 #### <a name="compatibility"></a>Kompatibilita
 Nepoužívejte tokenu ověřování s podmínkou vždy shodu. 
@@ -1144,7 +1144,7 @@ Kód odezvy|Název odpovědí|Popis
 301|Trvale přesunut|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé.
 302|Nalezeno|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé. Tento kód stavu je standardní způsob provedení přesměrování.
 307|Dočasné přesměrování|Tento kód stavu přesměruje na adresu URL zadanou v hlavičce umístění neoprávnění uživatelé.
-401|Neautorizováno|Kombinování tento kód stavu se hlavička WWW-Authenticate odpovědi umožňuje zobrazit výzvu uživateli pro ověřování.
+401|Neautorizované|Kombinování tento kód stavu se hlavička WWW-Authenticate odpovědi umožňuje zobrazit výzvu uživateli pro ověřování.
 403|Zakázáno|Tato zpráva je standardní 403 Zakázáno stavovou zprávu, která neoprávněný uživatel uvidí při pokusu o přístup k chráněnému obsahu.
 404|Soubor se nenašel|Tento kód stavu označuje, že klient HTTP byl schopen komunikovat se serverem, ale nebyl nalezen požadovaný obsah.
 
@@ -1165,7 +1165,7 @@ Adresa URL přesměrování platí jenom pro 3xx kódů odpovědi.
 
 Možnost Volitelná hodnota hlavičky podporuje alfanumerické znaky, znaky uvozovek a mezery.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Tato funkce podporuje možnost zahrnout do odpovědi k neautorizovanému požadavku pro obsah chráněný na základě tokenu ověřování hlavička WWW-Authenticate. Pokud hlavička WWW-Authenticate byla nastavena na "basic" v konfiguraci, bude neoprávněný uživatel výzva pro pověření účtu.
 
@@ -1196,7 +1196,7 @@ Platné hodnoty jsou:
 Hodnota|Výsledek
 ---|----
 Povoleno|Způsobí, že POP, ignorovat velká / při porovnávání adres URL pro ověřování na základě tokenu parametry.
-Zakázáno|Obnoví výchozí chování. Výchozí chování je pro porovnání adresu URL pro ověřování tokenem být malá a velká písmena.
+Zakázané|Obnoví výchozí chování. Výchozí chování je pro porovnání adresu URL pro ověřování tokenem být malá a velká písmena.
 
 **Výchozí chování:** zakázané.
 
@@ -1217,7 +1217,7 @@ Informace o klíči:
 Hodnota|Výsledek
 ----|----
 Povoleno|Možnost Hodnota definuje název parametru řetězce dotazu, přes který by měl být definován tokeny.
-Zakázáno|Token je možné zadat jako parametr řetězce dotazu Nedefinovaná v adrese URL žádosti.
+Zakázané|Token je možné zadat jako parametr řetězce dotazu Nedefinovaná v adrese URL žádosti.
 
 **Výchozí chování:** zakázané. Token je možné zadat jako parametr řetězce dotazu Nedefinovaná v adrese URL žádosti.
 
@@ -1240,25 +1240,25 @@ Důrazně doporučujeme používat absolutní adresu URL. Použití relativní a
 
 **Vzorový scénář**
 
-Tento příklad ukazuje, jak přesměrovat okraj URL CNAME, který se přeloží na tuto základní adresu URL CDN: http://marketing.azureedge.net/brochures
+Tento příklad ukazuje, jak přesměrovat okraj URL CNAME, který se přeloží na tuto základní adresu URL CDN: http:\//marketing.azureedge.net/brochures
 
-Určení požadavků bude přesměrován na tento základní hraniční CNAME URL: http://cdn.mydomain.com/resources
+Určení požadavků, bude přesměrován na tento základní hraniční CNAME URL: http:\//cdn.mydomain.com/resources
 
-Tato adresa URL přesměrování může dosáhnout pomocí následující konfigurace: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Tato adresa URL přesměrování může dosáhnout pomocí následující konfigurace: ![adresa URL přesměrování](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Klíčové body:**
 
 - Požadavek definuje funkci přesměrování URL adresy URL, které bude přesměrován. V důsledku toho nejsou vyžadovány další shodu podmínky. I když podmínky shody byl definován jako "Vždy", bude přesměrován pouze požadavky, které přejděte do složky "brožury" na "marketing" počátek zákazníka. 
 - Všechny odpovídající požadavky bude přesměrován na hranici, které CNAME URL definované v cílovém možnosti. 
     - Ukázkový scénář #1: 
-        - Ukázková žádost (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
-        - Adresa URL požadavku (po přesměrování): http://cdn.mydomain.com/resources/widgets.pdf  
+        - Ukázková žádost (CDN URL): http:\//marketing.azureedge.net/brochures/widgets.pdf 
+        - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/widgets.pdf  
     - Vzorový scénář #2: 
-        - Ukázková žádost (hraniční CNAME URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - Adresa URL požadavku (po přesměrování): http://cdn.mydomain.com/resources/widgets.pdf vzorový scénář
+        - Ukázková žádost (hraniční CNAME URL): http:\//marketing.mydomain.com/brochures/widgets.pdf 
+        - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/widgets.pdf vzorový scénář
     - Vzorový scénář #3: 
-        - Ukázková žádost (hraniční CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
-        - Adresa URL požadavku (po přesměrování): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
+        - Ukázková žádost (hraniční CNAME URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
+        - Adresa URL požadavku (po přesměrování): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  
 - V cílovém možnosti, které zajišťuje, že schéma žádosti zůstává beze změny po přesměrování se využívají záznamy proměnnou schéma požadavku (% {schéma}).
 - Segmenty adres URL, které zaznamenalo z požadavku se připojují na novou adresu URL prostřednictvím "1 USD."
 
@@ -1282,17 +1282,17 @@ Možnost|Popis
 
 **Vzorový scénář 1**
 
-Tento příklad ukazuje, jak přesměrovat okraj URL CNAME, který se přeloží na tuto základní adresu URL CDN: http://marketing.azureedge.net/brochures/
+Tento příklad ukazuje, jak přesměrovat okraj URL CNAME, který se přeloží na tuto základní adresu URL CDN: http:\//marketing.azureedge.net/brochures/
 
-Určení požadavků bude přesměrován na tento základní hraniční CNAME URL: http://MyOrigin.azureedge.net/resources/
+Určení požadavků, bude přesměrován na tento základní hraniční CNAME URL: http:\//MyOrigin.azureedge.net/resources/
 
-Tato adresa URL přesměrování může dosáhnout pomocí následující konfigurace: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Tato adresa URL přesměrování může dosáhnout pomocí následující konfigurace: ![adresa URL přesměrování](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Vzorový scénář 2**
 
 Tento příklad ukazuje, jak přesměrovat okraj CNAME URL z velká písmena na malá písmena pomocí regulárních výrazů.
 
-Tato adresa URL přesměrování může dosáhnout pomocí následující konfigurace: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Tato adresa URL přesměrování může dosáhnout pomocí následující konfigurace: ![adresa URL přesměrování](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 
 **Klíčové body:**

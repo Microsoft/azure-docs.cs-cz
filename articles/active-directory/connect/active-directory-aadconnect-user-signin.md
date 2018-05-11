@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/08/2018
 ms.author: billmath
-ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect uživatelské možnosti přihlášení
 Připojení služby Azure Active Directory (Azure AD) umožňuje uživatelům přihlásit do cloudu a místní prostředky pomocí stejnými hesly. Tento článek popisuje klíčové koncepty pro každý model identity, které vám pomohou zvolit identity, která chcete použít pro přihlášení ke službě Azure AD.
@@ -28,6 +28,7 @@ Pokud jste již obeznámeni s modelem identity Azure AD a chcete získat další
 * [Synchronizaci hodnoty hash hesla](#password-hash-synchronization) s [bezproblémové jednotné přihlašování (SSO)](active-directory-aadconnect-sso.md)
 * [Předávací ověřování](active-directory-aadconnect-pass-through-authentication.md) s [bezproblémové jednotné přihlašování (SSO)](active-directory-aadconnect-sso.md)
 * [Federované jednotné přihlašování (službou Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* [Federaci se PingFederate](#federation-with-pingfederate)
 
 > [!NOTE] 
 > Je důležité si pamatovat, že konfigurace federace pro Azure AD, je vytvořit vztah důvěryhodnosti mezi vašeho klienta Azure AD a federované domény. S touto doménou federovaného vztahu důvěryhodnosti budou mít uživatelé přístup k prostředkům cloudu Azure AD v rámci klienta.  
@@ -38,12 +39,12 @@ Pro většinu organizací, které právě chcete povolit přihlášení uživate
 
 Je nutné | PBS pomocí jednotného přihlašování| PTA pomocí jednotného přihlašování| AD FS |
  --- | --- | --- | --- |
-Automaticky synchronizujte nové, obraťte se na, účty uživatelů a skupin ve službě Active Directory v místě do cloudu.|x|x|x|
-Nastavení klienta pro Office 365 hybridní scénáře.|x|x|x|
-Povolte vlastní uživatelé přihlásit a získat přístup ke službám cloudu pomocí hesla pro místní.|x|x|x|
-Implementaci jednotného přihlašování pomocí podnikové přihlašovací údaje.|x|x|x|
-Ujistěte se, že se žádná hesla ukládat v cloudu.||x*|x|
-Povolte místní služby Multi-Factor authentication řešení.|||x|
+Automaticky synchronizujte nové, obraťte se na, účty uživatelů a skupin ve službě Active Directory v místě do cloudu.|w|w|w|
+Nastavení klienta pro Office 365 hybridní scénáře.|w|w|w|
+Povolte vlastní uživatelé přihlásit a získat přístup ke službám cloudu pomocí hesla pro místní.|w|w|w|
+Implementaci jednotného přihlašování pomocí podnikové přihlašovací údaje.|w|w|w|
+Ujistěte se, že se žádná hesla ukládat v cloudu.||x*|w|
+Povolte místní služby Multi-Factor authentication řešení.|||w|
 
 * Prostřednictvím lightweight agenta.
 
@@ -88,6 +89,13 @@ Pokud provádíte nasazení nové farmy nebo použití existující farmy, je t�
 * Na počítač, který jste spustili Průvodce být schopni připojit k jiné počítače, které chcete nainstalovat službu AD FS nebo Proxy webových aplikací na pomocí vzdálené správy systému Windows.
 
 Další informace najdete v tématu [Konfigurace jednotného přihlašování se službou AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs).
+
+### <a name="federation-with-pingfederate"></a>Federace s PingFederate
+Federované přihlášení můžete uživatelům přihlásit ke službám Azure na základě AD s místními hesla. Když jsou v podnikové síti, i nemají k zadání hesla.
+
+Další informace o konfiguraci PingFederate pro použití se službou Azure Active Directory najdete v tématu [PingFederate integraci s Azure Active Directory a Office 365](https://www.pingidentity.com/AzureADConnect)
+
+Informace o nastavení Azure AD Connect s použitím PingFederate najdete v tématu [vlastní instalace Azure AD Connect](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-pingfederate)
 
 #### <a name="sign-in-by-using-an-earlier-version-of-ad-fs-or-a-third-party-solution"></a>Přihlaste se pomocí dřívější verze služby AD FS nebo řešení třetí strany
 Pokud jste již nakonfigurovali cloudu přihlásit pomocí starší verze služby AD FS (například služby AD FS 2.0) nebo zprostředkovatele federování třetích stran, můžete přeskočit konfigurace přihlášení uživatele přes Azure AD Connect. To vám umožní získat nejnovější synchronizace a dalším funkcím služby Azure AD Connect při stále pomocí stávajícího řešení pro přihlášení.

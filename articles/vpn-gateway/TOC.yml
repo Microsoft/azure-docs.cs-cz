@@ -8,6 +8,8 @@
   items:
     - name: Vytvoření a správa služby VPN Gateway
       href: vpn-gateway-tutorial-create-gateway-powershell.md
+    - name: Vytváření a správa připojení S2S VPN
+      href: vpn-gateway-tutorial-vpnconnection-powershell.md
 - name: Ukázky
   items:
     - name: Azure PowerShell

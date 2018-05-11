@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: a6cd67e4f3c3ab58b83d2ebadbe1856dd61b0f18
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 666253d16ac51dcc21174211f71794f8b0ede07d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -87,7 +87,7 @@ Tento proces se liší od [pomocí zabezpečené konfigurace bez obslužná ruti
 
 ## <a name="next-steps"></a>Další postup
 
-- Získat [Úvod do rozšíření Azure DSC obslužná rutina](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Zkontrolujte [šablony Azure Resource Manageru pro rozšíření DSC](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Získat [Úvod do rozšíření Azure DSC obslužná rutina](dsc-overview.md).
+- Zkontrolujte [šablony Azure Resource Manageru pro rozšíření DSC](dsc-template.md).
 - Další informace o DSC Powershellu, přejděte na [centru dokumentace prostředí PowerShell](/powershell/dsc/overview).
 - Pro další funkce, které můžete spravovat pomocí DSC Powershellu a pro další prostředky DSC, přejděte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 1bf2c10c5267157f6d74962c00d587a6956fc574
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 27a8dca68000e3f4b7f33508fc6dbc3450fc80b4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Použití rozšíření IoT pro Azure CLI 2.0 pro správu zařízení Azure IoT Hub
 
@@ -96,10 +96,10 @@ Tuto vlastnost lze číst ze zařízení.
 Umožňuje získáte vlastnosti hlášených zařízení tak, že spustíte následující příkaz:
 
 ```bash
-az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.reported.interval = 3000
+az iot hub device-twin show -n <your hub name> -d <your device id>
 ```
 
-Jedna z vlastností je $metadata. $lastUpdated který ukazuje čas poslední toto zařízení odeslání nebo přijetí zprávy.
+Jeden z twin oznámila vlastnosti je $metadata. $lastUpdated který ukazuje čas poslední aplikace zařízení aktualizovat jeho hlášené vlastnost sady.
 
 ## <a name="device-twin-tags"></a>Značky twin zařízení
 

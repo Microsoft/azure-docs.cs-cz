@@ -10,11 +10,11 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: cefb5b7157f2fc8672ed419961cd3a90314b95e0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c58e731f6b8c86a0b7d6f2500d81077904b2f5ef
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak zpracovat a extrahovat informace z bitových kopií ve scénářích kognitivní vyhledávání
 
@@ -32,10 +32,12 @@ Nelze vypnout normalizaci bitové kopie. Dovedností, které provádějí iterac
 
 | Parametr konfigurace | Popis |
 |--------------------|-------------|
-| imageAction   | Nastavte na "žádný" Pokud žádná akce, je třeba při došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na buď "generateNormalizedImages" ke generování pole bitových kopií normalizovaných jako součást krakování dokumentu. Tyto bitové kopie k dispozici v *normalized_images* pole. <br/>Výchozí hodnota je "none." Tato konfigurace je pouze relevantní do objektu blob datových zdrojů, "dataToExtract" je nastavena na "contentAndMetadata." |
+| imageAction   | Nastavte na "žádný" Pokud žádná akce, je třeba při došlo k vložené obrázky nebo soubory obrázků. <br/>Nastavte na "generateNormalizedImages" ke generování pole bitových kopií normalizovaných jako součást krakování dokumentu. Tyto bitové kopie k dispozici v *normalized_images* pole. <br/>Výchozí hodnota je "none." Tato konfigurace je pouze relevantní do objektu blob datových zdrojů, "dataToExtract" je nastavena na "contentAndMetadata." |
 |  normalizedImageMaxWidth | Maximální šířka (v pixelech) pro normalizovaný obrázky vygenerována. Výchozí hodnota je 2000.|
 |  normalizedImageMaxHeight | Maximální výška (v pixelech) pro normalizovaný obrázky vygenerována. Výchozí hodnota je 2000.|
 
+> [!NOTE]
+> Pokud nastavíte *imageAction* vlastnost na jakoukoli jinou hodnotu než "žádný", nebude možné nastavit *parsingMode* vlastnost na jakoukoli jinou hodnotu než "Výchozí".  Pouze jednu z těchto dvou vlastností může nastavit v konfiguraci indexer na jiné než výchozí hodnotu.
 
 Výchozí 2000 pixelů pro bitových kopií normalizovaných maximální šířku a výšku je založena na maximální velikosti podporované [rozpoznávání znaků odborností](cognitive-search-skill-ocr.md) a [image analysis odborností](cognitive-search-skill-image-analysis.md). Pokud můžete zvýšit maximální limit, může na větší bitové kopie nezdaří zpracování.
 

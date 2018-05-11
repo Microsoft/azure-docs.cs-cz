@@ -3,16 +3,17 @@ title: Počínaje webhook, jehož runbook služby automatizace Azure
 description: Webhook, která umožňuje klientovi spuštění sady runbook ve službě Azure Automation z volání protokolu HTTP.  Tento článek popisuje, jak vytvořit webhook, jehož a postup volání jednoho spuštění runbooku.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 4ea7366a02dd95fac5c1a7307e6156a0481fa16d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: bb64d0c5d94bb198b6ece2ea50a7fc248b93c7dd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Počínaje webhook, jehož runbook služby automatizace Azure
 A *webhooku* umožňuje spustit konkrétní runbook ve službě Azure Automation prostřednictvím jedné žádosti HTTP. To umožňuje externích služeb, jako je například Visual Studio Team Services, GitHub, analýzy protokolů Azure nebo vlastních aplikací ke spouštění sad runbook bez implementace úplné řešení pomocí rozhraní API služby Azure Automation.  
@@ -26,8 +27,8 @@ Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro 
 | Vlastnost | Popis |
 |:--- |:--- |
 | Název |Můžete zadat libovolný název, který chcete použít pro webhook, jehož vzhledem k tomu, že to není vystavený klienta.  Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br>  Jako osvědčený postup musíte získat webhooku název související klientovi, který bude používat. |
-| zprostředkovatele identity |Adresa URL webhooku je jedinečnou adresu, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojené s webhooku.  Generuje se automaticky při vytvoření webhooku.  Nelze zadat vlastní adresu URL. <br> <br>  Adresa URL obsahuje token zabezpečení, který umožňuje sady runbook vyvolat systému třetích stran se žádné další ověřování. Z tohoto důvodu by zpracovávat jako heslo.  Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na portálu Azure v době, kdy je vytvoření webhooku. Upozorňujeme ale, adresu URL na bezpečné místo pro budoucí použití. |
-| Datum konce platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží.  Po vytvoření webhooku můžete upravit toto datum vypršení platnosti. |
+| URL |Adresa URL webhooku je jedinečnou adresu, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojené s webhooku.  Generuje se automaticky při vytvoření webhooku.  Nelze zadat vlastní adresu URL. <br> <br>  Adresa URL obsahuje token zabezpečení, který umožňuje sady runbook vyvolat systému třetích stran se žádné další ověřování. Z tohoto důvodu by zpracovávat jako heslo.  Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na portálu Azure v době, kdy je vytvoření webhooku. Upozorňujeme ale, adresu URL na bezpečné místo pro budoucí použití. |
+| Datum ukončení platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží.  Po vytvoření webhooku můžete upravit toto datum vypršení platnosti. |
 | Povoleno |Webhook, jehož je ve výchozím nastavení povolena, když je vytvořeno.  Pokud je nastavena na zakázáno, pak žádný klient bude moct používat.  Můžete nastavit **povoleno** vlastnost při vytvoření webhooku nebo kdykoli po jeho vytvoření. |
 
 ### <a name="parameters"></a>Parametry
@@ -109,7 +110,7 @@ Za předpokladu, že požadavek je úspěšné, webhooku odpovědi obsahuje id �
 
 Klient nemůže zjistit po dokončení úlohy runbooku nebo její stav dokončení od webhooku.  Může zjistit, tyto informace id úlohy pomocí jiné metody, jako [prostředí Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) nebo [rozhraní API služby Azure Automation](https://msdn.microsoft.com/library/azure/mt163826.aspx).
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Následující příklad používá ke spuštění sady runbook s webhook, jehož prostředí Windows PowerShell.  Upozorňujeme, že jakýkoli jazyk, který může odeslat požadavek HTTP, můžete použít webhooku; Prostředí Windows PowerShell se právě používá jako příklad sem.
 
 Sada runbook očekává seznam virtuálních počítačů, které jsou ve formátu JSON v textu požadavku. Můžeme také jsou včetně informací o kdo je spuštění sady runbook a datum a čas, že je právě spuštěna v hlavičce požadavku.      
@@ -190,7 +191,7 @@ Vezměte v úvahu prostředek služby Azure, jako je například virtuální po�
 
 Pokud toto pravidlo výstrahy se změní na aktivní a aktivuje runbook webhooku povolena, odešle kontext výstrahy do sady runbook. [Kontext výstrahy](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) obsahuje podrobnosti, včetně **SubscriptionID**, **ResourceGroupName**, **ResourceName**, **ResourceType**, **ResourceId** a **časové razítko** které jsou požadovány pro sadu runbook k identifikaci prostředku, na kterém je provedením akce. Výstrahy kontextu vložené v části textu **WebhookData** objekt posílá sady runbook a je přístupný pomocí **Webhook.RequestBody** vlastnost
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Vytvoření virtuálního počítače Azure ve vašem předplatném a přidružení [výstrahu, kterou chcete sledovat metriku procento procesoru](../monitoring-and-diagnostics/insights-receive-alert-notifications.md). Během vytváření výstrahy zkontrolujte, zda že vyplnění pole webhooku s adresou URL webhooku, který byl vygenerován při vytváření webhooku.
 
 Následující vzorový runbook se aktivuje, když pravidlo výstrahy se změní na aktivní a shromáždí parametry kontext výstrahy, které jsou požadovány pro sadu runbook k identifikaci prostředku, na kterém je provedením akce.

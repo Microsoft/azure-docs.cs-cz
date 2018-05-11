@@ -3,17 +3,18 @@ title: Správa virtuálního počítače Azure se shromažďováním dat pro inv
 description: Správa virtuálního počítače se shromažďováním dat pro inventarizaci
 services: automation
 ms.service: automation
+ms.component: change-inventory-management
 keywords: inventory, automation, change, tracking
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0b744911d37e2d54f88ebeac3ec64a309bab22b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9f9c157fc8d1674aefcfea2ddea2aab3a4e86444
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Správa virtuálního počítače Azure se shromažďováním dat pro inventarizaci
 
@@ -56,7 +57,7 @@ Ve výchozím nastavení jsou pro shromažďování nakonfigurovány software, s
 
 Následující tabulka obsahuje informace o každé vlastnosti, které mohou být konfigurovány pro různé kategorie.
 
-### <a name="windows-registry"></a>Registru systému Windows
+### <a name="windows-registry"></a>Registr systému Windows
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -65,7 +66,7 @@ Následující tabulka obsahuje informace o každé vlastnosti, které mohou bý
 |Skupina     | Název skupiny pro logické seskupení souborů        |
 |Klíč registru systému Windows   | Cesta, ve které se má soubor hledat. Například: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
 
-### <a name="windows-files"></a>Soubory systému Windows
+### <a name="windows-files"></a>Soubory Windows
 
 |Vlastnost  |Popis  |
 |---------|---------|
@@ -74,7 +75,7 @@ Následující tabulka obsahuje informace o každé vlastnosti, které mohou bý
 |Skupina     | Název skupiny pro logické seskupení souborů        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt
 
-### <a name="linux-files"></a>Linux soubory
+### <a name="linux-files"></a>Soubory Linuxu
 
 |Vlastnost  |Popis  |
 |---------|---------|

@@ -8,8 +8,8 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 2c6867b02fd88c4616647c8602906fbf786da414
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8269b91ea3459fd9e391d46f0b3e78bc7e5b3b41
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -29,8 +29,8 @@ Fyzické servery | Replikace fyzických serversto Windows nebo Linuxem místní 
 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-VMware | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.<br/><br/> Doporučujeme vám, že vSphere hostitelů a serverů vCenter nacházejí ve stejné síti jako procesní server. Ve výchozím nastavení spouští součásti serveru proces na konfiguračním serveru, tak to bude síť, ve kterém můžete nastavit konfigurační server, pokud nastavíte vyhrazené procesový server. 
-Fyzické | neuvedeno
+VMware | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.<br/><br/> Doporučujeme vám, že vSphere hostitelů a serverů vCenter nacházejí ve stejné síti jako procesní server. Ve výchozím nastavení spouští součásti serveru proces na konfiguračním serveru, tak to bude síť, ve kterém můžete nastavit konfigurační server, pokud nastavíte vyhrazené procesový server.
+Fyzické | Není k dispozici
 
 ## <a name="site-recovery-configuration-server"></a>Konfigurace serveru pro obnovení lokality
 
@@ -38,19 +38,19 @@ Konfigurační server je na místním počítači, který spouští součásti S
 
 **Komponenta** | **Požadavky**
 --- |---
-Procesorová jádra | 8 
+Procesorová jádra | 8
 Paměť RAM | 12 GB
 Počet disků | 3 disky<br/><br/> Disky zahrnují disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení.
 Volné místo na disku | 600 GB místa na požadované pro proces mezipaměti serveru.
 Volné místo na disku | 600 GB místa vyžaduje jednotka pro uchování.
-Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 | 
-Národní prostředí operačního systému | Angličtina (en-us) 
+Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 |
+Národní prostředí operačního systému | Angličtina (en-us)
 PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") by měly být nainstalovány.
 Role Windows Serveru | Nepovolíte: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
 Zásady skupiny| Nepovolíte: <br> -Zabránit přístupu do příkazového řádku. <br> -Znemožnit přístup k registru nástroje pro úpravy. <br> -Důvěřujete logiku pro přílohy souborů. <br> -Zapněte provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ověřte, že je:<br/><br/> -Nemáte dříve existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Nemají dříve existující web nebo aplikaci naslouchá na portu 443<br>
-Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware) 
-Typ IP adresy | Statická 
+Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware)
+Typ IP adresy | Statický
 Porty | použít pro ovládací prvek kanál orchestration 443)<br>9443 používá pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikovaných počítačů
@@ -138,7 +138,8 @@ Více síťovými Kartami | Ano
 Vyhrazená IP adresa | Ano
 IPv4 | Ano
 Zachovat zdrojové IP adresy | Ano
-Koncové body služby Azure virtuální sítě<br/><br/> (Brány firewall úložiště azure a virtuální sítě) | Ne
+Koncové body služby Azure virtuální sítě<br/> (bez brány firewall pro Azure Storage) | Ano
+Akcelerované síťové služby | Ne
 
 ## <a name="storage"></a>Úložiště
 **Komponenta** | **Podporuje se**
@@ -184,14 +185,14 @@ Objekty blob bloku | Ne
 Šifrování v klidovém stavu (šifrování služby úložiště)| Ano
 Premium Storage | Ano
 Import a export služby | Ne
-Koncové body služby virtuální sítě<br/><br/> Úložiště brány firewall a virtuální sítě, které jsou nakonfigurované na cílový účet úložiště nebo mezipaměti úložiště (používá se k uložení dat replikace) | Ne
+Azure Storage brány firewall pro virtuální sítě, které jsou nakonfigurované na cílový účet úložiště nebo mezipaměti úložiště (používá se k uložení dat replikace) | Ne
 Účty úložiště obecné účely v2 (horká a studená vrstev) | Ne
 
 ## <a name="azure-compute"></a>Výpočtů Azure
 
 **Funkce** | **Podporuje se**
 --- | ---
-Skupiny dostupnosti | Ano
+Sady dostupnosti | Ano
 ROZBOČOVAČE | Ano
 Managed Disks | Ano
 
@@ -201,17 +202,17 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 
 **Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated machines). | Kontrola selže, pokud není podporován. 
-Architektura operačního systému hosta | 64bitová verze. | Kontrola selže, pokud není podporován. 
-Velikost disku operačního systému | Až 2 048 GB. | Kontrola selže, pokud není podporován. 
+Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated machines). | Kontrola selže, pokud není podporován.
+Architektura operačního systému hosta | 64bitová verze. | Kontrola selže, pokud není podporován.
+Velikost disku operačního systému | Až 2 048 GB. | Kontrola selže, pokud není podporován.
 Počet disků operačního systému | 1 | Kontrola selže, pokud není podporován.  
 Počet datových disků | 64 nebo méně. | Kontrola selže, pokud není podporován.  
-Velikost datového disku | Až 4095 GB | Kontrola selže, pokud není podporován. 
-Síťové adaptéry | Několik adaptérů jsou podporovány. | 
-Sdílený virtuální pevný disk | Nepodporuje se. | Kontrola selže, pokud není podporován. 
-FC disku | Nepodporuje se. | Kontrola selže, pokud není podporován. 
-BitLocker | Nepodporuje se. | Dříve než povolíte replikaci pro počítač, musí se zakázat nástroj BitLocker. | 
-název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu v vlastnosti počítače ve službě Site Recovery.
+Velikost datového disku | Až 4095 GB | Kontrola selže, pokud není podporován.
+Síťové adaptéry | Několik adaptérů jsou podporovány. |
+Sdílený virtuální pevný disk | Nepodporuje se. | Kontrola selže, pokud není podporován.
+FC disku | Nepodporuje se. | Kontrola selže, pokud není podporován.
+BitLocker | Nepodporuje se. | Dříve než povolíte replikaci pro počítač, musí se zakázat nástroj BitLocker. |
+Název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu v vlastnosti počítače ve službě Site Recovery.
 
 
 ## <a name="vault-tasks"></a>Úložiště úlohy

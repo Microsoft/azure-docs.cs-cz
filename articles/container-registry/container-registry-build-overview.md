@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: marsma
-ms.openlocfilehash: 7506351c0d65fb167136478d2dc383cdabd81835
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3ef91270bceb5865bdbdf9c436e4519595a3dc09
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizovat operačního systému a framework opravy s ACR sestavení
 
@@ -20,8 +20,7 @@ Kontejnery zadejte nové úrovně virtualizace, izolování aplikací a vývojá
 
 **Sestavení ACR**, sada funkcí v rámci Azure registru kontejner, poskytuje nejen kontejneru nativní bitové kopie sestavení možnost, ale také automatizuje [operačního systému a opravy chyb framework](#automate-os-and-framework-patching) pro Docker kontejnerů.
 
-> [!IMPORTANT]
-> ACR sestavení je v současné době ve verzi preview a je podporován pouze registrech kontejner Azure v **východní USA** a **západní Evropa** oblasti. Verze Preview jsou k dispozici pro vás, za předpokladu, že souhlasíte se [dodatečné podmínky použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="what-is-acr-build"></a>Co je ACR sestavení?
 
@@ -73,7 +72,6 @@ Až budete připraveni k automatizaci operačního systému a framework opravy v
 [base-node]: https://hub.docker.com/_/node/
 [base-windows]: https://hub.docker.com/r/microsoft/nanoserver/
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli

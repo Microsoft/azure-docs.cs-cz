@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 356356288823c86c77e46fdfba2cf81a7ef11e0d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 60560a4a656d0ad5df15208261ab8462f4271ec5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -32,7 +32,7 @@ Můžete použít rozšíření DSC nezávisle na službě Automation DSC. To za
 
 Tento článek obsahuje informace o oba scénáře: použití rozšíření DSC pro automatizaci registrace a pomocí rozšíření DSC jako nástroj pro přiřazení konfigurací k virtuálním počítačům pomocí sady Azure SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 - **Místní počítač**: pro interakci s rozšíření virtuálního počítače Azure, musíte použít portál Azure nebo Azure PowerShell SDK.
 - **Agent hosta**: virtuálního počítače Azure, který je nakonfigurovaný pomocí konfigurace DSC musí být operační systém, který podporuje Windows Management Framework (WMF) 4.0 nebo novější. Úplný seznam podporovaných verzí operačního systému najdete v tématu [historie verzí rozšíření DSC](/powershell/dsc/azuredscexthistory).
@@ -59,7 +59,7 @@ Instalaci WMF vyžaduje restartování. Po restartování počítače se rozší
 
 ### <a name="default-configuration-script"></a>Výchozí konfigurační skript
 
-Rozšíření Azure DSC obsahuje výchozí konfigurační skript, který má by měla být použít, když je využití virtuálního počítače ke službě Azure Automation DSC. Parametry skriptu jsou v souladu s konfigurovatelné vlastnosti [správce místní konfigurace](/powershell/dsc/metaconfig). Parametry skriptu, najdete v části [výchozí konfigurační skript](extensions-dsc-template.md#default-configuration-script) v [rozšíření konfigurace požadovaného stavu s šablon Azure Resource Manageru](extensions-dsc-template.md). Úplné skriptu, najdete v článku [šablony Azure rychlý start v Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Rozšíření Azure DSC obsahuje výchozí konfigurační skript, který má by měla být použít, když je využití virtuálního počítače ke službě Azure Automation DSC. Parametry skriptu jsou v souladu s konfigurovatelné vlastnosti [správce místní konfigurace](/powershell/dsc/metaconfig). Parametry skriptu, najdete v části [výchozí konfigurační skript](dsc-template.md#default-configuration-script) v [rozšíření konfigurace požadovaného stavu s šablon Azure Resource Manageru](dsc-template.md). Úplné skriptu, najdete v článku [šablony Azure rychlý start v Githubu](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Rozšíření DSC v šablonách Resource Manageru
 
@@ -148,13 +148,13 @@ Na portálu shromažďuje následující vstup:
 
 - **Automaticky upgradovat podverze**: v tomto poli se mapuje **automatických aktualizací** přepínač ve rutiny a umožňuje toto rozšíření automaticky aktualizovat na nejnovější verzi během instalace. **Ano** bude dáte pokyn, aby obslužná rutina rozšíření používat na nejnovější dostupnou verzi a **ne** vynutí **verze** zadané k instalaci. Výběr ani **Ano** ani **ne** je stejný jako výběr **ne**.
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Protokoly
 
 Protokoly pro rozšíření jsou uloženy v následujícím umístění: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o DSC Powershellu, přejděte na [centru dokumentace prostředí PowerShell](/powershell/dsc/overview).
-- Zkontrolujte [šablony Resource Manageru pro rozšíření DSC](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Zkontrolujte [šablony Resource Manageru pro rozšíření DSC](dsc-template.md).
 - Pro další funkce, které můžete spravovat pomocí DSC Powershellu a pro další prostředky DSC, přejděte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Podrobnosti o předávání citlivých parametrů do konfigurace najdete v tématu [spravovat pověření bezpečně s obslužná rutina rozšíření DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Podrobnosti o předávání citlivých parametrů do konfigurace najdete v tématu [spravovat pověření bezpečně s obslužná rutina rozšíření DSC](dsc-credentials.md).

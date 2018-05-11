@@ -3,16 +3,17 @@ title: Testování runbooku ve službě Azure Automation
 description: Před publikováním runbooku ve službě Azure Automation, můžete otestovat k zajištění, že to funguje podle očekávání.  Tento článek popisuje postup testování sady runbook a zobrazíte jeho výsledek.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 531fffe1ed24016d47708a729a3ee7642a1db64a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 780d197943737c3b821cbcec3afeeb60846ddf39
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Testování runbooku ve službě Azure Automation
 Při testování sady runbook [koncept](automation-creating-importing-runbook.md#publishing-a-runbook) se spustí a všechny akce, které provádí se dokončí. Nevytvoří se žádné historie úlohy, ale [výstup](automation-runbook-output-and-messages.md#output-stream) a [upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) datové proudy, které se zobrazují v testovací podokno výstup. Zprávy pro [podrobný datový proud](automation-runbook-output-and-messages.md#message-streams) se zobrazují v podokně výstupu pouze tehdy, pokud [proměnnou $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) je nastaven na pokračovat.

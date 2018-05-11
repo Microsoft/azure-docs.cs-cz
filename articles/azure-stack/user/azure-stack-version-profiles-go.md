@@ -10,14 +10,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 84ca616856f363e4d3d68ab1cc45b97f7c589185
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Použití profilů verze rozhraní API s přejděte v Azure zásobníku
 
@@ -61,7 +61,8 @@ Sada SDK přejděte závisí na moduly Azure přejděte-AutoRest na odesílání
 Spustit ukázku kódu přejděte v zásobníku Azure:
   1. Nainstalujte sadu Azure SDK pro přejděte a jeho závislosti. Pokyny najdete v předchozí části [instalovat sadu Azure SDK pro přejděte](#install-azure-sdk-for-go).
   2. Získáte informace metadat z koncového bodu správce prostředků. Koncový bod vrátí soubor JSON s informacemi potřebnými pro spouštění vašeho kódu přejděte.
-  > [!note]  
+
+  > [!Note]  
   > **ResourceManagerUrl** je v Azure zásobníku Development Kit (ASDK): `https://management.local.azurestack.external/`  
   > **ResourceManagerUrl** v integrované systémy: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
   > Pro načtení metadat vyžaduje: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
@@ -119,7 +120,7 @@ func main() {
   
   Úplný příklad vytvoření virtuální sítě v zásobníku Azure pomocí profilu přejděte SDK najdete v tématu [příklad](#example).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 GET pro vlastnost prvku Authorizer z Azure Active Directory pomocí sady SDK přejít, instalace přejděte AutoRest modulů. Tyto moduly by byl již nainstalován ve instalace "Přejděte SDK"; Pokud není, nainstalujte [ověřovací balíček na Githubu](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 
@@ -173,10 +174,11 @@ Tato část představuje běžné způsob, jak získat tokeny prvku authorizer v
   Nastavit `<clientID>` k hlavní aplikaci služby ID uložen, pokud objekt služby byl vytvořen v předchozí části tohoto dokumentu.  
   Nastavit `<clientSecret>` k hlavní aplikaci služby tajný klíč uložen, pokud objekt služby byl vytvořen v předchozí části tohoto dokumentu.  
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Tato část uvádí ukázku kódu přejděte k vytvoření virtuální sítě v Azure zásobníku. Dokončení příklady přejděte SDK najdete v tématu [úložiště Azure přejděte SDk ukázky](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Ukázek Azure zásobníku jsou k dispozici v části hybridní / cestě uvnitř složky služby úložiště.
-> [!note]  
+
+> [!Note]  
 > Spustí kód v tomto příkladu, ověřte, zda má předplatné použité **sítě** poskytovatele prostředků uveden jako **registrovaná**. Chcete-li ověřit, vyhledejte odběru na portálu Azure zásobníku a klikněte na **zprostředkovatelé prostředků.**
 
 1. Importujte požadované balíčky do vašeho kódu. K importu modulu sítě by měl použijte nejnovější dostupné profil v zásobníku Azure. 
@@ -194,7 +196,7 @@ Tato část uvádí ukázku kódu přejděte k vytvoření virtuální sítě v 
   )
   ````
 
-2. Definujte proměnných prostředí. Všimněte si, že k vytvoření virtuální sítě je potřeba mít skupiny prostředků. 
+2. Definujte proměnných prostředí. Chcete-li vytvořit virtuální síť máte skupinu prostředků. 
 
   ````go
   var (

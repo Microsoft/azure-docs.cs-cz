@@ -167,16 +167,16 @@
 #### [Hybridní zařízení s Windows starší verze připojená k Azure AD](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Správa aplikací
-### [Přehled](active-directory-enable-sso-scenario.md)
-### [Začínáme](active-directory-integrating-applications-getting-started.md)
+### [Přehled](manage-apps/what-is-application-management.md)
+### [Začínáme](manage-apps/plan-an-application-integration.md)
 ### [Kurzy integrace aplikací SaaS](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](cloudappdiscovery-get-started.md)
-#### [Vytvoření sestav snímků](cloudappdiscovery-set-up-snapshots.md)
+### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
+#### [Vytvoření sestav snímků](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Použití vlastního analyzátoru protokolů](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 
-### [Vzdálený přístup k aplikací s App Proxy](active-directory-application-proxy-get-started.md)
+### [Vzdálený přístup k aplikací s App Proxy](manage-apps/application-proxy.md)
 #### Začínáme
 ##### [Povolení proxy aplikace](active-directory-application-proxy-enable.md)
 ##### [Publikování aplikací](application-proxy-publish-azure-portal.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd54c4abeaa58c1b78f67c55eb5e8856dc5bb0c4
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro Eclipse
 
@@ -33,7 +33,7 @@ Pomocí nástrojů HDInsight v Azure nástrojů pro Eclipse k vývoji aplikací 
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 * Cluster Apache Spark v HDInsight. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * Oracle Java Development Kit verze 8, který se používá pro modul runtime Eclipse IDE. Si můžete stáhnout z [Oracle webu](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
@@ -229,13 +229,15 @@ Chcete-li tuto chybu vyřešit, je třeba [stáhnout spustitelný soubor](http:/
    ![Místní aplikace Spark, výsledek spuštění](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="known-problems"></a>Známé problémy
-Chcete-li odeslat aplikace do Azure Data Lake Store, vyberte **interaktivní** režimu během procesu Azure přihlášení. Pokud vyberete **automatizovaná** režimu, může dojde k chybě.
+Při propojení clusteru, I Navrhněte zadat přihlašovací údaje úložiště.
 
-![Interaktivní přihlášení](./media/apache-spark-eclipse-tool-plugin/interactive-authentication.png)
+![Interaktivní přihlášení](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-Můžete odeslat vaší aplikace s libovolnou metodu přihlášení clusteru služby Azure Data Lake.
+Existují dva režimy k odeslání úlohy. Pokud je k dispozici úložiště přihlašovacích údajů, dávkovém režimu se použije k odeslání úlohy. Jinak se použije interaktivním režimu. Pokud cluster je zaneprázdněný, můžete získat následující chyba.
 
-V současné době Spark výstupů zobrazení přímo není podporováno.
+![Chyba příkazu get Eclipse při clusteru zaneprázdněn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+
+![Chyba příkazu get Eclipse při clusteru zaneprázdněn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback"></a>Váš názor
 Pokud máte jakékoli zpětné vazby, nebo pokud narazíte na jiné problémy při použití tohoto nástroje, pošlete nám e-mail na hdivstool@microsoft.com.

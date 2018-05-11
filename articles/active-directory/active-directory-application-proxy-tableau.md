@@ -15,17 +15,17 @@ ms.date: 05/02/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c79689ae7527a715266bad62ec50fddaab90129d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cd27bab470b7037087421fac1e9eeabe10957831
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikace služby Azure Active Directory a Tableau 
 
 Azure Proxy aplikace Active Directory a Tableau společně Ujistěte se, že budete moci snadno poskytnout vzdálený přístup pro vaše nasazení Tableau pomocí Proxy aplikace. Tento článek vysvětluje postup konfigurace tento scénář.  
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Požadované součásti 
 
 Tento scénář v tomto článku předpokládá, že máte:
 
@@ -92,5 +92,5 @@ Aplikace je nyní připraven k testování. Přístup k externí adresu URL mů�
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o proxy aplikace služby Azure AD najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](active-directory-application-proxy-get-started.md).
+Další informace o proxy aplikace služby Azure AD najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md).
 

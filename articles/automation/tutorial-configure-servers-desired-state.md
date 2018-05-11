@@ -3,16 +3,17 @@ title: Konfigurace serverů do požadovaného stavu a správa odchylek s využit
 description: Kurz – Správa konfigurací serveru s Azure Automation DSC.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 manager: carmonm
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: b2d7614cf2e857253e0fb230cb514523476def49
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: a8533e6353e12ee6046eb4d22a3035ce9cd739d6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurace serverů na požadovaný stav a spravovat odlišily
 
@@ -27,7 +28,7 @@ Konfigurace Azure Automation žádaný stavu (DSC) umožňuje určit konfigurace
 > * Přiřadit konfigurace uzlu spravovaný uzel
 > * Zkontrolujte stav dodržování předpisů spravovaný uzel
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 K dokončení tohoto kurzu, budete potřebovat:
 

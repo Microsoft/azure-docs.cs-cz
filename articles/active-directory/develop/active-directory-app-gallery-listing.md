@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 05/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5140d25119729a391b21735ab9110c216afda669
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -49,9 +49,27 @@ Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve im
 
 *   **OpenID Connect**: vytvoření víceklientské aplikace ve službě Azure AD a implementaci [framework souhlasu Azure AD](active-directory-integrating-applications.md#overview-of-the-consent-framework) pro vaši aplikaci. Poslat žádost o přihlášení k běžné koncový bod, tak, aby každý zákazník může poskytnout souhlas k aplikaci. Můžete řídit přístup uživatele na základě ID klienta a uživatele (UPN) přijaté v tokenu. Při integraci aplikace s Azure AD, postupujte podle [vývojáře pokyny](active-directory-authentication-scenarios.md).
 
+    ![Časová osa uvedení OpenID Connect aplikaci do Galerie](./media/active-directory-app-gallery-listing/openid.png)
+
+    * Pokud chcete přidat aplikace do seznamu v galerii pomocí OpenID Connect, vyberte **OpenID Connect a OAuth 2.0** jako výše.
+
+    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+
 *   **SAML 2.0** nebo **WS-Fed**: aplikace musí mít možnost provést integraci SAML/WS-Fed jednotné přihlašování v režimu SP nebo deklarací identity. Pokud vaše aplikace podporuje SAML 2.0, můžete integrovat přímo do klienta služby Azure AD pomocí [pokyny k přidání vlastní aplikace](../active-directory-saas-custom-apps.md).
 
+    ![Časová osa uvedení SAML 2.0 nebo WS-Fed aplikaci do Galerie](./media/active-directory-app-gallery-listing/saml.png)
+
+    * Pokud chcete přidat aplikace do seznamu v galerii pomocí **SAML 2.0** nebo **WS-Fed**, vyberte **SAMl 2.0 nebo WS-Fed** jako výše.
+
+    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+
 *   **Heslo jednotného přihlašování k**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotné přihlašování](../active-directory-appssoaccess-whatis.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace.
+
+    ![Časová osa uvedení SSO heslo aplikace do Galerie](./media/active-directory-app-gallery-listing/passwordsso.png)
+
+    * Pokud chcete přidat aplikace do seznamu v galerii pomocí hesla jednotné přihlašování, vyberte **heslo SSO** jako výše.
+
+    * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ##  <a name="updateremove-existing-listing"></a>Aktualizovat nebo odebrat existující výpis
 
@@ -60,7 +78,7 @@ Aktualizace nebo odeberte stávající aplikace v galerii aplikací Azure AD, je
 * Vyberte příslušnou možnost níže bitové kopie
 
     ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/updateorremove.png)
-
+    
     * Pokud chcete aktualizovat stávající aplikaci, vyberte **aktualizovat stávající aplikaci výpis**.
 
     * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **odebrat existující seznam aplikací**
@@ -86,6 +104,10 @@ Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Az
 Časová osa pro proces výpis OpenID Connect aplikace v galerii je 2 až 5 pracovních dní.
 
    ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/timeline2.png)
+
+Časová osa pro proces uvedení aplikace v galerii s podpora zřizování uživatelů je 40 45 pracovních dnů.
+
+   ![Časová osa uvedení aplikace saml do Galerie](./media/active-directory-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>Eskalací
 

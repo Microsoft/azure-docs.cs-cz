@@ -1,16 +1,16 @@
-V Azure je teď dostupná podpora dvou funkcí ladění: Podpora výstupu konzoly a snímku obrazovky pro model nasazení virtuálních počítačů Azure Resource Manager. 
+Podpora pro dvě funkce ladění je nyní k dispozici v Azure: výstup konzoly a snímek podporu pro virtuální počítače Azure modelu nasazení Resource Manager. 
 
-Při přenosu vlastní image do Azure nebo spouštění některé z imagí platformy může virtuální počítač přejít do nespustitelného stavu z mnoha důvodů. Tyto funkce umožňují snadnou diagnostiku a obnovení virtuálních počítačů v případě chyb při spuštění.
+Při zpětném přepnutí vlastní image Azure nebo ani jeden z Image platformy spouštění, může být mnoha důvodů, proč se virtuální počítač získá do jiných spouštěcího stavu. Tyto funkce umožňují snadno diagnostikovat a obnovení virtuálních počítačů v případě selhání spuštění.
 
-U virtuálních počítačů s Linuxem můžete snadno zobrazit výstup protokolu konzoly z portálu:
+Pro virtuální počítače s Linuxem budete moci snadno zobrazit výstup konzoly protokolu z portálu:
 
-![portál Azure](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![Azure Portal](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
  
-U virtuálních počítačů s Windows i Linuxem však Azure umožňuje zobrazit také snímek obrazovky virtuálního počítače z hypervisoru:
+Ale pro virtuální počítače Windows a Linux, Azure také umožní vám prohlédnout snímek virtuálního počítače z hypervisor:
 
 ![Chyba](./media/virtual-machines-common-boot-diagnostics/screenshot2.png)
 
-Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech oblastech. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
+Obě tyto funkce jsou podporované pro virtuální počítače, které jsou ve všech oblastech Azure. Mějte na paměti, že může trvat až 10 minut, než se snímky obrazovky a výstup zobrazí v účtu úložiště.
 
 ## <a name="common-boot-errors"></a>Běžné chyby spuštění
 
@@ -29,15 +29,20 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
 - [Chyba při spuštění nebo NEDOSTUPNÉ_SPOUŠTĚCÍ_ZAŘÍZENÍ](https://support.microsoft.com/help/4010143)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Povolení diagnostiky na novém virtuálním počítači
-1. Při vytváření nového virtuálního počítače na portálu Preview vyberte z rozevíracího seznamu modelu nasazení **Azure Resource Manager**:
+1. Při vytváření nového virtuálního počítače z portálu Azure, vyberte **Azure Resource Manager** z rozevíracího seznamu model nasazení:
  
     ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
 
-2. Nakonfigurujte možnost Monitorování pro výběr účtu úložiště, do kterého chcete tyto diagnostické soubory ukládat.
+2. V **nastavení**, povolte **spouštění diagnostiky**a potom vyberte účet úložiště, které chcete umístit tyto diagnostické soubory.
  
-    ![Vytvoření virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/screenshot4.jpg)
+    ![Vytvořit virtuální počítač](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
 
-3. Pokud provádíte nasazení z šablony Azure Resource Manageru, přejděte do prostředku vašeho virtuálního počítače a připojte část s diagnostickým profilem. Nezapomeňte použít hlavičku verze rozhraní API s hodnotou 2015-06-15.
+    > [!NOTE]
+    > Spouštění diagnostiky funkce nepodporuje prémiový účet úložiště. Pokud používáte prémiový účet úložiště pro Diagnostika spouštění, může zobrazit chyba StorageAccountTypeNotSupported při spuštění virtuálního počítače.
+    >
+    > 
+
+3. Pokud nasazujete z šablony Azure Resource Manager, přejděte do virtuálního počítače zdroje a připojte části Diagnostika profilu. Nezapomeňte použít hlavičku verze rozhraní API s hodnotou 2015-06-15.
 
     ```json
     {
@@ -59,11 +64,18 @@ Obě tyto funkce jsou podporované pro virtuální počítače Azure ve všech o
         }
     ```
 
-Pokud chcete nasadit ukázkový virtuální počítač s povolenou diagnostikou spuštění, podívejte se sem na naše úložiště.
+Nasazení ukázkové virtuálního počítače s Diagnostika spouštění povolena, podívejte se na naše úložišti sem.
 
-## <a name="update-an-existing-virtual-machine"></a>Aktualizace stávajícího virtuálního počítače ##
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Povolit spuštění diagnostiky na existující virtuální počítač 
 
-Pokud chcete povolit diagnostiku přes portál, můžete přes portál také aktualizovat stávající virtuální počítač. Vyberte možnost Diagnostika spuštění a klikněte na Uložit. Restartujte virtuální počítač, aby se projevily změny.
+Pokud chcete povolit spouštění diagnostiky na existující virtuální počítač, postupujte takto:
 
-![Aktualizace stávajícího virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/screenshot5.png)
+1. Přihlaste se k [portál Azure](https://portal.azure.com)a potom vyberte virtuální počítač.
+2. V **podpory a řešení potíží s**, vyberte **spouštění diagnostiky** > **nastavení**, změnit stav na **na**a potom Vyberte účet úložiště. 
+4. Ujistěte se, že je vybrána možnost spouštění diagnostiky a potom uložte změny.
+
+    ![Aktualizace stávajícího virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
+
+3. Restartujte virtuální počítač, aby se projevily změny.
+
 

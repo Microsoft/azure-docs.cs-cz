@@ -5,18 +5,18 @@ services: iot-dps
 keywords: ''
 author: bryanla
 ms.author: v-jamebr;bryanla
-ms.date: 04/06/2018
+ms.date: 05/11/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 439d4ffa8eec12481f52bd15f0060800411f316e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 87932c1ae1676d36ea0eb1ba7885f2ac455949ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Postup zrušení zřízení zařízení, které byly dříve auto zajištěny 
 
@@ -29,7 +29,7 @@ Obecně platí zrušení zřízení zařízení zahrnuje dva kroky:
    - Další informace o disenroll zařízení naleznete v tématu [postup disenroll zařízení z Azure IoT Hub zařízení zřizování služby](how-to-revoke-device-access-portal.md).
    - Další postup disenroll zařízení programově pomocí jedné z zřizování sady SDK služby najdete v tématu [spravovat registrace zařízení pomocí služby SDK](how-to-manage-enrollments-sdks.md).
 
-2. Zrušení registrace zařízení ze služby IoT Hub, aby se zabránilo přenosu budoucí komunikaci a data. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro službu IoT Hub, kde byla zřízený. V tématu [zakažte zařízení](/azure/iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) Další informace o postižení. V najdete v části "Zařízení správy / zařízení IoT" IoT Hub prostředku, [portál Azure](https://portal.azure.com).
+2. Zrušení registrace zařízení ze služby IoT Hub, aby se zabránilo přenosu budoucí komunikaci a data. Znovu můžete dočasně zakázat nebo trvale odstranit položku zařízení v registru identit pro službu IoT Hub, kde byla zřízený. V tématu [zakažte zařízení](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) Další informace o postižení. V najdete v části "Zařízení správy / zařízení IoT" IoT Hub prostředku, [portál Azure](https://portal.azure.com).
 
 Přesné kroky, které je třeba provést zrušení zřízení zařízení závisí na jeho ověření mechanismu a jeho použitelných zápisu položku s zřizování služby. Přehled procesu, na základě typu registrace a ověření naleznete v následujících částech.
 

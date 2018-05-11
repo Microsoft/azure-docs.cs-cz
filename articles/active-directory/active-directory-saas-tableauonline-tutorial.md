@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Tableau Online | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau Online."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tableau Online.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae9dbde509726065da7eaee2c7aec491389f45
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9e7de7946769eb2aeeac1c8b21448efa142728bb
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Azure Active Directory integrace s Tableau Online
 
@@ -31,7 +31,7 @@ Integrace Tableau Online s Azure AD poskytuje následující výhody:
 
 Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 Konfigurace integrace Azure AD s Tableau Online, potřebujete následující položky:
 
@@ -59,7 +59,7 @@ Při konfiguraci integrace služby Tableau Online do služby Azure AD, musíte p
 
 1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
-    ![Active Directory][1]
+    ![Služba Active Directory][1]
 
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:`https://sso.online.tableau.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://sso.online.tableau.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL:`https://sso.online.tableau.com/public/sp/<instancename>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -161,10 +161,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_14.png)
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
@@ -203,7 +199,7 @@ V této části vytvoříte uživatele volal Britta Simon v Tableau Online.
 1. Na **Tableau Online**, klikněte na tlačítko **nastavení** a potom **ověřování** části. Přejděte dolů k položce **vybrat uživatele** části. Klikněte na tlačítko **přidat uživatele** a potom **zadejte e-mailové adresy**.
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. Vyberte **přidat uživatele pro jednotné přihlašování (SSO) ověřování**. V **zadejte e-mailové adresy** přidat textové polebritta.simon@contoso.com
+2. Vyberte **přidat uživatele pro jednotné přihlašování (SSO) ověřování**. V **zadejte e-mailové adresy** přidat textové pole britta.simon@contoso.com
    
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_11.png)
 3. Klikněte na možnost **Vytvořit**.
@@ -244,7 +240,7 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici Tableau Online na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Tableau Online.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
@@ -262,4 +258,3 @@ Když kliknete na dlaždici Tableau Online na přístupovém panelu, jste měli 
 [201]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-tableauonline-tutorial/tutorial_general_203.png
-

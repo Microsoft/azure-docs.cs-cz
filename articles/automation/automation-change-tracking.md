@@ -3,17 +3,18 @@ title: Sledování změn s Azure Automation.
 description: Sledování změn řešení pomáhá identifikovat software a služby systému Windows změny ve vašem prostředí.
 services: automation
 ms.service: automation
+ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0716466eab69ef2a2439a533cd51e92307bd056
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledovat změny v prostředí s řešením sledování změn
 
@@ -50,7 +51,7 @@ Použijte následující postup ke konfiguraci souboru sledování počítačů 
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Zadat cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
+|Zadejte cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
 |Typ cesty     | Typ položky být sledovaných, možné hodnoty jsou souborů a adresářů.        |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
@@ -72,7 +73,7 @@ Pomocí následujících kroků nakonfigurujte soubory sledování v počítač�
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
+|Zadejte cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Nakonfigurovat klíče registru Windows ke sledování
 
@@ -87,7 +88,7 @@ Použijte následující postup ke konfiguraci sledování klíče registru na p
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Klíč registru systému Windows   | Cesta ke kontrole souboru. Například: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User prostředí Folders\Common spuštění"      |
+|Klíč registru Windows   | Cesta ke kontrole souboru. Například: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User prostředí Folders\Common spuštění"      |
 
 ## <a name="limitations"></a>Omezení
 

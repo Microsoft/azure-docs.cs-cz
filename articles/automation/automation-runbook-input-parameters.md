@@ -3,16 +3,17 @@ title: Vstupní parametry runbooku
 description: Vstupní parametry Runbooku zvýšíte flexibilitu sad runbook tím, že se můžete k předávání dat k sadě runbook, jakmile je spuštěno. Tento článek popisuje různé scénáře, kdy se používá vstupních parametrů v sadách runbook.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 19b0e17807adc0e7a4522fd13cd85779cdbcafd6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3e1e00f81fe7761494ae73b2c8ac7419cb5ffa32
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -29,7 +30,7 @@ Prostředí PowerShell a [runbooky pracovních postupů Powershellu](automation-
 | **Vlastnost** | **Popis** |
 |:--- |:--- |
 | Typ |Povinná hodnota. Datový typ pro hodnotu parametru. Libovolného typu .NET je platný. |
-| Název |Povinná hodnota. Název parametru. Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znak podtržítka. Musí začínat písmenem. |
+| Název |Povinná hodnota. Název parametru Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znak podtržítka. Musí začínat písmenem. |
 | Povinné |Volitelné. Určuje, zda musí být zadána hodnota pro parametr. Pokud nastavíte **$true**, potom při spuštění runbooku, je třeba zadat hodnotu. Pokud nastavíte **$false**, pak hodnota je volitelná. |
 | Výchozí hodnota |Volitelné. Určuje hodnotu, která se používá pro parametr, pokud není hodnota předaná při spuštění runbooku. Výchozí hodnota se dá nastavit pro libovolný parametr a bude automaticky nastavit parametr volitelný bez ohledu na povinná nastavení. |
 
@@ -90,7 +91,7 @@ Můžete použít [ **Write-Output** ](https://technet.microsoft.com/library/hh8
    
    | **Vlastnost** | **Popis** |
    |:--- |:--- |
-   | Název |Povinná hodnota. Název parametru. Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znak podtržítka. Musí začínat písmenem. |
+   | Název |Povinná hodnota. Název parametru Toto musí být jedinečný v rámci sady runbook a může obsahovat jenom písmena, číslice nebo znak podtržítka. Musí začínat písmenem. |
    | Popis |Volitelné. Popis o účelu vstupní parametr. |
    | Typ |Volitelné. Datový typ, který je očekávaná hodnota parametru. Parametr podporované typy jsou **řetězec**, **Int32**, **Int64**, **Decimal**, **Boolean**, **data a času**, a **objekt**. Pokud datový typ není vybraná, je standardně **řetězec**. |
    | Povinné |Volitelné. Určuje, zda musí být zadána hodnota pro parametr. Pokud se rozhodnete **Ano**, potom při spuštění runbooku, je třeba zadat hodnotu. Pokud se rozhodnete **žádné**, pak hodnota není požadovaná při spuštění runbooku a může být nastaven výchozí hodnotu. |

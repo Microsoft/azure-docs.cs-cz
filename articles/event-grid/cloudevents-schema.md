@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 84581de2819ec062a537d4a302f242085a4b3c2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents s událostí mřížky
 
@@ -65,7 +65,7 @@ CloudEvents v0.1 má k dispozici následující vlastnosti:
 | source             | URI      | "/ mycontext"                     | Popisuje producent událostí                                       | téma #subject
 | ID události            | Řetězec   | "1234-1234-1234"                 | ID události                                                    | id
 | eventTime          | Časové razítko| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | eventTime
-| schemaURL          | URI      | https://myschema.com           | Odkaz na schéma odpovídající atribut dat (volitelné) | *nepoužívá se*
+| schemaURL          | URI      | "https://myschema.com"           | Odkaz na schéma odpovídající atribut dat (volitelné) | *nepoužívá se*
 | Typ obsahu        | Řetězec   | "application/json"               | Popisu formátu dat kódování (volitelné)                       | *nepoužívá se*
 | Rozšíření         | Mapa      | {"extA": "vA", "extB", "vB"}  | Žádné další metadata (volitelné)                                 | *nepoužívá se*
 | data               | Objekt   | {"objA": "vA", "objB", "vB"}  | Datová část události (volitelné)                                       | data
@@ -95,6 +95,10 @@ Pokud chcete nastavit vstupní schéma na téma na vlastní CloudEvents, použij
 Chcete-li vytvořit téma události mřížky, použijte:
 
 ```azurecli
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
@@ -112,7 +116,7 @@ Chcete-li vytvořit odběr událostí, použijte:
 
 ```azurecli
 az eventgrid event-subscription create \
-  --name <event_subscription_name> \  
+  --name <event_subscription_name> \
   --topic-name <topic_name> \
   -g gridResourceGroup \
   --endpoint <endpoint_URL> \

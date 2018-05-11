@@ -4,16 +4,17 @@ description: Řízení přístupu na základě role (RBAC) umožňuje správu p�
 keywords: rbac v automation, řízení přístupu na základě rolí, rbac v azure
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f8b7062f85a7130c73c6493f6f0c277c90374f11
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 93a4befce1f54dcc06d9a8faf31b04e5c0280276
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -200,7 +201,7 @@ Správce uživatelského přístupu můžete spravovat přístup uživatelů k p
 |Microsoft.Authorization/*|Spravovat autorizace|
 |Microsoft.Support/*|Vytvářet a spravovat lístky žádostí o podporu|
 
-## <a name="onboarding"></a>Onboarding
+## <a name="onboarding"></a>Připojování
 
 V následujících tabulkách minimální požadovaná oprávnění potřebná pro registrace virtuálních počítačů pro sledování změn umožňuje zobrazit nebo aktualizovat řešení pro správu.
 
@@ -212,17 +213,17 @@ V následujících tabulkách minimální požadovaná oprávnění potřebná p
 |Zápis novou skupinu prostředků      | Microsoft.Resources/subscriptions/resourceGroups/write        | Předplatné          |
 |Vytvořit nový výchozí pracovní prostor      | Microsoft.OperationalInsights/workspaces/write         | Skupina prostředků         |
 |Vytvořit nový účet      |  Microsoft.Automation/automationAccounts/write        |Skupina prostředků         |
-|Pracovní prostor odkaz a účet      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|Pracovní prostor</br>Účet Automation
+|Pracovní prostor odkaz a účet      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|Pracovní prostor</br>Účet služby Automation
 |Vytvořit řešení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Skupina prostředků          |
 |Vytváření rozšíření MMA      | Microsoft.Compute/virtualMachines/write         | Virtuální počítač         |
 |Vytvoření uloženého hledání      | Microsoft.OperationalInsights/workspaces/write          | Pracovní prostor         |
 |Vytvoření konfigurace oboru      | Microsoft.OperationalInsights/workspaces/write          | Pracovní prostor         |
 |Řešení odkaz na obor konfigurace      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Řešení         |
 |Zkontrolujte stav registrace - prostoru pro čtení      | Microsoft.OperationalInsights/workspaces/read         | Pracovní prostor         |
-|Kontrola stavu registrace - čtení propojená vlastnost prostoru účtu     | Microsoft.Automation/automationAccounts/read      | Účet Automation        |
+|Kontrola stavu registrace - čtení propojená vlastnost prostoru účtu     | Microsoft.Automation/automationAccounts/read      | Účet služby Automation        |
 |Zkontrolujte stav registrace - řešení pro čtení      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Řešení         |
 |Kontrola stavu registrace - virtuálních počítačů pro čtení      | Microsoft.Compute/virtualMachines/read         | Virtuální počítač         |
-|Zkontrolujte stav registrace – účet pro čtení      | Microsoft.Automation/automationAccounts/read  |  Účet Automation   |
+|Zkontrolujte stav registrace – účet pro čtení      | Microsoft.Automation/automationAccounts/read  |  Účet služby Automation   |
 
 ### <a name="onboarding-from-automation-account"></a>Registrace z účtu Automation
 
@@ -231,7 +232,7 @@ V následujících tabulkách minimální požadovaná oprávnění potřebná p
 |Vytvořit nové nasazení     | Microsoft.Resources/deployments/*        | Předplatné         |
 |Vytvořte novou skupinu prostředků     | Microsoft.Resources/subscriptions/resourceGroups/write         | Předplatné        |
 |Okno AutomationOnboarding - vytvořit nový pracovní prostor     |Microsoft.OperationalInsights/workspaces/write           | Skupina prostředků        |
-|Okno AutomationOnboarding - čtení propojené prostoru     | Microsoft.Automation/automationAccounts/read        | Účet Automation       |
+|Okno AutomationOnboarding - čtení propojené prostoru     | Microsoft.Automation/automationAccounts/read        | Účet služby Automation       |
 |Okno AutomationOnboarding – přečtěte si řešení     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Řešení        |
 |Okno AutomationOnboarding - čtení pracovního prostoru     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Pracovní prostor        |
 |Vytvoření odkazu na pracovní prostor a účet     | Microsoft.OperationalInsights/workspaces/write        | Pracovní prostor        |
@@ -251,8 +252,8 @@ Správa aktualizací dosáhne napříč více službami a zajistit tak jeho slu�
 
 |**Prostředek**  |**Role**  |**Rozsah**  |
 |---------|---------|---------|
-|Účet Automation     | Přispěvatel Log Analytics       | Účet Automation        |
-|Účet Automation    | Přispěvatel virtuálních počítačů        | Skupinu prostředků pro účet        |
+|Účet služby Automation     | Přispěvatel Log Analytics       | Účet služby Automation        |
+|Účet služby Automation    | Přispěvatel virtuálních počítačů        | Skupinu prostředků pro účet        |
 |Pracovní prostor Log Analytics     | Přispěvatel Log Analytics| Pracovní prostor Log Analytics        |
 |Pracovní prostor Log Analytics |Čtenář Log Analytics| Předplatné|
 |Řešení     |Přispěvatel Log Analytics         | Řešení|
@@ -273,7 +274,7 @@ Správa aktualizací dosáhne napříč více službami a zajistit tak jeho slu�
 
 3. Zadejte uživatelské jméno uživatele, které chcete udělit oprávnění v **vyberte** pole. Vyberte uživatele ze seznamu a klikněte na tlačítko **Uložit**.
 
-   ![Přidání uživatelů](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Přidat uživatele](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Teď byste měli vidět přidaný uživatel **uživatelé** stránka s vybrané role přiřazené
 
@@ -295,7 +296,7 @@ Je možné odebrat oprávnění přístupu pro uživatele nespravuje účet Auto
 2. V podokně podrobností přiřazení klikněte na tlačítko **Odebrat**.
 3. Kliknutím na **Ano** odebrání potvrďte.
 
-   ![Odebrání uživatelů](media/automation-role-based-access-control/automation-08-remove-users.png)
+   ![Odebrat uživatele](media/automation-role-based-access-control/automation-08-remove-users.png)
 
 ## <a name="role-assigned-user"></a>Role přiřazený uživatel
 

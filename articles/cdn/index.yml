@@ -1,0 +1,85 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k Azure CDN
+metadata:
+  title: Dokumentace k síti Azure CDN – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Azure Content Delivery Network (CDN) je globální řešení CDN pro doručování širokopásmového obsahu. Může být hostované v Azure nebo jiném umístění. Pomocí Azure CDN můžete ukládat do mezipaměti statické objekty načítané z úložiště objektů blob v Azure, webové aplikace nebo jakéhokoli veřejně přístupného webového serveru pomocí nejbližšího serveru POP (Point of Presence). Azure CDN může zrychlit také dynamický obsah, který není možné ukládat do mezipaměti, díky využití různých optimalizací sítě pomocí lokalit POP v síti CDN. Azure CDN může například pomocí optimalizace tras obejít protokol BGP (Border Gateway Protocol).
+  services: cdn
+  author: czeumault
+  manager: carolz
+  ms.service: cdn
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/03/2018
+  ms.author: carolz
+  ms.openlocfilehash: 42d08e9a5893bf58ecf405cc5caf750ee3e1daf7
+  ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/11/2018
+abstract:
+  description: Azure Content Delivery Network (CDN) je globální řešení CDN pro doručování širokopásmového obsahu. Může být hostované v Azure nebo jiném umístění. Pomocí Azure CDN můžete ukládat do mezipaměti statické objekty načítané z úložiště objektů blob v Azure, webové aplikace nebo jakéhokoli veřejně přístupného webového serveru pomocí nejbližšího serveru POP (Point of Presence). Azure CDN může zrychlit také dynamický obsah, který není možné ukládat do mezipaměti, díky využití různých optimalizací sítě pomocí lokalit POP v síti CDN. Azure CDN může například pomocí optimalizace tras obejít protokol BGP (Border Gateway Protocol).
+sections:
+- title: 
+  items:
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/cdn.svg
+      text: Přečtěte si o službě Azure CDN
+      href: /azure/cdn/cdn-overview
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Naučte se povolit Azure CDN vytvořením profilu CDN a koncového bodu CDN.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/get-started.svg
+      text: Začínáme se službou Azure CDN
+      href: /azure/cdn/cdn-create-new-endpoint
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se konfigurovat Azure CDN podle potřeby.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/cdn/cdn-map-content-to-custom-domain">Přidání vlastní domény do koncového bodu CDN</a>
+    - html: <a href="/azure/cdn/cdn-custom-ssl">Konfigurace HTTPS pro vlastní doménu</a>
+    - html: <a href="/azure/cdn/cdn-caching-rules-tutorial">Nastavení pravidel ukládání</a>
+- title: Videa
+  items:
+  - type: paragraph
+    text: Podívejte se na videa, která ukazují, jak Azure CDN funguje.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/video-library.svg
+      text: Knihovna videí k Azure CDN
+      href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Vyhledání skriptů pro správu běžných úkolů
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cdn">Ukázky kódu</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/resourcemanager/azurerm.cdn/v2.3.0/azurerm.cdn">PowerShell</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/microsoft.azure.management.cdn">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.cdn">Java</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/cdn/">REST API – referenční informace</a></p>

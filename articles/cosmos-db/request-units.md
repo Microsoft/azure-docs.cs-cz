@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 
@@ -48,81 +48,6 @@ Doporučujeme začít následujícím videem, kde Azure manažer programu DB Cos
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
-
-## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Určení požadavku jednotka kapacity v Azure Cosmos DB
-
-Můžete zadat počet jednotek žádosti za sekundu (RU za sekundu), kterou chcete vyhrazené pro jednotlivé kontejner nebo pro sadu kontejnery. Podle zřízené propustnosti, bude Azure Cosmos DB přidělit fyzické oddíly ho s růstem hostovat vaše kontejnery a rozdělení nebo rebalances data napříč oddíly.
-
-Při přiřazování RU za sekundu na úrovni jednotlivých kontejneru, kontejnery se dá vytvořit jako *pevné* nebo *neomezená*. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner neomezená, musíte zadat minimální propustnost 1000 RU/s a [klíč oddílu](partition-data.md). Vzhledem k tomu, aby se daly rozdělit mezi více oddílů mohou mít vaše data, je nutné vybrat klíč oddílu, který má vysokou kardinalitou (100 na miliony odlišné hodnoty). Výběrem klíč oddílu s mnoha jedinečných hodnot je zajistit, že kontejner a tabulka/grafika a žádosti o je možné rozšířit jednotně pomocí Azure Cosmos DB. 
-
-Při přiřazování RU za sekundu napříč sadu kontejnery, kontejnery, které patří do této skupiny jsou považovány za *neomezená* kontejnery a musíte zadat klíč oddílu.
-
-![Zřizování jednotek žádosti pro jednotlivé kontejnery a sadu kontejnery][6]
-
-> [!NOTE]
-> Klíč oddílu je logické hranice a není fyzický jeden. Proto není potřeba omezit počet hodnoty klíče jedinečné oddílu. Ve skutečnosti je lepší má více jedinečných hodnot klíče oddílu menší, než databázi Cosmos Azure má další možnosti vyrovnávání zatížení.
-
-Zde je fragment kódu pro vytvoření kontejneru s 3 000 jednotek žádosti za sekundu pro kontejner jednotlivých pomocí sady .NET SDK rozhraní SQL API:
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-Zde je fragment kódu pro zřizování 100 000 žádostí jednotek za sekundu napříč sadu kontejnery pomocí rozhraní SQL API .NET SDK:
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-
-Azure Cosmos DB funguje ve model rezervace propustnost. To znamená, že se účtují pro množství propustnost *vyhrazené*, bez ohledu na to, kolik z této propustnost je aktivně *používá*. Jako vaše aplikace je zatížení, data a využití vzory změnu, je možné snadno škálovat nahoru a dolů počet vyhrazené RUs prostřednictvím sady SDK nebo pomocí [portálu Azure](https://portal.azure.com).
-
-Každý kontejner, nebo sadu kontejnery, je namapovaný na `Offer` prostředků v Azure DB Cosmos, který má metadata o zřízené propustnosti. Vyhledávání odpovídající prostředek nabídka pro kontejner a poté aktualizace pomocí novou hodnotu propustnosti, můžete změnit přidělené propustnost. Zde je fragment kódu pro změnu propustnost kontejner do 5 000 jednotek žádosti za druhé pomocí sady .NET SDK:
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-Neexistuje žádný vliv na dostupnost vaší kontejneru nebo sadu kontejnery, když změníte propustnost. Nové vyhrazenou propustností je obvykle efektivní během několika sekund na použití nové propustnost.
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Izolace propustnost v globálně distribuované databáze
 
@@ -305,7 +230,7 @@ Následující tabulka uvádí přibližnou požadavek jednotky poplatky za typi
 
 | Operace | Žádost o jednotky zdarma |
 | --- | --- |
-| Vytvoření položky |~ 15 RU |
+| Vytvořit položku |~ 15 RU |
 | Čtení položky |~ 1 RU |
 | Dotaz položky podle id |~2.5 RU |
 
@@ -327,7 +252,7 @@ Pomocí těchto informací můžete odhadnout požadavky pro tuto aplikaci zadan
 
 | Operace nebo dotazu | Očekávaný počet za sekundu | Požadované RUs |
 | --- | --- | --- |
-| Vytvoření položky |10 |150 |
+| Vytvořit položku |10 |150 |
 | Čtení položky |100 |100 |
 | Vyberte potravin podle výrobce |25 |175 |
 | Vyberte jídlo skupinou |10 |700 |
@@ -347,6 +272,11 @@ Pokud používáte klienta SDK rozhraní .NET a LINQ dotazů a potom ve většin
 Pokud máte více než jednoho klienta kumulativně operační vyšší rychlost požadavků, nemusí stačit výchozí chování opakování a vyvolá výjimku klienta `DocumentClientException` stavem code 429 k aplikaci. V takových případech můžete chtít zvažte zpracování opakování chování a logiku zpracování rutiny chyb aplikace nebo zvýšit propustnost zřízené pro kontejner (nebo sadu kontejnery).
 
 ## <a name="next-steps"></a>Další postup
+ 
+Další informace o tom, jak nastavit a získat propustnost pomocí portálu Azure a sady SDK je v tématu:
+
+* [Nastavování a získávání propustnost v Azure Cosmos DB](set-throughput.md)
+
 Další informace o vyhrazenou propustností s databázemi Azure Cosmos DB najdete v těchto zdrojích:
 
 * [Azure Cosmos DB ceny](https://azure.microsoft.com/pricing/details/cosmos-db/)
@@ -360,4 +290,4 @@ Začínáme s škálování a výkon testování pomocí Azure Cosmos DB, najdet
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/provisioning_set_containers.png
+

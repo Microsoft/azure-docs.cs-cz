@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 75b89ad7f118d107f570b5e323d61bbc9b94bc40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysoký poměr paměti procesor, který se výborně hodí pro servery relační databáze, středních a velkých mezipaměti a analýzy v paměti. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -25,6 +25,8 @@ Paměťově optimalizovaná nabídka velikosti virtuálních počítačů vysok�
 * Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založena na nejnovější generace 2.4 v3® GHz Intel Xeon E5-2673 2,4 GHz (Haswell) nebo E5-2673 v4 2.3 GHz (Broadwell) procesorů a s 2.0 technologie Intel Turbo nárůst, můžete přejít až 3.1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
 * 2.3 GHz (Broadwell) procesoru Ev3-series funkce E5-2673 v4 v konfiguraci technologie hyper-threaded, poskytuje lepší nabízená hodnota pro nejobecnější účel úlohy a převedení Ev3 do zarovnání s obecné účely virtuální počítače většinu ostatních cloudů.  Paměť se rozšířila (z 7 GiB/virtuální procesory na 8 GiB/virtuální procesory) při omezení diskových a síťových byly upraveny na základě za jádra souladu s přechodem na Hyper-threadingem.  Ev3 je postupujte podle až do velikosti virtuálních počítačů velkého množství paměti D/Dv2 rodiny.
+
+* Výpočtů Azure nabízí velikostí virtuálního počítače, které jsou izolované typu konkrétní hardware a vyhrazenou pro jednoho zákazníka.  Tyto velikosti virtuálního počítače jsou nejvhodnější pro úlohy, které vyžadují vysokou míru izolaci od ostatních zákazníků pro úlohy zahrnující elementy jako dodržování předpisů a zákonné požadavky.  Zákazníci také možné dále rozdělit prostředky těchto virtuálních počítačů izolované pomocí [podporu pro vnořené virtuální počítače Azure](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Podrobnosti viz tabulky řady virtuální počítač pod pro izolované možnosti virtuálního počítače.
 
 ## <a name="esv3-series"></a>Esv3-series 
 
@@ -81,10 +83,10 @@ ACU: 160-180 <sup>1</sup>
 
 | Velikost            | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových adaptérů / očekává šířku pásma sítě (MB/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M64s  | 64   | 1024        | 2 048           | 64             | 80 000 / 800 (6 348)       | 40 000 / 1 000                            | 8 / 16 000          |
-| Standard_M64ms  | 64   | 1 792        | 2 048           | 64             | 80 000 / 800 (6 348)       | 40 000 / 1 000                            | 8 / 16 000          |
+| Standard_M64s  | 64   | 1024        | 2048           | 64             | 80 000 / 800 (6 348)       | 40 000 / 1 000                            | 8 / 16 000          |
+| Standard_M64ms  | 64   | 1 792        | 2048           | 64             | 80 000 / 800 (6 348)       | 40 000 / 1 000                            | 8 / 16 000          |
 | Standard_M128s&nbsp;<sup>2,&nbsp;3</sup> | 128  | 2 048        | 4 096           | 64             | 160 000 / 1 600 (12 696) | 80 000 / 2 000                            | 8 / 30000          |
-| Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3800        | 4 096           | 64             | 160 000 / 1 600 (12 696) | 80 000 / 2 000                            | 8 / 30000          |
+| Standard_M128ms&nbsp;<sup>2,&nbsp;3,&nbsp;4</sup> | 128  | 3800        | 4096           | 64             | 160 000 / 1 600 (12 696) | 80 000 / 2 000                            | 8 / 30000          |
 
 <sup>1</sup> funkce M-series Virtuálního počítače s technologií Intel® Hyper-Threading
 

@@ -9,11 +9,11 @@ ms.service: event-hubs
 ms.workload: na
 ms.date: 05/07/2018
 ms.author: darosa
-ms.openlocfilehash: 72a8dc074cbc0b1e34cbce91c14085124716b44b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 40805c27e7e2eaef1932c967af2d291f67b4192d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-hubs-for-kafka-ecosystems"></a>Služba Event Hubs pro Kafka ekosystémů
 
@@ -27,7 +27,7 @@ Event Hubs pro ekosystém Kafka poskytuje head protokolu nad Azure Event Hubs, k
 
 | Koncept Kafka | Koncept centra událostí|
 | --- | --- |
-| Cluster | Obor názvů |
+| Cluster | Názvový prostor |
 | Téma | Event Hubs |
 | Oddíl | Oddíl|
 | Skupina uživatelů | Skupina uživatelů |
@@ -65,8 +65,8 @@ Pro verzi public preview služby Event Hubs pro integraci ekosystémů Kafka nej
 
 Tento článek poskytuje úvod do služby Event Hubs Kafka ekosystémů. Další informace najdete v následujících tématech:
 
-* [Postup vytvoření Kafka povoleno Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Datový proud do centra událostí z aplikace Kafka](event-hubs-what-is-event-hubs.md)
+* [Postup vytvoření Kafka povoleno Event Hubs](event-hubs-create-kafka-enabled.md)
+* [Datový proud do centra událostí z aplikace Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 * Úvodní [Kurz služby Event Hubs](event-hubs-dotnet-standard-getstarted-send.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)
 

@@ -3,6 +3,7 @@ title: Řešení běžných potíží Azure Automation | Microsoft Docs
 description: Tento článek obsahuje informace o řešení potíží a opravte běžné chyby Azure Automation.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
@@ -10,11 +11,11 @@ ms.topic: article
 manager: carmonm
 tags: top-support-issue
 keywords: Chyba automatizace, řešení potíží problém
-ms.openlocfilehash: 44200ae9deb1a5c11c81550173b3f6f90b5d62ab
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d8bf617aaef463121abe76cd85a98615c83f11ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Odstraňování běžných problémů ve službě Azure Automation 
 Tento článek obsahuje nápovědu k odstraňování běžných chyb, může docházet v Azure Automation a navrhne možná řešení jejich řešení potíží.

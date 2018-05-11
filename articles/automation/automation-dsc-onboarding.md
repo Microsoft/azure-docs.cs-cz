@@ -3,16 +3,17 @@ title: Registrace počítačů pro správu Azure Automation DSC.
 description: Postup nastavení počítačů pro správu pomocí Azure Automation DSC.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Registrace počítačů pro správu Azure Automation DSC.
 
@@ -48,7 +49,7 @@ V [portál Azure](http://portal.azure.com/), klikněte na tlačítko **Procháze
 
 K vyhledání adresu URL pro registraci a klíče pro účet služby Automation zařadit do počítače, viz následující [ **zabezpečení registrace** ](#secure-registration) části:
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Prostředí Power Shell
 
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
@@ -62,6 +63,7 @@ $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
 # fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# NOTE: DSC Node Configuration names are case sensitive in the portal.
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
@@ -112,6 +114,9 @@ $VM = Set-AzureVMExtension `
 $VM | Update-AzureVM
 ```
 
+> [!NOTE]
+> Konfigurace uzlu DSC názvy jsou malá a velká písmena na portálu. Pokud jsou rozlišována neodpovídající nebude uzlu zobrazí na uzly DSC.
+
 ## <a name="azure-virtual-machines"></a>Virtuální počítače Azure
 
 Azure Automation DSC umožňuje snadno připojit virtuální počítače Azure za účelem správy konfigurace, pomocí portálu Azure, šablon Azure Resource Manageru nebo prostředí PowerShell. Pod pokličkou a bez nutnosti vzdáleného do virtuálního počítače správce zaregistruje rozšíření konfigurace požadovaného stavu aplikace Azure virtuálních počítačů virtuálního počítače se Azure Automation DSC. Vzhledem k tomu, že rozšíření konfigurace požadovaného stavu aplikace Azure virtuální počítač se spustí asynchronně, kroky k jeho průběh sledovat a řešit potíže se jsou uvedeny v následující [ **řešení potíží s Azure virtuálního počítače registrace** ](#troubleshooting-azure-virtual-machine-onboarding) části.
@@ -132,7 +137,7 @@ V části **registrace**, zadejte [správce místní konfigurace DSC prostředí
 
 Virtuální počítače Azure můžete nasadit a zařazený nemá na Azure Automation DSC pomocí šablony Azure Resource Manager. V tématu [konfigurace virtuálního počítače prostřednictvím rozšíření DSC a Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) pro šablonu příklad této onboards existující virtuální počítač do Azure Automation DSC. Najít registrační klíč a adresa URL registrace prováděné jako vstup v této šabloně najdete zde [ **zabezpečení registrace** ](#secure-registration) části.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Prostředí Power Shell
 
 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) rutiny je možné připojit virtuální počítače na portálu Azure pomocí prostředí PowerShell.
 
@@ -204,6 +209,9 @@ Obecně zařadit do provozu žádné počítače do Azure Automation DSC, [metak
 
 1. Otevřete prostředí PowerShell ISE jako správce v počítači ve vašem místním prostředí. Počítač musí mít nejnovější verzi [WMF 5](http://aka.ms/wmf5latest) nainstalována.
 2. Zkopírujte následující skript místně. Tento skript obsahuje konfiguraci DSC prostředí PowerShell pro vytváření metaconfigurations a příkaz k vytvoření metakonfiguraci ji.
+
+> [!NOTE]
+> Konfigurace uzlu DSC názvy jsou malá a velká písmena na portálu. Pokud jsou rozlišována neodpovídající nebude uzlu zobrazí na uzly DSC.
 
     ```powershell
     # The DSC configuration that will generate metaconfigurations
@@ -296,6 +304,7 @@ Obecně zařadit do provozu žádné počítače do Azure Automation DSC, [metak
     }
 
     # Create the metaconfigurations
+    # NOTE: DSC Node Configuration names are case sensitive in the portal.
     # TODO: edit the below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';

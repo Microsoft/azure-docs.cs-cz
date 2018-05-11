@@ -1,11 +1,11 @@
 ---
-title: "Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 2.2 | Microsoft Docs"
-description: "Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizace 2.2."
+title: Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 2.2 | Microsoft Docs
+description: Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizace 2.2.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5cf03ea8-2a0f-4552-b6dc-7ea517783d7b
 ms.service: storsimple
 ms.devlang: NA
@@ -14,15 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 06c14bdd24dd24a98b3838a2ba73b657ce56785a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 78be340b4a47fed88f5e8c3f5741ae7024124bd5
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Poznámky k verzi zařízení StorSimple 8000 řady aktualizace 2.2
-> [!NOTE]
-> Portálu classic pro StorSimple je zastaralý. Váš správce zařízení StorSimple se automaticky přesune na nový portál Azure podle plánu vyřazení. Obdržíte e-mailu a portálu oznámení pro přesunutí. Tento dokument také vyřadí brzy k dispozici. Dotazy týkající se přechodu, najdete v části [– nejčastější dotazy: přesunout do portálu Azure](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Přehled
 Následující poznámky k verzi popisují nové funkce a identifikovat kritická otevřené problémy pro StorSimple 8000 řady aktualizace 2.2. Také obsahují seznam aktualizací softwaru zařízení StorSimple, zahrnuté v této verzi.
@@ -58,7 +56,7 @@ Následující tabulka obsahuje souhrn problémy, které jsme vyřešili 2.2 akt
 | 5 |Openstack ověřování |Při použití Openstack jako poskytovatele cloudové služby, může uživatel by spustit do nepravidelným chyby související s ověřováním, kde analyzátor JSON výsledkem havárie. Tato chyba je opravena v této verzi. |Ano |Ne |
 | 6 |Kopírování na straně hostitele |V dřívějších verzích softwaru nepravidelným chyby související s ODX načasování zobrazila při kopírování dat z jednoho svazku na jiný svazek. To by způsobilo selhání řadiče a systém může potenciálně přejděte do režimu obnovení. Tato chyba je opravena v této verzi. |Ano |Ne |
 | 7 |Windows Management Instrumentation (WMI) |V předchozích verzích softwaru, byly několik instancí webového proxy serveru selhání s výjimkou "<ManagementException> selhání načtení zprostředkovatele". Tato chyba byly připsány navrácená paměť WMI a nyní vyřešen. |Ano |Ne |
-| 8 |Aktualizace |V určitých výjimečných případech v předchozích verzích softwaru uživatel přijata "CisPowershellHcsscripterror" při skenování nebo instalace aktualizací. Tento problém vyřešen v této verzi. |Ano |Ano |
+| 8 |Aktualizovat |V určitých výjimečných případech v předchozích verzích softwaru uživatel přijata "CisPowershellHcsscripterror" při skenování nebo instalace aktualizací. Tento problém vyřešen v této verzi. |Ano |Ano |
 | 9 |Balíček pro podporu |V této verzi se vylepšení způsob je shromáždit a odeslat balíček pro podporu. |Ano |Ano |
 
 ## <a name="known-issues-in-update-22"></a>Známé problémy v 2.2 aktualizace
@@ -74,7 +72,7 @@ Následující tabulka obsahuje souhrn známých problémů v této verzi.
 | 6 |Webový proxy server |Pokud vaše konfigurace webového proxy serveru má zadaný protokol HTTPS, bude mít vliv na komunikaci služby zařízení a zařízení přejde do režimu offline. Podpora balíčky se budou generovat také v procesu spotřebovávat značné množství prostředků vašeho zařízení. |Ujistěte se, že má adresu URL webového proxy serveru HTTP jako zadaný protokol. Další informace najdete v článku [Konfigurace webového proxy serveru pro zařízení](storsimple-configure-web-proxy.md). |Ano |Ne |
 | 7 |Webový proxy server |Pokud nakonfigurujete a povolíte webový proxy server na registrované zařízení, budete muset restartujte řadič active na vašem zařízení. | |Ano |Ne |
 | 8 |Cloud vysokou latencí a vysokou vstupně-výstupní úlohy |Když v zařízení StorSimple dojde kombinaci cloudu velmi vysoké latenci (pořadí sekund) a vysoké vstupně-výstupní úlohy, svazky zařízení přejděte do sníženou stavu a vstupně-výstupních operací může selhat s chybou "zařízení není připraveno". |Je nutné ručně restartovat řadiče zařízení nebo provádět převzetí služeb při selhání zařízení obnovit z této situaci. |Ano |Ne |
-| 9 |Azure PowerShell |Při použití rutiny StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - nejprve 1 - čekání** vyberte první objekt tak, že můžete vytvořit nový **VolumeContainer** objektu, rutina vrátí všechny objekty. |Zabalit rutinu v závorkách následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - nejprve 1 - čekání** |Ano |Ano |
+| 9 |Azure PowerShell |Při použití rutiny StorSimple **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - nejprve 1 - čekání** vyberte první objekt tak, že můžete vytvořit nový **VolumeContainer** objekt, rutina vrátí všechny objekty. |Zabalit rutinu v závorkách následujícím způsobem: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object - First 1 - čekání** |Ano |Ano |
 | 10 |Migrace |Při předávání více kontejnery svazků pro migraci, je přesné jenom pro první kontejneru svazků ETA pro poslední zálohu. Kromě toho paralelní migrace se spustí po první 4 záloh v první kontejneru svazků jsou migrovány. |Doporučujeme, abyste současně migrovat jeden kontejner svazků. |Ano |Ne |
 | 11 |Migrace |Po obnovení nejsou svazky přidání do zásad zálohování nebo skupinu virtuálního disku. |Musíte přidat tyto svazky do zásad zálohování k vytvoření zálohy. |Ano |Ano |
 | 12 |Migrace |Po dokončení migrace řad 5000/7000 zařízení nesmí mít přístup k kontejnery migrovaná data. |Doporučujeme, abyste po dokončení a potvrdit migrace odstraňte kontejnery migrovaná data. |Ano |Ne |

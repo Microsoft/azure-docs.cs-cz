@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Předávací ověřování – nejčastější dotazy | Microsoft Docs"
-description: "Odpovědi na nejčastější dotazy k Azure Active Directory předávací ověřování"
+title: 'Azure AD Connect: Předávací ověřování – nejčastější dotazy | Microsoft Docs'
+description: Odpovědi na nejčastější dotazy k Azure Active Directory předávací ověřování
 services: active-directory
-keywords: "Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 7a817092581ef0be0b6be063282f7484c46ff094
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -48,7 +48,7 @@ Ano. Předávací ověřování podporuje `Alternate ID` jako uživatelské jmé
 
 Ne. Předávací ověřování _nemá_ automaticky převzetí služeb při selhání pro synchronizaci hodnoty hash hesla. Pouze slouží jako záložní pro [scénáře, které předávací ověřování nepodporuje Dnes](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby se zabránilo neúspěšných přihlášení uživatele, měli byste nakonfigurovat předávací ověřování pro [vysokou dostupnost](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability).
 
-## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Je možné nainstalovat [Azure AD Application Proxy](../active-directory-application-proxy-get-started.md) konektor na stejném serveru jako Agent předávací ověřování?
+## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Je možné nainstalovat [Azure AD Application Proxy](../manage-apps/application-proxy.md) konektor na stejném serveru jako Agent předávací ověřování?
 
 Ano. Přejmenované verzích předávací ověřování agenta, verze 1.5.193.0 nebo novější, tuto konfiguraci podporovat.
 

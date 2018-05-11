@@ -3,8 +3,8 @@ title: Ušetřit peníze předem platebním pro virtuální počítače Azure �
 description: Další informace o vyhrazenou instanci virtuálního počítače Azure se uložit na náklady na virtuální počítače.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikramdesai01
+author: yashesvi
+manager: yashesvi
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: yashar
+ms.openlocfilehash: 9c73102f09e252b449f78603debaf707b3c89c3b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí virtuálního počítače 
 Vyhrazená instance virtuálních počítačů umožňují předem platí za jeden rok nebo tři roky výpočetní kapacitu a získat tak slevu na virtuálních počítačích, které používáte. Významně snižuje náklady na virtuální počítač – až 72 procent na průběžnými platbami ceny – s odběru splácených jeden rok nebo tři roky. Vyhrazená instance virtuálních počítačů je fakturační slevu a nemá vliv na stav modulu runtime virtuálních počítačů.
@@ -35,6 +35,7 @@ S těmito typy předplatných Azure zákazníků můžete zakoupit vyhrazenou in
 -   Enterprise smlouvy typu nabídky předplatného (MS-AZR - 0017P).
 -   [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) typu nabídky předplatného (MS-AZR - 003 P).
 Musí být v roli "Vlastník" v předplatném koupit vyhrazenou instanci. K nákupu rezervace v podnikového zápisu, musí správce podnikové sítě povolte rezervace nákupy v portálu EA ve výchozím nastavení je povoleno nastavení.
+-   Cloud Solution Provider (CSP) partnery můžete použít Azure Management Portal nebo [Partnerské centrum](https://docs.microsoft.com/partner-center/azure-reservations) přikoupení rezervace.
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>Jak se fakturuje nákup vyhrazenou instancí virtuálního počítače?
 Zakoupení rezervace je zodpovědné za platby vázáno k předplatnému. Pokud máte předplatné Enterprise, náklady na rezervace je odečtena od vaší vyrovnávání peněžních závazků. Pokud vaše vyrovnávání peněžních závazků nezahrnuje náklady na rezervace, se fakturuje Nadlimitní události úrovně.
@@ -69,5 +70,7 @@ Další informace o vyhrazenou instancí virtuálního počítače, naleznete v 
 - [Pochopení vyhrazenou instanci využití pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Pochopení vyhrazenou instanci využití pro podnikového zápisu](billing-understand-reserved-instance-usage-ea.md)
 - [Náklady na software Windows není součástí vyhrazené instance](billing-reserved-instance-windows-software-costs.md)
+- [Vyhrazená instance v programu partnera Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktovat podporu
 Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.

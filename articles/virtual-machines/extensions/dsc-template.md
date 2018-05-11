@@ -16,8 +16,8 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: 7657f27e25af62f13371a9216596f142dc2491dd
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d19d33d7d8d19923e814b8685c3e56553f85850d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -202,9 +202,9 @@ Skript DSC rozšíření výchozí konfigurace můžete použít ke konfiguraci 
 | settings.configurationArguments.ConfigurationMode |řetězec |Určuje režim pro LCM. Platné možnosti zahrnují **ApplyOnly**, **ApplyandMonitor**, a **ApplyandAutoCorrect**.  Výchozí hodnota je **ApplyandMonitor**. |
 | settings.configurationArguments.RefreshFrequencyMins | UInt32 | Určuje, jak často se pokusí LCM obraťte se na účtu Automation aktualizací.  Výchozí hodnota je **30**.  Minimální hodnota je **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Určuje, jak často LCM ověří aktuální konfiguraci. Výchozí hodnota je **15**. Minimální hodnota je **15**. |
-| settings.configurationArguments.RebootNodeIfNeeded | Boolean | Určuje, zda uzel může automaticky restartovat, pokud operace DSC požaduje. Výchozí hodnota je **false**. |
+| settings.configurationArguments.RebootNodeIfNeeded | boolean | Určuje, zda uzel může automaticky restartovat, pokud operace DSC požaduje. Výchozí hodnota je **false**. |
 | settings.configurationArguments.ActionAfterReboot | řetězec | Určuje, co se stane po restartování systému při aplikování konfigurace. Platné možnosti jsou **ContinueConfiguration** a **StopConfiguration**. Výchozí hodnota je **ContinueConfiguration**. |
-| settings.configurationArguments.AllowModuleOverwrite | Boolean | Určuje, zda LCM přepíše existující modulů na uzlu. Výchozí hodnota je **false**. |
+| settings.configurationArguments.AllowModuleOverwrite | boolean | Určuje, zda LCM přepíše existující modulů na uzlu. Výchozí hodnota je **false**. |
 
 ## <a name="settings-vs-protectedsettings"></a>Nastavení vs. ProtectedSettings
 
@@ -394,6 +394,6 @@ Použijte formát najdete v předchozím příkladu. Podívejte se na nabídky, 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [použití škálování virtuálních počítačů sad s příponou Azure DSC](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
-- Najít další podrobnosti o [správu zabezpečení přihlašovacích údajů DSC](extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Získat [Úvod do rozšíření obslužné rutiny Azure DSC](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Najít další podrobnosti o [správu zabezpečení přihlašovacích údajů DSC](dsc-credentials.md).
+- Získat [Úvod do rozšíření obslužné rutiny Azure DSC](dsc-overview.md).
 - Další informace o DSC Powershellu, přejděte na [centru dokumentace prostředí PowerShell](/powershell/dsc/overview).
