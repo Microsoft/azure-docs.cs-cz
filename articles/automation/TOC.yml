@@ -115,16 +115,14 @@
           href: automation-pass-json-string.md
     - name: Hybrid Runbook Worker
       items:
-        - name: Nasazení funkce Hybrid Runbook Worker
+        - name: Přehled funkce Hybrid Runbook Worker
           href: automation-hybrid-runbook-worker.md
-        - name: Funkce Hybrid Runbook Worker služby Azure Automation ve Windows
+        - name: Nasazení funkce Hybrid Runbook Worker pro Windows
           href: automation-windows-hrw-install.md
-        - name: Funkce Hybrid Runbook Worker služby Azure Automation v Linuxu
+        - name: Nasazení funkce Hybrid Runbook Worker pro Linux
           href: automation-linux-hrw-install.md
-        - name: Spouštění runbooků v pracovním procesu
+        - name: Spouštění runbooků ve funkci Hybrid Runbook Worker
           href: automation-hrw-run-runbooks.md
-        - name: Odebrání funkce Hybrid Runbook Worker služby Azure Automation
-          href: automation-remove-hrw.md
     - name: Nasazení správy konfigurace (DSC)
       items:
         - name: Přehled konfigurace požadovaného stavu (DSC)

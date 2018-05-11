@@ -28,6 +28,11 @@
 ### [Dostupnost a konzistence](event-hubs-availability-and-consistency.md)
 ### [Automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md)
 ### [Integrace Apache Sparku s Event Hubs](event-hubs-spark-connector.md)
+## Event Hubs pro Kafka
+### [Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+### [Vytvoření Event Hubs s podporou Kafka](event-hubs-create-kafka-enabled.md) 
+### [Streamování do Azure Event Hubs pro ekosystém Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+### [Použití Kafka MirrorMakeru s Azure Event Hubs pro ekosystém Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
 ## Vývoj
 ### [Odesílání událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Příjem událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)

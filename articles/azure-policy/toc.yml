@@ -39,7 +39,5 @@
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/azure-policy/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'

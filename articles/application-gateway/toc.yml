@@ -91,6 +91,8 @@
       href: tutorial-url-route-powershell.md
     - name: Přesměrování webového provozu s využitím Azure Powershellu
       href: tutorial-url-redirect-powershell.md
+    - name: Vytvoření zónově redundantní brány Application Gateway
+      href: create-zone-redundant.md
 - name: Referenční informace
   items:
     - name: Azure CLI

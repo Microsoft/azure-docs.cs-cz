@@ -379,6 +379,8 @@ items:
                 href: tutorial-query-table.md
               - name: 4. Globální distribuce
                 href: tutorial-global-distribution-table.md
+              - name: 5. Aplikace bez serveru – Node.js
+                href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
           - name: Ukázky
             items:
               - name: .NET

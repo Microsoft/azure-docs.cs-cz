@@ -1,0 +1,95 @@
+- name: Dokumentace k rozšířením virtuálních počítačů
+  href: ../index.md
+- name: Přehled
+  items:
+    - name: Informace o rozšířeních Azure
+      href: overview.md
+    - name: Agent virtuálního počítače s Linuxem
+      href: agent-linux.md
+    - name: Agent virtuálního počítače s Windows
+      href: agent-windows.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Použití rozšíření vlastních skriptů
+      href: /azure/virtual-machines/windows/tutorial-automate-vm-deployment
+      maintainContext: true
+- name: Koncepty
+  items:
+    - name: Linux
+      href: features-linux.md
+    - name: Windows
+      href: features-windows.md
+- name: Návody
+  items:
+    - name: Rozšíření vlastních skriptů
+      items:
+        - name: Linux – verze 2
+          href: custom-script-linux.md
+        - name: Linux – verze 1 (OSTC)
+          href: custom-script-linuxOstc.md
+        - name: Windows
+          href: custom-script-windows.md
+    - name: Rozšíření OMS
+      items:
+        - name: Linux
+          href: oms-linux.md
+        - name: Windows
+          href: oms-windows.md
+    - name: Rozšíření diagnostiky
+      items:
+        - name: Linux
+          href: diagnostics-linux.md
+        - name: Windows
+          href: diagnostics-windows.md
+        - name: Použití šablon
+          href: diagnostics-template.md
+    - name: Agent Network Watcher
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: Rozšíření prostředí PowerShell DSC
+      href: dsc-overview.md
+      items:
+        - name: DSC a Windows
+          href: dsc-windows.md
+        - name: Zpracování přihlašovacích údajů
+          href: dsc-credentials.md
+        - name: Použití šablon
+          href: dsc-template.md
+    - name: Antimalware IaaS pro Windows
+      href: iaas-antimalware-windows.md
+    - name: Rozšíření Key Vault
+      href: key-vault-windows.md
+    - name: Rozšíření VM Snapshot
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: Rozšíření jiných výrobců
+      items:
+        - name: Stackify Retrace
+          href: stackify-retrace-linux.md
+        - name: Symantec
+          href: symantec.md
+    - name: Zastaralá rozšíření
+      items:
+        - name: Rozšíření Log Collector
+          href: log-collector.md
+        - name: Trend Micro Deep Security
+          href: trend.md
+    - name: Omezení instalace rozšíření
+      items:
+        - name: Linux
+          href: extensions-rmpolicy-howto-cli.md
+        - name: Windows
+          href: extensions-rmpolicy-howto-ps.md
+    - name: Aktualizace agenta pro Linux
+      href: update-linux-agent.md
+    - name: Export rozšíření
+      href: export-templates.md
+    - name: Řešení potíží
+      href: troubleshoot.md

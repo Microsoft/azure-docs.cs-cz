@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/26/2018
   ms.author: mimig
-  ms.openlocfilehash: 83cb9b2f0bf1082efb13e1c92eb8e42945a6000e
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+  ms.openlocfilehash: 0981d1ef118ff08450b510204447427fc8475327
+  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/28/2018
+  ms.lasthandoff: 05/10/2018
 abstract:
   description: Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Tyto Rychlé starty, kurzy a ukázky vám pomůžou s vývojem databází dokumentů, párů klíč-hodnota, širokých sloupců a grafů s použitím oblíbených rozhraní API a programovacích modelů. Potom se naučíte replikovat data do libovolného počtu oblastí Azure a škálovat propustnost nezávisle na úložišti s využitím výhod komplexních smluv SLA.
   aside:
@@ -154,6 +154,7 @@ sections:
     - html: Globální replikace databází pomocí služby Azure Cosmos DB&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Table</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-graph">Graph</a>
     - html: <a href="local-emulator">Lokální vývoj aplikace pomocí emulátoru</a>
     - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">Vytvoření triggeru HTTP s využitím vstupní vazby Azure Cosmos DB</a>
+    - html: <a href="https://docs.microsoft.com/learn/build-serverless-app/index">Vytvoření základní webové aplikace pro hostování statických souborů v Cosmos DB</a>
 - title: Referenční informace
   items:
   - type: list

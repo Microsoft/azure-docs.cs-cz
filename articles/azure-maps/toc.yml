@@ -30,6 +30,8 @@
       href: render-coverage.md
     - name: Zajištění směrování
       href: routing-coverage.md
+    - name: Kategorie vyhledávání
+      href: search-categories.md
     - name: Podporované jazyky
       href: supported-languages.md
 - name: Návody

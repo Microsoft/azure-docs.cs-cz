@@ -62,38 +62,42 @@
               href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
             - name: Xamarin
               href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
-        - name: Webové aplikace
-          items:
-            - name: Přehled
-              href: active-directory-b2c-reference-oidc.md
-            - name: ASP.NET
-              href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
-            - name: Jádro ASP.NET
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp'
-            - name: Node.js
-              href: active-directory-b2c-devquickstarts-web-node.md
-        - name: Jednostránkové aplikace
-          items:
-            - name: Přehled
-              href: active-directory-b2c-reference-spa.md
-            - name: JavaScript s využitím MSAL
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
-            - name: JavaScript s využitím Hello
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi'
-        - name: Webová rozhraní API
-          items:
-            - name: ASP.NET
-              href: active-directory-b2c-devquickstarts-api-dotnet.md
-            - name: Jádro ASP.NET
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi'
-            - name: Node.js
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi'
-            - name: Volání webového rozhraní API .NET
-              href: active-directory-b2c-devquickstarts-web-api-dotnet.md
+        - name: Přihlašovací údaje vlastníka prostředku s heslem
+          href: configure-ropc.md
+    - name: Webové aplikace
+      items:
+        - name: Přehled
+          href: active-directory-b2c-reference-oidc.md
+        - name: ASP.NET
+          href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
+        - name: Jádro ASP.NET
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp'
+        - name: Node.js
+          href: active-directory-b2c-devquickstarts-web-node.md
+    - name: Jednostránkové aplikace
+      items:
+        - name: Přehled
+          href: active-directory-b2c-reference-spa.md
+        - name: JavaScript s využitím MSAL
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp'
+        - name: JavaScript s využitím Hello
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi'
+    - name: Webová rozhraní API
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-devquickstarts-api-dotnet.md
+        - name: Jádro ASP.NET
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi'
+        - name: Node.js
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi'
+        - name: Volání webového rozhraní API .NET
+          href: active-directory-b2c-devquickstarts-web-api-dotnet.md
     - name: Průvodci
       items:
         - name: Konfigurace zprostředkovatelů identity
           items:
+            - name: Vlastní OpenID Connect
+              href: active-directory-b2c-setup-oidc-idp.md
             - name: Účet Microsoft
               href: active-directory-b2c-setup-msa-app.md
             - name: Facebook
@@ -112,10 +116,6 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: WeChat
               href: active-directory-b2c-setup-wechat-app.md
-            - name: Azure AD (jeden tenant)
-              href: active-directory-b2c-setup-oidc-azure-active-directory.md
-            - name: Vlastní OpenID Connect
-              href: active-directory-b2c-setup-oidc-idp.md
         - name: Nastavení samoobslužného resetování hesla
           href: active-directory-b2c-reference-sspr.md
         - name: Přizpůsobení uživatelského rozhraní
@@ -141,10 +141,12 @@
           href: active-directory-b2c-reference-language-customization.md
         - name: Použití rozhraní API pro vytváření sestav
           href: active-directory-b2c-reference-usage-reporting-api.md
-        - name: Přístup k protokolům auditu
-          href: active-directory-b2c-reference-audit-logs.md
+        - name: Správa uživatelských dat
+          href: manage-user-data.md
         - name: Migrace uživatelů
           href: active-directory-b2c-user-migration.md
+        - name: Migrace uživatelů se sociálními identitami
+          href: active-directory-b2c-social-migration.md
         - name: Použití b2clogin.com
           href: b2clogin.md
         - name: Použití omezení přístupu podle věku
@@ -159,10 +161,8 @@
               href: active-directory-b2c-get-started-custom.md
             - name: Konfigurace zprostředkovatelů OIDC/OAUTH
               items:
-                - name: Azure AD (jeden tenant)
+                - name: Azure AD
                   href: active-directory-b2c-setup-aad-custom.md
-                - name: Azure AD (více tenantů)
-                  href: active-directory-b2c-setup-commonaad-custom.md
                 - name: Účet Microsoft
                   href: active-directory-b2c-custom-setup-msa-idp.md
                 - name: Google+
@@ -171,6 +171,8 @@
                   href: active-directory-b2c-custom-setup-li-idp.md
                 - name: Twitter
                   href: active-directory-b2c-custom-setup-twitter-idp.md
+                - name: Víc klientů
+                  href: active-directory-b2c-setup-commonaad-custom.md
             - name: Konfigurace zprostředkovatelů SAML
               items:
                 - name: ADFS
@@ -207,6 +209,8 @@
                   href: active-directory-b2c-reference-password-change-custom.md
                 - name: Povolení možnosti zůstat přihlášeni
                   href: active-directory-b2c-reference-kmsi-custom.md
+            - name: Správa uživatelského přístupu
+              href: manage-user-access.md
             - name: Řešení potíží
               items:
                 - name: Shromažďování protokolů pomocí Application Insights

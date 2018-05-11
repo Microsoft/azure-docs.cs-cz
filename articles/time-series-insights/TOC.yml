@@ -7,10 +7,13 @@
     - name: Informace o službě Time Series Insights
       href: time-series-insights-overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
     - name: Prozkoumat službu Time Series Insights
       href: time-series-quickstart.md
+- name: Kurzy
+  items:
+    - name: Prozkoumat javascriptovou klientskou knihovnu pro TSI
+      href: tutorial-explore-js-client-lib.md
 - name: Koncepty
   items:
     - name: Plánování prostředí

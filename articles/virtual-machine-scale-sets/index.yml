@@ -12,11 +12,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: carolz
-  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
-  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.openlocfilehash: d26c3a94c166a91644397e4a31aeede55ec29284
+  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/28/2018
+  ms.lasthandoff: 05/10/2018
 abstract:
   description: Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatickým škálováním. Naučte se vytvářet, konfigurovat, spravovat a automaticky škálovat škálovací sady virtuálních počítačů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:
@@ -51,6 +51,7 @@ sections:
     - html: Použití image virtuálního počítače s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure Powershellu</a>
     - html: Nasazení aplikací do škálovací sady s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure Powershellu</a>
     - html: Automatické škálování škálovací sady s využitím <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> nebo <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure Powershellu</a>
+    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">Nasazení aplikací do škálovací sady virtuálních počítačů Azure s vlastní imagí Packeru</a>
 - title: Ukázky
   items:
   - type: paragraph

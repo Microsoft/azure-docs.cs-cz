@@ -406,19 +406,19 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: frequently-asked-questions.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: Stack Overflow
+    - name: Zeptejte se – fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
+    - name: Zeptejte se – Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: Žádost o funkci
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Dostupnost v oblastech
-      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Nejčastější dotazy
+      href: frequently-asked-questions.md
+    - name: Plán
+      href: 'https://azure.microsoft.com/en-us/roadmap/?tag=data-factory'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
+    - name: Dostupnost podle oblasti
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Možnosti podpory
       href: 'https://azure.microsoft.com/support/options/'
