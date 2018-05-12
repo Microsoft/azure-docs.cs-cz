@@ -34,6 +34,8 @@
       href: search-categories.md
     - name: Podporované jazyky
       href: supported-languages.md
+    - name: Model spotřeby
+      href: consumption-model.md
 - name: Návody
   items:
     - name: Správa účtů Maps
@@ -115,7 +117,7 @@
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates'
     - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-location-based-services'
+      href: 'http://stackoverflow.com/questions/tagged/azure-maps'
     - name: Technické případové studie
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: Videa

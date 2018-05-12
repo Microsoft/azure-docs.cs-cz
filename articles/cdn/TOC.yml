@@ -1,10 +1,10 @@
 - name: Dokumentace ke službě CDN
-  href: index.md
+  href: index.yml
 - name: Přehled
   items:
     - name: Co je Azure CDN?
       href: cdn-overview.md
-    - name: Funkce produktu Azure CDN
+    - name: Porovnání funkcí produktů
       href: cdn-features.md
 - name: Šablony Rychlý start
   items:
@@ -137,13 +137,13 @@
           href: cdn-rules-engine-reference-match-conditions.md
         - name: Funkce stroje pravidel
           href: cdn-rules-engine-reference-features.md
+        - name: Proměnné HTTP
+          href: cdn-http-variables.md
     - name: Hlavičky HTTP specifické pro Verizon
       href: cdn-verizon-http-headers.md
       items:
         - name: Hlavičky X-EC-Debug
           href: cdn-http-debug-headers.md
-    - name: Proměnné HTTP
-      href: cdn-http-variables.md
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cdn
     - name: .NET
