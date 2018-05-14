@@ -1,11 +1,11 @@
 ---
-title: "Přiřazení uživatelů a skupin k aplikaci | Microsoft Docs"
-description: "Přiřazení uživatelů k aplikaci udělit přístup"
+title: Přiřazení uživatelů a skupin k aplikaci | Microsoft Docs
+description: Přiřazení uživatelů k aplikaci udělit přístup
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d670b2400fc1ac50afdcc8b809a1d482c3219686
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19303237e7e2c3c3a7f373102465875c34a571d1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>Přiřazení uživatelů a skupin k aplikaci
 
@@ -163,4 +163,4 @@ Po dokončení konfigurace samoobslužné služby aplikace, uživatelé mohou p�
 Tato schválení podporovat pouze jeden schválení pracovních, což znamená, že pokud zadáte několik schvalovatelů, může jeden schvalovatel schvalovatel přístup k aplikaci.
 
 ## <a name="next-steps"></a>Další postup
-[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)
+[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

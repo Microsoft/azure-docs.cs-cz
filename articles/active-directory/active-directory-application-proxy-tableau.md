@@ -15,8 +15,8 @@ ms.date: 05/02/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cd27bab470b7037087421fac1e9eeabe10957831
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7fa8654e413ac337994d35afdce7bd3478127f64
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -25,13 +25,13 @@ ms.lasthandoff: 05/11/2018
 
 Azure Proxy aplikace Active Directory a Tableau společně Ujistěte se, že budete moci snadno poskytnout vzdálený přístup pro vaše nasazení Tableau pomocí Proxy aplikace. Tento článek vysvětluje postup konfigurace tento scénář.  
 
-## <a name="prerequisites"></a>Požadované součásti 
+## <a name="prerequisites"></a>Požadavky 
 
 Tento scénář v tomto článku předpokládá, že máte:
 
 - [Tableau](https://onlinehelp.tableau.com/current/server/en-us/proxy.htm#azure) nakonfigurované. 
 
-- [Konektor Proxy aplikace](active-directory-application-proxy-enable.md) nainstalována. 
+- [Konektor Proxy aplikace](manage-apps/application-proxy-enable.md) nainstalována. 
 
  
 
@@ -54,7 +54,7 @@ Pokud chcete publikovat Tableau, musíte publikovat aplikaci na portálu Azure.
 
 Pro:
 
-- Podrobné pokyny ke kroky 1-8, viz [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md). 
+- Podrobné pokyny ke kroky 1-8, viz [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
 - Informace o tom, jak najít Tableau hodnot pro pole Proxy aplikace naleznete v dokumentaci Tableau.  
 
 **K publikování aplikace**: 

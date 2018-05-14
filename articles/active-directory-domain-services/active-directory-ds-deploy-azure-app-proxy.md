@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 13141549b5b1b77f45dd6fa1c7560b9f9d0e9b72
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -95,7 +95,7 @@ Máte nenastavili Proxy aplikace služby Azure AD a integraci s vaší spravovan
 
 * **Migrovat aplikace na virtuálních počítačích Azure:** můžete navýšení a shift aplikace z místních serverů na virtuálních počítačích Azure připojené k vaší spravované domény. Díky tomu pomáhá vám zbavit infrastruktury nákladů na běžící servery místně.
 
-* **Publikování aplikací pomocí proxy aplikace služby Azure AD:** publikování aplikací běžících na virtuálních počítačích Azure pomocí Azure AD Application Proxy. Další informace najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](../active-directory/application-proxy-publish-azure-portal.md)
+* **Publikování aplikací pomocí proxy aplikace služby Azure AD:** publikování aplikací běžících na virtuálních počítačích Azure pomocí Azure AD Application Proxy. Další informace najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Poznámka: nasazení - publikování integrované ověřování systému Windows (integrované ověřování systému Windows) aplikací pomocí proxy aplikace služby Azure AD

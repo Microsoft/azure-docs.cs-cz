@@ -15,8 +15,8 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bb71bd0bcaae8d7f9cb3ae357e726ea1f1c00b07
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 0ab788494f56364d4a46d632e34e4a1334564836
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -51,7 +51,7 @@ Proxy aplikace služby Azure AD je:
 ## <a name="what-kind-of-applications-work-with-application-proxy"></a>Jaký druh pracovní aplikací pomocí Proxy aplikace?
 S Azure AD Application Proxy se můžete dostat různé typy interní aplikace:
 
-* Webové aplikace, které používají [integrované ověřování systému Windows](../active-directory-application-proxy-sso-using-kcd.md) pro ověřování  
+* Webové aplikace, které používají [integrované ověřování systému Windows](application-proxy-configure-single-sign-on-with-kcd.md) pro ověřování  
 * Webové aplikace, které používají založené na formulářích nebo [na základě záhlaví](../application-proxy-ping-access.md) přístup  
 * Webové rozhraní API, která chcete vystavit bohaté aplikací na různých zařízeních  
 * Aplikace hostované za [Brána vzdálené plochy](../application-proxy-publish-remote-desktop.md)  
@@ -87,14 +87,14 @@ Než začnete konfigurovat Proxy aplikace, zajistěte, aby byla podporována [ed
 
 Začínáme s Proxy aplikace ve dvou krocích:
 
-1. [Povolení Proxy aplikace a nakonfigurovat konektor](../active-directory-application-proxy-enable.md).    
-2. [Publikování aplikací](../application-proxy-publish-azure-portal.md) – pomocí Průvodce rychlé a snadné získat místní aplikace publikována a dostupné vzdáleně.
+1. [Povolení Proxy aplikace a nakonfigurovat konektor](application-proxy-enable.md).    
+2. [Publikování aplikací](application-proxy-publish-azure-portal.md) – pomocí Průvodce rychlé a snadné získat místní aplikace publikována a dostupné vzdáleně.
 
 ## <a name="whats-next"></a>Co dále?
 Jakmile publikujete první aplikace, existuje mnoho dalších úkonů, které můžete provést pomocí Proxy aplikace:
 
-* [Povolení jednoduchého přihlášení](../active-directory-application-proxy-sso-using-kcd.md)
-* [Publikování aplikací s použitím vlastního názvu domény](../active-directory-application-proxy-custom-domains.md)
+* [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
+* [Publikování aplikací s použitím vlastního názvu domény](application-proxy-configure-custom-domain.md)
 * [Další informace o Azure AD Application Proxy konektory](../application-proxy-understand-connectors.md)
 * [Práce s existující místní Proxy servery](../application-proxy-working-with-proxy-servers.md) 
 * [Nastavit vlastní domovskou stránku](../application-proxy-office365-app-launcher.md)

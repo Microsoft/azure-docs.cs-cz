@@ -1,24 +1,24 @@
 ---
-title: "Rozšíření virtuálního počítače Azure výkon diagnostiky pro Windows | Microsoft Docs"
-description: "Představuje rozšíření virtuálního počítače Azure výkon diagnostiky pro systém Windows."
+title: Rozšíření virtuálního počítače Azure výkon diagnostiky pro Windows | Microsoft Docs
+description: Představuje rozšíření virtuálního počítače Azure výkon diagnostiky pro systém Windows.
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/29/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9ea7f4652aff07282c9c106f3894db807f341210
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálního počítače Azure výkon diagnostiky pro Windows
 
@@ -28,7 +28,7 @@ Rozšíření virtuálního počítače Azure výkon diagnostiky pomáhá shroma
 
 Toto rozšíření můžete nainstalovat na Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 a Windows Server 2016. Lze ji také nainstalovat na Windows 8.1 a Windows 10.
 
-## <a name="extension-schema"></a>Rozšíření schématu
+## <a name="extension-schema"></a>Schéma rozšíření
 Následujícím kódu JSON znázorňuje schéma pro rozšíření virtuálního počítače diagnostiky výkonu Azure. Toto rozšíření vyžaduje název a klíč pro účet úložiště pro uložení výstup diagnostiky a sestavy. Tyto hodnoty jsou citlivé. Klíč účtu úložiště by měl být uložený v chráněných nastavení konfigurace. Azure nastavení rozšíření chráněná data virtuálního počítače je šifrovaný a dešifruje se pouze na cílový virtuální počítač. Všimněte si, že **storageAccountName** a **storageAccountKey** malých a velkých písmen. V následující části jsou uvedeny další požadované parametry.
 
 ```JSON

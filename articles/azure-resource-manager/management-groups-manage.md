@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2018
+ms.date: 5/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b69dce94e2e0bfaa413af9a95c5ef858f766ff1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Spravovat prostředky s skupin pro správu 
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Můžete změnit, odstranit a správě těchto kontejnerů do mají hierarchie, které lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
@@ -35,10 +35,10 @@ Název skupiny pro správu můžete změnit pomocí portálu, prostředí PowerS
 3. Vyberte skupinu pro správu, kterou chcete přejmenovat. 
 4. Vyberte **přejmenovat skupinu** možnost v horní části stránky. 
 
-    ![Přejmenování skupiny](media/management-groups/detail_action_small.png)
+    ![Přejmenovat skupinu](media/management-groups/detail_action_small.png)
 5. Když se otevře v nabídce, zadejte nový název, který chcete zobrazit.
 
-    ![Přejmenování skupiny](media/management-groups/rename_context.png) 
+    ![Přejmenovat skupinu](media/management-groups/rename_context.png) 
 4. Vyberte **Uložit**. 
 
 ### <a name="change-the-name-in-powershell"></a>Změňte název v prostředí PowerShell
@@ -103,9 +103,9 @@ Můžete zobrazit všechny skupiny pro správu, které máte přímý nebo zděd
 ### <a name="view-in-the-portal"></a>Zobrazit na portálu
 1. Přihlaste se [portálu Azure](https://portal.azure.com)
 2. Vyberte **všechny služby** > **skupin pro správu** 
-3. Načtení pro stránky hierarchii se skupina pro správu, kde všechny skupiny se zobrazí, zda máte přístup k. 
+3. Hierarchie skupiny pro správu stránky zatížení, kde můžete prozkoumat všechny skupiny pro správu a odběry, které máte přístup. Výběr názvu skupiny přejdete dolů úrovně v hierarchii. Navigačním funguje stejně jako soubor explorer. 
     ![Main](media/management-groups/main.png)
-4. Vyberte skupinu podrobnosti o jednotlivých správy  
+4. Pokud chcete zobrazit podrobnosti o skupině pro správu, vyberte **(podrobnosti)** odkaz vedle názvu skupiny pro správu. Pokud tento odkaz není dostupná, nemáte oprávnění k zobrazení této skupiny pro správu.  
 
 ### <a name="view-in-powershell"></a>Zobrazení v prostředí PowerShell
 Můžete použít příkaz Get-AzureRmManagementGroup načíst všechny skupiny.  
@@ -151,7 +151,7 @@ Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak v
 6. V nabídce, která otevřít, vyberte **typ prostředku** položky, které chcete přesunout, což je **předplatné**.
 7. Vyberte odběr, v seznamu se správné ID. 
 
-    ![Podřízené objekty](media/management-groups/add_context_2.png)
+    ![Podřízená položka](media/management-groups/add_context_2.png)
 8. Vyberte "Uložit."
 
 **Odebrat předplatné ze skupiny pro správu**

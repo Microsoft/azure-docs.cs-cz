@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b6e912d450e1a2fed98fab5b18ba835396257ac9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Umožňuje importovat data pro použití s rozhraní API služby Azure DB Cosmos tabulky
 
@@ -29,6 +29,10 @@ Tento kurz se zabývá následujícími úkony:
 > * Import dat pomocí nástroje migrace dat
 > * Import dat pomocí nástroje AzCopy
 > * Migrace z tabulky rozhraní API (preview) na rozhraní API tabulky 
+
+## <a name="prerequisites"></a>Požadavky
+
+* Zvýšit propustnost: trvání migrace dat závisí na množství propustnosti, můžete nastavit pro jednotlivé kolekce nebo sady kolekcí. Ujistěte se, že zvýšit propustnost pro větší dat migrace. Po dokončení migrace, snížit propustnosti, abyste ušetřili náklady. Další informace o zvýšení propustnosti na portálu Azure najdete v tématu úrovně výkonu a cenové úrovně v Azure Cosmos DB.
 
 ## <a name="data-migration-tool"></a>Nástroj pro migraci dat
 

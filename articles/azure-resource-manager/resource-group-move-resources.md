@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6691ba1e89b7558302c869d3246fc69acd5dcd84
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -114,6 +114,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Application Insights
 * Automation
 * Azure Cosmos DB
+* Azure Relay
 * Batch
 * Mapy Bingu
 * CDN
@@ -130,6 +131,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * IoT Huby
 * Key Vault
 * Nástroje pro vyrovnávání zatížení – viz [omezení pro vyrovnávání zatížení](#lb-limitations)
+* Log Analytics
 * Logic Apps
 * Machine Learning - Machine Learning Studio webové služby lze přesunout do skupiny prostředků ve stejném předplatném, ale není jiný odběr. Další prostředky Machine Learning lze přesunout mezi odběry.
 * Media Services
@@ -137,7 +139,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Notification Hubs
 * Operational Insights
 * Správa operací
-* Power BI
+* Power BI - jak Power BI Embedded a Power BI prostoru kolekce
 * Veřejná IP adresa - najdete v části [omezení veřejnou IP adresu](#pip-limitations)
 * Redis Cache
 * Scheduler
@@ -148,7 +150,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Úložiště
 * Najdete v části úložiště (klasické) - [omezení nasazení Classic](#classic-deployment-limitations)
 * Stream Analytics - Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
-* Databáze SQL server – databáze a server se musí nacházet ve stejné skupině prostředků. Když přesouváte systému SQL server, budou přesunuty také všechny její databáze. To zahrnuje databáze Azure SQL Database a Azure SQL Data Warehouse. 
+* Databáze SQL server – databáze a server se musí nacházet ve stejné skupině prostředků. Když přesouváte systému SQL server, budou přesunuty také všechny její databáze. Toto chování se vztahuje na databáze Azure SQL Database a Azure SQL Data Warehouse. 
 * Traffic Manager
 * Nelze přesunout virtuální počítače – virtuální počítače s spravované disky. V tématu [omezení virtuální počítače](#virtual-machines-limitations)
 * Virtuální počítače (klasické) - najdete v části [omezení nasazení Classic](#classic-deployment-limitations)
@@ -164,6 +166,8 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * Hybridní AD Health Service
 * Application Gateway
 * Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Migrate
 * BizTalk Services
 * Certifikáty – App Service Certificate lze přesunout, ale mají nahrané certifikáty [omezení](#app-service-limitations).
 * Kubernetes služby
@@ -188,6 +192,11 @@ Spravované disky nepodporují move. Toto omezení znamená, že několik souvis
 * Bitové kopie vytvořené z spravovaných disků
 * Snímků vytvořených z spravovaných disků
 * Sady dostupnosti s virtuálními počítači s spravované disky
+
+I když se spravovaným diskem nelze přesunout, můžete vytvořit kopii a pak vytvořit nový virtuální počítač z existujícího spravovaného disku. Další informace naleznete v tématu:
+
+* Zkopírujte spravované disky ve stejné předplatné nebo jiné předplatné s [prostředí PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) nebo [rozhraní příkazového řádku Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
+* Vytvoření virtuálního počítače pomocí existujícího spravovaného disku operačního systému s [prostředí PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) nebo [rozhraní příkazového řádku Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
 
 Virtuální počítače vytvořené z Marketplace prostředků pomocí plánů připojené nelze přesunout mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v aktuálním předplatném a znovu nasaďte v rámci nového předplatného.
 

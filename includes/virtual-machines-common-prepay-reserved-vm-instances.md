@@ -1,10 +1,10 @@
 ---
 ms.topic: include
-ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 31b0d0018129ee65bb124c8008759cc6c7c8510e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>Předem pro virtuální počítače s instancí vyhrazené virtuálních počítačů
 
@@ -13,6 +13,7 @@ Předem pro virtuální počítače a ušetřit peníze s vyhrazenou instancí v
 Vyhrazená instance virtuálních počítačů můžete zakoupit [portál Azure](https://portal.azure.com). Koupit vyhrazenou instanci virtuálního počítače:
 -   Musíte být roli vlastníka pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
 -   U předplatného typu Enterprise, musí být povolená rezervace nákupy v [EA portál](https://ea.azure.com).
+-   Cloud Solution Provider (CSP) programu můžete zakoupit pouze správce agentů nebo prodejní agentů rezervace.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Kupte si Instance vyhrazený virtuální počítač
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
@@ -50,3 +51,4 @@ Další informace o vyhrazenou instancí virtuálního počítače, naleznete v 
 - [Pochopení vyhrazenou instanci využití pro vaše předplatné s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Pochopení vyhrazenou instanci využití pro podnikového zápisu](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [Náklady na software Windows není součástí vyhrazené instance](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [Vyhrazená instance v programu partnera Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

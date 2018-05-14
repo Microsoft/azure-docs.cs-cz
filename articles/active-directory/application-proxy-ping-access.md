@@ -15,8 +15,8 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f480553e6a8ca09872cd638537bc6fb98e793d8b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5554260ad2b47cf4c66046c95007c95e44f188bd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -50,7 +50,7 @@ Tento článek je určený pro uživatele, kteří jsou při prvním publikován
 
 Pokud už máte Proxy aplikace povolena a máte nainstalovaný konektor, můžete tuto část přeskočit a přesunout na [přidat aplikace do Azure AD pomocí Proxy aplikace](#add-your-app-to-azure-ad-with-application-proxy).
 
-Konektor Proxy aplikace je služba systému Windows Server, která přesměruje přenosy z vzdálení zaměstnanci k publikovaným aplikacím. Podrobné pokyny k instalaci, najdete v části [povolení Proxy aplikace v portálu Azure](active-directory-application-proxy-enable.md).
+Konektor Proxy aplikace je služba systému Windows Server, která přesměruje přenosy z vzdálení zaměstnanci k publikovaným aplikacím. Podrobné pokyny k instalaci, najdete v části [povolení Proxy aplikace v portálu Azure](manage-apps/application-proxy-enable.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 2. Vyberte **Azure Active Directory** > **proxy aplikace**.
@@ -65,7 +65,7 @@ Konektor Proxy aplikace je služba systému Windows Server, která přesměruje 
 
 Existují dvě akce, které je třeba provést na portálu Azure. Nejprve budete muset publikování aplikace pomocí Proxy aplikace. Poté která potřebujete shromáždit určité informace o aplikaci, kterou můžete použít během PingAccess kroky.
 
-Postupujte podle těchto kroků k publikování aplikace. Pro podrobnější návod kroky 1-8, viz [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md).
+Postupujte podle těchto kroků k publikování aplikace. Pro podrobnější návod kroky 1-8, viz [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
 
 1. Jestliže jste v poslední části, přihlaste se k [portál Azure](https://portal.azure.com) jako globální správce.
 2. Vyberte **Azure Active Directory** > **podnikové aplikace, které**.
@@ -181,5 +181,5 @@ Po dokončení těchto kroků, musí být aplikace spuštěná. Chcete-li otesto
 ## <a name="next-steps"></a>Další postup
 
 - [Konfigurace PingAccess pro Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
-- [Jak Azure AD Application Proxy poskytovat jednotné přihlašování?](application-proxy-sso-overview.md)
+- [Jak Azure AD Application Proxy poskytovat jednotné přihlašování?](manage-apps/application-proxy-single-sign-on.md)
 - [Řešení potíží s Proxy aplikace](active-directory-application-proxy-troubleshoot.md)

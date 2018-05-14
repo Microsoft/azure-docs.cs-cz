@@ -1,24 +1,24 @@
 ---
-title: "Stažení nástroje Azure zásobníku z Githubu | Microsoft Docs"
-description: "Zjistěte, jak si chcete stáhnout nástroje, které jsou požadovány pro práci s Azure zásobníku."
+title: Stažení nástroje Azure zásobníku z Githubu | Microsoft Docs
+description: Zjistěte, jak si chcete stáhnout nástroje, které jsou požadovány pro práci s Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: E4DF77FA-F468-42B5-B44F-F10ED8049171
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 219fd8e4e164df8c3002044719a90a7be56a9edf
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: thoroet
+ms.openlocfilehash: a116b7a048ff95ca601a65633cdc63f98fefee9d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Stažení nástroje Azure zásobníku z Githubu
 
@@ -53,13 +53,10 @@ cd AzureStack-Tools-master
 | Funkce | Popis | Tento modul, který můžete použít? |
 | --- | --- | --- |
 | [Možností cloudu](user/azure-stack-validate-templates.md) | Tento modul slouží k získání možností cloudu cloudu. Například můžete pomocí tohoto modulu získat cloudové funkce jako je verze rozhraní API a prostředky Azure Resource Manager. Můžete také získat rozšíření virtuálního počítače pro zásobník Azure a Azure cloudy pomocí tohoto modulu. | Operátoři cloudů a uživatelé |
-| [Správa výpočtů Azure zásobníku](azure-stack-add-vm-image.md) | Tento modul slouží k přidání nebo odebrání image virtuálního počítače v zásobníku Azure Marketplace. | Operátoři cloudu |
-| [Správa infrastruktury Azure zásobníku](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Tento modul slouží ke správě infrastruktury Azure zásobníku virtuálních počítačů, výstrahy, aktualizace a tak dále. |  Operátoři cloudu|
 | [Správce prostředků zásady pro Azure zásobníku](user/azure-stack-policy-module.md) | Tento modul slouží ke konfiguraci předplatné Azure nebo skupinu prostředků Azure pomocí stejné verze a služba dostupnosti jako zásobník Azure. | Operátoři cloudů a uživatelé |
 | [Zaregistrovat Azure](azure-stack-register.md) | Tento modul slouží k registraci instance kit vývoj s Azure. Po registraci, můžete stáhnout položky marketplace z Azure a použít je v Azure zásobníku. | Operátoři cloudu |
 | [Nasazení Azure zásobníku](azure-stack-run-powershell-script.md) | Tento modul slouží k přípravě hostitelský počítač zásobník Azure k nasazení a znovu nasaďte pomocí bitové kopie virtuálního pevného disku (VHD) Azure zásobníku. | Operátoři cloudu|
-| [Připojení k Azure zásobníku](azure-stack-connect-powershell.md) | Tento modul slouží k připojení k instanci zásobník Azure pomocí prostředí PowerShell a ke konfiguraci připojení VPN do protokolů Azure. | Operátoři cloudů a uživatelé |
-| [Správa služby Azure zásobníku](azure-stack-create-offer.md) | Tento modul slouží k vytvoření na výchozí klienta nabídku s neomezená kvóty napříč výpočty, úložiště Azure, sítě a služby Key Vault.   | Operátoři cloudu|
+| [Připojení k Azure zásobníku](azure-stack-connect-powershell.md) | Tento modul slouží ke konfiguraci připojení VPN do protokolů Azure. | Operátoři cloudů a uživatelé |
 | [Ověření šablony](user/azure-stack-validate-templates.md) | Tento modul slouží k ověření, pokud existující nebo nové šablony lze nasadit do protokolů Azure. | Operátoři cloudů a uživatelé|
 
 

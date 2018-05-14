@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/1/2018
 ms.author: rithorn
-ms.openlocfilehash: 31249584891a1bb07628fde56e445fda9b2bb467
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1592e47509f2537bef9cbcefd3cf49618561edcc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupiny pro správu pro organizaci poskytující prostředky a Správa
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Vytvoření těchto kontejnerů k vytvoření hierarchie efektivní a efektivní, který lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [řízení přístupu na základě Role Azure](../role-based-access-control/overview.md). Další informace o skupinách pro správu najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md). 
@@ -34,7 +34,7 @@ Skupina pro správu můžete vytvořit pomocí portálu, prostředí PowerShell 
 2. Vyberte **všechny služby** > **skupin pro správu**.
 3. Na hlavní stránce vyberte **skupiny pro správu nové.** 
 
-    ![Vytvoření skupiny](media/management-groups/create_main.png) 
+    ![Hlavní skupiny](media/management-groups/main.png) 
 4.  Vyplňte pole ID skupiny správy. 
     - **ID skupiny pro správu** je jedinečný identifikátor adresáře, který se používá k odeslání příkazů na tuto skupinu pro správu. Tento identifikátor se nedá upravovat po vytvoření, protože v celém systému Azure se používá k identifikaci této skupiny. 
     - Pole název zobrazení je název, který se zobrazí na portálu Azure. Samostatné zobrazovaný název je volitelné pole při vytváření správy skupiny a můžete kdykoli změnit.  

@@ -15,11 +15,11 @@ ms.date: 11/03/2017
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 9d013c22041c2ff64af7790836103068ffbf48ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c24781ad432a4682ebb0afcb95390bdcf8962d90
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s proxy aplikace služby Azure AD
 
@@ -46,7 +46,7 @@ V nasazení služby Vzdálená plocha VP webovou roli a roli služby Brána VP s
 
 - Koncové body Web VP a Brána VP musí být umístěné ve stejném počítači a s společný kořen. Web VP a Brána VP jsou publikovány jako jednu aplikaci pomocí Proxy aplikace tak, že můžete mít jednom přihlašování mezi těmito dvěma aplikacemi.
 
-- Byste již měli mít [nasazení vzdálené plochy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), a [povolit Proxy aplikace](active-directory-application-proxy-enable.md).
+- Byste již měli mít [nasazení vzdálené plochy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), a [povolit Proxy aplikace](manage-apps/application-proxy-enable.md).
 
 - Tento scénář předpokládá, že vaši koncoví uživatelé projít Internet Exploreru na stolní počítače Windows 7 nebo Windows 10, které se připojují prostřednictvím vzdálené plochy webové stránky. Pokud potřebujete podporovat jiné operační systémy, přečtěte si téma [podporu pro ostatní konfigurace klienta](#support-for-other-client-configurations).
 
@@ -58,7 +58,7 @@ Po nastavení vzdálené plochy a Azure AD Application Proxy pro vaše prostřed
 
 ### <a name="publish-the-rd-host-endpoint"></a>Publikování koncový bod hostiteli vzdálené plochy
 
-1. [Publikovat nové aplikace Proxy aplikace](application-proxy-publish-azure-portal.md) s následujícími hodnotami:
+1. [Publikovat nové aplikace Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md) s následujícími hodnotami:
    - Interní adresa URL: https://\<rdhost\>.com /, kde \<rdhost\> je společný kořen, Web VP a Brána VP sdílet.
    - Externí adresu URL: Toto pole se vyplní automaticky na základě názvu aplikace, ale můžete ho upravit. Vaši uživatelé budou moct tuto adresu URL, když přistupují k vzdálené plochy
    - Metoda předběžného ověření: Azure Active Directory

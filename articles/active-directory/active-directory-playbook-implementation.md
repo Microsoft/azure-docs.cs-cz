@@ -1,12 +1,12 @@
 ---
-title: "Implementace služby Azure Active Directory PoC Playbook | Microsoft Docs"
-description: "Prozkoumejte a rychle implementovat scénáře identita a správa přístupu"
+title: Implementace služby Azure Active Directory PoC Playbook | Microsoft Docs
+description: Prozkoumejte a rychle implementovat scénáře identita a správa přístupu
 services: active-directory
-keywords: "Azure active directory, scénářem, testování konceptu, PoC"
-documentationcenter: 
+keywords: Azure active directory, scénářem, testování konceptu, PoC
+documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: dstefan
-ms.openlocfilehash: e26dfe4aaa374f5587038a0de66c0bd8703c9a41
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f01bdee5ffcc9e2f48278c7209da40ef64cc030
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-implementation"></a>Ověření služby Azure Active Directory koncept Playbook: implementace
 
@@ -87,7 +87,7 @@ Hybridní identita je základem pro většinu podnikových zákazníků, kteří
 
 ### <a name="secure-remote-access-to-on-premises-applications"></a>Zabezpečený vzdálený přístup k místním aplikacím
 
-1. Bob, Azure AD globálního správce, obdržel množství požadavků zaměstnancům přístup k několika užitečné místních prostředků, jako je například aplikace výdaje při práci vzdáleně. Mu odpovídá [Proxy aplikace dokumentaci](active-directory-application-proxy-enable.md) k instalaci konektoru a publikovat výdaje jako aplikaci Proxy aplikace. 
+1. Bob, Azure AD globálního správce, obdržel množství požadavků zaměstnancům přístup k několika užitečné místních prostředků, jako je například aplikace výdaje při práci vzdáleně. Mu odpovídá [Proxy aplikace dokumentaci](manage-apps/application-proxy-enable.md) k instalaci konektoru a publikovat výdaje jako aplikaci Proxy aplikace. 
 2. Bob sdílet externí adresu URL aplikace výdaje s Susie, některého zaměstnance, kteří musí vzdáleného přístupu. Uživatel přistupuje k propojení a po ověření proti AAD, uživatel může pro přístup k aplikaci výdaje a pokračovat k dosažení produktivity. při vzdálené. 
 3. Bob potom pokračuje publikování dalších místních aplikací pomocí stejný postup a udělení přístupu uživatelům podle potřeby. Přidá podmíněného přístupu a vícefaktorového ověřování pro citlivější aplikace, které mu publikuje zajistit další bezpečnostní.
 

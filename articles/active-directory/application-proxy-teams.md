@@ -15,11 +15,11 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 66fdc03d2945b84615ee39dcbcc9bc71ddb06711
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f31b5be80ae56ffe4d0f570cb8d25da8cc098009
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Teams společnosti Microsoft
 
@@ -30,7 +30,7 @@ Uživatele můžete přidat cloudových aplikací k jejich týmy kanály [pomoc�
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Instalace konektoru Proxy aplikace a publikování aplikace
 
-Pokud jste to ještě neudělali, [konfiguraci Proxy aplikace vašeho klienta a instalaci konektoru](active-directory-application-proxy-enable.md). Potom [publikovat místní aplikace](application-proxy-publish-azure-portal.md) pro vzdálený přístup. Při publikování aplikace, poznamenejte si externí adresu URL vzhledem k tomu, že se používá k přidání aplikace do týmů.
+Pokud jste to ještě neudělali, [konfiguraci Proxy aplikace vašeho klienta a instalaci konektoru](manage-apps/application-proxy-enable.md). Potom [publikovat místní aplikace](manage-apps/application-proxy-publish-azure-portal.md) pro vzdálený přístup. Při publikování aplikace, poznamenejte si externí adresu URL vzhledem k tomu, že se používá k přidání aplikace do týmů.
 
 Pokud již máte aplikace publikována, ale nepamatujete jejich externí adresy URL, vyhledejte je [portál Azure](https://portal.azure.com). Přihlaste se a potom přejděte na **Azure Active Directory** > **podnikové aplikace, které** > **všechny aplikace** > vyberte svou aplikaci > **proxy aplikace**.
 
@@ -55,4 +55,4 @@ Jakmile jeden člen týmu přidá kartu, se zobrazí u všech uživatelů v kan�
 ## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [publikování webů služby SharePoint místní](application-proxy-enable-remote-access-sharepoint.md) pomocí Proxy aplikace.
-- Nakonfigurovat aplikace pro použití [vlastní domény](active-directory-application-proxy-custom-domains.md) pro jejich externí adresu URL. 
+- Nakonfigurovat aplikace pro použití [vlastní domény](manage-apps/application-proxy-configure-custom-domain.md) pro jejich externí adresu URL. 

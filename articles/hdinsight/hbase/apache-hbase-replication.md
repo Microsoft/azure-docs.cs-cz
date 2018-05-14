@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/11/2018
 ms.author: jgao
-ms.openlocfilehash: c28c48b5842deec9d9c3898c5742c3d4d473094e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 56b2b5ae9d3e4a0e682ec3dd47cd5cc30ebf6d58
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru HBase v Azure virtuální sítě
 
@@ -52,51 +52,18 @@ Máte tři možnosti konfigurace:
 - Dva clustery HBase ve dvou různých virtuálních sítích ve stejné oblasti.
 - Dva clustery HBase ve dvou různých virtuálních sítích v různých oblastech dva (geografická replikace).
 
+Tento článek popisuje scénář geografická replikace.
+
 Můžete nastavit prostředích, jsme vytvořili některé [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md). Pokud dáváte přednost nastavení prostředí pomocí jiné metody, najdete v části:
 
 - [Vytvoření clusterů systému Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Vytvořit clustery HBase v Azure Virtual Network](apache-hbase-provision-vnet.md)
 
-### <a name="set-up-one-virtual-network"></a>Nastavit jednu virtuální síť
-
-Chcete-li vytvořit dva clustery HBase ve stejné virtuální síti, vyberte na následujícím obrázku. Šablona je uložena v [šablony Azure QuickStart](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-one-vnet/).
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-one-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-### <a name="set-up-two-virtual-networks-in-the-same-region"></a>Nastavení dvou virtuálních sítí ve stejné oblasti
-
-Chcete-li vytvořit dvě virtuální sítě pomocí virtuální sítě partnerský vztah a dva clustery HBase ve stejné oblasti, vyberte na následujícím obrázku. Šablona je uložena v [šablony Azure QuickStart](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-two-vnets-same-region/).
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-two-vnets-same-region%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
-
-
-
-Tento scénář vyžaduje [partnerský vztah virtuální sítě](../../virtual-network/virtual-network-peering-overview.md). Šablona umožňuje partnerský vztah virtuální sítě.   
-
-Replikace HBase používá IP adresy virtuálních počítačů ZooKeeper. Musíte vytvořit statických IP adres pro cílový HBase ZooKeeper uzlů.
-
-**Konfigurace statické IP adresy**
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V nabídce vlevo vyberte **skupiny prostředků**.
-3. Vyberte skupinu prostředků, který má cílový cluster HBase. Toto je skupina prostředků, které jste zadali při jste použili k vytvoření prostředí šablony Resource Manageru. Chcete-li zúžit seznam můžete použít filtr. Zobrazí seznam prostředků, které obsahují dvě virtuální sítě.
-4. Vyberte virtuální síť, která obsahuje cílový cluster HBase. Vyberte například **xxxx-vnet2**. Tři zařízení s názvy, které začínají **seskupování-zookeepermode -** jsou uvedeny. Tato zařízení jsou tři ZooKeeper virtuálních počítačů.
-5. Vyberte jednu z ZooKeeper virtuálních počítačů.
-6. Vyberte **konfigurace protokolu IP**.
-7. V seznamu, vyberte **ipConfig1**.
-8. Vyberte **statické**a zkopírovat nebo zapište skutečné IP adresu. Při spuštění akce skriptu k povolení replikace musíte IP adresu.
-
-  ![HDInsight HBase replikace ZooKeeper statickou IP adresu](./media/apache-hbase-replication/hdinsight-hbase-replication-zookeeper-static-ip.png)
-
-9. Zopakujte krok 6 nastavit statickou IP adresu pro další dva uzly ZooKeeper.
-
-Pro scénář mezi virtuální sítě, je nutné použít **- ip** přepínače při volání `hdi_enable_replication.sh` skript akce.
-
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Nastavení ve dvou různých oblastech dvě virtuální sítě
 
-Chcete-li vytvořit dvě virtuální sítě ve dvou různých oblastech a připojení VPN mezi virtuální sítě, klikněte na následující obrázek. Šablona je uložena v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/).
+Vytvořit dvě virtuální sítě ve dvou různých oblastech a připojení VPN mezi virtuální sítě, vyberte následující obrázek, který má vytvořit. Šablona je uložena v [veřejného objektu blob úložiště]] (https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 Některé hodnoty pevně v šabloně:
 
@@ -116,11 +83,6 @@ Některé hodnoty pevně v šabloně:
 | Typ brány sítě VPN | RouteBased |
 | Skladová položka brány | Basic |
 | IP brány | vnet1gwip |
-| Název clusteru | &lt;ClusterNamePrefix > 1 |
-| Verze clusteru | 3.6 |
-| Typ clusteru | hbase |
-| Počet uzlů pracovního procesu clusteru | 2 |
-
 
 **Virtuální sítě 2**
 
@@ -138,14 +100,176 @@ Některé hodnoty pevně v šabloně:
 | Typ brány sítě VPN | RouteBased |
 | Skladová položka brány | Basic |
 | IP brány | vnet1gwip |
-| Název clusteru | &lt;ClusterNamePrefix > 2 |
-| Verze clusteru | 3.6 |
-| Typ clusteru | hbase |
-| Počet uzlů pracovního procesu clusteru | 2 |
 
-Replikace HBase používá IP adresy virtuálních počítačů ZooKeeper. Musíte vytvořit statických IP adres pro cílový HBase ZooKeeper uzlů. Chcete-li nastavit statickou IP adresu, přečtěte si téma [nastavení dvou virtuálních sítí ve stejné oblasti](#set-up-two-virtual-networks-in-the-same-region) v tomto článku.
+## <a name="setup-dns"></a>Instalační program DNS
 
-Pro scénář mezi virtuální sítě, je nutné použít **- ip** přepínače při volání `hdi_enable_replication.sh` skript akce.
+V poslední části vytvoří šablona virtuálního počítače Ubuntu v každé dvě virtuální sítě.  V této části nainstalujte vazby na dva virtuální počítače DNS a pak nakonfigurujte předávání DNS na dva virtuální počítače.
+
+Chcete-li nainstalovat vazby, yon muset najít veřejnou IP adresu dva virtuální počítače DNS.
+
+1. Otevřete web [Azure Portal](https://portal.azure.com).
+2. Otevřete DNS virtuálního počítače tak, že vyberete **skupin prostředků > [název skupiny prostředků] > [vnet1DNS]**.  Název skupiny prostředků je ten, který vytvoříte v posledním postupu. Výchozí názvy DNS virtuálního počítače jsou *vnet1DNS* a *vnet2NDS*.
+3. Vyberte **vlastnosti** chcete otevřít stránku Vlastnosti virtuální sítě.
+4. Zapište **veřejnou IP adresu**a také ověřte **privátní IP adresa**.  Privátní IP adresa musí být **10.1.0.4** pro vnet1DNS a **10.2.0.4** pro vnet2DNS.  
+
+K instalaci vazby, použijte následující postup:
+
+1. Použití SSH se připojit k __veřejnou IP adresu__ DNS virtuálního počítače. Následující příklad se připojí k virtuálnímu počítači na 40.68.254.142:
+
+    ```bash
+    ssh sshuser@40.68.254.142
+    ```
+
+    Nahraďte `sshuser` k uživatelskému účtu SSH, který jste zadali při vytváření virtuálního počítače DNS.
+
+    > [!NOTE]
+    > Existuje mnoho různých způsobů, jak získat `ssh` nástroj. Na systému Linux, Unix a systému macOS je poskytována jako součást operačního systému. Pokud používáte systém Windows, zvažte jednu z následujících možností:
+    >
+    > * [Prostředí cloudu Azure](../../cloud-shell/quickstart.md)
+    > * [Bash na Ubuntu na Windows 10](https://msdn.microsoft.com/commandline/wsl/about)
+    > * [Git (https://git-scm.com/)](https://git-scm.com/)
+    > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
+
+2. Chcete-li nainstalovat vazby, použijte následující příkazy z relace SSH:
+
+    ```bash
+    sudo apt-get update -y
+    sudo apt-get install bind9 -y
+    ```
+
+3. Ke konfiguraci vazby k předávání žádostí o překlad názvu na místní server DNS, použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+
+    ```
+    acl goodclients {
+        10.1.0.0/16; # Replace with the IP address range of the virtual network 1
+        10.2.0.0/16; # Replace with the IP address range of the virtual network 2
+        localhost;
+        localhost;
+    };
+    
+    options {
+        directory "/var/cache/bind";
+        recursion yes;
+        allow-query { goodclients; };
+
+        forwarders {
+            168.63.129.16 #This is the Azure DNS server
+        };
+
+        dnssec-validation auto;
+
+        auth-nxdomain no;    # conform to RFC1035
+        listen-on-v6 { any; };
+    };
+    ```
+    
+    > [!IMPORTANT]
+    > Nahraďte hodnoty v `goodclients` oddíl s rozsahem IP adres dvě virtuální sítě. Tento oddíl definuje adresy, které tento server DNS přijímá požadavky od.
+
+    K úpravě tohoto souboru, použijte následující příkaz:
+
+    ```bash
+    sudo nano /etc/bind/named.conf.options
+    ```
+
+    Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
+
+4. Z relace SSH použijte následující příkaz:
+
+    ```bash
+    hostname -f
+    ```
+
+    Tento příkaz vrátí hodnotu podobná následující text:
+
+        vnet1DNS.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
+
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Text je __příponu DNS__ pro tuto virtuální síť. Tato hodnota, uložte, protože se později používá.
+
+    Musíte také zjistit přípony DNS z jiný server DNS. Budete ho potřebovat v dalším kroku.
+
+5. Ke konfiguraci vazby k překladu názvů DNS pro prostředky v rámci virtuální sítě, použijte následující text jako obsah `/etc/bind/named.conf.local` souboru:
+
+    ```
+    // Replace the following with the DNS suffix for your virtual network
+    zone "v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net" {
+            type forward;
+            forwarders {10.2.0.4;}; # The Azure recursive resolver
+    };
+    ```
+
+    > [!IMPORTANT]
+    > Musíte `v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` s příponou DNS ve virtuální síti. A předávání IP je privátní IP adresa serveru DNS ve virtuální síti.
+
+    K úpravě tohoto souboru, použijte následující příkaz:
+
+    ```bash
+    sudo nano /etc/bind/named.conf.local
+    ```
+
+    Chcete-li uložit soubor, použijte __Ctrl + X__, __Y__a potom __Enter__.
+
+6. Pokud chcete spustit vazby, použijte následující příkaz:
+
+    ```bash
+    sudo service bind9 restart
+    ```
+
+7. Pokud chcete ověřit, že vazby může překládat názvy prostředků ve virtuální síti, použijte následující příkazy:
+
+    ```bash
+    sudo apt install dnsutils
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    ```
+
+    > [!IMPORTANT]
+    > Nahraďte `vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net` s plně kvalifikovaný název domény (FQDN) virtuálního počítače DNS v jiné síti.
+    >
+    > Nahraďte `10.2.0.4` s __interní IP adresu__ vašeho vlastního serveru DNS ve virtuální síti.
+
+    Odpověď se zobrazí podobná následující text:
+
+    ```
+    Server:         10.2.0.4
+    Address:        10.2.0.4#53
+    
+    Non-authoritative answer:
+    Name:   vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
+    Address: 10.2.0.4
+    ```
+
+    Až do této chvíle nelze vyhledat IP adresu ze sítě bez zadaná IP adresa serveru DNS.
+
+### <a name="configure-the-virtual-network-to-use-the-custom-dns-server"></a>Konfigurace virtuální sítě pro použití vlastního serveru DNS
+
+Ke konfiguraci virtuální sítě pro použití vlastního serveru DNS místo Azure rekurzivní překladač, použijte následující kroky:
+
+1. V [portál Azure](https://portal.azure.com), vyberte virtuální síť a potom vyberte __servery DNS__.
+
+2. Vyberte __vlastní__a zadejte __interní IP adresu__ vlastního serveru DNS. Nakonec vyberte __Uložit__.
+
+6. Otevřete virtuální počítač serveru DNS v vnet1 a klikněte na tlačítko **restartujte**.  Ve virtuální síti, aby konfiguraci serveru DNS se projeví po restartování všech virtuálních počítačů.
+7. Zopakujte kroky konfigurace vlastního serveru DNS pro vnet2.
+
+K testování této konfigurace DNS, můžete připojit na dva virtuální počítače DNS pomocí protokolu SSH a příkaz ping serveru DNS virtuální sítě pomocí jeho názvu hostitele. Pokud nefunguje, použijte následující příkaz a zkontrolujte stav DNS:
+
+```bash
+sudo service bind9 status
+```
+
+## <a name="create-hbase-clusters"></a>Vytvořit clustery HBase
+
+Vytvoření clusteru HBase v každé dvě virtuální sítě s následující konfigurací:
+
+- **Název skupiny prostředků**: použijte stejný název skupiny prostředků, jako jste vytvořili virtuální sítě.
+- **Typ clusteru**: HBase
+- **Verze**: HBase 1.1.2 (HDI 3.6)
+- **Umístění**: používalo stejné umístění jako virtuální síť.  Ve výchozím nastavení je vnet1 *západní USA*, a je vnet2 *východní USA*.
+- **Úložiště**: Vytvořte nový účet úložiště pro cluster.
+- **Virtuální síť** (z pokročilé nastavení na portálu): Vyberte vnet1 jste vytvořili v posledním postupu.
+- **Podsíť**: výchozí název použité v šabloně je **subnet1**.
+
+Aby byl že správně nakonfigurován prostředí, musí umět příkaz ping headnode plně kvalifikovaný název domény mezi dvěma clustery.
 
 ## <a name="load-test-data"></a>Testovací data zatížení
 
@@ -195,7 +319,6 @@ Nepovinné argumenty:
 |-du – dst-ambari-user | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBase. Výchozí hodnota je **správce**. |
 |-t, – seznam tabulek | Určuje tabulky, které chcete replikovat. Příklad: – seznam tabulek = "tabulky1; tabulky2; Tabulka3". Pokud nezadáte tabulky, replikují se všechny existující tabulky HBase.|
 |-m, – počítač | Určuje hlavního uzlu, kde je spuštěna akce skriptu. Hodnota je buď **hn1** nebo **hn0**. Protože **hn0** hlavního uzlu je obvykle Vytíženější, doporučujeme používat **hn1**. Tuto možnost použijte, když spouštíte skript $0 jako akce skriptu z portálu HDInsight nebo Azure PowerShell.|
-|-ip | Povinné v případě, že povolení replikace mezi dvěma virtuálními sítěmi. Tento argument funguje jako přepínač pro používání statických IP adres ZooKeeper uzlů z clusterů repliky namísto názvů plně kvalifikovaný název domény. Statické IP adresy musí předkonfiguroval před povolením replikace. |
 |-prohlášení cp, - programu copydata | Umožňuje migraci stávající data v tabulkách, kde je povolená replikace. |
 |-ot. / min, - replikovat-phoenix-metadat | Zapne replikaci na Phoenix systémové tabulky. <br><br>*Tuto možnost použijte opatrně.* Doporučujeme, abyste před použitím tohoto skriptu znovu vytvořit Phoenix tabulek v clusterech repliky. |
 |-h, – Nápověda | Zobrazí informace o využití. |

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3e590df66f84cd88ba7ba251373c14a44a94ca77
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: dfd29e0956793cf776b9c0ea5ddbd4689ebcb015
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: Připojení k Azure site-to-site VPN se nemůže připojit a zastaví práce
 
@@ -26,7 +26,7 @@ Po dokončení konfigurace připojení site-to-site VPN mezi místní sítí a v
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Řešení potíží
+## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
 Chcete-li problém vyřešit, zkuste je napřed [resetování brány Azure VPN](vpn-gateway-resetgw-classic.md) a resetovat tunelové propojení z místního zařízení VPN. Pokud potíže potrvají, postupujte podle těchto kroků zjistit příčinu problému.
 

@@ -5,18 +5,18 @@ services: key-vault
 documentationcenter: ''
 author: barclayn
 manager: mbaldwin
-ms.assetid: ''
+ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4a765b314b9879877bb6ff926e4a6584456b7823
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Kurz: Konfigurace Azure webovou aplikaci čtení tajného klíče z Key Vault
 
@@ -61,22 +61,22 @@ Dále vytvoříte Key Vault ve skupině prostředků vytvořili v předchozím k
 > I když "ContosoKeyVault" slouží jako název pro naše Key Vault v rámci tohoto kurzu, musíte použít jedinečný název.
 
 * Název trezoru **ContosoKeyVault**.
-* Název skupiny prostředků **ContosoResourceGroup**.
-* Umístění **východní USA**.
+* Název skupiny prostředků **ContosoResourceGroup**
+* Umístění **Východní USA**
 
 ```azurecli
 az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
 ```
 
-Výstup tohoto příkazu se zobrazují vlastnosti nově vytvořený klíč trezoru. Poznamenejte si dvě vlastnosti uvedené níže:
+Výstup tohoto příkazu se zobrazují vlastnosti nově vytvořený klíč trezoru. Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
 * **Název trezoru**: V tomto příkladu je to **ContosoKeyVault**. Název trezoru klíč bude použit pro všechny příkazy Key Vault.
 * **Identifikátor URI trezoru**: V příkladu je to https://<YourKeyVaultName>.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 >[!IMPORTANT]
-> Pokud se zobrazí chyba 'vault_name' musí odpovídat vzoru následující parametr: ' ^ [-zA-Z0 - 9 –] {3,24} $'-Název param hodnotu nebyla jedinečný nebo neodpovídala požadavkům na řetězec tvořený alfanumerické znaky ze 3 až 24 dlouho.
+> Pokud se zobrazí chyba 'vault_name' musí odpovídat vzoru následující parametr: ' ^ [-zA-Z0 - 9 –]{3,24}$'-Název param hodnotu nebyla jedinečný nebo neodpovídala požadavkům na řetězec tvořený alfanumerické znaky ze 3 až 24 dlouho.
 
-V tomto okamžiku účtu Azure je pouze jeden oprávněni provádět žádné operace na tento nový trezor.
+V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
 
 ## <a name="add-a-secret-to-key-vault"></a>Do Key vault přidat tajný klíč
 

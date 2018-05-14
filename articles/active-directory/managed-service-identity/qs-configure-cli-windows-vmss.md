@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: 667d62f4ad7c8e4853204c238ec889935daf82ba
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4237371073669bd46c0da8f75998157aa54ffbf1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálního počítače sady škálování spravované služby Identity (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -179,7 +179,7 @@ Odpověď obsahuje podrobnosti pro identitu uživatele přiřazené vytvořili, 
 2. Přiřaďte identitu uživatele přiřazené k VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity#az_vm_assign_identity). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` hodnoty parametrů s vlastními hodnotami. `<USER ASSIGNED IDENTITY ID>` Bude uživatel s přiřazenou identity prostředek `id` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
-    az vmss assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity-assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Odebrání uživatele přiřazené identity z VMSS Azure

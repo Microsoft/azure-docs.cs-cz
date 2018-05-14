@@ -1,24 +1,24 @@
 ---
-title: "Ochrana nasazení vícevrstvé SAP NetWeaver aplikace pomocí Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak k ochraně nasazení SAP NetWeaver aplikace pomocí Azure Site Recovery."
+title: Ochrana nasazení vícevrstvé SAP NetWeaver aplikace pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak k ochraně nasazení SAP NetWeaver aplikace pomocí Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: b6ab734186f23d51d60e51bd0946329d5209097b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e2107177663163259d1f731717c4910bc986fc1f
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>K nasazení aplikace SAP NetWeaver vícevrstvé chránit pomocí Site Recovery
 
@@ -81,7 +81,7 @@ Plán obnovení podporuje sekvencování různé úrovně ve vícevrstvé aplika
 ### <a name="add-scripts-to-the-recovery-plan"></a>Přidat skripty do plánu obnovení
 Pro vaše aplikace fungovat správně může být zapotřebí provést některé operace na virtuálních počítačích Azure po převzetí nebo během testovací převzetí služeb. Je možné automatizovat některé operace post-převzetí služeb při selhání. Například můžete aktualizovat záznam DNS a změnit vazby a připojení přidáním příslušných skriptů do plánu obnovení.
 
-### <a name="dns-update"></a>DNS update
+### <a name="dns-update"></a>Aktualizace DNS.
 Pokud je server DNS nakonfigurovaný pro aktualizace dynamického DNS, virtuálních počítačů obvykle aktualizovat DNS novou IP adresu při spuštění. Pokud chcete přidat na explicitní krok pro aktualizace DNS pomocí nové IP adresy virtuálních počítačů, přidejte [skript pro aktualizaci IP adresa ve službě DNS](https://aka.ms/asr-dns-update) jako akci post-převzetí služeb při selhání u skupiny plánu obnovení.  
 
 ## <a name="example-azure-to-azure-deployment"></a>Příklad nasazení Azure do Azure

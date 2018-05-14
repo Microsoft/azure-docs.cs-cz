@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: skwan
-ms.openlocfilehash: 145cfac02db5aa73e92da8bb281b88b28dc0e22e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bcbafcb5b72fd156f0d8b4a4ddd52aab1d699996
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="use-a-linux-vm-msi-to-access-azure-cosmos-db"></a>Používat pro přístup k databázi Azure Cosmos MSI virtuálních počítačů Linux 
 
@@ -73,29 +73,30 @@ Pro vytvoření virtuálního počítače povoleným MSI:
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
+   ```
 
-## Create a Cosmos DB account 
+## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 
-If you don't already have one, create a Cosmos DB account. You can skip this step and use an existing Cosmos DB account. 
+Pokud jste již nemáte, vytvořte účet Cosmos DB. Můžete tento krok přeskočit a použít existující účet Cosmos DB. 
 
-1. Click the **+/Create new service** button found on the upper left-hand corner of the Azure portal.
-2. Click **Databases**, then **Azure Cosmos DB**, and a new "New account" panel  displays.
-3. Enter an **ID** for the Cosmos DB account, which you use later.  
-4. **API** should be set to "SQL." The approach described in this tutorial can be used with the other available API types, but the steps in this tutorial are for the SQL API.
-5. Ensure the **Subscription** and **Resource Group** match the ones you specified when you created your VM in the previous step.  Select a **Location** where Cosmos DB is available.
-6. Click **Create**.
+1. Klikněte **+/ vytvořit novou službu** nalezeno tlačítko v levém horním rohu portálu Azure.
+2. Klikněte na tlačítko **databáze**, pak **Azure Cosmos DB**a nové "nový účet" panelu zobrazí.
+3. Zadejte **ID** pro Cosmos DB účet, který použijete později.  
+4. **Rozhraní API** musí být nastavena na "SQL." Postup popsaný v tomto kurzu lze použít s jinými typy k dispozici rozhraní API, ale kroky v tomto kurzu jsou pro rozhraní SQL API.
+5. Ujistěte se, **předplatné** a **skupiny prostředků** odpovídat jsou zadány při vytvoření virtuálního počítače v předchozím kroku.  Vyberte **umístění** kde je k dispozici Cosmos DB.
+6. Klikněte na možnost **Vytvořit**.
 
-## Create a collection in the Cosmos DB account
+## <a name="create-a-collection-in-the-cosmos-db-account"></a>Vytvoření kolekce v účtu Cosmos DB
 
-Next, add a data collection in the Cosmos DB account that you can query in later steps.
+Dál přidejte shromažďování dat v účtu Cosmos DB, který můžete dotazovat v dalších krocích.
 
-1. Navigate to your newly created Cosmos DB account.
-2. On the **Overview** tab click the **+/Add Collection** button, and an "Add Collection" panel slides out.
-3. Give the collection a database ID, collection ID, select a storage capacity, enter a partition key, enter a throughput value, then click **OK**.  For this tutorial, it is sufficient to use "Test" as the database ID and collection ID, select a fixed storage capacity and lowest throughput (400 RU/s).  
+1. Přejděte na svůj nově vytvořený účet Cosmos DB.
+2. Na **přehled** klikněte na možnost **+/ přidat kolekce** tlačítko a "Přidat"kolekce panelu snímky out.
+3. Poskytnout kolekce s výběrem ID, ID kolekce databáze kapacitu úložiště, zadejte klíč oddílu, zadejte hodnotu propustnosti a potom klikněte na tlačítko **OK**.  V tomto kurzu je dostačující použít "Test" jako ID databáze a ID kolekce, vyberte kapacitu dlouhodobého úložiště a nejnižší propustnost (400 RU/s).  
 
-## Retrieve the `principalID` of the Linux VM's MSI
+## <a name="retrieve-the-principalid-of-the-linux-vms-msi"></a>Načtení `principalID` MSI Linux Virtuálního počítače
 
-To gain access to the Cosmos DB account access keys from the Resource Manager in the following section, you need to retrieve the `principalID` of the Linux VM's MSI.  Be sure to replace the `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (resource group in which you VM resides), and `<VM NAME>` parameter values with your own values.
+Chcete-li získat přístup k přístupové klíče účtu Cosmos databáze ze Správce prostředků v následující části, je potřeba načíst `principalID` MSI Linux Virtuálního počítače.  Nezapomeňte nahradit `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` (skupina prostředků je virtuální počítač nachází), a `<VM NAME>` hodnoty parametrů s vlastními hodnotami.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01

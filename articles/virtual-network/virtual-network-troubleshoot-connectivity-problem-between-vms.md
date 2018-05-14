@@ -1,24 +1,24 @@
 ---
-title: "Řešení potíží s připojením mezi virtuálními počítači Azure | Microsoft Docs"
-description: "Naučte se řešení problémů s připojením mezi virtuálními počítači Azure."
+title: Řešení potíží s připojením mezi virtuálními počítači Azure | Microsoft Docs
+description: Naučte se řešení problémů s připojením mezi virtuálními počítači Azure.
 services: virtual-network
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 3011ef7eced5a24ba07d06e2db2f5e4d344b94de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6decb0e9188db00608be35d9ba4e84df92ceb671
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Řešení potíží s připojením mezi virtuálními počítači Azure
 
@@ -42,7 +42,7 @@ Jeden virtuální počítač Azure se nemůže připojit k jiným virtuálním P
 8. [Pokuste se připojit k síťové sdílené složky virtuálních počítačů](#step-8-try-to-connect-to-a-vm-network-share)
 9. [Zkontrolujte připojení Inter-Vnet](#step-9-check-inter-vnet-connectivity)
 
-## <a name="troubleshooting-steps"></a>Řešení potíží
+## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
 Postupujte podle těchto kroků k vyřešení tohoto problému. Po dokončení každého kroku zkontrolujte, zda byl problém vyřešen. 
 

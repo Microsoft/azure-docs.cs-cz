@@ -5,16 +5,16 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6160e3e6f23bf4eabb33295fa19323c71c7ed18d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 77dc239385261c9544b00cf2cf2e450136dce0ae
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Spolupráce Azure Active Directory s B2B nejčastější dotazy
 
@@ -31,9 +31,6 @@ Ano. Další informace týkající se použití funkce nahrávání souboru CSV 
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>Jak můžete přizpůsobit Moje pozvánku e-mailů?
 Téměř všechny údaje o procesu pozvánky lze přizpůsobit pomocí [B2B pozvánku rozhraní API](active-directory-b2b-api.md).
-
-### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>Můžete ponechat pozvané externího uživatele organizaci po pozvat?
-Pozváním správce organizace může odstranit uživatel guest spolupráce B2B z adresáře, ale uživatele guest nelze ponechat pozváním adresáře organizace samy o sobě. 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Můžete resetovat uživatele typu Host jejich metoda služby Multi-Factor authentication?
 Ano. Uživatele typu Host můžete resetovat jejich metoda služby Multi-Factor authentication stejným způsobem, že běžní uživatelé provádět.
@@ -99,9 +96,7 @@ Nemůžeme se neustále naslouchání vaše připomínky pro zlepšení spolupr�
 Také doporučujeme odeslat nápady a hlasů pro budoucí funkce na [nápady spolupráce B2B](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Můžete odeslat požadavek, který je automaticky uplatněny, tak, aby uživatel právě "jste připraveni..."? Nebo uživatel vždy muset kliknout na tlačítko prostřednictvím na adresu URL uplatnění?
-Pozvánky, které se odesílají uživatelem v pozváním organizace, který je taky členem skupiny partnerské organizace nevyžadují, aby se uživatel B2B.
-
-Doporučujeme, abyste pozvání jeden uživatel od partnerské organizace k pozváním organizaci připojit. [Přidejte tohoto uživatele k roli hosta pozval vás v organizaci poskytující prostředky](active-directory-b2b-add-guest-to-role.md). Tohoto uživatele můžete pozvat jiných uživatelů v organizaci partnera pomocí přihlášení uživatelského rozhraní, skriptů prostředí PowerShell nebo rozhraní API. Uživatelé spolupráce B2B z dané organizace pak, není nutné uplatnit své pozvánky.
+Pozvánky můžete pozvat jiných uživatelů v organizaci partnera pomocí uživatelského rozhraní, skriptů prostředí PowerShell nebo rozhraní API. Potom pozvání odeslal odeslat uživatele guest přímý odkaz na sdílené aplikaci. Ve většině případů už není potřeba otevřít pozvánku e-mailu a klikněte na adresu URL uplatnění kódu. Další informace najdete v tématu [uplatnění pozvánku spolupráce Azure Active Directory s B2B](active-directory-b2b-redemption-experience.md).
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Spolupráce B2B funkce když pozvané partnera používá federační přidat vlastní místního ověřování
 Pokud partner má tenanta služby Azure AD, který je federovaného ověřování místní infrastruktury, místní jednotné přihlašování (SSO) automaticky dosáhnout. Pokud partner nemá klient služby Azure AD, vytvoří se účet služby Azure AD pro nové uživatele. 

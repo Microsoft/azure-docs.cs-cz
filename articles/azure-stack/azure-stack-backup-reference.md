@@ -1,24 +1,25 @@
 ---
-title: "Referenční dokumentace Azure zásobníku infrastruktura zálohování služba | Microsoft Docs"
-description: "Tento článek obsahuje referenčního materiálu pro službu Azure zásobníku infrastruktura zálohování."
+title: Referenční dokumentace Azure zásobníku infrastruktura zálohování služba | Microsoft Docs
+description: Tento článek obsahuje referenčního materiálu pro službu Azure zásobníku infrastruktura zálohování.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: D6EC0224-97EA-446C-BC95-A3D32F668E2C
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 4/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4e6e0a52b2c55239e38757223f54e5e94dc98c42
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.reviewer: hectorl
+ms.openlocfilehash: 608f3043e0e4b851820274ca743cbc44d1c8c0f1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odkaz na službu zálohování infrastruktury
 
@@ -77,9 +78,9 @@ Požadavky na patří:
 
 #### <a name="supported-smb-versions"></a>Podporované verze protokolu SMB
 
-| PROTOKOL SMB | Verze |
+| SMB | Verze |
 |-----|---------|
-| PROTOKOL SMB | 3.x     |
+| SMB | 3.x     |
 
 #### <a name="storage-location-sizing"></a>Nastavení velikosti umístění úložiště 
 

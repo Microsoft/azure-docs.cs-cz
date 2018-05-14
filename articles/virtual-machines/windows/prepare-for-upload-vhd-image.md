@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 74c47907698e3365d093f0e17dba87b690406443
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 038a9be813367d130dd8bb02b24879d1e2e573b5
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava systému Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před nahráním Windows virtuální počítače (VM) z místní do služby Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje jenom virtuální počítače generace 1, které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z je disk VHDX souborů systému na virtuální pevný disk a z dynamicky se zvětšující disk do pevnou velikostí. Ale generaci Virtuálního počítače nelze změnit. Další informace najdete v tématu [měli vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -323,7 +323,7 @@ Ideální konfigurace **mít počítač na nejnovější úroveň opravy**. Poku
 
 |                       |                   |           |                                       Minimální verze x64       |                                      |                                      |                            |
 |-------------------------|-------------------|------------------------------------|---------------------------------------------|--------------------------------------|--------------------------------------|----------------------------|
-| Komponenta               | Binární hodnota            | Windows 7 & Windows Server 2008 R2 | Windows 8 & Windows Server 2012             | Windows 8.1 & Windows Server 2012 R2 | Windows 10 & Windows Server 2016 RS1 | Windows 10 RS2             |
+| Komponenta               | Binární hodnota            | Windows 7 & Windows Server 2008 R2 | Windows 8 & Windows Server 2012             | Windows 8.1 a Windows Server 2012 R2 | Windows 10 & Windows Server 2016 RS1 | Windows 10 RS2             |
 | Úložiště                 | disk.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061           | -                                    | -                          |
 |                         | storport.sys      | 6.1.7601.23403 - KB3125574         | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726           | 10.0.14393.1358 - KB4022715          | 10.0.15063.332             |
 |                         | ntfs.sys          | 6.1.7601.23403 - KB3125574         | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726           | 10.0.14393.1198 - KB4022715          | 10.0.15063.447             |
@@ -380,7 +380,7 @@ Ne každý role nebo aplikace, který je nainstalován na počítači se systém
 1. Přihlaste se k systému Windows virtuálního počítače.
 2. Spustit **příkazového řádku** jako správce. 
 3. Změňte adresář na: **%windir%\system32\sysprep**a poté spusťte **sysprep.exe**.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)**a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)
 4. V **možnosti vypnutí**, vyberte **vypnutí**.

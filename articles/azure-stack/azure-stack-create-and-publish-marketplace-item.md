@@ -1,25 +1,24 @@
 ---
-title: "Vytvoření a publikování v Azure zásobníku položku Marketplace. | Microsoft Docs"
-description: "Vytvoření a publikování v Azure zásobníku položku Marketplace."
+title: Vytvoření a publikování v Azure zásobníku položku Marketplace. | Microsoft Docs
+description: Vytvoření a publikování v Azure zásobníku položku Marketplace.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 77e5f60c-a86e-4d54-aa8d-288e9a889386
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5ac91dac3cb446abaf07492d8b6ec8aa0c120ef4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5e0349d6bae9295e7a0ba9f366f84753ebd838c2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Vytvoření a publikování položky Marketplace
 
@@ -110,7 +109,7 @@ ms.lasthandoff: 02/21/2018
 ### <a name="metadata"></a>Metadata
 | Název | Požaduje se | Typ | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |Řetězec |Doporučení 80 znaků |Na portálu nemusí řádně zobrazit název položky, pokud je delší než 80 znaků. |
+| Zobrazovaný název |X |Řetězec |Doporučení 80 znaků |Na portálu nemusí řádně zobrazit název položky, pokud je delší než 80 znaků. |
 | PublisherDisplayName |X |Řetězec |Doporučení 30 znaků |Na portálu nemusí řádně zobrazit název vydavatele, pokud je delší než 30 znaků. |
 | PublisherLegalName |X |Řetězec |Maximálně 256 znaků | |
 | Souhrn |X |Řetězec |60 až 100 znaků. | |
@@ -123,9 +122,9 @@ Na webu Marketplace používá následující ikony:
 | Název | Šířka | Výška | Poznámky |
 | --- | --- | --- | --- |
 | Široké |255 px |115 px |Vždy vyžadován |
-| Velké |115 px |115 px |Vždy vyžadován |
-| Střední |90 px |90 px |Vždy vyžadován |
-| Malé |40 px |40 px |Vždy vyžadován |
+| Dlouhodobé používání |115 px |115 px |Vždy vyžadován |
+| Střednědobé používání |90 px |90 px |Vždy vyžadován |
+| Krátkodobé používání |40 px |40 px |Vždy vyžadován |
 | Snímek obrazovky |533 px |32 px |Nepovinné |
 
 ### <a name="categories"></a>Kategorie
@@ -136,7 +135,7 @@ Každá položka Marketplace může zahrnovat různé odkazy na další obsah. O
 
 | Název | Požaduje se | Typ | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |Řetězec |Nesmí být delší než 64 znaků. | |
+| Zobrazovaný název |X |Řetězec |Nesmí být delší než 64 znaků. | |
 | URI |X |URI | | |
 
 ### <a name="additional-properties"></a>Další vlastnosti
@@ -144,7 +143,7 @@ Kromě předchozích metadata může poskytovat autoři Marketplace. data pár v
 
 | Název | Požaduje se | Typ | Omezení | Popis |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |Řetězec |Maximální povolenou délku 25 znaků | |
+| Zobrazovaný název |X |Řetězec |Maximální povolenou délku 25 znaků | |
 | Hodnota |X |Řetězec |Maximálně 30 znaků | |
 
 ### <a name="html-sanitization"></a>Čištění HTML

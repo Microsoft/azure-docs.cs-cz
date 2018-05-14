@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: dcfc295de39e909bf157edee4fec1ba51a583750
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8e83eb161f487a73d5984425e2c24993006a08a5
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
 Microsoft identit a přístupu řešení Nápověda pro správu IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu, povolení další úrovně ověřování, jako je vícefaktorové ověřování a zásady podmíněného přístupu. Monitorování podezřelé aktivity přes pokročilé zabezpečení vytváření sestav a auditování, výstrahy, pomáhá zmírnit potenciální potíže se zabezpečením. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování k tisícům cloudové aplikace (SaaS) a přístup k webové aplikace můžete spustit místně.
@@ -64,9 +64,9 @@ Proxy aplikace služby Azure AD umožňuje publikovat místní aplikace, jako na
 
 Další informace:
 
-* [Povolení proxy aplikace služby Azure AD](../active-directory/active-directory-application-proxy-enable.md)
+* [Povolení proxy aplikace služby Azure AD](../active-directory/manage-apps/application-proxy-enable.md)
 * [Publikování aplikací pomocí proxy aplikace služby Azure AD](../active-directory/active-directory-application-proxy-publish.md)
-* [Jednotné přihlášení pomocí Proxy aplikace](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
+* [Jednotné přihlášení pomocí Proxy aplikace](../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Práce s podmíněným přístupem](../active-directory/application-proxy-enable-remote-access-sharepoint.md)
 
 ## <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication

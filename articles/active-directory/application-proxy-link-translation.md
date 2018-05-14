@@ -15,17 +15,17 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e2057241065ecefbbcd398ddf482961359f51de7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a96296e8918c658f1dc3ebeadf01bd064e80716a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódované odkazy k aplikacím publikovaným pomocí proxy aplikace služby Azure AD
 
 Proxy aplikace služby Azure AD umožňuje místní aplikace k dispozici pro uživatele, kteří jsou vzdálené nebo na jejich vlastní zařízení. Některé aplikace, ale měla vyvinuté pomocí místních odkazů vložených v kódu HTML. Tyto odkazy správně nefungují, pokud je aplikace používat vzdáleně. Pokud máte několik místní aplikace, přejděte na sobě navzájem, uživatelé očekávají, že na odkazy pokračovat v práci při jejich nejste v kanceláři. 
 
-Ke konfiguraci externí adresy URL aplikací být stejné jako jejich interní adresy URL je nejlepší způsob, jak se ujistěte, že odkazy fungovat stejně uvnitř i vně podnikové sítě. Použití [vlastní domény](active-directory-application-proxy-custom-domains.md) nakonfigurovat tak, aby měl název vaší firemní domény místo výchozí domény proxy aplikace vašeho externí adresy URL.
+Ke konfiguraci externí adresy URL aplikací být stejné jako jejich interní adresy URL je nejlepší způsob, jak se ujistěte, že odkazy fungovat stejně uvnitř i vně podnikové sítě. Použití [vlastní domény](manage-apps/application-proxy-configure-custom-domain.md) nakonfigurovat tak, aby měl název vaší firemní domény místo výchozí domény proxy aplikace vašeho externí adresy URL.
 
 
 Pokud nemůžete použít vlastní domény ve vašem klientovi, existuje několik dalších možností pro zajištění tato funkce. Všechny tyto jsou také kompatibilní s vlastní domény a mezi sebou, takže můžete nakonfigurovat vlastní domény a další řešení v případě potřeby. 
@@ -40,7 +40,7 @@ Tyto tři funkce zachovat vaše odkazy práce bez ohledu na to, kde jsou vaši u
 
  
 > [!NOTE]
-> Poslední možnost je jenom pro klienty, kteří ať důvodu, nelze použít vlastní domény tak, aby měl stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v části Pokud [vlastních domén v Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) může fungovat pro vás. 
+> Poslední možnost je jenom pro klienty, kteří ať důvodu, nelze použít vlastní domény tak, aby měl stejné interní a externí adresy URL pro svoje aplikace. Před povolením této funkce najdete v části Pokud [vlastních domén v Azure AD Application Proxy](manage-apps/application-proxy-configure-custom-domain.md) může fungovat pro vás. 
 
 >Nebo, pokud je aplikace, budete muset nakonfigurovat s odkazem překlad služby SharePoint, najdete v části [konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) jiný způsob mapování odkazy. 
 
@@ -118,6 +118,6 @@ Teď když vaši uživatelé přístup k této aplikaci, proxy server automatick
 Chceme, abyste Ujistěte se, tato funkce fungovat pro všechny aplikace. Jsme hledání více než 30 značky v kódu HTML a CSS. Pokud máte příkladem generovaného odkazy, které nejsou se překlad vztahuje, pošlete fragment kódu do [zpětnou vazbu Proxy aplikací](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Další postup
-[Použití vlastních domén s Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md) mít stejnou interní a externí adresu URL
+[Použití vlastních domén s Azure AD Application Proxy](manage-apps/application-proxy-configure-custom-domain.md) mít stejnou interní a externí adresu URL
 
 [Konfigurace mapování alternativních adres URL pro službu SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

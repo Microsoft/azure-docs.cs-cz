@@ -3,7 +3,7 @@ title: Importovat a exportovat soubor zóny domény do Azure DNS pomocí Azure C
 description: Zjistěte, jak importovat a exportovat souboru zóny DNS do Azure DNS pomocí Azure CLI 2.0
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: f5797782-3005-4663-a488-ac0089809010
 ms.service: dns
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: gwallace
-ms.openlocfilehash: 2bd833ab7eb8c7888228a556acdb8b2a24214cd9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: kumud
+ms.openlocfilehash: 3aee4e20b43d946101e692f0dca76b07e04dbb7a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Import a export souboru zóny DNS pomocí Azure CLI 2.0 
 
@@ -172,7 +172,7 @@ Po ověření, že správně naimportované zóny, potřebujete aktualizovat del
 Formát příkazu příkazového řádku Azure k importu zóny DNS je:
 
 ```azurecli
-az network dns zone export -g <resource group> -z <zone name> -f <zone file name>
+az network dns zone export -g <resource group> -n <zone name> -f <zone file name>
 ```
 
 Hodnoty:

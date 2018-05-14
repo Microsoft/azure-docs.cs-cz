@@ -3,7 +3,7 @@ title: Obnovte přístup na virtuální počítač Azure Linux | Microsoft Docs
 description: Jak spravovat administrativní uživatele a obnovte přístup na virtuální počítače s Linuxem pomocí rozšíření VMAccess a 2.0 rozhraní příkazového řádku Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: danielsollondon
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,19 +13,39 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 08/04/2017
-ms.author: danlep
-ms.openlocfilehash: a364d3c8c0297d988bc6a31b31921b49e70394bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 05/10/2018
+ms.author: danis
+ms.openlocfilehash: b90b7948d10ff91f3c63b772bc302b1def416f2b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Spravovat administrativní uživatele, SSH a zkontrolujte nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess 2.0 rozhraní příkazového řádku Azure
+
+## <a name="overview"></a>Přehled
+
 Disk ve virtuálním počítačům s Linuxem se zobrazuje chyby. Nějakým způsobem resetování hesla kořenového virtuálním počítačům s Linuxem nebo omylem odstraněné svůj privátní klíč SSH. V takovém případě zpět v dny v datovém centru potřebovali byste existuje jednotky a pak otevřete KVM získat z konzoly serveru. Rozšíření Azure VMAccess si můžete představit jako že KVM přepínačů, která umožňuje přístup ke konzole resetovat přístup do systému Linux nebo provést údržbu na úrovni disku.
 
-Tento článek ukazuje, jak používat Azure rozšíření VMAccess k kontrola opravit disk, obnovte přístup uživatele, spravovat účty administrativních uživatelů nebo aktualizovat konfiguraci SSH na Linux. K provedení těchto kroků můžete také využít [Azure CLI 1.0](../linux/using-vmaccess-extension-nodejs.md).
+Tento článek ukazuje, jak používat rozšíření VMAccess Azure zkontrolujte nebo opravit disk, resetovat přístupu uživatele, spravovat účty administrativních uživatelů, nebo aktualizovat konfiguraci SSH na Linux, když běží jako virtuální počítače Azure Resource Manager. Pokud potřebujete spravovat klasické virtuální počítače – můžete postupujte podle pokynů v [classic dokumentace virtuálních počítačů](../linux/classic/reset-access-classic.md). 
 
+## <a name="prerequisites"></a>Požadavky
+
+### <a name="operating-system"></a>Operační systém
+
+Rozšíření pro přístup virtuálních počítačů můžete spustit proti tyto distribucí Linux:
+
+
+| Distribuce | Verze |
+|---|---|
+| Ubuntu | 16.04 LTS, 14.04 LTS a 12.04 LTS |
+| Debian | Debian 7.9 +, 8.2 + |
+| RedHat | RHEL 6.7 +, 7.1 + |
+| Oracle Linux | 6.4+, 7.0+ |
+| SuSE | 11 a 12 |
+| OpenSuse | openSUSE přestupného 42.2 + |
+| CentOS | CentOS 6.3 + 7.0 + |
+| CoreOS | 494.4.0+ |
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>Způsoby použití rozšíření VMAccess
 Existují dva způsoby, které můžete rozšíření VMAccess na virtuální počítače Linux:

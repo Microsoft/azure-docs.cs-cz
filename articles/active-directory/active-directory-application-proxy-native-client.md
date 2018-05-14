@@ -15,8 +15,8 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a925f8be619d0a4606205eeba5f78b2e8ba8a188
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 79ee3aca783d7c29959c2730696a313bf821b3bc
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -34,7 +34,7 @@ Knihovnu pro ověřování Azure AD, který se stará o ověřování a podporuj
 Tento článek vás provede čtyři kroky k publikování nativní aplikace s Proxy aplikace a knihovna ověřování Azure AD. 
 
 ## <a name="step-1-publish-your-application"></a>Krok 1: Publikování aplikace
-Publikování aplikace proxy, stejně jako všechny ostatní aplikace a přiřadit uživatelům přístup k aplikaci. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md).
+Publikování aplikace proxy, stejně jako všechny ostatní aplikace a přiřadit uživatelům přístup k aplikaci. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md).
 
 ## <a name="step-2-configure-your-application"></a>Krok 2: Konfigurace aplikace
 Nativní aplikace nakonfigurujte následujícím způsobem:
@@ -47,7 +47,7 @@ Nativní aplikace nakonfigurujte následujícím způsobem:
    ![Vytvořit novou registraci aplikace](./media/active-directory-application-proxy-native-client/create.png)
 5. Vyberte **Vytvořit**.
 
-Podrobné informace o vytváření nové registrace aplikace, najdete v části [integrace aplikací s Azure Active Directory](.//develop/active-directory-integrating-applications.md).
+Podrobné informace o vytváření nové registrace aplikace, najdete v části [integrace aplikací s Azure Active Directory](./develop/active-directory-integrating-applications.md).
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>Krok 3: Udělení přístupu k ostatním aplikacím
@@ -97,4 +97,4 @@ Jakmile upravíte knihovnu ADAL s těmito parametry, by uživatelé mohli k ově
 
 Další informace o toku nativní aplikace najdete v tématu [nativní aplikace za účelem webového rozhraní API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)
 
-Další informace o nastavení [jednotného přihlašování pro Proxy aplikace](application-proxy-sso-overview.md)
+Další informace o nastavení [jednotného přihlašování pro Proxy aplikace](manage-apps/application-proxy-single-sign-on.md)

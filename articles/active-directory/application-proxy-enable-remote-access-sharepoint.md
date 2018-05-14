@@ -15,11 +15,11 @@ ms.date: 09/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5d61ad93ad5e3ab7fdf83c1cef2fe6770089112f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74c99351656a685077bf4ea7714e6804274d396c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolte vzdálený přístup na SharePoint s proxy aplikace služby Azure AD
 
@@ -162,7 +162,7 @@ Pokud chcete nakonfigurovat použitím KCD, opakujte pro každý počítač kone
 
 Teď, když jste povolili SharePoint pro protokolu Kerberos a použitím nakonfigurované KCD, jste připraveni publikovat farmy služby SharePoint pro vzdálený přístup prostřednictvím proxy aplikace služby Azure AD.
 
-1. Publikování webu služby SharePoint s následujícím nastavením. Podrobné pokyny najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md). 
+1. Publikování webu služby SharePoint s následujícím nastavením. Podrobné pokyny najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
    - **Interní adresa URL**: adresa URL webu služby SharePoint interně jako **https://SharePoint/**. V tomto příkladu, nezapomeňte použít **https**
    - **Metoda předběžného ověření**: Azure Active Directory
    - **Převede adresu URL v hlavičkách**: Ne
@@ -204,6 +204,6 @@ Nyní můžete k webu služby SharePoint externě prostřednictvím proxy aplika
 
 ## <a name="next-steps"></a>Další postup
 
-- [Práce s vlastní domény v Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md)
+- [Práce s vlastní domény v Azure AD Application Proxy](manage-apps/application-proxy-configure-custom-domain.md)
 - [Pochopení konektory proxy aplikace služby Azure AD](application-proxy-understand-connectors.md)
 

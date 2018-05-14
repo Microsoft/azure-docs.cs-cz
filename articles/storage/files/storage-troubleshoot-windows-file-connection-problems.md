@@ -1,8 +1,8 @@
 ---
-title: "Řešení potíží s Azure soubory v systému Windows | Microsoft Docs"
-description: "Řešení potíží s Azure soubory v systému Windows"
+title: Řešení potíží s Azure soubory v systému Windows | Microsoft Docs
+description: Řešení potíží s Azure soubory v systému Windows
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 073d163e139c9fd400e4b3177c26d4ddb6228ed0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 78170df99e9ced304bebd9112d79b5c7e402f218
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží s Azure soubory v systému Windows
 
@@ -51,15 +51,15 @@ Připojení z klienta, která provádí jednu z těchto možností:
 
 Systémová chyba 53 nebo systémové chybě 67 může dojít, pokud je blokován port 445 odchozí komunikaci datacentrum Azure Files. Chcete-li zobrazit seznam poskytovatelů internetových služeb, které povolí nebo zakáže přístup z port 445, přejděte na [TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Zjistit, jestli je z důvodu za zpráva "Chyba systému 53", můžete Portqry dotazovat TCP:445 koncový bod. Pokud koncový bod TCP:445 se zobrazí jako filtrované, TCP port je blokován. Tady je příklad dotazu:
+Zjistit, jestli je z důvodu za zpráva "Chyba systému 53", můžete Portqry dotazovat TCP:445 koncový bod. Pokud koncový bod TCP:445 se zobrazí jako filtrované, TCP port je blokován. Zde je příklad dotazu:
 
   `g:\DataDump\Tools\Portqry>PortQry.exe -n [storage account name].file.core.windows.net -p TCP -e 445`
 
-Pokud TCP port 445 je blokován pravidlem v síťové cestě, zobrazí se následující výstup:
+Pokud je port TCP 445 blokovaný pravidlem na síťové cestě, uvidíte následující výsledek:
 
   `TCP port 445 (microsoft-ds service): FILTERED`
 
-Další informace o tom, jak používat Portqry najdete v tématu [Popis nástroje příkazového řádku Portqry.exe](https://support.microsoft.com/help/310099).
+Další informace o použití Portqry najdete v tématu [popisujícím nástroj příkazového řádku Portqry.exe](https://support.microsoft.com/help/310099).
 
 ### <a name="solution-for-cause-2"></a>Řešení pro příčina 2
 
@@ -188,7 +188,7 @@ Kopírování souboru přes síť, můžete ji nejprve dešifrovat. Použijte je
 - Nastavte následující klíč registru:
   - Path = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ hodnoty = DWORD
-  - Name = CopyFileAllowDecryptedRemoteDestination
+  - Název = CopyFileAllowDecryptedRemoteDestination
   - Hodnota = 1
 
 Upozorňujeme, že nastavení klíče registru ovlivní všechny operace kopírování, které jsou vytvářeny do sdílené síťové složky.

@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: aec87625cd00b11b41c248eecf7af650ae57036f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0946d5234292cfb69a7e9b5bc7846e6acf94dff4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Znovu nastavte ochranu počítačů z Azure do místního serveru
 
@@ -79,7 +79,7 @@ Po vytvoření hlavní cílový server, postupujte takto:
     - Svazek pro uchovávání dat výchozí pro Windows je svazek R.
     - Výchozí svazek pro uchovávání dat pro Linux je /mnt/retention.
 - Je nutné přidat na nový disk, pokud používáte existující počítač proces serveru nebo konfigurační server nebo škálování nebo proces serveru/hlavní cílový server počítač. Nový disk by měl splňovat požadavky na předchozí. Pokud jednotka pro uchování není dostupná, nezobrazí se v rozevíracím seznamu výběru na portálu. Po přidání k hlavnímu cíli místní jednotku, bude trvat až 15 minut na jednotce, než se objeví ve výběru na portálu. Můžete taky aktualizovat konfigurační server, pokud jednotka nezobrazí po 15 minutách.
-- Nainstalujte nástroje VMware na hlavním cílovém serveru. Bez nástroje VMware nelze zjistit datastores na hostiteli ESXi na hlavním cíli.
+- Nainstalujte nástroje VMware nebo nástroje pro otevření virtuálního počítače na hlavním cílovém serveru. Bez nástroje nelze zjistit datastores na hostiteli ESXi na hlavním cíli.
 - Nastavte `disk.EnableUUID=true` nastavení v konfigurační parametry hlavního cílového virtuálního počítače v prostředí VMware. Pokud tento řádek neexistuje, přidejte ji. Toto nastavení je nutné k zajištění konzistentní UUID disku virtuálního počítače (VMDK) tak, aby ji připojí správně.
 - Hostiteli ESX, ve které je vytvořena na hlavním cíli musí mít alespoň jeden VMFS úložiště k němu připojen. Pokud je none, **úložiště** vstup na stránce opětovné ochrany bude prázdný a nemůže pokračovat.
 - Hlavní cílový server nemůže mít snímky na discích. Pokud existují snímky, vytvoření a navrácení služeb po obnovení nezdaří.

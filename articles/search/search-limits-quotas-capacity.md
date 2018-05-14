@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby ve službě Azure Search
 Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a další objekty závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) v **volné**, **základní**, nebo **Standardní** cenové úrovně.
@@ -71,7 +71,7 @@ Pro služby vztahují omezení dokumentů vztahuje platí následující maximá
 
 |  Free | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
+|  10 000 |1 milion |15 milionů na oddíl nebo 180 milionů na službu |60 milionů na oddíl nebo 720 milionů na službu |120 milionů na oddíl nebo 1,4 miliard na službu |1 milion na index nebo 200 milionů na oddíl |
 
 > [!Note] 
 > Pro služby S3 s vysokou hustotou vytvořené po pozdní 2017 200 milionů dokumentů na oddíl odebral ale 1 milion dokumentů na index limit zůstanou.
@@ -87,12 +87,13 @@ Snížení velikosti dokumentu, nezapomeňte vyloučit-dotazovatelný data z po�
 
 ## <a name="indexer-limits"></a>Indexer omezení
 
-Základní služby vytvořené po pozdní 2017 mít vyšší limit 15 indexy, indexery a zdroje dat.
+Základní služby vytvořené po pozdní 2017 mít zvýšená maximálně 15 indexy, zdrojů dat, skillsets a indexery.
 
 | Prostředek | Volné&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |
 | Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
+| Maximální skillsets |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
 | Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |neuvedeno |
 | Maximální dobu běhu | 1 – 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |
 | Indexer objektů blob: velikost maximální objektu blob, MB |16 |16 |128 |256 |256 |neuvedeno  |

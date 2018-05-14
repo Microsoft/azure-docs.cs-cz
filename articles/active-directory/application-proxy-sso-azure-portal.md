@@ -15,19 +15,19 @@ ms.date: 07/20/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3c69450601d84f62d05ca6cc8930fd8e9a8e4203
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 77e7288060abd2577867023a777eb3bdd4331e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Heslo vaulting pro jednotné přihlašování pomocí Proxy aplikace
 
 Azure Proxy aplikace Active Directory vám pomůže zlepšit produktivitu tím, že publikujete místní aplikace tak, aby vzdálení zaměstnanci mít bezpečný přístup, je příliš. Na portálu Azure můžete také nastavíte jednotné přihlašování (SSO) pro tyto aplikace. Uživatelé potřebují pouze k ověření s Azure AD a přístupem podniková aplikace bez nutnosti znovu přihlásit.
 
-Proxy aplikací podporuje několik [jednotné přihlašování režimy](application-proxy-sso-overview.md). Založené na heslech přihlášení je určený pro aplikace, které používají kombinace uživatelského jména a hesla pro ověřování. Když konfigurujete založené na heslech přihlašování pro aplikace, uživatelé musí přihlásit k aplikaci místně jednou. Potom Azure Active Directory ukládá přihlašovací informace a automaticky poskytuje k aplikaci při vaši uživatelé k němu přístup vzdáleně. 
+Proxy aplikací podporuje několik [jednotné přihlašování režimy](manage-apps/application-proxy-single-sign-on.md). Založené na heslech přihlášení je určený pro aplikace, které používají kombinace uživatelského jména a hesla pro ověřování. Když konfigurujete založené na heslech přihlašování pro aplikace, uživatelé musí přihlásit k aplikaci místně jednou. Potom Azure Active Directory ukládá přihlašovací informace a automaticky poskytuje k aplikaci při vaši uživatelé k němu přístup vzdáleně. 
 
-Má už máte publikována a testování vaší aplikace pomocí Proxy aplikací. Pokud ne, postupujte podle kroků v [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md) pak se vraťte se sem. 
+Má už máte publikována a testování vaší aplikace pomocí Proxy aplikací. Pokud ne, postupujte podle kroků v [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md) pak se vraťte se sem. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Nastavit heslo vaulting pro vaši aplikaci
 
@@ -55,5 +55,5 @@ Přejděte na externí adresu URL, kterou jste nakonfigurovali pro vzdálený p�
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si informace o další způsoby, jak implementovat [jednotné přihlašování pomocí Proxy aplikace](application-proxy-sso-overview.md)
+- Přečtěte si informace o další způsoby, jak implementovat [jednotné přihlašování pomocí Proxy aplikace](manage-apps/application-proxy-single-sign-on.md)
 - Další informace o [důležité informace o zabezpečení pro přístup k aplikacím vzdáleně pomocí proxy aplikace služby Azure AD](application-proxy-security-considerations.md)

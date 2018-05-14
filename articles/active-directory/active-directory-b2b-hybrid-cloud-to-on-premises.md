@@ -10,11 +10,11 @@ ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 1c13da977021538651084ec4462cf8bd32f131d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 028bbb28c7091db3c3ebea321ca2e167b999949d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B ve službě Azure AD přístup k místním aplikacím
 
@@ -27,7 +27,7 @@ Pokud vaše místní aplikace používá ověřování založené na SAML, můž
 Proveďte obě z následujících akcí:
 
 - Integrace aplikace SAML pomocí šablony aplikace bez galerie, jak je popsáno v [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](active-directory-saas-custom-apps.md). Nezapomeňte si všimněte si, co můžete použít pro **přihlašovací adresa URL** hodnotu.
--  Pomocí Azure AD Application Proxy publikovat místní aplikace s **Azure Active Directory** konfigurované jako zdroj ověřování. Pokyny najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md). 
+-  Pomocí Azure AD Application Proxy publikovat místní aplikace s **Azure Active Directory** konfigurované jako zdroj ověřování. Pokyny najdete v tématu [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md). 
 
    Když nakonfigurujete **interní adresa Url** nastavení, použijte adresu URL přihlašování, kterou jste zadali v šabloně bez Galerie aplikace. Tímto způsobem můžete uživatelům přístup k aplikaci z mimo hranice organizace. Proxy aplikací se provádí SAML jednotné přihlašování pro místní aplikace.
  
@@ -37,8 +37,8 @@ Proveďte obě z následujících akcí:
 
 Chcete-li B2B uživatelům poskytnout přístup k místním aplikacím, které jsou zabezpečené integrované ověřování systému Windows a vynuceného delegování protokolu Kerberos, je třeba následující součásti:
 
-- **Ověřování prostřednictvím proxy aplikace služby Azure AD**. K ověření místní aplikace musí mít uživatelé B2B. To pokud chcete udělat, musíte publikovat místní aplikace prostřednictvím Azure AD Application Proxy. Další informace najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](active-directory-application-proxy-enable.md) a [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md).
-- **Autorizace prostřednictvím objektu B2B uživatele v adresáři místní**. Aplikace musí být schopný provádět kontroly přístupu uživatele a udělit přístup k prostředkům správné. Integrované ověřování systému Windows a použitím KCD vyžadují objekt uživatele v místní Windows Server Active Directory k dokončení této autorizace. Jak je popsáno v [jak jednotné přihlašování s použitím KCD funguje](active-directory-application-proxy-sso-using-kcd.md#how-single-sign-on-with-kcd-works), musí tento objekt uživatele k zosobnění uživatele a získat token protokolu Kerberos na aplikaci Proxy aplikace. 
+- **Ověřování prostřednictvím proxy aplikace služby Azure AD**. K ověření místní aplikace musí mít uživatelé B2B. To pokud chcete udělat, musíte publikovat místní aplikace prostřednictvím Azure AD Application Proxy. Další informace najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](manage-apps/application-proxy-enable.md) a [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
+- **Autorizace prostřednictvím objektu B2B uživatele v adresáři místní**. Aplikace musí být schopný provádět kontroly přístupu uživatele a udělit přístup k prostředkům správné. Integrované ověřování systému Windows a použitím KCD vyžadují objekt uživatele v místní Windows Server Active Directory k dokončení této autorizace. Jak je popsáno v [jak jednotné přihlašování s použitím KCD funguje](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), musí tento objekt uživatele k zosobnění uživatele a získat token protokolu Kerberos na aplikaci Proxy aplikace. 
 
    Pro uživatelský scénář B2B existují dvě metody, které jsou k dispozici, můžete použít k vytvoření hosta uživatelské objekty, které jsou požadovány pro autorizaci v místním adresáři:
 

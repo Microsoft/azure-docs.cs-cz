@@ -10,17 +10,17 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ffc8be29cecac05fda440eaf72b51ffc6f024424
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 485f761e22871396dace71333868ba7712e41f67
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Vytvoření aplikace blockchain v Azure Blockchain Workbench
 
 Azure Blockchain Workbench můžete použít k vytvoření blockchain aplikací, které představují více stran pracovní postupy definované konfigurací a kódem inteligentní kontrakt.
 
-Dozvíte, jak:
+Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nakonfigurovat aplikaci blockchain
@@ -35,6 +35,8 @@ Dozvíte, jak:
 * Účet správce Blockchain Workbench. Další informace najdete v tématu Přidání [Blockchain Workbench správci v Azure Blockchain Workbench](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
 
 Umožňuje vytvořit základní aplikaci, ve kterém žadatele o odešle požadavek a respondér odeslání odpovědi na požadavek. Například může být žádost, "Hello, jak jste?" a odpovědi může být, "Jsem skvělé!". Na základní blockchain se zaznamenávají požadavku a odpovědi. 
+
+Postupujte podle kroků pro vytvoření souborů aplikace, nebo můžete [ukázku stáhnout z webu GitHub](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain). 
 
 ## <a name="configuration-file"></a>Konfigurační soubor
 
@@ -398,4 +400,7 @@ Další informace o správě uživatelů v Blockchain Workbench najdete v témat
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste vytvořili aplikaci, zkuste [pomocí aplikace blockchain](blockchain-workbench-use.md).
+V tomto článku postupy: vytvoření základní aplikace žádostí a odpovědí. Další informace o použití aplikace, pokračujte další postupy článek.
+
+> [!div class="nextstepaction"]
+> [Pomocí aplikace blockchain](blockchain-workbench-use.md)

@@ -1,24 +1,24 @@
 ---
-title: "Porozumět restart systému pro virtuální počítač Azure s Linuxem | Microsoft Docs"
-description: "Zobrazí události, které může způsobit virtuálního počítače s Linuxem na restartování"
+title: Porozumět restart systému pro virtuální počítač Azure s Linuxem | Microsoft Docs
+description: Zobrazí události, které může způsobit virtuálního počítače s Linuxem na restartování
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: ee06a8647147dac488d2fe8bcca911a7149e9b35
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: bb0cee9a3bbd9f680c123fd9adbc2eae1f407b48
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Porozumět restart systému pro virtuální počítač Azure
 

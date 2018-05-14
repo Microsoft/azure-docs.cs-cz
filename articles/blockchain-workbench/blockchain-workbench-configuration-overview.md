@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 5569a7608a61b4e79a03264e0ccf62682782264b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6318b6aafda972242239ce91abb0f67a15721e1e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure referenci na konfigurační Blockchain Workbench
 
@@ -41,7 +41,7 @@ Blockchain aplikace obsahuje metadata, pracovní postupy a uživatelské role ko
 | Pole | Popis | Požaduje se |
 |-------|-------------|:--------:|
 | ApplicationName | Jedinečný název aplikace. Odpovídající inteligentní kontrakt musíte použít stejné **ApplicationName** pro třídu použít kontrakt.  | Ano |
-| displayName | Popisný Zobrazovaný název aplikace. | Ano |
+| Zobrazovaný název | Popisný Zobrazovaný název aplikace. | Ano |
 | Popis | Popis aplikace. | Ne |
 | ApplicationRoles | Kolekce [ApplicationRoles](#application-roles). Role uživatele, kteří mohou fungovat nebo účast v aplikaci.  | Ano |
 | Pracovní postupy | Kolekce [pracovních](#workflows). Každý pracovní postup funguje jako stavový stroj k řízení toku obchodní logiku. | Ano |
@@ -55,7 +55,7 @@ Obchodní logiku aplikace je možné modelovat jako stavu počítače, kde akce 
 | Pole | Popis | Požaduje se |
 |-------|-------------|:--------:|
 | Název | Název jedinečný pracovního postupu. Odpovídající inteligentní kontrakt musíte použít stejné **název** pro třídu použít kontrakt. | Ano |
-| displayName | Popisný Zobrazovaný název pracovního postupu. | Ano |
+| Zobrazovaný název | Popisný Zobrazovaný název pracovního postupu. | Ano |
 | Popis | Popis pracovního postupu. | Ne |
 | Iniciátory | Kolekce [ApplicationRoles](#application-roles). Role, které jsou přiřazené k uživatelům, kteří mají oprávnění k vytvoření kontraktů v pracovním postupu. | Ano |
 | StartState | Název počátečního stavu pracovního postupu. | Ano |
@@ -124,7 +124,7 @@ Definuje funkce, které mohou být provedeny pro pracovní postup.
 | Pole | Popis | Požaduje se |
 |-------|-------------|:--------:|
 | Název | Jedinečný název funkce. Odpovídající inteligentní kontrakt musíte použít stejné **název** pro příslušné funkce. | Ano |
-| displayName | Popisný Zobrazovaný název funkce. | Ano |
+| Zobrazovaný název | Popisný Zobrazovaný název funkce. | Ano |
 | Popis | Popis funkce | Ne |
 | Parametry | Kolekce [identifikátory](#identifiers) odpovídající parametry funkce. | Ano |
 
@@ -172,7 +172,7 @@ Kolekce jedinečné stavy v pracovním postupu. Každý stav zaznamená krok v t
 | Pole | Popis | Požaduje se |
 |-------|-------------|:--------:|
 | Název | Jedinečný název stavu. Odpovídající inteligentní kontrakt musíte použít stejné **název** pro příslušné stavu. | Ano |
-| displayName | Uživatelsky přívětivý název zobrazení stavu. | Ano |
+| Zobrazovaný název | Uživatelsky přívětivý název zobrazení stavu. | Ano |
 | Popis | Popis stavu. | Ne |
 | Procento dokončení | Celočíselná hodnota zobrazí v uživatelském rozhraní Blockchain Workbench zobrazíte průběh v rámci toku řízení obchodní logiku. | Ano |
 | Styl | Pomocný parametr Visual označující, zda stav představuje úspěch nebo neúspěch stavu. Existují dvě platné hodnoty: `Success` nebo `Failure`. | Ano |
@@ -242,7 +242,7 @@ Dostupné akce pro další stav. Jeden nebo více rolí uživatele, může prov�
 |-------|-------------|:--------:|
 | AllowedRoles | Seznam aplikací rolí povoleno zahájit přechodu. Všichni uživatelé v roli možné provést akci. | Ne |
 | AllowedInstanceRoles | Seznam rolí uživatelů účasti nebo zadaný v inteligentní kontraktu povoleno zahájit přechodu. Instance role jsou definovány v **vlastnosti** v rámci pracovních postupů. Tito uživatelé představují uživatele účasti nebo zadaný v inteligentní kontraktu a všech uživatelů, typu role. | Ne |
-| displayName | Uživatelsky přívětivý název zobrazení přechodu. | Ano |
+| Zobrazovaný název | Uživatelsky přívětivý název zobrazení přechodu. | Ano |
 | Popis | Popis přechodu. | Ne |
 | Funkce | Název funkce zahájíte přechodu. | Ano |
 | NextStates | Kolekce možných stavů další po úspěšném převodu. | Ano |
@@ -309,7 +309,7 @@ Identifikátory představují kolekci informace, které slouží k popisu vlastn
 | Pole | Popis | Požaduje se |
 |-------|-------------|:--------:|
 | Název | Jedinečný název vlastnosti nebo parametr. Odpovídající inteligentní kontrakt musíte použít stejné **název** pro příslušné vlastnosti nebo parametr. | Ano |
-| displayName | Popisný Zobrazovaný název vlastnosti nebo parametr. | Ano |
+| Zobrazovaný název | Popisný Zobrazovaný název vlastnosti nebo parametr. | Ano |
 | Popis | Popis vlastnosti nebo parametr. | Ne |
 
 ### <a name="identifiers-example"></a>Příklad identifikátory
@@ -491,5 +491,6 @@ V následujícím příkladu definuje základních požadavků a odpovědí apli
 ```
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení Azure Blockchain Workbench](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [Nasazení služby Azure Blockchain Workbench](blockchain-workbench-deploy.md)
 

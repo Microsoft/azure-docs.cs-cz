@@ -15,11 +15,11 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 14e2b82b5c32e1b36bf730b7b834c9b8ad124629
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c7f27d3fd8a5785017d580df02007abaac503c39
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Pochopení konektory proxy aplikace služby Azure AD
 
@@ -33,7 +33,7 @@ Konektory jsou lightweight agenti, kteří se nacházejí na místě a usnadnit 
 
 Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat minimálně jeden konektor, ale doporučujeme dvou nebo více větší odolnost. Konektor nainstalujte na počítač 2016 nebo Windows Server 2012 R2. Konektor musí být schopen komunikovat s Proxy aplikace služby a také místní aplikace, které budete publikovat. 
 
-Další informace o síťové požadavky u serveru konektoru najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](active-directory-application-proxy-enable.md).
+Další informace o síťové požadavky u serveru konektoru najdete v tématu [začít pracovat s Proxy aplikace a nainstalujte konektor](manage-apps/application-proxy-enable.md).
 
 ## <a name="maintenance"></a>Údržba
 Konektory a služba postará o všech úloh vysoké dostupnosti. Dají se přidat nebo odebrat dynamicky. Pokaždé, když dorazí novou žádost o je směrována na jednu z konektory, které aktuálně nejsou k dispozici. Pokud konektor není dočasně k dispozici, není reagovat na tento provoz.
@@ -50,7 +50,7 @@ Nemáte ručně odstranit konektory, které se nepoužívá. Konektor je spušt�
 
 ## <a name="automatic-updates"></a>Automatické aktualizace
 
-Azure AD poskytuje funkce Automatické aktualizace pro všechny konektory, které nasadíte. Tak dlouho, dokud se službou Application Proxy Connector Updater, vaše konektory aktualizovat automaticky. Pokud nevidíte konektor aktualizační službu na serveru, budete muset [přeinstalování vašeho konektoru](active-directory-application-proxy-enable.md) získat žádné aktualizace. 
+Azure AD poskytuje funkce Automatické aktualizace pro všechny konektory, které nasadíte. Tak dlouho, dokud se službou Application Proxy Connector Updater, vaše konektory aktualizovat automaticky. Pokud nevidíte konektor aktualizační službu na serveru, budete muset [přeinstalování vašeho konektoru](manage-apps/application-proxy-enable.md) získat žádné aktualizace. 
 
 Pokud nechcete čekat na automatické aktualizace se do vašeho konektoru, můžete provést ruční upgrade. Přejděte na [stránky pro stažení konektoru](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serveru, kde je vaše konektor najít a vyberte **Stáhnout**. Tento proces se spustí upgrade pro místní konektor. 
 
@@ -123,7 +123,7 @@ Konektory může být taky připojen do domény nebo doménové struktury, kter�
 
 Obvykle nasazení konektoru je jednoduchý a nepotřebuje žádnou zvláštní konfiguraci. Existují však některé jedinečné podmínky, které musí vzít v úvahu:
 
-* Organizace, které omezit odchozí přenosy musí [otevřete požadované porty](active-directory-application-proxy-enable.md#open-your-ports).
+* Organizace, které omezit odchozí přenosy musí [otevřete požadované porty](manage-apps/application-proxy-enable.md#open-your-ports).
 * Počítače kompatibilní se standardem FIPS, bude pravděpodobně nutné změnit jejich konfigurace povolit konektor procesy generovat a ukládat certifikát.
 * Organizace, které zamknout jejich prostředí na základě procesů, které vydávají požadavky sítě mají a ujistěte se, že jsou povoleny obě služby konektoru pro přístup k všechny požadované porty a adresy IP.
 * V některých případech může odchozí dopředného proxy přerušení ověřování obousměrný certifikátu a způsobit selhání komunikace.

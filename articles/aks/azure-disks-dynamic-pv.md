@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: c9f3c851507c1120670f513479bc448fed656141
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trvalé svazky s disky systému Azure
 
@@ -60,10 +60,10 @@ spec:
       storage: 5Gi
 ```
 
-Vytvoření svazku trvalé deklarace s [kubectl vytvořit] [ kubectl-create] příkaz.
+Vytvoření svazku trvalé deklarace s [kubectl použít] [ kubectl-apply] příkaz.
 
 ```azurecli-interactive
-kubectl create -f azure-premimum.yaml
+kubectl apply -f azure-premimum.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>Použití trvalé svazku
@@ -90,10 +90,10 @@ spec:
         claimName: azure-managed-disk
 ```
 
-Vytvoření pod s [kubectl vytvořit] [ kubectl-create] příkaz.
+Vytvoření pod s [kubectl použít] [ kubectl-apply] příkaz.
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-disk.yaml
+kubectl apply -f azure-pvc-disk.yaml
 ```
 
 Nyní máte spuštěný pod s Azure diskem připojené `/mnt/azure` adresáře. Tato konfigurace si můžete prohlédnout při kontrole vaší pod prostřednictvím `kubectl describe pod mypod`.
@@ -107,7 +107,7 @@ Další informace o Kubernetes trvalé svazky s využitím disky systému Azure.
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/

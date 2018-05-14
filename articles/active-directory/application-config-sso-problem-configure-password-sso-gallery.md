@@ -1,11 +1,11 @@
 ---
-title: "Problém konfigurace hesla jednotné přihlašování pro aplikaci Galerie Azure AD | Microsoft Docs"
-description: "Pochopení tučné osoby běžné problémy při konfiguraci hesla jednotné přihlašování pro aplikace, které jsou již uveden v galerii aplikací Azure AD"
+title: Problém konfigurace hesla jednotné přihlašování pro aplikaci Galerie Azure AD | Microsoft Docs
+description: Pochopení tučné osoby běžné problémy při konfiguraci hesla jednotné přihlašování pro aplikace, které jsou již uveden v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9550b28b373a59a6d41cee487aed9afc6c464479
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f19b684a6c7426134844a2657b886280af2f061c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém konfigurace hesla jednotné přihlašování pro aplikaci Galerie Azure AD
 
-Tento článek vám pomůže lépe porozumět tučné osoby běžné problémy při konfiguraci **heslo jednotné přihlašování** pomocí aplikace pro galerii Azure AD.
+Tento článek vám pomůže pochopit tučné osoby běžné problémy při konfiguraci **heslo jednotné přihlašování** pomocí aplikace pro galerii Azure AD.
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Přihlašovací údaje jsou vyplněna, ale je odeslat není rozšíření
 
-K tomu obvykle dochází, pokud dodavatele aplikace došlo ke změně jejich přihlašovací stránce nedávno, chcete-li přidat pole, změňte základní identifikátor, že jsme použili rozpoznání pole uživatelské jméno a heslo nebo upravit, jak přihlašovací prostředí funguje pro svou aplikaci. V mnoha případech naštěstí Microsoft můžete pracovat s dodavateli aplikace rychle vyřešit tyto problémy.
+Tento problém obvykle se stane, když má změnit jejich přihlašovací stránce nedávno Chcete-li přidat pole, změnit identifikátor používaný pro zjišťování pole uživatelské jméno a heslo nebo změnit, jak přihlašování funguje pro svou aplikaci dodavatele aplikace. V mnoha případech naštěstí Microsoft můžete pracovat s dodavateli aplikace rychle vyřešit tyto problémy.
 
-Když společnost Microsoft nemá technologie, které automaticky rozpoznat, kdy se tyto integrace přerušení, ale někdy Nedokážeme najít tyto problémy hned nebo jejich trvat delší dobu opravit. V případě, že pokud jeden z těchto integrace nebude fungovat správně, uvítáme při otevření případu podpory, aby jsme můžete provést co nejrychleji odstraňovat.
+Zatímco Microsoft obsahuje technologie, které automaticky rozpoznat, kdy se integrace přerušení, nemusí být možné najít problémy hned nebo problémy trvat delší dobu opravit. V případě, že pokud jeden z těchto integrace nefunguje správně, otevřete případu podpory, bude co nejdříve opravena.
 
-Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) získat je spuštěna.
+**Pokud jste v kontaktu s od dodavatele této aplikace,** odesílal naše způsob, Microsoft mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) získat je spuštěna.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Přihlašovací údaje jsou vyplněny a odeslání, ale stránky označuje, že přihlašovací údaje jsou nesprávné
 
-Chcete-li vyřešit tento problém, zkontrolujte nejprve následující:
+Chcete-li vyřešit tento problém, vyzkoušejte tyto možnosti:
 
 -   Uživatel, zkuste je napřed **přihlásit k webu aplikace přímo** s přihlašovací údaje uložené pro ně.
 
-  * Pokud to funguje, pak mít uživatele, klikněte na tlačítko **aktualizovat přihlašovací údaje** na tlačítko **dlaždice aplikace** v **aplikace** části [aplikace přístupového panelu ](https://myapps.microsoft.com/) je aktualizovat na poslední známé funkční uživatelské jméno a heslo.
+  * Pokud přihlášení funguje, pak mít uživatele, klikněte na tlačítko **aktualizovat přihlašovací údaje** na tlačítko **dlaždice aplikace** v **aplikace** části [přístup k aplikaci Panel](https://myapps.microsoft.com/) je aktualizovat na poslední známé funkční uživatelské jméno a heslo.
 
    * Pokud vy nebo jiný správce pověření pro tohoto uživatele, najděte uživatele nebo skupiny aplikací přiřazení přechodem na **uživatelé a skupiny** aplikace, vyberte přiřazení a klikněte na  **Aktualizujte přihlašovací údaje** tlačítko.
 
@@ -53,11 +53,11 @@ Chcete-li vyřešit tento problém, zkontrolujte nejprve následující:
 
 -   Ujistěte se, že uživatelé nejsou pokouší přihlásit k aplikaci na přístupovém panelu při v **privátní, se službou inPrivate nebo incognito režimu**. Rozšíření přístup k panelu v těchto režimech nepodporuje.
 
-V případě, že to nefunguje, může to být případě, že došlo ke změně na straně aplikace, která má dočasně přerušený aplikace integraci s Azure AD. Například tato situace může nastat při zavádí dodavatele aplikace skript na jejich stránce, která pracuje odlišně pro ruční vs automatizovaný vstup, který spustí automatizované integrace, jako jsou vlastní, k přerušení. V mnoha případech naštěstí Microsoft můžete pracovat s dodavateli aplikace rychle vyřešit tyto problémy.
+V případě, že návrhy předchozích nefungují, může to být případě, že došlo ke změně na straně aplikace, který je dočasně rozdělit aplikace integraci s Azure AD. Například tato situace může nastat při zavádí dodavatele aplikace skript na jejich stránce, která pracuje odlišně pro ruční vs automatizovaný vstup, který spustí automatizované integrace, jako jsou vlastní, k přerušení. V mnoha případech naštěstí Microsoft můžete pracovat s dodavateli aplikace rychle vyřešit tyto problémy.
 
-Když společnost Microsoft nemá technologie, které automaticky rozpoznat, kdy se tyto integrace přerušení, ale někdy Nedokážeme najít tyto problémy hned nebo jejich trvat delší dobu opravit. V případě, že pokud jeden z těchto integrace nebude fungovat správně, uvítáme při otevření případu podpory, aby jsme můžete provést co nejrychleji odstraňovat.
+Zatímco Microsoft obsahuje technologie, které automaticky rozpoznat, kdy rozdělit integrace aplikací, nemusí být možné najít problémy hned nebo problémy, může trvat nějakou dobu opravit. Když integrační nefunguje správně, můžete otevřít případu podpory získat ji opravil co nejdříve. 
 
-Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) získat je spuštěna.
+Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) získat je spuštěna.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Rozšíření funguje v Chrome a Firefox, ale ne v aplikaci Internet Explorer
 
@@ -71,15 +71,15 @@ Existují dvě hlavní příčiny tohoto problému:
 
    * Bohužel této situaci může lišit v závislosti na verze prohlížeče, rychlost počítače nebo navštívené lokality. V takovém případě doporučujeme kontaktovat podporu, takže jsme můžete řešit integrace pro tuto konkrétní aplikaci.
 
-Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) získat je spuštěna.
+Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) získat je spuštěna.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Zkontrolujte, jestli se nedávno změnila na přihlašovací stránku aplikace, nebo vyžaduje další pole
 
-Výrazně se změnil na přihlašovací stránku aplikace, někdy způsobí, že naše integrace pro přerušení. Příkladem je při dodavatele aplikace přidá znaménkem do pole, captcha nebo služby Multi-Factor authentication do svého prostředí. V mnoha případech naštěstí Microsoft můžete pracovat s dodavateli aplikace rychle vyřešit tyto problémy.
+Výrazně se změnil na přihlašovací stránku aplikace, někdy způsobí, že naše integrace pro přerušení. Příkladem je při dodavatele aplikace přidá pole přihlášení, captcha nebo služby Multi-Factor authentication do jejich prostředí. V mnoha případech naštěstí Microsoft můžete pracovat s dodavateli aplikace rychle vyřešit tyto problémy.
 
-Když společnost Microsoft nemá technologie, které automaticky rozpoznat, kdy se tyto integrace přerušení, ale někdy Nedokážeme hned najít tyto problémy. Jinak se oprava chvíli trvat. V případě, že pokud jeden z těchto integrace nebude fungovat správně, uvítáme otevírání případu podpory, aby jsme můžete provést co nejrychleji odstraňovat.
+Zatímco Microsoft obsahuje technologie, které automaticky rozpoznat, kdy rozdělit integrace aplikací, nemusí být možné najít problémy hned nebo problémy, může trvat nějakou dobu opravit. Když integrační nefunguje správně, můžete otevřít případu podpory získat ji opravil co nejdříve. 
 
-Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) získat je spuštěna.
+Kromě toho **Pokud jste v kontaktu s od dodavatele této aplikace,** **jejich odeslání naše způsob** , jsme mohli pracovat s nimi nativně svých aplikací integrovat Azure Active Directory. Můžete odeslat dodavatele, aby [výpis aplikace v galerii aplikací Azure Active Directory](./develop/active-directory-app-gallery-listing.md) získat je spuštěna.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření přístup k panelu prohlížeče
 
@@ -91,7 +91,7 @@ Chcete-li nainstalovat rozšíření přístup k panelu prohlížeče, postupujt
 
 3.  V řádku, požádá o instalaci softwaru, vyberte **instalovat nyní**.
 
-4.  Založené na prohlížeči budete přesměrováni na odkaz ke stažení. **Přidat** rozšíření do prohlížeče.
+4.  Podle toho, prohlížeč, jsou směrované na odkaz ke stažení. **Přidat** rozšíření do prohlížeče.
 
 5.  Pokud prohlížeč zobrazí dotaz, vyberte buď **povolit** nebo **povolit** rozšíření.
 
@@ -105,6 +105,6 @@ Rozšíření pro Chrome a Firefox může také stáhnout z přímé odkazy ní�
 
 -   [Rozšíření panelu Firefox přístup](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
-## <a name="next-steps"></a>Další kroky
-[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)
+## <a name="next-steps"></a>Další postup
+[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

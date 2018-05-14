@@ -6,26 +6,25 @@ documentationcenter: ''
 author: jeffgilb
 manager: femila
 editor: ''
-ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 05/10/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: 4188d114aa86086821b2c640d7f2d98a78bcbf4e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: thoroet
+ms.openlocfilehash: d7c8520602132722fd0c7138de4a276b9ac2208a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Externí řešení monitorování integrovat Azure zásobníku
 
 Pro externí monitorování infrastruktury Azure zásobníku, budete muset monitorování softwaru zásobník Azure, fyzické počítače a fyzické síťové přepínače. Každá z těchto oblastí nabízí metody za účelem načtení informací o stavu a výstrahy:
 
-- Azure zásobníku softwaru nabízí rozhraní API založené na REST pro načtení stavu a výstrahy. (S použitím technologie softwarově definované jako prostory úložiště – přímé, výstrahy a stav úložiště jsou součástí softwaru monitorování.).
+- Azure zásobníku softwaru nabízí rozhraní API založené na REST pro načtení stavu a výstrahy. Použití technologie softwarově definované jako prostory úložiště – přímé, stav úložiště a výstrahy jsou součástí softwaru monitorování.
 - Fyzické počítače můžete zpřístupnit stavu a informace o výstrahách pomocí řadiče pro správu základní desky (BMC).
 - Fyzická síťová zařízení můžete zpřístupnit stavu a informace o výstrahách prostřednictvím protokolu SNMP.
 
@@ -91,433 +90,41 @@ Konfigurace souboru modulu plug-in "Azurestack_plugin.py" s následujícími par
 ## <a name="use-powershell-to-monitor-health-and-alerts"></a>Použít PowerShell k monitorování stavu a výstrahy
 
 Pokud nepoužíváte Operations Manager, Nagios nebo na základě Nagios řešení, můžete použít PowerShell k povolení širokou škálu sledování řešení pro integraci s Azure zásobníku.
- 
+
 1. Pomocí prostředí PowerShell, ujistěte se, že máte [prostředí PowerShell nainstalovaný a nakonfigurovaný](azure-stack-powershell-configure-quickstart.md) pro prostředí Azure zásobníku operátor. Instalace prostředí PowerShell na místní počítač, který můžete dosáhnout koncového bodu Resource Manager (správce) (https://adminmanagement. [ Oblast]. [External_FQDN]).
 
 2. Spusťte následující příkazy pro připojení k prostředí Azure zásobníku jako operátor zásobník Azure:
 
-   ```PowerShell
-   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
+   ```PowerShell  
+    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
-3. Přejděte do adresáře, kam jste nainstalovali [nástroje Azure zásobníku](https://github.com/Azure/AzureStack-Tools) jako součást instalace prostředí PowerShell, například c:\azurestack-tools-master. Pak přejděte do adresáře infrastruktury a spusťte následující příkaz pro import modulu infrastruktury:
 
+3. Použití příkazů jako jsou následující příklady pro práci s výstrahami:
    ```PowerShell
-   Import-Module .\AzureStack.Infra.psm1
+    #Retrieve all alerts
+    Get-AzsAlert
+
+    #Filter for active alerts
+    $Active=Get-AzsAlert | Where {$_.State -eq "active"}
+    $Active
+
+    #Close alert
+    Close-AzsAlert -AlertID "ID"
+
+    #Retrieve resource provider health
+    Get-AzsRPHealth
+
+    #Retrieve infrastructure role instance health
+    $FRPID=Get-AzsRPHealth|Where-Object {$_.DisplayName -eq "Capacity"}
+    Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
+
     ```
-4. Použití příkazů jako jsou následující příklady pro práci s výstrahami:
-   ```PowerShell
-   #Retrieve all alerts
-   Get-AzsAlert -location [Region]
-
-   #Filter for active alerts
-   $Active=Get-AzsAlert -location [Region] | Where {$_.State -eq "active"}
-   $Active
-
-   #Close alert
-   Close-AzsAlert -location [Region] -AlertID "ID"
-
-   #Retrieve resource provider health
-   Get-AzsResourceProviderHealths -location [Region]
-
-   #Retrieve infrastructure role instance health
-   Get-AzsInfrastructureRoleHealths -location [Region]
-   ```
-
-## <a name="use-the-rest-api-to-monitor-health-and-alerts"></a>Použít rozhraní API REST k monitorování stavu a výstrahy
-
-Volání rozhraní REST API slouží k získání výstrah, uzavřít výstrahy a získat stav zprostředkovatelé prostředků.
-
-### <a name="get-alert"></a>Získání výstrahy
-
-**Požadavek**
-
-Požadavek získá všechny aktivní a uzavřené výstrahy pro výchozí zprostředkovatel předplatné. Neexistuje žádný text žádosti.
-
-
-|Metoda  |Identifikátor URI žádosti  |
-|---------|---------|
-|GET     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts?api-version=2016-05-01"      |
-|     |         |
-
-**Argumenty**
-
-|Argument  |Popis  |
-|---------|---------|
-|armendpoint     |  Koncový bod Azure Resource Manager prostředí zásobníku Azure ve formátu https://adminmanagement.{RegionName}.{External plně kvalifikovaný název domény}. Například, pokud je externí plně kvalifikovaný název domény *azurestack.external* a název oblasti je *místní*, pak je koncový bod správce prostředků https://adminmanagement.local.azurestack.external.       |
-|subid     |   ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.      |
-|RegionName     |    Název oblasti Azure zásobníku nasazení.     |
-|verze rozhraní API.     |  Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.      |
-|     |         |
-
-**Odpověď**
-
-```http
-GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/Alerts?api-version=2016-05-01 HTTP/1.1
-```
-
-```json
-{
-"value":[
-{"id":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"name":"71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"type":"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts",
-"location":"local",
-"tags":{},
-"properties":
-{
-"closedTimestamp":"",
-"createdTimestamp":"2017-08-10T20:13:57.4398842Z",
-"description":[{"text":"The infrastructure role (Updates) is experiencing issues.",
-"type":"Text"}],
-"faultId":"ServiceFabric:/UpdateResourceProvider/fabric:/AzurestackUpdateResourceProvider",
-"alertId":"71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"faultTypeId":"ServiceFabricApplicationUnhealthy",
-"lastUpdatedTimestamp":"2017-08-10T20:18:58.1584868Z",
-"alertProperties":
-{
-"healthState":"Warning",
-"name":"Updates",
-"fabricName":"fabric:/AzurestackUpdateResourceProvider",
-"description":null,
-"serviceType":"UpdateResourceProvider"},
-"remediation":[{"text":"1. Navigate to the (Updates) and restart the role. 2. If after closing the alert the issue persists, please contact support.",
-"type":"Text"}],
-"resourceRegistrationId":null,
-"resourceProviderRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"serviceRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"severity":"Warning",
-"state":"Active",
-"title":"Infrastructure role is unhealthy",
-"impactedResourceId":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/UpdateResourceProvider",
-"impactedResourceDisplayName":"UpdateResourceProvider",
-"closedByUserAlias":null
-}
-},
-
-…
-```
-
-**Podrobnosti o odpovědi**
-
-
-|  Argument  |Popis  |
-|---------|---------|
-|*ID*     |      Jedinečné ID výstrahy.   |
-|*Jméno*     |     Interní název výstrahy.   |
-|*type*     |     Definice prostředků.    |
-|*location*     |       Název oblasti.     |
-|*značek*     |   Značky prostředku.     |
-|*closedtimestamp*    |  Čas UTC, kdy se zavřel výstrahu.    |
-|*createdtimestamp*     |     Čas UTC vytvoření výstrahy.   |
-|*Popis*     |    Popis výstrahy.     |
-|*faultid*     | Tato součást.        |
-|*alertid*     |  Jedinečné ID výstrahy.       |
-|*faulttypeid*     |  Typ jedinečného vadný součásti.       |
-|*lastupdatedtimestamp*     |   Čas UTC poslední aktualizace informace o výstrahách.    |
-|*Stav healthstate*     | Celkový stav.        |
-|*Jméno*     |   Název konkrétní výstrahu.      |
-|*fabricname*     |    Název registrované prostředků infrastruktury vadný součásti.   |
-|*Popis*     |  Popis součásti registrované prostředků infrastruktury.   |
-|*ServiceType*     |   Typ služby registrované prostředků infrastruktury.   |
-|*Nápravy*     |   Doporučené nápravy kroky.    |
-|*type*     |   Typ výstrahy.    |
-|*resourceRegistrationid*    |     ID zdroje registrované.    |
-|*resourceProviderRegistrationID*   |    ID zaregistrovaný zprostředkovatel prostředku ohrožené součásti.  |
-|*serviceregistrationid*     |    ID registrované služby.   |
-|*Závažnost*     |     Závažnost výstrahy.  |
-|*Stav*     |    Stav výstrahy.   |
-|*Název*     |    Název výstrahy.   |
-|*impactedresourceid*     |     ID prostředku dopad.    |
-|*ImpactedresourceDisplayName*     |     Název ovlivněné prostředku.  |
-|*closedByUserAlias*     |   Uživatel, který zavřel výstrahu.      |
-
-### <a name="close-alert"></a>Zavřít výstrahu
-
-**Požadavek**
-
-Žádost se zavře výstrahy podle jeho jedinečné ID.
-
-|Metoda    |Identifikátor URI žádosti  |
-|---------|---------|
-|PUT     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts/alertid?api-version=2016-05-01"    |
-
-**Argumenty**
-
-
-|Argument  |Popis  |
-|---------|---------|
-|*armendpoint*     |   Koncový bod správce prostředků Azure zásobníku prostředí, ve formátu https://adminmanagement.{RegionName}.{External plně kvalifikovaný název domény}. Například, pokud je externí plně kvalifikovaný název domény *azurestack.external* a název oblasti je *místní*, pak je koncový bod správce prostředků https://adminmanagement.local.azurestack.external.      |
-|*subid*     |    ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.     |
-|*RegionName*     |   Název oblasti Azure zásobníku nasazení.      |
-|*api-version*     |    Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.     |
-|*alertid*     |    Jedinečné ID výstrahy.     |
-
-**Text**
-
-```json
-
-{
-"value":[
-{"id":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"name":"71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"type":"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts",
-"location":"local",
-"tags":{},
-"properties":
-{
-"closedTimestamp":"2017-08-10T20:18:58.1584868Z",
-"createdTimestamp":"2017-08-10T20:13:57.4398842Z",
-"description":[{"text":"The infrastructure role (Updates) is experiencing issues.",
-"type":"Text"}],
-"faultId":"ServiceFabric:/UpdateResourceProvider/fabric:/AzurestackUpdateResourceProvider",
-"alertId":"71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"faultTypeId":"ServiceFabricApplicationUnhealthy",
-"lastUpdatedTimestamp":"2017-08-10T20:18:58.1584868Z",
-"alertProperties":
-{
-"healthState":"Warning",
-"name":"Updates",
-"fabricName":"fabric:/AzurestackUpdateResourceProvider",
-"description":null,
-"serviceType":"UpdateResourceProvider"},
-"remediation":[{"text":"1. Navigate to the (Updates) and restart the role. 2. If after closing the alert the issue persists, please contact support.",
-"type":"Text"}],
-"resourceRegistrationId":null,
-"resourceProviderRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"serviceRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"severity":"Warning",
-"state":"Closed",
-"title":"Infrastructure role is unhealthy",
-"impactedResourceId":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/UpdateResourceProvider",
-"impactedResourceDisplayName":"UpdateResourceProvider",
-"closedByUserAlias":null
-}
-},
-```
-**Odpověď**
-
-```http
-PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/71dbd379-1d1d-42e2-8439-6190cc7aa80b?api-version=2016-05-01 HTTP/1.1
-```
-
-```json
-{
-"value":[
-{"id":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/alerts/71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"name":"71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"type":"Microsoft.InfrastructureInsights.Admin/regionHealths/alerts",
-"location":"local",
-"tags":{},
-"properties":
-{
-"closedTimestamp":"",
-"createdTimestamp":"2017-08-10T20:13:57.4398842Z",
-"description":[{"text":"The infrastructure role (Updates) is experiencing issues.",
-"type":"Text"}],
-"faultId":"ServiceFabric:/UpdateResourceProvider/fabric:/AzurestackUpdateResourceProvider",
-"alertId":"71dbd379-1d1d-42e2-8439-6190cc7aa80b",
-"faultTypeId":"ServiceFabricApplicationUnhealthy",
-"lastUpdatedTimestamp":"2017-08-10T20:18:58.1584868Z",
-"alertProperties":
-{
-"healthState":"Warning",
-"name":"Updates",
-"fabricName":"fabric:/AzurestackUpdateResourceProvider",
-"description":null,
-"serviceType":"UpdateResourceProvider"},
-"remediation":[{"text":"1. Navigate to the (Updates) and restart the role. 2. If after closing the alert the issue persists, please contact support.",
-"type":"Text"}],
-"resourceRegistrationId":null,
-"resourceProviderRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"serviceRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"severity":"Warning",
-"state":"Closed",
-"title":"Infrastructure role is unhealthy",
-"impactedResourceId":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/UpdateResourceProvider",
-"impactedResourceDisplayName":"UpdateResourceProvider",
-"closedByUserAlias":null
-}
-},
-```
-
-**Podrobnosti o odpovědi**
-
-
-|  Argument  |Popis  |
-|---------|---------|
-|*ID*     |      Jedinečné ID výstrahy.   |
-|*Jméno*     |     Interní název výstrahy.   |
-|*type*     |     Definice prostředků.    |
-|*location*     |       Název oblasti.     |
-|*značek*     |   Značky prostředku.     |
-|*closedtimestamp*    |  Čas UTC, kdy se zavřel výstrahu.    |
-|*createdtimestamp*     |     Čas UTC vytvoření výstrahy.   |
-|*Popis*     |    Popis výstrahy.     |
-|*faultid*     | Tato součást.        |
-|*alertid*     |  Jedinečné ID výstrahy.       |
-|*faulttypeid*     |  Typ jedinečného vadný součásti.       |
-|*lastupdatedtimestamp*     |   Čas UTC poslední aktualizace informace o výstrahách.    |
-|*Stav healthstate*     | Celkový stav.        |
-|*Jméno*     |   Název konkrétní výstrahu.      |
-|*fabricname*     |    Název registrované prostředků infrastruktury vadný součásti.   |
-|*Popis*     |  Popis součásti registrované prostředků infrastruktury.   |
-|*ServiceType*     |   Typ služby registrované prostředků infrastruktury.   |
-|*Nápravy*     |   Doporučené nápravy kroky.    |
-|*type*     |   Typ výstrahy.    |
-|*resourceRegistrationid*    |     ID zdroje registrované.    |
-|*resourceProviderRegistrationID*   |    ID zaregistrovaný zprostředkovatel prostředku ohrožené součásti.  |
-|*serviceregistrationid*     |    ID registrované služby.   |
-|*Závažnost*     |     Závažnost výstrahy.  |
-|*Stav*     |    Stav výstrahy.   |
-|*Název*     |    Název výstrahy.   |
-|*impactedresourceid*     |     ID prostředku dopad.    |
-|*ImpactedresourceDisplayName*     |     Název ovlivněné prostředku.  |
-|*closedByUserAlias*     |   Uživatel, který zavřel výstrahu.      |
-
-### <a name="get-resource-provider-health"></a>Získat stav zprostředkovatele prostředků
-
-**Požadavek**
-
-Požadavek získá stav pro všechny poskytovatele prostředků registrované.
-
-
-|Metoda  |Identifikátor URI žádosti  |
-|---------|---------|
-|GET    |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths?api-version=2016-05-01"   |
-
-
-**Argumenty**
-
-
-|Argumenty  |Popis  |
-|---------|---------|
-|*armendpoint*     |    Koncový bod správce prostředků Azure zásobníku prostředí, ve formátu https://adminmanagement.{RegionName}.{External plně kvalifikovaný název domény}. Například pokud je azurestack.external externí plně kvalifikovaný název domény a název oblasti je místní, pak koncového bodu správce prostředků je https://adminmanagement.local.azurestack.external.     |
-|*subid*     |     ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.    |
-|*RegionName*     |     Název oblasti Azure zásobníku nasazení.    |
-|*api-version*     |   Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.      |
-
-
-**Odpověď**
-
-```http
-GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/serviceHealths?api-version=2016-05-01
-```
-
-```json
-{
-"value":[
-{
-"id":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/serviceHealths/03ccf38f-f6b1-4540-9dc8-ec7b6389ecca",
-"name":"03ccf38f-f6b1-4540-9dc8ec7b6389ecca",
-"type":"Microsoft.InfrastructureInsights.Admin/regionHealths/serviceHealths",
-"location":"local",
-"tags":{},
-"properties":{
-"registrationId":"03ccf38f-f6b1-4540-9dc8-ec7b6389ecca",
-"displayName":"Key Vault",
-"namespace":"Microsoft.KeyVault.Admin",
-"routePrefix":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.KeyVault.Admin/locations/local",
-"serviceLocation":"local",
-"infraURI":"/subscriptions/4aa97de3-6b83-4582-86e1-65a5e4d1295b/resourceGroups/system.local/providers/Microsoft.KeyVault.Admin/locations/local/infraRoles/Key Vault",
-"alertSummary":{"criticalAlertCount":0,"warningAlertCount":0},
-"healthState":"Healthy"
-}
-}
-
-…
-```
-**Podrobnosti o odpovědi**
-
-
-|Argument  |Popis  |
-|---------|---------|
-|*ID*     |   Jedinečné ID výstrahy.      |
-|*Jméno*     |  Interní název výstrahy.       |
-|*type*     |  Definice prostředků.       |
-|*location*     |  Název oblasti.       |
-|*značek*     |     Značky prostředku.    |
-|*RegistrationId*     |   Jedinečné registrace pro poskytovatele prostředků.      |
-|*displayName*     |Zobrazovaný název zprostředkovatele prostředků.        |
-|*namespace*     |   Implementuje rozhraní API obor názvů zprostředkovatele prostředků.       |
-|*Parametr routePrefix*     |    Identifikátor URI pro interakci s poskytovatelem prostředků.     |
-|*serviceLocation*     |   Oblast tohoto poskytovatele prostředků není zaregistrována.      |
-|*infraURI*     |   Identifikátor URI poskytovatele prostředků, které jsou uvedeny jako role infrastruktury.      |
-|*alertSummary*     |   Souhrn kritických a výstražných výstrahy, které jsou přidružené ke zprostředkovateli prostředků.      |
-|*Stav HealthState*     |    Stav poskytovatele prostředků.     |
-
-
-### <a name="get-resource-health"></a>Získat stav prostředku
-
-Požadavek získá stav pro konkrétní registrované prostředek zprostředkovatele.
-
-**Požadavek**
-
-|Metoda  |Identifikátor URI žádosti  |
-|---------|---------|
-|GET     |     https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths/{RegistrationID}/resourceHealths?api-version=2016-05-01"    |
-
-**Argumenty**
-
-|Argumenty  |Popis  |
-|---------|---------|
-|*armendpoint*     |    Koncový bod správce prostředků Azure zásobníku prostředí, ve formátu https://adminmanagement.{RegionName}.{External plně kvalifikovaný název domény}. Například pokud je azurestack.external externí plně kvalifikovaný název domény a název oblasti je místní, pak koncového bodu správce prostředků je https://adminmanagement.local.azurestack.external.     |
-|*subid*     |ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API pro dotaz můžete použít pouze s uživatelem, který má oprávnění k předplatnému výchozího zprostředkovatele.         |
-|*RegionName*     |  Název oblasti Azure zásobníku nasazení.       |
-|*api-version*     |  Verze protokolu, který slouží k vytvoření této žádosti. Je nutné použít 2016-05-01.       |
-|*RegistrationID* |ID registrace pro konkrétní prostředek zprostředkovatele. |
-
-**Odpověď**
-
-```http
-GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/serviceHealths/03ccf38f-f6b1-4540-9dc8-ec7b6389ecca /resourceHealths?api-version=2016-05-01 HTTP/1.1
-```
-
-```json
-{
-"value":
-[
-{"id":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/local/serviceHealths/472aaaa6-3f63-43fa-a489-4fd9094e235f/resourceHealths/028c3916-ab86-4e7f-b5c2-0468e607915c",
-"name":"028c3916-ab86-4e7f-b5c2-0468e607915c",
-"type":"Microsoft.InfrastructureInsights.Admin/regionHealths/serviceHealths/resourceHealths",
-"location":"local",
-"tags":{},
-"properties":
-{"registrationId":"028c3916-ab86-4e7f-b5c2 0468e607915c","namespace":"Microsoft.Fabric.Admin","routePrefix":"/subscriptions/4aa97de3-6b83-4582-86e1 65a5e4d1295b/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local",
-"resourceType":"infraRoles",
-"resourceName":"Privileged endpoint",
-"usageMetrics":[],
-"resourceLocation":"local",
-"resourceURI":"/subscriptions/<Subscription_ID>/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infraRoles/Privileged endpoint",
-"rpRegistrationId":"472aaaa6-3f63-43fa-a489-4fd9094e235f",
-"alertSummary":{"criticalAlertCount":0,"warningAlertCount":0},"healthState":"Unknown"
-}
-}
-…
-```
-
-**Podrobnosti o odpovědi**
-
-|Argument  |Popis  |
-|---------|---------|
-|*ID*     |   Jedinečné ID výstrahy.      |
-|*Jméno*     |  Interní název výstrahy.       |
-|*type*     |  Definice prostředků.       |
-|*location*     |  Název oblasti.       |
-|*značek*     |     Značky prostředku.    |
-|*RegistrationId*     |   Jedinečné registrace pro poskytovatele prostředků.      |
-|*Typ prostředku*     |Typ prostředku.        |
-|*resourceName*     |   Název prostředku.   |
-|*usageMetrics*     |    Využití metriky pro prostředek.     |
-|*resourceLocation*     |   Název oblasti, kde je nasazen.      |
-|*resourceURI*     |   Identifikátor URI pro prostředek.   |
-|*alertSummary*     |   Souhrn kritické a upozornění výstrahy, stav.     |
 
 ## <a name="learn-more"></a>Další informace
 
 Informace o předdefinovaných stavu monitorování najdete v tématu [monitorovat stav a výstrahy v zásobníku Azure](azure-stack-monitor-health.md).
-
 
 ## <a name="next-steps"></a>Další postup
 

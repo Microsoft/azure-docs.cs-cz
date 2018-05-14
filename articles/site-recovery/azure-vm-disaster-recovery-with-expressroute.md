@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 8b4c7bb561d311796f59b94a6e2fbcd9b571d2cd
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 44ecbcc51cb53f4d7b68f5c5e24e7d81c5a4208c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="using-expressroute-with-azure-virtual-machine-disaster-recovery"></a>Pomocí ExpressRoute zotavení po havárii virtuální počítač Azure
 
@@ -79,7 +79,7 @@ Ve výchozím nastavení nenechává provoz replikace Azure hranic. Obvykle se n
 
 Když virtuální počítače Azure se převzetí služeb při selhání v jiné oblasti, existující připojení ExpressRoute do virtuální sítě zdroj nebudou převedeny automaticky na cílové virtuální síť v oblasti obnovení. Nové připojení je vyžadován pro připojení ExpressRoute na cílové virtuální síť.
 
-Virtuální počítače Azure může replikovat na všechny oblasti Azure v rámci stejné zeměpisné clusteru jako podrobné [zde](azure-to-azure-support-matrix.md#region-support). Pokud není zvolený cíl oblast Azure v rámci stejné geopolitické oblasti jako zdroj, budete muset povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute pro zdrojové a cílové oblasti připojení. Další podrobnosti naleznete [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ExpressRoute ceny](https://azure.microsoft.com/en-us/pricing/details/expressroute/).
+Virtuální počítače Azure může replikovat na všechny oblasti Azure v rámci stejné zeměpisné clusteru jako podrobné [zde](azure-to-azure-support-matrix.md#region-support). Pokud není zvolený cíl oblast Azure v rámci stejné geopolitické oblasti jako zdroj, budete muset povolit ExpressRoute Premium, pokud používáte jeden okruh ExpressRoute pro zdrojové a cílové oblasti připojení. Další podrobnosti naleznete [umístění ExpressRoute](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) a [ExpressRoute ceny](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ### <a name="two-expressroute-circuits-in-two-different-expressroute-peering-locations"></a>Dva okruhy ExpressRoute ve dvou různých umístění partnerského vztahu ExpressRoute
 -   Tato konfigurace je užitečná, pokud chcete zajistit proti selhání primární okruhu ExpressRoute a rozsáhlé regionální havárie, které by mohly mít vliv na umístění partnerského vztahu ExpressRoute také a přerušit váš primární okruh ExpressRoute.

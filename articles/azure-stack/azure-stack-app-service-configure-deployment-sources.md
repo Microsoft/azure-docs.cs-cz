@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace nasazení zdrojů pro aplikaci služby v Azure zásobníku | Microsoft Docs"
-description: "Jak správce služeb můžete nakonfigurovat nasazení zdroje (Git, Githubu, BitBucket, DropBox a Onedrivu) pro službu App Service v Azure zásobníku"
+title: Konfigurace nasazení zdrojů pro aplikaci služby v Azure zásobníku | Microsoft Docs
+description: Jak správce služeb můžete nakonfigurovat nasazení zdroje (Git, Githubu, BitBucket, DropBox a Onedrivu) pro službu App Service v Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 46242fd7ab9e05cfc2edde119afdc6053f129e40
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-deployment-sources"></a>Konfigurace zdrojů nasazení
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
@@ -45,15 +45,15 @@ Kromě místní Git jsou podporovány následující poskytovatelé řízení zd
 
 Musíte mít účet GitHub pro dokončení této úlohy. Můžete chtít použít účet pro vaši organizaci, nikoli osobní účet.
 
-1. Přihlaste se ke Githubu, vyhledejte https://www.github.com/settings/developers a klikněte na **zaregistrujte novou aplikaci**.
+1. Přihlaste se ke Githubu, přejděte na https://www.github.com/settings/developers a klikněte na tlačítko **zaregistrujte novou aplikaci**.
     ![Githubu – registrace nové aplikace][3]
 2. Zadejte **název aplikace** například - App Service v Azure zásobníku.
-3. Zadejte **URL domovské stránky**. Adresa URL domovské stránky musí být adresa zásobníku portálu Azure. For example, https://portal.local.azurestack.external.
+3. Zadejte **URL domovské stránky**. Adresa URL domovské stránky musí být adresa zásobníku portálu Azure. Například, https://portal.local.azurestack.external.
 4. Zadejte **popis aplikace**.
-5. Zadejte **URL zpětného volání autorizace**.  Ve výchozím zásobníku Azure nasazení, adresa Url je ve formátu https://portal.local.azurestack.external/tokenauthorize, pokud používáte v jiné doméně nenahrazuje doménu pro local.azurestack.external ![GitHub - zaregistrovat nový aplikace s hodnotami naplněno][4]
+5. Zadejte **URL zpětného volání autorizace**.  Ve výchozím zásobníku Azure nasazení, adresa Url je ve formátu https://portal.local.azurestack.external/TokenAuthorize, pokud používáte v jiné doméně nenahrazuje doménu pro local.azurestack.external
 6. Klikněte na tlačítko **registrace aplikace**.  Nyní, zobrazí se v seznamu stránky **ID klienta** a **tajný klíč klienta** pro aplikaci.
     ![Githubu – registrace hotová aplikace][5]
-7.  V novou kartu prohlížeče nebo okno přihlášení do zásobníku správce portálu Azure (https://adminportal.local.azurestack.external) jako správce služeb.
+7.  V novou kartu prohlížeče nebo v okně Přihlaste se k portálu pro správu Azure zásobníku (https://adminportal.local.azurestack.external) jako správce služeb.
 8.  Přejděte do **zprostředkovatelé prostředků** a vyberte **správce zprostředkovatele prostředků služby aplikace**.
 9. Klikněte na tlačítko **zdroj konfigurace ovládacího prvku**.
 10. Zkopírujte a vložte **ID klienta** a **tajný klíč klienta** do odpovídající vstup oknech pro GitHub.
@@ -69,14 +69,14 @@ Musíte mít účet BitBucket pro dokončení této úlohy. Můžete chtít pou�
     ![BitBucket přidat příjemce OAuth][8]
 3. Zadejte **název** pro příjemce, například služby App Service v Azure zásobníku.
 4. Zadejte **popis** pro aplikaci.
-5. Zadejte **adresu URL zpětné volání**.  Ve výchozím zásobníku Azure nasazení je adresa Url zpětného volání v https://portal.local.azurestack.external/TokenAuthorize formuláře, pokud používáte v jiné doméně nenahrazuje doménu pro azurestack.local.  Adresa Url musí následovat velká písmena, jsou uvedeny zde BitBucket Integrace proběhla úspěšně.
-6. Zadejte **URL** – tato adresa Url by měla být URL portálu Azure zásobníku, například https://portal.local.azurestack.external.
+5. Zadejte **adresu URL zpětné volání**.  Ve výchozím zásobníku Azure nasazení, je adresa Url zpětného volání ve formě https://portal.local.azurestack.external/TokenAuthorize, pokud používáte v jiné doméně nenahrazuje doménu pro azurestack.local.  Adresa Url musí následovat velká písmena, jsou uvedeny zde BitBucket Integrace proběhla úspěšně.
+6. Zadejte **URL** – tato adresa Url by měla být například adresu URL portálu Azure zásobníku https://portal.local.azurestack.external.
 7. Vyberte **oprávnění** vyžaduje:
     - **Úložiště**: *pro čtení*
     - **Webhooky**: *čtení a zápis*
 8. Klikněte na **Uložit**.  Tato nová aplikace se nyní zobrazí spolu s **klíč** a **tajný klíč** pod **OAuth příjemci**.
     ![Výpis BitBucket aplikace][9]
-9.  V novou kartu prohlížeče nebo okno přihlášení do zásobníku správce portálu Azure (https://adminportal.local.azurestack.external) jako správce služeb.
+9.  V novou kartu prohlížeče nebo v okně Přihlaste se k portálu pro správu Azure zásobníku (https://adminportal.local.azurestack.external) jako správce služeb.
 10.  Přejděte do **zprostředkovatelé prostředků** a vyberte **správce zprostředkovatele prostředků služby aplikace**.
 11. Klikněte na tlačítko **zdroj konfigurace ovládacího prvku**.
 12. Zkopírujte a vložte **klíč** do **ID klienta** vstupní pole a **tajný klíč** do **tajný klíč klienta** vstupní pole pro BitBucket.
@@ -90,7 +90,7 @@ Musíte mít Account Microsoft propojený s účtem Onedrivu pro dokončení té
 > [!NOTE]
 > OneDrive pro firmy nejsou aktuálně podporovány.
 
-1. Přejděte na https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm a protokolu pomocí Account Microsoft.
+1. Přejděte do https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm a přihlaste se pomocí Account Microsoft.
 2. V části **Moje aplikace**, klikněte na tlačítko **přidat aplikaci**.
 ![Aplikace OneDrive][10]
 3. Zadejte **název** nové registrace aplikace, zadejte **služby App Service v Azure zásobníku**a klikněte na tlačítko **vytvoření aplikace**
@@ -98,13 +98,13 @@ Musíte mít Account Microsoft propojený s účtem Onedrivu pro dokončení té
 ![Vlastnosti aplikace OneDrive][11]
 5. V části **tajné klíče aplikace**, klikněte na tlačítko **generovat nové heslo**. Poznamenejte si **nové heslo, které jsou generované**. Toto je váš tajný klíč aplikace a není po kliknutí na tlačítko získat **OK** v této fázi.
 6. V části **platformy** klikněte na tlačítko **přidejte platformu** a vyberte **webové**.
-7. Zadejte **identifikátor URI pro přesměrování**.  Ve výchozím zásobníku Azure nasazení, identifikátor URI přesměrování, je v https://portal.local.azurestack.external/tokenauthorize formuláře, pokud používáte v jiné doméně nenahrazuje doménu pro azurestack.local ![aplikace OneDrive – přidat Webová platforma][12]
+7. Zadejte **identifikátor URI pro přesměrování**.  Ve výchozím zásobníku Azure nasazení, identifikátor URI pro přesměrování je ve formátu https://portal.local.azurestack.external/TokenAuthorize, pokud používáte v jiné doméně nenahrazuje doménu pro azurestack.local ![aplikace OneDrive – přidání webové platformy][12]
 8. Přidat **Microsoft Graph oprávnění** - **delegovaná oprávnění**
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
       ![Aplikace OneDrive – oprávnění grafu][13]
 9. Klikněte na **Uložit**.
-10.  V novou kartu prohlížeče nebo okno přihlášení do zásobníku správce portálu Azure (https://adminportal.local.azurestack.external) jako správce služeb.
+10.  V novou kartu prohlížeče nebo v okně Přihlaste se k portálu pro správu Azure zásobníku (https://adminportal.local.azurestack.external) jako správce služeb.
 11.  Přejděte do **zprostředkovatelé prostředků** a vyberte **správce zprostředkovatele prostředků služby aplikace**.
 12. Klikněte na tlačítko **zdroj konfigurace ovládacího prvku**.
 13. Zkopírujte a vložte **ID aplikace** do **ID klienta** vstupní pole a **heslo** do **tajný klíč klienta** vstupní pole pro OneDrive.
@@ -115,7 +115,7 @@ Musíte mít Account Microsoft propojený s účtem Onedrivu pro dokončení té
 > [!NOTE]
 > Potřebujete mít účet DropBox pro dokončení této úlohy.  Můžete chtít použít účet pro vaši organizaci, nikoli osobní účet.
 
-1. Přejděte na https://www.dropbox.com/developers/apps a protokolu pomocí účtu DropBox.
+1. Přejděte do https://www.dropbox.com/developers/apps a přihlaste se pomocí účtu DropBox.
 2. Klikněte na tlačítko **vytvořit aplikaci**.
 
     ![Dropbox aplikace][14]
@@ -126,9 +126,9 @@ Musíte mít Account Microsoft propojený s účtem Onedrivu pro dokončení té
 ![Registrace aplikace dropbox][15]
 6. Klikněte na tlačítko **vytvořit aplikaci**.  Nyní, zobrazí se stránka nastavení pro aplikace, včetně výpis **klíč aplikace** a **tajný klíč aplikace**.
 7. Zkontrolujte **název složky aplikace** je nastaven na **služby App Service v Azure zásobníku**.
-8. Nastavte **URI přesměrování OAuth 2** a klikněte na tlačítko **přidat**.  Ve výchozím zásobníku Azure nasazení je identifikátor URI pro přesměrování v https://portal.local.azurestack.external/tokenauthorize formuláře, pokud používáte v jiné doméně nenahrazuje doménu pro azurestack.local.
+8. Nastavte **URI přesměrování OAuth 2** a klikněte na tlačítko **přidat**.  Ve výchozím zásobníku Azure nasazení, je identifikátor URI přesměrování ve formě https://portal.local.azurestack.external/TokenAuthorize, pokud používáte v jiné doméně nenahrazuje doménu pro azurestack.local.
 ![Konfigurace aplikace dropbox][16]
-9.  V novou kartu prohlížeče nebo okno přihlášení do zásobníku správce portálu Azure (https://adminportal.local.azurestack.external) jako správce služeb.
+9.  V novou kartu prohlížeče nebo v okně Přihlaste se k portálu pro správu Azure zásobníku (https://adminportal.local.azurestack.external) jako správce služeb.
 10.  Přejděte do **zprostředkovatelé prostředků** a vyberte **správce zprostředkovatele prostředků služby aplikace**.
 11. Klikněte na tlačítko **zdroj konfigurace ovládacího prvku**.
 12. Zkopírujte a vložte **klíč aplikace** do **ID klienta** vstupní pole a **tajný klíč aplikace** do **tajný klíč klienta** vstupní pole pro DropBox.

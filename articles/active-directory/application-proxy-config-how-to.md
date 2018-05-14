@@ -1,11 +1,11 @@
 ---
 title: Postup konfigurace aplikace Proxy aplikace | Microsoft Docs
-description: "Zjistěte, jak vytvořit aplikaci Proxy aplikace konfigurace v několika jednoduchých krocích"
+description: Zjistěte, jak vytvořit aplikaci Proxy aplikace konfigurace v několika jednoduchých krocích
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fafd7c03141f67f4fc9ffbedb7a27632754b8d59
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 816f2c10631de3809c6679c1e2715174f072f56d
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Postup konfigurace aplikace Proxy aplikace
 
@@ -25,15 +25,15 @@ Tento článek vám pomůže lépe porozumět konfiguraci aplikaci Proxy aplikac
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty 
 
-Další informace o vytvoření aplikace Proxy aplikace prostřednictvím portálu pro správu a počáteční konfigurace, postupujte podle [publikování aplikací pomocí proxy aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
+Další informace o vytvoření aplikace Proxy aplikace prostřednictvím portálu pro správu a počáteční konfigurace, postupujte podle [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md).
 
-Podrobnosti o konfiguraci konektorů najdete v tématu [povolení Proxy aplikace v portálu Azure](active-directory-application-proxy-enable.md).
+Podrobnosti o konfiguraci konektorů najdete v tématu [povolení Proxy aplikace v portálu Azure](manage-apps/application-proxy-enable.md).
 
-Informace o nahrávání certifikátů a používání vlastní domény najdete v tématu [práce s vlastní domény v Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains).
+Informace o nahrávání certifikátů a používání vlastní domény najdete v tématu [práce s vlastní domény v Azure AD Application Proxy](manage-apps/application-proxy-configure-custom-domain.md).
 
 ## <a name="create-the-applicationsetting-the-urls"></a>Vytvoření aplikace nebo nastavení adresy URL.
 
-Pokud postupujete podle kroků v [publikování aplikací pomocí proxy aplikace služby Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) dokumentace a jsou získávání k chybě při vytváření aplikace, najdete v části Podrobnosti o chybě informace a návrhy, jak opravit aplikaci. Většina chybové zprávy, obsahuje navrhované opravu. Aby se zabránilo běžné chyby, ověřte:
+Pokud postupujete podle kroků v [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md) dokumentace a jsou získávání k chybě při vytváření aplikace, najdete v části Podrobnosti o chybě informace a návrhy, jak opravit aplikaci. Většina chybové zprávy, obsahuje navrhované opravu. Aby se zabránilo běžné chyby, ověřte:
 
 -   Správci s oprávněním k vytvoření aplikace Proxy aplikace
 
@@ -51,13 +51,13 @@ Chybová zpráva by měla zobrazit v pravém horním rohu při vytváření apli
 
 ## <a name="configure-connectorsconnector-groups"></a>Nakonfigurujte konektory nebo konektor skupiny
 
-Pokud máte potíže s konfigurací aplikace z důvodu upozornění o konektorech a konektor skupiny, najdete pokyny k povolení Proxy aplikace podrobnosti o tom, jak stáhnout konektory. Pokud chcete získat další informace o konektory, přečtěte si téma [konektory dokumentaci](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+Pokud máte potíže s konfigurací aplikace z důvodu upozornění o konektorech a konektor skupiny, najdete pokyny k povolení Proxy aplikace podrobnosti o tom, jak stáhnout konektory. Pokud chcete získat další informace o konektory, přečtěte si téma [konektory dokumentaci](application-proxy-understand-connectors.md).
 
 Pokud vaše konektory jsou neaktivní, znamená to, aby byly možné vás zastihnout na službu. To je často protože nejsou otevřené požadované porty. Pokud chcete zobrazit seznam požadované porty, najdete v části předpoklady povolení Proxy aplikace dokumentace.
 
 ## <a name="upload-certificates-for-custom-domains"></a>Nahrát certifikáty pro vlastní domény
 
-Vlastní domény umožňují zadejte doménu vaší externí adresy URL. Pokud chcete používat vlastní domény, budete muset nahrát na server certifikát pro tuto doménu. Informace o používání vlastní domény a certifikáty, najdete v části [práce s vlastní domény v Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains). 
+Vlastní domény umožňují zadejte doménu vaší externí adresy URL. Pokud chcete používat vlastní domény, budete muset nahrát na server certifikát pro tuto doménu. Informace o používání vlastní domény a certifikáty, najdete v části [práce s vlastní domény v Azure AD Application Proxy](manage-apps/application-proxy-configure-custom-domain.md). 
 
 Pokud narazíte na problémy odeslání vašeho certifikátu, vyhledejte chybové zprávy na portálu pro další informace o problému s certifikátem. Běžné problémy s certifikátem patří:
 
@@ -71,5 +71,5 @@ Chybová zpráva zobrazit v pravém horním rohu jako pokusíte odešlete certif
 
    ![Oznámení řádku](./media/application-proxy-config-how-to/error-message2.png)
 
-## <a name="next-steps"></a>Další kroky
-[Publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md)
+## <a name="next-steps"></a>Další postup
+[Publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md)

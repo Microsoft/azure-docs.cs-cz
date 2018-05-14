@@ -15,8 +15,8 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: a5466a0b5027fa8fe0edec3c9663e6cd1aafc9a3
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 61426d992e279cf88ae9750f0047b0cd81a797e3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -48,14 +48,14 @@ Například: `http(s)://*.adventure-works.com`. I interní a externí adresy URL
 
 Pokud máte další aplikace s jinou konfiguraci nastavení, musíte publikovat tyto výjimky jako samostatné aplikace přepsat výchozí nastavení pro zástupný znak. Aplikace bez zástupný znak vždycky přednost aplikace zástupný znak. Z hlediska konfigurace jedná se o "právě" regulární aplikace.
 
-Vytváření aplikací se zástupnými znaky je založena na stejné [publikování toku aplikace](application-proxy-publish-azure-portal.md) , je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, jestli jste zahrnuli zástupný znak v adresy URL a potenciálně Konfigurace jednotného přihlašování.
+Vytváření aplikací se zástupnými znaky je založena na stejné [publikování toku aplikace](manage-apps/application-proxy-publish-azure-portal.md) , je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, jestli jste zahrnuli zástupný znak v adresy URL a potenciálně Konfigurace jednotného přihlašování.
 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="custom-domains"></a>Vlastní domény
 
-Při [vlastní domény](active-directory-application-proxy-custom-domains.md) jsou volitelné pro všechny ostatní aplikace, jsou předpokladem pro aplikace zástupný znak. Vytvoření vlastní domény vyžaduje, abyste:
+Při [vlastní domény](manage-apps/application-proxy-configure-custom-domain.md) jsou volitelné pro všechny ostatní aplikace, jsou předpokladem pro aplikace zástupný znak. Vytvoření vlastní domény vyžaduje, abyste:
 
 1. Vytvořit ověřené domény v rámci Azure 
 2. Nahrajte certifikát SSL ve formátu PFX do vašeho proxy aplikace.
@@ -117,7 +117,7 @@ Představuje aplikací se zástupnými znaky s jedním dlaždice v [MyApps panel
 
 ### <a name="kerberos-constrained-delegation"></a>Omezené delegování protokolu Kerberos
 
-Pro aplikace pomocí [kerberos omezeného delegování (použitím KCD) jako metodu jednotného přihlašování k](active-directory-application-proxy-sso-using-kcd.md), SPN uvedené pro metodu jednotného přihlašování také potřebovat zástupný znak. Například může mít SPN: `HTTP/*.adventure-works.com`. Potřebujete mít jednotlivé SPN nakonfigurované na back-end serverů (například `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Pro aplikace pomocí [kerberos omezeného delegování (použitím KCD) jako metodu jednotného přihlašování k](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md), SPN uvedené pro metodu jednotného přihlašování také potřebovat zástupný znak. Například může mít SPN: `HTTP/*.adventure-works.com`. Potřebujete mít jednotlivé SPN nakonfigurované na back-end serverů (například `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 
 
@@ -136,7 +136,7 @@ Všechny tři aplikace:
 - Mají stejné vlastnosti
 
 
-Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md). Tento scénář předpokládá:
+Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md). Tento scénář předpokládá:
 
 - Klient s následujícím ID: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -144,7 +144,7 @@ Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky
 
 - A **CNAME** položku, která ukazuje `*.adventure-works.com` k `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` byla vytvořena.
 
-Následující [popsané kroky](application-proxy-publish-azure-portal.md), vytvořte novou aplikaci proxy aplikace ve vašem klientovi. V tomto příkladu je zástupný znak v těchto oblastech:
+Následující [popsané kroky](manage-apps/application-proxy-publish-azure-portal.md), vytvořte novou aplikaci proxy aplikace ve vašem klientovi. V tomto příkladu je zástupný znak v těchto oblastech:
 
 - Interní adresa URL:
 
@@ -183,7 +183,7 @@ V tomto scénáři musíte kromě toho tři obecné aplikace jiná aplikace, `fi
 
 Musíte zajistit, že existují záznamy CNAME této body `finance.adventure-works.com` aplikace konkrétní koncový bod, zadaný na stránce Proxy aplikací pro aplikaci. V tomto scénáři `finance.adventure-works.com` odkazuje na `https://finance-awcycles.msappproxy.net/`. 
 
-Následující [popsané kroky](application-proxy-publish-azure-portal.md), tento scénář vyžaduje následující nastavení:
+Následující [popsané kroky](manage-apps/application-proxy-publish-azure-portal.md), tento scénář vyžaduje následující nastavení:
 
 
 - V **interní adresa URL**, nastavíte **finanční** místo zástupný znak. 
@@ -212,8 +212,8 @@ Pokud máte několik aplikací publikována pro finanční a máte `finance.adve
 
 Další informace o:
 
-- **Vlastní domény**, najdete v části [práce s vlastní domény v Azure AD Application Proxy](active-directory-application-proxy-custom-domains.md).
+- **Vlastní domény**, najdete v části [práce s vlastní domény v Azure AD Application Proxy](manage-apps/application-proxy-configure-custom-domain.md).
 
-- **Publikování aplikací**, najdete v části [publikování aplikací pomocí proxy aplikace služby Azure AD](application-proxy-publish-azure-portal.md)
+- **Publikování aplikací**, najdete v části [publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md)
 
 

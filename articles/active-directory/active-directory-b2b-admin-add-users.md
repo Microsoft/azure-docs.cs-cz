@@ -5,20 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 05/11/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 842446ec0db96b9234fe0c578481ab06e9f0c896
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d0565468d953c83ca5fee864b3079fbfee9bbf1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Přidat uživatele Azure Active Directory s B2B spolupráce na portálu Azure
 
 Jako globální správce nebo uživatel, který je přiřazen directory role správce s omezeními můžete portál Azure pozvaným uživatelům spolupráce B2B. Můžete pozvat uživatele typu Host k adresáři, do skupiny nebo k aplikaci. Po pozvat uživatele pomocí některé z těchto metod, pozvané uživatele účet je přidán do služby Azure Active Directory (Azure AD), s typem uživatele *hosta*. Uživatele guest musí pak uplatnit své pozvánky pro přístup k prostředkům.
+
+Po přidání uživatele guest do adresáře, můžete buď odeslat uživatele guest přímý odkaz sdílené aplikaci nebo uživatele guest můžete kliknout na adresu URL se v e-mailová pozvánka. Další informace o procesu uplatnění najdete v tématu [uplatnění pozvánku spolupráce B2B](active-directory-b2b-redemption-experience.md).
+
+> [!IMPORTANT]
+> Postupujte podle kroků v [postupy: přidání informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement) přidat adresu URL prohlášení o ochraně osobních údajů vaší organizace. Jako součást první čas pozvánku k uplatnění proces musí vaše zásady ochrany osobních údajů, chcete-li pokračovat souhlas pozvané uživatele. 
 
 ## <a name="add-guest-users-to-the-directory"></a>Přidat uživatele typu Host do adresáře
 
@@ -86,7 +91,7 @@ K přidání uživatele spolupráce B2B do aplikace jako správce Azure AD, post
  
 ## <a name="resend-invitations-to-guest-users"></a>Opětovné odeslání pozvánky pro uživatele typu Host
 
-Pokud uživatel guest nebyl ještě uplatněn jejich pozvánku, můžete znovu odeslat pozvánky.
+Pokud uživatel guest nebyl ještě uplatněn jejich pozvánku, můžete znovu odeslat e-mailová pozvánka.
 
 1. Přihlaste se k [portál Azure](https://portal.azure.com) jako správce Azure AD.
 2. V navigačním podokně vyberte **Azure Active Directory**.
@@ -105,6 +110,4 @@ Pokud uživatel guest nebyl ještě uplatněn jejich pozvánku, můžete znovu o
 
 - Další informace, jak přidat uživatele typu Host B2B admins mimo Azure AD, najdete v části [jak informační pracovníci přidat uživatele spolupráce B2B?](active-directory-b2b-iw-add-users.md)
 - Informace o e-mailová pozvánka najdete v tématu [elementy e-mailová B2B spolupráce Pozvánka](active-directory-b2b-invitation-email.md).
-- Informace o procesu pozvánku k uplatnění najdete v tématu [uplatnění pozvánku spolupráce B2B](active-directory-b2b-redemption-experience.md).
-
 

@@ -13,8 +13,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: afd5460ef3e286cd3d8b550e7d7e54b3e09f2990
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5aba26d14ba0ee8e8ee58f62deb8a82ad147a8aa
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -27,33 +27,33 @@ Pokud máte potíže při přihlašování v aplikaci místně, můžete zkusit 
 
 Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
 
-  * [Můžu se k aplikaci dostat, ale stránka aplikace se nezobrazuje správně](https://docs.microsoft.com/azure/active-directory/application-proxy-page-appearance-broken-problem/)
-  * [Můžu se k aplikaci dostat, ale načítá se příliš dlouho](https://docs.microsoft.com/azure/active-directory/application-proxy-page-load-speed-problem/)
-  * [Můžu se k aplikaci dostat, ale odkazy na stránce aplikace nefungují](https://docs.microsoft.com/azure/active-directory/application-proxy-page-links-broken-problem/)
+  * [Můžu se k aplikaci dostat, ale stránka aplikace se nezobrazuje správně](application-proxy-page-appearance-broken-problem.md)
+  * [Můžu se k aplikaci dostat, ale načítá se příliš dlouho](application-proxy-page-load-speed-problem.md)
+  * [Můžu se k aplikaci dostat, ale odkazy na stránce aplikace nefungují](application-proxy-page-links-broken-problem.md)
 
 ## <a name="im-having-a-connectivity-problem-my-application"></a>Došlo k potížím s připojením Moje aplikace
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, které porty pro aplikaci otevřít](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-ports-how-to/)
-  * [Vyskytl se problém, protože ve skupině konektorů pro aplikaci nebyl žádný funkční konektor](https://docs.microsoft.com/azure/active-directory/application-proxy-connectivity-no-working-connector/)
+  * [Nevím, které porty pro aplikaci otevřít](application-proxy-connectivity-ports-how-to.md)
+  * [Vyskytl se problém, protože ve skupině konektorů pro aplikaci nebyl žádný funkční konektor](application-proxy-connectivity-no-working-connector.md)
 
 ## <a name="im-having-a-problem-configuring-the-azure-ad-application-proxy-in-the-admin-portal"></a>Došlo k potížím konfigurace Azure AD Application Proxy v portálu pro správu
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Mám potíže s konfigurací aplikace aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/application-proxy-config-how-to/)
-  * [Nevím, jak nakonfigurovat jednotné přihlašování k aplikaci aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/application-proxy-config-sso-how-to/)
-  * [Vyskytl se problém při vytváření aplikace na portálu pro správu](https://docs.microsoft.com/azure/active-directory/application-proxy-config-problem/)
+  * [Mám potíže s konfigurací aplikace aplikačního proxy serveru](application-proxy-config-how-to.md)
+  * [Nevím, jak nakonfigurovat jednotné přihlašování k aplikaci aplikačního proxy serveru](application-proxy-config-sso-how-to.md)
+  * [Vyskytl se problém při vytváření aplikace na portálu pro správu](application-proxy-config-problem.md)
 
 ## <a name="im-having-a-problem-setting-up-back-end-authentication-to-my-application"></a>Došlo problému s nastavením ověřování back-end pro Moje aplikace
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Nevím, jak nakonfigurovat omezené delegování Kerberos](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-kerberos-constrained-delegation-how-to/)
-  * [Nevím, jak nakonfigurovat aplikaci pro používání PingAccessu](https://docs.microsoft.com/azure/active-directory/application-proxy-back-end-ping-access-how-to/)
+  * [Nevím, jak nakonfigurovat omezené delegování Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+  * [Nevím, jak nakonfigurovat aplikaci pro používání PingAccessu](application-proxy-back-end-ping-access-how-to.md)
 
 ## <a name="im-having-a-problem-when-signing-in-to-my-application"></a>Došlo potížím při přihlašování k Moje aplikace
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Zobrazuje se chyba „Není přístup k podnikové aplikaci“](https://docs.microsoft.com/azure/active-directory/application-proxy-sign-in-bad-gateway-timeout-error/)
+  * [Zobrazuje se chyba „Není přístup k podnikové aplikaci“](application-proxy-sign-in-bad-gateway-timeout-error.md)
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Došlo k potížím s agenta konektor Proxy aplikace
   Následující dokumenty vám mohou pomoci při řešení některých nejběžnějších problémů v této kategorii.
-  * [Vyskytují se potíže při instalaci konektoru agenta aplikačního proxy serveru](https://docs.microsoft.com/azure/active-directory/application-proxy-connector-installation-problem/)
+  * [Vyskytují se potíže při instalaci konektoru agenta aplikačního proxy serveru](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>Další postup
 [Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md)

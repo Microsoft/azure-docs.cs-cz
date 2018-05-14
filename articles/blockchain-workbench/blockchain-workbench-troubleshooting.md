@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: df7fd71bee287a063e8d586de38522f3b71e14d9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8a2715666c4fff490f5184b7b8719b412952b9bf
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Řešení potíží s Azure Blockchain Workbench
 
@@ -70,4 +70,5 @@ Soubor souhrnu vám dává snímek celkového stavu aplikace a stavu aplikace. S
 
 ## <a name="next-steps"></a>Další postup
 
-* [Azure Blockchain Workbench architektura](blockchain-workbench-architecture.md)
+> [!div class="nextstepaction"]
+> [Azure Blockchain Workbench architektura](blockchain-workbench-architecture.md)

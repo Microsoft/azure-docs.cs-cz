@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/11/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: 0d8c1ebe9688f32c460ef689119313b0682a0a68
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f34c4697439685ce6ea0ce3f2c7e954ee81b5079
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Zaregistrovat Azure zásobník Azure
 Registrace [zásobník Azure](azure-stack-poc.md) s Azure vám umožní stáhnout položky marketplace z Azure a nastavit obchodování při generování sestav dat zpět do společnosti Microsoft. Po registraci Azure zásobníku využití údajně Azure obchodování a zobrazí se v rámci předplatného použít pro registraci. 
 
 > [!IMPORTANT]
-> Registrace je povinný, pokud se rozhodnete fakturační model platím jako--používání. Jinak bude v porušení licenční podmínky pro nasazení Azure zásobníku jako využití, nebudou ohlášena.
+> Registrace je vyžadována pro podporu plnou funkčnost zásobník Azure, včetně syndikace marketplace. Kromě toho bude v porušení licenční smlouvy, pokud nezaregistrujete při použití fakturační model platím jako--používání protokolů Azure. Další informace o licencování modely zásobník Azure, najdete [jak koupit](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
 
 ## <a name="prerequisites"></a>Požadavky
 Před registrací zásobník Azure s Azure, musíte mít:

@@ -8,15 +8,15 @@ manager: jahogg
 ms.service: storage
 ms.devlang: bash
 ms.topic: article
-ms.date: 01/19/2018
+ms.date: 05/10/2018
 ms.author: seguler
-ms.openlocfilehash: 44b0c36ad366d50480212adff9cdb8b10a17db05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1098eef15b559c30ef436d8e13bbe02bddb78649
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>Tom, jak připojit úložiště objektů Blob jako systém souborů s blobfuse (Preview)
+# <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Tom, jak připojit jako systém souborů s blobfuse úložiště objektů Blob
 
 ## <a name="overview"></a>Přehled
 [Blobfuse](https://github.com/Azure/azure-storage-fuse) je ovladač virtuálním souborovém systému pro Azure Blob Storage, který umožňuje přístup k vaší stávající data objektů blob bloku v účtu úložiště v systému Linux. Azure Blob Storage je služba objekt úložiště a proto nemá hierarchického oboru názvů. Blobfuse poskytuje tento obor názvů pomocí schéma virtuálního adresáře s použitím nástroje dopředného lomítko '/' jako oddělovač.  

@@ -1,11 +1,11 @@
 ---
-title: "Potíže s přihlášením k webu přístup panely | Microsoft Docs"
-description: "Pokyny k odstraňování problémů, které můžete narazit při pokusu o přihlášení k použití na přístupovém panelu"
+title: Potíže s přihlášením k webu přístup panely | Microsoft Docs
+description: Pokyny k odstraňování problémů, které můžete narazit při pokusu o přihlášení k použití na přístupovém panelu
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1820ab1e2295e6e0c7795c9d014d001d294bb337
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Potíže s přihlášením k webu přístup k panelu
 
@@ -289,4 +289,4 @@ Otevřete lístek podpory s následujícími informacemi, pokud je k dispozici:
 -   Fiddler trasování
 
 ## <a name="next-steps"></a>Další postup
-[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)
+[Zadejte jednotné přihlašování pro vaše aplikace s Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

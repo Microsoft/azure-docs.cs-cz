@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95c5793bec228e2da8c98ea9263475f55de739d9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování databáze SQL Azure sleduje události databáze a zápisu, které mají auditu přihlášení účtu úložiště Azure. Auditování také:
@@ -73,11 +73,11 @@ Následující část popisuje konfigurace auditování pomocí portálu Azure.
 
     ![Navigační podokno][3]
 5. Chcete-li otevřít **úložiště protokolů auditu** vyberte **podrobnosti úložiště**. Vyberte účet úložiště Azure, kde bude uložena protokoly a pak vyberte dobu uchování. Starých protokolů se odstraní. Pak klikněte na **OK**.
-   >[!TIP]
-   >K plnému využití mimo auditování šablon sestav, použijte stejný účet úložiště pro všechny auditování databáze.
+    >[!TIP]
+    >K plnému využití mimo auditování šablon sestav, použijte stejný účet úložiště pro všechny auditování databáze.
 
     <a id="storage-screenshot"></a> ![Navigační podokno][4]
-6. Pokud chcete přizpůsobit auditované události, můžete k tomu pomocí prostředí PowerShell nebo rozhraní REST API.
+6. Pokud chcete přizpůsobit auditované události, můžete k tomu prostřednictvím [rutiny prostředí PowerShell](#subheading-7) nebo [REST API](#subheading-9).
 7. Po dokončení konfigurace nastavení auditování, můžete zapnout funkci nové detekce hrozeb a konfigurovat výstrahy zabezpečení e-mailů. Pokud používáte detekce hrozeb, obdržíte proaktivní výstrahy na nezvyklé databázové aktivity, které může znamenat potenciální bezpečnostní hrozby. Další informace najdete v tématu [Začínáme s detekce hrozeb](sql-database-threat-detection-get-started.md).
 8. Klikněte na **Uložit**.
 
@@ -149,8 +149,8 @@ Geograficky replikované databáze když povolíte auditování v primární dat
    * Auditování objektů BLOB musí být povolená na *primární databázi, samotné*, nikoli na server.
    * Povolíte auditování objektů blob v primární databázi, bude ho také přístupné v sekundární databázi.
 
-     >[!IMPORTANT]
-     >Úroveň databáze auditování, nastavení pro sekundární databázi bude stejné jako primární databáze, způsobuje provoz mezi místní. Doporučujeme, abyste povolili auditování pouze úrovni serveru a nechte úroveň databáze auditování zakázáno pro všechny databáze.
+    >[!IMPORTANT]
+    >Úroveň databáze auditování, nastavení pro sekundární databázi bude stejné jako primární databáze, způsobuje provoz mezi místní. Doporučujeme, abyste povolili auditování pouze úrovni serveru a nechte úroveň databáze auditování zakázáno pro všechny databáze.
 <br>
 
 ### <a id="subheading-6">Opětovné generování klíče úložiště</a>
@@ -169,33 +169,41 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizovat klí�
 
 * Podrobnosti o protokol formátu, hierarchie složky úložiště a konvence vytváření názvů, najdete v článku [odkaz formátu protokolu auditu objekt Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-   > [!IMPORTANT]
-   > Azure SQL Database Audit ukládá 4000 znaků dat pro pole znaků v záznam auditu. Když **příkaz** nebo **data_sensitivity_information** hodnot vrácených z kontrolovatelný akce obsahovat více než 4 000 znaků, bude veškerá data větší než první 4 000 znaků  **zkrácené a není auditovat**.
+    > [!IMPORTANT]
+    > Azure SQL Database Audit ukládá 4000 znaků dat pro pole znaků v záznam auditu. Když **příkaz** nebo **data_sensitivity_information** hodnot vrácených z kontrolovatelný akce obsahovat více než 4 000 znaků, bude veškerá data větší než první 4 000 znaků  **zkrácené a není auditovat**.
 
-* Protokoly auditu se zapisují do **doplňovacích objektů blob** v úložišti objektů Blob v Azure na vaše předplatné Azure.
-   * **Storage úrovně Premium** právě **nepodporuje** podle doplňovacích objektů BLOB.
-   * **Úložiště ve virtuální síti** právě **nepodporuje**.
+* Protokoly auditu se zapisují do **doplňovacích objektů blob** v úložišti objektů Blob v Azure na vaše předplatné Azure:
+    * **Storage úrovně Premium** právě **nepodporuje** podle doplňovacích objektů BLOB.
+    * **Úložiště ve virtuální síti** právě **nepodporuje**.
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Spravovat auditování databáze SQL pomocí Azure PowerShell
+* Výchozí zásady auditování zahrnuje všechny akce a následující sadu skupin akce, které bude auditovat všechny dotazy a uložených procedur provedených proti databázi, jakož i úspěšná a neúspěšná přihlášení:
 
-* **Rutiny prostředí PowerShell**:
+    BATCH_COMPLETED_GROUP<br>
+    SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP<br>
+    FAILED_DATABASE_AUTHENTICATION_GROUP
 
-   * [Get-AzureRMSqlDatabaseAuditing][101]
-   * [Get-AzureRMSqlServerAuditing][102]
-   * [Set-AzureRMSqlDatabaseAuditing][105]
-   * [Set-AzureRMSqlServerAuditing][106]
+    Můžete nakonfigurovat auditování pro různé typy akcí a akce skupiny pomocí prostředí PowerShell, jak je popsáno v [auditování databáze SQL spravovat pomocí Azure PowerShell](#subheading-7) části.
 
-   Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+## <a id="subheading-7"></a>Spravovat auditování databáze SQL pomocí Azure PowerShell
 
-## <a name="manage-sql-database-auditing-using-rest-api"></a>Spravovat auditování databáze SQL pomocí rozhraní REST API
+**Rutiny prostředí PowerShell**:
 
-* **REST API – auditování objektů Blob**:
+* [Vytvořit nebo aktualizovat databázi Blob auditování zásady (Set-AzureRMSqlDatabaseAuditing)][105]
+* [Vytvořit nebo aktualizovat Server Blob auditování zásady (Set-AzureRMSqlServerAuditing)][106]
+* [Získat zásady auditování databáze (Get-AzureRMSqlDatabaseAuditing)][101]
+* [Získání objektu Blob serveru zásady auditování (Get-AzureRMSqlServerAuditing)][102]
 
-   * [Vytvořit nebo aktualizovat zásady auditování Blob databáze](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-   * [Vytvořit nebo aktualizovat Server Blob zásady auditování](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-   * [Získání objektu Blob databáze zásady auditování](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-   * [Získání objektu Blob serveru zásady auditování](https://msdn.microsoft.com/library/azure/mt771860.aspx)
-   * [Získání objektu Blob serveru auditování výsledek operace](https://msdn.microsoft.com/library/azure/mt771862.aspx)
+Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+
+## <a id="subheading-9"></a>Spravovat auditování databáze SQL pomocí rozhraní REST API
+
+**REST API – auditování objektů Blob**:
+
+* [Vytvořit nebo aktualizovat zásady auditování Blob databáze](https://msdn.microsoft.com/library/azure/mt695939.aspx)
+* [Vytvořit nebo aktualizovat Server Blob zásady auditování](https://msdn.microsoft.com/library/azure/mt771861.aspx)
+* [Získání objektu Blob databáze zásady auditování](https://msdn.microsoft.com/library/azure/mt695938.aspx)
+* [Získání objektu Blob serveru zásady auditování](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Získání objektu Blob serveru auditování výsledek operace](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 
 <!--Anchors-->
@@ -204,8 +212,9 @@ V produkčním prostředí budete pravděpodobně pravidelně aktualizovat klí�
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Automation (PowerShell / REST API)]: #subheading-7
+[Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
+[Manage SQL database auditing using REST API]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

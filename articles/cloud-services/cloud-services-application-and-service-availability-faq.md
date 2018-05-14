@@ -1,11 +1,11 @@
 ---
-title: "Aplikace a problémy s dostupností služby pro Microsoft Azure Cloud Services – nejčastější dotazy | Microsoft Docs"
-description: "V tomto článku jsou uvedené nejčastější dotazy o aplikaci a dostupnost služeb pro Microsoft Azure Cloud Services."
+title: Aplikace a problémy s dostupností služby pro Microsoft Azure Cloud Services – nejčastější dotazy | Microsoft Docs
+description: V tomto článku jsou uvedené nejčastější dotazy o aplikaci a dostupnost služeb pro Microsoft Azure Cloud Services.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 663a89ca5b3cfdafd873b27bae6ae8d158ac976a
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 49576aa99f6cd505648e33348b89e502bea9d5c4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="application-and-service-availability-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Aplikace a problémy s dostupností služby pro Azure Cloud Services: Časté otázky (FAQ)
 

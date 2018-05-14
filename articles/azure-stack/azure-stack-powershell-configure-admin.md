@@ -1,37 +1,37 @@
 ---
-title: Konfigurace prostředí PowerShell Azure zásobníku operátor | Microsoft Docs
-description: Informace o konfiguraci Azure zásobníku operátor prostředí PowerShell.
+title: Konfigurace prostředí Azure PowerShell zásobníku | Microsoft Docs
+description: Postup konfigurace prostředí Azure PowerShell zásobníku.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 37D9CAC9-538B-4504-B51B-7336158D8A6B
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: a8ab52de6c57e84bb2c90ce6bcf53ef1b92e30af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: thoroet
+ms.openlocfilehash: 86608ef8b3623682bd10498605f8b7b62c377ff1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="configure-the-azure-stack-operators-powershell-environment"></a>Konfigurace prostředí PowerShell Azure zásobníku operátor
+# <a name="configure-the-azure-stack-powershell-environment"></a>Konfigurace prostředí Azure PowerShell zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Můžete nakonfigurovat zásobník Azure pomocí prostředí PowerShell ke správě prostředků, jako je například vytváření nabídek, plánů, kvóty a upozornění. Toto téma vám pomůže nakonfigurovat prostředí operátor. Pokud chcete nakonfigurovat prostředí PowerShell pro uživatelského prostředí, najdete v sekci [nakonfigurovat prostředí PowerShell Azure zásobník uživatele](user/azure-stack-powershell-configure-user.md) článku.
+Můžete nakonfigurovat zásobník Azure pomocí prostředí PowerShell ke správě prostředků, jako je například vytváření nabídek, plánů, kvóty a upozornění. Toto téma vám pomůže nakonfigurovat prostředí operátor.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Spusťte následující předpoklady, některý z [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo ze systému Windows externí klienta Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn): 
 
-* Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).  
-* Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).  
+ - Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).  
+ - Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).  
 
 ## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Konfigurace prostředí operátor a přihlaste se k Azure zásobníku
 
@@ -39,12 +39,9 @@ Konfigurace prostředí Azure zásobníku operátor pomocí prostředí PowerShe
 
 ### <a name="azure-active-directory-azure-ad-based-deployments"></a>Azure Active Directory (Azure AD) na základě nasazení
 
-````powershell  
+````PowerShell  
 #  Create an administrator environment
 Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint "https://adminmanagement.local.azurestack.external"
-
-# Get the value of your Directory Tenant ID
-$TenantID = Get-AzsDirectoryTenantId -AADTenantName "<mydirectorytenant>.onmicrosoft.com" -EnvironmentName AzureStackAdmin
 
 # After registering the AzureRM environment, cmdlets can be 
 # easily targeted at your Azure Stack instance.
@@ -54,12 +51,9 @@ Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID
 
 ### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Nasazení na základě služby Active Directory Federation Services (AD FS)
 
-````powershell  
+````PowerShell  
 #  Create an administrator environment
 Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint "https://adminmanagement.local.azurestack.external"
-
-# Get the value of your Directory Tenant ID
-$TenantID = Get-AzsDirectoryTenantId -ADFS -EnvironmentName AzureStackAdmin
 
 # After registering the AzureRM environment, cmdlets can be 
 # easily targeted at your Azure Stack instance.
@@ -75,5 +69,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Další postup
-* [Vývoj šablon pro Azure zásobníku](user/azure-stack-develop-templates.md)
-* [Nasazení šablon pomocí PowerShellu](user/azure-stack-deploy-template-powershell.md)
+ - [Vývoj šablon pro Azure zásobníku](user/azure-stack-develop-templates.md)
+ - [Nasazení šablon pomocí PowerShellu](user/azure-stack-deploy-template-powershell.md)

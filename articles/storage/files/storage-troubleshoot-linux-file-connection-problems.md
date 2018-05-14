@@ -1,8 +1,8 @@
 ---
-title: "Poradce při potížích Azure soubory v systému Linux | Microsoft Docs"
-description: "Řešení potíží s Azure soubory v systému Linux"
+title: Poradce při potížích Azure soubory v systému Linux | Microsoft Docs
+description: Řešení potíží s Azure soubory v systému Linux
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
 editor: na
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Poradce při potížích Azure soubory v systému Linux
 
@@ -29,7 +29,7 @@ V tomto článku jsou uvedeny běžné problémy, které se vztahují k Microsof
 
 V systému Linux obdržíte chybovou zprávu, která vypadá přibližně takto:
 
-**<filename>[bylo odepřeno oprávnění] Byla překročena kvóta disku**
+**<filename> [bylo odepřeno oprávnění] Byla překročena kvóta disku**
 
 ### <a name="cause"></a>Příčina
 

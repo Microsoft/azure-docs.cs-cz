@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc446dfeee86fa1183892cba8068709f8fd277d5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Přehled SAP HANA (velké instance) a architektura v Azure
 
@@ -256,7 +256,7 @@ Základní infrastruktura velké instance HANA poskytuje funkce pro zálohován�
 
 Najdete v článku [SLA pro SAP HANA v Azure (velké instance)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/).
 
-## <a name="sizing"></a>Nastavení velikosti
+## <a name="sizing"></a>Velikost
 
 Nastavení velikosti pro velké instanci HANA je nejsou jiné než dimenzování pro HANA obecně. U stávajících a nasadit systémy, které chcete přesunout z jiných RDBMS do HANA, SAP poskytuje řadu sestav, které běží na vaše stávající systémy SAP. Pokud databázi přesunete do HANA, tyto sestavy zkontrolujte data a výpočet požadavků na paměť pro instanci HANA. Další informace o tom, jak spustit tyto sestavy a získat jejich nejnovější opravy nebo verze přečtěte si následující poznámky k SAP:
 
@@ -303,6 +303,8 @@ Tento seznam sestaví požadavky na spuštění SAP HANA v Azure (větší insta
    - Red Hat Linux potřebujete úrovněmi správné předplatné, které zahrnují podporu a služby aktualizace pro operační systémy velkých instance HANA. Red Hat [SAP řešení] doporučuje Red Hat Enterprise Linux (https://access.redhat.com/solutions/3082481 předplatné. 
 
 Na matici podpory různých verzí SAP HANA s různými verzemi systému Linux, najdete v části [2235581 # Poznámka SAP](https://launchpad.support.sap.com/#/notes/2235581).
+
+Matice kompatibility operačního systému a verze firmwaru a ovladače HLI, najdete v části [Upgrade operačního systému pro HLI](os-upgrade-hana-large-instance.md).
 
 
 **Database**

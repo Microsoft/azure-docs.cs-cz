@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6379c7bc40294b059c6183efc1c0a6cbb3b7baa7
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: cd4959eb516f82f2d6e0afd2accfd8ac3d5b3e96
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="determine-the-listing-type-right-for-your-offer"></a>Určuje typ výpis pro vaši nabídku
 

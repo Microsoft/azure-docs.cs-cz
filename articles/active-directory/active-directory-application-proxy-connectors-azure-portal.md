@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: f7fcd6e9746984b79ba83d0d9157b356bf315dfe
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3ffc453c98f8d21f1cd6f7025387031bdacf073a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění pomocí konektoru skupin
 
@@ -33,7 +33,7 @@ Všechny aplikace jsou přiřazeny ke skupině konektor. Pokud nevytvoříte sku
 >Pokud máte velké nasazení služby Proxy aplikace, nepřiřazovat všechny aplikace na výchozí skupinu konektor. Tímto způsobem nové konektory nejsou přijímat přenosy za provozu, dokud je nezařadíte do skupiny konektor služby active. Tato konfigurace umožňuje put konektory v režimu nečinnosti jejich přesunutím zpět na výchozí skupinu tak, aby bylo možné provádět údržby bez dopadu na vaši uživatelé.
 
 ## <a name="prerequisites"></a>Požadavky
-K seskupení vaší konektory, budete muset nezapomeňte [nainstalovat více konektorů](active-directory-application-proxy-enable.md). Pokud instalujete nový konektor, automaticky připojí **výchozí** konektor skupiny.
+K seskupení vaší konektory, budete muset nezapomeňte [nainstalovat více konektorů](manage-apps/application-proxy-enable.md). Pokud instalujete nový konektor, automaticky připojí **výchozí** konektor skupiny.
 
 ## <a name="create-connector-groups"></a>Vytvořit konektor skupiny
 Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektor. 
@@ -126,6 +126,6 @@ V následujícím příkladu má společnost zavedeny dvou Datacenter, A a B, s 
 ## <a name="next-steps"></a>Další postup
 
 * [Pochopení konektory proxy aplikace služby Azure AD](application-proxy-understand-connectors.md)
-* [Povolení jednoduchého přihlášení](application-proxy-sso-overview.md)
+* [Povolení jednoduchého přihlášení](manage-apps/application-proxy-single-sign-on.md)
 
 

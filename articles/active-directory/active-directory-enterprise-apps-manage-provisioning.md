@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: b57c6841566f3fd75ca0c48e055f54513247cb30
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ebc4de2b3a01138a8b48cc637dcab5fc67a68841
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelský účet zřizování pro podnikové aplikace na portálu Azure
 Tento článek popisuje postup použití [portál Azure](https://portal.azure.com) ke správě automatické uživatel účet zřizování a jeho rušení pro aplikace, které to podporují, zejména ta, která byla přidána z "doporučenou" kategorii [ Galerii aplikací Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování účtu automatické uživatele a jak to funguje, najdete v části [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md).
@@ -27,13 +27,13 @@ Tento článek popisuje postup použití [portál Azure](https://portal.azure.co
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace v portálu
 Všechny aplikace, které jsou konfigurovány pro jednotné přihlašování v adresáři, pomocí Správce adresáře pomocí [galerii aplikací Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), můžete zobrazit a spravovat [portál Azure](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace, které** části portálu. Podnikové aplikace jsou aplikace, které jsou nasazené a použít v rámci vaší organizace.
 
-![Podokno podnikové aplikace][0]
+![Podokno podnikové aplikace](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.png)
 
 Výběr **všechny aplikace** odkaz na levé straně zobrazuje seznam všech aplikací, které byly nakonfigurovány, včetně aplikací, přidané z galerie. Výběr aplikace načte podokně prostředků pro tuto aplikaci, kde je možné zobrazit sestavy pro tuto aplikaci a lze je spravovat celou řadu nastavení.
 
 Uživatelský účet zřizování nastavení lze spravovat výběrem **zřizování** na levé straně.
 
-![Podokno prostředků aplikace][1]
+![Podokno prostředků aplikace](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Zřizování režimy
 **Zřizování** podokně začíná **režimu** nabídce, která ukazuje, jaké zřizování režimy jsou podporovány pro podniková aplikace a umožňuje její konfiguraci. Mezi dostupné možnosti patří:
@@ -54,7 +54,7 @@ Tato část je, kde můžou správci zobrazit a upravit jaké toku atributů už
 
 Není předkonfigurované sada mapování mezi objekty uživatele Azure AD a každá aplikace SaaS uživatelské objekty. Některé aplikace spravovat jiné typy objektů, jako jsou skupiny nebo kontakty. Výběrem jedné z těchto mapování v v tabulce jsou uvedeny editor mapování vpravo, kde mohou být zobrazit a upravit.
 
-![Podokno prostředků aplikace][2]
+![Podokno prostředků aplikace](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.png)
 
 Podporované vlastnímu nastavení patří:
 
@@ -80,7 +80,3 @@ Jsou uvedeny odkazy na **zřizování sestavu aktivit** poskytující protokolu 
 
 Prosím udržovat zpětnou vazbu, než dorazí! POST vaše názory a návrhy pro zlepšení **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Technického týmu je vzrušení o vytváření nástrojů nové vlastní položky každý den, a jejich používat vaše pokyny, které tvar a definovat, co k vytvoření další.
 
-
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
-[1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

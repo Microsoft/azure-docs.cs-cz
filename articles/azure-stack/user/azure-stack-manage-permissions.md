@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9944f51c080da6edd89927bfd26398024c5d4de2
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Spravovat přístup k prostředkům pomocí řízení přístupu Azure Stack Role-Based
 
@@ -38,6 +38,28 @@ Sada Azure má tři základní role, které můžete použít pro všechny typy 
 * **Vlastník** můžou spravovat všechno včetně přístupu k prostředkům.
 * **Přispěvatel** můžou spravovat všechno kromě přístupu k prostředkům.
 * **Čtečka** můžou zobrazit všechno, ale nelze provést žádné změny.
+
+### <a name="resource-hierarchy-and-inheritance"></a>Hierarchie prostředků a dědičnost
+
+Sada Azure má následující hierarchie prostředků:
+
+* Každé předplatné patří do jednoho adresáře.
+* Na jedno předplatné patří každé skupině prostředků.
+* Každý prostředek patří do jedné skupiny prostředků.
+
+V podřízené obory dědí přístup, který udělíte v nadřazeném oboru. Příklad:
+
+* Role čtenáře přiřadíte skupiny v oboru předplatné služby Azure AD. Členové této skupiny můžete zobrazit všechny skupiny prostředků a prostředků v předplatném.
+* Role Přispěvatel přiřadíte k aplikaci v oboru skupiny prostředků. Aplikace můžete spravovat prostředky všechny typy v příslušné skupině prostředků, ale ne další skupiny zdrojů v rámci předplatného.
+
+### <a name="assigning-roles"></a>přiřazení rolí
+
+Můžete přiřadit více než jedné role pro uživatele a každou roli, mohou být přidruženy jiný rozsah. Příklad:
+
+* Role čtenáře TestUser-A je přiřadit k předplatnému 1.
+* Přiřadíte roli TestUser-A Owner TestVM-1.
+
+Azure [přiřazení rolí](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) článek obsahuje podrobné informace o zobrazení, přiřazení nebo odstranění rolí.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Hierarchie prostředků a dědičnost
 

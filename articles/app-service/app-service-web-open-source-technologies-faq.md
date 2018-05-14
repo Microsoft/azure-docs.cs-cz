@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 747ee61d2620e7f79353207c0e44bcea36df30ee
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy pro webové aplikace v Azure
 
@@ -71,7 +71,7 @@ K zachycení chyb aplikací Python:
 1. Na portálu Azure ve vaší webové aplikaci, vyberte **nastavení**.
 2. Na **nastavení** vyberte **nastavení aplikace**.
 3. V části **nastavení aplikace**, zadejte následující dvojice klíč/hodnota:
-    * Key : WSGI_LOG
+    * Klíč: WSGI_LOG
     * Hodnota: D:\home\site\wwwroot\logs.txt (zadejte vaši volbu názvu souboru)
 
 Teď byste měli vidět chyby v souboru logs.txt ve složce wwwroot.
@@ -138,9 +138,9 @@ Pro Azure Marketplace a vlastní nasazení:
 * Umístění složky: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * Soubory, které vás zajímají:
     * catalina.*yyyy-mm-dd*.log
-    * host-manager.*yyyy-mm-dd*.log
-    * localhost.*yyyy-mm-dd*.log
-    * manager.*yyyy-mm-dd*.log
+    * Správce hostitele. *rrrr mm-dd*.log
+    * localhost. *rrrr mm-dd*.log
+    * správce. *rrrr mm-dd*.log
     * site_access_log.*yyyy-mm-dd*.log
 
 
@@ -149,9 +149,9 @@ Pro portál **nastavení aplikace** nasazení:
 * Umístění složky: D:\home\LogFiles
 * Soubory, které vás zajímají:
     * catalina.*yyyy-mm-dd*.log
-    * host-manager.*yyyy-mm-dd*.log
-    * localhost.*yyyy-mm-dd*.log
-    * manager.*yyyy-mm-dd*.log
+    * Správce hostitele. *rrrr mm-dd*.log
+    * localhost. *rrrr mm-dd*.log
+    * správce. *rrrr mm-dd*.log
     * site_access_log.*yyyy-mm-dd*.log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Jak odstranit chyb připojení ovladač JDBC?

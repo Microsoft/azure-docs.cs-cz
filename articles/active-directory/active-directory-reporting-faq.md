@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8963dfb3c2d8b81309f44fcdcaab7ddc0b403e7e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 5fa52099f5cf55b78fd2fea407c34f29237939d3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -24,14 +24,14 @@ ms.lasthandoff: 05/11/2018
 
 Tento článek obsahuje odpovědi na nejčastější dotazy k Azure Active Directory (Azure AD), vytváření sestav. Další informace najdete v článku [Generování sestav ve službě Azure Active Directory](active-directory-reporting-azure-portal.md). 
 
-**Otázka: je použito https://graph.windows.net/ &lt;název klienta&gt;/reports/ koncový bod rozhraní API pro audit vyžádání Azure AD a využití integrované aplikace sestavy do našich reporting systémů prostřednictvím kódu programu. Co je měli přepnout do?**
+**Otázka: je použito https://graph.windows.net/&lt; název klienta&gt;/reports/ koncový bod rozhraní API pro audit vyžádání Azure AD a využití integrované aplikace sestavy do našich reporting systémů prostřednictvím kódu programu. Co je měli přepnout do?**
 
 **Odpověď:** vyhledat [referenční dokumentace rozhraní API](https://developer.microsoft.com/graph/) zobrazíte použití nových rozhraní API pro přístup k [sestavy aktivit](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal). Tento koncový bod má dva podřízené (auditu a přihlášení), které poskytují všechna data, která jste získali v původním koncový bod rozhraní API. Tento nový koncový bod má také sestavy přihlášení s licencí Azure AD Premium, který můžete použít k získání využití aplikací, využití zařízení a přihlašovací údaje uživatele.
 
 
 --- 
 
-**Otázka: je použito https://graph.windows.net/ &lt;název klienta&gt;/reports/ koncový bod rozhraní API do našich reporting systémů načítat sestavy zabezpečení Azure AD (specifické typy detekce, třeba uniklé přihlašovací údaje nebo přihlášení z anonymních IP adres) prostřednictvím kódu programu. Co je měli přepnout do?**
+**Otázka: je použito https://graph.windows.net/&lt; název klienta&gt;/reports/ koncový bod rozhraní API do našich reporting systémů načítat sestavy zabezpečení Azure AD (specifické typy detekce, třeba uniklé přihlašovací údaje nebo přihlášení z anonymních IP adres) prostřednictvím kódu programu. Co je měli přepnout do?**
 
 **Odpověď:** můžete použít [Identity Protection rizikových událostech rozhraní API](active-directory-identityprotection-graph-getting-started.md) k zjištění zabezpečení přístup prostřednictvím Microsoft Graph. Tento nový formát, poskytují větší flexibilitu v tom, jak můžete dát dotaz na data s pokročilé filtrování, výběr pole a další a standardizuje rizikových událostí do jednoho typu pro snazší integrace do systémů Siem a dalších nástrojů pro shromažďování dat. Protože data jsou v jiném formátu, nelze je nový dotaz nahradit své staré dotazy. Ale [nového rozhraní API používá Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), což je standard Microsoft pro takové rozhraní API jako O365 nebo Azure AD. Takže práce potřebné, můžete buď rozšířit vaše investice do aktuální MS Graph nebo nápovědy začnete přecházíte na tuto novou standardní platformu.
 
@@ -39,7 +39,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy k Azure Active Direc
 
 **Otázka: co je uchovávání dat protokoly aktivity (auditu a přihlášení) na portálu Azure?** 
 
-**Odpověď:** najdete v tématu [je jak dlouho shromážděná data uložená?} (Zásady uchování sestav azure Active Directory](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) pro odpověď na tuto otázku.
+**Odpověď:** najdete v části [je jak dlouho shromážděná data uložená?](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored) pro odpověď na tuto otázku.
 
 --- 
 

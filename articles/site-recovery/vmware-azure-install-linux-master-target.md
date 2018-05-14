@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 986f36cccc9755e5b5a7fc2f81d7e6dff2bf1ccf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="install-a-linux-master-target-server"></a>Instalovat hlavní cílový server Linux
 Po selhání virtuálních počítačů do Azure, můžete můžete navrácení služeb po obnovení virtuálních počítačů k místní lokalitě. Chcete-li navrácení služeb po obnovení, je potřeba znovu nastavte ochranu virtuálního počítače z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server příjem provozu. 
@@ -330,9 +330,9 @@ Po dokončení instalace zaregistrujte konfigurační server pomocí příkazov�
      Počkejte na dokončení skriptu. Pokud se hlavní cíl se úspěšně registrována v instalaci, se hlavní cíl je uvedený na **infrastruktura Site Recovery** na portálu.
 
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>Nainstalujte nástroje VMware na hlavním cílovém serveru
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Instalace nástroje VMware / otevřete nástroje virtuálního počítače na hlavním cílovém serveru
 
-Musíte nainstalovat nástroje VMware na hlavním cíli, aby ho můžete zjistit datová úložiště. Pokud nejsou nainstalovány nástroje, není v úložištích dat, uvedené na obrazovce opětovné ochrany. Po instalaci nástroje VMware je potřeba restartovat.
+Musíte nainstalovat nástroje VMware nebo nástroje pro otevření virtuálního počítače na hlavním cíli, aby ho můžete zjistit úložiště data. Pokud nejsou nainstalovány nástroje, není v úložištích dat, uvedené na obrazovce opětovné ochrany. Po instalaci nástroje VMware je potřeba restartovat.
 
 ### <a name="upgrade-the-master-target-server"></a>Upgrade hlavní cílový server
 

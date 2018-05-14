@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/1/2018
 ms.author: billmath
-ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a28a377ec3872fad0121636070b6604eaa415b30
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s objekt synchronizace s synchronizace Azure AD Connect
 Tento dokument obsahuje kroky pro řešení potíží s objekt synchronizace pomocí řešení potíží úlohy.
@@ -34,6 +34,7 @@ Pokud chcete spustit úlohu řešení potíží v průvodci, proveďte následuj
 4.  Přejděte na stránku další úlohy, vyberte Poradce při potížích a klikněte na tlačítko Další.
 5.  Na stránce Poradce při potížích s kliknutím na tlačítko spustit Poradce při potížích nabídky start v prostředí PowerShell.
 6.  V hlavní nabídce vyberte řešení objekt synchronizace.
+![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>Řešení potíží s vstupní parametry
 Řešení problémů s úlohou jsou potřeba následující vstupní parametry:
@@ -47,6 +48,8 @@ Pokud chcete spustit úlohu řešení potíží v průvodci, proveďte následuj
 1.  Zjištění neshoda UPN, pokud je objekt synchronizovat s Azure Active Directory
 2.  Zkontrolujte, pokud je objekt filtrován kvůli filtrování domény
 3.  Zkontrolujte, pokud objekt je filtrovaná kvůli filtrování organizační jednotky
+4.  Zkontrolujte, pokud je objekt synchronizace blokovaných v důsledku propojená poštovní schránka
+5. Zkontrolujte, jestli je objekt dynamické distribuční skupiny, která nemá k synchronizaci
 
 Zbývající část tohoto oddílu popisuje konkrétní výsledky, které jsou vráceny úlohou. V každém případě úlohy obsahuje analýzu následuje doporučené akce k vyřešení problému.
 
@@ -76,9 +79,17 @@ Objekt je mimo rozsah z důvodu domény není nakonfigurovaná. V následující
 Objekt je mimo obor jako domény nebylo nalezeno spustit profily nebo spustit kroky. V následujícím příkladu objekt je mimo rozsah synchronizace oboru jako domény, který patří do chybí spuštění kroky pro úplný Import profilu.
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
-### <a name="object-is-filtered-due-to-ou-filtering"></a>Objekt je filtrovaná kvůli filtrování organizační jednotky
-Objekt je mimo rozsah synchronizace obor kvůli konfiguraci filtrování organizační jednotky. V následujícím příkladu objekt náleží do organizační jednotky = NoSync, DC = bvtadwbackdc, DC = com.  Tuto organizační jednotku není součástí oboru synchronizace.
-![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Objekt je filtrovaná kvůli filtrování organizační jednotky
+Objekt je mimo rozsah synchronizace obor kvůli konfiguraci filtrování organizační jednotky. V následujícím příkladu objekt náleží do organizační jednotky = NoSync, DC = bvtadwbackdc, DC = com.  Tuto organizační jednotku není součástí oboru synchronizace.</br>
+
+![ORGANIZAČNÍ JEDNOTKY](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+
+## <a name="linked-mailbox-issue"></a>Propojené problém poštovní schránky
+Poštovní schránku propojenou by měla být přidruženy k externí hlavní účet nachází v jiné doménové struktuře důvěryhodného účtu. Pokud neexistuje žádný takový externí hlavní účet a pak je Azure AD Connect nebudou synchronizovat uživatel účet odpovídá propojená poštovní schránka v doménové struktuře Exchange pro klienta služby Azure AD.</br>
+![Propojená poštovní schránka](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch12.png)
+
+## <a name="dynamic-distribution-group-issue"></a>Dynamická skupina distribučních problém
+Z důvodu různé rozdíly mezi místní služby Active Directory a Azure Active Directory, Azure AD Connect nesynchronizuje dynamické distribučních skupin pro klienta Azure AD.
 
 ## <a name="html-report"></a>Sestavu ve formátu HTML
 Kromě analýzy objekt, vytvoří úlohu řešení potíží také zprávu ve formátu HTML, který obsahuje všechno, co vědět o objektu. Tuto sestavu ve formátu HTML, je možné sdílet s tým podpory udělat další řešení problémů v případě potřeby.

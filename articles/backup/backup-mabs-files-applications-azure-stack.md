@@ -13,16 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/9/2018
+ms.date: 5/11/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: a907335ace1f6ea9ec427327d28ca9be5ce02fcc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 99ac43efa5d3211bbe2d790f28532e682058313c
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací v Azure zásobníku
-Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
+Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Všechny aplikace spuštěné na jakýkoli server zásobník Azure ve stejné virtuální síti můžete chránit. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
 
 > [!NOTE]
 > I když jsou podobné serveru Azure Backup a System Center Data Protection Manager (DPM), aplikace DPM není podporována pro použití s Azure zásobníku.
@@ -44,8 +44,7 @@ Azure Backup Server chrání následující úlohy virtuálního počítače Azu
 | SQL Server 2012 SP1 | Databáze |
 | SharePoint 2013 | Farma, databáze, front-endu, webový server |
 | SharePoint 2010 | Farma, databáze, front-endu, webový server |
-| Stav systému | Stav systému |
-| Úplné obnovení systému (BMR) | BMR, stav systému, soubory a složky | 
+
 
 ## <a name="install-azure-backup-server"></a>Nainstalujte Azure Backup Server
 K instalaci serveru Azure Backup na virtuálním počítači Azure zásobníku, najdete v článku [Příprava zálohování úloh pomocí serveru Azure Backup](backup-azure-microsoft-azure-backup.md). Před instalací a konfigurací serveru Azure Backup, mějte na paměti z následujících akcí:
@@ -76,47 +75,13 @@ Pokud sdíleny s jinými virtuálními počítači, může ovlivnit výkon virtu
     - data obnovená z cloudu (místní pracovní oblasti)
   
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurace zálohování Azure dočasným diskovým úložištěm
-Každý virtuální počítač Azure zásobníku se dodává s dočasným diskovým úložištěm, která je k dispozici uživateli jako svazek D:`\`. Místní pracovní oblasti vyžadované nástrojem Azure Backup lze nakonfigurovat, aby se nacházejí v D:`\`, a umístění mezipaměti můžete umístit na jednotce C:`\`. Tímto způsobem žádné úložiště musí být carved směrem od datových disků připojených k virtuálnímu počítači serveru Azure Backup.
+Každý virtuální počítač Azure zásobníku se dodává s dočasným diskovým úložištěm, která je k dispozici uživateli jako svazek `D:\`. Místní pracovní oblasti vyžadované nástrojem Azure Backup lze nakonfigurovat, aby se nacházejí v `D:\`, a umístění mezipaměti můžete umístit na `C:\`. Tímto způsobem žádné úložiště musí být carved směrem od datových disků připojených k virtuálnímu počítači serveru Azure Backup.
 
 ### <a name="scaling-deployment"></a>Škálování nasazení
 Pokud chcete změnit měřítko nasazení, máte následující možnosti:
   - Vertikální navýšení kapacity – zvýšíte velikost virtuálního počítače serveru Azure Backup z řady pro řadu D a místní úložiště [podle pokynů virtuálního počítače Azure zásobníku](../azure-stack/user/azure-stack-manage-vm-disks.md).
   - Datové – odešlete starší data do serveru Azure Backup a zachovat pouze nejnovější data v úložišti připojeném k serveru Azure Backup.
   - Horizontální navýšení kapacity – přidat další servery zálohování Azure k ochraně úloh.
-
-
-## <a name="bare-metal-recovery-for-azure-stack-vm"></a>Úplné obnovení systému pro virtuální počítač Azure zásobníku
-
-Zálohy úplného obnovení (BMR) chrání soubory operačního systému a všechna data nepostradatelný svazek, kromě dat uživatele. Zálohování BMR zahrnuje zálohu stavu systému. Následující postupy popisují, jak k obnovení dat o úplné obnovení systému.
-
-### <a name="run-recovery-on-the-azure-backup-server"></a>Spustit obnovení na Azure Backup Server
-
-Otevřete konzolu serveru Azure Backup.
-
-1. V konzole, klikněte na **obnovení**, najít počítač, který chcete obnovit a klikněte na tlačítko **úplné obnovení systému**.
-2. Dostupné body obnovení se zobrazí v kalendáři tučně. Vyberte datum a čas bodu obnovení, který chcete použít.
-3. V **vybrat typ obnovení**, vyberte **kopírovat do síťové složky**.
-4. V **zadejte cíl**, vyberte, pokud chcete zkopírovat data. Mějte na paměti, že vybraný cíl musí obsahovat dostatek místa pro vytvoření bodu obnovení. Doporučuje se, že vytvoříte novou složku.
-5. V **zadat možnosti obnovení**, vyberte nastavení zabezpečení, které chcete použít a vyberte, zda chcete použít snímky hardwaru založené na síti SAN pro rychlejší obnovení.     Snímky hardwaru založené na síti SAN jsou možnost jenom v případě, že máte síť SAN s Tato funkce povolena a možnost vytvářet a rozdělovat je tak aby zapisovatelné. Také pro snímky hardwaru založené na síti SAN pracovat, chráněného počítače a serveru Azure Backup musí být připojen ke stejné síti.
-6. Nastavte možnosti oznámení a klikněte na tlačítko **obnovit** na **Souhrn** stránky.
-
-### <a name="set-up-the-share-location"></a>Nastavení umístění sdílené složky
-V konzole serveru Azure Backup:
-1. V umístění pro obnovení přejděte do složky obsahující zálohování.
-2. Sdílejte složku nad souborem WindowsImageBackup tak, aby kořenovém adresáři sdílené složky nacházela složka WindowsImageBackup. Pokud není sdílená složka WindowsImageBackup, operace obnovení zálohu nenalezne. Chcete-li připojit pomocí prostředí WinRE, musíte WinRE dostupné sdílené složky a správnou IP adresu a přihlašovací údaje.
-
-### <a name="restore-the-machine"></a>Tento počítač obnovit
-
-1. Na virtuálním počítači, ve které chcete obnovit BMR otevřete řádek se zvýšenými oprávněními a zadejte následující příkazy. **/boottore** Určuje, že prostředí Windows RE spustí automaticky při příštím spuštění systému.
-```
-Reagentc /boottore
-shutdown /r /t 0
-```
-
-2. V dialogovém okně otevírání vyberte nastavení jazyka a národního prostředí. Na **nainstalovat** obrazovku, vyberte **opravit tento počítač**.
-3. Na **možnosti obnovení systému** vyberte **obnovení počítače pomocí bitové kopie systému jste vytvořili dříve**.
-4. Na **výběr zálohy bitové kopie systému** vyberte **Vybrat bitovou kopii systému** > **Upřesnit** > **hledat bitovou kopii systému v síti**. Pokud se zobrazí upozornění, vyberte **Ano**. Vybrat bitovou kopii, přejděte do sdílené síťové složce, zadejte přihlašovací údaje a vyberte bod obnovení. Tato funkce proskenuje pro konkrétní dostupné zálohy v daném bodě obnovení. Vyberte bod obnovení.
-5. V **Vvybrat způsob obnovení zálohy**, vyberte **formátovat a znovu rozdělit disky**. Na další obrazovce ověřte nastavení a klikněte na tlačítko **Dokončit** spustíte úlohu obnovení. Restartujte podle potřeby.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 Informace o používání serveru Azure Backup k ochraně jiné úlohy najdete v následujících článcích:

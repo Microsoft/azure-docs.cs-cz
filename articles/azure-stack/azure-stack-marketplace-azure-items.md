@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 79161d0be407a5b5692e1ad0ee25c609aefb2fb5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f5812e071046935b0a1a3ee3f14525ede336954a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure k dispozici pro Azure zásobníku položky Marketplace.
 
@@ -220,5 +220,6 @@ Zásobník Microsoft Azure podporuje následující virtuální počítače Azur
 | ![Kompatibilní NooBaa hybridní AWS S3 - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hybridní AWS S3 compatibe - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | Služba S3 kompatibilní úložiště, která zahrnuje veřejné a místní prostředky kapacity. | NooBaa |
 | ![Brány Firewall PT aplikací](media/azure-stack-marketplace-azure-items/pt.png) | [Brány Firewall PT aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Brány Firewall aplikací PT detekuje známé & neznámé chyby zabezpečení a zabrání útoky na webové aplikace. <b>Stáhněte si oba položky PT Marketplace.</b> | Kladné technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus infrastruktury Azure zásobníku. <b>Stáhněte si oba položky Puppet Marketplace.</b> | Puppet |
+| ![Požadavek na rychlé obnovení](media/azure-stack-marketplace-azure-items/quest.png) | [Základní požadavek na rychlé obnovení](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rychlé obnovení rozšířené ochrany dat kombinuje zálohování, replikaci a obnovení v jednom řešení snadné použití softwaru. | Požadavek na Software |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Správa infrastruktury open-source třídy nejvhodnější. | SUSE |
 | ![Nástroj ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Nástroj ZeroDown softwaru ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | Nástroj v7.1 ZeroDown softwaru - migrovat + HA. | ZeroDown softwaru |

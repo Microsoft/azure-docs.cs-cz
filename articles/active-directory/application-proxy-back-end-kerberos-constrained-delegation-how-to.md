@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikace | Microsoft Docs"
-description: "Řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikace."
+title: Řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikace | Microsoft Docs
+description: Řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikace.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: harshja
-ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 3ba089123198631c443a759ad62cb0ae5ca40ad3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikace
 
@@ -30,7 +30,7 @@ V tomto článku se jako takový pokusí poskytovat samostatný bod odkaz, kter�
 
 Tento článek neposkytuje následující předpoklady:
 
--   Nasazení Proxy aplikace služby Azure na [dokumentace](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) a obecné přístup k aplikacím jiných použitím KCD funguje podle očekávání.
+-   Nasazení Proxy aplikace služby Azure na [dokumentace](manage-apps/application-proxy-enable.md) a obecné přístup k aplikacím jiných použitím KCD funguje podle očekávání.
 
 -   Publikované cílová aplikace je založena na službě IIS a společnosti Microsoft implementace protokolu Kerberos.
 
@@ -42,7 +42,7 @@ Tento článek neposkytuje následující předpoklady:
 
 Proxy aplikace služby Azure můžete nasadit do mnoho typů infrastruktury nebo prostředí a architekturách už nepochybně lišit organizace. Mezi nejběžnější příčiny problémy související s použitím KCD nejsou prostředí sami, ale spíše jednoduché chybná konfigurace nebo obecné dohledu.
 
-Z tohoto důvodu je vždy vhodné začít tím, že zajistí jste splnili všechny předpoklady nastíněny v [pomocí jednotného přihlašování použitím KCD s Proxy aplikace článku](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) před spuštěním řešení potíží.
+Z tohoto důvodu je vždy vhodné začít tím, že zajistí jste splnili všechny předpoklady nastíněny v [pomocí jednotného přihlašování použitím KCD s Proxy aplikace článku](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) před spuštěním řešení potíží.
 
 Části se hlavně na konfiguraci použitím KCD na 2012R2, aktivuje se podstatně liší přístup ke konfiguraci použitím KCD v dřívějších verzích systému Windows, ale také při se s vědomím několik dalších hledisek:
 
@@ -68,13 +68,13 @@ všechny, které jsou opatřeny stejné příznakem nedaří provést jednotné 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Jak pak řešení závisí na problém a zjištěnými příznaků. Před přechodem žádné další, prozkoumejte obsahovat užitečné informace, které jste ještě nemusí mít pocházet napříč následující odkazy:
+Jak řešit závisí na problém a zjištěnou příznaků. Před přechodem žádné další, prozkoumejte obsahovat užitečné informace, které jste ještě nemusí mít pocházet napříč následující odkazy:
 
--   [Řešení potíží s Proxy aplikace problémy a chybové zprávy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
+-   [Řešení potíží s Proxy aplikace problémy a chybové zprávy](active-directory-application-proxy-troubleshoot.md)
 
--   [Chyby protokolu Kerberos a symptomy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot#kerberos-errors)
+-   [Chyby protokolu Kerberos a symptomy](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
 
--   [Práce s SSO při místní a cloudové identity nejsou identické](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd#working-with-sso-when-on-premises-and-cloud-identities-are-not-identical)
+-   [Práce s SSO při místní a cloudové identity nejsou identické](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
 Pokud máte k dispozici to úplně, pak potíže hlavní výborný existuje. Spusťte oddělením toku do tří různých fází, které lze řešit potíže s.
 
@@ -98,7 +98,7 @@ A odpovídající položky zobrazit, že protokol událostí bude považovat za 
 
 -   Použít záznam v interní DNS pro adresu aplikace a ne záznam CName
 
--   Potvrzení, že hostitel konektor byla udělena oprávnění pro delegování do určené cílového účtu SPN a že **používající libovolný protokol pro ověřování** je vybrána. Další informace o tomto tématu najdete v tématu [článku Konfigurace jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd)
+-   Potvrzení, že hostitel konektor byla udělena oprávnění pro delegování do určené cílového účtu SPN a že **používající libovolný protokol pro ověřování** je vybrána. Další informace o tomto tématu najdete v tématu [článku Konfigurace jednotného přihlašování](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 
 -   Ověřte, že je po vydání pouze jednu instanci služby SPN v existence ve službě AD `setspn -x` z příkazový řádek na všechny domény členského hostitele
 
@@ -179,4 +179,4 @@ Pokud jste stále se nedaří průběhu problém, podporu bychom více než pom�
 -   Double směrování ověřování – běžně používá ve scénářích, kde vrstvené aplikace s back-end a před koncem, oba vyžadují ověřování, jako je služba SQL Reporting Services.
 
 ## <a name="next-steps"></a>Další postup
-[Nakonfigurujte omezené delegování protokolu kerberos (použitím KCD) na spravované doméně](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-enable-kcd)
+[Nakonfigurujte omezené delegování protokolu kerberos (použitím KCD) na spravované doméně](../active-directory-domain-services/active-directory-ds-enable-kcd.md)

@@ -3,7 +3,7 @@ title: Průvodci odstraňováním potíží Azure DNS | Microsoft Docs
 description: Postup řešení běžných problémů s Azure DNS
 services: dns
 documentationcenter: na
-author: chadmath
+author: genlin
 manager: cshepard
 editor: ''
 ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: genli
-ms.openlocfilehash: 55db36f1312030cde8e820d9eca9b699ec8cdd4c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS Průvodci odstraňováním potíží
 

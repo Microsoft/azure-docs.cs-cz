@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: a6c415123a8e1254e214af69711fc4143a929a58
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d37913caa94dc4cf79aef9c2c12a7aacce7c03ce
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench architektura
 
@@ -118,4 +118,5 @@ Azure monitorování obsahuje informace o stavu blockchain sítě.
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení Azure Blockchain Workbench](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [Nasazení služby Azure Blockchain Workbench](blockchain-workbench-deploy.md)

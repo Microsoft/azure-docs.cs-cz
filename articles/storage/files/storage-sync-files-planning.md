@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -46,7 +46,14 @@ Agent Azure souboru Sync je ke stažení balíčku, který umožňuje systému W
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Koncový bod serveru
-Koncový bod serveru představuje určitého umístění na serveru pro registrované, například do složky na serveru svazku. Víc koncových bodů serveru může existovat na stejném svazku, pokud se nepřekrývají jejich obory názvů (například `F:\sync1` a `F:\sync2`). Můžete nakonfigurovat zásady vrstvení cloud jednotlivě pro každý koncový bod serveru. V současné době není možné vytvořit koncový bod serveru pro kořenový adresář svazku (například `F:\` nebo `C:\myvolume`, pokud je svazek připojen jako přípojný bod).
+Koncový bod serveru představuje určitého umístění na serveru pro registrované, například do složky na serveru svazku. Víc koncových bodů serveru může existovat na stejném svazku, pokud se nepřekrývají jejich obory názvů (například `F:\sync1` a `F:\sync2`). Můžete nakonfigurovat zásady vrstvení cloud jednotlivě pro každý koncový bod serveru. 
+
+Můžete vytvořit koncový bod serveru prostřednictvím přípojný bod. Poznámka: přípojné body v rámci serveru koncového bodu se přeskočí.  
+
+Koncový bod serveru můžete vytvořit na systémovém svazku, ale pokud tak učiníte, existují dvě omezení:
+* Cloud vrstvení nelze povolit.
+* Obor názvů rychlé obnovení (kde systému rychle přináší dolů celý obor názvů a pak spustí znovu vyvolat obsah) však není provedena.
+
 
 > [!Note]  
 > Jsou podporovány pouze nevyměnitelné svazky.  Jednotky namapované ze vzdálené sdílené složky se nepodporují pro koncový bod cestu k serveru.  Kromě toho může být umístěna koncový bod serveru v systému Windows, ale cloudu systémový svazek vrstvení není podporována na systémovém svazku.
@@ -85,11 +92,11 @@ Budoucí verze systému Windows Server bude přidán jako jejich vydání. Star�
 | Funkce | Podpora stavu | Poznámky |
 |---------|----------------|-------|
 | Seznamy řízení přístupu (ACL) | Plně podporovány. | Seznamy ACL systému Windows se zachovají pomocí synchronizace souboru Azure a jsou vynucována ve Windows serveru na koncové body serveru. Seznamy ACL systému Windows (dosud nejsou) nepodporuje soubory Azure, pokud soubory se k nim přistupuje přímo v cloudu. |
-| Pevné odkazy | Vynecháno | |
-| Symbolické odkazy | Vynecháno | |
+| Pevné odkazy | Přeskočeno | |
+| Symbolické odkazy | Přeskočeno | |
 | Přípojné body | Částečně podporována. | Přípojné body může být kořenovém koncový bod serveru, ale budou se přeskočí, pokud jsou obsaženy v oboru názvů koncový bod serveru. |
-| Spojovacích bodech | Vynecháno | Například distribuované DfrsrPrivate systému souborů a DFSRoots složky. |
-| Body rozboru | Vynecháno | |
+| Spojovacích bodech | Přeskočeno | Například distribuované DfrsrPrivate systému souborů a DFSRoots složky. |
+| Body rozboru | Přeskočeno | |
 | Komprese NTFS | Plně podporovány. | |
 | Zhuštěných souborů | Plně podporovány. | Synchronizace zhuštěných souborů (nejsou blokována), ale jejich synchronizaci do cloudu jako celého souboru. Pokud se obsah souboru se změní v cloudu (nebo na jiném serveru), soubor je již zhuštěných po stažení změn. |
 | Alternativní datové proudy (reklamy) | Zachovají, ale nejsou synchronizované | Například není synchronizovaná značky klasifikace, které jsou vytvořené pomocí infrastruktury klasifikace souborů. Existující klasifikace značky na soubory na každém serveru koncových bodů nedotčené. |
@@ -105,7 +112,7 @@ Budoucí verze systému Windows Server bude přidán jako jejich vydání. Star�
 | ~$\*.\* | Dočasný soubor Office |
 | \*TMP. | Dočasný soubor |
 | \*.laccdb | Zamykací soubor přístup DB|
-| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| 635D02A9D91C401B97884B82B3BCDAEA.* | Interní synchronizace souboru|
 | \\Informacemi o systémovém svazku | Složky, které jsou specifické pro svazek |
 | $RECYCLE. KOŠ| Složka |
 | \\SyncShareState | Složka pro synchronizaci |
@@ -191,6 +198,6 @@ Ve verzi preview podporujeme synchronizuje pouze s Azure sdílenou, který je ve
 
 ## <a name="next-steps"></a>Další postup
 * [Zvažte nastavení brány firewall a proxy](storage-sync-files-firewall-and-proxy.md)
-* [Plánování nasazení Azure Files](storage-files-planning.md)
+* [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nasazení Azure souborů](storage-files-deployment-guide.md)
 * [Nasazení Azure File synchronizace](storage-sync-files-deployment-guide.md)

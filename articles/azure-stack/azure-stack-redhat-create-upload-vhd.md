@@ -13,16 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/11/2018
 ms.author: jeffgo
-ms.openlocfilehash: d7b79962822dcfec96c7087100b1537d8046ab46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 524c3b3b86e43b56e1d1f2a1653bdf7b82061022
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Příprava virtuálního počítače, na základě Red Hat pro Azure zásobníku
 V tomto článku se dozvíte, jak připravit virtuální počítač Red Hat Enterprise Linux (RHEL) pro použití v Azure zásobníku. Verze RHEL, které jsou popsané v tomto článku jsou 7.1 +. Hypervisory pro přípravu, které jsou popsané v tomto článku jsou virtuální počítače Hyper-V, na základě jádra (KVM) a VMware.
+
+Informace o podpoře Red Hat Enterprise Linux naleznete [Azure zásobníku a Red Hat: Nejčastější dotazy](https://access.redhat.com/articles/3413531).
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Příprava virtuálního počítače, na základě Red Hat ze Správce technologie Hyper-V
 

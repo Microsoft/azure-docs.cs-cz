@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2017
+ms.date: 05/11/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ec0caccafd7ed6eaf91be153014d2e3aaf5a30b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: bce9e7de13ff95024685ccf916541357f5362727
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Změnit informace z vašeho profilu účtu Azure například kontaktní e-mailová adresa a telefonní číslo
 
@@ -31,7 +31,7 @@ E-mailovou adresu v profilu správce účtu se společností Microsoft použív�
 1. Přihlaste se k [centra účtů Azure](https://account.azure.com/Profile).
 1. Vyberte **upravit podrobnosti** tlačítko a pak aktualizujte **profil** informace.
 
-   ![Profil](./media/billing-how-to-change-azure-account-profile/profile.png)
+   ![profil](./media/billing-how-to-change-azure-account-profile/profile.png)
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

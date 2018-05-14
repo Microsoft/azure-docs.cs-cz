@@ -6,13 +6,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: a9c77179aa77b7920646d0415ce4d244892215e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 58ea2e7c387137f974425464ef2c9d17f438ba7c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení replikace VMware v prostředí s více klientů s programem Cloud Solution Provider (CSP)
 

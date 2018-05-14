@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Nahrání souborů do účtu Media Services pomocí REST
 > [!div class="op_single_selector"]
@@ -87,11 +87,11 @@ Pokyny o tom, jak nastavit Postman pro účely tohoto kurzu, najdete v části [
     ```
 4. Na levé straně **Postman** klikněte na **1. Získání tokenu ověřování AAD** -> **získat Azure AD tokenu pro instanční objekt**.
 
-    Část adresy URL, naplní se **AzureADSTSEndpoint** proměnnou prostředí (která je nastavena hodnota dříve v tomto kurzu).
-    
-5. Stiskněte **Odeslat**.
+    Část adresy URL, naplní se **AzureADSTSEndpoint** proměnnou prostředí (dříve v tomto kurzu nastavíte hodnoty [proměnné prostředí](#configure-the-environment) podporující [kolekce](#configure-the-collection)).
 
     ![Nahrání souboru](./media/media-services-rest-upload-files/postment-get-token.png)
+
+5. Stiskněte **Odeslat**.
 
     Můžete zobrazit odpověď, který obsahuje "access_token". "Test" skript používá tuto hodnotu a nastaví **AccessToken** proměnnou prostředí (jak je popsáno výše). Pokud si projdete proměnných prostředí, zobrazí se tato proměnná nyní obsahuje token (token nosiče) hodnotu přístupu, která se používá ve zbývající části operace. 
 

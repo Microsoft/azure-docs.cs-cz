@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ee8f30bc81d3c3bd0bf4659359a6ca3a9280f734
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Správa jednotného přihlašování pro podnikové aplikace
 
@@ -28,13 +28,13 @@ Tento článek popisuje postup použití [portál Azure](https://portal.azure.co
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace v portálu
 Všechny podnikové aplikace, které jsou nastavené pro jednotné přihlašování lze zobrazit a spravovat na portálu Azure. Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace, které** části portálu. 
 
-![Okno podnikové aplikace][1]
+![Okno podnikové aplikace](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.png)
 
 Vyberte **všechny aplikace** Chcete-li zobrazit seznam všech aplikací, které byly nakonfigurovány. Výběr aplikace zobrazí prostředky pro tuto aplikaci, kde je možné zobrazit sestavy pro tuto aplikaci a lze je spravovat celou řadu nastavení.
 
 Chcete-li spravovat nastavení jednotného přihlašování, vyberte **jednotného přihlašování**.
 
-![Okna prostředků aplikace][2]
+![Okna prostředků aplikace](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.png)
 
 ## <a name="single-sign-on-modes"></a>Režimy přihlášení
 **Jednotné přihlašování** začíná **režimu** nabídce, která umožňuje jeden přihlašování v režimu nakonfigurovat. Mezi dostupné možnosti patří:
@@ -76,24 +76,19 @@ Koncová část poskytuje dokumentaci a ovládací prvky, které jsou potřeba k
 > 
 > 
 
-![Vložené dokumentace][3]
+![Vložené dokumentace](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>Založené na heslech přihlášení
 Pokud pro aplikaci podporován, vyberete režim jednotné přihlašování založené na heslech a vyberete **Uložit** okamžitě nakonfiguruje jejich jednotné přihlašování založené na heslech. Další informace o nasazení založené na heslech jednotného přihlašování najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
-![Založené na heslech přihlášení][4]
+![Založené na heslech přihlášení](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>Propojené přihlášení
 Pokud podporován pro aplikaci, výběr propojené režimu jednotné přihlašování umožňuje zadat adresu URL, kterou chcete přístupový Panel Azure AD nebo Office 365 pro přesměrování na, když uživatelé kliknou na tuto aplikaci. Další informace o propojené přihlášení SSO (dříve označované jako "stávající SSO") najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
 
-![Propojené přihlášení][5]
+![Propojené přihlášení](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 
 ## <a name="feedback"></a>Váš názor
 
 Věříme, že je jako vylepšenou prostředí Azure AD. Prosím udržovat zpětnou vazbu, než dorazí! POST vaše názory a návrhy pro zlepšení **portál pro správu** části našich [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Jsme se vzrušení o vytváření nástrojů nové vlastní položky každý den a použijte vaše pokyny na obrazec a definovat, co se máme zaměřit příště.
 
-[1]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade.PNG
-[2]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-sso-blade.PNG
-[3]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.PNG
-[4]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.PNG
-[5]: ./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.PNG

@@ -14,8 +14,8 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: efedbf89a6d15a13db5bc86fef9f270e0c84e13b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f899e3f45174aef8274810e184cc374bcca2c50
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
@@ -79,8 +79,8 @@ Pokud máte aplikace ve vaší privátní sítě, které je nutné mít přístu
 | Článek Průvodce |  |
 |:---:| --- |
 | Přehled proxy aplikace služby Azure AD a jak to funguje |[Poskytuje zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md) |
-| Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](active-directory-application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](active-directory-application-proxy-silent-installation.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md)<br /><br />[Jak používat vlastní název domény](active-directory-application-proxy-custom-domains.md) |
-| Postup povolení jednoho přihlášení a podmíněného přístupu pro aplikace publikované s Proxy aplikace |[Jednotné přihlášení pomocí Proxy aplikace](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[Podmíněný přístup a Proxy aplikací](application-proxy-enable-remote-access-sharepoint.md) |
+| Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](active-directory-application-proxy-silent-installation.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak používat vlastní název domény](manage-apps/application-proxy-configure-custom-domain.md) |
+| Postup povolení jednoho přihlášení a podmíněného přístupu pro aplikace publikované s Proxy aplikace |[Jednotné přihlášení pomocí Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Podmíněný přístup a Proxy aplikací](application-proxy-enable-remote-access-sharepoint.md) |
 | Pokyny k použití aplikace Proxy pro tyto scénáře |[Jak podporovat nativní klientské aplikace](active-directory-application-proxy-native-client.md)<br /><br />[Jak podporovat deklaracemi identity aplikace](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Jak podporovat aplikace, které jsou publikovány v samostatných sítí a umístění](active-directory-application-proxy-connectors-azure-portal.md) |
 | Průvodce řešením potíží pro Proxy aplikace |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
 

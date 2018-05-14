@@ -15,11 +15,11 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1627f3590bd92f2460368cffab48d43c5a82d3c4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3f2dd8dd860ecc1da476fcbccbe16f9c21e3c836
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Nastavit vlastní domovskou stránku pro publikovaných aplikací pomocí proxy aplikace služby Azure AD
 
@@ -141,4 +141,4 @@ Vytvořit adresu URL domovské stránky a aktualizovat vaše aplikace s danou ho
 ## <a name="next-steps"></a>Další postup
 
 - [Povolte vzdálený přístup na SharePoint s proxy aplikace služby Azure AD](application-proxy-enable-remote-access-sharepoint.md)
-- [Povolení Proxy aplikace na portálu Azure](active-directory-application-proxy-enable.md)
+- [Povolení Proxy aplikace na portálu Azure](manage-apps/application-proxy-enable.md)

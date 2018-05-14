@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: 5a2a818b6a36fd4dbaf3a18c1ef98d2a13596240
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
@@ -80,7 +80,7 @@ Kontaktujte Azure AD technickému týmu požádat o zřizování podporu další
 
 Konfigurace služby Azure AD pro vybrané aplikace se spustí v zřizování služby  **[portál Azure](https://portal.azure.com)**. V **Azure Active Directory > podnikové aplikace, které** vyberte **přidat**, pak **všechny**a poté přidejte následující v závislosti na vašem scénáři:
 
-* Všechny aplikace v **vybrané aplikace** části Podpora automatické zřizování. Viz [seznam kurzů aplikace pro zřizování uživatelů] active-directory-saas – kurz list.md) pro další pravidla.
+* Všechny aplikace v **vybrané aplikace** části Podpora automatické zřizování. Najdete v článku [seznam kurzů aplikace pro zřizování uživatelů](active-directory-saas-tutorial-list.md) pro další pravidla.
 
 * Pomocí možnosti "bez Galerie aplikace" pro zákaznických SCIM integrace
 

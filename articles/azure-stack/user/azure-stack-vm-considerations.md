@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2018
+ms.date: 05/10/2018
 ms.author: brenduns
-ms.openlocfilehash: 8c9fd7d5824e5d315a7dd30e5052fe10802d197e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="considerations-for-virtual-machines-in-azure-stack"></a>Důležité informace pro virtuální počítače v Azure zásobníku
+# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů v Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Virtuální počítače jsou na vyžádání, škálovatelných výpočetních prostředků, které nabízí Azure zásobníku. Použijete-li virtuální počítače, je potřeba pochopit, že jsou rozdíly mezi funkce, které jsou dostupné v Azure a Azure zásobníku. Tento článek obsahuje přehled aspektů jedinečné pro virtuální počítače a jeho funkce v zásobníku Azure. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) článku.
+Virtuální počítače Azure zásobníku poskytují na vyžádání, škálovatelných výpočetních prostředků. Před nasazením virtuálních počítačů (VM), musí porozumět rozdílům mezi funkce virtuálních počítačů, která je k dispozici v zásobníku Azure a Microsoft Azure. Tento článek popisuje tyto rozdíly a identifikuje klíčové faktory týkající se plánování nasazení virtuálních počítačů. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) článku.
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Tahák: rozdíly virtuálního počítače
 
@@ -41,10 +41,12 @@ Virtuální počítače jsou na vyžádání, škálovatelných výpočetních p
 |Škálovací sady virtuálních počítačů|Podporované automatickému škálování|Automatické škálování není podporována.<br>Přidáte další instance škálování, nastavit pomocí portálu, šablony Resource Manageru nebo prostředí PowerShell.
 
 ## <a name="virtual-machine-sizes"></a>Velikosti virtuálních počítačů
-Systému Azure vynucuje omezení prostředků několika způsoby, aby se zabránilo overconsumption prostředků (server místní a úroveň služby). Bez uvedení některá omezení na klienty spotřeby prostředků, může být nižší činnost klienta, pokud aktivní sousedním overconsumes prostředky. 
-- Sítě odchozí z virtuálního počítače nejsou šířka pásma omezuje šířku na místě. CAP k vzdálené ploše v zásobníku Azure odpovídat CAP v Azure.  
-- Pro prostředky úložiště Azure zásobníku implementuje IOPs limity úložiště, aby se zabránilo základní overconsumption prostředků klienty pro přístup k úložišti. 
-- U virtuálních počítačů s více disky připojené dat maximální propustnost každé jednotlivé datový disk je 500 IOPS pro HHDs a 2300 IOPS pro jednotky SSD.
+
+Azure zásobníku ukládá limitů prostředků, aby se zabránilo přes spotřebu prostředků (server místní a úrovně služeb.) Tyto limity zlepšení uživatelského rozhraní klienta snížením dopad spotřeba prostředků ostatních klientů.
+
+- Sítě odchozí z virtuálního počítače nejsou šířka pásma omezuje šířku na místě. CAP k vzdálené ploše v zásobníku Azure jsou stejné jako CAP v Azure.
+- Pro prostředky úložiště Azure zásobníku implementuje IOPS limity úložiště, aby se zabránilo základní overconsumption prostředků klienty pro přístup k úložišti.
+- U virtuálních počítačů s více disky připojené dat maximální propustnost každý datový disk je 500 IOPS pro HHDs a 2300 IOPS pro jednotky SSD.
 
 Následující tabulka uvádí virtuální počítače, které jsou podporovány v zásobníku Azure spolu s jejich konfigurace:
 
@@ -61,11 +63,11 @@ Následující tabulka uvádí virtuální počítače, které jsou podporovány
 |Optimalizované z hlediska paměti|Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Optimalizované z hlediska paměti|DSv2-series-  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Velikosti virtuálních počítačů a jejich přidružených prostředků počty jsou konzistentní mezi zásobník Azure a Azure. Tato konzistence zahrnuje množství paměti, počet jader a číslo nebo velikost datových disků, které lze vytvořit. Výkon stejnou velikost virtuálního počítače v Azure zásobníku však závisí na základní charakteristiky konkrétní prostředí Azure zásobníku.
+Velikosti virtuálních počítačů a jejich přidružených prostředků počty jsou konzistentní mezi zásobník Azure a Azure. To zahrnuje množství paměti, počet jader a číslo nebo velikost datových disků, které lze vytvořit. Však výkonu virtuálních počítačů se stejnou velikost závisí na základní vlastnosti konkrétního prostředí Azure zásobníku.
 
 ## <a name="virtual-machine-extensions"></a>Rozšíření virtuálních počítačů
 
- Azure Stack zahrnuje malého rozšíření. Aktualizace a další rozšíření a jsou k dispozici prostřednictvím syndikace Marketplace.
+ Azure Stack zahrnuje malého rozšíření. Aktualizace a další rozšíření jsou k dispozici prostřednictvím syndikace Marketplace.
 
 Pomocí následujícího skriptu prostředí PowerShell získat seznam rozšíření virtuálního počítače, které jsou k dispozici ve vašem prostředí Azure zásobníku:
 
@@ -92,18 +94,17 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
+
 Seznam podporovaných prostředků typy a verze rozhraní API se může lišit, pokud operátor cloudu aktualizuje na novější verzi prostředí Azure zásobníku.
 
 ## <a name="windows-activation"></a>Aktivace systému Windows
 
-Produkty Windows musí být použity v souladu s práva k použití produktu a licenční podmínky společnosti Microsoft. Používá Azure zásobníku [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) k aktivaci systému Windows Server virtuálních počítačů (VM). 
- - Protože Azure zásobníku hostitele aktivuje s klíče AVMA pro Windows Server 2016, všechny virtuální počítače, Windows serverem 2012 nebo později budou automaticky aktivována.
- - Virtuální počítače, které spuštění systému Windows Server 2008 R2 nejsou aktivovány automaticky a musí být aktivované touto metodou [aktivaci pomocí kódu MAK](https://technet.microsoft.com/library/ff793438.aspx). 
+Produkty Windows musí být použity v souladu s práva k použití produktu a licenční podmínky společnosti Microsoft. Používá Azure zásobníku [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) k aktivaci systému Windows Server virtuálních počítačů (VM).
+
+- Hostitele Azure zásobníku aktivuje Windows s klíče AVMA pro Windows Server 2016. Všechny virtuální počítače se systémem Windows Server 2012 nebo novější budou automaticky aktivována.
+- Virtuální počítače, které spuštění systému Windows Server 2008 R2 nejsou aktivovány automaticky a musí být aktivované touto metodou [aktivaci pomocí kódu MAK](https://technet.microsoft.com/library/ff793438.aspx).
 
 Microsoft Azure aktivace služby správy KLÍČŮ používá k aktivaci virtuální počítače Windows. Pokud přesunete virtuální počítač z Azure zásobníku pro Azure a dojde k aktivaci problémy, projděte si téma [řešení potíží s Windows Azure virtuálního počítače při potížích s aktivací](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Další informace naleznete na [selhání aktivace řešení potíží s Windows na virtuálních počítačích Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) příspěvek blogu týmu podpory Azure.
-
-
-
 
 ## <a name="next-steps"></a>Další postup
 

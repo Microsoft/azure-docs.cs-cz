@@ -12,31 +12,31 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/10/2018
+ms.date: 05/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b451ede984d3baa8331ec87575557f845686c01f
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: d675236f36840858f0f011484392186d355ac6df
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý úvod: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory 
 
-Ke zjednodušení přihlašování uživatelů, můžete chtít povolit je pro přihlášení ke cloudové aplikace pomocí uživatelského jména a hesla. Mnoho prostředí však mít alespoň několik aplikací, pro které je třeba vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování. To může být pro příklad true, pro přístup k vaší organizaci e-mailovému systému nebo aplikace pro oddělení lidských zdrojů. V Azure Active Directory můžete dosažení tohoto cíle se zásadami podmíněného přístupu.    
+Ke zjednodušení přihlašování uživatelů, můžete chtít povolit je pro přihlášení ke cloudové aplikace pomocí uživatelského jména a hesla. Mnoho prostředí však mít alespoň několik aplikací, pro které je třeba vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování (MFA). To může být pro příklad true, pro přístup k vaší organizaci e-mailovému systému nebo aplikace pro oddělení lidských zdrojů. V Azure Active Directory (Azure AD) můžete dosažení tohoto cíle se zásadami podmíněného přístupu.    
 
-Tento rychlý start ukazuje, jak nakonfigurovat [zásady podmíněného přístupu Azure AD](active-directory-conditional-access-azure-portal.md) vyžadovat vícefaktorové ověřování pro sadu vybraných cloudových aplikací ve vašem prostředí.
+Tento rychlý start ukazuje, jak nakonfigurovat [zásady podmíněného přístupu Azure AD](active-directory-conditional-access-azure-portal.md) , vyžaduje vícefaktorové ověřování pro sadu vybraných cloudových aplikací ve vašem prostředí.
 
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-Tento scénář v tomto článku používá portál Azure jako zástupný symbol pro cloudové aplikace, která vyžaduje službu Multi-Factor authentication pro konkrétního uživatele. Isabella Simonsen je uživatel ve vaší organizaci. Když se uživatel přihlásí k portálu Azure, budete chtít svá provést ještě další ověření svůj účet pomocí služby Multi-Factor authentication.
+Tento scénář v tomto článku používá portál Azure jako zástupný symbol pro cloudové aplikace, která vyžaduje vícefaktorové ověřování pro konkrétního uživatele. Isabella Simonsen je uživatel ve vaší organizaci. Když se uživatel přihlásí k portálu Azure, budete chtít svá provést ještě další ověření svůj účet pomocí vícefaktorového ověřování.
 
 ![Ověřování pomocí služby Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
 
 
 
-## <a name="prerequisites"></a>Požadované součásti 
+## <a name="prerequisites"></a>Požadavky 
 
 Chcete-li dokončit tento scénář v tento rychlý start, je třeba:
 
@@ -58,7 +58,7 @@ V zásadách můžete nastavit:
 |Udělení | Vyžadovat vícefaktorové ověřování |
  
 
-![Vytvořit zásadu](./media/active-directory-conditional-access-app-based-mfa/21.png)
+![Vytvoření zásad](./media/active-directory-conditional-access-app-based-mfa/31.png)
 
 
 
