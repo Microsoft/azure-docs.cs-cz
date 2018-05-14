@@ -6,11 +6,11 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 04b001e816b50176ce6529ddf49036c250f0dc24
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 58a05642ebbbce0773d20720903964a1ed3ab06c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/11/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -167,7 +167,7 @@ Node.js</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/go/azure/">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="">
 Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
@@ -5396,7 +5396,7 @@ Azure pro vývojáře v Javě </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">

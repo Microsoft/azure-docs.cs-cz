@@ -1,11 +1,11 @@
 ---
-title: "Aplikace Node.js pomocí Socket.io – Azure"
-description: "Další informace o použití socket.io v aplikaci node.js hostované v Azure."
+title: Aplikace Node.js pomocí Socket.io – Azure
+description: Další informace o použití socket.io v aplikaci node.js hostované v Azure.
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: 186cf5e22468b7abf58d6366ca0dec616be23cc6
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 0139c42334b53364aee8cfd29cfa771d47e2ccc8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace Node.js pomocí Socket.IO ve službě Azure Cloud Service
 
@@ -28,7 +28,7 @@ Zde je snímek obrazovky dokončené aplikace:
 
 ![Okno prohlížeče zobrazující služby hostované v Azure][completed-app]  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 Ujistěte se, že jsou nainstalovány následující produkty a verze úspěšné dokončení v příkladu v tomto článku:
 
 * Nainstalovat [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -61,7 +61,7 @@ Pro tento projekt použijeme příklad chat z [úložiště Socket.IO GitHub]. P
 
 1. Vytvořit místní kopii úložiště pomocí **klon** tlačítko. Můžete také používat **ZIP** tlačítko Stáhnout projektu.
    
-   ![Okno prohlížeče zobrazení https://github.com/LearnBoost/socket.io/tree/master/examples/chat, zvýrazněnou ikonou stáhnout ZIP][chat-example-view]
+   ![Zobrazení okna prohlížeče https://github.com/LearnBoost/socket.io/tree/master/examples/chat, zvýrazněnou ikonou stáhnout ZIP][chat-example-view]
 2. Až přijedete do přejděte struktura adresářů místní úložiště **příklady\\chat** adresáře. Kopírovat obsah tohoto adresáře na **C:\\uzlu\\chatapp\\WorkerRole1** adresář vytvořený.
    
    ![Průzkumník, zobrazení obsahu v příkladech\\directory chat extrahovat z archivu][chat-contents]
@@ -123,7 +123,7 @@ Po uložení změn do **server.js**, použijte následující postup k instalaci
 4. Po testování aplikace, zastavte emulátoru vydání následujícího příkazu:
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Chcete-li nasadit aplikaci do Azure, použijte **Publish-AzureServiceProject** rutiny. Například:
+5. Chcete-li nasadit aplikaci do Azure, použijte **Publish-AzureServiceProject** rutiny. Příklad:
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    
@@ -148,7 +148,7 @@ Vaše aplikace je nyní spuštěna v Azure a může přenášet zprávy chat mez
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit základní chatovací aplikace hostované na cloudové služby Azure. Zjistěte, jak hostovat tuto aplikaci na webu Azure, najdete v tématu [sestavení aplikace Chat v Node.js se Socket.IO na webovou stránku Azure][chatwebsite].
 
 Další informace naleznete také [středisku pro vývojáře Node.js](/develop/nodejs/).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 3a4277d2106078136cee09dfe6aefc87a73c4e08
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokol výstrah v monitorování Azure – výstrahy 
 Tento článek obsahuje podrobnosti o výstrahách protokolu se jeden z typů výstrah, které jsou podporovány v rámci nové [Azure výstrahy](monitoring-overview-unified-alerts.md) a povolit uživatelům analytické platformě Azure, je použít jako základ pro zobrazení výstrah... Podrobnosti o výstrahách metrika pomocí protokolů [téměř upozornění v reálném čase metrika](monitoring-near-real-time-metric-alerts.md)
@@ -60,7 +60,7 @@ Chcete-li výstraha na jednu událost, nastavit počet výsledků na hodnotu vě
 
 V některých případech můžete vytvořit výstrahu při absenci událost.  Tento proces se může například protokolu běžné události indikující, že funguje správně.  Pokud není některá z těchto událostí protokolu v konkrétním časovém období, je třeba vytvořit výstrahu.  V takovém případě by nastavit prahovou hodnotu **menší než 1**.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 Představte si třeba situaci, kdy budete chtít vědět, když aplikace založené na webu poskytuje odpověď pro uživatele s kódem 500 (tj.) vnitřní chyba serveru. Vytvoříte pravidlo výstrahy s následujícími podrobnostmi:  
 - **Dotaz:** požadavky | kde resultCode == "500"<br>
 - **Časové období:** 30 minut<br>
@@ -85,14 +85,14 @@ Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – má být vyhled�
     
 - **Prahová hodnota**: prahová hodnota pro pravidla výstrah metriky měření je definována agregovaná hodnota a celou řadu.  Pokud žádné datového bodu v hledání protokolů překročí tuto hodnotu, považuje za porušení.  Pokud počet porušení v u všech objektů ve výsledcích překročí zadanou hodnotu, se vytvoří výstraha pro tento objekt.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 Vezměte v úvahu scénář, kde jste chtěli výstrahu překračování libovolného počítače využití procesoru 90 % třikrát více než 30 minut.  Vytvoříte pravidlo výstrahy s následujícími podrobnostmi:  
 
 - **Dotaz:** výkonu | kde ObjectName == "Procesor" a název_čítače == "% času procesoru" | shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 5 m), počítač<br>
 - **Časové období:** 30 minut<br>
 - **Frekvence výstrah:** pět minut<br>
 - **Agregace hodnota:** skvělé než 90<br>
-- **Aktivační událost upozornění na základě:** celkem poruší větší než 5<br>
+- **Aktivační událost upozornění na základě:** celkem poruší větší než 2<br>
 
 Dotaz by vytvořit průměrnou hodnotu pro každý počítač v intervalech 5 minut.  Tento dotaz by spustit každých 5 minut datech shromážděných za předchozí 30 minut.  Ukázková data jsou uvedené dole pro tři počítače.
 
