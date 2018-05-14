@@ -14,10 +14,10 @@
   items:
     - name: Nasazení Workbenche
       href: blockchain-workbench-deploy.md
-    - name: Správa uživatelů Workbenche
-      href: blockchain-workbench-manage-users.md
     - name: Vytvoření blockchainové aplikace
       href: blockchain-workbench-create-app.md
+    - name: Správa uživatelů Workbenche
+      href: blockchain-workbench-manage-users.md
     - name: Použití blockchainové aplikace
       href: blockchain-workbench-use.md
     - name: Použití rozhraní API Workbenche
