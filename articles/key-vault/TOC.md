@@ -1,7 +1,7 @@
 # [Dokumentace ke službě Key Vault](index.yml)
 
 # Přehled
-## [Přehled služby Key Vault](key-vault-overview.md)
+## [Informace o službě Key Vault](key-vault-overview.md)
 
 # Šablony Rychlý start
 ## [Vytvoření služby Key Vault – Rozhraní příkazového řádku](quick-create-cli.md)
@@ -65,8 +65,8 @@
 ## [Přehled služby](https://azure.microsoft.com/services/key-vault/)
 ## [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)
 ### [Začínáme s certifikáty](certificate-scenarios.md)
-#### [Metody vytvoření certifikátu](create-certificate.md)
-#### [Monitorování a správa vytvoření certifikátu](create-certificate-scenarios.md)
+### [Metody vytvoření certifikátu](create-certificate.md)
+### [Monitorování a správa vytvoření certifikátu](create-certificate-scenarios.md)
 ## [Ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
 ## [Běžné parametry a záhlaví](common-parameters-and-headers.md)
 ## [Verze Key Vault](key-vault-versions.md)

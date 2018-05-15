@@ -45,6 +45,8 @@
       href: ssl-overview.md
     - name: Přesměrování adres URL
       href: redirect-overview.md
+    - name: Monitorování stavu
+      href: application-gateway-probe-overview.md
 - name: Návody
   items:
     - name: Vytvoření služby Application Gateway
@@ -93,6 +95,20 @@
       href: tutorial-url-redirect-powershell.md
     - name: Vytvoření zónově redundantní brány Application Gateway
       href: create-zone-redundant.md
+    - name: Vlastní sběry dat
+      items:
+        - name: Portál
+          href: application-gateway-create-probe-portal.md
+        - name: Classic PowerShell
+          href: application-gateway-create-probe-classic-ps.md
+        - name: PowerShell s Resource Managerem
+          href: application-gateway-create-probe-ps.md
+    - name: Řešení potíží
+      items:
+        - name: Řešení chyb typu Chybná brána (502)
+          href: application-gateway-troubleshooting-502.md
+        - name: Diagnostika
+          href: application-gateway-diagnostics.md
 - name: Referenční informace
   items:
     - name: Azure CLI

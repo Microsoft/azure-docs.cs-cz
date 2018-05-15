@@ -10,6 +10,7 @@
 ## Postup
 ### [Nastavení vysoké dostupnosti s využitím techniky STONITH](ha-setup-with-stonith.md)
 ### [Zálohování operačního systému pro SKU typu II](os-backup-type-ii-skus.md)
+### [Upgrade operačního systému pro Velké instance HANA](os-upgrade-hana-large-instance.md)
 # SAP HANA ve službě Azure Virtual Machines
 ## [Instalace jedné instance SAP HANA](hana-get-started.md)
 ## [Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL](cal-s4h.md)

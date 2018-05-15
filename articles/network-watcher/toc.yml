@@ -17,8 +17,12 @@
   items:
     - name: Diagnostika potíží se směrováním virtuálních počítačů
       href: diagnose-vm-network-routing-problem.md
-    - name: Sledování síťových připojení
+    - name: Monitorování komunikace mezi virtuálními počítači
       href: connection-monitor.md
+    - name: Diagnostika potíží s komunikací mezi sítěmi
+      href: diagnose-communication-problem-between-networks.md
+    - name: Protokolování provozu sítě virtuálních počítačů
+      href: network-watcher-nsg-flow-logging-portal.md
 - name: Koncepty
   items:
     - name: Diagnostika potíží s filtrováním síťového provozu virtuálních počítačů
@@ -35,8 +39,8 @@
       href: network-watcher-nsg-flow-logging-overview.md
     - name: Zobrazení skupin zabezpečení sítě
       href: network-watcher-security-group-view-overview.md
-    - name: Zobrazení topologie sítě
-      href: network-watcher-topology-overview.md
+    - name: Oprávnění pro řízení přístupu na základě rolí
+      href: required-rbac-permissions.md
 - name: Návody
   items:
     - name: Konfigurace Network Watcheru
@@ -93,8 +97,6 @@
       items:
         - name: Konfigurace protokolů toku NSG
           items:
-            - name: Azure Portal
-              href: network-watcher-nsg-flow-logging-portal.md
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
             - name: Azure CLI
@@ -136,8 +138,6 @@
       items:
         - name: Řešení potíží
           items:
-            - name: Azure Portal
-              href: network-watcher-troubleshoot-manage-portal.md
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
             - name: Azure CLI
@@ -150,16 +150,8 @@
           href: network-watcher-monitor-with-azure-automation.md
         - name: Diagnostika místního připojení prostřednictvím brány VPN
           href: network-watcher-diagnose-on-premises-connectivity.md
-    - name: Zobrazení topologie vaší sítě
-      items:
-        - name: Azure PowerShell
-          href: network-watcher-topology-powershell.md
-        - name: Azure CLI
-          href: network-watcher-topology-cli.md
-        - name: Azure CLI 1.0
-          href: network-watcher-topology-cli-nodejs.md
-        - name: REST
-          href: network-watcher-topology-rest.md
+    - name: Zobrazení topologie sítě
+      href: view-network-topology.md
     - name: Určení relativní latence mezi umístěním a oblastí Azure
       href: view-relative-latencies.md
 - name: Referenční informace

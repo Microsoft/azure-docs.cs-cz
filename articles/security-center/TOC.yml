@@ -153,6 +153,8 @@
           href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
+        - name: Kontrola dodržování předpisů (REST)
+          href: security-center-review-policy-compliance.md
     - name: Scénáře
       items:
         - name: Reakce na incidenty

@@ -53,6 +53,8 @@
           href: app-insights-asp-net-core.md
         - name: Konzola
           href: application-insights-console.md
+        - name: Řídicí panel aplikací
+          href: app-insights-overview-dashboard.md
     - name: Monitorování aplikací v Javě
       items:
         - name: Webové aplikace
@@ -228,6 +230,8 @@
           href: app-insights-automate-with-flow.md
         - name: Automatizace s využitím Azure Logic App
           href: automate-with-logic-apps.md
+        - name: Vlastní e-mailové sestavy
+          href: automate-custom-reports.md
     - name: Vývoj
       items:
         - name: Rozhraní API pro vlastní události a metriky

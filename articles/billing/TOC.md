@@ -43,6 +43,7 @@
 ### [Aktualizace platebních informací](billing-how-to-change-credit-card.md)
 ### [Úhrada předplatných pomocí faktury](billing-how-to-pay-by-invoice.md)
 ### [Propojení ID partnera](billing-partner-admin-link-started.md)
+### [Zobrazení fakturačních účtů](billing-view-all-accounts.md)
 ## [Správa rezervovaných instancí virtuálních počítačů](billing-manage-reserved-vm-instance.md)
 ## Řešení potíží
 ### [Problémy s registrací](https://support.microsoft.com/en-us/help/4042959)

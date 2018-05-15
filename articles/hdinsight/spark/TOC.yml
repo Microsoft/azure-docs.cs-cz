@@ -19,6 +19,10 @@
   items:
     - name: Spouštění dotazů v clusteru Spark
       href: apache-spark-load-data-run-query.md
+    - name: Použití VSCode pro spouštění sparkových dotazů
+      href: ../hdinsight-for-vscode.md
+    - name: Použití IntelliJ pro spouštění sparkových dotazů
+      href: apache-spark-intellij-tool-plugin.md
     - name: Analýza dat pomocí nástrojů BI
       href: apache-spark-use-bi-tools.md
     - name: Spuštění úlohy streamování
@@ -47,10 +51,10 @@
           href: apache-spark-eclipse-tool-plugin.md
         - name: Vytváření aplikací pomocí IntelliJ
           href: apache-spark-intellij-tool-plugin.md
-        - name: Vzdálené ladění sparkových úloh pomocí IntelliJ přes VPN
-          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: Vzdálené ladění sparkových úloh pomocí IntelliJ přes SSH
           href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
+        - name: Vzdálené ladění sparkových úloh pomocí IntelliJ přes VPN
+          href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
         - name: Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
           maintainContext: true
@@ -316,6 +320,8 @@
       items:
         - name: Ladění sparkových úloh
           href: apache-spark-job-debugging.md
+        - name: Použití IntelliJ pro ladění sparkových úloh
+          href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
         - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
           href: ../hdinsight-troubleshoot-failed-cluster.md
           maintainContext: true

@@ -25,7 +25,7 @@
       href: role-assignments-external-users.md
     - name: Protokoly aktivit
       href: change-history-report.md
-    - name: Zvýšení úrovně přístupu správce tenanta
+    - name: Zvýšení oprávnění přístupu pro globálního správce
       href: elevate-access-global-admin.md
     - name: Řešení potíží
       href: troubleshooting.md

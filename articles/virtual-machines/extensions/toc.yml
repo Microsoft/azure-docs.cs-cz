@@ -22,7 +22,7 @@
       href: features-windows.md
 - name: Návody
   items:
-    - name: Rozšíření vlastních skriptů
+    - name: Vlastní skript
       items:
         - name: Linux – verze 2
           href: custom-script-linux.md
@@ -30,13 +30,13 @@
           href: custom-script-linuxOstc.md
         - name: Windows
           href: custom-script-windows.md
-    - name: Rozšíření OMS
+    - name: Operations Management Suite
       items:
         - name: Linux
           href: oms-linux.md
         - name: Windows
           href: oms-windows.md
-    - name: Rozšíření diagnostiky
+    - name: Diagnostika
       items:
         - name: Linux
           href: diagnostics-linux.md
@@ -50,7 +50,7 @@
           href: network-watcher-linux.md
         - name: Windows
           href: network-watcher-windows.md
-    - name: Rozšíření prostředí PowerShell DSC
+    - name: PowerShell DSC
       href: dsc-overview.md
       items:
         - name: DSC a Windows
@@ -61,9 +61,9 @@
           href: dsc-template.md
     - name: Antimalware IaaS pro Windows
       href: iaas-antimalware-windows.md
-    - name: Rozšíření Key Vault
+    - name: Key Vault
       href: key-vault-windows.md
-    - name: Rozšíření VM Snapshot
+    - name: VM Snapshot
       items:
         - name: Linux
           href: vmsnapshot-linux.md
@@ -77,7 +77,7 @@
           href: symantec.md
     - name: Zastaralá rozšíření
       items:
-        - name: Rozšíření Log Collector
+        - name: Kolektor protokolů
           href: log-collector.md
         - name: Trend Micro Deep Security
           href: trend.md

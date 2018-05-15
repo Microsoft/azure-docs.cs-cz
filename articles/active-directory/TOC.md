@@ -16,6 +16,7 @@
 ## [Přidání uživatelů do Azure AD](add-users-azure-active-directory.md)
 ## [Přiřazení licencí k uživatelům](license-users-groups.md)
 ## [Konfigurace samoobslužného resetování hesla](authentication/quickstart-sspr.md)
+## [Přidání informací o ochraně osobních údajů vaší organizace do Azure AD](active-directory-properties-area.md)
 
 
 # Postup
@@ -58,6 +59,7 @@
 #### [Zásady sdílení B2B](active-directory-b2b-delegate-invitations.md)
 #### [Přidání uživatele B2B do role](active-directory-b2b-add-guest-to-role.md)
 #### [Dynamické skupiny a uživatelé B2B](active-directory-b2b-dynamic-groups.md)
+#### [Opuštění organizace](active-directory-b2b-leave-the-organization.md)
 #### [Auditování a sestavy](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B pro hybridní organizace](active-directory-b2b-hybrid-organizations.md)
 ##### [Udělení přístupu uživatelům B2B k místním aplikacím](active-directory-b2b-hybrid-cloud-to-on-premises.md)
@@ -178,11 +180,11 @@
 
 ### [Vzdálený přístup k aplikací s App Proxy](manage-apps/application-proxy.md)
 #### Začínáme
-##### [Povolení proxy aplikace](active-directory-application-proxy-enable.md)
-##### [Publikování aplikací](application-proxy-publish-azure-portal.md)
-##### [Vlastní domény](active-directory-application-proxy-custom-domains.md)
-#### [Jednotné přihlašování](application-proxy-sso-overview.md)
-##### [Jednotné přihlašování s KCD](active-directory-application-proxy-sso-using-kcd.md)
+##### [Povolení proxy aplikace](manage-apps/application-proxy-enable.md)
+##### [Publikování aplikací](manage-apps/application-proxy-publish-azure-portal.md)
+##### [Vlastní domény](manage-apps/application-proxy-configure-custom-domain.md)
+#### [Jednotné přihlašování](manage-apps/application-proxy-single-sign-on.md)
+##### [Jednotné přihlašování s KCD](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 ##### [Jednotné přihlašování se záhlavími](application-proxy-ping-access.md)
 ##### [Jednotné přihlašování s ukládáním hesel do trezoru](application-proxy-sso-azure-portal.md)
 #### Koncepty
@@ -331,7 +333,8 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
 ### [Řešení potíží s chybějící nebo nedostupnou položkou Active Directory](active-directory-troubleshooting.md)
