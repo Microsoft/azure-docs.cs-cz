@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d3ca9983eee4db09a68bf772b80c9ef841117872
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -80,7 +80,7 @@ Typické clusteru HDInsight používá několik služeb a softwaru open-source b
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Zobrazit nastavení konfigurace clusteru pomocí uživatelského rozhraní Ambari
 
-Apache Ambari zjednodušuje správu, konfiguraci a monitorování clusteru HDInsight tím, že poskytuje webového uživatelského rozhraní a rozhraní REST API. Ambari je obsažena v clusterech HDInsight se systémem Linux. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight otevřete**' řídicí panely clusteru** odkaz stránky.  Potom vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva k zadání pověření přihlášení clusteru.
+Apache Ambari zjednodušuje správu, konfiguraci a monitorování clusteru HDInsight tím, že poskytuje webového uživatelského rozhraní a rozhraní REST API. Ambari je obsažena v clusterech HDInsight se systémem Linux. Vyberte **řídicí panel clusteru** podokně na stránky portálu Azure HDInsight otevřete **' řídicí panely clusteru** odkaz stránky.  Potom vyberte **řídicí panel clusteru HDInsight** podokně otevřete uživatelské rozhraní Ambari.  Zobrazí se výzva k zadání pověření přihlášení clusteru.
 
 Otevřete seznam služby zobrazení, vyberte **zobrazení Ambari** podokno na stránce portálu Azure pro HDInsight.  Tento seznam se liší, v závislosti na tom, které knihovny jste nainstalovali.  Může se zobrazit například správce front YARN, zobrazení Hive a zobrazení Tez.  Vyberte všechny služby odkaz zobrazíte informace o služby a konfiguraci.  Uživatelské rozhraní Ambari **zásobníku a verze** stránka obsahuje informace o konfiguraci služby clusteru a historie verzí služby. Přejděte na tento oddíl rozhraní Ambari, vyberte **správce** nabídce a potom **zásobníky a verze**.  Vyberte **verze** karty zobrazíte informace o verzi služby.
 
@@ -105,17 +105,6 @@ Dalším krokem je kontrola soubory protokolu spuštění úlohy pro různé slu
 HDInsight ukládá její soubory protokolu v clusteru systému souborů i v úložišti Azure. Soubory protokolu v clusteru můžete zkontrolovat otevřením připojení SSH do clusteru a procházení systému souborů nebo pomocí portálu Hadoop YARN stavu na serveru vzdáleného hlavního uzlu. Můžete zkontrolovat soubory protokolů v úložišti Azure pomocí některé z nástroje, které můžete používat a stahování dat z úložiště Azure. Příklady jsou AZCopy, CloudXplorer a Průzkumníka serveru Visual Studia. Můžete také pomocí prostředí PowerShell a knihovny klienta úložiště Azure nebo .NET sady Azure SDK pro přístup k datům v Azure blob storage.
 
 Hadoop spouští pracovních úloh, jako *úkolů pokusy o* v různých uzlech v clusteru. HDInsight můžete zahájit pokusy o spekulativní úloh, ukončení ostatní pokusy úloh, které nejsou dokončeny nejdřív. Tím se vygeneruje výrazné aktivity, která je zaznamenána do řadiče, stderr a syslog protokolu soubory na průběžně. Kromě toho více pokusů úloha běží současně, ale soubor protokolu může zobrazit pouze výsledky lineárně.
-
-#### <a name="hdinsight-logs-written-to-azure-tables"></a>HDInsight protokoly zapisují do tabulek Azure
-
-Protokoly zapisují do tabulek Azure poskytují přehled o dění pomocí clusteru služby HDInsight. Při vytváření clusteru HDInsight se systémem Linux, šesti tabulky se automaticky vytvoří ve službě Table storage výchozí:
-
-* hdinsightagentlog
-* syslog
-* daemonlog
-* hadoopservicelog
-* ambariserverlog
-* ambariagentlog
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>Protokoly HDInsight zapisovat do úložiště objektů Blob v Azure
 

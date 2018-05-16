@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 9a025716c2bb6266c1c1c552a2d0791b39429cac
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5224fe4682509f92e1f18d865e5cc5afb1218ad1
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-with-azure-and-azure-stack-applications"></a>Kurz: Konfigurace hybridní Cloudová identita s aplikací Azure a Azure zásobníku
 
@@ -60,7 +60,7 @@ Instalace Azure zásobníku připojený k Azure Active Directory s předplatným
 
 Pro připojení k Azure zásobníku pomocí kódu, použijte koncových bodů rozhraní API Správce Azure Resource Manager získat ověřování a graf koncové body pro instalaci zásobník Azure a pak provést ověření pomocí požadavky REST. Můžete najít ukázkové aplikace [zde](https://github.com/shriramnat/HybridARMApplication).
 
-> [!note]  
+> [!Note]  
 Pokud sadu Azure SDK pro vámi zvolený jazyk podporuje profily rozhraní API Azure, SDK nemusí fungovat s Azure zásobníku. Další informace o profilech API Azure, přejděte [zde](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles).
 
 ## <a name="next-steps"></a>Další postup

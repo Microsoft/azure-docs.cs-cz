@@ -1,8 +1,8 @@
 ---
-title: "Odeslání dat obrázků do cloudu v Azure Storage | Microsoft Docs"
-description: "Uložení dat webové aplikace pomocí služby Azure Blob Storage"
+title: Odeslání dat obrázků do cloudu v Azure Storage | Microsoft Docs
+description: Uložení dat webové aplikace pomocí služby Azure Blob Storage
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: jeconnoc
 ms.service: storage
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: e3c40d0f3db1a33a405a341a714a7ce199908ca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 29accb3394e9a2f6939a657172c1a5c2e411706a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Odeslání dat obrázků do cloudu v Azure Storage
 
@@ -72,7 +72,7 @@ Pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys
 V tomto případě je `<blob_storage_account>` název účtu služby Blob Storage, který jste vytvořili. Veřejný přístup ke kontejneru _images_ je nastavený na hodnotu `off` a veřejný přístup ke kontejneru _thumbnails_ na hodnotu `container`. Nastavení veřejného přístupu `container` umožňuje zobrazení miniatur návštěvníky dané webové stránky.
  
 ```azurecli-interactive 
-blobStorageAccount=<blob_storage_account>
+$blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
@@ -194,7 +194,7 @@ Zkontrolujte, jestli se obrázek v kontejneru zobrazuje.
 
 K otestování zobrazení miniatury nahrajete obrázek do kontejneru miniatur, abyste mohli zkontrolovat, jestli aplikace umí kontejner miniatur přečíst.
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. Vyberte **Kontejnery** v části **Služba Blob** a pak vyberte kontejner **thumbnails**. Výběrem položky **Nahrát** otevřete podokno **Nahrát objekt blob**.
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). V nabídce vlevo vyberte **Účty úložiště** a potom vyberte název svého účtu úložiště. Vyberte **Kontejnery** v části **Blob Service** a pak vyberte kontejner **thumbnails**. Výběrem položky **Nahrát** otevřete podokno **Nahrát objekt blob**.
 
 Vyberte soubor pomocí nástroje pro výběr souborů a vyberte položku **Nahrát**.
 

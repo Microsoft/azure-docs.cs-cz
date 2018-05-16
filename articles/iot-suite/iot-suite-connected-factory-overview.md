@@ -1,13 +1,13 @@
 ---
-title: "Přehled řešení propojené továrny – Azure | Dokumentace Microsoftu"
-description: "Popis předkonfigurovaného řešení propojené továrny v sadě Azure IoT Suite."
-services: 
+title: Přehled řešení propojené továrny – Azure | Microsoft Docs
+description: Popis akcelerátoru řešení propojené továrny Azure IoT.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: bd68859e3837f7e5adbe911518631cb7abc2c2ce
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c5fe6cf6dff6fd8951a949761739cb12f98834bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Začínáme s předkonfigurovaným řešením propojené továrny
+# <a name="get-started-with-the-connected-factory-solution-accelerator"></a>Začínáme s akcelerátorem řešení propojené továrny
 
-[Předkonfigurovaná řešení][lnk-preconfigured-solutions] pro sadu Azure IoT Suite kombinují více služeb Azure IoT, aby mohla poskytovat komplexní řešení implementující běžné obchodní scénáře IoT. Předkonfigurované řešení *propojené továrny* se připojuje k průmyslovým zařízením a monitoruje je. Řešení můžete použít k analýze proudu dat z vašich zařízení a ke zvýšení produktivity a ziskovosti provozu.
+[Akcelerátory řešení][lnk-preconfigured-solutions] Azure IoT kombinují více služeb Azure IoT, aby mohla poskytovat komplexní řešení implementující běžné obchodní scénáře IoT. Akcelerátor řešení *propojené továrny* se připojuje k průmyslovým zařízením a monitoruje je. Řešení můžete použít k analýze proudu dat z vašich zařízení a ke zvýšení produktivity a ziskovosti provozu.
 
-V tomto kurzu se dozvíte, jak zřídit předkonfigurované řešení propojené továrny. Také se seznámíte se základními funkcemi předkonfigurovaného řešení. Mnohé z těchto funkcí jsou přístupné z *řídicího panelu* řešení, který se nasazuje jako součást předkonfigurovaného řešení:
+V tomto kurzu se dozvíte, jak zřídit akcelerátor řešení propojené továrny. Také se seznámíte se základními funkcemi akcelerátoru řešení. Mnohé z těchto funkcí jsou přístupné z *řídicího panelu* řešení, který se nasazuje jako součást akcelerátoru řešení:
 
-![Řídicí panel předkonfigurovaného řešení propojené továrny][img-cf-home]
+![Řídicí panel akcelerátoru řešení propojené továrny][img-cf-home]
 
 K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure.
 
@@ -38,7 +38,7 @@ K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure
 
 1. Pomocí svých přihlašovacích údajů k účtu Azure se přihlaste na webu azureiotsuite.com a kliknutím na **+** vytvořte řešení.
 2. Na dlaždici **Propojená továrna** klikněte na **Vybrat**.
-3. Zadejte **Název řešení** pro předkonfigurované řešení připojené továrny.
+3. Zadejte **Název řešení** pro akcelerátor řešení propojené továrny.
 4. Vyberte **Předplatné** a **Oblast**, které chcete při zřizování řešení použít.
 5. Kliknutím na tlačítko **Vytvořit řešení** zahájíte proces zřizování. Tento proces obvykle trvá několik minut.
 
@@ -50,13 +50,13 @@ K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure
 4. Kliknutím na dlaždici zobrazíte v pravém podokně informace o řešení.
 
 > [!NOTE]
-> Pokud při nasazování předkonfigurovaného řešení narazíte na problémy, zkontrolujte [Oprávnění na webu azureiotsuite.com][lnk-permissions] a přečtěte si téma [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md). Pokud problémy přetrvávají, vytvořte na [portálu][lnk-portal] lístek služby.
+> Pokud při nasazování akcelerátoru řešení narazíte na problémy, zkontrolujte [Oprávnění na webu azureiotsuite.com][lnk-permissions] a přečtěte si téma [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md). Pokud problémy přetrvávají, vytvořte na [portálu][lnk-portal] lístek služby.
 
 Hledali jste informace, které se týkají vašeho řešení a nejsou zde uvedeny? Sdělte nám návrhy na funkce na webu [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-Když nasadíte předkonfigurované řešení propojené továrny, bude předem naplněné prostředky, které vám umožní projít běžným scénářem z oblasti průmyslu. V tomto scénáři několik továren propojených s řešením hlásí hodnoty dat potřebné k výpočtu celkové efektivity zařízení (OEE) a klíčových ukazatelů výkonu (KPI). V následujících částech se dozvíte, jak:
+Když nasadíte akcelerátor řešení propojené továrny, bude předem naplněný prostředky, které vám umožní projít běžným scénářem z oblasti průmyslu. V tomto scénáři několik továren propojených s řešením hlásí hodnoty dat potřebné k výpočtu celkové efektivity zařízení (OEE) a klíčových ukazatelů výkonu (KPI). V následujících částech se dozvíte, jak:
 
 * Monitorovat továrnu, výrobní linky, celkovou efektivitu zařízení stanic a hodnoty klíčových ukazatelů výkonu
 * Analyzovat telemetrická data generovaná z těchto zařízení pomocí Azure Time Series Insights
@@ -68,13 +68,13 @@ Klíčovou vlastností tohoto scénáře je, že všechny tyto akce můžete pro
 
 Přes řídicí panel řešení můžete spravovat nasazené řešení. Je to hierarchická reprezentace globální konfigurace továrny. Můžete například zobrazit celkovou efektivitu zařízení a klíčové ukazatele výkonu nebo publikovat nové uzly pro alarmy akcí a telemetrie.
 
-1. Až bude zřizování dokončeno a dlaždice předkonfigurovaného řešení bude hlásit **Připraveno**, zvolte **Spustit**. Na nové kartě se otevře portál řešení propojené továrny.
+1. Až bude zřizování dokončeno a dlaždice akcelerátoru řešení bude hlásit **Připraveno**, zvolte **Spustit**. Na nové kartě se otevře portál řešení propojené továrny.
 
-    ![Spuštění předkonfigurovaného řešení][img-launch-solution]
+    ![Spuštění akcelerátoru řešení][img-launch-solution]
 
 1. Ve výchozím nastavení se na portálu řešení zobrazuje *řídicí panel*. K přecházení do jiných oblastí portálu použijte nabídku na levé straně stránky.
 
-    ![Řídicí panel předkonfigurovaného řešení propojené továrny][cf-img-menu]
+    ![Řídicí panel akcelerátoru řešení propojené továrny][cf-img-menu]
 
 Řídicí panel obsahuje tyto informace:
 
@@ -88,7 +88,7 @@ Přes řídicí panel řešení můžete spravovat nasazené řešení. Je to hi
 
 Panel *Umístění továren* uvádí zeměpisné umístění všech továren v řešení, jejich stav a aktuální konfiguraci výroby. Ze seznamu umístění můžete přejít na další úrovně v hierarchii řešení. Řádky tohoto seznamu jsou hypertextové odkazy na podrobnosti o výrobních linkách v příslušném umístění. Je tedy možné procházet úrovněmi podrobností o výrobní lince, a to až na úroveň zobrazení stanice. Na seznam můžete také použít filtr.
 
-![Továrny v předkonfigurovaném řešení propojené továrny][cf-img-factories]
+![Továrny v akcelerátoru řešení propojené továrny][cf-img-factories]
 
 1. **Panel Továrny** uvádí seznam továren v tomto řešení.
 
@@ -106,7 +106,7 @@ Panel *Umístění továren* uvádí zeměpisné umístění všech továren v �
 
 Pokud má vaše předplatné přístup k rozhraní API pro Mapy Bing, na mapě *Továrny* se zobrazí zeměpisné umístění a stav všech továren v řešení. Pokud chcete zobrazit podrobnosti o umístění, klikněte na umístění zobrazená na mapě.
 
-![Mapa v předkonfigurovaném řešení propojené továrny][cf-img-map]
+![Mapa v akcelerátoru řešení propojené továrny][cf-img-map]
 
 ## <a name="view-alarms"></a>Zobrazení alarmů
 
@@ -121,10 +121,10 @@ Volitelně můžete provést složitější akce. Například pro uzel OPC UA pr
 * Zmírnit příčinu alarmu zavoláním metody OPC UA na zařízení.
 * Potlačit dostupnost výchozích akcí.
 
-    ![Alarmy v předkonfigurovaném řešení propojené továrny][cf-img-alerts]
+    ![Alarmy v akcelerátoru řešení propojené továrny][cf-img-alerts]
 
 > [!NOTE]
-> Tyto alarmy se generují podle pravidel zadaných v konfiguračním souboru v předkonfigurovaném řešení. Tato pravidla můžou generovat alarmy v případě, že hodnoty celkové efektivity zařízení, klíčového ukazatele výkonu nebo uzlu OPC UA překračují jejich nakonfigurovanou mezní hodnotu.
+> Tyto alarmy se generují podle pravidel zadaných v konfiguračním souboru v akcelerátoru řešení. Tato pravidla můžou generovat alarmy v případě, že hodnoty celkové efektivity zařízení, klíčového ukazatele výkonu nebo uzlu OPC UA překračují jejich nakonfigurovanou mezní hodnotu.
 
 1. **Panel Alarmy** zobrazuje alarmy vygenerované v tomto řešení.
 
@@ -138,23 +138,23 @@ Volitelně můžete provést složitější akce. Například pro uzel OPC UA pr
 
 Celková efektivita zařízení hodnotí efektivitu výrobního procesu pomocí klíčových provozních parametrů souvisejících s výrobou. Celková efektivita zařízení (OEE) je v oboru standardním měřítkem a počítá se vynásobením míry dostupnosti, míry výkonu a míry kvality: OEE = dostupnost × výkon × kvalita.
 
-![Celková efektivita zařízení v předkonfigurovaném řešení propojené továrny][cf-img-oee]
+![OEE v akcelerátoru řešení propojené továrny][cf-img-oee]
 
 1. Pokud chcete zobrazit celkovou efektivitu zařízení na libovolné úrovni hierarchie, přejděte do konkrétního zobrazení, které potřebujete. Na panelu se zobrazí celková efektivita zařízení pro dané zobrazení spolu se všemi elementy, které společně tvoří procento celkové efektivity zařízení.
 
 2. Pokud chcete hlouběji analyzovat celkovou efektivitu zařízení na libovolné úrovni hierarchie, klikněte na procento celkové efektivity zařízení, dostupnosti, výkonu nebo kvality. Otevře se místní panel s vizualizacemi ze služby Time Series Insights, které zobrazují data za poslední hodinu, posledních 24 hodin a posledních 7 dnů.
 
-    ![Vizualizace TSI v předkonfigurovaném řešení propojené továrny][cf-img-tsi-visualization]
+    ![Vizualizace TSI v akcelerátoru řešení propojené továrny][cf-img-tsi-visualization]
 
 3. Pokud chcete hlouběji analyzovat data alarmu, klikněte na graf na panelu alarmů. Tato akce otevře prostředí průzkumníka Time Series Insights.
 
-    ![Průzkumník TSI v předkonfigurovaném řešení propojené továrny][cf-img-tsi-explorer]
+    ![Průzkumník TSI v akcelerátoru řešení propojené továrny][cf-img-tsi-explorer]
 
 ## <a name="view-key-performance-indicators"></a>Zobrazení klíčových ukazatelů výkonu
 
 Řešení poskytuje dva klíčové ukazatele výkonu – *jednotky za hodinu* a *spotřebovaná energie v kWh*.
 
-![Klíčové ukazatele výkonu v předkonfigurovaném řešení propojené továrny][cf-img-kpi]
+![Klíčové ukazatele výkonu v akcelerátoru řešení propojené továrny][cf-img-kpi]
 
 1. Pokud chcete zobrazit jednotky za hodinu nebo spotřebovanou energii na libovolné úrovni hierarchie, přejděte do konkrétního zobrazení, které potřebujete. Na panelu se zobrazí jednotky za hodinu a spotřebovaná energie.
 
@@ -174,13 +174,13 @@ Následující části popisují některé další funkce řešení propojené t
 
 2. Zobrazí se panel filtrů.
 
-    ![Filtry v předkonfigurovaném řešení propojené továrny][cf-img-alert-filter]
+    ![Filtry v akcelerátoru řešení propojené továrny][cf-img-alert-filter]
 
 3. Zvolte požadovaný filtr. Do polí filtru je možné zadat také libovolný text.
 
 4. Filtr se pak použije. Stav filtru je zobrazen také na řídicím panelu v podobě trychtýře v tabulkách továren a alarmů.
 
-    ![Filtry v předkonfigurovaném řešení propojené továrny][cf-img-alert-filter-funnel]
+    ![Filtry v akcelerátoru řešení propojené továrny][cf-img-alert-filter-funnel]
 
     > [!NOTE]
     > Aktivní filtr nemá vliv na zobrazené hodnoty celkové efektivity zařízení a klíčových ukazatelů výkonu, pouze filtruje obsah seznamu.
@@ -189,27 +189,27 @@ Následující části popisují některé další funkce řešení propojené t
 
 ## <a name="browse-an-opc-ua-server"></a>Procházení serveru OPC UA
 
-Při nasazení předkonfigurovaného řešení automaticky zřídíte simulované servery OPC UA, které můžete procházet přes prohlížeč řešení. Tyto servery jsou *simulované servery OPC UA*. Simulované servery umožňují snadno experimentovat s předkonfigurovaným řešením, aniž by bylo nutné nasazovat skutečné fyzické servery. Pokud chcete k řešení připojit skutečný server OPC UA, přečtěte si kurz [Připojení zařízení OPC UA k předkonfigurovanému řešení propojené továrny][lnk-connect-cf].
+Při nasazení akcelerátoru řešení automaticky zřídíte simulované servery OPC UA, které můžete procházet přes prohlížeč řešení. Tyto servery jsou *simulované servery OPC UA*. Simulované servery umožňují snadno experimentovat s akcelerátorem řešení, aniž by bylo nutné nasazovat skutečné fyzické servery. Pokud chcete k řešení připojit skutečný server OPC UA, přečtěte si kurz [Připojení zařízení OPC UA k akcelerátoru řešení propojené továrny][lnk-connect-cf].
 
 1. Klikněte na **ikonu prohlížeče** na navigačním panelu řídicího panelu.
 
-    ![Prohlížeč serveru v předkonfigurovaném řešení propojené továrny][cf-img-server-browser]
+    ![Prohlížeč serveru v akcelerátoru řešení propojené továrny][cf-img-server-browser]
 
-2. Vyberte jeden ze serverů z předkonfigurovaného seznamu. Tento seznam ukazuje servery, které jsou pro vás nasazeny v předkonfigurovaném řešení.
+2. Vyberte jeden ze serverů z předkonfigurovaného seznamu. Tento seznam ukazuje servery, které jsou pro vás nasazeny v akcelerátoru řešení.
 
-    ![Výběr serveru v předkonfigurovaném řešení propojené továrny][cf-img-server-choice]
+    ![Výběr serveru v akcelerátoru řešení propojené továrny][cf-img-server-choice]
 
 3. Klikněte na **Připojit**, zobrazí se dialogové okno zabezpečení. Pro tuto simulaci můžete bez obav kliknout na **Pokračovat**.
 
 4. Pokud chcete rozbalit některý z uzlů ve stromu serveru, klikněte na něj. Vedle uzlů, které publikují telemetrii, je značka.
 
-    ![Stromová struktura serveru v předkonfigurovaném řešení propojené továrny][cf-img-server-tree]
+    ![Strom serveru v akcelerátoru řešení propojené továrny][cf-img-server-tree]
 
 5. Pokud chcete s uzlem provést operaci čtení, zápisu, publikování nebo volání, klikněte na něj pravým tlačítkem myši. Akce, které máte k dispozici, závisí na vašich oprávněních a atributech uzlu. Možnost čtení otevře místní panel se zobrazenou hodnotou konkrétního uzlu. Možnost zápisu otevře místní panel, na kterém můžete zadat novou hodnotu. Možnost volání zobrazí uzel, kde můžete zadat parametry volání.
 
 ## <a name="publish-a-node"></a>Publikování uzlu
 
-Při procházení *simulovaného serveru OPC UA* máte také možnost publikovat nové uzly. V řešení můžete analyzovat telemetrii z těchto uzlů. Tyto *simulované servery OPC UA* umožňují snadno experimentovat s předkonfigurovaným řešením bez nasazování skutečných fyzických zařízení.
+Při procházení *simulovaného serveru OPC UA* máte také možnost publikovat nové uzly. V řešení můžete analyzovat telemetrii z těchto uzlů. Tyto *simulované servery OPC UA* umožňují snadno experimentovat s akcelerátorem řešení bez nasazování skutečných fyzických zařízení.
 
 1. Ve stromové struktuře prohlížeče serveru OPC UA přejděte k uzlu, který chcete publikovat.
 
@@ -225,7 +225,7 @@ Při procházení *simulovaného serveru OPC UA* máte také možnost publikovat
 
 ## <a name="command-and-control"></a>Příkazy a ovládání
 
-Propojená továrna umožňuje ovládat a odesílat příkazy do průmyslových zařízení přímo z cloudu. Tuto funkci můžete použít při reakci na alarmy vygenerované zařízením. Například můžete z cloudu odeslat příkaz do zařízení. Dostupné příkazy najdete v uzlu **StationCommands** ve stromové struktuře serveru OPC UA. V tomto scénáři otevřete ventil pro uvolnění tlaku na montážní stanici výrobní linky v Mnichově. Abyste mohli používat funkce příkazů a ovládání, musíte mít roli **Správce** pro toto nasazení předkonfigurovaného řešení.
+Propojená továrna umožňuje ovládat a odesílat příkazy do průmyslových zařízení přímo z cloudu. Tuto funkci můžete použít při reakci na alarmy vygenerované zařízením. Například můžete z cloudu odeslat příkaz do zařízení. Dostupné příkazy najdete v uzlu **StationCommands** ve stromové struktuře serveru OPC UA. V tomto scénáři otevřete ventil pro uvolnění tlaku na montážní stanici výrobní linky v Mnichově. Abyste mohli používat funkce příkazů a ovládání, musíte mít roli **Správce** pro toto nasazení akcelerátoru řešení.
 
 1. Ve stromové struktuře prohlížeče serveru OPC UA přejděte do uzlu **StationCommands**.
 
@@ -235,39 +235,39 @@ Propojená továrna umožňuje ovládat a odesílat příkazy do průmyslových 
 
 4. Zvolte **Volání**.
 
-    ![Příkaz volání v předkonfigurovaném řešení propojené továrny][cf-img-call-command]
+    ![Příkaz volání v akcelerátoru řešení propojené továrny][cf-img-call-command]
 
 5. Zobrazí se místní panel informující o metodě, kterou se chystáte zavolat, a podrobnostech o parametrech, pokud jsou k dispozici.
 
 6. Zvolte **Volání**.
 
-    ![Místní panel volání v předkonfigurovaném řešení propojené továrny][cf-img-call-context]
+    ![Kontext volání v akcelerátoru řešení propojené továrny][cf-img-call-context]
 
 7. Místní panel se aktualizuje a zobrazí informaci o úspěšném zavolání metody. Ověřit, že bylo volání úspěšné, můžete také přečtením hodnoty uzlu tlaku, který se aktualizovat v důsledku volání.
 
-    ![Úspěšné volání v předkonfigurovaném řešení propojené továrny][cf-img-call-success]
+    ![Úspěšné volání v akcelerátoru řešení propojené továrny][cf-img-call-success]
 
 ## <a name="behind-the-scenes"></a>Informace pro pokročilé uživatele
 
-Když nasadíte předkonfigurované řešení, proces nasazení vytvoří ve vybraném předplatném Azure několik prostředků. Tyto prostředky můžete zobrazit na webu [Azure Portal][lnk-portal]. Proces nasazení vytváří **skupinu prostředků**. Její název bude vycházet z názvu, který jste vybrali pro předkonfigurované řešení:
+Když nasadíte akcelerátor řešení, proces nasazení vytvoří ve vybraném předplatném Azure několik prostředků. Tyto prostředky můžete zobrazit na webu [Azure Portal][lnk-portal]. Proces nasazení vytváří **skupinu prostředků**. Její název bude vycházet z názvu, který jste vybrali pro akcelerátor řešení:
 
-![Předkonfigurované řešení na portálu Azure Portal][img-cf-portal]
+![Akcelerátor řešení na webu Azure Portal][img-cf-portal]
 
 Nastavení každého prostředku se zobrazí, když jej vyberete v seznamu ve skupině prostředků.
 
-Můžete taky zobrazit zdrojový kód pro předkonfigurované řešení. Zdrojový kód předkonfigurovaného řešení propojené továrny najdete v úložišti GitHub [azure-iot-connected-factory][lnk-cfgithub]:
+Můžete také zobrazit zdrojový kód akcelerátoru řešení. Zdrojový kód akcelerátoru řešení propojené továrny najdete v úložišti GitHub [azure-iot-connected-factory][lnk-cfgithub]:
 
-Jakmile budete hotovi, můžete předkonfigurované řešení z vašeho předplatného Azure odstranit na webu [azureiotsuite.com][lnk-azureiotsuite]. Tento web umožňuje snadno odstranit všechny prostředky, které byly zřízeny při vytvoření předkonfigurovaného řešení.
+Jakmile budete hotovi, můžete akcelerátor řešení z vašeho předplatného Azure odstranit na webu [azureiotsuite.com][lnk-azureiotsuite]. Tento web umožňuje snadno odstranit všechny prostředky, které se zřídily při vytváření akcelerátoru řešení.
 
 > [!NOTE]
-> Abyste zajistili, že jste odstranili opravdu všechno spojené s předkonfigurovaným řešením, odstraňte řešení na webu [azureiotsuite.com][lnk-azureiotsuite]. Skupinu prostředků na portálu neodstraňujte.
+> Abyste zajistili, že jste odstranili opravdu vše spojené s akcelerátorem řešení, odstraňte řešení na webu [azureiotsuite.com][lnk-azureiotsuite]. Skupinu prostředků na portálu neodstraňujte.
 
 ## <a name="next-steps"></a>Další kroky
 
-Když jste teď nasadili fungující předkonfigurované řešení, můžete pokračovat v seznamování se sadou IoT Suite přečtením následujících článků:
+Když jste teď nasadili fungující akcelerátor řešení, můžete pokračovat v seznamování se s akcelerátory řešení IoT přečtením následujících článků:
 
-* [Průvodce předkonfigurovaným řešením propojené továrny][lnk-rm-walkthrough]
-* [Připojení zařízení k předkonfigurovanému řešení propojené továrny][lnk-connect-cf]
+* [Seznámení s akcelerátorem řešení propojené továrny][lnk-rm-walkthrough]
+* [Připojení zařízení k akcelerátoru řešení propojené továrny][lnk-connect-cf]
 * [Oprávnění na webu azureiotsuite.com][lnk-permissions]
 
 [img-cf-home]:media/iot-suite-connected-factory-overview/cf-dashboard.png
@@ -293,7 +293,7 @@ Když jste teď nasadili fungující předkonfigurované řešení, můžete pok
 [cf-img-alert-filter-funnel]:media/iot-suite-connected-factory-overview/cf-filter-funnel.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-portal]: http://portal.azure.com/
 [lnk-cfgithub]: https://github.com/Azure/azure-iot-connected-factory

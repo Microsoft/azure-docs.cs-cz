@@ -3,23 +3,24 @@ title: Zaregistrovat aplikaci s koncovým bodem v2.0 Azure AD pomocí portálu |
 description: Postup registrace aplikace se společností Microsoft pro povolení přihlášení a přístup ke službám Microsoft pomocí koncového bodu v2.0
 services: active-directory
 documentationcenter: ''
-author: mtillman
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: bb2f701f-3bc3-4759-94a5-8b9d53a8a0b6
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: mtillman
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 7c24271553f131e67711a3e8d914049e704e919e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8ab4e6b5b2813a216b6dd6f0fc108a09239ca9a6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Postup registrace aplikace s koncovým bodem v2.0
 Sestavit aplikaci, která přijímá jak osobní účet Microsoft (MSA) & pracovní nebo školní účet (Azure AD) přihlásit, budete nejprve muset zaregistrovat aplikaci se společností Microsoft. V tomto okamžiku nebudete moci používat všechny existující aplikace, které jste uzavřeli s Azure AD nebo MSA - budete muset vytvořit nové.
@@ -35,7 +36,7 @@ Přihlaste se pomocí buď osobní nebo pracovní nebo školní účet Microsoft
 
 Provést? By měl nyní se díváte v seznamu aplikací Microsoftu, což je pravděpodobně prázdná. Umožňuje změnit.
 
-Klikněte na tlačítko **přidat aplikaci**a pojmenujte ho.  Na portálu přiřadí globálně jedinečné ID aplikace, které budete používat později v kódu aplikace.  Pokud vaše aplikace obsahuje serverovou komponentu potřebného přístupových tokenů pro volání rozhraní API (vezměte v úvahu: Office, Azure nebo vlastní webové rozhraní API), budete chtít vytvořit **tajný klíč aplikace** i zde.
+Klikněte na tlačítko **přidat aplikaci**a pojmenujte ho. Na portálu přiřadí globálně jedinečné ID aplikace, které budete používat později v kódu aplikace. Pokud vaše aplikace obsahuje serverovou komponentu potřebného přístupových tokenů pro volání rozhraní API (vezměte v úvahu: Office, Azure nebo vlastní webové rozhraní API), budete chtít vytvořit **tajný klíč aplikace** i zde.
 
 Dál přidejte **platformy** , aplikace bude používat.
 
@@ -50,7 +51,7 @@ Volitelně můžete přizpůsobit vzhled a chování stránky přihlášení v *
 
 
 ## <a name="build-a-quickstart-app"></a>Sestavení aplikace rychlý start
-Teď, když máte aplikaci Microsoft, můžete dokončit jeden z kurzů v2.0 rychlý start.  Zde je několik doporučení:
+Teď, když máte aplikaci Microsoft, můžete dokončit jeden z kurzů v2.0 rychlý start. Zde je několik doporučení:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
 

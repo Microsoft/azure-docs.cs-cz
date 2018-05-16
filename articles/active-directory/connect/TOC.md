@@ -83,7 +83,8 @@
 
 
 ## Řešení potíží
-### [Připojení](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [Možnosti připojení Azure AD s využitím služby Azure AD Connect](active-directory-aadconnect-troubleshoot-connectivity.md)
+### [Možnosti připojení SQL](active-directory-aadconnect-tshoot-sql-connectivity.md)
 ### [Chyby při synchronizaci](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [Objekt není synchronizovaný](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [Synchronizace objektů pomocí úlohy řešení potíží](active-directory-aadconnect-troubleshoot-objectsync.md)

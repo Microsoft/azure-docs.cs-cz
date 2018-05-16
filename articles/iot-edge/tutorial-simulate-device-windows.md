@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ae974162a460289a34443879a9e78224684d94ed
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 213a0e7cebda6a8b89ef460799cbec477b487a64
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-windows----preview"></a>Nasazení v simulovaném zařízení v systému Windows Azure IoT Edge – náhled
 
@@ -42,7 +42,7 @@ Tento kurz předpokládá, že používáte počítač nebo virtuální počíta
    * Windows 10 
    * Windows Server
 2. Nainstalujte [Docker pro systém Windows] [ lnk-docker] a ujistěte se, že je spuštěna.
-3. Nainstalujte [Python 2.7 v systému Windows] [ lnk-python] a ujistěte se, můžete použít příkaz pip.
+3. Nainstalujte [Python v systému Windows] [ lnk-python] a ujistěte se, můžete použít příkaz pip. V tomto kurzu byla testována s verzí Python > = 2.7.9 a > = 3.5.4.  
 4. Spusťte následující příkaz se stáhnout skript řízení IoT okraj.
 
    ```cmd
@@ -51,8 +51,8 @@ Tento kurz předpokládá, že používáte počítač nebo virtuální počíta
 
 > [!NOTE]
 > Azure IoT Edge můžete spustit buď kontejnery Windows nebo Linux kontejnerů. Pokud používáte jednu z následujících verzí systému Windows, můžete použít Windows kontejnerů:
->    * Windows 10 Fall Creators Update
->    * Windows Server 1709 (Build 16299)
+>    * Aktualizovat Creators patří Windows 10
+>    * Windows Server. 1709 (sestavení 16299)
 >    * Jádro IoT Windows (sestavení 16299) na zařízení na x64
 >
 > Jádro IoT Windows, postupujte podle pokynů v [instalaci modulu runtime IoT Edge na jádro IoT Windows][lnk-install-iotcore]. Jinak jednoduše [konfigurace Docker používat Windows kontejnery][lnk-docker-containers]. Použijte následující příkaz k ověření vaší požadavky:
@@ -111,7 +111,7 @@ Spravujte vaše zařízení Azure IoT Edge z cloudu do nasazení modul, který b
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
 
-## <a name="view-generated-data"></a>Vygeneruje zobrazení dat
+## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
 V tomto kurzu jste vytvořili nový IoT hraniční zařízení a na něm nainstalován modul runtime IoT okraj. Potom použít portál Azure k modul IoT okraj ke spuštění na zařízení bez nutnosti měnit samotné zařízení. V takovém případě modul, který jste nabídnutých vytvoří prostředí data, která můžete použít pro kurzů k. 
 

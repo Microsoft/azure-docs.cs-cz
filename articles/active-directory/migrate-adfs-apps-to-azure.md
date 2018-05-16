@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: 6303fdce65e460489c9f66e388c28383b9942627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93282f3d4a7ca84e59fa8831d5eb650a643d1e83
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
 
@@ -234,6 +234,6 @@ Pokud chcete, aby zřizování uživatelů pro danou aplikaci SaaS zpracovávala
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Správa aplikací pomocí Azure Active Directory](active-directory-enable-sso-scenario.md)
+- [Správa aplikací pomocí Azure Active Directory](manage-apps/what-is-application-management.md)
 - [Správa přístupu k aplikacím](active-directory-managing-access-to-apps.md)
 - [Federace služby Azure AD Connect](active-directory-aadconnectfed-whatis.md)

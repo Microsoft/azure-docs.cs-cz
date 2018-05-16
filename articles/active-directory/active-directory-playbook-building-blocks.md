@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 09f3bf3726a4a359d8c54d45843b08871d82f159
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o koncept playbook: stavební bloky
 
@@ -241,11 +241,11 @@ Přibližná doba na dokončeno: 20 minut
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Microsoft Azure AD basic nebo předplatné premium a adresář Azure AD, u kterého jste globální správce | [Edice služby Azure Active Directory](active-directory-editions.md) |
+| Microsoft Azure AD basic nebo předplatné premium a adresář Azure AD, u kterého jste globální správce | [Edice služby Azure Active Directory](active-directory-whatis.md) |
 | Webové aplikace hostované místní, které chcete nakonfigurovat pro vzdálený přístup |  |
-| Serveru se systémem Windows Server 2012 R2 nebo Windows 8.1 nebo vyšší, na který nainstalujete konektor Proxy aplikace | [Pochopení konektory proxy aplikace služby Azure AD](application-proxy-understand-connectors.md) |
+| Serveru se systémem Windows Server 2012 R2 nebo Windows 8.1 nebo vyšší, na který nainstalujete konektor Proxy aplikace | [Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md) |
 | Pokud v cestě je brána firewall, ujistěte se, že je otevřete tak, aby konektor můžete provést požadavky HTTPS (TCP) proxy aplikace | [Povolení Proxy aplikace na portálu Azure: požadavky na Proxy aplikace](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
-| Pokud vaše organizace používá proxy servery pro připojení k Internetu, proveďte podívejte se na blogu k vystavení práci se stávající místní servery proxy podrobnosti o tom, jak je nakonfigurovat | [Práce s existující místní proxy servery](application-proxy-working-with-proxy-servers.md) |
+| Pokud vaše organizace používá proxy servery pro připojení k Internetu, proveďte podívejte se na blogu k vystavení práci se stávající místní servery proxy podrobnosti o tom, jak je nakonfigurovat | [Práce s existující místní proxy servery](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) |
 
 
 ### <a name="steps"></a>Kroky
@@ -255,13 +255,13 @@ Přibližná doba na dokončeno: 20 minut
 | Instalace konektoru na serveru | [Povolení Proxy aplikace na portálu Azure: instalace a registrace konektoru](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
 | Publikovat místní aplikace ve službě Azure AD jako aplikace Proxy aplikace | [Publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md) |
 | Přiřadit testovací uživatele | [Publikování aplikací pomocí proxy aplikace služby Azure AD: Přidání testovacího uživatele](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
-| Volitelně můžete nakonfigurujte jeden přihlašování pro vaše uživatele | [Zadejte jednotné přihlašování s proxy aplikace služby Azure AD](application-proxy-sso-azure-portal.md) |
+| Volitelně můžete nakonfigurujte jeden přihlašování pro vaše uživatele | [Zadejte jednotné přihlašování s proxy aplikace služby Azure AD](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) |
 | Testování aplikace po přihlášení na portál MyApps jako přiřazený uživatel | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Při doporučujeme uvedení konektor v podnikové síti, existují případy, když se zobrazí lepší výkon jeho umístění v cloudu. Další informace: [aspekty topologie sítě, při použití aplikace Proxy Azure Active Directory](application-proxy-network-topology-considerations.md)
-2. Další podrobné informace o zabezpečení a jak to zejména zabezpečený vzdálený přístup poskytuje řešení udržováním pouze odchozí připojení najdete v tématu: [důležité informace o zabezpečení pro vzdálený přístup k aplikací pomocí proxy aplikace služby Azure AD](application-proxy-security-considerations.md)
+1. Při doporučujeme uvedení konektor v podnikové síti, existují případy, když se zobrazí lepší výkon jeho umístění v cloudu. Další informace: [aspekty topologie sítě, při použití aplikace Proxy Azure Active Directory](manage-apps/application-proxy-network-topology.md)
+2. Další podrobné informace o zabezpečení a jak to zejména zabezpečený vzdálený přístup poskytuje řešení udržováním pouze odchozí připojení najdete v tématu: [důležité informace o zabezpečení pro vzdálený přístup k aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-security.md)
 
 ## <a name="generic-ldap-connector-configuration"></a>Obecná konfigurace konektoru LDAP
 

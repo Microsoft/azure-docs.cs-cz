@@ -3,19 +3,19 @@ title: Rychlý start – rychlý start práce na portálu Azure s clusterem Kub
 description: Rychle se naučíte, jak pomocí portálu Azure vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/24/2018
+ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5bb758637d7b23f206f78d1604f985c2985d4410
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: cd17d2732bf44e3f4b46878d6a416579b9e2f970
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Container Service (AKS)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
 V tomto rychlém startu nasadíte cluster AKS pomocí portálu Azure. Následně se na tomto clusteru spustí vícekontejnerová aplikace skládající se z front-endu webu a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 
@@ -27,53 +27,43 @@ Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Pod
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
-## <a name="create-service-principal"></a>Vytvoření instančního objektu
 
-Před vytvořením clusteru AKS na portálu Azure je potřeba vytvořit instanční objekt služby. Azure používá tento instanční objekt služby ke správě infrastruktury přidružené ke clusteru AKS.
-
-Vyberte položky **Azure Active Directory** > **Registrace aplikací** > **Registrace nové aplikace**.
-
-Zadejte libovolný název aplikace. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**. Zadejte hodnotu **Přihlašovací adresa URL**. Může to být libovolná hodnota v platném formátu adresy URL, ale nemusí se jednat o skutečný koncový bod.
-
-Po dokončení vyberte **Vytvořit**.
-
-![Vytvoření instančního objektu 1](media/container-service-walkthrough-portal/create-sp-one.png)
-
-Vyberte registraci nově vytvořené aplikace a poznamenejte si ID aplikace. Tato hodnota je potřeba při vytváření clusteru AKS.
-
-![Vytvoření instančního objektu 2](media/container-service-walkthrough-portal/create-sp-two.png)
-
-Dál musíte pro instanční objekt vytvořit heslo. Vyberte **Všechna nastavení** > **Klíče** a zadejte libovolnou hodnotu popisu klíče. Vyberte dobu trvání, která představuje dobu platnosti instančního objektu služby.
-
-Klikněte na **Uložit** a poznamenejte si hodnotu hesla. Toto heslo je potřeba při vytváření clusteru AKS.
-
-![Vytvoření instančního objektu 3](media/container-service-walkthrough-portal/create-sp-three.png)
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Service – AKS (Preview)**.
+Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Azure Kubernetes Service (Preview)** > **Vytvořit**.
 
-Zadejte název clusteru, předponu DNS, název skupiny prostředků, umístění a verzi systému Kubernetes pro cluster. Poznamenejte si název clusteru a název skupiny prostředků. Ty budou potřeba při připojování ke clusteru.
+Pod jednotlivými nadpisy formuláře pro vytvoření clusteru AKS proveďte následující kroky.
 
-Po dokončení vyberte **OK**.
+- **PODROBNOSTI O PROJEKTU:** Vyberte předplatné Azure a novou nebo existující skupinu prostředků Azure.
+- **PODROBNOSTI O CLUSTERU:** Zadejte název, oblast, verzi a předponu názvu DNS pro cluster AKS.
+- **OVĚŘOVÁNÍ:** Vytvořte nový instanční objekt nebo použijte existující. Pokud použijete stávající hlavní název služby (SPN), je potřeba zadat ID klienta a tajný klíč SPN.
+- **ŠKÁLOVÁNÍ:** Vyberte velikost virtuálního počítače pro uzly AKS. Velikost virtuálního počítače **nejde** změnit po nasazení clusteru AKS. Vyberte také počet uzlů, které se mají do clusteru nasadit. Počet uzlů **jde** upravit po nasazení clusteru.
 
-![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/create-aks-portal-one.png)
+Jakmile budete hotovi, vyberte **Další: Sítě**.
 
-V konfiguračním formuláři zadejte tyto položky:
+![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/aks-portal-1.png)
 
-- Uživatelské jméno – název přiřazený účtům správců v uzlech clusteru.
-- Veřejný klíč SSH – přidružený ke klíči, který se použije pro přístup k uzlům clusteru.
-- ID klienta instančního objektu služby – ID aplikace instančního objektu služby, který jste vytvořili dříve v tomto dokumentu.
-- Tajný klíč klienta instančního objektu služby – heslo instančního objektu služby, které jste vytvořili dříve v tomto dokumentu.
-- Počet uzlů – počet uzlů AKS, který se má vytvořit.
-- Velikost virtuálního počítače uzlu – velikost virtuálního počítače pro uzly AKS.
-- Velikost disku OS – velikost disku operačního systému uzlů AKS.
+Nakonfigurujte následující možnosti sítě:
 
-Po dokončení vyberte **OK** po dokončení ověřování znovu vyberte **OK**.
+- **Směrování aplikace HTTP** – Nakonfiguruje integrovaný kontroler příchozího přenosu dat tak, aby automaticky vytvořil veřejný název DNS. Další informace o směrování HTTP najdete v tématu [Směrování HTTP a DNS ve službě AKS][http-routing].
+- **Konfigurace sítě** – Zvolte základní konfiguraci sítě s využitím pluginu Kubernetes [kubenet][kubenet] nebo pokročilou konfiguraci sítě s využitím [Azure CNI][azure-cni]. Další informace o možnostech sítí najdete v tématu [Přehled sítí AKS][aks-network].
 
-![Vytvoření clusteru AKS 2](media/container-service-walkthrough-portal/create-aks-portal-two.png)
+Jakmile budete hotovi, vyberte **Další: Monitorování**.
 
-Po krátkém čekání se cluster AKS nasadí a je připravený k použití.
+![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/aks-portal-2.png)
+
+Při nasazování clusteru AKS můžete nakonfigurovat službu Azure Container Insights tak, monitorovala stav clusteru AKS a podů spuštěných v clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
+
+Výběrem možnosti **Ano** povolte monitorování kontejneru a vyberte existující pracovní prostor Log Analytics nebo vytvořte nový.
+
+Vyberte **Zkontrolovat a vytvořit** a po dokončení vyberte **Vytvořit**.
+
+![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/aks-portal-3.png)
+
+Po krátkém čekání se cluster AKS nasadí a je připravený k použití. Přejděte do skupiny prostředků clusteru AKS, vyberte prostředek AKS a měl by se zobrazit řídicí panel clusteru AKS.
+
+![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/aks-portal-5.png)
 
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
 
@@ -82,11 +72,6 @@ Ke správě clusteru Kubernetes použijte klienta příkazového řádku Kuberne
 Otevřete službu Cloud Shell pomocí tlačítka v pravém horním rohu portálu Azure.
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
-
-Zadejte předplatné (pokud jste tak dosud neučinili).
-```azurecli-interactive
-az account set -s SUBSCRIPTION_NAME
-```
 
 Spusťte příkaz [az aks get-credentials][az-aks-get-credentials], abyste mohli nakonfigurovat klienta kubectl pro připojení k vašemu clusteru Kubernetes.
 
@@ -106,14 +91,14 @@ Výstup:
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     6m        v1.8.1
-aks-agentpool-14693408-1   Ready     agent     6m        v1.8.1
-aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
+aks-agentpool-11482510-0   Ready     agent     9m        v1.9.6
+aks-agentpool-11482510-1   Ready     agent     8m        v1.9.6
+aks-agentpool-11482510-2   Ready     agent     9m        v1.9.6
 ```
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Soubor manifestu Kubernetes definuje požadovaný stav clusteru, včetně toho, které image kontejnerů mají být spuštěné. V tomto příkladu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote.
+Soubor manifestu Kubernetes definuje požadovaný stav clusteru, včetně toho, jaké image kontejnerů mají být spuštěné. V tomto příkladu manifest slouží k vytvoření všech objektů potřebných ke spuštění aplikace Azure Vote. Mezi tyto objekty patří dvě [nasazení Kubernetes][kubernetes-deployment], jedno pro front-end aplikace Azure Vote a druhé pro instanci Redis. Vytvoří se také dvě [služby Kubernetes][kubernetes-service], interní služba pro instanci Redis a externí služba pro přístup k aplikaci Azure Vote z internetu.
 
 Vytvořte soubor `azure-vote.yaml` a zkopírujte do něj následující kód YAML. Pokud pracujete ve službě Azure Cloud Shell, vytvořte tento soubor pomocí editoru vi nebo Nano, stejně jako kdybyste pracovali na virtuálním nebo fyzickém systému.
 
@@ -195,7 +180,7 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>Testování aplikace
 
-Při spuštění aplikace se vytvoří [služba Kubernetes][kubernetes-service], která zveřejní front-end aplikace na internetu. Dokončení tohoto procesu může trvat několik minut.
+Při spuštění aplikace se vytvoří [služba Kubernetes][kubernetes-service], která zveřejní aplikaci na internetu. Dokončení tohoto procesu může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -220,12 +205,24 @@ Teď přejděte na externí IP adresu a zobrazte aplikaci Azure Vote.
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
+## <a name="monitor-health-and-logs"></a>Monitorování stavu a protokolů
+
+Pokud jste povolili monitorování Container Insights, na řídicím panelu clusteru AKS jsou k dispozici metriky stavu pro cluster AKS i pody spuštěné v clusteru. Další informace o monitorování stavu clusteru najdete v tématu [Monitorování stavu služby Azure Kubernetes Service][aks-monitor].
+
+Pokud chcete zobrazit aktuální stav, dobu provozu a využití prostředků pro pody Azure Vote, vraťte se k prostředku AKS, vyberte **Monitorovat stav kontejneru**, vyberte **výchozí** obor názvů a pak vyberte **Kontejnery**. Naplnění těchto dat na webu Azure Portal může trvat několik minut.
+
+![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/aks-portal-6.png)
+
+Pokud chcete zobrazit protokoly pro pod `azure-vote-front`, vyberte odkaz **Zobrazit protokoly**. Tyto protokoly obsahují streamy výstupů stdout a stderr z kontejneru.
+
+![Vytvoření clusteru AKS 1](media/container-service-walkthrough-portal/aks-portal-7.png)
+
 ## <a name="delete-cluster"></a>Odstranění clusteru
 
-Když už cluster nepotřebujete, odstraňte skupinu prostředků clusteru, čímž odstraníte všechny související prostředky. To můžete provést na portálu Azure výběrem skupiny prostředků a kliknutím na tlačítko Odstranit. Případně můžete použít příkaz [az group delete][az-group-delete] ve službě Cloud Shell.
+Když už cluster nepotřebujete, odstraňte prostředek clusteru, čímž odstraníte všechny související prostředky. Tuto operaci můžete provést na webu Azure Portal výběrem tlačítka Odstranit na řídicím panelu clusteru AKS. Případně můžete použít příkaz [az aks delete][az-aks-delete] ve službě Cloud Shell.
 
 ```azurecli-interactive
-az group delete --name myAKSCluster --no-wait
+az aks delete --resource-group myAKSCluster --name myAKSCluster --no-wait
 ```
 
 ## <a name="get-the-code"></a>Získání kódu
@@ -245,15 +242,19 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
+[azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
-[az-group-delete]: /cli/azure/group#delete
+[az-aks-delete]: /cli/azure/aks#az-aks-delete
+[aks-monitor]: ../log-analytics/log-analytics-containers.md
+[aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-
-
+[http-routing]: ./http-application-routing.md

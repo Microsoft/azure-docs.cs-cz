@@ -1,7 +1,7 @@
 ---
 title: Hloubkové učení a AI architektury - Azure | Microsoft Docs
 description: Architektura AI a hloubkového učení
-keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
+keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d73869d1371247a269b6601c35b1a938d89176c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Datové vědy virtuálního počítače](http://aka.ms/dsvm) (DSVM) a [počítač hloubkového učení](http://aka.ms/dsvm/deeplearning) podporuje mnoho hloubkové learning rozhraní k sestavení aplikace umělé Intelligence (AI) s prediktivní analýzy a kognitivní možnosti jako bitovou kopii a znalosti jazyka. 
@@ -80,6 +80,7 @@ Zde jsou uvedeny podrobnosti na všechny hloubkového učení rozhraní, které 
 | Co je to?   | Hloubkové learning framework      |
 | Podporované DSVM edice      | Ubuntu     |
 | Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Je nainstalovaný Caffe `/opt/caffe`.    |
+| Jak přepnout na Python 2.7 | Spusťte `source activate root`. |
 | Odkazy na ukázky      | Ukázky jsou součástí `/opt/caffe/examples`.      |
 | Na DSVM souvisejících nástrojích      | Caffe2      |
 ### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?  
@@ -88,12 +89,15 @@ Přihlaste se k virtuálnímu počítači, pak spusťte nový terminál a zadat 
 
 ```
 cd /opt/caffe/examples
+source activate root
 jupyter notebook
 ```
 
 Otevře se nové okno prohlížeče s ukázka poznámkových bloků.
 
-Binární soubory jsou nainstalovány v /opt/caffe/build/install/bin. 
+Binární soubory jsou nainstalovány v /opt/caffe/build/install/bin.
+
+Nainstalovaná verze Caffe vyžaduje Python 2.7 a nebude fungovat se ve výchozím nastavení aktivované 3.5 Python. Spustit `source activate root` přepnout Anaconda prostředí. 
 
 ## <a name="caffe2"></a>Caffe2
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 10/9/2017
+ms.date: 5/10/2018
 ms.author: mobandyo
-ms.openlocfilehash: d94536bd0ab10c3e380855b66bc10dc9af6195a3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e26d8ad1f08eb711dc22b45d48f8dc326d8c17c7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Prostřednictvím kódu programu pohled na použití Azure pomocí rozhraní API Správce Azure fakturace
 Používáte rozhraní API Správce Azure fakturace k získání dat využití a prostředků do vašeho nástrojů pro analýzu dat upřednostňované. Rozhraní API RateCard a využití prostředků Azure vám může pomoct přesně předpovědět a náklady na správu. Rozhraní API jsou implementovány jako poskytovatel prostředků a součástí řady rozhraní API vystavené pomocí Správce prostředků Azure.  

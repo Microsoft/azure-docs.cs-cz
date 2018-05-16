@@ -41,7 +41,7 @@
 ### [Grant kódu ověřování OAuth 2.0](active-directory-protocols-oauth-code.md)
 ### [Implicitní grant Oauth 2.0](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [Konfigurace deklarace identity role](active-directory-enterprise-app-role-management.md)
+### [Konfigurace deklarace identity role](../active-directory-enterprise-app-role-management.md)
 ### [Přizpůsobení deklarací identity](active-directory-saml-claims-customization.md)
 ### [Ladění SSO založeného na SAML](active-directory-saml-debugging.md)
 ### [Protokol SAML pro jednotné přihlašování](active-directory-single-sign-on-protocol-reference.md)

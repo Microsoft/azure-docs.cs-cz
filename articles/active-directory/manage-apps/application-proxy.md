@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0ab788494f56364d4a46d632e34e4a1334564836
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c5f706e6e9402bfc404c370a0d1a45fc07656a9e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím
 
@@ -52,15 +52,15 @@ Proxy aplikace služby Azure AD je:
 S Azure AD Application Proxy se můžete dostat různé typy interní aplikace:
 
 * Webové aplikace, které používají [integrované ověřování systému Windows](application-proxy-configure-single-sign-on-with-kcd.md) pro ověřování  
-* Webové aplikace, které používají založené na formulářích nebo [na základě záhlaví](../application-proxy-ping-access.md) přístup  
+* Webové aplikace, které používají založené na formulářích nebo [na základě záhlaví](application-proxy-configure-single-sign-on-with-ping-access.md) přístup  
 * Webové rozhraní API, která chcete vystavit bohaté aplikací na různých zařízeních  
-* Aplikace hostované za [Brána vzdálené plochy](../application-proxy-publish-remote-desktop.md)  
+* Aplikace hostované za [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)  
 * Bohaté klientských aplikací, které jsou integrované s Active Directory Authentication Library (ADAL)
 
 ## <a name="how-does-application-proxy-work"></a>Jak funguje Proxy aplikace?
 Existují dvě součásti, které je nutné nakonfigurovat, aby Proxy aplikací fungovat: konektoru a externí koncový bod. 
 
-Konektor je lightweight agenta, která se nachází na serveru Windows uvnitř vaší sítě. Konektor usnadňuje tok přenosů ze služby Proxy aplikace v cloudu pro aplikaci místní. Pouze používá odchozí připojení, takže nemusíte otevírat žádné příchozí porty, nebo nic uveden v hraniční síti. Konektory jsou bezstavové a načítat informace z cloudu podle potřeby. Další informace o konektory, podobně jako postupy jejich vyrovnávání zatížení a ověření, najdete v části [pochopit Azure AD Application Proxy konektory](../application-proxy-understand-connectors.md). 
+Konektor je lightweight agenta, která se nachází na serveru Windows uvnitř vaší sítě. Konektor usnadňuje tok přenosů ze služby Proxy aplikace v cloudu pro aplikaci místní. Pouze používá odchozí připojení, takže nemusíte otevírat žádné příchozí porty, nebo nic uveden v hraniční síti. Konektory jsou bezstavové a načítat informace z cloudu podle potřeby. Další informace o konektory, podobně jako postupy jejich vyrovnávání zatížení a ověření, najdete v části [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md). 
 
 Externí koncový bod je, jak uživatelé kontaktovat vaše aplikace při mimo vaši síť. Můžete buď přejít přímo na externí adresu URL, která určíte, nebo získají přístup k aplikaci prostřednictvím portálu MyApps. Když uživatelé přejít na jednu z těchto koncových bodů, ověřování ve službě Azure AD a potom jsou směrovány prostřednictvím konektoru pro místní aplikace.
 
@@ -95,9 +95,9 @@ Jakmile publikujete první aplikace, existuje mnoho dalších úkonů, které m�
 
 * [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Publikování aplikací s použitím vlastního názvu domény](application-proxy-configure-custom-domain.md)
-* [Další informace o Azure AD Application Proxy konektory](../application-proxy-understand-connectors.md)
-* [Práce s existující místní Proxy servery](../application-proxy-working-with-proxy-servers.md) 
-* [Nastavit vlastní domovskou stránku](../application-proxy-office365-app-launcher.md)
+* [Další informace o Azure AD Application Proxy konektory](application-proxy-connectors.md)
+* [Práce s existující místní Proxy servery](application-proxy-configure-connectors-with-proxy-servers.md) 
+* [Nastavit vlastní domovskou stránku](application-proxy-configure-custom-home-page.md)
 
 Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)
 

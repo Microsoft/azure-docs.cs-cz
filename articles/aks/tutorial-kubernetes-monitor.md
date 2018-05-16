@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 522109e37a0e8a54848b524697e601b4ea8992d5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-monitor-azure-container-service-aks"></a>Kurz: Monitorování služby Azure Container Service (AKS)
+# <a name="tutorial-monitor-azure-kubernetes-service-aks"></a>Kurz: Monitorování služby Azure Kubernetes Service (AKS)
 
 Monitorování clusteru a kontejnerů Kubernetes je důležité, zejména pokud provozujete produkční cluster ve velkém měřítku a s několika aplikacemi.
 
@@ -26,7 +26,7 @@ V tomto kurzu, který je sedmou částí osmidílné série, se probírají nás
 > [!div class="checklist"]
 > * Konfigurace řešení pro monitorování kontejnerů
 > * Konfigurace agentů monitorování
-> * Přístup k informacím o monitorování na portálu Azure Portal
+> * Přístup k informacím o monitorování na webu Azure Portal
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -36,7 +36,7 @@ Pokud jste tyto kroky neprovedli a chcete si je projít, vraťte se ke [kurzu 1 
 
 ## <a name="configure-the-monitoring-solution"></a>Konfigurace řešení pro monitorování
 
-Na portálu Azure Portal vyberte **Vytvořit prostředek** a vyhledejte řešení `Container Monitoring Solution`. Jakmile řešení najdete, vyberte **Vytvořit**.
+Na webu Azure Portal vyberte **Vytvořit prostředek** a vyhledejte řešení `Container Monitoring Solution`. Jakmile řešení najdete, vyberte **Vytvořit**.
 
 ![Přidání řešení](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
@@ -48,7 +48,7 @@ Při vytváření pracovního prostoru vyberte **Připnout na řídicí panel**,
 
 Až budete hotovi, vyberte **OK**. Po dokončení ověřování vyberte **Vytvořit** a vytvořte řešení pro monitorování kontejnerů.
 
-Po vytvoření se pracovní prostor zobrazí na portálu Azure Portal.
+Po vytvoření se pracovní prostor zobrazí na webu Azure Portal.
 
 ## <a name="get-workspace-settings"></a>Získání nastavení pracovního prostoru
 
@@ -56,7 +56,7 @@ Ke konfiguraci agenta řešení na uzlech Kubernetes se vyžaduje ID a klíč pr
 
 Tyto hodnoty načtete výběrem možnosti **Pracovní prostor Log Analytics** v levé nabídce řešení kontejnerů. Vyberte **Upřesnit nastavení** a poznamenejte si **ID PRACOVNÍHO PROSTORU** a **PRIMÁRNÍ KLÍČ**.
 
-## <a name="create-kubernetes-secret"></a>Vytvoření tajného kódu Kubernetes
+## <a name="create-kubernetes-secret"></a>Vytvoření tajného klíče Kubernetes
 
 Pomocí příkazu [kubectl create secret][kubectl-create-secret] uložte nastavení pracovního prostoru Log Analytics do tajného kódu Kubernetes `omsagent-secret`. Aktualizujte `WORKSPACE_ID` s použitím ID vašeho pracovního prostoru Log Analytics a `WORKSPACE_KEY` s použitím klíče pracovního prostoru.
 
@@ -84,26 +84,26 @@ spec:
     dockerProviderVersion: 1.0.0-30
   spec:
    containers:
-     - name: omsagent 
+     - name: omsagent
        image: "microsoft/oms"
        imagePullPolicy: Always
        securityContext:
          privileged: true
        ports:
        - containerPort: 25225
-         protocol: TCP 
+         protocol: TCP
        - containerPort: 25224
          protocol: UDP
        volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
-        - mountPath: /var/log 
+        - mountPath: /var/log
           name: host-log
         - mountPath: /etc/omsagent-secret
           name: omsagent-secret
           readOnly: true
-        - mountPath: /var/lib/docker/containers 
-          name: containerlog-path  
+        - mountPath: /var/lib/docker/containers
+          name: containerlog-path
        livenessProbe:
         exec:
          command:
@@ -113,26 +113,26 @@ spec:
         initialDelaySeconds: 60
         periodSeconds: 60
    nodeSelector:
-    beta.kubernetes.io/os: linux    
+    beta.kubernetes.io/os: linux
    # Tolerate a NoSchedule taint on master that ACS Engine sets.
    tolerations:
     - key: "node-role.kubernetes.io/master"
       operator: "Equal"
       value: "true"
-      effect: "NoSchedule"     
+      effect: "NoSchedule"
    volumes:
-    - name: docker-sock 
+    - name: docker-sock
       hostPath:
        path: /var/run/docker.sock
     - name: host-log
       hostPath:
-       path: /var/log 
+       path: /var/log
     - name: omsagent-secret
       secret:
        secretName: omsagent-secret
     - name: containerlog-path
       hostPath:
-       path: /var/lib/docker/containers    
+       path: /var/lib/docker/containers
 ```
 
 Pomocí následujícího příkazu vytvořte DaemonSet:
@@ -158,7 +158,7 @@ Po spuštění agentů trvá službě Log Analytics ingestování a zpracování
 
 ## <a name="access-monitoring-data"></a>Přístup k datům monitorování
 
-Na portálu Azure Portal vyberte pracovní prostor Log Analytics, který se připnul na řídicí panel portálu. Klikněte na dlaždici **Řešení pro monitorování kontejnerů**. Tady najdete informace o clusteru AKS a jeho kontejnerech.
+Na webu Azure Portal vyberte pracovní prostor Log Analytics, který se připnul na řídicí panel portálu. Klikněte na dlaždici **Řešení pro monitorování kontejnerů**. Tady najdete informace o clusteru AKS a jeho kontejnerech.
 
 ![Řídicí panel](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
@@ -171,7 +171,7 @@ V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Ana
 > [!div class="checklist"]
 > * Konfigurace řešení pro monitorování kontejnerů
 > * Konfigurace agentů monitorování
-> * Přístup k informacím o monitorování na portálu Azure Portal
+> * Přístup k informacím o monitorování na webu Azure Portal
 
 Přejděte k dalšímu kurzu, kde se seznámíte s upgradem Kubernetes na novou verzi.
 

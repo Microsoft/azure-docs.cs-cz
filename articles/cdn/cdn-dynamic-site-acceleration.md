@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamických webů prostřednictvím Azure CDN
 
@@ -144,7 +144,7 @@ Tato funkce automaticky monitoruje sítě kvality a využívá standardní metod
 
 Komprese Adaptivní bitové kopie | Přípony souborů  
 --- | ---  
-Komprese JPEG | .jpg, .jpeg, .jpe, .jig, .jgig, .jgi
+Komprese JPEG | JPG, JPEG, JPE, .jig, .jgig, .jgi
 
 ## <a name="caching"></a>Ukládání do mezipaměti
 
@@ -158,7 +158,7 @@ Pro přístup k ukládání do mezipaměti pravidla:
 
 1. Z **profil CDN** stránky v části nastavení, vyberte **ukládání do mezipaměti pravidla**.  
     
-    ![Ukládání do mezipaměti CDN tlačítko pravidla](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
+    ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
     **Ukládání do mezipaměti pravidla** otevře se stránka.
 
@@ -183,9 +183,6 @@ Pro přístup k stroj pravidel:
 Alternativně můžete použít dva koncové body CDN: optimalizovaný jeden koncový bod se DSA k poskytování dynamické prostředky a jiným koncovým bodem optimalizovaný se statickou optimalizace typu, například obecné webové přenosy k doručení Uložitelný prostředky. Upravte adresám URL webové stránky na přímý odkaz na prostředek na koncového bodu CDN, které chcete používat. 
 
 Příklad: `mydynamic.azureedge.net/index.html` dynamické stránky a je načíst z DSA koncového bodu.  Stránky html odkazuje na více statických prostředků, například knihoven jazyka JavaScript nebo bitové kopie, které jsou načítány ze statické koncového bodu CDN, jako například `mystatic.azureedge.net/banner.jpg` a `mystatic.azureedge.net/scripts.js`. 
-
-Příklad o tom, jak použít řadiče ve webové aplikaci ASP.NET, která bude sloužit obsah prostřednictvím konkrétní adresy URL CDN, naleznete v části [poskytovat obsah z akce kontroleru prostřednictvím Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller).
-
 
 
 

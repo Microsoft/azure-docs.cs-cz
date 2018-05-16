@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 95f34e5d4fd966c41a30cc68c005237ae5405592
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: e95f5d585fa97a62b709e73b6ed6eacafe69a2b3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Postup nasazení Linux Hybrid Runbook Worker
 
@@ -34,6 +34,22 @@ Následuje seznam distribucí Linux, které jsou podporovány:
 ## <a name="installing-linux-hybrid-runbook-worker"></a>Instalace Linux hybridní pracovní proces Runbooku
 
 K instalaci a konfiguraci Hybrid Runbook Worker ve vašem počítači Linux, postupujte podle dál přímo proces ručně nainstalujte a nakonfigurujte roli. Vyžaduje povolení **Automation Hybrid Worker** řešení v pracovní prostor analýzy protokolů a pak spustit sadu příkazů pro registraci počítače jako pracovní proces a přidejte ji do nové nebo existující skupiny.
+
+Toto jsou minimální požadavky pro Linux Hybrid Runbook Worker:
+
+* Minimálně dvě jádra
+* Minimálně 4 GB paměti RAM
+* Port 443 (odchozí)
+
+### <a name="package-requirements"></a>Požadavky na balíček
+
+| **Požadovaný balíček** | **Popis** | **Minimální verze**|
+|--------------------- | --------------------- | -------------------|
+|Glibc |Knihovny jazyka C GNU| 2.5-12 |
+|OpenSSL| Knihovny OpenSSL | 0.9.8E nebo 1.0|
+|Curl | cURL webového klienta | 7.15.5|
+|Python ctypes | |
+|PAM | Modulů PAM|
 
 Než budete pokračovat, musíte svůj účet Automation je spojena se pracovní prostor analýzy protokolů a také primární klíč pro svůj účet Automation. Obě z portálu můžete najít a vyberete svůj účet Automation a vyberete **prostoru** pro dané ID pracovního prostoru a výběr **klíče** pro primární klíč. Informace o porty a adresy, které jsou potřebné pro hybridní pracovní proces Runbooku, najdete v části [konfigurace vaší sítě](automation-hybrid-runbook-worker.md#network-planning).
 
@@ -75,13 +91,47 @@ Linux hybridní pracovní procesy Runbooku nepodporují úplnou sadu runbook typ
 Následující typy runbook pracovat na hybridní pracovní proces Linux:
 
 * Python 2
-* Prostředí Power Shell
+* PowerShell
 
 Následující typy runbook nefungují pro Linux Hybrid Worker:
 
 * Pracovní postup prostředí PowerShell
 * Grafické
 * Pracovní postup grafické prostředí PowerShell
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Linux hybridní pracovní proces Runbook závisí na OMS agenta pro Linux komunikovat s vaším účtem Automation registraci pracovního procesu, přijímat úlohy sady runbook a zprávy o stavu. Pokud pracovní proces registrace selže, zde jsou některé možné příčiny chyby:
+
+### <a name="the-oms-agent-for-linux-is-not-running"></a>Není spuštěn Agent OMS pro Linux
+
+Pokud není spuštěn Agent OMS pro Linux, nebude Linux Hybrid Runbook Worker komunikaci se službou Azure Automation. Ověření agenta se službou a zadáte následující příkaz: `ps -ef | grep python`. Měli byste vidět výstup podobný následujícímu procesy python s **nxautomation** uživatelský účet. Pokud nejsou povolena řešení správy aktualizací nebo Azure Automation, žádný z těchto procesů bude spuštěna.
+
+```bash
+nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
+nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
+```
+
+V následujícím seznamu jsou procesy, které jsou spuštěny pro Linux Hybrid Runbook Worker. Všechny jsou umístěny v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
+
+* **OMS.conf** -Toto je správce pracovního procesu, to je spuštěna přímo z DSC.
+
+* **Worker.conf** -tento proces je automaticky zaregistrován hybridní pracovní proces, je spuštěno pomocí Správce pracovního procesu. Tento proces slouží pomocí správy aktualizací a je pro uživatele transparentní. Tento proces není být k dispozici, pokud není na počítači povolená řešení pro správu aktualizací.
+
+* **diy/Worker.conf** -tento proces je DIY hybridní pracovní proces. DIY hybridní pracovní proces se používá ke spouštění sad runbook uživatele na hybridní pracovní proces Runbooku. Liší se pouze z automatického zaregistrován hybridní pracovní proces podrobně klíče, který se používá jinou konfiguraci. Tento proces není přítomen Azure Automation není povoleno řešení a DIY hybridní pracovní proces Linux, není-li zaregistrovat.
+
+Pokud agenta OMS pro Linux neběží, spusťte následující příkaz pro spuštění služby: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
+
+### <a name="the-specified-class-does-not-exist"></a>Pro zadanou třídu neexistuje.
+
+Pokud se zobrazí chyba **pro zadanou třídu neexistuje...** v `/var/opt/microsoft/omsconfig/omsconfig.log` pak OMS agenta pro Linux je nutné aktualizovat. Spusťte následující příkaz, který znovu nainstalovat agenta OMS:
+
+```bash
+wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
+```
+
+Další pokyny o tom, jak vyřešit problémy s správy aktualizací najdete v tématu [správy aktualizací – řešení potíží](automation-update-management.md#troubleshooting)
 
 ## <a name="next-steps"></a>Další postup
 

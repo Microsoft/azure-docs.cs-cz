@@ -1,13 +1,14 @@
 ---
-title: "Azure jednotného přihlašování SAML protokol | Microsoft Docs"
-description: "Tento článek popisuje protokol jeden znak na SAML v Azure Active Directory"
+title: Azure jednotného přihlašování SAML protokol | Microsoft Docs
+description: Tento článek popisuje protokol jeden znak na SAML v Azure Active Directory
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddd5fa6f2ed0878afd8bbd6399471e92dfa30385
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-on-saml-protocol"></a>Jeden protokol přihlašování SAML
 Tento článek popisuje požadavky na ověření SAML 2.0 a odpovědi, které podporuje Azure Active Directory (Azure AD) pro jednotné přihlašování.
@@ -44,12 +45,12 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| ID |Požadované |Azure AD používá tento atribut naplnit `InResponseTo` atribut vrácený odpovědi. ID nesmí začínat číslicí, tak, aby společné strategie pro předřazení řetězec jako "id" řetězcovou reprezentaci identifikátor GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platné ID. |
-| Verze |Požadované |Měl by být **2.0**. |
-| IssueInstant |Požadované |Toto je datum a čas řetězec s hodnotou UTC a [odezvy formátu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nemá vyhodnocení nebo použijte hodnotu. |
-| AssertionConsumerServiceUrl |Volitelné |Pokud je zadán, musí odpovídat `RedirectUri` cloudové služby ve službě Azure AD. |
-| ForceAuthn |Volitelné | Je to logická hodnota. V případě hodnoty true, to znamená, že uživatel musí znovu provést ověření, i v případě, že mají platný relace s Azure AD. |
-| IsPassive |Volitelné |To je logická hodnota, která určuje, zda Azure AD by měl ověřit uživatele tiše, bez zásahu uživatele pomocí souboru cookie relace, pokud nějaká existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
+| ID |povinné |Azure AD používá tento atribut naplnit `InResponseTo` atribut vrácený odpovědi. ID nesmí začínat číslicí, tak, aby společné strategie pro předřazení řetězec jako "id" řetězcovou reprezentaci identifikátor GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platné ID. |
+| Verze |povinné |Měl by být **2.0**. |
+| IssueInstant |povinné |Toto je datum a čas řetězec s hodnotou UTC a [odezvy formátu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nemá vyhodnocení nebo použijte hodnotu. |
+| AssertionConsumerServiceUrl |nepovinné |Pokud je zadán, musí odpovídat `RedirectUri` cloudové služby ve službě Azure AD. |
+| ForceAuthn |nepovinné | Je to logická hodnota. V případě hodnoty true, to znamená, že uživatel musí znovu provést ověření, i v případě, že mají platný relace s Azure AD. |
+| IsPassive |nepovinné |To je logická hodnota, která určuje, zda Azure AD by měl ověřit uživatele tiše, bez zásahu uživatele pomocí souboru cookie relace, pokud nějaká existuje. Pokud je to pravda, Azure AD se pokusí ověřit uživatele pomocí souboru cookie relace. |
 
 Všechny ostatní `AuthnRequest` atributy, jako jsou souhlasu, cílový, AssertionConsumerServiceIndex, AttributeConsumerServiceIndex a ProviderName se **Ignorovat**.
 
@@ -255,7 +256,7 @@ Tato položka obsahuje deklarace identity o předmět nebo uživatele. Následuj
 ```        
 
 * **Název deklarace identity** : hodnota `Name` atribut (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`), jako je hlavní název uživatele ověřeného uživatele, `testuser@managedtenant.com`.
-* **Deklarace identity které** : hodnota `ObjectIdentifier` atribut (`http://schemas.microsoft.com/identity/claims/objectidentifier`) je `ObjectId` objektu adresáře, který představuje ověřeného uživatele ve službě Azure AD. `ObjectId`je nezměnitelná, globálně jedinečný a znovu používat bezpečné identifikátor ověřeného uživatele.
+* **Deklarace identity které** : hodnota `ObjectIdentifier` atribut (`http://schemas.microsoft.com/identity/claims/objectidentifier`) je `ObjectId` objektu adresáře, který představuje ověřeného uživatele ve službě Azure AD. `ObjectId` je nezměnitelná, globálně jedinečný a znovu používat bezpečné identifikátor ověřeného uživatele.
 
 #### <a name="authnstatement"></a>AuthnStatement
 Tento element vyhodnotí, že subjektu assertion byla ověřena konkrétní prostředky v určitou dobu.

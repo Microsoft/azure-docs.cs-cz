@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 05/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4c61cdc504306d4e28d1d8c03fce4e479a0bfd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f68a4d699d1ad6592fe5481cd69795b06e7d8fca
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – nejčastější dotazy
 
@@ -156,7 +156,7 @@ Pokud váš poskytovatel služeb nabízí ExpressRoute v obou lokalitách, můž
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Může mít více okruhů ExpressRoute ve stejné metro. Můžete propojit je s stejnou virtuální síť?
 
-Ano. Můžete mít více okruhů ExpressRoute zprostředkovatelům stejné nebo jiné služby. Pokud metro má více umístění partnerského vztahu ExpressRoute a okruhy se vytvářejí v různých umístění partnerského vztahu, můžete propojit stejné virtuální síti. Pokud jsou okruhy vytvořené na stejné umístění partnerského vztahu, nelze propojit stejné virtuální síti.
+Ano. Můžete mít více okruhů ExpressRoute zprostředkovatelům stejné nebo jiné služby. Pokud metro má více umístění partnerského vztahu ExpressRoute a okruhy jsou vytvořené na jiné umístění partnerského vztahu, můžete propojit stejné virtuální síti. Pokud jsou okruhy vytvořené na stejné umístění partnerského vztahu, nelze propojit stejné virtuální síti. Každý název umístění na portálu Azure nebo v prostředí PowerShell nebo rozhraní příkazového řádku API představuje umístění partnerského vztahu. Můžete například vybrat umístění partnerského vztahu "Singapur" a "Singapore2" a připojit okruhy z každé ke stejné síti virtuan. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Postup připojení Můj virtuální sítě k okruhu ExpressRoute
 

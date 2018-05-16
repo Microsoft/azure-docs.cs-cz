@@ -111,8 +111,6 @@
               href: azure-stack-powershell-download.md
             - name: Konfigurace PowerShellu – operátor cloudu
               href: azure-stack-powershell-configure-admin.md
-            - name: Zprovoznění s využitím PowerShellu
-              href: azure-stack-powershell-configure-quickstart.md
         - name: Přístup k privilegovanému koncovému bodu
           href: azure-stack-privileged-endpoint.md
         - name: Správa aktualizací

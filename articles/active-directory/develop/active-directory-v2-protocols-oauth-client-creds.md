@@ -3,23 +3,25 @@ title: Používat pro přístup k zabezpečeným prostředkům bez zásahu uživ
 description: Vytvoření webové aplikace pomocí Azure AD implementace ověřovacího protokolu OAuth 2.0.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ea681244edd81bcba1269886acc725175f779bfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 Můžete použít [udělení pověření klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) zadaný v dokumentu RFC 6749, někdy označuje jako *s rameny dva OAuth*, přístup k prostředkům hostované webové pomocí identity aplikace. Tento typ udělení běžně se používá pro interakce serveru na server, které musí spustit na pozadí bez okamžitou interakce s uživatelem. Tyto typy aplikací, často se označují jako *démoni* nebo *účtům služby*.
@@ -52,7 +54,7 @@ Místo použití seznamy ACL, můžete použít rozhraní API ke zveřejnění s
 * Čtení pošty ve všech poštovních schránkách
 * Čtení a zápis pošty ve všech poštovních schránkách
 * Odesílání pošty jménem libovolného uživatele
-* Umožňuje získat oprávnění ke čtení dat adresáře.
+* Čtení dat adresáře
 
 Další informace o aplikaci oprávnění, přejděte na [Microsoft Graph](https://graph.microsoft.io).
 
@@ -171,8 +173,8 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | tenant |Požaduje se | Adresář klienta aplikace plánuje fungovat před ve formátu název domény nebo identifikátor GUID. |
 | client_id |Požaduje se |ID aplikace, která [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
 | scope |Požaduje se |Hodnota předaná `scope` parametr v této žádosti o by měl být identifikátor prostředku (aplikace, identifikátor ID URI) prostředku, který chcete, opatřen s `.default` příponu. Například Microsoft Graph hodnota je `https://graph.microsoft.com/.default`. Tato hodnota informuje koncový bod v2.0, že všechny přímé aplikaci oprávnění, které jste nakonfigurovali pro vaši aplikaci, ho měli vydání tokenu pro ty, které jsou přidružené k prostředku, který chcete použít. |
-| client_assertion_type |Požadované |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Požadované | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|
+| client_assertion_type |povinné |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |povinné | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|
 | grant_type |Požaduje se |Musí být `client_credentials`. |
 
 Všimněte si, že parametry jsou téměř stejné jako v případě požadavku pomocí sdílený tajný klíč, s tím rozdílem, že parametr tajný klíč client_secret je nahrazena dva parametry: client_assertion_type a client_assertion.

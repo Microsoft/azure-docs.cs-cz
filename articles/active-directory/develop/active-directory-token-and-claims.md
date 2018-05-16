@@ -2,41 +2,43 @@
 title: Další informace o různých token a deklarace identity typy podporované službou Azure AD | Microsoft Docs
 description: Příručka pro pochopení a zhodnocení deklarace identity v tokenech SAML 2.0 a webové tokeny JSON (JWT), vystavené pomocí Azure Active Directory (AAD)
 documentationcenter: na
-author: hpsin
+author: CelesteDG
 services: active-directory
 manager: mtillman
 editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 82069b31ee51e0dd60691edca490b1a60384288a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
 Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token. 
 
 ## <a name="types-of-tokens"></a>Typy tokenů
-Azure AD podporuje [protokol autorizace OAuth 2.0](active-directory-protocols-oauth-code.md), které využívá access_tokens a refresh_tokens.  Také podporuje ověřování a přihlásit se přes [OpenID Connect](active-directory-protocols-openid-connect-code.md), který představuje třetí typ tokenu, požadavku id_token.  Všechny tyto tokeny je reprezentován jako "nosný token".
+Azure AD podporuje [protokol autorizace OAuth 2.0](active-directory-protocols-oauth-code.md), které využívá access_tokens a refresh_tokens. Také podporuje ověřování a přihlásit se přes [OpenID Connect](active-directory-protocols-openid-connect-code.md), který představuje třetí typ tokenu, požadavku id_token. Všechny tyto tokeny je reprezentován jako "nosný token".
 
 Je token nosiče tokenu lightweight zabezpečení, který uděluje přístup "nosiče" k chráněnému prostředku. V tomto smyslu je "nosiče" libovolné strany, který může být token. I když příjem token nosiče vyžaduje, aby se vyžaduje ověření službou Azure AD, musí třeba učinit zabezpečit tokenu, aby se zabránilo zachycení nezamýšleným strana. Protože nosné tokeny nemají integrovanou mechanismus zabránit neoprávněným stranám jejich používání, musí být přenosu v zabezpečený kanál, jako je například transport layer security (HTTPS). Pokud token nosiče je přenesen v nešifrované podobě, man-in střední útoku slouží k získání tokenu a získání neoprávněného přístupu k chráněnému prostředku. Při ukládání nebo ukládání do mezipaměti nosné tokeny pro pozdější použití platí stejné zásady zabezpečení. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny zabezpečeným způsobem. Další aspekty zabezpečení na nosné tokeny, najdete v části [RFC 6750 část 5](http://tools.ietf.org/html/rfc6750).
 
-Řadu tokeny vydané službou Azure AD jsou implementované jako webové tokeny JSON nebo Jwt.  Token JWT je compact, adresa URL bezpečných způsob přenosu informací mezi dvěma účastníky.  Informace obsažené v Jwt se označují jako "deklarace identity" a tvrzením informací o nosiče a předmět tokenu.  Deklarace identity v Jwt jsou objekty JSON kódování a serializovat pro přenos.  Vzhledem k tomu, že tokeny Jwt vydaného Azure AD jsou podepsané, ale nejsou šifrovaná, můžete snadno zkontrolovat obsah token JWT pro účely ladění.  Nejsou k dispozici jak to udělat, jako například několik nástrojů [jwt.ms](https://jwt.ms/). Další informace o Jwt, najdete [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Řadu tokeny vydané službou Azure AD jsou implementované jako webové tokeny JSON nebo Jwt. Token JWT je compact, adresa URL bezpečných způsob přenosu informací mezi dvěma účastníky. Informace obsažené v Jwt se označují jako "deklarace identity" a tvrzením informací o nosiče a předmět tokenu. Deklarace identity v Jwt jsou objekty JSON kódování a serializovat pro přenos. Vzhledem k tomu, že tokeny Jwt vydaného Azure AD jsou podepsané, ale nejsou šifrovaná, můžete snadno zkontrolovat obsah token JWT pro účely ladění. Nejsou k dispozici jak to udělat, jako například několik nástrojů [jwt.ms](https://jwt.ms/). Další informace o Jwt, najdete [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ## <a name="idtokens"></a>Id_tokens
-Id_tokens jsou tokenu zabezpečení přihlášení, která bude přijímat vaše aplikace při provádění ověřování pomocí formuláře [OpenID Connect](active-directory-protocols-openid-connect-code.md).  Jsou reprezentovány jako [Jwt](#types-of-tokens)a obsahují deklarace identity, které můžete použít k podepisování uživatele do vaší aplikace.  Deklarace identity můžete použít v požadavku id_token podle svých potřeb – běžně se používají pro zobrazení informací o účtu nebo provedení rozhodnutí o řízení přístupu v aplikaci.
+Id_tokens jsou tokenu zabezpečení přihlášení, která bude přijímat vaše aplikace při provádění ověřování pomocí formuláře [OpenID Connect](active-directory-protocols-openid-connect-code.md). Jsou reprezentovány jako [Jwt](#types-of-tokens)a obsahují deklarace identity, které můžete použít k podepisování uživatele do vaší aplikace. Deklarace identity můžete použít v požadavku id_token podle svých potřeb – běžně se používají pro zobrazení informací o účtu nebo provedení rozhodnutí o řízení přístupu v aplikaci.
 
-Id_tokens jsou podepsané, ale v tuto chvíli nejsou šifrovaná.  Aplikace obdrží požadavku id_token, musí [ověřit podpis](#validating-tokens) k potvrzení pravosti tokenu a ověření několik deklarací identity v tokenu k prokázání jeho platnosti.  Deklarace identity ověřit aplikací lišit v závislosti na požadavcích scénáře, ale některé [běžné ověření deklarace identity](#validating-tokens) , aplikace musí provést v každý scénář.
+Id_tokens jsou podepsané, ale v tuto chvíli nejsou šifrovaná. Aplikace obdrží požadavku id_token, musí [ověřit podpis](#validating-tokens) k potvrzení pravosti tokenu a ověření několik deklarací identity v tokenu k prokázání jeho platnosti. Deklarace identity ověřit aplikací lišit v závislosti na požadavcích scénáře, ale některé [běžné ověření deklarace identity](#validating-tokens) , aplikace musí provést v každý scénář.
 
-Najdete v následující části informace na id_tokens deklarace identity, jakož i požadavku id_token ukázka.  Všimněte si, že deklarace identity v id_tokens nebudou zobrazeny v libovolném pořadí.  Kromě toho nových deklarací identity, můžete dát do id_tokens v libovolném bodě v čase – aplikace by neměl rozdělit zavedeném nových deklarací identity.  Následující seznam obsahuje deklarace identity, které vaše aplikace může spolehlivě interpretovat v době psaní tohoto textu.  Pokud potřeby i další podrobnosti najdete v [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).
+Najdete v následující části informace na id_tokens deklarace identity, jakož i požadavku id_token ukázka. Všimněte si, že deklarace identity v id_tokens nebudou zobrazeny v libovolném pořadí. Kromě toho nových deklarací identity, můžete dát do id_tokens v libovolném bodě v čase – aplikace by neměl rozdělit zavedeném nových deklarací identity. Následující seznam obsahuje deklarace identity, které vaše aplikace může spolehlivě interpretovat v době psaní tohoto textu. Pokud potřeby i další podrobnosti najdete v [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).
 
 #### <a name="sample-idtoken"></a>Ukázka požadavku id_token
 ```
@@ -58,9 +60,9 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | Ověřování prostřednictvím rychlých |Zaznamenává datum a čas, kdy došlo k chybě ověřování. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |Metoda ověřování |Určuje, jak byla ověřena předmět tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Příklad JWT hodnoty**: `“amr”: ["pwd"]` |
 | `given_name` |Jméno |Poskytuje první nebo "zadány" jméno uživatele, nastavené na objekt uživatele Azure AD. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname”>`<br>`<AttributeValue>Frank<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"given_name": "Frank"` |
-| `groups` |Skupiny |Poskytuje ID objektů, které představují členství ve skupinách daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a bezpečně slouží ke správě přístupu, jako je například vynucování autorizace pro přístup k prostředkům. Skupiny součástí skupiny deklarace identity jsou nakonfigurované na základě jednotlivých aplikací prostřednictvím vlastnosti "groupMembershipClaims" manifestu aplikace. Hodnotu null vyloučí všechny skupiny, hodnotu "Objektu SecurityGroup" bude obsahovat pouze členství ve skupinách zabezpečení Active Directory a hodnotu "Vše" bude zahrnovat skupin zabezpečení a Office 365 distribučním seznamům. <br><br> **Poznámky k**: <br> Najdete v článku `hasgroups` deklarace identity níže podrobnosti o použití `groups` deklarace identity s implicitní udělení.  <br> Pro ostatní toky Pokud počet skupin, kterých je uživatel v prochází přes omezení (150 pro SAML, 200 pro token JWT), pak se deklarace identity Nadlimitní bude přidán deklarace identity zdroje odkazující na koncovém bodu graf, který obsahuje seznam skupin pro uživatele. (v. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
-|`hasgroups` | Nadlimitní indikátor skupiny JWT implicitního toku| Pokud je k dispozici, vždy `true`, které označuje, uživatel je v alespoň jednu skupinu.  Použito místo `groups` deklarace jwt implicitní grant toky Pokud deklarace identity úplné skupiny by rozšířit fragment URI překračuje omezení délky adresy URL (aktuálně 6 nebo více skupin).  Označuje, že klient musí použít grafu určit skupiny uživatele (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
-| `groups:src1` <br> `http://schemas.microsoft.com/claims/groups.link` | Nadlimitní indikátor skupiny | Pro žádosti o tokeny, které nejsou omezenou délku (najdete v části `hasgroups` výše), ale stále příliš velký pro daný token, odkaz na seznamu úplné skupiny pro uživatele, budou zahrnuty.  Jwt jako deklaraci distribuované pro SAML jako novou deklaraci místě `groups` deklarací identity. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=” http://schemas.microsoft.com/claims/groups.link”>`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"groups":"src1` <br> `_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
+| `groups` |Skupiny |Poskytuje ID objektů, které představují členství ve skupinách daného subjektu. Tyto hodnoty jsou jedinečné (viz ID objektu) a bezpečně slouží ke správě přístupu, jako je například vynucování autorizace pro přístup k prostředkům. Skupiny součástí skupiny deklarace identity jsou nakonfigurované na základě jednotlivých aplikací prostřednictvím vlastnosti "groupMembershipClaims" manifestu aplikace. Hodnotu null vyloučí všechny skupiny, hodnotu "Objektu SecurityGroup" bude obsahovat pouze členství ve skupinách zabezpečení Active Directory a hodnotu "Vše" bude zahrnovat skupin zabezpečení a Office 365 distribučním seznamům. <br><br> **Poznámky k**: <br> Najdete v článku `hasgroups` deklarace identity níže podrobnosti o použití `groups` deklarace identity s implicitní udělení. <br> Pro ostatní toky Pokud počet skupin, kterých je uživatel v prochází přes omezení (150 pro SAML, 200 pro token JWT), pak se deklarace identity Nadlimitní bude přidán deklarace identity zdroje odkazující na koncovém bodu graf, který obsahuje seznam skupin pro uživatele. (v. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/groups">`<br>`<AttributeValue>07dd8a60-bf6d-4e17-8844-230b77145381</AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `“groups”: ["0e129f5b-6b0a-4944-982d-f776045632af", … ]` |
+|`hasgroups` | Nadlimitní indikátor skupiny JWT implicitního toku| Pokud je k dispozici, vždy `true`, které označuje, uživatel je v alespoň jednu skupinu. Použito místo `groups` deklarace jwt implicitní grant toky Pokud deklarace identity úplné skupiny by rozšířit fragment URI překračuje omezení délky adresy URL (aktuálně 6 nebo více skupin). Označuje, že klient musí použít grafu určit skupiny uživatele (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
+| `groups:src1` <br> `http://schemas.microsoft.com/claims/groups.link` | Nadlimitní indikátor skupiny | Pro žádosti o tokeny, které nejsou omezenou délku (najdete v části `hasgroups` výše), ale stále příliš velký pro daný token, odkaz na seznamu úplné skupiny pro uživatele, budou zahrnuty. Jwt jako deklaraci distribuované pro SAML jako novou deklaraci místě `groups` deklarací identity. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=” http://schemas.microsoft.com/claims/groups.link”>`<br>`<AttributeValue>https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"groups":"src1` <br> `_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }`|
 | `idp` |Zprostředkovatel identity |Zaznamenává poskytovatele identit, předmět token k ověření. Tato hodnota je shodné s hodnotou vystavitele deklarace identity, pokud není uživatelský účet v jiné klienta než vystavitele. <br><br> **Příklad SAML hodnoty**: <br> `<Attribute Name=” http://schemas.microsoft.com/identity/claims/identityprovider”>`<br>`<AttributeValue>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/<AttributeValue>` <br><br> **Příklad JWT hodnoty**: <br> `"idp":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `iat` |IssuedAt |Ukládá čas, kdy byl token vydán. Se často používá k měření aktuálnosti tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **Příklad JWT hodnoty**: <br> `"iat": 1390234181` |
 | `iss` |Vystavitel |Identifikuje služby tokenů na zabezpečení (STS), která vytvoří a vrátí token. V tokeny, které vrací Azure AD je vystavitele sts.windows.net. Identifikátor GUID v hodnotě vystavitele deklarace je ID klienta adresáře Azure AD. ID klienta je identifikátor neměnné a spolehlivé adresáře. <br><br> **Příklad SAML hodnoty**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **Příklad JWT hodnoty**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
@@ -80,30 +82,29 @@ Po úspěšném ověření Azure AD vrátí přístupový token, který umožňu
 
 Pokud vaše aplikace jenom *používá* přístupové tokeny a získat tak přístup k rozhraní API, můžete (a měli) považovat za přístupové tokeny zcela neprůhledný – jsou jenom řetězce, které vaše aplikace může předat k prostředkům v požadavky HTTP.
 
-Pokud budete požadovat token přístupu, Azure AD také vrátí hodnotu některá metadata o tokenu přístupu pro používání vaší aplikace.  Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a oborů, pro které je platný.  To umožňuje aplikaci, kterou chcete provést inteligentní ukládání do mezipaměti přístupové tokeny bez nutnosti analyzovat otevřete přístupový token, sám sebe.
+Pokud budete požadovat token přístupu, Azure AD také vrátí hodnotu některá metadata o tokenu přístupu pro používání vaší aplikace. Tyto informace zahrnují čas vypršení platnosti přístupového tokenu a oborů, pro které je platný. To umožňuje aplikaci, kterou chcete provést inteligentní ukládání do mezipaměti přístupové tokeny bez nutnosti analyzovat otevřete přístupový token, sám sebe.
 
-Pokud je vaše aplikace rozhraní API chránit pomocí Azure AD, která očekává přístupové tokeny požadavků HTTP, pak byste měli provést ověření a kontroly, které obdržíte tokenů. Aplikace musí provést ověření tokenu přístupu před jeho použitím pro přístup k prostředkům. Další informace o ověření, najdete v tématu [ověřování tokenů](#validating-tokens).  
-Podrobnosti o tom, jak to provést pomocí rozhraní .NET najdete v tématu [chránit webového rozhraní API pomocí nosných tokenů z Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
+Pokud je vaše aplikace rozhraní API chránit pomocí Azure AD, která očekává přístupové tokeny požadavků HTTP, pak byste měli provést ověření a kontroly, které obdržíte tokenů. Aplikace musí provést ověření tokenu přístupu před jeho použitím pro přístup k prostředkům. Další informace o ověření, najdete v tématu [ověřování tokenů](#validating-tokens). Podrobnosti o tom, jak to provést pomocí rozhraní .NET najdete v tématu [chránit webového rozhraní API pomocí nosných tokenů z Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
 
 ## <a name="refresh-tokens"></a>Obnovovacích tokenů
 
-Aktualizujte tokeny jsou tokeny zabezpečení, které aplikace můžete použít k získání nové přístupové tokeny v tok OAuth 2.0.  Umožňuje aplikaci, kterou chcete dosáhnout dlouhodobé přístup k prostředkům jménem uživatele bez nutnosti zásahu uživatele.
+Aktualizujte tokeny jsou tokeny zabezpečení, které aplikace můžete použít k získání nové přístupové tokeny v tok OAuth 2.0. Umožňuje aplikaci, kterou chcete dosáhnout dlouhodobé přístup k prostředkům jménem uživatele bez nutnosti zásahu uživatele.
 
-Tokeny obnovení jsou více prostředků.  To znamená, že obnovovací token obdržel během žádosti o token pro jeden prostředek lze uplatnit přístup tokenů úplně jiných prostředků. Chcete-li to provést, nastavte `resource` parametr v požadavku na cílový prostředek.
+Tokeny obnovení jsou více prostředků. To znamená, že obnovovací token obdržel během žádosti o token pro jeden prostředek lze uplatnit přístup tokenů úplně jiných prostředků. Chcete-li to provést, nastavte `resource` parametr v požadavku na cílový prostředek.
 
-Tokeny obnovení jsou zcela neprůhledné do vaší aplikace. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období.  Tokeny obnovení může být zneplatněné v každém okamžiku v čase pro celou řadu důvodů - najdete v části [tokenu odvolání](#token-revocation) z těchto důvodů.  Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho pomocí tokenu požadavku na koncový bod tokenu Azure AD.
+Tokeny obnovení jsou zcela neprůhledné do vaší aplikace. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období. Tokeny obnovení může být zneplatněné v každém okamžiku v čase pro celou řadu důvodů - najdete v části [tokenu odvolání](#token-revocation) z těchto důvodů. Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho pomocí tokenu požadavku na koncový bod tokenu Azure AD.
 
-Pokud uplatníte obnovovací token pro nový přístupový token, zobrazí se nové obnovovací token v odpovědi tokenu.  Byste měli uložit nově vydané aktualizace tokenu nahrazení, které jste použili v požadavku.  Tím se zaručí, že jsou dál platné pro stejně dlouho obnovovacích tokenů.
+Pokud uplatníte obnovovací token pro nový přístupový token, zobrazí se nové obnovovací token v odpovědi tokenu. Byste měli uložit nově vydané aktualizace tokenu nahrazení, které jste použili v požadavku. Tím se zaručí, že jsou dál platné pro stejně dlouho obnovovacích tokenů.
 
 ## <a name="validating-tokens"></a>Ověřování tokenů
 
-K ověřování požadavku id_token nebo access_token, aplikace by měl ověřit podpis tokenu a deklarace identity. Chcete-li ověřit přístupové tokeny, by mělo aplikace také ověřit vystavitele, cílovou skupinu a podepisování tokenů. Tyto muset ověřit pomocí hodnoty v dokumentu zjišťování OpenID. Například se nachází na klienta nezávislé verzi dokumentu [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). Azure AD middleware obsahuje integrované funkce pro ověření přístupové tokeny, a můžete procházet naše [ukázky](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) vyhledat některé v jazyce podle svého výběru. Další informace o tom, jak explicitně ověřit JWT token, najdete v tématu [ruční Ukázka ověřování tokenů JWT](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).  
+K ověřování požadavku id_token nebo access_token, aplikace by měl ověřit podpis tokenu a deklarace identity. Chcete-li ověřit přístupové tokeny, by mělo aplikace také ověřit vystavitele, cílovou skupinu a podepisování tokenů. Tyto muset ověřit pomocí hodnoty v dokumentu zjišťování OpenID. Například se nachází na klienta nezávislé verzi dokumentu [ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration). Azure AD middleware obsahuje integrované funkce pro ověření přístupové tokeny, a můžete procházet naše [ukázky](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) vyhledat některé v jazyce podle svého výběru. Další informace o tom, jak explicitně ověřit JWT token, najdete v tématu [ruční Ukázka ověřování tokenů JWT](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation). 
 
-Poskytujeme knihovny a ukázky kódu, které ukazují, jak snadno zpracovat ověření tokenu - níže uvedené informace se jednoduše poskytuje pro ty, kteří chtějí porozumět v podkladovém procesu.  Existují také několik třetích stran opensourcové knihovny k dispozici pro ověřování JWT – je alespoň jednu možnost pro téměř každé platformě a jazyk odhlašování došlo. Další informace o Azure AD authentication knihovny a ukázky kódu, najdete v tématu [knihovny ověřování služby Azure AD](active-directory-authentication-libraries.md).
+Poskytujeme knihovny a ukázky kódu, které ukazují, jak snadno zpracovat ověření tokenu - níže uvedené informace se jednoduše poskytuje pro ty, kteří chtějí porozumět v podkladovém procesu. Existují také několik třetích stran opensourcové knihovny k dispozici pro ověřování JWT – je alespoň jednu možnost pro téměř každé platformě a jazyk odhlašování došlo. Další informace o Azure AD authentication knihovny a ukázky kódu, najdete v tématu [knihovny ověřování služby Azure AD](active-directory-authentication-libraries.md).
 
 #### <a name="validating-the-signature"></a>Ověření podpisu
 
-Token JWT obsahuje tři segmenty, které jsou odděleny `.` znak.  První segment se označuje jako **záhlaví**, druhý jako **textu**a třetí jako **podpis**.  Segment podpis slouží k ověření pravosti tokenu, aby důvěryhodné aplikace.
+Token JWT obsahuje tři segmenty, které jsou odděleny `.` znak. První segment se označuje jako **záhlaví**, druhý jako **textu**a třetí jako **podpis**. Segment podpis slouží k ověření pravosti tokenu, aby důvěryhodné aplikace.
 
 Tokeny vydané službou Azure AD přihlášení pomocí odvětví standardní asymetrických šifrovacích algoritmů, například RSA 256. Hlavička token JWT obsahuje informace o metodě klíč a šifrování používaný k podepisování token:
 
@@ -117,7 +118,7 @@ Tokeny vydané službou Azure AD přihlášení pomocí odvětví standardní as
 
 `alg` Deklarace identity Určuje algoritmus, který se používá k podepisování tokenů, než `x5t` deklarace identity označuje konkrétní veřejný klíč, který se použil k podepsání token.
 
-V libovolném časovém okamžiku v čase Azure AD může přihlásit požadavku id_token pomocí jedné z sadu páry klíčů veřejný soukromý. Azure AD otočí možné sada klíčů v pravidelných intervalech, aby vaše aplikace by měly být zapsány pro zpracování těchto změn klíče automaticky.  Přiměřené frekvence ke kontrole aktualizací do veřejných klíčů používaných službou Azure AD je každých 24 hodin.
+V libovolném časovém okamžiku v čase Azure AD může přihlásit požadavku id_token pomocí jedné z sadu páry klíčů veřejný soukromý. Azure AD otočí možné sada klíčů v pravidelných intervalech, aby vaše aplikace by měly být zapsány pro zpracování těchto změn klíče automaticky. Přiměřené frekvence ke kontrole aktualizací do veřejných klíčů používaných službou Azure AD je každých 24 hodin.
 
 Můžete získat podpisového klíče data potřebná k ověření podpisu pomocí dokument metadat OpenID Connect, který se nachází v:
 
@@ -130,15 +131,15 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 > 
 > 
 
-Tento dokument metadat je objekt JSON obsahující několik užitečné informací, jako je například umístění různých koncových bodů, které jsou potřebné pro provedení ověřování OpenID Connect.  
+Tento dokument metadat je objekt JSON obsahující několik užitečné informací, jako je například umístění různých koncových bodů, které jsou potřebné pro provedení ověřování OpenID Connect. 
 
-Zahrnuje také `jwks_uri`, což dává umístění sady veřejných klíčů, které se používá k podepisování tokenů.  Nacházející se v dokumentu JSON `jwks_uri` obsahuje všechny informací veřejného klíče používaných na konkrétní v daném časovém okamžiku.  Aplikace můžete použít `kid` deklarací identity v hlavičce JWT vybrat, které veřejný klíč v tomto dokumentu jsou využívány k podepsání konkrétní token.  Pak můžete provádět ověřování podpisu pomocí správný veřejný klíč a algoritmus uvedené.
+Zahrnuje také `jwks_uri`, což dává umístění sady veřejných klíčů, které se používá k podepisování tokenů. Nacházející se v dokumentu JSON `jwks_uri` obsahuje všechny informací veřejného klíče používaných na konkrétní v daném časovém okamžiku. Aplikace můžete použít `kid` deklarací identity v hlavičce JWT vybrat, které veřejný klíč v tomto dokumentu jsou využívány k podepsání konkrétní token. Pak můžete provádět ověřování podpisu pomocí správný veřejný klíč a algoritmus uvedené.
 
 Provádění ověřování podpisu je mimo rámec tohoto dokumentu – mnoho opensourcové knihovny jsou k dispozici pro pomoc, můžete to provést v případě potřeby.
 
 #### <a name="validating-the-claims"></a>Ověřování deklarací identity
 
-Pokud vaše aplikace získá token zabezpečení (požadavku id_token při přihlášení uživatele, nebo token přístupu jako token nosiče v požadavku HTTP) má také provést několik kontrol proti deklarace identity v tokenu.  Patří mezi ně nejsou omezeny na:
+Pokud vaše aplikace získá token zabezpečení (požadavku id_token při přihlášení uživatele, nebo token přístupu jako token nosiče v požadavku HTTP) má také provést několik kontrol proti deklarace identity v tokenu. Patří mezi ně nejsou omezeny na:
 
 * **Cílovou skupinu** deklarace identity – chcete-li ověřit, že token neměla být poskytnut do vaší aplikace.
 * **Neplatný před** a **čas vypršení platnosti** deklarace identity – chcete-li ověřit, zda nevypršela platnost tokenu.
@@ -150,22 +151,22 @@ Pokud vaše aplikace získá token zabezpečení (požadavku id_token při přih
 
 ## <a name="token-revocation"></a>Token zrušení
 
-Aktualizujte tokeny můžete zrušena nebo odvolat kdykoli z různých důvodů.  Ty lze rozdělit do dvou hlavních kategorií: vypršení časových limitů a odvolání. 
+Aktualizujte tokeny můžete zrušena nebo odvolat kdykoli z různých důvodů. Ty lze rozdělit do dvou hlavních kategorií: vypršení časových limitů a odvolání. 
 * Token vypršení časových limitů
   * MaxInactiveTime: Pokud token obnovení nebyl použit v čase, závisí na MaxInactiveTime, aktualizovat Token se již nebude platný. 
-  * MaxSessionAge: Pokud MaxAgeSessionMultiFactor nebo MaxAgeSessionSingleFactor byla nastavena na jinou hodnotu než výchozí (dokud odvolat), pak opětovné ověření se bude vyžadovat po uplynutí doby nastavení v MaxAgeSession *.  
+  * MaxSessionAge: Pokud MaxAgeSessionMultiFactor nebo MaxAgeSessionSingleFactor byla nastavena na jinou hodnotu než výchozí (dokud odvolat), pak opětovné ověření se bude vyžadovat po uplynutí doby nastavení v MaxAgeSession *. 
   * Příklady:
-    * Klient má MaxInactiveTime 5 dní a uživatel přešel na dovolenou týden a proto nebylo AAD nikdy nové žádosti o token od uživatele za 7 dnů.  Při příštím uživatel požádá o nový token se najdou jejich aktualizace tokenu je odvolaný a musí znovu zadat své přihlašovací údaje. 
-    * K citlivé aplikaci má MaxAgeSessionSingleFactor 1 den.  Pokud se uživatel přihlásí v pondělí a úterý (po 25 hodin uplynuly), bude vyžadovat opakované ověření.  
+    * Klient má MaxInactiveTime 5 dní a uživatel přešel na dovolenou týden a proto nebylo AAD nikdy nové žádosti o token od uživatele za 7 dnů. Při příštím uživatel požádá o nový token se najdou jejich aktualizace tokenu je odvolaný a musí znovu zadat své přihlašovací údaje. 
+    * K citlivé aplikaci má MaxAgeSessionSingleFactor 1 den. Pokud se uživatel přihlásí v pondělí a úterý (po 25 hodin uplynuly), bude vyžadovat opakované ověření. 
 * Odvolání
-  * Změna hesla dobrovolná: Pokud uživatel změní heslo, pravděpodobně znovu provést ověření v některé z jejich vlastních aplikací, v závislosti na způsob, jakým bylo dosaženo tokenu.  Viz poznámky níže výjimky. 
-  * Pohybem Změna hesla: Pokud správce určuje, že uživatel, chcete-li změnit své heslo nebo obnoví jeho, pak tokeny uživatele se zruší, pokud jejich bylo dosaženo pomocí hesla.  Viz poznámky níže výjimky. 
-  * Porušení zabezpečení: V případě porušení zabezpečení (například místní úložiště hesel nedodržení) správce můžete odvolat všechny aktuálně vystavené tokeny obnovení.  Tato akce vynutí všem uživatelům znovu provést ověření. 
+  * Změna hesla dobrovolná: Pokud uživatel změní heslo, pravděpodobně znovu provést ověření v některé z jejich vlastních aplikací, v závislosti na způsob, jakým bylo dosaženo tokenu. Viz poznámky níže výjimky. 
+  * Pohybem Změna hesla: Pokud správce určuje, že uživatel, chcete-li změnit své heslo nebo obnoví jeho, pak tokeny uživatele se zruší, pokud jejich bylo dosaženo pomocí hesla. Viz poznámky níže výjimky. 
+  * Porušení zabezpečení: V případě porušení zabezpečení (například místní úložiště hesel nedodržení) správce můžete odvolat všechny aktuálně vystavené tokeny obnovení. Tato akce vynutí všem uživatelům znovu provést ověření. 
 
 > [!NOTE]
->Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření).  Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
+>Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření). Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
 >
-> Důvěrné klienti nejsou vliv odvolání změnu hesla.  Důvěrné klienta s tokenem aktualizace vydané před změnu hesla budou nadále abl získat další tokeny pomocí tohoto tokenu obnovení. 
+> Důvěrné klienti nejsou vliv odvolání změnu hesla. Důvěrné klienta s tokenem aktualizace vydané před změnu hesla budou nadále abl získat další tokeny pomocí tohoto tokenu obnovení. 
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 

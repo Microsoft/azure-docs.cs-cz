@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8b5f59d3fea402efa50bdafd7fc0439a93051e69
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 048e2636aabe406728c8fe1b93ef861f13346256
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Kurz: hybridní cloud připojení nakonfigurujte Azure a Azure zásobníku
 
@@ -93,7 +93,7 @@ Specifikace připojení:
 
 ## <a name="create-a-virtual-network-in-global-azure-and-azure-stack"></a>Vytvoření virtuální sítě v globální Azure a Azure zásobníku
 
-> [!note]  
+> [!Note]  
 > Je nutné zajistit, že je bez překrytí čísel IP adresy v Azure nebo Azure zásobníku adresní prostory virtuální sítě. 
 
 K vytvoření virtuální sítě v modelu nasazení Resource Manager pomocí portálu Azure. Použijte [ukázkové hodnoty](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values), pokud tento postup používáte v rámci kurzu. Pokud se nejedná o kurz, nezapomeňte ukázkové hodnoty nahradit svými. 
@@ -129,7 +129,7 @@ Na [portálu](http://portal.azure.com/) přejděte na virtuální síť Resource
         - Klikněte na tlačítko **+ vytvořit nový** otevřete **vytvoření veřejné IP adresy** stránky.
         - Zadejte **název** pro svoji veřejnou IP adresu. Nechte SKU jako **základní**, pak vyberte **OK** v dolní části této stránky a uložit provedené změny.
 
-    > [!note]  
+    > [!Note]  
     > Brána sítě VPN aktuálně podporuje jenom dynamické veřejné IP adresy přidělení. To ale neznamená, že se IP adresa po přiřazení k vaší bráně VPN bude měnit. Veřejná IP adresa se změní pouze v případě odstranění a nového vytvoření brány. V případě změny velikosti, resetování nebo jiné operace údržby/upgradu vaší brány VPN se nezmění.
 
 4. Ověřte nastavení. 

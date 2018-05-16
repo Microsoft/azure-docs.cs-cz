@@ -2,22 +2,24 @@
 title: Přidání přihlášení do aplikace pro iOS pomocí koncového bodu v2.0 Azure AD | Microsoft Docs
 description: Jak sestavit aplikaci pro iOS, který se přihlásí uživatele s i osobní účet Microsoft a pracovní nebo školní účty pomocí knihovny třetích stran.
 services: active-directory
-author: xerners
+author: CelesteDG
 manager: mtillman
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: celested
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 5323f9a514c3c1c6134656e41af68e479fd8fdc5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7476417e6585976ea2404a83602a6d9aa77d9c7a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Přidání přihlášení k aplikaci pro iOS pomocí rozhraní Graph API pomocí koncového bodu v2.0 knihovnu třetích stran
 Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Vývojáři mohou použít žádné knihovny, které chtějí integrovat našich služeb. Což vývojářům používat naše platforma s další knihovny, jsme jste zapisují několik návody podobné následujícímu abychom ukázali, jak nakonfigurovat třetích stran knihovny pro připojení k identitu platformy Microsoft. Většina knihovny, které implementují [specifikace RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) se může připojit k Microsoft identity platform.
@@ -39,7 +41,7 @@ Koncový bod v2.0 nepodporuje všechny scénáře Azure Active Directory a funkc
 > 
 
 ## <a name="download-code-from-github"></a>Stáhněte si kód z Githubu
-Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2).  Chcete-li sledovat, můžete [stáhnout kostru aplikace jako ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) nebo tuto kostru klonovat:
+Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2). Chcete-li sledovat, můžete [stáhnout kostru aplikace jako ZIP](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) nebo tuto kostru klonovat:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
@@ -52,7 +54,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 ```
 
 ## <a name="register-an-app"></a>Registrace aplikace
-Vytvoření nové aplikace v [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo použijte podrobný postup v [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md).  Zkontrolujte, že:
+Vytvoření nové aplikace v [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo použijte podrobný postup v [postup registrace aplikace s koncovým bodem v2.0](active-directory-v2-app-registration.md). Zkontrolujte, že:
 
 * Kopírování **Id aplikace** , je přiřazen do vaší aplikace, protože ho budete potřebovat brzy.
 * Přidat **Mobile** platformu pro vaši aplikaci.
@@ -122,7 +124,7 @@ Knihovna NXOAuth2Client vyžaduje, aby některé hodnoty získat nastavení. Po 
 
 Podívejme se na podrobnosti o kód.
 
-První řetězec je pro `scopes`.  `User.Read` Hodnota umožňuje číst základní profil přihlášeného uživatele.
+První řetězec je pro `scopes`. `User.Read` Hodnota umožňuje číst základní profil přihlášeného uživatele.
 
 Další informace o všechny obory, které jsou k dispozici na [obory oprávnění Microsoft Graph](https://graph.microsoft.io/docs/authorization/permission_scopes).
 

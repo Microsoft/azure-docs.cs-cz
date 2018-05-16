@@ -1,36 +1,39 @@
-Chcete-li vytvořit mezipaměť, nejdřív přihlásit k [portál Azure](https://portal.azure.com)a klikněte na tlačítko **vytvořit prostředek** > **databáze** > **Redis Cache** .
-
-> [!NOTE]
-> Pokud účet Azure nemáte, můžete si během několika minut [vytvořit bezplatný účet Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero).
-> 
-> 
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: redis-cache
+author: wesmc7777
+ms.service: cache
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: wesmc
+ms.custom: include file
+ms.openlocfilehash: 55bc2bd4e065c301f11a5fc4d3b58aa443b83e2d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/28/2018
+---
+Pokud chcete vytvořit mezipaměť, přihlaste se nejdříve k webu [Azure Portal](https://portal.azure.com) a klikněte na **Vytvořit prostředek** > **Databáze** > **Redis Cache**.
 
 ![Nová mezipaměť](media/redis-cache-create/redis-cache-new-cache-menu.png)
 
-> [!NOTE]
-> Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure.
-> 
-> * Pokud chcete mezipaměť vytvořit pomocí šablony Resource Manageru, přečtěte si článek [Vytvoření mezipaměti Redis pomocí šablony](../articles/redis-cache/cache-redis-cache-arm-provision.md).
-> * Pokud chcete mezipaměti vytvořit pomocí Azure PowerShellu, přečtěte si článek [Správa mezipaměti Azure Redis Cache pomocí Azure PowerShellu](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md).
-> * Pokud chcete mezipaměť vytvořit pomocí příkazového řádku Azure (CLI), přečtěte si článek [Postup vytvoření a správy mezipaměti Azure Redis Cache pomocí rozhraní příkazového řádku Azure (CLI)](../articles/redis-cache/cache-manage-cli.md).
-> 
-> 
+V části **Nová mezipaměť Redis** nakonfigurujte nastavení pro novou mezipaměť.
 
-V **nová mezipaměť Redis**, zadejte požadovanou konfiguraci mezipaměti.
+| Nastavení      | Navrhovaná hodnota  | Popis |
+| ------------ |  ------- | -------------------------------------------------- |
+| **Název DNS** | Globálně jedinečný název | Název mezipaměti musí být řetězec o délce 1 až 63 znaků a smí obsahovat jenom čísla, písmena a znak `-`. Název mezipaměti nesmí začínat ani končit znakem `-` a po sobě jdoucí znaky `-` nejsou platné.  | 
+| **Předplatné** | Vaše předplatné | Předplatné, ve kterém se tato nová Azure Redis Cache vytvoří | 
+| **Skupina prostředků** |  *Testovací_skupina_prostředků* | Název nové skupiny prostředků, ve které chcete vytvořit mezipaměť. Když umístíte všechny prostředky pro aplikaci do skupiny, můžete je spravovat společně. Odstraněním příslušné skupiny prostředků by se například odstranily všechny prostředky, které jsou přidružené k dané aplikaci. | 
+| **Umístění** | Východ USA | Zvolte [oblast](https://azure.microsoft.com/regions/) v blízkosti jiných služeb, které budou používat danou mezipaměť. |
+| **[Cenová úroveň](https://azure.microsoft.com/pricing/details/cache/)** |  Basic C0 (mezipaměť 250 MB) |  Cenová úroveň určuje velikost, výkon a funkce, které jsou k dispozici pro danou mezipaměť. Další informace najdete v [přehledu Azure Redis Cache](../articles/redis-cache/cache-overview.md). |
+| **Připnout na řídicí panel** |  Vybráno | Připněte novou mezipaměť na řídicí panel, aby ji bylo možné snadno najít. |
 
 ![Vytvoření mezipaměti](media/redis-cache-create/redis-cache-cache-create.png) 
 
-* Do pole **Název DNS** zadejte jedinečný název mezipaměti, kterou chcete použít pro koncový bod mezipaměti. Název mezipaměti musí být řetězec o délce 1 až 63 znaků a smí obsahovat jenom čísla, písmena a znak `-`. Název mezipaměti nesmí začínat ani končit znakem `-` a po sobě jdoucí znaky `-` nejsou platné.
-* V rozevíracím seznamu **Předplatné** vyberte požadované předplatné, se kterým chcete mezipaměť používat. Pokud má váš účet jenom jedno předplatné, je automaticky vybrán a **předplatné** rozevíracího seznamu nezobrazí.
-* V části **Skupina prostředků** vyberte nebo vytvořte skupinu prostředků pro mezipaměť. Další informace najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../articles/azure-resource-manager/resource-group-overview.md). 
-* K určení zeměpisného umístění, ve kterém se mezipaměť hostuje, použijte **Umístění**. K zajištění nejlepšího výkonu Microsoft důrazně doporučuje vytvoření mezipaměti ve stejné oblasti, kde se už nachází klientská aplikace mezipaměti.
-* K výběru požadované velikosti a funkcí mezipaměti použijte možnost **Cenová úroveň**.
-* **Cluster Redis** vám umožní vytvoření mezipamětí, které jsou větší než 53 GB, a sdílení dat mezi různými uzly Redis. Další informace najdete v článku [Postup konfigurace clusterů pro mezipaměť Azure Redis Cache Premium](../articles/redis-cache/cache-how-to-premium-clustering.md).
-* **Trvalost dat Redis** vám umožňuje zachovat mezipaměť pro účet služby Azure Storage. Pokyny týkající se konfigurace trvalosti najdete v článku [Postup konfigurace trvalosti pro mezipaměť Azure Redis Cache Premium](../articles/redis-cache/cache-how-to-premium-persistence.md).
-* Služba **Virtual Network** nabízí lepší zabezpečení a izolaci omezením přístupu k vaší mezipaměti jenom pro ty klienty, kteří se nacházejí v určené službě Azure Virtual Network. K dalšímu omezení přístupu k Redisu můžete použít všechny funkce sítě VNet, například podsítě, zásady řízení přístupu a další funkce. Další informace najdete v článku [Postup konfigurace podpory služby Virtual Network pro mezipaměť Azure Redis Cache Premium](../articles/redis-cache/cache-how-to-premium-vnet.md).
-* Přístup bez SSL je ve výchozím nastavení pro nové mezipaměti zakázaný. Pokud chcete povolit port bez SSL, zaškrtněte **Odblokovat port 6379 (není šifrováno pomocí SSL)**.
+Po konfiguraci nastavení nové mezipaměti klikněte na **Vytvořit**. 
 
-Po nakonfigurování možností nové mezipaměti klikněte na **Vytvořit**. Vytvoření mezipaměti může několik minut trvat. Pokud chcete zkontrolovat stav, můžete průběh sledovat na úvodním panelu. Po vytvoření má nová mezipaměť stav **Spuštěno** a je připravená k použití s [výchozím nastavením](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
+Vytvoření mezipaměti může několik minut trvat. Pokud chcete zkontrolovat stav, můžete průběh sledovat na řídicím panelu. Po vytvoření má nová mezipaměť stav **Spuštěno** a je připravená k použití.
 
 ![Mezipaměť vytvořena](media/redis-cache-create/redis-cache-cache-created.png)
 

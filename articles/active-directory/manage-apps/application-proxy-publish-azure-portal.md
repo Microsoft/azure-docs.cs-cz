@@ -15,11 +15,11 @@ ms.date: 12/06/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 3ab4530047daec9e8cf163b0223109be6b18525b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikování aplikací pomocí proxy aplikace služby Azure AD
 
@@ -53,7 +53,7 @@ Postupujte podle těchto kroků k publikování aplikací pomocí Proxy aplikace
    - **Interní adresa URL**: adresa URL, který používáte pro přístup k aplikaci uvnitř vaší privátní sítě. Můžete zadat konkrétní cestu na beck-endovém serveru, kterou chcete publikovat, zatímco zbytek serveru publikovaný nebude. Tímto způsobem můžete publikovat různé stránky na stejném serveru jako různé aplikace a dejte každé z nich vlastní název a pravidla přístupu.
 
      > [!TIP]
-     > Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Například, pokud je vaše aplikace v https://yourapp/app a pomocí bitové kopie, které jsou umístěné v https://yourapp/media, pak byste měli publikovat https://yourapp/ jako cestu. Tato interní adresa URL nemusí být cílová stránka, která se uživatelům zobrazí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](../application-proxy-office365-app-launcher.md).
+     > Pokud publikujete cestu, ujistěte se, že zahrnuje všechny nezbytné obrázky, skripty a šablony stylů pro vaši aplikaci. Například, pokud je vaše aplikace v https://yourapp/app a pomocí bitové kopie, které jsou umístěné v https://yourapp/media, pak byste měli publikovat https://yourapp/ jako cestu. Tato interní adresa URL nemusí být cílová stránka, která se uživatelům zobrazí. Další informace najdete v tématu [nastavit vlastní domovskou stránku pro publikované aplikace](application-proxy-configure-custom-home-page.md).
 
    - **Externí adresu URL**: adresu vaši uživatelé budou moct pro přístup k aplikaci mimo vaši síť. Pokud nechcete použít výchozí doménu Proxy aplikací, přečtěte si informace o [vlastních domén v Azure AD Application Proxy](application-proxy-configure-custom-domain.md).
    - **Předběžné ověřování**: jak Proxy aplikace ověřuje uživatele, než jim poskytne přístup k aplikaci. 
@@ -69,7 +69,7 @@ Postupujte podle těchto kroků k publikování aplikací pomocí Proxy aplikace
 5. V případě potřeby nakonfigurujte další nastavení. Pro většinu aplikací byste měli mít tato nastavení na jejich výchozí stavy. 
    - **Časový limit pro aplikace k back-end**:, nastavte hodnotu **dlouho** pouze v případě, že aplikace je pomalá k ověření a připojení. 
    - **Překlad adresy URL v záhlaví**: ponechte tuto hodnotu jako **Ano** Pokud aplikace nevyžaduje původní hlavičku hostitele v žádosti o ověření.
-   - **Překlad adres URL do těla aplikace**: ponechte tuto hodnotu jako **ne** Pokud máte pevně zakódované HTML odkazy na další místní aplikace a nepoužívejte vlastní domény. Další informace najdete v tématu [odkaz překlad pomocí Proxy aplikace](../application-proxy-link-translation.md).
+   - **Překlad adres URL do těla aplikace**: ponechte tuto hodnotu jako **ne** Pokud máte pevně zakódované HTML odkazy na další místní aplikace a nepoužívejte vlastní domény. Další informace najdete v tématu [odkaz překlad pomocí Proxy aplikace](application-proxy-configure-hard-coded-link-translation.md).
    
    ![Konfigurace aplikace](./media/application-proxy-publish-azure-portal/additional-settings.png)
 
@@ -99,6 +99,6 @@ V prohlížeči přejděte na externí adresu URL, kterou jste nakonfigurovali b
 
 
 ## <a name="next-steps"></a>Další postup
-- [Stáhnout konektory](application-proxy-enable.md) a [vytvořit konektor skupiny](../active-directory-application-proxy-connectors-azure-portal.md) k publikování aplikací na samostatných sítí a umístění.
+- [Stáhnout konektory](application-proxy-enable.md) a [vytvořit konektor skupiny](application-proxy-connector-groups.md) k publikování aplikací na samostatných sítí a umístění.
 
-- [Nastavení jednotného přihlašování](../application-proxy-sso-azure-portal.md) nově publikované aplikace.
+- [Nastavení jednotného přihlašování](application-proxy-configure-single-sign-on-password-vaulting.md) nově publikované aplikace.

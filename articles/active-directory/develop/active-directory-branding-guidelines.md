@@ -1,25 +1,27 @@
 ---
 title: Branding pokyny pro aplikace | Microsoft Docs
-description: "Komplexní pokyny k prostředkům orientovaných na vývojáře pro Azure Active Directory"
+description: Komplexní pokyny k prostředkům orientovaných na vývojáře pro Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
-author: skwan
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: skwan
+ms.author: celested
+ms.reviewer: skwan
 ms.custom: aaddev
-ms.openlocfilehash: e5ce970913d767dbf6b13381cf18c1f7b05d252f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7794388a067cb8fb876d70b7186bc555e6ff2975
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="branding-guidelines-for-applications"></a>Branding pokyny pro aplikace
 Tento článek popisuje zásadami značky, který byste měli použít při vývoji aplikací s Azure Active Directory (Azure AD). Tyto pokyny vám pomůže nasměrovat vašim zákazníkům, když chtějí použít svůj pracovní nebo školní účet, spravované ve službě Azure AD, nebo osobní účet pro registrace a přihlášení do aplikace.

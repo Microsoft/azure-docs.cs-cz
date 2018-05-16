@@ -1,25 +1,27 @@
 ---
-title: "Federační Metadata Azure AD | Microsoft Docs"
-description: "Tento článek popisuje federační metadata dokumentu, který publikuje Azure Active Directory pro služby, které přijímají tokeny služby Azure Active Directory."
+title: Federační Metadata Azure AD | Microsoft Docs
+description: Tento článek popisuje federační metadata dokumentu, který publikuje Azure Active Directory pro služby, které přijímají tokeny služby Azure Active Directory.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 58e5f62009e4e8b688108c6098ea8eabe8020e51
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cfc79b451eafe7dcdd0b8f4285f92714138260bb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="federation-metadata"></a>Metadata federování
 Azure Active Directory (Azure AD) publikuje dokumentu metadat federace pro služby nakonfigurovaný tak, aby přijímal tokeny zabezpečení, které Azure AD vydá. Formát dokumentu metadat federace je popsaný v tématu [Web Services Federation Language (WS-Federation) verze 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), který rozšiřuje [Metadata pro v2.0 OASIS Security Assertion Markup Language (SAML)](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -41,12 +43,12 @@ Pro **koncové body konkrétního klienta**, `TenantDomainName` může být jedn
 
 Pro **koncové body klienta nezávislé**, `TenantDomainName` je `common`. Tento dokument uvádí jenom prvky federačních metadat, které jsou společné pro všechny klienty Azure AD, které jsou hostované v login.microsoftonline.com.
 
-Koncový bod konkrétního klienta může být například `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Koncový bod nezávislé na klienta je [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadat federace můžete zobrazit tak, že zadáte tuto adresu URL v prohlížeči.
+Koncový bod konkrétního klienta může být například `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Koncový bod nezávislé na klienta je [ https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml ](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Dokument metadat federace můžete zobrazit tak, že zadáte tuto adresu URL v prohlížeči.
 
 ## <a name="contents-of-federation-metadata"></a>Obsah federační Metadata
 Následující část obsahuje informace potřebné pro služby, které používají tokeny vydané službou Azure AD.
 
-### <a name="entity-id"></a>Entity ID
+### <a name="entity-id"></a>ID entity
 `EntityDescriptor` Obsahuje element `EntityID` atribut. Hodnota `EntityID` atribut představuje vystavitele, tedy služby tokenů zabezpečení (STS) vydaný token. Je důležité k ověření vystavitele, když obdrží token.
 
 Následující metadata zobrazí ukázku konkrétního klienta `EntityDescriptor` element s `EntityID` elementu.

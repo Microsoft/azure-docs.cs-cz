@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7361a71d9e178f47761c42cebe706246eb9d5e64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core
 Tento kurz je třetí částí série.  Zjistíte, jak povolit HTTPS ve službě ASP.NET Core spuštěné v Service Fabric. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem ASP.NET Core s povoleným HTTPS, který bude naslouchat na portu 443. Pokud nechcete hlasovací aplikaci vytvářet ručně, v tématu popisujícím [vytvoření aplikace Service Fabric v .NET](service-fabric-tutorial-deploy-app-to-party-cluster.md) si můžete [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace.
@@ -274,7 +274,7 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>Spuštění instalačního skriptu jako místní správce
 Ve výchozím nastavení se spustitelný soubor vstupního bodu nastavení služby spouští pod stejnými přihlašovacími údaji jako Service Fabric (obvykle pod účtem NetworkService). Soubor *SetCertAccess.ps1* vyžaduje oprávnění správce. V manifestu aplikace můžete změnit oprávnění zabezpečení tak, aby se spouštěcí skript spouštěl pod účtem místního správce.  
 
-V Průzkumníku řešení otevřete soubor *Voting/ApplicationPackageRoot/ManifestManifest.xml*. Nejprve vytvořte část **Principals** (Instanční objekty) a přidejte nového uživatele (například SetupAdminUser). Přidejte uživatelský účet SetupAdminUser do systémové skupiny Správci.
+V Průzkumníku řešení otevřete soubor *Voting/ApplicationPackageRoot/ApplicationManifest.xml*. Nejprve vytvořte část **Principals** (Instanční objekty) a přidejte nového uživatele (například SetupAdminUser). Přidejte uživatelský účet SetupAdminUser do systémové skupiny Správci.
 Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **RunAsPolicy** pro použití instančního objektu SetupAdminUser na vstupní bod nastavení. Tato zásada říká Service Fabric, že se soubor Setup.bat spouští jako SetupAdminUser (s oprávněními správce). 
 
 ```xml

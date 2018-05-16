@@ -3,22 +3,24 @@ title: Migrace ze služby Řízení přístupu Azure | Microsoft Docs
 description: Možnosti pro přesun aplikace a služby ze služby Řízení přístupu Azure
 services: active-directory
 documentationcenter: dev-center-name
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
-ms.author: dastrock
-ms.openlocfilehash: 6c22f85d3e76a005c45a4679ddfd8948a46acffc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: celested
+ms.reviewer: dastrock
+ms.openlocfilehash: c1c86f21d5a99cf251b0b83f41576c2cdaf96dfb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Řízení přístupu Azure
 
@@ -82,9 +84,9 @@ Jednotlivých cloudových služeb společnosti Microsoft, které přijímá toke
 | Služba | Doprovodné materiály |
 | ------- | -------- |
 | Azure Service Bus | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus Relay | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
+| Předávání přes Azure Service Bus | [Migrace na sdílených přístupových podpisů](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrace na Azure Redis Cache](https://docs.microsoft.com/azure/redis-cache/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [Migrace na rozhraní API kognitivní služby](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Služby Azure DataMarket | [Migrace na rozhraní API kognitivní služby](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Migrace s funkcí Logic Apps služby Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure Media Services | [Migrace na ověřování Azure AD](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure Backup | [Upgrade agenta Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
@@ -252,7 +254,7 @@ V těchto případech můžete chtít zvažte migraci webovou aplikaci na jinou 
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identity, která si vytvořila [vysoké úrovně migrace pokyny pro zákazníky, řízení přístupu](https://auth0.com/acs)a podporuje téměř každý funkce, která nemá služby ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
 
 Naše cílem při práci s příkazem Ping Identity a Auth0 je zajistit, aby měly všechny zákazníky využívající řízení přístupu migrace cestu pro své aplikace a služby, která minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
 
@@ -277,7 +279,7 @@ Pro webové služby, které jsou zabezpečené s tokeny vydané pomocí řízen�
 - Podpora pro následující formáty tokenu: JWT, SAML 1.1, SAML 2.0 a SWT.
 - Pravidla transformace jednoduché tokenu.
 
-Identita služby v řízení přístupu jsou obvykle používány k implementaci serveru a serverem ověřování.  
+Identita služby v řízení přístupu jsou obvykle používány k implementaci serveru a serverem ověřování. 
 
 #### <a name="migrate-to-azure-active-directory"></a>Migrace na Azure Active Directory
 
@@ -291,7 +293,7 @@ Můžete také použít Azure AD pro ověřování serveru na server pomocí Azu
 | Postup registrace klienta | Vytvoření identity služby v portálu pro správu řízení přístupu | Vytvořit jinou webovou aplikaci Azure AD na portálu Azure |
 | Protokol použitý |-Protokol OAuth WRAP<br />-Udělení pověření klienta 13 koncept OAuth 2.0 | Udělení pověření klienta OAuth 2.0 |
 | Metody ověřování klientů |-Jednoduché heslo<br />-Podepsaný SWT<br />-SAML token od zprostředkovatele federovaných identit |-Jednoduché heslo<br />-Podepsaný token JWT |
-| Token formáty |- JWT<br />-SAML 1.1<br />- SAML 2.0<br />- SWT<br /> | Pouze JWT |
+| Token formáty |- JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Pouze JWT |
 | Token transformace |-Přidat vlastní deklarace<br />-Jednoduché pak v případě deklarace identity logiku vystavení | Přidat vlastní deklarace | 
 | Automatizovat úkoly konfigurace a správy | Podporované prostřednictvím služby pro správu řízení přístupu | Podporu pro Microsoft Graph a Azure AD Graph API |
 
@@ -314,7 +316,7 @@ V těchto případech můžete zvážit migrace webové aplikace do jiné cloudo
 |     |     | 
 | --- | --- |
 | ![Auth0](./media/active-directory-acs-migration/rsz_auth0.png) | [Auth0](https://auth0.com/acs) je flexibilní Cloudová služba identity, která si vytvořila [vysoké úrovně migrace pokyny pro zákazníky, řízení přístupu](https://auth0.com/acs)a podporuje téměř každý funkce, která nemá služby ACS. |
-| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů.  |
+| ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Příkaz ping Identity](https://www.pingidentity.com) nabízí dvě řešení podobná služby ACS. PingOne je Cloudová služba identity, která podporuje mnoho stejných funkcí jako služby ACS a PingFederate je podobné produktu místní identity, který nabízí větší flexibilitu. Odkazovat na [pokyny vyřazení služby ACS na příkaz Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) pro další podrobnosti o použití těchto produktů. |
 
 Naše cílem při práci s příkazem Ping Identity a Auth0 je zajistit, aby měly všechny zákazníky využívající řízení přístupu migrace cestu pro své aplikace a služby, která minimalizuje množství práce potřebné k přesunutí z řízení přístupu.
 

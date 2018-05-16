@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9fad9627be453fb00508d1f6ec9594bd2bde6fad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Container Service (AKS)
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Kubernetes Service (AKS)
 
 V tomto kurzu, který je čtvrtou částí osmidílné série, se ukázková aplikace nasadí do clusteru Kubernetes. Mezi dokončené kroky patří:
 
@@ -30,7 +30,7 @@ V tomto kurzu se předpokládá základní znalost konceptů Kubernetes. Podrobn
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. 
+V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes.
 
 K dokončení tohoto kurzu potřebujete předem vytvořený soubor manifestu Kubernetes `azure-vote-all-in-one-redis.yaml`. Tento soubor se stáhnul se zdrojovým kódem aplikace v předchozí kurzu. Ověřte, že jste naklonovali úložiště a že jste změnili adresáře na klonované úložiště.
 
@@ -89,7 +89,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Otestování aplikace
 
-Vytvoří se [služba Kubernetes][kubernetes-service], která zveřejní aplikaci na internetu. Tento proces může trvat několik minut. 
+Vytvoří se [služba Kubernetes][kubernetes-service], která zveřejní aplikaci na internetu. Tento proces může trvat několik minut.
 
 Pomocí příkazu [kubectl get service][kubectl-get] s argumentem `--watch` můžete sledovat průběh.
 
@@ -98,12 +98,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 Zpočátku se *EXTERNAL-IP* (Externí IP adresa) pro službu *azure-vote-front* bude zobrazovat ve stavu *probíhá*.
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `CTRL-C` zastavte sledovací proces kubectl. 
+Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `CTRL-C` zastavte sledovací proces kubectl.
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
@@ -115,18 +115,18 @@ Pokud se chcete na aplikaci podívat, přejděte na externí IP adresu.
 
 Pokud se aplikace nenačetla, může být důvodem problém s ověřením v registru imagí.
 
-Postupujte podle těchto kroků a [povolte přístup prostřednictvím tajného kódu Kubernetes](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
+Postupujte podle těchto kroků a [povolte přístup prostřednictvím tajného klíče Kubernetes](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu se aplikace Azure Vote nasadila do clusteru Kubernetes ve službě AKS. Mezi dokončené úlohy patří:  
+V tomto kurzu se aplikace Azure Vote nasadila do clusteru Kubernetes ve službě AKS. Mezi dokončené úlohy patří:
 
 > [!div class="checklist"]
 > * Stažení souborů manifestu Kubernetes
 > * Spuštění aplikace v Kubernetes
 > * Otestování aplikace
 
-V dalším kurzu se dozvíte, jak škálovat aplikaci Kubernetes i příslušnou infrastrukturu Kubernetes. 
+V dalším kurzu se dozvíte, jak škálovat aplikaci Kubernetes i příslušnou infrastrukturu Kubernetes.
 
 > [!div class="nextstepaction"]
 > [Škálování aplikace a infrastruktury Kubernetes][aks-tutorial-scale]

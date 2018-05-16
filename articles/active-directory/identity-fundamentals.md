@@ -1,29 +1,29 @@
 ---
-title: "Základy správy identit Azure"
-description: "Cloudové identity jsou nyní nejlepší způsob, jak udržovat kontrolu nad a získat přehled o tom, jak a kdy uživatelé přístup k podnikovým aplikacím a datům."
-keywords: 
+title: Základy správy identit Azure
+description: Cloudové identity jsou nyní nejlepší způsob, jak udržovat kontrolu nad a získat přehled o tom, jak a kdy uživatelé přístup k podnikovým aplikacím a datům.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewr: jsnow
 ms.author: jeffgilb
 ms.date: 07/05/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: a7eb669aac109ae8cde6d75129004d322c270651
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Základy správy identit Azure
 
 Jako více společnosti digitální prostředky za provozu mimo podnikovou síť, v cloudu a na zařízeních, skvělé cloudových identit a přístupu řešení pro správu se stává stále nezbytné. Cloudové identity jsou nyní nejlepší způsob, jak udržovat kontrolu nad a získat přehled o tom, jak a kdy uživatelé přístup k podnikovým aplikacím a datům.
 
-Microsoft má byla zabezpečení cloudových identit pro přes deset a teď se [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions), jsou k dispozici tyto stejné systémy ochrany. S Azure AD můžete správcům snadno zajistit odpovědnosti za uživatele a správce s lepší zabezpečení a zásad správného řízení než kdy dřív.
+Microsoft má byla zabezpečení cloudových identit pro přes deset a teď se [Azure Active Directory (AD)](active-directory-whatis.md), jsou k dispozici tyto stejné systémy ochrany. S Azure AD můžete správcům snadno zajistit odpovědnosti za uživatele a správce s lepší zabezpečení a zásad správného řízení než kdy dřív.
 
 Azure AD Premium je cloudových identit a přístupu řešení pro správu pomocí funkce rozšířené ochrany umožňující jednu zabezpečené identitu pro všechny aplikace, ochranu identity (rozšířené pomocí [Microsoft graph zabezpečení intelligence](https://www.microsoft.com/en-us/security/intelligence)) a Privileged Identity Management. Jenom další monitorování nebo generování sestav nástroj Azure AD Premium může chránit identit uživatelů v reálném čase a umožňují vytvořit zásady na základě riziko, adaptivní přístupu k ochraně dat vaší organizace.
 
@@ -57,7 +57,7 @@ Zásady podmíněného přístupu v Azure AD Premium poskytnout vám správce po
 
 ## <a name="azure-active-directory-privileged-identity-management"></a>Správa privilegovaných identit v Azure Active Directory
 
-[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started), součástí Azure Active Directory Premium P2 nabídky, můžete zjistit, omezte a monitorujte účty pro správu a jejich přístup k prostředkům v Azure Active Directory a jiných služeb Microsoft online services. Pomáhá také můžete spravovat přístup pro správu na vyžádání pro přesnou dobu, po které potřebujete.
+[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started), součástí Azure Active Directory Premium P2 nabídky, můžete zjistit, omezte a monitorujte účty pro správu a jejich přístup k prostředkům v Azure Active Directory a dalšího softwaru společnosti Microsoft Chcete-li služeb online services. Pomáhá také můžete spravovat přístup pro správu na vyžádání pro přesnou dobu, po které potřebujete.
 
 Správa privilegovaných identit můžete vynutit oprávnění správce na vyžádání, tak, aby správci požadovat Multi-Factor ověřený, dočasný zvýšení svá oprávnění na předem nakonfigurovaná dobu před jejich účty vrátit do stavu normální.
 

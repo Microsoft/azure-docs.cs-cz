@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 440072a94ff7146ebcdb242a058ab48b434714f9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 80f20e438b1d923e688aeef9e6b353642bd74c27
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Správa uživatelů v Azure Blockchain Workbench
 
@@ -43,9 +43,9 @@ Navštivte [Azure AD](../active-directory/add-users-azure-active-directory.md) d
 
 ## <a name="manage-blockchain-workbench-administrators"></a>Správa správců Blockchain Workbench
 
-Po přidání uživatelů do adresáře, dalším krokem je vybrat uživatele, kteří jsou správci Blockchain Workbench. Uživatelé v **správci** skupiny jsou přidružené **správce aplikační role** v Blockchain Workbench. Správci mohou přidat nebo odebrat uživatele, uživatelům přiřadit konkrétní scénáře a vytvoření nové aplikace.
+Po přidání uživatelů do adresáře, dalším krokem je vybrat uživatele, kteří jsou správci Blockchain Workbench. Uživatelé v **správce** skupiny jsou přidružené **správce aplikační role** v Blockchain Workbench. Správci mohou přidat nebo odebrat uživatele, uživatelům přiřadit konkrétní scénáře a vytvoření nové aplikace.
 
-Přidání uživatelů do **správci** skupiny v adresáři služby Azure AD:
+Přidání uživatelů do **správce** skupiny v adresáři služby Azure AD:
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2.  Ověřte, zda že jsou v klientovi Azure AD, které jsou přidružené k Blockchain Workbench výběrem účtu v pravém horním rohu.

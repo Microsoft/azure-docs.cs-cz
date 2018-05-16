@@ -1,12 +1,12 @@
 ---
-title: "Přehled řešení prediktivní údržby – Azure | Dokumentace Microsoftu"
-description: "Popis předkonfigurovaného řešení prediktivní údržby sady Azure IoT Suite."
-services: 
+title: Přehled akcelerátoru řešení prediktivní údržby – Azure | Microsoft Docs
+description: Popis akcelerátoru řešení prediktivní údržby Azure.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b370b3d7-2ce5-4906-9818-3aeedd471ee3
 ms.service: iot-suite
 ms.devlang: na
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 36cae39b7eaa0aff5f47f6a2511c7a0593f70b26
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 1a2750232f9396d8bc27e4fbb72eacf8790a1c52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="predictive-maintenance-preconfigured-solution-overview"></a>Přehled řešení předkonfigurované prediktivní údržby
+# <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
-[Předkonfigurované řešení][lnk_preconfigured_solutions]*prediktivní údržby* je jedním z předkonfigurovaných řešení sady [Microsoft Azure IoT Suite][lnk_iot_suite]. Toto řešení integruje sběr telemetrických dat ze zařízení v reálném čase s prediktivním modelem vytvořeným pomocí služby [Azure Machine Learning][lnk-machine-learning].
+[Akcelerátor řešení][lnk_preconfigured_solutions] *prediktivní údržby* je jedním z [akcelerátorů řešení Microsoft Azure IoT][lnk_iot_suite]. Toto řešení integruje sběr telemetrických dat ze zařízení v reálném čase s prediktivním modelem vytvořeným pomocí služby [Azure Machine Learning][lnk-machine-learning].
 
-Pomocí sady Azure IoT Suite se můžete rychle a snadno připojit k prostředkům, monitorovat je a v reálném čase analyzovat telemetrii na řídicích panelech a ve vizualizacích. Řídicí panely a vizualizace v řešení prediktivní údržby poskytují nové informace, které vám můžou pomoci zvýšit efektivitu a výnosy.
+Pomocí akcelerátorů řešení Azure IoT se můžete rychle a snadno připojit k prostředkům, monitorovat je a v reálném čase analyzovat telemetrii na řídicích panelech a ve vizualizacích. Řídicí panely a vizualizace v akcelerátoru řešení prediktivní údržby poskytují nové informace, které vám můžou pomoct zvýšit efektivitu a výnosy.
 
 ## <a name="the-scenario"></a>Scénář
 
 Fabrikam je regionální letecká společnost, která se zaměřuje na pohodlí zákazníků za konkurenční ceny. Jednou z příčin zpoždění letů jsou problémy s údržbou, protože údržba leteckých motorů je velmi náročná. Společnost Fabrikam musí za každou cenu zabránit poruchám motorů během letu, a proto své motory pravidelně kontroluje a plánuje údržbu v souladu s plánem. Letecké motory se ale neopotřebovávají všechny stejně. Některou údržbu motorů není vždy nutné provádět. Naproti tomu se můžou vyskytnout problémy, kvůli kterým musí letadlo zůstat na zemi, dokud není opravené. Pokud je letadlo v místě, kde nejsou k dispozici vhodní technici nebo náhradní díly, pak tyto problémy můžou být zvláště nákladné.
 
-Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Společnost Fabrikam pomocí řešení prediktivní údržby sbírá data ze snímačů shromážděná během letu. Z údajů o provozu a selháních motorů nashromážděných za mnoho let analytici společnosti Fabrikam vytvořili model, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Tento model využívá korelaci mezi daty ze čtyř snímačů v motoru a opotřebením motoru, které vede k jeho případnému selhání. I když společnost Fabrikam stále provádí pravidelné kontroly k zajištění bezpečnosti, může pomocí modelu vypočítat zbývající životnost jednotlivých motorů po každém letu. Model využívá telemetrická data shromážděná z motorů během letu. Společnost Fabrikam teď může předpovídat budoucí selhání a s předstihem plánovat údržbu a opravy.
+Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují stav motoru během letu. Společnost Fabrikam pomocí akcelerátoru řešení prediktivní údržby sbírá data ze snímačů shromážděná během letu. Z údajů o provozu a selháních motorů nashromážděných za mnoho let analytici společnosti Fabrikam vytvořili model, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Tento model využívá korelaci mezi daty ze čtyř snímačů v motoru a opotřebením motoru, které vede k jeho případnému selhání. I když společnost Fabrikam stále provádí pravidelné kontroly k zajištění bezpečnosti, může pomocí modelu vypočítat zbývající životnost jednotlivých motorů po každém letu. Model využívá telemetrická data shromážděná z motorů během letu. Společnost Fabrikam teď může předpovídat budoucí selhání a s předstihem plánovat údržbu a opravy.
 
 > [!NOTE]
 > Model řešení využívá data o opotřebení ze skutečných motorů.
@@ -48,19 +48,19 @@ Plán údržby dostávají také správci řízení zásob, kteří díky tomu m
 
 Tyto aktivity umožňují společnosti Fabrikam minimalizovat prostoje letadel a snižovat provozní náklady a současně zajistit bezpečnost cestujících i posádek.
 
-Vysvětlení, jak sada [Azure IoT Suite][lnk_iot_suite] zákazníkům umožňuje využít potenciál prediktivní údržby, najdete v této [infografice][lnk_infographic].
+Vysvětlení, jak [akcelerátory řešení Azure IoT][lnk_iot_suite] zákazníkům umožňují využít potenciál prediktivní údržby, najdete v této [infografice][lnk_infographic].
 
-## <a name="how-the-predictive-maintenance-solution-is-built"></a>Jak je sestaveno řešení prediktivní údržby
+## <a name="how-the-predictive-maintenance-solution-accelerator-is-built"></a>Jak je sestavený akcelerátor řešení prediktivní údržby
 
-Řešení využívá existující model Azure Machine Learning, který je k dispozici jako šablona a ukazuje možnosti práce s telemetrickými daty ze zařízení shromážděnými prostřednictvím služeb IoT Suite. Společnost Microsoft vytvořila [regresní model][lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup>\[1\]</sup> a podrobné pokyny k použití modelu.
+Řešení využívá existující model Azure Machine Learning, který je k dispozici jako šablona a ukazuje možnosti práce s telemetrickými daty ze zařízení shromážděnými prostřednictvím služeb akcelerátorů řešení IoT. Společnost Microsoft vytvořila [regresní model][lnk_regression_model] leteckého motoru na základě veřejně dostupných dat<sup>\[1\]</sup> a podrobné pokyny k použití modelu.
 
-Řešení prediktivní údržby Azure IoT používá regresní model vytvořený z této šablony. Model je nasazený do vašeho předplatného Azure a vystavený prostřednictvím automaticky generovaného rozhraní API. Řešení obsahuje podmnožinu testovacích dat, která představují 4 motory (z celkem 100) a 4 datové proudy ze snímačů (z celkem 21). Tato data jsou dostatečná pro poskytování přesných výsledků z trénovaného modelu.
+Akcelerátor řešení prediktivní údržby Azure IoT používá regresní model vytvořený z této šablony. Model je nasazený do vašeho předplatného Azure a vystavený prostřednictvím automaticky generovaného rozhraní API. Řešení obsahuje podmnožinu testovacích dat, která představují 4 motory (z celkem 100) a 4 datové proudy ze snímačů (z celkem 21). Tato data jsou dostatečná pro poskytování přesných výsledků z trénovaného modelu.
 
-*\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, datové úložiště NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
+*\[1\] A. Saxena and K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, datové úložiště NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="get-started-with-predictive-maintenance"></a>Začínáme s prediktivní údržbou
 
-V tomto kurzu se dozvíte, jak zřídit řešení prediktivní údržby. Také se seznámíte se základními funkcemi řešení prediktivní údržby. Mnohé z těchto funkcí jsou přístupné prostřednictvím řídicího panelu řešení, který se nasazuje spolu s předkonfigurovaným řešením.
+V tomto kurzu se dozvíte, jak zřídit akcelerátor řešení prediktivní údržby. Také se seznámíte se základními funkcemi akcelerátoru řešení prediktivní údržby. Mnohé z těchto funkcí jsou přístupné prostřednictvím řídicího panelu řešení, který se nasazuje spolu s akcelerátorem řešení.
 
 K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure.
 
@@ -69,7 +69,7 @@ K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure
 
 1. Pomocí svých přihlašovacích údajů k účtu Azure se přihlaste na webu [azureiotsuite.com][lnk-azureiotsuite] a kliknutím na tlačítko **+** vytvořte řešení.
 1. Klikněte na **Vybrat** na dlaždici **Prediktivní údržba**.
-1. Zadejte **Název řešení** pro předkonfigurované řešení prediktivní údržby.
+1. Zadejte **Název řešení** pro akcelerátor řešení prediktivní údržby.
 1. Vyberte **Oblast** a **Předplatné**, které chcete při zřizování řešení použít.
 1. Kliknutím na tlačítko **Vytvořit řešení** zahájíte proces zřizování. Tento proces obvykle trvá několik minut.
 
@@ -81,7 +81,7 @@ K dokončení tohoto kurzu potřebujete mít aktivní předplatné služby Azure
 1. Kliknutím na dlaždici zobrazíte v pravém podokně informace o řešení. Z tohoto podokna můžete spustit řídicí panel řešení a využívat přístup k pracovnímu prostoru Machine Learning.
 
 > [!NOTE]
-> Pokud při nasazování předkonfigurovaného řešení narazíte na problémy, zkontrolujte [Oprávnění na webu azureiotsuite.com][lnk-permissions] a přečtěte si [Nejčastější dotazy][lnk-faq]. Pokud problémy přetrvávají, vytvořte na [portálu][lnk-portal] lístek služby.
+> Pokud při nasazování akcelerátoru řešení narazíte na problémy, zkontrolujte [Oprávnění na webu azureiotsuite.com][lnk-permissions] a přečtěte si téma [Nejčastější dotazy][lnk-faq]. Pokud problémy přetrvávají, vytvořte na [portálu][lnk-portal] lístek služby.
 
 Hledali jste informace, které se týkají vašeho řešení a nejsou zde uvedeny? Sdělte nám návrhy na funkce na webu [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
@@ -102,7 +102,7 @@ Na webu Azure Portal přejděte do skupiny prostředků s názvem řešení, kte
 
 ![][img-resource-group]
 
-Při zřizování předkonfigurovaného řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Do pracovního prostoru Machine Learning se můžete dostat také ze stránky zřízeného řešení na webu [azureiotsuite.com][lnk-azureiotsuite]. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
+Při zřizování akcelerátoru řešení obdržíte e-mail s odkazem na pracovní prostor Machine Learning. Do pracovního prostoru Machine Learning se můžete dostat také ze stránky zřízeného řešení na webu [azureiotsuite.com][lnk-azureiotsuite]. Na této stránce je k dispozici dlaždice v případě, že je řešení ve stavu **Připraveno**.
 
 ![][img-machine-learning]
 
@@ -128,11 +128,11 @@ Simulaci lze zastavit v libovolný okamžik, ale kliknutím na tlačítko **Star
 
 Další informace o tom, jak Azure IoT podporuje scénáře prediktivní údržby, najdete v tématu [Získání hodnoty z Internetu věcí][lnk_capture_value].
 
-[Podrobný návod][lnk-predictive-walkthrough] pro řešení prediktivní údržby.
+Přečtěte si [seznámení][lnk-predictive-walkthrough] s akcelerátorem řešení prediktivní údržby.
 
-Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
+Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Nejčastější dotazy k sadě IoT Suite][lnk-faq]
+* [Nejčastější dotazy k akcelerátorům řešení IoT][lnk-faq]
 * [Zabezpečení IoT od počátku][lnk-security-groundup]
 
 [img-resource-group]: media/iot-suite-predictive-overview/resource-group.png
@@ -143,7 +143,7 @@ Můžete si taky prostudovat některé další funkce a možnosti předkonfiguro
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
-[lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk_preconfigured_solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk_iot_suite]: iot-suite-options.md
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

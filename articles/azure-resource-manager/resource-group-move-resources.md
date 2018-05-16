@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6691ba1e89b7558302c869d3246fc69acd5dcd84
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -209,6 +209,8 @@ Při přesunu virtuální síť, musíte také přesunout jeho závislé prostř
 Pokud chcete přesunout peered virtuální sítě, je nutné nejdřív zakázat partnerského vztahu virtuální sítě. Jakmile je zakázaná, můžete přesunout virtuální sítě. Po přesunu znovu povolte partnerského vztahu virtuální sítě.
 
 Virtuální síť nemůžete přesunout do jiného předplatného, pokud virtuální síť obsahuje podsíť s odkazy na zdroje navigace. Například pokud prostředek Redis Cache je nasazený do podsítě, této podsíti má navigační odkaz na prostředek.
+
+Virtuální síť nemůžete přesunout do jiného předplatného, pokud virtuální síť obsahuje vlastního serveru DNS. Chcete-li přesunout virtuální sítě, nastavte ji na server výchozí (DNS poskytnutých platformou Azure). Po přesunu překonfigurujte vlastního serveru DNS.
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 

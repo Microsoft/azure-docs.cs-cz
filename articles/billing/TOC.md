@@ -53,11 +53,19 @@
 ### [Zákaz zobrazení firemních nákladů](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 # Referenční informace
-## [Přehled rozhraní API](billing-usage-rate-card-overview.md)
-## [Přehled rozhraní API Enterprise Reporting](billing-enterprise-api.md)
-## [REST pro faktury](/rest/api/billing)
-## [REST pro využití a RateCard](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
-## [Partnerské řešení: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
+## [Přehled rozhraní API služby Azure Billing](billing-usage-rate-card-overview.md)
+### [Rozhraní REST API služby Azure Billing](https://docs.microsoft.com/rest/api/billing)
+### [Partnerské řešení – Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
+## Rozhraní API služby Azure Consumption
+### [Rozhraní REST API služby Azure Consumption](https://docs.microsoft.com/rest/api/consumption) 
+### [Rozhraní REST API služby RateCard](https://msdn.microsoft.com/library/azure/mt219005.aspx)
+### [Rozhraní REST API služby Usage](https://msdn.microsoft.com/library/azure/mt219003.aspx)
+## [Přehled služby Enterprise Reporting](billing-enterprise-api.md)
+### [Rozhraní REST API služby Enterprise Reporting](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)
+## Vzorové kódy pro fakturaci
+### [Vzorový kód pro rozhraní API pro faktury](https://github.com/Azure-Samples/billing-dotnet-core-invoice-download)
+### [Vzorový kód pro rozhraní API služby Usage](https://github.com/Azure-Samples/billing-dotnet-usage-api)
+### [Vzorový kód pro rozhraní API služby RateCard](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)

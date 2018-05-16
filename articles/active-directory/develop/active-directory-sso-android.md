@@ -1,25 +1,27 @@
 ---
-title: "Postup povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL | Microsoft Docs"
-description: "Jak používat funkce sady ADAL SDK povolit jednotné přihlašování v rámci vaší aplikace. "
+title: Postup povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL | Microsoft Docs
+description: 'Jak používat funkce sady ADAL SDK povolit jednotné přihlašování v rámci vaší aplikace. '
 services: active-directory
-documentationcenter: 
-author: danieldobalian
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/07/2017
-ms.author: dadobali
+ms.author: celested
+ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7d832ecf3e9c64088a75cc88551879b4e09df715
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee27b1d4dcc091ef570e2b0aef32273af986d3f9
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postup povolení jednotného přihlašování napříč aplikacemi v systému Android pomocí ADAL
 Pokud jednotné přihlašování (SSO), aby uživatelé stačí jednou zadat své přihlašovací údaje a mají tyto přihlašovací údaje automaticky fungovat na všech aplikací nyní očekává zákazníků. Problémy se zadáním uživatelského jména a hesla na malou obrazovku, často časy v kombinaci s další faktor (2FA) jako telefonní hovor nebo kód zasílání zpráv SMS, má za následek rychlé nespokojenosti, pokud uživatel má k tomu více než jednou pro svůj produkt.
@@ -86,7 +88,7 @@ Zde je reprezentace fungování sadami SDK služby Microsoft Identity se sdílen
 S pomocí zprostředkovatele přihlášení jsou přihlášení prostředí, v rámci zprostředkovatele aplikace, které používají úložiště a security zprostředkovatele sdílet přihlašovací údaje ve všech aplikací v zařízení, které se vztahují na platformu Microsoft Identity. To znamená, že vaše aplikace závisí na broker k přihlášení uživatele. Na iOS a Android tyto zprostředkovatelé jsou k dispozici ke stažení aplikace, aby zákazníci nainstalovat nezávisle na, nebo můžete nabídnutých do zařízení ve společnosti, který spravuje zařízení pro svoje uživatele. Příkladem tento typ aplikace je aplikace Microsoft Authenticator v systému iOS. V systému Windows je tato funkce poskytuje výběru účtu, který je součástí operačního systému, známé technicky jako zprostředkovatele webového ověření.
 Možnosti se liší podle platformy a v některých případech můžou narušovat běh produktu uživatelům není správně spravovat. Jste pravděpodobně nejvíce obeznámeni s tento vzor, pokud máte nainstalovanou aplikací služby Facebook a použijete Facebook připojit z jiné aplikace. Platforma Microsoft Identity používá stejného vzoru.
 
-Pro iOS, které to vede k "přechodu" animace, kdy se vaše aplikace odesílají na pozadí při aplikace Microsoft Authenticator obsahuje popředí pro uživatele k výběru účtu, který se chcete přihlásit.  
+Pro iOS, které to vede k "přechodu" animace, kdy se vaše aplikace odesílají na pozadí při aplikace Microsoft Authenticator obsahuje popředí pro uživatele k výběru účtu, který se chcete přihlásit. 
 
 Pro Android a Windows výběru účtu, zobrazí se na aplikace, což je méně rušivý uživateli.
 
@@ -160,11 +162,11 @@ V pořadí pro platformu Microsoft Identity vědět, že má povolené sdílet t
 
 Asi vás zajímá, jak bude identifikujete různé aplikace ke službě Microsoft Identity, pokud používá stejné ID aplikace Je odpověď **identifikátory URI přesměrování**. Každá aplikace může mít několik přesměrování identifikátory URI registrován v portálu registrace. Každá aplikace ve vaší sadě bude mít na jiný identifikátor URI přesměrování. Zde je příklad, jak to vypadá:
 
-Identifikátor URI přesměrování app1:`msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
+Identifikátor URI přesměrování app1: `msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
 
-Identifikátor URI přesměrování počítači App2:`msauth://com.example.userapp1/KmB7PxIytyLkbGHuI%2UitkW%2Fejk%4E`
+Identifikátor URI přesměrování počítači App2: `msauth://com.example.userapp1/KmB7PxIytyLkbGHuI%2UitkW%2Fejk%4E`
 
-Identifikátor URI přesměrování App3:`msauth://com.example.userapp2/Pt85PxIyvbLkbKUtBI%2SitkW%2Fejk%9F`
+Identifikátor URI přesměrování App3: `msauth://com.example.userapp2/Pt85PxIyvbLkbKUtBI%2SitkW%2Fejk%9F`
 
 ....
 

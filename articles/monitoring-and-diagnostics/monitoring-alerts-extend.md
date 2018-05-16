@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: 54ec12f24ddbad6227a306aeae86658807f85b4e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25dcbad8607a651a7dd4b79f4f418cc473a2bf0e
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Rozšíření výstrahy (kopie) z portálu OMS do Azure
 Portál Operations Management Suite (OMS) zobrazí pouze analýzy protokolů výstrahy.  Nové prostředí výstrahy má teď integrované výstrahy prostředí mezi různé služby a částí v Microsoft Azure. Nové prostředí, které jsou k dispozici jako **výstrahy** v části monitorování Azure ve službě Azure portál obsahuje aktivitu protokolu výstrahy, metriky výstrahy a upozornění protokolu pro analýzy protokolů a Application Insights. 
@@ -36,7 +36,10 @@ Kromě benefit kumulovaných v nemusí přejděte mimo portál Azure existují d
 ## <a name="process-of-extending-your-alerts"></a>Proces rozšíření upozornění
 Proces rozšíření výstrahy z portálu OMS do Azure, nemá **není** zahrnuje změnu vaší definice upozornění, dotaz nebo konfigurace žádným způsobem. Jedinou změnou požadované je, že v Azure, všechny akce, jako je například e-mailové oznámení, webhooku hovoru, při spuštění sady automation runbook nebo připojení k nástroji ITSM hotovi prostřednictvím akce skupiny. Proto pokud příslušné akce skupiny jsou přidružené upozornění - jejich bude stát rozšířit do Azure.
 
-Vzhledem k tomu, že proces rozšíření je nedestruktivní a není interruptive, společnost Microsoft rozšíří výstrahy vytvořeným na portálu OMS na Azure výstrahy automaticky – od **14 2018 může**. Z tohoto dne Microsoft zahájíte k plánování rozšíření výstrahy do Azure a postupně zkontrolujte všechny výstrahy přítomna na portálu OMS, spravovat z portálu Azure. 
+Vzhledem k tomu, že proces rozšíření je nedestruktivní a není interruptive, společnost Microsoft rozšíří výstrahy vytvořeným na portálu OMS na Azure výstrahy automaticky – od **14 2018 může**. Z tohoto dne Microsoft zahájíte naplánovat rozšíření výstrahy do Azure a postupně proveďte přítomna na portálu OMS, spravovat z portálu Azure také všechny výstrahy. 
+
+> [!NOTE]
+> Spouštění 14 může 2018 - Microsoft zahájíte proces automaticky rozšíření výstrahy do Azure. Ne všechny výstrahy a pracovní prostory bude rozšířeno dne; Místo toho Microsoft zahájíte rozšířit výstrahy automaticky v tranších v nadcházející týdnů. Proto upozornění na portálu OMS nebude automaticky rozšířit do Azure okamžitě na 14 může 2018 a uživatele můžete stále [ručně rozšířit jejich výstrahy](monitoring-alerts-extend-tool.md) během této doby.
 
 Pokud výstrahy v pracovním prostoru analýzy protokolů získat naplánováno rozšíří do Azure, budou i nadále fungovat a bude **není** žádným způsobem ohrozit monitorování. Při plánování, upozornění pravděpodobně není k dispozici pro úpravy/úpravy dočasně; ale můžou dál nové výstrahy Azure vytvořit v této krátké doby. V tomto krátkém období žádné úpravy nebo vytvoření výstrahy se provádí z portálu OMS, budou mít uživatelé možnost pokračovat do Azure Log Analytics nebo Azure výstrahy.
 
@@ -61,7 +64,7 @@ Pro žádnou operaci na výstrahy jako úprava nebo vytvoření udělat na port�
 > [!NOTE]
 > Jak uživatelé se transparentně provedou do Azure, na všech přidání nebo úprava akce na výstrahu v OMS – Ujistěte se, uživatelé jsou správně mapována s příslušnou [oprávnění pro použití Azure monitorování a výstrahy](monitoring-roles-permissions-security.md)
 
-Výstrahy, vytvoření bude pokračovat od existující [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) jako starší, s pouze malé změny tom, že se po výstrahy jsou rozšířené do Azure - akce skupiny by bylo potřeba v plánu se proto přidružit.
+Výstrahy, vytvoření bude pokračovat od existující [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) a [Log Analytics prostředků šablony](../monitoring/monitoring-solutions-resources-searches-alerts.md) jako starší s pouze malé změny, který se po výstrahy jsou rozšířené do Azure - akce skupiny by musela být přidružené v plánu.
 
 ## <a name="next-steps"></a>Další postup
 

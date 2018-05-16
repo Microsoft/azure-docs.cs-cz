@@ -6,20 +6,19 @@ documentationcenter: ''
 author: dksimpson
 manager: akucer
 editor: ''
-ms.assetid: 289f8d9e-8839-4e21-b248-bef320f9dbfc
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/06/2018
-ms.author: mazha
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: dad9866a3d61421987bc4a62057498e004f65e7f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f57cfe19fd2eee0952a20fabcaa0d73ca96894ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
@@ -28,9 +27,9 @@ Ve výchozím nastavení se po vytvoření koncového bodu CDN ve vašem profilu
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> - Vytvoření záznamu DNS CNAME
-> - Přidružení vlastní domény ke koncovému bodu CDN
-> - Ověření vlastní domény
+> - Vytvořit záznam DNS CNAME.
+> - Přidružit vlastní doménu ke koncovému bodu CDN.
+> - Ověřit vlastní doménu.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -211,16 +210,16 @@ V předchozích krocích jste přidali vlastní doménu do koncového bodu CDN. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučili jste se:
+V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> - Vytvoření záznamu DNS CNAME
-> - Přidružení vlastní domény ke koncovému bodu CDN
-> - Ověření vlastní domény
+> - Vytvořit záznam DNS CNAME.
+> - Přidružit vlastní doménu ke koncovému bodu CDN.
+> - Ověřit vlastní doménu.
 
 V dalším kurzu se dozvíte, jak pro vlastní doménu Azure CDN nakonfigurovat HTTPS.
 
 > [!div class="nextstepaction"]
-> [Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md)
+> [Kurz: Konfigurace HTTPS pro vlastní doménu Azure CDN](cdn-custom-ssl.md)
 
 

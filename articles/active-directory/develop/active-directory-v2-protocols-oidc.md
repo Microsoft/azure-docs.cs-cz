@@ -3,23 +3,25 @@ title: Azure Active Directory v2.0 a protokolu OpenID Connect | Microsoft Docs
 description: Vytvoření webové aplikace pomocí Azure AD v2.0 implementace ověřovacího protokolu OpenID Connect.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a4875997-3aac-4e4c-b7fe-2b4b829151ce
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fd1f29f5c2920ea9956d883b9668f36c934a5e59
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a0cd077b1c6530c5794c92f131dffb814f5b341d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 a protokolu OpenID Connect
 OpenID Connect je ověřovací protokol založený na OAuth 2.0, který můžete použít k bezpečně přihlášení uživatele k webové aplikaci. Použijete-li koncového bodu v2.0 implementaci OpenID Connect, můžete přidat přihlášení a rozhraní API pro přístup k vaší webové aplikace. V tomto článku jsme ukazují, jak chcete tento bez ohledu na jazyk. Jsme popisují, jak odesílat a přijímat zprávy HTTP bez použití žádné knihovny Microsoft open-source.
@@ -43,7 +45,7 @@ Popisuje dokumentu metadat, který obsahuje většinu požadované informace o a
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
 > [!TIP] 
-> Zkuste to! Klikněte na tlačítko [ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration ](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) zobrazíte `common` konfigurace klientů. 
+> Vyzkoušet Klikněte na tlačítko [ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration ](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) zobrazíte `common` konfigurace klientů. 
 >
 
 `{tenant}` Může trvat jednu ze čtyř hodnot:
@@ -82,7 +84,7 @@ Když webové aplikace potřebuje k ověření uživatele, se přímá uživatel
 * Musí zahrnovat požadavek `nonce` parametr.
 
 > [!IMPORTANT]
-> V pořadí, které se úspěšně žádosti o token ID registrace aplikací v [portálu pro registraci](https://apps.dev.microsoft.com) musí mít **[implicitní grant](active-directory-v2-protocols-implicit.md)** povolené pro webového klienta.  Pokud není povolený, `unsupported_response` bude vrácena chyba: "pro vstupní parametr 'response_type' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je 'kód."
+> V pořadí, které se úspěšně žádosti o token ID registrace aplikací v [portálu pro registraci](https://apps.dev.microsoft.com) musí mít **[implicitní grant](active-directory-v2-protocols-implicit.md)** povolené pro webového klienta. Pokud není povolený, `unsupported_response` bude vrácena chyba: "pro vstupní parametr 'response_type' zadaná hodnota není povolena pro tohoto klienta. Očekávaná hodnota je 'kód."
 
 Příklad:
 
@@ -196,10 +198,10 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parametr | Podmínka | Popis |
 | ----------------------- | ------------------------------- | ------------ |
-| post_logout_redirect_uri | Doporučené | Adresu URL, kterou je uživatel přesměrován na po úspěšně odhlášení. Pokud parametr neuvedete, uživateli se zobrazí obecná zpráva, že je generován koncového bodu v2.0. Tato adresa URL se musí shodovat s jedním přesměrování identifikátory URI zaregistrované pro svoji aplikaci v portálu pro registraci aplikace.  |
+| post_logout_redirect_uri | Doporučené | Adresu URL, kterou je uživatel přesměrován na po úspěšně odhlášení. Pokud parametr neuvedete, uživateli se zobrazí obecná zpráva, že je generován koncového bodu v2.0. Tato adresa URL se musí shodovat s jedním přesměrování identifikátory URI zaregistrované pro svoji aplikaci v portálu pro registraci aplikace. |
 
 ## <a name="single-sign-out"></a>Jednotné odhlašování
-Když přesměruje uživatele na `end_session_endpoint`, koncový bod v2.0 vymaže relace uživatele z prohlížeče. Ale může se uživatel přihlášen stále k ostatním aplikacím, které používají účty Microsoft pro ověřování. Chcete-li povolit těchto aplikací na přihlášení uživatele se současně, v2.0 koncový bod odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí reagovat na tento požadavek zrušením jakékoli relace, který identifikuje uživatele a vrácení `200` odpovědi.  Pokud chcete limit podporují jednotné přihlašování v aplikaci, je nutné implementovat, `LogoutUrl` v kódu aplikace.  Můžete nastavit `LogoutUrl` z portálu pro registraci aplikace.
+Když přesměruje uživatele na `end_session_endpoint`, koncový bod v2.0 vymaže relace uživatele z prohlížeče. Ale může se uživatel přihlášen stále k ostatním aplikacím, které používají účty Microsoft pro ověřování. Chcete-li povolit těchto aplikací na přihlášení uživatele se současně, v2.0 koncový bod odešle požadavek HTTP GET na zaregistrovanou `LogoutUrl` všech aplikací, které uživatel je aktuálně přihlášený k. Aplikace musí reagovat na tento požadavek zrušením jakékoli relace, který identifikuje uživatele a vrácení `200` odpovědi. Pokud chcete limit podporují jednotné přihlašování v aplikaci, je nutné implementovat, `LogoutUrl` v kódu aplikace. Můžete nastavit `LogoutUrl` z portálu pro registraci aplikace.
 
 ## <a name="protocol-diagram-access-token-acquisition"></a>Diagram protokolu: přístup k získání tokenu
 Mnoho webových aplikací je nutné nejen přihlásit uživatele v, ale také přístup k webové službě jménem uživatele pomocí OAuth. Tento scénář kombinuje OpenID Connect pro ověřování uživatelů při získávání současně autorizační kód, který vám pomůže získat přístupové tokeny, pokud používáte toku kódu autorizace OAuth.
@@ -248,7 +250,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Parametr | Popis |
 | --- | --- |
 | id_token |ID token, který požadované aplikace. ID token můžete použít k ověření identity uživatele a zahájit relaci s uživatelem. Zjistíte další podrobnosti o ID tokeny a jejich obsah v [koncového bodu v2.0 tokeny odkaz](active-directory-v2-tokens.md). |
-| kód |Autorizační kód, který požadované aplikace. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. Je velmi krátkodobou autorizační kód. Autorizační kód se obvykle vyprší během přibližně 10 minut. |
+| Kód |Autorizační kód, který požadované aplikace. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. Je velmi krátkodobou autorizační kód. Autorizační kód se obvykle vyprší během přibližně 10 minut. |
 | state |Pokud parametr stavu je obsažena v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Aplikace by měla ověřte, zda jsou identické hodnoty stavu v požadavku a odpovědi. |
 
 ### <a name="error-response"></a>Chybové odpovědi

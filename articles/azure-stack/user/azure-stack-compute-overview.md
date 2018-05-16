@@ -1,6 +1,6 @@
 ---
-title: "Úvod do Azure zásobníku virtuálních počítačů"
-description: "Další informace o virtuálních počítačích Azure zásobníku"
+title: Úvod do Azure zásobníku virtuálních počítačů
+description: Další informace o virtuálních počítačích Azure zásobníku
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -8,41 +8,41 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2453f2449124cb4956797e0d9748f1ee3bf0d9ad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 41e75a6806cc5ff13fad64fd415344376e0d6e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Úvod do Azure zásobníku virtuálních počítačů
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
 ## <a name="overview"></a>Přehled
-Virtuální počítač Azure zásobníku (VM) je jeden typ na vyžádání, škálovatelný výpočetní prostředek, který nabízí zásobník Azure. Obvykle zvolíte virtuální počítač, když potřebujete větší kontrolu nad výpočetním prostředí, než nabízí jiné možnosti. Tento článek obsahuje informace o tom, co byste měli zvážit před vytvořením virtuálního počítače, jak ho vytvořit a jak ho spravovat.
+Virtuální počítač Azure zásobníku (VM) je jeden typ na vyžádání, škálovatelné výpočetní prostředek, který nabízí zásobník Azure. Obvykle zvolíte virtuální počítač, když potřebujete větší kontrolu nad výpočetním prostředí, než nabízí jiné možnosti. Tento článek obsahuje informace o tom, co byste měli zvážit před vytvořením virtuálního počítače, jak ho vytvořit a jak ho spravovat.
 
-Virtuální počítač Azure zásobníku poskytuje flexibilitu virtualizace bez nutnosti spravovat jednotlivé clustery nebo počítače. Nevyhnete se však údržbě virtuálního počítače prováděním úloh, jako jsou konfigurace, aplikování oprav chyb a instalace softwaru, který na něm běží.
+Virtuální počítač Azure zásobníku poskytuje flexibilitu virtualizace bez nutnosti spravovat clustery nebo jednotlivé počítače. Však stále musíte udržovat virtuálního počítače provedením úloh, jako je například konfigurace, opravy a instalace softwaru, který běží na něm.
 
-Virtuální počítače Azure zásobníku lze různými způsoby. Příklad:
+Zásobník Azure virtuální počítače můžete použít různé způsoby. Příklad:
 
 * **Vývoj a testování** – virtuální počítače Azure zásobníku nabízejí nějakou rychlou a jednoduchý způsob, jak vytvořit počítač s určitou konfiguraci vyžaduje kód a testování aplikací.
 
 * **Aplikace v cloudu** – protože vyžádání pro vaši aplikaci můžete kolísá, může mít ekonomický smysl ji spustit na virtuálním počítači v Azure zásobníku. Za další virtuální počítače platíte, když je potřebujete, a když ne, tak je vypnete.
 
-* **Rozšířené datacenter** – virtuální počítače ve virtuální síť Azure zásobníku lze snadno připojit k síti vaší organizace nebo Azure.
+* **Rozšířené datacenter** – virtuální počítače v Azure zásobník virtuální sítě můžete snadno připojit k síti vaší organizace nebo do Azure.
 
-Počet virtuálních počítačů, které vaše aplikace používá, lze vertikálně nebo horizontálně navýšit pro splnění vašich požadavků.
+Virtuální počítače, které vaše aplikace používá můžete škálovat nebo horizontální navýšení kapacity pro vše, co je potřeba podle svých potřeb.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Co je třeba zvážit před vytvořením virtuálního počítače?
 
-Stále existují různé aspekty návrhu při sestavování na infrastruktuře aplikace v Azure zásobníku. Než začnete, je důležité zvážit následující aspekty virtuálního počítače:
+Stále existují množství aspekty návrhu při sestavování na infrastruktuře aplikace v Azure zásobníku. Tyto aspekty virtuálního počítače jsou důležité pro vezměte v úvahu před zahájením vytváření infrastruktury:
 
-- Názvy prostředků vaší aplikace
-- Velikost virtuálního počítače
-- Maximální počet virtuálních počítačů, které lze vytvořit
-- Operační systém, který běží na virtuálním počítači
-- Konfigurace virtuálního počítače po jeho spuštění 
-- Související prostředky, které virtuální počítač potřebuje
+* Názvy prostředků vaší aplikace.
+* Velikost virtuálního počítače.
+* Maximální počet virtuálních počítačů, které lze vytvořit.
+* Operační systém, který spouští virtuální počítač.
+* Konfigurace virtuálního počítače po jeho spuštění.
+* Související prostředky, které vyžaduje virtuální počítač.
 
 ### <a name="naming"></a>Pojmenování
 
@@ -61,10 +61,9 @@ Vaše předplatné má výchozí kvótami v místě, ke kterému může mít vli
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
 
 Virtuální počítače používají virtuální pevné disky (VHD), na které ukládají svůj operační systém (OS) a data. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém.
-Zásobník Azure poskytuje marketplace používat s různými verzemi a typy operačních systémů. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední).
+Zásobník Azure poskytuje marketplace používat s různými verzemi a typy operačních systémů. Marketplace bitové kopie jsou určeny vydavatele bitové kopie, nabídky, sku a verzi (obvykle verze je zadán jako nejnovější.)
 
 Následující tabulka uvádí některé způsoby, abyste nalezli informace pro bitovou kopii:
-
 
 |Metoda|Popis|
 |---------|---------|
@@ -112,7 +111,12 @@ Následující tabulka obsahuje informace, které vám pomůžou spuštěna, vyt
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Jak můžu spravovat vytvořený virtuální počítač?
 
-Virtuální počítače můžete spravovat pomocí portálu (přes prohlížeč), nástrojů příkazového řádku s podporou pro skriptování, nebo přímo prostřednictvím rozhraní API. Mezi obvyklé úlohy správy, které můžete provádět, patří získávání informací o virtuálním počítači, připojování k virtuálnímu počítači, správa dostupnosti a provádění zálohování.
+Můžete spravovat virtuální počítače založené na prohlížeči portál, pomocí nástroje příkazového řádku s podporou pro skriptování, nebo přímo přes rozhraní API. Některé typické úlohy správy, které můžete provést jsou:
+
+* Získání informací o virtuální počítač
+* Připojení k virtuálnímu počítači
+* Správa dostupnosti
+* Provedení zálohy
 
 ### <a name="get-information-about-a-vm"></a>Získání informací o virtuálním počítači
 
@@ -130,5 +134,5 @@ Následující tabulka ukazuje některé způsoby, které můžete získat infor
 Můžete použít **Connect** tlačítko na portálu Azure zásobníku se připojit k virtuálnímu počítači.
 
 ## <a name="next-steps"></a>Další postup
-* [Důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md)
 
+* [Důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md)

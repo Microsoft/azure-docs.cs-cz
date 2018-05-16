@@ -15,24 +15,22 @@ ms.workload: identity
 ms.date: 05/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d675236f36840858f0f011484392186d355ac6df
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 475b0229b9e627a56b02d2299ee2e5400aa0ede1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý úvod: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory 
 
 Ke zjednodušení přihlašování uživatelů, můžete chtít povolit je pro přihlášení ke cloudové aplikace pomocí uživatelského jména a hesla. Mnoho prostředí však mít alespoň několik aplikací, pro které je třeba vyžadovat silnější formu ověření účtu, jako je vícefaktorové ověřování (MFA). To může být pro příklad true, pro přístup k vaší organizaci e-mailovému systému nebo aplikace pro oddělení lidských zdrojů. V Azure Active Directory (Azure AD) můžete dosažení tohoto cíle se zásadami podmíněného přístupu.    
 
-Tento rychlý start ukazuje, jak nakonfigurovat [zásady podmíněného přístupu Azure AD](active-directory-conditional-access-azure-portal.md) , vyžaduje vícefaktorové ověřování pro sadu vybraných cloudových aplikací ve vašem prostředí.
+Tento rychlý start ukazuje, jak nakonfigurovat [zásady podmíněného přístupu Azure AD](active-directory-conditional-access-azure-portal.md) , vyžaduje vícefaktorové ověřování pro vybraný cloud aplikaci ve vašem prostředí.
+
+![Vytvoření zásad](./media/active-directory-conditional-access-app-based-mfa/32.png)
 
 
-## <a name="scenario-description"></a>Popis scénáře
-
-Tento scénář v tomto článku používá portál Azure jako zástupný symbol pro cloudové aplikace, která vyžaduje vícefaktorové ověřování pro konkrétního uživatele. Isabella Simonsen je uživatel ve vaší organizaci. Když se uživatel přihlásí k portálu Azure, budete chtít svá provést ještě další ověření svůj účet pomocí vícefaktorového ověřování.
-
-![Ověřování pomocí služby Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
 
@@ -40,27 +38,31 @@ Tento scénář v tomto článku používá portál Azure jako zástupný symbol
 
 Chcete-li dokončit tento scénář v tento rychlý start, je třeba:
 
-- **Přístup k Azure AD Premium edice** -podmíněného přístupu Azure AD je funkce Azure AD Premium. Pokud nemáte přístup k edice Azure AD Premium, můžete [registrace pro bezplatnou zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/).
+- **Přístup k Azure AD Premium edice** -podmíněného přístupu Azure AD je funkce Azure AD Premium. 
 
-- **Testovací účet s názvem Isabella Simonsen** – Pokud nevíte jak vytvořit testovací účet, přečtěte si [tyto pokyny](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+- **Testovací účet s názvem Isabella Simonsen** – Pokud nevíte jak vytvořit testovací účet, najdete v části [přidání cloudových uživatelů](add-users-azure-active-directory.md#add-cloud-based-users).
 
 
 
 ## <a name="create-your-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu 
 
-V této části ukazuje, jak vytvořit zásady požadované podmíněného přístupu.  
-V zásadách můžete nastavit:
+V této části ukazuje, jak vytvořit zásady požadované podmíněného přístupu. Scénář v tento rychlý start používá:
+
+- Portál Azure jako zástupný symbol pro cloudové aplikace, která vyžaduje vícefaktorové ověřování. 
+- Ukázkového uživatele k testování zásad podmíněného přístupu.  
+
+V zásadách nastavte:
 
 |Nastavení |Hodnota|
 |---     | --- |
 |Uživatelé a skupiny | Isabella Simonsen |
 |Cloudové aplikace | Správa Microsoft Azure |
-|Udělení | Vyžadovat vícefaktorové ověřování |
+|Udělení přístupu | Vyžadovat vícefaktorové ověřování |
  
 
 ![Vytvoření zásad](./media/active-directory-conditional-access-app-based-mfa/31.png)
 
-
+ 
 
 
 **Konfigurace zásady podmíněného přístupu:**
@@ -137,9 +139,19 @@ V zásadách můžete nastavit:
 13. Klikněte na možnost **Vytvořit**.
 
 
-## <a name="evaluate-your-conditional-access-policy"></a>Vyhodnocení požadované zásady podmíněného přístupu
+## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení simulované přihlášení
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, zda vše funguje podle očekávání. Jako první krok, můžete použít [podmíněný přístup, jaké Pokud zásada nástroj](active-directory-conditional-access-whatif.md) k simulaci přihlášení uživatele. Když nakonfigurujete nástroj s **Isabella Simonsen** jako uživatel a **Microsoft Azure Management** jako cloudové aplikace, zobrazí nástroj **vyžadovat vícefaktorové ověřování pro přístup k Azure portálu** v části **Zásady, které se použijí** a **vyžadovat vícefaktorové ověřování** jako **ovládací prvky Grant**.
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, zda vše funguje podle očekávání. Jako první krok použijte podmíněný přístup, co v případě zásady nástroje pro simulaci přihlášení z testovacího uživatele. Simulace odhadne dopad na tomto přihlášení má na vaše zásady a generuje sestavy simulace.  
+
+K chybě při inicializaci co, pokud se nástroj hodnocení zásady, nastavit:
+
+- **Isabella Simonsen** jako uživatel 
+- **Microsoft Azure Management** jako cloudové aplikace
+
+ Kliknutím na tlačítko **co když** vytvoří sestavu simulace, která obsahuje:
+
+- **Vícefaktorové ověřování vyžadovat pro přístup k Azure portálu** pod **zásady, které budou platit** 
+- **Vyžadovat vícefaktorové ověřování** jako **ovládací prvky Grant**.
 
 ![Co když zásada – nástroj](./media/active-directory-conditional-access-app-based-mfa/23.png)
 
@@ -174,11 +186,22 @@ Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravd
 
 ## <a name="test-your-conditional-access-policy"></a>Testování zásady podmíněného přístupu
 
-V předchozí části v předchozí části, můžete 
+V předchozí části jste se naučili, jak vyhodnotit simulované přihlášení. Kromě simulace byste měli také otestovat zásady podmíněného přístupu k zajištění, že funguje podle očekávání. 
 
 K otestování vaše zásady, pokuste se přihlásit k vaší [portál Azure](https://portal.azure.com) pomocí vaší **Isabella Simonsen** testovací účet. Měli byste vidět dialog, který vyžaduje, abyste nastavili svůj účet do dalšího ověření zabezpečení.
 
 ![Ověřování pomocí služby Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/22.png)
+
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud již nepotřebujete, odstraňte testovacího uživatele a zásady podmíněného přístupu:
+
+- Pokud nevíte jak odstranit uživatele Azure AD, najdete v části [odstranit uživatele z Azure AD](add-users-azure-active-directory.md#delete-users-from-azure-ad).
+
+- Pokud chcete odstranit vaše zásady, vyberte zásady a pak klikněte na tlačítko **odstranit** na panelu nástrojů Rychlý přístup.
+
+    ![Ověřování pomocí služby Multi-Factor Authentication](./media/active-directory-conditional-access-app-based-mfa/33.png)
 
 
 ## <a name="next-steps"></a>Další postup

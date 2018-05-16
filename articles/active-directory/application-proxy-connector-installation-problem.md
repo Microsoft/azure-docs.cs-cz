@@ -1,11 +1,11 @@
 ---
-title: "Problém instalace agenta konektor Proxy aplikace | Microsoft Docs"
-description: "Řešení potíží, která vám může při instalaci agenta konektor Proxy aplikace"
+title: Problém instalace agenta konektor Proxy aplikace | Microsoft Docs
+description: Řešení potíží, která vám může při instalaci agenta konektor Proxy aplikace
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 70d2f159c5485009e36aa80dfa8b73f9b3cf4ec1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problém instalace agenta konektor Proxy aplikace
 
@@ -69,4 +69,4 @@ Připojení k <https://login.microsoftonline.com> a používat stejné přihlaš
 Vyberte uživatelský účet, pak "Directory Role" v nabídce výsledné. Ověřte, zda vybranou roli "Globální správce". Pokud není možné získat přístup k libovolnému stránek společně tyto kroky, nejste globálním správcem.
 
 ## <a name="next-steps"></a>Další postup
-[Pochopení konektory proxy aplikace služby Azure AD](application-proxy-understand-connectors.md)
+[Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md)

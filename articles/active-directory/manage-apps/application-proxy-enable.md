@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 227792bcf5776b4fd13c263e02aa462b4d2d104f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Začínáme s Proxy aplikace a nainstalujte konektor
 Tento článek vás provede postupem, který umožňuje povolit proxy aplikace u cloudového adresáře služby Microsoft Azure AD.
@@ -33,7 +33,7 @@ Předtím, než budete moct povolit a používat služby proxy aplikace, musíte
 * Serveru se systémem Windows Server 2012 R2 nebo 2016, na který nainstalujete konektor Proxy aplikace. Server musí být možné se připojit k službám Proxy aplikace v cloudu a místní aplikace, které jsou publikování.
   * Pro jednotné přihlašování pro vaše publikované aplikace pomocí omezené delegování Kerberos tento počítač by měl být-připojené do domény ve stejné doméně AD jako aplikace, které jsou publikování. Informace najdete v tématu [použitím KCD pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md).
 
-Pokud vaše organizace používá proxy servery pro připojení k Internetu, přečtěte si [pracují se stávající místní proxy servery](../application-proxy-working-with-proxy-servers.md) podrobnosti o tom, jak je nakonfigurovat před zahájením práce s Proxy aplikace.
+Pokud vaše organizace používá proxy servery pro připojení k Internetu, přečtěte si [pracují se stávající místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md) podrobnosti o tom, jak je nakonfigurovat před zahájením práce s Proxy aplikace.
 
 ## <a name="open-your-ports"></a>Otevřít vaše porty
 
@@ -51,7 +51,7 @@ Při přípravě svého prostředí pro Azure AD Application Proxy, musíte nejp
    > [!IMPORTANT]
    > Změna portu požadavky pro konektor verze 1.5.132.0 a novějších. Pokud máte starší verzi konektoru, musíte také povolit následující porty kromě 80 a 443: 5671, 8080, 9090-9091 9350 9352, 10100 – 10120.
    >
-   >Informace o aktualizaci vašeho konektory na nejnovější verzi najdete v tématu [pochopit Azure AD Application Proxy konektory](../application-proxy-understand-connectors.md#automatic-updates).
+   >Informace o aktualizaci vašeho konektory na nejnovější verzi najdete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md#automatic-updates).
 
 2. Pokud brána firewall nebo proxy server umožňuje vytvoření seznamu povolených DNS, můžete seznam povolených adres připojení k msappproxy.net a servicebus.windows.net. Pokud ne, musíte povolit přístup k [rozsahy IP Datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), které jsou aktualizovány každý týden.
 
@@ -99,10 +99,10 @@ Na serveru zkontrolujte seznam aktivních služeb pro konektor a aktualizační 
 
    ![Služby konektoru proxy aplikace – snímek obrazovky](./media/application-proxy-enable/app_proxy_services.png)
 
-Informace o konektory a jak se nejnovější informace najdete v tématu [pochopit Azure AD Application Proxy konektory](../application-proxy-understand-connectors.md).
+Informace o konektory a jak se nejnovější informace najdete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md).
 
 
 ## <a name="next-steps"></a>Další postup
 Nyní jste připraveni k [publikování aplikací pomocí proxy aplikace](application-proxy-publish-azure-portal.md).
 
-Pokud máte aplikace, které jsou na samostatné sítě nebo jiné umístění, použijte konektor skupiny různých konektory uspořádat do logických jednotek. Další informace získáte v článku [Práce s konektory proxy aplikací](../active-directory-application-proxy-connectors-azure-portal.md).
+Pokud máte aplikace, které jsou na samostatné sítě nebo jiné umístění, použijte konektor skupiny různých konektory uspořádat do logických jednotek. Další informace získáte v článku [Práce s konektory proxy aplikací](application-proxy-connector-groups.md).

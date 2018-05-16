@@ -1,25 +1,27 @@
 ---
-title: "Azure Active Directory v2.0 obory, oprávnění a souhlasu | Microsoft Docs"
-description: "Popis autorizace v koncového bodu v2.0 Azure AD, včetně obory, oprávnění a souhlasu."
+title: Azure Active Directory v2.0 obory, oprávnění a souhlasu | Microsoft Docs
+description: Popis autorizace v koncového bodu v2.0 Azure AD, včetně obory, oprávnění a souhlasu.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f001751c9401b88d9bfaf35444882d3d5ccbfef3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Obory, oprávnění a souhlasu v koncového bodu v2.0 Azure Active Directory
 Aplikace, které se integrují s Azure Active Directory (Azure AD), postupujte podle modelu autorizace, který nabízí uživatelům kontrolu nad přístupu svá data aplikace. Implementace v2.0 modelu autorizace byl aktualizován a změní způsob, jakým aplikace musí komunikovat s Azure AD. Tento článek se zabývá základními koncepty prostředí tato ověřování modelu, včetně obory, oprávnění a souhlasu.
@@ -40,7 +42,7 @@ Totéž platí pro všechny prostředky třetích stran, které mají integrovan
 
 * Číst kalendář uživatele
 * Zápis do kalendáře uživatele
-* Odesílat poštu jménem uživatele
+* Odesílání pošty jménem uživatele
 
 Definováním tyto typy oprávnění prostředek má jemně odstupňovanou kontrolu nad jeho data a jak je vystaven data. Aplikace jiných výrobců může požádat o oprávnění z aplikace uživatele. Uživatel aplikaci musí schválit oprávnění, než aplikace může fungovat jménem uživatele. Podle rozdělování funkce prostředku do menší sady oprávnění, se dají vytvářet aplikace jiných výrobců s žádostí o pouze konkrétní oprávnění, které potřebují k provedení jejich funkce. Uživatelé aplikaci můžete věděli, přesně jak aplikace bude používat svá data, a může se jednat o větší jistotu, že aplikace není chovají se zlými úmysly.
 
@@ -61,7 +63,7 @@ Pokud aplikace provede přihlášení pomocí [OpenID Connect](active-directory-
 ### <a name="email"></a>e-mail
 `email` Oboru lze použít s `openid` oboru a všechny další. Nabízí přístup k aplikaci pro uživatele primární e-mailovou adresu ve tvaru `email` deklarací identity. `email` Deklarace identity je součástí token pouze v případě, že uživatelský účet, který není vždy případě přidružen e-mailovou adresu. Pokud se používá `email` oboru, vaše aplikace by měla připravte se na zpracovat případy, ve kterém `email` deklarace identity neexistuje v tokenu.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profil
 `profile` Oboru lze použít s `openid` oboru a všechny další. Poskytuje přístup k aplikaci ke vyžadovat značné množství informací o uživateli. Obsahuje informace, které má přístup, ale není omezen na uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu. Úplný seznam profilu deklarace, který je k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v článku [v2.0 tokeny odkaz](active-directory-v2-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
@@ -199,6 +201,6 @@ Content-Type: application/json
 }
 ```
 
-Výsledný token přístupu můžete použít v požadavcích HTTP k prostředku. Spolehlivě označuje k prostředku, že aplikace má správná oprávnění k provedení určitého úkolu.  
+Výsledný token přístupu můžete použít v požadavcích HTTP k prostředku. Spolehlivě označuje k prostředku, že aplikace má správná oprávnění k provedení určitého úkolu. 
 
 Další informace o protokolu OAuth 2.0 a jak získat přístupové tokeny, najdete v článku [referenci na protokol koncový bod v2.0](active-directory-v2-protocols.md).

@@ -17,11 +17,13 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
+    - name: Vysvětlení definic rolí
+      href: role-definitions.md
     - name: Vestavěné role
       href: built-in-roles.md
     - name: Vlastní role
       href: custom-roles.md
-    - name: Přiřazení vlastních rolí pro interní a externí uživatele
+    - name: Správa přiřazení rolí pro externí uživatele
       href: role-assignments-external-users.md
     - name: Protokoly aktivit
       href: change-history-report.md

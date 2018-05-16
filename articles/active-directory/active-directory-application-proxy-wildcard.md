@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 61426d992e279cf88ae9750f0047b0cd81a797e3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Zástupný znak aplikace v proxy aplikace služby Azure Active Directory 
 
@@ -112,7 +112,7 @@ Pokud použijete tuto možnost, musíte taky jiný záznam CNAME pro hodnotu `Ap
 
 Představuje aplikací se zástupnými znaky s jedním dlaždice v [MyApps panel](https://myapps.microsoft.com). Ve výchozím nastavení je skrytý na tuto dlaždici. Chcete-li zobrazit dlaždice a mají pevnou uživatelů na konkrétní stránky:
 
-1. Postupujte podle pokynů pro [nastavení adresy URL domovské stránky](application-proxy-office365-app-launcher.md).
+1. Postupujte podle pokynů pro [nastavení adresy URL domovské stránky](manage-apps/application-proxy-configure-custom-home-page.md).
 2. Nastavit **zobrazit aplikace** k **true** na stránce vlastností aplikace.
 
 ### <a name="kerberos-constrained-delegation"></a>Omezené delegování protokolu Kerberos

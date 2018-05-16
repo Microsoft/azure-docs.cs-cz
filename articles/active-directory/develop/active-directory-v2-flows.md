@@ -3,23 +3,25 @@ title: Typy aplikací pro koncový bod v2.0 Azure Active Directory | Microsoft D
 description: Typy aplikací a scénáře podporované koncovým bodem v2.0 Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
-ms.author: hpsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 291cd1adaf36d7f02aae84f97b7f7b3e6bca2c9c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 134199c879f6793cb4ed0a88cf0593786341f6d8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikací pro koncový bod v2.0 Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) podporuje ověřování pro celou řadu architektur moderní aplikace, všechny z nich založené na standardních protokolech [OAuth 2.0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete vytvořit pomocí Azure AD v2.0, bez ohledu na to upřednostňovaný jazyk nebo platformu. Informace v tomto článku je navržená tak, které vám pomohou pochopit scénáře vysoké úrovně před [zahájení práce s kódem](active-directory-appmodel-v2-overview.md#getting-started).
@@ -95,7 +97,7 @@ Webové rozhraní API může přijímat tokeny přístupu ze všech typů aplika
 
 Chcete-li se dozvědět, jak zabezpečit webové rozhraní API pomocí přístupových tokenů OAuth2, podívejte se na ukázky kódu webového rozhraní API v našich [Začínáme](active-directory-appmodel-v2-overview.md#getting-started) části.
 
-V mnoha případech webové rozhraní API také třeba, aby odchozí požadavky na jiné podřízené webové rozhraní API pro zabezpečené službou Azure Active Directory.  Uděláte to tak, webová rozhraní API můžete využít výhod Azure AD **na jménem z** tok, který umožňuje webové rozhraní API pro výměnu příchozí přístupový token pro dalšího přístupového tokenu, který se má použít v odchozí požadavky.  V2.0 pro koncový bod jménem postup je popsán v [podrobností zde](active-directory-v2-protocols-oauth-on-behalf-of.md).
+V mnoha případech webové rozhraní API také třeba, aby odchozí požadavky na jiné podřízené webové rozhraní API pro zabezpečené službou Azure Active Directory. Uděláte to tak, webová rozhraní API můžete využít výhod Azure AD **na jménem z** tok, který umožňuje webové rozhraní API pro výměnu příchozí přístupový token pro dalšího přístupového tokenu, který se má použít v odchozí požadavky. V2.0 pro koncový bod jménem postup je popsán v [podrobností zde](active-directory-v2-protocols-oauth-on-behalf-of.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobilní a nativní aplikace
 Zařízení nainstalované aplikace, jako je například mobilních a desktopových aplikací, často potřebují přístup k back endovým službám nebo webovým rozhraním API, která ukládají data a provádět operace jménem uživatele. Tyto aplikace můžete přidat přihlašování a autorizaci k back endové služby pomocí [toku kódu autorizace OAuth 2.0](active-directory-v2-protocols-oauth-code.md).

@@ -1,25 +1,27 @@
 ---
-title: "Azure AD webového rozhraní API .NET Začínáme | Microsoft Docs"
-description: "Postup sestavení .NET MVC webového rozhraní API, který se integruje s Azure AD pro ověřování a autorizaci."
+title: Azure AD webového rozhraní API .NET Začínáme | Microsoft Docs
+description: Postup sestavení .NET MVC webového rozhraní API, který se integruje s Azure AD pro ověřování a autorizaci.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4c4cf11b26402747ef58e4fa3fbbe2154876dfae
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: aa527f66035ce8ea95ecdf405ef307c1202a92a6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-net-web-api-getting-started"></a>Azure AD webového rozhraní API .NET Začínáme
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -125,8 +127,8 @@ Chcete-li ověřit příchozí požadavky a tokeny, nastavte aplikaci komunikova
     ```
 
 7. Otevřete `web.config` souboru v kořenovém adresáři projektu TodoListService a zadejte svoje hodnoty konfigurace v `<appSettings>` oddílu.
-  * `ida:Tenant`je název vašeho klienta Azure AD – například contoso.onmicrosoft.com.
-  * `ida:Audience`je identifikátor ID URI aplikace aplikace, která jste zadali v portálu Azure.
+  * `ida:Tenant` je název vašeho klienta Azure AD – například contoso.onmicrosoft.com.
+  * `ida:Audience` je identifikátor ID URI aplikace aplikace, která jste zadali v portálu Azure.
 
 ## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurace klientské aplikace a spustit službu
 Než budete moct vidět na udělat seznamu službu v akci, budete muset nakonfigurovat klienta seznam úkolů, aby mohl získat tokeny z Azure AD a provádět volání do služby.
@@ -143,9 +145,9 @@ Než budete moct vidět na udělat seznamu službu v akci, budete muset nakonfig
 
 5. V sadě Visual Studio otevřete `App.config` v TodoListClient projektu a pak zadejte svoje hodnoty konfigurace v `<appSettings>` oddílu.
 
-  * `ida:Tenant`je název vašeho klienta Azure AD – například contoso.onmicrosoft.com.
-  * `ida:ClientId`je ID aplikace, kterou jste zkopírovali z portálu Azure.
-  * `todo:TodoListResourceId`je identifikátor ID URI aplikace do služby seznamu se aplikace, která jste zadali v portálu Azure.
+  * `ida:Tenant` je název vašeho klienta Azure AD – například contoso.onmicrosoft.com.
+  * `ida:ClientId` je ID aplikace, kterou jste zkopírovali z portálu Azure.
+  * `todo:TodoListResourceId` je identifikátor ID URI aplikace do služby seznamu se aplikace, která jste zadali v portálu Azure.
 
 ## <a name="next-steps"></a>Další postup
 Nakonec vyčistit, sestavte a spusťte každý projekt. Pokud jste to ještě neudělali, nyní je čas vytvořit nového uživatele ve vašem klientovi s *. onmicrosoft.com domény. Přihlaste se na seznam úkolů klienta se tento uživatel a některé úlohy přidat do seznamu úkolů uživatele.

@@ -6,121 +6,175 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/11/2017
+ms.date: 05/12/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c886655f0f9469b742532fa940519176a773ad41
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="create-custom-roles-for-azure-role-based-access-control"></a>Vytvořit vlastní role pro řízení přístupu
-Vytvořte vlastní roli v řízení řízení přístupu (RBAC), pokud žádná z předdefinovaných rolí podle svých potřeb konkrétní přístup. Můžete vytvořit vlastní role pomocí [prostředí Azure PowerShell](role-assignments-powershell.md), [rozhraní příkazového řádku Azure](role-assignments-cli.md) (CLI) a [REST API](role-assignments-rest.md). Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny a aplikace na předplatné, skupinu prostředků a prostředků obory. Vlastní role jsou uloženy v klient služby Azure AD a mohlo sdílet víc předplatných.
+# <a name="create-custom-roles-in-azure"></a>Vytvořit vlastní role v Azure
 
-Každý klient můžete vytvořit až 2 000 vlastní role. 
+Pokud [předdefinované role](built-in-roles.md) nevyhovují vašim potřebám konkrétní přístup, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny a objekty služby v odběru, skupinu prostředků a prostředků obory. Vlastní role se ukládají do klienta služby Azure Active Directory (Azure AD) a mohou být sdíleny s odběry. Můžete vytvořit vlastní role pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API. Tento článek popisuje příklad toho, jak začít vytvářet vlastní role pomocí prostředí PowerShell a rozhraní příkazového řádku Azure.
 
-Následující příklad ukazuje vlastní role pro monitorování a restartování virtuálního počítače:
+## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Vytvořit vlastní roli otevření žádosti o podporu pomocí prostředí PowerShell
+
+Pokud chcete vytvořit vlastní roli, může začínat předdefinovaná role, upravit a poté vytvořit novou roli. V tomto příkladu integrované [čtečky](built-in-roles.md#reader) role upravit tak, aby vytvořit vlastní roli s názvem "úroveň přístupu lístky žádostí o podporu čtečky". Umožňuje uživatelům zobrazit vše, co v dané předplatné a také žádosti o podporu otevřete.
+
+> [!NOTE]
+> Pouze dva předdefinované role, které umožňují uživatele k otevření žádosti o podporu jsou [vlastníka](built-in-roles.md#owner) a [Přispěvatel](built-in-roles.md#contributor). Uživatel nebude moci otevřít žádosti o podporu musí mohl být přiřazena role v oboru předplatné všechny žádosti o podporu se vytváří podle předplatného Azure.
+
+V prostředí PowerShell, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) příkaz pro export [čtečky](built-in-roles.md#reader) role ve formátu JSON.
+
+```azurepowershell
+Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
+```
+
+Následující příklad zobrazuje výstup JSON [čtečky](built-in-roles.md#reader) role. Typické role se skládá ze tří hlavních částí `Actions`, `NotActions`, a `AssignableScopes`. `Actions` Části je uveden seznam povolených operací pro roli. Vyloučit operací z `Actions`, přidejte je do `NotActions`. Skutečná oprávnění se počítá odečtením `NotActions` operací `Actions` operace.
 
 ```json
 {
-  "Name": "Virtual Machine Operator",
-  "Id": "cadb4a5a-4e7a-47be-84db-05cad13b6769",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Insights/diagnosticSettings/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
+    "Name":  "Reader",
+    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "IsCustom":  false,
+    "Description":  "Lets you view everything, but not make any changes.",
+    "Actions":  [
+                    "*/read"
+                ],
+    "NotActions":  [
 
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624",
-    "/subscriptions/34370e90-ac4a-4bf9-821f-85eeedeae1a2"
-  ]
+                   ],
+    "AssignableScopes":  [
+                             "/"
+                         ]
 }
 ```
-## <a name="actions"></a>Akce
-**Akce** vlastnost vlastní role určuje činnosti Azure, ke kterým roli udělí přístup. Jedná se o kolekci operaci řetězců, které identifikují zabezpečitelné operations poskytovatelů prostředků Azure. Operace řetězce použijte formát `Microsoft.<ProviderName>/<ChildResourceType>/<action>`. Operace řetězce, které obsahují zástupné znaky (\*) udělit přístup ke všem operacím, které odpovídají řetězci operace. Například:
 
-* `*/read` uděluje přístup ke čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.
-* `Microsoft.Compute/*` uděluje přístup ke všem operacím pro všechny typy prostředků ve zprostředkovateli prostředků Microsoft.Compute.
-* `Microsoft.Network/*/read` uděluje přístup ke čtení pro všechny typy prostředků v poskytovatel prostředků Microsoft.Network Azure.
-* `Microsoft.Compute/virtualMachines/*` uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.
-* `Microsoft.Web/sites/restart/Action` uděluje přístup k restartování weby.
+Dále můžete upravit výstup vytvořit vlastní roli ve formátu JSON. V takovém případě vytvářet podporu lístků, `Microsoft.Support/*` operace musí být přidán. Každé operace je k dispozici od zprostředkovatele prostředků. Chcete-li získat seznam operací pro poskytovatele prostředků, můžete použít [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) příkaz nebo najdete [operace poskytovatele prostředků Azure Resource Manager](resource-provider-operations.md).
 
-Použití `Get-AzureRmProviderOperation` (v prostředí PowerShell) nebo `azure provider operations show` (v Azure CLI) k operacím seznamu zprostředkovatelů prostředků Azure. Ověřte, zda je řetězec v operaci platný a rozbalte řetězce operaci zástupný znak, může pomocí následujících příkazů.
+Je povinný, že role obsahuje explicitní předplatné ID, kde se používá. ID předplatného jsou uvedeny v části `AssignableScopes`, v opačném případě můžete nebude moct importovat role do vašeho předplatného.
 
-```powershell
-Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName
+Nakonec je nutné nastavit `IsCustom` vlastnost `true` k určení, že se jedná o vlastní roli.
 
-Get-AzureRMProviderOperation Microsoft.Network/*
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
+
+                   ],
+    "AssignableScopes":  [
+                             "/subscriptions/11111111-1111-1111-1111-111111111111"
+                         ]
+}
 ```
 
-![Snímek obrazovky prostředí PowerShell - Get-AzureRMProviderOperation](./media/custom-roles/1-get-azurermprovideroperation-1.png)
+Chcete-li vytvořit novou vlastní roli, je použít [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) příkazů a poskytnout aktualizovaný soubor definice role JSON.
+
+```azurepowershell
+New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
+```
+
+Po spuštění [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition), novou vlastní roli, je k dispozici na webu Azure portal a můžete přiřadit uživatelům.
+
+![snímek obrazovky vlastní roli, které jsou importovány na portálu Azure](./media/custom-roles/18.png)
+
+![snímek obrazovky přiřazení vlastní importované role pro uživatele ve stejném adresáři](./media/custom-roles/19.png)
+
+![snímek obrazovky oprávnění pro vlastní importované role](./media/custom-roles/20.png)
+
+Uživatelé s tuto vlastní roli, mohou vytvářet nové žádosti o podporu.
+
+![snímek obrazovky vytváření žádosti o podporu vlastní role](./media/custom-roles/21.png)
+
+Uživatelé s tuto vlastní roli nelze provádět další akce, jako například vytvořit virtuální počítače nebo skupiny prostředků.
+
+![snímek obrazovky vlastní roli nelze vytvořit virtuální počítače](./media/custom-roles/22.png)
+
+![snímek obrazovky vlastní roli nelze vytvořit nové RGs](./media/custom-roles/23.png)
+
+## <a name="create-a-custom-role-to-open-support-requests-using-azure-cli"></a>Vytvořit vlastní roli otevření žádosti o podporu pomocí rozhraní příkazového řádku Azure
+
+Postup vytvoření vlastní role pomocí rozhraní příkazového řádku Azure jsou podobná pomocí prostředí PowerShell, s tím rozdílem, že výstup JSON se liší.
+
+V tomto příkladu můžete spustit pomocí integrované [čtečky](built-in-roles.md#reader) role. Seznam akce [čtečky](built-in-roles.md#reader) role, použijte [seznamu definice role az](/cli/azure/role/definition#az_role_definition_list) příkaz.
 
 ```azurecli
-azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
-
-azure provider operations show "Microsoft.Network/*"
+az role definition list --name "Reader" --output json
 ```
 
-![Azure CLI – snímek obrazovky - azure zprostředkovatele operations zobrazit "Microsoft.Compute/virtualMachines/\*/action" ](./media/custom-roles/1-azure-provider-operations-show.png)
+```json
+[
+  {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you view everything, but not make any changes.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "permissions": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "additionalProperties": {},
+        "notActions": [],
+      }
+    ],
+    "roleName": "Reader",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
 
-## <a name="notactions"></a>NotActions
-Použití **NotActions** vlastnost Pokud sadu operací, které chcete povolit je snadno definovanou s výjimkou operací s omezeným přístupem. Udělení přístupu podle vlastní role se počítá odečtením **NotActions** operací **akce** operace.
+Vytvořte soubor JSON v následujícím formátu. `Microsoft.Support/*` Operaci byla přidána do `Actions` částech, aby tento uživatel může otevřít žádosti o podporu přitom dál být čtečka čipových karet. Je nutné přidat kde tato role se použije v ID předplatného `AssignableScopes` části.
 
-> [!NOTE]
-> Pokud je uživatel přiřazenou roli, která nezahrnuje operace v **NotActions**a je mu přiřazená druhá role, který uděluje přístup ke stejné operace, má uživatel k provedení této operace. **NotActions** není odepření pravidlo – je jenom pohodlný způsob, jak vytvořit sadu povolených operací při konkrétních operací muset vyloučeny.
->
->
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
 
-## <a name="assignablescopes"></a>AssignableScopes
-**AssignableScopes** vlastnost vlastní role určuje obory (odběry, skupiny prostředků nebo prostředky), ve které je k dispozici pro přiřazení vlastní role. Můžete zpřístupnit vlastní role pro přiřazení v jenom na předplatná nebo skupiny prostředků, které je vyžadují a není zbytečných souborů činnost koncového uživatele pro zbytek předplatná nebo skupiny prostředků.
+                   ],
+    "AssignableScopes": [
+                            "/subscriptions/11111111-1111-1111-1111-111111111111"
+                        ]
+}
+```
 
-Příklady platný přiřaditelnými obory:
+Chcete-li vytvořit novou vlastní roli, použijte [vytvoření definice role az](/cli/azure/role/definition#az_role_definition_create) příkaz.
 
-* "/ subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/ subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624" - zpřístupní role pro přiřazení do dvou předplatných.
-* "/ subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e" - zpřístupní role pro přiřazení v rámci jednoho předplatného.
-* "/ odběry nebo c276fc76-9cd4-44c9-99a7-4fd71546436e/Skupinyprostředků/síťových" - je k dispozici pro přiřazení role pouze ve skupině prostředků sítě.
+```azurecli
+az role definition create --role-definition ~/roles/rbacrole1.json
+```
 
-> [!NOTE]
-> Musíte použít aspoň jeden předplatné, skupinu prostředků nebo ID prostředku.
->
->
+Nové vlastní role je nyní k dispozici na webu Azure portal a proces pomocí této role je stejné jako v předchozí části prostředí PowerShell.
 
-## <a name="custom-roles-access-control"></a>Vlastní role řízení přístupu
-**AssignableScopes** vlastnost vlastní role také určuje, kdo může zobrazit, upravit a odstranit roli.
+![Azure portálu snímek obrazovky vlastní roli, které jsou vytvořené pomocí rozhraní příkazového řádku 1.0](./media/custom-roles/26.png)
 
-* Kdo mohou vytvářet vlastní role?
-    Vlastníci (a správcům přístup uživatele) předplatných, skupiny prostředků a prostředků můžete vytvořit vlastní role pro použití v tyto obory.
-    Vytvoření role uživatele musí být schopni provést `Microsoft.Authorization/roleDefinition/write` operaci na všech **AssignableScopes** role.
-* Kdo může upravit vlastní roli?
-    Vlastníci (a správcům přístup uživatele) předplatných, skupiny prostředků a prostředků můžete upravit vlastní role v tyto obory. Uživatelé musí být schopni provést `Microsoft.Authorization/roleDefinition/write` operaci na všech **AssignableScopes** vlastní role.
-* Kdo může zobrazit vlastní role?
-    Všechny předdefinované role v Azure RBAC povolí zobrazení rolí, které jsou k dispozici pro přiřazení. Uživatelé, kteří mohou provádět `Microsoft.Authorization/roleDefinition/read` operace v oboru můžete zobrazit role RBAC, které jsou k dispozici pro přiřazení v tomto oboru.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Řízení přístupu na základě role](role-assignments-portal.md): Začínáme s RBAC na portálu Azure.
-* Seznam dostupných operací, najdete v části [poskytovatel prostředků Azure Resource Manager operations](resource-provider-operations.md).
-* Zjistěte, jak spravovat přístup pomocí:
-  * [PowerShell](role-assignments-powershell.md)
-  * [Azure CLI](role-assignments-cli.md)
-  * [REST API](role-assignments-rest.md)
-* [Předdefinované role](built-in-roles.md): získat tak podrobné údaje o rolích, které jsou v RBAC standardní.
+- [Pochopení definice rolí](role-definitions.md)
+- [Správa řízení přístupu na základě rolí pomocí AzurePowerShell](role-assignments-powershell.md)
+- [Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure](role-assignments-cli.md)
+- [Správa řízení přístupu na základě rolí pomocí rozhraní REST API](role-assignments-rest.md)

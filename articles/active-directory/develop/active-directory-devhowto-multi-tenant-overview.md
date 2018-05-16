@@ -3,26 +3,28 @@ title: Jak sestavit aplikaci, která se můžete přihlásit žádné uživatele
 description: Ukazuje, jak sestavit aplikaci více klientů, které se můžete zaregistrovat v uživatel jakéhokoli klienta Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: celestedg
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2018
 ms.author: celested
+ms.reviewer: elisol
 ms.custom: aaddev
-ms.openlocfilehash: f31ef7285e07467fe233d5e10534340bc912ed1c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fd02cde6327cb929d1b4c0c2e3d430d64645ca26
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Jak se přihlásit žádné uživatele Azure Active Directory pomocí vzoru víceklientské aplikace
-Pokud nabízíte softwaru jako aplikace služby k mnoha organizacích, můžete nakonfigurovat aplikaci tak, aby přijímal přihlášení jakéhokoli klienta Azure Active Directory (AD). Tato konfigurace se nazývá provedení víceklientské vaší aplikace. Uživatelé v jakékoli klientovi Azure AD bude moci přihlásit k aplikaci po souhlas používat svůj účet s vaší aplikací.  
+Pokud nabízíte softwaru jako aplikace služby k mnoha organizacích, můžete nakonfigurovat aplikaci tak, aby přijímal přihlášení jakéhokoli klienta Azure Active Directory (AD). Tato konfigurace se nazývá provedení víceklientské vaší aplikace. Uživatelé v jakékoli klientovi Azure AD bude moci přihlásit k aplikaci po souhlas používat svůj účet s vaší aplikací. 
 
 Pokud máte existující aplikaci, která má svůj vlastní účet systému nebo jiných druhů přihlášení z jiných poskytovatelů cloudu, podporuje, klepněte přidání Azure AD přihlášení jakéhokoli klienta je jednoduché. Právě svou aplikaci zaregistrovat, přidejte kód přihlášení přes OAuth2, OpenID Connect nebo SAML a umístí [tlačítko "Sign In with Microsoft"] [ AAD-App-Branding] ve vaší aplikaci.
 
@@ -39,19 +41,19 @@ Existují čtyři jednoduché kroky k převedení aplikace do více klientů apl
 Podívejme se na každý krok podrobně. Můžete také přejít přímo na [tento seznam víceklientské ukázky][AAD-Samples-MT].
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Aktualizace registrace, která má být více klientů
-Ve výchozím nastavení jsou webové aplikaci nebo API registrace ve službě Azure AD jednoho klienta.  Můžete provést registrace víceklientské tak, že najdete **více nevyužívá dělené tabulky** přepínač na **vlastnosti** registrace vaší aplikace v podokně [portál Azure] [ AZURE-portal] a jeho nastavení na hodnotu **Ano**.
+Ve výchozím nastavení jsou webové aplikaci nebo API registrace ve službě Azure AD jednoho klienta. Můžete provést registrace víceklientské tak, že najdete **více nevyužívá dělené tabulky** přepínač na **vlastnosti** registrace vaší aplikace v podokně [portál Azure] [ AZURE-portal] a jeho nastavení na hodnotu **Ano**.
 
 Předtím, než aplikace můžete provedeny víceklientské, Azure AD vyžaduje identifikátor ID URI aplikace aplikace být globálně jedinečný. Identifikátor ID URI aplikace je jedním ze způsobů, které aplikace je definována ve zprávách protokolu. Aplikace pomocí jednoho klienta je dostačující pro identifikátor ID URI aplikace být jedinečný v rámci tohoto klienta. Pro více klientů aplikace musí být globálně jedinečné, Azure AD můžete najít aplikaci přes všechny klienty. Globální jedinečnosti se vynucuje tím, že identifikátor ID URI aplikace tak, aby měl název hostitele, který odpovídá ověřené domény klienta Azure AD. Ve výchozím nastavení globálně jedinečný identifikátor ID URI aplikace nastavte na vytváření aplikace mít aplikace, které jsou vytvořené prostřednictvím portálu Azure, ale tuto hodnotu můžete změnit.
 
-Například, pokud název vašeho klienta se contoso.onmicrosoft.com pak platný identifikátor ID URI aplikace by být `https://contoso.onmicrosoft.com/myapp`.  Pokud váš klient měli ověřené domény `contoso.com`, pak by také být platný identifikátor ID URI aplikace `https://contoso.com/myapp`. Pokud je identifikátor ID URI aplikace není postupujte podle tohoto vzoru, nastavení aplikace, protože víceklientské selže.
+Například, pokud název vašeho klienta se contoso.onmicrosoft.com pak platný identifikátor ID URI aplikace by být `https://contoso.onmicrosoft.com/myapp`. Pokud váš klient měli ověřené domény `contoso.com`, pak by také být platný identifikátor ID URI aplikace `https://contoso.com/myapp`. Pokud je identifikátor ID URI aplikace není postupujte podle tohoto vzoru, nastavení aplikace, protože víceklientské selže.
 
 > [!NOTE] 
-> Registrace nativního klienta a také [v2 aplikace](./active-directory-appmodel-v2-overview.md) jsou víceklientské ve výchozím nastavení.  Není nutné provádět žádnou akci, aby tyto aplikace registrace více klientů.
+> Registrace nativního klienta a také [v2 aplikace](./active-directory-appmodel-v2-overview.md) jsou víceklientské ve výchozím nastavení. Není nutné provádět žádnou akci, aby tyto aplikace registrace více klientů.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Aktualizujte kód a odesílat žádosti do/Common
 Žádostí o přihlášení k aplikaci jednoho klienta, se odešlou do klienta přihlášení koncový bod. Například pro contoso.onmicrosoft.com bude koncový bod: `https://login.microsoftonline.com/contoso.onmicrosoft.com`
 
-Požadavky odeslané na koncový bod klienta můžete přihlásit uživatele (nebo Hosté) v něm k aplikacím v něm. S více klienty aplikací aplikace neví, předem jaké klienta uživatele je, aby nemohli odesílat žádosti do koncového bodu klienta.  Místo toho jsou odesílány požadavky na koncový bod, který multiplexes napříč všechny klienty Azure AD: `https://login.microsoftonline.com/common`
+Požadavky odeslané na koncový bod klienta můžete přihlásit uživatele (nebo Hosté) v něm k aplikacím v něm. S více klienty aplikací aplikace neví, předem jaké klienta uživatele je, aby nemohli odesílat žádosti do koncového bodu klienta. Místo toho jsou odesílány požadavky na koncový bod, který multiplexes napříč všechny klienty Azure AD: `https://login.microsoftonline.com/common`
 
 Pokud Azure AD přijme požadavek na / Common koncový bod, se uživatel přihlásí a, v důsledku toho zjišťuje klienta, které je uživatel z. / Společný koncový bod funguje se všemi ověřovací protokoly podporovaný službou Azure AD: OpenID Connect, OAuth 2.0, SAML 2.0 a WS-Federation.
 
@@ -61,12 +63,12 @@ Odpověď přihlášení do aplikace se pak obsahuje token reprezentující uži
 > / Společný koncový bod není klienta a není vystavitele, je právě multiplexor. Při použití/Common, logiku aplikace k ověření tokeny musí aktualizovat, aby vzít v úvahu. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Aktualizujte kód pro zpracování více hodnot vystavitele
-Webové aplikace a webové rozhraní API přijímat a ověřovat tokeny z Azure AD.  
+Webové aplikace a webové rozhraní API přijímat a ověřovat tokeny z Azure AD. 
 
 > [!NOTE]
-> Nativní klientské aplikace požadovat a přijímat tokeny z Azure AD, se to provést tak o jejich odeslání do rozhraní API, kde se ověří.  Nativní aplikace neověřují tokeny a musí je považovat za neprůhledné.
+> Nativní klientské aplikace požadovat a přijímat tokeny z Azure AD, se to provést tak o jejich odeslání do rozhraní API, kde se ověří. Nativní aplikace neověřují tokeny a musí je považovat za neprůhledné.
 
-Podívejme se na tom, jak aplikaci ověří tokeny obdrží z Azure AD.  Jednoho klienta aplikace obvykle přebírá hodnotu koncového bodu jako:
+Podívejme se na tom, jak aplikaci ověří tokeny obdrží z Azure AD. Jednoho klienta aplikace obvykle přebírá hodnotu koncového bodu jako:
 
     https://login.microsoftonline.com/contoso.onmicrosoft.com
 
@@ -86,7 +88,7 @@ Protože / běžný koncový bod neodpovídá klienta a není vystavitele, při 
 
     https://sts.windows.net/{tenantid}/
 
-Proto nelze ověřit tokeny pouhým odpovídající hodnotě vystavitele v metadatech s víceklientské aplikace `issuer` hodnotu v tokenu. Víceklientské aplikace potřebuje logiku rozhodnout, které vystavitele hodnoty jsou platné a které nejsou založené na část hodnoty vystavitele s ID klienta.  
+Proto nelze ověřit tokeny pouhým odpovídající hodnotě vystavitele v metadatech s víceklientské aplikace `issuer` hodnotu v tokenu. Víceklientské aplikace potřebuje logiku rozhodnout, které vystavitele hodnoty jsou platné a které nejsou založené na část hodnoty vystavitele s ID klienta. 
 
 Například víceklientské aplikace umožňuje pouze přihlášení z konkrétní klientů, kteří zaregistrovali pro své služby, potom je nutné zkontrolovat hodnotu vystavitele nebo `tid` hodnoty v tokenu a ujistěte se, že klienta je v jejich seznamu odběratelů deklarace identity. Pokud aplikace víceklientské pouze se zabývá jednotlivce a není rozhodnutí žádné přístupu na základě na klienty, potom ji můžete ignorovat hodnotě vystavitele zcela.
 
@@ -137,7 +139,7 @@ Tento postup je znázorněn v vícevrstvé nativního klienta volání ukázkov�
 
 **Několik vrstev v několika klientech**
 
-Podobný případ se stane, když jsou v jiných klientů zaregistrované různých vrstev aplikace. Představte si třeba v případě vytváření nativní klientskou aplikaci, která volá Online rozhraní API sady Office 365 Exchange. K vývoji nativní aplikaci a novějším pro nativní aplikace spuštěna v klientovi zákazníka, musí být objekt služby Exchange Online. V takovém případě se developer a zákazník musí zakoupit Exchange Online pro službu objektu vytvořeny v svým klientům.  
+Podobný případ se stane, když jsou v jiných klientů zaregistrované různých vrstev aplikace. Představte si třeba v případě vytváření nativní klientskou aplikaci, která volá Online rozhraní API sady Office 365 Exchange. K vývoji nativní aplikaci a novějším pro nativní aplikace spuštěna v klientovi zákazníka, musí být objekt služby Exchange Online. V takovém případě se developer a zákazník musí zakoupit Exchange Online pro službu objektu vytvořeny v svým klientům. 
 
 V případě rozhraní API vytvořené v organizaci než Microsoft musí vývojář rozhraní API poskytují způsob, jak zákazníkům o souhlas aplikaci do klientů svým zákazníkům. Doporučený návrh je pro vývojáře třetích stran k vytvoření rozhraní API, tak, aby také může fungovat jako webový klient k implementaci registrace. Použijte následující postup:
 

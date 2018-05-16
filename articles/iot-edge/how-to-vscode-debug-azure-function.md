@@ -1,6 +1,6 @@
 ---
-title: Funkce Azure s Azure IoT hranou ladění pomocí Visual Studio Code | Microsoft Docs
-description: Ladění jazyka C# funkce Azure s Azure IoT Edge v produktu VS Code
+title: Ladění moduly funkce pro hraniční Azure IoT | Microsoft Docs
+description: Použití Visual Studio Code k ladění jazyka C# Azure Functions s hranou Azure IoT
 services: iot-edge
 keywords: ''
 author: shizn
@@ -9,15 +9,15 @@ ms.author: xshi
 ms.date: 3/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8bd3513e932540f2dd710e0ac1536e757c00a3e1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: cd870d8f5c3fff87b121ab777a086f21df07cfbc
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-visual-studio-code-to-debug-azure-functions-with-azure-iot-edge"></a>Pomocí Visual Studio Code funkce Azure s Azure IoT hranou ladění
 
-Tento článek obsahuje podrobné pokyny pro používání [Visual Studio Code](https://code.visualstudio.com/) jako hlavní vývojový nástroj k ladění funkcí Azure IoT hranu.
+Tento článek obsahuje podrobné pokyny pro používání [Visual Studio (VS) kód](https://code.visualstudio.com/) k ladění funkcí Azure IoT hranu.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows nebo Linux jako vývojovém počítači. Zařízení IoT Edge může být jiné fyzické zařízení nebo zařízení IoT Edge můžete simulovat na vývojovém počítači.
@@ -37,20 +37,16 @@ Než následující pokyny v tomto článku, proveďte kroky v [vyvíjet IoT ře
     ![Sestavení bitové kopie pro ladění](./media/how-to-debug-csharp-function/build-debug-image.png)
 
 2. Znovu sestavte řešení. V příkazu palety VS Code, zadejte a spusťte příkaz **Edge: sestavení IoT řešení**.
+3. V Průzkumníku zařízení Azure IoT Hub, klikněte pravým tlačítkem na ID zařízení IoT okraj a pak vyberte **vytvořit nasazení pro hraniční zařízení**. Vyberte `deployment.json` souboru pod `config` složky. Pak uvidíte, že nasazení je úspěšně vytvořen s nasazením, které ID v produktu VS Code integrované terminálu.
 
-3. V Průzkumníku zařízení Azure IoT Hub, klikněte pravým tlačítkem na ID zařízení IoT okraj a pak vyberte **vytvořit nasazení pro hraniční zařízení**. Vyberte `deployment.json` pod `config` složky. Pak uvidíte, že nasazení je úspěšně vytvořen s nasazením, které ID v produktu VS Code integrované terminálu.
-
-> [!NOTE]
-> Můžete zkontrolovat stav vaší kontejneru v Průzkumníku VS Code Docker nebo spustit `docker images` v terminálu.
+Můžete zkontrolovat stav vaší kontejneru v Průzkumníku VS Code Docker nebo spuštěním `docker images` v terminálu.
 
 ## <a name="start-debugging-c-function-in-vs-code"></a>Spuštění ladění funkce jazyka C# v produktu VS Code
-1. VS Code udržuje ladění informace o konfiguraci v `launch.json` soubor umístěný ve `.vscode` složku v pracovním prostoru. To `launch.json` soubor byl vytvořen při vytváření nové řešení IoT okraj. A, bude aktualizována pokaždé, když přidáte nový modul, který podporují ladění. Přejděte do zobrazení ladění a vyberte odpovídající soubor konfigurace ladění.
+1. VS Code udržuje ladění informace o konfiguraci v `launch.json` soubor umístěný ve `.vscode` složku v pracovním prostoru. To `launch.json` soubor byl vygenerován při vytváření nové řešení IoT okraj. Aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění. Přejděte do zobrazení ladění a vyberte odpovídající soubor konfigurace ladění.
     ![Konfiguraci vyberte ladění](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
 2. Přejděte na adresu `run.csx`. Přidáte zarážky ve funkci.
-
-3. Klikněte na tlačítko Spustit ladění nebo klikněte na tlačítko **F5**a vyberte možnost připojit k procesu.
-
+3. Klikněte **spustit ladění** tlačítko nebo klikněte na tlačítko **F5**a vyberte možnost připojit k procesu.
 4. V zobrazení ladění kódu VS uvidíte proměnné v levém panelu. 
 
 

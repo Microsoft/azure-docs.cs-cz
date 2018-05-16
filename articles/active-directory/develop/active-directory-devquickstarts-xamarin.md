@@ -1,25 +1,27 @@
 ---
-title: "Začínáme se službou Azure AD Xamarin | Microsoft Docs"
-description: "Sestavení Xamarin aplikace, které integrují s Azure AD pro přihlášení a volání Azure AD chráněné rozhraní API pomocí metody OAuth."
+title: Začínáme se službou Azure AD Xamarin | Microsoft Docs
+description: Sestavení Xamarin aplikace, které integrují s Azure AD pro přihlášení a volání Azure AD chráněné rozhraní API pomocí metody OAuth.
 services: active-directory
 documentationcenter: xamarin
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77ac6a7cfe089fa934592c412c75a9f33efde5e8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ac04cddc00bf76bb366a249a5a2ec4c56d5212c
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Začínáme se službou Azure AD Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -57,8 +59,7 @@ Pokud chcete povolit aplikaci získat tokeny, musíte nejprve zaregistrovat v kl
   * **Identifikátor URI pro přesměrování** je kombinace schématu a řetězec, Azure AD se používá k vrácení odpovědi tokenu. Zadejte hodnotu (například http://DirectorySearcher).
 6. Po dokončení registrace Azure AD přiřadí aplikace ID jedinečný aplikace. Zkopírujte hodnotu z **aplikace** kartě, protože ho budete potřebovat později.
 7. Na **nastavení** vyberte **požadovaných oprávnění**a potom vyberte **přidat**.
-8. Vyberte **Microsoft Graph** jako rozhraní API. V části **delegovaná oprávnění**, přidejte **čtení dat adresáře** oprávnění.  
-Tato akce umožní aplikaci dotaz rozhraní Graph API pro uživatele.
+8. Vyberte **Microsoft Graph** jako rozhraní API. V části **delegovaná oprávnění**, přidejte **čtení dat adresáře** oprávnění. Tato akce umožní aplikaci dotaz rozhraní Graph API pro uživatele.
 
 ## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalace a konfigurace ADAL
 Nyní když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a zadejte kód, týkající se identity. Pokud chcete povolit ADAL ke komunikaci s Azure AD, jí některé informace o registraci aplikace.
@@ -91,7 +92,7 @@ Nyní když máte aplikaci ve službě Azure AD, můžete nainstalovat ADAL a za
 
   * *Klienta* je doména klienta služby Azure AD (například contoso.onmicrosoft.com).
   * *ClientId* je ID klienta aplikace, které jste zkopírovali z portálu.
-  * *ReturnUri* je identifikátor URI, který jste zadali v portálu (například http://DirectorySearcher) přesměrování.
+  * *ReturnUri* je identifikátor URI, který jste zadali v portálu přesměrování (například http://DirectorySearcher).
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Použití ADAL získat tokeny z Azure AD
 Téměř všechny aplikace logiky ověřování spočívá v `DirectorySearcher.SearchByAlias(...)`. Všechny, které je nezbytné v projektech specifických pro platformy je předat kontextové parametr, který se `DirectorySearcher` PCL.
@@ -103,8 +104,7 @@ Téměř všechny aplikace logiky ověřování spočívá v `DirectorySearcher.
     {
     ```
 
-2. Inicializace `AuthenticationContext`, což je primární třídou adal.  
-Tato akce předá ADAL souřadnice ke komunikaci s Azure AD.
+2. Inicializace `AuthenticationContext`, což je primární třídou adal. Tato akce předá ADAL souřadnice ke komunikaci s Azure AD.
 3. Volání `AcquireTokenAsync(...)`, který přijímá `IPlatformParameters` objektu a vyvolá tok ověřování, které jsou nutné k návratu token do aplikace.
 
     ```csharp

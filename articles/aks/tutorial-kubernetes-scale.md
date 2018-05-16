@@ -3,19 +3,19 @@ title: Kurz Kubernetes v Azure – Škálování aplikace
 description: Kurz AKS – Škálování aplikace
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7b962ccd8349996cd33cc3960391cba8fce549ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>Kurz: Škálování aplikace ve službě Azure Container Service (AKS)
+# <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikace ve službě Azure Kubernetes Service (AKS)
 
 Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes ve službě AKS a nasadili jste aplikaci Azure Vote.
 

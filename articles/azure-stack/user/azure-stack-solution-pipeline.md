@@ -14,8 +14,8 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 49a80805c976e5584bb158965583a03eda68cc46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2a51169fa74384778d3351d48055d05e387d0ea6
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
@@ -71,7 +71,7 @@ Azure Stack
     - Najdete podrobné pokyny k nasazení ASDK v "[kurz: nasazení ASDK pomocí Instalační služby](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy)"
     - Můžete automatizovat řadu kroků po nasazení vaší ASDK pomocí následujícího skriptu prostředí PowerShell [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ).
 
-    > [!note]  
+    > [!Note]  
     > Instalace ASDK trvá sedm hodin k dokončení, takže Plánujte odpovídajícím způsobem.
 
  - Nasazení [služby App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) služby PaaS do protokolů Azure. 
@@ -87,7 +87,7 @@ Azure Stack
  - [Nainstalovat Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) a [Přihlaste se do služby VSTS](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
  - Připojení k projektu a [klonovat místně](https://www.visualstudio.com/docs/git/gitquickstart).
  
- > [!note]  
+ > [!Note]  
  > Budete potřebovat zásobník Azure s správné obrázky souhrnné ke spuštění (Windows Server a SQL) a mít nasazené služby App Service.
  
 ## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Příprava privátní sestavení a verze agenta pro integraci produktů Visual Studio Team Services
@@ -207,7 +207,7 @@ Místo samostatně spravovat každý agent, uspořádání agentů do fondů age
 
 3. Zkopírujte token.
     
-    > [!note]  
+    > [!Note]  
     > Získejte informace o tokenu. Nebude se zobrazovat znovu po opuštění této obrazovce. 
     
     ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\000_19.png)
@@ -268,7 +268,7 @@ Uživatelé mohou vytvářet koncové body, takže VSTO sestavení můžete nasa
 
 Nastavení hybridní CI/CD a po nasazení webové aplikace do Azure a Azure zásobníku automaticky změny do obou cloudy.
 
-> [!note]  
+> [!Note]  
 > Budete potřebovat zásobník Azure s správné obrázky souhrnné ke spuštění (Windows Server a SQL) a mít nasazené služby App Service. Najdete v dokumentaci služby App Service části "Požadavky" požadavky na Azure zásobníku operátor.
 
 ### <a name="add-code-to-vsts-project"></a>Přidejte do projektu služby VSTS kód
@@ -399,7 +399,7 @@ Visual Studio Team Services (služby VSTS) a Team Foundation Server (TFS) poskyt
 
 21. Všechny změny uložte.
 
-> [!note]  
+> [!Note]  
 > Některá nastavení pro úlohy může byla automaticky definována jako [proměnné prostředí](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) při vytváření definice verze ze šablony. Toto nastavení nelze změnit v nastavení úloh; Místo toho musíte vybrat nadřazené položky prostředí pro úpravu těchto nastavení.
 
 ## <a name="create-a-release"></a>Vytvořit verzi

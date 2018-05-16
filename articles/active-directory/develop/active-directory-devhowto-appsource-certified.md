@@ -1,25 +1,27 @@
 ---
-title: "Jak získat AppSource certifikované pro Azure Active Directory | Microsoft Docs"
-description: "Podrobnosti o tom, jak získat aplikace AppSource certifikované pro Azure Active Directory."
+title: Jak získat AppSource certifikované pro Azure Active Directory | Microsoft Docs
+description: Podrobnosti o tom, jak získat aplikace AppSource certifikované pro Azure Active Directory.
 services: active-directory
-documentationcenter: 
-author: andretms
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/03/2017
-ms.author: andret
+ms.author: celested
+ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 5601ad80e271364fec519cf34bcdc2f650f3bb92
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource certifikované pro Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) je cíl pro firmy uživatelům zjišťovat, zkuste a spravovat-obchodní aplikace SaaS (samostatný SaaS a rozšíření na existující produktů Microsoft SaaS).
@@ -35,7 +37,7 @@ Aplikace, která přijímá přihlášení od uživatelů v jakémkoli společno
 
 Chcete-li povolit více klientů ve vaší aplikaci:
 - Nastavit `Multi-Tenanted` vlastnost `Yes` na informace o registraci aplikace v [portálu Azure](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) (ve výchozím nastavení jsou aplikace vytvořené na portálu Azure nakonfigurovaný jako *jednoho klienta*)
-- Aktualizujte kód a odeslání žádosti o '`common`se koncový bod (aktualizaci koncového bodu z  *https://login.microsoftonline.com/{yourtenant}*  k  *https://login.microsoftonline.com/common* )
+- Aktualizujte kód a odeslání žádosti o '`common`se koncový bod (aktualizaci koncového bodu z *https://login.microsoftonline.com/{yourtenant}* k *https://login.microsoftonline.com/common*)
 - Pro některé platformy, jako je ASP.NET budete muset taky aktualizovat kód tak, aby přijímal více vystavitelů
 
 Další informace o víceklientské najdete v tématu: [jak se přihlásit žádné uživatele Azure Active Directory (AD) pomocí vzoru víceklientské aplikace](./active-directory-devhowto-multi-tenant-overview.md).

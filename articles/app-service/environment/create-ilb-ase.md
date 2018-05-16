@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -63,6 +63,8 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 4. Vyberte nebo vytvořte virtuální síť.
 
+    * Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. Pokud v této službě ASE chcete hostovat aplikace pro Linux, v současné době se podporuje pouze těchto 6 oblastí: **USA – západ, USA – východ, Západní Evropa, Severní Evropa, Austrálie – východ a Jihovýchodní Asie**. 
+
 5. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/25`, která nabízí 128 adres a dokáže pojmout maximální velikost služby ASE. Minimální velikost, kterou můžete vybrat, je `/28`. Podle potřeby infrastruktury se dá tato velikost rozšířit pouze na maximální počet 3 instancí.
 
     * Ve vašich plánech služby App Service dojde k překročení výchozí maximální hodnoty 100 instancí.
@@ -106,7 +108,7 @@ Pokud u položky **Typ VIP** nastavíte hodnotu **Interní**, váš název služ
 
 Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytvoříte stejným způsobem jako v běžné službě ASE.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **Web** nebo **Mobilní zařízení** nebo **Aplikace API**.
+1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **Webová aplikace**.
 
 2. Zadejte název aplikace.
 
@@ -114,9 +116,13 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 4. Vyberte nebo vytvořte skupinu prostředků.
 
-5. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
+5. Vyberte váš operační systém. 
 
-6. Vyberte **Vytvořit**. Pokud chcete, aby se aplikace zobrazovala na řídicím panelu, zaškrtněte políčko **Připnout na řídicí panel**.
+    * Pokud chcete vytvořit aplikaci pro Linux s využitím vlastního kontejneru Dockeru, můžete podle zde uvedených pokynů jednoduše použít vlastní kontejner. 
+
+6. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
+
+7. Vyberte **Vytvořit**. Pokud chcete, aby se aplikace zobrazovala na řídicím panelu, zaškrtněte políčko **Připnout na řídicí panel**.
 
     ![Vytvoření plánu služby App Service][2]
 

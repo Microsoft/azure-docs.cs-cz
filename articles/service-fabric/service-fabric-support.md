@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/26/2018
+ms.date: 5/14/2018
 ms.author: pkc
-ms.openlocfilehash: ec634dd19cf1e944c768e1d368f114f66e9c38a9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 503bc07ff904dcb5952a13f12296f14fdd1999c0
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory Azure Service Fabric
 
@@ -77,7 +77,7 @@ Tady najdete seznam verzí Service Fabric, které jsou podporovány a koncovém 
 | 5.6.* | 5.4.164.* |Menší než nebo rovna verzi 2.6 |Říjen 13,2017   |
 | 5.7.* | 5.4.164.* |Menší než nebo rovna verze 2.7 |Prosinec 15,2017  |
 | 6.0.* | 5.6.205.* |Menší než nebo rovna verze 2.8 |30,2018 dne.     | 
-| 6.1.* | 5.7.221.* |Menší než nebo rovna verze 3.0 |Června 15,2018      |
+| 6.1.* | 5.7.221.* |Menší než nebo rovna verze 3.0 |Července 15,2018      |
 | 6.2. * | 6.0.232.* |Menší než nebo rovna verze 3.1 |Aktuální verze a proto žádné datum ukončení |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Verze Preview prostředků infrastruktury služby - nepodporovaný pro použití v provozním prostředí.

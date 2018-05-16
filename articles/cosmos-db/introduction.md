@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 13c6fc8550f6b5bfac6d236a7145039d2622f0ae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3c7fc83e379bcd1ad084d20555d9a82697cb5069
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
         * [SQL API:](sql-api-introduction.md) Databázový stroj JSON bez schématu s bohatými možnostmi dotazování SQL.
         * [MongoDB API](mongodb-introduction.md): Masivně škálovatelné rozhraní *MongoDB jako služba* s využitím platformy Azure Cosmos DB. Kompatibilní se stávajícími knihovnami, ovladači, nástroji a aplikacemi MongoDB.
         * [Cassandra API](cassandra-introduction.md): Globálně distribuovatelné rozhraní Cassandra jako služba s využitím platformy Azure Cosmos DB. Kompatibilní se stávajícími knihovnami, ovladači, nástroji a aplikacemi [Apache Cassandra](https://cassandra.apache.org/).
-        * [Gremlin (Graph) API](graph-introduction.md): Plně spravovaná horizontálně škálovatelná služba databáze grafů usnadňující vytváření a spouštění aplikací, které pracují s vysoce propojenými datovými sadami podporujícími rozhraní Open Graph API (na základě [specifikace Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Gremlin API](graph-introduction.md): Plně spravovaná, horizontálně škálovatelná služba databáze grafů usnadňující vytváření a spouštění aplikací, které pracují s vysoce propojenými datovými sadami podporujícími rozhraní Open Graph API (na základě [specifikace Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
         * [Table API](table-introduction.md): Databázová služba pro páry klíč-hodnota vytvořená pro poskytování prémiových možností (například automatické indexování, garantovaná nízká latence, globální distribuce) existujícím aplikacím Azure Table Storage, a to bez nutnosti jakýchkoli změn těchto aplikací.
         * Další datové modely a rozhraní API se připravují.
 
@@ -97,7 +97,7 @@ Začínáme se službou Azure Cosmos DB s využitím jedné ze čtyř šablon Ry
 * [Začínáme s rozhraním SQL API služby Azure Cosmos DB](create-sql-api-dotnet.md)
 * [Začínáme s rozhraním MongoDB API služby Azure Cosmos DB](create-mongodb-nodejs.md)
 * [Začínáme s rozhraním Cassandra API služby Azure Cosmos DB](create-cassandra-dotnet.md)
-* [Začínáme s rozhraním Graph API služby Azure Cosmos DB](create-graph-dotnet.md)
+* [Začínáme s rozhraním Gremlin API služby Azure Cosmos DB](create-graph-dotnet.md)
 * [Začínáme s rozhraním Table API služby Azure Cosmos DB](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]

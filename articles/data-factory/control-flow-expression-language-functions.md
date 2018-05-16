@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -145,7 +145,7 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 }
 ```
   
-## <a name="functions"></a>Funkce  
+## <a name="functions"></a>Functions  
  Můžete volat funkce v rámci výrazy. Následující části obsahují informace o funkcích, které můžete použít ve výrazu.  
 
 ## <a name="string-functions"></a>Řetězcové funkce  
@@ -193,17 +193,17 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 |greaterOrEquals|První argument větší než nebo rovna hodnotě druhý vrátí hodnotu PRAVDA. Všimněte si, může být pouze hodnoty typu integer, float nebo řetězec. Například následující výraz vrací `false`:  `greaterOrEquals(10,100)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: objektu 1<br /><br /> **Popis**: vyžaduje. Objekt, který chcete zkontrolovat, zda je větší než nebo rovna hodnotě **objekt 2**.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: objekt 2<br /><br /> **Popis**: vyžaduje. Objekt, který chcete zkontrolovat, zda je menší než nebo rovna hodnotě **objektu 1**.|  
 |a|Vrátí hodnotu true Pokud jsou splněny obě parametry. Oba argumenty musí být logické hodnoty. Vrátí následující `false`:  `and(greater(1,10),equals(0,0))`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: logická hodnota 1<br /><br /> **Popis**: vyžaduje. První argument, který musí být `true`.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: logická hodnota 2<br /><br /> **Popis**: vyžaduje. Musí být druhým argumentem `true`.|  
 |nebo|Vrátí hodnotu true pokud platí některá z parametrů. Oba argumenty musí být logické hodnoty. Vrátí následující `true`:  `or(greater(1,10),equals(0,0))`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: logická hodnota 1<br /><br /> **Popis**: vyžaduje. První argument, který může být `true`.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: logická hodnota 2<br /><br /> **Popis**: vyžaduje. Může být druhým argumentem `true`.|  
-|není|Vrátí hodnotu PRAVDA, pokud je parametr `false`. Oba argumenty musí být logické hodnoty. Vrátí následující `true`:  `not(contains('200 Success','Fail'))`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: logická hodnota<br /><br /> **Popis**: vrátí hodnotu true, pokud je parametr `false`. Oba argumenty musí být logické hodnoty. Vrátí následující `true`:  `not(contains('200 Success','Fail'))`|  
-|if|Vrátí zadanou hodnotu podle Pokud výsledky výraz určený v `true` nebo `false`.  Například následující vrátí `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: výraz<br /><br /> **Popis**: vyžaduje. Logická hodnota, která určuje, která hodnota je vracenému výrazem.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: True<br /><br /> **Popis**: vyžaduje. Hodnota, která má být vrácena, pokud je výraz `true`.<br /><br /> **Parametr číslo**: 3<br /><br /> **Název**: False<br /><br /> **Popis**: vyžaduje. Hodnota, která má být vrácena, pokud je výraz `false`.|  
+|ne|Vrátí hodnotu PRAVDA, pokud je parametr `false`. Oba argumenty musí být logické hodnoty. Vrátí následující `true`:  `not(contains('200 Success','Fail'))`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: logická hodnota<br /><br /> **Popis**: vrátí hodnotu true, pokud je parametr `false`. Oba argumenty musí být logické hodnoty. Vrátí následující `true`:  `not(contains('200 Success','Fail'))`|  
+|Pokud|Vrátí zadanou hodnotu podle Pokud výsledky výraz určený v `true` nebo `false`.  Například následující vrátí `"yes"`: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: výraz<br /><br /> **Popis**: vyžaduje. Logická hodnota, která určuje, která hodnota je vracenému výrazem.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: True<br /><br /> **Popis**: vyžaduje. Hodnota, která má být vrácena, pokud je výraz `true`.<br /><br /> **Parametr číslo**: 3<br /><br /> **Název**: False<br /><br /> **Popis**: vyžaduje. Hodnota, která má být vrácena, pokud je výraz `false`.|  
   
 ## <a name="conversion-functions"></a>Převodní funkce  
  Pro převod mezi jednotlivé nativní typy v jazyce, se používají tyto funkce:  
   
 -   řetězec  
   
--   celé číslo  
+-   integer  
   
--   Plovoucí desetinná čárka  
+-   float  
   
 -   Boolean  
   
@@ -215,8 +215,8 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 |-------------------|-----------------|  
 |celá čísla|Parametr převeďte na celé číslo. Například následující výraz vrátí 100 jako číslo, nikoli řetězec:  `int('100')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: hodnota<br /><br /> **Popis**: vyžaduje. Hodnota, která je převést na celé číslo.|  
 |řetězec|Převeďte parametr na řetězec. Například následující výraz vrací `'10'`: `string(10)` můžete také převést objekt na řetězec, například pokud **foo** parametr je objekt s jednu vlastnost `bar : baz`, pak by následující Vrátí `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: hodnota<br /><br /> **Popis**: vyžaduje. Hodnota, která je převedeno na řetězec.|  
-|JSON|Převeďte parametr na hodnotu typu formátu JSON. Je opakem string(). Například následující výraz vrací `[1,2,3]` jako pole, nikoli řetězec:<br /><br /> `parse('[1,2,3]')`<br /><br /> Podobně můžete převést řetězec na objekt. Například `json('{"bar" : "baz"}')` vrátí:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, který je převést na hodnotu nativním typu.<br /><br /> Funkce json podporuje také vstup xml. Například hodnota parametru:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> jsou převedeny na následujícím kódu json:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|Plovoucí desetinná čárka|Argument parametr převeďte na číslo s plovoucí desetinnou čárkou. Například následující výraz vrací `10.333`:  `float('10.333')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: hodnota<br /><br /> **Popis**: vyžaduje. Hodnota, která je převedena na číslo s plovoucí desetinnou čárkou.|  
+|json|Převeďte parametr na hodnotu typu formátu JSON. Je opakem string(). Například následující výraz vrací `[1,2,3]` jako pole, nikoli řetězec:<br /><br /> `json('[1,2,3]')`<br /><br /> Podobně můžete převést řetězec na objekt. Například `json('{"bar" : "baz"}')` vrátí:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, který je převést na hodnotu nativním typu.<br /><br /> Funkce json podporuje také vstup xml. Například hodnota parametru:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> jsou převedeny na následujícím kódu json:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|float|Argument parametr převeďte na číslo s plovoucí desetinnou čárkou. Například následující výraz vrací `10.333`:  `float('10.333')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: hodnota<br /><br /> **Popis**: vyžaduje. Hodnota, která je převedena na číslo s plovoucí desetinnou čárkou.|  
 |BOOL|Převeďte parametr na booleovskou hodnotu. Například následující výraz vrací `false`:  `bool(0)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: hodnota<br /><br /> **Popis**: vyžaduje. Hodnota, která je převést na logickou hodnotu.|  
 |sloučení|Vrátí první objekt nesmí být nulová v předané argumenty. Poznámka: prázdný řetězec není null. Například, pokud nejsou definovány parametry 1 a 2, tento příkaz vrátí `fallback`:  `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **Parametr číslo**: 1... *n*<br /><br /> **Název**: objekt*n*<br /><br /> **Popis**: vyžaduje. Objekty, které chcete zkontrolovat `null`.|  
 |formátu Base64.|Vrátí reprezentaci base64 vstupní řetězec. Například následující výraz vrací `c29tZSBzdHJpbmc=`:  `base64('some string')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec 1<br /><br /> **Popis**: vyžaduje. Řetězec určený ke kódování do reprezentace base64.|  

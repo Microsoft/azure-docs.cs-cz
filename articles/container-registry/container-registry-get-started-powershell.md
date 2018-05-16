@@ -1,31 +1,35 @@
 ---
 title: Rychlý start – Vytvoření privátního registru Dockeru v Azure pomocí PowerShellu
-description: Rychle se naučíte, jak vytvořit privátní registr Dockeru pomocí PowerShellu.
+description: Rychle se naučíte, jak vytvořit privátní registr kontejneru Dockeru v Azure pomocí PowerShellu.
 services: container-registry
-author: neilpeterson
+author: marsma
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 03/03/2018
-ms.author: nepeters
+ms.date: 05/08/2018
+ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 3097696d85c738730e725ede84437d0e36ec6bc4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 282cd4bc9256fc483014b53626c02106d0de236a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>Rychlý start: Vytvoření služby Azure Container Registry pomocí PowerShellu
 
-Azure Container Registry je spravovaná služba registru kontejnerů Dockeru sloužící k ukládání privátních imagí kontejnerů Dockeru. Tato příručka podrobně popisuje vytvoření instance služby Azure Container Registry pomocí PowerShellu, nasdílení image kontejneru do registru a nakonec nasazení kontejneru z registru do služby Azure Container Instances (ACI).
+Azure Container Registry je spravovaná privátní služba registru kontejneru Dockeru, která se používá k vytváření, ukládání a obsluze imagí kontejnerů Dockeru. V tomto rychlém startu se naučíte vytvořit registr kontejneru Azure pomocí PowerShellu. Po vytvoření registru do něho odešlete image kontejneru a pak nasadíte kontejner z registru do Azure Container Instances (ACI).
 
-Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+## <a name="prerequisites"></a>Požadavky
 
-Je také nutné mít Docker nainstalovaný místně. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli [Macu][docker-mac] nebo systému [Windows][docker-windows] či [Linux][docker-linux].
+Tento rychlý start vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Svou nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+Je také nutné mít Docker nainstalovaný místně. Docker poskytuje balíčky pro systémy [macOS][docker-mac], [Windows][docker-windows] a [Linux][docker-linux].
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Azure Cloud Shell neobsahuje všechny požadované součásti Dockeru (démon `dockerd`), a proto pro tento rychlý start nelze Cloud Shell použít.
+
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+
+Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzureRmAccount][Connect-AzureRmAccount] a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzureRmAccount
@@ -33,97 +37,192 @@ Connect-AzureRmAccount
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Po ověření v Azure vytvořte skupinu prostředků pomocí příkazu [New-AzureRmResourceGroup][New-AzureRmResourceGroup]. Skupina prostředků je logický kontejner, ve kterém nasazujete a spravujete prostředky Azure.
 
 ```powershell
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-container-registry"></a>Vytvoření registru kontejneru
 
-Vytvořte instanci ACR pomocí příkazu [New-AzureRMContainerRegistry](/powershell/module/containerregistry/New-AzureRMContainerRegistry).
+Dále vytvořte v nové skupině prostředků registr kontejneru pomocí příkazu [New-AzureRMContainerRegistry][New-AzureRMContainerRegistry].
 
-Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry007*. Aktualizujte název na jedinečnou hodnotu.
+Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. Následující příklad vytvoří registr s názvem myContainerRegistry007. Nahraďte v následujícím příkazu název *myContainerRegistry007* a pak spuštěním tohoto příkazu vytvořte registr:
 
 ```powershell
 $registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-## <a name="log-in-to-acr"></a>Přihlášení ke službě ACR
+## <a name="log-in-to-registry"></a>Přihlášení k registru
 
-Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k instanci služby ACR. Nejprve pomocí příkazu [Get-AzureRmContainerRegistryCredential](/powershell/module/containerregistry/get-azurermcontainerregistrycredential) získejte přihlašovací údaje správce pro instanci ACR.
+Před odesíláním a vyžadováním imagí kontejnerů se musíte přihlásit k registru. Nejprve pomocí příkazu [Get-AzureRmContainerRegistryCredential][Get-AzureRmContainerRegistryCredential] získejte přihlašovací údaje správce pro registr:
 
 ```powershell
 $creds = Get-AzureRmContainerRegistryCredential -Registry $registry
 ```
 
-Potom se pomocí příkazu [docker login][docker-login] přihlaste k instanci ACR.
+Potom k přihlášení spusťte [docker login][docker-login]:
 
 ```powershell
-docker login $registry.LoginServer -u $creds.Username -p $creds.Password
+$creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
 ```
 
-Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo úspěšné). Může se zobrazit také upozornění zabezpečení doporučující použití parametru `--password-stdin`. I když je jeho použití nad rámec tohoto článku, doporučujeme řídit se osvědčeným postupem. Další informace najdete v referenčních informacích k příkazu [docker login][docker-login].
+Po úspěšném přihlášení se vrátí zpráva `Login Succeeded`:
 
-## <a name="push-image-to-acr"></a>Nasdílení image do služby ACR
+```console
+PS Azure:\> $creds.Password | docker login $registry.LoginServer -u $creds.Username --password-stdin
+Login Succeeded
+```
 
-Pokud chcete nasdílet image do služby Azure Container Registry, musíte nejprve mít nějakou image. V případě potřeby si přetáhněte předem vytvořenou image z Docker Hubu spuštěním následujícího příkazu.
+## <a name="push-image-to-registry"></a>Odeslání image do registru
+
+Teď, když jste přihlášení k registru, do něho můžete odesílat image kontejnerů. Pokud chcete získat image, kterou budete moct odeslat do registru, vyžádejte si veřejnou image [aci-helloworld][aci-helloworld-image] z Docker Hubu. Image [aci-helloworld][aci-helloworld-github] je malá aplikace Node.js, která poskytuje statickou stránku HTML, která zobrazuje logo Azure Container Instances.
 
 ```powershell
 docker pull microsoft/aci-helloworld
 ```
 
-Image musí být označená pomocí názvu přihlašovacího serveru ACR. Použijte k tomu příkaz [docker tag][docker-tag].
+Když se image vyžádá, bude výstup vypadat přibližně takto:
+
+```console
+PS Azure:\> docker pull microsoft/aci-helloworld
+Using default tag: latest
+latest: Pulling from microsoft/aci-helloworld
+88286f41530e: Pull complete
+84f3a4bf8410: Pull complete
+d0d9b2214720: Pull complete
+3be0618266da: Pull complete
+9e232827e52f: Pull complete
+b53c152f538f: Pull complete
+Digest: sha256:a3b2eb140e6881ca2c4df4d9c97bedda7468a5c17240d7c5d30a32850a2bc573
+Status: Downloaded newer image for microsoft/aci-helloworld:latest
+```
+
+Před odesláním image do registru kontejneru Azure ji musíte označit plně kvalifikovaným názvem domény vašeho registru. Plně kvalifikované názvy domén registrů kontejnerů Azure jsou ve formátu *\<název_registru\>.azurecr.io*.
+
+Zadejte do proměnné značku úplné image. Určete přihlašovací server, název úložiště (aci-helloworld) a verzi image (v1):
 
 ```powershell
 $image = $registry.LoginServer + "/aci-helloworld:v1"
+```
+
+K označení image teď použijte [docker tag][docker-tag]:
+
+```powershell
 docker tag microsoft/aci-helloworld $image
 ```
 
-Nakonec pomocí příkazu [docker push][docker-push] nasdílejte image do služby ACR.
+A nakonec k odeslání image do registru použijte [docker push][docker-push]:
 
 ```powershell
 docker push $image
 ```
 
+Když klient Dockeru odešle image, měl by výstup vypadat přibližně takto:
+
+```console
+PS Azure:\> docker push $image
+The push refers to repository [myContainerRegistry007.azurecr.io/aci-helloworld]
+31ba1ebd9cf5: Pushed
+cd07853fe8be: Pushed
+73f25249687f: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:565dba8ce20ca1a311c2d9485089d7ddc935dd50140510050345a1b0ea4ffa6e size: 1576
+```
+
+Blahopřejeme! Právě jste do registru odeslali první image kontejneru.
+
 ## <a name="deploy-image-to-aci"></a>Nasazení image do služby ACI
-Pokud chcete nasadit image jako instanci kontejneru ve službě Azure Container Instances (ACI), nejprve převeďte přihlašovací údaje registru na objekt PSCredential.
+
+Teď, když je image v registru, nasaďte kontejner přímo do Azure Container Instances, abyste viděli, jak běží v Azure.
+
+Nejprve převeďte přihlašovací údaje registru na *PSCredential*. Příkaz `New-AzureRmContainerGroup`, který použijete k vytvoření instance kontejneru, je vyžaduje v tomto formátu.
 
 ```powershell
 $secpasswd = ConvertTo-SecureString $creds.Password -AsPlainText -Force
 $pscred = New-Object System.Management.Automation.PSCredential($creds.Username, $secpasswd)
 ```
 
-Pokud chcete z registru kontejneru nasadit svou image kontejneru s 1 jádrem procesoru a 1 GB paměti, spusťte následující příkaz:
+Kromě toho popisek názvu DNS pro váš kontejner musí být jedinečný v rámci oblasti Azure, ve které se vytváří. Spuštěním následujícího příkazu zadejte do proměnné vygenerovaný název:
 
 ```powershell
-New-AzureRmContainerGroup -ResourceGroup myResourceGroup -Name mycontainer -Image $image -Cpu 1 -MemoryInGB 1 -IpAddressType public -Port 80 -RegistryCredential $pscred
+$dnsname = "aci-demo-" + (Get-Random -Maximum 9999)
 ```
 
-Z Azure Resource Manageru byste měli získat první odezvu s podrobnostmi o kontejneru. Pokud chcete monitorovat stav kontejneru a zkontrolovat, kdy je spuštěný, zopakujte příkaz [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]. Mělo by to trvat necelou minutu.
+Nakonec spuštěním příkazu [New-AzureRmContainerGroup][New-AzureRmContainerGroup] nasaďte kontejner z image ve vašem registru s jedním jádrem procesoru a pamětí o velikosti 1 GB:
+
+```powershell
+New-AzureRmContainerGroup -ResourceGroup myResourceGroup -Name "mycontainer" -Image $image -RegistryCredential $pscred -Cpu 1 -MemoryInGB 1 -DnsNameLabel $dnsname
+```
+
+Z Azure byste měli získat první odezvu s podrobnostmi o kontejneru, jeho stav by měl napřed být Čeká.
+
+```console
+PS Azure:\> New-AzureRmContainerGroup -ResourceGroup myResourceGroup -Name "mycontainer" -Image $image -RegistryCredential $pscred -Cpu 1 -MemoryInGB 1 -DnsNameLabel $dnsname
+ResourceGroupName        : myResourceGroup
+Id                       : /subscriptions/<subscriptionID>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerInstance/containerGroups/mycontainer
+Name                     : mycontainer
+Type                     : Microsoft.ContainerInstance/containerGroups
+Location                 : eastus
+Tags                     :
+ProvisioningState        : Creating
+Containers               : {mycontainer}
+ImageRegistryCredentials : {myContainerRegistry007}
+RestartPolicy            : Always
+IpAddress                : 40.117.255.198
+DnsNameLabel             : aci-demo-8751
+Fqdn                     : aci-demo-8751.eastus.azurecontainer.io
+Ports                    : {80}
+OsType                   : Linux
+Volumes                  :
+State                    : Pending
+Events                   : {}
+```
+
+Pokud chcete sledovat jeho stav a určit, kdy běží, spusťte několikrát příkaz [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]. Spuštění kontejneru by mělo trvat méně než minutu.
 
 ```powershell
 (Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).ProvisioningState
 ```
 
-Příklad výstupu: `Succeeded`
+Tady můžete vidět, že zřizování kontejneru má nejprve stav *Vytváření*. Po spuštění se stav změní na *Proběhlo úspěšně*:
 
-## <a name="view-the-application"></a>Zobrazení aplikace
-Po úspěšném nasazení do služby ACI načtěte veřejnou IP adresu kontejneru pomocí příkazu [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
-
-```powershell
-(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).IpAddress
+```console
+PS Azure:\> (Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).ProvisioningState
+Creating
+PS Azure:\> (Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).ProvisioningState
+Succeeded
 ```
 
-Příklad výstupu: `"13.72.74.222"`
+## <a name="view-running-application"></a>Zobrazení spuštěné aplikace
 
-Pokud chcete zobrazit spuštěnou aplikaci, v oblíbeném prohlížeči přejděte na tuto veřejnou IP adresu. Výsledek by měl vypadat přibližně takto:
+Po úspěšném nasazení do služby ACI a spuštění vašeho kontejneru přejděte v prohlížeči na jeho plně kvalifikovaný název domény, abyste viděli aplikaci běžící v Azure.
 
-![Aplikace Hello World v prohlížeči][qs-portal-15]
+Plně kvalifikovaný název domény pro váš kontejner získáte pomocí příkazu [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
+
+
+```powershell
+(Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).Fqdn
+```
+
+Výstupem příkazu je plně kvalifikovaný název domény vaší instance kontejneru:
+
+```console
+PS Azure:\> (Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer).Fqdn
+aci-demo-8571.eastus.azurecontainer.io
+```
+
+Když získáte plně kvalifikovaný název domény, přejděte na něj v prohlížeči:
+
+![Aplikace Hello World v prohlížeči][qs-psh-01-running-app]
+
+Blahopřejeme! Máte kontejner s běžící aplikací v Azure, která je nasazená přímo z image kontejneru ve vašem privátním registru kontejneru Azure.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, služby Azure Container Registry a všech instancí kontejnerů Azure použít příkaz [Remove-AzureRmResourceGroup][Remove-AzureRmResourceGroup].
+Až skončíte práci s prostředky, které jste vytvořili v tomto rychlém startu, odeberte skupinu prostředků, registr kontejneru a instanci kontejneru pomocí příkazu [Remove-AzureRmResourceGroup][Remove-AzureRmResourceGroup]:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -137,6 +236,8 @@ V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Containe
 > [Kurz služby Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 
 <!-- LINKS - external -->
+[aci-helloworld-github]: https://github.com/Azure-Samples/aci-helloworld
+[aci-helloworld-image]: https://hub.docker.com/r/microsoft/aci-helloworld/
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
 [docker-login]: https://docs.docker.com/engine/reference/commandline/login/
 [docker-mac]: https://docs.docker.com/docker-for-mac/
@@ -145,8 +246,14 @@ V tomto rychlém startu jste pomocí Azure CLI vytvořili službu Azure Containe
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- Links - internal -->
+[Connect-AzureRmAccount]: /powershell/module/azurerm.profile/connect-azurermaccount
 [Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
+[Get-AzureRmContainerRegistryCredential]: /powershell/module/azurerm.containerregistry/get-azurermcontainerregistrycredential
+[Get-Module]: /powershell/module/microsoft.powershell.core/get-module
+[New-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
+[New-AzureRMContainerRegistry]: /powershell/module/containerregistry/New-AzureRMContainerRegistry
+[New-AzureRmResourceGroup]: /powershell/module/azurerm.resources/new-azurermresourcegroup
 [Remove-AzureRmResourceGroup]: /powershell/module/azurerm.resources/remove-azurermresourcegroup
 
 <!-- IMAGES> -->
-[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
+[qs-psh-01-running-app]: ./media/container-registry-get-started-powershell/qs-psh-01-running-app.png

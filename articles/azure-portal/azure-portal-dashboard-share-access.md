@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: 75f06e49aa317fc887831a9e04861d9a7989bdb2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 17d57a809bcbd4c299675c07756b55423a160ed1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílet řídicí panely Azure pomocí řízení přístupu na základě Role
 Po dokončení konfigurace na řídicí panel, můžete ji publikovat a sdílet s jinými uživateli ve vaší organizaci. Můžete povolit zobrazení řídicího panelu pomocí služby Azure [řízení přístupu na základě Role](../role-based-access-control/role-assignments-portal.md). Přiřadíte roli uživatele nebo skupinu uživatelů, a tato role definuje, zda uživatelům, můžete zobrazit nebo upravit publikované řídicího panelu. 
@@ -49,7 +49,7 @@ Předpokládejme, že dokončení konfigurace řídicí panel, který chcete sd�
 1. Na řídicím panelu, vyberte **sdílené složky**.
    
      ![Vyberte sdílenou složku](./media/azure-portal-dashboard-share-access/select-share.png)
-2. Před udělením přístupu, musíte publikovat řídicího panelu. Ve výchozím nastavení, řídicí panel bude publikována do skupiny prostředků s názvem **řídicí panely**. Vyberte **publikování**.
+2. Před udělením přístupu, musíte publikovat řídicího panelu. Ve výchozím nastavení, řídicí panel bude publikována do skupiny prostředků s názvem **řídicí panely**. Vyberte **Publikovat**.
    
      ![publish](./media/azure-portal-dashboard-share-access/publish.png)
 

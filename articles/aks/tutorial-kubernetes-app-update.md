@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df118a2b5bd8e31bd3fe6101d1d3f631092b6f24
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Container Service (AKS)
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
-Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je přitom fázovaná, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení. 
+Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je přitom fázovaná, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení.
 
 V tomto kurzu, který je šestou částí osmidílné série, se aktualizuje aplikace Azure Vote. Úlohy, které provedete:
 
@@ -31,15 +31,15 @@ V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clus
 
 ## <a name="before-you-begin"></a>Než začnete
 
-V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes. 
+V předchozích kurzech se aplikace zabalila do image kontejneru, tato image se odeslala do Azure Container Registry a vytvořil se cluster Kubernetes. Aplikace se potom spustila v tomto clusteru Kubernetes.
 
 Naklonovalo se také úložiště aplikace, které zahrnuje zdrojový kód aplikace, a předem se vytvořil soubor nástroje Docker Compose použitý v tomto kurzu. Ověřte, že jste vytvořili klon úložiště a že jste změnili adresáře na klonovaný adresář. Uvnitř je adresář nazvaný `azure-vote` a soubor s názvem `docker-compose.yaml`.
 
-Pokud jste tyto kroky nedokončili a chcete je sledovat, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app]. 
+Pokud jste tyto kroky nedokončili a chcete je sledovat, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
 ## <a name="update-application"></a>Aktualizace aplikace
 
-V tomto kurzu dojde ke změně aplikace a aktualizovaná aplikace se nasadí do clusteru Kubernetes. 
+V tomto kurzu dojde ke změně aplikace a aktualizovaná aplikace se nasadí do clusteru Kubernetes.
 
 Zdrojový kód aplikace najdete v adresáři `azure-vote`. Otevřete `config_file.cfg` soubor pomocí libovolného textového editoru nebo editoru kódu. V tomto příkladu se používá `vi`.
 
@@ -69,13 +69,13 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Testování aplikace v místním prostředí
 
-Přejděte na http://localhost:8080 a prohlédněte si aktualizovanou aplikaci.
+Přejděte na adresu http://localhost:8080 a prohlédněte si aktualizovanou aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>Označení a nahrání imagí
 
-Označte image `azure-vote-front` pomocí názvu loginServer registru kontejneru. 
+Označte image `azure-vote-front` pomocí názvu loginServer registru kontejneru.
 
 Název přihlašovacího serveru získáte pomocí příkazu [az acr list](/cli/azure/acr#az_acr_list).
 

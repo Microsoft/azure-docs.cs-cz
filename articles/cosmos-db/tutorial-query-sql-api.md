@@ -1,5 +1,5 @@
 ---
-title: Jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB? | Dokumenty Microsoft
+title: Jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB? | Microsoft Docs
 description: Zjistěte, jak provádět dotazy pomocí jazyka SQL ve službě Azure Cosmos DB.
 services: cosmos-db
 documentationcenter: ''
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 74ea4753e36da7686ac88d4426391a38dac0b436
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 131296d5219dffb2c4d7602b61b3c69b390e211e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -72,7 +72,7 @@ Další informace o dotazech SQL najdete tady:
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Vytvořte účet a kolekci dokončením [5minutového rychlého startu](create-mongodb-nodejs.md) nebo [kurzu pro vývojáře](tutorial-develop-mongodb.md).
+V tomto kurzu se předpokládá, že máte účet a kolekci Azure Cosmos DB. Něco z toho nemáte? Dokončete [pětiminutový rychlý start](create-mongodb-nodejs.md).
 
 ## <a name="example-query-1"></a>Příklad dotazu 1
 

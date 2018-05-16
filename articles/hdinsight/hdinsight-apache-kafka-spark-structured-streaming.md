@@ -1,6 +1,6 @@
 ---
-title: Strukturované streamování Apache Sparku s využitím systému Kafka – Azure HDInsight | Microsoft Docs
-description: Zjistěte, jak pomocí streamování Apache Sparku (DStream) přenášet data do nebo ze systému Apache Kafka. V tomto příkladu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
+title: 'Kurz: Strukturované streamování Apache Sparku s využitím systému Kafka – Azure HDInsight | Microsoft Docs'
+description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -10,28 +10,107 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/04/2018
 ms.author: larryfr
-ms.openlocfilehash: 49c13bbea537d7de60ecf509bc28675191c0b34d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Použití strukturovaného streamování Sparku se systémem Kafka ve službě HDInsight
+# <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Sparku se systémem Kafka ve službě HDInsight
 
-Zjistěte, jak pomocí strukturovaného streamování Sparku číst data ze systému Apache Kafka ve službě Azure HDInsight.
+V tomto kurzu se dozvíte, jak pomocí strukturovaného streamování Sparku číst a zapisovat data s využitím systému Apache Kafka ve službě Azure HDInsight.
 
-Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. Další informace o strukturovaném streamování najdete v [průvodci programováním pro strukturované streamování](http://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) na webu Apache.org.
+Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. 
+
+V tomto kurzu se naučíte:
+
+> [!div class="checklist"]
+> * Strukturované streamování s využitím systému Kafka
+> * Vytvoření clusterů Kafka a Spark
+> * Nahrání poznámkového bloku do Sparku
+> * Použití poznámkového bloku
+> * Vyčištění prostředků
+
+Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit, abyste se vyhnuli nadbytečným poplatkům.
+
+## <a name="prerequisites"></a>Požadavky
+
+* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématu [Načítání dat a spouštění dotazů s využitím Sparku ve službě HDInsight](spark/apache-spark-load-data-run-query.md).
+
+* Znalost programovacího jazyku [Scala](https://www.scala-lang.org/). Kód použitý v tomto kurzu je napsaný v jazyce Scala.
+
+* Znalost vytváření témat Kafka. Další informace najdete v dokumentu [Rychlý start k systému Kafka ve službě HDInsight](kafka/apache-kafka-get-started.md).
 
 > [!IMPORTANT]
-> V tomto příkladu se používá Spark 2.2 ve službě HDInsight 3.6.
+> Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
+> 
+> Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
 >
-> Pomocí kroků v tomto dokumentu se vytvoří skupina prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
->
-> Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit, abyste se vyhnuli nadbytečným poplatkům.
+> Další informace o použití služby HDInsight ve virtuální síti najdete v dokumentu [Rozšíření služby HDInsight pomocí virtuální sítě](hdinsight-extend-hadoop-virtual-network.md).
+
+## <a name="structured-streaming-with-kafka"></a>Strukturované streamování s využitím systému Kafka
+
+Strukturované streamování Sparku je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete psát streamovací dotazy stejným způsobem jako dávkové dotazy.
+
+Následující fragmenty kódu ukazují čtení ze systému Kafka a uložení do souboru. První z nich je dávková operace, zatímco druhá je operace streamování:
+
+```scala
+// Read a batch from Kafka
+val kafkaDF = spark.read.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data and write to file
+kafkaDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .write
+                .format("parquet")
+                .option("path","/example/batchtripdata")
+                .option("checkpointLocation", "/batchcheckpoint")
+                .save()
+```
+
+```scala
+// Stream from Kafka
+val kafkaStreamDF = spark.readStream.format("kafka")
+                .option("kafka.bootstrap.servers", kafkaBrokers)
+                .option("subscribe", kafkaTopic)
+                .option("startingOffsets", "earliest")
+                .load()
+// Select data from the stream and write to file
+kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
+                .writeStream
+                .format("parquet")
+                .option("path","/example/streamingtripdata")
+                .option("checkpointLocation", "/streamcheckpoint")
+                .start.awaitTermination(30000)
+```
+
+V obou fragmentech kódu se data čtou ze systému Kafka a zapisují do souboru. Rozdíly mezi příklady jsou následující:
+
+| Batch | Streamování |
+| --- | --- |
+| `read` | `readStream` |
+| `write` | `writeStream` |
+| `save` | `start` |
+
+V operaci streamování se také používá `awaitTermination(30000)` a díky tomu se stream zastaví za 30 000 ms. 
+
+Pokud chcete použít strukturované streamování s využitím systému Kafka, váš projekt musí obsahovat závislost na balíčku `org.apache.spark : spark-sql-kafka-0-10_2.11`. Verze tohoto balíčku musí odpovídat verzi Sparku ve službě HDInsight. Pro Spark 2.2.0 (k dispozici ve službě HDInsight 3.6) můžete najít informace o závislostech pro různé typy projektů na adrese [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar).
+
+Pro Jupyter Notebook, který je součástí tohoto kurzu, načte tuto závislost balíčku následující buňka:
+
+```
+%%configure -f
+{
+    "conf": {
+        "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
+        "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+    }
+}
+```
 
 ## <a name="create-the-clusters"></a>Vytvoření clusterů
 
@@ -44,7 +123,7 @@ Následující diagram znázorňuje tok komunikace mezi Sparkem a systémem Kafk
 > [!NOTE]
 > Komunikace služby Kafka je omezená na virtuální síť. Další služby v clusteru, jako jsou SSH a Ambari, jsou přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
-Pro usnadnění práce se v následujících krocích k vytvoření clusterů Kafka a Spark ve virtuální síti používá šablona Azure Resource Manageru.
+K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafka a Spark v rámci této sítě použijte následující postup:
 
 1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu na webu Azure Portal.
     
@@ -59,7 +138,7 @@ Pro usnadnění práce se v následujících krocích k vytvoření clusterů Ka
     * Virtuální síť Azure obsahující clustery HDInsight.
 
     > [!IMPORTANT]
-    > Poznámkový blok strukturovaného streamování použitý v tomto příkladu vyžaduje Spark ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
+    > Poznámkový blok strukturovaného streamování použitý v tomto kurzu vyžaduje Spark 2.2.0 ve službě HDInsight 3.6. Pokud používáte starší verzi Sparku ve službě HDInsight, při použití poznámkového bloku se zobrazí chyby.
 
 2. Pomocí následujících informací vyplňte položky v části **Přizpůsobená šablona**:
 
@@ -77,18 +156,18 @@ Pro usnadnění práce se v následujících krocích k vytvoření clusterů Ka
    
     ![Snímek obrazovky přizpůsobené šablony](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
+3. Přečtěte si **Podmínky a ujednání** a pak vyberte **Souhlasím s podmínkami a ujednáními uvedenými nahoře**.
+
 4. Nakonec zaškrtněte políčko **Připnout na řídicí panel** a vyberte **Koupit**. 
 
 > [!NOTE]
 > Vytvoření clusterů může trvat až 20 minut.
 
-## <a name="get-the-notebook"></a>Získání poznámkového bloku
-
-Kód příkladu popisovaného v tomto dokumentu je dostupný na adrese [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
-
-## <a name="upload-the-notebooks"></a>Nahrání poznámkových bloků
+## <a name="upload-the-notebook"></a>Nahrání poznámkového bloku
 
 Pokud chcete nahrát poznámkový blok z projektu do clusteru Spark ve službě HDInsight, postupujte následovně:
+
+1. Stáhněte projekt z adresy [https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming](https://github.com/Azure-Samples/hdinsight-spark-kafka-structured-streaming).
 
 1. Ve webovém prohlížeči se připojte k poznámkovému bloku Jupyter na svém clusteru Spark. V následující adrese URL nahraďte `CLUSTERNAME` názvem svého clusteru __Spark__:
 
@@ -128,7 +207,7 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 
 ## <a name="next-steps"></a>Další kroky
 
-Když už víte, jak používat strukturované streamování Sparku, přečtěte si následující dokumenty, kde najdete další informace o práci se Sparkem a systémem Kafka:
+V tomto kurzu jste zjistili, jak pomocí strukturovaného streamování Sparku zapisovat a číst data ze systému Kafka ve službě HDInsight. Na následujícím odkazu zjistíte, jak používat Storm se systémem Kafka.
 
-* [Jak používat streamování Sparku (DStream) s využitím systému Kafka](hdinsight-apache-spark-with-kafka.md)
-* [Začínáme s poznámkovými bloky Jupyter a Sparkem ve službě HDInsight](spark/apache-spark-jupyter-spark-sql.md)
+> [!div class="nextstepaction"]
+> [Použití Apache Stormu se systémem Kafka](hdinsight-apache-storm-with-kafka.md)

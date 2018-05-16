@@ -11,26 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6be6bb3b6b75b278a7c28307d93d6273c5bb18d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Úvod do služby App Service Environment #
  
 ## <a name="overview"></a>Přehled ##
 
-Azure App Service Environment je funkce služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service ve velkém měřítku. Tato funkce může hostovat vaše webové aplikace, [mobilní aplikace][mobileapps], aplikace rozhraní API a [funkce][Functions].
+Azure App Service Environment je funkce služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service ve velkém měřítku. Tato funkce umožňuje hostovat vaše:
+
+* Webové aplikace pro Windows
+* Webové aplikace pro Linux (ve verzi Preview)
+* Kontejnery Dockeru (ve verzi Preview)
+* Mobilní aplikace
+* Functions
 
 Služby App Service Environment (ASE) jsou vhodné pro úlohy aplikací, které mají tyto požadavky:
 
-- Velmi velké měřítko
-- Izolace a bezpečný přístup k síti
-- Využití velkého množství paměti
+* Velmi velké měřítko
+* Izolace a bezpečný přístup k síti
+* Využití velkého množství paměti
 
 Zákazníci můžou vytvořit víc služeb ASE v jedné oblasti Azure nebo v několika oblastech Azure. Díky této flexibilitě jsou služby ASE ideální pro horizontální škálování nestavových aplikačních vrstev s podporou náročných úloh RPS.
 
@@ -39,7 +45,7 @@ Služby ASE jsou izolované tak, aby spouštěly jenom aplikace jednoho zákazn�
 * Služby ASE umožňují hostování aplikací ve velkém měřítku se zabezpečeným přístupem k síti. Další informace najdete v [podrobných informacích z konference AzureCon](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) o službách ASE.
 * K horizontálnímu škálování se dá použít víc služeb ASE. Další informace najdete v článku [Nastavení náročnosti geografické distribuce aplikace](app-service-app-service-environment-geo-distributed-scale.md).
 * Služby ASE se dají použít ke konfiguraci architektury zabezpečení, jak je patrné z podrobných informací z konference AzureCon. Informace o způsobu konfigurace architektury zabezpečení v podrobných informacích z konference AzureCon najdete v [článku o implementaci vrstvené architektury zabezpečení](app-service-app-service-environment-layered-security.md) se službami App Service Environment.
-* U aplikací využívajících služby ASE mají je přístup chráněný branami v podobě upstreamovými zařízeními, jako jsou brány firewall webových aplikací (WAF). Další informace najdete v článku [Konfigurace brány WAF pro služby App Service Environment](app-service-app-service-environment-web-application-firewall.md).
+* U aplikací využívajících služby ASE mají je přístup chráněný branami v podobě upstreamovými zařízeními, jako jsou brány firewall webových aplikací (WAF). Další informace najdete v tématu [Integrace služby App Service Environment s interním nástrojem pro vyrovnávání zatížení se službou Azure Application Gateway][AppGW].
 
 ## <a name="dedicated-environment"></a>Vyhrazené prostředí ##
 
@@ -59,7 +65,7 @@ Za službu ASE se účtuje pevný měsíční poplatek za infrastrukturu, který
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě ##
 
-Služba ASE se dá vytvořit jenom ve virtuální síti Azure Resource Manager. Další informace o virtuálních sítí Azure najdete v článku [Virtuální sítě Azure – nejčastější dotazy](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Služba ASE vždycky existuje ve virtuální síti, přesněji řečeno v určité podsíti virtuální sítě. Pomocí funkcí zabezpečení virtuálních sítí můžete řídit příchozí a odchozí síťovou komunikaci svých aplikací.
+Funkce ASE představuje nasazení služby Azure App Service přímo do virtuální sítě Azure Resource Manageru zákazníka. Další informace o virtuálních sítí Azure najdete v článku [Virtuální sítě Azure – nejčastější dotazy](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Služba ASE vždycky existuje ve virtuální síti, přesněji řečeno v určité podsíti virtuální sítě. Pomocí funkcí zabezpečení virtuálních sítí můžete řídit příchozí a odchozí síťovou komunikaci svých aplikací.
 
 Služba ASE může být obrácená buď na internet a mít veřejnou IP adresu, nebo do interního prostředí a mít jenom adresu interního nástroje pro vyrovnávání zatížení Azure.
 

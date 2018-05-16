@@ -16,11 +16,11 @@ ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: a6ed74de159593003e8a18daefce2eb9a5945481
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 528832473d68fa90e6383873b1e0491f5abe09c7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní SQL API
 
@@ -155,7 +155,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 2500 });
 ```
 
-Tato metoda provádí volání rozhraní REST API do služby Azure Cosmos DB a ta na základě požadované propustnosti zřídí několik oddílů. S ohledem na měnící se požadavky na výkon můžete propustnost kolekce měnit pomocí sady SDK nebo webu [Azure Portal](set-throughput.md).
+Tato metoda provádí volání rozhraní REST API do služby Azure Cosmos DB a ta na základě požadované propustnosti zřídí několik oddílů. S ohledem na měnící se požadavky na výkon můžete propustnost kolekce nebo sady kolekcí měnit pomocí sady SDK nebo webu [Azure Portal](set-throughput.md).
 
 ## <a id="CreateDoc"></a>Vytvoření dokumentů JSON
 Teď do služby Azure Cosmos DB přidáme několik dokumentů JSON. [Dokument](sql-api-resources.md#documents) je možné vytvořit pomocí metody [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Tato ukázková třída obsahuje čtení zařízení a volání metody CreateDocumentAsync, která vloží nové čtení zařízení do kolekce.

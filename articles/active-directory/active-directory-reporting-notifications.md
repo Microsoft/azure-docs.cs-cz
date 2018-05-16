@@ -1,11 +1,11 @@
 ---
-title: "Oznámení vytváření sestav Azure Active Directory"
-description: "Jak používat Azure Active Directory, vytváření sestav oznámení pro podezřelé přihlášení in."
+title: Oznámení vytváření sestav Azure Active Directory
+description: Jak používat Azure Active Directory, vytváření sestav oznámení pro podezřelé přihlášení in.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ae6d4b0e-5931-4cb3-98bf-9be91b381c92
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c279b923ed4e63d810861c579dd54b3a2b7f415e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Oznámení vytváření sestav Azure Active Directory
 ## <a name="what-reports-generate-email-notifications"></a>Jaké sestavy generovat e-mailových oznámení
@@ -39,7 +39,7 @@ E-mail je odeslán, pokud 10 nové nestandardní přihlašovací aktivity, ke kt
 Když kliknete na odkaz, budete přesměrováni na stránku sestavy v rámci portálu Azure. Chcete-li získat přístup k sestavě, musíte nastavit na obojí:
 
 * Na správce nebo spolusprávce předplatného Azure
-* Globální správce v adresáři a přiřadit licenci služby Active Directory Premium. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md).
+* Globální správce v adresáři a přiřadit licenci služby Active Directory Premium. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-whatis.md).
 
 ## <a name="can-i-turn-off-these-emails"></a>Můžete vypnout těchto e-mailů?
 Ano, chcete-li vypnout oznámení související s neobvyklých přihlášení v rámci portálu Azure, klikněte na tlačítko **konfigurace**a potom vyberte **zakázané** pod **oznámení** části.

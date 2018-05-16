@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4f899e3f45174aef8274810e184cc374bcca2c50
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam každému dokumentu zapsána o různých funkcích týkající se aplikace v Azure Active Directory (Azure AD).
@@ -79,9 +79,9 @@ Pokud máte aplikace ve vaší privátní sítě, které je nutné mít přístu
 | Článek Průvodce |  |
 |:---:| --- |
 | Přehled proxy aplikace služby Azure AD a jak to funguje |[Poskytuje zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md) |
-| Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](active-directory-application-proxy-silent-installation.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak používat vlastní název domény](manage-apps/application-proxy-configure-custom-domain.md) |
-| Postup povolení jednoho přihlášení a podmíněného přístupu pro aplikace publikované s Proxy aplikace |[Jednotné přihlášení pomocí Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Podmíněný přístup a Proxy aplikací](application-proxy-enable-remote-access-sharepoint.md) |
-| Pokyny k použití aplikace Proxy pro tyto scénáře |[Jak podporovat nativní klientské aplikace](active-directory-application-proxy-native-client.md)<br /><br />[Jak podporovat deklaracemi identity aplikace](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Jak podporovat aplikace, které jsou publikovány v samostatných sítí a umístění](active-directory-application-proxy-connectors-azure-portal.md) |
+| Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak používat vlastní název domény](manage-apps/application-proxy-configure-custom-domain.md) |
+| Postup povolení jednoho přihlášení a podmíněného přístupu pro aplikace publikované s Proxy aplikace |[Jednotné přihlášení pomocí Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Podmíněný přístup a Proxy aplikací](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Pokyny k použití aplikace Proxy pro tyto scénáře |[Jak podporovat nativní klientské aplikace](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Jak podporovat deklaracemi identity aplikace](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Jak podporovat aplikace, které jsou publikovány v samostatných sítí a umístění](manage-apps/application-proxy-connector-groups.md) |
 | Průvodce řešením potíží pro Proxy aplikace |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
 
 Proxy aplikace je k dispozici pro všechny edice Azure AD pro až deset aplikace na uživatele. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) podporuje neomezená aplikace. Pokud má vaše organizace [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) nebo [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), pak můžete [použití skupin pro přiřazení přístupu k aplikacím](#managing-access-to-applications).
@@ -108,7 +108,7 @@ Jakmile nastavíte jednotné přihlašování k aplikacím a prostředkům, mů�
 | Článek Průvodce |  |
 |:---:| --- |
 | Úvod do funkce podmíněného přístupu nabízí přes Azure AD, Office 365 a Intune |[Řízení rizik pomocí podmíněného přístupu](active-directory-conditional-access-azure-portal.md) |
-| Postup povolení podmíněného přístupu pro následující typy prostředků |[Podmíněný přístup pro aplikace SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Podmíněný přístup pro služby Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Podmíněný přístup pro místní aplikace](active-directory-conditional-access-azure-portal.md)<br /><br />[Podmíněný přístup pro místní aplikace publikované prostřednictvím Proxy aplikace Azure AD](application-proxy-enable-remote-access-sharepoint.md) |
+| Postup povolení podmíněného přístupu pro následující typy prostředků |[Podmíněný přístup pro aplikace SaaS](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Podmíněný přístup pro služby Office 365](active-directory-conditional-access-device-policies.md)<br /><br />[Podmíněný přístup pro místní aplikace](active-directory-conditional-access-azure-portal.md)<br /><br />[Podmíněný přístup pro místní aplikace publikované prostřednictvím Proxy aplikace Azure AD](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Postup registrace zařízení s Azure Active Directory, chcete-li povolit zásady podmíněného přístupu podle zařízení |[Přehled registrace zařízení služby Azure Active Directory](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Postup povolení automatické registrace zařízení pro doménu připojené zařízení s Windows](active-directory-conditional-access-automatic-device-registration.md)<br />– [Kroky pro Windows 8.1 zařízení](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Zařízení kroky pro systém Windows 7](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | Jak používat aplikaci Microsoft Authenticator pro dvoustupňové ověření | [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |

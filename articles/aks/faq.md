@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: nepeters
-ms.openlocfilehash: d03f906f0cf4d22772388a589424877d8bb2f8ce
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes služby (AKS)
 
@@ -60,7 +60,7 @@ Ne, RBAC v AKS aktuálně nepodporuje, ale bude brzy k dispozici.
 
 ## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžete nasadit AKS do mé existující virtuální síť?
 
-Ne, to ještě není k dispozici ale bude brzy k dispozici.
+Ano, je tato možnost podporována prostřednictvím [Pokročilá síťové funkce](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/aks/networking-overview.md).
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault integrovat AKS?
 
@@ -68,7 +68,7 @@ Ne, není ale je plánovaná této integrace. Do té doby, vyzkoušejte následu
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžete spustit systém Windows Server kontejnery na AKS?
 
-Ne, AKS neposkytuje aktuálně uzlů agent systémem Windows Server, proto nelze spustit systém Windows Server kontejnery. Pokud potřebujete spustit systém Windows Server kontejnery na Kubernetes v Azure, přejděte na téma [dokumentace pro modul služby acs](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
+Pokud chcete spustit Windows Server kontejnery, musíte spustit uzly se systémem Windows Server. Jsou nyní v systému Windows na serveru uzly [privátní Preview verzi](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/). Pokud potřebujete spustit systém Windows Server kontejnery na Kubernetes v Azure mimo ve verzi preview, přejděte na téma [dokumentace pro modul služby acs](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md).
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?
 

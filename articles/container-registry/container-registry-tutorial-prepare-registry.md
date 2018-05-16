@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 10/26/2017
+ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 2e91a92d34131d0b35cfb7b0bfdca99637924552
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -31,17 +31,13 @@ V dalších kurzech nasadíte kontejner ze svého privátního registru do webov
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Tento kurz vyžaduje použití Azure CLI verze 2.0.20 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Tento kurz vyžaduje místní instalaci Azure CLI (verze 2.0.31 nebo novější). Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Dockeru. V případě potřeby najdete základní informace o kontejnerech v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem).
+Měli byste znát klíčové koncepty Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Docker CLI. Základní informace o kontejnerech najdete v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem).
 
-K dokončení tohoto kurzu potřebujete vývojové prostředí pro Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru na jakémkoli systému [Mac](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) nebo [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
+K dokončení tohoto kurzu potřebujete místní instalaci Dockeru. Docker poskytuje pokyny k instalaci pro systémy [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) a [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Proto doporučujeme místní instalaci Azure CLI a vývojového prostředí pro Docker.
-
-> [!IMPORTANT]
-> Funkce geografické replikace ve službě Azure Container Registry je aktuálně ve verzi **Preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
->
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
@@ -91,9 +87,9 @@ Po dokončení replikace se na portálu u obou oblastí zobrazí stav *Připrave
 
 ## <a name="container-registry-login"></a>Přihlášení k registru kontejneru
 
-Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do instance služby ACR se k ní musíte přihlásit. Pokud máte [skladovou položku Basic, Standard nebo Premium](container-registry-skus.md), můžete se ověřit pomocí vlastní identity Azure.
+Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do instance služby ACR se k ní musíte přihlásit.
 
-Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. Nahraďte `<acrName>` názvem registru, který jste vytvořili v předchozích krocích.
+Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
 
 ```azurecli
 az acr login --name <acrName>
@@ -103,7 +99,7 @@ Příkaz po dokončení vrátí zprávu `Login Succeeded` (Přihlášení bylo �
 
 ## <a name="get-application-code"></a>Získání kódu aplikace
 
-Ukázka v tomto kurzu zahrnuje malou webovou aplikaci vytvořenou v [ASP.NET Core](http://dot.net). Aplikace slouží jako stránka HTML zobrazující oblast, ze které služba Azure Container Registry nasadila image.
+Ukázka v tomto kurzu zahrnuje malou webovou aplikaci vytvořenou v [ASP.NET Core][aspnet-core]. Aplikace slouží jako stránka HTML zobrazující oblast, ze které služba Azure Container Registry nasadila image.
 
 ![Ukázková aplikace zobrazená v prohlížeči][tut-app-01]
 
@@ -114,11 +110,13 @@ git clone https://github.com/Azure-Samples/acr-helloworld.git
 cd acr-helloworld
 ```
 
+Pokud nemáte nainstalovaný `git`, můžete si [stáhnout archiv ZIP][acr-helloworld-zip] přímo z GitHubu.
+
 ## <a name="update-dockerfile"></a>Aktualizace souboru Dockerfile
 
-Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore](https://store.docker.com/community/images/microsoft/aspnetcore), zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build](https://store.docker.com/community/images/microsoft/aspnetcore-build) a nakonec sestaví optimalizovanou image aspnetcore.
+Soubor Dockerfile, který je součástí ukázky, ukazuje postup sestavení kontejneru. Spustí se z oficiální image [aspnetcore][dockerhub-aspnetcore], zkopíruje soubory aplikace do kontejneru, nainstaluje závislosti, zkompiluje výstup pomocí oficiální image [aspnetcore-build][dockerhub-aspnetcore-build] a nakonec sestaví optimalizovanou image aspnetcore.
 
-Soubor Dockerfile se v naklonovaném zdroji nachází v umístění `./AcrHelloworld/Dockerfile`.
+Soubor [Dockerfile][dockerfile] se v naklonovaném zdroji nachází v umístění `./AcrHelloworld/Dockerfile`.
 
 ```dockerfile
 FROM microsoft/aspnetcore:2.0 AS base
@@ -146,9 +144,9 @@ COPY --from=publish /app .
 ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
 ```
 
-Aplikace v imagi *acr-helloworld* se pokouší určit oblast, ze které se nasadil její kontejner, dotazováním serveru DNS na informace o přihlašovacím serveru registru. Adresu URL přihlašovacího serveru vašeho registru musíte zadat do proměnné prostředí `DOCKER_REGISTRY` v souboru Dockerfile.
+Aplikace v imagi *acr-helloworld* se pokouší určit oblast, ze které se nasadil její kontejner, dotazováním serveru DNS na informace o přihlašovacím serveru registru. Plně kvalifikovaný název domény přihlašovacího serveru vašeho registru musíte zadat do proměnné prostředí `DOCKER_REGISTRY` v souboru Dockerfile.
 
-Nejprve získejte adresu URL přihlašovacího serveru registru pomocí příkazu `az acr show`. Nahraďte `<acrName>` názvem registru, který jste vytvořili v předchozích krocích.
+Nejprve získejte přihlašovací server registru pomocí příkazu `az acr show`. Nahraďte `<acrName>` názvem registru, který jste vytvořili v předchozích krocích.
 
 ```azurecli
 az acr show --name <acrName> --query "{acrLoginServer:loginServer}" --output table
@@ -162,7 +160,7 @@ AcrLoginServer
 uniqueregistryname.azurecr.io
 ```
 
-Pak aktualizujte řádek `DOCKER_REGISTRY` s použitím adresy URL přihlašovacího serveru vašeho registru. V tomto příkladu aktualizujeme řádek tak, aby odrážel název našeho ukázkového registru *uniqueregistryname*:
+Pak aktualizujte řádek `ENV DOCKER_REGISTRY` s použitím plně kvalifikovaného názvu domény přihlašovacího serveru vašeho registru. Tento příklad odráží název registru, *uniqueregistryname*:
 
 ```dockerfile
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
@@ -170,7 +168,7 @@ ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
 
 ## <a name="build-container-image"></a>Sestavení image kontejneru
 
-Když jste aktualizovali v souboru Dockerfile adresu URL vašeho registru, můžete teď pomocí příkazu `docker build` vytvořit image kontejneru. Spuštěním následujícího příkazu, ve kterém opět nahradíte `<acrName>` názvem vašeho registru, sestavte image a označte ji adresou URL vašeho privátního registru:
+Když jste aktualizovali v souboru Dockerfile plně kvalifikovaný název domény přihlašovacího serveru vašeho registru, můžete teď pomocí příkazu `docker build` vytvořit image kontejneru. Spuštěním následujícího příkazu, ve kterém opět nahradíte `<acrName>` názvem vašeho registru, sestavte image a označte ji adresou URL vašeho privátního registru:
 
 ```bash
 docker build . -f ./AcrHelloworld/Dockerfile -t <acrName>.azurecr.io/acr-helloworld:v1
@@ -183,7 +181,9 @@ Sending build context to Docker daemon  523.8kB
 Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
 2.0: Pulling from microsoft/aspnetcore
 3e17c6eae66c: Pulling fs layer
-...
+
+[...]
+
 Step 18/18 : ENTRYPOINT dotnet AcrHelloworld.dll
  ---> Running in 6906d98c47a1
  ---> c9ca1763cfb1
@@ -192,23 +192,18 @@ Successfully built c9ca1763cfb1
 Successfully tagged uniqueregistryname.azurecr.io/acr-helloworld:v1
 ```
 
-Pomocí příkazu `docker images` zobrazte sestavenou image:
+Pomocí `docker images` zobrazíte sestavené a označené image:
 
-```bash
-docker images
-```
-
-Výstup:
-
-```bash
+```console
+$ docker images
 REPOSITORY                                      TAG    IMAGE ID        CREATED               SIZE
 uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a minute ago    284MB
-...
+[...]
 ```
 
 ## <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Nakonec pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do svého registru. Nahraďte `<acrName>` názvem vašeho registru.
+Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do svého registru. Nahraďte `<acrName>` názvem vašeho registru.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1
@@ -216,9 +211,8 @@ docker push <acrName>.azurecr.io/acr-helloworld:v1
 
 Vzhledem k tomu, že jste pro registr nakonfigurovali geografickou replikaci, vaše image se pomocí tohoto jediného příkazu `docker push` automaticky replikuje do oblasti *USA – západ* i *USA – východ*.
 
-Výstup:
-
-```bash
+```console
+$ docker push uniqueregistryname.azurecr.io/acr-helloworld:v1
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
 cd54739c444b: Pushed
 d6803756744a: Pushed
@@ -232,15 +226,9 @@ v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili privátní a geograficky replikovaný registr kontejnerů, sestavili jste image kontejneru a pak jste image nasdíleli do svého registru. Podle kroků v tomto kurzu jste:
+V tomto kurzu jste vytvořili privátní a geograficky replikovaný registr kontejnerů, sestavili jste image kontejneru a pak jste image nasdíleli do svého registru.
 
-> [!div class="checklist"]
-> * Vytvořili geograficky replikovaný registr kontejnerů Azure
-> * Naklonovali zdrojový kód aplikace z GitHubu
-> * Sestavili image kontejneru Dockeru ze zdroje aplikace
-> * Nasdíleli image kontejneru do svého registru
-
-Přejděte k dalšímu kurzu, kde zjistíte, jak nasadit kontejner do více instancí služby Web App for Containers s využitím geografické replikace k místní obsluze imagí.
+Přejděte k dalšímu kurzu, kde nasadíte kontejner do více instancí služby Web App for Containers s využitím geografické replikace k místní obsluze imagí.
 
 > [!div class="nextstepaction"]
 > [Nasazení webové aplikace ze služby Azure Container Registry](container-registry-tutorial-deploy-app.md)
@@ -253,3 +241,10 @@ Přejděte k dalšímu kurzu, kde zjistíte, jak nasadit kontejner do více inst
 [tut-portal-05]: ./media/container-registry-tutorial-prepare-registry/tut-portal-05.png
 [tut-app-01]: ./media/container-registry-tutorial-prepare-registry/tut-app-01.png
 [tut-map-01]: ./media/container-registry-tutorial-prepare-registry/tut-map-01.png
+
+<!-- LINKS - External -->
+[acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
+[aspnet-core]: http://dot.net
+[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
+[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
+[dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

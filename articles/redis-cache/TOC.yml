@@ -6,19 +6,19 @@
       href: cache-overview.md
 - name: Šablony Rychlý start
   items:
-    - name: ASP.NET
+    - name: Vytvoření aplikace v ASP.NET
       href: cache-web-app-howto.md
-    - name: .NET
+    - name: Vytvoření aplikace v .NET
       href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Node
+    - name: Vytvoření aplikace v Node.js
       href: cache-nodejs-get-started.md
-    - name: Java
+    - name: Vytvoření aplikace v Javě
       href: cache-java-get-started.md
-    - name: Python
+    - name: Vytvoření aplikace v Pythonu
       href: cache-python-get-started.md
 - name: Kurzy
   items:
-    - name: Ukládání tabulek výsledků do mezipaměti
+    - name: Použití ukládání do mezipaměti s tabulkami výsledků
       href: cache-web-app-cache-aside-leaderboard.md
 - name: Ukázky
   items:

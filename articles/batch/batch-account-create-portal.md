@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b1c8c981c0b1c3b599d2dd737b680390a52888eb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -37,8 +37,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
 ## <a name="create-a-batch-account"></a>Vytvoření účtu Batch
 
-> [!NOTE]
-> Obecně byste při vytváření účtu Batch měli zvolit výchozí režim **Služba Batch**, kdy se fondy přidělují na pozadí v předplatných, která spravuje Azure. V alternativním režimu **Předplatné uživatele**, který už se pro většinu scénářů nedoporučuje, se virtuální počítače a další prostředky služby Batch vytvářejí přímo ve vašem předplatném při vytvoření fondu. Pokud chcete vytvořit účet Batch v režimu předplatného uživatele, musíte také zaregistrovat předplatné ve službě Azure Batch a k účtu přidružit službu Azure Key Vault.
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 1. Přihlaste se na web [Azure Portal][azure_portal].
 2. Klikněte na **Vytvořit prostředek** a na Marketplace vyhledejte **Služba Batch**.

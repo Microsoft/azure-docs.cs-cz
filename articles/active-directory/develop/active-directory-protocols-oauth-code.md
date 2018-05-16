@@ -3,22 +3,24 @@ title: Pochopení toku kódu autorizace OAuth 2.0 ve službě Azure AD
 description: Tento článek popisuje, jak používat zprávy protokolu HTTP k autorizaci přístupu k webové aplikace a webové rozhraní API ve vašem klientovi pomocí Azure Active Directory a OAuth 2.0.
 services: active-directory
 documentationcenter: .net
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d2a160d75f89768a3884beff9ea10cbc168d3dda
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 93de62a21ca1d3b8c88715fc9207a583920ac33e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k Azure Active Directory webových aplikací pomocí toku OAuth 2.0 kód grant
 Azure Active Directory (Azure AD) používá OAuth 2.0 umožnit autorizace přístupu k webové aplikace a webové rozhraní API v klientovi služby Azure AD. Tento průvodce je závislý na jazyce a popisuje, jak odesílat a přijímat zprávy HTTP bez použití některé z našich [knihovny open-source](active-directory-authentication-libraries.md).
@@ -49,19 +51,19 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| tenant |Požadované |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci.  Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
-| client_id |Požadované |ID aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory** na bočním panelu služby, klikněte na tlačítko **registrace aplikace**a zvolte aplikaci. |
-| response_type |Požadované |Musí zahrnovat `code` pro tok autorizačního kódu. |
-| redirect_uri |Doporučená |O položku redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování.  Se musí přesně shodovat s jedním redirect_uris, které jste zaregistrovali na portálu, s výjimkou musí být kódovaná adresou url.  Pro nativní & mobilní aplikace, by měl použít výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Doporučená |Určuje metodu, která se má použít k odeslání výsledný token zpět do vaší aplikace.  Může být `query` nebo `form_post`. `query` poskytuje kód jako parametr řetězce dotazu na vaše URI přesměrování při `form_post` provede metodu POST SMĚŘUJÍCÍ obsahující kód váš identifikátor URI přesměrování. |
-| state |Doporučená |Hodnota součástí požadavek, který je také vrácený v odpovědi tokenu. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12).  Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
-| prostředek | Doporučená |Identifikátor URI aplikace ID cílové webové rozhraní API (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, otevřít aplikaci **nastavení** stránky a pak klikněte na  **Vlastnosti**. Může být také jako externí prostředek `https://graph.microsoft.com`.  To je nutné v jednom autorizace nebo žádostí o token.  K zajištění méně ověřování výzvy je uložit žádost o ověření a zda je souhlasu přijat od uživatele. |
+| tenant |povinné |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
+| client_id |povinné |ID aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na webu Azure Portal. Klikněte na tlačítko **Azure Active Directory** na bočním panelu služby, klikněte na tlačítko **registrace aplikace**a zvolte aplikaci. |
+| response_type |povinné |Musí zahrnovat `code` pro tok autorizačního kódu. |
+| redirect_uri |Doporučená |O položku redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikace odpovědi ověřování. Se musí přesně shodovat s jedním redirect_uris, které jste zaregistrovali na portálu, s výjimkou musí být kódovaná adresou url. Pro nativní & mobilní aplikace, by měl použít výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob`. |
+| response_mode |Doporučená |Určuje metodu, která se má použít k odeslání výsledný token zpět do vaší aplikace. Může být `query` nebo `form_post`. `query` poskytuje kód jako parametr řetězce dotazu na vaše URI přesměrování při `form_post` provede metodu POST SMĚŘUJÍCÍ obsahující kód váš identifikátor URI přesměrování. |
+| state |Doporučená |Hodnota součástí požadavek, který je také vrácený v odpovědi tokenu. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
+| prostředek | Doporučená |Identifikátor URI aplikace ID cílové webové rozhraní API (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, otevřít aplikaci **nastavení** stránky a pak klikněte na  **Vlastnosti**. Může být také jako externí prostředek `https://graph.microsoft.com`. To je nutné v jednom autorizace nebo žádostí o token. K zajištění méně ověřování výzvy je uložit žádost o ověření a zda je souhlasu přijat od uživatele. |
 | scope | **Ignorovat** | Pro aplikace Azure AD v1, musí být staticky konfigurované obory v portálu Azure v rámci aplikace **nastavení**, **požadovaných oprávnění**. |
 | řádku |nepovinné |Označuje typ interakci s uživatelem, který je vyžadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel měla zobrazit výzva k novému ověření. <p> *souhlas*: souhlas uživatele byla udělena, ale je třeba aktualizovat. Uživatel měla zobrazit výzva k souhlas. <p> *admin_consent*: Správce měla zobrazit výzva k souhlas jménem všichni uživatelé v organizaci |
-| login_hint |nepovinné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailové adresy na stránce přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem.  Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
+| login_hint |nepovinné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailové adresy na stránce přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem. Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 | domain_hint |nepovinné |Poskytuje informace o klientovi nebo doménu, která uživatel by měl použít pro přihlášení. Hodnota domain_hint je registrované domény pro klienta. Pokud klient federovaný na místní adresář, AAD přesměruje na federační server zadaného klienta. |
-| code_challenge_method | nepovinné    | Metoda použitá ke kódování `code_verifier` pro `code_challenge` parametr. Může být jedna z `plain` nebo `S256`.  Pokud vyloučená, `code_challenge` bude ve formátu prostého textu, pokud hodnota `code_challenge` je součástí.  Azure verze 1.0 AAD podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge        | nepovinné    | Používá k zabezpečení uděluje autorizační kód prostřednictvím ověření klíče pro Exchange kódu (PKCE) od klienta nativní nebo veřejné. Požadováno pokud `code_challenge_method` je součástí.  Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge_method | nepovinné    | Metoda použitá ke kódování `code_verifier` pro `code_challenge` parametr. Může být jedna z `plain` nebo `S256`. Pokud vyloučená, `code_challenge` bude ve formátu prostého textu, pokud hodnota `code_challenge` je součástí. Azure verze 1.0 AAD podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge        | nepovinné    | Používá k zabezpečení uděluje autorizační kód prostřednictvím ověření klíče pro Exchange kódu (PKCE) od klienta nativní nebo veřejné. Požadováno pokud `code_challenge_method` je součástí. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
 > Pokud uživatel je součástí organizace, správce organizace souhlas nebo odmítnout jménem uživatele nebo povolit uživatele o souhlas. Uživatel je zadána možnost souhlas jenom v případě, že správce povolí ho.
@@ -81,7 +83,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | Parametr | Popis |
 | --- | --- |
 | admin_consent |Hodnota je True, pokud správce souhlas výzvu žádost o souhlas. |
-| kód |Autorizační kód, který požadované aplikace. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. |
+| Kód |Autorizační kód, který požadované aplikace. Aplikace můžete autorizační kód vyžádat token přístupu pro cílový prostředek. |
 | session_state |Jedinečná hodnota, která identifikuje aktuální uživatelskou relaci. Tato hodnota je identifikátor GUID, ale má být považována za neprůhledné hodnoty, které jsou předávány bez prozkoumání. |
 | state |Pokud parametr stavu je obsažena v žádosti o stejnou hodnotu by se měla objevit v odpovědi. Je vhodné pro aplikaci do ověřte, zda jsou hodnoty stavu v požadavku a odpovědi identické před použitím odpovědi. To pomůže zjistit [webů požadavku padělání (proti útokům CSRF) před útoky](https://tools.ietf.org/html/rfc6749#section-10.12) proti klienta. |
 
@@ -134,14 +136,14 @@ grant_type=authorization_code
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| tenant |Požadované |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci.  Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
-| client_id |Požadované |Id aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na webu Azure portal. Id aplikace se zobrazí v nastavení registrace aplikace.  |
-| grant_type |Požadované |Musí být `authorization_code` pro tok autorizačního kódu. |
-| kód |Požadované |`authorization_code` Kterou jste získali v předchozí části |
-| redirect_uri |Požadované |Stejné `redirect_uri` hodnotu, která byla použita k získání `authorization_code`. |
-| tajný klíč client_secret |vyžaduje se pro webové aplikace, není povoleno pro veřejné klienty |Tajný klíč aplikace, kterou jste vytvořili na portálu Azure pro aplikaci v části **klíče**.  Nelze se použít v nativní aplikaci (veřejné klienta), protože client_secrets nelze uložit spolehlivě na zařízení.  Je vyžadováno pro webové aplikace a webové rozhraní API (všechny důvěrné klientů), které mají možnost ukládat `client_secret` bezpečně na straně serveru. |
-| prostředek | Doporučená |Identifikátor URI aplikace ID cílové webové rozhraní API (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, otevřít aplikaci **nastavení** stránky a pak klikněte na  **Vlastnosti**. Může být také jako externí prostředek `https://graph.microsoft.com`.  To je nutné v jednom autorizace nebo žádostí o token.  K zajištění méně ověřování výzvy je uložit žádost o ověření a zda je souhlasu přijat od uživatele.  Pokud se v žádost o ověření a požadavku na token prostředku ' parametry se musí shodovat. | 
-| code_verifier | nepovinné | Stejné code_verifier, který se používá k získání authorization_code.  Vyžaduje, pokud PKCE byl použit v žádosti o udělení autorizační kód.  Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
+| tenant |povinné |`{tenant}` Hodnotu v cestě požadavku slouží k řízení, kdo může přihlásit k aplikaci. Povolené hodnoty jsou identifikátory klienta, například `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` nebo `contoso.onmicrosoft.com` nebo `common` pro tokeny nezávislé na klienta |
+| client_id |povinné |Id aplikace přiřazené vaší aplikaci při registraci s Azure AD. Tento nástroj naleznete na webu Azure portal. Id aplikace se zobrazí v nastavení registrace aplikace. |
+| grant_type |povinné |Musí být `authorization_code` pro tok autorizačního kódu. |
+| Kód |povinné |`authorization_code` Kterou jste získali v předchozí části |
+| redirect_uri |povinné |Stejné `redirect_uri` hodnotu, která byla použita k získání `authorization_code`. |
+| tajný klíč client_secret |vyžaduje se pro webové aplikace, není povoleno pro veřejné klienty |Tajný klíč aplikace, kterou jste vytvořili na portálu Azure pro aplikaci v části **klíče**. Nelze se použít v nativní aplikaci (veřejné klienta), protože client_secrets nelze uložit spolehlivě na zařízení. Je vyžadováno pro webové aplikace a webové rozhraní API (všechny důvěrné klientů), které mají možnost ukládat `client_secret` bezpečně na straně serveru. |
+| prostředek | Doporučená |Identifikátor URI aplikace ID cílové webové rozhraní API (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, otevřít aplikaci **nastavení** stránky a pak klikněte na  **Vlastnosti**. Může být také jako externí prostředek `https://graph.microsoft.com`. To je nutné v jednom autorizace nebo žádostí o token. K zajištění méně ověřování výzvy je uložit žádost o ověření a zda je souhlasu přijat od uživatele. Pokud se v žádost o ověření a požadavku na token prostředku ' parametry se musí shodovat. | 
+| code_verifier | nepovinné | Stejné code_verifier, který se používá k získání authorization_code. Vyžaduje, pokud PKCE byl použit v žádosti o udělení autorizační kód. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
 Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, otevřít aplikaci **nastavení** stránky a pak klikněte na  **Vlastnosti**.
 
@@ -174,7 +176,7 @@ Webové rozhraní API prostředků vrátí-li `invalid_token` kódu chyby to mů
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je reprezentován jako počet sekund od pod hodnotou 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby platnosti tokenů v mezipaměti. |
 | prostředek |Identifikátor URI aplikace ID webové rozhraní API (zabezpečené prostředků). |
 | scope |Zosobnění oprávnění udělená aplikaci klienta. Výchozí oprávnění je `user_impersonation`. Vlastníkem prostředku zabezpečené můžete zaregistrovat další hodnoty ve službě Azure AD. |
-| refresh_token |Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat další přístupové tokeny po vypršení platnosti aktuální přístupový token.  Aktualizujte je dlouhodobé tokeny a slouží k přístupu k prostředkům uchovávány dlouhou dobu. |
+| refresh_token |Aktualizace tokenu OAuth 2.0. Aplikace můžete používat tento token získat další přístupové tokeny po vypršení platnosti aktuální přístupový token. Aktualizujte je dlouhodobé tokeny a slouží k přístupu k prostředkům uchovávány dlouhou dobu. |
 | id_token |Nepodepsané JSON Web Token (JWT). Base64Url může aplikace dekódovat segmentů tento token pro vyžadování informací o uživateli, který přihlášení. Aplikace můžete hodnoty do mezipaměti a jejich zobrazení, ale na ně neměli spoléhat pro žádné hranice zabezpečení nebo autorizace. |
 
 ### <a name="jwt-token-claims"></a>Deklarace tokenů JWT
@@ -256,7 +258,7 @@ Následující tabulka uvádí stavové kódy HTTP, které vrací koncový bod v
 | --- | --- |
 | 400 |Výchozí kód HTTP. Používá se ve většině případů a obvykle kvůli chybně vytvořený požadavek. Opravte a odešlete požadavek znovu. |
 | 401 |Ověření se nezdařilo. Například v požadavku chybí parametr tajný klíč client_secret. |
-| 403 |Ověření se nezdařilo. Například uživatel nemá oprávnění pro přístup k prostředku. |
+| 403 |Ověření se nepovedlo. Například uživatel nemá oprávnění pro přístup k prostředku. |
 | 500 |Došlo k vnitřní chybě na službu. Opakujte žádost. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>Kódy chyb pro koncový bod tokenu chyby
@@ -361,7 +363,7 @@ Ukázková chyba odpověď může vypadat například takto:
 ```
 {
   "error": "invalid_resource",
-  "error_description": "AADSTS50001: The application named https://foo.microsoft.com/mail.read was not found in the tenant named 295e01fc-0c56-4ac3-ac57-5d0ed568f872.  This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant.  You might have sent your authentication request to the wrong tenant.\r\nTrace ID: ef1f89f6-a14f-49de-9868-61bd4072f0a9\r\nCorrelation ID: b6908274-2c58-4e91-aea9-1f6b9c99347c\r\nTimestamp: 2016-04-11 18:59:01Z",
+  "error_description": "AADSTS50001: The application named https://foo.microsoft.com/mail.read was not found in the tenant named 295e01fc-0c56-4ac3-ac57-5d0ed568f872. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You might have sent your authentication request to the wrong tenant.\r\nTrace ID: ef1f89f6-a14f-49de-9868-61bd4072f0a9\r\nCorrelation ID: b6908274-2c58-4e91-aea9-1f6b9c99347c\r\nTimestamp: 2016-04-11 18:59:01Z",
   "error_codes": [
     50001
   ],

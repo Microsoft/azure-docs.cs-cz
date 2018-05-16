@@ -12,11 +12,11 @@ ms.topic: article
 ms.custom: ''
 ms.date: 04/15/2018
 ms.author: juliako
-ms.openlocfilehash: d8fda7797f02a7d0bee870dce45c6d99436f72c5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bbf69bdcc92316642f6b37d267cdea2aad920316
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Příklady Azure CLI pro Azure Media Services
 
@@ -24,7 +24,15 @@ Následující tabulka obsahuje odkazy na příklady rozhraní příkazového ř
 
 |  |  |
 |---|---|
-|**Vytvoření účtu**||
+|**Účet**||
 | [Vytvoření účtu Media Services](./scripts/cli-create-account.md) | Vytvoří účet Azure Media Services. Také vytvoří objekt zabezpečení, který lze použít pro přístup k rozhraní API pro programovou správu účtu služby. |
+| [Resetovat přihlašovací údaje účtu](./scripts/cli-reset-account-credentials.md)|Obnoví svoje přihlašovací údaje a nastavení souboru app.config získá zpět.|
+|**Prostředky**||
+| [Vytvořit prostředky](./scripts/cli-create-asset.md)|Vytvoří prostředek služby média nahrát obsah.|
+| [Nahrát soubor](./scripts/cli-upload-file-asset.md)|Ukládání do místního souboru do kontejneru úložiště.|
+| [Publikování assetu](./scripts/cli-publish-asset.md)| Vytvoří Lokátor streamování a získá adresy URL streamování zpět. |
+| **Transformuje** a **úlohy**||
+| [Vytvoření transformací](./scripts/cli-create-transform.md)|Ukazuje, jak vytvořit transformace. Transformace popisují jednoduché pracovního postupu úloh pro zpracování souborů video nebo zvuk (často označované jako "receptur").<br/> Vždy byste měli zkontrolovat Pokud transformace s požadovaným názvem a "recept na" již existuje. Pokud ano, znovu použít. |
+| [Vytváření úloh](./scripts/cli-create-jobs.md)|Odešle úlohu pro jednoduché kódování transformace pomocí adresy URL HTTPs.|
+| [Vytvoření EventGrid](./scripts/cli-create-event-grid.md)|Vytvoří předplatné účet úrovně mřížky události změny stavu úlohy.|
 
-Najdete v části Další ukázky rozhraní příkazového řádku 2.0 [ukázky rozhraní příkazového řádku](https://github.com/johndeu/BUILD2018/tree/master/Azure%20Media%20v3/CLI).

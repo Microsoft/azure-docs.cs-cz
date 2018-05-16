@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 10/14/2016
+ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 025ff3dea365ab75af55f107da1fb7331861eb06
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Odeslání úloh HPC z místního počítače do clusteru HPC Pack nasazeného v Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,9 +29,9 @@ Konfigurace klientského počítače k odesílání úloh do k místní [Microso
 ![Odeslání úlohy do clusteru s podporou v Azure][jobsubmit]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Nasadit virtuální počítač Azure hlavního uzlu HPC Pack** -doporučujeme použít automatizované nástroje, jako [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) nebo [skript prostředí Azure PowerShell](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) nasazení hlavního uzlu a clusteru . Potřebujete název DNS hlavního uzlu a přihlašovací údaje Správce clusteru k dokončení kroků v tomto článku.
+* **Nasadit virtuální počítač Azure hlavního uzlu HPC Pack** -doporučujeme použít automatizované nástroje, jako [šablony Azure rychlý Start](https://azure.microsoft.com/documentation/templates/) nasazení hlavního uzlu a clusteru. Potřebujete název DNS hlavního uzlu a přihlašovací údaje Správce clusteru k dokončení kroků v tomto článku.
 * **Klientský počítač** -potřebujete klientského počítače Windows nebo Windows Server, který můžete spustit HPC Pack klienta nástroje (viz [požadavky na systém](https://technet.microsoft.com/library/dn535781.aspx)). Pokud chcete používat k odesílání úloh HPC Pack webový portál nebo REST API, můžete použít libovolného klientského počítače podle svého výběru.
-* **HPC Pack instalačním médiu** – k instalaci nástroje klienta HPC Pack volné instalační balíček pro nejnovější verzi sady HPC Pack (HPC Pack 2012 R2) je k dispozici z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Ujistěte se, že si stáhnout stejnou verzi nástroje HPC Pack, který je nainstalován na hlavního uzlu virtuálního počítače.
+* **HPC Pack instalačním médiu** – k instalaci nástroje klienta HPC Pack volné instalační balíček pro nejnovější verzi sady HPC Pack je k dispozici z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360). Ujistěte se, že si stáhnout stejnou verzi nástroje HPC Pack, který je nainstalován na hlavního uzlu virtuálního počítače.
 
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>Krok 1: Instalace a konfigurace webové komponenty hlavního uzlu
 Povolit rozhraní REST k odesílání úloh do clusteru pomocí protokolu HTTPS, nakonfigurujte webové komponenty HPC Pack hlavního uzlu HPC Pack. Pokud již nejsou nainstalovány, nejprve nainstalujte webové komponenty spuštěním HpcWebComponents.msi instalační soubor. Potom nakonfigurujte komponenty spuštěním skriptu prostředí HPC PowerShell **Set-HPCWebComponents.ps1**.
@@ -39,7 +39,7 @@ Povolit rozhraní REST k odesílání úloh do clusteru pomocí protokolu HTTPS,
 Podrobné postupy najdete v tématu [nainstalovat webové komponenty Microsoft HPC Pack](http://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
-> Některé šablony Azure rychlý start pro HPC Pack instalace a konfigurace webové komponenty automaticky. Pokud použijete [skript nasazení HPC Pack IaaS](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) k vytvoření clusteru, můžete volitelně nainstalovat a nakonfigurovat webové komponenty jako součást nasazení.
+> Některé šablony Azure rychlý start pro clustery HPC Pack instalace a konfigurace webové komponenty automaticky.
 > 
 > 
 
@@ -81,7 +81,7 @@ Podrobné postupy najdete v tématu [nainstalovat webové komponenty Microsoft H
     ```
 
 ## <a name="step-2-install-the-hpc-pack-client-utilities-on-an-on-premises-computer"></a>Krok 2: Instalace klienta nástroje HPC Pack na místním počítači
-Pokud chcete nainstalovat klienta nástroje HPC Pack ve vašem počítači, stáhnout instalační soubory HPC Pack (úplná instalace) z [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024). Abyste před zahájením instalace, zvolte možnost instalační program **HPC Pack klienta nástroje**.
+Pokud chcete nainstalovat klienta nástroje HPC Pack ve vašem počítači, stáhnout instalační soubory HPC Pack (úplná instalace) z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360). Abyste před zahájením instalace, zvolte možnost instalační program **HPC Pack klienta nástroje**.
 
 Pomocí nástrojů sady HPC Pack klienta k odesílání úloh do hlavního uzlu virtuálního počítače, musíte také exportovat certifikát z hlavního uzlu a nainstalujte ji na klientském počítači. Certifikát musí být v. Formátu CER.
 

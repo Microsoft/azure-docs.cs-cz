@@ -4,7 +4,7 @@ description: Vytvoření, odkaz, přesunout a odstranit účty pro integraci pro
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: ecfan; LADocs
-ms.openlocfilehash: 8e31a84d4508075dcb7a1d7ad8a64fa8e142681d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: estfan
+ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Vytvářet a spravovat účty pro integraci B2B řešení s logic apps
 
@@ -56,7 +56,7 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | Název | Ano | Test integrace account | Název účtu integrace. V tomto příkladu pomocí zadaného názvu. | 
    | Předplatné | Ano | <*Název předplatného Azure*> | Název předplatného Azure k použití | 
    | Skupina prostředků | Ano | Test integrace účet rg | Název [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k organizování související prostředky. V tomto příkladu vytvořte novou skupinu prostředků se zadaným názvem. | 
-   | Cenová úroveň | Ano | Free | Cenovou úroveň, kterou chcete použít. V tomto příkladu vyberte **volné**. | 
+   | Cenová úroveň | Ano | Free | Cenovou úroveň, kterou chcete použít. V tomto příkladu vyberte **volné**, ale další informace najdete v tématu [Logic Apps omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md) a [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). | 
    | Umístění | Ano | Západní USA | Oblast kam se mají ukládat informace o integraci účtu. Buď vyberte stejné umístění jako svou aplikaci logiky, nebo vytvoření aplikace logiky ve stejném umístění jako účet integrace. V tomto příkladu | 
    | Log Analytics | Ne | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    ||||| 

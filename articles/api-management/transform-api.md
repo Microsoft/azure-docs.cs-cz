@@ -3,7 +3,7 @@ title: Transformace a ochrana rozhraní API ve službě Azure API Management | M
 description: Seznamte se s možnostmi ochrany rozhraní API pomocí zásad kvót a zásad omezování četnosti.
 services: api-management
 documentationcenter: ''
-author: juliako
+author: vladvino
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: fb56b8489b086b724df9f3c9179f2c3265cd05a7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bebfabfa2c9012fa55bfc6964dc0b638cb7ab3f1
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="transform-and-protect-your-api"></a>Transformace a ochrana vašeho rozhraní API 
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Odebrat hlavičky odpovědi transformováním rozhraní API
 > * Nahradit původní adresy URL v těle odpovědi rozhraní API adresami URL brány služby APIM
 > * Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
-> * Otestovat transformace
+> * Testovat transformace
 
 ![Zásady](./media/transform-api/api-management-management-console.png)
 
@@ -43,7 +43,7 @@ V tomto kurzu se naučíte:
  
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="transform-an-api-to-strip-response-headers"></a>Odebrání hlavičky odpovědi transformováním rozhraní API
+## <a name="transform-an-api-to-strip-response-headers"></a>Odebrat hlavičky odpovědi transformováním rozhraní API
 
 Tato část ukazuje, jak skrýt hlavičky protokolu HTTP, které by neměli vaši uživatelé vidět. V tomto příkladu se odstraní v odpovědi protokolu HTTP následující hlavičky:
 
@@ -117,7 +117,7 @@ Původní odpověď zobrazíte následovně:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
-## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochránění rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
+## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Ochránit rozhraní API přidáním zásady omezování četnosti (omezení využití sítě)
 
 Tato část ukazuje, jak přidat ochranu back-endovému rozhraní API nakonfigurováním omezování četnosti. Například byste mohli chtít omezit, kolikrát je možné rozhraní API volat, aby ho vývojáři nadměrně nevyužívali. V tomto příkladu je omezení nastaveno na 3 volání každých 15 sekund pro každé ID předplatného. Po 15 sekundách může vývojář zkusit volat rozhraní API znovu.
 
@@ -197,7 +197,7 @@ Zbývající část článku testuje transformace zásad, které jste nastavili.
     Po odeslání třech požadavků se objeví odpověď **429 Příliš mnoho požadavků**.
 7. Počkejte asi 15 sekund a znovu stiskněte **Odeslat**. Tentokrát by se už měla objevit odpověď **200 OK**.
 
-    ![Omezování](./media/transform-api/test-throttling.png)
+    ![Throttling](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>Video
 

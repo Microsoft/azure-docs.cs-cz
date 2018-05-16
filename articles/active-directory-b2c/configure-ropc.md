@@ -10,15 +10,15 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: davidmu
-ms.openlocfilehash: 4a052da4a6a16fde0583b3a1dbecc2a6de5cc0a9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: c1b4d641f6830751e2cb9e66d5052eb20a48d371
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů heslo vlastníka prostředku (ROPC) v Azure AD B2C
 
-Tok přihlašovacích údajů (ROPC) heslo vlastníka prostředku je tok standardní ověřování OAUTH kde aplikace, také znát jako přijímající strany výměnu platné přihlašovací údaje, jako je například ID uživatele a heslo pro ID token, token přístupu a obnovovací token. 
+Tok přihlašovací údaje (ROPC) heslo vlastníka prostředku je tok standardní ověřování OAUTH, kde aplikace, také známé jako přijímající strany výměny platné přihlašovací údaje, jako je například ID uživatele a heslo pro ID token, token přístupu a obnovovací token. 
 
 > [!NOTE]
 > Tato funkce je ve verzi preview.

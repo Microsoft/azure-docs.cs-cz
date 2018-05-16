@@ -1,25 +1,25 @@
 ---
-title: "Spravovat kapacita úložiště v Azure zásobníku | Microsoft Docs"
-description: "Monitorovat a spravovat adresní prostor úložiště k dispozici pro Azure zásobníku."
+title: Spravovat kapacita úložiště v Azure zásobníku | Microsoft Docs
+description: Monitorovat a spravovat adresní prostor úložiště k dispozici pro Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 02/22/2017
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.reviewer: jiahan
-ms.openlocfilehash: 749a02b38d6b074d4136bc7bb44910ee7c947b05
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: xiaofmao
+ms.openlocfilehash: da6bb00d7538c1a26e1ed4be29d3c882aa378e9e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Spravovat kapacita úložiště pro Azure zásobníku
 
@@ -56,7 +56,7 @@ Když sdílenou není dostatek volného místa a akcí pro [uvolnit](#reclaim-ca
 - Informace o fungování uživatelé klienta pomocí úložiště objektů blob v Azure zásobníku najdete v tématu [služby Azure zásobníku úložiště](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 Uživatelé klienta vytvářet kontejnery, které se pak používají k ukládání dat objektů blob. Když se uživatel rozhodne, ve které kontejner objektů BLOB umístit službu úložiště používá nepodporovaný algoritmus k určení, na který svazek uvést kontejneru. Algoritmus obvykle zvolí svazek s nejvíce dostupného místa.  
 
 Po objekt blob je umístěn v kontejneru, můžou růst tomuto objektu blob využívá víc místa na disku. Při přidávání nové objekty BLOB a existující objekty BLOB růst, dostupné místo na svazku, který obsahuje, že se zmenší tohoto kontejneru.  
@@ -136,50 +136,64 @@ Migrace slučuje všechny kontejnery blob na nové sdílené složky.
 1. Potvrďte, že máte [prostředí Azure PowerShell nainstalovaný a nakonfigurovaný](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Další informace najdete v tématu [Použití Azure PowerShellu s Azure Resource Managerem](http://go.microsoft.com/fwlink/?LinkId=394767).
 2.  Zkontrolujte kontejner, aby pochopili, jaká data jsou ve sdílené složce, která chcete migrovat. Chcete-li identifikovat nejlepší kontejnery kandidáta pro migraci na svazku, použijte **Get-AzsStorageContainer** rutiny:
 
-    ```
-    $shares = Get-AzsStorageShare
-    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -Intent Migration
-    ```
+    ````PowerShell  
+    $farm_name = (Get-AzsStorageFarm)[0].name
+    $shares = Get-AzsStorageShare -FarmName $farm_name
+    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
+    ````
     Potom si prohlédněte $containers:
-    ```
+
+    ````PowerShell
     $containers
-    ```
+    ````
+
     ![Příklad: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
 3.  Identifikujte nejlepší cílové složky pro uložení kontejneru, které můžete migrovat:
-    ```
+
+    ````PowerShell
     $destinationshares = Get-AzsStorageShare -SourceShareName
     $shares[0].ShareName -Intent ContainerMigration
-    ```
-    Potom si prohlédněte $destinationshares:
-    ```
-    $destinationshares
-    ```    
-    ![Příklad: $destination sdílené složky](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+    ````
 
-4. Spusťte migrace pro kontejner. Migrace je asynchronní. Pokud před dokončením migrace první spuštění migrace další kontejnery, použijte úlohu s id sledovat stav každého z nich.
-  ```
-  $jobId = Start-AzsStorageContainerMigration -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares[0].UncPath
-  ```
+    Potom si prohlédněte $destinationshares:
+
+    "" $Destinationshares prostředí PowerShell
+    ````
+
+    ![Example: $destination shares](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+
+4. Start migration for a container. Migration is asynchronous. If you start migration of additional containers before the first migration completes, use the job id to track the status of each.
+
+  ````PowerShell
+  $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
+  ````
+
   Potom si prohlédněte $jobId. V následujícím příkladu nahraďte *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* s id úlohy, které chcete prověřit:
-  ```
+
+  ````PowerShell
   $jobId
   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ```
+  ````
+
 5. Zkontrolujte stav úlohy migrace pomocí id úlohy. Po dokončení migrace kontejneru **MigrationStatus** je nastaven na **Complete**.
-  ```
-  Get-AzsStorageContainerMigrationStatus -JobId $jobId
-  ```
+
+  ````PowerShell 
+  Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
+  ````
+
   ![Příklad: Migrace stavu](media/azure-stack-manage-storage-shares/migration-status1.png)
 
 6.  Můžete zrušit úlohu v průběhu migrace. Došlo ke zrušení migrace, které úlohy jsou zpracovávány asynchronně. Zrušení můžete sledovat pomocí $jobid:
 
-  ```
-  Stop-AzsStorageContainerMigration -JobId $jobId
-  ```
+  ````PowerShell
+  Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
+  ````
+
   ![Příklad: Stav vrácení zpět](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. Spuštěním příkazu v kroku 6 znovu, dokud se potvrdí stav úlohy migrace je **zrušeno**:  
+
     ![Příklad: Stav zrušeno](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>Přesunout disky virtuálních počítačů

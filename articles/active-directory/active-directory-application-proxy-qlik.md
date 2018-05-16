@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7e4731e150c2d6428fa8c752765780f827c33741
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikací a Qlik smysl 
 Azure Proxy aplikace služby Active Directory a Qlik smysl společně společně Ujistěte se, že budete moci snadno poskytnout vzdálený přístup pro vaše nasazení Qlik smysl pomocí Proxy aplikace.  
@@ -59,4 +59,4 @@ Aplikace je nyní připraven k testování. Přístup k externí adresu URL mů�
 ## <a name="next-steps"></a>Další kroky
 
 - [Publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md)
-- [Práce s Proxy aplikace konektory](active-directory-application-proxy-connectors-azure-portal.md).
+- [Práce s Proxy aplikace konektory](manage-apps/application-proxy-connector-groups.md).

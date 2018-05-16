@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c9d142a58f53c28c8f791692cf48b648522ccb99
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 95b385e9847a7809492bbb74bd1eba616df90d72
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>SSH do uzlů clusteru Azure Kubernetes služby (AKS)
 
-V některých případech může potřebujete přístup k uzlu Azure Kubernetes služby (AKS) pro údržby, shromáždění protokolů nebo jiné řešení potíží operace. Uzlů Azure Kubernetes služby (AKS) nejsou vystaveny v Internetu. Vytvoření připojení SSH pomocí do uzlu AKS použijte kroky popsané v tomto dokumentu.
+V některých případech může potřebujete přístup k uzlu Azure Kubernetes služby (AKS) pro údržby, shromáždění protokolů nebo jiné řešení potíží operace. AKS uzly nejsou vystaveny v Internetu. Vytvoření připojení SSH pomocí do uzlu AKS použijte kroky popsané v tomto dokumentu.
 
 ## <a name="reset-ssh-keys"></a>Obnovení klíčů SSH
 
@@ -31,7 +31,7 @@ Vyberte **Resetovat veřejný klíč SSH**, zadejte uživatelské jméno cluster
 
 ![Portál AKS virtuálních počítačů s tlačítko resetovat heslo](media/aks-ssh/reset-password-2.png)
 
-Jakmile klíč SSH byl obnoven, můžete vytvořit pomocí příslušného privátního klíče připojení SSH.
+Jakmile klíč SSH byl obnoven, můžete vytvořit připojení SSH pomocí příslušného privátního klíče.
 
 ## <a name="get-aks-node-address"></a>Získat adresu AKS uzlu
 

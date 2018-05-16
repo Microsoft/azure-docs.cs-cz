@@ -1,99 +1,122 @@
 ---
-title: Analýza dat zpoždění letu pomocí Hive v HDInsight - Azure | Microsoft Docs
-description: Další informace o použití Hive k analýze dat letu na HDInsight se systémem Linux a pak exportovat data do databáze SQL pomocí Sqoop.
+title: 'Kurz: Provádění operací extrakce, transformace a načítání (ETL) pomocí Hivu ve službě HDInsight – Azure | Microsoft Docs'
+description: Zjistěte, jak extrahovat data z nezpracované datové sady CSV, transformovat je pomocí Hivu ve službě HDInsight a pak transformovaná data načíst do databáze SQL Azure pomocí Sqoopu.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: 0c23a079-981a-4079-b3f7-ad147b4609e5
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/23/2018
+ms.topic: tutorial
+ms.date: 05/07/2018
 ms.author: larryfr
-ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: fd0daae8289839b64e7b54d97c78719587c18e7d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
+ms.openlocfilehash: 46c80f326c8210ac3282cf128058cee91ff3836c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Analýza dat zpoždění letu pomocí Hive v HDInsight se systémem Linux
+# <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Kurz: Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight
 
-Zjistěte, jak analyzovat data zpoždění letu pomocí Hive v HDInsight se systémem Linux a jak exportovat data do Azure SQL Database pomocí Sqoop.
+V tomto kurzu budete importovat nezpracovaný datový soubor CSV do úložiště clusteru HDInsight a pak budete transformovat data pomocí Apache Hivu ve službě Azure HDInsight. Po transformaci data načtete do databáze SQL Azure pomocí Apache Sqoopu. V tomto článku budete používat veřejně dostupné letové údaje.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. Linux je jenom operační systém používaný v Azure HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je jediný operační systém, který se používá ve službě Azure HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+
+Tento kurz se zabývá následujícími úkony: 
+
+> [!div class="checklist"]
+> * Stažení ukázkových letových údajů
+> * Nahrání dat do clusteru HDInsight
+> * Transformace dat pomocí Hivu
+> * Vytvoření tabulky v databázi SQL Azure
+> * Export dat do databáze SQL Azure pomocí Sqoopu
+
+
+Následující obrázek ukazuje obvyklý běh aplikace ETL.
+
+![Operace ETL s využitím Apache Hivu ve službě Azure HDInsight](./media/hdinsight-analyze-flight-delay-data-linux/hdinsight-etl-architecture.png "Operace ETL s využitím Apache Hivu ve službě Azure HDInsight")
+
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster služby HDInsight**. V tématu [začněte s Hadoop v HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md) kroky k vytvoření nového clusteru HDInsight se systémem Linux.
+* **Cluster Hadoop s Linuxem ve službě HDInsight**. Postup vytvoření nového clusteru HDInsight s Linuxem najdete v tématu [Začínáme s Hadoopem ve službě HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-* **Azure SQL Database**. Jako cílového úložiště dat používáte Azure SQL database. Pokud nemáte databázi SQL, najdete v části [vytvoření Azure SQL database na portálu Azure](../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**. Databázi SQL Azure použijete jako cílové úložiště dat. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze SQL Azure na webu Azure Portal](../sql-database/sql-database-get-started.md).
 
-* **Azure CLI**. Pokud jste nenainstalovali Azure CLI, najdete v části [nainstalovat Azure CLI 1.0](../cli-install-nodejs.md) pro další kroky.
+* **Azure CLI 2.0**. Pokud ještě nemáte nainstalované Azure CLI, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), kde najdete další postup.
 
-* **Klientem SSH**. Další informace najdete v tématu [Připojení ke službě HDInsight (Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Klient SSH**. Další informace najdete v tématu [Připojení ke službě HDInsight (Hadoop) pomocí SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="download-the-flight-data"></a>Stáhněte si data pohybující se
+## <a name="download-the-flight-data"></a>Stažení letových údajů
 
-1. Přejděte do [výzkum a inovativní technologie správy, statistický úřad Transport][rita-website].
+1. Přejděte na web [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].
 
 2. Na stránce vyberte následující hodnoty:
 
    | Název | Hodnota |
    | --- | --- |
-   | Filtr roku |2013 |
-   | Filtrovat období |Leden |
-   | Pole |Rok, FlightDate, UniqueCarrier, operátora, FlightNum, OriginAirportID, původu, OriginCityName, OriginState, DestAirportID, cíle, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Filter Year (Filtr roku) |2013 |
+   | Filter Period (Filtr období) |January (Leden) |
+   | Fields (Pole) |Year, FlightDate, UniqueCarrier, Carrier, FlightNum, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
    Zrušte zaškrtnutí všech ostatních polí. 
 
-3. Vyberte **Stáhnout**.
+3. Vyberte **Download** (Stáhnout). Získáte soubor .zip s vybranými datovými poli.
 
-## <a name="upload-the-data"></a>Odeslání dat
+## <a name="upload-data-to-an-hdinsight-cluster"></a>Nahrání dat do clusteru HDInsight
 
-1. Použijte následující příkaz k nahrání souboru ZIP do hlavního uzlu clusteru HDInsight:
+Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoha způsoby. V této části k nahrání dat použijete `scp`. Informace o dalších způsobech nahrání dat najdete v tématu [Nahrání dat do služby HDInsight](hdinsight-upload-data.md).
+
+1. Otevřete příkazový řádek a pomocí následujícího příkazu nahrajte soubor .zip do hlavního uzlu clusteru HDInsight:
 
     ```bash
-    scp FILENAME.zip sshuser@clustername-ssh.azurehdinsight.net:
+    scp <FILENAME>.zip <SSH-USERNAME>@<CLUSTERNAME>-ssh.azurehdinsight.net:<FILENAME.zip>
     ```
 
-    Nahraďte `FILENAME` s názvem souboru ZIP. Nahraďte `sshuser` s přihlašování přes SSH pro HDInsight cluster. Nahraďte `clustername` s názvem clusteru HDInsight.
+    Nahraďte *FILENAME* názvem souboru .zip. Nahraďte *USERNAME* přihlašovacím jménem SSH pro cluster HDInsight. Nahraďte *CLUSTERNAME* názvem clusteru HDInsight.
 
-2. Po dokončení nahrávání se připojte ke clusteru pomocí protokolu SSH:
+   > [!NOTE]
+   > Pokud k ověření přihlášení SSH používáte heslo, zobrazí se výzva k zadání hesla. Pokud používáte veřejný klíč, budete pravděpodobně muset použít parametr `-i` k zadání cesty k odpovídajícímu privátnímu klíči. Například, `scp -i ~/.ssh/id_rsa FILENAME.zip USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:`.
+
+2. Po dokončení nahrávání se ke clusteru připojte pomocí SSH. Na příkazovém řádku zadejte následující příkaz:
 
     ```bash
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-3. Rozbalte soubor .zip pomocí následujícího příkazu:
+3. Pomocí následujícího příkazu rozbalte soubor .zip:
 
     ```bash
     unzip FILENAME.zip
     ```
 
-    Tento příkaz extrahuje soubor CSV, který je přibližně 60 MB.
+    Tento příkaz extrahuje přibližně 60MB soubor .csv.
 
-4. Použijte následující příkaz k vytvoření adresáře v úložišti HDInsight a pak zkopírujte soubor do adresáře:
+4. Pomocí následujících příkazů vytvořte v úložišti HDInsight adresář a zkopírujte do něj soubor .csv:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
-    hdfs dfs -put FILENAME.csv /tutorials/flightdelays/data/
+    hdfs dfs -put <FILENAME>.csv /tutorials/flightdelays/data/
     ```
 
-## <a name="create-and-run-the-hiveql"></a>Vytvoření a spuštění HiveQL
+## <a name="transform-data-using-a-hive-query"></a>Transformace dat pomocí dotazu Hive
 
-Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s názvem **zpoždění**.
+Úlohu Hive můžete v clusteru HDInsight spustit různými způsoby. V této části ke spuštění úlohy Hive použijete Beeline. Informace o dalších způsobech spuštění úlohy Hive najdete v tématu [Použití Hivu ve službě HDInsight](./hadoop/hdinsight-use-hive.md).
 
-1. Pomocí následujícího příkazu můžete vytvářet a upravovat nový soubor s názvem **flightdelays.hql**:
+V rámci úlohy Hive provedete import dat ze souboru .csv do tabulky Hive s názvem **Delays** (Zpoždění).
+
+1. Na příkazovém řádku SSH, který už máte pro cluster HDInsight spuštěný, pomocí následujícího příkazu vytvořte a upravte nový soubor **flightdelays.hql**:
 
     ```bash
     nano flightdelays.hql
     ```
 
-    Jako obsah tohoto souboru použijte následující text:
+2. Jako obsah souboru použijte následující text:
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -155,21 +178,21 @@ Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s n
     FROM delays_raw;
     ```
 
-2. Pokud chcete uložit soubor, použijte kombinaci kláves Ctrl + X, potom Y.
+2. Soubor uložíte stisknutím klávesy **Esc** a zadáním `:x`.
 
-3. Spuštění Hive a spuštění **flightdelays.hql** souboru, použijte následující příkaz:
+3. Spusťte Hive a soubor **flightdelays.hql** pomocí následujícího příkazu:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
     ```
 
-4. Po __flightdelays.hql__ dokončení spuštění skriptu, otevřete relaci interaktivní Beeline použijte následující příkaz:
+4. Po dokončení skriptu __flightdelays.hql__ pomocí následujícího příkazu otevřete interaktivní relaci Beeline:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
     ```
 
-5. Když se zobrazí `jdbc:hive2://localhost:10001/>` řádku, použijte následující dotaz pro načtení dat z data pohybující se importované zpoždění:
+5. Po zobrazení příkazového řádku `jdbc:hive2://localhost:10001/>` pomocí následujícího dotazu načtěte data z importovaných dat o zpožděných letech:
 
     ```hiveql
     INSERT OVERWRITE DIRECTORY '/tutorials/flightdelays/output'
@@ -181,37 +204,37 @@ Použijte následující postup k importu dat ze souboru CSV do Hive tabulku s n
     GROUP BY origin_city_name;
     ```
 
-    Tento dotaz načte seznam města, ve kterých zkušeného počasí zpozdí spolu se průměrné zpoždění a ukládá ji do `/tutorials/flightdelays/output`. Později Sqoop čte data z tohoto umístění a vyexportuje ji do Azure SQL Database.
+    Tento dotaz načte seznam měst, ve kterých došlo ke zpožděním kvůli nepřízni počasí, společně s průměrnou délkou zpoždění a uloží ho do umístění `/tutorials/flightdelays/output`. Později z tohoto umístění data načte Sqoop a exportuje je do služby Azure SQL Database.
 
-6. Chcete-li ukončit Beeline, zadejte `!quit` příkazového řádku.
+6. Beeline ukončíte zadáním `!quit` na příkazovém řádku.
 
-## <a name="create-a-sql-database"></a>Vytvoření databáze SQL
+## <a name="create-a-sql-database-table"></a>Vytvoření tabulky databáze SQL
 
-Pokud už máte databázi SQL, musíte získat název serveru. K vyhledání názvu serveru v [portál Azure](https://portal.azure.com), vyberte **databází SQL**a potom na název databáze, kterou chcete použít filtr. Název serveru, je uvedena ve **SERVER** sloupce.
+V této části se předpokládá, že už máte vytvořenou databázi SQL Azure. Pokud ještě databázi SQL nemáte, vytvořte si ji podle pokynů v tématu [Vytvoření databáze SQL na webu Azure Portal](../sql-database/sql-database-get-started.md).
 
-Pokud ještě nemáte databázi SQL, použijte informace v [vytvoření Azure SQL database na portálu Azure](../sql-database/sql-database-get-started.md) k jeho vytvoření. Uložte název serveru, který se používá pro databázi.
+Pokud už máte databázi SQL, musíte získat název serveru. Název serveru můžete vyhledat na webu [Azure Portal](https://portal.azure.com) tak, že vyberete **Databáze SQL** a vyfiltrujete název databáze, kterou chcete použít. Název serveru se zobrazí ve sloupci **Název serveru**.
 
-## <a name="create-a-sql-database-table"></a>Vytvořit tabulku databáze SQL
+![Získání podrobností o serveru SQL Azure](./media/hdinsight-analyze-flight-delay-data-linux/get-azure-sql-server-details.png "Získání podrobností o serveru SQL Azure")
 
 > [!NOTE]
-> Pro připojení k databázi SQL a vytvořte tabulku mnoha způsoby. Následující postup použijte [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
+> Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit tabulku. V následujících krocích se používá [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
 
 
-1. Chcete-li nainstalovat FreeTDS, použijte následující příkaz z připojení SSH do clusteru:
+1. Pokud chcete nainstalovat FreeTDS, použijte následující příkaz z připojení SSH ke clusteru:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-3. Po dokončení instalace použijte následující příkaz pro připojení k databázi SQL serveru. Nahraďte **serverName** s názvem serveru SQL Database. Nahraďte **adminLogin** a **adminPassword** s přihlášení pro databázi SQL. Nahraďte **databaseName** s názvem databáze.
+3. Po dokončení instalace se pomocí následujícího příkazu připojte k serveru služby SQL Database. Nahraďte **serverName** názvem serveru služby SQL Database. Nahraďte **adminLogin** a **adminPassword** přihlašovacími údaji pro službu SQL Database. Nahraďte **databaseName** názvem databáze.
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -p 1433 -D <databaseName>
     ```
 
-    Po zobrazení výzvy zadejte heslo pro přihlašovací jméno správce databáze SQL.
+    Po zobrazení výzvy zadejte heslo pro přihlášení správce služby SQL Database.
 
-    Zobrazí se výstup podobný následujícímu:
+    Zobrazí se výstup podobný následujícímu textu:
 
     ```
     locale is "en_US.UTF-8"
@@ -221,7 +244,7 @@ Pokud ještě nemáte databázi SQL, použijte informace v [vytvoření Azure SQ
     1>
     ```
 
-4. Na `1>` výzva, zadejte následující řádky:
+4. Na příkazovém řádku `1>` zadejte následující řádky:
 
     ```hiveql
     CREATE TABLE [dbo].[delays](
@@ -232,9 +255,9 @@ Pokud ještě nemáte databázi SQL, použijte informace v [vytvoření Azure SQ
     GO
     ```
 
-    Když `GO` příkaz je zadán, jsou vyhodnocovány předchozí příkazy. Tento dotaz vytvoří tabulku s názvem **zpoždění**, clusterovaný index.
+    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tento dotaz vytvoří tabulku **delays** s clusterovaným indexem.
 
-    Chcete-li ověřit, zda byl vytvořen v tabulce použijte následující dotaz:
+    K ověření vytvoření tabulky použijte následující dotaz:
 
     ```hiveql
     SELECT * FROM information_schema.tables
@@ -245,54 +268,65 @@ Pokud ještě nemáte databázi SQL, použijte informace v [vytvoření Azure SQ
 
     ```
     TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
-    databaseName       dbo     delays      BASE TABLE
+    databaseName       dbo             delays        BASE TABLE
     ```
 
-5. Zadejte `exit` na `1>` výzvy ukončete nástroj tsql.
+5. Zadáním `exit` na příkazovém řádku `1>` ukončete nástroj tsql.
 
-## <a name="export-data-with-sqoop"></a>Export dat s Sqoop
+## <a name="export-data-to-sql-database-using-sqoop"></a>Export dat do databáze SQL pomocí Sqoopu
 
-1. Pomocí následujícího příkazu ověřte, že Sqoop vidí vaší databázi SQL:
+V předchozích částech jste zkopírovali transformovaná data do umístění `/tutorials/flightdelays/output`. V této části použijete Sqoop k exportu dat z umístění /tutorials/flightdelays/output do tabulky, kterou jste vytvořili v databázi SQL Azure. 
+
+1. Pomocí následujícího příkazu ověřte, že má Sqoop vhled do vaší databáze SQL:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
     ```
 
-    Tento příkaz vrátí seznam databází, včetně databáze, ve které jste předtím vytvořili v tabulce zpoždění.
+    Tento příkaz vrátí seznam databází včetně databáze, ve které jste předtím vytvořili tabulku delays.
 
-2. Exportovat data z hivesampletable do tabulky zpoždění, použijte následující příkaz:
+2. Pomocí následujícího příkazu exportujte data z tabulky hivesampletable do tabulky delays:
 
     ```bash
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop připojuje k databázi, která obsahuje tabulku zpoždění a exportuje data z `/tutorials/flightdelays/output` adresář do tabulky zpoždění.
+    Sqoop se připojí k databázi obsahující tabulku delays a exportuje do tabulky delays data z adresáře `/tutorials/flightdelays/output`.
 
-3. Po dokončení příkazu sqoop, použijte nástroj tsql pro připojení k databázi:
+3. Po dokončení příkazu sqoop se pomocí nástroje tsql připojte k databázi:
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    Chcete-li ověřit, že se data vyexportovala do tabulky zpoždění, použijte následující příkazy:
+    Pomocí následujících příkazů ověřte, že se data exportovala do tabulky delays:
 
     ```sql
     SELECT * FROM delays
     GO
     ```
 
-    Měli byste vidět seznam dat v tabulce. Typ `exit` ukončete nástroj tsql.
+    Měl by se zobrazit výpis dat v tabulce. Tabulka obsahuje název města a průměrnou délku zpoždění letu pro příslušné město. 
 
-## <a name="next-steps"></a>Další postup
+    Zadáním `exit` ukončete nástroj tsql.
 
-Informace o další způsoby, jak pracovat s daty v HDInsight, naleznete v následujících článcích:
+## <a name="next-steps"></a>Další kroky
+
+V tomto kurzu jste zjistili, jak pomocí clusteru Apache Hadoop ve službě HDInsight provádět operace extrakce, transformace a načítání dat. V dalším kurzu se dozvíte, jak pomocí služby Azure Data Factory vytvářet clustery HDInsight Hadoop na vyžádání.
+
+> [!div class="nextstepaction"]
+>[Vytváření clusterů Hadoop ve službě HDInsight na vyžádání pomocí služby Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md)
+
+Informace o dalších způsobech práce s daty ve službě HDInsight najdete v následujících článcích:
 
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
-* [Použijte Oozie s HDInsight][hdinsight-use-oozie]
-* [Použití nástroje Sqoop s HDInsight][hdinsight-use-sqoop]
 * [Použití Pigu se službou HDInsight][hdinsight-use-pig]
-* [Vývoj aplikací Java MapReduce pro Hadoop v HDInsight][hdinsight-develop-mapreduce]
-* [Vývoj Python streamování MapReduce programy pro HDInsight][hdinsight-develop-streaming]
+* [Vývoj programů Java MapReduce pro Hadoop ve službě HDInsight][hdinsight-develop-mapreduce]
+* [Vývoj programů MapReduce se streamováním v Pythonu pro službu HDInsight][hdinsight-develop-streaming]
+* [Použití Oozie se službou HDInsight][hdinsight-use-oozie]
+* [Použití Sqoopu se službou HDInsight][hdinsight-use-sqoop]
+
+
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

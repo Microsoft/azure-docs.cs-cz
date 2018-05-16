@@ -1,9 +1,9 @@
 ---
-title: Azure Notification Hubs
-description: Zjistěte, jak pro přidání možností nabízená oznámení pomocí Azure Notification Hubs.
-author: ysxu
-manager: erikre
-editor: ''
+title: Co je Azure Notification Hubs?
+description: Přečtěte si, jak přidat funkce nabízených oznámení služby Azure Notification Hubs.
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: fcfb0ce8-0e19-4fa8-b777-6b9f9cdda178
@@ -11,146 +11,114 @@ ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
-ms.topic: article
-ms.date: 1/17/2017
-ms.author: yuaxu
-ms.openlocfilehash: ea8d569a8d51afee352860ab60a1fe311496b83c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.topic: overview
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 44086bc20966d9c01ff27dda68f837101c71a778
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="azure-notification-hubs"></a>Azure Notification Hubs
-## <a name="overview"></a>Přehled
-Azure Notification Hubs poskytuje modul snadné použití, více platformami, upraveným push. Pomocí volání API jedné platformě můžete snadno odesílat cílové a přizpůsobené nabízená oznámení na libovolnou mobilní platformu z jakékoli back-end cloudu nebo místně.
+# <a name="what-is-azure-notification-hubs"></a>Co je Azure Notification Hubs?
+Služba Azure Notification Hubs nabízí snadno použitelné, škálovatelné zasílací jádro, které umožňuje posílat oznámení libovolné platformě (iOS, Android, Windows, Kindle, Baidu atd.) z libovolného back-endu (cloudový nebo místní). Notification Hubs funguje jak ve scénářích velkých organizací, tak ve spotřebitelských scénářích. Příklady scénářů:
 
-Centra oznámení dobře funguje pro scénáře enterprise a příjemce. Zde je několik příkladů, které zákazníci používají Notification Hubs pro:
-
-* Odešlete oznámení o aktuálních zprávách milionům příjemcům s nízkou latencí.
-* Odeslat kupónů segmenty chtějí uživatele.
-* Související události oznámení odešlete uživatelům nebo skupinám pro média nebo sportu nebo finanční nebo herní aplikace.
-* Nabízená propagační obsah aplikace zaujmout a zákazníkům na trh.
-* Upozorní uživatele na firemní události, jako nové zprávy a pracovní položky.
-* Odešlete kódy pro službu Multi-Factor authentication.
+- Odesílání oznámení o důležitých zprávách milionům uživatelů s minimálním zpožděním.
+- Odesílání kupónů závislých na aktuální poloze segmentům zájemců.
+- Odesílání oznámení o událostech uživatelům multimediálních, sportovních, finančních nebo herních aplikací nebo jejich skupinám.
+- Zasílání propagačního obsahu aplikacím kvůli informovanosti zákazníků a podpoře nabídky.
+- Upozorňování uživatelů na podnikové události, jako jsou nové zprávy a pracovní položky.
+- Odesílání kódů k vícefaktorovému ověřování.
 
 ## <a name="what-are-push-notifications"></a>Co jsou nabízená oznámení?
-Nabízená oznámení je formulář aplikace uživatele komunikace, kde jsou uživatelé z mobilních aplikací informováni o některé požadované informace, obvykle v místní nabídce nebo v dialogovém okně. Uživatelé mohou obecně k zobrazení nebo zavřete zprávu, a výběr první otevře mobilní aplikaci, která měla oznamovat oznámení.
+Nabízená oznámení představují způsob komunikace aplikace s uživatelem. Uživatelům mobilních aplikací se oznamují určité požadované informace. Tato oznámení se většinou nabízejí v místní nabídce nebo v dialogovém okně. Uživatelé si většinou můžou vybrat, jestli chtějí zprávu zobrazit nebo zavřít. Pokud zvolí první možnost, otevře se mobilní aplikace, která oznámení zveřejnila.
 
-Nabízená oznámení je důležité pro uživatelských aplikací v zvýšení aktivity a využití a pro podnikové aplikace při komunikaci aktuální obchodní údaje. Protože je energetickou efektivitu pro mobilní zařízení, flexibilní odesílatelům oznámení a k dispozici při odpovídající aplikace nejsou aktivní je komunikace nejlépe aplikace uživatele.
+Nabízená oznámení jsou nedílnou součástí spotřebitelských aplikací, protože zvyšují zapojení a využití aplikace, ale jsou důležitá i v podnikových aplikacích, kde slouží ke zveřejňování aktuálních obchodních informací. Jde o nejlepší způsob komunikace aplikace s uživatelem, protože je energeticky nenáročný na mobilní zařízení, je flexibilní pro odesílatele oznámení a je k dispozici, i když odpovídající aplikace nejsou aktivní.
 
-Další informace o nabízená oznámení pro několik oblíbených platformy:
+Další informace o nabízených oznámeních pro některé oblíbené platformy najdete v následujících tématech: 
 * [iOS](https://developer.apple.com/notifications/)
 * [Android](https://developer.android.com/guide/topics/ui/notifiers/notifications.html)
 * [Windows](http://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
 
-## <a name="how-push-notifications-work"></a>Jak nabízená oznámení fungují
-Nabízená oznámení se doručují prostřednictvím infrastruktur specifických pro platformy označují jako *systémy oznámení platforem* (PNSes). Nabízejí funkce nabízené barebone k doručení zprávy do zařízení s zadané zpracování a nemá žádné společné rozhraní. Verze aplikace, vývojář musí k odesílání oznámení pro všechny zákazníky v iOS, Android a Windows pracovat s APNS (Apple Push Notification Service), FCM (Firebase Cloud Messaging) a WNS (Windows Notification Service), při dávkování odešle.
+## <a name="how-push-notifications-work"></a>Jak fungují nabízená oznámení
+Nabízená oznámení se doručují prostřednictvím infrastruktur odpovídajících určitým platformám. Tyto infrastruktury se označují jako *systémy oznámení platforem* (PNS). Nabízejí jednoduché funkce doručování zpráv do zařízení se zadaným popisovačem. Tyto funkce nemají společné rozhraní. Pokud chcete posílat oznámení všem zákazníkům s verzí aplikace pro iOS, Android a Windows, musí vývojář pracovat se službami Apple Push Notification Service (APNS), Firebase Cloud Messaging (FCM) a Windows Notification Service (WNS).
 
-Na vysoké úrovni zde je, jak funguje nabízené:
+Celkový přehled fungování nabízených oznámení:
 
-1. Klientská aplikace rozhodne chce dostávat oznámení proto kontaktuje systém PNS odpovídající k načtení svého popisovače jedinečný a dočasný push. Typ popisovače závisí na systému (například WNS má identifikátory URI, zatímco APNS obsahuje tokenů).
-2. Klientská aplikace si tento popisovač uloží v back-end aplikace nebo zprostředkovatele.
-3. Pokud chcete zasílat nabízená oznámení, back-end aplikace kontaktuje systém PNS s použitím popisovače, který cílí na konkrétního klienta aplikace.
+1. Klientská aplikace se rozhodne, že chce dostávat oznámení. Kontaktuje příslušný systém oznámení platformy (PNS) a načte jedinečný dočasný popisovač nabízených oznámení. Typ popisovače závisí na systému (například WNS používá identifikátory URI a APNS používá tokeny).
+2. Klientská aplikace uloží popisovač v back-endové aplikaci neboli u poskytovatele.
+3. Pokud chce aplikace odeslat nabízené oznámení, back-endová aplikace kontaktuje PNS prostřednictvím popisovače určeného pro konkrétní klientskou aplikaci.
 4. Systém PNS předá oznámení do zařízení určeného popisovačem.
 
-![][0]
+![Pracovní postup nabízených oznámení](./media/notification-hubs-overview/registration-diagram.png)
 
 ## <a name="the-challenges-of-push-notifications"></a>Obtíže spojené s nabízenými oznámeními
-PNSes jsou efektivní, opustí množství práce na vývojáři aplikace kvůli implementaci i běžné scénáře nabízená oznámení, jako je například vysílání nebo odesílání nabízených oznámení segmentovaným uživatelům.
+Systémy PNS jsou velmi výkonné. Přesto ale nechávají většinu práce na vývojáři aplikace, a to i při implementaci běžných scénářů nabízených oznámení, jako je vysílání nabízených oznámení nebo jejich odeslání určitému segmentu uživatelů.
 
-Nabízená je jednou z nejžádanějších funkcí v mobilních cloudové služby, protože jeho pracovní vyžaduje komplexní infrastruktury, které se nevztahují na hlavní obchodní logice aplikace. Některé z problémů infrastruktury jsou:
+K zasílání nabízených oznámení je potřeba složitá infrastruktura, která nesouvisí s hlavní obchodní logikou aplikace. Některé problémy týkající se infrastruktury:
 
-* **Závislost na platformě**: 
+- **Závislost na platformě**
+    - Back-end musí mít složitou a na údržbu náročnou logiku, která závisí na určité platformě a slouží k posílání oznámení zařízením s různými platformami, protože systémy PNS nejsou jednotné.
+- **Škálování**
+    - Podle pokynů PNS musí být tokeny zařízení aktualizované při každém spuštění aplikace. Back-end zpracovává velký počet přenosů a přístupů k databázi, jenom aby udržel aktuální tokeny. Pokud počet zařízení vzroste do stovek milionů a pak do miliard, jsou náklady na vytvoření a údržbu této infrastruktury velmi vysoké.
+    - Většina systémů PNS nepodporuje vysílání na více zařízení. Jednoduché vysílání pro milion zařízení znamená milion volání systémů PNS. Škálovat tento provoz s minimální latencí není úplně jednoduché.
+- **Směrování** 
+    - Systémy PNS sice nabízejí způsob, jak posílat zprávy zařízením, ale většina oznámení posílaných aplikacemi je cílených na uživatele nebo zájmové skupiny. Back-end proto musí udržovat registr, který spojuje zařízení se zájmovými skupinami, uživateli, vlastnostmi apod. Tato dodatečná režie prodlužuje dobu potřebnou k publikování a navyšuje náklady na údržbu aplikace.
 
-  * Back-end musí mít komplexní a pevné udržovat závislé na platformě logiku k odesílání oznámení do zařízení na různých platformách, jako nejsou unified PNSes.
-* **Škálování**:
+## <a name="why-use-azure-notification-hubs"></a>Proč používat Azure Notification Hubs?
+Služba Notification Hubs eliminuje všechny komplikace, se kterými se můžete setkat, kdybyste nabízená oznámení z back-endové aplikace zasílali sami. Platformově univerzální škálovatelná infrastruktura, určená k zasílání nabízených oznámení, zmenšuje potřebu programování oznámení a zjednodušuje back-end. Se službou Notification Hubs zodpovídají zařízení jenom za registraci popisovačů systému PNS v centru, zatímco back-end posílá zprávy uživatelům nebo zájmovým skupinám. Je to vidět na následujícím obrázku:
 
-  * Podle pokynů pro systém PNS zařízení tokeny musí aktualizovat při každé spuštění aplikace. To znamená, že back-end se zabývají velký objem přenosů a databáze přístup jenom k zachování aktualizovaného stavu tokenů. Když počet zařízení naroste a stovky tisíc milionů, je masivní náklady na vytvoření a údržbu této infrastruktury.
-  * Většina PNSes nepodporuje vysílání na více zařízení. To znamená jednoduchého vysílání miliony zařízení výsledkem volání milion PNSes. Toto množství provozu škálování s minimální latence není triviální.
-* **Směrování**:
-  
-  * I když PNSes poskytnout způsob, jak posílat zprávy do zařízení, většina oznámení aplikace se budou zaměřovat na uživatelům nebo skupinám. To znamená, že back-end musí udržovat registr pro přidružení zařízení zájmových skupin, vlastností, uživatelů atd. Tato dodatečná režie prodlužuje čas potřebný k náklady na trh a údržbu aplikace.
+![Diagram centra oznámení](./media/notification-hubs-overview/notification-hub-diagram.png)
 
-## <a name="why-use-notification-hubs"></a>Proč používat Notification Hubs?
-Notification Hubs eliminuje složité všechny kroky přidružené k povolení oznámení vlastní. Jeho infrastrukturu pro více platformami a horizontálně škálovanou nabízená oznámení snižuje související nabízené kódy a zjednodušuje váš back-end. Zařízení s Notification Hubs, jsou jenom za registraci jejich popisovačů systému PNS s rozbočovačem, zatímco back-end odešle zprávy do uživatelům nebo skupinám, jak je znázorněno na následujícím obrázku:
+Centra oznámení jsou předem připravená jádra pro zasílání oznámení, která mají následující výhody:
 
-![][1]
-
-Centra oznámení je připravené k použití nabízené modul má následující výhody:
-
-* **Různé platformy**
-
-  * Podpora pro všechny hlavní nabízené platformy včetně iOS, Android, Windows a Kindle a Baidu.
-  * Společné rozhraní k replikaci na všech platformách ve formátech specifické pro platformu a nezávislé na platformě žádná práce specifické pro platformu.
-  * Zařízení zpracovávat správu na jednom místě.
-* **Mezi back-EndY**
-  
-  * Cloudu nebo místně
-  * Rozhraní .NET, Node.js, Java, atd.
-* **Bohatá sada schémat doručování**:
-
-  * *Všesměrové vysílání pro jednu nebo více platforem*: můžete můžete okamžitě všesměrového vysílání na miliony zařízení napříč platformami pomocí jednoho volání rozhraní API.
-  * *Vložit zařízení*: oznámení pro jednotlivá zařízení, můžete vybrat.
-  * *Oznámení uživateli*: funkce značky a šablony můžete dosáhnout všechna zařízení a platformy uživatele.
-  * *Nabízená instalace segment s dynamické značky*: funkce značky vám pomůže segment zařízení a nabízené podle svých potřeb, zda jsou odesílání do jednoho segmentu nebo výraz segmentů (například active život o AND v Praze není nového uživatele). Místo je omezena na protokol pub-sub, můžete aktualizovat zařízení značky kdekoliv a kdykoliv.
-  * *Lokalizované nabízené*: funkce šablony vám pomůže dosáhnout lokalizace bez ovlivnění back-end kód.
-  * *Tichou nabízené*: vzoru nabízené pro vyžádání obsahu můžete umožňuje odesílání tichou oznámení do zařízení a jejich dokončení určité si nebo akce, která aktivuje.
-  * *Naplánované nabízené*: můžete naplánovat kdykoli odeslat oznámení.
-  * *Přímé nabízené*: můžete přeskočit registraci zařízení v naší službě a přímo dávky nabízené seznam popisovačů zařízení.
-  * *Přizpůsobené nabízené*: zařízení nabízené proměnné pomáhá odeslat konkrétní zařízení přizpůsobené nabízená oznámení pomocí vlastní páry klíč hodnota.
-* **Bohatá telemetrie**
-  
-  * Obecné nabízená oznámení, zařízení, chyby a operaci telemetrie je k dispozici na webu Azure portal a programově.
-  * Za zpráva Telemetrie sleduje každý nabízené z úvodního požadavku volání naši službu nabízených oznámení se úspěšně dávkování.
-  * Zpětná vazba systému oznámení platformy komunikuje všechny zpětnou vazbu ze systémů oznámení čip jako pomůcku při ladění.
-* **Škálovatelnost** 
-  
-  * Odeslání rychlé zprávy na miliony zařízení bez horizontálního dělení předělávání architektury nebo zařízení.
-* **Zabezpečení**
-
-  * Sdílený tajný klíč přístupového (SAS) nebo federovaného ověřování.
+- **Jsou pro různé platformy**
+    - Podporují všechny hlavní platformy, jako je iOS, Android, Windows, Kindle a Baidu.
+    - Nabízejí společné rozhraní pro zasílání oznámení všem platformám ve formátech, které jsou specifické pro danou platformu nebo jsou na ní nezávislé, a to bez práce spojené s určitou platformou.
+    - Správa popisovačů zařízení se provádí na jednom místě.
+- **Jsou pro různé back-endy**
+    - Mohou být cloudové nebo místní.
+    - .NET, Node.js, Java atd.
+- **Bohatá sada schémat doručování**
+    - Můžete vysílat pro jednu nebo více platforem. Jedním voláním rozhraní API můžete hned vysílat do milionů zařízení s různými platformami.
+    - Zasílání zařízení: Oznámení mohou být určena i jednotlivým zařízením.
+    - Zasílání uživateli: Funkce značek a šablon umožňují poslat oznámení všem zařízením uživatele bez ohledu na jejich platformu.
+    - Zasílání segmentu zařízení s využitím dynamických značek: Funkce značek pomáhá segmentovat zařízení a zasílat jim oznámení tak, jak potřebujete. Přitom nezáleží, jestli posíláte oznámení jednomu segmentu nebo výrazu ze segmentů (například aktivní uživatelé AND žijící v určitém městě NOT noví uživatelé). Místo omezení publikování a odebírání můžete kdekoli a kdykoli aktualizovat značky zařízení.
+    - Lokalizovaná oznámení: Funkce šablon umožňuje používat lokalizaci beze změny back-endového kódu.
+    - Tiché nabízení: Vzorec zasílání a přijetí změn můžete aktivovat tím, že zařízením pošlete tichá oznámení, kterými aktivujete určité změny nebo akce.
+    - Plánované nabízení: Posílání oznámení můžete naplánovat na libovolnou dobu.
+    - Přímé nabízení: Registraci zařízení ve službě Notification Hubs můžete přeskočit a oznámení přímo hromadně poslat seznamu popisovačů zařízení.
+    - Přizpůsobené nabízení: Proměnné pro zasílání nabízených oznámení zařízením umožňují posílat přizpůsobená nabízená oznámení určitým zařízením s vlastními dvojicemi klíč-hodnota.
+- **Bohaté telemetrické funkce**
+    - Na webu Azure Portal jsou k dispozici obecné telemetrické funkce poskytující informace o nabízených oznámeních, zařízeních, chybách a provozu.
+    - Telemetrie zprávy sleduje každé nabízené oznámení od počátečního volání až po úspěšné hromadné odeslání nabízených oznámení službou Notification Hubs.
+    - Zpětná vazba systému oznámení platformy oznamuje veškerou zpětnou vazbu systémů PNS, aby bylo možné ji použít k ladění.
+- **Škálovatelnost** 
+    - Rychlé zprávy můžete posílat milionům zařízení bez změny architektury nebo horizontálního dělení zařízení.
+- **Zabezpečení**
+    - K dispozici je sdílený tajný přístupový klíč (SAS) nebo federované ověření.
 
 ## <a name="integration-with-app-service-mobile-apps"></a>Integrace s App Service Mobile Apps
-Pro zajištění plynulého a sjednocujícího prostředí napříč službami Azure nabízí [App Service Mobile Apps] integrovanou podporu pro nabízená oznámení prostřednictvím služby Notification Hubs. Služba [App Service Mobile Apps] nabízí vysoce škálovatelnou a globálně dostupnou platformu pro vývoj mobilních aplikací určenou pro vývojáře a integrátory systémů ve velkých firmách. Přináší bohatou sadu funkcí pro vývojáře pro mobilní zařízení.
+Pro zajištění plynulého a sjednocujícího prostředí napříč službami Azure nabízí [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) integrovanou podporu pro nabízená oznámení prostřednictvím služby Notification Hubs. Služba [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) nabízí vysoce škálovatelnou a globálně dostupnou platformu pro vývoj mobilních aplikací určenou pro vývojáře a integrátory systémů ve velkých firmách. Přináší bohatou sadu funkcí pro vývojáře pro mobilní zařízení.
 
 Vývojáři v Mobile Apps mohou službu Notification Hubs využívat v rámci následujícího pracovního postupu:
 
 1. Načtení popisovače systému PNS zařízení
-2. Registrace zařízení s Notification Hubs prostřednictvím vhodné API registraci Mobile Apps Client SDK
-   * Mějte na paměti, že služba Mobile Apps odstraní z bezpečnostních důvodů při registraci všechny značky. Služba Notification Hubs vám umožní přiřadit značky k zařízením přímo z back-endu.
-3. Odesílání oznámení z back-endu aplikace pomocí Notification Hubs
+2. Registrace zařízení ve službě Notification Hubs se provádí pohodlně v registračním rozhraní API sady Mobile Apps Client SDK.
+
+    > [!NOTE]
+    > Mějte na paměti, že služba Mobile Apps odstraní z bezpečnostních důvodů při registraci všechny značky. Služba Notification Hubs vám umožní přiřadit značky k zařízením přímo z back-endu.
+1. Odesílání oznámení z back-endu aplikace pomocí Notification Hubs
 
 Zde jsou některé výhody, které vývojáři získají díky této integraci:
 
-* **Mobilní aplikace klientské sady SDK**: tyto multiplatformní sady SDK poskytují jednoduchá rozhraní API pro registraci a komunikují s centrem oznámení propojeným s mobilní aplikace automaticky. Vývojáři se nemusí zabývat přihlašovacími údaji pro Notification Hubs a pracovat s další službou.
-
-  * *Oznámení uživateli*: SDK automaticky označí dané zařízení s Mobile Apps ověřené ID uživatele pro povolení nabízené uživatelský scénář.
-  * *Vložit zařízení*: SDK automaticky používají instalační ID Mobile Apps jako identifikátor GUID pro registraci v Notification Hubs, což vývojáře potíže Správa více identifikátorů GUID služby.
-* **Instalační model**: Mobile Apps pracuje s nejnovějším modelem nabízených oznámení centra oznámení představují všechny vlastnosti nabízených oznámení související se zařízením v instalaci JSON, který zarovnaná s služeb nabízených oznámení a je snadno použitelný.
-* **Flexibilita**: vývojáři se vždy mohou rozhodnout pracovat přímo s Notification Hubs i s integrací na místě.
-* **Integrované prostředí na [portál Azure]**: oznámení v Mobile Apps vizuálně reprezentována funkce a vývojáři mohou snadno pracovat s přidruženým centrem oznámení přes Mobile Apps.
+- **Sady Mobile Apps Client SDK:** Tyto sady jsou univerzální pro všechny platformy. Nabízejí jednoduchá rozhraní API pro registraci a automatickou komunikaci s centrem oznámení automaticky propojeným s mobilní aplikací. Vývojáři se nemusí zabývat přihlašovacími údaji pro Notification Hubs a pracovat s další službou.
+    - *Zasílání nabízených oznámení uživatelům:* Sady SDK automaticky označí dané zařízení ověřeným ID funkce Mobile Apps, aby byl možný scénář nabízených oznámení pro uživatele.
+    - *Zasílání nabízených oznámení zařízením:* Sady SDK k registraci ve službě Notification Hubs automaticky používají instalační ID funkce Mobile Apps jako identifikátor GUID, aby vývojáři nemuseli spravovat identifikátory GUID různých služeb.
+- **Instalační model:** Funkce Mobile Apps pracuje s nejnovějším modelem nabízených oznámení služby Notification Hubs. Zastupuje všechny vlastnosti nabízených oznámení v instalaci JSON spojené se zařízením, aby vyhovovaly Službě nabízených oznámení a daly se snadno použít.
+- **Flexibilita:** Vývojáři se vždy mohou rozhodnout, že budou pracovat přímo se službou Notification Hubs, i když je tato služba integrovaná.
+- **Integrované prostředí [Azure Portal](https://portal.azure.com)**: Nabízená oznámení jsou v Mobile Apps vizuálně znázorněná jako funkce. Vývojáři mohou prostřednictvím Mobile Apps snadno pracovat s přidruženým centrem oznámení.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Notification Hubs naleznete v těchto tématech:
-
-* **[Jak zákazníci používají Notification Hubs]**
-* **[Kurzy a příručky k Notification Hubs]**
-* **Kurzy Začínáme centra oznámení**: [iOS], [Android], [univerzální pro Windows], [Windows Phone], [ Kindle], [Xamarin.iOS], [Xamarin.Android]
-
-[0]: ./media/notification-hubs-overview/registration-diagram.png
-[1]: ./media/notification-hubs-overview/notification-hub-diagram.png
-[Jak zákazníci používají Notification Hubs]: http://azure.microsoft.com/services/notification-hubs
-[Kurzy a příručky k Notification Hubs]: http://azure.microsoft.com/documentation/services/notification-hubs
-[iOS]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started
-[Android]: http://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started
-[univerzální pro Windows]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started
-[Windows Phone]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started
-[ Kindle]: http://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started
-[Xamarin.iOS]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started
-[Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
-[Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
-[Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-[App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
-[templates]: notification-hubs-templates-cross-platform-push-messages.md
-[portál Azure]: https://portal.azure.com
-[tags]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
+Začínáme vytvářet a používat centrum oznámení podle [kurzu o zasílání nabízených oznámení mobilním aplikacím](notification-hubs-android-push-notification-google-fcm-get-started.md). [0]: ./media/notification-hubs-overview/registration-diagram.png [1]: ./media/notification-hubs-overview/notification-hub-diagram.png [Jak zákazníci používají službu Notification Hubs]: http://azure.microsoft.com/services/notification-hubs [Notification Hubs – kurzy a průvodci]: http://azure.microsoft.com/documentation/services/notification-hubs [iOS]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started [Android]: http://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started [Windows Universal]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started [Windows Phone]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started [Kindle]: http://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started [Xamarin.iOS]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started [Xamarin.Android]: http://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx [Funkce Mobile Apps ve službě App Service]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/ [šablony]: notification-hubs-templates-cross-platform-push-messages.md [Azure Portal]: https://portal.azure.com [značky]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)

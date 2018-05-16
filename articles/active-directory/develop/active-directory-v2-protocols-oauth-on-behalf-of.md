@@ -3,23 +3,25 @@ title: Služba Azure AD v2.0 OAuth2.0 tok On-Behalf-Of | Microsoft Docs
 description: Tento článek popisuje, jak používat zprávy protokolu HTTP k implementaci služeb ověřování pomocí OAuth2.0 tok On-Behalf-Of.
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ccec8df0741870f3dd3ed21be43f96aa8ba90927
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2aa1c33f138619283a8785aaf3772465df6c9aee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 a toku OAuth 2.0 On-Behalf-Of
 On-Behalf-Of OAuth 2.0, které toku slouží případ použití, kde aplikace volá služby nebo webové rozhraní API, který se pak musí volat jiné služby nebo webové rozhraní API. Cílem je potřebný k šíření identity delegované uživatele a oprávnění pomocí řetězce požadavků. Pro službu střední vrstvy provést ověřené žádosti o připojení ke službě podřízené potřebuje přístupový token zabezpečení ze služby Azure Active Directory (Azure AD) jménem uživatele.
@@ -30,10 +32,10 @@ On-Behalf-Of OAuth 2.0, které toku slouží případ použití, kde aplikace vo
 >
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
-Předpokládejme, že má uživatel ověřen na aplikace pomocí [tok poskytování autorizačních kódů OAuth 2.0](active-directory-v2-protocols-oauth-code.md).  V tomto okamžiku aplikace má přístupový token *pro rozhraní API A* (token A) s deklarací identity uživatele a souhlasu pro přístup k střední vrstvě webové rozhraní API (rozhraní API A). Rozhraní API A potřebuje teď, aby požadavek na ověřeného k podřízené webové rozhraní API (API B).
+Předpokládejme, že má uživatel ověřen na aplikace pomocí [tok poskytování autorizačních kódů OAuth 2.0](active-directory-v2-protocols-oauth-code.md). V tomto okamžiku aplikace má přístupový token *pro rozhraní API A* (token A) s deklarací identity uživatele a souhlasu pro přístup k střední vrstvě webové rozhraní API (rozhraní API A). Rozhraní API A potřebuje teď, aby požadavek na ověřeného k podřízené webové rozhraní API (API B).
 
 > [!IMPORTANT]
-> Tokeny získaných pomocí [implicitní grant](active-directory-v2-protocols-implicit.md) nelze použít pro tok On-Behalf-Of.  Klient v implcit toky není ověřen (prostřednictvím například tajný klíč klienta) a proto by nemělo být povoleno bootstrap do druhého, které by mohly mít výkonnější tokenu.
+> Tokeny získaných pomocí [implicitní grant](active-directory-v2-protocols-implicit.md) nelze použít pro tok On-Behalf-Of. Klient v implcit toky není ověřen (prostřednictvím například tajný klíč klienta) a proto by nemělo být povoleno bootstrap do druhého, které by mohly mít výkonnější tokenu.
 
 Kroky, které následují tvoří tok On-Behalf-Of a jsou vysvětleny za pomoci následující diagram.
 
@@ -64,12 +66,12 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadované | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
-| client_id |Požadované | ID aplikace, která [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
-| tajný klíč client_secret |Požadované | Tajný klíč aplikace generovaný pro aplikaci v portálu pro registraci aplikace. |
-| Kontrolní výraz |Požadované | Hodnota tokenu používaného v požadavku. |
-| scope |Požadované | Mezeru oddělený seznam obory pro požadavek tokenu. Další informace najdete v tématu [obory](active-directory-v2-scopes.md).|
-| requested_token_use |Požadované | Určuje, jak by měl být požadavek zpracovat. Hodnota tok On-Behalf-Of, musí být **on_behalf_of**. |
+| grant_type |povinné | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
+| client_id |povinné | ID aplikace, která [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
+| tajný klíč client_secret |povinné | Tajný klíč aplikace generovaný pro aplikaci v portálu pro registraci aplikace. |
+| Kontrolní výraz |povinné | Hodnota tokenu používaného v požadavku. |
+| scope |povinné | Mezeru oddělený seznam obory pro požadavek tokenu. Další informace najdete v tématu [obory](active-directory-v2-scopes.md).|
+| requested_token_use |povinné | Určuje, jak by měl být požadavek zpracovat. Hodnota tok On-Behalf-Of, musí být **on_behalf_of**. |
 
 #### <a name="example"></a>Příklad:
 Následující HTTP POST požadavky přístupový token a obnovovací token s `user.read` pro obor https://graph.microsoft.com webové rozhraní API.
@@ -94,13 +96,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| grant_type |Požadované | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
-| client_id |Požadované | ID aplikace, která [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
-| client_assertion_type |Požadované |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Požadované | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci.  Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|
-| Kontrolní výraz |Požadované | Hodnota tokenu používaného v požadavku. |
-| requested_token_use |Požadované | Určuje, jak by měl být požadavek zpracovat. Hodnota tok On-Behalf-Of, musí být **on_behalf_of**. |
-| scope |Požadované | Mezeru oddělený seznam obory pro požadavek tokenu. Další informace najdete v tématu [obory](active-directory-v2-scopes.md).|
+| grant_type |povinné | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
+| client_id |povinné | ID aplikace, která [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) přiřazené vaší aplikaci. |
+| client_assertion_type |povinné |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |povinné | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|
+| Kontrolní výraz |povinné | Hodnota tokenu používaného v požadavku. |
+| requested_token_use |povinné | Určuje, jak by měl být požadavek zpracovat. Hodnota tok On-Behalf-Of, musí být **on_behalf_of**. |
+| scope |povinné | Mezeru oddělený seznam obory pro požadavek tokenu. Další informace najdete v tématu [obory](active-directory-v2-scopes.md).|
 
 Všimněte si, že parametry jsou téměř stejné jako v případě požadavku pomocí sdílený tajný klíč, s tím rozdílem, že parametr tajný klíč client_secret je nahrazena dva parametry: client_assertion_type a client_assertion.
 
@@ -149,7 +151,7 @@ Následující příklad ukazuje tokenu pro úspěšná odpověď na žádost o 
 ```
 
 > [!NOTE]
-> Všimněte si, že výše přístupový token je token formátu V1.  Je to proto, že token je k dispozici podle prostředků přistupuje.  Microsoft Graph požaduje V1 tokeny, takže Azure AD vytváří V1 přístupové tokeny, když klient požádá o tokeny pro Microsoft Graph.  Jenom aplikace by měla vypadat v přístupové tokeny – klienti obvykle není nutné je zkontrolovat. 
+> Všimněte si, že výše přístupový token je token formátu V1. Je to proto, že token je k dispozici podle prostředků přistupuje. Microsoft Graph požaduje V1 tokeny, takže Azure AD vytváří V1 přístupové tokeny, když klient požádá o tokeny pro Microsoft Graph. Jenom aplikace by měla vypadat v přístupové tokeny – klienti obvykle není nutné je zkontrolovat. 
 
 
 ### <a name="error-response-example"></a>Příklad chybové odpovědi

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3391213600300067ad1685e4f8cccacbf52de86e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Graph API
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
@@ -121,7 +121,7 @@ Jako příklad budeme pracovat s jednoduchou sociální sítí se čtyřmi lidmi
 Obor názvů `Microsoft.Azure.Graphs.Elements` poskytuje třídy `Vertex`, `Edge`, `Property` a `VertexProperty` pro deserializaci odpovědí GraphSON do dobře definovaných objektů .NET.
 
 ## <a name="run-gremlin-using-creategremlinquery"></a>Spuštění Gremlin pomocí CreateGremlinQuery
-Gremlin stejně jako SQL podporuje operace čtení, zápisu a dotazování. Například následující fragment kódu ukazuje, jak vytvořit vrcholy, hrany, provést několik ukázkových dotazů pomocí `CreateGremlinQuery<T>` a asynchronně iterovat těmito výsledky pomocí `ExecuteNextAsync` a HasMoreResults.
+Gremlin stejně jako SQL podporuje operace čtení, zápisu a dotazování. Například následující fragment kódu ukazuje, jak vytvořit vrcholy, hrany, provést několik ukázkových dotazů pomocí `CreateGremlinQuery<T>` a asynchronně iterovat těmito výsledky pomocí `ExecuteNextAsync` a `HasMoreResults`.
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>

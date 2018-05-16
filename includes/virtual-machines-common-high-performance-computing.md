@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines-linux, virtual-machines-windows
+author: dlepow
+ms.service: multiple
+ms.topic: include
+ms.date: 05/11/2018
+ms.author: danlep
+ms.custom: include file
+ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/12/2018
+---
 Organizace mají rozsáhlé výpočetní potřebám. Tyto úlohy Big Compute zahrnují technického návrhu a analýzy, výpočtů finančních rizik, vykreslování obrázků, komplexního modelování, simulací typu Monte Carlo a další. 
 
 Použijte Azure cloud pro efektivní spouštění výpočetně náročných úloh Linux a Windows, z paralelní dávkové úlohy pro tradiční HPC simulace. Spusťte vaše prostředí HPC a úloh služby batch na infrastrukturu Azure, s možností výpočetní služby, správci mřížky, Marketplace řešení a aplikace hostované dodavatele (SaaS). Azure poskytuje flexibilní řešení k rozložení práce a škálování na tisíce virtuálních počítačů nebo jader a pak vertikálně snížit kapacitu, až budete potřebovat méně prostředků. 
@@ -21,6 +37,7 @@ Použijte Azure cloud pro efektivní spouštění výpočetně náročných úlo
 * **Velkých výpočetních řešení jako služby**
     * Vývoj vlastních řešení Big Compute a pracovních postupů pomocí [Azure Batch](#azure-batch) a související [služby Azure](#related-azure-services).
     * Spustit Azure inženýrství a simulace řešeních s infrastrukturou od dodavatelů, včetně [Altair](http://www.altair.com/), [nastavit velikost](https://www.rescale.com/azure/), a [Cycle Computing](https://cyclecomputing.com/) (teď [propojit s Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
+    * Použití [Cray superpočítače](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) jako služby hostované v Azure.
 * **Řešení Marketplace.**
     * Použití rozsahu [aplikace prostředí HPC](#hpc-applications) a [řešení](#marketplace-solutions) nenabízí [Azure Marketplace](https://azuremarketplace.microsoft.com/). 
     
@@ -30,7 +47,7 @@ Další informace o podpůrné technologie a odkazy na pokyny naleznete v násle
 
 
 
-## <a name="marketplace-solutions"></a>Řešení Marketplace.
+## <a name="marketplace-solutions"></a>Řešení na Marketplace
 
 Přejděte [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) pro systémy Linux a virtuální počítač s Windows Image a řešení pro prostředí HPC. Příklady obsahují:
 
@@ -107,17 +124,18 @@ Naučte se:
 * [Použít ukázky kódu Azure Batch](https://github.com/Azure/azure-batch-samples)
 * [Pomocí služby Batch použijte virtuální počítače s nízkou prioritou](../articles/batch/batch-low-pri-vms.md)
 * [Spusťte kontejnerizované úlohy HPC s loděnice Batch](https://github.com/Azure/batch-shipyard)
-* [Použití jazyka R pomocí služby Batch](https://github.com/Azure/doAzureParallel)
-* [Sada nástrojů Azure distribuované dat inženýrství spustili Batch](https://github.com/Azure/aztk)
+* [Paralelní úlohy R spustili Batch](https://github.com/Azure/doAzureParallel)
+* [Spouštění úloh na vyžádání Spark na dávky](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>Správce úloh
 
 Následují příklady manažerů clusteru a úlohy, které můžou běžet v infrastruktury Azure. Vytvoření samostatné clusterů ve virtuálních počítačích Azure nebo shluků k virtuálním počítačům Azure z místního clusteru. 
+* [Výpočetní Alces letu](https://azuremarketplace.microsoft.com/marketplace/apps/alces-flight-limited.alces-flight-compute-solo?tab=Overview)
 * [TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/) 
 * [Jasně Správce clusteru](http://www.brightcomputing.com/technology-partners/microsoft)
 * [IBM spektrum Symphony a Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/)
 * [PBS Pro](http://pbspro.org)
-* [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029(v=ws.11).aspx) -najdete v části Možnosti spuštění v [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuální počítače 
+* [Microsoft HPC Pack](https://technet.microsoft.com/library/mt744885.aspx) -najdete v části Možnosti spuštění v [Windows](../articles/virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a [Linux](../articles/virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) virtuální počítače 
 
 
 
@@ -127,7 +145,7 @@ Ve velkém měřítku Batch a prostředí HPC zatížení mají požadavky pro �
 
 Další informace:
 
-* [Systémy souborů paralelní HPC úložiště v Azure](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* [Paralelní systémy virtuální souborů v Azure](https://azure.microsoft.com/resources/parallel-virtual-file-systems-on-microsoft-azure/)
 * Vysoce výkonná řešení cloudové úložiště z [Avere](http://www.averesystems.com/about-us/about-avere) (teď [propojit s Microsoft](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/))
 
 
@@ -144,30 +162,34 @@ Virtuální počítače Azure, sady škálování virtuálního počítače, Bat
 * [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
-* [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
+* [Databricks](../articles/azure-databricks/what-is-azure-databricks.md)
 * [SQL Database](../articles/sql-database/sql-database-technical-overview.md)
 
-### <a name="ai-and-cognitive-services"></a>AI a kognitivní služby
+### <a name="ai-and-machine-learning"></a>AI a machine learningu
+* [Služby Machine Learning](../articles/machine-learning/service/overview-what-is-azure-ml.md)
 * [Batch AI](../articles/batch-ai/overview.md)
+* [Genomika](../articles/genomics/overview-what-is-genomics.md)
 
 ### <a name="networking"></a>Sítě
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
 * [ExpressRoute](../articles/expressroute/expressroute-introduction.md)
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 * [Container Service](../articles/container-service/dcos-swarm/container-service-intro.md)
+* [Služba Azure Kubernetes (AKS)](../articles/aks/intro-kubernetes.md)
 * [Container Registry](../articles/container-registry/container-registry-intro.md)
 
 
 
 ## <a name="customer-stories"></a>Příběhy zákazníků
 
-Zde jsou příklady zákazníky, kteří mají vyřešit obchodní problémy s řešeními Azure HPC:
+Příklady zákazníky, kteří mají vyřešit obchodní problémy s řešeními Azure HPC:
 
 * [ANEO](https://customers.microsoft.com/story/it-provider-finds-highly-scalable-cloud-based-hpc-redu) 
-* [AXA Global P&C](https://customers.microsoft.com/story/axa-global-p-and-c)
+* [AXA globální P & C](https://customers.microsoft.com/story/axa-global-p-and-c)
 * [Axioma](https://customers.microsoft.com/story/axioma-delivers-fintechs-first-born-in-the-cloud-multi-asset-class-enterprise-risk-solution)
 * [d3View](https://customers.microsoft.com/story/big-data-solution-provider-adopts-new-cloud-gains-thou)
+* [SYSTÉM SOUBORŮ EFS](https://customers.microsoft.com/story/efs-professionalservices-azure)
 * [Hymans Robertson](https://customers.microsoft.com/story/hymans-robertson)
 * [MetLife](https://enterprise.microsoft.com/en-us/customer-story/industries/insurance/metlife/)
 * [Microsoft Research](https://customers.microsoft.com/doclink/fast-lmm-and-windows-azure-put-genetics-research-on-fa)
@@ -178,10 +200,10 @@ Zde jsou příklady zákazníky, kteří mají vyřešit obchodní problémy s �
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o řešeních pro Big Compute pro [technici simulace](https://simulation.azure.com/), [vykreslování](https://simulation.azure.com/), [bankovnictví a kapitálové trhů](https://finance.azure.com/), a [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
+* Další informace o řešeních pro Big Compute pro [technici simulace](https://simulation.azure.com/), [vykreslování](https://azure.microsoft.com/solutions/big-compute/rendering/), [bankovnictví a kapitálové trhů](https://finance.azure.com/), a [genomika](https://enterprise.microsoft.com/en-us/industries/health/genomics/) .
 * Podívejte se na aktuální novinky na [blogu týmu pro Microsoft HPC a Batch](http://blogs.technet.com/b/windowshpc/) a [blogu Azure](https://azure.microsoft.com/blog/tag/hpc/).
 
-* Používat spravované a škálovatelné Azure [Batch](https://azure.microsoft.com/services/batch/) služby spouštění výpočetně náročných úloh bez Správa základní infrastruktury [Další informace](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
+* Používat spravované a škálovatelné Azure [Batch](https://azure.microsoft.com/services/batch/) služby spouštění výpočetně náročných úloh bez Správa základní infrastruktury [Další informace](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/)
 
 
 

@@ -1,19 +1,19 @@
 ---
-title: "Nasazení moduly pro hraniční Azure IoT | Microsoft Docs"
-description: "Další informace o získání nasazení modulů do hraniční zařízení"
+title: Nasazení moduly pro hraniční Azure IoT | Microsoft Docs
+description: Další informace o získání nasazení modulů do hraniční zařízení
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Pochopení IoT Edge nasazení jednoho zařízení nebo ve velkém měřítku – náhled
 
@@ -59,7 +59,7 @@ Konfigurace metadata pro každý modul zahrnují:
 
 Cílovou podmínku nepřetržitě vyhodnotí zahrnout všechny nová zařízení, které splňují požadavky nebo odeberte zařízení, které už se provést prostřednictvím doba životnosti nasazení. Nasazení bude znovu aktivovat, pokud služba zjistí všechny změny stavu cíl. Například máte nasazení A, který má na cílový stav tags.environment = 'produkčního'. Pokud ji nasazení, neexistují 10 produkčnímu zařízení. Moduly jsou úspěšně nainstalováni v těchto 10 zařízení. Stav agenta Edge IoT se zobrazí jako 10 Celkový počet zařízení, 10 úspěšně odpovědi, 0 selhání odpovědí a 0 čekající odpovědi. Nyní přidáte 5 Další zařízení, s tags.environment = 'produkčního'. Služba zjistí změnu a stav agenta na IoT Edge stane 15 celkový počet zařízení, 10 úspěšně odpovědi, 0 selhání odpovědí a 5 čekající odpovědi při pokusu o nasazení na pět nových zařízení.
 
-Všechny logické podmínku můžete použijte na značky dvojčata zařízení nebo deviceId k výběru cílových zařízení. Pokud chcete použít podmínku s značkami, budete muset přidat "značky" kapitoly :{} dvojče zařízení v rámci stejné úrovni jako vlastnosti. [Další informace o značkách v dvojče zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+Všechny logické podmínku můžete použijte na značky dvojčata zařízení nebo deviceId k výběru cílových zařízení. Pokud chcete použít podmínku s značkami, budete muset přidat "značky":{} část v dvojče zařízení v rámci stejné úrovni jako vlastnosti. [Další informace o značkách v dvojče zařízení](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Příklady podmínek cíl:
 * deviceId = 'linuxprod1.

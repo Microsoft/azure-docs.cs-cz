@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Doporučené postupy pro zabezpečení virtuálního počítače Azure
 
@@ -55,7 +55,7 @@ Když povolíte zásady Resource Manager a RBAC pro řízení přístupu virtuá
 
 - [Virtuální počítač Přispěvatel](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): můžete spravovat virtuální počítače, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojené.
 - [Classic Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): můžete spravovat virtuální počítače vytvořené pomocí modelu nasazení classic, ale není virtuální sítě nebo úložiště účet ke kterému jsou připojené virtuální počítače.
-- [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-manager): můžete spravovat součásti zabezpečení, zásady zabezpečení a virtuálních počítačů.
+- [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-admin): můžete spravovat zabezpečení komponenty a zásady zabezpečení.
 - [Uživatel DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user): můžete zobrazit vše, co a připojení, spuštění, restartování a vypnout virtuální počítače.
 
 Nesdílejte účty a hesla mezi správci a nemáte opakovaně používat hesla mezi více uživatelských účtů nebo služeb, zejména hesla pro sociálních médií nebo dalšími aktivitami bez oprávnění správce. V ideálním případě byste měli používat [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) šablony bezpečně nastavit virtuální počítače. Pomocí tohoto přístupu může posílit vaše volby nasazení a vynucení nastavení zabezpečení v rámci nasazení.

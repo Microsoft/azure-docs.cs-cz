@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 05/03/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f9ad01d3194ee0f8be4c3b4321c83c4bb15ea55c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 888f74d215956f4ad38605ca247f681da700a787
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Rychlý úvod: Nasazení první modul IoT Edge na portálu Azure do zařízení se systémem Windows – náhled
 
@@ -21,7 +21,7 @@ V tento rychlý start použijte k nasazení předem kód vzdáleně na IoT hrani
 
 Pokud nemáte aktivní předplatné Azure, vytvořte [bezplatný účet] [ lnk-account] před zahájením.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz předpokládá, že používáte počítač nebo virtuální počítač se systémem Windows k simulaci zařízení s Internet věcí. Pokud používáte systém Windows ve virtuálním počítači, povolte [vnořené virtualizace] [ lnk-nested] a přidělit nejméně 2 GB paměti. 
 
@@ -29,7 +29,7 @@ Tento kurz předpokládá, že používáte počítač nebo virtuální počíta
    * Windows 10 
    * Windows Server
 2. Nainstalujte [Docker pro systém Windows] [ lnk-docker] a ujistěte se, že je spuštěna.
-3. Nainstalujte [Python 2.7 v systému Windows] [ lnk-python] a ujistěte se, můžete použít příkaz pip.
+3. Nainstalujte [Python v systému Windows] [ lnk-python] a ujistěte se, můžete použít příkaz pip. Tento rychlý start byla testována s verzí Python > = 2.7.9 a > = 3.5.4.  
 4. Spusťte následující příkaz se stáhnout skript řízení IoT okraj.
 
    ```cmd
@@ -100,7 +100,7 @@ docker ps
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
-## <a name="view-generated-data"></a>Vygeneruje zobrazení dat
+## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
 V tento rychlý start vytvořit nové zařízení IoT okraj a na něm nainstalován modul runtime IoT okraj. Potom použít portál Azure k modul IoT okraj ke spuštění na zařízení bez nutnosti měnit samotné zařízení. V takovém případě modul, který jste nabídnutých vytvoří prostředí data, která můžete použít pro kurzů k. 
 

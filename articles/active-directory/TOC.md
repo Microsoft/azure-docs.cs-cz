@@ -185,27 +185,27 @@
 ##### [Vlastní domény](manage-apps/application-proxy-configure-custom-domain.md)
 #### [Jednotné přihlašování](manage-apps/application-proxy-single-sign-on.md)
 ##### [Jednotné přihlašování s KCD](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-##### [Jednotné přihlašování se záhlavími](application-proxy-ping-access.md)
-##### [Jednotné přihlašování s ukládáním hesel do trezoru](application-proxy-sso-azure-portal.md)
+##### [Jednotné přihlašování se záhlavími](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md)
+##### [Jednotné přihlašování s ukládáním hesel do trezoru](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 #### Koncepty
-##### [Konektory](application-proxy-understand-connectors.md)
-##### [Zabezpečení](application-proxy-security-considerations.md)
-##### [Sítě](application-proxy-network-topology-considerations.md)
+##### [Konektory](manage-apps/application-proxy-connectors.md)
+##### [Zabezpečení](manage-apps/application-proxy-security.md)
+##### [Sítě](manage-apps/application-proxy-network-topology.md)
 
 
-##### [Upgrade z TMG nebo UAG](application-proxy-transition-from-uag-tmg.md)
+##### [Upgrade z TMG nebo UAG](manage-apps/application-proxy-migration.md)
 
 #### Pokročilá konfigurace
-##### [Publikování v samostatných sítích](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Proxy servery](application-proxy-working-with-proxy-servers.md)
-##### [Aplikace pracující s deklaracemi](active-directory-application-proxy-claims-aware-apps.md)
-##### [Nativní klientské aplikace](active-directory-application-proxy-native-client.md)
-##### [Bezobslužná instalace](active-directory-application-proxy-silent-installation.md)
-##### [Vlastní domovská stránka](application-proxy-office365-app-launcher.md)
-##### [Převod vložených odkazů](application-proxy-link-translation.md)
+##### [Publikování v samostatných sítích](manage-apps/application-proxy-connector-groups.md)
+##### [Proxy servery](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
+##### [Aplikace pracující s deklaracemi](manage-apps/application-proxy-configure-for-claims-aware-applications.md)
+##### [Nativní klientské aplikace](manage-apps/application-proxy-configure-native-client-application.md)
+##### [Bezobslužná instalace](manage-apps/application-proxy-register-connector-powershell.md)
+##### [Vlastní domovská stránka](manage-apps/application-proxy-configure-custom-home-page.md)
+##### [Převod vložených odkazů](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
 #### Názorné postupy publikování
-##### [Vzdálená plocha](application-proxy-publish-remote-desktop.md)
-##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Vzdálená plocha](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
+##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 

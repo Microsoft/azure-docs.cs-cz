@@ -350,16 +350,18 @@
           href: data-factory-service-identity.md
     - name: Monitorování a správa
       items:
-        - name: Použití sad SDK
-          href: monitor-programmatically.md
-        - name: Použití Azure Monitoru
-          href: monitor-using-azure-monitor.md
         - name: Vizuální monitorování
           href: monitor-visually.md
-        - name: Správa prostředí Azure-SSIS Integration Runtime
-          href: manage-azure-ssis-integration-runtime.md
+        - name: Monitorování pomocí služby Azure Monitor
+          href: monitor-using-azure-monitor.md
+        - name: Monitorování pomocí sad SDK
+          href: monitor-programmatically.md
         - name: Monitorování prostředí Integration Runtime
           href: monitor-integration-runtime.md
+        - name: Monitorování prostředí Azure-SSIS Integration Runtime
+          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+        - name: Správa prostředí Azure-SSIS Integration Runtime
+          href: manage-azure-ssis-integration-runtime.md
     - name: Vytvoření prostředí Integration Runtime
       items:
         - name: Prostředí Azure Integration Runtime
@@ -370,24 +372,22 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Spouštění balíčků služby SSIS v Azure
       items:
-        - name: Vlastní nastavení pro prostředí Azure-SSIS Integration Runtime
-          href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime
-          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
           href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Správa prostředí Azure-SSIS Integration Runtime
-          href: manage-azure-ssis-integration-runtime.md
-        - name: Konfigurace nastavení výkonu prostředí Azure-SSIS Integration Runtime
+        - name: Konfigurace vysokého výkonu pro Azure-SSIS Integration Runtime
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Spouštění balíčků služby SSIS pomocí aktivity SSIS
+        - name: Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime
+          href: how-to-configure-azure-ssis-ir-enterprise-edition.md
+        - name: Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
+          href: how-to-configure-azure-ssis-ir-custom-setup.md
+        - name: Nasazení licencovaných komponent pro Azure-SSIS Integration Runtime
+          href: how-to-develop-azure-ssis-ir-licensed-components.md
+        - name: Spouštění balíčků služby SSIS s aktivitami SSIS
           href: how-to-invoke-ssis-package-ssis-activity.md
-        - name: Spouštění balíčků služby SSIS pomocí aktivity uložených procedur
+        - name: Spouštění balíčků služby SSIS s aktivitami uložených procedur
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
         - name: Plánování prostředí Azure-SSIS Integration Runtime
           href: how-to-schedule-azure-ssis-integration-runtime.md
-        - name: Vývoj licencovaných komponent pro Azure-SSIS Integration Runtime
-          href: how-to-develop-azure-ssis-ir-licensed-components.md
     - name: Vytvoření aktivačních událostí
       items:
         - name: Vytvoření aktivační události plánu

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2018
+ms.date: 05/07/2018
 ms.author: billmath
-ms.openlocfilehash: de6c56df201e5f22c5c5884d0d8fffc1f07ec625
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkce. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -34,6 +34,63 @@ Kroky pro upgrade z Azure AD Connect | Různých způsobů [upgrade z předchoz�
 Požadovaná oprávnění | Oprávnění potřebná k použití aktualizace, najdete v části [účty a oprávnění](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Stáhněte si | [Stažení Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="118190"></a>1.1.819.0
+
+5, 4 nebo 2018: vydání pro automatický upgrade, bude brzy k dispozici ke stažení.
+
+
+
+### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
+
+Nové funkce a vylepšení
+
+
+- Tato verze zahrnuje integraci PingFederate verzi public preview ve službě Azure AD Connect. V této verzi můžete snadno zákazníky a spolehlivé konfigurace prostředí Azure Active Directory tak, aby využívala PingFederate jako jejich poskytovatel federace. Další informace o tom, jak použít tuto novou funkci, navštivte naše [online dokumentaci](active-directory-aadconnect-user-signin.md#federation-with-pingfederate). 
+- Aktualizovali jsme Azure AD Connect Průvodce Poradce při potížích, kde budeme analyzovat teď další chyby scénáře, jako jsou propojená poštovní schránky a dynamických skupin AD. Další informace o odstraňování potíží nástroje [zde](active-directory-aadconnect-troubleshoot-objectsync.md).
+- Konfigurace zpětný zápis zařízení je nyní spravují výhradně v rámci Azure AD Connect průvodce.
+- Nové prostředí PowerShell modul volané ADSyncTools.psm1 se přidá, kterého chcete-li vyřešit potíže s připojením k SQL a různé další nástroje řešení potíží. Další informace o modulu ADSyncTools [zde](active-directory-aadconnect-tshoot-sql-connectivity.md). 
+- Byla přidána nová úloha další "Možnosti konfigurace zařízení". Úlohu můžete nakonfigurovat dvě následující operace: 
+    -   **Hybridní Azure AD join**: Pokud vaše prostředí disponuje místní AD nároky a vy chcete také výhody z možnosti poskytované službou Azure Active Directory, můžete implementovat hybridní Azure AD, které jsou připojené k zařízení. Jedná se o zařízení, které jsou obě, připojený k místní službě Active Directory a Azure Active Directory.
+    -   **Zpětný zápis zařízení**: zpětný zápis zařízení slouží k povolení podmíněného přístupu podle zařízení do služby AD FS (2012 R2 nebo vyšší) chráněný zařízení
+
+   >[!NOTE] 
+   > - Možnost povolit zpětný zápis zařízení z přizpůsobit možnosti synchronizace bude aktivní. 
+   > -  V této verzi je zastaralý modul PowerShell nástroje ADPrep.
+
+
+
+### <a name="fixed-issues"></a>Opravené problémy 
+
+
+- Synchronizace zpracování pravidla: odchozí pravidla synchronizace spojení s podmínkou žádné připojení musí být zrušte použité, pokud syncrule nadřazené není nadále vhodné
+- Azure AD Connect průvodce: Chyba při vytváření účtu AD Connector. Pokud Azure AD Connect je v pracovní skupině.
+- Azure AD Connect průvodce: Na Azure AD přihlašovací stránka zobrazí políčka ověření vždy, když je jakákoli Neshoda v doménami AD a Azure AD ověřeno domén
+- Automatický upgrade prostředí PowerShell oprava správně nastavené automatické aktualizace stavu v některých případech po pokusu o automatický upgrade.
+- Azure AD Connect průvodce: Aktualizovat telemetrie k zachycení dříve chybějící informace o
+- Azure AD Connect průvodce: PTA nainstalovat agenta před převedením domény spravovat
+- Azure AD Connect průvodce: Nepřevádějí uživatelé spravovaných (převést pouze doména) pro PTA
+- Azure AD Connect průvodce: AD FS více domény výraz Regex není správný když má uživatele (UPN) se aktualizace Regex speciální znak pro podporu speciální znaky
+- Azure AD Connect průvodce: Odeberte nesprávné zpráva "Konfigurace zdrojové ukotvení atribut", pokud žádná změna 
+- Connect Azure AD: Služby AD FS podpora průvodce Pro scénář duální federace
+- Azure AD Connect průvodce: AD FS deklarace identity se neaktualizují pro přidání domény při převodu spravované doméně federovaný
+- Azure AD Connect průvodce: Během zjišťování nainstalované balíčky, se nám najít zastaralé Dirsync nebo Azure AD Sync nebo Azure AD Connect související produkty. Nemůžeme se nyní pokusí odinstalovat zastaralé produkty.
+- Azure AD Connect průvodce: Správný chyba zpráva mapování při selhání instalace agenta průchozí ověřování
+- Azure AD Connect průvodce: Odebrat kontejner "Konfigurace" z filtrování organizační jednotky domény stránky
+- Nainstalovat synchronizační modul: odeberte nepotřebné starší verze logiky, která příležitostně se nezdařilo z instalace msi synchronizačního modulu
+- Azure AD Connect průvodce: Oprava místní Nápověda text na stránce volitelné funkce synchronizace hodnot Hash hesel
+- Synchronizovat modulu runtime: Opravte scénáři, kde má objekt CS importované odstranit a synchronizační pravidla se pokusí znovu zřídit objektu.
+- Synchronizovat modulu runtime: nápovědu přidat odkaz na Online připojení k řešení potíží s průvodce do protokolu událostí pro chybu Import
+- Synchronizovat modulu runtime: omezení využití paměti plánovače synchronizace při vytváření výčtu konektory
+- Azure AD Connect průvodce: Opravte problém řešení vlastní účet služby synchronizace, který má oprávnění pro čtení AD
+- Azure AD Connect průvodce: Zlepšení protokolování domény a organizační jednotky filtrování výběr
+- Azure AD Connect průvodce: AD FS přidat výchozí deklarací pro vztah důvěryhodnosti federace vytvořit pro scénář vícefaktorového ověřování
+- Azure AD Connect průvodce: AD FS nasadit WAP: Přidání serveru nepodaří pomocí nového certifikátu
+- Azure AD Connect průvodce: DSSO výjimka při onPremCredentials nejsou inicializovány pro doménu 
+- Přednostně toku atributů distinguishedName AD z objektu aktivního uživatele.
+- Pevné kosmetické chyb, kde byl nastaven prioritu první pravidlo synchronizace OOB na 99 místo 100
+
+
 
 ## <a name="117510"></a>1.1.751.0
 Stav 4/12/2018: vydané pouze ke stažení

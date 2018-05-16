@@ -3,23 +3,25 @@ title: Scénáře ověřování pro Azure AD | Microsoft Docs
 description: Poskytuje přehled pět nejběžnějších scénářů ověřování pro Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/24/2018
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f85898d566ea5c6791350df809e960f7e951012d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scénáře ověřování pro Azure AD
 
@@ -49,7 +51,7 @@ S diagramu výše na paměti zde je, co potřebujete vědět o jeho různé komp
 * Azure AD je zprostředkovatel identity, který je zodpovědný za ověření identity uživatelů a aplikací, které existují v adresáři organizace a nakonec vystavování tokenů zabezpečení po úspěšném ověření těchto uživatelů a aplikací.
 * Aplikace, která chce externí ověřování do služby Azure AD musí být zaregistrované ve službě Azure AD, která registruje a jednoznačně identifikuje aplikaci v adresáři.
 * Vývojářům můžete použít knihovny ověřování open-source Azure AD nastavit ověřování snadno tak, že zpracování podrobnosti protokolu. Další informace najdete v tématu [knihovny Azure Active Directory Authentication](active-directory-authentication-libraries.md).
-* Po ověření uživatele aplikace musíte ověřit token zabezpečení uživatele k zajištění, že ověření proběhlo úspěšně.  Máme ukázky co musíte udělat aplikace v různých jazyků a rozhraní na [Githubu](https://github.com/Azure-Samples?q=active-directory).  Pokud vytváříte webovou aplikaci v technologii ASP.NET, najdete v článku [přidání přihlášení příručce webové aplikace ASP.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp).  Pokud vytváříte webové rozhraní API prostředků v technologii ASP.NET, najdete v článku [webové rozhraní API Příručka Začínáme](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* Po ověření uživatele aplikace musíte ověřit token zabezpečení uživatele k zajištění, že ověření proběhlo úspěšně. Máme ukázky co musíte udělat aplikace v různých jazyků a rozhraní na [Githubu](https://github.com/Azure-Samples?q=active-directory). Pokud vytváříte webovou aplikaci v technologii ASP.NET, najdete v článku [přidání přihlášení příručce webové aplikace ASP.NET](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Pokud vytváříte webové rozhraní API prostředků v technologii ASP.NET, najdete v článku [webové rozhraní API Příručka Začínáme](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * Tok požadavky a odpovědi pro proces ověřování je dáno ověřovací protokol, který byl použit, jako je například OAuth 2.0, OpenID Connect, WS-Federation nebo SAML 2.0. Tyto protokoly jsou podrobněji popsána v [protokoly pro ověřování Azure Active Directory](active-directory-authentication-protocols.md) článku a v následujících částech.
 
 > [!NOTE]
@@ -189,7 +191,7 @@ Používání ADAL.js pomáhá s:
 * Aktualizace tokenu vypršela platnost
 * požaduje přístupového tokenu k volání webového rozhraní API prostředků
 
-Po úspěšném ověření Azure AD se zapisují do souboru cookie prohlížeče uživatele vytvořit relaci.  Všimněte si, že existuje relace mezi uživatelem a Azure AD (není mezi uživatelem a webové aplikace). Když vyprší platnost tokenu, používá ADAL.js bezobslužně získat další token tuto relaci. ADAL.js používá skrytá iFrame odesílat a přijímat žádosti pomocí protokolu OAuth implicitní Grant. ADAL.js můžete také použít tento stejný mechanismus bezobslužně získat přístupové tokeny pro jiné webové rozhraní API prostředky, které aplikace volá tak dlouho, dokud tyto prostředky podporu (CORS), sdílení prostředků různého původu jsou zaregistrované v adresáři uživatele a všechny požadované souhlasu se Zadaný uživatel během přihlašování.
+Po úspěšném ověření Azure AD se zapisují do souboru cookie prohlížeče uživatele vytvořit relaci. Všimněte si, že existuje relace mezi uživatelem a Azure AD (není mezi uživatelem a webové aplikace). Když vyprší platnost tokenu, používá ADAL.js bezobslužně získat další token tuto relaci. ADAL.js používá skrytá iFrame odesílat a přijímat žádosti pomocí protokolu OAuth implicitní Grant. ADAL.js můžete také použít tento stejný mechanismus bezobslužně získat přístupové tokeny pro jiné webové rozhraní API prostředky, které aplikace volá tak dlouho, dokud tyto prostředky podporu (CORS), sdílení prostředků různého původu jsou zaregistrované v adresáři uživatele a všechny požadované souhlasu se Zadaný uživatel během přihlašování.
 
 ### <a name="native-application-to-web-api"></a>Nativní aplikace za účelem webového rozhraní API
 
@@ -260,7 +262,7 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsané v následu
 
 1. Uživatel je již přihlášení k webové aplikaci, jejíž mechanismus ověřování je nezávislé na Azure AD.
 1. Webové aplikace vyžaduje autorizační kód získat přístupový token, takže ho vydává požadavek prostřednictvím prohlížeče pro koncový bod autorizace Azure AD, poskytuje ID aplikace a identifikátor URI přesměrování pro webovou aplikaci po úspěšném ověření. Uživatel se přihlásí ke službě Azure AD.
-1. Pokud uživatel webové aplikace nebyla dosud dá souhlas, povolení k volání webového rozhraní API jeho jménem webové aplikace, uživatel bude muset souhlas. Aplikace se zobrazí oprávnění, která vyžaduje, a pokud některá z těchto oprávnění na úrovni správce, nebude možné souhlas normální uživatele v adresáři. Svůj souhlas se vztahuje na jeden a více klientů aplikace.  V případě jednoho klienta může správce provést správce souhlas k souhlasu jménem uživatelů.  To lze provést pomocí `Grant Permissions` v tlačítko [portálu Azure](https://portal.azure.com). 
+1. Pokud uživatel webové aplikace nebyla dosud dá souhlas, povolení k volání webového rozhraní API jeho jménem webové aplikace, uživatel bude muset souhlas. Aplikace se zobrazí oprávnění, která vyžaduje, a pokud některá z těchto oprávnění na úrovni správce, nebude možné souhlas normální uživatele v adresáři. Svůj souhlas se vztahuje na jeden a více klientů aplikace. V případě jednoho klienta může správce provést správce souhlas k souhlasu jménem uživatelů. To lze provést pomocí `Grant Permissions` v tlačítko [portálu Azure](https://portal.azure.com). 
 1. Poté, co uživatel souhlasí, webová aplikace přijímá autorizační kód, který musí získat přístupový token.
 1. Pomocí autorizační kód vydané službou Azure AD, webové aplikace odešle požadavek na token koncový bod Azure AD, která zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (aplikace identifikátor ID URI pro webové rozhraní API).
 1. Autorizační kód a informace o webové aplikace a webového rozhraní API se ověří pomocí Azure AD. Po úspěšném ověření Azure AD vrátí dva tokeny: přístupový token JWT a obnovovací token JWT.

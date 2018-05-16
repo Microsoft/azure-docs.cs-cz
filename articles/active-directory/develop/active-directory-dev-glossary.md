@@ -1,25 +1,26 @@
 ---
-title: Glosář pro vývojáře Azure Active Directory | Microsoft Docs
+title: Glosář vývojáře Azure Active Directory | Microsoft Docs
 description: Seznam podmínek pro běžně používané funkce a koncepty pro vývojáře Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: bryanla
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/16/2017
-ms.author: bryanla
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d32858c89c59ef8240eddca42824374132255fe7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář vývojáře Azure Active Directory
 Tento článek obsahuje definice pro některé základní koncepty vývojáře Azure Active Directory (AD), což je užitečné při získávání informací o vývoj aplikací pro Azure AD.
@@ -35,7 +36,7 @@ Přístupové tokeny jsou někdy označovány jako "Uživatele + aplikace" nebo 
 V tématu [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="application-id-client-id"></a>id aplikace (id klienta)
-Jedinečný identifikátor Azure AD problémy k registraci aplikace, který identifikuje konkrétní aplikace a související konfigurace.  Toto id aplikace ([id klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při provádění ověřování požadavků a je uvedené do knihoven ověřování v okamžiku vývoje. Id aplikace (id klienta) není tajný klíč. 
+Jedinečný identifikátor Azure AD problémy k registraci aplikace, který identifikuje konkrétní aplikace a související konfigurace. Toto id aplikace ([id klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při provádění ověřování požadavků a je uvedené do knihoven ověřování v okamžiku vývoje. Id aplikace (id klienta) není tajný klíč. 
 
 ## <a name="application-manifest"></a>Manifest aplikace
 Funkce poskytované [portál Azure][AZURE-portal], který vytvoří reprezentaci JSON konfigurace identity aplikace, používá jako mechanismus pro aktualizaci přidružené [ Aplikace] [ AAD-Graph-App-Entity] a [ServicePrincipal] [ AAD-Graph-Sp-Entity] entity. V tématu [pochopení manifest aplikace Azure Active Directory] [ AAD-App-Manifest] další podrobnosti.
@@ -85,7 +86,7 @@ A [token zabezpečení](#security-token) obsahuje deklarace identity, které pos
 V tématu [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 
 ## <a name="client-application"></a>klientské aplikace
-Podle definice [Framework ověřování OAuth2][OAuth2-Role-Def], aplikace, která umožňuje chráněných prostředků požadavky jménem [vlastník prostředku](#resource-owner). Termín "client" není určeno žádné vlastností implementace konkrétní hardwaru (například, jestli aplikace spustí na serveru, ploše nebo jiné zařízení).  
+Podle definice [Framework ověřování OAuth2][OAuth2-Role-Def], aplikace, která umožňuje chráněných prostředků požadavky jménem [vlastník prostředku](#resource-owner). Termín "client" není určeno žádné vlastností implementace konkrétní hardwaru (například, jestli aplikace spustí na serveru, ploše nebo jiné zařízení). 
 
 Klientská aplikace požaduje [autorizace](#authorization) od vlastníka prostředku se účastnit [udělení autorizace OAuth2](#authorization-grant) toku a může získat přístup k rozhraní API nebo data jménem vlastníka prostředku. Rozhraní Framework ověřování OAuth2 [definuje dva typy klientů][OAuth2-Client-Types], "důvěrné informace" a "veřejná", podle schopnost klienta zachovávat mlčenlivost o svoje přihlašovací údaje. Aplikace můžete implementovat [webového klienta (důvěrné)](#web-client) na webovém serveru, která se spouští [nativního klienta (veřejných)](#native-client) instalovat na zařízení, nebo [klienta na základě uživatelského agenta (veřejných)](#user-agent-based-client)která se spouští v prohlížeči zařízení.
 
@@ -121,7 +122,7 @@ Podle definice [OAuth2 autorizace Framework][OAuth2-Role-Def], entitu schopná u
 ## <a name="resource-server"></a>server prostředků
 Podle definice [OAuth2 autorizace Framework][OAuth2-Role-Def], že hostitelé chráněné zdroje, schopný přijímat a reagovat na serveru chráněný prostředek požadavků podle [klienta aplikace](#client-application) této přítomen [přístupový token](#access-token). Také označované jako chráněného prostředku serveru nebo prostředků aplikace.
 
-Server prostředků zpřístupňuje rozhraní API a vynucuje přístup k jeho chráněným prostředkům prostřednictvím [obory](#scopes) a [role](#roles), pomocí rozhraní autorizace OAuth 2.0. Mezi příklady patří Azure AD Graph API, která poskytuje přístup k datům klienta Azure AD a rozhraní API Office 365, které poskytují přístup k datům, jako je například pošty a kalendáři. Obě tyto jsou také přístupné prostřednictvím [Microsoft Graph API][Microsoft-Graph].  
+Server prostředků zpřístupňuje rozhraní API a vynucuje přístup k jeho chráněným prostředkům prostřednictvím [obory](#scopes) a [role](#roles), pomocí rozhraní autorizace OAuth 2.0. Mezi příklady patří Azure AD Graph API, která poskytuje přístup k datům klienta Azure AD a rozhraní API Office 365, které poskytují přístup k datům, jako je například pošty a kalendáři. Obě tyto jsou také přístupné prostřednictvím [Microsoft Graph API][Microsoft-Graph]. 
 
 Stejně jako klientskou aplikaci, je stanoven konfigurace identity prostředků aplikace pomocí [registrace](#application-registration) v klienta Azure AD, poskytuje aplikace a služby objekt zabezpečení. Některé poskytovaný společností Microsoft rozhraní API, například Azure AD Graph API předem zaregistrovali objekty služby, které jsou k dispozici ve všech klientů při zřizování.
 
@@ -177,7 +178,7 @@ Podobně jako objekt zabezpečení služby se používá k reprezentaci instanci
 Typ [klientská aplikace](#client-application) , která se spouští všechny kódu na webovém serveru a může fungovat jako "důvěrné informace" klienta bezpečně uloží pověření uživatele na serveru. V tématu [OAuth2 klienta typy a profily] [ OAuth2-Client-Types] další podrobnosti.
 
 ## <a name="next-steps"></a>Další postup
-[Příručka vývojáře pro Azure AD] [ AAD-Dev-Guide] je cílová stránka pro použití při vývoji všechny Azure AD související témata, včetně přehledu [integraci aplikací] [ AAD-How-To-Integrate] a základní informace o [ověřování Azure AD a scénáře podporované ověřování][AAD-Auth-Scenarios].  Taky můžete najít ukázky kódu & kurzy o tom, jak získat rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Příručka vývojáře pro Azure AD] [ AAD-Dev-Guide] je cílová stránka pro použití při vývoji všechny Azure AD související témata, včetně přehledu [integraci aplikací] [ AAD-How-To-Integrate] a základní informace o [ověřování Azure AD a scénáře podporované ověřování][AAD-Auth-Scenarios]. Taky můžete najít ukázky kódu & kurzy o tom, jak získat rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah, včetně žádostí pro nové definice nebo aktualizuje existující!
 

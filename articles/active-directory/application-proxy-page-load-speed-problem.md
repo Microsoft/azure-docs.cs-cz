@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 517f78f811d57e06b4c6e6f0fad24d3b0f96b6e3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 34422cb42768ddbc2997da3eec3d35c11e272855
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Aplikace Proxy aplikací trvá příliš dlouho zatížení
 
 Tento článek pomáhá pochopit, proč Azure AD Application Proxy aplikace může trvat dlouhou dobu spouštění. Také vysvětluje, jak tento problém můžete vyřešit.
 
 ## <a name="overview"></a>Přehled
-I když vaše aplikace pracují, budou mít dlouhé latence. Může být vylepšení topologie sítě, které můžete použít ke zlepšení rychlost. Vyhodnocení topologiemi, najdete v článku [sítě aspekty dokumentu](application-proxy-network-topology-considerations.md).
+I když vaše aplikace pracují, budou mít dlouhé latence. Může být vylepšení topologie sítě, které můžete použít ke zlepšení rychlost. Vyhodnocení topologiemi, najdete v článku [sítě aspekty dokumentu](manage-apps/application-proxy-network-topology.md).
 
 Kromě topologie sítě aktuálně nejsou žádné další doporučení pro optimalizaci výkonu. Jako Proxy aplikace, které rozšíří služby může pocházet do datového centra, který je fyzicky blíž. Těsné blízkosti mohou pomoci s latencí. Seznam datových center Azure najdete v tématu [latence zkušební stránku](http://www.azurespeed.com/Azure/Latency). 
 
@@ -36,4 +36,4 @@ Může být Azure datových center, které není ještě zahrnovat Proxy aplikac
 Společnost Microsoft pracuje na další možnosti pro zlepšení latence. Jakmile tato vylepšení jsou k dispozici, budou aktualizovány v dokumentaci.
 
 ## <a name="next-steps"></a>Další postup
-[Práce s existující místní proxy servery](application-proxy-working-with-proxy-servers.md)
+[Práce s existující místní proxy servery](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)

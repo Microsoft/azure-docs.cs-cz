@@ -1,5 +1,5 @@
 ---
-title: Řídicí panel Přehled Statistika aplikací | Microsoft Docs
+title: Řídicí panel Přehled přehled aplikace Azure | Microsoft Docs
 description: Monitorování aplikací s funkcemi Azure Application Insights a řídicí panel Přehled.
 services: application-insights
 documentationcenter: ''
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: bccb56ad45d9054a437bf2d85e74a8d81fbc3db1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 89ad96441ca4d519a9f4213ae3353eea1f0a7c37
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="overview-dashboard-preview"></a>Přehled řídicí panel (preview)
+# <a name="application-insights-overview-dashboard-preview"></a>Řídicí panel aplikací – přehled Insights (preview)
 
-Application Insights vždy poskytl přehled souhrnu podokně umožňuje rychlý a na přehled vyhodnocení stavu a výkonu vaší aplikace. Spouštění na 15. května 2018 nové prostředí pro rychlejší flexibilnější, budou vydané jako náhled. Na 29. květen 2018 vyřadí classic Přehled prostředí.
+Application Insights vždy poskytl přehled souhrnu podokně umožňuje rychlý a na přehled vyhodnocení stavu a výkonu vaší aplikace. Nové řídicí panel Přehled preview poskytuje rychlejší pružnější možnosti.
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Jak otestovat na nové prostředí?
 
-Na 15 může na nové prostředí zahájíte objeví ve službě Application Insights v části: _prošetření_ > _přehled (preview)_.
+ Ve službě Application Insights v části: _prošetření_ vyberte _přehled (preview)_.
 
 ![Přehled Preview](.\media\app-insights-overview-dashboard\01.png)
 
@@ -60,11 +60,3 @@ Zatímco můžete ponechat výchozí zobrazení, pokud ho chcete, můžete také
 Přejděte zpět na právě vyberte Přehled prostředí:
 
 ![Tlačítko – Přehled](.\media\app-insights-overview-dashboard\07.png)
-
-Je také nové tlačítko názvem _částí kódu Pin_.
-
-![Tlačítko – Přehled](.\media\app-insights-overview-dashboard\008.png)
-
-To replikuje trochu známé funkce z klasického přehled, který vám umožní všechny dlaždice ze staré Přehled prostředí _(výstrahy, dostupnosti, Live metriky, využití, proaktivní detekce a mapy aplikací)_ a přidáte do vlastní řídicí panely. 
-
-V případě výchozí _řídicí panel aplikací_ jsme již přidali tyto dlaždice. Ale pokud vytvoříte další vlastní řídicí panely, nebo pokud někdo ve vašem týmu odstraní classic dlaždice a chcete ho přidat zpět, _částí kódu Pin_ poskytuje tuto funkci v žádném snadno najít místní.

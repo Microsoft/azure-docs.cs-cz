@@ -1,24 +1,24 @@
 ---
 title: Ceny a fakturace - Azure Logic Apps | Microsoft Docs
-description: "Zjistěte, jak funguje ceny a fakturace pro Azure Logic Apps"
-author: kevinlam1
-manager: anneta
-editor: 
+description: Zjistěte, jak funguje ceny a fakturace pro Azure Logic Apps
 services: logic-apps
-documentationcenter: 
+author: kevinlam1
+manager: cfowler
+editor: ''
+documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: LADocs; klam
-ms.openlocfilehash: 096fdd5a6604ed8cecc931da2169194b777664d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/11/2018
+ms.author: klam
+ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="logic-apps-pricing-model"></a>Cenový model Logic Apps
 
@@ -57,7 +57,7 @@ Akce, které běží v smyčky, se počítají na každý cyklus ve smyčce. Nap
 
 ## <a name="integration-account-usage"></a>Používání účtů integrace
 
-Na základě spotřeby využití zahrnuje [integrace účet](logic-apps-enterprise-integration-create-integration-account.md) kde můžete prozkoumat, vývoj a testování [B2B/EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování kódu XML](logic-apps-enterprise-integration-xml.md) funkce Logic Apps na Ne Další náklady. Můžete mít jednu z těchto účtů integrace na oblast a úložiště až 10 smluv a 25 mapy. Můžete mít a nahrajte neomezená partnery, schémata a certifikáty.
+Na základě spotřeby využití zahrnuje [integrace účet](logic-apps-enterprise-integration-create-integration-account.md) kde můžete prozkoumat, vývoj a testování [B2B/EDI](logic-apps-enterprise-integration-b2b.md) a [zpracování kódu XML](logic-apps-enterprise-integration-xml.md) funkce Logic Apps na Ne Další náklady. Může mít jeden účet integrace na oblast a úložiště až konkrétní [čísla artefaktů](../logic-apps/logic-apps-limits-and-config.md), jako jsou například EDI obchodními partnery a smlouvy, map, schémata, sestavení, certifikáty a konfigurace batch.
 
 Služba Logic Apps nabízí také účty pro integraci úrovně basic a standard s podporované SLA aplikace logiky. Můžete použít účty základní integraci při buď chcete použít jenom zpracování zpráv nebo fungují jako partner malé firmy, která má vztah obchodním partnerem s větší obchodní entity. Účty pro integraci standardní podpora složitější vztahy B2B a zvýšit počet entit, které můžete spravovat. Další informace najdete v tématu [Azure ceny](https://azure.microsoft.com/pricing/details/logic-apps).
 

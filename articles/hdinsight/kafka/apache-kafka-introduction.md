@@ -4,54 +4,70 @@ description: 'Přečtěte si o systému Apache Kafka ve službě HDInsight: co t
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: f284b6e3-5f3b-4a50-b455-917e77588069
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/27/2018
+ms.date: 04/11/2018
 ms.author: larryfr
-ms.openlocfilehash: 4a4f2c6734de211cd20ee4b9f6815bdefefb25bc
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 51b4e4dea0f0c4da739f9e40beb74931060dd22b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="introducing-apache-kafka-on-hdinsight"></a>Představení Apache Kafka ve službě HDInsight
+# <a name="what-is-apache-kafka-on-hdinsight"></a>Co je Apache Kafka ve službě HDInsight?
 
-[Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Kafka také poskytuje funkci pro zprostředkování zpráv podobnou frontě zpráv, ve které můžete publikovat pojmenované datové proudy a přihlásit se k jejich odběru. Kafka ve službě HDInsight představuje spravovanou, vysoce škálovatelnou a vysoce dostupnou službu v cloudu Microsoft Azure.
+[Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Kafka také poskytuje funkci pro zprostředkování zpráv podobnou frontě zpráv, ve které můžete publikovat pojmenované datové proudy a přihlásit se k jejich odběru. 
 
-## <a name="why-use-kafka-on-hdinsight"></a>Proč používat Kafka ve službě HDInsight?
+Tady jsou konkrétní charakteristiky systému Kafka ve službě HDInsight:
 
-Kafka pro HDInsight poskytuje následující funkce:
+* Jedná se o spravovanou službu, která poskytuje zjednodušený proces konfigurace. Výsledkem je konfigurace otestovaná a podporovaná Microsoftem.
 
-* __Smlouva o úrovni služeb (SLA) zajišťující 99,9% dostupnost systému Kafka:__ Další informace najdete v dokumentu [Informace o smlouvě SLA pro HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
+* Microsoft poskytuje smlouvu o úrovni služeb (SLA) zajišťující 99,9% dostupnost platformy Kafka. Další informace najdete v dokumentu [Informace o smlouvě SLA pro službu HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
-* __Odolnost proti chybám:__ Platforma Kafka byla navržena s jednorozměrným pohledem na stojan, což v některých prostředích dobře funguje. V prostředích jako Azure je však stojan rozdělen do dvou dimenzí – aktualizační domény a domény selhání. Microsoft poskytuje nástroje, které dokáží obnovit rovnováhu oddílů a replik platformy Kafka mezi aktualizačními doménami a doménami selhání. 
-
-    Další informace najdete v článku [Vysoká dostupnost se systémem Kafka ve službě HDInsight](apache-kafka-high-availability.md).
-
-* **Integrace se službou Azure Managed Disks:** Spravované disky přináší pro disky používané systémem Kafka ve službě HDInsight lepší škálování a vyšší propustnost, a to až do 16 TB na jeden uzel v clusteru.
-
-    Informace o konfiguraci spravovaných disků v systému Kafka v HDInsight najdete v tématu [Zvýšení škálovatelnosti systému Kafka v prostředí HDInsight](apache-kafka-scalability.md).
+* Jako záložní úložiště pro platformu Kafka se používá služba Azure Managed Disks. Managed Disks může pro každého zprostředkovatele Kafka poskytovat až 16 TB úložiště. Informace o konfiguraci spravovaných disků v systému Kafka v HDInsight najdete v tématu [Zvýšení škálovatelnosti systému Kafka v prostředí HDInsight](apache-kafka-scalability.md).
 
     Další informace o spravovaných discích najdete v tématu [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
 
-* **Výstrahy, monitorování a prediktivní údržba:** K monitorování systému Kafka ve službě HDInsight je možné použít službu Azure Log Analytics. Služba Log Analytics poskytuje informace na úrovni virtuálních počítačů, jako jsou metriky disků a síťových karet nebo metriky JMX z platformy Kafka.
+* Systém Kafka byl navržený s jednorozměrným pohledem na stojan. Azure rozděluje stojan do dvou dimenzí – aktualizační domény a domény selhání. Microsoft poskytuje nástroje, které obnovují rovnováhu oddílů a replik platformy Kafka mezi aktualizačními doménami a doménami selhání. 
+
+    Další informace najdete v článku [Vysoká dostupnost se systémem Kafka ve službě HDInsight](apache-kafka-high-availability.md).
+
+* HDInsight umožňuje změnit počet pracovních uzlů (které jsou hostiteli zprostředkovatele Kafka) po vytvoření clusteru. Škálování lze provádět z webu Azure Portal, prostředí Azure PowerShell a dalších rozhraní správy Azure. V případě platformy Kafka byste po operacích škálování měli obnovit rovnováhu replik oddílů. Díky vyrovnání rovnováhy oddílů může platforma Kafka využívat nový počet pracovních uzlů.
+
+    Další informace najdete v článku [Vysoká dostupnost se systémem Kafka ve službě HDInsight](apache-kafka-high-availability.md).
+
+* K monitorování systému Kafka ve službě HDInsight je možné použít Azure Log Analytics. Služba Log Analytics poskytuje informace na úrovni virtuálních počítačů, jako jsou metriky disků a síťových karet nebo metriky JMX z platformy Kafka.
 
     Další informace najdete v tématu [Analýza protokolů pro systém Kafka ve službě HDInsight](apache-kafka-log-analytics-operations-management.md).
+
+### <a name="kafka-on-hdinsight-architecture"></a>Architektura systému Kafka ve službě HDInsight
+
+Následující diagram ukazuje obvyklou konfiguraci platformy Kafka s využitím skupin příjemců, dělení a replikace. Díky tomu nabízí paralelní čtení událostí s odolností proti chybám:
+
+![Diagram konfigurace clusteru Kafka](./media/apache-kafka-introduction/kafka-cluster.png)
+
+Apache ZooKeeper spravuje stav clusteru Kafka. Služba ZooKeeper je navržená pro souběžné a odolné transakce s nízkou latencí. 
+
+Kafka ukládá záznamy (data) v **tématech**. Záznamy jsou vytvářeny **producenty** a spotřebovávány **konzumenty**. Producenti odesílají záznamy do **zprostředkovatelů** Kafka. Každý pracovní uzel v clusteru HDInsight je zprostředkovatelem Kafka. 
+
+Témata rozdělují záznamy do oddílů napříč zprostředkovateli. Při využívání záznamů můžete dosáhnout paralelního zpracování dat díky použití až jednoho konzumenta pro každý oddíl.
+
+K duplikaci oddílů mezi uzly se využívá replikace, která zajišťuje ochranu před výpadky uzlů (zprostředkovatelů). V diagramu je oddíl s označením *(L)* vedoucím daného oddílu. Provoz producenta se směruje do vedoucích jednotlivých uzlů pomocí stavu, který spravuje ZooKeeper.
+
+## <a name="why-use-kafka-on-hdinsight"></a>Proč používat Kafka ve službě HDInsight?
+
+Tady jsou běžné úlohy a postupy, které je možné provádět s využitím systému Kafka ve službě HDInsight:
 
 * **Replikace dat platformy Kafka:** Kafka poskytuje nástroj MirrorMaker, který replikuje data mezi clustery Kafka.
 
     Informace o používání nástroje MirrorMaker najdete v tématu [Replikace témat Kafka v systému Kafka ve službě HDInsight](apache-kafka-mirroring.md).
-
-* **Škálování clusterů:** HDInsight umožňuje změnit počet pracovních uzlů (které jsou hostiteli zprostředkovatele Kafka) po vytvoření clusteru. Kapacitu clusteru můžete při nárůstu objemu úloh vertikálně navyšovat, případně ji snižovat, abyste snížili náklady. Škálování lze provádět z webu Azure Portal, prostředí Azure PowerShell a dalších rozhraní správy Azure. V případě platformy Kafka byste po operacích škálování měli obnovit rovnováhu replik oddílů. Díky vyrovnání rovnováhy oddílů může platforma Kafka využívat nový počet pracovních uzlů.
-
-    Další informace najdete v článku [Vysoká dostupnost se systémem Kafka ve službě HDInsight](apache-kafka-high-availability.md).
 
 * **Vzorec zasílání zpráv na principu publikování a odběru:** Platforma Kafka poskytuje rozhraní API pro autory k publikování záznamů v tématech Kafka. Rozhraní API pro příjemce se používá při přihlášení k odběru tématu.
 
@@ -79,27 +95,12 @@ Kafka pro HDInsight poskytuje následující funkce:
 
 * **Transformace:** Pomocí zpracování datových proudů můžete kombinovat data z více vstupních témat a rozšiřovat je do jednoho nebo několika výstupních témat.
 
-## <a name="architecture"></a>Architektura
-
-![Konfigurace clusteru Kafka](./media/apache-kafka-introduction/kafka-cluster.png)
-
-Tento diagram ukazuje obvyklou konfiguraci Kafka s využitím skupin příjemců, dělení a replikace. Díky tomu nabízí paralelní čtení událostí s odolností proti chybám. Apache ZooKeeper spravuje stav clusteru Kafka a proto je postaven pro souběžné a odolné transakce s nízkou latencí. Kafka ukládá záznamy v *tématech*. Záznamy jsou vytvářeny *producenty* a spotřebovávány *konzumenty*. Producenti načítají záznamy ze *zprostředkovatelů* Kafka. Každý pracovní uzel v clusteru HDInsight je zprostředkovatelem Kafka. Pro každého příjemce se vytvoří jeden oddíl, což umožňuje paralelní zpracování streamovaných dat. K rozprostření oddílů mezi uzly se využívá replikace, která zajišťuje ochranu před výpadky uzlů (zprostředkovatelé). Oddíl s označením *(L)* je vedoucím daného uzlu. Provoz producenta se směruje do vedoucích jednotlivých uzlů pomocí stavu, který spravuje ZooKeeper.
-
-Všichni zprostředkovatelé Kafka používají službu Azure Managed Disks. Počet disků je definovaný uživatelem a pro jednoho zprostředkovatele můžou poskytovat až 16 GB úložiště.
-
-> [!IMPORTANT]
-> Kafka nemá žádné informace o podkladovém hardwaru (rack) v datovém centru Azure. Pokud chcete zajistit správné rozmístění oddílů napříč podkladovým hardwarem, přečtěte si dokument [Konfigurace vysoké dostupnosti dat (Kafka)](apache-kafka-high-availability.md).
-
 ## <a name="next-steps"></a>Další kroky
 
 Následující odkazy popisují používání Apache Kafka ve službě HDInsight:
 
-* [Začínáme s Kafka ve službě HDInsight](apache-kafka-get-started.md)
+* [Rychlý start: Vytvoření systému Kafka ve službě HDInsight](apache-kafka-get-started.md)
 
-* [Vytvoření repliky Kafka ve službě HDInsight pomocí MirrorMakeru](apache-kafka-mirroring.md)
+* [Kurz: Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
 
-* [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)
-
-* [Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
-
-* [Připojení k systému Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)
+* [Kurz: Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)

@@ -3,27 +3,29 @@ title: Knihovny ověřování Azure Active Directory v2.0 | Microsoft Docs
 description: Kompatibilní klientské knihovny a knihovny middlewaru serveru a související knihovny, zdroje a odkazy ukázky pro koncový bod v2.0 Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: SaeedAkhter-MSFT
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/13/2018
-ms.author: saeeda
+ms.author: celested
+ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4bcf4854198e7c5f3861a39484a047adcbc1d797
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8fe3db09acbdec606f25d0bc81300bc4f5e87411
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Knihovny ověřování Azure Active Directory v2.0
 
-[Koncového bodu v2.0 Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) podporuje standardní protokoly OAuth 2.0 a OpenID Connect 1.0. Knihovna ověřování společnosti Microsoft (MSAL) je navržen pro práci s koncovým bodem v2.0 Azure AD.  Je také možné použít knihovny open-source, které podporují OAuth 2.0 a OpenID Connect 1.0.
+[Koncového bodu v2.0 Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare) podporuje standardní protokoly OAuth 2.0 a OpenID Connect 1.0. Knihovna ověřování společnosti Microsoft (MSAL) je navržen pro práci s koncovým bodem v2.0 Azure AD. Je také možné použít knihovny open-source, které podporují OAuth 2.0 a OpenID Connect 1.0.
 
 Je doporučeno používat knihovny zapsána odborníky protokolu domény, kteří podle metodika životního cyklu SDL (Security Development), jako je třeba [ten následuje Microsoft][Microsoft-SDL]. Pokud se rozhodnete k ruční kódu podporu pro protokoly, postupujte podle metodika jako společnosti Microsoft SDL a platím zavřete zaměřit na aspekty zabezpečení do specifikací standardy pro každý protokol.
 

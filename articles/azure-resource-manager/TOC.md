@@ -102,6 +102,7 @@
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
+## [Správa osobních údajů](resource-manager-personal-data.md)
 ## [Omezování požadavků](resource-manager-request-limits.md)
 ## [Sledování asynchronních operací](resource-manager-async-operations.md)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)

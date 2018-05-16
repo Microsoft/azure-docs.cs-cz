@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 6ee60d05897de7bb5408a226202623fd5955a88a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasazení Azure Blockchain Workbench
 
@@ -170,7 +170,7 @@ Po dokončení požadovaných kroků jste připravení nasadit Blockchain Workbe
     | Heslo | Heslo se používá pro připojení k virtuálním počítačům. |
     | SSH | Použijte veřejným klíčem RSA ve formátu jeden řádek začínající **ssh-rsa** nebo použijte formát PEM víceřádkový. Můžete vygenerovat pomocí klíče SSH `ssh-keygen` na Linuxu a OS X nebo PuTTYGen ve Windows. Další informace o klíče SSH, viz [klíče použití SSH se systémem Windows v Azure](../virtual-machines/linux/ssh-from-windows.md). |
     | Databáze heslo / potvrďte heslo k databázi | Zadejte heslo pro přístup k databázi vytvořené jako součást nasazení. |
-    | Oblast nasazení | Zadejte, kam chcete nasadit Blockchain Workbench prostředky. Pro nejlepší dostupnosti probíhá, mělo by to odpovídat **umístění** nastavení. |
+    | Oblast nasazení | Zadejte, kam chcete nasadit Blockchain Workbench prostředky. Nejlepší dostupnost, mělo by to odpovídat **umístění** nastavení. |
     | Předplatné | Zadejte předplatné Azure, které chcete použít pro vaše nasazení. |
     | Skupiny prostředků | Vytvořit novou skupinu prostředků výběrem **vytvořit nový** a zadejte název skupiny prostředků jedinečný. |
     | Umístění | Zadejte oblast, kterou chcete nasadit rozhraní. |
@@ -237,6 +237,8 @@ Po dokončení nasazení nástroje Blockchain Workbench novou skupinu prostředk
 
     ![Aplikace služby essentials](media/blockchain-workbench-deploy/app-service.png)
 
+Pokud chcete přiřadit vlastní název domény Blockchain Workbench, najdete v části [konfigurace vlastního názvu domény pro webovou aplikaci v Azure App Service pomocí Traffic Manager](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+
 ## <a name="configuring-the-reply-url"></a>Konfigurace adresa URL odpovědi
 
 Po nasazený Azure Blockchain Workbench, dalším krokem je zajistit, klientská aplikace Azure Active Directory (Azure AD) je zaregistrován na správnou **adresa URL odpovědi** nástroje Blockchain Workbench nasazené webové adresy URL.
@@ -246,7 +248,7 @@ Po nasazený Azure Blockchain Workbench, dalším krokem je zajistit, klientská
 3. V levém navigačním podokně, vyberte **Azure Active Directory** služby. Vyberte **Registrace aplikací**.
 4. Vyberte aplikaci klienta Azure AD, které je registrované v části požadavků.
 5. Vyberte **Nastavení > odpovědět adresy URL**.
-6. Zadejte adresu URL hlavní webové jste získali v nasazení Azure Blockchain Workbench **získat adresu URL webové Workbench Blockchain Azure** části. Adresa URL odpovědi je s předponou `https://`.  Například `https://myblockchain2-7v75.azurewebsites.net`.
+6. Zadejte adresu URL hlavní webové jste získali v nasazení Azure Blockchain Workbench **získat adresu URL webové Workbench Blockchain Azure** části. Adresa URL odpovědi je s předponou `https://`. Například `https://myblockchain2-7v75.azurewebsites.net`.
 
     ![Adresy URL odpovědí](media/blockchain-workbench-deploy/configure-reply-url.png)
 

@@ -3,23 +3,25 @@ title: Azure Active Directory v2.0 tokeny odkaz | Microsoft Docs
 description: Typy tokenů a deklaracích identity vysílaných koncového bodu Azure AD v2.0
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2018
-ms.author: hirsin
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4a408fb40c976c6e06f00d074504de6a3ec29bd1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d7b9ad5c76b0e20a3c58bddcc4947482b237fb8f
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Přehled v2.0 tokeny služby Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) vysílá několik typů tokeny zabezpečení v každé [tok ověřování](active-directory-v2-flows.md). Tento odkaz popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
@@ -69,8 +71,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | jméno |`name` |`Babe Ruth` |Deklarace identity názvu poskytuje čitelná pro člověka hodnotu, která identifikuje předmět tokenu. Hodnota není musí být jedinečný, je měnitelný a je určený pro použití pouze pro účely zobrazení. `profile` Obor je vyžadováno k přijímat tuto deklaraci. |
 | e-mail |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Primární e-mailovou adresu, přidružené k účtu uživatele, pokud existuje. Její hodnota je měnitelný a může časem změnit. `email` Obor je vyžadováno k přijímat tuto deklaraci. |
 | upřednostňované uživatelské jméno |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Primární uživatelské jméno představující uživatele v koncového bodu v2.0. To může být e-mailovou adresu, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Její hodnota je měnitelný a může časem změnit. Vzhledem k tomu, že je měnitelný, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Obor je vyžadováno k přijímat tuto deklaraci. |
-| Předmět |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Objekt zabezpečení, o tom, které vyhodnotí token informace, například uživatele aplikace. Tato hodnota se nedá změnit a nemůže být přiřazeny nebo znovu použít. To lze použít ke kontrole autorizace bezpečně, například když token slouží pro přístup k prostředkům a slouží jako klíč v tabulkách databáze. Protože subjektem je vždy k dispozici v tokeny, problémy s Azure AD, doporučujeme používat tuto hodnotu v systému pro obecné účely povolení. Předmět je však identifikátor pairwise – je jedinečné pro ID konkrétní aplikace.  Proto pokud jeden uživatel přihlásí do dvou různých aplikací pomocí dva identifikátory ID jiného klienta, tyto aplikace se zobrazí dvě různé hodnoty pro deklarace identity subjektu.  To se může nebo nemusí být potřeby v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
-| ID objektu |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Neměnné identifikátor pro objekt sady Microsoft identity, v takovém případě uživatelský účet.  Je také slouží ke kontrole autorizace bezpečně a jako klíč v tabulkách databáze. Toto ID jednoznačně identifikuje uživatele ve všech aplikacích – dvě různé aplikace přihlášení stejný uživatel obdrží stejnou hodnotu do `oid` deklarací identity.  To znamená, že ho lze použít při vytváření dotazů na služeb Microsoft online services, jako je například Microsoft Graph.  Microsoft Graph vrátí toto ID `id` vlastnost pro daný uživatelský účet.  Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` obor je vyžadováno k přijímat tuto deklaraci. Všimněte si, že pokud jeden uživatel existuje v několika klientech, uživatel bude obsahovat ID jiný objekt v každém klientovi – i když se uživatel přihlašuje do každého účtu se stejnými pověřeními, jsou považovány za různé účty. |
+| Předmět |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Objekt zabezpečení, o tom, které vyhodnotí token informace, například uživatele aplikace. Tato hodnota se nedá změnit a nemůže být přiřazeny nebo znovu použít. To lze použít ke kontrole autorizace bezpečně, například když token slouží pro přístup k prostředkům a slouží jako klíč v tabulkách databáze. Protože subjektem je vždy k dispozici v tokeny, problémy s Azure AD, doporučujeme používat tuto hodnotu v systému pro obecné účely povolení. Předmět je však identifikátor pairwise – je jedinečné pro ID konkrétní aplikace. Proto pokud jeden uživatel přihlásí do dvou různých aplikací pomocí dva identifikátory ID jiného klienta, tyto aplikace se zobrazí dvě různé hodnoty pro deklarace identity subjektu. To se může nebo nemusí být potřeby v závislosti na požadavcích vaší architektury a ochrana osobních údajů. |
+| ID objektu |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Neměnné identifikátor pro objekt sady Microsoft identity, v takovém případě uživatelský účet. Je také slouží ke kontrole autorizace bezpečně a jako klíč v tabulkách databáze. Toto ID jednoznačně identifikuje uživatele ve všech aplikacích – dvě různé aplikace přihlášení stejný uživatel obdrží stejnou hodnotu do `oid` deklarací identity. To znamená, že ho lze použít při vytváření dotazů na služeb Microsoft online services, jako je například Microsoft Graph. Microsoft Graph vrátí toto ID `id` vlastnost pro daný uživatelský účet. Protože `oid` umožňuje více aplikací ke koordinaci uživatelů, `profile` obor je vyžadováno k přijímat tuto deklaraci. Všimněte si, že pokud jeden uživatel existuje v několika klientech, uživatel bude obsahovat ID jiný objekt v každém klientovi – i když se uživatel přihlašuje do každého účtu se stejnými pověřeními, jsou považovány za různé účty. |
 
 ### <a name="access-tokens"></a>Přístupové tokeny
 
@@ -83,7 +85,7 @@ Aktualizujte tokeny jsou tokeny zabezpečení, které aplikace můžete použít
 
 Tokeny obnovení jsou více prostředků. Token obnovení obdržel během žádosti o token pro jeden prostředek lze uplatnit přístup tokenů úplně jiných prostředků.
 
-Pokud chcete získat aktualizace v odpovědi tokenu, vaše aplikace musí požádat a udělit `offline_acesss` oboru. Další informace o `offline_access` obor, najdete v článku [souhlasu a obory](active-directory-v2-scopes.md) článku.
+Pokud chcete získat aktualizace v odpovědi tokenu, vaše aplikace musí požádat a udělit `offline_access` oboru. Další informace o `offline_access` obor, najdete v článku [souhlasu a obory](active-directory-v2-scopes.md) článku.
 
 Obnovovacích tokenů jsou a vždy budou, zcela neprůhledný do vaší aplikace. Se vydávají koncového bodu v2.0 Azure AD a můžete být prověřovány a interpretovat koncového bodu v2.0. Jsou dlohotrvající, ale aplikace nemá zapisovat očekávat, že token obnovení vydrží období. Tokeny obnovení může být zneplatněné v každém okamžiku z různých důvodů – podrobnosti najdete v tématu [token odvolání](active-directory-token-and-claims.md#token-revocation). Jediný způsob, jakým aplikace potřebujete vědět, jestli je platný token obnovení je pokus o uplatněte ho tak, že žádosti o token koncový bod v2.0.
 
@@ -123,7 +125,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 >
 >
 
-Tento dokument metadat je objekt JSON, který má několik užitečné informací, jako je například umístění různých koncových bodů, které jsou požadované pro ověřování OpenID Connect.  Také obsahuje dokument *jwks_uri*, což dává umístění sady veřejných klíčů, které se používá k podepisování tokenů. Na jwks_uri dokumentu JSON má všechny veřejné klíče informace, které se právě používá. Aplikace můžete použít `kid` deklarací identity v hlavičce JWT vybrat, které veřejný klíč v tomto dokumentu jsou využívány k podepsání token. Potom provede ověření podpisu pomocí správný veřejný klíč a algoritmus uvedené.
+Tento dokument metadat je objekt JSON, který má několik užitečné informací, jako je například umístění různých koncových bodů, které jsou požadované pro ověřování OpenID Connect. Také obsahuje dokument *jwks_uri*, což dává umístění sady veřejných klíčů, které se používá k podepisování tokenů. Na jwks_uri dokumentu JSON má všechny veřejné klíče informace, které se právě používá. Aplikace můžete použít `kid` deklarací identity v hlavičce JWT vybrat, které veřejný klíč v tomto dokumentu jsou využívány k podepsání token. Potom provede ověření podpisu pomocí správný veřejný klíč a algoritmus uvedené.
 
 Provádění ověřování podpisu je mimo rámec tohoto dokumentu. Mnoho knihovny open-source jsou k dispozici vám pomůžou.
 

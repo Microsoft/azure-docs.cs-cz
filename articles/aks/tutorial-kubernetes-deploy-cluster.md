@@ -3,19 +3,19 @@ title: Kurz Kubernetes v Azure – Nasazení clusteru
 description: Kurz AKS – Nasazení clusteru
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 99b65ba5e5f0be40e464fd6565db40fda4170a0f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c793aa02e614ead146806888d26a18867ff2eebb
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Container Service (AKS)
+# <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Kubernetes Service (AKS)
 
 Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Se službou AKS je zřízení clusteru Kubernetes připraveného pro produkční prostředí snadné a rychlé. V tomto kurzu, který je třetí částí osmidílné série, se nasadí cluster Kubernetes ve službě AKS. Mezi dokončené kroky patří:
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 207b7ab0968f775dba99c2f48c1961d74b4f11c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojte počítače bez přístupu k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a analýzy protokolů pomocí brány OMS při přímé připojení nebo Operations Manager monitorované počítače nemají přístup k Internetu.  Bránu OMS, což je předat dál proxy protokolu HTTP, podporující tunelování HTTP pomocí příkazu HTTP připojení, můžete shromažďovat data a odeslat do Azure Automation a analýzy protokolů jejich jménem.  
@@ -36,7 +36,7 @@ Pokud skupiny pro správu nástroje Operations Manager je spojen s analýzy prot
 
 Pro zajištění vysoké dostupnosti pro přímé připojení nebo Operations Management skupin, které komunikují s analýzy protokolů přes bránu, můžete použít vyrovnávání zatížení sítě k přesměrování a distribuce komunikace mezi několik serverů brány.  Pokud jeden server brány ocitne mimo provoz, provoz se přesměruje na jiný uzel k dispozici.  
 
-Doporučujeme nainstalovat agenta OMS na počítači se systémem OMS brány software, který chcete monitorovat bránu OMS a analyzovat data výkonu nebo události. Navíc agenta pomáhá identifikovat koncovým bodům služby, které ke komunikaci s OMS brány.
+OMS agent je nutný v počítači se systémem bránu OMS byl k identifikaci koncovým bodům služby, které potřebuje ke komunikaci s a monitorovat bránu OMS k analýze jeho výkonu nebo data události.
 
 Každý agent, musí mít síťové připojení k jeho brány tak, aby agenty lze automaticky provádět přenos dat do a z brány. Instalace brány na řadiči domény se nedoporučuje.
 
@@ -56,6 +56,7 @@ Při určování počítač spustit bránu OMS, tento počítač musí mít nás
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2,  Windows Server 2008
 * Rozhraní .net framework 4.5
 * Minimálně 4 jádra procesoru a 8 GB paměti 
+* OMS agenta pro Windows 
 
 ### <a name="language-availability"></a>Jazyk dostupnosti
 
@@ -74,7 +75,7 @@ Bránu OMS je k dispozici v těchto jazycích:
 - Korejština
 - polština
 - Portugalština (Brazílie)
-- portugalština (Portugalsko)
+- Portugalština (Portugalsko)
 - ruština
 - Španělština (mezinárodní)
 

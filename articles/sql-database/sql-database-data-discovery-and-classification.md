@@ -1,6 +1,6 @@
 ---
-title: "Data v databázi Azure SQL zjišťování & klasifikace | Microsoft Docs"
-description: "Data v databázi Azure SQL zjišťování & klasifikace"
+title: Data v databázi Azure SQL zjišťování & klasifikace | Microsoft Docs
+description: Data v databázi Azure SQL zjišťování & klasifikace
 services: sql-database
 author: giladm
 manager: craigg
@@ -10,11 +10,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 18afebefaee9117244767e0a00e293a297bbf9af
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 375142b0e55c741e6ab914e969751833f989d2fb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Data v databázi Azure SQL zjišťování a klasifikace
 Data zjišťování a klasifikace (momentálně ve verzi preview) a poskytuje pokročilé možnosti integrovaný do databáze SQL Azure pro **zjišťování**, **klasifikace**, **označování**  &  **ochranu** citlivá data v databázích máte.
@@ -22,6 +22,9 @@ Zjišťování a klasifikace nejcitlivější data (business, finanční, zdravo
 * Vám pomáhá s splnění standardů data o ochraně osobních údajů a dodržování legislativních požadavků, jako je například GDPR.
 * Různé scénáře zabezpečení, jako jsou monitorování (auditování) a výstrah na neobvyklé přístup k citlivým datům.
 * Řízení přístupu k a posílení zabezpečení databáze, které obsahují vysoce důvěrné osobní údaje.
+
+> [!NOTE]
+> Tento dokument se vztahuje pouze k Azure SQL Database. SQL Server (místní), najdete v části [SQL Data zjišťování a klasifikace](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Přehled
 Data zjišťování a klasifikace zavádí sadu pokročilé služby a nové funkce SQL, které tvoří nové zlepší SQL Information Protection zaměřené na ochranu dat, nikoli pouze databázi:

@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 58ecf22fa0f9349a767455fe3ab08fca058d02da
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b4c1e3fb919ab9ad88a15b51a5e204290a7a12cf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="phoenix-performance-best-practices"></a>Osvědčené postupy pro Phoenix z hlediska výkonu
 
@@ -36,21 +36,21 @@ Primární klíč definovaném v tabulce Phoenix určuje způsob uložení dat v
 
 Například tabulku pro kontakty má křestní jméno, poslední název, telefonní číslo a adresa ve stejné rodin sloupců. Můžete třeba definovat primární klíč založený na rostoucí pořadové číslo:
 
-|rowkey|       Adresa|   Telefon| FirstName| Příjmení|
+|rowkey|       Adresa|   telefon| FirstName| Příjmení|
 |------|--------------------|--------------|-------------|--------------|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji|
 
 Ale pokud často dotazování podle lastName tento primární klíč nemusí provést dobře, protože každý dotaz vyžaduje prohledání úplnou tabulky načíst hodnotu každých lastName. Místo toho můžete definovat primární klíč na lastName, firstName a číslo sociálního pojištění sloupce. Tento poslední sloupec je k rozlišení dvou obyvatele na stejné adrese se stejným názvem, jako je například otec a Syn.
 
-|rowkey|       Adresa|   Telefon| FirstName| Příjmení| socialSecurityNum |
+|rowkey|       Adresa|   telefon| FirstName| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  1000|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
 
 Klíče generované Phoenix by být tento nový primární klíč řádku:
 
-|rowkey|       Adresa|   Telefon| FirstName| Příjmení| socialSecurityNum |
+|rowkey|       Adresa|   telefon| FirstName| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole. Jan 111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |
@@ -60,7 +60,7 @@ V prvním řádku výše je reprezentována data rowkey, jak je znázorněno:
 |rowkey|       key|   hodnota| 
 |------|--------------------|---|
 |  Dole. Jan 111|Adresa |1111 San Gabriel Dr.|  
-|  Dole. Jan 111|Telefon |1-425-000-0002|  
+|  Dole. Jan 111|telefon |1-425-000-0002|  
 |  Dole. Jan 111|FirstName |Jan|  
 |  Dole. Jan 111|Příjmení |Dole|  
 |  Dole. Jan 111|socialSecurityNum |111| 
@@ -118,7 +118,7 @@ Zahrnuté indexy jsou indexy, které zahrnují data řádku kromě hodnoty, kter
 
 Například v příkladu obraťte se na tabulky, můžete vytvořit sekundární index na právě sloupci socialSecurityNum. Tento sekundární index by urychlení dotazy, které filtrovat podle hodnoty socialSecurityNum, ale načítání další pole hodnot bude vyžadovat další čtení proti hlavní tabulka.
 
-|rowkey|       Adresa|   Telefon| FirstName| Příjmení| socialSecurityNum |
+|rowkey|       Adresa|   telefon| FirstName| Příjmení| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
 |  Dole. Jan 111|1111 San Gabriel Dr.|1-425-000-0002|    Jan|Dole| 111 |
 |  Raji-Calvin-222|5415 San Gabriel Dr.|1-230-555-0191|  Calvinovým|Raji| 222 |

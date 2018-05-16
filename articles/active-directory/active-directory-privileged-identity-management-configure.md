@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: curtand
 ms.custom: pim
-ms.openlocfilehash: b8df65c969a37eb22589c297ecb9b0d0b840a52c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4bc41727c30d4dd213baca1d7c56cdfdf741692d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -32,7 +32,7 @@ Pomocí aplikace Azure Active Directory (AD) Privileged Identity Management mů�
 >- Přiřazení k roli prostředků Azure s pouze v čas nebo přímé přiřazení (na základě čas)  
 >- Přiřazené kontrola přístupu
 >
->Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md).
+>Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-whatis.md).
 
 Organizace chcete minimalizovat počet lidí, kteří mají přístup zabezpečit informace nebo prostředky, protože, sníží se tím možnost uživatel se zlými úmysly získávání tento přístup nebo oprávněný uživatel nechtěně, které mají vliv citlivých prostředků.  Ale uživatelé stále muset provádět privilegované operace ve službě Azure AD, Azure, Office 365 nebo SaaS aplikace. Organizace může poskytnout privilegovaného přístupu uživatelů k prostředků Azure stejně jako odběry a Azure AD. Je třeba pro dohledu pro tyto činnosti uživatelů s jejich oprávněními správce. Azure AD Privileged Identity Management pomáhá zmírnit riziko nadměrné, nepotřebné nebo došlo ke zneužití přístupová práva.
 

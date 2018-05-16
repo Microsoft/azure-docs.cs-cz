@@ -1,371 +1,444 @@
 ---
-title: Azure AI scénářem pro řešení prediktivní údržby | Microsoft Docs
+title: Azure AI Příručka pro řešení prediktivní údržby | Microsoft Docs
 description: Komplexní popis vědecké zpracování dat, která pohání řešení prediktivní údržby v několika svislé odvětví.
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
-ms.service: cortana-analytics
+ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: ad06617fb8c14928dca7d9ce18ad86190e8255fe
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 581e9d586f007fe0cd28d60b5558594777656ca8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="azure-ai-playbook-for-predictive-maintenance-solutions"></a>Azure AI scénářem pro řešení prediktivní údržby 
-## <a name="executive-summary"></a>Shrnutí
-Prediktivní údržby je jednou z nejčastěji vyžadovaná aplikací prediktivní analýzy unarguable výhod, jako třeba obrovské množství úsporu nákladů. Cílem této scénářem je poskytuje odkaz pro řešení prediktivní údržby s důrazem na případy použití hlavní.
-Je připravená umožnit čtečky představu o nejběžnějších obchodní scénáře prediktivní údržby, výzvy opravňujících obchodních problémů pro takové řešení data potřebná k řešení těchto obchodních problémů, techniky prediktivního modelování pro sestavování řešení pomocí tyto údaje a osvědčené postupy s ukázkové architektury řešení.
-Také popisuje, jaké jsou specifikace prediktivní modely vyvinutý jako je například funkce technikům, model vyhodnocení vývoj a výkonu. V podstatě této playbook spojuje firmy a analytické pokyny potřebné pro úspěšné vývoj a nasazení řešení prediktivní údržby. Tyto pokyny jsou připravené ke cílovou skupinu vytvoření počáteční řešení pomocí Cortana Intelligence Suite a konkrétně Azure Machine Learning, jako výchozí bod v jejich dlouhodobou strategii prediktivní údržby. Naleznete v dokumentaci týkající se Cortana Intelligence Suite a Azure Machine Learning v [Cortana Analytics](http://www.microsoft.com/server-cloud/cortana-analytics-suite/overview.aspx) a [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) stránky.
+# <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI Příručka pro řešení prediktivní údržby
 
-> [!TIP]
-> Technické informace pro implementaci tohoto řešení šablony najdete v tématu [technické příručce k šabloně Cortana Intelligence řešení pro prediktivní údržby](cortana-analytics-technical-guide-predictive-maintenance.md).
-> Si můžete stáhnout diagram, který poskytuje přehled architektury této šablony [Architektura šablony Cortana Intelligence řešení prediktivní údržby](cortana-analytics-architecture-predictive-maintenance.md).
-> 
-> 
+## <a name="summary"></a>Souhrn
 
-## <a name="playbook-overview-and-target-audience"></a>Cílová skupina playbook přehled a cíle
-Abyste mohli využívat technická a Netechnická cílové skupiny s různými pozadí a zájmů v prostoru prediktivní údržby je organizovaná tento scénářem. Playbook obsahuje oba souhrnné informace o různých typech řešení prediktivní údržby a podrobnosti o jejich implementaci. Obsah je vyrovnáváním nahrazovat i pro cílové skupiny, které zajímá pouze Princip řešení místa a typ aplikace a také ty, kteří se zaměřujete na implementaci těchto řešení a jsou proto zájem o technické podrobnosti.
+Prediktivní údržby (**PdM**) je Oblíbené aplikace prediktivní analýzy, která pomáhá podnikům v několika odvětví dosáhnout vysoké asset využití a úspory provozních nákladů na. Tato příručka spojuje obchodní a analytické pokyny a osvědčené postupy úspěšně vývoji a nasazení řešení PdM pomocí [platformy Microsoft Azure AI](https://azure.microsoft.com/overview/ai-platform) technologie.
 
-Většinu obsahu v této playbook nepředpokládá předchozí data vědecké účely vědomí nebo odborných znalostí. Některé části playbook však bude poněkud vyžadovat znalost dat vědecké účely koncepty, které je možné provést podrobné informace o nasazení. Úvodní dat na úrovni vědecké účely dovednosti vyžadovaných pro plně využívat výhod materiály v těchto částech.
+Tato příručka pro začátek představuje průmyslové obchodní scénáře a proces opravňujících tyto scénáře pro PdM. Požadavky na data a modelování techniky, jak sestavit řešení PdM jsou také uvedené. Hlavní obsah v průvodci je v procesu vědecké účely dat – včetně kroky přípravy dat, funkce analýzy, vytvoření modelu a modelu operationalization. Aby doplňovala tyto klíčové koncepty, tento průvodce popisuje sadu urychlit vývoj aplikací PdM šablony řešení. Průvodce také ukazuje na zdrojů pro specialisty na další informace o AI za vědecké zpracování dat užitečné školení. 
 
-První polovinu playbook obsahuje úvod do aplikace prediktivní údržby, jak k vyfiltrování prediktivní údržby řešení, kolekce běžné případy s podrobnostmi obchodního problému, používání dat, které obaluje tyto případy použití a obchodní výhody implementace těchto řešení prediktivní údržby. Tyto části nevyžadují žádné technické znalosti v doméně prediktivní analýzy.
+### <a name="data-science-guide-overview-and-target-audience"></a>Data vědecké účely Průvodce přehled a cíle cílové skupiny
+První polovinu Tato příručka popisuje typické obchodních problémů, výhod implementace PdM k řešení těchto problémů a uvádí některé běžné případy použití. Pracovníci s rozhodovací pravomocí (BDMs) bude těžit z tohoto obsahu. Druhé polovině vysvětluje vědecké zpracování dat za PdM a poskytuje seznam PdM řešení vytvořená s využitím zásad uvedených v této příručce. Poskytuje taky kurzů a odkazy na školicích materiálů. Technické rozhodují (TDMs) užitečné tento obsah.
 
-Ve druhé polovině scénářem nabídneme typy techniky prediktivního modelování pro prediktivní údržby aplikace a jak implementovat tyto modely prostřednictvím příklady z uvedených v první polovinu playbook případy použití. Tento koncept je znázorněn přechodem provede kroky pro předzpracování dat, jako je označování dat a funkce technici, model výběr, školení nebo testování a výkonu vyhodnocení osvědčené postupy. Tyto části jsou vhodné pro technické cílovou skupinu.
+| Začněte s... | Pokud jste... |
+|:---------------|:---------------|
+| [Obchodní případ prediktivní údržby](#Business-case-for-predictive-maintenance) |s rozhodovací pravomocí (BDM) chtějí omezit výpadky a provozní náklady a zvýšit využití zařízení |
+| [Vědecké zpracování dat pro prediktivní údržby](#Data-Science-for-predictive-maintenance) |technické s rozhodovací pravomocí (Pracovník) vyhodnocení PdM technologie pochopit jedinečný zpracování dat a AI požadavky pro prediktivní údržby |
+| [Řešení šablon pro prediktivní údržby](#Solution-templates-for-predictive-maintenance)|architekti softwaru nebo vyhledávání rychle stát ukázku nebo testování konceptu vývojáře AI |
+| [Školení prostředky pro prediktivní údržby](#Training-resources-for-predictive-maintenance) | některé nebo všechny výše uvedené a chcete se dozvědět základní koncepty za vědecké zpracování dat, nástroje a techniky.
 
-## <a name="predictive-maintenance-in-iot"></a>Prediktivní údržby v IoT
-Dopad výpadek neplánovanou zařízení může být velmi destruktivní pro firmy. To je důležité mít pole zařízení spuštěné, aby mohl maximalizovat využití a výkonu a pomocí minimalizace nákladná, mimo plánované výpadky. Jednoduše není dostupný v dnešních obchodní operace scény čeká na selhání proběhnout. Zůstat produktivní, vyhledejte společnosti maximalizovat výkon asset tím, že nové způsoby použití dat shromážděných z různých kanálů. Jedním ze způsobů důležité k analýze tyto informace je využívat prediktivní analýzy techniky, využívající historických vzory předpovídat budoucí výsledky. Jeden z nejčastěji používané těchto řešení prediktivní údržby, které může být obvykle nazývá definován jako ale bez omezení, tak, aby proaktivně identifikovat selhání lze sledovat prostředky v blízké budoucnosti predikci možnosti selhání prostředek a Proveďte akci, než dojde k selhání. Tato řešení rozpoznat vzory selhání určit prostředky, které jsou na největší riziko selhání. Tuto časná identifikaci problémů pomáhá nasadit prostředky omezené údržby cenově výhodnější způsobem a vylepšení kvality a zadat řetězec procesy.
+### <a name="prerequisite-knowledge"></a>Požadovaný znalostní báze
+Obsah BDM neočekává čtečky mít žádnou znalost vědecké účely předchozí data. Pro obsah Pracovník je užitečné základní znalosti o vědecké účely statistiky a data. Doporučuje se znalostní báze dat Azure a služby AI, Python, R, XML a JSON. Techniky AI jsou implementované v Pythonu a R balíčky. Šablony řešení jsou implementovány pomocí služby Azure, nástroje pro vývoj a sady SDK.
 
-S rostoucím aplikací Internet věcí (IoT) se prediktivní údržby získání roste pozornost v odvětví jako shromažďování dat a zpracování technologie používá dostatek generovat, přenášet, ukládat a analyzovat všechny typy z data v dávkách nebo v reálném čase. Tyto technologie umožňují snadný vývoj a nasazení řešení pro kompletní s řešeními pokročilou analýzu, se pravděpodobně poskytuje největší výhody řešení prediktivní údržby.
+## <a name="business-case-for-predictive-maintenance"></a>Obchodní případ prediktivní údržby
 
-Obchodní problémy v rozsahu prediktivní Údržba domény od vysoce rizikové provozní z důvodu neočekávané chyby a omezené aspekty hlavní příčinu problémů ve složitém firemním prostředí. Většina těchto problémů může být rozdělena na které se vztahuje na tyto otázky firmy:
+Podniky vyžadují kritické zařízení, aby byl spuštěn v efektivitu ve špičce a využití si uvědomí, jejich návratu na kapitálové investice. Tyto prostředky může v rozsahu od letecké motory turbín, výtahy nebo průmyslových dochlazovače – které miliony - dolů každý den zařízení jako kopírky, kávy počítače nebo horních chladiče náklady.
+- Ve výchozím nastavení, většina podniků spoléhá na _opravné údržby_, kde jsou části Nahradit jako a když se nezdaří. Opravné Údržba zaručuje částí se používají úplně (proto není plýtvání součást životnost), ale stojí firmy v výpadek, práce a neplánovanou údržbu požadavky (mimo dobu, nebo nepohodlná umístění).
+- Na další úroveň, firmách postupem _preventivní údržbě_, kde určit užitečné životnost pro část a udržovat a nahraďte ji před selhání. Preventivní údržbě zabraňuje neplánovanou a závažné chyby. Ale zůstanou nedostatečné využití komponenty před jeho úplnou životnost používají a stále celkové náklady plánované výpadky na vysokou.
+- Cílem _prediktivní údržby_ je za účelem optimalizace rovnováhu mezi opravné a preventivní údržby, povolením _jenom na dobu_ nahrazení součásti. Tento přístup pouze nahradí tyto součásti, pokud se blíží k chybě. Tím, že rozšíří součást lifespans (ve srovnání s preventivní údržby) a snížení neplánovanou údržbu a práci, (přes opravné údržby), firmách získají úsporu nákladů a konkurenční výhody.
 
-* Co je pravděpodobnost, že v blízké budoucnosti selže zařízení?
-* Co je zbývající dobu životnosti zařízení?
-* Jaké jsou příčiny chyby a jaké akce údržby měla vyřešit tyto problémy?
+## <a name="business-problems-in-pdm"></a>Obchodní problémy v PdM
+Podnikům čelí vysoce rizikové provozní z důvodu neočekávané chyby a mají omezenou vhled do hlavní příčinu problémů v systémech komplexní. Jsou některé klíčové obchodních otázek:
 
-S využitím prediktivní údržby k odpovědi na tyto otázky, může podnikům:
+- Zjišťovat anomálie v zařízení nebo systém výkonu nebo funkce.
+- Předvídání, zda prostředek může selhat v blízké budoucnosti.
+- Odhad zbývající dobu životnosti prostředek.
+- Určení hlavních příčin selhání prostředek.
+- Určete, jaké akce údržby je potřeba provést, když, na prostředek.
 
-* Snížit provozní riziko a sledování chyb, než k nim došlo zvýšit návratovou hodnotu na prostředky
-* Omezit operace nepotřebné založené na čase údržby a řídit náklady na údržbu
-* Zvýšit celkový image značky, eliminovat chybný osobnosti a výsledný ztraceny prodejní z otěr zákazníka.
-* Nižší poplatky za inventáře snížením úrovně inventáře Odhadnutím toho, jaká bod
-* Zjistit vzorů, které jsou připojené k různé problémy údržby
+Typické cílem příkazy z PdM jsou:
 
-Řešení prediktivní údržby může podnikům s klíčových ukazatelů výkonu například skóre stavu monitorování v reálném čase asset podmínku, odhad zbývající životnost prostředků, doporučení pro aktivity proaktivní údržby a Odhadované pořadí data určena k nahrazení částí.
+- Snížit provozní riziko zvláště důležité vybavení.
+- Zvýšit návratovou hodnotu na prostředky predikci selhání, než k nim dojde.
+- Řídit náklady na údržbu povolením operací údržby za běhu.
+- Nižší otěr zákazníka, zlepšení image značky a ke ztrátě prodeje.
+- Nižší poplatky za inventáře snížením úrovně inventáře Odhadnutím toho, jaká bod.
+- Zjistit vzorů, které jsou připojené k různým problémy při údržbě.
+- Zadejte klíčové ukazatele výkonu (klíčových ukazatelů výkonu) jako je například stav skóre pro asset podmínky.
+- Odhad zbývající životnost prostředků.
+- Doporučujeme včas údržby aktivity.
+- Povolte jenom v inventáři čas odhad pořadí data určena k nahrazení částí.
 
-## <a name="qualification-criteria-for-predictive-maintenance"></a>Kvalifikace kritéria pro prediktivní údržby
-Je nutné zdůraznit, že všechny případy použití nebo lze prediktivní údržby efektivně vyřešit obchodní problémy. Je důležité kvalifikace kritéria zahrnují problém je prediktivní ve své podstatě, který zrušte cestu akce existuje, chcete-li zabránit chybám při zjištění předem a co je nejdůležitější data s dostatečnou kvality pro podporu případ použití k dispozici. Zde zaměříme na požadavky na data pro vytváření řešení prediktivní údržby úspěšné.
+Tyto příkazy cílem jsou výchozím bodem pro:
 
-Při vytváření prediktivních modelů, používáme historická data pro trénování modelu, který pak rozpoznají skrytá vzory a dále určit tyto vzory v budoucí data. Tyto modely jsou cvičení s příklady popsaného jejich funkcí a cílem předpovědi. Očekává se, že trénovaného modelu provádět předpovědi na cílovém prohlížením pouze funkce nové příklady. Je velmi důležitý, že model zaznamenat vztah mezi funkcí a cílem předpovědi. Chcete-li cvičení efektivní strojového učení modelu, potřebujeme Cvičná data, která obsahuje funkce, které mají ve skutečnosti prediktivní power směrem cíl předpovědi, což znamená, že data by měla být relevantní pro předpověď cílem se očekává přesně odhadnout.
+- _datových vědců_ analyzovat a řešit konkrétní problémy prediktivní.
+- _cloudové architekty a vývojáře_ dávat dohromady komplexní řešení.
 
-Například pokud cíl je k předvídání selhání train souborů Wheel, jsou Cvičná data by měla obsahovat funkce související s wheel (např. telemetrie odrážející stav souborů Wheel, vzdálenost, car zatížení, atd.). Ale pokud cíl je k předvídání selhání modulu train, pravděpodobně potřebujeme další sadu Cvičná data, která má funkce související se modul. Před vytvořením prediktivní modely, Očekáváme, že firmy odborné pochopit důležitosti požadavek na data a poskytovat znalosti domény, který je potřebný pro vyberte relevantní podmnožiny dat pro analýzu.
+## <a name="qualifying-problems-for-predictive-maintenance"></a>Kvalifikující problémy prediktivní údržby
+Je nutné zdůraznit, že všechny případy použití nebo lze PdM efektivně vyřešit obchodní problémy. Existují tři důležité opravňující kritéria, která je potřeba zvážit při výběru problému:
 
-Existují tři základní data zdroje, které vyhledáme při určení obchodního problému být vhodný pro řešení prediktivní údržby:
+- Problém má být prediktivní ve své podstatě; To znamená, měla by existovat na cíl nebo výstupem předpovědět. Tento problém by měly mít také zrušte cestu zabraňte selhání při jejich zjištění.
+- Tento problém by měl mít záznam provozní historie zařízení, která obsahuje _dobrý i chybný výstupy_. Sadu akcí, aby byla zmírněna chybný výstupy navíc by měl mít k dispozici jako součást tyto záznamy. Zprávy o chybách, údržby protokoly snížení výkonu, opravte a nahraďte protokoly jsou také důležité. Kromě toho jsou opraví zavázala zlepšení a nahrazení zaznamenává taky užitečné.
+- Zaznamenaná historie by měl promítnuta _relevantní_ data, která je _dostatečná_ dostatek kvality pro podporu případ použití. Další informace o data relevance a dostatečné pokrytí najdete v tématu [požadavky dat pro prediktivní údržby](#Data-requirements-for-predictive-maintenance).
+- Nakonec firmy by měl mít odborníky domény, kteří mají jasné problému. Měly by být vědomi interní procesy a postupy, abyste mohli pomoct analytika pochopit a interpretovat data. Musí být také možnost provádět potřebné změny existující podnikové procesy pomohou shromažďovat správná data pro problémy, v případě potřeby.
 
-1. Selhání historie: V aplikacích prediktivní údržby událostí selhání jsou obvykle velmi výjimečných. Však při sestavování prediktivní modely, které předpovědi selhání, algoritmus je potřeba další vzoru normálního provozu, jakož i vzoru selhání procesu školení. Proto je nezbytné, že jsou Cvičná data obsahuje dostatečný počet příklady v obou kategorií Chcete-li další tyto dvě různé vzorce. Z tohoto důvodu je nutné, aby data mají dostatečný počet událostí selhání. Události chyb naleznete v záznamech údržby a historii nahrazení částí nebo anomálie v Cvičná data můžete také použít jako selhání identifikovat odborníky domény.
-2. Historie údržby nebo opravit: Základní zdroj dat pro řešení prediktivní údržby je podrobné údržby historii asset obsahující informace o součástech nahradit, preventivní údržbě aktivuje provádět atd. Je velmi důležité zaznamenat tyto události jako tyto vliv snížení vzory a bez těchto informací způsobí, že zavádějící výsledky.
-3. Počítač podmínky: Aby bylo možné odhadnout, kolik dnů (hodiny, paliva, transakce atd.) na počítač, trvá po předtím, než se nezdaří, předpokládáme, že stav počítače se sníží časem při své činnosti. Proto Očekáváme, že data tak, aby obsahovala čas různých funkcí, které zaznamenat tento vzor stárnutí a anomálie, která vede ke snížení výkonu. V aplikace či aplikace IoT telemetrická data z různých snímače představují jeden dobrým příkladem. Aby bylo možné předpovědět, pokud je počítač se bude selhat v časovém rámci, v ideálním případě data by měla zachytit ponižující trend během tohoto časového rámce před události skutečnou selhání.
+## <a name="sample-pdm-use-cases"></a>Případy použití PdM vzorku
+Tato část se zaměřuje na kolekci případy použití PdM z několika odvětví, jako je například letecký, nástrojů a Transport. Každá část začíná obchodního problému a vás seznámí s výhodami PdM příslušných dat, které obaluje obchodního problému a nakonec výhody PdM řešení.
 
-Kromě toho je nutné, data, která přímo souvisí s provozních podmínek cílového prostředku předpovědí. Rozhodnutí cíle vychází z obou obchodních potřeb a data dostupnosti. Pořízení předpovědi selhání wheel train jako příklad, jsme může předvídání "Pokud kolečka má dojít k selhání" nebo "Pokud celý train budete mít k chybě". První z nich cílí více konkrétní součást, zatímco druhý cílem selhání vlaku. Druhá je zadat další obecné otázku, která vyžaduje mnohem víc rozmístěné datové prvky než první z nich, což těžší k sestavení modelu. Při pokusu o předpovědi selhání wheel podle vzhledu data podmínky vysoké úrovně train naopak nemusí být vhodný, protože neobsahuje informace na úrovni součásti. Obecně platí je více rozumný k předvídání konkrétní chyby události než ty, které další obecné jsou.
+| Obchodního problému | Výhody z PdM |
+|:-----------------|-------------------|
+|**Letecké**      |                   |
+|_Letu zpoždění a zrušení_ kvůli problémům s mechanických. Chyby, které nelze opravit v čase může způsobit lety ke zrušení a přerušit operace a plánování. |PdM řešení můžete předvídání pravděpodobnost letadla se odložené nebo zrušena z důvodu mechanických selhání.|
+|_Letadla modul částí selhání_: leteckého motoru část náhrady patří mezi nejběžnější úlohy údržby v rámci odvětví letecká společnost. Řešení údržby vyžadují pečlivě správu uložených dostupnost součásti, doručení a plánování|Schopnost shromažďovat, že intelligence na spolehlivost součást vede k podstatné snížení na investice náklady.|
+|**Finance** |                         |
+|_Selhání ATM_ problém je běžný, v rámci odvětví bankovnictví. Problém tady je pravděpodobnost, že získá ATM peněžních odvolání transakce přerušena z důvodu selhání dokumentu papír nebo část v enumenátor peněžních sestavy. Podle předpovědi selhání transakce, peněžními automaty zpracováním proaktivně k zabránění výskytu chyby.| Místo povolit počítač selhání se v polovině prostřednictvím transakci, žádoucí alternativou je program počítače tak, aby odepřel služby podle předpovědi.|
+|**Energie** |                          |
+|_Větru turbína selhání_: větru turbín zdrojem hlavní energie v k životnímu prostředí zodpovědná zemích a zahrnují vysoké kapitálové náklady. Klíčovou součástí větru turbín je generátor motoru. nezdařeného vykreslí turbíně neúčinná. Je také vysoce náročná opravit.|Predikci klíčových ukazatelů výkonu, jako je například MTTF (střední čas selhání) může pomoct energetické společnosti zabránit chybám turbína a zajistit minimální dobou výpadku. Selhání pravděpodobnostech bude informovat o tom technici k monitorování turbín, které by mohly brzy dojde k selhání a naplánovat režimů založené na čase údržby. Prediktivní modely poskytují přehled o různých faktorů, které přispívají k chybě, která pomáhá technici lépe pochopit, že že hlavní příčiny potíží.|
+|_Selhání jistič_: distribuce elektřiny domácnostech a společnostem vyžaduje power řádky do provozu za všech okolností zaručit energie doručení. Moduly okruh dělení pomůžou omezit nebo vyloučit škody power řádků při přetížení nebo nežádoucí informace o počasí podmínky. Obchodního problému je k předvídání jistič selhání.| Řešení PdM pomáhají omezit náklady opravit a zvýšit životnost vybavení, jako jsou moduly okruh dělení. Pomáhají zlepšit kvalitu sítě napájení snížením neočekávaných selhání a přerušení poskytování služeb.|
+|**Transport a logistiky** |    |
+|_Hodnocení dveře selhání_: velké hodnocení společnosti poskytují služby úplné zásobníku pro miliony funkční výtahy po celém světě. Hodnocení zabezpečení, spolehlivost a provozu jsou hlavní otázky zákazníkům. Těmto společnostem sledovat tyto a různé další atributy prostřednictvím senzorů, aby jim pomohl s opravné a preventivní údržby. V hodnocení nepracuje správně nejvýraznější problém zákazníka dveře hodnocení. V takovém případě je poskytnout znalostní báze knowledge base prediktivní aplikace, který bude předpovídat potenciálně způsobuje selhání dveře obchodního problému.| Výtahy jsou kapitálové investice pro potenciálně životnost 20-30 roku. Proto může být každý potenciální prodej vysoce konkurenčním prostředí; Proto jsou vysoké očekávání pro služeb a podpory. Prediktivní údržby můžete těmto společnostem poskytnout několik výhod, přes jejich konkurenci ve svých produktech a nabídek služeb.|
+|_Hodinových selhání_: hodinových selhání účet polovina všech cvičení bezpečnosti proti vykolejení a náklady až miliardy na globální liště odvětví. Selhání Wheel také způsobit zhoršení, které někdy způsobuje liště přerušíte předčasně. Zalomení liště vést k závažné události, jako je například bezpečnosti proti vykolejení. Abyste se vyhnuli takové instancí, dráhy sledovat výkon souborů Wheel a nahradíte je preventivní způsobem. Obchodního problému je předpovědi wheel selhání.| Prediktivní údržby souborů Wheel vám pomůže s za běhu nahrazení souborů Wheel |
+|_Selhání dveře train podzemní dráha_: selhání dveře train automobilů je hlavní důvod zpoždění při podzemní dráha operace. Obchodního problému je k předvídání train dveře selhání.|Časná povědomí o selhání dveře nebo počet dní, dokud selhání dveře pomůžou optimalizovat obchodní cvičení dveře plány údržby.|
 
-Jeden běžné otázku, která se obvykle zobrazí výzva, o data historie selhání je "jak mnoho událostí selhání je potřeba trénování modelu a kolik se považuje za"dostatek"? Neexistuje žádná zrušte odpověď na otázku stejně jako mnoho scénářů prediktivní analýzy, je obvykle kvalitu dat, která určuje, jaké jsou přijatelné. Pokud datová sada neobsahuje funkce, které jsou relevantní pro předpovědi selhání, pak i v případě, že existuje mnoho událostí selhání vytváření správný model nemusí být možné. Pravidlo je však, Další selhání události tím lepší je model a odhad počtu selhání příklady jsou požadovány je velmi kontextu a měr závislé na data. Tento problém je popsán v části pro zpracování imbalanced datové sady, kde jsme navrhovat postupy zvládnout problém nemá dostatek selhání.
+V další části získá na podrobné informace o tom, jak výhody PdM výše popsané.
 
-## <a name="sample-use-cases"></a>Ukázka případy použití
-Tato část se zaměřuje na kolekci případy použití prediktivní údržby z několika odvětví, jako je například letecký, nástroje a Transport. Každý část prochází do shromážděné z těchto oblastí případy použití a popisuje obchodních problémů, které obaluje obchodního problému a výhody řešení prediktivní údržby data.
+## <a name="data-science-for-predictive-maintenance"></a>Vědecké zpracování dat pro prediktivní údržby
 
-### <a name="aerospace"></a>Letecký
-#### <a name="use-case-1-flight-delay-and-cancellations"></a>Případ použití 1: Zpoždění letu a zrušení
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Jeden z hlavních obchodní problémy, které airlines čelí, je důležité náklady, které jsou spojené s lety se zpožďuje kvůli mechanických problémy. Pokud mechanických selhání nelze opravit, může i lety zrušit. To je velmi nákladné, jako je vytváření zpoždění problémy v plánování a operací, chybný pověsti příčiny a nespokojenosti zákazníka spolu s mnoha jiných problémů. Airlines zájem o zvlášť predikci takových mechanických selhání předem, aby se může snížit zpoždění letů nebo zrušení. Cílem řešení prediktivní údržby pro tyto případy je k předvídání pravděpodobnost letadel odložené nebo zrušit, podle příslušné zdroje dat například informace o postupu údržby historie a letu. Dvou zdrojů hlavní data pro tento případ použití jsou letu nožičky a protokoly stránky. Data pohybující se větev zahrnuje data o podrobnosti postupu letu, jako je například datum a čas odeslání a přijetí, odeslání a přijetí letištích atd. Data protokolu stránky obsahuje řadu chyb a údržbě kódy, které se zaznamenávají pracovníky údržby.
+Tato část obsahuje obecná pravidla zásad vědecké účely dat a postup pro PdM. Je určena k pomoci Pracovník, architekt řešení nebo vývojář pochopit požadavky a proces pro vytváření aplikací AI začátku do konce pro PdM. Si můžete přečíst v této části společně s kontrolu ukázky a testování konceptu šablon uvedené v [šablony řešení pro prediktivní údržby](#Solution-templates-for-predictive-maintenance). Pak můžete tyto zásady a osvědčené postupy pro implementaci řešení PdM v Azure.
 
-##### <a name="business-value-of-the-predictive-model"></a>*Obchodní hodnotu prediktivního modelu*
-Použití dostupných historických dat, prediktivního modelu bylo vytvořeno prostřednictvím několika klasifikační algoritmus k předvídání typ mechanických problém, což vede k zpoždění nebo zrušení letu během dalších 24 hodin. Tím, že tento předpovědi, můžete provedeny akce potřebné údržby zmírnit riziko, když je prováděn servis letadel a tím zabránit možné zpoždění nebo zrušení. Pomocí webové služby Azure Machine Learning, prediktivní modely lze bez problémů a snadno integrovat do airlines' existující operační platformy. 
+> [!NOTE]
+> Tato příručka určená není kterých čtečky vědecké zpracování dat. Několik užitečné zdroje jsou k dispozici pro další čtení v části pro [školení prostředky pro prediktivní údržby](#Training-resources-for-predictive-maintenance). [Šablony řešení](#Solution-templates-for-predictive-maintenance) uvedených v Průvodci ukazují některé z těchto postupů AI pro konkrétní PdM problémy.
 
-#### <a name="use-case-2-aircraft-component-failure"></a>Použití případ 2: Selhání součásti letadla
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Letecké motory jsou velmi citlivé a nákladné části zařízení a modul část náhrady patří mezi nejběžnější úlohy údržby v odvětví letecká společnost. Řešení údržby pro airlines vyžadují pečlivě správu uložených dostupnost součásti, doručení a plánování. Schopnost shromažďovat, že intelligence na spolehlivost součást vede k podstatné snížení na investice náklady. Hlavní datový zdroj pro tento případ použití je telemetrická data z několika senzory v letadla informacemi na podmínku letadla shromažďují. Záznamy údržby byly také umožňuje identifikovat, kdy došlo k selhání komponent a bylo provedeno nahrazení.
+## <a name="data-requirements-for-predictive-maintenance"></a>Požadavky na data pro prediktivní údržby
 
-##### <a name="business-value-of-the-predictive-model"></a>Obchodní hodnotu prediktivního modelu
-Klasifikace více třídy modelu bylo vytvořeno který předpovídá pravděpodobnost selhalo, protože některé součásti během příští měsíc. Díky využití architektury těchto řešení, airlines může snížit náklady na opravu součásti, zvýšit dostupnost součásti uložené, snížit inventáře úrovně související prostředky a zlepšit plánování údržby.
+Úspěch žádné learning závisí na (a) kvality její cíl a (b) možnost student. Prediktivní modely další vzory z historických dat a předpovídat budoucí výsledky s určitá pravděpodobnost na základě těchto zjištěnou způsobů. Modelu prediktivní přesnost závisí na důležitosti, dostatečné pokrytí a kvalitu učení a testovací data. Nová data, která 'skóre pro magnitudu' pomocí tohoto modelu musí mít stejné funkce a schéma jako školení a testovací data. Funkce vlastností (typ, hustotu, distribuce a tak dále) nová data by měla odpovídat hodnotě učení a testovací datových sad. Na tyto požadavky dat je zaměřená v této části.
 
-### <a name="utilities"></a>Veřejné služby
-#### <a name="use-case-1-atm-cash-dispense-failure"></a>Případ použití 1: Selhání obejít bez peněžních ATM
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Vedení v asset náročné odvětví často stavu, zda je primární provozní riziko a jejich podniky neočekávané selhání jejich prostředků. Jako příklad selhání stroje například peněžními automaty v bankovnictví odvětví velmi problém je běžný, ke kterému dochází často. Těchto typů problémů vytvořit řešení prediktivní údržby velmi žádoucí pro operátory takové stroje. V tomto případě použití je problém předpovědi vypočítat pravděpodobnost, že získá ATM peněžních odvolání transakce přerušena z důvodu selhání ve enumenátor peněžních například uvíznutí papíru nebo selhání část. Zdroje hlavních dat pro tento případ jsou odečty snímačů, která shromažďují měření při peněžních poznámky jsou právě distribuován a také záznamy údržby shromážděných v čase. Data snímače zahrnuty odečty snímačů na každou transakci byla dokončena a také odečty snímačů za každou Poznámka distribuován. Měření odečty poskytuje senzor například mezery mezi poznámky, tloušťka, mějte na paměti příchodem vzdálenost atd. Data údržby zahrnuty kódy chyb a opravit informace. Ty se používají k identifikaci případů selhání.
+### <a name="relevant-data"></a>Relevantní data
 
-##### <a name="business-value-of-the-predictive-model"></a>*Obchodní hodnotu prediktivního modelu*
-Dva prediktivní modely byly vytvořené k předvídání selhání transakcí stažení peněžních a chyby v jednotlivých poznámek distribuován během transakce. Tím, že je možné předem předvídat selhání transakce, peněžními automaty zpracováním proaktivně k zabránění výskytu chyby. Navíc se poznámka předpovědi selhání, pokud transakce je pravděpodobně selhat, než je dokončena z důvodu Poznámka obejít bez selhání, je nejlepší a zastavit proces a varovat před odběratele pro neúplné transakce nikoli čekajících na službu údržby doručení Po této chybě dojde, což může vést k větší nespokojenosti zákazníka.
+První, data musí být _relevantní pro problém_. Vezměte v úvahu _hodinových selhání_ popsané případ použití vyšší - Cvičná data by měl obsahovat funkce související se wheel operací. Pokud tento problém byl k předvídání selhání _trakčním systému_, jsou Cvičná data musí zahrnovat všechny různé součásti nástroje trakčním systému. Prvním případě cílí pro konkrétní součást, zatímco druhém případě Cílem selhání větší subsystému. Obecné doporučení je návrh předpovědi systémy o konkrétní součásti, nikoli větší subsystémy, vzhledem k tomu, že k tomu bude mít více rozmístěnými data. Expert domény (viz [kvalifikující problémy prediktivní údržby](#Qualifying-problems-for-predictive-maintenance)) by měly pomoci při výběru nejdůležitější podmnožiny dat pro analýzu. Příslušné zdroje dat jsou popsány podrobněji na [Příprava dat pro prediktivní údržby](#Data-preparation-for-predictive-maintenance).
 
-#### <a name="use-case-2-wind-turbine-failures"></a>Použití případ 2: Selhání turbína větru
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-S raise prostředí sledování větru turbín se staly jedním z hlavních zdrojů energie generace a jejich obvykle náklady milionů dolarů. Jeden z klíčových součástí větru turbín je generátor motoru, který je vybavený s mnoha snímače, které pomáhá monitorovat turbína podmínky a stav. Odečty snímačů obsahovat například střední čas nutný k selhání součástí turbína větru cenné informace, které lze použít k vytvoření prediktivního modelu k předvídání kritické klíčových ukazatelů výkonu (KPI). Data pro tento případ použití pocházejí z více turbín větru, které se nacházejí ve třech umístěních různé farmy. Měření z blízko sto senzorů z každé turbína nebyly zaznamenány každých 10 sekund jeden rok. Tyto odečty zahrnují měření například teploty, generátor rychlost, turbína energie a generátor zrušení.
+### <a name="sufficient-data"></a>Dostatečného množství dat
+Dva dotazy jsou často kladené s ohledem na data historie selhání: (1) "počet událostí selhání jsou vyžadována k natrénování modelu?" (2) "počet záznamů se považuje za"dostatek"?" Neexistují žádné spolehlivý odpovědi, ale pouze zásady. Pro (1) lepší více počet událostí selhání modelu. Pro [2] a přesný počet událostí selhání závisí na data a kontext problém se vyřeší. Ale na straně překlopit, pokud se počítači nezdaří příliš často pak firmy dojde k nahrazení, což sníží selhání instance. Zde znovu, pokyny z domény odborné je důležité. Existují však metody zvládnout problému s _výjimečných události_. Jsou popsané v části [zpracování imbalanced dat](#Handling-imbalanced-data).
 
-##### <a name="business-value-of-the-predictive-model"></a>*Obchodní hodnotu prediktivního modelu*
-Prediktivní modely měla vytvořená tak, aby odhad zbývající dobu životnosti generátory a senzory teploty. Odhadnutím toho, jaká je pravděpodobnost selhání, se technici údržby zaměřit na podezřelé turbín, které by mohly brzy nepodaří doplňují režimů založené na čase údržby.
-Kromě toho prediktivní modely přepněte náhled na úroveň příspěvku na různé faktory, které je pravděpodobnost selhání, která pomáhá obchodní získat lepší přehled o hlavní příčinu problémů.
+### <a name="quality-data"></a>Kvality dat
+Kvalita dat je důležité – musí být hodnota atributu každý předpověď _přesné_ ve spojení s hodnotou Cílová proměnná. Kvality dat je dobře sledované oblasti v rámci správy statistiky a data a proto mimo obor této příručce.
 
-#### <a name="use-case-3-circuit-breaker-failures"></a>Případ použití 3: selhání jistič
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Elektrické energie a plynu operace, které zahrnují výrobou, distribucí a prodej elektrické energie vyžadují významné množství údržby zajistit power řádky provozní za všech okolností zaručit doručení energie pro domácnosti. Selhání těchto operací je velmi důležité, protože téměř každé entity se provádí power problémy v oblasti, které k nim dojde. Moduly okruh dělení jsou důležité pro takové operace, protože se jedná o zařízení, která vyjmout elektrický aktuální v případě problémů a krátké okruhů, abyste zabránili škody power řádcích. Pro tento případ použití obchodního problému je k předvídání jistič selhání daného údržby protokoly, historie příkazů a technických specifikací.
+> [!NOTE]
+> Existuje několik prostředků a produkty enterprise k doručování dat kvality. Ukázka odkazy najdete níže:
+> - Dasu, T, Janíček, dolování dat t. Toto, nahodilého a Data čištění, Wiley, 2003.
+> - [Analýza dat nahodilého, Wikipedia](https://en.wikipedia.org/wiki/Exploratory_data_analysis)
+> - [Kvantitativní Data Hellerstein, J, čištění pro velké databáze](http://db.cs.berkeley.edu/jmh/papers/cleaning-unece.pdf)
+> - [de Jonge, E, van der vyhledat, M Úvod do dat čištění s R](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf)
 
-Tři hlavní datové zdroje pro tento případ jsou protokoly údržby, které zahrnují preventivní a systematické opravné akce, provozních dat, které obsahuje příkazy pro automatickou a ruční odeslání okruh funkce, jako rozdělování pro akce Otevřít a zavřít a technical Specifikace data o vlastnostech každé jistič například roku vytvořit, umístění, modelu, atd.
+## <a name="data-preparation-for-predictive-maintenance"></a>Příprava dat pro prediktivní údržby
 
-##### <a name="business-value-of-the-predictive-model"></a>*Obchodní hodnotu prediktivního modelu*
-Řešení prediktivní údržby pomáhají omezit náklady opravit a zvýšit životní cyklus vybavení, jako jsou moduly okruh dělení. Tyto modely také pomáhá zlepšit kvalitu power sítě, protože modely poskytování upozornění dopředu, která snižují neočekávané selhání, které vedly k méně narušení služby.
-
-#### <a name="use-case-4-elevator-door-failures"></a>Případ použití 4: Hodnocení dveře selhání
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Většina velkým organizacím hodnocení obvykle mají miliony výtahy systémem po celém světě. K získání konkurenční výhody, budou se zaměřit na spolehlivost, což je nejdůležitějším zákazníkům. Kreslení na potenciálně Internet věcí, připojením jejich výtahy do cloudu a shromažďování dat ze senzorů hodnocení a systémů, je to možné transformovat data do cenné business intelligence, což významně zvyšuje operations prostřednictvím nabídky Prediktivní a preemptivní údržby, není něco, které jsou k dispozici konkurenty ještě. Požadavek na tomto případě je poskytnout znalostní báze knowledge base prediktivní aplikace, který bude předpovídat potenciálně způsobuje selhání dveře. Požadovaná data pro tuto implementaci se skládá ze tří částí, které jsou statické funkce hodnocení (například identifikátory smlouvy frekvence údržby, typ sestavení, atd.), informace o využití (například počet cyklů dveře, průměrná dveře zavřít čas atd.) a selhání historie (tj. záznamů historických selhání a jejich příčin).
-
-Více třídami logistic regresní model byl vytvořený pomocí Azure Machine Learning k vyřešení problému předpovědi, s použitím integrované statické funkce a data o využití jako funkce a příčiny záznamů historických selhání jako třída popisky. Tento model prediktivní je spotřebovávána aplikace na mobilní zařízení, které používá pole technici k vám pomůže zlepšit efektivitu práce. Když se připravuje technik a zadává dostane v lokalitě k opravě hodnocení, si mohou odkazovat na tuto aplikaci doporučené příčiny a doporučené kurzy akce údržby opravit tak rychlý jako možné hodnocení dveře.
-
-### <a name="transportation-and-logistics"></a>Transport a logistiky
-#### <a name="use-case-1-brake-disc-failures"></a>Případ použití 1: Selhání disku brzdy
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Zásady údržby typické pro vozidel obsahují opravné a preventivní údržby. Opravné údržby znamená, že je nástroj opravit po došlo k selhání, což může způsobit vážné komplikace ovladačem v důsledku neočekávané selhání a na návštěvy mechanic ke znehodnocení části čas. Většina vozidel také podléhají preventivní údržbě zásad, které vyžaduje provedení některé kontroly podle plánu, který nevyžaduje v úvahu skutečný stav subsystémy Auto. Žádný z těchto postupů se úspěšná ve plně odstraňuje problémy. Případ použití konkrétní tady je brzdy disk selhání předpovědi podle údaje shromážděné prostřednictvím nainstalovaných v systému můžete zadat Auto, která uchovává informace o historických řízení vzory a jiných podmínek, které je vystaven Auto. Nejdůležitější zdroj dat pro tento případ je senzor data, která měřit, například zrychlení, brzdění vzory, řídí vzdálenosti, rychlosti atd. Tyto informace vázány jiné statické informace, jako je funkce car nápovědy sestavení dobrou sada prognostické, které mohou být používány prediktivního modelu. Další sadu základní informace, které je selhání data, která je odvodit z databáze pořadí část (umožňuje zachovat data k výměně za chodu část objednávek a počty jako aut jsou probíhá údržba v dealerům).
-
-##### <a name="business-value-of-the-predictive-model"></a>*Obchodní hodnotu prediktivního modelu*
-Obchodní hodnotu prediktivní přístupu je podstatné. Prediktivní údržby systému můžete naplánovat návštěvy obchodník podle prediktivního modelu. Model může být založen na senzorických informace, které je představující aktuální podmínku Auto a podporovat jeho historie. Tuto metodu můžete minimalizovat riziko neočekávaných chyb, které může také dojít před další periodické údržby.
-Může také snížit množství nepotřebné preventivní údržby. Ovladač můžete proaktivně informováni, že změnu částí může být nutné za pár týdnů a zadejte obchodník s touto informací. Obchodník může pak připraví balíček jednotlivých údržby ovladače předem.
-
-#### <a name="use-case-2-subway-train-door-failures"></a>Případ použití 2: Podzemní dráha train dveře selhání
-##### <a name="business-problem-and-data-sources"></a>*Obchodní problém a zdroje dat.*
-Jedním z hlavních důvodů zpoždění a problémy na operace podzemní dráha je selhání dveře train automobilů. Predikci Pokud automobilu train může mít selhání dveře nebo schopnost prognózy počet dnů do další door nezdaří, je velmi důležité předvídání. Poskytuje možnost optimalizovat train dveře údržby a snížit vlaku výpadkům.
-
-#### <a name="data-sources"></a>Zdroje dat
-Jsou tři zdroje dat v tomto případě použijte 
-
-* **cvičení data události**, který je na staré záznamy train událostí 
-* **data údržby** například údržby typy, typy pořadí pracovních a kódy s prioritou  
-* **zaznamenává chyby**.
-
-##### <a name="business-value-of-the-predictive-model"></a>*Obchodní hodnotu prediktivního modelu*
-Dva modely byly vytvořené k předvídání další pravděpodobnost selhání den pomocí binární klasifikace a počet dnů do selhání pomocí regrese. Podobně jako v předchozích případech, vytvořit modely strávíte příležitostí ke zlepšení kvality služeb a vzájemně doplňuje režimy pravidelné údržby zvýšit spokojenost zákazníků.
-
-## <a name="data-preparation"></a>Příprava dat
 ### <a name="data-sources"></a>Zdroje dat
-Společné prvky dat pro prediktivní údržby problémy lze shrnout takto:
 
-* Selhání historie: historie selhání počítače nebo součást v rámci počítače.
-* Historie údržby: Oprava historie počítače, např. kódy chyb, předchozí aktivity údržby nebo součást nahrazení.
-* Počítače podmínky a využití: provozních podmínek počítače např dat shromážděných ze senzorů.
-* Počítač funkce: funkce počítače, například modul velikost, značka a model, umístění.
-* Operátor funkce: funkce operátoru, například pohlaví, zkušenosti.
+Zdroje dat relevantní pro prediktivní údržby zahrnovat, ale nejsou omezeny na:
+- Selhání historie
+- Historie údržby nebo opravit
+- Počítač provozních podmínek
+- Metadata zařízení
 
-Je možné, obvykle případ selhání historie je součástí údržby historie jako ve formě speciální chybové kódy nebo pořadí data pro náhradní díly. V takových případech můžete z dat údržby extrahovat selhání. Kromě toho mohou mít jiné organizační domény různých dalších zdrojů dat, které ovlivňují selhání vzorců, které zde nejsou uvedeny úplné. Tyto mělo by být určené v součinnosti s odborníky domény při vytváření prediktivních modelů.
+#### <a name="failure-history"></a>Selhání historie
+Události chyb vyskytují jen vzácně v aplikacích PdM. Ale při vytváření modelů předpovědi, algoritmus potřebuje další informace o součásti normální provozní vzor, stejně jako jeho selhání vzorky. Proto jsou Cvičná data by měla obsahovat dostatečný počet příklady z obou kategorií. Historie údržby záznamů a částí nahrazení jsou dobrou zdroje a vyhledejte události selhání. Pomocí některé domény znalosti anomálie v Cvičná data určeny také jako selhání.
 
-Některé příklady výše datové prvky z případy použití jsou:
+#### <a name="maintenancerepair-history"></a>Historie údržby nebo opravit
+Historie údržby majetku obsahuje podrobnosti o součásti nahrazen, opravy aktivity prováděné atd. Tyto události zaznamenat snížení vzory. Bez těchto informací zásadní v datech školení může vést k zavádějící výsledky modelu. Historie selhání naleznete také v rámci údržby historie jako speciální chybové kódy nebo pořadí data pro částí. Další datové zdroje, které ovlivňují vzory selhání by měly prozkoumat a poskytuje odborníky domény.
 
-Selhání historie: letu zpoždění data, letadla součást selhání data a typy, selhání transakce za stažení peněžních ATM, selhání dveře train nebo hodnocení, brzdy disku nahrazení pořadí data, větru turbína selhání data a jistič příkaz selhání.
+#### <a name="machine-operating-conditions"></a>Počítač provozních podmínek
+Streamování dat snímačů na základě (nebo jiných) zařízení v operaci je důležité datovým zdrojem. Klíče předpokladů v PdM je, že stav počítače a snižuje časem během jeho běžné operace. Očekává se, že data obsahují čas různých funkcí, které zaznamenat tento vzor stárnutí a všechny anomálií, které vede ke snížení výkonu. Dočasné aspekt dat je vyžadována pro algoritmus Další selhání a vzory bez selhání v čase. Podle toho, tyto datové body, algoritmus zjišťuje odhadnout, kolik další jednotky času na počítači můžete pokračovat v práci předtím, než se nezdaří.
 
-Historie údržby: protokoly chyb letu, chyba ATM transakcích cvičení údržby záznamů, včetně typu údržby, krátký popis atd. a jistič údržby záznamy.
+#### <a name="static-feature-data"></a>Data statické funkce
+Statické funkce jsou metadata o zařízení. Příklady jsou výrobce vybavení, modelu, vyrobenou datum, spusťte datum služby, umístění systému a jiných technických specifikací.
 
-Počítače podmínky a využití: letu tras a časy, data shromážděná z letecké motory odečty snímačů z transakcí ATM cvičení data událostí, odečty snímačů z větru turbín, silech a připojené aut.
+Příklady relevantních dat pro [případy použití ukázkové PdM](#Sample-PdM-use-cases) jsou uvedeny v následující tabulce:
 
-Počítač funkce: jistič technických specifikací například napětí úrovně, informace o zeměpisné poloze nebo car funkce jako je například Ujistěte se, modelu, modul velikost, můžete zadat typy zařízení produkční atd.
+| Případ použití | Příklady relevantní data |
+|:---------|---------------------------|
+|_Zpoždění letu a zrušení_ | Informace o postupu letu ve formě letu nožičky a protokoly stránky. Data pohybující se větev zahrnují směrování podrobnosti, například odeslání nebo přijetí datum, čas, letiště, layovers atd. Stránka protokolu obsahuje řadu kódy údržby a chyb zaznamenaných pracovníky údržby základů.|
+|_Selhání částí motor letadla_ | Data se shromažďují ze senzorů v letadle, které poskytují informace o stavu různých částí. Zaznamenává údržby pomoci při identifikaci při došlo k selhání komponent a při jejich byly nahrazeny.|
+|_Selhání ATM_ | Odečty snímačů pro každou transakci (uloží peněžních nebo kontrola) a výdej peněžních. Informace na měření mezera mezi poznámky, Všimněte si, tloušťka, Všimněte si příchodem vzdálenost, zkontrolujte atributy atd. Záznamy údržby, které poskytují kódy chyb, informace o opravě, čas posledního enumenátor peněžních byl opakovaného plnění.|
+|_Selhání turbína větru_ | Snímače sledování turbína podmínek jako teploty, směr větru, napájení generované, generátor rychlost atd. Shromáždění dat z více turbín větru z farmy větru umístěné v různých oblastech. Každý turbína bude obvykle mají více odečty snímačů předávání měření na pevném časovém intervalu.|
+|_Selhání jistič_ | Protokoly údržby, které zahrnují opravné, preventivní a systematické akce. Provozní data, která zahrnuje automatickou a ruční příkazy odeslané okruh funkce, jako rozdělování pro akce Otevřít a zavřít. Metadata zařízení, jako je například datum výroby, umístění, modelu, atd. Specifikace jistič například napětí úrovně, informace o zeměpisné poloze, podmínky okolí.|
+|_Selhání dveře hodnocení_| Hodnocení metadata, jako je například typ hodnocení, vyrobenou datum, frekvence údržby, typ sestavení a tak dále. Provozní informace, jako je počet cyklů dveří, průměrná dveře zavřít čas. Selhání historie s příčiny.|
+|_Selhání Wheel_ | Data snímače, míry hodinových akcelerace, brzdového instancí, podporovat jeho vzdálenost, rychlosti atd. Informace o statických na souborů Wheel jako výrobce, pocházejí datum. Data selhání odvodit z databáze pořadí část sledování pořadí data a počty.|
+|_Podzemní dráha train dveře selhání_ | Otevírání dveří a uzavírací dobu, ostatní provozní data, jako jsou aktuální stav train dveří. Statických dat bude zahrnovat identifikátor prostředku, čas a podmínky hodnoty sloupců.|
 
-Zadaný výše uvedených zdrojů dat, jsou dva hlavní datové typy, které v doméně prediktivní údržby se sledují dočasná data a statických dat.
-Selhání historie, počítač podmínky, opravte historie, téměř vždy historie využití přijde s časovými razítky-určující dobu každá položka dat kolekce. Funkce počítačů a operátor funkce jsou obecně statické vzhledem k tomu obvykle popisují technických specifikací počítače nebo operátor na vlastnosti. Je možné, aby v průběhu času mění tyto funkce a v takovém případě by měl být považován za časovým razítkem zdroje dat.
+### <a name="data-types"></a>Typy dat
+Zadaný výše uvedených zdrojů dat, se dvě hlavní datové typy zjištěnými v PdM domény:
 
-### <a name="merging-data-sources"></a>Slučování zdroje dat
-Před získáním do libovolného typu funkce inženýrství nebo označování procesu, je potřeba nejdřív připravit naše data ve formuláři potřebné pro vytvoření funkce z. Konečným cílem je generovat záznam pro každou časovou jednotku pro každý prostředek s popisky a funkce být uloženy v strojového učení algoritmu. Chcete-li připravit tento vyčistit závěrečné sady dat, třeba vzít některé kroky předběžného zpracování. Prvním krokem je rozdělit trvání shromažďování dat do jednotky doby, kdy každý záznam patří do časovou jednotku pro určitý prostředek. Shromažďování dat je možné také rozdělit do jiné jednotky jako je například akce, ale pro jednoduchost používáme jednotky doby pro zbytek vysvětlení.
+- _Dočasná data_: provozní telemetrie, počítač podmínky, typy pořadí pracovních, priority kódy, které budou mít časová razítka v době záznam. Časová razítka přidružená každé události bude mít i chyby, údržby nebo opravit a historie využití.
+- _Statických dat_: funkce počítačů a operátor funkce jsou obecně statické vzhledem k tomu, že popisují technických specifikací počítače nebo operátor atributy. Pokud tyto funkce může postupně měnit, by měly mít také časová razítka s nimi spojených.
 
-Měrné jednotky pro dobu může být v sekund, minut, hodin, dnů, měsíce, cykly, miles nebo transakcí v závislosti na efektivitu Příprava dat a změny zjištěnými v podmínky prostředku z časovou jednotku dalších nebo jinými faktory konkrétní k doméně. Jinými slovy časovou jednotku nemá být, že stejně jako hodnota frekvence shromažďování dat jako v mnoha případech data nemusí zobrazit žádný rozdíl z jedné jednotky na druhý. Například pokud teploty hodnoty byly shromažďovaných každých 10 sekund, výběr časovou jednotku 10 sekund pro celou analýzu zvýšení kapacity počet příklady bez zadání jakýchkoli dalších informací. Lepší strategie může být použití průměr přes hodinu jako příklad.
+Předpověď a cíle proměnné by měla být zpracované nebo transformovat na [číselné, kategorií a jiné datové typy](https://www.statsdirect.com/help/basics/measurement_scales.htm) v závislosti na algoritmus používá.
 
-Příklad schémata obecných datových zdrojů dat. popsané v předchozí části jsou:
+### <a name="data-preprocessing"></a>Data předběžného zpracování
+Aby bylo _konstruování_, Příprava dat z různých datových proudů k vytváření schématu, ze kterého je snadné sestavení funkce. Vizualizace dat nejprve jako tabulky záznamů. Každý řádek v tabulce představuje instanci školení a sloupce, které představují _předpověď_ funkcí (také nazývané nezávislé atributy nebo proměnné). Uspořádání dat tak, aby byla posledního sloupce _cíl_ (závislé proměnné). Pro každou instanci školení přiřadit _popisek_ jako hodnotu v tomto sloupci.
 
-Zaznamenává údržby: Toto jsou záznamy akce údržby provést. Data nezpracovaná údržby obvykle dodává s ID prostředku a časové razítko s informacemi o jaké aktivity údržby prováděly v daném čase. V případě takové nezpracovaná data aktivity údržby nutné přeložit do kategorií sloupců s každou kategorii odpovídající typ akce údržby. Schéma základní data pro záznamy údržby bude zahrnovat sloupce asset ID, čas a údržby akce.
+Pro dočasná data rozdělení do jednotky doby trvání data snímačů. Každý záznam by měly patřit do časovou jednotku pro určitý prostředek _a měli nabízejí jedinečné informace_. Jednotky doby jsou definovány podle obchodních potřeb v násobcích sekund, minut, hodin, dnů, měsíce, a tak dále. Časová jednotka _nemusí být stejný jako frekvence shromažďování dat_. Pokud frekvence vysoká, data nemusí zobrazit žádné významné rozdíly z jedné jednotky na druhý. Předpokládejme například, že o teplotě nebyla shromážděna každých 10 sekund. Použití tom samém intervalu pro Cvičná data pouze zvýšení kapacity počet příklady bez zadání jakýchkoli dalších informací. Pro tento případ může být strategie lepší použití průměr na obchodního oprávnění na základě dat více než 10 minut, nebo jednu hodinu.
 
-Selhání záznamů: Toto jsou záznamy, které patří k cíli předpovědi, který nazýváme selhání nebo důvod selhání. To mohou být specifické chybové kódy nebo události chyb definované konkrétní obchodní podmínky. V některých případech data obsahují více kódy chyb některé z nich odpovídají selhání, které vás zajímají. Ne všechny chyby jsou cílem předpovědi, takže další chyby jsou obvykle používány k vytváření funkcí, které mohou souviset s chybami. Schéma základní data pro záznamy selhání by mělo zahrnovat asset ID, čas a selhání nebo sloupce Důvod selhání důvod je k dispozici.
+Pro statických dat
+- _Zaznamenává údržby_: data nezpracovaná údržby má identifikátor asset a časové razítko s informacemi o údržby aktivity, které prováděly k danému bodu v čase. Transformace aktivity údržby do _kategorií_ sloupců, kde každé kategorie popisovač jednoznačně mapuje konkrétní údržby akce. Schéma pro záznamy údržby by mělo zahrnovat identifikátor prostředku, čas a akce údržby.
 
-Počítač podmínky: Jedná se o ideálně sledování v reálném čase data o provozních podmínek data. Například selhání dveře otevírání dveří a uzavírací časy jsou dobrou indikátory o aktuálním stavu dveří. Schéma základní data pro počítače podmínek bude zahrnovat asset ID, čas a podmínky hodnoty sloupců.
+- _Selhání záznamy_: selhání nebo z důvodů chyby lze zaznamenat jako jednotlivých kódů chyb nebo selhání událostí podle konkrétních podnikových podmínky. V případech, kdy zařízení obsahuje více kódy chyb by měly domény odborné pomoci, identifikujte ty, které jsou relevantní pro Cílová proměnná. Použití zbývající kódy chyb nebo podmínky pro vytvoření _předpověď_ funkce, které korelovat s tyto chyby. Schéma pro záznamy selhání by mělo zahrnovat identifikátor prostředku, čas, selhání nebo důvod selhání – Pokud je k dispozici.
 
-Data počítače a operátor: počítač a operátor data mohou být sloučeny do jedno schéma pro identifikaci, který prostředek byl provozují operátoru společně s vlastností prostředku a operátor. Například automobilu obvykle vlastníkem je ovladač s atributy, jako je stáří, řídí prostředí atd. Pokud se tato data se změní v čase, tato data musí rovněž zahrnovat sloupec čas a považovat za čas různých dat pro funkci generování. Schéma základní data pro počítače podmínky by zahrnují ID prostředku, funkce asset, operátor ID a operátor funkce.
+- _Počítač a operátor metadata_: sloučení dat počítače a operátor do jedno schéma pro přidružení prostředek jeho operátor spolu s jejich příslušné atributy. Schéma pro počítač podmínky by zahrnout identifikátor prostředku, funkce asset, operátor funkce a operátor identifikátor.
 
-Poslední tabulku před označování a funkce generování může být generována vlevo propojení počítače podmínky tabulky se záznamy selhání na ID prostředku a čas. Tato tabulka pak lze propojit se záznamy údržby na ID prostředku a čas polí a nakonec se počítač a operátor funkce na ID prostředku. První levé spojení opustí hodnoty null pro selhání sloupce, když je počítač v normálním provozu, tyto můžete nebude splněn hodnotou indikátor pro běžné operace. V tomto sloupci selhání se používá k vytvoření popisky pro prediktivní model.
+Další data předběžného zpracování kroky obsahovat _zpracování chybějící hodnoty_ a _normalizaci_ hodnot atributu. Podrobnou diskuzi je nad rámec této příručky – viz další část pro některé důležité údaje.
 
-### <a name="feature-engineering"></a>Návrh funkcí
-Prvním krokem při modelování je funkce inženýrství. Rada funkce generace je koncepčně popsat a abstraktní podmínka stavu počítače a v daném okamžiku pomocí historická data, která nebyla shromážděna až který bodu v čase. V další části poskytujeme přehled typu technik, které lze použít pro prediktivní údržby a jak se provádí každý technika štítky. Přesný postup, který se má použít, závisí na data a obchodní problém. Však funkce engineering metod popsaných níže slouží jako základní pro vytváření funkcí. Níže probereme prodleva funkce, které musí zkonstruovat z datových zdrojů, které obsahují časová razítka a také statické funkce, které jsou vytvořené z statických dat zdroje a příklady z případy použití.
+Pomocí výše uvedeného zpracované zdroje dat v místě, poslední transformaci před inženýrství funkce pro připojení na základě identifikátoru asset a časové razítko tabulek uvedených výše. Výsledná tabulka by obsahovat hodnoty null pro sloupec selhání, pokud je počítač v běžném provozu. Tyto hodnoty null lze nebude splněn podle indikátor pro běžné operace. Tento sloupec selhání slouží k vytvoření _popisky pro prediktivní model_. Další informace najdete v části na [modelování techniky pro prediktivní údržby](#Modeling-techniques-for-predictive-maintenance).
 
-#### <a name="lag-features"></a>Funkce Lag funkce
-Jak už bylo zmíněno dříve, v prediktivní údržby, historická data obvykle dodává s čas kolekce pro jednotlivá data označující časová razítka. Vytvoření funkce z dat, která se dodává s označen časovým razítkem data mnoha způsoby. V této části probereme některé z těchto metod pro prediktivní údržby. Ale jsme nejsou omezeny tyto metody samostatně. Vzhledem k tomu, že funkce inženýrství se považuje za jeden nejvíce tvůrčí oblasti prediktivního modelování, může být mnoho dalších způsobů, jak vytvořit funkce. Zde jsou některé obecné postupy.
+## <a name="feature-engineering"></a>Návrh funkcí
+Funkce inženýrství jde o první krok před modelování data. Jeho role v procesu vědecké účely dat [je zde popsán](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/create-features). A _funkce_ je prediktivní atribut pro model – například teploty, přetížení, vibrace a tak dále. Pro PdM zahrnuje funkce inženýrství poskytuje abstrakci stavu počítače a přes historická data shromážděná prostřednictvím značné množství doba trvání. V tomto smysl se liší od jeho partnerské uzly například vzdálené monitorování, detekce anomálií a detekce chyb. 
 
-##### <a name="rolling-aggregates"></a>*Vrácení agregace*
-Pro každý záznam prostředek jsme vyberte okno postupného velikosti "W", což je počet jednotek dobu, po kterou bychom rádi výpočetní historických agregace pro. Potom výpočetní vrácení agregační funkcí s použitím W období před datem záznamů. Několik příkladů vrácení agregace můžete vrácení, počty, znamená, standardních odchylek, extrémních podle standardních odchylek, měří CUSUMŮV, minimální a maximální hodnoty pro okno. Jiné zajímavé technika je zaznamenat změny trendu, špičky a úrovně změny pomocí algoritmů, které zjišťovat anomálie v dat pomocí algoritmů detekce anomálií.
+### <a name="time-windows"></a>Čas windows
+Vzdálené monitorování zahrnují reporting události, které dojít od _body v čase_. Modely detekce anomálií vyhodnotit příchozí datové proudy (skóre) dat do příznak anomálií od body v čase. Detekce chyb klasifikuje jako konkrétní typy jako body se vyskytují v době selhání. Naproti tomu PdM zahrnuje predikci selhání přes _budoucí časová období_, podle funkce, které představují počítač chování přes _historických časové období_. Pro PdM jsou příliš aktivní být prediktivní funkce dat z jednotlivých bodů času. Proto musí být data pro každou funkci _smoothened_ agregací datových bodů přes časových oken.
 
-Pro demonstrační, viz obrázek 1, kde jsme představují hodnoty čidel zaznamenány pro určitý prostředek pro každou jednotku času blue řádků a označit postupného průměrná funkci výpočtu pro W = 3 pro záznamy na t<sub>1</sub> a t<sub>2</sub> které jsou označeny oranžová a zelená seskupení v uvedeném pořadí.
+### <a name="lag-features"></a>Funkce Lag funkce
+Obchodní požadavky definovat, jak daleko model má k předvídání do budoucna. Pak tato doba trvání pomáhá definovat, jak daleko zpět modelu má hledat' Chcete-li tyto předpovědi. Tento "vyhledávání zpět' období je volána _prodleva_, a funkce, které jsou analyzovány tohoto období prodleva, se nazývají _funkce lag funkce_. Tato část popisuje funkce lag funkce, které lze sestavit ze zdroje dat se časová razítka a vytvoření funkce z statických dat zdrojů. Funkce opoždění jsou obvykle _číselné_ ve své podstatě.
 
-![Obrázek 1. Vrácení agregační funkce](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+> [!IMPORTANT]
+> Velikost okna je určen prostřednictvím experimentování a by měl dokončit za pomoci odborné domény. Přímý přístup do stejné paměti obsahuje pro výběr a definice funkcí prodleva, jejich agregací a typ systému windows.
 
-Obrázek 1. Vrácení agregační funkce
+#### <a name="rolling-aggregates"></a>Vrácení agregace
+Pro každý záznam prostředek okno postupného velikosti "W" je se rozhodli jako počet jednotek času výpočetní agregace. Funkce opoždění jsou pak vypočítány pomocí tečky W _před datem_ daného záznamu. Na obrázku 1 blue řádky zobrazit hodnoty čidel zaznamenány pro určitý prostředek pro každou jednotku času. Kumulativní průměr hodnot funkce se označují přes okno velikosti W = 3. Kumulativní průměr se vypočítává přes všechny záznamy časová razítka v rozsahu t<sub>1</sub> (v oranžová) k t<sub>2</sub> (zeleně). Hodnota pro W je obvykle v minutách nebo hodin v závislosti na povaze data. Ale pro některé problémy, výběr velké W (například dobu 12 měsíců) nabízejí celou historii prostředek až do okamžiku záznamu.
 
-Jako příklady pro letadla selhání součásti, hodnoty čidel z poslední týden, poslední tři dny a poslední den měla použít k vytvoření postupného znamená, směrodatná odchylka a funkce sum. Podobně pro znamená ATM selhání, nezpracovaná senzor hodnoty a vrací medián, rozsah, standardních odchylek počet extrémních nad rámec tři standardních odchylek, horní a dolní CUMSUM funkce byly použity.
+![Obrázek 1. Vrácení agregační funkce](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) obrázek 1. Vrácení agregační funkce
 
-Pro předpověď zpoždění letu počty chyby, které kódy od minulého týdne jste použili k vytvoření funkce. Počet událostí na posledního dne, počet událostí za předchozí dva týdny a odchylku počtu událostí za posledních 15 dnů byly train dveře selhání, použít k vytvoření funkce lag. Stejné počítání byl použit pro události související s údržbou.
+Příklady převrácení časový interval agregace jsou počet, průměr, míry CUMESUM (kumulativní součet), minimální nebo maximální hodnoty. Kromě toho odchylky, směrodatná odchylka a počet extrémních nad rámec standardních odchylek N se často používají. Příklady agregací, které mohou být použity pro [případy použití](#Sample-PdM-use-cases) v této příručce jsou uvedeny níže. 
+- _Letu zpoždění_: počet kódů chyb přes poslední den za týden.
+- _Letadla modul část selhání_: vrácení znamená, směrodatná odchylka a součet přes poslední den, týden atd. Tato metrika je třeba určit společně s odborné obchodní domény.
+- _Selhání ATM_: vrácení znamená, medián, rozsah, standardních odchylek, počet extrémních nad rámec tři standardních odchylek, horní a dolní CUMESUM.
+- _Selhání dveře train podzemní dráha_: počet událostí za posledních den, týden, dva týdny atd.
+- _Selhání jistič_: selhání počty přes minulého týdne roku, tři roky atd.
 
-Kromě toho výběrem W je moc velké (např.) letopočty), je možné podívejte se na celou historii prostředek, jako je například počítání všechny záznamy údržby selhání atd. až se čas záznamu. Tato metoda se používá pro počítání jistič selhání poslední tři roky. Pro selhání train také všechny události údržby měla počítají vytvořit funkci pro zachycení dlouhodobé údržby účinky.
+Další užitečné v PdM je zachycení trend změny, špičky a úrovně změny pomocí algoritmů, které zjišťovat anomálie v datech.
 
-##### <a name="tumbling-aggregates"></a>*Přeskakující agregace*
-Pro každý s popiskem záznam majetku vybereme okno velikosti "W -<sub>tisíc</sub>" kde tisíc je číslo nebo windows velikost "W", kterou chcete vytvořit funkce lag pro. "k" mohou být zachyceny jako velký počet pro zachycení dlouhodobé vzory snížení nebo malé množství k zachycení krátkodobé účinky. Používáme k přeskakující windows W -<sub>tisíc</sub> , W -<sub>(k-1)</sub>,..., W -<sub>2</sub> , W -<sub>1</sub> k vytvoření agregační funkce pro období před datem záznam a čas (viz obrázek 2). Tyto jsou také vrácení windows na úrovni záznam pro časovou jednotku, která není zaznamenaná na obrázku 2, ale na nápad je stejný jako v obrázek 1, pokud t<sub>2</sub> slouží také k předvedení postupného účinek.
+#### <a name="tumbling-aggregates"></a>Přeskakující agregace
+Pro každý s názvem bez přípony záznam prostředek okno velikosti _W -<sub>tisíc</sub>_  je definován, kde _tisíc_ je počet windows velikosti _W_. Agregace jsou poté jste vytvořili přes _tisíc_ _přeskakující windows_ _W-k, W -<sub>(k-1)</sub>,..., W -<sub>2</sub>, W -<sub>1</sub>_  pro období před časové razítko záznam. _k_ může být malé množství k zachycení krátkodobé důsledky nebo velký počet pro zachycení dlouhodobé snížení vzory. (viz obrázek 2).
 
-![Obrázek 2. Přeskakujícího agregační funkce](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+![Obrázek 2. Agregační funkce přeskakující](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) na obrázku 2. Přeskakujícího agregační funkce
 
-Obrázek 2. Přeskakujícího agregační funkce
+Například funkce lag funkce pro případ použití turbín větru mohou být vytvořeny s W = 1 a tisíc = 3. Jejich implikují prodleva pro každou z posledních tří měsíců pomocí horní a dolní odlehlé hodnoty.
 
-Jako příklad větru turbín, W = 1 a tisíc = 3 měsíce jste použili k vytvoření funkce lag pro každou z posledních 3 měsíců pomocí horní a dolní odlehlé hodnoty.
+### <a name="static-features"></a>Statické funkce
 
-#### <a name="static-features"></a>Statické funkce
-Jedná se o technických specifikací vybavení, jako je například datum výroby, číslo modelu, umístění atd. Funkce opoždění jsou většinou číselné ve své podstatě, bude statické funkcí obvykle kategorií proměnných v modelech. Jako příklad jistič vlastnosti, například napětí, aktuální a specifikace power společně s typy transformer používaly zdrojů energie atd. Brzdy selhání disku kola typ můžete zadat, jak je, pokud jsou slitiny nebo oceli používaly jako statické funkce.
+Technických specifikací vybavení, jako je například datum výroby, číslo modelu, umístění, jsou některé příklady statické funkce. Jsou považovány za _kategorií_ proměnných pro modelování. Příklady pro případ použití jistič jsou napětí, aktuální, kapacita napájení, typ transformer a zdroji napájení. K selhání wheel typ můžete zadat souborů Wheel (legované vs oceli) je příklad.
 
-Během generování funkce je třeba provést některé důležité kroky jako je například zpracování chybějící hodnoty a normalizace. Chybí hodnota imputace a také normalizaci data, která není tady popisovaných mnoha způsoby. Je však vhodné zkuste různé metody, které chcete zobrazit, pokud je možné zvýšit výkonnost předpovědi.
+Úsilí přípravu dat popsané, pokud by měla vést k dat probíhá uspořádané, jak je uvedeno níže. Školení, testování a ověření dat musí mít toto logické schéma (Tento příklad zobrazuje čas v jednotkách dní).
 
-Poslední funkce tabulky po funkce technici kroky popsané v předchozí části by měla vypadat přibližně následující schéma příklad dat po časovou jednotku za den:
+| ID assetu | Čas | <Feature Columns> | Štítek |
+| ---- | ---- | --- | --- |
+| A123 |1 den | . . . | . |
+| A123 |Den 2 | . . . | . |
+| ...  |...   | . . . | . |
+| B234 |1 den | . . . | . |
+| B234 |Den 2 | . . . | . |
+| ...  |...   | . . . | . |
 
-| ID assetu | Čas | Funkce sloupců | Štítek |
-| --- | --- | --- | --- |
-| 1 |1 den | | |
-| 1 |Den 2 | | |
-| ... |... | | |
-| 2 |1 den | | |
-| 2 |Den 2 | | |
-| ... |... | | |
+Posledním krokem v inženýrství funkce je **označování** z Cílová proměnná. Tento proces je závislý na technika modelování. Pak modelování techniku, závisí na obchodního problému a povaha všechna dostupná data. Označování je popsané v další části.
 
-## <a name="modeling-techniques"></a>Techniky modelování
-Prediktivní údržby je velmi bohaté doména často zaměstnávající obchodní otázky, které může použijí z mnoha různých úhlů prediktivního modelování perspektivy. V následujících částech poskytujeme hlavní techniky, které se používají k modelu různých obchodních otázek, které můžete zodpovězeny s řešení prediktivní údržby. I když existují podobnosti, každý model má svou vlastní způsob vytváření popisky, které jsou podrobně popsány. Jako prostředek doprovodné najdete šablona prediktivní údržby, který je součástí ukázkových experimentů uvedené v Azure Machine Learning. Odkazy na online materiálu pro tuto šablonu jsou uvedeny v části prostředky. Uvidíte, jak některé funkce engineering techniky popsané výše a modelování techniku, která je popsána v následujících částech jsou použity k předpovědi selhání motoru letadla pomocí Azure Machine Learning.
+> [!IMPORTANT]
+> Příprava dat a funkce technici jsou důležité jako modelování techniky k přicházejí na úspěšné PdM řešení. Expert domény a specialisty by měl investovat déle správné funkce a dat pro model. Malé ukázkové z mnoha knih na funkci technici jsou uvedeny níže:
+> - Pyle, Příprava D. dat pro dolování (Nováková Kaufmann řady v systémy správy dat), 1999 dat.
+> - Casari Zheng A., technici A. funkce pro Machine Learning: Principy a techniky pro datových vědců O'Reilly, 2018.
+> - Dong, G. Liu H. (Editory), funkce, technici pro Machine Learning a analýzy dat (Chapmanova & Hall/CRC dolování dat a řady zjišťování znalostní báze), stiskněte CRC 2018.
 
-### <a name="binary-classification-for-predictive-maintenance"></a>Binární klasifikace pro prediktivní údržby
-Binární klasifikace pro prediktivní údržby se používá k předvídání pravděpodobnost, že zařízení selže a v budoucích časovém intervalu. Časové období je dáno a na základě obchodní pravidla a data po ruce. Některé běžné časová období jsou minimální doba potřebná k nákupu náhradní díly nahradit pravděpodobně součásti poškození nebo čas potřebný k nasazení údržby prostředků k provedení údržby rutiny opravit problém, který může dojít v daném časovém období. Říkáme tohoto období budoucí horizon "X".
+## <a name="modeling-techniques-for-predictive-maintenance"></a>Modelování techniky pro prediktivní údržby
 
-Chcete-li použít binární klasifikace, musíme určit dva typy příklady, které říkáme kladné a záporné. Každý příkladem je záznam, který patří do časovou jednotku pro určitý prostředek koncepčně popisující a poskytuje abstrakci jeho provozních podmínek až tuto časovou jednotku prostřednictvím funkce engineering pomocí historických a jiných zdrojů dat, které jsou popsané výše. V kontextu binární klasifikace pro prediktivní údržby, kladné typ označuje selhání (popisek 1) a záporná typ označuje normální provozní podmínky (Popisek = 0) kde popisky jsou typu kategorií. Cílem je nalezení model, který identifikuje každý nový příklad jako pravděpodobně nezdaří a fungovat normálně během následujících X jednotkami času.
+Tato část popisuje hlavní modelování techniky pro PdM problémy, spolu s jejich metody vytváření konkrétní štítek. Všimněte si, že jeden modelování postup lze použít napříč různými odvětvími. Modelování technika je spárován do problém vědecké účely dat, nikoli kontextu dat po ruce.
 
-#### <a name="label-construction"></a>Popisek konstrukce
-Chcete-li vytvořit prediktivní model odpověď na otázku "co je pravděpodobnost, že asset selže v dalším X jednotkami času?", označování se provádí pořízení X záznamů před selháním prostředek a označování je jako "o na selhání" (popisek = 1) při označování všechny  Další záznamy "normální" (Popisek = 0). Tato metoda popisky jsou kategorií proměnné (viz obrázek 3).
+> [!IMPORTANT]
+> Volba štítky pro případy selhání a označování strategie  
+> je třeba určovat konzultaci s doménou odborné.
 
-![Obrázek 3. Označování pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+### <a name="binary-classification"></a>binární klasifikace
+Binární klasifikace se používá ke _předpovědi pravděpodobnost, že zařízení, selže a v budoucích časovém intervalu_ – zavolat _budoucí horizon období X_. X je určen podle obchodního problému a data, ve spolupráci s odborné domény. Mezi příklady patří:
+- _minimální doba realizace_ potřeby nahradit součásti nasazení údržby prostředků, provedení údržby, aby nedošlo k problému, který může dojít v tomto období.
+- _minimální počet událostí_ , může dojít předtím, než dojde k potížím.
 
-Obrázek 3. Označování pro binární klasifikaci
+V této technice jsou identifikovány dva typy školení příklady. V příkladu kladné _označující selhání_, s popiskem = 1. Záporné příklad, který označuje normální provozní podmínky, s popiskem = 0. Cílová proměnná, a proto jsou hodnoty popisků _kategorií_. Model měli identifikovat každý nový příklad jako pravděpodobně selhat nebo pracovat normálně přes další X jednotky doby.
 
-Zpoždění letů a zrušení X vydán jako jeden den k předvídání zpoždění v dalších 24 hodin. Všechny lety, které jsou v rámci 24 hodin, než selhání byly označeny jako hodnotami 1. ATM peněžních obejít bez chyb, dva modely binární klasifikace byly vytvořené k předvídání pravděpodobnost selhání transakce v příštích 10 minutách a také k předvídání pravděpodobnost selhání v dalších 100 poznámky distribuován. Všechny transakce, které došlo během posledních 10 minut selhání jsou označeny jako 1 pro první model. A všechny poznámky distribuován v rámci poslední 100 poznámky k selhání byly označený jako 1 pro druhý modelu. Pro jistič selhání je předpovědi pravděpodobnost, že další jistič příkaz se nezdaří, ve kterém je případ X zvolen jako jeden příkaz budoucí úlohy. Pro train dveře selhání binární klasifikace model byl vytvořený k předvídání selhání během následujících 7 dní. Selhání turbína větru jste vybrali X jako 3 měsíce.
+#### <a name="label-construction-for-binary-classification"></a>Popisek konstrukce pro binární klasifikaci
+Je zde na otázku: "co je pravděpodobnost, že asset selže v dalším X jednotkami času?" K odpovědi na tuto otázku, popisek X záznamů před selháním prostředek jako "o na selhání" (popisek = 1) a označovat všechny záznamy, že je "normální" (Popisek = 0). (viz obrázek 3).
 
-Větru turbína a cvičení dveře případech slouží také k analýze regrese k předvídání zbývající dobu životnosti pomocí stejných dat, ale s využitím různých označování strategie, který je vysvětlen v další části.
+![Obrázek 3. Označování pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) obrázku 3. Označování pro binární klasifikaci
+
+Níže jsou uvedeny příklady označování strategie pro některé případy použití.
+- _Letu zpoždění_: X může být zvolen jako 1 den, k předvídání zpoždění v dalších 24 hodin. Potom všechny lety, které jsou v rámci 24 hodin, než selhání jsou označeny jako 1.
+- _Selhání obejít peněžních ATM bez_: Cílem může být k určení pravděpodobnosti selhání transakce za další jednu hodinu. V takovém případě jsou všechny transakce, které došlo během poslední hodiny selhání označeny jako 1. K předvídání pravděpodobnost selhání přes další měna N poznámky distribuován, všechny poznámky distribuován v rámci poslední poznámky N selhání jsou označeny jako 1.
+- _Selhání jistič_: Cílem může být k další chybě příkazu jistič předpovědi. V takovém případě je jako jeden příkaz budoucí vybrali X.
+- _Cvičení dveře selhání_: X může být zvolen jako dva dny.
+- _Větru turbína selhání_: X může být zvolen jako dvou měsíců.
 
 ### <a name="regression-for-predictive-maintenance"></a>Regrese pro prediktivní údržby
-Modely Regrese v prediktivní údržby se používají k výpočtu zbývající dobu životnosti (RUL) z prostředek, který je definován jako množství času, který asset je funkční, než dojde k další chybě. Stejné jako binární klasifikace, každý příkladem je záznam, který patří do časovou jednotku "Y" pro určitý prostředek. V souvislosti s regrese se však cílem je najít model, který vypočítá zbývající životnost každý nový příklad jako průběžné číslo, které je doba, zbývající před selháním. Říkáme tohoto období některé více Y. Každý příklad má také zbývající dobu životnosti, což může být vypočítána množství času, například před selháním další zbývající.
+Modely regrese se používá ke _výpočetní zbývající dobu životnosti (RUL) prostředek_. RUL je definován jako množství času, který prostředek je funkční, než dojde k další chybě. Každý příkladem školení je záznam, který patří do časovou jednotku _nY_ pro určitý prostředek, kde _n_ je násobek. Model byste měli vypočítat zbývající životnost jednotlivých nové příkladu jako _průběžné číslo_. Toto číslo označuje dobu, po zbývající před selháním.
 
-#### <a name="label-construction"></a>Popisek konstrukce
-Zadaný na otázku "co je zbývající dobu životnosti zařízení?
-", popisků pro regresní model konstruovat tak, že každý záznam před selháním označování je pomocí výpočtu, kolik jednotek času zůstat před selháním Další. Tato metoda popisky jsou průběžné proměnné (viz obrázek 4).
+#### <a name="label-construction-for-regression"></a>Popisek konstrukce pro regresní
+Je zde na otázku: "Co je zbývající užitečné životnosti (RUL) zařízení?" Pro každý záznam před selháním vypočítejte štítek, který chcete být počet jednotek zbývající před selháním další čas. Tato metoda popisky jsou průběžné proměnné. (Viz obrázek 4)
 
-![Obrázek 4. Označování pro regresní](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+![Obrázek 4. Označování pro regresní](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) obrázek 4. Označování pro regresní
 
-Obrázek 4. Označování pro regresní
-
-Jiné než binární klasifikace pro regresní, prostředky bez jakýchkoliv potíží v datech nelze použít pro modelování označování se provádí v souvislosti s aplikací bod selhání a jeho výpočtu není možné bez znalosti, jak dlouho zůstal naživu asset před došlo k chybě. Tento problém je nejlépe řešit jiné statistické technika nazývají základními analýzy.
-Nebudete budeme zabývat základními analýzy v této scénářem z důvodu možných komplikací, ke kterým může nastat při použití techniku případy použití prediktivní údržby, které se týkají různých čas dat pomocí pravidelných intervalech.
+Pro regresní označování provádí nese odkaz na bod selhání. Výpočet jeho není možné bez znalosti, jak dlouho asset má zůstal naživu před selhání. Proto na rozdíl od binární klasifikace prostředky bez jakýchkoliv potíží v datech nelze používat pro modelování. Tento problém je nejlépe používala jiné statistické techniku zvanou [základními Analysis](https://en.wikipedia.org/wiki/Survival_analysis). Ale potenciální komplikace mohou nastat při použití Tato technika PdM případy použití, které se týkají různých čas dat pomocí pravidelných intervalech. Další informace o základními analýzy, najdete v části [tomto jeden pager](https://www.cscu.cornell.edu/news/statnews/stnews78.pdf).
 
 ### <a name="multi-class-classification-for-predictive-maintenance"></a>Klasifikace více tříd pro prediktivní údržby
-Klasifikace více tříd pro prediktivní údržby můžete použít k předvídání dvě budoucí výsledky. První z nich je prostředek přiřadit jednoho z několika možných období času, který se pro každý prostředek poskytnout časový rozsah a k selhání. Druhá je identifikace pravděpodobnost selhání v budoucí období kvůli jednomu několik příčin. Umožňuje údržby pracovníky, kteří jsou vybaveny tento znalostní báze pro zpracování problémy předem. Jiné technika modelování více tříd se zaměřuje na určení s největší pravděpodobností hlavní příčinu základě selhání. To umožňuje doporučení, která má být poskytnut pro akce nejvyšší údržby, které mají být provedeny, pokud chcete problém selhání.
-Tak, že seřazený seznam kořenové způsobí, že a přidružené akce opravy  
-Technici může být efektivnější v trvá jejich první akce opravit po selhání.
+Techniky klasifikace více třídy lze použít v PdM řešení pro dva scénáře:
+- Předpověď _dva budoucí výsledky_: první výsledek je _časového údaje k selhání_ pro určitý prostředek. Asset se přiřadí k jednomu z několika možných období. Druhý výsledek je pravděpodobnost selhání v budoucí období kvůli _jedním z několika kořenové způsobí, že_. Tato předpovědi umožňuje tým údržby si chcete přehrát příznaky a plán údržby plánů.
+- Předpověď _nejpravděpodobnější příčiny_ dané selhání. Tento výsledek doporučuje správnou sadu akce údržby vyřešit selhání. Seřazený seznam hlavní příčiny a doporučené opravy může pomoci technici prioritu jejich oprava akce po selhání.
 
-#### <a name="label-construction"></a>Popisek konstrukce
-Zadané dva dotazy, které jsou "co je pravděpodobnost, že prostředek v další jednotky"aZ"času selže tam, kde"a"je počet období" a "co je pravděpodobnost, že asset selže v dalším X jednotkami času z důvodu problému" P<sub>i</sub>" kde "i" je počet možných příčinách označování se provádí následujícím způsobem pro tyto techniky.
+#### <a name="label-construction-for-multi-class-classification"></a>Popisek konstrukce pro klasifikaci s více – třída
+Je zde na otázku: "co je pravděpodobnost, že prostředek selže v dalším _nZ_ jednotkami času kde _n_ je počet období?" Na tuto otázku odpovědět, označení nZ záznamy před selháním prostředek pomocí sad času (3Z, 2Z, Z). Popisek všechny ostatní zaznamenává "normální" (Popisek = 0). Tato metoda obsahuje cílová proměnná _kategorií_ hodnoty. (Viz obrázek 5).
 
-Pro první otázku označování se provádí tak, že záznamy aZ před selháním prostředek označování je pomocí sad času (3Z, 2Z, Z) jako jejich popisky při označování všechny záznamy jako "normální" (Popisek = 0). Tato metoda je popisek kategorií proměnná (viz obrázek 5).
+![Obrázek 5. Označování pro více třídami klasifikaci pro předpověď časové selhání](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) obrázek 5. Označování pro klasifikaci s více tříd pro předpověď časové selhání
 
-![Obrázek 5. Označování pro více třídami klasifikaci pro předpověď časové selhání](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+Je zde na otázku: "co je pravděpodobnost, že asset selže v dalším X jednotkami času z důvodu příčina nebo problém nevyřeší _P<sub>i</sub>_?" kde _i_ je počet možných příčinách. K odpovědi na tuto otázku, popisek X záznamů před selháním prostředek jako "o nezdaří z důvodu příčiny _P<sub>i</sub>_" (popisek = _P<sub>i</sub>_). Označení všechny záznamy, že je "normální" (Popisek = 0). Tato metoda také popisky jsou kategorií (viz obrázek 6).
 
-Obrázek 5. Označování pro více třídami klasifikaci pro předpověď časové selhání
+![Obrázek 6. Označování pro více třídami klasifikaci pro kořenové příčina předpovědi](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) obrázek 6. Označování pro klasifikaci více tříd pro kořenové příčina předpovědi
 
-Pro druhou otázku označování se provádí pořízení X záznamů před selháním prostředek a označování je jako "o nezdaří z důvodu problému P<sub>i</sub>" (popisek = P<sub>i</sub>) při označování všechny záznamy jako "normální" (Popisek = 0). Tato metoda popisky jsou kategorií proměnné (viz obrázek 6).
+Model přiřadí pravděpodobnost selhání kvůli každý _P<sub>i</sub>_  i pravděpodobnost bez chyby. Tyto pravděpodobnostech lze provést řazení podle rozsahem umožňující předpovědi problémů, které jsou v budoucnu dochází nejčastěji.
 
-![Obrázek 6. Označování pro více třídami klasifikaci pro kořenové příčina předpovědi](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+Je zde na otázku: "jaké akce údržby Doporučujete po selhání?" Na tuto otázku odpovědět označování _nevyžaduje budoucí horizon má být vybráno_, protože model není v budoucnu predikci selhání. Ho je právě predikci s největší pravděpodobností příčiny _po selhání bylo provedeno_.
 
-Obrázek 6. Označování pro více třídami klasifikaci pro kořenové příčina předpovědi
-
-Model přiřadí pravděpodobnost selhání kvůli každý P<sub>i</sub> i pravděpodobnost bez chyby. Tyto pravděpodobnostech lze provést řazení podle rozsahem umožňující předpovědi problémů, které jsou v budoucnu dochází nejčastěji. Případ použití selhání součásti letadla se strukturovaná jako více třídami klasifikace problému. To umožňuje předpovědi pravděpodobností selhalo, protože dvě různé zatížení ventil součásti vyskytující se v příští měsíc.
-
-Pro akce údržby doporučujeme po selhání, označování nevyžaduje budoucí horizon má být vybráno. Je to proto, že model není v budoucnu predikci selhání, ale jeho je právě předpovídá nejpravděpodobnější příčiny po selhání bylo provedeno. Hodnocení dveře selhání spadají do třetí případě, kdy cílem předpovídat příčinu selhání zadané historická data týkající se provozních podmínek. Tento model je poté použít k předvídání, že pravděpodobně hlavní příčiny po došlo k selhání. Klíčovou výhodou tohoto modelu je, že pomáhá používáním technici snadno diagnostikovat a opravit problémy, které byste jinak potřebovali za roky prostředí.
-
-## <a name="training-validation-and-testing-methods-in-predictive-maintenance"></a>Školení, ověřování a testování metody v prediktivní údržby
-V prediktivní údržby, podobně jako jiné řešení místo označen časovým razítkem data, která obsahuje typické trénování a testování běžné musí vzít v úvahu generalize různých aspektů čas pro lepší neviditelný budoucí data.
+## <a name="training-validation-and-testing-methods-for-predictive-maintenance"></a>Školení, ověřování a testování metody pro prediktivní údržby
+[Proces vědecké účely dat Team](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) poskytuje úplné vysvětlení cyklu train test ověření modelu. Tato část popisuje aspekty, které jsou jedinečné pro PdM.
 
 ### <a name="cross-validation"></a>Křížové ověření
-Mnoho algoritmy strojového učení závisí na několika hyperparameters, který může významně změní výkonu modelu. Optimální hodnoty těchto hyperparameters nejsou automaticky vypočítávají při tréninku modelu, ale musí být určena vědecký pracovník data. Nalezení správné hodnoty hyperparameters několika způsoby. Nejběžnější ten je "tisíc násobek křížové ověření" což rozdělí příklady náhodně na složení "k". Pro každou sadu hodnot hyperparameters je algoritmus učení časy spuštění kB. Při každé iteraci v příkladech v aktuální násobek jsou použity jako sada ověření, zbytek příklady jsou použity jako sada školení. Algoritmus vlaky přes příklady školení a metriky výkonu se vypočítávají přes příklady ověření. Na konci této smyčky pro každou sadu hodnot hyperparameter jsme výpočetní průměr hodnot metriky výkonu tisíc a zvolte hyperparameter hodnoty, které mají nejlepšího výkonu dosáhnete průměrná.
+Cílem [křížové ověření](https://en.wikipedia.org/wiki/Cross-validation_(statistics)) je k definování sady dat na "test" modelu ve fázi školení. Tato datová sada je volána _ověření sadu_. Tato technika pomáhá limit problémy jako _overfitting_ a dává přehledu na tom, jak bude modelu generalize pro nezávislé datové sady. To znamená neznámé dat nastavit, které by mohly být od skutečné problém. Rutiny pro PdM školení a testování musí vzít v úvahu dobu různých aspektů lépe generalize neviditelný budoucí data.
 
-Jak je uvedeno nahoře, v prediktivní údržby problémy, data se zaznamenává jako časové řady událostí, které pocházejí z několika zdrojů dat. Tyto záznamy lze provést řazení podle času zobrazení popisků záznam nebo příklad. Proto pokud jsme rozdělit datovou sadu náhodně na školení a ověření, některé příklady školení jsou později v čase než některé příklady ověření. Výsledkem je odhad budoucích výkonu hyperparameter hodnot na základě dat, které byly přijaty předtím, než byla cvičení modelu. Tyto odhady může být příliš optimistickou metodu, zejména v případě, že časové řady nejsou stojící a jejich chování časem změnit. V důsledku toho může být vybraný hyperparameter hodnoty optimální.
+Mnoho algoritmy strojového učení závisí na několika hyperparameters, který může významně změní výkon modelu. Optimální hodnoty těchto hyperparameters nejsou automaticky vypočítávají při tréninku modelu. Musí být určena vědecký pracovník data. Nalezení správné hodnoty hyperparameters několika způsoby.
 
-Lepší způsob hledání správné hodnoty hyperparameters je rozdělit příklady na školení a ověření způsobem závislá na čase, nastavte tak, že jsou všechny příklady ověření v čase pozdější, než všechny příklady školení. Potom pro každou sadu hodnot hyperparameters učení algoritmu přes trénovací sada, měřit výkon modelu přes stejnou sadu ověření a zvolte hyperparameter hodnoty, které se zobrazí nejlepší výkon. Pokud data časové řady není stojící a vyvíjí v průběhu času, hodnoty hyperparameter zvolí train a ověření rozdělení vést k lepší budoucí "modelu výkon než s hodnotami náhodně vybere podle křížové ověření.
+Nejběžnější jeden je _tisíc skládání křížové ověření_ , rozdělí příklady náhodně do _tisíc_ složení. Pro každou sadu hodnot hyperparameters spustit algoritmus učení _tisíc_ časy. Při každé iteraci použijte v příkladech v aktuální násobek jako sada ověření a zbytek v příkladech jako sada školení. Učení algoritmu přes příklady školení a výpočetním metriky výkonu přes příklady ověření. Na konci této smyčky, výpočetní průměr _tisíc_ metrik výkonu. Pro každou sadu hodnot hyperparameter vyberte ty, které se průměrná nejlepší výkon. Výběr hyperparameters je často experimentální ve své podstatě.
 
-Poslední model je generován cvičení algoritmu učení přes celou dat pomocí nejlepší hyperparameter hodnoty, které se nacházejí pomocí školení a ověření rozdělené nebo křížové ověření.
+V PdM problémy se data zaznamená jako časové řady událostí, které pocházejí z několika zdrojů dat. Tyto záznamy může provést řazení podle času zobrazení popisků. Proto pokud datová sada je rozdělená _náhodně_ do sady školení a ověření _některé příklady školení může být později v čase než některé příklady ověření_. Budoucí výkonu hyperparameter hodnot bude dá odhadnout na základě některé dat, které byly přijaty _před_ byl cvičení modelu. Tyto odhady může být příliš optimistickou metodu, zejména v případě, že časové řady není stojící a vyvíjí v průběhu času. V důsledku toho mohou být hodnoty zvolené hyperparameter zhoršené.
+
+Doporučený způsob je příklady rozdělením školení a nastavit ověření _závislá na čase_ způsobem, kde jsou všechny příklady ověření v čase pozdější, než všechny příklady školení. Pro každou sadu hodnot hyperparameter učení algoritmu přes trénovací datové sady. Měření výkonu modelu přes stejnou sadu ověření. Zvolte hyperparameter hodnoty, které se zobrazí nejlepší výkon. Hodnoty Hyperparameter zvolené train a ověření rozdělení vyústí v lépe budoucí modelu výkon než s hodnotami náhodně vybere podle křížové ověření.
+
+Poslední modelu může být generována cvičení algoritmu učení přes celou Cvičná data pomocí nejlepší hyperparameter hodnot.
 
 ### <a name="testing-for-model-performance"></a>Testování výkonu modelu
-Po sestavení modelu potřebujeme odhad jeho budoucí výkon na nová data. Nejjednodušší odhad může být výkon modelu přes Cvičná data. Ale tento odhad příliš optimistickou metodu, protože model přesně podle data, která se používá k zjištění přibližné hodnoty výkonu. Lepší odhad může být metriky výkonu hodnot hyperparameter vypočítán na sadu ověření nebo metriku výkonu průměrná vypočítaný z křížové ověření. Ze stejných důvodů jako výše uvedená, jsou tyto odhady příliš optimistické ale. Potřebujeme realističtější přístupy pro měření výkonu modelu.
+Jakmile se model sestavuje, je vyžadován odhad jeho budoucí výkon na nová data. Dobrou odhadnout, je metrika výkonu hodnot hyperparameter vypočítán na sadu ověření nebo metriku výkonu průměrná vypočítaný z křížové ověření. Tyto odhady jsou často příliš optimistickou metodu. Firmy často může mít některé další pokyny o tom, jak se mají otestování modelu.
 
-Jedním ze způsobů je náhodně rozdělení dat do školení, ověřování a testování sad. Nastaví školení a ověřování se používají a vyberte hodnoty hyperparameters trénování modelu s nimi. Výkon modelu se měří v testovací sady.
+Doporučený způsob pro PdM je rozdělením školení, ověření, příklady a testovací datových sad _závislá na čase_ způsobem. Všechny příklady test by měl následovat v čase všechny příklady školení a ověření. Po rozdělení generování modelu a měření jeho výkonu, jak je popsáno výše.
 
-Dalším způsobem, což je relevantní pro prediktivní údržby, je rozdělit příklady na školení, ověření a testovacích sad způsobem závislá na čase, tak, aby všechny testovací příklady jsou v čase pozdější, než všechny příklady školení a ověření. Po rozdělení se provádějí měření generování a výkonu v modelu stejné, jak je popsáno výše.
-
-Po místě a usnadňuje předpovědi časové řady obou přístupů generovat podobné Odhady budoucí výkonu. Ale když časové řady-stojícího vozidla nebo snadno předpovědět, druhý postup bude generovat realističtější odhad budoucích výkonu než první z nich.
+Když časové řady místě a snadno předpovědět, náhodné i závislá na čase přístupy generovat podobné Odhady budoucí výkonu. Ale když časové řady-stojícího vozidla nebo snadno předpovědět, bude přístup závislá na čase generovat realističtější odhad budoucích výkonu.
 
 ### <a name="time-dependent-split"></a>Rozdělení závislá na čase
-Jako osvědčený postup v této části jsme trvat bližší pohled na tom, jak implementovat rozdělení závislá na čase. Jsme popisují obousměrný rozdělení závislá na čase mezi výukových a testovacích sad, ale přesně stejné logiky, která má být použita pro závislá na čase rozdělení pro školení a ověření sady.
+Tato část popisuje osvědčené postupy pro implementaci rozdělení závislá na čase. Rozdělení obousměrný závislá na čase mezi výukových a testovacích sad je popsáno níže.
 
-Předpokládejme, že máme označen časovým razítkem události například měření z různých snímače datového proudu. Funkce školení a příklady test, jakož i jejich popisky jsou definované ve stanovených časových rámců, které obsahují více událostí.
-Například pro binární klasifikaci, jak je popsáno v části funkce techniků a modelování techniky, funkce jsou na základě vytvořit posledních událostí a popisky jsou na základě vytvořit budoucí události v rámci "X" jednotky čas v budoucnosti. Proto označování časový rámec příkladu obsahuje později pak časový rámec jeho funkcí. Pro rozdělení závislá na čase jsme vyberte bod v čase, kdy jsme trénování modelu s ujít hyperparameters až pomocí historických dat, které odkazují. Pokud chcete zabránit úniku budoucí popisky, které jsou nad rámec oříznutím školení do Cvičná data, vybereme možnost nejnovější časové rozmezí pro popisek školení příklady jako X jednotky před datem oříznutím školení. Na obrázku 7 každý plný kroužek představuje řádek v datové sadě poslední funkci, pro který funkce a popisky se vypočítávají podle metody popsané výše. Který zadána obrázek zobrazuje záznamy, které patří do trénování a testování sad při implementaci závislá na čase rozdělení pro X = 2 a W = 3:
+Předpokládejme označen časovým razítkem události například měření z různých snímače datového proudu. Definování funkcí a popisky školení a příklady testovací přes časových intervalů, které obsahují více událostí. Pro binární klasifikaci, například vytvoření funkce na základě posledních událostí a vytvořit štítky na základě budoucí událostí v rámci "X" jednotky čas v budoucnosti (najdete v částech na [konstruování](#Feature-engineering) a [modelování techniky](#Modeling-techniques-applied-to-PdM-use-cases)). Proto označování časový rámec příkladu obsahuje později než časový rámec jeho funkcí.
 
-![Na obrázku 7. Závislá na čase rozdělení pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+Pro rozdělení závislá na čase, vyberte _cvičení čas konečného T<sub>c</sub>_  , kdy má být trénování modelu, s hyperparameters přizpůsobená pomocí historických dat až T<sub>c</sub>. Aby se zabránilo úniku budoucí popisky, které jsou nad rámec T<sub>c</sub> do Cvičná data, zvolte nejnovější doba popisek školení příklady jako X jednotky před T<sub>c</sub>. V příkladu na obrázku 7 představuje každý čtvereček záznam v datové sadě, kde funkce a popisky se vypočítávají jak bylo popsáno výše. Obrázek zobrazuje záznamy, které patří do trénování a testování sad pro X = 2 a W = 3:
 
-Na obrázku 7. Závislá na čase rozdělení pro binární klasifikaci
+![Obrázek 7. Závislá na čase rozdělení pro binární klasifikaci](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) na obrázku 7. Závislá na čase rozdělení pro binární klasifikaci
 
-Zelená čtverce představují záznamy patřící do časové jednotky, které lze použít pro školení. Jak je popsáno výše, každý příklad školení v tabulce konečné funkce je generován prohlížení po 3 období pro funkci generace a 2 budoucí období pro označování před oříznutím den školení. Jsme příklady nepoužívejte v školení nastavená, pokud libovolná součást 2 budoucí období například je nad rámec oříznutím školení vzhledem k tomu, že předpokládáme, že jsme nemají viditelnost nad rámec oříznutím školení. Z důvodu omezení černé příklady představují záznamy konečné s popiskem datovou sadu, která se nesmí použít v trénovací datové sady. Tyto záznamy se nesmí použít data, která buď protože jsou před oříznutím školení a jejich označování stanovených časových rámců závisí částečně na školení časový rámec, který by neměl být tak, jak bychom rádi zcela oddělit označování časové rámce pro testování trénování a testování, aby se zabránilo úniku informací popisku.
+Zelená čtverce představují záznamy, které patří do časové jednotky, které lze použít pro školení. Každý příklad školení je generován zvažování posledních tří období pro funkci generování a dvě tečky budoucí pro označování před T<sub>c</sub>. Pokud je libovolná součást dvě tečky budoucí nad rámec T<sub>c</sub>, vyloučit například z trénovací datové sady, protože žádné viditelnost se předpokládá, že nad rámec T<sub>c</sub>.
 
-Tento postup umožňuje překrývají údajů použitých pro funkci generování mezi trénování a testování příklady, které se blíží oříznutím školení. V závislosti na dostupnost dat lze provést i závažnější oddělení pomocí není některé z příkladů v testovací sadě, které jsou v rámci jednotky doby W rozhraní školení.
+Černé čtverce představují záznamy konečné s popiskem datovou sadou, která se nesmí použít v trénovací datové sady, přiřazeno výše uvedené omezení. Tyto záznamy nebudou se používat i v testování dat, protože jsou před T<sub>c</sub>. Kromě toho jejich označování časových intervalů částečně závisí na školení časového rámce, což není ideální. Učení a testovací data by měl mít samostatné označování časových intervalů zabránit úniku informací popisku.
 
-Z našich pracovních jsme zjištěno, že problém úniku více vážně týká regrese modely použité pro predikci zbývající dobu životnosti a pomocí náhodného rozdělení vede k extrémně overfitting. Podobně regrese problémy rozdělení musí být tak, aby záznamy patřící k prostředkům s chybami před školení oříznutí slouží pro sadu školení a prostředky, s chybami po prahová hodnota by měla použít pro testování sady.
+Umožňuje technik popsaných dosavadní překryv mezi trénování a testování příklady, které mají časová razítka téměř T<sub>c</sub>. K dosažení vyšší oddělení je vyloučit příklady, které jsou v rámci jednotky doby W t<sub>c</sub> z testu nastavit. Ale agresivní rozdělení závisí na dostupnosti dostatečným data.
 
-Obecné metody, další důležité osvědčených postupů pro rozdělení dat pro trénování a testování je použití rozdělení podle ID prostředku tak, aby žádné prostředky, které byly používány v školení se používají pro testování, protože Rada testování je Ujistěte se, že když nového prostředku je použít t o zpřístupnění předpovědi na, modelu poskytuje realistické výsledky.
+Problém úniku více vážně týká regrese modely použité pro predikci RUL. Metodou split náhodných vede k extrémně přečerpání přizpůsobování. V případě problémů regrese by měla být rozdělení tak, aby záznamy, které patří k prostředkům s chybami před T<sub>c</sub> přejděte do trénovací sady. Záznamy o prostředcích, které po úroveň oříznutí s chybami, přejděte do testovací sada.
+
+Další osvědčených postupů pro rozdělení dat pro trénování a testování je použití rozdělení podle ID prostředku. Rozdělení by měla být tak, aby žádné prostředky, které používá sada školení se používají při testování výkonu modelu. Tento přístup má model zvýší možnost poskytování realističtější výsledky nové prostředky.
 
 ### <a name="handling-imbalanced-data"></a>Zpracování imbalanced dat
-V klasifikaci problémy Pokud existují další příklady jednu třídu než ostatní, data se říká, že imbalanced. V ideálním případě by rádi bychom mít dostatek zástupců každá třída v Cvičná data, abyste mohli rozlišit mezi různými třídami. Pokud jedna třída je menší než 10 % dat, budeme moct, data se imbalanced a říkáme třídu menšinových underrepresented datové sady. V mnoha případech se nám najít výrazně, kde je jedna třída vážně underrepresented imbalanced datasetu ve srovnání s ostatními například pouze tvořící 0,001 % datových bodů. Třída nevyváženosti k potížím v mnoha oblastech včetně odhalování podvodů, vniknutí sítě a prediktivní údržby kde selhání jsou obvykle výjimečných výskytů v životnost prostředky, které tvoří příklady menšinových tříd.
+V klasifikaci problémy, pokud existují další příklady jednu třídu než ostatní, datová sada se říká, že _imbalanced_. V ideálním případě by se povolit rozdíl mezi různými třídami upřednostňovaná dostatek zástupců každá třída v Cvičná data. Pokud jedna třída je menší než 10 % dat, data se považuje imbalanced. Underrepresented třídy se nazývá _menšinového třída_.
 
-V případě třída nevyváženosti výkon většinu standardních algoritmů učení ohrožené jako jejich cílem minimalizovat celkové míra chyb. Například pro datovou sadu s příklady 99 % záporné tříd a příklady kladné tříd 1 %, jsme se připojíte 99 % přesnost jednoduše označování všechny instance jako záporné. To však misclassifies všechny kladné příklady v tak algoritmus není užitečné i když metrika přesnost je velmi vysoká. V důsledku toho nejsou dostatečná v případě imbalanced learning konvenční vyhodnocení metriky, například celkový přesnost na míra chyb. Další metriky, například přesnost, odvolání, F1 skóre a náklady na upravenou křivek ROC se používají pro hodnocení v případě imbalanced datové sady, která je popsána v části vyhodnocení metriky.
+Mnoho problémů PdM čelí takové imbalanced datové sady, kde je jedna třída vážně underrepresented ve srovnání s další třídu nebo třídy. V některých situacích může představovat třídě menšinových pouze 0,001 % celkový počet datových bodů. Třída nevyváženosti není jedinečný pro PdM. Jiných domén, kdy jsou chyby a anomálie výjimečných výskytů čelí podobný problém, příklady, odhalování podvodů a narušení sítě. Tyto chyby tvoří příklady menšinových tříd.
 
-Existují však některé metody, které pomáhají nápravě třída nevyváženosti problém. Dva hlavní ty, které jsou vzorkování techniky a náklady citlivé učení.
+Pomocí třídy nevyváženosti v datech výkon většinu standardních algoritmů učení v ohrožení, vzhledem k tomu, že jejich cílem minimalizovat míra celkové chyb. Pro datovou sadu s 99 % záporné a kladné příklady 1 % lze zobrazit modelu tak, aby měl 99 % přesnost pomocí označování všechny instance jako záporné. Ale modelu bude nemá klasifikovat všechny kladné příklady; takže i v případě jeho přesnost je vysoká, algoritmus není užitečné. V důsledku toho konvenční vyhodnocení metriky jako _celkové přesnost na míra chyb_ není k dispozici dostatek imbalanced informací. Pokud potýkají s imbalanced datové sady, se použijí jiné metriky pro vyhodnocení modelu:
+- přesnost
+- Svolat
+- F1 skóre
+- Náklady na upravena ROC (provozní vlastnosti příjemce)
+
+Další informace o tyto metriky najdete v tématu [modelu vyhodnocení](#Model-evaluation).
+
+Existují však některé metody, které pomáhají nápravě třída nevyváženosti problém. Dva hlavní ty, které jsou _vzorkování techniky_ a _náklady citlivé learning_.
 
 #### <a name="sampling-methods"></a>Metody vzorkování
-Použití vzorkování metody v imbalanced učení se skládá z úpravy datové sady některé mechanismy Chcete-li poskytovat datovou sadu s vyrovnáváním. I když existují spoustu různých odběry vzorků, většina z nich splněny následující jsou náhodných oversampling a v části vzorkování.
+Imbalanced learning zahrnuje použití vzorkování metody k úpravě školení datovou sadu s vyrovnáváním datovou sadou. Metody vzorkování není má být použita pro testovací sada. I když existuje několik postupů vzorkování, většina splněny následující vlastnosti jsou _náhodných oversampling_ a _pod vzorkování_.
 
-Jednoduše stanovené, náhodné oversampling je výběr z náhodného vzorku z menšinových třída, která replikuje tyto příklady a jejich přidáním do trénovací datové sady. To zvyšuje počet celkový příklady v třídě menšinových a nakonec vyvážit počet příklady různých tříd. Jeden nebezpečí oversampling je, že více instancí některé příklady může způsobit třídění k příliš konkrétní vedoucí k overfitting.
-To by způsobilo školení vysokou přesnost, ale může být velmi nízký výkon na neviditelný testování data. Naopak náhodných pod vzorkování je vyberete z náhodného vzorku většina třídy a odebrání těchto příkladů z trénovací datové sady. Odebrání příklady z třídy většina může způsobit třídění přijít o důležité koncepty týkající se většinou třídy. Hybridní vzorkování, kde je třída menšinových převzorkované a většina třída je v rámci vzorků ve stejnou dobu je přijatelná jiná možnost. Existuje mnoho dalších sofistikovanější techniky vzorkování jsou k dispozici a efektivní vzorkování metody pro třídu nevyváženosti je oblast oblíbených research příjem konstantní pozornost a příspěvky z mnoha kanály. Použití různých technik při rozhodování o co nejúčinnější těm, které jsou obvykle zleva vědecký pracovník data prozkoumat a experimentovat a vysoce závisí na vlastnosti dat. Kromě toho je důležité, abyste měli jistotu, že metody vzorkování platí jenom pro školení nastavit však není test.
+_Náhodné oversampling_ zahrnuje výběru náhodného vzorku ze třídy menšinových, replikace tyto příklady a jejich přidáním do trénovací datové sady. V důsledku toho počet příklady v třídě menšinových je vyšší a nakonec vyvážit počet příklady různých tříd. Nevýhodou oversampling je, že více instancí některé příklady může způsobit třídění k příliš konkrétní, což přečerpání přizpůsobování. Model může zobrazovat školení vysokou přesnost, ale jeho výkon na neviditelný testovací data mohou být zhoršené.
+
+Naopak _náhodných pod vzorkování_ je vyberete z náhodného vzorku od třídy, většinou a odebrání těchto příkladů z trénovací datové sady. Odebrání příklady z třídy většina může způsobit třídění přijít o důležité koncepty týkající se většinou třídy. _Hybridní vzorkování_ kde menšinových třída je povolená jen Vzorkovaná a většina třída je v části vzorkovat ve stejné čas je další přijatelná přístup.
+
+Existuje mnoho sofistikovaných odběry vzorků. Postup vybrali záviset na vlastnosti dat a výsledky iterativní experimenty podle vědecký pracovník data.
 
 #### <a name="cost-sensitive-learning"></a>Náklady citlivé učení
-V prediktivní údržby, chyb, které tvoří menšinových – třída jsou důležitější sledovat než normální příklady a proto se zaměřuje se na výkon algoritmus na selhání je obvykle fokus. To se obvykle označuje jako nerovné ztráta nebo asymetrický náklady misclassifying elementy různých tříd, ve kterém může nesprávně predikci kladnou jako záporné náklady více než naopak. Požadované třídění byste měli mít poskytnou přesnost předpovědi vysoké nad třídu menšinových bez vážně kompromisů v přesnost pro většinu třídu.
+V PdM chyb, které tvoří třídě menšinových jsou důležitější sledovat než normální příklady. Proto je zaměřená především na výkon, že algoritmus o selhání. Nesprávně predikci třídu kladné jako záporné třída může více než naopak náklady. Tato situace se obvykle označuje jako nerovné ztráta nebo asymetrický náklady nemá klasifikace elementů různých tříd. Ideální třídění by měl poskytovat přesnost předpovědi vysoké třídy menšinových bez kompromisů v přesnost pro většinu třídu.
 
-Existuje několik způsobů, které jde tohoto dosáhnout. Přiřazením vysoké náklady na chybnou menšinových třídy a pokusu minimalizovat celkové náklady, problém různé ztratí se mohou efektivně řešit. Některé algoritmy strojového učení použít tento nápad ze své podstaty například SVMs (Support Vector počítače), kde lze začlenit náklady kladné a záporné příklady během doby školení. Podobně zvýšení skóre metody se používají a obvykle zobrazit dobrý výkon v případě imbalanced data, jako například boosted rozhodovací strom algoritmy.
+K dosažení této vyrovnávání několika způsoby. Pro zmírnění problém nerovné dojít ke ztrátě, přiřadit chybné klasifikace menšinových třídy vysoké náklady a snažit minimalizovat celkové náklady na. Algoritmy jako _SVMs (Support Vector počítače)_ přijmout tato metoda ze své podstaty, tím, že náklady na kladné a záporné příklady zadat během cvičení. Podobně, jako například zvyšovat skóre metody _boosted decision trees_ obvykle zobrazit dobrý výkon imbalanced daty.
 
-## <a name="evaluation-metrics"></a>Vyhodnocení metriky
-Jak už bylo zmíněno dříve, třída nevyváženosti způsobí, že nízký výkon jako algoritmy mívají klasifikovat většina – příklady tříd lepší v výdajů minoritního třída případů chyba celkový chybnou je mnohem vyšší, pokud třída většina správně označené. To způsobí, že sazby nízkou odvolání a větší problém se změní, pokud je velmi vysoké náklady na falešné výstrahy pro jejich podnikání. Přesnost je nejoblíbenější metrika používá k popisu třídění výkonu. Ale jak jsme vysvětlili výše přesnost je neefektivní a nereflektuje skutečné výkon třídění funkce, jako je velmi citlivé na rozdělování dat. Místo toho další metriky vyhodnocování se používají k vyhodnocení imbalanced learning problémy. V těchto případech by měl být přesnost, odvolání a skóre F1 počátečních metrik prohlédnout si při hodnocení výkonu modelu prediktivní údržby. V prediktivní údržby odvolání sazby označují, kolik selhání v testovací sadě byly identifikovány správně modelem. Vyšší rychlosti pro vyvolání znamená, že je model určen při zachytávání true selhání úspěšný. Metrika přesnost má vztah k počet falešných poplachů kde nižší sazby přesnost odpovídají vyšší falešných poplachů. F1 skóre zvažuje přesnost i pro vyvolání sazby s nejlepší hodnota je 1 a nejhorších se 0.
+## <a name="model-evaluation"></a>Vyhodnocení modelu
+Chybné klasifikace je závažný problém pro PdM scénáře, kde je vysoké náklady na falešné výstrahy pro jejich podnikání. Například můžete rozhodnutí pro pozadí letadel podle nesprávné předpovědi poruchám motorů přerušit plány a cestovní plány. Přepnutím počítače do offline režimu z řádku sestavení může vést ke ztrátě příjmů. Proto je důležité vyhodnocení modelu s metriky správné výkonu pro nová data testu.
 
-Kromě toho pro binární klasifikaci, decile tabulky a navýšení grafy jsou velmi informativní při hodnocení výkonu. Budou se zaměříte jenom na kladné – třída (počet selhání) a zadejte složitější přehled o výkonu algoritmus než co je vidět na základě právě pevného operační bodu na křivka ROC (příjemce operační vlastnosti).
-Decile tabulky se získají řazení příklady testovací podle jejich předpokládaných pravděpodobnosti selhání počítaný modelem před prahování při rozhodování o poslední popisek. Seřazené ukázky jsou pak seskupené v deciles (tj. 10 % ukázky s největší pravděpodobností a pak 20 %, 30 % a tak dále). Poměr mezi true kladné počet jednotlivých decile a jeho náhodné směrného plánu (tj 0.1, 0.2..) computing připravila jeden odhadnout, jak výkon algoritmu změny v každé decile. Navýšení grafy se používají k vykreslení hodnot decile podle vykreslení decile true kladné míra versus páry náhodných true kladné rychlost pro všechny deciles. První deciles obvykle představují fokus výsledky, protože tady vidíte největší zvýšení. První deciles se také dají považovat za reprezentativní pro "na riziko" Pokud se používá pro prediktivní údržby.
+Metriky typické výkonu používá k vyhodnocení PdM modely jsou popsané dále:
 
-## <a name="sample-solution-architecture"></a>Ukázkové architektury řešení
-Při nasazení řešení prediktivní údržby, jsme mají zájem o komplexní řešení, která poskytuje nepřetržitou cyklus přijímání dat, úložiště dat pro trénování modelu, funkce generování, předpovědi a vizualizace výsledků společně s výstrahu generování mechanismus například prostředek řídicí panel monitorování. Chceme datový kanál, který poskytuje budoucí přehledy uživateli průběžné automatizované způsobem. Příklad prediktivní údržby architekturu pro takové IoT datový kanál je znázorněno na obrázku 8 níže. V architektuře se shromažďují v reálném čase telemetrie do centra událostí, která ukládá data streamování. Tato data se požita stream analytics v reálném čase zpracování dat, jako je například funkce generování. Funkce slouží k volání webové služby prediktivní model a výsledky jsou zobrazené na řídicím panelu. Ve stejnou dobu je ingestovaný data také uložena v databázi historických a sloučit s externími zdroji dat, jako například místní data základny vytvořit příklady školení pro modelování.
-Stejné datové sklady lze použít pro dávkové vyhodnocování příkladů a ukládání výsledků, které se dá znovu použít k poskytování prediktivní sestavy na řídicím panelu.
+- [Přesnost](https://en.wikipedia.org/wiki/Accuracy_and_precision) je nejoblíbenější metrika používá k popisu třídění výkonu. Ale přesnost je citlivá na distribuce dat a je neúčinná opatření pro scénáře s imbalanced datových sad. Místo toho se používají jiné metriky. Nástroje, jako [nedorozuměním matice](https://en.wikipedia.org/wiki/Confusion_matrix) se používat k výpočtům a důvodu o přesnosti modelu.
+- [Přesnost](https://en.wikipedia.org/wiki/Precision_and_recall) z PdM modely se týkají počet falešných poplachů. Nižší přesnost modelu obecně odpovídá vyšší počet falešných poplachů.
+- [Odvolat](https://en.wikipedia.org/wiki/Precision_and_recall) míra označuje počet selhání v testovací sadě byly identifikovány správně modelem. Vyšší rychlosti pro vyvolání to znamenat, že je model úspěšné při identifikaci true selhání.
+- [F1 skóre](https://en.wikipedia.org/wiki/F1_score) je harmonické průměr přesnost a odvolání s hodnotou rozmezí od 0 (nejhorší) na hodnotu 1 (nejlepší).
 
-![Obrázek 8. Příklad Architektura řešení prediktivní údržby](./media/cortana-analytics-playbook-predictive-maintenance/example-solution-architecture-for-predictive-maintenance.png)
+Pro binární klasifikaci
+- [Příjemce operační křivek (ROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic) je také oblíbených metriky. V křivek ROC interpretována podle jednoho pevné operační bodu ROC výkonu modelu.
+- Ale v případě problémů PdM _decile tabulky_ a _navýšení grafy_ jsou informativnější. Soustředit se jenom na kladné – třída (počet selhání) a zadejte složitější přehled o výkonu algoritmus než křivek ROC.
+  - _Tabulky decile_ jsou vytvořené pomocí testu příklady v sestupném pořadí pravděpodobnostech selhání. Seřazené ukázky pak seskupeny do deciles (10 % vzorků s nejvyšší pravděpodobnost, pak 20 %, 30 % a tak dále). /(Random baseline) poměr (true kladné rychlost) pro každý decile pomáhá odhadnout výkon algoritmus za každou decile. Náhodné směrného plánu přebírá hodnoty 0.1, 0.2 a tak dále.
+  - [Navýšení grafy](http://www2.cs.uregina.ca/~dbd/cs831/notes/lift_chart/lift_chart.html) vykreslení true kladné rychlost decile versus náhodných true kladné rychlost pro všechny deciles. První deciles jsou obvykle fokus výsledky, protože zobrazují největší zvýšení. První deciles najdete i jako reprezentativní pro "na riziko", pokud se používá pro PdM.
 
-Obrázek 8. Příklad Architektura řešení prediktivní údržby
+## <a name="model-operationalization-for-predictive-maintenance"></a>Model operationalization pro prediktivní údržby
 
-Další informace o jednotlivých součástí architektury naleznete [Azure](https://azure.microsoft.com/) dokumentaci.
+Výhodou cvičení vědecké účely dat je dosaženo, pouze pokud pro cvičný model přišla provozní. To znamená model se musí nasadit do obchodní systémy, které chcete provádět na základě dat o nové, dříve neviditelný předpovědi.  Nová data musí přesně odpovídat _modelu podpis_ vyškolení modelu dvěma způsoby:
+- všechny funkce musí být v každé logické instanci (například řádek v tabulce) nová data.
+- nová data musí předběžně zpracovat a každou funkci analyzovány přesně stejně jako jsou Cvičná data.
 
+Proces výše uvedená v mnoha směrech v academic a odvětví dokumentace. Ale tyto příkazy mají stejný význam:
+- _Skóre pro nová data_ pomocí modelu
+- _Použití modelu_ na nová data
+- _Zprovoznit_ modelu
+- _Nasazení_ modelu
+- _Spustit model_ pro nová data
+
+Jak jsme uvedli dříve, operationalization modelu pro PdM se liší od jeho partnerské uzly. Implementovat scénáře zahrnující detekce anomálií a detekce chyb obvykle _online vyhodnocování_ (také nazývané _vyhodnocování v reálném čase_). Tady, modelu _skóre_ každý příchozí záznam a vrátí předpovědi. Pro zjišťování anomálií předpovědi je to znamenat, že došlo k chybě anomálií (Příklad: jedna třída SVM). Pro zjišťování selhání je typu nebo třídy selhání.
+
+Naproti tomu zahrnuje PdM _dávkového vyhodnocování_. Tak, aby odpovídala modelu podpis, musí být analyzovány funkcí v nová data stejným způsobem, jako jsou Cvičná data. Pro velké datové sady, které je typické pro nová data jsou funkce agregován v časových oken a skóre pro magnitudu v dávce. Dávkové vyhodnocování se obvykle provádí v distribuovaných systémů, jako je [Spark](http://spark.apache.org/) nebo [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Existuje několik alternativních - i zhoršené:
+- Streamování dat stroje podporují agregace přes windows v paměti. Proto může být uvedl, že podporují online vyhodnocování. Ale tyto systémy jsou vhodné pro hustých data v úzké windows čas nebo zhuštěných elementy přes širší windows. Se nemusí škálovat dobře hustých data přes širší časových oken, jak je vidět v PdM scénáře.
+- Pokud dávkového vyhodnocování není k dispozici, je řešení přizpůsobit online vyhodnocování zpracování nová data v dávkách malé najednou.
+
+## <a name="solution-templates-for-predictive-maintenance"></a>Řešení šablon pro prediktivní údržby
+
+V poslední části této příručky obsahuje seznam šablon řešení PdM, kurzy a experimenty implementované v Azure. Tyto aplikace PdM lze nasadit do předplatného Azure v rámci minut v některých případech. Použitím jako testování konceptu ukázky, izolovaných prostorů a experimentovat s alternativy nebo akcelerátorů pro skutečné produkční implementace. Tyto šablony jsou umístěny [Azure AI Galerie](http://gallery.azure.ai) nebo [Azure Githubu](https://github.com/Azure). Tyto ukázky různých budou vráceny do této šablony řešení v čase.
+
+| # | Titul | Popis |
+|--:|:------|-------------|
+| 1 | [Prediktivní údržby Azure Machine Learning ukázka](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) |Ukázka PdM k předvídání selhání přes další jednotky doby N. Tato ukázka je zapsána jako projekt Azure ML Workbench a je ideální pro začátečníky k PdM. [Další dokumentaci](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance) související této ukázce.|
+| 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Představuje rozhraní a provést tak kompletní k předvedení více PdM scénářů. Tato šablona představuje dva scénáře: první je nový případ použití klasifikace podmínky selhání v reálném čase. Druhý scénář je jednoduše integrační řešení [1] na tuto šablonu řešení. Ukazuje, jak znovu použít stejnou nasazené infrastrukturu pro přidání dalších nových nebo existujících scénářů.|
+| 3 | [Přímý učení pro prediktivní údržby](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure poznámkového bloku v rámci řešení pro ukázkové použití sítě LSTM (dlouho krátkodobé paměti) (třída opakující Neuronové sítě) pro prediktivní údržby, s [příspěvku na blogu v této ukázce](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
+| 4 | [Průvodce modelováním prediktivní údržby v R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Průvodce modelováním PdM pomocí skriptů v jazyce R.|
+| 5 | [Prediktivní údržby Azure pro letecký](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jeden z první šablony řešení PdM založené na Azure ML verze 1.0 pro letadla údržby. Tato příručka pochází z tohoto projektu. |
+| 6 | [Azure AI nástrojů pro IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI v edge IoT pomocí TensorFlow; Sada nástrojů balíčky hloubkové učení modely v kontejnerech Docker kompatibilní se službou Azure IoT okraj a vystavit tyto modely jako rozhraní REST API.
+| 7 | [Prediktivní údržby Azure IoT](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite počítačů - předkonfigurované řešení. Šablona PdM letadla údržby pomocí sady IoT Suite. [Další dokument](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) a [návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) související s stejného projektu. |
+| 8 | [Šablona prediktivní údržby pomocí služby SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Ukázku podle R zbývající dobu životnosti scénáře. |
+| 9 | [Průvodce modelováním prediktivní údržby](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Letadla údržby datovou sadu funkce analýzy využití R s [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) a [datové sady](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) a [Azure poznámkového bloku](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) a [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)v AzureML verze 1.0|
+
+## <a name="training-resources-for-predictive-maintenance"></a>Školení prostředky pro prediktivní údržby
+
+[Azure AI studijní prediktivní údržby](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) poskytuje školicí materiály pro lepší představu o konceptech a matematické za algoritmy a postupy, které jsou používány PdM problémy. 
+
+Microsoft Azure nabízí bezplatné obsah a školení na obecné koncepty AI a postup.
+
+| Školení prostředků  | Dostupnost |
+|:-------------------|--------------|
+| [AI vývojáře v Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
+| [Školní Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
+| [Learning Azure AI z Githubu](http://azure.github.io/learnanalytics/public) | Public |
+| [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
+| [Microsoft AI Youtube Webináře](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
+| [Zobrazit Microsoft AI](http://channel9.msdn.com/Shows/AI-Show) | Public |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | Pro partnery společnosti Microsoft |
+| [Microsoft Partner Network](http://learningportal.microsoft.com) | Pro partnery společnosti Microsoft |
+
+Kromě toho jsou volné MOOCS (masivní otevřené online kurzy) na AI online nabízený academic instituce jako Stanford a MIT a dalších výukových společnosti.

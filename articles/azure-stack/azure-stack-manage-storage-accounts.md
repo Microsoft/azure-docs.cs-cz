@@ -10,16 +10,16 @@ ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 02/22/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.reviewer: anirudha
-ms.openlocfilehash: ce61dec785d6207e2d2df21884525f76a6778f4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 2ae2b628b2e61893a5289151c3b405e7412e7d13
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště v Azure zásobníku
 Zjistěte, jak chcete spravovat účty úložiště v Azure zásobníku najít, obnovit a opětovné využití kapacity úložiště na základě obchodních potřeb.
@@ -29,13 +29,13 @@ Seznam účtů úložiště v oblasti lze zobrazit v zásobníku Azure podle:
 
 1. V internetovém prohlížeči, přejděte na https://adminportal.local.azurestack.external.
 2. Přihlaste se k portálu pro správu Azure zásobníku jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
-3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat, například **(místní**).
+3. Na řídicím panelu Výchozí – najít **oblast správy** seznam a vyberte oblast, kterou chcete prozkoumat, například **(místní**).
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. Vyberte **úložiště** z **zprostředkovatelé prostředků** seznamu.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Nyní, v podokně Správce poskytovatele prostředků úložiště – přejděte dolů na **účty úložiště** kartě a klikněte na něj.
+5. Nyní, v podokně Správce poskytovatele prostředků úložiště – přejděte dolů na **účty úložiště** kartě a vyberte ho.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -52,12 +52,12 @@ Pokud vás zajímají konkrétní účet úložiště – můžete **filtrovat a
 
 **Chcete-li filtrovat účty:**
 
-1. Klikněte na tlačítko **filtru** v horní části podokna.
+1. Vyberte **filtru** v horní části podokna.
 2. V podokně filtru umožňuje, abyste zadali **název účtu**, ** ID předplatného, nebo **stav** a systém doladit seznam účtů úložiště, který se má zobrazit. Použijte je podle potřeby.
-3. Klikněte na tlačítko **aktualizace**. V seznamu by měl aktualizovat odpovídajícím způsobem.
+3. Vyberte **aktualizace**. V seznamu by měl aktualizovat odpovídajícím způsobem.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. Chcete-li obnovit filtr: klikněte na tlačítko **filtru**, vymažte výběr a aktualizovat.
+4. Chcete-li obnovit filtr: vyberte **filtru**, vymažte výběr a aktualizovat.
 
 Do vyhledávacího pole text (horní podokno seznam účtů úložiště) umožňuje zvýrazněte v seznamu účtů vybraný text. To můžete použít, pokud úplný název nebo ID není snadno dostupné.
 
@@ -66,7 +66,7 @@ Můžete zde volné vám pomohou najít účet, který vás zajímá.
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Podívejte se na podrobnosti o účtu
-Po vyhledání účty, že máte zájem zobrazení, klikněte na tlačítko konkrétní účet, který chcete zobrazit některé podrobnosti. Nové podokno otevře s podrobnostmi o účtu, jako: typ účtu, čas vytvoření, umístění atd.
+Po vyhledání účty, že máte zájem zobrazení, můžete vybrat konkrétní účet, který chcete zobrazit některé podrobnosti. Nové podokno otevře s podrobnostmi o účtu, jako: typ účtu, čas vytvoření, umístění atd.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
@@ -78,13 +78,13 @@ V zásobníku Azure je jednoduchý způsob, jak to udělat:
 1. Přejděte do seznamu účtů úložiště. V tématu [Najít účet úložiště](#find) v tomto tématu pro další informace.
 2. V seznamu vyhledejte konkrétního účtu. Můžete filtrovat.
 3. Zkontrolujte *stavu* účtu. By mělo být uvedeno **odstraněné**.
-4. Klikněte na účet, který se otevře v podokně podrobností účtu.
-5. V tomto podokně vyhledejte **obnovit** tlačítko a klikněte na něj.
-6. Pro potvrzení klikněte na tlačítko **Ano**.
+4. Vyberte účet, který se otevře v podokně podrobností účtu.
+5. V tomto podokně vyhledejte **obnovit** tlačítko a vyberte ho.
+6. Vyberte **Ano** k potvrzení.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. Obnovení je teď ve *zpracovat... Počkejte* pro indikaci, že byla úspěšná.
-   Můžete také kliknutím na ikonu "zvonku" v horní části portálu zobrazíte průběh označení.
+   Můžete také vybrat na ikonu "zvonku" v horní části portálu zobrazíte průběh označení.
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
    
@@ -105,10 +105,10 @@ Nastavení doby uchování umožňuje operátor cloudu k zadejte časové obdob�
 
 1. V internetovém prohlížeči, přejděte na https://adminportal.local.azurestack.external.
 2. Přihlaste se k portálu pro správu Azure zásobníku jako operátor cloudu (pomocí přihlašovacích údajů, které jste zadali při nasazení)
-3. Na řídicím panelu Výchozí – najít **oblast správy** seznamu a klikněte na tlačítko oblasti, které chcete prozkoumat – například **(místní**).
+3. Na řídicím panelu Výchozí – najít **oblast správy** seznam a vyberte oblast, kterou chcete prozkoumat – například **(místní**).
 4. Vyberte **úložiště** z **zprostředkovatelé prostředků** seznamu.
-5. Klikněte na tlačítko **nastavení** v horní části a otevřete podokno nastavení.
-6. Klikněte na tlačítko **konfigurace** pak upravte hodnotu doby uchování.
+5. Vyberte **nastavení** v horní části a otevřete podokno nastavení.
+6. Vyberte **konfigurace** pak upravte hodnotu doby uchování.
 
    Nastavte počet dní a pak ho uložte.
    
@@ -123,8 +123,8 @@ Můžete získat kapacity buď pomocí portálu nebo pomocí prostředí PowerSh
 
 **Pro opětovné využití kapacity pomocí portálu:**
 1. Přejděte do podokna účty úložiště. V tématu [Najít účet úložiště](#find).
-2. Klikněte na tlačítko **uvolnění místa** v horní části podokna.
-3. Tuto zprávu přečíst a pak klikněte na **OK**.
+2. Vyberte **uvolnění místa** v horní části podokna.
+3. Tuto zprávu přečíst a pak vyberte **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
 4. Počkejte, než pro úspěch oznámení najdete na ikonu zvonku na portálu.
@@ -139,84 +139,20 @@ Můžete také pomocí prostředí PowerShell explicitně přepsat dobu uchován
 1. Potvrďte, že máte Azure PowerShell nainstalovaný a nakonfigurovaný. Pokud ne, postupujte podle následujících pokynů: 
    * Nainstalujte nejnovější verzi prostředí Azure PowerShell a přidružit ho ke svému předplatnému Azure, najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
    Další informace o rutinách Azure Resource Manager najdete v tématu [použití Azure Powershellu s Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Spusťte následující rutinu:
+2. Spusťte následující rutiny:
 
 > [!NOTE]
-> Pokud tuto rutinu spustit, trvale odstraníte účet a její obsah. Není použitelná pro obnovení. Použijte dát pozor.
+> Pokud tyto rutiny spustit, trvale odstraníte účet a její obsah. Není použitelná pro obnovení. Použijte dát pozor.
 
+```PowerShell  
+    $farm_name = (Get-AzsStorageFarm)[0].name
+    Start-AzsReclaimStorageCapacity -FarmName $farm_name
+````
 
-        Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
-
-
-Další informace najdete v tématu [zásobník Azure powershell dokumentaci.](https://msdn.microsoft.com/library/mt637964.aspx)
+Další informace najdete v tématu [dokumentace Azure PowerShell zásobníku.](https://msdn.microsoft.com/library/mt637964.aspx)
  
 
-## <a name="migrate-a-container"></a>Migrace kontejner
-Z důvodu nerovnoměrné úložiště používané klienty operátor cloudu může být jeden nebo více základní klienta sdílených složek pomocí více místa než jiné. Pokud k tomu dojde, operátor cloudu se může pokusit uvolněte místo na disku ve sdílené složce přízvukový ručně migrací některé kontejnery objektů blob do jiné složky. 
+## <a name="next-steps"></a>Další postup
 
-Musíte použít PowerShell k migraci kontejnery.
-> [!NOTE]
->Migrace kontejneru objektů BLOB nepodporuje migraci za provozu a aktuálně je offline operace. Během migrace a dokud se nedokončí základní objektů BLOB v kontejneru nelze použít a jsou "offline". 
-
-**Pokud chcete migrovat kontejnery pomocí prostředí PowerShell:**
-
-1. Potvrďte, že máte Azure PowerShell nainstalovaný a nakonfigurovaný. Pokud ne, postupujte podle následujících pokynů:
-    * Nainstalujte nejnovější verzi prostředí Azure PowerShell a přidružit ho ke svému předplatnému Azure, najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Další informace o rutinách Azure Resource Manager najdete v tématu [použití Azure Powershellu s Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
-2. Získáte název farmy: 
-      
-      `$farm = Get-ACSFarm -ResourceGroupName system.local`
-3. Získáte sdílené složky: 
-
-   `$shares = Get-ACSShare -ResourceGroupName system.local -FarmName $farm.FarmName`
-
-4. Získáte kontejnery pro danou sdílenou složku. Všimněte si, že počet a záměr jsou volitelné parametry:
-            
-   `$containers = Get-ACSContainer -ResourceGroupName system.local -FarmName $farm.FarmName -ShareName $shares[0].ShareName -Count 4 -Intent Migration`  
-
-   Potom si prohlédněte $containers:
-
-   `$containers`
-
-    ![](media/azure-stack-manage-storage-accounts/image13.png)
-5. Získáte nejlepší cílové složky pro migraci kontejneru:
-
-    `$destinationshares= Get-ACSSharesForMigration  -ResourceGroupName system.local -FarmName $farm.farmname -SourceShareName $shares[0].ShareName`
-
-    Potom si prohlédněte $destinationshares:
-
-    `$destinationshares`
-
-    ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. Ji migrace pro kontejner, Všimněte si, že toto je implementaci asynchronní, takže jeden cykly všechny kontejnery ve sdílené složce a sledovat stav pomocí ID vrácený úlohy.
-
-    `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
-
-    Potom si prohlédněte $jobId:
-
-   ```
-   $jobId
-   d1d5277f-6b8d-4923-9db3-8bb00fa61b65
-   ```
-7. Zkontrolujte stav úlohy migrace podle jeho ID úlohy. Po dokončení migrace kontejneru MigrationStatus je nastaven na "Dokončeno".
-
-    `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
-
-    ![](media/azure-stack-manage-storage-accounts/image15.png)
-
-8. Můžete zrušit úlohu v průběhu migrace. Toto znovu je asynchronní operace a lze sledovat pomocí $jobid:
-
-    `Stop-ACSContainerMigration-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId-Verbose`
-
-    ![](media/azure-stack-manage-storage-accounts/image16.png)
-
-    Můžete zkontrolovat, že se stavy migrace zrušit znovu:
-
-    `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
-
-    ![](media/azure-stack-manage-storage-accounts/image17.png)
-
-
-
-
-  
-  
+ - Informace o správě oprávnění najdete v části [řízení přístupu Manage Role-Based](azure-stack-manage-permissions.md).
+ - Informace na spravovat kapacita úložiště pro zásobník Azure najdete v tématu [spravovat kapacita úložiště pro Azure zásobníku](azure-stack-manage-storage-shares.md).

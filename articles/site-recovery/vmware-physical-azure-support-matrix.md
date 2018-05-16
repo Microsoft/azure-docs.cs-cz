@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 8269b91ea3459fd9e391d46f0b3e78bc7e5b3b41
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a7e0455d92635b7767227685b622bdae303f9621
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -30,7 +30,7 @@ Fyzické servery | Replikace fyzických serversto Windows nebo Linuxem místní 
 **Server** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
 VMware | vCenter Server verze 6.5, 6.0, nebo 5.5 nebo vSphere verze 6.5, 6.0 nebo 5,5 | Doporučujeme vám, že používáte vCenter server.<br/><br/> Doporučujeme vám, že vSphere hostitelů a serverů vCenter nacházejí ve stejné síti jako procesní server. Ve výchozím nastavení spouští součásti serveru proces na konfiguračním serveru, tak to bude síť, ve kterém můžete nastavit konfigurační server, pokud nastavíte vyhrazené procesový server.
-Fyzické | Není k dispozici
+Fyzické | neuvedeno
 
 ## <a name="site-recovery-configuration-server"></a>Konfigurace serveru pro obnovení lokality
 
@@ -50,7 +50,7 @@ Role Windows Serveru | Nepovolíte: <br> – Active Directory Domain Services <b
 Zásady skupiny| Nepovolíte: <br> -Zabránit přístupu do příkazového řádku. <br> -Znemožnit přístup k registru nástroje pro úpravy. <br> -Důvěřujete logiku pro přílohy souborů. <br> -Zapněte provádění skriptu. <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | Ověřte, že je:<br/><br/> -Nemáte dříve existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Nemají dříve existující web nebo aplikaci naslouchá na portu 443<br>
 Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware)
-Typ IP adresy | Statický
+Typ IP adresy | Statická
 Porty | použít pro ovládací prvek kanál orchestration 443)<br>9443 používá pro přenos dat
 
 ## <a name="replicated-machines"></a>Replikovaných počítačů
@@ -145,7 +145,8 @@ Akcelerované síťové služby | Ne
 **Komponenta** | **Podporuje se**
 --- | ---
 Hostitele systému souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
-Síť SAN (ISCSI) hostitele | Ano
+Síť SAN (iSCSI nebo FC) hostitele | Ano
+Hostitele sítě vSAN | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Multipath hostitele (MPIO) | Ano, testována s Microsoft DSM EMC PowerPath 5.7 SP4, EMC PowerPath DSM CLARiiON
 Svazky na virtuálního hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Host server VMDK | Ano
@@ -192,7 +193,7 @@ Azure Storage brány firewall pro virtuální sítě, které jsou nakonfigurovan
 
 **Funkce** | **Podporuje se**
 --- | ---
-Sady dostupnosti | Ano
+Skupiny dostupnosti | Ano
 ROZBOČOVAČE | Ano
 Managed Disks | Ano
 
@@ -212,7 +213,7 @@ Síťové adaptéry | Několik adaptérů jsou podporovány. |
 Sdílený virtuální pevný disk | Nepodporuje se. | Kontrola selže, pokud není podporován.
 FC disku | Nepodporuje se. | Kontrola selže, pokud není podporován.
 BitLocker | Nepodporuje se. | Dříve než povolíte replikaci pro počítač, musí se zakázat nástroj BitLocker. |
-Název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu v vlastnosti počítače ve službě Site Recovery.
+název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu v vlastnosti počítače ve službě Site Recovery.
 
 
 ## <a name="vault-tasks"></a>Úložiště úlohy

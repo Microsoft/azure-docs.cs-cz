@@ -1,36 +1,46 @@
 ---
-title: "Začínáme používat Azure Notification Hubs pro aplikace Kindle | Dokumentace Microsoftu"
-description: "V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Kindle."
+title: Zasílání nabízených oznámení aplikacím pro Kindle službou Azure Notification Hubs | Microsoft Docs
+description: V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Kindle.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 346fc8e5-294b-4e4f-9f27-7a82d9626e93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-kindle
 ms.devlang: Java
-ms.topic: hero-article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: af2619a403046bd4f064b958df225e4d42a205f4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Začínáme s použitím Notification Hubs pro aplikace Kindle
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## <a name="overview"></a>Přehled
-V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Kindle.
-Vytvoříte prázdnou aplikaci systému Kindle, která bude přijímat nabízená oznámení pomocí služby ADM (Amazon Device Messaging).
+V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Kindle. Vytvoříte prázdnou aplikaci pro Kindle, která přijímá nabízená oznámení službou ADM (Amazon Device Messaging).
+
+V tomto kurzu provedete následující úkoly, kterými vytvoříte/aktualizujete kód: 
+
+> [!div class="checklist"]
+> * Přidejte novou aplikaci do portálu pro vývojáře
+> * Vytvořte klíč rozhraní API
+> * Přidejte pověření do centra
+> * Nastavte aplikaci
+> * Vytvořte obslužnou rutinu zpráv ADM
+> * Přidejte do aplikace svůj klíč rozhraní API
+> * Spuštění aplikace
+> * Odešlete zkušební oznámení 
 
 ## <a name="prerequisites"></a>Požadavky
-V tomto kurzu budete potřebovat následující:
 
-* Sadu Android SDK (předpokládáme, že použijete Eclipse) získejte z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">lokality Android</a>.
+* Potřebujete získat sadu Android SDK (za předpokladu, že používáte Eclipse) z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">webu Androidu</a>.
 * Postupujte podle kroků v <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Nastavení vašeho vývojového prostředí</a> pro nastavení vývojového prostředí pro Kindle.
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>Přidejte novou aplikaci do portálu pro vývojáře
@@ -46,7 +56,7 @@ V tomto kurzu budete potřebovat následující:
 4. Klikněte na tlačítko **Vytvoření nového profilu zabezpečení** a pak vytvořte nový profil zabezpečení (například **profil zabezpečení TestAdm**). Potom klikněte na **Uložit**.
    
     ![][3]
-5. Klikněte na tlačítko **Profily zabezpečení** a zobrazte profil zabezpečení, který jste právě vytvořili. Zkopírujte hodnoty **ID klienta** a **Tajný klíč klienta** pro pozdější použití.
+5. Kliknutím na **bezpečnostní profily** zobrazíte vytvořený profil zabezpečení. Zkopírujte hodnoty **ID klienta** a **Tajný klíč klienta** pro pozdější použití.
    
     ![][4]
 
@@ -68,8 +78,6 @@ Na portálu přidejte sdílený tajný klíč klienta a ID klienta na kartě **K
 ## <a name="set-up-your-application"></a>Nastavte aplikaci
 > [!NOTE]
 > Při vytváření aplikace použijte alespoň 17 úrovní rozhraní API.
-> 
-> 
 
 Přidejte knihovny ADM do projektu Eclipse:
 
@@ -82,10 +90,13 @@ Upravte manifest aplikace pro podporu ADM:
 
 1. Přidejte obor názvů Amazon do kořenového prvku manifestu:
 
+    ```xml
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
+    ```
 
 1. Přidejte oprávnění jako první prvek v rámci prvku manifestu. Nahraďte **[VÁŠ NÁZEV BALÍČKU]** balíčkem, který jste použili k vytvoření aplikace.
    
+    ```xml
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
          android:protectionLevel="signature" />
@@ -100,8 +111,10 @@ Upravte manifest aplikace pro podporu ADM:
    
         <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
+    ```
 2. Vložte následující prvek jako první podřízený prvek aplikace. Nezapomeňte nahradit **[SVŮJ NÁZEV SLUŽBY]** názvem vaší obslužné rutiny zpráv ADM, které vytvoříte v další části (včetně balíčku) a nahraďte **[NÁZEV VAŠEHO BALÍČKU]** názvem balíčku, pomocí kterého jste vytvořili vaší aplikaci.
    
+    ```xml
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
                      android:required="true"/>
@@ -124,6 +137,7 @@ Upravte manifest aplikace pro podporu ADM:
           <category android:name="[YOUR PACKAGE NAME]" />
             </intent-filter>
         </receiver>
+    ```
 
 ## <a name="create-your-adm-message-handler"></a>Vytvořte obslužnou rutinu zpráv ADM
 1. Vytvořte novou třídu, která zdědí z `com.amazon.device.messaging.ADMMessageHandlerBase` a pojmenujte ji `MyADMMessageHandler`, jak je znázorněno na následujícím obrázku:
@@ -131,6 +145,7 @@ Upravte manifest aplikace pro podporu ADM:
     ![][6]
 2. Přidejte následující příkazy `import`:
    
+    ```java
         import android.app.NotificationManager;
         import android.app.PendingIntent;
         import android.content.Context;
@@ -138,8 +153,10 @@ Upravte manifest aplikace pro podporu ADM:
         import android.support.v4.app.NotificationCompat;
         import com.amazon.device.messaging.ADMMessageReceiver;
         import com.microsoft.windowsazure.messaging.NotificationHub
+    ```
 3. Přidejte následující kód ve třídě, kterou jste vytvořili. Nezapomeňte nahradit název centra a připojovací řetězec (naslouchání):
    
+    ```java
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
@@ -184,29 +201,39 @@ Upravte manifest aplikace pro podporu ADM:
              mBuilder.setContentIntent(contentIntent);
              mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         }
+    ```
 4. Do metody `OnMessage()` přidejte následující kód:
    
+    ```java
         String nhMessage = intent.getExtras().getString("msg");
         sendNotification(nhMessage);
+    ```
 5. Do metody `OnRegistered` přidejte následující kód:
    
-            try {
-        getNotificationHub(getApplicationContext()).register(registrationId);
-            } catch (Exception e) {
-        Log.e("[your package name]", "Fail onRegister: " + e.getMessage(), e);
-            }
+    ```java
+        try {
+            getNotificationHub(getApplicationContext()).register(registrationId);
+        } catch (Exception e) {
+            Log.e("[your package name]", "Fail onRegister: " + e.getMessage(), e);
+        }
+    ```
 6. Do metody `OnUnregistered` přidejte následující kód:
    
+    ```java
          try {
              getNotificationHub(getApplicationContext()).unregister();
          } catch (Exception e) {
              Log.e("[your package name]", "Fail onUnregister: " + e.getMessage(), e);
          }
+    ```
 7. Do metody `MainActivity` přidejte následující příkaz importu:
    
+    ```java
         import com.amazon.device.messaging.ADM;
+    ```
 8. Na konec metody `OnCreate` přidejte následující kód:
    
+    ```java
         final ADM adm = new ADM(this);
         if (adm.getRegistrationId() == null)
         {
@@ -224,12 +251,13 @@ Upravte manifest aplikace pro podporu ADM:
                  }
                }.execute(null, null, null);
         }
-
+    ```
+    
 ## <a name="add-your-api-key-to-your-app"></a>Přidejte do aplikace svůj klíč rozhraní API
 1. V nástroji Eclipse vytvořte nový soubor s názvem **api_key.txt** v majetku adresáře projektu.
 2. Otevřete soubor a zkopírujte klíč rozhraní API generovaný na portálu pro vývojáře Amazon.
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 1. Spusťte emulátor.
 2. V emulátoru potáhněte prstem z horní části a klikněte na tlačítko **Nastavení** a pak klikněte na tlačítko **Můj účet** a zaregistrujte se pomocí platného účtu Amazon.
 3. V nástroji Eclipse spusťte aplikaci.
@@ -237,21 +265,31 @@ Upravte manifest aplikace pro podporu ADM:
 > [!NOTE]
 > Pokud dojde k potížím, zkontrolujte čas emulátoru (nebo zařízení). Časová hodnota musí být přesná. Chcete-li změnit čas emulátoru Kindle, můžete spustit následující příkaz z adresáře nástrojů platformy Android SDK:
 > 
-> 
 
-        adb shell  date -s "yyyymmdd.hhmmss"
+```
+adb shell  date -s "yyyymmdd.hhmmss"
+```
 
-## <a name="send-a-message"></a>Odeslat zprávu
+## <a name="send-a-notification-message"></a>Odeslání oznámení
+
 Odeslání zprávy pomocí .NET:
 
-        static void Main(string[] args)
-        {
-            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("[conn string]", "[hub name]");
+```csharp
+static void Main(string[] args)
+{
+    NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("[conn string]", "[hub name]");
 
-            hub.SendAdmNativeNotificationAsync("{\"data\":{\"msg\" : \"Hello from .NET!\"}}").Wait();
-        }
+    hub.SendAdmNativeNotificationAsync("{\"data\":{\"msg\" : \"Hello from .NET!\"}}").Wait();
+}
+```
 
 ![][7]
+
+## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste poslali vysílané oznámení všem zařízením Kindle registrovaných back-endem. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením Kindle, pokračujte následujícím kurzem. V něm se dozvíte, jak posílat nabízená oznámení určitým zařízením s Androidem, ale stejnou logiku můžete použít i k zasílání nabízených oznámení určitým zařízením Kindle. 
+
+> [!div class="nextstepaction"]
+>[Zasílání nabízených oznámení určitým zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- URLs. -->
 [portálu pro vývojáře Amazon]: https://developer.amazon.com/home.html

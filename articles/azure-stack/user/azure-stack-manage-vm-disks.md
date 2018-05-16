@@ -1,52 +1,69 @@
 ---
-title: "Správa disků virtuálních počítačů v Azure zásobníku | Microsoft Docs"
-description: "Zřídit disky pro virtuální počítače pro Azure zásobníku."
+title: Správa disků virtuálních počítačů v Azure zásobníku | Microsoft Docs
+description: Zřídit disky pro virtuální počítače v Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 0c36e2eaaf2d266842b2b7de0b0c8dc0ed1e0145
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
-ms.translationtype: MT
+ms.openlocfilehash: 314c5b51608192719c77ce143b3530f0bb310bc2
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="virtual-machine-disk-storage-for-azure-stack"></a>Disku úložiště virtuálního počítače pro Azure zásobníku
+# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Zřízení disku úložiště virtuálního počítače v Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Azure zásobníku podporuje použití [nespravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) ve virtuálním počítači jako disk operačního systému (OS) i datový disk. Použít nespravované disky, můžete vytvořit [účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) a potom uložte disky jako objekty BLOB stránky v kontejnerech v rámci účtu úložiště. Tyto disky jsou pak označovaná jako disky virtuálních počítačů.
+Tento článek popisuje, jak zřídit disku úložiště virtuálního počítače pomocí portálu Azure zásobníku nebo pomocí prostředí PowerShell.
 
-Pokud chcete zvýšit výkon a snížit náklady na správu systému Azure zásobníku, doporučujeme že umístit každý disk virtuálního počítače v samostatných kontejneru. Kontejner by měl obsahovat disku operačního systému nebo datový disk, ale nikoli pro obě současně. Ale neexistuje žádné omezení, která zabraňuje uvedení i do kontejneru.
+## <a name="overview"></a>Přehled
 
-Pokud přidáte jednu nebo více datových disků pro virtuální počítač, naplánujte použití dalších kontejnerů jako umístění pro uložení těchto disků. Jako datové disky disk operačního systému pro další virtuální počítače musí být také ve své vlastní oddělené kontejnery.
+Azure zásobníku podporuje použití [nespravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na virtuálních počítačích, jako operační systém (OS) i datový disk.
 
-Když vytvoříte víc virtuálních počítačů, můžete znovu použít stejný účet úložiště pro každý nový virtuální počítač. Kontejnery, které vytvoříte, musí být jedinečné.  
+Použít nespravované disky, můžete vytvořit [účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) k uložení disku. Disky, které vytvoříte, se označují jako disky virtuálních počítačů a jsou uloženy v kontejnery v účtu úložiště.
 
-Přidat disky pro virtuální počítač, použijte portál user portal nebo prostředí PowerShell.
+### <a name="best-practice-guidelines"></a>Pravidla osvědčených postupů
+
+Pokud chcete zlepšit výkon a snížit celkové náklady, doporučujeme, abyste že umístit každý disk virtuálního počítače v samostatných kontejneru. Kontejner by měl obsahovat disku operačního systému nebo datový disk, ale nikoli pro obě současně. (Ale není nic zabránit vložení oba druhy disku ve stejném kontejneru.)
+
+Pokud přidáte jednu nebo více datových disků pro virtuální počítač, použijte další kontejnery jako umístění k uložení těchto disků. Disk operačního systému pro další virtuální počítače musí být také ve své vlastní kontejnerů.
+
+Když vytvoříte víc virtuálních počítačů, můžete znovu použít stejný účet úložiště pro každý nový virtuální počítač. Kontejnery, které vytvoříte, musí být jedinečné.
+
+### <a name="adding-new-disks"></a>Přidávání nových disků
+
+Následující tabulka shrnuje, jak přidat disky pomocí portálu a pomocí prostředí PowerShell.
 
 | Metoda | Možnosti
 |-|-|
-|[Portál User portal](#use-the-portal-to-add-additional-disks-to-a-vm)|-Přidáte nové datové disky pro virtuální počítač, který byl dříve zajištěny. Nové disky jsou vytvořené pomocí Azure zásobníku. </br> </br>-Přidáte existující soubor VHD jako disk k virtuálnímu počítači, který byl dříve zajištěny. K tomu musíte připravit a nahrát soubor VHD do protokolů Azure. |
+|[Portál User portal](#use-the-portal-to-add-additional-disks-to-a-vm)|-Přidáte nové datové disky k existující virtuální počítač. Nové disky jsou vytvořené pomocí Azure zásobníku. </br> </br>-Přidáte existující soubor disku (VHD) k dříve vytvořený virtuální počítač. To pokud chcete udělat, musíte připravit .vhd a potom soubor odešlete do protokolů Azure. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | -Vytvořit nový virtuální počítač s diskem operačního systému a současně přidat jeden nebo více datových disků do tohoto virtuálního počítače. |
 
+## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Přidat disky do virtuálního počítače pomocí portálu
 
-## <a name="use-the-portal-to-add-additional-disks-to-a-vm"></a>Přidejte další disky do virtuálního počítače pomocí portálu
-Ve výchozím nastavení je při použití portálu k vytvoření virtuálního počítače pro většinu položek marketplace, vytvořit jenom disk s operačním systémem. Disky vytvořené pomocí Azure se označují jako spravované disky.
+Ve výchozím nastavení je při použití portálu k vytvoření virtuálního počítače pro většinu položek marketplace, vytvořit jenom disk s operačním systémem.
 
-Po zřízení virtuálního počítače, můžete na portálu přidejte nový datový disk nebo stávající datový disk do tohoto virtuálního počítače. Každý další disk měly být umístěny v samostatných kontejneru. Disky, které přidáte do virtuálního počítače se označují jako nespravované disky.
+Po vytvoření virtuálního počítače, můžete na portálu:
+* Vytvořit nový datový disk a jeho připojení k virtuálnímu počítači.
+* Nahrání stávající datový disk a jeho připojení k virtuálnímu počítači.
 
-### <a name="use-the-portal-to-attach-a-new-data-disk-to-a-vm"></a>Připojit nový datový disk k virtuálnímu počítači pomocí portálu
+Každý nespravované disku, které přidáte měly být umístěny v samostatných kontejneru.
+
+>[!NOTE]
+>Disky vytvořen a spravován společností Azure se nazývají [discích spravovaných](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview).
+
+### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Použití portálu a vytvořte nový datový disk
 
 1.  Na portálu, klikněte na tlačítko **virtuální počítače**.    
     ![Příklad: Virtuálních počítačů řídicí panel](media/azure-stack-manage-vm-disks/vm-dashboard.png)
@@ -71,6 +88,7 @@ Po zřízení virtuálního počítače, můžete na portálu přidejte nový da
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>Připojit stávající datový disk k virtuálnímu počítači
+
 1.  [Připravte si soubor VHD](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) pro použití jako datový disk pro virtuální počítač. Tento soubor VHD nahrajte na účet úložiště, který používáte s virtuálním Počítačem, který chcete připojit soubor VHD.
 
   Chcete použít jiný kontejner pro uložení souboru VHD než kontejner, který obsahuje disk operačního systému.   

@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: b1b51b6c36143747a81d1c1fc035ee6d54d34076
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 
@@ -21,13 +21,13 @@ Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Ca
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure
 
-* Azure CLI 2.0: Můžete ho [nainstalovat místně][azure-cli-install], nebo použít ve službě [Azure Cloud Shell][azure-cloud-shell].
+* Azure CLI 2.0: [Nainstalujte ho místně][azure-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
 
-* Helm CLI 2.7+: Můžete ho [nainstalovat místně][helm-cli-install], nebo použít ve službě [Azure Cloud Shell][azure-cloud-shell].
+* Helm CLI 2.7+: [Nainstalujte ho místně][helm-cli-install] nebo ho použijte ve službě [Azure Cloud Shell][azure-cloud-shell].
 
 * Oprávnění pro vytvoření instančního objektu s rolí přispěvatele v předplatném Azure
 
-* Existující cluster Azure Container Service (AKS). Pokud potřebujete cluster AKS, postupujte podle článku [Vytvoření clusteru AKS][create-aks-cluster].
+* Existující cluster Azure Kubernetes Service (AKS). Pokud potřebujete cluster AKS, postupujte podle článku [Vytvoření clusteru AKS][create-aks-cluster].
 
 ## <a name="install-service-catalog"></a>Instalace modulu Service Catalog
 
@@ -182,7 +182,7 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>Další kroky
 
-Podle tohoto článku jste nasadili Service Catalog do clusteru Azure Container Service (AKS). Použili jste Open Service Broker for Azure k nasazení instalace WordPressu, která využívá služby spravované Azure, v tomto případě Azure Database for MySQL.
+Podle tohoto článku jste nasadili Service Catalog do clusteru Azure Kubernetes Service (AKS). Použili jste Open Service Broker for Azure k nasazení instalace WordPressu, která využívá služby spravované Azure, v tomto případě Azure Database for MySQL.
 
 Pokud chcete získat přístup k dalším aktualizovaným grafům Helmu založeným na OSBA, použijte úložiště [Azure/helm-charts][helm-charts]. Pokud vás zajímá vytvoření vlastních grafů, které fungují pro OSBA, přečtěte si téma věnované [vytvoření nového grafu][helm-create-new-chart].
 

@@ -1,24 +1,24 @@
 ---
-title: "Řešení potíží s Azure Site-to-Site VPN odpojí občas | Microsoft Docs"
-description: "Zjistěte, jak k vyřešení tohoto problému, v němž odpojena pravidelně připojení Site-to-Site VPN."
+title: Řešení potíží s Azure Site-to-Site VPN odpojí občas | Microsoft Docs
+description: Zjistěte, jak k vyřešení tohoto problému, v němž odpojena pravidelně připojení Site-to-Site VPN.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 9bcf30fbf1febbd80aa8899253de8cb61f4ae6f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c827469080195054d4ff70ab72fc123365a73df
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Řešení potíží: Azure Site-to-Site VPN odpojí občas
 
@@ -26,7 +26,7 @@ Může dojít k potížím, že nové nebo existující připojení VPN typu Sit
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="troubleshooting-steps"></a>Řešení potíží
+## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
 ### <a name="prerequisite-step"></a>Požadovaný krok
 
@@ -69,7 +69,7 @@ Brána virtuální sítě založené na zásadách má limit 200 párů podsít�
 
 **Metoda Perfect Forward Secrecy** funkce může způsobit problémy odpojení. Pokud má zařízení VPN **ideální přeposílání** povolit, zakázat funkci. Potom [aktualizovat bránu virtuální sítě zásad protokolu IPsec](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Konfigurace připojení typu Site-to-Site k virtuální síti.](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [Konfigurace zásad protokolu IPsec/IKE pro připojení VPN typu Site-to-Site](vpn-gateway-ipsecikepolicy-rm-powershell.md)

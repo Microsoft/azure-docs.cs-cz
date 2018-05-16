@@ -1,25 +1,26 @@
 ---
-title: "Začínáme se službou Azure AD Cordova | Microsoft Docs"
-description: "Jak sestavit aplikaci Cordova, který se integruje s Azure AD pro přihlášení a zavolá rozhraní API Azure AD chráněné pomocí OAuth."
+title: Začínáme se službou Azure AD Cordova | Microsoft Docs
+description: Jak sestavit aplikaci Cordova, který se integruje s Azure AD pro přihlášení a zavolá rozhraní API Azure AD chráněné pomocí OAuth.
 services: active-directory
-documentationcenter: 
-author: vibronet
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b1a8d7bd-7ad6-44d5-8ccb-5255bb623345
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: vittorib
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6d6d514875aa675bf160ee08a3e94b58944020ee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Začínáme se službou Azure AD Cordova
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -33,7 +34,7 @@ Modulu plug-in Cordova zabalí Azure AD nativních sad SDK pro iOS, Android, Win
 V tomto kurzu používáme Apache Cordova, modul plug-in pro Active Directory Authentication Library (ADAL) ke zlepšování jednoduchou aplikaci přidáním následující funkce:
 
 * Pomocí několika řádků kódu ověření uživatele a získat token.
-* Tento token používaná k volání rozhraní Graph API pro dotazování adresáře a zobrazit výsledky.  
+* Tento token používaná k volání rozhraní Graph API pro dotazování adresáře a zobrazit výsledky. 
 * Chcete-li minimalizovat ověřování výzvy pro uživatele pomocí ADAL mezipamětí tokenů.
 
 Chcete-li tato vylepšení, budete muset:
@@ -47,7 +48,7 @@ Chcete-li tato vylepšení, budete muset:
 Pro absolvování tohoto kurzu potřebujete:
 
 * Klient služby Azure AD, kde máte účet s právy pro vývoj aplikací.
-* Vývojové prostředí, který je nakonfigurován pro použití Apache Cordova.  
+* Vývojové prostředí, který je nakonfigurován pro použití Apache Cordova. 
 
 Jak už máte-li nastavit, přímo přejít na krok 1.
 
@@ -98,8 +99,8 @@ Po dokončení registrace Azure AD jedinečný Identifikátor aplikace přiřad�
 
 Ke spuštění `DirSearchClient Sample`, udělení oprávnění nově vytvořené aplikace zpracovat dotaz rozhraní Azure AD Graph API:
 
-1. Z **nastavení** vyberte **požadovaných oprávnění**a potom vyberte **přidat**.  
-2. Pro aplikaci Azure Active Directory vyberte **Microsoft Graph** jako rozhraní API a přidejte **přístup k adresáři jako přihlášeného uživatele** oprávnění v rámci **delegovaná oprávnění**.  To umožňuje vaše aplikace a dotaz rozhraní Graph API pro uživatele.
+1. Z **nastavení** vyberte **požadovaných oprávnění**a potom vyberte **přidat**. 
+2. Pro aplikaci Azure Active Directory vyberte **Microsoft Graph** jako rozhraní API a přidejte **přístup k adresáři jako přihlášeného uživatele** oprávnění v rámci **delegovaná oprávnění**. To umožňuje vaše aplikace a dotaz rozhraní Graph API pro uživatele.
 
 ## <a name="step-2-clone-the-sample-app-repository"></a>Krok 2: Klonovat úložiště ukázkové aplikace
 Z vašeho prostředí nebo na příkazovém řádku zadejte následující příkaz:

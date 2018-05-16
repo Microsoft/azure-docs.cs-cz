@@ -10,11 +10,11 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4585e563d59d29ba0a026c992d277e5b0607e681
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Ukládání dat na hranici s databází serveru SQL Server
 
@@ -95,7 +95,7 @@ V kroku 3, přidáte vytvořit možnosti ke kontejneru systému SQL Server, kter
         }
    ```
 
-3. Nahraďte `<docker registry address>` s adresou vyplněno dokončené kurzu [nasazení funkce Azure jako modul IoT Edge – náhled](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function)
+3. Nahraďte `<docker registry address>` s adresou vyplněno dokončené kurzu [nasazení funkce Azure jako modul IoT Edge](tutorial-deploy-function.md).
 
    >[!NOTE]
    >Adresa registru kontejneru je stejná jako přihlašovací server, který jste zkopírovali ze svého registru. Musí být ve tvaru `<your container registry name>.azurecr.io`

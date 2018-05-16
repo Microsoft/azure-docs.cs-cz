@@ -3,22 +3,22 @@ title: Omezení a konfigurace – Azure Logic Apps | Microsoft Docs
 description: Služba omezení a hodnoty konfigurace pro Azure Logic Apps
 services: logic-apps
 documentationcenter: ''
-author: jeffhollan
-manager: anneta
+author: ecfan
+manager: cfowler
 editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 524a2dc7a1a5ae4f0747af03d1b9e69d512f0f00
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.date: 05/14/2018
+ms.author: estfan
+ms.openlocfilehash: 8c2ac4b8f55d25d5d3fcfdd6a9bcb6f6c8cfc201
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci pro Azure Logic Apps
 
@@ -52,15 +52,26 @@ Zde jsou limity pro definici aplikace logiky jeden:
 
 Zde jsou limity pro spuštění aplikace logiky jeden:
 
-| Název | Omezení | 
-| ---- | ----- | 
-| Doba trvání spuštění | 90 dnů | 
-| Uchování úložiště | čas zahájení 90 dnů od spuštění | 
-| Interval minimální opakování | 1 sekunda </br>Pro s plán služby App Service logic apps: 15 sekund | 
-| Maximální počet opakování intervalu | 500 dnů | 
-||| 
+| Název | Omezení | Poznámky | 
+|------|-------|-------| 
+| Doba trvání spuštění | 90 dnů | Chcete-li změnit tento limit, [změnu spustit trvání](#change-duration). | 
+| Uchování úložiště | čas zahájení 90 dnů od spuštění | Chcete-li změnit tento limit, [změnit úložiště uchování](#change-retention). | 
+| Interval minimální opakování | 1 sekunda | | 
+| Maximální počet opakování intervalu | 500 dnů | | 
+|||| 
 
-Překročení omezení pro spuštění doba trvání nebo uchovávání úložiště v toku vaší normálním zpracování [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+<a name="change-duration"></a>
+<a name="change-retention"></a>
+
+### <a name="change-run-duration-and-storage-retention"></a>Změna spustit uchovávání doba trvání a ukládání
+
+Tuto mez můžete změnit na hodnotu 7 dní až 90 dní. Nicméně, delší než maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+
+1. Na portálu Azure, v nabídce aplikace logiky, vyberte **nastavení pracovních postupů**. 
+
+2. V části **Runtime možnosti**, z **spustit historie uchování ve dnech** vyberte **vlastní**. 
+
+3. Zadejte nebo přetáhněte jezdec pro počet dní, po které chcete.
 
 <a name="looping-debatching-limits"></a>
 
@@ -113,7 +124,8 @@ Některé operace konektor asynchronní volání nebo naslouchat žádostem webh
 
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
-| Velikost zpráv | 100 MB | 100 MB nemusí podporovat některé konektory a rozhraní API. | 
+| Velikost zpráv | 100 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat rozdělování nebo dokonce výchozí limit. | 
+| Velikost zprávy s rozdělování | 1 GB | Toto omezení se vztahuje na akce, které nativně podporují rozdělování, nebo můžete rozdělování podpora povolená ve své konfiguraci modulu runtime. Další informace najdete v tématu [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). | 
 | Limit vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` Výrazy nesmí být delší než toto omezení. | 
 |||| 
 
@@ -146,21 +158,45 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 
 ### <a name="artifact-limits-per-integration-account"></a>Omezení artefaktů každý účet integrace
 
-Tady jsou omezení počtu artefaktů pro každý účet integrace.
+Tady jsou omezení počtu artefaktů pro každý účet integrace. Další informace najdete v tématu [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-*Volná cenová úroveň*
+*Úroveň Free*
 
-| Název | Omezení | Poznámky | 
-| ---- | ----- | ----- | 
-| Smlouvy | 10 | | 
-| Jiné typy artefaktů | 25 | Typy artefaktů obsahují partnery, schémata, certifikáty a mapy. Každý typ může obsahovat až do maximálního počtu artefaktů. | 
+| Artefaktů | Omezení | Poznámky | 
+|----------|-------|-------| 
+| Obchodní partneři EDI | 25 | | 
+| Obchodní smlouvy EDI | 10 | | 
+| Maps | 25 | | 
+| Schémata | 25 | 
+| Sestavení | 10 | | 
+| Konfigurace dávek | 5 | 
+| Certifikáty | 25 | | 
 |||| 
 
-*Standardní cenovou úroveň.*
+*Úroveň Basic*
 
-| Název | Omezení | Poznámky | 
-| ---- | ----- | ----- | 
-| Jakýkoli typ artefaktů | 500 | Typy artefaktů obsahují smlouvy, partnery, schémata, certifikáty a mapy. Každý typ může obsahovat až do maximálního počtu artefaktů. | 
+| Artefaktů | Omezení | Poznámky | 
+|----------|-------|-------| 
+| Obchodní partneři EDI | 2 | | 
+| Obchodní smlouvy EDI | 1 | | 
+| Maps | 500 | | 
+| Schémata | 500 | 
+| Sestavení | 25 | | 
+| Konfigurace dávek | 1 | | 
+| Certifikáty | 2 | | 
+|||| 
+
+*Úroveň Standard*
+
+| Artefaktů | Omezení | Poznámky | 
+|----------|-------|-------| 
+| Obchodní partneři EDI | 500 | | 
+| Obchodní smlouvy EDI | 500 | | 
+| Maps | 500 | | 
+| Schémata | 500 | 
+| Sestavení | 50 | | 
+| Konfigurace dávek | 5 |  
+| Certifikáty | 50 | | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>

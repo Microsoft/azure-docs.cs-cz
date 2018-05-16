@@ -4,7 +4,7 @@ description: Naučte se vyvíjet a ladit kanály pro vytváření dat interaktiv
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 04/16/2018
+ms.date: 05/14/2018
 ms.topic: article
 ms.service: data-factory
 services: data-factory
@@ -12,15 +12,19 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: b6a6fbd721e4f0af977fe7fa03adc4459de7611f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e403afa5c870b2d007a8c5e1d46162cd899ead29
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iterační vývoji a ladění pomocí Azure Data Factory
 
 Azure Data Factory umožňuje interaktivně vyvíjet a ladit kanály Data Factory.
+
+Osm minutu úvod a ukázkový této funkce najdete v následujícím videu:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
 ## <a name="iterative-debugging-features"></a>Iterační funkce ladění
 Vytvoření kanálů a testování spustí pomocí **ladění** schopnosti na plátno kanálu bez nutnosti napsat jediný řádek kódu.

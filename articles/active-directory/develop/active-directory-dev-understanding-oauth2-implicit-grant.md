@@ -1,25 +1,27 @@
 ---
-title: "Seznámení s OAuth2 implicitní tok poskytování ve službě Azure AD | Microsoft Docs"
-description: "Další informace o službě Azure Active Directory provádění OAuth2 implicitní tok, poskytování a jestli je pro vaši aplikaci nejvhodnější."
+title: Seznámení s OAuth2 implicitní tok poskytování ve službě Azure AD | Microsoft Docs
+description: Další informace o službě Azure Active Directory provádění OAuth2 implicitní tok, poskytování a jestli je pro vaši aplikaci nejvhodnější.
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2016
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b3ed6edb0b770e8b57bb5bfde4c183d435335ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 263a093d5cf4b48ed1dadd4a288e548065ddf282
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Princip toku implicitní grant OAuth2 v Azure Active Directory (AD)
 Implicitní grant OAuth2 je notorious pro probíhá grant s nejdelší seznam zabezpečení se specifikací OAuth2. A ještě, který je implementované ADAL JS a ten, který doporučujeme při psaní aplikací SPA přístup. Co nabízí? Je všechny řádu kompromisy: jak se jím implicitní grant se je nejlepším postupem můžete pokračovat pro aplikace, které využívají webové rozhraní API prostřednictvím jazyka JavaScript v prohlížeči.
@@ -58,7 +60,7 @@ Pokud vaše aplikace je nativní klient, není implicitní tok skvělé přizpů
 
 Pokud vyvíjíte webovou aplikaci, která zahrnuje back-end a využívání rozhraní API z jeho back-end kód, implicitní tok je také vhodné. Další uděluje získáte mnohem více energie. Například udělení pověření klienta OAuth2 poskytuje schopnost získat tokeny, které odráží oprávnění přiřazená samotné, aplikace a delegování uživatele. To znamená, že klient má možnost spravovat i programový přístup k prostředkům, pokud uživatel není aktivně zapojený do relace a tak dále. Nejenom, ale tyto uděluje poskytují vyšší záruky zabezpečení. Například přístupové tokeny nikdy přenosu prostřednictvím prohlížeče uživatele, nemají riziko uloženy v historii prohlížeče a tak dále. Klientská aplikace můžete také provést silné ověřování, žádosti o token.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Úplný seznam materiály pro vývojáře, včetně referenční informace pro protokoly a ověřování OAuth2 udělit toky podpory Azure AD, najdete v části [Příručka vývojáře pro Azure AD][AAD-Developers-Guide]
 * V tématu [postup při integraci aplikace s Azure AD] [ ACOM-How-To-Integrate] pro další hloubku na proces integrace aplikací.
 

@@ -1,12 +1,12 @@
 ---
-title: "Seznámení s řešením propojené továrny – Azure | Dokumentace Microsoftu"
-description: "Popis předkonfigurovaného řešení Azure IoT pro propojenou továrnu a jeho architektura."
-services: 
+title: Seznámení s řešením propojené továrny – Azure | Microsoft Docs
+description: Popis akcelerátoru řešení Azure IoT pro propojenou továrnu a jeho architektury.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 65eb24cf5f995570b7b1752fc850b596209ea59a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connected-factory-preconfigured-solution-walkthrough"></a>Průvodce předkonfigurovaným řešením propojené továrny
+# <a name="connected-factory-solution-accelerator-walkthrough"></a>Seznámení s akcelerátorem řešení propojené továrny
 
-[Předkonfigurované řešení][lnk-preconfigured-solutions] sady IoT Suite pro propojenou továrnu je implementace komplexního průmyslového řešení, které:
+[Akcelerátor řešení][lnk-preconfigured-solutions] propojené továrny je implementace komplexního průmyslového řešení, které:
 
 * Se připojuje k simulovaným průmyslovým zařízením se servery OPC UA na simulovaných výrobních linkách i ke skutečným zařízením serveru OPC UA. Další informace o OPC UA najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md).
 * Ukazuje klíčové ukazatele výkonu a celkovou efektivitu těchto zařízení a výrobních linek.
@@ -44,7 +44,7 @@ Další informace najdete v tématu [Propojená továrna – Nejčastější dot
 
 ## <a name="logical-architecture"></a>Logická architektura
 
-Následující diagram popisuje logické součásti tohoto předkonfigurovaného řešení:
+Následující diagram popisuje logické součásti tohoto akcelerátoru řešení:
 
 ![Logická architektura propojené továrny][connected-factory-logical]
 
@@ -122,7 +122,7 @@ Služba IoT Hub v tomto řešení také:
 Řešení používá jako diskové úložiště pro virtuální počítač a k ukládání dat nasazení službu Azure Blob Storage.
 
 ## <a name="web-app"></a>Webová aplikace
-Webová aplikace nasazená jako součást předkonfigurovaného řešení se skládá z integrovaného klienta OPC UA, zpracování upozornění a vizualizace telemetrie.
+Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z integrovaného klienta OPC UA, zpracování upozornění a vizualizace telemetrie.
 
 ## <a name="telemetry-data-flow"></a>Tok telemetrických dat
 
@@ -162,7 +162,7 @@ Webová aplikace nasazená jako součást předkonfigurovaného řešení se skl
 
 9. Neaktivní uložená data jsou ve službě TSI.
 
-10. Webová aplikace propojené továrny ve službě Azure AppService zadá dotaz na požadovaná data ze služby TSI.
+10. Webová aplikace propojené továrny ve službě Azure App Service zadá dotaz na požadovaná data ze služby TSI.
     - Použije zabezpečenou komunikaci přes protokol TCP/TLS.
     - Tento krok se provádí interně v datovém centru.
 
@@ -229,15 +229,15 @@ Webová aplikace nasazená jako součást předkonfigurovaného řešení se skl
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o sadě IoT Suite najdete v následujících článcích:
+Další informace o akcelerátorech řešení IoT najdete v následujících článcích:
 
 * [Oprávnění na webu azureiotsuite.com][lnk-permissions]
-* [Nasazení brány pro předkonfigurované řešení propojené továrny ve Windows nebo v Linuxu](iot-suite-connected-factory-gateway-deployment.md)
+* [Nasazení brány pro akcelerátor řešení propojené továrny ve Windows nebo v Linuxu](iot-suite-connected-factory-gateway-deployment.md)
 * [Referenční implementace vydavatele OPC](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md

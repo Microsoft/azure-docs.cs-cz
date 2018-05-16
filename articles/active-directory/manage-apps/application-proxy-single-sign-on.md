@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dc820a95a9ccd0feb8b67c898ecfa8ce9826838a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d1c9f4dd8504c2409663cb87b0c0d56164229ed2
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Jak Azure AD Application Proxy poskytovat jednotné přihlašování?
 
@@ -54,7 +54,7 @@ Tato možnost je vhodná, pokud vaše místní aplikace nevyžaduje uživatele b
 
 Pokud chcete použít Azure Active Directory jako služba vault heslo pro místní aplikace, vyberte **založené na heslech přihlašování**. Tato možnost je vhodná, pokud vaše aplikace ověří uživatelské jméno a heslo pole se seznamem místo přístupové tokeny nebo hlavičky. S založené na heslech přihlašování uživatelé potřebovat pro přihlášení k aplikaci první čas přístup. Potom Azure Active Directory poskytuje uživatelské jméno a heslo jménem uživatele. 
 
-Informace o nastavení založené na heslech přihlašování najdete v tématu [heslo vaulting pro jednotné přihlašování pomocí Proxy aplikace](../application-proxy-sso-azure-portal.md).
+Informace o nastavení založené na heslech přihlašování najdete v tématu [heslo vaulting pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-password-vaulting.md).
 
 ## <a name="linked-sign-on"></a>Propojené přihlášení
 
@@ -72,10 +72,10 @@ Informace o nastavení integrované ověřování systému Windows najdete v té
 
 Pokud vaše aplikace používat hlavičky pro ověřování, zvolte **na základě záhlaví přihlašování**. Tato možnost uživatelé třeba pouze ověřování Azure Active Directory. Partneři společnosti Microsoft službou ověřování třetích stran volá PingAccess, který přeložit přístupový token služby Azure Active Directory na formát hlavičky pro aplikaci. 
 
-Informace o nastavení ověřování na základě záhlaví najdete v tématu [ověřování na základě záhlaví pro jednotné přihlašování pomocí Proxy aplikace](../application-proxy-ping-access.md).
+Informace o nastavení ověřování na základě záhlaví najdete v tématu [ověřování na základě záhlaví pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-ping-access.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- [Heslo vaulting pro jednotné přihlašování pomocí Proxy aplikace](../application-proxy-sso-azure-portal.md)
+- [Heslo vaulting pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [Omezené delegování Kerberos pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md)
-- [Ověřování na základě záhlaví pro jednotné přihlašování pomocí Proxy aplikace](../application-proxy-ping-access.md) 
+- [Ověřování na základě záhlaví pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-ping-access.md) 

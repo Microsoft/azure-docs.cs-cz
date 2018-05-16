@@ -1,74 +1,85 @@
 ---
-title: "Odesílání nabízených oznámení do aplikací pro Chrome přes Azure Notification Hubs | Dokumentace Microsoftu"
-description: "Dozvíte se, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro Chrome."
+title: Zasílání nabízených oznámení aplikacím pro Chrome službou Azure Notification Hubs | Microsoft Docs
+description: Dozvíte se, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro Chrome.
 services: notification-hubs
-keywords: "mobilní nabízená oznámení,nabízená oznámení,nabízené oznámení,nabízená oznámení chrome"
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+keywords: mobilní nabízená oznámení,nabízená oznámení,nabízené oznámení,nabízená oznámení chrome
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 75d4ff59-d04a-455f-bd44-0130a68e641f
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-chrome
 ms.devlang: JavaScript
-ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 33ef17f1556822c78783cc56b8ea7867eef2ec71
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Odesílání nabízených oznámení do aplikací pro Chrome přes Azure Notification Hubs
+# <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro Chrome službou Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-V tomto článku se dozvíte, jak pomocí Azure Notification Hubs odesílat do aplikace pro Chrome nabízená oznámení, která se zobrazí v kontextu prohlížeče Google Chrome. V tomto kurzu vytvoříte aplikaci pro Chrome, která bude přijímat nabízená oznámení pomocí služby [GCM (Google Cloud Messaging)](https://developers.google.com/cloud-messaging/). 
-
-> [!NOTE]
-> K dokončení tohoto kurzu potřebujete mít aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
-> 
-> 
-
-Tento kurz vás provede těmito základními kroky ke zprovoznění nabízených oznámení:
-
-* [Povolení služby GCM (Google Cloud Messaging)](#register)
-* [Konfigurace centra oznámení](#configure-hub)
-* [Propojení aplikace pro Chrome s centrem oznámení](#connect-app)
-* [Odeslání nabízeného oznámení do aplikace pro Chrome](#send)
-* [Další funkce a schopnosti](#next-steps)
+Tento kurz vás povede při vytváření centra oznámení a odesílání nabízených oznámení ukázkové aplikaci pro Google Chrome službou [Google Cloud Messaging (GCM)](https://developers.google.com/cloud-messaging/). Aplikace pro Chrome je spuštěná v prohlížeči Google Chrome a je zaregistrovaná v centru oznámení. 
 
 > [!NOTE]
 > Nabízená oznámení v aplikaci pro Chrome nepředstavují obecná oznámení v prohlížeči – jsou specifické pro model rozšiřitelnosti prohlížeče (podrobnosti najdete v [Přehled aplikací pro Chrome]). Kromě desktopového prohlížeče běží aplikace pro Chrome na mobilních zařízeních (s Androidem a iOS) prostřednictvím Apache Cordovy. Další informace najdete v tématu [Aplikace pro Chrome na mobilních zařízeních].
-> 
-> 
 
-Konfigurace služby GCM a Azure Notification Hubs je totožná s konfigurací pro Android, protože [služba GCM (Google Cloud Messaging) pro Chrome] je zastaralá a tatáž služba GCM nyní podporuje jak zařízení Android, tak instance Chromu.
+V tomto kurzu provedete následující kroky:
+
+> [!div class="checklist"]
+> * [Povolení služby GCM (Google Cloud Messaging)](#register)
+> * [Konfigurace centra oznámení](#configure-hub)
+> * [Propojení aplikace pro Chrome s centrem oznámení](#connect-app)
+> * [Odeslání nabízeného oznámení do aplikace pro Chrome](#send)
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a id="register"></a>Povolení služby GCM (Google Cloud Messaging)
-1. Přejděte na web [Google Cloud Console], přihlaste se přihlašovacími údaji ke svému účtu Google a klikněte na tlačítko **Create Project** (Vytvořit projekt). Do pole **Project Name** (Název projektu) zadejte odpovídající název a klikněte na tlačítko **Create** (Vytvořit).
-   
-    ![Google Cloud Console – Vytvoření projektu][1]
-2. Na stránce **Projects** (Projekty) si poznamenejte číslo **Project Number** (Číslo projektu) pro projekt, který jste vytvořili. Číslo projektu použijete v aplikaci pro Chrome jako **ID odesílatele GCM** k registraci do služby GCM.
-   
-    ![Google Cloud Console – Číslo projektu][2]
-3. V levém podokně klikněte na **APIs & auth** (Rozhraní API a ověřování), posuňte se dolů a klikněte na přepínač, který povolí službu **Google Cloud Messaging (GCM) pro Android**. Není nutné povolovat službu **služba GCM (Google Cloud Messaging) pro Chrome**.
-   
-    ![Google Cloud Console – Klíč serveru][3]
-4. V levém podokně klikněte na **Credentials** (Přihlašovací údaje) > **Create New Key** (Vytvořit nový klíč) > **Server Key** (Klíč serveru) > **Create** (Vytvořit).
-   
-    ![Google Cloud Console – Přihlašovací údaje][4]
-5. Poznamenejte si **API Key** (Klíč rozhraní API) serveru. Tuto hodnotu použijete v další části ke konfiguraci centra oznámení, aby mohlo odesílat nabízená oznámení do služby GCM.
-   
-    ![Google Cloud Console – Klíč rozhraní API][5]
+1. Přejděte na web [Google Cloud Console](https://console.cloud.google.com/cloud-resource-manager) a přihlaste se ke svému účtu Google.
+2. Na panelu nástrojů vyberte **Vytvořit projekt**. 
 
-## <a id="configure-hub"></a>Konfigurace centra oznámení
+    ![Tlačítko Vytvořit projekt](media/notification-hubs-chrome-get-started/create-project-button.png)
+1. Do pole **Project Name** (Název projektu) zadejte odpovídající název a klikněte na tlačítko **Create** (Vytvořit).
+2. Na panelu nástrojů vyberte ikonu oznámení (zvonek) a vyberte zprávu o **vytvoření projektu**. 
+
+    ![Oznámení o vytvoření projektu](media/notification-hubs-chrome-get-started/project-creation-notification.png)
+1. Na stránce **Projects** (Projekty) si poznamenejte číslo **Project Number** (Číslo projektu) pro projekt, který jste vytvořili. Číslo projektu použijete v aplikaci pro Chrome jako **ID odesílatele GCM** k registraci do služby GCM.
+   
+    ![Google Cloud Console – Číslo projektu](media/notification-hubs-chrome-get-started/gcm-project-number.png)
+3. Na řídicím panelu vyberte tlačítko pro **přechod k přehledu rozhraní API**. 
+
+    ![Tlačítko pro přechod k přehledu rozhraní API](media/notification-hubs-chrome-get-started/go-to-apis-overview-button.png)
+1. Na stránce rozhraní API a služeb vyberte **Enable APIs and Services** (Povolit rozhraní API a služby). 
+
+    ![Povolení rozhraní API a služeb](media/notification-hubs-chrome-get-started/enable-apis-and-services.png)
+1. Vyhledejte v seznamu klíčová slova **cloud messaging** (cloudové zasílání zpráv). Ve filtrovaném seznamu vyberte službu **Google Cloud Messaging**. 
+
+    ![Rozhraní API služby Google Cloud Messaging](media/notification-hubs-chrome-get-started/google-cloud-messaging-api.png)
+1. Na stránce **Google Cloud Messaging** vyberte **Enable** (Povolit).
+
+    ![Povolení GCM](media/notification-hubs-chrome-get-started/enable-gcm.png)
+1. Na stránce **API & Services** (Rozhraní API a služby) přepněte na kartu **Credentials** (Pověření). Vyberte **Create Credentials** (Vytvořit pověření) a pak vyberte **API key** (Klíč rozhraní API). 
+
+    ![Tlačítko pro vytvoření klíče rozhraní API](media/notification-hubs-chrome-get-started/create-api-key-button.png)
+1. V dialogovém okně **API key created** (Vytvořený klíč rozhraní API) vyberte tlačítko Kopírovat a zkopírujte klíč do schránky. Někam si ho uložte. Tuto hodnotu použijete v další části ke konfiguraci centra oznámení, aby mohlo odesílat nabízená oznámení službě GCM.
+
+    ![Stránka rozhraní API](media/notification-hubs-chrome-get-started/api-created-page.png)
+12. V seznamu **API keys** (Klíče rozhraní API) vyberte klíč API. Na stránce klíče rozhraní API vyberte **IP addresses (web servers, cron jobs, etc.)** (IP adresy (webové servery, úlohy CRON atd.)), do IP adresy zadejte **0.0.0.0/0** a klikněte na Uložit. 
+
+    ![Povolení IP adres](media/notification-hubs-chrome-get-started/enable-ip-addresses.png)
+
+## <a id="configure-hub"></a>Vytvoření centra oznámení
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-6.   Na stránce **Nastavení** vyberte **Notification Services** a pak **Google (GCM)**. Zadejte klíč rozhraní API a uložte jej.
+6. V kategorii **NASTAVENÍ OZNÁMENÍ** vyberte **Google (GCM)**, zadejte **klíč rozhraní API** projektu GCM a klikněte na **Uložit**.
 
-        ![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+      ![Azure Notification Hubs – Google (GCM)](media/notification-hubs-chrome-get-started/configure-gcm-api-key.png)
 
 ## <a id="connect-app"></a>Propojení aplikace pro Chrome s centrem oznámení
 Vaše centrum oznámení je nyní nakonfigurováno pro práci se službou GCM. Zároveň máte připojovací řetězce, pomocí kterých můžete svou aplikaci zaregistrovat pro příjem a odesílání nabízených oznámení.
@@ -79,7 +90,7 @@ Následující ukázka je založena na [ukázce GCM aplikace pro Chrome] a k vyt
 > [!NOTE]
 > Doporučujeme stáhnout si zdrojové kódy pro tuto aplikaci pro Chrome z [ukázky využití Notification Hubs v aplikaci pro Chrome]. 
 
-Aplikace pro Chrome se vytváří prostřednictvím JavaScriptu a můžete k tomu použít libovolný textový editor. Na následujícím obrázku je příklad aplikace pro Chrome:
+Aplikace pro Chrome se vytváří prostřednictvím JavaScriptu a můžete k tomu použít libovolný textový editor. Na následujícím obrázku je vidět aplikace pro Chrome:
 
 ![Aplikace pro Google Chrome][15]
 
@@ -101,8 +112,7 @@ Aplikace pro Chrome se vytváří prostřednictvím JavaScriptu a můžete k tom
           "icons": { "128": "gcm_128.png" }
         }
    
-    Všimněte si elementu `permissions`, který určuje, že tato aplikace pro Chrome může přijímat nabízená oznámení ze služby GCM. Kromě toho musí určovat identifikátor URI služby Azure Notification Hubs, kde aplikace pro Chrome provede volání REST pro registraci.
-    Ukázková aplikace také používá soubor ikony, `gcm_128.png`, který najdete ve zdrojovém kódu, který již byl použit v původní ukázce GCM. Můžete jej nahradit libovolným obrázkem, který splňuje [kritéria pro ikonu](https://developer.chrome.com/apps/manifest/icons).
+    Všimněte si elementu `permissions`, který určuje, že tato aplikace pro Chrome může přijímat nabízená oznámení ze služby GCM. Ukázková aplikace také používá soubor ikony, `gcm_128.png`, který najdete ve zdrojovém kódu, který již byl použit v původní ukázce GCM. Můžete jej nahradit libovolným obrázkem, který splňuje [kritéria pro ikonu](https://developer.chrome.com/apps/manifest/icons).
 4. Vytvořte soubor s názvem `background.js` a následujícím kódem:
    
         // Returns a new notification ID used in the notification.
@@ -353,10 +363,10 @@ Aplikace pro Chrome se vytváří prostřednictvím JavaScriptu a můžete k tom
    * **registerWithNH** je druhá obslužná rutina kliknutí na tlačítko, která provádí registraci do Notification Hubs. Získává `hubName` a `connectionString` (které zadal uživatel) a sestavuje volání REST API pro registraci do Notification Hubs.
    * **splitConnectionString** a **generateSaSToken** jsou pomocné funkce, které představují javascriptovou implementaci procesu vytvoření tokenu SaS, jenž se musí použít ve všech voláních REST API. Další informace najdete v tématu [Běžné koncepty](http://msdn.microsoft.com/library/dn495627.aspx).
    * **sendNHRegistrationRequest** je funkce, která provádí volání HTTP REST do Azure Notification Hubs.
-   * **registrationPayload** definuje datovou část registrace XML. Další informace najdete v tématu o [vytvoření NH REST API registrace]. V ní musíte aktualizovat ID registrace na hodnotu získanou ze služby GCM.
+   * **registrationPayload** definuje datovou část registrace XML. Další informace najdete v tématu o [vytvoření NH REST API registrace]. Aktualizujte registrační ID. Použijte hodnotu získanou ze služby GCM.
    * **client** je instance **XMLHttpRequest**, kterou aplikace používá k odeslání požadavku HTTP POST. Hlavičku `Authorization` aktualizujte na `sasToken`. Pokud se toto volání dokončí úspěšně, bude instance aplikace pro Chrome zaregistrována do Azure Notification Hubs.
 
-Celková struktura složek tohoto projektu by měla vypadat přibližně takto: ![Aplikace pro Google Chrome – Struktura složek][21]
+        Složky tohoto projektu musí mít následující strukturu: ![aplikace pro Google Chrome – struktura složek][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>Nastavení a testování aplikace pro Chrome
 1. Otevřete prohlížeč Chrome. Otevřete **Rozšíření Chromu** a povolte **Režim pro vývojáře**.
@@ -384,12 +394,12 @@ Pro účely testování pošlete nabízené oznámení Chrome pomocí konzolové
 > 
 
 1. V nástroji Visual Studio v nabídce **Soubor** vyberte **Nový** a **Projekt**. V části **Visual C#** klikněte na **Windows** a **Konzolová aplikace** a pak na **OK**.  Tímto krokem se vytvoří nový projekt konzolové aplikace.
-2. V nabídce **Nástroje** klikněte na **Správce balíčků NuGet** a pak na **Konzola správce balíčků**. V dolním okně se zobrazí konzola správce balíčků.
+2. V nabídce **Nástroje** klikněte na **Správce balíčků NuGet** a pak na **Konzola Správce balíčků**. V dolním okně se zobrazí konzola správce balíčků.
 3. V okně konzoly spusťte následující příkaz:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-       This adds a reference to the Azure Service Bus SDK with the <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>.
+   Do projektu se <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">balíčkem NuGet WindowsAzure.ServiceBus automaticky přidá odkaz na sadu Azure Service Bus SDK</a>.
 4. Otevřete `Program.cs` a přidejte následující příkaz `using`:
    
         using Microsoft.Azure.NotificationHubs;
@@ -402,12 +412,10 @@ Pro účely testování pošlete nabízené oznámení Chrome pomocí konzolové
             await hub.SendGcmNativeNotificationAsync(message);
         }
    
-       Make sure to replace the `<hub name>` placeholder with the name of the notification hub that appears in the [portal](https://portal.azure.com) in your Notification Hub blade. Also, replace the connection string placeholder with the connection string called `DefaultFullSharedAccessSignature` that you obtained in the notification hub configuration section.
+    Zkontrolujte nahrazení `<hub name>`zástupného znaku názvem centra oznámení, který se zobrazí na [portálu](https://portal.azure.com) na stránce centra oznámení. Také nahraďte zástupný symbol připojovacího řetězce připojovacím řetězcem s názvem `DefaultFullSharedAccessSignature`, který jste získali v části konfigurace centra oznámení.
    
-   > [!NOTE]
-   > Ujistěte se, že používáte připojovací řetězec s **úplným** přístupem, nikoli s přístupem **Naslouchat**. Připojovací řetězec s přístupem **Naslouchat** neposkytuje oprávnění posílat nabízená oznámení.
-   > 
-   > 
+    > [!NOTE]
+    > Ujistěte se, že používáte připojovací řetězec s **úplným** přístupem, nikoli s přístupem **Naslouchat**. Připojovací řetězec s přístupem **Naslouchat** neposkytuje oprávnění posílat nabízená oznámení.
 6. Do metody `Main` přidejte následující volání:
    
          SendNotificationAsync();
@@ -426,15 +434,12 @@ Pro účely testování pošlete nabízené oznámení Chrome pomocí konzolové
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o Notification Hubs najdete v [přehledu této služby].
+V tomto kurzu jste poslali oznámení všem klientům registrovaným back-endem. Pokud se chcete naučit posílat nabízená oznámení určitým zařízením, pokračujte následujícím kurzem: 
 
-Pokud chcete cílit na konkrétní uživatele, přečtěte si kurz [Nastavení oznámení pro uživatele v Azure Notification Hubs]. 
-
-Pokud chcete své uživatele rozdělit podle specifických skupin, můžete postupovat podle kurzu [Nejnovější zprávy přes Azure Notification Hubs].
+> [!div class="nextstepaction"]
+>[Zasílání nabízených oznámení určitým zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- Images. -->
-[1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
-[2]: ./media/notification-hubs-chrome-get-started/GoogleProjectNumber.png
 [3]: ./media/notification-hubs-chrome-get-started/EnableGCM.png
 [4]: ./media/notification-hubs-chrome-get-started/CreateServerKey.png
 [5]: ./media/notification-hubs-chrome-get-started/ServerKey.png
@@ -457,8 +462,7 @@ Pokud chcete své uživatele rozdělit podle specifických skupin, můžete post
 
 <!-- URLs. -->
 [ukázky využití Notification Hubs v aplikaci pro Chrome]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
-[Google Cloud Console]: http://cloud.google.com/console
-[přehledu této služby]: notification-hubs-push-notification-overview.md
+[Notification Hubs Overview]: notification-hubs-push-notification-overview.md
 [Přehled aplikací pro Chrome]: https://developer.chrome.com/apps/about_apps
 [ukázce GCM aplikace pro Chrome]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
@@ -466,6 +470,6 @@ Pokud chcete své uživatele rozdělit podle specifických skupin, můžete post
 [vytvoření NH REST API registrace]: http://msdn.microsoft.com/library/azure/dn223265.aspx
 [knihovnu crypto-js]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
-[služba GCM (Google Cloud Messaging) pro Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Nastavení oznámení pro uživatele v Azure Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Nejnovější zprávy přes Azure Notification Hubs]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
+[Azure Notification Hubs Notify Users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Azure Notification Hubs breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

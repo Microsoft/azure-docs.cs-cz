@@ -3,23 +3,25 @@ title: Webové aplikace Azure AD Node.js Začínáme | Microsoft Docs
 description: Naučte se vytvářet webové aplikace Node.js Express MVC, která se integruje se službou Azure AD pro přihlášení.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 81deecec-dbe2-4e75-8bc0-cf3788645f99
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Začínáme se službou Azure AD Node.js webové aplikace
 Tady používáme Passport:
@@ -37,7 +39,7 @@ Chcete-li to provést, proveďte následující kroky:
 3. Použít Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD.
 4. Tisknout data o uživateli.
 
-Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS).  Chcete-li sledovat, můžete [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) nebo tuto kostru klonovat:
+Kód k tomuto kurzu je udržovaný [na GitHubu](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS). Chcete-li sledovat, můžete [stáhnout kostru aplikace jako soubor ZIP](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/skeleton.zip) nebo tuto kostru klonovat:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -55,7 +57,7 @@ Dokončená aplikace je k dispozici na konci tohoto kurzu také.
 5. Postupujte podle výzev a vytvořte **webové aplikace** nebo **WebAPI**.
   * **Název** aplikace popisuje vaší aplikace pro uživatele.
 
-  * **Přihlašovací adresa URL** je základní adresu URL aplikace.  Výchozí hodnota kostru je `http://localhost:3000/auth/openid/return`.
+  * **Přihlašovací adresa URL** je základní adresu URL aplikace. Výchozí hodnota kostru je `http://localhost:3000/auth/openid/return`.
 
 6. Po registraci, Azure AD přiřadí vaší aplikace ID jedinečný aplikace. Je třeba tuto hodnotu v následujících částech, zkopírujte jej ze stránky aplikace.
 7. Z **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte identifikátor ID URI aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci. Konvence, je použít formát `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.
@@ -78,7 +80,7 @@ Dokončená aplikace je k dispozici na konci tohoto kurzu také.
 Tím se nainstaluje do knihoven, `passport-azure-ad` závisí na.
 
 ## <a name="step-3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>Krok 3: Nastavení aplikace k použití strategie passport uzlu js
-Zde jsme nakonfigurovat Express pro použití ověřovacího protokolu OpenID Connect.  Passport umožňuje provádět různé akce, včetně požadavků na přihlášení a odhlášení problém, spravovat relace uživatele a získat informace o uživateli.
+Zde jsme nakonfigurovat Express pro použití ověřovacího protokolu OpenID Connect. Passport umožňuje provádět různé akce, včetně požadavků na přihlášení a odhlášení problém, spravovat relace uživatele a získat informace o uživateli.
 
 1. Chcete-li začít, otevřete `config.js` souboru v kořenovém adresáři projektu a potom zadejte hodnoty konfigurace vaší aplikace v `exports.creds` oddílu.
 
@@ -181,7 +183,7 @@ Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřov�
             };
     ```
 
-5.  Dále umožňuje přidat kód pro načtení modulu Express. Tady používáme výchozí /views a poskytuje /routes vzor, který Express.
+5. Dále umožňuje přidat kód pro načtení modulu Express. Tady používáme výchozí /views a poskytuje /routes vzor, který Express.
 
     ```JavaScript
 
@@ -252,7 +254,7 @@ Předchozí kód přijímá jakéhokoli uživatele, které dochází k ověřov�
 
 
 ## <a name="step-4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Krok 4: Použití služby Passport pro zasílání požadavků na přihlášení a odhlášení do Azure AD
-Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pomocí ověřovacího protokolu OpenID Connect.  `passport-azure-ad` má postaráno všechny podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelských relací. Všechny, které zůstává je udělení uživatelům způsob, jak přihlášení a odhlášení a shromažďování Další informace o přihlášených uživatelů.
+Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pomocí ověřovacího protokolu OpenID Connect. `passport-azure-ad` má postaráno všechny podrobnosti o věnujte zpráv ověřování, ověřování tokenů z Azure AD a údržbě uživatelských relací. Všechny, které zůstává je udělení uživatelům způsob, jak přihlášení a odhlášení a shromažďování Další informace o přihlášených uživatelů.
 
 1. Nejprve přidejme výchozí, přihlášení, účet a odhlášení metody pro naše `app.js` souboru:
 
@@ -282,7 +284,7 @@ Aplikace je nyní správně nakonfigurován pro komunikaci s koncovým bodem pom
 
     ```
 
-2.  Pojďme si podrobněji:
+2. Pojďme si podrobněji:
 
   * `/`Trasa přesměruje na zobrazení index.ejs předávání uživatele v požadavku (pokud existuje).
   * `/account` Směrovat nejprve *zajistí jsme se ověří* (jsme implementovat, v následujícím příkladu) a poté předá uživatele v požadavku tak, aby se nám můžete získat další informace o uživateli.

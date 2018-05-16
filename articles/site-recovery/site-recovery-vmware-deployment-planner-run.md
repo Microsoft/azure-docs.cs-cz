@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: d7b65771555fcada741b594c14b98e87e7448b24
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1d9fa845171ffa5a40ce569170dfbb577ea4e8c8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro nasazení VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
@@ -234,8 +234,8 @@ Je důležité počítat s nárůstem v charakteristikách vašich úloh v důsl
 Řekněme například, že dnes se váš virtuální počítač vejde do účtu replikace služby Storage úrovně Standard. Během následujících tří měsíců pravděpodobně dojde k několika změnám:
 
 * Zvýší se počet uživatelů aplikace spuštěné na virtuálním počítači.
-* Výsledná zvýšená četnost změn na virtuálním počítači bude vyžadovat přesun virtuálního počítače do účtu služby Storage úrovně Premium, aby replikace Site Recovery mohla s četností změn držet krok.
-* V důsledku toho budete muset zakázat a znovu povolit ochranu účtu služby Storage úrovně Premium.
+* Výsledná zvýšená četnost změn na virtuálním počítači bude vyžadovat přesun virtuálního počítače do účtu služby Premium Storage, aby replikace Site Recovery mohla s četností změn držet krok.
+* V důsledku toho budete muset zakázat a znovu povolit ochranu účtu služby Premium Storage.
 
 Důrazně doporučujeme, abyste při plánování nasazení počítali s růstem, a přestože je jeho hodnota ve výchozím nastavení 30 %, sami nejlépe znáte vzorce používání vaší aplikace a očekávaný růst a během generování sestav můžete toto číslo odpovídajícím způsobem měnit. Kromě toho můžete generovat více sestav s použitím různých faktorů růstu pro stejná profilovaná data a určit, jaká doporučení ohledně cílového úložiště a zdrojové šířky pásma jsou pro vás nejvhodnější.
 

@@ -1,24 +1,24 @@
 ---
-title: "Postup resetování síťové rozhraní virtuálního počítače Windows Azure | Microsoft Docs"
-description: "Ukazuje, jak resetování síťové rozhraní virtuálního počítače Windows Azure"
+title: Postup resetování síťové rozhraní virtuálního počítače Windows Azure | Microsoft Docs
+description: Ukazuje, jak resetování síťové rozhraní virtuálního počítače Windows Azure
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6bf5c991e8a96cfdcbad971e0f2ea2dfd01f2893
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 7c78c80e5eaceb210a50549e2885e56c0d9ec7f1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Postup resetování síťové rozhraní virtuálního počítače Windows Azure 
 
@@ -63,7 +63,7 @@ Poté, co je to možné vzdálené plochy k počítači, je nutné odstranit sta
 2.  Vyberte **zobrazení** > **zobrazit skrytá zařízení**.
 3.  Vyberte **síťové adaptéry**. 
 4.  Zkontrolujte u adaptérů s názvem jako "Microsoft Hyper-V síťový adaptér".
-5.  Může se zobrazit není k dispozici adaptér, který je zobrazena šedě. Klikněte pravým tlačítkem na adaptéru a potom vyberte možnost odinstalovat.
+5.  Možná se šedě zobrazí nedostupný adaptér. Klikněte pravým tlačítkem na adaptéru a potom vyberte možnost odinstalovat.
 
     ![bitové kopie na síťový adaptér](media/reset-network-interface/nicpage.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s adaptivní Suite | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a adaptivní Suite."
+title: 'Kurz: Azure Active Directory integrace s adaptivní Suite | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a adaptivní Suite.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e128ddf53a93fe30350d8e914657f3539701603
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0932eea407ea6dbb43760c2e64c49be802363360
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-suite"></a>Kurz: Azure Active Directory integrace s adaptivní Suite
 
@@ -110,11 +110,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
-    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
+    V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     >[!NOTE]
     > Tuto hodnotu můžete získat z adaptivní sady **nastavení jednotného přihlašování SAML** stránky.
-    >  
+    >
+    
+    Zkontrolujte **zobrazit upřesňující nastavení adresy URL** pole. V **identifikátoru (Entity ID)** textovému poli, zadejte stejnou adresu URL, které jste zadali v **adresa URL odpovědi** textové pole.
+    
+    >[!NOTE]
+    > ID entity pro každou doménu adaptivní Insights je stejný jako jeho adresa URL odpovědi.
+    >
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
@@ -261,7 +267,7 @@ Cílem této části je vyzkoušet Microsoft Azure AD jednotné přihlašování
 Když kliknete na dlaždici adaptivní Suite na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci adaptivní Suite.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)

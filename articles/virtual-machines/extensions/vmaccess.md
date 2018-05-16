@@ -15,26 +15,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: danis
-ms.openlocfilehash: b90b7948d10ff91f3c63b772bc302b1def416f2b
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c023f226894d2fabb90736513e49a1ecca179d4f
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Spravovat administrativní uživatele, SSH a zkontrolujte nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess 2.0 rozhraní příkazového řádku Azure
-
 ## <a name="overview"></a>Přehled
-
 Disk ve virtuálním počítačům s Linuxem se zobrazuje chyby. Nějakým způsobem resetování hesla kořenového virtuálním počítačům s Linuxem nebo omylem odstraněné svůj privátní klíč SSH. V takovém případě zpět v dny v datovém centru potřebovali byste existuje jednotky a pak otevřete KVM získat z konzoly serveru. Rozšíření Azure VMAccess si můžete představit jako že KVM přepínačů, která umožňuje přístup ke konzole resetovat přístup do systému Linux nebo provést údržbu na úrovni disku.
 
 Tento článek ukazuje, jak používat rozšíření VMAccess Azure zkontrolujte nebo opravit disk, resetovat přístupu uživatele, spravovat účty administrativních uživatelů, nebo aktualizovat konfiguraci SSH na Linux, když běží jako virtuální počítače Azure Resource Manager. Pokud potřebujete spravovat klasické virtuální počítače – můžete postupujte podle pokynů v [classic dokumentace virtuálních počítačů](../linux/classic/reset-access-classic.md). 
 
 ## <a name="prerequisites"></a>Požadavky
-
 ### <a name="operating-system"></a>Operační systém
 
 Rozšíření pro přístup virtuálních počítačů můžete spustit proti tyto distribucí Linux:
-
 
 | Distribuce | Verze |
 |---|---|
@@ -58,7 +54,7 @@ Následující příklady použití [uživatele virtuálního počítače az](/c
 ## <a name="update-ssh-key"></a>Aktualizovat klíč SSH
 Následující příklad aktualizuje klíč SSH pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user update \
   --resource-group myResourceGroup \
   --name myVM \
@@ -71,7 +67,7 @@ az vm user update \
 ## <a name="reset-password"></a>Resetování hesla
 Následující příklad resetuje heslo pro uživatele `azureuser` ve virtuálním počítači s názvem `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user update \
   --resource-group myResourceGroup \
   --name myVM \
@@ -82,7 +78,7 @@ az vm user update \
 ## <a name="restart-ssh"></a>Restartujte SSH
 V následujícím příkladu restartuje démon procesu SSH a konfiguraci SSH obnovíte výchozí hodnoty na virtuálním počítači s názvem `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user reset-ssh \
   --resource-group myResourceGroup \
   --name myVM
@@ -91,7 +87,7 @@ az vm user reset-ssh \
 ## <a name="create-an-administrativesudo-user"></a>Vytvořit uživatele správce nebo sudo
 Následující příklad vytvoří uživatele s názvem `myNewUser` s **sudo** oprávnění. Účet používá klíč SSH pro ověřování na virtuální počítač s názvem `myVM`. Tato metoda je určena můžete znovu získat přístup k virtuálnímu počítači v případě, že aktuální přihlašovací údaje jsou ztratíte nebo zapomenete. Jako osvědčený postup, účtů s **sudo** oprávnění by měla být omezená.
 
-```azurecli
+```azurecli-interactive
 az vm user update \
   --resource-group myResourceGroup \
   --name myVM \
@@ -99,18 +95,15 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-
-
 ## <a name="delete-a-user"></a>Odstranit uživatele
 Následující příklad odstraní uživatele s názvem `myNewUser` ve virtuálním počítači s názvem `myVM`:
 
-```azurecli
+```azurecli-interactive
 az vm user delete \
   --resource-group myResourceGroup \
   --name myVM \
   --username myNewUser
 ```
-
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>Použít soubory JSON a rozšíření VMAccess
 Následující příklady použití nezpracované soubory JSON. Použití [nastavení rozšíření virtuálního az](/cli/azure/vm/extension#az_vm_extension_set) pak volat souborů JSON. Tyto soubory JSON je možné také volat z šablony Azure. 
@@ -129,7 +122,7 @@ Pokud chcete aktualizovat veřejný klíč SSH uživatele, vytvořte soubor s n�
 
 Spuštění skriptu VMAccess pomocí:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -150,7 +143,7 @@ Pokud chcete resetovat heslo uživatele, vytvořte soubor s názvem `reset_user_
 
 Spuštění skriptu VMAccess pomocí:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -171,7 +164,7 @@ Pokud chcete restartovat démon procesu SSH a obnovit výchozí hodnoty v konfig
 
 Spuštění skriptu VMAccess pomocí:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -195,7 +188,7 @@ Chcete-li vytvořit uživatele s **sudo** oprávnění, která používá klíč
 
 Spuštění skriptu VMAccess pomocí:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -215,7 +208,7 @@ Pokud chcete odstranit uživatele, vytvořte soubor s názvem `delete_user.json`
 
 Spuštění skriptu VMAccess pomocí:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -239,7 +232,7 @@ Zkontrolujte a pak Opravte disk, vytvořte soubor s názvem `disk_check_repair.j
 
 Spuštění skriptu VMAccess pomocí:
 
-```azurecli
+```azurecli-interactive
 az vm extension set \
   --resource-group myResourceGroup \
   --vm-name myVM \
@@ -248,13 +241,16 @@ az vm extension set \
   --version 1.4 \
   --protected-settings disk_check_repair.json
 ```
+## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-## <a name="next-steps"></a>Další postup
-Aktualizace Linux pomocí rozšíření VMAccess Azure je jedna z metod k provádění změn v spuštěného virtuálního počítače s Linuxem. Nástroje, například cloudové init a šablony Azure Resource Manager můžete také upravit virtuálním počítačům s Linuxem na spuštění.
+### <a name="troubleshoot"></a>Řešení potíží
 
-[Rozšíření virtuálního počítače a funkce pro Linux](features-linux.md)
+Z portálu Azure a pomocí rozhraní příkazového řádku Azure je možné načíst data o stavu nasazení rozšíření. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí rozhraní příkazového řádku Azure.
 
-[Vytváření šablon Azure Resource Manager pomocí rozšíření virtuálního počítače s Linuxem](../windows/template-description.md)
+```azurecli
+az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
+```
 
-[Přizpůsobení virtuálního počítače s Linuxem během vytváření pomocí init cloudu](../linux/using-cloud-init.md)
+### <a name="support"></a>Podpora
 
+Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte Get podpory. Informace o používání Azure podporovat, najdete v tématu [podporu Microsoft Azure – nejčastější dotazy](https://azure.microsoft.com/support/faq/).

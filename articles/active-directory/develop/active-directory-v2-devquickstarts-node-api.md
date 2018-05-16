@@ -1,25 +1,27 @@
 ---
-title: "Zabezpečení Azure Active Directory v2.0 webového rozhraní API pomocí Node.js | Microsoft Docs"
-description: "Naučte se vytvářet webové aplikace Node.js API, které přijímá tokeny z osobního účtu Microsoft a z pracovní nebo školní účty."
+title: Zabezpečení Azure Active Directory v2.0 webového rozhraní API pomocí Node.js | Microsoft Docs
+description: Naučte se vytvářet webové aplikace Node.js API, které přijímá tokeny z osobního účtu Microsoft a z pracovní nebo školní účty.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19ad25c7b08ff073097cacf3be359772ca0a327f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Zabezpečení webového rozhraní API pomocí Node.js
 > [!NOTE]
@@ -139,7 +141,7 @@ Restify má efektivní mechanismus pro trasování volání REST pomocí DTrace.
     ```
 
 ## <a name="6-add-passport-azure-ad-to-your-web-api"></a>6: Přidání passport-azure-ad do webového rozhraní API
-Dál přidejte strategii OAuth pomocí passport-azuread. `passport-azuread`je sada strategií, které propojují Azure AD s Passport. Používáme tuto strategii pro nosné tokeny v této ukázce REST API.
+Dál přidejte strategii OAuth pomocí passport-azuread. `passport-azuread` je sada strategií, které propojují Azure AD s Passport. Používáme tuto strategii pro nosné tokeny v této ukázce REST API.
 
 > [!NOTE]
 > I když OAuth 2.0 poskytuje rozhraní, ve kterém můžou být vystavené všechny známé typy tokenů, se běžně používají určitým typům tokenů. Nosné tokeny se běžně používají k ochraně koncových bodů. Nosné tokeny jsou nejčastěji vydávaným typem tokenů v OAuth 2.0. Mnoho implementací OAuth 2.0 předpokládá, že jsou nosné tokeny jediným typem vydávaných tokenů.
@@ -830,7 +832,7 @@ Znovu použijte curl a zkontrolujte, jestli máte OAuth 2.0 ochrany koncové bod
 
 Jste došli nejdál, co můžete bez použití klienta OAuth 2.0 kompatibilní s tímto serverem. Pro tento musíte zkontrolovat další kurzu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) k dispozici jako [soubor .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip). Vám může ho také klonovat z Githubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```

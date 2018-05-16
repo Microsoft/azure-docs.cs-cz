@@ -11,14 +11,14 @@ ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 3d9f9cd835056b61ee72ddde5add285f47665ac1
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: cb78808b515bb3385f7cf56725441a2b228f0aba
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Vytvoření aplikací Spark pro cluster služby HDInsight pomocí nástrojů Azure pro IntelliJ
 
@@ -34,9 +34,9 @@ Chcete-li vytvořit projekt, podívejte se [vytvoření aplikací Spark pomocí 
 > Tento modul plug-in můžete použít k vytvoření a odeslání aplikací pouze pro cluster služby HDInsight Spark na systému Linux.
 > 
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-- Cluster Apache Spark v HDInsight Linux. Pokyny najdete v tématu [clusterů vytvořit Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md).
+- Cluster Apache Spark v HDInsight Linux. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 - Oracle Java Development Kit. Můžete nainstalovat z [Oracle webu](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 - IntelliJ IDEA. Tento článek používá verzi 2017.1. Můžete nainstalovat z [JetBrains webu](https://www.jetbrains.com/idea/download/).
 
@@ -256,7 +256,7 @@ Můžete převést stávající Spark Scala aplikace, který jste vytvořili v I
 
 3. Uložte změny. Aplikace by teď měly být kompatibilní s Azure nástrojů pro IntelliJ. Můžete otestovat ji kliknutím pravým tlačítkem na název projektu v prohlížeči projektu. V rozbalovacím má teď možnost **odesílání aplikací Spark na HDInsight**.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="error-in-local-run-please-use-a-larger-heap-size"></a>Chyba při místním spuštění: *použijte prosím větší velikost haldy*
 V 1.6 Spark Pokud používáte Java SDK 32-bit při místním spuštění, může dojít k následujícím chybám:

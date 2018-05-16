@@ -1,25 +1,25 @@
 ---
-title: "Portál Azure klávesové zkratky | Microsoft Docs"
-description: "Další informace o klávesové zkratky, které fungují na portálu Azure."
+title: Portál Azure klávesové zkratky | Microsoft Docs
+description: Další informace o klávesové zkratky, které fungují na portálu Azure.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: flanakin
 manager: lwelicki
-editor: 
+editor: ''
 ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: 6c37dcbf14ee765aa803f41b91445c8f1cabcfdb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 17d6c5ecfa3964c03f62e981a4619e02f3d59543
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Klávesové zkratky v portálu Azure
 Tento článek ukazuje klávesové zkratky, které fungují v celém webu Azure portal. Jednotlivé služby může mít vlastní klávesové zkratky.
@@ -27,10 +27,10 @@ Tento článek ukazuje klávesové zkratky, které fungují v celém webu Azure 
 ## <a name="actions"></a>Akce
 |Uděláte to tak |Stisknutím klávesy |
 | --- | --- |
-|Vytvořit nový prostředek|G+N|
+|Vytvořit nový prostředek|G + N|
 |Otevřete podokno, všechny služby.|G+B|
 |Prohledávat prostředky|G+/| 
-|Položky nabídky vyhledávání prostředků|CTRL+/ |
+|Položky nabídky vyhledávání prostředků|CTRL +/ |
 |Přesunout vybrané levém podokně položku nahoru |ALT + Shift + šipka nahoru|
 |Přesunout vybrané levém podokně položku dolů |ALT + Shift + šipka dolů|
 
@@ -43,7 +43,7 @@ Tento článek ukazuje klávesové zkratky, které fungují v celém webu Azure 
 ## <a name="go-to"></a>Přejít na
 |Uděláte to tak |Stisknutím klávesy |
 | --- | --- |
-|Přejít na řídicí panel |G+D |
+|Přejít na řídicí panel |G + D |
 |Přejít na všechny prostředky|G+A |
 |Přejít na skupiny prostředků|G+R |
 |Otevřete položku levém podokně na této pozici |G+číslo|

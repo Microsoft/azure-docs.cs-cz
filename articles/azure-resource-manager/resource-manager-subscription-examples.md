@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2c16c0414ddf023e7055a8b57c514fc069f3112a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Příklady implementace Azure enterprise vygenerované uživatelské rozhraní
-Toto téma obsahuje příklady, jak organizace může implementovat doporučení pro [vygenerované uživatelské rozhraní Azure enterprise](resource-manager-subscription-governance.md). Pro ilustraci osvědčené postupy pro běžné scénáře používá fiktivní společnost s názvem Contoso.
+Tento článek obsahuje příklady, jak organizace může implementovat doporučení pro [vygenerované uživatelské rozhraní Azure enterprise](resource-manager-subscription-governance.md). Pro ilustraci osvědčené postupy pro běžné scénáře používá fiktivní společnost s názvem Contoso.
 
 ## <a name="background"></a>Pozadí
-Contoso je, že po celém světě společnost, která poskytuje zásobovací řetězec řešení pro zákazníky v části všechno z modelu "Softwaru jako službu" zabalené modelu nasadit místně.  Po celém světě s centrech významné vývoj v Indie, USA a Kanada vyvíjejí softwaru.
+Contoso je po celém světě společnost, která poskytuje zásobovací řetězec řešení pro zákazníky. Poskytují všechno, co ze softwaru jako služby modelu pro model zabalené nasadit místně.  Po celém světě s centrech významné vývoj v Indie, USA a Kanada vyvíjejí softwaru.
 
 Část ISV společnosti je rozdělena na několik nezávislých organizační jednotky, které spravovat produkty ve významné podniku. Jednotlivé obchodní jednotky má svou vlastní vývojáře, produktu správci a architekti.
 
 Organizační jednotka služby technologie Enterprise (ETS) poskytuje funkce centralizované IT a spravuje několik datových center, kterých obchodních jednotek hostovat svých aplikací. Společně s správy datových center, organizace ETS obsahuje a spravuje centralizované spolupráce (například e-mailu a weby) a sítě nebo telefonní služby. Pro menší organizační jednotky, kteří nemají provozní pracovníci také spravují zákazníkem úlohy.
 
-V tomto tématu se používají následující osoby:
+V tomto článku se používají následující osoby:
 
 * Dave je správce ETS Azure.
 * Alice je společnosti Contoso ředitel vývoj v organizační jednotce, zadejte řetězec.
 
-Contoso je potřeba vytvářet-obchodní aplikace a aplikace na straně zákazníka. Rozhodla se ke spuštění aplikace v Azure. Přečte Dave [zásad správného řízení doporučený předplatné](resource-manager-subscription-governance.md) tématu a je nyní připravena k implementaci doporučení.
+Contoso je potřeba vytvářet-obchodní aplikace a aplikace na straně zákazníka. Rozhodla se ke spuštění aplikace v Azure. Přečte Dave [zásad správného řízení doporučený předplatné](resource-manager-subscription-governance.md) článek a je nyní připravena k implementaci doporučení.
 
 ## <a name="scenario-1-line-of-business-application"></a>Scénář 1:-obchodní aplikace
-Contoso je vytváření systém správy zdrojového kódu (BitBucket), který se má použít vývojáři po celém světě.  Aplikace používá infrastrukturu jako službu (IaaS) pro hostování a skládá se z webových serverů a databázový server. Vývojáři přístup k serverům ve svých prostředích vývoj, ale nepotřebují přístup k serverům v Azure. Contoso ETS, které chcete povolit vlastníka aplikace a týmu ke správě aplikace. Aplikace je dostupná pouze při na podnikové síti společnosti Contoso. Dave je potřeba nastavit odběr pro tuto aplikaci. Předplatné bude v budoucnu také hostitelem jiných vývojáře softwaru.  
+Contoso je vytváření systém správy zdrojového kódu (BitBucket), který se má použít vývojáři po celém světě.  Aplikace používá infrastrukturu jako službu (IaaS) pro hostování a skládá se z webových serverů a databázový server. Vývojáři přístup k serverům ve svých prostředích vývoj, ale nepotřebují přístup k serverům v Azure. Contoso ETS chce umožnit vlastníka aplikace a týmu ke správě aplikace. Aplikace je dostupná pouze při na podnikové síti společnosti Contoso. Dave je potřeba nastavit odběr pro tuto aplikaci. Předplatné bude v budoucnu také hostitelem jiných vývojáře softwaru.  
 
 ### <a name="naming-standards--resource-groups"></a>Standardy pro vytváření názvů & skupiny prostředků
-Dave vytvoří odběr pro podporu nástroje pro vývojáře, které jsou společné pro všechny organizační jednotky. Zadá musí vytvořit smysluplný názvy pro skupiny, předplatné a prostředků (pro aplikace a sítě). Vytvoří následujících skupin pro předplatné a prostředků:
+Dave vytvoří odběr pro podporu nástroje pro vývojáře, které jsou společné pro všechny organizační jednotky. Dave musí vytvořit smysluplný názvy pro skupiny, předplatné a prostředků (pro aplikace a sítě). Vytvoří následujících skupin pro předplatné a prostředků:
 
 | Položka | Název | Popis |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Dave přiřadí následující role pro předplatné:
 | Role | Přiřazeno | Popis |
 | --- | --- | --- |
 | [Vlastník](../role-based-access-control/built-in-roles.md#owner) |Spravované ID ze společnosti Contoso AD |Toto ID je řízena s těsně přístupu čas (JIT) pomocí nástroje Správa identit společnosti Contoso a zajistí, že je plně auditován přístup vlastníka předplatného |
-| [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-manager) |Zabezpečení a rizika oddělení správy |Tato role umožňuje uživatelům prohlížet Azure Security Center a stav prostředků |
+| [Čtečka zabezpečení](../role-based-access-control/built-in-roles.md#security-reader) |Zabezpečení a rizika oddělení správy |Tato role umožňuje uživatelům prohlížet Azure Security Center a stav prostředků |
 | [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) |Tým síťových |Tato role umožňuje společnosti Contoso tým síťových ke správě Site to Site VPN a virtuální sítě |
 | *Vlastní role* |Majitel aplikace |Dave vytvoří roli, která umožňuje upravit prostředky ve skupině prostředků. Další informace najdete v tématu [vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md) |
 
@@ -115,7 +115,7 @@ Dave má nic k automatizaci pro tuto aplikaci. I když mu vytvořili účet Azur
 ### <a name="azure-security-center"></a>Azure Security Center
 Správy služeb contoso IT musí rychle identifikovat a zpracování hrozeb. Chtějí také pochopit, jaké problémy můžou existovat.  
 
-Ke splnění těchto požadavků, Dave umožňuje [Azure Security Center](../security-center/security-center-intro.md)a poskytuje přístup k roli správce zabezpečení.
+Ke splnění těchto požadavků, Dave umožňuje [Azure Security Center](../security-center/security-center-intro.md)a poskytuje přístup k roli zabezpečení čtečky.
 
 ## <a name="scenario-2-customer-facing-app"></a>Scénář 2: zákazníka směřujících aplikací
 Vedení firmy v organizační jednotce, zadejte řetězec označila k většímu zapojení uživatelů zákazníků společnosti Contoso pomocí karty věrného různých možností. Alice tým musí vytvořit tuto aplikaci a rozhodne, že Azure zvyšuje jejich schopnost splňovat obchodních potřeb. Alice pracuje s Dave z ETS konfigurace obě předplatná pro vývoj a provoz této aplikace.
@@ -137,7 +137,7 @@ Pro **vývoj předplatné**, vytvoří tyto zásady:
 | --- | --- | --- |
 | location |Audit |Audit vytváření prostředků v libovolné oblasti |
 
-Neomezovat typ sku, které uživatel může vytvořit při vývoji a nevyžaduje žádné značky pro všechny skupiny prostředků nebo prostředky.
+Nemáte omezují typ sku, které uživatel může vytvořit při vývoji a jejich nevyžadují značky pro všechny skupiny prostředků nebo prostředky.
 
 Pro **produkční předplatné**, vytvoří následující zásady:
 
@@ -148,7 +148,7 @@ Pro **produkční předplatné**, vytvoří následující zásady:
 | tags |odmítnout |Vyžadovat oddělení značky |
 | tags |Připojit |Značka připojit ke každé skupině prostředků, který určuje produkční prostředí |
 
-Neomezovat typ sku, které uživatel může vytvořit v produkčním prostředí.
+Nemáte omezují typ sku, které uživatel může vytvořit v produkčním prostředí.
 
 ### <a name="resource-tags"></a>Značky prostředku
 Dave plně chápe, že mu musí mít specifické informace k identifikaci správné obchodních skupin pro fakturaci a vlastnictví. Definuje značky prostředku pro skupiny prostředků a prostředky.

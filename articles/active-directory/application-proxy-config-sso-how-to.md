@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 09d17f9f70ef352fe8d44a16c0f78323153a8a1a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: c090a3fc36c300a108f10f02d0b663dc1e29f986
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Postup konfigurace jednotného přihlašování k aplikaci Proxy aplikace
 
@@ -37,7 +37,7 @@ Nakonfigurujte konkrétní typ jednotného přihlašování. Metody přihlašov�
 
 -   **Integrované ověřování systému Windows**: pro aplikace pomocí integrovaného ověřování systému Windows (IWA), jednotné přihlašování je povolené prostřednictvím použitím protokolu Kerberos omezené delegování (KCD). Tato metoda poskytuje oprávnění konektory Proxy aplikace ve službě Active Directory k zosobnění uživatelů a odesílat a přijímat tokeny jejich jménem. Podrobné informace o konfiguraci použitím KCD najdete v [jednotné přihlašování s použitím KCD dokumentaci](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md).
 
--   **Na základě záhlaví přihlašování**: na základě záhlaví přihlášení je povolená Díky partnerství a vyžadovat další konfiguraci. Podrobnosti o partnerství a podrobné pokyny pro konfiguraci jednotné přihlašování pro aplikace, která používá hlavičky pro ověřování najdete v tématu [PingAccess dokumentaci k Azure AD](application-proxy-ping-access.md).
+-   **Na základě záhlaví přihlašování**: na základě záhlaví přihlášení je povolená Díky partnerství a vyžadovat další konfiguraci. Podrobnosti o partnerství a podrobné pokyny pro konfiguraci jednotné přihlašování pro aplikace, která používá hlavičky pro ověřování najdete v tématu [PingAccess dokumentaci k Azure AD](manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md).
 
 Každá z těchto možností najdete tak, že přejdete do vaší aplikace v "Podnikové aplikace" a otevírání **jednotné přihlašování** stránky v levé nabídce. Všimněte si, že pokud vaše aplikace byla vytvořena na původním portálu, se nemusí zobrazit všechny tyto možnosti.
 

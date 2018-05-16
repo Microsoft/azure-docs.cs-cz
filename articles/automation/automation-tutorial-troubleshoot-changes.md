@@ -1,7 +1,9 @@
 ---
-title: "Řešení potíží se změnami na virtuálním počítači Azure | Dokumentace Microsoftu"
-description: "Potíže se změnami na virtuálním počítači Azure můžete řešit pomocí řešení Change Tracking."
+title: Řešení potíží se změnami na virtuálním počítači Azure | Dokumentace Microsoftu
+description: Potíže se změnami na virtuálním počítači Azure můžete řešit pomocí řešení Change Tracking.
 services: automation
+ms.service: automation
+ms.component: change-inventory-management
 keywords: change, tracking, automation
 author: jennyhunter-msft
 ms.author: jehunte
@@ -9,11 +11,11 @@ ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 19c7a0475d975344a1563b8ff5e279059a93fbea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -561,8 +561,6 @@ Po dokončení požadovaných kroků připojená k doméně jsou připravené k 
 ### <a name="remarks"></a>Poznámky
 
 - Můžete objekt zásad skupiny a ovládejte automatické registrace Windows 10 a Windows Server 2016 počítačů připojených k doméně. **Pokud nechcete, aby tato zařízení na automatickou registraci s Azure AD nebo pokud chcete řídit registrace**, pak musí zavádět první, zakázání automatické registrace do těchto zařízení před zahájením s konfigurací zásad skupiny kroky. Po dokončení konfigurace, jakmile budete připraveni k testování, musí zavedení zásad skupiny povolíte automatické registrace pouze pro testovací zařízení a potom zvolte na všechna zařízení, jako je.
-
-- Windows 10. listopadu 2015 aktualizace automaticky spojí se službou Azure AD **pouze** nastaveného zavedení objekt zásad skupiny.
 
 - K zavedení počítačů se systémem Windows nižší úrovně, můžete nasadit [balíček služby Windows Installer](#windows-installer-packages-for-non-windows-10-computers) do počítačů, které jste vybrali.
 
