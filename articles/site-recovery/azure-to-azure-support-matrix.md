@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 05/16/2018
 ms.author: sujayt
-ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: daaca3c7b389642a288f738eb0954050e168abef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Podporu pro replikaci z jedné oblasti Azure do jiného
 
@@ -30,7 +30,7 @@ Tento článek shrnuje podporované konfigurace a součásti služby Azure Site 
 --- | ---
 **Azure Portal** | Podporováno
 **Portál Classic** | Nepodporuje se
-**PowerShell** | [Preview](azure-to-azure-powershell.md)
+**PowerShell** | [Replikace Azure do Azure pomocí prostředí PowerShell](azure-to-azure-powershell.md)
 **REST API** | Aktuálně nepodporuje
 **Rozhraní příkazového řádku** | Aktuálně nepodporuje
 
@@ -142,9 +142,9 @@ Německo | Německo – střed, Německo – severovýchod
 **Konfigurace** | **Podporované/nepodporované** | **Poznámky**
 --- | --- | ---
 Velikost | Jakékoli velikosti virtuálního počítače Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Odkazovat na [velikosti virtuálního počítače Azure](../virtual-machines/windows/sizes.md)
-Sady dostupnosti | Podporováno | Pokud použijete výchozí možnost během kroku replikaci povolit portálu, skupina dostupnosti je automaticky vytvořit, podle konfigurace oblast zdroje. Můžete změnit skupinu dostupnosti cíl ' replikované položky > Nastavení > výpočty a síť > skupiny dostupnosti, kdykoli.
+Skupiny dostupnosti | Podporováno | Pokud použijete výchozí možnost během kroku replikaci povolit portálu, skupina dostupnosti je automaticky vytvořit, podle konfigurace oblast zdroje. Můžete změnit skupinu dostupnosti cíl ' replikované položky > Nastavení > výpočty a síť > skupiny dostupnosti, kdykoli.
 Hybridní použití zvýhodnění (ROZBOČOVAČ) virtuálních počítačů | Podporováno | Pokud zdrojový virtuální počítač má licenci ROZBOČOVAČE povolené, testovací převzetí služeb při selhání nebo virtuálního počítače převzetí služeb při selhání také používá licence ROZBOČOVAČE.
-Virtual Machine Scale Sets | Nepodporuje se |
+Škálovací sady virtuálních počítačů | Nepodporuje se |
 Publikovaná Microsoft Azure Galerie obrázků- | Podporováno | Podporovány, pokud virtuální počítač běží na podporovaný operační systém pomocí Site Recovery
 Azure Gallery Image - publikovaná třetích stran | Podporováno | Podporovány, pokud virtuální počítač běží na podporovaný operační systém pomocí Site Recovery.
 Vlastní Image - publikovaná třetích stran | Podporováno | Podporovány, pokud virtuální počítač běží na podporovaný operační systém pomocí Site Recovery.

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření identity pro aplikaci Azure pomocí prostředí PowerShell | Microsoft Docs
-description: Popisuje, jak používat prostředí Azure PowerShell k vytvoření aplikace Azure Active Directory a objektu zabezpečení a jí udělit přístup k prostředkům prostřednictvím řízení přístupu na základě rolí. Ukazuje, jak k ověření aplikace s certifikátem.
+title: Vytvoření identity pro aplikaci Azure pomocí PowerShellu | Microsoft Docs
+description: Popisuje, jak používat prostředí Azure PowerShell k vytvoření aplikace Azure Active Directory a instančního objektu a udělení přístupu k prostředkům prostřednictvím řízení přístupu na základě role. Ukazuje, jak ověřit aplikaci certifikátem.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,37 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/04/2018
+ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ab1b2357e88525f4730b5ad550cfcf3acbb906e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6ad1fd0ab51a93dbab5651ee80f6b6792dd331b9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Pomocí prostředí Azure PowerShell k vytvoření objektu služby pomocí certifikátu
+# <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 
-Pokud máte aplikace nebo skriptu, která potřebuje přístup k prostředkům, můžete nastavit identity aplikace a ověřit aplikaci s svoje vlastní přihlašovací údaje. Tato identita se označuje jako hlavní název služby. Tento přístup umožňuje:
+Pokud máte aplikaci nebo skript, který potřebuje přístup k prostředkům, můžete pro aplikaci nastavit identitu a ověřit tuto aplikaci jejími vlastními přihlašovacími údaji. Tato identita se označuje jako instanční objekt. Tento přístup vám umožní:
 
-* Přiřadíte oprávnění k identitě aplikace, která se liší od vlastní oprávnění. Tato oprávnění jsou obvykle omezené na přesně co aplikaci je třeba provést.
-* Při provádění bezobslužného skriptu, použijte certifikát pro ověřování.
+* Přiřadit identitě aplikace oprávnění, která se budou lišit od vašich vlastních oprávnění. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
+* Při provádění bezobslužného skriptu použít k ověření certifikát.
 
 > [!IMPORTANT]
-> Místo vytvoření instančního objektu, zvažte použití identit Azure AD spravované služby pro vaši identitu aplikace. Azure AD MSI je funkce ve verzi public preview služby Azure Active Directory, který zjednodušuje vytváření identity pro kód. Pokud váš kód běží na službu, která podporuje Azure AD MSI a přistupuje k prostředkům, které podporují ověřování Azure Active Directory, Azure AD MSI je lepší volbou pro vás. Další informace o Azure AD MSI, včetně služby, které aktuálně podporují, najdete v části [spravované identita služby pro prostředky Azure](../active-directory/managed-service-identity/overview.md).
+> Místo vytvoření instančního objektu zvažte použití Identity spravované služby Azure AD (Azure AD MSI) pro identitu vaší aplikace. Azure AD MSI je funkce služby Azure Active Directory ve veřejné verzi Preview, která zjednodušuje vytváření identity pro kód. Pokud váš kód běží na službě, která podporuje Azure AD MSI a pracuje s prostředky, které podporují ověřování Azure Active Directory, je pro vás Azure AD MSI lepší volbou. Další informace o Azure AD MSI, včetně služeb, které ji aktuálně podporují, najdete v článku [Spravovaná identita služby pro prostředky Azure](../active-directory/managed-service-identity/overview.md).
 
-Tento článek ukazuje, jak vytvořit objekt služby, který ověřuje pomocí certifikátu. Objekt služby s heslem, naleznete v tématu [vytvořit objekt služby Azure pomocí prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+Tento článek vám ukazuje, jak vytvořit instanční objekt, který se ověřuje certifikátem. Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
-Musíte mít [nejnovější verzi](/powershell/azure/get-started-azureps) prostředí PowerShell pro v tomto článku.
+K tomuto článku musíte mít [nejnovější verzi](/powershell/azure/get-started-azureps) PowerShellu.
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-K dokončení tohoto článku, musíte mít dostatečná oprávnění v Azure Active Directory a předplatné Azure. Konkrétně musí být schopná vytvořit aplikaci ve službě Azure Active Directory a přiřazení objektu služby roli.
+K dokončení tohoto článku musíte mít dostatečná oprávnění v Azure Active Directory i v předplatném Azure. Konkrétně musíte být schopni v Azure Active Directory vytvořit aplikaci a přiřadit instanční objekt roli.
 
-Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. V tématu [zkontrolujte požadované oprávnění](resource-group-create-service-principal-portal.md#required-permissions).
+Nejjednodušším způsobem, jak zkontrolovat, jestli má váš účet dostatečná oprávnění, je použít k tomu portál. Informace najdete v článku [Kontrola požadovaných oprávnění](resource-group-create-service-principal-portal.md#required-permissions).
 
-## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu se certifikát podepsaný svým držitelem
+## <a name="create-service-principal-with-self-signed-certificate"></a>Vytvoření instančního objektu s certifikátem podepsaným svým držitelem
 
-Následující příklad popisuje jednoduchého scénáře. Používá [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) vytvoření objektu služby se certifikát podepsaný svým držitelem a používá [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) přiřadit [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor)role instanční objekt. Přiřazení role je vymezen na aktuálně vybrané předplatné. Chcete-li vybrat jiného předplatného, použijte [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
+Následující příklad popisuje jednoduchou situaci. Používá [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) k vytvoření instančního objektu s certifikátem podepsaným svým držitelem a používá [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) k přiřazení role [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) k instančnímu objektu. Přiřazení role je vymezené vaším aktuálně vybraným předplatným Azure. Pokud chcete vybrat jiné předplatné, použijte [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `
@@ -58,31 +58,30 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-V příkladu v režimu spánku 20 sekund umožňující chvíli pro novou službu hlavní rozšíří v rámci Azure Active Directory. Pokud váš skript není dostatečně dlouho čekat, zobrazí se chybová zpráva: "Hlavní {ID} neexistuje v adresáři {DIR-ID}." Pokud chcete tuto chybu vyřešit, počkejte spusťte **New-AzureRmRoleAssignment** příkaz znovu.
+Příklad je 20 sekund nečinný, aby měl nový instanční objekt čas se rozšířit do Azure Active Directory. Pokud tato čekací doba skriptu není dostatečně dlouhá, zobrazí se vám chybová zpráva: Objekt zabezpečení {ID} není v adresáři {DIR-ID}." Pokud chcete tuto chybu vyřešit, počkejte chvíli a potom spusťte příkaz **New-AzureRmRoleAssignment** znovu.
 
-Můžete vytvořit pomocí obor přiřazení role do určité skupiny zdrojů **ResourceGroupName** parametr. Můžete vytvořit také pomocí obor pro konkrétní prostředek **ResourceType** a **ResourceName** parametry. 
+Přiřazení role můžete vymezit na konkrétní skupinu prostředků pomocí parametru **ResourceGroupName**. Vymezit konkrétní rozsah můžete také pomocí parametrů **ResourceType** a **ResourceName**. 
 
-Pokud jste **nemají Windows 10 nebo Windows Server 2016**, budete muset stáhnout [certifikát podepsaný svým držitelem generátor](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) z webu Microsoft Script Center. Rozbalte obsah a importovat rutiny, které potřebujete.
+Pokud **nemáte Windows 10 nebo Windows Server 2016**, musíte si z webu Microsoft Script Center stáhnout [generátor certifikátů podepsaných svým držitelem](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/). Rozbalte jeho obsah a importujte potřebnou rutinu.
 
 ```powershell
 # Only run if you could not use New-SelfSignedCertificate
 Import-Module -Name c:\ExtractedModule\New-SelfSignedCertificateEx.ps1
 ```
 
-Ve skriptu nahraďte následující dva řádky, které se vygeneruje certifikát.
+Ve skriptu nahraďte následující dva řádky, aby se vygeneroval certifikát.
 
 ```powershell
 New-SelfSignedCertificateEx -StoreLocation CurrentUser `
-  -StoreName My `
   -Subject "CN=exampleapp" `
   -KeySpec "Exchange" `
   -FriendlyName "exampleapp"
 $cert = Get-ChildItem -path Cert:\CurrentUser\my | where {$PSitem.Subject -eq 'CN=exampleapp' }
 ```
 
-### <a name="provide-certificate-through-automated-powershell-script"></a>Zadejte certifikát pomocí automatizované skript prostředí PowerShell
+### <a name="provide-certificate-through-automated-powershell-script"></a>Poskytnutí certifikátu pomocí automatizovaného skriptu PowerShellu
 
-Vždy, když se přihlásíte jako hlavní název služby, je třeba zadat ID klienta adresáře pro vaši aplikaci AD. Klient je instance služby Azure Active Directory.
+Vždy, když se přihlásíte jako instanční objekt, musíte pro svoji aplikaci AD zadat ID tenanta adresáře. Tenant je instance služby Azure Active Directory.
 
 ```powershell
 $TenantId = (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
@@ -95,9 +94,9 @@ $ApplicationId = (Get-AzureRmADApplication -DisplayNameStartWith exampleapp).App
   -TenantId $TenantId
 ```
 
-## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Vytvoření instančního objektu pomocí certifikátu od certifikační autority
+## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Vytvoření instančního objektu pomocí certifikátu z certifikační autority
 
-Následující příklad používá k vytvoření instančního objektu certifikátu vydaného certifikační autority. Přiřazení je vymezen na zadané předplatné Azure. Přidá objekt služby k [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor) role. Pokud dojde k chybě při přiřazení role, se pokusí o přiřazení.
+Následující příklad používá k vytvoření instančního objektu certifikát vydaný certifikační autoritou. Přiřazení je vymezené na zadané předplatné Azure. Přidá instanční objekt k roli [Přispěvatel](../role-based-access-control/built-in-roles.md#contributor). Pokud dojde k chybě při přiřazení role, dojde k dalšímu pokusu o přiřazení.
 
 ```powershell
 Param (
@@ -141,8 +140,8 @@ Param (
  $NewRole
 ```
 
-### <a name="provide-certificate-through-automated-powershell-script"></a>Zadejte certifikát pomocí automatizované skript prostředí PowerShell
-Vždy, když se přihlásíte jako hlavní název služby, je třeba zadat ID klienta adresáře pro vaši aplikaci AD. Klient je instance služby Azure Active Directory.
+### <a name="provide-certificate-through-automated-powershell-script"></a>Poskytnutí certifikátu pomocí automatizovaného skriptu PowerShellu
+Vždy, když se přihlásíte jako instanční objekt, musíte pro svoji aplikaci AD zadat ID tenanta adresáře. Tenant je instance služby Azure Active Directory.
 
 ```powershell
 Param (
@@ -172,29 +171,29 @@ Param (
   -TenantId $TenantId
 ```
 
-ID aplikace a ID klienta nejsou písmena, takže je můžete vložit přímo ve vašem skriptu. Pokud potřebujete zjistit ID klienta, použijte:
+ID aplikace a ID tenanta nejsou důvěrná, takže je můžete vložit přímo do skriptu. Pokud potřebujete načíst ID tenanta, použijte tento kód:
 
 ```powershell
 (Get-AzureRmSubscription -SubscriptionName "Contoso Default").TenantId
 ```
 
-Pokud potřebujete zjistit ID aplikace, použijte:
+Pokud potřebujete načíst ID aplikace, použijte tento kód:
 
 ```powershell
 (Get-AzureRmADApplication -DisplayNameStartWith {display-name}).ApplicationId
 ```
 
-## <a name="change-credentials"></a>Změnit pověření
+## <a name="change-credentials"></a>Změna přihlašovacích údajů
 
-Můžete změnit pověření pro aplikaci AD, buď kvůli ohrožení zabezpečení nebo vypršení platnosti pověření [odebrat AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) a [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential) rutiny.
+Jestli chcete změnit přihlašovací údaje pro aplikaci AD, buď kvůli ohrožení zabezpečení nebo vypršení platnosti těchto údajů, použijte rutiny [Remove-AzureRmADAppCredential](/powershell/resourcemanager/azurerm.resources/v3.3.0/remove-azurermadappcredential) a [New-AzureRmADAppCredential](/powershell/module/azurerm.resources/new-azurermadappcredential).
 
-Chcete-li odebrat všechny přihlašovací údaje pro aplikaci, použijte:
+Pokud chcete odebrat všechny přihlašovací údaje pro aplikaci, použijte tento kód:
 
 ```powershell
 Get-AzureRmADApplication -DisplayName exampleapp | Remove-AzureRmADAppCredential
 ```
 
-Přidání certifikátu hodnoty, vytvořte certifikát podepsaný svým držitelem, jak je znázorněno v tomto článku. Pak použijte:
+Pokud chcete přidat hodnotu certifikátu, vytvořte certifikát podepsaný svým držitelem, jak je znázorněno v tomto článku. Potom použijte:
 
 ```powershell
 Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
@@ -205,14 +204,14 @@ Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
 
 ## <a name="debug"></a>Ladění
 
-Při vytváření objektu služby, může dojít k následujícím chybám:
+Při vytváření instančního objektu může dojít k následujícím chybám:
 
-* **"Authentication_Unauthorized"** nebo **"žádné předplatné nalezena v kontextu."** -Se zobrazí tato chyba, pokud váš účet nemá [požadovaná oprávnění](#required-permissions) v Azure Active Directory pro registraci aplikace. Obvykle se zobrazí tato chyba při jenom správci ve vašem Azure Active Directory můžete zaregistrovat aplikace a váš účet není správce. Požádejte správce buď můžete přiřadit role správce nebo umožňuje uživatelům registrovat aplikace.
+* **Ověřování_neautorizované** nebo **V kontextu se nenašlo žádné předplatné.** – Tato chyba se zobrazí, když váš účet v Azure Active Directory nemá [požadovaná oprávnění](#required-permissions) pro registraci aplikace. Obvykle se tato chyba zobrazí, když ve vašem Azure Active Directory můžou registrovat aplikace jenom uživatelé s rolí správce a váš účet nemá roli správce. Požádejte svého správce, aby vás přiřadil k roli správce nebo aby uživatelům umožnil registrovat aplikace.
 
-* Váš účet **"nemá oprávnění k provedení akce 'Microsoft.Authorization/roleAssignments/write' u rozsahu: /subscriptions/ {guid}'."**  -Zobrazí tato chyba, pokud se váš účet nemá dostatečná oprávnění k přiřazení role identity. Požádejte správce předplatného můžete přidat do role správce přístupu uživatelů.
+* Váš účet **nemá oprávnění k provedení akce Microsoft.Authorization/roleAssignments/write u rozsahu /subscriptions/{guid}.** – Tato chyba se zobrazí, pokud váš účet nemá dostatečná oprávnění k přiřazení role identitě. Požádejte správce předplatného, aby vás přidal do role Správce přístupu uživatelů.
 
-## <a name="next-steps"></a>Další postup
-* Objekt služby s heslem, naleznete v tématu [vytvořit objekt služby Azure pomocí prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
-* Podrobné pokyny k integraci aplikace do Azure pro správu prostředků najdete v tématu [Příručka pro vývojáře k autorizaci s rozhraním API pro Azure Resource Manager](resource-manager-api-authentication.md).
-* Podrobnější vysvětlení aplikací a objekty služby najdete v tématu [objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md). 
-* Další informace o ověřování Azure Active Directory najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+## <a name="next-steps"></a>Další kroky
+* Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+* Podrobné pokyny k integraci aplikace do Azure za účelem správy prostředků najdete v článku [Průvodce vývojáře k ověřování pomocí rozhraní API Azure Resource Manageru](resource-manager-api-authentication.md).
+* Podrobnější vysvětlení aplikací a instančních objektů najdete v článku [Objekty aplikací a instanční objekty](../active-directory/active-directory-application-objects.md). 
+* Další informace o ověřování Azure Active Directory najdete v článku [Scénáře ověřování pro Azure AD](../active-directory/active-directory-authentication-scenarios.md).

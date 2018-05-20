@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 43637ee76c1840d9f4d5fd85aca0050f61523e43
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Pokyny pro Hive v HDInsight a Azure Data Lake Store optimalizace výkonu
 
@@ -46,9 +44,9 @@ Zde jsou nejdůležitější nastavení a vylaďte pro zlepšení výkonu ADLS:
 
 **Hive.tez.Container.size** – velikost kontejneru Určuje, kolik paměti je k dispozici pro každou úlohu.  Toto je hlavní vstup pro řízení souběžnost v Hive.  
 
-**velikost tez.Grouping.min** – tento parametr můžete nastavit minimální velikost každé mapper.  Pokud počet mappers, které vybral Tez je menší než hodnota tohoto parametru, Tez použije nastavená hodnota.  
+**velikost tez.Grouping.min** – tento parametr můžete nastavit minimální velikost každé mapper.  Pokud počet mappers, které vybral Tez je menší než hodnota tohoto parametru, Tez použije nastavená hodnota.
 
-**velikost tez.Grouping.Max** – parametr můžete nastavit maximální velikost každé mapper.  Pokud počet mappers, které vybral Tez je větší než hodnota tohoto parametru, Tez použije nastavená hodnota.  
+**velikost tez.Grouping.Max** – parametr můžete nastavit maximální velikost každé mapper.  Pokud počet mappers, které vybral Tez je větší než hodnota tohoto parametru, Tez použije nastavená hodnota.
 
 **Hive.Exec.reducer.bytes.per.reducer** – tento parametr nastaví velikost každé reduktorem.  Ve výchozím nastavení je každý reduktorem 256MB.  
 
@@ -75,9 +73,10 @@ Klíč k zlepšení výkonu pomocí ADLS je zvýšit souběžnost co nejvíc.  T
     # of YARN containers = 768GB / 3072MB = 256
 
 ## <a name="limitations"></a>Omezení
+
 **ADLS omezení** 
 
-UIf dosáhl omezení šířky pásma poskytované ADLS, byste začali zobrazíte selhání úkolů. To může být identifikován sledování omezení chyby v protokolech úloh.  Paralelismus může snížit zvýšením velikosti kontejneru Tez.  Pokud potřebujete další souběžnosti pro úlohu, kontaktujte nás.   
+UIf dosáhl omezení šířky pásma poskytované ADLS, byste začali zobrazíte selhání úkolů. To může být identifikován sledování omezení chyby v protokolech úloh.  Paralelismus může snížit zvýšením velikosti kontejneru Tez.  Pokud potřebujete další souběžnosti pro úlohu, kontaktujte nás.
 
 Pokud chcete zkontrolovat, pokud jste jsou získávání omezené, musíte povolit ladění na straně klienta protokolování. Zde je, jak můžete to udělat:
 

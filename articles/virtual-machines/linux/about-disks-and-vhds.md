@@ -1,6 +1,6 @@
 ---
-title: O nespravované (objekty BLOB stránky) a spravovaných disky úložiště pro virtuální počítače Microsoft Azure Linux | Microsoft Docs
-description: Další informace o základní informace o nespravovaných (objekty BLOB stránky) a spravovaných disky úložiště pro virtuální počítače s Linuxem v Azure.
+title: About unmanaged (page blobs) and managed disks storage for Microsoft Azure Linux VMs | Microsoft Docs
+description: Learn about the basics of unmanaged (page blobs) and managed disks storage for Linux virtual machines in Azure.
 services: virtual-machines
 author: roygara
 manager: jeconnoc
@@ -11,50 +11,50 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.openlocfilehash: 3742b05bceea7aed556d06ab4460abaa08aca7d1
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/24/2018
 ---
-# <a name="about-disks-storage-for-azure-linux-vms"></a>O disky úložiště pro virtuální počítače Linux Azure
-Stejně jako všechny ostatní počítače virtuálních počítačů v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure mít aspoň dva disky – disk operačního systému Linux a dočasný disk. Vytváření disku operačního systému z bitové kopie a disku operačního systému a image jsou ve skutečnosti virtuální pevné disky (VHD) uložené v účtu úložiště Azure. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky. 
+# <a name="about-disks-storage-for-azure-linux-vms"></a>About disks storage for Azure Linux VMs
+Just like any other computer, virtual machines in Azure use disks as a place to store an operating system, applications, and data. All Azure virtual machines have at least two disks – a Linux operating system disk and a temporary disk. The operating system disk is created from an image, and both the operating system disk and the image are actually virtual hard disks (VHDs) stored in an Azure storage account. Virtual machines also can have one or more data disks, that are also stored as VHDs. 
 
-V tomto článku jsme se v souvislosti se jiný používá pro disky a potom popisují různé typy disků můžete vytvořit a použít. Tento článek je také k dispozici pro [virtuální počítače s Windows](../windows/about-disks-and-vhds.md).
+In this article, we will talk about the different uses for the disks, and then discuss the different types of disks you can create and use. This article is also available for [Windows virtual machines](../windows/about-disks-and-vhds.md).
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="disks-used-by-vms"></a>Disky, které jsou používány virtuálními počítači
+## <a name="disks-used-by-vms"></a>Disks used by VMs
 
-Podívejme se na tom, jak jsou disky používány virtuálních počítačů.
+Let's take a look at how the disks are used by the VMs.
 
-## <a name="operating-system-disk"></a>Disk operačním systému
-Každý virtuální počítač má jeden disk připojené operačního systému. Je zaregistrován jako jednotka SATA a je označeno/dev/sda ve výchozím nastavení. Tento disk má maximální kapacita 2 048 gigabajtů (GB). 
+## <a name="operating-system-disk"></a>Operating system disk
+Every virtual machine has one attached operating system disk. It's registered as a SATA drive and is labeled /dev/sda by default. This disk has a maximum capacity of 2048 gigabytes (GB). 
 
-## <a name="temporary-disk"></a>Dočasné disku
-Každý virtuální počítač obsahuje dočasné disk. Dočasné disku poskytuje krátkodobé úložiště pro aplikace a procesy a slouží k uložení pouze data, jako jsou soubory stránky nebo odkládacího souboru. Data na dočasné disku mohou být ztraceny při [údržby](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [znovu nasadit virtuální počítač](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Během restartu standardní virtuální počítač by měl uchovat data na dočasné jednotce.
+## <a name="temporary-disk"></a>Temporary disk
+Each VM contains a temporary disk. The temporary disk provides short-term storage for applications and processes and is intended to only store data such as page or swap files. Data on the temporary disk may be lost during a [maintenance event](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) or when you [redeploy a VM](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). During a standard reboot of the VM, the data on the temporary drive should persist.
 
-Na virtuální počítače s Linuxem, disk je obvykle **/dev/sdb** a je naformátován a připojit k **/mnt** Azure Linux Agent. Velikost dočasné disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [velikosti virtuálních počítačů Linux](../windows/sizes.md).
+On Linux virtual machines, the disk is typically **/dev/sdb** and is formatted and mounted to **/mnt** by the Azure Linux Agent. The size of the temporary disk varies, based on the size of the virtual machine. For more information, see [Sizes for Linux virtual machines](../windows/sizes.md).
 
-Další informace o tom, jak Azure používá dočasným diskovým najdete v tématu [pochopení dočasné jednotce ve virtuálních počítačích Microsoft Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+For more information on how Azure uses the temporary disk, see [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-## <a name="data-disk"></a>Datový disk
-Datový disk je virtuální pevný disk, který je připojen k virtuálnímu počítači na ukládání dat aplikací, nebo data, která je třeba zachovat. Datové disky jsou zaregistrované jako disky SCSI a jsou označeny písmenem, který zvolíte. Každý datový disk má maximální kapacitu 4095 GB. Velikost virtuálního počítače určuje, kolik datových disků můžete připojit k jeho a typ úložiště můžete použít k hostování disky.
+## <a name="data-disk"></a>Data disk
+A data disk is a VHD that's attached to a virtual machine to store application data, or other data you need to keep. Data disks are registered as SCSI drives and are labeled with a letter that you choose. Each data disk has a maximum capacity of 4095 GB. The size of the virtual machine determines how many data disks you can attach to it and the type of storage you can use to host the disks.
 
 > [!NOTE]
-> Další podrobnosti o kapacity virtuálních počítačů najdete v tématu [velikosti virtuálních počítačů Linux](./sizes.md).
+> For more details about virtual machines capacities, see [Sizes for Linux virtual machines](./sizes.md).
 > 
 
-Azure vytvoří disk operačního systému, když vytvoříte virtuální počítač z bitové kopie. Pokud používáte image, která obsahuje datové disky, Azure vytvoří datových disků také při vytváření virtuálního počítače. V opačném datových disků přidat po vytvoření virtuálního počítače.
+Azure creates an operating system disk when you create a virtual machine from an image. If you use an image that includes data disks, Azure also creates the data disks when it creates the virtual machine. Otherwise, you add data disks after you create the virtual machine.
 
-Můžete přidat datových disků pro virtuální počítač v každém okamžiku nástrojem **připojení** disk k virtuálnímu počítači. Můžete vytvořit virtuální pevný disk, který jste nahráli nebo můžete zkopírovat do svého účtu úložiště nebo ten, který pro vás vytvoří Azure. Připojením datového disku přiřadí soubor virtuálního pevného disku s virtuálním Počítačem, umístěním zapůjčení na virtuální pevný disk, nelze jej odstranit z úložiště při je stále připojen.
+You can add data disks to a virtual machine at any time, by **attaching** the disk to the virtual machine. You can use a VHD that you've uploaded or copied to your storage account, or one that Azure creates for you. Attaching a data disk associates the VHD file with the VM, by placing a 'lease' on the VHD so it can't be deleted from storage while it's still attached.
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Troubleshooting
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>Další postup
-* [Připojit disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) přidat další úložiště pro virtuální počítač.
-* [Vytvoření snímku](snapshot-copy-managed-disk.md).
-* [Převést na spravované disky](convert-unmanaged-to-managed-disks.md).
+## <a name="next-steps"></a>Next steps
+* [Attach a disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) to add additional storage for your VM.
+* [Create a snapshot](snapshot-copy-managed-disk.md).
+* [Convert to managed disks](convert-unmanaged-to-managed-disks.md).
 

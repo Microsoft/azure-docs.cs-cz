@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: f9a3eeff7a44c98228f89a7519117b043217eefd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 17043ef3450554dd4ea272a4b7732367bae8e369
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datové sady a propojené služby v Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -193,7 +193,7 @@ Vlastnost | Popis | Požaduje se
 jméno | Název sloupce. | Ano
 type | Datový typ sloupce. Objekt pro vytváření dat podporuje následující typy průběžných dat jako Povolené hodnoty: **Int16, Int32, Int64, jedním, Double, Decimal, Byte [], logická hodnota, řetězec, Guid, Datetime, Datetimeoffset a časový interval** | Ne
 Jazyková verze | . Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. | Ne
-Formát | Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní řetězců data a času formát](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings) k formátování data a času. | Ne
+Formát | Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní řetězců data a času formát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) k formátování data a času. | Ne
 
 ### <a name="example"></a>Příklad:
 V následujícím příkladu předpokládejme, že zdroj dat objektů Blob je ve formátu CSV a obsahuje tři sloupce: ID uživatele, název a lastlogindate. Jsou typu Int64, String a datum a čas ve formátu data a času vlastní pomocí zkrácené francouzštině názvy den v týdnu.

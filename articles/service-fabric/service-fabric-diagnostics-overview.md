@@ -9,22 +9,22 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
-ms.author: dekapur;srrengar
-ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: srrengar
+ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorovací a diagnostické pro Azure Service Fabric
 
 Tento článek obsahuje přehled monitorování a Diagnostika pro Azure Service Fabric. Monitorovací a diagnostické jsou důležité k vývoji, testování a nasazení úloh v jakémkoli prostředí cloudu. Monitorování umožňuje sledovat, jak se aplikace používají, vaše využití prostředků a celkový stav clusteru. Můžete tyto informace slouží k diagnostikování a opravte všechny problémy a zabránit problémům v budoucnu. 
 
-## <a name="application-monitoring"></a>Sledování aplikací
+## <a name="application-monitoring"></a>Monitorování aplikací
 Monitorování aplikací sleduje, jak jsou používány funkce a součásti vaší aplikace. Chcete monitorovat aplikací k problémům se, že dopad, který uživatelé jsou zachyceny. Monitorování aplikace může být užitečné v následujících scénářích:
 * určení správné zatížení aplikacemi a uživatel přenosy dat – potřebujete škálovat vaše služby, aby splnily požadavky na uživatele nebo IP adresa potenciální problémová místa ve vaší aplikaci?
 * Identifikace problémy s komunikace služby a vzdálenou komunikaci mezi clusteru

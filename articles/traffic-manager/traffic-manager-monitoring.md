@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncového bodu Traffic Manageru
 
@@ -30,7 +30,7 @@ Konfigurace koncového bodu monitorování, zadejte následující nastavení na
 
 * **Protokol**. Vyberte protokol HTTP, HTTPS nebo TCP jako protokol Traffic Manager používá při zjišťování váš koncový bod. Zkontrolujte jeho stav. Monitorování HTTPS neověřuje, že zda váš certifikát SSL není platný – pouze zkontroluje certifikát, který je přítomen.
 * **Port**. Zvolte port používaný pro požadavek.
-* **Cesta**. Toto nastavení konfigurace je platná pouze pro protokoly HTTP a HTTPS, pro které určení cesty nastavení je povinné. Poskytuje toto nastavení pro TCP monitorování protokolu dojde k chybě. Pro protokol TCP zadejte relativní cesta a název webovou stránku nebo soubor, který přistupuje k monitorování. Lomítko (/) je zadána platná hodnota relativní cesty. Tato hodnota znamená, zda je soubor v kořenovém adresáři (výchozí).
+* **Cesta**. Toto nastavení konfigurace je platná pouze pro protokoly HTTP a HTTPS, pro které určení cesty nastavení je povinné. Poskytuje toto nastavení pro TCP monitorování protokolu dojde k chybě. Pro protokol HTTP a HTTPS zadejte relativní cesta a název webovou stránku nebo soubor, který přistupuje k monitorování. Lomítko (/) je zadána platná hodnota relativní cesty. Tato hodnota znamená, zda je soubor v kořenovém adresáři (výchozí).
 * **Zkušební fáze Interval**. Tato hodnota určuje, jak často se kontroluje koncový bod na jeho stav od agentů testování Traffic Manager. Můžete zadat sem dvě hodnoty: 30 sekund (normální zjišťování) a 10 sekund (rychlé zkušební fáze). Pokud jsou k dispozici žádné hodnoty, profil se nastaví na výchozí hodnota je 30 sekund. Přejděte [Traffic Manager cenová](https://azure.microsoft.com/pricing/details/traffic-manager) stránka Další informace o cenách rychlé testování.
 * **Počet selhání tolerovat**. Tato hodnota určuje, kolik selhání agenta testování Traffic Manager toleruje před označením tohoto koncového bodu jako chybné. Jeho hodnota může být v rozsahu od 0 do 9. Hodnota 0 znamená selhání jedné monitorování může způsobit tohoto koncového bodu označen jako chybný. Pokud není zadaná žádná hodnota, použije se výchozí hodnota 3.
 * **Časový limit monitorování**. Tato vlastnost určuje množství času, testování agenta Traffic Manager vyčkat před vzhledem k tomu, který zkontrolujte selhání při odeslání sondu kontrolu stavu ke koncovému bodu. Pokud Interval zjišťování je nastaven na hodnotu 30 sekund, můžete nastavit hodnotu časového limitu od 5 do 10 sekund. Pokud není zadaná žádná hodnota, použije se výchozí hodnota je 10 sekund. Pokud Interval zjišťování je nastaven na 10 sekund, můžete nastavit hodnotu časového limitu od 5 do 9 sekund. Pokud není zadaná žádná hodnota časového limitu, používá výchozí hodnotu 9 sekund.
@@ -90,7 +90,7 @@ Stav monitorování profilu je kombinací stav nakonfigurované profilu a koncov
 | --- | --- | --- | --- |
 | Zakázáno |&lt;všechny&gt; nebo profil s žádné koncové body definované. |Zakázáno |Profil je zakázané. |
 | Povoleno |Je Degradovaný stav aspoň jeden koncový bod. |Sníženo |Zkontrolujte hodnoty stavu jednotlivých koncový bod k určení, které koncové body vyžadovat další pozornost. |
-| Povoleno |Stav aspoň jeden koncový bod je Online. Žádné koncové body mají stav snížený. |Online |Služba přijímá provoz. Není vyžadována žádná další akce. |
+| Povoleno |Stav aspoň jeden koncový bod je Online. Žádné koncové body mají stav snížený. |Online |Služba přijímá provoz. Nevyžaduje se žádná další akce. |
 | Povoleno |Stav aspoň jeden koncový bod je CheckingEndpoint. Ve stavu Online nebo snížený nejsou žádné koncové body. |CheckingEndpoints |Tento přechod stavu nastane, když profil Pokud vytvořené nebo povolené. První se kontroluje stav koncového bodu. |
 | Povoleno |Stavy všech koncových bodů v profilu jsou zakázán nebo zastaven nebo v profilu nemá žádné koncové body definované. |Neaktivní |Žádné koncové body jsou aktivní, ale stále profilovou. |
 
@@ -114,7 +114,7 @@ Následující časová osa na obrázku 2 je podrobný popis monitorování proc
 
 **Obrázek 2: Provoz manager koncový bod převzetí služeb při selhání a obnovení pořadí**
 
-1. **GET**. Pro každý koncový bod Traffic Manager monitorování systému provede požadavek GET na cestě zadaný v nastavení monitorování.
+1. **ZÍSKAT**. Pro každý koncový bod Traffic Manager monitorování systému provede požadavek GET na cestě zadaný v nastavení monitorování.
 2. **200 OK**. Systém monitorování očekává zprávu HTTP 200 OK má být vrácen do 10 sekund. Při přijetí této odpovědi, rozpozná, že služba je k dispozici.
 3. **30 sekundách mezi kontrolami**. Kontrola stavu koncový bod se opakuje každých 30 sekund.
 4. **Služba není k dispozici**. Služba nebude k dispozici. Traffic Manager nebude vědět, dokud další kontrolu stavu.

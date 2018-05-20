@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 0ef8247eba4605d3c8e5ef0992ce97bce989002e
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ce5fd2feaa30948042cc0570a4b0ea7f0ab7ad77
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Povolit zálohování pro zásobník Azure z portálu pro správu
 Povolte službu infrastruktura zálohování prostřednictvím portálu pro správu tak, aby zásobník Azure může generovat zálohy. Tyto zálohy můžete použít k obnovení vašeho prostředí pomocí cloudu obnovení v případě [k závažnému selhání](.\azure-stack-backup-recover-data.md). Účelem obnovení cloudu je zajistit, že operátory a uživatele můžete znovu se přihlásili k portálu po dokončení obnovení. Uživatelé budou mít předplatné obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabízí a předem definované výpočetní, úložiště a síťové kvóty.
@@ -45,7 +45,7 @@ Správci a uživatelé jsou zodpovědní za zálohování a obnovení prostředk
 3. Zadejte cestu ke **umístění úložiště zálohy**. Pomocí řetězce Universal Naming Convention (UNC) pro cestu ke sdílené složce hostované na samostatných zařízení. Řetězec UNC Určuje umístění prostředků, jako jsou sdílené soubory nebo zařízení. Pro službu můžete použít IP adresu. K zajištění dostupnosti zálohovaných dat po havárii, zařízení by měl být v samostatné umístění.
     > [!Note]  
     > Pokud vaše prostředí podporuje překlad adres ze sítě infrastruktury Azure zásobníku podnikovém prostředí, můžete použít plně kvalifikovaný název domény, nikoli IP adresu.
-4. Typ **uživatelské jméno** pomocí domény a uživatelské jméno. Například, `Contoso\administrator`.
+4. Typ **uživatelské jméno** použití domény a uživatelské jméno s dostatečný přístup pro čtení a zápis souborů. Například, `Contoso\backupshareuser`.
 5. Typ **heslo** pro uživatele.
 5. Zadejte heslo znovu **Potvrdit heslo**.
 6. Zadat předsdílený klíč v **šifrovací klíč** pole. Záložní soubory jsou šifrované pomocí tohoto klíče. Ujistěte se, že tento klíč uložit na bezpečném místě. Jakmile poprvé nastavit tento klíč nebo klíč Otočit v budoucnu, nelze zobrazit, tento klíč z tohoto rozhraní. Další pokyny ke generování předsdílený klíč, postupujte podle skripty v [povolit zálohování pro zásobník Azure pomocí prostředí PowerShell](azure-stack-backup-enable-backup-powershell.md#generate-a-new-encryption-key). 

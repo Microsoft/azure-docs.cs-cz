@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: d263f6255eedb9b45b7f0b232e1595197556b7c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caabe0fea6286c9439e8929b054d771868dcb6f1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Nainstalovat a používat Solr v clusterech HDInsight se systémem Windows
 
@@ -176,11 +176,9 @@ V tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hado
 * [Přizpůsobení clusteru HDInsight pomocí akce skriptu][hdinsight-cluster-customize]: Obecné informace o přizpůsobení clusterů HDInsight pomocí akce skriptu.
 * [Vývoj skriptů akce skriptu pro HDInsight](hdinsight-hadoop-script-actions.md).
 * [Nainstalovat a používat Spark v clusterech HDInsight][hdinsight-install-spark]: akce skriptu vzorku o instalaci Spark.
-* [Nainstalujte jazyk R v clusterech HDInsight][hdinsight-install-r]: akce skriptu vzorku o instalaci R.
 * [Nainstalujte Giraph clustery HDInsight](hdinsight-hadoop-giraph-install.md): akce skriptu vzorku o instalaci Giraph.
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Nejčastější dotazy pro Azure náklady na správu
 
@@ -148,4 +148,4 @@ Ne. Agenti nejsou používány. Shromáždění dat metriky virtuálního počí
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn sestavy zobrazit více než jeden klient AD na sestavu?
 
-Ano. Můžete [vytvořit odpovídající entita účet cloudu](tutorial-user-access.md#create-entities) pro každého klienta AD, které máte. Potom můžete zobrazit všechny vaše data klienta Azure AD a jiných poskytovatelů cloudu platformy, včetně Amazon Web Services a Google Cloud Platform.
+Ano. Můžete [vytvořit odpovídající entita účet cloudu](tutorial-user-access.md#create-and-manage-entities) pro každého klienta AD, které máte. Potom můžete zobrazit všechny vaše data klienta Azure AD a jiných poskytovatelů cloudu platformy, včetně Amazon Web Services a Google Cloud Platform.

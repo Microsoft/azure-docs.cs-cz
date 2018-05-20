@@ -1,8 +1,8 @@
 ---
-title: "Ladění pravidla výkonu Spark Azure Data Lake Store | Microsoft Docs"
-description: "Ladění pravidla výkonu Spark Azure Data Lake Store"
+title: Ladění pravidla výkonu Spark Azure Data Lake Store | Microsoft Docs
+description: Ladění pravidla výkonu Spark Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 3c8ef6fd200f67ebc216c967bb1a6250ddcc15d4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a807bea13063d2a0b3c1c71ddb6c98aa2d2568d3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Pokyny pro Spark v HDInsight a Azure Data Lake Store optimalizace výkonu
 

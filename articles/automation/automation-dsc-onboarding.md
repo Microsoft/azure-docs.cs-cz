@@ -7,13 +7,13 @@ ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4493f9da0de12fbdfffdf0f4da0dd581ac3b589f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Registrace počítačů pro správu Azure Automation DSC.
 
@@ -49,7 +49,7 @@ V [portál Azure](http://portal.azure.com/), klikněte na tlačítko **Procháze
 
 K vyhledání adresu URL pro registraci a klíče pro účet služby Automation zařadit do počítače, viz následující [ **zabezpečení registrace** ](#secure-registration) části:
 
-### <a name="powershell"></a>Prostředí Power Shell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 # log in to both Azure Service Management and Azure Resource Manager
@@ -137,7 +137,7 @@ V části **registrace**, zadejte [správce místní konfigurace DSC prostředí
 
 Virtuální počítače Azure můžete nasadit a zařazený nemá na Azure Automation DSC pomocí šablony Azure Resource Manager. V tématu [konfigurace virtuálního počítače prostřednictvím rozšíření DSC a Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) pro šablonu příklad této onboards existující virtuální počítač do Azure Automation DSC. Najít registrační klíč a adresa URL registrace prováděné jako vstup v této šabloně najdete zde [ **zabezpečení registrace** ](#secure-registration) části.
 
-### <a name="powershell"></a>Prostředí Power Shell
+### <a name="powershell"></a>PowerShell
 
 [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) rutiny je možné připojit virtuální počítače na portálu Azure pomocí prostředí PowerShell.
 

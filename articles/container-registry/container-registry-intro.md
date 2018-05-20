@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: 10055b75000e5affdcdef5841a8d45db8b41ef05
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 883da7d1487922f5cd986a67d7a7bded78ea3759
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -54,13 +54,10 @@ Nakonfigurujte úlohy sestavení [ACR Build](#azure-container-registry-build) ta
 
 [Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. ACR Build umožňuje pomocí přesměrování operací `docker build` do Azure rozšířit váš vývoj do cloudu. Můžete nakonfigurovat úlohy sestavení tak, aby se kanál oprav operačního systému a architektury kontejneru automatizoval a aby se image po potvrzení kódu vaším týmem ve správě zdrojového kódu automaticky sestavovaly.
 
-> [!NOTE]
-> ACR Build je v současné době ve verzi Preview a podporují ho jenom registry kontejnerů Azure v oblastech **Východ USA** a **Západní Evropa**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření registru kontejnerů pomocí webu Azure Portal](container-registry-get-started-portal.md)
 * [Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md)
 * [Automatizace oprav operačního systému a architektury pomocí funkce ACR Build](container-registry-build-overview.md) (Preview)
-
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

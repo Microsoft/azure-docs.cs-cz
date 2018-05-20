@@ -1,0 +1,163 @@
+- name: Dokumentace ke službě Virtual Machine Scale Sets
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co jsou škálovací sady virtuálních počítačů?
+      href: overview.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření na webu Azure Portal
+      href: quick-create-portal.md
+    - name: Vytvoření pomocí Azure CLI 2.0
+      href: quick-create-cli.md
+    - name: Vytvoření pomocí Azure PowerShellu
+      href: quick-create-powershell.md
+    - name: Vytvoření pomocí šablony
+      items:
+        - name: Škálovací sada pro Linux
+          href: quick-create-template-linux.md
+        - name: Škálovací sada pro Windows
+          href: quick-create-template-windows.md
+- name: Kurzy
+  items:
+    - name: 1. Vytvoření/správa škálovací sady
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-create-and-manage-cli.md
+        - name: Azure PowerShell
+          href: tutorial-create-and-manage-powershell.md
+    - name: 2. Použití datových disků
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-disks-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-disks-powershell.md
+    - name: 3. Použití vlastní image virtuálního počítače
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-custom-image-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-custom-image-powershell.md
+    - name: 4. Nasazení aplikací do škálovací sady
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-install-apps-cli.md
+        - name: Azure PowerShell
+          href: tutorial-install-apps-powershell.md
+        - name: Šablona
+          href: tutorial-install-apps-template.md
+    - name: 5. Automatické škálování škálovací sady
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-autoscale-cli.md
+        - name: Azure PowerShell
+          href: tutorial-autoscale-powershell.md
+        - name: Šablona
+          href: tutorial-autoscale-template.md
+    - name: Nasazení aplikací na do škálovací sady virtuálních počítačů Azure s vlastní imagí Packeru
+      items:
+        - name: Azure CLI 2.0
+          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
+- name: Ukázky
+  items:
+    - name: Azure CLI 2.0
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+- name: Postup
+  items:
+    - name: Plánování a návrh
+      items:
+        - name: Na co dát pozor při navrhování
+          href: virtual-machine-scale-sets-design-overview.md
+        - name: Vysvětlení ID instancí
+          href: virtual-machine-scale-sets-instance-ids.md
+    - name: Vytvoření šablony
+      items:
+        - name: Další informace o šablonách škálovacích sad
+          href: virtual-machine-scale-sets-mvss-start.md
+        - name: Použití existující virtuální sítě
+          href: virtual-machine-scale-sets-mvss-existing-vnet.md
+        - name: Použití vlastní image
+          href: virtual-machine-scale-sets-mvss-custom-image.md
+        - name: Použití automatického škálování na základě hosta s využitím šablony škálovací sady pro Linux
+          href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
+    - name: Nasazení
+      items:
+        - name: Vytvoření pomocí sady Visual Studio
+          href: virtual-machine-scale-sets-vs-create.md
+        - name: Použití zón dostupnosti
+          href: virtual-machine-scale-sets-use-availability-zones.md
+        - name: Automatické škálování škálovací sady
+          href: virtual-machine-scale-sets-autoscale-overview.md
+          items:
+            - name: Použití webu Azure Portal
+              href: virtual-machine-scale-sets-autoscale-portal.md
+            - name: Pokročilé automatické škálování
+              href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: Aplikace ve škálovacích sadách
+          href: virtual-machine-scale-sets-deploy-app.md
+        - name: Použití datových disků se škálovacími sadami
+          href: virtual-machine-scale-sets-attached-disks.md
+        - name: Šifrování disků ve škálovacích sadách
+          items:
+            - name: Použití prostředí PowerShell
+              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+            - name: Použití Azure CLI 2.0
+              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+        - name: Práce s velkými škálovacími sadami
+          href: virtual-machine-scale-sets-placement-groups.md
+        - name: Převod šablony škálovací sady pro použití spravovaného disku
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Použití s nízkou prioritou
+          href: virtual-machine-scale-sets-use-low-priority.md
+    - name: Spravovat
+      items:
+        - name: Běžné úlohy správy
+          items:
+            - name: Použití Azure CLI 2.0
+              href: virtual-machine-scale-sets-manage-cli.md
+            - name: Použití Azure Powershell
+              href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Vertikální škálování ve škálovací sadě
+          href: virtual-machine-scale-sets-vertical-scale-reprovision.md
+        - name: Automatické upgrady operačního systému
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Úprava škálovací sady
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Použití DSC a škálovacích sad
+          href: virtual-machine-scale-sets-dsc.md
+        - name: Síťové služby pro škálovací sady
+          href: virtual-machine-scale-sets-networking.md
+        - name: Převod šablony na spravované disky
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+    - name: Řešení potíží
+      items:
+        - name: Automatické škálování
+          href: virtual-machine-scale-sets-troubleshoot.md
+    - name: Nejčastější dotazy
+      items:
+        - name: Nejčastější dotazy týkající se škálovacích sad
+          href: virtual-machine-scale-sets-faq.md
+- name: Referenční informace
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure CLI
+      href: ../virtual-machines/azure-cli-arm-commands.md
+    - name: REST
+      href: /rest/api/virtualmachinescalesets/
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Ceny
+      items:
+        - name: Linux
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
+        - name: Windows
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-vm-scale-set'

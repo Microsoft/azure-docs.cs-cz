@@ -1,23 +1,23 @@
 ---
-title: "Pomůže zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs"
-description: "Přehled o tom, jak pomoci zabezpečenou komunikaci pro spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric."
+title: Pomůže zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs
+description: Přehled o tom, jak pomoci zabezpečenou komunikaci pro spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 5e2f36b3de1dd04c1a3f36ae308af164d10654ea
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 624d9d358145fb8b41013d686821cb157693d3c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Nápověda zabezpečené komunikace pro služby v Azure Service Fabric
 > [!div class="op_single_selector"]

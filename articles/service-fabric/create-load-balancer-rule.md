@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření pravidla pro vyrovnávání zatížení Azure pro cluster"
-description: "Konfigurace vyrovnávání zatížení Azure otevřete porty pro váš cluster Azure Service Fabric."
+title: Vytvoření pravidla pro vyrovnávání zatížení Azure pro cluster
+description: Konfigurace vyrovnávání zatížení Azure otevřete porty pro váš cluster Azure Service Fabric.
 services: service-fabric
 documentationcenter: na
 author: thraka
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 71dbc2b5f6c3c37e432f5318169a088c5607f083
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 53dcd6c0705faa94e83d6e44f813fa9c575843e8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevřete porty pro cluster Service Fabric
 
@@ -30,7 +30,7 @@ Když jste nasadili cluster Service Fabric do Azure, byla automaticky vytvoří 
 
 Aplikace Service Fabric **ServiceManifest.xml** definuje konfiguračním souboru aplikace očekává, že pomocí koncových bodů. Po aktualizaci do konfiguračního souboru k definování koncového bodu, nástroj pro vyrovnávání zatížení musí být aktualizovány k vystavení, (nebo jiné) port. Další informace o tom, jak vytvořit koncový bod prostředků infrastruktury služby najdete v tématu [nastavit koncový bod](service-fabric-service-manifest-resources.md).
 
-## <a name="create-a-load-balancer-rule"></a>Vytvořit pravidlo Vyrovnávání zatížení.
+## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
 Pravidlo Vyrovnávání zatížení otevře k portu internetového a předává přenos interní uzlu port používá vaše aplikace. Pokud jste nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace vyrovnávání zatížení internetového](..\load-balancer\load-balancer-get-started-internet-portal.md).
 
@@ -105,6 +105,6 @@ Ohledně `New-AzureRmLoadBalancerRuleConfig` příkaz, `-FrontendPort` reprezent
 >[!NOTE]
 >Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení v prostředí PowerShell najdete v tématu [vytvořit nástroj pro vyrovnávání zatížení v prostředí PowerShell](..\load-balancer\load-balancer-get-started-internet-arm-ps.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o [sítě v Service Fabric](service-fabric-patterns-networking.md).

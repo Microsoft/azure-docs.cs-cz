@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 49071044-6767-4041-9EDD-6132295FA551
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: a158da6fb397b864a439e067ca99d79814e2b8d2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a3dfce6ce1b136e39047cfd47b336b2fb2a35af9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné klíče v Azure zásobníku
 
@@ -49,6 +48,24 @@ Certifikáty služby infrastruktury pro externího služby, které jsou k dispoz
 
 Aby udržení integrity infrastruktury Azure zásobníku, třeba operátory možnost pravidelně otočit jejich infrastruktury tajných klíčů v frekvencí, které jsou v souladu s požadavky na zabezpečení organizace.
 
+### <a name="rotating-secrets-with-external-certificates-from-a-new-certificate-authority"></a>Otáčení tajných klíčů s externí certifikáty od nové certifikační autority
+
+V následující kontexty podporuje Azure zásobníku tajný otočení s externí certifikáty z nové certifikační autoritou (CA):
+
+|Nainstalovaný certifikát certifikační Autority|Otočí tak, aby certifikační Autorita|Podporováno|Podporované verze Azure zásobníku|
+|-----|-----|-----|-----|-----|
+|Z podepsaného|Do firemní sítě|Nepodporuje se||
+|Z podepsaného|Pro podepsané svým držitelem|Nepodporuje se||
+|Z podepsaného|Veřejnost<sup>*</sup>|Podporováno|1803 a novější|
+|Z Enterprise|Do firemní sítě|Podporované tak dlouho, dokud zákazníci používají stejné podnikové certifikační Autority jako použít při nasazení|1803 a novější|
+|Z Enterprise|Pro podepsané svým držitelem|Nepodporuje se||
+|Z Enterprise|Veřejnost<sup>*</sup>|Podporováno|1803 a novější|
+|Z veřejné<sup>*</sup>|Do firemní sítě|Nepodporuje se|1803 a novější|
+|Z veřejné<sup>*</sup>|Pro podepsané svým držitelem|Nepodporuje se||
+|Z veřejné<sup>*</sup>|Veřejnost<sup>*</sup>|Podporováno|1803 a novější|
+
+<sup>*</sup> Tady veřejné certifikační autority jsou ty, které jsou součástí programu Windows důvěryhodné kořenové. Úplný seznam najdete [Microsoft Trusted Root Certificate Program: účastníky (od 27. června 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+
 ## <a name="alert-remediation"></a>Výstrahy nápravy
 
 Po tajných klíčů do 30 dní od vypršení platnosti se tyto výstrahy jsou generovány na portálu správce: 
@@ -74,7 +91,7 @@ Spuštění tajný otočení pomocí následujícího postupu napraví tyto výs
 
 ## <a name="rotating-external-and-internal-secrets"></a>Otáčení externí i interní tajné klíče
 
-Otočení externí i interní tajných klíčů:
+Otočení i externí interní tajný klíč:
 
 1. V nově vytvořený **/certifikáty** adresář vytvořený v předběžné krocích umístit novou sadu externí certifikáty nahrazení struktury adresářů podle formátu uvedeném v části povinné certifikáty z [požadavky na certifikát PKI zásobník Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
 2. Vytvořit relaci prostředí PowerShell s [privilegované koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) pomocí **CloudAdmin** účtu a uložení relací jako proměnné. Jako parametr v dalším kroku bude pomocí této proměnné.
@@ -137,7 +154,7 @@ Rutina Start-SecretRotation otočí tajné klíče infrastruktury Azure zásobn�
  
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Typ | Požaduje se | Pozice | Výchozí | Popis |
+| Parametr | Typ | Požaduje se | Umístění | Výchozí | Popis |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Řetězec  | False  | S názvem  | Žádný  | Cesta sdílení souborů na **\Certificates** adresář obsahující všechny externí sítě certifikáty koncový bod. Je požadován, pouze když otáčení interních a externích tajných klíčů. Musí být konce adresáře **\Certificates**. |
 | CertificatePassword | SecureString | False  | S názvem  | Žádný  | Heslo pro všechny certifikáty, které jsou součástí - PfXFilesPath. Vyžaduje hodnotu, pokud PfxFilesPath získáte při otáčejí interních i externích tajných klíčů. |

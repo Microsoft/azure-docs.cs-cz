@@ -1,23 +1,21 @@
 ---
-title: "Ověřování služby služby: REST API s Data Lake Store pomocí Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory pomocí rozhraní REST API"
+title: 'Ověřování služby služby: REST API s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory pomocí rozhraní REST API
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 80934d3e5ded5c01e473f8450a3484d84c46e94e
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 89a747fec08ad96c21429d2034eaf395e65566a4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Service-to-service ověřování s Data Lake Store pomocí rozhraní REST API
 > [!div class="op_single_selector"]

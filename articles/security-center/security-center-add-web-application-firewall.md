@@ -1,31 +1,31 @@
 ---
-title: "Přidání brány firewall webových aplikací v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak implementovat doporučení Azure Security Center **přidání brány firewall webových aplikací** a **dokončit ochranu aplikace**."
+title: Přidání brány firewall webových aplikací v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje, jak implementovat doporučení Azure Security Center **přidání brány firewall webových aplikací** a **dokončit ochranu aplikace**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 05/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 4454d18893d698e49f118048eca0bfc94df315a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e28a1f6b865dae3abe2cb9dfac2921c6a2034491
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Přidání brány firewall webových aplikací v Azure Security Center
 Azure Security Center může doporučujeme, abyste přidali brány firewall webových aplikací (firewall webových aplikací) z partnera společnosti Microsoft k zabezpečení webových aplikací. Tento dokument vás příklad toho, jak použít toto doporučení provede.
 
 Doporučení firewall webových aplikací je zobrazený pro všechny veřejné přístupných IP adresy (IP úrovni Instance nebo IP skupinu s vyrovnáváním zatížení), skupinu zabezpečení sítě spojenou s otevřete příchozí webovými porty (80,443).
 
-Security Center doporučuje zřízení firewall webových aplikací, které pomáhají bránit proti útokům na cílení na vaše webové aplikace na virtuální počítače a na externí prostředí App Service. Je aplikaci služby prostředí (App Service Environment) [Premium](https://azure.microsoft.com/pricing/details/app-service/) služby možnost plánu služby Azure App Service, která poskytuje plně izolovaném a vyhrazeném prostředí pro zabezpečené spouštění aplikací Azure App Service. Další informace o App Service Environment, najdete v článku [dokumentace k aplikaci služby prostředí](../app-service/environment/intro.md).
+Security Center doporučuje zřízení firewall webových aplikací, které pomáhají bránit proti útokům na cílení na vaše webové aplikace na virtuálních počítačích a na externí aplikace služby prostředí (App Service Environment) nasazené v části [izolovaná](https://azure.microsoft.com/pricing/details/app-service/windows/) plán služby. Plán Isolated hostuje aplikace v privátním, vyhrazeném prostředí Azure a je ideální pro aplikace, které vyžadují zabezpečená připojení k místní síti nebo dodatečný výkon a škálování. Kromě aplikace se v izolovaném prostředí vaše aplikace musí mít externí IP adresu nástroj pro vyrovnávání zatížení. Další informace o App Service Environment, najdete v článku [dokumentace k aplikaci služby prostředí](../app-service/environment/intro.md).
 
 > [!NOTE]
 > Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není to podrobný průvodce.

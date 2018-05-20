@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 1d1cdee7373b949456032aff3c808cc233aaa1cc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob storage vazby pro Azure Functions
 
@@ -31,16 +31,20 @@ Tento článek vysvětluje, jak pro práci s vazbami úložiště objektů Azure
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+> [!NOTE]
+> Použijte aktivační událost mřížky INSTEAD úložiště objektů Blob pro účty úložiště pouze objekt blob, pro vysoce Škálované, nebo aby se zabránilo studený start zpožděním. Další informace najdete v tématu [aktivační událost](#trigger) části. 
+
 ## <a name="packages"></a>Balíčky
 
 Vazby úložiště objektů Blob jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-> [!NOTE]
-> Použijte aktivační událost mřížky INSTEAD úložiště objektů Blob pro účty úložiště pouze objekt blob, pro vysoce Škálované, nebo aby se zabránilo studený start zpožděním. Další informace najdete v tématu následující **aktivační událost** části. 
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
-## <a name="trigger"></a>Aktivační událost
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
+
+## <a name="trigger"></a>Trigger
 
 Aktivační událost úložiště objektů Blob spustí funkce při zjištění do nové nebo aktualizované objektu blob. Obsahu objektu blob jsou uvedeny jako vstup do funkce.
 
@@ -235,9 +239,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | nevztahuje se | musí být nastavena na `blobTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**direction** | nevztahuje se | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. Výjimky jsou uvedeny v [využití](#trigger---usage) části. |
-|**Jméno** | nevztahuje se | Název proměnné, která představuje objektů blob v kódu funkce. | 
+|**type** | neuvedeno | musí být nastavena na `blobTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**direction** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. Výjimky jsou uvedeny v [využití](#trigger---usage) části. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce. | 
 |**Cesta** | **BlobPath** |Kontejner pro monitorování.  Může být [vzor názvu objektu blob](#trigger-blob-name-patterns). | 
 |**Připojení** | **Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účet pouze objekt blob úložiště](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
 
@@ -533,12 +537,12 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | nevztahuje se | musí být nastavena na `blob`. |
-|**direction** | nevztahuje se | musí být nastavena na `in`. Výjimky jsou uvedeny v [využití](#input---usage) části. |
-|**Jméno** | nevztahuje se | Název proměnné, která představuje objektů blob v kódu funkce.|
+|**type** | neuvedeno | musí být nastavena na `blob`. |
+|**direction** | neuvedeno | musí být nastavena na `in`. Výjimky jsou uvedeny v [využití](#input---usage) části. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce.|
 |**Cesta** |**BlobPath** | Cesta k objektu blob. | 
 |**Připojení** |**Připojení**| Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účet pouze objekt blob úložiště](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
-|nevztahuje se | **Přístup** | Určuje, zda jste se čtení nebo zápis. |
+|neuvedeno | **Přístup** | Určuje, zda jste se čtení nebo zápis. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -744,12 +748,12 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**type** | nevztahuje se | musí být nastavena na `blob`. |
-|**direction** | nevztahuje se | Musí být nastavena na `out` pro vazbu výstup. Výjimky jsou uvedeny v [využití](#output---usage) části. |
-|**Jméno** | nevztahuje se | Název proměnné, která představuje objektů blob v kódu funkce.  Nastavte na `$return` Chcete-li funkce návratovou hodnotu.|
+|**type** | neuvedeno | musí být nastavena na `blob`. |
+|**direction** | neuvedeno | Musí být nastavena na `out` pro vazbu výstup. Výjimky jsou uvedeny v [využití](#output---usage) části. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje objektů blob v kódu funkce.  Nastavte na `$return` Chcete-li funkce návratovou hodnotu.|
 |**Cesta** |**BlobPath** | Cesta k objektu blob. | 
 |**Připojení** |**Připojení**| Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.<br><br>Připojovací řetězec nesmí být pro účet úložiště pro obecné účely [účet pouze objekt blob úložiště](../storage/common/storage-create-storage-account.md#blob-storage-accounts).|
-|nevztahuje se | **Přístup** | Určuje, zda jste se čtení nebo zápis. |
+|neuvedeno | **Přístup** | Určuje, zda jste se čtení nebo zápis. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

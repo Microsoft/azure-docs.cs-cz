@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: radicmilos
 manager: ''
-editor: ''
+editor: nipuzovi
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
-ms.author: miradic,nipuzovi
-ms.openlocfilehash: 741d77998e9f3405ca6d3863e80cb9125705eefe
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: miradic
+ms.openlocfilehash: cd19c0e51ca1ac7863058d7c3944400719508f9b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatické škálování
 Automatické škálování je další schopností Service Fabric dynamicky škálování vašich služeb podle zatížení, které služby jsou vytváření sestav, nebo na základě jejich využití prostředků. Automatické škálování nabízí skvělý pružnost a umožňuje zřizování další instance nebo oddíly služby na vyžádání. Celý automatické škálování proces je automatické a transparentní, a po nastavení zásad na službě, není nutné pro ruční škálování operace na úrovni služby. Automatické škálování může být zapnut buď při vytváření služby, nebo kdykoli při aktualizaci.

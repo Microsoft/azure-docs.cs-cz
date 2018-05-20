@@ -1,6 +1,6 @@
 ---
-title: "Spolehlivé služby WCF komunikačního balíku | Microsoft Docs"
-description: "Předdefinované komunikačního balíku WCF v Service Fabric poskytuje služba klienta WCF komunikaci pro spolehlivé služby."
+title: Spolehlivé služby WCF komunikačního balíku | Microsoft Docs
+description: Předdefinované komunikačního balíku WCF v Service Fabric poskytuje služba klienta WCF komunikaci pro spolehlivé služby.
 services: service-fabric
 documentationcenter: .net
 author: BharatNarasimman
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 75516e1e-ee57-4bc7-95fe-71ec42d452b2
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7037620ebdc26a9f18531064bf45d058f5060e39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5ca579b446e5d3608d53cea73fa9392cd00db06
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikace na základě WCF zásobníku pro spolehlivé služby
 Spolehlivé služby framework umožňuje autorům služby vyberte komunikačního balíku, který chtějí používat pro své služby. Můžete zařadit komunikačního balíku libovolný prostřednictvím **ICommunicationListener** vrácená z [CreateServiceReplicaListeners nebo CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metody. Rozhraní framework poskytuje implementaci komunikačního balíku založené na Windows Communication Foundation (WCF) pro autory služby, které chtějí využívat komunikace na základě WCF.
@@ -26,7 +26,7 @@ Spolehlivé služby framework umožňuje autorům služby vyberte komunikačníh
 ## <a name="wcf-communication-listener"></a>Naslouchací proces komunikace WCF
 Implementace WCF specifické **ICommunicationListener** zajišťuje **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** třídy.
 
-Přidejte vyslovte máme kontraktu služby typu`ICalculator`
+Přidejte vyslovte máme kontraktu služby typu `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -122,7 +122,7 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vzdálené volání procedur u vzdálené komunikace spolehlivé služby](service-fabric-reliable-services-communication-remoting.md)
 * [Webové rozhraní API s OWIN v spolehlivé služby](service-fabric-reliable-services-communication-webapi.md)
 * [Zabezpečení komunikace pro spolehlivé služby](service-fabric-reliable-services-secure-communication.md)

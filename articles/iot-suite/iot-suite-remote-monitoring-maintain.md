@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: a959276ea61ec0e44ad45197019dfc80f26b768e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 99cf9e341edf0acee434e2d01f6346291cbcea5a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>Řešení potíží a opravám problémů zařízení
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Chcete-li v tomto kurzu, je třeba nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="use-the-maintenance-dashboard"></a>Řídicí panel údržby
 

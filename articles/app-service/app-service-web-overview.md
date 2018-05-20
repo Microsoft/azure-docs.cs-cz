@@ -1,5 +1,5 @@
 ---
-title: Přehled Web Apps | Dokumentace Microsoftu
+title: Přehled Web Apps | Microsoft Docs
 description: Zjistěte, jak služba Azure App Service pomáhá nasazovat, hostovat a používat webové aplikace
 services: app-service\web
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 79828193e283f0dcb80035cae0c11b050a1639ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="web-apps-overview"></a>Přehled Web Apps
 
@@ -37,7 +37,7 @@ Toto jsou některé klíčové funkce služby App Service Web Apps:
 * **Optimalizace DevOps** – Můžete nastavit [průběžnou integraci a nasazování](app-service-continuous-deployment.md) pomocí služeb Visual Studio Team Services, GitHub, BitBucket, Docker Hub nebo Azure Container Registry. Aktualizace lze podporovat prostřednictvím [testovacího a přípravného prostředí](web-sites-staged-publishing.md). Aplikace ve službě Web Apps můžete spravovat pomocí [Azure PowerShellu](/powershell/azureps-cmdlets-docs) nebo [multiplatformního rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli).
 * **Globální škálování s vysokou dostupností:** Můžete ručně i automaticky škálovat pro účely [vertikálního](web-sites-scale.md) nebo [horizontálního](../monitoring-and-diagnostics/insights-how-to-scale.md) navýšení kapacity. Aplikace je možné hostovat kdekoli v globální infrastruktuře datacenter Microsoftu a smlouva [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pro App Service zaručuje vysokou dostupnost.
 * **Připojení k platformám SaaS a místním datům** – Můžete si vybírat z více než 50 [konektorů](../connectors/apis-list.md) pro podnikové systémy (například SAP), služby SaaS (například Salesforce) a internetové služby (například Facebook). Získejte přístup k místním datům pomocí [hybridních připojení](../biztalk-services/integration-hybrid-connection-overview.md) a [virtuálních sítí Azure](web-sites-integrate-with-vnet.md).
-* **Zabezpečení a dodržování předpisů** – Služba App Service je [kompatibilní se standardy ISO, SOC a PCI](https://www.microsoft.com/TrustCenter/). Uživatele můžete ověřovat pomocí služby [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) nebo přes přihlášení prostřednictvím sociální sítě ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) a [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)). Můžete vytvořit [omezení IP adres](app-service-ip-restrictions.md) a [spravovat identity služby](app-service-managed-service-identity.md).
+* **Zabezpečení a dodržování předpisů** – Služba App Service je [kompatibilní se standardy ISO, SOC a PCI](https://www.microsoft.com/en-us/trustcenter). Uživatele můžete ověřovat pomocí služby [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) nebo přes přihlášení prostřednictvím sociální sítě ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) a [Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)). Můžete vytvořit [omezení IP adres](app-service-ip-restrictions.md) a [spravovat identity služby](app-service-managed-service-identity.md).
 * **Šablony aplikací** – Vyberte si z rozsáhlého seznamu šablon aplikací na webu [Azure Marketplace](https://azure.microsoft.com/marketplace/), například pro systémy WordPress, Joomla nebo Drupal.
 * **Integrace sady Visual Studio** – Vyhrazené nástroje v sadě Visual Studio zjednodušují práci při vytváření, nasazování a ladění.
 * **Rozhraní API a mobilní funkce** – Služba Web Apps nabízí podporu CORS na klíč pro scénáře rozhraní RESTful API a zjednodušuje scénáře mobilních aplikací díky tomu, že umožňuje ověřování, offline synchronizaci dat, nabízená oznámení a další.
@@ -50,10 +50,16 @@ Kromě Web Apps ve službě App Service nabízí Azure další služby, které l
 Vytvořte svou první aplikaci.
 
 > [!div class="nextstepaction"]
-> [ASP.NET](app-service-web-get-started-dotnet.md)
+> [Jádro ASP.NET](app-service-web-get-started-dotnet.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET](app-service-web-get-started-dotnet-framework.md)
 
 > [!div class="nextstepaction"]
 > [PHP](app-service-web-get-started-php.md)
+
+> [!div class="nextstepaction"]
+> [Ruby (v Linuxu)](containers/quickstart-ruby.md)
 
 > [!div class="nextstepaction"]
 > [Node.js](app-service-web-get-started-nodejs.md)

@@ -4,13 +4,13 @@ description: Popisuje, jak nastavit a spustit posouzení pro migraci virtuální
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 5054da16a6a02dddb8539011d3baa18f2bb9914a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c826453dcbcaf2facfd58daa05b77decda7ae456
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 

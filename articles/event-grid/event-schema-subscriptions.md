@@ -1,18 +1,18 @@
 ---
-title: "Azure schématu události odběru událostí mřížky"
-description: "Popisuje vlastnosti, které jsou k dispozici pro události se předplatné s Azure událostí mřížky"
+title: Azure schématu události odběru událostí mřížky
+description: Popisuje vlastnosti, které jsou k dispozici pro události se předplatné s Azure událostí mřížky
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 23249b92b4e99628d49bbd811b4ad1f1dc9cc9b0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 04bcc3018346e9cf162d26b0a23147c88e902e1e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure schématu události událostí mřížky pro předplatné
 
@@ -97,12 +97,12 @@ Událost má následující dat nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
 | Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| eventType | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
+| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
-| data | Objekt | Data události odběru. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat událostí. Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| data | objekt | Data události odběru. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 

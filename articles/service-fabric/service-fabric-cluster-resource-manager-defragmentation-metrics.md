@@ -1,24 +1,24 @@
 ---
 title: Defragmentace metriky v Azure Service Fabric | Microsoft Docs
-description: "Přehled použití defragmentace nebo balení jako strategie pro metriky v Service Fabric"
+description: Přehled použití defragmentace nebo balení jako strategie pro metriky v Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0b8b2bad967532bb0040407dc6a3a7b9599576d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a35ae5933729615d634359e64e31d43536d81431
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentace metriky a zatížení v Service Fabric
 Správce služby Fabric clusteru prostředků výchozí strategii správy metriky zatížení v clusteru je distribuce zatížení. Zajištění, že uzly jsou rovnoměrně využité zabraňuje úrovněmi horkého a studeného body, které vést k kolizí i nevyužité prostředky. Distribuce zatížení v clusteru je také nejbezpečnější z hlediska zbývajících selhání, protože zajišťuje selhání nebude vyjměte vysoké procento daného zatížení. 
@@ -95,7 +95,7 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json 
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Správce prostředků clusteru má man možnosti popisující clusteru. Další informace o nich, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
 - Metriky se, jak správce prostředků služby Fabric clusteru spravuje využívání a kapacity v clusteru. Další informace o metriky a způsob jejich konfigurace, podívejte se na [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)
 

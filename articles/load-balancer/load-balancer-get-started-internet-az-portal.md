@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1f1c8d0305334d85500b501aee5a71664bb49050
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9a51638ea6d85178e6631ac278c116e4c7e05d61
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní veřejná IP adresa front-endu pomocí portálu Azure
 
@@ -45,9 +45,6 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     >[!NOTE] 
     > Veřejné IP adresy vytvořené v tomto kroku je standardní SKU a je zónově redundantní ve výchozím nastavení. 
 8. V části **umístění**, vyberte **východní US2**a potom klikněte na **OK**. Nástroj pro vyrovnávání zatížení se pak začne nasazovat. Úspěšné dokončení nasazení trvá několik minut.
-
-    ![Vytvoření vyrovnávání standardní zónově redundantní zatížení pomocí portálu Azure](./media/load-balancer-get-started-internet-az-portal/create-zone-redundant-load-balancer-standard.png)
-
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [nástroj pro vyrovnávání zatížení a dostupnost zóny](load-balancer-standard-availability-zones.md).

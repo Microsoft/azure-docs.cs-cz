@@ -2,20 +2,20 @@
 title: Indexované video, Azure SaaS SQL aplikace | Microsoft Docs
 description: Tento článek indexuje různé body čas v našem 81 minut video o návrhu aplikace klientů SaaS DB, z konference Ignite uchovávat 11 říjen 2017. Můžete přeskočit k části, která vás zajímá. Minimálně 3 vzory jsou popsány. Jsou popsané funkce Azure, které zjednodušují vývoj a správu.
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 05/14/2018
 ms.service: sql-database
 ms.reviewer: billgib
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4ea62855b61cb7439b19204564cbc2d7fcdbd0fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Video indexované a opatřeny poznámkami pro aplikace SaaS mulit klienta pomocí databáze SQL Azure
+# <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Video indexované a opatřeny poznámkami pro víceklientské aplikace SaaS pomocí Azure SQL Database
 
 Tento článek je poznámkami index do umístění čas 81 zápisu video o SaaS klientů modely nebo vzory. Tento článek vám umožňuje přeskočit zpátky nebo předání v videa a jaká část vás zajímá. Video popisuje možnosti hlavní návrhu aplikace víceklientské databáze v databázi SQL Azure. Video obsahuje ukázky, návody kódu správy a v některých případech další podrobnosti o tom informováni prostřednictvím prostředí, než může být v dokumentaci napsané.
 
@@ -60,7 +60,7 @@ Následující názvy jsou odkazy na jejich odpovídající části s poznámkam
 - [18. Adresář Wingtip SaaS ukázkovou aplikaci, 0:48:10](#anchor-image-wtip-min04810)
 - [19. Scénáře a vzory prozkoumali v kurzech, 0:49:10](#anchor-image-wtip-min04910)
 - [20. Ukázku kurzy a úložiště Github, 0:50:18](#anchor-image-wtip-min05018)
-- [21. Github repo Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
+- [21. Úložiště Github Microsoft/WingtipSaaS, 0:50:38](#anchor-image-wtip-min05038)
 - [22. Zkoumání vzory, 0:56:20](#anchor-image-wtip-min05620)
 - [23. Zřizování klientů a registrace, 0:57:44](#anchor-image-wtip-min05744)
 - [24. Zřizování klientů a připojení aplikace, 0:58:58](#anchor-image-wtip-min05858)
@@ -200,8 +200,8 @@ Kliknutím na žádný obrázek snímek přejdete do umístění přesný čas n
 
 
 &nbsp; <a name="anchor-image-wtip-min05038"/>
-#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. Github repo Microsoft/WingtipSaaS, 0:50:32
-[![Github repo Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
+#### <a name="21-github-repo-microsoftwingtipsaas-05032"></a>21. Úložiště Github Microsoft/WingtipSaaS, 0:50:32
+[![Úložiště Github Microsoft/WingtipSaaS][image-wtip-min05038-github-wingtipsaas]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=3032)
 
 
 &nbsp; <a name="anchor-image-wtip-min05620"/>
@@ -352,7 +352,7 @@ Kliknutím na žádný obrázek snímek přejdete do umístění přesný čas n
 
 [image-wtip-min05018-demo-tutorials-github]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05018-demo-saas-tutorials-github-repo.png "Ukázku kurzy a úložiště Github"
 
-[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Github repo Microsoft/WingtipSaaS"
+[image-wtip-min05038-github-wingtipsaas]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05038-github-repo-wingtipsaas.png "Úložiště Github Microsoft/WingtipSaaS"
 
 [image-wtip-min05620-exploring-patterns]: media/saas-tenancy-video-index-wingtip-brk3120-20171011/wingtip-20171011-min05620-exploring-patterns-tutorials.png "Zkoumání vzory"
 

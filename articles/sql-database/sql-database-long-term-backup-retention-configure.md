@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 130b3ea0012c5fb21766b26ce2c3e589f0916736
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df3d843516bce30253c23080716e606dfb56f25e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Spravovat dlouhodobé uchovávání záloh Azure SQL Database
 
@@ -80,6 +80,10 @@ Zobrazte zálohování, které se zachovají pro konkrétní databázi zásad zl
 ## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Nakonfigurovat zásady dlouhodobé uchovávání informací a obnovení zálohy pomocí prostředí PowerShell
 
 Následující části ukazují, jak pomocí prostředí PowerShell nakonfigurovat dlouhodobé uchovávání záloh, prohlížet zálohy v úložiště Azure SQL a obnovení ze zálohy v úložišti Azure SQL.
+
+> [!IMPORTANT]
+> Budete muset použít nejnovější powershell AzureRM nastavit zásady V2 zleva doprava. Aktuální verze je [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview), to je ve verzi preview, takže použít tento příkaz k její instalaci: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
+> Pokyny k instalaci předprodejní verze najdete v tématu [modulu získat PowerShellGet](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). Prostředí powershell AzureRM verzi může 2018 pochází za pár dní (očekáván 5/18 nebo 2018), můžete ignorovat přepínačem - AllowPrelease při instalací prodejní verze, až bude k dispozici a použijte následující příkaz " `Install-Module -Name AzureRM.Sql -Force`.
 
 ### <a name="create-an-ltr-policy"></a>Vytvoření zásady zleva doprava.
 

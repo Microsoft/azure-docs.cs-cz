@@ -1,24 +1,24 @@
 ---
-title: "Změna nastavení ReliableDictionaryActorStateProvider v Azure mikroslužeb | Microsoft Docs"
-description: "Další informace o konfiguraci Azure Service Fabric stavová aktéři typu ReliableDictionaryActorStateProvider."
+title: Změna nastavení ReliableDictionaryActorStateProvider v Azure mikroslužeb | Microsoft Docs
+description: Další informace o konfiguraci Azure Service Fabric stavová aktéři typu ReliableDictionaryActorStateProvider.
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 5dcd1b4f5a070e9a09b6f8338928d93d10227d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors – ReliableDictionaryActorStateProvider
 Výchozí konfigurace ReliableDictionaryActorStateProvider můžete upravit změnou souboru souborech settings.xml vygenerované zadaného objektu actor v kořenu balíčku sady Visual Studio ve složce Konfigurace.
@@ -38,13 +38,13 @@ Globální konfiguraci je zadáno v manifestu clusteru pro cluster části KtlLo
 V manifestu clusteru je jednoho souboru XML, který obsahuje nastavení a konfigurace, které platí pro všechny uzly a služby v clusteru. Soubor se obvykle nazývá ClusterManifest.xml. Můžete zobrazit clusteru manifestu clusteru pomocí příkazu Get-ServiceFabricClusterManifest prostředí powershell.
 
 ### <a name="configuration-names"></a>Názvy konfigurace
-| Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
+| Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobajtů |8388608 |Minimální počet KB přidělit v režimu jádra pro fond vyrovnávací paměti zápisu protokolovacího nástroje. Tento fond paměti se používá pro ukládání do mezipaměti informace o stavu před zápis na disk. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobajtů |Bez omezení |Maximální velikost, do které protokolovacího nástroje zápis fondu vyrovnávací paměti můžou růst. |
-| SharedLogId |IDENTIFIKÁTOR GUID |"" |Určuje jedinečný identifikátor GUID pro identifikaci výchozí sdíleného souboru protokolu v případě všech spolehlivé služeb ve všech uzlech v clusteru, které neurčují SharedLogId v jejich konkrétní konfiguraci služby. Pokud je zadán SharedLogId, musíte zadat také tento SharedLogPath. |
+| SharedLogId |GUID |"" |Určuje jedinečný identifikátor GUID pro identifikaci výchozí sdíleného souboru protokolu v případě všech spolehlivé služeb ve všech uzlech v clusteru, které neurčují SharedLogId v jejich konkrétní konfiguraci služby. Pokud je zadán SharedLogId, musíte zadat také tento SharedLogPath. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde soubor sdílený protokolu používané všechny spolehlivé služby ve všech uzlech v clusteru, které neurčují SharedLogPath v jejich konkrétní konfiguraci služby. Ale pokud je zadán SharedLogPath, pak SharedLogId musí také uvést. |
-| SharedLogSizeInMB |V megabajtech |8192 |Určuje počet MB místa na disku staticky přidělení pro sdílené protokolu. Hodnota musí být 2 048 nebo větší. |
+| SharedLogSizeInMB |Megabajtů |8192 |Určuje počet MB místa na disku staticky přidělení pro sdílené protokolu. Hodnota musí být 2 048 nebo větší. |
 
 ### <a name="sample-cluster-manifest-section"></a>Ukázka oddílu manifestu clusteru
 ```xml
@@ -79,16 +79,16 @@ Výchozí konfigurace je generován šablony sady Visual Studio a měla by stač
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Názvy konfigurace
-| Name (Název) | Jednotka | Výchozí hodnota | Poznámky |
+| Název | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0.015 |Časové období, pro které Replikátor na sekundární počká po přijetí operace před odesláním zpět na primární potvrzení. Další potvrzení k odeslání pro operace zpracování v rámci tohoto intervalu se odesílají jako jedna odpověď. |
-| ReplicatorEndpoint |Není k dispozici |Žádná výchozí hodnota – povinný parametr |IP adresa a port, který Replikátor primární a sekundární bude používat pro komunikaci s další replikátory na replice nastavit. To by měl odkazovat koncový bod TCP prostředků v service manifest. Odkazovat na [manifestu prostředky služby](service-fabric-service-manifest-resources.md) Další informace o definování koncový bod prostředků v service manifest. |
-| Maxreplicationmessagesize. |Bajty |50 MB |Maximální velikost data replikace, která mohou být přenesena do jedné zprávy. |
+| ReplicatorEndpoint |neuvedeno |Žádná výchozí hodnota – povinný parametr |IP adresa a port, který Replikátor primární a sekundární bude používat pro komunikaci s další replikátory na replice nastavit. To by měl odkazovat koncový bod TCP prostředků v service manifest. Odkazovat na [manifestu prostředky služby](service-fabric-service-manifest-resources.md) Další informace o definování koncový bod prostředků v service manifest. |
+| Maxreplicationmessagesize. |B |50 MB |Maximální velikost data replikace, která mohou být přenesena do jedné zprávy. |
 | MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací ve frontě primární. Operace uvolněno po primární Replikátor obdrží potvrzení ze sekundární replikátory. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
 | MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární fronty. Operace uvolněno po provedení vysoce dostupný prostřednictvím trvalost stavu. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
 | CheckpointThresholdInMB |MB |200 |Množství místa souboru protokolu, po jejímž uplynutí je kontrolován stav. |
 | MaxRecordSizeInKB |kB |1024 |Maximální velikost záznam, který Replikátor může zapisovat do protokolu. Tato hodnota musí být násobkem 4 a je větší než 16. |
-| OptimizeLogForLowerDiskUsage |Logická hodnota |Hodnota TRUE |V případě hodnoty true je u protokolu nakonfigurována tak, aby repliky vyhrazené soubor protokolu se vytvoří pomocí systému souborů NTFS zhuštěného souboru. To snižuje využití místa skutečné disku pro soubor. Pokud má hodnotu NEPRAVDA, se vytvoří soubor s pevnou přidělení, které poskytují nejlepší zápisu výkonu. |
+| OptimizeLogForLowerDiskUsage |Logická hodnota |true (pravda) |V případě hodnoty true je u protokolu nakonfigurována tak, aby repliky vyhrazené soubor protokolu se vytvoří pomocí systému souborů NTFS zhuštěného souboru. To snižuje využití místa skutečné disku pro soubor. Pokud má hodnotu NEPRAVDA, se vytvoří soubor s pevnou přidělení, které poskytují nejlepší zápisu výkonu. |
 | SharedLogId |Identifikátor GUID |"" |Určuje jedinečný identifikátor guid pro identifikaci soubor sdílený protokolu použít s této repliky. Služby obvykle neměli používat toto nastavení. Ale pokud je zadán SharedLogId, pak SharedLogPath musí také uvést. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kde bude vytvořen soubor sdílený protokolu pro tuto repliku. Služby obvykle neměli používat toto nastavení. Ale pokud je zadán SharedLogPath, pak SharedLogId musí také uvést. |
 

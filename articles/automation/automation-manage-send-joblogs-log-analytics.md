@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f96419ea1e6cb8a6f15ba67948b2a139f647dd6c
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 562b1f1371133a1da8d24ebbb9c588f0597dda7f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání zpráv o stavu úlohy a datové proudy úlohy ze služby Automation k analýze protokolů
 Automatizace můžete odeslat runbook datové proudy úlohy stavu a úlohu do pracovního prostoru analýzy protokolů. Protokoly úlohy a datové proudy úlohy jsou viditelné na portálu Azure nebo v prostředí PowerShell pro jednotlivé úlohy a to umožňuje provádět jednoduché šetření. Pomocí analýzy protokolů můžete nyní:
@@ -98,7 +98,7 @@ Diagnostika z Azure Automation vytvoří dva typy záznamů v analýzy protokol�
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
 | ID prostředku |Určuje id prostředku účet Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
-| Skupina prostředků | Název skupiny prostředků pro účet služby Automation. |
+| ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
@@ -121,7 +121,7 @@ Diagnostika z Azure Automation vytvoří dva typy záznamů v analýzy protokol�
 | CorrelationId |Identifikátor GUID, který představuje ID korelace úlohy runbooku. |
 | ID prostředku |Určuje id prostředku účet Azure Automation runbook. |
 | SubscriptionId | Předplatné Azure Id (GUID) pro účet služby Automation. |
-| Skupina prostředků | Název skupiny prostředků pro účet služby Automation. |
+| ResourceGroup | Název skupiny prostředků pro účet služby Automation. |
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
@@ -158,7 +158,7 @@ Nakonec můžete vizualizovat historii úlohy v čase. Tento dotaz můžete pou�
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Graf stav historie úlohy analýzy protokolů](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 Odeslání dat datového proudu a stav úlohy automatizace k analýze protokolů, lze získat lepší přehled o stavu vaší automatizace úloh podle:
 + Nastavení výstrah upozornění v případě, že se vyskytl problém.
 + Pomocí vlastních zobrazení a vyhledávací dotazy k vizualizaci výsledky sady runbook, stav úlohy sady runbook a další související klíčové ukazatele nebo metriky.  

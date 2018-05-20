@@ -49,7 +49,7 @@
 - name: Postup
   items:
     - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      href: load-balancer-get-started-internet-az-portal.md
       items:
         - name: Vytvoření zónově redundantního veřejného Load Balanceru úrovně Standard (PowerShell)
           href: load-balancer-get-started-internet-az-powershell.md

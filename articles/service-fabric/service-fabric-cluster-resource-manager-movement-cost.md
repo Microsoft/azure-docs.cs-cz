@@ -1,24 +1,24 @@
 ---
-title: "Správce prostředků clusteru Service Fabric: pohyb náklady | Microsoft Docs"
-description: "Přehled náklady na přesunutí pro služby Service Fabric"
+title: 'Správce prostředků clusteru Service Fabric: pohyb náklady | Microsoft Docs'
+description: Přehled náklady na přesunutí pro služby Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f022f258-7bc0-4db4-aa85-8c6c8344da32
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3063647671fea94da3ce635b887f6f0f7de89f70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 74b61967a796fca22ab86918235f1def27a22f91
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-movement-cost"></a>Náklady na přesunutí služby
 Faktor, který správce prostředků clusteru Service Fabric zvažuje při pokusu určit, jaké změny, aby do clusteru s podporou jsou náklady na tyto změny. Pojem "náklady" se prodávají vypnout proti kolik clusteru je možné zlepšit. Náklady se započítá při přesunu služby pro vyrovnání, Defragmentace a další požadavky. Cílem je pro splnění požadavků způsobem alespoň rušivý nebo nákladné. 
@@ -115,7 +115,7 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json 
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Správce prostředků clusteru Service Fabric používá metriky ke správě využívání a kapacity v clusteru. Další informace o metriky a způsob jejich konfigurace, podívejte se na [Správa spotřeby prostředků a zatížení v Service Fabric s metriky](service-fabric-cluster-resource-manager-metrics.md).
 - Další informace o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na [vyrovnávání cluster Service Fabric](service-fabric-cluster-resource-manager-balancing.md).
 

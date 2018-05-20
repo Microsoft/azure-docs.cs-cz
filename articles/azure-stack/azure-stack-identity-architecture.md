@@ -1,12 +1,12 @@
 ---
-title: "Architektura identity pro Azure zásobníku | Microsoft Docs"
-description: "Další informace o architektuře identity, které můžete použít s Azure zásobníku."
+title: Architektura identity pro Azure zásobníku | Microsoft Docs
+description: Další informace o architektuře identity, které můžete použít s Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 2/28/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 899e0fc0c1eb93d68c79c92c9cc042462ebc2fef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: ''
+ms.openlocfilehash: a6da27740efd613b8a81ffa85092d6b00b3e47d8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura identity pro Azure zásobníku
 Než si zvolíte zprostředkovatele identity pro použití s Azure zásobníku, pochopit důležité rozdíly mezi možnosti služby Azure Active Directory (Azure AD) a služby Active Directory Federation Services (AD FS). 
@@ -33,7 +33,7 @@ Zprostředkovatele identity, který zvolíte, můžete omezit možnosti, včetn�
 |------------------------------|----------|-------|
 |Připojení k Internetu     |Ano       |Nepovinné|
 |Podpora pro více klientů     |Ano       |Ne      |
-|Syndikace Marketplace.       |Ano       |Ano. Vyžaduje použití [offline syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) nástroj.|
+|Syndikace Marketplace.       |Ano       |Ano. Vyžaduje použití [offline syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) nástroj.|
 |Podpora služby Active Directory Authentication Library (ADAL) |Ano |Ano|
 |Podpora nástrojů, jako je Azure CLI, Visual Studio a prostředí PowerShell  |Ano |Ano|
 |Vytvořit objekty služby prostřednictvím portálu Azure     |Ano |Ne|

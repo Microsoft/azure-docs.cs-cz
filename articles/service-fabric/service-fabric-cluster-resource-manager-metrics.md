@@ -1,24 +1,24 @@
 ---
-title: "Správa Azure mikroslužbu zatížení pomocí metriky | Microsoft Docs"
-description: "Další informace o tom, jak konfigurovat a používat ke správě služby spotřeby prostředků metriky v Service Fabric."
+title: Správa Azure mikroslužbu zatížení pomocí metriky | Microsoft Docs
+description: Další informace o tom, jak konfigurovat a používat ke správě služby spotřeby prostředků metriky v Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric pomocí metrik
 *Metriky* jsou prostředky, které vaše služby péče o a které jsou k dispozici na uzlech v clusteru. Metrika je všechno, co chcete spravovat pro zlepšení nebo sledovat výkon vašich služeb. Například je může sledovat využití paměti vědět, pokud je přetížena služby. Použití jiné je zjistit, jestli může služba přesunout jinde kde paměti je že menší omezené, aby bylo možné získat lepší výkon.
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 Příklady metriky jsou věci jako využití paměti, disku a procesoru. Tyto metriky jsou fyzické metriky, prostředky, které odpovídají fyzické prostředky na uzlu, který je třeba spravovat. Metriky může být také (a často jsou) logické metriky. Logické metriky věci jako "MyWorkQueueDepth" nebo "MessagesToProcess" nebo "TotalRecords". Logické metriky jsou definované aplikací a nepřímo odpovídají některé spotřeby fyzických prostředků. Vzhledem k tomu může být obtížné měr a sestava spotřeby fyzické prostředky na základě služby jsou běžné logické metriky. Složitost měření a vytváření sestav vlastní fyzické metriky je také proč Service Fabric nabízí několik výchozích metrik.
 
 ## <a name="default-metrics"></a>Výchozích metrik
-Řekněme, že chcete začít pracovat, zápisu a nasazení služby. V tomto okamžiku nevíte fyzické nebo logické prostředky spotřebuje. Není to! Správce prostředků clusteru Service Fabric používá několik výchozích metrik, pokud nejsou zadány žádné jiné metriky. Jsou:
+Řekněme, že chcete začít pracovat, zápisu a nasazení služby. V tomto okamžiku nevíte fyzické nebo logické prostředky spotřebuje. Není to! Správce prostředků clusteru Service Fabric používá několik výchozích metrik, pokud nejsou zadány žádné jiné metriky. Jsou to tyto:
 
   - PrimaryCount - počet primární repliky na uzlu 
   - ReplicaCount - počet celkový stavová repliky na uzlu
@@ -141,7 +141,7 @@ Jako připomenutí: Pokud chcete použít výchozí nastavení, nemusíte touch 
 Nyní se Vraťme se prostřednictvím každé z těchto nastavení podrobněji a mluvit o chování, které má vliv.
 
 ## <a name="load"></a>Načtení
-Celý bod definice metrik je představují některé zatížení. *Zatížení* je kolik danou metriku obsazením některé instance služby nebo repliky v daném uzlu. Zatížení se dá nakonfigurovat téměř libovolném okamžiku. Například:
+Celý bod definice metrik je představují některé zatížení. *Zatížení* je kolik danou metriku obsazením některé instance služby nebo repliky v daném uzlu. Zatížení se dá nakonfigurovat téměř libovolném okamžiku. Příklad:
 
   - Zatížení se dá definovat při vytváření služby. To se označuje jako _výchozí zatížení_.
   - Informace o metrikách, včetně výchozí zatížení pro služby můžete aktualizovat po vytvoření služby. To se označuje jako _aktualizace služby_. 
@@ -261,7 +261,7 @@ V horní příkladu podle pouze globální vyrovnávání je skutečně vyváži
 
 V příkladu dolní správce prostředků clusteru byla distribuována repliky podle globální a za službou Vyrovnávání. Při výpočtu skóre řešení poskytuje nejvíc váhu globální řešení a část (Konfigurovat) pro jednotlivé služby. Globální vyrovnávání pro metriku je vypočítáváno na průměr metriky váhu z jednotlivých služeb. Každá služba jsou rovnoměrně podle vlastní definované metriky váhu. Tím se zajistí, že služby jsou vyváženy v rámci sami podle vlastních potřeb. Výsledkem je Pokud stejné prvního uzlu selže selhání je distribuován pro všechny oddíly všech služeb. Dopad na každý je stejný.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
 - Definování defragmentace metriky je jeden způsob, jak konsolidovat zatížení na uzlech místo rozšíří ho. Naučte se konfigurovat defragmentace, najdete v tématu [v tomto článku](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - Chcete-li zjistit, o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)

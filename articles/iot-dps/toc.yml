@@ -155,6 +155,8 @@
       href: 'https://catalog.azureiotsuite.com/'
     - name: Centrum pro vývojáře Azure IoT
       href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Požadavky na zákaznická data
+      href: iot-dps-customer-data-requests.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: Nástroj Device Explorer

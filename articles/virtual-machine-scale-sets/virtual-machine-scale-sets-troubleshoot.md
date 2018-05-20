@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s škálování s sady škálování virtuálního počítače | Microsoft Docs"
-description: "Řešení potíží s škálování s sady škálování virtuálního počítače. Pochopení typické problémy vzniklé a způsob jejich řešení."
+title: Řešení potíží s škálování s sady škálování virtuálního počítače | Microsoft Docs
+description: Řešení potíží s škálování s sady škálování virtuálního počítače. Pochopení typické problémy vzniklé a způsob jejich řešení.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: negat
-ms.openlocfilehash: 02a3acf818bfca31a56b364f7abab97551e0d3f0
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: ea634ea8bcb4fed1ed63dc8d1e17d215a00758c6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Řešení potíží s škálování s sady škálování virtuálního počítače
-**Problém** – jste vytvořili automatické škálování infrastruktury v správce Azure Resource Manager pomocí sady škálování virtuálního počítače – například nasazením šablonu tohoto typu: https://github.com/Azure/azure-quickstart-templates/tree/master/201- vmss bottle škálování – máte definované pravidel škálování a vyhovující postup, s výjimkou bez ohledu na to, kolik zatížení vložíte na virtuálních počítačích, nepodporuje automatické škálování.
+**Problém** – jste vytvořili automatické škálování infrastruktury v správce Azure Resource Manager pomocí sady škálování virtuálního počítače – například nasazením šablonu tohoto typu: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – máte definované pravidel škálování a vyhovující postup, s výjimkou ne vás kolik zatížení vložíte na virtuálních počítačích, nepodporuje automatické škálování.
 
-## <a name="troubleshooting-steps"></a>Řešení potíží
+## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 Některé věci vzít v úvahu, patří:
 
 * Kolik Vcpu každý virtuální počítač nemá a jsou načítání každý virtuální procesor?
@@ -78,7 +78,7 @@ Některé věci vzít v úvahu, patří:
     Pokud není data, znamená to, že je problém s příponou diagnostiky spuštěna ve virtuálních počítačích. Pokud data existuje, znamená to, jestli existuje problém s vaší pravidel škálování, nebo se službou Statistika. Zkontrolujte [Azure stav](https://azure.microsoft.com/status/).
     
     Jakmile jste byl pomocí těchto kroků, pokud máte pořád problémy škálování, zkuste následující prostředky: 
-    * Přečtěte si ve fórech [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp), nebo [přetečení zásobníku](http://stackoverflow.com/questions/tagged/azure) 
+    * Přečtěte si ve fórech [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows), nebo [přetečení zásobníku](http://stackoverflow.com/questions/tagged/azure) 
     * Přihlaste se volání podpory. Připravte se na sdílet šablony a zobrazení dat výkonu.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

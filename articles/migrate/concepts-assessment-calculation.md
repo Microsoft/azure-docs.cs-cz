@@ -4,13 +4,13 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/02/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: f3ac9c328db1130ea25ac63170ee7de35fb67d16
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -66,7 +66,7 @@ Jiné operační systémy<br/><br/> například Oracle Solaris, atd. Apple Mac O
 Zadaný operační systém jako *jiných* v systému vCenter Server | Azure migrací nemůže v tomto případě identifikovat operačního systému. | Neznámý připravenosti. Ujistěte se, že operačního systému spuštěné ve virtuálním počítači podporovaná v Azure.
 32bitové operační systémy | Tento počítač může spustit v Azure, ale Azure nemusí poskytnout plnou podporu. | Podmíněná připravené pro Azure, zvažte upgrade operačního systému na počítač z 32bitového operačního systému na 64bitový operační systém, před migrací do Azure.
 
-## <a name="sizing"></a>Nastavení velikosti
+## <a name="sizing"></a>Velikost
 
 Po počítač je označena jako připravena pro Azure, Azure migrovat velikostí virtuálního počítače a jeho disky pro Azure. Je-li toto nastavení velikosti kritérium zadána ve vlastnostech assessment uděláte na základě výkonu nastavení velikosti, migrovat Azure za historie výkonu počítače k identifikaci velikost virtuálního počítače v Azure. Tato metoda je užitečná ve scénářích, kde jste přidělili přepsání místní virtuální počítač, ale je nízkou využití a byste chtěli optimální velikost virtuálních počítačů v Azure se uložit náklady.
 

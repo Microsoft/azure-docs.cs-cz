@@ -1,6 +1,6 @@
 ---
-title: "Azure ServiceFabric diagnostics a monitorování | Microsoft Docs"
-description: "Tento článek popisuje funkce monitorování výkonu v modulu runtime Service Fabric spolehlivé ServiceRemoting jako vygenerované tímto čítače výkonu."
+title: Azure ServiceFabric diagnostics a monitorování | Microsoft Docs
+description: Tento článek popisuje funkce monitorování výkonu v modulu runtime Service Fabric spolehlivé ServiceRemoting jako vygenerované tímto čítače výkonu.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -9,16 +9,16 @@ editor: suchiagicha
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f54e157654fb15d2f7ff48ddc666c6c8803c75a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d462ba0955a362c27b786ee6a5670eec20c52a22
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnostika a sledování výkonu pro vzdálenou komunikaci spolehlivé služby
 Modul runtime spolehlivé ServiceRemoting vysílá [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o tom, jak pracuje ServiceRemoting a pomoci při řešení potíží a monitorování výkonu.
@@ -29,7 +29,7 @@ Modul runtime spolehlivé ServiceRemoting definuje následující kategorie čí
 
 | Kategorie | Popis |
 | --- | --- |
-| Služba Fabric |Čítače specifické pro Azure Service Fabric služby vzdálené komunikace, například průměrná doba zpracování požadavku |
+| Služba Service Fabric |Čítače specifické pro Azure Service Fabric služby vzdálené komunikace, například průměrná doba zpracování požadavku |
 | Metoda služby Service Fabric |Čítače specifické pro metody implementované Fabric vzdálené komunikace služby, například jak často je volána metoda služby |
 
 Každá z výše uvedených skupin má jeden nebo více čítačů.
@@ -84,20 +84,20 @@ Spolehlivé služby modulu runtime publikuje následující čítače výkonu t�
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Metoda služby Service Fabric |Volání za sekundu |Kolikrát za sekundu je vyvolána metoda služby |
+| Metoda služby Service Fabric |Vyvolání/s |Kolikrát za sekundu je vyvolána metoda služby |
 | Metoda služby Service Fabric |Průměrný počet milisekund na vyvolání |Doba k provedení metody služby v milisekundách |
-| Metoda služby Service Fabric |Výjimek vyvolaných za sekundu |Počet, metoda služby došlo k výjimce za sekundu |
+| Metoda služby Service Fabric |Vyvolané výjimky/s |Počet, metoda služby došlo k výjimce za sekundu |
 
 ### <a name="service-request-processing-performance-counters"></a>Čítače výkonu zpracování žádosti o služby
 Když klient vyvolá metodu prostřednictvím objekt proxy služby, výsledkem zprávu požadavku odesílány přes síť ke službě vzdálené komunikace. Služba zpracovává zprávu požadavku a odešle odpověď zpět klientovi. Modul runtime spolehlivé ServiceRemoting publikuje následující čítače výkonu související s zpracování žádosti o služby.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Služba Fabric |Počet zbývajících požadavků |Počet požadavků zpracovaných ve službě |
-| Služba Fabric |Průměrný počet milisekund na žádost |Doba trvání (v milisekundách) pomocí služby zpracovat požadavek |
-| Služba Fabric |Průměrný počet milisekund deserializace požadavků |Doba (v milisekundách) k deserializaci zprávu požadavku služby, když je obdržena na službu |
-| Služba Fabric |Průměrný počet milisekund serializace odpovědí |Doba (v milisekundách) k serializaci služby zprávu odpovědi na službu předtím, než odešle odpověď klienta |
+| Služba Service Fabric |Počet zbývajících požadavků |Počet požadavků zpracovaných ve službě |
+| Služba Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách) pomocí služby zpracovat požadavek |
+| Služba Service Fabric |Průměrný počet milisekund deserializace požadavků |Doba (v milisekundách) k deserializaci zprávu požadavku služby, když je obdržena na službu |
+| Služba Service Fabric |Průměrný počet milisekund serializace odpovědí |Doba (v milisekundách) k serializaci služby zprávu odpovědi na službu předtím, než odešle odpověď klienta |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Ukázka kódu](https://github.com/Azure/servicefabric-samples)
 * [Zprostředkovatelé EventSource v nástroje PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

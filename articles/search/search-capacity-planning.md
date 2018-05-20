@@ -1,5 +1,5 @@
 ---
-title: Plánování kapacity pro Azure Search | Microsoft Docs
+title: Přidělit oddíly a repliky pro dotazy a indexování ve službě Azure Search | Microsoft Docs
 description: Upravte oddíl a repliky prostředky počítače ve službě Azure Search, kde je každý prostředek za cenu v jednotkách fakturovatelný vyhledávání.
 author: HeidiSteen
 manager: cgronlun
@@ -8,13 +8,13 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 08ae64aa92d7262b462ad105aa8e776bdaef15c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b6c2c8283d5a60013c525db296bf84cc50d76617
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Škálování prostředku úrovně pro dotaz a indexování úlohy ve službě Azure Search
+# <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Přidělit oddíly a repliky pro dotazy a indexování úlohy ve službě Azure Search
 Po jste [zvolte cenovou úroveň](search-sku-tier.md) a [zřídit službu vyhledávání](search-create-service-portal.md), dalším krokem je volitelně zvýšit počet replik nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet fakturace jednotky. Tento článek vysvětluje, jak přidělit tyto jednotky k dosažení optimálního konfigurace, který vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.
 
 Konfigurace prostředků je k dispozici při nastavování služby v [úroveň Basic](http://aka.ms/azuresearchbasic) nebo jeden z [standardní úrovně](search-limits-quotas-capacity.md). Pro služby na tyto úrovně, je kapacity dokupovat v jednotkách po *jednotek vyhledávání* (SUs) kde každý oddíl a repliky počítá jako jedna SU. 

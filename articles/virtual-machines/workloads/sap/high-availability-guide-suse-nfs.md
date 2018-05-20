@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: sedusch
-ms.openlocfilehash: b1a7b962d07b64aaa662aab937feed1782851a7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bc4a6f4ecca8ffe3575a038b86192a8663c35c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro systém souborů NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -129,12 +129,11 @@ Nejprve musíte vytvořit virtuální počítače pro tento cluster systému sou
 1. Vytvořit skupinu dostupnosti  
    Sada maximální aktualizace domény
 1. Vytvoření virtuálního počítače 1   
-   Použijte alespoň SLES4SAP 12 SP1 v tomto příkladu bitovou kopii SLES4SAP 12 SP1 BYOS https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES pro SAP aplikace 12 SP1 (BYOS) se používá.  
+   Použijte alespoň SLES4SAP 12 SP3, v tomto příkladu SLES4SAP 12 SP3 BYOS bitové kopie SLES pro SAP aplikace 12 SP3 (BYOS) se používá  
    Vyberte dříve vytvořenou sadu dostupnosti  
 1. Vytvoření virtuálního počítače 2   
-   Použijte alespoň SLES4SAP 12 SP1 v tomto příkladu bitovou kopii SLES4SAP 12 SP1 BYOS https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES pro SAP aplikace 12 SP1 (BYOS) se používá.  
+   Použijte alespoň SLES4SAP 12 SP3, v tomto příkladu bitovou kopii SLES4SAP 12 SP3 BYOS  
+   SLES pro SAP aplikace 12 SP3 (BYOS) se používá.  
    Vyberte dříve vytvořenou sadu dostupnosti  
 1. Přidejte jeden datový disk pro každý systém SAP do obou virtuálních počítačů.
 1. Vytvořit nástroj pro vyrovnávání zatížení (interní)  

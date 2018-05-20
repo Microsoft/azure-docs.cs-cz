@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: other
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/30/2018
 ms.author: subramar
-ms.openlocfilehash: d4751182cac9b5b952ef9a9dd125408267c1f8d0
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2d98cff1a5869091aa81097bbb34da6e525a2ad5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Služba Fabric soubory Azure svazku ovladačů (Preview)
 Tento modul plug-in Azure Files svazek je [modulu plug-in svazku Docker](https://docs.docker.com/engine/extend/plugins_volume/) , který poskytuje [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na základě svazků pro Docker kontejnery. Tento modul plug-in Docker svazek je zabalené jako aplikace Service Fabric, které můžou být nasazené do clusterů Service Fabric. Jeho účelem je poskytnout že Azure soubory na základě svazků pro jiné aplikace Service Fabric kontejneru, které jsou nasazeny do clusteru.

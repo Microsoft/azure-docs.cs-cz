@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -194,21 +194,6 @@ Tento problém je specifická pro spravovaných virtuálních počítačů, ve k
 
 #### <a name="solution"></a>Řešení
 
-Chcete-li vyřešit tento problém, proveďte následující kroky k odebrání kolekce bodu obnovení: <br>
- 
-1. Odebere se zámek ve skupině prostředků, ve kterém je umístěn virtuální počítač. 
-2. Pomocí Chocolatey nainstalujte ARMClient: <br>
-   https://github.com/projectkudu/ARMClient
-3. Přihlaste se k ARMClient: <br>
-    `.\armclient.exe login`
-4. Získání kolekce bodu obnovení, která odpovídá virtuální počítač: <br>
-    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
-
-    Příklad: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
-5. Odstraňte kolekci bodu obnovení: <br>
-    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
-6. Další naplánované zálohování automaticky vytvoří kolekci bod obnovení a nové body obnovení.
-
- 
-Pokud znovu zamknout skupinu prostředků, bude znovu nastane problém. 
+Chcete-li problém vyřešit, odebrat zámek ze skupiny prostředků a nechat služba Azure Backup vymazat kolekci bod obnovení a základní snímky v dalším zálohování.
+Po dokončení můžete znovu umístit zpět zámek na skupině prostředků virtuálních počítačů. 
 

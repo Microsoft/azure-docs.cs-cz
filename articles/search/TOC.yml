@@ -39,7 +39,7 @@
           href: search-fiddler.md
 - name: Kurzy
   items:
-    - name: Index s využitím kognitivního vyhledávání
+    - name: Vývoj kognitivního vyhledávání
       href: cognitive-search-tutorial-blob.md
     - name: Indexování Azure SQL Database
       href: search-indexer-tutorial.md
@@ -73,11 +73,11 @@
   items:
     - name: Plánování a návrh
       items:
-        - name: Volba skladové jednotky (SKU)
+        - name: Volba úrovně
           href: search-sku-tier.md
         - name: Omezení služby
           href: search-limits-quotas-capacity.md
-        - name: Škálovatelnost služby
+        - name: Přidělení oddílů a replik
           href: search-capacity-planning.md
         - name: Způsoby návrhu pro víceklientskou architekturu
           href: search-modeling-multitenant-saas-applications.md

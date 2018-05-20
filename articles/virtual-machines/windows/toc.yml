@@ -102,14 +102,6 @@
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
-        - name: Postup povolení akcelerátoru zápisu
-          href: how-to-enable-write-accelerator.md
-        - name: Řešení potíží s připojenými virtuálními pevnými disky
-          items:
-            - name: Chyby odstraňování prostředků úložiště
-              href: storage-resource-deletion-errors.md
-            - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
-              href: unexpected-reboots-attached-vhds.md
     - name: Sítě
       href: network-overview.md
     - name: Automatické škálování aplikací
@@ -306,6 +298,8 @@
           href: mount-azure-file-storage.md
         - name: Nasazení disků pomocí šablony
           href: using-managed-disks-template-deployments.md
+        - name: Povolení akcelerátoru zápisu
+          href: how-to-enable-write-accelerator.md
         - name: Migrace na spravované disky
           href: migrate-to-managed-disks.md
           items:
@@ -449,6 +443,12 @@
           href: troubleshoot-vm-by-use-nested-virtualization.md
         - name: Instalace agenta virtuálního počítače v offline režimu
           href: install-vm-agent-offline.md
+        - name: Řešení potíží s připojenými virtuálními pevnými disky
+          items:
+            - name: Chyby odstraňování prostředků úložiště
+              href: storage-resource-deletion-errors.md
+            - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+              href: unexpected-reboots-attached-vhds.md
 - name: Referenční informace
   items:
     - name: Azure CLI

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 
@@ -74,7 +74,7 @@ Použijte k instalaci agentů na základní procesy [počítače se systémem Wi
 
 Sledování výkonu sítě používá k monitorování výkonu sítě mezi zdrojovým a cílovým agenty syntetické transakce. Můžete zvolit TCP a ICMP jako protokol pro monitorování v nástroji Sledování výkonu a monitorování koncového bodu služby. TCP se používá pro monitorování ExpressRoute. Ujistěte se, že brána firewall umožňuje komunikaci mezi agenty Operations Management Suite použít pro monitorování na protokol, který zvolíte. 
 
-* **Protokolu TCP**: Pokud si zvolíte TCP jako protokol pro monitorování, otevřete port brány firewall týkající se agentů, použít pro sledování výkonu sítě a monitorování ExpressRoute a ujistěte se, že agentů můžete připojit k sobě navzájem. Otevřete port, spusťte skript prostředí PowerShell EnableRules.ps1 bez parametrů v okně prostředí PowerShell s oprávněními správce.
+* **Protokolu TCP**: Pokud si zvolíte TCP jako protokol pro monitorování, otevřete port brány firewall týkající se agentů, použít pro sledování výkonu sítě a monitorování ExpressRoute a ujistěte se, že agentů můžete připojit k sobě navzájem. Chcete-li otevřít port, spusťte [EnableRules.ps1](https://aka.ms/npmpowershellscript) skript prostředí PowerShell bez parametrů v okně prostředí PowerShell s oprávněními správce.
 
     Tento skript vytvoří klíčům registru požadovaným řešení. Vytvoří také pravidla brány Windows Firewall povolit agentů k vytvoření připojení TCP mezi sebou. Klíče registru vytvořený skript určete, zda chcete protokoly pro ladění a cesta k souboru protokoly protokolu. Skript také definuje agenta TCP port používaný pro komunikaci. Hodnoty pro tyto klíče se nastaví automaticky skriptem. Tyto klíče nemusíte ručně změnit. Port otevřít ve výchozím nastavení je 8084. Můžete vytvořit vlastní port tím, že poskytuje číslo_portu parametr skriptu. Použijte stejný port na všech počítačích, kde je skript spuštěn. 
 
@@ -82,7 +82,7 @@ Sledování výkonu sítě používá k monitorování výkonu sítě mezi zdroj
     > Skript nakonfiguruje jenom brány Windows Firewall místně. Pokud máte síťovou bránu firewall, ujistěte se, že umožňuje, aby provoz určený pro TCP port je používán nástroj Sledování výkonu sítě.
 
     >[!NOTE]
-    > Nemusíte spouštění skriptu EnableRules.ps1 PowerShell pro monitorování koncového bodu služby.
+    > Nemusíte spouštět [EnableRules.ps1](https://aka.ms/npmpowershellscript ) skript prostředí PowerShell pro monitorování koncového bodu služby.
 
     
 
@@ -98,7 +98,7 @@ Sledování výkonu sítě používá k monitorování výkonu sítě mezi zdroj
    ```
  
 
-### <a name="configure-the-solution"></a>Konfigurace řešení 
+### <a name="configure-the-solution"></a>Konfigurovat řešení 
 
 1. Přidat do pracovního prostoru z řešení monitorování výkonu sítě [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Můžete taky použít proces popsaný v [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). 
 2. Otevřete pracovní prostor analýzy protokolů a vyberte **přehled** dlaždici. 

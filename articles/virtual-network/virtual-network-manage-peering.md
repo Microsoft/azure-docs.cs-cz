@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 11726b274d72f263ff3defeb7eb7b80594681e15
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: d47a1099a8b57c450aa48e086cc1c391faf91aa7
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, jejich změny nebo odstranění virtuální sítě partnerského vztahu
 
@@ -111,6 +111,11 @@ Pokud chcete, aby virtuální sítě pro komunikaci někdy, ale ne vždy místo 
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení 
 
+- <a name="cross-region"></a>Mohou párově virtuálních sítí ve stejné oblasti nebo v různých oblastech. Následující omezení neplatí, pokud jsou obě virtuální sítě v *stejné* oblasti, ale nastavují v případě, že virtuální sítě se kterými mají globálně partnerský: 
+    - Virtuální sítě může existovat v libovolné oblasti Azure veřejného cloudu, ale není v Azure národních cloudů.
+    - Prostředky v jednu virtuální síť nemůže komunikovat s IP adresu k nástroji pro vyrovnávání zatížení Azure interní peered virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které komunikují s ním musí být ve stejné virtuální síti.
+    - Nelze použít vzdálené Gateway nebo povolit přenosu brány. Používat vzdálený brány nebo povolit přenosu brány, obě virtuální sítě v partnerském vztahu musí existovat ve stejné oblasti. 
+- Virtuální sítě může být ve stejné nebo různých předplatných. Když virtuální sítě jsou v různých předplatných, musí být oba odběry přidruženy ke stejné klienta Azure Active Directory. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) připojení dvě virtuální sítě, které existují v různých předplatných, které jsou přidružené k různými klienty služby Active Directory.
 - Virtuální sítě, ke kterým jste partnerský uzel musí mít-překrývající se adresní prostory IP adres.
 - Nelze přidat rozsahy adres k, nebo odstraňte rozsahy adres z adresního prostoru virtuální sítě, jakmile je peered virtuální sítě s jinou virtuální sítí. Přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, potom je znovu vytvořte partnerského vztahu. Rozsahy adres, které chcete přidat nebo odebrat rozsahy adres virtuální sítě, najdete v tématu [spravovat virtuální sítě](manage-virtual-network.md).
 - Mohou párově dvě virtuální sítě nasazené prostřednictvím Resource Manager nebo virtuální síť s virtuální sítí nasazené prostřednictvím modelu nasazení classic nasazení prostřednictvím Resource Manager. Nelze peer dvě virtuální sítě vytvořené pomocí modelu nasazení classic. Pokud si nejste obeznámeni s modelech nasazení Azure, přečtěte si [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
@@ -125,13 +130,8 @@ Pokud chcete, aby virtuální sítě pro komunikaci někdy, ale ne vždy místo 
   Není žádný partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3 prostřednictvím VirtualNetwork2. Pokud chcete vytvořit virtuální síť partnerský vztah mezi VirtualNetwork1 a VirtualNetwork3, budete muset vytvoření partnerského vztahu mezi VirtualNetwork1 a VirtualNetwork3.
 - Nelze přeložit názvy v peered virtuální sítě pomocí výchozí Azure překlad. Překládat názvy v jiných virtuálních sítí, musíte použít [Azure DNS pro domény privátní](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo vlastního serveru DNS. Další postup nastavení serveru DNS, najdete v části [překladu IP adresy serveru DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 - Prostředky v peered virtuálních sítí ve stejné oblasti můžete vzájemně komunikovat s stejné šířky pásma a latencí jako kdyby byly ve stejné virtuální síti. Velikost pro všechny virtuální počítače ale má vlastní maximální šířku pásma sítě. Další informace o maximální šířku pásma sítě pro jiný virtuální počítač velikosti najdete v tématu [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) velikostí virtuálních počítačů.
-- Virtuální sítě může být ve stejné nebo různých předplatných. Když virtuální sítě jsou v různých předplatných, musí být oba odběry přidruženy ke stejné klienta Azure Active Directory. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) připojení dvě virtuální sítě, které existují v různých předplatných, které jsou přidružené k různými klienty služby Active Directory.
 - Virtuální sítě můžete peered s jinou virtuální sítí a také být připojen k jiné virtuální síti s bránu virtuální sítě Azure. Pokud virtuální sítě jsou připojené prostřednictvím partnerského vztahu a bránu, provoz mezi virtuálními sítěmi toky prostřednictvím konfigurace partnerského vztahu, nikoli brány.
 - Za příchozí a výchozí přenos dat využívající partnerský vztah virtuálních sítí se účtuje nominální poplatek. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-network).
-* <a name="cross-region"></a>Mohou párově virtuálních sítí ve stejné oblasti nebo v různých oblastech. Následující omezení neplatí, pokud jsou obě virtuální sítě v *stejné* oblasti, ale nastavují v případě, že virtuální sítě se kterými mají globálně partnerský: 
-    - Virtuální sítě může existovat v libovolné oblasti Azure veřejného cloudu, ale není v Azure národních cloudů.
-    - Prostředky v jednu virtuální síť nemůže komunikovat s IP adresu k nástroji pro vyrovnávání zatížení Azure interní peered virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které komunikují s ním musí být ve stejné virtuální síti.
-    - Nelze použít vzdálené Gateway nebo povolit přenosu brány. Používat vzdálený brány nebo povolit přenosu brány, obě virtuální sítě v partnerském vztahu musí existovat ve stejné oblasti. 
 
 ## <a name="permissions"></a>Oprávnění
 

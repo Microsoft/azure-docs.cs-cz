@@ -30,6 +30,8 @@
           href: sql-database-connect-query-dotnet-visual-studio.md
         - name: .NET Core
           href: sql-database-connect-query-dotnet-core.md
+        - name: .NET s Active Directory MFA
+          href: active-directory-interactive-connect-azure-sql-db.md
         - name: Přejít
           href: sql-database-connect-query-go.md
         - name: Java
@@ -102,6 +104,16 @@
       items:
         - name: Přehled
           href: sql-database-security-overview.md
+        - name: Rozšířená ochrana před internetovými útoky
+          href: sql-advanced-threat-protection.md
+        - name: Zjišťování a klasifikace dat
+          href: sql-database-data-discovery-and-classification.md
+        - name: Posouzení ohrožení zabezpečení
+          href: sql-vulnerability-assessment.md
+        - name: Detekce hrozeb – SQL Database
+          href: sql-database-threat-detection.md
+        - name: Detekce hrozeb – MI
+          href: sql-database-managed-instance-threat-detection.md
         - name: Pravidla brány firewall
           href: sql-database-firewall-configure.md
         - name: Pravidla virtuální sítě brány firewall
@@ -118,18 +130,10 @@
           href: sql-database-auditing.md
         - name: Auditování – spravovaná instance
           href: sql-database-managed-instance-auditing.md
-        - name: Detekce hrozeb – SQL Database
-          href: sql-database-threat-detection.md
-        - name: Detekce hrozeb – MI
-          href: sql-database-managed-instance-threat-detection.md
         - name: TDS a auditování tabulek
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dynamické maskování dat
           href: sql-database-dynamic-data-masking-get-started.md
-        - name: Posouzení ohrožení zabezpečení
-          href: sql-vulnerability-assessment.md
-        - name: Zjišťování a klasifikace dat
-          href: sql-database-data-discovery-and-classification.md
     - name: Kontinuita podnikových procesů
       items:
         - name: Přehled

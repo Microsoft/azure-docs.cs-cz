@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: f4323c4e68c639af9a5959af512c1cdd07cdf0c4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e4256de1d9112d785b6d1cd52067fc99144a0a04
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Odeslání na vlastní tématu pro Azure událostí mřížky
 

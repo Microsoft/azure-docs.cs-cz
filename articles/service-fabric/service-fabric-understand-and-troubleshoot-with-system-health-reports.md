@@ -1,24 +1,24 @@
 ---
-title: "Poradce při potížích s sestav o stavu systému | Microsoft Docs"
-description: "Popisuje sestav stavu odesílají součásti Azure Service Fabric a jejich využití pro řešení potíží clusteru nebo problémy s aplikací"
+title: Poradce při potížích s sestav o stavu systému | Microsoft Docs
+description: Popisuje sestav stavu odesílají součásti Azure Service Fabric a jejich využití pro řešení potíží clusteru nebo problémy s aplikací
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8304790b5eba4679b0633641c82d57316e7f8ec4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Azure Service Fabric součásti poskytují sestavy stavu systému na všechny entity v clusteru okamžitě po nasazení. [Úložiště stavu](service-fabric-health-introduction.md#health-store) vytvoří nebo odstraní entit na základě sestav systému. Také slouží k uspořádání je v hierarchii, která zaznamená interakce entity.
@@ -56,7 +56,7 @@ Sestava Určuje časový limit globální zapůjčení jako time to live (TTL). 
 * **Vlastnost**: začíná **okolí** a obsahuje informace o uzlu.
 * **Další kroky**: Zjistěte, proč dojde ke ztrátě okolí. Například zkontrolujte komunikaci mezi uzly clusteru.
 
-### <a name="rebuild"></a>Znovu sestavit
+### <a name="rebuild"></a>Opětovné sestavení
 
 Služba Správce převzetí služeb při selhání (FM) spravuje informace o uzly clusteru. Když FM ztratí svoje data a přejde do ztrátě dat, nezaručuje, že má nejaktuálnější informace o uzly clusteru. V takovém případě systém prochází opětovném sestavení a System.FM shromažďuje data ze všech uzlů v clusteru, aby bylo možné znovu sestavit její stav. V některých případech kvůli sítě nebo problémů uzlu, opětovné sestavení můžete získat zablokované nebo bylo zastaveno. Stejná situace může nastat službou převzetí služeb při selhání Manager Master (FMM). FMM je bezstavové systémová služba, která udržuje zaznamenávat, kde jsou všechny FMs v clusteru. Primární FMM je vždy uzel s ID nejbližší na hodnotu 0. Pokud tento uzel získá vyřazen, aktivuje se opětovném sestavení.
 Pokud k jedné z předchozích podmínek dojde, **System.FM** nebo **System.FMM** flags prostřednictvím zprávu o chybách. Opětovné sestavení zablokovaná v jednom ze dvou fází:
@@ -407,7 +407,7 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/14/2017 4:55:13 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus, ReplicaCloseStatus, ReplicaChangeRoleStatus
+### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaChangeRoleStatus ReplicaOpenStatus, ReplicaCloseStatus,
 Tato vlastnost slouží k označení chyby nebo upozornění při pokusu o otevření repliky, zavřete repliku nebo přechod na jiný repliku z jedné role. Další informace najdete v tématu [životního cyklu repliky](service-fabric-concepts-replica-lifecycle.md). Chyby může být výjimek vyvolaných z volání rozhraní API nebo dojde k chybě procesu hostitele služby během této doby. Selhání kvůli volání rozhraní API z kódu jazyka C# Service Fabric přidá výjimku a trasování zásobníku sestavy stavu.
 
 Tato upozornění na stav jsou vyvolány po opakování akce místně některé počet opakování (v závislosti na zásadách). Service Fabric opakuje akci až do maximální prahovou hodnotu. Po dosažení maximální prahová hodnota mohou zkuste tak, aby fungoval k napravení situace. Tento pokus může způsobit, že tato upozornění k jejímu vymazání, protože umožňuje na akci na tomto uzlu. Například pokud se nedaří repliku otevřete na uzlu, Service Fabric vyvolá upozornění stavu. Pokud replika stále se neotevře, Service Fabric funguje pro automatickou opravu. Tato akce může zahrnovat pokusem o stejné v jiném uzlu. Tento pokus způsobí, že upozornění aktivována pro tuto repliku vymazat. 
@@ -416,7 +416,7 @@ Tato upozornění na stav jsou vyvolány po opakování akce místně některé 
 * **Vlastnost**: **ReplicaOpenStatus**, **ReplicaCloseStatus**, a **ReplicaChangeRoleStatus**.
 * **Další kroky**: prozkoumat služby kód nebo havárie výpisy Chcete-li určit, proč selhává operaci.
 
-Následující příklad ukazuje stav repliky, která je aktivována `TargetInvocationException` z jeho open – metoda. Popis obsahuje bodem selhání, **IStatefulServiceReplica.Open**, typ výjimky **targetinvocationexception –**a trasování zásobníku.
+Následující příklad ukazuje stav repliky, která je aktivována `TargetInvocationException` z jeho open – metoda. Popis obsahuje bodem selhání, **IStatefulServiceReplica.Open**, typ výjimky **targetinvocationexception –** a trasování zásobníku.
 
 ```PowerShell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794

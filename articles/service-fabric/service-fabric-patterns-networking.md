@@ -1,24 +1,24 @@
 ---
-title: "Vzory sítě pro Azure Service Fabric | Microsoft Docs"
-description: "Popisuje obecné sítě vzory pro Service Fabric a jak vytvořit cluster pomocí Azure síťových funkcí."
+title: Vzory sítě pro Azure Service Fabric | Microsoft Docs
+description: Popisuje obecné sítě vzory pro Service Fabric a jak vytvořit cluster pomocí Azure síťových funkcí.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0f655becfac05acfacfeef12edd68b37835420bf
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: b180e62804b875ca4547a9d09f19efff32ae0cd9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-networking-patterns"></a>Vzory sítě Service Fabric
 Cluster Azure Service Fabric může integrovat další funkce Azure sítě. V tomto článku jsme ukazují, jak vytvořit clustery, které používají následující funkce:
@@ -340,7 +340,7 @@ Tento scénář nahrazuje externím vyrovnáváním zatížení v šabloně Serv
                 ],
     ```
 
-5. Změna nástroje pro vyrovnávání zatížení `frontendIPConfigurations` ze pomocí nastavení `publicIPAddress`, pomocí podsíť a `privateIPAddress`. `privateIPAddress`používá předdefinovanou statické interní IP adresu. Chcete-li použít dynamickou IP adresu, odeberte `privateIPAddress` element a poté změňte `privateIPAllocationMethod` k **dynamické**.
+5. Změna nástroje pro vyrovnávání zatížení `frontendIPConfigurations` ze pomocí nastavení `publicIPAddress`, pomocí podsíť a `privateIPAddress`. `privateIPAddress` používá předdefinovanou statické interní IP adresu. Chcete-li použít dynamickou IP adresu, odeberte `privateIPAddress` element a poté změňte `privateIPAllocationMethod` k **dynamické**.
 
     ```
                 "frontendIPConfigurations": [

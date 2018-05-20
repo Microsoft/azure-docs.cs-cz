@@ -1,6 +1,6 @@
 ---
-title: "Spolehlivé služby oznámení | Microsoft Docs"
-description: "Rámcová dokumentace pro oznámení služby Fabric spolehlivé služby"
+title: Spolehlivé služby oznámení | Microsoft Docs
+description: Rámcová dokumentace pro oznámení služby Fabric spolehlivé služby
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -9,16 +9,16 @@ editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: c080ee1f67b558988e35613f7357137c89c872fc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4455b259ef2159f9e1ec4991fc533f1843899682
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reliable-services-notifications"></a>Spolehlivé služby oznámení
 Oznámení klientům sledovat změny provedené na objekt, který se vás zajímá. Oznámení podporují dva typy objektů: *spolehlivé správce stavu* a *spolehlivé slovník*.
@@ -36,7 +36,7 @@ Správce spolehlivé stavu poskytuje oznámení pro následující události:
 * Transakce
   * Potvrzení
 * Správce stavu
-  * Znovu sestavit
+  * Opětovné sestavení
   * Přidání spolehlivé stavu
   * Odebrání spolehlivé stavu
 

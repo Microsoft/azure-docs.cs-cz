@@ -11,14 +11,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 78190576fb17409fac929b5afa50b71046f4d0e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 12ec60049cdf267834d251c6c927b35e3c363a4e
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="monitor-hbase-with-log-analytics"></a>Monitorování HBase s analýzy protokolů
 
@@ -80,7 +80,7 @@ Budete potřebovat vaše ID pracovního prostoru analýzy protokolů a klíč pr
 
 3. Na domovské stránce portálu OMS vyberte nastavení.
 
-    ![Portálu OMS](./media/apache-hbase-monitor-with-oms/oms-portal-settings.png) 
+    ![Portál OMS](./media/apache-hbase-monitor-with-oms/oms-portal-settings.png) 
 
 4. Vyberte připojené zdroje, servery se systémem Linux.
 

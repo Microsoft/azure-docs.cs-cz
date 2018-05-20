@@ -4,8 +4,8 @@ description: Popisuje, jak můžete na můžete nastavit výstrahy faktury Azure
 keywords: platební výstraze, fakturace výstrahu
 services: ''
 documentationcenter: ''
-author: vikdesai
-manager: tonguyen
+author: adpick
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
-ms.author: vikdesai
+ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9f20de2c8a8870568ac624846f6a8a4f8d72b5c0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Nastavení výstrah fakturace nebo platební pro vaše předplatné Microsoft Azure
 Pokud jste správce účtů pro předplatné Azure, můžete použít Azure fakturace služby oznámení. Chcete-li vytvořit vlastní fakturace výstrahy, které vám pomůžou monitorovat a spravovat fakturace aktivity pro vaše účty Azure.
@@ -49,7 +49,7 @@ Azure podporuje všechny e-mailovou adresu, ale není ověřte, že prací e-mai
 Po nastavení výstrahy centra účtů je uvádí a ukazuje, kolik více můžete nastavit. Pro každou výstrahu zobrazí datum a čas, který byl odeslán, jestli je výstraha fakturace celkový nebo peněžního kreditu, který a omezení, které vytvořili. Datum je formát rrrr mm-dd formát data a času je 24 hodin koordinaci světový čas (UTC). Kliknutím na znaménko plus pro výstrahu v seznamu, pokud ho chcete upravit, nebo klikněte na odpadkový ho odstranit.
 
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Výstrahy fakturace pro zákazníky Enterprise Agreement (EA)
-Zákazníci EA můžete získat výstrahy pro každé oddělení v zápisu nastavení výdaje kvóty. V tématu [oddělení výdaje kvóty](https://ea.azure.com/helpdocs/departmentSpendingQuotas) na portálu EA začít pracovat.
+EA předplatných nejsou podporované touto službou, místo toho EA zákazníkům můžete získat výstrahy pro každé oddělení v zápisu nastavením výdaje kvóty. V tématu [oddělení výdaje kvóty](https://ea.azure.com/helpdocs/departmentSpendingQuotas) na portálu EA začít pracovat.
 
 ## <a name="learn-more-about-azure-cost-management"></a>Další informace o Azure náklady na správu
 - Odhad náklady na používání [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/), [celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator), a když přidáte službu.

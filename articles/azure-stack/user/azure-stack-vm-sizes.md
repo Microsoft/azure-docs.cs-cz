@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 05/16/2018
 ms.author: brenduns
-ms.openlocfilehash: 1c22eb17ffcd070c1c5529033eeaa73dc7bd3859
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.openlocfilehash: 38f3ec1d408139831f0bbb4e946c1403a62367e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporovány v Azure zásobníku
 
@@ -51,6 +51,18 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáván
 |**Standard_A6** |4 |28    |285 |500 |500 |8×500  |2 / 1 000 |
 |**Standard_A7** |8 |56    |605 |500 |500 |16×500 |4 / 2 000 |
 
+### <a name="av2-series"></a>Av2-series
+*Vyžaduje verzi Azure zásobníku 1804 nebo novější*
+
+|Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | OS maximální propustnost disku (IOPS) | Maximální propustnost dočasné úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximálního počtu síťových adaptérů / očekává šířku pásma sítě (MB/s) |
+|-----------------|----|----|-----|-----|------|--------------|---------|
+|**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2 / 2×500   |2 / 250  |
+|**Standard_A2_v2**  |2   |4   |20   |500 |2000  |4 / 4×500   |2 / 500  |
+|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8 / 8×500   |4 / 1 000 |
+|**Standard_A8_v2**  |8   |16  |80   |500 |8000  |16 / 16×500 |8 / 2 000 |
+|**Standard_A2m_v2** |2   |16  |20   |500 |2000  |4 / 4×500   |2 / 500  |
+|**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8×500   |4 / 1 000 |
+|**Standard_A8m_v2** |8   |64  |80   |500 |8000  |16 / 16×500 |8 / 2 000 |
 
 ### <a name="d-series"></a>D-series
 |Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | OS maximální propustnost disku (IOPS) | Maximální propustnost dočasné úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximálního počtu síťových adaptérů / očekává šířku pásma sítě (MB/s) |
@@ -86,6 +98,45 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáván
 |**Standard_DS3_v2** |4   |14  |28  |1000 |16000 |16 / 16 x 2300 |4 / 3 000 |
 |**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32 x 2300 |8 / 6 000 |
 |**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64 / 64x2300 |8 / 10000 |
+
+
+## <a name="compute-optimized"></a>Optimalizované z hlediska výpočetních služeb
+### <a name="f-series"></a>F-series
+*Vyžaduje verzi Azure zásobníku 1804 nebo novější*
+
+|Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | OS maximální propustnost disku (IOPS) | Maximální propustnost dočasné úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximálního počtu síťových adaptérů / očekává šířku pásma sítě (MB/s) |
+|-----------------|----|----|-----|----|------|------------|---------|
+|**Standard_F1**  |1   |2   |16   |500 |3000  |4 / 4 x 400   |2 / 750  |
+|**Standard_F2**  |2   |4   |32   |500 |6000  |8 / 8×500   |2 / 1 500 |
+|**Standard_F4**  |4   |8   |64   |500 |12000 |16 / 16×500 |4 / 3 000 |
+|**Standard_F8**  |8   |16  |128  |500 |24000 |32 / 32×500 |8 / 6 000 |
+|**Standard_F16** |16  |32  |256  |500 |48000 |64 / 64 x 500 |8 / 6000 12000  |
+
+
+### <a name="fs-series"></a>Řada Fs
+*Vyžaduje verzi Azure zásobníku 1804 nebo novější*  
+
+|Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | OS maximální propustnost disku (IOPS) | Maximální propustnost dočasné úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximálního počtu síťových adaptérů / očekává šířku pásma sítě (MB/s) |
+|------------------|----|----|----|-----|------|-------------|---------|
+|**Standard_F1s**  |1   |2   |4   |1000 |4000  |4 / 4x2300   |2 / 750  |
+|**Standard_F2s**  |2   |4   |8   |1000 |8000  |8 / 8 x 2300   |2 / 1 500 |
+|**Standard_F4s**  |4   |8   |16  |1000 |16000 |16 / 16 x 2300 |4 / 3 000 |
+|**Standard_F8s**  |8   |16  |32  |1000 |32000 |32 / 32 x 2300 |8 / 6 000 |
+|**Standard_F16s** |16  |32  |64  |1000 |64000 |64 / 64x2300 |8 / 6000 12000  |
+
+
+### <a name="fsv2-series"></a>Fsv2-series
+*Vyžaduje verzi Azure zásobníku 1804 nebo novější* 
+
+|Velikost     |Virtuální procesory     |Paměť (GiB) | Dočasné úložiště (GiB)  | OS maximální propustnost disku (IOPS) | Maximální propustnost dočasné úložiště (IOPS) | Maximální počet datových disků nebo propustnost (IOPS) | Maximálního počtu síťových adaptérů / očekává šířku pásma sítě (MB/s) |
+|---------------------|----|----|-----|-----|-------|--------------|---------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |Střední |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8 x 2300    |Střední |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16 x 23000 |Vysoký     |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32 x 23000 |Vysoký     |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32 x 23000 |Vysoký  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32 x 23000 |Velmi vysoké  |
+
 
 ## <a name="memory-optimized"></a>Optimalizované z hlediska paměti
 
@@ -123,6 +174,7 @@ Paměť optimalizované velikosti virtuálních počítačů zadejte vysoký pom
 |**Standard_DS12_v2** |4   |28  |56   |1000 |16000  |16 / 16 x 2300  |4 / 3 000 |
 |**Standard_DS13_v2** |8   |56  |112  |1000 |32000  |32 / 32 x 2300  |8 / 6 000 |
 |**Standard_DS14_v2** |16  |112 |224  |1000 |64000  |64 / 64x2300  |8 / 10000 |
+
 
 ## <a name="next-steps"></a>Další postup
 

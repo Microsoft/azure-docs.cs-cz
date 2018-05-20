@@ -1,23 +1,23 @@
 ---
-title: "Vzdálená komunikace služby v Azure Service Fabric | Microsoft Docs"
-description: "Vzdálená komunikace Service Fabric umožňuje služby a klienti komunikovat se službami s použitím vzdálené volání procedury."
+title: Vzdálená komunikace služby v Azure Service Fabric | Microsoft Docs
+description: Vzdálená komunikace Service Fabric umožňuje služby a klienti komunikovat se službami s použitím vzdálené volání procedury.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 51a9c8bd628ef9e65d04a3a4ddbdc127d84d4b54
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 074c428662abb5c3acf86835f6fedbf3f8791acf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-remoting-with-reliable-services"></a>Služba vzdálené komunikace se službami Reliable Services
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Spolehlivé služby framework poskytuje mechanismus vzdálenou komunikaci rychle
 Nastavení vzdálené komunikace pro služby se provádí ve dvou jednoduchých kroků:
 
 1. Vytvořte rozhraní služby k implementaci. Toto rozhraní definuje metody, které jsou k dispozici pro vzdálené volání procedury vaší služby. Metody musí být vrácení úloh asynchronních metod. Musí implementovat rozhraní `microsoft.serviceFabric.services.remoting.Service` signál, že služba má vzdálené komunikace rozhraní.
-2. Použijte vzdálenou komunikaci naslouchací proces ve službě. Jedná se `CommunicationListener` implementace, která poskytuje funkce vzdálené komunikace. `FabricTransportServiceRemotingListener`Umožňuje vytvořit naslouchací proces vzdálenou komunikaci pomocí protokolu přenosu výchozí vzdálenou komunikaci.
+2. Použijte vzdálenou komunikaci naslouchací proces ve službě. Jedná se `CommunicationListener` implementace, která poskytuje funkce vzdálené komunikace. `FabricTransportServiceRemotingListener` Umožňuje vytvořit naslouchací proces vzdálenou komunikaci pomocí protokolu přenosu výchozí vzdálenou komunikaci.
 
 Například následující bezstavové služby zpřístupní jedné metody přes vzdálené volání procedury získat "Hello World".
 
@@ -92,7 +92,7 @@ Vytvoření ServiceProxy je lightweight operace, takže uživatel může vytvoř
 ### <a name="serviceproxyfactory-lifetime"></a>Doba platnosti ServiceProxyFactory
 [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) je objekt factory, který vytvoří proxy server pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní API `ServiceProxyBase.create` k vytváření proxy serveru, pak framework vytvoří `FabricServiceProxyFactory`.
 Je vhodné vytvořit jednu ručně, až budete potřebovat k přepsání [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._service_remoting_client_factory) vlastnosti.
-Objekt Factory je náročná operace. `FabricServiceProxyFactory`udržuje mezipaměť komunikace klientů.
+Objekt Factory je náročná operace. `FabricServiceProxyFactory` udržuje mezipaměť komunikace klientů.
 Osvědčeným postupem je do mezipaměti `FabricServiceProxyFactory` jako dlouho.
 
 ## <a name="remoting-exception-handling"></a>Vzdálená komunikace zpracování výjimek
@@ -103,5 +103,5 @@ V případě TransientExceptions se pouze pokusí volání.
 
 Výchozí parametry opakování se poskytují podle [OperationRetrySettings]. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Uživatel může konfigurovat tyto hodnoty pomocí předání objektu OperationRetrySettings ServiceProxyFactory konstruktor.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Zabezpečení komunikace pro spolehlivé služby](service-fabric-reliable-services-secure-communication.md)

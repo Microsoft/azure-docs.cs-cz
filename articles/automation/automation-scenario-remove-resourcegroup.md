@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8fcb7abbc28aef06c43b6ece89eb7bd6916694e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f0ec42a1e62c4aa35bb6bdffce0acf00a971cb7d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Scénář Azure Automation – automatizace odebrání skupin prostředků
 Mnoho zákazníků vytváří více než jednu skupinu prostředků. Některé mohou sloužit ke správě produkčních aplikací, jiné mohou sloužit jako vývojové, testovací nebo přípravné prostředí. Automatizace nasazení těchto prostředků je jedna věc, ale možnost vyřadit skupinu prostředků z provozu jediným kliknutím něco úplně jiného. Tuto běžnou úlohu správy můžete zjednodušit pomocí Azure Automation. To je užitečné v případě, že pracujete s předplatným Azure, které má nastavený limit útraty prostřednictvím členské nabídky, jako je například MSDN nebo program Microsoft Partner Network Cloud Essentials.
@@ -36,7 +36,7 @@ Pro tento runbook jsou definované tyto vstupní parametry:
 | PreviewMode (volitelný) |Spustí runbook, aby bylo vidět, které skupiny prostředků se odstraní, ale neprovede žádnou akci.<br>Výchozí hodnota je **true**, která pomáhá zabránit nechtěnému odstranění jedné nebo několika skupin prostředků předaných do runbooku. |
 
 ## <a name="install-and-configure-this-scenario"></a>Instalace a konfigurace tohoto scénáře
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 Tento runbook se ověřuje pomocí [účtu Spustit v Azure jako](automation-sec-configure-azure-runas-account.md).    
 
 ### <a name="install-and-publish-the-runbooks"></a>Instalace a zveřejnění runbooků

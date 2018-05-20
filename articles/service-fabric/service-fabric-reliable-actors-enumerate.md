@@ -9,16 +9,16 @@ editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 037138f68e5c18822e4d7b3fa47591411e8a2407
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d5d6ac87db18815aa945d6964338626365b08e64
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Zobrazení výčtu Service Fabric Reliable Actors
 Služby Reliable Actors umožňuje klientovi výčet metadata o aktéři, která je hostitelem služby. Protože služby objektu actor oddílů stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho aktéři, výčtu se vrátí jako sadu stránkových výsledků. Na stránkách jsou smyčce přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech active aktéři v jednom oddílu služby objektu actor:

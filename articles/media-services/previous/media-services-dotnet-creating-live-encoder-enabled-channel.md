@@ -1,5 +1,5 @@
 ---
-title: Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET | Dokumentace Microsoftu
+title: Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET | Microsoft Docs
 description: Tento kurz vás provede kroky k vytvoření kanálu, který přijímá datový proud s jednou přenosovou rychlostí a kóduje ho do datového proudu s více přenosovými rychlostmi pomocí sady .NET SDK.
 services: media-services
 documentationcenter: ''
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 672628ced506ae4c26b69e935e1cee3f78bd1a6b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 946de42c499182f8785866f362677779b105760d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Postup živého streamování využívajícího službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi pomocí rozhraní .NET
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Následující kroky popisují úlohy, které jsou běžně součásti procesu v
 > 
 > 
 
-1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který umí produkovat datový proud s jednou přenosovou rychlostí v jednom z následujících protokolů: RTMP, technologie Smooth Streaming nebo RTP (MPEG-TS). Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Připojte k počítači videokameru. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který umí produkovat stream s jednou přenosovou rychlostí v jednom z následujících protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](http://go.microsoft.com/fwlink/?LinkId=532824).
 
     Tento krok můžete provést i po vytvoření kanálu.
 
@@ -228,18 +228,18 @@ namespace EncodeLiveStreamWithAmsClear
         {
             return new ChannelInput
             {
-                StreamingProtocol = StreamingProtocol.RTPMPEG2TS,
+                StreamingProtocol = StreamingProtocol.FragmentedMP4,
                 AccessControl = new ChannelAccessControl
                 {
                     IPAllowList = new List<IPRange>
-                {
-                    new IPRange
                     {
-                    Name = "TestChannelInput001",
-                    Address = IPAddress.Parse("0.0.0.0"),
-                    SubnetPrefixLength = 0
+                        new IPRange
+                        {
+                        Name = "TestChannelInput001",
+                        Address = IPAddress.Parse("0.0.0.0"),
+                        SubnetPrefixLength = 0
+                        }
                     }
-                }
                 }
             };
         }
@@ -277,9 +277,7 @@ namespace EncodeLiveStreamWithAmsClear
             {
                 SystemPreset = "Default720p",
                 IgnoreCea708ClosedCaptions = false,
-                AdMarkerSource = AdMarkerSource.Api,
-                // You can only set audio if streaming protocol is set to StreamingProtocol.RTPMPEG2TS.
-                AudioStreams = new List<AudioStream> { new AudioStream { Index = 103, Language = "eng" } }.AsReadOnly()
+                AdMarkerSource = AdMarkerSource.Api
             };
         }
 

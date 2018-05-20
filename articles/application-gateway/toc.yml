@@ -7,17 +7,17 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Směrování webového provozu – portál
+    - name: Správa webového provozu – portál
       href: quick-create-portal.md
-    - name: Směrování webového provozu – PowerShell
+    - name: Správa webového provozu – PowerShell
       href: quick-create-powershell.md
-    - name: Směrování webového provozu – Azure CLI
+    - name: Správa webového provozu – Azure CLI
       href: quick-create-cli.md
 - name: Kurzy
   items:
     - name: Správa webového provozu
       href: tutorial-manage-web-traffic-cli.md
-    - name: Omezení webového provozu
+    - name: Povolení firewallu webových aplikací
       href: tutorial-restrict-web-traffic-cli.md
     - name: Zabezpečení pomocí protokolu SSL
       href: tutorial-ssl-cli.md
@@ -35,18 +35,23 @@
       href: cli-samples.md
 - name: Koncepty
   items:
+    - name: Ukončení protokolu SSL
+      href: ssl-overview.md
+    - name: Přehled zásad SSL
+      href: application-gateway-ssl-policy-overview.md
     - name: Brána firewall webových aplikací
       href: waf-overview.md
     - name: Směrování adres URL
       href: url-route-overview.md
     - name: Hostování několika webů
       href: multiple-site-overview.md
-    - name: Ukončení protokolu SSL
-      href: ssl-overview.md
-    - name: Přesměrování adres URL
+    - name: Podpora přesměrování
       href: redirect-overview.md
+    - name: Podpora více tenantů
     - name: Monitorování stavu
       href: application-gateway-probe-overview.md
+    - name: Podpora protokolu WebSocket
+      href: application-gateway-websocket.md
 - name: Návody
   items:
     - name: Vytvoření služby Application Gateway
@@ -55,10 +60,20 @@
           href: create-vmss-template.md
         - name: Webové aplikace – PowerShell
           href: create-web-app.md
-    - name: Povolení ukončení protokolu SSL – portál
+        - name: Konfigurace interního nástroje pro vyrovnávání zatížení
+          href: application-gateway-ilb.md
+    - name: Konfigurace ukončení protokolu SSL – portál
       href: create-ssl-portal.md
     - name: Hostování několika webů – portál
       href: create-multiple-sites-portal.md
+    - name: Přizpůsobení pravidel WAF
+      items:
+        - name: Azure Portal
+          href: application-gateway-customize-waf-rules-portal.md
+        - name: Azure PowerShell
+          href: application-gateway-customize-waf-rules-powershell.md
+        - name: Azure CLI
+          href: application-gateway-customize-waf-rules-cli.md
     - name: Přesměrování externího provozu
       items:
         - name: Azure PowerShell
@@ -111,6 +126,8 @@
           href: application-gateway-diagnostics.md
 - name: Referenční informace
   items:
+    - name: Pravidla CRS
+      href: application-gateway-crs-rulegroups-rules.md
     - name: Azure CLI
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

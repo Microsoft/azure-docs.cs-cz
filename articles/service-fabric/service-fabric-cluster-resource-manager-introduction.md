@@ -1,24 +1,24 @@
 ---
-title: "Představení správce prostředků clusteru Service Fabric | Microsoft Docs"
-description: "Úvod do Service Fabric clusteru správce prostředků."
+title: Představení správce prostředků clusteru Service Fabric | Microsoft Docs
+description: Úvod do Service Fabric clusteru správce prostředků.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Představení správce prostředků clusteru Service Fabric
 Tradičně Správa systémy IT nebo online služby určené vyhradit konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byly navržen jako vrstev. By "web" vrstvu a vrstvu "data" nebo "úložiště". Aplikace by měla mít zasílání zpráv úrovně, kde plynoucích požadavky a odhlašování, a také sada počítačů vyhrazený pro ukládání do mezipaměti. Jednotlivé typy úlohy nebo vrstvě měl konkrétních počítačů, které jsou vyhrazené pro jeho: databáze získali vyhrazené, webové servery a několika několik počítačů. Pokud konkrétní typ zatížení způsobená na počítače, které bylo na spuštění příliš aktivní, pak jste přidali další počítače pomocí této stejnou konfiguraci do této vrstvy. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvu obvykle nahradíte počítače, které mají větší počítače. Snadné. Pokud na počítači se nezdařilo, spustili část celkového aplikace na nižší kapacitu, dokud tento počítač může obnovit. Stále poměrně snadno (Pokud je to nutně zábavné).
@@ -43,7 +43,7 @@ Správce prostředků clusteru je součástí systému, který zpracovává orch
 2. Optimalizace prostředí
 3. Pomoc s jinými procesy
 
-Jak funguje správce prostředků clusteru najdete v následujícím videu Microsoft Virtual Academy:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
+Jak funguje správce prostředků clusteru najdete v následujícím videu Microsoft Virtual Academy: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
 <img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -56,8 +56,8 @@ Některé z těchto strategií jsou zajímavé, správce prostředků clusteru S
 
 Vzhledem k tomu, že správce prostředků clusteru je zodpovědná za přesunutí služby kolem, obsahuje sadu různé funkce ve srovnání s by najít ve službě Vyrovnávání zatížení sítě. Toto je nástroje pro vyrovnávání zatížení sítě přinášejí síťové přenosy k umístění služby již, i když toto umístění není ideální pro spouštění samotnou službu. Správce prostředků clusteru Service Fabric aktivuje se podstatně liší strategie pro zajištění, že jsou efektivně využité prostředky v clusteru.
 
-## <a name="next-steps"></a>Další kroky
-- Informace o architektuře a informačního toku v rámci správce prostředků clusteru, podívejte se na [v tomto článku](service-fabric-cluster-resource-manager-architecture.md)
+## <a name="next-steps"></a>Další postup
+- Informace o architektuře a informačního toku v rámci správce prostředků clusteru, podívejte se na [v tomto článku ](service-fabric-cluster-resource-manager-architecture.md)
 - Správce prostředků clusteru má mnoho možností pro popis clusteru. Chcete-li získat další informace o metriky, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)
 - Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
 - Metriky se, jak správce prostředků služby Fabric clusteru spravuje využívání a kapacity v clusteru. Další informace o metriky a způsob jejich konfigurace rezervaci [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)

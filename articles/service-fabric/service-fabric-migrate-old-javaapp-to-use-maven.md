@@ -1,29 +1,29 @@
 ---
-title: "Migrace z Java SDK do Mavenu – aktualizace starších aplikací Azure Service Fabric v Javě pro použití Mavenu | Dokumentace Microsoftu"
-description: "Aktualizace starších aplikací v Javě, které používaly Service Fabric Java SDK, k načtení závislostí Service Fabric v Javě z Mavenu. Po dokončení tohoto nastavení budou starší aplikace v Javě umožňovat sestavení."
+title: Migrace z Java SDK do Mavenu – aktualizace starších aplikací Azure Service Fabric v Javě pro použití Mavenu | Dokumentace Microsoftu
+description: Aktualizace starších aplikací v Javě, které používaly Service Fabric Java SDK, k načtení závislostí Service Fabric v Javě z Mavenu. Po dokončení tohoto nastavení budou starší aplikace v Javě umožňovat sestavení.
 services: service-fabric
 documentationcenter: java
 author: rapatchi
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: 7eac05c859440e868e1a207f0ba0d1bdf41e6e6b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 178d49a9481cec20da3e9418d9c104684f303267
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
 Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service Fabric Java SDK do hostování v Mavenu. Momentálně můžete k načtení nejnovějších závislostí Service Fabric Java využít **mavencentral**. Tento rychlý start vám pomůže aktualizovat stávající aplikace v Javě, které jste dříve vytvořili pro použití se sadou Service Fabric Java SDK, a to pomocí šablony Yeoman nebo Eclipse, aby byly kompatibilní se sestavením založeným na Mavenu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 1. Nejdřív musíte odinstalovat stávající sadu Java SDK.
 
   ```bash
@@ -87,7 +87,7 @@ Podpora bezstavové služby Service Fabric pro vaši aplikaci.
   }
   ```
 
-### <a name="others"></a>Jiné
+### <a name="others"></a>Ostatní
 #### <a name="transport"></a>Přenos
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.

@@ -1,20 +1,20 @@
 ---
-title: "Azure událostí mřížky schéma pro IoT Hub | Microsoft Docs"
-description: "Odkaz na stránku vlastností služby IoT Hub a formát schématu událostí"
+title: Azure událostí mřížky schéma pro IoT Hub | Microsoft Docs
+description: Odkaz na stránku vlastností služby IoT Hub a formát schématu událostí
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 29ad1233a344c3085286c27cb925b2dc9fb41f7e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure schématu události událostí mřížky pro IoT Hub
 
@@ -89,11 +89,11 @@ Všechny události obsahovat stejné dat nejvyšší úrovně:
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
 | Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| eventType | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
+| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
-| data | Objekt | Data událostí služby IoT Hub.  |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat událostí. Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| data | objekt | Data událostí služby IoT Hub.  |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
 
 Obsah objektu dat se liší pro každý zdroj události. Datový objekt pro události služby IoT Hub obsahuje následující vlastnosti:
 
@@ -103,21 +103,21 @@ Obsah objektu dat se liší pro každý zdroj události. Datový objekt pro udá
 | deviceId | řetězec | Jedinečný identifikátor zařízení. Tento řetězec malá a velká písmena může být maximálně 128 znaků dlouhé a podporuje alfanumerických znaků ASCII 7 bitů a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | operationTimestamp | řetězec | Časové razítko ISO8601 operace. |
 | opType | řetězec | Typ události, který je určený pro tuto operaci službou IoT Hub: buď `DeviceCreated` nebo `DeviceDeleted`.
-| Twin | Objekt | Informace o dvojče zařízení, což je represenation cloudové aplikace zařízení metadat. | 
+| Twin | objekt | Informace o dvojče zařízení, což je represenation cloudové aplikace zařízení metadat. | 
 | ID zařízení | řetězec | Jedinečný identifikátor dvojče zařízení. | 
 | Značka Etag | řetězec | Část informace, který popisuje obsah dvojče zařízení. Každý značka etag se musí být jedinečný za dvojče zařízení. | 
 | status | řetězec | Jestli dvojče zařízení je povolený nebo zakázaný. | 
 | statusUpdateTime | řetězec | Aktualizovat ISO8601 časové razítko poslední twin stav zařízení. |
 | Hodnota connectionState | řetězec | Jestli je zařízení připojené nebo odpojeno. | 
 | lastActivityTime | řetězec | ISO8601 časové razítko poslední aktivity. | 
-| cloudToDeviceMessageCount | celé číslo | Počet cloudu na zařízení zprávy odeslané do tohoto zařízení. | 
+| cloudToDeviceMessageCount | integer | Počet cloudu na zařízení zprávy odeslané do tohoto zařízení. | 
 | authenticationType. | řetězec | Typ ověřování používaný pro toto zařízení: buď `SAS`, `SelfSigned`, nebo `CertificateAuthority`. |
 | X509Thumbprint | řetězec | Jedinečnou hodnotu x509 je kryptografický otisk certifikátu, běžně použít k vyhledání konkrétní certifikát v úložišti certifikátů. Kryptografický otisk se dynamicky vygeneruje pomocí algoritmu SHA1 a fyzicky neexistuje v certifikátu. | 
 | primaryThumbprint | řetězec | Primární kryptografický otisk pro x509 certifikátu. |
 | secondaryThumbprint | řetězec | Sekundární kryptografický otisk pro x509 certifikátu. | 
-| verze | celé číslo | Celé číslo, které se zvýší při každém čas zařízení twin se aktualizuje. |
-| požadované | Objekt | Část vlastnosti, které lze zapsat pouze pomocí back-end aplikace a číst zařízení. | 
-| hlášené | Objekt | Část vlastnosti, které lze zapsat pouze pomocí zařízení a číst back-end aplikace. |
+| verze | integer | Celé číslo, které se zvýší při každém čas zařízení twin se aktualizuje. |
+| požadované | objekt | Část vlastnosti, které lze zapsat pouze pomocí back-end aplikace a číst zařízení. | 
+| hlášené | objekt | Část vlastnosti, které lze zapsat pouze pomocí zařízení a číst back-end aplikace. |
 | lastUpdated | řetězec | Aktualizovat ISO8601 časové razítko poslední twin vlastnosti zařízení. | 
 
 ## <a name="next-steps"></a>Další postup

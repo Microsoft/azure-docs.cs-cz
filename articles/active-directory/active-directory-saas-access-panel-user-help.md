@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0604007255d829cab0502e93895ca541da3b93a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Řešení problémů s přístupu a použití portálu Moje aplikace
 
@@ -57,10 +57,11 @@ Zkontrolujte, zda byly splněny následující požadavky na prohlížeč:
 - **Firefox 26.0 nebo novější**: v systému Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
 - **Internet Explorer 11**: na Windows 7 nebo novější (omezená podpora).
 
-Můžete také stáhnout rozšíření pro Chrome a hraniční přímo z následujících lokalit:
+Rozšíření můžete také stáhnout přímo z následujících lokalit:
 
-- [Rozšíření Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Rozšíření Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Pokud jste nainstalovali rozšíření ale stále má problémy, zkuste následující postup:
 
@@ -77,14 +78,14 @@ Pokud jste nainstalovali rozšíření ale stále má problémy, zkuste následu
    4. Vyberte ikonu pro rozšíření.
    5. Přihlaste se k rozšíření, vyberte **Přihlaste se k Začínáme**.
 
-* Přihlaste se k aplikaci přímo z prohlížeče, takto:
+* Pokud chcete přihlásit se přímo do aplikace z prohlížeče, postupujte takto:
    1. Po instalaci rozšíření, přihlaste se k němu výběrem **Přihlaste se k Začínáme**.
    2. Přihlaste se k aplikaci pomocí adresy URL přihlašování.  
        Adresa URL přihlašování je obvykle adresu URL aplikace, které zobrazí formulář přihlášení.
       Rozšíření by měl změnit stav a vám oznamuje, že heslo je k dispozici.
    3. K přihlášení, vyberte ikonu rozšíření.
 
-* Spuštění aplikace z rozšíření, postupujte takto:
+* Chcete-li spustit aplikaci z rozšíření, postupujte takto:
    1. Po instalaci rozšíření, přihlaste se k němu výběrem **Přihlaste se k Začínáme**.
    2. Vyberte ikonu rozšíření otevřete nabídku.
    3. Vyhledejte aplikaci, která je k dispozici na portálu Moje aplikace.

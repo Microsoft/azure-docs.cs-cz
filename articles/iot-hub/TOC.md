@@ -292,6 +292,7 @@
 # Zdroje a prostředky
 ## [Katalog zařízení Azure Certified for IoT](https://catalog.azureiotsuite.com/)
 ## [Centrum pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot/)
+## [Požadavky na zákaznická data](iot-hub-customer-data-requests.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [Nástroj DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [Nástroj iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)

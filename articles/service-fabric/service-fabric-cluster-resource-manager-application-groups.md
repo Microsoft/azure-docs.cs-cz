@@ -1,24 +1,24 @@
 ---
-title: "Správce prostředků clusteru služby Fabric - skupin aplikací | Microsoft Docs"
-description: "Přehled funkcí skupiny aplikací na portálu Service Fabric clusteru Resource Manager"
+title: Správce prostředků clusteru služby Fabric - skupin aplikací | Microsoft Docs
+description: Přehled funkcí skupiny aplikací na portálu Service Fabric clusteru Resource Manager
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3212631ede7125bd849c2d9ba86ba2a0747d69ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-application-groups"></a>Úvod do skupiny aplikací
 Správce prostředků clusteru Service Fabric obvykle spravuje prostředky clusteru tak, že se zatížení (reprezentované prostřednictvím [metriky](service-fabric-cluster-resource-manager-metrics.md)) rovnoměrně v rámci clusteru. Service Fabric spravuje kapacitu uzly v clusteru a clusteru jako celek prostřednictvím [kapacity](service-fabric-cluster-resource-manager-cluster-description.md). Metriky a kapacity pracovní velká pro řadu úloh, ale vzorů, které hodně využívají různé instance aplikace Service Fabric někdy předány další požadavky. Například můžete chtít:
@@ -183,7 +183,7 @@ ApplicationLoad dotaz vrátí základní informace o kapacitě aplikace, která 
 * Aplikace kapacity: Maximální povolená hodnota zatížení aplikace.
 
 ## <a name="removing-application-capacity"></a>Odebrání aplikace kapacity
-Jakmile aplikace kapacity parametry jsou nastavené pro aplikace, budou se dá odebrat pomocí rozhraní API pro aktualizaci aplikace nebo rutiny Powershellu. Například:
+Jakmile aplikace kapacity parametry jsou nastavené pro aplikace, budou se dá odebrat pomocí rozhraní API pro aktualizaci aplikace nebo rutiny Powershellu. Příklad:
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
@@ -207,7 +207,7 @@ Omezení se vynucují, jak při vytváření aplikací a aktualizací.
 - Nepokoušejte se použít funkce skupiny aplikací k omezení aplikace _konkrétní_ dílčí sadu uzlů. Jinými slovy, můžete určit, že je aplikace spuštěná na nejvíce pět uzlů, ale není konkrétní pět uzlů, které v clusteru. Chovaly aplikaci ke konkrétní uzly lze dosáhnout pomocí omezení umístění pro služby.
 - Nepokoušejte se použít aplikaci kapacitu k zajištění, že dvě služby z stejná aplikace budou umístěny v stejným uzlům. Místo toho použít [spřažení](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) nebo [omezení umístění](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
 - Chcete-li zjistit, o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
 - Začít od začátku a [získejte Úvod do Service Fabric clusteru správce prostředků](service-fabric-cluster-resource-manager-introduction.md)

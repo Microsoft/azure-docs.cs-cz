@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: e96f31b3e91066bfc04af62c2bf82db200f35002
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bff31dafdf3263ec189f67da7de8fea6eb3d2662
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Odstranění virtuálního počítače s Linuxem pomocí disk operačního systému se připojuje k obnovení virtuálního počítače pomocí Azure CLI 2.0
 Pokud Linux virtuálního počítače (VM) dojde k chybě spouštěcí nebo disk, musíte provést na virtuálním pevném disku, sám sebe pro řešení potíží. Běžným příkladem by neplatná položka v `/etc/fstab` , který brání virtuálního počítače se úspěšně spustil. Tento článek popisuje, jak pomocí Azure CLI 2.0 připojit virtuální pevný disk na jiný virtuální počítač s Linuxem opravte případné chyby a pak znovu vytvořte původní virtuální počítač. K provedení těchto kroků můžete také využít [Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -31,6 +31,8 @@ Proces řešení potíží je následující:
 3. Připojení k virtuálnímu počítači pro řešení potíží. Úpravy souborů nebo spustit žádné nástroje na opravte problémy v původní virtuální pevný disk.
 4. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
 5. Vytvoření virtuálního počítače pomocí původní virtuální pevný disk.
+
+Pro virtuální počítač, který používá spravovaných disků najdete v tématu [řešení spravovaných virtuálních počítačů disku připojením nového disku s operačním systémem](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
 
 Pokud chcete provést následující kroky pro řešení, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
 
@@ -183,6 +185,13 @@ Při vytváření virtuálního počítače z existujícího virtuálního pevn�
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
 ```
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Řešení potíží s spravovaných virtuálních počítačů disku připojením nového disku operačního systému
+1. Zastavte dotčených spravované disku Windows virtuální počítač.
+2. [Vytvoření snímku spravovaných disků na](../windows/snapshot-copy-managed-disk.md) disku operačního systému virtuálního počítače spravované disku.
+3. [Vytvoření spravovaného disku ze snímku](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+4. [Spravovaný disk připojit jako datový disk virtuálního počítače](../windows/attach-disk-ps.md).
+5. [Změňte datový disk od kroku 4 na disk s operačním systémem](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Další postup
 Pokud máte problémy s připojením k virtuálnímu počítači, přečtěte si téma [řešení SSH připojení k virtuální počítač Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete v tématu [problémů s připojením aplikace na virtuální počítač s Linuxem](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

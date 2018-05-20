@@ -1,12 +1,12 @@
 ---
-title: "Přehled Microsoft Azure StorSimple Data Manager | Microsoft Docs"
-description: "Obsahuje přehled služby StorSimple Manager dat"
+title: Přehled Microsoft Azure StorSimple Data Manager | Microsoft Docs
+description: Obsahuje přehled služby StorSimple Manager dat
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Přehled řešení StorSimple Manager dat
 
@@ -80,6 +80,11 @@ Tento klíč se používá ve výpočetní prostředky k provedení transformace
 Pokud vaše Data Manager oblasti se liší od vaší oblasti definice úlohy, je důležité pochopit, jaká data nebo metadata se nachází v každé z těchto oblastí. Následující diagram znázorňuje účinek použití různých oblastech pro definici Data Manager a úlohy.
 
 ![Definice služby a úlohy v různých oblastech](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="gdpr-compliance"></a>GDPR dodržování předpisů
+
+[Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR obsahuje mnoho požadavky na to, jak shromažďování, ukládání a používat osobní údaje. Pravidla GDPR jsou vynucená pro společnosti, vládních organizací a dalšími organizacemi, které fungují v Evropa a shromažďovat, analyzovat data svázané s obyvatele Evropské unie. Data Manager zařízení StorSimple je GDPR kompatibilní. Služba Data Manager neshromažďuje osobní data.
+Další informace najdete v tématu Zásady Microsoft Privacy v [Centrum zabezpečení](https://www.microsoft.com/trustcenter).
 
 ## <a name="next-steps"></a>Další postup
 

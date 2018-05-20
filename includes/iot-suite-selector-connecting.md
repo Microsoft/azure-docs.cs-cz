@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 43acf33ec7787378595ad62540a868100bf587f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12e2f0f458d491235a75aab7e3e5e474edf50e4b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 > [!div class="op_single_selector"]
 > * [C ve Windows](../articles/iot-suite/iot-suite-connecting-devices.md)
@@ -21,10 +21,10 @@ ms.lasthandoff: 05/07/2018
 > * [Node.js v Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-node.md)
 > * [C v Raspberry Pi](../articles/iot-suite/iot-suite-connecting-pi-c.md)
 
-V tomto kurzu budete implementovat **chladič** zařízení, která odesílá následující telemetrii na vzdálené monitorování [řešení akcelerátoru](../articles/iot-suite/iot-suite-what-are-solution-accelerators.md):
+V tomto kurzu budete implementovat **chladič** zařízení, která odesílá následující telemetrii na vzdálené monitorování [řešení akcelerátoru](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md):
 
 * Teplota
-* přetížení
+* Tlak
 * Vlhkost
 
 Pro jednoduchost, vygeneruje kód ukázkové hodnoty telemetrických dat pro **chladič**. Ukázku můžete rozšířit připojením skutečné snímače do svého zařízení a odesláním skutečné telemetrie.
@@ -43,7 +43,7 @@ Než napíšete kód pro vaše zařízení, nasaďte vaše vzdálené monitorov�
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Nasazení vaší vzdálené monitorování řešení akcelerátoru
 
-**Chladič** zařízení v tomto kurzu vytvoříte odesílá data do instance [vzdálené monitorování](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) akcelerátoru řešení. Pokud jste ještě nezřídili vzdálené monitorování akcelerátoru řešení v účtu Azure, najdete v části [nasazení vzdálené monitorování řešení akcelerátoru](../articles/iot-suite/iot-suite-remote-monitoring-deploy.md)
+**Chladič** zařízení v tomto kurzu vytvoříte odesílá data do instance [vzdálené monitorování](../articles/iot-suite/iot-suite-remote-monitoring-explore.md) akcelerátoru řešení. Pokud jste ještě nezřídili vzdálené monitorování akcelerátoru řešení v účtu Azure, najdete v části [nasazení vzdálené monitorování řešení akcelerátoru](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 Při procesu nasazení pro dokončení řešení vzdáleného monitorování, klikněte na tlačítko **spusťte** otevřete řídicí panel řešení v prohlížeči.
 

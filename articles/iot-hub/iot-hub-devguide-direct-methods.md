@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47bf7437eda09a536aa2d960cf5ec474e23356a6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a35c88ac053b43d4a95b5bef92f3ebfb03567e2b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Rady pro pochopení a volat přímé metody ze služby IoT Hub
-Centrum IoT vám dává možnost volat přímé metody na zařízení z cloudu. Přímé metody představuje požadavek odpověď interakci s zařízení podobné volání protokolu HTTP v, které budou úspěch nebo neúspěch okamžitě (po časový limit definované uživatelem). Tento přístup je užitečné v případech, kde se liší v závislosti na tom, jestli je zařízení schopné reagovat během okamžitý zásah. Například odesílání služby SMS funkce wake-up do zařízení, pokud je offline (Probíhá dražší než volání metody SMS).
+Centrum IoT vám dává možnost volat přímé metody na zařízení z cloudu. Přímé metody představuje požadavek odpověď interakci s zařízení podobné volání protokolu HTTP v, které budou úspěch nebo neúspěch okamžitě (po časový limit definované uživatelem). Tento přístup je užitečné v případech, kde se liší v závislosti na tom, jestli je zařízení schopné reagovat během okamžitý zásah.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

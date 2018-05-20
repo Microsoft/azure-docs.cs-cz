@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: cdfde0d888c8434443dcd05109f646eca8c0df19
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1c8cee149e99786b58e4584e5e7b508b1040389d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table úložiště vazby pro Azure Functions
 
@@ -32,6 +32,10 @@ Tento článek vysvětluje, jak pracovat s Azure Table storage vazeb v Azure Fun
 Vazby tabulky úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="input"></a>Vstup
 

@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 65a3f6d71c0c0d92f703a5d48760dd348c726ba4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b7f0aa514cfffb8fb2ca76238a6a65a8e6443e56
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Nasazení Azure IoT Edge v simulovaném zařízení v systému Linux nebo systému MacOS – náhled
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Simulovaná zařízení, které vytvoříte v tomto kurzu je monitorování, které generuje teploty a vlhkosti a přetížení data. Ostatní kurzy Azure IoT Edge stavět na práci, kterou se zde provádí nasazení moduly, které analyzovat data podnikových statistik. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Tento kurz používá svůj počítač nebo virtuální počítač jako zařízení s Internet věcí. Chcete-li váš počítač do IoT hraniční zařízení, jsou požadované následující služby:
 
@@ -40,6 +40,7 @@ Tento kurz používá svůj počítač nebo virtuální počítač jako zaříze
      * _Všimněte si, že se na některých distribuce (například Raspbian), budete pravděpodobně potřebovat určité pip balíčky s upgradem a nainstalovat další závislosti:_
      ```
      sudo pip install --upgrade setuptools pip
+     
      sudo apt-get install python2.7-dev libffi-dev libssl-dev
      ```
    * MacOS: `sudo easy_install pip`.
@@ -97,7 +98,7 @@ Spravujte vaše zařízení Azure IoT Edge z cloudu do nasazení modul, který b
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 
-## <a name="view-generated-data"></a>Vygeneruje zobrazení dat
+## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
 V tomto kurzu jste vytvořili nový IoT hraniční zařízení a na něm nainstalován modul runtime IoT okraj. Potom použít portál Azure k modul IoT okraj ke spuštění na zařízení bez nutnosti měnit samotné zařízení. V takovém případě modul, který jste nabídnutých vytvoří prostředí data, která můžete použít pro kurzů k. 
 

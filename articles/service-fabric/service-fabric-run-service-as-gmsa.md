@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: e22c656218abcd0564faec6fae6d6979f09b386a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5f93285061708172b9b6ac40dc97fce08f7b2a86
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
 Na samostatné clusteru Windows Server můžete spustit službu jako skupina pomocí zásad RunAs účet spravované služby (gMSA).  Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Spouštění aplikací pod různými účty, i v sdílené hostovaném prostředí, je díky bezpečnější od sebe navzájem. Všimněte si, že se používá služby Active Directory místně v rámci domény a není Azure Active Directory (Azure AD). Pomocí gMSA neexistuje žádné heslo nebo zašifrované heslo, které jsou uložené v manifestu aplikace.  Můžete taky spustit služba jako [uživatele služby Active Directory nebo skupiny](service-fabric-run-service-as-ad-user-or-group.md).

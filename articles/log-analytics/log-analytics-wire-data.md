@@ -1,6 +1,6 @@
 ---
-title: Propojit řešení dat v Log Analytics | Microsoft Docs
-description: Data kabelové sítě je konsolidované sítě a výkon data z počítačů s agenty OMS, včetně nástroje Operations Manager a agenti připojená k systému Windows. Data sítě spolu s daty protokolu ke korelaci data.
+title: Řešení Wire Data ve službě Log Analytics | Microsoft Docs
+description: Data kabelové sítě jsou konsolidovaná síťová a výkonnostní data z počítačů s agenty sady OMS včetně agentů nástroje Operations Manager a agentů připojených k Windows. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,84 +12,84 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení přenosu dat 2.0 (Preview) v analýzy protokolů
+# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 
-![Přenosová datový symbol](./media/log-analytics-wire-data/wire-data2-symbol.png)
+![Symbol Wire Data](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-Data kabelové sítě je konsolidované sítě a výkon data shromážděná z připojená k systému Windows a Linux připojené počítače s agentem OMS, včetně těch, které sledovaných nástrojem Operations Manager ve vašem prostředí. Data sítě spolu s další data protokolu ke korelaci data.
+Data kabelové sítě jsou konsolidovaná síťová a výkonnostní data shromážděná z počítačů připojených k Windows a Linuxu s agentem sady OMS včetně počítačů, které ve vašem prostředí monitoruje Operations Manager. Kvůli pomoci při korelaci dat se síťová data kombinují s jinými daty protokolu.
 
-Kromě agenta OMS řešení přenosu dat používá Microsoft agenti závislost, kterou si nainstalujete do počítače ve vaší infrastruktuře IT. Závislost agenti monitorují síťová data odesílaná do a z vašich počítačů pro síť úrovně 2 – 3 [OSI model](https://en.wikipedia.org/wiki/OSI_model), včetně různých protokoly a porty používané. Data se pak posílají do analýzy protokolů pomocí agentů.  
+Kromě agenta sady OMS využívá řešení Wire Data závislé agenty Microsoft, které instalujete do počítačů ve své IT infrastruktuře. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak do služby Log Analytics posílají pomocí agentů.  
 
 > [!NOTE]
-> V předchozí verzi řešení přenosu dat nelze přidat do nové pracovní prostory. Pokud máte v původním řešení Data kabelové sítě povolené, můžete ji použít. Však použít přenosu dat 2.0, je nutné nejprve odebrat původní verze.
+> Předchozí verze řešení Wire Data se nedá přidat do nových pracovních prostorů. Pokud máte povolené původní řešení Wire Data, můžete ho dál používat. Pokud ale chcete použít Wire Data 2.0, musíte původní verzi nejprve odebrat.
 
-Ve výchozím nastavení analýzy protokolů protokoluje data pro využití procesoru, paměti, disku a údaje o výkonu sítě z čítače, které jsou součástí Windows a Linux, jakož i další čítače výkonu, které můžete zadat. Sítě a jiných shromažďování dat se provádí v v reálném čase pro každého agenta, včetně podsítě a úrovni aplikace protokoly používá pro počítač.  Data kabelové sítě vypadá na síťová data na úrovni aplikace, není dolů v přenosové vrstvě TCP.  Řešení není podívejte se na jednotlivé ACK a požadavky SYN.  Metoda handshake po ukončení, je považován za dynamické připojení a označena jako připojeno. Že zůstane připojení za provozu, dokud na obou stranách souhlas soketu je otevřený a dat můžete předat a zpět.  Po obou stranách uzavře připojení, je označena jako odpojeno.  Proto počítá jenom šířku pásma úspěšně dokončila paketů, se neoznamuje na znovu odešle nebo se nezdařilo paketů.
+Služba Log Analytics standardně protokoluje výkonnostní data procesoru, paměti, disku a sítě z čítačů integrovaných do Windows a Linuxu, stejně jako z jiných čítačů výkonu, které určíte. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP.  Toto řešení nesleduje individuální signály ACK a SYN.  Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět.  Jakmile některá stana připojení zavře, označí se jako Odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
 
-Pokud jste použili [sFlow](http://www.sflow.org/) nebo jiný software s [společnosti Cisco NetFlow protokol](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), pak bude povědomé statistiky a data se zobrazí z data kabelové sítě.
+Pokud používáte [sFlow](http://www.sflow.org/) nebo jiný software s [protokolem NetFlow společnosti Cisco](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), budou vám statistiky a údaje dat kabelové sítě povědomé.
 
-Některé typy předdefinované dotazy vyhledávání protokolu patří:
+Mezi předdefinované typy dotazů pro prohledávání protokolu patří:
 
 - Agenti poskytující data kabelové sítě
-- IP adresy agentů poskytujících data kabelové sítě
-- Odchozí komunikace podle IP adresy
-- Počet bajtů odeslaných protokoly aplikací
-- Počet bajtů odeslaných služba aplikace
-- Počet přijatých bajtů podle různé protokoly
-- Celkový počet bajtů odeslaných a přijatých podle verze protokolu IP
-- Průměrná latence pro připojení, které byly spolehlivě
-- Počítač, aby iniciovaly nebo přijaly síťový provoz zpracovává
-- Objem síťového přenosu pro zpracování
+- IP adresa agentů poskytujících data kabelové sítě
+- Odchozí komunikace podle IP adres
+- Počet odeslaných bajtů podle aplikačních protokolů
+- Počet odeslaných bajtů podle aplikační služby
+- Přijaté bajty podle různých protokolů
+- Celkový počet odeslaných a přijatých bajtů podle verze protokolu IP
+- Průměrná latence připojení, která byla spolehlivě změřena
+- Procesy počítače, které iniciovaly nebo přijaly síťový provoz
+- Objem síťového provozu procesu
 
-Při hledání pomocí data kabelové sítě, můžete filtrovat a data skupiny k zobrazení informací o nejvyšší agentů a horní protokoly. Nebo můžete zobrazit, kdy některé počítače (IP adresy MAC adresy) přenášená mezi sebou, jak dlouho a kolik data byla odeslána – v zásadě platí, zobrazit metadata o síťovém provozu, který je na základě hledání.
+Při hledání pomocí dat kabelové sítě můžete filtrováním a seskupením dat zobrazit informace o hlavních agentech a protokolech. Můžete také zjistit, kdy určité počítače (IP adresy / adresy MAC) vzájemně komunikovaly, jak dlouho a kolik dat bylo odesláno – vidíte vlastně metadata o síťovém provozu, která se dají prohledávat.
 
-Ale vzhledem k tomu, že zobrazíte metadata, není nutně užitečné pro odstraňování potíží. Data kabelové sítě v Log Analytics není úplná sběru dat v síti.  Rozhraní není určeno pro řešení potíží s hloubky úrovni paketů. Výhodou použití agenta ve srovnání s jinými metodami kolekci, je, že nemusíte instalovat zařízení, konfigurovat síťové přepínače nebo preform složitá konfigurace. Data kabelové sítě je jednoduše založené na agentovi – nainstalujte agenta na počítači a monitorovat vlastní síťový provoz. Další výhodou je, když chcete monitorovat úlohy běžící v cloudu poskytovatelů nebo poskytovatel hostitelských služeb nebo Microsoft Azure, kde uživatel nemá vlastní vrstvě prostředků infrastruktury.
+Protože si ale prohlížíte metadata, nemusí být užitečná při řešení problémů, kdy musíte jít do hloubky. Data kabelové sítě ve službě Log Analytics nepředstavují kompletní záznam síťových dat.  Nejsou určena k hloubkovému řešení problémů na úrovni paketů. V porovnání s jinými metodami shromažďování má použití agentů výhodu v tom, že nemusíte instalovat zařízení, měnit konfiguraci síťových přepínačů nebo provádět komplikované konfigurace. Data kabelové sítě jednoduše vycházejí z agenta, kterého nainstalujete do počítače a který bude monitorovat svůj vlastní síťový provoz. Další výhodu poznáte, když potřebujete monitorovat úlohy běžící u poskytovatele cloudu, poskytovatele hostování služeb nebo v Microsoft Azure, kdy uživatel nevlastní vrstvu prostředků infrastruktury.
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Data kabelové sítě získává data od agenta nástroje Microsoft závislostí. Agent závislostí závisí na agenta OMS pro připojení k analýze protokolů. To znamená, že server musí mít agenta OMS nainstalovaný a nakonfigurovaný nejprve a pak nainstalujte agenta závislostí. Následující tabulka popisuje připojených zdrojů, které podporuje řešení Data kabelové sítě.
+Řešení Wire Data získává data ze závislého agenta Microsoft. Připojení tohoto závislého agenta ke službě Log Analytics zajišťuje agent sady OMS. To znamená, že na serveru musí být napřed nainstalovaný a nakonfigurovaný agent sady OMS a teprve potom nainstalujete závislého agenta. Následující tabulka popisuje připojené zdroje, které řešení Wire Data podporuje.
 
-| **Připojené zdroje** | **Podporuje se** | **Popis** |
+| **Připojený zdroj** | **Podporuje se** | **Popis** |
 | --- | --- | --- |
-| Agenti systému Windows | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br> Kromě [agenta OMS](log-analytics-windows-agent.md), Agent služby Microsoft Dependency vyžadují agentů v systému Windows. Najdete v článku [podporované operační systémy](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Agenti systému Linux | Ano | Data kabelové sítě analyzuje a shromažďuje data z počítače se systémem Linux agent.<br><br> Kromě [agenta OMS](log-analytics-quick-collect-linux-computer.md), agenty Linux vyžadují Microsoft Agent závislostí. Najdete v článku [podporované operační systémy](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Analyzuje Data kabelové sítě a shromažďuje data z agentů systému Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](log-analytics-om-agents.md). <br><br> Je nutné přímé připojení z počítače agenta System Center Operations Manager k analýze protokolů. K analýze protokolů se předají data ze skupiny pro správu. |
-| Účet služby Azure Storage | Ne | Data kabelové sítě shromažďuje data z počítačů agentů, takže není žádná data z něj shromažďovat ze služby Azure Storage. |
+| Agenti systému Windows | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Windows. <br><br> Agenti systému Windows vyžadují kromě [agenta sady OMS](log-analytics-windows-agent.md) také závislého agenta Microsoft. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-operating-systems). |
+| Agenti systému Linux | Ano | Řešení Wire Data analyzuje a shromažďuje data z počítačů s agenty Linuxu.<br><br> Agenti systému Linux vyžadují kromě [agenta sady OMS](log-analytics-quick-collect-linux-computer.md) také závislého agenta Microsoft. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](../monitoring/monitoring-service-map-configure.md#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Wire Data analyzuje a shromažďuje data z agentů systému Windows a Linux v připojené [skupině pro správu nástroje System Center Operations Manager](log-analytics-om-agents.md). <br><br> Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. Data se předávají z této skupiny pro správu do služby Log Analytics. |
+| Účet služby Azure Storage | Ne | Řešení Wire Data shromažďuje data z počítačů s agenty, takže neobsahuje žádná data shromažďovaná z Azure Storage. |
 
-V systému Windows Microsoft Monitoring Agent (MMA) použít System Center Operations Manager a analýzy protokolů shromažďovat a odesílat data. V závislosti na kontextu se nazývá agenta agenta System Center Operations Manager, OMS Agent, Agent analýzy protokolů, MMA nebo přímé agenta. System Center Operations Manager a analýzy protokolů poskytují mírně různé verze MMA. Tyto verze lze každou sestavu System Center Operations Manager, analýzy protokolů nebo do obou.
+Ve Windows se Microsoft Monitoring Agent (MMA) používá nástrojem System Center Operations Manager i službou Log Analytics ke shromažďování a odesílání dat. Podle kontextu se tento agent označuje jako agent nástroje System Center Operations Manager, agent sady OMS, agent služby Log Analytics, MMA nebo přímý agent. Nástroj System Center Operations Manager a služba Log Analytics poskytují mírně odlišné verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.
 
-V systému Linux OMS agenta pro Linux shromažďuje a odesílá data k analýze protokolů. Data kabelové sítě můžete použít na serverech s agenty přímé OMS nebo na servery, které jsou připojené k analýze protokolů prostřednictvím skupin pro správu System Center Operations Manager.
+V Linuxu shromažďuje a odesílá data do služby Log Analytics agent OMS pro Linux. Řešení Wire Data můžete použít na serverech s přímými agenty sady OMS nebo na serverech, které jsou ke službě Log Analytics připojené prostřednictvím skupin pro správu nástroje System Center Operations Manager.
 
-V tomto článku, odkazuje na všechny agenty, zda Linux nebo Windows, ať už připojené ke skupině pro správu System Center Operations Manager nebo přímo k Log Analytics se říká _agenta OMS_. Název konkrétní nasazení agenta použijeme jenom v případě, že je potřeba pro kontext.
+Zmínky o všech agentech bez ohledu na to, jestli jsou určené pro Windows nebo Linux, připojené ke skupině pro správu nástroje System Center Operations Manager nebo přímo ke službě Log Analytics, se v tomto článku označují jako _agenti sady OMS_. Konkrétní název nasazení agenta použijeme jen v případě, kdy to bude zapotřebí kvůli kontextu.
 
-Agent závislostí nepřenáší samotná data a nevyžaduje žádné změny brány firewall nebo porty. Data v Data kabelové sítě vždy přenášená agentem OMS k analýze protokolů, buď přímo nebo pomocí brány OMS.
+Závislý agent nepřenáší sám o sobě žádná data a nevyžaduje žádné změny bran firewall nebo portů. Data v řešení Wire Data jsou do služby Log Analytics vždy přenášena agentem sady OMS, a to buď přímo, nebo pomocí brány sady OMS.
 
-![diagram agenta](./media/log-analytics-wire-data/agents.png)
+![Diagram agenta](./media/log-analytics-wire-data/agents.png)
 
-Pokud jste uživatele System Center Operations Manager, který má skupinu pro správu připojené k analýze protokolů:
+Pokud System Center Operations Manager používáte se skupinou pro správu připojenou ke službě Log Analytics:
 
-- Pokud agenty nástroje System Center Operations Manager můžete přístup k Internetu, aby se připojení k analýze protokolů, není nutná žádná další konfigurace.
-- Budete muset nakonfigurovat bránu OMS fungovat s nástrojem System Center Operations Manager, když agenty nástroje System Center Operations Manager nelze získat přístup k analýze protokolů přes Internet.
+- Nevyžaduje se žádná další konfigurace, pokud mají agenti nástroje System Center Operations Manager přístup k internetu a mohou se připojit ke službě Log Analytics.
+- Pokud agenti nástroje System Center Operations Manager nemají přes internet přístup ke službě Log Analytics, musíte bránu sady OMS nakonfigurovat tak, aby fungovala s nástrojem System Center Operations Manager.
 
-Pokud používáte přímé Agent, musíte nakonfigurovat agenta OMS připojit se k analýze protokolů nebo k bráně OMS. Si můžete stáhnout z brány OMS [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud používáte přímého agenta, musíte samotného agenta sady OMS nakonfigurovat tak, aby se připojil ke službě Log Analytics nebo k bráně sady OMS. Bránu sady OMS si můžete stáhnout z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Vyžaduje [přehledy a analýzy](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) nabídka řešení.
-- Pokud používáte předchozí verzi řešení Data kabelové sítě, je nutné ji odebrat. Všechna data zaznamenaná v původní Data kabelové sítě řešení je ale stále k dispozici v přenosu dat 2.0 a hledání protokolů.
-- Pro instalaci nebo odinstalaci agenta závislosti jsou vyžadována oprávnění správce.
-- Závislost agenta musí být nainstalován na počítači s 64bitový operační systém.
+- Vyžaduje se nabídka řešení [Přehledy a analýzy](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing).
+- Pokud používáte předchozí verzi řešení Wire Data, musíte ho nejprve odebrat. Všechna data zachycená původním řešením Wire Data jsou ale pořád dostupná ve verzi Wire Data 2.0 a při prohledávání protokolu.
+- K instalaci a odinstalaci závislého agenta se vyžadují oprávnění správce.
+- Závislý agent musí být nainstalovaný na počítači s 64bitovým operačním systémem.
 
 ### <a name="operating-systems"></a>Operační systémy
 
-Následující části uvádějí podporované operační systémy pro agenta závislostí. Data kabelové sítě nepodporuje 32bitové architektury pro všechny operační systémy.
+V následujících částech najdete seznam operačních systémů pro závislého agenta. Řešení Wire Data nepodporuje 32bitovou architekturu žádného operačního systému.
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -105,13 +105,13 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 - Windows 8
 - Windows 7
 
-#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux a Oracle Linux (s RHEL jádra)
+#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux a Oracle Linux (s jádrem RHEL)
 
-- Podporovány jsou pouze výchozí a verze SMP Linux jádra.
-- Nestandardní jádra uvolní, například PAE a Xen, nejsou podporovány pro všechny distribuci systému Linux. Například systém s řetězec verze _2.6.16.21-0.8-xen_ není podporován.
-- Vlastní jádra, včetně opakovaných kompilací standardní jádra, nejsou podporovány.
-- CentOSPlus jádra není podporována.
-- Oracle nedělitelné Enterprise jádra (UEK) je popsaná v další části tohoto článku.
+- Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
+- Verze s nestandardním jádrem, jako jsou PAE a Xen, nejsou podporované v žádné distribuci Linuxu. Například systém s řetězcem verze _2.6.16.21-0.8-xen_ není podporovaný.
+- Vlastní jádra, včetně opětovně zkompilovaných standardních jader, nejsou podporovaná.
+- Jádro CentOSPlus není podporované.
+- Jádro Oracle Unbreakable Enterprise (UEK) je popsané v další části tohoto článku.
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
@@ -145,7 +145,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | 5.10 | 2.6.18-371 |
 | 5.11 | 2.6.18-398 <br> 2.6.18-400 <br>2.6.18-402 <br>2.6.18-404 <br>2.6.18-406 <br> 2.6.18-407 <br> 2.6.18-408 <br> 2.6.18-409 <br> 2.6.18-410 <br> 2.6.18-411 <br> 2.6.18-412 <br> 2.6.18-416 <br> 2.6.18-417 <br> 2.6.18-419 |
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Linux Enterprise s nedělitelné Enterprise jádra
+#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux s jádrem Unbreakable Enterprise Kernel
 
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 
@@ -184,9 +184,9 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | --- | --- |
 | 10 SP4 | 2.6.16.60 |
 
-#### <a name="dependency-agent-downloads"></a>Agent služby Dependency soubory ke stažení
+#### <a name="dependency-agent-downloads"></a>Soubory závislého agenta ke stažení
 
-| **File** | **OS** | **Verze** | **SHA-256** |
+| **Soubor** | **Operační systém** | **Verze** | **SHA-256** |
 | --- | --- | --- | --- |
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
@@ -195,76 +195,76 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 
 ## <a name="configuration"></a>Konfigurace
 
-Proveďte následující postup pro konfiguraci řešení Data kabelové sítě pro vaše pracovní prostory.
+Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte následující postup.
 
-1. Povolit řešení analýzy protokolů aktivity z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
-2. Nainstalujte agenta závislost na každém počítači, ve které chcete načíst data. Závislost agenta můžete monitorovat připojení k okamžité Sousedé BGP, proto musíte nemusí agenta na každý počítač.
+1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
+2. Nainstalujte závislého agenta na každý počítač, ze kterého chcete získat data. Závislý agent dokáže monitorovat připojení k bezprostředním sousedům, takže nepotřebujete mít agenta na každém počítači.
 
-### <a name="install-the-dependency-agent-on-windows"></a>Nainstalujte agenta závislostí v systému Windows
+### <a name="install-the-dependency-agent-on-windows"></a>Instalace závislého agenta ve Windows
 
-Pro instalaci nebo odinstalaci agenta jsou vyžadována oprávnění správce.
+K instalaci a odinstalaci tohoto agenta se vyžadují oprávnění správce.
 
-Je závislost Agent nainstalován v počítačích se systémem Windows prostřednictvím InstallDependencyAgent Windows.exe. Pokud spustíte tento spustitelný soubor, bez jakékoli možnosti, spustí průvodce, který vám pomůžou při interaktivní instalaci.
+Závislý agent se instaluje do počítačů s Windows prostřednictvím souboru InstallDependencyAgent-Windows.exe. Pokud tento spustitelný soubor spustíte bez jakýchkoli parametrů, spustí se průvodce interaktivní instalací.
 
-Použijte následující kroky pro instalaci agenta závislost na každém počítači se systémem Windows:
+Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Windows:
 
-1. Nainstalovat agenta OMS kroků v [shromažďovat data z počítače se systémem Windows hostované ve vašem prostředí](log-analytics-windows-agent.md).
-2. Stáhnout agenta pro Windows závislostí pomocí odkazu v předchozí části a spusťte jej pomocí následujícího příkazu: `InstallDependencyAgent-Windows.exe`
-3. Postupujte podle pokynů průvodce k instalaci agenta.
-4. Pokud Agent služby Dependency se nepodaří spustit, zkontrolujte protokoly podrobné informace o chybě. Pro agenty se systémem Windows k adresáři protokolu není %Programfiles%\Microsoft Agent\logs závislostí.
+1. Podle pokynů v článku [Shromažďování dat z počítačů s Windows hostovaných ve vašem prostředí](log-analytics-windows-agent.md) nainstalujte agenta sady OMS.
+2. Stáhněte závislého agenta pro Windows pomocí odkazu v předchozí části a pak ho spusťte následujícím příkazem: `InstallDependencyAgent-Windows.exe`
+3. Pomocí průvodce agenta nainstalujte.
+4. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Windows se adresář protokolu nachází zde: %Programfiles%\Microsoft Dependency Agent\logs.
 
-#### <a name="windows-command-line"></a>Příkazový řádek systému Windows
+#### <a name="windows-command-line"></a>Příkazový řádek Windows
 
-Nainstalujte z příkazového řádku pomocí možnosti z v následující tabulce. Pokud chcete zobrazit seznam příznaky instalace, spusťte instalační program pomocí /? Příznak následujícím způsobem.
+K instalaci z příkazového řádku použijte parametry z následující tabulky. Spuštěním instalačního programu s následujícím parametrem /? zobrazíte seznam parametrů instalace.
 
-InstallDependencyAgent Windows.exe /?
+InstallDependencyAgent-Windows.exe /?
 
-| **Příznak** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
-| <code>/?</code> | Získejte seznam možností příkazového řádku. |
-| <code>/S</code> | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
+| <code>/?</code> | Získá seznam parametrů příkazového řádku. |
+| <code>/S</code> | Provede tichou instalaci bez zobrazení výzev uživateli. |
 
-Soubory pro Windows Agent závislosti jsou umístěny v Agent služby Dependency C:\Program Files\Microsoft ve výchozím nastavení.
+Soubory závislého agenta pro Windows jsou standardně umístěné zde: C:\Program Files\Microsoft Dependency Agent.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Nainstalujte agenta závislostí v systému Linux
+### <a name="install-the-dependency-agent-on-linux"></a>Instalace závislého agenta v Linuxu
 
-Kořenový přístup je nutný k instalaci nebo konfiguraci agenta.
+K instalaci nebo konfiguraci tohoto agenta se vyžaduje přístup uživatele root.
 
-Agent závislostí je nainstalován na počítače se systémem Linux prostřednictvím InstallDependencyAgent-Linux64.bin, skript prostředí s samorozbalující binární. Soubor můžete spustit pomocí _dílet_ nebo přidejte oprávnění ke samotném souboru.
+Závislý agent se do linuxových počítačů instaluje příkazem InstallDependencyAgent-Linux64.bin, což je skript prostředí se samorozbalovacím binárním souborem. Tento soubor můžete spustit pomocí příkazu _sh_ nebo tak, že k samotnému souboru přidáte oprávnění ke spuštění.
 
-Použijte následující kroky pro instalaci agenta závislost na každý počítač se systémem Linux:
+Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Linuxem:
 
-1. Nainstalovat agenta OMS kroků v [shromažďovat data z počítače se systémem Linux hostované ve vašem prostředí](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key).
-2. Stáhnout agenta závislostí Linux pomocí odkazu v předchozí části a potom ji nainstalovat jako kořenového adresáře pomocí následujícího příkazu: dílet InstallDependencyAgent Linux64.bin
-3. Pokud Agent služby Dependency se nepodaří spustit, zkontrolujte protokoly podrobné informace o chybě. V agentech Linux, k adresáři protokolu není: /var/opt/microsoft/dependency-agent/log.
+1. Podle pokynů v článku [Shromažďování dat z počítačů s Linuxem hostovaných ve vašem prostředí](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) nainstalujte agenta sady OMS.
+2. Stáhněte závislého agenta pro Linux pomocí odkazu v předchozí části a pak ho nainstalujte jako uživatel root následujícím příkazem: sh InstallDependencyAgent-Linux64.bin
+3. Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. U agentů pro Linux se adresář protokolu nachází zde: /var/opt/microsoft/dependency-agent/log.
 
-Pokud chcete zobrazit seznam příznaky instalace, spusťte instalační program s `-help` příznak následujícím způsobem.
+Spuštěním instalačního programu s následujícím parametrem `-help` zobrazíte seznam parametrů instalace.
 
 ```
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Příznak** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
-| <code>-help</code> | Získejte seznam možností příkazového řádku. |
-| <code>-s</code> | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
-| <code>--check</code> | Zkontrolujte oprávnění a operační systém, ale není nainstalovaný agent. |
+| <code>-help</code> | Získá seznam parametrů příkazového řádku. |
+| <code>-s</code> | Provede tichou instalaci bez zobrazení výzev uživateli. |
+| <code>--check</code> | Zkontroluje oprávnění a operační systém bez instalace agenta. |
 
-Soubory pro agenta závislosti jsou umístěny v adresáři pro následující:
+Soubory závislého agenta se nacházejí v následujících adresářích:
 
 | **Soubory** | **Umístění** |
 | --- | --- |
-| Soubory jádra | /OPT/Microsoft/Dependency-Agent |
-| Soubory protokolu | /var/OPT/Microsoft/Dependency-Agent/log |
-| Konfigurační soubory | /ETC/OPT/Microsoft/Dependency-Agent/config |
-| Služby spustitelné soubory | /OPT/Microsoft/Dependency-Agent/Bin/Microsoft-Dependency-Agent<br><br>/OPT/Microsoft/Dependency-Agent/Bin/Microsoft-Dependency-Agent-Manager |
-| Úložiště binární soubory | /var/OPT/Microsoft/Dependency-Agent/Storage |
+| Základní soubory | /opt/microsoft/dependency-agent |
+| Soubory protokolu | /var/opt/microsoft/dependency-agent/log |
+| Konfigurační soubory | /etc/opt/microsoft/dependency-agent/config |
+| Spustitelné soubory služby | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br><br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
 
-### <a name="installation-script-examples"></a>Příklady skriptů instalace
+### <a name="installation-script-examples"></a>Příklady instalačního skriptu
 
-Chcete-li snadno nasadit agenta závislosti na počtu serverů najednou, je dobré pomocí skriptu. Následující příklady skriptu můžete použít ke stažení a instalaci závislostí agenta v systému Windows nebo Linux.
+Se snadným nasazením závislého agenta na mnoho serverů najednou vám pomůže skript. Následující příklady skriptů můžete použít ke stažení a instalaci závislého agenta do Windows nebo Linuxu.
 
-#### <a name="powershell-script-for-windows"></a>Skript prostředí PowerShell pro systém Windows
+#### <a name="powershell-script-for-windows"></a>Skript PowerShellu pro Windows
 
 ```PowerShell
 
@@ -286,7 +286,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 ### <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
 
-Nasazení agenta nástroje závislostí prostřednictvím konfigurace požadovaného stavu, můžete použít modul xPSDesiredStateConfiguration a bit kódu takto:
+K nasazení závislého agenta prostřednictvím konfigurace požadovaného stavu můžete použít modul xPSDesiredStateConfiguration a několik následujících řádků kódu:
 
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
@@ -338,19 +338,19 @@ Node $NodeName
 }
 
 ```
-### <a name="uninstall-the-dependency-agent"></a>Odinstalujte agenta závislostí
+### <a name="uninstall-the-dependency-agent"></a>Odinstalace závislého agenta
 
-Pomocí následujících částí můžete odebrat agenta závislostí.
+Následující části vám pomůžou s odebráním závislého agenta.
 
-#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalujte agenta závislostí v systému Windows
+#### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalace závislého agenta ve Windows
 
-Správce můžete odinstalovat závislostí agenta pro Windows pomocí ovládacích panelů.
+Správce může závislého agenta pro Windows odinstalovat přes Ovládací panely.
 
-Správce můžete také spouštět %Programfiles%\Microsoft závislostí Agent\Uninstall.exe odinstalace agenta závislostí.
+Správce může závislého agenta odinstalovat také spuštěním souboru %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
 
-#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalujte agenta závislostí v systému Linux
+#### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalace závislého agenta v Linuxu
 
-Úplně odinstalujte agenta závislostí ze systému Linux, je nutné odebrat vlastní agent a konektor, který je automaticky nainstalován s agentem. Můžete odinstalovat i pomocí následujících jeden příkaz:
+Pokud chcete závislého agenta úplně odinstalovat z Linuxu, musíte odebrat samotného agenta a konektor, který se instaluje automaticky s tímto agentem. Obojí najednou odinstalujete následujícím jediným příkazem:
 
 ```
 rpm -e dependency-agent dependency-agent-connector
@@ -358,96 +358,96 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Sady Management Pack
 
-Po aktivaci Data kabelové sítě v pracovním prostoru analýzy protokolů 300 KB management pack je odeslány na všechny servery Windows v něm. Pokud používáte System Center Operations Manager agentů v [připojené skupiny pro správu](log-analytics-om-agents.md), z System Center Operations Manager je nasazena sada management pack monitorování závislostí. Pokud jsou připojeny přímo agentů, analýzy protokolů přináší sadu management pack.
+Když se řešení Wire Data aktivuje v pracovním prostoru Log Analytics, odešle se do všech serverů Windows v tomto pracovním prostoru sada Management Pack o velikosti 300 kB. Pokud používáte agenty nástroje System Center Operations Manager v [připojené skupině pro správu](log-analytics-om-agents.md), nasadí se sada Management Pack monitoru závislostí z nástroje System Center Operations Manager. Pokud jsou agenti připojení přímo, doručí sadu Management Pack služba Log Analytics.
 
-Sada management pack je s názvem Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do: %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management balíčky. Zdroj dat, který používá sada management pack je: % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Uloží se sem: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. Sada Management Pack používá tento zdroj dat: %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="using-the-solution"></a>Použití řešení
 
 **Instalace a konfigurace řešení**
 
-Použijte následující informace k instalaci a konfiguraci řešení.
+K instalaci a konfiguraci řešení můžete použít následující informace.
 
-- Řešení Data kabelové sítě operace čtení dat z počítačů se systémem Windows Server 2012 R2, Windows 8.1 a novější operační systémy.
-- Na počítačích, ve které chcete získat data kabelové sítě z se vyžaduje rozhraní Microsoft .NET Framework 4.0 nebo novější.
-- Přidat řešení přenosu dat do pracovního prostoru analýzy protokolů pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
-- Pokud chcete zobrazit data kabelové sítě pro konkrétní řešení, budete muset mít řešení již přidán do pracovního prostoru.
+- Řešení Wire Data získává data z počítačů s operačními systémy Windows Server 2012 R2, Windows 8.1 a novějšími.
+- Na počítačích, ze kterých chcete data kabelové sítě získávat, se vyžaduje rozhraní Microsoft .NET 4.0 nebo novější.
+- Řešení Wire Data přidáte do pracovního prostoru Log Analytics pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
+- Pokud si chcete prohlédnout data kabelové sítě konkrétního řešení, musí být toto řešení už přidané do vašeho pracovního prostoru.
 
-Po mají nainstalovat agenti a nainstalovat řešení, dlaždice 2.0 přenosu dat se zobrazí v pracovním prostoru.
+Po instalaci agentů a tohoto řešení se ve vašem pracovním prostoru objeví dlaždice Wire Data 2.0.
 
-![Dlaždice Data kabelové sítě](./media/log-analytics-wire-data/wire-data-tile.png)
+![Dlaždice Wire Data](./media/log-analytics-wire-data/wire-data-tile.png)
 
-## <a name="using-the-wire-data-20-solution"></a>Pomocí řešení přenosu dat 2.0
+## <a name="using-the-wire-data-20-solution"></a>Použití řešení Wire Data 2.0
 
-Na portálu OMS, klikněte **přenosu dat 2.0** dlaždici otevřete řídicí panel Data kabelové sítě. Řídicí panel obsahuje okna v následující tabulce. Každý okno uvádí až 10 položky odpovídající kritériím tohoto okna pro zadaný obor a časový rozsah. Můžete spustit vyhledávání protokolu, který vrátí všechny záznamy kliknutím **zobrazit všechny** v dolní části okna, nebo kliknutím na záhlaví okna.
+Na stránce **Přehled** pracovního prostoru Log Analytics na Azure Portalu otevřete kliknutím na **Wire Data 2.0** řídicí panel Wire Data. Tento řídicí panel obsahuje okna popsaná v následující tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Kliknutím na **Zobrazit vše** v dolní části okna nebo na záhlaví okna můžete spustit hledání v protokolu, které vrátí všechny záznamy.
 
-| **Blade** | **Popis** |
+| **Okno** | **Popis** |
 | --- | --- |
-| Agenti zachytávající síťový přenos | Zobrazuje počet agentů, kteří jsou zachytávání síťového provozu a uvádí top 10 počítačů, které jsou zachycení provozu. Klikněte na číslo ke spuštění protokolu vyhledejte <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Klikněte na počítač, v seznamu ke spuštění vyhledávání protokolu vrátí celkový počet bajtů zaznamenat. |
-| Místní podsítě | Zobrazuje počet místní podsítě, které byly zjištěny agenty.  Klikněte na číslo ke spuštění protokolu vyhledejte <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> , obsahuje seznam všech podsítí s počet bajtů odeslaných přes každé z nich. Klikněte na podsíť v seznamu ke spuštění vyhledávání protokolu vrátí celkový počet bajtů odeslaných přes podsíť. |
-| Protokoly na úrovni aplikace | Zobrazuje počet protokoly na úrovni aplikace používána, při zjištění agenty. Klikněte na číslo ke spuštění protokolu vyhledejte <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Klikněte na protokol spuštění vyhledávání protokolu vrátí celkový počet bajtů odeslaných pomocí protokolu. |
+| Agenti zachytávající síťový přenos | Zobrazuje počet agentů, kteří zachytávají síťový provoz, a seznam 10 hlavních počítačů, které zachytávají provoz. Kliknutím na počet můžete v protokolu vyhledat <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kliknutím na počítač v seznamu vyhledáte v protokolu celkový počet zachycených bajtů. |
+| Místní podsítě | Zobrazuje počet místních podsítí zjištěných agenty.  Kliknutím na počet vyhledáte v protokolu <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code> a zobrazíte seznam všech podsítí s počtem bajtů odeslaných přes každou z nich. Kliknutím na podsíť v seznamu vyhledáte v protokolu celkový počet bajtů odeslaných přes tuto podsíť. |
+| Protokoly na úrovni aplikace | Zobrazuje počet používaných protokolů na úrovni aplikace zjištěných agenty. Kliknutím na počet můžete v protokolu vyhledat <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kliknutím na protokol vyhledáte v protokolu celkový počet bajtů odeslaných pomocí tohoto protokolu. |
 
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-![Řídicí panel přenosu dat](./media/log-analytics-wire-data/wire-data-dash.png)
+![Řídicí panel Wire Data](./media/log-analytics-wire-data/wire-data-dash.png)
 
-Můžete použít **agenti zachytávající síťový přenos** okno a určit, jaký poměr šířky pásma sítě je spotřebovávanou počítače. Toto okno vám může pomoci snadno najít _chattiest_ počítač ve vašem prostředí. Tyto počítače může být přetížený, funguje neobvyklým způsobem, nebo pomocí více síťových prostředků, než normální.
+V okně **Agenti zachytávající síťový přenos** můžete zjistit, kolik šířky pásma sítě spotřebovávají jednotlivé počítače. Toto okno vám pomůže snadno najít počítač s _největší komunikací_ ve vašem prostředí. Takové počítače mohou být přetížené, chovat se abnormálně nebo používat více síťových prostředků než normálně.
 
-![Příklad protokolu vyhledávání](./media/log-analytics-wire-data/log-search-example01.png)
+![Příklad prohledávání protokolu](./media/log-analytics-wire-data/log-search-example01.png)
 
-Podobně můžete použít **místní podsítě** okno a zjistit, kolik síťový provoz přesunutí prostřednictvím podsítě. Uživatelé jsou často definovat podsítě kolem důležité oblasti pro své aplikace. Toto okno nabízí zobrazení do těchto oblastí.
+V okně **Místní podsítě** můžete podobně zjistit, jak velký síťový provoz probíhá přes vaše podsítě. Uživatelé často definují podsítě pro kritické oblasti svých aplikací. Toto okno vám umožní tyto oblasti zobrazit.
 
-![Příklad protokolu vyhledávání](./media/log-analytics-wire-data/log-search-example02.png)
+![Příklad prohledávání protokolu](./media/log-analytics-wire-data/log-search-example02.png)
 
-**Protokoly na úrovni aplikace** okno je užitečné, protože je užitečné vědět, co protokoly jsou používány. Například by se dalo očekávat SSH, zda se nepoužívá v prostředí vaší sítě. Zobrazení informací, které jsou k dispozici v okně můžete rychle potvrďte nebo disprove vaše očekávání.
+V okně **Protokoly na úrovni aplikace** můžete zjistit, jaké protokoly se používají. Můžete například očekávat, že se ve vašem síťovém prostředí nepoužívá protokol SSH. Prohlédnutím informací dostupných v tomto okně můžete tento předpoklad rychle potvrdit nebo vyvrátit.
 
-![Příklad protokolu vyhledávání](./media/log-analytics-wire-data/log-search-example03.png)
+![Příklad prohledávání protokolu](./media/log-analytics-wire-data/log-search-example03.png)
 
-V tomto příkladu může přejít k podrobnostem podrobností SSH a zjistit, které počítače používají SSH a mnoho dalších podrobností o komunikaci.
+V tomto příkladu můžete přechodem na podrobnosti SSH zjistit, které počítače používají SSH, a spoustu dalších detailů o komunikaci.
 
-![Zo výsledky hledání](./media/log-analytics-wire-data/ssh-details.png)
+![Výsledky hledání protokolu SSH](./media/log-analytics-wire-data/ssh-details.png)
 
-Je také užitečné vědět, pokud je provozu protokolu zvýšením nebo snížením v čase. Například pokud roste množství dat přenášených aplikací, který může být něco, co byste měli vědět, nebo že můžete zjistit pozoruhodné.
+Je také užitečné vědět, jestli se provoz přes protokol časem zvyšuje nebo snižuje. Pokud se například množství dat přenášených nějakou aplikací zvyšuje, může se jednat o něco, o čem byste měli vědět nebo co může stát za povšimnutí.
 
 ## <a name="input-data"></a>Vstupní data
 
-Data kabelové sítě shromažďuje metadata o síťovém provozu pomocí agentů, které jste povolili. Každý agent odesílá data o každých 15 sekund.
+Řešení Wire Data shromažďuje metadata o síťovém provozu pomocí agentů, které jste povolili. Každý agent odesílá data zhruba po 15 sekundách.
 
 ## <a name="output-data"></a>Výstupní data
 
-Záznam s typem _WireData_ se vytvoří pro každý typ vstupní data. WireData záznamy mají vlastnosti zobrazené v následující tabulce:
+Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy WireData mají vlastnosti uvedené v následující tabulce:
 
 | Vlastnost | Popis |
 |---|---|
-| Počítač | Název počítače, kde nebyla shromážděna data |
+| Computer | Název počítače, na kterém byla data shromážděna |
 | TimeGenerated | Čas záznamu |
 | LocalIP | IP adresa místního počítače |
-| SessionState | Připojení nebo odpojení |
-| ReceivedBytes | Počet přijatých bajtů |
-| ProtocolName | Název sítě protokol použitý |
-| Parametr IPVersion | Verze protokolu IP |
-| Směr | Příchozí nebo odchozí |
-| MaliciousIP | IP adresa známé škodlivé zdroje |
-| Závažnost | Závažnost možného malwaru |
+| SessionState | Připojeno nebo Odpojeno |
+| ReceivedBytes | Množství přijatých bajtů |
+| ProtocolName | Název použitého síťového protokolu |
+| IPVersion | Verze protokolu IP |
+| Direction | Příchozí nebo odchozí |
+| MaliciousIP | IP adresa známého škodlivého zdroje |
+| Severity | Závažnost podezřelého malwaru |
 | RemoteIPCountry | Země vzdálené IP adresy |
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager |
-| SourceSystem | Zdroj, kde nebyla shromážděna data |
-| SessionStartTime | Čas spuštění relace |
+| SourceSystem | Zdroj, kde byla data shromážděna |
+| SessionStartTime | Čas zahájení relace |
 | SessionEndTime | Čas ukončení relace |
-| LocalSubnet | Podsíť, kde nebyla shromážděna data |
-| LocalPortNumber | Číslem místního portu |
-| Vzdálená adresa IP | Vzdálené IP adresy používané vzdáleného počítače |
-| RemotePortNumber | Číslo portu použité podle vzdálené IP adresy |
-| ID relace | Jednoznačná hodnota, která identifikuje relace komunikace mezi dvě IP adresy |
-| SentBytes | Počet bajtů odeslaných |
+| LocalSubnet | Podsíť, kde byla data shromážděna |
+| LocalPortNumber | Číslo místního portu |
+| RemoteIP | Vzdálená IP adresa použitá vzdáleným počítačem |
+| RemotePortNumber | Číslo portu použité vzdálenou IP adresou |
+| SessionID | Jedinečná hodnota, která identifikuje komunikační relaci mezi dvěma IP adresami |
+| SentBytes | Počet odeslaných bajtů |
 | TotalBytes | Celkový počet bajtů odeslaných během relace |
-| ApplicationProtocol | Typ protokolu sítě používá   |
-| ID procesu | ID procesu systému Windows |
-| Název_procesu | Cesta a název souboru procesu |
-| RemoteIPLongitude | Zeměpisná délka IP |
-| RemoteIPLatitude | Zeměpisná šířka IP |
+| ApplicationProtocol | Typ použitého síťového protokolu   |
+| ProcessID | ID procesu Windows |
+| ProcessName | Cesta a název souboru procesu |
+| RemoteIPLongitude | Zeměpisná délka IP adresy |
+| RemoteIPLatitude | Zeměpisná šířka IP adresy |
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [V protokolech Hledat](log-analytics-log-searches.md) zobrazíte podrobné přenosu dat vyhledávání záznamů.
+- Podrobné záznamy hledání dat kabelové sítě zobrazíte [prohledáním protokolů](log-analytics-log-searches.md).

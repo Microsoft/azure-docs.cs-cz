@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8a2715666c4fff490f5184b7b8719b412952b9bf
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 419ed6dc76101366e47ae94067f7b671a10c94e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Řešení potíží s Azure Blockchain Workbench
 
@@ -49,8 +49,9 @@ Skript přijímá následující parametry:
 |---------|---------|----|
 | ID předplatného | ID odběru pro vytvoření nebo vyhledat všechny prostředky. | Ano |
 | ResourceGroupName | Název skupiny prostředků Azure, kde byla nasazena Blockchain Workbench. | Ano |
-| Výstupnísložka | Cesta k vytvoření výstupu. Soubor ZIP. Pokud není zadaný, použije se výchozí hodnota k aktuálnímu adresáři. | Ne
-| OmsSubscriptionId | Id předplatného, které se nasadí OMS. Tento parametr předejte pouze OMS blockchain sítě je nasadit mimo skupinu prostředků Blockchain Workbench.| Ne |
+| Výstupnísložka | Cesta k vytvoření výstupu. Soubor ZIP. Pokud není zadaný, použije se výchozí hodnota k aktuálnímu adresáři. | Ne |
+| LookbackHours | Počet hodin pro použití při stahování telemetrie. Výchozí hodnota je 24 hodin. Maximální hodnota je 90 hodin | Ne |
+| OmsSubscriptionId | ID předplatného, které se nasadí OMS. Tento parametr předejte pouze OMS blockchain sítě je nasadit mimo skupinu prostředků Blockchain Workbench.| Ne |
 | OmsResourceGroup |Skupinu prostředků, které se nasadí OMS. Tento parametr předejte pouze OMS blockchain sítě je nasadit mimo skupinu prostředků Blockchain Workbench.| Ne |
 | OmsWorkspaceName | Název pracovního prostoru OMS. Tento parametr předejte pouze pokud je nasazená OMS sítě blockchain mimo skupinu prostředků Blockchain Workbench | Ne |
 
@@ -58,15 +59,17 @@ Skript přijímá následující parametry:
 
 Výstupní soubor ZIP obsahuje následující strukturu složek:
 
-| Složka \ souboru | Popis  |
+| Složka nebo soubor | Popis  |
 |---------|---------|
 | \Summary.txt | Souhrn systému |
-| \metrics\blockchain | Metriky o blockchain |
-| \metrics\workbench | Metriky o nástroje workbench |
-| \details\blockchain | Podrobné protokoly blockchain |
-| \details\workbench | Podrobné protokoly nástroje workbench |
+| \Metrics\blockchain | Metriky o blockchain |
+| \Metrics\Workbench | Metriky o nástroje workbench |
+| \Details\Blockchain | Podrobné protokoly blockchain |
+| \Details\Workbench | Podrobné protokoly nástroje workbench |
 
 Soubor souhrnu vám dává snímek celkového stavu aplikace a stavu aplikace. Souhrn poskytuje doporučené akce, klade důraz nejvyšší chyby a metadata o spuštění služby.
+
+**Metriky** složka obsahuje metriky z různých součástí systému v čase. Například výstupní soubor `\Details\Workbench\apiMetrics.txt` obsahuje souhrn kódy různých odpovědi a časy odezvy po celou dobu shromažďování. **Podrobnosti** složka obsahuje podrobné protokoly pro konkrétní řešení potíží s Workbench nebo na základní síti blockchain. Například `\Details\Workbench\Exceptions.csv` obsahuje seznam nejnovější výjimky, k nimž došlo v systému, který je užitečný pro řešení potíží s chybami spojenými s inteligentní kontrakty nebo interakce s blockchain. 
 
 ## <a name="next-steps"></a>Další postup
 

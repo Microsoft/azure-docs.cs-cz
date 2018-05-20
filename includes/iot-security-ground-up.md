@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 103cdd24ca5f47ee12196cd153d528f19bb35b20
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpečení Internetu věcí od základů
 
@@ -44,7 +44,7 @@ Systémy společnosti Microsoft zadejte zjišťování neoprávněných vniknut�
 
 Řešení akcelerátorů využít výhod zabezpečení a o ochraně osobních údajů, které jsou součástí platformy Azure společně s procesy SDL a OSA pro zabezpečený vývoj a provoz veškerého softwaru společnosti Microsoft. Tyto postupy obsahují infrastrukturu ochrany, ochrany sítě a identita a Správa funkce, které jsou zásadní pro zabezpečení řešení.
 
-[Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) v rámci [akcelerátorů řešení IoT](../articles/iot-suite/iot-suite-what-is-azure-iot.md) nabízí plně spravovanou službu, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi zařízeními IoT a službám Azure, jako [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) a [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) pomocí přihlašovacích údajů na zařízení zabezpečení a řízení přístupu.
+[Azure IoT Hub](../articles/iot-hub/iot-hub-what-is-iot-hub.md) v rámci [akcelerátorů řešení IoT](../articles/iot-accelerators/iot-accelerators-what-is-azure-iot.md) nabízí plně spravovanou službu, která umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi zařízeními IoT a službám Azure, jako [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) a [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) pomocí přihlašovacích údajů na zařízení zabezpečení a řízení přístupu.
 
 Pro komunikaci nejlépe zabezpečení a ochrany osobních údajů funkcí integrovaných do akcelerátorů řešení Azure IoT, v tomto článku dojde-li suite do tří oblastí primární zabezpečení.
 

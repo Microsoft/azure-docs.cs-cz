@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ae24031922c2ef01c9274f6ecf572158a9a194d4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 01ddebd219a97a59ba3f979d32d6c563a0d31f8a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro Azure Functions
 
@@ -33,6 +33,8 @@ Tento článek vysvětluje, jak pracovat s vazeb Azure Service Bus v Azure Funct
 Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -49,16 +51,22 @@ Podívejte se na konkrétní jazyk příklad:
 
 ### <a name="trigger---c-example"></a>Aktivační událost – příklad jazyka C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , zaznamená zprávu fronty Service Bus.
+Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který čte [zpráva metadata](#trigger---message-metadata) a do protokolu zaznamená zprávu fronty sběrnice:
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
 public static void Run(
     [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] 
-    string myQueueItem, 
+    string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
     TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -66,7 +74,7 @@ V tomto příkladu je pro verzi Azure Functions 1.x; pro 2.x [vynechejte paramet
  
 ### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
 
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zaznamená zprávu fronty Service Bus.
+Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce přečte [zpráva metadata](#trigger---message-metadata) a do protokolu zaznamená zprávu fronty Service Bus.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -88,9 +96,19 @@ Zde je vazba dat v *function.json* souboru:
 Tady je kód skriptu jazyka C#:
 
 ```cs
-public static void Run(string myQueueItem, TraceWriter log)
+using System;
+
+public static void Run(string myQueueItem,
+    Int32 deliveryCount,
+    DateTime enqueuedTimeUtc,
+    string messageId,
+    TraceWriter log)
 {
     log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"DeliveryCount={deliveryCount}");
+    log.Info($"MessageId={messageId}");
 }
 ```
 
@@ -124,7 +142,7 @@ let Run(myQueueItem: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zaznamená zprávu fronty Service Bus. 
+Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte [zpráva metadata](#trigger---message-metadata) a do protokolu zaznamená zprávu fronty Service Bus. 
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -148,6 +166,9 @@ Tady je kód JavaScript skriptu:
 ```javascript
 module.exports = function(context, myQueueItem) {
     context.log('Node.js ServiceBus queue trigger function processed message', myQueueItem);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('DeliveryCount =', context.bindingData.deliveryCount);
+    context.log('MessageId =', context.bindingData.messageId);
     context.done();
 };
 ```
@@ -247,7 +268,30 @@ Zpracování poškozených zpráv nelze řídí nebo nakonfigurované v Azure Fu
 
 ## <a name="trigger---peeklock-behavior"></a>Aktivační událost - PeekLock chování
 
-Modul runtime funkce obdrží zprávu v [PeekLock režimu](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Zavolá `Complete` na zprávu, pokud funkci skončí úspěšně, nebo volání `Abandon` Pokud funkce selže. Pokud je funkce spuštěná déle, než `PeekLock` automaticky obnovují vždy vypršel časový limit, zámek.
+Modul runtime funkce obdrží zprávu v [PeekLock režimu](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Zavolá `Complete` na zprávu, pokud funkci skončí úspěšně, nebo volání `Abandon` Pokud funkce selže. Pokud je funkce spuštěná déle, než `PeekLock` vypršel časový limit, zámek je automaticky obnovují vždy tak dlouho, dokud funkce běží. 
+
+Funkce 1.x umožňuje nakonfigurovat `autoRenewTimeout` v *host.json*, která se mapuje na [OnMessageOptions.AutoRenewTimeout](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout?view=azure-dotnet#Microsoft_ServiceBus_Messaging_OnMessageOptions_AutoRenewTimeout). Maximální povolená pro toto nastavení je 5 minut podle dokumentace služby Service Bus, zatímco můžete zvýšit časový limit funkce z výchozí hodnoty 5 minut do 10 minut. Pro funkce Service Bus není vhodné k tomu pak, protože by překročila limit obnovení Service Bus.
+
+## <a name="trigger---message-metadata"></a>Aktivační událost – zpráva metadat
+
+Aktivační události služby Service Bus nabízí několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Tyto vlastnosti jsou [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) třídy.
+
+|Vlastnost|Typ|Popis|
+|--------|----|-----------|
+|`DeliveryCount`|`Int32`|Počet doručení.|
+|`DeadLetterSource`|`string`|Zdroj nedoručených zpráv.|
+|`ExpiresAtUtc`|`DateTime`|Čas vypršení platnosti ve standardu UTC.|
+|`EnqueuedTimeUtc`|`DateTime`|Zařazených do fronty čas v UTC.|
+|`MessageId`|`string`|Hodnotu definovanou uživatelem, který sběrnice můžete použít k identifikaci duplicitní zprávy, pokud je povoleno.|
+|`ContentType`|`string`|Identifikátor typu obsahu využívaných odesílatele a příjemce pro určitou logiku aplikace.|
+|`ReplyTo`|`string`|Odpověď na adresu fronty.|
+|`SequenceNumber`|`Int64`|Jedinečné číslo přiřazené zprávu pomocí sběrnice služby.|
+|`To`|`string`|Odeslání na adresu.|
+|`Label`|`string`|Popisek konkrétní aplikace.|
+|`CorrelationId`|`string`|ID korelace.|
+|`Properties`|`IDictionary<String,Object>`|Vlastnosti zprávy konkrétní aplikace.|
+
+V tématu [příklady kódu pro](#trigger---example) , použijte tyto vlastnosti dříve v tomto článku.
 
 ## <a name="trigger---hostjson-properties"></a>Aktivační událost - host.json vlastnosti
 
@@ -404,7 +448,7 @@ Zde je kód JavaScript, který vytvoří do jedné zprávy:
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = message;
+    context.bindings.outputSbQueue = message;
     context.done();
 };
 ```
@@ -415,9 +459,9 @@ Zde je kód skriptu jazyka JavaScript, který vytváří více zpráv:
 module.exports = function (context, myTimer) {
     var message = 'Service Bus queue message created at ' + timeStamp;
     context.log(message);   
-    context.bindings.outputSbQueueMsg = [];
-    context.bindings.outputSbQueueMsg.push("1 " + message);
-    context.bindings.outputSbQueueMsg.push("2 " + message);
+    context.bindings.outputSbQueue = [];
+    context.bindings.outputSbQueue.push("1 " + message);
+    context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
 ```

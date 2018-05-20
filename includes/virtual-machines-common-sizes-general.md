@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 786261b38fe27dccc9c7ef5ee6550f4b50c52e4b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ab9ad821c6780c685c884a87f3075a5d58c1d73a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáváním poměr paměť procesoru. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -29,7 +29,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáván
 
 ## <a name="b-series"></a>B-Series
 
-B-series burstable virtuální počítače jsou ideální pro úlohy, které nemají potřebovat úplný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývoj a testovací prostředí. Tyto úlohy mají obvykle burstable výkonu požadavky. B-Series poskytuje možnost zakoupit velikost virtuálního počítače s ceny standardních hodnot výkonu svědomí umožňující instance virtuálního počítače vytvořit kredity při virtuálního počítače je nižší než jeho základní výkon použití těchto zákazníků. Když virtuální počítač nahromadění platební, můžete virtuální počítač burst nad úroveň Virtuálního počítače pomocí až o 100 % procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
+B-series burstable virtuální počítače jsou ideální pro úlohy, které nemají potřebovat úplný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývoj a testovací prostředí. Tyto úlohy mají obvykle burstable výkonu požadavky. B-Series poskytuje možnost zakoupit velikost virtuálního počítače s výkonu vědomá toho základní cena umožňující instance virtuálního počítače vytvořit kredity při virtuálního počítače je nižší než jeho základní výkon použití těchto zákazníků. Když virtuální počítač nahromadění platební, můžete virtuální počítač burst nad úroveň Virtuálního počítače pomocí až o 100 % procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
 
 
 | Velikost             | Virtuální procesory  | Paměť: GiB | Místní SSD: GiB | Základní výkonu základní | Kredity bankovních / hodinu | Maximální počet bankovních kredity | Max. datových disků | Maximální místního disku perf: IOPS / MB/s | Maximální neuložená ve vyrovnávací paměti disku perf: IOPS / MB/s | Maximální počet síťových karet |          

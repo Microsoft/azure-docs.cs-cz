@@ -4,13 +4,13 @@ description: Popisuje postup vytvoření posouzení závislosti počítače pomo
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/25/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 026d9f632bdcf4b40163acfeec167fbf22057a64
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a9850044266ec05cee5e32c6825609bcf969351d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Skupina počítačů pomocí mapování závislostí počítače
 

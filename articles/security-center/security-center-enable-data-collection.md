@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/03/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 90a73545afa82276256a021588eaa594b95ee8da
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 847127c96f23bbeb3cf3a5d1c9768af6e0cc0dc4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat v Azure Security Center
 Security Center shromažďuje data z Azure virtuální počítače (VM) a počítače mimo Azure pro monitorování ohrožení zabezpečení a hrozbami. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent taky zkopíruje soubory se stavem systému do pracovního prostoru.
 
 ## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Zapněte automatické zřizování služby Microsoft Monitoring Agent     
-Pokud je povoleno automatické zřizování, podporované Security Center zřizuje agenta Microsoft Monitoring Agent na všech virtuálních počítačích Azure a všechny nové, které jsou vytvořeny. Automatické zřizování důrazně doporučujeme, ale instalace ručního agenta je také k dispozici. [Naučte se nainstalovat rozšíření pro Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
+Automatické zřizování je ve výchozím nastavení vypnuté. Pokud je povoleno automatické zřizování, podporované Security Center zřizuje agenta Microsoft Monitoring Agent na všech virtuálních počítačích Azure a všechny nové, které jsou vytvořeny. Automatické zřizování důrazně doporučujeme, ale instalace ručního agenta je také k dispozici. [Naučte se nainstalovat rozšíření pro Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 > [!NOTE]
 > Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky. Další informace najdete v tématu [vypnout automatické zřizování](security-center-enable-data-collection.md#disable-automatic-provisioning) v tomto článku. I když automatické zřizování je zakázán, jsou povoleny snímků disku virtuálního počítače a kolekce artefaktů.
@@ -32,13 +32,16 @@ Pokud je povoleno automatické zřizování, podporované Security Center zřizu
 >
 
 Povolení automatického zřizování agenta Microsoft Monitoring Agent:
-1. V hlavní nabídce služby Security Center vyberte **Zásady zabezpečení**.
+1. V části v hlavní nabídce Security Center, vyberte **zásady zabezpečení**.
 2. Vyberte předplatné.
+
+  ![Výběr předplatného][7]
+
 3. V části **Zásady zabezpečení** vyberte **Shromažďování dat**.
-4. V části **registrace**, vyberte **na** zapněte automatické zřizování.
+4. V části **automatické zřizování**, vyberte **na** zapněte automatické zřizování.
 5. Vyberte **Uložit**.
 
-![Povolení automatického zřizování][1]
+  ![Povolení automatického zřizování][1]
 
 ## <a name="default-workspace-configuration"></a>Výchozí konfigurace pracovního prostoru
 Data shromážděná pomocí služby Security Center je uložen v pracovních prostorů analýzy protokolů.  Můžete vybrat, zda má data shromážděná z virtuálních počítačů Azure uložená v pracovních prostorů vytvořit pomocí služby Security Center nebo v existujícímu pracovnímu prostoru, kterou jste vytvořili.
@@ -49,16 +52,16 @@ Použít stávající pracovní prostor analýzy protokolů:
 
 Vyberte existující pracovní prostor analýzy protokolů:
 
-1. V části **zásady zabezpečení – shromažďování dat**, vyberte **použijte jiný pracovní prostor**.
+1. V části **výchozí konfigurace prostoru**, vyberte **použijte jiný pracovní prostor**.
 
    ![Vyberte existující pracovní prostor][2]
 
 2. V rozevírací nabídce vyberte pracovní prostor pro ukládání shromážděných dat.
 
-> [!NOTE]
-> V seznamu vyžádaných nabídku se zobrazí pouze pracovní prostory, které mají přístup k a jsou ve vašem předplatném Azure.
->
->
+  > [!NOTE]
+  > V vyžádání nabídku jsou k dispozici všechny pracovní prostory ve všech vašich předplatných. V tématu [mezi výběr předplatného prostoru](security-center-enable-data-collection.md#cross-subscription-workspace-selection) Další informace.
+  >
+  >
 
 3. Vyberte **Uložit**.
 4. Po výběru **Uložit**, zobrazí se dotaz, pokud byste chtěli reconfigure monitorovat virtuální počítače.
@@ -73,7 +76,15 @@ Vyberte existující pracovní prostor analýzy protokolů:
 
    - Vyberte **zrušit** na tlačítko Storno.
 
-   ![Vyberte existující pracovní prostor][3]
+     ![Vyberte existující pracovní prostor][3]
+
+## <a name="cross-subscription-workspace-selection"></a>Mezi prostoru výběr předplatného
+Když vyberete pracovní prostor pro ukládání dat, jsou k dispozici všechny pracovní prostory ve všech vašich předplatných. Mezi předplatnými výběr pracovního prostoru vám umožní shromažďovat data z virtuálních počítačů spuštěných v různých předplatných a uložit v pracovním prostoru podle svého výběru. Tato funkce funguje pro virtuální počítače se systémem Linux a Windows.
+
+> [!NOTE]
+> Výběr pracovního prostoru mezi předplatnými je součástí úroveň Free Azure Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
+>
+>
 
 ## <a name="data-collection-tier"></a>Úrovně shromažďování dat
 Security Center může snížit objem událostí při zachování dostatek události pro šetření, auditování a detekce hrozeb. Můžete shromáždit pomocí agenta právo filtrování zásady pro vaše předplatné a pracovní prostory ze čtyř sad události.
@@ -84,7 +95,8 @@ Security Center může snížit objem událostí při zachování dostatek udál
 - **Žádný** – zakázat shromažďování událostí zabezpečení ze zabezpečení a protokoly AppLocker. Pro zákazníky, kteří tuto možnost zvolte řídicí panely jejich zabezpečení mají pouze proaktivní vyhodnocování jako antimalwarových, základní a aktualizace a protokoly brány Windows Firewall.
 
 > [!NOTE]
-> Tyto sady byly navrženy pro adres typické scénáře. Zajistěte, aby k vyhodnocení, které z nich vyhovuje vašim potřebám před implementací.
+> Tyto sady události zabezpečení jsou k dispozici pouze na úrovni Standard Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md).
+Tyto sady byly navrženy pro adres typické scénáře. Zajistěte, aby k vyhodnocení, které z nich vyhovuje vašim potřebám před implementací.
 >
 >
 
@@ -115,7 +127,7 @@ Tady je úplnému selhání zabezpečení a AppLocker událost ID pro každou sa
 >
 
 Chcete-li zvolit filtrování zásady:
-1. Na **zásady zabezpečení a nastavení** okně vyberte zásady vaší filtrování v rámci **události zabezpečení**.
+1. Na **zásadu zabezpečení shromažďování dat** okně vyberte zásady vaší filtrování v rámci **události zabezpečení**.
 2. Vyberte **Uložit**.
 
    ![Zvolte filtrování zásad][5]
@@ -129,12 +141,13 @@ Můžete zakázat automatické zřizování z prostředků kdykoli vypnutím toh
 >
 
 1. Vrátit do hlavní nabídky Security Center a vyberte zásady zabezpečení.
-
-   ![Vypnout automatické zřizování][6]
-
 2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
-3. Na **zásady zabezpečení – shromažďování dat** okno, v části **registrace** vyberte **vypnout** zakázat automatické zřizování.
-4. Vyberte **Uložit**.  
+3. Na **zásady zabezpečení – shromažďování dat** okno, v části **automatické zřizování** vyberte **vypnout**.
+4. Vyberte **Uložit**.
+
+  ![Zakázat automatické zřizování][6]
+
+Pokud je automatické zřizování zakázáno (vypnuto), výchozí prostoru konfigurační oddíl se nezobrazí.
 
 ## <a name="next-steps"></a>Další postup
 Tento článek ukázal, jak shromažďování dat a automatické zřizování v Centru zabezpečení funguje. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
@@ -153,4 +166,5 @@ Tento článek ukázal, jak shromažďování dat a automatické zřizování v 
 [2]: ./media/security-center-enable-data-collection/use-another-workspace.png
 [3]: ./media/security-center-enable-data-collection/reconfigure-monitored-vm.png
 [5]: ./media/security-center-enable-data-collection/data-collection-tiers.png
-[6]: ./media/security-center-enable-data-collection/disable-automatic-provisioning.png
+[6]: ./media/security-center-enable-data-collection/disable-data-collection.png
+[7]: ./media/security-center-enable-data-collection/select-subscription.png

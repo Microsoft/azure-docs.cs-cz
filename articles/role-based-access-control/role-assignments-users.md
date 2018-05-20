@@ -5,20 +5,20 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: jeffsta
+editor: ''
 ms.assetid: e6f9e657-8ee3-4eec-a21c-78fe1b52a005
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: rolyon
-ms.openlocfilehash: 35838ed0f86dc4e063c943087c88d19195df72fd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 94662c99ace749f50deccf4c8cbcd9d42fee75e1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Zobrazení přiřazení přístupu pro uživatele a skupiny na portálu Azure
 > [!div class="op_single_selector"]

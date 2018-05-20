@@ -1,31 +1,41 @@
 ---
-title: "Stažení nástroje Azure zásobníku z Githubu | Microsoft Docs"
-description: "Zjistěte, jak si chcete stáhnout nástroje potřebné pro práci s Azure zásobníku."
+title: Stažení nástroje Azure zásobníku z Githubu | Microsoft Docs
+description: Zjistěte, jak si chcete stáhnout nástroje potřebné pro práci s Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 28F360AD-789A-488D-965F-FC6E6CCF3329
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: d4f8a8d73f8e2ea321cb6cc1deda2301033b249d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a5bc23ee6f986da80630371bafcd8ec80dde3577
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Stažení nástroje Azure zásobníku z Githubu
 
-AzureStack nástroje je úložiště GitHub, který je hostitelem moduly Powershellu, které můžete použít ke správě a nasazení prostředků do protokolů Azure. Můžete stáhnout a použít tyto moduly Powershellu Development Kit zásobník Azure nebo na externí klienta se systémem windows, pokud máte v úmyslu navázat připojení VPN. Pokud chcete získat tyto nástroje, naklonujte úložiště GitHub nebo stáhnout složce AzureStack nástroje spuštěním následujícího skriptu:
+*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+
+AzureStack nástroje je úložiště GitHub, který je hostitelem moduly Powershellu, které můžete použít ke správě a nasazení prostředků do protokolů Azure.
+
+## <a name="download-targets"></a>Stáhněte si cíle
+
+Můžete stáhnout a použít tyto moduly Powershellu Development Kit zásobník Azure nebo externí klienta se systémem Windows, který používá připojení k síti VPN.
+
+## <a name="how-to-get-the-tools"></a>Jak získat nástroje
+
+Tyto nástroje získáte naklonujte úložiště GitHub AzureStack nástroje nebo nástroje AzureStack složka pro stahování spuštěním následujícího skriptu:
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory to the root directory
 cd \
 
 # Download the tools archive
@@ -45,7 +55,7 @@ cd AzureStack-Tools-master
 
 ## <a name="functionalities-provided-by-the-modules"></a>Funkce poskytované moduly
 
-Úložiště AzureStack nástroje obsahuje moduly Powershellu, které podporují následující funkce pro Azure zásobníku:  
+Úložiště AzureStack nástroje obsahuje moduly Powershellu, které podporují následující funkce pro Azure zásobníku:
 
 | Funkce | Popis | Tento modul, který můžete použít? |
 | --- | --- | --- |
@@ -54,7 +64,7 @@ cd AzureStack-Tools-master
 | [Připojení k Azure zásobníku](azure-stack-connect-azure-stack.md) | Tento modul slouží k připojení k instanci zásobník Azure pomocí prostředí PowerShell a ke konfiguraci připojení VPN do protokolů Azure. | Cloud správců a uživatelů |
 | [Ověření šablony](azure-stack-validate-templates.md) | Tento modul slouží k ověření, pokud existující nebo nové šablony lze nasadit do protokolů Azure. | Cloud správců a uživatelů |
 
+## <a name="next-steps"></a>Další postup
 
-## <a name="next-steps"></a>Další kroky
-* [Konfigurace prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md)   
-* [Připojení k Azure zásobníku Development Kit přes síť VPN](azure-stack-connect-azure-stack.md)  
+* [Konfigurace prostředí PowerShell Azure zásobník uživatele](azure-stack-powershell-configure-user.md)
+* [Připojení k Azure zásobníku Development Kit přes síť VPN](azure-stack-connect-azure-stack.md)

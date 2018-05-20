@@ -1,7 +1,7 @@
 ---
-title: "Integrace s jinými službami Azure Data Lake Store | Microsoft Docs"
-description: "Pochopit, jak Data Lake Store se integruje s jinými službami Azure"
-documentationcenter: 
+title: Integrace s jinými službami Azure Data Lake Store | Microsoft Docs
+description: Pochopit, jak Data Lake Store se integruje s jinými službami Azure
+documentationcenter: ''
 services: data-lake-store
 author: nitinme
 manager: jhubbard
@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: d43459b900232612d83506438e6a70daa893eb80
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: e11100118f599b4fee6362625aff05c50bb07c87
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>Integrace Data Lake Store s ostatními službami Azure
 Azure Data Lake Store můžete použít ve spojení s jinými službami Azure umožňuje širší škálu scénářů. V následujícím článku jsou uvedené služby, které se dá integrovat Data Lake Store.
@@ -66,7 +64,7 @@ PolyBase můžete použít k načtení dat z Azure Data Lake Store do SQL Data W
 ## <a name="use-data-lake-store-with-azure-event-hubs"></a>Použití Data Lake Store s Azure Event Hubs
 Azure Data Lake Store můžete archivu a zachycení dat přijatých Azure Event Hubs. Další informace najdete v části [použití Data Lake Store s Azure Event Hubs](data-lake-store-archive-eventhub-capture.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled Azure Data Lake Store](data-lake-store-overview.md)
 * [Začínáme s Data Lake Store pomocí portálu](data-lake-store-get-started-portal.md)
 * [Začínáme s Data Lake Store pomocí prostředí PowerShell](data-lake-store-get-started-powershell.md)  

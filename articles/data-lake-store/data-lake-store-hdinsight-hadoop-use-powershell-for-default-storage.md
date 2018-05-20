@@ -10,17 +10,16 @@ ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 81074d303fbcefdf396de09510f69067eac3f3f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a9f2e9c2634173cf2feb9ded2e87e49f9c8d1e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Vytvoření clusterů HDInsight s Data Lake Store jako výchozí úložiště pomocí prostředí PowerShell
+
 > [!div class="op_single_selector"]
 > * [Použití portálu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Pomocí prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -38,11 +37,12 @@ Zde jsou některé důležité informace týkající se používání HDInsight 
 Ke konfiguraci HDInsight pro práci s Data Lake Store pomocí prostředí PowerShell, postupujte podle pokynů v následujících pět částech.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Než začnete tento kurz, ujistěte se, že splňujete následující požadavky:
 
 * **Předplatné Azure**: přejděte na [získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Prostředí Azure PowerShell 1.0 nebo vyšší**: najdete v části [postup instalace a konfigurace prostředí PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Chcete-li nainstalovat sadu Windows SDK, přejděte na [stáhne a nástroje pro Windows 10](https://dev.windows.com/en-us/downloads). Sada SDK se používá k vytvoření certifikát zabezpečení.
+* **Windows Software Development Kit (SDK)**: Chcete-li nainstalovat sadu Windows SDK, přejděte na [stáhne a nástroje pro Windows 10](https://dev.windows.com/downloads). Sada SDK se používá k vytvoření certifikát zabezpečení.
 * **Objekt služby Azure Active Directory**: Tento kurz popisuje, jak vytvořit objekt služby v Azure Active Directory (Azure AD). Pokud chcete vytvořit objekt služby, ale musí být správce Azure AD. Pokud jste správce, můžete přeskočit tento požadavek a pokračujte v tomto kurzu.
 
     >[!NOTE]
@@ -50,6 +50,7 @@ Než začnete tento kurz, ujistěte se, že splňujete následující požadavky
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Vytvoření účtu Data Lake Store
+
 Pokud chcete vytvořit účet Data Lake Store, postupujte takto:
 
 1. Z plochy otevřete okno prostředí PowerShell a potom zadejte níže zobrazené fragmenty kódu. Když se zobrazí výzva k přihlášení, přihlaste se jako správci předplatného nebo vlastníky. 
@@ -142,7 +143,7 @@ V této části vytvořit objekt služby pro aplikaci Azure AD, přiřazení rol
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

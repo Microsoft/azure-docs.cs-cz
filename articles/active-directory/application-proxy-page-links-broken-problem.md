@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 64dcf5608710a85c47cd14ed9bee33594d46e083
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 7c505080e6b6144ab3cf24ad89bb084efbb77c29
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nejsou k dispozici pro aplikaci Proxy aplikace
 
@@ -45,5 +45,5 @@ Existují tři způsoby, jak tento problém vyřešit. Volby níže jsou uvedeny
 V důsledku toho důrazně doporučujeme používat [vlastní domény](manage-apps/application-proxy-configure-custom-domain.md) řešení, pokud je to možné. Pokud chcete pro připojení ve verzi preview, e-mailu <aadapfeedback@microsoft.com> s applicationId(s).
 
 ## <a name="next-steps"></a>Další postup
-[Práce s existující místní proxy servery](application-proxy-working-with-proxy-servers.md)
+[Práce s existující místní proxy servery](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
 

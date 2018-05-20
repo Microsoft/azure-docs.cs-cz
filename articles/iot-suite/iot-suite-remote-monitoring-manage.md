@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 599f8327e9939f400ca18c87fa6193ac3c1e4a61
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Správa a konfigurace zařízení
 
@@ -24,7 +24,7 @@ Tento kurz ukazuje zařízení možnosti správy řešení vzdáleného monitoro
 
 Contoso má seřazené nové stroje rozbalte jeden z jejich zařízení zvýšit výstup. Počkejte nové stroje, který bude doručen, ale chcete spustit simulaci ověření chování vašeho řešení. Jakožto obsluha, kterou chcete spravovat a nakonfigurovat zařízení v řešení vzdáleného monitorování.
 
-K zajištění o extensible způsob, jak spravovat a nakonfigurovat zařízení, řešení vzdáleného monitorování používá funkce IoT Hub, jako [úlohy](../iot-hub/iot-hub-devguide-jobs.md) a [přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md). Informace o tom, jak vývojář zařízení implementuje metody na fyzické zařízení, najdete v části [přizpůsobit vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-customize.md).
+K zajištění o extensible způsob, jak spravovat a nakonfigurovat zařízení, řešení vzdáleného monitorování používá funkce IoT Hub, jako [úlohy](../iot-hub/iot-hub-devguide-jobs.md) a [přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md). Informace o tom, jak vývojář zařízení implementuje metody na fyzické zařízení, najdete v části [přizpůsobit vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
 
 V tomto kurzu se naučíte:
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 
 Chcete-li v tomto kurzu, je třeba nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="add-a-simulated-device"></a>Přidání simulovaného zařízení
 

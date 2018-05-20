@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/09/2018
+ms.date: 05/15/2018
 ms.author: ryanwi
-ms.openlocfilehash: 48ee54460454368deef44c8f84624e32856efafa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b2b3562f65e7e861b7e4dff7b7c26d58081ff29e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro službu kontejneru Service Fabric
-Azure Service Fabric je kontejner orchestrator a podporuje obě [Linux a Windows kontejnery](service-fabric-containers-overview.md).  Tento článek popisuje, jak zobrazit protokoly kontejneru spuštěné služby kontejneru, aby mohli diagnostice a řešení problémů.
+Azure Service Fabric je kontejner orchestrator a podporuje obě [Linux a Windows kontejnery](service-fabric-containers-overview.md).  Tento článek popisuje, jak zobrazit protokoly kontejneru spuštěnou službu kontejneru nebo kontejner neaktivní, aby mohli diagnostice a řešení problémů.
 
-## <a name="access-container-logs"></a>Přístup k protokolům kontejneru
+## <a name="access-the-logs-of-a-running-container"></a>Přístup k protokolům spuštěné kontejneru
 Kontejner protokoly lze přistupovat pomocí [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).  Ve webovém prohlížeči, otevřete Service Fabric Explorer z koncového bodu správy clusteru tak, že přejdete na [ http://mycluster.region.cloudapp.azure.com:19080/Explorer ](http://mycluster.region.cloudapp.azure.com:19080/Explorer).  
 
 Kontejner protokoly jsou umístěny na uzlu clusteru, který běží instance služby kontejneru na. Jako příklad získání protokolů kontejneru front-endu webové služby [Linux hlasování ukázkovou aplikaci](service-fabric-quickstart-containers-linux.md). Ve stromovém zobrazení, rozbalte položku **clusteru**>**aplikace**>**VotingType**>**fabric: / Voting / azurevotefront**.  Potom rozbalte oddíl (d1aa737e-f22a-e347-be16-eec90be24bc1, v tomto příkladu) a zda kontejner je spuštěn na uzlu clusteru *_lnxvm_0*.
@@ -32,6 +32,38 @@ Ve stromovém zobrazení najít balíček kódu na *_lnxvm_0* uzlu rozšíření
 
 ![Platforma Service Fabric][Image1]
 
+## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>Přístup k protokolům neaktivní nebo zhroucené kontejneru
+Počínaje v6.2, může také načíst protokoly pro kontejner neaktivní nebo zhroucené pomocí [rozhraní REST API](/rest/api/servicefabric/sfclient-index) nebo [Service Fabric rozhraní příkazového řádku (SFCTL)](service-fabric-cli.md) příkazy.
+
+### <a name="rest"></a>REST
+Použití [získat nasadit kontejner protokoly na uzlu](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) operace k získání protokoly pro kontejner zhroucené. Zadejte název tohoto uzlu, spuštěné v kontejneru, název aplikace, manifest název služby a název balíčku kódu.  Zadejte `&Previous=true`. Odpověď bude obsahovat protokoly kontejner pro neaktivní kontejner instance balíček kódu.
+
+Identifikátoru URI požadavku má následující formát:
+
+```
+/Nodes/{nodeName}/$/GetApplications/{applicationId}/$/GetCodePackages/$/ContainerLogs?api-version=6.2&ServiceManifestName={ServiceManifestName}&CodePackageName={CodePackageName}&Previous={Previous}
+```
+
+Příklad žádost:
+```
+GET http://localhost:19080/Nodes/_Node_0/$/GetApplications/SimpleHttpServerApp/$/GetCodePackages/$/ContainerLogs?api-version=6.2&ServiceManifestName=SimpleHttpServerSvcPkg&CodePackageName=Code&Previous=true  
+```
+
+Text odpovědi 200:
+```json
+{   "Content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" } 
+```
+
+### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
+Použití [sfctl služby get kontejneru protokoly](service-fabric-sfctl-service.md) příkaz k načtení protokoly pro kontejner zhroucené.  Zadejte název tohoto uzlu, spuštěné v kontejneru, název aplikace, manifest název služby a název balíčku kódu. Zadejte `-previous` příznak.  Odpověď bude obsahovat protokoly kontejner pro neaktivní kontejner instance balíček kódu.
+
+```
+sfctl service get-container-logs --node-name _Node_0 --application-id SimpleHttpServerApp --service-manifest-name SimpleHttpServerSvcPkg --code-package-name Code –previous
+```
+Odpověď:
+```json
+{   "content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" }
+```
 
 ## <a name="next-steps"></a>Další postup
 - Fungovat prostřednictvím [vytvořit kurz Linux kontejneru aplikace](service-fabric-tutorial-create-container-images.md).

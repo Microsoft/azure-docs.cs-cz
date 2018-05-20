@@ -1,6 +1,6 @@
 ---
-title: "Monitorování a Diagnostika aktéři | Microsoft Docs"
-description: "Tento článek popisuje diagnostiky a funkce v modulu runtime Service Fabric Reliable Actors, včetně události a čítače výkonu vysílaných ho pro sledování výkonu."
+title: Monitorování a Diagnostika aktéři | Microsoft Docs
+description: Tento článek popisuje diagnostiky a funkce v modulu runtime Service Fabric Reliable Actors, včetně události a čítače výkonu vysílaných ho pro sledování výkonu.
 services: service-fabric
 documentationcenter: .net
 author: abhishekram
@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 5fbef8a3fb32f4bc47856ef6c6b459ae389dd541
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 9b4825be7ce7fb05b109310f21cd65cfe3819ae8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnostika a sledování výkonu služby Reliable Actors
 Modul runtime Reliable Actors vysílá [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) události a [čítače výkonu](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Tyto poskytují přehled o tom, jak pracuje modul runtime a pomáhají při řešení potíží a monitorování výkonu.
@@ -43,8 +43,8 @@ Modul runtime Reliable Actors definuje následující kategorie čítače výkon
 
 | Kategorie | Popis |
 | --- | --- |
-| Prostředky infrastruktury služby objektu Actor |Čítače specifické pro Azure Service Fabric aktéři, například čas potřebný k uložení stavu objektu actor |
-| Metoda objektu Actor pro Service Fabric |Čítače specifické pro metody implementované aktéři Service Fabric, například jak často objektu actor je volána metoda |
+| Objekt actor pro Service Fabric |Čítače specifické pro Azure Service Fabric aktéři, například čas potřebný k uložení stavu objektu actor |
+| Metoda objektu actor pro Service Fabric |Čítače specifické pro metody implementované aktéři Service Fabric, například jak často objektu actor je volána metoda |
 
 Každá z výše uvedených kategorií má jeden nebo více čítačů.
 
@@ -93,47 +93,47 @@ Modul runtime Reliable Actors vysílá následující události související s 
 
 | Název události | ID události | Úroveň | – Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Verbose |0x2 |Modul runtime aktéři je vyvolat metodu objektu actor. |
-| ActorMethodStop |8 |Verbose |0x2 |Metoda objektu actor byl dokončen. To znamená vrátila modul runtime asynchronního volání metody objektu actor a dokončení úlohy vráceném metodou objektu actor. |
+| ActorMethodStart |7 |Podrobný |0x2 |Modul runtime aktéři je vyvolat metodu objektu actor. |
+| ActorMethodStop |8 |Podrobný |0x2 |Metoda objektu actor byl dokončen. To znamená vrátila modul runtime asynchronního volání metody objektu actor a dokončení úlohy vráceném metodou objektu actor. |
 | ActorMethodThrewException |9 |Upozornění |0x3 |Došlo k výjimce během provádění metody objektu actor během asynchronního volání metody objektu actor modul runtime nebo během provádění úlohy vráceném metodou objektu actor. Tato událost ukazuje nějaká chyba v objektu actor kód, který potřebuje šetření. |
 
 Modul runtime Reliable Actors publikuje týkající se spouštění metody objektu actor následující čítače výkonu.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Metoda objektu Actor pro Service Fabric |Volání za sekundu |Počet pokusů, které metody služby objektu actor vyvolala za sekundu |
-| Metoda objektu Actor pro Service Fabric |Průměrný počet milisekund na vyvolání |Doba v milisekundách, jakou trvalo spuštění metody služby objektu actor |
-| Metoda objektu Actor pro Service Fabric |Výjimek vyvolaných za sekundu |Počet pokusů, že metoda služby objektu actor výjimku za sekundu |
+| Metoda objektu actor pro Service Fabric |Vyvolání/s |Počet pokusů, které metody služby objektu actor vyvolala za sekundu |
+| Metoda objektu actor pro Service Fabric |Průměrný počet milisekund na vyvolání |Doba v milisekundách, jakou trvalo spuštění metody služby objektu actor |
+| Metoda objektu actor pro Service Fabric |Vyvolané výjimky/s |Počet pokusů, že metoda služby objektu actor výjimku za sekundu |
 
 ### <a name="concurrency-events-and-performance-counters"></a>Concurrency události a čítače výkonu
 Modul runtime Reliable Actors vysílá následující události související s [souběžnosti](service-fabric-reliable-actors-introduction.md#concurrency).
 
 | Název události | ID události | Úroveň | – Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Verbose |0x8 |Tato událost se zapíše na začátku každé nové zapnout v objektu actor. Obsahuje počet nevyřízených volání objektu actor čekajících na získání zámku na objektu actor, která vynucuje na základě zapnout souběžnosti. |
+| ActorMethodCallsWaitingForLock |12 |Podrobný |0x8 |Tato událost se zapíše na začátku každé nové zapnout v objektu actor. Obsahuje počet nevyřízených volání objektu actor čekajících na získání zámku na objektu actor, která vynucuje na základě zapnout souběžnosti. |
 
 Modul runtime Reliable Actors publikuje následující čítače výkonu související s souběžnosti.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Prostředky infrastruktury služby objektu Actor |Počet volání objektu actor čekajících na jeho zámek |Počet nevyřízených volání objektu actor čekajících na získání zámku na objektu actor, která vynucuje na základě zapnout souběžnosti |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund čekání na zámek |Doba (v milisekundách) získat zámek na objektu actor, která vynucuje na základě zapnout souběžnosti |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund blokování zámku objektu actor |Čas (v milisekundách), pro kterou je blokován zámek na objektu actor |
+| Objekt actor pro Service Fabric |Počet volání objektu actor čekajících na jeho zámek |Počet nevyřízených volání objektu actor čekajících na získání zámku na objektu actor, která vynucuje na základě zapnout souběžnosti |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund čekání na zámek |Doba (v milisekundách) získat zámek na objektu actor, která vynucuje na základě zapnout souběžnosti |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund blokování zámku objektu actor |Čas (v milisekundách), pro kterou je blokován zámek na objektu actor |
 
 ### <a name="actor-state-management-events-and-performance-counters"></a>Události správy stavu objektu actor a čítače výkonu
 Modul runtime Reliable Actors vysílá následující události související s [správy stavu objektu actor](service-fabric-reliable-actors-state-management.md).
 
 | Název události | ID události | Úroveň | – Klíčové slovo | Popis |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Verbose |0x4 |Modul runtime aktéři je uložení stavu objektu actor. |
-| ActorSaveStateStop |11 |Verbose |0x4 |Modul runtime aktéři dokončil ukládání stavu objektu actor. |
+| ActorSaveStateStart |10 |Podrobný |0x4 |Modul runtime aktéři je uložení stavu objektu actor. |
+| ActorSaveStateStop |11 |Podrobný |0x4 |Modul runtime aktéři dokončil ukládání stavu objektu actor. |
 
 Modul runtime Reliable Actors publikuje následující čítače výkonu související se správou stavu objektu actor.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund na operaci uložení stavu |Doba v milisekundách, jakou trvalo uložení stavu objektu actor |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund na operaci načtení stavu |Doba v milisekundách, jakou trvalo načtení stavu objektu actor |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci uložení stavu |Doba v milisekundách, jakou trvalo uložení stavu objektu actor |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund na operaci načtení stavu |Doba v milisekundách, jakou trvalo načtení stavu objektu actor |
 
 ### <a name="events-related-to-actor-replicas"></a>Události související s repliky objektu actor
 Modul runtime Reliable Actors vysílá následující události související s [objektu actor repliky](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors).
@@ -155,19 +155,19 @@ Modul runtime Reliable Actors publikuje následující čítače výkonu souvise
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund metody OnActivateAsync |Doba v milisekundách, jakou trvalo provádění metody OnActivateAsync |
+| Objekt actor pro Service Fabric |Průměrná doba metody OnActivateAsync v milisekundách |Doba v milisekundách, jakou trvalo provádění metody OnActivateAsync |
 
 ### <a name="actor-request-processing-performance-counters"></a>Čítače výkonu zpracování žádosti objektu actor
 Když klient vyvolá metodu prostřednictvím objektu actor proxy, výsledkem zprávu požadavku služby objektu actor odesílána přes síť. Služba zpracovává zprávu požadavku a odešle odpověď zpět klientovi. Modul runtime Reliable Actors publikuje následující čítače výkonu související s zpracování žádosti objektu actor.
 
 | Název kategorie | Název čítače | Popis |
 | --- | --- | --- |
-| Prostředky infrastruktury služby objektu Actor |Počet zbývajících požadavků |Počet požadavků zpracovaných ve službě |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund na žádost |Doba trvání (v milisekundách) pomocí služby zpracovat požadavek |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund deserializace požadavků |Doba (v milisekundách) k deserializaci zprávu žádosti objektu actor, když je obdržena na službu |
-| Prostředky infrastruktury služby objektu Actor |Průměrný počet milisekund serializace odpovědí |Doba (v milisekundách) k serializaci objektu actor zprávu odpovědi na službu předtím, než odešle odpověď klienta |
+| Objekt actor pro Service Fabric |Počet zbývajících požadavků |Počet požadavků zpracovaných ve službě |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund na požadavek |Doba trvání (v milisekundách) pomocí služby zpracovat požadavek |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund deserializace požadavků |Doba (v milisekundách) k deserializaci zprávu žádosti objektu actor, když je obdržena na službu |
+| Objekt actor pro Service Fabric |Průměrný počet milisekund serializace odpovědí |Doba (v milisekundách) k serializaci objektu actor zprávu odpovědi na službu předtím, než odešle odpověď klienta |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Jak používat Reliable Actors platformy Service Fabric](service-fabric-reliable-actors-platform.md)
 * [Referenční dokumentace rozhraní API objektu actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Ukázka kódu](https://github.com/Azure/servicefabric-samples)

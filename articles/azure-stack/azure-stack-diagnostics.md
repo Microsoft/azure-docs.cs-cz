@@ -1,25 +1,23 @@
 ---
 title: Diagnostika v Azure Stacku
-description: "Jak chcete shromažďovat soubory protokolů pro diagnostiku v Azure zásobníku"
+description: Jak chcete shromažďovat soubory protokolů pro diagnostiku v Azure zásobníku
 services: azure-stack
 author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 04/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure zásobníku diagnostické nástroje
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
- 
 Zásobník Azure je velké kolekce součástí spolupráci a interakci mezi sebou. Všechny tyto součásti generovat vlastní jedinečné protokoly. Diagnostika problémů může být náročné úlohy, hlavně pro chyby pocházejících z několika interakci součásti zásobníku Azure. 
 
 Naše diagnostické nástroje pomoci, ujistěte se, že kolekce mechanismu protokolu snadnou a efektivní. Následující diagram ukazuje jak protokolu nástroje kolekce v pracovním zásobník Azure:
@@ -79,7 +77,36 @@ Tyto soubory jsou shromážděny a uloženy ve sdílené složce kolekce trasov�
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>Ke spuštění Get-AzureStackLog v zásobníku Azure integrované systému
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>Ke spuštění v Azure zásobníku Get-AzureStackLog integrované systémy verze 1804 a novější
+
+Chcete-li spustit nástroj kolekce protokolu na integrovaný systém, mají přístup do privilegované koncového bodu (období). Tady je ukázkového skriptu můžete spustit pomocí období pro shromažďování protokolů na integrovaný systém:
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- Parametry **OutputSharePath** a **OutputShareCredential** se používají k odeslání protokolů k externí sdílené složce.
+- Jak je uvedeno v předchozím příkladu **FromDate** a **ToDate** parametry lze shromažďovat protokoly pro konkrétní časové období. To může se hodit pro scénáře, jako je shromažďování protokolů po použití balíčku aktualizace na integrovaný systém.
+
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>Ke spuštění v Azure zásobníku Get-AzureStackLog integrované systémy verze 1803 a starší
 
 Chcete-li spustit nástroj kolekce protokolu na integrovaný systém, mají přístup do privilegované koncového bodu (období). Tady je ukázkového skriptu můžete spustit pomocí období pro shromažďování protokolů na integrovaný systém:
 
@@ -108,6 +135,7 @@ if($s)
 - Parametry **OutputSharePath** a **OutputShareCredential** jsou volitelné a používají se při odeslání protokolů k externí sdílené složce. Použít tyto parametry *kromě* k **OutputPath**. Pokud **OutputPath** není zadán, nástroje kolekce protokol používá systémové jednotce virtuálního počítače období pro úložiště. To může způsobit skript se nezdařila, protože je omezená místo na disku.
 - Jak je uvedeno v předchozím příkladu **FromDate** a **ToDate** parametry lze shromažďovat protokoly pro konkrétní časové období. To může se hodit pro scénáře, jako je shromažďování protokolů po použití balíčku aktualizace na integrovaný systém.
 
+
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Parametr aspekty ASDK a integrované systémy
 
 - Pokud **FromDate** a **ToDate** nebyly zadány parametry, se shromáždí protokoly pro poslední čtyři hodiny ve výchozím nastavení.
@@ -117,35 +145,44 @@ if($s)
 
    |   |   |   |
    | - | - | - |
-   | ACSMigrationService     | ACSMonitoringService   | ACSSettingsService |
-   | ACS                     | ACSFabric              | ACSFrontEnd        |
-   | ACSTableMaster          | ACSTableServer         | ACSWac             |
-   | ADFS                    | ASAppGateway           | BareMetal          |
-   | BRP                     | CA                     | CPI                |
-   | CRP.                     | DeploymentMachine      | DHCP               |
-   | Doména                  | ECE                    | ECESeedRing        | 
-   | FabricRing              | FabricRingServices     | FRP                |
-   | brána                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
-   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
-   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
-   | SeedRingServices        | SLB                    | SQL                |   
-   | SRP                     | Úložiště                | StorageController  |
-   | URP                     | UsageBridge            | VirtualMachines    |  
-   | WAS                     | WASPUBLIC              | WDS                |
-
+   | ACS                    | DeploymentMachine                | NC                         |
+   | ACSBlob                | DiskRP                           | Síť                    |
+   | ACSFabric              | Doména                           | NonPrivilegedAppGateway    |
+   | ACSFrontEnd            | ECE                              | NRP                        |
+   | ACSMetrics             | ExternalDNS                      | Výrobce OEM                        |
+   | ACSMigrationService    | Prostředky infrastruktury                           | PXE                        |
+   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
+   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
+   | ACSTableMaster         | FRP                              | SLB                        |   
+   | ACSTableServer         | Galerie                          | SlbVips                    |
+   | ACSWac                 | brána                          | SQL                        |   
+   | ADFS                   | HealthMonitoring                 | SRP                        |
+   | ASAppGateway           | HRP                              | Úložiště                    |   
+   | NCAzureBridge          | IBC                              | StorageAccounts            |    
+   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
+   | AzureStackBitlocker    | IDN                             | Klient                     |
+   | BareMetal              | InfraServiceController           | TraceCollector             |
+   | BRP                    | Infrastruktura                   | URP                        |
+   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
+   | Cloud                  | KeyVaultControlPlane             | virtuálních počítačů            |
+   | Cluster                | KeyVaultDataPlane                | BYL                        |
+   | Compute                | KeyVaultInternalControlPlane     | WASBootstrap               |
+   | ISP                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
+   | CRP.                    | KeyVaultNamingService            |                            |
+   | DatacenterIntegration  | MonitoringAgent                  |                            |
+   |                        |                                  |                            |
 
 ### <a name="bkmk_gui"></a>Shromažďování protokolů pomocí grafického uživatelského rozhraní
 Místo poskytuje požadované parametry pro rutinu Get-AzureStackLog získat protokoly zásobník Azure, můžete využít i nástroje zásobník Azure k dispozici s otevřeným zdrojem umístěný v hlavní zásobník Azure nástrojů nástroje úložiště GitHub v http://aka.ms/AzureStackTools.
 
-**ERCS_AzureStackLogs.ps1** skript prostředí PowerShell je uložen v úložišti GitHub nástroje a se aktualizuje v pravidelných intervalech. K zajištění, že máte k dispozici nejnovější verzi, by ho stáhnout přímo z http://aka.ms/ERCS. Skript spustit z relace prostředí PowerShell pro správu, připojí k privilegované koncového bodu a spustí Get-AzureStackLog pomocí zadaných parametrů. Pokud jsou zadány žádné parametry, skript výchozí výzvy pro parametry přes grafické uživatelské rozhraní.
+**ERCS_AzureStackLogs.ps1** skript prostředí PowerShell je uložen v úložišti GitHub nástroje a se aktualizuje v pravidelných intervalech. Pro jistotu, že máte k dispozici nejnovější verzi, by měla stáhnout přímo z http://aka.ms/ERCS. Skript spustit z relace prostředí PowerShell pro správu, připojí k privilegované koncového bodu a spustí Get-AzureStackLog pomocí zadaných parametrů. Pokud jsou zadány žádné parametry, skript výchozí výzvy pro parametry přes grafické uživatelské rozhraní.
 
 Další informace o skriptu prostředí PowerShell ERCS_AzureStackLogs.ps1, můžete sledovat [krátké video](https://www.youtube.com/watch?v=Utt7pLsXEBc) nebo zobrazit tento skript [souboru readme](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) umístěný v úložišti GitHub nástroje Azure zásobníku. 
 
 ### <a name="additional-considerations"></a>Další aspekty
 
 * Příkaz přijímá chvíli ke spuštění na základě na rolí, které shromažďují v protokolech. Přispívajících faktorů také zahrnovat doby trvání, zadaný pro shromažďování protokolů a počtu uzlů v prostředí Azure zásobníku.
-* Po dokončení shromažďování protokolů zkontrolujte do nové složky vytvořené v **OutputPath** zadaný v příkazu parametr.
+* Podle protokolu spustí kolekce, zkontrolujte do nové složky vytvořené v **OutputSharePath** zadaný v příkazu parametr.
 * Každá role má protokoly uvnitř zip jednotlivé soubory. V závislosti na velikosti shromažďovat protokoly může mít roli protokoly rozdělit do několika souborů zip. Pro roli Pokud chcete mít všechny soubory protokolu v rozbalené do jediné složky, použijte nástroj, který můžete rozbalte hromadně (například 7zip). Vyberte všechny komprimované soubory pro roli a vyberte **extrahovat zde**. To unzips všechny soubory protokolu pro tuto roli v jedné sloučené složce.
 * Soubor nazývá **Get-AzureStackLog_Output.log** se také vytvoří ve složce, která obsahuje soubory komprimované protokolu. Tento soubor je protokolu výstupu příkazu, který můžete použít při řešení problémů během shromáždění protokolů.
 * Prozkoumat konkrétní chyby, může být potřeba protokolů z více než jedna součást.

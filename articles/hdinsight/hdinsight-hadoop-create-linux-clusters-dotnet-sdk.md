@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: eda1f0e434c59a2a1c7bb63d92ce7b1fa5b42344
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8523b012d6ceaf116e6849abaf8952bbde8b41b3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvořit clustery se systémem Linux v HDInsight pomocí sady .NET SDK
 
@@ -30,7 +30,7 @@ Zjistěte, jak vytvořit Hadoop cluster v clusteru Azure HDInsight pomocí sady 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vytvořte cluster s uzlem jeden pracovní proces. Pokud máte v plánu na víc než 32 uzlů pracovního procesu, při vytváření clusteru nebo škálování clusteru po vytvoření, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14GB paměti ram.
 >
-> Další informace o velikosti uzlu a souvisejících nákladů, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
+> Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="prerequisites"></a>Požadavky
 

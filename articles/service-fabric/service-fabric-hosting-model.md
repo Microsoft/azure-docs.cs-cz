@@ -7,16 +7,16 @@ author: harahma
 manager: timlt
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: b2ba019f21256ee98276ef30847c43709b9b3462
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d56bb10041e3baffddf6fd4121a6e1f7ba8e0632
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
 Tento článek obsahuje přehled hostování modely, které poskytuje Azure Service Fabric aplikace a popisuje rozdíly mezi **sdílený proces** a **výhradní proces** modelů. Popisuje, jak vypadá nasazené aplikace na uzlu Service Fabric a vztah mezi repliky (nebo instance) služby a proces hostitele služby.

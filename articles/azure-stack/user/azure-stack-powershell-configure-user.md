@@ -12,32 +12,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/26/2017
+ms.date: 5/15/2018
 ms.author: mabrigg
 ms.reviewer: Balsu.G
-ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2655b682d35dd1879c649ed58d524ecd80808896
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurace prostředí PowerShell Azure zásobník uživatele
 
-Jako uživatel Azure zásobníku můžete nakonfigurovat vaše Azure zásobníku Development Kit na prostředí PowerShell. Po dokončení konfigurace, můžete použít PowerShell ke správě prostředků, jako se přihlásit k odběru nabízí, zásobník Azure vytvářet virtuální počítače, nasazení šablony Azure Resource Manager, atd. Toto téma je vymezen na pomocí prostředí, pokud chcete pro nastavení prostředí PowerShell pro operátor cloudovém prostředí odkazovat pouze na uživatele [nakonfigurovat prostředí PowerShell Azure zásobníku operátor](../azure-stack-powershell-configure-admin.md) článku. 
+*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-## <a name="prerequisites"></a>Požadavky 
+Ke konfiguraci prostředí PowerShell pro Azure zásobník uživatele, postupujte podle pokynů v tomto článku.
+Po dokončení konfigurace prostředí, můžete použít PowerShell ke správě prostředků Azure zásobníku. Můžete například použít PowerShell pro přihlášení k odběru do nabídky, vytváření virtuálních počítačů a nasazení šablony Azure Resource Manager.
 
-Spusťte následující předpoklady, některý z [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo ze systému Windows externí klienta Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+>[!NOTE]
+>Tento článek je určené pro Azure zásobníku uživatelské prostředí. Pokud chcete pro nastavení prostředí PowerShell pro cloudové prostředí operátor, podívejte se na [nakonfigurovat prostředí PowerShell Azure zásobníku operátor](../azure-stack-powershell-configure-admin.md) článku.
 
-* Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).  
-* Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md). 
+## <a name="prerequisites"></a>Požadavky
+
+Můžete nakonfigurovat tyto předpoklady z [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo ze systému Windows externí klienta Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+
+* Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).
+* Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>Konfigurace uživatelského prostředí a přihlaste se k Azure zásobníku
 
-Na základě typu nasazení (Azure AD ani AD FS), spusťte jeden z následujících skriptů možné nakonfigurovat prostředí PowerShell pro Azure zásobníku (Nezapomeňte nahradit AAD tenantName, GraphAudience koncový bod a hodnoty ArmEndpoint podle konfiguraci prostředí):
+Na základě typu nasazení zásobník Azure (Azure AD ani AD FS), spusťte jeden z následujících skriptů možné nakonfigurovat prostředí PowerShell pro Azure zásobníku.
+
+Ujistěte se, že nahradíte proměnné následujícího skriptu s hodnotami z vaší konfigurace protokolů Azure:
+
+* AAD tenantName
+* Koncový bod GraphAudience
+* ArmEndpoint
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Nasazení na bázi Azure Active Directory (AAD)
-       
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -67,11 +79,11 @@ Na základě typu nasazení (Azure AD ani AD FS), spusťte jeden z následujíc�
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Nasazení na základě služby Active Directory Federation Services (AD FS) 
-          
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Nasazení na základě služby Active Directory Federation Services (AD FS)
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -94,7 +106,7 @@ Na základě typu nasazení (Azure AD ani AD FS), spusťte jeden z následujíc�
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
+  # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
     -ADFS `
     -EnvironmentName "AzureStackUser"
@@ -102,29 +114,30 @@ Na základě typu nasazení (Azure AD ani AD FS), spusťte jeden z následujíc�
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
   ```
 
 ## <a name="register-resource-providers"></a>Registrace poskytovatele prostředků
 
-Při fungování v předplatném nově vytvořeného uživatele, který neobsahuje žádné prostředky nasazené prostřednictvím portálu, nejsou automaticky registrované poskytovatele prostředků. Měli je explicitně zaregistrovat pomocí následujícího skriptu:
+Zprostředkovatelé prostředků nejsou pro nové uživatele odběry, které nemají žádné prostředky nasazené prostřednictvím portálu zaregistruje automaticky. Spuštěním následujícího skriptu můžete explicitně registrovat poskytovatele prostředků:
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
-    } 
+    }
 ```
 
 ## <a name="test-the-connectivity"></a>Testovací připojení
 
-Teď, když jste všechno My nastavení, umožňuje vytvářet prostředky v rámci zásobníku Azure pomocí prostředí PowerShell. Můžete například vytvořit skupinu prostředků pro aplikace a přidat virtuální počítač. Chcete-li vytvořit skupinu prostředků s názvem "MyResourceGroup" použijte následující příkaz:
+Pokud máte k dispozici všechna nastavení, testovací připojení pomocí prostředí PowerShell k vytváření prostředků v Azure zásobníku. Jako testu vytvořte skupinu prostředků pro aplikaci a přidejte virtuální počítač. Spusťte následující příkaz pro vytvoření skupiny prostředků s názvem "MyResourceGroup":
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Další postup
+
 * [Vývoj šablon pro Azure zásobníku](azure-stack-develop-templates.md)
 * [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)

@@ -1,24 +1,22 @@
 ---
-title: "Analýza dat v Data Lake Store pomocí Power BI | Microsoft Docs"
-description: "Pomocí Power BI k analýze dat uložených v Azure Data Lake Store"
+title: Analýza dat v Data Lake Store pomocí Power BI | Microsoft Docs
+description: Pomocí Power BI k analýze dat uložených v Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 4a10dac1eca85b54ef144a91445af6dad3b5d93e
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 08660bd1c434c9404fa53a33be209b7a3c4d9372
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Analýza dat v Data Lake Store pomocí Power BI
 V tomto článku se dozvíte, jak analyzovat a vizualizovat data uložená v Azure Data Lake Store pomocí Power BI Desktop.
@@ -30,7 +28,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 * **Účet Azure Data Lake Store**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](data-lake-store-get-started-portal.md). Tento článek předpokládá, že jste již vytvořili účet Data Lake Store, názvem **mybidatalakestore**a odesláno ukázkový datový soubor (**Drivers.txt**) k němu. Tento ukázkový soubor je k dispozici ke stažení [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
 * **Power BI Desktop**. Si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
-## <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktop
+## <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu
 1. Power BI Desktop spustíte ve vašem počítači.
 2. Z **Domů** pásu karet, klikněte na tlačítko **načíst Data**a pak klikněte na tlačítko Další. V **načíst Data** dialogové okno, klikněte na tlačítko **Azure**, klikněte na tlačítko **Azure Data Lake Store**a potom klikněte na **Connect**.
    

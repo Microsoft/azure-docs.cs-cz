@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 02/23/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 94d34df771334319db36009053a7264f0aeacf46
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Podmíněný přístup v Azure Active Directory
 
@@ -121,3 +121,5 @@ Použití podmíněného přístupu vyžaduje licenci Azure AD Premium. Pravé l
 - Pokud chcete získat nějaké zkušenosti s konfigurace zásad podmíněného přístupu najdete v tématu [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
 
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md). 
+
+- Pokud chcete plán podrobný postup nasazení s doporučenou zásady, najdete v článku [plán nasazení podmíněného přístupu](http://aka.ms/conditionalaccessdeploymentplan)

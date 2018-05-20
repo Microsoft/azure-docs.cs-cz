@@ -1,18 +1,18 @@
 ---
-title: "Azure schématu události událostí mřížky Service Bus"
-description: "Popisuje vlastnosti, které jsou k dispozici pro události služby Service Bus s Azure událostí mřížky"
+title: Azure schématu události událostí mřížky Service Bus
+description: Popisuje vlastnosti, které jsou k dispozici pro události služby Service Bus s Azure událostí mřížky
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 02/21/2018
 ms.author: babanisa
-ms.openlocfilehash: 72780bff3807534efb456a9a7998f7d4de3c6f12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure schématu události událostí mřížky pro Service Bus
 
@@ -81,12 +81,12 @@ Událost má následující dat nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
 | Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| eventType | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
+| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
-| data | Objekt | Data události úložiště objektů BLOB. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat událostí. Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| data | objekt | Data události úložiště objektů BLOB. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
@@ -94,10 +94,10 @@ Datový objekt má následující vlastnosti:
 | -------- | ---- | ----------- |
 | nameSpaceName | řetězec | Obor názvů sběrnice prostředku v existuje. |
 | requestUri | řetězec | Identifikátor URI do konkrétní fronty nebo generování událost odběru. |
-| entityType | řetězec | Typ entity služby sběrnice generování událostí (fronty nebo předplatné). |
+| Typ entity | řetězec | Typ entity služby sběrnice generování událostí (fronty nebo předplatné). |
 | queueName | řetězec | Fronta s active zprávy, pokud se přihlášení k odběru do fronty. Hodnotu null, pokud pomocí témata nebo předplatných. |
-| topicName | řetězec | Téma patří předplatné služby Service Bus s active zprávy. Hodnota null, pokud pomocí fronty. |
-| subscriptionName | řetězec | Předplatné služby Service Bus s active zprávy. Hodnota null, pokud pomocí fronty. |
+| TopicName | řetězec | Téma patří předplatné služby Service Bus s active zprávy. Hodnota null, pokud pomocí fronty. |
+| Název_předplatného | řetězec | Předplatné služby Service Bus s active zprávy. Hodnota null, pokud pomocí fronty. |
 
 ## <a name="next-steps"></a>Další postup
 

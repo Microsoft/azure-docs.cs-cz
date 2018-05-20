@@ -1,5 +1,5 @@
 ---
-title: Odeslání vlastních událostí pro událost mřížky Azure pro hybridní připojení | Microsoft Docs
+title: Odeslání vlastních událostí pro Azure Event Grid do hybridního připojení |Microsoft Docs
 description: Pomocí Azure Event Gridu a Azure CLI můžete publikovat téma a přihlásit se k odběru příslušné události. Hybridní připojení se používá pro koncový bod.
 services: event-grid
 keywords: ''
@@ -8,19 +8,21 @@ ms.author: tomfitz
 ms.date: 05/04/2018
 ms.topic: article
 ms.service: event-grid
-ms.openlocfilehash: 42b3e88d4bf411aa8a0d3bb129795f0d8ab98525
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c95cfee787244367688b82959474e2a8028b7ff6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Trasy vlastních událostí pro hybridní připojení předávání přes Azure pomocí rozhraní příkazového řádku Azure a událostí mřížky
+# <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
 
-Azure Event Grid je služba zpracování událostí pro cloud. Azure předávání hybridní připojení je jedním z podporovaných událost obslužné rutiny. Hybridní připojení používají jako obslužné rutiny události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace může být v rámci vaší podnikové sítě. V tomto článku pomocí Azure CLI vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Odešlete události hybridní připojení.
+Azure Event Grid je služba zpracování událostí pro cloud. Azure Relay Hybrid Connections je jednou z podporovaných obslužných rutin událostí. Hybridní připojení použijete jako obslužnou rutinu události, když je potřeba zpracovat události z aplikací, které nemají veřejný koncový bod. Tyto aplikace se můžou nacházet ve vaší podnikové síti. V tomto článku pomocí Azure CLI vytvoříte vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Události odešlete do hybridního připojení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že již máte hybridní připojení a naslouchací proces aplikace. Chcete-li začít používat hybridní připojení, přečtěte si téma [Začínáme s hybridní připojení předávání - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) nebo [Začínáme s hybridní připojení předávání - uzlu](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+Tento článek předpokládá, že už máte hybridní připojení a aplikaci naslouchacího procesu. Pokud chcete začít používat hybridní připojení, přečtěte si téma [Začínáme s Relay Hybrid Connections – .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) nebo [Začínáme s Relay Hybrid Connections – Node](../service-bus-relay/relay-hybrid-connections-node-get-started.md).
+
+[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -39,16 +41,20 @@ az group create --name gridResourceGroup --location westus2
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. Následující příklad vytvoří vlastní téma ve vaší skupině prostředků. Nahraďte `<topic_name>` jedinečným názvem vašeho tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS.
 
 ```azurecli-interactive
+# if you have not already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 
 ## <a name="subscribe-to-a-topic"></a>Přihlášení k odběru tématu
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad jako odběratel u téma, které jste vytvořili a předá ID prostředku hybridní připojení pro koncový bod. ID hybridní připojení je ve formátu:
+K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. Následující příklad se přihlásí k odběru tématu, které jste vytvořili, a předá ID prostředku hybridního připojení pro koncový bod. ID hybridního připojení je ve formátu:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
-Následující skript načte ID prostředku předávání oboru názvů. Vytvoří ID pro hybridní připojení a jako odběratel u téma události mřížky. Nastaví typ koncového bodu `hybridconnection` a používá ID hybridní připojení pro koncový bod.
+Následující skript načte ID prostředku oboru názvů přenosu. Vytvoří ID pro hybridní připojení a přihlásí se k odběru tématu Event Gridu. Nastaví typ koncového bodu na `hybridconnection` a použije ID hybridního připojení pro daný koncový bod.
 
 ```azurecli-interactive
 relayname=<namespace-name>
@@ -75,14 +81,14 @@ endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --qu
 key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
 ```
 
-Pro zjednodušení tohoto článku použijte k odeslání do tématu ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. CURL je nástroj, který odesílá požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do tématu.  Následující příklad odesílá do tématu mřížky událostí tři události:
+Pro zjednodušení tohoto článku použijte k odeslání do tématu ukázková data události. Obvykle by aplikace nebo služba Azure odesílala data události. CURL je nástroj, který odesílá požadavky HTTP. V tomto článku používáme nástroj CURL k odeslání události do tématu.  Následující příklad odešle tři události do tématu Event Gridu:
 
 ```azurecli-interactive
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-Naslouchací proces aplikace by měly dostávat zprávy událostí.
+Aplikace naslouchacího procesu by měla dostat zprávu o událostech.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředky vytvořené v rámci tohoto článku. Jinak pomocí následujícího příkazu odstraňte prostředky, které jste v rámci tohoto článku vytvořili.
@@ -91,7 +97,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Když teď víte, jak vytvářet témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

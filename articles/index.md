@@ -6,11 +6,11 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 58a05642ebbbce0773d20720903964a1ed3ab06c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: f26493662453390328a483fafb5cd71c9c6dd3a8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1378,9 +1378,9 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://docs.microsoft.com/azure/location-based-services/">
+                                            <a href="/azure/azure-maps/">
                                                 <img src="media/index/azure-lbs-icon.svg" alt="" />
-                                                <p>Azure Location Based Services</p>
+                                                <p>Azure Maps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1393,27 +1393,9 @@ Terraform </a>
                                     <h3>Zabezpečení</h3>
                                     <ul>
                                         <li>
-                                            <a href="/azure/active-directory/">
-                                                <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/information-protection/">
-                                                <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
-                                                <p>Azure Information Protection</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/active-directory-domain-services">
-                                                <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                <p>Azure Active Directory pro Domain Services</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/key-vault/">
-                                                <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>Key Vault</p>
+                                            <a href="/azure/security/">
+                                                <img src="media/index/SecurityCenter.svg" alt="" />
+                                                <p>Informace o zabezpečení</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1423,15 +1405,9 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/vpn-gateway/">
-                                                <img src="media/index/VPNGateway.svg" alt="" />
-                                                <p>VPN Gateway</p>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="/azure/application-gateway/">
-                                                <img src="media/index/ApplicationGateway.svg" alt="" />
-                                                <p>Application Gateway</p>
+                                            <a href="/azure/key-vault/">
+                                                <img src="media/index/KeyVault.svg" alt="" />
+                                                <p>Key Vault</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1447,9 +1423,33 @@ Terraform </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/security/">
-                                                <img src="media/index/SecurityCenter.svg" alt="" />
-                                                <p>Informace o zabezpečení</p>
+                                            <a href="/information-protection/">
+                                                <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
+                                                <p>Azure Information Protection</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/active-directory/">
+                                                <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                <p>Azure Active Directory</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/active-directory-domain-services">
+                                                <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                <p>Azure Active Directory pro Domain Services</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/application-gateway/">
+                                                <img src="media/index/ApplicationGateway.svg" alt="" />
+                                                <p>Application Gateway</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/vpn-gateway/">
+                                                <img src="media/index/VPNGateway.svg" alt="" />
+                                                <p>VPN Gateway</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -2485,7 +2485,7 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://docs.microsoft.com/azure/location-based-services/">
+                                <a href="/azure/azure-maps">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2495,7 +2495,7 @@ Terraform </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Location Based Services</h3>
+                                                    <h3>Azure Maps</h3>
                                                     <p>Jednoduchá a bezpečná rozhraní API pro umístění zajišťující geoprostorový kontext pro data</p>
                                                 </div>
                                             </div>
@@ -4092,75 +4092,18 @@ Terraform </a>
                         <a href="#security">Zabezpečení</a>
                         <ul id="security" class="cardsA">
                             <li>
-                                <a href="/azure/active-directory/">
+                                <a href="/azure/security/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                        <img src="media/index/SecurityCenter.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Active Directory</h3>
-                                                    <p>Synchronizace místních adresářů a povolení jednotného přihlašování</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/information-protection/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Azure Information Protection</h3>
-                                                    <p>Sestavení a nasazení organizačních zásad pro řízení citlivých informací</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/active-directory-domain-services">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Active Directory pro Domain Services</h3>
-                                                    <p>Připojení virtuálních počítačů Azure k doménám bez řadičů domény</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/key-vault/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/KeyVault.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Key Vault</h3>
-                                                    <p>Zabezpečení a zachování kontroly nad klíči a jinými tajnými kódy</p>
+                                                    <h3>Informace o zabezpečení</h3>
+                                                    <p>Další informace o tom, jak Azure poskytuje zabezpečenou infrastrukturu pro vytváření cloudových řešení</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4187,37 +4130,18 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/vpn-gateway/">
+                                <a href="/azure/key-vault/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/VPNGateway.svg" alt="" />
+                                                        <img src="media/index/KeyVault.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>VPN Gateway</h3>
-                                                    <p>Vytvoření zabezpečeného propojení různých míst</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/application-gateway/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/ApplicationGateway.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Application Gateway</h3>
-                                                    <p>Vytváření zabezpečených škálovatelných a vysoce dostupných webových front-endů v Azure</p>
+                                                    <h3>Key Vault</h3>
+                                                    <p>Zabezpečení a zachování kontroly nad klíči a jinými tajnými kódy</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4263,18 +4187,94 @@ Terraform </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/security/">
+                                <a href="/information-protection/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/SecurityCenter.svg" alt="" />
+                                                        <img src="https://docs.microsoft.com/media/common/i_information-protection.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Informace o zabezpečení</h3>
-                                                    <p>Další informace o tom, jak Azure poskytuje zabezpečenou infrastrukturu pro vytváření cloudových řešení</p>
+                                                    <h3>Azure Information Protection</h3>
+                                                    <p>Sestavení a nasazení organizačních zásad pro řízení citlivých informací</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/active-directory/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Active Directory</h3>
+                                                    <p>Synchronizace místních adresářů a povolení jednotného přihlašování</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/active-directory-domain-services">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/ActiveDirectory.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Active Directory pro Domain Services</h3>
+                                                    <p>Připojení virtuálních počítačů Azure k doménám bez řadičů domény</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/application-gateway/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/ApplicationGateway.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Application Gateway</h3>
+                                                    <p>Vytváření zabezpečených škálovatelných a vysoce dostupných webových front-endů v Azure</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/vpn-gateway/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/VPNGateway.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>VPN Gateway</h3>
+                                                    <p>Vytvoření zabezpečeného propojení různých míst</p>
                                                 </div>
                                             </div>
                                         </div>

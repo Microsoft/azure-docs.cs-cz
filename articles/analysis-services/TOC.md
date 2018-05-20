@@ -11,6 +11,7 @@
 ## [Vytvoření modelu na webu Azure Portal (Preview)](analysis-services-create-model-portal.md)
 
 # Koncepty
+## [Automatizace s využitím instančních objektů](analysis-services-service-principal.md)
 ## [Podporované zdroje dat](analysis-services-datasource.md)
 ## [Připojení k místním zdrojům dat](analysis-services-gateway.md)
 ## [Připojení k serverům](analysis-services-connect.md)

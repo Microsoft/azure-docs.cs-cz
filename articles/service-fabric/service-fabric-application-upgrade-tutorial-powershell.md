@@ -1,24 +1,24 @@
 ---
-title: "Upgrade aplikace Service Fabric pomocí prostředí PowerShell | Microsoft Docs"
-description: "Tento článek vás provede možností nasazení aplikace Service Fabric, změna kódu a zavádění upgrade pomocí prostředí PowerShell."
+title: Upgrade aplikace Service Fabric pomocí prostředí PowerShell | Microsoft Docs
+description: Tento článek vás provede možností nasazení aplikace Service Fabric, změna kódu a zavádění upgrade pomocí prostředí PowerShell.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9bc75748-96b0-49ca-8d8a-41fe08398f25
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0306a219112a14121fd881a7cc52d58597a073a2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 44f4dc3a9c876e383a6e4df8ef5f467f2b93eaa9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade aplikace Service Fabric pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Vytvoření a publikování aplikace kliknutím pravým tlačítkem na projekt a
 
 Po vytvoření projektu v sadě Visual Studio, můžete použít příkaz prostředí PowerShell [kopie ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) zkopírovat balíček aplikace do úložišti ImageStore. Pokud chcete ověřit balíček aplikace místně, použijte [Test ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) rutiny. Dalším krokem je registrace aplikace pomocí modulu runtime Service Fabric [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) rutiny. Následující krok je spuštění instance aplikace pomocí [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny.  Tyto tři kroky jsou podobná pomocí **nasadit** položky nabídky v sadě Visual Studio.  Po dokončení zřizování musí vyčistit balíček zkopírovaný aplikace z úložiště image store kvůli snížení prostředky spotřebované.  Pokud je typ aplikace se už nevyžaduje, je nutné zrušit registraci ze stejného důvodu. V tématu [nasazení a odeberte aplikací pomocí prostředí PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) Další informace.
 
-Teď můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Aplikace má webová služba, která lze procházet k v aplikaci Internet Explorer tak, že zadáte [http://localhost: 8081/visualobjects](http://localhost:8081/visualobjects) na panelu Adresa.  Měli byste vidět některé plovoucí vizuální objekty manipulaci se na obrazovce.  Kromě toho můžete použít [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) a zkontrolujte stav aplikace.
+Teď můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Aplikace má webová služba, která lze procházet k v aplikaci Internet Explorer tak, že zadáte [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) na panelu Adresa.  Měli byste vidět některé plovoucí vizuální objekty manipulaci se na obrazovce.  Kromě toho můžete použít [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) a zkontrolujte stav aplikace.
 
 ## <a name="step-2-update-the-visual-objects-sample"></a>Krok 2: Aktualizace Ukázka vizuální objekty
 Můžete si všimnout, že s verzí, který byl nasazen v kroku 1, není otočit vizuální objekty. Umožňuje upgradovat tuto aplikaci do jednoho kde také otočit vizuální objekty.

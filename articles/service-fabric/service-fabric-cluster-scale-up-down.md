@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: aeb76f63-7303-4753-9c64-46146340b83d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 506877e12d12ff3b1372cc0360a8df1a1d52744a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c2479dad013bfcb738e61e67cc8cf9584b4d11cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Škálování clusteru Service Fabric v nebo pomocí pravidel automatického škálování, nebo ručně
 Sady škálování virtuálního počítače se Azure výpočtový prostředek, který můžete použít k nasazení a správě kolekci jako sada virtuálních počítačů. Každý typ uzlu, který je definován v clusteru Service Fabric je nastavený jako sada škálování samostatný virtuální počítač. Každý typ uzlu můžete škálovat v nebo na nezávisle, mají různé sady otevřené porty a může mít různé kapacity metriky. Další informace o jeho [nodetypes Service Fabric](service-fabric-cluster-nodetypes.md) dokumentu. Vzhledem k tomu, že Service Fabric typy uzlů v clusteru jsou tvořeny sady škálování virtuálního počítače v back-end, budete muset nastavit pravidla pro automatické škálování pro každý uzel typu nebo virtuální počítač škálovací sadu.

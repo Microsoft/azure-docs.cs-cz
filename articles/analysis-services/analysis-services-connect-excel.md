@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8414597c2c394e0b642ff47cba79c87488f56b24
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b3ab749b4610f57e19ad1af0fc74d41340d7555b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-with-excel"></a>Propojit s Excelem
 
-Jakmile jste vytvořili serveru v Azure a nasadili do ní tabulkový model, budete připraveni k připojení a začít zkoumat data.
+Jakmile jste vytvořili serveru a nasadili do ní tabulkový model, mohou klienti připojit a začít zkoumat data.
 
 
 ## <a name="connect-in-excel"></a>Připojení v aplikaci Excel
@@ -27,10 +27,10 @@ Připojení k serveru v aplikaci Excel pomocí příkazu Get Data v aplikaci Exc
 
 1. V aplikaci Excel 2016, na **Data** pásu karet, klikněte na tlačítko **načíst externí Data** > **z jiných zdrojů** > **ze služby Analysis Services** .
 
-2. V průvodci připojení dat v **název serveru**, zadejte název serveru, včetně protokolu a identifikátor URI. Potom v **přihlašovací údaje**, vyberte **použít následující uživatelské jméno a heslo**a pak zadejte název organizační uživatele, například nancy@adventureworks.coma heslo.
+2. V průvodci připojení dat v **název serveru**, zadejte název serveru, včetně protokolu a identifikátor URI. Například asazure://westcentralus.asazure.windows.net/advworks. Potom v **přihlašovací údaje**, vyberte **použít následující uživatelské jméno a heslo**a pak zadejte název organizační uživatele, například nancy@adventureworks.coma heslo.
 
-    > [!NOTE]
-    > Pokud přihlásíte Account Microsoft Live ID, Yahoo, Gmail, atd., nebo musíte se přihlásit pomocí služby Multi-Factor authentication, nechejte pole heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Další.
+    > [!IMPORTANT]
+    > Pokud přihlásit Account Microsoft Live ID, Yahoo, Gmail, atd., nebo musíte se přihlásit pomocí služby Multi-Factor authentication, nechejte pole heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Další.
 
     ![Připojení z aplikace Excel přihlášení](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

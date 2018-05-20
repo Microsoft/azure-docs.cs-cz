@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/16/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 588da055d06d7e63510085ff48169f3ea756c53c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7b1a6020fb8730aee7ed41d8c82358db0945e4ef
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Přehled Azure Marketplace zásobníku
 
@@ -29,7 +29,7 @@ Na webu Marketplace je kolekce služeb, aplikací a prostředky, které jsou př
 
 Jako operátor zásobník Azure, rozhodnete položek, které chcete přidat (publikovat) na webu Marketplace. Můžete publikovat třeba databáze, aplikační služby a tak dále. Umožňuje publikování je viditelná pro všechny uživatele. Můžete publikovat vlastní položky, které vytvoříte. Můžete také publikovat položky z rozšiřujících se [seznam položek Azure Marketplace](azure-stack-marketplace-azure-items.md). Při publikování položky Marketplace, uživatelé mohou vidět do pěti minut.
 
-Chcete-li spustit nástroj na webu Marketplace, klikněte na tlačítko **nový**.
+Otevřete na Marketplace, v konzole pro správu vyberte **nový**.
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
@@ -47,5 +47,6 @@ Každá položka publikovaných na Marketplace s cílem používá formát balí
 S verzí 1803 a novější zásobník Azure převede bitové kopie na zhuštěných souborů při stažení z Azure nebo když nahrát vlastní Image. Tento proces prodlužuje čas při přidávání obrazu, ale šetří místo a urychluje nasazení těchto bitových kopií. Převod pouze u nových bitových kopií.  Existujících bitových kopií, nebudou změněny. 
 
 ## <a name="next-steps"></a>Další postup
+[Stažení položky Marketplace.](azure-stack-download-azure-marketplace-item.md)  
 [Vytvoření a publikování položku Marketplace.](azure-stack-create-and-publish-marketplace-item.md)
 

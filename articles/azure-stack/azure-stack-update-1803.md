@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 36d4cd910f841a323dfada49d65f7acb4bdf3138
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 095356e76dc72c3e549c23ab3855962e9c2f1d26
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
 
@@ -118,8 +118,6 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 - Nemusí být možné zobrazit úložiště nebo výpočetní prostředky na portálu správce. Příčinou tohoto problému je k chybě při instalaci aktualizace, která způsobí, že aktualizace, která se nesprávně hlásit jako úspěšné. Pokud chcete tento problém opakuje, obraťte se na technickou podporu společnosti Microsoft pro pomoc.
 
 - Může se zobrazit prázdný řídicí panel portálu. Chcete-li obnovit řídicí panel, vyberte ikonu ozubené kolečko v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
-
-- Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků, **přesunout** tlačítko k dispozici. Toto chování je očekávané. Přesun prostředků nebo skupiny prostředků mezi skupinami prostředků nebo předplatného není aktuálně podporován.
 
 - Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
 
@@ -244,6 +242,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 - Vytvoření položek na serverech, že hostitel SQL nebo MySQL je podporována pouze poskytovatele prostředků. Položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí poskytovatele prostředků může mít za následek neodpovídající stavu.  
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
 
 > [!NOTE]  
 > Po provedení aktualizace na 1803 zásobník Azure, můžete nadále používat zprostředkovatele prostředků SQL a MySQL, které jste předtím nasadili.  Doporučujeme, abyste že aktualizujete SQL a MySQL, když je dostupná nová verze. Zásobník Azure, jako je aktualizace pro poskytovatele prostředků SQL a MySQL postupně.  Pokud používáte verzi 1711, nejprve použít verzi 1712 pak 1802 a potom aktualizovat 1803.      

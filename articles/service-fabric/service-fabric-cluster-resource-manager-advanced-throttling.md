@@ -1,24 +1,24 @@
 ---
-title: "Omezení šířky pásma ve Správci prostředků clusteru Service Fabric | Microsoft Docs"
-description: "Informace o konfiguraci omezení poskytuje služby infrastruktury clusteru správce prostředků."
+title: Omezení šířky pásma ve Správci prostředků clusteru Service Fabric | Microsoft Docs
+description: Informace o konfiguraci omezení poskytuje služby infrastruktury clusteru správce prostředků.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4a44678b-a5aa-4d30-958f-dc4332ebfb63
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 22223923f6783f11178b44c3c3087f17eb8dc41b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9db1070066a2a02b72b5cc051e59d8b04dc9928
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Omezení správce prostředků clusteru Service Fabric
 I v případě, že správce prostředků clusteru jste správně nakonfigurovaný, můžete získat dojde k narušení clusteru. Například může být současně uzel a selhání domény selhání - co by mohlo dojít, pokud, ke kterým došlo během upgradu? Správce prostředků clusteru se vždy pokusí opravit vše, využívání prostředků clusteru pokusu reorganizovat a opravte clusteru. Omezení zajišťuje backstop tak, aby cluster může používat prostředky na stabilizaci – uzly vraťte retušovat síťové oddíly, nasadí opravené bits.
@@ -90,6 +90,6 @@ Tyto informace jsou poskytovány v případě, že máte starší clustery nebo 
 
 Konfiguraci těchto omezení následující stejné jako omezení na základě procenta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Chcete-li zjistit, o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
 - Správce prostředků clusteru má mnoho možností pro popis clusteru. Další informace o nich, projděte si tento článek na [popisující cluster Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)

@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření clusteru s podporou Azure Service Fabric samostatné | Microsoft Docs"
-description: "Vytvoření clusteru služby Azure Service Fabric z jakéhokoli počítače (fyzické nebo virtuální) s Windows serverem, ať už místní nebo v jakékoli cloudu."
+title: Vytvoření clusteru s podporou Azure Service Fabric samostatné | Microsoft Docs
+description: Vytvoření clusteru služby Azure Service Fabric z jakéhokoli počítače (fyzické nebo virtuální) s Windows serverem, ať už místní nebo v jakékoli cloudu.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: dekapur;chackdan;maburlik
-ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: dekapur
+ms.openlocfilehash: efa48aa90806b45c99237404af24cb8aba762d15
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření clusteru s podporou samostatné systémem Windows Server
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všechny virtuální počítače nebo počítače se systémem Windows Server. To znamená, můžete nasazovat a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu vzájemně propojena počítačů Windows serveru, je-li jej v místním nebo se všechny poskytovatele cloudových služeb. Service Fabric nabízí instalační balíček k vytvoření clusterů Service Fabric se nazývá samostatný balíček Windows Server.
@@ -130,7 +130,7 @@ Příklad:
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 ### <a name="step-3-bring-up-service-fabric-explorer"></a>Krok 3: Zprovoznit Service Fabric Exploreru
-Teď můžete připojit ke clusteru pomocí Service Fabric Exploreru buď přímo z jednoho z počítačů s http://localhost:19080/Explorer/index.html nebo vzdáleně http://<*IPAddressofaMachine*>: 19080/Explorer/index.html.
+Teď můžete připojit ke clusteru pomocí Service Fabric Exploreru buď přímo od jednoho z počítačů s http://localhost:19080/Explorer/index.html nebo vzdáleně pomocí http://<*IPAddressofaMachine*>: 19080/Explorer/index.html.
 
 ## <a name="add-and-remove-nodes"></a>Přidání a odebrání uzlů
 Můžete přidávat nebo odebírat uzly do clusteru Service Fabric samostatné, podle potřeb organizace změnu. V tématu [přidávat nebo odebírat uzly do clusteru Service Fabric samostatné](service-fabric-cluster-windows-server-add-remove-nodes.md) podrobné pokyny.
@@ -154,9 +154,9 @@ Tento skript můžete spustit na jakýkoli počítač, který má práva správc
 <a id="telemetry"></a>
 
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Mezi shromažďovaná telemetrická data a jak pro vyjádření výslovného nesouhlasu se
-Ve výchozím produktu shromažďuje telemetrická data na Service Fabric použití k vylepšení produktu. Analyzátor osvědčených postupů, který běží jako součást instalace zkontroluje připojení k [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Pokud není dostupný, instalace se nezdaří, pokud vyjádření výslovného nesouhlasu telemetrie.
+Ve výchozím produktu shromažďuje telemetrická data na Service Fabric použití k vylepšení produktu. Analyzátor osvědčených postupů, který běží jako součást instalace zkontroluje připojení k [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1). Pokud není dostupný, instalace se nezdaří, pokud vyjádření výslovného nesouhlasu telemetrie.
 
-1. Kanál telemetrie se pokusí odeslat následující data, která mají [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) jednou denně. Je načtení typu best effort a nemá žádný vliv na fungování clusteru. Telemetrie je odeslán, pouze z uzlu, který běží převzetí služeb při selhání primární správce. Žádné další uzly k odeslání telemetrie.
+1. Kanál telemetrie se pokusí odeslat následující data, která mají [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1) jednou denně. Je načtení typu best effort a nemá žádný vliv na fungování clusteru. Telemetrie je odeslán, pouze z uzlu, který běží převzetí služeb při selhání primární správce. Žádné další uzly k odeslání telemetrie.
 2. Telemetrie se skládá z následujících akcí:
 
 * Počet služeb

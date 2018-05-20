@@ -1,24 +1,24 @@
 ---
-title: "Nasadit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs"
-description: "Další informace o balení stávající aplikace jako Host spustitelného souboru, aby ji můžete nasadit na cluster Service Fabric."
+title: Nasadit existující spustitelný soubor do Azure Service Fabric | Microsoft Docs
+description: Další informace o balení stávající aplikace jako Host spustitelného souboru, aby ji můžete nasadit na cluster Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
-ms.author: mfussell;mikhegn
-ms.openlocfilehash: 328c00697a3c81f5af8488d4303feb7618d81301
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: mfussell
+ms.openlocfilehash: cdaf3dae12c2c9da1f6bcbebbff560b98e62bade
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasadit existující spustitelný soubor do Service Fabric
 Jakýkoli typ kódu, třeba Node.js, Java nebo C++ v Azure Service Fabric můžete spustit jako služby. Service Fabric odkazuje na těchto typů služeb jako hosta spustitelné soubory.
@@ -72,7 +72,7 @@ ApplicationPackageRoot obsahuje ApplicationManifest.xml soubor, který definuje 
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Najdete v následujících článcích související informace a úlohy.
 * [Nasazení hostujícího spustitelného souboru](service-fabric-deploy-existing-app.md)
 * [Nasazení několika hostujících spustitelných souborů](service-fabric-deploy-multiple-apps.md)

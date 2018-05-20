@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: 5bc578d617edd093a3b7eec7903209bfdb9ebfce
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1965438e64af84d0c808b0684f9e81c797193bff
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure (VM)
 
@@ -107,7 +107,7 @@ Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované
        Vyberte typ SAP NetWeaver zásobníku
     1. Typ operačního systému  
        Vyberte jednu z distribucích systému Linux. V tomto příkladu vyberte SLES 12
-    1. Typ databáze  
+    1. Typ databázového  
        Vyberte HANA
     1. Velikost systému SAP  
        Množství nový systém bude poskytovat protokoly SAP. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, obraťte se na partnera technologie SAP nebo systémový integrátor
@@ -228,10 +228,10 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
        sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
        </code></pre>
        
-       Vytvoření logické svazky
+        Vytvořte logické svazky. Lineární svazku se vytvoří při použití lvcreate bez -i přepínače. Doporučujeme vytvořit prokládaný svazek pro lepší výkon vstupně-výstupní operace -i argument musí být stejná jako číslo základní fyzické svazku. V tomto dokumentu 2 fyzických svazků, které se používají pro datový svazek, takže -i přepínat argument je 2. 1 fyzické svazku se používá pro svazek protokolu proto žádné -i přepínač se používá explicitně. Použijte prosím -i přepínače a nahraďte číslo, které má stejné základní číslo fyzického svazku při použití více než 1 fyzické svazku pro každý dat, protokolu nebo sdílené svazky.
 
        <pre><code>
-       sudo lvcreate -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+       sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
        sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
        sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
        sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 05/14/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 165a899dbad0893b3a2bddcfc68c9b5d737e9d3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Zásobník úložiště Azure: Rozdíly a aspekty
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 04/28/2018
 
 Azure zásobníku úložiště je sada cloudových služeb úložiště v Microsoft Azure zásobníku. Úložiště Azure zásobníku obsahuje objekt blob, tabulky, fronty a funkce správy účet s Azure konzistentní sémantiku.
 
-Tento článek shrnuje známé rozdíly zásobník úložiště Azure z úložiště Azure. Shrnuje také další důležité informace, třeba vzít v úvahu při nasazování Azure zásobníku. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) tématu.
+Tento článek shrnuje známé rozdíly zásobník úložiště Azure od služeb úložiště Azure. Uvádí taky zvážit, když nasazujete zásobník Azure. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) tématu.
 
 ## <a name="cheat-sheet-storage-differences"></a>Tahák: rozdíly úložiště
 
@@ -49,26 +49,28 @@ Obnovitelného odstranění pro úložiště objektů blob|Preview|Není dosud p
 |Velikost klíče tabulky klíč oddílu a řádku|1 024 znaků (2 048 bajtů)|400 znaků (800 bajtů)
 |Objekt BLOB snímku|Maximální počet snímků jeden objekt blob není omezený.|Maximální počet snímků jeden objekt blob je 1 000.|
 
-### <a name="metrics"></a>Metriky
-Existují také některé rozdíly mezi metriky úložiště:
+Existují také rozdíly mezi metriky úložiště:
+
 * Data transakce v úložiště metriky nerozlišuje interních nebo externích šířku pásma sítě.
 * Data transakce v úložiště metriky nezahrnuje virtuálnímu počítači přístup k připojené disky.
 
 ## <a name="api-version"></a>Verze API
+
 S Azure zásobníku úložiště jsou podporovány následující verze:
 
 Úložiště Azure services rozhraní API:
 
 Aktualizovat 1802 nebo novější:
+
  - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
  - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
  - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08 ](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
  - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Předchozí verze:
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Správa rozhraní API služeb úložiště Azure:
 
@@ -78,7 +80,7 @@ Správa rozhraní API služeb úložiště Azure:
 
 ## <a name="sdk-versions"></a>Verze sady SDK
 
-Zásobník úložiště Azure podporuje následující knihovny klienta:
+Úložiště Azure zásobníku podporuje následujících klientských knihoven:
 
 | Klientská knihovna | Azure zásobníku podporovaná verze | Odkaz                                                                                                                                                                                                                                                                                                                                     | Koncový bod specifikace       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -94,4 +96,3 @@ Zásobník úložiště Azure podporuje následující knihovny klienta:
 
 * [Začínáme s Azure Storage zásobníku nástroje pro vývoj](azure-stack-storage-dev.md)
 * [Úvod do Azure zásobník úložiště](azure-stack-storage-overview.md)
-

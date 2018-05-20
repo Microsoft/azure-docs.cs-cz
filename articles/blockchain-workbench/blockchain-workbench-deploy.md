@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/22/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 85a627678f862d783d47013d82bae8b485d7d4e9
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasazení Azure Blockchain Workbench
 
@@ -23,6 +23,25 @@ Azure Blockchain Workbench se nasazuje pomocí šablony řešení v Azure Market
 Další informace o součástech nástroje Blockchain Workbench najdete v tématu [Azure Blockchain Workbench architektura](blockchain-workbench-architecture.md).
 
 ## <a name="prepare-for-deployment"></a>Příprava nasazení
+
+Blockchain Workbench umožňuje nasadit blockchain knihy společně se sadou nejčastěji používá k vytvoření aplikace na základě blockchain příslušné služby Azure. Nasazení Blockchain Workbench za následek následující služby Azure se zřídí v rámci skupiny prostředků ve vašem předplatném Azure.
+
+* Téma 1 událost mřížky
+* Namespace 1 Service Bus
+* Přehled aplikace: 1
+* 1 databáze SQL (Standard S0)
+* Aplikační služby 2 (standardní)
+* 2 azure trezorů klíčů
+* 2 účty azure Storage (Standard LRS)
+* 2 sady škálování virtuálního počítače (pro ověření a pracovní uzly)
+* 2 virtuální sítě (včetně nástroj pro vyrovnávání zatížení, skupinu zabezpečení sítě a veřejnou IP adresu pro každou virtuální síť)
+* Volitelné: Azure monitorování
+
+Tady je příklad nasazení vytvořené v **myblockchain** skupinu prostředků.
+
+![Příklad nasazení](media/blockchain-workbench-deploy/example-deployment.png)
+
+Náklady na Blockchain Workbench je agregace náklady na základní služby Azure. Informace o cenách pro služby Azure, lze vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/).
 
 Azure Blockchain Workbench potřeba splnit několik předpokladů před nasazení. Požadavky zahrnout registrace konfigurace a aplikace Azure AD.
 
@@ -254,9 +273,18 @@ Po nasazený Azure Blockchain Workbench, dalším krokem je zajistit, klientská
 
 7. Vyberte **Uložit** aktualizace registrace klienta.
 
+## <a name="remove-a-deployment"></a>Odebrat nasazení
+
+Při nasazení je již nepotřebujete, můžete odebrat odstraněním skupiny prostředků Blockchain Workbench nasazení.
+
+1. Na portálu Azure přejděte do **skupiny prostředků** v levém navigačním podokně a vyberte skupinu prostředků, které chcete odstranit. 
+2. Vyberte **Odstranit skupinu prostředků**. Ověřte odstranění zadáním názvu skupiny prostředků a vyberte **odstranit**.
+
+    ![Odstranění skupiny prostředků](media/blockchain-workbench-deploy/delete-resource-group.png)
+
 ## <a name="next-steps"></a>Další postup
 
-V tomto článku postupy jste nasadili Azure Blockchain Workbench. Chcete-li zjistit, jak vytvořit aplikaci blockchain, nadále další postupy článek.
+V tomto článku postupy nasadit Azure Blockchain Workbench. Chcete-li zjistit, jak vytvořit aplikaci blockchain, nadále další postupy článek.
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace blockchain v Azure Blockchain Workbench](blockchain-workbench-create-app.md)

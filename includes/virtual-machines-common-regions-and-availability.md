@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: a6b75b3804e7736fe5203caecb8c6badcfbf9ab4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 99e429a2f82d1a9b8d9a87fb3eb4102183c19fe8
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Oblasti a dostupnost pro virtuální počítače v Azure
 Azure funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. Je důležité pochopit, jak a kde se virtuální počítače (VM) v Azure provozují, a také vědět, jaké máte možnosti pro zajištění maximálního výkonu, dostupnosti a redundance. Tento článek poskytuje přehled funkcí redundance a dostupnosti Azure.
@@ -104,11 +104,11 @@ Aktualizační doména je logická skupina hardwarových komponent, u kterých j
 ### <a name="managed-disk-fault-domains"></a>Spravované domény selhání disku
 Virtuální počítače, které používají [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md), odpovídají doménám selhání spravovaných disků (pokud se použije spravovaná skupina dostupnosti). Toto uspořádání zajišťuje, aby všechny spravované disky připojené k virtuálnímu počítači byly umístěné ve stejné doméně selhání spravovaných disků. Ve spravované skupině dostupnosti je možné vytvořit jenom virtuální počítače se spravovanými disky. Počet domén selhání spravovaných disků se liší podle oblasti – buď dvě, nebo tři domény selhání na oblast. Další informace o těchto spravovaných domén selhání disku pro [virtuální počítače s Linuxem](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) nebo [virtuálních počítačů Windows](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set).
 
-## <a name="availability-zones"></a>Dostupnost zóny
+## <a name="availability-zones"></a>Zóny dostupnosti
 
-[Dostupnost zóny](../articles/availability-zones/az-overview.md), nastaví alternativu k dostupnosti, rozbalte položku úroveň řízení, budete muset zachovat dostupnost aplikace a data na virtuální počítače. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři zóny dostupnosti za podporovanou oblast Azure. Každou zónu dostupnosti má samostatnou spotřeby zdroje, sítě a chlazení a logicky oddělené od dalších dostupnost zóny v rámci oblasti Azure. Pomocí architektury řešení pro použití replikované virtuální počítače v zóny, můžete chránit vaše aplikace a data před ztrátou datacentru. Pokud dojde k narušení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
+[Dostupnost zóny](../articles/availability-zones/az-overview.md), nastaví alternativu k dostupnosti, rozbalte položku úroveň řízení, budete muset zachovat dostupnost aplikace a data na virtuální počítače. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři zóny dostupnosti za podporovanou oblast Azure. Každá zóna dostupnosti má samostatný zdroj napájení, síť a chlazení. Pomocí architektury řešení pro použití replikované virtuální počítače v zóny, můžete chránit vaše aplikace a data před ztrátou datacentru. Pokud dojde k narušení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
 
-![Dostupnost zóny](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![Zóny dostupnosti](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
 Další informace o nasazení [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) nebo [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) virtuálního počítače v zóně dostupnosti.
 

@@ -11,16 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: 0de596f454a1e79b1f5540854897bd15f8de88c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Postup rozšíření výstrahy (kopie) od OMS do Azure
 Od **14 může 2018**, všechny zákazníky používající výstrahy, které jsou nakonfigurované v [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), bude rozšířeno do Azure. Výstrahy, které jsou rozšířené Azure chovají stejným způsobem jako v OMS. Možnosti monitorování zůstanou beze změn. Rozšíření výstrahy vytvořené v OMS do Azure poskytuje řadu výhod. Další informace o výhodách a proces prodloužení výstrahy od OMS do Azure najdete v tématu [rozšířit výstrahy z OMS Azure](monitoring-alerts-extend.md).
+
+> [!NOTE]
+> Spouštění 14 může 2018 - Microsoft zahájíte proces automaticky rozšíření výstrahy do Azure. Ne všechny výstrahy a pracovní prostory bude rozšířeno dne; Místo toho Microsoft zahájíte rozšířit výstrahy automaticky v tranších v nadcházející týdnů. Proto upozornění na portálu OMS nebude automaticky rozšířit do Azure okamžitě na 14 2018 může a uživatele můžete ručně rozšířit jejich výstrah pomocí možnosti níže uvedené podrobnosti.
 
 Zákazníci chtějí přesunutí výstrahy z OMS do Azure okamžitě, lze provést pomocí jedné z možností uvádí.
 

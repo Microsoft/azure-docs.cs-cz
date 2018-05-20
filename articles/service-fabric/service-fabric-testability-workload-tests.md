@@ -1,24 +1,24 @@
 ---
-title: "Simulovat chyb v Azure mikroslužeb | Microsoft Docs"
-description: "Jak posílení zabezpečení vašich služeb proti selhání řádně a vynuceném."
+title: Simulovat chyb v Azure mikroslužeb | Microsoft Docs
+description: Jak posílení zabezpečení vašich služeb proti selhání řádně a vynuceném.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dccd8eeeda1a41f23c9e3dd9896e0630e2a7a0a4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulace chyb během zatížení služeb
 Scénáře testovatelnosti v Azure Service Fabric umožňují vývojářům není starat o práci s jednotlivých chyb. Existují scénáře, ale kde explicitní prokládání zatížení klienta a selhání může být potřeba. Prokládání zatížení klienta a chyb zajistí, že služba ve skutečnosti provádí některé akce v případě selhání. Udělená úroveň ovládací prvek, který poskytuje možnosti testování, může jít v přesné body spuštění úlohy. Tato indukční chyb v různých stavů v aplikaci můžete najít chyby a zlepšení kvality.

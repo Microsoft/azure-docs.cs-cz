@@ -9,16 +9,16 @@ editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: c6425f7642d9dbecafc6779184a2a5b0cc1a2cab
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 2876d90c02995394104009d1b2d62d5b3ed6a8d9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivé kolekcí v stavové služby Azure Service Fabric
 Spolehlivé kolekce umožňují zápisu vysoce dostupných, škálovatelných a nízkou latencí cloudové aplikace, jako kdyby byly psaní aplikací jeden počítač. Třídy v **Microsoft.ServiceFabric.Data.Collections** obor názvů poskytují sadu kolekcí, které automaticky nastavit vašemu stavu jako vysoce dostupný. Vývojáři muset programu jen pro spolehlivé rozhraní API kolekce a nechat spolehlivé kolekce Správa stavu replikují a místní.

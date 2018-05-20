@@ -9,11 +9,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: billmath
-ms.openlocfilehash: d21f124858a7f98227eb301a97b9837e3adbba68
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4e6cf3bb4a691380a5fe22f5afdf749b40f15ef3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="synchronizing-guest-user-accounts-that-use-email-for-sign-in-preview"></a>Synchronizace uživatelských účtů hosta, které používají e-mailu pro přihlášení (Preview)
 
@@ -180,6 +180,6 @@ Chcete-li ověřit, že to funguje správně, budete muset přihlásit se na kon
 ![Úspěch](media/active-directory-aadconnect-guest-sync/guest12.png)
 
 ## <a name="next-steps"></a>Další postup
-- [Vlastnosti uživatele spolupráce Azure Active Directory s B2B](../../active-directory/active-directory-b2b-user-properties.md#key-properties-of-the-azure-ad-b2b-collaboration-user)
+- [Vlastnosti uživatele spolupráce Azure Active Directory s B2B](../../active-directory/b2b/user-properties.md#key-properties-of-the-azure-ad-b2b-collaboration-user)
 - [Konfigurace alternativního přihlašovacího ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)
 - [Azure AD Connect: Historie vydaných verzí](active-directory-aadconnect-version-history.md)

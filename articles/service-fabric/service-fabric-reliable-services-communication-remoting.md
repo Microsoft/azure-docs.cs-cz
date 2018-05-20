@@ -1,6 +1,6 @@
 ---
-title: "Vzdálená komunikace služby v Service Fabric | Microsoft Docs"
-description: "Vzdálená komunikace Service Fabric umožňuje služby a klienti komunikovat se službami s použitím vzdálené volání procedury."
+title: Vzdálená komunikace služby v Service Fabric | Microsoft Docs
+description: Vzdálená komunikace Service Fabric umožňuje služby a klienti komunikovat se službami s použitím vzdálené volání procedury.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: BharatNarasimman
 ms.assetid: abfaf430-fea0-4974-afba-cfc9f9f2354b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 3bdd271eff6f6ea5b337d148f661c7eada429991
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d9ba650549d313a4ecc9ceae5eb05e1cde727892
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-remoting-with-reliable-services"></a>Služba vzdálené komunikace se službami Reliable Services
 Pro služby, které nejsou svázané s konkrétní komunikační protokol nebo zásobníku, například WebAPI, Windows Communication Foundation (WCF) nebo jiné spolehlivé služby framework poskytuje mechanismus vzdálenou komunikaci rychle a snadno nastavit vzdáleného volání procedur pro služby.
@@ -84,7 +84,7 @@ Vzdálená komunikace framework rozšíří výjimky vyvolané službu do klient
 ## <a name="service-proxy-lifetime"></a>Doby platnosti Proxy služby
 Vytvoření ServiceProxy je lightweight operace, takže uživatelé můžete vytvořit tolik, kolik potřebují. Instance Proxy služby lze znovu použít, dokud ho uživatelé potřebovat. Pokud vzdálené volání procedury, vyvolá výjimku, uživatelé stále znovu použít, na stejnou instanci proxy serveru. Každý ServiceProxy obsahuje komunikace klienta používá k odeslání zprávy prostřednictvím sítě. Při volání vzdáleného volání, jsme interně zkontrolujte, zda komunikace klienta je platný. Podle toho, že výsledků, znovu vytvoříme komunikace klienta v případě potřeby. Proto pokud dojde k výjimce, uživatelé nemusí znovu vytvořit `ServiceProxy` protože tak transparentně se provádí.
 
-### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory Lifetime
+### <a name="serviceproxyfactory-lifetime"></a>Doba platnosti ServiceProxyFactory
 [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je objekt factory, který vytváří instance proxy pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní api `ServiceProxy.Create` k vytváření proxy serveru, pak rozhraní framework vytvoří ServiceProxy typu singleton.
 Je vhodné vytvořit jednu ručně, až budete potřebovat k přepsání [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) vlastnosti.
 Vytvoření objektu pro vytváření je náročná operace. ServiceProxyFactory udržuje interní mezipaměť komunikace klienta.

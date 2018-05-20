@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 5/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5fab656734d0984cf44a9fe1f29fd73530bd9aa8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Povolit zálohování pro Azure zásobníku pomocí prostředí PowerShell
 
@@ -64,7 +64,7 @@ Přidáním proměnné prostředí ve stejné relaci prostředí PowerShell, upr
 
 | Proměnná        | Popis   |
 |---              |---                                        |
-| $username       | Typ **uživatelské jméno** pomocí domény a uživatelské jméno pro umístění sdíleného disku. Například, `Contoso\administrator`. |
+| $username       | Typ **uživatelské jméno** pomocí doménu a uživatelské jméno pro umístění sdíleného disku s dostatečný přístup pro čtení a zápis souborů. Například, `Contoso\backupshareuser`. |
 | $password       | Typ **heslo** pro uživatele. |
 | $sharepath      | Zadejte cestu ke **umístění úložiště zálohy**. Je nutné použít řetězec Universal Naming Convention (UNC) pro cestu ke sdílené složce hostované na samostatných zařízení. Řetězec UNC Určuje umístění prostředků, jako jsou sdílené soubory nebo zařízení. K zajištění dostupnosti zálohovaných dat, musí být zařízení v samostatných umístění. |
 

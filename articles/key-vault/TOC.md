@@ -16,11 +16,12 @@
 # Ukázky
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=key-vault)
 # Koncepty
+## [Co je Key Vault?](key-vault-whatis.md)
 ## [Světy zabezpečení](key-vault-ovw-security-worlds.md)
 ## [Obnovitelné odstranění](key-vault-ovw-soft-delete.md)
 ## [Klíče účtu úložiště](key-vault-ovw-storage-keys.md)
 ## [Omezování](key-vault-ovw-throttling.md)
-## [Co je Key Vault?](key-vault-whatis.md)
+
 
 # Návody
 ## Spravovat
@@ -68,11 +69,12 @@
 ### [Metody vytvoření certifikátu](create-certificate.md)
 ### [Monitorování a správa vytvoření certifikátu](create-certificate-scenarios.md)
 ## [Ověřování, požadavky a odpovědi](authentication-requests-and-responses.md)
+## [Funkce pro zákaznická data](key-vault-customer-data.md)
 ## [Běžné parametry a záhlaví](common-parameters-and-headers.md)
 ## [Verze Key Vault](key-vault-versions.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Blog](http://blogs.technet.com/b/kv/)
-## [Ukázky kódu](https://www.microsoft.com/download/details.aspx?id=45343)
+## [Ukázky kódu](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault&type=&language=)
 ## [Fóra](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 ## [Ceny](https://azure.microsoft.com/pricing/details/key-vault/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

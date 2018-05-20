@@ -7,13 +7,13 @@ ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 196021a95b57c3295de79ca13f578bdb70c39df0
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 3ea95899d48b68c78af5fdc45167b08b5e0fc1ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Správa aktualizací integrovat nástroje System Center Configuration Manager
 
@@ -21,7 +21,7 @@ Zákazníci, kteří investovali do System Center Configuration Manageru pro spr
 
 Sestavy a aktualizujte spravované Windows servery tak, že vytváření a předem pracovní nasazení aktualizací softwaru v nástroji Configuration Manager a získat podrobné informace o stavu nasazení dokončené aktualizací pomocí [řešení pro správu aktualizovat](automation-update-management.md). Pokud používáte nástroj Configuration Manager pro vytváření sestav dodržování předpisů aktualizací, ale není pro správu nasazení aktualizací s Windows serverech, můžete pokračovat, vytváření sestav nástroje Configuration Manager při aktualizace zabezpečení se spravují prostřednictvím řešení pro správu aktualizovat.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Musíte mít [řešení pro správu aktualizací](automation-update-management.md) přidána k vašemu účtu Automation.
 * Servery Windows aktuálně spravované pomocí prostředí System Center Configuration Manageru také musí do pracovního prostoru Log Analytics nahlásit, že mají povolené řešení Update Management.

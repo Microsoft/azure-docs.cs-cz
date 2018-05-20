@@ -6,7 +6,7 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 9fe7e6d12c3a831b006107ae53ca37cd22e34d4c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9c8f5bf8036874213338b646b642407ab65e2293
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Správa řízení přístupu na základě rolí pomocí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -304,7 +304,7 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Odebrání přístupu
+## <a name="remove-access"></a>Odebrat přístup
 
 Chcete-li odebrat přístup pro uživatele, skupiny a aplikace, použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment):
 

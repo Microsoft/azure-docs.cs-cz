@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: b81d4b669898a7acc428fe22a070ccd76dc5e546
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a2225409e4cb50d91c09207ee70b76df12925192
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Použít uživatele přiřazené spravované služby Identity (MSI) na virtuální počítač s Windows, pro přístup k Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použijte uživatele přiřazené spravované služby Identity (MSI) na virtuální počítač s Windows, pro přístup k Azure Resource Manager
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 

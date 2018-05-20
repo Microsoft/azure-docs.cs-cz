@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8eada6b88c320396b30ecdeb96c95e4ec61679ce
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f6986df19482800ff676c0e05ad680e14dfeca1f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 ## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
@@ -40,7 +40,7 @@ Chcete-li volat metody na zařízení, použijte **zařízení** stránky v ře�
 
     ![Vyberte fyzické zařízení](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **plán**. Při plánování metodu pro spuštění na několika zařízeních, můžete vybrat více zařízení v seznamu. **Plán** panelu zobrazí požadované typy metoda společné pro všechny vámi vybraná zařízení.
+1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **úlohy**, pak **Run – metoda**. Naplánování úlohy ke spuštění na několika zařízeních, můžete vybrat více zařízení v seznamu. **Úlohy** panelu zobrazí požadované typy metoda společné pro všechny vámi vybraná zařízení.
 
 1. Zvolte **FirmwareUpdate**, nastavte název úlohy na **UpdatePhysicalChiller**. Nastavit **verzi firmwaru** k **2.0.0**, nastavte **Firmware URI** k **http://contoso.com/updates/firmware.bin**a potom zvolte **použít**:
 

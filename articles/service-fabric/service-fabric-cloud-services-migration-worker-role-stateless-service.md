@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c6bdd6f88c9008a8d9c15d22bdcf263190424649
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Průvodce převodu Web a rolí pracovního procesu na bezstavové služby Service Fabric
 Tento článek popisuje, jak migrovat Service Fabric bezstavové služby Cloud Services – webové a rolí pracovního procesu. Je to ta nejjednodušší cesta migrace z cloudové služby na Service Fabric pro aplikace, jejichž přehled architektury přechází zůstane zhruba stejná.

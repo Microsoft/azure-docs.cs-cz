@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: b8c2ff527328fe5f486362db416a99a1c711c9c2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa90d406313d756f3dd852305a6d61db29815192
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurace protokolů toku skupiny zabezpečení sítě pomocí rozhraní příkazového řádku Azure
 
@@ -51,7 +51,7 @@ Příkaz pro povolení protokolů toku je znázorněno v následujícím příkl
 az network watcher flow-log configure --resource-group resourceGroupName --enabled true --nsg nsgName --storage-account storageAccountName
 ```
 
-Účet úložiště, který určíte, nemůže mít nakonfigurovaná pro něj pravidla sítě, které omezují přístup k síti pouze služby společnosti Microsoft nebo konkrétní virtuálních sítí.
+Účet úložiště, který určíte, nemůže mít nakonfigurovaná pro něj pravidla sítě, které omezují přístup k síti pouze služby společnosti Microsoft nebo konkrétní virtuálních sítí. Účet úložiště může být ve stejné nebo jiné předplatné, než NSG, které umožňují tok protokolu pro. Pokud používáte různých předplatných, musí být obě přidruženy ke stejné klienta Azure Active Directory. Musí mít účet, který použijete pro každé předplatné [potřebná oprávnění](required-rbac-permissions.md).
 
 ## <a name="disable-network-security-group-flow-logs"></a>Protokoly toku zakázat skupinu zabezpečení sítě
 

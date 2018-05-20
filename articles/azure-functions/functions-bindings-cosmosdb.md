@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3d63e33adb9cbbe96ad2851870592cc07c9cc3da
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ffb18ef65bc0d901fe237ec9c4f97fdae43dc472
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB vazby pro Azure Functions
 
@@ -35,6 +35,8 @@ Tento článek vysvětluje, jak pracovat s [Azure Cosmos DB](..\cosmos-db\server
 Vazby Cosmos DB verze funkcí jsou součástí 1.x [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) balíček NuGet. Pro funkce 2.x, je balíček [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB). Zdrojový kód pro vazby je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -170,13 +172,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**leaseCollectionName** | **LeaseCollectionName** | (Volitelné) Název kolekce používá k ukládání zapůjčení. Pokud není nastavena hodnota `leases` se používá. |
 |**CreateLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Volitelné) Pokud nastavíte hodnotu `true`, kolekci zapůjčení se automaticky vytvoří, pokud ještě neexistuje. Výchozí hodnota je `false`. |
 |**LeasesCollectionThroughput**| **LeasesCollectionThroughput**| (Volitelné) Definuje množství jednotky žádosti přiřadit při vytvoření kolekce zapůjčení. Toto nastavení je pouze použité při `createLeaseCollectionIfNotExists` je nastaven na `true`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| (Volitelné) Pokud nastavíte, přidá předponu zapůjčení vytvořené v kolekci zapůjčení pro tuto funkci umožňuje efektivně dvě samostatné funkce Azure sdílet stejné zapůjčení kolekci pomocí jiné předpony.
+|**LeaseCollectionPrefix**| **LeaseCollectionPrefix**| (Volitelné) Pokud nastavíte, přidá předponu zapůjčení vytvořené v kolekci zapůjčení pro tuto funkci umožňuje efektivně dvě samostatné funkce Azure sdílet stejné zapůjčení kolekci pomocí jiné předpony.
 |**FeedPollDelay**| **FeedPollDelay**| (Volitelné) Pokud sadu, definuje, v milisekundách, zpoždění mezi dotazování oddíl pro nové změny v informačním kanálu se nečekaně po všechny aktuální změny. Výchozí hodnota je 5000 (5 sekund).
 |**LeaseAcquireInterval**| **LeaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, který ji úlohu Vypočítat, pokud oddíly jsou rovnoměrně rozdělené mezi instancí známé hostitele. Výchozí hodnota je 13000 (13 sekund).
 |**LeaseExpirationInterval**| **LeaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud během tohoto intervalu neobnovíte zapůjčení, může to způsobit vypršení platnosti, a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
 |**LeaseRenewInterval**| **LeaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly, které jsou aktuálně uchovávat instance. Výchozí hodnota je 17000 (17 sekund).
 |**CheckpointFrequency**| **CheckpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi body obnovení zapůjčení. Výchozí hodnota je vždy po úspěšném volání funkce.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální množství přijatých položek pro volání funkce.
+|**MaxItemsPerInvocation**| **MaxItemsPerInvocation**| (Volitelné) Pokud nastavíte, přizpůsobuje maximální množství přijatých položek pro volání funkce.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

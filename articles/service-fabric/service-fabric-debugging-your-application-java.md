@@ -1,24 +1,24 @@
 ---
-title: "Ladění aplikace Azure Service Fabric v prostředí Eclipse | Microsoft Docs"
-description: "Vylepšit spolehlivost a výkon vašich služeb vývoji a ladění je v prostředí Eclipse v místní vývojový cluster."
+title: Ladění aplikace Azure Service Fabric v prostředí Eclipse | Microsoft Docs
+description: Vylepšit spolehlivost a výkon vašich služeb vývoji a ladění je v prostředí Eclipse v místní vývojový cluster.
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: suhuruli;mikhegn
-ms.openlocfilehash: 023b878706abf524b5a7939492937a92151f6035
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: suhuruli
+ms.openlocfilehash: 0e9e816fa84816b1b5d12f066dc65aee7b4930f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Ladění aplikace Java Service Fabric pomocí Eclipse
 > [!div class="op_single_selector"]
@@ -28,12 +28,12 @@ ms.lasthandoff: 12/21/2017
 
 1. Spuštění místního vývojového clusteru podle kroků v [nastavení vývojového prostředí Service Fabric](service-fabric-get-started-linux.md).
 
-2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, tak, aby spouštěl procesu java s parametry vzdáleného ladění. Tento soubor se nachází v následujícím umístění: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. Port 8001 nastaven pro ladění v tomto příkladu.
+2. Aktualizujte entryPoint.sh služby, kterou chcete ladit, tak, aby spouštěl procesu java s parametry vzdáleného ladění. Tento soubor se nachází v následujícím umístění: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. V tomto příkladu je pro ladění nastavený port 8001.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Nastavení počtu instancí nebo počet replik pro službu, která je laděné 1 Aktualizujte Manifest aplikace. Toto nastavení se vyhnete konfliktům pro port, který se používá pro ladění. Například pro bezstavové služby, nastavte ``InstanceCount="1"`` a stavové služby nastavit cíl a minimální sady replik velikosti 1 následujícím způsobem: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Nastavení počtu instancí nebo počet replik pro službu, která je laděné 1 Aktualizujte Manifest aplikace. Toto nastavení zabrání konfliktům na portu, který slouží k ladění. Například pro bezstavové služby nastavte ``InstanceCount="1"`` a pro stavové služby nastavte cílovou a minimální velikost sady replik na 1 následujícím způsobem: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
 
 4. Nasazení aplikace.
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/21/2017
 
 Pokud aplikace selhává, můžete také povolit coredumps. Spuštění ``ulimit -c`` v prostředí a pokud vrátí hodnotu 0, pak coredumps nejsou povoleny. Pokud chcete povolit neomezená coredumps, spusťte následující příkaz: ``ulimit -c unlimited``. Můžete si taky ověřit stav pomocí příkazu ``ulimit -a``.  Pokud jste chtěli aktualizovat generování cestu coredump, spouštění ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
 
-### <a name="next-steps"></a>Další kroky
+### <a name="next-steps"></a>Další postup
 
 * [Shromažďování protokolů pomocí Linux Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md).
 * [Monitorování a Diagnostika služby místně](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

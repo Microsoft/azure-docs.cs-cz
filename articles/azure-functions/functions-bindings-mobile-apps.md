@@ -1,13 +1,13 @@
 ---
 title: Vazby Mobile Apps pro Azure Functions
-description: "Pochopit, jak používat Azure Mobile Apps vazby v Azure Functions."
+description: Pochopit, jak používat Azure Mobile Apps vazby v Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1129bd36b1f1f413e5fd40da16a48f5aff1078bc
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Vazby Mobile Apps pro Azure Functions 
 
@@ -34,6 +34,8 @@ Vazby mobilní aplikace vám umožní číst a aktualizovat tabulky dat v mobiln
 Vazby Mobile Apps jsou součástí [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="input"></a>Vstup
 
@@ -144,13 +146,13 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **Typ**|| Musí být nastavena na "mobileTable"|
-| **Směr**||Musí být nastavena na "v"|
-| **name**|| Název vstupního parametru v podpis funkce.|
+| **type**|| Musí být nastavena na "mobileTable"|
+| **direction**||Musí být nastavena na "v"|
+| **Jméno**|| Název vstupního parametru v podpis funkce.|
 |**tableName** |**TableName**|Název tabulky dat mobilní aplikace|
-| **id**| **ID** | Identifikátor záznamu pro načtení. Můžou být statické nebo podle aktivační událost, která volá funkci. Pokud pak použít aktivační procedury fronty pro funkce, například `"id": "{queueTrigger}"` používá s řetězcovou hodnotou obsahující zprávy ve frontě jako ID záznamu pro načtení.|
+| **ID**| **ID** | Identifikátor záznamu pro načtení. Můžou být statické nebo podle aktivační událost, která volá funkci. Pokud pak použít aktivační procedury fronty pro funkce, například `"id": "{queueTrigger}"` používá s řetězcovou hodnotou obsahující zprávy ve frontě jako ID záznamu pro načtení.|
 |**Připojení**|**Připojení**|Název nastavení aplikace, který obsahuje adresu URL do mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci funkce, který obsahuje adresu URL do mobilní aplikace a potom zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. Vypadá adresa URL `http://<appname>.azurewebsites.net`.
-|**apiKey**|**ApiKey**|Název nastavení aplikace, který má klíč rozhraní API mobilní aplikaci. Zadejte Pokud klíče rozhraní API můžete [implementovat klíč rozhraní API v mobilní aplikaci Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API v mobilní aplikaci .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Chcete-li zadat klíč, vytvoření nastavení aplikace v aplikaci funkce, který obsahuje klíč rozhraní API a pak přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. |
+|**apiKey**|**apiKey**|Název nastavení aplikace, který má klíč rozhraní API mobilní aplikaci. Zadejte Pokud klíče rozhraní API můžete [implementovat klíč rozhraní API v mobilní aplikaci Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API v mobilní aplikaci .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Chcete-li zadat klíč, vytvoření nastavení aplikace v aplikaci funkce, který obsahuje klíč rozhraní API a pak přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -303,9 +305,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **Typ**|| Musí být nastavena na "mobileTable"|
-| **Směr**||Musí být nastavena na "out"|
-| **name**|| Název výstupního parametru v podpis funkce.|
+| **type**|| Musí být nastavena na "mobileTable"|
+| **direction**||Musí být nastavena na "out"|
+| **Jméno**|| Název výstupního parametru v podpis funkce.|
 |**tableName** |**TableName**|Název tabulky dat mobilní aplikace|
 |**Připojení**|**MobileAppUriSetting**|Název nastavení aplikace, který obsahuje adresu URL do mobilní aplikace. Funkce používá tuto adresu URL k vytvoření požadované operace REST pro mobilní aplikace. Vytvoření nastavení aplikace v aplikaci funkce, který obsahuje adresu URL do mobilní aplikace a potom zadejte název nastavení aplikace v `connection` vlastnost Vstupní vazba. Vypadá adresa URL `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Název nastavení aplikace, který má klíč rozhraní API mobilní aplikaci. Zadejte Pokud klíče rozhraní API můžete [implementovat klíč rozhraní API vašeho back-end mobilní aplikace Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), nebo [implementovat klíč rozhraní API vašeho back-end mobilní aplikace .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Chcete-li zadat klíč, vytvoření nastavení aplikace v aplikaci funkce, který obsahuje klíč rozhraní API a pak přidejte `apiKey` vlastnost vaše Vstupní vazba s názvem nastavení aplikace. |

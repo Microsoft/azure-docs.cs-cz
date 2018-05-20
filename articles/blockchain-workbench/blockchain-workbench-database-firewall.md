@@ -1,6 +1,6 @@
 ---
-title: Konfigurace brány firewall Azure Blockchain Workbench SQL DB
-description: Zjistěte, jak nakonfigurovat bránu firewall, Azure Blockchain Workbench SQL DB.
+title: Konfigurace brány firewall databáze SQL služby Azure Blockchain Workbench
+description: Naučte se konfigurovat bránu firewall databáze SQL služby Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,51 +10,52 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: dc22f212c014ab1d6622eff3491d669b21ca6f47
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: afeea143f73fa4f7d3e373535007846a668616ab
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Konfigurace brány firewall databáze Azure Blockchain Workbench
+# <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Konfigurace brány firewall databáze služby Azure Blockchain Workbench
 
-Tento článek ukazuje, jak nakonfigurovat pomocí portálu Azure pravidlo brány firewall. Externí klienti moci pravidla brány firewall nebo aplikace připojit k databázi Azure Blockchain Workbench.
+Tento článek popisuje, jak nakonfigurovat pravidlo brány firewall pomocí Azure Portalu. Pravidla brány firewall umožňují externím klientům nebo aplikacím připojení k databázi služby Azure Blockchain Workbench.
 
-## <a name="connect-to-the-blockchain-workbench-database"></a>Připojení k databázi Blockchain Workbench
+## <a name="connect-to-the-blockchain-workbench-database"></a>Připojení k databázi služby Blockchain Workbench
 
-Pro připojení k databázi, ve které chcete nakonfigurovat pravidlo:
+K databázi, kde chcete nakonfigurovat pravidlo, se připojíte takto:
 
-1. Přihlaste se k portálu Azure pomocí účtu, který má **vlastníka** oprávnění pro prostředky Azure Blockchain Workbench.
-2. V levém navigačním podokně zvolte **skupiny prostředků**.
-3. Vyberte název skupiny prostředků pro vaše nasazení Blockchain Workbench.
-4. Vyberte **typ** řazení seznamu prostředků, a pak vyberte vaše **systému SQL server**.
-5. Příklad seznamu prostředků v následující snímek obrazovky ukazuje dvě databáze: *hlavní* a *lsgn-sdk*. Nakonfigurujte pravidlo brány firewall na *lsgn-sdk*.
+1. Přihlaste se k Azure Portalu pod účtem, který má oprávnění **Vlastník** k prostředkům služby Azure Blockchain Workbench.
+2. V levém navigačním podokně zvolte **Skupiny prostředků**.
+3. Zvolte název skupiny prostředků svého nasazení služby Blockchain Workbench.
+4. Výběrem možnosti **Typ** tento seznam prostředků seřaďte a pak zvolte **SQL Server**.
+5. V příkladu seznamu prostředků na následujícím snímku obrazovky se zobrazují dvě databáze: *master* a *lsgn-sdk*. Pravidlo brány firewall budete konfigurovat u databáze *lsgn-sdk*.
 
-![Seznam Blockchain Workbench prostředky](media/blockchain-workbench-database-firewall/list-database-resources.png)
+![Seznam prostředků služby Blockchain Workbench](media/blockchain-workbench-database-firewall/list-database-resources.png)
 
-## <a name="create-a-database-firewall-rule"></a>Vytvoření pravidla firewallu databáze
+## <a name="create-a-database-firewall-rule"></a>Vytvoření pravidla brány firewall databáze
 
-Pokud chcete vytvořit pravidlo brány firewall:
+Pravidlo brány firewall vytvoříte takto:
 
-1. Vyberte odkaz na databázi "lsgn-sdk".
-2. Na panelu nabídek vyberte **nastavení brány firewall serveru**.
+1. Zvolte odkaz na databázi „lsgn-sdk“.
+2. V řádku nabídek vyberte **Nastavit bránu firewall serveru**.
 
-   ![Nastavit bránu firewall serveru](media/blockchain-workbench-database-firewall/configure-server-firewall.png)
+   ![Nastavení brány firewall serveru](media/blockchain-workbench-database-firewall/configure-server-firewall.png)
 
-3. K vytvoření pravidla pro vaši organizaci:
+3. Pravidlo pro svou organizaci vytvoříte takto:
 
-   * Zadejte **název pravidla**
-   * Zadejte IP adresu pro **počáteční IP** rozsahů adres
-   * Zadejte IP adresu pro **KONCOVÁ IP adresa** rozsahů adres
+   * Zadejte **NÁZEV PRAVIDLA**.
+   * Zadejte IP adresu do pole **POČÁTEČNÍ IP ADRESA** rozsahu adres.
+   * Zadejte IP adresu do pole **KONCOVÁ IP ADRESA** rozsahu adres.
 
-   ![Vytvořte pravidlo brány firewall](media/blockchain-workbench-database-firewall/create-firewall-rule.png)
+   ![Vytvoření pravidla brány firewall](media/blockchain-workbench-database-firewall/create-firewall-rule.png)
 
     > [!NOTE]
-    > Pokud chcete přidat IP adresu počítače, zvolte **+ přidat IP adresu klienta**.
+    > Pokud chcete přidat jen IP adresu svého počítače, zvolte **+ Přidat IP adresu klienta**.
         
-1. Chcete-li uložit konfiguraci brány firewall, vyberte **Uložit**.
-2. Rozsah IP adres, které jste nakonfigurovali pro databázi připojením z aplikace nebo nástroj pro testování. Například SQL Server Management Studio.
+1. Výběrem možnosti **Uložit** konfiguraci brány firewall uložte.
+2. Připojením z aplikace nebo nástroje vyzkoušejte rozsah IP adres, který jste pro databázi nakonfigurovali. Použijte například SQL Server Management Studio.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zobrazení databáze v Azure Blockchain Workbench](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Zobrazení databáze ve službě Azure Blockchain Workbench](blockchain-workbench-database-views.md)

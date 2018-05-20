@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 65e1f8a907c8bf64497f7439e5b635ad336cd23a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 026ff0394e988081bdc581bf001417b13e44427b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční dokumentace - IoT Hub kvóty a omezení
 
@@ -39,7 +39,7 @@ Následující tabulka obsahuje vynucené omezení. Hodnoty se vztahují k rozbo
 | Omezení | Uvolněte, B1 a S1 | B2 a S2 | B3 a S3 | 
 | -------- | ------- | ------- | ------- |
 | Operace s registrem identit (vytvořit, získat, seznam, aktualizace, odstranění) | 1.67/sec/Unit (min/100/unit) | 1.67/sec/Unit (min/100/unit) | 83.33/sec/Unit (5000/minimální/unit) |
-| Připojení zařízení | Vyšší 100 za sekundu nebo 12/sec/jednotka <br/> Například dvě jednotky S1 jsou 2\*12 = 24/sec, ale, že nejméně 100 za sekundu napříč vaší jednotky. U devět S1 jednotek, máte 108 za sekundu (9\*12) mezi vaší jednotky. | 120/sec/jednotka | 6000/sec/jednotka |
+| Nové připojení zařízení (Toto omezení se vztahuje na rychlost, kterou _nová připojení_ jsou určeny, není celkový počet připojení) | Vyšší 100 za sekundu nebo 12/sec/jednotka <br/> Například dvě jednotky S1 jsou 2\*12 = 24 nové připojení za sekundu, ale máte nejméně 100 nové připojení za sekundu napříč vaší jednotky. U devět S1 jednotek, máte 108 nové připojení za sekundu (9\*12) mezi vaší jednotky. | nové 120 připojení/sec/jednotky | nové 6000 připojení/sec/jednotky |
 | Odesílání typu zařízení-cloud | Vyšší 100 za sekundu nebo 12/sec/jednotka <br/> Například dvě jednotky S1 jsou 2\*12 = 24/sec, ale, že nejméně 100 za sekundu napříč vaší jednotky. U devět S1 jednotek, máte 108 za sekundu (9\*12) mezi vaší jednotky. | 120/sec/jednotka | 6000/sec/jednotka |
 | Cloud zařízení odesílá<sup>1</sup> | 1.67/sec/Unit (min/100/unit) | 1.67/sec/Unit (min/100/unit) | 83.33/sec/Unit (5000/minimální/unit) |
 | Cloud zařízení obdrží<sup>1</sup> <br/> (jenom když zařízení používá protokol HTTPS)| 16.67/sec/Unit (1000/minimální/unit) | 16.67/sec/Unit (1000/minimální/unit) | 833.33/sec/Unit (50000/minimální/unit) |

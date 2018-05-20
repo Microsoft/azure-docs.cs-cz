@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Nastavení clusteru Linux RDMA pro spouštění aplikací MPI
 Zjistěte, jak nastavit clusteru s podporou Linux RDMA v Azure pomocí [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ke spouštění paralelních aplikací Message Passing Interface (MPI). Tento článek obsahuje kroky k přípravě image Linux HPC ke spuštění v clusteru s podporou Intel MPI. Po přípravě nasazení clusteru virtuálních počítačů pomocí tuto bitovou kopii a jeden velikostí podporující RDMA virtuální počítač Azure (aktuálně H16r, H16mr, A8 a A9). Použijte cluster ke spouštění aplikací MPI, které efektivně komunikují přes síť s nízkou latencí, vysokou propustností založené na technologii do paměti vzdáleného přímý přístup do (počítače RDMA).
@@ -210,7 +210,7 @@ V clusteru HPC na základě CentOS, existují dvě metody pro vytvoření vztahu
 
 Ukázkový skript podílí od komunity je k dispozici na [Githubu](https://github.com/tanewill/utils/blob/master/user_authentication.sh) k povolení ověřování snadno uživatele na základě CentOS HPC clusteru. Stáhnout a použít tento skript pomocí následujících kroků. Můžete také upravit tento skript nebo použít jinou metodu pro vytvoření passwordless ověřování SSH mezi výpočetní uzly clusteru.
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
+    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
 
 Pokud chcete spustit skript, musíte znát Předpona podsítě IP adres. Předpona získáte spuštěním následujícího příkazu na jednom z uzlů clusteru. Výstup by měl vypadat podobně jako 10.1.3.5 a předpona je 10.1.3 část.
 

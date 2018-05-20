@@ -1,29 +1,29 @@
 ---
-title: "Vyvážit cluster Azure Service Fabric | Microsoft Docs"
-description: "Úvod do vyrovnávání cluster pomocí Service Fabric clusteru správce prostředků."
+title: Vyvážit cluster Azure Service Fabric | Microsoft Docs
+description: Úvod do vyrovnávání cluster pomocí Service Fabric clusteru správce prostředků.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 030b1465-6616-4c0b-8bc7-24ed47d054c0
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d2f195c50750a5c7685f62c909f77b2960613e6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyrovnávání váš cluster service fabric
 Správce prostředků clusteru Service Fabric podporuje dynamické zatížení změny reaktivní dodatky nebo odstraňování uzly nebo služeb. Také automaticky opraví narušení omezení a proaktivně znovu vytvoří rovnováhu clusteru. Ale jsou jak často tyto akce provést a co je aktivuje?
 
-Existují tři různé kategorie práci, kterou provádí správce prostředků clusteru. Jsou:
+Existují tři různé kategorie práci, kterou provádí správce prostředků clusteru. Jsou to tyto:
 
 1. Umístění – tato fáze se zabývá umístění žádné stavové repliky nebo bezstavové instancí, které chybí. Umístění zahrnuje nové služby a zpracování stavových repliky nebo bezstavové instancí, které selhaly. Tady jsou zpracovávány odstranění a vyřazení replik nebo instancí.
 2. Omezení kontroluje – tato fáze kontroluje a opravuje porušení omezení jiné umístění (pravidla) v systému. Příklady pravidel jsou třeba zajistit, že uzly nejsou přes kapacity a že jsou splněny omezení umístění služby.
@@ -204,7 +204,7 @@ Správce prostředků clusteru automaticky hodnoty na jaké služby jsou souvise
 ![Společně vyrovnávání služby][Image5]
 </center>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Metriky se, jak správce prostředků služby Fabric clusteru spravuje využívání a kapacity v clusteru. Další informace o metriky a způsob jejich konfigurace, podívejte se na [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)
 * Náklady na přesunutí je jeden ze způsobů signalizace správce prostředků clusteru, že jsou dražší než jiné přesunout určité služby. Další informace o náklady na přesunutí, najdete v části [v tomto článku](service-fabric-cluster-resource-manager-movement-cost.md)
 * Správce prostředků clusteru má několik omezení, které můžete nakonfigurovat zpomalit změn v clusteru. Nejsou běžně potřebné, ale chcete-li se dozvíte je [sem](service-fabric-cluster-resource-manager-advanced-throttling.md)

@@ -7,13 +7,13 @@ ms.component: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/23/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c095576ccce7e32850c3fb2daf8303a0d6e957bc
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d93f79874ff65a1b6bb7ddd75932111c5caa6072
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 

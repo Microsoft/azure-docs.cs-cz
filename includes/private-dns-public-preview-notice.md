@@ -10,7 +10,7 @@ ms.author: subsarma
 ms.custom: include file for Azure DNS Private Zone public preview notice
 ms.openlocfilehash: 28b828f48e90c1e273dc3626b2b0e70260d6eacd
 ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
 ---

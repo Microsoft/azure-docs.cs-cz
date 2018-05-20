@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: db65d53258af523bb74209613df3af23e890f49d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 57d4a3767d0ad02f136686d95703817055566c33
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Použít identitu služby spravované Linux virtuálního počítače pro přístup k úložišti Azure pomocí pověření SAS
+# <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Používání Linux virtuálního počítače spravované služby Identity pro přístup k úložišti Azure pomocí pověření SAS
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

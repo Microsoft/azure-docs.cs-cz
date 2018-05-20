@@ -1,24 +1,24 @@
 ---
 title: 'Upgrade aplikace: serializace dat | Microsoft Docs'
-description: "Osvědčené postupy pro serializaci dat a jak ovlivňuje postupné upgrady aplikací."
+description: Osvědčené postupy pro serializaci dat a jak ovlivňuje postupné upgrady aplikací.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a5f36366-a2ab-4ae3-bb08-bc2f9533bc5a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c5a4ff9d70ea2b9c7e3a0337e913ea224b31648c
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 2f6fad0ecca09ff9210b5961301fea3446a88f11
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Jak ovlivňuje serializace dat upgradu aplikace
 V [vrácení upgradu aplikace](service-fabric-application-upgrade.md), upgradu se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu jsou některé domény upgrade na novější verzi aplikace a jsou některé upgradu domény na starší verzi aplikace. Při zavedení nová verze aplikace musí být možné číst stará verze vaše data a starší verzi aplikace musí být možné číst novou verzi vaše data. Pokud formát dat není vpřed a zpětně kompatibilní, upgrade může selhat nebo horší, mohou být data ztrátě nebo poškození. Tento článek popisuje, co se považuje za vaše formát dat a nabízí osvědčené postupy pro zajištění, aby vaše data byla vpřed a zpětně kompatibilní.
@@ -52,7 +52,7 @@ Dvě verze formátu kód a data musí být vpřed a zpětně kompatibilní. Poku
 
 Kontrakt dat je doporučené řešení pro zajištění, aby vaše data byla kompatibilní. Obsahuje pravidla dobře definovaný verzí pro přidání, odebrání a změna pole. Je také podpora zabývají neznámé pole, zapojování do procesu serializace a deserializace a plánování práce s dědičnosti tříd. Další informace najdete v tématu [pomocí kontrakt dat](https://msdn.microsoft.com/library/ms733127.aspx).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
 
 [Upgrade vaší aplikace pomocí prostředí Powershell](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí prostředí PowerShell.

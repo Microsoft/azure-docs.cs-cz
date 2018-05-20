@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1bf86a9190039cdf0fe8dc435bdee4308b28cf29
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e620a7f488e51a60bff6943135831eea0d12816d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory auditu referenční dokumentace rozhraní API
 
@@ -52,7 +52,7 @@ Pro:
 ## <a name="prerequisites"></a>Požadavky
 Přístup k této sestavě prostřednictvím rozhraní API pro vytváření sestav, musíte mít:
 
-* [Lepší edici nebo Azure Active Directory volné](active-directory-editions.md)
+* [Lepší edici nebo Azure Active Directory volné](active-directory-whatis.md)
 * Byla dokončena [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md). 
 
 ## <a name="accessing-the-api"></a>Přístup k rozhraní API

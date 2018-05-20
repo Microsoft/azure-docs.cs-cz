@@ -2,19 +2,17 @@
 title: Prostřednictvím kódu programu vytvoření zásad a zobrazit data o dodržování předpisů se zásadami Azure
 description: Tento článek vás provede prostřednictvím kódu programu vytváření a Správa zásad Azure zásady.
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: ''
-ms.openlocfilehash: 5737c33fc4c139e3b0a5535d371ef7cc1d11b9e6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5405566b5254c553eac584acc1653449b51ddffc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Prostřednictvím kódu programu vytvoření zásad a zobrazit data o dodržování předpisů
 

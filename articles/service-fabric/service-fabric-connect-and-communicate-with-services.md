@@ -1,6 +1,6 @@
 ---
-title: "Připojení a komunikovat se službami v Azure Service Fabric | Microsoft Docs"
-description: "Zjistěte, jak vyřešit, připojit a komunikovat se službami v Service Fabric."
+title: Připojení a komunikovat se službami v Azure Service Fabric | Microsoft Docs
+description: Zjistěte, jak vyřešit, připojit a komunikovat se službami v Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,23 +9,23 @@ editor: msfussell
 ms.assetid: 7d1052ec-2c9f-443d-8b99-b75c97266e6c
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikovat se službami v Service Fabric
 V Service Fabric běží služba někde v clusteru Service Fabric, obvykle se distribuují napříč více virtuálními počítači. Ho může být z jednoho místa na jiný přesunout, pomocí vlastníka služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázaný na konkrétní počítač nebo na adresu.
 
 Aplikace Service Fabric se obvykle skládá z mnoha různých služeb, kde každá služba provádí úlohu specializované. Tyto služby může komunikovat s jinými k dokončení funkce, jako je například vykreslování různé části webové aplikace. Existují také klientské aplikace, které se připojují k a komunikovat se službami. Tento dokument popisuje, jak nastavit komunikaci s a mezi vaší služby v Service Fabric.
 
-Toto video Microsoft Virtual Academy taky popisuje komunikace služby:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
+Toto video Microsoft Virtual Academy taky popisuje komunikace služby: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
 <img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -181,7 +181,7 @@ Spolehlivé služby framework se dodává s několik předdefinovaných komunika
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Vlastní protokoly a další komunikaci rozhraní
 Služby můžete použít libovolný protokol nebo framework pro komunikaci, jestli je vlastní binární protokol přes TCP sokety nebo streamování události prostřednictvím [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) nebo [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric nabízí komunikace rozhraní API, kterou můžete připojit vaše komunikačního balíku do, zatímco všechny pracovní vyhledat a připojit je abstrahované od vás. Najdete v článku [spolehlivá služba komunikační model](service-fabric-reliable-services-communication.md) další podrobnosti.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o konceptech a rozhraní API dostupná v [spolehlivé služby komunikační model](service-fabric-reliable-services-communication.md), pak rychle začít s [vzdálené komunikace služby](service-fabric-reliable-services-communication-remoting.md) nebo přejděte podrobné informace o psaní komunikace naslouchací proces pomocí [webového rozhraní API s OWIN hostování na vlastním](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

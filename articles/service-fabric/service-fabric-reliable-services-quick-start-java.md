@@ -1,24 +1,24 @@
 ---
-title: "Vytvoření vaší první mikroslužbu spolehlivé Azure v jazyce Java | Microsoft Docs"
-description: "Úvod do vytváření aplikace Microsoft Azure Service Fabric s bezzstavovými i stavovými službami."
+title: Vytvoření vaší první mikroslužbu spolehlivé Azure v jazyce Java | Microsoft Docs
+description: Úvod do vytváření aplikace Microsoft Azure Service Fabric s bezzstavovými i stavovými službami.
 services: service-fabric
 documentationcenter: java
 author: suhuruli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
 ms.devlang: java
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: e885a482edcba48c18e425c54f4acc28ee650ddd
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/12/2018
 >
 >
 
-Tento článek vysvětluje základy služby Azure Service Fabric spolehlivé a provede vás vytvořením a nasazením jednoduchou spolehlivá služba aplikaci napsanou v jazyce Java. Video tento Microsoft Virtual Academy také ukazuje postup vytvoření bezstavové spolehlivé služby:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
+Tento článek vysvětluje základy služby Azure Service Fabric spolehlivé a provede vás vytvořením a nasazením jednoduchou spolehlivá služba aplikaci napsanou v jazyce Java. Video tento Microsoft Virtual Academy také ukazuje postup vytvoření bezstavové spolehlivé služby: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=DOX8K86yC_206218965">  
 <img src="./media/service-fabric-reliable-services-quick-start-java/ReliableServicesJavaVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
@@ -127,7 +127,7 @@ Platforma volá tuto metodu, když je umístěný a připravené ke spuštění 
 
 Tato orchestration je spravován pomocí Service Fabric a udržovat služby je vysoce dostupný a správně vyrovnáváním.
 
-`runAsync()`by neměly blokovat synchronně. Implementaci runAsync by měl vrátit CompletableFuture umožňující pokračovat modulu runtime. Pokud vaše úlohy musí implementovat dlouhotrvající úlohu, která se má provést uvnitř CompletableFuture.
+`runAsync()` by neměly blokovat synchronně. Implementaci runAsync by měl vrátit CompletableFuture umožňující pokračovat modulu runtime. Pokud vaše úlohy musí implementovat dlouhotrvající úlohu, která se má provést uvnitř CompletableFuture.
 
 #### <a name="cancellation"></a>Zrušení
 Zrušení úlohy je spolupráci úsilí řízená token poskytnutý zrušení. Systém čeká na ukončení (podle úspěšné dokončení, zrušení nebo selhání), než ji přesune vaše úlohy. Je důležité respektovat token zrušení, Dokončit veškerou práci a ukončete `runAsync()` provést co nejrychleji, pokud systém požadavky zrušení. Následující příklad ukazuje, jak se zpracovat událost zrušení:
@@ -193,7 +193,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()`funguje podobně jako v stavová a Bezstavová služby. Ale v stavové služby platformy provede další práci vaším jménem předtím, než se provede `RunAsync()`. Tento pracovní mohou zahrnovat kontrolu, spolehlivé správce stavu a spolehlivé kolekce jsou připravené k použití.
+`RunAsync()` funguje podobně jako v stavová a Bezstavová služby. Ale v stavové služby platformy provede další práci vaším jménem předtím, než se provede `RunAsync()`. Tento pracovní mohou zahrnovat kontrolu, spolehlivé správce stavu a spolehlivé kolekce jsou připravené k použití.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Spolehlivé kolekce a spolehlivé správce stavu
 ```java

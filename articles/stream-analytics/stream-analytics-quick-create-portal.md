@@ -2,23 +2,22 @@
 title: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal | Microsoft Docs
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením úlohy Stream Analytics, konfigurací vstupů a výstupů a definicí dotazu.
 services: stream-analytics
-keywords: Stream Analytics, cloudové úlohy, Azure Portal, vstup úlohy, výstup úlohy, transformace úlohy
-author: SnehaGunda
-ms.author: sngun
-ms.date: 03/16/2018
+author: mamccrea
+ms.author: mamccrea
+ms.date: 05/11/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: c421ab96585da011cdaef9933ceb8a78ffe356a9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 86d4bab282db0ffc7b48813b9817eed0b45c3199
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal
 
-V tomto rychlém startu se naučíte, jak začít vytvořením úlohy Stream Analytics. Definujete úlohu Stream Analytics, která čte vzorová data snímačů a filtruje řádky s průměrnou teplotou přesahující po každých 30 sekundách 100 stupňů. V tomto článku se dozvíte, jak přečíst data z úložiště objektů blob, transformovat je a zapsat je zpět do jiného kontejneru ve stejném úložišti.
+V tomto rychlém startu se naučíte, jak začít vytvořením úlohy Stream Analytics. Definujete úlohu Stream Analytics, která čte vzorová data snímačů a filtruje řádky s průměrnou teplotou přesahující po každých 30 sekundách 100 stupňů. V tomto článku se dozvíte, jak přečíst data z úložiště objektů blob, transformovat je a zapsat je zpět do jiného kontejneru ve stejném úložišti. Vstupní datový soubor použitý v tomto rychlém startu obsahuje statická data, která jsou určena pouze pro ilustraci. Ve skutečném scénáři použijete pro úlohu Stream Analytics streamovaná vstupní data.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -28,43 +27,43 @@ V tomto rychlém startu se naučíte, jak začít vytvořením úlohy Stream Ana
 
 ## <a name="prepare-the-input-data"></a>Příprava vstupních dat
 
-Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurovaná jako vstup pro tuto úlohu. Proveďte následující kroky, pomocí kterých si připravíte vstupní data vyžadovaná úlohou.
+Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurovaná jako vstup pro tuto úlohu. Pomocí následujících kroků si připravte vstupní data vyžadovaná úlohou:
 
-1. Z GitHubu si stáhněte [vzorová data snímačů](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json). Tato data obsahují informace ze snímačů v uvedeném formátu JSON:  
+1. Z GitHubu si stáhněte [vzorová data snímačů](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json). Tato data obsahují informace ze snímačů v uvedeném formátu JSON:  
 
    ```json
    {
-     "time": "2016-01-26T21:18:52.0000000",
+     "time": "2018-01-26T21:18:52.0000000",
      "dspl": "sensorC",
      "temp": 87,
      "hmdt": 44
    }
    ```
-2. Přihlášení k webu Azure Portal  
+2. Přihlaste se k portálu Azure.  
 
-3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. V okně úlohy Účet úložiště nastavte do pole **Název** „myasastorageaccount“, možnost **Umístění** nastavte na „West US 2“ a **Skupina prostředků** na „MyRG“ (v zájmu zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
+3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. Vyplňte informace na stránce úlohy Účet úložiště a nastavte **Název** na „myasastorageaccount“, **Umístění** na „West US 2“, **Skupinu prostředků** na „MyRG“ (z důvodu zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
 
    ![Vytvoření účtu úložiště](./media/stream-analytics-quick-create-portal/create-a-storage-account.png)
 
-4. V okně **Všechny prostředky** vyhledejte účet úložiště vytvořený v předchozím kroku. Otevřete okno **Přehled** a potom dlaždici **Objekty blob**.  
+4. Na stránce **Všechny prostředky** vyhledejte účet úložiště vytvořený v předchozím kroku. Otevřete stránku **Přehled** a potom dlaždici **Objekty blob**.  
 
-5. V okně **Blob Service** vyberte **Kontejner**, zadejte jeho **název** (například*container1*), u možnosti **Úroveň veřejného přístupu** nastavte Blob (anonymní přístup pro čtení jenom k objektům blob) a zvolte **OK**.  
+5. Na stránce **Blob Service** vyberte **Kontejner**, zadejte jeho **název** (například *container1*), u možnosti **Úroveň veřejného přístupu** nastavte Blob (anonymní přístup pro čtení jenom k objektům blob) a zvolte **OK**.  
 
    ![Vytvoření kontejneru](./media/stream-analytics-quick-create-portal/create-a-storage-container.png)
 
-6. Přejděte na kontejner, který jste vytvořili v předchozím kroku, vyberte **Nahrát** a nahrajte data ze snímačů stažená v kroku 1.  
+6. Přejděte do kontejneru, který jste vytvořili v předchozím kroku. Vyberte **Nahrát** a nahrajte data snímače, která jste získali v prvním kroku.  
 
    ![Nahrání ukázkových dat do objektu blob](./media/stream-analytics-quick-create-portal/upload-sample-data-to-blob.png)
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-1. Přihlášení k webu Azure Portal  
+1. Přihlaste se k portálu Azure.
 
 2. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.  
 
-3. V seznamu výsledků vyberte **Data + analýzy** > **Úloha Stream Analytics job**.  
+3. V seznamu výsledků vyberte **Data + analýzy** > **Úloha Stream Analytics**.  
 
-4. Do okna Úloha Stream Analytics zadejte následující informace:
+4. Na stránce Úloha Stream Analytics zadejte následující informace:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
@@ -91,7 +90,7 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
 
 2. Zvolte **Vstupy** > **Přidat vstup streamu** > **Úložiště objektů blob**.  
 
-3. V okně **Úložiště objektů blob** vyplňte tyto hodnoty:
+3. Na stránce **Úložiště objektů blob** vyplňte tyto hodnoty:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
@@ -110,7 +109,7 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
 
 2. Vyberte **Výstupy > Přidat > Úložiště objektů blob**.  
 
-3. V okně **Úložiště objektů blob** vyplňte tyto hodnoty:
+3. Na stránce **Úložiště objektů blob** vyplňte tyto hodnoty:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
@@ -135,9 +134,9 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
    dspl AS SensorName,
    Avg(temp) AS AvgTemperature
    INTO
-     MyBlobOutput
+     BlobOutput
    FROM
-     MyBlobInput TIMESTAMP BY time
+     BlobInput TIMESTAMP BY time
    GROUP BY TumblingWindow(second,30),dspl
    HAVING Avg(temp)>100
    ```
@@ -148,9 +147,9 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-1. Vraťte se do okna přehledu úlohy a vyberte **Spustit**.  
+1. Vraťte se na stránku přehledu úlohy a vyberte **Spustit**.
 
-2. V části **Spuštění úlohy** vyberte pro pole **Čas zahájení** možnost **Vlastní**. Zvolte jeden den před datem nahrání souboru do úložiště objektů blob, protože čas nahrání předchází aktuálnímu času. Jakmile budete mít hotovo, vyberte **Spustit**.  
+2. V části **Spuštění úlohy** vyberte pro pole **Čas zahájení** možnost **Vlastní**. Jako datum zahájení vyberte `2018-01-24`, ale čas ponechejte beze změny. Toto datum je zvoleno, protože předchází časovému razítku události z ukázkových dat. Jakmile budete mít hotovo, vyberte **Spustit**.
 
    ![Spuštění úlohy](./media/stream-analytics-quick-create-portal/start-the-job.png)
 
@@ -168,7 +167,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili jednoduchou úlohu Stream Analytics a dozvěděli se tak o konfiguraci dalších vstupních zdrojů a provádění detekce v reálném čase. Pokračujte na další článek:
+V tomto rychlém startu jste nasadili jednoduchou úlohu Stream Analytics. Pokud se chcete dozvědět o konfiguraci dalších vstupních zdrojů a provádění detekce v reálném čase, pokračujte na další článek:
 
 > [!div class="nextstepaction"]
 > [Zjišťování možných podvodů v reálném čase pomocí Stream Analytics](stream-analytics-real-time-fraud-detection.md)

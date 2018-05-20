@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace zabezpečeného připojení clusteru Azure Service Fabric | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat zabezpečené připojení, které jsou podporovány v clusteru Azure Service Fabric pomocí sady Visual Studio."
+title: Konfigurace zabezpečeného připojení clusteru Azure Service Fabric | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat zabezpečené připojení, které jsou podporovány v clusteru Azure Service Fabric pomocí sady Visual Studio.
 services: service-fabric
 documentationcenter: na
 author: cawaMS
@@ -9,16 +9,16 @@ editor: tglee
 ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
 ms.service: multiple
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: dc07b2f38d6fd2de941ebbe99303f6e63cbf122d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2772cc2c59b93c7e523eaa0127dcf4ea0bc589e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečeného připojení ke clusteru Service Fabric ze sady Visual Studio
 Další informace o použití sady Visual Studio bezpečný přístup k clusteru služby Azure Service Fabric s nakonfigurované zásady řízení přístupu.
@@ -65,7 +65,7 @@ Pokud publikujete projektu Service Fabric v sadě Visual Studio, použijte **pub
    ```
 5. Upravit další potřebné nastavení, například upgradu parametry a umístění souboru aplikace parametr a pak publikujte aplikaci z **publikovat aplikace Service Fabric** dialogové okno v sadě Visual Studio.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o přístupu k clusterů Service Fabric najdete v tématu [vizualizace vašeho clusteru pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->

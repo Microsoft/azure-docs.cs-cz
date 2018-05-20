@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: eb824913a4b3482879ccc45e2f660342695b1618
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkce. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -37,14 +37,13 @@ Stáhněte si | [Stažení Azure AD Connect](http://go.microsoft.com/fwlink/?Lin
 
 ## <a name="118190"></a>1.1.819.0
 
-5, 4 nebo 2018: vydání pro automatický upgrade, bude brzy k dispozici ke stažení.
+### <a name="release-status"></a>Stav verze
 
-
+5/14/2018: vydané pro automatický upgrade a stahování.
 
 ### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
 
 Nové funkce a vylepšení
-
 
 - Tato verze zahrnuje integraci PingFederate verzi public preview ve službě Azure AD Connect. V této verzi můžete snadno zákazníky a spolehlivé konfigurace prostředí Azure Active Directory tak, aby využívala PingFederate jako jejich poskytovatel federace. Další informace o tom, jak použít tuto novou funkci, navštivte naše [online dokumentaci](active-directory-aadconnect-user-signin.md#federation-with-pingfederate). 
 - Aktualizovali jsme Azure AD Connect Průvodce Poradce při potížích, kde budeme analyzovat teď další chyby scénáře, jako jsou propojená poštovní schránky a dynamických skupin AD. Další informace o odstraňování potíží nástroje [zde](active-directory-aadconnect-troubleshoot-objectsync.md).
@@ -62,14 +61,16 @@ Nové funkce a vylepšení
 
 ### <a name="fixed-issues"></a>Opravené problémy 
 
-
+- Tato verze aktualizuje instalace systému SQL Server Express na SQL Server 2012 SP4, který mimo jiné poskytuje opravy pro několik chyb zabezpečení.  Najdete v tématu [sem](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) Další informace o aplikaci SQL Server 2012 s aktualizací SP4.
 - Synchronizace zpracování pravidla: odchozí pravidla synchronizace spojení s podmínkou žádné připojení musí být zrušte použité, pokud syncrule nadřazené není nadále vhodné
+- Několik oprav usnadnění platí pro rozhraní Synchronization Service Manager a editoru pravidla synchronizace
 - Azure AD Connect průvodce: Chyba při vytváření účtu AD Connector. Pokud Azure AD Connect je v pracovní skupině.
 - Azure AD Connect průvodce: Na Azure AD přihlašovací stránka zobrazí políčka ověření vždy, když je jakákoli Neshoda v doménami AD a Azure AD ověřeno domén
 - Automatický upgrade prostředí PowerShell oprava správně nastavené automatické aktualizace stavu v některých případech po pokusu o automatický upgrade.
 - Azure AD Connect průvodce: Aktualizovat telemetrie k zachycení dříve chybějící informace o
-- Azure AD Connect průvodce: PTA nainstalovat agenta před převedením domény spravovat
-- Azure AD Connect průvodce: Nepřevádějí uživatelé spravovaných (převést pouze doména) pro PTA
+- Azure AD Connect průvodce: Tyto změny byly provedeny při použití **změnit přihlášení uživatele** úloh přepnout ze služby AD FS na předávací ověřování:
+    - Agent předávací ověřování je nainstalován na server Azure AD Connect a je povolená funkce předávací ověřování, než nemůžeme převést doménách z federovaných spravovat.
+    - Uživatelé jsou už převést z federovaných spravovat. Pouze doménách se převedou.
 - Azure AD Connect průvodce: AD FS více domény výraz Regex není správný když má uživatele (UPN) se aktualizace Regex speciální znak pro podporu speciální znaky
 - Azure AD Connect průvodce: Odeberte nesprávné zpráva "Konfigurace zdrojové ukotvení atribut", pokud žádná změna 
 - Connect Azure AD: Služby AD FS podpora průvodce Pro scénář duální federace

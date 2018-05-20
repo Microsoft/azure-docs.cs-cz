@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/24/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 66e1d5691b431be0c3d040570b13e8d16b1669ef
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 4fb522e1a5a3c1adeaf5f46b8ccc3b9a852f4a88
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Používání databází MySQL v zásobníku Microsoft Azure
 
@@ -76,9 +76,9 @@ Systémový účet musí mít následující oprávnění:
     | Azure sestavení zásobníku | Instalační program MySQL RP |
     | --- | --- |
     | 1802: 1.0.180302.1 | [MySQL RP verze 1.1.18.0](https://aka.ms/azurestackmysqlrp1802) |
-    | 1712: 1.0.180102.3 nebo 1.0.180106.1 (více uzly) | [MySQL RP version 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
-    | 1711: 1.0.171122.1 | [MySQL RP version 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
-    | 1710: 1.0.171028.1 | [MySQL RP version 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
+    | 1712: 1.0.180102.3 nebo 1.0.180106.1 (více uzly) | [MySQL RP verze 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
+    | 1711: 1.0.171122.1 | [MySQL RP verze 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
+    | 1710: 1.0.171028.1 | [MySQL RP verze 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
 
 4.  Pro sadu SDK Azure se vytvoří certifikát podepsaný svým držitelem v rámci tohoto procesu. Pro více uzly je nutné zadat příslušný certifikát.
 
@@ -162,7 +162,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 parameters
+### <a name="deploymysqlproviderps1-parameters"></a>Parametry DeployMySqlProvider.ps1
 Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechcete, nebo pokud žádné parametr ověření selže, zobrazí se výzva k zadání požadované parametry.
 
 | Název parametru | Popis | Komentář nebo výchozí hodnotu |
@@ -179,6 +179,8 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 | **Režim DebugMode** | Brání automatické čištění při selhání. | Ne |
 | **AcceptLicense** | Přeskočí řádku tak, aby přijímal GPL licence.  (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | |
 
+>[!NOTE]
+> SKU může trvat až jednu hodinu, mají být zobrazeny v portálu. Databázi nelze vytvořit, dokud nebude vytvořen verze SKU.
 
 ## <a name="verify-the-deployment-by-using-the-azure-stack-portal"></a>Ověření nasazení pomocí portálu Azure zásobníku
 
@@ -219,8 +221,7 @@ Název SKU by měla odpovídat vlastnosti tak, aby klienti můžete umístit sv�
 ![Vytvoření databáze MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
->[!NOTE]
-> SKU může trvat až jednu hodinu, mají být zobrazeny v portálu. Databázi nelze vytvořit, dokud nebude vytvořen verze SKU.
+
 
 
 ## <a name="test-your-deployment-by-creating-your-first-mysql-database"></a>Otestujte nasazení tak, že vytvoříte svoji první databázi MySQL
@@ -321,7 +322,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -AcceptLicense
  ```
 
-### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 parameters
+### <a name="updatemysqlproviderps1-parameters"></a>Parametry UpdateMySQLProvider.ps1
 Tyto parametry můžete zadat na příkazovém řádku. Pokud to neuděláte, nebo pokud žádné ověření parametru selže, budete vyzváni k poskytování požadované parametry.
 
 | Název parametru | Popis | Komentář nebo výchozí hodnotu |

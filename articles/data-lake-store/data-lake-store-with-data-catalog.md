@@ -2,23 +2,21 @@
 title: Zaregistrovat v Azure Data Catalog dat z Data Lake Store | Microsoft Docs
 description: Zaregistrovat v Azure Data Catalog dat z Data Lake Store
 services: data-lake-store,data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: e341f6a4b3a6aef0a328aa4f5d8c9ae92dc24137
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ea5d658b8f465b3a527033ef5e9d2126732c7029
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Zaregistrovat v Azure Data Catalog dat z Data Lake Store
 V tomto článku se dozvíte, jak integrovat Azure Data Lake Store s Azure Data Catalog zjistitelnost vaše data v rámci organizace integrací s katalogem Data Catalog. Další informace o vytváření katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Chcete-li pochopit scénáře, ve které můžete použít Data Catalog, přečtěte si téma [běžné scénáře Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).

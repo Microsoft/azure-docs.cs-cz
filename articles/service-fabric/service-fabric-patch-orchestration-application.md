@@ -1,24 +1,24 @@
 ---
 title: Azure Service Fabric oprava orchestration aplikace | Microsoft Docs
-description: "Aplikace pro automatizaci opravy operačního systému na cluster Service Fabric."
+description: Aplikace pro automatizaci opravy operačního systému na cluster Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -144,10 +144,10 @@ Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://go.micr
 
 Chování aplikace orchestration oprava lze nakonfigurovat podle svých potřeb. Přepište výchozí hodnoty předáním v aplikaci parametru během vytváření aplikace nebo aktualizace. Parametry aplikačního lze zadat zadáním `ApplicationParameter` k `Start-ServiceFabricApplicationUpgrade` nebo `New-ServiceFabricApplication` rutiny.
 
-|**Parameter**        |**Typ**                          | **Podrobnosti**|
+|**Parametr**        |**Typ**                          | **Podrobnosti**|
 |:-|-|-|
 |MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků Windows Update, které by měl být mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzlu za měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> -By měly být uložené výsledky pro poslední tři měsíce. |
-|TaskApprovalPolicy   |výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásady, které má být používána službu koordinátora k instalaci aktualizací Windows mezi uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Windows Update je nainstalovaná jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update je nainstalovaná jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří k doméně upgradu pro Windows Update.)
+|TaskApprovalPolicy   |výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje zásady, které má být používána službu koordinátora k instalaci aktualizací Windows mezi uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Windows Update je nainstalovaná jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update je nainstalovaná jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří k doméně upgradu pro Windows Update.)
 |LogsDiskQuotaInMB   |Dlouhé  <br> (Výchozí: 1024)               |Maximální velikost oprava orchestration aplikace přihlásí MB, který můžete nastavit jako trvalý, místně na uzlech.
 | WUQuery               | řetězec<br>(Výchozí: "IsInstalled = 0")                | Dotaz pro získání aktualizace systému Windows. Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 | InstallWindowsOSOnlyUpdates | Logická hodnota <br> (výchozí: True)                 | Tento příznak umožňuje instalaci aktualizací operačního systému Windows.            |

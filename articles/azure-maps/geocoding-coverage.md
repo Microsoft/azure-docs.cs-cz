@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b668ff70d627a63fb34012b07d9b41fc6f6ecb6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7dc7a1dbf024b6d334ec374f78d5e912db3835c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure pokrytí geografické kódování mapy
 
@@ -72,7 +72,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Svatý Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Pierre a Miquelon|                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
-| Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Svatý Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad a Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
@@ -121,10 +121,10 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Severní Mariany                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Pákistán                                            |                 |                |              |      ✓     |          ✓         |
 | Palau |                 |                |              |      ✓     |          ✓         |
-| Papua - Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
+| Papua-Nová Guinea                                    |                 |                |              |      ✓     |          ✓         |
 | Paracel ostrovy                                     |                 |                |              |      ✓     |                    |
 | Filipíny                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Ostrovy Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
+| Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
 | Samoa                                               |                 |                |              |      ✓     |          ✓         |
 | Senkaku ostrovy                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -232,7 +232,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Pobřeží slonoviny                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Demokratická republika Kongo                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Džibutsko                                            |                 |                |       ✓      |      ✓     |          ✓         |
+| Džibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egypt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rovníkové Guinejská, republika                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -262,7 +262,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 | Mauricius                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Mayotte                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Maroko                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Mozambik                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Mosambik                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Myanmar                                             |                 |                |              |      ✓     |          ✓         |
 | Namibie                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Niger                                               |                 |                |       ✓      |      ✓     |          ✓         |
@@ -297,7 +297,7 @@ Při hledání umístění s Azure mapy, službu vyhledávání trvá termíny a
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o určování zeměpisných souřadnic mapy Azure najdete v tématu [vyhledávání](https://docs.microsoft.com/rest/api/azure-maps/search) referenční stránky.
+Další informace o určování zeměpisných souřadnic mapy Azure najdete v tématu [vyhledávání](https://docs.microsoft.com/rest/api/maps/search) referenční stránky.
 
 Další informace o [pokrytí oblasti pro mapy provozu služby](traffic-coverage.md). 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova; mbullwin
-ms.openlocfilehash: c0bbb8b7c2f1e4a7609fde1f8c1487794d3d5897
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 679a5d82fbede4d9c464e137d615fc1367522878
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro rozhraní .NET Konzolová aplikace
 [Application Insights](app-insights-overview.md) umožňuje monitorování vaší webové aplikace pro dostupnosti, výkonu a využití.
@@ -49,7 +49,7 @@ Může inicializace a konfigurace Application Insights z kódu nebo použití `A
 Ve výchozím nastavení, Application Insights SDK hledá `ApplicationInsights.config` souboru v pracovním adresáři při `TelemetryConfiguration` se vytváří
 
 ```csharp
-TelemetryConfiguration config = TelemetryConfiguration.Active; // Read ApplicationInsights.config file if present
+TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
 Můžete také určit cestu k souboru config.
@@ -65,6 +65,7 @@ Další informace najdete v tématu [referenci na konfigurační soubor](app-ins
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
+  <InstrumentationKey>Your Key</InstrumentationKey>
   <TelemetryInitializers>
     <Add Type="Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer, Microsoft.AI.DependencyCollector"/>
   </TelemetryInitializers>
@@ -134,8 +135,10 @@ static void Main(string[] args)
     configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
     var telemetryClient = new TelemetryClient();
-    using (IntitializeDependencyTracking(configuration))
+    using (InitializeDependencyTracking(configuration))
     {
+        // run app...
+        
         telemetryClient.TrackTrace("Hello World!");
 
         using (var httpClient = new HttpClient())
@@ -143,22 +146,25 @@ static void Main(string[] args)
             // Http dependency is automatically tracked!
             httpClient.GetAsync("https://microsoft.com").Wait();
         }
+
     }
 
-    // run app...
-
-    // when application stops or you are done with dependency tracking, do not forget to dispose the module
-    dependencyTrackingModule.Dispose();
-
+    // before exit, flush the remaining data
     telemetryClient.Flush();
+    
+    // flush is not blocking so wait a bit
+    Task.Delay(5000).Wait();
+
 }
 
-static DependencyTrackingTelemetryModule IntitializeDependencyTracking(TelemetryConfiguration configuration)
+static DependencyTrackingTelemetryModule InitializeDependencyTracking(TelemetryConfiguration configuration)
 {
+    var module = new DependencyTrackingTelemetryModule();
+    
     // prevent Correlation Id to be sent to certain endpoints. You may add other domains as needed.
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.windows.net");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.chinacloudapi.cn");
-    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");    
+    module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.cloudapi.de");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("core.usgovcloudapi.net");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("localhost");
     module.ExcludeComponentCorrelationHttpHeadersOnDomains.Add("127.0.0.1");

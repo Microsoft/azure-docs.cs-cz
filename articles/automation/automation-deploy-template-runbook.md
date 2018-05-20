@@ -7,14 +7,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: b6571b87e5753adcd03d7916218ed5a085fb6f82
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 489676736e0a3dcff463fae954f0250d90ba3d0f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Nasazení šablony Azure Resource Manageru v powershellovém runbooku Azure Automation
 
@@ -24,7 +24,7 @@ Díky tomu je možné automatizovat nasazení prostředků Azure. Je možné uch
 
 V tomto tématu, vytvoříme runbook prostředí PowerShell, která používá šablonu Resource Manageru uložená v [Azure Storage](../storage/common/storage-introduction.md) nasadit nový účet úložiště Azure.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -230,7 +230,7 @@ Můžete zjistit, zda byl vytvořen nový účet úložiště tak, že spustíte
 Get-AzureRmStorageAccount
 ```
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 A to je vše! Teď můžete použít šablony Azure Automation a úložiště Azure a Resource Manager k nasazení všech vašich prostředků Azure.
 

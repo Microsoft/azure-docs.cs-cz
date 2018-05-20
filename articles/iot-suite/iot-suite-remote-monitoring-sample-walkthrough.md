@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b0405975d88e69d3ecea6090983bc3c779395d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>Vzdálené monitorování řešení akcelerátoru architektura
 
-Vzdálené monitorování [řešení akcelerátoru](iot-suite-what-are-solution-accelerators.md) implementuje řešení monitorování v začátku do konce pro víc počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](iot-suite-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
+Vzdálené monitorování [řešení akcelerátoru](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) implementuje řešení monitorování v začátku do konce pro víc počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
 
 Tento článek vás provede některými z klíčových prvků řešení vzdáleného monitorování, aby vám pomohl pochopit, jak toto řešení funguje. Díky tomu budete moct:
 
@@ -33,7 +33,7 @@ Tento článek vás provede některými z klíčových prvků řešení vzdálen
 
 ## <a name="logical-architecture"></a>Logická architektura
 
-Následující diagram popisuje logické součásti tohoto vzdáleného monitorování akcelerátoru řešení překrývajícím [architektuře IoT](iot-suite-what-is-azure-iot.md):
+Následující diagram popisuje logické součásti tohoto vzdáleného monitorování akcelerátoru řešení překrývajícím [architektuře IoT](../iot-accelerators/iot-accelerators-what-is-azure-iot.md):
 
 ![Logická architektura](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -143,4 +143,4 @@ Pokud chcete prozkoumat zdrojový kód a vývojáře dokumentaci, začněte s je
 * [Akcelerátor řešení pro vzdálené monitorování s Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
 * [Solution accelerator pro vzdálené monitorování architekturu)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
-Další koncepční informace o vzdálené monitorování akcelerátoru řešení najdete v tématu [přizpůsobit akcelerátoru řešení](iot-suite-remote-monitoring-customize.md).
+Další koncepční informace o vzdálené monitorování akcelerátoru řešení najdete v tématu [přizpůsobit akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).

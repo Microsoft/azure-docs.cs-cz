@@ -1,24 +1,24 @@
 ---
-title: "Vytváření oddílů služby Service Fabric | Microsoft Docs"
-description: "Popisuje, jak při vytváření oddílů stavové služby Service Fabric. Oddíly umožňuje ukládání dat na místní počítače, data a výpočetní je možné rozšířit společně."
+title: Vytváření oddílů služby Service Fabric | Microsoft Docs
+description: Popisuje, jak při vytváření oddílů stavové služby Service Fabric. Oddíly umožňuje ukládání dat na místní počítače, data a výpočetní je možné rozšířit společně.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3b7248c8-ea92-4964-85e7-6f1291b5cc7b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc6f25c7a8a779d949fbd09f9a9a9a37ec83f56a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Spolehlivé služby oddílu Service Fabric
 Tento článek obsahuje úvod do vytváření oddílů spolehlivé služby Azure Service Fabric se základními koncepty. Zdrojový kód používá v článku je také k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -238,7 +238,7 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     }
     ```
    
-    `ProcessInternalRequest`čte hodnoty parametru řetězce dotazu, který se používá k volání oddílu a volání `AddUserAsync` přidat lastname do slovníku spolehlivé `dictionary`.
+    `ProcessInternalRequest` čte hodnoty parametru řetězce dotazu, který se používá k volání oddílu a volání `AddUserAsync` přidat lastname do slovníku spolehlivé `dictionary`.
 10. Umožňuje přidat bezstavové služby na projekt a zjistěte, jak můžete volat na konkrétní oddíl.
     
     Tato služba slouží jako v jednoduchém webovém rozhraní, která přijímá lastname jako parametr řetězce dotazu, Určuje klíč oddílu a odešle ji do služby Alphabet.Processing pro zpracování.
@@ -321,7 +321,7 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
     ```
     
     Pamatujte si, že v tomto příkladu že používáme 26 oddíly s klíčem jeden oddíl na oddíl.
-    V dalším kroku získáme oddílu služby `partition` pro tento klíč pomocí `ResolveAsync` metodu `servicePartitionResolver` objektu. `servicePartitionResolver`je definován jako
+    V dalším kroku získáme oddílu služby `partition` pro tento klíč pomocí `ResolveAsync` metodu `servicePartitionResolver` objektu. `servicePartitionResolver` je definován jako
     
     ```CSharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
@@ -363,7 +363,7 @@ Jako oznámena by měla obsahovat jeden oddíl na písmeno, můžeme použít 0 
 
 Ukázky celý zdrojový kód je k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o konceptech Service Fabric naleznete v následujících tématech:
 
 * [Dostupnost služeb Service Fabric](service-fabric-availability-services.md)

@@ -1,6 +1,6 @@
 ---
 title: ReliableConcurrentQueue v Azure Service Fabric
-description: "ReliableConcurrentQueue je Vysoká propustnost fronty, který umožňuje paralelní enqueues a dequeues."
+description: ReliableConcurrentQueue je Vysoká propustnost fronty, který umožňuje paralelní enqueues a dequeues.
 services: service-fabric
 documentationcenter: .net
 author: sangarg
@@ -9,23 +9,23 @@ editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
-ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e04123f7870921a2979564d0f6c68424d4d7711c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
 Spolehlivé souběžných fronty je frontu asynchronní, transakční a replikované které funkce vysoké souběžnosti pro zařazování a dequeue – operace. Je navržen pro poskytování vysoké prostupnosti a nízké latence podle uvolnit striktní řazení FIFO poskytované [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje best effort řazení.
 
 ## <a name="apis"></a>Rozhraní API
 
-|Souběžné fronty                |Spolehlivé souběžných fronty                                         |
+|Souběžné fronty                |Spolehlivá souběžná fronta                                         |
 |--------------------------------|------------------------------------------------------------------|
 | void Enqueue(T item)           | Úloha EnqueueAsync (ITransaction tx, položka T)                       |
 | BOOL TryDequeue (out výsledek T)  | Úloha < ConditionalValue < T >> TryDequeueAsync (ITransaction tx)  |

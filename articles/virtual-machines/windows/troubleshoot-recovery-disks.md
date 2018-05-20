@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 2201fa48c84aec2c291d8df7e16293a41720ce3e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 408429d0f8697b8b807e386dbcf2eade29938249
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Řešení potíží s virtuální počítač s Windows pomocí disk operačního systému se připojuje k obnovení virtuálního počítače pomocí prostředí Azure PowerShell
 Pokud Windows virtuálního počítače (VM) v prostředí Azure dojde k chybě spouštěcí nebo disk, musíte provést na virtuálním pevném disku, sám sebe pro řešení potíží. Běžným příkladem bude aplikaci, která selhala aktualizace, která brání virtuálního počítače nebudou moct úspěšně spustil. Tento článek podrobné informace o tom, jak pomocí prostředí Azure PowerShell pro připojení k jiným virtuálním Počítačem Windows opravte případné chyby a pak znovu vytvořte původní virtuální počítač virtuální pevný disk.
@@ -31,6 +31,9 @@ Proces řešení potíží je následující:
 3. Připojení k virtuálnímu počítači pro řešení potíží. Úpravy souborů nebo spustit žádné nástroje na opravte problémy v původní virtuální pevný disk.
 4. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
 5. Vytvoření virtuálního počítače pomocí původní virtuální pevný disk.
+
+Pro virtuální počítač, který používá spravovaných disků najdete v tématu [řešení spravovaných virtuálních počítačů disku připojením nového disku s operačním systémem](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
+
 
 Ujistěte se, že máte [nejnovější prostředí Azure PowerShell](/powershell/azure/overview) nainstalován a přihlášení k vašemu předplatnému:
 
@@ -200,6 +203,13 @@ $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
 Set-AzureRmVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enable
 Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Řešení potíží s spravovaných virtuálních počítačů disku připojením nového disku operačního systému
+1. Zastavte dotčených spravované disku Windows virtuální počítač.
+2. [Vytvoření snímku spravovaných disků na](snapshot-copy-managed-disk.md) disku operačního systému virtuálního počítače spravované disku.
+3. [Vytvoření spravovaného disku ze snímku](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+4. [Spravovaný disk připojit jako datový disk virtuálního počítače](attach-disk-ps.md).
+5. [Změňte datový disk od kroku 4 na disk s operačním systémem](os-disk-swap.md).
 
 ## <a name="next-steps"></a>Další postup
 Pokud máte problémy s připojením k virtuálnímu počítači, přečtěte si téma [připojení řešení potíží s RDP na virtuální počítač Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete v tématu [problémů s připojením aplikace na virtuálním počítači Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

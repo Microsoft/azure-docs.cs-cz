@@ -1,18 +1,18 @@
 ---
-title: "Azure schématu události úložiště objektů blob událostí mřížky"
-description: "Popisuje vlastnosti, které jsou k dispozici pro události úložiště objektů blob s Azure událostí mřížky"
+title: Azure schématu události úložiště objektů blob událostí mřížky
+description: Popisuje vlastnosti, které jsou k dispozici pro události úložiště objektů blob s Azure událostí mřížky
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: d0a8a3726ac3c33668d8ad91c97c35937c299b46
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a4d3f5d50df49851437cfd3bcec16ad217220eca
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure schématu události událostí mřížky pro úložiště objektů Blob
 
@@ -90,12 +90,12 @@ Událost má následující dat nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | Téma | řetězec | Úplné prostředků cesta ke zdroji událostí. Toto pole není možné zapisovat. Událost mřížky poskytuje tuto hodnotu. |
 | Předmět | řetězec | Cesta definované vydavatele události předmět. |
-| eventType | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
+| Typ události | řetězec | Jeden z typů událostí registrovaných pro tento zdroj událostí. |
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
-| data | Objekt | Data události úložiště objektů BLOB. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat událostí. Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| data | objekt | Data události úložiště objektů BLOB. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
 
 Datový objekt má následující vlastnosti:
 
@@ -104,13 +104,13 @@ Datový objekt má následující vlastnosti:
 | rozhraní api | řetězec | Operace, která spustí událost. |
 | clientRequestId | řetězec | Hodnota klientem generovaná, neprůhledné se omezena na 1 KB znaků. Pokud jste povolili protokolování analytika úložiště, zaznamenává se v protokolech analýzy. |
 | ID žádosti | řetězec | Jedinečný identifikátor pro požadavek. Použijte pro řešení potíží s žádosti. |
-| eTag | řetězec | Hodnota, která můžete použít k provádění operací podmíněně. |
-| contentType | řetězec | Typ obsahu zadaný pro tento objekt blob. |
-| contentLength | celé číslo | Velikost objektu blob v bajtech. |
-| blobType | řetězec | Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob". |
-| Adresa URL | řetězec | Cesta k objektu blob. |
+| Značka ETag | řetězec | Hodnota, která můžete použít k provádění operací podmíněně. |
+| Typ obsahu | řetězec | Typ obsahu zadaný pro tento objekt blob. |
+| contentLength | integer | Velikost objektu blob v bajtech. |
+| BlobType | řetězec | Typ objektu blob. Platné hodnoty jsou "BlockBlob" nebo "PageBlob". |
+| url | řetězec | Cesta k objektu blob. |
 | aplikace Sequencer | řetězec | Hodnota uživatele řídí, která můžete použít ke sledování požadavků. |
-| storageDiagnostics | Objekt | Informace o diagnostiku storage. |
+| storageDiagnostics | objekt | Informace o diagnostiku storage. |
  
 ## <a name="next-steps"></a>Další postup
 

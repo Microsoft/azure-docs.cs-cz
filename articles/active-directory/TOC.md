@@ -283,6 +283,7 @@
 ### [Přístup hosta pomocí kontrol přístupu](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
 ### [Správa přístupu uživatelů pomocí kontrol](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [Správa programů a ovládacích prvků](active-directory-azure-ad-controls-manage-programs-controls.md)
+### [Načtení výsledků kontroly přístupu](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Zabezpečení identit
 ### [Podmíněný přístup](active-directory-conditional-access-azure-portal.md)
@@ -333,10 +334,10 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
-### [Řešení potíží s chybějící nebo nedostupnou položkou Active Directory](active-directory-troubleshooting.md)
 
 ## Nasazení testování konceptu (POC) Azure AD
 ### [Scénáře PoC: Úvod](active-directory-playbook-intro.md)

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/17/2018
 ms.author: curtand
-ms.reviewer: piotrci
+ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 43f364ed7e8539397fe8662a8c75804883a82e4f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Vytvořit pravidla založená na atributu pro dynamické členství ve skupině v Azure Active Directory
 V Azure Active Directory (Azure AD) můžete vytvořit rozšířených pravidel povolit komplexní založená na atributu dynamické členství skupiny. Tento článek podrobně atributy a syntaxe k vytvoření pravidla dynamické členství pro uživatele nebo zařízení. Pravidlo pro dynamické členství můžete nastavit pro skupiny zabezpečení nebo pro skupiny Office 365.
@@ -77,7 +77,7 @@ V následující tabulce jsou uvedeny všechny operátory pravidlo podporované 
 | Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-ne |
-| Je rovno |-eq |
+| Rovná se |-eq |
 | Není začíná |-notStartsWith |
 | Začíná |-startsWith |
 | Neobsahuje |-notContains |
@@ -157,7 +157,7 @@ Povolené operátory
 | city |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.city - eq "value") |
 | Země |Žádné hodnota typu řetězec nebo *hodnotu null.* |(User.Country. - eq "value") |
 | NázevSpolečnosti | Žádné hodnota typu řetězec nebo *hodnotu null.* | (user.companyName - eq "value") |
-| Oddělení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.department - eq "value") |
+| oddělení |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.department - eq "value") |
 | displayName |Libovolnou hodnotu řetězce |(user.displayName - eq "value") |
 | číslo zaměstnance |Libovolnou hodnotu řetězce |(user.employeeId - eq "value")<br>(user.employeeId - ne *null*) |
 | facsimileTelephoneNumber |Žádné hodnota typu řetězec nebo *hodnotu null.* |(user.facsimileTelephoneNumber - eq "value") |
@@ -278,7 +278,7 @@ Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členst
  DeviceModel | Libovolnou hodnotu řetězce | (device.deviceModel - eq "iPad vzduchem")
  deviceOwnership | Osobní společnosti, neznámý | (device.deviceOwnership - eq "Společnost")
  domainName | Libovolnou hodnotu řetězce | (device.domainName - eq "contoso.com")
- enrollmentProfileName | Název profilu registrace zařízení Apple | (device.enrollmentProfileName - eq "DEP Iphony")
+ enrollmentProfileName | Název profilu registrace zařízení Apple nebo Windows Autopilot profilu | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
  managementType | MDM (pro mobilní zařízení)<br>PC (pro počítače spravované agentem počítačů s Intune) | (device.managementType - eq "MDM")
  OrganizationalUnit | libovolnou hodnotu řetězce odpovídající názvu organizační jednotky ve služby Active Directory místní nastavení | (device.organizationalUnit - eq "Počítačů USA")

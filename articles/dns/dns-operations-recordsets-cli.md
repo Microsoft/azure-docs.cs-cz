@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 05/15/2018
 ms.author: kumud
-ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d7a90cb46c25e4e01b89bbf4da563685e92a7249
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Správa záznamů DNS a sady záznamů v Azure DNS pomocí Azure CLI 2.0
 
@@ -41,7 +41,7 @@ Další informace o záznamech DNS v DNS Azure najdete v tématu [Zóny a zázna
 
 ## <a name="create-a-dns-record"></a>Vytvoření záznamu DNS
 
-Chcete-li vytvořit záznam DNS, použijte `az network dns record-set <record-type> set-record` příkaz (kde `<record-type>` je typ záznamu, jednofaktorovému a, srv, txt, atd.) Nápovědu získáte příkazem `az network dns record-set --help`.
+Chcete-li vytvořit záznam DNS, použijte `az network dns record-set <record-type> add-record` příkaz (kde `<record-type>` je typ záznamu, jednofaktorovému a, srv, txt, atd.) Nápovědu získáte příkazem `az network dns record-set --help`.
 
 Při vytváření záznamu je třeba zadat název skupiny prostředků, název zóny, název sady záznamů a podrobnosti o vytvářeném záznamu. Musí být zadaný název sady záznamů *relativní* název, což znamená, je nutné vyloučit název zóny.
 
@@ -52,13 +52,13 @@ Pokud se vytváří nová sada záznamů, použije se výchozí hodnota TTL (Tim
 Následující příklad vytvoří záznam A s názvem *www* v zóně *contoso.com* ve skupině prostředků *MyResourceGroup*. IP adresa záznamu A je *1.2.3.4*.
 
 ```azurecli
-az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
+az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
 Pokud chcete vytvořit sadu záznamů na vrcholu zóny (v tomto případě „contoso.com“), použijte název záznamu "@" včetně uvozovek:
 
 ```azurecli
-az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
+az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
 ```
 
 ## <a name="create-a-dns-record-set"></a>Vytvoření sady záznamů DNS
@@ -81,13 +81,13 @@ Následující příklad vytvoří záznamů s dvě položky metadat "oddělení
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
 ```
 
-Vytvoření prázdná sada záznamů záznamy lze přidat pomocí `azure network dns record-set <record-type> set-record` jak je popsáno v [vytvořit záznam DNS](#create-a-dns-record).
+Vytvoření prázdná sada záznamů záznamy lze přidat pomocí `azure network dns record-set <record-type> add-record` jak je popsáno v [vytvořit záznam DNS](#create-a-dns-record).
 
 ## <a name="create-records-of-other-types"></a>Vytvořte záznamy jiné typy
 
 S zobrazená v podrobnosti o tom, jak vytvořit záznamy 'A', následující příklady ukazují, jak vytvořit záznam jiné typy záznamů nepodporuje Azure DNS.
 
-Parametry použité k zadání dat záznamu se liší podle typu záznamu. Například pro záznam typu A zadáváte adresu IPv4 pomocí parametru `--ipv4-address <IPv4 address>`. Parametry pro každý typ záznamu může být uvedený pomocí `az network dns record-set <record-type> set-record --help`.
+Parametry použité k zadání dat záznamu se liší podle typu záznamu. Například pro záznam typu A zadáváte adresu IPv4 pomocí parametru `--ipv4-address <IPv4 address>`. Parametry pro každý typ záznamu může být uvedený pomocí `az network dns record-set <record-type> add-record --help`.
 
 V každém případě ukážeme, jak vytvořit jeden záznam. Záznam je přidat do existující sady záznamů, nebo sadu záznamů vytvořena implicitně. Další informace o vytvoření sady záznamů a definování záznam nastavte parametr explicitně najdete v tématu [vytvoření sady záznamů DNS](#create-a-dns-record-set).
 
@@ -96,7 +96,7 @@ Jsme neudělujte příklad se vytvořit sadu záznamů SOA, protože se vytvář
 ### <a name="create-an-aaaa-record"></a>Vytvoření záznamů AAAA
 
 ```azurecli
-az network dns record-set aaaa set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
+az network dns record-set aaaa add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-aaaa --ipv6-address 2607:f8b0:4009:1803::1005
 ```
 
 ### <a name="create-an-caa-record"></a>Vytvoření záznamů KÁ
@@ -121,13 +121,13 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 V tomto příkladu vytvoříme s využitím názvu sady záznamů „@“ záznam MX ve vrcholu zóny (v tomto „contoso.com“).
 
 ```azurecli
-az network dns record-set mx set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
+az network dns record-set mx add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
 ```
 
 ### <a name="create-an-ns-record"></a>Vytvoření záznamů NS
 
 ```azurecli
-az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
+az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-ns --nsdname ns1.contoso.com
 ```
 
 ### <a name="create-a-ptr-record"></a>Vytvořit záznam PTR
@@ -135,7 +135,7 @@ az network dns record-set ns set-record --resource-group myresourcegroup --zone-
 V takovém případě se Moje-arpa-server zone.com' představuje zóny ARPA představující rozsahu IP adres. Každá sada záznamů PTR v této zóně odpovídá IP adrese v rámci tohoto rozsahu IP adres.  Název záznamu "10" je poslední oktet IP adresy v tomto rozsahu IP reprezentována tento záznam.
 
 ```azurecli
-az network dns record-set ptr set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
+az network dns record-set ptr add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
 ```
 
 ### <a name="create-an-srv-record"></a>Vytvoření záznamů SRV
@@ -143,7 +143,7 @@ az network dns record-set ptr set-record --resource-group myresourcegroup --zone
 Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records), zadejte  *\_služby* a  *\_protokol* v názvu sady záznamů. Není nutné zahrnout "@" v názvu sady záznamů při vytváření záznamu SRV nastavit ve vrcholu zóny.
 
 ```azurecli
-az network dns record-set srv set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
+az network dns record-set srv add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
 ```
 
 ### <a name="create-a-txt-record"></a>Vytvořit záznam TXT
@@ -151,7 +151,7 @@ az network dns record-set srv set-record --resource-group myresourcegroup --zone
 Následující příklad ukazuje, jak vytvořit záznam TXT. Další informace o maximální délku řetězce v záznamů TXT podporovány, naleznete v části [záznamů TXT](dns-zones-records.md#txt-records).
 
 ```azurecli
-az network dns record-set txt set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
+az network dns record-set txt add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
 ```
 
 ## <a name="get-a-record-set"></a>Získání sady záznamů
@@ -184,7 +184,7 @@ az network dns record-set a list --resource-group myresourcegroup --zone-name co
 
 ## <a name="add-a-record-to-an-existing-record-set"></a>Přidání záznamu do existující sady záznamů
 
-Můžete použít `az network dns record-set <record-type> set-record` i k vytvoření záznamu v sadě záznamů nové nebo přidání záznamu do existující sady záznamů.
+Můžete použít `az network dns record-set <record-type> add-record` i k vytvoření záznamu v sadě záznamů nové nebo přidání záznamu do existující sady záznamů.
 
 Další informace najdete v tématu [vytvořit záznam DNS](#create-a-dns-record) a [vytvořit záznamy jiné typy](#create-records-of-other-types) výše.
 
@@ -194,7 +194,7 @@ Chcete-li odebrat záznam DNS z existující sady záznamů, použijte `az netwo
 
 Tento příkaz odstraní záznam DNS ze sady záznamů. Pokud se odstraní poslední záznam v sadě záznamů, je taky odstranit samotné sady záznamů. Chcete-li zachovat prázdná místo sady záznamů, použijte `--keep-empty-record-set` možnost.
 
-Je třeba zadat odstranit záznam a zóna je nutné ji odstranit, pomocí stejné parametrů jako při vytváření záznamu pomocí `az network dns record-set <record-type> set-record`. Tyto parametry jsou popsané v [vytvořit záznam DNS](#create-a-dns-record) a [vytvořit záznamy jiné typy](#create-records-of-other-types) výše.
+Je třeba zadat odstranit záznam a zóna je nutné ji odstranit, pomocí stejné parametrů jako při vytváření záznamu pomocí `az network dns record-set <record-type> add-record`. Tyto parametry jsou popsané v [vytvořit záznam DNS](#create-a-dns-record) a [vytvořit záznamy jiné typy](#create-records-of-other-types) výše.
 
 Následující příklad odstraní záznam A s hodnotou '1.2.3.4"ze záznamu nastavení s názvem *www* v zóně *contoso.com*, ve skupině prostředků *MyResourceGroup*.
 
@@ -213,7 +213,7 @@ Pokud chcete upravit existující záznam typu A, AAAA, KÁ, MX, NS, PTR, SRV ne
 Následující příklad ukazuje, jak upravit záznam "A" z IP adresy 1.2.3.4 na IP adresu 5.6.7.8:
 
 ```azurecli
-az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
+az network dns record-set a add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
@@ -254,7 +254,7 @@ Všimněte si, že vztahuje se pouze na vrcholu zóny sady záznamů NS. Jiné s
 Následující příklad ukazuje, jak přidat do sady ve vrcholu zóny záznamů NS k další název serveru:
 
 ```azurecli
-az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
+az network dns record-set ns add-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
 ### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>Chcete-li změnit hodnotu TTL existující sady záznamů

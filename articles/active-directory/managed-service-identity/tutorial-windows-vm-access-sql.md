@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: d7c7566be04107d406b3dba0af85dcc1f8cc5f52
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL
+# <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Kurz: Použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

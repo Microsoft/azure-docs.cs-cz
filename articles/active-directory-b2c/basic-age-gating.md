@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d6804f7e546547d734f966656362111b31078a4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Pomocí stáří prostřednictvím brány v Azure AD B2C
 
@@ -47,25 +47,22 @@ Po adresáře jsou nastaveny na použití stáří prostřednictvím brány, pot
 Jakmile stáří prostřednictvím brány je v uživatelskému toku povolená, uživatele změny.  Na registrace zobrazí se uživatelům dotaz teď pro svoje datum narození a země bydliště společně s atributy uživatele, který je nakonfigurovaný pro tok uživatele.  Na přihlášení uživatelé, kteří nezadali dříve, datum narození a zemi, kde bydlíte vyzváni k tato informace při příštím přihlášení.  Z těchto dvou hodnot, bude Azure AD B2C zjistit, jestli je uživatel dílčím a aktualizovat `ageGroup` v poli hodnota může být `null`, `Undefined`, `Minor`, `Adult`, a `NotAdult`.  `ageGroup` a `consentProvidedForMinor` pole se pak použije k výpočtu `legalAgeGroupClassification`. 
 
 ##<a name="age-gating-options"></a>Stáří, možnosti prostřednictvím brány
-Můžete mít Azure AD B2C do bloku nezletilých bez rodičovský souhlas nebo jim povolit a mít aplikace rozhodnutí v co dělat s nimi.  
+Můžete mít Azure AD B2C bloku nezletilých bez rodičovský souhlas nebo jim povolit a mít aplikace rozhodnutí v co dělat s nimi.  
 
 ###<a name="allowing-minors-without-parental-consent"></a>Povolení nezletilých bez rodičovský souhlas
-Toky uživatele, kteří mají buď podepisování, přihlášení nebo obojí můžete zvolit, aby nezletilých bez souhlasu do vaší aplikace.  Pro nezletilých bez rodičovský souhlas, máte oprávnění k registrace nebo přihlášení k souhrnným datům jako normální a vydá token ID s `legalAgeGroupClassification` deklarací identity.  Pomocí této deklarace identity, můžete zvolit prostředí, které tito uživatelé mají například průchodu přes prostředí shromažďovat rodičovský souhlas (a aktualizovat `consentProvidedForMinor` pole).
+Toky uživatele, které povolit buď přihlašovací nahoru, přihlaste se nebo obojí můžete zvolit, aby nezletilých bez souhlasu do vaší aplikace.  Pro nezletilých bez rodičovský souhlas, se můžou přihlásit nebo zaregistrovat jako normální a Azure AD B2C vydá token ID s `legalAgeGroupClassification` deklarací identity.  Pomocí této deklarace identity, můžete zvolit prostředí, které tito uživatelé mají například průchodu přes prostředí shromažďovat rodičovský souhlas (a aktualizovat `consentProvidedForMinor` pole).
 
 ###<a name="blocking-minors-without-parental-consent"></a>Blokování nezletilých bez rodičovský souhlas
-Toky uživatele, kteří mají buď podepisování, přihlášení nebo obojí můžete blokovat nezletilých bez souhlasu do vaší aplikace.  Existují dvě možnosti pro zpracování blokovaným uživatelům v Azure AD B2C:
+Toky uživatele, které povolit buď přihlašovací nahoru, přihlaste se nebo obojí můžete blokovat nezletilých bez souhlasu z aplikace.  Existují dvě možnosti pro zpracování blokovaným uživatelům v Azure AD B2C:
 * Zpět do aplikace odeslat JSON - tato možnost odešle odpověď zpět do aplikace, že byl zablokován podverzí.
 * Zobrazit chybovou stránku - uživateli se zobrazí stránka s informací, že nemají přístup k aplikaci
 
 ##<a name="known-issues"></a>Známé problémy
-###<a name="customization-unavailable-for-new-pages"></a>Vlastní nastavení pro nové stránky k dispozici
-Existují dvě nové stránky, které může být k dispozici v uživatelskému toku, když povolíte stáří prostřednictvím brány.  Tyto stránek pro shromažďování datum narození a země na přihlášení a chybové stránky, nelze používat s přizpůsobení stránky rozložení a jazyka.  Tato možnost nebude k dispozici v příští aktualizaci.
-
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>Formát pro odpověď při blokování podverzí.
 Odpověď aktuálně není správně vytvořen, tato chyba bude vyřešen v nadcházejících aktualizace.
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Odstranění konkrétní atributy, které byly přidány během instalace můžete nastavit adresáře nemůže použít stáří prostřednictvím brány.
-V instalačním programu pro stáří prostřednictvím brány, jste nakonfigurovali adresáře prostřednictvím možnost ve vaší `Properties`.  Pokud odstraníte buď `legalCountry` nebo `dateOfBirth`, vašeho klienta můžete nadále používat stáří prostřednictvím brány a tyto vlastnosti nemůže být znovu vytvořen.
+V instalačním programu pro stáří prostřednictvím brány, jste nakonfigurovali adresáře prostřednictvím možnost ve vaší `Properties`.  Pokud odstraníte buď `legalCountry` nebo `dateOfBirth` prostřednictvím grafu, adresáře již nelze používat stáří prostřednictvím brány a tyto vlastnosti nemůže být znovu vytvořen.
 
 ###<a name="list-of-countries-is-incomplete"></a>Seznam zemí, je nekompletní
 Aktuálně je neúplný seznam zemí, pro legalCountry, přidáme ostatních zemí v příští aktualizaci.

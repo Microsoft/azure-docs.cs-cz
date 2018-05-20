@@ -7,14 +7,14 @@ ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0716466eab69ef2a2439a533cd51e92307bd056
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: MT
+ms.openlocfilehash: 0ab2631b8a6c9bb2ec8804717d9a3aef4376e2a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledovat změny v prostředí s řešením sledování změn
 
@@ -51,7 +51,7 @@ Použijte následující postup ke konfiguraci souboru sledování počítačů 
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Zadejte cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
+|Zadat cestu     | Cesta ke kontrole souboru. Například: "/etc/*.conf"       |
 |Typ cesty     | Typ položky být sledovaných, možné hodnoty jsou souborů a adresářů.        |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
@@ -73,7 +73,7 @@ Pomocí následujících kroků nakonfigurujte soubory sledování v počítač�
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Zadejte cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
+|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Nakonfigurovat klíče registru Windows ke sledování
 
@@ -88,7 +88,7 @@ Použijte následující postup ke konfiguraci sledování klíče registru na p
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který se mají sledovat.        |
 |Skupina     | Název skupiny pro logicky seskupování soubory.        |
-|Klíč registru Windows   | Cesta ke kontrole souboru. Například: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User prostředí Folders\Common spuštění"      |
+|Klíč registru systému Windows   | Cesta ke kontrole souboru. Například: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User prostředí Folders\Common spuštění"      |
 
 ## <a name="limitations"></a>Omezení
 

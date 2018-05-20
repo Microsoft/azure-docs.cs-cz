@@ -7,13 +7,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9245a0a81958f1044ad5be6f5448e086ba54636
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 3de8711c2e99459ccf5d85dcb12d6ff2d38b700d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-azure-automation-data"></a>Správa dat Azure Automation
 Tento článek obsahuje více témat pro správu prostředí Azure Automation.
@@ -30,8 +30,8 @@ Následující tabulka shrnuje zásady uchovávání informací pro různé zdro
 | Účty |Trvale odebrán 90 dnů po účet je odstraněn uživatelem. |
 | Prostředky |Trvale odebrán 90 dnů po odstranění prostředku uživatelem nebo po 90 dnech od účet, který obsahuje, že je asset odstraní uživatele. |
 | Moduly |Trvale odebrán 90 dnů po odstranění modulu uživatelem nebo 90 dnů po účet, který obsahuje, že je modul odstranit uživatelem. |
-| Sady Runbook |Trvale odebrán 90 dnů po odstranění prostředku uživatelem nebo po 90 dnech od účet, který obsahuje, že je prostředek odstraní uživatele. |
-| Počet úloh |Odstraněné a trvale odebrána po 90 dnech od poslední upravována. To může být po dokončení úlohy, je zastavena nebo je pozastaveno. |
+| Runbooky |Trvale odebrán 90 dnů po odstranění prostředku uživatelem nebo po 90 dnech od účet, který obsahuje, že je prostředek odstraní uživatele. |
+| Úlohy |Odstraněné a trvale odebrána po 90 dnech od poslední upravována. To může být po dokončení úlohy, je zastavena nebo je pozastaveno. |
 | Soubory konfigurace nebo MOF uzlu |Původní konfigurace uzlu, bude trvale odstraněn 90 dnů po vygenerování nové konfigurace uzlu. |
 | Uzlů DSC |Trvale odebrány 90 dnů po zrušení registrace z účtu Automation pomocí portálu Azure uzlu nebo [Unregister-AzureRMAutomationDscNode](https://msdn.microsoft.com/library/mt603500.aspx) rutiny v prostředí Windows PowerShell. Uzly jsou také trvale odstraněny po 90 dnech od účet, který obsahuje, že uzel je odstraní uživatele. |
 | Sestavy uzlu |Trvale odebrány 90 dnů po vygenerování nové sestavy pro tento uzel |
@@ -43,7 +43,7 @@ Ale pokud budete potřebovat zachování dat pro delší časové období, můž
 ## <a name="backing-up-azure-automation"></a>Zálohování Azure Automation
 Pokud odstraníte účet automation v Microsoft Azure, se odstraní všechny objekty v účtu včetně sady runbook, moduly, konfigurace, nastavení, úlohy a prostředky. Objekty nelze obnovit, po odstranění účtu.  Chcete-li zálohovat obsah vašeho účtu automation před odstraněním jej můžete použít následující informace. 
 
-### <a name="runbooks"></a>Sady Runbook
+### <a name="runbooks"></a>Runbooky
 Vaše sady runbook můžete exportovat do skriptu soubory pomocí portálu Azure nebo [Get-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/library/dn690269.aspx) rutiny v prostředí Windows PowerShell.  Tyto soubory skriptu lze importovat do jiného účtu automation, jak je popsáno v [vytvoření nebo import Runbooku](https://msdn.microsoft.com/library/dn643637.aspx).
 
 ### <a name="integration-modules"></a>Integrační moduly
@@ -68,11 +68,11 @@ Následující tabulka uvádí dvojic dostupné primární a sekundární oblast
 
 | Primární | Sekundární |
 | --- | --- |
-| Jihostřední USA |Severostřední USA |
+| Střed USA – jih |Střed USA – sever |
 | USA – východ 2 |Střed USA |
 | Západní Evropa |Severní Evropa |
 | Jihovýchodní Asie |Východní Asie |
-| Východní Japonsko |Západní Japonsko |
+| Japonsko – východ |Japonsko – západ |
 
 V události nepravděpodobné, že dojde ke ztrátě dat primární oblasti Microsoft se pokusí jej obnovit. Pokud primární data nelze obnovit, pak se provádí geo-převzetí služeb při selhání a ovlivněných zákazníci budou informováni o tom prostřednictvím svoje předplatné.
 

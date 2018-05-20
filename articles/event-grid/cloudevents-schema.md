@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 31af59fd7057bef6e427f08cef695688dc2111d1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 23187fbc230e384984085d330bfbfbc90cc9f945
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>Použití schématu CloudEvents s událostí mřížky
 
@@ -65,7 +65,7 @@ CloudEvents v0.1 má k dispozici následující vlastnosti:
 | source             | URI      | "/ mycontext"                     | Popisuje producent událostí                                       | téma #subject
 | ID události            | Řetězec   | "1234-1234-1234"                 | ID události                                                    | id
 | eventTime          | Časové razítko| "2018-04-05T17:31:00Z"           | Časové razítko kdy k události došlo (volitelné)                    | eventTime
-| schemaURL          | URI      | "https://myschema.com"           | Odkaz na schéma odpovídající atribut dat (volitelné) | *nepoužívá se*
+| schemaURL          | URI      | https://myschema.com           | Odkaz na schéma odpovídající atribut dat (volitelné) | *nepoužívá se*
 | Typ obsahu        | Řetězec   | "application/json"               | Popisu formátu dat kódování (volitelné)                       | *nepoužívá se*
 | Rozšíření         | Mapa      | {"extA": "vA", "extB", "vB"}  | Žádné další metadata (volitelné)                                 | *nepoužívá se*
 | data               | Objekt   | {"objA": "vA", "objB", "vB"}  | Datová část události (volitelné)                                       | data

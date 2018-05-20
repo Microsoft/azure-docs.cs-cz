@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3b5e3d7f2cfb9d5f93d03c75cdbfa69a16bdc63d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: cfeef05df63cd08db48d555d7ca6f12969b533cb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="my-first-python-runbook"></a>Můj první runbook Python
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/11/2018
 
 Tento kurz vás provede procesem vytvoření [Python runbook](automation-runbook-types.md#python-runbooks) ve službě Azure Automation. Můžete začít s jednoduchým runbookem, který testování a publikování. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec můžete nastavit sadu runbook robustnější přidáním parametrů.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 

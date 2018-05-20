@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e6bf1962115c4ee9212ae73eb98f664efa3b6a2d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Proveďte pokročilé monitorování pomocí řešení vzdáleného monitorování
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 Chcete-li v tomto kurzu, je třeba nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="choose-the-devices-to-display"></a>Vyberte zařízení k zobrazení
 
@@ -115,7 +115,7 @@ Tento kurz vám ukázal, jak používat **řídicí panel** stránky k filtrová
 
 Teď, když jste se naučili monitorování zařízení, navrhované další kroky jsou další postup:
 
-* [Zjistit problémy při použití pravidla na základě prahové hodnoty](./iot-suite-remote-monitoring-automate.md).
+* [Zjistit problémy při použití pravidla na základě prahové hodnoty](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 * [Správa a konfigurace zařízení](./iot-suite-remote-monitoring-manage.md).
 * [Řešení potíží a opravám problémů zařízení](./iot-suite-remote-monitoring-maintain.md).
 * [Testování řešení s Simulovaná zařízení](iot-suite-remote-monitoring-test.md).

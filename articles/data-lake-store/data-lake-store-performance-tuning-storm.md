@@ -1,8 +1,8 @@
 ---
-title: "Ladění pravidla výkonu Storm Azure Data Lake Store | Microsoft Docs"
-description: "Ladění pravidla výkonu Storm Azure Data Lake Store"
+title: Ladění pravidla výkonu Storm Azure Data Lake Store | Microsoft Docs
+description: Ladění pravidla výkonu Storm Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c872bfe36673af1292b5af9cf40374de39a5c159
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5ebca90ffd679de1c30d1bc324bf4f1c3b9f6f70
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Pokyny pro Storm v HDInsight a Azure Data Lake Store optimalizace výkonu
 
@@ -27,7 +25,7 @@ Pochopení faktory, které je potřeba zvážit při optimalizaci výkonu topolo
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Store**. Pokyny o tom, jak vytvořit najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Store**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md).
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Store. V tématu [vytvoření clusteru HDInsight s Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že povolení vzdálené plochy pro cluster.
 * **Spuštění clusteru Storm v Data Lake Store**. Další informace najdete v tématu [Storm v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
 * **Pokyny v Data Lake Store ladění výkonu**.  Obecný výkon koncepty, najdete v části [Data Lake Store výkonu ladění pokyny](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
@@ -133,10 +131,10 @@ Jestli jste nedosáhli omezení šířky pásma poskytuje Data Lake Store, můž
 
 Pokud chcete zkontrolovat, pokud jste jsou získávání omezené, povolte ladění na straně klienta protokolování:
 
-1. V **Ambari** > **Storm** > **konfigurace** > **Advanced storm-worker-log4j**, změnit  **&lt;kořenový úroveň = "informace"&gt;**  k  **&lt;kořenový úroveň = "ladění"&gt;**. Restartujte všechny uzly nebo služby pro danou konfiguraci vstoupily v platnost.
+1. V **Ambari** > **Storm** > **konfigurace** > **Advanced storm-worker-log4j**, změnit **&lt;kořenový úroveň = "informace"&gt;** k  **&lt;kořenový úroveň = "ladění"&gt;**. Restartujte všechny uzly nebo služby pro danou konfiguraci vstoupily v platnost.
 2. Monitorování topologie Storm přihlásí uzlů pracovního procesu (v části /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;port&gt;/worker.log) pro Data Lake Store omezení výjimky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Optimalizace další výkonu pro Storm může být odkazováno v [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/).
 
 Další příklad ke spuštění, naleznete v části [následujícímu na Githubu](https://github.com/hdinsight/storm-performance-automation).

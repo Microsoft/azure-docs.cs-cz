@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/08/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a6a429b85e0d7522e5840a0ad020d12f4f4d471e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ff58e22f8b9b837ec272cd2cd6193da80a7b718e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook ve službě Azure Automation
 
@@ -35,15 +35,15 @@ Vaše úlohy mají přístup k prostředkům Azure tak, že připojení k předp
 
 Následující tabulka popisuje různé stavy, které jsou u úlohy nastat.
 
-| Stav | Popis |
+| Status | Popis |
 |:--- |:--- |
-| Dokončeno |Úloha byla úspěšně dokončena. |
-| Neúspěch |Pro [pracovní postup prostředí PowerShell a grafický runbook](automation-runbook-types.md), sada runbook se nezdařilo zkompilovat. Pro [skript prostředí PowerShell runbooky](automation-runbook-types.md), sada runbook se nepodařilo spustit nebo při provádění úlohy došlo k výjimce. |
+| Dokončené |Úloha byla úspěšně dokončena. |
+| Selhalo |Pro [pracovní postup prostředí PowerShell a grafický runbook](automation-runbook-types.md), sada runbook se nezdařilo zkompilovat. Pro [skript prostředí PowerShell runbooky](automation-runbook-types.md), sada runbook se nepodařilo spustit nebo při provádění úlohy došlo k výjimce. |
 | Chyba, čekání na prostředky |Úloha se nezdařila, protože bylo dosaženo [úloha dostatečný podíl](#fair-share) omezit třikrát a spustit z stejné kontrolního bodu nebo od začátku runbooku pokaždé, když. |
 | Ve frontě |Úloha čeká prostředky pracovního procesu automatizace připojí k dispozici, tak, aby jeho spuštění. |
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a v systému probíhá její spouštění. |
 | Obnovení |V systému probíhá obnovování úlohy po bylo pozastaveno. |
-| Běží |Úloha je spuštěna. |
+| Spuštěno |Úloha je spuštěna. |
 | Spuštění, čekání na prostředky |Úlohy byl odpojen, protože bylo dosaženo [úloha dostatečný podíl](#fair-share) limit. Obnoví krátce od svého posledního kontrolního bodu. |
 | Zastaveno |Úloha byla zastavena uživatelem před dokončením. |
 | Zastavování |V systému Probíhá zastavování úlohy. |

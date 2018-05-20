@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: kgremban
-ms.openlocfilehash: ed0bde0945a36c4fa194059f3b17557d566047a2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: bf6202b002aaf6d89a30c7c653fdcee00cb50290
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorování stavu služby Azure IoT Hub a rychle diagnostikovat problémy
 
@@ -34,7 +34,7 @@ Kromě integraci s těmito dvěma službami, služba IoT Hub zajišťuje také v
 
 Monitorování Azure poskytuje úrovni prostředků diagnostické informace, což znamená, že můžete monitorovat operace, které v rámci služby IoT hub. 
 
-Nahrazuje nastavení diagnostiky Azure monitorování monitorování činnosti IoT Hub. Pokud jste aktuálně uživatelské operace sledování, měli byste migrovat vaše pracovní postupy. Další informace najdete v tématu [migrací z operace nastavení sledování diagnostiku][lnk-migrate].
+Nahrazuje nastavení diagnostiky Azure monitorování monitorování činnosti IoT Hub. Pokud aktuálně používáte operace sledování, je potřeba migrovat vaše pracovní postupy. Další informace najdete v tématu [migrací z operace nastavení sledování diagnostiku][lnk-migrate].
 
 Další informace o konkrétní metriky a události, které sleduje monitorování Azure najdete v tématu [podporované metriky s Azure monitorování] [ lnk-AM-metrics] a [podporované kategorií, schémat a služby pro Azure. Diagnostické protokoly][lnk-AM-schemas].
 

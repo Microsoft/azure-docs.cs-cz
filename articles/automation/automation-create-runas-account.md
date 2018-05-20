@@ -7,13 +7,13 @@ ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 03a5cf6fd049e63616155a87bf112636b74be0a1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: fd53ee7634769381f18e359762fa72dbba435a00
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizace ověřování účtu Automation o účty Spustit jako 
 Existující účet Automation můžete aktualizovat z webu Azure Portal nebo pomocí PowerShellu, pokud jste postupovali takto:
@@ -35,7 +35,7 @@ Tento proces vytvoří ve vašem účtu Automation následující položky.
 * V příslušném účtu Automation vytvoří prostředek certifikátu Automation s názvem *AzureClassicRunAsCertificate*. Prostředek certifikátu obsahuje privátní klíč certifikátu, který používá certifikát pro správu.
 * V příslušném účtu Automation vytvoří prostředek připojení Automation s názvem *AzureClassicRunAsConnection*. Prostředek propojení obsahuje název a ID předplatného a název prostředku certifikátu.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pokud se rozhodnete [k vytvoření účtu Spustit jako použít PowerShell](#create-run-as-account-using-powershell), tento postup vyžaduje:
 
 * Windows 10 a Windows Server 2016 s nainstalovanými moduly Azure Resource Manageru verze 3.4.1 nebo novější. Skript PowerShellu nepodporuje dřívější verze Windows.

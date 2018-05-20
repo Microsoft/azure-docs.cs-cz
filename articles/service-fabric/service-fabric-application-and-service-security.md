@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: a84e42d3a0254c90bfad2d54eda1aa8e5e35650a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fa6d46186ad833b68e60c24f742d210b7845759a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-and-service-security"></a>Aplikace Service Fabric a zabezpečení služby
 Můžete zahrnout architektura mikroslužeb [spoustu výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb, je však výzvy a jiné než pro správu zabezpečení tradiční monolitický aplikace. 
@@ -95,7 +95,7 @@ Můžete vytvořit zabezpečeného spojení mezi reverzní proxy server a služb
 Rozhraní spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které můžete použít k vylepšení zabezpečení. Zjistěte, jak zlepšit zabezpečení, pokud používáte vzdálenou komunikaci služby (v [C#](service-fabric-reliable-services-secure-communication.md) nebo [Java](service-fabric-reliable-services-secure-communication-java.md)) nebo pomocí [WCF](service-fabric-reliable-services-secure-communication-wcf.md).
 
 ## <a name="encrypt-application-data-at-rest"></a>Šifrování dat aplikací
-Každý [typ uzlu](service-fabric-cluster-nodetypes.md) Cluster Service Fabric běžící v Azure je zálohovaný díky [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pomocí šablony Azure Resource Manager, můžete k sady škálování, který vytváří cluster Service Fabric připojit datových disků.  Pokud vaše služby uložit data do diskem připojená data, můžete [šifrování těchto dat disků](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) chránit data aplikací.
+Každý [typ uzlu](service-fabric-cluster-nodetypes.md) Cluster Service Fabric běžící v Azure je zálohovaný díky [škálovací sadu virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pomocí šablony Azure Resource Manageru můžete připojit datové disky ke škálovacím sadám, ze kterých se skládá cluster Service Fabric.  Pokud vaše služby uložit data do diskem připojená data, můžete [šifrování těchto dat disků](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) chránit data aplikací.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

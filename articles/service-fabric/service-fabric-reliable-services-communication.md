@@ -1,6 +1,6 @@
 ---
-title: "Spolehlivé služby communication – přehled | Microsoft Docs"
-description: "Přehled modelu komunikace spolehlivé služby, včetně otevírání moduly pro naslouchání na službách, vyřešte koncových bodů a komunikaci mezi službami."
+title: Spolehlivé služby communication – přehled | Microsoft Docs
+description: Přehled modelu komunikace spolehlivé služby, včetně otevírání moduly pro naslouchání na službách, vyřešte koncových bodů a komunikaci mezi službami.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,16 +9,16 @@ editor: BharatNarasimman
 ms.assetid: 36217988-420e-409d-b0a4-e0e875b6eac8
 ms.service: service-fabric
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: eacb4b7d0e33768e0da6ecd43ce1458a4a3bfaa8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 62c81368b8a3129b42262cb99cf23a5021744c1b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API komunikaci spolehlivé služby
 Azure Service Fabric jako platformu je zcela lhostejné o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné, z UDP do HTTP. Je to na vývojáře služby zvolit komunikace služby. Rozhraní spolehlivé služby poskytuje zásobníky předdefinované komunikaci, jakož i rozhraní API, které můžete použít k vytvoření vlastních komunikační součásti.
@@ -429,7 +429,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Jádro ASP.NET se službami Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Volání vzdálených procedur s vzdálenou komunikaci spolehlivé služby](service-fabric-reliable-services-communication-remoting.md)
 * [Komunikace WCF pomocí spolehlivé služby](service-fabric-reliable-services-communication-wcf.md)

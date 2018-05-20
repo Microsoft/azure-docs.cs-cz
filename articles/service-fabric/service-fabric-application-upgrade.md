@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 60bbd75496b6e835a76edb4251aac6ea249187b3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fca05a1b21e1cefd4146f754d7dedda0d7ff2ac0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
 Aplikace Azure Service Fabric je kolekce služeb. Během upgradu, porovná Service Fabric nové [manifest aplikace](service-fabric-application-and-service-manifests.md) v předchozí verzi a určuje, které služby v uzlu aktualizace vyžadovat aplikace. Service Fabric porovnává verze čísla ve službě manifesty s čísla verze v předchozí verzi. Je-li služba se nezměnila, není aktualizován dané služby.

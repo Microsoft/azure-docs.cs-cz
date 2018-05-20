@@ -1,23 +1,23 @@
 ---
 title: Azure elementu SizeSelector uživatelského rozhraní | Microsoft Docs
 description: Popisuje element Microsoft.Compute.SizeSelector uživatelského rozhraní pro portál Azure.
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: a38a5461e96d741b3a0d556990418e022afdb305
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d1b4974c78a5cdb7b4eb885797319b283be2d393
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Element Microsoft.Compute.SizeSelector uživatelského rozhraní
 Ovládací prvek pro výběr velikost pro jeden nebo více instancí virtuálního počítače.

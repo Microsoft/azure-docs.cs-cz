@@ -1,24 +1,24 @@
 ---
 title: Azure Service Fabric oprava orchestration aplikace pro linux | Microsoft Docs
-description: "Aplikace pro automatizaci opravy operačního systému na cluster Linux Service Fabric."
+description: Aplikace pro automatizaci opravy operačního systému na cluster Linux Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/22/2018
 ms.author: nachandr
-ms.openlocfilehash: dac8068705e284b04d84d128eb1ce62c459d44ff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Linux v clusteru Service Fabric
 
@@ -124,10 +124,10 @@ Stažení aplikace z [stáhnout odkaz](https://go.microsoft.com/fwlink/?linkid=8
 
 Chování aplikace orchestration oprava lze nakonfigurovat podle svých potřeb. Přepište výchozí hodnoty předáním v aplikaci parametru během vytváření aplikace nebo aktualizace. Parametry aplikačního lze zadat zadáním `ApplicationParameter` k `Start-ServiceFabricApplicationUpgrade` nebo `New-ServiceFabricApplication` rutiny.
 
-|**Parameter**        |**Typ**                          | **Podrobnosti**|
+|**Parametr**        |**Typ**                          | **Podrobnosti**|
 |:-|-|-|
 |MaxResultsToCache    |Dlouhé                              | Maximální počet výsledků aktualizace, které by měl být mezipaměti. <br>Výchozí hodnota je 3000 za předpokladu, že: <br> -Počet uzlů je 20. <br> -Počet aktualizací děje na uzlu za měsíc je pět. <br> -Počet výsledků na operace může být 10. <br> -By měly být uložené výsledky pro poslední tři měsíce. |
-|TaskApprovalPolicy   |výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy označuje zásady, které má být používána službu koordinátora pro instalaci aktualizace pro uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace jsou nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace jsou nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří k doméně upgradu pro aktualizaci.)
+|TaskApprovalPolicy   |výčet <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy označuje zásady, které má být používána službu koordinátora pro instalaci aktualizace pro uzly clusteru Service Fabric.<br>                         Povolené hodnoty jsou: <br>                                                           <b>NodeWise</b>. Aktualizace jsou nainstalované jednoho uzlu současně. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizace jsou nainstalované jednu upgradovací doménu najednou. (Na maximum, můžete přejít všechny uzly, které patří k doméně upgradu pro aktualizaci.)
 | UpdateOperationTimeOutInMinutes | Int <br>(Výchozí: 180)                   | Určuje časový limit pro žádnou operaci aktualizace (stáhnout nebo nainstalovat). Pokud operaci nelze dokončit v rámci zadaného časového limitu, byl přerušen.       |
 | RescheduleCount      | Int <br> (Výchozí: 5).                  | Maximální počet časy službu přeplánuje operačního systému aktualizovat v případě, že operace selže trvalé.          |
 | RescheduleTimeInMinutes  | Int <br>(Výchozí: 30). | Interval, ve kterém služba přeplánuje operačního systému aktualizovat v případě, že chyba přetrvává. |

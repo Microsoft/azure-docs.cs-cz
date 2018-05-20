@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 49b343fca94e853a29807521f4213a5a85725f52
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 0c3662984c63195d8fc903c66b27aa253ce419cb
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Živý datový proud metriky: Diagnostikujte s latencí 1 sekundu & monitorovat 
 
@@ -116,7 +116,7 @@ Vlastní kritéria filtry, které zadáte jsou odesílány zpět za provozu metr
 
 ### <a name="add-api-key-to-configuration"></a>Přidat klíč rozhraní API do konfigurace
 
-# <a name="net-standardtabnet-standard"></a>[.NET Standard](#tab/.net-standard)
+### <a name="classic-aspnet"></a>Classic ASP.NET
 
 V souboru applicationinsights.config soubor přidejte AuthenticationApiKey QuickPulseTelemetryModule:
 ``` XML
@@ -133,7 +133,8 @@ Nebo v kódu, nastavte ji na QuickPulseTelemetryModule:
     module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
 
 ```
-# <a name="net-core-tabnet-core"></a>[.NET core] (# karta/.net jader)
+
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (vyžaduje Application Insights ASP.NET Core SDK 2.3.0-beta nebo vyšší)
 
 Úprava souboru startup.cs následujícím způsobem:
 
@@ -141,26 +142,14 @@ Nejprve přidat
 
 ``` C#
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
 ```
 
-Potom v části Konfigurace metodu přidejte:
+Potom v rámci metody ConfigureServices přidejte:
 
 ``` C#
-  QuickPulseTelemetryModule dep;
-            var modules = app.ApplicationServices.GetServices<ITelemetryModule>();
-            foreach (var module in modules)
-            {
-                if (module is QuickPulseTelemetryModule)
-                {
-                    dep = module as QuickPulseTelemetryModule;
-                    dep.AuthenticationApiKey = "YOUR-API-KEY-HERE";
-                    dep.Initialize(TelemetryConfiguration.Active);
-                }
-            }
+services.ConfigureTelemetryModule<QuickPulseTelemetryModule>( module => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
----
 
 Pokud znáte a důvěřujete všechny propojené servery, můžete zkusit vlastní filtry bez ověřené kanál. Tato možnost je k dispozici po dobu šesti měsíců. Toto přepsání je požadovaná jednou každou novou relaci, nebo při přechodu do režimu online na nový server.
 

@@ -1,23 +1,23 @@
 ---
 title: Azure elementu část uživatelského rozhraní | Microsoft Docs
 description: Popisuje element Microsoft.Common.Section uživatelského rozhraní pro portál Azure.
-services: azure-resource-manager
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46ea2e3d404ac3ec9b7f909257451991dbb55f53
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e6d7d5d7b205d275c72e96df527a354b072a9dd3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Element Microsoft.Common.Section uživatelského rozhraní
 Ovládací prvek, který seskupuje jeden či více elementů pod nadpisem.

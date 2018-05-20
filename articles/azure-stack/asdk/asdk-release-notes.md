@@ -3,7 +3,7 @@ title: Poznámky k verzi Microsoft Azure zásobníku Development Kit | Microsoft
 description: Vylepšení, opravy a známé problémy pro Azure zásobníku Development Kit.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: brenduns
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -11,19 +11,127 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
-ms.author: jeffgilb
+ms.date: 05/16/2018
+ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 3335fdd3a1bb20c378bf36307d742491de0e46ad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 2aa6663ae598b32979411fd10e7bb8a2eacd21de
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Poznámky k verzi Azure zásobníku Development Kit
 Tyto poznámky k verzi obsahují informace o vylepšení, opravy a známých problémů v Azure zásobníku Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Vždy aktuální s co je nového v ASDK se přihlásíte k odběru [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanálu](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+
+## <a name="build-201805131"></a>Sestavení 20180513.1
+
+### <a name="new-features"></a>Nové funkce 
+Toto sestavení obsahuje následující vylepšení a opravy pro Azure zásobníku.  
+
+- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available:
+  - *Výchozí zprostředkovatel odběru*. Používejte toto předplatné pro jenom základní infrastruktury. Nenasazujte prostředky nebo poskytovatelů prostředků v tomto předplatném.
+  - *Měření předplatné*. Použijte toto předplatné pro nasazení zprostředkovatele prostředků. Prostředky, které jsou nasazené na toto předplatné není účtován.
+  - *Spotřeba předplatné*. Používejte toto předplatné pro jiné úlohy, které chcete nasadit. Zde nasazené prostředky budou účtovat normální využití ceny.
+
+
+### <a name="fixed-issues"></a>Opravené problémy
+- <!-- IS, ASDK -->  In the admin portal, you no longer have to refresh the Update tile before it displays information. 
+
+- <!-- 2050709 - IS, ASDK -->  You can now use the admin portal to edit storage metrics for Blob service, Table service, and Queue service.
+
+- <!-- IS, ASDK --> Under **Networking**, when you click **Connection** to set up a VPN connection, **Site-to-site (IPsec)** is now the only available option. 
+
+- **Různé opravy** pro výkon, stabilitu, zabezpečení a operační systém, který je používán Azure zásobníku
+
+<!-- ### Changes  --> 
+### <a name="additional-releases-timed-with-this-update"></a>Další verze vypršel časový limit s touto aktualizací  
+Toto jsou nyní k dispozici, ale nevyžadují zásobník Azure aktualizace 1804.
+- **Aktualizace do sady sledování nástroje Microsoft Azure zásobníku System Center Operations Manager**. Nová verze (1.0.3.0) Microsoft System Center Operations Manager monitorování Pack pro zásobník Azure je k dispozici pro [Stáhnout](https://www.microsoft.com/download/details.aspx?id=55184). S touto verzí můžete použít objekty služby při přidání připojené nasazení Azure zásobníku. Tato verze taky funkce prostředí správy aktualizací, které umožňuje provádět akci nápravy přímo z prostředí nástroje Operations Manager. Existují také nové řídicí panely, které zobrazují poskytovatelů prostředků, jednotek škálování a škálování jednotky uzly.
+
+- **Nový Azure zásobníku verze prostředí PowerShell správce 1.2.12**.  Azure PowerShell zásobníku 1.2.12 je nyní k dispozici pro instalaci. Tato verze obsahuje příkazy pro všechny poskytovatele správce prostředků ke správě Azure zásobníku.  V této verzi se obsah přestanou z Githubu nástroje zásobník Azure [úložiště](https://github.com/Azure/AzureStack-Tools). 
+
+   Podrobné informace o instalaci, postupujte podle [pokyny](.\.\azure-stack-powershell-install.md) nebo [pomoci](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.2.12) obsahu pro modul zásobník Azure 1.2.12. 
+
+- **Počáteční verze referenční dokumentace Azure zásobníku rozhraní API Rest**. Referenční dokumentace rozhraní API pro všechny poskytovatele prostředků zásobníku správce Azure je nyní publikována.
+
+### <a name="known-issues"></a>Známé problémy
+ 
+#### <a name="portal"></a>Portál
+- <!-- TBD - IS ASDK --> The ability [to open a new support request from the dropdown](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
+    - Pro Azure zásobníku Development Kit použít https://aka.ms/azurestackforum.    
+
+- <!-- 2403291 - IS ASDK --> You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can’t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+  ![Popis cesty](media/asdk-release-notes/breadcrumb.png)
+
+- <!-- TBD -  IS ASDK --> Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete user subscriptions.
+
+- <!-- TBD -  IS ASDK --> You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use PowerShell to verify permissions.
+
+-   <!-- TBD -  IS ASDK --> In the admin portal, you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
+    - *Chyba: šablonu pro FaultType ResourceProviderTimeout nebyl nalezen.*
+
+    Tuto výstrahu můžete ignorovat. 
+
+#### <a name="compute"></a>Compute
+- <!-- TBD -  IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+
+- <!-- TBD -  IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+
+- <!-- TBD -  IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
+
+  Jako alternativní řešení, vytvořte novou bitovou kopii virtuálního počítače s fiktivní virtuální pevný disk vytvořený pomocí technologie Hyper-V (nový virtuální pevný disk-C:\dummy.vhd cesta-Fixed – SizeBytes 1 GB). Tento proces by měla potíže vyřešit, která zabraňuje odstranění položky se nezdařilo. Potom 15 minut po vytvoření fiktivní bitovou kopii, chcete-li úspěšně odstranit.
+
+  Potom můžete zkusit redownload image virtuálního počítače, který předtím selhal.
+
+- <!-- TBD -  IS ASDK --> If provisioning an extension on a VM deployment takes too long, users should let the provisioning time-out instead of trying to stop the process to deallocate or delete the VM.  
+
+- <!-- 1662991 - IS ASDK --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. 
+
+#### <a name="networking"></a>Sítě
+- <!-- 1766332 - IS, ASDK --> Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
+
+- <!-- 2388980 -  IS ASDK --> After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
+
+  V současné době používejte pouze nové veřejné IP adresy pro nové virtuální počítače, které vytvoříte.
+
+  K tomuto chování dochází i v případě, že je přiřadit IP adresu na nový virtuální počítač (obvykle označuje jako *prohození*). Všechny budoucí pokusy o připojení přes tuto IP adresu povede připojení do původně přidružený virtuální počítač a ne do nového.
+
+- <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased. 
+
+  Chcete-li tento problém obejít, použijte plán rozšíření zvýšit kvótu sítě, pokud je již přidružena k odběru plánu. Další informace najdete v tématu Jak [zpřístupnit plán rozšíření](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
+
+- <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription. 
+
+
+- <!-- 1902460 -  IS ASDK --> Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
+
+- <!-- 16309153 -  IS ASDK --> On a Virtual Network that was created with a DNS Server setting of *Automatic*, changing to a custom DNS Server fails. The updated settings are not pushed to VMs in that Vnet.
+ 
+- <!-- TBD -  IS ASDK --> Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
+
+
+#### <a name="sql-and-mysql"></a>SQL a MySQL 
+- <!-- TBD - ASDK --> The database hosting servers must be dedicated for use by the resource provider and user workloads. You cannot use an instance that is being used by any other consumer, including App Services.
+
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers. 
+
+#### <a name="app-service"></a>App Service
+- <!-- TBD -  IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+
+- <!-- TBD -  IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+ 
+#### <a name="usage"></a>Využití  
+- <!-- TBD -  IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
+
+<!-- #### Identity -->
+
+
+
+
+
 
 ## <a name="build-201803291"></a>Sestavení 20180329.1
 
@@ -44,8 +152,6 @@ Nové funkce a opravy vydané pro Azure zásobníku integrované systémy verzi 
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
 
-- Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků, **přesunout** tlačítko k dispozici. Toto chování je očekávané. Přesun prostředků nebo skupiny prostředků mezi skupinami prostředků nebo předplatného není aktuálně podporován.
- 
 - Zobrazí **je vyžadována aktivace** upozornění s výzvou k registraci vaší Azure zásobníku Development Kit. Toto chování je očekávané.
 
 - Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
@@ -104,6 +210,8 @@ Nové funkce a opravy vydané pro Azure zásobníku integrované systémy verzi 
 
 - Databázi hostitelské servery musí být vyhrazená pro použití prostředků zprostředkovatele a uživatelského úlohami. Nelze použít instanci, která se používá jakékoli další příjemce, včetně aplikační služby.
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** or **Tier** names when you create a SKU for the SQL and MySQL resource providers.
+
 #### <a name="app-service"></a>App Service
 - Uživatelé musí registrovat poskytovatele prostředků úložiště, dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
 
@@ -145,8 +253,6 @@ Najdete v článku [nové funkce a opravy](.\.\azure-stack-update-1802.md#new-fe
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.  
 
-- Když máte zobrazeny vlastnosti prostředku nebo skupinu prostředků, **přesunout** tlačítko k dispozici. Toto chování je očekávané. Přesun prostředků nebo skupiny prostředků mezi skupinami prostředků nebo předplatného není aktuálně podporován.
- 
 - Zobrazí **je vyžadována aktivace** upozornění s výzvou k registraci vaší Azure zásobníku Development Kit. Toto chování je očekávané.
 
 - Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
@@ -217,6 +323,8 @@ Na portálu správy Azure zásobníku může zobrazit kritickou výstrahu s náz
 
 - Databázi hostitelské servery musí být vyhrazená pro použití prostředků zprostředkovatele a uživatelského úlohami. Nelze použít instanci, která se používá jakékoli další příjemce, včetně aplikační služby.
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+
 #### <a name="app-service"></a>App Service
 - Uživatelé musí registrovat poskytovatele prostředků úložiště, dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
 
@@ -235,77 +343,4 @@ Na portálu správy Azure zásobníku může zobrazit kritickou výstrahu s náz
   K této chybě dochází z důvodu poslední zastaralá podpora Githubu Tlsv1 a Tlsv1.1 kryptografických standardů (výchozí nastavení pro prostředí PowerShell). Další informace najdete v tématu [slabé kryptografické standardy odebrání oznámení](https://githubengineering.com/crypto-removal-notice/).
 
   Chcete-li vyřešit tento problém, přidejte `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` do horní části skript, který chcete vynutit konzole PowerShell pro stahování z úložiště Githubu TLSv1.2.
-
-
-
-
-## <a name="build-201801032"></a>Sestavení 20180103.2
-
-### <a name="new-features-and-fixes"></a>Nové funkce a opravy
-
-- Najdete v článku [nové funkce a opravy](.\.\azure-stack-update-1712.md#new-features-and-fixes) části k vydání verze update 1712 zásobník Azure pro Azure zásobníku integrované systémy.
-
-    > [!IMPORTANT]
-    > Některé z uvedených v položek **nové funkce a opravy** části se vztahují pouze k Azure zásobníku integrované systémy.
-
-### <a name="known-issues"></a>Známé problémy
- 
-#### <a name="deployment"></a>Nasazení
-- Čas serveru podle IP adresy musí zadat během nasazování.
-
-#### <a name="infrastructure-management"></a>Správu infrastruktury
-- Nepovolujte infrastruktura zálohování na **infrastruktura zálohování** okno.
-- Baseboard management controller, (BMC) IP adresu a model se nezobrazí v uzlu jednotky škálování základní informace. Toto chování se očekává v Azure zásobníku Development Kit.
-
-#### <a name="portal"></a>Portál
-- Může se zobrazit prázdný řídicí panel portálu. Chcete-li obnovit řídicí panel, vyberte ikonu ozubené kolečko v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
-- Když máte zobrazeny vlastnosti skupiny prostředků, **přesunout** tlačítko k dispozici. Toto chování je očekávané. Přesunutí skupin prostředků mezi předplatnými není aktuálně podporován.
--  Pro jakýkoli pracovní postup, kde v rozevíracím seznamu vyberte předplatné, skupinu prostředků nebo umístění může zaznamenat jeden nebo více z následujících důvodů:
-
-   - Může se zobrazit prázdný řádek v horní části seznamu. By měl mít pořád povolený výběr položky podle očekávání.
-   - Pokud je seznam položek v rozevíracím seznamu krátký, asi nebudete moci zobrazit některé názvy položek.
-   - Pokud máte více předplatných uživatele, rozevíracího seznamu skupiny prostředků může být prázdná. 
-
-   Obejít poslední dva problémy, můžete zadat název předplatné nebo skupinu prostředků (pokud ho znáte), nebo můžete místo toho použít PowerShell.
-
-- Zobrazí se **je vyžadována aktivace** upozornění s výzvou k registraci vaší Azure zásobníku Development Kit. Toto chování je očekávané.
-- Pokud **součást** po kliknutí na odkaz z libovolného **Role infrastruktury** výstrahy, výsledná **přehled** okno se pokusí načíst a selže. Kromě toho ** přehled ** okno nemá vypršení časového limitu.
-- Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
-- Nemůžete se moci zobrazit oprávnění k předplatnému pomocí portálů zásobník Azure. Jako alternativní řešení můžete ověřit oprávnění pomocí prostředí PowerShell.
-- **Stav služby** okno nepodaří načíst. Když otevřete okno Stav služby je správce nebo uživatel portálu Azure zásobníku zobrazí chybu a nenačte informace. Toto je očekávané chování. I když můžete vybrat a otevřete stav služby, tato funkce ještě není k dispozici, ale bude implementované v budoucí verzi systému Azure zásobníku.
-#### <a name="marketplace"></a>Marketplace
-- Některé položky marketplace jsou odebírána v této verzi z důvodu kompatibility. Toto bude znovu povolit po další ověření.
-- Uživatelé mohou procházet na kompletní nabídku marketplace bez předplatného a uvidí položky pro správu jako plány a nabízí. Tyto položky jsou pro uživatele funkční.
- 
-#### <a name="compute"></a>Compute
-- Uživatelé mají možnost vytvoření virtuálního počítače pomocí geograficky redundantní úložiště. Tato konfigurace způsobuje, že vytvoření virtuálního počítače k selhání. 
-- Můžete nakonfigurovat dostupnost virtuálního počítače nastavit pouze u domény selhání jednoho a doméně aktualizace jednoho.
-- Neexistuje žádné zkušenosti marketplace pro vytvoření sady škálování virtuálního počítače. Můžete vytvořit škálování nastavit pomocí šablony.
-- Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
-
-#### <a name="networking"></a>Sítě
-- Nástroj pro vyrovnávání zatížení s veřejnou IP adresu nelze vytvořit pomocí portálu. Jako alternativní řešení můžete použít PowerShell k vytvoření nástroje pro vyrovnávání zatížení.
-- Když vytvoříte Vyrovnávání zatížení sítě, musíte vytvořit pravidlo překladu adres sítě. Pokud to neuděláte, obdržíte chybu při pokusu přidat pravidlo NAT po vytvoření nástroje pro vyrovnávání zatížení.
-- V části **sítě**, pokud kliknete na tlačítko **připojení** nastavit připojení k síti VPN **VNet-to-VNet** je uveden jako typ možné připojení. Nevybírejte tuto možnost. V současné době pouze **Site-to-site (IPsec)** možnost je podporována.
-- Veřejnou IP adresu z virtuálního počítače (VM) nelze zrušit přidružení, po virtuálního počítače byla vytvořena a související s touto adresou IP. Zrušení přidružení se zobrazí postup, ale pořád přidruženy původní virtuální počítač dříve přiřazenou veřejnou IP adresu. K tomuto chování dochází i v případě, že je přiřadit IP adresu na nový virtuální počítač (obvykle označuje jako *prohození*). Všechny budoucí pokusy o připojení přes tuto IP adresu povede připojení do původně přidružený virtuální počítač a ne do nového. V současné době je nutné pouze použít nové veřejné IP adresy pro vytvoření nového virtuálního počítače.
-- Operátory Azure zásobníku může nelze nasadit, odstraňovat, upravovat virtuální sítě nebo skupiny zabezpečení sítě. Tento problém je primárně zobrazit na následné aktualizace pokusy stejného balíčku. To je způsobeno problémem balení s aktualizaci, která je aktuálně šetření.
-- Interní Vyrovnávání zatížení (ILB) nesprávně zpracovává adresy MAC pro virtuální počítače back-end, které vyřadit pakety na back endovou síť při použití instance systému Linux.
- 
-#### <a name="sqlmysql"></a>SQL/MySQL 
-- To může trvat až jednu hodinu, než klienti databáze můžete vytvářet v nové SQL nebo MySQL SKU. 
-- Vytvoření položky přímo na SQL a MySQL hostitelské servery, které nejsou prováděné poskytovatelem prostředků není podporována a může mít za následek neodpovídající stavu.
-
-#### <a name="app-service"></a>App Service
-- Uživatel musí zaregistrovat zprostředkovatele prostředku úložiště dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
- 
-#### <a name="usage"></a>Využití  
-- Využití veřejné IP adresy využití měření data zobrazují stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítka, který ukazuje vytvoření záznamu. Tato data v současné době nelze použít pro monitorování přesné veřejnou IP adresu využití.
-
-#### <a name="identity"></a>Identita
-
-V Azure Active Directory Federation Services (ADFS) nasazené prostředí, **azurestack\azurestackadmin** účet už není vlastníkem předplatného výchozí zprostředkovatel. Místo protokolování do **portál pro správu nebo koncový bod adminmanagement** s **azurestack\azurestackadmin**, můžete použít **azurestack\cloudadmin** účet, takže která spravujete a používáte výchozí zprostředkovatel odběru.
-
-> [!IMPORTANT]
-> I v **azurestack\cloudadmin** účet je vlastníkem předplatného poskytovatele výchozí v prostředí služby AD FS nasadit, nemá oprávnění pro připojení RDP na hostiteli. Nadále používat **azurestack\azurestackadmin** účet nebo účet místního správce pro přihlášení, přístup a spravovat hostitele, podle potřeby.
-
 

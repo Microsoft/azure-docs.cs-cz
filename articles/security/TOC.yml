@@ -143,24 +143,14 @@
       href: ./blueprints/financial-services-regulated-workloads.md
     - name: GDPR
       items:
-        - name: Správa osobních údajů
-          href: manage-personal-data-azure.md
-        - name: 'Zjišťování, identifikace a klasifikace osobních údajů'
-          href: how-to-discover-classify-personal-data-azure.md
-        - name: Ochrana osobních údajů v Azure
-          href: protect-personal-data-azure.md
-        - name: Ochrana osobních údajů pomocí služby Security Center
-          href: protect-personal-data-azure-security-center.md
-        - name: Ochrana osobních údajů pomocí služby Application Gateway
-          href: protect-personal-data-network-security.md
-        - name: Ochrana osobních údajů s využitím identit a řízení přístupu
-          href: protect-personal-data-identity-access-controls.md
-        - name: Ochrana neaktivních uložených osobních údajů pomocí šifrování
-          href: protect-personal-data-at-rest.md
-        - name: Ochrana osobních údajů při přenosu pomocí šifrování
-          href: protect-personal-data-in-transit-encryption.md
-        - name: Ochrana osobních údajů pomocí nástrojů pro vytváření sestav Azure
-          href: protection-personal-data-azure-reporting-tools.md
+        - name: Analýzy dat
+          href: ./blueprints/gdpr-analytics-overview.md
+        - name: Datový sklad
+          href: ./blueprints/gdpr-datawarehouse-overview.md
+        - name: Webová aplikace IaaS
+          href: ./blueprints/gdpr-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/gdpr-paaswa-overview.md
     - name: FedRAMP
       items:
         - name: Analýzy dat

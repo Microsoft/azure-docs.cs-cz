@@ -3,17 +3,17 @@ title: Kurz Azure Container Service – Škálování aplikace
 description: Kurz Azure Container Service – Škálování aplikace
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: ea64f9c52dc89dc8eb75a39afbb087a5127505f1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f643c09f00b23cd14e85e83ed0cf7ab7a13c7646
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Škálování podů a infrastruktury Kubernetes
 

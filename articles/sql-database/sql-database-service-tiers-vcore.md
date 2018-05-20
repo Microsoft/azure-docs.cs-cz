@@ -6,14 +6,14 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 1424ae2d9ffe7308fe85b7eb8ed6b0062d59ce31
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9abe7743906064d182453fea403ff94a097c3558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="vcore-based-purchasing-model-for-azure-sql-database-preview"></a>na základě vCore nákupní model pro Azure SQL Database (preview)
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 05/11/2018
 |**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
 |Na základě DTU modelu|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
-|na základě vCore modelu|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
+|na základě vCore modelu|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu - až 80 vCores, 4 TB úložiště dat a 200000 IOPS. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
 ||||  
 
 ![cenový model](./media/sql-database-service-tiers/pricing-model.png)
@@ -48,7 +48,7 @@ Základě vCore nákupu modelu (preview) Zákazníci mzdy pro:
 \*\* Verzi Preview jsou zdarma zálohy a IOs 7 dnů
 
 > [!IMPORTANT]
-> Výpočetní, IOs, data a budou se účtovat úložiště protokolů pro databáze nebo elastického fondu. Úložiště zálohy je účtován na každou databázi. Podrobnosti instance spravované poplatky najdete [Azure SQL Database spravované Instance](sql-database-managed-instance.md).
+> Výpočetní, IOs, data a budou se účtovat úložiště protokolů pro databáze nebo elastického fondu. Úložiště zálohy je účtován na každou databázi. Podrobnosti o spravovaných Instance poplatky, najdete v části [Azure SQL Database spravované Instance](sql-database-managed-instance.md).
 
 > [!IMPORTANT]
 > Oblast omezení: 
@@ -64,14 +64,14 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 
 ||**Obecné účely**|**Kritické obchodní**|
 |---|---|---|
-|Nejlepší pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
-|Vypočítat|1 až 16 vCore|1 až 16 vCore|
-|Paměť|7 GB za jádra |7 GB za jádra |
-|Úložiště|Vzdálené úložiště Premium, 5 GB – 4 TB|Místní úložiště SSD, 5 GB – 1 TB|
-|Propustnost vstupně-výstupní operace (přibližnou)|500 IOPS na vCore s 7500 maximální IOPS|5000 IOPS za jádra|
+|Nejvhodnější pro|Většinu úloh firmy. Nabízí rozpočet orientované vyrovnáváním a škálovatelné možnosti výpočetního prostředí a úložiště.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
+|Compute|1 až 80 vCore, generování 4 a 5 generování |1 až 80 vCore, generování 4 a 5 generování|
+|Memory (Paměť)|7 GB za jádra |7 GB za jádra |
+|Úložiště|Vzdálené úložiště Premium, 5 GB – 4 TB|Místní úložiště SSD, 5 GB – 4 TB|
+|Propustnost vstupně-výstupní operace (přibližnou)|500 IOPS na vCore s 7000 maximální IOPS|5000 IOPS na základní s 200000 maximální IOPS|
 |Dostupnost|1 repliky, bez škálování pro čtení|repliky 3, 1 [čtení škálování](sql-database-read-scale-out.md), zónu redundantní HA|
-|Zálohy|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení) *|
-|V paměti|Není k dispozici|Podporováno|
+|Zálohování|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení)|RA-GRS, 7-35 dní (7 dní ve výchozím nastavení) *|
+|V paměti|neuvedeno|Podporováno|
 |||
 
 \* Během preview doba uchovávání záloh není Konfigurovatelný a je nastaven na 7 dní.
@@ -123,14 +123,14 @@ Následující tabulka obsahuje pokyny pro migraci konkrétních scénářů:
 
 |Aktuální úroveň služby|Cílové úrovně služby|Typ migrace|Akce uživatele|
 |---|---|---|---|
-|Úroveň Standard|Pro obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
-|Premium|Obchodně klíčové|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
-|Úroveň Standard|Obchodně klíčové|Upgradovat|Musíte migrovat sekundární nejprve|
-|Obchodně klíčové|Úroveň Standard|Downgradovat|Musíte migrovat nejprve primární|
-|Premium|Pro obecné účely|Downgradovat|Musíte migrovat nejprve primární|
-|Pro obecné účely|Premium|Upgradovat|Musíte migrovat sekundární nejprve|
-|Obchodně klíčové|Pro obecné účely|Downgradovat|Musíte migrovat nejprve primární|
-|Pro obecné účely|Obchodně klíčové|Upgradovat|Musíte migrovat sekundární nejprve|
+|Standard|Obecné účely|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Premium|Pro důležité obchodní informace|Laterální|Můžete migrovat v libovolném pořadí, ale potřeba zajistit odpovídající vCore nastavení velikosti *|
+|Standard|Pro důležité obchodní informace|Upgrade|Musíte migrovat sekundární nejprve|
+|Pro důležité obchodní informace|Standard|Downgradovat|Musíte migrovat nejprve primární|
+|Premium|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Obecné účely|Premium|Upgrade|Musíte migrovat sekundární nejprve|
+|Pro důležité obchodní informace|Obecné účely|Downgradovat|Musíte migrovat nejprve primární|
+|Obecné účely|Pro důležité obchodní informace|Upgrade|Musíte migrovat sekundární nejprve|
 ||||
 
 \* Každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore a každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore

@@ -1,24 +1,24 @@
 ---
-title: "Správce prostředků clusteru Service Fabric - spřažení | Microsoft Docs"
-description: "Přehled konfigurace spřažení pro služby Service Fabric"
+title: Správce prostředků clusteru Service Fabric - spřažení | Microsoft Docs
+description: Přehled konfigurace spřažení pro služby Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8122f1644da25a9a2ab05291dafc33c77a91147f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57abea79a620aa83e16ad4cc2fd78a4294f2b278
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurace a použití spřažení služby v Service Fabric
 Spřažení je ovládací prvek, který je k dispozici především ke zjednodušení přechodu větší monolitický aplikací do cloudu a mikroslužeb world. Používá se také jako optimalizace pro zlepšení výkonu služeb, i když tak může mít vedlejší účinky.
@@ -77,7 +77,7 @@ Další fakt, který ještě dnes Poznámka o spřažení relace je, že jsou sm
 ### <a name="partitioning-support"></a>Vytváření oddílů podpory
 Poslední věcí Všimněte o spřažení je tento spřažení relace nejsou podporované, kde je nadřazená rozdělena na oddíly. Nakonec může podporovány oddílů nadřazené služby, ale ještě dnes není povoleno.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
 - Omezení služby pro malou skupinu počítačů nebo agregování zatížení služeb, použijte [skupin aplikací](service-fabric-cluster-resource-manager-application-groups.md)
 

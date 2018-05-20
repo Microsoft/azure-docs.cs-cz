@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptů akce skriptu pro clustery se systémem HDInsight Windows
 Zjistěte, jak k psaní skriptů akce skriptu pro HDInsight. Informace o použití akce skriptu skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejný článek napsán pro clustery HDInsight se systémem Linux, najdete v části [vyvíjet akce skriptu skripty pro HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -103,7 +103,7 @@ HDInsight nabízí několik skriptů k instalaci dalších součástí v cluster
 | Název | Skript |
 | --- | --- |
 | **Nainstalujte Spark** |https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1. V tématu [instalací a použitím clustery Spark v HDInsight][hdinsight-install-spark]. |
-| **Nainstalujte jazyk R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. V tématu [instalací a použitím R v clusterech HDInsight][hdinsight-r-scripts]. |
+| **Nainstalujte jazyk R** |https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1. V tématu [instalací a použitím R v clusterech HDInsight] [hdinsight skripty r]. |
 | **Nainstalujte Solr** |https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Solr](hdinsight-hadoop-solr-install.md). |
 | - **Nainstalujte Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. V tématu [instalace a použití clusterů v HDInsight Giraph](hdinsight-hadoop-giraph-install.md). |
 
@@ -300,14 +300,12 @@ V případě, že dojde k chybě provádění, výstup popisující je také sou
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přizpůsobení clusterů HDInsight pomocí akce skriptu][hdinsight-cluster-customize]
 * [Nainstalovat a používat Spark v HDInsight clustery][hdinsight-install-spark]
-* [Nainstalovat a používat R na clustery HDInsight][hdinsight-r-scripts]
 * [Nainstalovat a používat Solr v clusterech HDInsight](hdinsight-hadoop-solr-install.md).
 * [Nainstalovat a používat Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
 [powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->

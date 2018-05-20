@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 01a49ec47b406b7b916ecad5ef9ccc3af295fac1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 996bd4b3497861a3bfcbfecebe18a6936f487028
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v mřížce událostí Azure
 
@@ -24,7 +24,7 @@ Tento článek obsahuje odkazy na obsah pro každou obslužnou rutinu události.
 
 Zpracování událostí pomocí automatizované runbooků pomocí Azure Automation.
 
-|Nadpis  |Popis  |
+|Titul  |Popis  |
 |---------|---------|
 |[Integrovat událostí mřížky a týmy pro Microsoft Azure Automation.](ensure-tags-exists-on-new-virtual-machines.md) |Vytvoření virtuálního počítače, který odesílá události. Událost se aktivuje runbook služby automatizace, který značky virtuální počítač a aktivuje zprávu, která je odeslána do kanálu Teams společnosti Microsoft. |
 
@@ -32,7 +32,7 @@ Zpracování událostí pomocí automatizované runbooků pomocí Azure Automati
 
 Pomocí Azure Functions pro bez serveru reakci na události.
 
-|Nadpis  |Popis  |
+|Titul  |Popis  |
 |---------|---------|
 | [Aktivační událost mřížky pro Azure Functions](../azure-functions/functions-bindings-event-grid.md) | Přehled používání aktivační událost mřížky ve funkcích. |
 | [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](resize-images-on-storage-blob-upload-event.md) | Uživatelé odesílat obrázky prostřednictvím webové aplikace k účtu úložiště. Při vytváření objektu blob storage, odešle událost mřížky událost funkce aplikace, která se změní velikost image nahrané. |
@@ -43,7 +43,7 @@ Pomocí Azure Functions pro bez serveru reakci na události.
 
 Hybridní připojení předávání přes Azure použijte k odesílání událostí do aplikace, které jsou v podnikové síti a nemáte veřejně přístupném koncovém bodu.
 
-|Nadpis  |Popis  |
+|Titul  |Popis  |
 |---------|---------|
 | [Odesílání událostí hybridní připojení.](custom-event-to-hybrid-connection.md) | Odešle vlastní události pro stávající hybridní připojení pro zpracování naslouchací proces aplikace. |
 
@@ -51,7 +51,7 @@ Hybridní připojení předávání přes Azure použijte k odesílání událos
 
 Použití aplikace logiky k automatizaci obchodních procesů pro reagování na události.
 
-|Nadpis  |Popis  |
+|Titul  |Popis  |
 |---------|---------|
 | [Monitorování změn virtuálního počítače pomocí služeb Azure Event Grid a Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Aplikace logiky sleduje změny k virtuálnímu počítači a odešle e-mailů o těchto změnách. |
 | [Odesílání e-mailová oznámení o událostech Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky odešle e-mailové oznámení pokaždé, když přidání zařízení do služby IoT hub. |
@@ -61,7 +61,7 @@ Použití aplikace logiky k automatizaci obchodních procesů pro reagování na
 
 Používání úložiště Queue přijímat události, které musí být vyžádány.
 
-|Nadpis  |Popis  |
+|Titul  |Popis  |
 |---------|---------|
 | [Vlastní události trasy Azure Queue Storage pomocí rozhraní příkazového řádku Azure a událostí mřížky](custom-event-to-queue-storage.md) | Popisuje, jak odeslat vlastní události Queue Storage. |
 
@@ -69,7 +69,7 @@ Používání úložiště Queue přijímat události, které musí být vyžád
 
 Pomocí webhooků pro přizpůsobitelné koncové body, které reakce na události.
 
-|Nadpis  |Popis  |
+|Titul  |Popis  |
 |---------|---------|
 | [Přijímat události pro koncový bod HTTP](receive-events.md) | Popisuje, jak k ověření koncového bodu protokolu HTTP přijímat události z události předplatného a přijímat a deserializovat události. |
 

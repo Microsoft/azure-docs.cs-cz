@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: de422950-2d22-4ddb-ac47-dd663a946a7e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/24/2017
 ms.author: aljo
-ms.openlocfilehash: 1255574e6aae930b0e349ec8f36cc66ac2b7e49f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 55840dc4b9f25c7e2676cff936390a0542eb239d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Odstranění clusteru Service Fabric na Azure a prostředky, které používá
 Cluster Service Fabric se skládá z mnoha dalším prostředkům služby Azure kromě prostředek clusteru sám sebe. Proto je ke kompletnímu odstranění clusteru Service Fabric potřeba odstranit taky prostředky, které ho tvoří.

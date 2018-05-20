@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 4d88004f37b40fa92e617545e1a94656744a7db0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 89d0f11ccfb9a359ca3e43bc1a370e0fb7514574
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 

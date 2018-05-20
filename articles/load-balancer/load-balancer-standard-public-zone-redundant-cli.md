@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 29dcfaad840b5498dd859082ce11655a4f1fe8af
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e469311609909e3453015702fca7d015a4e72398
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Nástroj pro vyrovnávání zatížení virtuálních počítačů mezi všechny zóny dostupnosti pomocí rozhraní příkazového řádku Azure
 
@@ -61,13 +61,13 @@ az network public-ip create \
 ```
 
 ## <a name="create-azure-load-balancer-standard"></a>Vytvořit Standard pro vyrovnávání zatížení Azure
-Tato část popisuje, o tom, jak můžete vytvořit a konfigurovat následující součásti nástroje pro vyrovnávání zatížení:
-- fond IP front-endu, která přijímá příchozí síťový provoz na nástroje pro vyrovnávání zatížení.
-- fond back-end IP kde fondu front-endu odešle zatížení skupinu s vyrovnáváním zatížení sítě.
-- Test stavu, který určuje stav instancí virtuálních počítačů v back-end.
-- pravidlo Vyrovnávání zatížení, která definuje, jak se provoz rozděluje k virtuálním počítačům.
+Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
+- Front-endový fond IP adres, který přijímá příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
+- Back-endový fond IP adres, kam front-endový fond odesílá síťový provoz s vyrovnáváním zatížení.
+- Sonda stavu, která určuje stav back-endových instancí virtuálních počítačů.
+- Pravidlo nástroje pro vyrovnávání zatížení, které definuje způsob distribuce provozu do virtuálních počítačů.
 
-### <a name="create-the-load-balancer"></a>Vytvořit nástroj pro vyrovnávání zatížení
+### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 Vytvořit nástroj pro vyrovnávání zatížení standardní s [az sítě lb vytvořit](/cli/azure/network/lb#az_network_lb_create). Následující příklad vytvoří nástroj pro vyrovnávání zatížení s názvem *myLoadBalancer* a přiřadí *myPublicIP* ke konfiguraci front-end IP adresy.
 
 ```azurecli-interactive
@@ -94,7 +94,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>Vytvořit pravidlo Vyrovnávání zatížení pro port 80
-Pravidlo Vyrovnávání zatížení definuje front-endové konfiguraci protokolu IP pro příchozí provoz a fond back-end IP příjem provozu, společně s požadovaný zdrojový a cílový port. Vytvořit pravidlo služby load balancer *myLoadBalancerRuleWeb* s [vytvořit pravidlo vyrovnáváním zatížení sítě az](/cli/azure/network/lb/rule#az_network_lb_rule_create) pro naslouchání na portu 80 ve fondu front-endu *myFrontEndPool* a odesílání Vyrovnávání zatížení sítě síťový provoz do fondu adres back-end *myBackEndPool* také používá port 80.
+Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) vytvořte pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endovém fondu *myFrontEndPool* a odesílání síťového provozu s vyrovnáváním zatížení do back-endového fondu adres *myBackEndPool* rovněž na portu 80.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -110,7 +110,7 @@ az network lb rule create \
 ```
 
 ## <a name="configure-virtual-network"></a>Konfigurace virtuální sítě
-Před nasazením některé virtuální počítače a nástroj pro vyrovnávání zatížení můžete otestovat, vytvořte doprovodné materiály virtuální sítě.
+Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, vytvořte podpůrné prostředky virtuální sítě.
 
 ### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -166,12 +166,12 @@ for i in `seq 1 3`; do
         --lb-address-pools myBackEndPool
 done
 ```
-## <a name="create-backend-servers"></a>Vytvoření back-end serverů
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 V tomto příkladu můžete vytvořit tři virtuální počítače umístěné v zónu 1, 2 zóny a zónu 3 má být použit jako back-end serverů nástroje pro vyrovnávání zatížení. Můžete taky nainstalovat NGINX virtuálních počítačů k ověření, že nástroj pro vyrovnávání zatížení byl úspěšně vytvořen.
 
 ### <a name="create-cloud-init-config"></a>Vytvoření konfigurace cloud-init
 
-Konfigurační soubor init cloudu můžete použít k instalaci NGINX a spuštění aplikace Node.js "Zdravím svět" na virtuální počítač s Linuxem. V aktuálním prostředí vytvořte soubor s názvem init.txt cloudu a zkopírujte a vložte následující konfigurace do prostředí. Je zkopírovat celý soubor cloudu init správně, obzvláště první řádek:
+K instalaci serveru NGINX a spuštění aplikace Hello World v Node.js na virtuálním počítači s Linuxem můžete použít konfigurační soubor cloud-init. V aktuálním prostředí vytvořte soubor cloud-init.txt a zkopírujte následující konfiguraci a vložte ji do prostředí. Ujistěte se, že správně kopírujete celý soubor cloud-init, zejména první řádek:
 
 ```yaml
 #cloud-config
@@ -218,19 +218,21 @@ runcmd:
 ### <a name="create-the-zonal-virtual-machines"></a>Vytvoření oblastmi virtuálních počítačů
 Vytvoření virtuálních počítačů s [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) v zóně 1, 2 zóně a zóny 3. Následující příklad vytvoří virtuální počítač v každé zóně a generuje klíče SSH, pokud už neexistují:
 
-Vytvořit virtuální počítače v zóně 1
+Vytvoření virtuálního počítače v každé zóně (zóny 1, zone2 a zóny 3) *westeurope* umístění.
 
 ```azurecli-interactive
- az vm create \
---resource-group myResourceGroupSLB \
---name myVM$i \
---nics myNic$i \
---image UbuntuLTS \
---generate-ssh-keys \
---zone $i \
---custom-data cloud-init.txt
+for i in `seq 1 3`; do
+  az vm create \
+    --resource-group myResourceGroupSLB \
+    --name myVM$i \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --zone $i \
+    --custom-data cloud-init.txt
+done
 ```
-## <a name="test-the-load-balancer"></a>Testovací nástroje pro vyrovnávání zatížení
+## <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
 Získat veřejnou IP adresu pomocí služby Vyrovnávání zatížení [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). 
 
@@ -248,7 +250,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Nezapomeňte,
 Informace o vyrovnávání zatížení napříč virtuálními počítači ve všech tří dostupnosti zónách používající vaši aplikaci distribuci přenosů, můžete zastavení virtuálního počítače v konkrétní zóně a aktualizujte webový prohlížeč.
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [nástroj pro vyrovnávání zatížení](./load-balancer-standard-overview.md)
+- Další informace o [Load Balanceru úrovně Standard](./load-balancer-standard-overview.md)
 
 
 

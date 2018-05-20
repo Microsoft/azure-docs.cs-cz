@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2ddb72f267fc46d7980007d41c5d512f50eaf47e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 055b2cdadf48c31635183b73f214f2215477c9d7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 

@@ -12,17 +12,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/15/2018
+ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: def590fa8253d81f3477c3953db684c160e25cd9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 783dc0fd37f98a12d9240ad4b3ee72aa98212eff
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>Ukázka CLI: Vytvoření účtu Azure Media Services
 
-Tento skript vytvoří účet služby Azure Media Services.
+Skript Azure CLI v tomto tématu znázorňuje, jak vytvořit účet služby Azure Media Services.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -30,14 +30,14 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="example-script"></a>Ukázkový skript
 
-[!code-azurecli-interactive[main](../../../../cli_scripts/media-services/media-services-create-account/media-services-create-account.sh "Create Account")]
+[!code-azurecli-interactive[main](../../../../cli_scripts/media-services/media-services-create-account/Create-Account.sh "Create Account")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name amsResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
@@ -48,9 +48,10 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Vytvoří účet úložiště. |
-| **az ams account create** | Vytvoří účet služby Media Services. |
-| **az ams account sp create** | Vytvoří instanční objekt s heslem a nakonfiguruje jeho přístup k účtu služby Azure Media Services. |
+| [az ams account create](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest#az-ams-account-create) | Vytvoří účet služby Media Services. |
+| [az ams account sp create](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-create) | Vytvoří instanční objekt s heslem a nakonfiguruje jeho přístup k účtu služby Azure Media Services. 
 | [az group delete](/cli/azure/group#az_group_delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
+
 
 ## <a name="next-steps"></a>Další kroky
 

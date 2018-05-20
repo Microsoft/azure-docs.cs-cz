@@ -1,9 +1,9 @@
 ---
-title: "Přihlášení vyskytne s Azure AD Identity Protection | Microsoft Docs"
-description: "Poskytuje přehled činnost koncového uživatele při Identity Protection má omezeny nebo opraven uživatele nebo když služby Multi-Factor authentication je potřeba zásady."
+title: Přihlášení vyskytne s Azure AD Identity Protection | Microsoft Docs
+description: Poskytuje přehled činnost koncového uživatele při Identity Protection má omezeny nebo opraven uživatele nebo když služby Multi-Factor authentication je potřeba zásady.
 services: active-directory
-keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
-documentationcenter: 
+keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 558d1e04e352d5f33201bb15cb7a2dd1c18f524f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Možnosti přihlášení s Azure AD Identity Protection
 S Azure Active Directory Identity Protection můžete:
@@ -49,10 +49,7 @@ Toto téma poskytuje přehled možností přihlašování uživatele pro všechn
 ## <a name="multi-factor-authentication-registration"></a>Registrace služby Multi-Factor authentication
 Nejlepších výsledků v obou případech tok obnovení ohrožení bezpečnosti účtu a rizikové tok přihlášení, je, když uživatel může samoobslužné obnovení. Pokud jsou uživatelé zaregistrovaní pro službu Multi-Factor authentication, už mají telefonní číslo přidružené k účtu, který slouží k předávání výzvy zabezpečení. Žádné pomoc HelpDesk nebo správce zapojení je potřebný k obnovení před ohrožením účet. Proto se důrazně doporučujeme pro vaši uživatelé zaregistrovat u služby Multi-Factor authentication. 
 
-Správci můžou:
-
-* Nastavte zásady, které vyžaduje, aby uživatelé nastavit své účty pro další ověření zabezpečení. 
-* Povolit přeskočení registrace služby Multi-Factor authentication po dobu 30 dnů, v případě, že chtějí umožnit uživateli a období odkladu před registrací.
+Správce může nastavit zásady, které vyžaduje, aby uživatelé nastavit své účty pro další ověření zabezpečení. Tato zásada umožňuje uživatelům přeskočit službu Multi-Factor authentication registrace po dobu 14 dnů. Období odkladu 14 dnů se nedá konfigurovat.
 
 **Registrace služby Multi-Factor authentication má tři kroky:**
 

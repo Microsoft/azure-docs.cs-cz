@@ -1,24 +1,24 @@
 ---
-title: "Spuštění a zastavení uzlů clusteru k testování Azure mikroslužeb | Microsoft Docs"
-description: "Další informace o použití pravděpodobnost vkládání k testování aplikace Service Fabric pomocí spuštění a zastavení uzly clusteru."
+title: Spuštění a zastavení uzlů clusteru k testování Azure mikroslužeb | Microsoft Docs
+description: Další informace o použití pravděpodobnost vkládání k testování aplikace Service Fabric pomocí spuštění a zastavení uzly clusteru.
 services: service-fabric
 documentationcenter: .net
 author: LMWF
 manager: rsinha
-editor: 
+editor: ''
 ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 850fbc0c74811ec942292da64064dec867cd1b9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ed18097fa18101c237b4408d26dd1bc9c5d5648
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Nahrazení uzel spuštění a zastavení uzlu rozhraní API s rozhraním API pro přechod uzlu
 

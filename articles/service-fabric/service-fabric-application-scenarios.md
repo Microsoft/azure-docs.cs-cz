@@ -1,24 +1,24 @@
 ---
-title: "Scénáře aplikací a návrh | Microsoft Docs"
-description: "Přehled kategorií cloudové aplikace v Service Fabric. Popisuje návrh aplikace, které používá stavová a Bezstavová services."
+title: Scénáře aplikací a návrh | Microsoft Docs
+description: Přehled kategorií cloudové aplikace v Service Fabric. Popisuje návrh aplikace, které používá stavová a Bezstavová services.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 471ec6f45f4152fbac56242ef3ce906f8af00b54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0a9b24704a91d6a6893937b4ee03765fb05f092
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-scenarios"></a>Scénáře aplikací Service Fabric
 Azure Service Fabric nabízí spolehlivé a flexibilní platformu, která umožňuje zápis a spustit mnoho typů obchodních aplikací a služeb. Tyto aplikace a mikroslužeb může být bezstavové nebo stavová a jsou vyrovnávání prostředků mezi virtuální počítače chcete maximalizovat efektivitu. Jedinečná architektura Service Fabric umožňuje provádět poblíž analýza dat v reálném čase, výpočtů v paměti, paralelní transakce a událostí zpracování ve svých aplikacích. Je možné snadno škálovat aplikace nahoru nebo dolů (skutečně příchozí nebo odchozí), v závislosti na měnící požadavky na prostředky.
@@ -50,7 +50,7 @@ Stavová mikroslužeb zjednodušit návrhů aplikace, protože odebrat potřebu 
 ![Aplikace pomocí bezstavové služby][Image2]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Naslouchání na [Zákaznické případové studie](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=qDJnf86yC_5206218965
 )

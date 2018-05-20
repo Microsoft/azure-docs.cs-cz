@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 05/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 326d6873ae78c5f712832c4cfce9c793f1dfbf37
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e0c0c3f51b455983dbe3f937917ed090e51d0005
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Pomocí propojená a vnořené šablony při nasazování prostředků Azure
 
@@ -148,7 +148,7 @@ Následující příklad ukazuje, jak použít základní adresu URL k vytvořen
 }
 ```
 
-Můžete také použít [deployment()](resource-group-template-functions-deployment.md#deployment) získat základní adresu URL pro aktuální šablony a použít k získání adresy URL pro další šablony ve stejném umístění. Tento přístup je užitečný, pokud se změní vaši polohu šablony (možná z důvodu Správa verzí) nebo chcete vyhnout pevného kódování adresy URL v souboru šablony.
+Můžete také použít [deployment()](resource-group-template-functions-deployment.md#deployment) získat základní adresu URL pro aktuální šablony a použít k získání adresy URL pro další šablony ve stejném umístění. Tento přístup je užitečný, pokud se změní vaši polohu šablony (možná z důvodu Správa verzí) nebo chcete vyhnout pevného kódování adresy URL v souboru šablony. Vlastnost templateLink je vrácena pouze při připojování ke vzdálené šablony s adresou URL. Pokud používáte šablonu místní, že vlastnost není k dispozici.
 
 ```json
 "variables": {
@@ -209,7 +209,7 @@ Hlavní šablona nasadí propojené šablony a získá vrácené hodnoty. Všimn
 }
 ```
 
-Podobně jako ostatní typy prostředků můžete nastavit závislosti mezi propojené šablony a dalším prostředkům. Proto pokud další prostředky vyžadují hodnotu výstup z propojené šablony, jste měli jistotu, že propojené šablony nasazení před sebou. Nebo, pokud propojené šablony závisí na jiné prostředky, můžete zajistit, že jiné prostředky, které jsou nasazeny před propojené šablony.
+Podobně jako ostatní typy prostředků můžete nastavit závislosti mezi propojené šablony a dalším prostředkům. Proto pokud další prostředky vyžadují hodnotu výstup z propojené šablony, zkontrolujte, zda že propojené šablony nasazení před sebou. Nebo, pokud propojené šablony závisí na jiné prostředky, zkontrolujte, zda že jiné prostředky, které jsou nasazeny před propojené šablony.
 
 Následující příklad ukazuje šablonu, která nasadí veřejnou IP adresu a vrátí ID prostředku:
 

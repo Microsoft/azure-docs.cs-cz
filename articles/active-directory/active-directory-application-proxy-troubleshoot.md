@@ -15,11 +15,11 @@ ms.date: 02/14/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 2584af94be5f36d07278d1e3d70d7d3f1403203c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 838bdccb06e5763d33f63208cb6f941a55778b32
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení potíží s Proxy aplikace problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo v publikování aplikací, zkontrolujte následující možnosti, zda je správně funguje proxy aplikace služby Microsoft Azure AD:
@@ -27,7 +27,7 @@ Pokud dojde k chybám při přístupu k publikované aplikaci nebo v publikován
 * Otevřete konzolu služby systému Windows a ověřte, zda **Microsoft AAD Application Proxy Connector** je povolená a spuštěná služba. Můžete také podívat se na stránku vlastností Proxy aplikace služby, jak je znázorněno na následujícím obrázku:  
   ![Snímek obrazovky okna vlastností konektoru Microsoft AAD Application Proxy](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * Otevřete Prohlížeč událostí a vyhledejte události konektoru Proxy aplikace v **protokoly aplikací a služeb** > **Microsoft** > **AadApplicationProxy** > **konektor** > **správce**.
-* V případě potřeby podrobnější protokoly jsou dostupné ve [zapnete protokoly relace konektoru Proxy aplikace](application-proxy-understand-connectors.md#under-the-hood).
+* V případě potřeby podrobnější protokoly jsou dostupné ve [zapnete protokoly relace konektoru Proxy aplikace](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 Další informace o nástroji Poradce při potížích s Azure AD najdete v tématu [nástroj řešení potíží pro ověření konektoru síťové požadavky](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites).
 
@@ -90,7 +90,7 @@ Pokud dojde k chybě nebo problém s Azure AD Application Proxy, který není uv
 * [Povolení Proxy aplikace služby Azure Active Directory](manage-apps/application-proxy-enable.md)
 * [Publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md)
 * [Povolit jednotné přihlašování](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
-* [Povolení podmíněného přístupu](application-proxy-enable-remote-access-sharepoint.md)
+* [Povolení podmíněného přístupu](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

@@ -4,13 +4,13 @@ description: Popisuje, jak k vyhodnocení velký počet počítačů místně po
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 01/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 934f32228d2c37db58c52cf4820ccc331fccd1d3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e0bd62710c47cfdf81535470ef96bad2ab675bb0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -88,7 +88,7 @@ Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
 
 3. Ujistěte se, že generované hodnoty hash odpovídá následující nastavení.
 
-    Pro verzi vajíčka 1.0.9.7
+    Pro soubory OVA verze 1.0.9.7:
 
     **Algoritmus** | **Hodnota hash**
     --- | ---
@@ -169,7 +169,7 @@ Následující tabulka uvádí také výsledky hodnocení, které bude mít vliv
 
 | Čítač                                 | Úroveň | Úroveň za zařízení | Dopad hodnocení                    |
 | --------------------------------------- | ----- | ---------------- | ------------------------------------ |
-| cpu.usage.average                       | 1     | Není k dispozici               | Doporučená velikost virtuálního počítače a náklady         |
+| CPU.Usage.average                       | 1     | Není k dispozici               | Doporučená velikost virtuálního počítače a náklady         |
 | mem.usage.average                       | 1     | Není k dispozici               | Doporučená velikost virtuálního počítače a náklady         |
 | virtualDisk.read.average                | 2     | 2                | Velikost disku, náklady na úložiště a velikost virtuálního počítače |
 | virtualDisk.write.average               | 2     | 2                | Velikost disku, náklady na úložiště a velikost virtuálního počítače |
@@ -203,7 +203,7 @@ U každého zjišťování, které je třeba provést spusťte kolekce k vyhled�
 5.  V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (FQDN) nebo IP adresa serveru vCenter.
     - V **uživatelské jméno** a **heslo**, zadejte pověření účtu jen pro čtení, které kolekce použije k vyhledání virtuálních počítačů v systému vCenter Server.
-    - V **vyberte obor**, vyberte obor pro zjišťování virtuálních počítačů. Kolekce může zjišťovat pouze virtuální počítače v zadaném oboru. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Měl by neměl obsahovat více než 1 000 virtuálních počítačů. 
+    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolekce může zjišťovat pouze virtuální počítače v zadaném oboru. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Měl by neměl obsahovat více než 1 000 virtuálních počítačů. 
 
 6.  V **zadejte migrace projektu**, zadejte ID a klíč pro projekt. Pokud zkopírujete nebyla je, otevřete portál Azure z kolekce virtuálních počítačů. V projektu **přehled** vyberte **zjišťovat počítače** a zkopírujte hodnoty.  
 7.  V **sledovat průběh kolekce**, monitorovat proces zjišťování a zkontrolujte, že metadata shromážděných z virtuálních počítačů jsou v oboru. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat.

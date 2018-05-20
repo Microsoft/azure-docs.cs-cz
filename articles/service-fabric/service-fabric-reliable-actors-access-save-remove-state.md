@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: c00805fc5d8515fb743256e35a75be1546483245
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ac3afe144b9cf9e2fb307087edb175a603ffe4e9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Přístup k, uložte a odebrat stavu Reliable Actors
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) jsou jedním podprocesem objekty, které můžete zapouzdření logiku a stavu a spolehlivě Udržovat stav. Všechny instance objektu actor má svou vlastní [správce stavu](service-fabric-reliable-actors-state-management.md): jako slovník datová struktura, která spolehlivě uchová dvojice klíč/hodnota. Správce stavu je obálku kolem zprostředkovatele stavu. Slouží k ukládání dat bez ohledu na to, které [trvalost nastavení](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) se používá.

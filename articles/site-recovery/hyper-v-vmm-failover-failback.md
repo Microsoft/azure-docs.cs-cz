@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: f4207b8def3a5cd240b7a3ecdffde34a27f2a833
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ecb0b9395ce7071442ddf0dd976e1ca57b8be906
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Převzetí služeb při selhání a selhání zálohování virtuálních počítačů Hyper-V replikovat na sekundární místní lokalitu
 
@@ -45,48 +45,31 @@ Převzetí služeb při selhání a navrácení služeb po obnovení má tři f�
 
 Pro virtuální počítače Hyper-V můžete spustit standardním nebo plánované převzetí služeb při selhání.
 
-- Použijte regulární převzetí služeb při selhání pro neočekávaných výpadků. Spustíte-li toto převzetí služeb při selhání, Site Recovery vytvoří virtuální počítač v sekundární lokalitě a zajišťuje nahoru. Můžete spustit převzetí služeb při selhání pro konkrétní bod obnovení. Může dojít ke ztrátě dat v závislosti na bod obnovení, které používáte.
+- Použijte regulární převzetí služeb při selhání pro neočekávaných výpadků. Spustíte-li toto převzetí služeb při selhání, Site Recovery vytvoří virtuální počítač v sekundární lokalitě a zajišťuje nahoru. Může dojít ke ztrátě dat v závislosti na čekající na vyřízení data, která nebyla synchronizována.
 - Plánované převzetí služeb při selhání můžete použít, údržbě nebo při očekávaný výpadek. Tato možnost poskytuje nulovou ztrátou data. Když se aktivuje plánované převzetí služeb při selhání, jsou zdrojové virtuální počítače vypnout. Nesynchronizovaná data synchronizována a aktivaci převzetí služeb při selhání. 
 - 
 Tento postup popisuje, jak spustit regulární převzetí služeb při selhání.
 
 
 1. V části **Nastavení** > **Replikované položky** klikněte na virtuální počítač a pak na **Převzetí služeb při selhání**.
-2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
-    - **Nejnovější (výchozí):** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší plánovaný bod obnovení (plánovaného bodu obnovení), protože virtuální počítač repliky vytvořené po převzetí služeb při selhání se všechna data, která se replikují do Site Recovery, když bylo spuštěno převzetí služeb při selhání.
-    - **Nejnovější zpracovaný:** Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
-    - **Nejnovější konzistentní vzhledem k aplikacím:** Tato možnost převezme služby při selhání virtuálního počítače k nejnovějšímu bodu obnovení konzistentnímu vzhledem k aplikacím zpracovanému službou Site Recovery. 
-3. Šifrovací klíč není relevantní v tomto scénáři.
-4. Vyberte **vypnout počítač před zahájením převzetí služeb při selhání** Pokud chcete, aby Site Recovery se pokusit o proveďte vypnutí zdrojové virtuální počítače před spuštěním převzetí služeb při selhání. Site Recovery se také pokusí synchronizovat místní data, která nebyla dosud odeslána do sekundární lokality, než převzetí služeb při selhání. Všimněte si, že převzetí služeb při selhání pokračovat i v případě, že vypnutí selže. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
-5. Teď by měla být moci zobrazit virtuální počítač v sekundární cloudu VMM.
-6. Po ověření, virtuální počítač, **potvrdit** převzetí služeb při selhání. Tím se odstraní všechny dostupné body obnovení.
+1. Vyberte **vypnout počítač před zahájením převzetí služeb při selhání** Pokud chcete, aby Site Recovery se pokusit o proveďte vypnutí zdrojové virtuální počítače před spuštěním převzetí služeb při selhání. Site Recovery se také pokusí synchronizovat místní data, která nebyla dosud odeslána do sekundární lokality, než převzetí služeb při selhání. Všimněte si, že převzetí služeb při selhání pokračovat i v případě, že vypnutí selže. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+2. Teď by měla být moci zobrazit virtuální počítač v sekundární cloudu VMM.
+3. Po ověření, virtuální počítač, **potvrdit** převzetí služeb při selhání. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
 > **Nepřerušujte v průběhu proces převzetí služeb při selhání:** Před spuštěním převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud proces převzetí služeb při selhání v průběhu přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
 
 
-## <a name="reprotect-and-fail-back"></a>Znovu nastavte ochranu a navrácení služeb po obnovení
+## <a name="reverse-replicate-and-failover"></a>Zpětná replikace a převzetí služeb při selhání
 
-Zahájení replikace ze sekundární lokality na primární a selhání zpátky do primární lokality. Po virtuální počítače jsou spuštěné v primární lokalitě znovu, můžete replikovat je do sekundární lokality znovu.  
+Zahájení replikace ze sekundární lokality na primární a selhání zpátky do primární lokality. Po virtuální počítače jsou spuštěné v primární lokalitě znovu, můžete provádět replikaci do sekundární lokality.  
 
-1. V **nastavení** > **replikované položky** klikněte na virtuální počítač a povolte **zpětnou replikaci**. Virtuální počítač začne replikovat zpět do primární lokality.
-2. Klikněte na virtuální počítač > **plánované převzetí služeb při selhání**.
-3. V **potvrďte plánované převzetí služeb při selhání**ověřte směr převzetí služeb při selhání (z sekundární cloudu VMM) a vyberte zdrojové a cílové umístění. 
-4. V **synchronizace dat**, zadejte, jak chcete synchronizovat:
-    - **Synchronizace dat před převzetí služeb při selhání (synchronizovat jenom rozdílové změny)**– tato možnost minimalizuje výpadek virtuálních počítačů, protože synchronizuje bez vypnutí virtuálního počítače. Tady je co umožňuje:
-        - Pořídí snímek virtuálního počítače repliky a zkopíruje ho primárním hostitelem technologie Hyper-V. Replika virtuálních počítačů neustále běží.
-        - Vypne repliku virtuálního počítače, tak, aby žádné nové změny dojít k dispozici. Závěrečné sady rozdílové změny přenesou do primární lokality a spuštění virtuálního počítače v primární lokalitě.
-    - **Synchronizace dat během pouze převzetí služeb při selhání (úplná ke stažení)**– tuto možnost použijte, pokud jste si už běží v sekundární lokalitě dlouhou dobu. Tato možnost je rychlejší, protože očekávané více změny na disku a nebudete věnovat času kontrolního součtu. Tato možnost provede stahování disku. Je také užitečné při primární virtuální počítač byl odstraněn.
-5. Šifrovací klíč není relevantní v tomto scénáři.
-6. Zahájit převzetí služeb při selhání. Můžete sledovat průběh převzetí služeb při selhání **úlohy** kartě.
-7. Pokud jste vybrali k synchronizaci dat před převzetí služeb při selhání, po synchronizaci počáteční data se provádí a jste připraveni vypnout repliku virtuálního počítače v sekundární lokalitě, klikněte na tlačítko **úlohy** > název úlohy plánované převzetí služeb při selhání >  **Dokončete převzetí služeb při selhání**. Tato sekundární virtuální počítač vypne, přenáší nejnovější změny do primární lokality a spustí primárního virtuálního počítače.
-8. V primárním cloudu VMM zkontrolujte, zda virtuální počítač je k dispozici.
-9. Primární virtuální počítač je nyní ve stavu čekající potvrzení. Klikněte na tlačítko **potvrzení**, potvrzení převzetí služeb při selhání.
-10. Pokud chcete, aby zahájení replikace primárního virtuálního počítače zpátky do sekundární lokality znovu povolte **zpětnou replikaci**.
-
-
-> [!NOTE]
-> Zpětná replikace replikuje pouze změny, které nastaly od repliky virtuálních počítačů se vypnulo a posílají se jenom rozdílové změny.
+ 
+1. Klikněte na virtuální počítač > klikněte na **zpětnou replikaci**.
+2. Po dokončení úlohy klikněte na virtuální počítač > v **převzetí služeb při selhání**ověřte směr převzetí služeb při selhání (z sekundární cloudu VMM) a vyberte zdrojové a cílové umístění. 
+4. Zahájit převzetí služeb při selhání. Můžete sledovat průběh převzetí služeb při selhání **úlohy** kartě.
+5. V primárním cloudu VMM zkontrolujte, zda virtuální počítač je k dispozici.
+6. Pokud chcete spustit replikaci primárního virtuálního počítače zpátky do sekundární lokality znovu, klikněte na **zpětnou replikaci**.
 
 ## <a name="next-steps"></a>Další postup
 [Zkontrolujte v kroku](hyper-v-vmm-disaster-recovery.md) pro replikaci virtuálních počítačů Hyper-V do sekundární lokality.

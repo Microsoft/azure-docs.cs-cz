@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -99,14 +99,14 @@ Jeden konektor zřizování rozhraní s rozhraním API systému jednoho zdroje a
 
 Ve službě Azure AD je relace 1: 1 mezi zřizování konektor instancí a instance aplikace:
 
-| Zdrojového systému | Cílový systém |
+| Zdrojový systém | Cílový systém |
 | ---------- | ---------- | 
 | Klientovi služby Azure AD | Aplikace SaaS |
 
 
 Při práci s Workday a služby Active Directory, existuje však několik zdrojové a cílové systémy tak, aby se dalo považovat za:
 
-| Zdrojového systému | Cílový systém | Poznámky |
+| Zdrojový systém | Cílový systém | Poznámky |
 | ---------- | ---------- | ---------- |
 | WORKDAY | Doménová struktura Active Directory | Každé doménové struktuře je považován za odlišné cílový systém |
 | WORKDAY | Klientovi služby Azure AD | Podle potřeby pro uživatele jenom pro cloud |
@@ -371,7 +371,7 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **LastName**   |   sn   |     |  Vytvoření + aktualizace |
 | **PreferredNameData**  |  displayName |     |   Vytvoření + aktualizace |
 | **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
-| **SupervisoryOrganization**  | Oddělení  |     |  Vytvoření + aktualizace |
+| **SupervisoryOrganization**  | oddělení  |     |  Vytvoření + aktualizace |
 | **ManagerReference**   | Správce  |     |  Vytvoření + aktualizace |
 | **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace | 
 | **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
@@ -804,20 +804,13 @@ Chcete-li to provést, musíte použít [Workday Studio](https://community.workd
 
 * Předchozí problém s protokoly auditu nejsou uvedena v klienty Azure AD, které jsou umístěné v Evropské unie byl vyřešen. Konfigurace dalších agenta je však nutná pro klienty Azure AD v EU. Podrobnosti najdete v tématu [část 3: Konfigurace agenta synchronizace na místě](#Part 3: Configure the on-premises synchronization agent)
 
-## <a name="gdpr-compliance"></a>GDPR dodržování předpisů
+## <a name="gdpr-information"></a>Informace o GDPR
 
 [Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR systému vynucuje pravidla pro společnosti, organizace státní správy, bez zisku a jinými organizacemi, které nabízejí zboží a služeb na osoby ve EU, nebo že shromažďovat a analyzovat data svázané s obyvatele Evropské unie. 
 
-Zřizování služby Azure AD je GDPR kompatibilní spolu s ostatními služby společnosti Microsoft a funkce. Další informace o scénáře GDPR společnosti Microsoft, najdete v článku [podmínky služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+Další informace o scénáře GDPR společnosti Microsoft, najdete v článku [podmínky služby](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-Ale protože Workday zřizování řešení pro službu Active Directory vyžaduje, aby byl nainstalován na serveru připojeném k doméně agent synchronizace, nejsou některé události, které je potřeba monitorovat také zůstane GDPR kompatibilní.
- 
-Agent vytvoří protokoly v **protokolu událostí systému Windows**, která může obsahovat identifikovatelné osobní údaje.
-
-Abyste mohli zůstat GDPR kompatibilní s dvěma způsoby:
-
-1. Na žádost extrahovat data pro osoby a odstranění dat z této osoby z protokolů událostí systému Windows. 
-2. Zachovat uchování protokolů událostí systému Windows jako zdroj proces AADSyncAgent v části 48 hodin
+Upozorňujeme, že Workday zřizování řešení pro službu Active Directory vyžaduje, aby byl nainstalován na serveru připojeném k doméně agent synchronizace, a Tento agent vytvoří protokoly v **protokolu událostí systému Windows** která může obsahovat identifikovatelné osobní údaje.
 
 Informace o tom, jak nakonfigurovat uchovávání dat pro protokol událostí systému Windows najdete v tématu [nastavení protokolu událostí](https://technet.microsoft.com/library/cc952132.aspx). Obecné informace o protokolu událostí systému Windows najdete v tématu [v tomto článku](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
@@ -827,4 +820,3 @@ Informace o tom, jak nakonfigurovat uchovávání dat pro protokol událostí sy
 * [Zjistěte, jak získat sestavy o zřizování aktivity a zkontrolujte protokoly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 * [Naučte se konfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](active-directory-saas-workday-tutorial.md)
 * [Zjistěte, jak integrovat dalších aplikací SaaS Azure Active Directory](active-directory-saas-tutorial-list.md)
-

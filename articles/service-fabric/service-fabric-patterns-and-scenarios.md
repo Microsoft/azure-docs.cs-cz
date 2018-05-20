@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric vzory a scénáře | Microsoft Docs"
-description: "Další informace osvědčených postupů a předpokládá se, opakovaně použitelné vzory návrhu, vývoj a provoz vaší mikroslužeb v Service Fabric."
+title: Azure Service Fabric vzory a scénáře | Microsoft Docs
+description: Další informace osvědčených postupů a předpokládá se, opakovaně použitelné vzory návrhu, vývoj a provoz vaší mikroslužeb v Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d5aa75ff-98b9-4573-a2e5-7f5ab288157a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: d0b385c10df61e9719d95b29b60e0f92766b2637
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 5c2cd38001a9645011bbab84cff3b9366aa64b1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Vzory Service Fabric a scénáře
 Pokud zvažujete sestavování rozsáhlých mikroslužeb pomocí Azure Service Fabric, přečtěte si od odborníků, kteří navržen a sestaven Tato platforma jako služba (PaaS). Začínáme s správnou architekturu a pak zjistěte, jak optimalizovat prostředky pro vaši aplikaci. [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) kurzu odpovídá na dotazy nejčastěji požaduje od zákazníků reálného o scénáře Service Fabric a v oblastech aplikace.
@@ -67,7 +67,7 @@ Podívejte se na na základě zapnout hry, interaktivní hry a hostování exist
 <table><tr><th>Video</th><th>Balíček aplikace PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=6wECzeSGD_3805167344">
 <img src="./media/service-fabric-patterns-and-scenarios/gaming.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=kfqFWMSGD_6205167344">Gaming</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=kfqFWMSGD_6205167344">Herní</a></td></tr>
 </table>
 
 ## <a name="continuous-delivery"></a>Nepřetržité doručování

@@ -1,13 +1,13 @@
 ---
 title: Azure funkce Twilio vazby
-description: "Pochopit, jak pomocí Azure Functions Twilio vazby."
+description: Pochopit, jak pomocí Azure Functions Twilio vazby.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru"
+editor: ''
+tags: ''
+keywords: Funkce Azure, funkce zpracování událostí, dynamické výpočetní architektura bez serveru
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff31f8b265452b6864e36323e770f808f87de019
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 30a47fb597b5739e9f947caa9b72238631c780fe
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio vazby pro Azure Functions
 
@@ -33,6 +33,8 @@ Tento článek vysvětluje postup odesílání textové zprávy pomocí [Twilio]
 Vazby Twilio jsou součástí [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -227,11 +229,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ**|| musí být nastavena na `twilioSms`.|
-|**Směr**|| musí být nastavena na `out`.|
-|**name**|| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
-|**accountSid**|**AccountSid**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio.|
-|**authToken**|**Ověřovacího tokenu**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje vaše Twilio ověřovací token.|
+|**type**|| musí být nastavena na `twilioSms`.|
+|**direction**|| musí být nastavena na `out`.|
+|**Jméno**|| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
+|**AccountSid**|**AccountSid**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio.|
+|**Ověřovacího tokenu**|**Ověřovacího tokenu**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje vaše Twilio ověřovací token.|
 |**K**|**Komu**| Tato hodnota nastavena na telefonní číslo, který je odeslán textová zpráva.|
 |**Z**|**Z**| Tato hodnota nastavena na telefonní číslo, který je odeslán textová zpráva z.|
 |**Text**|**Text**| Tato hodnota slouží k pevného code textovou zprávu SMS, pokud nepotřebujete dynamické nastavení v kódu pro funkce. |

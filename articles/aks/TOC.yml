@@ -45,14 +45,14 @@
           href: delete-cluster.md
     - name: Konfigurace svazků s daty
       items:
-        - name: Svazek Kubernetes – disky
-          href: azure-disk-volume.md
-        - name: Svazek Kubernetes – soubory
-          href: azure-files-volume.md
-        - name: Trvalý svazek – disky
+        - name: Dynamické zřizování disků Azure
           href: azure-disks-dynamic-pv.md
-        - name: Trvalý svazek – soubory
+        - name: Statické zřizování disků Azure
+          href: azure-disk-volume.md
+        - name: Dynamické zřizování souborů Azure
           href: azure-files-dynamic-pv.md
+        - name: Statické zřizování souborů Azure
+          href: azure-files-volume.md
     - name: Konfigurace sítí
       items:
         - name: Přehled sítí

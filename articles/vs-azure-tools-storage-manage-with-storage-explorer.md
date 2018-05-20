@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: c4cd3c79b64ef6ba86c7764f0ae27e29418e9ee5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2335872bcd7d3ea64e449d8b1a43f360d86bb4a0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 ## <a name="overview"></a>Přehled
@@ -34,6 +34,8 @@ Azure Storage Explorer je podporován v následujících verzích systému Windo
 * Windows 10 (doporučeno)
 * Windows 8
 * Windows 7
+
+Pro všechny verze systému Windows, rozhraní .NET Framework 4.6.2 nebo vyšší se vyžaduje.
 
 [Stažení a instalace Průzkumníka služby Storage](http://www.storageexplorer.com)
 

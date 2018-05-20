@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 569234e15c0f12de7cbf4ac6bd1c5617035ce0ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6dcbf954fdfd6f5b6f65b54edf33e9da234c7d0f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Java)
 
@@ -27,8 +27,8 @@ IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrick
 
 Rychlý start používá dvě předem napsané aplikace Java:
 
-* Aplikaci simulovaného zařízení, která odpovídá na přímé metody volané z back-endové aplikace. Aby bylo možné přijímat volání přímých metod, připojí se tato aplikace ke koncovému bodu vašeho centra IoT pro konkrétní zařízení.
-* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu na straně služby ve vašem centru IoT.
+* Aplikaci simulovaného zařízení, která odpovídá na přímé metody volané z back-endové aplikace. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
+* Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu vašeho centra IoT na straně služby.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -72,8 +72,10 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName}--device-id MyJavaDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
+
+    Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
 
 1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
@@ -121,7 +123,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
-Back-endová aplikace se připojí ke koncovému bodu na straně služby ve vašem centru IoT. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
+Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
 1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu Java. Pak přejděte do složky **Quickstarts\back-end-application**.
 

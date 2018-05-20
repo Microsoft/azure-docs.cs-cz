@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 4148c6d3f9d4407681159870b858c629c0b5d878
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 14a2560d91fd0f8dcc729b32c7155c4b74aa8aa1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvořit výstrahu protokolu pomocí šablony Resource Manageru
+# <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 Tento článek ukazuje, jak můžete spravovat [protokolu výstrahy](monitor-alerts-unified-log.md) prostřednictvím kódu programu ve velkém měřítku, v Azure pomocí [šablony Azure Resource Manageru](..//azure-resource-manager/resource-group-authoring-templates.md) prostřednictvím [prostředí Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) a [Rozhraní příkazového řádku azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Aktuálně Azure výstrahy, podporuje protokolu výstrahy na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
 
 ## <a name="managing-log-alert-on-log-analytics"></a>Správa výstrah protokolu analýzy protokolů
@@ -50,7 +50,9 @@ Toto je struktury [vytváření pravidel dotazu naplánované](https://docs.micr
 ```json
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",    
+    "contentVersion": "1.0.0.0", 
+    "parameters": {      
+    },   
     "variables": {
     "alertLocation": "southcentralus",
     "alertName": "samplelogalert",
@@ -58,60 +60,61 @@ Toto je struktury [vytváření pravidel dotazu naplánované](https://docs.micr
     "alertDesription": "Sample log search alert",
     "alertStatus": "true",
     "alertSource":{
-       "Query":"requests",
-       "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
-       "Type":"ResultCount"
-        },
-    "alertSchedule":{
-        "Frequency": 15,
-        "Time": 60
-        },
-    "alertActions":{
-        "SeverityLevel": "4",
-        },
-     "alertTrigger":{
-       "Operator":"GreaterThan",
-       "Threshold":"1"
-        },
-      "actionGrp":{
-       "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
-      "Subject": "Customized Email Header",
-      "Webhook": "{}"           
-        }
+        "Query":"requests",
+        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "Type":"ResultCount"
+         },
+     "alertSchedule":{
+         "Frequency": 15,
+         "Time": 60
+         },
+     "alertActions":{
+         "SeverityLevel": "4"
+         },
+      "alertTrigger":{
+        "Operator":"GreaterThan",
+        "Threshold":"1"
+         },
+       "actionGrp":{
+        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+        "Subject": "Customized Email Header",
+        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
+         }
   },
   "resources":[ {
-     "name":"[variables('alertName')]",
-     "type":"Microsoft.Insights/scheduledQueryRules",
-     "apiVersion": "2018-04-16",
-     "location": "[variables('alertLocation')]",
-     "tags":{"hidden-link:[variables('alertTargetResource')]": "Resource"},
-     "properties":{
-        "description": "[variables('alertDescription')]",
-        "enabled": "[variables('alertStatus')]",
-        "source": {
-            "query": "[variables('alertSource').Query]",
-            "dataSourceId": "[variables('alertSource').SourceId]",
-            "queryType":"[variables('alertSource').Type]"
-        },
-       "schedule":{
-            "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
-            "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
-        },
-       "action":{
-            "severity":"[variables('alertActions').SeverityLevel]",
-            "aznsAction":{
-                "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
-                "emailSubject":"[variables('actionGrp').Subject]",
-                "customWebhookPayload":"[variables('actionGrp').Webhook]"
-            },
-        "trigger":{
-                "thresholdOperator":"[variables('alertTrigger').Operator]",
-                "threshold":"[variables('alertTrigger').Threshold]"
-            }
-        }
-      }
-    }
-  ]
+    "name":"[variables('alertName')]",
+    "type":"Microsoft.Insights/scheduledQueryRules",
+    "apiVersion": "2018-04-16",
+    "location": "[variables('alertLocation')]",
+    "tags":{"[variables('alertTag')]": "Resource"},
+    "properties":{
+       "description": "[variables('alertDesription')]",
+       "enabled": "[variables('alertStatus')]",
+       "source": {
+           "query": "[variables('alertSource').Query]",
+           "dataSourceId": "[variables('alertSource').SourceId]",
+           "queryType":"[variables('alertSource').Type]"
+       },
+      "schedule":{
+           "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
+           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
+       },
+      "action":{
+           "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+           "severity":"[variables('alertActions').SeverityLevel]",
+           "aznsAction":{
+               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+               "emailSubject":"[variables('actionGrp').Subject]",
+               "customWebhookPayload":"[variables('actionGrp').Webhook]"
+           },
+       "trigger":{
+               "thresholdOperator":"[variables('alertTrigger').Operator]",
+               "threshold":"[variables('alertTrigger').Threshold]"
+           }
+       }
+     }
+   }
+ ]
 }
 ```
 > [!IMPORTANT]

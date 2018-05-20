@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 4987cc271a3e3d8a1a69c4c7fbd213d73ca2eb96
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9a7ab3881cd1058a60ff7d5f6e50c296f042e76e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
 Tento článek ukazuje, jak pro balíček a nasazení více spustitelné soubory hosta pro Azure Service Fabric. Vytváření a nasazování jeden balíček Service Fabric najdete v návodu k [nasadit do Service Fabric Host spustitelný soubor](service-fabric-deploy-existing-app.md).
@@ -203,7 +203,7 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Jakmile se k místnímu clusteru se daná aplikace úspěšně publikuje, dostanete aplikace Node.js na portu, který jsme zadali v service manifest aplikace Node.js – například http://localhost: 3000.
+Jakmile se k místnímu clusteru se daná aplikace úspěšně publikuje, dostanete aplikace Node.js na portu, který jsme zadali v service manifest aplikace Node.js – například http://localhost:3000.
 
 V tomto kurzu jste viděli, jak snadno balíček dvě existující aplikace jako jednu aplikaci Service Fabric. Naučili jste postup nasazení na Service Fabric, takže můžete využít některé funkce Service Fabric, jako například vysokou dostupnost a stavu systému integrace.
 

@@ -10,14 +10,14 @@ ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 4adc0cf81a36307369fa9f4eecd281a93ccba98b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ef89bcea3eab92c3137a6f532398764462ae204c
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix dotazu serveru REST SDK
 
@@ -78,7 +78,7 @@ Zde jsou některé vlastnosti týkající se:
 | Vlastnost | Popis |
 | -- | -- |
 | Režimu automatického zápisu | Logická hodnota představující zda `autoCommit` je povolená pro Phoenix transakce. |
-| Jen pro čtení | Logická hodnota, které označuje, zda je připojení jen pro čtení. |
+| ReadOnly | Logická hodnota, které označuje, zda je připojení jen pro čtení. |
 | TransactionIsolation | Celé číslo představující úroveň izolace transakce za specifikace JDBC - najdete v následující tabulce.|
 | Katalog | Název katalogu pro použití při načítání vlastnosti připojení. |
 | Schéma | Název schématu pro použití při načítání vlastnosti připojení. |

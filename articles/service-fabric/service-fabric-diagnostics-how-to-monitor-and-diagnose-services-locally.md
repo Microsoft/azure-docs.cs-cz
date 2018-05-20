@@ -1,24 +1,24 @@
 ---
-title: "Ladění Azure mikroslužeb v systému Windows | Microsoft Docs"
-description: "Zjistěte, jak sledovat a diagnostikovat vaše služby vytvořené pomocí Microsoft Azure Service Fabric na místním vývojovém počítači."
+title: Ladění Azure mikroslužeb v systému Windows | Microsoft Docs
+description: Zjistěte, jak sledovat a diagnostikovat vaše služby vytvořené pomocí Microsoft Azure Service Fabric na místním vývojovém počítači.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 034bfe6fbab3da083d6c63f99f960467fd0a84e9
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 93cf4985e94c0af480d9f4e2e38b792cffe4df6e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služby v instalačním programu pro vývoj místním počítači
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Pro projekty vytvořené z **šablony objektu actor** (bezstavové nebo stateful
 
 Po přidání vlastní trasování událostí pro Windows trasování do kódu služby, můžete vytvořit, nasadit a spusťte aplikaci znovu zobrazíte vaší událostí v prohlížeči diagnostických událostí. Pokud při ladění aplikace s **F5**, se automaticky otevře prohlížeč diagnostických událostí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Stejný kód trasování, které jste přidali do vaší aplikace výše pro místní diagnostiky pracovat s nástroji, které můžete použít k zobrazení tyto události při spuštění aplikace v clusteru služby Azure. Podívejte se na tyto články, které popisují různé možnosti pro nástroje a popisují, jak je můžete nastavit tak.
 
 * [Postup shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)

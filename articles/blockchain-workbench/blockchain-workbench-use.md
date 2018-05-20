@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.openlocfilehash: 8732d1b87acaa6673ae92b3302fb257dcb134217
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Použití aplikace v Azure Blockchain Workbench
 
@@ -52,14 +52,7 @@ Pokud chcete vytvořit nové smlouvy, musíte být členem skupiny **AllowedInst
 ## <a name="take-action-on-contract"></a>Provést akci pro kontraktu
 
 1. V oddílu aplikací Blockchain Workbench vyberte dlaždici aplikace, která obsahuje kontrakt provést akci.
-
-    ![Seznam aplikací](media/blockchain-workbench-use/apps-list.png)
-
-2. V seznamu vyberte kontrakt.
-
-    ![Přehled smluv](media/blockchain-workbench-use/select-contract.png)
-
-    Podrobnosti o smlouvě se zobrazují v různých oddílů. 
+2. V seznamu vyberte kontrakt. Podrobnosti o smlouvě se zobrazují v různých oddílů. 
 
     ![Podrobnosti o kontraktu](media/blockchain-workbench-use/contract-details.png)
 
@@ -74,9 +67,14 @@ Pokud chcete vytvořit nové smlouvy, musíte být členem skupiny **AllowedInst
 
 4. V podokně se zobrazí podrobnosti o aktuálním stavu kontrakt. Vyberte akci, kterou budete chtít využít v rozevíracím seznamu. 
 
+    ![Vyberte akci](media/blockchain-workbench-use/choose-action.png)
+
+5. Vyberte **akce** zahájíte akci.
+6. Pokud jsou vyžadovány pro akci parametry, zadejte hodnoty pro akci.
+
     ![Provést akci](media/blockchain-workbench-use/take-action.png)
 
-5. Vyberte **Execute** provést akci.
+7. Vyberte **akce** k provedení akce.
 
 ## <a name="next-steps"></a>Další postup
 

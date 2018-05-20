@@ -207,7 +207,7 @@ K vytvoření spravovaného dostupnost sady s virtuálními počítači pomocí 
 
 K vyhledání úplné informace o specifikacích REST API, přečtěte si [vytvoření spravovaného disku dokumentace k REST API](/rest/api/manageddisks/disks/disks-create-or-update). Zjistíte další scénáře, a také výchozí a přijatelných hodnot, které se dají odeslat do rozhraní API prostřednictvím šablony nasazení. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pro úplnou šablony, které používají spravovaný disky získáte pomocí následujících odkazů v úložišti Azure rychlý start.
     * [Virtuální počítač s Windows spravované disku](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -216,4 +216,4 @@ K vyhledání úplné informace o specifikacích REST API, přečtěte si [vytvo
 * Přejděte [přehled disky spravované Azure](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu další informace o spravovaných disky.
 * Zkontrolujte šablonu referenční dokumentaci pro prostředky virtuálního počítače navštivte stránky [odkaz na šablonu Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) dokumentu.
 * Zkontrolujte šablonu referenční dokumentaci pro prostředky disku navštivte stránky [odkaz na šablonu Microsoft.Compute/disks](/azure/templates/microsoft.compute/disks) dokumentu.
- 
+* Informace o tom, jak používat spravovaného disky v sadách škálování virtuálních počítačů Azure, najdete v článku [datových disků pomocí sady škálování](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) dokumentu.

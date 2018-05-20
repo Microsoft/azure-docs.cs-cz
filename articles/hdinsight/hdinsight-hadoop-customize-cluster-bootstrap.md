@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 1a832bfdf09fbaa5c0e083b1263393285492795c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2fdbb8730d350023035038d60d17a5ad12c98bc0
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Přizpůsobení clusterů HDInsight pomocí Bootstrap
 
@@ -135,12 +135,10 @@ Bootstrap můžete použít v šabloně Resource Manager:
 * [Vytvoření clusterů systému Hadoop v HDInsight] [ hdinsight-provision-cluster] obsahuje pokyny k vytvoření clusteru HDInsight pomocí jiné možnosti vlastního nastavení.
 * [Vývoj skriptů akce skriptu pro HDInsight][hdinsight-write-script]
 * [Nainstalovat a používat Spark v HDInsight clustery][hdinsight-install-spark]
-* [Nainstalovat a používat R na clustery HDInsight][hdinsight-install-r]
 * [Nainstalovat a používat Solr v clusterech HDInsight](hdinsight-hadoop-solr-install.md).
 * [Nainstalovat a používat Giraph v clusterech HDInsight](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-write-script]: hdinsight-hadoop-script-actions.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs

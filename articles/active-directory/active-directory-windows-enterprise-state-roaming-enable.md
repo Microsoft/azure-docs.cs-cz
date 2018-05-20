@@ -1,9 +1,9 @@
 ---
 title: Povolit Enterprise State Roaming v Azure Active Directory | Microsoft Docs
-description: "Nejčastější dotazy o nastavení Enterprise State Roaming v zařízení se systémem Windows. Enterprise State Roaming poskytuje uživatelům v jednotném rozhraní mezi jejich zařízení se systémem Windows a snižuje čas potřebný pro konfiguraci nové zařízení."
+description: Nejčastější dotazy o nastavení Enterprise State Roaming v zařízení se systémem Windows. Enterprise State Roaming poskytuje uživatelům v jednotném rozhraní mezi jejich zařízení se systémem Windows a snižuje čas potřebný pro konfiguraci nové zařízení.
 services: active-directory
-keywords: "Stav Enterprise roaming, cloudu systému windows, jak povolit roaming stavu enterprise"
-documentationcenter: 
+keywords: Stav Enterprise roaming, cloudu systému windows, jak povolit roaming stavu enterprise
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 3a8714ddbda10d8e1b4a8de35711101f4c8a0106
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dba749b6d85898e6438ce1160b9bf6eaff6f4ac9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace pomocí Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD najdete v tématu [stránku produktů Azure AD](https://azure.microsoft.com/services/active-directory).
 
-Když povolíte Enterprise State Roaming, vaše organizace je automaticky udělenou licenci volné, omezeného použití pro Azure Rights Management. Tato bezplatná registrace je omezený na šifrování a dešifrování nastavení podnikových a synchronizaci tím Enterprise State Roaming dat aplikací. Musíte mít [na placené předplatné](https://azure.microsoft.com/pricing/details/active-directory/) používat úplné funkce služby Azure Rights Management.
+Když povolíte Enterprise State Roaming, vaše organizace je automaticky přiděleno licenci volné, omezeného použití ochrany Azure Rights Management z Azure Information Protection. Tato bezplatná registrace je omezený na šifrování a dešifrování nastavení podnikových a synchronizaci tím Enterprise State Roaming dat aplikací. Musíte mít [na placené předplatné](https://azure.microsoft.com/pricing/details/information-protection/) používat úplné funkce služby Azure Rights Management.
 
 ## <a name="to-enable-enterprise-state-roaming"></a>Chcete-li povolit Enterprise State Roaming
 
@@ -39,7 +39,7 @@ Když povolíte Enterprise State Roaming, vaše organizace je automaticky uděle
 Pro zařízení Windows 10 pomocí služby Enterprise State Roaming zařízení musí ověřit pomocí služby Azure AD identity. Pro zařízení, které jsou připojené ke službě Azure AD je primární přihlášení identitu uživatele svou identitu Azure AD, takže není nutná žádná další konfigurace. Pro zařízení, která používají místní služby Active Directory, musí správce IT [připojení zařízení připojených k doméně ke službě Azure AD pro Windows 10 vyskytne](active-directory-azureadjoin-devices-group-policy.md).
 
 ## <a name="data-storage"></a>Úložiště dat
-Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](https://azure.microsoft.com/regions/) že nejvhodnější správně zarovnané s hodnotou země nebo oblast v instanci služby Azure Active Directory. Enterprise State Roaming dat je rozdělený do oddílů založené na tři hlavní zeměpisné oblasti: Severní Americe, regionu EMEA a APAC. Enterprise State Roaming dat pro klienta je místně umístěn v zeměpisné oblasti a v oblastech se nereplikuje.  Například::
+Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](https://azure.microsoft.com/regions/) že nejvhodnější správně zarovnané s hodnotou země nebo oblast v instanci služby Azure Active Directory. Enterprise State Roaming dat je rozdělený do oddílů založené na tři hlavní zeměpisné oblasti: Severní Americe, regionu EMEA a APAC. Enterprise State Roaming dat pro klienta je místně umístěn v zeměpisné oblasti a v oblastech se nereplikuje.  Příklad:
 Hodnota země nebo oblast | má svá data hostovány v
 ---------------------|-------------------------
 EMEA země, jako je například "Francie" nebo "Zambie" | jeden nebo z regionů Azure v rámci Evropa 
@@ -77,7 +77,7 @@ Explicitní odstranění je, když správce Azure odstraní uživatele nebo adre
 * **Na žádost o odstranění**: Pokud chce správce Azure AD ručně odstranit data nebo data nastavení konkrétního uživatele, může správce souboru lístek s [podporu Azure](https://azure.microsoft.com/support/). 
 
 ### <a name="stale-data-deletion"></a>Odstranění zastaralých dat
-Data, která nebyla získat přístup k jeden rok ("dobu uchování"), budou považovány za zastaralé a budou odstraněny z Azure. Doba uchovávání se může změnit, ale nesmí být menší než 90 dnů. Zastaralá data mohou být konkrétní sadu nastavení Windows/aplikace nebo všechna nastavení pro uživatele. Například:
+Data, která nebyla získat přístup k jeden rok ("dobu uchování"), budou považovány za zastaralé a budou odstraněny z Azure. Doba uchovávání se může změnit, ale nesmí být menší než 90 dnů. Zastaralá data mohou být konkrétní sadu nastavení Windows/aplikace nebo všechna nastavení pro uživatele. Příklad:
 
 * Pokud žádná zařízení přistupovat k kolekci konkrétní nastavení (například aplikace je odebráno ze zařízení nebo skupinu nastavení, jako je například "Motivu" vypnutá pro všechny uživatele zařízení), pak tuto kolekci zastaralé se stane po dobu uchování a může dojít k odstranění . 
 * Pokud je uživatel vypnul nastavení synchronizace ve všech jejich zařízeních, pak budou mít přístup žádná nastavení data a všechna data nastavení pro tohoto uživatele bude zastaralé a budou odstraněny po dobu uchování. 

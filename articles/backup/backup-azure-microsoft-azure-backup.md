@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/5/2018
+ms.date: 5/14/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ef6be97144d05f18362ef707ef255b93c8cf21d9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Příprava zálohování úloh pomocí Azure Backup Serveru
 > [!div class="op_single_selector"]
@@ -73,40 +73,19 @@ Pokud nechcete spustit základní server v Azure, můžete spustit server na vir
 > - Počítač, na kterém je spuštěný server Exchange
 > - Počítač, který je uzlem clusteru
 
-Vždycky připojení k serveru Azure Backup k doméně. Pokud budete chtít přesunout server do jiné domény, doporučujeme připojení serveru k nové doméně před instalací serveru pro zálohování Azure. Přesunutí existující počítač serveru Azure Backup do nové domény po nasazení *nepodporuje*.
+Vždycky připojení k serveru Azure Backup k doméně. Pokud budete chtít přesunout server do jiné domény, nejprve nainstalovat Server pro zálohování Azure a potom připojení serveru k nové doméně. Přesunutí existující počítač serveru Azure Backup do nové domény po nasazení *nepodporuje*.
 
-## <a name="recovery-services-vault"></a>Trezor služby Recovery Services
-Ať už odesílání zálohovaných dat do Azure nebo udržovat místně, softwaru musí být připojen k Azure. Jako další konkrétní, počítač serveru Azure Backup musí zaregistrovat u trezoru služeb zotavení.
+Ať už odesílání zálohovaných dat do Azure nebo udržovat místně, musí být Azure Backup Server zaregistrován u trezoru služeb zotavení.
 
-Vytvoření trezoru Recovery Services:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce centra klikněte na **Procházet** a v seznamu prostředků zadejte **Recovery Services**. Seznam se průběžně filtruje podle zadávaného textu. Klikněte na **Trezor Recovery Services**.
-
-    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
-
-    Zobrazí se seznam trezorů služeb zotavení.
-3. V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
-
-    ![Vytvoření trezoru Recovery Services – krok 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
-
-    Otevře se okno trezoru Recovery Services s výzvou k vyplnění polí **Název**, **Předplatné**, **Skupina prostředků** a **Oblast**.
-
-    ![Vytvoření trezoru Recovery Services – krok 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
-4. Jako **Název** zadejte popisný název pro identifikaci trezoru. Název musí být jedinečný v rámci předplatného Azure. Zadejte název v rozsahu 2 až 50 znaků. Musí začínat písmenem a může obsahovat pouze písmena, číslice a pomlčky.
-5. Kliknutím na **Předplatné** zobrazíte seznam dostupných předplatných. Pokud si nejste jisti, jaké předplatné použít, použijte výchozí (nebo navrhované) předplatné. Více možností je dostupných, jen pokud je váš účet organizace přidružený k více předplatným Azure.
-6. Kliknutím na **Skupina prostředků** zobrazíte seznam dostupných skupin prostředků, nebo klikněte na **Nová**, chcete-li vytvořit novou skupinu prostředků. Úplnější informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md)
-7. Klikněte na **Oblast** a vyberte zeměpisnou oblast trezoru.
-8. Klikněte na možnost **Vytvořit**. Vytvoření trezoru Služeb zotavení může chvíli trvat. Sledujte oznámení o stavu v horní pravé části portálu.
-   Po vytvoření svůj trezor otevře na portálu.
+[!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
-Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště. Pokud tento trezor trezoru primární, ponechte možnost úložiště do geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště naleznete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory služeb zotavení geograficky redundantní úložiště. Pokud tento trezor trezoru primární, ponechte možnost úložiště do geograficky redundantní úložiště. Zvolte místně redundantní úložiště, pokud chcete levnější možnost, která není tak trvanlivá. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště naleznete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
 
 Chcete-li upravit nastavení replikace úložiště:
 
-1. Vyberte svůj trezor pro otevření řídícího panelu trezoru a okna Nastavení. Pokud se okno **Nastavení** neotevře, klikněte na **Všechna nastavení** v řídicím panelu trezoru.
-2. Kliknutím na **Infrastruktura zálohování** > **Konfigurace zálohování** v okně **Nastavení** otevřete okno **Konfigurace zálohování**. V okně **Konfigurace zálohování** zvolte pro svůj trezor možnost replikace úložiště.
+1. Vyberte svůj trezor pro otevření panelu trezoru a v nabídce nastavení. Pokud **nastavení** nabídky neotevře, klikněte na tlačítko **všechna nastavení** v řídícím panelu trezoru.
+2. Na **nastavení** nabídky, klikněte na tlačítko **infrastruktura zálohování** > **konfigurace zálohování** otevřete **konfigurace zálohování**okno. Na **konfigurace zálohování** nabídce zvolte možnost replikace úložiště pro svůj trezor.
 
     ![Seznam trezorů záloh](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -115,9 +94,9 @@ Chcete-li upravit nastavení replikace úložiště:
 ## <a name="software-package"></a>Balíček softwaru
 ### <a name="downloading-the-software-package"></a>Stažení balíčku softwaru
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Pokud již máte otevřený trezor služeb zotavení, pokračujte krokem 3. Pokud nemáte otevřený trezor Služeb zotavení, ale jste na portálu Azure, klikněte na **Procházet** v Nabídce centra.
+2. Pokud již máte otevřený trezor služeb zotavení, pokračujte krokem 3. Pokud nemáte otevřený trezor služeb zotavení, ale jsou na portálu Azure v hlavní nabídce klikněte na tlačítko **Procházet**.
 
-   * V seznamu prostředků zadejte **Služby zotavení**.
+   * V seznamu prostředků zadejte **Recovery Services**.
    * Během zadávání se seznam bude filtrovat podle zadávaného textu. Až uvidíte **Trezory Služeb zotavení**, klikněte na ně.
 
      ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
@@ -137,7 +116,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
     V **Začínáme se zálohováním** okno, které se otevře, **zálohování cíle** bude automaticky vybrána.
 
-    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Zálohování cíle – výchozí – otevřít](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. V **cíl zálohování** okně z **kde běží vaše úlohy** nabídce vyberte možnost **místní**.
 
@@ -195,12 +174,12 @@ Po dokončení procesu extrahování políčko Spustit čerstvě extrahované *s
    >
 4. Zadejte umístění pro instalaci souborů serveru Microsoft Azure Backup a klikněte na **Další**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Pomocné umístění je požadavek pro zálohování na Azure. Zkontrolujte, zda pomocné umístění nejméně 5 % dat plánované zálohování do cloudu. U ochrany disku samostatné disky potřeba nakonfigurovat po dokončení instalace. Další informace týkající se fondů úložiště najdete v tématu [nakonfigurujte fondy úložiště a disk úložiště](https://technet.microsoft.com/library/hh758075.aspx).
 5. Zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/security-screen.png)
 6. Vyberte, zda chcete použít *Microsoft Update* vyhledávat aktualizace, a klikněte na tlačítko **Další**.
 
    > [!NOTE]
@@ -208,10 +187,10 @@ Po dokončení procesu extrahování políčko Spustit čerstvě extrahované *s
    >
    >
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. Zkontrolujte *souhrn nastavení* a klikněte na tlačítko **nainstalovat**.
 
-    ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+    ![PreReq2 zálohování Microsoft Azure](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
 8. Instalace probíhá fáze. V první fázi agenta služeb zotavení Microsoft Azure je nainstalován na serveru. Průvodce také zkontroluje připojení k Internetu. Pokud je k dispozici připojení k Internetu může pokračovat v instalaci, pokud ne, budete muset zadat podrobnosti o proxy serveru pro připojení k Internetu.
 
     Dalším krokem je konfigurace agenta služeb zotavení Microsoft Azure. Jako součást konfigurace budete muset zadávat svoje přihlašovací údaje trezoru, registraci počítače do trezoru služeb zotavení. Bude také zadat přístupové heslo k šifrování a dešifrování dat posílaných mezi Azure a vaše místní. Může automaticky generovat přístupové heslo nebo zadejte minimální heslo 16 znaků. Pokračujte v průvodci, dokud agent nebyl nakonfigurován.

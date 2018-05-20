@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a33bc9ea1750d9db34c0fad678118dc81f294c61
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8fb0e2181c518db541504f0eea77ce9fde7edf8f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie Runbooků a modulů pro Azure Automation.
 Místo vytvoření vlastní sady runbook a modulů ve službě Azure Automation, můžete zpřístupnit různé scénáře, které jste již vytvořili společností Microsoft a komunitou.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete používat jako výchozí bod a je upravit pro vaše konkrétní požadavky.

@@ -6,14 +6,14 @@ author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/15/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 7e3b084f833b6d84e5c5102555eb586e306e9de8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8144f70737e5f78f568a8a6dd35ddc7d43ced0fd
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -82,7 +82,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore) | Ano | Ne – můžete obnovit COPY_ONLY najdete úplné zálohy, které můžete provést pravidelně - [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) a [obnovit rozdíly](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Geografická replikace](sql-database-geo-replication-overview.md) | Ano | Ne |
 | [Zpracování grafu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ano | Ano |
-| [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [Premium a Critial obchodní vrstvy](sql-database-in-memory.md) | Ne |
+| [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [Premium a kritické obchodní vrstvy](sql-database-in-memory.md) | Ne |
 | [Podpora data JSON](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Ano](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [Jazykové elementy](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Většina - najdete jednotlivé elementy |  Ano – najdete v části [rozdíly T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Odkazované servery](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Ne – najdete v části [elastické dotazu](sql-database-elastic-query-horizontal-partitioning.md) | Pouze pro SQL Server a databáze SQL |

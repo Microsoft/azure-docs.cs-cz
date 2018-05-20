@@ -8,13 +8,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/17/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2e48dbaffb8431a9275ec8e3d5f2467e2c2bd157
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 6159fbcdf60683426a2524dcda78c8ff7f4d8e00
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Ověření runbooků pomocí Amazon Web Services
 

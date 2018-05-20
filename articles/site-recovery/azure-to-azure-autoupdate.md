@@ -1,20 +1,20 @@
 ---
 title: Automatické aktualizace služby Mobility v zotavení po havárii Azure do Azure | Microsoft Docs
-description: Obsahuje přehled automatické aktualizace služby Mobility, který se používá pro replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
+description: Obsahuje přehled automatické aktualizace služby Mobility, při replikaci virtuálních počítačů Azure pomocí Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: rajanaki
-ms.openlocfilehash: d9b653e4766746d2142a7e1040d6d60ec2aacc44
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Automatické aktualizace služby Mobility rozšíření Azure do Azure replikace
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby Mobility v replikaci Azure do Azure
 
 Azure Site Recovery má měsíční cadence verzi jsou přidány vylepšení stávajících funkcí nebo nové, kde jsou pevné známé problémy, pokud existuje. To by znamenalo, že zůstat aktuální službou, budete muset naplánovat nasazení těchto oprav měsíčně. Aby se zabránilo selhání hlavičky přidružené k upgradu, uživatelé mohou místo toho možnost obnovení lokality ke správě aktualizací součástí. Podle popisu v [referenční architektura](azure-to-azure-architecture.md) pro zotavení po havárii Azure do Azure, získá službu Mobility nainstalovat na všechny Azure virtuální počítače, pro které je povolená replikace při replikaci virtuálních počítačů z jedné Azure oblast na jiný. Jakmile povolíte automatických aktualizací, získá rozšíření služby Mobility aktualizováno každých novou verzi. Tento dokument podrobně popisuje následující:
 

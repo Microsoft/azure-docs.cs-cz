@@ -8,11 +8,11 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 6d7ccd94243d7064008197518f6194d5837b17be
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Události úložiště objektů Blob trasy pro koncový bod vlastní webové pomocí prostředí PowerShell
 
@@ -21,7 +21,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku 
 Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení z příkladu v tomto článku, jsou události odeslané na adresu URL, jenom shromažďující zprávy. Tuto adresu URL vytvoříte pomocí nástroje třetí strany z webu [Hookbin](https://hookbin.com/).
 
 > [!NOTE]
-> **Hookbin** není určen pro použití vysoké propustnosti. Použití tohoto nástroje je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny.
+> **Hookbin** není určen pro použití vysoké propustnosti. Použití tohoto nástroje je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny. Navíc mějte na paměti, **Hookbin** získá [zvláštní zacházení](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint) pomocí Azure událostí mřížky. Usnadňuje testování mřížky událostí odesílá události existuje bez nutnosti správné odpovědí na požadavky na ověření předplatného (což by mohlo dojít [jinak](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details)).
 
 Po dokončení kroků popsaných v tomto článku uvidíte, že se data událostí odeslala do koncového bodu.
 

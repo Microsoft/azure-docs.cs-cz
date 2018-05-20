@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -95,6 +95,7 @@ Pokud je vaše organizace používat bezproblémové jednotné přihlašování,
 
 - Navíc musí být povolené následující nastavení do zóny sítě intranet uživatele: "Povolit aktualizace stavového řádku pomocí skriptu."
 
+Pokud vaše organizace používá spravovaných nastavení (nefederovaných) s místní AD a nepoužívá služby AD FS vytvořit federaci s Azure AD, pak připojení k hybridní Azure AD na Windows 10 spoléhá na počítačových objektů ve službě AD jako sync'ed do služby Azure AD. Ujistěte se, že jsou povoleny všechny organizační jednotky (OU) obsahující objekty počítače, které musí být připojený k Azure AD hybridní pro synchronizaci v konfiguraci synchronizace Azure AD Connect.
 
 Pokud vaše organizace vyžaduje přístup k Internetu prostřednictvím odchozího proxy serveru, je nutné implementovat Proxy Auto-Discovery WPAD (Web) Chcete-li povolit počítače s Windows 10 k registraci do služby Azure AD.
 
@@ -186,6 +187,14 @@ V konfiguraci s více doménovými strukturami používejte následující skrip
 
     $deSCP.CommitChanges()
 
+Ve výše uvedené, skriptu
+
+- `$verifiedDomain = "contoso.com"` je zástupný symbol, který potřebujete nahradit s jedním názvů ověřené domény ve službě Azure AD. Budete muset vlastní domény, abyste mohli používat.
+
+Další informace o názvech ověřené domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+Chcete-li získat seznam ověřených společnosti domény, můžete použít [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) rutiny. 
+
+![Get-AzureADDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
 ## <a name="step-2-setup-issuance-of-claims"></a>Krok 2: Nastavení vystavování deklarací identity
 
@@ -329,6 +338,7 @@ Ve výše uvedené, deklarace identity
 
 
 Další informace o názvech ověřené domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+
 Chcete-li získat seznam ověřených společnosti domény, můžete použít [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) rutiny. 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)

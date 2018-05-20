@@ -1,6 +1,6 @@
 ---
-title: Azure náklady na software Windows instancí virtuálních počítačů rezervy | Microsoft Docs
-description: Další informace, které měřidla softwaru Windows nejsou součástí náklady na vyhrazené instanci virtuálního počítače.
+title: Azure Windows instancí rezervy náklady na software - fakturace Azure | Microsoft Docs
+description: Další informace, které měřidla softwaru Windows nejsou součástí náklady na vyhrazené instanci virtuálního počítače Azure.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
+ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 20fd3c6c118b33ca91d717d30d77bb9c7843f4e6
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="windows-software-costs-not-included-with-reserved-instances"></a>Náklady na software Windows není součástí vyhrazené instance
+# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Náklady na software Windows není součástí vyhrazené instance Azure
 
 Pokud nemáte výhody použití služby Azure hybridní na vyhrazené Instance virtuálních počítačů, budou se vám účtovat pro měřidla softwaru systému Windows, uvedené v následující části.
 
@@ -52,11 +52,18 @@ Pokud nemáte výhody použití služby Azure hybridní na vyhrazené Instance v
 Náklady na každý z těchto měřidla můžete získat prostřednictvím rozhraní API RateCard Azure. Informace o tom, jak získat sazby pro azure měření najdete v tématu [získání informací o cenách a metadat pro prostředky používané v předplatné Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Další postup
-Další informace o vyhrazenou instancí virtuálního počítače, naleznete v následujících článcích.
+Další informace o vyhrazenou instancí Azure, najdete v následujících článcích:
 
-- [Předem pro virtuální počítače s instancí vyhrazené virtuálních počítačů](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Správa instancí vyhrazený virtuální počítač](billing-manage-reserved-vm-instance.md)
-- [Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí virtuálního počítače](billing-save-compute-costs-reservations.md)
-- [Pochopit, jak se použije slevu vyhrazenou instanci virtuálního počítače](billing-understand-vm-reservation-charges.md)
+- [Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí Azure](billing-save-compute-costs-reservations.md)
+- [Předem pro virtuální počítače s vyhrazenou instancí](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Spravovat vyhrazená instance](billing-manage-reserved-vm-instance.md)
+- [Pochopit, jak se použije slevu vyhrazenou instanci](billing-understand-vm-reservation-charges.md)
 - [Pochopení vyhrazenou instanci využití pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Pochopení vyhrazenou instanci využití pro podnikového zápisu](billing-understand-reserved-instance-usage-ea.md)
+
+## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+
+Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+
+
+

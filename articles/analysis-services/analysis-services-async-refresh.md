@@ -5,14 +5,14 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff48d70a19e99531dcc90a81f8c7c723133ba8a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace pomocí rozhraní REST API
 Pomocí žádný programovací jazyk, který podporuje volání REST, můžete provádět operace asynchronní aktualizace dat na vaše tabulkové modely služby Azure Analysis Services. To zahrnuje synchronizace repliky jen pro čtení pro dotaz Škálováním na více systémů. 
@@ -97,7 +97,7 @@ Zadání parametrů se nevyžaduje. Je použita výchozí hodnota.
 
 |Název  |Typ  |Popis  |Výchozí  |
 |---------|---------|---------|---------|
-|Typ     |  výčet       |  Typ zpracování k provedení. Typy jsou v souladu s TMSL [aktualizovat příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: full, clearValues, vypočítat, dataOnly, automatické a přidejte defragmentaci.       |   Automatické      |
+|Typ     |  výčet       |  Typ zpracování k provedení. Typy jsou v souladu s TMSL [aktualizovat příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) typy: full, clearValues, vypočítat, dataOnly, automatické a defragmentaci. Přidejte typ není podporován.      |   Automatické      |
 |CommitMode     |  výčet       |  Určuje, pokud objekty budou potvrzeny v dávkách nebo jenom v případě, že je kompletní. Režimy: výchozí, transakcí, partialBatch.  |  transakcí       |
 |MaxParallelism     |   Int      |  Tato hodnota určuje maximální počet vláken, na který se má spustit zpracování příkazů paralelně. Tato hodnota v souladu s MaxParallelism vlastnost, která může být nastavena v TMSL [pořadí příkaz](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) nebo použití jiných metod.       | 10        |
 |retryCount    |    Int     |   Označuje číslo, kolikrát bude operaci opakovat než selže.      |     0    |

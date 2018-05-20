@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/10/2018
+ms.date: 5/15/2018
 ms.author: rithorn
-ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 822a2df113b848f07e616f155881f345028cee1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Spravovat prostředky s skupin pro správu 
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Můžete změnit, odstranit a správě těchto kontejnerů do mají hierarchie, které lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
@@ -24,6 +24,8 @@ Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, 
 Funkce skupiny správy je dostupná ve verzi public preview. Pokud chcete začít používat správu skupin, přihlášení k [portál Azure](https://portal.azure.com) nebo můžete použít [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), nebo [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) na Spravujte skupiny pro správu.
 
 Změnit skupinu pro správu, musí mít roli vlastníka nebo přispěvatele skupiny pro správu. Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../role-based-access-control/overview.md).
+
+[!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>Změňte název skupiny pro správu 
 Název skupiny pro správu můžete změnit pomocí portálu, prostředí PowerShell nebo rozhraní příkazového řádku Azure.

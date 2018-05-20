@@ -1,6 +1,6 @@
 ---
-title: Pomocí Azure Blockchain Workbench dat v aplikaci Microsoft Excel
-description: Zjistěte, jak načíst a zobrazit Azure Blockchain Workbench SQL DB data v aplikaci Microsoft Excel.
+title: Použití dat služby Azure Blockchain Workbench v Microsoft Excelu
+description: Zjistěte, jak načíst a zobrazit data z databáze SQL DB služby Azure Blockchain Workbench v Microsoft Excelu.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
@@ -10,61 +10,62 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 70297bd0af6322d0f3ac2c719d1827e4bc5898cd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e8c20f4b8e39615e2a8c486130d7c8bec655a936
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Zobrazení dat Azure Blockchain Workbench pomocí aplikace Microsoft Excel
+# <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Zobrazení dat služby Azure Blockchain Workbench v Microsoft Excelu
 
-Aplikace Microsoft Excel můžete použít k zobrazení dat v databázi SQL Azure Blockchain Workbench. Tento článek obsahuje kroky, které budete muset:
+K zobrazení dat z databáze SQL DB služby Azure Blockchain Workbench můžete použít Microsoft Excel. Tento článek obsahuje postup pro:
 
-* Připojení k databázi Blockchain Workbench z aplikace Microsoft Excel
-* Podívejte se na Blockchain Workbench databázových tabulek a zobrazení
-* Načtení Blockchain Workbench zobrazení dat do aplikace Excel
+* Připojení k databázi služby Blockchain Workbench z Microsoft Excelu
+* Prohlédnutí databázových tabulek a zobrazení databáze služby Blockchain Workbench
+* Načtení dat zobrazení služby Blockchain Workbench do Excelu
 
 ## <a name="connect-to-the-blockchain-workbench-database"></a>Připojení k databázi Blockchain Workbench
 
-Připojení k databázi Blockchain Workbench:
+Postup připojení k databázi Blockchain Workbench:
 
-1. Otevřete aplikaci Microsoft Excel.
-2. Na **Data** , zvolte **načíst Data**.
-3. Vyberte **z Azure** a pak vyberte **z Azure SQL Database**.
+1. Otevřete Microsoft Excel.
+2. Na kartě **Data** zvolte **Načíst data**.
+3. Vyberte **Z Azure** a potom vyberte **Ze služby Azure SQL Database**.
 
    ![Připojení k Azure SQL Database](media/blockchain-workbench-data-excel/connect-sql-db.png)
 
-4. V **databáze systému SQL Server** dialogové okno:
+4. V dialogovém okně **Databáze SQL Serveru**:
 
-    * Pro **Server**, zadejte název serveru Blockchain Workbench.
-    * Pro **databáze (volitelné)**, zadejte název databáze.
+    * Do pole **Server** zadejte název serveru služby Blockchain Workbench.
+    * Do pole **Databáze (nepovinné)** zadejte název databáze.
 
-   ![Zadejte databázový server a databáze](media/blockchain-workbench-data-excel/provide-server-db.png)
+   ![Zadání databázového serveru a databáze](media/blockchain-workbench-data-excel/provide-server-db.png)
 
-5. V **databáze systému SQL Server** navigační panel dialogového okna, vyberte **databáze**. Zadejte vaše **uživatelské jméno** a **heslo**a potom vyberte **Connect**.
+5. V navigačním panelu dialogového okna **Databáze SQL Serveru** vyberte **Databáze**. Zadejte **Uživatelské jméno** a **Heslo** a pak klikněte na **Připojit**.
 
     > [!NOTE]
-    > Pokud používáte přihlašovací údaje vytvořené během procesu nasazení Azure Blockchain Workbench **uživatelské jméno** je `dbadmin`. **Heslo** je ten, který jste vytvořili při nasazení Blockchain Workbench.
+    > Pokud používáte přihlašovací údaje vytvořené při nasazení služby Azure Blockchain Workbench, pak **Uživatelským jménem** je `dbadmin`. a **Heslo** je shodné s heslem vytvořeným při nasazení služby Blockchain Workbench.
     
-   ![Zadejte přihlašovací údaje pro přístup k databázi](media/blockchain-workbench-data-excel/provide-credentials.png)
+   ![Zadání přihlašovacích údajů pro přístup do databáze](media/blockchain-workbench-data-excel/provide-credentials.png)
 
-## <a name="look-at-database-tables-and-views"></a>Podívejte se na databáze tabulky a zobrazení
+## <a name="look-at-database-tables-and-views"></a>Prohlédnutí databázových tabulek a zobrazení databáze
 
-Po připojení k databázi, otevře se dialogové okno aplikace Excel Navigátor. Navigátoru můžete se podívat na tabulky a zobrazení v databázi. Zobrazení jsou navrženy pro vytváření sestav a jejich názvy mají předponu **zobrazit**.
+Po připojení k databázi se v Excelu otevře dialogové okno Navigátor. Okno Navigátor můžete použít k prohlédnutí zobrazení a tabulek v databázi. Zobrazení jsou navržená pro generování sestav a jejich názvy mají předponu **vw**.
 
-   ![Navigátor Excel preview zobrazení](media/blockchain-workbench-data-excel/excel-navigator.png)
+   ![Náhled zobrazení v excelovém okně Navigátor](media/blockchain-workbench-data-excel/excel-navigator.png)
 
-## <a name="load-view-data-into-an-excel-workbook"></a>Načtení zobrazení dat do sešitu aplikace Excel
+## <a name="load-view-data-into-an-excel-workbook"></a>Načtení dat zobrazení do excelového sešitu
 
-Další příklad ukazuje, jak načíst data ze zobrazení do sešitu aplikace Excel.
+Další příklad ukazuje, jak můžete načíst data ze zobrazení do excelového sešitu.
 
-1. V **Navigátor** posuvníku, vyberte **vwContractAction** zobrazení. **VwContractAction** náhled zobrazuje všechny akce související s kontraktu v databázi Blockchain Workbench.
-2. Vyberte **zatížení** načíst všechna data v zobrazení a umístí jej v sešitu aplikace Excel.
+1. Z posuvníku okna **Navigátor** vyberte zobrazení **vwContractAction**. Náhled zobrazení **vwContractAction** ukáže všechny akce související s kontraktem v databázi služby Blockchain Workbench.
+2. Vyberte **Načíst**, abyste získali všechna data v zobrazení a umístěte je do excelového sešitu.
 
-   ![Data načtená z zobrazení](media/blockchain-workbench-data-excel/view-data.png)
+   ![Data načtená ze zobrazení](media/blockchain-workbench-data-excel/view-data.png)
 
-Teď, když máte data načíst, slouží k vytvoření vlastních sestav pomocí metadat a transakce data z databáze Azure Blockchain Workbench funkce aplikace Excel.
+Nyní, když máte data načtená, můžete použít funkce Excelu k vytvoření vlastních sestav pomocí metadat a dat transakcí z databáze služby Azure Blockchain Workbench.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Zobrazení databáze v Azure Blockchain Workbench](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Zobrazení databáze ve službě Azure Blockchain Workbench](blockchain-workbench-database-views.md)

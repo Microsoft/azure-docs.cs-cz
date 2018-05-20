@@ -1,6 +1,6 @@
 ---
-title: zahrnout soubor
-description: zahrnout soubor
+title: include file
+description: include file
 services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
@@ -9,102 +9,102 @@ ms.date: 03/30/2018
 ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
 ms.openlocfilehash: 5457ac8bd229889ed2b96354c44066959c00c64f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/24/2018
 ---
-Grafický procesor optimalizované virtuálních počítačů velikosti jsou k dispozici jeden nebo více grafickými procesory NVIDIA specializované virtuálních počítačů. Tyto velikosti jsou navrženy pro úlohy náročné na výkon, velmi náročná na výkon grafiky a vizualizace. Tento článek obsahuje informace o počet a typ grafickými procesory, Vcpu, datové disky a síťové adaptéry a také úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
+GPU optimized VM sizes are specialized virtual machines available with single or multiple NVIDIA GPUs. These sizes are designed for compute-intensive, graphics-intensive, and visualization workloads. This article provides information about the number and type of GPUs, vCPUs, data disks, and NICs as well as storage throughput and network bandwidth for each size in this grouping. 
 
-* **NC, NCv2, NCv3 a ND** velikosti jsou optimalizované pro aplikace náročné na výkon a velmi náročná na výkon sítě a algoritmy, včetně aplikací na základě CUDA a OpenCL a simulace, AI a hloubkové učení. 
-* **VS** velikosti jsou optimalizované a určené pro vzdálené vizualizace, streamování, herní, kódování a využitím architektury například OpenGL a DirectX scénáře VDI.  
-
-
-## <a name="nc-series"></a>NC-Series
-
-Jsou virtuální počítače NC-series technologii [NVIDIA tesla – měrná K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Uživatel může zpracujte prostřednictvím rychlejší dat s využitím CUDA pro zkoumání aplikace energie, havárií simulace, ray trasovaná vykreslování, hloubkové učení a další. Konfigurace NC24r poskytuje nízkou latencí a vysokou propustností síťové rozhraní, které jsou optimalizované pro úzce párované paralelní výpočetních úloh.
+* **NC, NCv2, NCv3, and ND** sizes are optimized for compute-intensive and network-intensive applications and algorithms, including CUDA- and OpenCL-based applications and simulations, AI, and Deep Learning. 
+* **NV** sizes are optimized and designed for remote visualization, streaming, gaming, encoding, and VDI scenarios utilizing frameworks such as OpenGL and DirectX.  
 
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
+## <a name="nc-series"></a>NC-series
+
+NC-series VMs are powered by the [NVIDIA Tesla K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) card. Users can crunch through data faster by leveraging CUDA for energy exploration applications, crash simulations, ray traced rendering, deep learning and more. The NC24r configuration provides a low latency, high-throughput network interface optimized for tightly coupled parallel computing workloads.
+
+
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC6 |6 |56 | 340 | 1 | 24 | 1 |
 | Standard_NC12 |12 |112 | 680 | 2 | 48 | 2 |
 | Standard_NC24 |24 |224 | 1440 | 4 | 64 | 4 |
 | Standard_NC24r* |24 |224 | 1440 | 4 | 64 | 4 |
 
-1 GPU = polovina karty K80.
+1 GPU = one-half K80 card.
 
-*Podpora RDMA
+*RDMA capable
 
-## <a name="ncv2-series"></a>NCv2-Series
+## <a name="ncv2-series"></a>NCv2-series
 
-Jsou virtuální počítače NCv2-series technologii [P100 tesla – měrná NVIDIA](http://images.nvidia.com/content/tesla/pdf/nvidia-tesla-p100-datasheet.pdf) grafickými procesory. Tyto grafickými procesory můžete zadat více než 2 x výpočetní výkon NC-series. Zákazníci mohou využít výhod těchto aktualizované grafickými procesory pro tradiční úlohy HPC jako modelování zásob, DNA sekvencování, bílkovin analýzy, simulací typu Monte Carlo a dalších. Konfigurace v2 NC24rs poskytuje nízkou latencí a vysokou propustností síťové rozhraní, které jsou optimalizované pro úzce párované paralelní výpočetních úloh.
+NCv2-series VMs are powered by [NVIDIA Tesla P100](http://images.nvidia.com/content/tesla/pdf/nvidia-tesla-p100-datasheet.pdf) GPUs. These GPUs can provide more than 2x the computational performance of the NC-series. Customers can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others. The NC24rs v2 configuration provides a low latency, high-throughput network interface optimized for tightly coupled parallel computing workloads.
 
 > [!IMPORTANT]
-> Pro tuto řadu velikost virtuálních procesorů (základní) kvóty ve vašem předplatném původně nastavena na 0 v každé oblasti. [Požádat o zvýšení kvóty virtuální procesory](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+> For this size family, the vCPU (core) quota in your subscription is initially set to 0 in each region. [Request a vCPU quota increase](../articles/azure-supportability/resource-manager-core-quotas-request.md) for this family in an [available region](https://azure.microsoft.com/regions/services/).
 >
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | ---  |
 | Standard_NC6s_v2 |6 |112 | 736 | 1 | 12 | 4 |
 | Standard_NC12s_v2 |12 |224 | 1474 | 2 | 24 | 8 |
 | Standard_NC24s_v2 |24 |448 | 2948 | 4 | 32 | 8 |
 | Standard_NC24rs_v2* |24 |448 | 2948 | 4 | 32 | 8 |
 
-Grafický procesor 1 = P100 karet.
+1 GPU = one P100 card.
 
-*Podpora RDMA
+*RDMA capable
 
 ## <a name="ncv3-series"></a>NCv3-series
 
-Jsou virtuální počítače NCv3-series technologii [NVIDIA tesla – měrná V100](http://www.nvidia.com/content/PDF/Volta-Datasheet.pdf) grafickými procesory. 1,5 x výpočetní výkon NCv2-series může poskytnout tyto grafickými procesory. Zákazníci mohou využít výhod těchto aktualizované grafickými procesory pro tradiční úlohy HPC jako modelování zásob, DNA sekvencování, bílkovin analýzy, simulací typu Monte Carlo a dalších. Konfigurace v3 NC24rs poskytuje nízkou latencí a vysokou propustností síťové rozhraní, které jsou optimalizované pro úzce párované paralelní výpočetních úloh.
+NCv3-series VMs are powered by [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF/Volta-Datasheet.pdf) GPUs. These GPUs can provide 1.5x the computational performance of the NCv2-series. Customers can take advantage of these updated GPUs for traditional HPC workloads such as reservoir modeling, DNA sequencing, protein analysis, Monte Carlo simulations, and others. The NC24rs v3 configuration provides a low latency, high-throughput network interface optimized for tightly coupled parallel computing workloads.
 
 > [!IMPORTANT]
-> Pro tuto řadu velikost virtuálních procesorů (základní) kvóty ve vašem předplatném původně nastavena na 0 v každé oblasti. [Požádat o zvýšení kvóty virtuální procesory](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+> For this size family, the vCPU (core) quota in your subscription is initially set to 0 in each region. [Request a vCPU quota increase](../articles/azure-supportability/resource-manager-core-quotas-request.md) for this family in an [available region](https://azure.microsoft.com/regions/services/).
 >
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NC6s_v3 |6 |112 | 736 | 1 | 12 | 4 |
 | Standard_NC12s_v3 |12 |224 | 1474 | 2 | 24 | 8 |
 | Standard_NC24s_v3 |24 |448 | 2948 | 4 | 32 | 8 | 
-| Standard_NC24rs_v3 * |24 |448 | 2948 | 4 | 32 | 8 |
+| Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 32 | 8 |
 
-Grafický procesor 1 = V100 karet.
+1 GPU = one V100 card.
 
-*Podpora RDMA
+*RDMA capable
 
-## <a name="nd-series"></a>ND-Series
+## <a name="nd-series"></a>ND-series
 
-Virtuální počítače a series jsou nové přidání do rodiny GPU určený pro AI a hloubkové Learning úlohy. Nabízí vynikající výkon pro školení a odvozená. Jsou zapnuté a instance podle [P40 tesla – měrná NVIDIA](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) grafickými procesory. Tyto instance poskytnout vynikající výkon pro jednoduchou přesností operace s plovoucí desetinnou, pro zatížení AI využitím kognitivní nástrojů Microsoft, TensorFlow, Caffe a jiné architektury. Řada ND-Series také nabízí mnohem větší paměť GPU (24 GB) a umožňuje zpracovat mnohem větší modely neuronových sítí. Podobně jako NC-series, a series poskytuje konfigurace s sekundární nízkou latencí, Vysoká propustnost sítě prostřednictvím RDMA a připojení InfiniBand, takže je možné spustit ve velkém měřítku školení úlohy pokrývání uzlů mnoho grafickými procesory.
+The ND-series virtual machines are a new addition to the GPU family designed for AI and Deep Learning workloads. They offer excellent performance for training and inference. ND instances are powered by [NVIDIA Tesla P40](http://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPUs. These instances provide excellent performance for single-precision floating point operations, for AI workloads utilizing Microsoft Cognitive Toolkit, TensorFlow, Caffe, and other frameworks. The ND-series also offers a much larger GPU memory size (24 GB), enabling to fit much larger neural net models. Like the NC-series, the ND-series offers a configuration with a secondary low-latency, high-throughput network through RDMA, and InfiniBand connectivity so you can run large-scale training jobs spanning many GPUs.
 
 > [!IMPORTANT]
-> Pro tuto řadu velikost virtuálních procesorů (základní) kvóta na oblasti v rámci vašeho předplatného zpočátku nastavena na 0. [Požádat o zvýšení kvóty virtuální procesory](../articles/azure-supportability/resource-manager-core-quotas-request.md) pro tuto řadu v [dostupné oblasti](https://azure.microsoft.com/regions/services/).
+> For this size family, the vCPU (core) quota per region in your subscription is initially set to 0. [Request a vCPU quota increase](../articles/azure-supportability/resource-manager-core-quotas-request.md) for this family in an [available region](https://azure.microsoft.com/regions/services/).
 >
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet |
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | Max data disks | Max NICs |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_ND6s |6 |112 | 736 | 1 | 12 | 4 |
 | Standard_ND12s |12 |224 | 1474 | 2 | 24 | 8 | 
 | Standard_ND24s |24 |448 | 2948 | 4 | 32 | 8 |
-| Standard_ND24rs * |24 |448 | 2948 | 4 | 32 | 8 |
+| Standard_ND24rs* |24 |448 | 2948 | 4 | 32 | 8 |
 
-Grafický procesor 1 = P40 karet.
+1 GPU = one P40 card.
 
-*Podpora RDMA
+*RDMA capable
 
-## <a name="nv-series"></a>NV-Series
+## <a name="nv-series"></a>NV-series
 
-VS series virtuální počítače jsou zapnuté podle [NVIDIA tesla – měrná M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) grafickými procesory a mřížky NVIDIA technologie pro plochu accelerated aplikace a virtuální plochy kde Zákazníci mohou vizualizovat svoje data nebo simulace. Uživatelé mohou k vizualizaci své grafiky náročné pracovní postupy v rámci instancí vs získat nadřízená grafiky schopnosti a navíc spouštět úlohy a jednoduchou přesností například kódování a vykreslování. 
+The NV-series virtual machines are powered by [NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPUs and NVIDIA GRID technology for desktop accelerated applications and virtual desktops where customers are able to visualize their data or simulations. Users are able to visualize their graphics intensive workflows on the NV instances to get superior graphics capability and additionally run single precision workloads such as encoding and rendering. 
 
-Každý GPU vs instancí se dodává s licenci mřížky. Tuto licenci vám umožní používat instanci vs jako virtuální pracovní stanice pro jednoho uživatele nebo 25 souběžných uživatelů můžete připojit k virtuálnímu počítači pro scénář virtuální aplikace.
+Each GPU in NV instances comes with a GRID license. This license gives you the flexibility to use an NV instance as a virtual workstation for a single user, or 25 concurrent users can connect to the VM for a virtual application scenario.
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Max. datových disků | Maximální počet síťových karet | Virtuální pracovní stanice | Virtuální aplikace | 
+| Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | Max data disks | Max NICs | Virtual Workstations | Virtual Applications | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_NV6 |6 |56 |340 | 1 | 24 | 1 | 1 | 25 |
 | Standard_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
 | Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 | 4 | 100 |
 
-1 GPU = polovina karty M60.
+1 GPU = one-half M60 card.
 
  

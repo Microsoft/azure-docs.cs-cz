@@ -1,24 +1,24 @@
 ---
-title: "Správce prostředků clusteru Service Fabric - zásady umístění | Microsoft Docs"
-description: "Přehled další umístění zásad a pravidel pro služby Service Fabric"
+title: Správce prostředků clusteru Service Fabric - zásady umístění | Microsoft Docs
+description: Přehled další umístění zásad a pravidel pro služby Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c240643d2a7ce98ddd7f7871eeef654cced953f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf10f1d9199500d4f5bda3c5a05a3d67ff65541
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Umístění zásady pro služby service fabric
 Umístění zásady jsou další pravidla, které lze použít k řízení umístění služby v některých scénářích konkrétní, méně běžné. Mezi příklady tyto scénáře patří:
@@ -127,7 +127,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 Teď by bylo možné použít tyto konfigurace pro služby v clusteru, který nebyl předané geograficky? Vám může, ale není skvělé důvod příliš. Pokud je vyžadují scénáře je nutno konfigurace vyžaduje, neplatný a upřednostňované domény. Nemá smysl žádné pokusí vynutit daného zatížení spustit v jednom stojanu nebo raději některé segment místním clusteru oproti jinému. Různé hardwarové konfigurace by měl být rozloženy domén selhání a zpracovávají pomocí normální umístění omezení a vlastnosti uzlu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Další informace o konfiguraci služby [Další informace o konfiguraci služby](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png

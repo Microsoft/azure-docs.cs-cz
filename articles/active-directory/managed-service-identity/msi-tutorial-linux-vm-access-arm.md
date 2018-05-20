@@ -15,13 +15,13 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 83203737706b859bfbdfc1b356bbaca6d0b65dc0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6d4f7378ccd24af4281793dbc93df40830a1b31a
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
-# <a name="use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Použít identitu uživatele přiřazené na virtuální počítač s Linuxem, přístup k Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použijte identitu uživatele přiřazené na virtuální počítač s Linuxem, pro přístup k Azure Resource Manager
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 

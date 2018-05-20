@@ -73,6 +73,16 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 4. Nasazení API Managementu s využitím Service Fabric
           href: service-fabric-tutorial-deploy-api-management.md
+    - name: Vytvoření samostatného clusteru v AWS
+      items:
+        - name: 1. Vytvoření infrastruktury v AWS
+          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 2. Nastavení služby Service Fabric
+          href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
+        - name: 3. Nasazení aplikace do clusteru
+          href: service-fabric-tutorial-standalone-install-an-application.md
+        - name: 4. Vyčištění clusteru a odstranění infrastruktury
+          href: service-fabric-tutorial-standalone-clean-up.md
 - name: Ukázky
   items:
     - name: Ukázky kódů

@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Analysis Service selhání | Microsoft Docs"
-description: "Tento článek popisuje službu analýzy selhání v Service Fabric vyvolat chyb a spuštěným scénáře testování pro vaše služby."
+title: Přehled služby Analysis Service selhání | Microsoft Docs
+description: Tento článek popisuje službu analýzy selhání v Service Fabric vyvolat chyb a spuštěným scénáře testování pro vaše služby.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -9,21 +9,21 @@ editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Úvod ke službě analýza selhání
 Služba Analysis Service selhání je určená pro testování služby, které jsou postaveny na Microsoft Azure Service Fabric. Se službou Analysis selhání můžete vyvolat smysluplný chyb a spouštění scénáře dokončení testování vaší aplikace. Tyto scénáře a chyb vykonává a ověřit množství stavy a přechody, které služba bude mít v průběhu své životnosti, všechny řízené, bezpečné a konzistentním způsobem.
 
-Akce jsou jednotlivé chyb cílení na služby pro testování ho. Vývojář služby můžete použít jako stavební bloky k zápisu složité scénáře. Například:
+Akce jsou jednotlivé chyb cílení na služby pro testování ho. Vývojář služby můžete použít jako stavební bloky k zápisu složité scénáře. Příklad:
 
 * Restartujte uzel k simulaci libovolný počet situace, kdy počítač nebo virtuální počítač restartovat.
 * Přesunutí repliky stavové služby k simulaci Vyrovnávání zatížení a převzetí služeb při selhání nebo upgradu aplikace.
@@ -95,7 +95,7 @@ Funkce Analysis Service odolnosti jsou v oboru názvů System.Fabric v balíčku
 
 Pomocí prostředí PowerShell, je nutné nainstalovat Service Fabric SDK. Po instalaci sady SDK je modul ServiceFabric PowerShell automaticky načíst budete muset používat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud chcete vytvořit skutečně cloudové služby, je důležité zajistit, před i po nasazení, aby služby můžete odolat selhání skutečných. Ve světě služby v současné době možnost inovacemi. Zajistěte snadno a rychle přesouvat kódu do produkčního prostředí je velmi důležité. Služba Analysis Service selhání pomáhá vývojářům služby k tomu přesněji.
 
 Zahájit testování vaší aplikace a služby pomocí integrovaných [scénáře otestovat](service-fabric-testability-scenarios.md), nebo vytvořit vlastní scénáře testování pomocí [poruch akce](service-fabric-testability-actions.md) poskytovaný službou Analysis selhání.

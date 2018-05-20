@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 29b662aa2f30083b444483554a78d53f0d05cb7f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Ladění výkonu Azure Data Lake Store
 
@@ -66,7 +64,7 @@ Analýza stroje například HDInsight a Azure Data Lake Analytics obvykle mají 
 
 Obecně platí organizování vašich dat ve větší velikosti souborů pro lepší výkon.  Jako existuje pravidlo uspořádání datových sad v souborech 256 MB nebo větší. V některých případech, například bitové kopie a binární data není možné zpracovat souběžně.  V těchto případech doporučujeme ponechat jednotlivých souborů v části 2GB.
 
-V některých případech datových kanálů mají omezenou kontrolu nad nezpracovaná data, která obsahuje velké množství malých souborů.  Doporučuje se mít "vaření" postup, který generuje větší soubory pro příjem dat aplikací.  
+V některých případech datových kanálů mají omezenou kontrolu nad nezpracovaná data, která obsahuje velké množství malých souborů.  Doporučuje se mít "vaření" postup, který generuje větší soubory pro příjem dat aplikací.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Uspořádání data časové řady ve složkách
 
@@ -123,7 +121,7 @@ Existují tři vrstvy v rámci clusteru služby HDInsight, který lze ladit zvý
 
 V závislosti na velikosti pracovní zátěže bude vždy minimální velikost YARN kontejneru, která je potřeba. Pokud vyberete příliš malá kontejner, vaše úlohy se spustí do problémy z důvodu nedostatku paměti. Kontejnery YARN obvykle by měla být menší než 1GB. Je běžné najdete v části kontejnery YARN 3GB. Pro některé úlohy pravděpodobně bude třeba větší kontejnery YARN.  
 
-**Zvýšit jader na kontejner YARN.**  Zvyšte počet jader přidělené pro každý kontejner a zvýšit počet paralelních úloh, které běží v každém kontejneru.  Tento postup funguje pro aplikace jako Spark, které se spustit několik úkolů na kontejneru.  Pro aplikace jako Hive, které se spustit jedno vlákno v jednotlivých kontejnerech je lepší víc kontejnerů než více jader na kontejneru.   
+**Zvýšit jader na kontejner YARN.**  Zvyšte počet jader přidělené pro každý kontejner a zvýšit počet paralelních úloh, které běží v každém kontejneru.  Tento postup funguje pro aplikace jako Spark, které se spustit několik úkolů na kontejneru.  Pro aplikace jako Hive, které se spustit jedno vlákno v jednotlivých kontejnerech je lepší víc kontejnerů než více jader na kontejneru.
 
 ### <a name="workload-layer"></a>Zatížení vrstvy
 

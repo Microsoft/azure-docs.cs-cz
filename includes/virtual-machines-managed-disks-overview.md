@@ -47,7 +47,7 @@ Podívejme bližší pohled na tyto.
 **Typ úložiště:** spravované disky nabízí 2 úrovně výkonu: [Premium](../articles/virtual-machines/windows/premium-storage.md) (založené na jednotku SSD) a [standardní](../articles/virtual-machines/windows/standard-storage.md) (založené na HDD). Fakturace spravovaného disku závisí na typu úložiště, kterou jste vybrali pro disk.
 
 
-**Kapacita disku**: fakturace pro spravované disky závisí na velikost zřízeného disku. Azure mapuje velikost zřízeného (zaokrouhlený nahoru) na nejbližší možnost spravovat disky uvedeného v následujících tabulkách. Spravovaných disků na každý se mapuje na jednu z podporovaných zřízené velikosti a se fakturuje odpovídajícím způsobem. Například pokud vytvoříte standardní se spravovaným diskem a zadejte velikost zřízeného 200 GB, můžete se účtují podle cenové typ S20 disku.
+**Kapacita disku**: fakturace pro spravované disky závisí na velikost zřízeného disku. Azure mapuje velikost zřízeného (zaokrouhlený nahoru) na nejbližší možnost spravovat disky uvedeného v následujících tabulkách. Spravovaných disků na každý se mapuje na jednu z podporovaných zřízené velikosti a se fakturuje odpovídajícím způsobem. Například pokud vytvoříte standardní se spravovaným diskem a zadejte velikost zřízeného 200 GB, můžete se účtují podle cenové typ s.15 disku.
 
 Zde jsou k dispozici pro premium se spravovaným diskem velikosti disků:
 
@@ -58,9 +58,9 @@ Zde jsou k dispozici pro premium se spravovaným diskem velikosti disků:
 
 Zde jsou k dispozici pro standardní se spravovaným diskem velikosti disků:
 
-| **Standardní spravované <br>typ disku** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Velikost disku        | 32 GiB   | 64 GiB   | 128 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
+| **Standardní spravované <br>typ disku** | **S4** | **S6** | **S10** | **S.15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| Velikost disku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 GiB (4 TiB) | 
 
 
 **Počet transakcí**: fakturuje se počet transakcí, které můžete provádět na standardní spravovaného disku. Neexistuje žádné náklady pro transakce pro premium se spravovaným diskem.

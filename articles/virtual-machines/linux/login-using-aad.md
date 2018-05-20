@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
-ms.translationtype: MT
+ms.openlocfilehash: 1d0ae04bee6d50456949529449b658907d338f91
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -34,6 +34,7 @@ Existuje mnoho výhod používání ověřování Azure AD zapisovat do protokol
   - Snížením vaší spoléhat na místní účty správců není nutné se obávat přihlašovacích údajů ke ztrátě nebo odcizení, uživatelé konfigurace slabé pověření atd.
   - Složitost hesla a doba platnosti zásady hesel nakonfigurované pro váš adresář Azure AD pomáhají zabezpečené virtuální počítače s Linuxem také.
   - Další zabezpečené přihlášení virtuální počítače Azure můžete nakonfigurovat službu Multi-Factor authentication.
+  - Možnost zapisovat do protokolu virtuální počítače s Linuxem v Azure Active Directory funguje i pro zákazníky, které používají [Federation Services](../../active-directory/connect/active-directory-aadconnectfed-whatis.md).
 
 - **Bezproblémová spolupráce:** řízení přístupu With Role-Based (RBAC), můžete určit, kdo může přihlásit ke daný virtuální počítač jako běžný uživatel nebo s oprávněním správce. Při připojení nebo opustit váš tým uživatelů, můžete aktualizovat zásady RBAC pro virtuální počítač k udělení přístupu podle potřeby. Toto prostředí je mnohem jednodušší než museli procházet nástroje virtuálních počítačů k odebrání nepotřebných veřejné klíče SSH. Když zaměstnanci nechte vaší organizace a jejich uživatelský účet je vypnuto nebo odstraněno z Azure AD, mají už přístupu k prostředkům.
 

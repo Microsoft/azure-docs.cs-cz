@@ -138,6 +138,8 @@
         - name: Použití Zeppelin
           href: ../hdinsight-apache-spark-zeppelin-notebook.md
           maintainContext: true
+        - name: Použití Grafany
+          href: ./hdinsight-grafana.md
         - name: Vytváření aplikací HDInsight
           items:
             - name: Instalace vlastních aplikací

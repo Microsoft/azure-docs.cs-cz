@@ -1,46 +1,46 @@
 ---
-title: "Spravované aplikace Azure vytvořit definici funkcí uživatelského rozhraní | Microsoft Docs"
-description: "Popisuje funkce pro použití při vytváření definice uživatelského rozhraní pro spravované aplikace Azure"
-services: azure-resource-manager
+title: Spravované aplikace Azure vytvořit definici funkcí uživatelského rozhraní | Microsoft Docs
+description: Popisuje funkce pro použití při vytváření definice uživatelského rozhraní pro spravované aplikace Azure
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: dcf570ca4bdc8eacb7e4d7a8ff0011c8e07b7a40
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="createuidefinition-functions"></a>Funkce CreateUiDefinition
 Tato část obsahuje podpisy pro všechny podporované funkce CreateUiDefinition.
 
-Pokud chcete používat funkci, uzavřete deklaraci do složených závorek. Například:
+Pokud chcete používat funkci, uzavřete deklaraci do složených závorek. Příklad:
 
 ```json
 "[function()]"
 ```
 
-Řetězce a dalších funkcí, může být odkazován jako parametry pro funkci, ale řetězce musí být uzavřena do jednoduchých uvozovek. Například:
+Řetězce a dalších funkcí, může být odkazován jako parametry pro funkci, ale řetězce musí být uzavřena do jednoduchých uvozovek. Příklad:
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-Případně vlastnosti výstupu funkce můžete odkazovat pomocí operátoru tečka. Například:
+Případně vlastnosti výstupu funkce můžete odkazovat pomocí operátoru tečka. Příklad:
 
 ```json
 "[func().prop1]"
 ```
 
-## <a name="referencing-functions"></a>Odkazování na funkce
+## <a name="referencing-functions"></a>Funkce odkazů
 Tyto funkce slouží k odkazování výstupy z vlastnosti nebo kontextu CreateUiDefinition.
 
 ### <a name="basics"></a>Základy
@@ -130,7 +130,7 @@ Následující příklad vrací `"FOOBAR"`:
 ## <a name="collection-functions"></a>Kolekce funkcí
 Tyto funkce slouží ke kolekcím, jako je řetězce formátu JSON, pole a objekty.
 
-### <a name="contains"></a>Obsahuje
+### <a name="contains"></a>obsahuje
 Vrátí `true` řetězec obsahuje určený dílčí řetězec, pole obsahuje zadanou hodnotu, nebo objekt obsahuje zadaný klíč.
 
 #### <a name="example-1-string"></a>Příklad 1: řetězec
@@ -369,7 +369,7 @@ Následující příklad vrací `{"key2": "raboof"}`:
 ## <a name="logical-functions"></a>Logické funkce
 Tyto funkce lze používat ve podmíněné příkazy. Některé funkce nemusí podporovat všechny typy dat JSON.
 
-### <a name="equals"></a>Rovná se
+### <a name="equals"></a>rovná se
 Vrátí `true` Pokud oba parametry mají stejný typ a hodnotu. Tato funkce podporuje všechny typy dat JSON.
 
 Následující příklad vrací `true`:
@@ -468,7 +468,7 @@ Následující příklad vrací `true`:
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>není
+### <a name="not"></a>ne
 Vrátí `true` Pokud je parametr výsledkem `false`. Tato funkce podporuje jenom parametry typu logická hodnota.
 
 Následující příklad vrací `true`:
@@ -510,7 +510,7 @@ Následující příklad vrací `2`:
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>Plovoucí desetinná čárka
+### <a name="float"></a>float
 Převede parametr s plovoucí desetinnou čárkou. Tato funkce podporuje parametry počet typ a řetězec.
 
 Následující příklad vrací `1.0`:
@@ -525,7 +525,7 @@ Následující příklad vrací `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>Řetězec
+### <a name="string"></a>řetězec
 Převede parametr na řetězec. Tato funkce podporuje parametry všech typů dat JSON.
 
 Následující příklad vrací `"1"`:
@@ -643,7 +643,7 @@ Následující příklad vrací `"https://portal.azure.com/"`:
 ```
 
 ## <a name="math-functions"></a>Matematické funkce
-### <a name="add"></a>Přidat
+### <a name="add"></a>přidat
 Sečte dvě čísla a vrátí výsledek.
 
 Následující příklad vrací `3`:
@@ -703,7 +703,7 @@ Následující příklad vrací `1`:
 "[min(1, 2)]"
 ```
 
-### <a name="max"></a>maximální počet
+### <a name="max"></a>max
 Vrátí větší dvou čísel.
 
 Následující příklad vrací `2`:
@@ -785,6 +785,6 @@ Následující příklad vrací `"1991-01-01T00:59:59.000Z"`:
 "[addHours('1990-12-31T23:59:59Z', 1)]"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Úvod do Azure Resource Manageru, najdete v části [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).
 

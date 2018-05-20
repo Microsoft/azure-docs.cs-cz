@@ -1,8 +1,8 @@
 ---
-title: "Ladění pravidla výkonu MapReduce Azure Data Lake Store | Microsoft Docs"
-description: "Ladění pravidla výkonu MapReduce Azure Data Lake Store"
+title: Ladění pravidla výkonu MapReduce Azure Data Lake Store | Microsoft Docs
+description: Ladění pravidla výkonu MapReduce Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,26 +10,23 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 522e03769a8f09acd88d92d72c4658407b86bd0b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f5586e7706d4dad7e3c943b2a661fa296b4d30bf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>Pokyny pro MapReduce na HDInsight a Azure Data Lake Store optimalizace výkonu
-
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Store**. Pokyny o tom, jak vytvořit najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Azure HDInsight cluster** s přístupem k účtu Data Lake Store. V tématu [vytvoření clusteru HDInsight s Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že povolení vzdálené plochy pro cluster.
-* **Použití prostředí MapReduce v HDInsight**.  Další informace najdete v tématu [použití MapReduce v Hadoop v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)  
-* **Ladění pokyny na ADLS výkonu**.  Obecný výkon koncepty, najdete v části [Data Lake Store výkonu ladění pokyny](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)  
+* **Použití prostředí MapReduce v HDInsight**.  Další informace najdete v tématu [použití MapReduce v Hadoop v HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
+* **Ladění pokyny na ADLS výkonu**.  Obecný výkon koncepty, najdete v části [Data Lake Store výkonu ladění pokyny](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Parametry
 

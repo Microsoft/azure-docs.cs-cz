@@ -1,21 +1,23 @@
 ---
-title: "Obsah portálu pro registraci aplikace"
-description: "Obsah portálu pro registraci aplikace"
+title: Obsah portálu pro registraci aplikace
+description: Obsah portálu pro registraci aplikace
 author: mtillman
 ms.author: mtillman
 manager: angrobe
 ms.date: 03/01/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: active-directory
 ms.technology: techgroup-identity
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 088e78c6487a6851ca8bdc17be7e43042389c597
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b905aeb98b0eed09a28081b824fa50ba052621ac
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
+# <a name="azure-active-directory-guided-setup-steps"></a>Azure Active Directory na základě kroky nastavení
+
 [!INCLUDE [active-directory-develop-guidedsetup-android-configure-arp.md](../../includes/active-directory-develop-guidedsetup-android-configure-arp.md)]
 [!INCLUDE [active-directory-develop-guidedsetup-aspnetwebapp-configure-arp.md](../../includes/active-directory-develop-guidedsetup-aspnetwebapp-configure-arp.md)]
 [!INCLUDE [active-directory-develop-guidedsetup-ios-configure-arp.md](../../includes/active-directory-develop-guidedsetup-ios-configure-arp.md)]

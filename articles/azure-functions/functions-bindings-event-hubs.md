@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 44dbe4c3157b1b765004975a6f04e3a96b477846
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.openlocfilehash: 8516f6d1f598e79bcb47922f02926f75c328861b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro Azure Functions
 
@@ -82,15 +82,29 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Chcete-li získat přístup k metadatům událostí, vytvořit vazbu k [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje `using` příkaz pro `Microsoft.ServiceBus.Messaging`).
+Získat přístup k [metadata události](#trigger---event-metadata) v kódu funkce vytvořit vazbu k [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje, pomocí příkazu pro `Microsoft.ServiceBus.Messaging`). Stejné vlastnosti také přistupujete pomocí vazby výrazů v podpis metody.  Následující příklad ukazuje, jak způsoby, jak získat stejná data:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage, TraceWriter log)
+public static void Run(
+    [EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData myEventHubMessage, 
+    DateTime enqueuedTimeUtc, 
+    Int64 sequenceNumber,
+    string offset,
+    TraceWriter log)
 {
-    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    log.Info($"Event: {Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    // Metadata accessed by binding to EventData
+    log.Info($"EnqueuedTimeUtc={myEventHubMessage.EnqueuedTimeUtc}");
+    log.Info($"SequenceNumber={myEventHubMessage.SequenceNumber}");
+    log.Info($"Offset={myEventHubMessage.Offset}");
+    // Metadata accessed by using binding expressions
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"SequenceNumber={sequenceNumber}");
+    log.Info($"Offset={offset}");
 }
 ```
+
 Chcete-li přijímat události v dávce, ujistěte se, `string` nebo `EventData` pole:
 
 ```cs
@@ -130,16 +144,29 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Pokud chcete získat přístup k metadatům událostí, vytvořit vazbu k [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje, pomocí příkazu pro `Microsoft.ServiceBus.Messaging`).
+Získat přístup k [metadata události](#trigger---event-metadata) v kódu funkce vytvořit vazbu k [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) objektu (vyžaduje, pomocí příkazu pro `Microsoft.ServiceBus.Messaging`). Stejné vlastnosti také přistupujete pomocí vazby výrazů v podpis metody.  Následující příklad ukazuje, jak způsoby, jak získat stejná data:
 
 ```cs
 #r "Microsoft.ServiceBus"
 using System.Text;
+using System;
 using Microsoft.ServiceBus.Messaging;
 
-public static void Run(EventData myEventHubMessage, TraceWriter log)
+public static void Run(EventData myEventHubMessage,
+    DateTime enqueuedTimeUtc, 
+    Int64 sequenceNumber,
+    string offset,
+    TraceWriter log)
 {
-    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    log.Info($"Event: {Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+    // Metadata accessed by binding to EventData
+    log.Info($"EnqueuedTimeUtc={myEventHubMessage.EnqueuedTimeUtc}");
+    log.Info($"SequenceNumber={myEventHubMessage.SequenceNumber}");
+    log.Info($"Offset={myEventHubMessage.Offset}");
+    // Metadata accessed by using binding expressions
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"SequenceNumber={sequenceNumber}");
+    log.Info($"Offset={offset}");
 }
 ```
 
@@ -180,7 +207,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 ### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
 
-Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zaznamená tělo zprávy aktivační události rozbočovače.
+Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte [metadata události](#trigger---event-metadata) a zaprotokoluje zprávu.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -197,8 +224,12 @@ Zde je vazba dat v *function.json* souboru:
 Tady je kód jazyka JavaScript:
 
 ```javascript
-module.exports = function (context, myEventHubMessage) {
-    context.log('Node.js eventhub trigger function processed work item', myEventHubMessage);    
+module.exports = function (context, eventHubMessage) {
+    context.log('Event Hubs trigger function processed message: ', myEventHubMessage);
+    context.log('EnqueuedTimeUtc =', context.bindingData.enqueuedTimeUtc);
+    context.log('SequenceNumber =', context.bindingData.sequenceNumber);
+    context.log('Offset =', context.bindingData.offset);
+     
     context.done();
 };
 ```
@@ -253,15 +284,31 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno | musí být nastavena na `eventHubTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**Směr** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**name** | neuvedeno | Název proměnné, která představuje položku událostí v kódu funkce. | 
-|**path** |**EventHubName** | Název centra událostí. | 
+|**type** | neuvedeno | musí být nastavena na `eventHubTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
+|**direction** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
+|**Jméno** | neuvedeno | Název proměnné, která představuje položku událostí v kódu funkce. | 
+|**Cesta** |**EventHubName** | Název centra událostí. | 
 |**consumerGroup** |**ConsumerGroup** | Volitelná vlastnost, která nastavuje [skupiny příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá přihlásit k odběru událostí v centru. Pokud tento parametr vynechán, `$Default` skupina uživatelů slouží. | 
-|**cardinality** | neuvedeno | Pro jazyk Javascript. Nastavte na `many` Chcete-li povolit dávkování.  Pokud tento parametr vynechán, nebo nastavte `one`, funkci byl předán jedné zprávy. | 
+|**Mohutnost** | neuvedeno | Pro jazyk Javascript. Nastavte na `many` Chcete-li povolit dávkování.  Pokud tento parametr vynechán, nebo nastavte `one`, funkci byl předán jedné zprávy. | 
 |**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů. Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro [obor názvů](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), ne samotný centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivační událost.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="trigger---event-metadata"></a>Aktivační událost - metadata události
+
+Aktivační událost Event Hubs poskytuje několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Tyto vlastnosti jsou [EventData](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventdata) třídy.
+
+|Vlastnost|Typ|Popis|
+|--------|----|-----------|
+|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` Instance.|
+|`EnqueuedTimeUtc`|`DateTime`|Zařazených do fronty čas v UTC.|
+|`Offset`|`string`|Posun dat relativně k datový proud oddílu centra událostí. Posun je značka nebo identifikátor události v rámci služby Event Hubs datového proudu. Identifikátor je jedinečný v rámci oddílu centra událostí datového proudu.|
+|`PartitionKey`|`string`|Oddíl, která událost data se mají posílat.|
+|`Properties`|`IDictionary<String,Object>`|Vlastnosti uživatele data události.|
+|`SequenceNumber`|`Int64`|Logické pořadové číslo události.|
+|`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně data události.|
+
+V tématu [příklady kódu pro](#trigger---example) , použijte tyto vlastnosti dříve v tomto článku.
 
 ## <a name="trigger---hostjson-properties"></a>Aktivační událost - host.json vlastnosti
 
@@ -427,10 +474,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno | Musí být nastavena na "eventHub". |
-|**Směr** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytvoření vazby na portálu Azure. |
-|**name** | neuvedeno | Název proměnné používá v kódu funkce, která představuje událost. | 
-|**path** |**EventHubName** | Název centra událostí. | 
+|**type** | neuvedeno | Musí být nastavena na "eventHub". |
+|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytvoření vazby na portálu Azure. |
+|**Jméno** | neuvedeno | Název proměnné používá v kódu funkce, která představuje událost. | 
+|**Cesta** |**EventHubName** | Název centra událostí. | 
 |**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů. Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, ne samotný centra událostí. Tento připojovací řetězec musí mít oprávnění pro odesílání k odeslání zprávy do datového proudu událostí.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -40,6 +40,8 @@
   items:
     - name: Povolení automatického vytváření témat
       href: apache-kafka-auto-create-topics.md
+    - name: Použití Kafka se službou IoT Hub
+      href: apache-kafka-connector-iot-hub.md
     - name: Instalace aplikací HDInsight
       href: ../hdinsight-apps-install-applications.md
       maintainContext: true

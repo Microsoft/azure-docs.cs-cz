@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 70b07cae9a1dc8b45e27f95e19fbc84f06a0b6d3
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
 Pomocí zprostředkovatele prostředků Azure zásobníku SQL serveru ke zveřejnění databází SQL jako služba Azure zásobníku. Služba zprostředkovatele prostředků SQL běží na poskytovateli prostředků SQL virtuální počítač, který je virtuálního počítače jádra serveru systému Windows.
@@ -73,6 +73,8 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 | **Odinstalace** | Odebere poskytovatele prostředků a všechny přidružené prostředky (viz následující poznámky k). | Ne |
 | **Režim DebugMode** | Brání automatické čištění při selhání. | Ne |
 
+>[!NOTE]
+> SKU může trvat až jednu hodinu, mají být zobrazeny v portálu. Databázi nelze vytvořit, dokud nebude vytvořen verze SKU.
 
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>Nasazení pomocí vlastního skriptu poskytovatele prostředků SQL

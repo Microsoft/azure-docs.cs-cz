@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/11/2018
-ms.openlocfilehash: 030af72951e226d3484706e627bc8b74d5469670
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.date: 05/14/2018
+ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Pochopení výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupů, které jsou k dispozici pro úlohu služby Azure Stream Analytics. Výstupy umožňují ukládat a uložte výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýza a datových skladů vaše data. 
@@ -86,7 +86,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytvoření vý
 | Účet úložiště | Název účtu úložiště, kde jsou odesílání výstupu. |
 | Klíč účtu úložiště | Tajný klíč přidružený k účtu úložiště. |
 | Kontejner úložiště | Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené ve službě Microsoft Azure Blob. Při nahrávání do objektu blob ve službě Blob, je nutné zadat kontejner pro tento objekt blob. |
-| Vzor cesty | Volitelné. Vzor cesty souborů používá k zápisu objektů BLOB v rámci zadaného kontejneru. </br></br> Ve vzoru cestu můžete použít jeden nebo více instancí datum čas proměnných pro určení četnosti, které jsou napsané objekty BLOB: </br> {date}, {time} </br> </br>Můžete určit také jeden název vlastní {pole} z vašich dat událostí do oddílu objekty BLOB, kde název pole je alfanumerické znaky a může obsahovat mezery, pomlčky a podtržítka. Omezení na vlastních polích, patří: <ul><li>Případ nezaložené (nelze rozdíly mezi sloupci "ID" a sloupec "id")</li><li>Vnořená pole nejsou povolené (místo toho použít alias v dotazu úlohy k "vyrovnání" pole)</li><li>Výrazy nelze použít jako název pole</li></ul>Příklady: <ul><li>Příklad 1: cluster1/logs / {date} / {time}</li><li>Příklad 2: cluster1/logs / {date}</li><li>Příklad 3: cluster1 / {client_id} / {date} / {time}</li><li>Příklad 4: cluster1 / {myField} kde je dotaz: Vyberte data.myField jako myField vstup z;</li></ul><BR> Pojmenovávání souborů zahrnuje následující konvence: </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> Příklad výstupní soubory: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| Vzor cesty | Volitelné. Vzor cesty souborů používá k zápisu objektů BLOB v rámci zadaného kontejneru. </br></br> Ve vzoru cestu můžete použít jeden nebo více instancí datum čas proměnných pro určení četnosti, které jsou napsané objekty BLOB: </br> {date}, {time} </br> </br>Pokud si nejste [preview](https://aka.ms/ASAPreview), můžete také určit vlastní {pole} názvů z vašich dat událostí na objekty BLOB oddílu, kde název pole je alfanumerické znaky a může obsahovat mezery, pomlčky a podtržítka. Omezení na vlastních polích, patří: <ul><li>Případ nezaložené (nelze rozdíly mezi sloupci "ID" a sloupec "id")</li><li>Vnořená pole nejsou povolené (místo toho použít alias v dotazu úlohy k "vyrovnání" pole)</li><li>Výrazy nelze použít jako název pole</li></ul>Příklady: <ul><li>Příklad 1: cluster1/logs / {date} / {time}</li><li>Příklad 2: cluster1/logs / {date}</li><li>Příklad 3 (preview): cluster1 / {client_id} / {date} / {time}</li><li>Příklad 4 (preview): cluster1 / {myField} kde je dotaz: Vyberte data.myField jako myField vstup z;</li></ul><BR> Pojmenovávání souborů zahrnuje následující konvence: </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> Příklad výstupní soubory: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Formát data | Volitelné. Pokud se v cestě předponu používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány soubory. Příklad: Rrrr/MM/DD |
 | Formát času | Volitelné. Pokud token čas se používá v cestě předponu, zadejte formát času, ve kterém jsou uspořádány soubory. Aktuálně jedinou podporovanou hodnotou je HH. |
 | Formát serializace události | Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro.
@@ -289,7 +289,7 @@ Následující tabulka shrnuje podporu oddílu a počet výstupních zapisovače
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Ano | Použití {date} a {time} tokeny v předponu vzorek cesty. Vyberte formát, datum, jako je například RRRR/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní vytváření oddílů pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). | 
 | Azure SQL Database | Ne | Žádný | Není k dispozici. | 
-| Azure Blob Storage | Ano | Použití {date} a {time} tokeny nebo jedné {fieldname} z vaší pole událostí v vzorek cesty. Vyberte formát, datum, jako je například RRRR/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní vytváření oddílů pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). | 
+| Azure Blob Storage | Ano | Použití {date} a {time} tokeny od vaší pole událostí v vzorek cesty. Vyberte formát, datum, jako je například RRRR/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. Jako součást [preview](https://aka.ms/ASAPreview), můžou být dělené výstupního objektu blob jedna událost vlastní atribut {fieldname}. | Následuje vstupní vytváření oddílů pro [plně paralelní dotazy](stream-analytics-scale-jobs.md). | 
 | Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.</br> Pokud výstup, který nadřazeného (předchozí) dotazu krok počet zapisovače stejným způsobem je zarovnán klíč oddílu centra událostí je stejný počet výstupní oddíly centra událostí. Každý zapisovače používá pro EventHub [EventHubSender třída](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí na konkrétní oddíl. </br> Pokud je klíč oddílu není v souladu s nadřazeného (předchozí) dotazu krok počet zapisovače centra událostí výstup stejný jako počet oddílů v této předchozí krok. Každý zapisovače používá EventHubClient [SendBatchAsync třída](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí na všechny oddíly výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. | 
 | Azure Table Storage | Ano | Všechny výstupního sloupce.  | Následuje vstupní vytváření oddílů pro [plně paralelizovaná málo dotazy](stream-analytics-scale-jobs.md). | 

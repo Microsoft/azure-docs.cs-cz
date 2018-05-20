@@ -10,11 +10,11 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1dba7c302d8acad6133c0e7c6a2186f7ba617e2c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5409bf198d0e3f6537619ef4698d9f2e31bd27c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení bez nutnosti registrace koncového uživatele pro vytvoření nového hesla
 
@@ -33,16 +33,27 @@ Fungovalo správně, musí být telefonních čísel ve formátu *+ CountryCode 
 
 Pokud použijete výchozí nastavení v Azure AD Connect, budou vytvořeny následující mapování:
 
-| Místní služby Active Directory | Azure AD | Azure AD authentication kontaktní údaje |
-| --- | --- | --- |
-| telephoneNumber | Telefon do kanceláře | Jiný telefon |
-| mobilní | Mobilní telefon | Telefon |
+| Místní služby Active Directory | Azure AD |
+| --- | --- |
+| telephoneNumber | Telefon do kanceláře |
+| mobilní | Mobilní telefon |
 
-Dokud uživatel potvrdí svá data ověřování se mohou objevit tato pole prázdná.
+Když uživatel své mobilní telefonní číslo, bude s tímto číslem vyplní pole Phone v části kontaktní informace o ověřování ve službě Azure AD.
+
+## <a name="authentication-contact-info"></a>Kontaktní údaje pro ověření
 
 Globální správce, můžete nastavit ručně kontaktní informace o ověřování pro uživatele, jak je zobrazen na následujícím snímku obrazovky.
 
 ![Obraťte se na][Contact]
+
+Pokud se vyplní pole Phone a v zásadách SSPR je povolené mobilní telefon, uživatel uvidí, že číslo na stránce registrace resetování hesla a během heslo pracovního postupu pro obnovení. 
+
+Pole alternativní telefonní se nepoužije pro resetování hesla.
+
+Pokud se vyplní pole e-mailu a e-mailu je povolena v zásadách SSPR, uživatel uvidí, že e-mailu na stránce registrace resetování hesla a během heslo pracovního postupu pro obnovení.
+
+Pokud je zadáno pole s alternativní e-mailu a e-mailu je povolena v zásadách SSPR, uživatel bude **není** najdete v článku, že e-mailu na heslo resetovat registrační stránce, ale zobrazí se jeho během heslo pracovního postupu pro obnovení. 
+
 
 ## <a name="security-questions-and-answers"></a>Bezpečnostní otázky a odpovědi
 

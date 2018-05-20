@@ -1,24 +1,24 @@
 ---
-title: "Přidat vlastní sestavy stavu Service Fabric | Microsoft Docs"
-description: "Popisuje, jak odesílat sestavy vlastní stavu entity stavu Azure Service Fabric. Poskytuje doporučení pro navrhování a implementace sestav stavu kvality."
+title: Přidat vlastní sestavy stavu Service Fabric | Microsoft Docs
+description: Popisuje, jak odesílat sestavy vlastní stavu entity stavu Azure Service Fabric. Poskytuje doporučení pro navrhování a implementace sestav stavu kvality.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 1cd429ed8252573f8e8c3ed11d6c841cba855b52
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3eccb6ba18e6689c3726c8d930279b8a85ab1c92
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidání vlastních stavových sestav Service Fabric
 Představuje Azure Service Fabric [stavu modelu](service-fabric-health-introduction.md) navržený tak, aby příznak není v pořádku, cluster a aplikace podmínek na konkrétní entity. Health model používá **stavu reporters** (součásti systému a watchdogs). Cílem je rychlé a snadné diagnostiky a opravy. Služba zapisovače muset myslíte o stavu předem. Všechny podmínku, která může mít vliv na stav by měl být zaznamenány na, zejména v případě, že může pomoci příznak problémy blízko kořenu. Informace o stavu můžete ušetřit čas a úsilí na ladění a šetření. Užitečnost je obzvláště vymazat, jakmile služba je spuštěná ve velkém měřítku v cloudu (privátní nebo Azure).
@@ -180,7 +180,7 @@ Zprávy o přechody smysl pro služby vytváření sestav na sami, prostřednict
 ## <a name="implement-health-reporting"></a>Implementovat, vytváření sestav stavu
 Jakmile podrobnosti entitu a sestavy jsou jasné, odesílání sestav stavu lze provést prostřednictvím rozhraní API, Powershellu nebo REST.
 
-### <a name="api"></a>API
+### <a name="api"></a>Rozhraní API
 Chcete-li sestavy prostřednictvím rozhraní API, vytvoření sestavy stavu specifické pro typ entity, které se chcete v sestavě. Udělte sestavy stavu klienta. Alternativně vytvořte informace o stavu a předejte jej opravit reporting metody na `Partition` nebo `CodePackageActivationContext` chcete sestavu podle aktuální entity.
 
 Následující příklad ukazuje pravidelné generování sestav z sledovací zařízení v rámci clusteru. Sledovací zařízení kontroluje, zda externí prostředek je přístupná z v rámci uzlu. Prostředek je potřeba služba manifestu v aplikaci. Pokud prostředek není k dispozici, jiných služeb v aplikaci můžete i nadále fungovat správně. Proto sestavy se odesílají na entity balíček nasazené služby každých 30 sekund.

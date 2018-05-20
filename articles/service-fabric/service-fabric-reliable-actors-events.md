@@ -1,24 +1,24 @@
 ---
-title: "Události v na základě objektu actor Azure mikroslužeb | Microsoft Docs"
-description: "Úvod do události pro Service Fabric Reliable Actors."
+title: Události v na základě objektu actor Azure mikroslužeb | Microsoft Docs
+description: Úvod do události pro Service Fabric Reliable Actors.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aa01b0f7-8f88-403a-bfe1-5aba00312c24
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 779d39e2910d0de25ee07b8fae3ca7a0e9772776
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: ed920c8d4ff7254b19c6eef8f5961593bb56bacf
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="actor-events"></a>Události objektu actor
 Události objektu actor poskytují způsob, jak odeslat oznámení best effort z objektu actor pro klienty. Události objektu actor navržených pro komunikaci objektu actor klienta a by se neměla používat pro komunikaci objektu actor actor.
@@ -107,7 +107,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
 * [Objektu actor Diagnostika a sledování výkonu](service-fabric-reliable-actors-diagnostics.md)
 * [Referenční dokumentace rozhraní API objektu actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)

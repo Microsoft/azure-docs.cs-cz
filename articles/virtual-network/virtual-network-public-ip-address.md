@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 8c052b45a0db42e2220c052b03f53f538de107ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c28d409bbdb7a4100f2bb9f00ff6f58a13855ea4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvoření, změnit nebo odstranit veřejnou IP adresu
 
-Další informace o veřejné IP adresy a jak vytvářet, měnit a odstraňovat jeden. Veřejná IP adresa je prostředek s vlastním konfigurovatelným nastavením. Přiřazení veřejnou IP adresu k dalším prostředkům služby Azure umožňuje:
-- Příchozí připojení k Internetu k prostředkům, například virtuální počítače Azure, sady škálování virtuálního počítače Azure, Azure VPN Gateway, aplikačních bran a internetové nástroje pro vyrovnávání zatížení Azure. Prostředky Azure nemůže přijímat příchozí komunikaci z Internetu bez přiřazenou veřejnou IP adresu. Některé prostředky Azure jsou ze své podstaty přístupné prostřednictvím veřejných IP adres, musí mít jiné prostředky veřejné IP adresy, které jsou jim přiřazeny byla přístupná z Internetu.
-- Odchozí připojení k Internetu pomocí předvídatelný IP adresy. Virtuální počítač může například komunikovat odchozí k Internetu bez veřejnou IP adresu přiřadit k němu, ale jeho adresa je adresa sítě přeložit v Azure nepředvídatelným veřejné adresy. Přiřazení veřejnou IP adresu prostředku umožňuje vědět, která IP adresa se používá pro odchozí připojení. Když předvídatelný, můžete změnit adresu, v závislosti na metodě přiřazení vybrané. Další informace najdete v tématu [vytvoření veřejné IP adresy](#create-a-public-ip-address). Další informace o odchozí připojení z prostředků Azure, najdete [pochopit odchozí připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku.
+Další informace o veřejné IP adresy a jak vytvářet, měnit a odstraňovat jeden. Veřejná IP adresa je prostředek s vlastním konfigurovatelným nastavením. Přiřazení veřejnou IP adresu pro prostředek služby Azure, který podporuje veřejných IP adres umožňuje:
+- Příchozí komunikaci z Internetu k prostředku, například Azure virtuální počítače (VM), Azure Application Gateway, nástroje pro vyrovnávání zatížení Azure, Azure VPN Gateway a dalších. Můžete stále komunikovat s některým prostředkům, jako jsou virtuální počítače z Internetu, pokud virtuální počítač nemá veřejnou IP adresu k němu přiřazen, dokud virtuální počítač je součástí fondu back-end pro vyrovnávání zatížení a nástroje pro vyrovnávání zatížení je přiřazen veřejnou IP adresu. Pokud chcete zjistit, zda prostředek pro konkrétní službu Azure lze přiřadit veřejnou IP adresu, nebo jestli může být přenášena přes veřejnou IP adresu z různých prostředků Azure s, najdete v dokumentaci pro službu. 
+- Odchozí připojení k Internetu pomocí předvídatelný IP adresy. Virtuální počítač může například komunikovat odchozí k Internetu bez veřejnou IP adresu přiřadit k němu, ale jeho adresa je adresa sítě přeložit v Azure na nepředvídatelným veřejnou adresu, ve výchozím nastavení. Přiřazení veřejnou IP adresu prostředku umožňuje vědět, která IP adresa se používá pro odchozí připojení. Když předvídatelný, můžete změnit adresu, v závislosti na metodě přiřazení vybrané. Další informace najdete v tématu [vytvoření veřejné IP adresy](#create-a-public-ip-address). Další informace o odchozí připojení z prostředků Azure, najdete v části [pochopit odchozí připojení](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="before-you-begin"></a>Než začnete
 

@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: ce3b3e6f3c7ee0c7198c27ed0ca0e3610d26f143
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 84d7f407781f09fed4667a22f0a46bc72c6e02a9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric typů uzlů a virtuálního počítače sady škálování
 [Sady škálování virtuálního počítače](/azure/virtual-machine-scale-sets) jsou Azure výpočetní prostředky. Můžete nasazovat a spravovat kolekci jako sada virtuálních počítačů sady škálování. Každý typ uzlu, který definujete v clusteru služby Azure Service Fabric nastaví samostatné škálování.  Nastavit modulu runtime Service Fabric, které jsou nainstalované na každém virtuálním počítači v měřítka. Můžete nezávisle škálovat každý typ uzlu nahoru nebo dolů, změňte skladová položka operačního systému, spuštěná v každém uzlu clusteru, mají různé sady otevřené porty a použít jiný kapacity metriky.

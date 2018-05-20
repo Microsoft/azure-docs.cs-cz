@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d692e4dc639cbd290b465980da2319ac590627c
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f7050a034bea3a92376afbebb3b1489e61382a83
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrace z nástroje Orchestrator do služby Azure Automation (Beta)
 Sady Runbook v [System Center Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) jsou založené na aktivit z integračních balíčků, které jsou napsané konkrétně pro Orchestrator, zatímco runbooky ve službě Azure Automation jsou založené na prostředí Windows PowerShell.  [Grafické runbooky](automation-runbook-types.md#graphical-runbooks) ve službě Azure Automation mít podobný vzhled do sady runbook nástroje Orchestrator s jejich aktivity představující rutiny prostředí PowerShell, podřízené runbooky a prostředky.
@@ -92,7 +92,7 @@ Následující ukázkový příkaz převede sady runbook do souboru exportu, ná
 ### <a name="log-files"></a>Soubory protokolu
 Převaděč Runbook vytvoří následující soubory protokolů ve stejném umístění jako převedené sady runbook.  Pokud soubory již existují, budou přepsány informace z poslední převod.
 
-| Soubor | Obsah |
+| File | Obsah |
 |:--- |:--- |
 | Převaděč Runbook - Progress.log |Podrobné kroky převodu, včetně informací pro každou aktivitu úspěšně převést a upozornění pro každou aktivitu nehodí pro převod. |
 | Převaděč Runbook - Summary.log |Souhrn poslední převod včetně všechna upozornění a následnou akci úlohy, které je třeba provést jako je například vytváření proměnné požadované převedené sady runbook. |

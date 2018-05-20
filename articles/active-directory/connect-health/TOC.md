@@ -10,6 +10,7 @@
 ## [Instalace agenta služby Azure AD Connect Health](active-directory-aadconnect-health-agent-install.md)
 ## [Operace služby Azure AD Connect Health](active-directory-aadconnect-health-operations.md)
 ## [Chyby při synchronizaci](../active-directory-aadconnect-troubleshoot-sync-errors.md)
+## [Diagnostika chyb synchronizace duplicitních atributů](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 # Řešení potíží
 ## [Azure AD Connect Health – nejčastější dotazy](active-directory-aadconnect-health-faq.md)

@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k softwaru Chef v Azure
+metadata:
+  title: Dokumentace k softwaru Chef v Azure – kurzy, ukázky, odkazy a prostředky
+  meta.description: Chef Software provides a DevOps automation platform for Linux and Windows that enables the management of both physical and virtual server configurations. Learn how to use Chef Software products to automate infrastructure as code (IaC) recipes and manage and deploy virtual machines on Azure with quickstarts and tutorials.
+  services: chef
+  author: tomarcher
+  manager: jeconnoc
+  ms.service: chef
+  ms.tgt_pltfrm: na
+  ms.devlang: devops
+  ms.topic: landing page
+  ms.date: 05/15/2018
+  ms.author: tarcher
+  ms.openlocfilehash: 644b50455ac4e7e7aba818ae31f95c736ae5d632
+  ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/17/2018
+abstract:
+  description: Software Chef poskytuje automatizační platformu DevOps pro Linux a Windows, která umožňuje současnou správu fyzických i virtuálních serverových konfigurací. Naučte se prostřednictvím šablon Rychlý start a kurzů využívat softwarové produkty Chef k automatizaci návodů pro infrastrukturu jako kód (IaC) a správě a nasazení virtuálních počítačů v Azure.
+  aside:
+    image:
+      alt: Logo Chefu
+      height: 133
+      width: 48
+      src: media/chef.png
+    title: 
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Nainstalujte a nakonfigurujte Chef a potom ho použijte k vytvoření virtuálního počítače v Azure.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/media/index/azure_dev-9.svg
+      text: Instalace a konfigurace Chefu
+      href: ./chef-extension-portal.md
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak použít softwarové nástroje Chef k vytvoření a správě výpočetní a síťové infrastruktury Azure.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-machines/windows/chef-automation">Automatizace nasazení virtuálních počítačů Azure pomocí Chefu</a>
+- title: Prostředky a nástroje
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Chef Automate
+      html: <p><a href="https://docs.chef.io/chef_automate.html">Přehled nástroje Chef Automate</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Průvodce instalací nástroje Chef Automate</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Chef Automate v Azure Marketplace</a></p>
+    - title: Softwarové nástroje Chef
+      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Rozšíření Chef pro Visual Studio Team Services</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Rozšíření Habitat pro Visual Studio Team Services</a></p>
+    - title: Novinky týkající se softwaru Chef
+      html: <p><a href="https://blog.chef.io/">Blog o softwaru Chef</a></p>

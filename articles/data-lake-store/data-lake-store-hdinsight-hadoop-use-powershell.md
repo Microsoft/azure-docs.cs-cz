@@ -8,18 +8,17 @@ editor: cgronlun
 ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 9591da6826c0bdd369792e8a9fe125619a091f29
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4c08dac95a2d2b52f1a1d28f6933b94ad4db10b7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Pomocí prostředí Azure PowerShell k vytvoření clusteru HDInsight s Data Lake Store (jako další úložiště)
+
 > [!div class="op_single_selector"]
 > * [Pomocí portálu](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Pomocí prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -54,7 +53,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-* **Windows SDK**. Můžete nainstalovat z [zde](https://dev.windows.com/en-us/downloads). To použijete k vytvoření certifikátu zabezpečení.
+* **Windows SDK**. Můžete si ho nainstalovat [odtud](https://dev.windows.com/en-us/downloads). To použijete k vytvoření certifikátu zabezpečení.
 * **Azure Active Directory instanční objekt**. Kroky v tomto kurzu poskytují pokyny o tom, jak vytvořit objekt služby ve službě Azure AD. Ale musí být správce Azure AD mohli vytvořit objekt služby. Pokud jste správce Azure AD, můžete přeskočit tento požadavek a pokračujte v tomto kurzu.
 
     **Pokud si nejste správce Azure AD**, nebudete moci provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musíte vám správce Azure AD nejdřív vytvořit objekt služby, před vytvořením clusteru HDInsight s Data Lake Store. Navíc instanční objekt musí být vytvořen pomocí certifikátu, jak je popsáno v [vytvořit objekt služby pomocí certifikátu](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
@@ -122,6 +121,7 @@ Postupujte podle těchto kroků můžete vytvořit Data Lake Store.
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>Nastavení ověřování pro přístup na základě rolí k Data Lake Store
+
 Každé předplatné služby Azure souvisí s Azure Active Directory. Uživatelů a služeb, která přistupují k prostředkům odběru pomocí portálu Azure nebo rozhraní API služby Azure Resource Manager, musí nejprve ověřit pomocí této služby Azure Active Directory. Udělením přístupu k předplatných Azure a služby přiřazením příslušné role na prostředek služby Azure.  Objekt služby pro služby, identifikuje službu v Azure Active Directory (AAD). Tato část ukazuje postup udělení aplikační služba, stejně jako HDInsight, přístup k prostředku Azure (účet Azure Data Lake Store jste vytvořili dříve) vytvořením objekt služby pro aplikaci a přiřazení rolí k, pomocí prostředí Azure PowerShell.
 
 Nastavení ověřování služby Active Directory pro Azure Data Lake, musíte provést následující úlohy.
@@ -130,6 +130,7 @@ Nastavení ověřování služby Active Directory pro Azure Data Lake, musíte p
 * Vytvoření aplikace v Azure Active Directory a objektu služby
 
 ### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
+
 Zajistěte, aby byla [Windows SDK](https://dev.windows.com/en-us/downloads) nainstalovat před provedením kroků v této části. Musíte také vytvořit adresář, jako například **C:\mycertdir**, kde bude certifikát vytvořen.
 
 1. V okně PowerShell přejděte do umístění, kam jste nainstalovali Windows SDK (obvykle `C:\Program Files (x86)\Windows Kits\10\bin\x86` a použít [MakeCert] [ makecert] nástroj vytvořit certifikát podepsaný svým držitelem a privátní klíč. Použijte následující příkazy.
@@ -147,13 +148,14 @@ Zajistěte, aby byla [Windows SDK](https://dev.windows.com/en-us/downloads) nain
     Po zobrazení výzvy zadejte dříve zadaný heslo soukromého klíče. Hodnota zadaná **-SP** parametr je heslo, které souvisí s soubor .pfx. Po úspěšném dokončení příkazu, měli byste taky vidět CertFile.pfx v adresáři certifikát, který jste zadali.
 
 ### <a name="create-an-azure-active-directory-and-a-service-principal"></a>Vytvoření služby Azure Active Directory a objektu služby
+
 V této části provedete kroky k vytvoření služby hlavní pro aplikaci Azure Active Directory, přiřaďte roli instanční objekt a ověřit jako objekt služby tím, že poskytuje certifikát. Spusťte následující příkazy k vytvoření aplikace v Azure Active Directory.
 
 1. Vložte následující rutiny v okně konzoly prostředí PowerShell. Ujistěte se, hodnota zadaná **– DisplayName** vlastnost je jedinečný. Navíc hodnoty **– Domovská stránka** a **- IdentiferUris** jsou zástupné hodnoty a nejsou ověřené.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

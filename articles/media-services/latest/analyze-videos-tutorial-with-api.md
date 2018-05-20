@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: a228443a787db2cc71a7700b978d8f52edb59e14
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 54c49645722b6545d8ae872151b9b82674d44523
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
 
@@ -27,9 +27,9 @@ V tomto kurzu získáte informace o následujících postupech:
 > [!div class="checklist"]
 > * Spuštění služby Azure Cloud Shell
 > * Vytvoření účtu Media Services
-> * Přístupu k rozhraní Media Services API
+> * Přístup k rozhraní API služby Media Services
 > * Konfiguraci ukázkové aplikace
-> * Podrobném prozkoumání vzorového kódu
+> * Podrobné prozkoumání vzorového kódu
 > * Spuštění aplikace
 > * Prozkoumání výstupu
 > * Vyčištění prostředků
@@ -62,42 +62,14 @@ Tato část prozkoumává funkce definované v souboru [Program.cs](https://gith
 
 Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. Nejprve musíte získat token a potom z navráceného objektu vytvořit objekt **ClientCredential**. K získání tokenu slouží objekt **ArmClientCredential** v kódu, který jste naklonovali na začátku článku.  
 
-```csharp
-private static IAzureMediaServicesClient CreateMediaServicesClient(ConfigWrapper config)
-{
-    ArmClientCredentials credentials = new ArmClientCredentials(config);
-
-    return new AzureMediaServicesClient(config.ArmEndpoint, credentials)
-    {
-        SubscriptionId = config.SubscriptionId,
-    };
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Vytvoření výstupního prostředku k uložení výsledku úlohy 
 
 Výstupní prostředek uloží výsledek vaší úlohy. Projekt definuje funkci **DownloadResults**, která stáhne výsledky z tohoto výstupního prostředku do výstupní složky, kde si je můžete zkontrolovat.
 
-```csharp
-private static Asset CreateOutputAsset(IAzureMediaServicesClient client, string resourceGroupName, string accountName, string assetName)
-{
-    // Check if an Asset already exists
-    Asset outputAsset = client.Assets.Get(resourceGroupName, accountName, assetName);
-    Asset asset = new Asset();
-    string outputAssetName = assetName;
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
-    if (outputAsset != null)
-    {
-        // Name collision! In order to get the sample to work, let's just go ahead and create a unique asset name
-        // Note that the returned Asset can have a different name than the one specified as an input parameter.
-        // You may want to update this part to throw an Exception instead, and handle name collisions differently.
-        string uniqueness = @"-" + Guid.NewGuid().ToString();
-        outputAssetName += uniqueness;
-    }
-
-    return client.Assets.CreateOrUpdate(resourceGroupName, accountName, outputAssetName, asset);
-}
-```
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Vytvoření transformace a úlohy, která analyzuje videa
 
 Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvykle nastaví jako předpis. Potom stačí odeslat **Úlohu**, která tento předpis použije pro video. Když odešlete novou Úlohu pro každé nové video, použije se tento předpis pro všechna videa ve vaší knihovně. V Media Services se pro předpis používá označení **transformace**. Další informace najdete v tématu [Transformace a úlohy](transform-concept.md). Ukázka popsaná v tomto kurzu definuje předpis, který analyzuje zadané video. 
@@ -108,73 +80,15 @@ Když vytváříte novou instanci **Transformace**, musíte určit, co má vytvo
 
 Než začnete vytvářet **transformaci**, ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže).  Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
-```csharp
-private static Transform EnsureTransformExists(IAzureMediaServicesClient client, 
-    string resourceGroupName, 
-    string accountName, 
-    string transformName, 
-    Preset preset)
-{
-    // Does a Transform already exist with the desired name? Assume that an existing Transform with the desired name
-    // also uses the same recipe or Preset for processing content.
-    Transform transform = client.Transforms.Get(resourceGroupName, accountName, transformName);
-
-    if (transform == null)
-    {
-        // Start by defining the desired outputs.
-        TransformOutput[] outputs = new TransformOutput[]
-        {
-            new TransformOutput(preset),
-        };
-
-        transform = client.Transforms.CreateOrUpdate(resourceGroupName, accountName, transformName, outputs);
-    }
-
-    return transform;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>Úloha
 
 Jak je uvedeno výše, objekt **Transformace** je předpis a **Úloha** je vlastní požadavek na službu Media Services, aby **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup. Umístění videa můžete zadat pomocí adres URL protokolu HTTPS, adres URL podpisu SAS nebo prostředků, které máte ve svém účtu služby Media Services. 
 
-V tomto příkladu se vstupní video nahraje ze zadané adresy URL protokolu HTTPS.  
+V tomto příkladu je vstupem úlohy místní video.  
 
-```csharp
-private static Job SubmitJob(IAzureMediaServicesClient client, string resourceGroupName, string accountName, string transformName, string jobName, string outputAssetName)
-{
-    JobInputHttp jobInput =
-        new JobInputHttp(files: new[] { "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4" });
-            
-    string uniqueJobName = jobName;
-    Job job = client.Jobs.Get(resourceGroupName, accountName, transformName, jobName);
-
-    if (job != null)
-    {
-        // Job already exists with the same name, so let's append a GUID
-        string uniqueness = @"-" + Guid.NewGuid().ToString();
-        uniqueJobName += uniqueness;
-    }
-
-    JobOutput[] jobOutputs =
-    {
-        new JobOutputAsset(outputAssetName),
-    };
-
-    job = client.Jobs.Create(
-                resourceGroupName,
-                accountName,
-                transformName,
-                uniqueJobName,
-                new Job
-                {
-                    Input = jobInput,
-                    Outputs = jobOutputs,
-                });
-
-    return job;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#SubmitJob)]
 
 ### <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
@@ -186,107 +100,19 @@ Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a 
 
 **Úloha** obvykle prochází následujícími stavy: **Naplánováno**, **Ve frontě**, **Zpracovávání** a **Dokončeno** (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu **Chyba**. Když úlohu zrušíte, změní se její stav na **Rušení** a potom na **Zrušeno**.
 
-```csharp
-private static Job WaitForJobToFinish(IAzureMediaServicesClient client,
-    string resourceGroupName,
-    string accountName,
-    string transformName,
-    string jobName)
-{
-    int SleepInterval = 60 * 1000;
-
-    Job job = null;
-
-    while (true)
-    {
-        job = client.Jobs.Get(resourceGroupName, accountName, transformName, jobName);
-
-        if (job.State == JobState.Finished || job.State == JobState.Error || job.State == JobState.Canceled)
-        {
-            break;
-        }
-
-        Console.WriteLine($"Job is {job.State}.");
-        for (int i = 0; i < job.Outputs.Count; i++)
-        {
-            JobOutput output = job.Outputs[i];
-            Console.Write($"\tJobOutput[{i}] is {output.State}.");
-            if (output.State == JobState.Processing)
-            {
-                Console.Write($"  Progress: {output.Progress}");
-            }
-            Console.WriteLine();
-        }
-        System.Threading.Thread.Sleep(SleepInterval);
-    }
-
-    return job;
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
 
 ### <a name="download-the-result-of-the-job"></a>Stažení výsledku úlohy
 
- Následující funkce stáhne výsledky z výstupního prostředku do „výstupní“ složky, abyste si mohli výsledky úlohy prohlédnout. 
+Následující funkce stáhne výsledky z výstupního prostředku do „výstupní“ složky, abyste si mohli výsledky úlohy prohlédnout. 
 
-```csharp
-private static void DownloadResults(IAzureMediaServicesClient client,
-    string resourceGroup,
-    string accountName,
-    string assetName,
-    string resultsFolder)
-{
-    AssetContainerSas assetContainerSas = client.Assets.ListContainerSas(
-            resourceGroup,
-            accountName,
-            assetName,
-            permissions: AssetContainerPermission.Read,
-            expiryTime: DateTime.UtcNow.AddHours(1).ToUniversalTime()
-            );
-
-    Uri containerSasUrl = new Uri(assetContainerSas.AssetContainerSasUrls.FirstOrDefault());
-    CloudBlobContainer container = new CloudBlobContainer(containerSasUrl);
-
-    string directory = Path.Combine(resultsFolder, assetName);
-    Directory.CreateDirectory(directory);
-
-    Console.WriteLine("Downloading results to {0}.", directory);
-
-    foreach (IListBlobItem blobItem in container.ListBlobs(null, true, BlobListingDetails.None))
-    {
-        if (blobItem is CloudBlockBlob)
-        {
-            CloudBlockBlob blob = blobItem as CloudBlockBlob;
-            string filename = Path.Combine(directory, blob.Name);
-
-            blob.DownloadToFile(filename, FileMode.Create);
-        }
-    }
-
-    Console.WriteLine("Download complete.");
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
 Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte v plánu použít znovu, (obvykle jsou to transformace, streamovací lokátory apod.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít. Následující kód například odstraní Úlohy.
 
-```csharp
-static void CleanUp(IAzureMediaServicesClient client,
-        string resourceGroupName,
-        string accountName, 
-        string transformName)
-{
-    foreach (var job in client.Jobs.List(resourceGroupName, accountName, transformName))
-    {
-        client.Jobs.Delete(resourceGroupName, accountName, transformName, job.Name);
-    }
-
-    foreach (var asset in client.Assets.List(resourceGroupName, accountName))
-    {
-        client.Assets.Delete(resourceGroupName, accountName, asset.Name);
-    }
-}
-```
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
@@ -300,7 +126,7 @@ Výstupní soubor analyzování videa se nazývá insights.json. Tento soubor ob
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtů úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. Můžete použít nástroj **CloudShell**.
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. Můžete použít nástroj **CloudShell**.
 
 V nástroji **CloudShell** spusťte následující příkaz:
 

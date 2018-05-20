@@ -1,29 +1,30 @@
 ---
-title: "Začínáme s Azure Storage zásobníku nástroje pro vývoj"
-description: "Pokyny, jak začít s pomocí nástrojů pro vývoj Azure zásobník úložiště"
+title: Začínáme s Azure Storage zásobníku nástroje pro vývoj
+description: Pokyny, jak začít s pomocí nástrojů pro vývoj Azure zásobník úložiště
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 02/21/2018
+ms.date: 05/14/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 81c62fc569e9f758d08bfca0bdfc5bcc9ed5860f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Začínáme s Azure Storage zásobníku nástroje pro vývoj
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Zásobník Microsoft Azure poskytuje sadu služeb úložiště, včetně úložiště objektů Azure Blob, Table a Queue.
+Zásobník Microsoft Azure poskytuje sadu služby úložiště, která obsahuje objekt blob, table a queue storage.
 
-Tento článek obsahuje rychlý pokyny o tom, jak začít používat nástroje pro vývoj zásobník úložiště Azure. Podrobnější informace a ukázkový kód můžete najít v odpovídající kurzech Azure Storage.
+Abyste mohli začít používat nástroje pro vývoj zásobník úložiště Azure, použijte jako vodítko v tomto článku. Podrobnější informace a ukázkový kód můžete najít v odpovídající kurzech Azure Storage.
 
-Existují známé rozdíly mezi Azure Storage a zásobník úložiště Azure, včetně některé specifické požadavky na každou platformu. Například existují určité klientské knihovny a konkrétní koncový bod příponu požadavky pro Azure zásobníku. Další informace najdete v tématu [zásobník úložiště Azure: rozdíly a aspekty](azure-stack-acs-differences.md).
+>[!NOTE]
+>Existují známé rozdíly mezi zásobník úložiště Azure a Azure Storage, včetně specifické požadavky pro každou platformu. Například existují určité klientské knihovny a konkrétní koncový bod příponu požadavky pro Azure zásobníku. Další informace najdete v tématu [zásobník úložiště Azure: rozdíly a aspekty](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Knihovny klienta Azure
 
@@ -37,15 +38,16 @@ Podporované verze rozhraní REST API pro Azure Storage zásobníku jsou 2017-04
 | Java | 6.1.0 | Balíček maven:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Nastavení připojení řetězce |
 | Node.js | 2.7.0 | NPM odkaz:<br>https://www.npmjs.com/package/azure-storage<br>(Spustit: `npm install azure-storage@2.7.0`)<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Deklarace instance služby |
 | C++ | 3.1.0 | Balíček Nuget:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | Nastavení připojení řetězce |
-| PHP | 1.0.0 | Verze Githubu:<br>Common: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Fronty:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Tabulka: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Nainstalovat prostřednictvím autora (Další informace, [najdete v níže uvedené podrobnosti](#install-php-client-via-composer---current).) | Nastavení připojení řetězce |
+| PHP | 1.0.0 | Verze Githubu:<br>Běžné: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Objekt BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Fronty:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Tabulka: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Nainstalovat prostřednictvím autora (Další informace, [najdete v níže uvedené podrobnosti](#install-php-client-via-composer---current).) | Nastavení připojení řetězce |
 | Python | 1.0.0 | Verze Githubu:<br>Běžné:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>Objekt BLOB:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>Fronty:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | Deklarace instance služby |
-| Ruby | 1.0.1 | Balíček RubyGems:<br>Běžné:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Blob: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>Queue: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>Table: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>Verze Githubu:<br>Common: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Blob: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>Queue: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>Tabulka: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | Nastavení připojení řetězce |
+| Ruby | 1.0.1 | Balíček RubyGems:<br>Běžné:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>Objekt BLOB: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>Fronty: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>Tabulka: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>Verze Githubu:<br>Běžné: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>Objekt BLOB: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>Fronty: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>Tabulka: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | Nastavení připojení řetězce |
 
 #### <a name="install-php-client-via-composer---current"></a>Instalace klienta PHP prostřednictvím autora - aktuální
 
 Chcete-li nainstalovat prostřednictvím autora: (blob proveďte jako příklad).
 
 1. Vytvořte soubor s názvem **composer.json** v kořenu projektu s následujícím kódem:
+
   ```php
     {
       "require": {
@@ -53,6 +55,7 @@ Chcete-li nainstalovat prostřednictvím autora: (blob proveďte jako příklad)
       }
     }
   ```
+
 2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenového adresáře projektu.
 3. Spustit: `php composer.phar install`.
 
@@ -73,6 +76,7 @@ Chcete-li nainstalovat prostřednictvím autora: (blob proveďte jako příklad)
 Chcete-li nainstalovat prostřednictvím autora:
 
 1. Vytvořte soubor s názvem **composer.json** v kořenu projektu s následujícím kódem:
+
   ```php
     {
           "require":{
@@ -80,6 +84,7 @@ Chcete-li nainstalovat prostřednictvím autora:
           }
     }
   ```
+
 2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) do kořenu projektu.
 3. Spustit: `php composer.phar install`.
 
@@ -91,16 +96,16 @@ Pokud si nejste jistí o váš koncový bod, obraťte se na správce cloudu.
 
 ## <a name="examples"></a>Příklady
 
-
 ### <a name="net"></a>.NET
 
 Pro Azure zásobníku zadána přípona koncový bod v souboru app.config:
 
 ```
-<add key="StorageConnectionString" 
+<add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
 ```
+
 ### <a name="java"></a>Java
 
 Pro Azure zásobníku zadána přípona koncového bodu v nastavení připojovacího řetězce:
@@ -121,6 +126,7 @@ Pro Azure zásobníku zadána přípona koncového bodu v deklaraci instance:
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
+
 ### <a name="c"></a>C++
 
 Pro Azure zásobníku zadána přípona koncového bodu v nastavení připojovacího řetězce:
@@ -152,6 +158,7 @@ block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
 ```
+
 ### <a name="ruby"></a>Ruby
 
 Pro Azure zásobníku zadána přípona koncového bodu v nastavení připojovacího řetězce:
@@ -187,7 +194,6 @@ Následující kurzy Azure Queue storage se vztahují na Azure zásobníku. Pozn
 * [Používání úložiště Queue z PHP](../../storage/queues/storage-php-how-to-use-queues.md)
 * [Používání úložiště Queue z Pythonu](../../storage/queues/storage-python-how-to-use-queue-storage.md)
 * [Používání úložiště Queue z Ruby](../../storage/queues/storage-ruby-how-to-use-queue-storage.md)
-
 
 ## <a name="table-storage"></a>Úložiště Table
 

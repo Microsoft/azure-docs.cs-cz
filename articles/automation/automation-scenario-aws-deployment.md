@@ -7,18 +7,18 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c2505bfdc664d52960b3e3a6c9b4646189e0b175
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4f49adf006e8d55337220fad9ee84de65209880b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation scénář – zřizování se AWS virtuální počítač
 V tomto článku se dozvíte, jak můžete využít Azure Automation pro zřízení virtuálního počítače ve vašem předplatném Amazon Web Service (AWS) a pojmenujte tohoto virtuálního počítače konkrétní název – AWS označuje jako "označování" virtuální počítač.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pro účely tohoto článku musíte mít účet Azure Automation a předplatné AWS. Další informace o vytvoření účtu Azure Automation a nastavit ho pomocí svých přihlašovacích údajů AWS předplatné, zkontrolujte [konfigurace ověřování pomocí Amazon Web Services](automation-config-aws-account.md). Tento účet by měl vytvořit nebo aktualizovat pomocí svých přihlašovacích údajů AWS předplatné než budete pokračovat, protože odkazujete tento účet v následujících krocích.
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Nasazení modulu Amazon Web Services prostředí PowerShell

@@ -1,24 +1,24 @@
 ---
-title: "Definine a spravovat stav v Azure mikroslužeb | Microsoft Docs"
-description: "Tom, jak definovat a spravovat stav služby v Service Fabric"
+title: Definine a spravovat stav v Azure mikroslužeb | Microsoft Docs
+description: Tom, jak definovat a spravovat stav služby v Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 103fd6c3d536bc11f4e39444043a332a1d8f6c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46d2e27b9cdcb03213648982c7e9a0576838bc92
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-state"></a>Stav služby
 **Služba stavu** odkazuje v paměti nebo na data na disku, který služba vyžaduje, aby funkce. Obsahuje, například datové struktury a členské proměnné, které Služba čte a zapisuje fungují. V závislosti na tom, jak je navržen služby se mohly by také zahrnovat souborům nebo jiným prostředkům, které jsou uložené na disku. Například soubory databáze využije k uložení dat a protokoly transakcí.
@@ -34,7 +34,7 @@ Stav můžete externalized nebo umístěny společně s kódem, který je manipu
 
 Stav může být také společně umístěný se kód, který zpracovává stavu. Stavové služby v Service Fabric se obvykle vytvořená s využitím tohoto modelu. Service Fabric poskytuje infrastrukturu pro zkontrolujte, zda tento stav je vysoce dostupný, konzistentní a odolné a že služby vytvořené tímto způsobem můžete snadno škálovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o konceptech Service Fabric najdete v následujících článcích:
 
 * [Dostupnost služeb Service Fabric](service-fabric-availability-services.md)

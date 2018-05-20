@@ -1,23 +1,21 @@
 ---
-title: "Pokyny pro používání prostředí Powershell s Data Lake Store ladění výkonu | Microsoft Docs"
-description: "Tipy pro zlepšení výkonu při použití Azure PowerShell s Data Lake Store"
+title: Pokyny pro používání prostředí Powershell s Data Lake Store ladění výkonu | Microsoft Docs
+description: Tipy pro zlepšení výkonu při použití Azure PowerShell s Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: 63e1114d49b7bcb8910e8cd8205f10d1e8587f61
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7b19972ed4a75ac899a4b78b28ab36ba305a5a64
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-store"></a>Pokyny pro používání prostředí PowerShell s Azure Data Lake Store optimalizace výkonu
 

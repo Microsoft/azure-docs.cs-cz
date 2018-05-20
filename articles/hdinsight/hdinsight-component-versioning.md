@@ -5,7 +5,7 @@ keywords: hadoop verze součástí ekosystému hadoop, komponent systému hadoop
 services: hdinsight
 editor: cgronlun
 manager: asadk
-author: bprakash
+author: kkampf
 tags: azure-portal
 documentationcenter: ''
 ms.assetid: 367b3f4a-f7d3-4e59-abd0-5dc59576f1ff
@@ -14,12 +14,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
-ms.author: bprakash
-ms.openlocfilehash: ebfbc53b751bc6669e2c4aee16deb09b463b0661
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: kakampf
+ms.openlocfilehash: 3d98ed2be7a040ad889d1d504f303569c265360b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Co jsou komponent systému Hadoop a verze, které jsou k dispozici v prostředí HDInsight?
 
@@ -82,7 +82,7 @@ Následující tabulka uvádí verze služby HDInsight, které jsou k dispozici 
 | HDInsight verze | Verze softwaru HDP | OPERAČNÍM SYSTÉMEM VIRTUÁLNÍHO POČÍTAČE | Datum vydání | Datum vypršení platnosti podpory | Datum vyřazení | Vysoká dostupnost |  K dispozici na portálu Azure | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. dubna 2017 | | |Ano |Ano |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. září 2016 |5 září 2017 |31 může 2018 |Ano |Ano |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. září 2016 |5 září 2017 |28 června 2018 |Ano |Ano |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2. prosince 2015 |27. června 2016 |31. července 2018 |Ano |Ne |
 
 > [!NOTE]

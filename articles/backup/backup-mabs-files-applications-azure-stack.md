@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/11/2018
 ms.author: adigan,markgal
-ms.openlocfilehash: 99ac43efa5d3211bbe2d790f28532e682058313c
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací v Azure zásobníku
 Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Všechny aplikace spuštěné na jakýkoli server zásobník Azure ve stejné virtuální síti můžete chránit. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
@@ -64,7 +64,7 @@ Azure Backup Server ukládá zálohovaná data na disky Azure připojené k virt
 
 Ukládání zálohovaných dat v Azure snižuje infrastruktury zálohování v zásobníku Azure. Pokud jsou data starší než pět dní, by měly být uložené v Azure.
 
-K uložení zálohy dat v Azure, vytvořte nebo použijte trezoru služeb zotavení. Při přípravě k zálohování serveru Azure Backup zatížení, které budete [konfigurace trezor služeb zotavení](backup-azure-microsoft-azure-backup.md#recovery-services-vault). Po nakonfigurování pokaždé, když úloha zálohování se spustí, je bod obnovení vytvořen v trezoru. Každý trezor služeb zotavení obsahuje až 9999 body obnovení. V závislosti na počtu body obnovení vytvořené a jak dlouho jsou uchovávány můžete zachovat zálohovaná data mnoho let. Například může vytvořit měsíční body obnovení a uchovávány pět let.
+K uložení zálohy dat v Azure, vytvořte nebo použijte trezoru služeb zotavení. Při přípravě k zálohování zatížení serveru Azure Backup můžete [konfigurace trezor služeb zotavení](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po nakonfigurování pokaždé, když úloha zálohování se spustí, je bod obnovení vytvořen v trezoru. Každý trezor služeb zotavení obsahuje až 9999 body obnovení. V závislosti na počtu body obnovení vytvořené a jak dlouho jsou uchovávány můžete zachovat zálohovaná data mnoho let. Například může vytvořit měsíční body obnovení a uchovávány pět let.
  
 ### <a name="using-sql-server"></a>Pomocí SQL serveru
 Pokud chcete použít vzdálený SQL Server pro databázi serveru Azure Backup, vyberte pouze zásobník virtuálního počítače Azure systémem SQL Server.

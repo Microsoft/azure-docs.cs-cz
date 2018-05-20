@@ -1,12 +1,12 @@
 ---
-title: "Referenční příručka k nastavení aplikace pro Azure Functions"
-description: "Referenční dokumentaci k nástroji pro nastavení aplikace Azure Functions nebo proměnné prostředí."
+title: Referenční příručka k nastavení aplikace pro Azure Functions
+description: Referenční dokumentaci k nástroji pro nastavení aplikace Azure Functions nebo proměnné prostředí.
 services: functions
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/26/2017
 ms.author: tdykstra
-ms.openlocfilehash: ce7bf2cf650b0df7e8998766b2d3f5a37c4a1b72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd5603b8f0e15eeae9dd3799d4e10952e115680f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční příručka k nastavení aplikace pro Azure Functions
 
@@ -44,11 +44,11 @@ Připojovací řetězce k účtu volitelné úložiště pro ukládání protoko
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
-`true`znamená zakázat výchozí úvodní stránka, která se zobrazí pro adresy URL kořenového adresáře aplikace funkce. Výchozí hodnota je `false`.
+`true` znamená zakázat výchozí úvodní stránka, která se zobrazí pro adresy URL kořenového adresáře aplikace funkce. Výchozí hodnota je `false`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsDisableHomepage|Hodnota TRUE|
+|AzureWebJobsDisableHomepage|true (pravda)|
 
 Při nastavení této aplikace je tento parametr vynechán nebo nastavte na `false`, podobně jako v následujícím příkladu stránky se zobrazí v reakci na adresu URL `<functionappname>.azurewebsites.net`.
 
@@ -56,11 +56,11 @@ Při nastavení této aplikace je tento parametr vynechán nebo nastavte na `fal
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`znamená použití režimu vydání při kompilaci kódu .NET; `false` znamená použití režimu ladění. Výchozí hodnota je `true`.
+`true` znamená použití režimu vydání při kompilaci kódu .NET; `false` znamená použití režimu ladění. Výchozí hodnota je `true`.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|Hodnota TRUE|
+|AzureWebJobsDotNetReleaseCompilation|true (pravda)|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -153,10 +153,10 @@ Výchozí hodnota je "6.5.0".
 |---|------------|
 |WEB\_UZLU\_DEFAULT_VERSION|6.5.0|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-> [!div class="nextstepaction"]
-> [Zjistěte, jak se aktualizovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
+[Zjistěte, jak se aktualizovat nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#manage-app-service-settings)
 
-> [!div class="nextstepaction"]
-> [Najdete v části globální nastavení v souboru host.json](functions-host-json.md)
+[Najdete v části globální nastavení v souboru host.json](functions-host-json.md)
+
+[Viz další nastavení aplikace pro aplikace služby App Service](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

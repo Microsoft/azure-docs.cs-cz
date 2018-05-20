@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: feb31b0cc89c511f7487f995ba6045f89767abbb
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 3678eb20429d9e5123272499d474fdec2cdab065
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -86,6 +86,9 @@ S vaší IoT DevKit MXChip připojené k počítači:
 ## <a name="example-operation"></a>Příklad operace
 
 ![Příklad postupu testu](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
+
+> [!NOTE]
+> Zobrazí se nezpracovaná data tohoto dvojče zařízení na portálu Azure: IoT Hub -\> zařízení IoT -\> *\<zařízení\>*  - \> dvojče zařízení.
 
 ## <a name="next-steps"></a>Další postup
 

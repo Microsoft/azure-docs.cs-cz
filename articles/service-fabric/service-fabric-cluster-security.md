@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: 26b58724-6a43-4f20-b965-2da3f086cf8a
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: f60b428ba7fe93713af68851a3e9d246a3b1641b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac288575d29699d03728e74b73ed7359dd7252e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster služby Azure Service Fabric je prostředek, který vlastníte. Je vaší povinností zabezpečit clusterů pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité, pokud používáte produkční zatížení v clusteru. Přestože je možné vytvořit zabezpečená cluster, pokud clusteru zpřístupní koncové body správy do veřejného Internetu, anonymní uživatelé k nim mohla připojit. Zabezpečená clustery nejsou podporovány pro úlohy v produkčním prostředí. 

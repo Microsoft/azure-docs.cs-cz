@@ -1,24 +1,24 @@
 ---
-title: "Konfigurace clusteru samostatné Azure Service Fabric | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat samostatnou nebo na místní cluster Azure Service Fabric."
+title: Konfigurace clusteru samostatné Azure Service Fabric | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat samostatnou nebo na místní cluster Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: bd6e5c1591d01329d95ccb168e5a14e436920baf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e0fed608ac9dd02a6fe5563eefc30edb63d224b1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace pro samostatné clusteru se systémem Windows
 Tento článek popisuje postup konfigurace clusteru s podporou samostatné Azure Service Fabric pomocí souboru souboru ClusterConfig.json. Tento soubor použijete k zadání informací o uzly clusteru, konfigurace zabezpečení, jakož i topologie sítě z hlediska selhání a upgradu domény.
@@ -200,6 +200,6 @@ Ke konfiguraci rozšíření funkcí, nakonfigurujte apiVersion jako 04 2017 neb
 Povolení podpory kontejner pro Windows Server kontejnery a kontejnery technologie Hyper-V pro samostatné clustery, musí být povolena funkce rozšíření DnsService.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po dokončení soubor souboru ClusterConfig.json nakonfigurovaný podle vaší samostatné nastavení clusteru, můžete nasadit cluster. Postupujte podle kroků v [vytvořit cluster Service Fabric samostatné](service-fabric-cluster-creation-for-windows-server.md). Pak pokračujte s [vizualizace clusteru pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) a postupujte podle pokynů.
 

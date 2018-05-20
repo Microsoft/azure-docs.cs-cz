@@ -80,8 +80,6 @@ items:
         href: unique-keys.md
       - name: Databáze bez serveru
         href: serverless-computing-database.md
-      - name: Přehled BulkExecutoru
-        href: bulk-executor-overview.md
       - name: Zabezpečení
         href: database-security.md
         items:
@@ -175,6 +173,8 @@ items:
                 href: bulk-executor-dot-net.md
               - name: BulkExecutor – Java
                 href: bulk-executor-java.md
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
               - name: Dotaz
                 items:
                   - name: Zpracování dotazů SQL
@@ -263,6 +263,8 @@ items:
                 href: sql-api-sql-query-reference.md
           - name: Zdroje a prostředky
             items:
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
               - name: SQL Playground
@@ -325,8 +327,12 @@ items:
                 href: mongodb-indexing.md
               - name: Vizualizace dat pomocí Power BI
                 href: powerbi-visualize.md
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
           - name: Zdroje a prostředky
             items:
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Dokumentace k rozhraní Graph API
@@ -349,6 +355,8 @@ items:
             items:
               - name: Dělení grafů
                 href: graph-partitioning.md
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
               - name: Integrace
                 items:
                   - name: Připojení ke Spark GraphX
@@ -359,6 +367,8 @@ items:
                 href: graph-sdk-dotnet.md
           - name: Zdroje a prostředky
             items:
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
               - name: Rozšíření editoru Visual Studio Code
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
       - name: Dokumentace k rozhraní Table API
@@ -415,6 +425,8 @@ items:
                 href: table-sdk-python.md
           - name: Zdroje a prostředky
             items:
+              - name: Správa s využitím Průzkumníka služby Azure Storage
+                href: storage-explorer.md
               - name: Přehled služby Table Storage
                 href: table-storage-overview.md
               - name: Průvodce návrhem úložiště Table
@@ -453,12 +465,20 @@ items:
         href: regional-failover.md
       - name: Protokolování diagnostiky
         href: logging.md
+      - name: Přehled BulkExecutoru
+        href: bulk-executor-overview.md
       - name: Nákladově efektivní čtení a zápisy
         href: key-value-store-cost.md
       - name: Automatické vypršení dat
         href: time-to-live.md
+      - name: Správa pomocí prostředí PowerShell
+        href: manage-account-with-powershell.md
+      - name: Správa s využitím Průzkumníka služby Azure Storage
+        href: storage-explorer.md
   - name: Zdroje a prostředky
     items:
+      - name: Správa s využitím Průzkumníka služby Azure Storage
+        href: storage-explorer.md
       - name: Tahák pro dotazy
         href: query-cheat-sheet.md
       - name: 20 dnů tipů

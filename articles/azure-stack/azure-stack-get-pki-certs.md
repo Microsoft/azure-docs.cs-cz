@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure zásobníku certifikáty Podepisování generování požadavku
 
@@ -68,10 +68,10 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
     > [!note]  
     > Pokud se běžný název (CN) to budou přepsány první název DNS žádosti o certifikát.
 
-3.  Deklarujte výstupní adresář, který již existuje:
+3.  Deklarujte výstupní adresář, který již existuje. Příklad:
 
     ````PowerShell  
-    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
 4.  Deklarovat identifikovat systému
 
@@ -95,7 +95,7 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` Tento balíček je základem, na kterém jsou všechny externí názvy DNS v zásobníku Azure vytvořili, v tomto příkladu, portálu budou `portal.east.azurestack.contoso.com`.
+    > `<regionName>.<externalFQDN>` Tento balíček je základem, na kterém jsou všechny externí názvy DNS v zásobníku Azure vytvořili, v tomto příkladu, portálu budou `portal.east.azurestack.contoso.com`.  
 
 6. K vytvoření žádosti jeden certifikát s více alternativní názvy subjektu:
 

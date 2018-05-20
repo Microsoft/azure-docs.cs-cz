@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby application gateway s ukončení protokolu SSL - portálu Azure | Microsoft Docs
-description: Zjistěte, jak přidat certifikát pro ukončení protokolu SSL pomocí portálu Azure a vytvoření služby application gateway.
+title: Konfigurace aplikační brány s ukončení protokolu SSL - portálu Azure | Microsoft Docs
+description: Zjistěte, jak přidat certifikát pro ukončení protokolu SSL pomocí portálu Azure a konfigurace aplikační brány.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,18 +8,17 @@ editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: a24cec5dfa8034cf43ce7cfe26308587cf20dc44
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c64754595ef67b7c083ee8d47da5b412467c191b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Vytvoření služby application gateway s ukončení protokolu SSL pomocí portálu Azure
+# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurace aplikační brány s ukončení protokolu SSL pomocí portálu Azure
 
-Na portálu Azure můžete použít k vytvoření [Aplikační brána](overview.md) s certifikát pro ukončení protokolu SSL používaný virtuálních počítačů pro back-end serverů.
+Na portálu Azure můžete použít ke konfiguraci [Aplikační brána](overview.md) s certifikát pro ukončení protokolu SSL používaný virtuálních počítačů pro back-end serverů.
 
 V tomto článku získáte informace o těchto tématech:
 

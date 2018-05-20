@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/07/2018
 ms.author: genli
-ms.openlocfilehash: 818e4ca5c4985d1740c477bf4a5aa198e64b506d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db6a2279347b5746da706e7ad3629b141afd205b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Řešení potíží s virtuální počítač s Windows pomocí disk operačního systému se připojuje k obnovení virtuálního počítače pomocí portálu Azure
 Pokud Windows virtuálního počítače (VM) v prostředí Azure dojde k chybě spouštěcí nebo disk, musíte provést na virtuálním pevném disku, sám sebe pro řešení potíží. Běžným příkladem bude aplikaci, která selhala aktualizace, která brání virtuálního počítače nebudou moct úspěšně spustil. Tento článek popisuje, jak připojit virtuální pevný disk na jiný virtuální počítač opravte případné chyby a pak znovu vytvořte původní virtuální počítač s Windows pomocí portálu Azure.
@@ -31,6 +31,7 @@ Proces řešení potíží je následující:
 4. Odpojení virtuálního pevného disku od virtuálního počítače pro řešení potíží.
 5. Vytvoření virtuálního počítače pomocí původní virtuální pevný disk.
 
+Pro virtuální počítač, který používá spravovaných disků najdete v tématu [řešení spravovaných virtuálních počítačů disku připojením nového disku s operačním systémem](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
 
 ## <a name="determine-boot-issues"></a>Určení spouštěcí problémy
 Pokud chcete zjistit, proč váš virtuální počítač není možné správně spustit, zkontrolujte Diagnostika spouštění snímek virtuálního počítače. Běžným příkladem by být aktualizaci selhání aplikace nebo virtuální pevný disk, na kterém se odstranil nebo přesunul.
@@ -144,6 +145,13 @@ Chcete-li vytvořit virtuální počítač z původní virtuální pevný disk, 
 Při vytváření virtuálního počítače z existujícího virtuálního pevného disku, nemusí být Diagnostika spouštění automaticky povolené. Zkontrolujte stav Diagnostika spouštění a v případě potřeby zapnout, vyberte virtuální počítač na portálu. V části **monitorování**, klikněte na tlačítko **nastavení diagnostiky**. Ujistěte se, že stav je **na**a zaškrtnutí políčka vedle **spouštění diagnostiky** je vybrána. Pokud provedete změny, klikněte na tlačítko **Uložit**:
 
 ![Aktualizovat nastavení diagnostiky spouštění](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
+
+## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Řešení potíží s spravovaných virtuálních počítačů disku připojením nového disku operačního systému
+1. Zastavte dotčených spravované disku Windows virtuální počítač.
+2. [Vytvoření snímku spravovaných disků na](snapshot-copy-managed-disk.md) disku operačního systému virtuálního počítače spravované disku.
+3. [Vytvoření spravovaného disku ze snímku](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
+4. [Spravovaný disk připojit jako datový disk virtuálního počítače](attach-disk-ps.md).
+5. [Změňte datový disk od kroku 4 na disk s operačním systémem](os-disk-swap.md).
 
 ## <a name="next-steps"></a>Další postup
 Pokud máte problémy s připojením k virtuálnímu počítači, přečtěte si téma [připojení řešení potíží s RDP na virtuální počítač Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problémy s přístupem k aplikacím spuštěným na vašem virtuálním počítači najdete v tématu [problémů s připojením aplikace na virtuálním počítači Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

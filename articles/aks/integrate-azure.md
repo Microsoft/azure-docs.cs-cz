@@ -3,16 +3,16 @@ title: Integrace se službami spravovanými Azure s využitím OSBA (Open Servic
 description: Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 services: container-service
 author: sozercan
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a881b08874a157b0d6781ec3859b05eeaeba6676
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 

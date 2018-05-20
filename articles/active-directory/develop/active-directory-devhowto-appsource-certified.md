@@ -19,7 +19,7 @@ ms.reviewer: andret
 ms.custom: aaddev
 ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
 ---

@@ -1,6 +1,6 @@
 ---
-title: Vytvořit aktivitu protokolu výstrahy a spravovat je pomocí nové výstrahy (Preview) prostředí v Azure monitorování | Microsoft Docs
-description: Tento článek obsahuje informace o tom, jak vytvořit aktivitu protokolu výstrahy z karty výstrahy (Preview) v části monitorování Azure. Tento článek podrobně nové uživatelské rozhraní pro tuto funkci.
+title: Vytvořit aktivitu protokolu výstrahy a spravovat je pomocí nové výstrahy prostředí v Azure monitorování | Microsoft Docs
+description: Tento článek obsahuje informace o tom, jak vytvořit aktivitu protokolu výstrahy na kartě výstrahy v části monitorování Azure
 author: JYOTHIRMAISURI
 manager: vvithal
 editor: ''
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: ''
-ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 070acc6fb6f6f744474edeef0e914dda9d24c558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Vytvoření protokol aktivit, které prostředí výstrah pomocí nové výstrahy (Preview)
+# <a name="create-activity-log-alerts-using-the-new-alerts-experience"></a>Vytvoření protokol aktivit, které prostředí výstrah pomocí nové výstrahy
 
 Výstrahy protokolu aktivit jsou výstrahy, které získat aktivovat, pokud dojde k nové události protokolování aktivity, která odpovídá podmínkám uvedeném ve výstraze.
 
-Tyto výstrahy jsou pro prostředky Azure, lze vytvořit pomocí šablony Azure Resource Manager. Také mohou být vytvořeny, aktualizovat nebo odstranit na portálu Azure. Tento článek představuje koncepty za aktivitu protokolu výstrahy. Potom ukazuje, jak pomocí portálu Azure nastavit upozornění na aktivitu protokolu události pomocí nové prostředí v [výstrahy Azure (Preview)](monitoring-overview-unified-alerts.md).
+Tyto výstrahy jsou pro prostředky Azure, lze vytvořit pomocí šablony Azure Resource Manager. Také mohou být vytvořeny, aktualizovat nebo odstranit na portálu Azure. Tento článek představuje koncepty za aktivitu protokolu výstrahy. Potom ukazuje, jak pomocí portálu Azure nastavit upozornění na aktivitu protokolu události pomocí nové prostředí v [Azure výstrahy](monitoring-overview-unified-alerts.md).
 
 Obvykle se vytvořit aktivitu protokolu výstrahy pro příjem oznámení, když dojde k určité změny na prostředky ve vašem předplatném Azure často obor k určitému prostředku skupiny nebo prostředku. Například můžete chtít být upozorněni, když některý virtuální počítač v (ukázka skupiny prostředků) **myProductionResourceGroup** odstraněna, nebo můžete chtít dostat upozornění, pokud žádné nové role přiřazené uživateli v rámci vašeho předplatného.
 
@@ -46,11 +46,11 @@ Další informace o skupinách akce najdete v tématu [vytvořit a spravovat sku
 Další informace o oznámení o stavu služby najdete v tématu [výstrahy v protokolu aktivit na oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).
 
 
-## <a name="whats-new-in-alerts-preview-for-activity-logs"></a>Co je nového ve verzi Preview výstrahy protokoly aktivity?
+## <a name="whats-new-in-alerts-for-activity-logs"></a>Co je nového ve výstrahách protokoly aktivity?
 
-[Výstrahy Azure (Preview)](monitoring-overview-unified-alerts.md) teď poskytuje lepší možnosti uživatele pro aktivitu protokolu výstrahy. Pomocí [rozšířené možnosti uživatelského prostředí pro výstrahy](monitoring-overview-unified-alerts.md), teď můžete:
+[Azure výstrahy](monitoring-overview-unified-alerts.md) teď poskytuje lepší možnosti uživatele pro aktivitu protokolu výstrahy. Pomocí [rozšířené možnosti uživatelského prostředí pro výstrahy](monitoring-overview-unified-alerts.md), teď můžete:
 
-- [Vytvoření](#create-an-alert-rule-for-an-activity-log) a [spravovat](#view-and-manage-activity-log-alert-rules) aktivity protokolu pravidla výstrah, z **monitorování** > **výstrahy (Preview)** okno. Další informace o [protokoly aktivity](monitoring-overview-activity-logs.md).
+- [Vytvoření](#create-an-alert-rule-for-an-activity-log) a [spravovat](#view-and-manage-activity-log-alert-rules) aktivity protokolu pravidla výstrah, z **monitorování** > **výstrahy** okno. Další informace o [protokoly aktivity](monitoring-overview-activity-logs.md).
 
 - **Nové možnosti pro cíl výstrahy**: při vytváření nové pravidlo výstrahy protokolu aktivitu, můžete nyní vybrat cílový prostředek nebo skupinu prostředků nebo předplatného.
 
@@ -68,8 +68,8 @@ Další informace o oznámení o stavu služby najdete v tématu [výstrahy v pr
 
 Použijte následující postup:
 
-1. Portál Azure, vyberte **monitorování** > **výstrahy (Preview).**
-2. Klikněte na tlačítko **nové pravidlo výstrahy** v horní části **výstrahy (Preview)** okno.
+1. Portál Azure, vyberte **monitorování** > **výstrahy**
+2. Klikněte na tlačítko **nové pravidlo výstrahy** v horní části **výstrahy** okno.
 
      ![nové pravidlo výstrahy](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule.png)
 
@@ -130,7 +130,7 @@ Použijte následující postup:
 
 ## <a name="view-and-manage-activity-log-alert-rules"></a>Zobrazit a spravovat pravidla výstrah protokolu aktivit
 
-1. Z portálu Azure, klikněte na tlačítko **monitorování** > **výstrahy (Preview)** a klikněte na tlačítko **spravovat pravidla** v levém horním rohu okna.
+1. Z portálu Azure, klikněte na tlačítko **monitorování** > **výstrahy** a klikněte na tlačítko **spravovat pravidla** v levém horním rohu okna.
 
     ![ Spravovat pravidla výstrah](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
 

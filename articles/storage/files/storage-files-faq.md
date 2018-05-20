@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k Azure Files | Microsoft Docs
+title: Nejčastější dotazy (FAQ) pro Azure Files | Microsoft Docs
 description: Odpovědi na časté otázky o Azure Files.
 services: storage
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="frequently-asked-questions-about-azure-files"></a>Časté otázky k Azure Files
+# <a name="frequently-asked-questions-faq-about-azure-files"></a>Časté otázky (FAQ) k Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (také označovaný jako systém souborů běžné Internet nebo CIFS). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
 
 Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubory funkcí a funkčnosti, včetně použití synchronizace souborů Azure s Azure Files. Pokud nevidíte odpověď na svoji otázku, kontaktujte nás prostřednictvím následující kanály (v narůstajícím pořadí):
@@ -27,7 +27,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 1. Komentáře části tohoto článku.
 2. [Fórum pro Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Soubory Azure UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Podporu společnosti Microsoft. K vytvoření nové žádosti o podporu, na portálu Azure na **pomoci** vyberte **Nápověda a podpora** tlačítko a potom vyberte **nová žádost o podporu**.
+4. podporu Microsoftu. K vytvoření nové žádosti o podporu, na portálu Azure na **pomoci** vyberte **Nápověda a podpora** tlačítko a potom vyberte **nová žádost o podporu**.
 
 ## <a name="general"></a>Obecné
 * <a id="why-files-useful"></a>
@@ -232,7 +232,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Jak zálohovat Moje Azure soubor sdílet?**  
-    Můžete použít pravidelné [sdílet snímky](storage-snapshots-files.md) pro ochranu před náhodným odstraněním. Také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. 
+    Můžete použít pravidelné [sdílet snímky](storage-snapshots-files.md) pro ochranu před náhodným odstraněním. Také můžete použít AzCopy, Robocopy nebo zálohování nástroj třetí strany, který můžete zálohovat připojené sdílené složky. Azure Backup poskytuje zálohování souborů Azure. Další informace o [zálohování Azure sdílených složek nástrojem Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Sdílet snímky
 ### <a name="share-snapshots-general"></a>Sdílet snímky: Obecné
@@ -313,7 +313,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
      
      Sdílené složky snímky jsou ve své podstatě přírůstkové. Snímek základní sdílená složka je sdílená složka sám sebe. Všechny následné sdílené složce snímky jsou přírůstkové a uložit jenom rozdíl oproti předchozím snímku sdílené složky. Fakturuje se pouze pro změněný obsah. Pokud máte sdílenou složku se 100 GiB dat, ale jenom 5 GiB se změnil od posledního sdílenou složku snímku, snímku sdílení využívá jenom 5 Další GiB a fakturuje se 105 GiB. Další informace o transakci a standardní nimi spojeným nákladům, najdete v článku [cenová stránky](https://azure.microsoft.com/pricing/details/storage/files/).
 
-## <a name="scale-and-performance"></a>Rozsah a výkon
+## <a name="scale-and-performance"></a>Škálování a výkon
 * <a id="files-scale-limits"></a>
 **Jaké jsou limity škálování Azure souborů?**  
     Informace o škálovatelnosti a cílech výkonnosti pro soubory Azure najdete v tématu [Azure Files škálovatelnosti a cílech výkonnosti](storage-files-scale-targets.md).

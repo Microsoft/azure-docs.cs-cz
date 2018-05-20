@@ -1,24 +1,24 @@
 ---
-title: "Zotavení po havárii Azure Service Fabric | Microsoft Docs"
-description: "Azure Service Fabric nabízí možnosti, které jsou nutné zabývat se všechny typy havárie. Tento článek popisuje typy havárie, které můžou nastat a o tom, jak nakládat s nimi."
+title: Zotavení po havárii Azure Service Fabric | Microsoft Docs
+description: Azure Service Fabric nabízí možnosti, které jsou nutné zabývat se všechny typy havárie. Tento článek popisuje typy havárie, které můžou nastat a o tom, jak nakládat s nimi.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 295772b70529f79c7a4c135d8ea7c12a1c661fe6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí doručování vysoká dostupnost zajišťuje, že služby přežijí všechny různých typů chyb. To je obzvláště důležité pro chyby, které neplánované a mimo váš dosah. Tento článek popisuje některé běžné selhání režimy, které může být havárie není-li modelovány a spravovat správně. Také popisují, akce mají přijmout v případě havárie bylo provedeno přesto a způsoby zmírnění rizik. Cílem je omezit nebo vyloučit riziko výpadku nebo ztráty dat při jejich výskytu chyb, plánované nebo jinak, mohlo dojít.
@@ -134,7 +134,7 @@ Service Fabric obsahuje koncepci uzly počáteční hodnoty. Jedná se o uzly, k
 
 "Primární uzel typu" v samostatných clusterů Service Fabric a Azure, je ten, který spouští semen. Při definování typu primárního uzlu, Service Fabric se automaticky využít výhod počet uzlů zajištěna vytvořením až 9 uzly počáteční hodnoty a 9 repliky jednotlivých systémových služeb. Pokud sadu náhodné chyby používá současně se většina těchto replik služby systému, systémových služeb zadá ztráty kvora, jsme popsaný výše. Pokud Většina uzlů počáteční hodnoty jsou ztraceny, cluster bude vypnut krátce po.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Zjistěte, jak k simulaci různé chyby pomocí [testovatelnosti framework](service-fabric-testability-overview.md)
 - Přečtěte si další prostředky pro zotavení po havárii a vysoká dostupnost. Microsoft publikuje velké množství pokyny v těchto tématech. Při některé z těchto dokumentů naleznete konkrétní postupy pro použití v jiných produktech, obsahují mnoho obecné osvědčené postupy, které můžete použít v rámci Service Fabric:
   - [Kontrolní seznam k dostupnosti](../best-practices-availability-checklist.md)

@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure databázi PostgreSQL cenové úrovně
 
@@ -22,8 +22,8 @@ Můžete vytvořit databázi Azure pro PostgreSQL server v jednom ze tří různ
 |    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
 |:---|:----------|:--------------------|:---------------------|
 | Výpočetní generování | Gen 4, 5. generace | Gen 4, 5. generace | Gen 5 |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Paměť na vCore | Směrný plán | 2 x Basic | 2 x obecné účely |
+| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| Paměť na vCore | Reference | 2 x Basic | 2 x obecné účely |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 2 TB | 5 GB až 2 TB |
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Doba uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
@@ -86,6 +86,14 @@ V závislosti na cenovou úroveň je zajištěna každý vCore s určitou veliko
 Další úložiště kapacity můžete přidat během a po vytvoření serveru. Základní vrstvě neposkytuje záruku IOPS. V obecné účely a paměťově optimalizované cenové úrovně IOPS škálování se velikost zřízeného úložiště v poměru 3:1.
 
 Můžete monitorovat vaší spotřeby vstupně-výstupních operací na portálu Azure nebo pomocí rozhraní příkazového řádku Azure. Metriku relevantní pro monitorování jsou [limit úložiště, procento úložiště, používá úložiště a vstupně-výstupní operace procent](concepts-monitoring.md).
+
+### <a name="reaching-the-store-limit"></a>Dosažení limitu úložiště
+
+Server je označen jen pro čtení, když velikost volného místa dosáhne menší než 5 GB nebo zřízené úložiště % 5, podle toho, která je menší. Například, pokud máte zřízen 100 GB úložiště, a skutečné využití prochází přes 95 GB, server je označen jen pro čtení. Alternativně zřízením 5 GB úložiště, server je označen jen pro čtení Pokud volný úložný prostor dosáhne méně než 250 MB.  
+
+Pokud server je nastaven na jen pro čtení, všechny existující relace odpojeny a nepotvrzené transakce jsou vráceny zpět. Všechny operace následné zápisu a transakce potvrdí selhání. Všechny následné čtení dotazy bude fungovat bez přerušení.  
+
+Můžete buď zvětšete velikost zřízeného úložiště na váš server nebo zahájit novou relaci v režimu a drop dat pro čtení a zápis získat volný úložný prostor. Spuštění `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` nastaví aktuální relaci ke čtení režimu zápisu. Chcete-li zabránit poškození dat, nebude provádět žádné operace zápisu Pokud je server stále v pouze pro čtení.
 
 ## <a name="backup"></a>Backup
 

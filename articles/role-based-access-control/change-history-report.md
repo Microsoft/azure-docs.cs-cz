@@ -6,7 +6,7 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.date: 04/23/2017
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e09ccdc4942a39e54b760cb5ad78c035dbc05f8
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e48ea2293c186bbc337f9d70464df374d64b5e61
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="view-activity-logs-for-role-based-access-control-changes"></a>Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí
 

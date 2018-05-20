@@ -1,23 +1,21 @@
 ---
-title: "Ověřování koncového uživatele: REST API s Data Lake Store pomocí Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí Azure Active Directory pomocí rozhraní REST API"
+title: 'Ověřování koncového uživatele: REST API s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí Azure Active Directory pomocí rozhraní REST API
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 5ee13756e4276055a8c9bdd9642d0766c3ca7e5c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7bebe1948d26b26716262cafb92e3563f5c6b349
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>Ověřování koncového uživatele s Data Lake Store pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -50,7 +48,7 @@ V tomto scénáři aplikace vyzve uživatele k přihlášení a všechny operace
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Pro adresu https://localhost proto použijte zápis `https%3A%2F%2Flocalhost`).
+   > \<REDIRECT-URI&gt; musí být zakódovaný, aby se dal použít jako adresa URL. Ano, pro https://localhost, použijte `https%3A%2F%2Flocalhost`)
    > 
    > 
    

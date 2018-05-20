@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 7f3d9672e9fc152580f49cf06b431ced890d9f08
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Řešení potíží s synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -139,7 +139,7 @@ Get-AzureRmStorageSyncServerEndpoint -SubscriptionId mysubguid -ResourceGroupNam
 Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -VolumeFreeSpacePercent 60
 ```
 
-## <a name="sync"></a>Synchronizovat
+## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Pokud soubor vytvořili přímo v mé sdílenou složku Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá souboru pro synchronizaci servery ve skupině synchronizace?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
@@ -154,7 +154,7 @@ Pokud se synchronizace nezdaří na serveru:
     2. Ověřte, zda je na serveru spuštěna služba synchronizace souboru Azure. K tomu, otevřete modul snap-in konzoly MMC služby a ověřte, zda je spuštěna Služba agenta synchronizace úložiště (FileSyncSvc).
 
 <a id="replica-not-ready"></a>**Synchronizace selže s touto chybou: "0x80c8300f - replika není připraven k provedení požadované operace."**  
-Tento problém se očekává, pokud chcete vytvořit koncový bod cloudu a použít sdílenou složku Azure, který obsahuje data. Po dokončení úlohy detekce změn na sdílenou složkou Azure (může trvat až 24 hodin) spuštěna synchronizace by měla začít pracovat správně.
+Tento problém se očekává, pokud chcete vytvořit koncový bod cloudu a použít sdílenou složku Azure, který obsahuje data. Úlohu detekce změn, která hledá změny do sdílené složky Azure je naplánováno pro jednou za 24 hodin.  Čas dokončení je závislá na velikost oboru názvů do sdílené složky Azure.  Tato chyba by ji okamžitě přejděte po dokončení.
 
 
     > [!NOTE]

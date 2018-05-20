@@ -9,23 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: bd2bb0d05029237242b42225a2c846c78a7c6de9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
 Před spuštění spustitelného souboru služby Service Fabric může být nutné spustit pracovní některé konfigurace nebo instalační program.  Například konfigurace proměnné prostředí. Můžete určit skript běžet před spustitelný soubor služby spuštění v service manifest pro službu. Tím, že nakonfigurujete zásadu RunAs pro instalační program Vstupní bod služby, že můžete změnit účet, který instalačního programu běží pod.  Vstupní bod samostatného instalačního umožňuje spustit vysokou privilged konfigurace na krátkou dobu, spustitelný soubor hostitele služby nemusí spustit s vysokou úrovní oprávnění pro dlouhou dobu.
 
 Instalační program vstupního bodu (**SetupEntryPoint** v [service manifest](service-fabric-application-and-service-manifests.md)) je privilegované vstupního bodu, který ve výchozím nastavení běží se stejnými pověřeními, jako Service Fabric (obvykle  *NetworkService* účtu) před další vstupní bod. Spustitelný soubor, který je zadán **EntryPoint** je obvykle dlouho běžící hostitele služby. **EntryPoint** po je spustit spustitelný soubor **SetupEntryPoint** spustitelný soubor ukončí úspěšně. Výsledný proces monitorovat a restartuje a znovu začíná **SetupEntryPoint** Pokud někdy ukončí nebo dojde k chybě. 
 
-## <a name="configure-the-service-setup-entry-point"></a>Konfigurace služby instalace vstupního bodu
+## <a name="configure-the-service-setup-entry-point"></a>Konfigurace vstupního bodu nastavení služby
 Následující je příklad manifestu jednoduché služby pro bezstavové služby, který určuje skript instalace *MySetup.bat* ve službě **SetupEntryPoint**.  **Argumenty** slouží k předání argumentů do skriptu, když je spuštěna.
 
 ```xml

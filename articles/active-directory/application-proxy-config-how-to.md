@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 816f2c10631de3809c6679c1e2715174f072f56d
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 299d3df1c9ae82bb9f184e9ffb1dd922013e5e65
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Postup konfigurace aplikace Proxy aplikace
 
@@ -51,7 +51,7 @@ Chybová zpráva by měla zobrazit v pravém horním rohu při vytváření apli
 
 ## <a name="configure-connectorsconnector-groups"></a>Nakonfigurujte konektory nebo konektor skupiny
 
-Pokud máte potíže s konfigurací aplikace z důvodu upozornění o konektorech a konektor skupiny, najdete pokyny k povolení Proxy aplikace podrobnosti o tom, jak stáhnout konektory. Pokud chcete získat další informace o konektory, přečtěte si téma [konektory dokumentaci](application-proxy-understand-connectors.md).
+Pokud máte potíže s konfigurací aplikace z důvodu upozornění o konektorech a konektor skupiny, najdete pokyny k povolení Proxy aplikace podrobnosti o tom, jak stáhnout konektory. Pokud chcete získat další informace o konektory, přečtěte si téma [konektory dokumentaci](manage-apps/application-proxy-connectors.md).
 
 Pokud vaše konektory jsou neaktivní, znamená to, aby byly možné vás zastihnout na službu. To je často protože nejsou otevřené požadované porty. Pokud chcete zobrazit seznam požadované porty, najdete v části předpoklady povolení Proxy aplikace dokumentace.
 

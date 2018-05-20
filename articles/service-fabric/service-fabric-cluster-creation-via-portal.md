@@ -9,16 +9,16 @@ editor: vturecek
 ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: aljo
-ms.openlocfilehash: d3efc14886d82290241e9868ea9b0e8262efddea
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: fbe3dde48fa1be79356ff1cb9e47c46832d8cdaa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvořit cluster Service Fabric v Azure pomocí portálu Azure
 > [!div class="op_single_selector"]

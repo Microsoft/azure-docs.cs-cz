@@ -9,16 +9,16 @@ editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: aljo
-ms.openlocfilehash: e3e9e0c13368dbf7dd32c8483f8e6783afc1bdbb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 60b447148c5cef24c061274a84620a8221efc430
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Vytvořit cluster Service Fabric pomocí Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -99,17 +99,13 @@ Použijte následující příkaz k vytvoření clusteru, pokud máte má systé
 ### <a name="login-in-to-azure"></a>přihlášení do Azure.
 
 ```Powershell
-
 Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <guid>
-
 ```
 
 ```CLI
-
 azure login
 az account set --subscription $subscriptionId
-
 ```
 #### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module-to-set-up-the-cluster"></a>Výchozí 5 šablonu nodetype 1 uzel, který se dodává v modulu nastavení clusteru
 
@@ -120,7 +116,6 @@ Je k dispozici na šablonu, která je použita [ukázky šablony služby azure s
 Příkazy níže funguje pro vytváření clusterů Windows a Linux, stačí k určení operačního systému odpovídajícím způsobem. PowerShell / CLI příkazy také výstupy certifikátu v zadané CertificateOutputFolder ale zajistit certifikát složky, které jsou již vytvořeny. Příkaz přijímá v dalších parametrů jako virtuální počítač SKU také.
 
 ```Powershell
-
 $resourceGroupLocation="westus"
 $resourceGroupName="mycluster"
 $vaultName="myvault"
@@ -133,11 +128,9 @@ $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
-
 ```
 
 ```CLI
-
 declare resourceGroupLocation="westus"
 declare resourceGroupName="mylinux"
 declare vaultResourceGroupName="myvaultrg"
@@ -149,14 +142,11 @@ declare vmuser="myadmin"
 declare vmOs="UbuntuServer1604"
 declare certOutputFolder="c:\certificates"
 
-
-
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
     --certificate-output-folder $certOutputFolder --certificate-password $certpassword  \
     --vault-name $vaultName --vault-resource-group $resourceGroupName  \
     --template-file $templateFilePath --parameter-file $parametersFilePath --vm-os $vmOs  \
     --vm-password $vmpassword --vm-user-name $vmuser
-
 ```
 
 #### <a name="use-the-custom-template-that-you-already-have"></a>Použít vlastní šablonu, kterou už máte 
@@ -179,8 +169,6 @@ Pokud již máte vlastní šablony a poté se ujistěte se, zda Překontrolujte,
 
 
 ```PowerShell
-
-
 $resourceGroupLocation="westus"
 $resourceGroupName="mycluster"
 $CertSubjectName="mycluster.westus.cloudapp.azure.com"
@@ -190,15 +178,12 @@ $certOutputFolder="c:\certificates"
 $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 
-
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
-
 ```
 
 Zde je ekvivalentní příkaz rozhraní příkazového řádku o stejnou akci. Změňte hodnoty v příkazech declare odpovídající hodnoty. Rozhraní příkazového řádku podporuje všech dalších parametrů, které podporuje výše uvedeném příkazu prostředí PowerShell.
 
 ```CLI
-
 declare certPassword=""
 declare resourceGroupLocation="westus"
 declare resourceGroupName="mylinux"
@@ -207,12 +192,10 @@ declare parameterFilePath="c:\mytemplates\linuxtemplateparm.json"
 declare templateFilePath="c:\mytemplates\linuxtemplate.json"
 declare certOutputFolder="c:\certificates"
 
-
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
     --certificate-output-folder $certOutputFolder --certificate-password $certPassword  \
     --certificate-subject-name $certSubjectName \
     --template-file $templateFilePath --parameter-file $parametersFilePath
-
 ```
 
 
@@ -227,7 +210,6 @@ Pokud je certifikát podepsaný certifikační Autoritou, která se ukončí pou
 Je k dispozici na šablonu, která je použita [ukázek azure: šablony systému windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) a [Ubuntu šablony](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
 ```PowerShell
-
 $resourceGroupLocation="westus"
 $resourceGroupName="mylinux"
 $vaultName="myvault"
@@ -238,11 +220,9 @@ $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
-
 ```
 
 ```CLI
-
 declare vmPassword="Password!1"
 declare certPassword="Password!1"
 declare vmUser="myadmin"
@@ -253,13 +233,11 @@ declare vaultName="myvault"
 declare certificate-file="c:\certificates\mycert.pem"
 declare vmOs="UbuntuServer1604"
 
-
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
     --certificate-file $certificate-file --certificate-password $certPassword  \
     --vault-name $vaultName --vault-resource-group $vaultResourceGroupName  \
     --vm-os vmOs \
     --vm-password $vmPassword --vm-user-name $vmUser
-
 ```
 
 #### <a name="use-the-custom-template-that-you-have"></a>Použít vlastní šablonu, kterou máte 
@@ -281,7 +259,6 @@ Pokud již máte vlastní šablony a poté se ujistěte se, zda Překontrolujte,
 
 
 ```PowerShell
-
 $resourceGroupLocation="westus"
 $resourceGroupName="mylinux"
 $vaultName="myvault"
@@ -292,15 +269,12 @@ $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
-
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
-
 ```
 
 Zde je ekvivalentní příkaz rozhraní příkazového řádku o stejnou akci. Změňte hodnoty v příkazech declare odpovídající hodnoty.
 
 ```CLI
-
 declare certPassword="Password!1"
 declare resourceGroupLocation="westus"
 declare resourceGroupName="mylinux"
@@ -320,17 +294,13 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 Chcete-li použít existující trezor klíčů, můžete _ji musíte povolit pro nasazení_ umožňující poskytovatele výpočetních prostředků z něj získat certifikáty a nainstalujte ji na uzlech clusteru:
 
 ```PowerShell
-
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
-
 
 $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-
 New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
-
 ```
 Zde je ekvivalentní příkaz rozhraní příkazového řádku o stejnou akci. Změňte hodnoty v příkazech declare odpovídající hodnoty.
 
@@ -340,11 +310,9 @@ declare $parameterFilePath="c:\mytemplates\mytemplate.json"
 declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
 declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-
 az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
     --secret-identifier az $secretID  \
     --template-file $templateFilePath --parameter-file $parametersFilePath 
-
 ```
 
 <a id="add-AAD-for-client"></a>
@@ -366,8 +334,7 @@ Pro zjednodušení některé kroky v konfiguraci Azure AD se cluster Service Fab
 4. Spustit `SetupApplications.ps1`a zadejte TenantId, název clusteru a WebApplicationReplyUrl jako parametry. Příklad:
 
 ```powershell
-    .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
-
+.\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
 Vaše ID Tenanta můžete najít spuštěním příkazu Powershellu `Get-AzureSubscription`. Provádění tento příkaz zobrazí TenantId pro každé předplatné.
@@ -503,7 +470,7 @@ Certifikát pro ověření clusteru musí být konfigurované v obou Service Fab
 
 ### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidat konfiguraci Azure AD použít Azure AD pro klientský přístup
 
-Konfigurace Azure AD s přidáte do šablony správce prostředků clusteru pod položkou trezoru klíčů, který obsahuje klíče certifikátu. Přidejte tyto parametry Azure AD a hodnoty v souboru parametrů šablony Resource Manageru (azuredeploy.parameters.json).
+Konfigurace Azure AD je přidat do šablony správce prostředků clusteru pod položkou trezoru klíčů, který obsahuje klíče certifikátu. Přidejte tyto parametry Azure AD a hodnoty v souboru parametrů šablony Resource Manageru (azuredeploy.parameters.json).
 
 ```json
 {
@@ -542,18 +509,18 @@ Pokud máte v plánu služby Azure service fabric, moduly Powershellu RM, pak ne
 >
 
 ```json
-        "clusterCertificateThumbprint": {
-            "value": ""
-        },
-        "certificateCommonName": {
-            "value": ""
-        },
-        "clusterCertificateUrlValue": {
-            "value": ""
-        },
-        "sourceVaultvalue": {
-            "value": ""
-        },
+"clusterCertificateThumbprint": {
+    "value": ""
+},
+"certificateCommonName": {
+    "value": ""
+},
+"clusterCertificateUrlValue": {
+    "value": ""
+},
+"sourceVaultvalue": {
+    "value": ""
+},
 ```
 
 Pokud používáte aplikace certifikátů nebo použití existující cluster, který jste odeslali do trezoru klíčů, budete muset získat tyto informace a přidejte do ní 

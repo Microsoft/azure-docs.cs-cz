@@ -1,0 +1,186 @@
+---
+title: Nastavit šablonu zařízení v aplikaci Azure IoT centrální | Microsoft Docs
+description: Zjistěte, jak nastavit šablonu zařízení s měření, nastavení, vlastnosti, pravidla a řídicí panel.
+services: iot-central
+author: viv-liu
+ms.author: viviali
+ms.date: 04/16/2018
+ms.topic: article
+ms.prod: microsoft-iot-central
+manager: timlt
+ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/16/2018
+---
+# <a name="set-up-a-device-template"></a>Nastavit šablonu zařízení
+
+Šablonu zařízení je to plán, který definuje charakteristiky a chování typu zařízení, která se připojuje k Microsoft Azure IoT centrální aplikaci.
+
+Tvůrce můžete například vytvořit šablonu zařízení pro připojené ventilátor IoT, který má:
+
+- Teplotní telemetrie měření
+
+- Ventilátor měření událostí motor chyb
+
+- Ventilátor operační měření stavu
+
+- Ventilátor rychlost nastavení
+
+- Vlastnost umístění
+
+- Pravidla, která odesílání výstrah
+
+- Řídicí panel, který vám dává všechna zobrazení o zařízení
+
+Z této šablony zařízení můžete vytvořit a připojit zařízení skutečné ventilátor s názvy, jako operátor **ventilátor-1** a **ventilátor 2**. Všechny tyto ventilátory mít pravidla měření, nastavení a vlastnosti a řídicí panel, který uživatelé vaší aplikace můžete sledovat a spravovat.
+
+> [!NOTE]
+Pouze počítačů a správce můžete vytvořit, upravit a odstranit zařízení šablony. Kterýkoli uživatel může vytvářet zařízení **Explorer zařízení** stránky ze stávajících šablon zařízení.
+
+## <a name="create-a-new-device-template"></a>Vytvořte novou šablonu zařízení
+
+1. Přejděte na **Tvůrce aplikací** stránky.
+
+1. Chcete-li vytvořit prázdnou šablonou, zvolte **vytvořit šablonu zařízení**a potom zvolte **vlastní**.
+
+1. Zadejte název pro novou šablonu zařízení a zvolte **vytvořit**.
+
+    ![Stránka Podrobnosti zařízení](./media/howto-set-up-template/devicedetailspage.png)
+
+1. Nyní jste na **podrobnosti o zařízení** stránky nového simulovaného zařízení. Simulované zařízení se automaticky vytvoří za vás, když vytvoříte novou šablonu zařízení. To sestavy dat a lze řídit stejně jako skutečné zařízení.
+
+Nyní podívejte se na každé kartě **podrobnosti o zařízení** stránky.
+
+## <a name="measurements"></a>Měření
+
+Měření jsou dat pocházejících z vašeho zařízení. Můžete přidat více měření do šablony zařízení tak, aby odpovídaly možnosti zařízení. V současné době telemetrie a událostí jsou typy podporované měření.
+
+- **Telemetrie** měření jsou číselné datové body zařízení postupně shromažďuje a jsou reprezentována nepřetržitý proud. Například teploty.
+- **Událost** měření jsou data v okamžiku, která představují něco násobek na zařízení. Události mají závažnost s nimi spojených, představující význam události. Například ventilátor motor chyby
+- **Stav** měření reprezentovat stav zařízení nebo jeho součástí přes v časovém intervalu. Ventilátor například režim, který může mít operační a zastavena jako dva možné stavy.
+
+### <a name="create-a-telemetry-measurement"></a>Vytvořit měření Telemetrie
+Chcete-li přidat novou míru telemetrická data, klikněte na **+ nového měření** tlačítko, které se otevře formulář s možnostmi a vyberte typ měrné jednotky. Vyberte **Telemetrie** a zadejte podrobnosti **vytvořit Telemetrie** formuláře.
+
+> [!NOTE]
+> Když je skutečné zařízení připojené, platíte pozornost název měření hlásí zařízení. Název musí přesně odpovídat **název pole** měření.
+
+Například můžete přidat novou míru teplotní telemetrie:
+
+![Měření formuláře](./media/howto-set-up-template/measurementsform.png)
+
+Když vyberete **Uložit**, **teploty** měření se zobrazí v seznamu měření a operátor uvidí vizualizaci dat teploty je shromažďování zařízení.
+
+![Měření grafu](./media/howto-set-up-template/measurementsgraph.png)
+
+### <a name="create-an-event-measurement"></a>Vytvořit měření událostí
+Chcete-li přidat nového měření událostí, klikněte na **+ nového měření** tlačítko, které se otevře formulář s možnostmi a vyberte typ měrné jednotky. Vyberte **událostí** a zadejte podrobnosti **vytvořit událost** formuláře.
+
+Na tomto formuláři zadejte **zobrazovaný název**, **název pole**a **závažnost** události. Můžete zvolit ze tří dostupných úrovní závažnosti - **chyba**, **upozornění**, a **informace**.  
+
+Například můžete přidat novou událost "Ventilátor Motor chyba".
+
+![Formulář měření událostí](./media/howto-set-up-template/eventmeasurementsform.png)
+
+Když vyberete **Uložit**, **Motor chyba ventilátor** měření se zobrazí v seznamu měření a operátor uvidí vizualizaci dat událostí odesílá zařízení.
+
+![Graf měření událostí](./media/howto-set-up-template/eventmeasurementschart.png)
+
+Chcete-li zobrazit další podrobnosti o události, klikněte na ikonu událostí na graf:
+
+![Podrobnosti události měření](./media/howto-set-up-template/eventmeasurementsdetail.png)
+
+
+### <a name="create-a-state-measurement"></a>Vytvořit měření stavu
+Chcete-li přidat nového měření stavu, klikněte na **+ nového měření** tlačítko, které se otevře formulář s možnostmi a vyberte typ měrné jednotky. Vyberte **stavu** a zadejte podrobnosti **vytvořit stavu** formuláře.
+
+Na tomto formuláři zadejte **zobrazovaný název**, **název pole**a možné **hodnoty** stavu. Každý **hodnota** může mít zobrazovaný název, který se použije při zobrazuje hodnota na grafů a tabulek.
+
+Například můžete přidat nové stavu "Ventilátor režim", který má dvě možné hodnoty, které mohou odesílat zařízení, **operační** a **Zastaveno**.
+
+![Stav měření formuláře](./media/howto-set-up-template/statemeasurementsform.png)
+
+Když vyberete **Uložit**, **ventilátor režimu** měření stavu se zobrazí v seznamu měření a operátor uvidí vizualizaci dat o stavu zařízení odesílá.
+
+![Tabulka stavů měření](./media/howto-set-up-template/statemeasurementschart.png)
+
+V případě, je příliš mnoho datových bodů poslal zařízení v malých doba trvání, je měření stavu zobrazí s jinou visual, jak je uvedeno níže. Pokud kliknete na graf, zobrazí se v chronologickém pořadí datových bodů v daném časovém období. Můžete také zúžit časový rozsah a zobrazte měření na graf vykreslen.
+
+![Podrobnosti o stavu měření](./media/howto-set-up-template/statemeasurementsdetail.png)
+
+
+## <a name="settings"></a>Nastavení
+
+Nastavení řídí zařízení. Umožňují operátory vaší aplikace zadejte vstupy pro zařízení. Můžete přidat několik nastavení do šablony zařízení, která se zobrazují jako dlaždice na **nastavení** kartě operátorů sloužící k použití. Existuje šest typů nastavení, můžete přidat: číslo, text, datum, přepnutí, rozevíracího seznamu a popisku oddílu.
+
+> [!NOTE]
+> Když je skutečné zařízení připojené, věnovat pozornost název nastavení sestav zařízení. Název musí přesně odpovídat **název pole** nastavení.
+
+Nastavení může být v jednom ze tří stavů. Tyto stavy oznamuje zařízení.
+
+- **Synchronizovat**: zařízení změnila, aby odrážela hodnotu nastavení.
+
+- **Čekající**: zařízení je momentálně změna na hodnotu nastavení.
+
+- **Chyba**: zařízení vrátilo chybu.
+
+Například můžete přidat nové nastavení rychlosti ventilátor:
+
+![Nastavení formuláře](./media/howto-set-up-template/settingsform.png)
+
+Po výběru **Uložit**, **ventilátor rychlost** nastavení se zobrazí jako dlaždici a je připravená pro a použít ke změně rychlosti ventilátor zařízení.
+
+> [!NOTE]
+> Po vytvoření nová dlaždice můžete vyzkoušet nové nastavení. Nejprve vypnout režimu návrhu v horní pravé části obrazovky:
+
+![Nastavení dlaždice](./media/howto-set-up-template/settingstile.png)
+
+## <a name="properties"></a>Vlastnosti
+
+Vlastnosti jsou přidružené k zařízení, jako je například umístění zařízení a sériové číslo metadat zařízení. Můžete přidat do šablony zařízení, která se zobrazují jako dlaždice na více vlastností **vlastnosti** kartě. Operátor můžete zadat hodnoty pro vlastnosti, když uživatel vytvořit nové zařízení a mohli upravit tyto hodnoty kdykoli. Existuje šest typů vlastností můžete přidat: číslo, text, datum, přepnutí, vlastnosti zařízení a popisku.
+
+Existují dva typy vlastností:
+
+- **Vlastnosti zařízení** jsou hlášené vlastnosti zařízení.
+- **Vlastnosti aplikace** jsou vlastnosti uložena výhradně v aplikaci. Zařízení nemá žádné informace o vlastnosti aplikace.
+
+> [!NOTE]
+> Pro vlastnosti zařízení když je skutečné zařízení připojené, platíte pozornost název vlastnosti zařízení sestavy. Název musí přesně odpovídat **název pole** vlastnosti. Pro vlastnosti aplikace názvu pole může být nic, co chcete, tak dlouho, dokud se v šabloně zařízení jedinečný název.
+
+Umístění zařízení můžete například přidat jako novou vlastnost:
+
+![Vlastnosti formuláře](./media/howto-set-up-template/propertiesform.png)
+
+Po výběru **Uložit**, zobrazí se umístění zařízení jako dlaždici:
+
+![Dlaždice vlastnosti](./media/howto-set-up-template/propertiestile.png)
+
+> [!NOTE]
+> Po vytvoření nová dlaždice, můžete změnit hodnotu vlastnosti. Nejprve vypnout režimu návrhu v horní pravé části obrazovky.
+
+## <a name="rules"></a>Pravidla
+
+Pravidla umožňují operátory monitorování zařízení skoro v reálném čase. Pravidla automaticky vyvolání **akce** například odeslání e-mailu, když se pravidlo spustí. Je jeden typ pravidla k dispozici dnes:
+
+- **Pravidlo telemetrie:** telemetrie pravidlo spustí, když se telemetrie vybrané zařízení protne zadanou prahovou hodnotu. Další informace o [telemetrie pravidla](howto-create-telemetry-rules.md).
+
+## <a name="dashboard"></a>Řídicí panel
+
+Řídicí panel je, kde můžete operátor moct zobrazit informace o zařízení. Jako tvůrce můžete přidat dlaždice k této stránce, který pomůže operátory pochopit, jak se zařízení chovají. Více dlaždice řídicího panelu můžete přidat do šablony zařízení. Existuje šest typů dlaždice řídicího panelu můžete přidat: bitovou kopii, řádek grafu, pruhový graf, klíčového ukazatele výkonu, nastavení a vlastností a popisku.
+
+Například můžete přidat **nastavení a vlastností** dlaždice zobrazíte výběr aktuálními hodnotami vlastností a nastavení:
+
+![Řídicí panel zařízení podrobnosti formuláře](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+
+Nyní když operátor zobrazení řídicího panelu, uvidí tuto dlaždici, která zobrazuje vlastnosti a nastavení zařízení:
+
+![Dlaždice řídicího panelu](./media/howto-set-up-template/dashboardtile.png)
+
+## <a name="next-steps"></a>Další postup
+
+Teď, když jste se naučili jak nastavit šablonu zařízení v aplikaci Azure IoT centrální, zde je navržené další krok:
+
+> [!div class="nextstepaction"]
+> [Vytvořit novou verzi šablony zařízení](howto-version-devicetemplate.md)

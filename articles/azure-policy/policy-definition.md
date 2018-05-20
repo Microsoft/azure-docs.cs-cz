@@ -2,18 +2,17 @@
 title: Struktura definic Azure Policy
 description: Popisuje použití zásad definice prostředků zásadami Azure k vytvoření konvence pro prostředky ve vaší organizaci pomocí popisující, když je tato zásada vynucená a jaký vliv má provést.
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-policy
-ms.custom: ''
-ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+manager: carmonm
+ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -24,9 +23,9 @@ Schéma používá zásad Azure naleznete zde: [https://schema.management.azure.
 JSON použijete k vytvoření definice zásady. Definice zásad obsahuje prvky pro:
 
 - režim
-- parametry
+- parameters
 - Zobrazovaný název
-- Popis
+- description
 - Pravidlo zásad
   - logické vyhodnocení
   - Platnost
@@ -66,7 +65,7 @@ Například následujícím kódu JSON zobrazuje zásadu, která omezuje, kdy js
 
 Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samples.md).
 
-## <a name="mode"></a>Režim
+## <a name="mode"></a>Mode
 
 **Režimu** Určuje, jaké typy prostředků se vyhodnotí pro zásadu. Podporované režimy jsou:
 
@@ -196,7 +195,7 @@ Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak 
 
 Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představují číslice, `?` pro písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [povolit více vzory názvů](scripts/allow-multiple-name-patterns.md).
 
-### <a name="fields"></a>Pole
+### <a name="fields"></a>Fields (Pole)
 
 Podmínky se vytváří pomocí pole. Pole představuje vlastnosti v datová část požadavku prostředku, který se používá k popisu stavu prostředku.  
 
@@ -227,7 +226,7 @@ Podporovány jsou následující pole:
 
 Zásady je vyhodnocení existující prostředky na pozadí, nastaví **akce** k `/write` autorizace akce u typu prostředku.
 
-### <a name="effect"></a>Účinek
+### <a name="effect"></a>Efekt
 
 Zásady podporuje následující typy vliv:
 

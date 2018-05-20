@@ -15,7 +15,7 @@ ms.assetid: ''
 ms.custom: it-pro
 ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
 ---

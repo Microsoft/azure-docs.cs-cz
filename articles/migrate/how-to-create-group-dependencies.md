@@ -4,13 +4,13 @@ description: Popisuje, jak k zpřesnění posouzení pomocí mapování závislo
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: 897b45782dee14099d5d7a7b12c49e2bfd60b309
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 690231b938f60f16dcd10656b9a1f99c8c8f29cb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnit skupiny pomocí mapování skupin závislostí
 

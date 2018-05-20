@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 89ad96441ca4d519a9f4213ae3353eea1f0a7c37
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 4b3a7425f383e1fa8145bac016aa2881d806c545
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="application-insights-overview-dashboard-preview"></a>Řídicí panel aplikací – přehled Insights (preview)
 
@@ -25,23 +25,23 @@ Application Insights vždy poskytl přehled souhrnu podokně umožňuje rychlý 
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Jak otestovat na nové prostředí?
 
- Ve službě Application Insights v části: _prošetření_ vyberte _přehled (preview)_.
+ Ve službě Application Insights v části: _přehled_, vyberte _zkuste to prosím nový přehled předtím, než je výchozí metodou_.
 
-![Přehled Preview](.\media\app-insights-overview-dashboard\01.png)
+![Přehled Preview](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-01.png)
 
 Tím se spustí novou výchozí přehled řídicí panel:
 
-![Přehled podokna náhledu](.\media\app-insights-overview-dashboard\02.png)
+![Přehled podokna náhledu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-02.png)
 
 ## <a name="better-performance"></a>Lepší výkon
 
 Výběr časového rozsahu zjednodušenou jednoduché rozhraní jedním kliknutím.
 
-![Časové rozmezí](.\media\app-insights-overview-dashboard\04.png)
+![Časové rozmezí](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
 Celkový výkon značně zvýšilo. Každý výchozí dynamicky aktualizuje klíčového ukazatele výkonu dlaždice se propojí odpovídající funkci Application Insights. Například výběr neúspěšných požadavků se spustí _selhání_ podokně:
 
-![Počet selhání](.\media\app-insights-overview-dashboard\03.png)
+![Počet selhání](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
 
 ## <a name="application-dashboard"></a>Řídicí panel aplikací
 
@@ -49,14 +49,21 @@ Celkový výkon značně zvýšilo. Každý výchozí dynamicky aktualizuje klí
 
 Pro přístup k výchozí řídicí panel select _řídicí panel aplikací_ v levém horním rohu.
 
-![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\0009.png)
+![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
 Toto je poprvé přístup k řídicím panelu se spustí výchozí zobrazení:
 
-![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\06.png)
+![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
 Zatímco můžete ponechat výchozí zobrazení, pokud ho chcete, můžete také přidat a odstranit z řídicího panelu na nejvhodnější podle potřeb vašeho týmu.
 
 Přejděte zpět na právě vyberte Přehled prostředí:
 
-![Tlačítko – Přehled](.\media\app-insights-overview-dashboard\07.png)
+![Tlačítko – Přehled](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+
+## <a name="next-steps"></a>Další postup
+
+- [Trychtýře](usage-funnels.md)
+- [Uchování](app-insights-usage-retention.md)
+- [Toky uživatele](app-insights-usage-flows.md)
+- [Řídicí panely](app-insights-dashboards.md)

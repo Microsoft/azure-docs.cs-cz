@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/1/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: a28a377ec3872fad0121636070b6604eaa415b30
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s objekt synchronizace s synchronizace Azure AD Connect
 Tento dokument obsahuje kroky pro řešení potíží s objekt synchronizace pomocí řešení potíží úlohy.
@@ -90,6 +90,8 @@ Poštovní schránku propojenou by měla být přidruženy k externí hlavní ú
 
 ## <a name="dynamic-distribution-group-issue"></a>Dynamická skupina distribučních problém
 Z důvodu různé rozdíly mezi místní služby Active Directory a Azure Active Directory, Azure AD Connect nesynchronizuje dynamické distribučních skupin pro klienta Azure AD.
+
+![Dynamické distribuční skupiny](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch13.png)
 
 ## <a name="html-report"></a>Sestavu ve formátu HTML
 Kromě analýzy objekt, vytvoří úlohu řešení potíží také zprávu ve formátu HTML, který obsahuje všechno, co vědět o objektu. Tuto sestavu ve formátu HTML, je možné sdílet s tým podpory udělat další řešení problémů v případě potřeby.

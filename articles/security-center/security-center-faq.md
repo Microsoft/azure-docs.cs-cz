@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2018
+ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: 7bbe0945981370c15fd10e93498fcc3ee0bf1a39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e46c2ad30b578b0642ee7b541ea003ed67c6a7f5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která pomáhá zabránit, zjistit a reagovat na hrozby nabízí lepší přehled a kontrolu nad zabezpečení vašich prostředků Microsoft Azure.
@@ -51,16 +51,18 @@ Security Center vyhodnocuje konfigurace vaše prostředky a identifikují probl�
 V tématu [oprávnění v Azure Security Center](security-center-permissions.md) Další informace o rolích a povolených akcí v Centru zabezpečení.
 
 ## <a name="data-collection"></a>Shromažďování dat
-Security Center shromažďuje data z virtuálních počítačů k vyhodnocení jejich stavu zabezpečení, poskytování doporučení zabezpečení a výstrahy na hrozeb. Pokud nejprve přístup k Security Center, shromažďování dat je povolené na všechny virtuální počítače ve vašem předplatném. Můžete také povolit shromažďování dat v zásadách Security Center.
+Security Center shromažďuje data z Azure virtuální počítače (VM) a počítače mimo Azure pro monitorování ohrožení zabezpečení a hrozbami. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru.
 
 ### <a name="how-do-i-disable-data-collection"></a>Jakým způsobem vypnout shromažďování dat?
-Pokud používáte Azure Security Center volné vrstvy, můžete zakázat shromažďování dat z virtuálních počítačů v každém okamžiku. Shromažďování dat je vyžadován pro odběry na plán úrovně Standard. Shromažďování dat pro odběr v zásadách zabezpečení můžete zakázat. ([Přihlaste se k portálu Azure](https://portal.azure.com), vyberte **Procházet**, vyberte **Security Center**a vyberte **zásad**.)  Když vyberete předplatné, nové okno otevře a získáte tak možnost vypnout **shromažďování dat**.
+Automatické zřizování je ve výchozím nastavení vypnuté. Můžete zakázat automatické zřizování z prostředků kdykoli vypnutím tohoto nastavení v zásadě zabezpečení. Automatické zřizování důrazně doporučujeme, aby bylo možné získat výstrahy zabezpečení a doporučení ohledně aktualizací systému, ohrožení zabezpečení operačního systému a endpoint protection.
+
+Zakázání shromažďování dat [Přihlaste se k portálu Azure](https://portal.azure.com), vyberte **Procházet**, vyberte **Security Center**a vyberte **vyberte zásadu**. Vyberte předplatné, pro které chcete vypnout automatické zřizování. Když vyberete předplatné **zásady zabezpečení – shromažďování dat** otevře. V části **automatické zřizování**, vyberte **vypnout**.
 
 ### <a name="how-do-i-enable-data-collection"></a>Povolení shromažďování dat
-Shromažďování dat můžete povolit pro vaše předplatné Azure v zásadě zabezpečení. Chcete-li povolit shromažďování dat. [Přihlaste se k portálu Azure](https://portal.azure.com), vyberte **Procházet**, vyberte **Security Center**a vyberte **zásad**. Nastavit **shromažďování dat** k **na**.
+Shromažďování dat můžete povolit pro vaše předplatné Azure v zásadě zabezpečení. Chcete-li povolit shromažďování dat. [Přihlaste se k portálu Azure](https://portal.azure.com), vyberte **Procházet**, vyberte **Security Center**a vyberte **zásady zabezpečení**. Vyberte předplatné, které chcete povolit automatické zřizování. Když vyberete předplatné **zásady zabezpečení – shromažďování dat** otevře. V části **automatické zřizování**, vyberte **na**.
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Co se stane, pokud je povoleno shromažďování dat?
-Při shromažďování dat je povolené, Microsoft Monitoring Agent je automaticky zřízený na všechny stávající a nově podporované virtuální počítače, které jsou nasazeny v rámci předplatného.
+Pokud je povoleno automatické zřizování, podporované Security Center zřizuje agenta Microsoft Monitoring Agent na všech virtuálních počítačích Azure a všechny nové, které jsou vytvořeny. Automatické zřizování důrazně doporučujeme, ale instalace ručního agenta je také k dispozici. [Naučte se nainstalovat rozšíření pro Microsoft Monitoring Agent](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension).
 
 Událost procesu vytvoření 4688 umožňuje agenta a *CommandLine* pole v rámci události 4688. Nové procesů vytvořených ve virtuálním počítači jsou zaznamenány v protokolu událostí a monitorovat pomocí zjišťování služby Security Center. Informace v podrobnostech pro každý nový proces zaznamenány v tématu [pole Popis v 4688](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Agent také shromažďuje 4688 události vytvořené ve virtuálním počítači a ukládá je do vyhledávání.
 

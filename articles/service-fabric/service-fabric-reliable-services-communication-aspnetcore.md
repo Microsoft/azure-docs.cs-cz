@@ -1,24 +1,24 @@
 ---
-title: "Služba komunikace s ASP.NET Core | Microsoft Docs"
-description: "Další informace o použití ASP.NET Core v bezzstavovými i stavovými službami spolehlivé."
+title: Služba komunikace s ASP.NET Core | Microsoft Docs
+description: Další informace o použití ASP.NET Core v bezzstavovými i stavovými službami spolehlivé.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 8aa4668d-cbb6-4225-bd2d-ab5925a868f2
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 4f5bc49bf58773a1510b552ce6fc20aa61076348
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7786e08e04d2ebce757b4c47b8ed599036c95958
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Jádro ASP.NET v Service Fabric spolehlivé služby
 
@@ -132,7 +132,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>HttpSys v stavové služby
 
-`HttpSysCommunicationListener`není aktuálně určený pro použití v stavové služby z důvodu komplikace se základní *http.sys* funkce Sdílení portů. Další informace najdete v následující části na dynamický port přidělení httpsys. Pro stavové služby je Kestrel doporučené webového serveru.
+`HttpSysCommunicationListener` není aktuálně určený pro použití v stavové služby z důvodu komplikace se základní *http.sys* funkce Sdílení portů. Další informace najdete v následující části na dynamický port přidělení httpsys. Pro stavové služby je Kestrel doporučené webového serveru.
 
 ### <a name="endpoint-configuration"></a>Konfigurace koncového bodu
 
@@ -306,11 +306,11 @@ Kestrel je doporučené webovém serveru pro front-endové služby, které zveř
  
 Pokud přístup k Internetu, bezstavové služby by měl použít dobře známé a stabilní koncový bod, který je dostupný prostřednictvím Vyrovnávání zatížení. Toto je adresa URL bude poskytovat uživatelům vaší aplikace. Doporučuje se následující konfiguraci:
 
-|  |  | **Poznámky k** |
+|  |  | **Poznámky** |
 | --- | --- | --- |
-| Webový server | Kestrel | Kestrel je upřednostňovaný webového serveru, jako je podporovaná ve Windows a Linux. |
+| Webový server | kestrel | Kestrel je upřednostňovaný webového serveru, jako je podporovaná ve Windows a Linux. |
 | Konfigurace portu | statická | Dobře známé statický port by měl být nakonfigurovaný v `Endpoints` konfigurace ServiceManifest.xml, jako třeba 80 pro protokol HTTP nebo 443 pro protokol HTTPS. |
-| ServiceFabricIntegrationOptions | Žádné | `ServiceFabricIntegrationOptions.None` By měl být použit při konfiguraci Service Fabric integrace middleware tak, aby služba nebude pokoušet o ověření příchozích požadavků na jedinečný identifikátor. Externí uživatele vaší aplikace nebude vědět jedinečné identifikační informace používané middleware. |
+| ServiceFabricIntegrationOptions | Žádný | `ServiceFabricIntegrationOptions.None` By měl být použit při konfiguraci Service Fabric integrace middleware tak, aby služba nebude pokoušet o ověření příchozích požadavků na jedinečný identifikátor. Externí uživatele vaší aplikace nebude vědět jedinečné identifikační informace používané middleware. |
 | Počet instancí | -1 | V typické případy použití musí být počet instancí nastavení nastavena "-1", aby instance k dispozici na všech uzlech, jež přijímat přenosy z pro vyrovnávání zatížení. |
 
 Více externě zveřejněné služeb sdílet stejnou sadu uzlů, lze nastavit HttpSys s jedinečné, ale stabilní cestu adresy URL. To můžete udělat změnou adresy URL poskytnuté při konfiguraci IWebHost. Všimněte si, že platí pouze pro HttpSys.
@@ -331,9 +331,9 @@ Více externě zveřejněné služeb sdílet stejnou sadu uzlů, lze nastavit Ht
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Pouze interní bezstavové služby ASP.NET Core
 Bezstavové služby, které jsou pouze volat v rámci clusteru musí používat jedinečné adresy URL a dynamicky přiřadit porty k zajištění spolupráce mezi více služeb. Doporučuje se následující konfiguraci:
 
-|  |  | **Poznámky k** |
+|  |  | **Poznámky** |
 | --- | --- | --- |
-| Webový server | Kestrel | I když HttpSys mohou být použity pro interní bezstavové služby, je Kestrel doporučené serveru tak, aby víc instancí služby pro sdílení hostitele.  |
+| Webový server | kestrel | I když HttpSys mohou být použity pro interní bezstavové služby, je Kestrel doporučené serveru tak, aby víc instancí služby pro sdílení hostitele.  |
 | Konfigurace portu | dynamicky přiřadit | Víc replik stavové služby může sdílet proces hostitele nebo hostitelského operačního systému a proto bude nutné odlišné porty. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | S přiřazením dynamický port toto nastavení zabrání chybné identifikace problém popsané výše. |
 | InstanceCount | libovolné | Počet instancí nastavení lze nastavit na jakoukoli hodnotu potřebné pro provoz služby. |
@@ -341,9 +341,9 @@ Bezstavové služby, které jsou pouze volat v rámci clusteru musí používat 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Pouze interní stavová služba ASP.NET Core
 Stavové služby, které jsou pouze volat v rámci clusteru používejte porty dynamicky přiřazené k zajištění spolupráce mezi více služeb. Doporučuje se následující konfiguraci:
 
-|  |  | **Poznámky k** |
+|  |  | **Poznámky** |
 | --- | --- | --- |
-| Webový server | Kestrel | `HttpSysCommunicationListener` Není určen pro stavové služby, ve kterých repliky sdílet hostitelském procesu. |
+| Webový server | kestrel | `HttpSysCommunicationListener` Není určen pro stavové služby, ve kterých repliky sdílet hostitelském procesu. |
 | Konfigurace portu | dynamicky přiřadit | Víc replik stavové služby může sdílet proces hostitele nebo hostitelského operačního systému a proto bude nutné odlišné porty. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | S přiřazením dynamický port toto nastavení zabrání chybné identifikace problém popsané výše. |
 

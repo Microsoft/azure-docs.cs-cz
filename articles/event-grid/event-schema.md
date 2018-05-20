@@ -5,14 +5,14 @@ services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 04/17/2018
 ms.author: babanisa
-ms.openlocfilehash: cb7797f5322b9288faf96be2ede164f156fd66cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3e0b7fd825b8e985cea2c32301986b3a7f8bb619
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure schématu události událostí mřížky
 
@@ -87,8 +87,8 @@ Všechny události obsahovat stejné nejvyšší úrovně následující data:
 | eventTime | řetězec | Čas, který se vygeneruje událost založené na čas UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor pro událost. |
 | data | objekt | Data události specifické pro poskytovatele prostředků. |
-| dataVersion | řetězec | Verze schématu datového objektu. Vydavatel definuje verze schématu. |
-| metadataVersion | řetězec | Verze schématu metadat událostí. Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
+| dataVersion | řetězec | Verze schématu datového objektu Vydavatel definuje verze schématu. |
+| metadataVersion | řetězec | Verze schématu metadat události Událost mřížky definuje schéma vlastnosti nejvyšší úrovně. Událost mřížky poskytuje tuto hodnotu. |
 
 Další informace o vlastnosti v objektu data, najdete v části Zdroj události:
 

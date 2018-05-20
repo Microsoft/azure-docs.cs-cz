@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: d140822b47325e8749d3b2788b47cf820f720a39
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.openlocfilehash: 67dff6acff33b548518053ca1f569186d6b5b3ae
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure vazby fronty úložiště pro Azure Functions
 
@@ -253,6 +253,8 @@ Aktivační událost fronty nabízí několik [metadata vlastnosti](functions-tr
 |`NextVisibleTime`|`DateTimeOffset`|Čas, zprávy budou vedle viditelné.|
 |`PopReceipt`|`string`|Pop přijetí zprávy.|
 
+V tématu [příklady kódu pro](#trigger---example) , použijte tyto vlastnosti dříve v tomto článku.
+
 ## <a name="trigger---poison-messages"></a>Aktivační událost - poškozených zpráv
 
 Pokud se nezdaří aktivační funkce fronty, Azure Functions opakuje funkce až pětkrát pro danou frontu zprávy, včetně první pokus. Pokud selžou všechny pět pokusy, functions runtime přidá zprávu do fronty s názvem  *&lt;originalqueuename >-poškozených*. Můžete napsat, že je funkce, která se zpracování zpráv z fronty poškozených jejich protokolování nebo odesílání oznámení, že ruční pozornost.
@@ -457,7 +459,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | musí být nastavena na `queue`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**direction** | neuvedeno | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje ve frontě v kód funkce. Nastavte na `$return` Chcete-li funkce návratovou hodnotu.| 
-|**queueName** |**QueueName** | Název fronty. | 
+|**queueName** |**QueueName** | Název fronty | 
 |**Připojení** | **Připojení** |Název nastavení aplikace, který obsahuje připojovací řetězec úložiště k použití pro tuto vazbu. Název nastavení aplikace začíná "AzureWebJobs", můžete zadat pouze zbytku názvu sem. Například pokud nastavíte `connection` na "MyStorage" Functions runtime vypadá pro aplikaci nastavení, která je s názvem "AzureWebJobsMyStorage." Pokud necháte `connection` prázdný, funkce používá modul runtime výchozí úložiště připojovací řetězec v nastavení aplikace, který je pojmenován `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

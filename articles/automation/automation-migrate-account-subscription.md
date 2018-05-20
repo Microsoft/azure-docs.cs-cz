@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d417f26eb9bad47b9742921156ff232e65ffd5aa
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 75d973388bb8a37cc0b796b1621f847b047d70f9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="migrate-automation-account-and-resources"></a>Migraci účet Automation a prostředků
 Pro účty Automation a jeho přidružené prostředky (tj. prostředky, sady runbook, moduly atd.), které jste vytvořili na portálu Azure a chcete provést migraci z jedné skupiny prostředků do jiné nebo z jedno předplatné na jiný můžete to provést snadno s [přesunout prostředky](../azure-resource-manager/resource-group-move-resources.md) funkce dostupné na portálu Azure. Před pokračováním této akce je však měli nejdřív si následující [kontrolní seznam před přesunutím prostředků](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) a kromě toho v následujícím seznamu specifické pro automatizaci.  

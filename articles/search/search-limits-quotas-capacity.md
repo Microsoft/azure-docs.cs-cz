@@ -9,11 +9,11 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby ve službě Azure Search
 Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a další objekty závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) v **volné**, **základní**, nebo **Standardní** cenové úrovně.
@@ -44,10 +44,13 @@ Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a dal
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | Maximální počet indexů |3 |5 nebo 15 |50 |200 |200 |1 000 na oddíl nebo 3 000 na službu |
 | Maximální počet polí na index |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximální vyhodnocování profily pro jednotlivé indexu |100 |100 |100 |100 |100 |100 |
+| Maximální [trochu](https://docs.microsoft.com/rest/api/searchservice/suggesters) na index |1 |1 |1 |1 |1 |1 |
+| Maximální [vyhodnocování profily](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) na index |100 |100 |100 |100 |100 |100 |
 | Maximální funkce jeden profil |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> základní služby vytvořené po pozdní 2017 mít vyšší limit 15 indexy, indexery a zdroje dat. Služba vytvořený mají 5. Úroveň Basic je určená jenom SKU s nižší limit 100 polí na index.
+
+<a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Omezení dokumentů vztahuje 
 
@@ -93,7 +96,7 @@ Základní služby vytvořené po pozdní 2017 mít zvýšená maximálně 15 in
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |
 | Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
-| Maximální skillsets |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
+| Maximální skillsets <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
 | Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |neuvedeno |
 | Maximální dobu běhu | 1 – 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |
 | Indexer objektů blob: velikost maximální objektu blob, MB |16 |16 |128 |256 |256 |neuvedeno  |
@@ -104,6 +107,8 @@ Základní služby vytvořené po pozdní 2017 mít zvýšená maximálně 15 in
 <sup>2</sup> základní služby vytvořené po pozdní 2017 mít vyšší limit 15 indexy, indexery a zdroje dat. Služba vytvořený mají 5.
 
 <sup>3</sup> služby S3 HD Nezahrnovat podpora indexeru.
+
+<sup>4</sup> maximálně 30 dovednosti za skillset.
 
 ## <a name="queries-per-second-qps"></a>Dotazy na za sekundu (QPS)
 

@@ -7,13 +7,13 @@ ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9c3cb5a00433a76e8cc444cc48c648cb2749a2ae
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f695eaadc0aa2d01473262c478a3b184d89d882c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Příklad použití: Průběžné nasazování pro virtuální počítače pomocí Automation DSC a Chocolatey
 Ve světě DevOps jsou celou řadu nástrojů pro pomoc s různými body v kanálu nepřetržité integrace.  Konfigurace Azure Automation žádaný stavu (DSC) je úvodní nové přidání možnosti, které můžete použít DevOps týmy.  Tento článek ukazuje nastavení nahoru průběžné nasazení (CD) pro počítač se systémem Windows.  Můžete snadno rozšířit techniku, například jako v mnoha počítače se systémem Windows v případě potřeby v roli (webový server, např.) a z ní také další rolí.

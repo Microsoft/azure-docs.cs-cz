@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření a publikování aplikace spravované katalogu služby Azure | Microsoft Docs"
-description: "Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace."
+title: Vytvoření a publikování aplikace spravované katalogu služby Azure | Microsoft Docs
+description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 services: managed-applications
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/02/2017
+ms.date: 05/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 46adcdf39625c85dc962a7541b68c5500cf920ee
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
-ms.translationtype: MT
+ms.openlocfilehash: 57821e9c7ed1ca04aa7442f089268c5e89a017c3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Publikování spravované aplikace pro interní používání
 
@@ -55,7 +55,7 @@ Do souboru přidejte následující kód JSON. Definuje parametry pro vytvořen�
         }
     },
     "variables": {
-        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString('storage'))]"
+        "storageAccountName": "[concat(parameters('storageAccountNamePrefix'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -138,7 +138,7 @@ Přidejte následující kód JSON do souboru.
 }
 ```
 
-Uložte soubor createUIDefinition.json.
+Uložte soubor createUiDefinition.json.
 
 ## <a name="package-the-files"></a>Balíček soubory
 
@@ -152,8 +152,7 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
-  -Kind Storage `
-  -EnableEncryptionService Blob
+  -Kind Storage
 
 $ctx = $storageAccount.Context
 
@@ -173,7 +172,9 @@ Dalším krokem je vybrat skupiny uživatelů nebo aplikace pro správu k prost�
 
 Je třeba ID objektu skupiny uživatelů pro řízení zdrojů. 
 
-![Získání ID skupiny](./media/publish-service-catalog-app/get-group-id.png)
+```powershell
+$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+```
 
 ### <a name="get-the-role-definition-id"></a>Získání ID definice role
 
@@ -203,21 +204,49 @@ New-AzureRmManagedApplicationDefinition `
   -LockLevel ReadOnly `
   -DisplayName "Managed Storage Account" `
   -Description "Managed Azure Storage Account" `
-  -Authorization "<group-id>:$ownerID" `
+  -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
 
-## <a name="create-the-managed-application-by-using-the-portal"></a>Vytvoření spravované aplikace prostřednictvím portálu
+## <a name="create-the-managed-application"></a>Vytvoření spravované aplikace
+
+Můžete nasadit spravované aplikace prostřednictvím portálu, prostředí PowerShell nebo rozhraní příkazového řádku Azure.
+
+### <a name="powershell"></a>PowerShell
+
+První můžeme nasadit spravované aplikace pomocí prostředí PowerShell.
+
+```powershell
+# Create resource group
+New-AzureRmResourceGroup -Name applicationGroup -Location westcentralus
+
+# Get ID of managed application definition
+$appid=(Get-AzureRmManagedApplicationDefinition -ResourceGroupName appDefinitionGroup -Name ManagedStorage).ManagedApplicationDefinitionId
+
+# Create the managed application
+New-AzureRmManagedApplication `
+  -Name storageApp `
+  -Location westcentralus `
+  -Kind ServiceCatalog `
+  -ResourceGroupName applicationGroup `
+  -ManagedApplicationDefinitionId $appid `
+  -ManagedResourceGroupName "InfrastructureGroup" `
+  -Parameter "{`"storageAccountNamePrefix`": {`"value`": `"demostorage`"}, `"storageAccountType`": {`"value`": `"Standard_LRS`"}}"
+```
+
+Spravované aplikace a spravované infrastruktury nyní existovat v rámci předplatného.
+
+### <a name="portal"></a>Portál
 
 Teď umožňuje nasadit spravované aplikace pomocí portálu. Zobrazí uživatelské rozhraní, kterou jste vytvořili v balíčku.
 
-1. Přejděte na portálu Azure. Vyberte **+ nový** a vyhledejte **katalogu služeb**.
+1. Přejděte na portálu Azure. Vyberte **+ vytvořit prostředek** a vyhledejte **katalogu služeb**.
 
-   ![Katalog služby vyhledávání](./media/publish-service-catalog-app/select-new.png)
+   ![Katalog služby vyhledávání](./media/publish-service-catalog-app/create-new.png)
 
 1. Vyberte **katalogu služeb spravované aplikace**.
 
-   ![Vyberte katalogu služeb](./media/publish-service-catalog-app/select-service-catalog.png)
+   ![Vyberte katalogu služeb](./media/publish-service-catalog-app/select-service-catalog-managed-app.png)
 
 1. Vyberte **Vytvořit**.
 
@@ -227,21 +256,21 @@ Teď umožňuje nasadit spravované aplikace pomocí portálu. Zobrazí uživate
 
    ![Najít spravované aplikace](./media/publish-service-catalog-app/find-application.png)
 
-1. Zadejte základní informace, které jsou potřeba pro spravované aplikace. Zadejte předplatné a novou skupinu prostředků tak, aby obsahovala spravované aplikace. Vyberte **– Západ střední USA** pro umístění. Až budete hotoví, vyberte **OK**.
+1. Zadejte základní informace, které jsou potřeba pro spravované aplikace. Zadejte předplatné a novou skupinu prostředků tak, aby obsahovala spravované aplikace. Vyberte **– Západ střední USA** pro umístění. Až budete hotovi, vyberte **OK**.
 
-   ![Zadejte parametry spravované aplikace](./media/publish-service-catalog-app/provide-basics.png)
+   ![Zadejte parametry spravované aplikace](./media/publish-service-catalog-app/add-basics.png)
 
-1. Zadejte hodnoty, které jsou specifické pro prostředky ve spravované aplikaci. Až budete hotoví, vyberte **OK**.
+1. Zadejte hodnoty, které jsou specifické pro prostředky ve spravované aplikaci. Až budete hotovi, vyberte **OK**.
 
-   ![Zadejte parametry prostředků](./media/publish-service-catalog-app/provide-resource-values.png)
+   ![Zadejte parametry prostředků](./media/publish-service-catalog-app/add-storage-settings.png)
 
 1. Šablona ověří hodnoty, které jste zadali. V případě úspěšného ověření vyberte **OK** ke spuštění nasazení.
 
-   ![Ověření spravované aplikace](./media/publish-service-catalog-app/validate.png)
+   ![Ověření spravované aplikace](./media/publish-service-catalog-app/view-summary.png)
 
 Po dokončení nasazení v skupinu prostředků s názvem applicationGroup existuje spravované aplikace. Existuje účet úložiště ve skupině prostředků s názvem applicationGroup plus hodnotu hash řetězce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Úvod ke spravovaným aplikacím najdete v [přehledu spravovaných aplikací](overview.md).
 * Například zobrazit projekty, [ukázkové projekty Azure spravované aplikace](sample-projects.md).

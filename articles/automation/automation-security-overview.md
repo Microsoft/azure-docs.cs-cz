@@ -8,14 +8,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: e8ea60899f907793b804d86cf0750a73b23d46fd
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 327bb15ab8536dca85b4cbb07216080b135c769a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Úvod do ověřování ve službě Azure Automation  
 Azure Automation umožňuje automatizovat úlohy s prostředky v Azure, místně a u jiných poskytovatelů cloudu, například Amazon Web Services (AWS).  Aby mohl runbook provádět požadované akce, musí mít oprávnění pro bezpečný přístup k prostředkům s minimálními požadovanými právy v rámci předplatného.

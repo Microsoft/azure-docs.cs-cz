@@ -1,12 +1,14 @@
+## <a name="register-your-application"></a>Registrace vaší aplikace
+Aplikace můžete zaregistrovat v některém ze dvou způsobů, jak je popsáno v následujících dvou částech.
 
-## <a name="create-an-application-express"></a>Vytvoření aplikace (Express)
+### <a name="option-1-express-mode"></a>Možnost 1: Expresní režim
 Nyní je nutné zaregistrovat aplikaci v *portálu pro registraci aplikace Microsoft*:
 1. Registrace vaší aplikace pomocí [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)
 2.  Zadejte název vaší aplikace a e-mailu
 3.  Ujistěte se, že je zaškrtnuté políčko pro instalaci na základě
 4.  Postupujte podle pokynů a získat ID aplikace a vložte jej do vašeho kódu
 
-### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Přidat informace o registraci aplikace k řešení (Upřesnit)
+### <a name="option-2-advanced-mode"></a>Možnost 2: Pokročilého režimu
 
 1.  Přejděte na [portálu pro registraci aplikace Microsoft](https://apps.dev.microsoft.com/portal/register-app)
 2.  Zadejte název vaší aplikace a e-mailu

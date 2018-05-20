@@ -1,24 +1,24 @@
 ---
-title: "Správce prostředků clusteru Service Fabric - integraci správy | Microsoft Docs"
-description: "Přehled integrace body mezi správce prostředků clusteru a správu prostředků infrastruktury služby."
+title: Správce prostředků clusteru Service Fabric - integraci správy | Microsoft Docs
+description: Přehled integrace body mezi správce prostředků clusteru a správu prostředků infrastruktury služby.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 70c0cc37a1d362c937ab86bd630c5ab051e63870
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace manager prostředek clusteru s Správa clusteru Service Fabric
 Správce prostředků clusteru Service Fabric není disk upgradů Service Fabric, ale je zahrnuta. První způsob, jakým clusteru Resource Manager pomůže se správou je sledování požadovaný stav clusteru a služby je uvnitř. Správce prostředků clusteru rozešle sestav stavu, když ji nemůžete uvést do požadovanou konfiguraci clusteru. Například pokud není dostatečná kapacita správce prostředků clusteru rozešle stavu upozornění a chyby naznačující problém. Další část integrace souvisí se fungování upgradu. Správce prostředků clusteru mění své chování mírně během upgradu.  
@@ -207,5 +207,5 @@ Jiné z věcí, které se stane při upgradech je, že správce prostředků clu
 ### <a name="buffered-capacity--upgrade"></a>Ve vyrovnávací paměti kapacity & upgradu
 Obecně je vhodné na dokončení i v případě, že je omezené clusteru nebo blízko úplné upgradu. Správa kapacitu clusteru je důležitější-při upgradech než obvykle. V závislosti na počet domén upgradu mezi 5 a 20 procent kapacity je potřeba migrovat po upgradu prostřednictvím clusteru. Které pracují se má přejít někde. To je, kdy představu o [uložená do vyrovnávací paměti kapacity](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) je užitečné. Kapacita ve vyrovnávací paměti je dodržena při běžném provozu. Správce prostředků clusteru můžou vyplní uzly až jejich celkové kapacity (využívání vyrovnávací paměti) během upgradu v případě potřeby.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Začít od začátku a [získejte Úvod do Service Fabric clusteru správce prostředků](service-fabric-cluster-resource-manager-introduction.md)

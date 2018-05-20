@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: sngun
-ms.openlocfilehash: fadbe5d2777bc5c8551558be80e77dd2785044a2
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 925167c6b4a7f173726ec094c2847a16ca3d0ef4
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavování a získávání propustnost pro Azure Cosmos DB kontejnery a databáze
 
@@ -45,7 +45,7 @@ Tento článek vás provede kroky potřebné ke konfiguraci propustnosti na růz
 
    |**Nastavení**  |**Popis**  |
    |---------|---------|
-   |ID databáze  |  Zadejte jedinečný název pro identifikaci vaší databáze. Databáze je logický kontejner jednu nebo více kolekcí. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat /, \, #,?, nebo koncové mezery. |
+   |ID databáze  |  Zadejte jedinečný název pro identifikaci vaší databáze. Databáze je logický kontejner jednu nebo více kolekcí. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky /, \\, #, ? ani koncové mezery. |
    |ID kolekce  | Zadejte jedinečný název pro identifikaci vaší kolekce. ID kolekcí mají stejné požadavky na znaky jako názvy databází. |
    |Kapacita úložiště   | Tato hodnota představuje kapacitu úložiště databáze. Při zřizování propustnost pro jednotlivé kolekce, kapacity úložiště může být **Fixed (10 GB)** nebo **neomezený**. Neomezené úložiště kapacity vyžaduje, abyste nastavit klíč oddílu pro vaše data.  |
    |Propustnost   | Každý kolekce a databáze může mít propustnost v jednotek žádosti za sekundu.  Kapacitu dlouhodobého úložiště minimální propustnost je 400 jednotek žádosti za sekundu (RU/s), neomezené úložiště kapacity minimální propustnost je nastavena na 1000 RU/s.|
@@ -128,8 +128,8 @@ Následující tabulka uvádí k dispozici pro kontejnery propustnost:
         <tr>
             <td valign="top"><p>Maximální propustnost</p></td>
             <td valign="top"><p>10 000 jednotek žádosti za sekundu</p></td>
-            <td valign="top"><p>Neomezeno</p></td>
-            <td valign="top"><p>Neomezeno</p></td>
+            <td valign="top"><p>Unlimited</p></td>
+            <td valign="top"><p>Unlimited</p></td>
         </tr>
     </tbody>
 </table>

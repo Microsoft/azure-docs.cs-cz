@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 1de7e58eecc80e306920ab17884290dfddf8efa8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 79d30a47b017379107b63b0006a35534f68c43b9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Monitorování kontejnery s analýzy protokolů
  

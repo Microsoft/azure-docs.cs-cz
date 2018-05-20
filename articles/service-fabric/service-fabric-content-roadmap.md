@@ -1,24 +1,24 @@
 ---
-title: "Další informace o Azure Service Fabric | Microsoft Docs"
-description: "Další informace o klíčových konceptech a hlavními oblastmi Azure Service Fabric. Poskytuje přehled rozšířené Service Fabric a postup vytvoření mikroslužeb."
+title: Další informace o Azure Service Fabric | Microsoft Docs
+description: Další informace o klíčových konceptech a hlavními oblastmi Azure Service Fabric. Poskytuje přehled rozšířené Service Fabric a postup vytvoření mikroslužeb.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1c3ea5b041cf2a961ef57bc168ae86b83412e044
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má rozlehlých, ale a je mnoha Další.  Tento článek obsahuje souhrn Service Fabric a popisuje základní koncepty, programovací modely, životního cyklu aplikací, testování, clustery a sledování stavu. Pro čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužeb?](service-fabric-overview-microservices.md) úvod a jak Service Fabric slouží k vytvoření mikroslužeb. Tento článek neobsahuje kompletní seznam obsahu, ale propojit přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -82,7 +82,7 @@ Proč máte stavová mikroslužeb společně s bezstavové ty? Dva hlavní důvo
 ## <a name="supported-programming-models"></a>Podporované programovací modely
 Service Fabric nabízí několik způsobů, jak zapsat a spravovat vaše služby. Služby můžete použít rozhraní API služby Fabric na plně využít výhod funkcí a architektur aplikací platformu. Služby mohou být také všechny kompilované spustitelný program napsané v libovolném jazyce a hostovaná v clusteru Service Fabric. Další informace najdete v tématu [podporované programovací modely](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric lze také nasadit služby v [kontejnery](service-fabric-containers-overview.md). Je důležité je možné kombinovat služby v procesy a služby v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazení kontejnerů Linux kontejnery Windows na Windows Server 2016. Můžete nasadit existující aplikace, bezstavové služby nebo stavové služby v kontejnerech. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -97,7 +97,7 @@ Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-co
 - Hostovaný jako spustitelný soubor hosta. To slouží především ke spouštění existujících aplikací ASP.NET Core v Service Fabric beze změn kódu.
 - Spusťte uvnitř spolehlivě. To umožňuje lepší integraci s modulem runtime Service Fabric a umožňuje stavová ASP.NET Core services.
 
-### <a name="guest-executables"></a>Spustitelné soubory hosta
+### <a name="guest-executables"></a>Spustitelné soubory typu Host
 A [spustitelný soubor hosta](service-fabric-guest-executables-introduction.md) je existující, libovolného spustitelného souboru (napsané v libovolném jazyce) hostovaná v clusteru Service Fabric souběžně s jinými službami. Spustitelné soubory hosta není integrovat přímo s rozhraními API služby prostředků infrastruktury. Ale budou i nadále využívat funkce nabízí platformu, například vlastní stav a spouštění sestav a volání rozhraní REST API služby možnosti rozpoznání. Mají také celou aplikaci životní cyklus podpory. 
 
 ## <a name="application-lifecycle"></a>Životní cyklus aplikace

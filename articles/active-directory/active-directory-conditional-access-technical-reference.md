@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 300367ee4e4bdb412bf4e5f25ba6cea067e18ed3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 341142222fb1440cf5118e6d10f5a254e73d53d9
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -140,6 +140,15 @@ Toto nastavení funguje u všech prohlížečů. Splňovat zásady pro zařízen
 #### <a name="chrome-support"></a>Podpora Chrome
 
 Pro Chrome podporovat v **Windows 10 Creators Update (verze 1703)** nebo novější, nainstalujte [toto rozšíření](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji).
+
+Chcete-li automaticky nasadit toto rozšíření do prohlížeče Chrome, vytvořte následující klíč registru:
+
+|    |    |
+|--- | ---|
+|Cesta | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+|Název | 1 |
+|Typ | REG_SZ (String) |
+|Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https://clients2.google.com/service/update2/crx
 
 Pro Chrome podporovat v **Windows 8.1 a 7**, vytvořte následující klíč registru:
 

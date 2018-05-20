@@ -7,15 +7,15 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 29ec32c933f3dbe07a844bd99a1f5aa3fa57d61b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: a75167b6973d5cce8497c07e21d17ad071290f1d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu v Azure Automation
+# <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 Integrace ovládacích prvků zdrojového umožňuje přidružit sady runbook ve vašem účtu Automation se úložištěm řízení zdrojů Githubu. Správa zdrojového kódu umožňuje snadno spolupracovat s týmem, sledovat změny a vrátit zpět na dřívější verze sadu runbook. Například Správa zdrojového kódu umožňuje synchronizovat různých větví ve správě zdrojového kódu do vaší vývoj, testovací nebo produkční účty Automation, což usnadňuje povýšit kód, který byl testován v vývojové prostředí pro vaše produkční automatizace účet.
 
 Správa zdrojového kódu umožňuje nabízené kódu do správy zdrojového kódu ve službě Azure Automation nebo runbooků od správy zdrojového kódu pro Azure Automation pro vyžádání obsahu. Tento článek popisuje, jak nastavit zdrojového kódu ve vašem prostředí Azure Automation. Začneme konfigurací Azure Automation pro přístup k vaší úložiště GitHub a provede různé operace, které lze provést pomocí integrace ovládacích prvků zdrojového. 

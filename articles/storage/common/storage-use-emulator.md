@@ -2,23 +2,17 @@
 title: Použití emulátoru úložiště Azure pro vývoj a testování | Microsoft Docs
 description: Emulátor úložiště Azure poskytuje volné místní vývojové prostředí pro vývoj a testování aplikací s Azure Storage. Zjistěte, jak jsou žádosti o ověření, jak se připojit k emulátoru z vaší aplikace a jak pomocí nástroje příkazového řádku.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -44,17 +38,10 @@ Existují některé rozdíly ve funkcích mezi emulátor úložiště a služby 
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Spuštění a inicializaci emulátor úložiště
 
-### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Spusťte emulátor úložiště Azure v Docker](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
-```
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
-```
-
-### <a name="using-sdk"></a>Pomocí sady SDK
-
 Spusťte emulátor úložiště Azure:
 1. Vyberte **spustit** tlačítko nebo klikněte na tlačítko **Windows** klíč.
-1. Začněte psát `Azure Storage Emulator`.
-1. Emulátor vyberte ze seznamu zobrazených aplikací.
+2. Začněte psát `Azure Storage Emulator`.
+3. Emulátor vyberte ze seznamu zobrazených aplikací.
 
 Když se spustí se emulátor úložiště, zobrazí se okno příkazového řádku. Toto okno konzoly můžete spustit a zastavit emulátor úložiště, vymazat data, získat stav a inicializace emulátor. Další informace najdete v tématu [odkaz na nástroj příkazového řádku emulátor úložiště](#storage-emulator-command-line-tool-reference) později v tomto článku.
 
@@ -71,6 +58,7 @@ Emulátor úložiště je nainstalována ve výchozím nastavení `C:\Program Fi
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Inicializace emulátor úložiště používat jiné databázi SQL
+
 Nástroj příkazového řádku emulátor úložiště můžete inicializovat emulátor úložiště tak, aby odkazoval na instanci SQL databáze než výchozí instanci LocalDB:
 
 1. Otevřete okno konzoly emulátor úložiště, jak je popsáno v [spuštění a inicializaci emulátor úložiště](#start-and-initialize-the-storage-emulator) části.

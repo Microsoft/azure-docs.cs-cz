@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure programování na straně serveru Cosmos DB: uložené procedury, triggery databáze a UDF
 
@@ -151,6 +151,21 @@ V předchozím příkladu zpětné volání vrátí chybu, pokud operace se nezd
 Tuto uloženou proceduru lze upravit tak, aby pole těla dokumentu jako vstup a k jejich vytvoření všechno ve stejném spuštění uložené procedury místo více požadavků pro každý z nich vytvoření jednotlivě. Tuto uloženou proceduru lze použít k implementaci efektivní hromadné – Importér pro DB Cosmos (popsané později v tomto kurzu).   
 
 Popisuje příklad ukázal, jak lze pomocí uložených procedur. Dále se dozvíte o triggery a uživatelem definovaných funkcí (UDF) později v tomto kurzu.
+
+### <a name="known-issues"></a>Známé problémy
+
+Při definování uložené procedury pomocí portálu Azure, jsou vstupní parametry vždy odesílány jako řetězec uložené procedury. I v případě, že předáváte pole řetězců jako vstup, se pole převést na řetězec a odešle uložené procedury. Chcete-li vyřešit tento problém, můžete definovat funkce v rámci vaší uložené procedury k analýze řetězec jako pole. Následující kód je příklad k analýze řetězec jako pole: 
+
+``` 
+function sample(arr) {
+    if (typeof arr === "string") arr = JSON.parse(arr);
+    
+    arr.forEach(function(a) {
+        // do something here
+        console.log(a);
+    });
+}
+```
 
 ## <a name="database-program-transactions"></a>Databáze programu transakce
 Transakce v typické databáze může být definováno jako posloupnost operací provést jako jednu logickou jednotku práce. Poskytuje každou transakci **ACID záruky**. Je kyselina dobře známé zkratku, který zastupuje čtyři vlastnosti - nedělitelnost, konzistence, izolace a odolnost.  

@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 087dafe426b835d447c69a44f6842c41a48cec8c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Kurz: Monitorování kontejnerů Windows na platformě Service Fabric pomocí Log Analytics
 
-Toto je třetí část kurzu, která vás provede nastavením Log Analytics pro monitorování kontejnerů Windows orchestrovaných na platformě Service Fabric.
+Toto je druhá část kurzu, která vás provede nastavením Log Analytics pro monitorování kontejnerů Windows orchestrovaných na platformě Service Fabric.
 
 V tomto kurzu se naučíte:
 

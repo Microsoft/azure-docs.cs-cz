@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 490b162bcab0656388ef0b211ea693809d446346
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e12010f225b5f8db247d1b751615cbedd413dfb3
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -22,8 +22,8 @@ Můžete vytvořit databázi Azure pro server databáze MySQL v jednom ze tří 
 |    | **Basic** | **Obecné účely** | **Paměťově optimalizované** |
 |:---|:----------|:--------------------|:---------------------|
 | Výpočetní generování | Gen 4, 5. generace | Gen 4, 5. generace | Gen 5 |
-| vCores | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Paměť na vCore | Směrný plán | 2 x Basic | 2 x obecné účely |
+| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| Paměť na vCore | Reference | 2 x Basic | 2 x obecné účely |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 2 TB | 5 GB až 2 TB |
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Doba uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
@@ -85,6 +85,12 @@ V závislosti na cenovou úroveň je zajištěna každý vCore s určitou veliko
 Další úložiště kapacity můžete přidat během a po vytvoření serveru. Základní vrstvě neposkytuje záruku IOPS. V obecné účely a paměťově optimalizované cenové úrovně IOPS škálování se velikost zřízeného úložiště v poměru 3:1.
 
 Můžete monitorovat vaší spotřeby vstupně-výstupních operací na portálu Azure nebo pomocí rozhraní příkazového řádku Azure. Metriku relevantní pro monitorování jsou [limit úložiště, procento úložiště, používá úložiště a vstupně-výstupní operace procent](concepts-monitoring.md).
+
+### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
+
+Server je označen jen pro čtení, když velikost volného místa dosáhne menší než 5 GB nebo zřízené úložiště % 5, podle toho, která je menší. Například, pokud máte zřízen 100 GB úložiště, a skutečné využití prochází přes 95 GB, server je označen jen pro čtení. Alternativně zřízením 5 GB úložiště, server je označen jen pro čtení Pokud volný úložný prostor dosáhne méně než 250 MB.  
+
+Když se služba pokusí zajistí, že server jen pro čtení, všechny nové požadavky na zápis transakce jsou zablokované a provést bude pokračovat existující aktivních transakcí. Pokud server je nastaven na jen pro čtení, všechny následné zápisu operace a transakce potvrdí selhání. Dotazy pro čtení budou nadále fungovat bez přerušení. Jakmile zvýšíte zřízené úložiště, server bude připravena přijímat transakcí zápisu znovu.
 
 ## <a name="backup"></a>Backup
 

@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d2523502c20a7cdc4fb4ec388f167f1640919717
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9b4f7f9a9c501204d48b738089dc3cbd015a744c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
@@ -90,7 +90,7 @@ Následující video ukazuje návod simulované a skutečné zařízení připoj
 
 Chcete-li v tomto kurzu, je třeba:
 
-* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
+* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 * Sada Visual Studio 2017. Pokud nemáte nainstalované Visual Studio 2017, si můžete stáhnout bezplatnou [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 

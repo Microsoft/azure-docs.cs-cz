@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: db0fab5b619ddbca4663a0f6afedfff373d406f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 20c5635c0ce00c9fccfec84c477d60c77c55e2fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (virtuální sítě) umožňují některé z vašich prostředků Azure umístění v síti routeable Internetu jiných výrobců, která můžete řídit přístup ke. Tyto sítě můžete pak připojené k vaší místní sítě pomocí různých technologií sítě VPN. Další informace o virtuálních sítí Azure začínat zde uvedené informace: [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
@@ -107,8 +107,8 @@ Pokud je instance služby API Management je hostováno ve virtuální síti, se 
 
 | Zdrojové nebo cílové porty | Směr | Přenosový protokol | Zdroj / cíl | Účel (*) | Typ virtuální sítě |
 | --- | --- | --- | --- | --- | --- |
-| * / 80, 443 |Příchozí |TCP |INTERNET / VIRTUAL_NETWORK|Komunikaci klientů API Management|Externí |
-| * / 3443 |Příchozí |TCP |INTERNET / VIRTUAL_NETWORK|Koncový bod správy pro portál Azure a prostředí Powershell |Interní |
+| * / 80, 443 |Příchozí |TCP |INTERNET NEBO VIRTUAL_NETWORK|Komunikaci klientů API Management|Externí |
+| * / 3443 |Příchozí |TCP |INTERNET NEBO VIRTUAL_NETWORK|Koncový bod správy pro portál Azure a prostředí Powershell |Interní |
 | * / 80, 443 |Odchozí |TCP |VIRTUAL_NETWORK NEBO INTERNET|**Závislost na službě Azure Storage**, Azure Service Bus a Azure Active Directory (v případě potřeby).|Externí & interní | 
 | * / 1433 |Odchozí |TCP |VIRTUAL_NETWORK NEBO INTERNET|**Přístup k koncové body Azure SQL** |Externí & interní |
 | * / 5672 |Odchozí |TCP |VIRTUAL_NETWORK NEBO INTERNET|Závislosti pro protokol do centra událostí zásadu a agent monitorování |Externí & interní |
@@ -168,6 +168,7 @@ Zadaný výpočet vyšší než minimální velikost podsítě, ve kterém se d�
 * Podsíť a služba API Management musí být ve stejném předplatném.
 * Nelze přesunout podsíť obsahující instance API Management napříč odběry.
 * Pro nasazení v API Management více oblast nakonfigurován v režimu interní virtuální síť jsou zodpovědní za správu Vyrovnávání zatížení napříč více oblastech, jako vlastní směrování uživatelů.
+* Připojení z prostředku produktu globálně peered virtuální sítě v jiné oblasti službě API Management v interní režimu nebudou fungovat kvůli omezení platformy. Další informace najdete v tématu [prostředky v jednu virtuální síť nemůže komunikovat s nástrojem pro vyrovnávání zatížení Azure interní peered virtuální sítě](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)
 
 
 ## <a name="related-content"> </a>Související obsah

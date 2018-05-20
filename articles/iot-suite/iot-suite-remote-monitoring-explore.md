@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 720269ad22bfe4a7f5871c934be77b680627e2f7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a38098dc2bbcfc6ff59b9f8c96d1e947c637ab1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Prozkoumejte možnosti vzdáleného monitorování řešení akcelerátoru
 
@@ -41,7 +41,7 @@ Následující video ukazuje návod řešení vzdáleného monitorování:
 
 K dokončení tohoto kurzu potřebujete nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-suite-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Nasazení IoT ukázkové společnosti Contoso
 
@@ -55,7 +55,7 @@ Ukázka Contoso zřídí sadu simulované zařízení a pravidel tak, aby fungov
 Contoso je společnost, která spravuje různých prostředků v různých prostředích. Contoso plánuje použít sílu cloudové aplikace či aplikace IoT vzdáleně monitorovat a spravovat více prostředků z centralizované aplikace. Následující části obsahují souhrn počáteční konfigurace Contoso vzorku:
 
 > [!NOTE]
-> Ukázkové společnosti Contoso je pouze jeden způsob, jak zřídit Simulovaná zařízení a vytvářet pravidla. Další možnosti zřizování zahrnují vytváření vlastní zařízení. Další informace o tom, jak vytvořit si vlastní zařízení a pravidel najdete v tématu [spravovat a nakonfigurovat zařízení](iot-suite-remote-monitoring-manage.md) a [zjistit problémy při použití pravidla na základě prahové hodnoty](iot-suite-remote-monitoring-automate.md).
+> Ukázkové společnosti Contoso je pouze jeden způsob, jak zřídit Simulovaná zařízení a vytvářet pravidla. Další možnosti zřizování zahrnují vytváření vlastní zařízení. Další informace o tom, jak vytvořit si vlastní zařízení a pravidel najdete v tématu [spravovat a nakonfigurovat zařízení](iot-suite-remote-monitoring-manage.md) a [zjistit problémy při použití pravidla na základě prahové hodnoty](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 
 ### <a name="contoso-devices"></a>Zařízení společnosti Contoso
 
@@ -78,10 +78,10 @@ Následující tabulka obsahuje souhrn typů zřízené zařízení:
 
 Operátory společnosti Contoso znát prahové hodnoty, které určují, jestli zařízení správně funguje. Například není chladič funguje správně, pokud je větší než 250 PSI přetížení, které oznámí. V následující tabulce jsou uvedeny na základě prahové hodnoty pravidla, která definuje společnosti Contoso pro každý typ zařízení:
 
-| Název pravidla | Popis | Mezní hodnota | Závažnost | Ovlivněné zařízení |
+| Název pravidla | Popis | Prahová hodnota | Závažnost | Ovlivněné zařízení |
 | --------- | ----------- | --------- | -------- | ---------------- |
-| Přetížení chladič příliš vysoká. | Výstrahy, pokud dochlazovače dosáhnout vyšší než normální přetížení úrovně   |P > 250 psi       | Kritická | Dochlazovače            |
-| Při vytváření prototypu zařízení temp příliš vysoká.  | Výstrahy, pokud při vytváření prototypu zařízení dosáhnout vyšší než normální teploty úrovně  |T>80&deg; F |Kritická | Při vytváření prototypu zařízení |
+| Přetížení chladič příliš vysoká. | Výstrahy, pokud dochlazovače dosáhnout vyšší než normální přetížení úrovně   |P > 250 psi       | Důležité | Dochlazovače            |
+| Při vytváření prototypu zařízení temp příliš vysoká.  | Výstrahy, pokud při vytváření prototypu zařízení dosáhnout vyšší než normální teploty úrovně  |T>80&deg; F |Důležité | Při vytváření prototypu zařízení |
 | Modul nádrž prázdný  | Výstrahy, pokud modul nádrž přejde prázdný                     | F < 5 galonech. | Informace     | Moduly             |
 | Vyšší než normální nákladní teploty | Výstrahy, pokud je vyšší než normální teploty nákladní vůz společnosti                 | T &LT; 45&deg; F |Upozornění  | Dodávky              |
 | Hodnocení vibrace zastavena      | Výstrahy, pokud hodnocení zcela zastaví (podle vibrace úroveň)                     | V < 0,1 mm |Upozornění  | Výtahy           |
@@ -257,5 +257,5 @@ Teď, když jste prozkoumali řešení vzdáleného monitorování, další info
 
 * [Monitorování zařízení](./iot-suite-remote-monitoring-monitor.md).
 * [Správa zařízení](./iot-suite-remote-monitoring-manage.md).
-* [Automatizovat řešení s pravidly](./iot-suite-remote-monitoring-automate.md).
+* [Automatizovat řešení s pravidly](./../iot-accelerators/iot-accelerators-remote-monitoring-automate.md).
 * [Udržovat řešení](./iot-suite-remote-monitoring-maintain.md).

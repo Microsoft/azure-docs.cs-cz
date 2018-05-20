@@ -9,11 +9,11 @@ ms.author: philmea
 ms.date: 04/29/2018
 ms.topic: article
 ms.service: iot-suite
-ms.openlocfilehash: 12248a719d7d30c9b83be9c72539e0a81f19fb7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 09a54e9cb1c6f063e878fd42c42699a906b60c7b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Vizualizaci vzdálené monitorování dat se statistickými časové řady
 
@@ -23,7 +23,7 @@ Operátor chtít dále rozšířit mimo pole dat, vizualizace poskytované vzdá
 
 Abyste mohli dokončit tento postup, budete potřebovat následující:
 
-* [Nasazení řešení vzdáleného monitorování předkonfigurované](iot-suite-remote-monitoring-deploy.md)
+* [Nasazení řešení vzdáleného monitorování předkonfigurované](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Vytvořte skupinu uživatelů
 
@@ -88,11 +88,11 @@ Vytvořte nový zdroj událostí k připojení do služby IoT hub. Ujistěte se,
     | Zdroj | **IoT Hub** |
     | Možnost importu | **Pomocí služby IoT Hub z dostupných předplatných** |
     | ID předplatného | V rozevíracím seznamu vyberte předplatné Azure. |
-    | Název centra IoT Hub | **contosorma57a6**. Použijte název služby IoT hub z řešení vzdáleného monitorování. |
-    | Název zásady centra IoT Hub | **iothubowner** zkontrolujte zásady používané zásadu vlastníka. |
-    | Klíč zásad centra IoT Hub | Toto pole se vyplní automaticky. |
-    | Skupina uživatelů centra IoT Hub | **timeseriesinsights** |
-    | Formát serializace události | **JSON**     | Název vlastnosti časového razítka | Ponechte prázdné |
+    | Název centra IOT | **contosorma57a6**. Použijte název služby IoT hub z řešení vzdáleného monitorování. |
+    | Název zásady centra IOT | **iothubowner** zkontrolujte zásady používané zásadu vlastníka. |
+    | Klíč zásad centra IOT | Toto pole se vyplní automaticky. |
+    | Skupina uživatelů centra IOT | **timeseriesinsights** |
+    | Formát serializace události | **JSON**     | Název vlastnosti časové razítko | Ponechte prázdné |
 
     ![Vytvořit zdroj události](media/iot-suite-time-series-insights/time-series-insights-event-source-create.png)
 

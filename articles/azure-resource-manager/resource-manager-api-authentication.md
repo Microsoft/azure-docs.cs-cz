@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager a ověřování služby Active Directory | Microsoft Docs"
-description: "Příručka pro vývojáře k ověřování pomocí rozhraní API Správce prostředků Azure a Azure Active Directory pro integraci aplikace s jiných předplatných Azure."
+title: Azure Resource Manager a ověřování služby Active Directory | Microsoft Docs
+description: Příručka pro vývojáře k ověřování pomocí rozhraní API Správce prostředků Azure a Azure Active Directory pro integraci aplikace s jiných předplatných Azure.
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: dugill
+ms.openlocfilehash: 1a526663b0280bd1bb7739ccc9a4ebf78882754d
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro odběry přístup
 ## <a name="introduction"></a>Úvod
@@ -29,7 +29,7 @@ Aplikaci můžete získat přístup k rozhraní API Resource Manager v několika
 1. **Uživatel + přístup k aplikaci**: pro aplikace, která přistupují k prostředkům jménem přihlášeného uživatele. Tento postup funguje pro aplikace, jako třeba webové aplikace a nástroje příkazového řádku, které pracují s pouze "interaktivní Správa" prostředků Azure.
 2. **Přístup jen aplikace**: pro aplikace, které běží démon služeb a naplánované úlohy. Identity aplikace jsou udělena přímý přístup k prostředkům. Tento postup funguje pro aplikace, které potřebují dlouhodobé bezobslužných (bezobslužná instalace) přístup k Azure.
 
-Tento článek obsahuje podrobné pokyny k vytvoření aplikace, která aktivuje obě tyto metody ověřování. Ukazuje, jak provádět každý krok REST API nebo C#. Kompletní aplikace ASP.NET MVC je k dispozici na [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+Tento článek obsahuje podrobné pokyny k vytvoření aplikace, která aktivuje obě tyto metody ověřování. Ukazuje, jak provádět každý krok REST API nebo C#. Kompletní aplikace ASP.NET MVC je k dispozici na [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
 ## <a name="what-the-web-app-does"></a>Jaké jsou webové aplikace
 Webové aplikace:
@@ -65,7 +65,7 @@ Správa odběrů připojené:
 
 ![Připojení odběru](./media/resource-manager-api-authentication/sample-ux-7.png)
 
-## <a name="register-application"></a>Registrace aplikace
+## <a name="register-application"></a>Zaregistrovat aplikaci
 Než začnete, kódování, zaregistrujte vaší webové aplikace s Azure Active Directory (AD). Registrace aplikace vytvoří centrální identitu pro vaši aplikaci ve službě Azure AD. Že obsahuje základní informace o vaší aplikaci jako ID klienta OAuth, adresy URL odpovědí a přihlašovací údaje, které vaše aplikace používá k ověření a přístup k rozhraní API Správce Azure Resource Manager. Registrace aplikací taky zaznamenává různé delegovaných oprávnění, které aplikace potřebuje při přístupu k Microsoft APIs jménem uživatele.
 
 Vzhledem k tomu, že vaše aplikace přístup k jiné předplatné, musíte ho nakonfigurovat jako víceklientské aplikace. K provedení ověření, zadejte domény přidružené k vaší služby Azure Active Directory. Pokud chcete zobrazit domény přidružené k vaší služby Azure Active Directory, přihlaste se k portálu.
@@ -224,7 +224,7 @@ Můžete mít pouze přístupový token pro Azure Resource Manager – budete po
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Získání tokenu přístupu jen pro aplikace pro Azure AD Graph API
-K ověření vaší aplikace a získat token do Azure AD Graph API, vydávat OAuth2.0 udělení pověření klienta žádosti o token toku koncový bod tokenu Azure AD (**https://login.microsoftonline.com/ {directory_domain_name} / OAuth2/Token**).
+K ověření vaší aplikace a získat token do Azure AD Graph API, vydávat OAuth2.0 udělení pověření klienta žádosti o token toku koncový bod tokenu Azure AD (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) metoda ukázkové aplikace ASP.net MVC získá přístup jen aplikace tokenu pro rozhraní Graph API pomocí knihovny Active Directory Authentication Library pro .NET.
 
@@ -294,16 +294,16 @@ Není nutné volat toto rozhraní API průběžně. Jakmile jste zjistili, dobř
 
 Zde jsou identifikátory běžně používané předdefinovaných rolí:
 
-| Role | IDENTIFIKÁTOR GUID |
+| Role | GUID |
 | --- | --- |
 | Čtenář |acdd72a7-3385-48EF-bd42-f606fba81ae7 |
 | Přispěvatel |b24988ac-6180-42A0-ab88-20f7382dd24c |
 | Přispěvatel virtuálních počítačů |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 | Přispěvatel virtuální sítě |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
-| Přispěvatel účtu úložiště |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
-| Přispěvatel webu |de139f84-1756-47ae-9be6-808fbbe84772 |
-| Plán přispěvatelů webu |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-| Přispěvatel serveru SQL |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+| Přispěvatel účtů úložiště |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
+| Přispěvatel webů |de139f84-1756-47ae-9be6-808fbbe84772 |
+| Přispěvatel webových plánů |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+| Přispěvatel SQL Serveru |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 | Přispěvatel databází SQL |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 
 ### <a name="assign-rbac-role-to-application"></a>Přiřazení RBAC role aplikace
@@ -323,7 +323,7 @@ Příklad požadavek přiřazení RBAC role aplikace:
 
 V požadavku budou použity následující hodnoty:
 
-| Identifikátor GUID | Popis |
+| Guid | Popis |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |ID předplatného |
 | c3097b31-7309-4C59-b4e3-770f8406bad2 |ID objektu objektu služby aplikace |

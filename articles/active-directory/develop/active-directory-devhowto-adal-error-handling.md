@@ -1,23 +1,24 @@
 ---
-title: "Chyba při zpracování osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL)"
-description: "Poskytuje pokyny a osvědčené postupy pro ADAL klientské aplikace pro zpracování chyb."
+title: Chyba při zpracování osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL)
+description: Poskytuje pokyny a osvědčené postupy pro ADAL klientské aplikace pro zpracování chyb.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
-ms.author: bryanla
+ms.author: celested
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
-ms.custom: 
-ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: 27315262ff64b640acc3af16a26fc3887d852a00
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Chyba při zpracování osvědčené postupy pro klienty Azure Active Directory Authentication Library (ADAL)
 
@@ -74,7 +75,7 @@ catch (AdalSilentTokenAcquisitionException e) {
     // Exception: AdalSilentTokenAcquisitionException
     // Caused when there are no tokens in the cache or a required refresh failed. 
 
-    // Action: Case 1, resolvable with an interactive request.  
+    // Action: Case 1, resolvable with an interactive request. 
 } 
 
 catch(AdalServiceException e) {
@@ -157,7 +158,7 @@ Váš kód by být implementováno takto:
             // Error: AD_ERROR_CACHE_MULTIPLE_USERS
             // Description: There was ambiguity in the silent request resulting in multiple cache items.
             // Action: Special Case, application should perform another silent request and specify the user using ADUserIdentifier. 
-            // Can be caused in cases of a multi-user application.  
+            // Can be caused in cases of a multi-user application. 
 
             // Action: Case 2, not resolvable with an interactive request.
             // Attempt retry after some time or user action.
@@ -170,9 +171,9 @@ Váš kód by být implementováno takto:
 
 ## <a name="acquiretoken"></a>AcquireToken
 
-AcquireToken je výchozí metodou ADAL použije k získání tokeny. V případech, kdy je potřeba identitu uživatele AcquireToken pokusí se získat token bezobslužně první a potom zobrazí uživatelské rozhraní v případě potřeby (Pokud je předán PromptBehavior.Never). V případech, kdy je potřeba identita aplikace AcquireToken pokusí se získat token, ale nezobrazí uživatelského rozhraní, protože neexistuje žádný koncový uživatel.  
+AcquireToken je výchozí metodou ADAL použije k získání tokeny. V případech, kdy je potřeba identitu uživatele AcquireToken pokusí se získat token bezobslužně první a potom zobrazí uživatelské rozhraní v případě potřeby (Pokud je předán PromptBehavior.Never). V případech, kdy je potřeba identita aplikace AcquireToken pokusí se získat token, ale nezobrazí uživatelského rozhraní, protože neexistuje žádný koncový uživatel. 
 
-Při zpracování chyb AcquireToken, je závislý na platformě zpracování chyb a scénář aplikace se pokouší dosáhnout.  
+Při zpracování chyb AcquireToken, je závislý na platformě zpracování chyb a scénář aplikace se pokouší dosáhnout. 
 
 Operační systém můžete také vygenerovat sadu chyb, které vyžadují chyba zpracování závisí na konkrétní aplikaci. Další informace najdete v části "Chyby operačního systému" v [chyby a odkaz na protokolování](#error-and-logging-reference). 
 
@@ -187,7 +188,7 @@ Operační systém můžete také vygenerovat sadu chyb, které vyžadují chyba
 
 ### <a name="error-cases-and-actionable-steps-native-client-applications"></a>Chyba případy a možné použít kroky: nativní klientské aplikace
 
-Pokud již vytváříte nativní klientskou aplikaci, existuje několik případů chyba zpracování vzít v úvahu, které se týkají problémů se sítí, přechodných chyb a dalších chyb specifické pro platformu. Ve většině případů by neměl aplikace provést okamžitou opakování, ale spíš počkejte interakci s koncovým uživatelem, který zobrazí výzvu přihlášení.  
+Pokud již vytváříte nativní klientskou aplikaci, existuje několik případů chyba zpracování vzít v úvahu, které se týkají problémů se sítí, přechodných chyb a dalších chyb specifické pro platformu. Ve většině případů by neměl aplikace provést okamžitou opakování, ale spíš počkejte interakci s koncovým uživatelem, který zobrazí výzvu přihlášení. 
 
 Existuje několik zvláštních případech, ve kterých jeden opakování může problém vyřešit. Například pokud uživatel musí povolit dat na zařízení, nebo byla dokončena zprostředkovatele služby Azure AD stahování po počáteční selhání. 
 
@@ -208,10 +209,10 @@ Zpracování chyb v nativních aplikací je možné definovat ve dvou případec
 
 Následující pokyny jsou uvedeny příklady pro zpracování ve spojení s všechny AcquireToken(...) tichý režim chyb ADAL metody *s výjimkou*: 
 
-- AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion,…)   
+- AcquireTokenAsync (..., IClientAssertionCertification,...)
+- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync (..., ClientAssertion,...)
+- AcquireTokenAsync(...,UserAssertion,...)   
 
 Váš kód by být implementováno takto:
 
@@ -252,7 +253,7 @@ catch (AdalException e) {
 
 Následující pokyny jsou uvedeny příklady pro zpracování ve spojení s ADAL metody chyb: 
 
-- acquireToken(…, PromptBehavior.Never)
+- acquireToken(..., PromptBehavior.Never)
 
 Váš kód by být implementováno takto:
 
@@ -344,7 +345,7 @@ Pokud vytváříte webové aplikace .NET, která volá získá token pomocí aut
 
 Následující pokyny jsou uvedeny příklady pro zpracování ve spojení s ADAL metody chyb: 
 
-- AcquireTokenByAuthorizationCodeAsync(…)
+- AcquireTokenByAuthorizationCodeAsync(...)
 
 Váš kód by být implementováno takto:
 
@@ -365,7 +366,7 @@ catch (AdalException e) {
 
 ### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Chyba případy a možné použít kroky: jednostránkové aplikace (adal.js)
 
-Pokud jste vytvoření jednostránkové aplikace pomocí adal.js AcquireToken, je podobná typické tichou volání kód pro zpracování chyb.  Konkrétně v adal.js AcquireToken už nebude zobrazovat uživatelského rozhraní. 
+Pokud jste vytvoření jednostránkové aplikace pomocí adal.js AcquireToken, je podobná typické tichou volání kód pro zpracování chyb. Konkrétně v adal.js AcquireToken už nebude zobrazovat uživatelského rozhraní. 
 
 Neúspěšné AcquireToken má v následujících případech:
 
@@ -413,9 +414,9 @@ Pro *všechny* scénáře pro služby aplikací, včetně on-behalf-of:
 
 Následující pokyny jsou uvedeny příklady pro zpracování ve spojení s ADAL metody chyb: 
 
-- AcquireTokenAsync(…, IClientAssertionCertification, …)
-- AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
+- AcquireTokenAsync (..., IClientAssertionCertification,...)
+- AcquireTokenAsync (..., ClientCredential,...)
+- AcquireTokenAsync (..., ClientAssertion,...)
 - AcquireTokenAsync(…,UserAssertion, …)
 
 Váš kód by být implementováno takto:
@@ -512,7 +513,7 @@ Logger.getInstance().setExternalLogger(new ILogger() {
     @Override   
     public void Log(String tag, String message, String additionalMessage, LogLevel level, ADALError errorCode) { 
     // …
-    // You can write this to logfile depending on level or errorcode.     
+    // You can write this to logfile depending on level or errorcode. 
     writeToLogFile(getApplicationContext(), tag +":" + message + "-" + additionalMessage);    
     }
 }

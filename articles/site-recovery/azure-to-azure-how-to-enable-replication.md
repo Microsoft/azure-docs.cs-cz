@@ -6,13 +6,13 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/16/2018
 ms.author: asgang
-ms.openlocfilehash: 4479f7bbe657908d4c1ed94f5eaa00401efcb87e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5e1361e681c17d4106b9c79fee56efa06be2a745
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Jiné oblasti Azure replikovat virtuální počítače Azure
 

@@ -1,23 +1,23 @@
 ---
-title: "Azure Service Fabric reverse zabezpečené komunikace proxy | Microsoft Docs"
-description: "Nakonfigurujte reverzní proxy server pro zajištění zabezpečené komunikace začátku do konce."
+title: Azure Service Fabric reverse zabezpečené komunikace proxy | Microsoft Docs
+description: Nakonfigurujte reverzní proxy server pro zajištění zabezpečené komunikace začátku do konce.
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 568f9638c59282bcd7d3fae058a1588a889c22dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 237a72fd282b29d3032675ccf3fb350f8db59ef7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení na zabezpečené služby s reverzní proxy server
 
@@ -190,7 +190,7 @@ Pokud klient nemá k dispozici certifikát, reverzní proxy server předává hl
 > Reverzní proxy server je pouhé předávání. Ho nebude provádět žádné ověření certifikátu klienta.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Odkazovat na [konfigurovat reverzní proxy server pro připojení k zabezpečení služeb](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) pro Azure Resource Manager šablony ukázky konfigurace zabezpečení reverzní proxy server s jinou službu certifikátem možnosti ověřování.
 * Zobrazit příklad komunikaci pomocí protokolu HTTP mezi službami v [ukázkového projektu na Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Volání vzdálených procedur s vzdálenou komunikaci spolehlivé služby](service-fabric-reliable-services-communication-remoting.md)

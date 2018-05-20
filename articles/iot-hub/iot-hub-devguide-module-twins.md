@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fbbce06653e60cd914c2ed4d5990aac78ef53a8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1e6f52da6f7524828cef928c2ee5d5cd92a1de1e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Rady pro pochopení a použití modulu dvojčata ve IoT Hub.
 
@@ -27,7 +27,7 @@ Tento článek předpokládá, že jste si přečetli [pochopit a používat dvo
 
 Na straně zařízení sady SDK zařízení IoT Hub umožňují vytvořit moduly, které každý otevře připojení k nezávislé do služby IoT Hub. To umožňuje používat samostatné obory názvů pro různé součásti na vašem zařízení. Například máte prodejních počítač, který má tři různé senzorů. Každý senzor řídí různá oddělení ve vaší společnosti. Modul pro každý senzor můžete vytvořit. Tímto způsobem každé oddělení je pouze odeslat úlohy nebo přímé metody na senzoru, která budou řídit, zabraňující konflikty a chyby uživatele.
 
- Modul identity a modul twin poskytuje stejné funkce jako identitu a devic dvojče zařízení, ale v jemnějšího členitosti. Toto podrobnější umožňuje zařízením, například operační systém na základě zařízení nebo správu více komponent izolovat podmínky pro každou z těchto součástí a konfigurace zařízení firmwaru. Modul identity a modul dvojčata poskytují správu oddělené oblasti zájmu při práci s zařízení IoT, které mají modulární softwarové součásti. Jsme cílem podporuje všechny funkce twin zařízení na úrovni twin modulu pomocí modulu twin obecné dostupnosti. 
+ Modul identity a modul twin poskytuje stejné funkce jako identitu zařízení a dvojče zařízení, ale v jemnějšího členitosti. Toto podrobnější umožňuje zařízením, například operační systém na základě zařízení nebo správu více komponent izolovat podmínky pro každou z těchto součástí a konfigurace zařízení firmwaru. Modul identity a modul dvojčata poskytují správu oddělené oblasti zájmu při práci s zařízení IoT, které mají modulární softwarové součásti. Jsme cílem podporuje všechny funkce twin zařízení na úrovni twin modulu pomocí modulu twin obecné dostupnosti. 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

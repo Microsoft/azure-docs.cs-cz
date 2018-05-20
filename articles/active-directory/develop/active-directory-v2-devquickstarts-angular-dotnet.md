@@ -1,25 +1,27 @@
 ---
-title: "Aplikace Azure AD v2.0 .NET AngularJS jednu stránku Začínáme | Microsoft Docs"
-description: "Jak sestavit úhlová JS jednostránkové aplikace s přihlašováním uživatelů s i osobní účty Microsoft a pracovní nebo školní účty."
+title: Aplikace Azure AD v2.0 .NET AngularJS jednu stránku Začínáme | Microsoft Docs
+description: Jak sestavit úhlová JS jednostránkové aplikace s přihlašováním uživatelů s i osobní účty Microsoft a pracovní nebo školní účty.
 services: active-directory
-documentationcenter: 
-author: jmprieur
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d1ddeb957096dc506bc76e1aac600eaa5bc2fbc
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>Přidejte přihlášení do AngularJS jednostránkové aplikace - rozhraní .NET
 V tomto článku přidáme přihlašují účty Microsoft používá technologii aplikace AngularJS pomocí koncového bodu v2.0 Azure Active Directory.  Koncový bod v2.0 umožňuje provedení jednoho integrace ve vaší aplikaci a ověřuje uživatele pomocí osobní i pracovní nebo školní účty.

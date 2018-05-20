@@ -1,24 +1,22 @@
 ---
-title: "Streamovat data ze služby Stream Analytics do Data Lake Store | Microsoft Docs"
-description: "Pomocí Azure Stream Analytics datový proud dat do Azure Data Lake Store"
+title: Streamovat data ze služby Stream Analytics do Data Lake Store | Microsoft Docs
+description: Pomocí Azure Stream Analytics datový proud dat do Azure Data Lake Store
 services: data-lake-store,stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ff59957cf7700af79425aa005444a135b7ee098
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamování dat z Azure Storage Blob do služby Data Lake Store pomocí Azure Stream Analytics
 V tomto článku se dozvíte, jak používat Azure Data Lake Store jako výstup pro úlohu služby Azure Stream Analytics. Tento článek ukazuje jednoduchého scénáře, který čte data z objektu blob Azure Storage (vstup) a zapisuje data do Data Lake Store (výstup).
@@ -96,7 +94,7 @@ Začněte vytvořením úlohy služby Stream Analytics, který obsahuje vstupní
     
     Klikněte na možnost **Vytvořit**. Na portálu se teď přidá výstup a otestuje připojení k němu.
     
-## <a name="run-the-stream-analytics-job"></a>Spustit úlohu služby Stream Analytics
+## <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
 1. Chcete-li spustit úlohu služby Stream Analytics, je nutné spustit dotaz z **dotazu** kartě. V tomto kurzu můžete spustit ukázkový dotaz nahraďte zástupné symboly úlohu vstupní a výstupní aliasy, jak je znázorněno v následujícím snímku obrazovky.
 

@@ -1,24 +1,22 @@
 ---
-title: "Ke zkopírování dat z úložiště objektů BLOB Azure do Data Lake Store | Microsoft Docs"
-description: "Pomocí nástroje AdlCopy ke zkopírování dat z úložiště objektů BLOB Azure do Data Lake Store"
+title: Ke zkopírování dat z úložiště objektů BLOB Azure do Data Lake Store | Microsoft Docs
+description: Pomocí nástroje AdlCopy ke zkopírování dat z úložiště objektů BLOB Azure do Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 33bfd200f72cb56b391cab52bf90f19b568893a9
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 964ba0eb9c619fa226b0704a6c83c05186a95261
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Kopírování dat z Azure Storage Blob do služby Data Lake Store
 > [!div class="op_single_selector"]
@@ -44,7 +42,7 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 * **Objektů BLOB služby Azure Storage** kontejneru určitými daty.
 * **Účet Azure Data Lake Store**. Pokyny o tom, jak vytvořit najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Účtu Azure Data Lake Analytics (volitelné)** -najdete v části [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) pokyny o tom, jak vytvořit účet Data Lake Store.
-* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy).
+* **Nástroj AdlCopy**. Nainstalujte nástroj AdlCopy z [ http://aka.ms/downloadadlcopy ](http://aka.ms/downloadadlcopy).
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>Syntaxe nástroje AdlCopy
 Použijte následující syntaxi pro práci s nástrojem AdlCopy
@@ -72,7 +70,7 @@ Parametry v syntaxi jsou následující:
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-    >[AZURE.NOTE]Syntaxi výše Určuje soubor, který se má zkopírovat do složky v účtu Data Lake Store. Nástroj AdlCopy vytvoří složku, pokud zadaný název složky neexistuje.
+    >[AZURE.NOTE] Syntaxi výše Určuje soubor, který se má zkopírovat do složky v účtu Data Lake Store. Nástroj AdlCopy vytvoří složku, pokud zadaný název složky neexistuje.
 
     Zobrazí se výzva k zadání přihlašovacích údajů pro předplatné Azure, ve kterém máte účtu Data Lake Store. Zobrazí se výstup podobný následujícímu:
 

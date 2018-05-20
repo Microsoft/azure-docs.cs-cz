@@ -1,24 +1,24 @@
 ---
-title: "Přidávat nebo odebírat uzly do clusteru Service Fabric samostatné | Microsoft Docs"
-description: "Naučte se přidávat nebo odebírat uzly do clusteru Azure Service Fabric na fyzický nebo virtuální počítač se systémem Windows Server, který může být místní nebo v jakékoli cloudu."
+title: Přidávat nebo odebírat uzly do clusteru Service Fabric samostatné | Microsoft Docs
+description: Naučte se přidávat nebo odebírat uzly do clusteru Azure Service Fabric na fyzický nebo virtuální počítač se systémem Windows Server, který může být místní nebo v jakékoli cloudu.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bc6b8fc0-d2af-42f8-a164-58538be38d02
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 252dcdf0ff9e1fecd6665808bfe7978a4417018b
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: b1ffe3510cf4f5e73b05572a482f49d529fca60d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidávat nebo odebírat uzly do clusteru Service Fabric samostatné systémem Windows Server
 Až budete mít [vytvořen samostatný cluster Service Fabric na počítačích systému Windows Server](service-fabric-cluster-creation-for-windows-server.md), může změnit potřeb (business) a budete muset přidávat nebo odebírat uzly do clusteru. Tento článek obsahuje podrobné pokyny k dosažení tohoto cíle. Upozorňujeme, že přidat nebo odebrat uzel funkce není podporována v clusterech místní vývoj.
@@ -57,7 +57,7 @@ Až budete mít [vytvořen samostatný cluster Service Fabric na počítačích 
     Můžete sledovat průběh upgradu v Service Fabric Exploreru. Alternativně můžete spustit [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Přidat uzly do clusterů, které jsou nakonfigurované pomocí gMSA zabezpečení systému Windows
-Pro clustery nakonfigurované skupiny spravované služby Account(gMSA) (https://technet.microsoft.com/library/hh831782.aspx) můžete přidat nový uzel pomocí konfigurace upgradu:
+Pro clustery nakonfigurované skupiny spravované služby Account(gMSA) (https://technet.microsoft.com/library/hh831782.aspx), lze přidat nový uzel pomocí konfigurace upgradu:
 1. Spustit [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) na žádném z existujících uzlů získat nejnovější konfigurační soubor a přidat podrobnosti o nový uzel, který chcete přidat v části "Uzlů". Zajistěte, aby byl nový uzel součástí stejného účtu skupiny spravované. Tento účet by měl být správce na všech počítačích.
 
     ```
@@ -127,7 +127,7 @@ Před odebráním typ uzlu, prosím Překontrolujte, pokud jsou všechny uzly od
 Nahrazení primární uzly by měl být provádí jeden uzel za druhým, místo odebráním a potom přidat v dávkách.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md)
 * [Zabezpečení clusteru s podporou samostatné do systému Windows pomocí X509 certifikáty](service-fabric-windows-cluster-x509-security.md)
 * [Vytvořit cluster Service Fabric samostatné s virtuálními počítači Azure s Windows](service-fabric-cluster-creation-with-windows-azure-vms.md)

@@ -1,6 +1,6 @@
 ---
-title: Připojení nástroje Operations Manager k analýze protokolů | Microsoft Docs
-description: Pokud chcete zachovat existující investic do služby System Center Operations Manager a používat rozšířené možnosti s analýzy protokolů, kterou můžete integrovat nástroje Operations Manager se pracovního prostoru.
+title: Připojení nástroje Operations Manager ke službě Log Analytics | Microsoft Docs
+description: Nástroj Operations Manager můžete integrovat do svého pracovního prostoru, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 84eabef06b4d2ad71e6d9a947a77589f9159e030
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager k analýze protokolů
-Pokud chcete zachovat existující investic do služby System Center Operations Manager a používat rozšířené možnosti s analýzy protokolů, kterou můžete integrovat se pracovní prostor analýzy protokolů nástroje Operations Manager.  To umožňuje že využít příležitostí analýzy protokolů a nadále používat nástroj Operations Manager:
+# <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
+Nástroj Operations Manager můžete integrovat do svého pracovního prostoru Log Analytics, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics.  Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
 
-* Monitorování stavu vašich IT služeb s nástrojem Operations Manager
-* Udržovat integrace s vašimi řešeními ITSM podpora správy incidentů a problémů
-* Správa životního cyklu agenty nasazené do místní a virtuální počítače IaaS veřejného cloudu, které můžete monitorovat pomocí nástroje Operations Manager
+* Monitorování stavu vašich IT služeb pomocí nástroje Operations Manager
+* Údržba integrace s vašimi řešeními ITSM pro podporu správy incidentů a problémů
+* Správa životního cyklu agentů nasazených do virtuálních počítačů IaaS v místním prostředí a ve veřejném cloudu, které monitorujete pomocí nástroje Operations Manager
 
-Integrace s nástrojem System Center Operations Manager přidá hodnotu strategie operace služby s použitím zrychlení a zefektivnění analýzy protokolů v shromažďování, ukládání a analýzu dat z nástroje Operations Manager.  Porovnejte pomáhá analýzy protokolů a pracovat na identifikace chyb, problémů a zpřístupnění opakování na podporu vašeho stávajícího procesu správy problém.  Flexibilitu vyhledávacího webu na výkon a vyhledejte události upozornění, že data, pomocí podrobných řídicích panelů a možnosti vytváření sestav ke zveřejnění těchto dat smysluplnějšími způsoby, ukazuje sílu analýzy protokolů přináší v complimenting nástroje Operations Manager.
+Integrace s nástrojem System Center Operations Manager zvyšuje hodnotu strategie operací služby tím, že využívá rychlost a efektivitu Log Analytics při shromažďování, ukládání a analýzách dat z nástroje Operations Manager.  Služba Log Analytics usnadňuje hledání korelací a práci na identifikaci příčin problémů a odhalování opakovaných vzorců, což představuje podporu pro váš stávající proces správy problémů.  Síla Log Analytics jako doplňku nástroje Operations Manager spočívá ve flexibilitě vyhledávacího webu, který se používá při zkoumání dat o výkonu, událostech a výstrahách, a v bohatých řídicích panelech a možnostech vytváření sestav, ve kterých je pak možné tato data smysluplně prezentovat.
 
-Agenty do skupiny pro správu nástroje Operations Manager reporting shromažďování dat ze serverů, na základě analýzy protokolů zdroje dat a řešení, které jste povolili v pracovním prostoru.  V závislosti na řešení povolené, svá data jsou buď odesílány přímo z serveru pro správu nástroje Operations Manager ke službě nebo z důvodu objem dat shromážděných v systému spravované pomocí agentů jsou odesílány přímo z agenta k analýze protokolů. Server pro správu předává data přímo ke službě; nikdy je zapsán do databáze provozních nebo datového skladu.  Pokud server pro správu ztratí spojení s analýzy protokolů, se ukládá do mezipaměti data místně, dokud komunikace je navázat znovu s analýzy protokolů.  Pokud server pro správu offline z důvodu plánované údržby nebo neplánovanému výpadku, jinému serveru pro správu ve skupině pro správu obnoví připojení k analýze protokolů.  
+Agenti odesílající data do skupiny pro správu nástroje Operations Manager shromažďují data z vašich serverů, a to na základě zdrojů dat a řešení služby Log Analytics, které jste ve svém pracovním prostoru aktivovali.  V závislosti na aktivovaných řešeních se tato data do dané služby odesílají buď přímo ze serveru pro správu nástroje Operations Manager, nebo se do Log Analytics kvůli objemu dat shromážděných v systému spravovaném agenty odesílají přímo z agenta. Server pro správu předává data přímo do služby; nikdy je nezapisuje do provozní databáze nebo databáze datového skladu.  Pokud server pro správu ztratí spojení s Log Analytics, ukládá data místně do mezipaměti, dokud se komunikace s Log Analytics neobnoví.  Pokud je server pro správu offline z důvodu plánované údržby nebo neplánovanému výpadku, naváže připojení k Log Analytics jiný server pro správu ve skupině pro správu.  
 
-Následující diagram znázorňuje připojení mezi agenty a servery pro správu ve skupině pro správu System Center Operations Manager a analýzy protokolů, včetně směr a portů.   
+Následující diagram znázorňuje propojení mezi servery pro správu a agenty ve skupině pro správu nástroje System Center Operations Manager a službou Log Analytics, včetně směru a portů.   
 
-![OMS – operace manager integrace – diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
+![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Pokud vaše zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu, servery pro správu lze nakonfigurovat pro připojení k bráně OMS pro informace o konfiguraci příjem a odesílání shromážděná data v závislosti na řešení povoleno.  Další informace a kroky pro konfiguraci skupiny pro správu nástroje Operations Manager ke komunikaci přes bránu OMS ke službě Analýza protokolů najdete v tématu [počítače připojit k OMS pomocí brány OMS](log-analytics-oms-gateway.md).  
+Pokud zásady zabezpečení IT neumožňují, aby se počítače ve vaší síti připojovaly k internetu, je možné servery pro správu nakonfigurovat na připojení k bráně OMS, jejímž prostřednictvím budou přijímat informace o konfiguraci a odesílat shromážděná data v závislosti na aktivovaných řešeních.  Další informace a postup pro konfiguraci skupiny pro správu nástroje Operations Manager na komunikaci se službou Log Analytics přes bránu OMS najdete v tématu [Připojení počítačů k OMS pomocí brány OMS](log-analytics-oms-gateway.md).  
 
-## <a name="system-requirements"></a>Požadavky na systém
-Než začnete, zkontrolujte následující podrobnosti k ověření, že splňujete požadavky.
+## <a name="system-requirements"></a>Systémové požadavky
+Než začnete, ověřte podle následujících podrobností, jestli splňujete předpoklady.
 
-* Log Analytics podporuje jenom System Center Operations Manager 1801, Operations Manager 2016 Operations Manager 2012 SP1 UR6 a je větší a UR2 Operations Manager 2012 R2 a vyšší.  V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
-* Všichni agenti nástroje Operations Manager musí splňovat požadavky na minimální podporu. Zkontrolujte, zda jsou agenti na minimální aktualizace, v opačném případě může selhat provoz agenta Windows a mnoho chyb může vyplnit protokolu událostí nástroje Operations Manager.
-* Pracovní prostor analýzy protokolů.  Další informace najdete v tématu [začít pracovat s analýzy protokolů](log-analytics-get-started.md).
+* Služba Log Analytics podporuje jen System Center Operations Manager 1801, Operations Manager 2016, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo vyšší.  V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
+* Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Zkontrolujte, jestli agenti odpovídají požadavku na minimální aktualizaci – v opačném případě můžou přenosy agentů Windows selhat a protokol událostí nástroje Operations Manager bude plný chyb.
+* Pracovní prostor Log Analytics.  Další informace najdete v tématu [Začínáme se službou Log Analytics](log-analytics-get-started.md).
 
 ### <a name="network"></a>Síť
-Informace o následující seznam konfigurace proxy a firewall informace požadované pro agenta nástroje Operations Manager, servery pro správu a konzole Operations console ke komunikaci s analýzy protokolů.  Provoz z jednotlivých součástí je odchozí z vaší sítě ke službě Analýza protokolů.     
+V následujícím seznamu najdete konfiguraci pro proxy a firewall nutnou pro komunikaci agenta Operations Manager, serverů pro správu a konzoly Operations Console s Log Analytics.  Přenosy z jednotlivých součástí odchází z vaší sítě do služby Log Analytics.     
 
-|Prostředek | Číslo portu| Vynechat kontroly protokolu HTTP|  
+|Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
 |**Agent**|||  
 |\*.ods.opinsights.azure.com| 443 |Ano|  
@@ -59,7 +59,7 @@ Informace o následující seznam konfigurace proxy a firewall informace požado
 |\*.blob.core.windows.net| 443| Ano|  
 |\*.ods.opinsights.azure.com| 443| Ano|  
 |*.azure-automation.net | 443| Ano|  
-|**Konzola nástroje Operations Manager k OMS**|||  
+|**Z konzoly nástroje Operations Manager do OMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
 |\*.live.com| 80 a 443||  
@@ -71,145 +71,143 @@ Informace o následující seznam konfigurace proxy a firewall informace požado
 |api.loganalytics.io| 80 a 443||
 |docs.loganalytics.io| 80 a 443||  
 
-## <a name="connecting-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager k Log Analytics
-Proveďte následující řadu postup konfigurace skupiny pro správu nástroje Operations Manager pro připojení k jednomu z vašich pracovních prostorů analýzy protokolů.
+## <a name="connecting-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
+Provedením následujícího postupu nakonfigurujete skupinu pro správu nástroje Operations Manager na připojení k jednomu z vašich pracovních prostorů Log Analytics.
 
-Pokud je to první, kdy je registrace skupiny pro správu nástroje Operations Manager s pracovní prostor analýzy protokolů a muset komunikovat se službou service přes proxy server nebo server brány OMS, můžete zadat konfiguraci proxy serveru pro servery pro správu Skupina pro správu není k dispozici v konzoli Operations console.  Skupina pro správu musí být úspěšně registrován u služby, než tato možnost je k dispozici.  Je potřeba aktualizovat konfiguraci proxy serveru systému použití příkazu Netsh v systému konzoli Operations console z systémem pro konfiguraci integrace a všechny servery pro správu ve skupině pro správu.  
+Pokud se skupina pro správu nástroje Operations Manager registruje do pracovního prostoru Log Analytics poprvé a servery pro správu potřebují komunikovat se službou přes proxy server nebo server brány OMS, možnost zadat konfiguraci proxy serveru nebude pro danou skupinu v konzole Operations Console k dispozici.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Aby bylo možné nakonfigurovat integraci, jakož i všechny servery pro správu ve skupině pro správu, je potřeba v systému, ze kterého spouštíte konzolu Operations Console, aktualizovat systémovou konfiguraci proxy serveru pomocí nástroje Netsh.  
 
-1. Otevření příkazového řádku se zvýšenými oprávněními.
-   a. Přejděte na **spustit** a typ **cmd**.
-   b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
-2. Zadejte následující příkaz a stiskněte klávesu **Enter**:
+1. Otevřete příkazový řádek se zvýšenými oprávněními.
+1. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-Po dokončení těchto kroků integrovat analýzy protokolů, můžete odebrat konfiguraci spuštěním `netsh winhttp reset proxy` a potom pomocí **konfigurovat proxy server** možnost v konzoli Operations console zadat proxy server nebo OMS Server brány. 
+Po dokončení těchto kroků pro integraci s Log Analytics můžete tuto konfiguraci odebrat spuštěním `netsh winhttp reset proxy` a potom pomocí možnosti **Konfigurovat proxy server** v konzoli Operations Console zadat proxy server nebo server brány OMS. 
 
-1. V konzole nástroje Operations Manager, vyberte **správy** prostoru.
-2. Rozbalte uzel Operations Management Suite a klikněte na tlačítko **připojení**.
-3. Klikněte **registraci ve službě Operations Management Suite** odkaz.
-4. Na **Průvodce registrací ve službě Operations Management Suite: ověřování** stránky, zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, která souvisí s vaším předplatným OMS a klikněte na **přihlášení**.
-5. Poté, co jste úspěšně přihlášeni, na **Průvodce registrací ve službě Operations Management Suite: Vyberte pracovní prostor** stránky, zobrazí se výzva k výběru pracovní prostor analýzy protokolů.  Pokud máte více než jednoho pracovního prostoru, vyberte pracovní prostor, které chcete zaregistrovat u skupiny pro správu nástroje Operations Manager z rozevíracího seznamu a pak klikněte na **Další**.
+1. V konzole nástroje Operations Manager vyberte pracovní prostor **Správa**.
+2. Rozbalte uzel Operations Management Suite a klikněte na **Připojení**.
+3. Přejděte na odkaz **Zaregistrovat ve službě Operations Management Suite**.
+4. Na stránce **Průvodce registrací ve službě Operations Management Suite** zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružený k vašemu předplatnému OMS, a klikněte na **Přihlásit se**.
+5. Po úspěšném přihlášení budete na stránce **Průvodce registrací ve službě Operations Management Suite: výběr pracovního prostoru** vyzváni k výběru pracovního prostoru Log Analytics.  Pokud máte více než jeden pracovní prostor, vyberte z rozevíracího seznamu ten, který chcete zaregistrovat ve skupině pro správu nástroje Operations Manager, a pak klikněte na **Další**.
    
    > [!NOTE]
-   > Nástroj Operations Manager podporuje jenom jeden pracovní prostor analýzy protokolů najednou. Připojení a počítače, které byly registrovány k analýze protokolů předchozí pracovního prostoru jsou vyřazeny z analýzy protokolů.
+   > Operations Manager podporuje vždy jenom jeden pracovní prostor Log Analytics. Připojení a počítače, které byly v Log Analytics zaregistrované s předchozím pracovním prostorem, budou z Log Analytics odebrány.
    > 
    > 
-6. Na **Průvodce registrací ve službě Operations Management Suite: Souhrn** , potvrďte nastavení a pokud jsou správné, klikněte na tlačítko **vytvořit**.
-7. Na **Průvodce registrací ve službě Operations Management Suite: dokončení** klikněte na tlačítko **Zavřít**.
+6. Na stránce **Průvodce registrací ve službě Operations Management Suite: souhrn** ověřte nastavení, a pokud je správné, klikněte na **Vytvořit**.
+7. Na stránce **Průvodce registrací ve službě Operations Management Suite: dokončení** klikněte na **Zavřít**.
 
-### <a name="add-agent-managed-computers"></a>Přidání počítačů spravovaných agentem
-Jakmile nakonfigurujete integraci s pracovní prostor analýzy protokolů, to jenom naváže připojení se službou, je od agentů skupiny pro správu sestav nebyla shromážděna žádná data. Tím nedojde k ní až po dokončení konfigurace, které konkrétní počítače spravované pomocí agentů shromažďuje data pro analýzu protokolu. Objekty počítače můžete vybrat buď jednotlivě nebo můžete vybrat skupinu, která obsahuje objekty počítače Windows. Nelze vybrat skupinu, která obsahuje instancí jiné třídy, jako jsou logické disky nebo databáze SQL.
-
-1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
-2. Rozbalte uzel Operations Management Suite a klikněte na tlačítko **připojení**.
-3. Klikněte **přidat počítač nebo skupinu** odkaz v části Akce záhlaví na pravé straně v podokně.
-4. V **hledání počítače** dialogové okno, můžete vyhledat počítače nebo skupiny sledovaných nástrojem Operations Manager. Vyberte počítače nebo skupiny k analýze protokolů zařadit do provozu, klikněte na **přidat**a potom klikněte na **OK**.
-
-Můžete zobrazit počítače a skupiny, které jsou nakonfigurované ke shromažďování dat z uzlu spravované počítače v rámci služby Operations Management Suite **správy** prostoru v konzoli Operations Console.  Tady můžete přidat nebo odebrat počítače a skupiny podle potřeby.
-
-### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurace nastavení proxy serveru v konzoli Operations console
-Pokud je interní proxy server mezi skupinou správy a protokolu Analytics služby, proveďte následující kroky.  Tato nastavení jsou centrálně spravovat ze skupiny pro správu a distribuci do spravovaných agentem systémy, které jsou zahrnuty v oboru ke shromažďování dat pro analýzy protokolů.  To je výhodné pro při určité řešení Nepoužívat server pro správu a odesílání dat přímo ke službě.
+### <a name="add-agent-managed-computers"></a>Přidání počítačů spravovaných agenty
+Konfigurací integrace s vaším pracovním prostorem Log Analytics se jen naváže spojení s touto službou – z agentů odesílajících data do skupiny pro správu se neshromažďují žádná data. K tomu nezačne docházet, dokud nenakonfigurujete, které konkrétní počítače spravované pomocí agentů mají data pro Log Analytics shromažďovat. Objekty počítačů můžete vybrat buď jednotlivě, nebo jako skupinu obsahující objekty počítačů s Windows. Nemůžete vybrat skupinu, která obsahuje instance jiné třídy, jako třeba logické disky nebo databáze SQL.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
-2. Rozbalte Operations Management Suite a pak klikněte na tlačítko **připojení**.
+2. Rozbalte uzel Operations Management Suite a klikněte na **Připojení**.
+3. Klikněte na odkaz **Přidat počítač či skupinu** pod záhlavím Akce na pravé straně podokna.
+4. V dialogovém okně **Hledání počítače** můžete vyhledat počítače nebo skupiny sledované nástrojem Operations Manager. Vyberte počítače nebo skupiny, které chcete zahrnout do služby Log Analytics, a klikněte na **Přidat** a potom na **OK**.
+
+Počítače a skupiny, které jsou nakonfigurované na shromažďování dat, si můžete zobrazit z uzlu Spravované počítače pod položkou Operations Management Suite v pracovním prostoru **Správa** v konzole Operations Console.  Odsud můžete počítače a skupiny podle potřeby přidávat nebo odebírat.
+
+### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurace nastavení proxy v konzole Operations Console
+Pokud se mezi skupinou pro správu a službou Log Analytics nachází interní proxy server, proveďte následující kroky.  Tato nastavení se řídí centrálně ze skupiny pro správu a distribuují se do systémů spravovaných agenty, které spadají do rozsahu shromažďování dat pro Log Analytics.  To je výhodné v případech, kdy určitá řešení obcházejí server pro správu a odesílají data přímo do služby.
+
+1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
+2. Rozbalte Operations Management Suite a pak klikněte na **Připojení**.
 3. V zobrazení Připojení OMS klikněte na **Konfigurovat proxy server**.
-4. Na **Průvodce Operations Management Suite: Proxy Server** vyberte **používat proxy server pro přístup k službě Operations Management Suite**, a poté zadejte adresu URL s číslem portu, například http://corpproxy:80 a pak klikněte na **Dokončit**.
+4. Na stránce **Průvodce nastavením služby Operations Management Suite: proxy server** vyberte **Pro přístup ke službě Operations Management Suite použít proxy server**, potom zadejte adresu URL s číslem portu, například http://corpproxy:80, a pak klikněte na **Dokončit**.
 
-Pokud proxy server vyžaduje ověřování, proveďte následující postup pro konfiguraci přihlašovacích údajů a nastavení, které je potřeba rozšířit do spravovaných počítačů, které sestavy OMS ve skupině pro správu.
+Pokud proxy server vyžaduje ověřování, nakonfigurujte pomocí následujícího postupu přihlašovací údaje a nastavení, která je potřeba rozšířit do spravovaných počítačů ve skupině pro správu, které odesílají data do OMS.
 
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
 2. V části **Konfigurace RunAs** vyberte **Profily**.
 3. Otevřete profil **Proxy server profilu Spustit jako služby System Center Advisor**.
-4. V Průvodce profilem spustit jako klikněte na Přidat a používat účet Spustit jako. Můžete vytvořit [účet Spustit jako](https://technet.microsoft.com/library/hh321655.aspx) nebo použít existující účet. Tento účet musí mít dostatečná oprávnění k průchodu proxy serverem.
-5. Pokud chcete nastavit účet, který chcete spravovat, vyberte **vybranou třídu, skupinu nebo objekt**, klikněte na tlačítko **vyberte...** a pak klikněte na tlačítko **skupiny...** Chcete-li otevřít **skupiny vyhledávání** pole.
-6. Vyhledejte a pak vyberte **monitorování skupiny serveru serveru Microsoft System Center Advisor**.  Klikněte na tlačítko **OK** po výběru skupiny zavřete **skupiny vyhledávání** pole.
-7. Klikněte na tlačítko **OK** zavřete **přidat účet Spustit jako** pole.
-8. Klikněte na tlačítko **Uložit** uložte změny a dokončete průvodce.
+4. Pokud chcete použít účet Spustit jako, klikněte v Průvodci profilem Spustit jako na Přidat. [Účet Spustit jako](https://technet.microsoft.com/library/hh321655.aspx) můžete vytvořit, případně použít existující účet. Tento účet musí mít dostatečná oprávnění k průchodu proxy serverem.
+5. Pokud chcete nastavit účet k provedení správy, zvolte **Vybraná třída, skupina nebo objekt**, klikněte na **Vybrat** a potom na **Skupina**, čímž otevřete okno **Hledání skupiny**.
+6. Vyhledejte a pak vyberte **Skupina monitorovacích serverů služby Microsoft System Center Advisor**.  Po výběru skupiny zavřete kliknutím na **OK** okno **Hledání skupiny**.
+7. Kliknutím na **OK** zavřete okno **Přidat účet Spustit jako**.
+8. Kliknutím na **Uložit** dokončete průvodce a uložte změny.
 
-Po vytvoření připojení a nakonfigurujete, jaké agenty bude shromažďovat a odesílat data analýzy protokolů, tyto konfigurace platí ve skupině pro správu, nemusí v pořadí:
+Po vytvoření připojení a konfiguraci agentů, kteří budou shromažďovat a odesílat data do Log Analytics, se ve skupině pro správu použije tato konfigurace (nemusí to být v tomto pořadí):
 
-* Účet Spustit jako **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** je vytvořena.  Je přidružen k profilu spustit jako **Microsoft System Center Advisor spustit jako profil Blob** a je zacílený na dvě třídy - **Server kolekce** a **skupina správy nástroje Operations Manager**.
-* Jsou vytvořeny dva konektory.  První je s názvem **Microsoft.SystemCenter.Advisor.DataConnector** a je automaticky nakonfigurovaný pomocí odběr, který předává všechny výstrahy generované z instancí všechny třídy ve skupině pro správu k analýze protokolů. Je druhý konektor **konektor služby Advisor**, který zodpovídá za komunikaci s webovou službou OMS a sdílení dat.
-* Agenty a skupiny, které jste vybrali pro shromažďování dat ve skupině pro správu je přidat do **monitorování skupiny serveru serveru Microsoft System Center Advisor**.
+* Vytvoří se účet Spustit jako **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate**.  Je přidružený k profilu Spustit jako **Objekt blob profilu Spustit jako služby Microsoft System Center Advisor** a je zacílený na dvě třídy: **Server kolekcí** a **Skupina správy nástroje Operations Manager**.
+* Vytvoří se dva konektory.  První má název **Microsoft.SystemCenter.Advisor.DataConnector** a je v něm automaticky nakonfigurovaný odběr, který předává všechny výstrahy generované z instancí všech tříd ve skupině pro správu do Log Analytics. Druhým je **Konektor služby Advisor**, který zodpovídá za komunikaci s webovou službou OMS a sdílení dat.
+* Agenti a skupiny, které jste vybrali pro shromažďování dat ve skupině pro správu, budou přidáni do **Skupiny monitorovacích serverů služby Microsoft System Center Advisor**.
 
-## <a name="management-pack-updates"></a>Aktualizace sad Management pack
-Po dokončení konfigurace skupiny pro správu nástroje Operations Manager vytvoří připojení ke službě Analýza protokolů.  Server pro správu synchronizuje pomocí webové služby a získat aktualizovanou konfiguraci informace ve formě sady management Pack pro řešení, které jste povolili, které se integrují s nástrojem Operations Manager.   Nástroj Operations Manager kontroluje aktualizace těchto sad management Pack a automaticky stáhnout a importuje je, pokud jsou k dispozici.  Existují dvě pravidla na konkrétní kterého ovládacího prvku toto chování:
+## <a name="management-pack-updates"></a>Aktualizace sad Management Pack
+Po dokončení konfigurace naváže skupina pro správu nástroje Operations Manager připojení ke službě Log Analytics.  Server pro správu se synchronizuje s webovou službou a přijímá aktualizované konfigurační informace ve formě sad Management Pack pro vámi povolená řešení, která se integrují s nástrojem Operations Manager.   Operations Manager vyhledá aktualizace těchto sad Management Pack a automaticky je stáhne a naimportuje, pokud jsou k dispozici.  Toto chování řídí obzvláště dvě pravidla:
 
-* **Microsoft.SystemCenter.Advisor.MPUpdate** -aktualizace základní sady management Pack pro analýzu protokolu. Ve výchozím nastavení spouští každých 12 hodin.
-* **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** -aktualizace řešení management Pack, která je povolena v pracovním prostoru. Ve výchozím nastavení spouští každých pět (5) minut.
+* **Microsoft.SystemCenter.Advisor.MPUpdate** – Aktualizuje základní sady Management Pack pro Log Analytics. Ve výchozím nastavení se spouští každých 12 hodin.
+* **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** – Aktualizuje sady Management Pack řešení, které jsou povolené ve vašem pracovním prostoru. Ve výchozím nastavení se spouští každých pět (5) minut.
 
-Tyto dvě pravidla buď zabránit automatické stahování zakázáním je nebo upravit frekvenci jak často se serverem pro správu synchronizuje s OMS k určení, pokud je k dispozici nové sady management pack a by měl být stažen můžete přepsat.  Postupujte podle kroků [postupu přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změnit **frekvence** parametr s hodnotou v sekundách, pokud chcete změnit plán synchronizace, nebo upravit **povoleno** parametr zakázání pravidla.  Vybrat přepsání pro všechny objekty třídy skupina správy nástroje Operations Manager.
+Tato dvě pravidla můžete přepsat buď tím, že je zakážete s cílem zabránit automatickému stahování, nebo úpravou frekvence, s jakou se server pro správu synchronizuje s OMS a zjišťuje, jestli je ke stažení dostupná nová sada Management Pack.  Podle kroků [pro přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změňte parametr **Frekvence** na jinou hodnotou v sekundách (pokud chcete změnit plán synchronizace) nebo přepněte parametr **Povoleno** (pokud chcete pravidla zakázat).  Přepsané hodnoty zacilte na všechny objekty třídy Skupina správy nástroje Operations Manager.
 
-Pokud chcete pokračovat následující stávajícího procesu řízení změn pro řízení verzí management pack v provozní skupina pro správu, můžete zakázat pravidla a povolit v určité době, kdy jsou povoleny aktualizace. Pokud máte na vývoj nebo skupiny pro správu QA ve vašem prostředí a má připojení k Internetu, můžete tuto skupinu pro správu nakonfigurovat pracovní prostor analýzy protokolů pro podporu tohoto scénáře.  To umožňuje kontrola a vyhodnocení iterativní verze sady management Pack analýzy protokolů před uvolněním je do provozní skupina pro správu.
+Pokud se chcete při řízení verzí sad Management Pack ve své provozní skupině pro správu nadále držet svého stávajícího procesu řízení změn, můžete tato pravidla zakázat a povolit je v určitých časových obdobích, kdy bude možné provádět aktualizace. Pokud máte ve svém prostředí skupiny pro správu určenou pro vývoj nebo kontrolu kvality a ta má připojení k internetu, můžete pro podporu tohoto scénáře u této skupiny nakonfigurovat pracovní prostor Log Analytics.  To vám umožní kontrolovat a vyhodnocovat iterativní verze sad Management Pack pro Log Analytics před jejich uvolněním pro provozní skupinu pro správu.
 
-## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Přepnout na nový pracovní prostor Log Analytics skupinu nástroje Operations Manager
+## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Převedení skupiny nástroje Operations Manager na nový pracovní prostor Log Analytics
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **analýzy protokolů** a pak vytvořit pracovní prostor.  
-3. Otevřete konzolu nástroje Operations Manager pomocí účtu, který je členem role Správci nástroje Operations Manager a vyberte **správy** prostoru.
-4. Rozbalte Operations Management Suite a vyberte **připojení**.
-5. Vyberte **znovu nakonfigurovat operace Management Suite** odkaz na straně středním podokně.
-6. Postupujte podle **Průvodce registrací ve službě Operations Management Suite** a zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružen nový pracovní prostor analýzy protokolů.
+2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics** a pak vytvořte pracovní prostor.  
+3. Otevřete konzolu nástroje Operations Manager pomocí účtu, který je členem role Administrators nástroje Operations Manager, a vyberte pracovní prostor **Správa**.
+4. Rozbalte Operations Management Suite a pak vyberte **Připojení**.
+5. Vyberte odkaz **Znovu nakonfigurovat službu Operations Management Suite** uprostřed podokna.
+6. Postupujte podle **Průvodce registrací ve službě Operations Management Suite** a zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružený k novému pracovnímu prostoru Log Analytics.
    
    > [!NOTE]
-   > **Průvodce registrací ve službě Operations Management Suite: Vyberte pracovní prostor** stránky uvede existující pracovní prostor, který je používán.
+   > Stránka **Průvodce registrací ve službě Operations Management Suite: výběr pracovního prostoru** uvádí existující pracovní prostor, který se používá.
    > 
    > 
 
-## <a name="validate-operations-manager-integration-with-log-analytics"></a>Ověření integrace nástroje Operations Manager s analýzy protokolů
-Existuje několik různých způsobů, můžete ověřit, že analýzy protokolů pro integraci nástroje Operations Manager byla úspěšně dokončena.
+## <a name="validate-operations-manager-integration-with-log-analytics"></a>Ověření integrace nástroje Operations Manager se službou Log Analytics
+Existuje několik různých způsobů, jak ověřit, že integrace Log Analytics s nástrojem Operations Manager proběhla úspěšně.
 
-### <a name="to-confirm-integration-from-the-azure-portal"></a>Potvrďte integrace z portálu Azure
+### <a name="to-confirm-integration-from-the-azure-portal"></a>Ověření integrace z portálu Azure Portal
 1. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu.
-2. V seznamu analýzy protokolů pracovních prostorů vyberte použít pracovní prostor.  
-3. Vyberte **upřesňující nastavení**, vyberte **připojené zdroje**a potom vyberte **System Center**. 
-4. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu označené počet agentů a stavu, pokud byl naposled přijal data.
+2. V seznamu pracovních prostorů Log Analytics vyberte příslušný pracovní prostor.  
+3. Vyberte **Upřesňující nastavení**, **Připojené zdroje**a potom **System Center**. 
+4. V tabulce v části System Center Operations Manager byste měli vidět název skupiny pro správu i s počtem agentů a stavem uvádějícím, když byla naposledy přijata data.
    
    ![oms-settings-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
 
-### <a name="to-confirm-integration-from-the-operations-console"></a>Potvrďte integrace z konzole Operations console
+### <a name="to-confirm-integration-from-the-operations-console"></a>Ověření integrace z konzoly Operations Console
 1. Otevřete konzolu nástroje Operations Manager a vyberte pracovní prostor **Správa**.
-2. Vyberte **sady Management Pack** a v **vyhledejte:** textového pole zadejte **Advisor** nebo **Intelligence**.
-3. V závislosti na řešení, které jste povolili zobrazí odpovídající sada management pack uvedené ve výsledcích hledání.  Například pokud jste povolili řešení pro správu výstrah, sada management pack Microsoft System Center Advisor výstrahy Management je v seznamu.
-4. Z **monitorování** zobrazit, přejděte do **Operations Management Suite\Health stavu** zobrazení.  Vyberte server pro správu v části **stav serveru pro správu** podokně a v **podrobné zobrazení** podokně potvrďte hodnotu pro vlastnost **identifikátor URI ověřovací služby** odpovídá ID pracovního prostoru analýzy protokolů
+2. Vyberte **Sady Management Pack** a do textového pole **Hledat** zadejte **Advisor** nebo **Intelligence**.
+3. V závislosti na řešeních, která jste aktivovali, se ve výsledcích hledání zobrazí odpovídající sada Management Pack.  Pokud jste například povolili řešení Alert Management, bude v seznamu sada Microsoft System Center Advisor Alert Management.
+4. Ze zobrazení **Sledování** přejděte do zobrazení **Operations Management Suite\Stav systému**.  Vyberte server pro správu v podokně **Stav serveru pro správu** a v podokně **Podrobné zobrazení** ověřte, že hodnota vlastnosti **Identifikátor URI ověřovací služby** odpovídá příslušnému ID pracovního prostoru Log Analytics.
    
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
-## <a name="remove-integration-with-log-analytics"></a>Odebrat integraci s analýzy protokolů
-Když už nepotřebujete integrace mezi vaší skupině pro správu nástroje Operations Manager a pracovní prostor analýzy protokolů, existuje několik kroků potřebných k správně odebrání připojení a konfiguraci ve skupině pro správu. Následující postup se aktualizovat pracovní prostor analýzy protokolů odstraněním odkaz na skupiny pro správu, odstraňte konektory analýzy protokolů a pak odstraňte podporu integrace se službou sady management Pack.   
+## <a name="remove-integration-with-log-analytics"></a>Odebrání integrace se službou Log Analytics
+Když už integraci mezi vaší skupinou pro správu nástroje Operations Manager a pracovním prostorem Log Analytics nebudete potřebovat, bude třeba ke správnému odebrání připojení a konfigurace ze skupiny provést několik kroků. V následujícím postupu aktualizujete pracovní prostor Log Analytics odstraněním odkazu na skupinu pro správu, odstraníte konektory pro Log Analytics a pak odstraníte sady Management Pack podporující integraci s touto službou.   
 
-Sady Management Pack pro řešení jste povolili které integrovat s nástrojem Operations Manager a sady management Pack, který je potřeba pro podporu integrace se službou analýzy protokolů nelze snadno odstranit ze skupiny pro správu.  Je to proto, že některé sady management Pack analýzy protokolů mají závislosti na jiných sadách pro správu související.  Chcete-li odstranit sady management Pack se závislostí na jiných sadách management Pack, stáhněte skript [odebrat sadu management pack se závislostmi](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z centra skriptů TechNet.  
+Sady Management Pack pro vámi aktivovaná řešení, které se integrují s nástrojem Operations Manager, a sady Management Pack potřebné pro podporu integrace se službou Log Analytics nejde ze skupiny pro správu snadno odstranit.  Je to proto, že některé sady Management Pack pro Log Analytics mají závislosti v jiných souvisejících sadách.  Pokud chcete odstranit sady Management Pack se závislostmi na jiných sadách, stáhněte si skript pro [odebrání sady Management Pack se závislostmi](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) z webu TechNet Script Center.  
 
-1. Otevřete příkazové prostředí nástroje Operations Manager pomocí účtu, který je členem role Správci nástroje Operations Manager.
+1. Otevřete prostředí příkazového řádku pro Operations Manager pomocí účtu, který je členem role Administrators nástroje Operations Manager.
    
     > [!WARNING]
-    > Ověřte, že nemáte žádné vlastní sady management Pack s slovo Advisor nebo IntelligencePack v názvu než budete pokračovat, jinak tyto kroky je odstranit ze skupiny pro správu.
+    > Než budete pokračovat, ujistěte se, že nemáte žádné vlastní sady Management Pack se slovem Advisor nebo IntelligencePack v názvu, protože jinak tímto postupem ze skupiny pro správu odstraníte i je.
     > 
 
-2. Z prostředí příkazového řádku zadejte `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-3. Další typ `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-4. Pokud chcete odstranit všechny sady management Pack zbývající, které jsou závislé na jiných sadách management Pack System Center Advisor, použijte skript *RecursiveRemove.ps1* předtím stáhli z centra skriptů webu TechNet.  
+2. V prostředí příkazového řádku zadejte `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+3. Pak zadejte `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+4. Pokud chcete odstranit všechny zbývající sady Management Pack, které jsou závislé na jiných sadách pro System Center Advisor, použijte skript *RecursiveRemove.ps1*, který jste si předtím stáhli z webu TechNet Script Center.  
  
     > [!NOTE]
-    > Neodstraňujte sady management Pack Microsoft System Center Advisor nebo Microsoft System Center Advisor interní.  
+    > Neodstraňujte sady Microsoft System Center Advisor nebo Microsoft System Center Advisor Internal.  
     >  
 
-5. Otevřete konzoli Operations Manager Operations console pomocí účtu, který je členem role Správci nástroje Operations Manager.
-6. V části **správy**, vyberte **sady Management Pack** uzel a v **vyhledejte:** zadejte **Advisor** a ověřte ve vaší skupině pro správu jsou stále naimportovány následující sady management Pack:
+5. Otevřete konzolu Operations Console pro Operations Manager pomocí účtu, který je členem role Administrators nástroje Operations Manager.
+6. V části **Správa** vyberte uzel **Sady Management Pack**, do pole **Hledat** zadejte **Advisor** a ověřte, že ve vaší skupině pro správu jsou stále naimportovány následující sady Management Pack:
    
    * Microsoft System Center Advisor
-   * Microsoft System Center Advisor interní
-7. Na portálu OMS klikněte na dlaždici **Nastavení**.
-8. Vyberte **připojené zdroje**.
-9. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu, které chcete odebrat z pracovního prostoru.  Ve sloupci **poslední Data**, klikněte na tlačítko **odebrat**.  
+   * Microsoft System Center Advisor Internal
+1. Otevřete nabídku **Upřesňující nastavení** pro pracovní prostor Log Analytics na portálu Azure Portal.
+1. Vyberte **Připojené zdroje** a pak **System Center**.
+1. Měl by se zobrazit název skupiny pro správu, kterou chcete z pracovního prostoru odebrat.  Ve sloupci **Poslední data** klikněte na tlačítko **Odebrat**.  
    
     > [!NOTE]
-    > **Odebrat** odkaz nebudete mít k dispozici až po dobu 14 dnů. Pokud nebude žádná aktivita nalezena, od připojené skupiny pro správu.  
+    > Pokud u připojené skupiny pro správu nebyla zjištěna žádná aktivita, bude odkaz **Odebrat** k dispozici až po uplynutí 14 dnů.  
     > 
 
-10. Otevře se okno s žádostí o potvrzení, že chcete pokračovat s odstraněním.  Klikněte na tlačítko **Ano** pokračovat. 
+10. Otevře se okno s žádostí o potvrzení, že chcete pokračovat v odebírání.  Pokud chcete pokračovat, klikněte na **Ano**. 
 
-Chcete-li odstranit dva konektory - Microsoft.SystemCenter.Advisor.DataConnector a konektor služby Advisor, uložte níže uvedený skript prostředí PowerShell do počítače a spuštění pomocí následující příklady:
+Pokud chcete odstranit oba konektory (Microsoft.SystemCenter.Advisor.DataConnector a Konektor služby Advisor), uložte si níže uvedený skript prostředí PowerShell do počítače a spusťte ho podle následujících příkladů:
 
 ```
     .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
@@ -217,7 +215,7 @@ Chcete-li odstranit dva konektory - Microsoft.SystemCenter.Advisor.DataConnector
 ```
 
 > [!NOTE]
-> Počítač, spusťte tento skript z, není-li server pro správu, by měl mít příkazové okno nástroje Operations Manager nainstalována v závislosti na verzi vaší skupině pro správu.
+> Pokud počítač, ze kterého tento skript spouštíte, nepředstavuje server pro správu, měl by mít nainstalované prostředí příkazového řádku pro Operations Manager v závislosti na verzi vaší skupiny pro správu.
 > 
 > 
 
@@ -307,12 +305,12 @@ Chcete-li odstranit dva konektory - Microsoft.SystemCenter.Advisor.DataConnector
     Remove-Connector $connectorName
 ```
 
-V budoucnu Pokud plánujete připojení skupiny pro správu do pracovního prostoru analýzy protokolů, budete muset znovu naimportovat `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` soubor sady management pack.  Tento soubor v závislosti na verzi System Center Operations Manager ve vašem prostředí nasazená, najdete v následujícím umístění:
+Pokud máte v plánu skupinu pro správu v budoucnu znovu připojit k nějakému pracovnímu prostoru Log Analytics, budete muset znovu naimportovat soubor sady Management Pack `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb`.  V závislosti na verzi nástroje System Center Operations Manager nasazené ve vašem prostředí ho najdete v následujícím umístění:
 
-* Na zdrojovém médiu v části `\ManagementPacks` složku pro System Center 2016 - Operations Manager a vyšší.
-* Z nejnovější kumulativní u skupiny pro správu.  Pro Operations Manager 2012 se zdrojové složky` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a 2012 R2, je umístěn v `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
+* Na zdrojovém médiu ve složce `\ManagementPacks` pro System Center 2016 – Operations Manager a vyšší.
+* V nejnovější kumulativní aplikaci použité u vaší skupiny pro správu.  V případě verze Operations Manager 2012 jde o zdrojovou složku ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a v případě verze 2012 R2 jde o umístění `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
-## <a name="next-steps"></a>Další postup
-Přidání funkcí a shromažďování dat najdete v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
+## <a name="next-steps"></a>Další kroky
+Informace o přidávání funkcí a shromažďování dat najdete v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
 
 

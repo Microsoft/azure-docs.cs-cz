@@ -1,5 +1,5 @@
 # <a name="azure-premium-storage-design-for-high-performance"></a>Úložiště Azure Premium: Návrh vysoce výkonné
-## <a name="overview"></a>Přehled
+
 Tento článek obsahuje pokyny pro vytváření vysoce výkonné aplikace pomocí Azure Premium Storage. Můžete použít pokyny v tomto dokumentu v kombinaci s osvědčené postupy z hlediska výkonu pro technologie, které používá vaše aplikace. Pro ilustraci podle pokynů, jsme použili SQL Server běžící na Storage úrovně Premium jako příklad v tomto dokumentu.
 
 Když jsme adres scénáře výkonu pro vrstvy úložiště v tomto článku, musíte se k optimalizaci aplikační vrstvu. Například pokud hostujete farmy služby SharePoint na Azure Premium Storage, můžete použít příklady systému SQL Server z tohoto článku za účelem optimalizace databázového serveru. Kromě toho Optimalizujte webového serveru a získat většina výkonu se aplikační server farmy služby SharePoint.
@@ -90,7 +90,7 @@ Tyto čítače PerfMon jsou k dispozici pro procesor, paměť a každý logický
 | **Propustnost** |Množství dat číst nebo zapisovat na disk za sekundu. |Bajty čtení z disku/s <br> Bajty zapisování na disk/s |kB_read/s <br> kB_wrtn/s |
 | **Latence** |Celková doba nutná k dokončení žádosti o vstupně-výstupní operace disku. |Průměrná doba disku/čtení <br> Doba průměrná disku/zápis |await <br> svctm |
 | **Velikost vstupně-výstupní operace** |Velikost vstupně-výstupních požadavků problémy na discích úložiště. |Průměrná disku bajtů/čtení <br> Průměrná disku bajtů/zápis |avgrq sz |
-| **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků čekání na čtení formuláře nebo zapsaných na disk úložiště. |Aktuální délka fronty disku |avgqu sz |
+| **Hloubka fronty** |Počet nezpracovaných vstupně-výstupních požadavků čekání číst nebo zapisovat do úložiště disku. |Aktuální délka fronty disku |avgqu sz |
 | **Max. Paměť** |Množství paměti nutné ke spuštění aplikace bez problémů |% Využití potvrzených bajtů |Použití vmstat |
 | **Max. VYUŽITÍ PROCESORU** |Velikost procesoru potřebné ke spuštění aplikace bez problémů |% Času procesoru |% util |
 
@@ -102,15 +102,18 @@ Hlavní faktory, které mají vliv na výkon aplikace běžící na Storage úro
 V této části naleznete kontrolní seznam požadavků na aplikaci, kterou jste vytvořili, k identifikaci, kolik potřebujete optimalizovat výkon aplikace. Podle toho, který, bude možné určit faktory, které z této části budete muset vyladit. Chcete-li určující účinky každý faktor na výkon aplikace, spusťte testu typovou úlohou nástroje na instalace aplikace. Odkazovat [Benchmarking](#Benchmarking) na konci tohoto článku kroky, jak spustit běžné nástroje pro testu typovou úlohou ve Windows a virtuální počítače s Linuxem.
 
 ### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>Optimalizace IOP, propustnosti a latence na první pohled
-Následující tabulka shrnuje všechny faktory výkonu a kroky k optimalizaci IOP, propustnosti a latence. V oddílech Toto shrnutí bude popisují každou. faktor je mnohem víc hloubka.
+
+Následující tabulka shrnuje výkon faktory a kroky potřebnými k optimalizaci IOP, propustnosti a latence. V oddílech Toto shrnutí bude popisují každou. faktor je mnohem víc hloubka.
+
+Další informace o velikosti virtuálních počítačů a na IOP, propustnosti a latence dostupné pro každý typ virtuálního počítače, naleznete v části [velikosti virtuálního počítače s Linuxem](../articles/virtual-machines/linux/sizes.md) nebo [velikosti virtuálních počítačů Windows](../articles/virtual-machines/windows/sizes.md).
 
 | &nbsp; | **IOPS** | **Propustnost** | **Latence** |
 | --- | --- | --- | --- |
 | **Příklad scénáře** |Enterprise OLTP aplikace, které vyžadují velmi vysoký transakce za druhá míra. |Enterprise datového skladu aplikace zpracování velkých objemů dat. |Téměř v reálném čase aplikace vyžadující rychlých odpovědí na požadavky na uživatele jako hraní online her. |
 | Faktory výkonu | &nbsp; | &nbsp; | &nbsp; |
 | **Velikost vstupně-výstupní operace** |Menší velikost vstupně-výstupní operace dosáhnout vyšší IOPS. |Větší velikost vstupně-výstupní operace dosáhnout vyšší propustnost. | &nbsp;|
-| **Velikost virtuálního počítače** |Použijte velikost virtuálního počítače, který nabízí IOPS větší než požadavků vaší aplikace. Zobrazit velikosti virtuálních počítačů a jejich IOPS omezení. |Velikost virtuálního počítače pomocí omezení propustnosti větší než požadavků vaší aplikace. Zobrazit velikosti virtuálních počítačů a jejich propustnost omezení. |Použijte velikost virtuálního počítače, že nabízí škálování omezení větší než požadavků vaší aplikace. Zobrazit velikosti virtuálních počítačů a jejich omezení sem. |
-| **Velikost disku** |Použijte velikost disku, který nabízí IOPS větší než požadavků vaší aplikace. Zobrazit velikosti disků a jejich IOPS omezení. |Velikost disku pomocí omezení propustnosti větší než požadavků vaší aplikace. Zobrazit velikosti disků a jejich propustnost omezení. |Použijte velikost disku, že nabízí škálování omezení větší než požadavků vaší aplikace. Zobrazit velikosti disků a jejich omezení sem. |
+| **Velikost virtuálního počítače** |Použijte velikost virtuálního počítače, který nabízí IOPS větší než požadavků vaší aplikace. |Velikost virtuálního počítače pomocí omezení propustnosti větší než požadavků vaší aplikace. |Použijte velikost virtuálního počítače, že nabízí škálování omezení větší než požadavků vaší aplikace. |
+| **Velikost disku** |Použijte velikost disku, který nabízí IOPS větší než požadavků vaší aplikace. |Velikost disku pomocí omezení propustnosti větší než požadavků vaší aplikace. |Použijte velikost disku, že nabízí škálování omezení větší než požadavků vaší aplikace. |
 | **Virtuální počítač a limity škálování disku** |Limit IOPS vybraná velikost virtuálního počítače musí být větší než celkový počet IOPS doprovází připojené disky úložiště premium. |Propustnost limit vybraná velikost virtuálního počítače musí být větší než celková propustnost doprovází připojené disky úložiště premium. |Limity škálování vybraná velikost virtuálního počítače musí být větší limity škálování celkový disky úložiště připojené premium. |
 | **Ukládání do mezipaměti na disku** |Povolte mezipaměť jen pro čtení na discích úložiště premium s velkou operace čtení získat vyšší IOPS pro čtení. | &nbsp; |Povolte mezipaměť jen pro čtení na discích úložiště premium s připravené velkou operacemi získat čtení velmi nízkou latenci. |
 | **Prokládání disků** |Použití více disků a rozkládají je společně se získat kombinovaný vyšší limit IOPS a propustnosti. Všimněte si, že kombinovaný limit na jednu virtuální počítač musí být vyšší než kombinované omezení připojené prémiové disky. | &nbsp; | &nbsp; |
@@ -243,7 +246,7 @@ Následují nastavení mezipaměti doporučené disku pro datové disky
 | **Nastavení ukládání do mezipaměti na disku** | **Doporučení ohledně použití tohoto nastavení** |
 | --- | --- |
 | Žádný |Konfigurace mezipaměti hostitele jako None jen pro zápis a zápis náročné disků. |
-| Jen pro čtení |Konfigurace mezipaměti hostitele jako jen pro čtení pro disky jen pro čtení a zápisu pro čtení. |
+| ReadOnly |Konfigurace mezipaměti hostitele jako jen pro čtení pro disky jen pro čtení a zápisu pro čtení. |
 | ReadWrite |Konfigurace mezipaměti hostitele jako ReadWrite pouze v případě, že vaše aplikace zpracovává správně zápis data uložená v mezipaměti do trvalé disků v případě potřeby. |
 
 *Jen pro čtení*  

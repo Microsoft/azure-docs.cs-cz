@@ -1,6 +1,6 @@
 ---
-title: "Vícenásobný přístup v na základě objektu actor Azure mikroslužeb | Microsoft Docs"
-description: "Úvod do vícenásobný přístup pro Service Fabric Reliable Actors"
+title: Vícenásobný přístup v na základě objektu actor Azure mikroslužeb | Microsoft Docs
+description: Úvod do vícenásobný přístup pro Service Fabric Reliable Actors
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -9,24 +9,24 @@ editor: amanbha
 ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: dec785757ac582f044811c0f64ae0d452d6ad9a0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 40f52cb399f2d7391657ce4356a0c30921d46e5f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="reliable-actors-reentrancy"></a>Spolehlivé aktéři vícenásobný přístup
 Modul runtime Reliable Actors standardně umožňuje vícenásobný přístup na základě kontextu logické volání. To umožňuje aktéři být vícenásobné, pokud jsou v tomtéž řetězu volání kontextu. Například objektu Actor A odešle zprávu do objektu Actor B, který odešle zprávu do objektu Actor C. Jako součást zpracování zpráv Pokud objektu Actor C volání objektu Actor A, zpráva je vícenásobné, takže bude možné. Všechny ostatní zprávy, které jsou součástí jiné volání kontextu se zablokuje na objektu Actor A její dokončení zpracování.
 
 Existují dvě možnosti k dispozici pro opětovné zadání objektu actor definovaný v `ActorReentrancyMode` výčtu:
 
-* `LogicalCallContext`(výchozí nastavení)
-* `Disallowed`– Zakáže vícenásobný přístup
+* `LogicalCallContext` (výchozí nastavení)
+* `Disallowed` – Zakáže vícenásobný přístup
 
 ```csharp
 public enum ActorReentrancyMode
@@ -109,5 +109,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o opětovné zadání v [referenční dokumentace rozhraní API objektu Actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)

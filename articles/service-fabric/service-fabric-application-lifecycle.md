@@ -1,31 +1,31 @@
 ---
-title: "Životní cyklus aplikace v Service Fabric | Microsoft Docs"
-description: "Popisuje vývoj, nasazení, testování, upgrade, údržbu a odebírání aplikací Service Fabric."
+title: Životní cyklus aplikace v Service Fabric | Microsoft Docs
+description: Popisuje vývoj, nasazení, testování, upgrade, údržbu a odebírání aplikací Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 923778e54a1ae5967d681751841c3a2b3fb45130
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: e7dddfca3640615cb851fb6dce9eaa80260ccbf6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-lifecycle"></a>Životní cyklus aplikace Service Fabric
 Jako s jinými platformami, aplikace na Azure Service Fabric obvykle projde má tyto fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric nabízí prvotřídní podporu pro celou aplikaci životního cyklu aplikací cloudu, od vývoje přes nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se zúčastnit nezávisle v průběhu životního cyklu aplikace. Tento článek obsahuje přehled rozhraní API a jak se používají různé role v průběhu fáze životního cyklu aplikace Service Fabric.
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-V následujícím videu Microsoft Virtual Academy popisuje, jak spravovat životním cyklu aplikací:<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
+V následujícím videu Microsoft Virtual Academy popisuje, jak spravovat životním cyklu aplikací: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-application-lifecycle/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 

@@ -7,14 +7,14 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
 keywords: prostředí PowerShell, sady runbook, json, služby azure automation
-ms.openlocfilehash: 6d8bb5ede5bb4148fd5db3c9a89003698f2e5139
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: b0eaa13baa3e787db14e7a6f915018c3a4f280a1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Předání objektu JSON do runbooku Azure Automation
 
@@ -25,7 +25,7 @@ K tomuto účelu, budete muset převést na řetězec ve formátu JSON a pak př
 V tomto příkladu vytvoříme skript prostředí PowerShell, který volá [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx) pro spuštění sady runbook PowerShell předávání obsah JSON do runbooku.
 Powershellový runbook spustí virtuální počítač Azure, získávání parametrů pro virtuální počítač z formátu JSON, který byl předán v.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud nemáte účet, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo <a href="/pricing/free-account/" target="_blank">[si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/).

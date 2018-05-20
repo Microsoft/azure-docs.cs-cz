@@ -1,24 +1,24 @@
 ---
-title: "Vytvořit clustery se Azure Service Fabric na serveru Windows a Linux | Microsoft Docs"
-description: "Spusťte na serveru Windows a Linux, tzn., budete moci nasadit a hostování aplikací Service Fabric kdekoli clusterů Service Fabric můžete spustit systém Windows Server nebo Linux."
+title: Vytvořit clustery se Azure Service Fabric na serveru Windows a Linux | Microsoft Docs
+description: Spusťte na serveru Windows a Linux, tzn., budete moci nasadit a hostování aplikací Service Fabric kdekoli clusterů Service Fabric můžete spustit systém Windows Server nebo Linux.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/28/2018
 ms.author: dekapur
-ms.openlocfilehash: 63b7bfa5ca357470f5ed36a4cdf943cee779f0fc
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3d427d99f6919991c29fc5947ebe0082670a1cc1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-service-fabric-clusters-on-windows-server-or-linux"></a>Vytvoření clusterů Service Fabric na Windows Server nebo Linux
 Cluster služby Azure Service Fabric je sada virtuální nebo fyzické počítače, do kterých jsou nasazené a spravovat vaše mikroslužeb připojené k síti. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzlem clusteru. Clustery můžete škálovat na tisících uzlů. Pokud přidáte nové uzly do clusteru, Service Fabric znovu vytvoří rovnováhu repliky oddílu služby a instance napříč vyšší počet uzlů. Celkové zlepšuje výkon aplikace a snižuje kolize pro přístup do paměti. Pokud uzly v clusteru nejsou používány efektivně, můžete snížit počet uzlů v clusteru. Service Fabric opakujte znovu vytvoří rovnováhu repliky oddílu a instance napříč ke snížení počtu uzlů zajistit lepší využití hardwaru na každém uzlu.

@@ -7,13 +7,13 @@ manager: abhemraj
 editor: raynew
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 05/15/2018
 ms.author: bsiva
-ms.openlocfilehash: 83f167b047fa9c5df7c04304c7955ae838ae8373
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e12d19612e10885f97d4a8023967fb9ba2d1f8cb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavit zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell
 

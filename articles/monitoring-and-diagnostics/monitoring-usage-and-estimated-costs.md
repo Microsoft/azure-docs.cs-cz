@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6cc35697573ae2997f289f67c7867d9c522149be
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Sledování využití a odhadované náklady
 
@@ -92,7 +92,7 @@ Nový cenový model zjednodušuje analýzy protokolů a Application Insights cen
 Odhad nákladů ukazuje důsledky tyto změny.
 
 > [!WARNING]
-> Zde důležitá Poznámka: Pokud používáte k nasazení Azure Resource Manager nebo prostředí PowerShell [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) nebo [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) v předplatném byl přesunut do nového cenový model. Pokud zadáte cenovou úroveň nebo plán než "pergb2018" pro analýzy protokolů nebo "Základní" pro službu Application Insights, místo selhání nasazení kvůli určení neplatný cenová úroveň nebo plán, proběhne úspěšně **, ale bude používat pouze platné cenová úroveň nebo plán**. 
+> Zde důležitá Poznámka: Pokud používáte k nasazení Azure Resource Manager nebo prostředí PowerShell [analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) nebo [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) v předplatném byl přesunut do nového cenový model. Pokud zadáte cenovou úroveň nebo plán než "pergb2018" pro analýzy protokolů nebo "Základní" pro službu Application Insights, místo selhání nasazení kvůli určení neplatný cenová úroveň nebo plán, proběhne úspěšně **, ale bude používat pouze platné cenová úroveň nebo plán** (nevztahuje na úroveň protokolu analýzy Free nichž se vyvolá neplatná zpráva cenové úrovně).
 >
 
 ## <a name="moving-to-the-new-pricing-model"></a>Přesunutí na nový cenový model

@@ -15,17 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 4d5743703f3a1d98b720bd92a30c91549bbf89c0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 21274a71042c5acf38711d29a5062e9f68b6a6a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Podpora brány firewall Azure Cosmos DB
 Zabezpečení dat uložených v databázi účet Azure Cosmos DB, Azure Cosmos DB poskytl podporu pro tajný klíč na základě [modelu autorizace](https://msdn.microsoft.com/library/azure/dn783368.aspx) , využívá ověřovací kód silné Hash-based zprávy (HMAC). Teď kromě tajný autorizace založené na modelu Azure Cosmos DB podporuje zásady řízené řízení přístupu na základě IP pro podporu brány firewall pro příchozí. Tento model je podobná pravidla brány firewall systému tradiční databází a poskytuje další úroveň zabezpečení pro databázový účet Azure Cosmos DB. Pomocí tohoto modelu teď můžete konfigurovat účet Azure Cosmos DB databáze tak, aby byla přístupná jenom z schválené sadu počítačů nebo cloudových služeb. Přístup k prostředkům Azure Cosmos DB z tyto schválené sady počítačů a služeb stále vyžadují volajícího, aby k dispozici platný autorizační token.
 
+> [!NOTE]
+> Podpora brány firewall je aktuálně k dispozici pro rozhraní API pro Azure Cosmos databáze SQL a rozhraní API Mongo účty. Možnost konfigurace brány firewall pro ostatní rozhraní API a svrchovaných cloudy, například Azure v Německu nebo Azure Government bude brzy k dispozici. Pokud máte v úmyslu konfigurovat koncový bod služby seznamu ACL pro vaši databázi Cosmos Azure účet, který má existující brány firewall IP nakonfigurovaný, Upozorňujeme konfiguraci brány firewall, odeberte IP brány firewall a pak nakonfigurujte koncový bod služby seznamu ACL. Po dokončení konfigurace koncového bodu služby, můžete znovu povolit IP brány firewall v případě potřeby.
+
 ## <a name="ip-access-control-overview"></a>Přehled řízení přístupu IP
-Ve výchozím nastavení je přístupné z veřejného Internetu účet Azure Cosmos DB databáze, tak dlouho, dokud žádosti je přiložena token platný autorizace. Konfigurace řízení přístupu na základě zásad IP, uživatel musí poskytnout sadu IP adresy nebo rozsahy IP adres ve formátu CIDR zahrnuty jako seznam povolených IP adresy klienta pro účet danou databázi. Jakmile tato konfigurace se použije, jsou všechny požadavky z počítače mimo tento seznam povolených blokován nastavením serveru.  Následující diagram popisuje připojení zpracování toku řízení přístupu na základě IP:
+Ve výchozím nastavení je účet databáze Azure Cosmos DB přístupný z veřejného internetu za předpokladu, že k žádosti je přiložený platný autorizační token. Při konfiguraci řízení přístupu na základě zásad IP musí uživatel poskytnout sadu IP adres nebo rozsahy IP adres ve formátu CIDR. Zahrnou se jako seznam povolených klientských IP adres pro příslušný účet databázový účet. Jakmile se tato konfigurace použije, server blokuje všechny požadavky z počítačů mimo tento seznam povolených.  Následující diagram popisuje připojení zpracování toku řízení přístupu na základě IP:
 
 ![Diagram zobrazující proces připojení u řízení přístupu na základě IP](./media/firewall-support/firewall-support-flow.png)
 
@@ -94,7 +97,7 @@ Povolením IP zásad řízení přístupu pro váš účet Azure Cosmos DB datab
 
 ![Snímek obrazovky ukazující, jak chcete umožnit přístup k portálu Azure](./media/firewall-support/azure-portal-firewall.png)
 
-### <a name="sdk--rest-api"></a>SDK & Rest API
+### <a name="sdk--rest-api"></a>Sadu SDK a Rest API
 Pro z bezpečnostních důvodů, přístup prostřednictvím sady SDK nebo REST API z počítače není na seznamu povolených vrátí obecné 404 nebyl nalezen odpověď se žádné další podrobnosti. Ověřte IP nakonfigurovaných pro váš účet Azure Cosmos DB databáze seznamu povolených zajistit že správné zásady konfigurace se použije ke svému účtu databáze Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Další postup

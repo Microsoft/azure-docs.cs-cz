@@ -1,24 +1,24 @@
 ---
 title: Kurz upgradu aplikace Service Fabric | Microsoft Docs
-description: "Tento článek vás provede možností nasazení aplikace Service Fabric, změna kódu a zavádění upgrade pomocí sady Visual Studio."
+description: Tento článek vás provede možností nasazení aplikace Service Fabric, změna kódu a zavádění upgrade pomocí sady Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3388257399ce8d2e0ac84b9bff746e1acf153312
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0a94dc91308f21d9e2b440f9638829ee03a8b903
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Kurz upgradu Service Fabric aplikace pomocí sady Visual Studio
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Výběr **publikovat** otevře místní okno, a můžete nastavit **cíle profil
 
 ![Publikování aplikace Service Fabric][image2]
 
-Teď můžete kliknout na **publikovat** v dialogovém okně. Můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Vizuální objekty aplikace má webová služba, která můžete přejít na zadáním [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) na panelu Adresa prohlížeče.  Měli byste vidět 10 plovoucí vizuální objekty manipulaci se na obrazovce.
+Teď můžete kliknout na **publikovat** v dialogovém okně. Můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Vizuální objekty aplikace má webová služba, která můžete přejít na zadáním [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) na panelu Adresa prohlížeče.  Měli byste vidět 10 plovoucí vizuální objekty manipulaci se na obrazovce.
 
 **Poznámka:** Pokud nasazení `Cloud.xml` profilu (Azure Service Fabric), aplikace by měl být k dispozici na **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/**. Zajistěte, aby byla `8081/TCP` nakonfigurované nástroji pro vyrovnávání zatížení (najít nástroje pro vyrovnávání zatížení ve stejné skupině prostředků jako Service Fabric instance).
 

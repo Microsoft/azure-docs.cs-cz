@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: f12cdf2fc8a1aa3b7e8bc3c5eeb338601a8f2ffe
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9228b1e80c8c46780a24d33e13fcedbd8da63ac3
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
@@ -43,7 +43,9 @@ If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` typ
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Příklad
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+## <a name="example"></a>Příklad:
 
 Podívejte se na příklad konkrétní jazyk pro aktivační procedury mřížky událostí:
 
@@ -526,7 +528,7 @@ module.exports = function (context, req) {
     // If the request is for subscription validation, send back the validation code.
     if (messages.length > 0 && messages[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
         context.log('Validate request received');
-        context.res = { status: 200, body: messages[0].data.validationCode }
+        context.res = { status: 200, body: JSON.stringify({validationResponse: messages[0].data.validationCode}) }
     }
     else {
         // The request is not for subscription validation, so it's for one or more events.

@@ -6,14 +6,14 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 02/24/2018
+ms.date: 05/13/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 53201021433b71aa6cd5b53e2089c2a105bade07
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 70e13fb377be3ec501cce5170ed391aac8cb6e5d
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-helm-with-azure-kubernetes-service-aks"></a>Helm pomocí služby Azure Kubernetes (AKS)
 
@@ -53,7 +53,7 @@ Bash completion has been installed to:
 [Helm init] [ helm-init] příkaz slouží k instalaci součástí Helm v clusteru s podporou Kubernetes a proveďte konfigurace na straně klienta. Spusťte následující příkaz k instalaci Helm AKS cluster a konfiguraci klienta Helm.
 
 ```azurecli-interactive
-helm init
+helm init --upgrade --service-account default
 ```
 
 Výstup:
@@ -118,7 +118,7 @@ Update Complete. ⎈ Happy Helming!⎈
 Chcete-li nasadit řadič NGINX příjem příchozích dat, použijte [helm instalace] [ helm-install] příkaz.
 
 ```azurecli-interactive
-helm install stable/nginx-ingress
+helm install stable/nginx-ingress --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
 
 Výstup bude vypadat podobně jako následující, ale obsahuje další informace, jako je například pokyny o tom, jak použít Kubernetes nasazení.

@@ -1,5 +1,19 @@
-
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/07/2018
+---
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 2. Vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **Centrum oznámení**.
@@ -18,10 +32,9 @@
    
       ![Azure Portal – nastavení vlastností centra oznámení](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. Po vytvoření oboru názvů a centra oznámení vyberte **Všechny prostředky**, ze seznamu vyberte vytvořené centrum oznámení a otevřete ho. 
-   
-      ![Azure Portal – stránka portálu centra oznámení](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-resources.png)
+4. Vyberte **Oznámení** (ikona zvonku) a vyberte **Přejít k prostředku**. 
 
+      ![Portál Azure Portal – oznámení -> Přejít k prostředku](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)    
 5. Vyberte ze seznamu **Zásady přístupu**. Poznamenejte si dva připojovací řetězce, které máte k dispozici. Budete je potřebovat později pro zpracování nabízených oznámení.
 
       >[!IMPORTANT]
