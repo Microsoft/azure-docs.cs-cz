@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.openlocfilehash: a9115ee9c49ea069999393a6430b010addf672de
 ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
 ---

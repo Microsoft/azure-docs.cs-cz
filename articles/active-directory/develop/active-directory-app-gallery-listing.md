@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 05/09/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: fe2133e321b90f8ada91f95ecc2c556631a8b41b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -64,7 +64,7 @@ Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve im
 
     * Pokud máte problémy týkající se přístupu, obraťte se [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **Heslo jednotného přihlašování k**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotné přihlašování](../active-directory-appssoaccess-whatis.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace.
+*   **Heslo jednotného přihlašování k**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotné přihlašování](../manage-apps/what-is-single-sign-on.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, ve kterých několik uživatelé muset sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace.
 
     ![Časová osa uvedení SSO heslo aplikace do Galerie](./media/active-directory-app-gallery-listing/passwordsso.png)
 

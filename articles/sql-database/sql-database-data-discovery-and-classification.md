@@ -12,7 +12,7 @@ ms.date: 01/29/2018
 ms.author: giladm
 ms.openlocfilehash: 375142b0e55c741e6ab914e969751833f989d2fb
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
 ---
