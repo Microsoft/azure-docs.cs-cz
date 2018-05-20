@@ -16,7 +16,7 @@ ms.date: 11/15/2016
 ms.author: tomfitz
 ms.openlocfilehash: 2c76e56d9b30ef11fe4f3b7863a1a1357fca291c
 ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
 ---

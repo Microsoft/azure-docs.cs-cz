@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Symantec webové zabezpečení služby (WSS) | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Symantec webové zabezpečení služby (WSS)."
+title: 'Kurz: Azure Active Directory integrace s Symantec webové zabezpečení služby (WSS) | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Symantec webové zabezpečení služby (WSS).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 35427941a084e6750d66ccd3e135d7eef1767c6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dc75a1091c56ddbbffcd54047b2465ece231254
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Kurz: Azure Active Directory integrace s Symantec webové zabezpečení služby (WSS)
 
@@ -32,7 +32,7 @@ Integrace Symantec webové zabezpečení služby (WSS) s Azure AD poskytuje nás
 
 - Povolte vynucení uživatele a skupiny zásadou na úrovni pravidla definovaná v účtu WSS.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -111,9 +111,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Symantec webové zabezpečení služby (WSS) domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. V **identifikátor** textovému poli, zadejte adresu URL: `https://saml.threatpulse.net:8443/saml/saml_realm`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:`https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
     > [!NOTE]
     > Obraťte se [tým podpory Symantec webové zabezpečení služby (WSS) klienta](https://www.symantec.com/contact-us) Pokud hodnoty **identifikátor** a **adresa URL odpovědi** nefungují z nějakého důvodu.
@@ -200,16 +200,16 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části budete testovat funkce přihlašování nyní, když jste nakonfigurovali WSS účet pro použití služby Azure AD pro ověřování SAML.
 
 Po konfiguraci webového prohlížeče proxy provoz na WSS, když otevřete ve webovém prohlížeči a zkuste a přejděte web, pak budete přesměrováni na stránku Azure přihlášení. Zadejte přihlašovací údaje testovacího koncového uživatele, která byla zajištěna ve službě Azure AD (BrittaSimon) a přidružené heslo. Po ověření, budete moct přejít na web, který jste si zvolili. Můžete vytvořit pravidlo zásad na straně WSS zablokujete BrittaSimon procházení k určitému webu a zobrazí stránku bloku WSS při pokusu o Procházet k této lokalitě jako uživatel BrittaSimon.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,8 +1,8 @@
 ---
-title: "Kurz: Konfigurace Slack pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Informace o konfiguraci Azure Active Directory automaticky zřizovat a deaktivace zřízení uživatelským účtům k systému Slack."
+title: 'Kurz: Konfigurace Slack pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Informace o konfiguraci Azure Active Directory automaticky zřizovat a deaktivace zřízení uživatelským účtům k systému Slack.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: b0bbc310edddcc461633e57340950a0f4050f66a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 897121e0dcaaf417430b892c501a243303ae9b6e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro zřizování automatické uživatelů
 
@@ -115,4 +115,4 @@ Další informace o tom, jak číst zřizování protokoly služby Azure AD najd
 ## <a name="additional-resources"></a>Další prostředky
 
 * [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-enterprise-apps-manage-provisioning.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)

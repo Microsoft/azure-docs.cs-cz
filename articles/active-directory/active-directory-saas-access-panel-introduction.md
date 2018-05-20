@@ -15,11 +15,11 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e25bd3e5c47667a711c53711f9823fb231dbcd86
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 
@@ -60,7 +60,7 @@ Pokud chcete dostat na přístupovém panelu, musíte být ověřeni přes praco
 
 Pokud máte předplatné Azure nebo Office 365 a používáte portál Azure nebo aplikace Office 365, zobrazí se seznam aplikací bez přihlásit znova. Pokud jste nejsou ověřené, zobrazí se výzva k přihlášení pomocí uživatelského jména a hesla pro váš účet ve službě Azure AD. Pokud vaše organizace má nakonfigurovali federaci, zadejte uživatelské jméno je dostačující.
 
-Pokud jste se ověřili, můžete pracovat s aplikacemi, které správce má integrované s adresářem. Informace o integraci aplikací s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Pokud jste se ověřili, můžete pracovat s aplikacemi, které správce má integrované s adresářem. Informace o integraci aplikací s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="web-browser-requirements"></a>Požadavky na webový prohlížeč
 
@@ -215,7 +215,7 @@ Například pokud aplikace je nakonfigurovaný k ověřování uživatelů pomoc
  
 - Další postup pro integraci aplikací SaaS Azure AD najdete v tématu [seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md).
  
-- Další informace o správě aplikací s Azure AD, najdete v článku [Úvod k přístupu k jedné přihlašování a správu aplikace pomocí Azure Active Directory](active-directory-appssoaccess-whatis.md).
+- Další informace o správě aplikací s Azure AD, najdete v článku [Úvod k přístupu k jedné přihlašování a správu aplikace pomocí Azure Active Directory](manage-apps/what-is-single-sign-on.md).
  
 - Další informace o zřizování uživatelů najdete v tématu [automatizace zřizování uživatelů a rušení zajištění pro aplikace SaaS](active-directory-saas-app-provisioning.md).
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Asset Bank | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Asset Bank."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Asset Bank.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f878fe7bf5c90298e24b7d562b26ef572221060
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3dbe6edb09c77feef931dfb85c1e492c879bd89d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Kurz: Azure Active Directory integrace s Asset Bank
 
@@ -29,7 +29,7 @@ Integrace Bank Asset s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Asset Bank (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.assetbank-server.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.assetbank-server.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.assetbank-server.com/shibboleth`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.assetbank-server.com/shibboleth`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Asset Bank klienta](mailto:support@assetbank.co.uk) k získání těchto hodnot. 
@@ -207,10 +207,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 
 Když kliknete na dlaždici Asset Bank na přístupovém panelu, jste měli získat automaticky přihlášení k vaší aplikaci pro bankovní Asset. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

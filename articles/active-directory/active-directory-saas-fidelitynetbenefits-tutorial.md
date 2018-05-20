@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s věrnosti NetBenefits | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a věrnosti NetBenefits."
+title: 'Kurz: Azure Active Directory integrace s věrnosti NetBenefits | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a věrnosti NetBenefits.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 007d3c894731560423e2dde0572793a4282a4654
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 19d18dd0d88fa3e66c60191314d0d1f80aa415c1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Kurz: Azure Active Directory integrace s NetBenefits přesnost
 
@@ -30,7 +30,7 @@ Integrace věrnosti NetBenefits s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k NetBenefits věrnost (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,15 +110,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **identifikátor** textovému poli, zadejte adresu URL:
 
-    Pro testování prostředí:`urn:sp:fidelity:geninbndnbparts20:uat:xq1`
+    Pro testování prostředí:  `urn:sp:fidelity:geninbndnbparts20:uat:xq1`
 
-    Pro produkční prostředí:`urn:sp:fidelity:geninbndnbparts20`
+    Pro produkční prostředí:  `urn:sp:fidelity:geninbndnbparts20`
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:
 
-    Pro testování prostředí:`https://loginxq1.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
+    Pro testování prostředí:  `https://loginxq1.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
 
-    Pro produkční prostředí:`https://login.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
+    Pro produkční prostředí:  `https://login.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
  
 4. Aplikace NetBenefits věrnosti očekává SAML kontrolní výrazy ve specifickém formátu. Jsme jsou namapovány **uživatelský identifikátor** s **user.userprincipalname**. Můžete namapovat o **employeeid** nebo všechny ostatní deklarace identity, která se vztahuje na vaší organizace jako **uživatelský identifikátor**. Následující snímek obrazovky znázorňuje jenom jako příklad pro tento.
 
@@ -212,7 +212,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -222,7 +222,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

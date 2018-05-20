@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d8a746df9bea22970da9dc47b5e436a94335f49
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 4b976481e60926e6ab95a679e6dcc8aa0818b48b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Azure Active Directory integrace s Mimecast osobní portálu
 
@@ -30,9 +30,9 @@ Integrace portálu osobní Mimecast s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k portálu osobní Mimecast (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD pomocí portálu osobní Mimecast, potřebujete následující položky:
 
@@ -111,7 +111,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Oblast  |  Hodnota | 
     | --------------- | --------------- | 
     | Evropa          | `https://eu-api.mimecast.com/login/saml`|
-    | USA   | `https://us-api.mimecast.com/login/saml`|
+    | Spojené státy   | `https://us-api.mimecast.com/login/saml`|
     | Jihoafrická republika    | `https://za-api.mimecast.com/login/saml`|
     | Austrálie       | `https://au-api.mimecast.com/login/saml`|
     | Příbřežních        | `https://jer-api.mimecast.com/login/saml`|
@@ -121,7 +121,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Oblast  |  Hodnota | 
     | --------------- | --------------- |
     | Evropa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
-    | USA   | `https://us-api.mimecast.com/sso/<accountcode>`|    
+    | Spojené státy   | `https://us-api.mimecast.com/sso/<accountcode>`|    
     | Jihoafrická republika    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Austrálie       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | Příbřežních        | `https://jer-api.mimecast.com/sso/<accountcode>`|
@@ -131,7 +131,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Oblast  |  Hodnota | 
     | --------------- | --------------- | 
     | Evropa          | `https://eu-api.mimecast.com/login/saml`|
-    | USA   | `https://us-api.mimecast.com/login/saml`|
+    | Spojené státy   | `https://us-api.mimecast.com/login/saml`|
     | Jihoafrická republika    | `https://za-api.mimecast.com/login/saml`|
     | Austrálie       | `https://au-api.mimecast.com/login/saml`|
     | Příbřežních        | `https://jer-api.mimecast.com/login/saml`|
@@ -293,10 +293,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Mimecast osobní portál na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Mimecast osobní portál.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

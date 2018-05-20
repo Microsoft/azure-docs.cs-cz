@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s PagerDuty | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PagerDuty."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a PagerDuty.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: a5a2e3a9d8aa32894e07fb8e96389167d5bb96f9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6ba7e1fc2f58fd8fb7a05935ce2c4b99709d642c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Kurz: Azure Active Directory integrace s PagerDuty
 
@@ -30,7 +30,7 @@ Integrace PagerDuty s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k PagerDuty (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![PagerDuty domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-pagerduty-tutorial/tutorial_pagerduty_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant-name>.pagerduty.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.pagerduty.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant-name>.pagerduty.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.pagerduty.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PagerDuty klienta](https://www.pagerduty.com/support/) k získání těchto hodnot. 
@@ -210,7 +210,7 @@ V případě PagerDuty zřizování je ruční úloha.
 
     a. Typ **první a poslední název** uživatele jako **Britta Simon**. 
    
-    b. Zadejte **e-mailu** adresu uživatele, například  **brittasimon@contoso.com** .
+    b. Zadejte **e-mailu** adresu uživatele, například **brittasimon@contoso.com**.
    
     c. Klikněte na tlačítko **přidat**a potom klikněte na **odesílání žádostí**.
    
@@ -247,7 +247,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -255,10 +255,10 @@ Po kliknutí na tlačítko dlaždici PagerDuty v Panelyou přístup by měl zís
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

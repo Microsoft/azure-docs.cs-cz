@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Konfigurace Dropbox pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Dropbox pro firmy."
+title: 'Kurz: Konfigurace Dropbox pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Dropbox pro firmy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b082127f74ff5f823506c0f75f40c4b4246dcfe
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bdac910b5011237e26a39f3e45f3e7ad6176bc83
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropbox pro firmy pro zřizování automatické uživatelů
 
@@ -96,5 +96,5 @@ Další informace o tom, jak číst zřizování protokoly služby Azure AD najd
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurovat jednotné přihlašování](active-directory-saas-dropboxforbusiness-tutorial.md)

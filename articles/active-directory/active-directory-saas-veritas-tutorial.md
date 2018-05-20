@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Integrace Azure Active Directory této společnosti Enterprise Vault.cloud jednotného přihlašování k | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování Vault.cloud Enterprise této společnosti."
+title: 'Kurz: Integrace Azure Active Directory této společnosti Enterprise Vault.cloud jednotného přihlašování k | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a jednotné přihlašování Vault.cloud Enterprise této společnosti.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: eb9243367d0817d37549fa147c6c5e1d2acf3761
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a60df7f743c893305f0b3b4aba05505e761f505d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Kurz: Integrace Azure Active Directory pomocí této společnosti Enterprise Vault.cloud jednotného přihlašování
 
@@ -29,7 +29,7 @@ Integrace této společnosti Enterprise Vault.cloud jednotné přihlašování s
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k této společnosti Enterprise Vault.cloud jednotné přihlašování (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,11 +110,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
 
     b. V **identifikátor** textovému poli, použijte adresu URL podle datového centra
 
-    | Datové centrum| Adresa URL |
+    | Datové centrum| zprostředkovatele identity |
     |----------|----|
     | Severní Amerika| `https://auth.lax.archivecloud.net` |
     | Evropa | `https://auth.ams.archivecloud.net` |
@@ -122,7 +122,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **adresa URL odpovědi** textovému poli, použijte adresu URL podle datového centra
 
-    | Datové centrum| Adresa URL |
+    | Datové centrum| zprostředkovatele identity |
     |----------|----|
     | Severní Amerika| `https://auth.lax.archivecloud.net` |
     | Evropa | `https://auth.ams.archivecloud.net` |
@@ -223,7 +223,7 @@ Když kliknete na dlaždici této společnosti Enterprise Vault.cloud jednotnéh
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s síti na pracovišti Soonr | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Soonr síti na pracovišti."
+title: 'Kurz: Azure Active Directory integrace s síti na pracovišti Soonr | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Soonr síti na pracovišti.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 55e99b2dd566dbf5a3bcb86974210c0399584e72
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1725ebd39a5d976fee061ed92ddcc686fa7a1acd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>Kurz: Azure Active Directory integrace s Soonr síti na pracovišti
 
@@ -29,7 +29,7 @@ Integrace Soonr síti na pracovišti s Azure AD poskytuje následující výhody
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k síti na pracovišti Soonr (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<servername>.soonr.com/singlesignon/saml/metadata`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<servername>.soonr.com/singlesignon/saml/metadata`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<servername>.soonr.com/singlesignon/saml/SSO`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<servername>.soonr.com/singlesignon/saml/SSO`
 
 4. Na **Soonr síti na pracovišti domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **SP iniciované režimu**, proveďte následující kroky:
     
@@ -120,7 +120,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Klikněte na **zobrazit upřesňující nastavení adresy URL**.
 
-    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<servername>.soonr.com/singlesignon/saml/SSO`
+    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<servername>.soonr.com/singlesignon/saml/SSO`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat skutečným identifikátorem přihlášení adresy URL a adresa URL odpovědi. Obraťte se na [tým podpory síti na pracovišti Soonr](https://awp.autotask.net/help/) k získání těchto hodnot.
@@ -217,10 +217,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 
 Když kliknete na dlaždici Soonr síti na pracovišti na přístupovém panelu, můžete by měl získat automaticky přihlášení k síti na pracovišti Soonr aplikace.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 1f1aa6b5a81285f2f6b3a298917f3d7c48853e29
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9cd8ef3977d12364759838b46632ba32e0de6e70
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
@@ -22,7 +22,7 @@ Azure Blockchain Workbench je kolekce služeb a funkcí Azure navržených tak, 
 
 ## <a name="create-blockchain-applications"></a>Vytváření blockchainových aplikací
 
-Blockchain Workbench umožňuje definovat blockchainové aplikace konfigurací a psaním kódu chytrých kontraktů. Můžete rovnou začít vyvíjet blockchainovou aplikaci a soustředit se na definování kontraktu a napsání obchodní logiky místo na generování uživatelského rozhraní a nastavování podpůrných služeb.
+Blockchain Workbench umožňuje definovat blockchainové aplikace pomocí konfigurace a psaním kódu chytrých kontraktů. Můžete rovnou začít vyvíjet blockchainovou aplikaci a soustředit se na definování kontraktu a napsání obchodní logiky místo na generování uživatelského rozhraní a nastavování podpůrných služeb.
 
 ## <a name="manage-applications-and-users"></a>Správa aplikací a uživatelů
 
@@ -50,4 +50,5 @@ Azure Blockchain Workbench usnadňuje analýzu blockchainových událostí a dat
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nasazení služby Azure Blockchain Workbench](blockchain-workbench-deploy.md)
+> [!div class="nextstepaction"]
+> [Architektura Azure Blockchain Workbench](blockchain-workbench-architecture.md)

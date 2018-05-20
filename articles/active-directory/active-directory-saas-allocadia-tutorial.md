@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Allocadia | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Allocadia."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Allocadia.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0fad672f9337f7bd10b154dc6ece76879da68fbd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 80f9a95715e1e6fff7fa3a48abd3b5a542ba629f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Kurz: Azure Active Directory integrace s Allocadia
 
@@ -29,7 +29,7 @@ Integrace Allocadia s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Allocadia (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,15 +112,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
        
-     Pro testovací prostředí-`https://na2standby.allocadia.com`
+     Pro testovací prostředí-  `https://na2standby.allocadia.com`
     
-     Pro produkční prostředí-`https://na2.allocadia.com`
+     Pro produkční prostředí- `https://na2.allocadia.com`
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
     
-     Pro testovací prostředí-`https://na2standby.allocadia.com/allocadia/saml/SSO`
+     Pro testovací prostředí- `https://na2standby.allocadia.com/allocadia/saml/SSO`
     
-     Pro produkční prostředí-`https://na2.allocadia.com/allocadia/saml/SSO`
+     Pro produkční prostředí- `https://na2.allocadia.com/allocadia/saml/SSO`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Allocadia](mailTo:support@allocadia.com) k získání těchto hodnot.
@@ -133,9 +133,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
-    | FirstName | User.givenName |
-    | Příjmení | User.Surname |
-    | E-mailu | User.Mail |
+    | FirstName | user.givenname |
+    | Příjmení | user.surname |
+    | e-mail | User.Mail |
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -238,10 +238,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Allocadia na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Allocadia.
 Další informace o na přístupovém panelu najdete v tématu [Úvod do přístupového panelu](active-directory-saas-access-panel-introduction.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Kindling | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kindling."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kindling.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: aed17abba3f0df2e9026cb38c8ed8521f9629be2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1686ba8e4178e8bfe372b0346e345209ad68b3cc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kindling"></a>Kurz: Azure Active Directory integrace s Kindling
 
@@ -29,7 +29,7 @@ Integrace Kindling s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky přihlášení k získání Kindling (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.kindlingapp.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.kindlingapp.com`
 
-    b.  V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`
+    b.  V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.kindlingapp.com/saml/module.php/saml/sp/metadata.php/clientIDP`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Kindling](mailto:support@kindlingapp.com) k získání těchto hodnot.
@@ -208,10 +208,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici Kindling na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Kindling. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

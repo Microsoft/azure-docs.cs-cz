@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s malé vylepšení | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi malé vylepšení a Azure Active Directory."
+title: 'Kurz: Azure Active Directory integrace s malé vylepšení | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi malé vylepšení a Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 959033978ace68012ab65655cb5fd6a62de87290
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f6cab5dd7c10e4036cdd2013c809142bf7ec846
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Kurz: Azure Active Directory integrace s malé vylepšení
 
@@ -29,7 +29,7 @@ Malé vylepšení integrace s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k malé vylepšení (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.small-improvements.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.small-improvements.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.small-improvements.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.small-improvements.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory pro malé vylepšení klienta](mailto:support@small-improvements.com) k získání těchto hodnot. 
@@ -214,7 +214,7 @@ Povolit uživatelům Azure AD přihlášení k vylepšení malé, musí být zř
 
     b. Zadejte **příjmení** uživatele jako **Simon**.
 
-    c. Zadejte **e-mailu** uživatele jako  **brittasimon@contoso.com** . 
+    c. Zadejte **e-mailu** uživatele jako **brittasimon@contoso.com**. 
 
     d. Můžete také zadat osobní zprávu v **odeslat e-mailové oznámení** pole. Pokud nechcete, aby k odesílání oznámení, poté zrušte zaškrtnutí tohoto políčka.
 
@@ -256,10 +256,10 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici malé vylepšení na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci malé vylepšení.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

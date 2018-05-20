@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s zvýšení oprávnění LinkedIn | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a zvýšení oprávnění LinkedIn."
+title: 'Kurz: Azure Active Directory integrace s zvýšení oprávnění LinkedIn | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a zvýšení oprávnění LinkedIn.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 5b46323dc487bbc714c2306ed006afffe8c1bb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3e82cf4ccdc09cd6505994f9db952ac718342bf2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Kurz: Azure Active Directory integrace s LinkedIn zvýšení oprávnění
 
@@ -29,7 +29,7 @@ Integrace zvýšení oprávnění LinkedIn s Azure AD poskytuje následující v
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k LinkedIn zvýšení oprávnění (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -134,7 +134,7 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     | Název atributu | Hodnota atributu |
     | --- | --- |    
-    | Oddělení| User.Department |
+    | oddělení| User.Department |
 
       ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-linkedinElevate-tutorial/userattribute.png)
 
@@ -236,11 +236,11 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici LinkedIn zvýšení oprávnění na přístupovém panelu, měli byste obdržet stránku Azure přihlášení a na po úspěšném přihlášení, měli byste obdržet do své aplikace LinkedIn zvýšení oprávnění.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Kurz: Konfigurace LinkedIn zvýšení oprávnění pro automatické zřizování s Azure Active Directory uživatelů](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

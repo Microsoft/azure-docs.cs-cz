@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Brightspace podle Desire2Learn | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Brightspace podle Desire2Learn."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Brightspace podle Desire2Learn.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a3dd001fd8cc63f8d4c2899d035848e8fc665c22
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f3a0df337e8e52bacd30456a6236135c3561b210
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Kurz: Azure Active Directory integrace s Brightspace podle Desire2Learn
 
@@ -29,7 +29,7 @@ Integrace Brightspace podle Desire2Learn s Azure AD poskytuje následující vý
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Brightspace podle Desire2Learn (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -116,7 +116,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<companyname>.tenants.brightspace.com/samlLogin`|
     | `https://<companyname>.desire2learn.com/shibboleth-sp`|
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.desire2learn.com/d2l/lp/auth/login/samlLogin.d2l`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [Brightspace tým podpory Desire2Learn](https://www.d2l.com/contact/) k získání těchto hodnot.
@@ -214,10 +214,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete Brightspace podle Desire2Learn dlaždice na přístupovém panelu, jste měli získat automaticky přihlášení k vaší Brightspace Desire2Learn aplikací.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

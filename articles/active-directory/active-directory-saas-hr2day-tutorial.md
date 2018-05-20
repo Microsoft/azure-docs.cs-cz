@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s HR2day podle Merces | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HR2day podle Merces."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HR2day podle Merces.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: fae6a376d4a53a23e22e585c63d97f22ca76c66d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b6f839ace5d80d41b242992feba8dea546b51c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Azure Active Directory integrace s HR2day podle Merces
 
@@ -29,7 +29,7 @@ Integrace HR2day podle Merces s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky získat přihlášení k HR2day podle Merces s účty služby Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -119,7 +119,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
  
 
 
-4. Na **SAML podpisový certifikát** vyberte **Certificate(Base64)**a potom uložte soubor certifikátu v počítači.
+4. Na **SAML podpisový certifikát** vyberte **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
 
@@ -152,7 +152,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     e. Pro **řetězec2**, zadejte jedinečný identifikátor, který zajišťuje HR2day týmu.
 
-    f. V **oddělovače** zadejte  **@** .
+    f. V **oddělovače** zadejte **@**.
     
     g. Vyberte **Ok**.
 
@@ -241,16 +241,16 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
 7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je testování Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
 
 Když vyberete HR2day podle Merces dlaždice na přístupovém panelu, budete automaticky získat přihlášení k vaší HR2day Merces aplikací.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o tom, jak integrovat SaaS aplikací s Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

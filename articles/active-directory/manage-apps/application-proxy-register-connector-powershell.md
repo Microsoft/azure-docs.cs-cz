@@ -17,7 +17,7 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: 22e07486ecd2a95a326063420cbd472d0fa10d6b
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
 ---

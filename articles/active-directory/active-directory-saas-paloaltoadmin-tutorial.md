@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Integrovat Palo Alto Networks - uživatelského rozhraní Správce služby Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto sítě - Správce uživatelského rozhraní."
+title: 'Kurz: Integrovat Palo Alto Networks - uživatelského rozhraní Správce služby Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Palo Alto sítě - Správce uživatelského rozhraní.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: c5be53f06e009cb2d5180e43318c8670139a68db
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aa3366810a40b004fe510cb2909f8da0f3513ddb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-palo-alto-networks---admin-ui"></a>Integraci služby Azure Active Directory s Palo Alto sítě - Správce uživatelského rozhraní
 
@@ -30,7 +30,7 @@ Integrační Azure AD s Palo Alto sítě - Správce uživatelského rozhraní, z
 - Můžete povolit uživatelům získat automaticky přihlášeni k sítím Palo Alto - Admin UI (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -180,7 +180,7 @@ Povolení služby Azure AD jednotného přihlašování na portálu Azure a nako
 
     ![Okno "Profil serveru poskytovatele Identity SAML"](./media/active-directory-saas-paloaltoadmin-tutorial/tutorial_paloaltoadmin_slo.png)
   
-    a. V **adresa URL SLO zprostředkovatele Identity** pole, nahraďte adresu URL dřív naimportovaný SLO následující adresu URL:  **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0** .
+    a. V **adresa URL SLO zprostředkovatele Identity** pole, nahraďte adresu URL dřív naimportovaný SLO následující adresu URL: **https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0**.
   
     b. Vyberte **OK**.
 
@@ -301,7 +301,7 @@ V této části povolit uživatele Britta Simon používat tak, že udělíte p�
 
 7. V **přidat přiřazení** vyberte **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -312,7 +312,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS do Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

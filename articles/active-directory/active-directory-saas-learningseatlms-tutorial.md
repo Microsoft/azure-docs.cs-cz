@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Learning stanici pro správu vzdělávacího procesu | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learning stanici pro správu vzdělávacího procesu."
+title: 'Kurz: Azure Active Directory integrace s Learning stanici pro správu vzdělávacího procesu | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learning stanici pro správu vzdělávacího procesu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 478bd4fdc23b1f9944237bbf97c7454a8d30e6bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 38b9f017fee4cf0d6905bb20848145386ac6df2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Kurz: Azure Active Directory integrace s Learning stanici pro správu vzdělávacího procesu
 
@@ -29,7 +29,7 @@ Integrace vzdělávacího procesu stanici Learning s Azure AD poskytuje následu
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Learning stanici správu vzdělávacího procesu (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,15 +109,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-learnconnect-tutorial/tutorial_learnconnect_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.learningseatlms.com`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.learningseatlms.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.learningseatlms.com/Account/AssertionConsumerService`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-learnconnect-tutorial/tutorial_learnconnect_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.learningseatlms.com`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.learningseatlms.com`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné hodnoty. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Learning stanici](http://help.learningseatlms.com/help) k získání těchto hodnot. 
@@ -207,10 +207,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Klikněte na dlaždici Learning stanici pro správu vzdělávacího procesu na přístupovém panelu, můžete se být automaticky přihlášení k aplikaci pro správu vzdělávacího procesu Learning stanici. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

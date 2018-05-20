@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Replicon | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Replicon."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Replicon.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 130e13b0bb801c498f6de6e4bfd61bd3d2c3bf00
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 4afe9bb36080027ba1873dc6fd3938972044a5d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Kurz: Azure Active Directory integrace s Replicon
 
@@ -30,7 +30,7 @@ Integrace Replicon s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Replicon (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,11 +108,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Replicon domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-replicon-tutorial/tutorial_replicon_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://na2.replicon.com/<companyname>/saml2/sp-sso/post`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://global.replicon.com/<companyname>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://global.replicon.com/<companyname>`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://global.replicon.com/!/saml2/<companyname>/sso/post`
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://global.replicon.com/!/saml2/<companyname>/sso/post`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory Replicon klienta](https://www.replicon.com/customerzone/contact-support) k získání těchto hodnot. 
@@ -131,14 +131,14 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Povolit ověřování SAML](./media/active-directory-saas-replicon-tutorial/ic777805.png "ověřování povolit SAML")
     
-    a. K zobrazení **EnableSAML Authentication2** dialogové okno, připojte na adresu URL, následující po vašeho klíče společnosti:`/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+    a. K zobrazení **EnableSAML Authentication2** dialogové okno, připojte na adresu URL, následující po vašeho klíče společnosti: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
     
     * Následující obrázek znázorňuje schéma úplnou adresu URL:  
    `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
    
-   b. Klikněte na tlačítko  **+**  rozšířit **v20Configuration** části.
+   b. Klikněte na tlačítko **+** rozšířit **v20Configuration** části.
 
-   c. Klikněte na tlačítko  **+**  rozšířit **metaDataConfiguration** části.
+   c. Klikněte na tlačítko **+** rozšířit **metaDataConfiguration** části.
 
    d. Klikněte na tlačítko **zvolit soubor**, a vyberte soubor XML identity zprostředkovatele metadat, klikněte na tlačítko **odeslání**.
 
@@ -198,7 +198,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Replicon, musí bý
    
     ![Profil uživatele](./media/active-directory-saas-replicon-tutorial/ic777808.png "profil uživatele")
     
-    a. V **přihlašovací jméno** textovému poli, typ Azure AD e-mailovou adresu uživatele Azure AD, které chcete zřídit jako  **BrittaSimon@contoso.com** .
+    a. V **přihlašovací jméno** textovému poli, typ Azure AD e-mailovou adresu uživatele Azure AD, které chcete zřídit jako **BrittaSimon@contoso.com**.
     
     b. Jako **typ ověřování**, vyberte **jednotného přihlašování k**.
     
@@ -241,17 +241,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Replicon na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Replicon.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

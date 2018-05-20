@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s HR softwaru Cezanne | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Cezanne HR softwarem a Azure Active Directory."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Cezanne HR softwarem a Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 3934f814a9060adf275a4bdcc83403da4b2a4075
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b6ba41b31df8f950e37724903d3bca31358a598c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Kurz: Azure Active Directory integrace s Cezanne HR softwaru
 
@@ -30,7 +30,7 @@ Integrace Cezanne HR softwaru s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k softwaru HR Cezanne (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,11 +108,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Cezanne HR softwaru domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL:`https://w3.cezanneondemand.com/CezanneOnDemand/`
+    b. V **identifikátor** textovému poli, zadejte adresu URL: `https://w3.cezanneondemand.com/CezanneOnDemand/`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL: `https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
     
     > [!NOTE]
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL přihlašování a adresa URL odpovědi. Obraťte se na [tým podpory klientský Software HR Cezanne](https://cezannehr.com/services/support/) k získání těchto hodnot.
@@ -283,17 +283,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Cezanne HR softwaru na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Cezanne HR softwaru.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

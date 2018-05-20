@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s 123ContactForm | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 123ContactForm."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 123ContactForm.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 70955676e78642e6c8a6eb85f8165b327baece3f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f7ad606fc8ee394125300a55dc0586a055a33be
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Kurz: Azure Active Directory integrace s 123ContactForm
 
@@ -29,7 +29,7 @@ Integrace 123ContactForm s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k 123ContactForm (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-123contactform-tutorial/url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
 4. Pokud chcete nakonfigurovat aplikace **SP iniciované režimu**, proveďte následující kroky:
 
@@ -120,7 +120,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Klikněte **zobrazit upřesňující nastavení adresy URL** možnost
 
-    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Budete muset aktualizovat tyto hodnoty z skutečné adresy URL a identifikátor, který je vysvětlen později v tomto kurzu.
@@ -133,7 +133,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-123contactform-tutorial/tutorial_general_400.png)
 
-7. Konfigurace jednotného přihlašování na **123ContactForm** straně, přejděte na [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/) a proveďte následující kroky:
+7. Konfigurace jednotného přihlašování na **123ContactForm** straně, přejděte na [ https://www.123contactform.com/form-2709121/ ](https://www.123contactform.com/form-2709121/) a proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-123contactform-tutorial/submit.png) 
 
@@ -229,10 +229,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici 123ContactForm na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci 123ContactForm.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

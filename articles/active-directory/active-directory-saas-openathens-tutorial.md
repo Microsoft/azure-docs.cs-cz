@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s OpenAthens | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OpenAthens."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OpenAthens.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: af26e007c953c4157f5ee7a4251a52e9c45a6eac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3b19f3c7ed84a63f48320a2c7af8d06a9cc5deb4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Kurz: Azure Active Directory integrace s OpenAthens
 
@@ -30,7 +30,7 @@ Integrace OpenAthens s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky se přihlásit k OpenAthens (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -214,17 +214,17 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
 7. Vyberte **přiřadit** v tlačítko **přidat přiřazení** podokně.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
 Když vyberete **OpenAthens** dlaždici na přístupovém panelu můžete by měl být automaticky přihlášeni do vaší aplikace OpenAthens.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * Seznam kurzů k integraci aplikací SaaS v Azure Active Directory, naleznete v části [kurzy integraci aplikací SaaS pro použití s Azure AD](active-directory-saas-tutorial-list.md).
-* Další informace o přístup k aplikaci a jednotné přihlašování s Azure Active Directory najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+* Další informace o přístup k aplikaci a jednotné přihlašování s Azure Active Directory najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 <!--Image references-->
 

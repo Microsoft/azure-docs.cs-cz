@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s ZABEZPEČENÉ DORUČOVÁNÍ | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ZABEZPEČENÉ DORUČOVÁNÍ."
+title: 'Kurz: Azure Active Directory integrace s ZABEZPEČENÉ DORUČOVÁNÍ | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ZABEZPEČENÉ DORUČOVÁNÍ.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 60b158171a393d4020a7226c187d1e1a8b01229a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65b831557bd439bd9cb736b95e85aca58e9c54a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Kurz: Azure Active Directory integrace s ZABEZPEČENÉ DORUČOVÁNÍ
 
@@ -29,7 +29,7 @@ Integrace ZABEZPEČENÉ DORUČOVÁNÍ s Azure AD poskytuje následující výhod
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k ZABEZPEČENÉ DORUČOVÁNÍ (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory zabezpečení klienta poskytovat](mailto:iw-sd-support@fujifilm.com) k získání těchto hodnot. 
@@ -206,10 +206,10 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici ZABEZPEČENÉ DORUČOVÁNÍ na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ZABEZPEČENÉ DORUČOVÁNÍ.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

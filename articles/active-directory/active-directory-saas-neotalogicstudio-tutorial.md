@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Neota logiku Studio | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Neota logiku Studio."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Neota logiku Studio.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 839a4ed8bb3facbfd41f8a9ca2849b475e03ffc1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f7fbab381d369da4e5d1bec52c2c2f029b6cb818
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>Kurz: Azure Active Directory integrace s Neota logiku Studio
 
@@ -29,7 +29,7 @@ Integrace s Azure AD Neota logiku Studio poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Neota logiku Studio (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, přečtěte si téma. [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -113,9 +113,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-neotalogicstudio-tutorial/tutorial_neotalogicstudio_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<sub domain>.neotalogic.com/a/<sub application>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<sub domain>.neotalogic.com/a/<sub application>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<sub domain>.neotalogic.com/wb`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<sub domain>.neotalogic.com/wb`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování & identifikátor. Zde, doporučujeme vám použít jedinečnou hodnotu řetězce v identifikátoru. Obraťte se na [tým podpory klienta studia logiku Neota](https://www.neotalogic.com/contact-us/) k získání těchto hodnot. 
@@ -206,10 +206,10 @@ Klikněte na dlaždici Neota logiku Studio na přístupovém panelu, budete pře
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

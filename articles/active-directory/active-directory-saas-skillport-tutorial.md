@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Skillport | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Skillport."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Skillport.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b14c40b402ae1877f6bfb267c137c9a051b8225
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 269c5aedb2e990a83358605445d19d9d61261f3b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Azure Active Directory integrace s Skillport
 
@@ -29,7 +29,7 @@ Integrace Skillport s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Skillport (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,21 +112,21 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:
       
-      Evropa Datacenter:`https://adfs.skillport.eu`
+      Evropa Datacenter: `https://adfs.skillport.eu`
    
-      USA – Datacenter:`https://sso.skillport.com`
+      USA – Datacenter: `https://sso.skillport.com`
 
     b. V **identifikátor** textovému poli, zadejte adresu URL:
       
-      Evropa Datacenter:`http://adfs.skillport.eu/adfs/services/trust`
+      Evropa Datacenter: `http://adfs.skillport.eu/adfs/services/trust`
    
-      USA – Datacenter:`https://sso.skillport.com`
+      USA – Datacenter: `https://sso.skillport.com`
    
     c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:
     
-      Evropa Datacenter:` https://adfs.skillport.eu/adfs/ls/`
+      Evropa Datacenter: ` https://adfs.skillport.eu/adfs/ls/`
     
-      USA – Datacenter:`https://sso.skillport.com/sp/ACS.saml2`
+      USA – Datacenter: `https://sso.skillport.com/sp/ACS.saml2`
  
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
@@ -210,10 +210,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Skillport na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Skillport.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

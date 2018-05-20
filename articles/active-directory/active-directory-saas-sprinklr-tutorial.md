@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Sprinklr | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Sprinklr."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Sprinklr.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 13eea1b7889c6382f1f4a6fb5c9bc02578c52711
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2222e3e71fbddaebf1077149f6d71a43eb8dea0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Kurz: Azure Active Directory integrace s Sprinklr
 
@@ -29,7 +29,7 @@ Integrace Sprinklr s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Sprinklr (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sprinklr-tutorial/tutorial_sprinklr_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.sprinklr.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.sprinklr.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.sprinklr.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.sprinklr.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Aktualizujte hodnotu s skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Sprinklr klienta](https://www.sprinklr.com/contact-us/) k získání těchto hodnot. 
@@ -163,7 +163,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     j. Jako **umístění ID uživatele SAML**, vyberte **ID uživatele je v elementu identifikátor název subjektu příkaz**.
 
-    kB. Klikněte na **Uložit**.
+    k. Klikněte na **Uložit**.
        
     ![SAML](./media/active-directory-saas-sprinklr-tutorial/ic782911.png "SAML")
 
@@ -281,10 +281,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici Sprinklr na přístupovém panelu, měli byste obdržet automaticky přihlášení k aplikaci Sprinklr naleznete další informace o přístupový Panel [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Zscaler privátní přístup (ZPA) | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler privátní přístup (ZPA)."
+title: 'Kurz: Azure Active Directory integrace s Zscaler privátní přístup (ZPA) | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler privátní přístup (ZPA).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 9ac65791e8d50d5e5da5d36adee14cd0e88a3da8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d5434c57a95e53e4fe37c33f3fe11585fc3177f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Azure Active Directory integrace s Zscaler privátní přístup (ZPA)
 
@@ -29,7 +29,7 @@ Integrace Zscaler privátní přístup (ZPA) s Azure AD poskytuje následující
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k Zscaler privátní přístup (ZPA) (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,7 +77,7 @@ Při konfiguraci integrace služby Zscaler privátní přístup (ZPA) do služby
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_001.png)
 
-5. Na panelu výsledků vyberte **Zscaler privátní přístup (ZPA)**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Zscaler privátní přístup (ZPA)** a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_0001.png)
 
@@ -115,9 +115,9 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
     
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_01.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://samlsp.private.zscaler.com/auth/login?domain=<your-domain-name>`
 
-    b. V **identifikátor** textovému poli, typ:`https://samlsp.private.zscaler.com/auth/metadata`
+    b. V **identifikátor** textovému poli, typ: `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE] 
     > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné přihlašovací adresa URL a identifikátor. Zde, doporučujeme vám použít jedinečnou hodnotu adresy URL v identifikátoru. Obraťte se na [tým podpory Zscaler privátní přístup (ZPA)](https://help.zscaler.com/zpa-submit-ticket) získat tyto hodnoty.
@@ -239,10 +239,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Zscaler privátní přístup (ZPA) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Zscaler privátní přístup (ZPA).
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

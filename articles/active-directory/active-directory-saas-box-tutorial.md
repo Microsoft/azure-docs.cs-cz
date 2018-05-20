@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Integraci služby Azure Active Directory s pole | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole."
+title: 'Kurz: Integraci služby Azure Active Directory s pole | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 638ae63057df00375b05a58e3ceab510e2a608de
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: daad9104798dc02b479b4e022287c3630e4a67a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>Pole integrovat Azure Active Directory
 
@@ -30,7 +30,7 @@ Díky integraci služby Azure AD se pole, získáte následující výhody:
 - Můžete povolit uživatelům získat přihlášení automaticky pole (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -187,7 +187,7 @@ V této části povolit uživatele Britta Simon používat Azure jednotné přih
 
 7. V **přidat přiřazení** vyberte **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -196,7 +196,7 @@ Když vyberete **pole** dlaždici na přístupovém panelu, můžete otevřít s
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS do Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfiguraci zřizování uživatelů](active-directory-saas-box-userprovisioning-tutorial.md)
 
 

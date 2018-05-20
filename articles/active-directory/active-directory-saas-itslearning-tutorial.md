@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s itslearning | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a itslearning."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a itslearning.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: f8762aa6c2d082335a8de617ae9c135796c71d0e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c9999e1ba1e69e872b8392b64f566c83c230be9a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Kurz: Azure Active Directory integrace s itslearning
 
@@ -29,7 +29,7 @@ Integrace itslearning s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k itslearning (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -116,7 +116,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://www.itslearning.com/index.aspx`|
     | `https://us1.itslearning.com/index.aspx`|
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL jako:`urn:mace:saml2v2.no:services:com.itslearning`
+    b. V **identifikátor** textovému poli, zadejte adresu URL jako: `urn:mace:saml2v2.no:services:com.itslearning`
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -207,10 +207,10 @@ Když kliknete na dlaždici itslearning na přístupovém panelu, měli byste ob
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

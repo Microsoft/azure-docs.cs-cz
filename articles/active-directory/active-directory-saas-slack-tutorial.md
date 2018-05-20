@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: 6a4c64fb8400eaf2e09be049b032535e09969fb8
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c3fb9eb3e8dd4b8c3add5dcf0436958500aa0189
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Azure Active Directory integrace s Slack
 
@@ -29,7 +29,7 @@ Integrace systému Slack s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k systému Slack (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -128,9 +128,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | --- | --- |
-    | first_name | user.givenname |
-    | last_name | user.surname |
-    | User.Email | user.mail |  
+    | křestní_jméno | user.givenname |
+    | Příjmení | user.surname |
+    | User.Email | User.Mail |  
     | User.Username | user.userprincipalname |
 
     a. Klikněte na **atribut** otevřete **Upravit atribut** dialogové okno pole a proveďte následující kroky:
@@ -264,7 +264,7 @@ Když kliknete na dlaždici Slack na přístupovém panelu jste měli získat au
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s iQualify pro správu vzdělávacího procesu | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iQualify pro správu vzdělávacího procesu."
+title: 'Kurz: Azure Active Directory integrace s iQualify pro správu vzdělávacího procesu | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iQualify pro správu vzdělávacího procesu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f8a7b7fd155a6ad0df7cb1f9026b4acca2401cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 341f2175d283c08496534f3ac0d946dd8671f63c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Kurz: Azure Active Directory integrace s iQualify pro správu vzdělávacího procesu
 
@@ -30,7 +30,7 @@ Integrace iQualify pro správu vzdělávacího procesu s Azure AD poskytuje nás
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k iQualify pro správu vzdělávacího procesu (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -111,14 +111,14 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
     | |
     |--|--|
-    | Produkční prostředí:`https://<yourorg>.iqualify.com/`|
-    | Testovací prostředí:`https://<yourorg>.iqualify.io`|
+    | Produkční prostředí: `https://<yourorg>.iqualify.com/`|
+    | Testovací prostředí: `https://<yourorg>.iqualify.io`|
     
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
     | |
     |--|--|
-    | Produkční prostředí:`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | Testovací prostředí:`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | Produkční prostředí: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | Testovací prostředí: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
@@ -127,8 +127,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
     |--|--|
-    | Produkční prostředí:`https://<yourorg>.iqualify.com/login` |
-    | Testovací prostředí:`https://<yourorg>.iqualify.io/login` |
+    | Produkční prostředí: `https://<yourorg>.iqualify.com/login` |
+    | Testovací prostředí: `https://<yourorg>.iqualify.io/login` |
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem, adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory pro správu vzdělávacího procesu klienta iQualify](https://www.iqualify.com) k získání těchto hodnot. 
@@ -141,9 +141,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | --- | --- |    
-    | E-mailu | User.userPrincipalName |
-    | křestní_jméno | User.givenName |
-    | Příjmení | User.Surname |
+    | e-mail | user.userprincipalname |
+    | křestní_jméno | user.givenname |
+    | Příjmení | user.surname |
     | person_id | "atribut" | 
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
@@ -275,7 +275,7 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -287,10 +287,10 @@ Klikněte na tlačítko **Přihlaste se pomocí Azure AD** tlačítko by měl z�
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

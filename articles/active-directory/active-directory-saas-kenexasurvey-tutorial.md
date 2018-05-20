@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s IBM Kenexa průzkum Enterprise | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IBM Kenexa průzkum Enterprise."
+title: 'Kurz: Azure Active Directory integrace s IBM Kenexa průzkum Enterprise | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IBM Kenexa průzkum Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 929ae8b780c0e18074832adfefb9a7674097fd08
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 88e0072adeeebaf6c9e964db28a45f6fe038fddf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Kurz: Azure Active Directory integrace s IBM Kenexa průzkum Enterprise
 
@@ -29,7 +29,7 @@ Integrace IBM Kenexa průzkum Enterprise s Azure AD poskytuje následující vý
 - Můžete povolit uživatelům automaticky se přihlaste k IBM Kenexa průzkum Enterprise pomocí jednotného přihlašování (SSO) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě: portál Azure.
 
-Pokud chcete získat další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Pokud chcete získat další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -102,14 +102,14 @@ V této části Povolení jednotného přihlašování Azure AD na portálu Azur
 
     ![IBM Kenexa průzkum podnikové domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL s vzoru následující:`https://surveys.kenexa.com/<companycode>`
+    a. V **identifikátor** textovému poli, zadejte adresu URL s vzoru následující: `https://surveys.kenexa.com/<companycode>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL s vzoru následující:`https://surveys.kenexa.com/<companycode>/tools/sso.asp`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL s vzoru následující: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE] 
     > Předchozí hodnoty nejsou skutečné. Je aktualizovat skutečným identifikátorem a adresa URL odpovědi. Chcete-li získat skutečnými hodnotami, obraťte se [tým podpory IBM Kenexa průzkum Enterprise](https://www.ibm.com/support/home/?lnk=fcw).
 
-4. V části **SAML podpisový certifikát**, klikněte na tlačítko **certifikátu (Base64)**a potom uložte soubor certifikátu do počítače.
+4. V části **SAML podpisový certifikát**, klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu do počítače.
 
     ![Odkaz ke stažení certifikátu (Base64)](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
 
@@ -202,16 +202,16 @@ Pokud chcete přiřadit uživatele Britta Simon IBM Kenexa průzkum Enterprise, 
 
 7. V **přidat přiřazení** dialogové okno, klikněte **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat konfiguraci Azure AD jednotného přihlašování pomocí přístupového panelu.
 
 Když kliknete **IBM Kenexa průzkum Enterprise** dlaždici na přístupovém panelu můžete by měl být automaticky přihlášeni k vaší aplikaci IBM Kenexa průzkum Enterprise.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

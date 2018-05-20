@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: ebc4de2b3a01138a8b48cc637dcab5fc67a68841
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: a6f9f35931ff13eb3f0f35748b3a040af37df672
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelský účet zřizování pro podnikové aplikace na portálu Azure
-Tento článek popisuje postup použití [portál Azure](https://portal.azure.com) ke správě automatické uživatel účet zřizování a jeho rušení pro aplikace, které to podporují, zejména ta, která byla přidána z "doporučenou" kategorii [ Galerii aplikací Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování účtu automatické uživatele a jak to funguje, najdete v části [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md).
+Tento článek popisuje postup použití [portál Azure](https://portal.azure.com) ke správě automatické uživatel účet zřizování a jeho rušení pro aplikace, které to podporují, zejména ta, která byla přidána z "doporučenou" kategorii [ Galerii aplikací Azure Active Directory](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování účtu automatické uživatele a jak to funguje, najdete v části [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace v portálu
-Všechny aplikace, které jsou konfigurovány pro jednotné přihlašování v adresáři, pomocí Správce adresáře pomocí [galerii aplikací Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), můžete zobrazit a spravovat [portál Azure](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace, které** části portálu. Podnikové aplikace jsou aplikace, které jsou nasazené a použít v rámci vaší organizace.
+Všechny aplikace, které jsou konfigurovány pro jednotné přihlašování v adresáři, pomocí Správce adresáře pomocí [galerii aplikací Azure Active Directory](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), můžete zobrazit a spravovat [portál Azure](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace, které** části portálu. Podnikové aplikace jsou aplikace, které jsou nasazené a použít v rámci vaší organizace.
 
 ![Podokno podnikové aplikace](./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.png)
 

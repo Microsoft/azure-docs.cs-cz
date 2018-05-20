@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s přiblížení | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a přiblížení."
+title: 'Kurz: Azure Active Directory integrace s přiblížení | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a přiblížení.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 5a6d9ea9de1035bf9c84cf3c451cc1121f04a82a
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 16fca9c8d1ab18ffe6d156d6bf4549d9a687b164
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Azure Active Directory integrace s přiblížení
 
@@ -30,7 +30,7 @@ Integrace přiblížení s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k zvětšení (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Přiblížení domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-zoom-tutorial/tutorial_zoom_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.zoom.us`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.zoom.us`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`<companyname>.zoom.us`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `<companyname>.zoom.us`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory zvětšení klienta](https://support.zoom.us/hc) k získání těchto hodnot.
@@ -124,8 +124,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Název atributu | Hodnota atributu | Hodnota Namespace |
     | ------------------- | -----------|--------- |    
     | E-mailová adresa | User.Mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail`|
-    | Jméno | User.givenName | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`|
-    | Příjmení | User.Surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname `|
+    | Jméno | user.givenname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`|
+    | Příjmení | user.surname | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname `|
     | Telefonní číslo | User.telephoneNumber | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone`|
     | Oddělení | User.Department | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department`|
 
@@ -273,7 +273,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
 
@@ -282,7 +282,7 @@ Když kliknete na dlaždici přiblížení na přístupovém panelu, jste měli 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

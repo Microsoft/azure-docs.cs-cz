@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Lesson.ly | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Lesson.ly."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Lesson.ly.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 01e4395d5b2baaaf130f7a0fa7aaa29d611559b7
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: b5295b2c4294141cc2217a35eb943316e190b77d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>Kurz: Azure Active Directory integrace s Lesson.ly
 
@@ -29,7 +29,7 @@ Integrace Lesson.ly s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Lesson.ly (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -140,9 +140,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     | Název atributu   | Hodnota atributu |
     | ---------------  | ----------------|
-    | název urn: oid:2.5.4.42 |User.givenName |
-    | název urn: oid:2.5.4.4  |User.Surname |
-    | název urn: oid:0.9.2342.19200300.100.1.3 |User.Mail |
+    | název urn: oid:2.5.4.42 |user.givenname |
+    | název urn: oid:2.5.4.4  |user.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 |User.Mail |
     | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |User.ObjectId |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
@@ -249,7 +249,7 @@ Když kliknete na dlaždici Lesson.ly na přístupovém panelu, jste měli získ
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

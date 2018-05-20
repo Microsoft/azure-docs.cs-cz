@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Picturepark | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Picturepark."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Picturepark.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d9fd7127a36e9a699a352dbe6899edd5ea99e92
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6421921d75b299d44cdd0942b64e524a73dfa042
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Azure Active Directory integrace s Picturepark
 
@@ -29,7 +29,7 @@ Integrace Picturepark s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Picturepark (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-picturepark-tutorial/tutorial_picturepark_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.picturepark.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.picturepark.com`
 
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
     
@@ -150,7 +150,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Konfigurace zprostředkovatele identity](./media/active-directory-saas-picturepark-tutorial/ic795064.png "konfigurace zprostředkovatele Identity")
    
-    a. Klikněte na tlačítko **Přidat**.
+    a. Klikněte na tlačítko **Add** (Přidat).
   
     b. Zadejte název pro svou konfiguraci.
    
@@ -221,7 +221,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Picturepark, musí 
    
     ![Vytvoření uživatele](./media/active-directory-saas-picturepark-tutorial/ic795069.png "vytvoření uživatele")
    
-    a. V **e-mailovou adresu** textovému poli, typ **e-mailová adresa** uživatele  **BrittaSimon@contoso.com** .  
+    a. V **e-mailovou adresu** textovému poli, typ **e-mailová adresa** uživatele **BrittaSimon@contoso.com**.  
    
     b. V **heslo** a **Potvrdit heslo** textová pole, zadejte **heslo** z BrittaSimon. 
    
@@ -281,10 +281,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici Picturepark na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Picturepark. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

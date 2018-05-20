@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Origami | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Origami."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Origami.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 962795cf6dab7231782523e3a850afa84b2b8d1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c8943d6cdda21970167846d9301556d20750614d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Kurz: Azure Active Directory integrace s Origami
 
@@ -29,7 +29,7 @@ Integrace Origami s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Origami (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-origami-tutorial/tutorial_origami_url.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://live.origamirisk.com/origami/account/login?account=<companyname>`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://live.origamirisk.com/origami/account/login?account=<companyname>`
 
     > [!NOTE] 
     > Hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Origami klienta](https://wordpress.org/support/theme/origami) k získání hodnoty. 
@@ -204,7 +204,7 @@ V této části vytvoříte volal Britta Simon v Origami uživatele.
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-origami-tutorial/tutorial_origami_56.png)
 
-    a. V **uživatelské jméno** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .
+    a. V **uživatelské jméno** textovému poli, zadejte e-mailu uživatele jako **brittasimon@contoso.com**.
 
     b. V **heslo** textovému poli, zadejte heslo.
 
@@ -258,10 +258,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici Origami na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Origami.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

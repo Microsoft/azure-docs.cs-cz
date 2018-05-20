@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Getabstract | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Getabstract."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Getabstract.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 37419f8f65f5dfa171302bb0d85cef23e8cea93b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 388a2a3f38db1637994e6daae37ca98c51b6067d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Kurz: Azure Active Directory integrace s Getabstract
 
@@ -30,7 +30,7 @@ Integrace Getabstract s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Getabstract (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,15 +110,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **identifikátor** textovému poli, zadejte adresu URL:
 
-    Pro fázi/pre_production:`https://int.getabstract.com`
+    Pro fázi/pre_production: `https://int.getabstract.com`
 
-    Pro produkční prostředí:`https://www.getabstract.com`
+    Pro produkční prostředí: `https://www.getabstract.com`
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:
     
-    Pro fázi/pre_production:`https://int.getabstract.com/ACS.do`
+    Pro fázi/pre_production: `https://int.getabstract.com/ACS.do`
     
-    Pro produkční prostředí:`https://www.getabstract.com/ACS.do`
+    Pro produkční prostředí: `https://www.getabstract.com/ACS.do`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
@@ -126,9 +126,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     
-    Pro fázi/pre_production:`https://int.getabstract.com/portal/<org_username>`
+    Pro fázi/pre_production: `https://int.getabstract.com/portal/<org_username>`
     
-    Pro produkční prostředí:`https://www.getabstract.com/portal/<org_username>`
+    Pro produkční prostředí: `https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Getabstract klienta](https://www.getabstract.com/en/contact) získat tuto hodnotu.
@@ -215,17 +215,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Getabstract na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Getabstract.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

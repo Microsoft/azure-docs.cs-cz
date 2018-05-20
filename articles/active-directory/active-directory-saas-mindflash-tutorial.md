@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Mindflash | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mindflash."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mindflash.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: e7502e46f8aaa849155d5c330d6ff6089b2a7276
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fa3cb7270b401c2ffa2a96428c7b48c6ecf1bd70
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Kurz: Azure Active Directory integrace s Mindflash
 
@@ -29,7 +29,7 @@ Integrace Mindflash s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Mindflash (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-mindflash-tutorial/tutorial_mindflash_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.mindflash.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.mindflash.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.mindflash.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.mindflash.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Mindflash klienta](https://www.mindflash.com/contact/) k získání těchto hodnot. 
@@ -186,9 +186,9 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Mindflash, musí b�
 
     b. V **příjmení** textovému poli, typ **příjmení** uživatele jako **Simon**.
     
-    c. V **e-mailu** textovému poli, typ **e-mailovou adresu** uživatele jako  **BrittaSimon@contoso.com** .
+    c. V **e-mailu** textovému poli, typ **e-mailovou adresu** uživatele jako **BrittaSimon@contoso.com**.
 
-    b. Klikněte na tlačítko **Přidat**.
+    b. Klikněte na tlačítko **Add** (Přidat).
 
 >[!NOTE]
 >Můžete použít všechny ostatní Mindflash uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Mindflash zřídit AAD uživatelské účty. 
@@ -231,10 +231,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Mindflash na přístupovém panelu, měli byste obdržet přihlašovací stránku Mindflash aplikace.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

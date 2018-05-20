@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Litmos | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Litmos."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Litmos.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 2447cc5dbb01aa718e4418386499c6e50e9f5184
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8314497e37c074ab346079b7758d8b3680f2d6e9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Kurz: Azure Active Directory integrace s Litmos
 
@@ -30,7 +30,7 @@ Integrace Litmos s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Litmos (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Litmos domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-litmos-tutorial/tutorial_litmos_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.litmos.com/account/Login`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.litmos.com/account/Login`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.litmos.com/integration/samllogin`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.litmos.com/integration/samllogin`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat se skutečným identifikátorem a adresa URL odpovědi, které jsou vysvětlené později v kurzu nebo kontaktujte [tým podpory Litmos](https://www.litmos.com/contact-us/) k získání těchto hodnot.
@@ -125,13 +125,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
            
     | Název atributu   | Hodnota atributu |   
     | ---------------  | ----------------|
-    | FirstName |User.givenName |
-    | Příjmení  |User.Surname |
-    | E-mail |User.Mail |
+    | FirstName |user.givenname |
+    | Příjmení  |user.surname |
+    | Email |User.Mail |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
-    ![Přidání atributu](./media/active-directory-saas-litmos-tutorial/tutorial_attribute_04.png)
+    ![Přidat atribut](./media/active-directory-saas-litmos-tutorial/tutorial_attribute_04.png)
 
     ![Přidání atributu Dailog](./media/active-directory-saas-litmos-tutorial/tutorial_attribute_05.png)
 
@@ -263,16 +263,16 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
 
 Když kliknete na dlaždici Litmos na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Litmos. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

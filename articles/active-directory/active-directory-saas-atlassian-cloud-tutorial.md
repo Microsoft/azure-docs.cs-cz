@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: a43d0a165d9da6267c6f9733420244ebf913e930
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 261baed7b8e1e5480396c06a9f92ecfb48a8b7ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>Kurz: Azure Active Directory integrace s Atlassian cloudu
 
@@ -30,7 +30,7 @@ Integrace Atlassian cloudu s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům být automaticky přihlášeni (jednotné přihlášení) Atlassian cloudu s účty služby Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
 
-Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -248,7 +248,7 @@ V této části povolit uživatele Britta Simon používat tak, že udělíte p�
 
 7. V **přidat přiřazení** vyberte **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -258,7 +258,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Tango Analytics | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tango analýzy."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tango analýzy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: c38d98f790d6b2cfd6553f11cc8317174461967f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f9e87fe54a325f10fd01dbde20041e37c44d51d6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Kurz: Azure Active Directory integrace s Tango Analytics
 
@@ -29,7 +29,7 @@ Integrace s Azure AD Tango Analytics poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k analýze Tango (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-tangoanalytics-tutorial/tutorial_tangoanalytics_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte hodnotu`TACORE_SSO`
+    a. V **identifikátor** textovému poli, zadejte hodnotu `TACORE_SSO`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://mts.tangoanalytics.com/saml2/sp/acs/post`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://mts.tangoanalytics.com/saml2/sp/acs/post`
 
     > [!NOTE] 
     > Adresa URL odpovědi hodnota není skutečné. Aktualizujte s skutečná adresa URL odpovědi. Obraťte se na [Tango Analytics podporovat team](mailto:support@tangoanalytics.com) získat tuto hodnotu.
@@ -203,10 +203,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Tango Analytics na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Tango Analytics.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

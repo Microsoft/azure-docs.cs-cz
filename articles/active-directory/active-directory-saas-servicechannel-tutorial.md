@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ServiceChannel | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ServiceChannel."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ServiceChannel.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: b744b8e197c918e7fe3a0e6e7eeab6a70cc6e34a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2b1c7461cb1ed232290cf78a03449611f9ef95da
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Kurz: Azure Active Directory integrace s ServiceChannel
 
@@ -29,7 +29,7 @@ Integrace ServiceChannel s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k ServiceChannel (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-servicechannel-tutorial/tutorial-servicechannel_urls.png)
 
-    a. V **identifikátor** textovému poli, zadejte hodnotu jako:`http://adfs.<domain>.com/adfs/service/trust`
+    a. V **identifikátor** textovému poli, zadejte hodnotu jako: `http://adfs.<domain>.com/adfs/service/trust`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<customer domain>.servicechannel.com/saml/acs`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE] 
     > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečným identifikátorem a adresa URL odpovědi. Zde, doporučujeme vám použít jedinečnou hodnotu řetězce v identifikátoru. Obraťte se na [tým podpory ServiceChannel](https://servicechannel.zendesk.com/hc/en-us) k získání těchto hodnot.
@@ -130,7 +130,7 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     | Název atributu | Hodnota atributu |
     | --- | --- |    
-    | Role| User.assignedroles |
+    | Role| user.assignedroles |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -227,10 +227,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici ServiceChannel na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci ServiceChannel.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

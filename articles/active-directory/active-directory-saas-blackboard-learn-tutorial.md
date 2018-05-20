@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s další Tabule | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a další Tabule."
+title: 'Kurz: Azure Active Directory integrace s další Tabule | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a další Tabule.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 0c0cd547a9a33ee83883058623e4905ea0af4031
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 52cb6eccc85dd6c00ee1ab3b97f7410c43aef91d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Kurz: Azure Active Directory integrace s další Tabule
 
@@ -29,7 +29,7 @@ Integrace Další tabule s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k další Tabule (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.blackboard.com/`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.blackboard.com/`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.blackboard.com/auth-saml/saml/SSO/entity-id/SAML_AD`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.blackboard.com/auth-saml/saml/SSO/entity-id/SAML_AD`
     
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory pro další klienta Tabule](https://www.blackboard.com/support/index.aspx) k získání těchto hodnot. 
@@ -126,7 +126,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
            
     | Název atributu | Hodnota atributu |   
     | ---------------| ----------------|
-    | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 |User.userPrincipalName |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.6 |user.userprincipalname |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -228,10 +228,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Po kliknutí na tlačítko Další tabule dlaždice na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Tabule Další. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

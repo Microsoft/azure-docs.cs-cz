@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Githubu | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Githubu."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Githubu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 2a0e1df5244ef977bdcccc5bcfea615a05efa3bd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ef9d0bb112738e9abea5894fb0f321368b7fc26e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Kurz: Azure Active Directory integrace s Githubu
 
@@ -30,7 +30,7 @@ Integrace Githubu s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k webu GitHub (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -116,9 +116,9 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-github-tutorial/tutorial_github_saml011.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu jako:`https://github.com/orgs/<entity-id>/sso`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu jako: `https://github.com/orgs/<entity-id>/sso`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://github.com/orgs/<entity-id>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://github.com/orgs/<entity-id>`
 
     > [!NOTE] 
     > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečné Sing na adresu URL a identifikátor. Zde, doporučujeme vám použít jedinečnou hodnotu řetězce v identifikátoru. Přejděte k části GitHub správce se načtení těchto hodnot. 
@@ -177,7 +177,7 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     ![Nastavení](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_06.png)
 
-16. Klikněte na tlačítko **uložit**
+16. Klikněte na **Uložit**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu správy Azure, názvem Britta Simon.
@@ -281,10 +281,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Githubu na přístupovém panelu, jste měli získat přihlášení k aplikaci Githubu. Se budete přihlašovat jako účet, ale pak nutné se přihlásit pomocí svého osobního účtu organizace.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

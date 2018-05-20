@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s BenefitsCentral Mercer (MBC) | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mercer BenefitsCentral (MBC)."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Mercer BenefitsCentral (MBC).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jeedes
-ms.openlocfilehash: dfc963be9d087c6ad1c56dcdaf922ff5dbf5b284
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c0a9fc6c906af96bd613c02e8b4248fc2125d9e1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Kurz: Azure Active Directory integrace s BenefitsCentral Mercer (MBC)
 
@@ -30,7 +30,7 @@ Integrace Mercer BenefitsCentral (MBC) s Azure AD poskytuje následující výho
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k Mercer BenefitsCentral (MBC) (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Mercer BenefitsCentral (MBC) domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-mercerhrs-tutorial/tutorial_mercerhrs_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`stg.mercerhrs.com/saml2.0`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `stg.mercerhrs.com/saml2.0`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://ssous-stg.mercerhrs.com/SP2/Saml2AssertionConsumer.aspx`
 
     > [!NOTE] 
     > Hodnota adresy URL a odpovědi není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory Mercer BenefitsCentral (MBC)](https://www.mercer.com/contact-us.html) získat tuto hodnotu.
@@ -198,17 +198,17 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Mercer BenefitsCentral (MBC) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Mercer BenefitsCentral (MBC).
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

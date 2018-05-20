@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Work.com | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Work.com."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Work.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7aa04faab5da9ee7dae977be3a8c040c3aed0b9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bfc76d05a52d0283e3367f9c98dc8ed427cbe592
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Kurz: Azure Active Directory integrace s Work.com
 
@@ -30,7 +30,7 @@ Integrace Work.com s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Work.com (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -104,13 +104,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
-    ![Na základě SAML přihlášení](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_samlbase.png)
+    ![Přihlašování založené na SAML](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_samlbase.png)
 
 3. Na **Work.com domény a adresy URL** část, proveďte následující kroky:
 
     ![Část Work.com domény a adresy URL](./media/active-directory-saas-work-com-tutorial/tutorial_work-com_url.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`http://<companyname>.my.salesforce.com`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `http://<companyname>.my.salesforce.com`
 
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Work.com klienta](https://help.salesforce.com/articleView?id=000159855&type=3) získat tuto hodnotu. 
@@ -259,9 +259,9 @@ Uživatelé Azure Active Directory se moct přihlásit musí být zřízená k W
     
     c. V **Alias** textovému poli, typ **název** uživatele **BrittaS**.
     
-    d. V **e-mailu** textovému poli, typ **e-mailová adresa** uživatele  **Brittasimon@contoso.com** .
+    d. V **e-mailu** textovému poli, typ **e-mailová adresa** uživatele **Brittasimon@contoso.com**.
     
-    e. V **uživatelské jméno** textové pole, zadejte uživatelské jméno uživatele jako  **Brittasimon@contoso.com** .
+    e. V **uživatelské jméno** textové pole, zadejte uživatelské jméno uživatele jako **Brittasimon@contoso.com**.
     
     f. V **Přezdívka** textovému poli, zadejte **Přezdívka** uživatele **Simon**.
     
@@ -304,17 +304,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Work.com na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Work.com.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

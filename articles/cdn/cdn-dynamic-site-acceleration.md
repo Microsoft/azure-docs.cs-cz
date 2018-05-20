@@ -16,7 +16,7 @@ ms.date: 03/01/2018
 ms.author: rli; v-deasim
 ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
 ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
 ---

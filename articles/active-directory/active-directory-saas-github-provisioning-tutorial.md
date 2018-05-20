@@ -1,8 +1,8 @@
 ---
-title: "Kurz: Konfigurace GitHub pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřídit uživatelské účty na Githubu."
+title: 'Kurz: Konfigurace GitHub pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Informace o konfiguraci Azure Active Directory a automaticky zřizovat a zrušte zřídit uživatelské účty na Githubu.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 53eb2d0e76cb4765612dfd30226979d839a96235
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 25ab5e2628b312ae508f17cc80b945700f034273
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHub pro zřizování automatické uživatelů
 
@@ -102,7 +102,7 @@ Další informace o tom, jak číst zřizování protokoly služby Azure AD najd
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-enterprise-apps-manage-provisioning.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup
 

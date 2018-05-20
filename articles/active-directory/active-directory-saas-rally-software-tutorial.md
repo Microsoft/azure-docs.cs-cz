@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s technologie Rally softwarem | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a technologie Rally softwaru."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a technologie Rally softwaru.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 9e3b5ad4487ff1309923a1b0ffac9589084e715b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f257ebe03129501034cca3b3e54e8fc796c357fc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Kurz: Azure Active Directory integrace s technologie Rally softwaru
 
@@ -30,7 +30,7 @@ Integrace technologie Rally softwaru s Azure AD poskytuje následující výhody
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k technologie Rally softwaru (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Technologie Rally softwaru adresy URL jeden přihlašování informace o doméně a](./media/active-directory-saas-rally-software-tutorial/tutorial_rallysoftware_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant-name>.rally.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.rally.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant-name>.rally.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.rally.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory technologie Rally klientský Software](https://help.rallydev.com/) k získání těchto hodnot. 
@@ -203,7 +203,7 @@ Azure AD uživatelé moci přihlásit musí být zřízená do technologie Rally
 
     a. V **uživatelské jméno** textovému poli, zadejte jméno uživatele jako **Brittsimon**.
    
-    b. V **e-mailovou adresu** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .
+    b. V **e-mailovou adresu** textovému poli, zadejte e-mailu uživatele jako **brittasimon@contoso.com**.
 
     c. V **křestní jméno** textové pole, zadejte jméno uživatele jako **Britta**.
 
@@ -244,16 +244,16 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici technologie Rally softwaru na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci technologie Rally softwaru.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

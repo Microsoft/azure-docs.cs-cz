@@ -15,11 +15,11 @@ ms.date: 05/11/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 85a9b3a4f1fc21cbb47d41a61661de38d6fc246d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 91f721f5508191c7530e57b6dd96cad3301542a7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Předdefinované role pro řízení přístupu Azure na základě rolí
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které můžete přiřadit uživatele, skupiny a objekty služby. Přiřazení role představují způsob, jak můžete řídit přístup k prostředkům v Azure. Nemůžete upravit integrované role, ale můžete vytvořit vlastní [vlastní role](custom-roles.md) podle konkrétních potřeb vaší organizace.
@@ -100,7 +100,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [Přispěvatel Traffic Manageru](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Správce přístupu uživatelů](#user-access-administrator) | Umožňuje správu přístupu uživatelů k prostředkům Azure. |
 | [Přihlášení správce virtuálních počítačů](#virtual-machine-administrator-login) | –  Uživatelé s touto rolí se budou moct přihlašovat k virtuálnímu počítači s oprávněními správce Windows nebo uživatele root v Linuxu. |
-| [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
+| [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje spravovat virtuální počítače, ale ne přístup k nim a ne virtuální sítě nebo účet úložiště, který jste připojení k. |
 | [Přihlášení uživatele virtuálního počítače](#virtual-machine-user-login) | Uživatelé s touto rolí se budou moct přihlašovat k virtuálnímu počítači jako běžní uživatelé. |
 | [Plán přispěvatelů webu](#web-plan-contributor) | Umožňuje správu webových plánů pro weby, ale ne přístup k nim. |
 | [Přispěvatel webu](#website-contributor) | Umožňuje správu webů (ne webových plánů), ale ne přístup k nim. |
@@ -1442,7 +1442,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
+> | **Popis** | Umožňuje spravovat virtuální počítače, ale ne přístup k nim a ne virtuální sítě nebo účet úložiště, který jste připojení k. |
 > | **ID** | 9980e02c-c2be-4D73-94e8-173b1dc7cf3c |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Autorizace pro čtení |

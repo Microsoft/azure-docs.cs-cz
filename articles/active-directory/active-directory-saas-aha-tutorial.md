@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Aha! | Dokumentace Microsoftu'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Aha!."
+title: 'Kurz: Azure Active Directory integrace s Aha! | Dokumenty Microsoft'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Aha!.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 420e6bbbd03c3219467a351e509ee226cf874c5d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d143b04e424336bda8b38f4458448230277ac837
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>Kurz: Azure Active Directory integrace s Aha!
 
@@ -29,7 +29,7 @@ Integrace Aha! s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Aha! (Jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ Konfigurace integrace Aha! do služby Azure AD je nutné přidat Aha! z Galerie 
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-aha-tutorial/tutorial_aha_search.png)
 
-5. Na panelu výsledků vyberte **Aha!**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Aha!** a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-aha-tutorial/tutorial_aha_addfromgallery.png)
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-aha-tutorial/tutorial_aha_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.aha.io/session/new`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.aha.io/session/new`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.aha.io`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.aha.io`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [Aha! Tým podpory klienta](https://www.aha.io/company/contact) k získání těchto hodnot. 
@@ -235,10 +235,10 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

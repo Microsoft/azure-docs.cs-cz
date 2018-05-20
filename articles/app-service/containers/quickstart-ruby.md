@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace v Ruby a její nasazení do služby App Service v Linuxu | Dokumentace Microsoftu
+title: Vytvoření aplikace v Ruby a její nasazení do služby App Service v Linuxu | Microsoft Docs
 description: Naučte se vytvářet aplikace v Ruby pomocí služby App Service v Linuxu.
 keywords: azure app service, linux, oss, ruby
 services: app-service
@@ -16,15 +16,15 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: def1e3f3de25478e51a069bc64c98d650f59072f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0707835cf4d6891397579cc41de49fc0462b4521
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Vytvoření aplikace v Ruby ve službě App Service v Linuxu
 
-[App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak vytvořit základní aplikaci v Ruby on Rails a pak ji nasadit do Azure jako webovou aplikaci v Linuxu.
+[Azure App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto rychlém startu se dozvíte, jak vytvořit základní aplikaci v [Ruby on Rails](https://rubyonrails.org/), kterou pak můžete nasadit do Azure jako webovou aplikaci v Linuxu.
 
 ![Hello World](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
 
-Aby aplikace fungovala, spusťte server Rails. Přejděte do adresáře *hello-world* a příkazem `rails server` spusťte server.
+Aby aplikace fungovala, musí běžet server Rails. Přejděte do adresáře `hello-world` a spusťte server pomocí příkazu `rails server`.
 
 ```bash
 cd hello-world\bin

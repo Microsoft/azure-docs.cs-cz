@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s izolovaného prostoru Salesforce | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a izolovaného prostoru služby Salesforce."
+title: 'Kurz: Azure Active Directory integrace s izolovaného prostoru Salesforce | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a izolovaného prostoru služby Salesforce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 16b60342106c69cb9959aad539b794cb8003acda
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0660bdb3592e36cb25f68243f16e32d7e51fb85c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Kurz: Azure Active Directory integrace s izolovaného prostoru Salesforce
 
@@ -30,7 +30,7 @@ Integrace služby Salesforce izolovaného prostoru s Azure AD poskytuje následu
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Salesforce izolovaného prostoru (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Salesforce izolovaného prostoru domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
 
-    b. V **identifikátor** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
+    b. V **identifikátor** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
     
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory služby Salesforce klienta](https://help.salesforce.com/support) k získání těchto hodnot.
@@ -153,7 +153,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     b. V **vystavitele** pole, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure
 
-    c. V **Entity Id** textovému poli, typ `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Pokud je první instance Salesforce izolovaného prostoru, který chcete přidat do vašeho adresáře. Pokud jste již přidali instance Salesforce izolovaného prostoru, pak pro **Entity ID** zadejte **přihlašovací adresa URL**, což by mělo být v tomto formátu:`https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
+    c. V **Entity Id** textovému poli, typ `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Pokud je první instance Salesforce izolovaného prostoru, který chcete přidat do vašeho adresáře. Pokud jste již přidali instance Salesforce izolovaného prostoru, pak pro **Entity ID** zadejte **přihlašovací adresa URL**, což by mělo být v tomto formátu: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
  
     d. Nahrát **certifikát zprostředkovatele Identity**, klikněte na tlačítko **zvolit soubor** a procházet a vyberte soubor certifikátu, který jste si stáhli z portálu Azure.  
 
@@ -266,17 +266,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici služby Salesforce izolovaného prostoru na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Salesforce izolovaného prostoru.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

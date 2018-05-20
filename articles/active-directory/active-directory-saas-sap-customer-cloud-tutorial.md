@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s cloudem SAP zákazníka. | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudu pro zákazníka."
+title: 'Kurz: Azure Active Directory integrace s cloudem SAP zákazníka. | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP cloudu pro zákazníka.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b6ea3cfd8e50d82b5044708e78150fefb39b4c38
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 18172fb634c369fb4add5fe7c55e5fec08df7670
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Kurz: Azure Active Directory integrace s cloudem SAP zákazníka.
 
@@ -29,7 +29,7 @@ Integrace SAP cloudu pro zákazníka s Azure AD poskytuje následující výhody
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k SAP cloudu pro zákazníka (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<server name>.crm.ondemand.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server name>.crm.ondemand.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<server name>.crm.ondemand.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<server name>.crm.ondemand.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [SAP Cloud pro tým podpory zákazníků klienta](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) k získání těchto hodnot. 
@@ -179,7 +179,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     Pokud jednotného přihlašování není aktivní, odešle systému zaměstnanec adresu URL normální systému. Pokud je aktivní jednotné přihlašování, systém kontroluje, zda zaměstnanec má heslo. Pokud heslo je k dispozici, jednotného přihlašování k URL a adresy URL bez jednotného přihlašování k odešlou do jednotlivých zaměstnanců. Ale pokud zaměstnanec, nemá žádné heslo, pouze adresy URL pro jednotné přihlašování odešle zaměstnanci.
    
-    kB. Uložte provedené změny.
+    k. Uložte provedené změny.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -260,10 +260,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Po kliknutí na tlačítko SAP cloudu pro dlaždice zákazníka na přístupovém panelu, jste měli získat automaticky přihlášení k SAP cloudu pro aplikace pro zákazníky.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 200d87b950ac76c85513bc11da2798562e48bec3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f681eb91c1e79eb42b572956dfab93e620489e74
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrovat Azure Active Directory Remix vedoucí prodeje E
 
@@ -30,7 +30,7 @@ Díky integraci služby Azure AD se Remix Manager E prodej, získáte následuj�
 - Můžete povolit uživatelům získat automaticky k přihlášený E prodej Manager Remix (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +107,7 @@ Povolení služby Azure AD jednotného přihlašování na portálu Azure a nako
     > [!NOTE] 
     > Předchozí hodnoty nejsou skutečné. Aktualizaci s skutečné přihlašovací adresa URL a identifikátor. Chcete-li získat hodnoty, obraťte se na [tým podpory E prodej Manager Remix klienta](mailto:esupport@softbrain.co.jp).
 
-4. V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu v počítači.
+4. V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu (Base64)](./media/active-directory-saas-esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_certificate.png) 
 
@@ -117,7 +117,7 @@ Povolení služby Azure AD jednotného přihlašování na portálu Azure a nako
 
     **Upravit atribut** otevře se okno.
 
-6. Kopírování **Namespace** a **název** hodnoty. Generovat hodnota ve vzoru  *\<Namespace > /\<Name >*a uložit pro pozdější použití v tomto kurzu.
+6. Kopírování **Namespace** a **název** hodnoty. Generovat hodnota ve vzoru  *\<Namespace > /\<Name >* a uložit pro pozdější použití v tomto kurzu.
 
     ![Okno Upravit atribut](./media/active-directory-saas-esalesmanagerremix-tutorial/configure2.png)
 
@@ -259,7 +259,7 @@ V této části povolit uživatele Britta Simon používat Azure jednotné přih
 
 7. V **přidat přiřazení** vyberte **přiřadit**.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -270,7 +270,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS do Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,8 +1,8 @@
 ---
-title: "Vytváření sestav v Azure Active Directory zřizování účtu automatické uživatelů pro aplikace SaaS | Microsoft Docs"
-description: "Zjistěte, jak zkontrolovat stav zřizování úlohy automatické uživatelského účtu a řešení potíží s zřizování jednotlivé uživatele."
+title: Vytváření sestav v Azure Active Directory zřizování účtu automatické uživatelů pro aplikace SaaS | Microsoft Docs
+description: Zjistěte, jak zkontrolovat stav zřizování úlohy automatické uživatelského účtu a řešení potíží s zřizování jednotlivé uživatele.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: d2ec1b25e39717fb2411d35e3b0a9f5eb3a977be
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1527e8fe28d395a77d7b3c1535e40fe59df1baba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Generování sestav na uživatele automatické zřizování účtu
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak zkontrolovat stav zajišťování úlohy po byly na
 
 Zřizování konektory jsou primárně nastavit a konfigurovat pomocí [portál pro správu Azure](https://portal.azure.com), pomocí následujících [poskytuje dokumentaci](active-directory-saas-tutorial-list.md) pro aplikaci, kde je žádoucí zřizování účtu uživatele. Jakmile nakonfigurovaná a spuštěná, mohou být zřizování úlohy pro aplikaci oznámeny na pomocí jedné ze dvou způsobů:
 
-* **Portál pro správu Azure** – Tento článek popisuje především načítání informací ze sestavy z [portál pro správu Azure](https://portal.azure.com), který poskytuje protokoly pro danou aplikaci zřizování souhrnnou sestavu jak podrobné zřizování auditu.
+* **Portál pro správu Azure** – Tento článek popisuje především načítání informací ze sestavy z [portál pro správu Azure](https://portal.azure.com), která nabízí zřizování souhrnnou sestavu jak podrobné zřizování auditu protokoly pro danou aplikaci.
 
 * **Audit rozhraní API** – Azure Active Directory také poskytuje rozhraní API auditu, který umožňuje programový načtení podrobné zřizování protokoly auditu. V tématu [auditování Azure Active Directory referenční dokumentace rozhraní API](active-directory-reporting-api-audit-reference.md) pro dokumentaci týkající se použití toto rozhraní API. Když tento článek nepopisuje používání rozhraní API konkrétně, podrobnosti typy zřizování události, které se zaznamenávají v protokolu auditu.
 
@@ -130,7 +130,7 @@ Zřizování souhrnné sestavy a auditu protokoly hrát klíčovou roli pomáhá
 Na základě scénáře pokyny, jak řešit zřizování automatické uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů k aplikaci](active-directory-application-provisioning-content-map.md).
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další prostředky
 
 * [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-enterprise-apps-manage-provisioning.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)

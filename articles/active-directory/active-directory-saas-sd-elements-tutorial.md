@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SD elementy | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SD elementy."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SD elementy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 796f4d1b679c06be8677cd07f52ce305a7bc1ef8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b523841fc40f8ac07448abc80125f1f510cba840
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Kurz: Azure Active Directory integrace s SD elementy
 
@@ -29,7 +29,7 @@ Integrace s Azure AD SD elementy poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k elementům SD (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sd-elements-tutorial/tutorial_sdelements_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenantname>.sdelements.com/sso/saml2/metadata`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenantname>.sdelements.com/sso/saml2/acs/`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory SD elementy](mailto:support@sdelements.com) k získání těchto hodnot.
@@ -125,9 +125,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     | Název atributu | Hodnota atributu |
     | --- | --- |
-    | E-mailu |User.Mail |
-    | FirstName |User.givenName |
-    | Příjmení |User.Surname |
+    | e-mail |User.Mail |
+    | FirstName |user.givenname |
+    | Příjmení |user.surname |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -228,7 +228,7 @@ Cílem této části je vytvoření uživatele volal Britta Simon v SD elementy.
    
     ![Vytvoření zkušebního uživatele SD elementy](./media/active-directory-saas-sd-elements-tutorial/tutorial_sd-elements_13.png) 
    
-    a. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .
+    a. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako **brittasimon@contoso.com**.
    
     b. V **křestní jméno** textovému poli, zadejte jméno uživatele jako **Britta**.
    
@@ -274,10 +274,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
   
 Když kliknete na dlaždici SD elementy na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci SD elementy.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s BGS Online | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BGS Online."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BGS Online.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 0e415aab14e6c79ec937607433e0b8f13a0e971c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fc551aaa0a1383376d345f922c3e226cb88c4d26
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Kurz: Azure Active Directory integrace s BGS Online
 
@@ -29,7 +29,7 @@ Integrace BGS Online s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k BGS Online (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,15 +112,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
 
-    Pro produkční prostředí použijte tento vzor`https://<company name>.millwardbrown.report` 
+    Pro produkční prostředí použijte tento vzor `https://<company name>.millwardbrown.report` 
 
-    Pro testovací prostředí použijte tento vzor`https://millwardbrown.marketingtracker.nl/mt5/`
+    Pro testovací prostředí použijte tento vzor `https://millwardbrown.marketingtracker.nl/mt5/`
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     
-    Pro produkční prostředí použijte tento vzor`https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx` 
+    Pro produkční prostředí použijte tento vzor `https://<company name>.millwardbrown.report/sso/saml/AssertionConsumerService.aspx` 
       
-    Pro testovací prostředí použijte tento vzor`https://millwardbrown.marketingtracker.nl/mt5/sso/saml/AssertionConsumerService.aspx`
+    Pro testovací prostředí použijte tento vzor `https://millwardbrown.marketingtracker.nl/mt5/sso/saml/AssertionConsumerService.aspx`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [BGS Online tým podpory](mailTo:bgsdashboardteam@millwardbrown.com) k získání těchto hodnot.
@@ -215,10 +215,10 @@ V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihl
 
 Když kliknete na dlaždici BGS Online na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci BGS Online.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

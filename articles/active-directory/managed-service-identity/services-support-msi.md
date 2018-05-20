@@ -9,11 +9,11 @@ ms.topic: reference
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: 59f3535bd7efd17d818bf3c60dc1744d19a2ec37
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d31c169600c594fc4764262cb8d080e9aee96b21
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="services-that-support-managed-service-identity"></a>Služby, které podporují identita spravované služby 
 
@@ -39,7 +39,7 @@ Následující služby podporují ověřování Azure AD a byly testovány s kli
 | ------- | ----------- | ------ | ---- | ------------- |
 | Azure Resource Manager | https://management.azure.com/ | K dispozici. | 2017 září | [Azure Portal](howto-assign-access-portal.md) <br>[PowerShell](howto-assign-access-powershell.md) <br>[Azure CLI](howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net | K dispozici. | 2017 září | |
-| Azure Data Lake | https://datalake.azure.net | K dispozici. | 2017 září | |
-| Azure SQL | https://database.windows.net | K dispozici. | Říjen 2017 | |
+| Azure Data Lake | https://datalake.azure.net/ | K dispozici. | 2017 září | |
+| Azure SQL | https://database.windows.net/ | K dispozici. | Říjen 2017 | |
 | Azure Event Hubs | https://eventhubs.azure.net | K dispozici. | 2017 prosinec | |
 | Azure Service Bus | https://servicebus.azure.net | K dispozici. | 2017 prosinec | |

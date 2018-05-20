@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Asana | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Asana."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Asana.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 8058dcd397e5f81f4a8c8cd1845353fd789f604b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2042c1525849696efaf5fda5f35c1abc72839737
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Kurz: Azure Active Directory integrace s Asana
 
@@ -30,7 +30,7 @@ Integrace Asana s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Asana (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Asana domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-asana-tutorial/tutorial_asana_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadat adresu URL:`https://app.asana.com/`
+    a. V **přihlašovací adresa URL** textovému poli, zadat adresu URL: `https://app.asana.com/`
 
-    b. V **identifikátor** textovému poli, hodnota typu:`https://app.asana.com/`
+    b. V **identifikátor** textovému poli, hodnota typu: `https://app.asana.com/`
  
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
@@ -215,16 +215,16 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je pro testování vaší služby Azure AD jednotné přihlašování.
 
 Přejděte na stránku přihlášení Asana. Do textového pole e-mailovou adresu, vložit e-mailovou adresu britta.simon@contoso.com. Ponechte textové pole hesla v prázdné a pak klikněte na **protokolu v**. Budete přesměrováni na přihlašovací stránku služby Azure AD. Dokončení přihlašovací údaje Azure AD. Nyní jste přihlášeni Asana.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s LinkedIn Learning | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LinkedIn Learning."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LinkedIn Learning.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 07d19a3fb457093d05afc13e1953c120ece3a280
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fabb79a1449529cde97db7054eb954564b4dfa68
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Kurz: Azure Active Directory integrace s LinkedIn Learning
 
@@ -29,7 +29,7 @@ Integrace LinkedIn Learning s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k LinkedIn Learning (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -134,10 +134,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     | Název atributu | Hodnota atributu |
     | --- | --- |
-    | E-mailu| User.Mail |    
-    | Oddělení| User.Department |
-    | FirstName| User.givenName |
-    | Příjmení| User.Surname |
+    | e-mail| User.Mail |    
+    | oddělení| User.Department |
+    | FirstName| user.givenname |
+    | Příjmení| user.surname |
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-linkedinlearning-tutorial/userattribute.png)
     
@@ -252,10 +252,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici LinkedIn Learning na přístupovém panelu, měli byste obdržet stránku Azure přihlášení a na po úspěšném přihlášení, měli byste obdržet do své aplikace LinkedIn Learning.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

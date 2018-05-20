@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Ceridian Dayforce HCM | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Ceridian Dayforce HCM."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Ceridian Dayforce HCM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b87fe59f2761c26319ce9e13168dc6c4bf95f8b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 09f9d6d096944453d28a588de4d73dc3c95fc695
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Kurz: Azure Active Directory integrace s Ceridian Dayforce HCM
 
@@ -30,7 +30,7 @@ Integrace Ceridian Dayforce HCM s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Ceridian Dayforce HCM (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,23 +110,23 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL používá uživatelům přihlášení do aplikace Ceridian Dayforce HCM.
     
-    | Prostředí | ADRESA URL |
+    | Prostředí | zprostředkovatele identity |
     | :-- | :-- |
-    | Pro produkční prostředí | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
+    | Pokud se jedná o výrobu | `https://sso.dayforcehcm.com/<DayforcehcmNamespace>` |
     | Pro test | `https://ssotest.dayforcehcm.com/<DayforcehcmNamespace>` |
     
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     
-    | Prostředí | ADRESA URL |
+    | Prostředí | zprostředkovatele identity |
     | :-- | :-- |
-    | Pro produkční prostředí | `https://ncpingfederate.dayforcehcm.com/sp` |
+    | Pokud se jedná o výrobu | `https://ncpingfederate.dayforcehcm.com/sp` |
     | Pro test | `https://fs-test.dayforcehcm.com/sp` |
     
     c. V **adresa URL odpovědi** textové pole, zadejte adresu URL používá Azure AD při odesílání odpovědi.
     
-    | Prostředí | ADRESA URL |
+    | Prostředí | zprostředkovatele identity |
     | :-- | :-- |
-    | Pro produkční prostředí | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
+    | Pokud se jedná o výrobu | `https://ncpingfederate.dayforcehcm.com/sp/ACS.saml2` |
     | Pro test | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
@@ -268,15 +268,15 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.  
 Když kliknete na dlaždici Ceridian Dayforce HCM na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Ceridian Dayforce HCM. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

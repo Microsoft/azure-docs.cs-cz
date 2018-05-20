@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s ADP Globalview | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP Globalview."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ADP Globalview.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7271efe4a1cd943f84d322e7333c92d6f60b62aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5471a4edfc6830367d120580c1c36f30f87a8f90
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-globalview"></a>Kurz: Azure Active Directory integrace s ADP Globalview
 
@@ -29,7 +29,7 @@ Integrace ADP Globalview s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k ADP Globalview (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_url.png)
 
-     V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.globalview.adp.com/federate` nebo`https://<subdomain>.globalview.adp.com/federate2`
+     V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.globalview.adp.com/federate` nebo `https://<subdomain>.globalview.adp.com/federate2`
 
     > [!NOTE] 
     > Hodnota není skutečné. Aktualizujte hodnotu skutečným identifikátorem. Obraťte se na [ADP Globalview podporu](https://www.adp.com/contact-us/overview.aspx) k získání hodnoty.
@@ -130,8 +130,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |    
     | personalimmutableid | User.extensionattribute2 |
-    | E-mailu               | User.Mail |
-    | ID uživatele              | User.userPrincipalName|
+    | e-mail               | User.Mail |
+    | ID uživatele              | user.userprincipalname|
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -232,10 +232,10 @@ Cílem této části je testování konfigurace Azure AD jednotného přihlašov
 
 Když kliknete na dlaždici ADP GlobalView na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci ADP GlobalView.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

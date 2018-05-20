@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Evidence.com | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Evidence.com."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Evidence.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 655a12685641964c81dd6a94ae7e7a19a9a30001
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3f0d469ac761a5db4bcaf1aaceea0b9abca33559
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Kurz: Azure Active Directory integrace s Evidence.com
 
@@ -30,7 +30,7 @@ Integrace Evidence.com s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Evidence.com (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Evidence.com domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-evidence-tutorial/tutorial_evidence.com_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<yourtenant>.evidence.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<yourtenant>.evidence.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<yourtenant>.evidence.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<yourtenant>.evidence.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Evidence.com klienta](https://communities.taser.com/support/SupportContactUs?typ=LE) k získání těchto hodnot. 
@@ -187,7 +187,7 @@ Azure AD uživatelé moci přihlásit musí být zřízená pro přístup k uvni
 
 3. Klikněte na **přidat uživatele**.
 
-4. Klikněte **přidat** tlačítko.
+4. Klikněte na tlačítko **Přidat**.
 
 5. **E-mailovou adresu** uživatele, přidání musí odpovídat uživatelskému jménu uživatele ve službě Azure AD, který chcete poskytnout přístup. Pokud uživatelské jméno a e-mailové adresy nejsou stejnou hodnotu ve vaší organizaci, můžete použít **Evidence.com > atributy > jednotné přihlašování** části portálu Azure, chcete-li změnit nameidenitifer posílá Evidence.com jako e-mailovou adresu.
 
@@ -221,17 +221,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Evidence.com na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Evidence.com.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

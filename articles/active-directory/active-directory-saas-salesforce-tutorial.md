@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Salesforce | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a služby Salesforce."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a služby Salesforce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: ed127afbca5135ade21f6ac53d18d46e88939fd9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf788f1c38c701699e0c275cabe3d12eb75270
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Kurz: Azure Active Directory integrace s Salesforce
 
@@ -30,7 +30,7 @@ Integrace služby Salesforce s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Salesforce (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,15 +110,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce:
     
-    Účet organizace:`https://<subdomain>.my.salesforce.com`
+    Účet organizace: `https://<subdomain>.my.salesforce.com`
 
-    Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
     
     b. V **identifikátor** textovému poli, zadejte hodnotu pomocí následujícího vzorce:
     
-    Účet organizace:`https://<subdomain>.my.salesforce.com`
+    Účet organizace: `https://<subdomain>.my.salesforce.com`
 
-    Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+    Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
     
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory služby Salesforce klienta](https://help.salesforce.com/support) k získání těchto hodnot.
@@ -169,8 +169,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **textové pole Entity Id**, zadejte název domény vaší služby Salesforce pomocí následujícího vzorce:
       
-      * Účet organizace:`https://<subdomain>.my.salesforce.com`
-      * Vývojářský účet:`https://<subdomain>-dev-ed.my.salesforce.com`
+      * Účet organizace: `https://<subdomain>.my.salesforce.com`
+      * Vývojářský účet: `https://<subdomain>-dev-ed.my.salesforce.com`
       
     d. Nahrát **certifikát zprostředkovatele Identity**, klikněte na tlačítko **zvolit soubor** a procházet a vyberte soubor certifikátu, který jste si stáhli z portálu Azure.
 
@@ -276,17 +276,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici služby Salesforce na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Salesforce.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

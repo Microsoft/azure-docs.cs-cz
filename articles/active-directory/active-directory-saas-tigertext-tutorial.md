@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s TigerText zabezpečení Messenger | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TigerText zabezpečení Messenger."
+title: 'Kurz: Azure Active Directory integrace s TigerText zabezpečení Messenger | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a TigerText zabezpečení Messenger.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: efbdf55f425d8e559b741f41b09527e9ce93f999
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b21f3474466c8338046ebdad5a9cae18bdda4fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Kurz: Azure Active Directory integrace s TigerText zabezpečení Messenger
 
@@ -29,7 +29,7 @@ Integrace TigerText zabezpečení Messenger s Azure AD poskytuje následující 
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k TigerText zabezpečení Messenger (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -100,15 +100,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
-    ![Na základě SAML přihlášení](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_samlbase.png)
+    ![Přihlašování založené na SAML](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_samlbase.png)
 
 3. Na **TigerText zabezpečení domény Messenger a adresy URL** část, proveďte následující kroky:
 
     ![Část TigerText zabezpečení domény Messenger a adresy URL](./media/active-directory-saas-tigertext-tutorial/tutorial_tigertext_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://home.tigertext.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://home.tigertext.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://saml-lb.tigertext.me/v1/organization/<instance Id>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`
 
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tato hodnota se skutečným identifikátorem. Obraťte se na [tým podpory TigerText zabezpečení Messenger klienta](mailTo:prosupport@tigertext.com) získat tuto hodnotu. 
@@ -192,16 +192,16 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici TigerText na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci TigerText. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s příponou Panel přístupu Azure pro aplikaci Internet Explorer | Microsoft Docs"
-description: "Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny."
+title: Řešení potíží s příponou Panel přístupu Azure pro aplikaci Internet Explorer | Microsoft Docs
+description: Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff6d0b299c45d89ee8d3a79fa98ce4a542174a5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s příponou Panel přístupu pro Internet Explorer
 Tento článek vám pomůže vyřešit tyto problémy:
@@ -92,6 +92,6 @@ Pokud narazíte na problémy odinstalace rozšíření, můžete také odebrat p
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md)
+* [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md)
 * [Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)
 

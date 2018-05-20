@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Optimizely | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Optimizely."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Optimizely.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: e44e1621632bf2c8a3c4050b718d2721f5132d06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 995b440cbf9dc93ec01fe0b86c69ea09cd4714ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: Azure Active Directory integrace s Optimizely
 
@@ -29,7 +29,7 @@ Integrace Optimizely s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Optimizely (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://app.optimizely.net/<instance name>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://app.optimizely.net/<instance name>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`urn:auth0:optimizely:contoso`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:  `urn:auth0:optimizely:contoso`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou reálné. Aktualizujte hodnotu s skutečné přihlašovací adresa URL a identifikátor, který je vysvětlen později v tomto kurzu. 
@@ -147,7 +147,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
     ![Azure AD jednotné přihlášení](./media/active-directory-saas-optimizely-tutorial/tutorial_optimizely_10.png)
     
-12. Klikněte na tlačítko **uložit**
+12. Klikněte na **Uložit**.
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -236,10 +236,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici Optimizely na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Optimizely. 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

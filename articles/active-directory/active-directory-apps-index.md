@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam každému dokumentu zapsána o různých funkcích týkající se aplikace v Azure Active Directory (Azure AD).
@@ -31,7 +31,7 @@ Je stručný úvod do každé oblasti hlavní funkce, jakož i pokyny na článk
 | Článek Průvodce |  |
 |:---:| --- |
 | Úvod do správy problémů aplikace, které řeší Azure AD |[Správa aplikací pomocí služby Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
-| Přehled různých funkcí ve službě Azure AD, vztahuje k povolování jednotné přihlašování, definovat, kdo má přístup k aplikacím a jak uživatelé spustí aplikace |[Přístup k aplikaci a jednotné přihlašování v Azure Active Directory](active-directory-appssoaccess-whatis.md) |
+| Přehled různých funkcí ve službě Azure AD, vztahuje k povolování jednotné přihlašování, definovat, kdo má přístup k aplikacím a jak uživatelé spustí aplikace |[Přístup k aplikaci a jednotné přihlašování v Azure Active Directory](manage-apps/what-is-single-sign-on.md) |
 | Podívejte se na různé kroky při integraci aplikace do služby Azure AD |[Integrace s aplikacemi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Povolení jednotného přihlašování k aplikacím SaaS](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Správa přístupu k aplikacím](active-directory-managing-access-to-apps.md) |
 | Technické vysvětlení, jak jsou reprezentována aplikací ve službě Azure AD |[Jak a proč se aplikace přidávají do služby Azure AD](active-directory-how-applications-are-added.md) |
 
@@ -52,8 +52,8 @@ Jednotné přihlašování umožňuje uživatelům přístup k celou řadu aplik
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Úvod do federační a dalších typů přihlášení |[Jednotné přihlašování s Azure AD](active-directory-appssoaccess-whatis.md) |
-| Tisíce aplikacemi SaaS, které jsou předem integrované se službou Azure AD s zjednodušené kroky konfigurace přihlášení |[Začínáme s galerii aplikací Azure AD](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Úplný seznam předem integrovaných aplikací, které podporují Federation](active-directory-saas-tutorial-list.md)<br /><br />[Postup přidání aplikace do galerii aplikací Azure AD](active-directory-app-gallery-listing.md) |
+| Úvod do federační a dalších typů přihlášení |[Jednotné přihlašování s Azure AD](manage-apps/what-is-single-sign-on.md) |
+| Tisíce aplikacemi SaaS, které jsou předem integrované se službou Azure AD s zjednodušené kroky konfigurace přihlášení |[Začínáme s galerii aplikací Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Úplný seznam předem integrovaných aplikací, které podporují Federation](active-directory-saas-tutorial-list.md)<br /><br />[Postup přidání aplikace do galerii aplikací Azure AD](active-directory-app-gallery-listing.md) |
 | Víc než 150 aplikace kurzy o tom, jak nakonfigurovat jednotné přihlašování pro aplikace, jako například [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md)a mnoho dalších |[Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md) |
 | Ruční nastavení a konfiguraci jednoho přihlášení přizpůsobit |[Jak na nakonfigurovat federovaného jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Postup přizpůsobení deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md) |
 | Příručka pro řešení potíží pro federované aplikace, které používají protokol SAML |[Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md) |
@@ -66,7 +66,7 @@ Umožňující jednotného přihlašování k aplikacím, které nepodporují fe
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Stručný technický přehled a základní informace o tom, jak založené na heslech funguje jednotné přihlašování |[Založené na heslech jednotné přihlašování s Azure AD](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
+| Stručný technický přehled a základní informace o tom, jak založené na heslech funguje jednotné přihlašování |[Založené na heslech jednotné přihlašování s Azure AD](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | Souhrn scénáře související s účet sdílení a jak jsou tyto problémy vyřešit pomocí Azure AD |[Sdílení účtů s Azure AD](active-directory-sharing-accounts.md) |
 | Automaticky změňte heslo pro určité aplikace v pravidelných intervalech |[Automatizované výměny heslo (preview)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Nasazení a řešení potíží s příručky pro Internet Explorer verze rozšíření správy hesel Azure AD |[Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)<br /><br />[Řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
@@ -183,11 +183,11 @@ Přístupový Panel Azure AD je, kde se koncoví uživatelé můžou spouštět 
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Porovnání různé možnosti, které jsou k dispozici pro nasazení aplikace přihlášení pro uživatele |[Nasazení služby Azure AD integrovaných aplikací pro uživatele](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
+| Porovnání různé možnosti, které jsou k dispozici pro nasazení aplikace přihlášení pro uživatele |[Nasazení služby Azure AD integrovaných aplikací pro uživatele](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | Přehled na přístupovém panelu a jeho mobilních ekvivalentní MyApps |[Úvod do přístupového panelu a MyApps](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Jak získat přístup z webu Office 365 aplikace Azure AD. |[Pomocí Spouštěč aplikace Office 365](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Jak získat přístup z mobilní aplikace Intune Managed Browser aplikace Azure AD. |[Spravovaný prohlížeč Intune](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />– [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
-| Jak získat přístup k zahájení jednotné přihlašování pomocí přímých odkazů aplikace Azure AD. |[Získávání přímé odkazy přihlašování pro vaše aplikace](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
+| Jak získat přístup k zahájení jednotné přihlašování pomocí přímých odkazů aplikace Azure AD. |[Získávání přímé odkazy přihlašování pro vaše aplikace](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 Přístupový Panel je k dispozici pro [všechny edice služby Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 

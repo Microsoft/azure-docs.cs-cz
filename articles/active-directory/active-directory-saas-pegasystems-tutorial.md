@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace se systémy Pega | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Pega systémy."
+title: 'Kurz: Azure Active Directory integrace se systémy Pega | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Pega systémy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 924abe287b5e39bb77a418b56b5c33195095e07a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 539de49f24b2ca0c9b70be5a339625c1e14edc44
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Kurz: Azure Active Directory integrace s Pega systémy
 
@@ -30,7 +30,7 @@ Integrace Pega systémy s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Pega systémy (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,15 +108,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Pega systémy domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/sp/<INSTANCEID>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<CUSTOMERNAME>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Pega systémy domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-pegasystems-tutorial/tutorial_pegasystems_url1.png)
 
-    V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
+    V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečné identifikátor, adresa URL odpovědi a předávání stavu adresy URL. Můžete získat hodnoty identifikátor a adresa URL odpovědi z Pega aplikace, které se vysvětluje dále v tomto kurzu. Pro stav předávání, obraťte se na [tým podpory klientské systémy Pega](https://www.pega.com/contact-us) k získání hodnoty. 
@@ -197,7 +197,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. Vyberte **zakázat žádost o podepsání**.
 
-15. Klikněte na tlačítko **uložit**
+15. Klikněte na **Uložit**.
     
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -269,17 +269,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Pega systémy na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Pega systémy.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

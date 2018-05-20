@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s HireVue | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HireVue."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a HireVue.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: e79526ff45babbca7722aa478347c0e3c9f013cd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cc59943871c6690a14754e919a8865065c0b40ac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Kurz: Azure Active Directory integrace s HireVue
 
@@ -29,7 +29,7 @@ Integrace HireVue s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k HireVue (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,17 +112,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
 
-    | Prostředí | ADRESA URL |
+    | Prostředí | zprostředkovatele identity |
     |-------------|---|
-    | Produkční | `https://<companyname>.hirevue.com` |
-    | Pracovní    | `https://<companyname>.stghv.com` |
+    | Výroba | `https://<companyname>.hirevue.com` |
+    | Fázování    | `https://<companyname>.stghv.com` |
     
     b. V **identifikátor** textovému poli, zadejte adresu URL jako:
     
     | Prostředí | NÁZEV URN |
     |-------------|-----|
-    | Produkční |`urn:federation:hirevue.com:saml:sp:prod` |
-    | Pracovní    | `urn:federation:hirevue.com:saml:sp:staging`|
+    | Výroba |`urn:federation:hirevue.com:saml:sp:prod` |
+    | Fázování    | `urn:federation:hirevue.com:saml:sp:staging`|
     
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory HireVue klienta](mailto:samlsupport@hirevue.com) k získání těchto hodnot. 
@@ -216,10 +216,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici HireVue na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci HireVue.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

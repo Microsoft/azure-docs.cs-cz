@@ -15,23 +15,23 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5316cca9d3c944735355d7912a0f1e044c585001
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím, které nejsou k dispozici v galerii aplikací Azure Active Directory *bez nutnosti psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](active-directory-whatis.md). Pokud místo toho hledáte Průvodce pro vývojáře o tom, jak integrovat vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
 
-Poskytuje seznam aplikací, které jsou známé pro podporu forma jednotné přihlašování s Azure Active Directory, jak je popsáno v galerii aplikací Azure Active Directory [v tomto článku](active-directory-appssoaccess-whatis.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) naleznete na aplikaci, kterou chcete připojit, můžete začít používat podle podrobné pokyny uvedené na portálu Azure umožňující jednotného přihlašování.
+Poskytuje seznam aplikací, které jsou známé pro podporu forma jednotné přihlašování s Azure Active Directory, jak je popsáno v galerii aplikací Azure Active Directory [v tomto článku](manage-apps/what-is-single-sign-on.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) naleznete na aplikaci, kterou chcete připojit, můžete začít používat podle podrobné pokyny uvedené na portálu Azure umožňující jednotného přihlašování.
 
 Zákazníci s [Azure Active Directory Premium](active-directory-whatis.md) licenci získat také tyto další funkce:
 
 * Samoobslužné integrace každou aplikaci, která podporuje poskytovatele identity SAML 2.0 (spouštěná SP nebo spouštěná IdP)
-* Samoobslužné integrace webové aplikace, který má k HTML na přihlašovací stránce pomocí [jednotné přihlašování založené na heslech](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
+* Samoobslužné integrace webové aplikace, který má k HTML na přihlašovací stránce pomocí [jednotné přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([zde popsané](active-directory-scim-provisioning.md))
-* Umožňuje přidat odkazy na všechny aplikace v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Umožňuje přidat odkazy na všechny aplikace v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
 
 To může zahrnovat pouze aplikace SaaS, které můžete použít, ale nebyly dosud byl na zahrnuté pro galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené servery, které řídíte, buď v cloudu nebo místně.
 
@@ -115,18 +115,18 @@ Chcete otestovat, jednoduše přihlásit se k Azure AD přístupovému panelu na
 Ladění tipy, najdete [článek o tom, jak ladit na základě SAML jednotného přihlašování k aplikacím](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>Heslo jednotné přihlašování
-Vyberte tuto možnost, chcete-li nakonfigurovat [založené na heslech jednotné přihlašování](active-directory-appssoaccess-whatis.md) pro webovou aplikaci, která má přihlašovací stránku HTML. Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, kdy je potřeba několik uživatelé sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace. 
+Vyberte tuto možnost, chcete-li nakonfigurovat [založené na heslech jednotné přihlašování](manage-apps/what-is-single-sign-on.md) pro webovou aplikaci, která má přihlašovací stránku HTML. Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, můžete spravovat přístup uživatelů a hesla k webovým aplikacím, které nepodporují federaci identit. Je také užitečné v případech, kdy je potřeba několik uživatelé sdílet jeden účet, například k účtům aplikace sociálních médií vaší organizace. 
 
 Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace založené na webu přihlašovací stránky. Všimněte si, že to musí být stránky, která obsahuje vstupní pole uživatelské jméno a heslo. Jakmile se zadá, Azure AD spustí proces analyzovat přihlašovací stránce zadejte uživatelské jméno a heslo zadejte. Pokud proces není úspěšné, pak provede vás alternativní procesem instalace rozšíření prohlížeče (vyžaduje Internet Explorer, Chrome nebo Firefox), které vám umožní ručně zaznamenat pole.
 
-Jakmile zachytí přihlašovací stránku, může přiřadit uživatele a skupiny a zásady přihlašovacích údajů můžete nastavit stejně jako regulární [heslo jednotného přihlašování k aplikacím](active-directory-appssoaccess-whatis.md).
+Jakmile zachytí přihlašovací stránku, může přiřadit uživatele a skupiny a zásady přihlašovacích údajů můžete nastavit stejně jako regulární [heslo jednotného přihlašování k aplikacím](manage-apps/what-is-single-sign-on.md).
 
 Poznámka: Můžete nahrávat logo dlaždice pro aplikace pomocí **nahrát Logo** na tlačítko **konfigurace** kartě pro aplikaci. 
 
 ## <a name="existing-single-sign-on"></a>Existující jednotné přihlašování
 Vyberte tuto možnost, chcete-li přidat odkaz na aplikaci na portál přístupový Panel Azure AD nebo Office 365 vaší organizace. To můžete použít k přidání odkazů na vlastní webové aplikace, které používají Azure Active Directory Federation Services (nebo jiné služby federation service) namísto Azure AD pro ověřování. Nebo můžete přidat přímé odkazy na konkrétní stránky SharePoint nebo jiných webových stránek, které chcete zobrazit na panelů přístup uživatelů. 
 
-Po výběru **Další**, zobrazí se výzva k zadání adresy URL aplikace má být propojen s. Po dokončení, uživatelů a skupin může být přiřazen aplikaci, které způsobí, že aplikace se zobrazí v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) pro tyto uživatele.
+Po výběru **Další**, zobrazí se výzva k zadání adresy URL aplikace má být propojen s. Po dokončení, uživatelů a skupin může být přiřazen aplikaci, které způsobí, že aplikace se zobrazí v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) pro tyto uživatele.
 
 Poznámka: Můžete nahrávat logo dlaždice pro aplikace pomocí **nahrát Logo** na tlačítko **konfigurace** kartě pro aplikaci.
 

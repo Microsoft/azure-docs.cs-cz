@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Learningpool Act | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learningpool akce."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Learningpool akce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: aca50fedb44f25f4d98e4a893ac55783263ba52b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87a36e636362a8b5bfc63a7394ddb92134e119cb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Kurz: Azure Active Directory integrace s Learningpool Act
 
@@ -29,7 +29,7 @@ Integrace s Azure AD Application Compatibility Toolkit Learningpool poskytuje n�
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Learningpool Act (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-Learningpool-tutorial/tutorial_Learningpoolact_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
@@ -133,10 +133,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |
-    | název urn: oid:1.2.840.113556.1.4.221 | User.userPrincipalName |
-    | název urn: oid:2.5.4.42 | User.givenName |
-    | název urn: oid:0.9.2342.19200300.100.1.3 | User.Mail |    
-    | název urn: oid:2.5.4.4 | User.Surname |
+    | název urn: oid:1.2.840.113556.1.4.221 | user.userprincipalname |
+    | název urn: oid:2.5.4.42 | user.givenname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | User.Mail |    
+    | název urn: oid:2.5.4.4 | user.surname |
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -239,10 +239,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 
 Když kliknete na dlaždici Learningpool Act na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Learningpool akce.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

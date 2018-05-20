@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s etouches | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a etouches."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a etouches.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: bc111d6805af9e4f86ab91b6673a0d52dca78223
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e2b51227d89064e233ea1d1126bbf19169753094
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Kurz: Azure Active Directory integrace s etouches
 
@@ -30,7 +30,7 @@ Integrace etouches s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k etouches (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,9 +107,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![jednotné přihlašování informace etouches domény a adresy URL](./media/active-directory-saas-etouches-tutorial/tutorial_etouches_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://www.eiseverywhere.com/saml/accounts/?sso&accountid=<ACCOUNTID>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://www.eiseverywhere.com/<instance name>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://www.eiseverywhere.com/<instance name>`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Aktualizujte hodnotu skutečné znakem na adresu URL a identifikátor, který je vysvětlen později v tomto kurzu.
@@ -123,11 +123,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu | Hodnota atributu |
     | ------------------- | -------------------- |
-    | E-mail | User.Mail |    
+    | Email | User.Mail |    
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
-    ![Přidání atributu](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_04.png)
+    ![Přidat atribut](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_04.png)
 
     ![Atribut dialogové okno Přidání](./media/active-directory-saas-etouches-tutorial/tutorial_attribute_05.png)
 
@@ -236,17 +236,17 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici etouches na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci etouches.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

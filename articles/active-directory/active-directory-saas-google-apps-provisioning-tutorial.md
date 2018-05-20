@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Konfigurace Google Apps pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Naučte se automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do Google Apps."
+title: 'Kurz: Konfigurace Google Apps pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Naučte se automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do Google Apps.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5c68e709b72e4032eca76dd35103df50030ccca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Kurz: Konfigurace Google Apps pro zřizování automatické uživatelů
 
@@ -164,7 +164,7 @@ Další informace o tom, jak číst zřizování protokoly služby Azure AD najd
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurovat jednotné přihlašování](active-directory-saas-google-apps-tutorial.md)
 
 

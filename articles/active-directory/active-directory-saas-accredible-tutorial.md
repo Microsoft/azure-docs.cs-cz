@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Accredible | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Accredible."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Accredible.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: b0e33d2a1d455e233672bf1467efcfaf9df2cab3
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 6f869c0992619e17689a590a60eca77c0de09d92
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Kurz: Azure Active Directory integrace s Accredible
 
@@ -30,7 +30,7 @@ Integrace Accredible s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Accredible (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -114,7 +114,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     |  `https://api.accredible.com/sp/admin/accredible` |
     | `https://api.accredible.com/sp/user/accredible` |
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://api.accredible.com/v1/saml/admin/<Unique id>/consume`
 
     > [!NOTE] 
     > Adresa URL odpovědi hodnota není skutečné. Podle role uživatele použijte hodnotu identifikátoru. Každý zákazník má jedinečnou adresu URL odpovědi v závislosti na jejich ID. Obraťte se na [tým podpory Accredible](mailto:support@accredible.com) k získání těchto hodnot.
@@ -198,17 +198,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Accredible na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Accredible.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

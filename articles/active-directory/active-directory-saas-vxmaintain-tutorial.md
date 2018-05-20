@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s vxMaintain | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vxMaintain."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vxMaintain.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 66165b2586304f3726f5d712fb334fe67e2cd02b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c30d59a2bd903a5578caf376957a22bb270455f9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Azure Active Directory integrace s vxMaintain
 
@@ -29,7 +29,7 @@ Tato integrace poskytuje několik výhod důležité. Můžete:
 - Povolte uživatelům automaticky se přihlaste k vxMaintain s jednotné přihlašování (SSO) pomocí svých účtů Azure AD.
 - Spravovat účty v jednom centrálním místě: portál Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -104,9 +104,9 @@ V této části můžete povolit jednotné přihlašování Azure AD na portálu
 
     ![VxMaintain oddílu domény a adresy URL](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. V **identifikátor** zadejte adresu URL, která má následující syntaxi:`https://<company name>.verisae.com`
+    a. V **identifikátor** zadejte adresu URL, která má následující syntaxi: `https://<company name>.verisae.com`
 
-    b. V **adresa URL odpovědi** zadejte adresu URL, která má následující syntaxi:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. V **adresa URL odpovědi** zadejte adresu URL, která má následující syntaxi: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
     > Předchozí hodnoty nejsou skutečné. Je aktualizovat skutečným identifikátorem a adresa URL odpovědi. Chcete-li získat hodnoty, obraťte se [tým podpory vxMaintain](http://www.verisae.com/contact-us).
@@ -198,7 +198,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="next-steps"></a>Další postup
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

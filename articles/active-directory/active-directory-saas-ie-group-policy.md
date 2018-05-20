@@ -1,8 +1,8 @@
 ---
-title: "Nasazení rozšíření Panel přístupu Azure pro aplikaci Internet Explorer pomocí objektu zásad skupiny | Microsoft Docs"
-description: "Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny."
+title: Nasazení rozšíření Panel přístupu Azure pro aplikaci Internet Explorer pomocí objektu zásad skupiny | Microsoft Docs
+description: Postup nasazení aplikace Internet Explorer rozšíření pro portál Moje aplikace pomocí zásad skupiny.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 7c2d49c8-5be0-4e7e-abac-332f9dfda736
@@ -15,14 +15,14 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a203548575eacb2d0eb0d09a4aaf239b11caad3c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny
-Tento kurz ukazuje, jak provést vzdálenou instalaci rozšíření Panel přístupu pro Internet Explorer na počítačích uživatelů pomocí zásad skupiny. Toto rozšíření je pro Internet Explorer uživatelů, kteří potřebují pro přihlášení do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotné přihlašování](active-directory-appssoaccess-whatis.md#password-based-single-sign-on).
+Tento kurz ukazuje, jak provést vzdálenou instalaci rozšíření Panel přístupu pro Internet Explorer na počítačích uživatelů pomocí zásad skupiny. Toto rozšíření je pro Internet Explorer uživatelů, kteří potřebují pro přihlášení do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotné přihlašování](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
 
 Doporučujeme, aby správci automatizovat nasazení tohoto rozšíření. Uživatelé, jinak hodnota mít ke stažení a instalaci rozšíření sami, který je pravděpodobnost chyby uživatele a musí mít oprávnění správce. Tento kurz se zaměřuje na jednu z metod automatizaci nasazení softwaru pomocí zásad skupiny. [Další informace o zásadách skupiny.](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -107,8 +107,8 @@ Kromě spuštění Instalační program, každou příponu pro Internet Explorer
     ![Klikněte na položku Povolit a pak klikněte na zobrazit...](./media/active-directory-saas-ie-group-policy/edit-add-on-list-window.png)
 4. V **zobrazit obsah** okna, proveďte následující kroky:
    
-   1. První sloupec ( **název hodnoty** pole), zkopírujte a vložte následující ID třídy:`{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
-   2. Pro druhý sloupec ( **hodnotu** pole), zadejte následující hodnotu:`1`
+   1. První sloupec ( **název hodnoty** pole), zkopírujte a vložte následující ID třídy: `{030E9A3F-7B18-4122-9A60-B87235E4F59E}`
+   2. Pro druhý sloupec ( **hodnotu** pole), zadejte následující hodnotu: `1`
    3. Klikněte na tlačítko **OK** zavřete **zobrazit obsah** okna.
       
       ![Vyplňte hodnoty, jak je uvedeno výše.](./media/active-directory-saas-ie-group-policy/show-contents.png)
@@ -151,7 +151,7 @@ Uživatelé už nebude moct ukládání jejich přihlašovacích údajů nebo je
 Použijte následující postup ověření, pokud rozšíření nasazení bylo úspěšné:
 
 1. Pokud jste nasadili pomocí **konfigurace počítače**, přihlaste se klientský počítač, který patří do organizační jednotky, kterou jste vybrali v [krok 2: vytvoření objektu zásad skupiny](#step-2-create-the-group-policy-object). Pokud jste nasadili pomocí **konfigurace uživatele**, zajistěte, aby se přihlásit jako uživatel, který patří do dané organizační jednotky.
-2. To může trvat několik sign in pro zásady skupiny se změní na plně aktualizovat pomocí tohoto počítače. Chcete-li vynutit aktualizaci, otevřete **příkazového řádku** okno a spusťte následující příkaz:`gpupdate /force`
+2. To může trvat několik sign in pro zásady skupiny se změní na plně aktualizovat pomocí tohoto počítače. Chcete-li vynutit aktualizaci, otevřete **příkazového řádku** okno a spusťte následující příkaz: `gpupdate /force`
 3. Je nutné restartovat počítač pro instalaci proběhla. Spuštění může trvat výrazně déle než obvykle při rozšíření nainstaluje.
 4. Po restartování počítače, otevřete **Internet Explorer**. V pravém horním rohu okna, klikněte na tlačítko **nástroje** (ozubené kolečko ikonu) a potom vyberte **spravovat doplňky**.
    
@@ -162,6 +162,6 @@ Použijte následující postup ověření, pokud rozšíření nasazení bylo �
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md)
+* [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md)
 * [Řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md)
 

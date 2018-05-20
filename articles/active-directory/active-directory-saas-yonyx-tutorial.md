@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s interaktivní příručky Yonyx | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a interaktivní příručky Yonyx."
+title: 'Kurz: Azure Active Directory integrace s interaktivní příručky Yonyx | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a interaktivní příručky Yonyx.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e221959a9997c44bbcb1fe97273b2e40b1eec06c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c4448c8810d1411cb84b5c7e55a710e157c821e6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yonyx-interactive-guides"></a>Kurz: Azure Active Directory integrace s Yonyx interaktivní příručky
 
@@ -30,7 +30,7 @@ Integrace Yonyx interaktivní příručky s Azure AD poskytuje následující v�
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k vodítkům interaktivní Yonyx (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Yonyx interaktivní příručky domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-yonyx-tutorial/tutorial_yonyxinteractiveguides_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<company name>.yonyx.com/y/conversation/?id=<guid number>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<company name>.yonyx.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<company name>.yonyx.com`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Yonyx interaktivní příručky klienta](mailto:support@yonyx.com) k získání těchto hodnot. 
@@ -172,7 +172,7 @@ Cílem této části je vytvoření uživatele volal Britta Simon v Yonyx intera
 Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Yonyx interaktivní příručky, pokud ještě neexistuje.
 
 >[!NOTE]
->Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat tým podpory interaktivní příručky Yonyx prostřednictvím < mailto:support@yonyx.com >. 
+>Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat tým podpory interaktivní příručky Yonyx prostřednictvím <mailto:support@yonyx.com>. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
@@ -204,7 +204,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -212,10 +212,10 @@ Když kliknete na dlaždici interaktivní příručky Yonyx na přístupovém pa
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

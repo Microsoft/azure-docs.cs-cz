@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 97a70781adaaaa5fd661474336373e70a3923ef5
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9924d06f149b0d234cd8f5546cab8abbab740aac
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Spravovat certifikáty pro federované jednotné přihlašování v Azure Active Directory
 Tento článek popisuje běžné otázky a informace související s certifikáty, které vytvoří Azure Active Directory (Azure AD) k vytvoření federovaného jednotného přihlašování (SSO) do aplikací SaaS. Přidáte aplikace v galerii aplikací Azure AD nebo pomocí šablony aplikace bez galerie. Konfigurace aplikace s použitím možnosti federované jednotné přihlašování.
@@ -76,5 +76,5 @@ Následující kroky obnovení musí mít za následek žádné významné výpa
 ## <a name="related-articles"></a>Související články
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
-* [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md)
+* [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md)
 * [Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md)

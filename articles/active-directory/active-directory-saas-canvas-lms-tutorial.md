@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s plátno pro správu vzdělávacího procesu | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a plátno pro správu vzdělávacího procesu."
+title: 'Kurz: Azure Active Directory integrace s plátno pro správu vzdělávacího procesu | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a plátno pro správu vzdělávacího procesu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ae007ee34f1dc997db2d7ca8267ba2522e0eb687
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 56fe4679448fec1db67f826ff70cf8768699e507
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Kurz: Azure Active Directory integrace s plátno pro správu vzdělávacího procesu
 
@@ -29,7 +29,7 @@ Integrace plátno s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k plátno (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenant-name>.instructure.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.instructure.com`
 
-    b. V **identifikátor** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://<tenant-name>.instructure.com/saml2`
+    b. V **identifikátor** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory plátno klienta](https://community.canvaslms.com/community/help) k získání těchto hodnot. 
@@ -221,9 +221,9 @@ V případě plátně zřizování uživatelů je ruční úloha.
    
    a. V **úplný název** textovému poli, zadejte jméno uživatele, jako je **BrittaSimon**.
 
-   b. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .
+   b. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako **brittasimon@contoso.com**.
 
-   c. V **přihlášení** textovému poli, zadejte uživatele Azure AD e-mailovou adresu jako  **brittasimon@contoso.com** .
+   c. V **přihlášení** textovému poli, zadejte uživatele Azure AD e-mailovou adresu jako **brittasimon@contoso.com**.
 
    d. Vyberte **e-mailu uživatele o vytvoření tohoto účtu**.
 
@@ -269,10 +269,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici plátno na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci plátno.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s RedBrick stavu | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RedBrick stavu."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RedBrick stavu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 598592d87cf6471a431dab89d19c5e8beb48e661
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 8d51d516d8716c0ac07bc851210733d352c47b6a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Kurz: Azure Active Directory integrace s RedBrick stavu
 
@@ -30,7 +30,7 @@ Integrace RedBrick stavu s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k RedBrick stavu (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,17 +108,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![RedBrick stavu domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`http://www.redbrickhealth.com`
+    a. V **identifikátor** textovému poli, zadejte adresu URL: `http://www.redbrickhealth.com`
     
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:`https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
-    Pro produkční prostředí:`https://sso.redbrickhealth.com/sp/ACS.saml2`
+    Pro produkční prostředí: `https://sso.redbrickhealth.com/sp/ACS.saml2`
 
     c. Klikněte na tlačítko **zobrazit upřesňující nastavení adresy URL**.
     
     ![RedBrick stavu domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-redbrickhealth-tutorial/tutorial_redbrickhealth_url1.png)
 
-    d. V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1`
+    d. V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1`
     
     > [!NOTE] 
     > Hodnota stavu předávání není skutečné. Aktualizujte tato hodnota se skutečným stavem předávání. Obraťte se na [tým podpory RedBrick stavu](https://home.redbrickhealth.com/contact/) získat tuto hodnotu.
@@ -235,7 +235,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -245,7 +245,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

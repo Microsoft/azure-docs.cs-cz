@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Fieldglass | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Fieldglass."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Fieldglass.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 15d55e00ce635599ba11d1310d9efe03e56cbddf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 71f5e0ce3c734c2374da7af3260b99e31babe6b1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Kurz: Azure Active Directory integrace s Fieldglass
 
@@ -29,7 +29,7 @@ Integrace Fieldglass s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Fieldglass (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fieldglass-tutorial/tutorial_fieldglass_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL jako `https://www.fieldglass.com` nebo postupujte podle vzoru:`https://<company name>.fgvms.com`
+    a. V **identifikátor** textovému poli, zadejte adresu URL jako `https://www.fieldglass.com` nebo postupujte podle vzoru:  `https://<company name>.fgvms.com`
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
@@ -209,10 +209,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 
 Když kliknete na dlaždici Fieldglass na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Fieldglass.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

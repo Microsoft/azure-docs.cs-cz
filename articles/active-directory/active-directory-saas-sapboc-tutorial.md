@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SAP Business objektu cloudu | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP Business objektu cloudu."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SAP Business objektu cloudu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a56a892ac3b28c4e90ec2ea6360da3d2eff2581
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Kurz: Azure Active Directory integrace s SAP Business objektu cloudu
 
@@ -30,7 +30,7 @@ Při integraci SAP Business objektu cloudu s Azure AD získáte následující v
 - Uživatelům SAP Business objektu cloudu můžete automaticky přihlásit pomocí jednotného přihlašování a účtu uživatele Azure AD.
 - Můžete spravovat své účty pomocí nich centrální umístění, portálu Azure.
 
-Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -217,7 +217,7 @@ K poskytnutí uživatelského účtu:
 
     ![Můžete přidat zaměstnance](./media/active-directory-saas-sapboc-tutorial/user1.png)
 
-3. Na **uživatelé** , přidat nové uživatele podrobnosti, vyberte  **+** . 
+3. Na **uživatelé** , přidat nové uživatele podrobnosti, vyberte **+**. 
 
     ![Stránka Přidat uživatele](./media/active-directory-saas-sapboc-tutorial/user4.png)
 
@@ -231,7 +231,7 @@ K poskytnutí uživatelského účtu:
 
     4. V **ZOBRAZOVANÝ název** zadejte úplný jméno uživatele, jako je třeba **Britta Simon**.
 
-    5. V **e-mailu** zadejte e-mailovou adresu uživatele, jako je třeba  **brittasimon@contoso.com** .
+    5. V **e-mailu** zadejte e-mailovou adresu uživatele, jako je třeba **brittasimon@contoso.com**.
 
     6. Na **vybrat role** , vyberte příslušnou roli pro uživatele a pak vyberte **OK**.
 
@@ -270,7 +270,7 @@ Přiřazení Britta Simon SAP Business objektu cloudu:
 
 ![Přiřadit role uživatele][200] 
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -278,10 +278,10 @@ Když vyberete dlaždici SAP Business objektu cloudu na přístupovém panelu, m
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

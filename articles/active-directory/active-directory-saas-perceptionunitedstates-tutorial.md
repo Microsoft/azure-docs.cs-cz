@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s dojem Spojených států (Non-UltiPro) | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dojem USA (Non-UltiPro)."
+title: 'Kurz: Azure Active Directory integrace s dojem Spojených států (Non-UltiPro) | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a dojem USA (Non-UltiPro).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: d94d233a12e51bf851a791fda481b91c513d64b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da0529897bb02745a2346f6a0282be86923468ba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Azure Active Directory integrace s dojem Spojených států (Non-UltiPro)
 
@@ -30,7 +30,7 @@ Integrace dojem USA (Non-UltiPro) s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k dojem Spojených států (Non-UltiPro) (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Dojem USA (Non-UltiPro) domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`https://perception.kanjoya.com/sp`
+    a. V **identifikátor** textovému poli, zadejte adresu URL: `https://perception.kanjoya.com/sp`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
     > Hodnota není skutečné. Hodnota bude aktualizován skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
@@ -163,7 +163,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     c. V **název zprostředkovatele Identity** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure. 
 
-    d. V **SAML domény textbox**, zadejte doménu jako  **@contoso.com** .
+    d. V **SAML domény textbox**, zadejte doménu jako **@contoso.com**.
 
     e. Klikněte na **nahrát znovu** nahrát **soubor XML s metadaty** souboru.
 
@@ -239,17 +239,17 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici dojem USA (Non-UltiPro) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci dojem USA (Non-UltiPro).
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

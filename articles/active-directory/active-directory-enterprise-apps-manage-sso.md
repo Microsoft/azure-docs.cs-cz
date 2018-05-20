@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 548bd4ca9e8ec66e4c50ea078dc0bccc1788095a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Správa jednotného přihlašování pro podnikové aplikace
 
-Tento článek popisuje postup použití [portál Azure](https://portal.azure.com) ke správě nastavení jednotného přihlašování pro podnikové aplikace. Podnikové aplikace jsou aplikace, které jsou nasazené a použít v rámci vaší organizace. Tento článek se týká hlavně na aplikace, které byly přidány z [galerii aplikací Azure Active Directory](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). 
+Tento článek popisuje postup použití [portál Azure](https://portal.azure.com) ke správě nastavení jednotného přihlašování pro podnikové aplikace. Podnikové aplikace jsou aplikace, které jsou nasazené a použít v rámci vaší organizace. Tento článek se týká hlavně na aplikace, které byly přidány z [galerii aplikací Azure Active Directory](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). 
 
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace v portálu
 Všechny podnikové aplikace, které jsou nastavené pro jednotné přihlašování lze zobrazit a spravovat na portálu Azure. Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace, které** části portálu. 
@@ -43,7 +43,7 @@ Chcete-li spravovat nastavení jednotného přihlašování, vyberte **jednotné
 * **Založené na heslech přihlašování** – tato možnost je dostupná, pokud Azure AD podporuje formulář hesla naplnění pro tuto aplikaci.
 * **Propojené přihlášení** -dříve označované jako "Stávající single sign-on", tato možnost umožňuje správcům umístit odkaz na tuto aplikaci Spouštěč aplikace jejich uživatele přístupový Panel Azure AD nebo Office 365.
 
-Další informace o těchto režimech najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Další informace o těchto režimech najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="saml-based-sign-on"></a>Na základě SAML přihlášení
 **Na základě SAML přihlašování** možnost rozdělí na čtyři části:
@@ -79,12 +79,12 @@ Koncová část poskytuje dokumentaci a ovládací prvky, které jsou potřeba k
 ![Vložené dokumentace](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>Založené na heslech přihlášení
-Pokud pro aplikaci podporován, vyberete režim jednotné přihlašování založené na heslech a vyberete **Uložit** okamžitě nakonfiguruje jejich jednotné přihlašování založené na heslech. Další informace o nasazení založené na heslech jednotného přihlašování najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Pokud pro aplikaci podporován, vyberete režim jednotné přihlašování založené na heslech a vyberete **Uložit** okamžitě nakonfiguruje jejich jednotné přihlašování založené na heslech. Další informace o nasazení založené na heslech jednotného přihlašování najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Založené na heslech přihlášení](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>Propojené přihlášení
-Pokud podporován pro aplikaci, výběr propojené režimu jednotné přihlašování umožňuje zadat adresu URL, kterou chcete přístupový Panel Azure AD nebo Office 365 pro přesměrování na, když uživatelé kliknou na tuto aplikaci. Další informace o propojené přihlášení SSO (dříve označované jako "stávající SSO") najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Pokud podporován pro aplikaci, výběr propojené režimu jednotné přihlašování umožňuje zadat adresu URL, kterou chcete přístupový Panel Azure AD nebo Office 365 pro přesměrování na, když uživatelé kliknou na tuto aplikaci. Další informace o propojené přihlášení SSO (dříve označované jako "stávající SSO") najdete v tématu [jak funguje jednotné přihlašování pomocí služby Azure Active Directory pracovní](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Propojené přihlášení](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 

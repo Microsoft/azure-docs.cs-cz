@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s EBSCO | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a EBSCO."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a EBSCO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: ea7fe09c31d88cf2095b3a3777b6b1f9feb8df46
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9da10e134db019162abdff35a8eb742ccdc30626
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Kurz: Azure Active Directory integrace s EBSCO
 
@@ -30,7 +30,7 @@ Integrace EBSCO s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k EBSCO (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -106,13 +106,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![EBSCO domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL:`pingsso.ebscohost.com`
+    V **identifikátor** textovému poli, zadejte adresu URL: `pingsso.ebscohost.com`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![EBSCO domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-ebsco-tutorial/tutorial_ebsco_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
      
     > [!NOTE] 
     > Hodnota přihlašovací adresa URL není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory EBSCO klienta](mailto:sso@ebsco.com) k získání hodnoty. 
@@ -135,8 +135,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
     | FirstName   | user.givenname |
-    | LastName   | user.surname |
-    | E-mail   | user.mail |
+    | Příjmení   | user.surname |
+    | Email   | User.Mail |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -236,7 +236,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -256,7 +256,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

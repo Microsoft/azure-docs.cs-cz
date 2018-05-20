@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s správce hesel držitel & digitální trezoru | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a správce hesel držitel & digitální trezoru."
+title: 'Kurz: Azure Active Directory integrace s správce hesel držitel & digitální trezoru | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a správce hesel držitel & digitální trezoru.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 79ef85e14f36153c086d9e9ae889fa9a51d065db
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c76edea4498e32363a3a4952056e69c012bd468
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Kurz: Azure Active Directory integrace s správce hesel držitel & digitální trezoru
 
@@ -29,7 +29,7 @@ Integrace správce hesel držitel & digitální trezoru s Azure AD poskytuje ná
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k správce hesel držitel & digitální trezoru (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,11 +110,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-keeperpasswordmanager-tutorial/tutorial_keeper_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://{SSO CONNECT SERVER}/sso-connect/saml/login`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://{SSO CONNECT SERVER}/sso-connect/saml/login`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://{SSO CONNECT SERVER}/sso-connect/saml/sso`
 
-    c. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://{SSO CONNECT SERVER}/sso-connect`
+    c. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://{SSO CONNECT SERVER}/sso-connect`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [správce hesel držitel & digitální trezoru podporu klientů team](https://keepersecurity.com/contact.html) k získání těchto hodnot. 
@@ -208,10 +208,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici správce hesel držitel & digitální trezoru na přístupovém panelu, měli byste obdržet přihlašovací stránku aplikace správce hesel držitel & digitální trezoru. Po úspěšném ověření měli byste obdržet do aplikace. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

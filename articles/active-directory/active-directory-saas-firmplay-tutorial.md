@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s FirmPlay - hájící zájmy zaměstnanec pro nábor | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FirmPlay - hájící zájmy zaměstnanec pro nábor."
+title: 'Kurz: Azure Active Directory integrace s FirmPlay - hájící zájmy zaměstnanec pro nábor | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FirmPlay - hájící zájmy zaměstnanec pro nábor.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: e1381f2273ee961a4b72dede8cf8e017814ba909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b154901d2e31f493c32e47bd331cc2d4e9fdc1a4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Kurz: Azure Active Directory integrace s FirmPlay - hájící zájmy zaměstnanec pro nábor
 
@@ -29,7 +29,7 @@ Integrace FirmPlay - hájící zájmy zaměstnanec pro nábor s Azure AD poskytu
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k FirmPlay - hájící zájmy zaměstnanec pro nábor (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -111,7 +111,7 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
  
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_01.png)
 
-3. Na **FirmPlay - hájící zájmy zaměstnanec domény o přijetí a adresy URL** v části **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<your-subdomain>.firmplay.com/`
+3. Na **FirmPlay - hájící zájmy zaměstnanec domény o přijetí a adresy URL** v části **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<your-subdomain>.firmplay.com/`
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_02.png)
 
@@ -232,10 +232,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Po kliknutí na tlačítko FirmPlay - hájící zájmy zaměstnanec pro dlaždici nábor na přístupovém panelu jste měli získat automaticky přihlášení k vaší FirmPlay - hájící zájmy zaměstnanec nábor aplikace.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

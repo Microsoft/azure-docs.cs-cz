@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s EthicsPoint Incident správy (EPIM) | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a EthicsPoint Incident správy (EPIM)."
+title: 'Kurz: Azure Active Directory integrace s EthicsPoint Incident správy (EPIM) | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a EthicsPoint Incident správy (EPIM).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 87525eacdb7224e7352f713028428d72d64a288e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: be400e9b51e2956557297b3a57313f08a434f96d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Kurz: Azure Active Directory integrace s EthicsPoint Incident správy (EPIM)
 
@@ -29,7 +29,7 @@ Integrace EthicsPoint Incident správy (EPIM) s Azure AD poskytuje následujíc�
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k EthicsPoint Incident správy (EPIM) (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ Chcete-li konfigurace integrace nástroje správy incidentu EthicsPoint (EPIM) d
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ethicspoint-incident-management-tutorial/tutorial_ethicspoint_search.png)
 
-5. Na panelu výsledků vyberte **EthicsPoint Incident správy (EPIM)**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **EthicsPoint Incident správy (EPIM)** a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-ethicspoint-incident-management-tutorial/tutorial_ethicspoint_addfromgallery.png)
 
@@ -116,9 +116,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<companyname>.navexglobal.com`|
     | `https://<companyname>.ethicspointvp.com`|
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.navexglobal.com/adfs/services/trust`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.navexglobal.com/adfs/services/trust`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<servername>.navexglobal.com/adfs/ls/`
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL odpovědi, identifikátor a přihlašovací adresa URL. Obraťte se na [tým podpory EthicsPoint Incident správy (EPIM) klienta](http://www.navexglobal.com/company/contact-us) k získání těchto hodnot. 
@@ -207,10 +207,10 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 Když kliknete na dlaždici EthicsPoint Incident správy (EPIM) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci EthicsPoint Incident správy (EPIM).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

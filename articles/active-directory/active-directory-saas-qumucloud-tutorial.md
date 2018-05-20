@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Qumu cloudu | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Qumu cloudu."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Qumu cloudu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: fc4529d88d393ff18ef36415b09c0e21c97cdcf8
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 1778917a383aef2fc0f791cda3235cff74b77f18
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Kurz: Azure Active Directory integrace s Qumu cloudu
 
@@ -30,7 +30,7 @@ Integrace Qumu cloudu s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Qumu cloudu (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -127,9 +127,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
-    | urn:oid:2.5.4.42 | user.givenname |
-    | urn:oid:2.5.4.4 | user.surname |
-    | urn:oid:0.9.2342.19200300.100.1.3 | user.mail |
+    | název urn: oid:2.5.4.42 | user.givenname |
+    | název urn: oid:2.5.4.4 | user.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | User.Mail |
     | urn:oid:0.9.2342.19200300.100.1.1 | user.userprincipalname |
 
     a. Klikněte na atribut, který se otevře **Upravit atribut** okno.
@@ -227,7 +227,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup d
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -237,7 +237,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

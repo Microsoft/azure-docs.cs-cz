@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Grovo | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Grovo."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Grovo.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: e4bb050e96d3e8d9da4666f5418ac3e444f6212d
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7016208aad3ec60f2db8d071bf67f9dae66a59bd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Kurz: Azure Active Directory integrace s Grovo
 
@@ -30,7 +30,7 @@ Integrace Grovo s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Grovo (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Grovo domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.grovo.com/sso/saml2/metadata`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.grovo.com/sso/saml2/metadata`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, proveďte následující krok:
 
@@ -122,7 +122,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Grovo domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url2.png)
     
-    V **přihlásit na adrese URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    V **přihlásit na adrese URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečné přihlašovací identifikátor, adresa URL odpovědi, na adresu URL a předávací stavu. Obraťte se na [tým podpory Grovo](https://www.grovo.com/contact-us) k získání těchto hodnot.
@@ -137,7 +137,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | ------------------- | -------------------- |    
     | Jméno          | user.givenname |
     | Příjmení           | user.surname |
-    | E-mailová adresa       | user.mail    |
+    | E-mailová adresa       | User.Mail    |
     | Číslo zaměstnance          | User.EmployeeID |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
@@ -262,7 +262,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -272,7 +272,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

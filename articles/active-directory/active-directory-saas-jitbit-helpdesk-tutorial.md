@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Jitbit Helpdesk | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jitbit technickou podporu."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jitbit technickou podporu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 31d3295fa8d75aa72c8e9967b7ca81f4e98e5608
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c8e387bb98ad2e23c667ba058ff8ab5dbfedffbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Azure Active Directory integrace s Jitbit Helpdesk
 
@@ -29,7 +29,7 @@ Integrace Jitbit pracovník s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného na technickou podporu Jitbit (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -120,7 +120,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Jitbit Helpdesk klienta](https://www.jitbit.com/support/) získat tuto hodnotu. 
     
-    b.  V **identifikátor** textovému poli, zadejte adresu URL jako následující:`https://www.jitbit.com/web-helpdesk/`
+    b.  V **identifikátor** textovému poli, zadejte adresu URL jako následující: `https://www.jitbit.com/web-helpdesk/`
 
     
  
@@ -221,7 +221,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Jitbit Helpdesk, mu
    
    a. V **uživatelské jméno** textovému poli, typ **BrittaSimon**, uživatelské jméno jako v portálu Azure.
 
-   b. V **e-mailu** jako typ e-mail uživatele k textovému poli,  **BrittaSimon@contoso.com** .
+   b. V **e-mailu** jako typ e-mail uživatele k textovému poli, **BrittaSimon@contoso.com**.
 
    c. V **křestní jméno** textovému poli, zadejte jméno uživatele, jako je **Britta**.
 
@@ -271,10 +271,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Jitbit technickou podporu na přístupovém panelu, měli byste obdržet přihlašovací stránku aplikace Jitbit technickou podporu.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Jobscience | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jobscience."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jobscience.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: a2840968cadb3d78dee9d35fd0048d5941508cd3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cf6dccf02fa56b90ea4737e1d1c7b9a5e9d1d4af
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Kurz: Azure Active Directory integrace s Jobscience
 
@@ -29,7 +29,7 @@ Integrace Jobscience s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Jobscience (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-jobscience-tutorial/tutorial_jobscience_url.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`http://<company name>.my.salesforce.com`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Tato hodnota získat [tým podpory Jobscience klienta](https://www.jobscience.com/support) nebo z profilu jednotné přihlašování bude vytvořena, což je vysvětleno později v tomto kurzu. 
@@ -161,7 +161,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     b. V **vystavitele** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.
 
-    c. V **Entity Id** textovému poli, typu`https://salesforce-jobscience.com`
+    c. V **Entity Id** textovému poli, typu `https://salesforce-jobscience.com`
 
     d. Klikněte na tlačítko **Procházet** odeslání vašeho certifikátu Azure AD.
 
@@ -191,7 +191,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Ovládací prvky zabezpečení](./media/active-directory-saas-jobscience-tutorial/ic784368.png "kontrolních mechanismů pro zabezpečení")
     
-    Klikněte na tlačítko jednotného přihlašování k profilu, který jste vytvořili v předchozích krocích. Tato stránka zobrazuje jednotného přihlašování na adrese URL vaší společnosti (například [https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid).    
+    Klikněte na tlačítko jednotného přihlašování k profilu, který jste vytvořili v předchozích krocích. Tato stránka zobrazuje jednotného přihlašování na adrese URL vaší společnosti (například [ https://companyname.my.salesforce.com?so=companyid ](https://companyname.my.salesforce.com?so=companyid).    
 
 > [!TIP]
 > Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -308,10 +308,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Jobscience na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Jobscience.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

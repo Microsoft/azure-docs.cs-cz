@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b40aa0e105c0e9fac9c9cab63a5b0a2a6116c4c9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Požadavky sítě pro Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak vybrat virtuální síť Azure
@@ -95,7 +95,7 @@ Následující porty jsou povinné pro Azure AD Domain Services do služby a úd
 
 
 ## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
-A [skupina zabezpečení sítě (NSG)](../virtual-network/virtual-networks-nsg.md) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz instancím virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho je možné omezit provoz do konkrétního virtuálního počítače další tím, že přidružíte skupinu NSG přímo do tohoto virtuálního počítače.
+A [skupina zabezpečení sítě (NSG)](../virtual-network/security-overview.md) obsahuje seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz instancím virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho je možné omezit provoz do konkrétního virtuálního počítače další tím, že přidružíte skupinu NSG přímo do tohoto virtuálního počítače.
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Ukázka NSG pro virtuální sítě s Azure AD Domain Services
 Následující tabulka znázorňuje ukázku NSG můžete nakonfigurovat pro virtuální síť s spravované doméně služby Azure AD Domain Services. Toto pravidlo umožňuje příchozí provoz přes požadované porty pro zajištění vaší spravované domény zůstane opravit, aktualizovat a společnost Microsoft se dá sledovat. Výchozí pravidlo, DenyAll, platí pro všechny ostatní příchozí přenosy z Internetu.
@@ -141,5 +141,5 @@ Virtuální síť využívající Resource Manager můžete připojit k Azure kl
 ## <a name="related-content"></a>Související obsah
 * [Partnerský vztah virtuální síť Azure](../virtual-network/virtual-network-peering-overview.md)
 * [Nakonfigurujte připojení VNet-to-VNet pro model nasazení classic](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* [Skupiny zabezpečení sítě Azure](../virtual-network/virtual-networks-nsg.md)
+* [Skupiny zabezpečení sítě Azure](../virtual-network/security-overview.md)
 * [Vytvořit skupinu zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

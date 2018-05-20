@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s LinkedInSalesNavigator | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LinkedInSalesNavigator."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a LinkedInSalesNavigator.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: fde1d2c5d1a90092ec4528f727dc7af672f80917
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c8dcf4ad49b8f261814c2d442bfdded221e8cbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Kurz: Azure Active Directory integrace s LinkedIn prodej Navigátor
 
@@ -29,7 +29,7 @@ Integrace LinkedIn prodej Navigátor s Azure AD poskytuje následující výhody
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k LinkedIn prodej Navigátor (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, Procházet [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, Procházet [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -128,7 +128,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce:`https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
+    V **přihlašovací adresa URL** textovému poli, zadejte hodnotu pomocí následujícího vzorce: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`
 
 8. Vaše **LinkedIn prodej Navigátor** aplikace očekává SAML kontrolní výrazy ve specifickém formátu, který vyžaduje, můžete přidat mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje příklad. Výchozí hodnota **uživatelský identifikátor** je **user.userprincipalname** ale LinkedIn prodej Navigátor očekává, že nejde mapovat pomocí e-mailovou adresu uživatele. Můžete použít **user.mail** atribut ze seznamu, nebo použijte hodnotu odpovídajícího atributu na základě konfigurace vaší organizace. 
 
@@ -138,10 +138,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     | Název atributu | Hodnota atributu |
     | --- | --- |    
-    | E-mailu| User.Mail |
-    | Oddělení| User.Department |
-    | FirstName| User.givenName |
-    | Příjmení| User.Surname |
+    | e-mail| User.Mail |
+    | oddělení| User.Department |
+    | FirstName| user.givenname |
+    | Příjmení| user.surname |
     
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-linkedinsalesnavigator-tutorial/userattribute.png)
     
@@ -261,10 +261,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici LinkedIn prodej Navigátor na přístupovém panelu, přesměrovat na organizační stránku, kde je nutné zadat osobní podrobnosti o účtu LinkedIn. Ho propojí s vaším účtem obchodní LinkedIn svůj osobní účet. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

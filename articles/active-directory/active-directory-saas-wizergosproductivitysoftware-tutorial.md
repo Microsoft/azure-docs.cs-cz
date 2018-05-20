@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Wizergos produkční Software | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi softwarem Wizergos produktivitu a Azure Active Directory."
+title: 'Kurz: Azure Active Directory integrace s Wizergos produkční Software | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi softwarem Wizergos produktivitu a Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: d3ed319b457abb677484d3ef32876b4af46a09ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1b78b0f2df6211626fd9b4d0cecf9f67d7f47d87
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Azure Active Directory integrace s Wizergos produktivitu softwaru
 
@@ -30,7 +30,7 @@ Integrace Wizergos produkční Software s Azure AD poskytuje následující výh
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k softwaru produktivitu Wizergos (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,7 +108,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Wizergos produktivitu softwaru domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
 
-    V **identifikátor** textovému poli, zadejte adresu URL:`http://www.wizergos.net`
+    V **identifikátor** textovému poli, zadejte adresu URL: `http://www.wizergos.net`
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikát** a potom uložte soubor certifikátu v počítači.
 
@@ -216,17 +216,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Wizergos produktivitu softwaru na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Wizergos produktivitu softwaru.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

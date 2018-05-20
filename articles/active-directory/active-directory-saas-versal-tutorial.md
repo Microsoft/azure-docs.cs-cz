@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Versal odkazů | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Versal odkazů."
+title: 'Kurz: Azure Active Directory integrace s Versal odkazů | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Versal odkazů.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 34ac0f6f98ba84584d468b5f199d8d6a713ede8a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2710c7fa0d035cee8a16d10edf3d603443ad520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Kurz: Azure Active Directory integrace s Versal odkazů
 
@@ -30,7 +30,7 @@ Integrace Versal odkazů s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Versal odkazů (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Verzál domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-versal-tutorial/tutorial_versal_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte hodnotu:`VERSAL`
+    a. V **identifikátor** textovému poli, zadejte hodnotu: `VERSAL`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://versal.com/sso/saml/orgs/<organization_id>`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://versal.com/sso/saml/orgs/<organization_id>`
 
     > [!NOTE] 
     > Hodnota adresy URL a odpovědi není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory verzál](https://support.versal.com/hc/) získat tuto hodnotu.
@@ -198,7 +198,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí verzál kurzu vložených v rámci vašeho webu.
 Najdete v tématu [vložení organizační kurzy](https://support.versal.com/hc/en-us/articles/203271866-Embedding-organizational-courses) **SAML Single Sign-On** podpora příručka pokyny o tom, jak se podpora pro Azure AD pro vložení verzál během jednotného přihlašování. 
@@ -206,10 +206,10 @@ Najdete v tématu [vložení organizační kurzy](https://support.versal.com/hc/
 Musíte vytvořit kurzu, sdílet s vaší organizace a publikovat účely otestování kurzu vložení. Najdete v tématu [vytváření kurzu](https://support.versal.com/hc/en-us/articles/203722528-Create-a-course), [publikování kurzu](https://support.versal.com/hc/en-us/articles/203753398-Publishing-a-course), a [správu kurzu a Student](https://support.versal.com/hc/en-us/articles/206029467-Course-and-learner-management) Další informace.  
                      
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

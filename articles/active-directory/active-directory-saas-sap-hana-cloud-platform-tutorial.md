@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: a578a732efa3d2b91240ef0f4c02670aea8e547f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4d39c8437cbed497e2a2a7e64caa05f8e3d04869
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Kurz: Azure Active Directory integrace s SAP Cloudová platforma
 
@@ -30,7 +30,7 @@ Integrace SAP Cloudová platforma s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k prostředí SAP Cloudová platforma (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -217,7 +217,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Kontrolní výraz atribut | Objekt zabezpečení atribut |
     | --- | --- |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |FirstName |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |lastname |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |Příjmení |
     | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |e-mail |
    
      >[!NOTE]
@@ -326,7 +326,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
 
@@ -336,7 +336,7 @@ Když kliknete na dlaždici Cloudová platforma SAP na přístupovém panelu, m�
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

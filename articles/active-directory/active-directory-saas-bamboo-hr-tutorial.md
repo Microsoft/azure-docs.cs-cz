@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s BambooHR | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BambooHR."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a BambooHR.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 081144a645683d4d00ed0d464e23558378dc1b38
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c63a625c1eca7008c751d6904f182f76ee5f343b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>Kurz: Azure Active Directory integrace s BambooHR
 
@@ -30,7 +30,7 @@ Integrace BambooHR s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky získat přihlášení k BambooHR pomocí jednotného přihlašování (SSO) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě, portálu Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,7 +107,7 @@ V této části Povolení jednotného přihlašování Azure AD na portálu Azur
     > [!NOTE] 
     > **Přihlásit na adrese URL** hodnota není skutečné. Aktualizujte jej s skutečná adresa URL přihlašování. Chcete-li získat hodnotu, obraťte se [tým podpory klienta BambooHR](https://www.bamboohr.com/contact.php). 
  
-4. V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)**a potom uložte soubor certifikátu v počítači.
+4. V části **SAML podpisový certifikát**, vyberte **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_certificate.png) 
 
@@ -187,7 +187,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k BambooHR, vytvořit 
    
     ![Tlačítko Nastavení](./media/active-directory-saas-bamboo-hr-tutorial/IC796694.png "nastavení")
 
-3. Vyberte **přehled**.
+3. Vyberte **Přehled**.
 
 4. V levém podokně vyberte **zabezpečení** > **uživatelé**.
 
@@ -228,7 +228,7 @@ Pokud chcete přiřadit uživatele Britta Simon BambooHR, postupujte takto:
 
 7. V **přidat přiřazení** vyberte **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Otestujte konfiguraci Azure AD jednotného přihlašování pomocí přístupového panelu.
 
@@ -239,7 +239,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

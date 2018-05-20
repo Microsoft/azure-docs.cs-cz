@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Software pro správu ochrany osobních údajů OneTrust | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Software pro správu OneTrust ochrany osobních údajů."
+title: 'Kurz: Azure Active Directory integrace s Software pro správu ochrany osobních údajů OneTrust | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Software pro správu OneTrust ochrany osobních údajů.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 89d657e754f6908a3afbb615a2158c9d7f3380f9
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 38125877a5ab17a81d6fe108e0e8c462ecd5d953
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Kurz: Azure Active Directory integrace s Software pro správu OneTrust ochrany osobních údajů
 
@@ -30,7 +30,7 @@ Software pro správu ochrany osobních údajů OneTrust integraci s Azure AD pos
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k OneTrust Software pro správu ochrany osobních údajů (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,15 +108,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Doména Software správy OneTrust ochrany osobních údajů a adresy URL jednotné přihlašování informace](./media/active-directory-saas-onetrust-tutorial/tutorial_onetrust_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`https://www.onetrust.com/saml2`
+    a. V **identifikátor** textovému poli, zadejte adresu URL: `https://www.onetrust.com/saml2`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.onetrust.com/auth/consumerservice`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.onetrust.com/auth/consumerservice`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Doména Software správy OneTrust ochrany osobních údajů a adresy URL jednotné přihlašování informace](./media/active-directory-saas-onetrust-tutorial/tutorial_onetrust_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<subdomain>.onetrust.com/auth/login`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.onetrust.com/auth/login`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a adresa URL přihlašování. Obraťte se na [tým podpory klientský Software správy ochrany osobních údajů OneTrust](mailto:support@onetrust.com) k získání těchto hodnot. 
@@ -203,17 +203,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Software pro správu OneTrust ochrany osobních údajů na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Software pro správu OneTrust ochrany osobních údajů.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

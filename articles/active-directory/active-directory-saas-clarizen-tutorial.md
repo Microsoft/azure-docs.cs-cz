@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Clarizen | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Clarizen."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Clarizen.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 2925f0a9f582d0dfeca9832ca032b0d847f23f6b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8af9e7023142077fdeed0262e5f39921b158a14f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Kurz: Azure Active Directory integrace s Clarizen
 
@@ -32,7 +32,7 @@ Tento scénář v tomto kurzu se skládá z dvě hlavní úlohy:
 1. Přidejte Clarizen z galerie.
 2. Konfigurace a otestování Azure AD jednotné přihlašování.
 
-Pokud chcete další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Pokud chcete další informace o softwaru jako integraci aplikace služby (SaaS) s Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Konfigurace integrace Azure AD s Clarizen, potřebujete následující položky:
@@ -225,7 +225,7 @@ Povolte Britta Simon používat tak, že udělíte přístup k Clarizen Azure je
 
     ![Kliknutím na tlačítko "Uživatelé a skupiny"][202]
 
-4. Klikněte **přidat** tlačítko. Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
+4. Klikněte na tlačítko **Přidat**. Potom v **přidat přiřazení** dialogové okno, vyberte **uživatelů a skupin**.
 
     ![Tlačítko "Přidat" a "Přidat přiřazení" dialogových oken][203]
 
@@ -235,15 +235,15 @@ Povolte Britta Simon používat tak, že udělíte přístup k Clarizen Azure je
 
 7. V **přidat přiřazení** dialogové okno, klikněte **přiřadit** tlačítko.
 
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 Azure AD jeden přihlašování konfiguraci otestujte pomocí přístupového panelu.
 
 Když kliknete na dlaždici Clarizen na přístupovém panelu, můžete by měl být automaticky přihlášeni do vaší aplikace Clarizen.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

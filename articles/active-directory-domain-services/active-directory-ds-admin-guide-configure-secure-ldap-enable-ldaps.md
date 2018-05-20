@@ -1,8 +1,8 @@
 ---
-title: "Konfigurace zabezpečeného LDAP (LDAPS) ve službě Azure AD Domain Services | Microsoft Docs"
-description: "Konfigurace zabezpečení protokolu LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services"
+title: Konfigurace zabezpečeného LDAP (LDAPS) ve službě Azure AD Domain Services | Microsoft Docs
+description: Konfigurace zabezpečení protokolu LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 8b6c1dec6f97311e5fb92f2adef8685b59cbeb2c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8da03990ace37b527553b0fe3ff0032515e1b812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
 
@@ -105,7 +105,7 @@ Následující tabulka znázorňuje ukázku NSG můžete nakonfigurovat, zamknou
 
 ![Ukázka skupiny NSG k zabezpečení přístupu k LDAPS přes internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
-**Další informace** - [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+**Další informace** - [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
 <br>
 
@@ -128,5 +128,5 @@ Pokud máte potíže s připojením k spravované doméně pomocí zabezpečený
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)
 * [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
 * [Správa zásad skupiny na spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-group-policy.md)
-* [Skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md)
+* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
 * [Vytvořit skupinu zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

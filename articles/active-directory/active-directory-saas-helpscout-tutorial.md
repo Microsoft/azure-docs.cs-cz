@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s pomůže Scout | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pomáhají Scout."
+title: 'Kurz: Azure Active Directory integrace s pomůže Scout | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pomáhají Scout.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 5608df300ad3b5d3fd42bd904a52d43d115ebf53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 596a1ba27516755e586d88ab56a20a1daed63fc2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s pomůže Scout
 
@@ -30,7 +30,7 @@ Integrace s Azure AD pomáhají Scout poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k pomoci Scout (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -105,9 +105,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Scout domény a adresy URL jeden přihlašování informace nápovědy](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url.png)
 
-    a. **Identifikátor** je **"Cílová skupina identifikátor URI (ID Entity poskytovatele služby)"** z pomoci Scout začíná`urn:`
+    a. **Identifikátor** je **"Cílová skupina identifikátor URI (ID Entity poskytovatele služby)"** z pomoci Scout začíná `urn:`
 
-    b. **Adresa URL odpovědi** je **"Po back adresa URL (adresa URL služby příjemce Assertion)"** z pomoci Scout začíná`https://` 
+    b. **Adresa URL odpovědi** je **"Po back adresa URL (adresa URL služby příjemce Assertion)"** z pomoci Scout začíná `https://` 
 
     > [!NOTE] 
     > Hodnoty v těchto adres URL jsou pouze jako ukázka. Je potřeba aktualizovat tyto hodnoty z skutečná adresa URL odpovědi a identifikátor. Získat tyto hodnoty z **jednotné přihlašování** kartě části ověřování, který je vysvětlen později v tomto kurzu.
@@ -116,7 +116,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Scout domény a adresy URL jeden přihlašování informace nápovědy](./media/active-directory-saas-helpscout-tutorial/tutorial_helpscout_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako:`https://secure.helpscout.net/members/login/`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://secure.helpscout.net/members/login/`
      
 5. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
@@ -234,17 +234,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici pomůže Scout na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci pomůže Scout.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

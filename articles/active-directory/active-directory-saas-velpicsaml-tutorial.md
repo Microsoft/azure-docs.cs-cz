@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Velpic SAML | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Velpic SAML."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Velpic SAML.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e4f7e4c9e960450f0024cd7ca35bd3808d31ee19
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03ef1ef04d80ac9bb83bcce2082b6cc3f617d812
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Kurz: Azure Active Directory integrace s Velpic SAML
 
@@ -29,7 +29,7 @@ Integrace Velpic SAML s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Velpic SAML (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu jako:`https://<sub-domain>.velpicsaml.net`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte hodnotu jako: `https://<sub-domain>.velpicsaml.net`
 
-    b. V **identifikátor** textovému poli, Vložit **'jednotné přihlašování na adresu URL,** hodnota`https://auth.velpic.com/saml/v2/<entity-id>/login`
+    b. V **identifikátor** textovému poli, Vložit **'jednotné přihlašování na adresu URL,** hodnota `https://auth.velpic.com/saml/v2/<entity-id>/login`
     
     > [!NOTE]
     > Upozorňujeme, že adresa URL přihlašování budou poskytovat týmem Velpic SAML a hodnotu identifikátoru bude k dispozici, když konfigurujete jednotného přihlašování k modulu plug-in na straně Velpic SAML. Budete muset zkopírujte tuto hodnotu ze stránky aplikace Velpic SAML a vložte ho sem.
@@ -204,7 +204,7 @@ Přihlaste se k serveru vaší společnosti Velpic SAML jako správce a proveďt
 
 2. Na **"Vytvořit nový uživatel"** dialogové okno proveďte následující kroky.
 
-    ![Uživatel](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
+    ![uživatel](./media/active-directory-saas-velpicsaml-tutorial/velpic_8.png)
     
     a. V **křestní jméno** textovému poli, název typu první Britta Simon.
 
@@ -259,10 +259,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 2. Klikněte na **"přihlásit se přes Azure AD,** tlačítko pro přihlášení do Velpic pomocí účtu Azure AD.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

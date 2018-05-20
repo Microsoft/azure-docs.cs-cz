@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Cisco Webex | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cisco Webex."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cisco Webex.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 42632dcf8997ec5e987ac8a6615aae24e903399a
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 527d74910244058506e8435d431e239968896cd9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Kurz: Azure Active Directory integrace s Cisco Webex
 
@@ -30,7 +30,7 @@ Integrace Cisco Webex s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky získat přihlášení k Cisco Webex s účty služby Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,11 +110,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Cisco Webex domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující:`https://<subdomain>.webex.com`
+    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující: `https://<subdomain>.webex.com`
 
     b. V **identifikátor** pole, zadejte adresu URL `http://www.webex.com`.
 
-    c. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující:`https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
+    c. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující: `https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat pomocí adresy URL skutečné odpovědi a adresa URL přihlašování. Obraťte se na [tým podpory Cisco Webex klienta](https://www.webex.co.in/support/support-overview.html) k získání těchto hodnot. 
@@ -222,9 +222,9 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k Cisco Webex, musí b
 
     c. V **příjmení** zadejte příjmení uživatele (v tomto případě **Simon**).
 
-    d. V **uživatelské jméno** zadejte e-mailu uživatele (v tomto případě  **Brittasimon@contoso.com** ).
+    d. V **uživatelské jméno** zadejte e-mailu uživatele (v tomto případě **Brittasimon@contoso.com**).
 
-    e. V **e-mailu** zadejte e-mailovou adresu uživatele (v tomto případě  **Brittasimon@contoso.com** ).
+    e. V **e-mailu** zadejte e-mailovou adresu uživatele (v tomto případě **Brittasimon@contoso.com**).
 
     f. V **heslo** zadejte heslo uživatele.
 
@@ -267,7 +267,7 @@ V této části můžete zajistit, aby uživatel Britta Simon chcete použít Az
 
 7. Vyberte **přiřadit** v tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -275,10 +275,10 @@ Když vyberete dlaždici Cisco Webex na přístupovém panelu, budete automatick
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

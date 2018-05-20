@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s nástrojem Adobe prostředí Manager | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Adobe prostředí správce."
+title: 'Kurz: Azure Active Directory integrace s nástrojem Adobe prostředí Manager | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Adobe prostředí správce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: c366e314b77cd3344a90826b22b96a45e35b0b4e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d63ee16df9b49517c93cdc405cd2525f578d2a7f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Kurz: Azure Active Directory integrace s nástrojem Adobe prostředí Manager
 
@@ -30,7 +30,7 @@ Integrace Adobe prostředí správce s Azure AD poskytuje následující výhody
 - Můžete povolit uživatelům automaticky získat přihlášení k aplikaci Adobe prostředí správce s účty služby Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -179,7 +179,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. V **cesta** zadejte  **/** .
+    a. V **cesta** zadejte **/**.
 
     b. V **IDP URL** zadejte **SAML adresa URL přihlašování služby** hodnotu, kterou jste zkopírovali z portálu Azure.
 
@@ -270,7 +270,7 @@ V této části povolíte Britta Simon tak, že jim udělíte přístup k aplika
 
 7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -281,7 +281,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -14,17 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e7107e5c75d79714ae8d2d78d35e2cd3742ac674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Kurz: Ověřování pomocí služby Azure SignalR
 
+Služba Microsoft Azure SignalR je momentálně ve verzi [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 V tomto kurzu se používá aplikace chatovací místnosti zavedená v rychlém startu. Pokud jste ještě nedokončili cvičení [Vytvoření chatovací místnosti s využitím služby SignalR](signalr-quickstart-dotnet-core.md), nejprve ho dokončete. 
 
-V tomto kurzu se naučíte implementovat vlastní ověřování a integrovat ho se službou Azure SignalR. 
+V tomto kurzu se naučíte implementovat vlastní ověřování a integrovat ho se službou Microsoft Azure SignalR. 
 
 Ověřování původně použité v aplikaci chatovací místnosti z rychlého startu je pro reálné scénáře moc jednoduché. Tato aplikace umožňuje každému klientovi, aby deklaroval svou identitu, a server ji jednoduše přijme. Tento přístup ale není moc užitečný pro reálné aplikace, kde by neautorizovaný uživatel mohl zosobnit jiného uživatele a zajistit si tak přístup k citlivým datům. 
 
@@ -431,7 +433,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 
 | Parametr | Popis |
 | -------------------- | --------------- |
-| ResourceGroupName | Tento název skupiny prostředků byl navržený v předchozích kurzech. Je vhodné udržovat všechny prostředky pro kurzy pohromadě. Použijte stejnou skupinu prostředků, kterou jste používali v předchozích kurzech. | 
+| ResourceGroupName | Tento název skupiny prostředků byl navržený v předchozích kurzech. Je vhodné udržovat všechny prostředky pro kurzy seskupené. Použijte stejnou skupinu prostředků, kterou jste používali v předchozích kurzech. | 
 | WebAppPlan | Zadejte nový jedinečný název plánu služby App Service. | 
 | WebAppName | To bude název nové webové aplikace a část adresy URL. Použijte jedinečný název. Příklad: signalrtestwebapp22665120.   | 
 
@@ -603,9 +605,7 @@ Po chvíli bude skupina prostředků včetně všech obsažených prostředků o
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali ověřování pomocí OAuth pro zajištění lepšího přístupu k ověřování s využitím služby Azure SignalR. Další informace o použití služby Azure SignalR najdete v následujícím kurzu, který ukazuje integraci s Azure Functions.
+V tomto kurzu jste přidali ověřování pomocí OAuth pro zajištění lepšího přístupu k ověřování s využitím služby Azure SignalR. Další informace o použití služby Azure SignalR najdete v ukázkách Azure CLI pro službu SignalR.
 
 > [!div class="nextstepaction"]
-> [Integrace Azure Functions se službou Azure SignalR](./signalr-integrate-functions.md)
-
-
+> [Ukázky rozhraní příkazového řádku pro službu Azure SignalR](./signalr-cli-samples.md)

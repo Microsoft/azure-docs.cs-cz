@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s T & E Express | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a T & E Express."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a T & E Express.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 09ce6851013e05859572bd00215a9f751db4ca53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8d3980b6169c8a9fc60c04e527814159082a46e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Kurz: Azure Active Directory integrace s T & E Express
 
@@ -29,7 +29,7 @@ N & E Express integraci s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k & E Express (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu pro správu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte hodnotu jako:`https://<domain>.tyeexpress.com`
+    a. V **identifikátor** textovému poli, zadejte hodnotu jako: `https://<domain>.tyeexpress.com`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE] 
     > Upozorňujeme, že tyto nejsou skutečné hodnoty. Budete muset aktualizovat tyto hodnoty se skutečným identifikátorem a adresa URL odpovědi. Zde, doporučujeme vám použít jedinečnou hodnotu řetězce v identifikátoru. Obraťte se na [T & E Express tým podpory](http://www.tyeexpress.com/contacto.aspx) k získání těchto hodnot.
@@ -182,7 +182,7 @@ V případě T & E Express zřizování je ruční úloha.
 
     ![Můžete přidat zaměstnance](./media/active-directory-saas-tyeexpress-tutorial/tye-adminusers.png)
 
-3. Na domovské stránce klikněte na  **+**  přidejte uživatele.
+3. Na domovské stránce klikněte na **+** přidejte uživatele.
 
     ![Můžete přidat zaměstnance](./media/active-directory-saas-tyeexpress-tutorial/tye-usershome.png)
 
@@ -229,10 +229,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici T & E Express na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci T & E Express.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

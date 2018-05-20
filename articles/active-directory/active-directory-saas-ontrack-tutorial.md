@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s OnTrack | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OnTrack."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a OnTrack.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 9df3932fe7e68fff422dc4eca370ac1354fb2db0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 76a7bd34c3fddc70e025af52235be619f04fa0d9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Kurz: Azure Active Directory integrace s OnTrack
 
@@ -30,7 +30,7 @@ Integrace OnTrack s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k OnTrack (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,15 +110,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **identifikátor** textovému poli,
     
-    Pro testovací prostředí zadejte adresu URL:`https://staging.insigniagroup.com/sso`
+    Pro testovací prostředí zadejte adresu URL: `https://staging.insigniagroup.com/sso`
 
-    Pro produkční prostředí zadejte adresu URL:`https://oeaccessories.com/sso`
+    Pro produkční prostředí zadejte adresu URL: `https://oeaccessories.com/sso`
 
     b. V **adresa URL odpovědi** textovému poli,
     
-    Pro testovací prostředí zadejte adresu URL:`https://indie.staging.insigniagroup.com/sso/autonation.aspx`
+    Pro testovací prostředí zadejte adresu URL: `https://indie.staging.insigniagroup.com/sso/autonation.aspx`
 
-    Pro produkční prostředí zadejte adresu URL:`https://igaccessories.com/sso/autonation.aspx`
+    Pro produkční prostředí zadejte adresu URL: `https://igaccessories.com/sso/autonation.aspx`
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -226,17 +226,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici OnTrack na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci OnTrack.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

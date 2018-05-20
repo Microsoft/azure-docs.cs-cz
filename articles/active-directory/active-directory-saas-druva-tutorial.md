@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Druva | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Druva."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Druva.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 5be9f384d9e8c0871d26ccb5d35a49e9387ad753
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 43b09ebaac70cceb5fdee8589ef70bd9531574dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Kurz: Azure Active Directory integrace s Druva
 
@@ -30,7 +30,7 @@ Integrace Druva s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Druva (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,13 +108,13 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
 
-    V **identifikátor** textovému poli, zadejte hodnotu řetězce:`druva-cloud`
+    V **identifikátor** textovému poli, zadejte hodnotu řetězce: `druva-cloud`
     
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**. Pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-druva-tutorial/tutorial_druva_url1.png)
     
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:`https://cloud.druva.com/home`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://cloud.druva.com/home`
 
 5. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
@@ -236,7 +236,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k Druva, musí být z�
    
    ![Vytvoření NewUser](./media/active-directory-saas-druva-tutorial/ic795099.png "vytvořit NewUser")
    
-   a. V **e-mailová adresa** textovému poli, zadejte e-mailu uživatele jako  **brittasimon@contoso.com** .
+   a. V **e-mailová adresa** textovému poli, zadejte e-mailu uživatele jako **brittasimon@contoso.com**.
    
    b. V **název** textovému poli, zadejte jméno uživatele, jako je **BrittaSimon**.
    
@@ -275,17 +275,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Druva na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Druva.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

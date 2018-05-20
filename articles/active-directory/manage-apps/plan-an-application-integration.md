@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 523508bc2caeb4315caa6597662174aa0fdeb47b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: ac3438f0c706988323318146965a87461dcce1e8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Integrace služby Azure Active Directory s aplikacemi, získávání Příručka Začínáme
 ## <a name="overview"></a>Přehled
@@ -56,7 +56,7 @@ Předtím, než můžete přejít v integrace aplikací s Azure AD, je důležit
 
 Možná nemáte odpovědi na všechny tyto otázky předem, ale to nevadí.  Tento průvodce vám může pomoct odpovědět na některé z těchto dotazů a některé informovanému rozhodnutí.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure a adresář služby Azure Active Directory.  Pokud nemáte předplatné Azure, můžete vyzkoušet Azure zdarma po dobu 30 dnů. [Vyzkoušejte si to!](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## <a name="application-integration-with-azure-ad"></a>Integrace aplikací s Azure AD
@@ -64,7 +64,7 @@ Možná nemáte odpovědi na všechny tyto otázky předem, ale to nevadí.  Ten
 Jak je uvedeno nahoře, může být aplikace, které nebyly byla spravovaná vaší organizací až doteď.  Jako součást procesu inventáře je možné najít nedovolené cloudové aplikace. V tématu [hledání nedovolené cloudové aplikace s Cloud App Discovery](cloud-app-discovery.md).
 
 ### <a name="authentication-types"></a>Typy ověřování
-Každý z vašich aplikací mohou mít různá ověřovací požadavky. S Azure AD podpisové certifikáty lze použít s aplikací, které používají SAML 2.0, WS-Federation, nebo OpenID Connect protokoly, stejně jako heslo jednotné přihlašování. Další informace o aplikaci typy ověřování pro použití s Azure AD najdete v části [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](../active-directory-sso-certs.md) a [jednotného přihlašování na založené na heslech](../active-directory-appssoaccess-whatis.md).
+Každý z vašich aplikací mohou mít různá ověřovací požadavky. S Azure AD podpisové certifikáty lze použít s aplikací, které používají SAML 2.0, WS-Federation, nebo OpenID Connect protokoly, stejně jako heslo jednotné přihlašování. Další informace o aplikaci typy ověřování pro použití s Azure AD najdete v části [Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](../active-directory-sso-certs.md) a [jednotného přihlašování na založené na heslech](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Povolení přihlášení SSO se Proxy aplikace Azure AD
 S Microsoft Azure AD Application Proxy může poskytnout přístup k aplikacím umístěným uvnitř vaší privátní sítě bezpečně, z libovolného místa a na jakémkoli zařízení. Po instalaci konektoru proxy aplikace v rámci vašeho prostředí, můžete snadno nastavit s Azure AD.
@@ -73,7 +73,7 @@ S Microsoft Azure AD Application Proxy může poskytnout přístup k aplikacím 
 Následující články popisují různé způsoby aplikace integraci s Azure AD a obsahují některé pokyny.
 
 * [Zjišťování služby Active Directory, používat](../active-directory-administer.md)
-* [Použití aplikace v galerii aplikací Azure](../active-directory-appssoaccess-whatis.md)
+* [Použití aplikace v galerii aplikací Azure](what-is-single-sign-on.md)
 * [Integrace seznam kurzy aplikací SaaS](../active-directory-saas-tutorial-list.md)
 
 ## <a name="managing-access-to-applications"></a>Správa přístupu k aplikacím

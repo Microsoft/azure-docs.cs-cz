@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s iLMS | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iLMS."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a iLMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 2764a109e92d3eabf2b7064ce7cd2e428256c8b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0281b0fca107908654dfac31014c79c187aa9b5d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>Kurz: Azure Active Directory integrace s iLMS
 
@@ -29,7 +29,7 @@ Integrace iLMS s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k iLMS (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -112,7 +112,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **identifikátor** textovému poli, Vložit **identifikátor** hodnotu zkopírujete z **poskytovatele služeb** části SAML nastavení iLMS správce portálu.
 
-    b. V **adresa URL odpovědi** textovému poli, Vložit **koncový bod (URL)** hodnotu zkopírujete z **poskytovatele služeb** části SAML nastavení v portálu pro správu iLMS následující opakování`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. V **adresa URL odpovědi** textovému poli, Vložit **koncový bod (URL)** hodnotu zkopírujete z **poskytovatele služeb** části SAML nastavení v portálu pro správu iLMS následující opakování `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
     >[!Note]
     >Tato 123456 je příkladem hodnoty identifikátoru.
@@ -121,7 +121,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, Vložit **koncový bod (URL)** hodnotu zkopírujete z **poskytovatele služeb** části SAML nastavení v portálu pro správu iLMS jako`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
+    V **přihlašovací adresa URL** textovému poli, Vložit **koncový bod (URL)** hodnotu zkopírujete z **poskytovatele služeb** části SAML nastavení v portálu pro správu iLMS jako `https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
 
 5. Pokud chcete povolit zřizování JIT, očekává iLMS aplikace SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **uživatelské atributy** části na stránce integrace aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
     
@@ -137,8 +137,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Název atributu | Hodnota atributu |
     | ---------------| --------------- |    
     | dělení | User.Department |
-    | Oblast | User.state |
-    | Oddělení | User.jobtitle |
+    | oblast | User.state |
+    | oddělení | user.jobtitle |
 
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -303,10 +303,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Když kliknete na dlaždici iLMS na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci iLMS.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

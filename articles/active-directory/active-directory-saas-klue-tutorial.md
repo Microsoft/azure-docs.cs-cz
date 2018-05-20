@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Klue | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Klue."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Klue.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 56df0048a2dea9d09392f6c39b001f0ae1f6c05c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d3cd24ebacacd030e326dce19c5135254abb1aa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Kurz: Azure Active Directory integrace s Klue
 
@@ -29,7 +29,7 @@ Integrace Klue s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Klue (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,15 +110,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-klue-tutorial/tutorial_klue_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`urn:klue:<Customer ID>`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `urn:klue:<Customer ID>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
 
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**. Pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-klue-tutorial/tutorial_klue_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://app.klue.com/account/auth/saml/<Customer UUID>/`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://app.klue.com/account/auth/saml/<Customer UUID>/`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL odpovědi, identifikátor a přihlašovací adresa URL. Obraťte se na [tým podpory Klue klienta](mailto:support@klue.com) k získání těchto hodnot.
@@ -131,9 +131,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     | Název atributu      | Hodnota atributu      |
     | ------------------- | -------------------- |
-    | křestní_jméno          | User.givenName |
-    | Příjmení           | User.Surname |
-    | E-mailu               | User.userPrincipalName|
+    | křestní_jméno          | user.givenname |
+    | Příjmení           | user.surname |
+    | e-mail               | user.userprincipalname|
     
     a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
 
@@ -239,10 +239,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Klue na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Klue.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

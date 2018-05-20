@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s FM:Systems | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FM:Systems."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a FM:Systems.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: c1de4c64b7e4931fe5cf00076f47f2106932d830
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 726b9c8001cb7b87c577bea6813ebe95e903a04d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Kurz: Azure Active Directory integrace s FM:Systems
 
@@ -29,7 +29,7 @@ Integrace FM:Systems s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k FM:Systems (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-fm-systems-tutorial/tutorial_fmsystems_url.png)
 
-    V **adresa URL odpovědi** textovému poli, zadejte vaše FM:Systems **adresa URL odpovědi**, zadejte adresu URL, pomocí následujícího vzorce:`https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
+    V **adresa URL odpovědi** textovému poli, zadejte vaše FM:Systems **adresa URL odpovědi**, zadejte adresu URL, pomocí následujícího vzorce: `https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
 
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory FM:Systems](https://fmsystems.com/ask-us/) získat tuto hodnotu.
@@ -216,10 +216,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici FM:Systems na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci FM:Systems.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

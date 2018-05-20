@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Lifesize cloudu | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Lifesize cloudu."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Lifesize cloudu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ae2c59d672c00b466d13aad1d304f4669a38c7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 84af3a9b726d990e585e2b12b1c0a6f4609fcb7e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Kurz: Azure Active Directory integrace s Lifesize cloudu
 
@@ -29,7 +29,7 @@ Integrace Lifesize cloudu s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Lifesize cloudu (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,16 +110,16 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://login.lifesizecloud.com/ls/?acs`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://login.lifesizecloud.com/ls/?acs`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://login.lifesizecloud.com/<companyname>`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://login.lifesizecloud.com/<companyname>`
 
      
 4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, proveďte následující krok:    
    
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
 
-    V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://webapp.lifesizecloud.com/?ent=<identifier>`
+    V **předávání stavu** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://webapp.lifesizecloud.com/?ent=<identifier>`
    
    > [!NOTE] 
    >Upozorňujeme, že tyto nejsou skutečné hodnoty. budete muset tyto hodnoty aktualizovat skutečné přihlašovací adresa URL, stav předávání a identifikátor. Obraťte se na [tým podpory klient Cloud Lifesize](https://www.lifesize.com/support) získat přihlašovací adresa URL a identifikátor hodnoty a můžete získat hodnotu předávání stavu z konfigurace jednotného přihlašování, která je vysvětlená později v tomto kurzu.
@@ -156,7 +156,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. Otevření kódovaného certifikátu kódování base-64 v poznámkovém bloku stáhli z portálu Azure, zkopírujte obsah ho do schránky a vložte jej do **certifikát X.509** textové pole.
   
-    d. V atributu SAML mapování pro název první textového pole zadejte hodnotu jako **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
+    d. V mapování atributů SAML pro první název textového pole zadejte hodnotu jako **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
     
     e. V mapování atributů SAML pro **příjmení** textového pole zadejte hodnotu jako **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
     
@@ -248,10 +248,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Lifesize cloudu na přístupovém panelu, měli byste obdržet přihlašovací stránku Lifesize cloudových aplikací.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

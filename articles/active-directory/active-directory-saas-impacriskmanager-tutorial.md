@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s nástrojem IMPAC riziko Manager | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IMPAC riziko správce."
+title: 'Kurz: Azure Active Directory integrace s nástrojem IMPAC riziko Manager | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a IMPAC riziko správce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: ade4076917988c5747a0d10a99578b49c917e1db
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d7d45356e7b84d5a4ecbfc964fc1d4b5d8cc8db4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Kurz: Azure Active Directory integrace s nástrojem IMPAC riziko Manager
 
@@ -30,7 +30,7 @@ Integrace s Azure AD IMPAC riziko Manager nabízí následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k IMPAC riziko Manager (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -115,7 +115,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | ---------------|--------------- |    
     | Pro produkční prostředí |`https://www.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Při přípravě a školení  |`https://staging.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
-    | Pro vývoj  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
+    | Pro vývojové prostředí  |`https://dev.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Pro kontrolu kvality |`https://QA.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
     | Pro Test |`https://test.riskmanager.co.nz/DotNet/SSOv2/AssertionConsumerService.aspx?client=<ClientSuffix>`|
 
@@ -128,7 +128,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | ---------------|--------------- |    
     | Pro produkční prostředí |`https://www.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Při přípravě a školení  |`https://staging.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
-    | Pro vývoj  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
+    | Pro vývojové prostředí  |`https://dev.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Pro kontrolu kvality |`https://QA.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
     | Pro Test |`https://test.riskmanager.co.nz/SSOv2/<ClientSuffix>`|
 
@@ -218,17 +218,17 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici IMPAC riziko Manager na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci IMPAC riziko správce.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

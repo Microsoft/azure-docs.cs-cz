@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Achieve3000 | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Achieve3000."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Achieve3000.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 03a6eb581dae88e9789b73c04d5424c0ed14cf62
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e74fe33c6cfaaa8d991c4a4acd5fd16cf05eb36b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-achieve3000"></a>Kurz: Azure Active Directory integrace s Achieve3000
 
@@ -30,7 +30,7 @@ Integrace Achieve3000 s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Achieve3000 (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Achieve3000 domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-achieve3000-tutorial/tutorial_achieve3000_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následující: vzoru:`https://saml.achieve3000.com/district/<District Identifier>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následující: vzoru: `https://saml.achieve3000.com/district/<District Identifier>`
 
-    b. V **identifikátor** textovému poli, zadejte hodnotu:`achieve3000-saml`
+    b. V **identifikátor** textovému poli, zadejte hodnotu: `achieve3000-saml`
 
     > [!NOTE] 
     > Hodnota přihlašovací adresa URL není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Achieve3000 klienta](https://www.achieve3000.com/contact-us/) k získání hodnoty. 
@@ -216,17 +216,17 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Achieve3000 na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Achieve3000.
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

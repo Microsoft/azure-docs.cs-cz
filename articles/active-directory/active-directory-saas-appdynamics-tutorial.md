@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s AppDynamics | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a AppDynamics."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a AppDynamics.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b818f5d24873007aff5a8713a11d368cbe799ee6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e6978db61b193fad070bf937decf208906b13b82
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Kurz: Azure Active Directory integrace s AppDynamics
 
@@ -29,7 +29,7 @@ Integrace AppDynamics s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k AppDynamics (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.saas.appdynamics.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.saas.appdynamics.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<companyname>.saas.appdynamics.com/controller`
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.saas.appdynamics.com/controller`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory AppDynamics klienta](https://www.appdynamics.com/support/) k získání těchto hodnot. 
@@ -197,7 +197,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k AppDynamics, musí b
 
 1. Přihlaste se k serveru vaší společnosti AppDynamics jako správce.
 
-2. Přejděte na **uživatelé**a potom klikněte na  **+**  otevřete **vytvořit uživatele** dialogové okno.
+2. Přejděte na **uživatelé**a potom klikněte na **+** otevřete **vytvořit uživatele** dialogové okno.
    
     ![Uživatelé](./media/active-directory-saas-appdynamics-tutorial/ic790229.png "uživatelů")
 
@@ -248,10 +248,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 
 Když kliknete na dlaždici AppDynamics na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci AppDynamics.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

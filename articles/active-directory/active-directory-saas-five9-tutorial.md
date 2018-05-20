@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Five9 Plus adaptér (CTI, obraťte se na centrum agenty) | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Five9 Plus adaptér (CTI, obraťte se na centrum agenty)."
+title: 'Kurz: Azure Active Directory integrace s Five9 Plus adaptér (CTI, obraťte se na centrum agenty) | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Five9 Plus adaptér (CTI, obraťte se na centrum agenty).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 7eae27ba61cf61e616bb7060ce99b3802793993f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d5c6b2c658a899b3c4363803dc3858cc2b6bab46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Kurz: Azure Active Directory integrace s Five9 Plus adaptér (CTI, obraťte se na centrum agentů)
 
@@ -29,7 +29,7 @@ Integrace Five9 Plus adaptér (CTI, obraťte se na centrum agenty) s Azure AD po
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Five9 Plus adaptér (CTI, obraťte se na centrum agenty) (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -73,7 +73,7 @@ Při konfiguraci integrace Five9 Plus adaptéru (CTI, obraťte se na centrum age
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-five9-tutorial/tutorial_five9_search.png)
 
-5. Na panelu výsledků vyberte **Five9 Plus adaptér (CTI, obraťte se na centrum agenty)**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **Five9 Plus adaptér (CTI, obraťte se na centrum agenty)** a potom klikněte na **přidat** tlačítko Přidat aplikaci.
 
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-five9-tutorial/tutorial_five9_addfromgallery.png)
 
@@ -112,7 +112,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     
     a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
 
-    |    Prostředí      |       ADRESA URL      |
+    |    Prostředí      |       zprostředkovatele identity      |
     | :-- | :-- |
     | Pro "Five9 Plus adaptér pro aplikaci Microsoft Dynamics CRM" | `https://app.five9.com/appsvcs/saml/metadata/alias/msdc` |
     | Pro "Five9 Plus adaptér Zendesk" | `https://app.five9.com/appsvcs/saml/metadata/alias/zd` |
@@ -120,7 +120,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
 
-    |      Prostředí     |      ADRESA URL      |
+    |      Prostředí     |      zprostředkovatele identity      |
     | :--                  | :--           |
     | Pro "Five9 Plus adaptér pro aplikaci Microsoft Dynamics CRM" | `https://app.five9.com/appsvcs/saml/SSO/alias/msdc` |
     | Pro "Five9 Plus adaptér Zendesk" | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
@@ -223,10 +223,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici Five9 Plus adaptér (CTI, obraťte se na centrum agenty) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Five9 Plus adaptér (CTI, obraťte se na centrum agenty).
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

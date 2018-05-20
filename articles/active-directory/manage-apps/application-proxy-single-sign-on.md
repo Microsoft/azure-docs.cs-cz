@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d1c9f4dd8504c2409663cb87b0c0d56164229ed2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1d31b11c3307cc2e54b91e68e1e1a3811ae2ef96
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Jak Azure AD Application Proxy poskytovat jednotné přihlašování?
 
@@ -60,7 +60,7 @@ Informace o nastavení založené na heslech přihlašování najdete v tématu 
 
 Pokud již máte jeden řešení přihlašování nastavení pro místních identit, zvolte **propojené přihlášení**. Tato možnost umožňuje využít existující řešení jednotného přihlašování k Azure Active Directory, ale stále bude uživatelům vzdálený přístup k aplikaci. 
 
-Informace o propojené přihlášení (dříve označované jako existující jednotné přihlašování) najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Informace o propojené přihlášení (dříve označované jako existující jednotné přihlašování) najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="integrated-windows-authentication"></a>Integrované ověřování systému Windows
 

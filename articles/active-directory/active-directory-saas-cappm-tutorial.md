@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s správy Portfolia certifikační Autority | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a správy Portfolia certifikační Autority."
+title: 'Kurz: Azure Active Directory integrace s správy Portfolia certifikační Autority | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a správy Portfolia certifikační Autority.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: c00b054619b6dbfffd66bfd74b1a8567a83a910b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9800ae137943ab2ff634ba93d1f721d5e3a708f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Kurz: Azure Active Directory integrace s správy Portfolia certifikační Autority
 
@@ -29,7 +29,7 @@ Integrace správy Portfolia certifikační Autority s Azure AD poskytuje násled
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k správy Portfolia certifikační Autority (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,9 +110,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cappm-tutorial/tutorial_cappm_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://ca.ondemand.saml.20.post.<companyname>`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://ca.ondemand.saml.20.post.<companyname>`
     
-    b. V **adresa URL odpovědi** textovému poli, typ jako:`https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
+    b. V **adresa URL odpovědi** textovému poli, typ jako: `https://fedsso.ondemand.ca.com/affwebservices/public/saml2assertionconsumer`
 
     > [!NOTE] 
     > Tato hodnota není skutečné. Aktualizujte tato hodnota se skutečným identifikátorem. Obraťte se na [tým podpory správy Portfolia certifikační Autority](mailto:catechnicalsupport@ca.com) získat tuto hodnotu.
@@ -206,10 +206,10 @@ V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihl
 
 Když kliknete na dlaždici správy Portfolia certifikační Autority na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci správy Portfolia certifikační Autority.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

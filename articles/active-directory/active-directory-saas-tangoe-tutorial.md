@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tangoe příkaz Premium Mobile."
+title: 'Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Tangoe příkaz Premium Mobile.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 930150c07d84f886796208d7e745bdaec78966f5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f6a2ffe56e4456ab3bf5a8234837425c60db1353
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile
 
@@ -30,7 +30,7 @@ Integrace Mobile Premium příkaz Tangoe s Azure AD poskytuje následující vý
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Tangoe příkaz Premium Mobile (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -101,15 +101,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
  
-    ![Na základě SAML přihlášení](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_samlbase.png)
+    ![Přihlašování založené na SAML](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_samlbase.png)
 
 3. Na **Tangoe příkaz Premium Mobile domény a adresy URL** část, proveďte následující kroky:
 
     ![Příkaz Tangoe Premium mobilní domény a adresy URL](./media/active-directory-saas-tangoe-tutorial/tutorial_tangoe_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://sso.tangoe.com/sp/startSSO.ping?PartnerIdpId=<tenant issuer>&TARGET=<target page url>`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://sso.tangoe.com/sp/ACS.saml2`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-2/) k získání těchto hodnot. 
@@ -204,16 +204,16 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete otestovat vaši konfiguraci Azure AD jednotného přihlašování k použití na přístupovém panelu.
 
 Když kliknete na dlaždici Tangoe příkaz Premium Mobile na přístupovém panelu, jste měli získat automaticky přihlášení k Tangoe příkaz Premium mobilní aplikace. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

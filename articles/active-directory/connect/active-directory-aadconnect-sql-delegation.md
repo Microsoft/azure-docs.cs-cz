@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/18/2018
 ms.author: billmath
-ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect s použitím SQL delegovaná oprávnění správce
 Před posledním sestavení Azure AD Connect správu delegování, při nasazování konfigurace, které vyžaduje SQL, nepodporuje.  Uživatelé, kteří chtěli nainstalovat Azure AD Connect je potřeba mít oprávnění správce (SA) serveru na serveru SQL server.
@@ -42,7 +42,7 @@ K poskytnutí databáze vzdálené správy a nainstalujte Azure AD Connect s opr
 
 
 1.  Požádejte správce SQL vytvořit databázi ADSync s pořadí písmen kolace **(Latin1_General_CI_AS)**.  Databáze musí mít název **ADSync**.  Model obnovení, úroveň kompatibility a typ členství ve skupině jsou aktualizovány na správné hodnoty při instalaci Azure AD Connect.  Ale pořadí kolace musí být správně nastavené správcem SQL Azure AD Connect bude blokoval instalace.  K obnovení přidružení zabezpečení potřeba odstranit a znovu vytvořit databázi.</br>
-![Kolace](media/active-directory-aadconnect-sql-delegation/sql1.png)
+![Kolace](media/active-directory-aadconnect-sql-delegation/sql4.png)
 2.  Přidělte správce Azure AD Connect a účet služby domény následující oprávnění:
     - Přihlášení k SQL serveru 
     - **databáze owner(dbo)** práva.  </br>

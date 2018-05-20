@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Pluralsight | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Pluralsight."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Pluralsight.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 62d148d78d9f98b6a3ddf1259177936b3976aeab
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: ec199b665f0f9ed34ac6763855cfa9d35b80a7e2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Kurz: Azure Active Directory integrace s Pluralsight
 
@@ -30,7 +30,7 @@ Integrace Pluralsight s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Pluralsight (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,11 +108,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Pluralsight domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-pluralsight-tutorial/tutorial_pluralsight_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.pluralsight.com/sso/<companyname>`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instancename>.pluralsight.com/sso/<companyname>`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL:`www.pluralsight.com`
+    b. V **identifikátor** textovému poli, zadejte adresu URL: `www.pluralsight.com`
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<instancename>.pluralsight.com/sp/ACS.saml2`
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<instancename>.pluralsight.com/sp/ACS.saml2`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Pluralsight klienta](mailto:support@pluralsight.com) k získání těchto hodnot. 
@@ -134,9 +134,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
    
    | Název atributu | Hodnota atributu |
    | ---| --- |
-   | Jméno |User.givenName |
-   | Příjmení |User.Surname |
-   | E-mail |User.Mail |
+   | Jméno |user.givenname |
+   | Příjmení |user.surname |
+   | Email |User.Mail |
    
    a. Klikněte na tlačítko **přidat atribut uživatele** otevřete **přidat atribut uživatele** dialogové okno.
     
@@ -223,7 +223,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -233,7 +233,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

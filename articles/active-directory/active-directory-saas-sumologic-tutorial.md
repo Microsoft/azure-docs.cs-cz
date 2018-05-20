@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s SumoLogic | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SumoLogic."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a SumoLogic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b737ce50c1b52c771af275f5722bfd92b2f1491
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 79db92a5ae9de6bb8f2d425c692f4d3e04ee1d3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Kurz: Azure Active Directory integrace s SumoLogic
 
@@ -29,7 +29,7 @@ Integrace SumoLogic s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k SumoLogic (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,7 +110,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sumologic-tutorial/tutorial_sumologic_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://<tenantname>.SumoLogic.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenantname>.SumoLogic.com`
 
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
@@ -219,7 +219,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k SumoLogic, musí bý
    
     ![Uživatelé](./media/active-directory-saas-sumologic-tutorial/ic778561.png "uživatelů")
 
-3. Klikněte na tlačítko **Přidat**.
+3. Klikněte na tlačítko **Add** (Přidat).
    
     ![Uživatelé](./media/active-directory-saas-sumologic-tutorial/ic778562.png "uživatelů")
 
@@ -275,10 +275,10 @@ Cílem této části je Azure AD jeden přihlašování konfigurace pomocí př�
 
 Když kliknete na dlaždici SumoLogic na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci SumoLogic.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

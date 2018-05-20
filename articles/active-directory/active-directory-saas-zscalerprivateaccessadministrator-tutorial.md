@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s Zscaler privátní přístup správce | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler privátní přístup správce."
+title: 'Kurz: Azure Active Directory integrace s Zscaler privátní přístup správce | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Zscaler privátní přístup správce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: bf0b7cbd8047dfdbc1a4503775e6d36f8e8a67c1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: c3918e4b54d60d6f609e99e24ed2f4b2995bf80c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Kurz: Azure Active Directory integrace s Zscaler privátní přístup správce
 
@@ -30,7 +30,7 @@ Integrace Zscaler privátní přístup správce s Azure AD poskytuje následují
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného k Zscaler privátní přístup správce (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -214,7 +214,7 @@ Povolit uživatelům přihlášení k Zscaler privátní přístup správce Azur
 
     ![Správce přístupu Zscaler privátní uživatel správce](./media/active-directory-saas-zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. V **uživatelské jméno** textovému poli, zadejte e-mailu uživatele jako  **BrittaSimon@contoso.com** .
+    a. V **uživatelské jméno** textovému poli, zadejte e-mailu uživatele jako **BrittaSimon@contoso.com**.
 
     b. V **heslo** textovému poli, zadejte heslo.
 
@@ -222,7 +222,7 @@ Povolit uživatelům přihlášení k Zscaler privátní přístup správce Azur
 
     d. Vyberte **Role** jako **Zscaler privátní přístup správce**.
 
-    e. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako  **BrittaSimon@contoso.com** .
+    e. V **e-mailu** textovému poli, zadejte e-mailu uživatele jako **BrittaSimon@contoso.com**.
 
     f. V **Phone** textovému poli, zadejte telefonní číslo.
 
@@ -260,7 +260,7 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -270,7 +270,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

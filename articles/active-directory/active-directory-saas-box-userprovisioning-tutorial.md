@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Konfigurace pole pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole."
+title: 'Kurz: Konfigurace pole pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d1bbafdb8bbd5ea7bfa193832992d56016b6ee5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro zřizování automatické uživatelů
 
@@ -43,7 +43,7 @@ Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké u
 **Pole > Uživatelé a skupiny** na portálu Azure umožňuje určit, kteří uživatelé a skupiny musí mít udělen přístup k poli. Přiřazení uživatele nebo skupiny, způsobí, že následující kroky, kterými dojít:
 
 * Azure AD umožňuje přiřazený uživatel (buď přímé přiřazení nebo členství ve skupině) k ověření pole. Pokud uživatel není přiřazen, Azure AD je pro přihlášení k pole nepovoluje a vrátí chybu na stránce pro přihlášení k Azure AD.
-* Dlaždici aplikace pro pole se přidá do uživatele [Spouštěč aplikace](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+* Dlaždici aplikace pro pole se přidá do uživatele [Spouštěč aplikace](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
 * Pokud je povoleno automatické zřizování, pak přiřazené uživatele nebo skupin se přidají do zřizování fronty automaticky zřídit.
   
   * Pokud pouze uživatelské objekty byly nakonfigurovány zřídit, pak všechny přímo přiřazené uživatele jsou umístěny ve frontě zřizování a všechny uživatele, kteří jsou členy jakékoli přiřazených skupin jsou umístěny ve frontě zřizování. 
@@ -120,5 +120,5 @@ Ve vašem klientovi políčko synchronizovaní uživatelé jsou uvedeny v část
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurovat jednotné přihlašování](active-directory-saas-box-tutorial.md)

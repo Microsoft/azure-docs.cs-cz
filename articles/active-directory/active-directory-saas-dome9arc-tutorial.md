@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Dome9 oblouk | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Dome9 oblouk."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Dome9 oblouk.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 2ce4bb1be8b0124c69991765e18ce9922bd2f4a4
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: de164f6a439fd68b4746dc96c43ff5cb0740ffe8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Kurz: Azure Active Directory integrace s Dome9 oblouk
 
@@ -30,7 +30,7 @@ Integrace Dome9 oblouk s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k Dome9 oblouk (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,9 +108,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Dome9 oblouk domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-dome9arc-tutorial/tutorial_dome9arc_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL:`https://secure.dome9.com/`
+    a. V **identifikátor** textovému poli, zadejte adresu URL: `https://secure.dome9.com/`
 
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://secure.dome9.com/sso/saml/yourcompanyname`
+    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
     > Vyberete hodnotu název vaší společnosti na portálu správy dome9, který je vysvětlen později v tomto kurzu.
@@ -119,7 +119,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Dome9 oblouk domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-dome9arc-tutorial/tutorial_dome9arc_url1.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://secure.dome9.com/sso/saml/<yourcompanyname>`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Dome9 oblouk klienta](https://dome9.com/about/contact-us/) k získání těchto hodnot. 
@@ -280,7 +280,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup n
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
@@ -290,7 +290,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

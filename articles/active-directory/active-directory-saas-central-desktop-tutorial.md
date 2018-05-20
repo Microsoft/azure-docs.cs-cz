@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Azure Active Directory integrace s centrální plochy | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a centrální plochy."
+title: 'Kurz: Azure Active Directory integrace s centrální plochy | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a centrální plochy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 94c67bef7a0c6ba60fc9c7a60c79a23bf7984fb1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 92c24688cf3d9baefcedcf22c915752b2d29b53c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Kurz: Azure Active Directory integrace s centrální plochy
 
@@ -30,7 +30,7 @@ Integrace centrální plochy s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky získat přihlášení k ploše centrální s účty služby Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
 
-Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Další informace o integraci aplikací SaaS v Azure AD najdete v tématu [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,7 +108,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Centrální plochy domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-central-desktop-tutorial/tutorial_centraldesktop_url.png)
 
-    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující:`https://<companyname>.centraldesktop.com`
+    a. V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.centraldesktop.com`
 
     b. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující:
     | |
@@ -116,7 +116,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://<companyname>.centraldesktop.com/saml2-metadata.php`|
     | `https://<companyname>.imeetcentral.com/saml2-metadata.php`|
 
-    c. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující:`https://<companyname>.centraldesktop.com/saml2-assertion.php`    
+    c. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.centraldesktop.com/saml2-assertion.php`    
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat skutečným identifikátorem odpovědět adresu URL a přihlašovací adresa URL. Obraťte se [tým podpory klienta centrální plochy](https://imeetcentral.com/contact-us) k získání těchto hodnot. 
@@ -153,7 +153,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 10. V **metodu ověřování podpisu zpráva** část, proveďte následující kroky:
 
-    ![Zpráva metodu ověřování podpisu](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "metodu ověřování podpisu zpráva") . Vyberte **certifikát**.
+    ![Zpráva metodu ověřování podpisu](./media/active-directory-saas-central-desktop-tutorial/ic769565.png "metodu ověřování podpisu zpráva") . Vyberte **Certifikát**.
     
     b. V **certifikát jednotného přihlašování k** seznamu, vyberte **RSH SHA256**.
     
@@ -258,7 +258,7 @@ V této části povolit uživatele Britta Simon používat Azure jednotné přih
 
 7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestujte pomocí přístupového panelu Azure AD jeden přihlašování v konfiguraci.
 
@@ -268,7 +268,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

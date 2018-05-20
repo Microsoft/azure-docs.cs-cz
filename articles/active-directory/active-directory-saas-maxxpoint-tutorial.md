@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s MaxxPoint | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a MaxxPoint."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a MaxxPoint.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: b353573938f77455b62b4a0019ba6baf0665bac3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9368abc5694fc52b8cad2d5cc9faafecf853004d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-maxxpoint"></a>Kurz: Azure Active Directory integrace s MaxxPoint
 
@@ -29,7 +29,7 @@ Integrace MaxxPoint s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k MaxxPoint (jednotné přihlášení) s jejich účty Azure AD
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -117,7 +117,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. Klikněte na tlačítko **zobrazit upřesňující nastavení adresy URL** možnost
 
-    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce:`https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
+    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://maxxpoint.westipc.com/default/sso/login/entity/<customer-id>-azure`
 
     > [!NOTE] 
     > Upozorňujeme, že se nejedná skutečné hodnoty. Budete muset aktualizovat tuto hodnotu s skutečné přihlašovací na adresy URL. Volání MaxxPoint týmu na **888-728-0950** získat tuto hodnotu.
@@ -207,10 +207,10 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 Když kliknete na dlaždici MaxxPoint na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci MaxxPoint.
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

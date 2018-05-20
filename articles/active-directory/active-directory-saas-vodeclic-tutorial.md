@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s Vodeclic | Microsoft Docs'
-description: "Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Vodeclic."
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Vodeclic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 940c7bb5040fb91a03b01dc43ee07d52e3d4e63b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: bc889919f2d869478843881cc8eae06fc9cb232c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Kurz: Azure Active Directory integrace s Vodeclic
 
@@ -30,7 +30,7 @@ Integrace Vodeclic s Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům automaticky získat přihlášený k Vodeclic (jednotné přihlašování a jednotné přihlašování) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě – portál Azure.
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -108,15 +108,15 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Vodeclic domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url.png)
 
-    a. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující:`https://<companyname>.lms.vodeclic.net/auth/saml`
+    a. V **identifikátor** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.lms.vodeclic.net/auth/saml`
 
-    b. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující:`https://<companyname>.lms.vodeclic.net/auth/saml/callback`
+    b. V **adresa URL odpovědi** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.lms.vodeclic.net/auth/saml/callback`
 
 4. Pokud chcete nakonfigurovat aplikace **SP** initiated režimu, vyberte **zobrazit upřesňující nastavení adresy URL** zaškrtněte políčko a proveďte následující krok:
 
     ![Vodeclic domény a adresy URL jednotné přihlašování informace](./media/active-directory-saas-vodeclic-tutorial/tutorial_vodeclic_url1.png)
 
-    V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující:`https://<companyname>.lms.vodeclic.net/auth/saml`
+    V **přihlašovací adresa URL** pole, zadejte adresu URL pomocí vzoru následující: `https://<companyname>.lms.vodeclic.net/auth/saml`
      
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizovat skutečným identifikátorem odpovědět adresu URL a přihlašovací adresa URL. Obraťte se [tým podpory Vodeclic klienta](mailto:hotline@vodeclic.com) k získání těchto hodnot.
@@ -203,7 +203,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 7. V **přidat přiřazení** dialogové okno, vyberte **přiřadit** tlačítko.
     
-### <a name="test-single-sign-on"></a>Test jednotného přihlašování
+### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
@@ -211,10 +211,10 @@ Když vyberete dlaždici Vodeclic na přístupovém panelu, můžete získat aut
 
 Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 
