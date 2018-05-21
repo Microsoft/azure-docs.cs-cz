@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: b426fd253b436c71235f006cc41881f0c0c67703
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 271f3231078b8842b040509ccf0406ed2415e5ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Obrázek kognitivní odborností analýzy
 
@@ -248,3 +248,4 @@ V následujících případech chyba jsou extrahovány žádné elementy.
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Vytvoření Indexer (REST)](ref-create-indexer.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Doporučené postupy pro zabezpečení virtuálního počítače Azure
 
@@ -68,7 +68,7 @@ Pokud virtuální počítač používá kritické aplikace, které je potřeba m
 
 [Azure Vyrovnávání zatížení](../load-balancer/load-balancer-overview.md) také vyžaduje, aby Vyrovnávání zatížení sítě virtuálních počítačů patří do stejné skupiny dostupnosti. Pokud tyto virtuální počítače musí mít přístup k Internetu, musíte nakonfigurovat [nástroj pro vyrovnávání zatížení internetového](../load-balancer/load-balancer-internet-overview.md).
 
-Když jsou virtuální počítače přístup k Internetu, je důležité, které [řízení toku provozu sítě s skupiny zabezpečení sítě (Nsg)](../virtual-network/virtual-networks-nsg.md). Vzhledem k tomu, že skupiny Nsg můžete použít na podsítě, můžete minimalizovat počet skupin Nsg svoje prostředky seskupíte podle podsítí a potom použijete skupiny Nsg na podsítě. Je cílem vytvořit úroveň izolace sítě, což lze provést tak, že správně nakonfigurujete [zabezpečení sítě](../best-practices-network-security.md) možnosti v Azure.
+Když jsou virtuální počítače přístup k Internetu, je důležité, které [řízení toku provozu sítě s skupiny zabezpečení sítě (Nsg)](../virtual-network/security-overview.md). Vzhledem k tomu, že skupiny Nsg můžete použít na podsítě, můžete minimalizovat počet skupin Nsg svoje prostředky seskupíte podle podsítí a potom použijete skupiny Nsg na podsítě. Je cílem vytvořit úroveň izolace sítě, což lze provést tak, že správně nakonfigurujete [zabezpečení sítě](../best-practices-network-security.md) možnosti v Azure.
 
 Také můžete funkci za běhu (JIT) virtuálních počítačů přístup z Azure Security Center určí, kdo má vzdáleného přístupu pro konkrétní virtuální počítač a jak dlouho.
 
@@ -124,6 +124,6 @@ Zneužití prostředku může být problém, když počítač procesy spotřebov
 
 Analýzou [soubory protokolů Azure diagnostiky](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/), můžete sledovat vaše prostředky virtuálních počítačů a identifikovat potenciální problémy, které může dojít k ohrožení výkon a dostupnost. Rozšíření diagnostiky Azure nabízí funkce monitorování a Diagnostika na virtuálních počítačích se systémem Windows. Tyto možnosti můžete povolit jako součást, přiložením rozšíření [šablony Azure Resource Manageru](../virtual-machines/windows/extensions-diagnostics-template.md).
 
-Můžete také použít [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview-metrics.md) získat přehled o stavu vaší prostředků.
+Můžete také použít [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview-metrics.md) získat přehled o stavu vašich prostředků.
 
 Organizace, které nejsou sledovat výkon virtuálního počítače není možné určit, jestli jsou některé změny v vzory výkonu normální nebo neobvyklé. Pokud virtuální počítač je spotřebovávat více prostředků, než je obvyklé, takové anomálií by to znamenat potenciální útoky z externí prostředek nebo ohroženými proces, který běží ve virtuálním počítači.
