@@ -543,6 +543,8 @@
               href: service-fabric-cluster-delete.md
             - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+            - name: Upgrade/migrace VMSS SKU
+              href: service-fabric-update-vmss-sku.md
         - name: Samostatné clustery
           items:
             - name: Vytvořit
