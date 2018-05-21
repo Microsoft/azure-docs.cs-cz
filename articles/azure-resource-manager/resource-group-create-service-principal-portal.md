@@ -8,25 +8,25 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: e5d93963dddb4acb1147042ae338b32cb5d7646f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: a8784a8e29e65d8abea566b5a2bf41a2ae6cadf0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Vytvoření aplikace Azure Active Directory a objektu služby, které mají přístup k prostředkům pomocí portálu
 
-Když máte kód, který potřebuje přístup k nebo úpravám prostředků, musíte vytvořit aplikaci Azure Active Directory (AD). Přiřadíte požadovaná oprávnění k aplikaci AD. Tento postup je vhodnější spuštění aplikace vlastní oprávnění, protože můžete přiřadit oprávnění k identitě aplikace, která se liší od vlastní oprávnění. Tato oprávnění jsou obvykle omezené na přesně co aplikaci je třeba provést.
+Když máte kód, který potřebuje přístup k nebo úpravám prostředků, musíte vytvořit aplikaci Azure Active Directory (AD). Přiřadíte požadovaná oprávnění k aplikaci AD. Tento postup je vhodnější spuštění aplikace vlastní oprávnění, protože můžete přiřadit oprávnění k identitě aplikace, která se liší od vlastní oprávnění. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
 
 Tento článek ukazuje, jak provádět tyto kroky prostřednictvím portálu. Zaměřuje se na jednoho klienta aplikace, kde je záměrem spustit v rámci organizace jenom jedna aplikace. Obvykle používají aplikace jednoho klienta pro-obchodní aplikace, které běží v rámci vaší organizace.
 
 > [!IMPORTANT]
-> Místo vytvoření instančního objektu, zvažte použití identit Azure AD spravované služby pro vaši identitu aplikace. Azure AD MSI je funkce ve verzi public preview služby Azure Active Directory, který zjednodušuje vytváření identity pro kód. Pokud váš kód běží na službu, která podporuje Azure AD MSI a přistupuje k prostředkům, které podporují ověřování Azure Active Directory, Azure AD MSI je lepší volbou pro vás. Další informace o Azure AD MSI, včetně služby, které aktuálně podporují, najdete v části [spravované identita služby pro prostředky Azure](../active-directory/managed-service-identity/overview.md).
+> Místo vytvoření instančního objektu zvažte použití Identity spravované služby Azure AD (Azure AD MSI) pro identitu vaší aplikace. Azure AD MSI je funkce služby Azure Active Directory ve veřejné verzi Preview, která zjednodušuje vytváření identity pro kód. Pokud váš kód běží na službě, která podporuje Azure AD MSI a pracuje s prostředky, které podporují ověřování Azure Active Directory, je pro vás Azure AD MSI lepší volbou. Další informace o Azure AD MSI, včetně služeb, které ji aktuálně podporují, najdete v článku [Spravovaná identita služby pro prostředky Azure](../active-directory/managed-service-identity/overview.md).
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 

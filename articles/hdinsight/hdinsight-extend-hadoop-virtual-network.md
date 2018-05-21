@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: cb005549fcd9a5850c990d8ef8acb724443f9908
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3df32c39152c8dda24fd5d0796f8074af8ce8a1a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí virtuální síť Azure
 
@@ -93,7 +93,7 @@ Pokud chcete zjistit, jak přidat nové HDInsight do existující virtuální s�
         Další informace najdete v tématu [odstraňování skupin zabezpečení sítě](../virtual-network/virtual-network-nsg-troubleshoot-portal.md) dokumentu.
 
         > [!IMPORTANT]
-        > Pravidla skupiny zabezpečení sítě jsou použity v pořadí podle priority pravidel. První pravidlo, který odpovídá vzorku provoz se použije a žádné jiné se použijí pro tento přenos. Pravidla pořadí od nejvíce projektovou na omezenou. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) dokumentu.
+        > Pravidla skupiny zabezpečení sítě jsou použity v pořadí podle priority pravidel. První pravidlo, který odpovídá vzorku provoz se použije a žádné jiné se použijí pro tento přenos. Pravidla pořadí od nejvíce projektovou na omezenou. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
     * Trasy definované uživatelem
 
@@ -214,7 +214,7 @@ Pro připojení k Ambari a další webové stránky prostřednictvím virtuáln�
 
 Síťový provoz v Azure Virtual Network se dá řídit pomocí následujících metod:
 
-* **Skupin zabezpečení sítě** (NSG) vám umožní filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) dokumentu.
+* **Skupin zabezpečení sítě** (NSG) vám umožní filtrovat příchozí a odchozí přenosy v síti. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../virtual-network/security-overview.md) dokumentu.
 
     > [!WARNING]
     > HDInsight nepodporuje omezení odchozí provoz.
@@ -242,7 +242,7 @@ Pokud máte v úmyslu používat **skupin zabezpečení sítě** nebo **trasy de
 
 Další informace o skupinách zabezpečení sítě nebo trasy definované uživatelem naleznete v následující dokumentaci:
 
-* [Skupina zabezpečení sítě](../virtual-network/virtual-networks-nsg.md)
+* [Skupina zabezpečení sítě](../virtual-network/security-overview.md)
 
 * [Trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md)
 
@@ -666,6 +666,6 @@ Po dokončení těchto kroků se můžete připojit k prostředkům ve virtuáln
 * Konfigurace geografická replikace HBase, najdete v části [nastavení HBase clusteru replikace v virtuálních sítí Azure](hbase/apache-hbase-replication.md).
 * Další informace o virtuálních sítí Azure, najdete v článku [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
 
-* Další informace o skupinách zabezpečení sítě najdete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+* Další informace o skupinách zabezpečení sítě najdete v tématu [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
 * Další informace o trasy definované uživatelem, najdete v části [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).

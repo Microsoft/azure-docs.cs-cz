@@ -1,12 +1,12 @@
 ---
-title: "Přizpůsobení předkonfigurovaných řešení | Microsoft Docs"
-description: "Poskytuje pokyny o tom, jak přizpůsobit Azure IoT Suite předkonfigurované řešení."
-services: 
+title: Přizpůsobení předkonfigurovaných řešení | Microsoft Docs
+description: Poskytuje pokyny o tom, jak přizpůsobit Azure IoT Suite předkonfigurované řešení.
+services: ''
 suite: iot-suite
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
 ms.service: iot-suite
 ms.devlang: dotnet
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cb5955111cb3954f71f11602042b5153ccee3473
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="customize-a-preconfigured-solution"></a>Přizpůsobení předkonfigurovaného řešení
 
@@ -31,7 +31,7 @@ Zdrojový kód pro předkonfigurované řešení je k dispozici na Githubu v ná
 
 * Vzdálené monitorování: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
 * Prediktivní údržby: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
-* Připojené factory: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
+* Objekt pro vytváření připojené: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
 Zdrojový kód pro předkonfigurované řešení je určen k předvedení vzory a postupy, které slouží k implementaci začátku do konce funkcí řešení IoT pomocí sady Azure IoT Suite. Můžete najít další informace o tom, jak vytvořit a nasadit řešení v úložišť GitHub.
 
@@ -50,7 +50,7 @@ Můžete upravit tyto úlohy přímo ke změně logiku, nebo přidejte logiku, k
 5. Upravte vstupy, dotazů a výstupy.
    
     Jednoduchých úprav je změna dotazu pro **pravidla** úlohu, která má použít **"<"** místo **">"**. Na portálu řešení stále zobrazuje **">"** při upravit pravidlo, ale Všimněte si, jak se chování obráceně z důvodu změny v základní úlohy.
-6. Spustit úlohu
+6. Spuštění úlohy
 
 > [!NOTE]
 > Řídicím panelu vzdáleného monitorování závisí na konkrétní data, takže změna úloh může způsobit selhání řídicího panelu.
@@ -232,7 +232,7 @@ Výchozí hodnota je 10 minut. Můžete změnit tuto hodnotu v [TelmetryApiContr
 
 Máte přizpůsobení chcete najdete v části zahrnuté v tomto dokumentu? Přidání funkce návrhy na [User Voice](https://feedback.azure.com/forums/321918-azure-iot), nebo komentář k tomuto článku. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o možnostech přizpůsobení předkonfigurovaných řešení najdete v tématu:
 
@@ -252,4 +252,4 @@ Další informace o možnostech přizpůsobení předkonfigurovaných řešení 
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-cf-customize]: iot-suite-connected-factory-customize.md
+[lnk-cf-customize]:../iot-accelerators/iot-accelerators-connected-factory-customize.md

@@ -17,17 +17,18 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18f568fdeead10fadad0e403ce0ca7fe4b3213a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturace faktury a dat o denním využití
 Vaše faktura z si můžete stáhnout [portál Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nebo jej odeslat e-mailem. Chcete-li stáhnout denní využití, přejděte na [centra účtů Azure](https://account.azure.com/Subscriptions). Pouze některé role nemáte oprávnění k získání fakturace faktury a informace o využití, jako je správce účtu. Další informace o získání přístupu k fakturační informace najdete v tématu [spravovat přístup k Azure fakturace použití rolí](billing-manage-access.md).
 
->[!NOTE]
->Tento článek se nevztahuje na zákazníky Enterprise Agreement (EA). Pokud jste již EA zákazníka, vaše faktury jsou odesílány přímo správce registrace.
+Tento článek se nevztahuje na zákazníky Enterprise Agreement (EA). Pokud jste již EA zákazníka, vaše faktury jsou odesílány přímo správce registrace.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Získat faktury v e-mailu (PDF)
 Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro příjem vaší Azure faktury e-mailem. Tato funkce nemusí být dostupné pro určité odběry například nabízí podporu, smlouvy Enterprise nebo Azure v otevřené.

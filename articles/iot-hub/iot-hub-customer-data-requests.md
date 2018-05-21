@@ -4,12 +4,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/16/2018
 ms.topic: conceptual
-ms.service: iot-dps
-ms.openlocfilehash: a9115ee9c49ea069999393a6430b010addf672de
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.service: iot-hub
+ms.openlocfilehash: 3af76fe22e93b6c5d502733196994bda61b9a93e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrn funkcí požadavek data zákazníků
 
@@ -42,7 +42,7 @@ Správci klienta můžete využívat kopírování a vložení v rámci okna za�
 Také je možné provádět operace exportu pro zařízení pomocí rozhraní REST API. Další informace najdete v tématu [rozhraní Api pro zařízení - získat zařízení](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice).
 
 > [!NOTE]
-> Při použití služby enterprise společnosti Microsoft generuje některé informace, které jsou známé jako protokoly generované systémem. Některé protokoly generované systémem Azure IoT Hub zařízení zřizování služby nejsou přístupné nebo exportovatelný Správci klienta. Tyto protokoly tvoří konkrétní akce prováděné v rámci služby a diagnostická data související s jednotlivých zařízení.
+> Při použití služby enterprise společnosti Microsoft generuje některé informace, které jsou známé jako protokoly generované systémem. Některé protokoly generované systémem Azure IoT Hub nejsou přístupné nebo exportovatelný Správci klienta. Tyto protokoly tvoří konkrétní akce prováděné v rámci služby a diagnostická data související s jednotlivých zařízení.
 
 ## <a name="links-to-additional-documentation"></a>Odkazy na další dokumentaci
 

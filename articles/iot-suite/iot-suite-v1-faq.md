@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite – nejčastější dotazy | Microsoft Docs"
-description: "Nejčastější dotazy k sadě IoT Suite"
-services: 
+title: Azure IoT Suite – nejčastější dotazy | Microsoft Docs
+description: Nejčastější dotazy k sadě IoT Suite
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
 ms.service: iot-suite
 ms.devlang: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: 6c644395aa7ad51c289cdc4a23b02e9e0239a0fe
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 4c8ecdae8d84028986b4b3fba94486ce8eb7f1bc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Nejčastější dotazy k sadě IoT Suite
 
-Viz také konkrétní připojené factory [– nejčastější dotazy](iot-suite-faq-cf.md).
+Viz také konkrétní připojené factory [– nejčastější dotazy](../iot-accelerators/iot-accelerators-faq-cf.md).
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Kde najdu zdrojový kód pro předkonfigurované řešení?
 
@@ -34,7 +34,7 @@ Zdrojový kód je uložena v následující úložišť GitHub:
 
 ### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Jak aktualizovat na nejnovější verzi předkonfigurovaného řešení vzdáleného monitorování používající funkce správy zařízení IoT Hub?
 
-* Pokud nasadíte předkonfigurované řešení z webu https://www.azureiotsuite.com/, vždy nasadí novou instanci třídy nejnovější verzi řešení.
+* Pokud nasadíte předkonfigurované řešení ze https://www.azureiotsuite.com/ lokalitě, vždy nasazování novou instanci třídy nejnovější verzi řešení.
 * Pokud nasadíte předkonfigurované řešení pomocí příkazového řádku, můžete aktualizovat existující nasazení s nový kód. V tématu [cloudové nasazení] [ lnk-cloud-deployment] v Githubu [úložiště][lnk-remote-monitoring-github].
 
 ### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>Jak můžete přidat podporu pro nové zařízení metody pro předkonfigurované řešení vzdáleného monitorování?
@@ -104,7 +104,7 @@ Najdete v příspěvku blogu od Erica Golpeho [návod odstranění klient služb
 Můžete si taky prostudovat některé další funkce a možnosti předkonfigurovaných řešení sady IoT Suite:
 
 * [Přehled řešení předkonfigurované prediktivní údržby][lnk-predictive-overview]
-* [Přehled připojené objekt pro vytváření předkonfigurovaného řešení](iot-suite-connected-factory-overview.md)
+* [Přehled připojené objekt pro vytváření předkonfigurovaného řešení](../iot-accelerators/iot-accelerators-connected-factory-overview.md)
 * [Zabezpečení IoT od počátku][lnk-security-groundup]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md

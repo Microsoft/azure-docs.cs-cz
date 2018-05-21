@@ -159,6 +159,8 @@
       items:
         - name: Galerie runbooků
           href: automation-runbook-gallery.md
+        - name: Monitorování runbooků s využitím protokolů aktivit
+          href: automation-alert-activity-log.md
         - name: Spuštění runbooku z výstrah Azure
           href: automation-create-alert-triggered-runbook.md
         - name: Vytvoření virtuálního počítače webové služby Amazon

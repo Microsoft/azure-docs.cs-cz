@@ -1,6 +1,6 @@
 ---
-title: "Export šablony Resource Manageru pomocí prostředí Azure PowerShell | Microsoft Docs"
-description: "Export šablony ze skupiny prostředků pomocí Azure Resource Manageru a prostředí Azure PowerShell."
+title: Export šablony Resource Manageru pomocí prostředí Azure PowerShell | Microsoft Docs
+description: Export šablony ze skupiny prostředků pomocí Azure Resource Manageru a prostředí Azure PowerShell.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: a6e36e12717eea61477f55d2d98c00bff31ec643
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: c69bab9d2956568473dd6def86ecbd9bbb6577cf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="export-azure-resource-manager-templates-with-powershell"></a>Export šablony Azure Resource Manager pomocí prostředí PowerShell
 

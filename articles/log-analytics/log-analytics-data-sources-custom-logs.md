@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokoly v analýzy protokolů
 Zdroj dat vlastní protokoly ve analýzy protokolů umožňuje shromažďování událostí z textových souborů v počítačích Windows a Linux. Mnoho aplikací protokolování informací k textovým souborům místo standardní protokolování služby, jako je například protokol událostí systému Windows nebo Syslog.  Jakmile se shromažďují, můžete analyzovat každý záznam v přihlášení do jednotlivých polí pomocí [vlastní pole](log-analytics-custom-fields.md) funkce analýzy protokolů.
@@ -29,7 +29,7 @@ Soubory protokolů, které se mají shromažďovat musí splňují následujíc�
 
 - Protokol musí mít jednu položku na každý řádek nebo používat časové razítko odpovídající jednu z následujících formátů na začátku každé položky.
 
-    RRRR MM-DD HH: MM:<br>M/D/RRRR HH: MM: SS DOP. / ODP <br>MON DD, rrrr hh: mm:
+    RRRR MM-DD HH: MM:<br>M/D/RRRR HH: MM: SS DOP. / ODP<br>MON DD, rrrr hh: mm:<br />rrmmdd hh: mm:<br />ddmmrr hh: mm:<br />Hh: mm: MMMM d<br />dd/MMMM/yyyy:HH:mm:ss zzz<br />rrrr-MM-ddTHH:mm:ssK
 
 - Soubor protokolu nesmí povolit cyklické protokolování nebo oběh protokolu, kde je soubor přepsán pomocí nové položky.
 - Soubor protokolu musí používat kódování ASCII nebo UTF-8.  Ostatní formáty například UTF-16 nejsou podporovány.
@@ -84,7 +84,7 @@ Následující tabulka obsahuje příklady platných vzorů k určení různých
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Krok 4. Zadejte název a popis pro protokol
 Název, který zadáte, se použije pro typ protokolu, jak je popsáno výše.  Bude vždy končit _CL odlišující jej jako vlastní protokol.
 
-1. Zadejte název pro protokol.   **\_CL** automaticky zajištěna příponu.
+1. Zadejte název pro protokol.  **\_CL** automaticky zajištěna příponu.
 2. Přidejte volitelné **popis**.
 3. Klikněte na tlačítko **Další** se uložit definici vlastního protokolu.
 
