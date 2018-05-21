@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: d2caf121-9fbe-4f00-bf9d-8f3d1f00a6ff
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6ad1fd0ab51a93dbab5651ee80f6b6792dd331b9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3dc62ba21458cc91d1858e11e7abbb6e96b0d5dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 

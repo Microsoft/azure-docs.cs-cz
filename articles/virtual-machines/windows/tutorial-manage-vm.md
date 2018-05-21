@@ -1,6 +1,6 @@
 ---
-title: Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell | Microsoft Docs
-description: Kurz – Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell
+title: Kurz – Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu | Microsoft Docs
+description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cce3fd003888c76490cb402b658f5c3aa76ab11e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eeba3b38e4a78bc33b995ee06f76116601c4d12
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Vytváření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell
+# <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Kurz: Vytváření a správa virtuálních počítačů s Windows pomocí Azure PowerShellu
 
 Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní výpočetní prostředí. Tento kurz se zaměřuje na základní kroky při nasazování virtuálních počítačů, jako jsou výběr velikosti virtuálního počítače, výběr image virtuálního počítače a nasazení virtuálního počítače. Získáte informace o těchto tématech:
 
@@ -33,10 +33,9 @@ Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní v
 > * Změna velikosti virtuálního počítače
 > * Zobrazení a pochopení stavu virtuálního počítače
 
-
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -94,11 +93,11 @@ V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak *
 
 ## <a name="understand-vm-images"></a>Vysvětlení imagí virtuálních počítačů
 
-Azure Marketplace obsahuje celou řadu imagí virtuálních počítačů, které jde využít k vytvoření nového virtuálního počítače. V předchozích krocích jsme vytvořili virtuální počítač pomocí image systému Windows Server 2016 Datacenter. V tomto kroku pomocí modulu PowerShell na webu Marketplace vyhledáme další image Windows, které je také možné použít jako základ pro nové virtuální počítače. Tento proces se skládá z vyhledání vydavatele, nabídky, skladové položky a volitelně čísla verze pro [identifikaci](cli-ps-findimage.md#terminology) image. 
+Azure Marketplace obsahuje celou řadu imagí virtuálních počítačů, které jde využít k vytvoření nového virtuálního počítače. V předchozích krocích jsme vytvořili virtuální počítač pomocí image Windows Serveru 2016 Datacenter. V tomto kroku pomocí modulu PowerShell na webu Marketplace vyhledáme další image Windows, které je také možné použít jako základ pro nové virtuální počítače. Tento proces se skládá z vyhledání vydavatele, nabídky, skladové položky a volitelně čísla verze pro [identifikaci](cli-ps-findimage.md#terminology) image. 
 
 Seznam vydavatelů imagí můžete získat pomocí příkazu [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher):
 
-```powersehll
+```powershell
 Get-AzureRmVMImagePublisher -Location "EastUS"
 ```
 
@@ -157,7 +156,7 @@ New-AzureRmVm `
     -AsJob
 ```
 
-Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takže budete mít k dispozici příkazový řádek PowerShellu. Podrobnosti úloh na pozadí můžete zobrazit pomocí rutiny `Job`.
+Parametr `-AsJob` vytvoří virtuální počítač jako úlohu na pozadí, takže budete mít k dispozici příkazový řádek PowerShellu. Podrobnosti úloh na pozadí můžete zobrazit pomocí rutiny `Get-Job`.
 
 
 ## <a name="understand-vm-sizes"></a>Vysvětlení velikostí virtuálních počítačů

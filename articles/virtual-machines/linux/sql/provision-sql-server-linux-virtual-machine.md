@@ -1,22 +1,22 @@
 ---
-title: "Vytvoření virtuálního počítače s Linuxem a SQL Serverem 2017 v Azure | Dokumentace Microsoftu"
-description: "Díky tomuto kurzu se dozvíte, jak vytvořit virtuální počítač s Linuxem a SQL Serverem 2017 na webu Azure Portal."
+title: Vytvoření virtuálního počítače s Linuxem a SQL Serverem 2017 v Azure | Dokumentace Microsoftu
+description: Díky tomuto kurzu se dozvíte, jak vytvořit virtuální počítač s Linuxem a SQL Serverem 2017 na webu Azure Portal.
 services: virtual-machines-linux
 author: rothja
 ms.author: jroth
 manager: jhubbard
-ms.date: 10/25/2017
+ms.date: 05/11/2018
 ms.topic: hero-article
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b86dd47c112c38bc65c045158787d19b470899a0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Zřízení virtuálního počítače s Linuxem a SQL Serverem na webu Azure Portal
 
@@ -71,7 +71,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Klikněte na **OK**.
 
-1. V okně **Velikost** zvolte velikost počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit vše**. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+1. V okně **Velikost** zvolte velikost počítače. Další informace o velikostech virtuálních počítačů Azure najdete v tématu [Velikosti virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
 
     ![Výběr velikosti virtuálního počítače](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
@@ -80,9 +80,11 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 1. Klikněte na **Vybrat**.
 
-1. V okně **Nastavení** můžete provést změny nastavení nebo ponechat výchozí nastavení.
+1. V okně **Nastavení** v seznamu **Vybrat veřejné příchozí porty** vyberte port **SSH (22)**. V tomto rychlém startu je to potřeba pro připojení k SQL Serveru a dokončení jeho konfigurace. Pokud se chcete k SQL Serveru připojit vzdáleně, vyberte také **MS SQL (1433)**, aby se otevřel port 1433 pro připojení přes internet.
 
-1. Klikněte na **OK**.
+   ![Příchozí porty](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+
+1. U ostatních nastavení můžete provést změny nebo ponechat výchozí nastavení. Pak klikněte na **OK**.
 
 1. Na stránce **Souhrn** kliknutím na **Koupit** vytvořte virtuální počítač.
 
@@ -145,7 +147,10 @@ Ve výchozím nastavení se nainstaluje několik [balíčků](sql-server-linux-v
 
 ## <a id="remote"></a>Konfigurace pro vzdálená připojení
 
-Pokud se potřebujete vzdáleně připojit k SQL Serveru na virtuálním počítači Azure, musíte ve skupině zabezpečení sítě nakonfigurovat pravidlo pro příchozí provoz. Toto pravidlo povoluje provoz na portu, na kterém SQL Server naslouchá (výchozí je 1433). Následující kroky ukazují, jak tento krok provést pomocí webu Azure Portal. 
+Pokud se potřebujete vzdáleně připojit k SQL Serveru na virtuálním počítači Azure, musíte ve skupině zabezpečení sítě nakonfigurovat pravidlo pro příchozí provoz. Toto pravidlo povoluje provoz na portu, na kterém SQL Server naslouchá (výchozí je 1433). Následující kroky ukazují, jak tento krok provést pomocí webu Azure Portal.
+
+> [!TIP]
+> Pokud jste během zřizování v nastavení vybrali příchozí port **MS SQL (1433)**, tyto změny už se pro vás provedly. Můžete přejít k další části věnované konfiguraci brány firewall.
 
 1. Na portálu vyberte **Virtuální počítače** a pak vyberte váš virtuální počítač s SQL Serverem.
 

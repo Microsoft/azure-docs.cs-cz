@@ -3,7 +3,7 @@ title: 'Application Insights: jazyky, platformy a integrace | Dokumentace Micros
 description: Jazyky, platformy a integrace, které jsou k dispozici pro službu Application Insights
 services: application-insights
 documentationcenter: ''
-author: OlegAnaniev-MSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 974db106-54ff-4318-9f8b-f7b3a869e536
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
-ms.author: mbullwin
-ms.openlocfilehash: fdc75c69008d2f448d8a077a42bfccd24db6579a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: mbullwin; olegan
+ms.openlocfilehash: 8aec8567fd15865887a5fe5ded8b45cad0290bf9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
 Tyto položky jsou implementace [Application Insights](app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
@@ -29,6 +29,7 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [Node.js](app-insights-nodejs.md)
 
 ## <a name="languages---community-supported"></a>Jazyky – podporované komunitou
+* [F#](https://safe-stack.github.io/docs/template-azure-ai/)
 * [PHP](https://github.com/Microsoft/ApplicationInsights-PHP)
 * [Python](https://pypi.python.org/pypi/applicationinsights/0.1.0)
 * [Ruby](https://rubygems.org/gems/application_insights)
@@ -38,25 +39,25 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [ASP.NET](app-insights-asp-net.md)
 * [ASP.NET – pro aplikace, které jsou již nasazeny](app-insights-monitor-performance-live-website-now.md)
 * [Jádro ASP.NET](app-insights-asp-net-core.md)
-* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (Centrum aplikací, HockeyApp)
+* [Android](app-insights-mobile-center-quickstart.md) (App Center)
+* [Android](https://github.com/Microsoft/ApplicationInsights-Android) (App Center)
 * [Angular](https://github.com/MarkPieszak/angular-application-insights)
 * [Azure Web Apps](app-insights-azure-web-apps.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)& #151; včetně webových a pracovních rolí
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 * [Docker](app-insights-docker.md)
 * [Glimpse](https://azure.microsoft.com/blog/glimpse-application-insights/)
+* [iOS](app-insights-mobile-center-quickstart.md) (App Center)
 * [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
-* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (Centrum aplikací, HockeyApp)
+* [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
 * [J2EE](app-insights-java-get-started.md)
 * [J2EE – pro aplikace, které jsou již nasazeny](app-insights-java-live.md)
-* [Aplikace pro macOS](https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/hockeyapp-for-mac-os-x) (HockeyApp)
 * [Node.js](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
+* [Stack SAFE](https://safe-stack.github.io/docs/template-azure-ai/)
 * [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
-* [Univerzální aplikace pro Windows](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/how-to-create-an-app-for-uwp) (Centrum aplikací, HockeyApp)
+* [Univerzální aplikace pro Windows](app-insights-mobile-center-quickstart.md) (App Center)
 * [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
-* [Aplikace pro Windows Phone 8 a 8.1](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-phone-silverlight-apps-80-and-81) (HockeyApp)
-* [Aplikace pro grafický subsystém Windows Presentation Foundation](https://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone/hockeyapp-for-windows-wpf-apps) (HockeyApp)
 * [Aplikace pracovní plochy Windows, služby a pracovní role](app-insights-windows-desktop.md)
 * [Cokoliv jiného](#projects)
 

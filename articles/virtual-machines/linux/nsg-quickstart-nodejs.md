@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 9520f76ed2ed1d9953f887bc27003e3e640341ba
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 21b408f4347bf59154407ac005a449f797c67e94
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="opening-ports-and-endpoints-to-a-linux-vm-in-azure-using-the-azure-cli-10"></a>Otevření portů a koncové body pro virtuální počítač s Linuxem v Azure pomocí Azure CLI 1.0
 Otevření portu nebo vytvořte koncového bodu, virtuální počítač (VM) v Azure vytvořením filtr sítě na podsíť nebo rozhraní sítě virtuálních počítačů. Tyto filtry, které řídí příchozí a odchozí přenosy, můžete umístit na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme Běžným příkladem webové přenosy na portu 80. Tento článek ukazuje, jak otevřít port k virtuálnímu počítači pomocí Azure CLI 1.0.
@@ -91,6 +91,6 @@ Pokud budete muset použít předávání portů pro mapování jedinečný exte
 V tomto příkladu jste vytvořili jednoduché pravidlo umožňující přenos HTTP. Můžete najít informace o vytváření podrobnější prostředí v těchto článcích:
 
 * [Přehled Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md)
-* [Co je skupina zabezpečení sítě (NSG)?](../../virtual-network/virtual-networks-nsg.md)
+* [Co je skupina zabezpečení sítě (NSG)?](../../virtual-network/security-overview.md)
 * [Přehled Azure Resource Manageru pro vyrovnávání zatížení](../../load-balancer/load-balancer-arm.md)
 

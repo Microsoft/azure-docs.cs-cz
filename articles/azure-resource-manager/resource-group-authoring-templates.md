@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: 19694cb4-d9ed-499a-a2cc-bcfc4922d7f5
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3b70817f973f0bfbdcec2aa8c76a431eec308bcf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4fa610f144277b73bb6d555d46e63a01c413e07e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu a syntaxe šablon Azure Resource Manager
 Tento článek popisuje strukturu šablony Azure Resource Manager. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto částech. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).
@@ -45,7 +45,7 @@ Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
 | parameters |Ne |Hodnoty, které jsou k dispozici při nasazení pro přizpůsobení nasazení prostředků. |
 | proměnné |Ne |Hodnoty, které se používá jako fragmenty JSON v šabloně, které zjednodušují výrazy jazyka šablony. |
 | functions |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| prostředků |Ano |Typy prostředků, které jsou nasazené nebo aktualizovány v skupinu prostředků. |
+| zdroje |Ano |Typy prostředků, které jsou nasazené nebo aktualizovány v skupinu prostředků. |
 | výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příklad obsahuje úplnou syntaxí šablony:

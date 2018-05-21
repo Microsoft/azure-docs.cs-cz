@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: e518799fb4144093e5c3caf0524254a098e4b9cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3efc351861a7d5b3c02c08b96494e83a3ccb99f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning Model správy účtu API – referenční informace
 
@@ -77,7 +77,7 @@ Krok registrace modelu zaregistruje váš model Machine Learning s Azure Model s
 Zaregistruje modelu.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -91,7 +91,7 @@ Zaregistruje modelu.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | OK. Model registrace byla úspěšná. | [Model](#model) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Dotaz na seznam modelů v účtu
 ### <a name="request"></a>Žádost
@@ -103,7 +103,7 @@ Zaregistruje modelu.
 Dotazuje seznam modelů v účtu. Můžete filtrovat seznam výsledků podle značky a názvu. Pokud není předán žádný filtr dotaz uvádí všechny modely v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -119,7 +119,7 @@ Dotazuje seznam modelů v účtu. Můžete filtrovat seznam výsledků podle zna
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [PaginatedModelList](#paginatedmodellist) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-model-details"></a>Získat podrobné informace o modelu
 ### <a name="request"></a>Žádost
@@ -132,7 +132,7 @@ Dotazuje seznam modelů v účtu. Můžete filtrovat seznam výsledků podle zna
 Získá model podle ID.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -145,7 +145,7 @@ Získá model podle ID.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [Model](#model) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>Zaregistrovat manifestu registrované modelu a všechny závislosti
 
@@ -158,7 +158,7 @@ Získá model podle ID.
 Zaregistruje manifestu se registrované modelu a všechny jeho závislé součásti.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -171,7 +171,7 @@ Zaregistruje manifestu se registrované modelu a všechny jeho závislé součá
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Manifestu registrace byla úspěšná. | [Manifest](#manifest) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>Dotaz na seznam manifesty na účtu
 
@@ -184,7 +184,7 @@ Zaregistruje manifestu se registrované modelu a všechny jeho závislé součá
 Dotazuje seznam manifesty v účtu. Můžete filtrovat seznam výsledků podle modelu ID a název manifestu. Pokud není předán žádný filtr dotaz uvádí všechny manifesty v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -200,7 +200,7 @@ Dotazuje seznam manifesty v účtu. Můžete filtrovat seznam výsledků podle m
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [PaginatedManifestList](#paginatedmanifestlist) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-manifest-details"></a>Získat podrobnosti o manifestu
 
@@ -213,7 +213,7 @@ Dotazuje seznam manifesty v účtu. Můžete filtrovat seznam výsledků podle m
 Získá manifest podle ID.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -226,7 +226,7 @@ Získá manifest podle ID.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [Manifest](#manifest) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="create-an-image"></a>Vytvoření image
 
@@ -239,7 +239,7 @@ Získá manifest podle ID.
 Vytvoří bitovou kopii jako obrázek na Docker v registru kontejner Azure.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -252,7 +252,7 @@ Vytvoří bitovou kopii jako obrázek na Docker v registru kontejner Azure.
 | Kód | Popis | Záhlaví | Schéma |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adresa URL umístění asynchronní operaci. Volání GET zobrazí stav úlohy vytváření bitové kopie. | Operace umístění |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-images-in-an-account"></a>Dotaz na seznam obrázků v účtu
 
@@ -265,7 +265,7 @@ Vytvoří bitovou kopii jako obrázek na Docker v registru kontejner Azure.
 Dotazy v seznamu bitových kopií v účtu. Můžete filtrovat seznam výsledků manifestu ID a název. Pokud není předán žádný filtr dotaz uvádí všechny bitové kopie v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -281,7 +281,7 @@ Dotazy v seznamu bitových kopií v účtu. Můžete filtrovat seznam výsledků
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [PaginatedImageList](#paginatedimagelist) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-image-details"></a>Načíst podrobnosti image.
 
@@ -294,7 +294,7 @@ Dotazy v seznamu bitových kopií v účtu. Můžete filtrovat seznam výsledků
 Získá bitovou kopii podle ID.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -307,7 +307,7 @@ Získá bitovou kopii podle ID.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [Image](#image) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 
 ## <a name="create-a-service"></a>Vytvoření služby
@@ -321,7 +321,7 @@ Získá bitovou kopii podle ID.
 Vytvoří službu z bitové kopie.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -335,7 +335,7 @@ Vytvoří službu z bitové kopie.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adresa URL umístění asynchronní operaci. Volání GET zobrazí stav úlohy vytváření služby. | Operace umístění |
 | 409 | Služba se zadaným názvem již existuje. |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-services-in-an-account"></a>Dotaz na seznam služeb v účtu
 
@@ -348,7 +348,7 @@ Vytvoří službu z bitové kopie.
 Dotazuje seznam služeb v účtu. Můžete filtrovat seznam výsledků podle názvu nebo ID modelu, manifestu název nebo ID, ID bitové kopie, název služby nebo ID Machine Learning výpočetních prostředků. Pokud není předán žádný filtr dotaz uvádí všechny služby v účtu. Vráceném seznamu jsou čísla stránek vložena a počet položek v každé stránce je volitelný parametr.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -369,7 +369,7 @@ Dotazuje seznam služeb v účtu. Můžete filtrovat seznam výsledků podle ná
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [PaginatedServiceList](#paginatedservicelist) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-service-details"></a>Získat podrobnosti služby
 
@@ -382,7 +382,7 @@ Dotazuje seznam služeb v účtu. Můžete filtrovat seznam výsledků podle ná
 Získá službu podle ID.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -395,7 +395,7 @@ Získá službu podle ID.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [ServiceResponse](#serviceresponse) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="update-a-service"></a>Aktualizace služby
 
@@ -408,7 +408,7 @@ Získá službu podle ID.
 Aktualizuje existující službu.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -423,20 +423,20 @@ Aktualizuje existující službu.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Adresa URL umístění asynchronní operaci. Volání GET zobrazí stav úlohy aktualizace služby. | Operace umístění |
 | 404 | Služba se zadaným ID neexistuje. |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="delete-a-service"></a>Odstranění služby
 
 ### <a name="request"></a>Žádost
 | Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| ODSTRANIT |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} | 
+| DELETE |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} | 
 
 ### <a name="description"></a>Popis
 Odstraní služby.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -450,7 +450,7 @@ Odstraní služby.
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch |  |
 | 204 | Služba se zadaným ID neexistuje. |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-service-keys"></a>Získat klíče služby
 
@@ -463,7 +463,7 @@ Odstraní služby.
 Získá klíče služby.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -476,20 +476,20 @@ Získá klíče služby.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [AuthKeys](#authkeys)
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="regenerate-service-keys"></a>Obnovit klíče služby
 
 ### <a name="request"></a>Žádost
 | Metoda | Identifikátor URI žádosti |
 |------------|------------|
-| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} / klíče | 
+| POST |  /API/subscriptions / {subscriptionId} /resourceGroups/ {resourceGroupName} /accounts/ {accountName} /services/ {id} / regenerateKeys | 
 
 ### <a name="description"></a>Popis
 Regeneruje klíče služby a vrátí tyto adresy.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -503,7 +503,7 @@ Regeneruje klíče služby a vrátí tyto adresy.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [AuthKeys](#authkeys)
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="query-the-list-of-deployments-in-an-account"></a>Dotaz na seznam nasazení v účtu
 
@@ -516,7 +516,7 @@ Regeneruje klíče služby a vrátí tyto adresy.
 Dotazuje seznamu nasazení v účtu. Můžete filtrovat seznam výsledků podle ID služby, které se vrátí jenom nasazení, které jsou vytvořené pro konkrétní službu. Pokud není předán žádný filtr dotaz uvádí všechna nasazení v účtu.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -529,7 +529,7 @@ Dotazuje seznamu nasazení v účtu. Můžete filtrovat seznam výsledků podle 
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [DeploymentList](#deploymentlist) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-deployment-details"></a>Získat podrobnosti o nasazení
 
@@ -542,7 +542,7 @@ Dotazuje seznamu nasazení v účtu. Můžete filtrovat seznam výsledků podle 
 Získá nasazení podle ID.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -555,7 +555,7 @@ Získá nasazení podle ID.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [Nasazení](#deployment) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-operation-details"></a>Získat podrobnosti o operaci
 
@@ -568,7 +568,7 @@ Získá nasazení podle ID.
 Získá stav asynchronní operace podle ID operace.
 
 ### <a name="parameters"></a>Parametry
-| Název | Umístěný v | Popis | Požaduje se | Schéma
+| Název | Nachází se | Popis | Požaduje se | Schéma
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | ID předplatného Azure. | Ano | řetězec |
 | resourceGroupName | path | Název skupiny prostředků, ve kterém je umístěn účet modelu správy. | Ano | řetězec |
@@ -581,7 +581,7 @@ Získá stav asynchronní operace podle ID operace.
 | Kód | Popis | Schéma |
 |--------------------|--------------------|--------------------|
 | 200 | Úspěch | [OperationStatus](#asyncoperationstatus) |
-| výchozí | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
+| default | Odpovědi na chybu, která popisuje, proč operace se nezdařila. | [ErrorResponse](#errorresponse)
 
 
 
@@ -643,10 +643,10 @@ Nastavení autoscaler.
 |Název|Popis|Schéma|
 |---|---|---|
 |**autoscaleEnabled**  <br>*Volitelné*|Povolit nebo zakázat autoscaler.|Boolean|
-|**maxReplicas**  <br>*Volitelné*|Maximální počet replik pod až škálování.  <br>**Minimální hodnota**: `1`|celé číslo|
-|**minReplicas**  <br>*Volitelné*|Minimální počet replik pod škálování dolů na.  <br>**Minimální hodnota**: `0`|celé číslo|
-|**refreshPeriodInSeconds**  <br>*Volitelné*|Aktualizace času automatického škálování aktivační událost.  <br>**Minimální hodnota**: `1`|celé číslo|
-|**targetUtilization**  <br>*Volitelné*|Procento využití, která aktivuje automatické škálování.  <br>**Minimální hodnota**: `0`  <br>**Maximální hodnota**: `100`|celé číslo|
+|**maxReplicas**  <br>*Volitelné*|Maximální počet replik pod až škálování.  <br>**Minimální hodnota**: `1`|integer|
+|**minReplicas**  <br>*Volitelné*|Minimální počet replik pod škálování dolů na.  <br>**Minimální hodnota**: `0`|integer|
+|**refreshPeriodInSeconds**  <br>*Volitelné*|Aktualizace času automatického škálování aktivační událost.  <br>**Minimální hodnota**: `1`|integer|
+|**targetUtilization**  <br>*Volitelné*|Procento využití, která aktivuje automatické škálování.  <br>**Minimální hodnota**: `0`  <br>**Maximální hodnota**: `100`|integer|
 
 
 <a name="computeresource"></a>
@@ -714,7 +714,7 @@ Objekt modelu správy služby chyby.
 |**Kód**  <br>*Požadované*|Kód chyby.|řetězec|
 |**Podrobnosti**  <br>*Volitelné*|Pole objektů podrobnosti o chybě.|<[ErrorDetail](#errordetail)> pole|
 |**Zpráva**  <br>*Požadované*|Chybová zpráva.|řetězec|
-|**statusCode**  <br>*Volitelné*|Stavový kód HTTP.|celé číslo|
+|**statusCode**  <br>*Volitelné*|Stavový kód HTTP.|integer|
 
 
 <a name="image"></a>
@@ -735,7 +735,7 @@ Obrázek Azure Machine Learning.
 |**imageType**  <br>*Volitelné*||[ImageType](#imagetype)|
 |**Manifest**  <br>*Volitelné*||[Manifest](#manifest)|
 |**Jméno**  <br>*Volitelné*|Název bitové kopie.|řetězec|
-|**Verze**  <br>*Volitelné*|Verze bitové kopie nastavit službou Management modelu.|celé číslo|
+|**Verze**  <br>*Volitelné*|Verze bitové kopie nastavit službou Management modelu.|integer|
 
 
 <a name="imagerequest"></a>
@@ -775,7 +775,7 @@ Azure Machine Learning manifest.
 |**modelType**  <br>*Volitelné*|Určuje, že modely jsou již registrovaný ve službě správy modelu.|výčet (registrovaná)|
 |**Jméno**  <br>*Požadované*|Název souboru manifestu.|řetězec|
 |**TargetRuntime**  <br>*Požadované*||[TargetRuntime](#targetruntime)|
-|**Verze**  <br>*Volitelné*  <br>*jen pro čtení*|Verze manifestu přiřazené službou modelu správy.|celé číslo|
+|**Verze**  <br>*Volitelné*  <br>*jen pro čtení*|Verze manifestu přiřazené službou modelu správy.|integer|
 |**webserviceType**  <br>*Volitelné*|Určuje požadovaný typ webové služby, která bude vytvořena z manifestu.|výčet (v reálném čase)|
 
 
@@ -794,7 +794,7 @@ Instance model Azure Machine Learning.
 |**značek**  <br>*Volitelné*|Seznam značek modelu.|<string> Pole|
 |**Rozbalte**  <br>*Volitelné*|Určuje, jestli je potřeba rozbalte modelu během vytváření bitové kopie Docker.|Boolean|
 |**url**  <br>*Požadované*|Adresa URL modelu. Obvykle jsme uvést adresu URL sdílený přístupový podpis sem.|řetězec|
-|**Verze**  <br>*Volitelné*  <br>*jen pro čtení*|Verze modelu přiřazené službou modelu správy.|celé číslo|
+|**Verze**  <br>*Volitelné*  <br>*jen pro čtení*|Verze modelu přiřazené službou modelu správy.|integer|
 
 
 <a name="modeldatacollection"></a>
@@ -865,9 +865,9 @@ Požadavek na vytvoření služby.
 |**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
 |**Element DataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
 |**imageId**  <br>*Požadované*|Obrázek se vytvořit službu.|řetězec|
-|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|celé číslo|
+|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|integer|
 |**Jméno**  <br>*Požadované*|Název služby.|řetězec|
-|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|celé číslo|
+|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|integer|
 
 
 <a name="serviceregeneratekeyrequest"></a>
@@ -901,8 +901,8 @@ Podrobný stav služby.
 |**ComputeResource**  <br>*Požadované*||[ComputeResource](#computeresource)|
 |**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
 |**Element DataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
-|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|celé číslo|
-|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|celé číslo|
+|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|integer|
+|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|integer|
 |**Chyba**  <br>*Volitelné*||[ErrorResponse](#errorresponse)|
 
 
@@ -918,8 +918,8 @@ Podrobný stav služby.
 |**containerResourceReservation**  <br>*Volitelné*||[ContainerResourceReservation](#containerresourcereservation)|
 |**Element DataCollection**  <br>*Volitelné*||[ModelDataCollection](#modeldatacollection)|
 |**imageId**  <br>*Volitelné*|Obrázek se vytvořit službu.|řetězec|
-|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|celé číslo|
-|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|celé číslo|
+|**maxConcurrentRequestsPerContainer**  <br>*Volitelné*|Maximální počet souběžných požadavků.  <br>**Minimální hodnota**: `1`|integer|
+|**numReplicas**  <br>*Volitelné*|Počet replik pod systémem kdykoli. Nelze zadat, zda je povoleno Autoscaler.  <br>**Minimální hodnota**: `0`|integer|
 
 
 <a name="targetruntime"></a>

@@ -47,48 +47,48 @@
 ### [Seznámení s akcelerátory řešení prediktivní údržby](../iot-suite/iot-suite-predictive-walkthrough.md)
 
 ## Propojená továrna
-### [Co je propojená továrna?](../iot-suite/iot-suite-connected-factory-features.md)
-### [Přehled řešení propojené továrny](../iot-suite/iot-suite-connected-factory-overview.md)
-### [Seznámení s řešeními propojené továrny](../iot-suite/iot-suite-connected-factory-sample-walkthrough.md)
+### [Co je propojená továrna?](iot-accelerators-connected-factory-features.md)
+### [Přehled řešení propojené továrny](iot-accelerators-connected-factory-overview.md)
+### [Seznámení s řešeními propojené továrny](iot-accelerators-connected-factory-sample-walkthrough.md)
 
 ## Simulace zařízení
-### [Nasazení simulace zařízení](../iot-suite/iot-suite-device-simulation-deploy.md)
-### [Prozkoumání simulace zařízení](../iot-suite/iot-suite-device-simulation-explore.md)
+### [Nasazení simulace zařízení](iot-accelerators-device-simulation-deploy.md)
+### [Prozkoumání simulace zařízení](iot-accelerators-device-simulation-explore.md)
 
 # Návody
 ## Vzdálené monitorování
-### [Realizace pokročilého monitorování](../iot-suite/iot-suite-remote-monitoring-monitor.md)
+### [Realizace pokročilého monitorování](iot-accelerators-remote-monitoring-monitor.md)
 ### [Použití pravidel k detekci problémů](iot-accelerators-remote-monitoring-automate.md)
-### [Integrace dat SIM](../iot-suite/iot-suite-remote-monitoring-telefonica-sim.md)
-### [Správa zařízení](../iot-suite/iot-suite-remote-monitoring-manage.md)
-### [Řešení problémů se zařízeními](../iot-suite/iot-suite-remote-monitoring-maintain.md)
-### [Pochopení schématu modelu zařízení](../iot-suite/iot-suite-remote-monitoring-device-schema.md)
-### [Pochopení chování modelu zařízení](../iot-suite/iot-suite-remote-monitoring-device-behavior.md)
-### [Vytvoření nového simulovaného zařízení](../iot-suite/iot-suite-remote-monitoring-test.md)
-### [Vizualizace pomocí Power BI](../iot-suite/iot-suite-integrate-data-powerbi.md)
+### [Integrace dat SIM](iot-accelerators-remote-monitoring-telefonica-sim.md)
+### [Správa zařízení](iot-accelerators-remote-monitoring-manage.md)
+### [Řešení problémů se zařízeními](iot-accelerators-remote-monitoring-maintain.md)
+### [Pochopení schématu modelu zařízení](iot-accelerators-remote-monitoring-device-schema.md)
+### [Pochopení chování modelu zařízení](iot-accelerators-remote-monitoring-device-behavior.md)
+### [Vytvoření nového simulovaného zařízení](iot-accelerators-remote-monitoring-test.md)
+### [Vizualizace pomocí Power BI](iot-accelerators-integrate-data-powerbi.md)
 ### [Přizpůsobení uživatelského rozhraní řešení](iot-accelerators-remote-monitoring-customize.md)
-### [Přizpůsobení a opakované nasazení mikroslužby](../iot-suite/iot-suite-microservices-example.md)
+### [Přizpůsobení a opakované nasazení mikroslužby](iot-accelerators-microservices-example.md)
 ### [Nasazení pomocí rozhraní příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [Místní nasazení](iot-accelerators-remote-monitoring-deploy-local.md)
 ### [Vizualizace dat s využitím Time Series Insights](../iot-suite/iot-suite-time-series-insights.md)
-### [Integrace se službou Data Lake Store](../iot-suite/iot-suite-integrate-data-lake.md)
+### [Integrace se službou Data Lake Store](iot-accelerators-integrate-data-lake.md)
 ### Připojení fyzického zařízení
-#### [C ve Windows](../iot-suite/iot-suite-connecting-devices.md)
-#### [C v Linuxu](../iot-suite/iot-suite-connecting-devices-linux.md)
-#### [Node.js (obecné)](../iot-suite/iot-suite-connecting-devices-node.md)
-#### [Node.js v Raspberry Pi](../iot-suite/iot-suite-connecting-pi-node.md)
-#### [C v Raspberry Pi](../iot-suite/iot-suite-connecting-pi-c.md)
+#### [C ve Windows](iot-accelerators-connecting-devices.md)
+#### [C v Linuxu](iot-accelerators-connecting-devices-linux.md)
+#### [Node.js (obecné)](iot-accelerators-connecting-devices-node.md)
+#### [Node.js v Raspberry Pi](iot-accelerators-connecting-pi-node.md)
+#### [C v Raspberry Pi](iot-accelerators-connecting-pi-c.md)
 #### [MX Chip AZ3166 DevKit](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### Koncepty
-#### [Podrobnosti o implementaci vzdáleného monitorování](../iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md)
+#### [Podrobnosti o implementaci vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 #### [Volby architektury vzdáleného monitorování](iot-accelerators-remote-monitoring-architectural-choices.md)
 
 ## Propojená továrna
-### [Nasazení brány pro propojenou továrnu](../iot-suite/iot-suite-connected-factory-gateway-deployment.md)
-### [Přizpůsobení propojené továrny](../iot-suite/iot-suite-connected-factory-customize.md)
+### [Nasazení brány pro propojenou továrnu](iot-accelerators-connected-factory-gateway-deployment.md)
+### [Přizpůsobení propojené továrny](iot-accelerators-connected-factory-customize.md)
 ### [Použití vydavatele OPC pro propojenou továrnu](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
-### [Konfigurace propojené továrny](../iot-suite/iot-suite-connected-factory-configure.md)
+### [Konfigurace propojené továrny](iot-accelerators-connected-factory-configure.md)
 ## [Oprávnění na webu azureiotsuite.com](../iot-suite/iot-suite-permissions.md)
 
 # Referenční informace
@@ -118,8 +118,8 @@
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
-## [Nejčastější dotazy](../iot-suite/iot-suite-faq.md)
-## [Vzdálené monitorování – nejčastější dotazy](../iot-suite/iot-suite-faq-rm-v2.md)
-## [Propojená továrna – nejčastější dotazy](../iot-suite/iot-suite-faq-cf.md)
+## [Nejčastější dotazy](iot-accelerators-faq.md)
+## [Vzdálené monitorování – nejčastější dotazy](iot-accelerators-faq-rm-v2.md)
+## [Propojená továrna – nejčastější dotazy](iot-accelerators-faq-cf.md)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [Postup výuky akcelerátorů řešení IoT](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

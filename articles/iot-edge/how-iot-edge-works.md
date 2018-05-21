@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: ''
-ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Co je Azure IoT Edge – Preview
 
 Azure IoT Edge přesouvá analýzy a vlastní obchodní logiku z cloudu do zařízení, aby se vaše organizace mohla místo správy dat soustředit na obchodní přehledy. Nakonfigurujte vlastní software IoT, nasaďte ho do zařízení prostřednictvím standardních kontejnerů, to vše monitorujte z cloudu a umožněte tak skutečné škálování vašeho řešení.
 
 >[!NOTE]
->Azure IoT Edge je k dispozici pouze na úrovni Standard služby IoT Hub. Další informace o úrovních Basic a Standard najdete v [návodu k výběru správné úrovně služby IoT Hub](../iot-hub/iot-hub-scaling.md).
+>Azure IoT Edge je k dispozici na úrovni Free a Standard služby IoT Hub. Úroveň Free je určená pouze k testování a posouzení. Další informace o úrovních Basic a Standard najdete v [návodu k výběru správné úrovně služby IoT Hub](../iot-hub/iot-hub-scaling.md).
 
 Analýzy zvyšují přidanou hodnotu řešení IoT, ale ne všechny analýzy musí být v cloudu. Pokud chcete, aby zařízení reagovalo na nouzové situace co nejrychleji, můžete provádět detekci anomálií přímo v zařízení. Podobně pokud chcete snížit náklady na šířku pásma a vyhnout se přenosu terabajtů nezpracovaných dat, můžete provádět čištění a agregaci dat místně. Přehledy pak můžete odeslat do cloudu. 
 
