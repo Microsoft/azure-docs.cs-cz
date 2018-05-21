@@ -12,20 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 330b8015bdddbbcf27e4325b97e8b734c4d98d12
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9554309522e4a1e60fd3599b9a19bcf9cf4bbefb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků služby App Service se zásobníkem Azure
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
 > [!IMPORTANT]
-> Použitím 1802 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením služby Azure App Service.
+> Použitím 1804 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením Azure App Service 1.2.
 >
 >
 
@@ -70,7 +70,7 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 
     ![Instalační program aplikace služby][3]
 
-4. Nyní máte možnost nasadit do existující virtuální síť podle konfigurace provede [zde](azure-stack-app-service-before-you-get-started.md#virtual-network), nebo povolit instalační program aplikace služby k vytvoření virtuální sítě a přidružené podsítě.
+7. Nyní máte možnost nasadit do existující virtuální síť podle konfigurace provede [zde](azure-stack-app-service-before-you-get-started.md#virtual-network), nebo povolit instalační program aplikace služby k vytvoření virtuální sítě a přidružené podsítě.
     1. Vyberte **vytvořit virtuální síť s výchozím nastavením**, přijměte výchozí hodnoty a klikněte na **Další**, nebo;
     2. Vyberte **použít existující virtuální síť a podsítě**.
         1. Vyberte **skupiny prostředků** obsahující vaší virtuální sítě.
@@ -80,7 +80,7 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 
     ![Instalační program aplikace služby][4]
 
-7. Zadejte informace pro sdílené složky a potom klikněte na **Další**. Plně kvalifikovaný název domény nebo IP adresu svého souborového serveru, musíte použít adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.
+8. Zadejte informace pro sdílené složky a potom klikněte na **Další**. Plně kvalifikovaný název domény nebo IP adresu svého souborového serveru, musíte použít adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.
 
    > [!NOTE]
    > Instalační program se pokusí o test připojení ke sdílení souborů než budete pokračovat.  Pokud jste vybrali k nasazení v existující virtuální síť, ale instalační program nemusí být možné se připojit ke sdílení souborů a upozornění se zobrazí s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o sdílení souborů a pokračovat, pokud jsou správné.
@@ -89,7 +89,7 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 
    ![Instalační program aplikace služby][7]
 
-8. Na další stránce:
+9. Na další stránce:
     1. V **ID aplikace Identity** zadejte identifikátor GUID pro aplikaci, kterou používáte pro identita (z Azure AD).
     2. V **soubor certifikátu Identity aplikace** pole, zadejte (nebo vyhledejte) umístění souboru certifikátu.
     3. V **heslo certifikátu Identity aplikace** zadejte heslo pro certifikát. Toto heslo je ten, který jste si poznamenali při skript jste použili k vytvoření certifikátů.
@@ -98,7 +98,7 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 
     ![Instalační program aplikace služby][9]
 
-9. Pro každou z jsou tři políčka soubor certifikátu, klikněte na tlačítko **Procházet** a přejděte k souboru příslušný certifikát. Pro každý certifikát, je nutné zadat heslo. Tyto certifikáty jsou ty, které jste vytvořili v [vytvořit požadované certifikáty krok](azure-stack-app-service-before-you-get-started.md#get-certificates). Klikněte na tlačítko **Další** po zadání všech informací.
+10. Pro každou z jsou tři políčka soubor certifikátu, klikněte na tlačítko **Procházet** a přejděte k souboru příslušný certifikát. Pro každý certifikát, je nutné zadat heslo. Tyto certifikáty jsou ty, které jste vytvořili v [vytvořit požadované certifikáty krok](azure-stack-app-service-before-you-get-started.md#get-certificates). Klikněte na tlačítko **Další** po zadání všech informací.
 
     | Box | Příklad názvu souboru certifikátu |
     | --- | --- |
@@ -110,7 +110,7 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 
     ![Instalační program aplikace služby][10]
 
-10. Zadejte podrobnosti serveru SQL Server instance serveru použitý pro hostování databází zprostředkovatele prostředků služby App Service a pak klikněte na tlačítko **Další**. Instalační program ověří vlastnosti připojení SQL.
+11. Zadejte podrobnosti serveru SQL Server instance serveru použitý pro hostování databází zprostředkovatele prostředků služby App Service a pak klikněte na tlačítko **Další**. Instalační program ověří vlastnosti připojení SQL.
 
     > [!NOTE]
     > Instalační program se pokusí o test připojení k systému SQl Server, než budete pokračovat.  Pokud jste vybrali k nasazení v existující virtuální síť, ale nemusí být možné se připojit k systému SQL Server instalační program a upozornění se zobrazí s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o systému SQL Server a pokračovat, pokud jsou správné.
@@ -119,7 +119,7 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
 
     ![Instalační program aplikace služby][11]
 
-11. Zkontrolujte možnosti role instance a SKU. Výchozí hodnoty naplnění minimální počet instancí a minimální SKU pro každou roli v ASDK nasazení. Souhrn požadavků virtuální procesory a paměť je určena k plánování nasazení. Po provedení výběru klikněte na tlačítko **Další**.
+12. Zkontrolujte možnosti role instance a SKU. Výchozí hodnoty naplnění minimální počet instancí a minimální SKU pro každou roli v ASDK nasazení. Souhrn požadavků virtuální procesory a paměť je určena k plánování nasazení. Po provedení výběru klikněte na tlačítko **Další**.
 
     > [!NOTE]
     > Pro nasazení v produkčním prostředí, následující pokyny v [kapacitní plánování rolí serveru služby Azure App Service v Azure zásobníku](azure-stack-app-service-capacity-planning.md).
@@ -139,23 +139,23 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
     > [!NOTE]
     > **Jádro systému Windows Server 2016 není image podporované platformy pro použití se službou Azure App Service v Azure zásobníku.  Nepoužívejte vyhodnocení Image pro nasazení v produkčním prostředí.**
 
-12. V **vyberte Image platformy** vyberte bitovou kopii vašeho nasazení systému Windows Server 2016 virtuálního počítače z bitové kopie, které ve zprostředkovateli výpočetních prostředků pro cloudové služby App Service. Klikněte na **Další**.
+13. V **vyberte Image platformy** vyberte bitovou kopii vašeho nasazení systému Windows Server 2016 virtuálního počítače z bitové kopie, které ve zprostředkovateli výpočetních prostředků pro cloudové služby App Service. Klikněte na **Další**.
 
-13. Na další stránce:
+14. Na další stránce:
      1. Zadejte uživatelské jméno správce virtuálního počítače Role pracovního procesu a heslo.
      2. Zadejte další role virtuálního počítače správce uživatelské jméno a heslo.
      3. Klikněte na **Další**.
 
     ![Instalační program aplikace služby][15]    
 
-14. Na stránce Shrnutí:
+15. Na stránce Shrnutí:
     1. Zkontrolujte provedený výběr. Chcete-li změnit, použijte **předchozí** tlačítka pro návštěvu předchozí stránky.
     2. Pokud konfigurace jsou správné, zaškrtněte políčko.
     3. Chcete-li spustit nasazení, klikněte na tlačítko **Další**.
 
     ![Instalační program aplikace služby][16]
 
-15. Na další stránce:
+16. Na další stránce:
     1. Sledovat průběh instalace. Služby App Service v Azure zásobníku trvá asi 60 minut pro nasazení založené na výchozí nastavení.
     2. Po instalační program úspěšně dokončí, klikněte na tlačítko **ukončení**.
 

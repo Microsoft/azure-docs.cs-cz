@@ -1,31 +1,31 @@
 ---
-title: "Aktualizace služby Azure App Service v Azure zásobníku | Microsoft Docs"
-description: "Podrobné pokyny pro aktualizaci služby Azure App Service v Azure zásobníku"
+title: Aktualizace služby Azure App Service v Azure zásobníku | Microsoft Docs
+description: Podrobné pokyny pro aktualizaci služby Azure App Service v Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 151456bbb7f9331730e640e4bece3872c3c92f8d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c822f25e25953b8709f481e51d6a63e6a912a60a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualizace služby Azure App Service v Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
 > [!IMPORTANT]
-> Použitím 1802 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením služby Azure App Service.
+> Použitím 1804 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením Azure App Service 1.2.
 >
 >
 
@@ -44,7 +44,7 @@ Během tohoto procesu upgradu bude:
 * Příprava všechny balíčky aktualizací a nové verze všech knihoven OSS k nasazení
 * Nahrání do úložiště
 * Upgradovat všechny role služby App Service (řadiče, správu, front-endu, vydavatele a pracovní role)
-* Aktualizovat definice sady škálování služby App Service
+* Aktualizovat definice škálovací sady služby App Service
 * Aktualizace služby App Service Manifest zprostředkovatele prostředků
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ Během tohoto procesu upgradu bude:
 
 Upgradovat nasazení služby App Service v zásobníku Azure, postupujte takto:
 
-1. Stažení [instalační program aplikace služby](https://aka.ms/appsvcupdate1installer)
+1. Stažení [instalační program aplikace služby](https://aka.ms/appsvcupdate2installer)
 
 2. Spustit appservice.exe jako správce
 
@@ -74,8 +74,8 @@ Upgradovat nasazení služby App Service v zásobníku Azure, postupujte takto:
 
    1. Klikněte na tlačítko **připojit** vedle položky **předplatných Azure zásobníku** pole.
         * Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure zásobníku. Klikněte na tlačítko **přihlášení**.
-        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například  *cloudadmin@azurestack.local* . Zadejte své heslo a klikněte na tlačítko **přihlásit**.
-   2. V **předplatných Azure zásobníku** pole, vyberte své předplatné.
+        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například *cloudadmin@azurestack.local*. Zadejte své heslo a klikněte na tlačítko **přihlásit**.
+   2. V **předplatných Azure zásobníku** vyberte **výchozí předplatné zprostředkovatele**.
    3. V **umístění zásobník Azure** , vyberte umístění, které odpovídá oblast, že nasazujete. Vyberte například **místní** Pokud vaše nasazení do Azure zásobníku Development Kit.
    4. Pokud je zjištěno stávajícího nasazení služby App Service, pak prostředku skupiny a účet úložiště bude naplněno a šedá.
    5. Klikněte na tlačítko **Další** k Zkontrolujte souhrn upgradu.

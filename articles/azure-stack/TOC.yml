@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: "Poznámky k\_verzi"
       items:
+        - name: 1804 aktualizace
+          href: azure-stack-update-1804.md
         - name: 1803 aktualizace
           href: azure-stack-update-1803.md
         - name: 1802 aktualizace
           href: azure-stack-update-1802.md
         - name: aktualizace 1712
           href: azure-stack-update-1712.md
-        - name: aktualizace 1711
-          href: azure-stack-update-1711.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -156,6 +156,8 @@
               href: azure-stack-backup-enable-backup-powershell.md
             - name: Zálohování Azure zásobníku
               href: azure-stack-backup-back-up-azure-stack.md
+            - name: Zálohování souborů a aplikací v Azure zásobníku
+              href: ..\backup\backup-mabs-files-applications-azure-stack.md?toc=%2fazure%2fazure-stack%2ftoc.json
             - name: Obnovit z závažné ztráty dat
               href: azure-stack-backup-recover-data.md
             - name: Osvědčené postupy zálohování
@@ -245,6 +247,8 @@
               href: azure-stack-app-service-configure-deployment-sources.md
             - name: Aplikační služby na Azure zásobníku update 1 poznámky
               href: azure-stack-app-service-release-notes-update-one.md
+            - name: Aplikační služby na Azure zásobníku poznámky k verzi update 2
+              href: azure-stack-app-service-release-notes-update-two.md
         - name: Naplnění webu Marketplace
           items:
             - name: Přehled webu Marketplace

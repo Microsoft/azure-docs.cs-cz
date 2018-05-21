@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4fb522e1a5a3c1adeaf5f46b8ccc3b9a852f4a88
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: bc88140bf1adea49ff4bc76667d30a379f829bbc
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Používání databází MySQL v zásobníku Microsoft Azure
 
@@ -117,7 +117,7 @@ Můžete:
 Tady je příklad, který můžete spustit z příkazového řádku prostředí PowerShell. Nezapomeňte změnit informace o účtu a hesla podle potřeby:
 
 
-```
+```powershell
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
@@ -214,6 +214,10 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
     - kapacita databáze
     - Automatické zálohování
     - Rezervovat vysoce výkonné servery pro jednotlivá oddělení
+
+
+  > [!IMPORTANT]
+  > Samostatné servery nelze kombinovat s instancí Always On ve stejné SKU. Probíhá pokus o různé typy po přidání první výsledky hostitelský server s chybou.
  
 
 Název SKU by měla odpovídat vlastnosti tak, aby klienti můžete umístit své databáze správně. Všechny hostitelské servery v SKU musí mít stejné funkce.

@@ -12,20 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 7907056635049ce90a2653b0d58ef6299b77c71e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků služby App Service pro odpojené prostředí Azure zásobníku zabezpečeným službou AD FS
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
 > [!IMPORTANT]
-> Použitím 1802 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením služby Azure App Service.
+> Použitím 1804 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější development kit zásobník Azure před nasazením Azure App Service 1.2.
 >
 >
 
@@ -80,7 +80,7 @@ Abyste mohli nasadit služby App Service v odpojeném prostředí, musíte nejd�
 7. Na další stránce:
     1. Klikněte na tlačítko **připojit** vedle položky **předplatných Azure zásobníku** pole.
         - Zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a klikněte na tlačítko **přihlásit**.
-    2. V **předplatných Azure zásobníku** pole, vyberte své předplatné.
+    2. V **předplatných Azure zásobníku** vyberte **výchozí předplatné zprostředkovatele**.
     3. V **umístění zásobník Azure** , vyberte umístění, které odpovídá oblast, že nasazujete. Vyberte například **místní** Pokud vaše nasazení do Azure zásobníku Development Kit.
     4. Klikněte na **Další**.
 
@@ -126,7 +126,7 @@ Abyste mohli nasadit služby App Service v odpojeném prostředí, musíte nejd�
 
     ![Instalační program aplikace služby][11]
 
-12. Zadejte podrobnosti serveru SQL Server instance serveru použitý pro hostování databází zprostředkovatele prostředků služby App Service a pak klikněte na tlačítko **Další**. Instalační program ověří vlastnosti připojení SQL.
+12. Zadejte podrobnosti serveru SQL Server instance serveru použitý pro hostování databází zprostředkovatele prostředků služby App Service a pak klikněte na tlačítko **Další**. Instalační program ověří vlastnosti připojení SQL. Můžete **musí** zadejte interních ip nebo plně kvalifikovaný název domény pro název serveru SQL Server.
 
 > [!NOTE]
 > Instalační program se pokusí o test připojení k systému SQl Server, než budete pokračovat.  Ale pokud jste vybrali k nasazení v existující virtuální síť, instalační program nemusí být možné se připojit k systému SQL Server a zobrazí upozornění s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o systému SQL Server a pokračovat, pokud jsou správné.

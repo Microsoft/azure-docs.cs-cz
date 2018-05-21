@@ -1,57 +1,59 @@
 ---
 title: Použití zásobníku rozhraní API v Azure | Microsoft Docs
-description: Zjistěte, jak načíst a ověřování z Azure, aby se žádostí o rozhraní API k Azure zásobníku.
+description: Zjistěte, jak načíst ověření z Azure, aby se žádostí o rozhraní API k Azure zásobníku.
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/14/2018
 ms.author: mabrigg
-ms.reviewer: sijuman
-ms.openlocfilehash: 2bbfe4f829ad5c42a5742fdf08f2d185af627f42
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.reviewer: thoroet
+ms.openlocfilehash: e8a9489a3f487a45303bac45f805381b41427b4b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
-<!--  cblackuk and charliejllewellyn -->
+<!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
 # <a name="use-the-azure-stack-api"></a>Použití zásobníku rozhraní API v Azure
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Rozhraní API zásobník Azure můžete použít k automatizaci operací, jako je například syndicating položky marketplace.
+Azure zásobníku rozhraní API (Application Programming) můžete použít k automatizaci operací, jako je například syndicating položky marketplace.
 
-Pomocí rozhraní API vyžaduje vašeho klienta k ověřování na základě koncového bodu Microsoft Azure přihlášení. Koncový bod vrátí token pro použití v hlavičce každý požadavek odeslaný rozhraní API služby Azure zásobníku. (Microsoft Azure používá Oauth 2.0.)
+Rozhraní API vyžaduje vašeho klienta k ověřování na základě koncového bodu Microsoft Azure přihlášení. Koncový bod vrátí token pro použití v hlavičce každý požadavek odeslaný rozhraní API služby Azure zásobníku. Microsoft Azure používá Oauth 2.0.
 
-Tento článek obsahuje příklady, které používají nástroj curl k vytváření žádostí o zásobník Azure. Tyto příklady provede proces získání tokenu pro přístup k rozhraní API služby Azure zásobníku. Většina programovacích jazyků poskytují knihovny Oauth 2.0, které mají robustní tokenu úlohy správy a popisovač tyto aktualizace tokenu.
+Tento článek obsahuje příklady, které používají **cURL** nástroj k vytváření žádostí o zásobník Azure. Aplikace, cURL, je nástroj příkazového řádku s knihovnou pro přenos dat. Tyto příklady provede proces získání tokenu pro přístup k rozhraní API služby Azure zásobníku. Většina programovacích jazyků poskytují knihovny Oauth 2.0, které mají robustní tokenu úlohy správy a popisovač tyto aktualizace tokenu.
 
-Prohlížení celý proces pomocí rozhraní REST API Azure zásobníku obecné klienta REST, jako je curl vám může pomoct pochopit základní požadavky a uvádí, co můžete očekávat přijímat v datové části odpovědi.
+Přečtěte si celý proces zásobníku REST API služby Azure pomocí obecné klienta REST, jako například **cURL**, které vám pomohou pochopit základní požadavky a uvádí, co můžete očekávat přijímat v datové části odpovědi.
 
-V tomto článku není prozkoumejte všechny možnosti, které jsou k dispozici pro tokeny, jako je například interaktivní přihlášení načítání nebo vytváření vyhrazené ID aplikace. Další informace najdete v tématu [referenční dokumentace rozhraní API REST Azure](https://docs.microsoft.com/rest/api/).
+V tomto článku není prozkoumejte všechny možnosti, které jsou k dispozici pro tokeny, jako je například interaktivní přihlášení načítání nebo vytváření vyhrazené ID aplikace. Chcete-li získat informace o těchto tématech, přečtěte si téma [referenční dokumentace rozhraní API REST Azure](https://docs.microsoft.com/rest/api/).
 
 ## <a name="get-a-token-from-azure"></a>Získání tokenu z Azure
 
-Vytvořit žádost o *textu* formátovaném pomocí typ obsahu x--www-form-urlencoded získat přístupový token. Odeslat požadavek na koncový bod ověřování REST Azure a přihlášení.
+Vytvořte obsah žádosti formátován pomocí typ obsahu x--www-form-urlencoded získat přístupový token. Odeslat požadavek na koncový bod ověřování REST Azure a přihlášení.
 
-```
+### <a name="uri"></a>URI
+
+```bash  
 POST https://login.microsoftonline.com/{tenant id}/oauth2/token
 ```
 
 **ID klienta** je buď:
 
-* Vaše domény klienta, například fabrikam.onmicrosoft.com
-* Vaše ID klienta, jako je například 8eaed023-2b34-4da1-9baa-8bc8c9d6a491
-* Výchozí hodnota pro klíče klienta nezávislé: běžné
+ - Vaše doména klienta, jako například `fabrikam.onmicrosoft.com`
+ - ID klienta, jako například `8eaed023-2b34-4da1-9baa-8bc8c9d6a491`
+ - Výchozí hodnota pro klíče nezávislé na klienta: `common`
 
 ### <a name="post-body"></a>Textu POST
 
-```
+```bash  
 grant_type=password
 &client_id=1950a258-227b-4e31-a9cf-717495945fc2
 &resource=https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155
@@ -62,32 +64,25 @@ grant_type=password
 
 Pro každou hodnotu:
 
-  **grant_type**
+ - **grant_type**  
+    Typ schéma ověřování, které budete používat. V tomto příkladu je hodnota `password`
 
-  Typ schéma ověřování, které budete používat. V tomto příkladu je hodnota:
+ - **Prostředek**  
+    Přístup k prostředku token. Pomocí dotazu na koncový bod metadat správy zásobník Azure můžete najít prostředek. Podívejte se na **cílové skupiny** části
 
-  ```
-  password
-  ```
+ - **Koncový bod správy Azure zásobníku**  
+    ```
+    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+    ```
 
-  **Prostředek**
-
-  Přístup k prostředku token. Pomocí dotazu na koncový bod metadat správy zásobník Azure můžete najít prostředek. Podívejte se na **cílové skupiny** části
-
-  Koncový bod Azure zásobníku Management:
-
-  ```
-  https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
-  ```
-
- > [!NOTE]
- > Pokud jste správce pokusí o přístup k rozhraní API pro klienty, pak je nutné nejprve použít koncový bod klienta, například: 'https://adminmanagement.{region}.{Azure zásobníku domény} / metadata/koncové body? api-version = 2015-01-011
+  > [!NOTE]  
+  > Pokud se správce pokusí o přístup k rozhraní API klienta pak můžete musí nezapomeňte použít koncový bod klienta, například: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   Například v zásobníku Azure Development Kit jako koncový bod:
 
-  ```
-  curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
-  ```
+    ```bash
+    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
+    ```
 
   Odpověď:
 
@@ -103,7 +98,7 @@ Pro každou hodnotu:
   }
   ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
   ```
   https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155
@@ -123,7 +118,7 @@ Pro každou hodnotu:
   | Aplikace | ApplicationID |
   | --------------------------------------- |:-------------------------------------------------------------:|
   | LegacyPowerShell | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417 |
-  | Prostředí Power Shell | 1950a258-227b-4e31-a9cf-717495945fc2 |
+  | PowerShell | 1950a258-227b-4e31-a9cf-717495945fc2 |
   | WindowsAzureActiveDirectory | 00000002-0000-0000-c000-000000000000 |
   | VisualStudio | 872cd9fa-d31f-45e0-9eab-6e460a02d1f1 |
   | AzureCLI | 04b07795-8ddb-461a-bbee-02f9e1bf7b46 |
@@ -140,7 +135,7 @@ Pro každou hodnotu:
 
   Heslo správce Azure zásobníku AAD.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Žádost:
 
@@ -175,13 +170,13 @@ Po získání přístupového tokenu, musíte ji přidat jako hlavičku pro kaž
 
 Žádost:
 
-```
+```bash  
 curl -H "Authorization: Bearer eyJ0eXAiOi...truncated for readability..." 'https://adminmanagement.local.azurestack.external/subscriptions?api-version=2016-05-01'
 ```
 
 Odpověď:
 
-```
+```bash  
 offerId : /delegatedProviders/default/offers/92F30E5D-F163-4C58-8F02-F31CFE66C21B
 id : /subscriptions/800c4168-3eb1-406b-a4ca-919fe7ee42e8
 subscriptionId : 800c4168-3eb1-406b-a4ca-919fe7ee42e8

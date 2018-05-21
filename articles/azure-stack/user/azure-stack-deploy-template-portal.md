@@ -1,41 +1,42 @@
 ---
-title: "Nasazení šablony na portálu v Azure zásobníku | Microsoft Docs"
-description: "Další informace o použití portálu Azure zásobníku pro nasazení šablon."
+title: Nasazení pomocí portálu v Azure zásobníku šablon | Microsoft Docs
+description: Další informace o použití portálu Azure zásobníku pro nasazení šablon.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: eafa60f2-16c9-4ef1-b724-47709e9ea29e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 05/17/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 30c077747685ad7617148e9130926120420b098b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.reviewer: ''
+ms.openlocfilehash: 278f15271d3a5443102f5e387d3db1adb53fe7db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Nasazení šablony pomocí portálu Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Použití portálu k nasazení šablony Azure Resource Manager zásobník Azure development Kit.
+Na portálu můžete použít k nasazení šablony Azure Resource Manageru do Azure zásobníku.
 
-Správce prostředků šablony nasazení a zřizování všechny prostředky pro svoji aplikaci v rámci jediné koordinované operace.
+Nasazení šablony:
 
-1. Přihlaste se k portálu, klikněte na tlačítko **nový**, klikněte na tlačítko **vlastní**a potom klikněte na **nasazení šablony**.
-2. Klikněte na tlačítko **úpravy šablony**, vložte kód JSON šablony do okna a pak klikněte na tlačítko **Uložit**.
-3. Klikněte na tlačítko **upravit parametry**, zadejte hodnoty pro parametry uvedené a pak klikněte na tlačítko **OK**.
-4. Klikněte na tlačítko **předplatné**, vyberte předplatné, které chcete použít a pak klikněte na **OK**.
-5. Klikněte na tlačítko **skupiny prostředků**, vyberte existující skupinu prostředků nebo vytvořte novou a potom klikněte na **OK**.
-6. Klikněte na možnost **Vytvořit**. Nová dlaždice na řídicím panelu sleduje průběh nasazení šablony.
+1. Přihlaste se k portálu, vyberte **nový**a potom vyberte **vlastní**.
+2. Vyberte **nasazení šablony**.
+3. Vyberte **úpravy šablony**a vložte kód JSON šablony do okna kódu. Vyberte **Uložit**.
+4. Vyberte **upravit parametry**, zadejte hodnoty pro parametry, které se zobrazují a potom vyberte **OK**.
+5. Vyberte **předplatné**. Vyberte předplatné, které chcete použít a potom vyberte **OK**.
+6. Vyberte **skupiny prostředků**. Vyberte existující skupinu prostředků nebo vytvořte novou a potom vyberte **OK**.
+7. Vyberte **Vytvořit**. Nová dlaždice na řídicím panelu sleduje průběh nasazení šablony.
 
 ## <a name="next-steps"></a>Další postup
-[Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
 
+[Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)

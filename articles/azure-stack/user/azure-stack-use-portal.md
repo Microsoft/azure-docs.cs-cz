@@ -5,26 +5,25 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 5aa00123-5b87-45e0-a671-4165e66bfbc6
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 05/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 279722cc53889cb0a261fcffde0c7e0f86be6dc5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.reviewer: efemmano
+ms.openlocfilehash: 2ebafc4249f8455bdbe45a07a5bf88aa8984d67a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Pomocí portálu Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Jako příjemce služeb Azure zásobníku můžete pomocí portálu Azure zásobníku k odběru veřejné nabídky a použití služeb, které poskytují tyto nabídky. Pokud jste použili portál Azure před, jste již obeznámeni s uživatelským rozhraním.
+Můžete pomocí portálu Azure zásobníku k odběru veřejné nabídky a použití služeb, které poskytují tyto nabídky. Pokud jste použili globální portál Azure, jste již obeznámeni s fungování lokality.
 
 ## <a name="access-the-portal"></a>Přístup k portálu
 
@@ -60,13 +59,13 @@ Pokud budete potřebovat pokyny, jak používat služby k dispozici, může mít
     Zejména doporučujeme, abyste si prošli Začínáme v těchto článcích:
 
     - [Klíčové aspekty: pomocí služby nebo vytváření aplikací pro Azure zásobníku](azure-stack-considerations.md)
-    - V části "Použití služby" v dokumentaci je článek "požadavky" pro každou službu. Stránka "aspekty" popisuje rozdíly mezi službou nabízí v Azure a stejnou službu nabízí v zásobníku Azure. Příklad, naleznete v části [aspekty virtuálních počítačů](azure-stack-vm-considerations.md). Mohou existovat další informace v části "Použití služby", které jsou jedinečné pro Azure zásobníku.
+    - V **použití služeb** části dokumentace, je článek důležité informace pro každou službu. Aspekty stránka popisuje rozdíly mezi službou nabízí v Azure a stejnou službu nabízí v zásobníku Azure. Příklad, naleznete v části [aspekty virtuálních počítačů](azure-stack-vm-considerations.md). Může obsahovat další informace **použití služeb** oddíl, který je jedinečné pro Azure zásobníku.
      
       Dokumentace k Azure můžete použít jako obecné referenční informace pro služby, ale je potřeba vědět, tyto rozdíly. Pochopit, že dokumentace odkazuje na **rychlý start kurzy** dlaždici bod do dokumentace k Azure.
 
 ## <a name="get-support"></a>Získat podporu
 
-Pokud potřebujete pomoc, obraťte se na zprostředkovatele vaší organizace nebo služby.
+Pokud potřebujete podporu, požádejte o pomoc vaše organizace nebo služba poskytovatele.
 
 Pokud používáte Azure zásobníku Development Kit, [fórum Azure zásobníku](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) je jediný zdroj podpory.
 

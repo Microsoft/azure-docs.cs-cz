@@ -11,14 +11,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 5/17/2018
+ms.date: 5/18/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: cb672c8e378db80707db1b0cf77a3196e36b1eb5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b3c09582f5135655640768bcbcbef91750827bfa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace prostředí PowerShell pro Azure zásobníku
 
@@ -75,7 +75,7 @@ Use-AzureRmProfile -Profile 2017-03-09-profile -Force
 # Install Module Version 1.3.0 if Azure Stack is running 1804 at a minimum 
 Install-Module -Name AzureStack -RequiredVersion 1.3.0 
 
-# Install Module Version 1.2.11 if Azure Stack is running a lower version then 1804 
+# Install Module Version 1.2.11 if Azure Stack is running a lower version than 1804 
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 
   ```
 

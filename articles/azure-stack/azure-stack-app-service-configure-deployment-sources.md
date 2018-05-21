@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 46242fd7ab9e05cfc2edde119afdc6053f129e40
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4ee333fcc50937679c4bc25b83c2d6aa389ba194
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-deployment-sources"></a>Konfigurace zdrojů nasazení
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*

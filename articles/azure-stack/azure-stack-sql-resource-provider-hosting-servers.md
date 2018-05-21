@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/18/2018
 ms.author: jeffgilb
-ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 Instance SQL můžete použít na virtuální počítače uvnitř vaší [zásobník Azure](azure-stack-poc.md), nebo k nim mohla připojit instanci mimo prostředí Azure zásobníku, pokud poskytovatel prostředků. Obecné požadavky jsou:
@@ -96,25 +96,21 @@ Instance SQL Always On konfigurace vyžaduje další kroky a zahrnuje minimáln�
 > [!NOTE]
 > Adaptér SQL RP _pouze_ podporuje SQL 2016 SP1 Enterprise nebo novější instance pro Always On, protože vyžaduje nové funkce SQL, jako je například automatická synchronizace replik indexů. Kromě předchozích seznam běžných požadavků:
 
-* Je nutné zadat souborový server kromě počítačů SQL Always On. Je [šablony Azure Quickstart zásobníku](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-ha) toto prostředí, můžete vytvořit za vás. Také mohl sloužit jako vodítko k sestavení vlastní instanci.
+Konkrétně je nutné povolit [Automatická synchronizace replik indexů](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) pro každou skupinu dostupnosti pro každou instanci systému SQL Server:
 
-* Je nutné nastavit servery SQL Server. Konkrétně je nutné povolit [Automatická synchronizace replik indexů](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) pro každou skupinu dostupnosti pro každou instanci systému SQL Server.
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>]
+      MODIFY REPLICA ON 'InstanceName'
+      WITH (SEEDING_MODE = AUTOMATIC)
+  GO
+  ```
 
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>]
-    MODIFY REPLICA ON 'InstanceName'
-    WITH (SEEDING_MODE = AUTOMATIC)
-GO
-```
+Na sekundární instance použijte tyto příkazy SQL:
 
-Na sekundární instancí
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
-GO
-
-```
-
-
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
 
 Pokud chcete přidat SQL Always On hostitelskými servery, postupujte takto:
 
@@ -124,14 +120,16 @@ Pokud chcete přidat SQL Always On hostitelskými servery, postupujte takto:
 
     **Hostování servery SQL** okno je, kde můžete připojit zprostředkovatele prostředků SQL serveru k skutečné instance systému SQL Server, které slouží jako zprostředkovatel prostředků back-end.
 
-
-3. Vyplňte formulář Podrobnosti připojení vaší instance systému SQL Server, nezapomeňte použít plně kvalifikovaný název domény nebo IPv4 adresu vždy na naslouchacího procesu (a volitelně také portu číslo). Zadejte informace o účtu pro účet, který jste nakonfigurovali s oprávněními správce systému.
+3. Vyplňte formulář Podrobnosti připojení vaší instance systému SQL Server, je nutné použít adresu plně kvalifikovaný název domény vždy na naslouchacího procesu (a volitelně také portu číslo). Zadejte informace o účtu pro účet, který jste nakonfigurovali s oprávněními správce systému.
 
 4. Zaškrtnutím tohoto políčka Povolit podporu pro instance vždy na skupiny dostupnosti systému SQL.
 
     ![Hostitelské servery](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. Přidáte k instanci SQL Always On SKU. Samostatné servery nelze kombinovat s instancí Always On ve stejné SKU. Který určí při přidávání první server pro hostování. Probíhá pokus o různé typy později, bude mít za následek chybu.
+5. Přidáte k instanci SQL Always On SKU. 
+
+> [!IMPORTANT]
+> Samostatné servery nelze kombinovat s instancí Always On ve stejné SKU. Probíhá pokus o různé typy po přidání první výsledky hostitelský server s chybou.
 
 
 ## <a name="making-sql-databases-available-to-users"></a>Zpřístupnění databáze SQL pro uživatele
