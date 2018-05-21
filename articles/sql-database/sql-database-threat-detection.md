@@ -7,85 +7,82 @@ manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 05/17/2018
 ms.author: ronmat
-ms.openlocfilehash: c4a94ab9c7e0dab9e8c25e54fdd0a30b28b7a8a3
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.reviewer: carlrab
+ms.openlocfilehash: db10bbdd39920b05d9fd8c3907f22c3ee5d08b02
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
-# <a name="sql-database-threat-detection"></a>Detekce hrozeb databáze SQL
+# <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb databáze Azure SQL
 
-SQL detekce hrozeb zjistila neobvyklé aktivity, které indikují neobvyklou a potenciálně škodlivé pokusy o přístup k nebo zneužití databáze.
+Služba detekce hrozeb databáze Azure SQL zjistila neobvyklé aktivity, které indikují neobvyklou a potenciálně škodlivé pokusy o přístup k nebo zneužití databáze.
 
-## <a name="overview"></a>Přehled
+Detekce hrozeb je součástí [pokročilé ochrana před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), což je jednotná balíček pro rozšířené možnosti zabezpečení SQL. Detekce hrozeb lze získat přístup a spravovat prostřednictvím portálu centrální SQL ATP.
 
-Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity.  Uživatelé obdrží výstrahu při databáze podezřelé aktivity, potenciální ohrožení zabezpečení a prostřednictvím injektáže SQL, jakož i nezvyklé databázové přístupové vzorce. Detekce hrozeb SQL výstrahy zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko. Uživatele můžete prozkoumat podezřelé události pomocí [auditování databáze SQL](sql-database-auditing.md) k určení, pokud vyplývají z pokus o přístup, porušení nebo využívat data v databázi. Detekce hrozeb usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborníkem na zabezpečení nebo museli spravovat pokročilé systémy monitorování zabezpečení.
+## <a name="what-is-threat-detection"></a>Co je detekce hrozeb?
 
-Například Injektáž SQL je jedním z běžné problémy zabezpečení webových aplikací na Internetu, slouží k útokům na základě dat aplikace. Útočníci využít výhod ohrožení zabezpečení aplikace se zlými úmysly příkazy SQL, do pole pro zadání aplikací, vložit před nedodržením nebo upravovat data v databázi.
+Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která uživatelům umožňuje zjistit a reagovat na potenciální hrozby, kdy k nim dojde tím, že poskytuje výstrahy zabezpečení na neobvyklé aktivity. Uživatelé obdrží výstrahu při databáze podezřelé aktivity, potenciální ohrožení zabezpečení, a Injektáž SQL, a také přístup nezvyklé databázové před útoky a dotazuje vzory. Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), který obsahuje podrobnosti o podezřelé aktivity a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko. Detekce hrozeb SQL umožňuje snadný přístup na potenciální hrozby adres do databáze bez nutnosti odborné zabezpečení nebo Správa pokročilým zabezpečením monitorování systémů. 
 
-Detekce hrozeb SQL integruje výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/), a každé chráněné databáze SQL serveru se fakturuje za stejnou cenu jako Azure Security Center standardní vrstvy v $15 uzlu/měsíc, kde každé chráněné databáze SQL Server se počítá jako jeden uzel.  
+Pro úplnou šetření prostředí, se doporučuje povolit [auditování databáze SQL](sql-database-auditing.md), která zapisuje události databáze do auditu protokolu v účtu úložiště Azure.  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Nastavení detekce hrozeb pro vaši databázi na portálu Azure
 1. Spuštění portálu Azure v [ https://portal.azure.com ](https://portal.azure.com).
-2. Přejděte na stránku konfigurace databáze SQL, kterou chcete sledovat. Na stránce Nastavení vyberte **auditování a detekce hrozeb**. 
-    ![Navigační podokno][1]
-3. V **auditování a detekce hrozeb** stránku konfigurace, zapnout **ON** auditování, které se zobrazí nastavení detekce hrozby.
+2. Přejděte na stránku konfigurace serveru Azure SQL Database, který chcete chránit. V nastavení zabezpečení, vyberte **Advanced Threat Protection**.
+3. Na **Advanced Threat Protection** stránku konfigurace:
+
+   - Povolte Advanced Threat Protection na serveru.
+   - V **nastavení detekce hrozby**v **odeslat upozornění do** text zadejte seznam e-mailů výstrahy zabezpečení při zjištění nezvyklé databázové aktivity.
   
-    ![Navigační podokno][2]
-4. Zapnout **ON** detekce hrozby.
-5. Konfigurace seznamu e-mailů výstrahy zabezpečení při zjištění nezvyklé databázové aktivity.
-6. Klikněte na tlačítko **Uložit** v **auditování a detekce hrozeb** stránky uložte nové nebo aktualizované auditování a hrozeb nastavením detekce.
-       
-    ![Navigační podokno][3]
+   ![Nastavení detekce hrozeb.](./media/sql-database-threat-detection/set_up_threat_detection.png)
 
 ## <a name="set-up-threat-detection-using-powershell"></a>Nastavení detekce hrozeb pomocí prostředí PowerShell
 
 Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
 ## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Prozkoumejte nezvyklé databázové aktivity, při zjištění podezřelé události
-1. Obdržíte e-mail s oznámením při zjištění nezvyklé databázové aktivity. <br/>
-   E-mailu obsahuje informace o události podezřelé zabezpečení, včetně povahu neobvyklé aktivity, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mailu obsahuje informace o možné příčiny a doporučené akce ke zkoumání a zmírnit potenciální hrozbu do databáze.<br/>
-     
-    ![Navigační podokno][4]
-2. E-mailové upozornění obsahuje přímý odkaz na protokol auditování SQL. Kliknutím na tento odkaz spuštění portálu Azure a otevře se záznamy auditu SQL v době podezřelé události. Klikněte na záznam auditu zobrazíte další informace o činnosti podezřelé databáze, bylo snazší najít příkazy SQL, které byly provedeny (který přístup, co se a kdy) a zjistěte, zda událost legitimní nebo škodlivý (například aplikace chyby na Injektáž SQL, někdo nedodržení citlivá data, atd.).<br/>
-   ![Navigační podokno][5]
 
+Obdržíte e-mail s oznámením při zjištění nezvyklé databázové aktivity. E-mailu obsahuje informace o události podezřelé zabezpečení, včetně povahu neobvyklé aktivity, název databáze, název serveru, název aplikace a čas události. Kromě toho e-mailu obsahuje informace o možné příčiny a doporučené akce ke zkoumání a zmírnit potenciální hrozbu do databáze.
+
+![Sestava neobvyklé aktivity](./media/sql-database-threat-detection/anomalous_activity_report.png)
+     
+1. Klikněte **zobrazení SQL nedávné** odkaz v e-mailu spuštění portálu Azure a zobrazit stránku výstrahy Azure Security Center, který nabízí přehled active hrozby zjištěné v databázi SQL.
+
+   ![Activty hrozeb](./media/sql-database-threat-detection/active_threats.png)
+
+2. Klikněte na konkrétní výstrahu získat další podrobnosti a akcí pro příčin této hrozby a nápravě budoucí hrozeb.
+
+   Například Injektáž SQL je jedním z nejběžnějších problémů zabezpečení webové aplikace na Internetu, která se používá k útoku datové aplikace. Útočníci využít výhod ohrožení zabezpečení aplikace se zlými úmysly příkazy SQL, do pole pro zadání aplikací, vložit před nedodržením nebo upravovat data v databázi. Podrobnosti výstrah Injektáž SQL výstrahy, zahrnují citlivé příkaz jazyka SQL, který byl zneužití.
+
+   ![Konkrétní výstrahu](./media/sql-database-threat-detection/specific_alert.png)
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Seznamte se výstrah o zjištěných hrozbách pro vaši databázi na portálu Azure
 
-Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé dlaždice zabezpečení SQL v rámci stránky databáze na portálu Azure sleduje stav active hrozeb. 
+Detekce hrozeb databáze SQL se integruje se jeho výstrahy s [Azure Security Center](https://azure.microsoft.com/services/security-center/). Živé dlaždice detekce hrozeb SQL v databázi a okna SQL ATP na portálu Azure sleduje stav active hrozeb.
 
-   ![Navigační podokno][6]
+Klikněte na tlačítko **výstrahu o detekci hrozeb** spustit Azure Security Center výstrahy stránky a získat přehled o active SQL hrozby zjištěné v databázi.
+
+   ![Výstraha detekce hrozeb](./media/sql-database-threat-detection/threat_detection_alert.png)
    
-1. Kliknutím na SQL dlaždice zabezpečení spuštění stránky výstrah Azure Security Center a poskytuje přehled active SQL hrozby zjištěné v databázi. 
+   ![Alert2 detekce hrozeb](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
-  ![Navigační podokno][7]
-
-2. Kliknutím na konkrétní výstrahu nabízí další podrobnosti a akcí pro příčin této hrozby a nápravě budoucí hrozeb.
-
-  ![Navigační podokno][8]
-
+## <a name="azure-sql-database-threat-detection-alerts"></a>Azure výstrahy detekce hrozeb databáze SQL 
+Pro databázi SQL Azure služba detekce hrozeb zjistila neobvyklé aktivity, které indikují neobvyklou a potenciálně škodlivé pokusy o přístup k nebo zneužití databází a ji můžete aktivovat tyto výstrahy:
+- **Zranitelnost vůči útoku prostřednictvím injektáže SQL:** Tato výstraha se aktivuje, pokud aplikace v databázi vygeneruje chybný příkaz SQL. Může to znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu:
+   - Chyba v kódu aplikace, která způsobí sestavení chybného příkazu jazyka SQL
+   - Kód aplikace ani uložené procedury neupravují uživatelský vstup při sestavování chybného příkazu SQL, který může být zneužit pro injektáž SQL.
+- **Potenciální útok prostřednictvím injektáže SQL:** Tato výstraha se aktivuje v případě výskytu aktivního zneužití zranitelnosti identifikované aplikace v důsledku injektáže SQL. Znamená to, že se útočník pokouší vložit škodlivé příkazy SQL s použitím zranitelného kódu aplikace nebo uložených procedur.
+- **Přístup z neobvyklého umístění:** Tato výstraha se aktivuje, pokud dojde ke změně vzoru přístupu k serveru SQL, když se někdo k serveru SQL přihlásil z neobvyklé geografické lokality. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z neobvyklého datového centra Azure:** Tato výstraha se aktivuje, pokud dojde ke změně vzoru přístupu k serveru SQL, když se někdo k serveru SQL nedávno přihlásil z neobvyklého datového centra Azure. V některých případech výstraha rozpozná legitimní akci (nová aplikace v Azure, Power BI, editor dotazů SQL v Azure). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
+- **Přístup z neznámého objektu zabezpečení:** Tato výstraha se aktivuje, pokud dojde ke změně vzoru přístupu k serveru SQL, když se někdo k serveru SQL přihlásil s použitím neobvyklého objektu zabezpečení (uživatel SQL). V některých případech výstraha detekuje legitimní akci (nová aplikace, údržba prováděná vývojářem). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
+- **Přístup z potenciálně škodlivé aplikace:** Tato výstraha se aktivuje, pokud je pro přístup k databázi použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
+- **Útok hrubou silou na přihlašovací údaje SQL:** Tato výstraha se aktivuje, pokud byly zaznamenán neobvykle vysoký počet neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o detekce hrozeb najdete [Azure blog](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/) 
+* Další informace o [SQL Advanced Threat Protection](sql-advanced-threat-protection.md). 
 * Další informace o [auditování databáze SQL Azure](sql-database-auditing.md)
 * Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * Další informace o cenách najdete v tématu [stránky SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/)  
-* Příklad skriptu prostředí PowerShell, najdete v části [konfigurace auditování a zjišťování hrozeb pomocí prostředí PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md)
-
-
-
-<!--Image references-->
-[1]: ./media/sql-database-threat-detection/1_td_click_on_settings.png
-[2]: ./media/sql-database-threat-detection/2_td_turn_on_auditing.png
-[3]: ./media/sql-database-threat-detection/3_td_turn_on_threat_detection.png
-[4]: ./media/sql-database-threat-detection/4_td_email.png
-[5]: ./media/sql-database-threat-detection/5_td_audit_record_details.png
-[6]: ./media/sql-database-threat-detection/6_td_security_tile_view_alerts.png
-[7]: ./media/sql-database-threat-detection/7_td_SQL_security_alerts_list.png
-[8]: ./media/sql-database-threat-detection/8_td_SQL_security_alert_details.png
-
-

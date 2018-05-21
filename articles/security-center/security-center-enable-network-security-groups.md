@@ -1,11 +1,11 @@
 ---
-title: "Povolit skupin zabezpečení sítě v Azure Security Center | Microsoft Docs"
-description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolit sítě zabezpečení skupiny **."
+title: Povolit skupin zabezpečení sítě v Azure Security Center | Microsoft Docs
+description: Tento dokument se dozvíte, jak provést doporučení Azure Security Center **povolit skupin zabezpečení sítě**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f53ed853-ffaf-4530-a019-1906ba6f341b
 ms.service: security-center
 ms.devlang: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 1e034d59d8847f237fa0d4c772344d45cd618576
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Povolit skupin zabezpečení sítě v Azure Security Center
-Azure Security Center doporučuje, abyste povolili skupinu zabezpečení sítě (NSG), pokud ještě není povolené. Skupiny Nsg obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz instancím virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho je možné omezit provoz do konkrétního virtuálního počítače další tím, že přidružíte skupinu NSG přímo do tohoto virtuálního počítače. Další informace najdete v další [co je skupina zabezpečení sítě (NSG)?](../virtual-network/virtual-networks-nsg.md)
+Azure Security Center doporučuje, abyste povolili skupinu zabezpečení sítě (NSG), pokud ještě není povolené. Skupiny Nsg obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz instancím virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho je možné omezit provoz do konkrétního virtuálního počítače další tím, že přidružíte skupinu NSG přímo do tohoto virtuálního počítače. Další informace najdete v další [co je skupina zabezpečení sítě (NSG)?](../virtual-network/security-overview.md)
 
 Pokud nemáte skupiny Nsg povoleno, Security Center nabízí dva doporučení vám: Povolit skupin zabezpečení sítě na podsítě a povolit skupin zabezpečení sítě na virtuálních počítačích. Můžete vybrat úroveň, podsíť nebo virtuální počítač, chcete-li použít skupiny Nsg.
 
@@ -44,11 +44,11 @@ Pokud nemáte skupiny Nsg povoleno, Security Center nabízí dva doporučení v�
 
 Pokud vytvoříte skupinu NSG, postupujte podle kroků v [Správa skupin Nsg pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) vytvořit skupinu NSG a nastavit pravidla zabezpečení.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Tento článek ukázal, jak implementovat Security Center doporučení "Povolit skupin zabezpečení sítě" pro podsítě nebo virtuální počítače. Další informace o povolení skupin Nsg, naleznete v následujících tématech:
 
-* [Co je skupina zabezpečení sítě (NSG)?](../virtual-network/virtual-networks-nsg.md)
-* [Správa skupin Nsg pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Co je skupina zabezpečení sítě (NSG)?](../virtual-network/security-overview.md)
+* [Spravovat skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 

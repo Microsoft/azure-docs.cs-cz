@@ -1,6 +1,6 @@
 ---
-title: Vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI | Microsoft Docs
-description: Kurz – Vytvoření vlastní image virtuálního počítače pomocí Azure CLI
+title: Kurz – Vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI | Microsoft Docs
+description: V tomto kurzu zjistíte, jak pomocí Azure CLI 2.0 vytvořit a spravovat vlastní image virtuálního počítače v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 911bb639402fb4577eb5bc3ff5b3096c66806378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 766e247775e61d7427b658b66948aa6699a7241a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="create-a-custom-image-of-an-azure-vm-using-the-cli"></a>Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli-20"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI 2.0
 
 Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. V tomto kurzu vytvoříte vlastní image virtuálního počítače Azure. Získáte informace o těchto tématech:
 
@@ -33,10 +33,9 @@ Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vl
 > * Výpis všech imagí v předplatném
 > * Odstranění image
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -52,7 +51,7 @@ Pokud chcete vytvořit image virtuálního počítače, musíte virtuální poč
 
 Zrušením zřízení dojde ke generalizaci virtuálního počítače tím, že se odeberou informace specifické pro počítač. Díky této generalizaci je možné z jedné image nasazovat více virtuálních počítačů. Během rušení zřízení se název hostitele resetuje na *localhost.localdomain*. Odstraní se také klíče hostitele SSH, konfigurace názvového serveru, kořenové heslo a zapůjčení DHCP uložená v mezipaměti.
 
-Ke zrušení zřízení virtuálního počítače použijte agenta virtuálního počítače Azure (waagent). Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači a spravuje zřizování a interakci s kontrolerem prostředků infrastruktury Azure. Další informace najdete v [uživatelské příručce agenta Azure Linux](agent-user-guide.md).
+Ke zrušení zřízení virtuálního počítače použijte agenta virtuálního počítače Azure (waagent). Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači a spravuje zřizování a interakci s kontrolerem prostředků infrastruktury Azure. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
 
 Připojte se ke svému virtuálnímu počítači pomocí SSH a spusťte příkaz pro zrušení zřízení virtuálního počítače. Argument `+user` zajistí také odstranění posledního zřízeného uživatelského účtu a všech přidružených dat. Příklad IP adresy nahraďte veřejnou IP adresou vašeho virtuálního počítače.
 

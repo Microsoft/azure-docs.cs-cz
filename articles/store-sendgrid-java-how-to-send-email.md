@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: dbd9d01a00522a0a55828284cd6c0e78a26d9102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cadd771a516270faf23f18a36f54fa9a1541e6d5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z Javy
 Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou napsané v jazyce Java. Pokryté scénáře zahrnují **vytváření e-mailu**, **odesílání e-mailu**, **přidávání příloh**, **pomocí filtrů**, a **aktualizace vlastností**. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v článku [další kroky](#next-steps) části.
@@ -158,7 +158,7 @@ Sendgrid vám umožňuje poskytuje další e-mailové funkce prostřednictvím *
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Postupy: aktualizovat vlastnosti e-mailu
-Některé vlastnosti e-mailu můžete přepsat pomocí **nastavit * vlastnost*** nebo připojených pomocí **přidat*vlastnost ***.
+Některé vlastnosti e-mailu můžete přepsat pomocí **nastavit vlastnost** nebo připojených pomocí **přidat vlastnost**.
 
 Například zadejte **ReplyTo** adresy, použijte tento příkaz:
 
