@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: terrylan
-ms.openlocfilehash: e46c2ad30b578b0642ee7b541ea003ed67c6a7f5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5a9f2ba68574ba8cb99b01ce426ec77a5eecd3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Nejčastější dotazy ohledně Azure Security Center
 Tyto nejčastější dotazy odpovědi na otázky o Azure Security Center, služba, která pomáhá zabránit, zjistit a reagovat na hrozby nabízí lepší přehled a kontrolu nad zabezpečení vašich prostředků Microsoft Azure.
@@ -88,8 +88,8 @@ Informace o tom, jak konfigurovat zásady zabezpečení, najdete v části [nast
 ### <a name="what-is-a-security-recommendation"></a>Co je doporučeným zabezpečením?
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když jsou identifikovány potenciální ohrožení zabezpečení, doporučení jsou vytvořeny. Doporučení vás provede procesem konfigurace potřebných ovládacího prvku. Mezi příklady patří:
 
-* Zřizování antimalwaru, aby se pomohl identifikovat a odebrat škodlivý software
-* Konfigurace [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) a pravidla pro řízení přenosu do virtuálních počítačů
+* Zřizování pomáhají identifikovat a odebrat škodlivý software proti malwaru
+* [Skupin zabezpečení sítě](../virtual-network/security-overview.md) a pravidla pro řízení přenosu do virtuálních počítačů
 * Zřizování brány firewall webových aplikací zvýšení ochrany proti útokům na cílení na vaše webové aplikace
 * Nasazení chybějících aktualizací systému
 * Adresování konfigurací operačního systému, které neodpovídají doporučeným standardním hodnotám

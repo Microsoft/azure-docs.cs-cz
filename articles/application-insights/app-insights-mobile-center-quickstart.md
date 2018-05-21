@@ -1,20 +1,20 @@
 ---
-title: "Rychlý start pro Azure Application Insights | Dokumentace Microsoftu"
-description: "Pokyny pro rychlé nastavení mobilní aplikace pro monitorování s využitím Application Insights a App Center"
+title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
+description: Pokyny pro rychlé nastavení mobilní aplikace pro monitorování s využitím Application Insights a App Center
 services: application-insights
-keywords: 
-author: numberbycolors
-ms.author: daviste
+keywords: ''
+author: mrbullwinkle
+ms.author: daviste; mbullwin
 ms.date: 10/05/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 04e379e1bbd84929fca68cf2de8ebfcc217a51d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 252d16a5c4ef2d1f8230746dff681f7fbf5f44b1
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
