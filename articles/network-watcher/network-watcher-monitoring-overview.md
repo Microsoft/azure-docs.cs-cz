@@ -1,145 +1,101 @@
 ---
-title: Úvod do sledovací proces sítě Azure | Microsoft Docs
-description: Tato stránka obsahuje přehled služby sledovací proces sítě pro monitorování a detekční síť připojená prostředky ve službě Azure
+title: Azure Network Watcher | Microsoft Docs
+description: Seznamte se s možnostmi monitorování, diagnostiky, sledování metrik a protokolování služby Azure Network Watcher pro prostředky ve virtuální síti.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 04/24/2018
 ms.author: jdial
-ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.custom: mvc
+ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="azure-network-monitoring-overview"></a>Přehled monitorování sítě Azure
+# <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
-Zákazníci vytvářet síť začátku do konce v Azure tak, že orchestruje a skládání různé jednotlivých síťovým prostředkům, například virtuální síť, ExpressRoute, aplikační bránu, nástroje pro vyrovnávání zatížení a další. Monitorování je k dispozici na všech síťových prostředků. Označujeme jako sledování na úrovni prostředků toto monitorování.
+Azure Network Watcher poskytuje nástroje pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve virtuální síti Azure.
 
-Koncová sítě může mít komplexní konfigurace a interakce mezi prostředky, vytváření komplexní scénáře, které je třeba na základě scénáře monitorování prostřednictvím sledovací proces sítě.
+## <a name="monitoring"></a>Monitorování
 
-Tento článek popisuje scénář a sledování na úrovni prostředků. Monitorování sítě v Azure je komplexní a zahrnuje dvě rozsáhlé kategorie:
+### <a name = "connection-monitor"></a>Monitorování komunikace mezi virtuálním počítačem a koncovým bodem
 
-* [**Sledovací proces sítě** ](#network-watcher) – na základě scénáře monitorování se poskytuje s funkcí v sledovací proces sítě. Tato služba obsahuje zachytáváním paketů, další směrování, IP tok ověření, zobrazení skupiny zabezpečení, tok protokolů NSG. Scénář úrovně monitorování poskytuje pohledu koncové síťových prostředků, na rozdíl od monitorování jednotlivých síťových prostředků.
-* [**Sledování prostředků** ](#network-resource-level-monitoring) -sledování na úrovni prostředků se skládá ze čtyř funkce, diagnostické protokoly, metriky, řešení potíží s a stav prostředků. Všechny tyto funkce jsou postavené na úrovni prostředků sítě.
+Koncovým bodem může být jiný virtuální počítač, plně kvalifikovaný název domény, identifikátor URI nebo IPv4 adresa. Funkce *monitorování připojení* v pravidelných intervalech monitoruje komunikaci a poskytuje informace o dostupnosti, latenci a změnách síťové topologie mezi virtuálním počítačem a koncovým bodem. Například můžete mít virtuální počítač s webovým serverem, který komunikuje s virtuálním počítačem s databázovým serverem. Někdo ve vaší organizaci může bez vašeho vědomí pro virtuální počítač s webovým nebo databázovým serverem nebo podsíť použít vlastní pravidlo zabezpečení sítě nebo směrování.
 
-## <a name="network-watcher"></a>Network Watcher
+Pokud se koncový bod stane nedostupným, řešení potíží s připojením vám poskytne informace o důvodu. Mezi možné důvody patří problém s překladem názvů DNS, procesor, paměť nebo brána firewall v operačním systému virtuálního počítače, typ segmentu směrování vlastní trasy, pravidlo zabezpečení pro virtuální počítač nebo podsíť odchozího připojení. Další informace o [pravidlech zabezpečení](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) a [typech segmentů směrování tras](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) v Azure.
 
-Sledovací proces sítě je místní služba, která umožňuje sledovat a diagnostikovat podmínky na úrovni scénář sítě, do a z Azure. Diagnostika sítě a k dispozici sledovací proces sítě vizualizace nástroje vám pomůžou pochopit, diagnostikovat a získáte přehled o k síti v Azure.
+Monitorování připojení také poskytuje minimální, průměrnou a maximální zjištěnou latenci v průběhu času. Po zjištění latence připojení můžete zjistit, že se latence dá snížit přesunem vašich prostředků Azure do jiných oblastí Azure. Další informace o určování [relativních latencí mezi oblastmi Azure a poskytovateli internetových služeb](#determine-relative-latencies-between-azure- regions-and-internet-service-providers) a způsobu monitorování komunikace mezi virtuálním počítačem a koncovým bodem pomocí [monitorování připojení](connection-monitor.md). Pokud místo monitorování připojení v průběhu času chcete otestovat připojení k určitému bodu v čase, můžete podobným způsobem jako v případě monitorování připojení použít funkci [řešení potíží s připojením](#connection-troubleshoot).
 
-Sledovací proces sítě aktuálně má následující možnosti:
+### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Zobrazení prostředků ve virtuální síti a jejich vztahů
 
-* **[Topologie](network-watcher-topology-overview.md)**  -poskytuje zobrazení úrovně sítě zobrazuje různé propojení a přidružení mezi síťovým prostředkům ve skupině prostředků.
-* **[Proměnné zachytáváním paketů](network-watcher-packet-capture-overview.md)**  -zaznamená data paketů do/z virtuálního počítače. Pokročilé možnosti filtrování a podrobně nastavit ovládací prvky, jako je například moct nastavit čas a velikost omezení poskytují univerzálnost. Paketu data mohou být uložena v úložišti objektů blob nebo na místní disk ve formátu CAP.
-* **[Ověřte IP toku](network-watcher-ip-flow-verify-overview.md)**  – ověří, zda je paket povolený nebo zakázaný na základě toku informace 5 řazené kolekce členů paketu parametrů (cílovou IP adresu, zdrojové IP adresy, cílový Port, zdrojový Port a protokol). Pokud paketu je zakázané skupiny zabezpečení, je vrácena pravidlo a skupiny, který odepřen paketu.
-* **[Další směrování](network-watcher-next-hop-overview.md)**  -určí další segment pro pakety směrovány v prostředcích infrastruktury sítě Azure umožňuje diagnostikovat žádné špatně nakonfigurovaný trasy definované uživatelem.
-* **[Zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md)**  -získá zabezpečení efektivní a použitých pravidel, která se použijí na virtuálním počítači.
-* **[Protokolování toku NSG](network-watcher-nsg-flow-logging-overview.md)**  -toku protokoly pro skupinu zabezpečení sítě umožňují zaznamenat protokoly související s přenosy, které jsou povolené nebo zakázané pravidla zabezpečení ve skupině. Tok je definována informací o 5-n-tice – zdrojové adresy IP, cílovou IP adresu, zdrojový Port, cílový Port a protokol.
-* **[Brána virtuální sítě a řešení potíží s připojení](network-watcher-troubleshoot-manage-rest.md)**  -poskytuje možnost Poradce při potížích brány virtuální sítě a připojení.
-* **[Sítě limity předplatného](#network-subscription-limits)**  -umožňuje zobrazit využití prostředků sítě proti omezení.
-* **[Konfigurace protokolu diagnostiky](#diagnostic-logs)**  – poskytuje k povolení nebo zakázání diagnostické protokoly pro síťové prostředky ve skupině prostředků.
-* **[Poradce při potížích připojení](network-watcher-connectivity-overview.md)**  -ověří možnost pro přímé připojení TCP z virtuálního počítače do daného rozšíření s Azure kontext koncového bodu.
-* **[Monitorování připojení](connection-monitor.md)**  -sledovat problémy latence a konfiguraci mezi virtuální počítač Azure a IP adresu, pomocí zdrojové a cílové IP adresy a portu.
+S tím, jak se do virtuální sítě přidávají prostředky, může být stále obtížnější porozumět, jaké prostředky jsou ve virtuální síti a jak spolu vzájemně souvisí. Funkce *topologie* umožňuje vygenerovat vizuální diagram prostředků ve virtuální síti a vztahů mezi těmito prostředky. Následující obrázek ukazuje příklad diagramu topologie pro virtuální síť se třemi podsítěmi, dvěma virtuálními počítači, síťovými rozhraními, veřejnými IP adresami, skupinami zabezpečení sítě, směrovacími tabulkami a vztahy mezi prostředky:
 
-### <a name="role-based-access-control-rbac-in-network-watcher"></a>Řízení přístupu na základě role (RBAC) v sledovací proces sítě
+![Zobrazení topologie](./media/network-watcher-monitoring-overview/topology.png)
 
-Sítě používá sledovacích procesů [model řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md). Sledovací proces sítě vyžadují následující oprávnění. Je důležité se ujistit, že role pro inicializaci rozhraní API sledovací proces sítě nebo pomocí sledovací proces sítě z portálu nemá požadovaný přístup.
+Můžete si stáhnout upravitelnou verzi obrázku ve formátu SVG. Další informace o [zobrazení topologie](view-network-topology.md).
 
-|Prostředek| Oprávnění|
-|---|---| 
-|Microsoft.Storage/ |Čtení|
-|Microsoft.Authorization/| Čtení| 
-|Microsoft.Resources/subscriptions/resourceGroups/| Čtení|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | Akce|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |Akce|
-|Microsoft.Storage/storageAccounts/listKeys/ | Akce|
-|Microsoft.Compute/virtualMachines/ |Čtení|
-|Microsoft.Compute/virtualMachines/ |Zápis|
-|Microsoft.Compute/virtualMachineScaleSets/ |Čtení|
-|Microsoft.Compute/virtualMachineScaleSets/ |Zápis|
-|Microsoft.Network/networkWatchers/packetCaptures/ |Čtení|
-|Microsoft.Network/networkWatchers/packetCaptures/| Zápis|
-|Microsoft.Network/networkWatchers/packetCaptures/| Odstranění|
-|Microsoft.Network/networkWatchers/ |Zápis |
-|Microsoft.Network/networkWatchers/| Čtení |
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/ | *|
+## <a name="diagnostics"></a>Diagnostika
 
-### <a name="network-subscription-limits"></a>Limity předplatného sítě
+### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Diagnostika problémů s filtrováními provozu do nebo z virtuálního počítače
 
-Limity předplatného sítě poskytují podrobnosti o využití jednotlivých síťových prostředků v předplatném v oblasti pro maximální počet prostředků, které jsou k dispozici.
+Když nasadíte virtuální počítač, Azure pro něj použije několik výchozích pravidel zabezpečení, která povolí nebo zakáží provoz do nebo z tohoto virtuálního počítače. Výchozí pravidla Azure můžete přepsat nebo můžete vytvořit další pravidla. V určitém okamžiku může virtuální počítač kvůli pravidlu zabezpečení ztratit schopnost komunikace s dalšími prostředky. Funkce *Ověření toku protokolu IP* umožňuje zadat zdrojovou a cílovou IPv4 adresu, port, protokol (TCP nebo UDP) a směr provozu (příchozí nebo odchozí). Ověření toku protokolu IP pak otestuje komunikaci a poskytne vám informace o úspěchu nebo selhání připojení. Pokud připojení selže, ověření toku protokolu IP vám poskytne informace o tom, které pravidlo zabezpečení komunikaci povolilo nebo zamítlo, abyste problém mohli vyřešit. Další informace o [ověření toku protokolu IP](network-watcher-ip-flow-verify-overview.md).
 
-![limitu předplatného pro sítě][nsl]
+### <a name="diagnose-network-routing-problems-from-a-vm"></a>Diagnostika problémů se síťovým směrováním z virtuálního počítače
 
-## <a name="network-resource-level-monitoring"></a>Úrovně monitorování sítě prostředků
+Když vytvoříte virtuální síť, Azure vytvoří pro provoz několik výchozích odchozích tras. Odchozí provoz ze všech prostředků nasazených ve virtuální síti, jako jsou virtuální počítače, se směruje na základě výchozích tras Azure. Výchozí trasy Azure můžete přepsat nebo můžete vytvořit další trasy. Možná zjistíte, že virtuální počítač už kvůli určité trase nemůže komunikovat s dalšími prostředky. Funkce *dalšího segmentu směrování* umožňuje zadat zdrojovou a cílovou IPv4 adresu. Další segment směrování pak otestuje komunikaci a poskytne vám informace o použitém typu dalšího segmentu směrování ke směrování provozu. Problém se směrováním pak můžete vyřešit odebráním, změnou nebo přidáním trasy. Další informace o funkci [dalšího segmentu směrování](network-watcher-next-hop-overview.md?).
 
-Následující funkce jsou k dispozici pro monitorování na úrovni prostředků:
+### <a name="connection-troubleshoot"></a>Diagnostika odchozích připojení z virtuálního počítače
 
-### <a name="audit-log"></a>Protokol auditu
+Funkce *řešení potíží s připojením* umožňuje otestovat připojení mezi virtuálním počítačem a jiným virtuálním počítačem, plně kvalifikovaným názvem domény, identifikátorem URI nebo IPv4 adresou. Test vrací podobné informace jako funkce [monitorování připojení](#connection-monitor), ale otestuje připojení k určitému bodu v čase, a nemonitoruje ho v průběhu času, jako to dělá monitorování připojení. Další informace o řešení potíží s připojeními pomocí funkce [řešení potíží s připojením](network-watcher-connectivity-overview.md).
 
-Operace provedené v rámci konfigurace sítí přihlášeni. Tyto protokoly můžete zobrazit na portálu Azure nebo pomocí nástroje Microsoft, jako je Power BI nebo nástroje třetích stran. Protokoly auditu jsou k dispozici prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku a Rest API. Další informace o protokolů auditu najdete v tématu [auditovat operace s Resource Managerem](../resource-group-audit.md)
+### <a name="capture-packets-to-and-from-a-vm"></a>Zachytávání paketů směřujících do a z virtuálního počítače
 
-Protokoly auditu jsou k dispozici pro operace udělat na všechny síťové prostředky.
+Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako je možnost nastavit omezení času a velikosti, poskytují všestrannost. Zachycené pakety se můžou ukládat ve službě Azure Storage, na disku virtuálního počítače nebo na obou místech. Zachytávací soubor pak můžete analyzovat pomocí různých standardních nástrojů pro analýzu zachycených síťových dat. Další informace o [zachytávání paketů](network-watcher-packet-capture-overview.md).
 
-### <a name="metrics"></a>Metriky
+### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Diagnostika problémů s bránou virtuální sítě Azure a připojeními
 
-Metriky jsou měření výkonu a čítače, které jsou shromážděny prostřednictvím v časovém intervalu. Metriky jsou aktuálně dostupné pro službu Application Gateway. Metriky lze použít k aktivaci výstrahy podle prahovou hodnotu. V tématu [Application Diagnostics brány](../application-gateway/application-gateway-diagnostics.md) zobrazíte použití metriky pro vytvoření výstrahy.
+Brány virtuální sítě zajišťují připojení mezi místními prostředky a virtuálními sítěmi Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Funkce *diagnostiky sítě VPN* poskytuje možnost diagnostikovat brány a připojení. Diagnostika sítě VPN diagnostikuje stav brány nebo připojení brány a poskytuje informace o dostupnosti brány nebo připojení brány. Pokud brána nebo připojení nejsou dostupné, diagnostika sítě VPN vám poskytne informace o příčině, abyste problém mohli vyřešit. Další informace o [diagnostice sítě VPN](network-watcher-troubleshoot-overview.md).
 
-![zobrazení metriky][metrics]
+### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Určení relativních latencí mezi oblastmi Azure a poskytovateli internetových služeb
 
-### <a name="diagnostic-logs"></a>Diagnostické protokoly
+Službu Network Watcher můžete dotazovat na informace o latenci mezi oblastmi Azure a poskytovateli internetových služeb. Po zjištění latencí mezi oblastmi Azure a poskytovateli internetových služeb můžete nasadit prostředky Azure a optimalizovat dobu odezvy sítě. Další informace o [relativních latencích](view-relative-latencies.md).
 
-Pravidelné a spontánních události jsou vytvořené síťové prostředky a protokolovány v účtech úložiště, odeslané do centra událostí, nebo analýzy protokolů. Tyto protokoly poskytují přehled o stavu prostředku. Tyto protokoly můžete zobrazit v nástrojů, jako je Power BI a analýzy protokolů. Další postup zobrazení diagnostických protokolů najdete [analýzy protokolů](../log-analytics/log-analytics-azure-networking-analytics.md).
+### <a name="view-security-rules-for-a-network-interface"></a>Zobrazení pravidel zabezpečení pro síťové rozhraní
 
-Diagnostické protokoly jsou k dispozici pro [nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-monitor-log.md), [skupin zabezpečení sítě](../virtual-network/virtual-network-nsg-manage-log.md), trasy a [Application Gateway](../application-gateway/application-gateway-diagnostics.md).
+Efektivní pravidla zabezpečení pro síťové rozhraní představují kombinaci všech pravidel zabezpečení použitých pro síťové rozhraní a podsíť, ve které se síťové rozhraní nachází.  Funkce *zobrazení skupiny zabezpečení* ukazuje všechna pravidla zabezpečení použitá pro síťové rozhraní, podsíť, ve které se síťové rozhraní nachází, a agregaci obou. Když porozumíte tomu, která pravidla se pro síťové rozhraní používají, můžete přidávat, odebírat nebo měnit pravidla povolující nebo zamítající provoz. Další informace o [zobrazení skupiny zabezpečení](network-watcher-security-group-view-overview.md).
 
-Sledovací proces sítě poskytuje že diagnostické protokoly zobrazení. Toto zobrazení obsahuje všechny síťové prostředky, které podporují protokolování diagnostiky. Z tohoto hlediska můžete povolit nebo zakázat síťových prostředků, snadno a rychle.
+## <a name="metrics"></a>Metriky
 
-![Protokoly][logs]
+Existují [omezení](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) počtu síťových prostředků, které můžete vytvořit v rámci předplatného a oblasti Azure. Pokud dosáhnete těchto omezení, nemůžete v příslušném předplatném nebo oblasti vytvářet další prostředky. Funkce *omezení předplatného sítě* poskytuje souhrn počtu nasazení jednotlivých síťových prostředků v předplatném a oblasti a omezení příslušného prostředku. Následující obrázek ukazuje částečný výstup pro síťové prostředky nasazené v ukázkovém předplatném v oblasti USA – východ:
 
-### <a name="troubleshooting"></a>Řešení potíží
+![Omezení předplatného](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
-Řešení potíží okna, prostředí na portálu, je k dispozici na síťové prostředky dnes diagnostikovat běžné problémy související s jednotlivé zdroje. Toto prostředí je k dispozici pro následující prostředky sítě - ExpressRoute, brána sítě VPN, aplikační bránu, protokoly zabezpečení sítě, trasy, DNS, nástroj pro vyrovnávání zatížení a Traffic Manager. Další informace o odstraňování potíží prostředků úrovně s, najdete [Diagnostikujte a vyřešte problémy s řešení potíží s Azure](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/)
+Tyto informace jsou užitečné při plánování budoucích nasazení prostředků.
 
-![informace o řešení potíží][TS]
+## <a name="logs"></a>Logs
 
-### <a name="resource-health"></a>Stav prostředků
+### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Analýza provozu do nebo ze skupiny zabezpečení sítě
 
-Stav síťového prostředku je k dispozici v pravidelných intervalech. Tyto prostředky zahrnují VPN Gateway a tunelového připojení sítě VPN. Stav prostředku je dostupné na portálu Azure. Další informace o stavu prostředků, navštivte [přehled stavu prostředků](../resource-health/resource-health-overview.md)
+Skupiny zabezpečení sítě (NSG) povolují nebo zamítají příchozí nebo odchozí provoz síťového rozhraní na virtuálním počítači. Funkce *protokolu toku NSG* umožňuje protokolovat zdrojovou a cílovou IP adresu, port, protokol a jestli skupina NSG provoz povolila nebo zamítla. Protokoly můžete analyzovat pomocí různých nástrojů, jako je Power BI a funkce *analýzy provozu*. Analýza provozu poskytuje bohaté vizualizace dat zapsaných do protokolů toků NSG. Následující obrázek ukazuje některé informace a vizualizace, které poskytuje analýza provozu na základě dat protokolu toku NSG:
 
-## <a name="next-steps"></a>Další postup
+![Analýza provozu](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-Po získání informací o sledovací proces sítě, můžete další informace pro:
+Další informace o [protokolech toků NSG](network-watcher-nsg-flow-logging-overview.md) a [analýze provozu](traffic-analytics.md).
 
-Provést zachytáváním paketů na vašem virtuálním počítači tak, že navštívíte [zachytáváním paketů proměnné na portálu Azure](network-watcher-packet-capture-manage-portal.md)
+### <a name="view-diagnostic-logs-for-network-resources"></a>Zobrazení diagnostických protokolů pro síťové prostředky
 
-Provádění Proaktivní monitorování a diagnostiku pomocí [výstraha zachytáváním paketů](network-watcher-alert-triggered-packet-capture.md).
+Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Diagnostické protokoly můžete zobrazit pomocí nástrojů, jako jsou Microsoft Power BI a Azure Log Analytics. Další informace o analýze síťových diagnostických protokolů Azure najdete v tématu popisujícím [síťová řešení Azure v Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-Zjištění chyb zabezpečení s [analýza zachytáváním paketů s Wireshark](network-watcher-deep-packet-inspection.md), pomocí nástroje s otevřeným zdrojem.
+## <a name="next-steps"></a>Další kroky
 
-Informace o některých dalších klíčových [možnostech sítě](../networking/networking-overview.md) v Azure.
-
-<!--Image references-->
-[TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png
-[logs]: ./media/network-watcher-monitoring-overview/logs.png
-[metrics]: ./media/network-watcher-monitoring-overview/metrics.png
-[nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
-
-
-
-
-
-
-
-
-
-
+Teď máte přehled o službě Azure Network Watcher. Pokud chcete začít používat Network Watcher, proveďte diagnostiku běžného problému s komunikací do a z virtuálního počítače pomocí ověření toku protokolu IP. Pokyny najdete v rychlém startu [Diagnostika problému s filtrováním síťového provozu virtuálního počítače](diagnose-vm-network-traffic-filtering-problem.md).

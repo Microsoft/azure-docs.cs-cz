@@ -1,5 +1,5 @@
 ---
-title: Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio | Dokumentace Microsoftu
+title: Začínáme s Azure Data Lake Analytics s využitím sady Visual Studio | Microsoft Docs
 description: Naučte se nainstalovat nástroje Data Lake pro Visual Studio a vyvíjet a testovat skripty U-SQL.
 services: data-lake-analytics
 documentationcenter: ''
@@ -12,19 +12,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/28/2017
+ms.date: 05/02/2018
 ms.author: saveenr, yanacai
-ms.openlocfilehash: b94c035083a00867139b6c58bc8b2ded08e970b0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d0974e3258e0def09fe12d348180dcedf216401c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 
 Naučte se používat sadu Visual Studio k vytváření účtů Azure Data Lake Analytics, definování úloh v [U-SQL](data-lake-analytics-u-sql-get-started.md) a odesílání úloh do služby Data Lake Analytics. Další informace o Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
+
+>[!IMPORTANT]
+>
+>V rámci přípravy na nové nařízení GDPR (General Data Protection Regulation), které vstupuje v platnost 25. května 2018, doporučujeme uživatelům Nástrojů Azure Data Lake pro Visual Studio upgradovat na verzi 2.3.3000.4 nebo novější. Tato verze zahrnuje změny vycházející z nejnovějších požadavků na ochranu dat. Předchozí verze jsou zastaralé a nejsou k dispozici ke stažení. 
+>
+>**Co potřeba udělat?**
+>
+>1. Zkontrolujte, jestli používáte Nástroje Azure Data Lake pro Visual Studio verze starší než 2.3.3000.4. 
+>   
+>   ![Kontrola verze nástrojů](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-about-data-lake.png)
+> 
+>2. Pokud je vaše verze starší než 2.3.3000.4, navštivte centrum pro stahování a aktualizujte Nástroje Azure Data Lake pro Visual Studio: 
+>    - [Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Visual Studio 2013 a 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
 
 ## <a name="prerequisites"></a>Požadavky
