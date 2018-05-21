@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit úlohu importu pro Azure Import/Export | Microsoft Docs"
-description: "Naučte se vytvářet importu pro službu Microsoft Azure Import/Export."
+title: Vytvořit úlohu importu pro Azure Import/Export | Microsoft Docs
+description: Naučte se vytvářet importu pro službu Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: syadav
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 8b886e83-6148-4149-9d0f-5d48ec822475
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: d373d2a0e601f2796719fc5efb8761f276ab24d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a80d2169f346238f997c727f0e9d82666897b608
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu do služby Azure Import/Export
 
@@ -62,7 +62,7 @@ Příprava vašeho disku zahrnuje:
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaši polohu přesouvání
 
-Před vytvořením úlohy importu, je nutné získat přenosů umístění názvu a adresy voláním [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations`Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění ze seznamu vrácených a dodávat vaše pevné disky na tuto adresu. Můžete také `Get Location` operace přesouvání adresu pro konkrétní umístění získat přímo.
+Před vytvořením úlohy importu, je nutné získat přenosů umístění názvu a adresy voláním [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations` Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění ze seznamu vrácených a dodávat vaše pevné disky na tuto adresu. Můžete také `Get Location` operace přesouvání adresu pro konkrétní umístění získat přímo.
 
  Použijte následující postup k získání přesouvání umístění:
 
@@ -104,6 +104,8 @@ Je nutné dodat jednotky na adresu, kterou jste získali v předchozím kroku, a
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>Aktualizace úlohy importu se vaše přenosů informace
 Až budete mít vaše číslo sledování, volání [aktualizovat vlastnosti úlohy](/api/storageimportexport/jobs#Jobs_Update) operace aktualizace přenosů poskytovatel název, číslo sledování pro úlohu a poskytovatel číslo účtu pro návratový přesouvání. Volitelně můžete zadat počet jednotek a i přesouvání datum.
 
-## <a name="next-steps"></a>Další kroky
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>Další postup
 
 * [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)

@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 8b007c4658d3ca168c4c1a86a72a737c75ca33db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/20/2018
+---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platforma podporovaná migrace z klasického do Azure Resource Manageru prostředků IaaS
 V tomto článku jsme popisují, jak jsme se povolení migrace infrastruktury jako služby (IaaS) prostředky z klasického modely nasazení Resource Manager. Další informace o [funkce služby Správce prostředků Azure a výhody](../articles/azure-resource-manager/resource-group-overview.md). Jsme podrobnosti o tom, jak připojit prostředky z modelů dvě nasazení, které společně existovat ve vašem předplatném pomocí brány virtuální sítě site-to-site.
 
@@ -93,7 +109,7 @@ Následující konfigurace nejsou aktuálně podporovány.
 | Compute | Cloudové služby, které obsahují webové/role pracovního procesu | Tato možnost není aktuálně podporována. |
 | Compute | Cloudové služby, které obsahují více než jeden dostupnosti nastavit nebo nastaví více dostupnosti. |Tato možnost není aktuálně podporována. Přesuňte virtuální počítače na stejné dostupnosti nastavit před migrací. |
 | Compute | Virtuální počítač s rozšíření Azure Security Center | Rozšíření Azure Security Center automaticky nainstaluje na virtuálních počítačích vyvolat výstrahy a sledovat jejich zabezpečení. Tato rozšíření obvykle získat nainstalovat automaticky, pokud Azure Security Center je povolena v předplatném. K migraci virtuálních počítačů, zakažte nastavení zásad zabezpečení center na předplatné, což způsobí odebrání Security Center monitorování rozšíření z virtuálních počítačů. |
-| Compute | Virtuální počítač s rozšíření zálohování nebo snímek | Tato rozšíření jsou nainstalovány na virtuálním počítači nakonfigurovaná služba Azure Backup. Pokud chcete migrovat těchto virtuálních počítačů, postupujte podle pokynů [zde](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault).  |
+| Compute | Virtuální počítač s rozšíření zálohování nebo snímek | Tato rozšíření jsou nainstalovány na virtuálním počítači nakonfigurovaná služba Azure Backup. Při migraci těchto virtuálních počítačů není podporována, postupujte podle pokynů [sem](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) zachovat zálohování, které byly provedeny před migrací.  |
 | Síť |Virtuální sítě, které obsahují virtuální počítače a webové/role pracovního procesu |Tato možnost není aktuálně podporována. Před migrací přesuňte role Web nebo Worker ke své vlastní virtuální síti. Jakmile je migrován klasickou virtuální síť, migrované virtuální sítě Azure Resource Manager můžete peered s klasickou virtuální síť, zajistit podobnou konfiguraci jako předtím.|
 | Síť | Classic okruhy Expressroute |Tato možnost není aktuálně podporována. Tyto okruhy se musí migrovat na Azure Resource Manager před zahájením migrace IaaS. Další informace o této najdete [okruhy ExpressRoute přesouvání z klasického modelu nasazení Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuální sítě, které obsahují služby App Service Environment |Tato možnost není aktuálně podporována. |

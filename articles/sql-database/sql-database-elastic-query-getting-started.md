@@ -2,18 +2,18 @@
 title: Sestava napříč instancemi cloudu databází (vodorovné rozdělení do oddílů) | Microsoft Docs
 description: Použijte dotazy na databázi křížové databáze do sestavy napříč více databází.
 services: sql-database
-manager: jhubbard
+manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: caf7fc8d69486e185fabd44d753471f40fda42a1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: e9e0588cc38bc7c29e81a1ae288ae116e3d50279
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Sestavy napříč instancemi cloudu databází (preview)
 Můžete vytvořit sestavy z několika databází Azure SQL z bodu pomocí jednoho připojení [elastické dotazu](sql-database-elastic-query-overview.md). Databáze musí mít oddíly vodorovně (také označované jako "horizontálně dělené").

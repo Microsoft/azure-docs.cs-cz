@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: carolz
-ms.openlocfilehash: 9d995f43d1c82530675bb03c348318816ecac1f5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d05b90b5c961bcbdca4b3ac904e015623b05f1a6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-security-documentation"></a>Dokumentace ke službě Azure Security
 
@@ -298,19 +298,6 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
                             <p style="font-size: 1.12rem;">PCI DSS</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <li style="list-style: none;">
-        <a href="/azure/security/manage-personal-data-azure">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
-                        <div class="cardText">
-                            <p style="font-size: 1.12rem;">GDPR</p>
                         </div>
                     </div>
                 </div>

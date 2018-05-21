@@ -4,13 +4,13 @@ description: Popisuje, jak k vyhodnocení velký počet počítačů místně po
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 05/18/2018
 ms.author: raynew
-ms.openlocfilehash: e0bd62710c47cfdf81535470ef96bad2ab675bb0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8943aec1c81abb34b646180df48bcc55764ca24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -33,13 +33,13 @@ Plánování zjišťování a vyhodnocování podle následující omezení:
 | Zjišťování  | 1,500             |
 | Posouzení | 1,500             |
 
-<!-- 
-- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+<!--
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments.
 - If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
 - If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
 - If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
     - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
-    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one.
       -->
 
 ## <a name="plan-multiple-discoveries"></a>Plánování více zjišťování
@@ -88,6 +88,14 @@ Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
 
 3. Ujistěte se, že generované hodnoty hash odpovídá následující nastavení.
 
+    Pro verzi vajíčka 1.0.9.8
+
+    **Algoritmus** | **Hodnota hash**
+    --- | ---
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
     Pro soubory OVA verze 1.0.9.7:
 
     **Algoritmus** | **Hodnota hash**
@@ -112,30 +120,6 @@ Zkontrolujte, jestli soubor vajíčka zabezpečené před nasazením:
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    Pro soubory OVA verze 1.0.8.59:
-
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    Pro soubory OVA verze 1.0.8.49:
-
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    Pro soubory OVA verze 1.0.8.40:
-
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 |afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>Vytvoření virtuálního počítače kolektoru
 
 Stažený soubor importujte do systému vCenter Server:
@@ -149,7 +133,7 @@ Stažený soubor importujte do systému vCenter Server:
 4. V části **Host/Cluster** (Hostitel/cluster) zadejte hostitele nebo cluster, na kterém se bude virtuální počítač kolektoru spouštět.
 5. V části Storage (Úložiště) zadejte cílové úložiště pro virtuální počítač kolektoru.
 6. V části **Disk Format** (Formát disku) zadejte typ a velikost disku.
-7. V části **Network Mapping** (Mapování sítě) zadejte síť, ke které se bude virtuální počítač kolektoru připojovat. Síť musí připojení k Internetu k odeslání metadata do Azure. 
+7. V části **Network Mapping** (Mapování sítě) zadejte síť, ke které se bude virtuální počítač kolektoru připojovat. Síť musí připojení k Internetu k odeslání metadata do Azure.
 8. Zkontrolujte a potvrďte nastavení a potom vyberte **Dokončit**.
 
 ## <a name="identify-the-id-and-key-for-each-project"></a>Určit ID a klíč pro každý projekt
@@ -157,13 +141,13 @@ Stažený soubor importujte do systému vCenter Server:
 Pokud máte více projektů, nezapomeňte určit ID a klíč pro každé z nich. Klíč musíte při spuštění kolekce ke zjišťování virtuálních počítačů.
 
 1. V projektu, vyberte **Začínáme** > **Discover & hodnocení** > **zjišťovat počítače**.
-2. V **zkopírujte projektu pověření**, zkopírujte ID a klíč pro projekt. 
+2. V **zkopírujte projektu pověření**, zkopírujte ID a klíč pro projekt.
     ![Zkopírujte pověření projektu](./media/how-to-scale-assessment/copy-project-credentials.png)
 
 ## <a name="set-the-vcenter-statistics-level"></a>Nastavení úrovně statistiky vCenter
-Následuje seznam čítačů výkonu, které byly shromážděny během zjišťování. Tyto čítače jsou ve výchozím nastavení k dispozici na různých úrovních v systému vCenter Server. 
+Následuje seznam čítačů výkonu, které byly shromážděny během zjišťování. Tyto čítače jsou ve výchozím nastavení k dispozici na různých úrovních v systému vCenter Server.
 
-Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky tak, aby všechny čítače jsou shromažďovány správně. Pokud máte vCenter nastavit na nižší úrovni, mohou být pouze několik čítače shromažďovány úplně, se zbytkem nastaven na hodnotu 0. Posouzení pak může zobrazovat neúplná data. 
+Doporučujeme nastavit nejvyšší běžné úroveň (3) pro úroveň statistiky tak, aby všechny čítače jsou shromažďovány správně. Pokud máte vCenter nastavit na nižší úrovni, mohou být pouze několik čítače shromažďovány úplně, se zbytkem nastaven na hodnotu 0. Posouzení pak může zobrazovat neúplná data.
 
 Následující tabulka uvádí také výsledky hodnocení, které bude mít vliv, pokud nejsou zjištěny jednotlivých čítačů.
 
@@ -203,7 +187,7 @@ U každého zjišťování, které je třeba provést spusťte kolekce k vyhled�
 5.  V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (FQDN) nebo IP adresa serveru vCenter.
     - V **uživatelské jméno** a **heslo**, zadejte pověření účtu jen pro čtení, které kolekce použije k vyhledání virtuálních počítačů v systému vCenter Server.
-    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolekce může zjišťovat pouze virtuální počítače v zadaném oboru. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Měl by neměl obsahovat více než 1 000 virtuálních počítačů. 
+    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolekce může zjišťovat pouze virtuální počítače v zadaném oboru. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Měl by neměl obsahovat více než 1 000 virtuálních počítačů.
 
 6.  V **zadejte migrace projektu**, zadejte ID a klíč pro projekt. Pokud zkopírujete nebyla je, otevřete portál Azure z kolekce virtuálních počítačů. V projektu **přehled** vyberte **zjišťovat počítače** a zkopírujte hodnoty.  
 7.  V **sledovat průběh kolekce**, monitorovat proces zjišťování a zkontrolujte, že metadata shromážděných z virtuálních počítačů jsou v oboru. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat.
@@ -211,7 +195,7 @@ U každého zjišťování, které je třeba provést spusťte kolekce k vyhled�
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 
-Doba zjišťování závisí na tom, kolik virtuálních počítačů vyhledáváte. U 100 virtuálních počítačů obvykle zjišťování dokončení kolem hodinu po dokončení spuštění kolekce. 
+Doba zjišťování závisí na tom, kolik virtuálních počítačů vyhledáváte. U 100 virtuálních počítačů obvykle zjišťování dokončení kolem hodinu po dokončení spuštění kolekce.
 
 1. V projektu migrace Planner vyberte **spravovat** > **počítače**.
 2. Zkontrolujte, jestli se virtuální počítače, které jste chtěli vyhledat, zobrazí na portálu.

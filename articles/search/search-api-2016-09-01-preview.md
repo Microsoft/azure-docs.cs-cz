@@ -9,18 +9,21 @@ ms.devlang: rest-api
 ms.topic: reference
 ms.date: 04/18/2018
 ms.author: nateko
-ms.openlocfilehash: 8eae54c912711a11c015737903b6898b98fd5159
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e5cd7fcd0c853f03dbafb4d95b8459dcc83aecdf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-search-service-rest-api-version-2016-09-01-preview"></a>Rozhraní API REST služby vyhledávání systému Azure: Verze 2016-09-01-Preview
-Tento článek je referenční dokumentaci k nástroji pro `api-version=2016-09-01-Preview`. Tato verze preview rozšiřuje všeobecně dostupná verzí [rozhraní api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), tím, že poskytuje následující povolenými experimentálními funkcemi:
+V tomto článku jsou uvedené funkce verze preview `api-version=2016-09-01-Preview`. Tato verze preview rozšiřuje předchozí verze všeobecně dostupná, [rozhraní api-version = 2016-09-01](https://docs.microsoft.com/rest/api/searchservice), tím, že poskytuje následující povolenými experimentálními funkcemi:
 
-* [`moreLikeThis` parametr dotazu](search-more-like-this.md) najít dokumenty, které se vztahují k určitému dokumentu.
+* [`moreLikeThis` parametr dotazu](search-more-like-this.md) najít dokumenty, které se vztahují k určitému dokumentu. Tato funkce byla v dřívějších verzích Preview. Pokud jste volající toto rozhraní API se starší verzí rozhraní api, můžete nadále používat tuto verzi.
 
-Přesvědčte se, zda Pokud chcete cílit na verzi preview rozhraní API `api-version=2016-09-01-Preview` můžete vyzkoušet tyto povolenými experimentálními funkcemi. Následující příklad ukazuje, jak ve verzi preview verze rozhraní api je uveden v provedení dalších jako tento dotaz.
+
+## <a name="how-to-call-a-preview-api"></a>Jak volat preview rozhraní API
+
+Následující příklad ukazuje, jak ve verzi preview verze rozhraní api je uveden v provedení dalších jako tento dotaz.
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?moreLikeThis=a1&api-version=2016-09-01-Preview
 

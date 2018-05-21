@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a908c242b5d41d5cd61d8775bdbe53f3cdddd3ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Začínáme se zabezpečením Microsoft Azure
 
@@ -136,7 +136,7 @@ Můžete umístit virtuální počítače do [virtuálních sítí Azure](https:
 
 K zajištění bezpečnější komunikace ve vaší virtuální síti můžete použít následující technologie Azure Virtual Network:
 
-* [**Skupin zabezpečení (Nsg) sítě**](../virtual-network/virtual-networks-nsg.md). Můžete vytvořit skupinu NSG k řízení přenosu do jednoho nebo více instancí virtuálního počítače ve virtuální síti. Skupina zabezpečení sítě obsahuje pravidla pro řízení přístupu, která povolují nebo zakazují provoz na základě směru přenosu, protokolu, zdrojové adresy a portu a cílové adresy a portu.
+* [**Skupin zabezpečení (Nsg) sítě**](../virtual-network/security-overview.md). Můžete vytvořit skupinu NSG k řízení přenosu do jednoho nebo více instancí virtuálního počítače ve virtuální síti. Skupina zabezpečení sítě obsahuje pravidla pro řízení přístupu, která povolují nebo zakazují provoz na základě směru přenosu, protokolu, zdrojové adresy a portu a cílové adresy a portu.
 * [**Uživatelem definované směrování**](../virtual-network/virtual-networks-udr-overview.md). Můžete řídit směrování paketů prostřednictvím virtuálního zařízení ve vytváření trasy definované uživatelem, které určují další segment směrování paketů odesílaných do konkrétní podsítě přejít na zařízení zabezpečení virtuální sítě.
 * [**Předávání IP**](../virtual-network/virtual-networks-udr-overview.md). Zařízení pro zabezpečení virtuální sítě musí být schopné přijímat příchozí provoz, který mu není adresovaný. Pokud chcete povolit virtuální počítač přijímání dat adresovaných jiným cílům, povolíte předávání IP pro virtuální počítač.
 * [**Vynucené tunelování**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md). Vynucené tunelování umožňuje přesměrování nebo "Vynutit" veškerý provoz vázaný Internet generované virtuální počítače ve virtuální síti zpět na místní umístění přes tunelové propojení VPN typu site-to-site pro kontrolu a auditování

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/17/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 51f00984a8f0d750bdb478ae4bc8093adad8108e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce78201e3f87b9687ced181f90d352d73aa29431
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Uložte zálohy databáze SQL Azure až 10 let.
 
@@ -54,8 +54,13 @@ W = 12 týdnů (84 dny), M = 12 měsíců (365 dní), Y = 10 let (3650 dny), Wee
 
 
  
-Pokud byste chtěli upravit výše zásady a změní sadu zit = 0 (žádné týdenní zálohy), cadence záložní kopie jako zobrazit podle zvýrazněná kalendářních dat v tabulce. Množství úložiště, které jsou nutné k udržování tyto zálohy by snížit odpovídajícím způsobem. Poznámka: Kopie LTR vytváří služba úložiště Azure, proces kopírování nemá žádný vliv výkon na existující databázi.
-Chcete-li obnovit databázi z úložiště zleva doprava, můžete vybrat konkrétní zálohování podle jeho časové razítko.   Možné obnovit databázi do jakékoli existující server v rámci stejného předplatného jako původní databázi. 
+Pokud byste chtěli upravit výše zásady a změní sadu zit = 0 (žádné týdenní zálohy), cadence záložní kopie jako zobrazit podle zvýrazněná kalendářních dat v tabulce. Množství úložiště, které jsou nutné k udržování tyto zálohy by snížit odpovídajícím způsobem. 
+
+> [!NOTE]
+1. Služba úložiště Azure vytváří kopie zleva doprava, proces kopírování nemá žádný vliv výkon na existující databázi.
+2. Zásady platí pro budoucí zálohy. Například Pokud zadaný WeekOfYear je v minulosti. když zásad je nakonfigurovaná, první zálohování zleva doprava se vytvoří následujícího roku. 
+3. Chcete-li obnovit databázi z úložiště zleva doprava, můžete vybrat konkrétní zálohování podle jeho časové razítko.   Možné obnovit databázi do jakékoli existující server v rámci stejného předplatného jako původní databázi. 
+> 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurace dlouhodobého uchovávání záloh
 

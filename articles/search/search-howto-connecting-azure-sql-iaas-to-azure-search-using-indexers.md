@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 34c5d1999625d1728e884adb794af235ba415c26
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7800e83891cb336bb896299b8fd4d6b3ba590178
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurovat spojení z indexer Azure Search na SQL Server na virtuálním počítači Azure
 Jak jsme uvedli v [připojení databáze SQL Azure do Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuálních počítačích SQL Azure** pro zkrácení) je podporováno ve službě Azure Search je ale několik předpoklady související se zabezpečením, která se postará o první. 
@@ -52,14 +52,14 @@ Konkrétně projděte si část v jednotlivých článků "propojení prostředn
 ## <a name="configure-the-network-security-group-nsg"></a>Konfigurovat skupinu zabezpečení sítě (NSG)
 Není konfigurace NSG a odpovídající koncového bodu Azure nebo seznamu řízení přístupu (ACL) pro zpřístupnění svého virtuálního počítače Azure jiných stran. Pravděpodobné, že jste to před nastavená na Povolit vlastní logiky aplikace pro připojení k virtuálnímu počítači Azure SQL. Je pro připojení k Azure Search, aby virtuální počítač SQL Azure žádné jiné. 
 
-Odkazy dole poskytují pokyny NSG konfigurace pro nasazení virtuálních počítačů. Použijte tyto pokyny k seznamu ACL koncového bodu Azure SEarch na základě jeho IP adresy.
+Odkazy dole poskytují pokyny NSG konfigurace pro nasazení virtuálních počítačů. Použijte tyto pokyny k seznamu ACL koncového bodu Azure Search na základě jeho IP adresy.
 
 > [!NOTE]
-> Pro informace viz [co je skupina zabezpečení sítě?](../virtual-network/virtual-networks-nsg.md)
+> Pro informace viz [co je skupina zabezpečení sítě?](../virtual-network/security-overview.md)
 > 
 > 
 
-* Pro **Resource Manager** virtuálních počítačů, najdete v části [postup vytvoření skupiny Nsg pro nasazení ARM](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+* Pro **Resource Manager** virtuálních počítačů, najdete v části [postup vytvoření skupiny Nsg pro nasazení ARM](../virtual-network/tutorial-filter-network-traffic.md). 
 * Pro **Classic** virtuálních počítačů, najdete v části [postup vytvoření skupiny Nsg pro nasazení Classic](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
 IP adresy může představovat několik výzvy, které jsou snadno překonat Pokud víte o problému a potenciální řešení. Zbývající části poskytuje doporučení pro zpracování problémy související s IP adresami v seznamu ACL.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: b08e2b7315d180a387f27ab2082b7f9f6a9bbfff
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 776ae83990a7799102c69347196a72a68561ee6b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows, který má několik síťových adaptérů
 Virtuální počítače (VM) v Azure může mít několik virtuálních síťových karet (NIC) připojené k nim. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek popisuje, jak vytvořit virtuální počítač, který má několik síťových adaptérů, které jsou k němu připojen. Můžete také zjistěte, jak přidat nebo odebrat síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
@@ -76,7 +76,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-Obvykle můžete také vytvořit [skupinu zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md) filtrování provozu sítě k virtuálnímu počítači a [nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) provoz distribuovat mezi několika virtuálními počítači.
+Obvykle můžete také vytvořit [skupinu zabezpečení sítě](../../virtual-network/security-overview.md) filtrování provozu sítě k virtuálnímu počítači a [nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-overview.md) provoz distribuovat mezi několika virtuálními počítači.
 
 ### <a name="create-the-virtual-machine"></a>Vytvoření virtuálního počítače
 Nyní spusťte Sestavit vaše konfigurace virtuálního počítače. Limit velikost každého virtuálního počítače je celkový počet síťových adaptérů, které můžete přidat k virtuálnímu počítači. Další informace najdete v tématu [velikosti virtuálních počítačů Windows](sizes.md).

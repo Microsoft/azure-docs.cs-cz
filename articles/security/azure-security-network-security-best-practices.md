@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 0aaf49aaa31a022e040fc7019a2f115f92555010
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-best-practices"></a>Osvědčené postupy zabezpečení sítě Azure
 Microsoft Azure umožňuje připojit virtuální počítače a zařízení k další síťová zařízení tím, že je na virtuálních sítí Azure. Virtuální síť Azure je konstrukce, která umožňuje připojit virtuální síťové karty k virtuální síti a povolit založené na protokolu TCP komunikaci mezi síťových zařízení. Virtuální počítače Azure připojené k virtuální síti Azure může připojit k zařízení na stejné Azure virtuální síti, jinou virtuální sítí Azure, na Internetu nebo dokonce na vlastní místní sítě.
@@ -56,7 +56,7 @@ Podobně jako do místní, větší adresní prostor by měl segmentovat do pods
 
 Směrování mezi podsítěmi dojde automaticky a není nutné ručně nakonfigurovat směrovacích tabulek. Výchozí nastavení je ale, že neexistují žádná opatření přístup k síti mezi podsítěmi, které vytvoříte ve virtuální síti Azure. Chcete-li vytvořit ovládací prvky pro přístup k síti mezi podsítěmi, budete muset uvést něco mezi podsítěmi.
 
-Jednou z věcí, můžete použít k provedení této úlohy je [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (NSG). Skupiny Nsg jsou jednoduché stavové paketu kontroly zařízení, která používají 5-n-tice (zdrojové IP adresy, zdrojového portu, cílové adresy IP, cílový port a protokol vrstvy 4) přístup k vytvoření, povolit nebo odepřít pravidla pro provoz v síti. Můžete povolit nebo odepřít provoz do a z jednu IP adresu, na a z více IP adres nebo i do a z celé podsítě.
+Jednou z věcí, můžete použít k provedení této úlohy je [skupinu zabezpečení sítě](../virtual-network/security-overview.md) (NSG). Skupiny Nsg jsou jednoduché stavové paketu kontroly zařízení, která používají 5-n-tice (zdrojové IP adresy, zdrojového portu, cílové adresy IP, cílový port a protokol vrstvy 4) přístup k vytvoření, povolit nebo odepřít pravidla pro provoz v síti. Můžete povolit nebo odepřít provoz do a z jednu IP adresu, na a z více IP adres nebo i do a z celé podsítě.
 
 Pomocí skupin Nsg pro řízení přístupu k síti mezi podsítěmi umožňuje umístění prostředky, které patří do stejné zóny zabezpečení nebo role ve svých vlastních podsítích. Například vezměte v úvahu jednoduché 3vrstvé aplikace, které má webovou vrstvu, aplikační vrstvy logiky a databázové vrstvy. Můžete uvést virtuální počítače, které patří do každé z těchto úrovní do svých vlastních podsítích. Pak použijete skupiny Nsg k řízení provozu mezi podsítí:
 
@@ -64,7 +64,7 @@ Pomocí skupin Nsg pro řízení přístupu k síti mezi podsítěmi umožňuje 
 * Aplikace logiky virtuálních počítačů může spustit pouze připojení s databázové vrstvy a můžete akceptovat jenom připojení z webová vrstva
 * Virtuální počítače vrstvy databáze nelze navázat spojení s nic mimo vlastní podsítě a můžete pouze přijmou připojení z vrstvy logiku aplikace
 
-Další informace o skupinách zabezpečení sítě a jak je můžete využít logicky segmentovat virtuálních sítí Azure, najdete v části [co je skupina zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (NSG).
+Další informace o skupinách zabezpečení sítě a jak je můžete využít logicky segmentovat virtuálních sítí Azure, najdete v části [co je skupina zabezpečení sítě](../virtual-network/security-overview.md) (NSG).
 
 ## <a name="control-routing-behavior"></a>Řízení chování směrování
 Při umístění virtuálního počítače na virtuální síť Azure, můžete si všimnout, že se virtuální počítač může připojit k žádným jiným virtuálním počítačem ve stejné virtuální síti Azure, i když jsou ostatní virtuální počítače v různých podsítích. To je možné, protože je kolekce tras systému, které jsou ve výchozím nastavení povolené, umožňujících tento typ komunikace. Tyto výchozí trasy měly virtuální počítače ve stejné virtuální síti Azure k zahájení připojení mezi sebou a s Internetem (pro odchozí komunikace k Internetu jenom).

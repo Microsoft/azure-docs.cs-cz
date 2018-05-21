@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
 
@@ -46,7 +46,7 @@ Při vytváření virtuálního počítače s SQL serverem pomocí bitovou kopii
 
 Nejvyšší zabezpečení zvolte možnost nejvíc omezující pro váš scénář. Například pokud používáte aplikaci který přistupuje k systému SQL Server na stejný virtuální počítač, pak **místní** je nejbezpečnější volbou. Pokud používáte aplikaci Azure, která vyžaduje přístup k systému SQL Server, pak **privátní** zabezpečuje komunikaci pro SQL Server pouze v rámci zadaného [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md). Pokud budete potřebovat **veřejné** (internet) přístup k virtuální počítač SQL Server, ujistěte se, postupujte podle ostatní osvědčené postupy v tomto tématu, snížit útoku útoku.
 
-Vybrané možnosti portálu použít pravidla zabezpečení příchozích na virtuálních počítačích [skupinu zabezpečení sítě](../../../virtual-network/virtual-networks-nsg.md) (NSG), aby povolili nebo zakázali síťový provoz do virtuálního počítače. Můžete upravit nebo vytvořit nový příchozí pravidla NSG, které chcete povolit přenosy na portu SQL Server (standardně 1433). Můžete také zadat konkrétní IP adresy, které jsou povoleny pro komunikaci prostřednictvím tohoto portu.
+Vybrané možnosti na portálu používat příchozí pravidla zabezpečení do virtuálního počítače [skupinu zabezpečení sítě](../../../virtual-network/security-overview.md) (NSG), aby povolili nebo zakázali síťový provoz do virtuálního počítače. Můžete upravit nebo vytvořit nový příchozí pravidla NSG, které chcete povolit přenosy na portu SQL Server (standardně 1433). Můžete také zadat konkrétní IP adresy, které jsou povoleny pro komunikaci prostřednictvím tohoto portu.
 
 ![Pravidla skupiny zabezpečení sítě](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 

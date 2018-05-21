@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: c41a1057bb87c70362477d221b69ca3f5137dec4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a2e2075a735b63588352f3bcdc97e2d6410660fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Vytvoření virtuální sítě (klasické) s několika podsítěmi
 
@@ -162,7 +162,6 @@ Vytvoříte virtuální sítě (klasické) pomocí [portál Azure](#portal), [ro
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o všech virtuální síť a podsíť nastavení najdete v tématu [spravovat virtuální sítě](manage-virtual-network.md) a [spravovat podsítě virtuální sítě](virtual-network-manage-subnet.md). Máte různé možnosti pro splňují odlišné požadavky pomocí virtuální sítě a podsítě v produkčním prostředí.
-- Filtrovat podsíť příchozí a odchozí provoz, vytvoření a použití [skupin zabezpečení sítě](virtual-networks-nsg.md) k podsítím.
 - Vytvoření [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače a připojte ho k existující virtuální síť.
 - Pro připojení dvou virtuálních sítí ve stejné oblasti Azure, vytvořte [partnerský vztah virtuální sítě](create-peering-different-deployment-models.md) mezi virtuálními sítěmi. Virtuální síť (Resource Manager) může rovnocenných počítačů k virtuální síti (klasické), ale nemůžete vytvořit partnerský vztah mezi dvěma virtuálními sítěmi (klasické).
 - Připojit virtuální síť k místní síti pomocí [brány VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json) okruh.

@@ -9,11 +9,11 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: jovanpop
-ms.openlocfilehash: 1d80d199e21222be973fa6f5a06e6e80a505f164
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 7707a40a39e429333ff1c20fb7884a1fb7ee2162
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
@@ -61,13 +61,13 @@ Přehled funkce Automatické ladění funguje a příklady typických scénář�
 ## <a name="automatic-tuning-options"></a>Automatické možnosti ladění
 
 Jsou automatické ladění možnosti, které jsou k dispozici ve službě Azure SQL Database:
- 1. **Vytvoření indexu** identifikující indexy, které může zvýšit výkon vašich úloh, vytváří indexy a ověřuje, že se zlepšit výkon dotazů.
- 2. **DROP INDEX** identifikující redundantní a duplicitní indexy a indexy, které nebyly použity v dlouhé časové období.
- 3. **POSLEDNÍ KVALITNÍ plán VYNUTIT** , identifikuje dotazy SQL, které používají plán spuštění, které jsou nižší než předchozí kvalitní plán a místo regressed plánu používá poslední známé funkční plánu.
+ 1. **Vytvoření indexu** -identifikuje indexy, které může zvýšit výkon vašich úloh, vytváří indexy a automaticky ověřuje, že je vylepšený výkon dotazů. Výchozí nastavení Azure pro tato možnost je povolená.
+ 2. **DROP INDEX** -identifikuje redundantní a duplicitní indexů a indexy, které nebyly použity velmi dlouhou dobu. Upozorňujeme, že v tuto chvíli není kompatibilní s aplikací pomocí pomocné parametry přepínání a index oddílu možnost. Výchozí nastavení Azure pro tato možnost je zakázaná.
+ 3. **POSLEDNÍ KVALITNÍ plán VYNUTIT** -identifikuje použití spuštění plánu, který je nižší než předchozí kvalitní plán a dotazy pomocí poslední známé funkční plán místo regressed plán příkazy jazyka SQL. Výchozí nastavení Azure pro tato možnost je povolená.
 
 Azure SQL Database identifikuje **CREATE INDEX**, **DROP INDEX**, a **FORCE poslední dobré plánování** doporučení, které můžete optimalizovat vaši databázi a zobrazí je v portálu Azure. Další informace o identifikaci indexy, které by mělo být změněno na [najít doporučení indexu na portálu Azure](sql-database-advisor-portal.md). Můžete buď použít ručně doporučení pomocí portálu nebo můžete nechat Azure SQL Database automaticky používat doporučení, sledování úloh po provedení změny a ověřte, že doporučení zvýšený výkon vašich úloh.
 
-Automatické ladění možnosti může být nezávisle zapnout nebo vypnout na databázi, nebo můžou být nakonfigurované na logickém serveru a použít na každou databázi, která dědí nastavení ze serveru. Konfigurace automatické ladění možnosti na serveru a dědí nastavení u databází na serveru, doporučuje se metoda pro konfiguraci automatické ladění, protože se zjednodušuje Správa automatické možnosti ladění na velký počet databází.
+Automatické ladění možnosti může být nezávisle zapnout nebo vypnout na databázi, nebo můžou být nakonfigurované na logickém serveru a použít na každou databázi, která dědí nastavení ze serveru. Logické servery může dědit vlastnosti Azure výchozí hodnoty pro nastavení automatického ladění. Konfigurace automatické ladění možnosti na serveru a dědí nastavení u databází na serveru, doporučuje se metoda pro konfiguraci automatické ladění, protože se zjednodušuje Správa automatické možnosti ladění na velký počet databází.
 
 ## <a name="next-steps"></a>Další postup
 

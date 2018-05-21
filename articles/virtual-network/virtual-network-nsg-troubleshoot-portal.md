@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 67ffe826ba13576578e8f09e36f84128f4ceb0f2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Řešení potíží s skupin zabezpečení sítě pomocí portálu Azure
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/14/2018
 
 Pokud jste nakonfigurovali skupiny zabezpečení sítě (Nsg) ve virtuálním počítači (VM) a dochází problémy s připojením k virtuální počítač, tento článek obsahuje přehled možností diagnostiky pro skupiny Nsg k další řešení.
 
-Skupiny Nsg umožní určit typy provozu s tokem do aplikace a z virtuálních počítačů (VM). Skupiny Nsg můžete použít na podsítě ve virtuální síti Azure (VNet), síťová rozhraní (NIC) nebo obojí. Efektivní pravidla použít na síťový adaptér jsou agregace pravidla, které existují v skupin Nsg použije k síťovému adaptéru a podsíť, ke kterému je připojen k. Pravidla v rámci těchto skupin Nsg můžete někdy vzájemném konfliktu a mít vliv na připojení k síti Virtuálního počítače.  
+Skupiny Nsg umožní určit typy provozu s tokem do aplikace a z virtuálních počítačů (VM). Skupiny Nsg můžete použít na podsítě ve virtuální síti Azure (VNet), síťová rozhraní (NIC) nebo obojí. Efektivní pravidla použít na síťový adaptér jsou agregace pravidla, které existují v skupin Nsg použije k síťovému adaptéru a podsíť, ke kterému je připojen k. Pravidla v rámci těchto skupin Nsg můžete někdy vzájemném konfliktu a mít vliv na připojení k síti Virtuálního počítače.
 
-Můžete zobrazit všechna pravidla efektivní zabezpečení od vaší skupiny Nsg použije na síťové adaptéry Virtuálního počítače. Tento článek ukazuje, jak vyřešit problémy s připojením k virtuální počítač pomocí těchto pravidel v modelu nasazení Azure Resource Manager. Pokud si nejste obeznámeni s virtuální sítí a NSG koncepty, přečtěte si [virtuální síť](virtual-networks-overview.md) a [skupin zabezpečení sítě](virtual-networks-nsg.md) přehled články.
+Můžete zobrazit všechna pravidla efektivní zabezpečení od vaší skupiny Nsg použije na síťové adaptéry Virtuálního počítače. Tento článek ukazuje, jak vyřešit problémy s připojením k virtuální počítač pomocí těchto pravidel v modelu nasazení Azure Resource Manager. Pokud si nejste obeznámeni s virtuální sítí a NSG koncepty, najdete v části [Přehled virtuálních sítí](virtual-networks-overview.md) a [přehled skupiny zabezpečení sítě](security-overview.md).
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Řešení potíží s přenosy virtuálních počítačů pomocí efektivní pravidla zabezpečení
 Scénář, který následuje je příkladem častých problémů připojení:
@@ -66,7 +66,7 @@ Pomocí následujících kroků pro řešení potíží s skupiny Nsg pro virtu�
    * **Obor:** nastavena na *VM1*, virtuální počítač vybrali v kroku 3.
    * **Síťové rozhraní:** *VM1 NIC1* je vybrána. Virtuální počítač může mít více síťových rozhraní (NIC). Každý síťový adaptér může mít jedinečnou efektivní pravidla. Při řešení potíží, budete potřebovat k zobrazení pravidel efektivní zabezpečení pro každý síťový adaptér.
    * **Přidružené skupiny Nsg:** skupiny Nsg můžete použít pro síťový adaptér i síťový adaptér je připojený k podsíti. Na obrázku skupinu NSG použilo síťový adaptér a, který je připojený k podsíti. Kliknutím na názvy NSG přímo upravit pravidla v skupin Nsg.
-   * **Karta VM1 nsg:** seznam pravidel, které jsou zobrazené na obrázku je NSG použije na síťový adaptér. Několik výchozích pravidel vytvářejí Azure vždy, když je vytvořena skupina NSG. Nelze odstranit výchozí pravidla, ale je možné přepsat pravidla s vyšší prioritou. Další informace o výchozích pravidel, přečtěte si [NSG přehled](virtual-networks-nsg.md#default-rules) článku.
+   * **Karta VM1 nsg:** seznam pravidel, které jsou zobrazené na obrázku je NSG použije na síťový adaptér. Několik výchozích pravidel vytvářejí Azure vždy, když je vytvořena skupina NSG. Nelze odstranit výchozí pravidla, ale je možné přepsat pravidla s vyšší prioritou. Přečtěte si o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules) víc.
    * **CÍLOVÝ sloupec:** některé pravidla mají text ve sloupci jiné mají předpony adres. Text je název výchozí značky použijí pravidlo zabezpečení, jakmile byla vytvořena. Zadané značky jsou poskytované systémem identifikátory, které představují více předpony. Vybrat pravidlo s značkou, jako například *AllowInternetOutBound*, uvádí předpony v **předpony adres** okno.
    * **Stáhnout:** seznamu pravidel příslušného může trvat dlouho. Soubor .csv pravidel pro offline analýzu můžete stáhnout kliknutím **Stáhnout** a ukládání souboru.
    * **AllowRDP** příchozí pravidlo: Toto pravidlo umožňuje připojení RDP k virtuálnímu počítači.

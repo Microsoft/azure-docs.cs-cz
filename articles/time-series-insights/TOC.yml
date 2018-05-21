@@ -92,6 +92,8 @@
       href: /azure/stream-analytics/
 - name: Zdroje a prostředky
   items:
+    - name: Požadavky na zákaznická data
+      href: time-series-insights-customer-data-requests.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
     - name: Ceny

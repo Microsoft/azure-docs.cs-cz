@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: edbf76ef5dcf581acfec17970becdf698445cbeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Řešení potíží s skupin zabezpečení sítě pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -30,9 +30,9 @@ ms.lasthandoff: 05/14/2018
 
 Pokud jste nakonfigurovali skupiny zabezpečení sítě (Nsg) ve virtuálním počítači (VM) a dochází problémy s připojením k virtuální počítač, tento článek obsahuje přehled možností diagnostiky pro skupiny Nsg k další řešení.
 
-Skupiny Nsg umožní určit typy provozu s tokem do aplikace a z virtuálních počítačů (VM). Skupiny Nsg můžete použít na podsítě ve virtuální síti Azure (VNet), síťová rozhraní (NIC) nebo obojí. Efektivní pravidla použít na síťový adaptér jsou agregace pravidla, které existují v skupin Nsg použije k síťovému adaptéru a podsíť, ke kterému je připojen k. Pravidla v rámci těchto skupin Nsg můžete někdy vzájemném konfliktu a mít vliv na připojení k síti Virtuálního počítače.  
+Skupiny Nsg umožní určit typy provozu s tokem do aplikace a z virtuálních počítačů (VM). Skupiny Nsg můžete použít na podsítě ve virtuální síti Azure (VNet), síťová rozhraní (NIC) nebo obojí. Efektivní pravidla použít na síťový adaptér jsou agregace pravidla, které existují v skupin Nsg použije k síťovému adaptéru a podsíť, ke kterému je připojen k. Pravidla v rámci těchto skupin Nsg můžete někdy vzájemném konfliktu a mít vliv na připojení k síti Virtuálního počítače.
 
-Můžete zobrazit všechna pravidla efektivní zabezpečení od vaší skupiny Nsg použije na síťové adaptéry Virtuálního počítače. Tento článek ukazuje, jak vyřešit problémy s připojením k virtuální počítač pomocí těchto pravidel v modelu nasazení Azure Resource Manager. Pokud si nejste obeznámeni s virtuální sítí a NSG koncepty, přečtěte si [virtuální síť](virtual-networks-overview.md) a [skupin zabezpečení sítě](virtual-networks-nsg.md) přehled články.
+Můžete zobrazit všechna pravidla efektivní zabezpečení od vaší skupiny Nsg použije na síťové adaptéry Virtuálního počítače. Tento článek ukazuje, jak vyřešit problémy s připojením k virtuální počítač pomocí těchto pravidel v modelu nasazení Azure Resource Manager. Pokud si nejste obeznámeni s virtuální sítí a NSG koncepty, najdete v části [Přehled virtuálních sítí](virtual-networks-overview.md) a [přehled skupiny zabezpečení sítě](security-overview.md).
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Řešení potíží s přenosy virtuálních počítačů pomocí efektivní pravidla zabezpečení
 Scénář, který následuje je příkladem častých problémů připojení:
@@ -159,8 +159,7 @@ Pomocí následujících kroků pro řešení potíží s skupiny Nsg pro virtu�
    
    * Existují dva **skupinu zabezpečení sítě** částech: jeden je přidružená k podsíti (*Subnet1*) a jeden síťový adaptér přidružený (*VM1 NIC1*). V tomto příkladu má byla skupina NSG použitá pro každé.
    * **Přidružení** ukazuje prostředků (podsíti nebo síťové KARTĚ) je přidružen daný NSG. Pokud prostředek NSG je přesunut nebo zrušit přidružení bezprostředně před spuštěním tohoto příkazu, možná budete muset Počkejte několik sekund pro změnu tak, aby odrážela ve výstupu příkazu. 
-   * Názvy pravidel, které začínají *defaultSecurityRules*: když NSG se vytvoří, jsou v něm vytvořit několik výchozí pravidla zabezpečení. Výchozí pravidla nelze odebrat, ale je možné přepsat s vyšší prioritou pravidla.
-     Pro čtení [NSG přehled](virtual-networks-nsg.md#default-rules) článku se dozvíte další informace o NSG výchozí pravidla zabezpečení.
+   * Názvy pravidel, které začínají *defaultSecurityRules*: když NSG se vytvoří, jsou v něm vytvořit několik výchozí pravidla zabezpečení. Výchozí pravidla nelze odebrat, ale je možné přepsat s vyšší prioritou pravidla. Přečtěte si o [výchozích pravidlech zabezpečení](security-overview.md#default-security-rules) víc.
    * **ExpandedAddressPrefix** rozšíří předpony adres pro NSG výchozí značky. Značky představují více předponami adresy. Rozšíření značek může být užitečné při řešení potíží s připojením virtuálního počítače z konkrétní předpony. S partnerský vztah virtuální sítě, například značky VIRTUAL_NETWORK rozbalí a zobrazí peered předponami virtuální sítě v předchozí výstup.
      
      > [!NOTE]

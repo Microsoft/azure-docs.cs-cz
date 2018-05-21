@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 84988c815759a726abe93d931f73c284d771a5ba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="ocr-cognitive-skill"></a>Kognitivní odborností rozpoznávání znaků
 
@@ -50,7 +50,7 @@ Parametry jsou malá a velká písmena.
 ## <a name="skill-outputs"></a>Výstupy dovedností
 | Název výstupu     | Popis                   |
 |---------------|-------------------------------|
-| Text          | Prostý text extrahovat z bitové kopie.   |
+| text          | Prostý text extrahovat z bitové kopie.   |
 | layoutText    | Komplexní typ, který popisuje extrahované text a také umístění, kde byl nalezen text.|
 
 
@@ -185,16 +185,14 @@ Následující příklad skillset vytvoří *merged_text* vložených pole tak, 
 Výše uvedený příklad skillset předpokládá, že pole normalized-bitové kopie existuje. Chcete-li vygenerovat toto pole, nastavte *imageAction* konfigurace v indexeru definici *generateNormalizedImages* jak je uvedeno níže:
 
 ```json
-{
-  //...rest of your indexer definition goes here ...
-  "parameters":
-  {
-    "configuration": 
-    {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
-  }
+{  
+   //...rest of your indexer definition goes here ... 
+  "parameters":{  
+      "configuration":{  
+         "dataToExtract":"contentAndMetadata",
+         "imageAction":"generateNormalizedImages"
+      }
+   }
 }
 ```
 
@@ -202,3 +200,4 @@ Výše uvedený příklad skillset předpokládá, že pole normalized-bitové k
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
 + [TextMerger dovedností](cognitive-search-skill-textmerger.md)
 + [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Vytvoření Indexer (REST)](ref-create-indexer.md)

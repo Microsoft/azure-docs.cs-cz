@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -106,7 +106,7 @@ Použití DevTest Labs přidružen bez dalších nákladů. Vytvoření labs, z�
 
 Hostování labs nebo produkční systémy v Azure znamená, že vaše systémy musí být přístupné z Internetu. Ve výchozím nastavení nový virtuální počítač Windows má portu RDP, který je přístupný z Internetu a virtuální počítač s Linuxem má otevřít port SSH. Provedení kroků ke koncovým bodům limit zveřejněné je potřeba minimalizovat riziko neoprávněného přístupu.
 
-Technologie v Azure můžete omezit přístup do těchto koncových bodů správy. V Azure, můžete použít [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (Nsg). Použijete-li pro nasazení Azure Resource Manager, skupiny Nsg omezit přístup ze všech sítí k právě Správa koncových bodů (RDP nebo SSH). Pokud se domníváte, že skupiny Nsg, vezměte v úvahu seznamy ACL směrovače. Můžete je používat k ovládání úzce síťovou komunikaci mezi různé segmenty vaší sítě Azure. Toto je podobná vytváření sítí v hraniční sítě nebo jiné izolované sítě. Navrhují není provoz, ale mohou pomoci s segmentace sítě.
+Technologie v Azure můžete omezit přístup do těchto koncových bodů správy. V Azure, můžete použít [skupin zabezpečení sítě](../virtual-network/security-overview.md) (Nsg). Použijete-li pro nasazení Azure Resource Manager, skupiny Nsg omezit přístup ze všech sítí k právě Správa koncových bodů (RDP nebo SSH). Pokud se domníváte, že skupiny Nsg, vezměte v úvahu seznamy ACL směrovače. Můžete je používat k ovládání úzce síťovou komunikaci mezi různé segmenty vaší sítě Azure. Toto je podobná vytváření sítí v hraniční sítě nebo jiné izolované sítě. Navrhují není provoz, ale mohou pomoci s segmentace sítě.
 
 
 V Azure, můžete nakonfigurovat [site-to-site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) z vaší místní sítě. Síť site-to-site VPN rozšiřuje vaše místní sítě do cloudu. To vám dává jinou možnost s používáním skupin Nsg, protože můžete také upravit skupiny Nsg nepovolíte přístup odkudkoli jiné než místní sítě. Potom může vyžadovat, aby Správa se provádí první připojením k síti Azure prostřednictvím VPN.

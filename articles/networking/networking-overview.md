@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-networking"></a>Síť Azure
 
@@ -120,7 +120,7 @@ Následující obrázek znázorňuje internetového vícevrstvé aplikace, kter�
 
 Můžete filtrovat provoz do a z prostředků Azure pomocí následujících možností:
 
-- **Síť:** můžete implementovat skupiny zabezpečení Azure sítě (Nsg) pro filtrování příchozích a odchozích přenosů prostředky Azure. Každá skupina NSG obsahuje jedno nebo více pravidel příchozí a odchozí. Každé pravidlo určuje zdrojové IP adresy, cílové IP adresy, portu a protokolu, který je provoz filtrovaný pomocí. Skupiny Nsg můžete použít na jednotlivé podsítě a jednotlivé virtuální počítače. Další informace o skupinách Nsg, najdete [přehled skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
+- **Síť:** můžete implementovat skupiny zabezpečení Azure sítě (Nsg) pro filtrování příchozích a odchozích přenosů prostředky Azure. Každá skupina NSG obsahuje jedno nebo více pravidel příchozí a odchozí. Každé pravidlo určuje zdrojové IP adresy, cílové IP adresy, portu a protokolu, který je provoz filtrovaný pomocí. Skupiny Nsg můžete použít na jednotlivé podsítě a jednotlivé virtuální počítače. Další informace o skupinách Nsg, najdete [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 - **Aplikace:** pomocí služby Application Gateway s brány firewall webových aplikací můžete chránit vaše webové aplikace z ohrožení zabezpečení a zneužití. Běžných příkladů jsou SQL prostřednictvím injektáže skriptování mezi weby a poškozené záhlaví. Aplikační brána filtruje tento provoz a zastaví dosáhly webových serverů. Budete moci konfigurovat pravidla, jaké má povoleno. Umožňuje konfigurovat zásady vyjednávání SSL zajišťuje určitých zásad se zakáže. Další informace o brány firewall webových aplikací, přečtěte si [brány firewall webových aplikací](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) článku.
 
 Pokud potřebujete možnost sítě Azure není zadejte, nebo chcete použít síťových aplikací, použijte místní, můžete implementovat produkty ve virtuálních počítačích a jejich připojení k virtuální síti. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) obsahuje několik různých virtuálních počítačů, které jsou předem nakonfigurované s síťových aplikací může aktuálně používáte. Tyto předem nakonfigurované virtuální počítače se obvykle označují jako virtuální zařízení sítě (hodnocení chyb zabezpečení). NVAs jsou k dispozici s aplikací, jako jsou brány firewall a optimalizace sítě WAN.

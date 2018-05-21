@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Osvědčené postupy zabezpečení řízení Azure správu identit a přístupu
 
@@ -64,7 +64,7 @@ Další informace o synchronizace Azure AD, najdete v článku [integrace místn
 
 Pokud máte několik adresářů ke správě, to se stane problémem správy nejen pro oddělení IT, ale i pro koncové uživatele, které je nutné pamatovat více hesel. Pomocí [jednotného přihlašování k](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) poskytovat uživatelům možnost používat stejnou sadu přihlašovacích údajů přihlásit a přístup k prostředkům, které potřebují, bez ohledu na to tam, kde tento prostředek je nacházejí na místních nebo v cloudu.
 
-Povolit uživatelům přístup k pomocí jednotného přihlašování k jejich [aplikace SaaS](../active-directory/active-directory-appssoaccess-whatis.md) podle jejich organizace účtu ve službě Azure AD. Tento krok platí nejen pro aplikace Microsoft SaaS, ale také další aplikace, jako například [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) a [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Aplikace může být nakonfigurován k používání Azure AD jako [identity na základě SAML](../active-directory/fundamentals-identity.md) zprostředkovatele. Jako ovládací prvek zabezpečení Azure AD nevydá token, což jim umožní přihlášení do aplikace, pokud mají udělené přístup pomocí služby Azure AD. Můžete udělit přístup přímo nebo prostřednictvím skupiny, že jsou členem.
+Povolit uživatelům přístup k pomocí jednotného přihlašování k jejich [aplikace SaaS](../active-directory/manage-apps/what-is-single-sign-on.md) podle jejich organizace účtu ve službě Azure AD. Tento krok platí nejen pro aplikace Microsoft SaaS, ale také další aplikace, jako například [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) a [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Aplikace může být nakonfigurován k používání Azure AD jako [identity na základě SAML](../active-directory/fundamentals-identity.md) zprostředkovatele. Jako ovládací prvek zabezpečení Azure AD nevydá token, což jim umožní přihlášení do aplikace, pokud mají udělené přístup pomocí služby Azure AD. Můžete udělit přístup přímo nebo prostřednictvím skupiny, že jsou členem.
 
 > [!NOTE]
 > rozhodnutí ohledně přes jednotné přihlašování, bude mít vliv jak integraci místního adresáře s adresářem v cloudu. Pokud chcete jednotné přihlašování, budete muset použít federace, protože synchronizace adresářů se poskytují jenom [stejné prostředí pro přihlašování](../active-directory/active-directory-aadconnect.md).

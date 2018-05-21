@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 4f0afe48c37c6cb5dc8c1658f0a7beed4f0e6140
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e293f085eb6c4c90b26ac6035d50d74f5cdd7269
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Spravovat přístup k virtuálním počítačům pomocí právě v čase
 
@@ -33,7 +33,7 @@ Právě v čas virtuální počítač (VM) přístupu slouží zamknout přícho
 
 Útok hrubou silou útokům běžně cílové porty správy jako prostředek k získání přístupu k virtuálnímu počítači. V případě úspěšného útočník může převzít kontrolu nad virtuálního počítače a vytvořit dostane do vašeho prostředí.
 
-Chcete-li omezit množství času, který je otevřený port je jedním ze způsobů, aby se snížila zranitelnost vůči útoku hrubou silou. Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Pokud právě v čase je povoleno, Security Center používá [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (NSG) pravidla, která omezit přístup k portům správy, takže nemůžou být cílem útočníků.
+Chcete-li omezit množství času, který je otevřený port je jedním ze způsobů, aby se snížila zranitelnost vůči útoku hrubou silou. Porty pro správu nemusí být otevřené nepřetržitě. Musí být otevřené pouze během připojení k virtuálnímu počítači, například kvůli provádění úloh správy nebo údržby. Pokud právě v čase je povoleno, Security Center používá [skupinu zabezpečení sítě](../virtual-network/security-overview.md#security-rules) (NSG) pravidla, která omezit přístup k portům správy, takže nemůžou být cílem útočníků.
 
 ![Jenom v případě čas][1]
 
