@@ -1,24 +1,20 @@
 ---
 title: Výběr mezi cloudovým a serverovým Azure MFA | Dokumentace Microsoftu
-description: Zvolte pro vás ideální řešení zabezpečení Multi-Factor Authentication položením otázky, co se pokoušíte zabezpečit a kde se nachází vaši uživatelé.  Pak vyberte cloud, server MFA nebo AD FS.
+description: Zvolte pro vás ideální řešení zabezpečení Multi-Factor Authentication položením otázky, co se pokoušíte zabezpečit a kde se nachází vaši uživatelé.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ec2270ea-13d7-4ebc-8a00-fa75ce6c746d
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 04fdd2df070ac347d5ef0a328da39141956c1df8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8314d72aa2cc6787d3f65dd48cd693a0ac332c0a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>Výběr vhodného řešení Azure Multi-Factor Authentication
 Vzhledem k tomu, že existuje několik typů Azure Multi-Factor Authentication (MFA), musíme odpovědět na několik otázek, aby bylo možné zjistit, která verze je pro vás nejlepší.  Jsou to tyto otázky:
@@ -47,8 +43,8 @@ Když se dále podíváme, kde se naši uživatelé nacházejí, pomůže nám t
 | --- |:---:|:---:|
 | Azure Active Directory |● | |
 | Azure AD a místní AD využívající federaci se službou AD FS |● |● |
-| Azure AD a místní AD pomocí DirSync Azure AD Sync Azure AD Connect – bez synchronizace hesla |● |● |
-| Azure AD a místní AD pomocí DirSync Azure AD Sync Azure AD Connect – se synchronizací hesla |● | |
+| Azure AD a místní AD pomocí DirSync, Azure AD Sync, Azure AD Connect – bez synchronizace hodnoty hash hesel nebo předávacího ověřování |● |● |
+| Azure AD a místní AD pomocí DirSync, Azure AD Sync, Azure AD Connect – se synchronizací hodnoty hash hesel nebo předávacím ověřováním |● | |
 | Místní služby Active Directory | |● |
 
 ## <a name="what-features-do-i-need"></a>Jaké funkce budu potřebovat?
@@ -81,4 +77,4 @@ Když teď znáte rozdíl mezi službou Azure Multi-Factor Authentication v clou
 
 <center>
 
-[![MFA v cloudu](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![MFA Server](howto-mfaserver-deploy.md)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</center>
+[![MFA v cloudu](./media/concept-mfa-whichversion/cloud2.png)](howto-mfa-getstarted.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![MFA Server](./media/concept-mfa-whichversion/server2.png)](howto-mfaserver-deploy.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </center>

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: jroth
-ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Windows a SQL Serverem 2017 na webu Azure Portal
 
@@ -72,11 +72,9 @@ V okně **Základy** zadejte následující informace:
 
 ## <a name="choose-virtual-machine-size"></a>Volba velikosti virtuálního počítače
 
-V kroku **Velikost** zvolte velikost virtuálního počítače v okně **Zvolit velikost**. V okně se po jeho otevření zobrazí doporučené velikosti počítačů na základě image, kterou jste vybrali. 
+1. V kroku **Velikost** zvolte velikost virtuálního počítače v okně **Zvolit velikost**.
 
-1. Kliknutím na **Zobrazit vše** zobrazíte všechny dostupné velikosti počítačů.
-
-1. Pro účely tohoto rychlého startu vyberte **D2S_V3**. Portál zobrazí odhadované měsíční náklady při nepřetržitém užívání (nezahrnují licenční náklady na SQL Server). Nezapomeňte, že u verze Developer Edition se žádné další licenční poplatky za SQL Server neúčtují. Konkrétnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+   Pro účely tohoto rychlého startu vyberte **D2S_V3**. Portál zobrazí odhadované měsíční náklady při nepřetržitém užívání (nezahrnují licenční náklady na SQL Server). Nezapomeňte, že u verze Developer Edition se žádné další licenční poplatky za SQL Server neúčtují. Konkrétnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
    > [!TIP]
    > Velikost počítače **D2S_V3** zajišťuje úsporu nákladů při testování. Doporučené velikosti a konfiguraci počítačů pro produkční úlohy najdete v tématu [Osvědčené postupy z hlediska výkonu pro SQL Server na virtuálních počítačích Azure](virtual-machines-windows-sql-performance.md).
@@ -85,7 +83,14 @@ V kroku **Velikost** zvolte velikost virtuálního počítače v okně **Zvolit 
 
 ## <a name="configure-optional-features"></a>Konfigurace volitelných funkcí
 
-Kliknutím na **OK** v okně **Nastavení** vyberte výchozí nastavení.
+1. Pokud se chcete připojit ke vzdálené ploše virtuálního počítače, v okně **Nastavení** v seznamu **Vybrat veřejné příchozí porty** vyberte port **RDP (3389)**.
+
+   ![Příchozí porty](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > Pokud chcete získat vzdálený přístup k SQL Serveru, můžete vybrat port **MS SQL (1433)**. To však není nezbytné, protože tato možnost je k dispozici i v kroku **Nastavení SQL Serveru**. Pokud v tomto kroku vyberete port 1433, otevře se bez ohledu na vaše výběry v kroku **Nastavení SQL Serveru**.
+
+1. Kliknutím na **OK** uložte změny a pokračujte.
 
 ## <a name="sql-server-settings"></a>Nastavení SQL Serveru
 

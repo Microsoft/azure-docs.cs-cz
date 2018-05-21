@@ -3,17 +3,17 @@ title: Použít výkonu doporučení – Azure SQL Database | Microsoft Docs
 description: Použití portálu Azure k vyhledání doporučení výkonu, které můžete optimalizovat výkon vaší databáze SQL Azure.
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Najít a použít doporučení výkonu
 
@@ -95,10 +95,14 @@ Můžete nastavit Azure SQL Database k implementaci doporučení automaticky. Do
 
 1. Na **doporučení** klikněte na tlačítko **automatické**:
    
-    ![Nastavení poradce](./media/sql-database-advisor-portal/settings.png)
+    ![Nastavení služby Advisor](./media/sql-database-advisor-portal/settings.png)
 2. Vyberte akce automatizovat:
    
-    ![Doporučené indexy](./media/sql-database-advisor-portal/automation.png)
+    ![Doporučené indexy](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> Pamatujte, že **DROP_INDEX** možnost v tuto chvíli není kompatibilní s aplikací pomocí pomocné parametry přepínání a index oddílu a nesmí být zapnut v těchto případech.
+>
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>Ručně spustit doporučené skriptu T-SQL
 Vyberte všechny doporučení a pak klikněte na tlačítko **zobrazit skript**. Spusťte tento skript databázi doporučení použít ručně.
@@ -118,7 +122,7 @@ Použití doporučeným nemusí dojít okamžitě. Portál obsahuje podrobné in
 |:--- |:--- |
 | Čekající na vyřízení |Platí doporučení, příkaz byl přijat a je naplánováno spuštění. |
 | Provádění |Doporučuje se právě používá. |
-| Ověření |Bylo úspěšně aplikováno doporučení a službu je měření výhody. |
+| Ověřování |Bylo úspěšně aplikováno doporučení a službu je měření výhody. |
 | Úspěch |Bylo úspěšně aplikováno doporučení a měří výhody. |
 | Chyba |Při zavádění doporučení se stala chyba. Může to být dočasný problém, nebo které by mohly mít schéma změnit do tabulky a skript již není platný. |
 | Probíhá vrácení |Doporučení bylo použito, ale je považována za nenáročných a automaticky zrušeny. |

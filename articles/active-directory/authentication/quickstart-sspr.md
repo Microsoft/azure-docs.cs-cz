@@ -2,25 +2,19 @@
 title: Rychlý start pro samoobslužné resetování hesla – Azure Active Directory
 description: Rychlé nasazené samoobslužného resetování hesla Azure AD
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 6add6e71c9acf6d63858ea921ec85924b4e6c60f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Rychlé nasazení samoobslužného resetování hesla Azure AD
 
@@ -33,11 +27,13 @@ Tento průvodce předpokládá, že již máte funkčního tenanta Azure Active 
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Povolení SSPR pro tenanta Azure AD
 
+> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+
 1. Ve svém stávajícím tenantovi Azure AD na portálu **Azure Portal** vyberte v části **Azure Active Directory** volbu **Resetování hesla**.
 
 2. Na stránce **Vlastnosti** v části **Samoobslužné resetování hesla povoleno** zvolte jednu z následujících možností:
    * **Nikdo:** Funkci samoobslužného resetování hesla nemůže využívat nikdo.
-   * **Vybraní:** Funkci samoobslužného resetování hesla můžou využívat jenom členové určité skupiny Azure AD, kterou zvolíte. Doporučujeme definovat skupinu uživatelů a toto nastavení použít při nasazení této funkce pro testování konceptu.
+   * **Vybraní:** Funkci samoobslužného resetování hesla můžou využívat jenom členové určité skupiny Azure AD, kterou zvolíte. Doporučujeme definovat skupinu uživatelů a toto nastavení použít při nasazení této funkce pro testování konceptu. Vnoření skupin zabezpečení se v tomto případě podporuje.
    * **Všichni:** Funkci samoobslužného resetování hesla můžou využívat všichni uživatelé s účty ve vašem tenantovi Azure AD. Toto nastavení doporučujeme použít, až budete po dokončení testování konceptu připraveni nasadit tuto funkci do celého tenanta.
 
    > [!IMPORTANT]

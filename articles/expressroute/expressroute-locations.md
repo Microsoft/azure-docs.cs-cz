@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/13/2018
+ms.date: 05/11/2018
 ms.author: pareshmu
-ms.openlocfilehash: 87fc79a525ec61f3ce15a60ee2d07efd178fb4d8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f448f1d7d669aa2c006169c53d8a239360fd16b8
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -46,7 +46,8 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Evropa** |Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |Amsterdam, Dublin, Londýn, Newport (Wales), Paříž |
 | **Asie** |Východní Asie, Jihovýchodní Asie |Hongkong, Singapur, Singapur2 |
 | **Japonsko** |Japonsko – západ, Japonsko – východ |Ósaka, Tokio |
-| **Austrálie** |Austrálie – jihovýchod, Austrálie – východ, Austrálie – střed, Austrálie – střed 2 |Melbourne, Sydney |
+| **Austrálie** |Austrálie – jihovýchod, Austrálie – východ |Melbourne, Sydney |
+| **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 | 
 | **Indie** |Indie – západ, Indie – střed, Indie – jih |Čennaj, Bombaj |
 | **Jižní Korea** |Korea – střed, Korea – jih |Busan, Soul |
 
@@ -77,7 +78,8 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporuje se |Podporuje se |Montreal, Toronto, Quebec City |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://c3ntro.com/)** |Již brzy |Již brzy |Miami |
-| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Podporuje se |Podporuje se |New York, San Antonio, Tokio, Toronto |
+| **CDC** | Podporuje se | Podporuje se | Canberra, Canberra2 |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Podporuje se |Podporuje se |Las Vegas, New York, San Antonio, Tokio, Toronto |
 | **China Telecom Global** |Podporuje se |Nepodporuje se |Hongkong |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Podporuje se |Podporuje se |Dallas, Montreal, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn, Paříž, Tokio |
@@ -94,11 +96,11 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Internet Initiative Japan Inc. – IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |Podporuje se |Podporuje se |Ósaka, Tokio |
 | **Internet Solutions – Cloud Connect** |Podporuje se |Podporuje se |Amsterdam, Londýn |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn, Paříž |
-| **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Podporuje se |Podporuje se |Toronto
+| **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Podporuje se |Podporuje se | Silicon Valley, Toronto |
 | **Jisc** |Podporuje se |Podporuje se |Londýn |
 | **KINX** |Podporuje se |Podporuje se |Soul |
 | **[KPN](http://www.kpn.com/cloudconnect)** | Podporuje se | Podporuje se | Amsterdam | 
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Las Vegas, Londýn, Newport, Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Londýn, Newport, Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
 | **LG CNS** |Podporuje se |Podporuje se |Busan, Soul |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Denver, Dublin, Hongkong, Las Vegas, Londýn, Los Angeles, Melbourne, Miami, New York, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Toronto, Washington DC |
 | **MTN** |Podporuje se |Podporuje se |Londýn |
@@ -120,8 +122,9 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Podporuje se |Podporuje se |Amsterdam, Sao Paulo |
 | **[Telehouse – KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |Podporuje se |Podporuje se |Londýn |
-| **Telmex Uninet**| Již brzy | Již brzy | Dallas+ |
 | **Telenor** |Podporuje se |Podporuje se |Amsterdam, Londýn |
+| **Telia Carrier** | Podporuje se | Podporuje se |Londýn, Washington DC |
+| **Telmex Uninet**| Již brzy | Již brzy | Dallas+ |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporuje se |Podporuje se |Melbourne, Sydney |
 | **[Telus](http://www.telus.com)** |Podporuje se |Podporuje se |Montreal, Toronto |
 | **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |Podporuje se |Podporuje se |Sao Paulo |
@@ -171,6 +174,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
   * [IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](http://www.nextdc.com/)
+  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
   * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
 * Rozšířil váš poskytovatel připojení vaši síť ke zvolenému umístění partnerského vztahu?
   * Ujistěte se, že poskytovatel připojení rozšiřuje vaše připojení vysoce dostupným způsobem tak, aby neexistovaly žádné jediné body selhání.
@@ -201,6 +205,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[Fastweb S.p.A](http://www.fastweb.it/grandi-aziende/connessione-voce-e-wifi/scheda-prodotto/rete-privata-virtuale/)** | Equinix | Amsterdam |
 | **[Gtt Communications Inc](https://www.gtt.net/wp-content/uploads/2017/04/EtherCloud-Data-Sheet.pdf)** |Equinix | Washington DC |
 | **[HSO](http://www.hso.co.uk/products/cloud-direct)** |Equinix | Londýn, Slough |
+| **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
 | **LGA Telecom** |Equinix |Singapur|
 | **[Lightower](http://www.lightower.com/network-solutions/cloud-connect/#microsoft-azure)** |Equinix | Chicago, New York, Washington DC |
 | **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |Hongkong |
