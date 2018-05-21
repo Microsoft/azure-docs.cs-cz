@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 15cbfb9babe38ba6acaf4312735ab839af3f2d99
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/20/2018
+---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Nejčastější dotazy ohledně migrace z modelu Classic na Azure Resource Manager
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
@@ -32,14 +48,24 @@ Ne. Nedávno jsme povolili [přesun okruhů ExpressRoute z modelu nasazení Clas
 
 Během migrace se prostředky transformují z modelu Classic na Resource Manager. Proto doporučujeme naplánovat aktualizace zásad řízení přístupu na základě role, které je třeba provést, až po migraci.
 
-## <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Svoje klasické virtuální počítače jsem zálohoval do trezoru služby Backup. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
+## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Mohu zálohovat Moje klasické virtuální počítače v trezoru. Můžu migrovat svoje virtuální počítače z klasického režimu do režimu Resource Manageru a chránit je pomocí trezoru služby Recovery Services?
 
-<a name="vault">Classic</a> body obnovení virtuálního počítače v trezoru záloh není migrace automaticky do trezoru služeb zotavení při přesunutí virtuálního počítače z klasického do režimu Resource Manager. Při převedení záloh virtuálních počítačů použijte tento postup:
+<a name="vault">Když</a> přesunout virtuální počítač z klasického do režimu Resource Manager, nebude zálohy pořízené před migrací migrovat do nově migrovaných virtuálních počítačů Resource Manager. Ale pokud chcete zachovat záloh classic virtuálních počítačů, postupujte podle těchto kroků před migrací. 
 
-1. V trezoru služby Backup přejděte na kartu **Chráněné položky** a vyberte virtuální počítač. Klikněte na [Zastavit ochranu](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines). Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
-2. Odstraňte z virtuálního počítače zálohu/rozšíření snímků.
-3. Proveďte migraci virtuálního počítače z klasického režimu do režimu Resource Manageru. Ověřte, že se do režimu Resource Manager migruje také úložiště a informace o síti odpovídající tomuto virtuálnímu počítači.
-4. Vytvořte trezor služby Recovery Services a ke konfiguraci zálohování migrovaného virtuálního počítače použijte akci **Zálohování** v horní části řídicího panelu trezoru. Podrobnosti o zálohování virtuálních počítačů do trezoru služby Recovery Services naleznete v tématu [První pohled: Ochrana virtuálních počítačů s trezorem Recovery Services](../articles/backup/backup-azure-vms-first-look-arm.md).
+1. Přejděte v trezoru služeb zotavení **chráněné položky** a vyberte virtuální počítač. 
+2. Klikněte na [Zastavit ochranu](../articles/backup/backup-azure-manage-vms.md#stop-protecting-virtual-machines). Políčko *Delete associated backup data* (Odstranit přidružená data záloh) ponechte **nezaškrtnuté**.
+
+> [!NOTE]
+> Vám bude účtována náklady na zálohování instance dokud zachovat data. Záložní kopie se vyřazují podle rozsahu uchování. Dokud explicitně odstranit záložní data však vždy uchovávat poslední záložní kopii. Zkontrolujte váš rozsah uchování virtuálního počítače a aktivační události "Odstranit zálohování dat" chráněné položky v trezoru, jakmile je rozsah uchování přes by měl. 
+>
+>
+
+K migraci virtuálního počítače do režimu Resource Manager 
+
+1. Odstraňte z virtuálního počítače zálohu/rozšíření snímků.
+2. Proveďte migraci virtuálního počítače z klasického režimu do režimu Resource Manageru. Ověřte, že se do režimu Resource Manager migruje také úložiště a informace o síti odpovídající tomuto virtuálnímu počítači.
+
+Kromě toho, pokud chcete zálohovat migrovaných virtuálních počítačů, přejděte do okna Správa virtuálního počítače do [povolení zálohování](../articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm).
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>Je možné ověřit, jestli jsou prostředky nebo předplatné schopné migrace? 
 

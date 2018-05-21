@@ -3,19 +3,19 @@ title: Řešení chyb odstranění prostředků úložiště v nasazení Azure R
 description: Řešení potíží při odstraňování prostředků úložiště obsahující připojit virtuální pevné disky.
 keywords: SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo
 services: virtual-machines-windows
-author: tamram
-manager: jeconnoc
+author: genlin
+manager: cshepard
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/01/2018
-ms.author: tamram
-ms.openlocfilehash: 21ae23fafa3a4a7787bae5424babf70ef928c8da
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: genli
+ms.openlocfilehash: ba2876919540d4d6c0853ca1e8bf0d88855b951b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Řešení chyb odstranění prostředků úložiště
 

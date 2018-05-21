@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e09bdc336821720c970f8b8daf13f52b0a69ed0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -215,7 +215,7 @@ Pomocí názvu webu SCM se dostanete do konzoly Kudu na portálu Azure s názvem
 
 Ve víceklientské službě App Service a externí službě ASE se mezi portálem Azure a konzolou Kudu používá jednotné přihlašování. Pro službu ASE s interním nástrojem pro vyrovnávání zatížení je ale k přihlášení ke konzole Kudu potřeba použít vaše přihlašovací údaje pro publikování.
 
-Se službou ASE s interním nástrojem pro vyrovnávání zatížení nefungují internetové systémy kontinuální integrace, jako je GitHub nebo Visual Studio Team Services, protože koncový bod pro publikování nemá přístup k internetu. Místo toho je potřeba použít systém kontinuální integrace, který používá model na vyžádání, jako je Dropbox.
+Internetové systémy kontinuální integrace (CI), například GitHub a Visual Studio Team Services, budou nadále fungovat se službou ASE s interním nástrojem pro vyrovnávání zatížení, pokud je agent sestavení přístupný z internetu a nachází se ve stejné síti jako služba ASE s interním nástrojem pro vyrovnávání zatížení. Takže pokud se používá Visual Studio Team Services a agent sestavení je vytvořený ve stejné virtuální síti jako služba ASE s interním nástrojem pro vyrovnávání zatížení (může být i v jiné podsíti), bude si moct vyžádat kód z VSTS git a nasadit ho do služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud si nechcete vytvořit vlastního agenta sestavení, budete muset použít systém kontinuální integrace (CI), který používá model vyžádání, například Dropbox.
 
 Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Tato doména se objevuje v profilu publikování aplikace a v okně portálu aplikace (**Přehled** > **Essentials** a také **Vlastnosti**). Pokud máte službu ASE s interním nástrojem pro vyrovnávání zatížení se subdoménou *contoso.net* a aplikaci s názvem *test*, použijte adresu *mytest.contoso.net* pro službu FTP a adresu *mytest.scm.contoso.net* pro nasazení webu.
 
@@ -244,7 +244,7 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../app-service-web-overview.md

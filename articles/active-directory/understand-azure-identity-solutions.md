@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 53d34f373dc31befe75072733976b2e4126ff2b0
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: acd69b6ea4d7a1d5c13cd0172f15b93eac96058e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="understand-azure-identity-solutions"></a>Princip řešení identit Azure
 Microsoft Azure Active Directory (Azure AD) je identit a přístupu cloudové řešení pro správu poskytující adresářových služeb, zásad správného řízení identity a správa přístupu aplikací. Azure AD rychle [umožňuje jednotné přihlašování (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) na hodnotu 1 000 je předem integrovaných aplikací komerční a vlastní v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Mnoho z těchto aplikací, které pravděpodobně již používáte například Office 365, Salesforce.com, pole, ServiceNow a během pracovního dne.
@@ -34,7 +34,7 @@ Než v rámci řešení identit Azure, můžete rozhodnout pro vaši organizaci,
 
 |Termín vědět| Popis|
 |-----|-----|
-|předplatné Azure |Odběry se používají k platbě za cloudové služby Azure a jsou obvykle propojit s platební karty. Může mít několik odběrů, ale může být složité ke sdílení prostředků mezi předplatnými.|
+|Předplatné Azure |Odběry se používají k platbě za cloudové služby Azure a jsou obvykle propojit s platební karty. Může mít několik odběrů, ale může být složité ke sdílení prostředků mezi předplatnými.|
 |Klientovi Azure | Klient služby Azure AD je typický pro potřeby jedné organizace. Je vyhrazené důvěryhodné instanci Azure AD, která se automaticky vytvoří při organizace zaregistruje k odběru služby Microsoft cloudu, například Azure, Intune nebo Office 365. Klienti může získat přístup ke službám v vyhrazené prostředí (jednoho klienta) nebo v prostředí sdílené s dalšími organizacemi, (víceklientská).|
 |Adresář Azure AD | Každý klient Azure má vyhrazený, důvěryhodné Azure AD adresář, který obsahuje uživatele, skupiny a aplikace klienta. Slouží k provádění identity a přístup k funkce správy pro klientské prostředky. Protože jedinečný adresář Azure AD je automaticky zřizovat představují organizaci při registraci v cloudové službě Microsoftu jako Azure, Microsoft Intune nebo Office 365, uvidíte někdy podmínky *klienta*,  *Azure AD*, a *adresář Azure AD* zaměnitelné. |
 |Vlastní doména | Při první registraci k odběru služby Microsoft cloudu, vašeho klienta (organizace) používá *. onmicrosoft.com* název domény. Avšak většina organizací má jeden nebo více názvů domén, které se používají k obchodní a této koncoví uživatelé používat pro přístup k prostředkům společnosti. Do služby Azure AD můžete přidat vlastní název domény, tak, že je název domény pro uživatele, jako například *alice@contoso.com* místo *alice@contoso.onmicrosoft.com*. |
@@ -111,7 +111,7 @@ Jsme spousta skvělé prostředky online můžete zjistit všechno o Azure AD. T
 * [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md)
 * [Začínáme s generováním sestav Azure AD](active-directory-reporting-getting-started.md)
 * [Spravovat hesla k odkudkoli.](active-directory-passwords-update-your-own-password.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](active-directory-saas-app-provisioning.md)
 * [Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](manage-apps/application-proxy.md)
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)

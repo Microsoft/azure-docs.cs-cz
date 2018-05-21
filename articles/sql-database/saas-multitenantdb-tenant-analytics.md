@@ -4,18 +4,18 @@ description: Mezi klienta analytické dotazy pomocí dat extrahovaných z více 
 keywords: kurz SQL
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: anjangsh
 ms.reviewer: billgib, genemi
-ms.openlocfilehash: 6ce67afc2959580699798dd70417ca235e743552
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c0ffbdfb9110860a6a9083423b91a571671c3308
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics mezi klienta pomocí extrahovaná data
 

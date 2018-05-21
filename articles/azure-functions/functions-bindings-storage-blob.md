@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 1d1cdee7373b949456032aff3c808cc233aaa1cc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob storage vazby pro Azure Functions
 
@@ -773,7 +773,7 @@ V jazyce C# a C# skript můžete vázat na následující typy k zápisu objekt�
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> vyžaduje "v" vazba `direction` v *function.json* nebo `FileAccess.Read` v knihovně tříd jazyka C#.
+<sup>1</sup> vyžaduje "v" vazba `direction` v *function.json* nebo `FileAccess.Read` v knihovně tříd jazyka C#. Můžete však použít objekt kontejneru, který poskytuje modul runtime k zápisu operace, jako je například nahrávání objektů BLOB do kontejneru.
 
 <sup>2</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
 

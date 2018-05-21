@@ -1,4 +1,19 @@
-
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: cfe675ca269a69c7c2bfa67638acd0afbcd1c8ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/20/2018
+---
 Každý koncový bod má *veřejný port* a *privátní port*:
 
 * Veřejný port se používá nástrojem pro vyrovnávání zatížení Azure pro naslouchání pro příchozí provoz na virtuální počítač z Internetu.
@@ -6,7 +21,7 @@ Každý koncový bod má *veřejný port* a *privátní port*:
 
 Výchozí hodnoty pro protokol IP a porty TCP nebo UDP pro dobře známé sítě, které jsou určeny protokoly, když vytvoříte koncové body pomocí portálu Azure. Pro vlastní koncové body musíte zadat správný protokol IP (TCP nebo UDP) a veřejné a privátní porty. Pokud chcete distribuovat náhodně příchozí provoz napříč více virtuálních počítačů, budete muset vytvořit sadu Vyrovnávání zatížení sítě skládající se z více koncových bodů.
 
-Po vytvoření koncového bodu, můžete použít seznam řízení přístupu (ACL) můžete definovat pravidla povolení nebo odmítnutí příchozí provoz veřejný port, na základě jeho IP adresy zdrojového koncového bodu. Ale pokud virtuální počítač je ve virtuální síť Azure, je vhodnější použít skupiny zabezpečení sítě. Podrobnosti najdete v tématu [o skupinách zabezpečení sítě](../articles/virtual-network/virtual-networks-nsg.md).
+Po vytvoření koncového bodu, můžete použít seznam řízení přístupu (ACL) můžete definovat pravidla povolení nebo odmítnutí příchozí provoz veřejný port, na základě jeho IP adresy zdrojového koncového bodu. Ale pokud virtuální počítač je ve virtuální síť Azure, je vhodnější použít skupiny zabezpečení sítě. Podrobnosti najdete v tématu [o skupinách zabezpečení sítě](../articles/virtual-network/security-overview.md).
 
 > [!NOTE]
 > Konfigurace brány firewall pro virtuální počítače Azure se provádí automaticky pro porty, které jsou přidružené k připojení k vzdálené koncové body, které Azure nastaví automaticky. Pro porty určené pro všechny ostatní koncové body se automaticky provádí žádná konfigurace brány firewall virtuálního počítače. Když vytvoříte koncový bod virtuálního počítače, musíte zajistit, že brána firewall virtuálního počítače také umožňuje přenos pro protokol a privátní port odpovídající konfiguraci koncového bodu. Chcete-li nakonfigurovat bránu firewall, naleznete v dokumentaci nebo online nápověda pro operační systém spuštěný na virtuálním počítači.
@@ -39,7 +54,7 @@ K definování sady počítačů, které mohou odesílat provoz, můžete omezit
 >
 >
 
-Pokud virtuální počítač je ve virtuální síť Azure, doporučujeme skupin zabezpečení sítě místo seznamy ACL. Podrobnosti najdete v tématu [o skupinách zabezpečení sítě](../articles/virtual-network/virtual-networks-nsg.md).
+Pokud virtuální počítač je ve virtuální síť Azure, doporučujeme skupin zabezpečení sítě místo seznamy ACL. Podrobnosti najdete v tématu [o skupinách zabezpečení sítě](../articles/virtual-network/security-overview.md).
 
 1. Pokud jste zatím žádný nevytvořili, přihlášený k portálu Azure.
 2. Klikněte na tlačítko **virtuální počítače**a potom klikněte na název virtuálního počítače, který chcete nakonfigurovat.
@@ -47,7 +62,7 @@ Pokud virtuální počítač je ve virtuální síť Azure, doporučujeme skupin
 
    ![Zadejte podrobnosti seznamu ACL](./media/virtual-machines-common-classic-setup-endpoints/aclpreentry.png)
 
-4. Řádky v seznamu použijte k přidání, odstranění, nebo upravit pravidla pro seznam ACL a změnit jejich pořadí. **Vzdálené podsíti** hodnota je rozsah IP adres pro příchozí provoz z Internetu pomocí nástroje pro vyrovnávání zatížení Azure, která povolí nebo zakážou provoz na základě jeho zdrojové IP adresy. Nezapomeňte zadat rozsah IP adres ve formátu CIDR, také známé jako formát předponu adresy. Příkladem je `10.1.0.0/8`.
+4. Řádky v seznamu použijte k přidání, odstranění, nebo upravit pravidla pro seznam ACL a změnit jejich pořadí. **Vzdálené podsíti** hodnota je rozsah IP adres pro příchozí provoz z Internetu pomocí nástroje pro vyrovnávání zatížení Azure, která povolí nebo zakážou provoz na základě jeho zdrojové IP adresy. Nezapomeňte zadat rozsah IP adres ve formátu CIDR, také známé jako formát předponu adresy. Příklad: `10.1.0.0/8`.
 
  ![Nová položka seznamu ACL](./media/virtual-machines-common-classic-setup-endpoints/newaclentry.png)
 

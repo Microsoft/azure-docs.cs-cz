@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 66ef20616df77dc809a79e516a53133a80759dc7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-an-app-service-environment"></a>Použití služby App Service environment #
 
@@ -58,7 +58,7 @@ K vytvoření webové aplikace v App Service Environment:
 
 4. Zadejte název pro novou skupinu prostředků, nebo vyberte **použít existující** a vyberte z rozevíracího seznamu.
 
-5. Vyberte operačním systému. 
+5. Vyberte váš operační systém. 
 
     * Hostování Linux aplikace v App Service Environment je nová funkce preview, takže doporučujeme Linux aplikace nepřidávejte do app Service Environment právě probíhající úlohy v produkčním prostředí. 
     * Přidání Linux aplikace do app Service Environment znamená, že App Service Environment bude také v režimu preview. 
@@ -107,7 +107,7 @@ Tento počet elementů front end musí být víc než dost pro většinu scéná
 
 Koncový bod HTTP nebo HTTPS pro App Service Environment jsou front-endové prostředky. S konfigurací front-end výchozí je využití paměti na front-endu konzistentně přibližně 60 procent. Na front-end nejsou spouštěny úloh zákazníka. Klíčovým faktorem pro front-end s ohledem na škálování je procesor, který doprovází především komunikaci přes protokol HTTPS.
 
-## <a name="app-access"></a>Přístup k aplikaci ##
+## <a name="app-access"></a>Přístup k aplikacím ##
 
 Externí App Service Environment se liší od víceklientské služby App Service domény, který se používá při vytváření aplikace. Obsahuje název App Service Environment. Další informace o tom, jak vytvořit externí App Service Environment najdete v tématu [vytvoření služby App Service environment][MakeExternalASE]. Název domény externího App Service Environment vypadá jako *.&lt; asename&gt;. p.azurewebsites.net*. Například pokud je název vaší App Service Environment _externí App Service Environment_ a hostování aplikace volá _contoso_ v tom, že App Service Environment, dostanete se na následující adresy URL:
 
@@ -177,7 +177,7 @@ Chcete-li odstranit App Service Environment:
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml

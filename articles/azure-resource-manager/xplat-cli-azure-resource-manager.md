@@ -1,23 +1,23 @@
 ---
-title: "Správa prostředků pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Použití rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure a skupiny"
-editor: 
+title: Správa prostředků pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Použití rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure a skupiny
+editor: ''
 manager: timlt
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: c68f2a8b6e18dc2d51d8bbb5cd05bc037dc2fadb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90dd1b6b7e65178f6b339e4ac0bb781fb74a25a6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Použití rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků
 
@@ -81,7 +81,7 @@ az account show
 
 Před nasazením žádné prostředky k vašemu předplatnému, musíte vytvořit skupinu prostředků, která bude obsahovat prostředky.
 
-Chcete-li vytvořit skupinu prostředků, použijte **vytvořit skupinu az** příkaz. Příkaz používá **název** parametr zadejte název pro skupinu prostředků a **umístění** parametr k určení jeho umístění.
+Skupinu prostředků vytvoříte pomocí příkazu **az group create**. Příkaz používá **název** parametr zadejte název pro skupinu prostředků a **umístění** parametr k určení jeho umístění.
 
 ```azurecli-interactive
 az group create --name TestRG1 --location "South Central US"
@@ -223,7 +223,7 @@ Můžete odebrat prostředek nebo skupina prostředků. Když odeberete skupinu 
 
 Pro oba příkazy zobrazí se výzva k potvrzení, že chcete odebrat prostředek nebo skupina prostředků.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o vytváření šablon Resource Manageru, najdete v části [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Další informace o nasazení šablony najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy-cli.md).
 * Existující prostředky můžete přesunout do nové skupiny prostředků. Příklady najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
