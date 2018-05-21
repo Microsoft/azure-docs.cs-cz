@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Ochrana proti útoku DDoS Azure: Osvědčené postupy a referenční architektury
 
@@ -86,8 +86,8 @@ Pro [Azure App Service](../app-service/app-service-value-prop-what-is.md), vyber
 
 Rada za důslednou je řízení rizik pomocí různých Obranným strategie. Vrstvení obrany zabezpečení v aplikaci snižuje pravděpodobnost úspěšného útoku. Doporučujeme, abyste implementovat zabezpečené návrhy pro vaše aplikace pomocí integrované funkce platformy Azure.
 
-Například zvyšuje riziko útoku s velikostí (*surface area*) aplikace. Můžete snížit plochy s využitím povolených uzavřeny zveřejněné adresní prostor IP adres a naslouchání portům, které nejsou potřebné na služby Vyrovnávání zatížení ([Vyrovnávání zatížení Azure](../load-balancer/load-balancer-get-started-internet-portal.md) a [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Skupin zabezpečení (Nsg) sítě](../virtual-network/virtual-networks-nsg.md) jsou jiný způsob, jak omezit možnost útoku.
-Můžete použít [služby značky](/virtual-network/security-overview.md) a [skupin zabezpečení aplikací](/virtual-network/security-overview.md) minimalizovat složitost pro vytváření pravidel zabezpečení a konfigurace zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
+Například zvyšuje riziko útoku s velikostí (*surface area*) aplikace. Můžete snížit plochy s využitím povolených uzavřeny zveřejněné adresní prostor IP adres a naslouchání portům, které nejsou potřebné na služby Vyrovnávání zatížení ([Vyrovnávání zatížení Azure](../load-balancer/load-balancer-get-started-internet-portal.md) a [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Skupin zabezpečení (Nsg) sítě](../virtual-network/security-overview.md) jsou jiný způsob, jak omezit možnost útoku.
+Můžete použít [služby značky](/virtual-network/security-overview.md#service-tags) a [skupin zabezpečení aplikací](/virtual-network/security-overview.md#application-security-groups) minimalizovat složitost pro vytváření pravidel zabezpečení a konfigurace zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
 
 Měli byste nasadit služby Azure v [virtuální sítě](../virtual-network/virtual-networks-overview.md) kdykoli je to možné. Tento postup umožňuje prostředky služby pro komunikaci prostřednictvím privátních IP adres. Služba Azure provoz z virtuální sítě používá veřejné IP adresy jako zdrojové IP adresy ve výchozím nastavení. Pomocí [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md) dojde k přepnutí provoz služby při jejich získáváte přístup k službě Azure z virtuální sítě používá privátní adresy virtuální sítě zdrojové IP adresy.
 
@@ -262,7 +262,7 @@ N-vrstvou architekturu je možné implementovat mnoha způsoby. Následující d
 
 V této architektuře DDoS ochrany standardní je povoleno ve virtuální síti. Všechny veřejné IP adresy ve virtuální síti získat ochrana proti útoku DDoS pro vrstvy 3 a 4. Pro ochranu vrstvy 7 nasaďte Aplikační brána v SKU firewall webových aplikací. Další informace o této referenční architektuře, najdete v části [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
 
-#### <a name="paas-web-application"></a>PaaS webové aplikace
+#### <a name="paas-web-application"></a>Webová aplikace PaaS
 
 Tuto referenční architekturu ukazuje spouštění aplikací Azure App Service v jedné oblasti. Tato architektura zobrazuje sadu osvědčené postupy pro webové aplikace, která používá [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 Pohotovostní oblast je nastavený pro scénáře převzetí služeb při selhání.

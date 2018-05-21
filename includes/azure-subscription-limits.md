@@ -5,14 +5,14 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 03/30/2018
+ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 99766ca4cc9d77927030f81cff6bb9c009874f89
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.lasthandoff: 04/05/2018
 | [Účty úložiště](../articles/storage/common/storage-create-storage-account.md) na oblast na předplatné<sup>2</sup> |200 |250 |
 | [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |20 |200 |
 | [Místní sítě](http://msdn.microsoft.com/library/jj157100.aspx) na předplatné |10 |500 |
-| Servery SQL Database na předplatné |6 |150 |
+| Servery SQL Database na předplatné |6 |200 |
 | Servery DNS na předplatné |9 |100 |
 | Vyhrazené IP adresy na předplatné |20 |100 |
 | Hostovaná služba certifikáty na předplatné |199 |199 |

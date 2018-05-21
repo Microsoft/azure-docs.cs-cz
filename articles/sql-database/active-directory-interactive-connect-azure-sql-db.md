@@ -3,18 +3,18 @@ title: ActiveDirectoryInteractive připojuje k SQL | Microsoft Docs
 description: Příklad kódu C#, s vysvětlením, pro připojení k Azure SQL Database pomocí SqlAuthenticationMethod.ActiveDirectoryInteractive režimu.
 services: sql-database
 author: GithubMirek
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: active directory
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 163b55e0f1727cc2ba9e3ee84eb58fe29f7a005d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6489fb5630e1990c942b461859650e2e469cda73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení k databázi SQL Azure
 

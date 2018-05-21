@@ -10,18 +10,18 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: c18d4d175bace79fefedc09fb887e707b8c066d9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 Databáze SQL Azure můžete emitování metriky a diagnostické protokoly pro snazší monitorování. SQL Database můžete nakonfigurovat pro ukládání využití prostředků, pracovních procesů, relací a možností připojení do jednoho z těchto prostředků Azure:
 
 * **Úložiště Azure**: používá k archivaci obrovské objemy telemetrie malé cenu.
 * **Azure Event Hubs**: používá pro integraci telemetrie databáze SQL se vlastní řešení monitorování nebo aktivní kanály.
-* **Azure Log Analytics**: používá pro řešení monitorování v se na pole s vytváření sestav, výstrahy a zmírnění možnosti. Toto je funkce [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
+* **Azure Log Analytics**: používá pro řešení monitorování v se na pole s vytváření sestav, výstrahy a zmírnění možnosti. Tato funkce je součástí [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md).
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -155,7 +155,7 @@ Tyto parametry povolení více možností výstupu můžete kombinovat.
 
 ### <a name="rest-api"></a>REST API
 
-Přečtěte si informace o tom, jak [změnit nastavení diagnostiky pomocí rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/dn931931.aspx). 
+Přečtěte si informace o tom, jak [změnit nastavení diagnostiky pomocí rozhraní REST API Azure monitorování](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). 
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 
@@ -275,7 +275,7 @@ Zjistěte, jak [stáhnout metriky a diagnostické protokoly z úložiště](../s
 |Typ|Vždy: AzureDiagnostics|
 |ResourceProvider|Název zprostředkovatele prostředků. Vždy: MICROSOFT. SQL|
 |Kategorie|Název kategorie. Vždy: QueryStoreRuntimeStatistics|
-|OperationName|Název operace. Vždy: QueryStoreRuntimeStatisticsEvent|
+|OperationName|Název operace Vždy: QueryStoreRuntimeStatisticsEvent|
 |Prostředek|Název prostředku.|
 |ResourceType|Název typu prostředku. Vždy: Servery nebo databází|
 |SubscriptionId|Předplatné identifikátor GUID, které databáze patří.|
@@ -326,8 +326,8 @@ Další informace o [úložiště dotazů modulu runtime statistiky dat](https:/
 |Typ|Vždy: AzureDiagnostics|
 |ResourceProvider|Název zprostředkovatele prostředků. Vždy: MICROSOFT. SQL|
 |Kategorie|Název kategorie. Vždy: QueryStoreWaitStatistics|
-|OperationName|Název operace. Vždy: QueryStoreWaitStatisticsEvent|
-|Prostředek|Název prostředku|
+|OperationName|Název operace Vždy: QueryStoreWaitStatisticsEvent|
+|Prostředek|Název zdroje|
 |ResourceType|Název typu prostředku. Vždy: Servery nebo databází|
 |SubscriptionId|Předplatné identifikátor GUID, které databáze patří.|
 |ResourceGroup|Název skupiny prostředků, které databáze patří.|
@@ -364,8 +364,8 @@ Další informace o [úložiště dotazů počkejte statistiky dat](https://docs
 |Typ|Vždy: AzureDiagnostics|
 |ResourceProvider|Název zprostředkovatele prostředků. Vždy: MICROSOFT. SQL|
 |Kategorie|Název kategorie. Vždy: chyby|
-|OperationName|Název operace. Vždy: ErrorEvent|
-|Prostředek|Název prostředku|
+|OperationName|Název operace Vždy: ErrorEvent|
+|Prostředek|Název zdroje|
 |ResourceType|Název typu prostředku. Vždy: Servery nebo databází|
 |SubscriptionId|Předplatné identifikátor GUID, které databáze patří.|
 |ResourceGroup|Název skupiny prostředků, které databáze patří.|
@@ -376,7 +376,7 @@ Další informace o [úložiště dotazů počkejte statistiky dat](https://docs
 |Zpráva|Chybová zpráva v prostém textu.|
 |user_defined_b|Je bit chyby definované uživatelem.|
 |error_number_d|Kód chyby.|
-|Závažnost|Závažnost chyby.|
+|Severity|Závažnost chyby.|
 |state_d|Stav chyby.|
 |query_hash_s|Hodnota hash dotazu se nezdařilo dotazu, pokud je k dispozici.|
 |query_plan_hash_s|Hodnota hash plán dotazu se nezdařilo dotazu, pokud je k dispozici.|
@@ -393,8 +393,8 @@ Další informace o [chybových zpráv systému SQL Server](https://msdn.microso
 |Typ|Vždy: AzureDiagnostics|
 |ResourceProvider|Název zprostředkovatele prostředků. Vždy: MICROSOFT. SQL|
 |Kategorie|Název kategorie. Vždy: DatabaseWaitStatistics|
-|OperationName|Název operace. Vždy: DatabaseWaitStatisticsEvent|
-|Prostředek|Název prostředku|
+|OperationName|Název operace Vždy: DatabaseWaitStatisticsEvent|
+|Prostředek|Název zdroje|
 |ResourceType|Název typu prostředku. Vždy: Servery nebo databází|
 |SubscriptionId|Předplatné identifikátor GUID, které databáze patří.|
 |ResourceGroup|Název skupiny prostředků, které databáze patří.|
@@ -422,8 +422,8 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |Typ|Vždy: AzureDiagnostics|
 |ResourceProvider|Název zprostředkovatele prostředků. Vždy: MICROSOFT. SQL|
 |Kategorie|Název kategorie. Vždy: vypršení časových limitů|
-|OperationName|Název operace. Vždy: TimeoutEvent|
-|Prostředek|Název prostředku|
+|OperationName|Název operace Vždy: TimeoutEvent|
+|Prostředek|Název zdroje|
 |ResourceType|Název typu prostředku. Vždy: Servery nebo databází|
 |SubscriptionId|Předplatné identifikátor GUID, které databáze patří.|
 |ResourceGroup|Název skupiny prostředků, které databáze patří.|
@@ -445,8 +445,8 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |Typ|Vždy: AzureDiagnostics|
 |ResourceProvider|Název zprostředkovatele prostředků. Vždy: MICROSOFT. SQL|
 |Kategorie|Název kategorie. Vždy: bloky|
-|OperationName|Název operace. Vždy: BlockEvent|
-|Prostředek|Název prostředku|
+|OperationName|Název operace Vždy: BlockEvent|
+|Prostředek|Název zdroje|
 |ResourceType|Název typu prostředku. Vždy: Servery nebo databází|
 |SubscriptionId|Předplatné identifikátor GUID, které databáze patří.|
 |ResourceGroup|Název skupiny prostředků, které databáze patří.|

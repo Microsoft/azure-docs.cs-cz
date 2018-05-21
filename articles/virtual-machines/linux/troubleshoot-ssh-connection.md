@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 77effb7892e6d59087d07109958f4682886f12db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e5d9fb76f66ffb98addab24e9e8bf8b82a82af7a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojení SSH pro virtuální počítač Azure Linux který selže, chyby, nebo bylo odmítnuto
 Existují různé příčiny, že dojde k chybám Secure Shell (SSH), selhání připojení SSH, nebo SSH bylo odmítnuto, při pokusu o připojení k virtuálnímu počítači (VM) Linux. Tento článek pomůže najít a opravit problémy. Portál Azure, rozhraní příkazového řádku Azure nebo rozšíření pro přístup virtuálních počítačů pro Linux můžete použít k řešení problémů s připojením.
@@ -34,7 +34,7 @@ Po dokončení každého kroku řešení potíží pokuste o připojení k virtu
 
 1. Obnovte konfiguraci SSH.
 2. Resetovat přihlašovací údaje pro uživatele.
-3. Ověřte [skupinu zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md) pravidla povolit provoz protokolu SSH.
+3. Ověřte [skupinu zabezpečení sítě](../../virtual-network/security-overview.md) pravidla povolit provoz protokolu SSH.
    * Zkontrolujte, zda pravidlo skupinu zabezpečení sítě pro povolení komunikace SSH (ve výchozím nastavení je to TCP port 22).
    * Nemůžete použít přesměrování portu / mapování bez použití pro vyrovnávání zatížení Azure.
 4. Zkontrolujte [stavu prostředků virtuálních počítačů](../../resource-health/resource-health-overview.md). 

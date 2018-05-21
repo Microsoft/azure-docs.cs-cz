@@ -1,12 +1,12 @@
 ---
-title: "Podrobné řešení potíží SSH pro virtuální počítač Azure | Microsoft Docs"
-description: "Podrobnější SSH řešení potíží s kroky pro připojení k virtuální počítač Azure"
-keywords: "SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo"
+title: Podrobné řešení potíží SSH pro virtuální počítač Azure | Microsoft Docs
+description: Podrobnější SSH řešení potíží s kroky pro připojení k virtuální počítač Azure
+keywords: SSH připojení odmítnuto, ssh chyby, azure ssh, připojení SSH se nezdařilo
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 88f3ca3202359f9f45f5b9a5054ab95b40558520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobné SSH řešení potíží s kroky pro připojení k virtuální počítač s Linuxem v Azure
 Existuje mnoho možných příčin, které použije klient SSH nemusí být možné kontaktovat službu SSH ve virtuálním počítači. Pokud jste provedli prostřednictvím Čím více [obecné SSH při řešení potíží](troubleshoot-ssh-connection.md), budete muset dále řešit potíže s připojením. Tento článek vás provede podrobný postup řešení potíží k určení, kde se nedaří připojení SSH a jak je vyřešit.
@@ -39,7 +39,7 @@ Následující kroky umožňují izolovat příčinu selhání a zjistěte řeš
 
 2. Vyberte **nastavení** prozkoumat koncových bodů, IP adres, skupiny zabezpečení sítě a další nastavení.
 
-   Virtuální počítač by měl mít koncový bod definované pro SSH provoz, který si můžete prohlédnout v **koncové body** nebo  **[skupinu zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md)**. Koncové body ve virtuálních počítačích, které byly vytvořeny pomocí Resource Manageru se ukládají na skupinu zabezpečení sítě. Ověřte, zda pravidla platí pro skupinu zabezpečení sítě a se odkazuje v podsíti.
+   Virtuální počítač by měl mít koncový bod definované pro SSH provoz, který si můžete prohlédnout v **koncové body** nebo  **[skupinu zabezpečení sítě](../../virtual-network/security-overview.md)**. Koncové body ve virtuálních počítačích, které byly vytvořeny pomocí Resource Manageru se ukládají na skupinu zabezpečení sítě. Ověřte, zda pravidla platí pro skupinu zabezpečení sítě a se odkazuje v podsíti.
 
 Chcete-li ověřit připojení k síti, kontrolu nakonfigurované koncové body a zjistěte, zda se může připojit k virtuálnímu počítači pomocí jiného protokolu, jako je například HTTP nebo jiné služby.
 
@@ -70,8 +70,8 @@ Pokud platí jedna z těchto podmínek, dočasně zakázat softwaru a zkuste př
 
 Pokud používáte ověřování pomocí certifikátu, ověřte zda máte tato oprávnění ke složce .ssh v domovském adresáři:
 
-* Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*.pub
+* Chmod – 700 ~/.ssh
+* Chmod – 644 ~/.ssh/\*.pub
 * Chmod – 600 ~/.ssh/id_rsa (nebo všechny soubory, které mají vaši privátní klíče uložené v nich)
 * Chmod – 644 ~/.ssh/known_hosts (obsahuje hostitele, na které jste připojeni prostřednictvím SSH.)
 
@@ -111,7 +111,7 @@ Chcete odstranit koncový bod jako zdroj problému, odeberte aktuální koncový
 
 ## <a name="source-4-network-security-groups"></a>Zdroje 4: Skupiny zabezpečení sítě
 Skupiny zabezpečení sítě umožňují mít členitější řízení toho povolené příchozí a odchozí přenosy. Můžete vytvořit pravidla, která span podsítě a cloudových služeb v virtuální sítě Azure. Zkontrolujte vaše pravidel skupiny zabezpečení sítě pro zajistit, že je povolené SSH provoz do a z Internetu.
-Další informace najdete v tématu [o skupinách zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md).
+Další informace najdete v tématu [o skupinách zabezpečení sítě](../../virtual-network/security-overview.md).
 
 Můžete taky ověřit IP pro ověření konfigurace NSG. Další informace najdete v tématu [síť Azure Přehled monitorování](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 

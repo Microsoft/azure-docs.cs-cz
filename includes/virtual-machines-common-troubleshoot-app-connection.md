@@ -1,3 +1,19 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines-windows
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/20/2018
+---
 Při nesmí začínat ani připojit k aplikaci spuštěné v Azure virtuální počítač (VM) se z různých důvodů. Z těchto důvodů aplikace není spuštěna nebo naslouchá na očekávaných portech, port pro naslouchání blokované nebo sítě pravidla není správně předávání provoz do aplikace. Tento článek popisuje metodický přístup k vyhledání a odstranění problému.
 
 Pokud máte problémy s připojením k virtuálnímu počítači pomocí protokolu RDP nebo SSH, najdete v jednom z následujících článků nejdřív:
@@ -99,7 +115,7 @@ Pokud máte přístup k aplikaci, ověřte následující nastavení:
   
   * Ověřte, že příchozí pravidlo NAT konfiguraci pro virtuální počítač umožňuje příchozí provoz, zejména protokol (TCP nebo UDP) a čísly veřejné a privátní port.
   * Ověřte, že jsou skupiny zabezpečení sítě umožňuje příchozí žádosti a odpovědi odchozí provoz.
-  * Další informace najdete v článku [Skupina zabezpečení sítě](../articles/virtual-network/virtual-networks-nsg.md).
+  * Další informace najdete v tématu [co je skupina zabezpečení sítě?](../articles/virtual-network/security-overview.md)
 
 Pokud je virtuální počítač nebo koncový bod členem sadu Vyrovnávání zatížení sítě:
 
@@ -117,7 +133,7 @@ Pokud přístup k aplikaci, ověřte, že je umožňuje vaše Internet hraničn�
 
 Další informace najdete v tématu [síť Azure Přehled monitorování](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 [Řešení potíží s připojení ke vzdálené ploše do systému Windows Azure virtuálního počítače](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md)
 
 [Řešení potíží s Secure Shell (SSH) připojení k virtuálnímu počítači systémem Linux Azure](../articles/virtual-machines/linux/troubleshoot-ssh-connection.md)

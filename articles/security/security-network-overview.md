@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 843ff1adddcb4c1165ead3f484ad74a503410852
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: fbd589aedb955ee4bd61dc0ec754d8713a98179a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 Azure obsahuje robustní síťové infrastruktury pro podporu aplikací a služeb požadavky na připojení. Připojení k síti je možné mezi prostředky, které jsou umístěné v Azure, mezi místními a Azure hostovaným prostředkům a do a z Internetu a Azure.
@@ -57,7 +57,7 @@ Pokud potřebujete řízení úrovně přístupu k základní síti (na základ�
 
 Další informace:
 
-* [Skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md)
+* [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
 
 ### <a name="route-control-and-forced-tunneling"></a>Směrování řízení a vynuceného tunelování
 Možnost řídit chování směrování na virtuálních sítí je důležité. Pokud směrování není správně nakonfigurovaná, aplikace a služby hostované na virtuálním počítači se může připojit k neoprávněným zařízení, včetně systémů vlastníte a která je provozována společností potenciálním útočníkům.
