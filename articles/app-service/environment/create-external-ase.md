@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: debfff03ea9a4de4fb2cd69779d58709a6a3a34f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34248d75c190aa4636c39f087d399d946b589d58
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-an-external-app-service-environment"></a>Vytvoření externího App Service environment #
 
@@ -67,7 +67,7 @@ Vytvořit App Service Environment, když vytvoříte plán služby App Service:
 
 3. Vyberte nebo vytvořte skupinu prostředků. Pomocí skupin prostředků můžete spravovat souvisejících prostředků Azure jako jednotku. Skupiny prostředků také jsou užitečné, když vytvoříte pravidla řízení přístupu na základě rolí pro vaše aplikace. Další informace najdete v tématu [přehled Azure Resource Manageru][ARMOverview].
 
-4. Vyberte operačním systému. 
+4. Vyberte váš operační systém. 
 
     * Hostování Linux aplikace v App Service Environment je nová funkce preview, takže doporučujeme Linux aplikace nepřidávejte do app Service Environment právě probíhající úlohy v produkčním prostředí. 
     * Přidání Linux aplikace do app Service Environment znamená, že App Service Environment bude také v režimu preview. 
@@ -170,7 +170,7 @@ Pokud vytvoříte samostatné App Service Environment, má nic v ní. Prázdný 
 
 5. Vyberte virtuální síť a umístění. Můžete vytvořit novou virtuální síť nebo vybrat stávající virtuální síť: 
 
-    * Pokud vyberete novou virtuální síť, můžete zadat název a umístění. Pokud máte v úmyslu hostování aplikací Linux na tento App Service Environment, se momentálně jsou podporovány pouze tyto oblasti 6: **západní Evropa, západní USA, Východ USA, Severní Evropa, Austrálie – východ, Asie a Tichomoří – jihovýchod.** 
+    * Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. Pokud v této službě ASE chcete hostovat aplikace pro Linux, v současné době se podporuje pouze těchto 6 oblastí: **USA – západ, USA – východ, Západní Evropa, Severní Evropa, Austrálie – východ a Jihovýchodní Asie**. 
     
     * Nové virtuální sítě má 192.168.250.0/23 rozsah adres a podsíť s názvem výchozí. Podsíť je definován jako 192.168.250.0/24. Můžete vybrat pouze virtuální sítě Resource Manageru. **VIP typ** výběr určuje, zda vaše App Service Environment jsou přímo přístupné z Internetu (externí) nebo, pokud používá ILB. Další informace o těchto možnostech najdete v tématu [vytvoření a použití vyrovnávání zatížení interní služby App Service environment][MakeILBASE]. 
 
@@ -207,7 +207,7 @@ Další informace o ASEv1 najdete v tématu [Úvod do služby App Service Enviro
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../app-service-web-overview.md

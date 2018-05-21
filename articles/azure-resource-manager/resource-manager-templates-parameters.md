@@ -1,6 +1,6 @@
 ---
-title: "Azure oddíle parametr šablony Resource Manageru | Microsoft Docs"
-description: "Popisuje části Parametry šablony Azure Resource Manager pomocí deklarativní syntaxe JSON."
+title: Azure oddíle parametr šablony Resource Manageru | Microsoft Docs
+description: Popisuje části Parametry šablony Azure Resource Manager pomocí deklarativní syntaxe JSON.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2018
+ms.date: 05/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 193e74d94017cf0ca8ec0600c7e5a3dc4b7a6dea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Část parametry šablon Azure Resource Manager
 V sekci parametrů šablony zadejte hodnoty, které můžete zadat při nasazování prostředky. Tyto hodnoty parametrů umožňují přizpůsobit nasazení zadáním hodnoty, které jsou přizpůsobené pro konkrétní prostředí (například vývoj, testování a provozním). Není nutné zadat parametry v šabloně, ale bez parametrů šablony vždy nasazení stejné prostředky se stejnými názvy, umístění a vlastnosti.
@@ -84,14 +84,14 @@ Předchozí příklad ukázal jenom některé z vlastností, které můžete pou
 
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
-| parameterName |Ano |Název parametru. Musí být platný identifikátor jazyka JavaScript. |
-| type |Ano |Typ hodnoty parametru. Povolené typy a hodnoty jsou **řetězec**, **secureString**, **int**, **bool**, **objekt**, **secureObject**, a **pole**. |
+| Název parametru |Ano |Název parametru. Musí být platný identifikátor jazyka JavaScript. |
+| type |Ano |Typ hodnoty parametru. Povolené typy a hodnoty jsou **řetězec**, **securestring**, **int**, **bool**, **objekt**, **secureObject**, a **pole**. |
 | Výchozí hodnota |Ne |Výchozí hodnota pro parametr, pokud není zadána žádná hodnota pro parametr. |
 | allowedValues |Ne |Povolené hodnoty pro parametr a ujistěte se, že je zadaná hodnota pravé pole. |
-| minValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je (včetně). |
+| MinValue |Ne |Minimální hodnota pro parametry typu int, tato hodnota je (včetně). |
 | MaxValue |Ne |Maximální hodnota parametry typu int, tato hodnota je (včetně). |
-| minLength |Ne |Minimální délka řetězce, secureString a parametry typu pole, tato hodnota je (včetně). |
-| Hodnota maxLength |Ne |Maximální délka řetězce, secureString a parametry typu pole, tato hodnota je (včetně). |
+| minLength |Ne |Minimální délka řetězce, securestring a parametry typu pole, tato hodnota je (včetně). |
+| Hodnota maxLength |Ne |Maximální délka řetězce, securestring a parametry typu pole, tato hodnota je (včetně). |
 | description |Ne |Popis parametru, který se zobrazí uživatelům prostřednictvím portálu. |
 
 ## <a name="template-functions-with-parameters"></a>Funkce šablony s parametry
@@ -225,7 +225,7 @@ Při práci s parametry, může být užitečné následující informace:
    }
    ```
 
-* Použití **SecureString** pro všechny hesla a tajných klíčů. Pokud předáte citlivá data v objektu JSON, použít **secureObject** typu. Parametry šablony s secureString nebo secureObject typů nelze přečíst po nasazení prostředků. 
+* Použití **securestring** pro všechny hesla a tajných klíčů. Pokud předáte citlivá data v objektu JSON, použít **secureObject** typu. Parametry šablony s securestring nebo secureObject typů nelze přečíst po nasazení prostředků. 
    
    ```json
    "parameters": {
@@ -262,7 +262,7 @@ Tyto šablony příklad ukazují některé scénáře použití parametrů. Je k
 |Šablona  |Popis  |
 |---------|---------|
 |[parametry mají funkce pro výchozí hodnoty](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Demonstruje použití funkce šablon při definování výchozí hodnoty pro parametry. Šablony není nasazen žádné prostředky. To vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
-|[parametr objekt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje, jak pomocí objektu pro parametr. Šablony není nasazen žádné prostředky. To vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
+|[Parametr objekt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Ukazuje, jak pomocí objektu pro parametr. Šablony není nasazen žádné prostředky. To vytvoří hodnoty parametrů a vrátí tyto hodnoty. |
 
 ## <a name="next-steps"></a>Další postup
 

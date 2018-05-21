@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 74830a5220a75408398af2224204f8195ab27cc6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 12dc5921cc1977b53f0457d89537193eadded188
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Oddílu prostředků šablon Azure Resource Manager
 
@@ -96,7 +96,7 @@ Můžete definovat prostředky s následující strukturou:
 | SKU | Ne | Některé prostředky povolit hodnoty, které definují SKU pro nasazení. Například můžete zadat typ redundance pro účet úložiště. |
 | Typ | Ne | Některé prostředky povolit hodnotu, která definuje typ prostředku, který nasazujete. Například můžete zadat typ Cosmos DB k vytvoření. |
 | plán | Ne | Některé prostředky povolit hodnoty, které definují plán pro nasazení. Můžete například zadat pro marketplace bitovou kopii virtuálního počítače. | 
-| prostředků |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
+| zdroje |Ne |Podřízené prostředky, které jsou závislé na prostředku definovaný. Zadejte pouze typy prostředků, které jsou povoleny schématem nadřazený prostředek. Plně kvalifikovaný typ prostředku podřízené obsahuje nadřazený typ prostředku, jako například **Microsoft.Web/sites/extensions**. Závislost na nadřazeném prostředku není implicitní. Je nutné explicitně zadat tuto závislost. |
 
 ## <a name="resource-specific-values"></a>Hodnoty v závislosti na prostředek
 

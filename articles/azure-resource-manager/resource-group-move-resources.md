@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 6c0e9c96840995c7d5a067e60264c66ce987af93
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -156,6 +156,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Virtuální počítače (klasické) - najdete v části [omezení nasazení Classic](#classic-deployment-limitations)
 * Sady škálování virtuálního počítače – viz [omezení virtuální počítače](#virtual-machines-limitations)
 * Najdete v části virtuální sítě - [omezení virtuální sítě](#virtual-networks-limitations)
+* Visual Studio Team Services – účty služby VSTS s příponou jiných společností než Microsoft zakoupí musí [zrušit jejich nákupy](https://go.microsoft.com/fwlink/?linkid=871160) než účet můžou přesouvat mezi odběry.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Služby, které nelze přesunout.
@@ -170,10 +171,10 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * Azure Migrate
 * BizTalk Services
 * Certifikáty – App Service Certificate lze přesunout, ale mají nahrané certifikáty [omezení](#app-service-limitations).
-* Kubernetes služby
 * DevTest Labs – přesunout do nové skupiny prostředků v rámci stejného předplatného je povoleno, ale přesunutí křížové předplatného není povolená.
 * Dynamics LCS
 * ExpressRoute
+* Kubernetes služby
 * Nástroje pro vyrovnávání zatížení – viz [omezení pro vyrovnávání zatížení](#lb-limitations)
 * Managed Applications
 * Najdete v části spravované disky - [omezení virtuální počítače](#virtual-machines-limitations)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 51674f80e918f28febf0e854caa72c0da43c589c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -41,9 +41,13 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
     Jak se klient připojí k databázi Cosmos Azure má důležité dopady na výkon, hlavně z hlediska zjištěnou latence klienta. Nejsou k dispozici pro konfiguraci klienta zásady připojení – připojení dvě nastavení konfigurace klíče *režimu* a [připojení *protokol*](#connection-protocol).  Jsou k dispozici dva režimy:
 
    1. Režim brány (výchozí)
+      
+      Režim brány je podporovaná na všech platformách SDK a je nakonfigurované výchozí. Pokud vaše aplikace běží v rámci podnikové sítě s omezeními striktní brány firewall, režimu brány je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Kompromis výkonu, je ale, že brány režimu zahrnuje směrování další síti pokaždé, když je číst nebo zapisovat do databáze Cosmos Azure data. Z toho důvodu přímý režim nabízí lepší výkon z důvodu méně síťové směrování.
+
    2. Přímý režim
 
-      Režim brány je podporovaná na všech platformách SDK a je nakonfigurované výchozí.  Pokud vaše aplikace běží v rámci podnikové sítě s omezeními striktní brány firewall, režimu brány je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Kompromis výkonu, je ale, že brány režimu zahrnuje směrování další síti pokaždé, když je číst nebo zapisovat do databáze Cosmos Azure data. Z toho důvodu přímý režim nabízí lepší výkon z důvodu méně síťové směrování.
+     Přímý režim podporuje připojení prostřednictvím protokolů TCP a HTTPS. V současné době direct je podporována v rozhraní .NET 2.0 standardní pro platformu Windows jenom.
+      
 <a id="use-tcp"></a>
 2. **Zásady připojení: použití protokolu TCP**
 

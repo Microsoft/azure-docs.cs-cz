@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 4f7806e1155a0129d67f8848b9ba8c4d07cb126d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Naplánování spuštění a zastavení z modulu runtime integrace Azure SSIS 
 Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má poplatků, s ním spojená. Tedy chcete spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavte ji, pokud tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)). Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Zde jsou základní kroky popsané v tomto článku:
@@ -70,9 +70,6 @@ Pokud nemáte účet Azure Automation, vytvořte podle pokynů v tomto kroku. Po
 ### <a name="import-data-factory-modules"></a>Naimportovat moduly objektu pro vytváření dat
 
 1. Vyberte **moduly** v **SDÍLENÉ prostředky** v levé nabídce a ověřte, jestli máte **AzureRM.Profile** a **AzureRM.DataFactoryV2** v seznamu modulů.
-
-    > [!IMPORTANT]
-    > V současné době můžete použít pouze **AzureRM.DataFactoryV2 0.5.2** a **AzureRM.Profile 4.5.0** moduly.
 
     ![Ověřte požadované moduly](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 

@@ -1,11 +1,11 @@
 ---
-title: "Osvědčené postupy zabezpečení sítě Azure | Microsoft Docs"
-description: "Další některé klíčové funkce, které jsou k dispozici v Azure k usnadnění vytváření zabezpečené sítě v prostředích"
+title: Osvědčené postupy zabezpečení sítě Azure | Microsoft Docs
+description: Další některé klíčové funkce, které jsou k dispozici v Azure k usnadnění vytváření zabezpečené sítě v prostředích
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: d169387a-1243-4867-a602-01d6f2d8a2a1
 ms.service: virtual-network
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf015f4857a22b755813d0be1af5a55a8b7b6535
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Zabezpečení služeb a sítě cloudu Microsoft
 Cloudové služby společnosti Microsoft poskytování služeb flexibilně škálovatelné a infrastruktury, podnikové úrovni funkce a mnoho možností pro hybridní připojení. Tato volba se přístup k těmto službám prostřednictvím Internetu nebo s Azure ExpressRoute, které poskytuje připojení k privátní síti. Platforma Microsoft Azure umožňuje zákazníkům bezproblémově rozšířit jejich infrastrukturu do cloudu a vytvářet vícevrstvé architektury. Kromě toho můžete povolit třetím stranám rozšířené možnosti prostřednictvím nabídky zabezpečení služeb a virtuálních zařízení. Tento dokument poskytuje přehled o zabezpečení a architektury problémy, které zákazníci by měli zvážit při používání cloudové služby společnosti Microsoft získat přístup přes ExpressRoute. Také vysvětluje vytváření bezpečnější služeb ve virtuálních sítí Azure.
@@ -514,9 +514,9 @@ Přidání síťovým připojením ExpressRoute privátní partnerský vztah mů
 ### <a name="helpful-websites-and-documentation"></a>Užitečné weby a dokumentace
 * Přístup k Azure s Azure Resource Manager:
 * Přístup k Azure pomocí prostředí PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
-* Virtuální sítě dokumentace: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
-* Dokumentace skupiny zabezpečení sítě: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
-* Uživatelem definované směrování dokumentace: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
+* Virtuální sítě dokumentaci: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
+* Dokumentaci skupiny zabezpečení sítě: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/security-overview.md)
+* Uživatelem definované směrování dokumentaci: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
 * Azure virtuální brány: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
 * Site-to-Site VPN: [https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * Dokumentace ExpressRoute (Nezapomeňte najdete v částech "Začínáme" a "Jak na"): [https://docs.microsoft.com/azure/expressroute/](https://docs.microsoft.com/azure/expressroute/)

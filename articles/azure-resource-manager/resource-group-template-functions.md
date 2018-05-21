@@ -9,16 +9,16 @@ editor: tysonn
 ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: e21a8251cc4a85232b92faa05d01d0f73410e496
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fce3fd03f22c7e2d1c1524b9deb1f6935dbc3755
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Funkce šablony Azure Resource Manager
 Tento článek popisuje všechny funkce, které můžete použít v šablonu Azure Resource Manager.
