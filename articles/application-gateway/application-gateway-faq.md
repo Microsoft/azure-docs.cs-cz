@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy pro službu Application Gateway
 
@@ -155,7 +155,7 @@ Tento scénář lze provést pomocí skupin Nsg na podsítě brány aplikace. N�
 
 * Povolit příchozí požadavky ze všech zdrojů na porty 65503 65534 [komunikace stavu back-end](application-gateway-diagnostics.md).
 
-* Povolit příchozí nástroj pro vyrovnávání zatížení Azure sondy (značka AzureLoadBalancer) a příchozí přenosy virtuální sítě (virtuální síť značky) na [NSG](../virtual-network/virtual-networks-nsg.md).
+* Povolit příchozí nástroj pro vyrovnávání zatížení Azure sondy (značka AzureLoadBalancer) a příchozí přenosy virtuální sítě (virtuální síť značky) na [NSG](../virtual-network/security-overview.md).
 
 * Blokovat všechna ostatní příchozí přenosy s odepření všechna pravidla.
 
@@ -188,7 +188,7 @@ Ano. Můžete nakonfigurovat vyprazdňování Chcete-li změnit členy v rámci 
 
 Ano, Azure distribuuje instancí napříč doménami aktualizace a odolnost zajistit, aby všechny instance nedošlo k selhání ve stejnou dobu. Aplikační brána podporuje škálování přidáním více instancí stejné bráně sdílení zatížení.
 
-## <a name="ssl-configuration"></a>Konfigurace protokolu SSL
+## <a name="ssl-configuration"></a>Konfigurace SSL
 
 **Q. Jaké certifikáty jsou podporovány ve Application Gateway?**
 

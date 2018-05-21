@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: 66032a68634be5b52bbfa544d0a3bcd3d1090652
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamických webů prostřednictvím Azure CDN
 
 S prudký nárůst počtu sociálních médií, elektronické obchodování a webové technologie hyper přizpůsobené rychle roste procento obsah obsluhuje koncovým uživatelům se generuje v reálném čase. Uživatelé očekávají, že rychlé, spolehlivé a přizpůsobené webové prostředí, nezávisle na jejich prohlížeče, umístění, zařízení nebo sítě. Však velmi inovací, které tyto činnosti, takže zapojení také zpomalit stránce stahování a ohrozit kvalitu prostředí pro uživatele. 
 
-Standardní doručování obsahu (CDN) sítě schopností zahrnuje možnost souborů z mezipaměti blíže koncovým uživatelům pro urychlení doručení statických souborů. Však s dynamické webové aplikace, ukládání do mezipaměti tohoto obsahu v hraniční umístění není možné, protože server vygeneruje obsah v reakci na chování uživatele. Urychlení doručování takový obsah je mnohem složitější než tradiční edge ukládání do mezipaměti a vyžaduje-komplexní řešení, která přesné vyladění každý prvek v cestě celého datového od zahájení k doručení. S optimalizací (DSA) acceleration dynamických webů Azure CDN měřitelný výkon vyšší výkon webových stránek s dynamickým obsahem.
+Standardní doručování obsahu (CDN) sítě schopností zahrnuje možnost souborů z mezipaměti blíže koncovým uživatelům pro urychlení doručení statických souborů. Však s dynamické webové aplikace, ukládání do mezipaměti tohoto obsahu v hraniční umístění není možné, protože server vygeneruje obsah v reakci na chování uživatele. Urychlení doručování takový obsah je mnohem složitější než tradiční edge ukládání do mezipaměti a vyžaduje-komplexní řešení, která přesné vyladění každý prvek v cestě celého datového od zahájení k doručení. S optimalizací (DSA) acceleration dynamických webů Azure CDN měřitelný výkon vyšší výkon webové stáří s dynamickým obsahem.
 
 **Azure CDN společnosti Akamai** a **Azure CDN společnosti Verizon** nabízejí DSA optimalizace prostřednictvím **optimalizované pro** nabídky během vytvoření koncového bodu.
 
@@ -33,7 +33,7 @@ Standardní doručování obsahu (CDN) sítě schopností zahrnuje možnost soub
 >   
 > Pro **Azure CDN společnosti Verizon** profily, nelze změnit optimalizace koncový bod CDN po jeho vytvoření.
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>Konfigurace koncového bodu CDN pro urychlení doručování dynamické soubory
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>Konfigurace koncového bodu CDN pro urychlení doručování dynamické soubory
 
 Ke konfiguraci koncového bodu CDN k optimalizaci doručování dynamické soubory, můžete použít buď na portálu Azure, rozhraní REST API nebo některou z klienta sady SDK pro stejnou věc udělat prostřednictvím kódu programu. 
 

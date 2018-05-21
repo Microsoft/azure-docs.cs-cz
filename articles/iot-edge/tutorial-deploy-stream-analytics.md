@@ -6,14 +6,14 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 05/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Nasazení služby Azure Stream Analytics jako modul IoT Edge – náhled
 
@@ -57,7 +57,7 @@ V této části můžete vytvořit úlohu služby Azure Stream Analytics využí
 
 1. V portálu Azure přejděte do **vytvořit prostředek**, zadejte **účet úložiště** v vyhledávacího pole a potom vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta**.
 
-2. V **vytvořit účet úložiště** podokně, zadejte název účtu úložiště, vyberte stejné umístění, kde jsou uložené služby IoT hub a potom vyberte **vytvořit**. Poznamenejte si název pro pozdější použití.
+2. V **vytvořit účet úložiště** podokně, zadejte název účtu úložiště, vyberte stejné umístění, kde jsou uložené služby IoT hub, vyberte stejné skupině prostředků jako služby IoT hub a pak vyberte **vytvořit**. Poznamenejte si název pro pozdější použití.
 
     ![vytvořit účet úložiště][1]
 
@@ -84,32 +84,25 @@ V této části můžete vytvořit úlohu služby Azure Stream Analytics využí
 
 3. Vyberte **Vytvořit**.
 
-4. Ve vytvořené úloze pod **úlohy topologie**, vyberte **vstupy**a potom vyberte **přidat**.
-
-5. V **nové vstup** podokně, postupujte takto:
-
-    a. V **vstupní alias** zadejte **teploty**.
-    
-    b. V **typ zdroje** vyberte **datový proud**.
-    
-    c. Zbývající pole použijte výchozí hodnoty.
+4. Ve vytvořené úloze pod **úlohy topologie**, otevřete **vstupy**.
 
    ![Azure Stream Analytics vstup](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. Vyberte **Vytvořit**.
+5. Vyberte **přidat vstup datového proudu**, pak vyberte **Edge rozbočovače**.
 
-7. V části **úlohy topologie**, vyberte **výstupy**a potom vyberte **přidat**.
+5. V **nové vstup** podokně zadejte **teploty** jako vstupní alias. 
 
-8. V **nový výstupní** podokně, postupujte takto:
+6. Vyberte **Uložit**.
 
-    a. V **alias pro výstup** zadejte **výstraha**.
-    
-    b. Zbývající pole použijte výchozí hodnoty. 
-    
-    c. Vyberte **Vytvořit**.
+7. V části **úlohy topologie**, otevřete **výstupy**.
 
    ![Výstup Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
+8. Vyberte **přidat**, pak vyberte **Edge rozbočovače**.
+
+8. V **nový výstupní** podokně zadejte **výstraha** jako alias pro výstup. 
+
+9. Vyberte **Vytvořit**.
 
 9. V části **úlohy topologie**, vyberte **dotazu**a výchozí text nahraďte následující dotaz:
 
@@ -130,12 +123,12 @@ V této části můžete vytvořit úlohu služby Azure Stream Analytics využí
 
 Nyní jste připraveni k nasazení úlohy Azure Stream Analytics na vašem zařízení IoT okraj.
 
-1. Na portálu Azure ve službě IoT hub, přejděte na **IoT okraj (preview)**a pak otevřete stránku podrobností pro vaše zařízení IoT okraj.
+1. Na portálu Azure ve službě IoT hub, přejděte na **IoT okraj (preview)** a pak otevřete stránku podrobností pro vaše zařízení IoT okraj.
 
 2. Vyberte **Set modules** (Nastavit moduly).  
     Pokud jste předtím nasadili modul tempSensor na tomto zařízení, může být autopopulate. Pokud není, přidejte modul následujícím způsobem:
 
-   a. Vyberte **přidání okraj IoT modulu**.
+   a. Vyberte **Přidat modul IoT Edge**.
 
    b. Pro název, typ **tempSensor**.
     

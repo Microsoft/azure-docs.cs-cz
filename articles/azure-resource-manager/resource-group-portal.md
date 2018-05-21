@@ -11,14 +11,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 2c76e56d9b30ef11fe4f3b7863a1a1357fca291c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: fda195c03c589361b8a798166b0ae4d93611bcd0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-azure-resources-through-portal"></a>Spravovat prostředky prostřednictvím portálu Azure
 
