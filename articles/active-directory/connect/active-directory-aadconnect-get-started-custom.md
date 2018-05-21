@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](active-directory-aadconnect-get-started-express.md) nevyhovuje nasazení nebo topologii.
@@ -45,13 +45,14 @@ Při instalaci služeb synchronizace můžete nechat volitelnou konfiguraci neza
 ### <a name="user-sign-in"></a>Přihlášení uživatele
 Po instalaci požadovaných součástí budete vyzváni, abyste vybrali metodu jednotného přihlašování uživatelů. Následující tabulka obsahuje stručný popis dostupných možností. Úplný popis metod přihlášení najdete v tématu [Přihlášení uživatele](active-directory-aadconnect-user-signin.md).
 
-![Přihlášení uživatele](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
+![Přihlášení uživatele](./media/active-directory-aadconnect-get-started-custom/usersignin4.png)
 
 | Možnost jednotného přihlašování | Popis |
 | --- | --- |
 | Synchronizace hodnoty hash hesel |Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti. Hesla uživatelů se synchronizují do Azure AD, protože ověření a hash hesla probíhá v cloudu. Další informace najdete v tématu [Synchronizace hodnoty hash hesel](active-directory-aadconnectsync-implement-password-hash-synchronization.md). |
 |Předávací ověřování|Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Heslo uživatele se předává k ověření do místního kontroleru domény Active Directory.
 | Federace se službou AD FS |Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Uživatelé jsou k přihlášení přesměrováni do místní instance služby AD FS a ověření probíhá místně. |
+| Federace s PingFederate|Uživatelé se můžou přihlašovat ke cloudovým službám Microsoft, například Office 365, stejným heslem jako v místní síti.  Uživatelé se k přihlášení přesměrují do místní instance PingFederate a ověření proběhne místně. |
 | Nekonfigurovat |Nenainstaluje a nenakonfiguruje se žádná funkce přihlašování uživatelů. Tuto možnost zvolte, pokud už využíváte federační server třetí strany nebo jiné existující řešení. |
 |Povolit jednotné přihlašování|Tato možnost je dostupná pro synchronizaci hesla i pro předávací ověřování a poskytuje jednotné přihlašovací prostředí pro uživatele stolních počítačů v podnikové síti. Další informace najdete v tématu [Jednotné přihlašování](active-directory-aadconnect-sso.md). </br>Poznámka: Pro zákazníky služby AD FS není tato možnost dostupná, protože AD FS už nabízí stejnou úroveň jednotného přihlašování.</br>
 
@@ -301,6 +302,39 @@ Při výběru domény k federaci služba Azure AD Connect poskytuje informace ne
 >
 >
 
+## <a name="configuring-federation-with-pingfederate"></a>Konfigurace federace s PingFederate
+Konfigurace PingFederate se službou Azure AD Connect je jednoduchá a dá se provést několika kliknutími. Před konfigurací jsou vyžadovány následující položky.  Vyžadují se však následující položky.
+- PingFederate 8.4 nebo novější.  Další informace najdete v článku věnovaném [integraci PingFederate s Azure Active Directory a Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html).
+- Certifikát protokolu SSL pro název služby FS (Federation Service), který chcete použít (například sts.contoso.com)
+
+### <a name="verify-the-domain"></a>Ověření domény
+Po výběru federace s PingFederate se zobrazí výzva k ověření domény, kterou chcete federovat.  Vyberte doménu z rozevíracího seznamu.
+
+![Ověření domény](./media/active-directory-aadconnect-get-started-custom/ping1.png)
+
+### <a name="export-the-pingfederate-settings"></a>Export nastavení PingFederate
+
+
+Služba PingFederate musí být nakonfigurovaná jako federační server pro každou federovanou doménu Azure.  Klikněte na tlačítko Exportovat nastavení a sdělte tyto informace správci PingFederate.  Správce federačního serveru aktualizuje konfiguraci a pak zadá číslo portu a adresu URL serveru PingFederate, aby služba Azure AD Connect mohla ověřit nastavení metadat.  
+
+![Ověření domény](./media/active-directory-aadconnect-get-started-custom/ping2.png)
+
+Případné problémy s ověřením řešte se správcem PingFederate.  Následuje příklad serveru PingFederate, který nemá platný vztah důvěryhodnosti s Azure:
+
+![Důvěryhodnost](./media/active-directory-aadconnect-get-started-custom/ping5.png)
+
+
+
+
+### <a name="verify-federation-connectivity"></a>Ověření připojení federace
+Azure AD Connect se pokusí ověřit koncové body ověřování načtené z metadat PingFederate v předchozím kroku.  Azure AD Connect se nejprve pokusí koncové body přeložit pomocí místních serverů DNS.  Pak se pokusí koncové body přeložit pomocí externího poskytovatele DNS.  Případné problémy s ověřením řešte se správcem PingFederate.  
+
+![Ověření připojení](./media/active-directory-aadconnect-get-started-custom/ping3.png)
+
+### <a name="verify-federation-login"></a>Ověření přihlášení federace
+Nakonec můžete ověřit nově nakonfigurovaný tok přihlášení federace tím, že se přihlásíte k federované doméně. Pokud to proběhne úspěšně, federace s PingFederate je úspěšně nakonfigurovaná.
+![Ověření přihlášení](./media/active-directory-aadconnect-get-started-custom/ping4.png)
+
 ## <a name="configure-and-verify-pages"></a>Konfigurace a ověření stránek
 Na této stránce probíhá konfigurace.
 
@@ -308,6 +342,7 @@ Na této stránce probíhá konfigurace.
 > Než budete pokračovat v instalaci a pokud jste nakonfigurovali federaci, ujistěte se, že jste nakonfigurovali [Překlad IP adres pro federační servery](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers).
 >
 >
+
 
 ![Připraveno ke konfiguraci](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -336,8 +371,9 @@ Když kliknete na tlačítko Ověřit, služba Azure AD Connect ověří nastave
 
 ![Ověřit](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-Kromě toho proveďte následující postup ověření:
+Pokud chcete ověřit, že je kompletní ověřování úspěšné, měli byste ručně provést jeden nebo několik z následujících testů:
 
+* Po dokončení synchronizace použijte další úlohu Ověření federovaného přihlášení v Azure AD Connect k ověření ověřování libovolného místního uživatelského účtu.
 * Ověřte, že se můžete přihlásit z prohlížeče z počítače v intranetu připojeného k doméně: Připojte se k https://myapps.microsoft.com a ověřte přihlášení pomocí přihlášeného účtu. Předdefinovaný účet správce služby AD DS není synchronizovaný a nejde použít k ověření.
 * Ověřte, že se můžete přihlásit ze zařízení z extranetu. Na domácím počítači nebo na mobilním zařízení se připojte k https://myapps.microsoft.com a zadejte přihlašovací údaje.
 * Ověřte přihlášení plně funkčního klienta. Připojte se k https://testconnectivity.microsoft.com, vyberte kartu **Office 365** a vyberte možnost **Test jednotného přihlašování Office 365**.

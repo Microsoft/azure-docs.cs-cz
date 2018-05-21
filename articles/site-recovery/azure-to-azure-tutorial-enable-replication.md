@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 05/02/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure (Preview)
 
@@ -134,7 +134,7 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
 
 - **Cílové umístění:** Cílové umístění, které se použije pro zotavení po havárii. Doporučujeme, aby cílové umístění odpovídalo umístění trezoru Site Recovery.
 
-- **Cílová skupina prostředků:** Skupina prostředků v cílové oblasti, která bude obsahovat virtuální počítače Azure po převzetí služeb při selhání. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků s příponou asr.
+- **Cílová skupina prostředků:** Skupina prostředků v cílové oblasti, která bude obsahovat virtuální počítače Azure po převzetí služeb při selhání. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků s příponou asr. Umístěním cílové skupiny prostředků může být libovolná oblast s výjimkou oblasti, ve které jsou hostované vaše zdrojové virtuální počítače. 
 
 - **Cílová virtuální síť:** Síť v cílové oblasti, ve které budou virtuální počítače po převzetí služeb při selhání.
   Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou virtuální síť (a podsítě) s příponou asr.

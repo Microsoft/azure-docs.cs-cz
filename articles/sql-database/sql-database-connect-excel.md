@@ -4,17 +4,17 @@ description: Zjistěte, jak připojit Microsoft Excel k databázi SQL Azure v cl
 services: sql-database
 keywords: připojení excelu k sql, import dat do excelu
 author: joseidz
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: craigg
-ms.openlocfilehash: 5d2d863c0266467a60eafa70f0ef3ecaa9736ac0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6f2894d65240580346b99d203f8289652d8e6618
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Připojení Excelu k databázi Azure SQL a vytvoření sestavy
 

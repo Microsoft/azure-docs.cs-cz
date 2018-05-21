@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5b17b4e8581daa5b19aaafd911765d843a9f3fe4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Sledování služby AD FS pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování infrastruktury služby AD FS ve službě Azure AD Connect Health. Informace o sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health pro synchronizaci](active-directory-aadconnect-health-sync.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
@@ -116,7 +116,7 @@ Sestava obsahuje následující informace:
 >
 >
 
-## <a name="risky-ip-report"></a>Sestava rizikových IP adres 
+## <a name="risky-ip-report-public-preview"></a>Sestava rizikových IP adres (Public Preview)
 Zákazníci služby AD FS můžou zveřejnit koncové body ověřování pomocí hesla na internetu a poskytnout tak koncovým zákazníkům ověřovací služby pro přístup k aplikacím SaaS, jako je Office 365. V takovém případě může pochybný aktér zkoušet přihlášení do systému AD FS za účelem uhodnutí hesla koncového uživatele a získání přístupu k prostředkům aplikace. Služba AD FS od verze AD FS ve Windows Serveru 2012 R2 poskytuje funkci uzamčení účtu pro extranet, která brání těmto typům útoku. Pokud používáte nižší verzi, důrazně doporučujeme upgradovat systém AD FS na Windows Server 2016. <br />
 Kromě toho je možné, aby se jedna IP adresa pokoušela o přihlášení za několik uživatelů. V takových případech je možné počet pokusů na jednoho uživatele omezit prahovou hodnotou pro ochranu uzamčení účtu ve službě AD FS. Azure AD Connect Health nyní poskytuje sestavu rizikových IP adres, která tuto podmínku detekuje a upozorňuje na její výskyt správce. Klíčové výhody této sestavy jsou následující: 
 - Detekce IP adres, které překročí prahovou hodnotu neúspěšných pokusů o přihlášení na základě hesla
@@ -152,10 +152,12 @@ Například níže uvedená položka sestavy značí, že 28. 2. 2018 v časové
 > - V této sestavě upozornění se nezobrazují IP adresy Exchange ani privátní IP adresy. Ty jsou však stále součástí exportovaného seznamu. 
 >
 
-
 ![Portál služby Azure AD Connect Health](./media/active-directory-aadconnect-health-adfs/report4c.png)
 
-### <a name="download-risky-ip-report"></a>Stažení sestavy rizikových IP adres
+### <a name="load-balancer-ip-addresses-in-the-list"></a>IP adresy nástroje pro vyrovnávání zatížení v seznamu
+Nástroj pro vyrovnávání zatížení agreguje aktivity přihlášení, které selhaly, a překročení prahové hodnoty výstrahy. Pokud se vám zobrazují IP adresy nástroje pro vyrovnávání zatížení, je vysoce pravděpodobné, že váš externí nástroj pro vyrovnávání zatížení při předávání požadavku na proxy server webové aplikace neodesílá IP adresu klienta. Nakonfigurujte ve svém nástroji pro vyrovnávání zatížení správně předávání IP adresy klienta. 
+
+### <a name="download-risky-ip-report"></a>Stažení sestavy rizikových IP adres 
 Pomocí funkce **Stáhnout** můžete z portálu služby Connect Health exportovat celý seznam rizikových IP adres za posledních 30 dnů. Výsledek exportu bude obsahovat všechny neúspěšné aktivity přihlášení ke službě AD FS v jednotlivých časových intervalech zjišťování, abyste si po exportu mohli upravit filtrování. Kromě zvýrazněných agregací na portálu bude výsledek exportu obsahovat také další podrobnosti o neúspěšných aktivitách přihlášení podle IP adresy:
 
 |  Položky sestavy  |  Popis  | 
@@ -196,12 +198,14 @@ Pokud se vám zobrazují IP adresy nástroje pro vyrovnávání zatížení, je 
 
 3. Jak můžu zablokovat IP adresu?  <br />
 Zjištěné škodlivé IP adresy byste měli přidat do brány firewall nebo je blokovat v Exchange.   <br />
-V případě služby AD FS 2016 + 1803.C+ QFE můžete IP adresu zablokovat přímo ve službě AD FS. 
 
 4. Proč se mi v této sestavě nezobrazují žádné položky? <br />
    - Neúspěšné aktivity přihlášení nepřekračují nastavení prahových hodnot. 
    - Ujistěte se, že v seznamu serverů AD FS nejsou žádná aktivní upozornění Služba Health není aktuální.  Další informace o [řešení potíží s tímto upozorněním](active-directory-aadconnect-health-data-freshness.md).
    - Na farmách služby AD FS není povolené auditování.
+ 
+5. Proč k sestavě nemám přístup?  <br />
+Vyžadují se oprávnění globálního správce nebo [čtenáře zabezpečení](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader). Obraťte se s žádostí o udělení přístupu na globálního správce.
 
 
 ## <a name="related-links"></a>Související odkazy
