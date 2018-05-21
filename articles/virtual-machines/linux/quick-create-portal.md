@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Vytvoření virtuálního počítače pomocí portálu | Dokumentace Microsoftu
-description: Rychlý start Azure – Vytvoření virtuálního počítače pomocí portálu
+title: Rychlý start – Vytvoření virtuálního počítače s Linuxem na webu Azure Portal | Microsoft Docs
+description: V tomto rychlém startu zjistíte, jak pomocí webu Azure Portal vytvořit virtuální počítač s Linuxem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/11/2017
+ms.date: 04/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6585f28e2b70aee6efbfa99bf2ec4320d6d15382
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 18ac0291bff2c0fbfffdd5dfa3097f8a6acb561f
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Vytvoření virtuálního počítače s Linuxem pomocí webu Azure Portal
+# <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
-Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet a konfigurovat virtuální počítače a všechny související prostředky. Tento Rychlý start prochází jednotlivé kroky k vytvoření virtuálního počítače a instalaci webového serveru na virtuálním počítači.
+Virtuální počítače Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet virtuální počítače a jejich související prostředky. V tomto rychlém startu se dozvíte, jak pomocí webu Azure Portal nasadit do Azure virtuální počítač s Linuxem Ubuntu. Pak se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -32,95 +32,94 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 K dokončení tohoto rychlého startu potřebujete pár klíčů SSH. Pokud máte existující pár klíčů SSH, můžete tento krok přeskočit.
 
-Z prostředí Bash spusťte tento příkaz a postupujte podle pokynů na obrazovce. Výstup příkazu zahrnuje název souboru veřejného klíče. Zkopírujte obsah souboru veřejného klíče (`cat ~/.ssh/id_rsa.pub`) do schránky. Pokud použijete subsystém Windows pro Linux, ověřte, že nekopírujete znaky konce řádku z výstupu. Poznamenejte si název souboru privátního klíče pro pozdější použití.
+Pokud chcete vytvořit pár klíčů SSH a přihlásit se k virtuálnímu počítači s Linuxem, spusťte v prostředí Bash následující příkaz a postupujte podle pokynů na obrazovce. Můžete použít například [Azure Cloud Shell](../../cloud-shell/overview.md) nebo [subsystém Windows pro Linux](/windows/wsl/install-win10). Výstup příkazu zahrnuje název souboru veřejného klíče. Zkopírujte obsah souboru veřejného klíče (`cat ~/.ssh/id_rsa.pub`) do schránky:
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-Podrobnější informace o tomto procesu najdete [tady](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+Podrobnější informace o vytváření párů klíčů SSH, včetně použití PuTTY, najdete v tématu [Jak používat klíče SSH s Windows](ssh-from-windows.md).
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure 
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
+1. V levém horním rohu webu Azure Portal zvolte **Vytvořit prostředek**.
 
-2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**. 
+2. Ve vyhledávacím poli nad seznamem prostředků Azure Marketplace vyhledejte a vyberte **Ubuntu Server 16.04 LTS** od společnosti Canonical a pak zvolte **Vytvořit**.
 
-3. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH**. Při vkládání veřejného klíče SSH nezapomeňte odebrat počáteční a koncové prázdné znaky. Jakmile budete hotovi, klikněte na **OK**.
+3. Zadejte název virtuálního počítače, například *myVM*, jako typ disku ponechte *SSD* a zadejte uživatelské jméno, například *azureuser*.
+
+4. . Jako **Typ ověřování** vyberte **Veřejný klíč SSH** a pak do textového pole vložte svůj veřejný klíč. Nezapomeňte ve veřejném klíči odebrat počáteční a koncové prázdné znaky.
 
     ![Zadání základních informací o virtuálním počítači v okně portálu](./media/quick-create-portal/create-vm-portal-basic-blade.png)
 
-4. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. 
+5. Zvolte možnost **Vytvořit novou** skupinu prostředků a zadejte její název, například *myResourceGroup*. Zvolte požadované **Umístění** a pak vyberte **OK**.
 
-    ![Snímek obrazovky zobrazující velikosti virtuálních počítačů](./media/quick-create-portal/create-linux-vm-portal-sizes.png)  
+4. Vyberte velikost virtuálního počítače. Můžete filtrovat například podle *Typu výpočtu* nebo *Typu disku*. Navrhovaná velikost virtuálního počítače je *D2s_v3*.
 
-5. V části **Nastavení** ponechte výchozí nastavení a klikněte na **OK**.
+    ![Snímek obrazovky zobrazující velikosti virtuálních počítačů](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
 
-6. Na stránce Souhrn kliknutím na **Ok** spusťte nasazení virtuálního počítače.
+5. V části **Nastavení** ponechte výchozí hodnoty a vyberte **OK**.
+
+6. Na stránce Souhrn výběrem možnosti **Vytvořit** spusťte nasazení virtuálního počítače.
 
 7. Virtuální počítač se připne na řídicí panel webu Azure Portal. Po dokončení nasazení se automaticky otevře souhrn virtuálního počítače.
-
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
 Vytvořte připojení SSH k virtuálnímu počítači.
 
-1. Klikněte na tlačítko **Připojit** ve vlastnostech virtuálního počítače. Tlačítko Připojit zobrazí připojovací řetězec SSH, pomocí kterého se můžete připojit k virtuálnímu počítači.
+1. Na stránce Přehled pro váš virtuální počítač vyberte tlačítko **Připojit**. 
 
-    ![Portál 9](./media/quick-create-portal/portal-quick-start-9.png) 
+    ![Portál 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. Spuštěním následujícího příkazu vytvořte relaci SSH. Nahraďte připojovací řetězec tím, který jste zkopírovali z webu Azure Portal.
+2. Na stránce **Připojení k virtuálnímu počítači** ponechte výchozí výběr možností pro připojení podle názvu DNS přes port 22. V části **Přihlásit pomocí místního účtu virtuálního počítače** se zobrazí příkaz pro připojení. Kliknutím na tlačítko příkaz zkopírujte. Následující příklad ukazuje, jak vypadá příkaz pro připojení přes SSH:
 
-```bash 
-ssh azureuser@40.112.21.50
-```
+    ```bash
+    ssh azureuser@myvm-123abc.eastus.cloudapp.azure.com
+    ```
 
-## <a name="install-nginx"></a>Instalace serveru NGINX
+3. Vložte příkaz pro připojení přes SSH do prostředí, jako je Azure Cloud Shell nebo Bash v Ubuntu ve Windows, a vytvořte připojení. 
 
-Pomocí následujícího skriptu bash provedete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX. 
+## <a name="install-web-server"></a>Instalace webového serveru
 
-```bash 
-#!/bin/bash
+Pokud se chcete podívat na virtuální počítač v akci, nainstalujte webový server NGINX. Spuštěním následujících příkazů z vaší relace SSH aktualizujte zdroje balíčku a nainstalujte nejnovější balíček NGINX:
 
-# update package source
+```bash
+# update packages
 sudo apt-get -y update
 
 # install NGINX
 sudo apt-get -y install nginx
 ```
 
-Až budete hotovi, ukončete relaci SSH a vraťte se do vlastností virtuálního počítače na webu Azure Portal.
+Až budete hotovi, ukončete relaci SSH příkazem `exit` a vraťte se do vlastností virtuálního počítače na webu Azure Portal.
 
-
-## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz 
+## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
 
 Skupina zabezpečení sítě (NSG) zabezpečuje příchozí a odchozí provoz. Když se virtuální počítač vytvoří na webu Azure Portal, pro připojení SSH se vytvoří příchozí pravidlo na portu 22. Protože je tento virtuální počítač hostitelem webového serveru, je potřeba vytvořit pravidlo NSG pro port 80.
 
-1. Na virtuálním počítači klikněte na název **skupiny prostředků**.
-2. Vyberte **skupinu zabezpečení sítě**. NSG můžete identifikovat pomocí sloupce **Typ**. 
-3. V nabídce vlevo v části Nastavení klikněte na **Příchozí pravidla zabezpečení**.
-4. Klikněte na **Přidat**.
-5. Do pole **Název** zadejte **http**. Ověřte, že **Rozsah zdrojových portů** je nastavený na `*`, **Rozsah cílových portů** je nastavený na *80* a **Akce** je nastavená na *Povolit*. 
-6. Klikněte na **OK**.
+1. Na stránce přehledu virtuálního počítače vyberte **Sítě**.
+2. Zobrazí se seznam existujících příchozích a odchozích pravidel. Zvolte **Přidat pravidlo portu pro příchozí provoz**.
+3. V horní části vyberte možnost **Basic** a pak v seznamu dostupných služeb zvolte *HTTP*. Port 80, priorita a název už jsou zadané.
+4. Pravidlo vytvoříte výběrem možnosti **Přidat**.
 
+## <a name="view-the-web-server-in-action"></a>Zobrazení webového serveru v akci
 
-## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
+Když je teď server NGINX nainstalovaný a port 80 k virtuálnímu počítači otevřený, webový server je přístupný z internetu. Otevřete webový prohlížeč a zadejte veřejnou IP adresu virtuálního počítače. Veřejnou IP adresu najdete na stránce přehledu virtuálního počítače nebo v horní části stránky *Sítě*, kde jste přidali pravidlo portu pro příchozí provoz.
 
-Když je teď NGINX nainstalovaný a port 80 k virtuálnímu počítači otevřený, webový server je přístupný z internetu. Otevřete webový prohlížeč a zadejte veřejnou IP adresu virtuálního počítače. Veřejnou IP adresu najdete ve vlastnostech virtuálního počítače na webu Azure Portal.
-
-![Výchozí web NGINX](./media/quick-create-cli/nginx.png) 
+![Výchozí web NGINX](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků virtuálního počítače a kliknete na **Odstranit**.
+Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, virtuální počítač a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků pro příslušný virtuální počítač, vyberete **Odstranit** a pak potvrdíte název skupiny prostředků, kterou chcete odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
+V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, vytvořili jste skupinu zabezpečení sítě a pravidlo a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
 
 > [!div class="nextstepaction"]
 > [Kurzy pro virtuální počítače Azure s Linuxem](./tutorial-manage-vm.md)

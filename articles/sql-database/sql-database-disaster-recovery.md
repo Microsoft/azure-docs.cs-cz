@@ -3,24 +3,24 @@ title: Zotavení po havárii pro databáze SQL | Microsoft Docs
 description: Naučte se obnovit databázi z místního datového centra výpadku nebo chyby s Azure SQL Database aktivní geografickou replikaci a možnosti geografické obnovení.
 services: sql-database
 author: anosov1960
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dc97c0703150df9773427b13fc07371c3593ce9f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6ac4b26e1b014da792791ca657c9f51230a135b5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnova databáze SQL Azure nebo převzetí služeb při selhání na sekundární
 Azure SQL Database nabízí následující možnosti pro zotavení po výpadku:
 
 * [Aktivní geografickou replikaci a převzetí služeb při selhání skupiny](sql-database-geo-replication-overview.md)
-* [Geo-restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+* [geografické obnovení](sql-database-recovery-using-backups.md#point-in-time-restore)
 * [Zónově redundantní databáze](sql-database-high-availability.md)
 
 Další informace o obchodních scénářů kontinuity a podpora těchto scénářů funkcí najdete v tématu [kontinuity podnikových procesů](sql-database-business-continuity.md).

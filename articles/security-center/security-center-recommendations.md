@@ -1,11 +1,11 @@
 ---
-title: "Správa doporučení zabezpečení v Azure Security Center | Microsoft Docs"
-description: "Tento dokument vás provede jak doporučení v Azure Security Center pomáhá zůstat souladu se zásadami zabezpečení a ochraně vašich prostředků Azure."
+title: Správa doporučení zabezpečení v Azure Security Center | Microsoft Docs
+description: Tento dokument vás provede jak doporučení v Azure Security Center pomáhá zůstat souladu se zásadami zabezpečení a ochraně vašich prostředků Azure.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 2cb4a1c944d6893ca7913eef4e93620059f2a839
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Správa doporučení zabezpečení v Azure Security Center
 Tento dokument vás provede procesem jak používat doporučení v Azure Security Center k ochraně vašich prostředků Azure.
@@ -39,7 +39,7 @@ V [nastavení zásad zabezpečení v Azure Security Center](security-center-poli
 * Shromažďování dat zapněte.
 * Vyberte, které doporučení zobrazíte v rámci svých zásad zabezpečení.
 
-Aktuální zásady doporučení center kolem aktualizací systému, standardních pravidel, antimalwarových programů [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) na podsítí a síťových rozhraní, auditování databáze SQL, SQL database transparentní šifrování dat, a webové aplikace brány firewall.  [Nastavení zásad zabezpečení](security-center-policies.md) obsahuje popis jednotlivých možností doporučení.
+Aktuální zásady doporučení center kolem aktualizací systému, standardních pravidel, antimalwarových programů, [skupin zabezpečení sítě](../virtual-network/security-overview.md) na podsítí a síťových rozhraní, auditování databáze SQL, SQL database transparentní šifrování dat, a webové aplikace brány firewall.  [Nastavení zásad zabezpečení](security-center-policies.md) obsahuje popis jednotlivých možností doporučení.
 
 ### <a name="monitor-recommendations"></a>Monitorování doporučení
 Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpečení vašich prostředků Azure za účelem identifikace potenciálních ohrožení zabezpečení. **Doporučení** dlaždici v části **přehled** umožňuje zjistit celkový počet doporučení identifikovaný Security Center.
@@ -73,9 +73,9 @@ Použijte v následující tabulce vám pomohou pochopit dostupné doporučení 
 | Doporučení | Popis |
 | --- | --- |
 | [Povolení shromažďování dat pro předplatná](security-center-enable-data-collection.md) |Doporučuje zapnout shromažďování dat v zásadě zabezpečení pro každou z vašich předplatných a všechny virtuální počítače Azure (VM) a počítače mimo Azure. |
-| [Opravit konfigurace zabezpečení](security-center-remediate-os-vulnerabilities.md) |Doporučuje zarovnat vaše konfigurace operačního systému s pravidla zabezpečení doporučená konfigurace, například, zakázat ukládání hesel. |
+| [Náprava konfigurací zabezpečení](security-center-remediate-os-vulnerabilities.md) |Doporučuje zarovnat vaše konfigurace operačního systému s pravidla zabezpečení doporučená konfigurace, například, zakázat ukládání hesel. |
 | [Instalace aktualizací systému](security-center-apply-system-updates.md) |Doporučuje nasazení chybí systému zabezpečení a důležité aktualizace pro Windows a virtuální počítače s Linuxem a počítače. |
-| [Použít pouze v době provedená sítě řízení přístupu](security-center-just-in-time.md) | Doporučuje se použít jenom v přístup k časovému virtuálních počítačů. Právě v čase je funkce ve verzi preview a je k dispozici ve standardní vrstvě služby Security Center. V tématu [cenová](security-center-pricing.md) Další informace o službě Security Center je cenové úrovně. |
+| [Použít pouze v době provedená sítě řízení přístupu](security-center-just-in-time.md) | Doporučuje se použít jenom v přístup k časovému virtuálních počítačů. Právě v čase je funkce ve verzi preview a je k dispozici ve standardní vrstvě služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
 | [Restartování po aktualizacích systému](security-center-apply-system-updates.md#reboot-after-system-updates) |Doporučuje, abyste restartovali virtuální počítač k dokončení procesu instalace aktualizací systému. |
 | [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje, která můžete nasadit brány firewall webových aplikací (firewall webových aplikací) pro koncových bodů webové. Doporučení firewall webových aplikací je zobrazený pro všechny veřejné přístupných IP adresy (IP úrovni Instance nebo IP skupinu s vyrovnáváním zatížení), skupinu zabezpečení sítě spojenou s otevřete příchozí webovými porty (80,443). </br>Security Center doporučuje zřízení firewall webových aplikací, které pomáhají bránit proti útokům na cílení na vaše webové aplikace na virtuální počítače a služby App Service Environment. Je aplikaci služby prostředí (App Service Environment) [Premium](https://azure.microsoft.com/pricing/details/app-service/) služby možnost plánu služby Azure App Service, která poskytuje plně izolovaném a vyhrazeném prostředí pro zabezpečené spouštění aplikací Azure App Service. Další informace o App Service Environment, najdete v článku [dokumentace k aplikaci služby prostředí](../app-service/environment/intro.md).</br>Přidáním těchto aplikací na vaše stávající nasazení firewall webových aplikací můžete chránit několika webových aplikací ve službě Security Center. |
 | [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |K dokončení konfigurace firewall webových aplikací, musí být přenos přesměruje do zařízení firewall webových aplikací. Následující toto doporučení dokončení změny potřebné instalační. |
