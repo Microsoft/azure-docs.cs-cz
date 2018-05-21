@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Úvod k řešení cloud computing a Microsoft Azure
 
@@ -509,7 +509,7 @@ Podobně můžete rozhraní příkazového řádku Azure Pokud chcete nasadit š
 
 ### <a name="access-and-security-for-virtual-networks"></a>Přístup a zabezpečení pro virtuální sítě
 
-Zabezpečený virtuální sítě Azure může pomoct pomocí skupiny zabezpečení sítě. Skupiny Nsg obsahují seznam pravidel seznamu ACL řízení přístupu, která povolí nebo zakážou provoz sítě instancím virtuálních počítačů ve virtuální síti. Skupiny Nsg můžete přidružit podsítě nebo jednotlivým instancím virtuálních počítačů v této podsíti. Pokud přidružíte skupinu NSG podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho lze dále omezit provoz do konkrétního virtuálního počítače tím, že přidružíte skupinu NSG přímo s tohoto virtuálního počítače. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md).
+Zabezpečený virtuální sítě Azure může pomoct pomocí skupiny zabezpečení sítě. Skupiny Nsg obsahují seznam pravidel seznamu ACL řízení přístupu, která povolí nebo zakážou provoz sítě instancím virtuálních počítačů ve virtuální síti. Skupiny Nsg můžete přidružit podsítě nebo jednotlivým instancím virtuálních počítačů v této podsíti. Pokud přidružíte skupinu NSG podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho lze dále omezit provoz do konkrétního virtuálního počítače tím, že přidružíte skupinu NSG přímo s tohoto virtuálního počítače. Další informace najdete v tématu [filtrování provozu sítě přenosů se skupinami zabezpečení sítě](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 

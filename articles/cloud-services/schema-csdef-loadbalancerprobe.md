@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services Def. Schéma LoadBalancerProbe | Microsoft Docs"
-ms.custom: 
+title: Azure Cloud Services Def. Schéma LoadBalancerProbe | Microsoft Docs
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: "14"
+caps.latest.revision: 14
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 31c974c5a4b9dc9cff882ff42b73ee023fc4ad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cd56c9b04fc4657cedf845e7f111005a8dee183
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Definice schématu LoadBalancerProbe služby Azure Cloud Services
 Sondu nástroje pro vyrovnávání zatížení je sondu zákazník definovaný stavu UDP koncových bodů a koncových bodů v instancí rolí. `LoadBalancerProbe` Není element samostatné; se zkombinuje s webovou roli nebo role pracovního procesu v definičním souboru služby. A `LoadBalancerProbe` mohou využívat více než jednu roli.
@@ -50,10 +50,10 @@ Pokud používáte sondu nástroje pro vyrovnávání zatížení vlastní, je t
 - [LoadBalancerProbes Element](#LoadBalancerProbes)
 - [LoadBalancerProbe Element](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a>LoadBalancerProbes Element
+##  <a name="LoadBalancerProbes"></a> LoadBalancerProbes Element
 `LoadBalancerProbes` Element popisuje kolekci sondy nástroje pro vyrovnávání zatížení. Tento element má nadřazený element [LoadBalancerProbe Element](#LoadBalancerProbe). 
 
-##  <a name="LoadBalancerProbe"></a>LoadBalancerProbe Element
+##  <a name="LoadBalancerProbe"></a> LoadBalancerProbe Element
 `LoadBalancerProbe` Element definuje test stavu pro model. Můžete definovat více sondy nástroje pro vyrovnávání zatížení. 
 
 Následující tabulka popisuje atributy `LoadBalancerProbe` element:
@@ -62,7 +62,7 @@ Následující tabulka popisuje atributy `LoadBalancerProbe` element:
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Povinná hodnota. Název sondu nástroje pro vyrovnávání zatížení. Název musí být jedinečný.|
 | `protocol`          | `string` | Povinná hodnota. Určuje protokol, koncového bodu. Možné hodnoty jsou `http` nebo `tcp`. Pokud `tcp` je zadána, je vyžadována pro test úspěšný přijaté potvrzení. Pokud `http` je zadána, je vyžadována pro test úspěšný z zadaný identifikátor URI odpovědi 200 OK.|
-| `path`              | `string` | Identifikátor URI použitý pro požaduje stav od virtuálního počítače. `path`je požadováno v případě `protocol` je nastaven na `http`. Jinak není povoleno.<br /><br /> Výchozí hodnota neexistuje.|
+| `path`              | `string` | Identifikátor URI použitý pro požaduje stav od virtuálního počítače. `path` je požadováno v případě `protocol` je nastaven na `http`. Jinak není povoleno.<br /><br /> Výchozí hodnota neexistuje.|
 | `port`              | `integer` | Volitelné. Port pro komunikaci testu. Tato položka je nepovinná pro libovolný koncový bod, protože stejný port se pak použije pro kontrolu. Můžete nastavit jiný port pro jejich zjišťování, také. Možné hodnoty rozsahu od 1 do 65535 (včetně).<br /><br /> Výchozí hodnota je nastavena v koncovém bodě.|
 | `intervalInSeconds` | `integer` | Volitelné. Interval v sekundách, jak často se koncový bod pro stav testu. Interval je obvykle mírně méně než půl období přidělené časový limit (v sekundách), odkud dva úplné sondy před přepnutím instance mimo otočení.<br /><br /> Výchozí hodnota je 15, minimální hodnota je 5.|
 | `timeoutInSeconds`  | `integer` | Volitelné. Časový limit v sekundách, se použijí pro test, kde žádná odpověď způsobí ukončení dál provoz z doručován ke koncovému bodu. Tato hodnota umožňuje koncové body, které mají být provedeny mimo otočení vyšší nebo nižší než typické doby používané v Azure (které jsou výchozí hodnoty).<br /><br /> Výchozí hodnota je 31, 11 je minimální hodnota.|

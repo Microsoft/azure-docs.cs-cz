@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: ea793af7fc4565c054675af7cbf88b74722690f7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 51307e1bdb31d902636787790d1c4f1248f3886b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>Připojit k místní síti HDInsight
 
@@ -182,7 +182,7 @@ Chcete-li vytvořit virtuální počítač Linux, který používá [vazby](http
 
         dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Text je __příponu DNS__ pro tuto virtuální síť. Tato hodnota, uložte, protože se později používá.
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Text je __příponu DNS__ pro tuto virtuální síť. Uložte tuto hodnotu, bude se hodit později.
 
 5. Ke konfiguraci vazby k překladu názvů DNS pro prostředky v rámci virtuální sítě, použijte následující text jako obsah `/etc/bind/named.conf.local` souboru:
 
@@ -336,6 +336,6 @@ K přímému připojení k HDInsight prostřednictvím virtuální sítě, použ
 
 * Další informace o virtuálních sítí Azure, najdete v článku [Přehled virtuálních sítí Azure](../virtual-network/virtual-networks-overview.md).
 
-* Další informace o skupinách zabezpečení sítě najdete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+* Další informace o skupinách zabezpečení sítě najdete v tématu [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
 * Další informace o trasy definované uživatelem, najdete v části [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).

@@ -45,13 +45,13 @@
           href: delete-cluster.md
     - name: Konfigurace svazků s daty
       items:
-        - name: Dynamické zřizování disků Azure
+        - name: Disky Azure – dynamické
           href: azure-disks-dynamic-pv.md
-        - name: Statické zřizování disků Azure
+        - name: Disky Azure – statické
           href: azure-disk-volume.md
-        - name: Dynamické zřizování souborů Azure
+        - name: Soubory Azure – dynamické
           href: azure-files-dynamic-pv.md
-        - name: Statické zřizování souborů Azure
+        - name: Soubory Azure – statické
           href: azure-files-volume.md
     - name: Konfigurace sítí
       items:

@@ -1,23 +1,23 @@
 ---
-title: "Chyby neplatný šablony Azure | Microsoft Docs"
-description: "Popisuje, jak vyřešit chyby neplatný šablony."
-services: azure-resource-manager,azure-portal
-documentationcenter: 
+title: Chyby neplatný šablony Azure | Microsoft Docs
+description: Popisuje, jak vyřešit chyby neplatný šablony.
+services: azure-resource-manager
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9626b3caaa7188a4e9a37f83d1fbf091951714f4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 59f07b9ba8116cb1a4b5ab50382d89d01a78853b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb neplatný šablony
 
