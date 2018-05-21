@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 87e548dcca655436c00b84b440b72e01ad575338
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -118,12 +118,12 @@ Zobrazené a odkazované názvy typů dalších segmentů směrování se liší
 
 Místní síťová brána si může vyměňovat trasy s bránou virtuální sítě Azure pomocí protokolu BGP (Border Gateway Protocol). Použití protokolu BGP s bránou virtuální sítě Azure závisí na typu, který jste vybrali při vytváření brány. Pokud jste vybrali typ:
 
-- **ExpressRoute:** Musíte použít protokol BGP k inzerování místních tras do hraničního směrovače Microsoftu. Pokud jste bránu virtuální sítě nasadili s typem ExpressRoute, nemůžete vytvářet trasy definované uživatelem pro vynucení provozu do brány virtuální sítě ExpressRoute. Pro vynucení provozu z ExpressRoute třeba do virtuálního síťového zařízení můžete použít trasy definované uživatelem. 
+- **ExpressRoute:** Musíte použít protokol BGP k inzerování místních tras do hraničního směrovače Microsoftu. Pokud jste bránu virtuální sítě nasadili s typem ExpressRoute, nemůžete vytvářet trasy definované uživatelem pro vynucení provozu do brány virtuální sítě ExpressRoute. Pro vynucení provozu z ExpressRoute třeba do virtuálního síťového zařízení můžete použít trasy definované uživatelem.
 - **VPN:** Volitelně můžete použít protokol BGP. Podrobnosti najdete v tématu [Protokol BGP s připojeními VPN typu Site-to-Site](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí ve virtuální síti se přidá samostatná trasa pro každou inzerovanou předponu. Trasa se přidá s uvedeným zdrojem a typem dalšího segmentu směrování *Brána virtuální sítě*. 
 
-Šíření tras BGP je možné v podsíti zakázat pomocí vlastnosti ve směrovací tabulce. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují vlastní trasy](#custom-routes) s typem dalšího segmentu směrování VPN. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](/manage-route-table#create-a-route-table.md).
+Šíření tras BGP je možné v podsíti zakázat pomocí vlastnosti ve směrovací tabulce. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují vlastní trasy](#custom-routes) s typem dalšího segmentu směrování VPN. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak Azure vybírá trasu
 
@@ -259,4 +259,4 @@ Směrovací tabulka pro podsíť *Subnet2* obsahuje všechny výchozí trasy a v
 - [Konfigurace protokolu BGP pro Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Použití protokolu BGP s ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
 - [Zobrazení všech tras pro podsíť](virtual-network-routes-troubleshoot-portal.md). Směrovací tabulka definovaná uživatelem zobrazuje pouze trasy definované uživatelem, a ne výchozí trasy ani trasy protokolu BGP pro podsíť. Při zobrazení všech tras se zobrazí výchozí trasy, trasy protokolu BGP a trasy definované uživatelem pro podsíť, ve které je síťové rozhraní.
-- [Určení typu dalšího segmentu směrování](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mezi virtuálním počítačem a cílovou IP adresou. Funkce dalšího segmentu směrování ve službě Azure Network Watcher umožňuje určit, jestli provoz odchází z podsítě a směruje se tam, kam by podle vás měl.
+- [Určení typu dalšího segmentu směrování](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mezi virtuálním počítačem a cílovou IP adresou. Funkce dalšího segmentu směrování ve službě Azure Network Watcher umožňuje určit, jestli provoz odchází z podsítě a směruje se tam, kam by podle vás měl.

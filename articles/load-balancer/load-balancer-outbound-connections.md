@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -235,9 +235,9 @@ Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.co
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventoutbound"></a>Nelze navázat odchozí připojení
-Někdy je žádoucí pro virtuální počítač povolit vytváření odchozího toku. Nebo může být požadavek na správu, které cíle je dostupný odchozí toky nebo které cíle zahájit příchozí toky. V takovém případě můžete použít [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) ke správě cílů, které mohou být využity virtuálního počítače. Skupiny Nsg můžete použít také ke správě, který veřejné cílové můžete zahájit příchozí toky. 
+Někdy je žádoucí pro virtuální počítač povolit vytváření odchozího toku. Nebo může být požadavek na správu, které cíle je dostupný odchozí toky nebo které cíle zahájit příchozí toky. V takovém případě můžete použít [skupin zabezpečení sítě](../virtual-network/security-overview.md) ke správě cílů, které mohou být využity virtuálního počítače. Skupiny Nsg můžete použít také ke správě, který veřejné cílové můžete zahájit příchozí toky.
 
-Když použijete skupinu NSG k virtuálnímu počítači s vyrovnáváním zatížení, věnovat pozornost [výchozí značky](../virtual-network/virtual-networks-nsg.md#default-tags) a [výchozí pravidla](../virtual-network/virtual-networks-nsg.md#default-rules). Je nutné zajistit, že virtuální počítač může přijímat žádosti o kontrolu stavu z nástroje pro vyrovnávání zatížení Azure. 
+Když použijete skupinu NSG k virtuálnímu počítači s vyrovnáváním zatížení, věnovat pozornost [služby značky](../virtual-network/security-overview.md#service-tags) a [výchozí pravidla zabezpečení](../virtual-network/security-overview.md#default-security-rules). Je nutné zajistit, že virtuální počítač může přijímat žádosti o kontrolu stavu z nástroje pro vyrovnávání zatížení Azure. 
 
 Pokud skupina NSG blokuje žádostí o stav testu z výchozí značka AZURE_LOADBALANCER, selže test stavu vašeho virtuálního počítače a virtuálního počítače je označena. Nástroj pro vyrovnávání zatížení zastaví odesílání nové toky do tohoto virtuálního počítače.
 
@@ -249,5 +249,5 @@ Pokud skupina NSG blokuje žádostí o stav testu z výchozí značka AZURE_LOAD
 
 - Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-overview.md).
 - Další informace o [Load Balanceru úrovně Standard](load-balancer-standard-overview.md).
-- Další informace o [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+- Další informace o [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 - Přečtěte si o některých dalších klíče [sítě možnosti](../networking/networking-overview.md) v Azure.

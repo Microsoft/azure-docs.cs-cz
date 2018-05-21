@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 636f7be10850ff6a65aa6a2680bea148cb5ebd3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 618ed0f72886fff1c2de11e2fd856f6cc065a7b3
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="network-security"></a>Zabezpečení sítě
 
@@ -56,7 +56,10 @@ Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může pod
 |Rozsah portů     |Můžete zadat určitý port nebo rozsah portů. Můžete zadat například 80 nebo 10000-10005. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat několik portů ani rozsahů portů ve stejném pravidlu zabezpečení.   |
 |Akce     | Povolení nebo odepření.        |
 
-Pravidla zabezpečení jsou stavová. Pokud zadáte odchozí pravidlo zabezpečení pro všechny adresy například přes port 80, není potřeba zadávat příchozí pravidlo zabezpečení pro reakci na odchozí provoz. Příchozí pravidlo zabezpečení je potřeba zadat pouze v případě, že se komunikace zahajuje externě. Opačně to platí také. Pokud je přes port povolený příchozí provoz, není potřeba zadávat odchozí pravidlo zabezpečení pro reakci na provoz přes tento port. Informace o omezeních při vytváření pravidel zabezpečení najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Pravidla zabezpečení NSG se vyhodnocují podle priority s použitím informací o řazené kolekci 5 členů (zdroj, zdrojový port, cíl, cílový port a protokol) a určují, jestli se má provoz povolit nebo odepřít. Pro stávající připojení se vytvoří záznam toku a komunikace se povoluje nebo odepírá na základě stavu připojení v záznamech toků. Díky tomu může být skupina zabezpečení sítě stavová. Pokud zadáte odchozí pravidlo zabezpečení pro všechny adresy například přes port 80, není potřeba zadávat příchozí pravidlo zabezpečení pro reakci na odchozí provoz. Příchozí pravidlo zabezpečení je potřeba zadat pouze v případě, že se komunikace zahajuje externě. Opačně to platí také. Pokud je přes port povolený příchozí provoz, není potřeba zadávat odchozí pravidlo zabezpečení pro reakci na provoz přes tento port.
+Pokud odeberete pravidlo zabezpečení, které povolilo tok, nesmí se přerušit žádné stávající připojení. Toky provozu se přeruší v případě zastavení připojení a toku provozu oběma směry po dobu alespoň několika minut.
+
+Informace o omezeních při vytváření pravidel zabezpečení najdete v článku o [omezeních Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="augmented-security-rules"></a>Rozšířená pravidla zabezpečení
 
@@ -120,8 +123,13 @@ Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pra
 * **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** v případě klasického modelu): Tato značka označuje nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [IP adresu datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), kde mají původ sondy stavu Azure. Pokud nepoužíváte nástroj pro vyrovnávání zatížení Azure, můžete toto pravidlo přepsat.
 * **Internet** (Resource Manager) (**INTERNET** v případě klasického modelu): Tato značka označuje adresní prostor IP adres, který se nachází mimo virtuální síť a je dostupný prostřednictvím veřejného internetu. Rozsah adres zahrnuje [veřejný adresní prostor IP adres vlastněný Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 * **AzureTrafficManager** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres sondy pro Azure Traffic Manager. Další informace o IP adresách sondy pro Traffic Manager najdete v tématu [Azure Traffic Manager – nejčastější dotazy](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs).
-* **Storage** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres pro službu Azure Storage. Pokud jako hodnotu zadáte *Storage*, provoz směřující do úložiště se povolí nebo zakáže. Pokud chcete povolit přístup k úložišti pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure Storage v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage.
-* **Sql** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure SQL Database a Azure SQL Data Warehouse. Pokud jako hodnotu zadáte *SQL*, provoz směřující do SQL se povolí nebo zakáže. Pokud chcete povolit přístup k SQL jenom v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure SQL Database v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL.
+* **Storage** (pouze Resource Manager): Tato značka označuje adresní prostor IP adres pro službu Azure Storage. Pokud jako hodnotu zadáte *Storage*, provoz směřující do úložiště se povolí nebo zakáže. Pokud chcete povolit přístup k úložišti pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure Storage v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. Všechny předpony adres reprezentované touto značkou jsou reprezentované také značkou **Internet**.
+* **Sql** (pouze Resource Manager): Tato značka označuje předpony adres služeb Azure SQL Database a Azure SQL Data Warehouse. Pokud jako hodnotu zadáte *SQL*, provoz směřující do SQL se povolí nebo zakáže. Pokud chcete povolit přístup k SQL jenom v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete zadat tuto oblast. Pokud například chcete povolit přístup pouze ke službě Azure SQL Database v oblasti Východní USA, můžete jako značku služby zadat *Storage.EastUS*. Značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. Všechny předpony adres reprezentované touto značkou jsou reprezentované také značkou **Internet**.
+* **AzureCosmosDB** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Cosmos Database. Pokud jako hodnotu zadáte *AzureCosmosDB*, provoz směřující do služby Azure Cosmos DB se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Azure Cosmos DB pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureCosmosDB.[název_oblasti].
+* **AzureKeyVault** (pouze Resource Manager): Tato značka označuje předpony adres služby Azure Key Vault. Pokud jako hodnotu zadáte *AzureKeyVault*, provoz směřující do služby Azure Key Vault se povolí nebo zakáže. Pokud chcete povolit přístup ke službě Azure Key Vault pouze v konkrétní [oblasti](https://azure.microsoft.com/regions), můžete oblast zadat v následujícím formátu: AzureKeyVault.[název_oblasti].
+
+> [!NOTE]
+> Značky služeb Azure označují předpony adres z konkrétního používaného cloudu. Místní značky služeb se nepodporují v národních cloudech, pouze v globálním formátu, např. Storage, Sql.
 
 > [!NOTE]
 > Pokud implementujete [koncový bod služby virtuální sítě](virtual-network-service-endpoints-overview.md) pro službu, jako je Azure Storage nebo Azure SQL Database, Azure pro tuto službu přidá trasu k podsíti virtuální sítě. Předpony adres pro trasu jsou stejné předpony adres nebo rozsahy CIDR jako u odpovídající značky služby.
@@ -143,7 +151,7 @@ Další informace o omezeních při vytváření skupin zabezpečení aplikací 
 
 Pro skupiny zabezpečení aplikací platí následující omezení:
 
--   Všechna síťová rozhraní v rámci skupiny zabezpečení aplikace musí existovat ve stejné virtuální síti. Do stejné skupiny zabezpečení aplikace nemůžete přidat síťová rozhraní z různých virtuálních sítí. Virtuální síť, ve které je první síťové rozhraní přiřazené ke skupině zabezpečení aplikace, definuje, ve které virtuální síti musí existovat všechna další přiřazená síťová rozhraní.
+-   Všechna síťová rozhraní přiřazená ke skupině zabezpečení aplikace musí existovat ve stejné virtuální síti jako první síťové rozhraní přiřazené ke skupině zabezpečení aplikace. Pokud se například první síťové rozhraní přiřazené ke skupině zabezpečení aplikace *ASG1* nachází ve virtuální síti *VNet1*, pak všechna další síťová rozhraní přiřazená ke skupině zabezpečení aplikace *ASG1* musí existovat ve virtuální síti *VNet1*. Do stejné skupiny zabezpečení aplikace nemůžete přidat síťová rozhraní z různých virtuálních sítí.
 - Pokud zadáte skupiny zabezpečení aplikací jako zdroj a cíl v pravidle zabezpečení, síťová rozhraní v obou skupinách zabezpečení aplikací musí existovat ve stejné virtuální síti. Kdyby například skupina ASG1 obsahovala síťová rozhraní z virtuální sítě VNet1 a skupina ASG2 obsahovala síťová rozhraní z virtuální sítě VNet2, nemohli byste v pravidle přiřadit skupinu ASG1 jako zdroj a skupinu ASG2 jako cíl, ale všechna síťová rozhraní by musela existovat ve virtuální síti VNet1.
 
 ## <a name="azure-platform-considerations"></a>Důležité informace o platformě Azure
