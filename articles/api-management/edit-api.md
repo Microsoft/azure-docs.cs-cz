@@ -1,11 +1,11 @@
 ---
-title: "Upravit rozhraní API pomocí portálu Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak upravit rozhraní API pomocí rozhraní API správy (APIM)."
+title: Úprava rozhraní API pomocí webu Azure Portal | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí služby API Management (APIM) upravit rozhraní API.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,51 +13,51 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 362c36181da706e3fe0a27cc5ab262271c2a1e57
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: b39259fcfc93cb0a2a1a2dc600e5235da8cc6930
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="edit-an-api"></a>Upravit rozhraní API
+# <a name="edit-an-api"></a>Úprava rozhraní API
 
-Kroky v tomto kurzu ukazují, jak upravit rozhraní API pomocí rozhraní API správy (APIM). 
+Kroky v tomto kurzu popisují, jak pomocí služby API Management (APIM) upravit rozhraní API. 
 
-+ Můžete provést přidáním, odstranění, přejmenování operace v instanci APIM. 
-+ Můžete upravit vaše rozhraní API swaggeru.
++ Můžete to provést přidáním, odstraněním nebo přejmenováním operací v instanci APIM. 
++ Můžete upravit swagger vašeho rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
++ [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 + [Import a publikování vašeho prvního rozhraní API](import-and-publish.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="edit-an-api-in-apim"></a>Upravit rozhraní API v APIM
+## <a name="edit-an-api-in-apim"></a>Úprava rozhraní API ve službě APIM
 
-![Upravit rozhraní api](./media/edit-api/edit-api001.png)
+![Úprava rozhraní API](./media/edit-api/edit-api001.png)
 
-1. Klikněte **rozhraní API** kartě.
-2. Vyberte jednu z rozhraní API, která jste předtím naimportovali.
-3. Vyberte **návrhu** kartě.
-4. Vyberte operaci, který chcete upravit.
-5. Pokud chcete přejmenovat operaci, vyberte **tužky** v **front-endu** okno.
+1. Klikněte na kartu **Rozhraní API**.
+2. Vyberte některé z rozhraní API, která jste předtím naimportovali.
+3. Vyberte kartu **Návrh**.
+4. Vyberte operaci, kterou chcete upravit.
+5. Pokud chcete operaci přejmenovat, vyberte **tužku** v okně **Front-end**.
 
-## <a name="update-the-swagger"></a>Aktualizace swagger
+## <a name="update-the-swagger"></a>Aktualizace swaggeru
 
-Backbend rozhraní API z portálu Azure můžete aktualizovat pomocí následujících kroků:
+Back-end rozhraní API můžete upravit na webu Azure Portal pomocí následujících kroků:
 
-1. Vyberte **všechny operace**
-2. Klikněte na tlačítko tužky v **front-endu** okno.
+1. Vyberte **Všechny operace**.
+2. Klikněte na tužku v okně **Front-end**.
 
-    ![Upravit rozhraní api](./media/edit-api/edit-api002.png)
+    ![Úprava rozhraní API](./media/edit-api/edit-api002.png)
 
-    Zobrazí se vaše rozhraní API swaggeru.
+    Zobrazí se swagger vašeho rozhraní API.
 
-    ![Upravit rozhraní api](./media/edit-api/edit-api003.png)
+    ![Úprava rozhraní API](./media/edit-api/edit-api003.png)
 
 3. Aktualizujte swagger.
-4. Stiskněte klávesu **Uložit**.
+4. Stiskněte **Uložit**.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
@@ -65,4 +65,4 @@ Backbend rozhraní API z portálu Azure můžete aktualizovat pomocí následuj�
 
 > [!div class="nextstepaction"]
 > [Ukázky zásad APIM](policy-samples.md)
-> [transformace a chránit publikované rozhraní API](transform-api.md)
+> [Transformace a ochrana publikovaného rozhraní API](transform-api.md)
