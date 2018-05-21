@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 055b2cdadf48c31635183b73f214f2215477c9d7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2a181fbae8ab1e08669021c42c5b4be08f66172
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -115,6 +115,27 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -FindValue $certCN `
     -StoreLocation CurrentUser `
     -StoreName My 
+```
+
+#### <a name="connect-using-certificate-thumbprint"></a>Připojení pomocí kryptografický otisk certifikátu
+Zadejte kryptografický otisk certifikátu clusteru a kryptografický otisk certifikátu klienta, kterému byla udělena oprávnění pro správu clusteru. Podrobnosti o certifikátu musí odpovídat certifikát na uzlech clusteru.
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `  
+          -KeepAliveIntervalInSec 10 `  
+          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `  
+          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `  
+          -StoreLocation CurrentUser -StoreName My
+```
+
+*ServerCertThumbprint* je kryptografický otisk certifikátu serveru nainstalované na uzlech clusteru. *FindValue* je kryptografický otisk certifikátu klienta správce.  Když jsou vyplněna parametry, vypadá příkaz v následujícím příkladu:
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
+          -KeepAliveIntervalInSec 10 `  
+          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `  
+          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `  
+          -StoreLocation CurrentUser -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Připojení ke clusteru zabezpečené pomocí služby Windows Active Directory

@@ -61,12 +61,10 @@
           href: virtual-networks-acl.md
 - name: Návody
   items:
-    - name: Plánování a návrh
+    - name: Plánování
       items:
         - name: Virtuální sítě
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Skupiny zabezpečení sítě
-          href: virtual-networks-nsg.md
     - name: Nasazení
       items:
         - name: Skupiny zabezpečení sítě
