@@ -1,11 +1,11 @@
 ---
-title: "Řešení chyb Azure aplikační brány chybný brány (502) | Microsoft Docs"
-description: "Zjistěte, jak vyřešit chyby 502 brány aplikace"
+title: Řešení chyb Azure aplikační brány chybný brány (502) | Microsoft Docs
+description: Zjistěte, jak vyřešit chyby 502 brány aplikace
 services: application-gateway
 documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 1d431ead-d318-47d8-b3ad-9c69f7e08813
 ms.service: application-gateway
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: e0099734a81cd8b1edf5cf80cb56b5c322a5feee
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Řešení potíží s chybami Chybná brána v aplikační brány
 
@@ -89,10 +89,10 @@ chyby 502 může být také časté indikátory, že výchozí kontroly stavu ne
 
 * Zajistěte, aby výchozí web je nakonfigurován a naslouchá na 127.0.0.1.
 * Pokud BackendHttpSetting určuje jiný port než 80, by měl být výchozí web nakonfigurován pro naslouchání na tomto portu.
-* Volání http://127.0.0.1:port by měl vrátit kód výsledku HTTP 200. To má být vrácen v daném časovém limitu 30 sekund.
+* Volání http://127.0.0.1:port by měla vrátit kód výsledku HTTP 200. To má být vrácen v daném časovém limitu 30 sekund.
 * Zkontrolujte, zda je otevřený port nakonfigurovaný a že neexistují žádná pravidla brány firewall nebo skupiny zabezpečení sítě Azure, která blokují příchozí nebo odchozí přenosy na portu nakonfigurován.
 * Pokud virtuální počítače Azure classic nebo Cloudová služba se používá s plně kvalifikovaný název domény nebo veřejné IP adresy, ujistěte se, že odpovídající [koncový bod](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) je otevřen.
-* Pokud virtuální počítač je nakonfigurován pomocí Azure Resource Manager a mimo virtuální síť, kde je nasazená aplikační bránu, [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) musí být nakonfigurována pro povolení přístupu na požadovaný port.
+* Pokud virtuální počítač je nakonfigurován pomocí Azure Resource Manager a mimo virtuální síť, kde je nasazená aplikační bránu, [skupinu zabezpečení sítě](../virtual-network/security-overview.md) musí být nakonfigurována pro povolení přístupu na požadovaný port.
 
 ## <a name="problems-with-custom-health-probe"></a>Problémy s vlastní stav testu
 

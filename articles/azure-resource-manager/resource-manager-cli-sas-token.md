@@ -1,24 +1,24 @@
 ---
-title: "Nasazení šablony Azure s tokenu SAS a rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Pomocí Azure Resource Manager a rozhraní příkazového řádku Azure můžete nasadit prostředky do Azure ze šablony, která je chráněná pomocí tokenu SAS."
+title: Nasazení šablony Azure s tokenu SAS a rozhraní příkazového řádku Azure | Microsoft Docs
+description: Pomocí Azure Resource Manager a rozhraní příkazového řádku Azure můžete nasadit prostředky do Azure ze šablony, která je chráněná pomocí tokenu SAS.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 22387aadd8f53a65efb76a29a9403c46a2c25954
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b97fdea36eab914926ff91e1f27bdab0fb8a3930
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Nasazení privátní šablony Resource Manageru pomocí tokenu SAS a rozhraní příkazového řádku Azure
 
@@ -84,7 +84,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 Příklad použití tokenu SAS s propojených šablon naleznete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Úvod do nasazení šablony, najdete v části [nasazení prostředků pomocí šablony Resource Manageru a prostředí Azure PowerShell](resource-group-template-deploy-cli.md).
 * Pro dokončení ukázkový skript, který nasadí šablonu, najdete v části [skript šablony nasazení Resource Manager](resource-manager-samples-cli-deploy.md)
 * Chcete-li definovat parametry v šabloně, přečtěte si téma [vytváření šablon](resource-group-authoring-templates.md#parameters).

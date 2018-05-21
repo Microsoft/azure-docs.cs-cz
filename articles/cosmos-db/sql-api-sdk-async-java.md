@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/18/2018
 ms.author: sngun
-ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9dae401bc007b78d8ee3c6993735650e3b26b9d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -55,6 +55,18 @@ SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, 
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
+* Přidaná podpora pro jedinečný Index zásad.
+* Přidaná podpora pro omezení velikosti odpovědi token pokračování v možnostech informačního kanálu.
+* Přidaná podpora pro rozdělení oddílů v křížové dotaz oddílu.
+* Pevné chyby v serializaci Json časové razítko ([githubu #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
+* Pevná chyby ve výčtu serializace Json.
+* Pevné chyb při správě dokumentů velikosti 2MB ([githubu #. 33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
+* Závislost com.fasterxml.jackson.core:jackson-databind upgradovat na 2.9.5 z důvodu chyby ([jackson databind: githubu #1599](https://github.com/FasterXML/jackson-databind/issues/1599))
+* Závislost na upgradovat na 0.8.0.17 z důvodu chyby rxjava – funkce ([funkce rxjava: githubu #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
+* Popis metadata v souboru pom aktualizován za účelem vložené se zbytkem dokumentaci.
+* Syntaxe zlepšování ([githubu #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([githubu #40](https://github.com/Azure/azure-cosmosdb-java/issues/40)).
+
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Byla přidána podpora back přetížení v dotazu.
 * Přidaná podpora pro id klíče rozsahu oddílu v dotazu.
@@ -79,6 +91,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.0.2](#1.0.2) |18 může 2018|--- |
 | [1.0.1](#1.0.1) |20 duben 2018|--- |
 | [1.0.0](#1.0.0) |27. února 2018|--- |
 

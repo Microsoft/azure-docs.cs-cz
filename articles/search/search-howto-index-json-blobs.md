@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objekty BLOB JSON s indexer objektu blob Azure Search
 Tento článek ukazuje, jak nakonfigurovat indexer Azure Search objektů blob k extrahování strukturovaných obsahu z JSON objektů BLOB v Azure Blob storage.
@@ -23,7 +23,7 @@ Objekty BLOB JSON v Azure Blob storage jsou obvykle jednotlivý dokument JSON ne
 | Dokument JSON | parsingMode | Popis | Dostupnost |
 |--------------|-------------|--------------|--------------|
 | Jeden na každý objekt blob | `json` | Analyzuje objekty BLOB JSON jako jeden blok textu. Každý objekt JSON blob se změní na jeden dokument Azure Search. | Obecně k dispozici v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) rozhraní API. |
-| Více na jeden objekt blob | `jsonArray` | Analyzuje pole JSON do objektu BLOB, kde každý element pole se změní na samostatné dokument Azure Search.  | Ve verzi preview v [REST api-version =`2016-09-01-Preview` ](search-api-2016-09-01-preview.md) a [.NET SDK Preview](https://aka.ms/search-sdk-preview). |
+| Více na jeden objekt blob | `jsonArray` | Analyzuje pole JSON do objektu BLOB, kde každý element pole se změní na samostatné dokument Azure Search.  | Ve verzi preview v [REST api-version =`2017-11-11-Preview` ](search-api-2017-11-11-preview.md) a [.NET SDK Preview](https://aka.ms/search-sdk-preview). |
 
 > [!Note]
 > Rozhraní API Preview jsou určené pro testování a vyhodnocení a nesmí být použita v produkčním prostředí.
@@ -116,7 +116,7 @@ Případně se můžete rozhodnout pro funkci preview pole JSON. Tato možnost j
 
 Pro pole JSON, žádost indexer používá rozhraní API ve verzi preview a `jsonArray` analyzátor. Toto jsou požadavky na pouze dvě pole specifické pro indexování objekty BLOB JSON.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -129,6 +129,8 @@ Pro pole JSON, žádost indexer používá rozhraní API ve verzi preview a `jso
     }
 
 Znovu Všimněte si, že mapování polí nejsou nutné. Zadaný index s pole "id" a "text", objektů blob indexeru odvození správné mapování bez seznam mapování polí.
+
+<a name="nested-json-arrays"></a>
 
 ### <a name="nested-json-arrays"></a>Vnořená pole JSON
 Co dělat, když chcete indexu pole objektů JSON, ale tohoto pole je vnořený někde v tomto dokumentu? Můžete si vybrat vlastností, které obsahuje pole pomocí `documentRoot` vlastnosti konfigurace. Pokud například objektů BLOB vypadat takto:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 648d96bbb18186524cfad4d3df1f61e98062fcb4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -119,7 +119,7 @@ Zkontrolujte [podrobné diskuzi o HA porty](load-balancer-ha-ports-overview.md).
 
 Nástroj pro vyrovnávání zatížení je plně zařazený, nemá k virtuální síti.  Virtuální síť je uzavřené, privátní síť.  Protože nástroje pro vyrovnávání zatížení a veřejné IP adresy jsou navržená tak, aby této virtuální síti nelze přistupovat ze mimo virtuální síť, tyto prostředky teď výchozí uzavřen, pokud je otevřete. To znamená, že skupiny zabezpečení sítě (Nsg) se nyní používají tak, aby výslovně povolovala a seznam povolených adres povolené přenosy.  Můžete vytvořit vaše virtuální celého datového centra a rozhodnout prostřednictvím NSG, co a pokud by měl být k dispozici.  Pokud nemáte skupinu NSG na podsítě nebo síťová karta tohoto prostředku virtuálního počítače, jsme nebude povolit provoz k dosažení tohoto prostředku.
 
-Další informace o skupiny Nsg a způsobu jejich použití pro váš scénář naleznete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+Další informace o skupiny Nsg a způsobu jejich použití pro váš scénář naleznete v tématu [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
 ### <a name="outbound"></a> Odchozí připojení
 
@@ -237,7 +237,7 @@ Standardní Vyrovnávání zatížení je odečtena produkt na základě počtu 
 - Další informace o [standardní Vyrovnávání zatížení s pravidla Vyrovnávání zatížení HA porty](load-balancer-ha-ports-overview.md)
 - Další informace o použití [Vyrovnávání zatížení s více Frontends](load-balancer-multivip-overview.md)
 - Další informace o [virtuální sítě](../virtual-network/virtual-networks-overview.md).
-- Další informace o [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md).
+- Další informace o [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 - Další informace o [koncové body služby virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Přečtěte si o některých dalších klíče [sítě možnosti](../networking/networking-overview.md) v Azure.
 - Další informace o [nástroj pro vyrovnávání zatížení](load-balancer-overview.md).

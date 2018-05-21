@@ -1,11 +1,11 @@
 ---
-title: "Omezení přístupu prostřednictvím internetových koncových bodů v Azure Security Center | Microsoft Docs"
-description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** omezit přístup prostřednictvím internetové koncový bod **."
+title: Omezení přístupu prostřednictvím internetových koncových bodů v Azure Security Center | Microsoft Docs
+description: Tento dokument se dozvíte, jak provést doporučení Azure Security Center **omezit přístup prostřednictvím internetové koncový bod**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Omezení přístupu prostřednictvím internetových koncových bodů v Azure Security Center
 Azure Security Center doporučí, omezení přístupu prostřednictvím internetových koncových bodů, pokud žádné skupiny zabezpečení sítě (Nsg) má jednu nebo více příchozí pravidla, která umožňují přístup z "žádné" zdrojové IP adresy. Otevírání přístup k "žádné" může povolit útočníci k přístupu k prostředkům. Security Center doporučí, že upravíte tyto příchozích pravidel pro omezení přístupu ke zdrojové IP adresy, které skutečně potřebují přístup.
@@ -44,18 +44,18 @@ Toto doporučení se generuje pro všechny port jiný web, který má "žádný"
 
    ![Příchozí pravidla zabezpečení][4]
 
-   Všimněte si, můžete také vybrat **výchozí pravidla** zobrazíte sadu výchozích pravidel obsažené ve všech skupin Nsg. Výchozí pravidla nelze odstranit, ale protože je jim přiřazená s nižší prioritou, dají se přepsat pravidly, které vytvoříte. Další informace o [výchozí pravidla](../virtual-network/virtual-networks-nsg.md#default-rules).
+   Všimněte si, můžete také vybrat **výchozí pravidla** zobrazíte sadu výchozích pravidel obsažené ve všech skupin Nsg. Výchozí pravidla nelze odstranit, ale protože je jim přiřazená s nižší prioritou, dají se přepsat pravidly, které vytvoříte. Další informace o [výchozí pravidla](../virtual-network/security-overview.md#default-security-rules).
 
    ![Výchozí pravidla][5]
-5. Na **AllowWeb** okně Upravit vlastnosti příchozí pravidlo tak, aby **zdroj** je IP adresa nebo blok IP adres. Další informace o vlastnostech příchozí pravidlo, najdete v části [pravidla NSG](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+5. Na **AllowWeb** okně Upravit vlastnosti příchozí pravidlo tak, aby **zdroj** je IP adresa nebo blok IP adres. Další informace o vlastnostech příchozí pravidlo, najdete v části [pravidla NSG](../virtual-network/security-overview.md#security-rules).
 
    ![Upravit pravidlo pro příchozí][6]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Tento článek vám ukázal, jak provést doporučení Security Center "Omezit přístup prostřednictvím internetový koncový bod." Další informace o povolení skupiny Nsg a pravidla, naleznete v následujících tématech:
 
-* [Co je skupina zabezpečení sítě (NSG)?](../virtual-network/virtual-networks-nsg.md)
-* [Správa skupin Nsg pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Co je skupina zabezpečení sítě (NSG)?](../virtual-network/security-overview.md)
+* [Spravovat skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
