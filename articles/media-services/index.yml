@@ -14,36 +14,71 @@ metadata:
   ms.topic: landing-page
   ms.date: 04-21-2018
   ms.author: juliako
-  ms.openlocfilehash: 6bee2f17db6d1f79dd2ba84a278ff6a82b871a9e
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 781cd8eb2796062b3cebb6b848ee5f1fe204f460
+  ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 05/20/2018
 abstract:
   description: Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to.
 sections:
-- title: 
-  items:
+- items:
   - type: list
     style: cards
-    className: cardsA
+    className: cardsM
+    columns: 2
     items:
-    - html: <a href="/azure/media-services/latest/"> <br><strong>Azure Media Services v3 (Preview)</strong></a> <p>Naučíte se streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.</p>
-    - html: <a href="/azure/media-services/previous/"> <br><strong>Azure Media Services v2 (GA)</strong></a> <p>Naučíte se streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v2.</p>
+    - href: /azure/media-services/latest/
+      html: <p>Naučíte se kódovat, streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.</p>
+      image:
+        src: media/index/media-services-v3.png
+      title: Azure Media Services v3 (Preview)
+    - href: /azure/media-services/previous/
+      html: <p>Naučíte se kódovat, streamovat na vyžádání a živě vysílat vaše videa pomocí Media Services v2.</p>
+      image:
+        src: media/index/media-services-v2.png
+      title: Azure Media Services v2 (GA)
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Zjistíte, jak vytvořit účet Media Services, spustit kódování videí a použít k jejich přehrávání Azure Media Player:'
-  - type: list
-    style: ordered
-    items:
-    - html: 'Streamované soubory: <a href="/azure/media-services/latest/stream-files-dotnet-quickstart">v3</a> | <a href="/azure/media-services/previous/media-services-portal-vod-get-started">v2</a>'
+    text: 'Naučte se stremovat živě i na vyžádání s využitím Media Services:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/stream.png
+      title: Živé streamování
+    - image:
+        src: media/index/stream.png
+      title: Streamování souborů
+    rows:
+    - title: Media Services v3
+      values:
+      - href: https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live
+      - href: /azure/media-services/latest/stream-files-dotnet-quickstart
+    - title: Media Services v2
+      values:
+      - href: /azure/media-services/previous/media-services-portal-live-passthrough-get-started
+      - href: /azure/media-services/previous/media-services-portal-vod-get-started
 - title: Podrobné kurzy
   items:
   - type: paragraph
     text: 'Naučte se streamovat soubory a analyzovat videa s využitím Media Services:'
-  - type: list
-    style: ordered
-    items:
-    - html: 'Nahrávání, kódování a streamování videí: <a href="/azure/media-services/latest/stream-files-tutorial-with-api">v3</a> | <a href="/azure/media-services/previous/media-services-dotnet-get-started">v2</a>'
-    - html: 'Analýza videí: <a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">v3</a> | <a href="/azure/media-services/previous/media-services-analytics-overview">v2</a>'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/encode.png
+      title: Kódování a streamování
+    - image:
+        src: media/index/analyze.png
+      title: Analýza videí
+    rows:
+    - title: Media Services v3
+      values:
+      - href: /azure/media-services/latest/stream-files-tutorial-with-api
+      - href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+    - title: Media Services v2
+      values:
+      - href: /azure/media-services/previous/media-services-dotnet-get-started
+      - href: 

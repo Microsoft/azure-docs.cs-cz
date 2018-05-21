@@ -10,16 +10,16 @@ editor: tysonn
 keywords: Chyba nasazení, nasazení azure nasazení do azure
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 01cc75c522b85f7b4a4b38c92f42cb113d016b73
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ecc1a9557c7854a0771decb3cc7f7597bcd87dd
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru
 
@@ -34,7 +34,7 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | AllocationFailed | Na clusteru nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače. Opakovat požadavek později, nebo požádejte jinou velikost virtuálního počítače. | [Problémy se zřizováním a přidělení Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problémy se zřizováním a přidělení Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) a [řešení potíží s přidělováním](../virtual-machines/windows/allocation-failure.md)|
 | AnotherOperationInProgress | Počkejte na dokončení souběžná operace. | |
 | AuthorizationFailed | Váš účet nebo instanční objekt nemá dostatečný přístup k dokončení nasazení. Zkontrolujte roli, kterou váš účet patří do a přístup pro obor nasazení. | [Řízení přístupu Azure na základě rolí](../role-based-access-control/role-assignments-portal.md) |
-| Struktura BadRequest | Jste poslali hodnot nasazení, které neodpovídají očekávané pomocí Správce prostředků. Zkontrolujte zprávy vnitřní stav a nápovědu k řešení potíží. | [Odkaz na šablonu](/azure/templates/) a [podporované umístění](resource-manager-templates-resources.md#location) |
+| BadRequest | Jste poslali hodnot nasazení, které neodpovídají očekávané pomocí Správce prostředků. Zkontrolujte zprávy vnitřní stav a nápovědu k řešení potíží. | [Odkaz na šablonu](/azure/templates/) a [podporované umístění](resource-manager-templates-resources.md#location) |
 | Konflikt | Požadujete operace, který není povolen v aktuálním stavu prostředku. Například změna velikosti disku je povolená pouze při vytváření virtuálního počítače, nebo když je virtuální počítač navrácený. | |
 | DeploymentActive | Počkejte, než pro souběžné nasazení do této skupiny prostředků pro dokončení. | |
 | DeploymentFailed | Chyba DeploymentFailed je obecná chyba, která neobsahuje podrobnosti, budete muset vyřešit chyby. Vyhledejte v podrobnostech o chybě chybový kód, který poskytuje další informace. | [Najít kód chyby](#find-error-code) |
@@ -73,8 +73,8 @@ Tento článek popisuje některé běžné chyby nasazení Azure můžete setkat
 | ResourceNotFound | Nasazení odkazuje na prostředek, který nelze vyřešit. Ověřte, že používání **odkaz** parametrů požadovaných pro váš scénář zahrnuje funkce. | [Překlad odkazů](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Nasazení se pokouší vytvořit prostředky, které překročí kvótu pro předplatné, skupinu prostředků nebo oblasti. Pokud je to možné upraveno infrastrukturu tak, aby zůstat v rámci kvóty. Zvažte, jinak hodnota požadavku na změnu vaší kvóty. | [Vyřešte kvóty](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Vyberte SKU (například velikost virtuálního počítače), která je k dispozici pro umístění, které jste vybrali. | [Vyřešte SKU](resource-manager-sku-not-available-errors.md) |
-| StorageAccountAlreadyExists | Zadejte jedinečný název pro účet úložiště. | [Přeložit název účtu úložiště](resource-manager-storage-account-name-errors.md)  |
-| StorageAccountAlreadyTaken | Zadejte jedinečný název pro účet úložiště. | [Přeložit název účtu úložiště](resource-manager-storage-account-name-errors.md) |
+| StorageAccountAlreadyExists | Zadejte jedinečný název účtu úložiště. | [Přeložit název účtu úložiště](resource-manager-storage-account-name-errors.md)  |
+| StorageAccountAlreadyTaken | Zadejte jedinečný název účtu úložiště. | [Přeložit název účtu úložiště](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | Zkontrolujte předplatné, skupinu prostředků a název účtu úložiště, ke které chcete použít. | |
 | SubnetsNotInSameVnet | Virtuální počítač může mít pouze jednu virtuální síť. Pokud nasazujete víc síťových karet, ujistěte se, že patří do stejné virtuální síti. | [Několik síťových adaptérů](../virtual-machines/windows/multiple-nics.md) |
 | TemplateResourceCircularDependency | Odebrání nepotřebných závislostí. | [Vyřešte cyklické závislosti](resource-manager-invalid-template-errors.md#circular-dependency) |
