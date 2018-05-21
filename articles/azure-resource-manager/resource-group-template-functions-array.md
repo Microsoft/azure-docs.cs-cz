@@ -1,42 +1,42 @@
 ---
-title: "Šablona Azure Resource Manageru funkce – polí a objekty | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manageru pro práci s pole a objekty."
+title: Šablona Azure Resource Manageru funkce – polí a objekty | Microsoft Docs
+description: Popisuje funkce pro použití v šablonu Azure Resource Manageru pro práci s pole a objekty.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7d040fe55cb46665c97668a76ccbc66adc002f89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb24535956140632da73807364b6f3ff7b91a416
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Pole a objektu funkce pro šablony Azure Resource Manager 
 
 Resource Manager poskytuje několik funkce pro práci s pole a objekty.
 
-* [pole](#array)
+* [Pole](#array)
 * [sloučení](#coalesce)
 * [concat](#concat)
-* [obsahuje](#contains)
+* [Obsahuje](#contains)
 * [createArray](#createarray)
 * [prázdný](#empty)
 * [první](#first)
 * [průnik](#intersection)
-* [JSON](#json)
+* [json](#json)
 * [poslední](#last)
 * [Délka](#length)
-* [maximální počet](#max)
-* [min.](#min)
+* [max](#max)
+* [Min.](#min)
 * [rozsah](#range)
 * [Přeskočit](#skip)
 * [proveďte](#take)
@@ -46,7 +46,7 @@ Pole hodnot řetězec oddělená hodnotu získáte v tématu [rozdělení](resou
 
 <a id="array" />
 
-## <a name="array"></a>Pole
+## <a name="array"></a>pole
 `array(convertToArray)`
 
 Převede hodnotu na pole.
@@ -61,7 +61,7 @@ Převede hodnotu na pole.
 
 Pole.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json) ukazuje, jak chcete používat funkci pole s různými typy.
 
@@ -104,7 +104,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | intOutput | Pole | [1] |
 | stringOutput | Pole | ["a"] |
@@ -140,7 +140,7 @@ Vrátí první hodnotu než null z parametrů. Prázdné řetězce, prázdné po
 
 Hodnota první parametry jinou hodnotu než null, což může být řetězec, int, pole nebo objekt. Hodnota Null, pokud jsou všechny parametry hodnotu null. 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) se zobrazuje výstup z různých používá funkci coalesce.
 
@@ -190,10 +190,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| stringOutput | Řetězec | Výchozí |
-| intOutput | celá čísla | 1 |
+| stringOutput | Řetězec | default |
+| intOutput | Int | 1 |
 | objectOutput | Objekt | {"první": "Výchozí"} |
 | arrayOutput | Pole | [1] |
 | emptyOutput | BOOL | True |
@@ -229,7 +229,7 @@ Tato funkce může trvat libovolný počet argumentů a může přijímat řetě
 ### <a name="return-value"></a>Návratová hodnota
 Řetězec nebo pole zřetězených hodnot.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) ukazuje, jak kombinovat dvěma poli.
 
@@ -268,7 +268,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | Vrátí | Pole | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -308,7 +308,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | concatOutput | Řetězec | Předpona 5yj4yjf5mbg72 |
 
@@ -326,7 +326,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="contains" />
 
-## <a name="contains"></a>Obsahuje
+## <a name="contains"></a>obsahuje
 `contains(container, itemToFind)`
 
 Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obsahuje dílčí řetězec.
@@ -342,7 +342,7 @@ Kontroluje, zda pole obsahuje hodnotu, objekt obsahuje klíč nebo řetězec obs
 
 **Hodnota TRUE,** Pokud je položka, jinak hodnota **False**.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) ukazuje, jak používat obsahuje s různými typy:
 
@@ -397,7 +397,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringTrue | BOOL | True |
 | stringFalse | BOOL | False |
@@ -436,7 +436,7 @@ Vytvoří pole parametrů.
 
 Pole.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json) ukazuje způsob použití createArray s různými typy:
 
@@ -479,7 +479,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringArray | Pole | ["a", "b", "c"] |
 | intArray | Pole | [1, 2, 3] |
@@ -516,7 +516,7 @@ Určuje, zda je prázdný řetězec, objekt nebo pole.
 
 Vrátí **True** Pokud hodnota je prázdný, jinak hodnota **False**.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ověří, zda jsou řetězec, objekt a pole prázdné.
 
@@ -559,7 +559,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayEmpty | BOOL | True |
 | objectEmpty | BOOL | True |
@@ -594,7 +594,7 @@ Vrátí první prvek pole nebo první znak řetězce.
 
 Typ (řetězec, int, pole nebo objekt) první prvek pole nebo první znak řetězce.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) ukazuje, jak používat funkci první s řetězec a pole.
 
@@ -625,7 +625,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Řetězec | jeden |
 | stringOutput | Řetězec | O |
@@ -661,7 +661,7 @@ Vrátí objekt s běžných elementech nebo jednoho pole z parametrů.
 
 Pole nebo objekt s běžných elementech.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json) ukazuje, jak používat průnik s pole a objekty:
 
@@ -704,7 +704,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {"1": "a", "tři": "c"} |
 | arrayOutput | Pole | ["dva", "tři"] |
@@ -721,7 +721,7 @@ Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
 ```
 
-## <a name="json"></a>JSON
+## <a name="json"></a>json
 `json(arg1)`
 
 Vrátí objekt JSON.
@@ -730,14 +730,14 @@ Vrátí objekt JSON.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Řetězec |Hodnota k převést na JSON. |
+| arg1 |Ano |řetězec |Hodnota k převést na JSON. |
 
 
 ### <a name="return-value"></a>Návratová hodnota
 
 Objekt JSON v zadaný řetězec nebo objekt prázdný při **null** je zadán.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) ukazuje, jak používat funkci json s pole a objekty:
 
@@ -762,7 +762,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | jsonOutput | Objekt | {"a": "b"} |
 | nullOutput | Logická hodnota | True |
@@ -796,7 +796,7 @@ Vrátí poslední element pole nebo poslední znak řetězce.
 
 Typ (řetězec, int, pole nebo objekt) posledním prvkem v pole nebo poslední znak řetězce.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) ukazuje, jak používat funkci naposledy s řetězec a pole.
 
@@ -827,7 +827,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Řetězec | tři |
 | stringOutput | Řetězec | E |
@@ -861,7 +861,7 @@ Vrátí počet prvků pole nebo znaků v řetězci.
 
 Typ int. 
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) ukazuje, jak používat délka s řetězec a pole:
 
@@ -899,10 +899,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayLength | celá čísla | 3 |
-| stringLength | celá čísla | 13 |
+| arrayLength | Int | 3 |
+| stringLength | Int | 13 |
 
 Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
 
@@ -929,7 +929,7 @@ Další informace o použití této funkce se pole najdete v tématu [vytvořit 
 
 <a id="max" />
 
-## <a name="max"></a>maximální počet
+## <a name="max"></a>max
 `max(arg1)`
 
 Vrací maximální hodnotu z pole celá čísla nebo seznam celých čísel oddělených čárkami.
@@ -944,7 +944,7 @@ Vrací maximální hodnotu z pole celá čísla nebo seznam celých čísel odd�
 
 Typ int představující maximální hodnotu.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) ukazuje, jak použít maximum s pole a seznam celých čísel:
 
@@ -974,10 +974,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | celá čísla | 5 |
-| intOutput | celá čísla | 5 |
+| arrayOutput | Int | 5 |
+| intOutput | Int | 5 |
 
 Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
 
@@ -1008,7 +1008,7 @@ Vrátí minimální hodnotu z pole celá čísla nebo seznam celých čísel odd
 
 Typ int představující minimální hodnotu.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) ukazuje, jak používat min s pole a seznam celých čísel:
 
@@ -1038,10 +1038,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| arrayOutput | celá čísla | 0 |
-| intOutput | celá čísla | 0 |
+| arrayOutput | Int | 0 |
+| intOutput | Int | 0 |
 
 Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
 
@@ -1073,7 +1073,7 @@ Vytvoří pole celých čísel od spuštění celé číslo a který obsahuje po
 
 Pole celých čísel.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json) ukazuje, jak používat funkci rozsahu:
 
@@ -1103,7 +1103,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | rangeOutput | Pole | [5, 6, 7] |
 
@@ -1137,7 +1137,7 @@ Vrátí pole s všechny elementy po zadaný počet v poli nebo vrátí řetězec
 
 Pole nebo řetězec.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) přeskočí zadaný počet elementů v poli a zadaný počet znaků v řetězci.
 
@@ -1183,7 +1183,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["tři"] |
 | stringOutput | Řetězec | dvě tři |
@@ -1218,7 +1218,7 @@ Vrátí pole s zadaný počet elementů od začátku pole nebo řetězec s zadan
 
 Pole nebo řetězec.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) provede zadaný počet elementů z pole a znaků z řetězce.
 
@@ -1264,10 +1264,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | arrayOutput | Pole | ["1", "dva"] |
-| stringOutput | Řetězec | na |
+| stringOutput | Řetězec | zapnuté |
 
 Chcete-li nasadit tento příklad šablony pomocí rozhraní příkazového řádku Azure, použijte:
 
@@ -1300,7 +1300,7 @@ Vrací jednu pole nebo objekt s všechny elementy z parametrů. Duplicitní hodn
 
 Pole nebo objekt.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json) ukazuje, jak používat sjednocení s pole a objekty:
 
@@ -1343,7 +1343,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {"1": "a", "dva": "b", "tři": "c2", "čtyři": "d", "5": "e"} |
 | arrayOutput | Pole | ["1", "dva", "tři", "čtyři"] |
@@ -1360,7 +1360,7 @@ Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
 * Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 * K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).

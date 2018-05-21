@@ -1,31 +1,31 @@
 ---
-title: "Funkce šablon Azure Resource Manager - nasazení | Microsoft Docs"
-description: "Popisuje funkce pro použití v šablonu Azure Resource Manager načíst informace o nasazení."
+title: Funkce šablon Azure Resource Manager - nasazení | Microsoft Docs
+description: Popisuje funkce pro použití v šablonu Azure Resource Manager načíst informace o nasazení.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 17fe2bc467acc5542d021961a066940dbecf6120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Nasazení funkce pro šablony Azure Resource Manager 
 
 Resource Manager poskytuje následující funkce pro získání hodnoty z části šablony a hodnoty týkající se nasazení:
 
 * [nasazení](#deployment)
-* [Parametry](#parameters)
+* [parameters](#parameters)
 * [proměnné](#variables)
 
 Získá hodnoty z prostředků, skupiny prostředků nebo odběrů, najdete v tématu [prostředků funkce](resource-group-template-functions-resource.md).
@@ -95,7 +95,7 @@ Deployment() můžete propojit s jinou šablony založené na šabloně nadřaze
 }
 ```  
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrací objekt nasazení:
 
@@ -160,7 +160,7 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v sekc
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Název parametru |Ano |Řetězec |Název parametru vrátit. |
+| Název parametru |Ano |řetězec |Název parametru vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -186,7 +186,7 @@ Parametry se obvykle používají pro nastavení hodnot prostředků. Následuj�
 ]
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušený použijte parametry funkce.
 
@@ -245,10 +245,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | možnost 1 |
-| intOutput | celá čísla | 1 |
+| intOutput | Int | 1 |
 | objectOutput | Objekt | {"1": "a", "dva": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
 | crossOutput | Řetězec | možnost 1 |
@@ -306,7 +306,7 @@ Proměnné se obvykle používají pro zjednodušení šablony vytvořením komp
 ],
 ```
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrátí různé hodnoty proměnné.
 
@@ -348,7 +348,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | exampleOutput1 | Řetězec | myVariable |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
@@ -367,7 +367,7 @@ Chcete-li nasadit tento příklad šablony v prostředí PowerShell, použijte:
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Popis v částech šablonu Azure Resource Manager naleznete v tématu [šablon pro tvorbu Azure Resource Manageru](resource-group-authoring-templates.md).
 * Sloučit několik šablon, najdete v části [použití propojených šablon s Azure Resource Manager](resource-group-linked-templates.md).
 * K iteraci v zadaného počtu opakování při vytváření typu prostředku, najdete v části [vytvořit více instancí prostředků ve službě Správce prostředků Azure](resource-group-create-multiple.md).

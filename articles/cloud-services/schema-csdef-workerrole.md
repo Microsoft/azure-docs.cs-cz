@@ -1,8 +1,8 @@
 ---
 title: Azure Cloud Services Def. Schéma WorkerRole | Microsoft Docs
+services: cloud-services
 ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -13,11 +13,11 @@ caps.latest.revision: 55
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 0171c7254db5855f0eccd19ae9938249d8966edd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 96131a0bb928da7e22f3e26449c8b2279457d03f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Definice schématu WorkerRole služby Azure Cloud Services
 Role pracovního procesu Azure je role, která je vhodný pro vývoj zobecněný a může provádět zpracování na pozadí pro webové role.
@@ -113,7 +113,7 @@ Soubor definice služby zahrnuje tyto prvky, které jsou podrobně popsány v n�
 
 [Certifikáty](#Certificates)
 
-[certifikát](#Certificate)
+[Certifikát](#Certificate)
 
 [Importy](#Imports)
 
@@ -123,13 +123,13 @@ Soubor definice služby zahrnuje tyto prvky, které jsou podrobně popsány v n�
 
 [Prostředí](#Environment)
 
-[EntryPoint](#EntryPoint)
+[Vstupní bod](#EntryPoint)
 
 [NetFxEntryPoint](#NetFxEntryPoint)
 
 [ProgramEntryPoint](#ProgramEntryPoint)
 
-[Variable](#Variable)
+[Proměnná](#Variable)
 
 [RoleInstanceValue](#RoleInstanceValue)
 
@@ -208,7 +208,7 @@ Následující tabulka popisuje atributy `InputEndpoint` elementu.
 |Protokol|řetězec|Povinná hodnota. Přenosový protokol pro externí koncový bod. Pro roli pracovního procesu, možné hodnoty jsou `HTTP`, `HTTPS`, `UDP`, nebo `TCP`.|
 |port|celá čísla|Povinná hodnota. Port pro externí koncový bod. Můžete zadat libovolné číslo portu, který zvolíte, ale zadaný pro každou roli v rámci služby čísla portů musí být jedinečný.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, (Azure SDK 1.7 nebo vyšší verze).|
 |certifikát|řetězec|Vyžaduje se pro koncový bod HTTPS. Název certifikátu definované `Certificate` elementu.|
-|localPort|celá čísla|Volitelné. Určuje port používaný pro vnitřní spojení na koncový bod. `localPort` Atribut externí port pro koncový bod se mapuje na interní port v roli. To je užitečné v situacích, kde roli musí komunikovat na komponentu interní na portu, liší od ten, který je zveřejněný externě.<br /><br /> Pokud není zadaný, hodnota `localPort` je stejný jako `port` atribut. Nastavte hodnotu `localPort` na "*" automaticky přiřadit nepřidělené port, který je zjistitelný na rozhraní API.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, (Azure SDK 1.7 nebo vyšší verze).<br /><br /> `localPort` Atribut je pouze dostupné pomocí sady Azure SDK verze 1.3 nebo vyšší.|
+|Místní_port|celá čísla|Volitelné. Určuje port používaný pro vnitřní spojení na koncový bod. `localPort` Atribut externí port pro koncový bod se mapuje na interní port v roli. To je užitečné v situacích, kde roli musí komunikovat na komponentu interní na portu, liší od ten, který je zveřejněný externě.<br /><br /> Pokud není zadaný, hodnota `localPort` je stejný jako `port` atribut. Nastavte hodnotu `localPort` na "*" automaticky přiřadit nepřidělené port, který je zjistitelný na rozhraní API.<br /><br /> Možné hodnoty jsou v rozsahu od 1 do 65535, (Azure SDK 1.7 nebo vyšší verze).<br /><br /> `localPort` Atribut je pouze dostupné pomocí sady Azure SDK verze 1.3 nebo vyšší.|
 |ignoreRoleInstanceStatus|Boolean|Volitelné. Pokud hodnota tohoto atributu nastavena na `true`, stav služby je ignorován a koncový bod se neodeberou nástroje pro vyrovnávání zatížení. Nastavení této hodnoty na `true` užitečné pro ladění zaneprázdněn instancí služby. Výchozí hodnota je `false`. **Poznámka:** koncový bod může stále přijímat provoz i v případě, že role není ve stavu Připraveno.|
 |loadBalancerProbe|řetězec|Volitelné. Název sondu nástroje pro vyrovnávání zatížení, který je přidružený vstupní koncový bod. Další informace najdete v tématu [LoadBalancerProbe schématu](schema-csdef-loadbalancerprobe.md).|
 
@@ -233,7 +233,7 @@ Následující tabulka popisuje atributy `InstanceInputEndpoint` elementu.
 | Atribut | Typ | Popis |
 | --------- | ---- | ----------- |
 |jméno|řetězec|Povinná hodnota. Jedinečný název pro koncový bod.|
-|localPort|celá čísla|Povinná hodnota. Určuje vnitřní port, který bude všechny instance rolí poslouchat aby bylo možné přijímat příchozí provoz, které jsou předávány z nástroje pro vyrovnávání zatížení. Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně).|
+|Místní_port|celá čísla|Povinná hodnota. Určuje vnitřní port, který bude všechny instance rolí poslouchat aby bylo možné přijímat příchozí provoz, které jsou předávány z nástroje pro vyrovnávání zatížení. Možné hodnoty jsou v rozsahu od 1 do 65535 (včetně).|
 |Protokol|řetězec|Povinná hodnota. Přenosový protokol pro vnitřní koncový bod. Možné hodnoty jsou `udp` nebo `tcp`. Použití `tcp` na základě provoz protokolu http nebo https.|
 
 ##  <a name="AllocatePublicPortFrom"></a> AllocatePublicPortFrom
@@ -348,7 +348,7 @@ Následující tabulka popisuje atributy `NetFxEntryPoint` elementu.
 
 | Atribut | Typ | Popis |
 | --------- | ---- | ----------- |
-|assemblyName|řetězec|Povinná hodnota. Název a cesta k souboru sestavení obsahující vstupní bod. Cesta je relativní vzhledem ke složce  **\\%ROLEROOT%\Approot** (nezadávejte  **\\%ROLEROOT%\Approot** v `commandLine`, předpokládá se,). **% ROLEROOT %** je proměnná prostředí spravován Azure a představuje umístění kořenové složky pro vaši roli.  **\\%ROLEROOT%\Approot** složky představuje složka aplikace pro vaši roli.|
+|AssemblyName|řetězec|Povinná hodnota. Název a cesta k souboru sestavení obsahující vstupní bod. Cesta je relativní vzhledem ke složce  **\\%ROLEROOT%\Approot** (nezadávejte  **\\%ROLEROOT%\Approot** v `commandLine`, předpokládá se,). **% ROLEROOT %** je proměnná prostředí spravován Azure a představuje umístění kořenové složky pro vaši roli. **\\%ROLEROOT%\Approot** složky představuje složka aplikace pro vaši roli.|
 |targetFrameworkVersion|řetězec|Povinná hodnota. Verze rozhraní .NET framework, na kterém byl vytvořený sestavení. Například, `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="ProgramEntryPoint"></a> ProgramEntryPoint
