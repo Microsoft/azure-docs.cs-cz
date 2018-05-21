@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: ab5a0913922e4664c867d54d9ec07e3611345dd8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 94bd864215ad80b299db09b6237f2cebe63feb88
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 
@@ -462,7 +462,7 @@ Další změnit prezentace a vizualizací vrstvu v řešení vzdáleného monito
 
 V tomto článku jste se dozvěděli o zdrojích, které vám umožní přizpůsobit webového uživatelského rozhraní v akcelerátoru řešení vzdáleného monitorování.
 
-Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektury vzdálené monitorování](../iot-suite/iot-suite-remote-monitoring-sample-walkthrough.md)
+Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektury vzdálené monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
-Další informace o přizpůsobení řešení vzdáleného monitorování najdete v tématu [přizpůsobit a znovu ho zaveďte mikroslužbu](../iot-suite/iot-suite-microservices-example.md)
+Další informace o přizpůsobení řešení vzdáleného monitorování najdete v tématu [přizpůsobit a znovu ho zaveďte mikroslužbu](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->
