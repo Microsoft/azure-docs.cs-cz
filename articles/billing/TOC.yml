@@ -16,8 +16,21 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
     - name: Uspořádání prostředků s využitím skupin pro správu
       href: billing-enterprise-mgmt-group-overview.md
-    - name: Úspory s využitím rezervovaných instancí virtuálních počítačů
+    - name: Uložení se službou Azure Reserved Instances
       href: billing-save-compute-costs-reservations.md
+      items:
+        - name: Předplacení Virtual Machines se službou Reserved Instances
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Správa služby Reserved Instances
+          href: billing-manage-reserved-vm-instance.md
+        - name: Vysvětlení využití slev se službou Reserved Instances
+          href: billing-understand-vm-reservation-charges.md
+        - name: Vysvětlení využití rezervovaných instancí pro průběžné platby
+          href: billing-understand-reserved-instance-usage.md
+        - name: Vysvětlení využití rezervovaných instancí pro podniky
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: Náklady na službu Reserved Instances
+          href: billing-reserved-instance-windows-software-costs.md
     - name: Omezení a kvóty
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Postup
@@ -38,20 +51,12 @@
           href: billing-understand-your-azure-marketplace-charges.md
         - name: Principy mapování měřičů bezplatných služeb
           href: billing-understand-free-service-meter-mapping.md
-        - name: Náklady na rezervované instance virtuálních počítačů s Windows
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: Vysvětlení využití slev za vyhrazené instance virtuálních počítačů
-          href: billing-understand-vm-reservation-charges.md
         - name: Vysvětlení limitu útraty
           href: billing-spending-limit.md
         - name: Nastavení upozornění fakturace
           href: billing-set-up-alerts.md
         - name: Řešení zůstatku po splatnosti
           href: billing-azure-subscription-past-due-balance.md
-        - name: Vysvětlení využití rezervovaných instancí pro průběžné platby
-          href: billing-understand-reserved-instance-usage.md
-        - name: Vysvětlení využití rezervovaných instancí pro podniky
-          href: billing-understand-reserved-instance-usage-ea.md
     - name: Správa předplatných
       items:
         - name: Vyhledání předplatného nebo skupiny pro správu
@@ -82,8 +87,6 @@
           href: billing-partner-admin-link-started.md
         - name: Zobrazení fakturačních účtů
           href: billing-view-all-accounts.md
-    - name: Správa rezervovaných instancí virtuálních počítačů
-      href: billing-manage-reserved-vm-instance.md
     - name: Řešení potíží
       items:
         - name: Problémy s registrací
