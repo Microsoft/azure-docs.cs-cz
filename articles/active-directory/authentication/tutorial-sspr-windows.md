@@ -2,35 +2,29 @@
 title: Samoobslužné resetování hesla Azure AD z přihlašovací obrazovky Windows 10 | Dokumentace Microsoftu
 description: Konfigurace resetování hesla Azure AD na přihlašovací obrazovce Windows 10 a nápověda k zapomenutému kódu PIN
 services: active-directory
-keywords: ''
-documentationcenter: ''
+ms.service: active-directory
+ms.component: authentication
+ms.topic: get-started-article
+ms.date: 04/27/2018
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: ''
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/11/2018
-ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: a85cb6aea1027d657d38007a397321de10e16d07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Resetování hesla Azure AD z přihlašovací obrazovky
 
 Už jste nasadili samoobslužné resetování hesla Azure AD, ale vaši uživatelé stále volají na helpdesk, když zapomenou své heslo. Volají na helpdesk, protože nemají přístup k webovému prohlížeči, aby se dostali k samoobslužnému resetování hesla.
 
-V nové aktualizaci Windows 10 Fall Creators Update se uživatelům se zařízeními připojenými k Azure AD zobrazí na přihlašovací obrazovce odkaz na resetování hesla. Když na tento odkaz kliknou, přesměrují se na stejné prostředí samoobslužného resetování hesla, které už znají.
+V nové aktualizaci Windows 10 z dubna 2018 se uživatelům se zařízeními **připojenými k Azure AD** nebo **k hybridní službě Azure AD** zobrazí na přihlašovací obrazovce odkaz pro resetování hesla. Když na tento odkaz kliknou, přesměrují se na stejné prostředí samoobslužného resetování hesla, které už znají.
 
 Pokud chcete uživatelům povolit resetování hesla Azure AD z přihlašovací obrazovky Windows 10, je nutné splnit následující požadavky:
 
-* Klient Windows 10 verze 1709 nebo novější [připojený k Azure AD](../device-management-azure-portal.md).
+* Aktualizace Windows 10 z dubna 2018 nebo novější klient, který je [připojený k Azure AD](../device-management-azure-portal.md) nebo [k hybridní službě Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
 * Samoobslužné resetování hesla Azure AD musí být povolené.
 * Některou z následujících metod nakonfigurujte a nasaďte nastavení, které povolí odkaz na resetování hesla:
    * [Profil konfigurace zařízení Intune](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
@@ -66,7 +60,7 @@ Pokud chcete uživatelům povolit resetování hesla Azure AD z přihlašovací 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a klikněte na **Azure Active Directory**.
 2. Přejděte do **Uživatelé a skupiny** > **Všechny skupiny** > **Nová skupina**.
-3. Zadejte název skupiny a v části **Typ členství** zvolte **Přiřazený**. 
+3. Zadejte název skupiny a v části **Typ členství** zvolte **Přiřazený**.
    * V části **Členové** zvolte zařízení s Windows 10 připojená k Azure AD, pro která chcete zásady použít.
    * Klikněte na **Vybrat**.
 4. Klikněte na **Vytvořit**
@@ -117,6 +111,7 @@ Při testování této funkce s použitím Vzdálené plochy se odkaz Resetovat 
 * Resetování hesla u Vzdálené plochy se v současné době nepodporuje.
 
 ## <a name="next-steps"></a>Další kroky
+
 Na následujících odkazech najdete další informace o resetování hesla pomocí Azure AD
 
 * [Jak nasadím samoobslužné resetování hesla?](howto-sspr-deployment.md)

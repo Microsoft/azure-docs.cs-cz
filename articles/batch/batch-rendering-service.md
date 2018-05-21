@@ -1,22 +1,22 @@
 ---
-title: "Služba Azure Batch Rendering – vykreslování na úrovni cloudu | Dokumentace Microsoftu"
-description: "Úlohy vykreslování na virtuálních počítačích Azure přímo z aplikace Maya a s platbami za použití."
+title: Služba Azure Batch Rendering – vykreslování na úrovni cloudu | Dokumentace Microsoftu
+description: Úlohy vykreslování na virtuálních počítačích Azure přímo z aplikace Maya a s platbami za použití.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
-ms.date: 09/14/2017
+ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: df1b2da7628e6c3f9f4bcbb02a936c33aad49698
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Začínáme se službou Batch Rendering
 
-Služba Azure Batch Rendering nabízí možnosti vykreslování škálované na cloud a s platbami za použití. Služba Batch Rendering zajišťuje plánování úloh a jejich zařazování do fronty, správu chyb a opakování a automatické škálování úloh vykreslování. Služba Batch Rendering podporuje aplikace [Autodesk Maya](https://www.autodesk.com/products/maya/overview), [3ds Max](https://www.autodesk.com/products/3ds-max/overview), [Arnold](https://www.autodesk.com/products/arnold/overview) a [V-Ray](https://www.chaosgroup.com/vray/maya). Modul plug-in služby Batch pro aplikaci Maya 2017 umožňuje snadné spouštění úloh vykreslování v Azure přímo z plochy.
+Služba Azure Batch Rendering nabízí možnosti vykreslování škálované na cloud a s platbami za použití. Služba Batch Rendering zajišťuje plánování úloh a jejich zařazování do fronty, správu chyb a opakování a automatické škálování úloh vykreslování. Služba Batch Rendering podporuje vykreslovací aplikace, včetně aplikací [Autodesk Maya](https://www.autodesk.com/products/maya/overview), [3ds Max](https://www.autodesk.com/products/3ds-max/overview), [Arnold](https://www.autodesk.com/products/arnold/overview) a [V-Ray](https://www.chaosgroup.com/vray/maya). Modul plug-in služby Batch pro aplikaci Maya 2017 umožňuje snadné spouštění úloh vykreslování v Azure přímo z plochy.
 
 V případě aplikací Maya a 3ds Max můžete úlohy spouštět pomocí desktopové aplikace [BatchLabs](https://github.com/Azure/BatchLabs) nebo [šablon rozhraní příkazového řádku služby Batch](batch-cli-templates.md). Pomocí rozhraní příkazového řádku služby Azure Batch můžete spouštět úlohy Batch bez psaní kódu. Místo toho můžete k vytvoření úkolů, úloh a fondů Batch použít šablony. Další informace najdete v tématu [Použití šablon rozhraní příkazového řádku služby Azure Batch a přenos souborů](batch-cli-templates.md).
 
@@ -25,7 +25,25 @@ V případě aplikací Maya a 3ds Max můžete úlohy spouštět pomocí desktop
 
 Služba Batch Rendering aktuálně podporuje následující aplikace:
 
-•   Autodesk Maya I/O 2017 Update 4 (verze 17.4.5459) •   Autodesk 3ds Max I/O 2018 Update 1 (verze 20.1.0.238) •   Autodesk Arnold pro Maya (verze 5.0.1.1) •   Autodesk Arnold pro 3ds Max (verze 1.0.836) •   Chaos Group V-Ray pro Maya (verze 3.52.03) •   Chaos Group V-Ray pro 3ds Max (verze 3.60.02)
+Na vykreslovacích uzlech s CentOS 7:
+- Autodesk Maya I/O 2017 Update 5 (verze 201708032230)
+- Autodesk Maya I/O 2018 Update 2 verze 201711281015
+- Autodesk Arnold pro Maya 2017 (Arnold verze 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold pro Maya 2018 (Arnold verze 5.0.1.4) MtoA-2.1.0.3-2018
+- Chaos Group V-Ray pro Maya 2017 (verze 3.60.04) 
+- Chaos Group V-Ray pro Maya 2018 (verze 3.60.04) 
+- Blender (2.68)
+
+Na vykreslovacích uzlech s Windows Serverem 2016:
+- Autodesk Maya I/O 2017 Update 5 (verze 17.4.5459) 
+- Autodesk Maya I/O 2018 Update 2 (verze 18.2.0.6476) 
+- Autodesk 3ds Max I/O 2018 Update 4 (verze 20.4.0.4254) 
+- Autodesk Arnold pro Maya (Arnold verze 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold pro Maya (Arnold verze 5.0.1.4) MtoA-2.0.2.3-2018
+- Autodesk Arnold pro 3ds Max (Arnold verze 5.0.2.4 )(verze 1.2.926) 
+- Chaos Group V-Ray pro Maya (verze 3.52.03) 
+- Chaos Group V-Ray pro 3ds Max (verze 3.60.02)
+- Blender (2.79)
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,8 +51,9 @@ Služba Batch Rendering aktuálně podporuje následující aplikace:
 Pokud chcete používat službu Batch Rendering, potřebujete:
 
 - [Účet Azure](https://azure.microsoft.com/free/).
-- **Účet Azure Batch.** Pokyny k vytvoření účtu Batch na webu Azure Portal najdete v tématu [Vytvoření účtu Batch pomocí webu Azure Portal](batch-account-create-portal.md).
-- **Účet služby Azure Storage.** Ve službě Azure Storage se ukládají prostředky používané pro vaši úlohu vykreslování. Účet úložiště můžete vytvořit automaticky při nastavování účtu Batch. Můžete také použít existující účet úložiště. Další informace o účtech služby Storage najdete v tématu [Vytvoření, správa nebo odstranění účtu úložiště na webu Azure Portal](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+- **Účet Azure Batch**. Pokyny k vytvoření účtu Batch na webu Azure Portal najdete v tématu [Vytvoření účtu Batch pomocí webu Azure Portal](batch-account-create-portal.md).
+- **Účet služby Azure Storage**. Ve službě Azure Storage se obvykle ukládají prostředky používané pro vaši úlohu vykreslování. Účet úložiště můžete vytvořit automaticky při nastavování účtu Batch. Můžete také použít existující účet úložiště. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
+- **Proměnné prostředí**. Pokud vaše řešení upravuje proměnné prostředí, ujistěte se, že hodnoty `AZ_BATCH_ACCOUNT_URL` a `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` zůstanou beze změn a přítomné, pokud se volá některá z výše uvedených licencovaných aplikací. Jinak pravděpodobně dojde k problémům s aktivací softwaru.
 - **BatchLabs** (volitelné). [BatchLabs](https://azure.github.io/BatchLabs) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který pomáhá vytvářet, ladit a monitorovat aplikace Azure Batch. Přestože se nevyžaduje k používání služby vykreslování, představuje užitečnou možnost vývoje a ladění řešení Batch.
 
 Pokud chcete používat modul plug-in služby Batch pro aplikaci Maya, potřebujete:
@@ -72,18 +91,11 @@ Na webu Azure Portal a v nástroji BatchLabs můžete některou k imagí virtuá
 
 ![Výběr typu image pro účet Batch](./media/batch-rendering-service/add-pool.png)
 
-Přejděte dolů, kliknutím na **Licencování grafiky a vykreslování** otevřete okno **Zvolte licence** a vyberte jednu nebo více licencí na software:
+Posuňte se dolů a v části **Licencování grafiky a vykreslování** klikněte na **Vyberte software a ceny**. Zvolte jednu nebo několik licencí na software:
 
 ![Výběr licence na grafiku a vykreslování pro fond](./media/batch-rendering-service/graphics-licensing.png)
 
-Tady jsou konkrétní zadané verze licencí:
-
-- Maya 2017
-- 3ds Max 2018
-- Arnold pro Maya 5.0.1.1
-- Arnold pro 3ds Max 1.0.836
-- V-Ray pro Maya 3.52.03
-- V-Ray pro 3ds Max 3.60.01
+Uvedené konkrétní verze licencí odpovídají verzím uvedeným výše v části Podporované aplikace.
 
 ### <a name="custom-images"></a>Vlastní image
 
@@ -175,12 +187,12 @@ Typ image operačního systému, který se použije ke zřízení výpočetních
 
 |Operační systém  |Image  |
 |---------|---------|
-|Linux     |Batch CentOS Preview |
-|Windows     |Batch Windows Preview |
+|Linux     |Batch CentOS |
+|Windows     |Batch Windows |
 
 #### <a name="choose-a-vm-size"></a>Výběr velikosti virtuálního počítače
 
-Velikost virtuálního počítače můžete zadat na kartě **Env** (Prostředí). Další informace o dostupných velikostech virtuálních počítačů najdete v tématech [Velikosti virtuálních počítačů s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) a [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes). 
+Velikost virtuálního počítače můžete zadat na kartě **Env** (Prostředí). Další informace o dostupných velikostech virtuálních počítačů najdete v tématech [Velikosti virtuálních počítačů s Linuxem v Azure](../virtual-machines/linux/sizes.md) a [Velikosti virtuálních počítačů s Windows v Azure](../virtual-machines/windows/sizes.md). 
 
 ![Zadání image operačního systému a velikosti virtuálního počítače na kartě Env (Prostředí)](./media/batch-rendering-service/environment.png)
 

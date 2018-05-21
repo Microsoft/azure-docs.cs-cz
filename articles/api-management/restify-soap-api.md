@@ -1,11 +1,11 @@
 ---
-title: "Importovat rozhraní API protokolu SOAP a proveďte převod na REST pomocí portálu Azure | Microsoft Docs"
-description: "Zjistěte, jak importovat rozhraní API protokolu SOAP a ho převést na REST s API Management."
+title: Import rozhraní API protokolu SOAP a převod na REST pomocí webu Azure Portal | Microsoft Docs
+description: Zjistěte, jak pomocí služby API Management importovat rozhraní API protokolu SOAP a převést ho na REST.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 74935f11d5bf3c83aef46c1d41fccd81ad312acb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: MT
+ms.openlocfilehash: 940756917c8f377e7d134818409e6287a4031e15
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="import-a-soap-api-and-convert-to-rest"></a>Importovat rozhraní API protokolu SOAP a proveďte převod na REST
+# <a name="import-a-soap-api-and-convert-to-rest"></a>Import rozhraní API protokolu SOAP a převod na REST
 
-Tento článek ukazuje, jak importovat rozhraní API protokolu SOAP a ho převést na REST. Článek také ukazuje, jak otestovat APIM rozhraní API.
+Tento článek popisuje, jak importovat rozhraní API protokolu SOAP a převést ho na REST. Tento článek také ukazuje, jak otestovat rozhraní API služby APIM.
 
-V tomto článku se dozvíte, jak:
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Importovat rozhraní API protokolu SOAP a proveďte převod na REST
-> * Test rozhraní API na portálu Azure
-> * Testování rozhraní API v portálu pro vývojáře
+> * Import rozhraní API protokolu SOAP a převod na REST
+> * Testovat rozhraní API na portálu Azure Portal
+> * Testovat rozhraní API na portálu pro vývojáře
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete následující rychlý start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
+Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importu a publikovat rozhraní API back-end
+## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
 
-1. Vyberte **rozhraní API** z pod **API MANAGEMENT**.
-2. Vyberte **WSDL** z **přidání nového rozhraní API** seznamu.
+1. V části **API MANAGEMENT** vyberte **rozhraní API**.
+2. V seznamu **Přidat nové rozhraní API** vyberte **WSDL**.
 
-    ![ROZHRANÍ API PROTOKOLU SOAP](./media/restify-soap-api/wsdl-api.png)
-3. V **Specifikace WSDL**, zadejte adresu URL, na kterém se nachází rozhraní API protokolu SOAP.
-4. Klikněte na tlačítko **SOAP ostatními** přepínač. Při kliknutí na tuto možnost, pokusů APIM transformaci automatické mezi XML a JSON. V takovém případě příjemce by měl být volání rozhraní API jako restful API, která vrátí hodnotu JSON. APIM je převodu každého požadavku protokolu SOAP volání.
+    ![Rozhraní API protokolu SOAP](./media/restify-soap-api/wsdl-api.png)
+3. Do pole **Specifikace WSDL** zadejte adresu URL s vaším rozhraním API protokolu SOAP.
+4. Klikněte na přepínač **Ze SOAP do REST**. Po kliknutí na tuto možnost se služba APIM pokusí provést automatickou transformaci mezi XML a JSON. V tomto případě by příjemci měli rozhraní API volat jako rozhraní RESTful API, které vrací JSON. Služba APIM převádí každý požadavek na volání SOAP.
 
-    ![SOAP ostatními](./media/restify-soap-api/soap-to-rest.png)
+    ![Ze SOAP do REST](./media/restify-soap-api/soap-to-rest.png)
 
-5. Stisknutím klávesy tab.
+5. Stiskněte tabulátor.
 
-    Následující pole získat naplněna s informacemi z rozhraní API protokolu SOAP: zobrazované jméno, název, popis.
-6. Přidáte přípona adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečné.
-9. Rozhraní API publikujete tím, že přidružíte rozhraní API s produktem. V takovém případě "*neomezený*" slouží k produktu.  Pokud chcete použít pro rozhraní API publikovat a být k dispozici pro vývojáře, přidejte ho k produktu. To můžete provést při vytváření rozhraní API nebo nastavit později.
+    Následující pole se vyplní informacemi z rozhraní API protokolu SOAP: Zobrazovaný název, Název, Popis.
+6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
+9. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
-    Produkty jsou přidružení jeden nebo více rozhraní API. Může obsahovat několik rozhraní API a poskytněte jim pro vývojáře prostřednictvím portálu pro vývojáře. Vývojáři musí nejdřív přihlásit k odběru produktu získat přístup k rozhraní API. Pokud se přihlášení k odběru získají předplatné klíč, který je vhodný pro jakéhokoli rozhraní API v produktu. Pokud jste vytvořili instanci APIM, jste správcem již, takže jsou přihlášení k odběru každého produktu ve výchozím nastavení.
+    Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.
 
     Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty:
 
@@ -61,31 +61,31 @@ Dokončete následující rychlý start: [vytvoření instance služby Azure API
     * **Unlimited**   
 10. Vyberte **Vytvořit**.
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API APIM na portálu Azure
+## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testování nového rozhraní API služby APIM na portálu Azure Portal
 
-Operace lze volat přímo z portálu Azure, který představuje pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
+Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku.
-2. Stiskněte **Test** kartě.
-3. Vyberte nějaké operace.
+2. Klikněte na kartu **Test**.
+3. Vyberte nějakou operaci.
 
-    Stránka zobrazí pole pro parametry dotazu a pole hlavičky. Jednu z hlaviček "Ocp-Apim-Subscription-Key", je pro předplatné klíč produktu, který je přidružen toto rozhraní API. Pokud jste vytvořili instanci APIM, jste správcem již, tak klíč se vyplní automaticky. 
-1. Stiskněte klávesu **odeslat**.
+    Na stránce se zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky. 
+1. Stiskněte **Odeslat**.
 
-    Back-end odpoví **200 OK** a některá data.
+    Back-end předá odpověď **200 OK** a nějaká data.
 
 ## <a name="call-operation"></a>Volání operace z portálu pro vývojáře
 
-Operace lze také volat **portál pro vývojáře** k testování rozhraní API. 
+Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu pro vývojáře**. 
 
-1. Vybrat rozhraní API, kterou jste vytvořili v "Import a publikovat rozhraní API back-end" krok.
-2. Stiskněte klávesu **portál pro vývojáře**.
+1. Vyberte rozhraní API, které jste vytvořili v kroku Import a publikování back-endového rozhraní API.
+2. Stiskněte **Portál pro vývojáře**.
 
-    Otevře webu "Portál pro vývojáře".
-3. Vyberte **rozhraní API** kterou jste vytvořili.
-4. Klikněte na tlačítko operaci, kterou chcete testovat.
-5. Stiskněte klávesu **vyzkoušet**.
-6. Stiskněte klávesu **odeslat**.
+    Otevře se web Portál pro vývojáře.
+3. Vyberte **rozhraní API**, které jste vytvořili.
+4. Klikněte na operaci, kterou chcete testovat.
+5. Stiskněte **Vyzkoušet**.
+6. Stiskněte **Odeslat**.
     
     Po vyvolání operace portál pro vývojáře zobrazí **Stav odpovědi**, **Hlavičky odpovědi** a jakýkoli **Obsah odpovědi**.
 
@@ -96,4 +96,4 @@ Operace lze také volat **portál pro vývojáře** k testování rozhraní API.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Transformace a chránit publikované rozhraní API](transform-api.md)
+> [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

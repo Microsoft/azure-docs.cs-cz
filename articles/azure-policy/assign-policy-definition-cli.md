@@ -1,19 +1,19 @@
 ---
-title: Použití Azure CLI k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure | Dokumentace Microsoftu
+title: Použití Azure CLI k vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure
 description: Použijte Azure CLI k vytvoření přiřazení zásady Azure Policy pro identifikaci prostředků, které nedodržují předpisy.
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/03/2018
+ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 5c376cc2445253197dd51d8bdd89b341d3130f1a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d4d92dc56a9320a4deb0adf611edded0c018df3f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure pomocí Azure CLI
 
@@ -27,17 +27,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Tento rychlý start vyžaduje, abyste pro místní používání a instalaci rozhraní příkazového řádku spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Tento rychlý start vyžaduje, abyste pro místní používání a instalaci rozhraní příkazového řádku spustili Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pomocí Azure CLI zaregistrujte poskytovatele prostředků Policy Insights. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Když chcete registrovat poskytovatele prostředků, musíte mít oprávnění k provedení operace akce registrace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
-```
+```azurecli-interactive
 az provider register –-namespace 'Microsoft.PolicyInsights'
 ```
-Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md).
 
+Další informace o registraci a zobrazení poskytovatelů prostředků najdete v tématu [Poskytovatelé a typy prostředků](../azure-resource-manager/resource-manager-supported-services.md).
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
@@ -45,8 +45,8 @@ V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici
 
 Spuštěním následujícího příkazu vytvořte přiřazení zásady:
 
-```
-az policy assignment create --name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
+```azurecli-interactive
+az policy assignment create --name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
 ```
 
 Předchozí příkaz používá následující informace:
@@ -54,18 +54,13 @@ Předchozí příkaz používá následující informace:
 - **Name** – Zobrazovaný název přiřazení zásady. V tomto případě používáte přiřazení *Audit virtuálních počítačů bez spravovaných disků*.
 - **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V tomto případě je to definice zásady *Audit virtuálních počítačů bez spravovaných disků*. ID definice zásady získáte spuštěním příkazu `az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupinu prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.
-- **Sku** – Tento příkaz vytvoří přiřazení zásady s úrovní Standard. Úroveň Standard vám umožní dosáhnout správy, vyhodnocování dodržování předpisů a odstraňování problémů ve velkém měřítku. Další podrobnosti o cenových úrovních najdete v tématu [Ceny služby Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy).
-
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 
 Pokud chcete zobrazit prostředky, které nedodržují předpisy v rámci tohoto nového přiřazení, získejte ID přiřazení zásady spuštěním následujících příkazů:
 
-```
-$policyAssignment = Get-AzureRmPolicyAssignment | where {$_.properties.displayName -eq "Audit Virtual Machines without Managed Disks"}
-```
-
-```
+```azurepowershell-interactive
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -79,30 +74,28 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 
 Vaše výsledky budou vypadat přibližně jako v následujícím příkladu:
 
-```
+```json
 {
-"@odata.context":"https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-"@odata.count": 3,
-"value": [
-{
-    "@odata.id": null,
-    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
-    },
-    {
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
-         },
-{
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
-         }
+    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
+    "@odata.count": 3,
+    "value": [{
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
+        },
+        {
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
+        },
+        {
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
+        }
 
-]
+    ]
 }
-
 ```
 
 Tyto výsledky jsou srovnatelné s tím, co se obvykle zobrazuje v části **Nekompatibilní prostředky** v zobrazení na webu Azure Portal.
@@ -111,8 +104,8 @@ Tyto výsledky jsou srovnatelné s tím, co se obvykle zobrazuje v části **Nek
 
 Další příručky v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, spuštěním následujícího příkazu odstraňte přiřazení, které jste vytvořili:
 
-```azurecli
-az policy assignment delete –name Audit Virtual Machines without Managed Disks Assignment --scope /subscriptions/ <subscriptionID> / <resourceGroupName>
+```azurecli-interactive
+az policy assignment delete –name 'Audit Virtual Machines without Managed Disks Assignment' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -122,4 +115,4 @@ V tomto rychlém startu jste přiřadili definici zásady pro identifikaci prost
 Další informace o přiřazování zásad a zajištění, aby prostředky vytvořené **v budoucnu** dodržovaly předpisy, najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
-> [Vytváření a správa zásad](./create-manage-policy.md)
+> [Vytváření a správa zásad](create-manage-policy.md)
