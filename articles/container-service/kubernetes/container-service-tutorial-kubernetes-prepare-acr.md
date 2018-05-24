@@ -3,17 +3,17 @@ title: Kurz Azure Container Service – Příprava ACR
 description: Kurz Azure Container Service – Příprava ACR
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f2520c79d5d5b1dcf13147b64bd98df78e6e2f37
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: f58a8d76cc46ac25474c7b91e464974612876a06
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Nasazení a použití služby Azure Container Registry
 
@@ -93,7 +93,7 @@ Nyní označte image `azure-vote-front` názvem loginServer registru kontejneru.
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Po označení ověřte operaci spuštěním [imagí Dockeru] (https://docs.docker.com/engine/reference/commandline/images/).
+Po označení operaci ověřte spuštěním příkazu [docker images]https://docs.docker.com/engine/reference/commandline/images/).
 
 ```bash
 docker images

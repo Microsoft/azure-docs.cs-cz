@@ -1,23 +1,23 @@
 ---
-title: "Chyby prostředků Azure nadřazené | Microsoft Docs"
-description: "Popisuje postup řešení chyb při práci s nadřazený prostředek."
-services: azure-resource-manager,azure-portal
-documentationcenter: 
+title: Chyby prostředků Azure nadřazené | Microsoft Docs
+description: Popisuje postup řešení chyb při práci s nadřazený prostředek.
+services: azure-resource-manager
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 09/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: e59147c4ac18f730f27b9d4aa9c008f219881065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c996a644f206051cb58522065f87f95a4058cdee
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Vyřešte chyby pro nadřazené prostředky
 

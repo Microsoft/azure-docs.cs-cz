@@ -29,7 +29,11 @@
 ## [Správa služby Azure AD Connect](active-directory-aadconnect-whats-next.md)
 ### [Obnovení certifikátů pro O365 a Azure AD](active-directory-aadconnect-o365-certs.md)
 ### [Aktualizace certifikátu SSL pro farmu Active Directory Federation Services (AD FS)](active-directory-aadconnectfed-ssl-update.md)
-### [Povolení zpětného zápisu zařízení](active-directory-aadconnect-feature-device-writeback.md)
+
+### [Možnosti zařízení](active-directory-azure-ad-connect-device-options.md)
+#### [Povolení zpětného zápisu zařízení](active-directory-aadconnect-feature-device-writeback.md)
+#### [Úlohy po konfiguraci připojení k hybridní službě Azure AD](active-directory-azure-ad-connect-hybrid-azure-ad-join-post-config-tasks.md)
+
 ### [Možnosti přihlášení uživatele](active-directory-aadconnect-user-signin.md)
 #### [Bezproblémové jednotné přihlašování](active-directory-aadconnect-sso.md)
 ##### [Rychlý start](active-directory-aadconnect-sso-quick-start.md)

@@ -9,11 +9,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8fb0e2181c518db541504f0eea77ce9fde7edf8f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 61d267898bab5e5df394d4097eacb33ada809518
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie Runbooků a modulů pro Azure Automation.
 Místo vytvoření vlastní sady runbook a modulů ve službě Azure Automation, můžete zpřístupnit různé scénáře, které jste již vytvořili společností Microsoft a komunitou.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete používat jako výchozí bod a je upravit pro vaše konkrétní požadavky.
@@ -90,6 +90,9 @@ Moduly prostředí PowerShell obsahují rutiny, které můžete použít ve vaš
 9. Na **importovat** klikněte na **OK** k importu modulu. Zatímco Azure Automation importuje modul ke svému účtu, extrahuje metadata o modulu a rutiny. Může to trvat několik minut vzhledem k tomu, že každá aktivita musí být rozbalena.
 10. Po dokončení zobrazí počáteční oznámení se nasazuje modul a jiné oznámení.
 11. Po importu modulu uvidíte dostupných aktivit a její prostředky v runboocích a konfigurace požadovaného stavu můžete použít.
+
+> [!NOTE]
+> Moduly, které podporují pouze základní prostředí PowerShell nejsou podporovány ve službě Azure Automation a nelze importovat na portálu Azure nebo nasadit přímo z Galerie prostředí PowerShell.
 
 ## <a name="requesting-a-runbook-or-module"></a>Požaduje sady runbook nebo modulu
 Může odesílat požadavky na [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete pomoc, zápis sady runbook nebo máte dotazy týkající se prostředí PowerShell, odeslat dotaz na našem [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).

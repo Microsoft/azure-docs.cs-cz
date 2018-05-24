@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Aspekty sítě služby App Service Environment #
 
@@ -49,7 +49,7 @@ Normální aplikace přístupové porty jsou:
 
 | Použití | Od | Akce |
 |----------|---------|-------------|
-|  HTTP/HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
+|  PROTOKOL HTTP NEBO HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
 |  FTP/FTPS    | Konfigurovatelná uživatelem |  21, 990, 10001-10020 |
 |  Visual Studio vzdálené ladění  |  Konfigurovatelná uživatelem |  4016, 4018, 4020, 4022 |
 
@@ -88,7 +88,7 @@ Pro odchozí přístup App Service Environment závisí na několika externími 
 | Azure Storage | Podsíť App Service Environment | Table.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 je potřeba jenom pro ASEv1.) |
 | Azure SQL Database | Podsíť App Service Environment | Database.Windows.NET: 1433, 11000 11999, 14000 14999 (Další informace najdete v tématu [využití portu SQL Database verze 12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
 | Správa Azure | Podsíť App Service Environment | management.core.windows.net, management.azure.com: 443 
-| Ověření certifikátu SSL |  Podsíť App Service Environment            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
+| Ověření certifikátu SSL |  Podsíť App Service Environment            |  OCSP.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
 | Azure Active Directory        | Podsíť App Service Environment            |  Internet: 443
 | Správa služby App Service        | Podsíť App Service Environment            |  Internet: 443
 | Azure DNS                     | Podsíť App Service Environment            |  Internet: 53
@@ -109,7 +109,7 @@ Pokud jsou virtuální síť nakonfigurované zákazník DNS na druhé straně s
 Kromě funkční závislosti App Service Environment existuje několik další položky týkající se práce s portálem. Některé z možností na portálu Azure závisí na přímý přístup k _SCM lokality_. Pro každou aplikaci ve službě Azure App Service existují dvě adresy URL. První adresa URL je přístup k vaší aplikaci. Druhý adresa URL je pro přístup k webu SCM, což se označuje taky jako _Kudu konzoly_. Funkce, které používají SCM lokality:
 
 -   Webové úlohy
--   Funkce
+-   Functions
 -   Streamování protokolů
 -   Kudu
 -   Rozšíření
@@ -224,7 +224,7 @@ Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, mus
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md

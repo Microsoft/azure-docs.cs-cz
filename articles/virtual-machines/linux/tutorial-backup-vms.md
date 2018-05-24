@@ -1,6 +1,6 @@
 ---
-title: Zálohování virtuálních počítačů Azure s Linuxem | Microsoft Docs
-description: Chraňte své virtuální počítače s Linuxem prostřednictvím jejich zálohování pomocí služby Azure Backup.
+title: Kurz zálohování virtuálních počítačů s Linuxem na portálu Azure | Microsoft Docs
+description: V tomto kurzu se naučíte, jak využít portál Azure k ochraně virtuálních počítačů s Linuxem pomocí Azure Backup.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,22 +16,20 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4bd532a570a978715ba61880047f3a7e49b446ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="back-up-linux--virtual-machines-in-azure"></a>Zálohování virtuálních počítačů s Linuxem v Azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
 
-Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jenom určité soubory. Tento článek vysvětluje, jak obnovit jeden soubor na virtuální počítač s Linuxem a serverem NGINX. Pokud ještě nemáte virtuální počítač, který byste mohli použít, můžete si ho vytvořit pomocí postupu v [rychlém startu pro Linux](quick-create-cli.md). V tomto kurzu se naučíte:
+Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo určité soubory. Tento článek vysvětluje, jak obnovit jeden soubor na virtuální počítač s Linuxem a serverem NGINX. Pokud ještě nemáte virtuální počítač, který byste mohli použít, můžete si ho vytvořit pomocí postupu v [rychlém startu pro Linux](quick-create-cli.md). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření zálohy virtuálního počítače
 > * Naplánování denního zálohování
 > * Obnovení souboru ze zálohy
-
-
 
 ## <a name="backup-overview"></a>Přehled služby Backup
 
@@ -43,7 +41,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 
 
 ## <a name="create-a-backup"></a>Vytvoření zálohy
-Vytvořte jednoduché plánované denní zálohování do trezoru služby Recovery Services. 
+Vytvořte plánované denní zálohování do trezoru služby Recovery Services:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
@@ -54,7 +52,7 @@ Vytvořte jednoduché plánované denní zálohování do trezoru služby Recove
 7. V okně **Povolit zálohování** klikněte na **Povolit zálohování**. Tím se vytvoří denní zálohování na základě výchozího plánu.
 10. Pokud chcete vytvořit prvotní bod obnovení, v okně **Zálohování** klikněte na **Zálohovat nyní**.
 11. V okně **Zálohovat nyní** klikněte na ikonu kalendáře, pomocí ovládacího prvku kalendáře vyberte poslední den uchování tohoto bodu obnovení a klikněte na **Zálohovat**.
-12. V okně **Zálohování** pro váš virtuální počítač se zobrazí počet dokončených bodů obnovení.
+12. V okně **Zálohování** vašeho virtuálního počítače se zobrazí počet dokončených bodů obnovení.
 
     ![Body obnovení](./media/tutorial-backup-vms/backup-complete.png)
 

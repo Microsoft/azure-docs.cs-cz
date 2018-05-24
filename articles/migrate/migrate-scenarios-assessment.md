@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Scénář 1: Posouzení vhodnosti místních úloh k migraci do Azure
 
 V rámci zvažování migrace do Azure chtějí ve společnosti Contoso provést interní technické a finanční hodnocení, aby zjistili, jestli jsou jejich místní úlohy vhodné k migraci do cloudu. Konkrétně chtějí posoudit kompatibilitu počítačů a databází s migrací a odhadnout kapacitu a náklady, které bude provoz jejich prostředků v Azure vyžadovat.
 
-Pro začátek a lepší pochopení příslušných technologií posuzují a migrují malou místní cestovní aplikaci. Jedná se o dvouvrstvou aplikaci, kdy na jednom virtuálním počítači běží webová aplikace a na druhém databáze SQL Serveru. Aplikace je nasazená ve VMware a správu prostředí zajišťuje vCenter Server. Posouzení provedou pomocí nástroje Data Migration Assistant (DMA) a služby Azure Migrate.
+Pro začátek a lepší pochopení příslušných technologií posuzují a migrují malou místní cestovní aplikaci. Jedná se o dvouvrstvou aplikaci, kdy na jednom virtuálním počítači běží webová aplikace a na druhém databáze SQL Serveru. Aplikace je nasazená ve VMware a správu prostředí zajišťuje vCenter Server. Posouzení provedou pomocí nástroje Data Migration Assistant (DMA) a služby Azure Migrate. Pokud byste chtěli takový scénář vyzkoušet na této ilustrativní cestovní aplikaci, můžete si ji stáhnout z [GitHubu](https://github.com/Microsoft/SmartHotel360).
 
 **Technologie** | **Popis** | **Náklady**
 --- | --- | ---
@@ -33,11 +33,11 @@ V tomto scénáři stáhneme a spustíme DMA za účelem posouzení místní dat
 
 ## <a name="architecture"></a>Architektura
 
-V tomto scénáři nastavíme 
 
- ![Architektura posouzení migrace](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
+![Architektura posouzení migrace](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
 
 V tomto scénáři:
+- Contoso je smyšlený název představující typickou podnikovou organizaci. Contoso chce vyhodnotit a migrovat svou místní dvouvrstvou cestovní aplikaci.
 - Contoso má místní datacentrum (**contoso-datacenter**) s místním řadičem domény ( **contosodc1**).
 - Interní cestovní aplikace je rozvrstvená na dva virtuální počítače **WEBVM** a **SQLVM** a umístěná na hostiteli VMware ESXi **contosohost1.contoso.com**.
 - Správu prostředí VMware zajišťuje vCenter Server (**vcenter.contoso.com**) spuštěný na virtuálním počítači.
@@ -489,7 +489,7 @@ V tomto scénáři jsme provedli následující:
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžeme pokračovat k dalšímu scénáři, ve kterém provedeme migraci místních virtuálních počítačů do Azure metodou „lift and shift“.
+Můžeme pokračovat k dalšímu scénáři, ve kterém provedeme migraci místních virtuálních počítačů a databáze do Azure metodou [lift and shift](migrate-scenarios-lift-and-shift.md).
 
 
 

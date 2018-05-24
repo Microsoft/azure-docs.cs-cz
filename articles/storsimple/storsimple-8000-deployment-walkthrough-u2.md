@@ -1,24 +1,24 @@
 ---
-title: "Nasazení zařízení StorSimple řady 8000 na webu Azure Portal | Dokumentace Microsoftu"
-description: "Popis kroků a osvědčených postupů pro nasazení zařízení StorSimple řady 8000 s aktualizací Update 3 nebo novější a služby Správce zařízení StorSimple."
+title: Nasazení zařízení StorSimple řady 8000 na webu Azure Portal | Microsoft Docs
+description: Popis kroků a osvědčených postupů pro nasazení zařízení StorSimple řady 8000 s aktualizací Update 3 nebo novější a služby Správce zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 
@@ -33,7 +33,7 @@ Informace v těchto kurzech předpokládají, že jste si přečetli informace o
 K dokončení této instalace a procesu konfigurace potřebujete oprávnění správce. Doporučujeme, abyste si před zahájením práce prošli kontrolní seznam konfigurace. Proces nasazení a konfigurace může trvat nějakou dobu.
 
 > [!NOTE]
-> Informace o nasazení zařízení StorSimple publikované na webu Microsoft Azure platí pouze pro řadu zařízení StorSimple 8000. Úplné informace o řadě zařízení 7000 najdete na následující adrese: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informace o nasazení řady 7000 najdete v [Úvodní příručce k systému StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
+> Informace o nasazení zařízení StorSimple publikované na webu Microsoft Azure platí pouze pro řadu zařízení StorSimple 8000. Kompletní informace o zařízeních řady 7000 najdete zde: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Informace o nasazení řady 7000 najdete v [Úvodní příručce k systému StorSimple](http://onlinehelp.storsimple.com/111_Appliance/). 
 
 
 ## <a name="deployment-steps"></a>Kroky nasazení
@@ -195,6 +195,19 @@ Pomocí následujících kroků získejte název IQN (iSCSI Qualified Name) host
 Provedením následujících kroků na webu Azure Portal vytvořte ruční zálohu jednoho svazku zařízení StorSimple.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
+
+## <a name="view-the-pinout-diagram-for-serial-cable-for-storsimple"></a>Zapojení kontaktů sériového kabelu pro StorSimple
+Následující zapojení kontaktů lze použít pro sériový kabel konzole StorSimple.
+
+Konektor DB9 se zdířkami je označený jako P1 a 3,5mm konektor jako P2.
+
+![Zapojení kontaktů 1 pro sériový kabel konzole StorSimple](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+
+Špička stereo konektoru se považuje za PIN 3 RX, střed za PIN 2 TX a základna za PIN 1 GND, jak znázorňuje následující obrázek.
+
+![Zapojení kontaktů 2 pro sériový kabel konzole StorSimple](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+
+
 
 ## <a name="next-steps"></a>Další kroky
 * [Konfigurace řešení StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md)

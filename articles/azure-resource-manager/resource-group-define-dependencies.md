@@ -1,24 +1,24 @@
 ---
-title: "Nastavení pořadí nasazení pro prostředky Azure | Microsoft Docs"
-description: "Popisuje, jak nastavit jeden prostředek jako závislé na jiný prostředek během nasazení, aby se prostředky nasadí ve správném pořadí."
+title: Nastavení pořadí nasazení pro prostředky Azure | Microsoft Docs
+description: Popisuje, jak nastavit jeden prostředek jako závislé na jiný prostředek během nasazení, aby se prostředky nasadí ve správném pořadí.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34ebaf1e-480c-4b4d-9bf6-251bd3f8f2cf
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3d6a46116ae9d7d940bc10dfa832540f42c0af7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků v šablonách Azure Resource Manager
 Pro daný prostředek může být další prostředky, které musí existovat před nasazením prostředku. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Tento vztah definujete označením jeden prostředek jako závislý na jiných prostředku. Můžete definovat závislosti s **dependsOn** element, nebo pomocí **odkaz** funkce. 
@@ -148,13 +148,13 @@ Při rozhodování, jakou závislosti nastavit, použijte následující pokyny:
 Správce prostředků identifikuje cyklické závislosti během ověřování šablony. Pokud se zobrazí chyba oznamující, že existuje cyklická závislost, vyhodnoťte šablony zda všechny závislosti nejsou potřebné, a může být odebrán. Pokud odebrání závislostí nefunguje, se můžete vyhnout cyklické závislosti přesunutím některé operace nasazení do podřízené prostředky, které jsou nasazeny po prostředky, které mají cyklickou závislost. Předpokládejme například, kterou nasazujete dva virtuální počítače, ale je nutné nastavit vlastnosti u každé z nich odkazovat na druhý. Je můžete nasadit v následujícím pořadí:
 
 1. vm1
-2. virtuálního počítače 2
+2. vm2
 3. Rozšíření na vm1 závisí na vm1 a virtuálního počítače 2. Rozšíření nastaví hodnoty vm1, který získá z virtuálního počítače 2.
 4. Rozšíření na virtuálního počítače 2 závisí na vm1 a virtuálního počítače 2. Rozšíření virtuálního počítače 2, který získá ze vm1 nastaví hodnoty.
 
 Informace o vyhodnocování pořadí nasazení a řešení chyb při závislostí najdete v tématu [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o řešení potíží s závislosti při nasazení najdete v tématu [odstraňování běžných chyb nasazení Azure pomocí Azure Resource Manageru](resource-manager-common-deployment-errors.md).
 * Další informace o vytváření šablon Azure Resource Manageru, najdete v části [vytváření šablon](resource-group-authoring-templates.md). 
 * Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](resource-group-template-functions.md).

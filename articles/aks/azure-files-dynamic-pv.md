@@ -6,24 +6,24 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/17/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Trvalé svazky s soubory Azure
 
-Trvalé svazku představuje část úložiště, které se zřizují pro použití v clusteru s podporou Kubernetes. Trvalé svazku může používat jednoho nebo mnoha pracovními stanicemi soustředěnými kolem a můžete dynamicky nebo staticky zřídit. Tento dokument podrobně popisuje dynamické zřizování sdílenou složku Azure jako trvalé svazek Kubernetes v clusteru služby AKS.
+Trvalé svazku je úložiště, který byl vytvořen pro použití v clusteru s podporou Kubernetes. Trvalé svazek může používat jednoho nebo mnoha pracovními stanicemi soustředěnými kolem a lze dynamicky nebo staticky vytvořit. Tento dokument podrobnosti **dynamického vytváření** sdílené složky Azure file jako trvalé svazek.
 
-Další informace o Kubernetes trvalé svazky, najdete v části [trvalé svazky Kubernetes][kubernetes-volumes].
+Další informace o Kubernetes trvalé svazky, včetně statické vytváření, najdete v části [trvalé svazky Kubernetes][kubernetes-volumes].
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Při zřizování dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete tak dlouho, dokud je obsažena ve stejné skupině prostředků jako AKS cluster použít libovolný účet úložiště. V případě potřeby vytvořte účet úložiště ve stejné skupině prostředků jako AKS cluster.
+Při vytváření dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete použít libovolný účet úložiště, dokud je ve stejné skupině prostředků jako AKS cluster. V případě potřeby vytvořte účet úložiště ve stejné skupině prostředků jako AKS cluster.
 
 Chcete-li identifikovat odpovídající prostředek skupiny, použijte [seznam skupiny az] [ az-group-list] příkaz.
 
@@ -31,7 +31,7 @@ Chcete-li identifikovat odpovídající prostředek skupiny, použijte [seznam s
 az group list --output table
 ```
 
-Hledáte skupinu prostředků s názvem podobná `MC_clustername_clustername_locaton`, kde clustername představuje název clusteru AKS a umístění je oblast Azure, kde byla nasazena do clusteru.
+Vyhledat skupinu prostředků s názvem podobná `MC_clustername_clustername_locaton`.
 
 ```
 Name                                 Location    Status
@@ -76,9 +76,9 @@ kubectl apply -f azure-file-sc.yaml
 
 Trvalé svazku deklarace identity (PVC) používá objektu třídy úložiště pro dynamicky zajišťují sdílenou složku Azure.
 
-Následující manifest je použít k vytvoření svazku trvalé deklarace `5GB` velikost `ReadWriteOnce` přístup.
+Následující YAML lze použít k vytvoření svazku trvalé deklarace `5GB` velikost `ReadWriteOnce` přístup. Další informace o režimy přístupu najdete v tématu [svazku trvalé Kubernetes] [ access-modes] dokumentaci.
 
-Vytvořte soubor s názvem `azure-file-pvc.yaml` a zkopírujte následující manifestu. Ujistěte se, že `storageClassName` odpovídá třídy úložiště vytvořili v předchozím kroku.
+Vytvořte soubor s názvem `azure-file-pvc.yaml` a zkopírujte následující YAML. Ujistěte se, že `storageClassName` odpovídá třídy úložiště vytvořili v předchozím kroku.
 
 ```yaml
 apiVersion: v1
@@ -100,13 +100,13 @@ Vytvoření svazku trvalé deklarace s [kubectl použít] [ kubectl-apply] pří
 kubectl apply -f azure-file-pvc.yaml
 ```
 
-Po dokončení, vytvoří se sdílené složky. Kubernetes tajný klíč je vytvořen také obsahující informace o připojení a přihlašovací údaje.
+Po dokončení, vytvoří se sdílené složky. Kubernetes tajný klíč je vytvořen také obsahuje informace o připojení a přihlašovací údaje.
 
 ## <a name="using-the-persistent-volume"></a>Použití trvalé svazku
 
-Následující manifest vytvoří pod, která používá deklarace trvalé svazku `azurefile` připojit sdílenou složkou Azure v `/mnt/azure` cesta.
+Následující YAML vytvoří pod, která používá deklarace trvalé svazku `azurefile` připojit sdílenou složkou Azure v `/mnt/azure` cesta.
 
-Vytvořte soubor s názvem `azure-pvc-files.yaml`a zkopírujte následující manifestu. Ujistěte se, že `claimName` odpovídá PVC vytvořili v předchozím kroku.
+Vytvořte soubor s názvem `azure-pvc-files.yaml`a zkopírujte následující YAML. Ujistěte se, že `claimName` odpovídá PVC vytvořili v předchozím kroku.
 
 ```yaml
 kind: Pod
@@ -146,7 +146,7 @@ Výchozí hodnoty fileMode a dirMode liší mezi verzemi Kubernetes, jak je pops
 | v1.9.0 | 0700 |
 | V1.9.1 nebo novější | 0755 |
 
-Pokud používáte cluster verze 1.8.5 nebo větší, přípojných možnosti lze zadat v objektu třídy úložiště. Následující příklad sady `0777`.
+Pokud používáte cluster verze 1.8.5 nebo vyšší a dynamicky vytvoření svazku trvalá pomocí třídy úložiště, možnosti připojení lze zadat v objektu třídy úložiště. Následující příklad sady `0777`.
 
 ```yaml
 kind: StorageClass
@@ -163,6 +163,29 @@ parameters:
   skuName: Standard_LRS
 ```
 
+Pokud používáte cluster verze 1.8.5 nebo vyšší a staticky vytváření objektu svazku trvalá, možnosti připojení je potřeba zadat na `PersistentVolume` objektu. Další informace o vytváření staticky svazek trvalá najdete v tématu [statické trvalé svazky][pv-static].
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: azurefile
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  azureFile:
+    secretName: azure-secret
+    shareName: azurefile
+    readOnly: false
+  mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
+  ```
+
 Pokud používáte cluster verze 1.8.0 - 1.8.4, lze určit kontext zabezpečení `runAsUser` nastavena na hodnotu `0`. Další informace o kontextu zabezpečení Pod najdete v tématu [konfigurace kontextu zabezpečení][kubernetes-security-context].
 
 ## <a name="next-steps"></a>Další postup
@@ -173,7 +196,7 @@ Další informace o Kubernetes trvalé svazky s využitím Azure Files.
 > [Modul plug-in Kubernetes pro Azure Files][kubernetes-files]
 
 <!-- LINKS - external -->
-[access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+[access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
@@ -181,6 +204,7 @@ Další informace o Kubernetes trvalé svazky s využitím Azure Files.
 [kubernetes-security-context]: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/#azure-file
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create

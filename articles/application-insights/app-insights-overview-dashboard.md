@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4b3a7425f383e1fa8145bac016aa2881d806c545
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 0be54c47965c6a27c3506fd37a7bf67e4b2b7924
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="application-insights-overview-dashboard-preview"></a>Řídicí panel aplikací – přehled Insights (preview)
 
@@ -56,6 +56,9 @@ Toto je poprvé přístup k řídicím panelu se spustí výchozí zobrazení:
 ![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
 Zatímco můžete ponechat výchozí zobrazení, pokud ho chcete, můžete také přidat a odstranit z řídicího panelu na nejvhodnější podle potřeb vašeho týmu.
+
+> [!NOTE]
+> Všichni uživatelé s přístupem k prostředku Application Insights sdílí stejné prostředí pro řídicí panel aplikací. Změny prováděné jedním uživatelem upraví zobrazení pro všechny uživatele.
 
 Přejděte zpět na právě vyberte Přehled prostředí:
 

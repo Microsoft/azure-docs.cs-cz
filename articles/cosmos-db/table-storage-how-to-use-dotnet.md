@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ff26ab122e920d6ca8dbf837a2229f8728a471ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9f8175742adc5c543b637ab69b3a9583f251da04
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>Začínáme s úložištěm Azure Table pomocí rozhraní .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -102,7 +102,7 @@ K získání obou balíčků můžete použít balíček NuGet. Postupujte násl
 >
 
 ### <a name="determine-your-target-environment"></a>Určení cílového prostředí
-Ke spuštění příkladů z této příručky máte dvě možnosti prostředí:
+Máte tři možnosti prostředí pro spuštění v příkladech v tomto průvodci:
 
 * Svůj kód můžete spustit na účtu služby Azure Storage v cloudu. 
 * Svůj kód můžete spustit proti účet Azure Cosmos DB v cloudu.
