@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f8e9a2fbf28ace78b4ad2d361358bd394ac69ac7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f5630c8cb9c0ca13210c62652f8d7f2e98f94438
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366643"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -111,7 +112,7 @@ Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách
 * Pokud chcete, aby brána VP ověřila platnost názvu klientského počítače (propojení s doménou) a povolila přístup k webu Azure Portal, na konfigurujte [zásady autorizace připojení klienta](http://technet.microsoft.com/library/cc753324.aspx).
 * Protokol IPsec pro [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) slouží k ochraně před odposloucháváním provozu správy a před odcizením tokenu. Popřípadě zvažte použití izolovaného internetového odkazu prostřednictvím [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 * Povolte vícefaktorové ověřování (prostřednictvím služby [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)) nebo ověřování pomocí čipové karty, aby ho mohli používat správci, kteří se připojují prostřednictvím brány VP.
-* Pokud chcete minimalizovat počet povolených koncových bodů pro správu, nakonfigurujte v Azure [omezení IP adres](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) nebo [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) prostředku.
+* Pokud chcete minimalizovat počet povolených koncových bodů pro správu, nakonfigurujte v Azure [omezení IP adres](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) nebo [skupiny zabezpečení sítě](../virtual-network/security-overview.md) prostředku.
 
 ## <a name="security-guidelines"></a>Pokyny pro zabezpečení
 Obecně platí, že zabezpečení pracovních stanic správce používaných s cloudem je podobné postupům používaným pro všechny místní pracovní stanice – například minimalizovaná oprávnění k sestavení a omezující oprávnění. Některé jedinečné aspekty správy cloudu se více podobají vzdálené nebo podnikové správě mimo IP síť. Patří sem používání a auditování přihlašovacích údajů, vzdálený přístup s rozšířeným zabezpečením a detekce a reakce na ohrožení.

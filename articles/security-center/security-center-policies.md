@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: a993338e5a16514e855d771e25aac3e451faab45
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364382"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Nastavení zásad zabezpečení ve službě Azure Security Center
 Tento článek vám pomůže s konfigurací zásad zabezpečení ve službě Security Center.
@@ -55,7 +56,7 @@ Následující tabulku můžete použít jako referenci pro pochopení definic z
 | Konfigurace zabezpečení |Denně analyzuje konfigurace operačního systému k určení problémů, které by mohly způsobit zranitelnost virtuálních počítačů vůči útoku. Zásada také doporučuje změny v konfiguraci pro odstranění těchto ohrožení zabezpečení. Další informace o tom, jaké konkrétní konfigurace se monitorují, najdete v [seznamu doporučených standardních hodnot](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (V tomto okamžiku není Windows Server 2016 plně podporovaný.) |
 | Ochrana koncových bodů |Doporučuje nastavení ochrany koncových bodů pro všechny virtuální počítače s Windows, aby bylo možné identifikovat a odstraňovat viry, spyware a další škodlivý software. |
 | Šifrování disku |Doporučuje povolit šifrování disku ve všech virtuálních počítačích pro zvýšení ochrany dat při nečinnosti. |
-| Skupiny zabezpečení sítě |Doporučuje konfiguraci [skupin zabezpečení sítě](../virtual-network/virtual-networks-nsg.md), které řídí příchozí a odchozí přenosy dat do virtuálních počítačů s veřejnými koncovými body. Pokud neurčíte jinak, skupiny zabezpečení sítě nakonfigurované pro určitou podsíť se dědí do všech síťových rozhraní virtuálních počítačů. Kromě kontroly toho, jestli je skupina zabezpečení sítě nakonfigurovaná, tato zásada také vyhodnocuje pravidla zabezpečení příchozích dat a zjišťuje pravidla, která povolují příchozí přenosy dat. |
+| Skupiny zabezpečení sítě |Doporučuje konfiguraci [skupin zabezpečení sítě](../virtual-network/security-overview.md), které řídí příchozí a odchozí přenosy dat do virtuálních počítačů s veřejnými koncovými body. Pokud neurčíte jinak, skupiny zabezpečení sítě nakonfigurované pro určitou podsíť se dědí do všech síťových rozhraní virtuálních počítačů. Kromě kontroly toho, jestli je skupina zabezpečení sítě nakonfigurovaná, tato zásada také vyhodnocuje pravidla zabezpečení příchozích dat a zjišťuje pravidla, která povolují příchozí přenosy dat. |
 | Brána firewall webových aplikací |Doporučuje nastavení brány firewall webových aplikací na virtuálních počítačích, pokud je splněna jedna z následujících podmínek: <ul><li>Používá se [veřejná IP adresa na úrovni instance](../virtual-network/virtual-networks-instance-level-public-ip.md) a pravidla zabezpečení příchozích dat pro přidruženou skupinu zabezpečení sítě jsou nakonfigurovaná tak, aby povolovala přístup k portu 80 a 443.</li><li>Používá se IP adresa s vyrovnáváním zatížení a přidružené vyrovnávání zatížení i pravidla překladu adres příchozích dat jsou nakonfigurované tak, aby povolovaly přístup k portu 80 a 443. Další informace najdete v tématu [Podpora služby Load Balancer v Azure Resource Manageru](../load-balancer/load-balancer-arm.md).</li> |
 | Brána firewall příští generace |Rozšiřuje ochranu sítě nad rámec skupin zabezpečení sítě, které jsou integrované v Azure. Security Center zjišťuje nasazení, pro která se doporučuje brána firewall nové generace, a potom můžete nastavit virtuální zařízení. |
 | Detekce hrozeb a auditování SQL |Doporučuje povolit auditování přístupu k vaší databázi SQL za účelem šetření dodržování předpisů a rozšířeného zjišťování hrozeb. |

@@ -20,6 +20,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359369"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Rychlý start: Vytvoření webové aplikace .NET se službou Azure Cosmos DB pomocí rozhraní SQL API a webu Azure Portal
 

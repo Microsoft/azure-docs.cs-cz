@@ -3,8 +3,8 @@ title: Příklad rozhraní příkazového řádku – Škálování elastického
 description: Ukázkový skript Azure CLI pro škálování elastického fondu SQL ve službě Azure SQL Database
 services: sql-database
 documentationcenter: sql-database
-author: janeng
-manager: jstrauss
+author: CarlRabeler
+manager: craigg
 editor: carlrab
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,13 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/01/2018
-ms.author: janeng
-ms.openlocfilehash: 783ab5c983f82de820440b926103ce15f8c1fec8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.author: carlrab
+ms.openlocfilehash: 704cfae5be9e23d359f93452e6f45a87deb0f69f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365912"
 ---
 # <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Škálování elastického fondu SQL ve službě Azure SQL Database pomocí rozhraní příkazového řádku
 

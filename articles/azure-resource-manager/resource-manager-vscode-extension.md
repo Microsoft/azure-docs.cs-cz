@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358655"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Použití rozšíření Visual Studio Code k vytvoření šablony Azure Resource Manageru
 Tento článek ukazuje výhody instalace a používání rozšíření Nástroje Azure Resource Manageru v editoru Visual Studio Code. Šablony Resource Manageru můžete ve VS Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Navrhuje funkce šablon, parametry a proměnné, které jsou v šabloně dostupné.

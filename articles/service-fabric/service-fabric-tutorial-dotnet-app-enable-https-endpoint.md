@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364603"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core
 Tento kurz je třetí částí série.  Zjistíte, jak povolit HTTPS ve službě ASP.NET Core spuštěné v Service Fabric. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem ASP.NET Core s povoleným HTTPS, který bude naslouchat na portu 443. Pokud nechcete hlasovací aplikaci vytvářet ručně, v tématu popisujícím [vytvoření aplikace Service Fabric v .NET](service-fabric-tutorial-deploy-app-to-party-cluster.md) si můžete [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace.
@@ -49,7 +50,7 @@ Než začnete s tímto kurzem:
 - [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Získání certifikátu nebo vytvoření certifikátu podepsaného svým držitelem pro vývoj
-Potřebujete digitální certifikát.  Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spuštěním následujícího příkazu vytvořte certifikát s předmětem CN=localhost:
+Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spuštěním následujícího příkazu vytvořte certifikát s předmětem CN=localhost:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost

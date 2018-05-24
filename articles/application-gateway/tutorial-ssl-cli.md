@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 9c52eb99d76253298af858ed8748929874896523
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c548bd4e9373e7871ddcd8e04c5992b303e0e6bb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355929"
 ---
 # <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány s ukončením protokolu SSL pomocí Azure CLI
 
@@ -28,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud chcete, můžete tento kurz absolvovat v [Azure PowerShellu](tutorial-ssl-powershell.md).
+Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-ssl-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -36,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat CLI místně, potřebujete k tomuto kurzu verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
 V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
 
@@ -54,7 +55,7 @@ Zadejte heslo pro certifikát. V tomto příkladu se používá *Azure123456!* .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí příkazu [az group create](/cli/azure/group#create) vytvořte skupinu prostředků.
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
@@ -86,7 +87,7 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-the-application-gateway"></a>Vytvoření aplikační brány
+## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
 K vytvoření aplikační brány můžete použít příkaz [az network application-gateway create](/cli/azure/application-gateway#create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. 
 
@@ -148,7 +149,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 

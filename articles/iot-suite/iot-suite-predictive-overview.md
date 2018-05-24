@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 1a2750232f9396d8bc27e4fbb72eacf8790a1c52
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b1667b6449f9e425ea601f47f91bfe8cce8538e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304203"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
@@ -143,7 +144,7 @@ Můžete si také prostudovat některé další funkce a možnosti akcelerátor�
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
-[lnk_preconfigured_solutions]: iot-suite-what-are-solution-accelerators.md
+[lnk_preconfigured_solutions]:../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
 [lnk_iot_suite]: iot-suite-options.md
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2017
 ms.author: yurid
-ms.openlocfilehash: 4b8b8dba357db38424b86399672f4143c8c56a5f
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d088223aa2ea40d5bb9cf0e492e87ef054d86348
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365355"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Správa a zpracování výstrah zabezpečení v Azure Security Center
 Tento dokument vám pomůže používat Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
@@ -80,7 +81,7 @@ V tomto případě odkazují vygenerované výstrahy na podezřelé aktivity pro
 
 V poli **Popis** najdete další podrobnosti o této události. Tyto další podrobnosti nabízejí získání náhledu na příčinu výstrahy zabezpečení, cílový prostředek, případnou zdrojovou IP adresu a doporučení, jak provést nápravu.  V některých případech je zdrojová IP adresa prázdná (nedostupná), protože ne všechny protokoly událostí zabezpečení Windows obsahují IP adresu.
 
-Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. V některých případech budete muset k implementaci doporučené nápravy použít další možnosti Azure. Například nápravou pro tento útok je uvedení IP adresy, která generuje tento útok, v seznamu zakázaných serverů, a to pomocí [seznamu ACL sítě](../virtual-network/virtual-networks-acl.md) nebo pravidla [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md). Další informace o různých typech výstrah najdete v tématu [Výstrahy zabezpečení podle typu v Azure Security Center](security-center-alerts-type.md).
+Náprava navrhovaná službou Security Center se liší podle výstrahy zabezpečení. V některých případech budete muset k implementaci doporučené nápravy použít další možnosti Azure. Například nápravou pro tento útok je uvedení IP adresy, která generuje tento útok, v seznamu zakázaných serverů, a to pomocí [seznamu ACL sítě](../virtual-network/virtual-networks-acl.md) nebo pravidla [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules). Další informace o různých typech výstrah najdete v tématu [Výstrahy zabezpečení podle typu v Azure Security Center](security-center-alerts-type.md).
 
 > [!NOTE]
 > Ve službě Security Center byla vydána ve verzi Limited Preview nová sada detekcí, které využívají záznamy auditu, což je běžný auditní rámec, k detekci škodlivého chování na počítačích s Linuxem. Pokud se chcete připojit k verzi Preview, zašlete [nám](mailto:ASC_linuxdetections@microsoft.com) e-mail s ID vašich předplatných.

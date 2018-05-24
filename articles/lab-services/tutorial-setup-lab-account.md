@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5af348bfdccb9392948af962cf582e33ebd40872
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22a9e90404475e8ff1f1ea72c233b1abfed938f6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361371"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services-formerly-azure-devtest-labs"></a>Kurz: Nastavení účtu testovacího prostředí s Azure Lab Services (dříve Azure DevTest Labs)
 V tomto kurzu budete vystupovat jako správce testovacího prostředí a vytvoříte účet testovacího prostředí se službou Azure Lab Services. Potom udělíte vyučujícím oprávnění, aby mohli vytvořit testovací prostředí pro své třídy v tomto účtu testovacího prostředí. Vyučující může testovací prostředí pro třídu nastavit pomocí [webu Azure Lab Services](https://labs.azure.com).   
@@ -29,16 +30,15 @@ V tomto kurzu provedete následující akce:
 > * Vytvoření účtu testovacího prostředí
 > * Přidání uživatele do role Autor testovacího prostředí
 
-## <a name="prerequisites"></a>Požadavky
-
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-- Služba Azure Lab Services je momentálně ve verzi chráněného Preview. Pokud chcete vytvořit účet testovacího prostředí, [zaregistrujte si verzi Preview](https://aka.ms/azlabspreviewsignup).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-a-lab-account"></a>Vytvoření účtu testovacího prostředí
 Následující kroky ukazují postup vytvoření účtu testovacího prostředí se službou Azure Lab Services pomocí webu Azure Portal. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Z hlavní nabídky na levé straně vyberte **Vytvořit prostředek** (v horní části seznamu), přejděte na **Vývojářské nástroje** a klikněte na **Lab Services (Preview)**.
+2. V hlavní nabídce na levé straně vyberte **Vytvořit prostředek**.
+3. V Azure Marketplace vyhledejte **Lab Services** a v rozevíracím seznamu vyberte **Lab Services**. 
+4. Ve filtrovaném seznamu služeb vyberte **Lab Services (Preview)**. 
 1. V okně **Create a lab account** (Vytvořit účet testovacího prostředí) vyberte **Create** (Vytvořit).
 2. V okně **Lab account** (Účet testovacího prostředí) proveďte následující akce: 
     1. V části **Lab account name** (Název účtu testovacího prostředí) zadejte název. 

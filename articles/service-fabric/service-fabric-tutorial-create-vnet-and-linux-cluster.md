@@ -15,14 +15,15 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 63d5ae371b4852be96f764b91ec44f1befbd469b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ff57aec76171b45dbebff928f2898bd5f91ec1c2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365538"
 ---
 # <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Kurz: Nasazení clusteru Service Fabric s Linuxem do virtuální sítě Azure
-Tento kurz je první částí série. Naučíte se nasadit cluster Service Fabric s Linuxem do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) s použitím rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Tento kurz je první částí série. Naučíte se nasadit cluster Service Fabric s Linuxem do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/security-overview.md) s použitím rozhraní příkazového řádku Azure a šablony. Po dokončení budete mít v cloudu spuštěný cluster, do kterého budete moct nasazovat aplikace. Pokud chcete pomocí PowerShellu vytvořit cluster s Windows, přečtěte si článek [Vytvoření zabezpečeného clusteru s Windows v Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 V tomto kurzu se naučíte:
 

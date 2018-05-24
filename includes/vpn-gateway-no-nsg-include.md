@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371214"
 ---
 > [!IMPORTANT]
 > Při práci s podsítěmi brány nepřidružujte skupinu zabezpečení sítě (NSG) k podsíti brány. Pokud byste k této podsíti přidružili skupinu zabezpečení sítě, brána sítě VPN by mohla přestat fungovat podle očekávání. Další informace o skupinách zabezpečení sítě najdete v článku [Co je skupina zabezpečení sítě (NSG)](../articles/virtual-network/security-overview.md).

@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358043"
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>Vytvoření a nasazení první šablony Azure Resource Manageru
 Toto téma vás provede jednotlivými kroky k vytvoření první šablony Azure Resource Manageru. Šablony Resource Manageru jsou soubory JSON, které definují, jaké prostředky je pro řešení potřeba nasadit. Abyste porozuměli konceptům spojeným s nasazením a správou řešení Azure, podívejte se na téma [Přehled Azure Resource Manageru](resource-group-overview.md). Pokud máte existující prostředky a chcete pro ně získat šablonu, podívejte se na téma [Export šablony Azure Resource Manageru z existujících prostředků](resource-manager-export-template.md).

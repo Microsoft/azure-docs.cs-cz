@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 4bd084c8-0842-4a10-8460-080c6a085bec
 ms.service: azure-resource-manager
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd0680a16596931b5f595bbdd4e48414c8dbde73
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bd2869b35d92ea92261223131476d7cc8eb854eb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360100"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Vytvoření a nasazení skupiny prostředků Azure pomocí sady Visual Studio
 Pomocí sady Visual Studio a [Azure SDK](https://azure.microsoft.com/downloads/) můžete vytvořit projekt, který nasadí vaši infrastrukturu a kód do Azure. Můžete například definovat webového hostitele, webový server a databázi pro vaši aplikaci a nasadit tuto infrastrukturu spolu s kódem. Nebo můžete definovat virtuální počítač, virtuální síť a účet úložiště a nasadit tuto infrastrukturu spolu se skriptem, který se spouští na virtuálním počítači. Projekt nasazení **skupiny prostředků Azure** umožňuje nasadit všechny potřebné prostředky v rámci jedné opakovatelné operace. Další informace o nasazení a správě prostředků najdete v tématu [Přehled Azure Resource Manageru](resource-group-overview.md).

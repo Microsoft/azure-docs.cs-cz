@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 68ed75a9ef2faee408e65c0991182b7d95bb17a8
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2144747fdaa0c596397cc93d8509ca006b67c592
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303500"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366201"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Seznámení s akcelerátorem řešení propojené továrny
 
 [Akcelerátor řešení][lnk-preconfigured-solutions] propojené továrny je implementace komplexního průmyslového řešení, které:
 
-* Se připojuje k simulovaným průmyslovým zařízením se servery OPC UA na simulovaných výrobních linkách i ke skutečným zařízením serveru OPC UA. Další informace o OPC UA najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md).
+* Se připojuje k simulovaným průmyslovým zařízením se servery OPC UA na simulovaných výrobních linkách i ke skutečným zařízením serveru OPC UA. Další informace o OPC UA najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-accelerators-faq-cf.md).
 * Ukazuje klíčové ukazatele výkonu a celkovou efektivitu těchto zařízení a výrobních linek.
 * Ukazuje možnosti použití cloudové aplikace k interakci se serverovými systémy OPC UA.
 * Umožňuje připojení vlastních zařízení serveru OPC UA.
@@ -41,7 +41,7 @@ Tento článek vás provede některými z klíčových prvků řešení propojen
 * Naplánujte, jak řešení přizpůsobit podle konkrétních požadavků.
 * Navrhněte vlastní řešení IoT, které používá služby Azure.
 
-Další informace najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-suite-faq-cf.md).
+Další informace najdete v tématu [Propojená továrna – Nejčastější dotazy](iot-accelerators-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logická architektura
 
@@ -127,7 +127,7 @@ Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z 
 
 ## <a name="telemetry-data-flow"></a>Tok telemetrických dat
 
-![Tok telemetrických dat](media/iot-suite-connected-factory-walkthrough/telemetry_dataflow.png)
+![Tok telemetrických dat](./media/iot-accelerators-connected-factory-sample-walkthrough/telemetry_dataflow.png)
 
 ### <a name="flow-steps"></a>Kroky toku
 
@@ -179,7 +179,7 @@ Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z 
 
 ## <a name="browsing-data-flow"></a>Procházení toku dat
 
-![Procházení toku dat](media/iot-suite-connected-factory-walkthrough/browsing_dataflow.png)
+![Procházení toku dat](./media/iot-accelerators-connected-factory-sample-walkthrough/browsing_dataflow.png)
 
 ### <a name="flow-steps"></a>Kroky toku
 
@@ -233,15 +233,15 @@ Webová aplikace nasazená jako součást akcelerátoru řešení se skládá z 
 Další informace o akcelerátorech řešení IoT najdete v následujících článcích:
 
 * [Oprávnění na webu azureiotsuite.com][lnk-permissions]
-* [Nasazení brány pro akcelerátor řešení propojené továrny ve Windows nebo v Linuxu](iot-suite-connected-factory-gateway-deployment.md)
+* [Nasazení brány pro akcelerátor řešení propojené továrny ve Windows nebo v Linuxu](iot-accelerators-connected-factory-gateway-deployment.md)
 * [Referenční implementace vydavatele OPC](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 
-[connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
+[connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
 
-[lnk-preconfigured-solutions]:../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
-[lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
+[lnk-preconfigured-solutions]:iot-accelerators-what-are-solution-accelerators.md
+[lnk-customize]: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
-[lnk-permissions]: iot-suite-v1-permissions.md
+[lnk-permissions]: ../iot-suite/iot-suite-v1-permissions.md
