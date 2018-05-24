@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: fb455fe6f1b481ad2dc855d147860cb2c7898779
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c0261b4f89647a8db3b7bf452a8827d40fdc1911
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -23,7 +23,7 @@ K rychlému procházení částmi tohoto článku použijte odkazy vpravo v čá
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Konfigurace úlohy zálohování pro Soubory Azure
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Proč se nezobrazují některé účty úložiště, které chci chránit a které obsahují platné sdílené složky Azure? <br/>
-Během období Preview nepodporuje zálohování sdílených složek Azure všechny typy účtů úložiště. Seznam podporovaných účtů úložiště najdete [tady](troubleshoot-azure-files.md#preview-boundaries).
+Během období Preview nepodporuje zálohování sdílených složek Azure všechny typy účtů úložiště. Seznam podporovaných účtů úložiště najdete [tady](troubleshoot-azure-files.md#preview-boundaries). Je taky možné, že účet úložiště, který hledáte, se už chrání nebo je zaregistrovaný v jiném trezoru. Pokud chcete účet úložiště najít v jiných trezorech, abyste ho mohli chránit, [zrušte registraci](troubleshoot-azure-files.md#configuring-backup) v trezoru.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Proč se nezobrazují některé sdílené složky Azure v účtu úložiště, když se pokouším nakonfigurovat zálohování? <br/>
 Zkontrolujte, jestli už příslušná sdílená složka Azure není chráněná ve stejném trezoru služby Recovery Services nebo jestli nebyla nedávno odstraněna.
@@ -52,6 +52,7 @@ Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k di
 - Japonsko – západ (JPW)
 -   Indie – střed (INC) 
 - Indie – jih (INS)
+- Korea – střed (KRC)
 - Korea – jih (KRS)
 -   Střed USA – sever (NCUS) 
 -   Severní Evropa (NE) 

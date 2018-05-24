@@ -1,6 +1,6 @@
 ---
-title: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI | Microsoft Docs
-description: Kurz – Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
+title: Kurz – Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI | Microsoft Docs
+description: V tomto kurzu zjistíte, jak pomocí Azure CLI 2.0 vytvářet a spravovat virtuální počítače s Linuxem v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a3826db21d2e4ed447e1ef8d4016ff1dbbf75b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4e8be3af81ce74b033b2a15ceaf857540c1d9a6e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>Kurz: Vytváření a správa virtuálních počítačů s Linuxem pomocí Azure CLI 2.0
 
 Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní výpočetní prostředí. Tento kurz se zaměřuje na základní kroky při nasazování virtuálních počítačů, jako jsou výběr velikosti virtuálního počítače, výběr image virtuálního počítače a nasazení virtuálního počítače. Získáte informace o těchto tématech:
 
@@ -33,10 +33,9 @@ Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní v
 > * Změna velikosti virtuálního počítače
 > * Zobrazení a pochopení stavu virtuálního počítače
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -85,7 +84,7 @@ Vytvoření virtuálního počítače může několik minut trvat. Po vytvořen�
 Nyní se můžete k virtuálnímu počítači připojit pomocí protokolu SSH ve službě Azure Cloud Shell nebo z místního počítače. Ukázkovou IP adresu nahraďte hodnotou `publicIpAddress`, kterou jste si poznamenali v předchozím kroku.
 
 ```bash
-ssh 52.174.34.95
+ssh azureuser@52.174.34.95
 ```
 
 Po přihlášení k virtuálnímu počítači můžete nainstalovat a nakonfigurovat aplikace. Po dokončení zavřete relaci SSH obvyklým způsobem:

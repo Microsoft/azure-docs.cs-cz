@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: cd61aa4a69a5bed8de9874eebad059b54118ab63
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure
 
@@ -125,7 +125,7 @@ Pokud se zobrazí chyba NoRegisteredProviderFound nebo MissingSubscriptionRegist
    * **Zdroj dat výchozí**: výchozí systém souborů clusteru.
    * **Velikost uzlů pracovního procesu**: uzlů pracovního procesu s vybranou velikostí virtuálního počítače.
    * **HEAD velikost uzlu**: head uzlů s vybranou velikostí virtuálního počítače.
-   * **Virtuální síť**: název virtuální sítě a podsítě, do které je nasazen clusteru, pokud v době nasazení byl vybrán jeden.
+   * **Virtuální síť**: název virtuální sítě, který je nasazen cluster, pokud v době nasazení byl vybrán jeden.
 
 ## <a name="delete-clusters"></a>Odstranění clusterů
 Odstranění clusteru neodstraní výchozí účet úložiště ani všechny propojené účty úložiště. Clusteru můžete znovu vytvořit pomocí stejné účty úložiště a stejné metaúložiště. Doporučujeme používat nový výchozí kontejner objektu Blob, když znovu vytvoříte cluster.

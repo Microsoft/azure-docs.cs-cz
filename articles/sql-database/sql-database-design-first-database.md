@@ -1,5 +1,5 @@
 ---
-title: Návrh první databáze SQL Azure pomocí SSMS | Microsoft Docs
+title: 'Kurz: Návrh první databáze Azure SQL Database pomocí SSMS | Microsoft Docs'
 description: Zjistěte, jak navrhnout první databázi SQL Azure pomocí aplikace SQL Server Management Studio.
 services: sql-database
 author: CarlRabeler
@@ -7,28 +7,30 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ba14208e971d712184052e7470757ce48ac26879
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="design-your-first-azure-sql-database-using-ssms"></a>Návrh první databáze SQL Azure pomocí SSMS
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze Azure SQL Database pomocí SSMS
 
 Azure SQL Database je relační databáze jako služba (DBaaS) v cloudu Microsoftu (Azure). V tomto kurzu se naučíte používat web Azure Portal a aplikaci [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS), když chcete: 
 
 > [!div class="checklist"]
-> * Vytvořit databázi na webu Azure Portal
+> * Vytvořit databázi na portálu Azure Portal*
 > * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
 > * Připojit se k databázi pomocí SSMS
 > * Vytvářet tabulky pomocí SSMS
 > * Hromadně načítat data pomocí BCP
 > * Zadávat na tato data dotazy pomocí SSMS
-> * Obnovit databázi k [určitému dřívějšímu bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) na webu Azure Portal
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+
+   >[!NOTE]
+   > Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech (ve verzi Preview)](sql-database-service-tiers-vcore.md). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,13 +44,13 @@ Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 
-Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru Azure SQL Database](sql-database-features.md). 
+Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](sql-database-service-tiers-dtu.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) a na [logickém serveru Azure SQL Database](sql-database-features.md). 
 
 Pomocí následujících kroků vytvořte prázdnou databázi SQL. 
 
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
-2. Na stránce **Nový** vyberte **Databáze** a v části **Databáze SQL** na stránce **Nový** vyberte **Vytvořit**.
+2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
 
    ![Vytvoření prázdné databáze](./media/sql-database-design-first-database/create-empty-database.png)
 
@@ -74,7 +76,7 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 
 5. Klikněte na **Vybrat**.
 
-6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Prozkoumejte možnosti počtu DTU nebo virtuálních jader a velikosti úložiště, které máte k dispozici na jednotlivých úrovních služby. 
+6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU nebo virtuálních jader a velikost úložiště. Prozkoumejte možnosti počtu DTU nebo virtuálních jader a velikosti úložiště, které máte k dispozici na jednotlivých úrovních služby. Pro účely tohoto kurzu používáme [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), ale můžete si zvolit i [nákupní model založený na virtuálních jádrech (ve verzi Preview)](sql-database-service-tiers-vcore.md). 
 
 7. Pro účely tohoto kurzu vyberte úroveň služby **Standard** a potom pomocí posuvníku vyberte **100 DTU (S3)** a **400** GB úložiště.
 
@@ -83,10 +85,9 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 8. Přijměte podmínky verze Preview pro použití možnosti **Doplňkové úložiště**. 
 
    > [!IMPORTANT]
-   > \* Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
-   >
-   >\* Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, USA – střed, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – západ, Korea – střed, Střed USA – sever, Severní Evropa, Střed USA – jih, Asie – jihovýchod, Velká Británie – jih, Velká Británie – západ, USA – východ 2, USA – západ, USA (Gov) – Virginia a Západní Evropa. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   > 
+   > -  Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >-  Na úrovni Premium je úložiště větší než 1 TB aktuálně dostupné v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, USA – střed, Francie – střed, Německo – střed, Japonsko – východ, Japonsko – západ, Korea – střed, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, USA – východ 2, USA – západ, US Gov – Virginie a Západní Evropa. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
 
 9. Po výběru úrovně služby, počtu DTU a velikosti úložiště klikněte na **Použít**.  
 
@@ -108,7 +109,7 @@ Služba SQL Database vytvoří bránu firewall na úrovni serveru, aby zabránil
 
 1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **mynewserver-20170824.database.windows.net**) a možnosti pro další konfiguraci. 
 
-2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. 
+2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následných kurzech a rychlých startech. 
 
    ![název serveru](./media/sql-database-get-started-portal/server-name.png) 
 
@@ -297,26 +298,6 @@ Informace z databázových tabulek můžete načíst spuštěním následující
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>Obnovení databáze k dřívějšímu bodu v čase
-
-Představte si, že jste některou tabulku omylem odstranili. Taková situace se těžko napravuje. Azure SQL Database vám umožňuje vrátit se do libovolného bodu v čase za posledních 35 dnů a obnovit tento bod v čase do nové databáze. Tuto databázi může použít k obnově odstraněných dat. Následující kroky obnoví ukázkovou databázi do bodu před přidáním tabulek.
-
-1. Na stránce Databáze SQL vaší databáze klikněte na panelu nástrojů na **Obnovit**. Otevře se stránka **Obnovit**.
-
-   ![Obnovení](./media/sql-database-design-first-database/restore.png)
-
-2. Do formuláře **Restore** zadejte požadované údaje:
-    * Název databáze: Zadejte název databáze. 
-    * Časový okamžik: Ve formuláři Obnovit vyberte kartu **Časový okamžik**. 
-    * Bod obnovení: Vyberte časový okamžik, který nastal dřív, než došlo ke změně serveru.
-    * Cílový server: Při obnovení databáze tuto hodnotu nemůžete změnit. 
-    * Fond elastické databáze: Vyberte **Žádný**.  
-    * Cenová úroveň: Vyberte **20 DTU** a **40** GB úložiště.
-
-   ![Bod obnovení](./media/sql-database-design-first-database/restore-point.png)
-
-3. Kliknutím na **OK** obnovte databázi [k určitému bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) před přidáním tabulek. Obnovení databáze k jinému bodu v čase vytvoří duplicitní novou databázi na stejném serveru, na kterém je původní databáze, k zadanému časovému okamžiku, a to za předpokladu, že spadá do doby uchování pro vaši [úroveň služeb](sql-database-service-tiers.md).
-
 ## <a name="next-steps"></a>Další kroky 
 V tomto kurzu jste se naučili základním úkonům při práci s databází, jako je vytvoření databáze a tabulek, načtení a dotazování dat a obnovení databáze k určitému bodu v čase. Naučili jste se tyto postupy:
 > [!div class="checklist"]
@@ -326,7 +307,6 @@ V tomto kurzu jste se naučili základním úkonům při práci s databází, ja
 > * Vytvoření tabulek
 > * Hromadné načtení dat
 > * Dotazování těchto dat
-> * Obnovení databáze do předchozího bodu v čase pomocí funkce [obnovení bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) databáze SQL
 
 V následujícím kurzu se dozvíte, jak navrhnout databázi pomocí sady Visual Studio a jazyka C#.
 

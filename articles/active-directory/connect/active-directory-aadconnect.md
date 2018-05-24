@@ -1,5 +1,5 @@
 ---
-title: Připojení Active Directory s Azure Active Directory | Dokumenty Microsoft
+title: Připojení Active Directory s Azure Active Directory | Microsoft Docs
 description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD.
 keywords: Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory
 services: active-directory
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 73baef03f7b240e7bb33f3d5f827b1fc72c985f2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrace místních adresářů do služby Azure Active Directory
 Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.
@@ -64,7 +64,7 @@ Azure AD Connect si můžete stáhnout ze stránek [Stažení softwaru](http://g
 | --- | --- |
 | Ještě než začnete – [hardware a požadavky](active-directory-aadconnect-prerequisites.md) |<li>Kroky, které je třeba provést ještě před zahájením instalace služby Azure AD Connect.</li> |
 | [Expresní nastavení](active-directory-aadconnect-get-started-express.md) |<li>Toto nastavení doporučujeme použít, pokud máte jednu doménovou strukturu AD.</li> <li>Uživatelé se přihlašují se stejným heslem a používá se synchronizace hesel.</li> |
-| [Vlastní nastavení](active-directory-aadconnect-get-started-custom.md) |<li>Toto nastavení použijte, pokud máte více doménových struktur. Podporuje mnoho místních [topologií](active-directory-aadconnect-topologies.md).</li> <li>Upravte možnost přihlašování, jako například službu AD FS pro federaci nebo použití zprostředkovatele identity od jiného výrobce.</li> <li>Přizpůsobte funkce synchronizace, jako je například filtrování nebo zpětný zápis.</li> |
+| [Vlastní nastavení](active-directory-aadconnect-get-started-custom.md) |<li>Toto nastavení použijte, pokud máte více doménových struktur. Podporuje mnoho místních [topologií](active-directory-aadconnect-topologies.md).</li> <li>Upravte možnost přihlašování, jako například průchozí ověřování, systém ADFS pro federaci nebo použití zprostředkovatele identity od jiného výrobce.</li> <li>Přizpůsobte funkce synchronizace, jako je například filtrování nebo zpětný zápis.</li> |
 | [Upgrade z nástroje DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>Používá se, pokud již máte existující server DirSync.</li> |
 | [Upgrade z Azure AD Sync nebo z Azure AD Connect](active-directory-aadconnect-upgrade-previous-version.md) |<li>Můžete si vybrat z několika různých metod.</li> |
 

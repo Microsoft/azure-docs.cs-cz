@@ -1,108 +1,83 @@
 ---
-title: "Seznámení se službou Azure Application Gateway | Dokumentace Microsoftu"
-description: "Tato stránka poskytuje přehled služby Application Gateway pro vyrovnávání zatížení vrstvy 7, včetně velikostí bran, vyrovnávání zatížení HTTP, spřažení relace na základě souborů cookie a přesměrování zpracování SSL."
-documentationcenter: na
+title: Co je Azure Application Gateway?
+description: Přečtěte si, jak můžete pomocí aplikační brány Azure spravovat webové přenosy do vaší aplikace.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: b37a2473-4f0e-496b-95e7-c0594e96f83e
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.custom: H1Hack27Feb2017
+ms.topic: overview
+ms.custom: mvc
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
-ms.author: davidmu
-ms.openlocfilehash: 33968b72d0da71577428937e5d293a40d62989f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/9/2018
+ms.author: victorh
+ms.openlocfilehash: 3824eacb355c323a1850f6863ae2b99970c62cfb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="overview-of-application-gateway"></a>Přehled služby Application Gateway
+# <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
-Microsoft Azure Application Gateway je vyhrazené virtuální zařízení poskytující kontroler doručování aplikací (ADC) jako službu. Vaší aplikaci nabízí různé možnosti vyrovnávání zatížení vrstvy 7. Umožňuje zákazníkům optimalizovat produktivitu webové farmy tím, že se ukončování protokolu SSL, které je náročné na CPU, přesměruje na aplikační bránu. Nabízí také další možnosti přesměrování vrstvy 7, jako je kruhové dotazování na distribuci příchozích přenosů, spřažení relací na základě souborů cookie, přesměrování založené na cestách URL a možnost hostování několika webů za jedinou službou Application Gateway. Firewall webových aplikací (WAF) je také součástí skladové položky WAF služby Application Gateway. Poskytuje ochranu webových aplikací před běžnými ohroženími zabezpečení webu a zneužitím. Application Gateway je možné nakonfigurovat jako internetovou bránu nebo jen jako interní bránu, případně jako kombinaci obojího. 
+Azure Application Gateway je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací. 
 
-![scénář](./media/application-gateway-introduction/scenario.png)
+Nástroje pro vyrovnávání zatížení obvykle fungují na přenosové vrstvě (vrstva OSI 4 – TCP a UDP) a směrují provoz na základě zdrojové IP adresy a portu do cílové IP adresy a portu. Ale pomocí Application Gateway to může být ještě konkrétnější. Můžete například směrovat provoz na základě příchozí adresy URL. Pokud tedy příchozí adresa URL obsahuje `/images`, můžete směrovat provoz na konkrétní sadu serverů (označovanou jako fond), která je nakonfigurovaná pro obrázky. Pokud je v adrese URL `/video`, bude se takový provoz směrovat na jiný fond optimalizovaný pro videa.
 
-## <a name="features"></a>Funkce
+![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
-Služba Application Gateway aktuálně poskytuje následující možnosti:
+Tento typ směrování se označuje jako vyrovnávání zatížení aplikační vrstvy (vrstva OSI 7). Azure Application Gateway umí směrování na základě adresy URL, ale to není vše. Součástí Azure Application Gateway jsou následující funkce: 
+
+## <a name="url-based-routing"></a>Směrování na základě adresy URL
+
+Směrování na základě cesty URL umožňuje směrovat provoz do fondů back-end serveru na základě cest URL žádosti. Jedním ze scénářů je směrování žádostí na různé typy obsahu do různých fondů.
+
+Například žádosti na adresu `http://contoso.com/video/*` se směrují na VideoServerPool a žádosti na adresu `http://contoso.com/images/*` na ImageServerPool. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+
+## <a name="redirection"></a>Přesměrování
+
+Běžným scénářem pro mnoho webových aplikací je podpora automatického přesměrování HTTP na HTTPS, aby se zajistilo, že veškerá komunikace mezi aplikací a jejími uživateli probíhá přes šifrovanou cestu. 
+
+V minulosti jste možná používali techniku, jako je například vytváření vyhrazeného fondu, jehož jediným účelem je přesměrovat žádosti, které obdrží na HTTP, na protokol HTTPS. Aplikační brána podporuje možnost přesměrovat provoz na Application Gateway. To zjednodušuje konfiguraci aplikací, optimalizuje využití prostředků a podporuje nové scénáře přesměrování, včetně globálního přesměrování a přesměrování na základě cesty. Podpora přesměrování Application Gateway se neomezuje jenom na přesměrování z HTTP na HTTPS. Jde o obecný mechanismus přesměrování, takže můžete provoz přesměrovat z kteréhokoliv portu a na kterýkoliv port, který definujete pomocí pravidel. Také podporuje přesměrování na externí web.
+
+Podpora přesměrování Application Gateway nabízí následující možnosti:
+
+- Globální přesměrování z jednoho portu na jiný port ve službě Application Gateway. To umožňuje přesměrování z HTTP na HTTPS na webu.
+- Přesměrování na základě cesty. Tento typ přesměrování umožňuje přesměrování z HTTP na HTTPS jenom v konkrétní oblasti webu, například v oblasti nákupního košíku označené jako `/cart/*`.
+- Přesměrování na externí web.
+
+## <a name="multiple-site-hosting"></a>Hostování několika webů
+
+Hostování několika webů umožňuje konfigurovat více než jeden web ve stejné instanci aplikační brány. Tato funkce umožňuje nakonfigurovat efektivnější topologii vašich nasazení tím, že přidáte až 20 webů do jedné aplikační brány. Každý web se dá přesměrovat na vlastní fond. Aplikační brána může například obsluhovat provoz pro `contoso.com` a `fabrikam.com` ze dvou fondů serverů s názvem ContosoServerPool a FabrikamServerPool.
+
+Žádosti na adresu `http://contoso.com` se směrují na ContosoServerPool a žádosti na adresu `http://fabrikam.com` na FabrikamServerPool.
+
+Podobně je možné ve stejném nasazení aplikační brány hostovat dvě poddomény stejné nadřazené domény. Příklady použití subdomén můžou zahrnovat adresy `http://blog.contoso.com` a `http://app.contoso.com` hostované v jednom nasazení aplikační brány.
+
+## <a name="session-affinity"></a>Spřažení relací
+
+Funkce spřažení relací na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném serveru. Pomocí souborů cookie spravovaných bránou umí služba Application Gateway směrovat následný provoz z uživatelské relace ke zpracování na stejný server. To je důležité v případech, kdy se stav jednotlivých uživatelských relací ukládá místně na serveru.
+
+## <a name="secure-sockets-layer-ssl-termination"></a>Ukončení protokolu SSL (Secure Sockets Layer)
+
+Služba Application Gateway podporuje ukončení protokolu SSL na bráně, po čemž provoz typicky teče nešifrován na back-endové servery. Tato funkce webovým serverům umožňuje snížení nákladné režie spojené s šifrováním a dešifrováním. Někdy je však nešifrovaná komunikace se servery nepřijatelnou možností. Může to být z důvodu požadavků na zabezpečení nebo dodržování předpisů nebo protože aplikace může přijímat pouze zabezpečená připojení. Pro takové aplikace služba Application Gateway podporuje koncové šifrování protokolu SSL.
+
+## <a name="web-application-firewall"></a>Brána firewall webových aplikací
+
+Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. Firewall webových aplikací (WAF) je založený na [základní sadě pravidel OWASP (Open Web Application Security Project)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. 
+
+Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování mnoha vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
+
+## <a name="websocket-and-http2-traffic"></a>Provoz přes protokoly Websocket a HTTP/2
+
+Application Gateway poskytuje nativní podporu pro protokoly WebSocket a HTTP/2. Neexistuje žádné uživatelsky konfigurovatelné nastavení pro selektivní povolení nebo zakázání podpory protokolu WebSocket. Podpora protokolu HTTP/2 se dá povolit pomocí Azure PowerShellu.
+ 
+Protokoly WebSocket a HTTP/2 umožňují plně duplexní komunikaci mezi serverem a klientem přes dlouhotrvající připojení TCP. To umožňuje interaktivnější komunikaci mezi webovým serverem a klientem, která může být obousměrná, aniž by bylo nutné dotazování, jak se to vyžaduje v implementacích založených na protokolu HTTP. Tyto protokoly mají malou režii, na rozdíl od protokolu HTTP, a můžou znovu použít stejné připojení protokolu TCP pro více žádostí nebo odpovědí. Díky tomu je využití prostředků efektivnější. Tyto protokoly jsou navrženy pro práci přes tradiční porty HTTP 80 a 443.
 
 
-* **[Firewall webových aplikací](application-gateway-webapplicationfirewall-overview.md)** – Firewall webových aplikací (WAF) ve službě Azure Application Gateway chrání webové aplikace před běžnými webovými útoky, jako jsou například útoky prostřednictvím injektáže SQL, skriptování mezi weby a napadení relace.
-* **Vyrovnávání zatížení HTTP** – Služba Application Gateway poskytuje vyrovnávání zatížení kruhovým dotazováním. Vyrovnávání zatížení probíhá na vrstvě 7 a slouží pouze pro přenosy pomocí protokolu HTTP nebo HTTPS.
-* **Spřažení relace na základě souborů cookie** – Funkce spřažení relace na základě souborů cookie je užitečná v případě, že chcete zachovat uživatelskou relaci na stejném back-endu. Pomocí souborů cookie spravovaných bránou je služba Application Gateway schopna směrovat následný provoz z uživatelské relace k zpracování do stejného back-endu. Tato funkce je důležitá v případech, kdy se stav jednotlivých uživatelských relací ukládá místně na back-endovém serveru.
-* **[Přesměrování zpracování Secure Sockets Layer (SSL)](application-gateway-ssl-arm.md)** – Tato funkce zbaví vaše webové servery nákladné úlohy dešifrování přenosu pomocí protokolu HTTPS. Díky ukončení připojení protokolem SSL ve službě Application Gateway a předání požadavku na server v nezašifrované podobě není server zatížený dešifrováním.  Služba Application Gateway znovu šifruje odpověď před tím, než ji odešle zpět klientovi. Tato funkce je užitečná ve scénářích, kdy je back-end umístěn v rámci Azure ve stejné zabezpečené virtuální síti jako služba Application Gateway.
-* **[Konečné šifrování protokolu SSL](application-gateway-backend-ssl.md)** – Služba Application Gateway podporuje koncové šifrování provozu. Služba Application Gateway to provádí ukončením připojení protokolem SSL ve službě Application Gateway. Brána následně použije na provoz pravidla směrování, znovu zašifruje paket a předá tento paket do příslušného back-endu na základě nadefinovaných pravidel směrování. Každá odpověď webového serveru prochází ke koncovému uživateli stejným procesem.
-* **[Směrování obsahu na základě adresy URL](application-gateway-url-route-overview.md)** – Tato funkce poskytuje možnost používat různé back-endové servery pro různý provoz. Můžete na jiný back-end směrovat provoz pro složku na webovém serveru nebo pro síť CDN. Tato schopnost snižuje nepotřebné zatížení na back-endech, které neposkytují konkrétní obsah.
-* **[Směrování více webů](application-gateway-multi-site-overview.md)** – Služba Application Gateway umožňuje konsolidovat až 20 webů v jedné službě Application Gateway.
-* **[Podpora protokolu WebSocket](application-gateway-websocket.md)** – Další skvělou funkcí služby Application Gateway je nativní podpora protokolu WebSocket.
-* **[Monitorování stavu](application-gateway-probe-overview.md)** – Služba Application Gateway poskytuje výchozí monitorování stavu back-endových prostředků a vlastní monitorovací sondy pro konkrétnější scénáře.
-* **[Zásady a šifrování protokolu SSL](application-gateway-ssl-policy-overview.md)** – Tato funkce poskytuje možnost omezit podporované sady šifrování a verze protokolu SSL a pořadí, ve kterém se zpracovávají.
-* **[Přesměrování požadavků](application-gateway-redirect-overview.md)** – Tato funkce poskytuje možnost přesměrovat požadavky HTTP do naslouchacího procesu HTTPS.
-* **[Podpora back-endu s více tenanty](application-gateway-web-app-overview.md)** – Služba Application Gateway podporuje konfiguraci služeb back-end s více tenanty, jako je Azure Web Apps a brána rozhraní API, jako členy fondu back-end. 
-* **[Rozšířená diagnostika](application-gateway-diagnostics.md)** – Služba Application Gateway poskytuje úplnou diagnostiku a protokoly přístupů. Protokoly brány firewall jsou dostupné pro prostředky služby Application Gateway, které mají povolený Firewall webových aplikací.
-
-## <a name="benefits"></a>Výhody
-
-Služba Application Gateway je užitečná pro:
-
-* Aplikace, které vyžadují, aby se požadavky ze stejné uživatelské/klientské relace pokaždé dostaly ke stejnému back-endovému virtuálnímu počítači. Příklady těchto aplikací by mohly být aplikace nákupních košíků a servery webové pošty.
-* Odstranění režie při ukončování protokolu SSL pro farmy webových serverů.
-* Aplikace, jako je například síť pro doručování obsahu, které vyžadují, aby bylo během jednoho dlouhotrvajícího připojení TCP více požadavků HTTP směrováno nebo směrováno s vyrovnáváním zatížení na různé back-endové servery.
-* Aplikace, které podporují přenos pomocí protokolu WebSocket.
-* Ochranu webových aplikací před běžnými webovými útoky, jako jsou například útoky prostřednictvím injektáže SQL, skriptování mezi weby a napadení relace.
-* Logickou distribuci přenosu na základě různých kritérií směrování, jako je například cesta URL nebo hlavičky domény.
-
-Službu Application Gateway je možné plně spravovat v Azure, je škálovatelná a vysoce dostupná. Nabízí celou řadu možností diagnostiky a protokolování, které zlepšují správu. Když vytvoříte aplikační bránu, bude příchozímu síťovému přenosu přidružen koncový bod (veřejná virtuální IP adresa nebo interní IP adresa interního nástroje na vyrovnávání zatížení), který se pro něj použije. Tuto virtuální IP adresu nebo IP adresu interního nástroje pro vyrovnávání zatížení poskytuje služba Azure Load Balancer, která funguje na úrovni přenosu (TCP/UDP) a vyrovnává zatížení v podobě veškerých příchozích síťových přenosů mezi instancemi pracovních procesů aplikační brány. Aplikační brána následně přesměruje přenosy HTTP/HTTPS podle vlastní konfigurace bez ohledu na to, jestli se jedná o virtuální počítač, cloudovou službu, interní nebo externí IP adresu.
-
-Vyrovnávání zatížení ve službě Application Gateway jako služba spravovaná Azure umožňuje zřízení nástroje pro vyrovnávání zatížení vrstvy 7 za nástrojem pro vyrovnávání zatížení softwaru Azure. Traffic Manager se dá použít k dokončení scénáře, který je znázorněný na následujícím obrázku, kde Traffic Manager poskytuje přesměrování a dostupnost při provozu mezi několika prostředky služby Application Gateway v různých oblastech, zatímco služba Application Gateway poskytuje vyrovnávání zatížení vrstvy 7 mezi oblastmi. Příklad tohoto scénáře najdete v tématu: [Používání služeb vyrovnávání zatížení v cloudu Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-
-![scénář Traffic Manageru a služby Application Gateway](./media/application-gateway-introduction/tm-lb-ag-scenario.png)
-
-[!INCLUDE [load-balancer-compare-tm-ag-lb-include.md](../../includes/load-balancer-compare-tm-ag-lb-include.md)]
-
-## <a name="gateway-sizes-and-instances"></a>Velikosti a instance brány
-
-Služba Application Gateway je v současné době nabízena ve třech velikostech: **Small** (krátkodobé používání), **Medium** (střednědobé používání) a **Large** (dlouhodobé používání). Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
-
-V rámci jednoho předplatného můžete vytvořit až 50 služeb Application Gateway a každá z nich může mít až 10 instancí. Každá služba Application Gateway se může skládat z 20 naslouchacích procesů HTTP. Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
-
-Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway s povoleným přesměrováním zpracování SSL:
-
-| Odezva back-endové stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
-| --- | --- | --- | --- |
-| 6K |7,5 Mb/s |13 Mb/s |50 Mb/s |
-| 100K |35 Mb/s |100 Mb/s |200 Mb/s |
-
-> [!NOTE]
-> Tyto hodnoty jsou přibližné hodnoty propustnosti služby Application Gateway. Skutečná propustnost závisí na různých podrobnostech o prostředí, jako jsou například průměrná velikost stránky, umístění back-endových instancí a doba zpracování potřebná k doručení stránky. Přesné údaje o výkonu získáte, když spustíte vlastní testy. Tyto hodnoty slouží jenom jako vodítko při plánování kapacity.
-
-## <a name="health-monitoring"></a>Monitorování stavu
-
-Služba Azure Application Gateway automaticky monitoruje stav back-endových instancí prostřednictvím základních nebo vlastních sond stavu. Díky používání sond stavu zajišťuje, že na provoz reagují pouze hostitelé, kteří jsou v pořádku. Další informace najdete v tématu [Přehled monitorování stavu ve službě Application Gateway](application-gateway-probe-overview.md).
-
-## <a name="configuring-and-managing"></a>Konfigurace a správa
-
-Služba Application Gateway může pro svůj koncový bod při konfiguraci mít veřejnou IP adresu, privátní IP adresu nebo obojí. Služba Application Gateway je nakonfigurována ve virtuální síti ve vlastní podsíti. Podsíť vytvořená nebo používaná pro službu Application Gateway nemůže obsahovat žádný jiný typ prostředků, jediné povolené prostředky v podsíti jsou další služby Application Gateway. Pro zabezpečení vašich back-endových prostředků mohou být back-endové servery obsažené v rámci jiné podsítě ve stejné virtuální síti jako služba Application Gateway. Tato podsíť není vyžadována pro aplikace back-end. Dokud má služba Application Gateway přístup k IP adrese, je schopna poskytovat serverům back-end možnosti ADC. 
-
-Službu Application Gateway můžete vytvořit a spravovat pomocí rozhraní REST API, rutin prostředí PowerShell, rozhraní příkazového řádku Azure nebo webu [Azure Portal](https://portal.azure.com/). V případě dalších dotazů na aplikační bránu si přečtěte článek [Nejčastější dotazy k Application Gateway](application-gateway-faq.md), který obsahuje seznam častých dotazů.
-
-## <a name="pricing"></a>Ceny
-
-Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Ceny brány za hodinu pro skladovou položku WAF se liší od poplatků za skladové položky úrovně Standard. Informace o cenách najdete v tématu [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Poplatky za zpracování dat zůstávají stejné.
-
-## <a name="faq"></a>Nejčastější dotazy
-
-Nejčastější dotazy k službě Application Gateway najdete v tématu [Nejčastější dotazy k Application Gateway](application-gateway-faq.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po získání informací o službě Application Gateway můžete [vytvořit službu Application Gateway](application-gateway-create-gateway-portal.md) nebo [vytvořit přesměrování zpracování SSL ve službě Application Gateway](application-gateway-ssl-arm.md) pro vyrovnávání zatížení připojení HTTPS.
+V závislosti na vašich požadavcích a prostředí můžete vytvořit testovací Application Gateway pomocí portálu Azure Portal, Azure PowerShellu nebo rozhraní Azure CLI:
 
-Další informace o vytvoření služby Application Gateway používající směrování obsahu na základě adresy URL najdete v tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](application-gateway-create-url-route-arm-ps.md).
-
-Informace o některých dalších klíčových možnostech sítě v Azure najdete v tématu [Sítě Azure](../networking/networking-overview.md).
+- [Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – portál Azure Portal](quick-create-portal.md)
+- [Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
+- [Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure CLI](quick-create-cli.md)

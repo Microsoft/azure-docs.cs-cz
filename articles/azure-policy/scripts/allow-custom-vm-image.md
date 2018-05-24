@@ -1,38 +1,38 @@
 ---
-title: "Azure json zásady ukázkové – povolit vlastní image virtuálního počítače ze skupiny prostředků | Microsoft Docs"
-description: "Tato ukázková zásada json vyžaduje, že vlastní Image pocházejí z skupiny schválené prostředků."
+title: Ukázka kódu JSON pro Azure Policy – Povolení vlastní image virtuálního počítače ze skupiny prostředků | Microsoft Docs
+description: Tato ukázková zásada JSON vyžaduje, aby vlastní image pocházely ze schválené skupiny prostředků.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 3da9a459f7e3008fc6a75473cc1a239d9cd5749b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: ca2d25828bc184a783dd065df3cc8200a3af6ee3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allow-custom-vm-image-from-a-resource-group"></a>Povolit vlastní image virtuálního počítače ze skupiny prostředků
+# <a name="allow-custom-vm-image-from-a-resource-group"></a>Povolení vlastní image virtuálního počítače ze skupiny prostředků
 
-Tato ukázková zásada json vyžaduje, že vlastní Image pocházejí z skupiny schválené prostředků. Zadáte název skupiny prostředků schválené.
+Tato ukázková zásada JSON vyžaduje, aby vlastní image pocházely ze schválené skupiny prostředků. Zadejte název schválené skupiny prostředků.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Ukázka šablony
+## <a name="sample-template"></a>Ukázková šablona
 
 [!code-json[main](../../../policy-templates/samples/compute/custom-image-from-rg/azurepolicy.json "Allow custom VM image from a Resource Group")]
 
 
-Můžete nasadit pomocí této šablony [portál Azure](#deploy-with-the-portal), s [prostředí PowerShell](#deploy-with-powershell) nebo pomocí [rozhraní příkazového řádku Azure](#deploy-with-azure-cli).
+K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
@@ -49,15 +49,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení prostředí PowerShell
+### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení PowerShellu
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -67,9 +67,9 @@ az policy definition create --name 'custom-image-from-rg' --display-name 'Allow 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "custom-image-from-rg"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení rozhraní příkazového řádku Azure
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -77,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky šablony zásad Azure naleznete v dokumentaci k zásadám Azure
+Další ukázkové šablony Azure Policy najdete v dokumentaci ke službě Azure Policy.

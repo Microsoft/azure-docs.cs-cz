@@ -1,36 +1,38 @@
 ---
-title: "Vytvoření služby application gateway pomocí adresy URL na základě cestu přesměrování - rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Postup vytvoření služby application gateway pomocí adresy URL na základě cesty přesměrovaných přenosů dat pomocí rozhraní příkazového řádku Azure."
+title: Vytvoření aplikační brány se směrováním založeným na cestě URL – Azure CLI
+description: Přečtěte si, jak s Azure CLI vytvoříte aplikační bránu se směrováním provozu založeným na cestě URL.
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: vhorne
+manager: jpconnock
 ms.service: application-gateway
-ms.topic: article
+ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 73fc20cf738f584008e7d8a019b8f7012dcacab1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
-ms.translationtype: MT
+ms.date: 4/27/2018
+ms.author: victorh
+ms.custom: mvc
+ms.openlocfilehash: 23e3fdc168b2337b142f3cba554073bad1f5eb4a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí adresy URL na základě cestu přesměrování pomocí rozhraní příkazového řádku Azure
+# <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány s Azure CLI se směrováním založeným na cestě URL
 
-Rozhraní příkazového řádku Azure můžete použít ke konfiguraci [pravidla směrování na základě cesty adresy URL](application-gateway-url-route-overview.md) při vytváření [Aplikační brána](application-gateway-introduction.md). V tomto kurzu vytvoříte pomocí back-endové fondy [sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování URL, která Ujistěte se, že webový provoz bude přesměrován na příslušné back-endový fond.
+Při vytváření [aplikační brány](application-gateway-introduction.md) můžete Azure CLI použít ke konfiguraci [pravidel směrování podle adres URL](application-gateway-url-route-overview.md). V tomto kurzu vytvoříte back-endové fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pak vytvoříte pravidla směrování adres URL, která zajistí přesměrování webového provozu na správný back-endový fond.
 
-V tomto článku se dozvíte, jak:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavení sítě
-> * Vytvoření služby Application Gateway
-> * Přidejte naslouchací procesy a pravidla směrování
-> * Vytvoření sady škálování virtuálního počítače pro back-endové fondy
+> * Nastavit síť
+> * Vytvoření aplikační brány
+> * Přidat naslouchací procesy a pravidla směrování
+> * Vytvořit pro back-endové fondy škálovací sadu virtuálních počítačů
 
-Následující příklad ukazuje webový provoz přicházející ze porty 8080 a 8081 a směrovat do stejné back-endové fondy:
+Na následujícím příkladu je vidět přesměrování webového provozu, který přichází ze dvou portů 8080 a 8081, na stejné back-endové fondy:
 
-![Příklad směrování URL](./media/tutorial-url-redirect-cli/scenario.png)
+![Příklad směrování na základě adresy URL](./media/tutorial-url-redirect-cli/scenario.png)
+
+Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-url-redirect-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -40,17 +42,17 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvoření skupiny prostředků pomocí [vytvořit skupinu az](/cli/azure/group#create).
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí příkazu [az group create](/cli/azure/group#create) vytvořte skupinu prostředků.
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroupAG* v *eastus* umístění.
+V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>Vytvoření síťové prostředky 
+## <a name="create-network-resources"></a>Vytvoření síťových prostředků 
 
-Vytvořit virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet* pomocí [vytvoření sítě vnet az](/cli/azure/network/vnet#az_net). Poté můžete přidat podsíť s názvem *myBackendSubnet* to vyžaduje back-end serverů pomocí [az sítě vnet podsíť vytváření](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Vytvoření veřejné IP adresy s názvem *myAGPublicIPAddress* pomocí [vytvoření veřejné sítě az-ip](/cli/azure/public-ip#az_network_public_ip_create).
+Pomocí příkazu [az network vnet create](/cli/azure/network/vnet#az_net) vytvořte virtuální síť s názvem *myVNet* a podsíť s názvem *myAGSubnet*. Potom můžete přidat podsíť s názvem *myBackendSubnet*, kterou potřebují back-endové servery. Použijte k tomu příkaz [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Pomocí příkazu [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -60,19 +62,21 @@ az network vnet create \
   --address-prefix 10.0.0.0/16 \
   --subnet-name myAGSubnet \
   --subnet-prefix 10.0.1.0/24
+
 az network vnet subnet create \
   --name myBackendSubnet \
   --resource-group myResourceGroupAG \
   --vnet-name myVNet \
   --address-prefix 10.0.2.0/24
+
 az network public-ip create \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření aplikační brány
 
-Můžete použít [az brány aplikace-vytvořit](/cli/azure/application-gateway#create) k vytvoření aplikační brány s názvem myAppGateway. Při vytváření služby application gateway pomocí Azure CLI, je třeba zadat informace o konfiguraci, například kapacitu, sku a nastavení HTTP. Službu application gateway je přiřazena k *myAGSubnet* a *myPublicIPSddress* kterou jste vytvořili.  
+K vytvoření aplikační brány s názvem myAppGateway použijte příkaz [az network application-gateway create](/cli/azure/application-gateway#create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazená dříve vytvořené podsíti *myAGSubnet* a adrese *myPublicIPAddress*.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -90,33 +94,36 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
- Ho může trvat několik minut pro službu application gateway, který se má vytvořit. Po vytvoření služby application gateway se zobrazí tyto nové funkce:
+ Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto nové funkce:
 
-- *appGatewayBackendPool* -aplikační brány musí mít alespoň jeden fond adres back-end.
-- *appGatewayBackendHttpSettings* -Určuje, že port 80 a protokol HTTP se používá pro komunikaci.
-- *appGatewayHttpListener* -přidružený naslouchací proces výchozí *appGatewayBackendPool*.
-- *appGatewayFrontendIP* -přiřadí *myAGPublicIPAddress* k *appGatewayHttpListener*.
-- *rule1 New* – výchozí směrování pravidlo, které souvisí s *appGatewayHttpListener*.
+- *appGatewayBackendPool* – aplikační brána musí mít aspoň jeden back-endový fond adres.
+- *appGatewayBackendHttpSettings* – určuje, že se ke komunikaci používá port 80 a protokol HTTP.
+- *appGatewayHttpListener* – výchozí naslouchací proces přidružený k *appGatewayBackendPool*.
+- *appGatewayFrontendIP* – přiřadí adresu *myAGPublicIPAddress* naslouchacímu procesu *appGatewayHttpListener*.
+- *rule1* – výchozí pravidlo směrování přidružené k naslouchacímu procesu *appGatewayHttpListener*.
 
 
-### <a name="add-backend-pools-and-ports"></a>Přidat back-endové fondy a porty
+### <a name="add-backend-pools-and-ports"></a>Přidání back-endových fondů a portů
 
-Můžete přidat fondy adres back-end s názvem *imagesBackendPool* a *videoBackendPool* vaší aplikační brány pomocí [az Aplikační brána fond síťových adres-vytvořit](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create). Přidat portů front-endu pro fondy pomocí [vytvoření aplikační brány sítě az front-endu port](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create). 
+K aplikační bráně můžete přidat back-endové fondy pojmenované *imagesBackendPool* a *videoBackendPool* příkazem [az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create). Přidejte front-endové porty fondů příkazem [az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create). 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
   --resource-group myResourceGroupAG \
   --name imagesBackendPool
+
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
   --resource-group myResourceGroupAG \
   --name videoBackendPool
+
 az network application-gateway frontend-port create \
   --port 8080 \
   --gateway-name myAppGateway \
   --resource-group myResourceGroupAG \
   --name bport
+
 az network application-gateway frontend-port create \
   --port 8081 \
   --gateway-name myAppGateway \
@@ -124,11 +131,11 @@ az network application-gateway frontend-port create \
   --name rport
 ```
 
-## <a name="add-listeners-and-rules"></a>Přidejte naslouchací procesy a pravidla
+## <a name="add-listeners-and-rules"></a>Přidání naslouchacích procesů a pravidel
 
-### <a name="add-listeners"></a>Přidejte naslouchací procesy
+### <a name="add-listeners"></a>Přidání naslouchacích procesů
 
-Přidejte naslouchací procesy back-end, s názvem *backendListener* a *redirectedListener* , jsou potřeba ke směrování provozu pomocí [az sítě Aplikační brána-naslouchací proces protokolu http vytvořit](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create).
+Přidejte back-endové naslouchací procesy s názvem *backendListener* a *redirectedListener*, které jsou potřeba ke směrování provozu, příkazem [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create).
 
 
 ```azurecli-interactive
@@ -138,6 +145,7 @@ az network application-gateway http-listener create \
   --frontend-port bport \
   --resource-group myResourceGroupAG \
   --gateway-name myAppGateway
+
 az network application-gateway http-listener create \
   --name redirectedListener \
   --frontend-ip appGatewayFrontendIP \
@@ -146,9 +154,9 @@ az network application-gateway http-listener create \
   --gateway-name myAppGateway
 ```
 
-### <a name="add-the-default-url-path-map"></a>Přidejte výchozí cestu mapování adresy URL
+### <a name="add-the-default-url-path-map"></a>Přidání výchozí mapy cest adres URL
 
-Adresa URL cesty mapy Ujistěte se, že konkrétní adresy URL jsou směrované na konkrétní back-endové fondy. Můžete vytvořit mapy cestu adresy URL s názvem *imagePathRule* a *videoPathRule* pomocí [az Aplikační brána url cesta mapy sítě vytvořit](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) a [az sítě Vytvořit pravidlo adresy url. cesta mapy aplikační brány](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create)
+Mapy cest adres URL zajišťují přesměrování konkrétních adres URL na konkrétní back-endové fondy. Vytvořte mapy cest adres URL pojmenované *imagePathRule* a *videoPathRule*. Použijte k tomu příkazy [az network application-gateway url-path-map create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) a [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create).
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -161,6 +169,7 @@ az network application-gateway url-path-map create \
   --default-http-settings appGatewayBackendHttpSettings \
   --http-settings appGatewayBackendHttpSettings \
   --rule-name imagePathRule
+
 az network application-gateway url-path-map rule create \
   --gateway-name myAppGateway \
   --name videoPathRule \
@@ -170,9 +179,9 @@ az network application-gateway url-path-map rule create \
   --address-pool videoBackendPool
 ```
 
-### <a name="add-redirection-configuration"></a>Přidat konfiguraci přesměrování
+### <a name="add-redirection-configuration"></a>Přidání konfigurace přesměrování
 
-Můžete konfigurovat přesměrování pro naslouchací proces pomocí [vytvoření aplikační brány sítě az přesměrování config](/cli/azure/application-gateway#az_network_application_gateway_redirect_config_create).
+Ke konfiguraci přesměrování naslouchacího procesu použijte příkaz [az network application-gateway redirect-config create](/cli/azure/application-gateway#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -185,7 +194,7 @@ az network application-gateway redirect-config create \
   --target-listener backendListener
 ```
 
-### <a name="add-the-redirection-url-path-map"></a>Přidat mapu cestu adresy URL přesměrování
+### <a name="add-the-redirection-url-path-map"></a>Přidání mapy cest adres URL pro přesměrování
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -197,9 +206,9 @@ az network application-gateway url-path-map create \
   --rule-name redirectPathRule
 ```
 
-### <a name="add-routing-rules"></a>Přidat pravidla směrování
+### <a name="add-routing-rules"></a>Přidání pravidel směrování
 
-Pravidla směrování přidružit mapy cesta URL naslouchací procesy, které jste vytvořili. Můžete přidat pravidla s názvem *defaultRule* a *redirectedRule* pomocí [vytvořit pravidlo Aplikační brána sítě az](/cli/azure/application-gateway#az_network_application_gateway_rule_create).
+Pravidla směrování přidružují mapy cest adres URL k vytvořeným naslouchacím procesům. Přidejte pravidla pojmenovaná *defaultRule* a *redirectedRule* příkazem [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -210,6 +219,7 @@ az network application-gateway rule create \
   --rule-type PathBasedRouting \
   --url-path-map urlpathmap \
   --address-pool appGatewayBackendPool
+
 az network application-gateway rule create \
   --gateway-name myAppGateway \
   --name redirectedRule \
@@ -220,9 +230,9 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-virtual-machine-scale-sets"></a>Vytvoření sady škálování virtuálního počítače
+## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu můžete vytvořit tři sady škálování virtuálního počítače, které podporují tři back-endové fondy, které jste vytvořili. Jsou pojmenované sady škálování, které vytvoříte *myvmss1*, *myvmss2*, a *myvmss3*. Každá sada škálování obsahuje dvě instance virtuálního počítače, na kterých instalujete NGINX.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Vytvořené škálovací sady se budou jmenovat *myvmss1*, *myvmss2* a *myvmss3*. Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete server NGINX.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -238,6 +248,7 @@ for i in `seq 1 3`; do
   then
     poolName="videoBackendPool"
   fi
+
   az vmss create \
     --name myvmss$i \
     --resource-group myResourceGroupAG \
@@ -264,13 +275,14 @@ for i in `seq 1 3`; do
     --name CustomScript \
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
-    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+
 done
 ```
 
-## <a name="test-the-application-gateway"></a>Testování služby application gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Chcete-li získat veřejnou IP adresu brány, aplikace, můžete použít [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložit do panelu Adresa prohlížeče. Například *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, *http://40.121.222.19:8080/video/test.htm*, nebo *http:// 40.121.222.19:8081/Images/test.htm*.
+K získání veřejné IP adresy aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Příklad: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm*, *http://40.121.222.19:8080/video/test.htm* nebo *http://40.121.222.19:8081/images/test.htm*.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -280,27 +292,34 @@ az network public-ip show \
   --output tsv
 ```
 
-![Otestovat základní adresu URL v aplikační brány](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
+![Otestování základní adresy URL v aplikační bráně](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-Změňte adresu URL k http://&lt;ip adresu&gt;: 8080/video/test.html, nahraďte IP adres pro &lt;ip adresu&gt;, a měli byste vidět něco podobného jako v následujícím příkladu:
+Změňte adresu URL na http://&lt;ip-adresa&gt;:8080/images/test.htm, kde za &lt;ip-adresa&gt; dosadíte svoji IP adresu. Výsledek by měl být podobný jako na následujícím příkladu:
 
-![Testovací adresu URL bitové kopie v aplikační brány](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
+![Testování adresy URL obrázků v aplikační bráně](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-Změňte adresu URL k http://&lt;ip adresu&gt;: 8080/video/test.html, nahraďte IP adres pro &lt;ip adresu&gt;, a měli byste vidět něco podobného jako v následujícím příkladu.
+Změňte adresu URL na http://&lt;ip-adresa&gt;:8080/video/test.htm, kde za &lt;ip-adresa&gt; dosadíte svoji IP adresu. Výsledek by měl být podobný jako na následujícím příkladu:
 
-![Adresa URL videa testu v aplikační brány](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
+![Testování adresy URL videa v aplikační bráně](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Nyní, změňte adresu URL k http://&lt;ip adresu&gt;: 8081/images/test.htm, nahraďte IP adres pro &lt;ip adresu&gt;, a měli byste vidět provoz přesměrován zpět do fondu back-end bitové kopie na http://&lt;ip adresu&gt;: 8080/bitové kopie.
+Teď změňte adresu URL na http://&lt;ip-adresa&gt;:8081/images/test.htm, kde údaj &lt;ip-adresa&gt; nahradíte svojí IP adresou. Podívejte se, že se provoz přesměroval zpátky na back-endový fond obrázků na adrese http://&lt;ip-adresa&gt;:8080/images.
 
-## <a name="next-steps"></a>Další postup
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Až nebudete skupinu prostředků, aplikační bránu a další související prostředky potřebovat, odeberte je.
+
+```azurecli-interactive
+az group delete --name myResourceGroupAG --location eastus
+```
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Nastavení sítě
-> * Vytvoření služby Application Gateway
-> * Přidejte naslouchací procesy a pravidla směrování
-> * Vytvoření sady škálování virtuálního počítače pro back-endové fondy
+> * Nastavit síť
+> * Vytvoření aplikační brány
+> * Přidat naslouchací procesy a pravidla směrování
+> * Vytvořit pro back-endové fondy škálovací sadu virtuálních počítačů
 
 > [!div class="nextstepaction"]
-> [Další informace o co můžete dělat s aplikační brány](application-gateway-introduction.md)
+> [Další informace o možnostech aplikační brány](application-gateway-introduction.md)

@@ -1,36 +1,36 @@
 ---
-title: Virtuální počítače Azure Security Center a systému Windows v Azure | Microsoft Docs
-description: Další informace o zabezpečení pro virtuální počítač Azure Windows s Azure Security Center.
+title: Kurz použití služby Azure Security Center pro virtuální počítače s Windows v Azure | Microsoft Docs
+description: V tomto kurzu získáte informace o funkcích služby Azure Security Center k ochraně a zabezpečení virtuálních počítačů s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b573208107b07b47b471d9c5247b362ef144099e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Monitorování zabezpečení virtuálních počítačů pomocí Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Windows
 
 Azure Security Center vám může pomoct získat přehled o postupech zabezpečení vašich prostředků Azure. Security Center nabízí integrované monitorování zabezpečení. Dokáže detekovat hrozby, kterých byste si jinak možná nevšimli. V tomto kurzu se seznámíte s Azure Security Center a následujícími postupy:
- 
+
 > [!div class="checklist"]
 > * Nastavení shromažďování dat
 > * Nastavení zásad zabezpečení
 > * Zobrazení a oprava problémů se stavem konfigurace
-> * Kontrola zjištěných hrozeb  
+> * Kontrola zjištěných hrozeb
 
 ## <a name="security-center-overview"></a>Přehled služby Security Center
 
@@ -135,7 +135,7 @@ Výběrem výstrahy zobrazíte informace. Můžete například zobrazit popis hr
 
 ![Útok na protokol RDP](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
@@ -144,7 +144,7 @@ V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center 
 > * Zobrazení a oprava problémů se stavem konfigurace
 > * Kontrola zjištěných hrozeb
 
-Přechodu na v dalším kurzu se dozvíte, jak vytvořit kanál CI/CD s Visual Studio Team Services a virtuální počítač s Windows služby IIS.
+V dalším kurzu se dozvíte, jak vytvořit kanál CI/CD pomocí Visual Studio Team Services a virtuálního počítače s Windows a IIS.
 
 > [!div class="nextstepaction"]
-> [Visual Studio Team Services CI/CD kanálu](./tutorial-vsts-iis-cicd.md)
+> [Kanál CI/CD pomocí Visual Studio Team Services](./tutorial-vsts-iis-cicd.md)

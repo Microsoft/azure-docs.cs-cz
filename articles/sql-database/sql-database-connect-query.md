@@ -8,17 +8,19 @@ ms.service: sql-database
 ms.custom: mvc
 ms.devlang: ''
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/24/2018
 ms.author: carlrab
-ms.openlocfilehash: ddb714d9fb3c750d6cebdb0d94b894dce6dab897
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ec39c5ad0771c2bc78655e52c58949db6e9b3353
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-connect-and-query-quickstarts"></a>Připojení ke službě Azure SQL Database a její dotazování – Rychlé starty
 
-Následující tabulka obsahuje odkazy na příklady Azure, které ukazují připojení k databázi SQL Azure a její dotazování.
+Následující dokument obsahuje odkazy na příklady Azure, které ukazují připojení k databázi SQL Azure a její dotazování. Obsahuje také několik doporučení týkající se protokolu TLS (Transport Level Security).
+
+## <a name="quickstarts"></a>Šablony Rychlý start
 
 | |  |
 |---|---|
@@ -36,4 +38,18 @@ Následující tabulka obsahuje odkazy na příklady Azure, které ukazují při
 |[Ruby](sql-database-connect-query-ruby.md)|Tento rychlý start ukazuje použití Ruby k vytvoření programu pro připojení k databázi SQL Azure a použití příkazů jazyka Transact-SQL k dotazování dat.|
 |||
 
+## <a name="tls-considerations-for-sql-database-connectivity"></a>Důležité informace o použití protokolu TLS pro připojení k databázi SQL
+Protokol TLS (Transport Layer Security) používají všechny ovladače, které Microsoft používá nebo podporuje pro připojení k databázi SQL Azure. Není potřeba žádná zvláštní konfigurace. Pro všechna připojení k serveru SQL Server nebo k databázi SQL Azure doporučujeme nastavit u všech aplikací následující konfigurace nebo jejich ekvivalenty:
 
+ - **Encrypt = On**
+ - **TrustServerCertificate = Off**
+
+Některé systémy pro uvedená klíčová slova konfigurací používají rozdílná, ale ekvivalentní klíčová slova. Tyto konfigurace zajistí, že ovladač klienta ověří identitu certifikátu TLS přijatého ze serveru.
+
+Také doporučujeme zakázat v klientovi protokoly TLS 1.1 a 1.0, pokud potřebujete dodržovat standard PCI–DSS (Payment Card Industry – Data Security Standard).
+
+Ovladače od jiných výrobců nemusí ve výchozím nastavení protokol TLS používat. To může při připojování k databázi SQL Azure hrát důležitou roli. Aplikace s integrovanými ovladači vám nemusí umožnit řídit tato nastavení připojení. Doporučujeme, abyste si ověřili zabezpečení takovýchto ovladačů a aplikací, dříve než je použijete v systémech, které pracují s důvěrnými osobními údaji.
+
+## <a name="next-steps"></a>Další kroky
+
+Informace o připojení k architektuře najdete v článku o [architektuře připojení k databázi SQL Azure](sql-database-connectivity-architecture.md).

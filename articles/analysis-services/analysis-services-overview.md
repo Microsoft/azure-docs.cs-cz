@@ -5,16 +5,16 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/12/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27b394a6b2d2f85afeb809fcad3b88564f3054e7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="azure-analysis-services-overview"></a>Přehled služby Azure Analysis Services
+# <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services poskytuje modelování dat na podnikové úrovni v cloudu. Je to plně spravovaná platforma jako služba (PaaS) integrovaná se službami datové platformy Azure. 
@@ -57,7 +57,7 @@ Servery služby Azure Analysis Services je možné vytvořit v následujících 
 
 | Amerika | Evropa | Asie a Tichomoří |
 |----------|--------|--------------|
-|  Brazílie – jih<br> Střední Kanada<br> Východní USA 2<br> Střed USA – sever<br> Střed USA – jih<br> Západní střed USA<br> Západní USA | Severní Evropa<br> Spojené království – jih<br> Západní Evropa |   Austrálie – jihovýchod<br> Japonsko – východ<br> Jihovýchodní Asie<br> Indie – západ  |
+|  Brazílie – jih<br> Střední Kanada<br> Východ USA<br> Východní USA 2<br> Střed USA – sever<br> Střed USA<br> Střed USA – jih<br> Západní střed USA<br> Západní USA<br> Západní USA 2 | Severní Evropa<br> Spojené království – jih<br> Západní Evropa |   Austrálie – jihovýchod<br> Japonsko – východ<br> Jihovýchodní Asie<br> Indie – západ  |
 
 Neustále se přidávají nové oblasti, takže tento seznam nemusí být kompletní. Umístění volíte při vytváření serveru na webu Azure Portal nebo pomocí šablon Azure Resource Manageru. Pokud chcete získat nejlepší výkon, zvolte umístění co nejblíže vaší největší uživatelské základně. Zajistěte [vysokou dostupnost](analysis-services-bcdr.md) nasazením modelů na redundantních serverech ve více oblastech.
 
@@ -134,4 +134,5 @@ Máte návrhy nebo požadavky na funkce? Své komentáře pište na web [Zpětn�
 Máte návrhy týkající se dokumentace? Komentáře můžete přidávat pomocí Livefyre v dolní části každého článku.
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když už víte o Azure Analysis Services víc, je čas začít. Zjistěte, jak [vytvořit server](analysis-services-create-server.md) v Azure. Když už je váš server připravený, projděte si [kurz Adventure Works](tutorials/aas-adventure-works-tutorial.md), ve kterém se dozvíte, jak vytvořit plně funkční tabulkový model a nasadit ho na váš server.
+Zjistěte, jak [vytvořit server](analysis-services-create-server.md) v Azure.   
+Jakmile budete mít vytvořený server, [přidejte ukázkový model](analysis-services-create-sample-model.md).   

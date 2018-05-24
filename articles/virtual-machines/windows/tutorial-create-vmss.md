@@ -1,46 +1,46 @@
 ---
-title: Vytvoření sady škálování virtuálního počítače pro Windows v Azure | Microsoft Docs
-description: Vytvoření a nasazení vysoce dostupné aplikace na virtuálních počítačích Windows pomocí sady škálování virtuálního počítače
+title: Kurz vytvoření škálovací sady virtuálních počítačů pro Windows v Azure | Microsoft Docs
+description: V tomto kurzu zjistíte, jak pomocí Azure PowerShell a škálovací sady virtuálních počítačů vytvořit a nasadit vysoce dostupné aplikace na virtuálním počítači s Windows.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: ''
-tags: ''
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: ''
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dd573a90e49197d59e6228359f57fcd4cc3f69e2
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 49754fd4409b1fbc6b15577d37e216290582ef2b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows"></a>Vytvořit sadu škálování virtuálního počítače a nasazení vysoce dostupné aplikace v systému Windows
+# <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace ve Windows pomocí Azure PowerShell
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Všechny virtuální počítače ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. V tomto kurzu nasadíte škálovací sadu virtuálních počítačů v Azure. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Použijte k definování stránku IIS škálování rozšíření vlastních skriptů
-> * Vytvořit nástroj pro vyrovnávání zatížení pro škálovací sadu
+> * Použití rozšíření vlastních skriptů k definici webu IIS pro škálování
+> * Vytvoření nástroje pro vyrovnávání zatížení pro škálovací sadu
 > * Vytvoření škálovací sady virtuálních počítačů
 > * Zvýšení nebo snížení počtu instancí ve škálovací sadě
 > * Vytvoření pravidel automatického škálování
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud si zvolíte instalaci a použití prostředí PowerShell místně, tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 
 ## <a name="scale-set-overview"></a>Přehled škálovací sady
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Virtuální počítače ve škálovací sadě se distribuují napříč logickými doménami selhání a aktualizačními doménami v jedné nebo více *skupinách umístění*. To jsou skupiny podobně nakonfigurovaných virtuálních počítačů, podobně jako [skupiny dostupnosti](tutorial-availability-sets.md).
 
-Virtuální počítače se ve škálovací sadě vytvářejí podle potřeby. Pro řízení, jak a kdy se virtuální počítače přidávají do škálovací sady nebo se z ní odebírají, definujete pravidla automatického škálování. Tato pravidla můžete spustit na základě metriky například zatížení procesoru, využití paměti nebo síťový provoz.
+Virtuální počítače se ve škálovací sadě vytvářejí podle potřeby. Pro řízení, jak a kdy se virtuální počítače přidávají do škálovací sady nebo se z ní odebírají, definujete pravidla automatického škálování. Tato pravidla se můžou aktivovat na základě metrik, jako jsou zatížení procesoru, využití paměti nebo síťový provoz.
 
 Škálovací sady podporují až 1 000 virtuálních počítačů, pokud použijete image platformy Azure. Pro úlohy se značnými požadavky na instalaci nebo přizpůsobení virtuálních počítačů možná budete chtít [vytvořit vlastní image virtuálního počítače](tutorial-custom-images.md). Pokud použijete vlastní image, můžete ve škálovací sadě vytvořit až 300 virtuálních počítačů.
 
@@ -97,7 +97,7 @@ Update-AzureRmVmss `
 
 
 ## <a name="test-your-scale-set"></a>Test škálovací sady
-Chcete-li zobrazit vaše škálování nastavit v akci, získat veřejnou IP adresu nástroj pro vyrovnávání zatížení s [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad, získá IP adresu pro *myPublicIP* vytvořené jako součást sady škálování:
+Pokud chcete vidět škálovací sadu v akci, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí rutiny [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Následující příklad získá IP adresu *myPublicIP* vytvořenou jako součást škálovací sady:
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress `
@@ -105,7 +105,7 @@ Get-AzureRmPublicIPAddress `
     -Name "myPublicIPAddress" | select IpAddress
 ```
 
-Zadejte veřejnou IP adresu do webového prohlížeče. Zobrazí se webová aplikace, včetně názvu hostitele virtuálního počítače, který nástroje pro vyrovnávání zatížení distribuován provoz:
+Zadejte veřejnou IP adresu do webového prohlížeče. Zobrazí se webová aplikace, včetně názvu hostitele virtuálního počítače, do kterého nástroj pro vyrovnávání zatížení distribuoval provoz:
 
 ![Spuštění webu služby IIS](./media/tutorial-create-vmss/running-iis-site.png)
 
@@ -113,7 +113,7 @@ Pokud chcete vidět škálovací sadu v akci, můžete vynutit aktualizaci webov
 
 
 ## <a name="management-tasks"></a>Úlohy správy
-V průběhu životního cyklu škálovací sady možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Azure PowerShell poskytuje rychlý způsob, jak provést tyto úlohy. Tady je několik běžných úloh.
+V průběhu životního cyklu škálovací sady možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Azure PowerShell nabízí rychlý způsob, jak tyto úlohy provést. Tady je několik běžných úloh.
 
 ### <a name="view-vms-in-a-scale-set"></a>Zobrazení virtuálních počítačů ve škálovací sadě
 Pokud chcete zobrazit seznam instancí virtuálních počítačů ve škálovací sadě, použijte rutinu [Get-AzureRmVmssVM](/powershell/module/azurerm.compute/get-azurermvmssvm) následujícím způsobem:
@@ -139,7 +139,7 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroupScaleSet" -VMScaleSetName "
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>Navýšení nebo snížení počtu instancí virtuálních počítačů
-Pokud chcete zobrazit počet instancí, které máte aktuálně v sadě škálování, použijte [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) a dotazovat se na *sku.capacity*:
+Pokud chcete zobrazit počet instancí, které aktuálně máte ve škálovací sadě, použijte příkaz [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) s dotazem na *sku.capacity*:
 
 ```azurepowershell-interactive
 Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -147,7 +147,7 @@ Get-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
     Select -ExpandProperty Sku
 ```
 
-Potom můžete ručně zvýšení nebo snížení počtu virtuálních počítačů v sad s škálování [aktualizace AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Následující příklad nastaví počet virtuálních počítačů ve vaší škálovací sadě na *3*:
+Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss). Následující příklad nastaví počet virtuálních počítačů ve vaší škálovací sadě na *3*:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -162,11 +162,11 @@ Update-AzureRmVmss -ResourceGroupName "myResourceGroupScaleSet" `
     -VirtualMachineScaleSet $scaleset
 ```
 
-Pokud se používá několik minut se aktualizovat zadaný počet instancí ve vaší škálování nastavit.
+Aktualizace zadaného počtu instancí ve škálovací sadě trvá několik minut.
 
 
 ### <a name="configure-autoscale-rules"></a>Konfigurace pravidel automatického škálování
-Místo ručně škálování počtu instancí ve vaší škálovací sady, můžete definovat pravidla automatického škálování. Tato pravidla monitorují instance ve vaší škálovací sadě a reagují odpovídajícím způsobem na základě metrik a prahových hodnot, které nadefinujete. Následující příklad horizontálně navýší kapacitu zvýšením počtu instancí o jednu v případě, že je průměrné zatížení procesoru vyšší než 60 % po dobu 5 minut. Pokud průměrná zatížení procesoru pak klesne pod 30 % během období 5 minut, jsou škálovat instance v jednou instancí:
+Místo ručního škálování počtu instancí ve škálovací sadě definujete pravidla automatického škálování. Tato pravidla monitorují instance ve vaší škálovací sadě a reagují odpovídajícím způsobem na základě metrik a prahových hodnot, které nadefinujete. Následující příklad horizontálně navýší kapacitu zvýšením počtu instancí o jednu v případě, že je průměrné zatížení procesoru vyšší než 60 % po dobu 5 minut. Pokud se pak průměrné zatížení procesoru sníží pod 30 % po dobu 5 minut, horizontálně se sníží kapacita snížením počtu instancí o jednu:
 
 ```azurepowershell-interactive
 # Define your scale set information
@@ -222,12 +222,12 @@ Add-AzureRmAutoscaleSetting `
 Další informace o návrhu v souvislosti s používáním automatického škálování najdete v [osvědčených postupech pro automatické škálování](/azure/architecture/best-practices/auto-scaling).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste vytvořili škálovací sadu virtuálních počítačů. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Použijte k definování stránku IIS škálování rozšíření vlastních skriptů
-> * Vytvořit nástroj pro vyrovnávání zatížení pro škálovací sadu
+> * Použití rozšíření vlastních skriptů k definici webu IIS pro škálování
+> * Vytvoření nástroje pro vyrovnávání zatížení pro škálovací sadu
 > * Vytvoření škálovací sady virtuálních počítačů
 > * Zvýšení nebo snížení počtu instancí ve škálovací sadě
 > * Vytvoření pravidel automatického škálování

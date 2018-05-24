@@ -1,5 +1,5 @@
 ---
-title: Požadavky směrování pro Azure ExpressRoute | Dokumentace Microsoftu
+title: Požadavky směrování pro Azure ExpressRoute | Microsoft Docs
 description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu směrování pro okruhy ExpressRoute.
 documentationcenter: na
 services: expressroute
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 8bf1381ad089b9db41a3ef9f6fd3b9521a16da7e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0c8be546b40b36746224ca43c7766ac310fd7ee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -183,10 +183,11 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Japonsko – východ | 12076:51012 |
 | Japonsko – západ | 12076:51013 |
 | **Austrálie** | |
-| Austrálie – střed | 12076:51032 |
-| Austrálie – střed 2 | 12076:51033 |
 | Austrálie – východ | 12076:51015 |
 | Austrálie – jihovýchod | 12076:51016 |
+| **Australská vláda** | |
+| Austrálie – střed | 12076:51032 |
+| Austrálie – střed 2 | 12076:51033 |
 | **Indie** | |
 | Indie – jih | 12076:51019 |
 | Indie – západ | 12076:51018 |

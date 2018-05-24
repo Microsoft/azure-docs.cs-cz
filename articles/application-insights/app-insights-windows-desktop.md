@@ -1,6 +1,6 @@
 ---
-title: "Monitorování využití a výkonu desktopových aplikací pro Windows"
-description: "Analyzujte využití a výkon vaší desktopové aplikace Windows pomocí HockeyApp a Application Insights."
+title: Monitorování využití a výkonu desktopových aplikací pro Windows
+description: Analyzujte využití a výkon vaší desktopové aplikace Windows pomocí Application Insights.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -11,25 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/26/2016
+ms.date: 04/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b91996c12a27847befcacf6daf14457a0e066aa
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5b325fd4326f2594a7386c65dea17a3da19abde8
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Monitorování využití a výkonu desktopových aplikací pro Windows
 
-
-[Azure Application Insights](app-insights-overview.md) a [HockeyApp](https://hockeyapp.net) umožňují monitorovat využití a výkon nasazené aplikace.
-
-> [!IMPORTANT]
-> Doporučujeme, abyste k distribuci a monitorování desktopových aplikací a aplikací zařízení používali [HockeyApp](https://hockeyapp.net). S HockeyApp může spravovat distribuci, testování za provozu a zpětnou vazbu od uživatelů, a zároveň monitorovat sestavy využití a chyb. Můžete také [exportovat telemetrii a dávat na ni dotazy pomocí Analytics](app-insights-hockeyapp-bridge-app.md).
-> 
-> I když telemetrii lze odeslat do Application Insights z desktopové aplikace, hodí se hlavně pro ladění a experimentální účely.
-> 
-> 
+I když telemetrii lze odeslat do Application Insights z desktopové aplikace, hodí se hlavně pro ladění a experimentální účely.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-windows-application"></a>Odeslání telemetrie do Application Insights z aplikace Windows
 1. Na webu [Azure Portal](https://portal.azure.com) [vytvořte prostředek Application Insights](app-insights-create-new-resource.md). Jako typ aplikace vyberte aplikaci ASP.NET.

@@ -1,37 +1,37 @@
 ---
-title: "Ukázka json Azure zásady - povolená SKU trasy Express | Microsoft Docs"
-description: "Tato ukázková zásada json vyžaduje, aby používal Express trasy schválené SKU."
+title: Ukázka kódu json pro Azure Policy – povolené skladové položky Express Route | Microsoft Docs
+description: Tato ukázková zásada json vyžaduje, aby okruhy Express Route používaly schválené skladové položky.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: f3b2cedbfe4bbeff16bcf65f3b45057ff75c3f7e
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: 103acb1d6b031f9ef1724ae72ce8c894403f40ed
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allowed-express-route-skus"></a>Povolené Express Route SKU
+# <a name="allowed-express-route-skus"></a>Povolené skladové položky Express Route
 
-Tato zásada vyžaduje, aby používal Express trasy schválené SKU. Zadáte pole povolených SKU.
+Tato zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky. Zadáte pole povolených skladových položek.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Ukázka šablony
+## <a name="sample-template"></a>Ukázková šablona
 
 [!code-json[main](../../../policy-templates/samples/Network/express-route-skus/azurepolicy.json "Allowed Express Route SKUs")]
 
-Můžete nasadit pomocí této šablony [portál Azure](#deploy-with-the-portal), s [prostředí PowerShell](#deploy-with-powershell) nebo pomocí [rozhraní příkazového řádku Azure](#deploy-with-azure-cli).
+K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
@@ -48,15 +48,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení prostředí PowerShell
+### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení PowerShellu
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,9 +66,9 @@ az policy definition create --name 'express-route-skus' --display-name 'Allowed 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "express-route-skus"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení rozhraní příkazového řádku Azure
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázky šablony zásad Azure jsou [šablon pro Azure zásad](../json-samples.md).
+- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).

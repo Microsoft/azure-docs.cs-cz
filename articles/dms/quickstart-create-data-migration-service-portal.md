@@ -1,21 +1,21 @@
 ---
-title: "Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal | Dokumentace Microsoftu"
-description: "Použití webu Azure Portal k vytvoření instance služby Azure Database Migration Service"
+title: Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal | Microsoft Docs
+description: Použití webu Azure Portal k vytvoření instance služby Azure Database Migration Service
 services: database-migration
 author: edmacauley
 ms.author: edmaca
 manager: craigg
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/13/2017
-ms.openlocfilehash: 9dea80b0a6848bd69541aa9f7e0a0fe111fa0a28
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.date: 05/01/2018
+ms.openlocfilehash: 7669ee678f4049c938c6e249c26997d993fd7c6a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Vytvoření instance služby Azure Database Migration Service pomocí webu Azure Portal
 V tomto rychlém startu použijete Azure Portal k vytvoření instance služby Azure Database Migration Service.  Po vytvoření služby ji můžete použít k migraci dat z místního SQL Serveru do databáze SQL Azure.
@@ -39,9 +39,9 @@ Než vytvoříte první instanci služby Database Migration Service, zaregistruj
 ![Registrace poskytovatele prostředků](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-an-instance-of-the-service"></a>Vytvoření instance služby
-1. Kliknutím na **+ Vytvořit prostředek** vytvořte instanci služby Azure Database Migration Service, která je aktuálně ve verzi Preview.
+1. Kliknutím na **+ Vytvořit prostředek** vytvořte instanci služby Azure Database Migration Service.
 
-2. Vyhledejte na marketplace „migration“, vyberte **Azure Database Migration Service** a pak na obrazovce **Azure Database Migration Service (Preview)** klikněte na **Vytvořit**.
+2. Vyhledejte na marketplace „migration“, vyberte **Azure Database Migration Service** a pak na obrazovce **Azure Database Migration Service** klikněte na **Vytvořit**.
 
 3. Na obrazovce **Database Migration Service**: 
 

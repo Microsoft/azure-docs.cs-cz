@@ -1,37 +1,37 @@
 ---
-title: "Azure ukázkové zásady json - povolené typy prostředků | Microsoft Docs"
-description: "Tato ukázková zásada json zajišťuje, jsou nasazeny pouze typy schválené prostředků."
+title: Ukázka kódu json pro Azure Policy – povolené typy prostředků | Microsoft Docs
+description: Tato ukázková zásada json zajišťuje, že se nasadí jenom schválené typy prostředků.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 2c34114d6b8fa10a2f0781e1819c64eedd9288d0
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.openlocfilehash: 90c846a056707048a93f3c6cf23e0d9645d5fe8b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="allowed-resource-types"></a>Typy povolené prostředků
+# <a name="allowed-resource-types"></a>Povolené typy prostředků
 
-Tato zásada zajistí pouze typy prostředků schválené jsou nasazeny. Můžete určit pole typů prostředků, které jsou povoleny.
+Tato zásada zajišťuje, že se nasadí jenom schválené typy prostředků. Zadáte pole typů prostředků, které jsou povoleny.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Ukázka šablony
+## <a name="sample-template"></a>Ukázková šablona
 
 [!code-json[main](../../../policy-templates/samples/built-in-policy/allowed-resourcetypes/azurepolicy.json "Allowed resource types")]
 
-Můžete nasadit pomocí této šablony [portál Azure](#deploy-with-the-portal), s [prostředí PowerShell](#deploy-with-powershell) nebo pomocí [rozhraní příkazového řádku Azure](#deploy-with-azure-cli).
+K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
@@ -48,15 +48,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení prostředí PowerShell
+### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení PowerShellu
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,9 +66,9 @@ az policy definition create --name 'allowed-resourcetypes' --display-name 'Allow
 az policy assignment create --name <assignmentname> --scope <scope> --policy "allowed-resourcetypes"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení rozhraní příkazového řádku Azure
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázky šablony zásad Azure jsou [šablon pro Azure zásad](../json-samples.md).
+- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).

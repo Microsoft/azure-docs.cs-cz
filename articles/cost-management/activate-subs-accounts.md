@@ -1,109 +1,109 @@
 ---
-title: Aktivovat předplatných Azure a účtů | Microsoft Docs
-description: Povolte přístup pomocí rozhraní API Správce Azure Resource Manager pro nové a stávající účty a řešení běžných problémů s účtu.
+title: Aktivace účtů a předplatných Azure | Microsoft Docs
+description: Povolení přístupu pomocí rozhraní API Azure Resource Manageru pro nové a stávající účty a řešení běžných problémů s účty.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/01/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: quickstart
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: dbbbc7ee87d53f65d51b20fd5b8ffcb6c4930f15
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivovat předplatných Azure a účtů s Azure náklady na správu
+# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivace účtů a předplatných Azure pomocí Azure Cost Managementu
 
-Přidání nebo aktualizace přihlašovacích údajů správce Azure Resource Manager umožňuje Azure náklady na správu a zjistit všechny účty a předplatných v rámci vašeho klienta Azure. Pokud máte také Azure Diagnostics rozšíření povolené na virtuálních počítačích, můžete shromažďovat Azure náklady na správu rozšířené metriky jako procesoru a paměti. Tento článek popisuje, jak povolit přístup pomocí rozhraní API Správce Azure Resource Manager pro nové a stávající účty. Také popisuje, jak řešit běžné problémy, účet.
+Přidání nebo aktualizace přihlašovacích údajů Azure Resource Manageru umožňuje službě Azure Cost Management zjistit všechny účty a všechna předplatná ve vašem tenantovi Azure. Pokud navíc máte na virtuálních počítačích povolené rozšíření Azure Diagnostics, může služba Azure Cost Management shromažďovat rozšířené metriky – například o procesoru a paměti. Tento článek popisuje, jak povolit přístup pomocí rozhraní API Azure Resource Manageru pro nové a stávající účty. Také popisuje, jak řešit běžné problémy s účty.
 
-Azure náklady na správu nemá přístup k většinu data vašeho předplatného Azure, když je předplatné _neaktivovaných_. Je nutné upravit _neaktivovaných_ účty tak, aby k nim měli přístup Azure náklady na správu.
+Azure Cost Management nemá přístup k většině dat vašeho předplatného Azure, pokud je toto předplatné _neaktivované_. Je potřeba upravit _neaktivované_ účty, aby k nim měla služba Azure Cost Management přístup.
 
-## <a name="required-azure-permissions"></a>Oprávnění vyžadovaná Azure
+## <a name="required-azure-permissions"></a>Vyžadovaná oprávnění Azure
 
-Konkrétní oprávnění jsou nutné k dokončení postupy v tomto článku. Vy nebo váš správce klienta musí mít obě následující oprávnění:
+K dokončení postupů v tomto článku jsou potřeba určitá oprávnění. Vy nebo váš správce tenanta musíte mít obě následující oprávnění:
 
-- Oprávnění k registraci aplikací CloudynCollector klientovi Azure AD.
-- Možnost přiřazení aplikace k roli ve vašich předplatných Azure.
+- Oprávnění k registraci aplikace CloudynCollector v tenantovi Azure AD
+- Možnost přiřadit aplikaci k roli ve vašich předplatných Azure
 
-V rámci vašich předplatných Azure, musí mít vaše účty `Microsoft.Authorization/*/Write` přístup k aplikaci CloudynCollector přiřadit. Tato akce je poskytována prostřednictvím [vlastníka](../role-based-access-control/built-in-roles.md#owner) role nebo [správce přístupu uživatelů](../role-based-access-control/built-in-roles.md#user-access-administrator) role.
+Vaše účty v předplatných Azure musí mít přístup `Microsoft.Authorization/*/Write` pro přiřazení aplikace CloudynCollector. Tato akce se povoluje prostřednictvím role [vlastníka](../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../role-based-access-control/built-in-roles.md#user-access-administrator).
 
-Pokud je váš účet přiřazenou **Přispěvatel** role, nemáte dostatečná oprávnění k aplikaci přiřadit. Obdržíte chybu při pokusu o přiřazení CloudynCollector aplikace k předplatnému Azure.
+Pokud je vašemu účtu přiřazena role **přispěvatele**, nemáte dostatečná oprávnění k přiřazení aplikace. Při pokusu o přiřazení aplikace CloudynCollector k předplatnému Azure dojde k chybě.
 
-### <a name="check-azure-active-directory-permissions"></a>Zkontrolujte oprávnění služby Azure Active Directory
+### <a name="check-azure-active-directory-permissions"></a>Kontrola oprávnění Azure Active Directory
 
-1. Přihlaste se [portál Azure](https://portal.azure.com).
-2. Na portálu Azure vyberte **Azure Active Directory**.
-3. V Azure Active Directory, vyberte **uživatelská nastavení**.
-4. Zkontrolujte **registrace aplikace** možnost.
-    - Pokud je nastaven na hodnotu **Ano**, pak uživatelé bez oprávnění správce můžete zaregistrovat aplikace AD. Toto nastavení znamená, že každý uživatel v klientovi Azure AD můžete zaregistrovat aplikaci. Můžete přejít k Azure vyžaduje předplatné oprávnění.  
-    ![Registrace aplikace](./media/activate-subs-accounts/app-register.png)
-    - Pokud **registrace aplikace** je možnost nastavena na **ne**, pak pouze klienta správní uživatelé mohou registrovat aplikace Azure Active Directory. Správce klienta musí zaregistrovat CloudynCollector aplikace.
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+2. Na portálu Azure Portal vyberte **Azure Active Directory**.
+3. V Azure Active Directory vyberte **Uživatelská nastavení**.
+4. Zkontrolujte nastavení **Registrace aplikací**.
+    - Pokud je nastavená možnost **Ano**, můžou aplikace AD registrovat i uživatelé, kteří nemají oprávnění správce. V případě tohoto nastavení může aplikaci zaregistrovat kterýkoli uživatel v tenantovi Azure AD. Můžete přejít na vyžadovaná oprávnění pro předplatná Azure.  
+    ![Registrace aplikací](./media/activate-subs-accounts/app-register.png)
+    - Pokud je pro položku **Registrace aplikací** nastavená možnost **Ne**, můžou aplikace Azure Active Directory registrovat jenom uživatelé v roli správce tenanta. Aplikaci CloudynCollector musí zaregistrovat správce tenanta.
 
 
-## <a name="add-an-account-or-update-a-subscription"></a>Přidat účet nebo aktualizovat předplatné
+## <a name="add-an-account-or-update-a-subscription"></a>Přidání účtu nebo aktualizace předplatného
 
-Když přidáte aktualizace účtu předplatného, povolíte Azure náklady na správu přístup k Azure data.
+Když přidáte účet nebo aktualizujete předplatné, povolíte službě Azure Cost Management přístup k vašim datům Azure.
 
-### <a name="add-a-new-account-subscription"></a>Přidání nového účtu (předplatné)
+### <a name="add-a-new-account-subscription"></a>Přidání nového účtu (předplatného)
 
-1. Na portálu Azure náklady na správu, klikněte na symbol ozubené kolečko v pravém horním a vyberte **cloudové účty**.
-2. Klikněte na tlačítko **nový účet přidal** a **nový účet přidal** pole se objeví. Zadejte požadované informace.  
-    ![Přidat nový účet pole](./media/activate-subs-accounts//add-new-account.png)
+1. Na portálu služby Azure Cost Management klikněte v pravém horním rohu na symbol ozubeného kola a vyberte **Cloud Accounts** (Účty v cloudu).
+2. Klikněte na **Add new account** (Přidat nový účet). Zobrazí se dialog **Add new account**. Zadejte požadované informace.  
+    ![Dialog pro přidání nového účtu](./media/activate-subs-accounts//add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualizace předplatného
 
-1. Pokud chcete aktualizovat _neaktivovaných_ předplatné, které už v Azure náklady na správu v nástroji Správa účtů, kliknutím na symbol tužky upravit napravo od nadřazené _klienta GUID_. Odběry jsou seskupené v rámci nadřazené klienta, tak vyhnout aktivace odběry jednotlivě.
-    ![Opětovné zjištění odběrů](./media/activate-subs-accounts/existing-sub.png)
-2. V případě potřeby zadejte ID klienta. Pokud si nejste jisti vaše ID klienta, vyhledání pomocí následující kroky:
-    1. Přihlaste se [portál Azure](https://portal.azure.com).
-    2. Na portálu Azure vyberte **Azure Active Directory**.
+1. Pokud chcete aktualizovat _neaktivované_ předplatné, které už ve službě Azure Cost Management v nástroji pro správu účtů máte, klikněte na symbol tužky pro úpravy napravo od nadřazeného _identifikátoru GUID tenanta_. Předplatná jsou seskupená pod nadřazeným tenantem, neaktivujte je tedy jednotlivě.
+    ![Opětovné zjištění předplatných](./media/activate-subs-accounts/existing-sub.png)
+2. Pokud je potřeba, zadejte ID tenanta. Jestliže ID tenanta neznáte, vyhledejte ho pomocí následujících kroků:
+    1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+    2. Na portálu Azure Portal vyberte **Azure Active Directory**.
     3. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
-    4. Zkopírujte identifikátor GUID ID adresáře. Tato hodnota představuje ID tenanta.
-    Další informace najdete v tématu [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
-3. V případě potřeby vyberte ID míry. Pokud neznáte vaše ID míry, použijte následující kroky k vyhledání.
-    1. V pravém horním portálu Azure, klikněte na tlačítko informace o uživateli a potom klikněte na **Zobrazit Moje faktury**.
-    2. V části **fakturace účtu**, klikněte na tlačítko **odběry**.
-    3. V části **mé odběry**, vyberte předplatné.
-    4. Vaše míra ID se zobrazí v části **nabízejí ID**. Zkopírujte ID nabízejí pro předplatné.
-4. Přidat nový účet (nebo upravit předplatného) klikněte na **Uložit** (nebo **Další**). Budete přesměrováni na portálu Azure.
-5. Přihlaste se k portálu. Klikněte na tlačítko **přijmout** autorizace Azure náklady na správu kolekce přístup k účtu Azure.
+    4. Zkopírujte GUID adresáře. Tato hodnota představuje ID tenanta.
+    Další informace najdete v tématu o [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+3. V případě potřeby vyberte ID sazby. Pokud neznáte své ID sazby, najděte ho pomocí následujících kroků.
+    1. V pravém horním rohu portálu Azure Portal klikněte na informace o uživateli a potom na **Zobrazit účet**.
+    2. V části **Billing Account** (Fakturační účet) klikněte na **Subscriptions** (Předplatná).
+    3. V části **My subscriptions** (Moje předplatná) vyberte požadované předplatné.
+    4. Vaše ID sazby se zobrazí v části **Offer ID** (ID nabídky). Zkopírujte ID nabídky pro toto předplatné.
+4. V dialogu pro přidání nového účtu nebo úpravu předplatného klikněte na **Save** (Uložit) nebo na **Next** (Další). Budete přesměrováni na Azure Portal.
+5. Přihlaste se k portálu. Kliknutím na **Accept** (Přijmout) udělíte kolektoru služby Azure Cost Management přístup k vašemu účtu Azure.
 
-    Budete přesměrováni na stránku Správa účtů pro správu Azure náklady a vaše předplatné se aktualizuje s **active** stav účtu. Mělo by se zobrazit symbol zelená značka zaškrtnutí ve sloupci Resource Manager.
+    Budete přesměrováni na stránku pro správu účtů služby Azure Cost Management a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Ve sloupci Resource Manager (Správce prostředku) by se mělo zobrazit zelené zatržítko.
 
-    Pokud nevidíte symbol zeleného zaškrtnutí pro jeden nebo více odběrů, znamená to, že nemáte oprávnění k vytvoření čtečky aplikace (CloudynCollector) pro předplatné. Uživatel s vyšší oprávnění pro odběr je potřeba tento postup opakujte.
+    Pokud u některých předplatných zelené zatržítko nevidíte, znamená to, že nemáte oprávnění vytvářet pro ně aplikaci čtečky (CloudynCollector). Je potřeba, aby tento proces zopakoval uživatel, který má k těmto předplatným vyšší oprávnění.
 
-Sledování [připojení do Azure Resource Manageru službou Azure náklady Management](https://youtu.be/oCIwvfBB6kk) video, které provede procesem.
+Podívejte se na [toto video](https://youtu.be/oCIwvfBB6kk), které vás provede připojením k Azure Resource Manageru prostřednictvím služby Azure Cost Management.
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
-## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Řešení běžných problémů nastavení nepřímých enterprise
+## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Řešení běžných nepřímých potíží s podnikovým nastavením
 
-Při prvním použití portálu Azure náklady na správu, může zobrazit následující zprávy, pokud se uživatel s microsoftem smlouvu Enterprise nebo Cloud Solution Provider (CSP):
+Pokud jste uživatel se smlouvou Enterprise nebo Cloud Solution Provider (CSP), můžou se vám při prvním použití portálu Azure Cost Management zobrazit následující zprávy:
 
-- *Zadaný klíč rozhraní API není klíč nejvyšší úrovně zápisu* zobrazí v **nastavit až Azure náklady na správu** průvodce.
-- *Přímá registrace – ne* zobrazí na portálu smlouvy Enterprise.
-- *Nebyla nalezena žádná data využití za posledních 30 dní. Obraťte se na vaše distributora tak, aby zajistěte, aby byl povolen poznámky k účtu Azure* zobrazí na portálu Azure náklady na správu.
+- *The specified API key is not a top level enrollment key* (Zadaný klíč rozhraní API není klíč registru nejvyšší úrovně) – zobrazí se v průvodci **nastavením služby Azure Cost Management**.
+- *Direct Enrollment – No* (Přímá registrace – ne) – zobrazí se na portálu se smlouvou Enterprise.
+- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* (Za posledních 30 dní nebyla nalezena žádná data o využití. Ověřte prosím u svého distributora, jestli byly pro váš účet Azure povoleny revize) – zobrazí se na portálu Azure Cost Management.
 
-Předchozí zprávy naznačují, že jste zakoupili smlouvu Enterprise Agreement Azure přes prodejce nebo poskytovatel CSP. Svého prodejce nebo zprostředkovatele kryptografických služeb je potřeba povolit _značek_ pro vaši Azure účet tak, aby vaše data můžete zobrazit v Azure náklady na správu.
+Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Abyste mohli zobrazovat data ve službě Azure Cost Management, musí váš prodejce nebo poskytovatel CSP pro váš účet Azure povolit _revize_.
 
-Chcete-li opravit problémy:
+Tady je postup řešení těchto potíží:
 
-1. Váš prodejce je potřeba povolit _značek_ pro váš účet. Pokyny najdete v tématu [nepřímých Průvodce registrací ve službě zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Vygenerování klíče smlouvou Azure Enterprise pro použití s Azure náklady na správu. Pokyny najdete v tématu [registrovat smlouvy Enterprise Azure a zobrazení náklady data](https://docs.microsoft.com/en-us/azure/cost-management/quick-register-ea).
+1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Azure Cost Management. Pokyny najdete v článku o [registraci smlouvy Azure Enterprise a zobrazení informací o nákladech](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Pouze správce služby Azure můžete povolit náklady na správu. Oprávnění správce společné nestačí.
+Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí.
 
-Než můžete vygenerovat klíč rozhraní API smlouvy Enterprise Azure nastavit náklady na správu Azure, musíte povolit fakturace rozhraní API služby Azure podle těchto pokynů:
+Než budete moct vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nastavení služby Azure Cost Management, musíte podle následujících pokynů povolit rozhraní API pro fakturaci Azure:
 
 - [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](../billing/billing-enterprise-api.md)
-- [Portál Microsoft Azure enterprise rozhraní API pro vytváření sestav](https://ea.azure.com/helpdocs/reportingAPI) pod **povolení přístupu k rozhraní API datům**
+- [Rozhraní API pro vytváření sestav na podnikovém portálu Microsoft Azure](https://ea.azure.com/helpdocs/reportingAPI) v části o **povolení přístupu k datům pro rozhraní API**
 
-Také možná budete muset poskytnout správci oddělení, účet vlastníků a enterprise administrators oprávnění k _zobrazit poplatky_ s rozhraním API fakturace.
+Také může být potřeba, abyste udělili oprávnění _zobrazovat poplatky_ v rozhraní API pro fakturaci správcům oddělení, vlastníkům účtů a podnikovým správcům.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pokud jste ještě nedokončili první kurz pro náklady na správu, přečtěte si ho na [zkontrolujte využití a náklady na](tutorial-review-usage.md).
+- Pokud jste ještě nedokončili první kurz ke službě Cost Management, přečtěte si část o [kontrole využití a nákladů](tutorial-review-usage.md).

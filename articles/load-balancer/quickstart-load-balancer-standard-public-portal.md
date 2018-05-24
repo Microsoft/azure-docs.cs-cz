@@ -1,27 +1,29 @@
 ---
-title: Vytvoření Load Balanceru úrovně Standard – Azure Portal | Microsoft Docs
-description: Zjistěte, jak vytvořit Load Balancer úrovně Standard pomocí webu Azure Portal.
+title: 'Rychlý start: Vytvoření Load Balanceru úrovně Standard – Azure Portal | Microsoft Docs'
+description: Tento rychlý start ukazuje, jak vytvořit nástroj pro vyrovnávání zatížení úrovně Standard pomocí webu Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
+Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/18
 ms.author: kumud
-ms.openlocfilehash: f67da7dc84878ca7418eb644daec1a9681e2f6f2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.custom: mvc
+ms.openlocfilehash: dc7d8a4cc5b755504c2430be187d3ab2b46c51d1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí webu Azure Portal
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí portálu Azure Portal
 
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. K vytvoření nástroje pro vyrovnávání zatížení virtuálních počítačů můžete použít web Azure Portal. V tomto rychlém startu se dozvíte, jak vyrovnávat zatížení virtuálních počítačů pomocí Load Balanceru úrovně Standard.
 
@@ -75,7 +77,7 @@ V této části vytvoříte virtuální síť a dva virtuální počítače pro 
     - *myNetworkSecurityGroup* – název nové skupiny zabezpečení sítě (brána firewall), kterou je potřeba vytvořit.
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
-7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myavailabilityset*, virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě *myNetworkSecurityGroup*. 
+7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2*, skupinou dostupnosti *myavailabilityset*, virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě **myNetworkSecurityGroup*. 
 
 ### <a name="create-nsg-rules"></a>Vytvoření pravidel skupiny zabezpečení sítě
 
@@ -131,7 +133,7 @@ Za účelem distribuce provozu do virtuálních počítačů obsahuje fond back-
 1. V levé nabídce klikněte na **Všechny prostředky** a pak v seznamu prostředků klikněte na **myLoadBalancer**.
 2. V části **Nastavení** klikněte na **Back-endové fondy** a pak klikněte na **Přidat**.
 3. Na stránce **Přidat back-endový fond** postupujte následovně:
-    - Jako název back-endového fondu zadejte myBackEndPool.
+    - Jako název back-endového fondu zadejte *myBackEndPool.
     - V části **Přidruženo k** klikněte v rozevírací nabídce na **Skupina dostupnosti**.
     - V části **Skupina dostupnosti** klikněte na **myAvailabilitySet**.
     - Kliknutím na **Přidat konfiguraci IP adresy cílové sítě** přidejte do back-endového fondu jednotlivé virtuální počítače (*myVM1* & *myVM2*), které jste vytvořili.

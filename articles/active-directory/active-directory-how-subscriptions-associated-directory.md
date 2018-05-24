@@ -1,26 +1,24 @@
 ---
-title: Přidání existujícího předplatného Azure do adresáře služby Azure AD | Dokumentace Microsoftu
+title: Přidání existujícího předplatného Azure do adresáře služby Azure AD | Microsoft Docs
 description: Přidání existujícího předplatného do adresáře služby Azure AD
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6664a2b9bb6375314090bf4dae9190c7d52565d2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory
 
@@ -53,6 +51,8 @@ Všichni uživatelé mají jeden domovský adresář, který je ověřuje, ale m
 
     ![Snímek obrazovky s přepínačem](./media/active-directory-how-subscriptions-associated-directory/directory-switcher.PNG)
 
+
+Přesun předplatného ovlivní také všechny služby Azure Key Vault, které máte, a proto [změňte ID tenanta Key Vault](../key-vault/key-vault-subscription-move-fix.md) dříve, než budete pokračovat.
 
 Změna adresáře předplatného představuje operaci na úrovni služby. Neovlivní vlastnictví fakturace předplatného a správce účtu bude stále moct změnit správce služby pomocí [Centra účtů](https://account.azure.com/subscriptions). Pokud chcete odstranit původní adresář, vlastnictví fakturace předplatného musíte převést na nového správce účtu. Další informace o tom, jak převést vlastnictví fakturace, najdete v tématu [Převod vlastnictví předplatného Azure na jiný účet](../billing/billing-subscription-transfer.md). 
 

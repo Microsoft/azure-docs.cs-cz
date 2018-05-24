@@ -1,13 +1,13 @@
 ---
-title: "Přizpůsobení virtuálního počítače s Linuxem při prvním spuštění v Azure | Microsoft Docs"
-description: "Zjistěte, jak používat cloud-init a Key Vault k přizpůsobení virtuálních počítačům s Linuxem při jejich prvním spuštění v Azure"
+title: Kurz přizpůsobení virtuálního počítače s Linuxem pomocí nástroje cloud-init v Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak používat cloud-init a Key Vault k přizpůsobení virtuálních počítačů s Linuxem při jejich prvním spuštění v Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 79d87b5d332597f2c0faf3c585eee49aba3e03bc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e3c1c0552b379ff99f27053d8f0ca8a76766a016
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Přizpůsobení virtuálního počítače s Linuxem při prvním spuštění
+# <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Kurz: Jak používat cloud-init k přizpůsobení virtuálního počítače s Linuxem v Azure při prvním spuštění počítače
+
 V předchozím kurzu jste se dozvěděli, jak se přes SSH připojit k virtuálnímu počítači a ručně nainstalovat server NGINX. Pokud chcete vytvářet virtuální počítače rychle a konzistentně, zřejmě uvítáte nějakou formu automatizace. Běžný postup k přizpůsobení virtuálního počítače při prvním spuštění je použití nástroje [cloud-init](https://cloudinit.readthedocs.io). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -32,12 +33,9 @@ V předchozím kurzu jste se dozvěděli, jak se přes SSH připojit k virtuáln
 > * Bezpečné uložení certifikátů ve službě Key Vault
 > * Automatizace zabezpečeného nasazení serveru NGINX s nástrojem cloud-init
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).  
-
-
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="cloud-init-overview"></a>Přehled Cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) je široce využívaným přístupem k přizpůsobení virtuálního počítače s Linuxem při jeho prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Vzhledem k tomu, že se cloud-init spustí během procesu prvotního spuštění, nevyžaduje použití vaší konfigurace žádné další kroky ani agenty.

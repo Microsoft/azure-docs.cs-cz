@@ -1,19 +1,19 @@
 ---
-title: Možnosti účtu Azure Storage | Dokumentace Microsoftu
+title: Možnosti účtu Azure Storage | Microsoft Docs
 description: Vysvětlení možností použití služby Azure Storage.
 services: storage
-author: jirwin
+author: hux
 manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 01/17/2018
-ms.author: jirwin
-ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 05/02/2018
+ms.author: hux
+ms.openlocfilehash: 69da15b98e6c519a3a8352cc7ca7212286cb4e52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-storage-account-options"></a>Možnosti účtu Azure Storage
 
@@ -32,7 +32,7 @@ Jednotlivé typy účtů jsou podrobněji popsané v následujících částech:
 
 Účty pro obecné účely verze 2 (GPv2) jsou účty úložiště, které podporují všechny nejnovější funkce pro objekty blob, soubory, fronty a tabulky. Účty GPv2 podporují všechna rozhraní API a funkce podporované v účtech úložiště GPv1 a Blob. Podporují také stejné funkce odolnosti, dostupnosti, škálovatelnosti a výkonu jako tyto typy účtů. Ceny za účty GPv2 byly navržené pro zajištění nejnižších cen za gigabajt a konkurenceschopných cen za transakce.
 
-Účet GPv1 můžete upgradovat na účet GPv2 pomocí PowerShellu nebo Azure CLI. 
+Účet GPv1 můžete upgradovat na účet GPv2 pomocí portálu Azure Portal, PowerShellu nebo Azure CLI. 
 
 Pro objekty blob bloku v účtu úložiště GPv2 si můžete vybrat mezi horkou a studenou úrovní úložiště na úrovni účtu, nebo mezi horkou, studenou a archivní úrovní na úrovni objektu blob, a to v závislosti na vzorech přístupu. Pro zajištění optimalizace nákladů ukládejte často, občas a zřídka používaná data v horké, studené a archivní úrovni úložiště (v uvedeném pořadí). 
 
@@ -72,8 +72,6 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 ### <a name="blob-storage-accounts"></a>Účty úložiště Blob
 
 Účty úložiště Blob podporují stejné funkce objektů blob bloku jako účty GPv2, ale jsou omezené pouze na objekty blob bloku. Ceny jsou velmi podobné cenám za účty pro obecné účely verze 2. Zákazníci by si měli prostudovat rozdíly v cenách účtů úložiště Blob a GPv2 a zvážit upgrade na účet GPv2. Tento upgrade není možné vrátit.
-
-Už brzy bude možný upgrade účtů úložiště Blob na účty GPv2.
 
 > [!NOTE]
 > Účty úložiště Blob podporují pouze objekty blob bloku a doplňovací objekty blob, nepodporují objekty blob stránky.
@@ -115,9 +113,10 @@ Všechny účty úložiště vycházejí z cenového modelu úložiště objekt�
 
 V tomto oddílu jsou předvedené následující scénáře s využitím webu Azure Portal:
 
-* Vytvoření účtu úložiště GPv2.
-* Převod účtu úložiště GPv1 nebo Blob na účet úložiště GPv2.
-* Nastavení účtu a úrovně objektů blob v účtu úložiště GPv2.
+* [Vytvoření účtu úložiště GPv2](#create-a-gpv2-storage-account-using-the-azure-portal)
+* [Převod účtu úložiště GPv1 nebo Blob na účet úložiště GPv2](#convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal)
+* [Nastavení účtu v účtu úložiště GPv2](#change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal)
+* [Nastavení úrovně objektů blob ve službě Blob Storage nebo v účtu úložiště GPv2](#change-the-storage-tier-of-a-blob-using-the-azure-portal)
 
 V následujících příkladech nejde nastavit úroveň přístupu Na Archive, protože toto nastavení se vztahuje na celý účet úložiště. Nastavení Archiv je možné použít jenom pro konkrétní objekty blob.
 
@@ -155,7 +154,7 @@ V následujících příkladech nejde nastavit úroveň přístupu Na Archive, p
 
 11. Vytvořte účet úložiště kliknutím na **Vytvořit**.
 
-### <a name="convert-a-gpv1-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Převod účtu GPv1 na účet úložiště GPv2 pomocí webu Azure Portal
+### <a name="convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Převod účtu GPv1 nebo Blob Storage na účet úložiště GPv2 pomocí portálu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -218,10 +217,10 @@ K monitorování existujících účtů úložiště a sesbírání dat můžete
 Další informace najdete na stránkách věnovaných [metrikám Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343258.aspx) a [tabulkovému schématu metrik Analýzy úložiště](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> Účty úložiště Blob zpřístupňují koncový bod služby Table Storage pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet. 
+> Účty úložiště Blob zpřístupňují koncový bod služby Table service pouze pro účely ukládání a zpřístupnění dat metrik pro tento účet. 
 
 Pokud chcete monitorovat využití úložiště pro účet úložiště Blob, je potřeba povolit metriky kapacity.
-Když tuto funkci zapnete, data o kapacitě služby Blob pro daný účet úložiště se budou denně zaznamenávat jako zápisy do tabulky *$MetricsCapacityBlob* v rámci stejného účtu úložiště.
+Když tuto funkci zapnete, data o kapacitě služby Blob service pro daný účet úložiště se budou denně zaznamenávat jako zápisy do tabulky *$MetricsCapacityBlob* v rámci stejného účtu úložiště.
 
 Aby bylo možné pro účet úložiště Blob monitorovat vzory přístupu k datům, je potřeba povolit hodinovou metriku transakcí z rozhraní API. Když povolíte hodinovou metriku transakcí, data o transakcích rozhraní API se budou každou hodinu shromažďovat a zaznamenávat jako zápisy do tabulky *$MetricsHourPrimaryTransactionsBlob* v rámci stejného účtu úložiště. Při použití účtů úložiště RA-GRS zaznamenává tabulka *$MetricsHourSecondaryTransactionsBlob* transakce do sekundárního koncového bodu.
 
@@ -311,13 +310,13 @@ Ano, existující účty úložiště (GPv1) jsou stále dostupné a jejich funk
 
 Účty úložiště GPv2 jsou specializované na poskytování nejnižších cen za GB úložiště při současném poskytování konkurenceschopných cen za transakce a přístup k datům. Výhledově se účty úložiště GPv2 doporučují pro ukládání objektů blob, protože na základě tohoto typu účtu se budou zavádět funkce jako upozornění na změny. Kdy budete chtít upgradovat ale záleží na vás a vašich obchodních potřebách. Před upgradem se například můžete rozhodnout optimalizovat vzorce transakcí.
 
-Downgrade z účtů GPv2 se nepodporuje, proto před upgradováním svých účtů na účty GPv2 zvažte všechny cenové důsledky.
+Downgrady z účtů GPv2 se nepodporují, proto před upgradováním svých účtů na účty GPv2 zvažte všechny cenové dopady.
 
 **Můžu svůj existující účet úložiště upgradovat na účet úložiště GPv2?**
 
-Ano. Účty GPv1 je možné snadno upgradovat na účty GPv2 pomocí portálu, PowerShellu nebo rozhraní příkazového řádku. Účty úložiště Blob je možné upgradovat na účty GPv2 pomocí PowerShellu nebo rozhraní příkazového řádku. Už brzy bude možný upgrade účtů úložiště Blob na účty GPv2 pomocí portálu.
+Ano. Účty úložiště GPv1 nebo Blob je možné snadno upgradovat na účty GPv2 pomocí portálu, PowerShellu nebo rozhraní příkazového řádku. 
 
-Downgrade z účtů GPv2 se nepodporuje, proto před upgradováním svých účtů na účty GPv2 zvažte všechny cenové důsledky.
+Downgrady z účtů GPv2 se nepodporují, proto před upgradováním svých účtů na účty GPv2 zvažte všechny cenové dopady.
 
 **Můžu na jednom účtu ukládat objekty do obou úrovní úložiště?**
 
@@ -329,7 +328,7 @@ Ano, úroveň úložiště účtu můžete změnit nastavením atributu **Access
 
 **Jak často můžu účtu úložiště Blob změnit úroveň úložiště?**
 
-Možnost měnit vrstvu úložiště v tomto směru neomezujeme, ale vezměte na vědomí, že změna vrstvy úložiště ze studené na horkou s sebou může nést značné náklady. Nedoporučujeme měnit vrstvu úložiště často.
+Možnost měnit vrstvu úložiště se nijak neomezuje, ale nezapomeňte, že změna vrstvy úložiště ze studené na horkou s sebou může nést značné náklady. Nedoporučujeme měnit vrstvu úložiště často.
 
 **Budou se objekty blob ve studené vrstvě úložiště chovat jinak než objekty blob v horké vrstvě úložiště?**
 

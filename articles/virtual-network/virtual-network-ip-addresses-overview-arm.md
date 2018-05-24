@@ -1,5 +1,5 @@
 ---
-title: Typy IP adres v Azure | Dokumentace Microsoftu
+title: Typy IP adres v Azure | Microsoft Docs
 description: Další informace o veřejných a privátních IP adresách v Azure
 services: virtual-network
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: d50333888592d2d3e13c40c07a7e58f8676df075
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -53,11 +53,15 @@ Veřejné IP adresy se vytvářejí s IPv4 nebo IPv6 adresou. Veřejné IPv6 adr
 
 Veřejné IP adresy se vytvářejí s jednou z následujících SKU:
 
+>[!IMPORTANT]
+> Pro nástroj pro vyrovnávání zatížení a veřejné prostředky IP se musí použít odpovídající SKU. Není možné kombinovat prostředky z SKU Basic s prostředky z SKU Standard. Samostatné virtuální počítače, virtuální počítače v prostředku skupiny dostupnosti ani prostředky škálovacích sad virtuálních počítačů není možné připojit k oběma SKU zároveň.  Při nových návrzích by se měla zvážit možnost použít prostředky SKU Standard.  Podrobnosti najdete v článku o [nástroji pro vyrovnávání zatížení úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
 #### <a name="basic"></a>Basic
 
 Všechny veřejné IP adresy vytvořené před zavedením skladových položek jsou veřejné IP adresy základních SKU. Se zavedením skladových položek máte možnost pro veřejnou IP adresu určit požadovanou SKU. Adresy základních SKU:
 
 - Jsou přiřazované pomocí metody statického nebo dynamického přidělení.
+- Jsou standardně otevřené.  K omezení příchozího a odchozího provozu se doporučuje použít skupiny zabezpečení sítě, ale není to nezbytné.
 - Jsou přiřazované k jakémukoli prostředku Azure, ke kterému může být přiřazena veřejná IP adresa, jako jsou například síťová rozhraní, brány VPN Gateway, brány Application Gateway a internetové nástroje pro vyrovnávání zatížení.
 - Můžou být přiřazené ke konkrétní zóně.
 - Nejsou zónově redundantní. Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -67,17 +71,18 @@ Všechny veřejné IP adresy vytvořené před zavedením skladových položek j
 Veřejné IP adresy standardních SKU jsou:
 
 - Přiřazované pouze pomocí metody statického přidělení.
-- Přiřazované k síťovým rozhraním nebo standardním internetovým nástrojům pro vyrovnávání zatížení. Další informace o skladových položkách nástroje pro vyrovnávání zatížení Azure najdete v tématu věnovaném [standardní SKU nástroje pro vyrovnávání zatížení Azure](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Ve výchozím nastavení zónově redundantní. Je možné je vytvořit zónově a zaručit jejich dostupnost v konkrétní zóně dostupnosti. Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
+- Přiřazované k síťovým rozhraním nebo veřejným nástrojům pro vyrovnávání zatížení úrovně Standard. Další informace o nástrojích pro vyrovnávání zatížení Azure úrovně Standard najdete v článku o [nástroji pro vyrovnávání zatížení Azure úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Ve výchozím nastavení zónově redundantní. Je možné je vytvořit zónově a zaručit jejich dostupnost v konkrétní zóně dostupnosti. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Při přiřazování veřejné IP adresy standardní SKU k síťovému rozhraní virtuálního počítače je potřeba explicitně povolit plánovaný provoz pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups). Komunikace s prostředkem nebude možná, dokud nevytvoříte a nepřiřadíte skupinu zabezpečení sítě a explicitně nepovolíte požadovaný provoz.
+> Komunikace s prostředkem SKU Standard nebude možná, dokud nevytvoříte a nepřiřadíte [skupinu zabezpečení sítě](security-overview.md#network-security-groups) a explicitně nepovolíte požadovaný příchozí provoz.
 
 ### <a name="allocation-method"></a>Metoda přidělování
 
-Existují dvě metody přidělení IP adresy prostředku s veřejnou IP adresou – *dynamická* a *statická*. Výchozí metoda přidělení je *dynamická*, při které IP adresa **není** přidělená v okamžiku svého vytvoření. Místo toho se veřejná IP adresa přidělí, když spustíte (nebo vytvoříte) přidružený prostředek (jako je virtuální počítač nebo nástroj pro vyrovnávání zatížení). Když tento prostředek zastavíte (nebo odstraníte), IP adresa se uvolní. Po uvolnění z prostředku A je možné IP adresu například přiřadit jinému prostředku. Pokud IP adresu přiřadíte k jinému prostředku, zatímco je prostředek A zastavený, po restartování prostředku A se mu přiřadí jiná IP adresa.
+Veřejné IP adresy SKU Basic i Standard podporují metodu *statického* přidělení.  Prostředku se při vytváření přiřadí IP adresa, která se po odstranění prostředku zase uvolní.
 
-Pokud chcete zajistit, aby IP adresa přidruženého prostředku zůstala stejná, můžete explicitně nastavit *statickou* metodu přidělování. Statická IP adresa se přiřadí okamžitě. Adresa se uvolní, jenom když prostředek odstraníte nebo změníte metodu jejího přidělování na *dynamickou*.
+Veřejné IP adresy SKU Basic navíc podporují metodu *dynamického* přidělení, což je výchozí metoda pro případ, že se žádná metoda přidělení nezadá.  Když se pro prostředek veřejné IP adresy úrovně Basic vybere metoda *dynamického* přidělení, IP adresa se **nepřidělí** během vytváření prostředku.  Přidělí se až při přidružení veřejné IP adresy k virtuálnímu počítači nebo po umístění první instance virtuálního počítače do back-endového fondu nástroje pro vyrovnávání zatížení úrovně Basic.   Když tento prostředek zastavíte (nebo odstraníte), IP adresa se uvolní.  Po uvolnění z prostředku A je možné IP adresu například přiřadit jinému prostředku. Pokud IP adresu přiřadíte k jinému prostředku, zatímco je prostředek A zastavený, po restartování prostředku A se mu přiřadí jiná IP adresa. Pokud změníte metodu přidělení prostředku veřejné IP adresy úrovně Basic ze *statického* přidělení na *dynamické*, adresa se uvolní. Pokud chcete zajistit, aby IP adresa přidruženého prostředku zůstala stejná, můžete explicitně nastavit *statickou* metodu přidělování. Statická IP adresa se přiřadí okamžitě.
 
 > [!NOTE]
 > Ani při nastavení *statické* metody přidělování není možné určit vlastní IP adresu přiřazenou k prostředku s veřejnou IP adresou. Azure přiřazuje IP adresu z fondu dostupných IP adres v umístění Azure, ve kterém je prostředek vytvořený.
@@ -111,11 +116,11 @@ Veřejnou IP adresu vytvořenou s kteroukoli [SKU](#SKU) můžete přiřadit slu
 
 ### <a name="vpn-gateways"></a>VPN Gateway
 
-[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) připojuje virtuální síť Azure k dalším virtuálním sítím Azure nebo k místní síti. Aby služba VPN Gateway mohla komunikovat se vzdálenou sítí, přiřadí se jí veřejná IP adresa. Službě VPN Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu.
+[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) připojuje virtuální síť Azure k dalším virtuálním sítím Azure nebo k místní síti. Aby služba VPN Gateway mohla komunikovat se vzdálenou sítí, přiřadí se jí veřejná IP adresa. Službě VPN Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
 
 ### <a name="application-gateways"></a>Application Gateway
 
-Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. Tato veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Konfiguraci front-endu služby Application Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu.
+Veřejnou IP adresu můžete přiřadit službě [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) tak, že ji přiřadíte konfiguraci **front-endu** této brány. Tato veřejná IP adresa slouží jako virtuální IP adresa (VIP) s vyrovnáváním zatížení. Konfiguraci front-endu služby Application Gateway můžete přiřadit pouze *dynamickou* veřejnou IP adresu úrovně Basic.
 
 ### <a name="at-a-glance"></a>Přehledně
 Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím je možné veřejnou IP adresu přiřadit prostředku nejvyšší úrovně, a metody přidělení (dynamické nebo statické), které je možné použít.

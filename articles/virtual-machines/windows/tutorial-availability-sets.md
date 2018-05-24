@@ -1,6 +1,6 @@
 ---
-title: Kurz ke skupinám dostupnosti pro virtuální počítače s Windows v Azure | Microsoft Docs
-description: Seznamte se se skupinami dostupnosti pro virtuální počítače s Windows v Azure.
+title: Kurz vysoké dostupnosti pro virtuální počítače s Windows v Azure | Microsoft Docs
+description: V tomto kurzu zjistíte, jak používat Azure PowerShell k nasazení vysoce dostupných virtuálních počítačů ve skupinách dostupnosti
 documentationcenter: ''
 services: virtual-machines-windows
 author: cynthn
@@ -16,15 +16,15 @@ ms.topic: tutorial
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b6abea8dd78eac02badd325ed8c3866c9fee8b25
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ca2c28a67b652631fc839a5445061ed89cc9197d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-use-availability-sets"></a>Jak používat skupiny dostupnosti
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů v Azure PowerShellu
 
-V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení, která využívají virtuální počítače v Azure, pomocí funkce označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými uzly v clusteru. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze dílčí část vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční. 
+V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení, která využívají virtuální počítače v Azure, pomocí funkce označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými uzly v clusteru. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze dílčí část vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
 
 V tomto kurzu se naučíte:
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 ## <a name="availability-set-overview"></a>Přehled skupiny dostupnosti
 

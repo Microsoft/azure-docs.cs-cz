@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-storage"></a>Seznámení se službou Azure Storage
 
@@ -28,7 +28,7 @@ Azure Storage je řešení cloudového úložiště Microsoftu pro scénáře mo
 
 Azure Storage zahrnuje tyto datové služby: 
 
-- [Objekty blob Azure](../blobs/storage-blobs-introduction.md): široce škálovatelné úložiště objektů pro textová a binární data.
+- [Objekty blob Azure](../blobs/storage-blobs-introduction.md): široce škálovatelné úložiště objektů pro textová a binární data
 - [Soubory Azure](../files/storage-files-introduction.md): spravované sdílené složky pro nasazení v cloudu nebo místní nasazení.
 - [Fronty Azure](../queues/storage-queues-introduction.md): spolehlivé úložiště pro přenos zpráv mezi součástmi aplikace. 
 - [Tabulky Azure](../../cosmos-db/table-storage-overview.md): úložiště NoSQL pro úložiště strukturovaných dat bez schématu.
@@ -179,7 +179,7 @@ Prostředky Azure Storage jsou dostupné přes jakýkoli jazyk, který umí vytv
 * [REST API služby Storage](https://docs.microsoft.com/rest/api/storageservices/)
 * [Klientská knihovna pro úložiště pro .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Klientská knihovna pro úložiště pro Javu/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [Klientská knihovna pro úložiště pro Node.js](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [Klientská knihovna pro úložiště pro Node.js](https://docs.microsoft.com/javascript/api/azure-storage)
 * [Klientská knihovna pro úložiště pro Python](https://github.com/Azure/azure-storage-python)
 * [Klientská knihovna pro úložiště pro PHP](https://github.com/Azure/azure-storage-php)
 * [Klientská knihovna pro úložiště pro Ruby](https://github.com/Azure/azure-storage-ruby)

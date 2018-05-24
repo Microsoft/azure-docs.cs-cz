@@ -1,8 +1,8 @@
 ---
-title: Application Insights pro Azure Cloud Services | Dokumentace Microsoftu
-description: "Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights"
+title: Application Insights pro Azure Cloud Services | Microsoft Docs
+description: Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 keywords: WAD2AI, diagnostika Azure
 author: mrbullwinkle
 manager: carmonm
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) je možné pomocí služby [Application Insights][start] monitorovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -223,7 +223,7 @@ Chcete-li získat celkový přehled o systému, můžete klíčové grafy monito
 
 Pokud váš systém využívá jiné služby Azure, například Stream Analytics, jsou zahrnuty i jejich grafy monitorování. 
 
-Pokud používáte mobilní aplikace klienta, vložte kód pro odesílání vlastních událostí při klíčových operacích uživatele a vytvořte [most HockeyApp](app-insights-hockeyapp-bridge-app.md). V [Analytics](app-insights-analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
+Pokud máte mobilní klientskou aplikaci, použijte [App Center](app-insights-mobile-center-quickstart.md). V [Analytics](app-insights-analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
 ## <a name="example"></a>Příklad
 V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
