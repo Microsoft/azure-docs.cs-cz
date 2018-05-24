@@ -10,26 +10,27 @@ ms.workload: infrastructure-services
 ms.date: 3/20/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 63533319d555e79c86d4fe3cdae0b168115e7ec5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9aa0eec9036e32d6f3462886dfc7a796ed1844b8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356286"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Směrování webového provozu podle adresy URL pomocí Azure PowerShellu
 
-Pomocí Azure PowerShellu můžete nakonfigurovat směrování webového provozu na konkrétní škálovatelné fondy serverů podle adresy URL, přes kterou se přistupuje k vaší aplikaci. V tomto kurzu vytvoříte [Azure Application Gateway](application-gateway-introduction.md) se třemi back-endovými fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Každý z back-endových fondů má konkrétní účet, například běžná data, obrázky a video.  Směrování provozu na samostatné fondy zajišťuje, že vaši zákazníci dostanou v tu pravou chvíli informace, které potřebují.
+Pomocí Azure PowerShellu můžete nakonfigurovat směrování webového provozu na konkrétní škálovatelné fondy serverů podle adresy URL, přes kterou se přistupuje k vaší aplikaci. V tomto kurzu vytvoříte [Azure Application Gateway](application-gateway-introduction.md) se třemi back-endovými fondy pomocí [škálovacích sad virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Každý back-endový fond má určitý účel, třeba běžná data, obrázky nebo videa.  Směrování provozu na samostatné fondy zajistí, aby zákazníci získali požadované informace v okamžiku, kdy je potřebují.
 
-Abyste mohli směrování provozu povolit, vytvoříte [pravidla směrování](application-gateway-url-route-overview.md) přiřazená naslouchacím procesům, které naslouchají na konkrétních portech a zajišťují, že webový provoz přijde na správné servery ve fondech.
+Pokud chcete směrování provozu povolit, vytvořte [pravidla směrování](application-gateway-url-route-overview.md) přiřazená naslouchacím procesům, které naslouchají na konkrétních portech. Tím zajistíte, že se webový provoz dostane na správné servery ve fondech.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavit síť
 > * Vytvořit naslouchací procesy, mapu cest adres URL a pravidla
-> * Vytvářet škálovatelné back-endové fondy
+> * Vytvořit škálovatelné back-endové fondy
 
-![Příklad směrování podle adresy URL](./media/tutorial-url-route-powershell/scenario.png)
+![Příklad směrování na základě adresy URL](./media/tutorial-url-route-powershell/scenario.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -43,7 +44,7 @@ Může trvat až 90 minut, než tento kurz dokončíte, protože vytvoření pro
 
 Musí se vytvořit skupina prostředků, která bude obsahovat všechny prostředky pro aplikaci. 
 
-Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
+Vytvořte skupinu prostředků Azure příkazem [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).  
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
@@ -53,7 +54,7 @@ New-AzureRmResourceGroup -Name myResourceGroupAG -Location eastus
 
 Bez ohledu na to, jestli už máte k dispozici stávající virtuální síť, nebo vytváříte novou, je nezbytné, aby obsahovala podsíť, která se používá jen pro brány Application Gateway. V tomto kurzu vytvoříte jednu podsíť pro Application Gateway a jednu podsíť pro škálovací sadu. Vytvoříte veřejnou IP adresu, která umožní přístup k prostředkům v bráně Application Gateway.
 
-Vytvořte konfigurace podsítí *myAGSubnet* a *myBackendSubnet* pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfiguracemi podsítí. Nakonec vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress* pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Pomocí těchto prostředků se bude poskytovat síťové připojení k bráně Application Gateway a jejím přidruženým prostředkům.
+Vytvořte konfigurace podsítí *myAGSubnet* a *myBackendSubnet* pomocí rutiny [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Vytvořte virtuální síť s názvem *myVNet* pomocí rutiny [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) s konfiguracemi podsítí. Nakonec pomocí rutiny [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) vytvořte veřejnou IP adresu s názvem *myAGPublicIPAddress*. Tyto prostředky slouží k síťovému připojení k aplikační bráně a jejím přidruženým prostředkům.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
@@ -79,15 +80,15 @@ $pip = New-AzureRmPublicIpAddress `
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-V této části vytvoříte prostředky, které podporují bránu Application Gateway, a nakonec vytvoříte bránu samotnou. Mezi prostředky, které vytvoříte, jsou i tyto:
+V této části vytvoříte prostředky, které podporují aplikační bránu, a nakonec vytvoříte bránu samotnou. K vytvořeným prostředkům patří:
 
-- *Konfigurace IP adres a front-endový port* – Přidruží podsíť, kterou jste už vytvořili, k bráně Application Gateway a přiřadí port, přes který se k bráně přistupuje.
-- *Výchozí fond* – Všechny brány Application Gateway musí mít aspoň jeden back-endový fond serverů.
-- *Výchozí naslouchací proces a pravidlo* – Výchozí naslouchací proces naslouchá provozu na přiřazeném portu a výchozí pravidlo odesílá provoz na výchozí fond.
+- *Konfigurace IP adres a front-endový port* – přidruží vytvořenou podsíť k aplikační bráně a přiřadí jí přístupový port.
+- *Výchozí fond* – všechny aplikační brány musí mít aspoň jeden back-endový fond serverů.
+- *Výchozí naslouchací proces a pravidlo* – výchozí naslouchací proces naslouchá provozu na přiřazeném portu a výchozí pravidlo odesílá provoz výchozímu fondu.
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
-Přidružte podsíť *myAGSubnet*, kterou jste už vytvořili, k bráně Application Gateway pomocí rutiny [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Přiřaďte *myAGPublicIPAddress* k bráně Application Gateway pomocí rutiny [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
+Přidružte dříve vytvořenou podsíť *myAGSubnet* k aplikační bráně pomocí rutiny [New-AzureRmApplicationGatewayIPConfiguration](/powershell/module/azurerm.network/new-azurermapplicationgatewayipconfiguration). Přiřaďte *myAGPublicIPAddress* k bráně Application Gateway pomocí rutiny [New-AzureRmApplicationGatewayFrontendIPConfig](/powershell/module/azurerm.network/new-azurermapplicationgatewayfrontendipconfig).
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -307,7 +308,7 @@ Set-AzureRmApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="create-virtual-machine-scale-sets"></a>Vytvoření škálovacích sad virtuálních počítačů
 
-V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři back-endové fondy, které jste vytvořili. Škálovací sady, které vytvoříte, se jmenují *myvmss1*, *myvmss2* a *myvmss3*. K back-endovému fondu je přiřadíte během konfigurace nastavení IP adres.
+V tomto příkladu vytvoříte tři škálovací sady virtuálních počítačů, které podporují tři vytvořené back-endové fondy. Škálovací sady, které vytvoříte, se jmenují *myvmss1*, *myvmss2* a *myvmss3*. Škálovací sadu přiřadíte back-endovému fondu při konfiguraci nastavení IP adres.
 
 ```azurepowershell-interactive
 $vnet = Get-AzureRmVirtualNetwork `
@@ -385,7 +386,7 @@ for ($i=1; $i -le 3; $i++)
 Každá škálovací sada obsahuje dvě instance virtuálních počítačů, na které nainstalujete službu IIS. Ta bude provozovat ukázkovou stránku, pomocí které otestujete, jestli brána Application Gateway funguje.
 
 ```azurepowershell-interactive
-$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1"); 
+$publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
 
 for ($i=1; $i -le 3; $i++)
@@ -407,7 +408,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-Pomocí rutiny [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) získejte veřejnou IP adresu brány Application Gateway. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Např. *http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm* nebo *http://52.168.55.24:8080/video/test.htm*.
+K získání veřejné IP adresy aplikační brány použijte rutinu [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Příklad: *http://52.168.55.24*, *http://52.168.55.24:8080/images/test.htm* nebo *http://52.168.55.24:8080/video/test.htm*.
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -421,11 +422,11 @@ Změňte adresu URL na http://&lt;ip-adresa&gt;:8080/images/test.htm, kde za &lt
 
 Změňte adresu URL na http://&lt;ip-adresa&gt;:8080/video/test.htm, kde za &lt;ip-adresa&gt; dosadíte svoji IP adresu, a mělo by se vám zobrazit něco takového:
 
-![Testování adresy URL pro video v bráně Application Gateway](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
+![Testování adresy URL videa v aplikační bráně](./media/tutorial-url-route-powershell/application-gateway-iistest-video.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už skupinu prostředků, aplikační bránu a všechny ostatní související prostředky nepotřebujete, odebere je pomocí rutiny [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Až nebudete skupinu prostředků, aplikační bránu a další související prostředky potřebovat, odeberte je příkazem [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroupAG

@@ -13,12 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/07/2018
-ms.author: ryanwi,mikhegn
-ms.openlocfilehash: 20600eda935d15b0554f6184b41caa45ee42fd14
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: ryanwi
+ms.openlocfilehash: d0b3ce1fcabbc69c30e316a69e492da7c75d23ef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207481"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -28,7 +29,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Kontejnerizovat existující aplikaci pomocí sady Visual Studio
-> * Vytvořit databázi SQL Azure
+> * Vytvoření databáze SQL Azure
 > * Vytvořit registr kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 
@@ -241,7 +242,7 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Kontejnerizovat existující aplikaci pomocí sady Visual Studio
-> * Vytvořit databázi SQL Azure
+> * Vytvoření databáze SQL Azure
 > * Vytvořit registr kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 

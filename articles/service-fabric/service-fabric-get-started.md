@@ -1,5 +1,5 @@
 ---
-title: Nastavení vývojového prostředí ve Windows pro mikroslužby Azure | Microsoft Docs
+title: Nastavení vývojového prostředí ve Windows pro mikroslužby Azure | Dokumentace Microsoftu
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
 services: service-fabric
 documentationcenter: .net
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/14/2018
-ms.author: ryanwi, mikhegn
-ms.openlocfilehash: d27dd6e59ac36c024e5f4e3e36b5067797f4e062
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.author: ryanwi
+ms.openlocfilehash: fd70636a40ac08fb4b47c6ea53ae3c702d271ea8
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204895"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
