@@ -13,6 +13,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301797"
 ---
 # <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí Azure CLI a Event Gridu
 

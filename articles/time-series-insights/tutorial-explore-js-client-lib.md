@@ -13,38 +13,39 @@ ms.workload: na
 ms.tgt_pltfrm: ''
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/10/2018
+ms.date: 05/16/2018
 ms.author: bryanla
-ms.openlocfilehash: 5b845f36dbb65b38d0e4ac2a118277027239b3d6
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 3fbd4f54fb511ae737abf28ae7b1b50750ab5d69
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210473"
 ---
 # <a name="tutorial-explore-the-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Time Series Insights
 
-Abychom vývojářům pomohli dotazovat a vizualizovat data uložená ve službě Time Series Insights, vytvořili jsme javascriptovou knihovnu ovládacích prvků založených na D3, která tuto práci usnadňuje. Tento kurz vás na příkladu ukázkové webové aplikace provede zkoumáním javascriptové klientské knihovny pro TSI a souvisejícím programovacím modelem. 
+Abychom vývojářům pomohli dotazovat a vizualizovat data uložená ve službě Time Series Insights, vytvořili jsme javascriptovou knihovnu ovládacích prvků založených na D3, která tuto práci usnadňuje. Tento kurz vás na příkladu ukázkové webové aplikace provede zkoumáním javascriptové klientské knihovny pro TSI a souvisejícím programovacím modelem.
 
 Popsaná témata vám umožní experimentovat, získat lepší přehled o přístupu k datům TSI a vykreslovat a vizualizovat data pomocí ovládacích prvků grafů. Cílem je poskytnout vám dostatek podrobných informací, abyste mohli knihovnu využít ve vlastní webové aplikaci.
 
 V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Ukázková aplikace TSI 
+> * Ukázková aplikace TSI
 > * Javascriptová klientská knihovna pro TSI
 > * Použití knihovny v ukázkové aplikaci k vizualizaci dat TSI
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se používá funkce Vývojářské nástroje (označovaná také jako DevTools nebo F12), kterou obsahuje většina moderních webových prohlížečů, jako jsou [Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/) a další. Pokud tuto funkci ještě neznáte, než budete pokračovat, měli byste ji prozkoumat ve svém prohlížeči. 
+V tomto kurzu se používá funkce Vývojářské nástroje (označovaná také jako DevTools nebo F12), kterou obsahuje většina moderních webových prohlížečů, jako jsou [Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/) a další. Pokud tuto funkci ještě neznáte, než budete pokračovat, měli byste ji prozkoumat ve svém prohlížeči.
 
 ## <a name="the-time-series-insights-sample-application"></a>Ukázková aplikace Time Series Insights
 
-V tomto kurzu se k prozkoumání zdrojového kódu aplikace, včetně použití javascriptové klientské knihovny pro TSI, používá ukázková aplikace Time Series Insights. Jedná se o jednostránkovou webovou aplikaci (SPA), která předvádí použití knihovny k dotazování a vizualizaci dat z ukázkového prostředí TSI. 
+V tomto kurzu se k prozkoumání zdrojového kódu aplikace, včetně použití javascriptové klientské knihovny pro TSI, používá ukázková aplikace Time Series Insights. Jedná se o jednostránkovou webovou aplikaci (SPA), která předvádí použití knihovny k dotazování a vizualizaci dat z ukázkového prostředí TSI.
 
 1. Přejděte do [ukázkové aplikace Time Series Insights](https://insights.timeseries.azure.com/clientsample). Zobrazí se stránka podobná následující s výzvou k přihlášení: ![Výzva k přihlášení k ukázce klienta TSI](media/tutorial-explore-js-client-lib/tcs-sign-in.png)
 
-2. Klikněte na tlačítko Log in (Přihlásit se) a zadejte nebo vyberte své přihlašovací údaje. Můžete použít účet podniku nebo organizace (Azure Active Directory) nebo osobní účet (účet Microsoft nebo MSA). 
+2. Klikněte na tlačítko Log in (Přihlásit se) a zadejte nebo vyberte své přihlašovací údaje. Můžete použít účet podniku nebo organizace (Azure Active Directory) nebo osobní účet (účet Microsoft nebo MSA).
 
    ![Výzva k zadání přihlašovacích údajů v ukázce klienta TSI](media/tutorial-explore-js-client-lib/tcs-sign-in-enter-account.png)
 
@@ -59,11 +60,11 @@ Nejprve se podívejme na zdrojový kód HTML a JavaScriptu stránky, která se v
 2. Rozbalte elementy `<head>` a `<body>` a všimněte si následujících částí:
    - V části `<head>` najdete elementy, které získávají další soubory napomáhající fungování stránky:
      - Element `<script>` obsahující odkaz na knihovnu Azure Active Directory Authentication Library (adal.min.js) označovanou také jako ADAL. Tato javascriptová knihovna zajišťuje ověřování OAuth 2.0 (přihlašování) a získání tokenu pro přístup k rozhraním API:
-     - Elementy `<link>` obsahující odkaz na šablony stylů (sampleStyles.css, tsiclient.css) označované také jako šablony stylů CSS. Ty slouží k řízení detailů vizuálního stylu stránky, jako jsou barvy, písma, mezery atd. 
+     - Elementy `<link>` obsahující odkaz na šablony stylů (sampleStyles.css, tsiclient.css) označované také jako šablony stylů CSS. Ty slouží k řízení detailů vizuálního stylu stránky, jako jsou barvy, písma, mezery atd.
      - Element `<script>` obsahující odkaz na javascriptovou klientskou knihovnu pro TSI (tsiclient.js), pomocí které stránka volá rozhraní API služby TSI a vykresluje ovládací prvky grafů.
 
      >[!NOTE]
-     > Zdrojový kód javascriptové knihovny ADAL je k dispozici v [úložišti azure-activedirectory-library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js).  
+     > Zdrojový kód javascriptové knihovny ADAL je k dispozici v [úložišti azure-activedirectory-library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js).
      > Zdrojový kód javascriptové klientské knihovny pro TSI je k dispozici v [úložišti tsiclient](https://github.com/Microsoft/tsiclient).
 
    - V části `<body>` najdete elementy `<div>`, které fungují jako kontejnery definující rozložení položek na stránce, a další element `<script>`:
@@ -77,7 +78,7 @@ Nejprve se podívejme na zdrojový kód HTML a JavaScriptu stránky, která se v
 
 3. Rozbalte element `<div class="chartsWrapper">`. Zobrazí se další podřízené elementy `<div>`, které slouží k určení pozice jednotlivých příkladů ovládacích prvků grafů. Všimněte si několika párů elementů `<div>`, jednoho pro každý příklad grafu:
    - První (`class="rowOfCardsTitle"`) obsahuje popisný název, který shrnuje, co graf znázorňuje. Například Static Line Charts With Full-Size Legends (Statické spojnicové grafy s legendami v plné velikosti).
-   - Druhý (`class="rowOfCards"`) je nadřazený prvek obsahující další podřízené elementy `<div>`, které určují pozici vlastních ovládacích prvků grafů na řádku. 
+   - Druhý (`class="rowOfCards"`) je nadřazený prvek obsahující další podřízené elementy `<div>`, které určují pozici vlastních ovládacích prvků grafů na řádku.
 
   ![Zobrazení elementů div obsahu](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)
 
@@ -89,10 +90,10 @@ Nejprve se podívejme na zdrojový kód HTML a JavaScriptu stránky, která se v
 
 Přestože ji nebudeme podrobně popisovat, klientská knihovna pro TSI (tsclient.js) v zásadě poskytuje abstrakci pro dvě důležité kategorie:
 
-- **Metody obálky pro volání dotazovacích rozhraní API pro TSI** – Rozhraní REST API umožňující dotazovat data TSI pomocí agregačních výrazů a která jsou uspořádaná v rámci oboru názvů `TsiClient.Server` knihovny. 
-- **Metody pro vytváření a naplňování různých typů ovládacích prvků grafů** – Slouží k vykreslování agregovaných dat TSI na webové stránce a jsou uspořádané v rámci oboru názvů `TsiClient.UX` knihovny. 
+- **Metody obálky pro volání dotazovacích rozhraní API pro TSI** – Rozhraní REST API umožňující dotazovat data TSI pomocí agregačních výrazů a která jsou uspořádaná v rámci oboru názvů `TsiClient.Server` knihovny.
+- **Metody pro vytváření a naplňování různých typů ovládacích prvků grafů** – Slouží k vykreslování agregovaných dat TSI na webové stránce a jsou uspořádané v rámci oboru názvů `TsiClient.UX` knihovny.
 
-Následující koncepty jsou univerzální a vztahují se obecně na všechna rozhraní API klientské knihovny pro TSI. 
+Následující koncepty jsou univerzální a vztahují se obecně na všechna rozhraní API klientské knihovny pro TSI.
 
 ### <a name="authentication"></a>Authentication
 
@@ -100,13 +101,13 @@ Jak bylo zmíněno dříve, tato ukázka je jednostránková aplikace, která k 
 
 1. Použití knihovny ADAL k ověřování vyžaduje, aby se klientská aplikace zaregistrovala do registru aplikací Azure Active Directory (Azure AD). Jako jednostránková aplikace se tato aplikace zaregistruje k používání implicitního toku udělování autorizace OAuth 2.0. Aplikace odpovídajícím způsobem za běhu určuje některé vlastnosti registrace, které se zapojí do toku, například GUID ID klienta (`clientId`) a identifikátor URI přesměrování (`postLogoutRedirectUri`).
 
-2. Později si aplikace vyžádá přístupový token ze služby Azure AD. Přístupový token se vystavuje pro omezenou sadu oprávnění a pro konkrétní identifikátor služby nebo rozhraní API (https://insights.timeseries.azure.com), které se označují také jako cílová skupina tokenu. Oprávnění tokenu se vystavují jménem přihlášeného uživatele. Identifikátor služby nebo rozhraní API je další vlastností obsaženou v registraci aplikace ve službě Azure AD. Jakmile knihovna ADAL vrátí do aplikace přístupový token, při přístupu k rozhraním API služby TSI se pak předává jako nosný token. 
+2. Později si aplikace vyžádá přístupový token ze služby Azure AD. Přístupový token se vystavuje pro omezenou sadu oprávnění a pro konkrétní identifikátor služby nebo rozhraní API (https://api.timeseries.azure.com), které se označují také jako cílová skupina tokenu. Oprávnění tokenu se vystavují jménem přihlášeného uživatele. Identifikátor služby nebo rozhraní API je další vlastností obsaženou v registraci aplikace ve službě Azure AD. Jakmile knihovna ADAL vrátí do aplikace přístupový token, při přístupu k rozhraním API služby TSI se pak předává jako nosný token.
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/index.html?range=140-199&highlight=4-9,36-39)]
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=145-204&highlight=4-9,36-39)]
 
 ### <a name="control-identification"></a>Identifikace ovládacího prvku
 
-Jak je uvedeno výše, elementy `<div>` v části `<body>` zajišťují rozložení všech ovládacích prvků grafů ukázaných na stránce. Každý z nich určuje vlastnosti pro umístění a vizuální atributy ovládacího prvku grafu, včetně vlastnosti `id`. Vlastnost `id` obsahuje jedinečný identifikátor, který se v kódu JavaScriptu používá k identifikaci a vazbě jednotlivých ovládacích prvků pro účely vykreslování a aktualizace. 
+Jak je uvedeno výše, elementy `<div>` v části `<body>` zajišťují rozložení všech ovládacích prvků grafů ukázaných na stránce. Každý z nich určuje vlastnosti pro umístění a vizuální atributy ovládacího prvku grafu, včetně vlastnosti `id`. Vlastnost `id` obsahuje jedinečný identifikátor, který se v kódu JavaScriptu používá k identifikaci a vazbě jednotlivých ovládacích prvků pro účely vykreslování a aktualizace.
 
 ### <a name="aggregate-expressions"></a>Agregační výrazy
 
@@ -116,13 +117,13 @@ Rozhraní API klientské knihovny pro TSI ve velké míře využívají agregač
 
 Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vzorem. Tento vzor se používá na celé stránce v kódu JavaScriptu, který vytváří instance ovládacích prvků ukázkové aplikace TSI a načítá je:
 
-1. Deklarujte pole, které bude obsahovat jeden nebo několik agregačních výrazů TSI.  
+1. Deklarujte pole, které bude obsahovat jeden nebo několik agregačních výrazů TSI.
 
    ```javascript
    var aes =  [];
    ```
 
-2. Vytvořte objekty agregačních výrazů 1:N a přidejte je do pole agregačních výrazů.  
+2. Vytvořte objekty agregačních výrazů 1:N a přidejte je do pole agregačních výrazů.
 
    ```javascript
    var ae = new tsiClient.ux.aggregateExpression(predicateObject, measureObject, measureTypes, searchSpan, splitByObject, color, alias, contextMenuActions);
@@ -141,7 +142,7 @@ Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vz
    | alias           | Popisný název agregačního výrazu. | `'Factory3Temperature'` |
    | contextMenuActions | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné). | Viz [Automaticky otevírané místní nabídky v části Pokročilé funkce](#popup-context-menus). |
 
-3. Vyžádejte agregovaná data zavoláním dotazu TSI pomocí rozhraní API `TsiClient.Server`.  
+3. Vyžádejte agregovaná data zavoláním dotazu TSI pomocí rozhraní API `TsiClient.Server`.
 
    ```javascript
    tsiClient.server.getAggregates(token, envFQDN, aeTsxArray);
@@ -174,19 +175,19 @@ Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vz
 
 ## <a name="rendering-controls"></a>Vykreslování ovládacích prvků
 
-Knihovna v současné době zveřejňuje osm jedinečných ovládacích prvků analýzy. Patří mezi ně spojnicový graf, výsečový graf, pruhový graf, heat mapa, ovládací prvky hierarchie, přístupná mřížka, časové osy diskrétních událostí a časové osy přechodu stavu.   
+Knihovna v současné době zveřejňuje osm jedinečných ovládacích prvků analýzy. Patří mezi ně spojnicový graf, výsečový graf, pruhový graf, heat mapa, ovládací prvky hierarchie, přístupná mřížka, časové osy diskrétních událostí a časové osy přechodu stavu.
 
-### <a name="line-bar-pie-chart-examples"></a>Příklady spojnicového, pruhového a výsečového grafu 
+### <a name="line-bar-pie-chart-examples"></a>Příklady spojnicového, pruhového a výsečového grafu
 
-Nejprve se podíváme na kód několika standardních ovládacích prvků grafů ukázaných v aplikaci a na programovací modely a vzory použité k jejich vytvoření. Konkrétně prozkoumáte část HTML pod komentářem `// Example 3/4/5`, která vykresluje ovládací prvky s hodnotami ID `chart3`, `chart4` a `chart5`. 
+Nejprve se podíváme na kód několika standardních ovládacích prvků grafů ukázaných v aplikaci a na programovací modely a vzory použité k jejich vytvoření. Konkrétně prozkoumáte část HTML pod komentářem `// Example 3/4/5`, která vykresluje ovládací prvky s hodnotami ID `chart3`, `chart4` a `chart5`.
 
 Jak je popsáno v kroku 3 v části [Zdrojový kód a struktura stránky](#page-source-and-structure), ovládací prvky grafů jsou na stránce uspořádané do řádků, z nichž každý obsahuje řádek s popisným názvem. V tomto příkladu se všechny tři naplňované grafy nacházejí pod elementem `<div>` s nadpisem Multiple Chart Types From the Same Data (Několik typů grafů s použitím stejných dat) a jsou svázané se třemi elementy `<div>` pod ním:
 
-[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/index.html?range=60-74&highlight=1,5,9,13)]
+[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
 V následující části kódu JavaScriptu se podle výše popsaného vzoru vytvoří agregační výrazy TSI, použijí se k odeslání dotazu na data TSI a vykreslí se tři grafy. Všimněte si použití tří typů z oboru názvů `tsiClient.ux` (`LineChart`, `BarChart` a `PieChart`) k vytvoření a vykreslení příslušných grafů. Všimněte si také, že všechny tři grafy můžou využívat stejná data agregačního výrazu `transformedResult`:
 
-[!code-javascript[code-sample2-line-bar-pie](~/samples-javascript/pages/index.html?range=236-257&highlight=13-14,16-17,19-20)]
+[!code-javascript[code-sample2-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=241-262&highlight=13-14,16-17,19-20)]
 
 Po vykreslení budou tři grafy vypadat následovně:
 
@@ -194,27 +195,27 @@ Po vykreslení budou tři grafy vypadat následovně:
 
 ## <a name="advanced-features"></a>Pokročilé funkce
 
-Knihovna zveřejňuje také několik volitelných pokročilých funkcí, jejichž výhody můžete chtít využít.  
+Knihovna zveřejňuje také několik volitelných pokročilých funkcí, jejichž výhody můžete chtít využít.
 
 ### <a name="states-and-events"></a>Stavy a události
 
-Jedním z příkladů nabízených pokročilých funkcí je možnost přidat do grafů přechody stavu a diskrétní události. Tato funkce je vhodná k zvýrazňování incidentů, upozorňování a pro přepínače stavu, například zapnuto/vypnuto. 
+Jedním z příkladů nabízených pokročilých funkcí je možnost přidat do grafů přechody stavu a diskrétní události. Tato funkce je vhodná k zvýrazňování incidentů, upozorňování a pro přepínače stavu, například zapnuto/vypnuto.
 
 Tady si můžete prohlédnout kód části HTML pod komentářem `// Example 10`. Kód pod nadpisem Line Charts with Multiple Series Types (Spojnicové grafy s několika typy řad) vykreslí spojnicový graf a vytvoří jeho vazbu na element `<div>` s hodnotou ID `chart10`:
 
 1. Nejprve se definuje struktura `events4`, která bude uchovávat elementy změny stavu, které se mají sledovat. Obsahuje následující:
-   - Klíč řetězce `"Component States"`. 
+   - Klíč řetězce `"Component States"`.
    - Pole objektů hodnot představujících stavy, z nichž každý obsahuje:
      - Klíč řetězce obsahující časové razítko JavaScript ISO
      - Pole obsahující charakteristiky stavu
        - barva
        - popis
 
-2. Pak se definuje struktura `events5` pro `"Incidents"`, která uchovává pole elementů událostí, které se mají sledovat. Struktura pole má stejný tvar jako výše uvedená struktura pole `events4`. 
+2. Pak se definuje struktura `events5` pro `"Incidents"`, která uchovává pole elementů událostí, které se mají sledovat. Struktura pole má stejný tvar jako výše uvedená struktura pole `events4`.
 
-3. Nakonec se vykreslí spojnicový graf a výše uvedené dvě struktury se předají v parametrech možností grafu: `events:` a `states:`. Všimněte si dalších parametrů možností `tooltip:`, `theme:` a `grid:` umožňujících zadání popisku, tématu nebo mřížky. 
+3. Nakonec se vykreslí spojnicový graf a výše uvedené dvě struktury se předají v parametrech možností grafu: `events:` a `states:`. Všimněte si dalších parametrů možností `tooltip:`, `theme:` a `grid:` umožňujících zadání popisku, tématu nebo mřížky.
 
-[!code-javascript[code-sample-states-events](~/samples-javascript/pages/index.html?range=332-384&highlight=5,26,51)]
+[!code-javascript[code-sample-states-events](~/samples-javascript/pages/tutorial/index.html?range=337-389&highlight=5,26,51)]
 
 K vizuálnímu vyznačení incidentů se používají kosočtvercové značky a automaticky otevíraná okna. Barevné pruhy a automaticky otevíraná okna u časového měřítka označují změny stavu:
 
@@ -226,7 +227,7 @@ Dalším příkladem pokročilých funkcí jsou vlastní místní nabídky (auto
 
 Tady se podíváme na kód HTML pod komentářem `// Example 13/14/15`. Tento kód nejprve pod nadpisem Line Chart with Context Menu to Create Pie/Bar Chart (Spojnicový graf s místní nabídkou umožňující vytvoření výsečového nebo pruhového grafu) vykreslí spojnicový graf a vytvoří jeho vazbu na element `<div>` s hodnotou ID `chart13`. Spojnicový graf prostřednictvím místních nabídek umožňuje dynamicky vytvořit výsečový a pruhový graf s vazbou na elementy `<div>` s ID `chart14` a `chart15`. Kromě toho výsečový i pruhový graf také používají vlastní místní nabídky, prostřednictvím kterých povolují vlastní funkce: možnost kopírovat data z výsečového do pruhového grafu a tisknout data pruhového grafu do okna konzoly v prohlížeči (v uvedeném pořadí).
 
-1. Nejprve se definuje řada vlastních akcí. Každá z akcí obsahuje pole s jedním nebo několika elementy, kde každý element definuje jednu položku místní nabídky: 
+1. Nejprve se definuje řada vlastních akcí. Každá z akcí obsahuje pole s jedním nebo několika elementy, kde každý element definuje jednu položku místní nabídky:
    - `barChartActions`: Definuje místní nabídku pro výsečový graf, která obsahuje jeden element definující jednu položku:
      - `name`: Text, který se použije pro položku nabídky: Print parameters to console (Vytisknout parametry do konzoly)
      - `action`: Akce přidružená k položce nabídky, která je vždy anonymní funkcí, která přebírá tři argumenty v závislosti na agregačním výrazu použitém k vytvoření grafu. V tomto případě se zapisují do okna konzoly v prohlížeči:
@@ -240,7 +241,7 @@ Tady se podíváme na kód HTML pod komentářem `// Example 13/14/15`. Tento k�
 
 3. Nakonec se vykreslí pouze počáteční spojnicový graf, na jehož základě je možné za běhu vykreslit výsečový i pruhový graf.
 
-[!code-javascript[code-sample-context-menus](~/samples-javascript/pages/index.html?range=456-535&highlight=7,16,29,61-64,78)]
+[!code-javascript[code-sample-context-menus](~/samples-javascript/pages/tutorial/index.html?range=461-540&highlight=7,16,29,61-64,78)]
 
 Snímek obrazovky ukazuje grafy s odpovídajícími automaticky otevíranými místními nabídkami. Výsečový a pruhový graf se vytvořily dynamicky pomocí možností místní nabídky spojnicového grafu:
 
@@ -248,9 +249,9 @@ Snímek obrazovky ukazuje grafy s odpovídajícími automaticky otevíranými m�
 
 ### <a name="brushes"></a>Štětce
 
-Pomocí štětců můžete omezit časový rozsah a definovat akce, jako jsou přiblížení a prozkoumání. 
+Pomocí štětců můžete omezit časový rozsah a definovat akce, jako jsou přiblížení a prozkoumání.
 
-Kód sloužící k ilustraci štětců je zobrazený také v předchozím příkladu spojnicového grafu s místní nabídkou umožňující vytvoření výsečového nebo pruhového grafu, který popisoval [Automaticky otevírané místní nabídky](#popup-context-menus-section). 
+Kód sloužící k ilustraci štětců je zobrazený také v předchozím příkladu spojnicového grafu s místní nabídkou umožňující vytvoření výsečového nebo pruhového grafu, který popisoval [Automaticky otevírané místní nabídky](#popup-context-menus-section).
 
 1. Akce štětců jsou velmi podobné jako v případě místní nabídky a definují pro štětec řadu vlastních akcí. Každá z akcí obsahuje pole s jedním nebo několika elementy, kde každý element definuje jednu položku místní nabídky:
    - `name`: Text, který se použije pro položku nabídky: Print parameters to console (Vytisknout parametry do konzoly)
@@ -260,7 +261,7 @@ Kód sloužící k ilustraci štětců je zobrazený také v předchozím přík
 
 2. Akce štětců se přidávají jako další vlastnost možnosti grafu. Všimněte si vlastnosti `brushContextMenuActions: brushActions` předávané do volání `linechart.Render`.
 
-[!code-javascript[code-sample-brushes](~/samples-javascript/pages/index.html?range=521-535&highlight=1,13)]
+[!code-javascript[code-sample-brushes](~/samples-javascript/pages/tutorial/index.html?range=526-540&highlight=1,13)]
 
 ![Spojnicový graf s místní nabídkou umožňující vytvoření výsečového nebo pruhového grafu, který využívá štětce](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)
 

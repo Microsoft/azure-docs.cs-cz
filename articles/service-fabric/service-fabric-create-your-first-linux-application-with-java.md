@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření aplikace Azure Service Fabric Reliable Actors v Javě v Linuxu | Microsoft Docs"
-description: "Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě."
+title: Vytvoření aplikace Azure Service Fabric Reliable Actors v Javě v Linuxu | Dokumentace Microsoftu
+description: Zjistěte, jak za pět minut vytvořit a nasadit aplikaci Service Fabric Reliable Actors v Javě.
 services: service-fabric
 documentationcenter: java
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 02b51f11-5d78-4c54-bb68-8e128677783e
 ms.service: service-fabric
 ms.devlang: java
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: abbcb246ada9974e53c677eed37a1ab9ce48d6c5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 01f085a7ec69780fe3558c6892e254ed3a7e2fb0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205684"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -187,7 +188,7 @@ public static void main(String[] args) throws Exception {
 
 ## <a name="build-the-application"></a>Sestavení aplikace
 Šablony Service Fabric Yeoman zahrnují skript sestavení pro [Gradle](https://gradle.org/), který můžete použít k sestavení aplikace z terminálu.
-Závislosti Service Fabric Java se získávají z Mavenu. Pokud chcete sestavovat aplikace Service Fabric Java a pracovat s nimi, musíte zajistit, že máte nainstalovanou sadu JDK a Gradle. Pokud tyto součásti nemáte nainstalované, přečtěte si pokyny k jejich nastavení v článku [Service Fabric – Začínáme s Linuxem](service-fabric-get-started-linux.md#set-up-java-development).
+Závislosti Service Fabric Java se získávají z Mavenu. Chcete-li sestavovat aplikace Service Fabric Java a pracovat s nimi, musíte zajistit, že máte nainstalovanou sadu JDK a Gradle. Pokud tyto součásti nemáte nainstalované, přečtěte si pokyny k jejich nastavení v článku [Service Fabric – Začínáme s Linuxem](service-fabric-get-started-linux.md#set-up-java-development).
 
 Pokud chcete sestavit a zabalit aplikaci, spusťte následující:
 

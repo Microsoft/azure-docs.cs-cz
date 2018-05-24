@@ -1,5 +1,5 @@
 ---
-title: Možnosti Microsoft Azure IoT | Microsoft Docs
+title: Možnosti Microsoft Azure IoT | Dokumentace Microsoftu
 description: Zvolte, jak implementovat řešení IoT pomocí akcelerátorů řešení Azure IoT, Azure IoT Central nebo Azure IoT Hub.
 services: iot-suite
 suite: iot-suite
@@ -11,15 +11,16 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0d6fc2a49034b2e01a0397fe256a2b44030777b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 0d38a41a33632e2c6427b75e365db468940d025d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34300964"
 ---
 # <a name="compare-azure-iot-options"></a>Porovnání možností Azure IoT
 
-Článek [Azure a Internet věcí](iot-suite-what-is-azure-iot.md) popisuje typickou architekturu řešení IoT s následujícími vrstvami:
+Článek [Azure a Internet věcí](../iot-accelerators/iot-accelerators-what-is-azure-iot.md) popisuje typickou architekturu řešení IoT s následujícími vrstvami:
 
 * Správa a připojení zařízení
 * Zpracování a analýza dat
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/10/2018
 
 Azure IoT pro implementaci této architektury nabízí několik možností, které jsou vhodné pro různé sady zákaznických požadavků:
 
-* [Akcelerátory řešení Azure IoT](index.md) jsou kolekce [akcelerátorů řešení](iot-suite-what-are-solution-accelerators.md) na podnikové úrovni, která je založená na platformě Azure jako službě (PaaS) a umožňuje zrychlit vývoj vlastních řešení IoT.
+* [Akcelerátory řešení Azure IoT](index.md) jsou kolekce [akcelerátorů řešení](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) na podnikové úrovni, která je založená na platformě Azure jako službě (PaaS) a umožňuje zrychlit vývoj vlastních řešení IoT.
 
 * [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) je řešení SaaS (software jako služba), které využívá přístup založený na modelu a umožňuje vytvářet řešení IoT na podnikové úrovni, aniž by to vyžadovalo zkušenosti s vývojem cloudových řešení.
 
@@ -63,6 +64,6 @@ Rozhodnutí, který produkt využít k sestavení vašeho řešení IoT, určuj�
 
 Na základě zvoleného produktu a přístupu jsou navrhujeme tyto další kroky:
 
-* **Akcelerátory řešení Azure IoT:** [Co jsou akcelerátory řešení Azure IoT?](iot-suite-what-are-solution-accelerators.md)
+* **Akcelerátory řešení Azure IoT:** [Co jsou akcelerátory řešení Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
 * **Azure IoT Central**: [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions).
 * **IoT Hub:** [Přehled služby Azure IoT Hub](../iot-hub/iot-hub-what-is-iot-hub.md).

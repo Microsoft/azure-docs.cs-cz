@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 3/22/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 203dc3d604e56366fb1c1df9b6494fe74e6909e0
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 921c68b6743749f9976d99d20a6c47311006f570
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356048"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Kurz: Vytvoření aplikační brány, která hostuje více webů, v Azure CLI
 
@@ -24,7 +25,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvořit aplikační bránu
+> * Vytvoření služby Application Gateway
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
@@ -33,7 +34,7 @@ V tomto kurzu se naučíte:
 ![Příklad směrování na více webů](./media/tutorial-multiple-sites-cli/scenario.png)
 
 
-Pokud chcete, můžete tento kurz absolvovat v [Azure PowerShellu](tutorial-multiple-sites-powershell.md).
+Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -43,7 +44,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pomocí příkazu [az group create](/cli/azure/group#create) vytvořte skupinu prostředků.
+Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create).
 
 V následujícím příkladu vytvoříte skupinu prostředků s názvem *myResourceGroupAG* v umístění *eastus*.
 
@@ -75,7 +76,7 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-the-application-gateway"></a>Vytvoření aplikační brány
+## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
 K vytvoření aplikační brány můžete použít příkaz [az network application-gateway create](/cli/azure/application-gateway#create). Při vytváření aplikační brány pomocí Azure CLI zadáte konfigurační údaje, jako je kapacita, skladová položka nebo nastavení HTTP. Aplikační brána je přiřazena k již vytvořené podsíti *myAGSubnet* a adrese *myAGPublicIPAddress*. 
 
@@ -214,13 +215,13 @@ for i in `seq 1 2`; do
     --name CustomScript \
     --resource-group myResourceGroupAG \
     --vmss-name myvmss$i \
-    --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 
 done
 ```
 
-## <a name="create-a-cname-record-in-your-domain"></a>Vytvoření záznamu CNAME v doméně
+## <a name="create-a-cname-record-in-your-domain"></a>Vytvořit záznam CNAME v doméně
 
 Jakmile vytvoříte aplikační bránu s veřejnou IP adresou, získáte adresu DNS, kterou můžete použít k vytvoření záznamu CNAME ve své doméně. K získání adresy DNS aplikační brány použijte příkaz [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Zkopírujte hodnotu *fqdn* z objektu DNESettings a použijte ji jako hodnotu vytvořeného záznamu CNAME. 
 
@@ -258,11 +259,11 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Nastavit síť
-> * Vytvořit aplikační bránu
+> * Vytvoření služby Application Gateway
 > * Vytvořit back-endové naslouchací procesy
 > * Vytvořit pravidla směrování
 > * Vytvořit z back-endových fondů škálovací sadu virtuálních počítačů
-> * Vytvořit v doméně záznam CNAME
+> * Vytvořit záznam CNAME v doméně
 
 > [!div class="nextstepaction"]
 > [Vytvoření aplikační brány s pravidly směrování založenými na cestě URL](./tutorial-url-route-cli.md)

@@ -16,11 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f0f577e2ff18645cfa93763f2345ef4230907e09
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257545"
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory pro vývojáře
 
@@ -55,7 +56,6 @@ Tyto příručky vás provedou nejběžnějšími úkoly v Azure AD.
 |[Registrace aplikace](active-directory-integrating-applications.md)           | Postup registrace aplikace v Azure AD |
 |[Víceklientské aplikace](active-directory-devhowto-multi-tenant-overview.md)    | Postup přihlášení libovolného pracovního účtu Microsoft |
 |[Protokoly OAuth a OpenID Connect](active-directory-protocols-openid-connect-code.md)| Postup přihlášení uživatelů a volání webových rozhraní API pomocí ověřovacích protokolů Microsoftu |
-|[Další návody](active-directory-developers-guide-index.md#guides)        |  Seznam návodů, které jsou k dispozici pro Azure AD |
 |  |  |
 
 ## <a name="reference-topics"></a>Referenční témata
@@ -66,7 +66,6 @@ Následující články poskytují podrobné informace o rozhraních API, zpráv
 | [Knihovny ověřování (ADAL)](active-directory-authentication-libraries.md)   | Přehled knihoven a sad SDK, které poskytuje Azure AD |
 | [Ukázky kódu](active-directory-code-samples.md)                                  | Seznam všech ukázek kódu Azure AD |
 | [Glosář](active-directory-dev-glossary.md)                                      | Terminologie a definice slov, která se používají v této dokumentaci |
-| [Další referenční témata](active-directory-developers-guide-index.md#reference)| Seznam referenčních témat, která jsou k dispozici pro Azure AD |
 |  |  |
 
 

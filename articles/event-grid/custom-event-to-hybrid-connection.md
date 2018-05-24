@@ -6,13 +6,14 @@ keywords: ''
 author: tfitzmac
 ms.author: tomfitz
 ms.date: 05/04/2018
-ms.topic: article
+ms.topic: tutorial
 ms.service: event-grid
-ms.openlocfilehash: c95cfee787244367688b82959474e2a8028b7ff6
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 31c8dd520079046808b32dad0d338415bed71c58
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302973"
 ---
 # <a name="route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Směrování vlastních událostí do Azure Relay Hybrid Connections pomocí Azure CLI a Event Gridu
 
