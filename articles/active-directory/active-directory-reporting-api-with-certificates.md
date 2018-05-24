@@ -1,46 +1,60 @@
 ---
-title: "Získání dat pomocí rozhraní API pro generování sestav Azure AD s certifikáty | Dokumentace Microsoftu"
-description: "Vysvětluje, jak používat rozhraní API pro generování sestav Azure AD s přihlašovacími údaji ve formě certifikátů k získání dat z adresářů bez zásahu uživatele."
+title: Získání dat pomocí rozhraní API pro generování sestav Azure AD s certifikáty | Microsoft Docs
+description: Vysvětluje, jak používat rozhraní API pro generování sestav Azure AD s přihlašovacími údaji ve formě certifikátů k získání dat z adresářů bez zásahu uživatele.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ramical
 writer: v-lorisc
 manager: kannar
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/08/2017
+ms.date: 05/07/2018
 ms.author: ramical
-ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 54e661284c539b835089e858ba7b5e0016e89a83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure AD s certifikáty
-Tento článek probírá, jak používat rozhraní API pro generování sestav Azure AD s přihlašovacími údaji ve formě certifikátů k získání dat z adresářů bez zásahu uživatele. 
+# <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
-## <a name="use-the-azure-ad-reporting-api"></a>Použití rozhraní API pro vytváření sestav Azure AD 
-Rozhraní API pro vytváření sestav Azure AD vyžaduje, abyste provedli následující kroky:
- *  Požadavky na instalaci
- *  Nastavení certifikátu v aplikaci
- *  Získání přístupového tokenu
- *  Použití přístupového tokenu pro volání rozhraní Graph API
+[Rozhraní API pro generování sestav v Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů.
+
+Pokud chcete k rozhraní API pro generování sestav v Azure AD přistupovat bez zásahu uživatele, můžete svůj přístup nakonfigurovat, aby používal certifikáty.
+
+Tento článek:
+
+- Poskytuje požadované kroky pro přístup k rozhraní API pro generování sestav v Azure AD pomocí certifikátů.
+- Předpokládá, že jste dokončili [požadavky pro přístup k rozhraní API pro generování sestav v Azure Active Directory](active-directory-reporting-api-prerequisites-azure-portal.md). 
+
+
+Pro přístup k rozhraní API pro generování sestav pomocí certifikátů je potřeba:
+
+1. Instalace požadovaných součástí
+2. Nastavení certifikátu v aplikaci 
+3. Udělení oprávnění
+4. Získání přístupového tokenu
+
+
+
 
 Informace o zdrojovém kódu najdete v tématu popisujícím [využití modulu rozhraní API pro sestavy](https://github.com/AzureAD/azure-activedirectory-powershell/tree/gh-pages/Modules/AzureADUtils). 
 
-### <a name="install-prerequisites"></a>Požadavky na instalaci
+## <a name="install-prerequisites"></a>Požadavky na instalaci
+
 Musíte mít nainstalované Azure AD PowerShell verze 2 a modul AzureADUtils.
 
 1. Stáhněte a nainstalujte Azure AD PowerShell verze 2 podle pokynů pro [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md).
+
 2. Stáhněte modul Azure AD Utils z umístění [AzureAD/azure-activedirectory-powershell](https://github.com/AzureAD/azure-activedirectory-powershell/blob/gh-pages/Modules/AzureADUtils/AzureADUtils.psm1). 
   Tento modul poskytuje několik rutin nástrojů, jako jsou:
-   * Nejnovější verze ADAL pomocí Nugetu
-   * Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
-   * Rozhraní Graph API zpracovávající stránkové výsledky
+    - Nejnovější verze ADAL pomocí Nugetu
+    - Přístupové tokeny od uživatele, klíče aplikace a certifikáty pomocí ADAL
+    - Rozhraní Graph API zpracovávající stránkové výsledky
 
 **Instalace modulu Azure AD Utils:**
 
@@ -52,14 +66,17 @@ Relace by měla vypadat podobně jako tato obrazovka:
 
   ![Windows Powershell](./media/active-directory-report-api-with-certificates/windows-powershell.png)
 
-### <a name="set-the-certificate-in-your-app"></a>Nastavení certifikátu v aplikaci
-1. Pokud již máte aplikaci, získejte její ID objektu na webu Azure Portal. 
+## <a name="set-the-certificate-in-your-app"></a>Nastavení certifikátu v aplikaci
 
-  ![portál Azure](./media/active-directory-report-api-with-certificates/azure-portal.png)
+**K nastavení certifikátu v aplikaci:**
+
+1. [Získejte ID objektu](active-directory-reporting-api-prerequisites-azure-portal.md#get-your-applications-client-id) vaší aplikace z portálu Azure Portal. 
+
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/azure-portal.png)
 
 2. Otevřete relaci PowerShellu a připojte se ke službě Azure AD pomocí rutiny Connect-AzureAD.
 
-  ![portál Azure](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/connect-azuaread-cmdlet.png)
 
 3. Pomocí rutiny New-AzureADApplicationCertificateCredential z AzureADUtils do ni přidejte přihlašovací údaje ve formě certifikátu. 
 
@@ -68,28 +85,32 @@ Relace by měla vypadat podobně jako tato obrazovka:
 >
 
 
-  ![portál Azure](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
+  ![Azure Portal](./media/active-directory-report-api-with-certificates/add-certificate-credential.png)
   
-### <a name="get-an-access-token"></a>Získání přístupového tokenu
+## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
-Chcete-li získat přístupový token, použijte rutinu Get-AzureADGraphAPIAccessTokenFromCert z AzureADUtils. 
+Pokud chcete získat přístupový token, použijte rutinu **Get-AzureADGraphAPIAccessTokenFromCert** z AzureADUtils. 
 
 >[!NOTE]
 >Budete muset použít ID aplikace, místo ID objektu použitého v poslední části.
 >
 
- ![portál Azure](./media/active-directory-report-api-with-certificates/application-id.png)
+ ![Azure Portal](./media/active-directory-report-api-with-certificates/application-id.png)
 
-### <a name="use-the-access-token-to-call-the-graph-api"></a>Použití přístupového tokenu pro volání rozhraní Graph API
+## <a name="use-the-access-token-to-call-the-graph-api"></a>Použití přístupového tokenu pro volání rozhraní Graph API
 
-Nyní můžete vytvořit skript. Dále je uvedený příklad používající rutinu Invoke-AzureADGraphAPIQuery z AzureADUtils. Tato rutina zpracuje vícestránkové výsledky a pak tyto výsledky odešle do kanálu PowerShellu. 
+Teď můžete vytvořit skript. Dále je uvedený příklad používající rutinu **Invoke-AzureADGraphAPIQuery** z AzureADUtils. Tato rutina zpracuje vícestránkové výsledky a pak tyto výsledky odešle do kanálu PowerShellu. 
 
- ![portál Azure](./media/active-directory-report-api-with-certificates/script-completed.png)
+ ![Azure Portal](./media/active-directory-report-api-with-certificates/script-completed.png)
 
 Nyní jste připraveni k exportu do souboru CSV a jeho uložení do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
 
 ## <a name="next-steps"></a>Další kroky
-[Základy správy identit Azure](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)<br>
+
+- [Získejte představu o rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [Vytvořte vlastní řešení](active-directory-reporting-api-getting-started-azure-portal.md#customize)
+
 
 
 

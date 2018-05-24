@@ -1,25 +1,20 @@
 ---
-title: Ověřování pomocí protokolu RADIUS a Azure MFA Server | Dokumentace Microsoftu
-description: Toto je stránka Azure Multi-Factor Authentication, která vám pomůže při nasazení ověření RADIUS a serveru Azure Multi-Factor Authentication.
+title: Ověřování pomocí protokolu RADIUS a Azure MFA Server | Microsoft Docs
+description: Nasazení ověření služby RADIUS a serveru Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: f4ba0fb2-2be9-477e-9bea-04c7340c8bce
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.reviewer: alexwe
-ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 72456bd8b1e76760b9efd23e85aed3fc363d6709
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 4f61f1dedd8ddc984df89dbb7577b284c1da04f5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrace ověření služby RADIUS se serverem Azure Multi-Factor Authentication
 

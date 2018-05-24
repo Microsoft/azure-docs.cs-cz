@@ -7,7 +7,7 @@ author: cherylmc
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
-Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
+Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 30a2029fdf169747570d8c07915270ffae8ef8f5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 01052d8058d1b1e3a03f584ad66da2ad79f4c425
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-vpn-gateway"></a>Co je VPN Gateway?
 
@@ -28,9 +28,9 @@ Brána VPN je specifický typ brány virtuální sítě, která se používá k 
 
 ## <a name="whatis"></a>Co je brána virtuální sítě?
 
-Bránu virtuální sítě tvoří dva nebo více virtuálních počítačů nasazených v konkrétní podsíti, která se nazývá *podsíť brány*. Virtuální počítače, které se nachází v podsíti brány, se vytvoří při vytvoření brány virtuální sítě. Virtuální počítače brány virtuální sítě jsou nakonfigurovány tak, aby obsahovaly tabulky směrování a služby brány, které jsou pro bránu specifické. Virtuální počítače, které jsou součástí brány virtuální sítě, není možné konfigurovat přímo a do podsítě brány byste nikdy neměli nasazovat další prostředky.
+Bránu virtuální sítě tvoří nejméně dva virtuální počítače nasazené v konkrétní podsíti, kterou si vytvoříte. Tato brána se označuje jako *podsíť brány*. Virtuální počítače, které se nachází v podsíti brány, se vytvoří při vytvoření brány virtuální sítě. Virtuální počítače brány virtuální sítě jsou nakonfigurovány tak, aby obsahovaly tabulky směrování a služby brány, které jsou pro bránu specifické. Virtuální počítače, které jsou součástí brány virtuální sítě, není možné konfigurovat přímo a do podsítě brány byste nikdy neměli nasazovat další prostředky.
 
-Dokončení vytváření brány sítě VPN může trvat až 45 minut. Při vytvoření brány VPN se virtuální počítače brány nasadí do podsítě brány a nakonfigurují s použitím nastavení, které zadáte. Po vytvoření brány VPN můžete vytvořit tunelové propojení IPsec/IKE mezi touto bránou VPN a jinou bránou VPN (VNet-to-VNet) nebo tunelové propojení IPsec/IKE mezi místními sítěmi mezi bránou VPN a místním zařízením VPN (Site-to-Site). Můžete vytvořit také připojení VPN typu Point-to-Site (připojení VPN přes protokol IKEv2 nebo SSTP), které umožňuje připojení k virtuální síti ze vzdáleného umístění, například z konference nebo z domova.
+Vytvoření vytváření brány virtuální sítě může trvat až 45 minut. Při vytvoření brány virtuální sítě se virtuální počítače brány nasadí do podsítě brány a nakonfigurují s použitím nastavení, která zadáte. Jedním z nastavení, která konfigurujete, je typ brány. Typ brány „vpn“ určuje, že typem vytvořené brány virtuální sítě je brána VPN. Po vytvoření brány VPN můžete vytvořit tunelové propojení IPsec/IKE mezi touto bránou VPN a jinou bránou VPN (VNet-to-VNet) nebo tunelové propojení IPsec/IKE mezi místními sítěmi mezi bránou VPN a místním zařízením VPN (Site-to-Site). Můžete vytvořit také připojení VPN typu Point-to-Site (připojení VPN přes protokol IKEv2 nebo SSTP), které umožňuje připojení k virtuální síti ze vzdáleného umístění, například z konference nebo z domova.
 
 ## <a name="configuring"></a>Konfigurace služby VPN Gateway
 

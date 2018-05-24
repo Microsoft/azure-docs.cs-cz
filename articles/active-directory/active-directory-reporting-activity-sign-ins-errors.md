@@ -1,5 +1,5 @@
 ---
-title: Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory | Dokumentace Microsoftu
+title: Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory | Microsoft Docs
 description: Referenční informace ke kódům chyb v sestavě aktivit přihlašování.
 services: active-directory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/02/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ebad9304c38333173cec66c6b5574a9b45b17cd1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -67,14 +67,21 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50058|V zadaných přihlašovacích údajích nebyly nalezeny žádné informace o identitě uživatele nebo Uživatel nebyl nalezen v tenantovi nebo Byla odeslána žádost o přihlášení v tichém režimu, ale žádný uživatel není přihlášen nebo Službě se nepodařilo ověřit uživatele.|
 |50072|Uživatelé se musí zaregistrovat k druhému faktoru ověřování (interaktivní).|
 |50074|Uživatel neprošel ověřovacím testem MFA.|
+|50076|Uživatel neprošel ověřovacím testem MFA (neinteraktivním).|
 |50079|Uživatel se musí zaregistrovat k druhému faktoru ověřování.|
 |50089|Ověření tokenu toku se nezdařilo, protože platnost tokenu vypršela.|
 |50097|Zařízení není ověřeno.|
 |50105|Přihlášený uživatel není přiřazen k roli pro tuto aplikaci.|
+|50125|Přihlášení se přerušilo z důvodu resetování hesla nebo položky registrace hesla.|
 |50126|Neplatné uživatelské jméno nebo heslo nebo Neplatné místní uživatelské jméno nebo heslo.|
+|50127|Aby uživatel získal přístup k tomuto obsahu, musí si nainstalovat aplikaci zprostředkovatele.|
+|50129|Zařízení není připojené k pracovišti. Připojení k pracovišti je nezbytné, aby se zařízení mohlo zaregistrovat.|
 |50131|Používá se při různých chybách podmíněného přístupu. Např. špatný stav zařízení s Windows, zablokování požadavku z důvodu podezřelé aktivity nebo rozhodnutí zásad přístupu a zabezpečení.|
 |50133|Relace je neplatná z důvodu vypršení platnosti nebo nedávné změny hesla.|
+|50140|Uživateli se zobrazila výzva vyjádřit souhlas, aby mohl zůstat přihlášený k zařízení.|
 |50144|Vypršela platnost hesla uživatele pro Active Directory.|
+|53000|Zásady podmíněného přístupu vyžadují zařízení, které dodržuje předpisy, ale dané zařízení je nedodržuje.|
+|53003|Přístup se zablokoval kvůli zásadám podmíněného přístupu.|
 |65001|Aplikace X nemá oprávnění pro přístup k aplikaci Y nebo oprávnění bylo odvoláno. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. Nebo Uživatel nebo správce nevyjádřil souhlas s použitím aplikace s ID X. Odešlete správci tenanta žádost o autorizaci k jednání jménem aplikace Y pro prostředek Z.|
 |65005|Přístupový seznam požadovaných prostředků aplikace neobsahuje aplikace zjistitelné tímto prostředkem nebo Klientská aplikace požadovala přístup k prostředku, který nebyl zadán v jejím přístupovém seznamu požadovaných prostředků nebo Služba Graph vrátila chybnou žádost nebo prostředek nebyl nalezen.|
 |70001|Aplikace X nebyla nalezena v tenantovi Y. K tomu může dojít v případě, že aplikace nebyla nainstalována správcem tenanta nebo nebyla odsouhlasena žádným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta.|
@@ -98,8 +105,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |81013|Nepodařilo se najít objekt uživatele na základě informací v lístku Kerberos uživatele.|
 |90014|Používá se v různých případech, kdy v přihlašovacích údajích není přítomné očekávané pole.|
 |90093|Graph pro žádost vrátil kód chyby Zakázáno.|
-
-
+|90094|Vyžaduje se souhlas správce.|
 ## <a name="next-steps"></a>Další kroky
 
 Další podrobnosti najdete v tématu [Sestavy aktivit přihlašování na portálu Azure Active Directory](active-directory-reporting-activity-sign-ins.md).

@@ -1,11 +1,11 @@
 ---
-title: "Síťové služby pro škálovací sady virtuálních počítačů Azure | Dokumentace Microsoftu"
-description: "Konfigurace síťových vlastností pro škálovací sady virtuálních počítačů Azure."
+title: Síťové služby pro škálovací sady virtuálních počítačů Azure | Microsoft Docs
+description: Konfigurace síťových vlastností pro škálovací sady virtuálních počítačů Azure.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 27f1ec18026b38d5cdb2aecfde2d01f32a86349e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1db4c7ae78320eb08b2aa0b9da701d9678baf798
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Síťové služby pro škálovací sady virtuálních počítačů Azure
 
@@ -55,9 +55,28 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 
 ```
 
+## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Vytvoření škálovací sady, která odkazuje na aplikační bránu
+Pokud chcete vytvořit škálovací sadu, která používá aplikační bránu, odkažte v sekci ipConfigurations této škálovací sady na fond adres back-endu aplikační brány jako v této konfiguraci šablony ARM:
+```json
+"ipConfigurations": [{
+  "name": "{config-name}",
+  "properties": {
+  "subnet": {
+    "id": "{subnet-id}"
+  },
+  "ApplicationGatewayBackendAddressPools": [{
+    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/applicationGateways/{gateway-name}/backendAddressPools/{pool-name}"
+  }]
+}]
+```
+
+>[!NOTE]
+> Aplikační brána musí být ve stejné virtuální síti jako škálovací sada, ale v jiné podsíti než škálovací sada.
+
+
 ## <a name="configurable-dns-settings"></a>Konfigurovatelná nastavení DNS
 Ve výchozím nastavení škálovací sady přebírají konkrétní nastavení DNS virtuální sítě a podsítě, ve kterých byly vytvořeny. Nastavení DNS pro škálovací sadu ale můžete nakonfigurovat i přímo.
-~
+
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Vytvoření škálovací sady s konfigurovatelnými servery DNS
 Pokud chcete vytvořit škálovací sadu s vlastní konfigurací DNS pomocí CLI 2.0, přidejte do příkazu **vmss create** argument **--dns-servers** následovaný mezerami oddělenými IP adresami serverů. Příklad:
 ```bash
@@ -145,7 +164,7 @@ PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 
 Dotazovat veřejné IP adresy přiřazené k virtuálním počítačům ve škálovací sadě můžete pomocí [Azure Resource Exploreru](https://resources.azure.com) nebo rozhraní Azure REST API verze **2017-03-30** nebo vyšší.
 
-Pokud chcete zobrazit veřejné IP adresy pro škálovací sadu pomocí Resource Exploreru, podívejte se do části **publicipaddresses** v rámci vaší škálovací sady. Například: https://resources.azure.com/subscriptions/_id_vašeho_předplatného_/resourceGroups/_vaše_skupina_prostředků_/providers/Microsoft.Compute/virtualMachineScaleSets/_vaše_škálovací_sada_virtuálních_počítačů_/publicipaddresses
+Pokud chcete zobrazit veřejné IP adresy pro škálovací sadu pomocí Resource Exploreru, podívejte se do části **publicipaddresses** v rámci vaší škálovací sady. Příklad: https://resources.azure.com/subscriptions/_vaše_sub_id_/resourceGroups/_vaše_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_vaše_vmss_/publicipaddresses
 
 ```
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30

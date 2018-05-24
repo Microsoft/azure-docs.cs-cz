@@ -1,6 +1,6 @@
 ---
-title: Azure monitorování a aktualizace a virtuální počítače s Windows | Microsoft Docs
-description: Kurz – monitorovat a aktualizovat virtuální počítač Windows v prostředí Azure PowerShell
+title: Kurz – Monitorování a aktualizace virtuálních počítačů s Windows v Azure | Microsoft Docs
+description: V tomto kurzu se naučíte, jak monitorovat diagnostiku spouštění a metriky výkonu a jak spravovat aktualizace balíčků na virtuálním počítači s Windows.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -10,65 +10,83 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9f8f8cb7fd267e25c83ecceb98b5faa8848fb126
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
-ms.translationtype: MT
+ms.openlocfilehash: 9181d79e6eb0443a4607824cfde95068b509a917
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Monitorovat a aktualizovat virtuální počítač s Windows v prostředí Azure PowerShell
+# <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: Monitorování a aktualizace virtuálních počítačů s Windows v Azure
 
-Agenty Azure monitorování používá ke shromažďování dat spouštěcí a výkonu z virtuálních počítačů Azure, uložení dat této v úložišti Azure a zpřístupnit prostřednictvím portálu, modulu Azure PowerShell a rozhraní příkazového řádku Azure. Správa aktualizací můžete spravovat aktualizace a opravy pro virtuální počítače Windows Azure.
+Monitorování Azure prostřednictvím agentů shromažďuje data spouštění a výkonu z virtuálních počítačů Azure, ukládá tato data do úložiště Azure a zpřístupňuje je přes portál, modul Azure PowerShell a Azure CLI. Správa aktualizací umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Povolit Diagnostika spouštění na virtuálním počítači
+> * Povolení diagnostiky spouštění na virtuálním počítači
 > * Zobrazení diagnostiky spouštění
-> * Zobrazit metriky hostitele virtuálního počítače
-> * Instalace rozšíření diagnostiky
+> * Zobrazení metrik hostitele virtuálního počítače
+> * Instalace diagnostického rozšíření
 > * Zobrazení metrik virtuálního počítače
-> * Vytvořit výstrahu
-> * Správa aktualizací Windows
-> * Sledování změn a inventáře
+> * Vytvoření upozornění
+> * Správa aktualizací pro Windows
+> * Monitorování změn a inventáře
 > * Nastavení pokročilého monitorování
 
-Tento kurz vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby si ho můžete nechat vytvořit pomocí tohoto [ukázkového skriptu](../scripts/virtual-machines-windows-powershell-sample-create-vm.md). Při práci se prostřednictvím tohoto kurzu je nahradit skupinu prostředků, název virtuálního počítače a umístění tam, kde je potřeba.
+## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
+
+Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure. Nejdřív pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+
+```azurepowershell-interactive
+$cred = Get-Credential
+```
+
+Nyní vytvořte virtuální počítač pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří virtuální počítač s názvem *myVM* v umístění *EastUS*. Pokud ještě neexistuje, vytvoří se skupina prostředků *myResourceGroupMonitorMonitor* a podpůrné síťové prostředky:
+
+```azurepowershell-interactive
+New-AzureRmVm `
+    -ResourceGroupName "myResourceGroupMonitor" `
+    -Name "myVM" `
+    -Location "East US" `
+    -Credential $cred
+```
+
+Vytvoření prostředků a virtuálního počítače trvá několik minut.
 
 ## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
 
-Jak spustit virtuální počítače s Windows, zaznamená agenta pro diagnostiku spouštěcí obrazovky výstupu, který lze použít pro účely odstraňování potíží. Tato funkce je ve výchozím nastavení povolené. Snímky obrazovky zaznamenané jsou uložené v účtu úložiště Azure, který se také vytvoří ve výchozím nastavení.
+Při spouštění virtuálních počítačů s Windows zachytí agent diagnostiky spouštění výstup na obrazovce, který můžete použít pro účely řešení potíží. Tato funkce je ve výchozím nastavení zapnuta. Zachycené snímky obrazovky se ukládají do účtu úložiště Azure, které se vytvoří také ve výchozím nastavení.
 
-Můžete získat spouštění diagnostiky dat pomocí [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata) příkaz. V následujícím příkladu se Diagnostika spouštění stáhnou do kořenového adresáře * c:\* jednotky.
+Diagnostická data spouštění můžete získat pomocí příkazu [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata). V následujícím příkladu se diagnostika spouštění stáhne do kořenové složky na jednotce *c:\*.
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup -Name myVM -Windows -LocalPath "c:\"
+Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
 ## <a name="view-host-metrics"></a>Zobrazení metrik hostitele
 
-Virtuální počítač s Windows má vyhrazený virtuální počítač hostitele v Azure, který komunikuje se službou. Metriky jsou automaticky shromažďovat pro hostitele a lze je zobrazit na portálu Azure.
+Virtuální počítač s Windows má vyhrazený virtuální počítač hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal.
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
-2. Klikněte na tlačítko **metriky** v okně virtuálního počítače a potom vyberte některé z metriky hostitele pod **dostupné metriky** zobrazíte, jaký je výkon hostitele virtuálního počítače.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+2. Pokud chcete zjistit, jaký je výkon virtuálního počítače hostitele, klikněte na **Metriky** v okně virtuálního počítače a potom vyberte některou z metrik hostitele v části **Dostupné metriky**.
 
     ![Zobrazení metrik hostitele](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
 ## <a name="install-diagnostics-extension"></a>Instalace diagnostického rozšíření
 
-Metriky základní hostitele jsou dostupné, ale podrobnější a metriky specifické pro virtuální počítač, budete muset nainstalovat rozšíření diagnostiky Azure ve virtuálním počítači. Diagnostické rozšíření Azure umožňuje načítání dalších monitorovacích a diagnostických dat z virtuálního počítače. Tyto metriky výkonu můžete zobrazit a vytvářet výstrahy na základě výkonnosti virtuálního počítače. Diagnostické rozšíření se instaluje prostřednictvím portálu Azure Portal následujícím způsobem:
+K dispozici máte základní metriky hostitele, ale pokud chcete zobrazit podrobné metriky specifické pro virtuální počítač, musíte na virtuální počítač nainstalovat diagnostické rozšíření Azure. Diagnostické rozšíření Azure umožňuje načítání dalších monitorovacích a diagnostických dat z virtuálního počítače. Tyto metriky výkonu můžete zobrazit a vytvářet výstrahy na základě výkonnosti virtuálního počítače. Diagnostické rozšíření se instaluje prostřednictvím portálu Azure Portal následujícím způsobem:
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 2. Klikněte na **Nastavení diagnostiky**. V seznamu je vidět, že *Diagnostika spouštění* je již povolená z předchozí části. Zaškrtněte políčko *Základní metriky*.
-3. Klikněte **povolit sledování na úrovni hosta** tlačítko.
+3. Klikněte na tlačítko **Povolit monitorování na úrovni hosta**.
 
     ![Zobrazení diagnostických metrik](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
@@ -76,7 +94,7 @@ Metriky základní hostitele jsou dostupné, ale podrobnější a metriky specif
 
 Metriky virtuálního počítače lze zobrazit stejným způsobem jako metriky virtuálního počítače hostitele:
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 2. Pokud chcete zjistit, jaký je výkon virtuálního počítače, klikněte na tlačítko **Metriky** v okně virtuálního počítače a pak vyberte některou z diagnostických metrik v části **Dostupné metriky**.
 
     ![Zobrazení metrik virtuálního počítače](./media/tutorial-monitoring/monitor-vm-metrics.png)
@@ -87,23 +105,23 @@ Na základě konkrétních metrik výkonu můžete vytvořit výstrahy. Výstrah
 
 Následující příklad vytvoří výstrahu týkající se průměrného využití procesoru.
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
+1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
 2. Klikněte na tlačítko **Pravidla výstrah** v okně virtuálního počítače a potom na **Přidat upozornění metriky** v horní části okna výstrahy.
 3. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
 4. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
 5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
 6. Klikněte na tlačítko **OK**.
 
-## <a name="manage-windows-updates"></a>Správa aktualizací Windows
+## <a name="manage-windows-updates"></a>Správa aktualizací pro Windows
 
-Správa aktualizací můžete spravovat aktualizace a opravy pro virtuální počítače Windows Azure.
+Správa aktualizací umožňuje spravovat aktualizace a opravy pro virtuální počítače Azure s Windows.
 Přímo z virtuálního počítače můžete rychle vyhodnotit stav dostupných aktualizací, naplánovat instalaci požadovaných aktualizací a zkontrolovat výsledky nasazení za účelem ověření správného použití aktualizací ve virtuálních počítačích.
 
 Informace o cenách najdete na stránce s [cenami služby Automation za správu aktualizací](https://azure.microsoft.com/pricing/details/automation/).
 
 ### <a name="enable-update-management"></a>Povolení řešení Update Management
 
-Povolení správy aktualizací pro virtuální počítač:
+Povolení řešení Update Management pro virtuální počítač:
 
 1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
@@ -135,7 +153,7 @@ Povolení řešení může trvat až 15 minut. Během této doby byste neměli z
 
 ### <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
-Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací**. Po dokončení vyhodnocení aktualizace uvidíte seznam chybějících aktualizací na **chybějící aktualizace** kartě.
+Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizací**. Po vyhodnocení aktualizací se na kartě **Chybějící aktualizace** zobrazí seznam chybějících aktualizací.
 
  ![Zobrazení stavu aktualizace](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
@@ -167,7 +185,7 @@ Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit** a 
 Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, který jste vytvořili.
 
 > [!WARNING]
-> Aktualizace, které vyžadují restartování je virtuální počítač automaticky restartuje.
+> V případě aktualizací, které vyžadují restartování, se virtuální počítač restartuje automaticky.
 
 ### <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 
@@ -191,46 +209,46 @@ Kliknutím na dlaždici **Výstup** zobrazíte datový proud úlohy runbooku zod
 
 Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách nasazení.
 
-## <a name="monitor-changes-and-inventory"></a>Sledování změn a inventáře
+## <a name="monitor-changes-and-inventory"></a>Monitorování změn a inventáře
 
 Můžete shromažďovat a zobrazovat inventář softwaru, souborů, linuxových procesů démon, služeb systému Windows a klíčů registru Windows na vašich počítačích. Sledování konfigurací vašich počítačů vám může pomoci přesně identifikovat provozní problémy napříč prostředím a lépe porozumět stavu vašich počítačů.
 
-### <a name="enable-change-and-inventory-management"></a>Správu povolit změn a inventáře
+### <a name="enable-change-and-inventory-management"></a>Povolení správy změn a inventáře
 
-Povolit změnu a inventáře správy pro virtuální počítač:
+Povolení správy změn a inventáře pro virtuální počítač:
 
 1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na obrazovce virtuálních počítačů v **operace** klikněte na tlačítko **inventáře** nebo **sledování změn**. **Povolit sledování změn a inventáře** obrazovky otevře.
+3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Inventory** nebo **Change Tracking**. Otevře se obrazovka **Povolit řešení Change Tracking a Inventory**.
 
-Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. Eventhough řešení jsou oddělené v nabídce, jsou stejné řešení. Povolení jeden umožňuje pro virtuální počítač.
+Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
 
-![Povolit změnu a sledování inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
+![Povolení sledování změn a inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
 
-Po řešení může trvat nějakou dobu inventáře jsou shromažďována ve virtuálním počítači, než se data zobrazí.
+Po povolení řešení může shromažďování soupisu na virtuálním počítači nějakou dobu trvat, a až pak se zobrazí data.
 
-### <a name="track-changes"></a>Sledovat změny
+### <a name="track-changes"></a>Sledování změn
 
-Na váš počítač vyberte **sledování změn** pod **operace**. Klikněte na tlačítko **upravit nastavení**, **sledování změn** zobrazí se stránka. Vyberte typ nastavení, které chcete sledovat a pak klikněte na tlačítko **+ přidat** ke konfiguraci nastavení. Jsou k dispozici možnosti pro Windows:
+Na svém virtuálním počítači v části **OPERACE** vyberte **Sledování změn**. Klikněte na **Upravit nastavení** a zobrazí se stránka **Change Tracking**. Vyberte typ nastavení, které chcete sledovat, a kliknutím na **+ Přidat** nakonfigurujte nastavení. Dostupné možnosti pro Windows:
 
-* Registru systému Windows
-* Soubory systému Windows
+* Registr Windows
+* Soubory Windows
 
-Podrobné informace o sledování změn naleznete v tématu [řešení změny na virtuálním počítači](../../automation/automation-tutorial-troubleshoot-changes.md)
+Podrobné informace o řešení Change Tracking najdete v tématu [Řešení potíží se změnami na virtuálním počítači](../../automation/automation-tutorial-troubleshoot-changes.md).
 
 ### <a name="view-inventory"></a>Zobrazení inventáře
 
-Na váš počítač vyberte **inventáře** pod **operace**. Na kartě **Software** je tabulkový seznam nalezeného softwaru. V tabulce jsou zobrazené základní podrobnosti o jednotlivých záznamech softwaru. Tyto informace zahrnují softwaru název, verze, vydavatel, čas posledního aktualizovat.
+Na svém virtuálním počítači v části **OPERACE** vyberte **Soupis**. Na kartě **Software** je tabulkový seznam nalezeného softwaru. V tabulce jsou zobrazené základní podrobnosti o jednotlivých záznamech softwaru. Mezi tyto podrobnosti patří název softwaru, verze, vydavatel a čas poslední aktualizace.
 
 ![Zobrazení inventáře](./media/tutorial-monitoring/inventory-view-results.png)
 
-### <a name="monitor-activity-logs-and-changes"></a>Sledování protokolů aktivit a změn
+### <a name="monitor-activity-logs-and-changes"></a>Monitorování protokolů aktivit a změn
 
 Na stránce **Change Tracking** na vašem virtuálním počítači vyberte **Správa připojení protokolu aktivit**. Tato úloha otevře stránku **Protokol aktivit Azure**. Vyberte **Připojit** a propojte řešení Change Tracking s protokolem aktivit Azure pro váš virtuální počítač.
 
 Když je toto nastavení povolené, přejděte na stránku **Přehled** vašeho virtuálního počítače a výběrem **Zastavit** virtuální počítač zastavte. Po zobrazení výzvy vyberte **Ano** a zastavte virtuální počítač. Až bude přidělení vašeho virtuálního počítače zrušeno, vyberte **Spustit** a restartujte ho.
 
-Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku **Change Tracking**. Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Chcete-li zobrazit podrobné informace o události lze vybrat všechny události.
+Zastavení a spuštění virtuálního počítače zapíše tuto událost do jeho protokolu aktivit Vraťte se na stránku **Change Tracking**. Vyberte **Události** v dolní části stránky. Po chvíli se události zobrazí v grafu a tabulce. Každou událost je možné vybrat a zobrazit o ní podrobné informace.
 
 ![Zobrazení změn v protokolu aktivit](./media/tutorial-monitoring/manage-activitylog-view-results.png)
 
@@ -238,47 +256,47 @@ Tento graf ukazuje změny, ke kterým došlo v průběhu času. Po přidání p�
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-Můžete provést rozšířené monitorování vašeho virtuálního počítače pomocí řešení, jako jsou Správa aktualizací a změn a inventáře poskytované [Azure Automation](../../automation/automation-intro.md).
+K pokročilejšímu monitorování virtuálního počítače můžete použít řešení, jako jsou Update Management, Change Tracking a Inventory, která poskytuje [Azure Automation](../../automation/automation-intro.md).
 
-Až budete mít přístup k pracovnímu prostoru analýzy protokolů, můžete najít klíč pracovního prostoru a identifikátor prostoru na výběrem **upřesňující nastavení** pod **nastavení**. Použití [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) příkaz pro přidání rozšíření Microsoft Monitoring agent do virtuálního počítače. Aktualizace hodnoty proměnné v níže ukázka tak, aby odrážela jste klíč pracovního prostoru analýzy protokolů a prostoru ID.
+Pokud máte přístup k pracovnímu prostoru Log Analytics, můžete výběrem možnosti **Upřesnit nastavení** v části **NASTAVENÍ** zjistit klíč a identifikátor pracovního prostoru. Pomocí příkazu [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) přidejte na virtuální počítač rozšíření Microsoft Monitoring Agent. Aktualizujte hodnoty proměnných v níže uvedené ukázce pomocí svého klíče a ID pracovního prostoru Log Analytics.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
 $key = "<Replace with your primary key>"
 
-Set-AzureRmVMExtension -ResourceGroupName myResourceGroup `
+Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
-  -VMName myVM `
+  -VMName "myVM" `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
   -ExtensionType "MicrosoftMonitoringAgent" `
   -TypeHandlerVersion 1.0 `
   -Settings @{"workspaceId" = $workspaceId} `
   -ProtectedSettings @{"workspaceKey" = $key} `
-  -Location eastus
+  -Location "East US"
 ```
 
-Po několika minutách měli byste vidět nový virtuální počítač v pracovním prostoru Anaytics protokolu.
+Po několika minutách by se nový počítač měl zobrazit v pracovním prostoru Log Analytics.
 
 ![Okno OMS](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali a zkontrolovat virtuálních počítačů pomocí Azure Security Center. Naučili jste se tyto postupy:
+V tomto kurzu jste nakonfigurovali a zkontrolovali virtuální počítače ve službě Azure Security Center. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě
-> * Vytvoření skupiny prostředků a virtuálních počítačů
+> * Vytvoření skupiny prostředků a virtuálního počítače
 > * Povolení diagnostiky spouštění ve virtuálním počítači
 > * Zobrazení diagnostiky spouštění
 > * Zobrazení metrik hostitele
-> * Instalace rozšíření diagnostiky
+> * Instalace diagnostického rozšíření
 > * Zobrazení metrik virtuálního počítače
-> * Vytvořit výstrahu
-> * Správa aktualizací Windows
-> * Sledování změn a inventáře
+> * Vytvoření upozornění
+> * Správa aktualizací pro Windows
+> * Monitorování změn a inventáře
 > * Nastavení pokročilého monitorování
 
-Přechodu na v dalším kurzu se dozvíte o službě Azure security center.
+V dalším kurzu se dozvíte něco o službě Azure Security Center.
 
 > [!div class="nextstepaction"]
 > [Správa zabezpečení virtuálních počítačů](./tutorial-azure-security.md)

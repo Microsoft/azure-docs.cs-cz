@@ -658,6 +658,17 @@
       href: service-fabric-cluster-fabric-settings.md
     - name: Schéma XML modelu služeb
       href: service-fabric-service-model-schema.md
+      items:
+        - name: Elementy
+          href: service-fabric-service-model-schema-elements.md
+        - name: Komplexní typy
+          href: service-fabric-service-model-schema-complex-types.md
+        - name: Skupiny atributů
+          href: service-fabric-service-model-schema-attribute-groups.md
+        - name: Jednoduché typy
+          href: service-fabric-service-model-schema-simple-types.md
+        - name: Skupiny elementů
+          href: service-fabric-service-model-schema-element-groups.md
     - name: Proměnné prostředí
       href: service-fabric-environment-variables-reference.md
 - name: Zdroje a prostředky

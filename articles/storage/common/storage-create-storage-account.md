@@ -1,5 +1,5 @@
 ---
-title: Jak vytvořit, spravovat nebo odstranit účet úložiště na webu Azure Portal | Dokumentace Microsoftu
+title: Jak vytvořit, spravovat nebo odstranit účet úložiště na webu Azure Portal | Microsoft Docs
 description: Přečtěte si, jak vytvořit nový účet úložiště, spravovat klíče pro přístup k účtu nebo odstranit účet na webu Azure Portal. Získejte informace o účtech úložiště Standard a Premium.
 services: storage
 documentationcenter: ''
@@ -16,11 +16,11 @@ f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="about-azure-storage-accounts"></a>Informace o účtech Azure Storage
 
@@ -47,13 +47,13 @@ Každý objekt, který uložíte v úložišti Azure Storage, má jedinečnou ad
 
 Pokud je například název účtu úložiště *můj_účet_úložiště*, pak jsou výchozí koncové body pro váš účet úložiště tyto:
 
-* Služba Blob service: http://*můj_účet_úložiště*.blob.core.windows.net
-* Služba Table: http://*můj_účet_úložiště*.table.core.windows.net
+* Blob service: http://*můj_účet_úložiště*.blob.core.windows.net
+* Služba Table service: http://*můj_účet_úložiště*.table.core.windows.net
 * Služba front: http://*můj_účet_úložiště*.queue.core.windows.net
 * Služba souborů: http://*můj_účet_úložiště*.file.core.windows.net
 
 > [!NOTE]
-> Účet úložiště Blob Storage zpřístupňuje pouze koncový bod Služby objektů Blob.
+> Účet úložiště Blob Storage zpřístupňuje pouze koncový bod služby Blob service.
 > 
 > 
 
@@ -80,7 +80,7 @@ Můžete také nakonfigurovat vlastní název domény, který budete chtít se s
 
 5. Vyberte typ účtu úložiště: **pro obecné účely** nebo **Blob Storage**. Ve výchozím nastavení je vybraný účet **pro obecné účely**.
    
-    Pokud je vybraný typ **pro obecné účely**, zadejte úroveň výkonu: **Standard** nebo **Premium**. Výchozí nastavení je **Standard**. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](storage-introduction.md) a [Storage úrovně Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
+    Pokud je vybraný typ **pro obecné účely**, zadejte úroveň výkonu: **Standard** nebo **Premium**. Výchozí nastavení je **Standard**. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do Microsoft Azure Storage](storage-introduction.md) a [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../../virtual-machines/windows/premium-storage.md).
    
     Pokud bylo vybráno úložiště **Blob Storage**, zadejte úrovně přístupu: **Hot** nebo **Cool**. Výchozí hodnota je **Hot**. Další podrobnosti najdete v tématu [Azure Blob Storage: úrovně Cool a Hot](../blobs/storage-blob-storage-tiers.md).
 6. Vyberte možnost replikace pro účet úložiště: **LRS**, **GRS**, **RA-GRS** nebo **ZRS**. Výchozí hodnota je **RA-GRS**. Další informace o možnostech replikace pro Azure Storage najdete v tématu [Replikace Azure Storage](storage-redundancy.md).
@@ -141,7 +141,7 @@ Pokud chcete odebrat účet úložiště, který už nepoužíváte, přejděte 
 > Odstraněný účet úložiště není možné obnovit ani není možné načíst žádný obsah, který byl součástí účtu před jeho odstraněním. Nezapomeňte si před odstraněním účtu zazálohovat všechno, co chcete uložit. To platí také pro všechny prostředky v rámci účtu – po odstranění jsou objekt blob, tabulka, fronta nebo soubor odstraněny trvale.
 > 
 
-Pokud se pokusíte odstranit účet úložiště, který je přidružený virtuálnímu počítači Azure, můžete obdržet chybu, že se účet úložiště stále používá. Pomoc při odstraňování potíží s touto chybou najdete v tématu popisujícím [řešení chyb při odstraňování účtů úložiště](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md).
+Pokud se pokusíte odstranit účet úložiště, který je přidružený virtuálnímu počítači Azure, můžete obdržet chybu, že se účet úložiště stále používá. Pomoc při odstraňování potíží s touto chybou najdete v tématu popisujícím [řešení potíží s disky připojenými k virtuálním počítačům Azure](../blobs/storage-troubleshoot-vhds.md).
 
 ## <a name="next-steps"></a>Další kroky
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

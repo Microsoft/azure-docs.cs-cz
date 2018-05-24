@@ -7,13 +7,13 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/01/2018
+ms.date: 04/24/2018
 ms.author: daredis
-ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpečení služby Azure SQL Database
 
@@ -106,7 +106,7 @@ Pokud chcete zajistit zabezpečené a šifrované připojení mezi klientskou ap
 - Vyžadoval šifrované připojení
 - Nedůvěřoval certifikátu serveru 
 
-Tím se naváže připojení pomocí protokolu TLS (Transport Layer Security) a sníží riziko napadení útočníky, kteří se vydávají za prostředníky. Správně nakonfigurované připojovací řetězce pro vaši službu SQL Database pro podporované ovladače klienta můžete získat z webu Azure Portal, jak je znázorněno na tomto snímku obrazovky pro ADO.NET.
+Tím se naváže připojení pomocí protokolu TLS (Transport Layer Security) a sníží riziko napadení útočníky, kteří se vydávají za prostředníky. Správně nakonfigurované připojovací řetězce pro vaši službu SQL Database pro podporované ovladače klienta můžete získat z webu Azure Portal, jak je znázorněno na tomto snímku obrazovky pro ADO.NET. Informace o protokolu TLS a možnostech připojení najdete v části věnované [důležitým informacím o protokolu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
 1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi.
 
