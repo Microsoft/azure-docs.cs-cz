@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 5fa5c6708f3b0b0319bd669be7f9c897f095b6e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: aa85f06355ad5afc8e67ff4bace3b0ed471dc703
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204188"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace mapy služeb v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ji zobrazit vaše servery co možná z nich – jako vzájemně propojena systémy, které doručují důležité služby. Mapy služeb zobrazí připojení mezi servery, procesy a porty mezi všechny architektura připojení TCP se žádná konfigurace vyžaduje, než instalace agenta.
 
 Tento článek popisuje podrobnosti konfigurace agentů mapy služeb a registrace. Informace o používání mapy služeb najdete v tématu [pomocí mapy služeb řešení v Azure]( monitoring-service-map.md).
 
-## <a name="dependency-agent-downloads"></a>Agent služby Dependency soubory ke stažení
+## <a name="dependency-agent-downloads"></a>Soubory závislého agenta ke stažení
 | File | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
@@ -33,22 +34,22 @@ Tento článek popisuje podrobnosti konfigurace agentů mapy služeb a registrac
 
 
 ## <a name="connected-sources"></a>Připojené zdroje
-Mapa služeb získává data od agenta nástroje Microsoft závislostí. Agent závislostí závisí na agenta OMS pro připojení k analýze protokolů. To znamená, že server musí mít agenta OMS nainstalovaný a nakonfigurovaný nejprve a pak může být nainstalován Agent závislostí. Následující tabulka popisuje připojených zdrojů, které podporuje řešení mapy služeb.
+Mapa služeb získává data od agenta nástroje Microsoft závislostí. Připojení tohoto závislého agenta ke službě Log Analytics zajišťuje agent sady OMS. To znamená, že server musí mít agenta OMS nainstalovaný a nakonfigurovaný nejprve a pak může být nainstalován Agent závislostí. Následující tabulka popisuje připojených zdrojů, které podporuje řešení mapy služeb.
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Mapa služeb analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br>Kromě [agenta OMS](../log-analytics/log-analytics-windows-agent.md), Agent služby Microsoft Dependency vyžadují agentů v systému Windows. Najdete v článku [podporované operační systémy](#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Agenti systému Linux | Ano | Mapa služeb analyzuje a shromažďuje data z počítače se systémem Linux agent. <br><br>Kromě [agenta OMS](../log-analytics/log-analytics-linux-agents.md), agenty Linux vyžadují Microsoft Agent závislostí. Najdete v článku [podporované operační systémy](#supported-operating-systems) úplný seznam verzí operačního systému. |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Mapa služeb analyzuje a shromažďuje data z agentů systému Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Je nutné přímé připojení z počítače agenta System Center Operations Manager k analýze protokolů. Do pracovního prostoru analýzy protokolů se předají data ze skupiny pro správu.|
+| Agenti systému Windows | Ano | Mapa služeb analyzuje a shromažďuje data z počítače se systémem Windows agenta. <br><br>Agenti systému Windows vyžadují kromě [agenta sady OMS](../log-analytics/log-analytics-windows-agent.md) také závislého agenta Microsoft. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Mapa služeb analyzuje a shromažďuje data z počítače se systémem Linux agent. <br><br>Agenti systému Linux vyžadují kromě [agenta sady OMS](../log-analytics/log-analytics-linux-agents.md) také závislého agenta Microsoft. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Mapa služeb analyzuje a shromažďuje data z agentů systému Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../log-analytics/log-analytics-om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. Do pracovního prostoru analýzy protokolů se předají data ze skupiny pro správu.|
 | Účet služby Azure Storage | Ne | Mapy služeb shromažďuje data z počítačů agentů, takže není žádná data z něj shromažďovat ze služby Azure Storage. |
 
 Mapa služeb podporuje pouze 64bitové platformy.
 
-V systému Windows, Microsoft Monitoring Agent (MMA) se používá System Center Operations Manager a analýzy protokolů pro shromažďování a odesílání dat monitorování. (Tomuto agentovi, se nazývá agenta System Center Operations Manager, OMS Agent, Agent analýzy protokolů, MMA nebo přímé agenta, v závislosti na kontextu.) System Center Operations Manager a analýzy protokolů poskytují různé na více systémů v poli verze MMA. Tyto verze lze každou sestavu System Center Operations Manager, analýzy protokolů nebo do obou.  
+V systému Windows, Microsoft Monitoring Agent (MMA) se používá System Center Operations Manager a analýzy protokolů pro shromažďování a odesílání dat monitorování. (Tomuto agentovi, se nazývá agenta System Center Operations Manager, OMS Agent, Agent analýzy protokolů, MMA nebo přímé agenta, v závislosti na kontextu.) System Center Operations Manager a analýzy protokolů poskytují různé na více systémů v poli verze MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.  
 
 V systému Linux, OMS agenta pro Linux shromáždí a odesílá data k analýze protokolů monitorování. Mapa služeb můžete použít na serverech s agenty přímé OMS nebo na servery, které jsou připojené k analýze protokolů prostřednictvím skupin pro správu System Center Operations Manager.  
 
-V tomto článku budeme označovat všechny agenty – jestli Linux nebo Windows, zda připojené ke skupině pro správu System Center Operations Manager nebo přímo k Log Analytics – jako "OMS Agent." Název konkrétní nasazení agenta použijeme jenom v případě, že je potřeba pro kontext.
+V tomto článku budeme označovat všechny agenty – jestli Linux nebo Windows, zda připojené ke skupině pro správu System Center Operations Manager nebo přímo k Log Analytics – jako "OMS Agent." Konkrétní název nasazení agenta použijeme jen v případě, kdy to bude zapotřebí kvůli kontextu.
 
 Mapa služeb agenta nepřenáší samotná data a nevyžaduje žádné změny brány firewall nebo porty. Data v mapy služeb vždy přenášená agentem OMS k analýze protokolů, buď přímo nebo prostřednictvím brány OMS.
 
@@ -62,45 +63,45 @@ Pokud jste zákazník s System Center Operations Manager s skupiny pro správu p
 Pokud používáte přímé agenta OMS, musíte nakonfigurovat agenta OMS připojit se k analýze protokolů nebo k bráně OMS. Bránu OMS si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ### <a name="management-packs"></a>Sady Management Pack
-Po aktivaci mapy služeb v pracovním prostoru analýzy protokolů 300 KB management pack je odeslány na všechny servery Windows v něm. Pokud používáte System Center Operations Manager agentů v [připojené skupiny pro správu](../log-analytics/log-analytics-om-agents.md), z System Center Operations Manager je nasazena sada management pack mapy služeb. Pokud jsou připojeny přímo agentů, analýzy protokolů přináší sadu management pack.
+Po aktivaci mapy služeb v pracovním prostoru analýzy protokolů 300 KB management pack je odeslány na všechny servery Windows v něm. Pokud používáte System Center Operations Manager agentů v [připojené skupiny pro správu](../log-analytics/log-analytics-om-agents.md), z System Center Operations Manager je nasazena sada management pack mapy služeb. Pokud jsou agenti připojení přímo, doručí sadu Management Pack služba Log Analytics.
 
-Sada management pack je s názvem Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management Packs\. Zdroje dat, který používá sada management pack je % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources\<AutoGeneratedID > \Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management Packs\. Zdroje dat, který používá sada management pack je % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources\<AutoGeneratedID > \Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="installation"></a>Instalace
 ### <a name="install-the-dependency-agent-on-microsoft-windows"></a>Instalace agenta závislostí v systému Microsoft Windows
-Pro instalaci nebo odinstalaci agenta jsou vyžadována oprávnění správce.
+K instalaci a odinstalaci tohoto agenta se vyžadují oprávnění správce.
 
-Na počítačích s Windows pomocí InstallDependencyAgent Windows.exe je nainstalován Agent nástroje závislostí. Pokud spustíte tento spustitelný soubor, bez jakékoli možnosti, spustí průvodce, který vám pomůžou při interaktivní instalaci.  
+Na počítačích s Windows pomocí InstallDependencyAgent Windows.exe je nainstalován Agent nástroje závislostí. Pokud tento spustitelný soubor spustíte bez jakýchkoli parametrů, spustí se průvodce interaktivní instalací.  
 
 Nainstalujte agenta závislost na každém počítači s Windows pomocí následujících kroků:
 
 1.  Nainstalovat agenta OMS pomocí pokynů v [počítače se systémem Windows se připojit ke službě Analýza protokolů v Azure](../log-analytics/log-analytics-windows-agent.md).
 2.  Stáhnout agenta pro Windows a spusťte jej pomocí následujícího příkazu: <br>`InstallDependencyAgent-Windows.exe`
-3.  Postupujte podle pokynů průvodce k instalaci agenta.
-4.  Pokud Agent služby Dependency se nepodaří spustit, zkontrolujte protokoly podrobné informace o chybě. Na agenty se systémem Windows k adresáři protokolu není %Programfiles%\Microsoft Agent\logs závislostí. 
+3.  Pomocí průvodce agenta nainstalujte.
+4.  Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. Na agenty se systémem Windows k adresáři protokolu není %Programfiles%\Microsoft Agent\logs závislostí. 
 
-#### <a name="windows-command-line"></a>Příkazový řádek systému Windows
-Nainstalujte z příkazového řádku pomocí možnosti z v následující tabulce. Pokud chcete zobrazit seznam příznaky instalace, spusťte instalační program pomocí /? Příznak následujícím způsobem.
+#### <a name="windows-command-line"></a>Příkazový řádek Windows
+K instalaci z příkazového řádku použijte parametry z následující tabulky. Spuštěním instalačního programu s následujícím parametrem /? zobrazíte seznam parametrů instalace.
 
     InstallDependencyAgent-Windows.exe /?
 
 | Příznak | Popis |
 |:--|:--|
-| /? | Získejte seznam možností příkazového řádku. |
-| /S | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
+| /? | Získá seznam parametrů příkazového řádku. |
+| /S | Provede tichou instalaci bez zobrazení výzev uživateli. |
 
-Soubory pro Windows Agent závislosti jsou umístěny v Agent služby Dependency C:\Program Files\Microsoft ve výchozím nastavení.
+Soubory závislého agenta pro Windows jsou standardně umístěné zde: C:\Program Files\Microsoft Dependency Agent.
 
-### <a name="install-the-dependency-agent-on-linux"></a>Nainstalujte agenta závislostí v systému Linux
-Kořenový přístup je nutný k instalaci nebo konfiguraci agenta.
+### <a name="install-the-dependency-agent-on-linux"></a>Instalace závislého agenta v Linuxu
+K instalaci nebo konfiguraci tohoto agenta se vyžaduje přístup uživatele root.
 
-Agent závislostí je nainstalován na počítače se systémem Linux prostřednictvím InstallDependencyAgent-Linux64.bin, skript prostředí s samorozbalující binární. Můžete spustit soubor s použitím dílet nebo přidat oprávnění ke samotném souboru.
+Závislý agent se do linuxových počítačů instaluje příkazem InstallDependencyAgent-Linux64.bin, což je skript prostředí se samorozbalovacím binárním souborem. Můžete spustit soubor s použitím dílet nebo přidat oprávnění ke samotném souboru.
  
-Použijte následující kroky pro instalaci agenta závislost na každý počítač se systémem Linux:
+Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Linuxem:
 
 1.  Nainstalovat agenta OMS pomocí pokynů v [shromažďování a správě dat z počítače se systémem Linux](https://technet.microsoft.com/library/mt622052.aspx).
 2.  Nainstalujte agenta závislostí Linux jako kořenového adresáře pomocí následujícího příkazu:<br>`sh InstallDependencyAgent-Linux64.bin`
-3.  Pokud Agent služby Dependency se nepodaří spustit, zkontrolujte protokoly podrobné informace o chybě. V agentech Linux k adresáři protokolu není /var/opt/microsoft/dependency-agent/log.
+3.  Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. V agentech Linux k adresáři protokolu není /var/opt/microsoft/dependency-agent/log.
 
 Chcete-li zobrazit seznam instalace příznaky, spustit instalaci programu-pomoci příznak následujícím způsobem.
 
@@ -108,24 +109,24 @@ Chcete-li zobrazit seznam instalace příznaky, spustit instalaci programu-pomoc
 
 | Příznak | Popis |
 |:--|:--|
-| – Nápověda | Získejte seznam možností příkazového řádku. |
-| -s | Proveďte bezobslužnou instalaci s žádné uživatelské výzvy. |
-| – Zkontrolujte | Zkontrolujte oprávnění a operační systém, ale není nainstalovaný agent. |
+| – Nápověda | Získá seznam parametrů příkazového řádku. |
+| -s | Provede tichou instalaci bez zobrazení výzev uživateli. |
+| – Zkontrolujte | Zkontroluje oprávnění a operační systém bez instalace agenta. |
 
-Soubory pro agenta závislosti jsou umístěny v adresáři pro následující:
+Soubory závislého agenta se nacházejí v následujících adresářích:
 
 | Soubory | Umístění |
 |:--|:--|
-| Soubory jádra | /OPT/Microsoft/Dependency-Agent |
-| Soubory protokolu | /var/OPT/Microsoft/Dependency-Agent/log |
-| Konfigurační soubory | /ETC/OPT/Microsoft/Dependency-Agent/config |
-| Služby spustitelné soubory | /OPT/Microsoft/Dependency-Agent/Bin/Microsoft-Dependency-Agent<br>/OPT/Microsoft/Dependency-Agent/Bin/Microsoft-Dependency-Agent-Manager |
-| Úložiště binární soubory | /var/OPT/Microsoft/Dependency-Agent/Storage |
+| Základní soubory | /opt/microsoft/dependency-agent |
+| Soubory protokolu | /var/opt/microsoft/dependency-agent/log |
+| Konfigurační soubory | /etc/opt/microsoft/dependency-agent/config |
+| Spustitelné soubory služby | /opt/microsoft/dependency-agent/bin/microsoft-dependency-agent<br>/opt/microsoft/dependency-agent/bin/microsoft-dependency-agent-manager |
+| Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
 
-## <a name="installation-script-examples"></a>Příklady skriptů instalace
-Chcete-li snadno nasadit agenta závislosti na počtu serverů najednou, je dobré pomocí skriptu. Následující příklady skriptu můžete použít ke stažení a instalaci závislostí agenta v systému Windows nebo Linux.
+## <a name="installation-script-examples"></a>Příklady instalačního skriptu
+Se snadným nasazením závislého agenta na mnoho serverů najednou vám pomůže skript. Následující příklady skriptů můžete použít ke stažení a instalaci závislého agenta do Windows nebo Linuxu.
 
-### <a name="powershell-script-for-windows"></a>Skript prostředí PowerShell pro systém Windows
+### <a name="powershell-script-for-windows"></a>Skript PowerShellu pro Windows
 ```PowerShell
 Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
 
@@ -188,7 +189,7 @@ Zajistěte, aby byl Agent závislost na všech virtuálních počítačů i jedn
 
 
 ## <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
-Nasazení agenta nástroje závislostí prostřednictvím konfigurace požadovaného stavu, můžete použít modul xPSDesiredStateConfiguration a bit kódu takto:
+K nasazení závislého agenta prostřednictvím konfigurace požadovaného stavu můžete použít modul xPSDesiredStateConfiguration a několik následujících řádků kódu:
 ```
 configuration ServiceMap {
 
@@ -222,12 +223,12 @@ Node localhost
 ```
 
 ## <a name="uninstallation"></a>Odinstalace
-### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalujte agenta závislostí v systému Windows
-Správce můžete odinstalovat závislostí agenta pro Windows pomocí ovládacích panelů.
+### <a name="uninstall-the-dependency-agent-on-windows"></a>Odinstalace závislého agenta ve Windows
+Správce může závislého agenta pro Windows odinstalovat přes Ovládací panely.
 
-Správce můžete také spouštět %Programfiles%\Microsoft závislostí Agent\Uninstall.exe odinstalace agenta závislostí.
+Správce může závislého agenta odinstalovat také spuštěním souboru %Programfiles%\Microsoft Dependency Agent\Uninstall.exe.
 
-### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalujte agenta závislostí v systému Linux
+### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalace závislého agenta v Linuxu
 Pomocí následujícího příkazu můžete odinstalovat agenta závislostí ze systému Linux.
 <br>RHEL, CentOs nebo Oracle:
 ```
@@ -292,7 +293,7 @@ Mapa služeb je nyní k dispozici v následujících oblastech Azure:
 
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
-Následující části uvádějí podporované operační systémy pro agenta závislostí. Mapa služeb nepodporuje 32bitové architektury pro všechny operační systémy.
+V následujících částech najdete seznam operačních systémů pro závislého agenta. Mapa služeb nepodporuje 32bitové architektury pro všechny operační systémy.
 
 ### <a name="windows-server"></a>Windows Server
 - Windows Server 2016
@@ -306,12 +307,12 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 - Windows 8
 - Windows 7
 
-### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux a Oracle Linux (s RHEL jádra)
-- Podporovány jsou pouze výchozí a verze SMP Linux jádra.
-- Nestandardní jádra uvolní, například PAE a Xen, nejsou podporovány pro všechny distribuci systému Linux. Například systém s verzí řetězec "2.6.16.21-0.8-xen" nepodporuje.
-- Vlastní jádra, včetně opakovaných kompilací standardní jádra, nejsou podporovány.
-- CentOSPlus jádra není podporována.
-- Oracle nedělitelné Enterprise jádra (UEK) je popsaná v další části tohoto článku.
+### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux a Oracle Linux (s jádrem RHEL)
+- Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
+- Verze s nestandardním jádrem, jako jsou PAE a Xen, nejsou podporované v žádné distribuci Linuxu. Například systém s verzí řetězec "2.6.16.21-0.8-xen" nepodporuje.
+- Vlastní jádra, včetně opětovně zkompilovaných standardních jader, nejsou podporovaná.
+- Jádro CentOSPlus není podporované.
+- Jádro Oracle Unbreakable Enterprise (UEK) je popsané v další části tohoto článku.
 
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -322,6 +323,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | 7.2 | 3.10.0-327 |
 | 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 | Verze operačního systému | Verze jádra |
@@ -346,14 +348,14 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | 5.11 | 2.6.18-398<br>2.6.18-400<br>2.6.18-402<br>2.6.18-404<br>2.6.18-406<br>2.6.18-407<br>2.6.18-408<br>2.6.18-409<br>2.6.18-410<br>2.6.18-411<br>2.6.18-412<br>2.6.18-416<br>2.6.18-417<br>2.6.18-419<br>2.6.18-420 |
 
 ### <a name="ubuntu-server"></a>Ubuntu Server
-- Vlastní jádra, včetně opakovaných kompilací standardní jádra, nejsou podporovány.
+- Vlastní jádra, včetně opětovně zkompilovaných standardních jader, nejsou podporovaná.
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Linux Enterprise s nedělitelné Enterprise jádra
+### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux s jádrem Unbreakable Enterprise Kernel
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
 | Verze operačního systému | Verze jádra
 |:--|:--|
@@ -380,7 +382,7 @@ Následující části uvádějí podporované operační systémy pro agenta z�
 | 11 SP4 | 3.0.101-65 |
 
 
-## <a name="diagnostic-and-usage-data"></a>data o využití a Diagnostika
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
 Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby mapy služeb. Tato data Microsoft používá k poskytování a zlepšování kvality, zabezpečení a integrity služby mapy služeb. Data zahrnují informace o konfiguraci vašeho softwaru, jako je verze operačního systému a. Zahrnuje taky IP adresu, název DNS a název pracovní stanice s cílem poskytnout přesná a efektivní možnosti pro odstraňování potíží. Neshromažďujeme jména, adresy ani jiné kontaktní informace.
 
 Další informace o shromažďování a používání dat najdete v tématu [prohlášení o ochraně osobních údajů služeb Microsoft Online](https://go.microsoft.com/fwlink/?LinkId=512132).
