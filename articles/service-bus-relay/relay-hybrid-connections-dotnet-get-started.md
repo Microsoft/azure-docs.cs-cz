@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s hybridními připojeními Azure Relay v .NET | Dokumentace Microsoftu"
-description: "Napište konzolovou aplikaci v jazyce C# pro Azure Relay Hybrid Connections."
+title: Začínáme s WebSockety Azure Relay Hybrid Connections v .NET | Microsoft Docs
+description: Napište konzolovou aplikaci v jazyce C# pro WebSockety Azure Relay Hybrid Connections.
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d1386900-b942-4abf-acfc-38d2ef826253
 ms.service: service-bus-relay
 ms.devlang: tbd
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3667d7f4a74ac7c43f8f443aed2beacafd909dbd
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5b900f70721f8642e27daf242295fbda77d7df6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Začínáme s hybridními připojeními pro přenos
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>Začínáme s WebSockety Relay Hybrid Connections v .NET
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
 Tento kurz poskytuje úvod do [hybridních připojení Azure Relay](relay-what-is-it.md#hybrid-connections). Zjistěte, jak s využitím Microsoft .NET vytvořit klientskou aplikaci, která odesílá zprávy do příslušné aplikace naslouchacího procesu. 

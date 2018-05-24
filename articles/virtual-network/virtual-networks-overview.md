@@ -17,15 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 3/23/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 072a4a483cb39a6f2827b6d5973ec544fd58d09c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
-Azure Virtual Network umožňuje řadě typů prostředků Azure, jako jsou virtuální počítače Azure, zabezpečeně komunikovat mezi sebou, s internetem a s místními sítěmi. Azure Virtual Network poskytuje následující klíčové funkce: 
+Azure Virtual Network umožňuje řadě typů prostředků Azure, jako jsou virtuální počítače Azure, zabezpečeně komunikovat mezi sebou, s internetem a s místními sítěmi. Azure Virtual Network poskytuje následující klíčové funkce:
 
 ## <a name="isolation-and-segmentation"></a>Izolace a segmentace
 
@@ -42,7 +42,7 @@ Všechny prostředky ve virtuální síti ve výchozím nastavení umožňují o
 
 Prostředky Azure mezi sebou zabezpečeně komunikují jedním z následujících způsobů:
 
-- **Prostřednictvím virtuální sítě:** Do virtuální sítě můžete nasadit virtuální počítače a několik dalších typů prostředků Azure, jako jsou služby Azure App Service Environment a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](virtual-network-for-azure-services.md). 
+- **Prostřednictvím virtuální sítě:** Do virtuální sítě můžete nasadit virtuální počítače a několik dalších typů prostředků Azure, jako jsou služby Azure App Service Environment, Azure Kubernetes Service (AKS) a Azure Virtual Machine Scale Sets. Úplný seznam prostředků Azure, které můžete nasadit do virtuální sítě, najdete v tématu věnovaném [integraci virtuální sítě do služeb](virtual-network-for-azure-services.md). 
 - **Prostřednictvím koncového bodu služby virtuální sítě:** Privátní adresní prostor a identitu virtuální sítě můžete přes přímé připojení rozšířit na prostředky služeb Azure, jako jsou účty Azure Storage a služba Azure SQL Database. Koncové body služeb umožňují svázat vaše důležité prostředky služeb Azure pouze s virtuální sítí. Další informace najdete v tématu [Přehled koncových bodů služeb virtuální sítě](virtual-network-service-endpoints-overview.md).
  
 ## <a name="communicate-with-on-premises-resources"></a>Komunikace s místními prostředky

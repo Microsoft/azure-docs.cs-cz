@@ -1,27 +1,27 @@
 ---
-title: Kurz k synonymům ve verzi Preview ve službě Azure Search | Dokumentace Microsoftu
-description: Přidání funkce synonym ve verzi Preview do indexu ve službě Azure Search.
+title: Kurz k synonymům ve službě Azure Search | Microsoft Docs
+description: Přidání funkce synonym do indexu ve službě Azure Search.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/31/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0f082397f832883b272a2ca38850a340b618adde
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a>Kurz synonym (Preview) v jazyce C# pro Azure Search
+# <a name="synonym-c-tutorial-for-azure-search"></a>Kurz synonym v jazyce C# pro Azure Search
 
 Synonyma rozšiřují dotazy hledáním shody s termíny, které jsou považované za sémantické ekvivalenty vstupního výrazu. Chcete třeba, aby položce auto odpovídaly i dokumenty obsahující termíny automobil a vozidlo.
 
 Ve službě Azure Search se synonyma definují v *mapě synonym*, pomocí *pravidel mapování*, která přidružují ekvivalentní termíny. Můžete vytvořit několik map synonym, zveřejnit je jako prostředky na úrovni služby dostupné pro všechny indexy a potom určit, který se má použít na úrovni pole. V době zpracování dotazu služba Azure Search nejenom prohledá index, ale pokud některé z polí využitých v tomto dotazu má mapu synonym, prohledá i tuto mapu.
 
 > [!NOTE]
-> Funkce synonym je aktuálně ve verzi Preview a je podporovaná jenom v nejnovějších verzích Preview rozhraní API a sady SDK(api-version=2016-09-01-Preview, SDK verze 4.x-preview). Podpora webu Azure Portal se v současnosti neposkytuje. Na rozhraní API ve verzi Preview se nevztahuje žádná smlouva SLA a funkce se také mohou změnit, proto je nedoporučujeme používat v produkčních aplikacích.
+> Funkce synonym je podporovaná v nejnovější verzi rozhraní API a sady SDK (verze api=2017-11-11, verze SDK 5.0.0). Podpora webu Azure Portal se v současnosti neposkytuje. Pokud byste uvítali podporu synonym na portálu Azure Portal, sdělte nám svůj názor na webu [UserVoice](https://feedback.azure.com/forums/263029-azure-search)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,7 +29,7 @@ Požadavky kurzu zahrnují tyto položky:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Služba Azure Search](search-create-service-portal.md)
-* [Verze Preview knihovny Microsoft.Azure.Search .NET](https://aka.ms/search-sdk-preview)
+* [Knihovna Microsoft.Azure.Search .NET](https://aka.ms/search-sdk)
 * [Jak používat Azure Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Přehled

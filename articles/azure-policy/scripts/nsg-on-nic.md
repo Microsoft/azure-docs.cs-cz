@@ -1,37 +1,37 @@
 ---
-title: "Ukázka json Azure zásady - NSG x na každý síťový adaptér | Microsoft Docs"
-description: "Tato ukázková zásada json vyžaduje, že skupina zabezpečení sítě konkrétní se používá s každé rozhraní virtuální sítě."
+title: Ukázka kódu json pro Azure Policy – NSG x ve všech síťových rozhraních | Microsoft Docs
+description: Tato ukázková zásada json vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě.
 services: azure-policy
-documentationcenter: 
-author: bandersmsft
+documentationcenter: ''
+author: DCtheGeek
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-policy
-ms.devlang: 
+ms.devlang: ''
 ms.topic: sample
-ms.tgt_pltfrm: 
-ms.workload: 
+ms.tgt_pltfrm: ''
+ms.workload: ''
 ms.date: 10/30/2017
-ms.author: banders
+ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: db60ddc164549ddcc8d0d6edb296956b3b144eb9
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
-ms.translationtype: MT
+ms.openlocfilehash: 09b635e064212bea6f5756a4493a590130894644
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="nsg-x-on-every-nic"></a>Skupina NSG x na každý síťový adaptér
+# <a name="nsg-x-on-every-nic"></a>NSG x ve všech síťových rozhraních
 
-Tato zásada vyžaduje, že skupina zabezpečení sítě konkrétní se používá s každé rozhraní virtuální sítě. Zadáte ID skupiny zabezpečení sítě používat.
+Tato zásada vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě. Zadáte ID skupiny zabezpečení sítě, která se má použít.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-template"></a>Ukázka šablony
+## <a name="sample-template"></a>Ukázková šablona
 
 [!code-json[main](../../../policy-templates/samples/Network/enforce-nsg-on-nic/azurepolicy.json "NSG X on every nic")]
 
-Můžete nasadit pomocí této šablony [portál Azure](#deploy-with-the-portal), s [prostředí PowerShell](#deploy-with-powershell) nebo pomocí [rozhraní příkazového řádku Azure](#deploy-with-azure-cli).
+K nasazení této šablony můžete použít [Azure Portal](#deploy-with-the-portal) s [PowerShellem](#deploy-with-powershell) nebo s [Azure CLI](#deploy-with-azure-cli).
 
 ## <a name="deploy-with-the-portal"></a>Nasazení s využitím portálu
 
@@ -48,15 +48,15 @@ $assignment = New-AzureRMPolicyAssignment -Name <assignmentname> -Scope <scope> 
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení prostředí PowerShell
+### <a name="clean-up-powershell-deployment"></a>Vyčištění nasazení PowerShellu
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+## <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -66,9 +66,9 @@ az policy definition create --name 'enforce-nsg-on-nic' --display-name 'NSG X on
 az policy assignment create --name <assignmentname> --scope <scope> --policy "enforce-nsg-on-nic"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení rozhraní příkazového řádku Azure
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -76,4 +76,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázky šablony zásad Azure jsou [šablon pro Azure zásad](../json-samples.md).
+- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).

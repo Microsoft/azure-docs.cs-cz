@@ -1,5 +1,5 @@
 ---
-title: Škálovací sady virtuálních počítačů Azure – připojené datové disky | Dokumentace Microsoftu
+title: Škálovací sady virtuálních počítačů Azure – připojené datové disky | Microsoft Docs
 description: Naučte se používat připojené datové disky se škálovacími sadami virtuálních počítačů.
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: ec11a2d66530129fb61d97681e6882b887c8654c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Škálovací sady virtuálních počítačů Azure a připojené datové disky
 [Škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure podporují instance virtuálních počítačů s připojenými datovými disky a umožňují tak rozšíření úložiště, které máte k dispozici. Datové disky můžete připojit při vytváření škálovací sady nebo k existující škálovací sadě.
@@ -91,21 +91,12 @@ Pokud chcete automaticky připravovat datové disky v clusteru s Linuxem, přide
 ```
 
 
-## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>Přidání disků předem naplněných daty do existující škálovací sady 
-> Když přidáváte disky do stávajícího modelu škálovací sady, vytvoří se z principu vždy prázdný disk. Tento scénář také zahrnuje nové instance vytvořené škálovací sadou. Toto chování je způsobené tím, že definice škálovací sady obsahuje prázdný datový disk. Chcete-li vytvořit pro model existující škálovací sady diskové jednotky předem naplněné daty, můžete zvolit jednu z následujících dvou možností:
-
-* Zkopírujte data z virtuálního počítače instance 0 na datové disky v jiných virtuálních počítačích spuštěním vlastního skriptu.
-* Vytvořte spravovanou image s diskem operačního systému a datovým diskem (s požadovanými daty) a vytvořte novou škálovací sadu s touto imagí. Tímto způsobem bude mít každý nově vytvořený virtuální počítač datový disk, který je v definici škálovací sady. Vzhledem k tomu, že definice odkazuje na image s datovým diskem obsahujícím přizpůsobená data, bude každý virtuální počítač škálovací sady obsahovat tyto změny.
-
-> Postup vytvoření vlastní image najdete v tématu s popisem [vytvoření spravované image zobecněného virtuálního počítače v Azure](/azure/virtual-machines/windows/capture-image-resource/). 
-
-> Uživatel musí zachytit instanci 0 virtuálního počítače s požadovanými daty a pak tento virtuální pevný disk použít k definici image.
+## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Přidání disků předem naplněných daty do existující škálovací sady
+Datové disky zadané v modelu škálovací sady jsou vždy prázdné. Můžete ale přiřadit existující datové disky ke konkrétnímu virtuálnímu počítači ve škálovací sadě. Tato funkce je ve verzi preview. Příklady naleznete na [githubu](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk). Pokud chcete data rozšířit na všechny virtuální počítače ve škálovací sadě, můžete datový disk duplikovat a připojit ho ke každému virtuálnímu počítači ve škálovací sadě, můžete vytvořit vlastní image, která obsahuje data, a zřídit škálovací sadu z této vlastní image nebo můžete použít službu Soubory Azure nebo podobné úložiště dat.
 
 
 ## <a name="additional-notes"></a>Další poznámky
 Podpora služby Azure Managed Disks a připojených datových disků škálovacích sad je dostupná v rozhraní Microsoft.Compute API verze [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) nebo novější.
-
-Během počáteční implementace podpory připojených disků pro škálovací sady nelze datové disky připojit k jednotlivým virtuálním počítačům ve škálovací sadě, ani je od nich odpojit.
 
 Podpora připojených datových disků ve škálovacích sadách je na webu Azure Portal zpočátku omezená. V závislosti na požadavcích můžete ke správě připojených disků použít šablony Azure, rozhraní příkazového řádku, PowerShell, sady SDK nebo rozhraní REST API.
 

@@ -7,13 +7,13 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 12/04/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: f24777fe5bb482eb74aba4acbd7313665f22c38b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9ee88b254131b40fdf1e01b771afa92127734e18
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Vytvoření, dotazování a filtrování indexu Azure Search na portálu
 
@@ -110,7 +110,7 @@ Nyní máte index vyhledávání, který je připraven k dotazování. **Průzku
 
    ![Příkazy rozhraní API a index][6]
 
-3. Kliknutím na **Nastavit verzi API** na panelu příkazů zobrazíte, která rozhraní REST API jsou dostupná. Rozhraní API ve verzi Preview poskytují přístup k novým funkcím, které ještě nejsou obecně dostupné. Pro níže uvedené dotazy používejte obecně dostupnou verzi (1. září 2016), pokud nedostanete jiné pokyny. 
+3. Kliknutím na **Nastavit verzi API** na panelu příkazů zobrazíte, která rozhraní REST API jsou dostupná. Rozhraní API ve verzi Preview poskytují přístup k novým funkcím, které ještě nejsou obecně dostupné. Pro níže uvedené dotazy používejte obecně dostupnou verzi (11. listopad 2017), pokud nedostanete jiné pokyny. 
 
     > [!NOTE]
     > [Rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) a [knihovna .NET](search-howto-dotnet-sdk.md#core-scenarios) jsou plně ekvivalentní, ale **průzkumník služby Search** umožňuje zpracovat jenom volání REST. Přijímá syntaxi pro [jednoduché dotazy](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) i [kompletní analyzátor dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) a navíc všechny parametry hledání, které jsou dostupné pro operace [hledání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents).

@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Vytvoření virtuálního počítače pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
-description: Rychle se naučíte, jak vytvářet virtuální počítače pomocí Azure CLI.
+title: Rychlý start – Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 2.0 | Microsoft Docs
+description: V tomto rychlém startu zjistíte, jak pomocí Azure CLI 2.0 vytvořit virtuální počítač s Linuxem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -9,42 +9,40 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/13/2017
+ms.date: 04/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 15dc70e8d60901b71ba7d1d9333b13d8266d18c6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1c45f8f010d69337d21fce327933990a573988a4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI
+# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 2.0
 
-Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tento Rychlý start podrobně popisuje nasazení virtuálního počítače se serverem Ubuntu pomocí Azure CLI. Po nasazení serveru se vytvoří připojení SSH a nainstaluje se webový server NGINX.
+Azure CLI 2.0 slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI 2.0 nasadit do Azure virtuální počítač s Linuxem Ubuntu. Pak se k virtuálnímu počítači připojíte přes SSH a nainstalujete na něj webový server NGINX, abyste virtuální počítač viděli v akci.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
-Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
-
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create). 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
 
 Následující příklad vytvoří virtuální počítač s názvem *myVM*, přidá uživatelský účet s názvem *azureuser* a vygeneruje klíče SSH, pokud ještě neexistují ve výchozím umístění klíčů (*~/.ssh*). Pokud chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`:
 
@@ -57,12 +55,12 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné informace jako v následujícím příkladu. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.
+Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut. Následující příklad ukazuje, že operace vytvoření virtuálního počítače byla úspěšná.
 
-```azurecli-interactive 
+```azurecli-interactive
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
   "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
@@ -72,52 +70,55 @@ Po vytvoření virtuálního počítače se v Azure CLI zobrazí podobné inform
 }
 ```
 
-## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz 
+Poznamenejte si vlastní adresu `publicIpAddress` ve výstupu z vašeho virtuálního počítače. Tato adresa se používá pro přístup k virtuálnímu počítači v dalších krocích.
 
-Ve výchozím nastavení jsou na virtuální počítače s Linuxem, které jsou nasazené v Azure, povolená pouze připojení SSH. Pokud bude tento virtuální počítač webovým serverem, budete muset otevřít port 80 z internetu. Požadovaný port otevřete pomocí příkazu [az vm open-port](/cli/azure/vm#az_vm_open_port).  
- 
- ```azurecli-interactive 
+## <a name="open-port-80-for-web-traffic"></a>Otevření portu 80 pro webový provoz
+
+Ve výchozím nastavení jsou při vytváření virtuálního počítače s Linuxem v Azure otevřená pouze připojení SSH. Pomocí příkazu [az vm open-port](/cli/azure/vm#az_vm_open_port) otevřete port TCP 80 pro použití s webovým serverem NGINX:
+
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="ssh-into-your-vm"></a>Připojení SSH k virtuálnímu počítači
+## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci SSH. Nezapomeňte nahradit **publicIpAddress** správnou veřejnou IP adresou vašeho virtuálního počítače.  V našem příkladu byla IP adresa *40.68.254.142*.
+Připojte se k virtuálnímu počítači přes SSH jako obvykle. Nahraďte adresu **publicIpAddress** veřejnou IP adresou vašeho virtuálního počítače, kterou jste si poznamenali v předchozím výstupu z virtuálního počítače:
 
-```bash 
-ssh publicIpAddress
+```bash
+ssh azureuser@publicIpAddress
 ```
 
-## <a name="install-nginx"></a>Instalace serveru NGINX
+## <a name="install-web-server"></a>Instalace webového serveru
 
-Pomocí následujících příkazů provedete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX. 
+Pokud se chcete podívat na virtuální počítač v akci, nainstalujte webový server NGINX. Spuštěním následujících příkazů z vaší relace SSH aktualizujte zdroje balíčku a nainstalujte nejnovější balíček NGINX:
 
-```bash 
-# update package source
+```bash
+# update packages
 sudo apt-get -y update
 
 # install NGINX
 sudo apt-get -y install nginx
 ```
 
-## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
+Potom ukončete relaci SSH pomocí příkazu `exit`.
 
-S nainstalovaným serverem NGINX na virtuálním počítači a nyní otevřeným portem 80 z internetu můžete použít libovolný webový prohlížeč a zobrazit výchozí úvodní stránku serveru NGINX. Nezapomeňte pro návštěvu výchozí stránky použít veřejnou IP adresu (*publicIpAddress*) popsanou výše. 
+## <a name="view-the-web-server-in-action"></a>Zobrazení webového serveru v akci
 
-![Výchozí web NGINX](./media/quick-create-cli/nginx.png) 
+Po instalaci serveru NGINX a otevření portu 80 na virtuálním počítači pro přístup z internetu přejděte pomocí libovolného webového prohlížeče na výchozí úvodní stránku serveru NGINX. Použijte veřejnou IP adresu virtuálního počítače, kterou jste získali v předchozím kroku. Následující příklad ukazuje výchozí web NGINX:
 
+![Výchozí web NGINX](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete). Ukončete relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az_group_delete). Přesvědčte se, že jste ukončili relaci SSH k vašemu virtuálnímu počítači a pak odstraňte prostředky následujícím způsobem:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto Rychlém startu jste nasadili jednoduchý virtuální počítač a pravidlo skupiny zabezpečení sítě a nainstalovali jste webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
+V tomto rychlém startu jste nasadili jednoduchý virtuální počítač, otevřeli jste síťový port pro webový provoz a nainstalovali jste základní webový server. Další informace o virtuálních počítačích Azure najdete v kurzu pro virtuální počítače s Linuxem.
 
 
 > [!div class="nextstepaction"]

@@ -10,11 +10,11 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 172780512dd179d91300459987ad0ba683727859
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Tahák pro službu Azure SQL Data Warehouse
 Tento tahák obsahuje užitečné tipy a osvědčené postupy pro vytváření řešení Azure SQL Data Warehouse. Než začnete, přečtěte si článek [Vzory a antivzory úloh Azure SQL Data Warehouse](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns), který podrobně popisuje jednotlivé kroky a vysvětluje, co je služba SQL Data Warehouse, a co není.
@@ -34,7 +34,7 @@ Znalost typů operací předem vám pomůže optimalizovat návrh tabulek.
 
 ## <a name="data-migration"></a>Migrace dat
 
-Nejprve svá data načtěte do služby [Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store) nebo úložiště objektů blob v Azure. Pak pomocí PolyBase načtěte svá data do pracovní tabulky ve službě SQL Data Warehouse. Použijte následující konfiguraci:
+Nejprve svá data načtěte do služby [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) nebo úložiště objektů blob v Azure. Pak pomocí PolyBase načtěte svá data do pracovní tabulky ve službě SQL Data Warehouse. Použijte následující konfiguraci:
 
 | Návrh | Doporučení |
 |:--- |:--- |
@@ -43,7 +43,7 @@ Nejprve svá data načtěte do služby [Azure Data Lake Store](https://docs.micr
 | Dělení | Žádný |
 | Třída prostředku | largerc nebo xlargerc |
 
-Další informace o [migraci dat], [načítání dat] a [procesu extrakce, načítání a transformace (ELT)](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-elt-data-loading). 
+Další informace o [migraci dat], [načítání dat] a [procesu extrakce, načítání a transformace (ELT)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
 
 ## <a name="distributed-or-replicated-tables"></a>Distribuované nebo replikované tabulky
 
@@ -78,7 +78,7 @@ Indexování je užitečné pro rychlé čtení tabulek. Existuje jedinečná sa
 **Tipy:**
 * Kromě clusterovaného indexu můžete chtít přidat neclusterovaný index pro sloupec, který se často používá k filtrování. 
 * Při správě paměti v tabulce s CCI buďte opatrní. Při načítání dat chcete, aby uživatel (nebo dotaz) využíval výhod velké třídy prostředků. Nezapomeňte se vyhnout ořezávání a vytváření mnoha malých komprimovaných skupin řádků.
-* CCI je vhodný pro úroveň optimalizovanou pro výpočty.
+* V Gen2 se tabulky CCI ukládají do mezipaměti místně do výpočetních uzlů za účelem maximalizace výkonu.
 * U CCI může docházet ke snížení výkonu kvůli špatné kompresi skupin řádků. Pokud k tomu dojde, znovu svůj CCI sestavte nebo ho reorganizujte. Každá komprimovaná skupina řádků by měla obsahovat alespoň 100 000 řádků. Ideálně by skupina řádků měla obsahovat 1 milion řádků.
 * Reorganizaci nebo opětovné sestavení indexů byste měli automatizovat na základě frekvence a velikosti přírůstkového načítání. Jarní úklid je vždy užitečný.
 * Pokud chcete oříznout skupinu řádků, myslete strategicky. Jak velké jsou otevřené skupiny řádků? Kolik dat očekáváte, že se bude v nadcházejících dnech načítat?
@@ -111,7 +111,7 @@ SQL Data Warehouse používá skupiny prostředků jako způsob přidělení pam
 
 Pokud si všimnete, že dotazy trvají příliš dlouho, zkontrolujte, jestli vaši uživatelé nepoužívají velké třídy prostředků. Velké třídy prostředků využívají velké množství slotů souběžnosti. Můžou způsobit hromadění dalších dotazů ve frontě.
 
-A nakonec, díky použití úrovně optimalizované pro výkon získá každá třída prostředků 2,5× více paměti než na úrovni optimalizované pro elasticitu.
+Z využitím SQL Data Warehouse Gen2 dostává každá třída prostředků 2,5krát víc paměti než Gen1.
 
 Další informace o práci s [třídami prostředků a souběžností].
 

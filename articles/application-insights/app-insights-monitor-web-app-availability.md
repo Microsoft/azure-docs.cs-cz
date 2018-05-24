@@ -1,9 +1,9 @@
 ---
-title: Sledování dostupnosti a odezvy libovolných webů | Dokumentace Microsoftu
+title: Sledování dostupnosti a odezvy libovolných webů | Microsoft Docs
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
 services: application-insights
 documentationcenter: ''
-author: SoubhagyaDash
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
 ms.service: application-insights
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2018
 ms.author: sdash ; mbullwin
-ms.openlocfilehash: d8d6c6a242f63ad891a8134657273ff73dfcde18
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -273,7 +273,7 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 
     Chyba („Porušení protokolu... Znak CR musí být následován znakem LF.“) značí problémy se serverem (nebo závislostmi). To se stává, když jsou v odpovědi nastavena chybně vytvořená záhlaví. Příčinou mohou být nástroje pro vyrovnávání zatížení nebo CDN. Konkrétně se jedná o to, že některá záhlaví možná nepoužívají znaky CRLF k označení konce řádku. Tím porušují specifikaci protokolu HTTP, což má za následek neúspěšné ověření na úrovni třídy .NET WebRequest. Zkontrolujte odpovědi, zda obsahují chybná záhlaví.
     
-    Poznámka: Adresa URL nemusí selhat v prohlížečích, které mají rozvolněné ověřování záhlaví HTTP. Podrobné vysvětlení tohoto problému najdete v blogovém příspěvku na adrese http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/.  
+    Poznámka: Adresa URL nemusí selhat v prohlížečích, které mají rozvolněné ověřování záhlaví HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 * *Web vypadá v pořádku, ale vidím selhání testu*
 
     * Zkontrolujte všechny image, skripty, šablony stylů a všechny další soubory, které stránka načetla. Pokud některý z nich selže, test se ohlásí jako neúspěšný i v případě, že se hlavní html stránka načte bez problémů. Pokud chcete snížit citlivost testu vůči selháním těchto prostředků, v konfiguraci testu jednoduše zrušte zaškrtnutí možnosti „Analyzovat závislé požadavky“. 

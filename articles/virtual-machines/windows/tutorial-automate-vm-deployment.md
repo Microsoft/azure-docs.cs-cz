@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení virtuálního počítače s Windows v Azure | Microsoft Docs
-description: Zjistěte, jak použít rozšíření vlastních skriptů k automatizaci instalací aplikace na virtuálních počítačích s Windows v Azure.
+title: Kurz instalace aplikací na virtuální počítač s Windows v Azure | Microsoft Docs
+description: V tomto kurzu zjistíte, jak používat rozšíření vlastních skriptů ke spouštění skriptů a nasazení aplikací na virtuálních počítačích s Windows v Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6afb5757e11108eec856d821d92afed9681a2668
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51a66d524e72968d95f3415b890567015165063a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Postup přizpůsobení virtuálního počítače s Windows v Azure
+# <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Kurz nasazení aplikací na virtuální počítač s Windows v Azure pomocí rozšíření vlastních skriptů
+
 Pokud chcete konfigurovat virtuální počítače rychle a konzistentně, zřejmě uvítáte nějakou formu automatizace. Běžným přístupem k přizpůsobení virtuálního počítače s Windows je použití [rozšíření vlastních skriptů pro Windows](extensions-customscript.md). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -32,7 +33,7 @@ Pokud chcete konfigurovat virtuální počítače rychle a konzistentně, zřejm
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.3 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. 
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 
 ## <a name="custom-script-extension-overview"></a>Přehled rozšíření vlastních skriptů

@@ -91,7 +91,7 @@
 ### [Vytvoření virtuální sítě pomocí webu Azure Portal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Vytvoření virtuální sítě pomocí Azure PowerShellu](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Vytvoření virtuální sítě pomocí Azure CLI](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Filtrování provozu sítě s použitím skupin zabezpečení sítě](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Filtrování provozu sítě s použitím skupin zabezpečení sítě](../../virtual-network/security-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Kurzy k virtuálním sítím
 #### [Vyrovnávání zatížení virtuálních počítačů](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Připojení počítače k virtuální síti](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

@@ -1,12 +1,12 @@
 ---
-title: "Služba AD FS (Active Directory Federation Services) v Azure | Dokumentace Microsoftu"
-description: "V tomto dokumentu se dozvíte, jak nasadit služby AD FS v Azure a zajistit vysokou dostupnost."
-keywords: "nasazení AD FS v Azure, nasazení Azure AD FS, Azure AD FS, Azure ADFS, nasazení AD FS, nasazení AD FS, AD FS v Azure, nasazení ADFS v Azure, nasazení AD FS v Azure, AD FS Azure, úvod do služby AD FS, Azure, AD FS v Azure, IAAS, ADFS, přesunutí AD FS do Azure"
+title: Služba AD FS (Active Directory Federation Services) v Azure | Microsoft Docs
+description: V tomto dokumentu se dozvíte, jak nasadit služby AD FS v Azure a zajistit vysokou dostupnost.
+keywords: nasazení AD FS v Azure, nasazení Azure AD FS, Azure AD FS, Azure ADFS, nasazení AD FS, nasazení AD FS, AD FS v Azure, nasazení ADFS v Azure, nasazení AD FS v Azure, AD FS Azure, úvod do služby AD FS, Azure, AD FS v Azure, IAAS, ADFS, přesunutí AD FS do Azure
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 692a188c-badc-44aa-ba86-71c0e8074510
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba14244a3f5786ebcd667aa090d0245ce45f741d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Nasazení služby AD FS (Active Directory Federation Service) v Azure
 Služby AD FS nabízí zjednodušené možnosti zabezpečené federace identit a jednotného přihlašování na webu (SSO). Federace pomocí Azure AD nebo O365 uživatelům umožňuje ověřování pomocí místních přihlašovacích údajů a přístup ke všem prostředkům v cloudu. V důsledku toho je důležité mít vysoce dostupnou infrastrukturu služby AD FS, která zajistí přístup k místním prostředkům i k prostředkům v cloudu. Nasazení služby AD FS v Azure může zajistit požadovanou vysokou dostupnost při minimálním úsilí.
@@ -214,7 +214,7 @@ Aby se proxy servery webových aplikací mohly spojit se servery služby AD FS z
 
 **7.2. Instalace role proxy webových aplikací**
 
-Jakmile si budete jistí, že se proxy servery webových aplikací můžou spojit se servery služby AD FS za interním nástrojem pro vyrovnávání zatížení, můžete v dalším kroku nainstalovat proxy servery webových aplikací. Proxy servery webových aplikací nesmí být připojené k doméně. Výběrem role vzdáleného přístupu nainstalujte role proxy webových aplikací na dva proxy servery webových aplikací. Správce serveru vás provede až do konce instalace WAP.
+Jakmile si budete jistí, že se proxy servery webových aplikací můžou spojit se servery služby AD FS za interním nástrojem pro vyrovnávání zatížení, můžete v dalším kroku nainstalovat proxy servery webových aplikací. Proxy servery webových aplikací nemusí být připojené k doméně. Výběrem role vzdáleného přístupu nainstalujte role proxy webových aplikací na dva proxy servery webových aplikací. Správce serveru vás provede až do konce instalace WAP.
 Další informace o nasazování WAPu najdete v článku [Instalace a konfigurace proxy serveru webových aplikací](https://technet.microsoft.com/library/dn383662.aspx).
 
 ### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Nasazení internetového (veřejného) nástroje pro vyrovnávání zatížení
@@ -303,7 +303,7 @@ Nejjednodušší způsob otestování služby AD FS je pomocí stránky IdpIniti
 
 1. Pomocí PowerShellu spusťte níže uvedenou rutinu na serveru služby AD FS a povolte požadovanou možnost.
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2. Z jakékoli externího počítače zobrazte https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
+2. Z libovolného přístupu pomocí externího počítače https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
 3. Měla by se zobrazit stránka služby AD FS podobná níže uvedenému příkladu:
 
 ![Přihlašovací stránka testu](./media/active-directory-aadconnect-azure-adfs/test1.png)

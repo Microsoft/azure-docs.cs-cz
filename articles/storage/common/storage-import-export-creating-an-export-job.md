@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření exportu úlohy pro Azure Import/Export | Microsoft Docs"
-description: "Naučte se vytvářet úlohy exportu pro službu Microsoft Azure Import/Export."
+title: Vytvoření exportu úlohy pro Azure Import/Export | Microsoft Docs
+description: Naučte se vytvářet úlohy exportu pro službu Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 613d480b-a8ef-4b28-8f54-54174d59b3f4
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 70f74b685f4d5b902b6f6780f7c1de4d357164b8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3fb3f2af5e5cebcac21f4372bc9d9dc9ee837202
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Vytvoření úlohy exportu pro službu Azure Import/Export
 Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:
@@ -53,7 +53,7 @@ Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí roz
  Další informace o zadání objektů blob pro export, najdete v článku [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operaci.
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaši polohu přesouvání
-Před vytvořením úlohy exportu, je nutné získat přenosů umístění názvu a adresy voláním [získat umístění](https://portal.azure.com) nebo [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations`Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění ze seznamu vrácených a dodávat vaše pevné disky na tuto adresu. Můžete také `Get Location` operace přesouvání adresu pro konkrétní umístění získat přímo.
+Před vytvořením úlohy exportu, je nutné získat přenosů umístění názvu a adresy voláním [získat umístění](https://portal.azure.com) nebo [umístění seznamu](/rest/api/storageimportexport/listlocations) operaci. `List Locations` Vrátí seznam umístění a jejich poštovní adresy. Můžete vybrat umístění ze seznamu vrácených a dodávat vaše pevné disky na tuto adresu. Můžete také `Get Location` operace přesouvání adresu pro konkrétní umístění získat přímo.
 
 Použijte následující postup k získání přesouvání umístění:
 
@@ -92,6 +92,8 @@ Použijte následující postup k získání přesouvání umístění:
 ## <a name="receiving-the-package"></a>Přijetí balíčku
  Po zpracování vaše úloha exportu, budou vráceny jednotky vám s šifrovaná data. Klíč nástroje BitLocker pro každou z jednotky můžete načíst pomocí volání [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operaci. Potom můžete odemknout jednotku pomocí klíče. Soubor manifestu jednotku na každém disku obsahuje seznam souborů na jednotce, stejně jako původní adresu objektů blob pro každý soubor.
 
-## <a name="next-steps"></a>Další kroky
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
+## <a name="next-steps"></a>Další postup
 
 * [Pomocí REST API služby importu a exportu](storage-import-export-using-the-rest-api.md)

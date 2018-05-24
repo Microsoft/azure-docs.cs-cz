@@ -1,11 +1,11 @@
 ---
-title: "Přidat brána firewall příští generace v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak implementovat Azure Security Center doporučení ** přidat další generace brány Firewall ** a ** trasy traffice prostřednictvím NGFW pouze **."
+title: Přidat brána firewall příští generace v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje, jak implementovat doporučení Azure Security Center **přidat Brána Firewall příští generace** a **trasy traffice prostřednictvím NGFW pouze**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 48b99015-4db8-4ce8-85e4-b544c0fa203e
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 30589d0a943517c03394a3aae7c03c8094e78c1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Přidat Brána Firewall příští generace v Azure Security Center
 Azure Security Center může doporučujeme, abyste přidali brána firewall příští generace (NGFW) od partnera Microsoftu ke zvýšení ochrany vaší zabezpečení. Tento dokument vás příklad toho, jak to udělat provede.
@@ -42,18 +42,18 @@ Azure Security Center může doporučujeme, abyste přidali brána firewall př�
 6. **Vytvořit virtuální počítač** otevře se okno. Zde můžete zadat informace požadované pro číselníku virtuálního počítače (VM), který spouští NGFW. Postupujte podle kroků a zadejte požadované informace NGFW. Kliknutím na tlačítko OK použít.
    ![Vytvoření virtuálního počítače ke spuštění NGFW][6]
 
-## <a name="route-traffic-through-ngfw-only"></a>Směrovat přenosy jenom přes firewall nové generace
+## <a name="route-traffic-through-ngfw-only"></a>Směrování provozu jenom přes NGFW
 Vraťte se na **doporučení** okno. Nový záznam vygenerovalo po přidání NGFW prostřednictvím Security Center, nazývá **směrování provozu prostřednictvím NGFW pouze**. Toto doporučení je vytvořen jen v případě, že jste nainstalovali vaší NGFW prostřednictvím Security Center. Pokud máte internetových koncových bodů, Security Center doporučí konfiguraci pravidel skupin zabezpečení sítě, které vynutit příchozí provoz do virtuálního počítače prostřednictvím vaší NGFW.
 
 1. V **doporučení okno**, vyberte **směrování provozu prostřednictvím NGFW pouze**.
    ![Směrování provozu jenom přes NGFW][7]
 2. Otevře se okno pro **směrování provozu prostřednictvím NGFW pouze**, který obsahuje seznam virtuálních počítačů, které je možné směrovat provoz. Vyberte virtuální počítač ze seznamu.
    ![Vyberte virtuální počítač][8]
-3. Otevře se okno pro vybraný virtuální počítač, zobrazení související příchozích pravidel. Popis vám poskytne další informace o možných další kroky. Vyberte **upravit příchozí pravidla** pokračujte úpravy příchozího pravidla. Předpokládají, že **zdroj** není nastavený na **žádné** pro koncové body internetového propojené s NGFW. Další informace o vlastnostech příchozí pravidlo, najdete v části [pravidla NSG](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+3. Otevře se okno pro vybraný virtuální počítač, zobrazení související příchozích pravidel. Popis vám poskytne další informace o možných další kroky. Vyberte **upravit příchozí pravidla** pokračujte úpravy příchozího pravidla. Předpokládají, že **zdroj** není nastavený na **žádné** pro koncové body internetového propojené s NGFW. Další informace o vlastnostech příchozí pravidlo, najdete v části [pravidla zabezpečení](../virtual-network/security-overview.md#security-rules).
    ![Umožňuje konfigurovat pravidla k omezení přístupu][9]
    ![příchozí pravidlo úpravy][10]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Tento dokument vám ukázal, jak provést doporučení Security Center "Přidat Brána Firewall příští generace". Další informace o NGFWs a kontrolní bod partnerského řešení, naleznete v následujících tématech:
 
 * [Brána Firewall příští generace](https://en.wikipedia.org/wiki/Next-Generation_Firewall)

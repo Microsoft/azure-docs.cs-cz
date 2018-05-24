@@ -1,10 +1,10 @@
 ---
 title: 'Ukázkový skript Azure PowerShellu: Konfigurace sítě VPN typu Site-to-Site | Microsoft Docs'
-description: Nakonfigurujte síť VPN typu Site-to-Site.
+description: Konfigurace VPN typu Site-to-Site
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,17 +13,17 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: anzaman
-ms.openlocfilehash: da506165dd7c2ca29f977af1452d11189d2fdd2f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 62381c08892017512dcf2bd5d9c7f8690bedfb6c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>Vytvoření brány sítě VPN a přidání připojení typu Site-to-Site pomocí PowerShellu
 
-Tento skript vytvoří bránu sítě VPN založenou na směrování a přidá konfiguraci typu Point-to-Site s ověřováním pomocí přihlašovacích údajů k serveru RADIUS.
+Tento skript vytvoří bránu VPN Gateway založenou na směrování a přidá konfiguraci Site-to-Site. Aby se dalo vytvořit připojení, je nutné nakonfigurovat i zařízení VPN. Další informace najdete v článku [o zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway](../vpn-gateway-about-vpn-devices.md).
 
 
 ```azurepowershell-interactive

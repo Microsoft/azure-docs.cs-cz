@@ -1,6 +1,6 @@
 ---
-title: Řídí virtuální počítače Azure pomocí prostředí Azure PowerShell | Microsoft Docs
-description: Kurz – spravovat virtuální počítače Azure s použitím RBAC, zásady, zámků a značky s prostředím Azure PowerShell
+title: Kurz řízení virtuálních počítačů Azure pomocí Azure PowerShellu | Microsoft Docs
+description: V tomto kurzu zjistíte, jak pomocí Azure PowerShellu spravovat virtuální počítače Azure s využitím RBAC, zásad, zámků a značek.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -10,52 +10,53 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: d4e09eb11ea04c31b7e302b7f66f8e67c13e8252
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.custom: mvc
+ms.openlocfilehash: 154ba47881c65d963729f9074d93c7bb61020389
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="virtual-machine-governance-with-azure-powershell"></a>Zásady správného řízení virtuální počítač s prostředím Azure PowerShell
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-powershell"></a>Kurz: Informace o řízení virtuálních počítačů Linux pomocí Azure PowerShellu
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud si zvolíte instalaci a místně pomocí prostředí PowerShell najdete [modul nainstalovat Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. Pro místní instalace, musíte také [stáhnout modulu Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, přečtěte si článek o [instalaci Azure PowerShellu](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. Pro místní instalace musíte také [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
 
-## <a name="understand-scope"></a>Pochopení oboru
+## <a name="understand-scope"></a>Orientace v oborech
 
 [!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
-V tomto kurzu použít, můžete snadno odebrat tato nastavení po dokončení všech nastavení pro správu do skupiny prostředků.
+V tomto kurzu se nastavení pro správu aplikují na skupinu prostředků, takže je po skončení můžete snadno odebrat.
 
-Umožňuje vytvořit příslušné skupině prostředků.
+Vytvoříme skupinu prostředků.
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-V současné době skupina prostředků je prázdný.
+V tuto chvíli je skupina prostředků prázdná.
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
-Chcete Ujistěte se, že uživatelé ve vaší organizaci mají správnou úroveň přístupu na tyto prostředky. Nechcete, aby uživatelům udělit neomezený přístup, ale musíte také zkontrolujte, zda že mohou provádět práci. [Řízení přístupu na základě role](../../role-based-access-control/overview.md) můžete spravovat uživatele, kteří mají oprávnění k dokončení určitých akcí u oboru.
+Potřebujete zajistit, aby uživatelé ve vaší organizaci měli správnou úroveň přístupu k těmto prostředkům. Nechcete uživatelům dát neomezený přístup, ale zároveň jim potřebujete umožnit dělat svou práci. Pomocí [řízení přístupu na základě rolí](../../role-based-access-control/overview.md) můžete spravovat oprávnění uživatelů k provádění určitých akcí v daném oboru.
 
-Vytvoření a odeberte přiřazení rolí, uživatelé musí mít `Microsoft.Authorization/roleAssignments/*` přístup. Tento přístup je poskytována prostřednictvím role vlastníka nebo správce uživatelského přístupu.
+K vytváření a odebírání přiřazení rolí musí mít uživatelé přístup `Microsoft.Authorization/roleAssignments/*`. Tento přístup se poskytuje prostřednictvím role vlastníka nebo správce uživatelských přístupů.
 
-Pro správu řešení virtuálního počítače, existují tři role konkrétní prostředky, které poskytují běžně potřebné přístup:
+Pro správu řešení virtuálních počítačů existují v závislosti na prostředcích tři role, které poskytují běžný přístup:
 
 * [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 * [Přispěvatel sítě](../../role-based-access-control/built-in-roles.md#network-contributor)
-* [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
+* [Přispěvatel účtů úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Místo přiřazení rolí pro jednotlivé uživatele, je často jednodušší [vytvoření skupiny Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují k provádění podobných akcí. Potom přiřaďte této skupině do odpovídající role. Ke zjednodušení tohoto článku, vytvořit skupinu služby Azure Active Directory bez členů. Tato skupina stále můžete přiřadit do rolí pro obor. 
+Místo přiřazení rolí jednotlivým uživatelům je často jednodušší [vytvořit skupinu Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md) pro uživatele, kteří potřebují provádět podobné akce. Potom této skupině přiřaďte odpovídající role. Pro názornost tohoto článku stačí vytvořit skupinu Azure Active Directory bez členů. Této skupině můžete přiřadit role pro některý obor. 
 
-Následující příklad vytvoří skupinu Azure Active Directory s názvem *VMDemoContributors* s e-mailu Přezdívka *vmDemoGroup*. E-mailu Přezdívka slouží jako alias pro skupinu.
+Následující příklad vytvoří skupinu Azure Active Directory s názvem *VMDemoContributors* a přezdívkou pro poštu *vmDemoGroup*. Přezdívka pro poštu slouží jako alias pro skupinu.
 
 ```azurepowershell-interactive
 $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
@@ -64,7 +65,7 @@ $adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
   -SecurityEnabled $true
 ```
 
-Jak dlouho trvá chvíli po příkazového řádku vrátí pro skupinu rozšíří v rámci Azure Active Directory. Po 20 nebo 30 sekund čekání, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) příkazu přiřaďte nové skupiny Azure Active Directory k roli Přispěvatel virtuálních počítačů pro skupinu prostředků.  Pokud předtím, než se rozšíří, spusťte následující příkaz, zobrazí se chybová zpráva, **hlavní <guid> neexistuje v adresáři**. Zkuste znovu spustit příkaz.
+Po odeslání z příkazového řádku chvíli trvá, než se skupina rozšíří v rámci Azure Active Directory. Po 20 nebo 30 sekundách čekání přiřaďte pomocí příkazu [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) novou skupinu Azure Active Directory v dané skupině prostředků do role Přispěvatel virtuálních počítačů.  Pokud následující příkaz spustíte dřív, než se skupina rozšíří, zobrazí se chybová zpráva s informací, že **objekt zabezpečení <guid> neexistuje v adresáři**. Zkuste příkaz znovu spustit.
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
@@ -72,27 +73,27 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Obvykle, opakujte tento postup pro *Přispěvatel sítě* a *Přispěvatel účet úložiště* a ujistěte se, uživatelé budou přiřazení ke správě nasazené prostředky. V tomto článku můžete přeskočit těchto kroků.
+Obvykle tento postup zopakujete pro role *Přispěvatel sítě* a *Přispěvatel účtů úložiště*, abyste zajistili přiřazení uživatelů ke správě nasazených prostředků. V tomto článku můžete tyto kroky vynechat.
 
-## <a name="azure-policies"></a>Azure zásady
+## <a name="azure-policies"></a>Zásady Azure
 
 [!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
 
-### <a name="apply-policies"></a>Pomocí zásad
+### <a name="apply-policies"></a>Použití zásad
 
-Vaše předplatné už má několik definice zásady. Pokud chcete zobrazit definice dostupné zásady, použijte [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition) příkaz:
+Vaše předplatné už obsahuje několik definic zásad. Pokud chcete zobrazit definice dostupných zásad, použijte příkaz [Get-AzureRmPolicyDefinition](/powershell/module/AzureRM.Resources/Get-AzureRmPolicyDefinition):
 
 ```azurepowershell-interactive
 (Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-Zobrazí existující definice zásady. Typ zásad je buď **BuiltIn** nebo **vlastní**. Projděte definice pro šablony, které popisují podmínku chcete přiřadit. V tomto článku můžete přiřadit zásady který:
+Zobrazí se definice existujících zásad. Typ zásad je buď **Předdefinované** nebo **Vlastní**. Najděte definice zásad popisující podmínku, kterou chcete přiřadit. V tomto článku můžete přiřadit zásady s těmito funkcemi:
 
-* Omezení umístění pro všechny prostředky.
-* Omezte SKU pro virtuální počítače.
-* Audit virtuálních počítačů, které nepoužívají spravované disky.
+* Omezení umístění pro všechny prostředky
+* Omezení SKU pro virtuální počítače
+* Audit virtuálních počítačů, které nepoužívají spravované disky
 
-V následujícím příkladu načíst tři definice zásady založené na zobrazovaný název. Můžete použít [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) příkazu přiřaďte tyto definice do skupiny prostředků. Pro některé zásady zadejte hodnoty parametrů k určení povolených hodnot.
+V následujícím příkladu načtete definice tří zásad na základě zobrazovaného názvu. K přiřazení těchto definic do skupiny prostředků můžete použít příkaz [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment). U některých zásad určíte povolené hodnoty zadáním hodnot parametrů.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -125,9 +126,9 @@ New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
   -PolicyDefinition $auditDefinition
 ```
 
-## <a name="deploy-the-virtual-machine"></a>Nasaďte virtuální počítač
+## <a name="deploy-the-virtual-machine"></a>Nasazení virtuálního počítače
 
-Přiřadili jste role a zásady, takže jste připravení nasadit řešení. Výchozí velikost je Standard_DS1_v2, což je jedno z vaší povolená SKU. Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
+Přiřadili jste role a zásady, takže jste připravení nasadit řešení. Výchozí velikost je Standard_DS1_v2, což je jedno z povolených SKU. Při spuštění tohoto kroku se zobrazí výzva k zadání přihlašovacích údajů. Hodnoty, které zadáte, se nakonfigurují jako uživatelské jméno a heslo pro virtuální počítač.
 
 ```azurepowershell-interactive
 New-AzureRmVm -ResourceGroupName "myResourceGroup" `
@@ -140,13 +141,13 @@ New-AzureRmVm -ResourceGroupName "myResourceGroup" `
      -OpenPorts 80,3389
 ```
 
-Po dokončení nasazení můžete použít další nastavení správy k řešení.
+Po dokončení nasazování můžete použít další nastavení pro správu řešení.
 
 ## <a name="lock-resources"></a>Uzamčení prostředků
 
-[Uzamčení prostředků](../../azure-resource-manager/resource-group-lock-resources.md) zabránit uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Na rozdíl od řízení přístupu na základě rolí uzamčení prostředků platí omezení ve všech uživatelů a rolí. Můžete nastavit zámek na úrovni *CanNotDelete* nebo *jen pro čtení*.
+[Zámky prostředků](../../azure-resource-manager/resource-group-lock-resources.md) zabraňují tomu, aby uživatelé ve vaší organizaci neúmyslně odstranili nebo změnili důležité prostředky. Na rozdíl od řízení přístupu na základě role používají zámky prostředků omezení pro všechny uživatele a role. Zámek můžete nastavit na úroveň *CanNotDelete* nebo *ReadOnly*.
 
-Pokud chcete zamknout virtuálního počítače a skupiny zabezpečení sítě, použijte [New-AzureRmResourceLock](/powershell/module/azurerm.resources/new-azurermresourcelock) příkaz:
+Pokud chcete zamknout virtuální počítač a skupinu zabezpečení sítě, použijte příkaz [New-AzureRmResourceLock](/powershell/module/azurerm.resources/new-azurermresourcelock):
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -164,21 +165,21 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
   -ResourceGroupName myResourceGroup
 ```
 
-K testování zámky, spusťte následující příkaz:
+Zámky otestujete pomocí následujícího příkazu:
 
 ```azurepowershell-interactive 
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-Zobrazí chyba s oznámením, že operaci odstranění nelze provést z důvodu zámek. Skupina prostředků lze odstranit pouze pokud odeberete konkrétně zámky. Tento krok se zobrazí v [vyčištění prostředků](#clean-up-resources).
+Zobrazí se chyba s oznámením, že operaci odstranění nelze provést z důvodu zámku. Skupinu prostředků odstraníte, pouze pokud skutečně odeberete zámky. Tento krok najdete v části o [vyčištění prostředků](#clean-up-resources).
 
-## <a name="tag-resources"></a>Značka prostředky
+## <a name="tag-resources"></a>Označení prostředků
 
-Použijete [značky](../../azure-resource-manager/resource-group-using-tags.md) vaše prostředky Azure logicky uspořádat podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
+K logickému uspořádání prostředků Azure podle kategorií slouží [značky](../../azure-resource-manager/resource-group-using-tags.md). Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Pro použití značek k virtuálnímu počítači, použijte [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) příkaz:
+K virtuálnímu počítači přidáte značky pomocí příkazu [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource):
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -190,15 +191,15 @@ $r = Get-AzureRmResource -ResourceName myVM `
 Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
-### <a name="find-resources-by-tag"></a>Najít prostředky podle značky
+### <a name="find-resources-by-tag"></a>Hledání prostředků podle značky
 
-K vyhledání prostředků s názvem značky a hodnoty, použijte [najít AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) příkaz:
+K vyhledání prostředků pomocí názvu značky a hodnoty použijte příkaz [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource):
 
 ```azurepowershell-interactive
 (Find-AzureRmResource -TagName Environment -TagValue Test).Name
 ```
 
-Pro úlohy správy, jako zastavení všechny virtuální počítače s hodnotou značky můžete použít vrácené hodnoty.
+Vrácené hodnoty můžete použít pro úlohy správy, jako je zastavení všech virtuálních počítačů s určitou hodnotou značky.
 
 ```azurepowershell-interactive
 Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
@@ -210,7 +211,7 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Skupina zabezpečení sítě uzamčeném nejde odstranit, dokud se odebere ze zařízení zámek. Chcete-li odebrat zámek, použijte [odebrat AzureRmResourceLock](/powershell/module/azurerm.resources/remove-azurermresourcelock) příkaz:
+Zamčená skupina zabezpečení sítě nejde odstranit, dokud neodstraníte zámek. Zámek odeberete pomocí příkazu [Remove-AzureRmResourceLock](/powershell/module/azurerm.resources/remove-azurermresourcelock):
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceLock -LockName LockVM `
@@ -229,17 +230,17 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuá
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Přiřazení uživatele k roli
-> * Použít zásady, které vynucují standardy
-> * Chránit důležité prostředky s zámky.
-> * Označit prostředky pro správu a fakturaci
+> * Přiřazení role uživateli
+> * Použití zásad, které vynucují standardy
+> * Ochrana důležitých prostředků pomocí zámků
+> * Označení prostředků pro fakturaci a správu
 
-Přechodu na další informace o tom, jak vysoce dostupné virtuální počítače v dalším kurzu.
+Přejděte k dalšímu kurzu, kde se seznámíte s virtuálními počítači s vysokou dostupností.
 
 > [!div class="nextstepaction"]
 > [Monitorování virtuálních počítačů](tutorial-monitoring.md)

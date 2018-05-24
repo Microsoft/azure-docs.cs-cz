@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 40fa33aad8bf5ac042f9d80493b97a914fe770bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0718365153390f525b22ef07559a822c777c2ff4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Rychlý start: Horizontální navýšení kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse v PowerShellu
 
@@ -55,19 +55,19 @@ Vyhledejte název databáze, název serveru a skupinu prostředků pro datový s
 Informace o umístění vašeho datového skladu vyhledáte pomocí následujících kroků.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Na webu Azure Portal klikněte vlevo na **Databáze SQL**.
-3. Na stránce **Databáze SQL** vyberte **mySampleDataWarehouse**. Tím se otevře datový sklad.
+2. Na webu Azure Portal klikněte vlevo na **Datové sklady SQL**.
+3. Na stránce **Datové sklady SQLL** vyberte **mySampleDataWarehouse**. Tím se otevře datový sklad.
 
     ![Název serveru a skupina prostředků](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
 4. Poznamenejte si název datového skladu, který se použije jako název databáze. Pamatujte, že datový sklad je jedním z typů databáze. Také poznamenejte si název serveru a skupinu prostředků. Použijete je v příkazech pro pozastavení a obnovení.
-5. Pokud využíváte server foo.database.windows.net, v rutinách PowerShellu používejte jako název serveru jen jeho první část. Na předchozím obrázku je úplný název serveru newserver-20171113.database.windows.net. Jako název serveru v rutině PowerShellu používáme **newserver-20171113**.
+5. Pokud využíváte server foo.database.windows.net, v rutinách PowerShellu používejte jako název serveru jen jeho první část. Na předchozím obrázku je úplný název serveru newserver-20171113.database.windows.net. Jako název serveru v rutině PowerShellu používáme **newserver-20180430**.
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
 Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a zvýšit nebo snížit tak množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
-Pokud chcete změnit jednotky datového skladu, použijte rutinu PowerShellu [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase). Následující příklad nastaví jako jednotky datového skladu DW300 pro databázi **mySampleDataWarehouse**, která je hostovaná ve skupině prostředků **myResourceGroup** na serveru **mynewserver-20171113**.
+Pokud chcete změnit jednotky datového skladu, použijte rutinu PowerShellu [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase). Následující příklad nastaví jako jednotky datového skladu DW300 pro databázi **mySampleDataWarehouse**, která je hostovaná ve skupině prostředků **myResourceGroup** na serveru **mynewserver-20180430**.
 
 ```Powershell
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
@@ -75,7 +75,7 @@ Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySam
 
 ## <a name="check-data-warehouse-state"></a>Kontrola stavu datového skladu
 
-Pokud se chcete podívat na stav datového skladu, můžete použít powershellovou rutinu [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase). S její pomocí se načte stav databáze **mySampleDataWarehouse** ve skupině prostředků **myResourceGroup** na serveru **mynewserver-20171113.database.windows.net**.
+Pokud se chcete podívat na stav datového skladu, můžete použít powershellovou rutinu [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase). S její pomocí se načte stav databáze **mySampleDataWarehouse** ve skupině prostředků **myResourceGroup** na serveru **mynewserver-20180430.database.windows.net**.
 
 ```powershell
 $database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse

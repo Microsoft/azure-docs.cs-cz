@@ -1,28 +1,28 @@
 ---
-title: "Zabezpečení webového serveru s využitím certifikátů SSL v Azure | Dokumentace Microsoftu"
-description: "Zjistěte, jak zabezpečit webový server NGINX s využitím certifikátů SSL na virtuálním počítači s Linuxem v Azure."
+title: Kurz – Zabezpečení webového serveru s Linuxem pomocí certifikátů SSL v Azure | Microsoft Docs
+description: V tomto kurzu se naučíte používat Azure CLI 2.0 k zabezpečení virtuálního počítače s Linuxem, na kterém běží webový server NGINX, pomocí certifikátů SSL uložených v Azure Key Vaultu.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2017
+ms.date: 04/30/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 02118533c4ab552f81157f644bb794e68fbc4ce3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f86cc891b67cddf3a4046260d2977371af3d0596
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Zabezpečení webového serveru s využitím certifikátů SSL na virtuálním počítači s Linuxem v Azure
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Linuxem v Azure pomocí certifikátů SSL uložených v Key Vaultu
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ K zabezpečení webových serverů můžete použít certifikáty SSL (Secure So
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI ve verzi 2.0.22 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).  
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 
 ## <a name="overview"></a>Přehled
@@ -70,14 +70,14 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Příprava certifikátu pro použití na virtuálním počítači
-Pokud chcete certifikát použít během procesu vytváření virtuálního počítače, získejte ID vašeho certifikátu pomocí příkazu [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions). Převeďte certifikát pomocí příkazu [az vm format-secret](/cli/azure/vm#az_vm_format_secret). Z důvodu snadnějšího použití v dalších krocích přiřadí následující příklad výstup těchto příkazů do proměnných:
+Pokud chcete certifikát použít během procesu vytváření virtuálního počítače, získejte ID vašeho certifikátu pomocí příkazu [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions). Převeďte certifikát pomocí příkazu [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format). Z důvodu snadnějšího použití v dalších krocích přiřadí následující příklad výstup těchto příkazů do proměnných:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm format-secret --secret "$secret")
+vm_secret=$(az vm secret format --secrets "$secret")
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Vytvoření konfigurace cloud-init pro zabezpečení serveru NGINX
@@ -159,4 +159,3 @@ Na tomto odkazu najdete předem připravené ukázky skriptů pro virtuální po
 
 > [!div class="nextstepaction"]
 > [Ukázky skriptů pro virtuální počítače s Linuxem](./cli-samples.md)
-

@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI: Vytvoření databáze SQL | Dokumentace Microsoftu'
+title: 'Azure CLI: Vytvoření databáze SQL | Microsoft Docs'
 description: Naučíte se vytvářet logický server SQL Database, pravidlo brány firewall na úrovni serveru a databáze pomocí Azure CLI.
 keywords: kurz k sql database, vytvoření databáze sql
 services: sql-database
@@ -11,11 +11,11 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: carlrab
-ms.openlocfilehash: f1d54d71979c3a39b2b40a41b1ba1ab03aa75395
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d4bb27ddc4ff9385fd46fc7554af2af16ef40558
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Vytvoření izolované databáze SQL Azure pomocí Azure CLI
 
@@ -78,7 +78,7 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 
 ## <a name="create-a-database-in-the-server-with-sample-data"></a>Vytvoření databáze s ukázkovými daty na serveru
 
-Vytvořte na serveru databázi s [úrovní výkonu S0](sql-database-service-tiers.md) pomocí příkazu [az sql db create](/cli/azure/sql/db#az_sql_db_create). Následující příklad vytvoří databázi s názvem `mySampleDatabase` a načte do této databáze ukázková data AdventureWorksLT. Tyto předdefinované hodnoty nahraďte podle potřeby (další rychlé starty v této kolekci jsou postavené na tomto rychlém startu).
+Vytvořte na serveru databázi s [úrovní výkonu S0](sql-database-service-tiers-dtu.md) pomocí příkazu [az sql db create](/cli/azure/sql/db#az_sql_db_create). Následující příklad vytvoří databázi s názvem `mySampleDatabase` a načte do této databáze ukázková data AdventureWorksLT. Tyto předdefinované hodnoty nahraďte podle potřeby (další rychlé starty v této kolekci jsou postavené na tomto rychlém startu).
 
 ```azurecli-interactive
 az sql db create --resource-group $resourcegroupname --server $servername \

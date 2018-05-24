@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Microsoft Power BI Embedded | Dokumentace Microsoftu
+title: Začínáme s Microsoft Power BI Embedded | Microsoft Docs
 description: Power BI Embedded do aplikace business intelligence
 services: power-bi-embedded
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 7b604f9a26fc4c9a2c76a28ca01d066fe1640718
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 692edc9a685ce7d1906f13f08c763909a2513b03
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Začínáme s Microsoft Power BI Embedded
 
@@ -48,7 +48,7 @@ Nabízíme ukázky, které vám pomůžou začít. Názorného průvodce ukázko
 Vytvořte v rámci Microsoft Azure kapacitu Power BI Embedded pro přesun aplikace do produkčního prostředí. Informace o postupu vytvoření kapacity najdete v tématu [Vytvoření kapacity Power BI Embedded na webu Azure Portal](create-capacity.md).
 
 > [!IMPORTANT]
-> Vzhledem k tomu, že vložené tokeny jsou určené jenom pro účely vývoje a testování, omezili jsme počet vložených tokenů, které může vytvořit hlavní účet Power BI. Pro scénáře vkládání v produkčním prostředí je [potřeba zakoupit kapacitu](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Pokud je kapacita zakoupena, není generování vložených tokenů nijak omezené.
+> Vzhledem k tomu, že vložené tokeny jsou určené jenom pro účely vývoje a testování, omezili jsme počet vložených tokenů, které může vytvořit hlavní účet Power BI. Pro scénáře vkládání v produkčním prostředí je [potřeba zakoupit kapacitu](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Pokud je kapacita zakoupena, není generování vložených tokenů nijak omezené. Pokud chcete zkontrolovat aktuální využití vkládání v procentech, přejděte na [Získat dostupné funkce](https://msdn.microsoft.com/en-us/library/mt846473.aspx).
 
 Kapacitu můžete spravovat na portálu pro správu Power BI. Přiřaďte pověřující osobu pracovního prostoru, která vám pomůže s pracovními prostory aplikace. Další informace najdete v tématu [Správa kapacit v Power BI Premium a Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 

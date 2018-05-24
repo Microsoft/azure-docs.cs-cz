@@ -1,6 +1,6 @@
 ---
-title: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure | Microsoft Docs
-description: Zjistěte, jak pomocí nástroje pro vyrovnávání zatížení Azure vytvořit vysoce dostupnou a zabezpečenou aplikaci na třech virtuálních počítačích s Linuxem.
+title: Kurz – vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí Azure CLI 2.0 vytvořit nástroj pro vyrovnávání zatížení pro vysoce dostupnou a zabezpečenou aplikaci na třech virtuálních počítačích s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: baae0ee72056d2f7437a865b11f738ef0a2e6934
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace
+# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli-20"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů s Linuxem v Azure za účelem vytvoření vysoce dostupné aplikace pomocí Azure CLI 2.0
+
 Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. V tomto kurzu se seznámíte s různými komponentami nástroje pro vyrovnávání zatížení Azure, které distribuují provoz a zajišťují vysokou dostupnost. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
@@ -34,10 +35,9 @@ Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že r
 > * Zobrazení nástroje pro vyrovnávání zatížení v akci
 > * Přidání virtuálních počítačů do nástroje pro vyrovnávání zatížení a jejich odebrání
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Azure Load Balancer – přehled
 Nástroj pro vyrovnávání zatížení Azure je nástroj pro vyrovnávání zatížení úrovně 4 (TCP, UDP), který poskytuje vysokou dostupnost díky distribuci příchozího provozu mezi virtuální počítače v dobrém stavu. Sonda stavu nástroje pro vyrovnávání zatížení na všech virtuálních počítačích monitoruje daný port a distribuuje provoz pouze do virtuálních počítačů, které jsou v provozu.

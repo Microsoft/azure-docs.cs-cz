@@ -1,6 +1,6 @@
 ---
-title: Kurz ke skupinám dostupnosti pro virtuální počítače s Linuxem v Azure | Microsoft Docs
-description: Seznamte se se skupinami dostupnosti pro virtuální počítače s Linuxem v Azure.
+title: Kurz vysoké dostupnosti pro virtuální počítače s Linuxem v Azure | Microsoft Docs
+description: V tomto kurzu zjistíte, jak používat Azure CLI 2.0 k nasazení vysoce dostupných virtuálních počítačů ve skupinách dostupnosti.
 documentationcenter: ''
 services: virtual-machines-linux
 author: cynthn
@@ -16,16 +16,15 @@ ms.topic: tutorial
 ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d317ec8136ad7a36381239593c3a53c40f897845
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: dc6fba89571515d0d2d7ed3ecc35c3065405056b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-use-availability-sets"></a>Jak používat skupiny dostupnosti
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli-20"></a>Kurz: Vytvoření a nasazení vysoce dostupných virtuálních počítačů pomocí Azure CLI 2.0
 
-
-V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení využívajících virtuální počítače v Azure pomocí schopnosti označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými clustery. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
+V tomto kurzu zjistíte, jak zvýšit dostupnost a spolehlivost svých řešení, která využívají virtuální počítače v Azure, pomocí funkce označované jako skupiny dostupnosti. Skupiny dostupnosti zajišťují distribuci virtuálních počítačů nasazených v Azure napříč několika izolovanými hardwarovými clustery. To zajišťuje, že pokud dojde k selhání hardwaru nebo softwaru v rámci Azure, ovlivní to pouze podmnožinu vašich virtuálních počítačů a vaše celkové řešení zůstane dostupné a funkční.
 
 V tomto kurzu se naučíte:
 
@@ -34,10 +33,9 @@ V tomto kurzu se naučíte:
 > * Vytvoření virtuálního počítače ve skupině dostupnosti
 > * Kontrola dostupných velikostí virtuálních počítačů
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="availability-set-overview"></a>Přehled skupiny dostupnosti
 
@@ -50,16 +48,13 @@ Skupiny dostupnosti použijte v případě, že chcete v Azure nasazovat spolehl
 
 ## <a name="create-an-availability-set"></a>Vytvoření skupiny dostupnosti
 
-Skupinu dostupnosti můžete vytvořit pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create). V tomto příkladu nastavíme počet aktualizačních domén i domén selhání na *2* pro skupinu dostupnosti *myAvailabilitySet* ve skupině prostředků *myResourceGroupAvailability*.
+Skupinu dostupnosti můžete vytvořit pomocí příkazu [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create). V tomto příkladu nastavíme počet aktualizačních domén a domén selhání na *2* pro skupinu dostupnosti *myAvailabilitySet* ve skupině prostředků *myResourceGroupAvailability*.
 
-Vytvořte skupinu prostředků.
+Nejprve vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create) a pak vytvořte skupinu dostupnosti:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
-```
 
-
-```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupAvailability \
     --name myAvailabilitySet \
@@ -67,44 +62,44 @@ az vm availability-set create \
     --platform-update-domain-count 2
 ```
 
-Skupiny dostupnosti umožňují izolovat prostředky napříč doménami selhání a aktualizačními doménami. **Doména selhání** představuje izolovanou kolekci prostředků serveru, sítě a úložiště. V předchozím příkladu udáváme, že po nasazení virtuálních počítačů chceme skupinu dostupnosti distribuovat napříč alespoň dvěma doménami selhání. Udáváme také, že chceme skupinu dostupnosti distribuovat napříč dvěma **aktualizačními doménami**.  Dvě aktualizační domény zajistí izolaci prostředků virtuálních počítačů při tom, když Azure provádí aktualizace softwaru, a tím zabrání současné aktualizaci veškerého softwaru běžícího pod virtuálními počítači.
+Skupiny dostupnosti umožňují izolovat prostředky napříč doménami selhání a aktualizačními doménami. **Doména selhání** představuje izolovanou kolekci prostředků serveru, sítě a úložiště. V předchozím příkladu je po nasazení virtuálních počítačů skupina dostupnosti distribuována napříč alespoň dvěma doménami selhání. Skupina dostupnosti je také distribuována napříč dvěma **aktualizačními doménami**. Dvě aktualizační domény zajistí izolaci prostředků virtuálních počítačů při tom, když Azure provádí aktualizace softwaru, a tím zabrání současné aktualizaci veškerého softwaru spuštěného na virtuálních počítačích.
 
 
 ## <a name="create-vms-inside-an-availability-set"></a>Vytvoření virtuálních počítačů ve skupině dostupnosti
 
-Virtuální počítače je nutné vytvořit ve skupině dostupnosti, abyste měli jistotu, že jsou správně distribuované napříč hardwarem. Existující virtuální počítač po vytvoření není možné přidat do skupiny dostupnosti. 
+Virtuální počítače je nutné vytvořit ve skupině dostupnosti, abyste měli jistotu, že jsou správně distribuované napříč hardwarem. Existující virtuální počítač není možné přidat do vytvořené skupiny dostupnosti.
 
-Při vytváření virtuálního počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create) zadáte skupinu dostupnosti pomocí parametru `--availability-set`, ve kterém zadáte název skupiny dostupnosti.
+Při vytvoření virtuálního počítače pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create) použijte parametr `--availability-set` k zadání názvu skupiny dostupnosti.
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in `seq 1 2`; do
    az vm create \
      --resource-group myResourceGroupAvailability \
      --name myVM$i \
      --availability-set myAvailabilitySet \
      --size Standard_DS1_v2  \
-     --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+     --image UbuntuLTS \
      --admin-username azureuser \
      --generate-ssh-keys \
      --no-wait
-done 
+done
 ```
 
-Teď máme v nově vytvořené skupině dostupnosti dva virtuální počítače. Vzhledem k tomu, že jsou ve stejné skupině dostupnosti, Azure zajistí distribuci virtuálních počítačů a všech jejich prostředků (včetně datových disků) napříč izolovaným fyzickým hardwarem. Tato distribuce pomáhá zajistit mnohem vyšší dostupnost celkového řešení využívajícího virtuální počítače.
+V rámci sady dostupnosti nyní existují dva virtuální počítače. Vzhledem k tomu, že jsou ve stejné skupině dostupnosti, Azure zajistí distribuci virtuálních počítačů a všech jejich prostředků (včetně datových disků) napříč izolovaným fyzickým hardwarem. Tato distribuce pomáhá zajistit mnohem vyšší dostupnost celkového řešení využívajícího virtuální počítače.
 
-Pokud se na skupinu dostupnosti podíváte na portálu v části Skupiny dostupnosti > myResourceGroupAvailability > myAvailabilitySet, měli byste vidět, jak se virtuální počítače distribuují napříč dvěma doménami selhání a aktualizačnímu doménami.
+Distribuci sadu dostupnosti lze zobrazit na portálu tak, že přejdete na Skupiny prostředků > myResourceGroupAvailability > myAvailabilitySet. Virtuální počítače jsou distribuované ve dvou doménách selhání a aktualizačních doménách, jak je znázorněno v následujícím příkladu:
 
 ![Skupina dostupnosti na portálu](./media/tutorial-availability-sets/fd-ud.png)
 
-## <a name="check-for-available-vm-sizes"></a>Kontrola dostupných velikostí virtuálních počítačů 
+## <a name="check-for-available-vm-sizes"></a>Kontrola dostupných velikostí virtuálních počítačů
 
-Později můžete do skupiny dostupnosti přidat další virtuální počítače, potřebujete však vědět, jaké velikosti virtuálních počítačů jsou na konkrétním hardwaru k dispozici.  Pomocí příkazu [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) vypíšete všechny dostupné velikosti na hardwarovém clusteru pro skupinu dostupnosti.
+Další virtuální počítače lze přidat do skupiny dostupnosti později, pokud jsou na hardwaru k dispozici velikosti virtuálních počítačů. Pomocí příkazu [az vm availability-set list-sizes](/cli/azure/availability-set#az_availability_set_list_sizes) vypíšete všechny dostupné velikosti na hardwarovém clusteru pro skupinu dostupnosti:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vm availability-set list-sizes \
      --resource-group myResourceGroupAvailability \
      --name myAvailabilitySet \
-     --output table  
+     --output table
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -120,4 +115,3 @@ Přejděte k dalšímu kurzu, kde se seznámíte se škálovacími sadami virtu�
 
 > [!div class="nextstepaction"]
 > [Vytvoření škálovací sady virtuálních počítačů](tutorial-create-vmss.md)
-

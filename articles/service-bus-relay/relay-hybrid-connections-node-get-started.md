@@ -1,30 +1,30 @@
 ---
-title: "Začínáme s hybridními připojeními Azure Relay v Node | Dokumentace Microsoftu"
-description: "Napište konzolovou aplikaci v Node.js pro Azure Relay Hybrid Connections."
+title: Začínáme s WebSockety Azure Relay Hybrid Connections v Node | Microsoft Docs
+description: Napište konzolovou aplikaci v Node.js pro WebSockety Azure Relay Hybrid Connections.
 services: service-bus-relay
 documentationcenter: node
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Začínáme s hybridními připojeními pro přenos
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Začínáme s WebSockety Relay Hybrid Connections v Node
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Tento kurz obsahuje úvod do služby [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections) a ukazuje, jak pomocí Node.js vytvořit klientskou aplikaci, která odesílá zprávy do příslušné aplikace naslouchacího procesu. 
+Tento kurz obsahuje úvod do funkce WebSocketů [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections) a ukazuje, jak pomocí Node.js vytvořit klientskou aplikaci, která odesílá zprávy WebSocketů do příslušné aplikace naslouchacího procesu.
 
 ## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
 
