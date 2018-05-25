@@ -5,16 +5,16 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/2/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: cec2ab862a34a8753601dfeef3081ae9e9ca9fd9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.openlocfilehash: 63e87c59a2e560b5a78708482c2ed89f5f8fb127
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Použití rozhraní REST API služby Azure Blockchain Workbench 
 
@@ -26,12 +26,14 @@ Rozhraní REST API služby Azure Blockchain Workbench poskytuje vývojářům a 
 * Výpis dostupných akcí pro kontrakt
 * Provedení akce pro kontrakt
 
+Příklad blockchain aplikací používaných v případech, může být [stáhnout z webu GitHub](https://github.com/Azure-Samples/blockchain). 
+
 ## <a name="list-applications"></a>Výpis aplikací
 
-Jakmile se uživatel přihlásí do blockchainového klienta, první úkolem je načíst pro uživatele všechny blockchainové aplikace ve službě Blockchain Workbench. V tomto scénáři má uživatel přístup do dvou aplikací:
+Jakmile uživatel má přihlášeni blockchain klienta, je první úlohou načíst všechny Blockchain Workbench aplikace pro uživatele. V tomto scénáři má uživatel přístup do dvou aplikací:
 
-1.  Asset Transfer (Převod majetku)
-2.  Refrigerated Transportation (Doprava chladírenskými a mrazicími vozy)
+1.  [Převod majetku](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+2.  [Chladicí Transport](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
 Použití rozhraní [Applications GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget):
 
@@ -40,7 +42,7 @@ GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-Vrátí seznam všech blockchainových aplikací, ke kterým má uživatel přístup ve službě Blockchain Workbench. Správci služby Blockchain Workbench získají všechny blockchainové aplikace, zatímco uživatelé, kteří nejsou správci služby Workbench, získají všechny blockchainy, pro které mají alespoň jednu přidruženou roli aplikace nebo přidruženou roli instance chytrého kontraktu.
+Odpověď obsahuje seznam všech blockchain aplikací, ke kterým má uživatel přístup v Blockchain Workbench. Správci služby Blockchain Workbench získají všechny blockchainové aplikace, zatímco uživatelé, kteří nejsou správci služby Workbench, získají všechny blockchainy, pro které mají alespoň jednu přidruženou roli aplikace nebo přidruženou roli instance chytrého kontraktu.
 
 ``` http
 HTTP/1.1 200 OK
@@ -74,7 +76,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Výpis pracovních postupů pro aplikaci
 
-Když si uživatel vybere příslušnou blockchainovou aplikaci, v tomto případě Asset Transfer, blockchainový klient načte všechny pracovní postupy zadané blockchainové aplikace. Uživatelé si pak můžou vybrat vhodný pracovní postup před zobrazením všech instancí chytrých kontraktů pro daný pracovní postup. Každá blockchainová aplikace má jeden nebo více pracovních postupů a každý pracovní postup má nula nebo více instancí chytrých kontraktů. Při vytváření blockchainových klientských aplikací doporučujeme v uživatelském rozhraní přeskočit možnosti, které uživatelům umožňují výběr příslušného pracovního postupu, pokud pro danou blockchainovou aplikaci existuje jen jeden pracovní postup. V tomto případě má aplikace Asset Transfer jenom jeden pracovní postup, označovaný také jako Asset Transfer.
+Jakmile uživatel vybere blockchain příslušné aplikace, v takovém případě **Asset přenosu**, blockchain klient načte všechny pracovní postupy blockchain konkrétní aplikace. Uživatelé si pak můžou vybrat vhodný pracovní postup před zobrazením všech instancí chytrých kontraktů pro daný pracovní postup. Každá blockchainová aplikace má jeden nebo více pracovních postupů a každý pracovní postup má nula nebo více instancí chytrých kontraktů. Při vytváření blockchainových klientských aplikací doporučujeme v uživatelském rozhraní přeskočit možnosti, které uživatelům umožňují výběr příslušného pracovního postupu, pokud pro danou blockchainovou aplikaci existuje jen jeden pracovní postup. V takovém případě **přenosu Asset** má jenom jeden pracovní postup, označované taky jako **Asset přenos**.
 
 Použití rozhraní [Applications Workflows GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget):
 
@@ -106,7 +108,7 @@ Content-type: application/json
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Výpis instancí chytrých kontraktů pro pracovní postup
 
-Když uživatel vybere vhodný pracovní postup, v tomto případě Asset Transfer, blockchainový klient načte všechny instance chytrých kontraktů pro zadaný pracovní postup. Tyto informace můžete využít k tomu, abyste zobrazili všechny instance chytrých kontraktů pro pracovní postup a povolili uživatelům zobrazit podrobné informace o jakékoli z instancí chytrých kontraktů z tohoto seznamu. V tomto příkladu předpokládejme, že by uživatel chtěl komunikovat s některou z instancí chytrých kontraktů kvůli provedení akce.
+Jakmile uživatel vybere použít pracovní postup, tomto případě **Asset přenosu**, blockchain klient načte všechny instance inteligentní kontrakt pro zadaný pracovní postup. Tyto informace můžete využít k tomu, abyste zobrazili všechny instance chytrých kontraktů pro pracovní postup a povolili uživatelům zobrazit podrobné informace o jakékoli z instancí chytrých kontraktů z tohoto seznamu. V tomto příkladu předpokládejme, že by uživatel chtěl komunikovat s některou z instancí chytrých kontraktů kvůli provedení akce.
 
 Použití rozhraní [Contracts GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractsget):
 
@@ -304,7 +306,7 @@ HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozhraní REST API služby Azure Blockchain Workbench](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)

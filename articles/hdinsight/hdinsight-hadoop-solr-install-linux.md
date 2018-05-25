@@ -4,7 +4,7 @@ description: Zjistěte, jak nainstalovat Solr na systémem Linux HDInsight Hadoo
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: cc93ed5c-a358-456a-91a4-f179185c0e98
@@ -12,20 +12,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/20/2018
+ms.date: 05/16/2018
 ms.author: larryfr
-ms.openlocfilehash: 707f25a71a22f136a3cfc537ec3dd939e06dea08
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: 77d3964dd54d63db58c63b567ebbe7e529473999
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Solr clusterů systému HDInsight Hadoop
 
 Informace o instalaci Solr v Azure HDInsight pomocí akce skriptu. Solr je platforma pro efektivní vyhledávání a poskytuje možnosti vyhledávání na úrovni podniku na data spravovaná přes Hadoop.
 
 > [!IMPORTANT]
-    > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!IMPORTANT]
 > Ukázkový skript v tomto dokumentu nainstaluje Solr 4.9 s konkrétní konfigurací. Pokud chcete konfigurovat Solr cluster s různých kolekcí, horizontálních oddílů, schémata, repliky, atd., musíte upravit skript a Solr binární soubory.
@@ -80,8 +80,11 @@ Pomocí následujícího postupu můžete přidat do Solr příklad a pak zadat 
 
 1. Připojte se ke clusteru HDInsight pomocí protokolu SSH:
 
+    > [!NOTE]
+    > Nahraďte `sshuser` s uživatelem SSH pro cluster. Nahraďte `clustername` s názvem clusteru.
+
     ```bash
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
