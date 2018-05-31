@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778831"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Správa záznamů DNS a sady záznamů v Azure DNS pomocí Azure PowerShell
 
@@ -57,7 +58,7 @@ Následující příklad vytvoří záznamů s relativním názvem "www" v zón�
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Vytvoření záznamu nastaven na 'vrcholu' zónu (v takovém případě "contoso.com"), použijte název sady záznamů "@" (bez uvozovek):
+Vytvoření záznamu nastaven na 'vrcholu' zónu (v takovém případě "contoso.com"), použijte název sady záznamů "\@" (bez uvozovek):
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
@@ -118,7 +119,7 @@ New-AzureRmDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Vytvoření sady záznamů MX s jedním záznamem
 
-V tomto příkladu používáme název sady záznamů "@" k vytvoření záznamu MX ve vrcholu zóny (v tomto případě "contoso.com").
+V tomto příkladu používáme název sady záznamů "\@" k vytvoření záznamu MX ve vrcholu zóny (v tomto případě "contoso.com").
 
 
 ```powershell
@@ -141,7 +142,7 @@ New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -R
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Vytvoření sady záznamů SRV s jedním záznamem
 
-Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records), zadejte  *\_služby* a  *\_protokol* v názvu sady záznamů. Není nutné zahrnout ' @' v názvu sady záznamů při vytváření záznamu SRV nastavit ve vrcholu zóny.
+Při vytváření [sady záznamů SRV](dns-zones-records.md#srv-records), zadejte  *\_služby* a  *\_protokol* v názvu sady záznamů. Není nutné zahrnout ' \@' v názvu sady záznamů při vytváření záznamu SRV nastavit ve vrcholu zóny.
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 

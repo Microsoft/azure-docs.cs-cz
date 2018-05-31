@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2018
+ms.date: 05/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d8ef36e001aaf417b84efaf99a992fd64f01b6f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366337"
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Scénář 1: Posouzení vhodnosti místních úloh k migraci do Azure
 
@@ -22,9 +23,9 @@ Pro začátek a lepší pochopení příslušných technologií posuzují a migr
 
 **Technologie** | **Popis** | **Náklady**
 --- | --- | ---
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | DMA vyhodnocuje a detekuje problémy s kompatibilitou, které můžou ovlivnit fungování databáze v Azure. Kromě toho posuzuje paritu funkcí mezi zdrojem a cílem SQL Serveru a doporučuje vylepšení výkonu a spolehlivosti pro cílové prostředí. | Tento nástroj je zdarma ke stažení. 
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | DMA vyhodnocuje a detekuje problémy s kompatibilitou, které můžou ovlivnit fungování databáze v Azure. Kromě toho posuzuje paritu funkcí mezi zdrojem a cílem SQL Serveru a doporučuje vylepšení výkonu a spolehlivosti pro cílové prostředí. | Tento nástroj je zdarma ke stažení.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Tato služba pomáhá posuzovat vhodnost místních počítačů k migraci do Azure. Posuzuje vhodnost počítačů k migraci a poskytuje odhady velikostí a nákladů, které bude vyžadovat jejich provoz v Azure. V současné době může služba Azure Migrate posuzovat vhodnost k migraci do Azure u místních virtuálních počítačů VMware. | V současné době (duben 2018) se za používání této služby neplatí žádné poplatky.
-[Mapa služeb](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate využívá mapu služeb k zobrazení závislostí mezi počítači, které chcete migrovat. |  Mapa služeb je součástí Azure Log Analytics. V současné době je možné ji používat po dobu 180 dnů bez poplatků. 
+[Mapa služeb](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Azure Migrate využívá mapu služeb k zobrazení závislostí mezi počítači, které chcete migrovat. |  Mapa služeb je součástí Azure Log Analytics. V současné době je možné ji používat po dobu 180 dnů bez poplatků.
 
 V tomto scénáři stáhneme a spustíme DMA za účelem posouzení místní databáze SQL Serveru pro naši cestovní aplikaci. Pomocí služby Azure Migrate a mapování závislostí posoudíme virtuální počítače s aplikací před jejich migrací do Azure.
 
@@ -50,7 +51,7 @@ V tomto scénáři:
 Tady je seznam všeho, co k nasazení tohoto scénáře potřebujete:
 
 - Místní server vCenter verze 5.5, 6.0 nebo 6.5.
-- Účet jen pro čtení na serveru vCenter nebo oprávnění k jeho vytvoření. 
+- Účet jen pro čtení na serveru vCenter nebo oprávnění k jeho vytvoření.
 - Oprávnění k vytvoření virtuálního počítače na serveru vCenter pomocí šablony .OVA.
 - Alespoň jednoho hostitele ESXi verze 5.0 nebo novější.
 - Alespoň dva místní virtuální počítače VMware, na jednom z nichž běží databáze SQL Serveru.
@@ -106,15 +107,15 @@ Spusťte posouzení, které analyzuje vaši zdrojovou instanci SQL Serveru proti
       V současné době DMA nepodporuje posouzení pro migraci do spravované instance SQL. Jako alternativní řešení používáme pro posouzení jako předpokládaný cíl SQL Server na virtuálním počítači Azure.
 
 1.  V části **Select Target Version** (Výběr cílové verze) zadejte cílovou verzi SQL Serveru, kterou chcete spustit v Azure, a co chcete při posuzování zjistit:
-    - **Compatibility Issues** (Problémy s kompatibilitou) vás informuje o změnách, které můžou narušit migraci nebo které před migrací vyžadují menší úpravu. Informuje vás také o všech funkcích, které aktuálně používáte a které jsou zastaralé. Problémy jsou uspořádané podle úrovně kompatibility. 
-    - **New features' recommendation** (Doporučení nových funkcí) vás informuje o nových funkcích na cílové platformě SQL Serveru, které se po migraci můžou použít pro vaši databázi. Tyto funkce jsou uspořádané podle výkonu, zabezpečení a úložiště. 
+    - **Compatibility Issues** (Problémy s kompatibilitou) vás informuje o změnách, které můžou narušit migraci nebo které před migrací vyžadují menší úpravu. Informuje vás také o všech funkcích, které aktuálně používáte a které jsou zastaralé. Problémy jsou uspořádané podle úrovně kompatibility.
+    - **New features' recommendation** (Doporučení nových funkcí) vás informuje o nových funkcích na cílové platformě SQL Serveru, které se po migraci můžou použít pro vaši databázi. Tyto funkce jsou uspořádané podle výkonu, zabezpečení a úložiště.
 
     ![Výběr cíle](./media/migrate-scenarios-assessment/dma-assessment-2.png)
 
 2. V části **Connect to a server** (Připojení k serveru) zadejte název počítače, na kterém je spuštěná instance SQL Serveru, typ ověřování a podrobnosti o připojení. Pak klikněte na **Connect** (Připojit).
 
     ![Výběr cíle](./media/migrate-scenarios-assessment/dma-assessment-3.png)
-    
+
 3. V části **Add source** (Přidání zdroje) vyberte databázi, kterou chcete posoudit, a klikněte na **Add** (Přidat).
 4. Vytvoří se posouzení s názvem, který jste zadali.
 
@@ -126,7 +127,7 @@ Spusťte posouzení, které analyzuje vaši zdrojovou instanci SQL Serveru proti
 
 ### <a name="analyze-the-database-assessment"></a>Analýza posouzení databáze
 
-Jakmile budou k dispozici, v nástroji Assistant se zobrazí výsledky. 
+Jakmile budou k dispozici, v nástroji Assistant se zobrazí výsledky.
 
 1. V sestavě **Compatibility Issues** (Problémy s kompatibilitou) zkontrolujte, jestli má vaše databáze problémy na jednotlivých úrovních kompatibility. Pokud ano, přečtěte si, jak je opravit. Mapování úrovní kompatibility na verze SQL Serveru je následující:
     - 100: SQL Server 2008/Azure SQL Database
@@ -141,7 +142,7 @@ Jakmile budou k dispozici, v nástroji Assistant se zobrazí výsledky.
 
     ![Doporučení funkcí](./media/migrate-scenarios-assessment/dma-assessment-6.png)
 
-3. Pokud opravíte některé problémy, kliknutím na **Restart Assessment** (Restartovat posouzení) znovu spusťte posouzení. 
+3. Pokud opravíte některé problémy, kliknutím na **Restart Assessment** (Restartovat posouzení) znovu spusťte posouzení.
 4. Kliknutím na **Export report** (Exportovat sestavu) získáte sestavu posouzení ve formátu JSON nebo CSV.
 
 Pokud spouštíte posouzení většího rozsahu:
@@ -182,8 +183,8 @@ Než začnete s nasazením, statistika pro vCenter Server by měla být nastaven
     - V případě úložiště služba Azure Migrate doporučí v Azure standardní disk stejné velikosti jako místní disk.
     - V případě sítí se pro každý místní síťový adaptér doporučí síťový adaptér v Azure.
     - V případě výpočetních prostředků služba Azure Migrate zjistí počet jader a velikost paměti virtuálního počítače a doporučí virtuální počítač Azure se stejnou konfigurací. Pokud existuje více vhodných velikostí virtuálních počítačů Azure, doporučí se virtuální počítač s nejnižšími náklady.
-   
-    
+
+
 [Další informace](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing) o určování velikosti u úrovně 3.
 
 Nastavte úroveň následujícím způsobem:
@@ -215,7 +216,7 @@ Vytvořte projekt Azure Migrate a stáhněte a nastavte virtuální počítač k
     ![Azure Migrate](./media/migrate-scenarios-assessment/project-1.png)
 
 
-    
+
 
 ### <a name="download-the-collector-appliance"></a>Stažení zařízení kolektoru
 
@@ -225,7 +226,7 @@ Azure Migrate vytvoří místní virtuální počítač, kterému se říká za�
 2. V nabídce **Zjistit počítače** klikněte na **Stáhnout**. Tím stáhnete soubor .OVA.
 3. V části **Kopírování přihlašovacích údajů projektu** zkopírujte ID a klíč projektu. Budete je potřebovat při konfiguraci kolektoru.
 
-    ![Stažení souboru .OVA](./media/migrate-scenarios-assessment/download-ova.png) 
+    ![Stažení souboru .OVA](./media/migrate-scenarios-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>Ověření zařízení kolektoru
 
@@ -235,14 +236,14 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
 2. Spusťte následující příkaz, kterým vygenerujete hodnotu hash pro soubor OVA:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení (verze 1.0.9.7):
-    
+3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení (verze 1.0.9.8):
+
     **Algoritmus** | **Hodnota hash**
     --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
 
 ### <a name="create-the-collector-appliance"></a>Vytvoření zařízení kolektoru
 
@@ -250,14 +251,14 @@ Importujte stažený soubor do vCenter Serveru.
 
 1. V konzoli vSphere Client klikněte na **File** (Soubor) > **Deploy OVF Template** (Nasadit šablonu OVF).
 
-    ![Nasazení šablony OVF](./media/migrate-scenarios-assessment/vcenter-wizard.png) 
+    ![Nasazení šablony OVF](./media/migrate-scenarios-assessment/vcenter-wizard.png)
 
 2. V části Deploy OVF Template Wizard (Průvodce nasazením šablony OVF) > **Source** (Zdroj) zadejte umístění souboru .OVA a klikněte na **Next** (Další).
 3. V části **OVF Template Details** (Podrobnosti o šabloně OVF) klikněte na **Next** (Další). V části **End User License Agreement** (Licenční smlouva s koncovým uživatelem) kliknutím na **Accept** (Přijmout) přijměte smlouvu a pak klikněte na **Next** (Další).
 4. V části **Name and Location** (Název a umístění) zadejte popisný název virtuálního počítače kolektoru a umístění v inventáři, ve kterém bude daný virtuální počítač hostovaný, a pak klikněte na **Next** (Další). Zadejte hostitele nebo cluster, na kterém se bude zařízení kolektoru spouštět.
 5. V části **Storage** (Úložiště) zadejte, kam chcete uložit soubory pro zařízení, a klikněte na **Next** (Další).
 6. V části **Disk Format** (Formát disku) zadejte, jak chcete úložiště zřídit.
-7. V části **Network Mapping** (Mapování sítě) zadejte síť, ke které se bude virtuální počítač kolektoru připojovat. Aby mohla síť odesílat metadata do Azure, potřebuje připojení k internetu. 
+7. V části **Network Mapping** (Mapování sítě) zadejte síť, ke které se bude virtuální počítač kolektoru připojovat. Aby mohla síť odesílat metadata do Azure, potřebuje připojení k internetu.
 8. V části **Ready to Complete** (Připraveno k dokončení) zkontrolujte nastavení, vyberte **Power on after deployment** (Spustit po nasazení) a pak klikněte na **Finish** (Dokončit).
 
 Po vytvoření zařízení se zobrazí zpráva potvrzující úspěšné dokončení.
@@ -270,22 +271,22 @@ Než začnete, mějte na paměti, že kolektor v současné době podporuje jako
 2. Nastavte pro zařízení preferovaný jazyk, časové pásmo a heslo.
 3. Na ploše klikněte na zástupce **Spustit kolektor**.
 
-    ![Zástupce kolektoru](./media/migrate-scenarios-assessment/collector-shortcut.png) 
-    
+    ![Zástupce kolektoru](./media/migrate-scenarios-assessment/collector-shortcut.png)
+
 4. Ve službě Azure Migrate Collector otevřete nabídku **Nastavit požadavky**.
     - Přijměte licenční podmínky a přečtěte si informace třetích stran.
-    - Kolektor zkontroluje, že má virtuální počítač připojení k internetu, synchronizaci času a spuštění služby kolektoru (na virtuálním počítači je nainstalovaná ve výchozím nastavení). Také zkontroluje, že je nainstalované VMware PowerCLI. 
-    
+    - Kolektor zkontroluje, že má virtuální počítač připojení k internetu, synchronizaci času a spuštění služby kolektoru (na virtuálním počítači je nainstalovaná ve výchozím nastavení). Také zkontroluje, že je nainstalované VMware PowerCLI.
+
     > [!NOTE]
     > Předpokládáme, že má virtuální počítač přímý přístup k internetu bez proxy.
 
     ![Ověření požadavků](./media/migrate-scenarios-assessment/collector-verify-prereqs.png)
-    
+
 
 5. V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (plně kvalifikovaný název domény) nebo IP adresu vCenter Serveru.
     - V části **Uživatelské jméno** a **Heslo** zadejte přihlašovací údaje k účtu jen pro čtení, který kolektor použije ke zjištění virtuálních počítačů na serveru vCenter.
-    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. 
+    - V části **Vyberte rozsah** vyberte rozsah zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů.
 
     ![Připojení k vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 
@@ -296,7 +297,7 @@ Než začnete, mějte na paměti, že kolektor v současné době podporuje jako
 7. V části **Zobrazit průběh shromažďování** můžete sledovat zjišťování a kontrolovat, jestli metadata shromážděná z virtuálních počítačů patří do zadaného rozsahu. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat.
 
     ![Probíhající shromažďování](./media/migrate-scenarios-assessment/collector-collection-process.png)
-   
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
@@ -309,7 +310,7 @@ Po dokončení shromažďování zkontrolujte, že se virtuální počítače zo
     ![Zjištěné počítače](./media/migrate-scenarios-assessment/discovery-complete.png)
 
 3. Všimněte si, že na počítačích aktuálně nejsou nainstalovaní agenti Azure Migrate. Musíme je nainstalovat, abychom mohli zobrazit závislosti.
-    
+
     ![Zjištěné počítače](./media/migrate-scenarios-assessment/machines-no-agent.png)
 
 
@@ -322,7 +323,7 @@ Abychom mohli zobrazit závislosti mezi virtuálními počítači, které chceme
 
 Pokud před úpravou virtuálního počítače chcete mít jeho kopii, před instalací agentů pořiďte jeho snímek.
 
-![Snímek počítače](./media/migrate-scenarios-assessment/snapshot-vm.png) 
+![Snímek počítače](./media/migrate-scenarios-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
@@ -331,7 +332,7 @@ Pokud před úpravou virtuálního počítače chcete mít jeho kopii, před ins
 2.  Na stránce **Zjistit počítače** pro jednotlivé virtuální počítače stáhněte a nainstalujte agenta Microsoft Monitoring Agent (MMA) a agenta závislostí.
 3.  Zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci agenta MMA.
 
-    ![Stažení agenta](./media/migrate-scenarios-assessment/download-agents.png) 
+    ![Stažení agenta](./media/migrate-scenarios-assessment/download-agents.png)
 
 
 
@@ -339,12 +340,12 @@ Pokud před úpravou virtuálního počítače chcete mít jeho kopii, před ins
 
 1. Dvakrát klikněte na staženého agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
-3. V části **Cílová složka** ponechte výchozí složku instalace a klikněte na **Další**. 
-4. V části **Možnosti instalace agenta** vyberte **Připojit agenta k Azure Log Analytics** > **Další**. 
+3. V části **Cílová složka** ponechte výchozí složku instalace a klikněte na **Další**.
+4. V části **Možnosti instalace agenta** vyberte **Připojit agenta k Azure Log Analytics** > **Další**.
 
-    ![Instalace agenta MMA](./media/migrate-scenarios-assessment/mma-install.png) 
+    ![Instalace agenta MMA](./media/migrate-scenarios-assessment/mma-install.png)
 5. V části **Azure Log Analytics** vložte ID a klíč pracovního prostoru, které jste zkopírovali z portálu. Klikněte na **Další**.
-    ![Instalace agenta MMA](./media/migrate-scenarios-assessment/mma-install2.png) 
+    ![Instalace agenta MMA](./media/migrate-scenarios-assessment/mma-install2.png)
 
 6. V části **Připraveno k instalaci** nainstalujte agenta MMA.
 
@@ -356,10 +357,10 @@ Pokud před úpravou virtuálního počítače chcete mít jeho kopii, před ins
 2.  Na stránce **Licenční podmínky** kliknutím na **Souhlasím** přijměte licenci.
 3.  V části **Instalace** počkejte na dokončení instalace. Pak klikněte na tlačítko **Další**.
 
-    ![Agent závislostí](./media/migrate-scenarios-assessment/dependency-agent.png) 
+    ![Agent závislostí](./media/migrate-scenarios-assessment/dependency-agent.png)
 
 
-       
+
 ## <a name="step-7-run-and-analyze-the-vm-assessment"></a>Krok 7: Spuštění a analýza posouzení virtuálních počítačů
 
 Ověřte závislosti počítačů a vytvořte skupinu. Pak spusťte posouzení.
@@ -368,7 +369,7 @@ Ověřte závislosti počítačů a vytvořte skupinu. Pak spusťte posouzení.
 
 1.  Na stránce **Počítače** klikněte na **Zobrazit závislosti** u virtuálních počítačů, které chcete analyzovat.
 
-    ![Zobrazení závislostí počítačů](./media/migrate-scenarios-assessment/view-machine-dependencies.png) 
+    ![Zobrazení závislostí počítačů](./media/migrate-scenarios-assessment/view-machine-dependencies.png)
 
 2. Pro virtuální počítač SQLVM se na mapě závislostí zobrazí následující podrobnosti:
 
@@ -376,8 +377,8 @@ Ověřte závislosti počítačů a vytvořte skupinu. Pak spusťte posouzení.
     - Příchozí (klient) připojení přes protokol TCP ke všem závislým počítačům a odchozí (server) připojení přes protokol TCP ze všech závislých počítačů.
     - Závislé počítače s nainstalovanými agenty Azure Migrate se zobrazí v samostatných polích.
     - U počítačů bez nainstalovaných agentů se zobrazí informace o portu a IP adrese.
-    
- 3. U počítačů s nainstalovaným agentem (WEBVM) můžete kliknutím na pole počítače zobrazit další informace, včetně plně kvalifikovaného názvu domény, operačního systému a adresy MAC. 
+
+ 3. U počítačů s nainstalovaným agentem (WEBVM) můžete kliknutím na pole počítače zobrazit další informace, včetně plně kvalifikovaného názvu domény, operačního systému a adresy MAC.
 
     ![Zobrazení skupinových závislostí](./media/migrate-scenarios-assessment/sqlvm-dependencies.png)
 
@@ -385,7 +386,7 @@ Ověřte závislosti počítačů a vytvořte skupinu. Pak spusťte posouzení.
 5. Klikněte na **Vytvořit skupinu** a zadejte název (smarthotelapp).
 
 > [!NOTE]
-    > Pokud chcete zobrazit podrobnější závislosti, můžete rozšířit časový rozsah. Můžete vybrat konkrétní dobu nebo počáteční a koncové datum. 
+    > Pokud chcete zobrazit podrobnější závislosti, můžete rozšířit časový rozsah. Můžete vybrat konkrétní dobu nebo počáteční a koncové datum.
 
 
 ### <a name="run-an-assessment"></a>Spuštění posouzení
@@ -409,7 +410,7 @@ Pro účely tohoto kurzu jsme použili výchozí nastavení posouzení. Nastaven
     **Nastavení** | **Podrobnosti** | **Výchozí**
     --- | --- | ---
     **Cílové umístění** | Umístění Azure, do kterého chcete migrovat. | Žádná výchozí hodnota
-    **Redundance úložiště** | Typ redundance úložiště, který budou po migraci využívat virtuální počítače Azure. | Výchozí hodnota je [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md). Azure Migrate podporuje pouze posouzení založená na spravovaných discích a spravované disky podporují pouze LRS, proto výběr možnosti LRS. 
+    **Redundance úložiště** | Typ redundance úložiště, který budou po migraci využívat virtuální počítače Azure. | Výchozí hodnota je [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md). Azure Migrate podporuje pouze posouzení založená na spravovaných discích a spravované disky podporují pouze LRS, proto výběr možnosti LRS.
     **Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Můžete provést určení velikosti *na základě výkonu* nebo použít velikost virtuálních počítačů *jako v místním prostředí* bez ohledu na historii výkonu. | Výchozí možnost je určení velikosti na základě výkonu.
     **Historie výkonu** | Doba, která se má zohlednit při vyhodnocování výkonu virtuálních počítačů. Tato vlastnost se dá použít pouze v případě, že kritériem určení velikosti je *určení velikosti na základě výkonu*. | Výchozí hodnota je jeden den.
     **Percentilové využití** | Hodnota percentilu sady vzorků výkonu, která se má zohlednit při určování správné velikosti. Tato vlastnost se dá použít pouze v případě, že kritériem určení velikosti je *určení velikosti na základě výkonu*.  | Výchozí hodnota je 95. percentil.
@@ -425,7 +426,7 @@ Pro účely tohoto kurzu jsme použili výchozí nastavení posouzení. Nastaven
 
 ### <a name="analyze-the-vm-assessment"></a>Analýza posouzení virtuálních počítačů
 
-Posouzení služby Azure Migrate obsahuje informace o kompatibilitě místních virtuálních počítačů s Azure, navrhované správné velikosti pro virtuální počítače Azure a odhadovaných měsíčních nákladech na Azure. 
+Posouzení služby Azure Migrate obsahuje informace o kompatibilitě místních virtuálních počítačů s Azure, navrhované správné velikosti pro virtuální počítače Azure a odhadovaných měsíčních nákladech na Azure.
 
 ![Sestava posouzení](./media/migrate-scenarios-assessment/assessment-overview.png)
 
@@ -470,12 +471,12 @@ V sestavě posouzení se zobrazí tabulka se souhrnem informací. Mějte na pam�
 
 #### <a name="review-monthly-cost-estimates"></a>Kontrola odhadů měsíčních nákladů
 
-Toto zobrazení informuje o celkových nákladech na výpočetní kapacitu a úložiště, které s sebou nese provoz virtuálních počítačů v Azure. Také nabízí podrobné údaje o jednotlivých počítačích. 
+Toto zobrazení informuje o celkových nákladech na výpočetní kapacitu a úložiště, které s sebou nese provoz virtuálních počítačů v Azure. Také nabízí podrobné údaje o jednotlivých počítačích.
 
-![Posouzení připravenosti](./media/migrate-scenarios-assessment/azure-costs.png) 
+![Posouzení připravenosti](./media/migrate-scenarios-assessment/azure-costs.png)
 
 - Při výpočtu odhadovaných nákladů se používají doporučené velikosti počítačů.
-- Odhadované měsíční náklady na výpočetní kapacitu a úložiště jsou agregované pro všechny virtuální počítače dané skupiny. 
+- Odhadované měsíční náklady na výpočetní kapacitu a úložiště jsou agregované pro všechny virtuální počítače dané skupiny.
 
 
 ## <a name="conclusion"></a>Závěr
@@ -490,6 +491,3 @@ V tomto scénáři jsme provedli následující:
 ## <a name="next-steps"></a>Další kroky
 
 Můžeme pokračovat k dalšímu scénáři, ve kterém provedeme migraci místních virtuálních počítačů a databáze do Azure metodou [lift and shift](migrate-scenarios-lift-and-shift.md).
-
-
-
