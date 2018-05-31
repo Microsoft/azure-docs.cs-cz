@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/24/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0460d595bc70ec09d492221485749ece32ec07df
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209704"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrace virtuálních počítačů Azure do jiné oblasti
 
@@ -102,7 +103,7 @@ Nový trezor se přidá do oblasti **Řídicí panel** v části **Všechny pro
 ## <a name="select-the-source"></a>Výběr zdroje
 
 1. Na stránce Trezory Recovery Services klikněte na **ConsotoVMVault** > **+Replikovat**.
-2. V rozevíracím seznamu **Zdroj** vyberte **Azure – PREVIEW**.
+2. V rozevíracím seznamu **Zdroj** vyberte **Azure**.
 3. V rozevíracím seznamu **Umístění zdroje** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
 4. Vyberte model nasazení Resource Manager. Potom vyberte **Zdrojová skupina prostředků**.
 5. Kliknutím na **OK** uložte nastavení.
@@ -115,7 +116,7 @@ Služba Site Recovery načte seznam virtuálních počítačů přidružených k
 
 1. Na portálu Azure Portal klikněte na **Virtuální počítače**.
 2. Vyberte virtuální počítač, který chcete migrovat. Pak klikněte na **OK**.
-3. V části **Nastavení** klikněte na **Zotavení po havárii (Preview)**.
+3. V části **Nastavení** klikněte na **Zotavení po havárii**.
 4. V části **Konfigurovat zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
 5. U ostatních nastavení přijměte pro účely tohoto kurzu výchozí hodnoty.
 6. Klikněte na **Povolit replikaci**. Tím se spustí úloha, která povolí replikaci pro daný virtuální počítač.
