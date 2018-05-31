@@ -1,5 +1,5 @@
 ---
-title: Omezení webového provozu Firewallem webových aplikací – Azure CLI
+title: Povolení Firewallu webových aplikací – Azure CLI
 description: Přečtěte si, jak s Azure CLI omezit webový provoz Firewallem webových aplikací v aplikační bráně.
 services: application-gateway
 author: vhorne
@@ -10,13 +10,14 @@ ms.workload: infrastructure-services
 ms.date: 4/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 64de501c2e7912cb4cbbae4b194d6c686a1efe67
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ca00dd3b359d9aff1b987a3bef5b27732678b0a3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34356218"
 ---
-# <a name="tutorial-restrict-web-traffic-with-a-web-application-firewall-using-the-azure-cli"></a>Kurz: Použití Azure CLI k omezení webového provozu Firewallem webových aplikací
+# <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>Kurz: Použití Azure CLI k povolení Firewallu webových aplikací
 
 K omezení provozu [aplikační brány](overview.md) můžete použít [Firewall webových aplikací](waf-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. 
 
@@ -134,10 +135,10 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
 ```
 
-## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvoření účtu úložiště a konfigurace diagnostiky
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>Vytvořit účet úložiště a nakonfigurovat diagnostiku
 
 V tomto kurzu používá aplikační brána k ukládání dat účet úložiště, aby bylo možné je rozpoznat a také z preventivních důvodů. K záznamu dat můžete také použít Log Analytics nebo Centrum událostí. 
 

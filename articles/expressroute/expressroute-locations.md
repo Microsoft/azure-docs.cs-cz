@@ -1,5 +1,5 @@
 ---
-title: 'Poskytovatelé připojení a umístění: Azure ExpressRoute | Dokumentace Microsoftu'
+title: 'Poskytovatelé připojení a umístění: Azure ExpressRoute | Microsoft Docs'
 description: Tento článek obsahuje podrobný přehled o umístěních, kde jsou nabízené služby, a jak se připojit k oblastem Azure. Řazení je podle poskytovatele připojení.
 services: expressroute
 documentationcenter: na
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 05/15/2018
 ms.author: pareshmu
-ms.openlocfilehash: f448f1d7d669aa2c006169c53d8a239360fd16b8
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8d17c8dee89bf0ea2a4683c3b41d2eed50c65e2c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303690"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -79,7 +80,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://c3ntro.com/)** |Již brzy |Již brzy |Miami |
 | **CDC** | Podporuje se | Podporuje se | Canberra, Canberra2 |
-| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Podporuje se |Podporuje se |Las Vegas, New York, San Antonio, Tokio, Toronto |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Podporuje se |Podporuje se |Las Vegas, New York, San Antonio, Silicon Valley, Tokio, Toronto |
 | **China Telecom Global** |Podporuje se |Nepodporuje se |Hongkong |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |Podporuje se |Podporuje se |Dallas, Montreal, Toronto |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn, Paříž, Tokio |
@@ -98,7 +99,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn, Paříž |
 | **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|Podporuje se |Podporuje se | Silicon Valley, Toronto |
 | **Jisc** |Podporuje se |Podporuje se |Londýn |
-| **KINX** |Podporuje se |Podporuje se |Soul |
+| **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Podporuje se |Podporuje se |Soul |
 | **[KPN](http://www.kpn.com/cloudconnect)** | Podporuje se | Podporuje se | Amsterdam | 
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Londýn, Newport, Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
 | **LG CNS** |Podporuje se |Podporuje se |Busan, Soul |
@@ -108,12 +109,13 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Podporuje se |Podporuje se |Newport(Wales) |
 | **NEXTDC** |Podporuje se |Podporuje se |Melbourne, Sydney |
 | **[NTT Communications](http://www.ntt.com/en/services/network/virtual-private-network.html)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Los Angeles, Ósaka, Singapur, Sydney, Tokio, Washington DC |
+| **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Podporuje se |Podporuje se |Tokio |
 | **[NTT SmartConnect](http://cloud.nttsmc.com/cxc/azure.html)** |Podporuje se |Podporuje se |Ósaka |
 | **[Optus](https://www.optus.com.au/enterprise/networking/network-connectivity/express-link)** |Podporuje se |Podporuje se |Melbourne+, Sydney |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Paříž, Silicon Valley, Singapur, Sydney, Washington DC |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |Podporuje se |Podporuje se |Chicago, Silicon Valley |
 | **PCCW Global Limited** |Podporuje se |Podporuje se |Hongkong |
-| **Sejong Telecom** |Podporuje se |Podporuje se |Soul |
+| **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Podporuje se |Podporuje se |Soul |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Podporuje se |Podporuje se |Čennaj, Bombaj |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Podporuje se |Podporuje se |Singapur, Singapur2 |
 | **[Softbank](http://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Podporuje se |Podporuje se |Ósaka, Tokio |
@@ -123,7 +125,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Podporuje se |Podporuje se |Amsterdam, Sao Paulo |
 | **[Telehouse – KDDI](http://www.telehouse.net/solutions/cloud-services/cloud-link)** |Podporuje se |Podporuje se |Londýn |
 | **Telenor** |Podporuje se |Podporuje se |Amsterdam, Londýn |
-| **Telia Carrier** | Podporuje se | Podporuje se |Londýn, Washington DC |
+| **[Telia Carrier](https://www.teliacarrier.com/our-services/Connectivity/Cloud-Connect.html?title=Cloud%20Connect)** | Podporuje se | Podporuje se |Londýn, Washington DC |
 | **Telmex Uninet**| Již brzy | Již brzy | Dallas+ |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporuje se |Podporuje se |Melbourne, Sydney |
 | **[Telus](http://www.telus.com)** |Podporuje se |Podporuje se |Montreal, Toronto |
