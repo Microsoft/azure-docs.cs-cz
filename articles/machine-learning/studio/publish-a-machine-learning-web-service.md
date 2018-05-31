@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30185199"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Nasazení webové služby Azure Machine Learning
 Azure Machine Learning můžete vytvářet, testovat a nasazovat řešení prediktivní analýzy.
@@ -27,7 +28,7 @@ Ze souhrnné bodu z – zobrazení provádí se v tři kroky:
 
 * **[Vytvoření experimentu školení]**  -Azure Machine Learning Studio je spolupráce vizuální vývojové prostředí, které používáte a natrénuje a otestuje model prediktivní analýzy pomocí Cvičná data, který zadáte.
 * **[Převést na prediktivní experiment]**  -po modelu má cvičena s existujícími daty a jste připraveni použít jej k skóre pro nová data, můžete připravit a zjednodušit experimentu pro předpovědi.
-* **[Nasadit jako webovou službu]**  – můžete nasadit jako vaše prediktivní experiment [nové] nebo [classic] Azure webové služby. Uživatelé posílat data do modelu a přijímat váš model předpovědi.
+* **[Nasadit jako webovou službu]**  – můžete nasadit jako vaše prediktivní experiment [Nový] nebo [classic] Azure webové služby. Uživatelé posílat data do modelu a přijímat váš model předpovědi.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -185,8 +186,8 @@ Jednou z možností pro aktualizaci webové služby je programově přeučit mod
 [Vytvoření experimentu školení]: #create-a-training-experiment
 [Převést na prediktivní experiment]: #convert-the-training-experiment-to-a-predictive-experiment
 [Nasadit jako webovou službu]: #deploy-it-as-a-web-service
-[nové]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[classic]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Nový]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Classic]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service

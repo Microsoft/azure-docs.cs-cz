@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31432760"
 ---
 Azure Blob storage je řešení úložiště od Microsoftu objektu pro cloud. Úložiště objektů blob je optimalizovaná pro ukládání masivní objemy nestrukturovaných dat, jako je například textu nebo binárních dat.
 
