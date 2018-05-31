@@ -15,16 +15,17 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e41a7754e6e170dda7818bceadab7858a9d9fa76
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6c84b60018ec03b7f9bc572db9181b8a47a0c595
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365400"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Rychlý start: Nasazení aplikace Spring Boot v Javě do Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
 
-Tento rychlý start ukazuje, jak nasadit aplikaci Spring Boot do Service Fabric. Tento rychlý start využívá ukázku [Getting Started](https://spring.io/guides/gs/spring-boot/) z webu Spring. Pomocí známých nástrojů příkazového řádku vás tento rychlý start provede nasazením ukázky Spring Boot jako aplikace Service Fabric. Po dokončení budete mít funkční aplikaci Spring Boot Getting Started v Service Fabric. 
+Tento rychlý start ukazuje, jak pomocí vývojářského počítače se systémem Mac nebo Linux nasadit aplikaci Spring Boot do Service Fabric. Tento rychlý start využívá ukázku [Getting Started](https://spring.io/guides/gs/spring-boot/) z webu Spring. Pomocí známých nástrojů příkazového řádku vás tento rychlý start provede nasazením ukázky Spring Boot jako aplikace Service Fabric. Po dokončení budete mít funkční aplikaci Spring Boot Getting Started v Service Fabric. 
 
 ![Snímek obrazovky aplikace](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -38,16 +39,36 @@ V tomto rychlém startu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
-1. [Nainstalovat sadu Service Fabric SDK a rozhraní příkazového řádku (CLI) Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods).
+1. Nainstalovat sadu Service Fabric SDK a rozhraní příkazového řádku (CLI) Service Fabric
+
+    a. [Mac](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cli#cli-mac)
+    
+    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+
 2. [Nainstalovat Git](https://git-scm.com/).
-3. [Nainstalovat Yeomana](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables).
-4. [Nastavit prostředí Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development).
+3. Nainstalovat Yeoman
+
+    a. [Mac](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+
+    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+4. Nastavit prostředí Java
+
+    a. [Mac](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+    
+    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 V okně terminálu naklonujte spuštěním následujícího příkazu ukázkovou aplikaci Spring Boot Getting Started do místního počítače.
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
+
+## <a name="build-the-spring-boot-application"></a>Sestavení aplikace Spring Boot 
+1. V adresáři `gs-spring-boot/complete` spusťte následující příkaz, který sestaví aplikaci. 
+
+    ```bash
+    ./gradlew build
+    ``` 
 
 ## <a name="package-the-spring-boot-application"></a>Zabalení aplikace Spring Boot 
 1. Uvnitř adresáře `gs-spring-boot` ve vašem klonu spusťte příkaz `yo azuresfguest`. 
@@ -56,7 +77,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
     ![Položky Yeomanu](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
 
-3. Ve složce `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` vytvořte soubor nazvaný `entryPoint.sh`. Do souboru přidejte následující: 
+3. Ve složce `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` vytvořte soubor nazvaný `entryPoint.sh`. Do souboru `entryPoint.sh` přidejte následující kód. 
 
     ```bash
     #!/bin/bash
@@ -65,14 +86,60 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     java -jar gs-spring-boot-0.1.0.jar
     ```
 
+4. Do souboru `gs-spring-boot/SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/ServiceManifest.xml` přidejte prostředek **Endpoints**.
+
+    ```xml 
+        <Resources>
+          <Endpoints>
+            <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
+          </Endpoints>
+       </Resources>
+    ```
+
+    Soubor **ServiceManifest.xml** teď vypadá takto: 
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <ServiceManifest Name="SpringGettingStartedPkg" Version="1.0.0"
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+
+       <ServiceTypes>
+          <StatelessServiceType ServiceTypeName="SpringGettingStartedType" UseImplicitHost="true">
+       </StatelessServiceType>
+       </ServiceTypes>
+
+       <CodePackage Name="code" Version="1.0.0">
+          <EntryPoint>
+             <ExeHost>
+                <Program>entryPoint.sh</Program>
+                <Arguments></Arguments>
+                <WorkingFolder>CodePackage</WorkingFolder>
+             </ExeHost>
+          </EntryPoint>
+       </CodePackage>
+        <Resources>
+          <Endpoints>
+            <Endpoint Name="WebEndpoint" Protocol="http" Port="8080" />
+          </Endpoints>
+       </Resources>
+     </ServiceManifest>
+    ```
+
 V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Getting Started, kterou můžete nasadit do Service Fabric.
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
-1. Spusťte místní cluster spuštěním následujícího příkazu:
+1. Zadáním následujícího příkazu spusťte místní cluster na počítačích Ubuntu:
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+
+    Pokud používáte počítač Mac, spusťte místní cluster z image Dockeru (za předpokladu, že jste nastavili lokální cluster pro Mac na základě [předběžných požadavků](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric)). 
+
+    ```bash
+    docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
+    ```
+
     Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese **http://localhost:19080**. Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
     
     ![Místní cluster v pořádku](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
@@ -120,9 +187,9 @@ V tomto rychlém startu použijete Service Fabric CLI a Service Fabric Explorer.
 
 Pokud chcete použít rozhraní příkazového řádku, musíte ze souboru PFX, který jste stáhli, vytvořit soubor PEM. K převodu souboru použijte následující příkaz. (V případě Party Clusterů můžete zkopírovat příkaz specifický pro váš soubor PFX z pokynů na stránce **ReadMe**.)
 
-    ```bash
-    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-    ``` 
+```bash
+openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
+``` 
 
 Pokud chcete použít Service Fabric Explorer, musíte importovat soubor PFX certifikátu, který jste stáhli z webu Party Clusteru, do svého úložiště certifikátů (Windows nebo Mac) nebo do samotného prohlížeče (Ubuntu). Potřebujete heslo privátního klíče PFX, které můžete získat na stránce **ReadMe**.
 
@@ -140,12 +207,6 @@ Když jsou teď aplikace i cluster připravené, můžete aplikaci nasadit do cl
 
 1. Přejděte do složky `gs-spring-boot/SpringServiceFabric`.
 2. Spusťte následující příkaz pro připojení ke clusteru Azure. 
-
-    ```bash
-    sfctl cluster select --endpoint http://<ConnectionIPOrURL>:19080
-    ```
-    
-    Pokud je tento cluster zabezpečený pomocí certifikátu podepsaného svým držitelem, spustíte tento příkaz: 
 
     ```bash
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
@@ -182,7 +243,7 @@ Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
     ```bash 
     # Connect to your local cluster
-    sfctl cluster select --endpoint http://localhost:19080
+    sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
 
     # Run Bash command to scale instance count for your service
     sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 3 --stateless 
