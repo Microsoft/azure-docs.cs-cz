@@ -15,136 +15,85 @@ ms.devlang: CLI
 ms.topic: quickstart
 ms.date: 10/06/2017
 ms.author: Alexander.Yukhanov
-ms.openlocfilehash: 82e3885021a2f2309dfed456d472e7027b8d6cf2
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3601ea412790c991892a0c05210d2551810287b8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869015"
 ---
 # <a name="run-a-cntk-training-job-using-the-azure-cli"></a>Spuštění trénovací úlohy CNTK pomocí Azure CLI
 
-Tento rychlý start podrobně popisuje použití rozhraní příkazového řádku (CLI) Azure ke spuštění trénovací úlohy Microsoft Cognitive Toolkit (CNTK) využívající službu Batch AI. Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech.
+Azure CLI 2.0 umožňuje vytvořit a spravovat prostředky Batch AI – vytvořit/odstranit souborové servery a clustery Batch AI a odeslat/ukončit/odstranit/monitorovat trénovací úlohy.
 
-V tomto příkladu použijete databázi MNIST ručně zapsaných obrázků k trénování konvoluční neuronové sítě (CNN) na clusteru GPU s jedním uzlem spravovaném službou Batch AI. 
+Tento rychlý start ukazuje, jak pomocí sady Microsoft Cognitive Toolkit vytvořit cluster GPU a spustit trénovací úlohu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Na stránce úložiště GitHub služby Batch AI je dostupný trénovací skript [ConvNet_MNIST.py](https://github.com/Azure/BatchAI/blob/master/recipes/CNTK/CNTK-GPU-Python/CNTK-GPU-Python.ipynb). Tento skript slouží k trénování konvoluční neuronové sítě v databázi MNIST ručně psaných číslic.
 
-Tento rychlý start vyžaduje použití nejnovější verze Azure CLI. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Oficiální příklad CNTK je upravený tak, aby prostřednictvím argumentů příkazového řádku připouštěl zadání umístění datové sady pro trénink a umístění výstupního adresáře.
 
-Také je potřeba pomocí služby Azure Cloud Shell nebo Azure CLI zaregistrovat pro předplatné poskytovatele prostředků služby Batch AI. Registrace poskytovatele může trvat až 15 minut.
+## <a name="quickstart-overview"></a>Přehled rychlého startu
+
+* Vytvoříte cluster GPU s jedním uzlem (s velikostí virtuálního počítače `Standard_NC6`) a názvem `nc6`.
+* Vytvoříte nový účet úložiště pro uložení vstupu a výstupu úlohy.
+* Vytvoříte sdílenou složku Azure se dvěma složkami `logs` a `scripts`, do kterých se budou ukládat výstupy úloh a trénovací skripty.
+* Vytvoříte kontejner objektů blob Azure `data`, který bude sloužit k ukládání dat pro trénink.
+* Do vytvořené sdílené složky a kontejneru nasadíte trénovací skript a data pro trénink.
+* Nakonfigurujete úlohu tak, aby připojila sdílenou složku Azure a kontejner objektů blob Azure k uzlu clusteru a zpřístupnila je jako běžný souborový systém ve složkách `$AZ_BATCHAI_JOB_MOUNT_ROOT/logs`, `$AZ_BATCHAI_JOB_MOUNT_ROOT/scripts` a `$AZ_BATCHAI_JOB_MOUNT_ROOT/data`.
+`AZ_BATCHAI_JOB_MOUNT_ROOT` je proměnná prostředí nastavená pro úlohu službou Batch AI.
+* Budete monitorovat provádění úlohy prostřednictvím streamování jejího standardního výstupu.
+* Po dokončení úlohy zkontrolujte její výstup a vygenerované modely.
+* Nakonec odstraníte všechny přidělené prostředky.
+
+# <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Přístup k Azure CLI 2.0 s verzí 2.0.31 nebo vyšší. Můžete použít buď rozhraní Azure CLI 2.0 dostupné v prostředí [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview), nebo ho pomocí [těchto pokynů](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) nainstalovat do místního prostředí.
+
+# <a name="cloud-shell-only"></a>Jenom Cloud Shell
+
+Pokud používáte Cloud Shell, změňte pracovní adresář na `/usr/$USER/clouddrive`, protože v domovském adresáři není žádné volné místo:
 
 ```azurecli
-az provider register -n Microsoft.BatchAI
-az provider register -n Microsoft.Batch
+cd /usr/$USER/clouddrive
 ```
 
+# <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-
-Clustery a úlohy služby Batch AI jsou prostředky Azure a musí být umístěné ve skupině prostředků Azure.
-
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create).
-
-Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*. Pak pomocí příkazu [az configure](/cli/azure/reference-index#az_configure) nastaví tuto skupinu prostředků a toto umístění jako výchozí.
+Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příkaz vytvoří novou skupinu prostředků ```batchai.quickstart``` v umístění USA – východ:
 
 ```azurecli
-az group create --name myResourceGroup --location eastus
-
-az configure --defaults group=myResourceGroup
-
-az configure --defaults location=eastus
+az group create -n batchai.quickstart -l eastus
 ```
 
->[!NOTE]
->Nastavení výchozích hodnot pro příkaz `az` je volitelný krok. Můžete se rozhodnout výchozí hodnoty nenastavovat. Pokud se rozhodnete výchozí hodnoty nastavit, po dokončení tohoto kurzu byste měli výchozí nastavení odebrat. Výchozí nastavení odeberete pomocí následujících příkazů:
->
->```azurecli
->az configure --defaults group=''
->
->az configure --defaults location=''
->```
->
+# <a name="create-gpu-cluster"></a>Vytvoření clusteru GPU
 
-## <a name="create-a-storage-account"></a>vytvořit účet úložiště
-
-V tomto rychlém startu se k hostování dat a skriptů pro trénovací úlohu používá účet úložiště Azure. Účet úložiště vytvoříte příkazem [az storage account create](/cli/azure/storage/account#az_storage_account_create).
+Následující příkaz vytvoří cluster GPU s jedním uzlem (velikost virtuálního počítače je Standard_NC6), přičemž jako image operačního systému použije Ubuntu DSVM:
 
 ```azurecli
-az storage account create --name mystorageaccount --sku Standard_LRS
+az batchai cluster create -n nc6 -g batchai.quickstart -s Standard_NC6 -i UbuntuDSVM -t 1 --generate-ssh-keys
 ```
 
->[!NOTE]
->Každý účet úložiště musí mít jedinečný název. V předchozím příkazu `az` a v dalších podobných příkazech v tomto kurzu nahraďte hodnotu nastavení `mystorageaccount` názvem svého účtu úložiště.
+Ubuntu DSVM umožňuje spouštět veškeré trénovací úlohy v kontejnerech Dockeru a spouštět nejoblíbenější rámce rozsáhlého learningu přímo na virtuálních počítačích.
 
-## <a name="prepare-azure-file-share"></a>Příprava sdílené složky Azure
+Volba `--generate-ssh-keys` sděluje rozhraní CLI Azure, že má vygenerovat privátní a veřejné klíče SSH, pokud je ještě nemáte. K uzlům cluster můžete získat přístup zadáním aktuálního uživatelského jména a vygenerovaného klíče SSH.
 
-Pro ilustraci se v tomto rychlém startu k hostování trénovacích dat a skriptů pro úlohu učení používá sdílená složka Azure.
+Upozorňujeme, že pokud používáte Cloud Shell, je vhodné zálohovat složku ~/.ssh do trvalého úložiště.
 
-1. Vytvořte sdílenou složku *batchaiquickstart* pomocí příkazu [az storage share create](/cli/azure/storage/share#az_storage_share_create).
-
-  ```azurecli
-  az storage share create --account-name mystorageaccount --name batchaiquickstart
-  ```
-2. Ve sdílené složce vytvořte adresář *mnistcntksample* pomocí příkazu [az storage directory create](/cli/azure/storage/directory#az_storage_directory_create).
-
-  ```azurecli
-  az storage directory create --share-name batchaiquickstart  --name mnistcntksample
-  ```
-
-3. Stáhněte [balíček s ukázkou](https://batchaisamples.blob.core.windows.net/samples/BatchAIQuickStart.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=b&sig=hrAZfbZC%2BQ%2FKccFQZ7OC4b%2FXSzCF5Myi4Cj%2BW3sVZDo%3D) a rozbalte ho. Nahrajte obsah do adresáře pomocí příkazu [az storage file upload](/cli/azure/storage/file#az_storage_file_upload):
-
-  ```azurecli
-  az storage file upload --share-name batchaiquickstart --source Train-28x28_cntk_text.txt --path mnistcntksample
-
-  az storage file upload --share-name batchaiquickstart --source Test-28x28_cntk_text.txt --path mnistcntksample
-
-  az storage file upload --share-name batchaiquickstart --source ConvNet_MNIST.py --path mnistcntksample
-  ```
-
-
-## <a name="create-gpu-cluster"></a>Vytvoření clusteru GPU
-Pomocí příkazu [az batchai cluster create](/cli/azure/batchai/cluster#az_batchai_cluster_create) vytvořte cluster Batch AI skládající se z jediného uzlu virtuálního počítače s GPU. Virtuální počítač v tomto příkladu používá výchozí image Ubuntu LTS. Pokud místo toho chcete spustit virtuální počítač Microsoftu pro hloubkové učení, který podporuje další architektury trénování, zadejte `image UbuntuDSVM`. Velikost NC6 obsahuje jeden grafický procesor NVIDIA K80. Připojte sdílenou složku ke složce *azurefileshare*. Úplná cesta k této složce na výpočetním uzlu GPU je $AZ_BATCHAI_MOUNT_ROOT/azurefileshare.
-
-
-```azurecli
-az batchai cluster create --name mycluster --vm-size STANDARD_NC6 --image UbuntuLTS --min 1 --max 1 --storage-account-name mystorageaccount --afs-name batchaiquickstart --afs-mount-path azurefileshare --user-name <admin_username> --password <admin_password>
-```
-
-
-Po vytvoření clusteru je výstup podobný tomuto:
-
-```azurecli
+Příklad výstupu:
+```json
 {
-  "allocationState": "resizing",
-  "allocationStateTransitionTime": "2017-10-05T02:09:03.194000+00:00",
-  "creationTime": "2017-10-05T02:09:01.998000+00:00",
+  "allocationState": "steady",
+  "allocationStateTransitionTime": "2018-04-11T21:17:26.345000+00:00",
+  "creationTime": "2018-04-11T20:12:10.758000+00:00",
   "currentNodeCount": 0,
   "errors": null,
-  "id": "/subscriptions/10d0b7c6-9243-4713-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.BatchAI/clusters/mycluster",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/batchai.quickstart/providers/Microsoft.BatchAI/clusters/nc6",
   "location": "eastus",
-  "name": "mycluster",
-  "nodeSetup": {
-    "mountVolumes": {
-      "azureBlobFileSystems": null,
-      "azureFileShares": [
-        {
-          "accountName": "batchaisamples",
-          "azureFileUrl": "https://batchaisamples.file.core.windows.net/batchaiquickstart",
-          "credentialsInfo": {
-            "accountKey": null,
-            "accountKeySecretUrl": null
-          },
-          "directoryMode": "0777",
-          "fileMode": "0777",
-          "relativeMountPath": "azurefileshare"
-        }
-      ],
-      "fileServers": null,
-      "unmanagedFileSystems": null
-    },
-    "setupTask": null
-  },
+  "name": "nc6",
+  "nodeSetup": null,
   "nodeStateCounts": {
+    "additionalProperties": {},
     "idleNodeCount": 0,
     "leavingNodeCount": 0,
     "preparingNodeCount": 0,
@@ -152,273 +101,350 @@ Po vytvoření clusteru je výstup podobný tomuto:
     "unusableNodeCount": 0
   },
   "provisioningState": "succeeded",
-  "provisioningStateTransitionTime": "2017-10-05T02:09:02.857000+00:00",
-  "resourceGroup": "myresourcegroup",
+  "provisioningStateTransitionTime": "2018-04-11T20:12:11.445000+00:00",
+  "resourceGroup": "batchai.quickstart",
   "scaleSettings": {
+    "additionalProperties": {},
     "autoScale": null,
     "manual": {
       "nodeDeallocationOption": "requeue",
       "targetNodeCount": 1
     }
   },
-  "subnet": {
-    "id": null
-  },
+  "subnet": null,
   "tags": null,
   "type": "Microsoft.BatchAI/Clusters",
   "userAccountSettings": {
-    "adminUserName": "demoUser",
+    "additionalProperties": {},
+    "adminUserName": "alex",
     "adminUserPassword": null,
-    "adminUserSshPublicKey": null
+    "adminUserSshPublicKey": "<YOUR SSH PUBLIC KEY HERE>"
   },
   "virtualMachineConfiguration": {
+    "additionalProperties": {},
     "imageReference": {
-      "offer": "UbuntuServer",
-      "publisher": "Canonical",
-      "sku": "16.04-LTS",
-      "version": "latest"
+      "additionalProperties": {},
+      "offer": "linux-data-science-vm-ubuntu",
+      "publisher": "microsoft-ads",
+      "sku": "linuxdsvmubuntu",
+      "version": "latest",
+      "virtualMachineImageId": null
     }
   },
   "vmPriority": "dedicated",
   "vmSize": "STANDARD_NC6"
+}
 ```
-## <a name="get-cluster-status"></a>Získání stavu clusteru
 
-Pokud chcete získat přehled stavu clusteru, spusťte příkaz [az batchai cluster list](/cli/azure/batchai/cluster#az_batchai_cluster_list):
+# <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+
+Následující příkaz vytvoří nový účet úložiště ve stejné oblasti, ve které je skupina prostředků batchai.repices. Aktualizujte příkaz zadáním jedinečného názvu účtu úložiště.
 
 ```azurecli
-az batchai cluster list -o table
+az storage account create -n <storage account name> --sku Standard_LRS -g batchai.quickstart
 ```
 
-Výstup je podobný tomuto:
+Pokud není vybraný název účtu úložiště dostupný, výše uvedený příkaz oznámí odpovídající chybu. V takovém případě zvolte jiné název a zkuste to znovu.
+
+# <a name="data-deployment"></a>Nasazení dat
+
+## <a name="download-the-training-script-and-training-data"></a>Stažení trénovacího skriptu a dat pro trénink
+
+* Stáhněte a extrahujte předběžně zpracovanou databázi MNIST z [tohoto umístění](https://batchaisamples.blob.core.windows.net/samples/mnist_dataset.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=PmhL%2BYnYAyNTZr1DM2JySvrI12e%2F4wZNIwCtf7TRI%2BM%3D) do aktuální složky.
+
+Pro GNU/Linux nebo Cloud Shell:
 
 ```azurecli
-Name        Resource Group    VM Size        State     Idle    Running    Preparing    Unusable    Leaving
----------   ----------------  -------------  -------   ------  ---------  -----------  ----------  --------
-mycluster   myresourcegroup   STANDARD_NC6   steady    1       0          0            0            0
+wget "https://batchaisamples.blob.core.windows.net/samples/mnist_dataset.zip?st=2017-09-29T18%3A29%3A00Z&se=2099-12-31T08%3A00%3A00Z&sp=rl&sv=2016-05-31&sr=c&sig=PmhL%2BYnYAyNTZr1DM2JySvrI12e%2F4wZNIwCtf7TRI%2BM%3D" -O mnist_dataset.zip
+unzip mnist_dataset.zip
 ```
 
-Další podrobnosti získáte spuštěním příkazu [az batchai cluster show](/cli/azure/batchai/cluster#az_batchai_cluster_show). Zobrazí se všechny vlastnosti clusteru od jeho vytvoření.
+Upozorňujeme, že možná budete muset nainstalovat nástroj `unzip`, pokud ho vaše distribuce GNU/Linuxu nemá.
 
-Cluster bude připravený po přidělení uzlů a dokončení jejich přípravy (viz atribut `nodeStateCounts`). Pokud se něco nepovede, atribut `errors` bude obsahovat popis chyby.
+* Stáhněte si do aktuální složky ukázkový skript [ConvNet_MNIST.py](https://raw.githubusercontent.com/Azure/BatchAI/master/recipes/CNTK/CNTK-GPU-Python/ConvNet_MNIST.py):
 
-## <a name="create-training-job"></a>Vytvoření trénovací úlohy
+Pro GNU/Linux nebo Cloud Shell:
 
-Jakmile je cluster připravený, nakonfigurujte a odešlete úlohu učení.
+```azurecli
+wget https://raw.githubusercontent.com/Azure/BatchAI/master/recipes/CNTK/CNTK-GPU-Python/ConvNet_MNIST.py
+```
 
-1. Vytvořte soubor šablony JSON job.json pro vytvoření úlohy:
+## <a name="create-azure-file-share-and-deploy-the-training-script"></a>Vytvoření sdílené složky Azure a nasazení trénovacího skriptu
 
-  ```JSON
-  {
+Následující příkazy vytvoří sdílené složky Azure `scripts` a `logs` a zkopírují trénovací skript do složky `cntk` ve sdílené složce `scripts`:
+
+```azurecli
+az storage share create -n scripts --account-name <storage account name>
+az storage share create -n logs --account-name <storage account name>
+az storage directory create -n cntk -s scripts --account-name <storage account name>
+az storage file upload -s scripts --source ConvNet_MNIST.py --path cntk --account-name <storage account name> 
+```
+
+## <a name="create-a-blob-container-and-deploy-training-data"></a>Vytvoření kontejneru objektů blob a nasazení dat pro trénink
+
+Následující příkazy vytvoří kontejner objektů blob Azure `data` a zkopírují data pro trénink do složky `mnist_cntk`:
+```azurecli
+az storage container create -n data --account-name <storage account name>
+az storage blob upload-batch -s . --pattern '*28x28_cntk*' --destination data --destination-path mnist_cntk --account-name <storage account name>
+```
+
+# <a name="submit-training-job"></a>Odeslání trénovací úlohy
+
+## <a name="prepare-job-configuration-file"></a>Příprava konfiguračního souboru úlohy
+
+Vytvořte konfigurační soubor trénovací úlohy `job.json` s následujícím obsahem:
+```json
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/BatchAI/master/schemas/2018-03-01/cntk.json",
     "properties": {
-        "stdOutErrPathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
-       "inputDirectories": [{
-            "id": "SAMPLE",
-            "path": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/mnistcntksample"
-        }],
-        "outputDirectories": [{
-            "id": "MODEL",
-            "pathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
-            "pathSuffix": "model",
-            "type": "custom"
-        }],
-        "containerSettings": {
-            "imageSourceRegistry": {
-                "image": "microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0"
-            }
-        },
         "nodeCount": 1,
         "cntkSettings": {
-            "pythonScriptFilePath": "$AZ_BATCHAI_INPUT_SAMPLE/ConvNet_MNIST.py",
-            "commandLineArgs": "$AZ_BATCHAI_INPUT_SAMPLE $AZ_BATCHAI_OUTPUT_MODEL"
+            "pythonScriptFilePath": "$AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/cntk/ConvNet_MNIST.py",
+            "commandLineArgs": "$AZ_BATCHAI_JOB_MOUNT_ROOT/data/mnist_cntk $AZ_BATCHAI_OUTPUT_MODEL"
+        },
+        "stdOutErrPathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
+        "outputDirectories": [{
+            "id": "MODEL",
+            "pathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs"
+        }],
+        "mountVolumes": {
+            "azureFileShares": [
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/logs",
+                    "relativeMountPath": "logs"
+                },
+                {
+                    "azureFileUrl": "https://<AZURE_BATCHAI_STORAGE_ACCOUNT>.file.core.windows.net/scripts",
+                    "relativeMountPath": "scripts"
+                }
+            ],
+            "azureBlobFileSystems": [
+                {
+                    "accountName": "<AZURE_BATCHAI_STORAGE_ACCOUNT>",
+                    "containerName": "data",
+                    "relativeMountPath": "data"
+                }
+            ]
         }
     }
-  }
-  ```
-2. Pomocí příkazu [az batchai job create](/cli/azure/batchai/job#az_batchai_job_create) vytvořte úlohu *myjob*, která se na clusteru spustí:
+}
+```
 
-  ```azurecli
-  az batchai job create --name myjob --cluster-name mycluster --config job.json
-  ```
+Tento konfigurační soubor určuje:
 
-Výstup je podobný tomuto:
+* `nodeCount` – počet uzlů vyžadovaných úlohou (v případě tohoto rychlého startu 1).
+* `cntkSettings` – určuje cestu k trénovacímu skriptu a argumenty příkazového řádku. Argumenty příkazového řádku zahrnují cestu k datům pro trénink a cílovou cestu pro ukládání vygenerovaných modelů. `AZ_BATCHAI_OUTPUT_MODEL` je proměnná prostředí nastavená úlohou Batch AI na základě konfigurace výstupního adresáře (viz níže).
+* `stdOutErrPathPrefix` – cesta k umístění, kde Batch AI vytvoří adresáře obsahující výstup úlohy a protokoly.
+* `outputDirectories` – kolekce výstupních adresářů, které vytvoří Batch AI. Pro každý adresář vytvoří Batch AI proměnnou prostředí s názvem `AZ_BATCHAI_OUTPUT_<id>`, kde `<id>` je identifikátor adresáře.
+* `mountVolumes` – seznam systémů souborů, které se mají připojit při provádění úlohy. Systémy souborů se připojují pod `AZ_BATCHAI_JOB_MOUNT_ROOT/<relativeMountPath>`. `AZ_BATCHAI_JOB_MOUNT_ROOT` je proměnná prostředí nastavená službou Batch AI.
+* `<AZURE_BATCHAI_STORAGE_ACCOUNT>` udává, že se název účtu úložiště určí při odeslání úlohy prostřednictvím parametru --storage-account-name nebo proměnné prostředí `AZURE_BATCHAI_STORAGE_ACCOUNT` v počítači.
+
+## <a name="submit-the-job"></a>Odeslání úlohy
+
+Odešlete úlohu v clusteru pomocí následujícího příkazu:
 
 ```azurecli
+az batchai job create -n cntk_python_1 -r nc6 -g batchai.quickstart -c job.json --storage-account-name <storage account name>
+```
+
+Příklad výstupu:
+```
 {
+  "additionalProperties": {},
   "caffeSettings": null,
   "chainerSettings": null,
   "cluster": {
-    "id": "/subscriptions/10d0b7c6-9243-4713-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.BatchAI/clusters/mycluster",
-    "resourceGroup": "myresourcegroup"
+    "additionalProperties": {},
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/batchai.quickstart/providers/Microsoft.BatchAI/clusters/nc6",
+    "resourceGroup": "batchai.quickstart"
   },
   "cntkSettings": {
-    "commandLineArgs": "$AZ_BATCHAI_INPUT_SAMPLE $AZ_BATCHAI_OUTPUT_MODEL",
+    "additionalProperties": {},
+    "commandLineArgs": "$AZ_BATCHAI_JOB_MOUNT_ROOT/data/mnist_cntk $AZ_BATCHAI_OUTPUT_MODEL",
     "configFilePath": null,
     "languageType": "Python",
     "processCount": 1,
     "pythonInterpreterPath": null,
-    "pythonScriptFilePath": "$AZ_BATCHAI_INPUT_SAMPLE/ConvNet_MNIST.py"
+    "pythonScriptFilePath": "$AZ_BATCHAI_JOB_MOUNT_ROOT/scripts/cntk/ConvNet_MNIST.py"
   },
   "constraints": {
-    "maxTaskRetryCount": null,
+    "additionalProperties": {},
     "maxWallClockTime": "7 days, 0:00:00"
   },
-  "containerSettings": {
-    "imageSourceRegistry": {
-      "credentials": null,
-      "image": "microsoft/cntk:2.1-gpu-python3.5-cuda8.0-cudnn6.0",
-      "serverUrl": null
-    }
-  },
-  "creationTime": "2017-10-05T06:41:42.163000+00:00",
+  "containerSettings": null,
+  "creationTime": "2018-04-11T21:48:10.303000+00:00",
   "customToolkitSettings": null,
   "environmentVariables": null,
-  "executionInfo": {
-    "endTime": null,
-    "errors": null,
-    "exitCode": null,
-    "lastRetryTime": null,
-    "retryCount": null,
-    "startTime": "2017-10-05T06:41:44.392000+00:00"
-  },
-  "executionState": "running",
-  "executionStateTransitionTime": "2017-10-05T06:41:44.953000+00:00",
+  "executionInfo": null,
+  "executionState": "queued",
+  "executionStateTransitionTime": "2018-04-11T21:48:10.303000+00:00",
   "experimentName": null,
-  "id": "/subscriptions/10d0b7c6-9243-4713-xxxx-xxxxxxxxxxxx/resourceGroups/demo/providers/Microsoft.BatchAI/jobs/myjob",
-  "inputDirectories": [
-    {
-      "id": "SAMPLE",
-      "path": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare/mnistcntksample"
-    }
-  ],
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/batchai.quickstart/providers/Microsoft.BatchAI/jobs/cntk_python_1",
+  "inputDirectories": null,
+  "jobOutputDirectoryPathSegment": "00000000-0000-0000-0000-000000000000/batchai.quickstart/jobs/cntk_python_1/b9576bae-e878-4fb2-9390-2e962356b5b1",
   "jobPreparation": null,
   "location": null,
-  "name": "cntk_job",
+  "mountVolumes": {
+    "additionalProperties": {},
+    "azureBlobFileSystems": [
+      {
+        "accountName": "<YOU STORAGE ACCOUNT NAME>",
+        "additionalProperties": {},
+        "containerName": "data",
+        "credentials": {
+          "accountKey": null,
+          "accountKeySecretReference": null,
+          "additionalProperties": {}
+        },
+        "mountOptions": null,
+        "relativeMountPath": "data"
+      }
+    ],
+    "azureFileShares": [
+      {
+        "accountName": "<YOU STORAGE ACCOUNT NAME>,
+        "additionalProperties": {},
+        "azureFileUrl": "https://<YOU STORAGE ACCOUNT NAME>.file.core.windows.net/logs",
+        "credentials": {
+          "accountKey": null,
+          "accountKeySecretReference": null,
+          "additionalProperties": {}
+        },
+        "directoryMode": "0777",
+        "fileMode": "0777",
+        "relativeMountPath": "logs"
+      },
+      {
+        "accountName": "<YOU STORAGE ACCOUNT NAME>",
+        "additionalProperties": {},
+        "azureFileUrl": "https://<YOU STORAGE ACCOUNT NAME>.file.core.windows.net/scripts",
+        "credentials": {
+          "accountKey": null,
+          "accountKeySecretReference": null,
+          "additionalProperties": {}
+        },
+        "directoryMode": "0777",
+        "fileMode": "0777",
+        "relativeMountPath": "scripts"
+      }
+    ],
+    "fileServers": null,
+    "unmanagedFileSystems": null
+  },
+  "name": "cntk_python_1",
   "nodeCount": 1,
   "outputDirectories": [
     {
+      "additionalProperties": {},
       "createNew": true,
       "id": "MODEL",
-      "pathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
-      "pathSuffix": "model",
-      "type": "Custom"
+      "pathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
+      "pathSuffix": null,
+      "type": "custom"
     }
   ],
   "priority": 0,
   "provisioningState": "succeeded",
-  "provisioningStateTransitionTime": "2017-10-05T06:41:44.238000+00:00",
-  "resourceGroup": "demo",
-  "stdOutErrPathPrefix": "$AZ_BATCHAI_MOUNT_ROOT/azurefileshare",
+  "provisioningStateTransitionTime": "2018-04-11T21:48:11.577000+00:00",
+  "pyTorchSettings": null,
+  "resourceGroup": "batchai.quickstart",
+  "secrets": null,
+  "stdOutErrPathPrefix": "$AZ_BATCHAI_JOB_MOUNT_ROOT/logs",
   "tags": null,
   "tensorFlowSettings": null,
-  "toolType": "CNTK",
+  "toolType": "cntk",
   "type": "Microsoft.BatchAI/Jobs"
 }
 ```
 
-## <a name="monitor-job"></a>Monitorování úlohy
+# <a name="monitor-job-execution"></a>Monitorování provádění úlohy
 
-Pomocí příkazu [az batchai job list](/cli/azure/batchai/job#az_batchai_job_list) získejte přehled stavu úlohy:
+Trénovací skript hlásí průběh tréninku v souboru `stderr.txt` ve standardním výstupním adresáři. Průběh můžete sledovat pomocí následujícího příkazu:
 
 ```azurecli
-az batchai job list -o table
+az batchai job file stream -n cntk_python_1 -g batchai.quickstart -f stderr.txt
 ```
 
-Výstup je podobný tomuto:
+Příklad výstupu:
+```
+File found with URL "https://<YOU STORAGE ACCOUNT>.file.core.windows.net/logs/00000000-0000-0000-0000-000000000000/batchai.quickstart/jobs/cntk_python_1/<JOB's UUID>/stdouterr/stderr.txt?sv=2016-05-31&sr=f&sig=n86JK9YowV%2BPQ%2BkBzmqr0eud%2FlpRB%2FVu%2FFlcKZx192k%3D&se=2018-04-11T23%3A05%3A54Z&sp=rl". Start streaming
+Selected GPU[0] Tesla K80 as the process wide default device.
+-------------------------------------------------------------------
+Build info:
 
-```azurecli
-Name        Resource Group    Cluster    Cluster RG      Nodes  State    Exit code
-----------  ----------------  ---------  --------------- -----  -------  -----------
-myjob       myresourcegroup   mycluster  myresourcegroup 1      running
+        Built time: Jan 31 2018 15:03:41
+        Last modified date: Tue Jan 30 03:26:13 2018
+        Build type: release
+        Build target: GPU
+        With 1bit-SGD: no
+        With ASGD: yes
+        Math lib: mkl
+        CUDA version: 9.0.0
+        CUDNN version: 7.0.4
+        Build Branch: HEAD
+        Build SHA1: a70455c7abe76596853f8e6a77a4d6de1e3ba76e
+        MPI distribution: Open MPI
+        MPI version: 1.10.7
+-------------------------------------------------------------------
+Training 98778 parameters in 10 parameter tensors.
 
+Learning rate per 1 samples: 0.001
+Momentum per 1 samples: 0.0
+Finished Epoch[1 of 40]: [Training] loss = 0.405960 * 60000, metric = 13.01% * 60000 21.741s (2759.8 samples/s);
+Finished Epoch[2 of 40]: [Training] loss = 0.106030 * 60000, metric = 3.09% * 60000 3.638s (16492.6 samples/s);
+Finished Epoch[3 of 40]: [Training] loss = 0.078542 * 60000, metric = 2.32% * 60000 3.477s (17256.3 samples/s);
+...
+Final Results: Minibatch[1-11]: errs = 0.54% * 10000
 ```
 
-Další podrobnosti získáte spuštěním příkazu [az batchai job show](/cli/azure/batchai/job#az_batchai_job_show).
+Po dokončení úlohy (úspěšném nebo neúspěšném) se streamování zastaví.
 
-`executionState` obsahuje aktuální stav provádění úlohy:
+# <a name="inspect-generated-model-files"></a>Prohlížení vygenerovaných souborů modelů
 
-* `queued`: Úloha čeká, až budou dostupné uzly clusteru.
-* `running`: Úloha běží.
-*   `succeeded` (nebo `failed`): Úloha je dokončená a `executionInfo` obsahuje podrobnosti o výsledku.
-
-
-## <a name="list-stdout-and-stderr-output"></a>Výpis výstupu stdout a stderr
-Pomocí příkazu [az batchai job list-files](/cli/azure/batchai/job#az_batchai_job_list_files) vypište odkazy na soubory protokolů výstupů stdout a stderr:
+Úloha ukládá vygenerované soubory modelu do výstupního adresáře s atributem `id` o hodnotě `MODEL`. Pomocí následujícího příkazu můžete soubory modelu vypsat a získat adresy URL pro stažení:
 
 ```azurecli
-az batchai job list-files --name myjob --output-directory-id stdouterr
+az batchai job file list -n cntk_python_1 -g batchai.quickstart -d MODEL
 ```
 
-Výstup je podobný tomuto:
-
-```azurecli
+Příklad výstupu:
+```
 [
   {
-    "contentLength": 733,
-    "downloadUrl": "https://batchaisamples.file.core.windows.net/batchaiquickstart/10d0b7c6-9243-4713-91a9-2730375d3a1b/demo/jobs/cntk_job/stderr.txt?sv=2016-05-31&sr=f&sig=Rh%2BuTg9C1yQxm7NfA9YWiKb%2B5FRKqWmEXiGNRDeFMd8%3D&se=2017-10-05T07%3A44%3A38Z&sp=rl",
-    "lastModified": "2017-10-05T06:44:38+00:00",
-    "name": "stderr.txt"
+    "additionalProperties": {},
+    "contentLength": 409456,
+    "downloadUrl": "https://<YOUR STORAGE ACCOUNT>.file.core.windows.net/...",
+    "isDirectory": false,
+    "lastModified": "2018-04-11T22:05:51+00:00",
+    "name": "ConvNet_MNIST_0.dnn"
   },
   {
-    "contentLength": 300,
-    "downloadUrl": "https://batchaisamples.file.core.windows.net/batchaiquickstart/10d0b7c6-9243-4713-91a9-2730375d3a1b/demo/jobs/cntk_job/stdout.txt?sv=2016-05-31&sr=f&sig=jMhJfQOGry9jr4Hh3YyUFpW5Uaxnp38bhVWNrTTWMtk%3D&se=2017-10-05T07%3A44%3A38Z&sp=rl",
-    "lastModified": "2017-10-05T06:44:29+00:00",
-    "name": "stdout.txt"
-  }
-]
+    "additionalProperties": {},
+    "contentLength": 409456,
+    "downloadUrl": "https://<YOUR STORAGE ACCOUNT>.file.core.windows.net/...",
+    "isDirectory": false,
+    "lastModified": "2018-04-11T22:05:55+00:00",
+    "name": "ConvNet_MNIST_1.dnn"
+  },
+...
+
 ```
 
-
-## <a name="observe-output"></a>Sledování výstupu
-
-Zatímco se úloha provádí, můžete streamovat nebo sledovat výstupní soubory úlohy. Následující příklad pomocí příkazu [az batchai job stream-file](/cli/azure/batchai/job#az_batchai_job_stream_file) streamuje protokol stderr.txt:
+Vygenerované soubory si můžete prohlédnout i na webu Portal nebo v průzkumníku služby Azure Storage Explorer. K rozlišení výstupu z různých úloh vytvoří Batch AI pro každý z nich jedinečnou strukturu složek. Cestu ke složce obsahující požadovaný výstup najdete pomocí atributu `jobOutputDirectoryPathSegment` odeslané úlohy:
 
 ```azurecli
-az batchai job stream-file --job-name myjob --output-directory-id stdouterr --name stderr.txt
+az batchai job show -n cntk_python_1 -g batchai.quickstart --query jobOutputDirectoryPathSegment
 ```
 
-Výstup je podobný tomuto. Výstup přerušíte stisknutím Ctrl + C.
+Příklad výstupu:
+```
+"00000000-0000-0000-0000-000000000000/batchai.quickstart/jobs/cntk_python_1/<JOB's UUID>"
+```
+
+# <a name="delete-resources"></a>Odstranění prostředků
+
+Skupinu prostředků a všechny přidělené prostředky můžete odstranit pomocí následujícího příkazu:
 
 ```azurecli
-…
-Finished Epoch[2 of 40]: [Training] loss = 0.104846 * 60000, metric = 3.00% * 60000 3.849s (15588.5 samples/s);
-Finished Epoch[3 of 40]: [Training] loss = 0.077043 * 60000, metric = 2.23% * 60000 3.902s (15376.7 samples/s);
-Finished Epoch[4 of 40]: [Training] loss = 0.063050 * 60000, metric = 1.82% * 60000 3.811s (15743.9 samples/s);
-…
-
+az batchai group delete -n batchai.quickstart -y
 ```
-
-## <a name="delete-resources"></a>Odstranění prostředků
-
-Pomocí příkazu [az batchai job delete](/cli/azure/batchai/job#az_batchai_job_delete) odstraňte úlohu:
-
-```azurecli
-az batchai job delete --name myjob
-```
-Pomocí příkazu [az batchai cluster delete](/cli/azure/batchai/cluster#az_batchai_cluster_delete) odstraňte cluster:
-
-```azurecli
-az batchai cluster delete --name mycluster
-```
-
-Pomocí příkazu `az group delete` odstraňte skupinu prostředků, kterou jste pro tento rychlý start vytvořili:
-
-```azurecli
-az group delete --name myResourceGroup
-```
-
-## <a name="restore-azure-cli-20-default-settings"></a>Obnovení výchozího nastavení Azure CLI 2.0
-
-Odeberte výchozí nastavení umístění a skupiny prostředků, která jste vytvořili dříve:
-
-```azurecli
-az configure --defaults group=''
-
-az configure --defaults location=''
-```
-
-## <a name="next-steps"></a>Další kroky
-
-V tomto rychlém startu jste zjistili, jak spustit trénovací úlohu CNTK na clusteru Batch AI pomocí Azure CLI. Další informace o použití služby Batch AI s jinými sadami nástrojů najdete v [návodech k trénování](https://github.com/Azure/BatchAI).
-
-Další informace o použití Azure CLI 2.0 ke správě služby Batch AI najdete v [dokumentaci na GitHubu](https://github.com/Azure/BatchAI/blob/master/documentation/using-azure-cli-20.md).
