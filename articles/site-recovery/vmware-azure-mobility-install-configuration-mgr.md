@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942509"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizaci instalace služby Mobility pomocí nástroje System Center Configuration Manager
 
@@ -233,7 +234,7 @@ Průběh nasazení můžete monitorovat pomocí konzoly nástroje Configuration 
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Zkopírujte následující soubory do **MobSvcLinux** složky do sdílené síťové složky:
-   * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
+   * Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz
    * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz

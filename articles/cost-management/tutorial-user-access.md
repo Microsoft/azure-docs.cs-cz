@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c1be4d649bf4b69a9f749003b5c66142006b78e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301603"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Kurz: Přiřazení přístupu k datům služby Cost Management
 
@@ -27,7 +28,8 @@ Při registraci vaší smlouvy nebo účtu Azure se ve službě Cloudyn vytvoři
 > [!div class="checklist"]
 > * Vytvoření uživatele s přístupem správce
 > * Vytvoření uživatele s uživatelským přístupem
-> * Vytváření entit
+> * Vytvoření a správa entit
+
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -56,11 +58,11 @@ Běžní uživatelé, které potřebují přístup k datům služby Cost Managem
 
 Pokud chcete zhlédnout výukové video o přidávání uživatelů, podívejte se na video [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Přidávání uživatelů do služby Azure Cost Management).
 
-## <a name="create-entities"></a>Vytváření entit
+## <a name="create-and-manage-entities"></a>Vytvoření a správa entit
 
-Při určování nákladové hierarchie entit se osvědčilo identifikovat strukturu vaší organizace.
+Při určování nákladové hierarchie entit se osvědčilo identifikovat strukturu vaší organizace. Entity vám umožní segmentovat výdaje podle jednotlivých účtů nebo předplatných. Můžete vytvořit entity nákladů a vytvářet logické skupiny pro správu a sledování výdajů. Při vytváření stromu se zamyslete nad tím, jak chcete nebo potřebujete rozdělit náklady podle obchodních jednotek, nákladových středisek, prostředí a obchodních oddělení. Strom entit ve službě Cloudyn je díky dědičnosti entit flexibilní.
 
-Při vytváření stromu se zamyslete nad tím, jak chcete nebo potřebujete rozdělit náklady podle obchodních jednotek, nákladových středisek, prostředí a obchodních oddělení. Strom entit ve službě Cloudyn je díky dědičnosti entit flexibilní. Jednotlivé odběry pro vaše cloudové účty jsou propojené s konkrétními entitami. Entity jsou tedy víceklientské. Konkrétním uživatelům můžete pomocí entit přiřadit přístup jenom ke konkrétnímu segmentu vaší společnosti. Tím zajistíte izolaci dat, dokonce i ve velkých částech společnosti, jako jsou pobočky. Izolace dat pomáhá v řízení.  
+Jednotlivé odběry pro vaše cloudové účty jsou propojené s konkrétními entitami. Entitu můžete přidružit k účtu nebo předplatnému poskytovatele cloudové služby. Entity jsou tedy víceklientské. Konkrétním uživatelům můžete pomocí entit přiřadit přístup jenom ke konkrétnímu segmentu vaší společnosti. Tím zajistíte izolaci dat, dokonce i ve velkých částech společnosti, jako jsou pobočky. Izolace dat pomáhá v řízení.  
 
 Při registraci smlouvy Azure nebo účtu ve službě Cloudyn proběhlo zkopírování vašich dat prostředků Azure včetně využití, výkonu, fakturace a dat značek z vašich odběrů do účtu služby Cloudyn. Strom entit je ale potřeba vytvořit ručně. Pokud jste přeskočili registraci Azure Resource Manageru, jsou na portálu Cloudyn dostupná jenom fakturační data a pár sestav prostředků.
 
@@ -74,6 +76,23 @@ Vedle položky **Entities** (Entity) klikněte na **Add Entity** (Přidat entitu
 
 Po dokončení uložte entitu kliknutím na **Save** (Uložit).
 
+### <a name="entity-access-levels"></a>Úrovně přístupu entit
+
+Úrovně přístupu entit ve spojení s přístupem uživatele umožňují definovat, jaký typ akcí je k dispozici na portálu Cloudyn.
+
+- **Enterprise** (Firemní) – Poskytuje možnost vytvářet a spravovat entity nákladů podřízených položek.
+- **Enterprise + Cost Allocation** (Firemní + přidělení nákladů) – Poskytuje možnost vytvářet a spravovat entity nákladů podřízených položek včetně přidělování nákladů pro konsolidované účty.
+- **Enterprise, Cost based on parent cost allocation** (Firemní, podle nákladů při přiřazení nákladů nadřazené položky) – Poskytuje možnost vytvářet a spravovat entity nákladů podřízených položek. Náklady na účet jsou založené na modelu přiřazování nákladů nadřazeného objektu.
+- **Custom Dashboards Only** (Jenom vlastní řídicí panely) – Umožňuje uživateli zobrazit jenom předdefinované vlastní řídicí panely.
+- **Dashboards Only** (Jenom řídicí panely) – Umožňuje uživateli zobrazit jenom řídicí panely.
+
+### <a name="create-a-cost-entity-hierarchy"></a>Vytvoření hierarchie entit nákladů
+
+Pokud chcete vytvořit hierarchii entit nákladů, musí mít účet s přístupem Enterprise nebo Enterprise + Cost allocation.
+
+Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu). V levém podokně se zobrazí strom **Entities** (Entity). V případě potřeby rozbalte stromovou strukturu entit, abyste se mohli podívat na entitu, kterou chcete přidružit k účtu.  Účty poskytovatele cloudové služby jsou zobrazené na kartách v pravém podokně. Vyberte kartu a pak myší přetáhněte účet nebo předplatné na entitu. Pole **Move** (Přesunout) vás informuje, že účet se úspěšně přesunul. Klikněte na **OK**.
+
+Entitě můžete také přidružit více účtů. Vyberte účty a pak klikněte na **Move**. V dialogovém okně Move Accounts (Přesunout účty) vyberte entitu, kam chcete přesunout účet, a potom klikněte na **Save** (Uložit). Pole Move Accounts vás požádá o ověření, že chcete účty přesunout. Klikněte na **Yes** (Ano) a potom na **OK**.
 
 Pokud chcete zhlédnout výukové video o vytváření nákladové hierarchie entit, podívejte se na video [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Vytváření nákladové hierarchie entit ve službě Azure Cost Management).
 
@@ -86,7 +105,8 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvoření uživatele s přístupem správce
 > * Vytvoření uživatele s uživatelským přístupem
-> * Vytváření entit
+> * Vytvoření a správa entit
+
 
 Pokud jste pro své účty ještě nepovolili přístup k rozhraní API Azure Resource Manageru, pokračujte k následujícímu článku.
 

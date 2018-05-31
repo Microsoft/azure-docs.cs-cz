@@ -1,6 +1,6 @@
 ---
-title: Konfigurace Azure webovou aplikaci čtení tajného klíče z Key vault | Microsoft Docs
-description: Kurz konfiguraci aplikace ASP.Net core čtení tajného klíče z Key vault
+title: Kurz Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault | Microsoft Docs
+description: 'Kurz: Konfigurace aplikace ASP.Net Core pro čtení tajného kódu z trezoru klíčů'
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -8,26 +8,27 @@ manager: mbaldwin
 ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: MT
+ms.openlocfilehash: 146ea04081a4adebe4a6e9249bb1fe34ba76e3a4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305170"
 ---
-# <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Kurz: Konfigurace Azure webovou aplikaci čtení tajného klíče z Key Vault
+# <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Kurz: Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault
 
-V tomto kurzu projít nezbytnými kroky k Azure webovou aplikaci při čtení informací z pomocí identity spravované služby Key vault. Získáte informace o těchto tématech:
+V tomto kurzu si projdete nezbytné kroky pro využití webové aplikace Azure k načtení informací z trezoru klíčů pomocí identit spravované služby. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření trezoru klíčů.
-> * Uložení tajný klíč v Key Vault.
-> * Vytvoření Azure webovou aplikaci.
-> * Povolit identita spravované služby
-> * Přidělení požadovaných oprávnění pro aplikaci číst data z Key vault.
+> * Vytvoření trezoru klíčů
+> * Uložení tajného kódu ve službě Key Vault
+> * Vytvoření webové aplikace Azure
+> * Povolení identit spravované služby
+> * Udělení požadovaných oprávnění k načtení dat z trezoru klíčů pro aplikaci
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -35,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-K přihlášení do Azure pomocí rozhraní příkazového řádku, můžete zadat:
+Pokud se chcete přihlásit k Azure pomocí rozhraní příkazového řádku, můžete zadat:
 
 ```azurecli
 az login
@@ -48,71 +49,69 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/gr
 Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
 ```azurecli
-az group create --name ContosoResourceGroup --location eastus
+# To list locations: az account list-locations --output table
+az group create --name "ContosoResourceGroup" --location "East US"
 ```
 
 V tomto kurzu se používá skupina prostředků, kterou jste právě vytvořili.
 
 ## <a name="create-an-azure-key-vault"></a>Vytvoření služby Azure Key Vault
 
-Dále vytvoříte Key Vault ve skupině prostředků vytvořili v předchozím kroku. Je třeba zadat některé informace:
+Dále ve skupině prostředků vytvořené v předchozím kroku vytvoříte službu Key Vault. Přestože se v tomto kurzu jako název pro trezor klíčů používá ContosoKeyVault, musíte použít jedinečný název. Zadejte tyto informace:
 
->[!NOTE]
-> I když "ContosoKeyVault" slouží jako název pro naše Key Vault v rámci tohoto kurzu, musíte použít jedinečný název.
-
-* Název trezoru **ContosoKeyVault**.
+* Název trezoru **ContosoKeyVault**
 * Název skupiny prostředků **ContosoResourceGroup**
 * Umístění **Východní USA**
 
 ```azurecli
-az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East US"
 ```
 
-Výstup tohoto příkazu se zobrazují vlastnosti nově vytvořený klíč trezoru. Poznamenejte si hodnoty dvou vlastností uvedených níže:
+Výstup tohoto příkazu zobrazuje vlastnosti nově vytvořené služby Key Vault. Poznamenejte si hodnoty dvou vlastností uvedených níže:
 
-* **Název trezoru**: V tomto příkladu je to **ContosoKeyVault**. Název trezoru klíč bude použit pro všechny příkazy Key Vault.
-* **Identifikátor URI trezoru**: V příkladu je to https://<YourKeyVaultName>.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
+* **Název trezoru**: V tomto příkladu je to **ContosoKeyVault**. Tento název trezoru použijete ve všech příkazech Key Vault.
+* **Identifikátor URI trezoru:** V tomto příkladu je to https://<YourKeyVaultName>.vault.azure.net/. Aplikace, které používají váš trezor prostřednictvím REST API musí používat tento identifikátor URI.
 
 >[!IMPORTANT]
-> Pokud se zobrazí chyba 'vault_name' musí odpovídat vzoru následující parametr: ' ^ [-zA-Z0 - 9 –]{3,24}$'-Název param hodnotu nebyla jedinečný nebo neodpovídala požadavkům na řetězec tvořený alfanumerické znaky ze 3 až 24 dlouho.
+> Pokud se zobrazí chyba, parametr vault_name musí odpovídat tomuto vzoru: '^[a-zA-Z0-9-]{3,24}$' Hodnota parametru -name nebyla jedinečná nebo neodpovídala řetězci vytvořenému z 3 až 24 alfanumerických znaků.
 
 V tuto chvíli je váš účet Azure jediným účtem s oprávněním provádět jakékoli operace s tímto novým trezorem.
 
-## <a name="add-a-secret-to-key-vault"></a>Do Key vault přidat tajný klíč
+## <a name="add-a-secret-to-key-vault"></a>Přidání tajného klíče do trezoru klíčů
 
-Přidáváme tajný klíč pro lepší znázornění, jak to funguje. Může být ukládání připojovacího řetězce SQL nebo Další informace, které je potřeba zachovat bezpečně ale zpřístupnit do vaší aplikace. V tomto kurzu bude volána heslo **AppSecret** a uloží hodnotu **MySecret** v ní.
+Tajný klíč přidáváme proto, abychom ukázali, jak to funguje. Mohli byste ukládat připojovací řetězec SQL nebo jakékoli jiné informace, které potřebujete zabezpečeně uchovávat a současně zpřístupnit vaší aplikaci. V tomto kurzu budeme heslo označovat jako **AppSecret** a budeme v něm ukládat hodnotu **MySecret**.
 
-Zadejte následující příkazy k vytvoření tajného klíče v Key Vault názvem **AppSecret** , uloží hodnotu **MySecret**:
+Zadáním následujících příkazů vytvořte ve službě Key Vault tajný kód **AppSecret**, který bude uchovávat hodnotu **MySecret**:
 
 ```azurecli
-az keyvault secret set --vault-name '<YourKeyVaultName>' --name 'AppSecret' --value 'MySecret'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "AppSecret" --value "MySecret"
 ```
 
 Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 
 ```azurecli
-az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
+az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 ```
 
-Tento příkaz zobrazí tajné informace, včetně identifikátor URI. Po dokončení těchto kroků byste měli mít identifikátorů URI tajného klíče v Azure Key Vault. Poznamenejte si tyto informace. Budete ho potřebovat později.
+Tento příkaz zobrazí informace o tajném kódu, včetně identifikátoru URI. Po dokončení těchto kroků byste měli mít URI pro tajný kód ve službě Azure Key Vault. Poznamenejte si tyto informace. Budete je potřebovat později.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V této části vytvoříte aplikaci ASP.NET MVC a nasadit v Azure jako webovou aplikaci. Další informace o službě Azure Web Apps, naleznete v části [přehled Web Apps](../app-service/app-service-web-overview.md).
+V této části vytvoříte aplikaci ASP.NET MVC a nasadíte ji do Azure jako webovou aplikaci. Další informace o Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
 
 1. Ve Visual Studiu vytvořte projekt tak, že vyberete **Soubor > Nový > Projekt**. 
 
 2. V dialogovém okně **Nový projekt** vyberte **Visual C# > Web > Webová aplikace ASP.NET Core**.
 
-3. Název aplikace **WebKeyVault**a potom vyberte **OK**.
+3. Aplikaci pojmenujte **WebKeyVault** a potom vyberte **OK**.
    >[!IMPORTANT]
-   > Název aplikace WebKeyVault musí, zkopírujte a vložte kód bude odpovídat oboru názvů. Pokud název lokality, jakékoli jiné potřebujete změnit kód tak, aby odpovídaly názvu serveru.
+   > Jako název aplikace musíte použít WebKeyVault, aby kód, který zkopírujete a vložíte, odpovídal oboru názvů. Pokud web pojmenujete jinak, budete muset kód upravit tak, aby odpovídal tomuto názvu.
 
     ![Dialogové okno Nový projekt ASP.NET](media/tutorial-web-application-keyvault/aspnet-dialog.png)
 
-4. Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET Core. V tomto kurzu vyberte **webové aplikace** šablony a zajistěte, aby ověřování nastavena na **bez ověřování**.
+4. Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET Core. V tomto kurzu vyberte šablonu **Webová aplikace** a ujistěte se, že u ověřování je nastavena možnost **Bez ověření**.
 
-    ![ASPNET žádné dialogové okno ověřování](media/tutorial-web-application-keyvault/aspnet-noauth.png)
+    ![Dialogové okno ASPNET bez ověřování](media/tutorial-web-application-keyvault/aspnet-noauth.png)
 
 5. Vyberte **OK**.
 
@@ -122,17 +121,17 @@ V této části vytvoříte aplikaci ASP.NET MVC a nasadit v Azure jako webovou 
 
 ## <a name="modify-the-web-app"></a>Úprava webové aplikace
 
-Existují dva balíčky NuGet, které webové aplikace musí mít nainstalovaný. K instalaci je postupujte podle následujících kroků:
+Vaše webová aplikace musí mít nainstalované dva balíčky NuGet. Při jejich instalaci použijte následující postup:
 
-1. V řešení explorer klikněte pravým tlačítkem na název vašeho webu.
-2. Vyberte **balíčků spravovat balíčky NuGet pro řešení...**
-3. Zaškrtněte políčko vedle pole hledání. **Zahrnout předběžné verze**
-4. Vyhledejte dva balíčky NuGet uvedené níže a přijměte je přidat do vašeho řešení:
+1. V průzkumníku řešení klikněte pravým tlačítkem na název vašeho webu.
+2. Vyberte **Spravovat balíčky NuGet pro řešení**.
+3. Zaškrtněte políčko vedle vyhledávacího pole. **Zahrnout předběžné verze**
+4. Vyhledejte dva balíčky NuGet uvedené níž a potvrďte jejich přidání do vašeho řešení:
 
-    * [Microsoft.Azure.Services.AppAuthentication (preview)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) -umožňuje snadno načíst tokeny přístupu ke pro scénáře ověřování služby pro Azure Service. 
-    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) – obsahuje metody pro interakci s Key Vault.
+    * [Microsoft.Azure.Services.AppAuthentication (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) – usnadňuje načítání přístupových tokenů pro scénáře ověřování služeb pro služby Azure. 
+    * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/2.4.0-preview) – obsahuje metody pro interakci se službou Key Vault.
 
-5. Pomocí Průzkumníku řešení otevřete `Program.cs` a nahraďte obsah souboru Program.cs následujícím kódem. Nahraďte ```<YourKeyVaultName>``` název trezoru klíčů:
+5. Pomocí Průzkumníka řešení otevřete `Program.cs` a obsah souboru Program.cs nahraďte následujícím kódem. Nahraďte ```<YourKeyVaultName>``` názvem vašeho trezoru klíčů:
 
     ```csharp
     
@@ -176,7 +175,7 @@ Existují dva balíčky NuGet, které webové aplikace musí mít nainstalovaný
         }
     ```
 
-6. Pomocí Průzkumníku řešení můžete přejít do **stránky** části a otevřete `About.cshtml`. Nahraďte obsah **About.cshtml.cs** pomocí kódu níže:
+6. Pomocí Průzkumníka řešení přejděte do části **Stránky** a otevřete `About.cshtml`. Obsah **About.cshtml.cs** nahraďte následujícím kódem:
 
     ```csharp
     
@@ -204,56 +203,56 @@ Existují dva balíčky NuGet, které webové aplikace musí mít nainstalovaný
     
     ```
 
-7. Z hlavní nabídky zvolte **ladění** > **spustit bez ladění**. Jakmile se zobrazí v prohlížeči, přejděte na **o** stránky. Zobrazí se hodnota AppSecret.
+7. V hlavní nabídce zvolte **Ladit** > **Spustit bez ladění**. Jakmile se zobrazí prohlížeč, přejděte na stránku **O aplikaci**. Zobrazí se hodnota pro AppSecret.
 
 >[!IMPORTANT]
-> Pokud se zobrazí chyba 502.5 HTTP - zpráva o selhání procesu ověřte název trezoru klíč zadaný v `Program.cs`
+> Pokud se zobrazí chyba HTTP 502.5 – selhání procesu, ověřte název trezoru klíčů uvedený v souboru `Program.cs`.
 
 ## <a name="publish-the-web-application-to-azure"></a>Publikování webové aplikace do Azure
 
-1. Výše editoru vyberte **WebKeyVault**.
-2. Vyberte **publikování**.
-3. Vyberte **publikovat** znovu.
-4. Vyberte **vytvořit**.
+1. Nad editorem vyberte **WebKeyVault**.
+2. Vyberte **Publikovat** a potom **Spustit**.
+3. Vytvořte novou službu **App Service** a vyberte **Publikovat**.
+4. Vyberte **Vytvořit**.
 
 >[!IMPORTANT]
-> Otevře se okno prohlížeče a zobrazí se zpráva 502.5 - selhání procesu. Toto chování se očekává. Je potřeba udělit práva identity aplikace pro čtení tajných klíčů v trezoru klíč.
+> Otevře se okno prohlížeče a uvidíte zprávu 502.5 – Selhání procesu. To se očekává. Budete muset identitě aplikace udělit práva pro čtení tajných kódů ze služby Key Vault.
 
-## <a name="enable-managed-service-identity"></a>Povolit identita spravované služby
+## <a name="enable-managed-service-identity"></a>Povolení identity spravované služby
 
-Azure Key Vault poskytuje způsob, jak bezpečně uložit přihlašovací údaje a další klíče a tajné klíče, je však nutné kódu k ověření Key Vault je znovu načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému jednodušší tím, že služby Azure automaticky spravované identity v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti všechny přihlašovací údaje ve vašem kódu.
+Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
-1. Vrátit do Azure CLI
-2. Spusťte příkaz přiřadit identity pro vytvoření identity pro tuto aplikaci:
+1. Vraťte se k Azure CLI.
+2. Spusťte příkaz assign-identity a vytvořte identitu pro tuto aplikaci:
 
 ```azurecli
-az webapp assign-identity --name WebKeyVault --resource-group ContosoResourcegroup
+az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResourcegroup"
 ```
 
 >[!NOTE]
->Jedná se o ekvivalent přejdete na portál a přepínání **identita spravované služby** k **na** ve vlastnostech webové aplikace.
+>Tento příkaz je ekvivalentem přechodu na portál a nastavení **Identity spravované služby** na hodnotu **Zapnuto** ve vlastnostech webové aplikace.
 
-## <a name="grant-rights-to-the-application-identity"></a>Udělení oprávnění k identitě aplikací
+## <a name="grant-rights-to-the-application-identity"></a>Přidělení práv k identitě aplikace
 
-Pomocí portálu Azure, přejděte do zásad přístupu k trezoru klíč a přidělte si přístup pro správu tajný klíč do služby Key Vault. To vám umožní spuštění aplikace na místním vývojovém počítači.
+Použijte Azure Portal, přejděte k zásadám přístupu služby Key Vault a přidělte si ke službě Key Vault přístup pro správu tajných kódů. To vám umožní spouštět tuto aplikaci na místním počítači pro vývoj.
 
-1. Vyhledejte v Key Vault **hledat prostředky** dialogové okno na portálu Azure.
-2. Vyberte **zásady přístupu**.
-3. Vyberte **přidat nové**v **tajný oprávnění** části vyberte **získat** a **seznamu**.
-4. Vyberte **vyberte hlavní**a přidejte identitu aplikace. Bude mít stejný název jako aplikace.
-5. Zvolte **Ok**
+1. Vyhledejte váš trezor klíčů v dialogovém okně **Hledat prostředky** na webu Azure Portal.
+2. Vyberte **Zásady přístupu**.
+3. Vyberte **Přidat nové**, v části **Oprávnění na základě tajných kódů** vyberte **Získat** a **Vypsat seznam**.
+4. Vyberte **Výběr objektu zabezpečení** a přidejte identitu aplikace. Bude mít stejný název jako aplikace.
+5. Vyberte **OK**.
 
-Teď váš účet ve službě Azure a identita aplikací mít oprávnění ke čtení informací z Key Vault. Pokud obnovíte stránku, měli byste vidět cílová stránka lokality. Pokud vyberete **o**. Zobrazí hodnotu, kterou jste uložili v Key Vault.
+Váš účet v Azure a identita aplikace teď mají práva ke čtení informací ze služby Key Vault. Když obnovíte stránku, měli byste vidět úvodní stránku webu. Když vyberete **O aplikaci**, zobrazí se hodnota uložená ve službě Key Vault.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li odstranit skupinu prostředků a všechny její prostředky, použijte **odstranění skupiny az** příkaz.
+Pokud chcete odstranit skupinu prostředků a všechny její prostředky, použijte příkaz **az group delete**.
 
   ```azurecli
-  az group delete -n ContosoResourceGroup
+  az group delete -n "ContosoResourceGroup"
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Příručka pro vývojáře Azure Key Vault](key-vault-developers-guide.md)
+> [Průvodce vývojáře pro Azure Key Vault](key-vault-developers-guide.md)
