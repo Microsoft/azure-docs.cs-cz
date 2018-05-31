@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: zahrnout soubor
+description: zahrnout soubor
 services: storage
 author: tamram
 ms.service: storage
@@ -8,67 +8,67 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b8b61f2a512cca2a88274b93d04a1fdc8893a88f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34222909"
 ---
-## <a name="about-vhds"></a>About VHDs
+## <a name="about-vhds"></a>Virtuální pevné disky
 
-The VHDs used in Azure are .vhd files stored as page blobs in a standard or premium storage account in Azure. For details about page blobs, see [Understanding block blobs and page blobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). For details about premium storage, see [High-performance premium storage and Azure VMs](../articles/virtual-machines/windows/premium-storage.md).
+Virtuální pevné disky používané v Azure jsou soubory .vhd uložené jako objekty blob stránky v účtu úložiště úrovně Standard nebo Premium v Azure. Podrobnosti o objektech blob stránky najdete v tématu [Vysvětlení objektů blob bloku a objektů blob stránky](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Podrobnosti o službě Premium Storage najdete v článku [Vysoce výkonné úložiště úrovně Premium a virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
 
-Azure supports the fixed disk VHD format. The fixed format lays the logical disk out linearly within the file, so that disk offset X is stored at blob offset X. A small footer at the end of the blob describes the properties of the VHD. Often, the fixed format wastes space because most disks have large unused ranges in them. However, Azure stores .vhd files in a sparse format, so you receive the benefits of both the fixed and dynamic disks at the same time. For more details, see [Getting started with virtual hard disks](https://technet.microsoft.com/library/dd979539.aspx).
+Azure podporuje virtuální pevné disky s pevným formátem. Pevný formát logický disk lineárně rozvrhne v rámci souboru, takže posun disku o X je uložen na pozici objektu blob s posunem o X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Pevný formát často plýtvá místem, protože většina disků obsahuje velké nevyužité oblasti dat. Azure však ukládá soubory .vhd ve zhuštěném formátu, takže současně můžete těžit z výhod pevných i dynamických disků. Další podrobnosti najdete v tématu [Začínáme s virtuálními pevnými disky](https://technet.microsoft.com/library/dd979539.aspx).
 
-All .vhd files in Azure that you want to use as a source to create disks or images are read-only, except the .vhd files uploaded or copied to Azure storage by the user (which can be either read-write or read-only). When you create a disk or image, Azure makes copies of the source .vhd files. These copies can be read-only or read-and-write, depending on how you use the VHD.
+Všechny soubory virtuálního pevného disku v Azure, který chcete použít jako zdroj pro vytvoření disky nebo bitové kopie jsou jen pro čtení, s výjimkou souborů VHD nahrál nebo zkopírovat do úložiště Azure (může to být buď pro čtení a zápis, nebo jen pro čtení) uživatelem. Při vytváření disku nebo bitové kopie, Azure vytváří kopie zdrojové soubory VHD. Tyto kopie můžou být jen pro čtení nebo pro čtení a zápis, podle toho, jak virtuální pevný disk používáte.
 
-When you create a virtual machine from an image, Azure creates a disk for the virtual machine that is a copy of the source .vhd file. To protect against accidental deletion, Azure places a lease on any source .vhd file that’s used to create an image, an operating system disk, or a data disk.
+Při vytváření virtuálního počítače z image Azure vytvoří pro virtuální počítač disk, který je kopií zdrojového souboru .vhd. Z důvodu ochrany před náhodným odstraněním Azure označí jako zapůjčený každý zdrojový soubor .vhd, který se používá k vytváření image, disku operačního systému nebo datového disku.
 
-Before you can delete a source .vhd file, you’ll need to remove the lease by deleting the disk or image. To delete a .vhd file that is being used by a virtual machine as an operating system disk, you can delete the virtual machine, the operating system disk, and the source .vhd file all at once by deleting the virtual machine and deleting all associated disks. However, deleting a .vhd file that’s a source for a data disk requires several steps in a set order. First you detach the disk from the virtual machine, then delete the disk, and then delete the .vhd file.
+Před odstraněním zdrojového souboru .vhd bude nutné toto označení odebrat odstraněním disku nebo image. Pokud chcete odstranit soubor .vhd používaný některým virtuálním počítačem jako disk operačního systému, můžete najednou odstranit virtuální počítač, disk operačního systému a zdrojový soubor .vhd tak, že odstraníte virtuální počítač a všechny přidružené disky. Nicméně odstranění souboru .vhd, který je zdrojem pro datový disk, vyžaduje několik kroků v určitém pořadí. Nejprve odpojíte disk z virtuálního počítače, odstraníte disk a potom odstraníte soubor .vhd.
+
 > [!WARNING]
-> If you delete a source .vhd file from storage, or delete your storage account, Microsoft can't recover that data for you.
-> 
-> Page blobs in Premium Storage are designed for use as VHDs only. Microsoft does not recommend storing other types of data in page blobs in Premium Storage, as the cost may be significantly greater. Use block blobs for storing data that is not in a VHD.
+> Pokud odstraníte zdrojový soubor .vhd z úložiště nebo pokud odstraníte účet úložiště, Microsoft pro vás tato data nebude moct obnovit.
 
-## <a name="types-of-disks"></a>Types of disks 
+## <a name="types-of-disks"></a>Typy disků 
 
-Azure Disks are designed for 99.999% availability. Azure Disks have consistently delivered enterprise-grade durability, with an industry-leading ZERO% Annualized Failure Rate.
+Disky Azure jsou navržené pro 99,999% dostupnost. Disky systému Azure konzistentně mít doručit odolnost podnikové úrovni s špičkový NULOVÉ % Annualized míra selhání.
 
-There are two performance tiers for storage that you can choose from when creating your disks -- Standard Storage and Premium Storage. Also, there are two types of disks -- unmanaged and managed -- and they can reside in either performance tier.
+Při vytváření disků si můžete vybrat ze dvou úrovní výkonu úložiště – Storage úrovně Standard a Premium Storage. Existují také dva typy disků, spravované a nespravované, které můžou být umístěné v obou úrovních výkonu.
 
 
-### <a name="standard-storage"></a>Standard storage 
+### <a name="standard-storage"></a>Storage úrovně Standard 
 
-Standard Storage is backed by HDDs, and delivers cost-effective storage while still being performant. Standard storage can be replicated locally in one datacenter, or be geo-redundant with primary and secondary data centers. For more information about storage replication, please see [Azure Storage replication](../articles/storage/common/storage-redundancy.md). 
+Služba Storage úrovně Standard je založená na jednotkách HDD a poskytuje nákladově efektivní úložiště se zachováním výkonu. Službu Storage úrovně Standard je možné místně replikovat v jednom datacentru, nebo může být geograficky redundantní pomocí primárních a sekundárních datových center. Další informace o replikaci úložiště najdete v tématu [Replikace služby Azure Storage](../articles/storage/common/storage-redundancy.md). 
 
-For more information about using Standard Storage with VM disks, please see [Standard Storage and Disks](../articles/virtual-machines/windows/standard-storage.md).
+Další informace o používání služby Storage úrovně Standard s disky virtuálních počítačů najdete v tématu [Storage úrovně Standard a disky](../articles/virtual-machines/windows/standard-storage.md).
 
-### <a name="premium-storage"></a>Premium storage 
+### <a name="premium-storage"></a>Premium Storage 
 
-Premium Storage is backed by SSDs, and delivers high-performance, low-latency disk support for VMs running I/O-intensive workloads. Typically you can use Premium Storage with sizes that include an "s" in the series name. For example, there is the Dv3-Series and the Dsv3-series, the Dsv3-series can be used with Premium Storage.  For more information, please see [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
+Služba Premium Storage je založená na jednotkách SSD a poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých se spouští náročné vstupně-výstupní úlohy. Premium Storage můžete obvykle použít s velikostí, které zahrnují "s" v názvu řady. Například je Dv3-Series a Dsv3-series, Dsv3-series lze použít s Storage úrovně Premium.  Další informace najdete v článku [Premium Storage](../articles/virtual-machines/windows/premium-storage.md).
 
-### <a name="unmanaged-disks"></a>Unmanaged disks
+### <a name="unmanaged-disks"></a>Nespravované disky
 
-Unmanaged disks are the traditional type of disks that have been used by VMs. With these, you create your own storage account and specify that storage account when you create the disk. You have to make sure you don't put too many disks in the same storage account, because you could exceed the [scalability targets](../articles/storage/common/storage-scalability-targets.md) of the storage account (20,000 IOPS, for example), resulting in the VMs being throttled. With unmanaged disks, you have to figure out how to maximize the use of one or more storage accounts to get the best performance out of your VMs.
+Nespravované disky jsou tradičním typem disků, jaké používají virtuální počítače. U těchto disků si vytvoříte vlastní účet úložiště, který zadáte při vytváření disku. Je třeba zajistit, abyste do stejného účtu úložiště neumístili příliš mnoho disků, protože byste mohli překročit [cíle škálovatelnosti](../articles/storage/common/storage-scalability-targets.md) účtu úložiště (například 20 000 IOPS), což by vyústilo v omezení virtuálních počítačů. U nespravovaných disků musíte zjistit, jak maximalizovat využití jednoho nebo více účtů úložiště a získat tak ze svých virtuálních počítačů nejlepší výkon.
 
-### <a name="managed-disks"></a>Managed disks 
+### <a name="managed-disks"></a>Managed Disks 
 
-Managed Disks handles the storage account creation/management in the background for you, and ensures that you do not have to worry about the scalability limits of the storage account. You simply specify the disk size and the performance tier (Standard/Premium), and Azure creates and manages the disk for you. Even as you add disks or scale the VM up and down, you don't have to worry about the storage being used. 
+Služba Managed Disks se na pozadí stará o vytvoření a správu účtu úložiště za vás a zajišťuje, že si nemusíte dělat starosti s omezením škálovatelnosti účtu úložiště. Jednoduše zadáte velikost disku a úroveň výkonu (Standard nebo Premium) a Azure za vás disk vytvoří a postará se o jeho správu. S využitím úložiště si nemusíte dělat starosti ani v případě, že přidáváte disky nebo vertikálně navyšujete a snižujete kapacitu virtuálního počítače. 
 
-You can also manage your custom images in one storage account per Azure region, and use them to create hundreds of VMs in the same subscription. For more information about Managed Disks, please see the [Managed Disks Overview](../articles/virtual-machines/windows/managed-disks-overview.md).
+V jednom účtu úložiště na oblast Azure můžete také spravovat vlastní image a vytvářet pomocí nich stovky virtuálních počítačů v rámci stejného předplatného. Další informace o službě Managed Disks najdete v tématu [Přehled služby Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
-We recommend that you use Azure Managed Disks for new VMs, and that you convert your previous unmanaged disks to managed disks, to take advantage of the many features available in Managed Disks.
+Doporučujeme pro nové virtuální počítače používat službu Azure Manager Disks, a abyste převedli výše uvedené nespravované disky na spravované disky a plně tak využili množství funkcí dostupných ve službě Managed Disks.
 
-### <a name="disk-comparison"></a>Disk comparison
+### <a name="disk-comparison"></a>Porovnání disků
 
-The following table provides a comparison of Premium vs Standard for both unmanaged and managed disks to help you decide what to use.
+Následující tabulka obsahuje porovnání úrovní Premium a Standard pro spravované a nespravované disky, které vám pomůže rozhodnout co použít.
 
-|    | Azure Premium Disk | Azure Standard Disk |
+|    | Disk Azure typu Premium | Disk Azure typu Standard |
 |--- | ------------------ | ------------------- |
-| Disk Type | Solid State Drives (SSD) | Hard Disk Drives (HDD)  |
-| Overview  | SSD-based high-performance, low-latency disk support for VMs running IO-intensive workloads or hosting mission critical production environment | HDD-based cost effective disk support for Dev/Test VM scenarios |
-| Scenario  | Production and performance sensitive workloads | Dev/Test, non-critical, <br>Infrequent access |
-| Disk Size | P4: 32 GB (Managed Disks only)<br>P6: 64 GB (Managed Disks only)<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1024 GB<br>P40: 2048 GB<br>P50: 4095 GB | Unmanaged Disks: 1 GB – 4 TB (4095 GB) <br><br>Managed Disks:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1024 GB <br>S40: 2048 GB<br>S50: 4095 GB| 
-| Max Throughput per Disk | 250 MB/s | 60 MB/s | 
-| Max IOPS per Disk | 7500 IOPS | 500 IOPS | 
+| Typ disku | SSD | HDD  |
+| Přehled  | Založený na jednotkách SSD; poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače, na kterých se spouští náročné vstupně-výstupní úlohy nebo které hostují kriticky důležité produkční prostředí. | Založený na jednotkách HDD; poskytuje nákladově efektivní podporu pro scénáře vývoje nebo testování virtuálních počítačů. |
+| Scénář  | Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu | Vývoj a testování, nekritické úlohy, <br>úlohy s nepravidelným přístupem |
+| Velikost disku | P4: 32 GB (pouze spravované disků)<br>P6: 64 GB (pouze spravované disků)<br>P10: 128 GB<br>P20: 512 GB<br>P30: 1 024 GB<br>P40: 2 048 GB<br>P50: 4095 GB | Nespravované disky: 1 GB – 4 TB (4095 GB) <br><br>Managed Disks:<br> S4: 32 GB <br>S6: 64 GB <br>S10: 128 GB <br>S20: 512 GB <br>S30: 1 024 GB <br>S40: 2 048 GB<br>S50: 4095 GB| 
+| Maximální propustnost na disk | 250 MB/s | 60 MB/s | 
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 7500 IOPS | 500 IOPS | 
 
