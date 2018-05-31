@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886778"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Triggery a akce pro definice pracovního postupu v Azure Logic Apps
 
@@ -1394,7 +1395,7 @@ Zde jsou některé příklady, které ukazují, jak můžete použít výrazy v 
 | `"expression": "@greater(actions('action1').output.value, parameters('threshold'))"` | Podporuje funkce porovnání. V tomto příkladu akci spustí pouze v případě, že výstupem action1 je větší než prahová hodnota. | 
 | `"expression": "@or(greater(actions('action1').output.value, parameters('threshold')), less(actions('action1').output.value, 100))"` | Podporuje funkce logiku pro vytvoření vnořené výrazy logických hodnot. V tomto příkladu spustí akci v případě, že výstupem action1 je více než prahová hodnota nebo pod 100. | 
 | `"expression": "@equals(length(actions('action1').outputs.errors), 0))"` | Pokud chcete zkontrolovat, zda pole má všechny položky, můžete použít funkce pole. V tomto příkladu spustí akci při chybách pole je prázdné. | 
-| `"expression": "parameters('hasSpecialAction')"` | Tento výraz způsobí chybu a není platný stav. Musíte použít podmínek "@" symbol. | 
+| `"expression": "parameters('hasSpecialAction')"` | Tento výraz způsobí chybu a není platný stav. Musíte použít podmínek "\@" symbol. | 
 ||| 
 
 ## <a name="switch-action"></a>Přepínač akce
