@@ -1,41 +1,63 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: d586ca18953b12045fbbaa4a656d78a7192eb88e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371231"
+---
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 Vytvoření služby IoT Hub pro aplikaci simulovaného zařízení, která se ke službě bude připojovat. Následující kroky vám ukážou, jak tuto úlohu dokončit pomocí portálu Azure.
 
 1. Přihlaste se na web [Azure Portal][lnk-portal].
 
-1. Vyberte **Nový** > **Internet věcí** > **IoT Hub**.
+1. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
    
     ![Panel portálu Azure][1]
 
 1. V podokně **Centrum IoT** zadejte následující informace o centru IoT:
 
-   * **Název:** Vytvořte název centra IoT. Pokud je zadaný název platný, zobrazí se zelená značka zaškrtnutí.
-
-   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
-
-   * **Úroveň cen a škálování:** V tomto kurzu vyberte úroveň **F1 – Free**. Další informace najdete v tématu popisujícím [úrovně cen a škálování][lnk-pricing].
+   * **Předplatné:** Vyberte předplatné, které chcete použít při vytváření tohoto centra IoT Hub.
 
    * **Skupina prostředků:** Vytvořte skupinu prostředků, která bude hostitelem centra IoT, nebo použijte existující. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure][lnk-resource-groups].
 
-   * **Umístění:** Vyberte vám nejbližší umístění.
+   * **Oblast:** Vyberte umístění, které je vám nejbližší.
 
-   * **Připnout na řídicí panel:** Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
+   * **Název:** Vytvořte název centra IoT. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
 
-    ![Okno Centrum IoT][2]
+   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-1. Klikněte na možnost **Vytvořit**. Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
+   ![Okno Základy centra IoT Hub][2]
 
-1. Pokud vaše novou službu IoT hub je připraven, klikněte na jeho dlaždici v portálu Azure otevřete jeho vlastnosti – okno. Teď, když jste vytvořili centrum IoT, vyhledejte důležité informace, které používáte pro připojení zařízení a aplikací do služby IoT hub. Poznačte si **Název hostitele** a klikněte na **Zásady sdíleného přístupu**.
+2. Pokračujte ve vytváření centra IoT Hub výběrem možnosti **Další: Velikost a škálování**. 
+
+3. Zvolte si **Úroveň ceny a škálování**. Pro potřeby tohoto článku vyberte úroveň **F1 – Free**, pokud je ve vašem předplatném ještě dostupná. Další informace najdete v tématu popisujícím [úrovně cen a škálování][lnk-pricing].
+
+   ![Okno velikosti a škálování centra IoT Hub][3]
+
+4. Vyberte **Zkontrolovat a vytvořit**.
+
+1. Zkontrolujte informace o centru IoT Hub a potom klikněte na **Vytvořit**. Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
+
+1. Až bude nové centrum IoT Hub hotové, kliknutím na jeho dlaždici na webu Azure Portal otevřete okno s jeho vlastnostmi. Teď máte vytvořené centrum IoT Hub a můžete zjistit důležité informace, které umožňují připojit k centru IoT Hub zařízení a aplikace. Klikněte na **Zásady sdíleného přístupu**.
    
-    ![Okno nového centra IoT][4]
-
-1. V **zásady sdíleného přístupu**, klikněte na tlačítko **iothubowner** zásady a potom poznamenejte připojovací řetězec služby IoT Hub **iothubowner** okno. Další informace najdete v tématu [Řízení přístupu][lnk-access-control] v Příručce pro vývojáře pro IoT Hub.
+1. V okně **Zásady sdíleného přístupu** vyberte zásadu **iothubowner**. Pro pozdější použití si zkopírujte **Připojovací řetězec – primární klíč** pro IoT Hub. Další informace najdete v tématu [Řízení přístupu][lnk-access-control] v Příručce pro vývojáře pro IoT Hub.
    
     ![Zásady sdíleného přístupu][5]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-get-started-create-hub/create-iot-hub1.png
 [2]: ./media/iot-hub-get-started-create-hub/create-iot-hub2.png
+[3]: ./media/iot-hub-get-started-create-hub/create-iot-hub3.png
 [4]: ./media/iot-hub-get-started-create-hub/create-iot-hub4.png
 [5]: ./media/iot-hub-get-started-create-hub/create-iot-hub5.png
 
