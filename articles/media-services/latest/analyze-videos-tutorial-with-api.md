@@ -12,11 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 54c49645722b6545d8ae872151b9b82674d44523
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362290"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
 
@@ -66,7 +67,7 @@ Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, 
 
 ### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Vytvoření výstupního prostředku k uložení výsledku úlohy 
 
-Výstupní prostředek uloží výsledek vaší úlohy. Projekt definuje funkci **DownloadResults**, která stáhne výsledky z tohoto výstupního prostředku do výstupní složky, kde si je můžete zkontrolovat.
+Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) uloží výsledek vaší úlohy. Projekt definuje funkci **DownloadResults**, která stáhne výsledky z tohoto výstupního prostředku do výstupní složky, kde si je můžete zkontrolovat.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
@@ -76,7 +77,7 @@ Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvyk
 
 #### <a name="transform"></a>Transformace
 
-Když vytváříte novou instanci **Transformace**, musíte určit, co má vytvořit jako výstup. Jak je vidět ve výše uvedeném kódu, povinným parametrem je objekt **TransformOutput**. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa a/nebo audia, které se používají ke generování požadovaného objektu **TransformOutput**. V tomto příkladu se používá předvolba **VideoAnalyzerPreset** a jazyk („en-US“) se předává jejímu konstruktoru. Tato předvolba vám umožňuje z videa extrahovat několik audio a video přehledů. Pokud potřebujete z videa extrahovat pouze několik audio přehledů, můžete použít předvolbu **AudioAnalyzerPreset**. 
+Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má vytvořit jako výstup. Jak je vidět ve výše uvedeném kódu, povinným parametrem je objekt **TransformOutput**. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa a/nebo audia, které se používají ke generování požadovaného objektu **TransformOutput**. V tomto příkladu se používá předvolba **VideoAnalyzerPreset** a jazyk („en-US“) se předává jejímu konstruktoru. Tato předvolba vám umožňuje z videa extrahovat několik audio a video přehledů. Pokud potřebujete z videa extrahovat pouze několik audio přehledů, můžete použít předvolbu **AudioAnalyzerPreset**. 
 
 Než začnete vytvářet **transformaci**, ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže).  Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
@@ -84,7 +85,7 @@ Než začnete vytvářet **transformaci**, ověřte si nejdřív pomocí metody 
 
 #### <a name="job"></a>Úloha
 
-Jak je uvedeno výše, objekt **Transformace** je předpis a **Úloha** je vlastní požadavek na službu Media Services, aby **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup. Umístění videa můžete zadat pomocí adres URL protokolu HTTPS, adres URL podpisu SAS nebo prostředků, které máte ve svém účtu služby Media Services. 
+Jak je uvedeno výše, objekt [Transformace](https://docs.microsoft.com/rest/api/media/transforms) je předpis a [Úloha](https://docs.microsoft.com/en-us/rest/api/media/jobs) je vlastní požadavek na službu Media Services, aby **transformaci** použila na daný vstupní videoobsah nebo zvukový obsah. **Úloha** určuje informace, jako je umístění vstupního videa a umístění pro výstup. Umístění videa můžete zadat pomocí adres URL protokolu HTTPS, adres URL podpisu SAS nebo prostředků, které máte ve svém účtu služby Media Services. 
 
 V tomto příkladu je vstupem úlohy místní video.  
 
@@ -92,7 +93,7 @@ V tomto příkladu je vstupem úlohy místní video.
 
 ### <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. Existuje několik možností, jak se nechat na dokončení úlohy upozornit. Nejjednodušší možností (kterou zde ukazujeme) je použití dotazování. 
+Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. Existuje několik možností, jak se nechat na dokončení [úlohy](https://docs.microsoft.com/en-us/rest/api/media/jobs) upozornit. Nejjednodušší možností (kterou zde ukazujeme) je použití dotazování. 
 
 Dotazování nepatří mezi doporučené postupy, jak sestavovat aplikace, protože může mít prodlevu. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
 
@@ -104,7 +105,7 @@ Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a 
 
 ### <a name="download-the-result-of-the-job"></a>Stažení výsledku úlohy
 
-Následující funkce stáhne výsledky z výstupního prostředku do „výstupní“ složky, abyste si mohli výsledky úlohy prohlédnout. 
+Následující funkce stáhne výsledky z výstupního [prostředku](https://docs.microsoft.com/rest/api/media/assets) do „výstupní“ složky, abyste si mohli výsledky úlohy prohlédnout. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 

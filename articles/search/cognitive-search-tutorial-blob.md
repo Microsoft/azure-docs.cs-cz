@@ -9,11 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 023e55724124afb9c97d01540c6319a775681c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366745"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Jak volat rozhraní API kognitivního hledání (Preview)
 
@@ -23,7 +24,7 @@ V tomto kurzu budete volat rozhraní REST API, aby provedlo tyto úlohy:
 
 > [!div class="checklist"]
 > * Vytvoření kanálu indexace, který rozšiřuje zdrojová data na cestě k indexu
-> * Využití dovedností integrovaného rozpoznávání entit, zjišťování jazyka, manipulace s textem a extrakce klíčových frází na ukázkové sadě dat
+> * Využití integrovaných dovedností na ukázkové sadě dat: rozpoznávání entit, zjišťování jazyka, manipulace s textem a extrakce klíčových frází
 > * Zjištění, jak mapováním vstupů na výstupy v sadě dovedností řetězit dovednosti za sebe
 > * Spouštění požadavků a kontrola výsledků
 > * Resetování indexu a indexerů pro další vývoj
@@ -84,7 +85,7 @@ Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová d
   Připojovací řetězec by měl být adresa URL, která vypadá nějak takto:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=y1NIlE9wFVBIabcd562GzZl+JO9TEGdqOerqfbT78C8zrn28Te8DsWlxvKKnjh67P/HM5k80zt4shOt9vqlbg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
       ```
 
 Existují i jiné způsoby, jak zadat připojovací řetězec, například poskytnutím sdíleného přístupového podpisu. Další informace o přihlašovacích údajích ke zdroji dat najdete v článku o [indexování služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
