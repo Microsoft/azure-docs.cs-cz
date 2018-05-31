@@ -1,14 +1,14 @@
 ---
-title: "Zabalení a nasazení kontejnerové aplikace Service Fabric | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak pomocí Yeomanu vygenerovat definici aplikace Azure Service Fabric a jak aplikaci zabalit."
+title: Zabalení a nasazení kontejnerové aplikace Service Fabric | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí Yeomanu vygenerovat definici aplikace Azure Service Fabric a jak aplikaci zabalit.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, kontejnery, mikroslužby, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, kontejnery, mikroslužby, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365363"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric
 
@@ -45,7 +46,8 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
 1. Nainstalujte si na počítač NodeJS a NPM. Uživatelé Mac OS X musí použít správce balíčků Homebrew.
 
     ```bash
-    sudo apt-get install npm && sudo apt install nodejs-legacy
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
+    sudo apt-get install -y nodejs 
     ```
 2. Nainstalujte na svém počítači generátor šablon Yeoman z NPM. 
 
@@ -247,7 +249,7 @@ Pomocí instalačního skriptu, který je k dispozici v adresáři **TestContain
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na Service Fabric Explorer na adrese http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
+Otevřete prohlížeč a přejděte do Service Fabric Exploreru na adrese http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer. Rozbalte uzel Aplikace a všimněte si, že obsahuje položku pro váš typ aplikace a další položku pro instanci.
 
 ![Service Fabric Explorer][sfx]
 

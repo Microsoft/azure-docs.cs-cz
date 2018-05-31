@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 91bb23b2790ed23c831bb1680f6f2bb2cdecc38f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198703"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření profilu a koncového bodu Azure CDN
 V tomto rychlém startu povolíte Azure Content Delivery Network (CDN) prostřednictvím vytvoření nového profilu a koncového bodu CDN. Po vytvoření profilu a koncového bodu můžete začít doručovat obsah svým zákazníkům.
@@ -70,7 +71,7 @@ Po vytvoření profilu CDN ho můžete použít k vytvoření koncového bodu.
    ![Koncový bod CDN](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    Vzhledem k tomu, že rozšíření registrace nějakou dobu trvá, koncový bod není okamžitě dostupný pro použití: 
-   - V případě profilů **Azure CDN Standard od Microsoftu** je šíření obvykle hotové během deseti minut. 
+   - U profilů **Azure CDN Standard od Microsoftu** trvá šíření většinou 10 minut. 
    - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
    - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 90 minut. 
 
@@ -87,6 +88,6 @@ V předchozích krocích jste ve skupině prostředků vytvořili profil a konco
 Pokud chcete zjistit, jak do koncového bodu CDN přidat vlastní doménu, projděte si následující kurz:
 
 > [!div class="nextstepaction"]
-> [Kurz: Přidání Azure CDN do webové aplikace](app-service-web-tutorial-content-delivery-network.md)
+> [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
 
 

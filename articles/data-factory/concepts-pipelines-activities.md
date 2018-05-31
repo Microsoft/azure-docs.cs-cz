@@ -1,5 +1,5 @@
 ---
-title: Kanály a aktivity v Azure Data Factory | Dokumentace Microsoftu
+title: Kanály a aktivity v Azure Data Factory | Microsoft Docs
 description: Seznamte se s kanály a aktivitami v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/22/2018
+ms.date: 05/16/2018
 ms.author: shlo
-ms.openlocfilehash: e8dc12d41d3369bd95c2953607b8efce94f39d46
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 564ed357a838e5e0c3e6db869eefafb7925e155b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261496"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -99,7 +100,7 @@ Tady je způsob definice kanálu ve formátu JSON:
 
 Značka | Popis | Typ | Požaduje se
 --- | ----------- | ---- | --------
-jméno | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>•   Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Řetězec | Ano
+jméno | Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 140.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>•   Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | Řetězec | Ano
 description | Určuje text popisující, k čemu se kanál používá. | Řetězec | Ne
 activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu activities formátu JSON najdete v části [Zápis JSON aktivity](#activity-json). | Pole | Ano
 parameters | Část **parameters** může obsahovat definici jednoho nebo více parametrů v kanálu, aby byl kanál flexibilní pro opakované použití. | Seznam | Ne
@@ -132,7 +133,7 @@ Následující tabulka obsahuje popis vlastností v definici aktivity ve formát
 
 Značka | Popis | Požaduje se
 --- | ----------- | ---------
-jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
+jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li></ul>
 description | Text popisující, k čemu aktivita slouží. | Ano
 type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-activities). | Ano
 linkedServiceName | Název propojené služby používané aktivitou.<br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. | Ano v případě aktivity HDInsight, dávkové hodnoticí aktivity služby Azure Machine Learning a aktivita uložené procedury <br/><br/>Ne ve všech ostatních případech
@@ -194,7 +195,7 @@ Aktivity řízení mají následující strukturu nejvyšší úrovně:
 
 Značka | Popis | Požaduje se
 --- | ----------- | --------
-jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul> 
+jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou.<br/><ul><li>Maximální počet znaků: 55.</li><li>Musí začínat písmenem, číslicí nebo podtržítkem (_).</li><li>Nejsou povolené tyto znaky: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“. | Ano</li><ul> 
 description | Text popisující, k čemu aktivita slouží. | Ano
 type | Typ aktivity. Informace o různých typech aktivit najdete v částech [Aktivity přesunu dat](#data-movement-activities), [Aktivity transformace dat](#data-transformation-activities) a [Aktivity řízení](#control-activities). | Ano
 typeProperties | Vlastnosti v části typeProperties závisí na příslušném typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne

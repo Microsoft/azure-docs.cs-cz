@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212785"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Příprava prostředků Azure na replikaci místních počítačů
 
@@ -47,7 +48,7 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místní lokality do Azure.
 
 1. V nabídce webu [Azure Portal](https://portal.azure.com) vyberte **Nový** > **Úložiště** > **Účet úložiště**.
-2. V části **Vytvořit účet úložiště** zadejte název účtu. Pro účely těchto kurzů použijte název **contosovmsacct1910171607**. Název musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze číslice a malá písmena.
+2. V části **Vytvořit účet úložiště** zadejte název účtu. Pro účely těchto kurzů používáme název **contosovmsacct1910171607**. Vybraný název musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze číslice a malá písmena.
 3. V části **Model nasazení** vyberte **Resource Manager**.
 4. V části **Druh účtu** vyberte **Obecné účely**. V části **Výkon** vyberte **Standard**. Nevybírejte úložiště objektů blob.
 5. V části **Replikace** vyberte výchozí redundanci úložiště **Geograficky redundantní úložiště jen pro čtení**.
@@ -62,7 +63,7 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
 1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Monitorování a správa** > **Backup a Site Recovery**.
-2. Jako **Název** zadejte popisný název pro identifikaci trezoru. Pro účely tohoto kurzu použijte **ContosoVMVault**.
+2. Jako **Název** zadejte popisný název pro identifikaci trezoru. Pro tuto sadu kurzů používáme název **ContosoVMVault**.
 3. V části **Skupina prostředků** vyberte existující skupinu prostředků **contosoRG**.
 4. V části **Umístění** zadejte oblast Azure **Západní Evropa**, která se používá v této sérii kurzů.
 5. Pokud chcete mít k trezoru rychlý přístup z řídicího panelu, vyberte **Připnout na řídicí panel** > **Vytvořit**.
