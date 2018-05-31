@@ -12,13 +12,16 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e24091b017a1c6c82cfe8d12873223b98c165c63
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bc144fb1d7db9251871e7e181b012417a32de7e6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868105"
 ---
 # <a name="what-is-azure-signalr-service"></a>Co je služba Azure SignalR
+
+Služba Microsoft Azure SignalR je momentálně ve verzi [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure SignalR je služba Azure založená na [SignalR pro ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction). SignalR pro ASP.NET Core je [open source knihovna](https://github.com/aspnet/signalr), která zjednodušuje proces přidávání webových funkcí pracujících v reálném čase do aplikací přes HTTP. Tato funkce pracující v reálném čase umožňuje webovému serveru nabízet aktualizace obsahu do připojených klientů. Klienti díky tomu můžou získávat aktualizace, aniž by museli zadávat dotazy na server nebo odesílat nové požadavky HTTP na aktualizace.
 
@@ -37,7 +40,7 @@ Vnitřně je služba SignalR abstrakcí nad celou řadou technik, které se pou�
 
 ## <a name="developing-signalr-apps"></a>Vývoj aplikací SignalR
 
-V současnosti existují dvě verze SignalR, které můžete ve webových aplikacích použít: SignalR pro ASP.NET a novější verze SignalR pro ASP.NET Core. Služba Azure SignalR, označovaná také jako *služba SignalR* je služba spravovaná v Azure a založená na SignalR pro ASP.NET Core. 
+V současnosti existují dvě verze SignalR, které můžete ve webových aplikacích použít: SignalR pro ASP.NET a novější verze SignalR pro ASP.NET Core. Služba Azure SignalR je služba spravovaná v Azure a založená na SignalR pro ASP.NET Core. 
 
 SignalR pro ASP.NET Core je přepsaná předchozí verze. To znamená, že SignalR pro ASP.NET Core není zpětně kompatibilní se starší verzí SignalR. Rozhraní API a chování se liší. Sada SDK služby SignalR pro ASP.NET Core je napsaná v .NET Standard, takže ji stále můžete používat s rozhraním .NET Framework. Místo starých rozhraní API však musíte použít nová rozhraní API. Pokud používáte SignalR a chcete přejít na SignalR pro ASP.NET Core neboli službu Azure SignalR, budete muset změnit svůj kód s ohledem na rozdíly v rozhraních API.
 
