@@ -13,16 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 05/18/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6f184ac0b2af3a66affecd1a3a9c247a96e616f8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bfd4738797a98fda85053e689e539b93fb6d1b74
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364314"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Kurz: Automatické škálování škálovací sady virtuálních počítačů pomocí Azure CLI 2.0
+
 Při vytváření škálovací sady definujete počet instancí virtuálních počítačů, které chcete spouštět. S měnícími se požadavky na aplikaci můžete počet instancí virtuálních počítačů automaticky zvyšovat nebo snižovat. Možnost automatického škálování umožňuje držet krok s požadavky zákazníků nebo reagovat na změny výkonu aplikace v průběhu jejího životního cyklu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
@@ -35,31 +37,22 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.29 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
-
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.32 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-S vytvářením pravidel automatického škálování vám pomůže definice několika parametrů pro ID vašeho předplatného, název skupiny prostředků a škálovací sady a umístění:
-
-```azurecli-interactive
-sub=$(az account show --query id -o tsv)
-resourcegroup_name="myResourceGroup"
-scaleset_name="myScaleSet"
-location_name="eastus"
-```
 
 Následujícím způsobem vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#create):
 
 ```azurecli-interactive
-az group create --name $resourcegroup_name --location $location_name
+az group create --name myResourceGroup --location eastus
 ```
 
 Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#create). Následující příklad vytvoří škálovací sadu se *2* instancemi a vygeneruje klíče SSH, pokud ještě neexistují:
 
 ```azurecli-interactive
 az vmss create \
-  --resource-group $resourcegroup_name \
-  --name $scaleset_name \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
   --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --instance-count 2 \
@@ -67,177 +60,59 @@ az vmss create \
   --generate-ssh-keys
 ```
 
-
 ## <a name="define-an-autoscale-profile"></a>Definice profilu automatického škálování
-Pravidla automatického škálování se nasazují jako JSON (JavaScript Object Notation) pomocí Azure CLI 2.0. Podívejme se na jednotlivé části tohoto profilu automatického škálování a pak vytvoříme kompletní příklad.
 
-Začátek profilu automatického škálování definuje výchozí, minimální a maximální kapacitu škálovací sady. Následující příklad nastaví výchozí a minimální kapacitu na *2* instance virtuálních počítačů a maximální kapacitu na *10*:
-
-```json
-{
-  "name": "autoscale rules",
-  "capacity": {
-    "minimum": "2",
-    "maximum": "10",
-    "default": "2"
-  }
-}
-```
-
-
-## <a name="create-a-rule-to-autoscale-out"></a>Vytvoření pravidla automatického horizontálního navýšení kapacity
-Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instancí virtuálních počítačů ve škálovací sadě. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě. Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, které metriky se mají monitorovat, například CPU nebo disk, jak dlouho musí zatížení aplikace dosahovat dané prahové hodnoty a kolik instancí virtuálních počítačů se má do škálovací sady přidat.
-
-Teď vytvořte pravidlo, které zvýší počet instancí virtuálních počítačů ve škálovací sadě, pokud je průměrné zatížení CPU vyšší než 70 % po dobu 5 minut. Když se pravidlo aktivuje, počet instancí virtuálních počítačů se zvýší o tři.
-
-Pro toto pravidlo se používají následující parametry:
-
-| Parametr         | Vysvětlení                                                                                                         | Hodnota           |
-|-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
-| *metricName*      | Metrika výkonu, která se má monitorovat a na kterou se mají použít akce škálovací sady.                                                   | Procento CPU  |
-| *timeGrain*       | Četnost shromažďování metrik pro účely analýzy.                                                                   | 1 minuta        |
-| *timeAggregation* | Definuje způsob agregace shromážděných metrik pro účely analýzy.                                                | Průměr         |
-| *timeWindow*      | Doba, která se monitoruje před porovnáním metrik a prahových hodnot.                                   | 5 minut       |
-| *operator*        | Operátor sloužící k porovnání dat metriky s prahovou hodnotou.                                                     | Větší než    |
-| *threshold*       | Hodnota, která způsobí aktivaci akce pravidlem automatického škálování.                                                      | 70 %             |
-| *direction*       | Definuje, jestli se má po použití pravidla kapacita škálovací sady horizontálně snížit nebo zvýšit.                                              | Zvýšit        |
-| *type*            | Určuje, že se má počet instancí virtuálních počítačů změnit o určitou hodnotu.                                    | Počet změn    |
-| *value*           | Počet instancí virtuálních počítačů, jejichž kapacita se má po použití pravidla horizontálně snížit nebo zvýšit.                                             | 3               |
-| *cooldown*        | Doba, po kterou se má počkat před opětovným použitím pravidla, aby akce automatického škálování měly dostatek času se projevit. | 5 minut       |
-
-Následující příklad definuje pravidlo pro horizontální navýšení kapacity počtu instancí virtuálních počítačů. Parametr *metricResourceUri* používá dříve definované proměnné pro ID předplatného, název skupiny prostředků a název škálovací sady:
-
-```json
-{
-  "metricTrigger": {
-    "metricName": "Percentage CPU",
-    "metricNamespace": "",
-    "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/'$resourcegroup_name'/providers/Microsoft.Compute/virtualMachineScaleSets/'$scaleset_name'",
-    "metricResourceLocation": "'$location_name'",
-    "timeGrain": "PT1M",
-    "statistic": "Average",
-    "timeWindow": "PT5M",
-    "timeAggregation": "Average",
-    "operator": "GreaterThan",
-    "threshold": 70
-  },
-  "scaleAction": {
-    "direction": "Increase",
-    "type": "ChangeCount",
-    "value": "3",
-    "cooldown": "PT5M"
-  }
-}
-```
-
-
-## <a name="create-a-rule-to-autoscale-in"></a>Vytvoření pravidla automatického horizontálního snížení kapacity
-Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud je toto snížené zatížení po určitou dobu konzistentní, můžete nakonfigurovat pravidla automatického škálování pro snížení počtu instancí virtuálních počítačů ve škálovací sadě. Tato akce horizontálního snížení kapacity sníží náklady na provoz škálovací sady, protože budete spouštět pouze takový počet instancí, který je potřeba ke zpracování aktuálních požadavků.
-
-Vytvořte další pravidlo, které sníží počet instancí virtuálních počítačů ve škálovací sadě, pokud se průměrné zatížení CPU sníží pod 30 % po dobu 5 minut. Následující příklad definuje pravidlo pro horizontální snížení kapacity počtu instancí virtuálních počítačů o jednu. Parametr *metricResourceUri* používá dříve definované proměnné pro ID předplatného, název skupiny prostředků a název škálovací sady:
-
-```json
-{
-  "metricTrigger": {
-    "metricName": "Percentage CPU",
-    "metricNamespace": "",
-    "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/'$resourcegroup_name'/providers/Microsoft.Compute/virtualMachineScaleSets/'$scaleset_name'",
-    "metricResourceLocation": "'$location_name'",
-    "timeGrain": "PT1M",
-    "statistic": "Average",
-    "timeWindow": "PT5M",
-    "timeAggregation": "Average",
-    "operator": "LessThan",
-    "threshold": 30
-  },
-  "scaleAction": {
-    "direction": "Decrease",
-    "type": "ChangeCount",
-    "value": "1",
-    "cooldown": "PT5M"
-  }
-}
-```
-
-
-## <a name="apply-autoscale-rules-to-a-scale-set"></a>Použití pravidel automatického škálování na škálovací sadu
-Posledním krokem je použít profil a pravidla automatického škálování na vaši škálovací sadu. Vaše škálovací sada pak bude moct horizontálně snížit nebo zvýšit svou kapacitu na základě požadavků na aplikaci. Následujícím způsobem použijte profil automatického škálování pomocí příkazu [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#az_monitor_autoscale_settings_create). Celý následující JSON používá profil a pravidla uvedená v předchozích částech:
+Pokud chcete povolit automatické škálování na škálovací sadě, je nejdříve potřeba definovat profil automatického škálování. Tento profil definuje výchozí, minimální a maximální kapacitu škálovací sady. Tato omezení umožňují řídit náklady tím, že nedochází k nepřetržitému vytváření instancí virtuálních počítačů, a vyvažují přijatelný výkon s minimálním počtem instancí, které zůstanou v události horizontálního snížení kapacity. Vytvořte profil automatického škálování pomocí příkazu [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create). Následující příklad nastaví výchozí a minimální kapacitu na *2* instance virtuálních počítačů a maximální kapacitu na *10*:
 
 ```azurecli-interactive
-az monitor autoscale-settings create \
-    --resource-group $resourcegroup_name \
-    --name autoscale \
-    --parameters '{"autoscale_setting_resource_name": "autoscale",
-      "enabled": true,
-      "location": "'$location_name'",
-      "notifications": [],
-      "profiles": [
-        {
-          "name": "autoscale by percentage based on CPU usage",
-          "capacity": {
-            "minimum": "2",
-            "maximum": "10",
-            "default": "2"
-          },
-          "rules": [
-            {
-              "metricTrigger": {
-                "metricName": "Percentage CPU",
-                "metricNamespace": "",
-                "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/'$resourcegroup_name'/providers/Microsoft.Compute/virtualMachineScaleSets/'$scaleset_name'",
-                "metricResourceLocation": "'$location_name'",
-                "timeGrain": "PT1M",
-                "statistic": "Average",
-                "timeWindow": "PT5M",
-                "timeAggregation": "Average",
-                "operator": "GreaterThan",
-                "threshold": 70
-              },
-              "scaleAction": {
-                "direction": "Increase",
-                "type": "ChangeCount",
-                "value": "3",
-                "cooldown": "PT5M"
-              }
-            },
-            {
-              "metricTrigger": {
-                "metricName": "Percentage CPU",
-                "metricNamespace": "",
-                "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/'$resourcegroup_name'/providers/Microsoft.Compute/virtualMachineScaleSets/'$scaleset_name'",
-                "metricResourceLocation": "'$location_name'",
-                "timeGrain": "PT1M",
-                "statistic": "Average",
-                "timeWindow": "PT5M",
-                "timeAggregation": "Average",
-                "operator": "LessThan",
-                "threshold": 30
-              },
-              "scaleAction": {
-                "direction": "Decrease",
-                "type": "ChangeCount",
-                "value": "1",
-                "cooldown": "PT5M"
-              }
-            }
-          ]
-        }
-      ],
-      "tags": {},
-      "target_resource_uri": "/subscriptions/'$sub'/resourceGroups/'$resourcegroup_name'/providers/Microsoft.Compute/virtualMachineScaleSets/'$scaleset_name'"
-    }'
+az monitor autoscale create \
+  --resource-group myResourceGroup \
+  --resource myScaleSet \
+  --resource-type Microsoft.Compute/virtualMachineScaleSets \
+  --name autoscale \
+  --min-count 2 \
+  --max-count 10 \
+  --count 2
 ```
 
+## <a name="create-a-rule-to-autoscale-out"></a>Vytvoření pravidla automatického horizontálního navýšení kapacity
+
+Pokud se požadavky na vaši aplikaci zvýší, zvýší se i zatížení instancí virtuálních počítačů ve škálovací sadě. Pokud je toto zvýšené zatížení konzistentní, a nejedná se pouze o krátkou poptávku, můžete nakonfigurovat pravidla automatického škálování pro zvýšení počtu instancí virtuálních počítačů ve škálovací sadě. Po vytvoření těchto instancí virtuálních počítačů a nasazení aplikací do nich začne škálovací sada distribuovat provoz prostřednictvím nástroje pro vyrovnávání zatížení. Můžete řídit, které metriky se mají monitorovat, například CPU nebo disk, jak dlouho musí zatížení aplikace dosahovat dané prahové hodnoty a kolik instancí virtuálních počítačů se má do škálovací sady přidat.
+
+Teď pomocí příkazu [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) vytvořte pravidlo, které zvýší počet instancí virtuálních počítačů ve škálovací sadě, pokud je průměrné zatížení CPU vyšší než 70 % po dobu 5 minut. Když se pravidlo aktivuje, počet instancí virtuálních počítačů se zvýší o tři.
+
+```azurecli-interactive
+az monitor autoscale rule create \
+  --resource-group myResourceGroup \
+  --autoscale-name autoscale \
+  --condition "Percentage CPU > 70 avg 5m" \
+  --scale out 3
+```
+
+## <a name="create-a-rule-to-autoscale-in"></a>Vytvoření pravidla automatického horizontálního snížení kapacity
+
+Večer nebo o víkendu se požadavky na vaši aplikaci můžou snížit. Pokud je toto snížené zatížení po určitou dobu konzistentní, můžete nakonfigurovat pravidla automatického škálování pro snížení počtu instancí virtuálních počítačů ve škálovací sadě. Tato akce horizontálního snížení kapacity sníží náklady na provoz škálovací sady, protože budete spouštět pouze takový počet instancí, který je potřeba ke zpracování aktuálních požadavků.
+
+Pomocí příkazu [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) vytvořte další pravidlo, které sníží počet instancí virtuálních počítačů ve škálovací sadě, pokud se průměrné zatížení CPU sníží pod 30 % po dobu 5 minut. Následující příklad definuje pravidlo pro horizontální snížení kapacity počtu instancí virtuálních počítačů o jednu:
+
+```azurecli-interactive
+az monitor autoscale rule create \
+  --resource-group myResourceGroup \
+  --autoscale-name autoscale \
+  --condition "Percentage CPU < 30 avg 5m" \
+  --scale in 1
+```
 
 ## <a name="generate-cpu-load-on-scale-set"></a>Generování zatížení CPU ve škálovací sadě
+
 Pokud chcete pravidla automatického škálování otestovat, vygenerujte nějaké zatížení CPU instancí virtuálních počítačů ve škálovací sadě. Toto simulované zatížení CPU způsobí, že pravidla automatického škálování provedou horizontální navýšení kapacity a zvýší počet instancí virtuálních počítačů. S následným snížením zatížení CPU pravidla automatického škálování provedou horizontální snížení kapacity a sníží počet instancí virtuálních počítačů.
 
 Nejprve vypište adresu a porty pro připojení k instancím virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
-  --resource-group $resourcegroup_name \
-  --name $scaleset_name
+  --resource-group myResourceGroup \
+  --name myScaleSet
 ```
 
 Následující příklad výstupu ukazuje název instance, veřejnou IP adresu nástroje pro vyrovnávání zatížení a číslo portu, na které pravidla překladu adres směrují provoz:
@@ -299,12 +174,13 @@ exit
 ```
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Monitorování aktivních pravidel automatického škálování
-K monitorování počtu instancí virtuálních počítačů ve škálovací sadě použijte nástroj **watch**. Zahájení procesu horizontálního navýšení kapacity na základě zatížení CPU generovaného nástrojem **stress** na jednotlivých instancích virtuálních počítačů pravidly automatického škálování trvá přibližně 5 minut:
+
+K monitorování počtu instancí virtuálních počítačů ve škálovací sadě použijte nástroj **watch**. Zahájení procesu škálování na více instancí na základě zatížení CPU generovaného nástrojem **stress** na jednotlivých instancích virtuálních počítačů pravidly automatického škálování trvá přibližně 5 minut:
 
 ```azurecli-interactive
 watch az vmss list-instances \
-  --resource-group $resourcegroup_name \
-  --name $scaleset_name \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
   --output table
 ```
 
@@ -315,31 +191,31 @@ Every 2.0s: az vmss list-instances --resource-group myResourceGroup --name mySca
 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup    VmId
 ------------  --------------------  ----------  ------------  -------------------  ---------------  ------------------------------------
-           1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUP  4f92f350-2b68-464f-8a01-e5e590557955
-           2  True                  eastus      myScaleSet_2  Succeeded            MYRESOURCEGROUP  d734cd3d-fb38-4302-817c-cfe35655d48e
-           4  True                  eastus      myScaleSet_4  Creating             MYRESOURCEGROUP  061b4c90-0d73-49fc-a066-19eab0b3d95c
-           5  True                  eastus      myScaleSet_5  Creating             MYRESOURCEGROUP  4beff8b9-4e65-40cb-9652-43899309da27
-           6  True                  eastus      myScaleSet_6  Creating             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
+           1  True                  eastus      myScaleSet_1  Succeeded            myResourceGroup  4f92f350-2b68-464f-8a01-e5e590557955
+           2  True                  eastus      myScaleSet_2  Succeeded            myResourceGroup  d734cd3d-fb38-4302-817c-cfe35655d48e
+           4  True                  eastus      myScaleSet_4  Creating             myResourceGroup  061b4c90-0d73-49fc-a066-19eab0b3d95c
+           5  True                  eastus      myScaleSet_5  Creating             myResourceGroup  4beff8b9-4e65-40cb-9652-43899309da27
+           6  True                  eastus      myScaleSet_6  Creating             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
 Jakmile se nástroj **stress** na původních instancích virtuálních počítačů zastaví, průměrné zatížení CPU se vrátí do normálu. Po dalších 5 minutách pak pravidla automatického škálování horizontálně sníží kapacitu počtu instancí virtuálních počítačů. Akce horizontálního snížení kapacity odeberou nejprve instance virtuálních počítačů s nejvyšším ID. Když škálovací sada používá skupiny nebo zóny dostupnosti, akce pro horizontální snížení kapacity se mezi tyto instance virtuálních počítačů rovnoměrně rozloží. Následující příklad výstupu ukazuje jednu instanci virtuálního počítače odstraněnou při automatickém horizontálním snížení kapacity škálovací sady:
 
 ```bash
-           6  True                  eastus      myScaleSet_6  Deleting             MYRESOURCEGROUP  9e4133dd-2c57-490e-ae45-90513ce3b336
+           6  True                  eastus      myScaleSet_6  Deleting             myResourceGroup  9e4133dd-2c57-490e-ae45-90513ce3b336
 ```
 
 Stisknutím `Ctrl-c` ukončete nástroj *watch*. Kapacita škálovací sady se nadále bude každých 5 minut horizontálně snižovat odebráním jedné instance virtuálního počítače, dokud se nedosáhne minimálního počtu 2 instancí.
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
+
 Pokud chcete odebrat škálovací sadu a další prostředky, odstraňte skupinu prostředků a všechny její prostředky pomocí příkazu [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` vrátí řízení na příkazový řádek bez čekání na dokončení operace. Parametr `--yes` potvrdí, že chcete prostředky odstranit, aniž by se na to zobrazoval další dotaz.
 
 ```azurecli-interactive
-az group delete --name $resourcegroup_name --yes --no-wait
+az group delete --name myResourceGroup --yes --no-wait
 ```
 
-
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste zjistili, jak automaticky horizontálně snižovat nebo zvyšovat kapacitu škálovací sady pomocí Azure CLI 2.0:
 
 > [!div class="checklist"]

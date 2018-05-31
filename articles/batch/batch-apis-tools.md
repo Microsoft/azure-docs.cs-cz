@@ -1,18 +1,19 @@
 ---
-title: "Rozhraní API a nástroje služby Azure Batch pro vývojáře | Dokumentace Microsoftu"
-description: "Přečtěte si o dostupných rozhraních API a nástrojích pro vývoj řešení pomocí služby Azure Batch."
+title: Rozhraní API a nástroje služby Azure Batch pro vývojáře | Microsoft Docs
+description: Přečtěte si o dostupných rozhraních API a nástrojích pro vývoj řešení pomocí služby Azure Batch.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: get-started-article
-ms.date: 02/26/2018
+ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0d3720d33de2237b0d8cce2ae56bcc7ccf6acc43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a47c7355e8dfea97f7dee6787da87444a7642c3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359318"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Přehled rozhraní API a nástrojů služby Batch
 
@@ -26,11 +27,10 @@ Umožní vám to efektivně zpracovávat rozsáhlé úlohy pro vaši organizaci 
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>Účty Azure pro vývoj pro službu Batch
-Při vývoji řešení Batch používáte v Microsoft Azure následující účty.
+Při vývoji řešení ve službě Batch používáte následující účty předplatného Azure:
 
-* **Účet a předplatné Azure** – Pokud zatím předplatné Azure nemáte, můžete si aktivovat [výhodu předplatitele sady Visual Studio][msdn_benefits] nebo si zaregistrovat [bezplatný účet Azure][free_account]. Při vytvoření účtu pro vás bude vytvořeno výchozí předplatné.
-* **Účet Batch** – Prostředky služby Azure Batch, včetně fondů, výpočetních uzlů, úloh a úkolů, jsou přidružené k účtu Azure Batch. Pokud vaše aplikace odešle požadavek na službu Batch, ověří se tato žádost pomocí názvu účtu Azure Batch, adresy URL účtu a přístupové klávesy, nebo tokenu Azure Active Directory. [Účet Batch můžete vytvořit](batch-account-create-portal.md) na webu Azure Portal nebo prostřednictvím kódu programu.
-* **Účet Storage** – Služba Batch zahrnuje integrovanou podporu pro práci se soubory ve službě [Azure Storage][azure_storage]. Téměř každý scénář služby Batch používá úložiště objektů blob v Azure – pro přípravu programů, které budou vaše úkoly spouštět, a dat, která budou zpracovávat, a také pro ukládání generovaných výstupních dat. Informace o vytvoření účtu služby Storage najdete v článku [Informace o účtech Azure Storage](../storage/common/storage-create-storage-account.md).
+* **Účet Batch** – prostředky služby Azure Batch, včetně fondů, výpočetních uzlů, úloh a úkolů, jsou v Azure přidružené k [účtu Batch](batch-api-basics.md#account). Pokud vaše aplikace odešle požadavek na službu Batch, ověří se tato žádost pomocí názvu účtu Azure Batch, adresy URL účtu a přístupové klávesy, nebo tokenu Azure Active Directory. [Účet Batch můžete vytvořit](batch-account-create-portal.md) na webu Azure Portal nebo prostřednictvím kódu programu.
+* **Účet Storage** – Služba Batch zahrnuje integrovanou podporu pro práci se soubory ve službě [Azure Storage][azure_storage]. Téměř každý scénář služby Batch používá úložiště objektů blob v Azure – pro přípravu programů, které budou vaše úkoly spouštět, a dat, která budou zpracovávat, a také pro ukládání generovaných výstupních dat. Možnosti účtu úložiště ve službě Batch najdete v tématu [Přehled funkcí Batch](batch-api-basics.md#azure-storage-account).
 
 ## <a name="batch-service-apis"></a>Rozhraní API služby Batch
 

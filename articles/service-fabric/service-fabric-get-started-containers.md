@@ -12,13 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/18/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366524"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -198,6 +199,8 @@ Kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Do souboru Ser
 ```
 
 Když Service Fabric definuje koncový bod, publikuje ho ve službě pojmenování. Ostatní služby spuštěné v clusteru mohou tento kontejner vyhledat. Ke komunikaci mezi kontejnery můžete také využít [reverzní proxy server](service-fabric-reverseproxy.md). Komunikace se provede tak, že se reverznímu proxy serveru poskytne port pro naslouchání HTTP a název služeb, se kterými chcete komunikovat, jako proměnné prostředí.
+
+Služba naslouchá na určitém portu (v tomto příkladu je to 8081). Když se aplikace nasadí do clusteru v Azure, běží cluster i aplikace na pozadí služby Azure Load Balancer. Port aplikace ve službě Azure Load Balancer musí být otevřený, aby příchozí přenosy měly ke službě přístup.  Tento port můžete otevřít ve službě Azure Load Balancer pomocí [skriptu PowerShellu](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) nebo na webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurace a nastavení proměnných prostředí
 Proměnné prostředí je možné zadat pro každý balíček kódu v manifestu služby. Tato funkce je dostupná pro všechny služby, bez ohledu na to, jestli jsou nasazené jako kontejnery, procesy nebo spustitelné soubory typu Host. Hodnoty proměnných prostředí můžete přepsat v manifestu aplikace, nebo je můžete zadat v průběhu nasazení jako parametry aplikace.
