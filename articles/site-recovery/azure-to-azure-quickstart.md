@@ -1,27 +1,30 @@
 ---
-title: Replikace virtuálního počítače Azure do jiné oblasti Azure (Preview)
+title: Replikace virtuálního počítače Azure do jiné oblasti Azure
 description: Tento rychlý start obsahuje kroky potřebné k replikaci virtuálního počítače Azure v jedné oblasti Azure do jiné.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 04/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a317d54b56f72373d99af35b806cb231c2ef962e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208834"
 ---
-# <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Replikace virtuálního počítače Azure do jiné oblasti Azure (Preview)
+# <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replikace virtuálního počítače Azure do jiné oblasti Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
-Tento rychlý start popisuje, jak replikovat virtuální počítač Azure do jiné oblasti Azure.
+Tento rychlý start popisuje, jak replikovat virtuální počítač Azure do jiné oblasti Azure. Replikace Azure do Azure je aktuálně ve verzi Preview.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
@@ -31,8 +34,8 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 1. Na webu Azure Portal klikněte na **Virtuální počítače** a vyberte virtuální počítač, který chcete replikovat.
 
-2. V **Nastavení** klikněte na **Zotavení po havárii (Preview)**.
-3. V části **Konfigurace zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
+2. V části **Nastavení** klikněte na **Zotavení po havárii**.
+3. V části **Konfigurovat zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
 4. Pro účely tohoto rychlého startu přijměte výchozí nastavení.
 5. Klikněte na **Povolit replikaci**. Tím se spustí úloha, která povolí replikaci pro daný virtuální počítač.
 
@@ -59,7 +62,7 @@ Virtuální počítač v primární oblasti se přestane replikovat, když pro n
 Následujícím způsobem zakažte replikaci:
 
 1. Vyberte virtuální počítač.
-2. V části **Zotavení po havárii (Preview)** klikněte na **Další**.
+2. V části **Zotavení po havárii** klikněte na **Další**.
 3. Klikněte na **Zakázat replikaci**.
 
    ![Zákaz replikace](media/azure-to-azure-quickstart/disable2-replication.png)

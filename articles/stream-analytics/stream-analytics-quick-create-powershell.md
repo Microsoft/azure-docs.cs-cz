@@ -4,35 +4,43 @@ description: Tento rychlý start podrobně popisuje nasazení a spuštění úlo
 services: stream-analytics
 author: SnehaGunda
 ms.author: sngun
-ms.date: 03/16/2018
+ms.date: 05/14/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 0be8cee9e6c7874282f4e8f43f75fa7f2490c14e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b5d8bfd6dbe36637a0c6873e941118e7ee71b80
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212428"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-azure-powershell"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí Azure PowerShellu
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure pomocí rutin a skriptů PowerShellu. Tento rychlý start podrobně popisuje nasazení a spuštění úlohy Azure Stream Analytics pomocí modulu Azure PowerShell.
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure pomocí rutin a skriptů PowerShellu. Tento rychlý start podrobně popisuje nasazení a spuštění úlohy Azure Stream Analytics pomocí modulu Azure PowerShell. 
+
+Ukázková úloha čte data streamovaná z objektu blob ve službě Azure Blob Storage. Vstupní datový soubor použitý v tomto rychlém startu obsahuje statická data, která jsou určena pouze pro ilustraci. Ve skutečném scénáři použijete pro úlohu Stream Analytics streamovaná vstupní data. Potom úloha data transformuje pomocí dotazovacího jazyka Stream Analytics a vypočte průměrnou teplotu, pokud překročí 100°. Nakonec zapíše výsledné výstupní události do jiného souboru. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).  
 
-* Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Pomocí příkazu `Get-Module -ListAvailable AzureRM` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete provést instalaci nebo upgrade, přečtěte si článek [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Scénář v tomto článku popisuje, jak přečíst data z úložiště objektů blob, transformovat je a zapsat je zpět do jiného kontejneru ve stejném úložišti.
+* Tento rychlý start vyžaduje modul Azure PowerShell verze 3.6 nebo novější. Pomocí příkazu `Get-Module -ListAvailable AzureRM` vyhledejte verzi, která je nainstalovaná na místním počítači. Pokud potřebujete provést instalaci nebo upgrade, přečtěte si článek [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). 
+
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Pomocí příkazu `Connect-AzureRmAccount` se přihlaste ke svému předplatnému Azure a do prohlížeče, který se automaticky otevře, zadejte své přihlašovací údaje do Azure. Pokud máte několik předplatných, po přihlášení vyberte to, které chcete použít pro tento rychlý start. Výběr proveďte spuštěním následujících rutin. Ujistěte se, že jste <your subscription> nahradili názvem vašeho předplatného:  
+Pomocí příkazu `Connect-AzureRmAccount` se přihlaste ke svému předplatnému Azure a do prohlížeče, který se automaticky otevře, zadejte své přihlašovací údaje do Azure:
 
 ```powershell
 # Log in to your Azure account
 Connect-AzureRmAccount
+```
 
+Pokud máte několik předplatných, po přihlášení vyberte to, které chcete použít pro tento rychlý start. Výběr proveďte spuštěním následujících rutin. Ujistěte se, že jste <your subscription name> nahradili názvem vašeho předplatného:  
+
+```powershell
 # List all available subscriptions.
 Get-AzureRmSubscription
 
@@ -45,86 +53,94 @@ Get-AzureRmSubscription -SubscriptionName "<your subscription name>" | Select-Az
 Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 ```powershell
-$resourceGroup = "ASAPSRG"
+$resourceGroup = "StreamAnalyticsRG"
 $location = "WestUS2"
-New-AzureRMResourceGroup `
-  -Name $resourceGroup `
-  -Location $location 
+New-AzureRmResourceGroup `
+   -Name $resourceGroup `
+   -Location $location 
 ```
 
 ## <a name="prepare-the-input-data"></a>Příprava vstupních dat
 
-Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurovaná jako vstup pro tuto úlohu. Proveďte následující kroky, pomocí kterých si připravíte vstupní data vyžadovaná úlohou. 
+Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurovaná jako vstup pro tuto úlohu.
 
-1. Z GitHubu si stáhněte [vzorová data snímačů](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json).  
+1. Z GitHubu si stáhněte [vzorová data snímačů](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json). Klikněte pravým tlačítkem myši na odkaz a na **Uložit odkaz jako…** nebo **Uložit cíl jako**.
 
-2. Vytvoření standardního obecného účtu úložiště s replikací LRS pomocí rutiny [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount)  
+2. Následující blok kódu prostředí PowerShell provede několik příkazů, které připraví vstupní data vyžadovaná úlohou. Prohlédněte si jednotlivé části a seznamte se s kódem. 
 
-3. Načte kontext účtu úložiště, který definuje účet úložiště, který chcete použít. Když pracujete s účtem úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. V tomto příkladu vytvoříte účet úložiště s názvem mystorageaccount s místně redundantním úložištěm (LRS) a šifrováním objektů blob (které bude ve výchozím nastavení povolené).  
+   1. Vytvořte standardní obecný účet úložiště pomocí rutiny [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount).  V tomto příkladu vytvoříte účet úložiště s názvem mystorageaccount s místně redundantním úložištěm (LRS) a šifrováním objektů blob (které bude ve výchozím nastavení povolené).  
 
-4. Následně vytvořte pomocí rutiny [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) kontejner, nastavte oprávnění jako „blob“, abyste umožnili veřejný přístup k souborům, a nahrajte [vzorová data snímačů](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json), které jste předtím stáhli. 
+   2. Načtěte kontext účtu úložiště `$storageAccount.Context` určující účet úložiště, který chcete použít. Když pracujete s účtem úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. 
 
-Tyto kroky provedete spuštěním následujícího skriptu PowerShellu:
+   3. Vytvořte kontejner úložiště pomocí rutiny [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) a načtěte [vzorová data snímačů](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json), která jste předtím stáhli. 
 
-```powershell
-$storageAccountName = "mystorageaccount"
-$storageAccount = New-AzureRmStorageAccount `
-  -ResourceGroupName $resourceGroup `
-  -Name $storageAccountName `
-  -Location $location `
-  -SkuName Standard_LRS `
-  -Kind Storage
+   4. Zkopírujte klíč úložiště, který je výstupem tohoto kódu, a vložte ho do souborů JSON, které budou později vytvářet vstup a výstupy úlohy streamování.
 
-$ctx = $storageAccount.Context
-$containerName = "myinputcontainer"
-
-New-AzureStorageContainer `
-  -Name $containerName `
-  -Context $ctx `
-  -Permission blob
-
-Set-AzureStorageBlobContent `
-  -File "C:\HelloWorldASA-InputStream.json" `
-  -Container $containerName `
-  -Context $ctx  
-
-$storageAccountKey = (Get-AzureRmStorageAccountKey `
-  -ResourceGroupName $resourceGroup `
-  -Name $storageAccountName).Value[0]
-```
+   ```powershell
+   $storageAccountName = "mystorageaccount"
+   $storageAccount = New-AzureRmStorageAccount `
+     -ResourceGroupName $resourceGroup `
+     -Name $storageAccountName `
+     -Location $location `
+     -SkuName Standard_LRS `
+     -Kind Storage
+   
+   $ctx = $storageAccount.Context
+   $containerName = "streamanalytics"
+   
+   New-AzureStorageContainer `
+     -Name $containerName `
+     -Context $ctx
+   
+   Set-AzureStorageBlobContent `
+     -File "c:\HelloWorldASA-InputStream.json" `
+     -Blob "input/HelloWorldASA-InputStream.json" `
+     -Container $containerName `
+     -Context $ctx  
+   
+   $storageAccountKey = (Get-AzureRmStorageAccountKey `
+     -ResourceGroupName $resourceGroup `
+     -Name $storageAccountName).Value[0]
+   
+   Write-Host "The <storage account key> placeholder needs to be replaced in your input and output json files with this key value:" 
+   Write-Host $storageAccountKey -ForegroundColor Cyan
+   ```
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-Vytvořte úlohu Stream Analytics pomocí rutiny [New-AzureRMStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0). Tato rutina použije název úlohy, název skupiny prostředků a definici úlohy jako parametry. Úloha může mít libovolný příhodný název, podle kterého ji rozpoznáte. Název úlohy Stream Analytics může obsahovat jen alfanumerické znaky, spojovníky a podtržítka musí být dlouhý 3 až 63 znaků. Definici úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné k vytvoření úlohy. Na místním počítače vytvořte soubor s názvem „JobDefinition.json“ a přidejte do něj následující data JSON:
+Pomocí rutiny [New-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0) vytvořte úlohu Stream Analytics. Tato rutina použije název úlohy, název skupiny prostředků a definici úlohy jako parametry. Jako název úlohy můžete zadat jakýkoli popisný název, který identifikuje vaši úlohu. Smí obsahovat jenom alfanumerické znaky, spojovníky a podtržítka a musí být dlouhý 3 až 63 znaků. Definici úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné k vytvoření úlohy. Na místním počítači vytvořte soubor s názvem `JobDefinition.json` a přidejte do něj následující data JSON:
 
 ```json
 {    
-   "location":"Central US",  
+   "location":"WestUS2",  
    "properties":{    
       "sku":{    
          "name":"standard"  
       },  
-      "eventsOutOfOrderPolicy":"drop",  
+      "eventsOutOfOrderPolicy":"adjust",  
       "eventsOutOfOrderMaxDelayInSeconds":10,  
       "compatibilityLevel": 1.1
-}
+   }
 }
 ```
 
-Následně spusťte rutinu New-AzureRMStreamAnalyticsJob, hodnotu proměnné jobDefinitionFile nahraďte cestou do umístění, kam jste uložili soubor JSON s definicí úlohy. 
+Potom spusťte rutinu `New-AzureRmStreamAnalyticsJob`. Nezapomeňte nahradit hodnotu proměnné `jobDefinitionFile` cestou, do které jste uložili soubor JSON definice úlohy. 
 
 ```powershell
 $jobName = "MyStreamingJob"
 $jobDefinitionFile = "C:\JobDefinition.json"
-New-AzureRMStreamAnalyticsJob `
+New-AzureRmStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
-  –File $jobDefinitionFile `
-  –Name $jobName -Force 
+  -File $jobDefinitionFile `
+  -Name $jobName `
+  -Force 
 ```
 
 ## <a name="configure-input-to-the-job"></a>Konfigurace vstupu do úlohy
 
-Přidejte do úlohy vstup pomocí rutiny [New-AzureRMStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0). Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definice vstupu úlohy představuje soubor JSON, který obsahuje vlastnosti požadované pro konfiguraci vstupu úlohy. V tomto případě vytvoříte jako vstup úložiště objektů blob. Na místním počítači vytvořte soubor s názvem „JobInputDefinition.json“ a přidejte do něj následující data JSON. Hodnotu **accountKey** nahraďte přístupovým klíčem vašeho účtu úložiště (tj. hodnotou uloženou v části $storageAccountKey). 
+Přidejte do úlohy vstup pomocí rutiny [New-AzureRmStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0). Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definici vstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte jako vstup úložiště objektů blob. 
+
+Na místním počítači vytvořte soubor s názvem `JobInputDefinition.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu položky `accountKey` přístupovým klíčem k vašemu účtu úložiště, který je uložený v hodnotě $storageAccountKey. 
 
 ```json
 {
@@ -136,10 +152,10 @@ Přidejte do úlohy vstup pomocí rutiny [New-AzureRMStreamAnalyticsInput](https
                 "storageAccounts": [
                 {
                    "accountName": "mystorageaccount",
-                   "accountKey":"<Your storage account key>"
+                   "accountKey":"<storage account key>"
                 }],
-                "container": "myinputcontainer",
-                "pathPattern": "",
+                "container": "streamanalytics",
+                "pathPattern": "input/",
                 "dateFormat": "yyyy/MM/dd",
                 "timeFormat": "HH"
             }
@@ -156,12 +172,12 @@ Přidejte do úlohy vstup pomocí rutiny [New-AzureRMStreamAnalyticsInput](https
 }
 ```
 
-Následně spusťte rutinu New-AzureRMStreamAnalyticsInput, hodnotu proměnné jobDefinitionFile nahraďte cestou do umístění, kam jste uložili soubor JSON s definicí vstupu úlohy. 
+Potom spusťte rutinu `New-AzureRmStreamAnalyticsInput` a nezapomeňte při tom nahradit hodnotu proměnné `jobDefinitionFile` cestou, do které jste uložili soubor JSON definice vstupu úlohy. 
 
 ```powershell
 $jobInputName = "MyBlobInput"
 $jobInputDefinitionFile = "C:\JobInputDefinition.json"
-New-AzureRMStreamAnalyticsInput `
+New-AzureRmStreamAnalyticsInput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobInputDefinitionFile `
@@ -170,7 +186,9 @@ New-AzureRMStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>Konfigurace výstupu do úlohy
 
-Přidejte do úlohy výstup pomocí rutiny [New-AzureRmStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput?view=azurermps-5.4.0). Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definice výstupu úlohy představuje soubor JSON, který obsahuje vlastnosti požadované pro konfiguraci výstupu úlohy. V tomto případě vytvoříte jako výstup úložiště objektů blob. Na místním počítači vytvořte soubor s názvem „JobOutputDefinition.json“ a přidejte do něj následující data JSON. Hodnotu **accountKey** nahraďte přístupovým klíčem vašeho účtu úložiště (tj. hodnotou uloženou v části $storageAccountKey). 
+Přidejte do úlohy výstup pomocí rutiny [New-AzureRmStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput?view=azurermps-5.4.0). Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definici výstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob. 
+
+Na místním počítači vytvořte soubor s názvem `JobOutputDefinition.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu položky `accountKey` přístupovým klíčem k vašemu účtu úložiště, který je uložený v hodnotě $storageAccountKey. 
 
 ```json
 {
@@ -181,10 +199,10 @@ Přidejte do úlohy výstup pomocí rutiny [New-AzureRmStreamAnalyticsOutput](ht
                 "storageAccounts": [
                     {
                       "accountName": "mystorageaccount",
-                      "accountKey": "<Your storage account key>"
+                      "accountKey": "<storage account key>"
                     }],
-                "container": "myoutputcontainer",
-                "pathPattern": "",
+                "container": "streamanalytics",
+                "pathPattern": "output/",
                 "dateFormat": "yyyy/MM/dd",
                 "timeFormat": "HH"
             }
@@ -202,21 +220,21 @@ Přidejte do úlohy výstup pomocí rutiny [New-AzureRmStreamAnalyticsOutput](ht
 }
 ```
 
-Následně spusťte rutinu New-AzureRMStreamAnalyticsOutput, hodnotu proměnné jobDefinitionFile nahraďte cestou do umístění, kam jste uložili soubor JSON s definicí výstupu úlohy. 
+Potom spusťte rutinu `New-AzureRmStreamAnalyticsOutput`. Nezapomeňte nahradit hodnotu proměnné `jobOutputDefinitionFile` cestou, do které jste uložili soubor JSON definice výstupu úlohy. 
 
 ```powershell
 $jobOutputName = "MyBlobOutput"
 $jobOutputDefinitionFile = "C:\JobOutputDefinition.json"
-New-AzureRMStreamAnalyticsOutput `
+New-AzureRmStreamAnalyticsOutput `
   -ResourceGroupName $resourceGroup `
-  –JobName $jobName `
-  –File $jobOutputDefinitionFile `
-  –Name $jobOutputName -Force 
+  -JobName $jobName `
+  -File $jobOutputDefinitionFile `
+  -Name $jobOutputName -Force 
 ```
 
 ## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
-Přidejte do úlohy transformaci pomocí rutiny [New-AzureRmStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation?view=azurermps-5.4.0). Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. Na místním počítače vytvořte soubor s názvem „JobTransformationDefinition.json“ a přidejte do něj následující data JSON. Soubor JSON obsahuje parametr dotazu, který definuje transformaci dotazu:
+Přidejte do úlohy transformaci pomocí rutiny [New-AzureRmStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation?view=azurermps-5.4.0). Tato rutina použije název úlohy, název transformace úlohy, název skupiny prostředků a definici transformace úlohy jako parametry. Na místním počítači vytvořte soubor s názvem `JobTransformationDefinition.json` a přidejte do něj následující data JSON. Soubor JSON obsahuje parametr dotazu, který definuje transformaci dotazu:
 
 ```json
 {     
@@ -230,35 +248,35 @@ Přidejte do úlohy transformaci pomocí rutiny [New-AzureRmStreamAnalyticsTrans
 }
 ```
 
-Následně spusťte rutinu New-AzureRMStreamAnalyticsTransformation, hodnotu proměnné jobTransformationDefinitionFile nahraďte cestou do umístění, kam jste uložili soubor JSON s definicí transformace úlohy. 
+Potom spusťte rutinu `New-AzureRmStreamAnalyticsTransformation`. Nezapomeňte nahradit hodnotu proměnné `jobTransformationDefinitionFile` cestou, do které jste uložili soubor JSON definice transformace úlohy. 
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
 $jobTransformationDefinitionFile = "C:\JobTransformationDefinition.json"
-New-AzureRMStreamAnalyticsTransformation `
+New-AzureRmStreamAnalyticsTransformation `
   -ResourceGroupName $resourceGroup `
-  –JobName $jobName `
-  –File $jobTransformationDefinitionFile `
-  –Name $jobTransformationName -Force
+  -JobName $jobName `
+  -File $jobTransformationDefinitionFile `
+  -Name $jobTransformationName -Force
 ```
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Spuštění úlohy Stream Analytics a kontrola výstupu
 
-Spusťte úlohu pomocí rutiny [Start-AzureRMStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0). Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr OUtpputStartMode může obsahovat dvě z hodnot JobStartTime, CustomTime nebo LastOutputEventTime. Informace o tom, na co jednotlivé hodnoty odkazují, najdete v části [Parametry](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) v dokumentaci k PowerShellu. V tomto příkladu můžete zadat režim jako parametr CustomTime a zadat hodnotu pro parametr OutputStartTime. 
+Spusťte úlohu pomocí rutiny [Start-AzureRMStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0). Tato rutina použije název úlohy, název skupiny prostředků, režim spuštění výstupu a čas spuštění jako parametry. Parametr `OutputStartMode` připouští hodnoty `JobStartTime`, `CustomTime` nebo `LastOutputEventTime`. Další informace o tom, na co tyto hodnoty odkazují, najdete v části [Parametry](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) v dokumentaci k prostředí PowerShell. V tomto příkladu určete režim `CustomTime` a zadejte hodnotu `OutputStartTime`. 
 
-Jako časovou hodnotu zvolte jeden den před datem nahrání souboru do úložiště objektů blob, protože čas nahrání předchází aktuálnímu času. Jakmile spustíte následující rutinu, vrátí jako výstup hodnotu „True“, pokud se úloha spustí. V účtu úložiště s transformovanými daty se vytvoří kontejner pojmenovaný „myoutputcontainer“. 
+Jako časovou hodnotu vyberte `2018-01-01`. Toto datum je zvoleno, protože předchází časovému razítku události z ukázkových dat. Jakmile spustíte následující rutinu, vrátí jako výstup hodnotu `True`, pokud se úloha spustí. V kontejneru úložiště se vytvoří výstupní složku s transformovanými daty. 
 
 ```powershell
-Start-AzureRMStreamAnalyticsJob `
+Start-AzureRmStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -Name $jobName `
   -OutputStartMode CustomTime `
-  -OutputStartTime 2018-03-11T14:45:12Z 
+  -OutputStartTime 2018-01-01T00:00:00Z 
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud plánujete používat tuto úlohu v budoucnu, můžete ji zastavit a znovu ji spustit později, až ji budete potřebovat. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené podle tohoto rychlého startu spuštěním následující rutiny:
+Odstraňte skupinu prostředků, úlohu streamování a všechny související prostředky, pokud je už nepotřebujete. Odstraněním úlohy se zabrání zaúčtování jednotek streamování, které daná úloha spotřebovává. Pokud máte v plánu tuto úlohu ještě někdy používat, nemusíte ji odstraňovat a prozatím ji jenom zastavte. Pokud nebudete tuto úlohu nadále používat, odstraňte všechny prostředky vytvořené podle tohoto rychlého startu spuštěním následující rutiny:
 
 ```powershell
 Remove-AzureRmResourceGroup `
@@ -267,7 +285,7 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste nasadili jednoduchou úlohu Stream Analytics a dozvěděli se tak o konfiguraci dalších vstupních zdrojů a provádění detekce v reálném čase. Pokračujte na další článek:
+V tomto rychlém startu jste nasadili jednoduchou úlohu Stream Analytics. Pokud se chcete dozvědět o konfiguraci dalších vstupních zdrojů a provádění detekce v reálném čase, pokračujte na další článek:
 
 > [!div class="nextstepaction"]
 > [Zjišťování možných podvodů v reálném čase pomocí Stream Analytics](stream-analytics-real-time-fraud-detection.md)

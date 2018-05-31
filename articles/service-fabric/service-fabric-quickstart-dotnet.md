@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207202"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rychlý start: Vytvoření aplikace Service Fabric v .NET v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
@@ -109,6 +110,7 @@ Pokud se chcete podívat, co se děje v kódu, proveďte následující kroky:
     - Nakonec se do klienta vrátí odpověď z back-end služby **(3)**.
 
 4. Pokračujte stisknutím **F5**.
+    - Po zobrazení výzvy v prohlížeči udělte skupině ServiceFabricAllowedUsers oprávnění ke čtení a provádění v režimu ladění.
     - Nyní jste se dostali k zarážce v back-end službě.
     
     ![Back-end služba pro přidání hlasu](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
@@ -175,13 +177,15 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
 Služby Service Fabric je možné snadno škálovat napříč clusterem a vyřešit tak změny jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Služby můžete škálovat několika způsoby – můžete použít skripty nebo příkazy v PowerShellu nebo Service Fabric CLI (sfctl). V tomto příkladu používáme Service Fabric Explorer.
 
-Nástroj Service Fabric Explorer běží na všech clusterech Service Fabric a je přístupný z prohlížeče po přechodu na port HTTP pro správu clusteru (19080), například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+Nástroj Service Fabric Explorer běží na všech clusterech Service Fabric a je přístupný z prohlížeče po přechodu na port HTTP pro správu clusteru (19080), například `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 
-Můžete obdržet upozornění prohlížeče, že umístění není důvěryhodné. To je způsobeno tím, že je certifikát podepsaný svým držitelem. Můžete se rozhodnout toto varování upozornění a pokračovat. Po výzvě prohlížeče vyberte nainstalovaný certifikát pro připojení. 
+Můžete obdržet upozornění prohlížeče, že umístění není důvěryhodné. To je způsobeno tím, že je certifikát podepsaný svým držitelem. Můžete se rozhodnout toto varování upozornění a pokračovat.
+1. Po výzvě prohlížeče vyberte nainstalovaný certifikát pro připojení. Certifikát Party clusteru, který vyberete v seznamu, musí odpovídat Party clusteru, ke kterému se pokoušíte získat přístup. Příklad: win243uja6w62r.westus.cloudapp.azure.com.
+2. Po zobrazení výzvy v prohlížeči udělte této relaci přístup ke svému privátnímu klíči rozhraní CryptoAPI.
 
 Pokud chcete škálovat webovou front-end službu, proveďte následující kroky:
 
-1. Otevřete ve vašem clusteru Service Fabric Explorer – například `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+1. Otevřete ve vašem clusteru Service Fabric Explorer – například `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 2. Ve stromovém zobrazení rozbalte **Aplikace**->**VotingType**->**fabric:/Voting**. Ve stromovém zobrazení klikněte na tři tečky vedle uzlu **fabric:/Voting/VotingWeb** a zvolte **Škálovat službu**.
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
