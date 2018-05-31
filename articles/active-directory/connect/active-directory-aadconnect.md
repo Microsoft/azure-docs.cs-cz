@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 73baef03f7b240e7bb33f3d5f827b1fc72c985f2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 128a6bffe4e604eb4e02a10f13d561a336fc8c61
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34354414"
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrace místních adresářů do služby Azure Active Directory
 Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.
@@ -146,7 +147,7 @@ Podle potřeby můžete svou farmu rozšířit [přidáním serveru AD FS](activ
 
 Služba AD FS se dá nakonfigurovat tak, aby podporovala [více domén](active-directory-aadconnect-multiple-domains.md). Můžete mít například více hlavních domén, které potřebujete použít pro federaci.
 
-Pokud váš server služby AD FS není nakonfigurován pro automatické aktualizace certifikátů z Azure AD nebo pokud používáte jiné řešení než AD FS, budete upozorněni, když bude třeba [aktualizovat certifikáty](active-directory-aadconnect-o365-certs.md).
+Pokud server AD FS nemá nakonfigurované automatické aktualizace certifikátů z Azure AD nebo používáte jiné řešení než AD FS, budete upozorněni, že musíte [aktualizovat certifikáty](active-directory-aadconnect-o365-certs.md).
 
 ### <a name="next-steps-to-configure-federation-features"></a>Další kroky pro konfiguraci funkcí federace
 |Téma |Odkaz|  

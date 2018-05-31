@@ -1,24 +1,21 @@
 ---
-title: Začínáme s Azure Data Lake Analytics pomocí portálu Azure Portal | Dokumentace Microsoftu
-description: 'Naučte se používat Azure Portal k vytvoření účtu Data Lake Analytics, vytvoření úlohy Data Lake Analytics pomocí U-SQL a odeslání úlohy. '
+title: Začínáme s Azure Data Lake Analytics na webu Azure Portal
+description: Naučte se používat Azure Portal k vytvoření účtu Data Lake Analytics, vytvoření úlohy Data Lake Analytics pomocí U-SQL a odeslání úlohy.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
+ms.author: saveenr
 manager: kfile
-editor: cgronlun
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
-ms.author: saveenr
-ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358281"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Začínáme s Azure Data Lake Analytics s využitím webu Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -64,11 +61,11 @@ OUTPUT @a
 
 ## <a name="submit-a-u-sql-job"></a>Odeslání úlohy U-SQL
 
-1. V účtu Data Lake Analytics klikněte na možnost **Nová úloha**.
-2. Vložte výše uvedený text skriptu U-SQL. 
-3. Klikněte na **Odeslat úlohu**.   
-4. Počkejte, až se stav úlohy změní na **Úspěch**.
-5. Klikněte na kartu **Výstup** a potom na `data.csv`. 
+1. V účtu Data Lake Analytics vyberte **Nová úloha**.
+2. Vložte text předchozího skriptu U-SQL. Pojmenujte úlohu. 
+3. Spusťte úlohu tlačítkem **Odeslat**.   
+4. Sledujte **stav** úlohy a počkejte, až se změní na **Úspěšné**.
+5. Vyberte kartu **Data** a pak vyberte kartu **Výstupy**. Vyberte výstupní soubor s názvem `data.csv` a prohlédněte si výstupní data.
 
 ## <a name="see-also"></a>Viz také
 
