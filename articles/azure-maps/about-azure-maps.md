@@ -12,14 +12,15 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e84580c4023be87ebfc1988c631af0b76e213987
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193947"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Seznámení s Azure Maps
-Azure Maps je portfolio geoprostorových služeb, mezi které patří rozhraní API pro mapy, vyhledávání, trasy, provoz a časová pásma. Portfolio služeb odpovídajících standardu Azure OneAPI umožňuje používat známé nástroje k rychlému vývoji a škálování řešení, která integrují informace o poloze do vašich řešení v Azure. Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s čerstvými mapovými daty, která jsou nezbytná k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps představuje sadu rozhraní REST API doprovázenou webovým ovládáním v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii. 
+Azure Maps je portfolio geoprostorových služeb, mezi které patří rozhraní API pro mapy, vyhledávání, trasy, provoz a časová pásma. Portfolio služeb umožňuje používat známé nástroje k rychlému vývoji a škálování řešení, která integrují informace o poloze do vašich řešení v Azure. Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s čerstvými mapovými daty, která jsou nezbytná k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps představuje sadu rozhraní REST API doprovázenou webovým ovládáním v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii. 
 
 Následující video představuje Azure Maps:
 
@@ -87,7 +88,7 @@ Cílem společnosti Microsoft je poskytnout komunitě vývojářů s ohledem na 
 | Scénář | Azure Maps použijte, když… | Mapy Bing použijte, když… |
 | ------------- | ------------- | ------------- |
 | Vývojové prostředí | Vytváříte v jiných službách Azure nebo s nimi koordinujete vývoj. | Využíváte cloud třetí strany nebo jiné vývojové prostředí. |
-| Vývojová fáze  | Vzhledem k tomu, že portfolio Azure Maps je aktuálně ve verzi Public Preview, je optimalizované pro vývoj testování konceptu a testování v počáteční fázi. | Pro produkční prostředí se vyžaduje smlouva SLA na podnikové úrovni. |
+| Vývojová fáze  | Služba Azure Maps je optimalizovaná pro vývoj testování v počáteční fázi a testování konceptu. | Pro produkční prostředí se vyžaduje smlouva SLA na podnikové úrovni. |
 | Cenové možnosti | Postačují předběžné cenové možnosti pro vývojáře. | Vyžadují se individuální ceny na podnikové úrovni. |
 | Prostředí pro případy použití | Vyžaduje se využití ve vozidle. | Nevyžaduje se využití ve vozidle. |
 | Geografické pokrytí | Nevyžaduje se pokrytí pro Indii, Čínu, Japonsko a Jižní Koreu. | Pokrytí pro Indii, Čínu, Japonsko a Jižní Koreu se vyžaduje. |
