@@ -1,2 +1,0 @@
->[!TIP] 
-> Rozhraní API služby Azure Cosmos databáze DocumentDB nebo SQL (DocumentDB) rozhraní API se nyní označuje jako rozhraní API pro Azure Cosmos databáze SQL. Nemusíte změnit všechno, chcete-li pokračovat, spouští vaše aplikace vytvořené s DocumentDB rozhraní API. Funkce zůstává stejná.

@@ -1,2 +1,0 @@
-Můžete vytvořit virtuální počítače (VM) v Azure a připojit více síťových rozhraní (NIC) ke každému z virtuálních počítačů. Několik síťových adaptérů jsou nutné pro mnoho síťových virtuálních zařízení, například doručení aplikace a řešení optimalizace sítě WAN. Několik síťových adaptérů také poskytují další síťové přenosy funkce správy, včetně izolace provozu mezi front-endu síťový adaptér a back-end adaptérů NIC: nebo oddělení provozu roviny data od roviny provoz správy.
-

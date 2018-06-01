@@ -1,2 +1,0 @@
-Po můžete vytvořit jeden nebo více skupiny zabezpečení sítě (Nsg), je třeba mohli k načtení informací o skupin Nsg, přidat a odeberte pravidla, upravit stávající pravidla, přidružit nebo zrušit přidružení skupiny Nsg a odstranění skupiny Nsg. V tomto článku se dozvíte, jak každý z těchto úloh provést. Než budete moct spravovat skupiny Nsg, je důležité vědět, [jak fungují skupiny Nsg](../articles/virtual-network/virtual-networks-nsg.md). 
-

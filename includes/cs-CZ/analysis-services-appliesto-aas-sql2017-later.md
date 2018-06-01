@@ -1,1 +1,0 @@
-**PLATÍ PRO:**![ano](media/analysis-services-appliesto/yes.png)Azure Analysis Services![ano](media/analysis-services-appliesto/yes.png)SQL Server Analysis Services (počínaje rokem 2017)
