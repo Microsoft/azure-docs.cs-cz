@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32198494"
 ---
 1. V novém okně prohlížeče se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**.
