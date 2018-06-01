@@ -1,21 +1,22 @@
 ---
-title: Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí Azure Site Recovery (Preview)
+title: Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure pomocí Azure Site Recovery
 description: Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Azure do jiné oblasti Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211663"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure (Preview)
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii zotavení po havárii tím, že spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení pro místní počítače a virtuální počítače Azure.
 
@@ -27,6 +28,7 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii do sekundární ob
 > * Nastavení odchozího přístupu pro virtuální počítače
 > * Povolit replikaci virtuálního počítače
 
+Replikace Azure do Azure je aktuálně ve verzi preview.
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
@@ -109,8 +111,8 @@ Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access
 ### <a name="select-the-source"></a>Výběr zdroje
 
 1. V trezorech služby Recovery Services klikněte na název trezoru > **+ Replikovat**.
-2. Jako **Zdroj** vyberte **Azure – PREVIEW**.
-3. Jako **Zdrojové umístění** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
+2. V rozevíracím seznamu **Zdroj** vyberte **Azure**.
+3. V rozevíracím seznamu **Umístění zdroje** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
 4. Vyberte pro virtuální počítače **Model nasazení virtuálních počítačů Azure**: **Resource Manager** nebo **Classic**.
 5. Vyberte **zdrojovou skupinu prostředků** pro virtuální počítače Resource Manageru nebo **cloudovou službu** pro virtuální počítače Classic.
 6. Kliknutím na **OK** uložte nastavení.
