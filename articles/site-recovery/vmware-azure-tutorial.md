@@ -6,14 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 173e31e3b1f855d488f7f8baf6659b1521ea7aa5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2a96655c26e2df2534f420239b56ef0c3959319a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212870"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -35,7 +36,7 @@ Než začnete, doporučujeme [zkontrolovat architekturu](vmware-azure-architectu
 
 ## <a name="select-a-replication-goal"></a>Výběr cíle replikace
 
-1. V části **Trezory služby Recovery Services** vyberte název trezoru **ContosoVMVault**.
+1. V okně **Trezory Recovery Services** vyberte název trezoru. Pro tento scénář používáme **ContosoVMVault**.
 2. V části **Začínáme** vyberte Site Recovery. Pak vyberte **Příprava infrastruktury**.
 3. V části **Cíl ochrany** > **Kde jsou vaše počítače umístěné?** vyberte **Místní**.
 4. V části **Kam chcete počítače replikovat?** vyberte **Do Azure**.
@@ -139,7 +140,7 @@ Vyberte a zkontrolujte cílové prostředky.
 1. Otevřete [Azure Portal](https://portal.azure.com) a vyberte **Všechny prostředky**.
 2. Vyberte trezor služby Recovery Services s názvem**ContosoVMVault**.
 3. Zásadu replikace vytvoříte tak, že vyberete **Infrastruktura Site Recovery** > **Zásady replikace** > **+ Zásada replikace**.
-4. V části **Vytvoření zásady replikace** zadejte jako název zásady **VMwareRepPolicy**.
+4. V části **Vytvoření zásady replikace** zadejte název zásady. Pro tento scénář používáme **VMwareRepPolicy**.
 5. V části **Prahová hodnota cíle bodu obnovení (RPO)** použijte výchozí hodnotu 60 minut. Tato hodnota určuje, jak často se tvoří body obnovení. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
 6. V části **Uchování bodu obnovení** použijte výchozí hodnotu 24 hodin a nastavte délku okna uchování jednotlivých bodů obnovení. Pro účely tohoto kurzu použijte 72 hodin. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu.
 7. V části **Frekvence snímků konzistentní vzhledem k aplikacím** použijte jako frekvenci pro vytváření snímků konzistentních vzhledem k aplikacím výchozí hodnotu 60 minut. Vyberte **OK** a vytvořte zásadu.
