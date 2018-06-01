@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 610aa8d5652b89f36aeb2a6ae517d378c5bfa666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304874"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření veřejného Load Balanceru úrovně Basic pomocí webu Azure Portal
 
@@ -194,4 +195,7 @@ Pokud už je nepotřebujete, můžete skupinu prostředků, nástroj pro vyrovn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a back-end servery. Pomocí těchto prostředků jste pak vytvořili nástroj pro vyrovnávání zatížení. Další informace o nástrojích pro vyrovnávání zatížení a jejich souvisejících prostředcích najdete v dalších kurzech.
+V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a back-end servery. Pomocí těchto prostředků jste pak vytvořili službu Load Balancer úrovně Basic. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
+
+> [!div class="nextstepaction"]
+> [Kurzy služby Azure Load Balancer](tutorial-load-balancer-basic-internal-portal.md)
