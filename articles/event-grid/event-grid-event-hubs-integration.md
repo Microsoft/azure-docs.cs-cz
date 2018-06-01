@@ -1,45 +1,46 @@
 ---
-title: Událost mřížky a Event Hubs integrace se službou Azure
-description: Popisuje, jak používat Azure událostí mřížky a Event Hubs k migraci dat do SQL Data Warehouse
+title: Integrace služeb Azure Event Grid a Event Hubs
+description: Článek popisuje, jak používat služby Azure Event Grid a Event Hubs k migraci dat do služby SQL Data Warehouse.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 60857327685fca9a5f97588ab51909ce2537d68f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302935"
 ---
-# <a name="stream-big-data-into-a-data-warehouse"></a>Datový proud velkých objemů dat do datového skladu
+# <a name="stream-big-data-into-a-data-warehouse"></a>Streamování velkých objemů dat do datového skladu
 
-Azure [událostí mřížky](overview.md) je služba Směrování inteligentního událost, která umožňuje reagovat na oznámení z aplikace a služby. [Zaznamenat centra událostí a událostí mřížky ukázku](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) ukazuje, jak pomocí Azure Event Hubs zachycení událostí mřížky Azure bezproblémově migrace dat z centra událostí do SQL Data Warehouse.
+Azure [Event Grid](overview.md) je inteligentní služba směrování událostí, se kterou můžete reagovat na oznámení aplikací a služeb. V [ukázce služeb Event Hubs Capture a Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) si ukážeme, jak používat Azure Event Hubs Capture se službou Azure Event Grid k bezproblémové migraci dat z centra událostí d služby SQL Data Warehouse.
 
 ![Přehled aplikace](media/event-grid-event-hubs-integration/overview.png)
 
-Data se odešlou do centra událostí, zachycení získává data z datového proudu a generuje úložiště objektů BLOB s daty ve formátu Avro. Pokud zachycení vygeneruje objektu blob, aktivuje událost. Událost mřížky distribuuje data o události odběratelům. V takovém případě data události je odeslána koncovému bodu Azure Functions. Data události obsahuje cestu generovaný objekt blob. Funkce používá tuto adresu URL k načtení souboru a jeho odeslání do datového skladu.
+Při odeslání dat do centra událostí si Capture přetáhne data ze streamu a vygeneruje objekty blob úložiště s daty ve formátu Avro. Když Capture vygeneruje objekt blob, aktivuje událost. Event Grid distribuuje data události mezi odběratele. V tomto případě se data události odešlou koncovému bodu Azure Functions. Součástí dat události je i cesta k vygenerovanému objektu blob. Funkce tuto adresu URL použije k načtení souboru a jeho odeslání do datového skladu.
 
-V tomto článku můžete:
+V tomto článku:
 
-* Nasazení infrastruktury následující:
-  * Centra událostí s zachycení povoleno
-  * Účet úložiště pro soubory z zachycení
-  * Plán služby Azure app service pro hostování aplikace – funkce
-  * Funkce aplikace pro zpracování události
-  * SQL Server pro hostování datového skladu
-  * Datový sklad SQL pro ukládání migrovaná data
-* Vytvoření tabulky v datovém skladu
-* Přidání kódu do aplikaci funkce
-* Přihlášení k odběru události
-* Spuštění aplikace, který odesílá data do centra událostí
-* Zobrazit migrovaná data v datovém skladu
+* Nasadíte následující infrastrukturu:
+  * Centrum událostí s povolenou službou Capture
+  * Účet úložiště pro soubory z Capture
+  * Plán služby Azure App Service pro hostování aplikace Function App
+  * Aplikace Function App na zpracování události
+  * SQL Server na hostování datového skladu
+  * SQL Data Warehouse na uložení migrovaných dat
+* Vytvoříte tabulku v datovém skladu
+* Přidáte kód do aplikace funkcí
+* Přihlásíte se k odběru události
+* Spustíte aplikaci, která posílá data do centra událostí
+* Zobrazíte migrovaná data v datovém skladu
 
-## <a name="about-the-event-data"></a>O data události
+## <a name="about-the-event-data"></a>O datech události
 
-Událost mřížky distribuuje data události odběratelům. Následující příklad zobrazuje data událostí pro vytvoření souboru zachycení. Zejména, Všimněte si `fileUrl` vlastnost `data` objektu. Funkce aplikace získá tuto hodnotu a používá je načíst soubor zachycení.
+Event Grid distribuuje data události mezi odběratele. V následujícím příkladu vidíte data události pro vytvoření souboru Capture. Všimněte si zejména vlastnosti `fileUrl` objektu `data`. Aplikace funkcí získá tuto hodnotu a použije ji k načtení souboru Capture.
 
 ```json
 [
@@ -69,12 +70,12 @@ Událost mřížky distribuuje data události odběratelům. Následující př�
 K dokončení tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-* [Visual studio 2017 verze 15.3.2 nebo větší](https://www.visualstudio.com/vs/) s pracovních zátěží pro: vývoj aplikací rozhraní .NET, vývoj pro Azure, ASP.NET a webové vývoj, vývoj Node.js a Python vývoj.
-* [EventHubsCaptureEventGridDemo ukázkový projekt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) stažena do počítače.
+* [Visual studio 2017 verze 15.3.2 nebo vyšší](https://www.visualstudio.com/vs/) se sadami funkcí pro vývoj desktopových aplikací pomocí .NET, vývoj pro Azure, vývoj pro ASP.NET a web, vývoj aplikací Node.js a pro vývoj v jazyce Python.
+* [Ukázkový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo), který jste si stáhli do svého počítače.
 
 ## <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
 
-Ke zjednodušení tohoto článku, nasadíte požadované infrastrukturu pomocí šablony Resource Manageru. Pokud chcete zobrazit prostředky, které jsou nasazeny, zobrazit [šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). Použijte jednu z [podporované oblasti](overview.md) pro umístění skupiny prostředků.
+Kvůli zjednodušení tohoto článku použijeme k nasazení potřebné infrastruktury šablonu Resource Manageru. Pokud si chcete prohlédnout nasazené prostředky, prohlédněte si [šablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). K umístění skupiny prostředků použijte některou z [podporovaných oblastí](overview.md).
 
 Pokud používáte Azure CLI, použijte:
 
@@ -95,13 +96,13 @@ New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
-Zadejte hodnotu heslo po zobrazení výzvy.
+Po zobrazení výzvy zadejte heslo.
 
-## <a name="create-a-table-in-sql-data-warehouse"></a>Vytvoření tabulky v SQL Data Warehouse
+## <a name="create-a-table-in-sql-data-warehouse"></a>Vytvoření tabulky ve službě SQL Data Warehouse
 
-Přidání tabulky do datového skladu tak, že spustíte [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) skriptu. Pro spuštění skriptu, použijte Visual Studio nebo editoru dotazů na portálu.
+Do datového skladu přidejte tabulku skriptem [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql). Ke spuštění skriptu použijte Visual Studio nebo editor dotazů na portálu.
 
-Spuštění skriptu je:
+Skript ke spuštění:
 
 ```sql
 CREATE TABLE [dbo].[Fact_WindTurbineMetrics] (
@@ -116,73 +117,73 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-the-azure-functions-app"></a>Publikování aplikace Azure Functions
 
-1. Otevřete [EventHubsCaptureEventGridDemo ukázkový projekt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) ve Visual Studio 2017 (15.3.2 nebo vyšší).
+1. Otevřete [ukázkový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) v sadě Visual Studio 2017 (verze 15.3.2 nebo vyšší).
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na **FunctionEGDWDumper**a vyberte **publikovat**.
+1. V průzkumníku řešení klikněte pravým tlačítkem na **FunctionEGDWDumper** a vyberte **Publikovat**.
 
-   ![Publikování aplikace – funkce](media/event-grid-event-hubs-integration/publish-function-app.png)
+   ![Publikování aplikace funkcí](media/event-grid-event-hubs-integration/publish-function-app.png)
 
-1. Vyberte **aplikaci Azure funkce** a **vyberte existující**. Vyberte **publikování**.
+1. Vyberte **Azure Function App** a pak vyberte **Vybrat existující**. Vyberte **Publikovat**.
 
-   ![Cílové aplikace – funkce](media/event-grid-event-hubs-integration/pick-target.png)
+   ![Cílová aplikace funkcí](media/event-grid-event-hubs-integration/pick-target.png)
 
-1. Vyberte aplikaci funkce, které jste nasadili prostřednictvím šablony. Vyberte **OK**.
+1. Vyberte aplikaci funkcí, kterou jste nasadili prostřednictvím šablony. Vyberte **OK**.
 
-   ![Vyberte aplikaci, – funkce](media/event-grid-event-hubs-integration/select-function-app.png)
+   ![Výběr aplikace funkcí](media/event-grid-event-hubs-integration/select-function-app.png)
 
-1. Když Visual Studio nakonfiguroval profil, vyberte **publikovat**.
+1. Jakmile Visual Studio nakonfiguruje profil, vyberte **Publikovat**.
 
-   ![Vyberte publikování](media/event-grid-event-hubs-integration/select-publish.png)
+   ![Výběr publikování](media/event-grid-event-hubs-integration/select-publish.png)
 
-Po publikování funkci, budete připraveni k odběru události.
+Po publikování funkce můžete začít událost odebírat.
 
-## <a name="subscribe-to-the-event"></a>Přihlášení k odběru události
+## <a name="subscribe-to-the-event"></a>Přihlásíte se k odběru události
 
-1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte prostředek skupiny a funkce aplikace.
+1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
 
-   ![Zobrazit aplikaci – funkce](media/event-grid-event-hubs-integration/view-function-app.png)
+   ![Zobrazení aplikace funkcí](media/event-grid-event-hubs-integration/view-function-app.png)
 
 1. Vyberte funkci.
 
-   ![Vyberte funkci](media/event-grid-event-hubs-integration/select-function.png)
+   ![Výběr funkce](media/event-grid-event-hubs-integration/select-function.png)
 
-1. Vyberte **předplatné přidat mřížky událostí**.
+1. Vyberte **Přidat předplatné Event Gridu**.
 
    ![Přidat předplatné](media/event-grid-event-hubs-integration/add-event-grid-subscription.png)
 
-9. Zadejte název předplatného mřížky události. Použití **obory názvů centra událostí** jako typ události. Zadejte hodnoty vyberte instanci služby Event Hubs obor názvů. Zadaná hodnota nechte koncový bod odběratele. Vyberte **Vytvořit**.
+9. Pojmenujte předplatné Event Gridu. Jako typ události použijte **Obory názvů služby Event Hubs**. Zadejte hodnoty pro výběr instance oboru názvů služby Event Hubs. Jako zadanou hodnotu nechte koncový bod odběratele. Vyberte **Vytvořit**.
 
    ![Vytvoření odběru](media/event-grid-event-hubs-integration/set-subscription-values.png)
 
-## <a name="run-the-app-to-generate-data"></a>Spusťte aplikaci pro generování dat
+## <a name="run-the-app-to-generate-data"></a>Spuštění aplikace, která generuje data
 
-Dokončili jste nastavení centra událostí, SQL data warehouse, aplikaci Azure funkce a předplatného události. Řešení je připraven k migraci dat z centra událostí do datového skladu. Než spustíte aplikaci, která generuje data pro centra událostí, musíte nakonfigurovat několik hodnot.
+Nastavili jste centrum událostí, datový sklad SQL, aplikaci Azure Function App a odběr událostí. Řešení je připravené migrovat data z centra událostí do datového skladu. Před spuštěním aplikace, která generuje data z centra událostí, je potřeba nakonfigurovat několik hodnot.
 
-1. Na portálu zvolte svůj obor názvů centra událostí. Vyberte **připojovací řetězce**.
+1. Na portálu vyberte obor názvů centra události. Vyberte **Připojovací řetězce**.
 
-   ![Vyberte připojovací řetězce](media/event-grid-event-hubs-integration/event-hub-connection.png)
+   ![Výběr připojovacích řetězců](media/event-grid-event-hubs-integration/event-hub-connection.png)
 
-2. Vyberte **RootManageSharedAccessKey**
+2. Vyberte **RootManageSharedAccessKey**.
 
-   ![Vyberte klíč](media/event-grid-event-hubs-integration/show-root-key.png)
+   ![Výběr klíče](media/event-grid-event-hubs-integration/show-root-key.png)
 
-3. Kopírování **připojovací řetězec - primární klíč**
+3. Zkopírujte **připojovací řetězec – primární klíč**.
 
-   ![Zkopírovat klíč](media/event-grid-event-hubs-integration/copy-key.png)
+   ![Kopírování klíče](media/event-grid-event-hubs-integration/copy-key.png)
 
-4. Přejděte zpět do projektu sady Visual Studio. Otevřete v projektu WindTurbineDataGenerator **program.cs**.
+4. Vraťte se do projektu Visual Studio. V projektu WindTurbineDataGenerator otevřete **program.cs**.
 
-5. Nahraďte dvě konstantní hodnoty. Použijte zkopírovaný hodnotu pro **EventHubConnectionString**. Použití **hubdatamigration** název centra událostí.
+5. Nahraďte dvě konstantní hodnoty. Zkopírovanou hodnotu použijte místo **EventHubConnectionString**. Jako název centra událostí použijte **hubdatamigration**.
 
    ```cs
    private const string EventHubConnectionString = "Endpoint=sb://demomigrationnamespace.servicebus.windows.net/...";
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Sestavte řešení. Spusťte aplikaci WindTurbineGenerator.exe. Za několik minut dotaz v tabulce v datového skladu pro migrovaná data.
+6. Sestavte řešení. Spusťte aplikaci WindTurbineGenerator.exe. Po pár minutách zadejte dotaz do tabulky v datovém skladu a zkontrolujte, že obsahuje migrovaná data.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md).
-* Úvod k zachycení centra událostí, naleznete v části [povolit Event Hubs zaznamenat pomocí portálu Azure](../event-hubs/event-hubs-capture-enable-through-portal.md).
-* Další informace o nastavení a spuštění ukázku najdete v tématu [zaznamenat centra událostí a událostí mřížky ukázku](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
+* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Úvod do služby Event Hubs Capture najdete v článku o [povolení služby Event Hubs Capture na webu Azure Portal](../event-hubs/event-hubs-capture-enable-through-portal.md).
+* Další informace o nastavení a spuštění ukázky najdete v článku s [ukázkou služeb Event Hubs Capture a Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).

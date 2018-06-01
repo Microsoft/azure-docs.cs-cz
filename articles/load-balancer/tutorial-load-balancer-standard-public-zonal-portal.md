@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 52d0aeabab173caf4460827ca0d5984070688f0e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304721"
 ---
 # <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů v rámci zóny dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -139,7 +140,7 @@ V této části vytvoříte na webu Azure Portal pravidla skupiny zabezpečení 
 2. Na stránce **Přehled** klikněte na **Připojit** a připojte se přes RDP k virtuálnímu počítači.
 3. Přihlaste se k virtuálnímu počítači pomocí uživatelského jména a hesla, které jste zadali při vytváření virtuálního počítače (abyste mohli zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače, možná budete muset vybrat **Další možnosti** a pak **Použít jiný účet**), a pak vyberte **OK**. Během procesu přihlášení se může zobrazit upozornění certifikátu. Vyberte **Ano** a pokračujte v připojování.
 4. Na ploše serveru přejděte do části **Nástroje pro správu Windows**>**Windows PowerShell**.
-6. V okně PowerShellu spuštěním následujících příkazů nainstalujte server služby IIS, odeberte soubor default.htm a přidejte nový soubor default.htm, který zobrazuje název virtuálního počítače:
+6. V okně PowerShellu spuštěním následujících příkazů nainstalujte server služby IIS, odeberte výchozí soubor iisstart.htm a pak přidejte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
 
    ```azurepowershell-interactive
     # install IIS server role
@@ -147,10 +148,10 @@ V této části vytvoříte na webu Azure Portal pravidla skupiny zabezpečení 
     # remove default htm file
      remove-item  C:\inetpub\wwwroot\iisstart.htm
     # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
    ```
-8. Ukončete relaci RDP s *myVM1*.
-9. Opakováním kroků 1 až 8 nainstalujte službu IIS na *myVM2*.
+7. Ukončete relaci RDP s *myVM1*.
+8. Opakováním kroků 1 až 7 nainstalujte službu IIS na *myVM2*.
 
 ## <a name="create-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení
 

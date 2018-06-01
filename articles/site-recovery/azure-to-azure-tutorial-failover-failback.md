@@ -1,21 +1,22 @@
 ---
-title: "Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pomocí Azure Site Recovery (Preview)"
-description: "Zjistěte, jak provést převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pomocí Azure Site Recovery"
+title: Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pomocí Azure Site Recovery
+description: Zjistěte, jak provést převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure replikovaných do sekundární oblasti Azure pomocí Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a27142f9110fd26daa8ea0ebd151a67769e6568
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209269"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Převzetí služeb při selhání a navrácení služeb po obnovení virtuálních počítačů Azure mezi oblastmi Azure (Preview)
+# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Převzetí služby při selhání a navrácení služby po obnovení pro virtuální počítače Azure mezi oblastmi Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii zotavení po havárii tím, že spravuje a orchestruje replikaci, převzetí služeb při selhání a navrácení služeb po obnovení pro místní počítače a virtuální počítače Azure.
 
@@ -26,6 +27,8 @@ Tento kurz popisuje, jak provést převzetí služeb při selhání jednoho virt
 > * Znovunastavení ochrany sekundárního virtuálního počítače Azure, aby se replikoval do primární oblasti
 > * Navrácení služeb po obnovení sekundárního virtuálního počítače
 > * Znovunastavení ochrany primárního virtuálního počítače do sekundární oblasti
+
+Replikace Azure do Azure je aktuálně ve verzi preview.
 
 ## <a name="prerequisites"></a>Požadavky
 
