@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/30/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3b2fd59444f50f4ac5da6bf569cb0247f3a36943
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361178"
 ---
-# <a name="compare-managed-and-custom-labs-in-azure-lab-services"></a>Porovnání spravovaných a vlastních testovacích prostředí v Azure Lab Services
+# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>Porovnání spravovaných testovacích prostředí a DevTest Labs v Azure Lab Services
 Je možné vytvořit dva typy testovacích prostředí: **spravovaná testovací prostředí** v Azure Lab Services a **vlastní testovací prostředí** v Azure DevTest Labs. Pokud chcete jenom určit, co v testovacím prostředí potřebujete, a nechat příslušnou službu nastavit a spravovat infrastrukturu potřebnou pro dané testovací prostředí, vyberte některé **spravované testovací prostředí**. V současné době je jediným typem spravovaného testovacího prostředí, které lze vytvořit pomocí Azure Lab Services, **testovací prostředí v učebně**. Pokud chcete spravovat vlastní infrastrukturu, vytvořte pomocí Azure DevTest Labs **vlastní testovací prostředí**.
 
 Následující části poskytují další podrobnosti o těchto testovacích prostředích. 
@@ -37,10 +38,10 @@ Tady je několik **případů použití pro spravovaná testovací prostředí**
 - Vytvořte rychle testovací prostředí s virtuálními počítači pro hostování hackathonu. Jakmile testovací prostředí přestanete potřebovat, můžete ho jedním kliknutím odstranit. 
 
 
-## <a name="custom-labs"></a>Vlastní testovací prostředí
+## <a name="devtest-labs"></a>DevTest Labs
 Můžete mít scénáře, ve kterých chcete spravovat veškerou infrastrukturu a konfiguraci sami v rámci svého vlastního předplatného. Uděláte to tak, že vytvoříte vlastní testovací prostředí pomocí služby Azure DevTest Labs na webu Azure Portal. Pro tato testovací prostředí není nutné vytvořit účet testovacího prostředí. Tato testovací prostředí se nezobrazují v účtu testovacího prostředí (který se používá pro spravovaná testovací prostředí).  
 
-Tady je několik **případů použití pro vlastní testovací prostředí**: 
+Tady je několik **případů použití DevTest Labs**: 
 
 - Vytvořte rychle testovací prostředí s virtuálními počítači pro hostování hackathonu nebo praktické relace na konferenci. Jakmile testovací prostředí přestanete potřebovat, můžete ho jedním kliknutím odstranit. 
 - Vytvořte fond virtuálních počítačů, ve kterých je nakonfigurovaná vaše aplikace, a umožněte vašemu týmu použít virtuální počítač pro společné hledání chyb vývojáři.  
@@ -50,10 +51,10 @@ Tady je několik **případů použití pro vlastní testovací prostředí**:
 - Nabídněte vašim zákazníkům školení s využitím testovacího prostředí, ve kterém je nakonfigurovaná nejnovější verze vašeho produktu. Poskytněte každému zákazníkovi určitý počet hodin pro práci v testovacím prostředí. 
 
 
-## <a name="managed-labs-vs-custom-labs"></a>Porovnání spravovaných a vlastních testovacích prostředí
+## <a name="managed-labs-vs-devtest-labs"></a>Spravovaná testovací prostředí vs. DevTest Labs
 Následující tabulka porovnává dva typy testovacích prostředí, které služba Azure Lab Services podporuje: 
 
-| Funkce | Spravovaná testovací prostředí | Vlastní testovací prostředí |
+| Funkce | Spravovaná testovací prostředí | DevTest Labs |
 | -------- | ----------------  | ---------- |
 | Správa infrastruktury Azure v testovacím prostředí |  Automaticky spravuje služba. | Spravujete sami.  |
 | Předdefinovaná odolnost vůči problémům s infrastrukturou | Automaticky zpracovává služba. | Spravujete sami.  |
