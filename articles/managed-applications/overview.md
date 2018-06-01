@@ -1,75 +1,76 @@
 ---
-title: Přehled služby Azure spravované aplikace | Microsoft Docs
-description: Popisuje koncepce pro Azure spravované aplikace
+title: Přehled spravovaných aplikací Azure | Microsoft Docs
+description: Popisuje koncepty spravovaných aplikací Azure.
 services: managed-applications
 author: tfitzmac
 manager: timlt
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35e30700270fb5757a80c4a6b8f231042f7640f3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: MT
+ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304993"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
-Spravované aplikace Azure umožňují nabízet cloudové řešení, které jsou pro spotřebitele snadno nasadit a provozovat. Implementovat infrastrukturu a poskytovat podporu probíhající. Spravované aplikace zpřístupnit všem zákazníkům, publikování v Azure marketplace. Chcete-li k dispozici jenom na uživatele ve vaší organizaci, publikujte na interní katalogu. 
+Spravované aplikace Azure umožňují nabízet cloudová řešení, která můžou spotřebitelé snadno nasadit a spravovat. Vy implementujete infrastrukturu a poskytujete průběžnou podporu. Pokud chcete zpřístupnit spravovanou aplikaci všem zákazníkům, publikujte ji v Azure Marketplace. Pokud ji chcete zpřístupnit jenom uživatelům ve vaší organizaci, publikujte ji do interního katalogu. 
 
-Spravované aplikace je podobná šablonu řešení na webu Marketplace, s jedním klíče rozdílem. Ve spravované aplikaci jsou zřízené prostředky do skupiny prostředků, který je spravovaný nástrojem vydavatele aplikace. Skupina prostředků je v rámci předplatného v klientu, ale identity v klientovi vydavatele má přístup ke skupině prostředků. Jako vydavatel zadejte náklady na probíhající podpora řešení.
+Spravovaná aplikace se podobá šabloně řešení v Marketplace, ale s jedním zásadním rozdílem. Ve spravované aplikaci jsou prostředky zřízené do skupiny prostředků, kterou spravuje vydavatel aplikace. Skupina prostředků se nachází v rámci předplatného zákazníka, ale má k ní přístup určitá identita v rámci tenanta vydavatele. Jako vydavatel určujete náklady na průběžnou podporu řešení.
 
 ## <a name="advantages-of-managed-applications"></a>Výhody spravovaných aplikací
 
-Spravované aplikace snižte překážek na příjemcům na základě vašich řešení. Nepotřebují odborných znalostí v použít řešení cloudové infrastruktury. Příjemci knihovny mít omezený přístup k důležitým prostředkům. Není nutné se obávat, že uděláte chybu při správě ho. 
+Spravované aplikace usnadňují zákazníkům používání vašich řešení. Zákazníci díky tomu nepotřebují mít k používání vašeho řešení zkušenosti s cloudovou infrastrukturou. Zákazníci mají omezený přístup ke kriticky důležitým prostředkům. Nemusejí se obávat, že při jejich správě udělají chybu. 
 
-Spravované aplikace umožňují vytvořit probíhající vztah s uživatele. Můžete definovat podmínky pro správu aplikace a všechny poplatky jsou zpracovávány prostřednictvím Azure fakturace.
+Spravované aplikace vám umožňují vytvořit si se zákazníky dlouhodobý vztah. Vy určujete podmínky správy aplikace a všechny platby se zpracovávají prostřednictvím fakturace v Azure.
 
-I když zákazníci nasadit tyto spravované aplikace ve svých předplatných, nemají zachovat, aktualizace nebo služba je. Můžete zajistit, že všichni zákazníci používají schválené verze. Zákazníci nemají k vývoji znalostní báze specifické pro aplikaci domény ke správě těchto aplikací. Zákazníci automaticky získat aktualizace aplikace bez nutnosti starat o řešení potíží a diagnostice problémů s aplikacemi. 
+I když zákazníci nasadí tyto spravované aplikace do svého předplatného, nemusejí je spravovat, aktualizovat ani udržovat. Vy se staráte o to, aby všichni zákazníci používali schválené verze. Zákazníci si nepotřebují osvojovat znalosti jednotlivých aplikací, aby je mohli spravovat. Zákazníci automaticky získávají aktualizace aplikací, aniž by si museli dělat starosti s řešením potíží a diagnostikou problémů s aplikacemi. 
 
-Spravované aplikace pro IT týmy, umožní nabízet předem schválených řešení uživatelů v organizaci. Zajistíte, že tato řešení jsou kompatibilní s organizační standardy.
+Týmům IT umožňují spravované aplikace nabízet uživatelům v rámci organizace předem schválená řešení. Vy zajišťujete, aby byla tato řešení v souladu se standardy organizace.
 
 ## <a name="types-of-managed-applications"></a>Typy spravovaných aplikací
 
-Ve spravované aplikaci můžete publikovat externě nebo interně.
+Spravovanou aplikaci můžete publikovat externě nebo interně.
 
-![Publikovat interně nebo externě](./media/overview/manage_app_options.png)
+![Interní nebo externí publikování](./media/overview/manage_app_options.png)
 
-### <a name="service-catalog"></a>katalog služeb
+### <a name="service-catalog"></a>Katalog služeb
 
-Katalog služeb je katalog interní schválené řešení pro uživatele v organizaci. Katalog používat k zajištění dodržování určitých organizační standardy při jejich poskytování řešení pro organizace. Zaměstnanci používají katalogu snadno zjistit bohatou sadu aplikací, které jsou schváleny podle jejich IT oddělení a doporučené. Zobrazí se jim spravovaných aplikací, které jiní lidé ve své organizaci sdílet s nimi.
+Katalog služeb je interní katalog schválených řešení určených pro uživatele v rámci organizace. Katalog slouží k zajištění dodržování určitých standardů organizace při poskytování řešení pro organizaci. Zaměstnanci najdou v katalogu bohatou nabídku aplikací doporučených a schválených jejich oddělením IT. Zobrazují se jim spravované aplikace, které s nimi sdílejí jiní lidé z jejich organizace.
 
-Informace o publikování aplikace spravované katalogu služeb najdete v tématu [vytvořit aplikaci služby katalogu](publish-service-catalog-app.md).
+Informace o publikování spravované aplikace v katalogu služeb najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
 
 ### <a name="marketplace"></a>Marketplace
 
-Dodavatelé chtějí účtovat pošle pro své služby můžete zpřístupnit spravované aplikace prostřednictvím Azure marketplace. Po dodavatele publikuje aplikace, je k dispozici pro uživatele mimo organizaci. K tomuto přístupu, zprostředkovatelé spravované služby (MSPs), nezávislí dodavatelé softwaru (ISV) a systém integrátorech (si) nabízejí svá řešení pro všechny zákazníky využívající Azure.
+Dodavatelé, kteří si chtějí za své služby účtovat poplatky, můžou zpřístupnit spravovanou aplikaci prostřednictvím Azure Marketplace. Jakmile dodavatel publikuje aplikaci, bude dostupná i uživatelům mimo organizaci. Díky tomuto přístupu můžou poskytovatelé spravovaných služeb, nezávislí dodavatelé softwaru a integrátoři systémů nabízet svá řešení všem zákazníkům Azure.
 
-Informace o publikování spravované aplikace na web Marketplace najdete v tématu [vytvoření aplikace marketplace](publish-marketplace-app.md).
+Informace o publikování spravovaných aplikací do Marketplace najdete v tématu [Vytvoření aplikace Marketplace](publish-marketplace-app.md).
 
 ## <a name="resource-groups-for-managed-applications"></a>Skupiny prostředků pro spravované aplikace
 
-Prostředky pro spravované aplikace jsou obvykle umístěny ve dvou skupinách prostředků. Příjemce spravuje jednu skupinu prostředků, a vydavatele jiné skupině prostředků. Při definování spravované aplikace, vydavatele Určuje úrovně přístupu. Následující obrázek ukazuje scénář, kde vydavatele požadavky roli vlastníka pro skupinu spravovaných prostředků. Vydavatele umístit zámek jen pro čtení do této skupiny prostředků pro příjemce. Vydavatel identity, které mají udělen přístup ke skupině spravovaných prostředků se nevztahují zámek.
+Prostředky pro spravované aplikace se většinou nacházejí ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Následující obrázek znázorňuje situaci, kdy vydavatel požaduje pro spravovanou skupinu prostředků roli vlastníka. Pro zákazníka nastavil vydavatel u této skupiny prostředků zámek jen pro čtení. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
 
-![Přístup k prostředkům skupiny](./media/overview/access.png)
+![Přístup ke skupině prostředků](./media/overview/access.png)
 
 ### <a name="application-resource-group"></a>Skupina prostředků aplikace
 
-Tato skupina prostředků obsahuje instance spravované aplikace. Tato skupina prostředků může obsahovat pouze jeden prostředek. Typ prostředku spravované aplikace je **Microsoft.Solutions/applications**.
+Tato skupina prostředků obsahuje instanci spravované aplikace. Tato skupina prostředků smí obsahovat jenom jeden prostředek. Typ prostředku spravované aplikace je **Microsoft.Solutions/applications**.
 
-Příjemce má plný přístup ke skupině prostředků a používá ke správě životního cyklu spravované aplikace.
+Zákazník má k této skupině prostředků plný přístup a používá ji ke správě životního cyklu spravované aplikace.
 
 ### <a name="managed-resource-group"></a>Spravovaná skupina prostředků
 
-Tato skupina prostředků obsahuje všechny prostředky, které jsou vyžadované spravované aplikace. Například tato skupina prostředků obsahuje virtuální počítače, účty úložiště a virtuální sítě pro řešení. Příjemce má omezený přístup do této skupiny prostředků, protože spotřebitel nespravuje jednotlivé prostředky pro spravované aplikace. Vydavatele přístup do této skupiny prostředků odpovídá roli zadaný v definici spravované aplikace. Například vydavatele si mohou vyžádat roli vlastníka nebo přispěvatele pro tuto skupinu prostředků.
+Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele.
 
-Když příjemce odstraní spravované aplikace, je taky odstranit skupinu spravovaných prostředků.
+Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod k definování a nasazování spravovaných aplikací, najdete v části [vytvořit a nasadit Azure spravované aplikace pomocí rozhraní příkazového řádku Azure](managed-apps-quickstart-cli.md)
-* Informace o publikování interní aplikace najdete v tématu [vytvořit aplikaci služby katalogu](publish-service-catalog-app.md).
-* Informace o publikování spravovaných aplikací na webu marketplace najdete v tématu [vytvoření aplikace marketplace](publish-marketplace-app.md).
+* Úvod do definování a nasazení spravované aplikace najdete v článku [Vytvoření a nasazení spravované aplikace Azure pomocí rozhraní příkazového řádku Azure](managed-apps-quickstart-cli.md).
+* Informace o publikování interní aplikace najdete v článku [Vytvoření aplikace katalogu služeb](publish-service-catalog-app.md).
+* Informace o publikování spravovaných aplikací do Marketplace najdete v tématu [Vytvoření aplikace Marketplace](publish-marketplace-app.md).

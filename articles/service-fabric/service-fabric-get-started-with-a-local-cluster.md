@@ -1,11 +1,11 @@
 ---
-title: "Místní nasazení a upgrade mikroslužeb Azure | Dokumentace Microsoftu"
-description: "Přečtěte si, jak vytvořit místní cluster Service Fabric, nasadit do něj existující aplikaci a potom tuto aplikaci upgradovat."
+title: Místní nasazení a upgrade mikroslužeb Azure | Dokumentace Microsoftu
+description: Přečtěte si, jak vytvořit místní cluster Service Fabric, nasadit do něj existující aplikaci a potom tuto aplikaci upgradovat.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
-ms.author: ryanwi;mikhegn
-ms.openlocfilehash: 9d547039491f6b0c0d308c64d11e9c54b4b4e3d5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.author: ryanwi
+ms.openlocfilehash: ca19b70e3651f72d6fe87fcb3cd2ace2eecf3402
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205242"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Začínáme s nasazením a upgradem aplikací v místním clusteru
 Sada Azure Service Fabric SDK zahrnuje úplné místní vývojové prostředí, pomocí kterého můžete rychle začít nasazovat a spravovat aplikace v místním clusteru. V tomto článku vytvoříte místní cluster, nasadíte do něj existující aplikaci a potom ji upgradujete na novou verzi, to všechno z prostředí Windows PowerShell.
