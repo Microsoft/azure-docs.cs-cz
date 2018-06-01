@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304456"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -37,6 +38,8 @@ Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti tím, že r
 > * Zobrazení nástroje pro vyrovnávání zatížení v akci
 
 Další informace o používání zón dostupnosti s Load Balancerem úrovně Standard najdete v tématu o [Load Balanceru úrovně Standard a zónách dostupnosti](load-balancer-standard-availability-zones.md).
+
+Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
@@ -141,18 +144,21 @@ Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální po�
 1. V levé nabídce klikněte na **Všechny prostředky** a pak v seznamu prostředků klikněte na **myVM1** ve skupině prostředků *myResourceGroupLBAZ*.
 2. Na stránce **Přehled** klikněte na **Připojit** a připojte se přes RDP k virtuálnímu počítači.
 3. Přihlaste se k virtuálnímu počítači s použitím uživatelského jména *azureuser*.
-4. Na ploše serveru přejděte do části **Nástroje pro správu Windows**>**Správce serveru**.
-5. Na stránce pro rychlý start Správce serveru klikněte na **Přidat role a funkce**.
-
-   ![Přidání do back-endového fondu adres – ](./media/load-balancer-standard-public-availability-zones-portal/servermanager.png)    
-
-1. V **Průvodci přidáním rolí a funkcí** použijte následující hodnoty:
-    - Na stránce **Výběr typu instalace** klikněte na **Instalace na základě role nebo funkce**.
-    - Na stránce **Výběr cílového serveru** klikněte na **myVM1**.
-    - Na stránce **Výběr role serveru** klikněte na **Webový server (služba IIS)**.
-    - Postupujte podle pokynů a dokončete zbytek průvodce.
-2. Ukončete relaci RDP s virtuálním počítačem – *myVM1*.
-3. Opakováním kroků 1 až 7 nainstalujte službu IIS na virtuální počítače *myVM2* a *myVM3*.
+4. Na ploše serveru přejděte do části **Nástroje pro správu Windows**>**Windows PowerShell**.
+5. V okně PowerShellu spuštěním následujících příkazů nainstalujte server služby IIS, odeberte výchozí soubor iisstart.htm a pak přidejte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
+   ```
+6. Ukončete relaci RDP s *myVM1*.
+7. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na *myVM2* a *myVM3*.
 
 ## <a name="create-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení
 
@@ -215,7 +221,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
 
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
 
-      ![Webový server služby IIS](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+      ![Webový server služby IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi virtuálními počítači distribuovanými v zóně, můžete vynutit aktualizaci webového prohlížeče.
 

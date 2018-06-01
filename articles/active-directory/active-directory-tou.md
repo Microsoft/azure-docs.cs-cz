@@ -1,5 +1,5 @@
 ---
-title: Funkce Azure Active Directory Terms of Use | Dokumentace Microsoftu
+title: Funkce Azure Active Directory Terms of Use | Microsoft Docs
 description: Funkce Azure AD Terms of Use umožní vám a vaší společnosti poskytnout podmínky použití uživatelům služeb Azure AD.
 services: active-directory
 author: billmath
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: ea68bad3a2c5e905ccf705404dff0049b451268e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192951"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům.  Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů.
@@ -39,7 +40,7 @@ Funkci Azure AD Terms of Use je možné využít v následujících scénáříc
 Při konfiguraci funkce Azure AD Terms of Use použijte následující kroky:
 
 1. Přihlaste se k Azure AD jako globální správce, správce zabezpečení nebo správce podmíněného přístupu pro adresář, pro který chcete funkci Azure AD Terms of Use nakonfigurovat.
-2. Zkontrolujte, že tento adresář má předplatné Azure AD Premium P1, P2, EMS E3 nebo EMS E5.  Pokud ne, [získejte předplatné služby Azure AD Premium](active-directory-get-started-premium.md) nebo [začněte se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/).
+2. Zkontrolujte, že tento adresář má předplatné Azure AD Premium P1, P2, EMS E3 nebo EMS E5.  Pokud ne, [pořiďte si předplatné služby Azure AD Premium](active-directory-get-started-premium.md) nebo [začněte se zkušební verzí](https://azure.microsoft.com/trial/get-started-active-directory/).
 3. Prohlédněte si řídicí panel funkce Azure AD Terms of Use na adrese [https://aka.ms/catou](https://aka.ms/catou).
 
 >[!IMPORTANT]
@@ -56,7 +57,7 @@ Jakmile dokončíte vaše podmínky použití, přidejte je pomocí následujíc
 4. Zadejte **zobrazovaný název**.  Tato hlavička se uživatelům zobrazí při přihlášení.
 5. Pomocí **Procházet** přejděte k souboru PDF s finálními podmínkami použití a vyberte ho.  Doporučená velikost písma je 24.
 6. **Vyberte** jazyk podmínek použití.  Volba jazyka vám umožní nahrát různé jazykové verze podmínek použití.  Verze podmínek použití, která se zobrazí koncovému uživateli, závisí na jeho předvolbách prohlížeče.
-7. Vyberte, zda chcete **vyžadovat, aby uživatelé rozbalili podmínky použití**.  Pokud je tato volba zapnutá, než uživatelé přijmou podmínky použití, budou je muset zobrazit.
+7. Vyberte, zda chcete **vyžadovat, aby uživatelé rozbalili podmínky použití**.  Pokud je toto nastavení zapnuté, budou si muset koncoví uživatelé před přijetím podmínek použití tyto podmínky zobrazit.
 8. V části **Podmíněný přístup** můžete nahrané podmínky **vynutit** výběrem šablony v rozevíracím seznamu nebo vlastních zásad podmíněného přístupu.  Vlastní zásady podmíněného přístupu umožňují využít detailní podmínky použití (až na úroveň konkrétních cloudových aplikací nebo skupin uživatelů).  Další informace najdete v tématu o [konfiguraci zásad podmíněného přístupu](active-directory-conditional-access-best-practices.md).
 9. Klikněte na možnost **Vytvořit**.
 10. Pokud jste vybrali vlastní šablonu podmíněného přístupu, zobrazí se nová obrazovka, která vám umožní přizpůsobit zásady CA.
@@ -89,7 +90,7 @@ Pokud chcete zobrazit historii přijetí a odmítnutí, a nikoli pouze aktuáln�
 V závislosti na tom, co se právě pokoušíte provést, můžete auditování použít dvěma způsoby.  
 
 
-Pokud chcete začít s auditováním použijte následující postup:
+Pokud chcete začít s auditováním, použijte následující postup:
 
 ### <a name="to-audit-terms-of-use"></a>Audit podmínek použití
 1. Přejděte na řídicí panel na adrese [https://aka.ms/catou](https://aka.ms/catou).
@@ -120,6 +121,13 @@ Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijal
 
 4.  Tady si můžete přečíst podmínky použití, které jste přijali. 
 
+## <a name="removing-users-from-an-active-terms-of-use"></a>Odebírání uživatelů z aktivních podmínek použití
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
+
+Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure Active Directory odstraněný na 30 dní, během kterých ho v případě potřeby může správce obnovit.  Po 30 dnech je tento uživatel odstraněn trvale.  Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](active-directory-users-restore.md) ještě před dosažením tohoto časového období.  Jakmile je uživatel trvale odstraněný, odeberou se následně data o tomto uživateli z aktivních podmínek použití.  Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
+
+
 
 ## <a name="additional-information"></a>Další informace
 Následující informace byste měli znát. Mohou vám být při používání podmínek použití užitečné.
@@ -138,7 +146,7 @@ Následující informace byste měli znát. Mohou vám být při používání p
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Otázka: Jak poznám, kdy/jestli uživatel přijal podmínky použití?**</br>
-Odpověď: Stačí kliknout na číslo v části Přijato vedle vašich podmínek použití.  Další informace najdete v části [Zobrazení aktuálního stavu uživatelů](#viewing-current-user-status).  Vyjádření souhlasu uživatele s podmínkami použití se také zapíše do protokolu auditu. Můžete prohledat protokol auditu Azure AD a prohlédnout si výsledky.  
+Odpověď: Můžete kliknout na číslo v části Přijato vedle vašich podmínek použití.  Další informace najdete v části [Zobrazení aktuálního stavu uživatelů](#viewing-current-user-status).  Vyjádření souhlasu uživatele s podmínkami použití se také zapíše do protokolu auditu. Můžete prohledat protokol auditu Azure AD a prohlédnout si výsledky.  
 
 **Otázka: Pokud změníte podmínky použití, je potřeba, aby je uživatelé přijali znovu?**</br>
 Odpověď: Ano, správce může změnit podmínky použití. Vyžaduje to opakované přijetí nových podmínek.
