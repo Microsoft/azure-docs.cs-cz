@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: a7ba5f1947da09177e7d2d9d0e9e926d858dff7e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34700120"
 ---
 # <a name="azure-stack-1804-update"></a>Azure aktualizace 1804 zásobníku
 
@@ -40,10 +41,19 @@ Tato aktualizace obsahuje následující vylepšení pro Azure zásobníku.
  
 - <!-- 1779474, 1779458 - IS --> **Use Av2 and F series virtual machines**. Azure Stack can now use virtual machines based on the Av2-series and F-series virtual machine sizes. For more information see [Virtual machine sizes supported in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). 
 
-- <!-- 1759172 - IS, ASDK --> **More granular administrative subscriptions**. With version 1804 and later, the Default Provider subscription is now complemented with two additional subscriptions. The additions facilitate separating the management of core infrastructure, additional resource providers, and workloads. The following three subscriptions are available after the update installs:
-  - *Výchozí zprostředkovatel odběru*. Používejte toto předplatné pro jenom základní infrastruktury. Nenasazujte prostředky nebo poskytovatelů prostředků v tomto předplatném.
-  - *Měření předplatné*. Použijte toto předplatné pro nasazení zprostředkovatele prostředků. Prostředky, které jsou nasazené na toto předplatné není účtován.
-  - *Spotřeba předplatné*. Používejte toto předplatné pro jiné úlohy, které chcete nasadit. Zde nasazené prostředky budou účtovat normální využití ceny.
+- <!-- 1759172 - IS, ASDK --> **New administrative subscriptions**. With 1804 there are two new subscription types available in the portal. These new subscription types are in addition to the Default Provider subscription and visible with new Azure Stack installations beginning with version 1804. *Do not use these new subscription types with this version of Azure Stack*. We will announce the availability to use these subscription types in with a future update. 
+
+  Pokud aktualizujete na verzi 1804 zásobník Azure, dva nové typy předplatného se nezobrazí. Ale nová nasazení Azure zásobníku integrované systémy a instalace 1804 nebo novější verze Azure zásobníku Development Kit mají přístup pro všechny typy tři předplatného.  
+
+  Tyto nové typy předplatného jsou součástí větší změnu pro zabezpečení výchozí zprostředkovatel odběru a aby bylo snazší nasazování sdílené prostředky, jako je hostování SQL servery. Jak jsme do protokolů Azure přidat další části této větší změny s budoucí aktualizace, může být ztracené prostředky nasazené v rámci těchto nových typů předplatného. 
+
+  Nyní viditelné předplatné tři typy jsou:  
+  - Výchozí zprostředkovatel odběru: nadále používat tento typ předplatného. 
+  - Měření předplatné: *nepoužívejte tento typ předplatného.*
+  - Spotřeba předplatné: *nepoužívejte tento typ předplatného*
+
+  
+
 
 
 ## <a name="fixed-issues"></a>Opravené problémy
@@ -76,6 +86,8 @@ Toto jsou nyní k dispozici, ale nevyžadují zásobník Azure aktualizace 1804.
 - Během instalace aktualizace 1804, může se zobrazit výstrahy s nadpis *chyba – šablona pro FaultType UserAccounts.New chybí.*  Tyto výstrahy můžete bezpečně ignorovat. Tyto výstrahy se automaticky zavře po dokončení aktualizace 1804.   
  
 - <!-- TBD - IS --> Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](azure-stack-updates.md#plan-for-updates).
+
+
 ### <a name="post-update-steps"></a>Postup po aktualizaci
 *Neexistují žádné kroky po aktualizaci pro aktualizaci 1804.*
 
@@ -85,6 +97,15 @@ Toto jsou nyní k dispozici, ale nevyžadují zásobník Azure aktualizace 1804.
 Toto jsou známé problémy po instalaci pro sestavení **20180513.1**.
 
 #### <a name="portal"></a>Portál
+- <!-- 1272111 - IS --> After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
+  Alternativní řešení: Použití prostředí PowerShell zobrazíte informace o jednotkách škálování. Další informace najdete v tématu [pomoci](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) obsahu pro modul zásobník Azure 1.3.0. 
+
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele v zásobníku Azure deklarací](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka předplatného výchozího zprostředkovatele.   
+
+- <!-- TBD - IS ASDK --> Some administrative subscription types are not available.  When you upgrade Azure Stack to this version, the two subscription types that were [introduced with version 1804](#new-features) are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
+
+
 - <!-- TBD -  IS ASDK -->The ability [to open a new support request from the dropdown](azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
     - Pro Azure zásobníku integrované systémy, používat https://aka.ms/newsupportrequest.
 
@@ -104,6 +125,24 @@ Toto jsou známé problémy po instalaci pro sestavení **20180513.1**.
 
   Tuto výstrahu můžete ignorovat. 
 
+
+#### <a name="health-and-monitoring"></a>Sledování stavu a
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Výstrahy #1:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu prezenčního signálu skener není k dispozici. To může ovlivnit sestavy o stavu a metrik.  
+
+  Výstrahy #2:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu skener chyby není k dispozici. To může ovlivnit sestavy o stavu a metrik.
+
+  Obě výstrahy můžete bezpečně ignorovat. Se automaticky zavře v čase.  
+ 
 
 #### <a name="compute"></a>Compute
 - <!-- TBD - IS --> When selecting a virtual machine size for a virtual machine deployment, some F-Series VM sizes are not visible as part of the size selector when you create a VM. The following VM sizes do not appear in the selector: *F8s_v2*, *F16s_v2*, *F32s_v2*, and *F64s_v2*.  
@@ -126,7 +165,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180513.1**.
 
 - <!-- TBD - IS --> When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
 
-- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a D series VM. All supported D series VMs can accommodate as many data disks as the Azure configuration.
 
 - <!-- TBD - IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
 
@@ -240,17 +279,17 @@ Toto jsou známé problémy po instalaci pro sestavení **20180513.1**.
 
 
 #### <a name="app-service"></a>App Service
-- <!-- TBD - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- 2352906 - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
 
 - <!-- TBD - IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
 
+- <!-- TBD - IS ASDK --> App Service can only be deployed into the **Default Provider Subscription** at this time.  In a future update App Service will deploy into the new Metering Subscription introduced in Azure Stack 1804 and all existing deployments will be migrated to this new subscription also.
 
 #### <a name="usage"></a>Využití  
 - <!-- TBD - IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
 
 
 <!-- #### Identity -->
-<!-- #### Health and monitoring --> 
 <!-- #### Marketplace --> 
 
 

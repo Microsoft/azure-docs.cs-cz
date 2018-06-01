@@ -21,7 +21,7 @@
       href: azure-stack-quick-create-vm-linux-cli.md
 - name: Kurzy
   items:
-    - name: Nasazení aplikací do Azure a Azure zásobníku
+    - name: Nasazení aplikací na platformy Azure a Azure Stack
       href: azure-stack-solution-pipeline.md
     - name: Konfigurace hybridní Cloudová identita
       href: azure-stack-solution-hybrid-identity.md
@@ -55,6 +55,8 @@
               href: azure-stack-manage-vm-disks.md
             - name: Ochrana virtuálních počítačů
               href: azure-stack-manage-vm-protect.md
+            - name: Důležité informace o virtuální počítač s SQL serverem
+              href: azure-stack-sql-server-vm-considerations.md
         - name: Úložiště
           items:
             - name: Přehled
@@ -104,7 +106,7 @@
         - name: Nastavení vývojového prostředí
           items:
             - name: Instalace Azure Stack PowerShellu
-              href: azure-stack-powershell-install.md
+              href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
             - name: Stažení nástrojů
               href: azure-stack-powershell-download.md
             - name: Konfigurace PowerShellu – uživatel
