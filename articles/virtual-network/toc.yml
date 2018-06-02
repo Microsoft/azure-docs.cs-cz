@@ -205,17 +205,9 @@
     - name: Řešení potíží
       items:
         - name: Skupiny zabezpečení sítě
-          items:
-            - name: Azure Portal
-              href: virtual-network-nsg-troubleshoot-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-nsg-troubleshoot-powershell.md
+          href: diagnose-network-traffic-filter-problem.md
         - name: Trasy
-          items:
-            - name: Azure Portal
-              href: virtual-network-routes-troubleshoot-portal.md
-            - name: Azure PowerShell
-              href: virtual-network-routes-troubleshoot-powershell.md
+          href: diagnose-network-routing-problem.md
         - name: Testování propustnosti
           href: virtual-network-bandwidth-testing.md
         - name: Nelze odstranit virtuální sítě

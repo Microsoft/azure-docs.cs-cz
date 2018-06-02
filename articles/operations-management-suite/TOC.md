@@ -23,13 +23,12 @@
 ### [Přehled služby Site Recovery](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Zabezpečení
-### [Sledování prostředků](oms-security-monitoring-resources.md)
-### [Reakce na výstrahy zabezpečení](oms-security-responding-alerts.md)
-### [Vyhodnocení standardních hodnot](oms-security-baseline.md)
-### [Posouzení malwaru](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Posouzení aktualizace systému](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Produkty zabezpečení Connect](oms-security-connect-products.md)
-### [Webové vyhodnocení směrného plánu](oms-security-web-baseline-assessment.md)
+### [Sledování prostředků](../security-center/security-center-monitoring.md)
+### [Reakce na výstrahy zabezpečení](../security-center/security-center-managing-and-responding-alerts.md)
+### [Vyhodnocení standardních hodnot](../security-center/security-center-customize-os-security-config.md)
+### [Posouzení malwaru](../security-center/security-center-install-endpoint-protection.md)
+### [Produkty zabezpečení Connect](../security-center/quick-security-solutions.md)
+### [Webové vyhodnocení směrného plánu](../security-center/security-center-customize-os-security-config.md)
 
 ## Použití řešení
 ### [Řešení pro správu](../monitoring/monitoring-solutions.md)
