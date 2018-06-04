@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311042"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Spuštění poznámkového bloku Databricks s využitím aktivity poznámkového bloku Databricks ve službě Azure Data Factory
 
@@ -153,7 +154,7 @@ V této části vytvoříte propojenou službu Databricks. Tato propojená služ
 
           ![Vytvoření nové složky](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. [Vytvořte nový poznámkový blok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) **mynotebook** ve složce **adftutorial** a**** klikněte na **Vytvořit.**
+       3. [Vytvořte nový poznámkový blok](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) **mynotebook** ve složce **adftutorial** a **,** klikněte na **Vytvořit.**
 
           ![Vytvoření nového poznámkového bloku](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
