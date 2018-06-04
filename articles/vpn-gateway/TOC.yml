@@ -30,7 +30,7 @@
       href: vpn-gateway-highlyavailable.md
     - name: Připojení typu Point-to-Site
       href: point-to-site-about.md
-    - name: Směrování typu Point-to-Site
+    - name: Směrování VPN typu Point-to-Site
       href: vpn-gateway-about-point-to-site-routing.md
 - name: Návody
   items:

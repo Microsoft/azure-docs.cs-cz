@@ -6,6 +6,10 @@
       href: sql-data-warehouse-overview-what-is.md
     - name: Tahák
       href: cheat-sheet.md
+- name: Poznámky k verzi
+  items:
+    - name: Květen 2018
+      href: release-notes-may-2018.md
 - name: Šablony Rychlý start
   expanded: true
   items:

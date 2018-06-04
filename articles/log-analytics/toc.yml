@@ -137,24 +137,20 @@
           href: log-analytics-powerbi.md
     - name: Vytváření upozornění
       items:
-        - name: Principy upozornění
-          href: log-analytics-alerts.md
-        - name: Akce upozornění
-          href: log-analytics-alerts-actions.md
-        - name: Vytváření pravidel upozornění
-          items:
-            - name: Portál OMS
-              href: log-analytics-alerts-creating.md
-            - name: REST API
-              href: log-analytics-api-alerts.md
-            - name: Šablona Resource Manageru
-              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
-        - name: Ukázka akce webhooku
-          href: log-analytics-alerts-webhooks.md
-        - name: Řešení Alert Managementu
-          href: log-analytics-solution-alert-management.md
+        - name: Principy upozornění protokolů
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+        - name: Vytvoření výstrahy protokolu
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+        - name: Akce webhooku pro výstrahy protokolu
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+        - name: Vytvoření upozornění na protokol pomocí šablony Resource Manageru
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+        - name: Kopírování upozornění z Log Analytics do Azure Alerts
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
     - name: Spravovat
       items:
+        - name: Zpracování osobních dat
+          href: log-analytics-personal-data-mgmt.md
         - name: Správa agentů
           href: log-analytics-agent-manage.md
         - name: Správa nákladů pracovního prostoru
@@ -218,8 +214,6 @@
               href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
             - name: Vlastní schéma sledování Logic Apps B2B
               href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Posouzení malwaru
-          href: log-analytics-malware.md
         - name: Analýza sítě
           href: log-analytics-azure-networking-analytics.md
         - name: Sledování výkonu sítě
@@ -239,7 +233,7 @@
         - name: Kontrola stavu SCOM
           href: log-analytics-scom-assessment.md
         - name: Audit zabezpečení
-          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../security-center/security-center-intro.md
         - name: Service Fabric s PowerShellem
           href: log-analytics-service-fabric.md
           items:
