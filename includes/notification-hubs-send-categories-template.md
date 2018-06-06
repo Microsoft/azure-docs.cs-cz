@@ -9,10 +9,11 @@ ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33835820"
 ---
 V této části odešlete nejnovější zprávy jako šablonové oznámení se značkami z konzolové aplikace .NET. 
 
@@ -25,7 +26,7 @@ V této části odešlete nejnovější zprávy jako šablonové oznámení se z
         Install-Package Microsoft.Azure.NotificationHubs
    
 3. Stiskněte **Enter**.  
-    Tato akce přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [balíčku NuGet Microsoft.Azure.Notification Hubs].
+    Tato akce přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [Balíček NuGet Microsoft.Azure.Notification Hubs].
 
 4. Otevřete soubor Program.cs a přidejte následující příkaz `using`:
    
@@ -79,4 +80,4 @@ V této části odešlete nejnovější zprávy jako šablonové oznámení se z
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[balíčku NuGet Microsoft.Azure.Notification Hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Balíček NuGet Microsoft.Azure.Notification Hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
