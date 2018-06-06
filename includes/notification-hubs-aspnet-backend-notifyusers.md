@@ -9,10 +9,11 @@ ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 634bb14cfef3df2cf944eeafbfa8d671afa4ac98
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "33835793"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 Následující části popisují vytvoření nového back-endu ASP.NET WebAPI. Tento proces má tři hlavní účely:
@@ -145,7 +146,7 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
     ```
 6. Uložte provedené změny.
 
-## <a name="register-for-notifications-by-using-the-webapi-backend"></a>Registrace k oznámením pomocí back-endu WebAPI
+## <a name="register-for-notifications-by-using-the-webapi-backend"></a>Registrace oznámení pomocí back-endu WebAPI
 V této části přidáte do back-endu WebAPI nový kontroler, který bude zpracovávat požadavky na registraci uživatele a zařízení k oznámením pomocí klientské knihovny pro centra oznámení. Kontroler přidá značku uživatele pro uživatele, který byl ověřen a připojen k objektu HttpContext třídou `AuthenticationTestHandler`. Značka bude mít formát řetězce `"username:<actual username>"`.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **AppBackend** a pak vyberte **Spravovat balíčky NuGet**.

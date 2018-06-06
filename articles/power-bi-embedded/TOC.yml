@@ -1,0 +1,66 @@
+- name: Dokumentace ke službě Power BI Embedded
+  href: index.md
+- name: Přehled
+  items:
+    - name: Co je Power BI Embedded
+      href: what-is-power-bi-embedded.md
+- name: Začínáme
+  items:
+    - name: Začínáme s Power BI Embedded
+      href: get-started.md
+    - name: Začínáme s pomocí ukázky
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+- name: Postup
+  items:
+    - name: Správa kapacity
+      items:
+        - name: Vytvoření kapacity
+          href: create-capacity.md
+        - name: Škálování kapacity
+          href: scale-capacity.md
+        - name: Pozastavení a spuštění kapacity
+          href: pause-start.md
+    - name: Registrace aplikace Azure AD
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/'
+    - name: Vložení obsahu Power BI
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/'
+    - name: Migrace
+      items:
+        - name: Postup migrace z kolekcí pracovních prostorů Power BI
+          href: migrate-from-power-bi-workspace-collections.md
+        - name: Nástroj pro migraci
+          href: migrate-tool.md
+        - name: Fragmenty kódu pro migraci
+          href: migrate-code-snippets.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódů
+      href: 'https://github.com/Microsoft/PowerBI-Developer-Samples'
+    - name: Ukázkový názorný postup
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+    - name: Vložená ukázka JavaScriptu
+      href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
+- name: Referenční informace
+  items:
+    - name: Rozhraní API
+      items:
+        - name: Rozhraní REST API pro správu prostředků Azure
+          href: 'https://docs.microsoft.com/rest/api/power-bi-embedded/'
+        - name: Rozhraní REST API pro Power BI
+          href: 'https://msdn.microsoft.com/library/mt147898.aspx'
+- name: Zdroje a prostředky
+  items:
+    - name: Komunita Power BI
+      href: 'http://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: Stažení sady .NET SDK
+      href: 'https://www.nuget.org/packages/Microsoft.PowerBI.Api/'
+    - name: Stažení sady JavaScript SDK
+      href: 'https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Úložiště GitHub
+      items:
+        - name: .NET pro Power BI
+          href: 'https://github.com/Microsoft/PowerBI-CSharp'
+        - name: JavaScript pro Power BI
+          href: 'https://github.com/Microsoft/PowerBI-JavaScript'

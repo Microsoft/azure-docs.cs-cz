@@ -1,5 +1,7 @@
 - name: Dokumentace ke službě Data Factory V2
   href: index.yml
+- name: Přechod k dokumentaci verze 1
+  href: v1/data-factory-introduction.md
 - name: Přehled
   items:
     - name: Úvodní informace k Data Factory
@@ -374,6 +376,8 @@
       items:
         - name: Připojení prostředí Azure-SSIS Integration Runtime k virtuální síti
           href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Povolení ověřování Azure AD pro Azure-SSIS Integration Runtime
+          href: enable-aad-authentication-azure-ssis-ir.md
         - name: Konfigurace vysokého výkonu pro Azure-SSIS Integration Runtime
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: Zřízení Enterprise Edition pro prostředí Azure-SSIS Integration Runtime
@@ -382,7 +386,7 @@
           href: how-to-configure-azure-ssis-ir-custom-setup.md
         - name: Nasazení licencovaných komponent pro Azure-SSIS Integration Runtime
           href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: Spouštění balíčků služby SSIS s aktivitami SSIS
+        - name: Spouštění balíčků služby SSIS s aktivitami spuštění balíčku SSIS
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Spouštění balíčků služby SSIS s aktivitami uložených procedur
           href: how-to-invoke-ssis-package-stored-procedure-activity.md

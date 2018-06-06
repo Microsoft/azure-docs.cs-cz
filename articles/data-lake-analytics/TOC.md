@@ -22,7 +22,9 @@
 #### [Python](data-lake-analytics-manage-use-python-sdk.md)
 #### [Java](data-lake-analytics-manage-use-java-sdk.md)
 #### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [Přidání uživatelů](data-lake-analytics-add-users.md)
 ### [Zásady](data-lake-analytics-policies.md)
+### [Zabezpečené složky úloh](data-lake-analytics-secure.md)
 ### [Přístup k diagnostickým protokolům](data-lake-analytics-diagnostic-logs.md)
 ### [Úprava omezení kvót](data-lake-analytics-quota-limits.md)
 
@@ -38,6 +40,10 @@
 #### [Kognitivní rozšíření](data-lake-analytics-u-sql-cognitive.md)
 #### [Průvodce programovatelností](data-lake-analytics-u-sql-programmability-guide.md)
 
+### U-SQL SDK
+#### [Místní spuštění a ladění](data-lake-analytics-data-lake-tools-local-run.md)
+#### [Spuštění a testování](data-lake-analytics-u-sql-sdk.md) 
+
 ### Visual Studio
 #### [Instalace](data-lake-analytics-data-lake-tools-install.md)
 #### [Procházení a zobrazování úloh](data-lake-analytics-data-lake-tools-view-jobs.md)
@@ -46,6 +52,7 @@
 #### [Podrobnosti spouštění vrcholů](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 #### [Export databáze U-SQL](data-lake-analytics-data-lake-tools-export-database.md)
 #### [Analýza webových protokolů](data-lake-analytics-analyze-weblogs.md)
+#### [Vyřešení nerovnoměrné distribuce dat](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 #### [Monitorování úloh a odstraňování potíží](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 ### Visual Studio Code
@@ -64,7 +71,7 @@
 # Zdroje a prostředky
 ## [Blog služby Azure Data Lake](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [Váš názor na UserVoice](https://feedback.azure.com/forums/327234-data-lake)
+## [Vyžádání změn](https://feedback.azure.com/forums/327234-data-lake)
 ## [Fórum na webu MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Ceny](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

@@ -9,10 +9,11 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 064bda1b4201d30e32766b4d0e19e9950901152f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "30197478"
 ---
 > [!IMPORTANT] 
 > Od 1. března 2017 už v modelu nasazení Classic není možné vytvářet nové okruhy ExpressRoute.
