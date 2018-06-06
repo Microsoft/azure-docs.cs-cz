@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 424ea1eca637653c5e7cfed9dc4b970d5afd91ad
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713404"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Možnosti přihlášení s Azure AD Identity Protection
 S Azure Active Directory Identity Protection můžete:
@@ -27,9 +29,9 @@ S Azure Active Directory Identity Protection můžete:
 * vyžaduje, aby uživatel zaregistrovat pro službu Multi-Factor authentication
 * zpracování rizikové přihlášení a ohrožení zabezpečení uživatelů
 
-Odpověď systému na tyto problémy má dopad na možnosti přihlášení pro uživatele, protože právě přímo přihlášení tím, že poskytuje uživatelské jméno a heslo nebude už možné. Další kroky jsou požadovány pro uživatele bezpečně zpět do firmy.
+Odpověď systému na tyto problémy má dopad na možnosti přihlášení pro uživatele, protože přímo přihlášení tím, že poskytuje uživatelské jméno a heslo nebude už možné. Další kroky jsou požadovány pro uživatele bezpečně zpět do firmy.
 
-Toto téma poskytuje přehled možností přihlašování uživatele pro všechny případy, které se můžou vyskytnout.
+Tento článek poskytuje přehled možností přihlašování uživatele pro všechny případy, které se můžou vyskytnout.
 
 **Multi-Factor Authentication**
 
@@ -56,7 +58,7 @@ Správce může nastavit zásady, které vyžaduje, aby uživatelé nastavit sv�
 1. V prvním kroku uživatel obdrží oznámení o požadavku na nastavení účtu službu Multi-Factor authentication. 
    
     ![Náprava](./media/active-directory-identityprotection-flows/140.png "nápravy")
-2. Pokud chcete nastavit vícefaktorové ověřování, musíte vědět, jak chcete kontaktovat systém.
+2. Pro nastavení vícefaktorového ověřování, musíte vědět, jak chcete kontaktovat systém.
    
     ![Náprava](./media/active-directory-identityprotection-flows/141.png "nápravy")
 3. Odešle systému může být obtížné jste a potřebujete, aby odpovídal.
@@ -71,7 +73,7 @@ Jestliže správce konfiguroval zásady pro přihlášení rizika, ovlivnění u
 1. Uživatel je informován něco neobvyklého zjistilo o jejich přihlášení, jako je například přihlašujete z nového místa, zařízení nebo aplikace. 
    
     ![Náprava](./media/active-directory-identityprotection-flows/120.png "nápravy")
-2. Uživatel musí k prokázání své identity tím řešení bezpečnostní kontroly. Pokud je uživatel zaregistrován u služby Multi-Factor authentication potřebují k odezvě na zabezpečovací kód, abyste své telefonní číslo. Vzhledem k tomu, že toto je jenom rizikové přihlášení a ohrožení bezpečnosti účtu, uživatel nebude muset změnit heslo v tomto toku. 
+2. Uživatel musí k prokázání své identity tím řešení bezpečnostní kontroly. Pokud je uživatel zaregistrován u služby Multi-Factor authentication, které potřebují k zaokrouhlit dojít k jeho telefonní číslo bezpečnostní kód. Vzhledem k tomu, že je právě rizikové přihlašovací a ohrožení bezpečnosti účtu, uživatel nebude muset změnit heslo v tomto toku. 
    
     ![Náprava](./media/active-directory-identityprotection-flows/121.png "nápravy")
 
@@ -88,7 +90,7 @@ Když je nakonfigurován uživatelských zásad zabezpečení riziko, uživatele
 1. Uživatel je informován, že jejich zabezpečení účtu je ohrožena kvůli podezřelé aktivity nebo úniku přihlašovacích údajů.
    
     ![Náprava](./media/active-directory-identityprotection-flows/101.png "nápravy")
-2. Uživatel musí k prokázání své identity tím řešení bezpečnostní kontroly. Pokud je uživatel zaregistrován u služby Multi-Factor authentication může samoobslužné obnovení před ohrožením. Bude nutné k odezvě na zabezpečovací kód, abyste své telefonní číslo. 
+2. Uživatel musí k prokázání své identity tím řešení bezpečnostní kontroly. Pokud je uživatel zaregistrován u služby Multi-Factor authentication může samoobslužné obnovení před ohrožením. Bude nutné zaokrouhlí dojít k jeho telefonní číslo bezpečnostní kód. 
    
    ![Náprava](./media/active-directory-identityprotection-flows/110.png "nápravy")
 3. Nakonec uživatel bude muset změnit své heslo, protože někdo jiný měl přístup ke svému účtu. 

@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
-ms.author: billmath
-ms.openlocfilehash: 2ac28c278b9ac832f05cdb19a48ea576526104b3
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.date: 05/16/2018
+ms.author: rolyon
+ms.openlocfilehash: 4a61bb418083bafe9e00a76147ab9bfdcdb0b0ce
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713503"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu k hostované službě Azure AD přístup recenze
 
@@ -33,7 +34,8 @@ Také můžete snadno zajistíte, že hosta uživatelé mají odpovídající p�
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Kontroly přístupu jsou k dispozici v edici Premium P2 služby Azure AD, která je součástí řešení Microsoft Enterprise Mobility + Security, E5. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-whatis.md). Každý uživatel, který komunikuje s touto funkcí při vytváření kontroly, přístupu ke kontrole nebo použití kontroly, musí mít licenci.
+
+Kontroly přístupu jsou k dispozici v edici Premium P2 služby Azure AD, která je součástí řešení Microsoft Enterprise Mobility + Security, E5. Další informace najdete v článku [Edice služby Azure Active Directory](active-directory-editions.md). Každý uživatel, který komunikuje s touto funkcí, včetně akcí jako vytváření kontroly, vyplnění kontroly nebo potvrzení přístupu, musí mít licenci. 
 
 Pokud budete chtít požádat uživatele typu Host zkontrolovat svůj vlastní přístup, přečtěte si informace o licencování uživatele guest. Další informace najdete v tématu [licencování spolupráce Azure AD B2B](active-directory-b2b-licensing.md).
 

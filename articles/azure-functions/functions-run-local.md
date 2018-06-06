@@ -14,15 +14,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 523ef25fe0d3227d526acbdee2c7cf2660fc4f25
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1dd5d0f11a063d013142948c7c87a98aefe02749
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725220"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kód a testovat místně na Azure Functions
 
-Když [portál Azure] poskytuje úplnou sadu nástrojů pro vývoj a testování Azure Functions se celá řada vývojářů raději místní vývojové prostředí. Azure Functions umožňuje snadno použít editor Oblíbené kódu a místní vývojové nástroje pro vývoj a testování funkcí v místním počítači. Funkce můžete aktivovat pro události v Azure a při ladění vašich C# a funkce jazyka JavaScript v místním počítači. 
+Když [Azure Portal] poskytuje úplnou sadu nástrojů pro vývoj a testování Azure Functions se celá řada vývojářů raději místní vývojové prostředí. Azure Functions umožňuje snadno použít editor Oblíbené kódu a místní vývojové nástroje pro vývoj a testování funkcí v místním počítači. Funkce můžete aktivovat pro události v Azure a při ladění vašich C# a funkce jazyka JavaScript v místním počítači. 
 
 Pokud jste Azure Functions Visual Studio C# vývojář, také [se integruje s Visual Studio 2017](functions-develop-vs.md).
 
@@ -31,7 +32,7 @@ Pokud jste Azure Functions Visual Studio C# vývojář, také [se integruje s Vi
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
-[Nástroje Azure základní funkce] je místní verzi modulu runtime Azure Functions, který můžete spustit na místním vývojovém počítači. Není emulátor ani simulátor. Je stejný modul runtime, který zajišťuje funkce v Azure. Existují dvě verze nástroje základní funkce Azure:
+[Azure Functions základní nástroje] je místní verzi modulu runtime Azure Functions, který můžete spustit na místním vývojovém počítači. Není emulátor ani simulátor. Je stejný modul runtime, který zajišťuje funkce v Azure. Existují dvě verze nástroje základní funkce Azure:
 
 + [Verze 1.x](#v1): podporuje verze 1.x modulu runtime. Tuto verzi je podporována pouze na počítačích s Windows a je nainstalovat z [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm).
 + [Verze 2.x](#v2): podporuje verze 2.x modulu runtime. Tato verze podporuje [Windows](#windows-npm), [systému macOS](#brew), a [Linux](#linux). Používá správce balíčku specifické pro platformu nebo npm pro instalaci. 
@@ -95,14 +96,14 @@ Následující postup použijte [byt č](https://wiki.debian.org/Apt) při insta
   sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
   ```
 
-2.  Nastavte balíček kanálu, nahraďte `<version>` v následujícím příkazu s názvem příslušnou verzi z tabulky:
+2.  Ověřte, že jeden z příslušné verze Ubuntu server je spuštěna v následující tabulce. Chcete-li přidat výstižný zdroje, spusťte:
 
   ```bash
-  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-<version>-prod <version> main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
   sudo apt-get update
   ```
 
-  | Distribuce systému Linux | `<version>` |
+  | Distribuce systému Linux | Verze |
   | --------------- | ----------- |
   | Ubuntu 17.10    | `artful`    |
   | Ubuntu č. 17.04    | `zesty`     |
@@ -151,7 +152,7 @@ Chcete-li vytvořit projekt bez místní úložiště Git, použijte `--no-sourc
 
 ## <a name="register-extensions"></a>Registrace rozšíření
 
-Ve verzi 2.x modulu runtime Azure Functions, je nutné explicitně zaregistrovat [vazby rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) používaných ve vaší aplikaci funkce. 
+Ve verzi 2.x modulu runtime Azure Functions, budete muset explicitně zaregistrovat rozšíření vazby (typy vazeb), které používáte ve vaší aplikaci funkce.
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
@@ -275,7 +276,7 @@ Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
-### <a name="debug-in-vs-code-or-visual-studio"></a>Ladění ve VS Code nebo Visual Studio
+### <a name="vs-debug"></a>Ladění ve VS Code nebo Visual Studio
 
 Chcete-li připojit ladicí program, předat `--debug` argument. Chcete-li ladit funkce jazyka JavaScript, použijte Visual Studio Code. Pro C# funkce použijte sadu Visual Studio.
 
@@ -388,7 +389,7 @@ Můžete použít následující možnosti:
 
 Tento příkaz publikuje do stávající funkce aplikace v Azure. Dojde k chybě při `<FunctionAppName>` neexistuje ve vašem předplatném. Další postupy k vytvoření aplikace pro funkce z příkazového řádku nebo okno terminálu pomocí rozhraní příkazového řádku Azure najdete v tématu [vytvoření funkce aplikace bez serveru provedení](./scripts/functions-cli-create-serverless.md).
 
-`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory místně, `publish` příkaz nedojde k jejich odstranění z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [portál Azure].  
+`publish` Příkaz odešle obsah adresáře projektu funkce. Pokud odstraníte soubory místně, `publish` příkaz nedojde k jejich odstranění z Azure. Můžete odstranit soubory v Azure pomocí [Kudu nástroj](functions-how-to-use-azure-function-app-settings.md#kudu) v [Azure Portal].  
 
 >[!IMPORTANT]  
 > Když vytvoříte aplikaci funkce v Azure, používá verzi 1.x modulu runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použitelná verze 2.x modulu runtime přidat nastavení aplikace `FUNCTIONS_EXTENSION_VERSION=beta`.  
@@ -406,6 +407,6 @@ Do souboru žádost chyb nebo funkce [otevřete potíže Githubu](https://github
 
 <!-- LINKS -->
 
-[Nástroje Azure základní funkce]: https://www.npmjs.com/package/azure-functions-core-tools
-[portál Azure]: https://portal.azure.com 
+[Azure Functions základní nástroje]: https://www.npmjs.com/package/azure-functions-core-tools
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

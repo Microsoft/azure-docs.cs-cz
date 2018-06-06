@@ -1,12 +1,12 @@
 ---
-title: "Průběžné nasazování pro Azure Functions | Microsoft Docs"
-description: "Průběžné nasazování vlastnosti služby Azure App Service použijte k publikování Azure Functions."
+title: Průběžné nasazování pro Azure Functions | Microsoft Docs
+description: Průběžné nasazování vlastnosti služby Azure App Service použijte k publikování Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: functions
 ms.devlang: multiple
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 35a0b0faa61cf4b42ba1d8696c85f5724ff73f23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735699"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 Azure Functions usnadňuje nasazení funkce aplikace pomocí průběžnou integraci služby App Service. Funkce se integruje s BitBucket, Dropbox, Githubu a Visual Studio Team Services (VSTS). To umožňuje pracovní kde kód funkce aktualizace provedené pomocí jedné z těchto integrovaných služeb aktivační událost nasazení do Azure. Pokud začínáte na Azure Functions, začněte s [přehled Azure Functions](functions-overview.md).
@@ -41,6 +42,8 @@ Nasazení jsou nakonfigurované na základě aplikací na funkce. Po povolení p
 Váš zdroj nasazení nakonfigurované a váš kód funkce musí mít v zdroj nasazení před nastavit průběžné nasazování. V nasazení aplikace danou funkci jednotlivé funkce žije v podadresáři s názvem, kde název adresáře je název funkce.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
+
+Abyste mohli nasadit ze služby VSTS, je nutné nejprve propojit svůj účet služby VSTS s předplatným Azure. Další informace najdete v tématu [nastavit fakturace pro váš účet služby VSTS](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Nastavení nepřetržitého nasazování
 Pomocí tohoto postupu ke konfiguraci průběžné nasazování pro existující aplikaci funkce. Tyto kroky ukazují integrace s úložišti GitHub, ale podobným způsobem platí pro Visual Studio Team Services nebo jiné služby pro nasazení.
@@ -75,7 +78,7 @@ Postup konfigurace a práce s pracovní nasazení se obecně vypadat třeba takt
 
 1. Vaše předplatné, jeden pro kód produkční a jeden pro pracovní vytvořte dvě funkce aplikace. 
 
-2. Pokud jste ještě nemáte, vytvořte zdroj nasazení. Tento příklad používá [Githubu].
+2. Pokud jste ještě nemáte, vytvořte zdroj nasazení. Tento příklad používá [GitHub].
 
 3. Pro vaše produkční funkce aplikace podle předchozích dokončení kroků **nastavit průběžné nasazování** a nastavit nasazení větve do hlavní větve ve vašem úložišti GitHub.
    
@@ -146,9 +149,9 @@ Než si můžete stáhnout soubory z funkce aplikace pomocí protokol FTP nebo m
    
     Pokud požadovaný, zadejte vaše [nakonfigurovat přihlašovací údaje nasazení](#credentials).  
 
-[Githubu]: https://github.com/
+[GitHub]: https://github.com/
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
