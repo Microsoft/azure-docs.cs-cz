@@ -16,7 +16,7 @@ ms.date: 12/15/2015
 ms.author: Ning
 ms.openlocfilehash: f1415e2cfbe48b287db5851bb8ebef1ff9251280
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
 ms.locfileid: "32193022"
@@ -89,7 +89,7 @@ Krok 1. Vytvořte soubor s názvem PrivateConfig.json s následujícím obsahem:
         "storageAccountKey" : "the key of the account"
     }
 
-Krok 2. Spustit \* *vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálních počítačů azure.* --PrivateConfig.json** privátní config-path.
+Krok 2. Spustit *vm_name LinuxDiagnostic Microsoft.OSTCExtensions 2 nastavit rozšíření virtuálních počítačů azure.* \* --PrivateConfig.json privátní config-path.
 
 ### <a name="scenario-2-customize-the-performance-monitor-metrics"></a>Scénář 2. Přizpůsobení metriky sledování výkonu
 
