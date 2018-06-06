@@ -1,28 +1,29 @@
 ---
-title: "Testování a ladění úloh U-SQL pomocí místní spuštění a sadu SDK Azure Data Lake U-SQL | Microsoft Docs"
-description: "Další informace o použití nástroje Azure Data Lake pro Visual Studio a sadu SDK Azure Data Lake U-SQL pro testování a ladění úloh U-SQL na místní pracovní stanici."
+title: Spusťte místně pomocí sady SDK Azure Data Lake U-SQL skriptů U-SQL
+description: Tento článek popisuje postup použití nástroje Azure Data Lake pro Visual Studio pro testování a ladění úloh U-SQL na místní pracovní stanici.
 services: data-lake-analytics
-documentationcenter: 
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/15/2016
+author: mumian
 ms.author: yanacai
-ms.openlocfilehash: 771a96df5cc66bac46e7144785be8cc072b57b31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
+ms.topic: conceptual
+ms.date: 11/15/2016
+ms.openlocfilehash: 322278f00f49f718b1ba560e9d21d0af0be49b18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735999"
 ---
-# <a name="test-and-debug-u-sql-jobs-by-using-local-run-and-the-azure-data-lake-u-sql-sdk"></a>Testování a ladění úloh U-SQL pomocí místního spuštění a sadu SDK Azure Data Lake U-SQL
+# <a name="runing-u-sql-scripts-locally"></a>Spuštěním skriptů U-SQL místně
 
-Nástroje Azure Data Lake pro Visual Studio a sadu Azure Data Lake U-SQL SDK můžete použít k místnímu spouštění úloh U-SQL na pracovní stanici, stejně jako byste je spouštěli ve službě Azure Data Lake. Tyto dvě místně spouštěné funkce vám šetří čas při testování a ladění úloh U-SQL.
+Namísto spuštění U-SQL v Azure, můžete spustit U-SQL na vlastní pole. Tomu se říká "místní spuštění" nebo "místní spuštění". 
+
+Místní spuštění U-SQL se zohledněním v těchto nástrojů:
+* Nástroje služby Azure Data Lake pro Visual Studio
+* Azure Data Lake U-SQL SDK
 
 ## <a name="understand-the-data-root-folder-and-the-file-path"></a>Pochopení dat kořenové složky a cesta k souboru
 
@@ -37,9 +38,9 @@ Můžete je relativní cesta a místní cestou absolutní v skriptů U-SQL. Rela
 
 |Relativní cesta|Absolutní cesty|
 |-------------|-------------|
-|/ABC/DEF/Input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
-|ABC/DEF/Input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
-|D:/ABC/DEF/Input.csv |D:\abc\def\input.csv|
+|/abc/def/input.csv |C:\LocalRunDataRoot\abc\def\input.csv|
+|abc/def/input.csv  |C:\LocalRunDataRoot\abc\def\input.csv|
+|D:/abc/def/input.csv |D:\abc\def\input.csv|
 
 ## <a name="use-local-run-from-visual-studio"></a>Použití místního spuštění ze sady Visual Studio
 
@@ -104,7 +105,7 @@ Kromě spuštění skriptů U-SQL místně pomocí sady Visual Studio, můžete 
 Další informace o [SDK Azure Data Lake U-SQL](data-lake-analytics-u-sql-sdk.md).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pokud chcete zobrazit komplexnější dotaz, najdete v části [analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
 * Chcete-li zobrazit podrobnosti o úlohách, najdete v části [použití úlohy prohlížeče a zobrazení úloh pro úlohy Azure Data Lake Analytics](data-lake-analytics-data-lake-tools-view-jobs.md).

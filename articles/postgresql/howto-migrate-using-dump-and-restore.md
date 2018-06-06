@@ -1,6 +1,6 @@
 ---
-title: "Výpis stavu a obnovení v Azure databázi pro PostgreSQL"
-description: "Popisuje, jak extrahovat databázi PostgreSQL do souboru výpisu a obnovení ze souboru vytvořené pg_dump v databázi Azure pro PostgreSQL."
+title: Výpis stavu a obnovení v Azure databázi pro PostgreSQL
+description: Popisuje, jak extrahovat databázi PostgreSQL do souboru výpisu a obnovení ze souboru vytvořené pg_dump v databázi Azure pro PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: f74c60cb99ee5bae1af8e000ebbd21b41600638d
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 06/01/2018
+ms.openlocfilehash: 586df8d72dc05104bbf589eabcf3bd2245c268c8
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737244"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>PostgreSQL databázi migrujte pomocí výpisu a obnovení
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru výpisu a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) ze souboru archivu vytvořené pg_dump obnovit databázi PostgreSQL.
@@ -35,6 +36,10 @@ Například, pokud máte místní server a databáze názvem **testdb** v ní
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```
 
+> [!IMPORTANT]
+> Zkopírujte záložní soubory do Azure blob nebo úložiště a provést obnovení z tohoto umístění, které by měly být mnohem rychlejší než provedením obnovení přes Internet.
+> 
+
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Obnovení dat do cílové databáze Azure pro PostrgeSQL pomocí pg_restore
 Po vytvoření cílové databázi, můžete použít příkaz pg_restore a -d, parametr dbname – Chcete-li obnovit data do cílové databáze ze souboru s výpisem stavu.
 ```bash
@@ -48,4 +53,5 @@ pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=
 ```
 
 ## <a name="next-steps"></a>Další postup
-- K migraci databázi PostgreSQL pomocí exportu a importu, najdete v části [PostgreSQL databázi migrujte pomocí exportu a importu](howto-migrate-using-export-and-import.md)
+- K migraci databázi PostgreSQL pomocí exportu a importu, najdete v části [PostgreSQL databázi migrujte pomocí exportu a importu](howto-migrate-using-export-and-import.md).
+- Další informace o migraci databáze pro databázi Azure PostgreSQL, najdete v článku [příručka k migraci databáze](http://aka.ms/datamigration).

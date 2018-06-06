@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: 77cc2f80588a104880e8149daccc6debd1ec43bc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c3cc8857373238079fee06c61faec962d7e3a6b2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796415"
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad Azure zásobníku
 Tento článek popisuje údržby zásady pro Azure zásobníku integrované systémy a co je třeba udělat, aby byl váš systém v podporovaném stavu. 
@@ -37,10 +38,9 @@ Existují dva typy balíčky aktualizací pro integrované systémy:
 Microsoft očekává, že verze balíčky aktualizací softwaru v měsíčním cadence. Je však možné, že více nebo žádné aktualizace verze za měsíc. Výrobce OEM výrobci hardwaru verze jejich aktualizace na podle potřeby. 
 
 Vyhledat dokumentaci pro plánování a správě aktualizací a jak určit vaší aktuální verzí v [spravovat aktualizace přehled](azure-stack-updates.md). Informace o konkrétní aktualizaci, včetně toho, jak stáhnout, naleznete v poznámkách k verzi, aktualizovat: 
+- [Azure aktualizace 1805 zásobníku](azure-stack-update-1805.md)
+- [Azure aktualizace 1804 zásobníku](azure-stack-update-1804.md)
 - [Azure aktualizace 1803 zásobníku](azure-stack-update-1803.md)
-- [Azure aktualizace 1802 zásobníku](azure-stack-update-1802.md)
-- [Azure aktualizace 1712 zásobníku](azure-stack-update-1712.md)
-
 
 
 ## <a name="hotfixes"></a>Opravy hotfix

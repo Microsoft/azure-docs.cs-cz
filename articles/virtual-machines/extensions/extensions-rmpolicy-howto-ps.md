@@ -14,16 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: danis;cynthn
 ms.openlocfilehash: da5b0db997ba1aa0e998f6fe2645e955b490951d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "33942680"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Pomocí zásad Azure můžete omezit rozšíření Instalace na virtuálních počítačích Windows
 
 Pokud chcete, aby se zabránilo použití nebo instalace určité rozšíření na virtuální počítače Windows, můžete vytvořit zásady služby Azure pomocí prostředí PowerShell omezit rozšíření pro virtuální počítače ve skupině prostředků. 
 
-Tento kurz používá prostředí Azure PowerShell v rámci cloudové prostředí, které se průběžně aktualizují na nejnovější verzi. Pokud si zvolíte instalaci a použití prostředí PowerShell místně, tento kurz vyžaduje prostředí Azure PowerShell verze modulu 3,6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Tento kurz používá prostředí Azure PowerShell v rámci cloudové prostředí, které se průběžně aktualizují na nejnovější verzi. Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte pro tento kurz použít modul Azure PowerShell verze 3.6 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 
 ## <a name="create-a-rules-file"></a>Vytvoření souboru pravidel
 

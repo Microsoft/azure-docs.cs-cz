@@ -3,16 +3,17 @@ title: Klient knihovny potřebné pro připojení k Azure Analysis Services | Mi
 description: Popisuje klientské knihovny potřebné pro klientské aplikace a nástroje pro připojení služby Azure Analysis Services
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 05/31/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6c92bdd2461a0f1147f15b5c1134c189c55a37c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ad330c5f17b6e151918511916b0aef89bef3a6f7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699848"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení k Azure Analysis Services
 
@@ -22,10 +23,10 @@ Knihovny klienta jsou nezbytné pro klientské aplikace a nástroje pro připoje
 
 |Ke stažení  |Verze produktu  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.1.395      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.1.395      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.0.4     |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.0.4     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.1.492      |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.1.492      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.1.0.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.1.0.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO a ADOMD (balíčky NuGet)
 
@@ -33,8 +34,8 @@ Analysis Services Management Objects (AMO) a ADOMD klientské knihovny jsou k di
 
 |Balíček  | Verze produktu  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.0.2.0      |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.0.2.0      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.1.0.0      |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.1.0.0      |
 
 Sestavení balíčku NuGet AssemblyVersion podle sémantické verze: hlavní. MENŠÍ. OPRAVA. Odkazy NuGet načíst očekávaná verze i v případě, že je různé verze v mezipaměti GAC (pocházející z instalace Instalační služby MSI). Oprava se zvýší pro jednotlivé verze. Verze AMO a ADOMD jsou uchovány v synchronizaci.
 
@@ -72,7 +73,7 @@ Klientské knihovny pro připojení klientů se liší od zprostředkovatelů da
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  Přejděte do: C:\Program Files\Microsoft Analysis Services\AS OLEDB\. Pokud máte více než jednu složku a zvolte vyšší číslo.
+1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku a zvolte vyšší číslo.
   
 2.  Klikněte pravým tlačítkem na **msolap.dll** > **vlastnosti** > **podrobnosti**. Pokud je název souboru msolap140.dll, je starší než nejnovější verzi a je potřeba upgradovat.
     

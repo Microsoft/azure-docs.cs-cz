@@ -9,18 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2018
+ms.date: 05/26/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: ddfa3d70e2ce901a59476c5c0784d35999731ed6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724356"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Podmíněný přístup v Azure Active Directory
 
@@ -81,32 +83,8 @@ Pomocí podmíněného přístupu Azure AD, můžete určit, jak Autorizovaní u
 
 Jednou z výhod použití o přístupu na základě zásad k ochraně přístup k vaší cloudové aplikace je, že můžete spustit konceptu požadavky zásad pro vaše prostředí pomocí strukturu uvedených v tomto článku bez obav o technickou implementaci. 
 
-## <a name="what-you-need-to-know"></a>Co potřebujete vědět
 
-### <a name="general-requirements-for-using-conditional-access"></a>Obecné požadavky pro použití podmíněného přístupu
-
-Azure AD podmíněného přístupu můžete použít k ochraně aplikací cloudu při pokusu o ověření pochází z:
-
-- Webový prohlížeč
-
-- Klientská aplikace používající moderní ověřování
-
-- Exchange ActiveSync
-
-Další informace najdete v tématu [klientské aplikace](active-directory-conditional-access-conditions.md#client-apps).
-
-Některé [cloudových aplikací](active-directory-conditional-access-conditions.md#cloud-apps) také podporují starší verze ověřovací protokoly. To platí, například pro SharePoint Online a Exchange Online. Když klientské aplikace můžete použít starší verze ověřovací protokol pro přístup k cloudové aplikace, Azure AD nelze vynutit zásady podmíněného přístupu na tento pokus o přístup. Abyste zabránili obcházení vynucení zásad klientskou aplikaci, byste měli zkontrolovat, zda je možné pouze povolit moderní ověřování na ohroženým cloudových aplikací.
-
-Příklady pro klienta, které aplikace podmíněného přístupu se nevztahuje na jsou:
-
-- Office 2010 a starší
-
-- Office 2013, když není povolené moderní ověřování
-
-Další informace najdete v tématu [nastavení služby SharePoint Online a Exchange Online pro Azure Active Directory podmíněného přístupu](active-directory-conditional-access-no-modern-authentication.md).
-
-
-### <a name="license-requirements-for-using-conditional-access"></a>Licenční požadavky pro použití podmíněného přístupu
+## <a name="license-requirements-for-using-conditional-access"></a>Licenční požadavky pro použití podmíněného přístupu
 
 Použití podmíněného přístupu vyžaduje licenci Azure AD Premium. Pravé licencí pro vaše požadavky, najdete v tématu [porovnávání všeobecně dostupná funkce edice Free, Basic a Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 

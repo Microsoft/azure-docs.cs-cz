@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 9228b1e80c8c46780a24d33e13fcedbd8da63ac3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7e0fb3cee8d4ec72e1ec44f7444264fabb1dd202
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724726"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost mřížky pro Azure Functions
 
@@ -33,17 +34,17 @@ Pokud dáváte přednost, můžete použít aktivační událost INSTEAD HTTP ke
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Je součástí aktivační událost mřížky [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíček NuGet. Zdrojový kód pro balíček je v [azure funkce eventgrid rozšíření](https://github.com/Azure/azure-functions-eventgrid-extension) úložiště GitHub.
-
-<!--
-If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
--->
+Je součástí aktivační událost mřížky [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíček NuGet verze 1.x. Zdrojový kód pro balíček je v [azure funkce eventgrid rozšíření](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Je součástí aktivační událost mřížky [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure funkce eventgrid rozšíření](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) úložiště GitHub.
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -57,12 +58,12 @@ Příklad aktivace protokolu HTTP, naleznete v části [použití triggeru proto
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) která sváže `JObject`:
+Následující příklad ukazuje, funkce 1.x [C# funkce](functions-dotnet-class-library.md) která sváže `JObject`:
 
 ```cs
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -79,30 +80,26 @@ namespace Company.Function
 }
 ```
 
-<!--
-The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+Následující příklad ukazuje, funkce 2.x [C# funkce](functions-dotnet-class-library.md) která sváže `EventGridEvent`:
 
 ```cs
+using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
 
 namespace Company.Function
 {
     public static class EventGridTriggerCSharp
     {
         [FunctionName("EventGridTest")]
-            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        public static void EventGridTest([EventGridTrigger]EventGridEvent eventGridEvent, TraceWriter log)
         {
-            log.Info("C# Event Grid function processed a request.");
-            log.Info($"Subject: {eventGridEvent.Subject}");
-            log.Info($"Time: {eventGridEvent.EventTime}");
-            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+            log.Info(eventGridEvent.Data.ToString());
         }
     }
 }
 ```
--->
 
 Další informace najdete v tématu [balíčky](#packages), [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
@@ -125,7 +122,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Zde je kód C# skript s vazbou na `JObject`:
+Zde je kód skriptu 1.x C# funkce, která se sváže s `JObject`:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -139,26 +136,17 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-<!--
-Here's C# script code that binds to `EventGridEvent`:
+Zde je kód skriptu 2.x C# funkce, která se sváže s `EventGridEvent`:
 
 ```csharp
-#r "Newtonsoft.Json"
-#r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
 #r "Microsoft.Azure.EventGrid"
-
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-Using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    log.Info(eventGridEvent.Data.ToString());
 }
 ```
--->
 
 Další informace najdete v tématu [balíčky](#packages), [atributy](#attributes), [konfigurace](#configuration), a [využití](#usage).
 
@@ -221,11 +209,17 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="usage"></a>Využití
 
-Pro C# a F # funkce můžete použít následující typy parametrů pro aktivační událost mřížky událostí:
+Pro funkce C# a F # v Azure funguje 1.x, můžete použít následující typy parametrů pro aktivační událost mřížky událostí:
 
 * `JObject`
 * `string`
-* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`-Definuje vlastnosti pro pole, které jsou společné pro všechny typy událostí. **Tento typ je zastaralý**, ale jeho náhrada není dosud publikován na NuGet.
+
+Pro funkce C# a F # v Azure Functions 2.x, máte také možnost použít následující typ parametru pro aktivační událost mřížky událostí:
+
+* `Microsoft.Azure.EventGrid.Models.EventGridEvent`-Definuje vlastnosti pro pole, které jsou společné pro všechny typy událostí.
+
+> [!NOTE]
+> V funkce v1, pokud se pokusíte vytvořit vazbu na `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`, kompilátor se zobrazí zpráva "zastaralé" a vám, abyste používat `Microsoft.Azure.EventGrid.Models.EventGridEvent` místo. Pro použití novější typ, odkázat [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet a balíček plnému určení `EventGridEvent` název typu pomocí prefixu její `Microsoft.Azure.EventGrid.Models`. Informace o tom, jak odkazovat na balíčky NuGet ve skriptu funkce jazyka C# najdete v tématu [balíčky pomocí NuGet](functions-reference-csharp.md#using-nuget-packages)
 
 Pro funkce jazyka JavaScript, parametr s názvem podle *function.json* `name` vlastnost obsahuje odkaz na objekt události.
 

@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 97cdc809a00078ee86a40fd4567ab2d3357ed3bd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726427"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Vytvářet a spravovat účty pro integraci B2B řešení s logic apps
 
@@ -57,11 +58,11 @@ Přihlaste se k webu <a href="https://portal.azure.com" target="_blank">Azure Po
    | Předplatné | Ano | <*Název předplatného Azure*> | Název předplatného Azure k použití | 
    | Skupina prostředků | Ano | Test integrace účet rg | Název [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) sloužící k organizování související prostředky. V tomto příkladu vytvořte novou skupinu prostředků se zadaným názvem. | 
    | Cenová úroveň | Ano | Free | Cenovou úroveň, kterou chcete použít. V tomto příkladu vyberte **volné**, ale další informace najdete v tématu [Logic Apps omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md) a [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Umístění | Ano | Západní USA | Oblast kam se mají ukládat informace o integraci účtu. Buď vyberte stejné umístění jako svou aplikaci logiky, nebo vytvoření aplikace logiky ve stejném umístění jako účet integrace. V tomto příkladu | 
+   | Umístění | Ano | Západní USA | Oblast kam se mají ukládat informace o integraci účtu. Buď vyberte stejné umístění jako svou aplikaci logiky, nebo vytvoření aplikace logiky ve stejném umístění jako účet integrace. | 
    | Log Analytics | Ne | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. | 
    ||||| 
 
-4. Až budete připraveni, vyberte **připnout na řídicí panel**a zvolte **vytvořit**.
+4. Až to budete mít, vyberte **Připnout na řídicí panel** a zvolte **Vytvořit**.
 
    Po Azure nasadí do vybraného umístění, což obvykle ukončí během jedné minuty, váš účet integrace Azure otevře účtu integrace.
 

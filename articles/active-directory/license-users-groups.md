@@ -1,13 +1,14 @@
 ---
-title: "Licence uživatelům v Azure Active Directory | Microsoft Docs"
-description: "Naučte se licence vy a vaši uživatelé v Azure Active Directory."
+title: Licence uživatelům v Azure Active Directory | Microsoft Docs
+description: Naučte se licence vy a vaši uživatelé v Azure Active Directory.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
+ms.component: fundamentals
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeffgilb
 custom: it-pro
-ms.openlocfilehash: bc210b83a9eeb947a15b60548e43096bd9e11c45
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7dc71b33f542cf49d8a0abdb16e6e2f21e5dc2a0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713741"
 ---
 # <a name="quickstart-license-users-in-azure-active-directory"></a>Rychlý úvod: Licence uživatelům v Azure Active Directory
 Azure AD na základě licenční služby pracovní aktivací předplatné služby Azure Active Directory (Azure AD) ve vašem klientu Azure. Po předplatné je aktivní, jsou možnosti služby spravují správci nástroje Azure AD a používá licencovaní uživatelé. Při nákupu Enterprise Mobility + Security, Azure AD Premium nebo Azure AD Basic vašeho klienta je aktualizován předplatného, včetně jeho platnosti a předplacenou licence. Informace o vašem předplatném, včetně počtu licencí, přiřazené nebo k dispozici, je k dispozici prostřednictvím portálu Azure v části **Azure Active Directory** otevřením **licence** dlaždici. **Licence** okno je také nejlepší místo k spravovat vaše přiřazení licence.
@@ -64,7 +66,7 @@ Není nijak zpoplatněn pozvat B2B uživatele a přiřadit je k aplikaci ve slu�
 
 Není to nutné, ale pokud chcete poskytnout přístup k placené funkce Azure AD, musí mít licenci tyto uživatele typu Host B2B s příslušným licence Azure AD. Klient služby pozváním s placenou licenci Azure AD můžete přiřadit spolupráce B2B uživatelská práva dalším uživatelům pět hosta pozvánku, abyste klienta. Scénáře a informace najdete v tématu [spolupráce B2B licencování pokyny](active-directory-b2b-licensing.md).
 
-## <a name="view-assigned-licenses"></a>Zobrazení přiřazené licence
+## <a name="view-assigned-licenses"></a>Zobrazit přiřazené licence
 
 Souhrnné zobrazení přiřazené a k dispozici licence se zobrazí v části **Azure Active Directory** &gt; **licence** &gt; **všechny produkty**.
 
@@ -85,7 +87,7 @@ Chcete-li odebrat licenci, přejděte na uživatele nebo skupinu a otevřete **l
 Licence zdědí uživatele ze skupiny nelze odebrat přímo. Místo toho odeberte uživatele ze skupiny, ze kterého se jsou dědění licence.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tento rychlý start když jste se naučili přiřazení licencí uživatelům a skupinám v adresář Azure AD. 
 
 Na následující odkaz můžete použít ke konfiguraci přiřazení licencí předplatného v Azure AD na portálu Azure.

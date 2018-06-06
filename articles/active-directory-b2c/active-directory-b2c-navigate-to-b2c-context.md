@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Přepnutí na tenanta B2C | Dokumentace Microsoftu'
-description: Postup přepnutí do kontextu tenanta Active Directory B2C
+title: Přepnutí do klienta B2C v Azure Active Directory B2C | Microsoft Docs
+description: Jak přepnout do kontextu klienta služby Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 4/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 6469636ee05c2b28a24b1d559f0ee7569e784393
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 234dabe6da7f50e6102b79743f89e7bd81d55ed2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709984"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Přepnutí na tenanta Azure AD B2C
 

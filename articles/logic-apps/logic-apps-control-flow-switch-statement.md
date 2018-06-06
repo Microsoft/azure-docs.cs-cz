@@ -1,29 +1,25 @@
 ---
-title: "Přepínač příkazy – spustit kroky podle konkrétní hodnoty - Azure Logic Apps | Microsoft Docs"
-description: "Spustit různé kroky na základě hodnot z objektů, výrazy nebo tokenů v aplikacích logiky"
+title: Přidání příkazů přepínače do pracovních - Azure Logic Apps | Microsoft Docs
+description: Postup vytvoření příkazů přepínače, které řídí akce pracovního postupu podle konkrétní hodnoty v Azure Logic Apps
 services: logic-apps
-keywords: "Switch – příkaz"
-author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: e1f515189be8a5659af0f6c29b3fac0550abc9f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 2ffac49d14e05ff252d6cd0e90fc23d77ac0caff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726070"
 ---
-# <a name="switch-statements-run-different-steps-based-on-specific-values-in-logic-apps"></a>Přepínač příkazy: spustit různé kroky, které jsou založené na konkrétní hodnoty v aplikace logiky
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Vytváření příkazů přepínače, které spustit pracovní postup akce založené na konkrétní hodnoty v Azure Logic Apps
 
-Pokud chcete provést různé kroky na základě hodnot objektu, výraz nebo token, použijte *přepínač* příkaz. Tato struktura vyhodnotí objektu, výraz nebo token, vybere případu, který odpovídá výsledek a kroky pro pouze v takovém případě se spustí. Po spuštění příkazu switch pouze jeden případ by měl odpovídat výsledek.
+Chcete-li spustit konkrétní akce na základě hodnot objektů, výrazy nebo tokeny, přidejte *přepínač* příkaz. Tato struktura vyhodnotí objektu, výraz nebo token, vybere případu, který odpovídá výsledek a spustí konkrétní akce pouze pro tento případ. Po spuštění příkazu switch pouze jeden případ by měl odpovídat výsledek.
 
 Předpokládejme například, že chcete aplikaci logiky, která přebírá různé kroky, které jsou založené na možnost vybrána v e-mailu. V tomto příkladu kontroluje aplikaci logiky na web RSS pro nový obsah. Když nové položky se zobrazí v informačního kanálu RSS, aplikaci logiky odešle e-mailu schvalovatele. Podle toho, jestli schvalovatel vybere "Schválit" nebo "Odmítnout", aplikaci logiky postupuje jiný.
 

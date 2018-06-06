@@ -3,18 +3,19 @@ title: Koncové body služby virtuální sítě a pravidla pro Azure SQL Databas
 description: Podsíť označte jako koncový bod služby virtuální sítě. Potom koncový bod jako virtuální sítě se pravidlo seznamu řízení přístupu vaší databázi SQL Azure. Pak můžete SQL Database přijme komunikaci ze všech virtuálních počítačů a dalších uzlů v podsíti.
 services: sql-database
 ms.service: sql-database
-author: MightyPen
+author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d708d55c64306636910a85b5b490e25ecc794bd6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802591"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Použít koncové body služby virtuální sítě a pravidla pro databázi SQL Azure
 
@@ -186,7 +187,7 @@ Auditování objektů BLOB doručí protokolů auditu na účtu úložiště. Po
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány Firewall virtuální sítě na server bez vypnutí na koncové body služby virtuální sítě
 
-Dávno před tato funkce byla vylepšené, nebyly potřeba vám virtuální sítě služby koncových bodů na před za provozu pravidlo virtuální sítě může implementovat v bráně Firewall. Koncové body související s danou podsíť virtuální sítě do Azure SQL Database. Ale od ledna 2018, můžete nyní obejít tento požadavek, a to nastavením **IgnoreMissingServiceEndpoint** příznak.
+Dávno než tato funkce byla vylepšené, jste museli zapnout koncové body služby virtuální síť před za provozu pravidlo virtuální sítě může implementovat v bráně Firewall. Koncové body související s danou podsíť virtuální sítě do Azure SQL Database. Ale od ledna 2018, můžete nyní obejít tento požadavek, a to nastavením **IgnoreMissingServiceEndpoint** příznak.
 
 Jenom nastavení pravidla brány Firewall nepomůže zabezpečení serveru. Musíte také zapnout koncové body služby virtuální sítě pro zabezpečení vstoupily v platnost. Když zapnete koncové body služby, vyskytne VNet subnet až do dokončení přechod z vypnout na výpadek. To platí hlavně v kontextu velké virtuální sítě. Můžete použít **IgnoreMissingServiceEndpoint** příznak, který omezit nebo odstranit výpadek během přechodu.
 
@@ -318,7 +319,7 @@ Funkce pravidlo virtuální sítě pro databázi SQL Azure jsou k dispozici v po
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
-[expressroute-indexmd-744v]: ../expressroute/index.md
+[expressroute-indexmd-744v]: ../expressroute/index.yml
 
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 

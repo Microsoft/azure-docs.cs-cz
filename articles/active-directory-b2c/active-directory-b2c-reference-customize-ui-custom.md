@@ -1,20 +1,21 @@
 ---
 title: Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad | Microsoft Docs
-description: Další informace o vlastních zásad Azure Active Directory B2C
+description: Další informace o vlastních zásad Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 4fe9e90996c56773480eb147e5aef7475453fe43
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: 0980c79ccd9ebd170e747514bba712c498e1387c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711905"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -156,11 +157,11 @@ Následující tabulka popisuje sadu ID definice rozpoznáno identit Azure AD B2
 | ID obsahu definice | Popis |
 |-----------------------|-------------|
 | *api.error* | **Chybové stránky**. Tato stránka se zobrazí, když je došlo k výjimce nebo došlo k chybě. |
-| *api.idpselections* | **Stránka Výběr zprostředkovatele identity**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybírat během přihlášení. Tyto zprostředkovatele jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místní účty (podle e-mailové adresy nebo uživatelské jméno). |
+| *API.idpselections* | **Stránka Výběr zprostředkovatele identity**. Tato stránka obsahuje seznam zprostředkovatelů identity, které může uživatel vybírat během přihlášení. Tyto zprostředkovatele jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místní účty (podle e-mailové adresy nebo uživatelské jméno). |
 | *api.idpselections.signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam poskytovatelů identity, které může uživatel vybírat během registrace. Tyto zprostředkovatele jsou poskytovatelů identit enterprise, poskytovatelů identit sociálních třeba Facebook a Google + nebo místní účty (podle e-mailové adresy nebo uživatelské jméno). |
 | *api.localaccountpasswordreset* | **Zapomněli jste heslo**. Tato stránka obsahuje formulář, který má uživatel k vyplnění zahájíte jejich resetování hesla.  |
-| *api.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení, který má uživatel vyplnit při přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
-| *api.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář, který má uživatel vyplnit při registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat různé vstupní ovládací prvky jako vstupní textové pole, pole pro zadání hesla, přepínač, polí rozevíracího seznamu vyberte jeden a více vyberte zaškrtávací políčka. |
+| *API.localaccountsignin* | **Přihlašovací stránka místní účet**. Tato stránka obsahuje formulář přihlášení, který má uživatel vyplnit při přihlášení pomocí místního účtu, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat vstupní textové pole a pole pro zadání hesla. |
+| *API.localaccountsignup* | **Místní účet stránku**. Tato stránka obsahuje registrační formulář, který má uživatel vyplnit při registraci pro místní účet, který je založený na e-mailovou adresu nebo uživatelské jméno. Formulář může obsahovat různé vstupní ovládací prvky jako vstupní textové pole, pole pro zadání hesla, přepínač, polí rozevíracího seznamu vyberte jeden a více vyberte zaškrtávací políčka. |
 | *api.phonefactor* | **Stránka služby Multi-Factor authentication**. Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pomocí textové nebo hlasové) během registrace nebo přihlášení. |
 | *api.selfasserted* | **Stránku pro přihlášení sociálních účet**. Tato stránka obsahuje registrační formulář, který má uživatel vyplnit při registraci pomocí existujícího účtu od poskytovatele identity sociálních třeba Facebook nebo Google +. Tato stránka je podobný na předchozí stránku registrace sociálních účtu s výjimkou pole pro zadání hesla. |
 | *api.selfasserted.profileupdate* | **Stránka pro aktualizaci profilu**. Tato stránka obsahuje formulář, který uživatel může použít k aktualizaci svůj profil. Tato stránka je podobný na předchozí stránku registrace sociálních účtu s výjimkou pole pro zadání hesla. |

@@ -1,21 +1,21 @@
 ---
-title: Pomocí stáří prostřednictvím brány v Azure AD B2C | Microsoft Docs
+title: Pomocí stáří prostřednictvím brány v Azure Active Directory B2C | Microsoft Docs
 description: Další informace o tom, jak identifikovat nezletilých pomocí vaší aplikace.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: B2C
+ms.openlocfilehash: bbf885fbcca22e42b2ec0ad7ff4e7a70aa5f5828
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711966"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Pomocí stáří prostřednictvím brány v Azure AD B2C
 

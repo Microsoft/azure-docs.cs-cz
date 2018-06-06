@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f7603d56a56e45771fa170c05ec62a0725ba367a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715818"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -56,7 +57,7 @@ Analýza provozu je dostupná ve verzi preview. Funkce ve verzi preview nemají 
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="enable-network-watcher"></a>Povolit sledovací proces sítě 
+### <a name="enable-network-watcher"></a>Povolení Network Watcheru 
 
 Analýza provozu, musíte mít existující sledovací proces sítě, nebo [povolit sledovací proces sítě](network-watcher-create.md) v každé oblasti, ke které máte skupiny Nsg, které chcete analyzovat provoz pro. Analýza provozu se dá povolit pro skupiny Nsg hostovaná v některém z [podporované oblasti](#supported-regions).
 
@@ -70,7 +71,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
 
 ### <a name="select-a-network-security-group"></a>Vyberte skupinu zabezpečení sítě 
 
-Před povolením protokolování toku NSG, musí mít skupina zabezpečení sítě k toky pro přihlášení. Pokud nemáte skupinu zabezpečení sítě, najdete v části [vytvořit skupinu zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) k jeho vytvoření.
+Před povolením protokolování toku NSG, musí mít skupina zabezpečení sítě k toky pro přihlášení. Pokud nemáte skupinu zabezpečení sítě, najdete v části [vytvořit skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md#create-a-network-security-group) k jeho vytvoření.
 
 Na levé straně na portálu Azure, vyberte **monitorování**, pak **sledovací proces sítě**a potom vyberte **protokolů NSG toku**. Vyberte skupinu zabezpečení sítě, který chcete povolit protokol NSG toku, jak je znázorněno na následujícím obrázku:
 

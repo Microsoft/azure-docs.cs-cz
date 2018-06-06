@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
-ms.author: billmath
-ms.openlocfilehash: edf22ea0cfe60cb734b4339363d50af050466000
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: rolyon
+ms.openlocfilehash: f19be17cccc3d1bf0e94fe1c156afb546909d565
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699219"
 ---
 # <a name="pim-for-azure-resources"></a>Pro prostředky Azure PIM
 

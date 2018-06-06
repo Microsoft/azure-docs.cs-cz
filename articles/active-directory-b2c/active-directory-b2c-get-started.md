@@ -1,23 +1,23 @@
 ---
 title: Vytvoření klienta Azure Active Directory B2C | Microsoft Docs
-description: Téma o tom, jak vytvořit klienta Azure Active Directory B2C
+description: Téma o tom, jak vytvořit klienta služby Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: davidmu
-ms.openlocfilehash: 56e0ae7454e86911c894da88b5aa8ccc03a08af3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: d1031074885b0ca55d0b1647575354fcd0f49889
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712262"
 ---
-# <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Vytvoření klienta Azure Active Directory B2C na portálu Azure
+# <a name="create-an-azure-active-directory-b2c-tenant"></a>Vytvoření klienta Azure Active Directory B2C
 
 Tento rychlý start vám pomůže vytvořit klienta Microsoft Azure Active Directory (Azure AD) B2C za několik minut. Jakmile budete hotovi, máte klienta B2C (označované taky jako adresář) používat pro registraci aplikace B2C.
 
@@ -35,7 +35,7 @@ Funkce B2C nelze povolit v existující klienty. Budete muset vytvořit klienta 
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
-Blahopřejeme, jste vytvořili klienta služby Azure Active Directory B2C. Jste globální správce klienta. Podle potřeby můžete přidat další globální správce. Chcete-li přepnout do nového klienta, klikněte na tlačítko *spravovat odkaz na vaši novou klienta*.
+Blahopřejeme, jste vytvořili klienta služby Azure Active Directory B2C. Jste globální správce klienta. Podle potřeby můžete přidat další globální správce. Chcete-li přepnout do nového klienta, klikněte na tlačítko *spravovat váš nový klient*.
 
 ![Spravovat odkaz na vaši nového klienta](./media/active-directory-b2c-get-started/manage-new-b2c-tenant-link.png)
 

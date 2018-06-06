@@ -3,7 +3,7 @@ title: Správa privilegovaných identit pro prostředky Azure – povolit správ
 description: Zjistěte, jak globální správci můžete spravovat odběry v klientovi.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/27/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e164d8adaf5df63dba31bb6aa8e56f768741479c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 22e735fc10f314e47c00795bf993b5502f639c84
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699797"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>Povolení správy předplatného ve vašem klientovi
 

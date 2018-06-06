@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB vazby pro funkce
+title: Azure Cosmos DB vazby pro funkce 1.x
 description: Pochopit, jak používat Azure Cosmos DB triggerů a vazeb v Azure Functions.
 services: functions
 documentationcenter: na
@@ -15,32 +15,37 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ffb18ef65bc0d901fe237ec9c4f97fdae43dc472
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: fb9e6eaca31849eb8ef15714978c1ec55b23e02f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796923"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB vazby pro Azure Functions
+# <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB vazby pro Azure Functions 1.x
+
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> * [Verze 1 – GA](functions-bindings-cosmosdb.md)
+> * [Verze 2 – Preview](functions-bindings-cosmosdb-v2.md)
 
 Tento článek vysvětluje, jak pracovat s [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) vazeb v Azure Functions. Azure Functions podporuje aktivaci, vstup a výstup vazby pro Azure Cosmos DB.
 
 > [!NOTE]
-> Tato vazba byl původně pojmenován DocumentDB. Ve verzi funkce 1.x, pouze aktivační událost byla přejmenována Cosmos DB; Vstupní vazby, výstup vazby a balíček NuGet zachovat název DocumentDB. V [funkce verze 2.x](functions-versions.md), vazby a balíčku byly také přejmenovat DB Cosmos. Tento článek používá 1.x názvy.
+> Tento článek je pro Azure Functions 1.x.  Informace o tom, jak používat tyto vazby funkcí 2.x, najdete v části [Azure Cosmos DB vazby pro Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
+>
+>Tato vazba byl původně pojmenován DocumentDB. Ve verzi funkce 1.x, pouze aktivační událost byla přejmenována Cosmos DB; Vstupní vazby, výstup vazby a balíček NuGet zachovat název DocumentDB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby Cosmos DB verze funkcí jsou součástí 1.x [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) balíček NuGet. Pro funkce 2.x, je balíček [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB). Zdrojový kód pro vazby je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/) úložiště GitHub.
+Vazby Azure Cosmos DB verze funkcí jsou součástí 1.x [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) balíček NuGet verze 1.x. Zdrojový kód pro vazby je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
-
 ## <a name="trigger"></a>Trigger
 
-Aktivační událost DB Cosmos Azure používá [Azure Cosmos DB změnu kanálu](../cosmos-db/change-feed.md) tak, aby naslouchala na změny napříč oddíly. Informační kanál změnu publikuje vložení a aktualizace, není odstranění. Pro každý vložení nebo aktualizace provedené v kolekci monitorovaných je volána aktivační událost. 
+Aktivační událost DB Cosmos Azure používá [Azure Cosmos DB změnu kanálu](../cosmos-db/change-feed.md) naslouchat vložení a aktualizace napříč oddíly. Informační kanál změnu publikuje vložení a aktualizace, není odstranění.
 
 ## <a name="trigger---example"></a>Aktivační událost – příklad
 
@@ -50,26 +55,42 @@ Podívejte se na konkrétní jazyk příklad:
 * [C# skript (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
+[Přeskočit příklady aktivační události](#trigger---attributes)
+
 ### <a name="trigger---c-example"></a>Aktivační událost – příklad jazyka C#
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , aktivuje z konkrétní databáze a kolekce.
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) která je volána, když jsou vložení nebo aktualizace v zadané databázi a kolekci.
 
 ```cs
-    using System.Collections.Generic;
-    using Microsoft.Azure.Documents;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using System.Collections.Generic;
 
-    [FunctionName("DocumentUpdates")]
-    public static void Run(
-        [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
-    IReadOnlyList<Document> documents,
-        TraceWriter log)
+namespace CosmosDBSamplesV1
+{
+    public static class CosmosTrigger
     {
-            log.Info("Documents modified " + documents.Count);
-            log.Info("First document Id " + documents[0].Id);
+        [FunctionName("CosmosTrigger")]
+        public static void Run([CosmosDBTrigger(
+            databaseName: "ToDoItems",
+            collectionName: "Items",
+            ConnectionStringSetting = "CosmosDBConnection",
+            LeaseCollectionName = "leases",
+            CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> documents, 
+            TraceWriter log)
+        {
+            if (documents != null && documents.Count > 0)
+            {
+                log.Info($"Documents modified: {documents.Count}");
+                log.Info($"First document Id: {documents[0].Id}");
+            }
+        }
     }
+}
 ```
+
+[Přeskočit příklady aktivační události](#trigger---attributes)
 
 ### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
 
@@ -106,6 +127,8 @@ Tady je kód skriptu jazyka C#:
       log.Verbose("First document Id " + documents[0].Id);
     }
 ```
+
+[Přeskočit příklady aktivační události](#trigger---attributes)
 
 ### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
 
@@ -186,8 +209,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 Aktivační událost vyžaduje druhé kolekci, která se používá k ukládání _zapůjčení_ přes oddíly. Kolekce, který je monitorován a kolekce, která obsahuje zapůjčení musí být k dispozici pro aktivační událost pro práci.
 
- >[!IMPORTANT]
- > Pokud víc funkcí nakonfigurovány pro používání Cosmos DB aktivační událost pro stejné kolekci, každá z těchto funkcí by měl použít kolekci s vyhrazenou zapůjčení. Jinak se spustí jenom jedna z funkcí. 
+>[!IMPORTANT]
+> Pokud víc funkcí nakonfigurovány pro používání Cosmos DB aktivační událost pro stejné kolekci, každá z těchto funkcí použít kolekci s vyhrazenou zapůjčení nebo zadejte jinou `LeaseCollectionPrefix` pro každou funkci. Jinak se spustí jenom jedna z funkcí. Informace o předponu najdete v tématu [konfigurační oddíl](#trigger---configuration).
 
 Aktivační událost není označuje, že zda dokument byl aktualizaci nebo vložení, pouze poskytuje samotného dokumentu. Pokud potřebujete pro zpracování aktualizace a vloží odlišně, můžete to udělat implementací pole časového razítka pro vložení nebo aktualizace.
 
@@ -198,56 +221,331 @@ Načte jeden nebo více dokumentů Azure Cosmos DB a předává je do vstupní p
 >[!NOTE]
 > Nechcete používat Azure Cosmos DB vstup nebo výstup vazby, pokud používáte rozhraní API MongoDB na účet Cosmos DB. Poškození dat je možné.
 
-## <a name="input---example-1"></a>(Vstup) – Příklad 1
+## <a name="input---examples"></a>Vstup - příklady
 
-Podívejte se na příklad pro specifický jazyk, který čte jednoho dokumentu:
+Podívejte se na konkrétní jazyk příklady, které čtou jednotlivý dokument tak, že zadáte hodnotu ID:
 
-* [C#](#input---c-example)
-* [C# skript (.csx)](#input---c-script-example)
-* [F#](#input---f-example)
-* [JavaScript](#input---javascript-example)
+* [C#](#input---c-examples)
+* [C# skript (.csx)](#input---c-script-examples)
+* [JavaScript](#input---javascript-examples)
+* [F#](#input---f-examples)
 
-### <a name="input---c-example"></a>(Vstup) – příklad jazyka C#
+[Přeskočit vstupní příklady](#input---attributes)
 
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) který jednoho dokumentu načte z konkrétní databáze a kolekce. 
+### <a name="input---c-examples"></a>Vstup - příklady jazyka C#
 
-První, `Id` a `Maker` hodnoty `CarReview` instanci předávána do fronty. DB Cosmos vazba používá `Id` a `Maker` ze zprávy ve frontě pro načtení dokumentu z databáze.
+Tato část obsahuje následující příklady:
+
+* [Aktivace fronty, vyhledejte ID z formátu JSON](#queue-trigger-look-up-id-from-json-c)
+* [Aktivace protokolu HTTP, vyhledejte ID z řetězce dotazu](#http-trigger-look-up-id-from-query-string-c)
+* [Aktivace protokolu HTTP, vyhledávání ID z dat trasy](#http-trigger-look-up-id-from-route-data-c)
+* [Aktivace protokolu HTTP, vyhledávání ID z dat trasy, pomocí SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
+* [HTTP aktivovat, získat více dokumentů, pomocí SqlQuery](#http-trigger-get-multiple-docs-using-sqlquery-c)
+* [HTTP aktivovat, získat více dokumentů, pomocí DocumentClient](#http-trigger-get-multiple-docs-using-documentclient-c)
+
+Příklady najdete jednoduchou `ToDoItem` typu:
 
 ```cs
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Host;
-
-    namespace CosmosDB
+namespace CosmosDBSamplesV1
+{
+    public class ToDoItem
     {
-        public static class SingleEntry
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="queue-trigger-look-up-id-from-json-c"></a>Aktivace fronty, vyhledejte ID z formátu JSON (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , načte jednotlivý dokument. Funkce se aktivuje zprávu fronty, která obsahuje objekt JSON. Aktivační událost fronty analyzuje JSON na objekt s názvem `ToDoItemLookup`, který obsahuje ID k vyhledání. Aby se ID slouží k načtení `ToDoItem` dokumentu z zadaná databáze a kolekce.
+
+```cs
+namespace CosmosDBSamplesV1
+{
+    public class ToDoItemLookup
+    {
+        public string ToDoItemId { get; set; }
+    }
+}
+```
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+
+namespace CosmosDBSamplesV1
+{
+    public static class DocByIdFromJSON
+    {
+        [FunctionName("DocByIdFromJSON")]
+        public static void Run(
+            [QueueTrigger("todoqueueforlookup")] ToDoItemLookup toDoItemLookup,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection", 
+                Id = "{ToDoItemId}")]ToDoItem toDoItem,
+            TraceWriter log)
         {
-            [FunctionName("SingleEntry")]
-            public static void Run(
-                [QueueTrigger("car-reviews", Connection = "StorageConnectionString")] CarReview carReview,
-                [DocumentDB("cars", "car-reviews", PartitionKey = "{maker}", Id= "{id}", ConnectionStringSetting = "CarReviewsConnectionString")] CarReview document,
-                TraceWriter log)
+            log.Info($"C# Queue trigger function processed Id={toDoItemLookup?.ToDoItemId}");
+
+            if (toDoItem == null)
             {
-                log.Info( $"Selected Review - {document?.Review}"); 
+                log.Info($"ToDo item not found");
+            }
+            else
+            {
+                log.Info($"Found ToDo item, Description={toDoItem.Description}");
             }
         }
     }
+}
 ```
 
-Tady je `CarReview` objektů POCO:
+[Přeskočit vstupní příklady](#input---attributes)
 
- ```cs
-    public class CarReview
+#### <a name="http-trigger-look-up-id-from-query-string-c"></a>Aktivace protokolu HTTP, vyhledejte ID z řetězce dotazu (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , načte jednotlivý dokument. Funkce se aktivuje požadavek HTTP, který řetězec dotazu určuje ID k vyhledání. Aby se ID slouží k načtení `ToDoItem` dokumentu z zadaná databáze a kolekce.
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using System.Net;
+using System.Net.Http;
+
+namespace CosmosDBSamplesV1
+{
+    public static class DocByIdFromQueryString
     {
-        public string Id { get; set; }
-        public string Maker { get; set; }
-        public string Description { get; set; }
-        public string Model { get; set; }
-        public string Image { get; set; }
-        public string Review { get; set; }
+        [FunctionName("DocByIdFromQueryString")]
+        public static HttpResponseMessage Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection", 
+                Id = "{Query.id}")] ToDoItem toDoItem,
+            TraceWriter log)
+        {
+            log.Info("C# HTTP trigger function processed a request.");
+            if (toDoItem == null)
+            {
+                log.Info($"ToDo item not found");
+            }
+            else
+            {
+                log.Info($"Found ToDo item, Description={toDoItem.Description}");
+            }
+            return req.CreateResponse(HttpStatusCode.OK);
+        }
     }
- ```
+}
+```
 
-### <a name="input---c-script-example"></a>(Vstup) – příklad skriptu jazyka C#
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="http-trigger-look-up-id-from-route-data-c"></a>Aktivace protokolu HTTP, vyhledejte ID z dat trasy (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , načte jednotlivý dokument. Funkce se aktivuje požadavkem HTTP, používá směrování dat určete ID k vyhledání. Aby se ID slouží k načtení `ToDoItem` dokumentu z zadaná databáze a kolekce.
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using System.Net;
+using System.Net.Http;
+
+namespace CosmosDBSamplesV1
+{
+    public static class DocByIdFromRouteData
+    {
+        [FunctionName("DocByIdFromRouteData")]
+        public static HttpResponseMessage Run(
+            [HttpTrigger(
+                AuthorizationLevel.Anonymous, "get", "post", 
+                Route = "todoitems/{id}")]HttpRequestMessage req,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection", 
+                Id = "{id}")] ToDoItem toDoItem,
+            TraceWriter log)
+        {
+            log.Info("C# HTTP trigger function processed a request.");
+
+            if (toDoItem == null)
+            {
+                log.Info($"ToDo item not found");
+            }
+            else
+            {
+                log.Info($"Found ToDo item, Description={toDoItem.Description}");
+            }
+            return req.CreateResponse(HttpStatusCode.OK);
+        }
+    }
+}
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>Aktivace protokolu HTTP, vyhledejte ID z dat trasy, pomocí SqlQuery (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , načte jednotlivý dokument. Funkce se aktivuje požadavkem HTTP, používá směrování dat určete ID k vyhledání. Aby se ID slouží k načtení `ToDoItem` dokumentu z zadaná databáze a kolekce.
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+
+namespace CosmosDBSamplesV1
+{
+    public static class DocByIdFromRouteDataUsingSqlQuery
+    {
+        [FunctionName("DocByIdFromRouteDataUsingSqlQuery")]
+        public static HttpResponseMessage Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", 
+                Route = "todoitems2/{id}")]HttpRequestMessage req,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection", 
+                SqlQuery = "select * from ToDoItems r where r.id = {id}")] IEnumerable<ToDoItem> toDoItems,
+            TraceWriter log)
+        {
+            log.Info("C# HTTP trigger function processed a request.");
+            foreach (ToDoItem toDoItem in toDoItems)
+            {
+                log.Info(toDoItem.Description);
+            }
+            return req.CreateResponse(HttpStatusCode.OK);
+        }
+    }
+}
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP aktivovat, získat více dokumentů, pomocí SqlQuery (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , načte seznam dokumenty. Funkce se aktivuje požadavkem HTTP. Dotaz je uveden v `SqlQuery` vlastností atributu.
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+
+namespace CosmosDBSamplesV1
+{
+    public static class DocsBySqlQuery
+    {
+        [FunctionName("DocsBySqlQuery")]
+        public static HttpResponseMessage Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+                HttpRequestMessage req,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection", 
+                SqlQuery = "SELECT top 2 * FROM c order by c._ts desc")]
+                IEnumerable<ToDoItem> toDoItems,
+            TraceWriter log)
+        {
+            log.Info("C# HTTP trigger function processed a request.");
+            foreach (ToDoItem toDoItem in toDoItems)
+            {
+                log.Info(toDoItem.Description);
+            }
+            return req.CreateResponse(HttpStatusCode.OK);
+        }
+    }
+}
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP aktivovat, získat více dokumentů, pomocí DocumentClient (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , načte seznam dokumenty. Funkce se aktivuje požadavkem HTTP. Kód používá `DocumentClient` zadaná v Azure Cosmos DB vazbě číst seznam dokumenty instance. `DocumentClient` Instance by mohly být použity také operace zápisu.
+
+```cs
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Azure.WebJobs.Host;
+using System;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace CosmosDBSamplesV1
+{
+    public static class DocsByUsingDocumentClient
+    {
+        [FunctionName("DocsByUsingDocumentClient")]
+        public static async Task<HttpResponseMessage> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection")] DocumentClient client,
+            TraceWriter log)
+        {
+            log.Info("C# HTTP trigger function processed a request.");
+
+            Uri collectionUri = UriFactory.CreateDocumentCollectionUri("ToDoItems", "Items");
+            string searchterm = req.GetQueryNameValuePairs()
+                .FirstOrDefault(q => string.Compare(q.Key, "searchterm", true) == 0)
+                .Value;
+
+            if (searchterm == null)
+            {
+                return req.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            log.Info($"Searching for word: {searchterm} using Uri: {collectionUri.ToString()}");
+            IDocumentQuery<ToDoItem> query = client.CreateDocumentQuery<ToDoItem>(collectionUri)
+                .Where(p => p.Description.Contains(searchterm))
+                .AsDocumentQuery();
+
+            while (query.HasMoreResults)
+            {
+                foreach (ToDoItem result in await query.ExecuteNextAsync())
+                {
+                    log.Info(result.Description);
+                }
+            }
+            return req.CreateResponse(HttpStatusCode.OK);
+        }
+    }
+}
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+### <a name="input---c-script-examples"></a>Vstup - příklady skriptů jazyka C#
+
+Tato část obsahuje následující příklady, které čtou jednotlivý dokument tak, že zadáte hodnotu ID z různých zdrojů:
+
+* Aktivace fronty, vyhledejte ID z fronty zpráv
+* Aktivace fronty, vyhledejte ID z zprávu fronty pomocí SqlQuery
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="queue-trigger-look-up-id-from-queue-message-c-script"></a>Aktivace fronty, vyhledejte ID z zprávu fronty (C# skript)
 
 Následující příklad ukazuje vstupní vazbu Cosmos DB v *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce přečte jednotlivý dokument a aktualizuje dokumentu textovou hodnotu.
 
@@ -279,9 +577,141 @@ Tady je kód skriptu jazyka C#:
     }
 ```
 
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="queue-trigger-look-up-id-from-queue-message-using-sqlquery-c-script"></a>Aktivace fronty, vyhledejte ID z zprávu fronty pomocí SqlQuery (C# skript)
+
+Následující příklad ukazuje vazbu vstupní v Azure Cosmos DB *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce načte více dokumentů určeného dotaz SQL, chcete-li přizpůsobit parametry dotazu pomocí aktivační procedury fronty.
+
+Aktivační událost fronty poskytuje parametr `departmentId`. Fronty zpráv z `{ "departmentId" : "Finance" }` by vrátit všechny záznamy pro finančního oddělení. 
+
+Zde je vazba dat v *function.json* souboru:
+
+```json
+{
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connection": "CosmosDBConnection"
+}
+```
+
+[Konfigurace](#input---configuration) část vysvětluje tyto vlastnosti.
+
+Tady je kód skriptu jazyka C#:
+
+```csharp
+    public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
+    {   
+        foreach (var doc in documents)
+        {
+            // operate on each document
+        }    
+    }
+
+    public class QueuePayload
+    {
+        public string departmentId { get; set; }
+    }
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+### <a name="input---javascript-examples"></a>Vstup - příklady JavaScript
+
+Tato část obsahuje následující příklady, které čtou jednotlivý dokument tak, že zadáte hodnotu ID z různých zdrojů:
+
+* Aktivace fronty, vyhledejte ID z fronty zpráv
+* Aktivace fronty, vyhledejte ID z zprávu fronty pomocí Sqlquery
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="queue-trigger-look-up-id-from-queue-message-javascript"></a>Aktivace fronty, vyhledejte ID z zprávu fronty (JavaScript)
+
+Následující příklad ukazuje vstupní vazbu Cosmos DB v *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte jednotlivý dokument a aktualizuje dokumentu textovou hodnotu.
+
+Zde je vazba dat v *function.json* souboru:
+
+```json
+{
+    "name": "inputDocumentIn",
+    "type": "documentDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "id" : "{queueTrigger_payload_property}",
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connection": "MyAccount_COSMOSDB",     
+    "direction": "in"
+},
+{
+    "name": "inputDocumentOut",
+    "type": "documentDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": false,
+    "partitionKey": "{queueTrigger_payload_property}",
+    "connection": "MyAccount_COSMOSDB",
+    "direction": "out"
+}
+```
+[Konfigurace](#input---configuration) část vysvětluje tyto vlastnosti.
+
+Tady je kód jazyka JavaScript:
+
+```javascript
+    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
+    module.exports = function (context) {   
+    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
+    context.bindings.inputDocumentOut.text = "This was updated!";
+    context.done();
+    };
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
+#### <a name="queue-trigger-look-up-id-from-queue-message-using-sqlquery-javascript"></a>Aktivace fronty, vyhledejte ID z zprávu fronty pomocí SqlQuery (JavaScript)
+
+Následující příklad ukazuje vazbu vstupní v Azure Cosmos DB *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce načte více dokumentů určeného dotaz SQL, chcete-li přizpůsobit parametry dotazu pomocí aktivační procedury fronty.
+
+Aktivační událost fronty poskytuje parametr `departmentId`. Fronty zpráv z `{ "departmentId" : "Finance" }` by vrátit všechny záznamy pro finančního oddělení. 
+
+Zde je vazba dat v *function.json* souboru:
+
+```json
+{
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "connection": "CosmosDBConnection"
+}
+```
+
+[Konfigurace](#input---configuration) část vysvětluje tyto vlastnosti.
+
+Tady je kód jazyka JavaScript:
+
+```javascript
+    module.exports = function (context, input) {    
+        var documents = context.bindings.documents;
+        for (var i = 0; i < documents.length; i++) {
+            var document = documents[i];
+            // operate on each document
+        }       
+        context.done();
+    };
+```
+
+[Přeskočit vstupní příklady](#input---attributes)
+
 <a name="infsharp"></a>
 
-### <a name="input---f-example"></a>(Vstup) – příklad F #
+### <a name="input---f-examples"></a>Vstup - F # příklady
 
 Následující příklad ukazuje vstupní vazbu Cosmos DB v *function.json* souboru a [F # funkce](functions-reference-fsharp.md) používající vazby. Funkce přečte jednotlivý dokument a aktualizuje dokumentu textovou hodnotu.
 
@@ -327,149 +757,6 @@ Tento příklad vyžaduje, `project.json` soubor, který určuje `FSharp.Interop
 
 Chcete-li přidat `project.json` souborů najdete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
 
-### <a name="input---javascript-example"></a>(Vstup) – příklad v jazyce JavaScript
-
-Následující příklad ukazuje vstupní vazbu Cosmos DB v *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte jednotlivý dokument a aktualizuje dokumentu textovou hodnotu.
-
-Zde je vazba dat v *function.json* souboru:
-
-```json
-{
-    "name": "inputDocumentIn",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger_payload_property}",
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connection": "MyAccount_COSMOSDB",     
-    "direction": "in"
-},
-{
-    "name": "inputDocumentOut",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": false,
-    "partitionKey": "{queueTrigger_payload_property}",
-    "connection": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-[Konfigurace](#input---configuration) část vysvětluje tyto vlastnosti.
-
-Tady je kód jazyka JavaScript:
-
-```javascript
-    // Change input document contents using Azure Cosmos DB input binding, using context.bindings.inputDocumentOut
-    module.exports = function (context) {   
-    context.bindings.inputDocumentOut = context.bindings.inputDocumentIn;
-    context.bindings.inputDocumentOut.text = "This was updated!";
-    context.done();
-    };
-```
-
-## <a name="input---example-2"></a>(Vstup) – příklad 2
-
-Podívejte se na příklad pro specifický jazyk, který čte více dokumentů:
-
-* [C#](#input---c-example-2)
-* [C# skript (.csx)](#input---c-script-example-2)
-* [JavaScript](#input---javascript-example-2)
-
-### <a name="input---c-example-2"></a>Vstup - C# příklad 2
-
-Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) , provede dotaz SQL. Použít `SqlQuery` parametr, musíte nainstalovat nejnovější verze beta `Microsoft.Azure.WebJobs.Extensions.DocumentDB` balíček NuGet.
-
-```csharp
-    using System.Net;
-    using System.Net.Http;
-    using System.Collections.Generic;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Extensions.Http;
-
-    [FunctionName("CosmosDBSample")]
-    public static HttpResponseMessage Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestMessage req,
-        [DocumentDB("test", "test", ConnectionStringSetting = "CosmosDB", SqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
-    {
-        return req.CreateResponse(HttpStatusCode.OK, documents);
-    }
-```
-
-### <a name="input---c-script-example-2"></a>(Vstup) – příklad skriptu jazyka C# 2
-
-Následující příklad ukazuje vazbu vstupní v Azure Cosmos DB *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce načte více dokumentů určeného dotaz SQL, chcete-li přizpůsobit parametry dotazu pomocí aktivační procedury fronty.
-
-Aktivační událost fronty poskytuje parametr `departmentId`. Fronty zpráv z `{ "departmentId" : "Finance" }` by vrátit všechny záznamy pro finančního oddělení. 
-
-Zde je vazba dat v *function.json* souboru:
-
-```json
-{
-    "name": "documents",
-    "type": "documentdb",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connection": "CosmosDBConnection"
-}
-```
-
-[Konfigurace](#input---configuration) část vysvětluje tyto vlastnosti.
-
-Tady je kód skriptu jazyka C#:
-
-```csharp
-    public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
-    {   
-        foreach (var doc in documents)
-        {
-            // operate on each document
-        }    
-    }
-
-    public class QueuePayload
-    {
-        public string departmentId { get; set; }
-    }
-```
-
-### <a name="input---javascript-example-2"></a>(Vstup) – příklad v jazyce JavaScript 2
-
-Následující příklad ukazuje vazbu vstupní v Azure Cosmos DB *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce načte více dokumentů určeného dotaz SQL, chcete-li přizpůsobit parametry dotazu pomocí aktivační procedury fronty.
-
-Aktivační událost fronty poskytuje parametr `departmentId`. Fronty zpráv z `{ "departmentId" : "Finance" }` by vrátit všechny záznamy pro finančního oddělení. 
-
-Zde je vazba dat v *function.json* souboru:
-
-```json
-{
-    "name": "documents",
-    "type": "documentdb",
-    "direction": "in",
-    "databaseName": "MyDb",
-    "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
-    "connection": "CosmosDBConnection"
-}
-```
-
-[Konfigurace](#input---configuration) část vysvětluje tyto vlastnosti.
-
-Tady je kód jazyka JavaScript:
-
-```javascript
-    module.exports = function (context, input) {    
-        var documents = context.bindings.documents;
-        for (var i = 0; i < documents.length; i++) {
-            var document = documents[i];
-            // operate on each document
-        }       
-        context.done();
-    };
-```
-
 ## <a name="input---attributes"></a>(Vstup) – atributy
 
 V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) atribut.
@@ -511,29 +798,108 @@ Azure Cosmos DB výstup vazby umožňuje zapsat nový textový dokument k datab�
 
 Podívejte se na konkrétní jazyk příklad:
 
-* [C#](#output---c-example)
-* [C# skript (.csx)](#output---c-script-example)
-* [F#](#output---f-example)
-* [JavaScript](#output---javascript-example)
+* [C#](#output---c-examples)
+* [C# skript (.csx)](#output---c-script-examples)
+* [JavaScript](#output---javascript-examples)
+* [F#](#output---f-examples)
 
-### <a name="output---c-example"></a>Výstup – příklad jazyka C#
+Viz také [vstupní příklad](#input---c-examples) používající `DocumentClient`.
+
+[Přeskočit příklady výstup](#output---attributes)
+
+### <a name="ouput---c-examples"></a>Výstup - příklady jazyka C#
+
+Tato část obsahuje následující příklady:
+
+* Aktivace fronty, jeden doc zápisu
+* Aktivace fronty, dokumentace zápisu pomocí IAsyncCollector
+
+Příklady najdete jednoduchou `ToDoItem` typu:
+
+```cs
+namespace CosmosDBSamplesV1
+{
+    public class ToDoItem
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+    }
+}
+```
+
+[Přeskočit příklady výstup](#output---attributes)
+
+#### <a name="queue-trigger-write-one-doc-c"></a>Aktivace fronty, jeden doc zápisu (C#)
 
 Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) doplňuje dokument k databázi, pomocí data zadaná v zpráv z fronty úložiště.
 
 ```cs
-    using System;
-    using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using System;
 
-    [FunctionName("QueueToDocDB")]        
-    public static void Run(
-        [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
-        [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+namespace CosmosDBSamplesV1
+{
+    public static class WriteOneDoc
     {
-        document = new { Text = myQueueItem, id = Guid.NewGuid() };
+        [FunctionName("WriteOneDoc")]
+        public static void Run(
+            [QueueTrigger("todoqueueforwrite")] string queueMessage,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection")]out dynamic document,
+            TraceWriter log)
+        {
+            document = new { Description = queueMessage, id = Guid.NewGuid() };
+
+            log.Info($"C# Queue trigger function inserted one row");
+            log.Info($"Description={queueMessage}");
+        }
     }
+}
 ```
 
-### <a name="output---c-script-example"></a>Výstup – příklad skriptu jazyka C#
+[Přeskočit příklady výstup](#output---attributes)
+
+#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>Aktivace fronty, dokumentace zápisu pomocí IAsyncCollector (C#)
+
+Následující příklad ukazuje [C# funkce](functions-dotnet-class-library.md) doplňuje kolekci dokumentů k databázi, pomocí data zadaná v zprávu fronty JSON.
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using System.Threading.Tasks;
+
+namespace CosmosDBSamplesV1
+{
+    public static class WriteDocsIAsyncCollector
+    {
+        [FunctionName("WriteDocsIAsyncCollector")]
+        public static async Task Run(
+            [QueueTrigger("todoqueueforwritemulti")] ToDoItem[] toDoItemsIn,
+            [DocumentDB(
+                databaseName: "ToDoItems",
+                collectionName: "Items",
+                ConnectionStringSetting = "CosmosDBConnection")]
+                IAsyncCollector<ToDoItem> toDoItemsOut,
+            TraceWriter log)
+        {
+            log.Info($"C# Queue trigger function processed {toDoItemsIn?.Length} items");
+
+            foreach (ToDoItem toDoItem in toDoItemsIn)
+            {
+                log.Info($"Description={toDoItem.Description}");
+                await toDoItemsOut.AddAsync(toDoItem);
+            }
+        }
+    }
+}
+```
+
+[Přeskočit příklady výstup](#output---attributes)
+
+### <a name="output---c-script-examples"></a>Výstup – příklady skriptů jazyka C#
 
 Následující příklad ukazuje výstup Azure Cosmos DB vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce, která používá vazbu vstupní fronty pro frontu, která přijímá JSON v následujícím formátu:
 
@@ -597,7 +963,66 @@ Tady je kód skriptu jazyka C#:
 
 Pokud chcete vytvořit více dokumentů, můžete vázat na `ICollector<T>` nebo `IAsyncCollector<T>` kde `T` je jedním z podporovaných typů.
 
-### <a name="output---f-example"></a>Výstup – příklad F #
+[Přeskočit příklady výstup](#output---attributes)
+
+### <a name="output---javascript-examples"></a>Výstup – příklady JavaScript
+
+Následující příklad ukazuje výstup Azure Cosmos DB vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce, která používá vazbu vstupní fronty pro frontu, která přijímá JSON v následujícím formátu:
+
+```json
+{
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+Funkce vytvoří Azure Cosmos DB dokumenty ve formátu pro každý záznam:
+
+```json
+{
+    "id": "John Henry-123456",
+    "name": "John Henry",
+    "employeeId": "123456",
+    "address": "A town nearby"
+}
+```
+
+Zde je vazba dat v *function.json* souboru:
+
+```json
+{
+    "name": "employeeDocument",
+    "type": "documentDB",
+    "databaseName": "MyDatabase",
+    "collectionName": "MyCollection",
+    "createIfNotExists": true,
+    "connection": "MyAccount_COSMOSDB",     
+    "direction": "out"
+}
+```
+
+[Konfigurace](#output---configuration) část vysvětluje tyto vlastnosti.
+
+Tady je kód jazyka JavaScript:
+
+```javascript
+    module.exports = function (context) {
+
+      context.bindings.employeeDocument = JSON.stringify({ 
+        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
+        name: context.bindings.myQueueItem.name,
+        employeeId: context.bindings.myQueueItem.employeeId,
+        address: context.bindings.myQueueItem.address
+      });
+
+      context.done();
+    };
+```
+
+[Přeskočit příklady výstup](#output---attributes)
+
+### <a name="output---f-examples"></a>Výstup - F # příklady
 
 Následující příklad ukazuje výstup Azure Cosmos DB vazby ve *function.json* souboru a [F # funkce](functions-reference-fsharp.md) používající vazby. Funkce, která používá vazbu vstupní fronty pro frontu, která přijímá JSON v následujícím formátu:
 
@@ -674,61 +1099,6 @@ Tento příklad vyžaduje, `project.json` soubor, který určuje `FSharp.Interop
 ```
 
 Chcete-li přidat `project.json` souborů najdete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
-
-### <a name="output---javascript-example"></a>Výstup – příklad v jazyce JavaScript
-
-Následující příklad ukazuje výstup Azure Cosmos DB vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce, která používá vazbu vstupní fronty pro frontu, která přijímá JSON v následujícím formátu:
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Funkce vytvoří Azure Cosmos DB dokumenty ve formátu pro každý záznam:
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Zde je vazba dat v *function.json* souboru:
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connection": "MyAccount_COSMOSDB",     
-    "direction": "out"
-}
-```
-
-[Konfigurace](#output---configuration) část vysvětluje tyto vlastnosti.
-
-Tady je kód jazyka JavaScript:
-
-```javascript
-    module.exports = function (context) {
-
-      context.bindings.employeeDocument = JSON.stringify({ 
-        id: context.bindings.myQueueItem.name + "-" + context.bindings.myQueueItem.employeeId,
-        name: context.bindings.myQueueItem.name,
-        employeeId: context.bindings.myQueueItem.employeeId,
-        address: context.bindings.myQueueItem.address
-      });
-
-      context.done();
-    };
-```
 
 ## <a name="output---attributes"></a>Výstup – atributy
 

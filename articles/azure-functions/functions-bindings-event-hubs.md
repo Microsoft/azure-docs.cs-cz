@@ -16,11 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 8516f6d1f598e79bcb47922f02926f75c328861b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 64914a1b3efe81a152f5463f74c70c22f01ec0c1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724040"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro Azure Functions
 
@@ -28,11 +29,20 @@ Tento článek vysvětluje, jak pracovat s [Azure Event Hubs](../event-hubs/even
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Azure Functions verze 1.x, vazby centra událostí jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíček NuGet. Pro funkce 2.x, použijte [Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) balíčku. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/) úložiště GitHub.
+Pro verzi Azure Functions 1.x, vazby centra událostí jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíček NuGet verze 2.x.
+Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) úložiště GitHub.
+
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Pro funkce 2.x, použijte [Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) balíčku, verzi 3.x.
+Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) úložiště GitHub.
+
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -122,7 +132,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zaznamená tělo zprávy aktivační události rozbočovače.
 
-Zde je vazba dat v *function.json* souboru:
+Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
@@ -133,6 +143,16 @@ Zde je vazba dat v *function.json* souboru:
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+
 Tady je kód skriptu jazyka C#:
 
 ```cs
@@ -186,7 +206,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce F #](functions-reference-fsharp.md) používající vazby. Funkce zaznamená tělo zprávy aktivační události rozbočovače.
 
-Zde je vazba dat v *function.json* souboru:
+Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
@@ -194,6 +214,15 @@ Zde je vazba dat v *function.json* souboru:
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -209,7 +238,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce přečte [metadata události](#trigger---event-metadata) a zaprotokoluje zprávu.
 
-Zde je vazba dat v *function.json* souboru:
+Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
@@ -217,6 +246,15 @@ Zde je vazba dat v *function.json* souboru:
   "name": "myEventHubMessage",
   "direction": "in",
   "path": "MyEventHub",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "myEventHubMessage",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -234,8 +272,7 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-Chcete-li přijímat události v dávce, nastavte `cardinality` k `many` v *function.json* souboru:
-
+Chcete-li přijímat události v dávce, nastavte `cardinality` k `many` v *function.json* souboru, jak je znázorněno v následujících příkladech. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
@@ -243,6 +280,16 @@ Chcete-li přijímat události v dávce, nastavte `cardinality` k `many` v *func
   "name": "eventHubMessages",
   "direction": "in",
   "path": "MyEventHub",
+  "cardinality": "many",
+  "connection": "myEventHubReadConnectionAppSetting"
+}
+```
+```json
+{
+  "type": "eventHubTrigger",
+  "name": "eventHubMessages",
+  "direction": "in",
+  "eventHubName": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -287,7 +334,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | musí být nastavena na `eventHubTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
 |**direction** | neuvedeno | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje položku událostí v kódu funkce. | 
-|**Cesta** |**EventHubName** | Název centra událostí. | 
+|**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí.  | 
+|**EventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
 |**consumerGroup** |**ConsumerGroup** | Volitelná vlastnost, která nastavuje [skupiny příjemců](../event-hubs/event-hubs-features.md#event-consumers) používá přihlásit k odběru událostí v centru. Pokud tento parametr vynechán, `$Default` skupina uživatelů slouží. | 
 |**Mohutnost** | neuvedeno | Pro jazyk Javascript. Nastavte na `many` Chcete-li povolit dávkování.  Pokud tento parametr vynechán, nebo nastavte `one`, funkci byl předán jedné zprávy. | 
 |**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů. Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro [obor názvů](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), ne samotný centra událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení pro aktivační událost.|
@@ -347,13 +395,22 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zapíše zprávu do centra událostí.
 
-Zde je vazba dat v *function.json* souboru:
+Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -388,13 +445,22 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce F #](functions-reference-fsharp.md) používající vazby. Funkce zapíše zprávu do centra událostí.
 
-Zde je vazba dat v *function.json* souboru:
+Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -413,13 +479,22 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 Následující příklad ukazuje vazby v aktivační signál události rozbočovače *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zapíše zprávu do centra událostí.
 
-Zde je vazba dat v *function.json* souboru:
+Následující příklady ukazují, vytvoření vazby dat služby Event Hubs v *function.json* souboru. V prvním příkladu se pro funkce 1.x a druhá je pro funkce 2.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
     "path": "myeventhub",
+    "connection": "MyEventHubSendAppSetting",
+    "direction": "out"
+}
+```
+```json
+{
+    "type": "eventHub",
+    "name": "outputEventHubMessage",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -477,7 +552,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type** | neuvedeno | Musí být nastavena na "eventHub". |
 |**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytvoření vazby na portálu Azure. |
 |**Jméno** | neuvedeno | Název proměnné používá v kódu funkce, která představuje událost. | 
-|**Cesta** |**EventHubName** | Název centra událostí. | 
+|**Cesta** |**EventHubName** | Funguje pouze 1.x. Název centra událostí.  | 
+|**EventHubName** |**EventHubName** | Funguje pouze 2.x. Název centra událostí.  |
 |**Připojení** |**Připojení** | Název nastavení aplikace, který obsahuje připojovací řetězec k Centru událostí oboru názvů. Zkopírujte tento připojovací řetězec kliknutím **informace o připojení** tlačítko pro *obor názvů*, ne samotný centra událostí. Tento připojovací řetězec musí mít oprávnění pro odesílání k odeslání zprávy do datového proudu událostí.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

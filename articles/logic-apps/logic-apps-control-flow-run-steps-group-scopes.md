@@ -1,29 +1,25 @@
 ---
-title: "Podle kroků pro spuštění seskupené akce stavu – Azure Logic Apps | Microsoft Docs"
-description: "Akce na obory seskupení a spouštění kroky na základě stavu skupiny"
+title: Přidat obory, které spouštění akcí na základě stavu skupiny - Azure Logic Apps | Microsoft Docs
+description: Postup vytvoření obory, které spustit pracovní postup akce na základě stavu akce skupiny v Azure Logic Apps
 services: logic-apps
-keywords: "větví, paralelní zpracování"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 052af45962f442e96ca28f05ffaa1b9814b2588b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: c6f6b54e17d12ff21d50748810699e78e3a14757
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726376"
 ---
-# <a name="scopes-run-steps-based-on-group-status-in-logic-apps"></a>Obory: Spustit kroky na základě stavu skupiny v aplikacích logiky
+# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Vytvoření obory, které spustit pracovní postup akce na základě stavu skupiny v Azure Logic Apps
 
-Pokud chcete spustit kroky, až po jiná skupina akce úspěch nebo neúspěch, uveďte tuto skupinu uvnitř *oboru*. Tato struktura je užitečné, když chcete uspořádat akce logické skupiny, vyhodnocení stavu pro tuto skupinu a provádět akce, které jsou založené na stav oboru. Po dokončení spuštění všechny akce v oboru oboru také získá svůj vlastní stav. Například můžete pomocí oborů, pokud chcete implementovat [výjimky a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
+Ke spouštění akcí, až po jiná skupina akce úspěch nebo neúspěch, skupina tyto akce uvnitř *oboru*. Tato struktura je užitečné, když chcete uspořádat akce logické skupiny, vyhodnocení stavu pro tuto skupinu a provádět akce, které jsou založené na stav oboru. Po dokončení spuštění všechny akce v oboru oboru také získá svůj vlastní stav. Například můžete pomocí oborů, pokud chcete implementovat [výjimky a zpracování chyb](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
 Chcete-li zkontrolovat stav oboru, můžete použít stejné kritéria, která slouží k určení logiku aplikace spustit stavu, jako je například "Succeeded", "Se nezdařilo", "Zrušeno" a tak dále. Ve výchozím nastavení když je akce všechny oboru úspěšné, stav oboru označena "Succeeded". Ale když selže veškeré akce v oboru, nebo je zrušena, je oboru stav označen "Se nezdařilo." Omezení u oborů, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
@@ -83,9 +79,9 @@ Můžete kdykoli uložit svou aplikaci logiky, často, uložte si práci.
 
       | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
-      | **Bod na trase 1** | <*start*> | Zadejte zdroj vaší trasy. | 
+      | **Bod na trase 1** | <*Spuštění*> | Zadejte zdroj vaší trasy. | 
       | **Bod na trase 2** | <*End*> | Zadejte cílový vaší trasy. | 
-      | **Vyloučit** | Žádné | Zadejte položky, pokud chcete zabránit v postupu, jako je například dálnice, mýtné a tak dále. Možné hodnoty, najdete v části [vypočítat trasu](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Vyloučit** | Žádný | Zadejte položky, pokud chcete zabránit v postupu, jako je například dálnice, mýtné a tak dále. Možné hodnoty, najdete v části [vypočítat trasu](https://msdn.microsoft.com/library/ff701717.aspx). | 
       | **Optimalizovat** | timeWithTraffic | Vyberte parametr, který se optimalizovat směrování, jako jsou například vzdálenost, čas aktuální informace o provozu a tak dále. Tento příklad používá tuto hodnotu: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše-volba*> | Zadejte jednotku vzdálenosti k výpočtu trasu. Tento příklad používá tuto hodnotu: "Míle" | 
       | **Způsob cestování** | Autem | Zadejte režim cesta pro trasu. Tento příklad používá tato hodnota "Řidičských" | 

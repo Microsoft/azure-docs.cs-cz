@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Řešení potíží s vytváření klienty | Microsoft Docs'
+title: Řešení potíží s vytváření klienty v Azure Active Directory B2C | Microsoft Docs
 description: Problémy a řešení pro vytvoření klienta služby Azure Active Directory nebo Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 3daf232d7fb1f95c390c1e6b8c168ec585484c65
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 90d9d2fb80dfbd094754850b7d1270a5fafcdd96
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712500"
 ---
 # <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>Řešení potíží s vytváření klienta služby Azure Active Directory nebo Azure Active Directory B2C 
 

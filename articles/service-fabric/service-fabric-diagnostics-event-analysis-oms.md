@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: b51f7dc43f390152b2b0be223541e381bbddd3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1552fbe66f7bad219d8aea8a3f208b0fe69cdf2b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716053"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analýza události a vizualizace s analýzy protokolů
 
@@ -36,17 +37,15 @@ Po přijetí dat podle analýzy protokolů Azure má několik *řešení pro spr
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení Service Fabric Analytics
 
-1. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**  a přejděte na stránku s jeho Přehled.
+1. V portálu Azure přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy.
 
-2. Na stránce Přehled klikněte na odkaz v horní přejít na portálu OMS
+2. Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-    ![Odkaz na portálu OMS](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
+2. V souhrnu uvidíte dlaždice ve formě grafu pro každou z řešení povoleno, včetně jeden pro Service Fabric. Klikněte **Service Fabric** graf (první obrázek níže) nadále řešení Service Fabric analýzy (druhý obrázek níže).
 
-3. Nyní jste na portálu OMS a uvidí řešení, které jste povolili. Klikněte na graf s názvem Service Fabric (první obrázek níže) získat provést k řešení Service Fabric (druhý obrázek níže)
+    ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
-
-    ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
+    ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 Na obrázku výše je domovské stránce řešení Service Fabric analýzy. Toto je snímek zobrazení co se děje v clusteru. Pokud jste povolili diagnostiky při vytváření clusteru, zobrazí se události pro 
 
@@ -57,9 +56,9 @@ Na obrázku výše je domovské stránce řešení Service Fabric analýzy. Toto
 >[!NOTE]
 >Kromě provozní kanál, může shromáždit podrobnější systémové události [aktualizace konfigurace vaší rozšíření diagnostiky](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
 
-### <a name="view-operational-events-including-actions-on-nodes"></a>Zobrazit provozní události, včetně akce na uzlech
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit události prostředků infrastruktury služby včetně akce na uzlech
 
-1. Na stránce služby Fabric Analytics na portálu OMS klikněte na graf pro provozní kanál
+1. Na stránce služby Fabric Analytics klikněte na graf pro **události služby Fabric**.
 
     ![Provozní kanál OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
 
@@ -78,7 +77,7 @@ Můžete zadat dotaz na mnoho další pole, jako je například konkrétním uzl
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Události zobrazení Service Fabric spolehlivé Service a objektu Actor
 
-1. Na stránce služby Fabric Analytics na portálu OMS klikněte na graf pro spolehlivé služby
+1. Na stránce služby Fabric Analytics klikněte na graf pro **spolehlivé služby**.
 
     ![OMS SF řešení spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
 

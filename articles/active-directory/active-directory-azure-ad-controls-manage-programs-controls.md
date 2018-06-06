@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
-ms.author: billmath
-ms.openlocfilehash: a3fb812623b490e27907f63c1f7c6610ae754fb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: f457d2a7d23785a4af66b0578412defd38f4b410
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698100"
 ---
 # <a name="manage-programs-and-their-controls"></a>Správa programů a jejich ovládací prvky 
 

@@ -9,11 +9,12 @@ ms.topic: reference
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: d31c169600c594fc4764262cb8d080e9aee96b21
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2d896b11ae94355eb2bdcfa8bc3a647f96fd8caf
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723758"
 ---
 # <a name="services-that-support-managed-service-identity"></a>Služby, které podporují identita spravované služby 
 
@@ -29,7 +30,7 @@ Následující služby Azure podporují identita spravované služby.
 | Azure App Service | Preview | 2017 září | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Functions | Preview | 2017 září | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Šablona Azure Resource Manageru](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
 | Azure Data Factory V2 | Preview | 2017 listopadu | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[Sada SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
-| Azure API Management | Preview | Říjen 2017 | [Šablona Azure Resource Manageru](/azure/api-management/api-management-howto-use-managed-service-identity) |
+
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure services, ověření podpory Azure AD
 
@@ -43,3 +44,4 @@ Následující služby podporují ověřování Azure AD a byly testovány s kli
 | Azure SQL | https://database.windows.net/ | K dispozici. | Říjen 2017 | |
 | Azure Event Hubs | https://eventhubs.azure.net | K dispozici. | 2017 prosinec | |
 | Azure Service Bus | https://servicebus.azure.net | K dispozici. | 2017 prosinec | |
+| Azure Storage | https://storage.azure.com/ | Preview | Květen 2018 | |

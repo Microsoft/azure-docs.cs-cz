@@ -7,13 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/29/2018
+ms.date: 5/21/2018
 ms.author: victorh
-ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699899"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy pro službu Application Gateway
 
@@ -82,6 +83,11 @@ Ne, aplikační brána nepodporuje statické veřejné IP adresy, ale podporuje 
 **Q. Podporuje Application Gateway na bráně víc veřejných IP adres?**
 
 Na aplikační brány je podporovaná pouze jednu veřejnou IP adresu.
+
+**Q. Jak velké by měl vytvořit mou podsíť pro aplikační bránu?**
+
+Aplikační brána spotřebuje jednu privátní IP adresu na jednu instanci, plus další privátní IP adresu, pokud je nakonfigurovaný na privátní front-endovou konfiguraci protokolu IP. Kromě toho Azure si vyhrazuje první čtyři a poslední IP adresa v každé podsíti pro interní použití.
+Například, pokud Application Gateway je nastavena na tři instance a žádný privátní front-endovou IP, pak/29 je potřeba podsíť velké nebo větší. V takovém případě Application Gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť velké nebo větší je potřeba, protože jsou požadovány čtyři IP adresy.
 
 **Q. Podporuje Application Gateway hlavičky x předávaných pro?**
 
@@ -183,6 +189,21 @@ Neexistuje žádné výpadky, instancí jsou rozmístěny v upgradu domén a dom
 
 Ano. Můžete nakonfigurovat vyprazdňování Chcete-li změnit členy v rámci fondu back-end bez přerušení připojení. To vám umožní existující připojení pokračujte k odeslání do jejich předchozího cílové dokud toto připojení je ukončeno nebo konfigurovat vypršení časového limitu vyprší. Poznámka: Toto připojení vyprazdňování pouze počká pro aktuální připojení během letu na dokončení. Aplikační brána nemá žádné informace o stavu relace aplikace.
 
+**Q. Jaké jsou velikosti brány aplikace?**
+
+Služba Application Gateway je v současné době nabízena ve třech velikostech: **Small** (krátkodobé používání), **Medium** (střednědobé používání) a **Large** (dlouhodobé používání). Instance krátkodobého používání jsou určené pro scénáře vývoje a testování.
+
+V rámci jednoho předplatného můžete vytvořit až 50 služeb Application Gateway a každá z nich může mít až 10 instancí. Každá služba Application Gateway se může skládat z 20 naslouchacích procesů HTTP. Úplný seznam omezení služby Application Gateway najdete na stránce [Omezení služby Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway s povoleným přesměrováním zpracování SSL:
+
+| Průměrná velikost zadní stránky odpovědi | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
+| --- | --- | --- | --- |
+| 6KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
+| 100KB |35 Mb/s |100 Mb/s |200 Mb/s |
+
+> [!NOTE]
+> Tyto hodnoty jsou přibližné hodnoty propustnosti služby Application Gateway. Skutečná propustnost závisí na různých podrobnostech o prostředí, jako jsou například průměrná velikost stránky, umístění back-endových instancí a doba zpracování potřebná k doručení stránky. Přesné údaje o výkonu získáte, když spustíte vlastní testy. Tyto hodnoty slouží jenom jako vodítko při plánování kapacity.
 
 **Q. Můžete změnit velikost instance ze střední velké bez přerušení?**
 

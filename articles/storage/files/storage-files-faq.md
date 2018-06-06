@@ -5,22 +5,23 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737805"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Časté otázky (FAQ) k Azure Files
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (také označovaný jako systém souborů běžné Internet nebo CIFS). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
+[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
 
 Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubory funkcí a funkčnosti, včetně použití synchronizace souborů Azure s Azure Files. Pokud nevidíte odpověď na svoji otázku, kontaktujte nás prostřednictvím následující kanály (v narůstajícím pořadí):
 
@@ -188,6 +189,14 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 * <a id="afs-os-support"></a>
 **Můžete použít Azure soubor synchronizaci s Windows Server 2008 R2, Linux nebo zařízení úložiště připojeného k síti (NAS)?**  
     Synchronizace souboru Azure v současné době podporuje pouze systém Windows Server 2016 a Windows Server 2012 R2. V tuto chvíli nemáme jiných plánů, které jsme můžete sdílet, ale nemohli jsme otevřít další platformy, na základě poptávky zákaznické podpory. Dejte nám vědět v [Azure soubory UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) jaké platformy který byste nám chtěli na podporu.
+
+* <a id="afs-tiered-files-out-of-endpoint"></a>
+**Proč vrstvené soubory existují mimo obor názvů koncový bod serveru?**  
+    Starší než verze agenta synchronizace souboru Azure 3 synchronizace souboru Azure blokována přesun vrstvené soubory mimo serveru koncového bodu, ale na stejném svazku jako koncový bod serveru. Operace kopírování, přesune-vrstvené souborů a přesune z vrstvené do jiných svazků neovlivní. Byla z důvodu pro toto chování (téměř) jsou za implicitní předpokladu, že máte Průzkumník souborů nebo jiných rozhraní API systému Windows, přesuňte operací na stejný svazek instanenous operace přejmenování. To znamená, přesune bude Průzkumníka souborů nebo jiné metody move (například příkazový řádek nebo prostředí PowerShell) zobrazí reagovat, zatímco Azure souboru Sync vrátí data z cloudu. Počínaje [verze agenta synchronizace souboru Azure 3.0.12.0](storage-files-release-notes.md#agent-version-30120), synchronizace souboru Azure vám umožní přesunout soubor vrstvené mimo serveru koncového bodu. Jsme vyhnout nepříznivé vlivy výše povolení vrstvené soubor existovat jako soubor vrstvené mimo koncový bod serveru a potom vrací soubor na pozadí. To znamená, že, přesune na stejný svazek jsou instaneous a provedeme všechnu práci vrátit soubor na disk po dokončení přesunu. 
+
+* <a id="afs-do-not-delete-server-endpoint"></a>
+**Došlo problému se synchronizací souboru Azure na svém serveru (sync, cloudu vrstvení atd). Doporučujeme odebrat a znovu vytvořit koncový bod pro tento server?**  
+    [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="security-authentication-and-access-control"></a>Zabezpečení, ověřování a řízení přístupu
 * <a id="ad-support"></a>

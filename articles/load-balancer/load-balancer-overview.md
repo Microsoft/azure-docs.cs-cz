@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 080a4e670b06544d84e3d34a0b04bdb91a95aff1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 04fa1f9a23a7c93426b45305302e3f77d16ab8c0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726257"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je nástroj pro vyrovnávání zatížení Azure?
 
@@ -93,7 +94,7 @@ Nástroj pro vyrovnávání zatížení poskytuje následující základní mož
 
     - **Vlastní test paměti TCP**: Tento test závisí na vytvoření úspěšné relace TCP port definované testu. Tento test je úspěšné, dokud zadaný naslouchací proces do virtuálního počítače existuje. Pokud připojení bylo odmítnuto, že test se nezdaří. Tento test přepíše výchozí kontroly agenta hosta.
 
-    - **Test agenta hosta (na platformě jako virtuální služby [PaaS] počítače pouze)**: nástroje pro vyrovnávání zatížení můžete také používat agent hosta ve virtuálním počítači. Agent hosta, který přijímá a odpoví odpověď HTTP 200 OK jenom v případě, že instance je ve stavu Připraveno. Když agent přestane reagovat s 200 OK protokolu HTTP, nástroje pro vyrovnávání zatížení označí instance jako reagovat a zastaví odesílání provozu do této instance. Nástroje pro vyrovnávání zatížení bude nadále se pokoušejí připojit k instanci. Pokud agenta hosta odpoví HTTP 200, nástroje pro vyrovnávání zatížení odešle provoz do této instance znovu. Sondy agenta hosta jsou poslední možnost a nedoporučuje se, když je možné, HTTP nebo TCP konfigurace vlastní test paměti. 
+    - **Test agenta hosta**: nástroje pro vyrovnávání zatížení můžete také používat agent hosta ve virtuálním počítači. Agent hosta, který přijímá a odpoví odpověď HTTP 200 OK jenom v případě, že instance je ve stavu Připraveno. Když agent přestane reagovat s 200 OK protokolu HTTP, nástroje pro vyrovnávání zatížení označí instance jako reagovat a zastaví odesílání provozu do této instance. Nástroje pro vyrovnávání zatížení bude nadále se pokoušejí připojit k instanci. Pokud agenta hosta odpoví HTTP 200, nástroje pro vyrovnávání zatížení odešle provoz do této instance znovu. Jsou sondy agenta hosta _poslední možnost a nedoporučuje se_ při HTTP nebo TCP vlastní test paměti konfigurace jsou možné. 
     
 * **Odchozí připojení (překládat pomocí SNAT)**
 

@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: e12010f225b5f8db247d1b751615cbedd413dfb3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 05/18/2018
+ms.openlocfilehash: 0778492e6ff63bc80e9fc9d2c252f19d4ff78529
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757481"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -23,7 +24,7 @@ Můžete vytvořit databázi Azure pro server databáze MySQL v jednom ze tří 
 |:---|:----------|:--------------------|:---------------------|
 | Výpočetní generování | Gen 4, 5. generace | Gen 4, 5. generace | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Paměť na vCore | Reference | 2 x Basic | 2 x obecné účely |
+| Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 2 TB | 5 GB až 2 TB |
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Doba uchovávání záloh databáze | 7 až 35 dnů | 7 až 35 dnů | 7 až 35 dnů |
@@ -38,7 +39,7 @@ Chcete-li zvolte cenovou úroveň, použijte jako výchozí bod v následující
 
 Po vytvoření serveru počet vCores lze změnit nahoru nebo dolů (v rámci stejné cenové úrovně) během několika sekund. Také můžete samostatně upravit velikost úložiště nahoru a dobu uchovávání záloh nahoru nebo dolů s žádné výpadky aplikací. Po vytvoření serveru nelze změnit typ úložiště pro zálohy nebo cenovou úroveň. Další informace najdete v tématu [škálovat prostředky](#scale-resources) části.
 
-## <a name="compute-generations-vcores-and-memory"></a>Výpočetní generace, vCores a paměti
+## <a name="compute-generations-and-vcores"></a>Výpočetní generace a vCores
 
 Výpočetní prostředky jsou k dispozici jako vCores, která představují logické procesoru základní hardware. V současné době můžete ze dvou generací výpočetní Gen 4 a 5. generace. Gen 4 logické procesory jsou založené na v3 Intel E5-2673 2,4 GHz procesorů (Haswell). Gen 5 logické procesory jsou založené na Intel E5-2673 v4 procesory 2.3 GHz (Broadwell). Gen 4 a 5 generace jsou k dispozici v následujících oblastech ("X" označuje k dispozici). 
 
@@ -62,14 +63,12 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Jihovýchodní Asie | X | X |
 | Austrálie – východ |  | X |
 | Austrálie – jihovýchod |  | X |
-| Střed Indie | X |  |
-| Indie – západ | X |  |
+| Střed Indie | X | X |
+| Indie – západ | X | X |
 | Indie – jih |  | X |
 | Japonsko – východ | X | X |
 | Japonsko – západ | X | X |
 | Korea – jih |  | X |
-
-V závislosti na cenovou úroveň je zajištěna každý vCore s určitou velikostí paměti. Při zvýšení nebo snížení počtu vCores pro váš server, paměť zvýší nebo sníží úměrně. Úroveň obecné účely poskytuje double množství paměti na vCore ve srovnání s základní vrstvě. Paměťově optimalizovaná vrstvy poskytuje double množství paměti ve srovnání s vrstvě obecné účely.
 
 ## <a name="storage"></a>Úložiště
 

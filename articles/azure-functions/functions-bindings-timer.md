@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: a8844ea44bf604944c5980b0d41ab5d01a30b876
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4da1ed4e9424950c39f3eb255ead2b39094597fd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725441"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -29,13 +30,17 @@ Tento článek vysvětluje, jak pracovat s aktivační události časovače v Az
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Aktivační událost časovače je součástí [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+Aktivační událost časovače je součástí [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Aktivační událost časovače je součástí [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Příklad:
 
@@ -174,7 +179,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction** | neuvedeno | Musí být nastavena na "v". Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
 |**Jméno** | neuvedeno | Název proměnné, který představuje objekt časovače v kódu funkce. | 
 |**schedule**|**ScheduleExpression**|A [výraz CRON](#cron-expressions) nebo [časový interval](#timespan) hodnotu. A `TimeSpan` lze použít pouze pro funkce aplikace, která běží na plán služby App Service. Můžete uvést výraz plán v nastavení aplikace a nastavte tuto vlastnost na název uzavřen do nastavení aplikace **%** znaky, jako v následujícím příkladě: "% ScheduleAppSetting %". |
-|**runOnStartup**|**RunOnStartup**|Pokud `true`, funkce je volána při spuštění modulu runtime. Například modul runtime spustí, když aplikaci funkce probudí po přechodu nečinnosti z důvodu nečinnosti. funkce aplikace při restartování z důvodu změn funkce a horizontálně navýší kapacitu aplikaci funkce. Proto **runOnStartup** musí zřídka Pokud někdy být nastavena na `true`, jak bude kód provést v vysoce nepředvídatelným časech.|
+|**RunOnStartup**|**RunOnStartup**|Pokud `true`, funkce je volána při spuštění modulu runtime. Například modul runtime spustí, když aplikaci funkce probudí po přechodu nečinnosti z důvodu nečinnosti. funkce aplikace při restartování z důvodu změn funkce a horizontálně navýší kapacitu aplikaci funkce. Proto **runOnStartup** musí zřídka Pokud někdy být nastavena na `true`, jak bude kód provést v vysoce nepředvídatelným časech.|
 |**useMonitor**|**UseMonitor**|Nastavte na `true` nebo `false` indikující, zda plán by se měly monitorovat. Plán monitorování trvá výskytů plán a usnadňuje zajištění, že plán je udržován správně i v případě, že instance funkce aplikaci restartovat. Pokud není explicitně nastavena, výchozí hodnota je `true` pro plány, které mají interval opakování, který je větší než 1 minuta. Pro plány, které aktivují více než jednou za minutu, výchozí hodnota je `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -213,6 +218,8 @@ Každé pole může mít jednu z následujících typů hodnot:
 |Rozsah (`-` operátor)|<nobr>"5-7 viz *"</nobr>|v hh:mm:05, hh:mm:06 a hh:mm:07, kde je HH: mm každou minutu každou hodinu (3krát minuty)|  
 |Sadu hodnot (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|v hh:mm:05, hh:mm:08 a hh:mm:10, kde je HH: mm každou minutu každou hodinu (3krát minuty)|
 |Hodnotu intervalu (`/` operátor)|<nobr>"0 * / 5 *** *"</nobr>|v hh:05:00, hh:10:00, hh:15:00, a tak dále prostřednictvím hh:55:00, kde je hh každou hodinu (12krát více než jedna hodina)|
+
+K určení měsíců nebo dnů můžete zkratky místo číselné hodnoty. Například použijte ledna pro leden nebo Sun pro neděli.
 
 ### <a name="cron-examples"></a>Příklady procesu CRON
 
@@ -272,7 +279,7 @@ Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistě
 
 ## <a name="retry-behavior"></a>Postup opakování
 
-Na rozdíl od frontě aktivační události není aktivační událost časovače opakujte po selhání funkce. Pokud funkci nezdaří, je is't názvem znovu až po příštím podle plánu.
+Na rozdíl od frontě aktivační události není aktivační událost časovače opakujte po selhání funkce. Pokud se nezdaří funkce, není volán znovu až po příštím podle plánu.
 
 ## <a name="next-steps"></a>Další postup
 

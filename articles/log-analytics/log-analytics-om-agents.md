@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: HT
+ms.openlocfilehash: 06bbcadeda2187a521daecde2b386c936e8217f0
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763591"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Nástroj Operations Manager můžete integrovat do svého pracovního prostoru Log Analytics, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics.  Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
@@ -77,7 +78,9 @@ Provedením následujícího postupu nakonfigurujete skupinu pro správu nástro
 Pokud se skupina pro správu nástroje Operations Manager registruje do pracovního prostoru Log Analytics poprvé a servery pro správu potřebují komunikovat se službou přes proxy server nebo server brány OMS, možnost zadat konfiguraci proxy serveru nebude pro danou skupinu v konzole Operations Console k dispozici.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Aby bylo možné nakonfigurovat integraci, jakož i všechny servery pro správu ve skupině pro správu, je potřeba v systému, ze kterého spouštíte konzolu Operations Console, aktualizovat systémovou konfiguraci proxy serveru pomocí nástroje Netsh.  
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-1. Zadejte následující příkaz a stiskněte **Enter**:
+   a. Přejděte na **spustit** a typ **cmd**.
+   b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
+2. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
@@ -197,9 +200,9 @@ Sady Management Pack pro vámi aktivovaná řešení, které se integrují s ná
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
-1. Otevřete nabídku **Upřesňující nastavení** pro pracovní prostor Log Analytics na portálu Azure Portal.
-1. Vyberte **Připojené zdroje** a pak **System Center**.
-1. Měl by se zobrazit název skupiny pro správu, kterou chcete z pracovního prostoru odebrat.  Ve sloupci **Poslední data** klikněte na tlačítko **Odebrat**.  
+7. Na portálu OMS klikněte na dlaždici **Nastavení**.
+8. Vyberte **připojené zdroje**.
+9. V tabulce v části System Center Operations Manager měli byste vidět název skupiny pro správu, které chcete odebrat z pracovního prostoru.  Ve sloupci **Poslední data** klikněte na tlačítko **Odebrat**.  
    
     > [!NOTE]
     > Pokud u připojené skupiny pro správu nebyla zjištěna žádná aktivita, bude odkaz **Odebrat** k dispozici až po uplynutí 14 dnů.  
@@ -210,7 +213,7 @@ Sady Management Pack pro vámi aktivovaná řešení, které se integrují s ná
 Pokud chcete odstranit oba konektory (Microsoft.SystemCenter.Advisor.DataConnector a Konektor služby Advisor), uložte si níže uvedený skript prostředí PowerShell do počítače a spusťte ho podle následujících příkladů:
 
 ```
-    .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
     .\OM2012_DeleteConnectors.ps1 “Microsoft.SytemCenter.Advisor.DataConnector” <ManagementServerName>
 ```
 
@@ -310,7 +313,7 @@ Pokud máte v plánu skupinu pro správu v budoucnu znovu připojit k nějakému
 * Na zdrojovém médiu ve složce `\ManagementPacks` pro System Center 2016 – Operations Manager a vyšší.
 * V nejnovější kumulativní aplikaci použité u vaší skupiny pro správu.  V případě verze Operations Manager 2012 jde o zdrojovou složku ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a v případě verze 2012 R2 jde o umístění `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o přidávání funkcí a shromažďování dat najdete v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
 
 

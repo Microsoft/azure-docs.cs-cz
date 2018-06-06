@@ -10,14 +10,15 @@ ms.date: 11/14/2017
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: fc6cc88cabab1bc56b0a04ce8778823647c5b2bf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bf7647d8489a102175c4e9de799793e6550495e7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714404"
 ---
 # <a name="get-started-with-azure-ad"></a>Začínáme s Azure AD
 Moderní identity managementu vyžaduje proporcionálních a konzistentní reliablity k zajištění dostupnosti probíhá aplikací a služeb pouze ověřené uživatele. Pro potřeby správy identity uživatelů, musí oddělení IT dostat adekvátní podporu způsob, jak poskytnout přístup k schválené, veřejné software jako služba (SaaS) aplikace, způsob, jak hostitele řádku interní obchodní aplikace a i prostředky pro zlepšení místní vývoj aplikací a využití. Všechny tyto požadavky nasměrujte potřeba řešení pro správu cloudových identit.      

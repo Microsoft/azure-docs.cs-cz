@@ -10,11 +10,12 @@ ms.date: 04/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 014dbf6ff6d30bfb988c404bfe35693fe68f22fd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d7384d8d1d8c0378e1a9dd68a4f7b71196330b8e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736690"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure zásobníku datacenter integrace – Publikování koncové body
 Azure zásobníku nastaví virtuální IP adresy (VIP) pro její role infrastruktury. Tyto virtuální IP adresy jsou přiděleny z fondu veřejných IP adres. Každý virtuální IP adresy, je zabezpečen seznam řízení přístupu (ACL) ve vrstvě softwarově definované sítě. Seznamy ACL se také používají ve fyzické přepínače (mandátu a BMC) pro další posílení zabezpečení řešení. Položka DNS se vytvoří pro každý koncový bod v externí zóně DNS, který zadaný v době nasazení.
@@ -48,7 +49,7 @@ Interní infrastruktury virtuální IP adresy nejsou uvedené, protože není js
 |Key Vault (správce)|&#42;.adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Fronta úložiště|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Tabulka úložiště|&#42;.Table.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTP<br>HTTPS|80<br>443|
-|Objekt Blob úložiště|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|Storage Blob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Zprostředkovatel prostředků SQL|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
 |Poskytovatel prostředků MySQL|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
 |App Service|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
@@ -67,7 +68,7 @@ Azure zásobníku podporuje pouze transparentní proxy servery. V nasazení, kde
 |Syndikace Marketplace.|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
 |Opravy a aktualizace|https://&#42;.azureedge.net|HTTPS|443|
 |Registrace|https://management.azure.com|HTTPS|443|
-|Využití|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
+|Využití|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.NET|HTTPS|443|
 |Program Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 
 

@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 07957d5ec843c414813d69b7084915bcd70a5a61
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: afd29c83a69742d17e7cadda50c0054133458b68
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736605"
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Nakonfigurujte zásady podmíněného přístupu na základě zařízení služby Azure Active Directory
 
@@ -50,7 +52,7 @@ Chcete-li získat zařízení registrovaná službou Azure AD, máte tři možno
 
 - **[Azure AD registrované zařízení](device-management-introduction.md#azure-ad-registered-devices)**  – Pokud chcete získat osobní zařízení registrovaná službou Azure AD
 
-- **[Zařízení připojená k Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  – Pokud chcete získat organizační zařízení Windows 10, který není připojený k místní AD registrované s Azure AD zaregistrován. 
+- **[Zařízení připojená k Azure AD](device-management-introduction.md#azure-ad-joined-devices)**  – Pokud chcete získat organizační zařízení Windows 10, který není připojený k místní AD registrované s Azure AD. 
 
 - **[Zařízení připojená k hybridní Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat zařízením s Windows 10, který je připojen k místní AD registrované s Azure AD.
 

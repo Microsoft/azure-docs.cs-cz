@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2018
+ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: c7e9807e7195be47bf7874837ff9428c90abbcee
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5e67c60828467cce7c3b40ba17f15f44ad045920
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735666"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Nasazení prostředků Azure k více než jedno předplatné nebo skupinu prostředků
 
@@ -128,11 +129,11 @@ Pokud nastavíte `resourceGroup` název skupiny prostředků, který ještě nee
 
 Pokud chcete nasadit šablonu příklad, použijte prostředí Azure PowerShell 4.0.0 nebo novější nebo Azure CLI 2.0.0 nebo novější.
 
-## <a name="use-the-resourcegroup-function"></a>Použijte funkci resourceGroup()
+## <a name="use-the-resourcegroup-and-subscription-functions"></a>Pomocí funkcí resourceGroup() a subscription()
 
-Pro různé nasazení skupiny prostředků, [resourceGroup() funkce](resource-group-template-functions-resource.md#resourcegroup) vyřeší různě v závislosti na tom, jak je zadat vnořené šablony. 
+Pro různé nasazení skupiny prostředků, [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) a [subscription()](resource-group-template-functions-resource.md#subscription) funkce vyřešit jinak závislosti na tom, jak je zadat vnořené šablony. 
 
-Pokud vložit jednu šablonu v rámci jiné šablony resourceGroup() v šabloně vnořené přeloží do nadřazené skupiny prostředků. Šablonu embedded používá následující formát:
+Pokud vložit jednu šablonu v rámci jiné šablony funkce ve vnořených šablony odkazující na nadřazenou skupinu prostředků a předplatného. Šablonu embedded používá následující formát:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -143,12 +144,12 @@ Pokud vložit jednu šablonu v rámci jiné šablony resourceGroup() v šabloně
     "mode": "Incremental",
     "template": {
         ...
-        resourceGroup() refers to parent resource group
+        resourceGroup() and subscription() refer to parent resource group/subscription
     }
 }
 ```
 
-Pokud jste odkaz na šablonu samostatné, resourceGroup() v šabloně propojené přeloží na skupině vnořeného prostředku. Propojené šablona používá následující formát:
+Pokud jste odkaz na šablonu samostatné, funkce v šabloně propojené vyřešit ke skupině vnořeného prostředku a předplatného. Propojené šablona používá následující formát:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -159,7 +160,7 @@ Pokud jste odkaz na šablonu samostatné, resourceGroup() v šabloně propojené
     "mode": "Incremental",
     "templateLink": {
         ...
-        resourceGroup() in linked template refers to linked resource group
+        resourceGroup() and subscription() in linked template refer to linked resource group/subscription
     }
 }
 ```

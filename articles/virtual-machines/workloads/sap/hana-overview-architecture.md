@@ -4,21 +4,22 @@ description: Přehled architektury nasazení SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/02/2018
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763778"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Přehled SAP HANA (velké instance) a architektura v Azure
 
@@ -67,8 +68,8 @@ Několik společné definice se často používá v architektuře a technické p
    Uživatelé domény místní domény, můžete přístup k serverům a spouštění služeb na těchto virtuálních počítačích (například služby databázového systému). Komunikace a název rozlišení mezi virtuálními počítači nasazen místní a virtuální počítače nasazené Azure je možné. Tento scénář je typické pro způsob, ve které jsou nasazeny většina SAP prostředky. Další informace najdete v tématu [plánování a návrhu pro Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě pomocí připojení site-to-site pomocí portálu Azure](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Klienta**: získá do izolované zákazník nasazené v HANA velké Instance razítka *klienta.* Klient je izolované sítě, úložiště a výpočetní vrstvy od ostatních klientů. Úložiště a výpočetní jednotky přiřazené různými klienty nelze zobrazit navzájem ani vzájemně komunikovat na úrovni HANA velké Instance razítka. Zákazník může rozhodnout pro nasazení do jiných klientů. Dokonce i pak není žádná komunikace mezi klienty na úrovni HANA velké Instance razítka.
 - **Kategorie SKU**: pro HANA velké Instance, nabízí tyto dvě kategorie SKU:
-    - **Typ I třídy**: S72, S72m, S144, S144m, S192 a S192m
-    - **Zadejte třídu II**: S384, S384m, S384xm, S576m, S768m a S960m
+    - **Typ I třídy**: S72, S72m, S144, S144m, S192, S192m a S192xm
+    - **Zadejte třídu II**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
 
 
 Jsou k dispozici na tom, jak nasadit SAP úlohy v cloudu různé další prostředky. Pokud máte v plánu provést nasazení SAP HANA v Azure, budete muset být zkušenosti s a s ohledem na zásady služby Azure IaaS a nasazení SAP zatížení v Azure IaaS. Než budete pokračovat, najdete v části [použití SAP řešení na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace. 
@@ -135,19 +136,22 @@ Od července 2017 je k dispozici v několika konfigurace v oblasti USA – zápa
 
 | Řešení SAP | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
 | --- | --- | --- | --- | --- |
-| Optimalizovaná pro OLAP: SAP BW BW/4HANA<br /> nebo SAP HANA pro obecné zatížení OLAP | Na Azure S72 SAP HANA<br /> – 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 jader procesoru a 72 procesoru vláken |  768 GB |  3 TB | Dostupné |
+| Optimalizovaná pro OLAP: SAP BW BW/4HANA<br /> nebo SAP HANA pro obecné zatížení OLAP | Na Azure S72 SAP HANA<br /> – 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 jader procesoru a 72 procesoru vláken |  768 GB |  3 TB | K dispozici. |
 | --- | Na Azure S144 SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v3<br /> 72 jader procesoru a 144 procesoru vláken |  1,5 TB |  6 TB | Nenabízí se už |
-| --- | Na Azure S192 SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  2.0 TB |  8 TB | Dostupné |
-| --- | Na Azure S384 SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  4.0 TB |  16 TB | Dostupné |
-| Optimalizovaná pro OLTP: SAP Business Suite<br /> na SAP HANA nebo S nebo 4HANA (OLTP)<br /> Obecné OLTP | Na Azure S72m SAP HANA<br /> – 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 jader procesoru a 72 procesoru vláken |  1,5 TB |  6 TB | Dostupné |
+| --- | Na Azure S192 SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  2.0 TB |  8 TB | K dispozici. |
+| --- | Na Azure S384 SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  4.0 TB |  16 TB | K dispozici. |
+| Optimalizovaná pro OLTP: SAP Business Suite<br /> na SAP HANA nebo S nebo 4HANA (OLTP)<br /> Obecné OLTP | Na Azure S72m SAP HANA<br /> – 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 jader procesoru a 72 procesoru vláken |  1,5 TB |  6 TB | K dispozici. |
 |---| Na Azure S144m SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v3<br /> 72 jader procesoru a 144 procesoru vláken |  3.0 TB |  12 TB | Nenabízí se už |
-|---| Na Azure S192m SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken  |  4.0 TB |  16 TB | Dostupné |
-|---| Na Azure S384m SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  6.0 TB |  18 TB | Dostupné |
-|---| Na Azure S384xm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  8.0 TB |  22 TB |  Dostupné |
-|---| Na Azure S576m SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  12.0 TB |  28 TB | Dostupné |
-|---| Na Azure S768m SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  16.0 TB |  36 TB | Dostupné |
-|---| Na Azure S960m SAP HANA<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 jader procesoru a 960 procesoru vláken |  20.0 TB |  46 TB | Dostupné |
-
+|---| Na Azure S192m SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken  |  4.0 TB |  16 TB | K dispozici. |
+|---| Na Azure S384m SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  6.0 TB |  18 TB | K dispozici. |
+|---| Na Azure S384xm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  8.0 TB |  22 TB |  K dispozici. |
+|---| Na Azure S576m SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
+|---| Na Azure S768m SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  16.0 TB |  36 TB | K dispozici. |
+|---| Na Azure S960m SAP HANA<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 jader procesoru a 960 procesoru vláken |  20.0 TB |  46 TB | K dispozici. |
+| Optimalizovaná pro OLTP **TDIv5**: SAP Business Suite<br /> na SAP HANA nebo S nebo 4HANA (OLTP)<br /> Obecné OLTP | Na Azure S192xm SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  6.0 TB |  16 TB | K dispozici. |
+|---| Na Azure S384xxm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
+|---| Na Azure S576xm SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  18.0 TB |  41 TB | K dispozici. |
+|---| Na Azure S768xm SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  24,0 TB |  56 TB | K dispozici. |
 - Jader procesoru = součet jiný-technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů.
 - Vláken procesoru = součet výpočetní vláken poskytované technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů. Všechny jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
 
@@ -156,8 +160,8 @@ Konkrétní konfigurace vybrali jsou závislé na zatížení, prostředky proce
 
 Všechny nabídky základní hardware jsou certifikované SAP HANA TDI. Dvěma různými třídami hardwaru dělí SKU do:
 
-- S72 S72m, S144, S144m, S192 a S192m, které jsou označovány jako "Typ I třídy" z jednotky SKU.
-- S384, S384m, S384xm, S576m, S768m a S960m, které se označují jako "Typ třídy II" z jednotky SKU.
+- S72 S72m, S144, S144m, S192, S192m a S192xm, které jsou označovány jako "Typ I třídy" z jednotky SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm a S960m, které se označují jako "Typ třídy II" z jednotky SKU.
 
 Dokončení HANA velké Instance razítka není přidělen výhradně pro jednoho zákazníka&#39;s použití. Tuto skutečnost se vztahuje na stojany s výpočetní a úložnou kapacitu připojené prostřednictvím síťových prostředcích infrastruktury také nasazené v Azure. Velké Instance HANA infrastruktury, jako je například Azure, nasadí různých zákazníků &quot;klienty&quot; , které jsou izolované od sebe navzájem v následující tři úrovně:
 
@@ -337,17 +341,21 @@ HANA velké instanci typu I třídy se dodává s čtyřikrát paměti svazek ja
 
 Viz následující tabulka uvádí přidělení úložiště. V tabulce jsou uvedeny hrubý kapacity pro jiné svazky zadaná u jiné Instance velké HANA jednotek.
 
-| HANA velké Instance SKU | Hana nebo dat | Hana a protokolování | / sdílené Hana | Hana/log/zálohování |
+| HANA velké Instance SKU | Hana nebo dat | Hana a protokolování | / sdílené Hana | Hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4 608 GB | 1024 GB | 1 536 GB | 1024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
+| S192xm |  12 000 GB |  2 050 GB |  2 050 GB |  2.040 GB |
 | S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
+| S384xxm |  20 000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
 | S576m | 20 000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
+| S576xm | 31,744 GB | 4 096 GB | HODNOTU 2 048 GB | 4 096 GB |
 | S768m | 28,000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
+| S768xm | 40 960 GB | 6,144 GB | 4 096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2 050 GB | 4,100 GB |
 
 

@@ -6,13 +6,14 @@ author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 10/20/2017
+ms.date: 05/23/2018
 ms.author: bikang
-ms.openlocfilehash: 7b62631bd386a2feaa675b0ebd234768bec2f5e1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0c5509d323f14a6bb62f465fa23584ca927e0e61
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763353"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -24,7 +25,7 @@ Rozhraní příkazového řádku (CLI) Azure Service Fabric je nástroj příkaz
 
 Před instalací se ujistěte, že je ve vašem prostředí nainstalovaný Python a pip. Další informace najdete v [úvodní dokumentaci nástroje pip](https://pip.pypa.io/en/latest/quickstart/) a oficiální [dokumentaci k instalaci Pythonu](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Rozhraní příkazového řádku podporuje Python verze 2.7, 3.5 a 3.6. Doporučená verze je Python 3.6, protože podpora Pythonu 2.7 brzy skončí.
+Rozhraní příkazového řádku podporuje Python 2.7, 3.5 a 3.6 verze. Doporučená verze je Python 3.6, protože podpora Pythonu 2.7 brzy skončí.
 
 ### <a name="service-fabric-target-runtime"></a>Cílový modul runtime Service Fabric
 
@@ -32,7 +33,8 @@ Smyslem Service Fabric CLI je podpora nejnovější verze modulu runtime sady Se
 
 | Verze rozhraní příkazového řádku   | Podporovaná verze modulu runtime |
 |---------------|---------------------------|
-| Nejnovější (~=4)  | Nejnovější (~=6.1)            |
+| Nejnovější (~ = 5)  | Nejnovější (~ = 6.2)            |
+| 4.0.0         | 6.1                       |
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
@@ -69,7 +71,7 @@ python --version
 pip --version
 ```
 
-Potom spusťte následující příkaz a nainstalujte Service Fabric CLI:
+Spusťte následující příkaz k instalaci služby infrastruktury Azure CLI (sfctl) a zobrazit na stránce nápovědy rozhraní příkazového řádku:
 
 ```bat
 pip install sfctl
@@ -120,7 +122,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-Instalaci můžete otestovat podle kroků uvedených v části **Ubuntu a subsystém Windows pro Linux**.
+Pro testování instalace, můžete se podívat do kroků v **Ubuntu a Windows subsystém pro Linux** části
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
@@ -231,13 +233,13 @@ Další informace najdete v [dokumentace k OpenSSL](https://www.openssl.org/docs
 
 Některé operace můžou generovat následující zprávu:
 
-`Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known`
+`Failed to establish a new connection`
 
 Ověřte, že zadaný koncový bod clusteru je dostupný a naslouchá. Ověřte také, že je na daném hostiteli a portu dostupné uživatelské rozhraní Service Fabric Explorer. Pokud chcete aktualizovat koncový bod, použijte příkaz `sfctl cluster select`.
 
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. Globální příznak `--debug` zvyšuje úroveň podrobností souborů protokolů.
+Podrobné protokoly jsou často užitečné při ladění nebo hlášení problému. `--debug` Příznak zvyšuje podrobností výstupu.
 
 ### <a name="command-help-and-syntax"></a>Nápověda k příkazům a jejich syntaxe
 

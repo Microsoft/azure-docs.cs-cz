@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: a2225409e4cb50d91c09207ee70b76df12925192
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 57455c5abf8c566f3935ece73d0b7470863936f8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699145"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použijte uživatele přiřazené spravované služby Identity (MSI) na virtuální počítač s Windows, pro přístup k Azure Resource Manager
 
@@ -79,8 +80,7 @@ New-AzureRmVm `
 
 Uživatel přiřazený identity je vytvořen jako samostatný prostředků Azure. Pomocí [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity), Azure vytvoří identity v klientovi služby Azure AD, které lze přiřadit k jedné nebo více instancí služby Azure.
 
-> [!IMPORTANT]
-> Vytvoření identity uživatele přiřazené podporuje pouze alfanumerické znaky a spojovníky (0 – 9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení virtuálního počítače nebo VMSS správně fungovat. Vraťte se zpět pro aktualizace. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
@@ -171,4 +171,7 @@ Odpověď obsahuje konkrétní informace skupinu prostředků, podobně jako v n
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled MSI najdete v tématu [identita spravované služby přehled](overview.md).
+V tomto kurzu jste zjistili, jak vytvořit přiřazené identity uživatele a jeho připojení k virtuální počítač Azure pro přístup k rozhraní API služby Azure Resource Manager.  Další informace o Azure Resource Manager najdete v tématu:
+
+> [!div class="nextstepaction"]
+>[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)

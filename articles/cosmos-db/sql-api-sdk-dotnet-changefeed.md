@@ -2,22 +2,20 @@
 title: 'Azure Cosmos DB: .NET změnu kanálu procesoru API, sadu SDK a prostředky | Microsoft Docs'
 description: Další informace o rozhraní API pro změnu kanálu procesoru a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi .NET změnu kanálu procesoru SDK.
 services: cosmos-db
-documentationcenter: .net
 author: ealsur
 manager: kfile
-ms.assetid: f2dd9438-8879-4f74-bb6c-e1efc2cd0157
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: reference
+ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a2770b9349dac8caa8e0611d77522ab56ca1bf07
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798880"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Informační kanál procesor změnu .NET SDK: Stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -44,6 +42,10 @@ ms.lasthandoff: 05/08/2018
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="stable-builds"></a>Stabilní sestavení
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* Přidat další protokolování.
+* Pevné nevrácenou DocumentClient při volání metody odhad čekající pracovní vícekrát.
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 * Opravy v odhad čekající práci.
@@ -107,6 +109,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [1.3.3](#1.3.3) |08 může 2018 |--- |
 | [1.3.2](#1.3.2) |18. dubna 2018 |--- |
 | [1.3.1](#1.3.1) |13. března 2018 |--- |
 | [1.2.0](#1.2.0) |31. října 2017 |--- |

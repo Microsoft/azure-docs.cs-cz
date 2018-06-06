@@ -1,27 +1,29 @@
 ---
-title: "Návrhu hybridní identity – požadavky na správu obsahu Azure | Microsoft Docs"
-description: "Poskytuje přehled o tom, jak určit požadavky na správu obsahu vaší firmy. Většinou když má uživatel svůj vlastní zařízení mu může mít také více přihlašovací údaje, které bude střídavých závislosti na aplikaci, kterou používá. Je důležité k rozlišení postupu, který obsah byl vytvořen pomocí osobní přihlašovacích údajů oproti těm, které jsou vytvořené pomocí podnikové přihlašovací údaje. Řešení identity měli být schopní pracovat s cloud services a poskytuje bezproblémové prostředí pro koncového uživatele při zajištění jeho ochrany osobních údajů a zvýšit ochranu před úniky dat."
-documentationcenter: 
+title: Návrhu hybridní identity – požadavky na správu obsahu Azure | Microsoft Docs
+description: Poskytuje přehled o tom, jak určit požadavky na správu obsahu vaší firmy. Obvykle v případě, že uživatel má svá vlastní zařízení, budou také může mít několik přihlašovacích údajů, které bude střídavých závislosti na aplikaci, která používají. Je důležité k rozlišení postupu, který obsah byl vytvořen pomocí osobní přihlašovacích údajů oproti těm, které jsou vytvořené pomocí podnikové přihlašovací údaje. Řešení identity měli být schopní pracovat s cloud services a poskytuje bezproblémové prostředí pro koncového uživatele při zajištění jejich ochrany osobních údajů a zvýšit ochranu před úniky dat.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: dd1ef776-db4d-4ab8-9761-2adaa5a4f004
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 71e33ec82c3db6fb7efa52dd12315e309658aab9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: b414a1e93d5a0f4be5be82011482b492fd9ce378
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34800789"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Stanovení požadavků na správu obsahu pro vaše řešení hybridní identity
-Seznámení s požadavky na správu obsahu pro vaši organizaci může přímo ovlivnit vaše rozhodnutí, na které hybridní řešení identit používat. S tím, jak narůstá více zařízení a schopnost uživatelům přinést si vlastní zařízení ([BYOD](https://aka.ms/byodcg)), musí společnost chránit svá vlastní data, ale ho také musí zachovat ochranu osobních údajů uživatelů. Většinou když má uživatel svůj vlastní zařízení mu může mít také více přihlašovací údaje, které bude střídavých závislosti na aplikaci, kterou používá. Je důležité k rozlišení postupu, který obsah byl vytvořen pomocí osobní přihlašovacích údajů oproti těm, které jsou vytvořené pomocí podnikové přihlašovací údaje. Řešení identity měli být schopní pracovat s cloud services a poskytuje bezproblémové prostředí pro koncového uživatele při zajištění jeho ochrany osobních údajů a zvýšit ochranu před úniky dat. 
+Seznámení s požadavky na správu obsahu pro vaši organizaci může přímo ovlivnit vaše rozhodnutí, na které hybridní řešení identit používat. S tím, jak narůstá více zařízení a schopnost uživatelům přinést si vlastní zařízení ([BYOD](https://aka.ms/byodcg)), musí společnost chránit svá vlastní data, ale ho také musí zachovat ochranu osobních údajů uživatelů. Obvykle v případě, že uživatel má svá vlastní zařízení, budou také může mít několik přihlašovacích údajů, které bude střídavých závislosti na aplikaci, která používají. Je důležité k rozlišení postupu, který obsah byl vytvořen pomocí osobní přihlašovacích údajů oproti těm, které jsou vytvořené pomocí podnikové přihlašovací údaje. Řešení identity měli být schopní pracovat s cloud services a poskytuje bezproblémové prostředí pro koncového uživatele při zajištění jejich ochrany osobních údajů a zvýšit ochranu před úniky dat. 
 
 Chcete-li poskytovat správy obsahu, jak je znázorněno na obrázku níže bude řešení identity využít různé technické ovládací prvky:
 
@@ -43,7 +45,7 @@ Obecně platí požadavky na správu obsahu bude využívat váš systém správ
 Při plánování řešení hybridní identity se ujistěte, že následující otázky jsou zodpovězeny v souladu s požadavky vaší organizace:
 
 * Má vaše společnost zavedené ovládací prvky zabezpečení k vynucení ochrany osobních údajů?
-  * Pokud ano, bude kontrolní mechanismy zabezpečení možné integrovat řešení hybridní identity, který chcete použít?
+  * Pokud ano, ovládací prvky zabezpečení budou moci integrovat řešení hybridní identity, který chcete použít?
 * Používá vaše společnost klasifikace dat?
   * Pokud ano, je aktuální řešení schopné integrovat řešení hybridní identity, který chcete použít?
 * Vaše společnost aktuálně nemá řešení pro úniku dat? 
@@ -52,7 +54,7 @@ Při plánování řešení hybridní identity se ujistěte, že následující 
   * Pokud ano, jaké typy prostředků?
   * Pokud ano, jakou úroveň informací je potřeba?
   * Pokud ano, kde protokol auditu se musí nacházet? Místní nebo v cloudu?
-* Potřebuje vaše společnost k šifrování e-mailů, které obsahují citlivá data (čísla sociálního zabezpečení, čísla platebních karet a podobně)?
+* Potřebuje vaše společnost k šifrování e-mailů, které obsahují citlivá data (čísla sociálního zabezpečení, čísla platebních karet, atd.)?
 * Potřebuje vaše společnost k šifrování všech dokumentů nebo obsah sdílet s externími obchodními partnery?
 * Vaše společnost potřebuje vynucovat podnikové zásady na určité typy e-mailů (dělat žádné Odpovědět všem, nepředávat)?
 

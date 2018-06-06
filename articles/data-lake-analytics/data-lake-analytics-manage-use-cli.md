@@ -1,25 +1,22 @@
 ---
-title: Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Naučte se spravovat účty Data Lake Analytics, zdrojů dat, úlohy a uživatele pomocí rozhraní příkazového řádku Azure
+title: Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure
+description: Tento článek popisuje, jak používat rozhraní příkazového řádku Azure ke správě úloh Data Lake Analytics, zdroje dat a uživatelů.
 services: data-lake-analytics
-documentationcenter: ''
-author: SnehaGunda
-manager: Kfile
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: sngun
-ms.openlocfilehash: 9504e1fcbb0128f538cb6e959cf7586f24827836
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86fa41db2d21beac08015d067b79ce1375cd3ddf
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736085"
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-cli"></a>Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure (CLI)
+# <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Správa Azure Data Lake Analytics pomocí rozhraní příkazového řádku Azure (CLI)
 
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
@@ -214,24 +211,6 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
-
-
-## <a name="use-azure-resource-manager-groups"></a>Pomocí skupin Azure Resource Manager
-Aplikace obvykle obsahují celou řadu součástí, například webovou aplikaci, databázi, databázový server, úložiště a služby třetích stran. Azure Resource Manager umožňuje pracovat s prostředky v aplikaci jako se skupinou, označuje jako skupiny prostředků Azure. Můžete nasadit, aktualizovat, sledovat nebo odstranit všechny prostředky pro aplikaci v rámci jediné koordinované operace. Pro nasazení použijete šablonu a tato šablona může fungovat v různých prostředích, jako například v testovacím, přípravném nebo produkčním prostředí. Můžete zpřehlednit fakturaci ve své organizaci tím, že zobrazíte souhrnné náklady za celou skupinu. Další informace najdete v tématu [Přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md). 
-
-Služba Data Lake Analytics může zahrnovat následující součásti:
-
-* Účet Azure Data Lake Analytics
-* Vyžaduje výchozí účet Azure Data Lake Storage
-* Účty úložiště další Azure Data Lake
-* Další účty Azure Storage
-
-Můžete vytvořit všechny tyto součásti v rámci jedné skupiny Resource Manager, aby je bylo snazší spravovat.
-
-![Účet Azure Data Lake Analytics a úložiště](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
-
-Účet Data Lake Analytics a účty závislého úložiště musí být umístěné ve stejném centru dat Azure.
-Skupiny prostředků správce ale může být umístěno v různých datových center.  
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

@@ -2,22 +2,20 @@
 title: Průvodce návrhem úložiště Azure Table | Microsoft Docs
 description: Návrh škálovatelné a původce tabulky ve službě Azure Table Storage
 services: cosmos-db
-documentationcenter: na
 author: SnehaGunda
 manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 41a62c0c77b177179907d8e4a7631af889cd8bd6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798810"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky úložiště Azure: Návrh škálovatelné a původce tabulky
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -1208,7 +1206,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <td>
 <table>
 <tr>
-<th>EntityType</th>
+<th>Typ entity</th>
 <th>FirstName</th>
 <th>Příjmení</th>
 <th>Věk</th>
@@ -1230,7 +1228,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <td>
 <table>
 <tr>
-<th>EntityType</th>
+<th>Typ entity</th>
 <th>FirstName</th>
 <th>Příjmení</th>
 <th>Věk</th>
@@ -1252,7 +1250,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <td>
 <table>
 <tr>
-<th>EntityType</th>
+<th>Typ entity</th>
 <th>Název oddělení</th>
 <th>EmployeeCount</th>
 </tr>
@@ -1271,7 +1269,7 @@ Všimněte si, že každá entita musí mít dál **PartitionKey**, **RowKey**, 
 <td>
 <table>
 <tr>
-<th>EntityType</th>
+<th>Typ entity</th>
 <th>FirstName</th>
 <th>Příjmení</th>
 <th>Věk</th>

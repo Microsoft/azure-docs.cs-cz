@@ -6,21 +6,20 @@ author: tdykstra
 manager: cfowler
 ms.service: functions
 ms.topic: include
-ms.date: 03/12/2018
+ms.date: 05/23/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: d47c170936fc954ceac0d76fdb2e6d9c2c886602
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a709c5716a861f6b8dca5a365b9ef51e1252f644
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726732"
 ---
-### <a name="c-class-library"></a>Knihovna tříd jazyka C#
+Následující tabulka obsahuje informace o přidání podpory pro tuto vazbu v každé vývojovém prostředí.
 
-Pro C# – třída knihovny vývoj, podporu pro vazbu přidává [instalace balíčku](../articles/azure-functions/functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code).
-
-### <a name="binding-extensions-in-functions-2x"></a>Vazba rozšíření funkcí 2.x
-
-Pro místní vývoj v Azure Functions version2.x balíčku se používá ke [zaregistrovat příponu vazby](../articles/azure-functions/functions-triggers-bindings.md#local-development-azure-functions-core-tools).
-
-
+| Vývojové prostředí               | Chcete-li přidat podporu v <br>Funkce 1.x  |
+|----------------------|----------------|---------------|
+|Místní vývoj – knihovna tříd jazyka C#       | [Instalovat balíček](../articles/azure-functions/functions-triggers-bindings.md#local-csharp) | 
+|Místní vývoj - C# skript, JavaScript, F # |Automaticky         |
+|Vývoj portálu|  Automaticky    |

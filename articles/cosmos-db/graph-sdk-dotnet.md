@@ -2,22 +2,20 @@
 title: .NET SDK služby Azure CosmosDB rozhraní Graph API & prostředky | Microsoft Docs
 description: Další informace o Azure CosmosDB Graph API, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi.
 services: cosmos-db
-documentationcenter: .net
 author: luisbosquez
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-graph
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 10/17/2017
 ms.author: lbosq
-ms.openlocfilehash: 41608e76216f63ccf3165cc3959787c661d71fa0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c5975809b0f196fe88a11504549b046e910fc93c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795920"
 ---
 # <a name="azure-cosmos-db-graph-net-api-download-and-release-notes"></a>Azure Cosmos DB grafu .NET API: Stažení a poznámky k verzi
 
@@ -34,7 +32,7 @@ ms.lasthandoff: 04/06/2018
 
 Doporučujeme používat ovladač Gremlin open source pro platformu .NET, Gremlin.Net. Zjistěte, jak začít pracovat [Cosmos databázi Azure: vytvoření grafu aplikace pomocí rozhraní .NET a rozhraní Graph API](create-graph-dotnet.md).
 
-### <a name="a-name031-preview031-preview"></a><a name="0.3.1-preview"/>0.3.1-preview
+### <a name="a-name031-preview031-preview"></a><a name="0.3.1-preview"/>0.3.1-Preview
 
 #### <a name="bug-fixes"></a>Opravy chyb
 * Opravte volitelně načíst `appsettings.json` (`netstandard1.6`)
@@ -43,7 +41,7 @@ Doporučujeme používat ovladač Gremlin open source pro platformu .NET, Gremli
 * Přepněte Microsoft.Azure.Graphs Cílová platforma AnyCPU.
 * Odebrat Mono sestavení z `net461` manifest balíčku.
 
-### <a name="a-name030-preview030-preview"></a><a name="0.3.0-preview"/>0.3.0-preview
+### <a name="a-name030-preview030-preview"></a><a name="0.3.0-preview"/>0.3.0-Preview
 
 #### <a name="whats-new"></a>Co je nového
 * Přidaná podpora pro `.netstandard 1.6`
@@ -55,7 +53,7 @@ Doporučujeme používat ovladač Gremlin open source pro platformu .NET, Gremli
   *  Procházení směrování s filtry by se měla zobrazit tomuto vylepšení, například: `g.V('1').outE().has('name', 'marko').inV()`.
 * Přidat optimalizace pro traversals s `limit()` krok.
 
-#### <a name="breaking-changes"></a>Nejnovější změny
+#### <a name="breaking-changes"></a>Zásadní změny
 * Odebrané podpory pro rozhraní .NET Framework 4.5.1
 
 * Nový analyzátor zarovnaná s `gremlin-groovy` gramatika. V důsledku toho jsou některé výrazy, které dříve fungovaly nejednoznačný pro nový analyzátor. Jeden případ Poznámka:
@@ -70,7 +68,7 @@ Doporučujeme používat ovladač Gremlin open source pro platformu .NET, Gremli
 
 ### <a name="a-name020-preview020-preview"></a><a name="0.2.0-preview"/>0.2.0-preview
 
-### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-preview
+### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-Preview
 * Verze preview počáteční.
 
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abacea02ee40cf899b58ab1fe4ac454784ff7d18
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757191"
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - UK OFICIÁLNÍHO třívrstvá webové aplikace automatizace
 
@@ -148,7 +149,7 @@ Load Balancer
 
 **Internetová brána a veřejnou IP adresu**: Internetová brána zpřístupní služby aplikace uživatelům prostřednictvím Internetu. Provoz přístup k tyto služby zabezpečené pomocí [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) nabídky vrstvy 7 směrování a možnosti s ochranou brány firewall (firewall webových aplikací) webové aplikace Vyrovnávání zatížení.
 
-**Virtuální síť pro správu**: to [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) obsahuje prostředky, které implementují Správa a sledování možnosti pro úlohy běžící v produkčním prostředí virtuální sítě.
+**Virtuální síť pro správu**: to [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) obsahuje prostředky, které implementují Správa a sledování možnosti pro úlohy běžící v produkčním prostředí virtuální sítě.
 
 **Jumpbox**: označuje taky jako [bastionu hostitele](https://en.wikipedia.org/wiki/Bastion_host), což je zabezpečeného virtuálního počítače v síti, která správcům umožňuje připojení k virtuálním počítačům v produkčním prostředí virtuální sítě. Jumpbox má skupinu NSG, která umožňuje vzdálenou komunikaci pouze z jedné veřejné IP adresy na seznamu bezpečných adres. Zdroj provoz pro povolení vzdálené plochy (RDP) komunikace, musí být definován v této skupině. Správa prostředků produkční je prostřednictvím protokolu RDP pomocí zabezpečené Jumpbox virtuálního počítače.
 

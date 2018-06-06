@@ -12,13 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 05/30/2018
 ms.author: iainfou
-ms.openlocfilehash: c47822bebdc8b3cc8896fe56b8f9a4ce317495c3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fb3639b8ce5c50773bec0ee429e1fa2f7277671b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716614"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalace a konfigurace vzdálené plochy pro připojení k virtuální počítač s Linuxem v Azure
 Linux virtuálních počítačů (VM) v Azure jsou obvykle spravovat z příkazového řádku pomocí připojení zabezpečené shell (SSH). Při vydání nových do systému Linux, nebo pro rychlé řešení potíží scénáře, může být snazší pomocí vzdálené plochy. Tento článek podrobně popisují postup instalace a konfigurace prostředí plochy ([xfce](https://www.xfce.org)) a vzdálené plochy ([xrdp](http://www.xrdp.org)) pro váš virtuální počítač s Linuxem pomocí modelu nasazení Resource Manager.
@@ -36,7 +37,7 @@ Většina virtuální počítače s Linuxem v Azure, nemají prostředí plochy 
 
 Následující příklad nainstaluje jednoduchá [xfce4](https://www.xfce.org/) prostředí plochy na virtuálního počítače s Ubuntu 16.04 LTS. Příkazy pro jiné distribuce jsou mírně odlišné (použijte `yum` na Red Hat Enterprise Linux nainstalovat a nakonfigurovat příslušný `selinux` pravidla, nebo použijte `zypper` k instalaci na SUSE, třeba).
 
-První, SSH k virtuálnímu počítači. V následujícím příkladu se připojuje k virtuálnímu počítači s názvem *myvm.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*:
+První, SSH k virtuálnímu počítači. V následujícím příkladu se připojuje k virtuálnímu počítači s názvem *myvm.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*. Použijte vlastní hodnoty:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -85,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Vytvoření pravidla skupiny zabezpečení sítě pro přenosy vzdálené plochy
 Pokud chcete povolit přenosy vzdálené plochy k dosažení virtuálním počítačům s Linuxem, zabezpečení sítě skupiny pravidlo musí být vytvořen, který umožňuje TCP na portu 3389 k dosažení virtuálního počítače. Další informace o pravidel skupiny zabezpečení sítě najdete v tématu [co je skupina zabezpečení sítě?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Můžete také [pomocí portálu Azure k vytvoření pravidla skupiny zabezpečení sítě](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s [az virtuálních počítačů open-port](/cli/azure/vm#az_vm_open_port) na portu *3389*.
+Následující příklad vytvoří pravidlo skupiny zabezpečení sítě s [az virtuálních počítačů open-port](/cli/azure/vm#az-vm-open-port) na portu *3389*. Azure CLI 2.0 není relace SSH do virtuálního počítače, otevřete následující pravidla skupiny zabezpečení sítě:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

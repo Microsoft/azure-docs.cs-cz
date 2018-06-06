@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3841222d08b23f43f69e77fa43c469793b70ce63
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801377"
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Trvalé svazky s disky systému Azure
 
@@ -37,11 +38,14 @@ default (default)   kubernetes.io/azure-disk   1h
 managed-premium     kubernetes.io/azure-disk   1h
 ```
 
+> [!NOTE]
+> Trvalé svazku deklarace identity jsou určené v GiB ale spravovat Azure disky se účtují podle SKU pro konkrétní velikost. Tyto identifikátory SKU rozsahu od 32GiB S4 nebo P4 disků 4TiB S50 nebo P50 disků. Kromě toho propustnost a IOPS výkon prémiový spravované disku závisí na obou SKU a velikost instance uzly v clusteru AKS. V tématu [ceny a výkonu spravovaných disků][managed-disk-pricing-performance].
+
 ## <a name="create-persistent-volume-claim"></a>Vytvoření svazku trvalé deklarace identity
 
 Trvalé svazku deklarace identity (PVC) se používá k automatickému zajištění úložiště založené na třídě úložiště. V takovém případě PVC můžete použít jednu z tříd předem vytvořené úložiště k vytvoření Azure standard nebo premium spravovaného disku.
 
-Vytvořte soubor s názvem `azure-premimum.yaml`a zkopírujte následující manifestu.
+Vytvořte soubor s názvem `azure-premium.yaml`a zkopírujte následující manifestu.
 
 Všimněte si, která `managed-premium` třídy úložiště je uveden v anotace a deklarace identity požaduje disk `5GB` velikost `ReadWriteOnce` přístup.
 
@@ -63,7 +67,7 @@ spec:
 Vytvoření svazku trvalé deklarace s [kubectl použít] [ kubectl-apply] příkaz.
 
 ```azurecli-interactive
-kubectl apply -f azure-premimum.yaml
+kubectl apply -f azure-premium.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>Použití trvalé svazku
@@ -103,16 +107,17 @@ Nyní máte spuštěný pod s Azure diskem připojené `/mnt/azure` adresáře. 
 Další informace o Kubernetes trvalé svazky s využitím disky systému Azure.
 
 > [!div class="nextstepaction"]
-> [Modul plug-in Kubernetes pro disky systému Azure][kubernetes-disk]
+> [Modul plug-in Kubernetes pro disky systému Azure][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
+[azure-disk-volume]: azure-disk-volume.md 
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md

@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 18/05/2018
+ms.date: 05/18/2018
 ms.author: xibingao
-ms.openlocfilehash: cfb49f08a245fc08ba3fe78333e801ea2d358c4a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 40beeea5c699488d48065a08f5dce0ae212ba617
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736385"
 ---
 # <a name="skin-cancer-image-classification-with-azure-machine-learning-aml-package-for-computer-vision-amlpcv-and-team-data-science-process-tdsp"></a>Vzhledu rakoviny Image klasifikaci s balíček Azure Machine Learning (AML) pro počítač vize (AMLPCV) a Team datové vědy procesu (TDSP)
 

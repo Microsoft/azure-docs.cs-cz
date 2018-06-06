@@ -1,29 +1,25 @@
 ---
-title: "Podmíněné příkazy – spustit kroky na základě podmínky - Azure Logic Apps | Microsoft Docs"
-description: "Spusťte kroky v aplikaci logiky až po splnění podmínku. Vytvořte rozhodovací stromy, které spouštění pracovních postupů na základě zadaných podmínek."
+title: Podmíněné příkazy přidat do pracovních - Azure Logic Apps | Microsoft Docs
+description: Vytvoření podmínek, které řídí akce v pracovních postupech v Azure Logic Apps
 services: logic-apps
-keywords: "Podmíněné příkazy, rozhodovacích stromů"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 486c1053f42ed3becc2c4b60accc993db7f24baa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 5629c743434a0fe53f35da29343945951bbc5dd7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725726"
 ---
-# <a name="conditional-statements-run-steps-based-on-a-condition-in-logic-apps"></a>Podmíněné příkazy: spustit kroky na základě podmínky v aplikacích logiky
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvoření podmíněné příkazy, které řídí akce pracovního postupu v Azure Logic Apps
 
-Pokud chcete provést kroky pouze po úspěšném je zadaná podmínka, použijte *podmíněného příkaz*. Tato struktura porovnávají data do svého pracovního postupu pro konkrétní hodnoty nebo pole. Potom můžete definovat různé kroky, které spustit závislosti na tom, zda data splňuje podmínku. Lze vnořit podmínky uvnitř sebe navzájem.
+Chcete-li spustit konkrétní akce v aplikaci logiky pouze po úspěšném je zadaná podmínka, přidejte *podmíněného příkaz*. Tato struktura porovnávají data do svého pracovního postupu pro konkrétní hodnoty nebo pole. Potom můžete definovat různé akce, které spustit závislosti na tom, zda data splňuje podmínku. Lze vnořit podmínky uvnitř sebe navzájem.
 
 Předpokládejme například, že máte aplikaci logiky, která odešle příliš moc e-mailů, jakmile se zobrazí nové položky na webu informačního kanálu RSS. Můžete přidat podmíněného příkaz k odeslání e-mailu jenom v případě, že nová položka obsahuje konkrétní řetězec. 
 
@@ -65,7 +61,7 @@ Předpokládejme například, že máte aplikaci logiky, která odešle příli�
 
    Tady je Dokončená podmínka:
 
-   ![Dokončení podmínky](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![Dokončená podmínka](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
 
    > [!TIP]
    > Chcete-li vytvořit podmínku pokročilejší nebo použití výrazů, zvolte **upravit v rozšířeném režimu**. Můžete použít výrazy, které jsou definované [jazyk definic workflowů](../logic-apps/logic-apps-workflow-definition-language.md).

@@ -3,7 +3,7 @@ title: Role v Azure AD Privileged Identity Management | Microsoft Docs
 description: Zjistěte, jaké role se používají pro privilegované identity pomocí rozšíření Azure Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 03/04/2018
-ms.author: curtand
+ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: 464b8c3433f6fbfb9e29f57ee96dd6d5e8f2109a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48ff4b4957ac1f9f8f0d6737335811a3e2df0b68
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698301"
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Různé role pro správu v Azure Active Directory PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 572bf9d783e1018b835b47c6c63fff1ce69659e9
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4208a7be3c002bcefed273015d002cb1aee0fecd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724971"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Centra oznámení výstup vazby pro Azure Functions
 
@@ -29,13 +30,15 @@ Centra oznámení Azure musí být nakonfigurovaný pro služby platformy oznám
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby centra oznámení jsou součástí [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/) úložiště GitHub.
+Vazby centra oznámení jsou součástí [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) balíček NuGet verze 1.x. Zdrojový kód pro balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Tato vazba není k dispozici ve funkcích 2.x.
 
 ## <a name="example---template"></a>Příklad – šablony
 

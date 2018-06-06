@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/13/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0a648d0733d9d81cc0e586f5fa54dc8d75d2f6f0
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801928"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Koncepty návrhu
-Účelem tohoto tématu je k popisu oblastí, které musí považovat při návrhu implementace služby Azure AD Connect. Toto téma se podrobné informace o určité oblasti a tyto koncepty stručně jsou popsány v i další témata.
+Účelem tohoto dokumentu je popisují oblasti, které musí považovat při návrhu implementace služby Azure AD Connect. Tento dokument je podrobné informace o určité oblasti a tyto koncepty stručně jsou popsány v ostatních dokumentů.
 
 ## <a name="sourceanchor"></a>sourceAnchor
 Atribut sourceAnchor je definován jako *atribut neměnné průběhu životnosti objektu*. Jednoznačně identifikuje objektů, že je stejný objekt místní a ve službě Azure AD. Atribut taky nazývá **immutableId** a tyto názvy se použijí zaměňovat.
 
-Neměnné, word, který je "nelze změnit", je důležité, abyste v tomto tématu. Vzhledem k tomu, že tento atribut hodnotu nelze změnit, jakmile byla nastavena, je důležité vybrat návrh, který podporuje váš scénář.
+Neměnné, word, který je "nelze změnit", je důležité k tomuto dokumentu. Vzhledem k tomu, že tento atribut hodnotu nelze změnit, jakmile byla nastavena, je důležité vybrat návrh, který podporuje váš scénář.
 
 Atribut se používá pro následující scénáře:
 
@@ -40,12 +42,12 @@ Toto téma sourceAnchor pouze zmíněn, protože se týká uživatelům. Stejná
 ### <a name="selecting-a-good-sourceanchor-attribute"></a>Výběr atribut sourceAnchor funkční
 Hodnota atributu musí postupujte podle následujících pravidel:
 
-* Být menší než 60 znaků.
+* Méně než 60 znaků.
   * Kódování a počítají jako znaky 3 znaky nebude a – z, A-Z nebo 0-9
 * Neobsahuje zvláštní znak: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ _
 * Musí být globálně jedinečný
 * Musí být řetězec, celé číslo nebo binárního souboru
-* By neměl být založené na jméno uživatele, tyto změny
+* Neměli založeny na jméno uživatele, protože tyto můžete změnit
 * By neměl být malá a velká písmena a vyhnout se hodnoty, které se mohou lišit podle případu
 * By se měla přiřadit při vytvoření objektu
 
@@ -165,7 +167,7 @@ Pokud používáte Azure AD Connect ke správě místního nasazení služby AD 
 
 Pokud spravujete služby AD FS mimo Azure AD Connect nebo třetích stran federační servery používají pro ověřování, je nutné ručně aktualizovat pravidla deklarací pro ImmutableID deklarace identity, aby byla konzistentní s hodnotami sourceAnchor exportované do Azure AD, jak je popsáno v části článku [pravidla deklarací identity upravit AD FS](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Po dokončení instalace, Průvodce vrátí následující upozornění:
 
-![Konfigurace federace třetích stran](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
+![Konfigurace federování třetích stran](./media/active-directory-aadconnect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Přidávání nových adresářů do stávajícího nasazení
 Předpokládejme, že jste nasadili Azure AD Connect s povolenou funkcí ConsistencyGuid a teď chcete přidat další adresář k nasazení. Když se pokusíte přidat k adresáři, Průvodce Azure AD Connect kontroluje stav atribut mSDS-ConsistencyGuid v adresáři. Pokud atribut je nakonfigurovaný na jeden nebo více objektů v adresáři, průvodce se ukončí atribut se používá jiné aplikace a vrátí chybu, jak je znázorněno v následujícím diagramu. Pokud jste si jisti, že atribut není používán existující aplikace, budete muset obraťte se na podporu pro informace o tom, jak potlačit chyby.
@@ -193,7 +195,7 @@ Některé organizace mají směrovat domény, jako je contoso.local nebo jednodu
 
 Čtení [přidání vlastního názvu domény do Azure Active Directory](../active-directory-domains-add-azure-portal.md) Další informace o přidání a ověření domény.
 
-Azure AD Connect zjistí, pokud běží v prostředí domény směrovat a bude odpovídajícím způsobem upozornit z pokračovat Expresní nastavení. Pokud pracujete v směrovat doméně, je pravděpodobné, že jména UPN uživatelů mít příliš směrovat přípony. Například pokud používáte v contoso.local, Azure AD Connect navrhuje vám umožní používat vlastní nastavení místo použitím expresního nastavení. Pomocí vlastních nastavení, budete moci zadat atribut, který má být použit jako hlavní název uživatele pro přihlášení k Azure po uživatelů se synchronizují do Azure AD.
+Azure AD Connect zjistí, pokud běží v prostředí domény směrovat a bude odpovídajícím způsobem upozornit z pokračovat Expresní nastavení. Pokud pracujete v směrovat doméně, je pravděpodobné, že jména UPN uživatelů, mít příliš směrovat přípony. Například pokud používáte v contoso.local, Azure AD Connect navrhuje vám umožní používat vlastní nastavení místo použitím expresního nastavení. Pomocí vlastních nastavení, budete moci zadat atribut, který má být použit jako hlavní název uživatele pro přihlášení k Azure po uživatelů se synchronizují do Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

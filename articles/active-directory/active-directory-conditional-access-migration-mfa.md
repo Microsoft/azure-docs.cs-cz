@@ -1,14 +1,15 @@
 ---
-title: "Migrace classic zásadu, která vyžaduje vícefaktorové ověřování na webu Azure portal | Microsoft Docs"
-description: "Tento článek ukazuje, jak migrovat classic zásady, které vyžadují služby Multi-Factor authentication na portálu Azure."
+title: Migrace classic zásadu, která vyžaduje vícefaktorové ověřování na webu Azure portal | Microsoft Docs
+description: Tento článek ukazuje, jak migrovat classic zásady, které vyžadují služby Multi-Factor authentication na portálu Azure.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 77484dc3773736ea15c39ede5f9d49b6b694d960
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 52d4297d2e86ad67672d38f1c527041b813f8d61
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723683"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Migrace classic zásady, které vyžadují služby Multi-Factor authentication na portálu Azure 
 
@@ -55,11 +57,11 @@ Proces migrace se skládá z následujících kroků:
 
 3. V **spravovat** klikněte na tlačítko **zásady Classic (preview)**.
 
-    ![Classic zásady](./media/active-directory-conditional-access-migration-mfa/12.png)
+    ![Klasické zásady](./media/active-directory-conditional-access-migration-mfa/12.png)
 
 4. V seznamu classic zásad, klikněte na zásadu, která vyžaduje **služby Multi-Factor authentication** pro cloudové aplikace.
 
-    ![Classic zásady](./media/active-directory-conditional-access-migration-mfa/13.png)
+    ![Klasické zásady](./media/active-directory-conditional-access-migration-mfa/13.png)
 
 
 ## <a name="create-a-new-conditional-access-policy"></a>Vytvořit novou zásadu podmíněného přístupu
@@ -140,11 +142,11 @@ Proces migrace se skládá z následujících kroků:
 
 Chcete-li zakázat classic zásady, klikněte na tlačítko **zakázat** v **podrobnosti** zobrazení.
 
-![Classic zásady](./media/active-directory-conditional-access-migration-mfa/14.png)
+![Klasické zásady](./media/active-directory-conditional-access-migration-mfa/14.png)
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o migraci classic zásad najdete v tématu [migraci na portálu Azure classic zásad](active-directory-conditional-access-migration.md).
 

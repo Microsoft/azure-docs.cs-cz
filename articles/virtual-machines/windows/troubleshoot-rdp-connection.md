@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: danis
-ms.openlocfilehash: 60c54850c1ca5de0e9bda4b48688ba297874e48e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: c1444901fa46a62761d6b94ccb8e7ea3ff3d057f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701883"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Řešení potíží s připojení ke vzdálené ploše pro virtuální počítač Azure
 Protokol RDP (Remote Desktop) připojení k systému Windows Azure virtuálního počítače (VM) může selhat z různých důvodů, můžete ponechat nelze získat přístup k virtuálnímu počítači. Tento problém může být pomocí služby Vzdálená plocha na virtuální počítač, síťové připojení nebo klienta vzdálené plochy v hostitelském počítači. Tento článek vás provede některé z nejběžnějších metod k vyřešení potíží s připojeními RDP. 
@@ -65,7 +66,7 @@ Po dokončení každého kroku řešení potíží zkuste znovu připojit k virt
     Vyberte virtuální počítač na portálu Azure. Projděte dolů podokno nastavení **podporu + Poradce při potížích s** části téměř dolní části seznamu. Klikněte **resetovat heslo** tlačítko. Nastavte **režimu** k **jenom resetování konfigurace** a pak klikněte na tlačítko **aktualizace** tlačítko:
    
     ![Konfiguraci RDP na portálu Azure](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **Skupina zabezpečení sítě ověřte, zda pravidla**. Použijte [Ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) a ověřte, jestli pravidlo ve skupině zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat pravidel skupiny zabezpečení efektivní zajistit příchozí "Povolit" NSG pravidlo existuje a prioritu pro RDP port (standardně 3389). Další informace najdete v tématu [tok provozu pomocí efektivní pravidla zabezpečení pro řešení potíží s virtuálních počítačů](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+2. **Skupina zabezpečení sítě ověřte, zda pravidla**. Použijte [Ověření toku protokolu IP](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) a ověřte, jestli pravidlo ve skupině zabezpečení sítě blokuje provoz do nebo z virtuálního počítače. Můžete také zkontrolovat pravidel skupiny zabezpečení efektivní zajistit příchozí "Povolit" NSG pravidlo existuje a prioritu pro RDP port (standardně 3389). Další informace najdete v tématu [tok provozu pomocí efektivní pravidla zabezpečení pro řešení potíží s virtuálních počítačů](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 3. **Diagnostika spouštění virtuálních počítačů zkontrolujte**. Tento krok řešení potíží zkontroluje protokoly konzoly virtuálního počítače, abyste zjistili, pokud je virtuální počítač oznámení chyby. Ne všechny virtuální počítače mají Diagnostika spouštění povoleno, takže tento krok řešení problémů může být volitelné.
    
@@ -95,7 +96,7 @@ Po dokončení každého kroku řešení potíží zkuste znovu připojit k virt
    
     Po dokončení této operace, dojde ke ztrátě dat v dočasných disku a jsou aktualizovány dynamické IP adresy, které jsou spojeny s virtuálním Počítačem.
 
-9. **Ověřte směrování**. Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+9. **Ověřte směrování**. Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/diagnose-network-routing-problem.md).
 
 10. Ujistěte se, že žádné místní brány firewall nebo brána firewall v počítači, umožňuje odchozí přenosy TCP 3389 do Azure.
 
@@ -184,7 +185,7 @@ Po dokončení každého kroku řešení potíží zkuste znovu připojit k virt
     Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
-6. **Ověřte směrování**. Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/virtual-network-routes-troubleshoot-powershell.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+6. **Ověřte směrování**. Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/diagnose-network-routing-problem.md).
 
 7. Ujistěte se, že žádné místní brány firewall nebo brána firewall v počítači, umožňuje odchozí přenosy TCP 3389 do Azure.
 

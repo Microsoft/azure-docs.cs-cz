@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Poznámky pro vývojáře na pomocí vlastních zásad | Microsoft Docs'
-description: Poznámky pro vývojáře o konfiguraci a údržbu Azure AD B2C pomocí vlastních zásad
+title: Poznámky pro vývojáře na použití vlastní zásady v Azure Active Directory B2C | Microsoft Docs
+description: Poznámky pro vývojáře o konfiguraci a údržbu Azure AD B2C pomocí vlastních zásad.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: davidmu
-ms.openlocfilehash: cf76f158d7e87a2f2f902551fdc751b295b6915b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ce323972dcdbf673311b407f427bc452fbe6dc3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709722"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Poznámky k verzi pro verzi public preview služby Azure Active Directory B2C vlastních zásad
 Sada funkcí vlastních zásad je nyní k dispozici pro vyhodnocení v rámci verze public preview pro všechny Azure Active Directory B2C zákazníků (Azure AD B2C). Tato sada funkcí je cílena na vývojáře pokročilé identity vytváření nejvíce komplexní řešení identity.  
@@ -68,7 +68,7 @@ Rozhraní s externí součásti a aplikace
 | Rozšíření IDP OpenIDConnect |  | x |  | například Google + |
 | ROZŠÍŘENÍ IDP OAUTH2 |  | x |  | například Facebook  |
 | ROZŠÍŘENÍ IDP OAUTH1 |  | x |  | například služby Twitter |
-| IDP-SAML |  | x |  | například Salesforce, služba AD FS |
+| ROZŠÍŘENÍ IDP SAML |  | x |  | například Salesforce, služba AD FS |
 | IDP-WSFED | x |  |  |  |
 | Předávající strany OAUTH |  | x |  |  |
 | Předávající strany OIDC |  | x |  |  |

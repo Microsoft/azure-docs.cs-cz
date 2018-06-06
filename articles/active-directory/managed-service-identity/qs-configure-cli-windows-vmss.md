@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
 ms.author: daveba
-ms.openlocfilehash: faf526082a9a38d5d98443ff2b74eac4eef1ca08
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a0e05543734ae0604149d18564ae1bc1eff1892b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714625"
 ---
 # <a name="configure-a-virtual-machine-scale-set-managed-service-identity-msi-using-azure-cli"></a>Konfigurace virtuálního počítače sady škálování spravované služby Identity (MSI) pomocí rozhraní příkazového řádku Azure
 
@@ -119,8 +120,7 @@ Tato část vás provede procesem vytvoření VMSS a přiřazení přiřazená V
 
 2. Vytvoření uživatele přiřazená pomocí identity [vytvoření az identity](/cli/azure/identity#az-identity-create).  `-g` Parametr určuje skupinu prostředků, kde se má vytvořit uživatel s přiřazenou identitu, a `-n` parametr určuje její název. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<USER ASSIGNED IDENTITY NAME>` hodnoty parametrů s vlastními hodnotami:
 
-    > [!IMPORTANT]
-    > Vytvoření identity uživatele přiřazené podporuje pouze alfanumerické znaky a spojovníky (0 – 9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení virtuálního počítače nebo VMSS správně fungovat. Vraťte se zpět pro aktualizace. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
     ```azurecli-interactive
@@ -176,10 +176,10 @@ Odpověď obsahuje podrobnosti pro identitu uživatele přiřazené vytvořili, 
    }
    ```
 
-2. Přiřaďte identitu uživatele přiřazené k VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity#az_vm_assign_identity). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` hodnoty parametrů s vlastními hodnotami. `<USER ASSIGNED IDENTITY ID>` Bude uživatel s přiřazenou identity prostředek `id` vlastnost, protože vytvořili v předchozím kroku:
+2. Přiřaďte identitu uživatele přiřazené k VMSS pomocí [az vmss identity přiřadit](/cli/azure/vmss/identity#az_vm_assign_identity). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VMSS NAME>` hodnoty parametrů s vlastními hodnotami. `<USER ASSIGNED IDENTITY ID>` Bude uživatel s přiřazenou identity prostředek `id` vlastnost, protože vytvořili v předchozím kroku:
 
     ```azurecli-interactive
-    az vmss identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY ID>
+    az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY ID>
     ```
 
 ### <a name="remove-a-user-assigned-identity-from-an-azure-vmss"></a>Odebrání uživatele přiřazené identity z VMSS Azure
@@ -187,15 +187,15 @@ Odpověď obsahuje podrobnosti pro identitu uživatele přiřazené vytvořili, 
 > [!NOTE]
 >  Odebrání všech identit uživatelů přiřazené z sadu škálování virtuálního počítače není aktuálně podporováno, pokud používáte systém přiřazené identity. 
 
-Pokud vaše VMSS má více identit přiřazeného uživatele, můžete odebrat všechny uzly s výjimkou na posledním místě pomocí [odebrat az vmss identity](/cli/azure/vmss/identity#az-vmss-identity-remove). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` hodnoty parametrů s vlastními hodnotami. `<MSI NAME>` Je identita uživatele přiřazené název vlastnosti, která najdete v části Identita používání virtuálních počítačů `az vm show`:
+Pokud vaše VMSS má více identit přiřazeného uživatele, můžete odebrat všechny uzly s výjimkou na posledním místě pomocí [odebrat az vmss identity](/cli/azure/vmss/identity#az-vmss-identity-remove). Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VMSS NAME>` hodnoty parametrů s vlastními hodnotami. `<MSI NAME>` Je identita uživatele přiřazené název vlastnosti, která najdete v části Identita používání virtuálních počítačů `az vm show`:
 
 ```azurecli-interactive
-az vmss identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <MSI NAME>
+az vmss identity remove -g <RESOURCE GROUP> -n <VMSS NAME> --identities <MSI NAME>
 ```
 Pokud vaše VMSS systému přiřadit i přiřazeného identity uživatele, můžete odebrat všechny uživatelské přiřadila přepínání identity používat pouze systém přiřazen. Použijte následující příkaz: 
 
 ```azurecli-interactive
-az vmss update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.identityIds=null
+az vmss update -n <VMSS NAME> -g <RESOURCE GROUP> --set identity.type='SystemAssigned' identity.identityIds=null
 ```
 
 ## <a name="next-steps"></a>Další postup

@@ -8,16 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: a9bf9748de5f390f95b8b672e0cf77afa5c49581
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 41f69a1dd4cbd4c0f6be0764efdbf0fb61ac3cb7
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724424"
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Výchozí oprávnění uživatele v Azure Active Directory
 
@@ -35,11 +36,11 @@ Výchozí oprávnění pro hosty jsou omezující ve výchozím nastavení. Host
 **Oblast** | **Člen uživatelských oprávnění** | **Oprávnění uživatele Guest**
 ------------ | --------- | ----------
 Uživatelů a kontaktů | Číst všechny veřejné vlastnosti uživatelů a kontaktů<br>Pozvěte hosty<br>Změnit svoje heslo<br>Spravovat vlastní mobilní telefonní číslo<br>Spravovat vlastní fotografie<br>Zrušení platnosti vlastní obnovovacích tokenů | Vlastní vlastnosti pro čtení<br>Zobrazovaný název pro čtení, e-mailu, přihlašovací jméno, fotografií, hlavní název uživatele a vlastnosti typu uživatele jiných uživatelů a kontaktů<br>Změnit svoje heslo
-Skupiny   | Vytvoření skupin zabezpečení<br>Vytvoření skupiny Office 365<br>Číst vlastnosti všech skupin<br>Přečtěte si neskrytý členství ve skupinách<br>Čtení skryté členství ve skupině Office 365 pro připojené k skupinu<br>Spravovat vlastnosti, vlastnictví a členství ve vlastnictví skupin<br>Přidat hosty do vlastní skupiny<br>Spravovat nastavení dynamické členství<br>Odstranit vlastní skupiny<br>Obnovení ve vlastnictví skupiny Office 365 | Číst vlastnosti všech skupin<br>Přečtěte si neskrytý členství ve skupinách<br>Skrytý členství ve skupině Office 365 pro připojených skupin pro čtení<br>Spravovat vlastní skupiny<br>Přidat hosty do vlastní skupiny (Pokud je povolena.)<br>Odstranit vlastní skupiny<br>Obnovení ve vlastnictví skupiny Office 365           
+Skupiny | Vytvoření skupin zabezpečení<br>Vytvoření skupiny Office 365<br>Číst vlastnosti všech skupin<br>Přečtěte si neskrytý členství ve skupinách<br>Čtení skryté členství ve skupině Office 365 pro připojené k skupinu<br>Spravovat vlastnosti, vlastnictví a členství ve vlastnictví skupin<br>Přidat hosty do vlastní skupiny<br>Spravovat nastavení dynamické členství<br>Odstranit vlastní skupiny<br>Obnovení ve vlastnictví skupiny Office 365 | Číst vlastnosti všech skupin<br>Přečtěte si neskrytý členství ve skupinách<br>Skrytý členství ve skupině Office 365 pro připojených skupin pro čtení<br>Spravovat vlastní skupiny<br>Přidat hosty do vlastní skupiny (Pokud je povolena.)<br>Odstranit vlastní skupiny<br>Obnovení ve vlastnictví skupiny Office 365 
 Aplikace | Registrace (vytvořit) novou aplikaci<br>Čtení vlastnosti zaregistrované a podnikových aplikací<br>Spravovat vlastnosti aplikace, přiřazení a přihlašovací údaje pro vlastní aplikace<br>Vytvořit nebo odstranit heslo aplikace pro uživatele<br>Odstranit vlastní aplikace<br>Obnovit vlastní aplikace | Čtení vlastnosti zaregistrované a podnikových aplikací<br>Spravovat vlastnosti aplikace, přiřazení a přihlašovací údaje pro vlastní aplikace<br>Odstranit vlastní aplikace<br>Obnovit vlastní aplikace
 Zařízení | Číst vlastnosti všech zařízení<br>Spravovat všechny vlastnosti zařízení<br> | Žádná oprávnění<br>Zařízení vlastněná odstranění<br>
 Adresář | Číst všechny informace o společnosti<br>Číst všechny domény<br>Číst všechny partnerem kontrakty | Přečtěte si zobrazovaný název a ověření domény
-Role a obory | Číst všechny role pro správu a členství ve skupinách<br>Číst všechny vlastnosti a členství administrativních jednotek | Žádná oprávnění              
+Role a obory | Číst všechny role pro správu a členství ve skupinách<br>Číst všechny vlastnosti a členství administrativních jednotek | Žádná oprávnění 
 Předplatná | Číst všechny odběry<br>Zapnout člen plánu služby | Žádná oprávnění
 Zásady | Číst vlastnosti všech zásad<br>Spravovat všechny vlastnosti vlastní zásady | Žádná oprávnění
 

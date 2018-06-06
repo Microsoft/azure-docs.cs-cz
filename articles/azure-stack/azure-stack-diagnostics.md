@@ -7,14 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801649"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure zásobníku diagnostické nástroje
 
@@ -140,7 +141,7 @@ if($s)
 
 - Pokud **FromDate** a **ToDate** nebyly zadány parametry, se shromáždí protokoly pro poslední čtyři hodiny ve výchozím nastavení.
 - Můžete použít **TimeOutInMinutes** parametr nastavit časový limit pro shromažďování protokolů. Ve výchozím nastavení, jinak je nastavená na 150 (2,5 hodiny).
-
+- Ve verzi 1805 a novější se ve výchozím nastavení vypnutá shromažďování výpisu souborů protokolu. Chcete-li ji povolit, použijte **IncludeDumpFile** přepínač parametr. 
 - V současné době můžete použít **FilterByRole** parametr do kolekce filtrů protokolu podle následujících rolí:
 
    |   |   |   |
@@ -150,7 +151,7 @@ if($s)
    | ACSFabric              | Doména                           | NonPrivilegedAppGateway    |
    | ACSFrontEnd            | ECE                              | NRP                        |
    | ACSMetrics             | ExternalDNS                      | Výrobce OEM                        |
-   | ACSMigrationService    | Prostředky infrastruktury                           | PXE                        |
+   | ACSMigrationService    | Fabric                           | PXE                        |
    | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
    | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
    | ACSTableMaster         | FRP                              | SLB                        |   
@@ -184,7 +185,7 @@ Další informace o skriptu prostředí PowerShell ERCS_AzureStackLogs.ps1, mů�
 * Příkaz přijímá chvíli ke spuštění na základě na rolí, které shromažďují v protokolech. Přispívajících faktorů také zahrnovat doby trvání, zadaný pro shromažďování protokolů a počtu uzlů v prostředí Azure zásobníku.
 * Podle protokolu spustí kolekce, zkontrolujte do nové složky vytvořené v **OutputSharePath** zadaný v příkazu parametr.
 * Každá role má protokoly uvnitř zip jednotlivé soubory. V závislosti na velikosti shromažďovat protokoly může mít roli protokoly rozdělit do několika souborů zip. Pro roli Pokud chcete mít všechny soubory protokolu v rozbalené do jediné složky, použijte nástroj, který můžete rozbalte hromadně (například 7zip). Vyberte všechny komprimované soubory pro roli a vyberte **extrahovat zde**. To unzips všechny soubory protokolu pro tuto roli v jedné sloučené složce.
-* Soubor nazývá **Get-AzureStackLog_Output.log** se také vytvoří ve složce, která obsahuje soubory komprimované protokolu. Tento soubor je protokolu výstupu příkazu, který můžete použít při řešení problémů během shromáždění protokolů.
+* Soubor nazývá **Get-AzureStackLog_Output.log** se také vytvoří ve složce, která obsahuje soubory komprimované protokolu. Tento soubor je protokolu výstupu příkazu, který můžete použít při řešení problémů během shromáždění protokolů. Někdy protokolový soubor zahrnuje `PS>TerminatingError` položky, které můžete bezpečně ignorovat, pokud očekávaný protokolu souborů chybí po protokolu spustí kolekce.
 * Prozkoumat konkrétní chyby, může být potřeba protokolů z více než jedna součást.
     -   Systém a protokoly událostí pro všechny virtuální počítače infrastruktury se shromažďují v *VirtualMachines* role.
     -   Systém a protokoly událostí pro všechny hostitele se shromažďují v *BareMetal* role.

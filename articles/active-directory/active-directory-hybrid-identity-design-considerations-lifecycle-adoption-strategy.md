@@ -1,25 +1,27 @@
 ---
-title: "Návrhu hybridní identity - strategii životního cyklu přijetí Azure | Microsoft Docs"
-description: "Pomáhá, definování úloh správy hybridní identity podle možností, které jsou k dispozici pro jednotlivé fáze životního cyklu."
-documentationcenter: 
+title: Návrhu hybridní identity - strategii životního cyklu přijetí Azure | Microsoft Docs
+description: Pomáhá, definování úloh správy hybridní identity podle možností, které jsou k dispozici pro jednotlivé fáze životního cyklu.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: bfa74c7557819bbef334fc94eb42e5ba83cf3fee
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801826"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Určení strategii přijetí životního cyklu hybridní identity
 V této úloze definujete strategie správy identit pro hybridní identity řešení splňovat obchodní požadavky definovaný v [určit úlohy správy hybridní identity](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -35,11 +37,11 @@ Jak definovat úkoly správy hybridní identity podle identity začátku do konc
 
 | Fáze životního cyklu správy | Místní | Cloud | Hybridní |
 | --- | --- | --- | --- |
-| Správa účtů a zřizování |Pomocí role serveru Active Directory® Domain Services (AD DS) můžete vytvářet škálovatelnou, zabezpečenou a zvladatelnou infrastrukturu pro správu uživatelů a prostředků a poskytovat podporu pro práci s adresáři aplikace, jako je Microsoft® Exchange Server. <br><br> [Můžete zřídit skupiny ve službě AD DS prostřednictvím Identity manager](https://technet.microsoft.com/library/ff686261.aspx) <br>[Můžete zřídit uživatelů ve službě AD DS](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Správci vám pomůže spravovat přístup uživatelů k sdílených prostředků z bezpečnostních důvodů řízení přístupu. Ve službě Active Directory, je Správa řízení přístupu na úrovni objektu podle nastavení různé úrovně přístupu nebo oprávnění k objektům, jako je například Úplné řízení, zápisu, čtení nebo žádný přístup. Jak budou různí uživatelé definuje řízení přístupu ve službě Active Directory můžete použít objekty služby Active Directory. Ve výchozím nastavení jsou nejbezpečnější nastavení nastavit oprávnění u objektů ve službě Active Directory. |Je nutné vytvořit účet pro každého uživatele, kteří budou přistupovat ke cloudové službě Microsoftu. Můžete také změnit uživatelské účty nebo je odstranit, když jste už nepotřebují. Ve výchozím nastavení uživatelé nebudou mít oprávnění správce, ale můžete volitelně přiřadit. Další informace najdete v tématu [Správa uživatelů ve službě Azure AD](active-directory-create-users.md). <br><br> V rámci Azure Active Directory mezi hlavní funkce je schopnost spravovat přístup k prostředkům. Tyto prostředky můžou být součástí adresáři, jako v případě oprávnění ke správě objektů pomocí rolí v adresáři nebo prostředky, které jsou externí vzhledem k adresáři, jako je například aplikace SaaS, služby Azure a webů služby SharePoint nebo místních prostředků. <br><br> Přístup center z Azure služby Active Directory je řešení pro správu skupiny zabezpečení. Vlastník prostředku (nebo správce adresáře) můžete přiřadit skupiny k poskytování určité přístupu k prostředkům, které vlastní. Členové skupiny se poskytnout přístup a vlastníka prostředku můžete udělit oprávnění ke správě seznamu členů skupiny, která někdo jiný – například Správce oddělení nebo technickou podporu správce<br> <br> Správa skupin v Azure AD tématu poskytuje další informace o správě přístupu pomocí skupin. |Rozšíření do cloudu prostřednictvím synchronizace a federaci identit služby Active Directory |
+| Správa účtů a zřizování |Pomocí role serveru Active Directory® Domain Services (AD DS) můžete vytvářet škálovatelnou, zabezpečenou a zvladatelnou infrastrukturu pro správu uživatelů a prostředků a poskytovat podporu pro práci s adresáři aplikace, jako je Microsoft® Exchange Server. <br><br> [Můžete zřídit skupiny ve službě AD DS prostřednictvím Identity manager](https://technet.microsoft.com/library/ff686261.aspx) <br>[ Můžete zřídit uživatelů ve službě AD DS](https://technet.microsoft.com/library/ff686263.aspx) <br><br> Správci vám pomůže spravovat přístup uživatelů k sdílených prostředků z bezpečnostních důvodů řízení přístupu. Ve službě Active Directory, je Správa řízení přístupu na úrovni objektu podle nastavení různé úrovně přístupu nebo oprávnění k objektům, jako je například Úplné řízení, zápisu, čtení nebo žádný přístup. Jak budou různí uživatelé definuje řízení přístupu ve službě Active Directory můžete použít objekty služby Active Directory. Ve výchozím nastavení jsou nejbezpečnější nastavení nastavit oprávnění u objektů ve službě Active Directory. |Je nutné vytvořit účet pro každého uživatele, kteří budou přistupovat ke cloudové službě Microsoftu. Můžete také změnit uživatelské účty nebo je odstranit, když jste už nepotřebují. Ve výchozím nastavení uživatelé nebudou mít oprávnění správce, ale můžete volitelně přiřadit. Další informace najdete v tématu [Správa uživatelů ve službě Azure AD](active-directory-create-users.md). <br><br> V rámci Azure Active Directory mezi hlavní funkce je schopnost spravovat přístup k prostředkům. Tyto prostředky můžou být součástí adresáři, jako v případě oprávnění ke správě objektů pomocí rolí v adresáři nebo prostředky, které jsou externí vzhledem k adresáři, jako je například aplikace SaaS, služby Azure a webů služby SharePoint nebo místních prostředků. <br><br> Přístup center z Azure služby Active Directory je řešení pro správu skupiny zabezpečení. Vlastník prostředku (nebo správce adresáře) můžete přiřadit skupiny k poskytování určité přístupu k prostředkům, které vlastní. Členové skupiny se poskytnout přístup a vlastníka prostředku můžete udělit oprávnění ke správě seznamu členů skupiny, která někdo jiný – například Správce oddělení nebo technickou podporu správce<br> <br> Správa skupin v části služby Azure AD, poskytuje další informace o správě přístupu pomocí skupin. |Rozšíření do cloudu prostřednictvím synchronizace a federaci identit služby Active Directory |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 Přístup na základě rolí používá role (RBAC) řídit a zřizování zásad k vyhodnocení, testování a vynucovat podnikové procesy a pravidla pro udělení přístupu uživatelům. Klíče správci vytvářet zásady zřizování a přiřadit uživatele k rolím a který definovat sadu oprávnění k prostředkům pro tyto role. RBAC rozšiřuje řešení správy identit pro používání procesů založených na softwaru a snížit ruční zásah uživatele v procesu zřizování.
-Azure AD RBAC umožňuje společnosti umožní omezit množství operací, které konkrétního můžete udělat, po kterou má přístup k portálu pro správu Azure. Správci IT ca pomocí RBAC pro řízení přístupu na portál delegovat přístup pomocí následujících postupů správy přístupu:
+Azure AD RBAC umožňuje společnosti umožní omezit počet operací, které konkrétního můžete provést po má přístup k portálu Azure. Správci IT ca pomocí RBAC pro řízení přístupu na portál delegovat přístup pomocí následujících postupů správy přístupu:
 
 * **Přiřazení role na základě skupiny**: můžete přiřadit přístup ke skupinám Azure AD, které mohou být synchronizovány z místní služby Active Directory. Díky tomu můžete využít stávající investice, které vaše organizace má provést v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny správy služby Azure AD Premium.
 * **Využívání, které jsou součástí role v Azure**: tři role je možné použít – vlastník, Přispěvatel a čtečky, ujistěte se, že uživatelé a skupiny mají oprávnění k provádět jenom úkoly, které potřebují svou práci.
@@ -67,17 +69,18 @@ Jakmile vaši organizaci zřízení prostředků mezi všechny interní organiza
 > 
 > 
 
-Na základě licencí (nárok na základě) Azure AD služby pracovní podle aktivaci předplatného v klientovi directory nebo služby Azure AD. Jakmile bude předplatné aktivní možnosti služby můžete spravují správci nástroje directory nebo služby a používá licencovaní uživatelé. Další informace najdete v tématu Jak funguje licencování pracovní Azure AD?
-Integrace s poskytovatelé další 3.
+Na základě licencí (nárok na základě) Azure AD služby pracovní podle aktivaci předplatného v klientovi directory nebo služby Azure AD. Jakmile bude předplatné aktivní možnosti služby můžete spravují správci nástroje directory nebo služby a používá licencovaní uživatelé. 
 
-Azure Active Directory poskytuje jednotné přihlašování a rozšířeného zabezpečení aplikace přístup k tisícům SaaS a místní webové aplikace. Podrobný seznam podporovaných aplikací SaaS v galerii aplikací Azure Active Directory najdete v tématu seznam kompatibility federace Azure Active Directory: poskytovatelů identit třetích stran, které lze použít k implementaci jednotného přihlašování
+## <a name="integration-with-other-3rd-party-providers"></a>Integrace s poskytovatelé další 3.
+
+Azure Active Directory poskytuje jednotné přihlašování a rozšířeného zabezpečení aplikace přístup k tisícům SaaS a místní webové aplikace. Další informace najdete v tématu [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)
 
 ## <a name="define-synchronization-management"></a>Definování správy synchronizace
 Integrace místních adresářů se službou Azure AD zvyšuje produktivitu uživatelů tím, že jim poskytuje společnou identitu pro přístup ke cloudovým i místním prostředkům. Díky této integraci můžete využít výhod těchto uživatelů a organizací:
 
 * Organizace můžou poskytovat uživatelům jednotnou identitu hybridní přes místní nebo cloudové služby využívají Windows Server Active Directory a následným připojením ke službě Azure Active Directory.
 * Správci můžou poskytovat podmíněný přístup na základě prostředků aplikace, zařízení a identity uživatele, umístění v síti a vícefaktorového ověřování.
-* Uživatelé mohou využívat jejich společnou identitu prostřednictvím účty ve službě Azure AD k Office 365, Intune, SaaS aplikace a aplikace třetích stran.
+* Uživatelé mohou využívat jejich společnou identitu prostřednictvím účty ve službě Azure AD k Office 365, Intune, aplikace SaaS a aplikace třetích stran.
 * Vývojáři mohou vytvářet aplikace, které využívají společného modelu identity integrace aplikací do služby Active Directory v místě nebo Azure pro cloudové aplikace
 
 Na následujícím obrázku je příkladem široký přehled o procesu synchronizace identit.

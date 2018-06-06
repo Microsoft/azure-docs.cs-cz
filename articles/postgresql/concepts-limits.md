@@ -8,41 +8,33 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 06/04/2018
+ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757412"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení v Azure databázi PostgreSQL
 Následující části popisují kapacitu a funkční omezení ve službě databáze.
 
-## <a name="pricing-tier-maximums"></a>Maximální hodnoty cenové úrovně
-Azure databáze PostgreSQL má více cenové úrovně, které lze vybírat při vytváření serveru. Další informace najdete v tématu [cenové úrovně v databázi Azure pro PostgreSQL](concepts-pricing-tiers.md).  
+## <a name="maximum-connections"></a>Maximální počet připojení
+Maximální počet připojení za cenová úroveň a vCores jsou následující: 
 
-Takto je maximální počet připojení, výpočetní jednotky a úložiště v jednotlivých cenových úrovní: 
-
-|Cenová úroveň| Výpočetní generování| vCore(s)| Maximální počet připojení |
-|---|---|---|---|
-|Basic| Gen 4| 1| 50 |
-|Basic| Gen 4| 2| 100 |
-|Basic| Gen 5| 1| 50 |
-|Basic| Gen 5| 2| 100 |
-|Obecné použití| Gen 4| 2| 150|
-|Obecné použití| Gen 4| 4| 250|
-|Obecné použití| Gen 4| 8| 480|
-|Obecné použití| Gen 4| 16| 950|
-|Obecné použití| Gen 4| 32| 1 500|
-|Obecné použití| Gen 5| 2| 150|
-|Obecné použití| Gen 5| 4| 250|
-|Obecné použití| Gen 5| 8| 480|
-|Obecné použití| Gen 5| 16| 950|
-|Obecné použití| Gen 5| 32| 1 500|
-|Paměťově optimalizované| Gen 5| 2| 150|
-|Paměťově optimalizované| Gen 5| 4| 250|
-|Paměťově optimalizované| Gen 5| 8| 480|
-|Paměťově optimalizované| Gen 5| 16| 950|
+|**Cenová úroveň**| **vCore(s)**| **Maximální počet připojení** |
+|---|---|---|
+|Basic| 1| 50 |
+|Basic| 2| 100 |
+|Obecné použití| 2| 150|
+|Obecné použití| 4| 250|
+|Obecné použití| 8| 480|
+|Obecné použití| 16| 950|
+|Obecné použití| 32| 1 500|
+|Paměťově optimalizované| 2| 150|
+|Paměťově optimalizované| 4| 250|
+|Paměťově optimalizované| 8| 480|
+|Paměťově optimalizované| 16| 950|
 
 Při připojení přesahuje limit, může se zobrazit chybová zpráva:
 > Závažná chyba: bohužel již příliš mnoho klientů

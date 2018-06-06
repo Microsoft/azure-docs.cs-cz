@@ -1,0 +1,66 @@
+---
+title: Možnosti Microsoft Azure IoT | Dokumentace Microsoftu
+description: Zvolte, jak implementovat řešení IoT pomocí akcelerátorů řešení Azure IoT, Azure IoT Central nebo Azure IoT Hub.
+author: dominicbetts
+manager: timlt
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
+ms.date: 11/10/2017
+ms.author: dobett
+ms.openlocfilehash: 56a19e9cbeb6e7d30171d23ff918a34ba423d2f2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725577"
+---
+# <a name="compare-azure-iot-options"></a>Porovnání možností Azure IoT
+
+Článek [Azure a Internet věcí](iot-accelerators-what-is-azure-iot.md) popisuje typickou architekturu řešení IoT s následujícími vrstvami:
+
+* Správa a připojení zařízení
+* Zpracování a analýza dat
+* Prezentace a obchodní integrace
+
+Azure IoT pro implementaci této architektury nabízí několik možností, které jsou vhodné pro různé sady zákaznických požadavků:
+
+* [Akcelerátory řešení Azure IoT](../active-directory-domain-services/index.yml) jsou kolekce [akcelerátorů řešení](iot-accelerators-what-are-solution-accelerators.md) na podnikové úrovni, která je založená na platformě Azure jako službě (PaaS) a umožňuje zrychlit vývoj vlastních řešení IoT.
+
+* [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) je řešení SaaS (software jako služba), které využívá přístup založený na modelu a umožňuje vytvářet řešení IoT na podnikové úrovni, aniž by to vyžadovalo zkušenosti s vývojem cloudových řešení.
+
+## <a name="azure-iot-hub"></a>Azure IoT Hub
+
+Služba Azure IoT Hub představuje základní Azure PaaS a využívají ji Azure IoT Central i akcelerátory řešení Azure IoT. IoT Hub umožňuje spolehlivou a zabezpečenou obousměrnou komunikaci mezi miliony zařízení IoT a cloudovým řešením. IoT Hub pomáhá plnit náročné úkoly implementace problémy, jako jsou:
+
+* Správa a připojení zařízení velkého rozsahu
+* Ingestování telemetrie velkého rozsahu
+* Příkazy a ovládání zařízení
+* Vynucení zabezpečení zařízení
+
+## <a name="compare-azure-iot-solution-accelerators-and-azure-iot-central"></a>Porovnání akcelerátorů řešení Azure IoT a Azure IoT Central
+
+Volba produktu Azure IoT je důležitou součástí plánování řešení IoT. IoT Hub je individuální služba Azure, která sama o sobě neposkytuje kompletní řešení IoT. Službu IoT Hub můžete použít jako výchozí bod pro jakékoli řešení IoT a k jejímu využití nepotřebujete akcelerátory řešení Azure IoT ani Azure IoT Central. Akcelerátory řešení Azure IoT i Azure IoT Central využívají službu IoT Hub společně s dalšími službami Azure. Následující tabulka shrnuje hlavní rozdíly mezi akcelerátory řešení Azure IoT a Azure IoT Central a pomůže vám při výběru vhodné varianty pro vaše požadavky:
+
+|                        | Akcelerátory řešení Azure IoT | Azure IoT Central |
+| ---------------------- | --------- | ----------- |
+| Primární využití | Ke zrychlení vývoje vlastního řešení IoT, které vyžaduje maximální flexibilitu | Ke zkrácení doby uvedení na trh pro jednoduchá řešení IoT, která nevyžadují rozsáhlá přizpůsobení služeb |
+| Přístup k podkladovým službám PaaS          | Máte přístup k podkladovým službám Azure a můžete je spravovat nebo podle potřeby vyměnit. | SaaS. Plně spravovaná řešení, podkladové služby nejsou zveřejněné. |
+| Flexibilita            | Vysoká. Kód pro mikroslužby je typu open source a můžete ho upravit libovolným způsobem podle svých potřeb. Kromě toho můžete přizpůsobit infrastrukturu nasazení.| Střední. Můžete využít předdefinované uživatelské prostředí založené na prohlížeči a přizpůsobit model řešení a aspekty uživatelského rozhraní. Infrastrukturu nejde přizpůsobit, protože jednotlivé komponenty se nezveřejňují.|
+| Úroveň dovedností                 | Středně vysoká. K přizpůsobení back-endu řešení potřebujete znalosti Javy nebo .NET. K přizpůsobení vizualizace potřebujete znalosti JavaScriptu. | Nízká. K přizpůsobení řešení potřebujete znalosti modelování. Znalosti kódování nejsou potřeba. |
+| Úvodní prostředí | Akcelerátory řešení implementují běžné scénáře IoT. Je možné je nasadit v řádu minut. | Šablony aplikací a šablony zařízení poskytují předdefinované modely. Je možné je nasadit v řádu minut. |
+| Ceny                | Služby můžete doladit tak, abyste měli náklady pod kontrolou. | Jednoduchá a předvídatelná struktura cena. |
+
+Rozhodnutí, který produkt využít k sestavení vašeho řešení IoT, určují hlavně:
+
+* Vaše obchodní požadavky
+* Typ řešení, které chcete sestavit
+* Dovednosti vaší organizace pro sestavování a správu řešení z dlouhodobého hlediska
+
+## <a name="next-steps"></a>Další postup
+
+Na základě zvoleného produktu a přístupu jsou navrhujeme tyto další kroky:
+
+* **Akcelerátory řešení Azure IoT:** [Co jsou akcelerátory řešení Azure IoT?](iot-accelerators-what-are-solution-accelerators.md)
+* **Azure IoT Central**: [Azure IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions).
+* **IoT Hub:** [Přehled služby Azure IoT Hub](../iot-hub/iot-hub-what-is-iot-hub.md).

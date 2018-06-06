@@ -12,16 +12,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/4/2018
+ms.date: 6/1/2018
 ms.author: raiye
-ms.openlocfilehash: ea7c01075d9f65ed262681c216f5770d19466507
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aaf91f8394ac4fd4fa6372c6c0f17ff92178589e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737533"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačního systému Azure v následujících tabulkách. Vyhledávání, zjistěte, pokud konkrétní aktualizace se týká hostovaného operačního systému, kterou používáte. Aktualizace vždy obsahují dál pro konkrétní [rodiny] [ family-explain] byly zavedeny v.
+
+## <a name="may-guest-os"></a>Může operačního systému hosta
+| Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
+| --- | --- | --- | --- | --- |
+| Relativní 18-05 | [4103721], [4103727], [4103723] |Zabezpečení systému Windows 10 |5.19 |8 může 2018 |
+| Relativní 18-05 | [4103712] |Pouze zabezpečení systému Windows |2.74 |8 může 2018 |
+| Relativní 18-05 | [4103726] |Pouze zabezpečení systému Windows |3.61 |8 může 2018 |
+| Relativní 18-05 | [4103715] |Pouze zabezpečení systému Windows |4.54 |8 může 2018 |
+| Relativní 18-05 | [4095514], [4095519] |Rozhraní .NET 3.5, 4.x zabezpečení |2.74 |8 může 2018 |
+| Relativní 18-05 | [4095512], [4095518], [4096235] |Rozhraní .NET 3.5, 4.x, 4.5 x zabezpečení |3.61 |8 může 2018 |
+| Relativní 18-05 | [4095515], [4095517], [4096236] |Rozhraní .NET 3.5, 4.x, 4.5 x zabezpečení |4.74|8 může 2018 |
+| Relativní 18-05 | [4054856] |4.7 x zabezpečení rozhraní .NET |5.19 |8 může 2018 |
+| Relativní 18-05 | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |8 může 2018 |
+| Relativní 18-05 | [4103729] |Flash |3.61, 4.74, 5.19 |8 může 2018 |
+| neuvedeno | [4093118] |Souhrn bez zabezpečení duben |2,73 |10. dubna 2018 |
+| neuvedeno | [4093123] |Souhrn bez zabezpečení duben |3.61 |10. dubna 2018 |
+| neuvedeno | [4093114] |Souhrn bez zabezpečení duben |4.74 |10. dubna 2018 |
+| neuvedeno | [4093137] |Duben SSU |5.19 |10. dubna 2018 |
+| neuvedeno | [4093753] |Aktualizace časového pásma |2.74, 3.61, 4.74 |10. dubna 2018 |
+
 
 ## <a name="april-guest-os"></a>Duben hostovaný operační systém
 | Kategorie produktů | Článek nadřazené KB | Popis ohrožení zabezpečení | Hostovaného operačního systému | Datum poprvé |
@@ -162,7 +183,7 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | Relativní 17 06 | [4019472] |Vylepšení kvality OS 2016 WS |5.8 |9 může 2017 |
 | Relativní 17 06 | [4022722] |Pouze zabezpečení systému Windows |2.63 |13. června 2017 |
 | Relativní 17 06 | [4022717] |Pouze zabezpečení systému Windows |4.43 |13. června 2017 |
-| Relativní 17 06 | [4022718] |Pouze zabezpečení systému Windows |3.50 |13. června 2017 |
+| Relativní 17 06 | [4022718] |Pouze zabezpečení systému Windows |3,50 |13. června 2017 |
 | Relativní 17 06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13. června 2017 |
 | Relativní 17 06 | [4022719], [4022724], [4022726] |Měsíční souhrny Windows |2.63, 3.50, 4.43 |13. června 2017 |
 | Relativní 17 06 | [4022730] |Aktualizace zabezpečení pro Adobe Flash Playeru |3.50, 4.43, 5.8 |13. června 2017 |
@@ -173,11 +194,11 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | neuvedeno | [4014508] |Může se zabezpečením souhrn rozhraní .NET |2.63 |9 může 2017 |
 | neuvedeno | [4014511] |Může se zabezpečením souhrn rozhraní .NET |2.63 |9 může 2017 |
 | neuvedeno | [4014514] |Může se zabezpečením souhrn rozhraní .NET |2.63 |9 může 2017 |
-| neuvedeno | [4019216] |Může se zabezpečením souhrn |3.50 |9 může 2017 |
-| neuvedeno | [4014503] |Může se zabezpečením souhrn rozhraní .NET |3.50 |9 může 2017 |
-| neuvedeno | [4014506] |Může se zabezpečením souhrn rozhraní .NET |3.50 |9 může 2017 |
-| neuvedeno | [4014509] |Může se zabezpečením souhrn rozhraní .NET |3.50 |9 může 2017 |
-| neuvedeno | [4014513] |Může se zabezpečením souhrn rozhraní .NET |3.50 |9 může 2017 |
+| neuvedeno | [4019216] |Může se zabezpečením souhrn |3,50 |9 může 2017 |
+| neuvedeno | [4014503] |Může se zabezpečením souhrn rozhraní .NET |3,50 |9 může 2017 |
+| neuvedeno | [4014506] |Může se zabezpečením souhrn rozhraní .NET |3,50 |9 může 2017 |
+| neuvedeno | [4014509] |Může se zabezpečením souhrn rozhraní .NET |3,50 |9 může 2017 |
+| neuvedeno | [4014513] |Může se zabezpečením souhrn rozhraní .NET |3,50 |9 může 2017 |
 | neuvedeno | [4019215] |Může se zabezpečením souhrn |4.43 |9 může 2017 |
 | neuvedeno | [4014505] |Může se zabezpečením souhrn rozhraní .NET |4.43 |9 může 2017 |
 | neuvedeno | [4014507] |Může se zabezpečením souhrn rozhraní .NET |4.43 |9 může 2017 |
@@ -628,6 +649,28 @@ Aktualizace Microsoft Security Response Center (MSRC) u hostovaného operačníh
 | neuvedeno |[2999802] |Plné čáry místo čáry s koncovými body jsou vytištěn v systému Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
 | neuvedeno |[2896881] |Dlouhé doby přihlášení při použití příkazu AddPrinterConnection VBScript mapovat tiskárny pro uživatele během procesu přihlášení v systému Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
 
+[4103721]: http://support.microsoft.com/kb/4103721
+[4103727]: http://support.microsoft.com/kb/4103727 
+[4103723]: http://support.microsoft.com/kb/4103723
+[4103712]: http://support.microsoft.com/kb/4103712
+[4103726]: http://support.microsoft.com/kb/4103726
+[4103715]: http://support.microsoft.com/kb/4103715
+[4095514]: http://support.microsoft.com/kb/4095514
+[4095519]: http://support.microsoft.com/kb/4095519
+[4095512]: http://support.microsoft.com/kb/4095512
+[4095518]: http://support.microsoft.com/kb/4095518
+[4096235]: http://support.microsoft.com/kb/4096235
+[4095515]: http://support.microsoft.com/kb/4095515
+[4095517]: http://support.microsoft.com/kb/4095517
+[4096236]: http://support.microsoft.com/kb/4096236
+[4054856]: http://support.microsoft.com/kb/4054856
+[4103768]: http://support.microsoft.com/kb/4103768
+[4103729]: http://support.microsoft.com/kb/4103729
+[4093118]: http://support.microsoft.com/kb/4093118
+[4093123]: http://support.microsoft.com/kb/4093123
+[4093114]: http://support.microsoft.com/kb/4093114
+[4093137]: http://support.microsoft.com/kb/4093137
+[4093753]: http://support.microsoft.com/kb/4093753
 
 [4093119]: http://support.microsoft.com/kb/4093119
 [4093108]: http://support.microsoft.com/kb/4093108 

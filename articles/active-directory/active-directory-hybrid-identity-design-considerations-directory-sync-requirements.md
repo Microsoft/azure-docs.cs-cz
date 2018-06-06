@@ -1,11 +1,11 @@
 ---
-title: "Návrhu hybridní identity – požadavky na synchronizaci adresářů Azure | Microsoft Docs"
-description: "Určit, jaké požadavky jsou nezbytné k synchronizaci všech uživatelů mezi na = místní a cloudové pro podnik."
-documentationcenter: 
+title: Návrhu hybridní identity – požadavky na synchronizaci adresářů Azure | Microsoft Docs
+description: Určit, jaké požadavky jsou nezbytné k synchronizaci všech uživatelů mezi na = místní a cloudové pro podnik.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 475b35c767fcc9c42b828dd2219a14890e05f779
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d6749960806e858909f42c6ecccd445ba8d5ec00
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801553"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Určení požadavků na synchronizaci adresáře
 Synchronizace slouží k poskytování identity v cloudu na základě jejich identity místní uživatelé. Zda se bude používat synchronizované účet pro ověřování nebo federovaného ověřování, uživatelé budou stále musí být identity v cloudu.  Tato identita muset udržuje a pravidelně aktualizuje.  Aktualizace můžete mít mnoho forem, od title změny změny hesla.  

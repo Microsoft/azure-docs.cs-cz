@@ -3,17 +3,18 @@ title: Řešení potíží s synchronizaci dat Azure SQL (Preview) | Microsoft D
 description: Zjistěte, jak řešení běžných problémů s synchronizaci dat SQL Azure (Preview).
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757532"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Řešení problémů s synchronizaci dat SQL (Preview)
 
@@ -224,7 +225,7 @@ Aktualizace agenta hesla pro vaše aktuální heslo serveru:
 4. Na **synchronizaci dat SQL (Preview) agenta Náhled Vlastnosti**, vyberte **přihlásit** kartě.
 5. V **heslo** zadejte heslo.
 6. V **Potvrdit heslo** pole, zadejte znovu heslo.
-7. Vyberte **použít**a potom vyberte **OK**.
+7. Vyberte **Apply** (Použít) a pak vyberte **OK**.
 8. V **služby** okna, klikněte pravým tlačítkem myši **Preview agenta synchronizaci dat SQL (Preview)** služby a potom klikněte na **spustit**.
 9. Zavřít **služby** okno.
 
@@ -240,9 +241,8 @@ Než budete pokračovat, zkontrolujte následující podmínky:
 
 -   Je spuštěna služba systému Windows pro synchronizaci dat SQL (Preview).  
 -   Účet služby pro službu systému Windows verze Preview synchronizaci dat SQL (Preview) má přístup k síti.    
--   Klientský agent můžete kontaktovat službu lokátoru. Zkontrolujte, zda hodnota klíče registru https://locator.sync.azure.com/LocatorServiceApi.svc:  
-    -   Na x86 počítače: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   Na x64 počítače: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   Odchozí port 1433 je otevřen v místní bráně firewall pravidla.
+-   Místní IP adresa se přidá k serveru nebo databáze pravidlo brány firewall pro databázi synchronizace metadat.
 
 #### <a name="cause"></a>Příčina
 
@@ -384,7 +384,7 @@ Udělit protokolu na jako-service pověření pro uživatelský účet:
 1. Přejděte na **spustit** > **ovládací panely** > **nástroje pro správu** > **místních zásad zabezpečení**  >  **Místní zásady** > **uživatelských práv správu**.
 2. Vyberte **přihlásit jako službu**.
 3. V **vlastnosti** dialogové okno pole, přidejte uživatelský účet.
-4. Vyberte **použít**a potom vyberte **OK**.
+4. Vyberte **Apply** (Použít) a pak vyberte **OK**.
 5. Zavřete všechna okna.
 
 ### <a name="a-database-has-an-out-of-date-status"></a>Databáze má "Zastaralé" stav
@@ -444,7 +444,7 @@ Další informace o synchronizaci dat SQL (Preview) najdete v tématu:
 -   [Osvědčené postupy pro synchronizaci dat SQL Azure (Preview)](sql-database-best-practices-data-sync.md)  
 -   [Synchronizaci dat Azure SQL (Preview) monitorování s analýzy protokolů](sql-database-sync-monitor-oms.md)  
 -   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL (Preview):  
-    -   [Pomocí prostředí PowerShell k synchronizaci mezi více databází Azure SQL](scripts/sql-database-sync-data-between-sql-databases.md)  
+    -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL (Preview)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 

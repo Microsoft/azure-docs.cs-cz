@@ -1,6 +1,6 @@
 ---
-title: Spusťte balíček SSIS pomocí služby SSIS aktivity v Azure Data Factory | Microsoft Docs
-description: Tento článek popisuje, jak spouštět balíček integrační služby SSIS (SQL Server) ze kanál služby Azure Data Factory pomocí aktivity SSIS.
+title: Spusťte balíček SSIS pomocí spuštění aktivity balíčku služby SSIS v Azure Data Factory | Microsoft Docs
+description: Tento článek popisuje, jak spouštět balíček integrační služby SSIS (SQL Server) ze kanál služby Azure Data Factory pomocí aktivity spuštění balíčku služby SSIS.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,20 +9,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 04/17/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 6c8bbe7ef7f74638b978cdad5b59a89fd81d12a5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fed4e10fcaaa5282c37b175f355b94522c3b2b46
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700481"
 ---
-# <a name="run-an-ssis-package-using-the-ssis-activity-in-azure-data-factory"></a>Spusťte balíček SSIS pomocí aktivity SSIS v Azure Data Factory
-Tento článek popisuje způsob spouštění balíčku služby SSIS z kanál služby Azure Data Factory pomocí aktivity SSIS. 
+# <a name="run-an-ssis-package-using-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS pomocí aktivity balíčku služby SSIS spustit v Azure Data Factory
+Tento článek popisuje způsob spouštění balíčku služby SSIS z kanál služby Azure Data Factory pomocí spuštění balíčku služby SSIS aktivitu. 
 
 > [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Aktivity služby SSIS není k dispozici v verze 1 služby Data Factory, který je všeobecně dostupná (GA). Alternativní metoda pro balíček služby SSIS verze 1 služby Data Factory, najdete v části [balíčky SSIS spustit pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
+> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Aktivita provedení balíčku služby SSIS není k dispozici v verze 1 služby Data Factory, který je všeobecně dostupná (GA). Alternativní metoda pro balíček služby SSIS verze 1 služby Data Factory, najdete v části [balíčky SSIS spustit pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +34,7 @@ Návod v tomto článku používá databázi Azure SQL, který je hostitelem slu
 Vytvoření modulu runtime integrace Azure SSIS, pokud nemáte dodržením podrobných pokynů v [kurz: balíčky nasazení SSIS](tutorial-create-azure-ssis-runtime-portal.md).
 
 ## <a name="data-factory-ui-azure-portal"></a>Uživatelské rozhraní objektu pro vytváření dat (portál Azure)
-V této části použijte uživatelského rozhraní Data Factory vytvořit kanál služby Data Factory s aktivitou SSIS, která spustí balíček služby SSIS.
+V této části použijte uživatelské rozhraní objektu pro vytváření dat vytvořit objekt pro vytváření dat kanál s spuštění balíčku služby SSIS aktivitu, která spustí balíček služby SSIS.
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 Prvním krokem je pro vytváření dat pomocí portálu Azure. 
@@ -69,8 +70,8 @@ Prvním krokem je pro vytváření dat pomocí portálu Azure.
     ![Domovská stránka objektu pro vytváření dat](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě aplikaci uživatelského rozhraní služby Azure Data Factory. 
 
-### <a name="create-a-pipeline-with-an-ssis-activity"></a>Vytvoření kanálu s aktivitou SSIS
-V tomto kroku použijete rozhraní Data Factory vytvořit kanál. Přidejte aktivitu SSIS do kanálu a nakonfigurovat jej pro spuštění balíčku služby SSIS. 
+### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Vytvoření kanálu s aktivitou spuštění balíčku služby SSIS
+V tomto kroku použijete rozhraní Data Factory vytvořit kanál. Přidejte aktivitu, spuštění balíčku služby SSIS do kanálu a nakonfigurovat jej pro spuštění balíčku služby SSIS. 
 
 1. Na stránku Začínáme, klikněte na **vytvořit kanál**: 
 
@@ -79,17 +80,23 @@ V tomto kroku použijete rozhraní Data Factory vytvořit kanál. Přidejte akti
 
    ![Přetáhněte aktivitu SSIS na plochu návrháře](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-3. Na **Obecné** karta vlastností SSIS aktivity, zadejte název a popis pro aktivitu. Nastavte volitelné vypršení časového limitu a opakujte hodnoty.
+3. Na **Obecné** kartě vlastností pro spuštění balíčku služby SSIS aktivitu, zadejte název a popis pro aktivitu. Nastavte volitelné vypršení časového limitu a opakujte hodnoty.
 
     ![Nastavit vlastnosti na kartě Obecné](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. Na **nastavení** vlastností SSIS aktivity, vyberte modul Runtime integrace Azure SSIS přidružené `SSISDB` databáze, kde je balíček nasazen. Zadejte cestu k balíčku v `SSISDB` databáze ve formátu `<folder name>/<project name>/<package name>.dtsx`. Volitelně zadejte provádění 32bitová verze a úroveň předdefinované nebo vlastní protokolování a zadat cestu ve formátu prostředí `<folder name>/<environment name>`.
+4. Na **nastavení** vlastností pro spuštění balíčku služby SSIS aktivitu, vyberte modul Runtime integrace Azure SSIS přidružené `SSISDB` databáze, kde je balíček nasazen. Zadejte cestu k balíčku v `SSISDB` databáze ve formátu `<folder name>/<project name>/<package name>.dtsx`. Volitelně zadejte provádění 32bitová verze a úroveň předdefinované nebo vlastní protokolování a zadat cestu ve formátu prostředí `<folder name>/<environment name>`.
 
     ![Nastavit vlastnosti na kartě nastavení](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
 5. Chcete-li ověřit konfiguraci kanálu, klikněte na tlačítko **ověřením** na panelu nástrojů. Pokud chcete **Sestavu ověření kanálu** zavřít, klikněte na **>>**.
 
 6. Publikování kanálu pro vytváření dat kliknutím **publikovat všechny** tlačítko. 
+
+### <a name="optionally-parameterize-the-activity"></a>Volitelně Parametrizace aktivity
+
+Volitelně můžete přiřadit hodnoty, výrazy nebo funkce, které mohou odkazovat na objekt pro vytváření dat systému proměnné, do projektu nebo balíček parametry ve formátu JSON na **Upřesnit** kartě. Například můžete přiřadit parametry kanálu pro vytváření dat do projektu služby SSIS nebo balíček parametry, jak je znázorněno na následujícím snímku obrazovky:
+
+![Přidání parametrů ke spuštění balíčku služby SSIS aktivity](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-parameters.png)
 
 ### <a name="run-and-monitor-the-pipeline"></a>Spuštění a monitorování kanálu
 V této části se aktivuje spuštění kanálu a jeho sledování. 
@@ -99,15 +106,16 @@ V této části se aktivuje spuštění kanálu a jeho sledování.
     ![Aktivovat](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
 
 2. V okně **Spuštění kanálu** vyberte **Dokončit**. 
+
 3. Vlevo přepněte na kartu **Monitorování**. Zobrazí kanálu spustit a její stav se společně s dalšími informacemi (například čas spuštění spuštění). Pokud chcete zobrazení aktualizovat, klikněte na **Aktualizovat**.
 
     ![Spuštění kanálu](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-3. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí jenom jedna aktivita spustit, protože kanál obsahuje pouze jednu aktivitu (aktivita služby SSIS).
+4. Klikněte na odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Zobrazí jenom jedna aktivita spustit, protože kanál obsahuje pouze jednu aktivitu (aktivita spuštění balíčku služby SSIS).
 
     ![Spuštění aktivit](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
 
-4. Můžete spustit následující **dotazu** proti SSISDB databáze serveru Azure SQL ověřit, jestli balíček provést. 
+5. Můžete spustit následující **dotazu** proti SSISDB databáze serveru Azure SQL ověřit, jestli balíček provést. 
 
     ```sql
     select * from catalog.executions
@@ -115,6 +123,9 @@ V této části se aktivuje spuštění kanálu a jeho sledování.
 
     ![Ověření spuštění balíčku](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
+6. Můžete také získat ID spuštění SSISDB z výstupu spuštění aktivity kanálu a pomocí ID zkontrolujte komplexnější protokoly spuštění a chybové zprávy v aplikaci SSMS.
+
+    ![Získání ID spuštění.](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
 > [!NOTE]
 > Můžete také vytvořit naplánované aktivační událost pro svůj kanál tak, aby kanál spouští podle plánu (hodinový, denní, atd.). Příklad, naleznete v části [vytvořit objekt pro vytváření dat – uživatelské rozhraní objektu pro vytváření dat](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
@@ -300,6 +311,8 @@ while ($True) {
 }   
 ```
 
+Také můžete monitorovat kanál pomocí portálu Azure. Podrobné pokyny najdete v tématu [kanál monitorovat](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+
 ### <a name="create-a-trigger"></a>Vytvořit aktivační událost
 V předchozím kroku jste spustili kanálu na vyžádání. Můžete také vytvořit aktivační událost plán chcete-li kanál spouštět podle plánu (hodinový, denní, atd.).
 
@@ -369,4 +382,5 @@ V předchozím kroku jste spustili kanálu na vyžádání. Můžete také vytvo
 
 
 ## <a name="next-steps"></a>Další postup
-Také můžete monitorovat kanál pomocí portálu Azure. Podrobné pokyny najdete v tématu [kanál monitorovat](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+Najdete v příspěvku blogu:
+-   [Modernizovat a rozšířit vaše pracovní postupy ETL/ELT s aktivitami SSIS v ADF kanálů](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)

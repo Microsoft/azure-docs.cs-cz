@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
 ms.author: alleonar
-ms.openlocfilehash: 35e84a22eabce0b7361c2227317baab62421c301
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7ff8c038ac5fa42668227a0531fa77bd853dd2b2
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757515"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Příručka pro vývojáře Azure Key Vault
 
@@ -52,11 +53,11 @@ Prostředky v zmíněné video:
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a správa trezorů klíčů
 
-Azure Key Vault poskytuje způsob, jak bezpečně uložit přihlašovací údaje a další klíče a tajné klíče, je však nutné kódu k ověření Key Vault je znovu načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému jednodušší tím, že služby Azure automaticky spravované identity v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault, bez nutnosti všechny přihlašovací údaje ve vašem kódu. 
+Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje. 
 
 Další informace o MSI najdete v tématu [spravované služby Identity (MSI) pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/msi-overview).
 
-Další informace o práci s AAD najdete v tématu [integrace aplikací s Azure Active Directory](/active-directory/develop/active-directory-integrating-applications).
+Další informace o práci s AAD najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 Před zahájením práce s klíče, tajné klíče ani certifikáty v trezoru klíčů, můžete vytvářet a spravovat váš trezor klíčů prostřednictvím rozhraní příkazového řádku, prostředí PowerShell, šablony Resource Manageru nebo REST, jak je popsáno v následujících článcích:
 

@@ -1,13 +1,14 @@
 ---
-title: "Zařízení připojená k nastavení Azure Active Directory | Microsoft Docs"
-description: "Zjistěte, jak nastavit Azure Active Directory připojené zařízení."
+title: Zařízení připojená k nastavení Azure Active Directory | Microsoft Docs
+description: Zjistěte, jak nastavit Azure Active Directory připojené zařízení.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ac6c9224925e5bfd3cb056c6c8d9cf2a96b0eb2b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 2aeaacbc48c8b49b967241522daf90e8fb228073
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713608"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Zařízení připojená k nastavení Azure Active Directory
 
@@ -50,7 +52,7 @@ K připojení k zařízením s Windows 10, je třeba službu device registration
 
 ## <a name="joining-a-device"></a>Připojení zařízení
 
-Tato část vám poskytne kroky pro připojení k zařízení s Windows 10 do služby Azure AD. Pokud vaše zařízení mít úspěšně připojí k Azure AD vaší **přístup k práci nebo ve škole** dialogové okno označuje to s **připojené k \<služby Azure AD\>**  položku.
+Tato část vám poskytne kroky pro připojení k zařízení s Windows 10 do služby Azure AD. Úspěšně připojil zařízení se zobrazí jako **připojené k \<služby Azure AD\>**.
 
 ![Připojeno](./media/device-management-azuread-joined-devices-setup/13.png)
 
@@ -105,7 +107,7 @@ Pokud chcete ověřit, jestli se zařízení připojí ke službě Azure AD, mů
 
 ![Připojeno](./media/device-management-azuread-joined-devices-setup/13.png)
 
-Alternativně můžete spustit následující příkaz:`dsregcmd /status`  
+Alternativně můžete spustit následující příkaz: `dsregcmd /status`  
 Do zařízení úspěšně připojil **AzureAdJoined** je **Ano**.
 
 ![Připojeno](./media/device-management-azuread-joined-devices-setup/14.png)

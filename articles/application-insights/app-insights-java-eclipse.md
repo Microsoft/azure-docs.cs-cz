@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795556"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Začínáme s Application Insights s Javou v prostředí Eclipse
 Application Insights SDK odesílá telemetrii z webové aplikace Java, takže je můžete analyzovat využití a výkonu. Modul plug-in pro službu Application Insights Eclipse automaticky nainstaluje sady SDK v projektu, abyste měli mimo pole telemetrie a rozhraní API, které můžete psát vlastní telemetrii.   
@@ -32,6 +33,8 @@ Budete potřebovat:
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/downloads/), džínovinu nebo novější.
 * Windows 7 nebo novější nebo Windows Server 2008 nebo novějším.
+
+Pokud dáváte přednost, zkuste rozhraní Spring [konfigurace aplikace inicializátoru pružiny spouštěcí používat Průvodce Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>Instalace sady SDK v prostředí Eclipse (jednou)
 Stačí udělat tento jednou pro každý počítač. Tento krok nainstaluje sada nástrojů, který poté můžete přidat sadu SDK do každé Dynamic Web Project.

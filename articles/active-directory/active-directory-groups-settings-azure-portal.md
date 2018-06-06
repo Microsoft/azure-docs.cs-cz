@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: a1fe82728e1662ad897d2ee367bad46f1f5fc498
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 15ba8094129c531b1183d360fdadd680bca960ac
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712772"
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Spravovat nastavení pro skupinu v Azure Active Directory
 Tento článek vysvětluje, jak změnit nastavení pro skupinu v Azure Active Directory (Azure AD).

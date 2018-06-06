@@ -1,14 +1,15 @@
 ---
-title: "Azure Active Directory podmíněný přístup jak postupovat, pokud nástroj - preview | Microsoft Docs"
-description: "Zjistěte, jak můžete otestovat konfiguraci zásad podmíněného přístupu Azure Active Directory."
+title: Azure Active Directory podmíněný přístup jak postupovat, pokud nástroj - preview | Microsoft Docs
+description: Zjistěte, jak můžete otestovat konfiguraci zásad podmíněného přístupu Azure Active Directory.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2c4ca3685d15ddd2446590e1ef297362f9aa52ee
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723826"
 ---
 # <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Azure Active Directory podmíněný přístup jak postupovat, pokud nástroj - preview
 
@@ -52,7 +54,7 @@ Po dokončení vyhodnocení Nástroj generuje sestavy ovlivněných zásad.
 
 ## <a name="running-the-tool"></a>Spuštění nástroje
 
-Můžete najít **co když** ve  **[podmíněný přístup – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)**  na portálu Azure.
+Můžete najít **co když** ve **[podmíněný přístup – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies)** na portálu Azure.
 
 Chcete-li spustit nástroj, na panelu nástrojů nad seznam zásad, klikněte na tlačítko **co když**.
 

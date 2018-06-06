@@ -8,25 +8,25 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 8dbb546954f8eee0bf997b3d2f4f92d67c0b7869
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e743bdd5fd7e302e4c7c5d229bb14753776df079
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723526"
 ---
 # <a name="restore-a-deleted-user-in-azure-active-directory"></a>Obnovení odstraněného uživatele v Azure Active Directory
 
 Tento článek obsahuje pokyny k obnovení nebo trvale odstranit dříve odstraněné uživatele. Když odstraníte uživatele ve službě Azure Active Directory (Azure AD), je 30 dní od data odstranění uchovávat Odstraněný uživatel. Během této doby se dají obnovovat uživatel a jeho vlastnosti. 
 
-> [!wARNING]
+> [!WARNING]
 > Poté, co je trvale odstraněn, uživatele nelze obnovit.
-
 
 ## <a name="how-to-restore-a-recently-deleted-user"></a>Obnovení odstraněných uživatelů
 Když se uživatel nedávno odstraní, se zachovala všech informací adresáře. Pokud uživatel je obnovit, tyto informace je také obnovit.
@@ -44,7 +44,7 @@ Když se uživatel nedávno odstraní, se zachovala všech informací adresáře
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 Tato oprávnění jsou dostatečná k obnovení uživatele.
 
-Role  | Oprávnění 
+Role | Oprávnění 
 --------- | ---------
 Správce společnosti<p>Podpora partnerů úrovně 1<p>Podpora partnerů úrovně 2<p>Správce uživatelských účtů | Můžete obnovit odstranění uživatelé 
 Správce společnosti<p>Podpora partnerů úrovně 1<p>Podpora partnerů úrovně 2<p>Správce uživatelských účtů | Může trvale odstranit uživatele

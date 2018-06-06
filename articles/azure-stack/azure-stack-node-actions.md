@@ -11,13 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 202854157dee28f3ab3dc73c6f22508a8bf510b3
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: ppacent
+ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801411"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Uzel akcí jednotky škálování v Azure zásobníku
 
@@ -41,11 +43,11 @@ Chcete-li zobrazit stav jednotky škálování:
  
 Zde můžete zobrazit následující informace:
 
-- Název oblasti
+- Název oblasti. Název oblasti, které se odkazuje s **-umístění** v modulu prostředí PowerShell.
 - Typ systému
 - Celkový počet logických jader
 - celkové paměti
-- seznam jednotlivé uzly a jejich stav; buď spuštěná nebo zastavená.
+- seznam jednotlivé uzly a jejich stav; buď **systémem** nebo **zastavena**.
 
 ![Dlaždice jednotky škálování zobrazením stavu spuštění pro každý uzel](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
@@ -87,7 +89,7 @@ Tato akce se obvykle používá, pokud uzel je ve stavu "zamrzlých" a už reagu
 Spuštění vypnutí akce pomocí prostředí PowerShell:
 
 ````PowerShell
-  Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```` 
 
 V případě nepravděpodobné, že vypnutí akce nepomůže použijte místo toho webové rozhraní BMC.
@@ -102,7 +104,7 @@ V případě nepravděpodobné, že vypnutí akce nepomůže použijte místo to
 Možnosti spuštění pro akce pomocí prostředí PowerShell:
 
 ````PowerShell
-  Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ````
 
 V případě nepravděpodobné, že zapnutí akce nepomůže použijte místo toho webové rozhraní BMC.
@@ -113,13 +115,13 @@ V případě nepravděpodobné, že zapnutí akce nepomůže použijte místo to
 
 Tato akce se obvykle používá při nahrazení pole částí, jako je například nahrazení celého uzlu.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Zkontrolujte, zda uzel vyprázdnit pouze během plánované údržby, kde uživatelé byli upozorněni. Za určitých podmínek můžete zaznamenat aktivní úlohy přerušení.
 
 Spuštění akce vyprazdňování pomocí prostředí PowerShell:
 
   ````PowerShell
-  Disable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="resume"></a>Obnovit
@@ -129,7 +131,7 @@ Spuštění akce vyprazdňování pomocí prostředí PowerShell:
 Spuštění akce obnovení pomocí prostředí PowerShell:
 
   ````PowerShell
-  Enable-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
+  Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
   ````
 
 ### <a name="repair"></a>Opravit
@@ -139,7 +141,7 @@ Spuštění akce obnovení pomocí prostředí PowerShell:
 - Nahrazení úplné uzlu (s nebo bez nové datové disky)
 - Po selhání součásti hardwaru a nahrazení (Pokud se nedoporučuje v dokumentaci k pole replaceable jednotka (FRU)).
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Dokumentaci dodavatele hardwaru OEM FRU přesné kroky při potřebujete nahradit uzel nebo jednotlivých hardwarových součástí. V dokumentaci FRU bude zadejte, jestli je potřeba spuštěním akce opravy po nahrazení hardwarová komponenta.  
 
 Když spustíte akci oprava, budete muset zadat BMC IP adresu. 
@@ -147,7 +149,9 @@ Když spustíte akci oprava, budete muset zadat BMC IP adresu.
 Chcete-li spustit opravu pomocí prostředí PowerShell:
 
   ````PowerShell
-  Repair-AzsScaleUnitNode -Region <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
+  Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPAddress <BMCIPAddress>
   ````
 
+## <a name="next-steps"></a>Další postup
 
+Další informace o modulu Správce prostředků infrastruktury zásobník Azure najdete v tématu [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0).

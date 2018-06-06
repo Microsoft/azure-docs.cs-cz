@@ -1,6 +1,6 @@
 ---
-title: "Použití Azure CLI 1.0 s Azure Storage | Microsoft Docs"
-description: "Naučte se používat rozhraní příkazového řádku Azure (Azure CLI) 1.0, s Azure Storage pro vytváření a správu účtů úložiště a pracovat s Azure BLOB a soubory. Rozhraní příkazového řádku Azure je nástroj pro různé platformy"
+title: Použití Azure CLI 1.0 s Azure Storage | Microsoft Docs
+description: Naučte se používat rozhraní příkazového řádku Azure (Azure CLI) 1.0, s Azure Storage pro vytváření a správu účtů úložiště a pracovat s Azure BLOB a soubory. Rozhraní příkazového řádku Azure je nástroj pro různé platformy
 services: storage
 documentationcenter: na
 author: seguler
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737465"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Použití Azure CLI 1.0 s Azure Storage
 
@@ -97,7 +98,7 @@ Po spuštění skriptu, měli byste mít místní cílovou složku, která obsah
 ### <a name="connect-to-your-azure-subscription"></a>Připojení k předplatnému služby Azure
 Zatímco většina příkazů, úložiště bude fungovat bez předplatného Azure, doporučujeme vám umožní připojit se k vašemu předplatnému z příkazového řádku Azure. Pokud chcete nakonfigurovat rozhraní příkazového řádku Azure pro práci s vaším předplatným, postupujte podle kroků v [připojení k předplatnému Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli).
 
-### <a name="create-a-new-storage-account"></a>Vytvořit nový účet úložiště
+### <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
 Pokud chcete používat úložiště Azure, potřebujete účet úložiště. Po nakonfigurování počítače pro připojení k vašemu předplatnému, můžete vytvořit nový účet úložiště Azure.
 
 ```azurecli
@@ -185,7 +186,7 @@ azure storage blob delete mycontainer myBlockBlob2
 Soubory Azure nabízí sdílené úložiště pro aplikace, které používají standardní protokol SMB. Virtuální počítače Microsoft Azure a cloudové služby i místní aplikace můžou sdílet souborová data přes sdílené složky. Můžete spravovat sdílené složky a data souborů prostřednictvím rozhraní příkazového řádku Azure. Další informace o Azure souborů najdete v tématu [Úvod do Azure Files](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Vytvoření sdílené složky
-Azure File sdílená složka je sdílená složka SMB v Azure. Všechny adresáře a soubory musí být vytvořeny ve sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až limity kapacity účtu úložiště. Následující příklad vytvoří sdílenou složku s názvem **název_sdílené_položky**.
+Sdílenou složku Azure je sdílená složka SMB v Azure. Všechny adresáře a soubory musí být vytvořeny ve sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až limity kapacity účtu úložiště. Následující příklad vytvoří sdílenou složku s názvem **název_sdílené_položky**.
 
 ```azurecli
 azure storage share create myshare

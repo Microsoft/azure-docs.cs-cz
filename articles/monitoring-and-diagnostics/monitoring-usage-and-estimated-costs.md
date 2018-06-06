@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/31/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: 6cc35697573ae2997f289f67c7867d9c522149be
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4e6b3a2e8769c6e7e93071aed27b81c87ae336ca
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715553"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Sledování využití a odhadované náklady
 
@@ -106,3 +107,146 @@ Pokud jste se rozhodli použít nový cenový model pro předplatné, vyberte **
 ![Snímek obrazovky výběru modelu – ceny](./media/monitoring-usage-and-estimated-costs/007.png)
 
 Chcete-li přesunout předplatné nový cenový model, stačí vybrat pole a pak vyberte **Uložit**. Je můžete přesunout zpět do starší cenový model stejným způsobem. Mějte na paměti tento vlastník předplatného nebo chcete-li změnit model tvorby cen jsou potřeba oprávnění přispěvatele.
+
+## <a name="automate-moving-to-the-new-pricing-model"></a>Automatizovat přesunu na nový cenový model
+
+Skripty níže vyžadují modul Azure PowerShell. Chcete-li zkontrolovat, jestli máte nejnovější verzi najdete v části [modul nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.1.0).
+
+Jakmile máte nejnovější verzi prostředí Azure PowerShell, byste nejprve musíte spustit ``Connect-AzureRmAccount``.
+
+``` PowerShell
+# To check if your subscription is eligible to adjust pricing models.
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+```
+
+V části isGrandFatherableSubscription výsledku TRUE označuje, že cenový model tento odběr je možné přesouvat mezi cenových úrovních. Chybí hodnota v části optedInDate znamená, že toto předplatné je nastaveno na staré cenový model.
+
+```
+isGrandFatherableSubscription optedInDate
+----------------------------- -----------
+                         True            
+```
+
+K migraci na nový cenový model spustit tento odběr:
+
+```PowerShell
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action migratetonewpricingmodel `
+ -Force
+```
+
+Potvrďte, že změna byl úspěšně znovu spusťte:
+
+```PowerShell
+$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+```
+
+Pokud byla migrace úspěšná, vaše výsledek by měl nyní vypadat jako:
+
+```
+isGrandFatherableSubscription optedInDate                      
+----------------------------- -----------                      
+                         True 2018-05-31T13:52:43.3592081+00:00
+```
+
+OptInDate nyní obsahuje časové razítko když toto předplatné přihlášených k nový cenový model.
+
+Pokud budete potřebovat vrátit se zpátky do původního cenový model, spustili byste:
+
+```PowerShell
+ $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action rollbacktolegacypricingmodel `
+ -Force
+```
+
+Pokud pak znovu spusťte předchozí skript, který má ``-Action listmigrationdate``, měli byste vidět prázdný optedInDate hodnotu označující, opět vaše předplatné starší verze cenový model.
+
+Pokud máte více předplatných, které chcete migrovat, které jsou hostované na stejném tenantovi můžete vytvořit vlastní typ variant pomocí součásti z následujících skriptů:
+
+```PowerShell
+#Query tenant and create an array comprised of all of your tenants subscription ids
+$TenantId = <Your-tenant-id>
+$Tenant =Get-AzureRMSubscription -TenantId $TenantId
+$Subscriptions = $Tenant.Id
+```
+
+Chcete-li zkontrolovat, zda všechny odběry ve vašem klientovi jsou vhodné pro nový cenový model, můžete spustit:
+
+```PowerShell
+Foreach ($id in $Subscriptions)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+}
+```
+
+Skript může být přesnějších další vytvořením skriptu, který generuje tři pole. Jedno pole bude obsahovat všechny id předplatného na které mají ```isGrandFatherableSubscription``` nastavit na hodnotu True a optedInDate aktuálně nemá hodnotu. Druhé pole žádné předplatné aktuálně na nový cenový model. A třetí pole pouze naplněný ID předplatného v klientovi, které nejsou vhodné pro nový cenový model:
+
+```PowerShell
+[System.Collections.ArrayList]$Eligible= @{}
+[System.Collections.ArrayList]$NewPricingEnabled = @{}
+[System.Collections.ArrayList]$NotEligible = @{}
+
+Foreach ($id in $Subscriptions)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+$Result= Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action listmigrationdate `
+ -Force
+
+     if ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $False)
+     {
+     $Eligible.Add($id)
+     }
+
+     elseif ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $True)
+     {
+     $NewPricingEnabled.Add($id)
+     }
+
+     elseif ($Result.isGrandFatherableSubscription -eq $False)
+     {
+     $NotEligible.add($id)
+     }
+}
+```
+
+> [!NOTE]
+> V závislosti na počtu předplatných skript výše může trvat nějakou dobu spuštění. Kvůli použití metody .add() bude okno prostředí PowerShell echo narůstajícími hodnoty jako položky budou přidány do každého pole.
+
+Teď, když máte předplatné rozdělené do tří polí byste měli pečlivě zkontrolovat výsledky. Chcete vytvořit záložní kopii obsah pole, abyste mohli snadno vrátit změny bude nutné v budoucnu. Pokud jste se rozhodli, kdybyste chtěli převést veškeré oprávněné předplatné, které jsou aktuálně na staré cenový model na nový cenový model, který tato úloha je nyní možné dosáhnout s:
+
+```PowerShell
+Foreach ($id in $Eligible)
+{
+$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
+Invoke-AzureRmResourceAction `
+ -ResourceId $ResourceID `
+ -ApiVersion "2017-10-01" `
+ -Action migratetonewpricingmodel `
+ -Force
+}
+
+```

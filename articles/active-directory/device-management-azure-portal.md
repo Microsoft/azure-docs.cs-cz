@@ -8,25 +8,27 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6947358c6c845ff2c2a35cb218c11294a2841dc8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ddce312d6299a7749f1a40a83f67ce3c26876591
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713996"
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Správa zařízení pomocí portálu Azure
 
 
 Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují k prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. 
 
-V tomto tématu:
+Tento článek:
 
 - Předpokládá, že jste obeznámeni s [Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md)
 
@@ -40,11 +42,11 @@ Portál Azure poskytuje centrální místo ke správě svých zařízení. Můž
 
 2. V levém navigační panel, klikněte na tlačítko **služby Active Directory**.
 
-    ![Konfigurace nastavení zařízení](./media/device-management-azure-portal/01.png)
+    ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/01.png)
 
 3. V **spravovat** klikněte na tlačítko **zařízení**.
 
-    ![Konfigurace nastavení zařízení](./media/device-management-azure-portal/11.png)
+    ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/11.png)
  
 **Zařízení** stránka vám umožňuje:
 
@@ -57,11 +59,11 @@ Portál Azure poskytuje centrální místo ke správě svých zařízení. Můž
 - Zkontrolujte správy zařízení, související protokoly auditu  
   
 
-## <a name="configure-device-settings"></a>Konfigurace nastavení zařízení
+## <a name="configure-device-settings"></a>Konfigurovat nastavení zařízení
 
 Ke správě zařízení pomocí portálu Azure, zařízení musí být buď [zaregistrovaný nebo připojený k](device-management-introduction.md#getting-devices-under-the-control-of-azure-ad) do služby Azure AD. Jako správce můžete optimalizovat proces registrace a připojení zařízení tak, že nakonfigurujete nastavení zařízení. 
 
-![Konfigurace nastavení zařízení](./media/device-management-azure-portal/22.png)
+![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/22.png)
 
 Stránka nastavení zařízení můžete konfigurovat:
 
@@ -185,10 +187,17 @@ ID zařízení můžete použít k ověření informace ID zařízení na zaří
 
 ### <a name="view-or-copy-bitlocker-keys"></a>Zobrazení nebo kopírování klíče nástroje BitLocker
 
-Pokud jste správce, můžete zobrazit a zkopírujte tyto klíče nástroje BitLocker pomoct uživatelům obnovit svá šifrované jednotce. Tyto klíče jsou dostupné pouze pro zařízení s Windows, které jsou zašifrované a jejich klíče uloženého ve službě Azure AD. Při přístupu k podrobnosti o zařízení, můžete zkopírovat tyto klíče.
+Můžete zobrazit a zkopírujte tyto klíče nástroje BitLocker pomoct uživatelům obnovit svá šifrované jednotce. Tyto klíče jsou dostupné pouze pro zařízení s Windows, které jsou zašifrované a jejich klíče uloženého ve službě Azure AD. Při přístupu k podrobnosti o zařízení, můžete zkopírovat tyto klíče.
  
 ![Klíče Bitlockeru zobrazení](./media/device-management-azure-portal/36.png)
 
+k zobrazení nebo zkopírujte tyto klíče nástroje BitLocker, musíte být vlastníkem zařízení nebo uživatele, který má alespoň jeden z následujících role přiřazené:
+
+- Globální správci
+- Správci technické podpory
+- Správce zabezpečení
+- Čtečky zabezpečení
+- Správci služby Intune
 
 
 ## <a name="audit-logs"></a>Protokoly auditu

@@ -1,12 +1,12 @@
 ---
 title: Konfigurace PremiumV2 vrstvy pro Azure App Service | Microsoft Docs
-description: "Naučte se lepší výkon pro webové, mobilní a aplikace API v Azure App Service pomocí škálování pro nové PremiumV2 cenovou úroveň."
-keywords: "app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service"
+description: Naučte se lepší výkon pro webové, mobilní a aplikace API v Azure App Service pomocí škálování pro nové PremiumV2 cenovou úroveň.
+keywords: app service, azure app service, škálování, škálovatelné, plán služby App Service, náklady služby App Service
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714557"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace PremiumV2 vrstvy pro Azure App Service
 
@@ -51,9 +52,9 @@ Cenová úroveň aplikace služby App Service je definována v [plán služby Ap
 
 Při konfiguraci plánu služby App Service v <a href="https://portal.azure.com" target="_blank">portál Azure</a>, vyberte **cenová úroveň**. 
 
-Vyberte jednu z **PremiumV2** možnosti a klikněte na tlačítko **vyberte**.
+Vyberte **produkční**, pak vyberte **P1V2**, **P2V2**, nebo **P3V2**, pak klikněte na tlačítko **použít**.
 
-![](media/app-service-configure-premium-tier/pick-premium-tier.png)
+![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Pokud nevidíte **P1V2**, **P2V2**, a **P3V2** jako možnosti, buď **PremiumV2** není k dispozici ve vašem regionu podle vlastní volby, nebo jste Konfigurace plánu služby App Service pro Linux, který nepodporuje **PremiumV2**.
@@ -70,7 +71,7 @@ V levém navigačním panelu stránky aplikace služby App Service, vyberte **š
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-Vyberte jednu z **PremiumV2** velikostí, pak klikněte na **vyberte**.
+Vyberte **produkční**, pak vyberte **P1V2**, **P2V2**, nebo **P3V2**, pak klikněte na tlačítko **použít**.
 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 

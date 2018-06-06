@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ade6ef996c00c0c06d5b8e44815520e6e4ab7e9f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735863"
 ---
 # <a name="advisor-cost-recommendations"></a>Náklady na doporučení služby Advisor
 
@@ -33,6 +34,11 @@ Pokud chcete být agresivnější zjistit nedostatečně virtuální počítače
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Snížení nákladů odstraněním není zřízený okruhy ExpressRoute
 Advisor identifikuje okruhy ExpressRoute, které byly ve stavu zprostředkovatele *není zajišťováno* pro více než jeden měsíc a doporučuje odstraňování okruh, pokud nemáte v plánu poskytnutí okruhu připojení k Zprostředkovatel.
+
+## <a name="buy-virtual-machine-reserved-instances-to-save-money-over-pay-as-you-go-costs"></a>Pokud chcete platit méně, než byste platili s průběžnými platbami, kupte si rezervované instance virtuálních počítačů.
+Advisor budou zkontrolujte vaše využití virtuálního počítače za posledních 30 dnů a zjistěte, pokud může ušetřit peníze a nakoupit vyhrazenou instancí. Advisor vám ukáže, oblasti a velikosti, kde jste potenciálně většina úspory a zobrazí Odhadované úspory z nákupu vyhrazenou instancí. 
+
+S vyhrazenou instancí můžete předem zakoupit základní náklady pro virtuální počítače. Slevy automaticky použije nový nebo existující virtuální počítače, které mají stejnou velikost a oblasti jako vaše vyhrazená instance. [Další informace o vyhrazenou instancí virtuálních počítačů Azure.](https://azure.microsoft.com/pricing/reserved-vm-instances/)
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Jak získat přístup k náklady na doporučení v Azure Advisor
 

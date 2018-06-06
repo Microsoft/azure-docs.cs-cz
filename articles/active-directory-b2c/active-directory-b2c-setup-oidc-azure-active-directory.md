@@ -1,24 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Přidání poskytovatele služby Azure AD pomocí předdefinovaných zásad | Microsoft Docs'
-description: Informace o postupu přidání poskytovatele identity Open ID Connect (Azure AD)
+title: Přidání poskytovatele služby Azure AD pomocí předdefinovaných zásad v Azure Active Directory B2C | Microsoft Docs
+description: Informace o postupu přidání poskytovatele identity Open ID Connect (Azure AD).
 services: active-directory-b2c
-documentationcenter: ''
-author: parakhj
-manager: krassk
-editor: parakhj
-ms.assetid: 7dac9545-d5f1-4136-a04d-1c5740aea499
-ms.service: active-directory-b2c
+author: davidmu1
+manager: mtillman
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/27/2018
-ms.author: parja
-ms.openlocfilehash: 52a752df9cf199acf39596f49e7368bce27a8158
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: davidmu
+ms.component: B2C
+ms.openlocfilehash: 4e756a4bf3d9e42b47c0b96a6bf73e8e2b267b77
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712381"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: Přihlaste se pomocí účtů služby Azure AD pomocí předdefinovaných zásad
 

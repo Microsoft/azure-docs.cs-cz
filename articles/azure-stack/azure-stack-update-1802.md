@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5cf61ccaadc40a5f250dcf477de5b446052aba9a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af65ffc088c2beadf415b72ec284ef77f3e4f6d4
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757253"
 ---
 # <a name="azure-stack-1802-update"></a>Azure aktualizace 1802 zásobníku
 
@@ -36,7 +37,7 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1802, znám
 
 ## <a name="before-you-begin"></a>Než začnete    
 > [!IMPORTANT]    
-> Nepokoušejte se vytvořit virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací najdete v tématu [správě aktualizací v přehledu Azure zásobníku](/azure-stack-updates#plan-for-updates).
+> Nepokoušejte se vytvořit virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací najdete v tématu [správě aktualizací v přehledu Azure zásobníku](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="prerequisites"></a>Požadavky
@@ -107,6 +108,9 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 Toto jsou známé problémy po instalaci pro sestavení **20180302.1**
 
 #### <a name="portal"></a>Portál
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele v zásobníku Azure deklarací](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka předplatného výchozího zprostředkovatele.   
+
 - Možnost [otevřete novou žádost o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) z v rámci správce portálu není k dispozici. Místo toho použijte následující odkaz:     
     - Pro Azure zásobníku integrované systémy, používat https://aka.ms/newsupportrequest.
 
@@ -137,7 +141,22 @@ Toto jsou známé problémy po instalaci pro sestavení **20180302.1**
 
 
 #### <a name="health-and-monitoring"></a>Sledování stavu a
-Po aktualizaci 1802 nejsou žádné známé problémy.
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+  Výstrahy #1:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu prezenčního signálu skener není k dispozici. To může ovlivnit sestavy o stavu a metrik.  
+
+  Výstrahy #2:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu skener chyby není k dispozici. To může ovlivnit sestavy o stavu a metrik.
+
+  Obě výstrahy můžete bezpečně ignorovat. Se automaticky zavře v čase.  
+
 
 #### <a name="marketplace"></a>Marketplace
 - Uživatelé mohou procházet na kompletní nabídku marketplace bez předplatného a uvidí položky pro správu jako plány a nabízí. Tyto položky jsou pro uživatele funkční.
@@ -155,7 +174,7 @@ Po aktualizaci 1802 nejsou žádné známé problémy.
 
 - Když vytvoříte sadu na portálu přejděte na dostupnosti **nový** > **výpočetní** > **sadu dostupnosti**, můžete vytvořit pouze skupiny dostupnosti s doména selhání a aktualizace domény 1. Jako řešení, při vytváření nového virtuálního počítače, vytvořte skupinu dostupnosti pomocí prostředí PowerShell, rozhraní příkazového řádku, nebo v portálu.
 
-- Když vytvoříte virtuální počítače na portálu pro uživatele Azure zásobníku, portál zobrazí nesprávný počet datových disků, které můžete připojit k řady DS virtuálních počítačů. Řady DS virtuální počítače zvládne tolik datových disků jako konfiguraci Azure.
+- Když vytvoříte virtuální počítače na portálu pro uživatele Azure zásobníku, portál zobrazí nesprávný počet datových disků, které můžete připojit do série D virtuálních počítačů. Všechny podporované řady D virtuální počítače zvládne tolik datových disků jako konfiguraci Azure.
 
 - Když image virtuálního počítače se nepodaří vytvořit, položku se nezdařilo, nelze odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
 
@@ -277,6 +296,8 @@ Po aktualizaci 1802 nejsou žádné známé problémy.
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>Stažení nástroje Azure zásobníku z Githubu
 - Při použití *vyvolání webrequest* rutiny prostředí PowerShell ke stažení protokolů Azure nástroje z Githubu, obdržíte chybu:     

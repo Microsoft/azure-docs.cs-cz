@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 6fcf0e9cf91354cacb2940faf30a9496919ed3d7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796299"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Jak používat Azure virtuálního počítače spravované služby Identity (MSI) pro získání tokenu 
 
@@ -312,6 +313,8 @@ Tato část popisuje možné chybové odpovědi. A "200 OK" ve stavu úspěšné
 | 500 vnitřní chybu serveru | Neznámé | Nepodařilo se získat token ze služby Active directory. Podrobnosti najdete v tématu protokoly v  *\<cesta k souboru\>* | Ověřte, že je povoleno MSI ve virtuálním počítači. V tématu [konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí portálu Azure](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálních počítačů.<br><br>Také ověřte, že žádost HTTP GET URI správně naformátován, zejména prostředek, který je zadaný identifikátor URI v řetězci dotazu. Najdete v části "Ukázková žádost" v [předcházející části REST](#rest) příklad, nebo [služeb Azure, podpora Azure AD ověření](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředku.
 
 ## <a name="retry-guidance"></a>Opakujte pokyny 
+
+Doporučujeme opakovat, pokud se zobrazí 404, 429 nebo 5xx kód chyby (viz [zpracování chyb](#error-handling) výše).
 
 Omezení omezení se vztahuje na počet volání na IMDS koncový bod. Překročení omezení prahovou hodnotu, koncový bod IMDS omezuje žádné další požadavky omezení je v platnosti. Během této doby koncový bod IMDS vrátí stavový kód HTTP 429 ("příliš mnoho požadavků"), a požadavky selžou. 
 

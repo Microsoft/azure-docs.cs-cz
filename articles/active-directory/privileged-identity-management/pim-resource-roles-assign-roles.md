@@ -3,7 +3,7 @@ title: Přiřazení role pro prostředků Azure pomocí Privileged Identity mana
 description: Popisuje, jak přiřadit role v PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 501f063992d2f5c7769a5c9059b346aa2b5c2bb4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c27f5432facc34384fce72ffff26e414cbeb7d96
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699304"
 ---
 # <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Přiřazení role pro prostředků Azure pomocí Privileged Identity Management
 

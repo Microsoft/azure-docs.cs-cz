@@ -3,7 +3,7 @@ title: Spravovat výstrahy zabezpečení u prostředků Azure pomocí Privileged
 description: Popisuje výstrahy zabezpečení PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c6c057541b3e3067de6331bab6ca9cccfa092710
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0ad4cde6a59a8867f9ff3b3cb9d9bded06e34256
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699579"
 ---
 # <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Spravovat výstrahy zabezpečení u prostředků Azure pomocí Privileged Identity Management
 Privileged Identity Management (PIM) pro prostředky Azure generuje výstrahy, když je aktivita podezřelého nebo unsafe ve vašem prostředí. Když se spustí, se objeví na stránce výstrahy. 
@@ -30,14 +31,14 @@ Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů
 ![Sestava výstrahy](media/azure-pim-resource-rbac/rbac-alert-info.png)
 
 ## <a name="alerts"></a>Výstrahy
-| Výstrahy | Závažnost | Trigger | Doporučení |
+| Výstrahy | Severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
 | **Příliš mnoho vlastníky přiřazené k prostředku** |Střednědobé používání |Příliš mnoho uživatelů mít roli vlastníka. |Zkontrolujte uživatele v seznamu a přiřadit některé méně privilegované role. |
 | **Příliš mnoho trvalé vlastníky přiřazené k prostředku** |Střednědobé používání |Příliš mnoho uživatelů jsou trvale přiřazené k roli. |Zkontrolujte uživatele v seznamu a znovu přiřadit některé tak, aby vyžadovala aktivace pro roli použití. |
 | **Duplicitní role vytvořen** |Střednědobé používání |Několik rolí obsahuje stejných kritérií. |Použijte pouze jednu z těchto rolí. |
 
 
-### <a name="severity"></a>Závažnost
+### <a name="severity"></a>Severity
 * **Vysoká**: vyžaduje okamžitý zásah kvůli porušení zásad. 
 * **Střední**: nevyžaduje okamžitý zásah, ale signály potenciálních porušení zásad.
 * **Nízká**: nevyžaduje okamžitý zásah, ale doporučuje změnu upřednostňované zásady.

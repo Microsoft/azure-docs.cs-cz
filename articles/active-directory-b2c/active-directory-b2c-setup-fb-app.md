@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Konfigurace sítě Facebook | Microsoft Docs'
+title: Konfigurace sítě Facebook v Azure Active Directory B2C | Microsoft Docs
 description: Zadejte registrace a přihlášení k příjemce s účty sítě Facebook v aplikacích, které jsou zabezpečené službou Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 8/7/2017
 ms.author: davidmu
-ms.openlocfilehash: 899677500b0d33b5f98807a341449199b6b3dcac
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: ceab8df79337796bed314e04bacc37bf2ebe1d00
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712313"
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s účty služby Facebook
 ## <a name="create-a-facebook-application"></a>Vytvořit aplikaci pro Facebook

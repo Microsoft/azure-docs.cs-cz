@@ -1,22 +1,21 @@
 ---
-title: Přidání OpenID Connect poskytovatelů identit v předdefinované zásady – Azure AD B2C | Microsoft Docs
-description: Průvodce přehled o tom, jak přidat zprostředkovatele OpenID Connect v předdefinované zásady služby Azure AD B2C
+title: Přidání OpenID Connect poskytovatelů identit v integrovaných zásad v Azure Active Directory B2C | Microsoft Docs
+description: Průvodce přehled o tom, jak přidat zprostředkovatele OpenID Connect v předdefinované zásady služby Azure AD B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 357d193a-e33b-469c-8a93-0a8f45a60a9f
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: davidmu
-ms.openlocfilehash: 46223f1ec6b82828983861dae26ec8d777b77b86
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.component: B2C
+ms.openlocfilehash: e4325a7c87ac9975e819b22536838ec438fa1bcd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709559"
 ---
 # <a name="azure-active-directory-b2c-add-a-custom-openid-connect-identity-provider-in-built-in-policies"></a>Azure Active Directory B2C: Přidání vlastního zprostředkovatele identity OpenID Connect v integrovaných zásad
 

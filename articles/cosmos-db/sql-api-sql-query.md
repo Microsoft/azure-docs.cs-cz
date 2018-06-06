@@ -3,23 +3,21 @@ title: Dotazy SQL pro Azure Cosmos DB | Microsoft Docs
 description: Další informace o syntaxi jazyka SQL, databáze koncepty a dotazy SQL pro Azure Cosmos DB. SQL lze použít jako dotazovací jazyk JSON v Azure Cosmos DB.
 keywords: syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce
 services: cosmos-db
-documentationcenter: ''
 author: LalithaMV
 manager: kfile
 editor: monicar
-ms.assetid: a73b4ab3-0786-42fd-b59b-555fce09db6e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: laviswa
-ms.openlocfilehash: 725dfa2e76ae03f17a17991c523e85e9c69a69ec
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f0fd1b57be07eda13655b5a6c0dcb5b412e8a248
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798317"
 ---
 # <a name="sql-queries-for-azure-cosmos-db"></a>Dotazy SQL pro Azure Cosmos DB
 
@@ -305,7 +303,7 @@ Následující binární operátory jsou aktuálně podporovány a lze použít 
 <td>A, NEBO NE</td>
 </tr>
 <tr>
-<td>Porovnání</td>    
+<td>porovnání</td>    
 <td>=, !=, &lt;, &gt;, &lt;=, &gt;=, <></td>
 </tr>
 <tr>

@@ -1,26 +1,25 @@
 ---
-title: 'Azure Active Directory B2C: Získávání tokenu pomocí aplikace pro Android | Microsoft Docs'
+title: Získávání tokenu pomocí aplikace pro Android v Azure Active Directory B2C | Microsoft Docs
 description: Tento článek vám ukáže, jak vytvořit aplikaci pro Android používající AppAuth s Azure Active Directory B2C ke správě identit uživatelů a ověřování uživatelů.
 services: active-directory-b2c
-documentationcenter: android
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: mobile-android
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: davidmu
-ms.openlocfilehash: 6c4c9359571882fbbea4e7701305e30e0f49f460
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 7c0a72e03eaa8d12c26b1bbbf6a05b4d94e72358
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709902"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Přihlaste se pomocí aplikace pro Android
 
-Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. To umožňuje vývojářům využívat všechny knihovny, které chtějí integrovat do našich služeb. Pomoci vývojářům při použití naše platforma s další knihovny, jsme jste zapisuje několik návody podobné následujícímu abychom ukázali, jak nakonfigurovat 3. stran knihovny pro připojení k identitu platformy Microsoft. Většinu knihoven, které implementují [specifikace RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749), bude možné připojit k platformě Microsoft Identity.
+Platforma Microsoft identity používá otevřené standardy, jako je například OAuth2 nebo OpenID Connect. Těchto standardů umožňují využívat žádné knihovny, který chcete integrovat s Azure Active Directory B2C. Můžete použít jiné knihovny, můžete v návod podobné následujícímu ukazují, jak konfigurovat 3. stran knihovny pro připojení k identitu platformy Microsoft. Většina knihovny, které implementují [specifikace RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) můžete připojit k platformě Microsoft Identity.
 
 > [!WARNING]
 > Společnost Microsoft neposkytuje opravy pro 3. stran knihovny a nebyl provádí kontrolu těchto knihoven. Tato ukázka používá knihovnu 3. stran volat AppAuth, který byl testován pro kompatibilitu v základní scénáře s Azure AD B2C. Problémy a žádosti o funkce se mají směrovat knihovny open-source projekt. Najdete v tématu [v tomto článku](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) Další informace.  
@@ -136,5 +135,5 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 
 Naleznete [AppAuth průvodce](https://openid.github.io/AppAuth-Android/) o tom, jak dokončete proces. Pokud budete potřebovat rychle začít s pracovní aplikace, podívejte se na [naše ukázka](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c). Postupujte podle kroků v [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) k zadání vlastní konfigurace Azure AD B2C.
 
-Snažíme se vždy otevřený a názory a návrhy! Pokud máte jakékoli problémy s tímto tématem nebo doporučení pro zlepšení tohoto obsahu, by nám chcete sdělit svůj názor v dolní části stránky. Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Snažíme se vždy otevřený a názory a návrhy! Pokud máte jakékoli problémy s tímto článkem nebo doporučení pro zlepšení tohoto obsahu, by nám chcete sdělit svůj názor v dolní části stránky. Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

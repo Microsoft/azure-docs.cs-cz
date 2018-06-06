@@ -1,21 +1,21 @@
 ---
-title: Resetování hesla pomocí samoobslužné služby | Microsoft Docs
+title: Hesla pomocí samoobslužné služby resetování v Azure Active Directory B2C | Microsoft Docs
 description: Ukazuje, jak nastavit samoobslužné resetování hesla pro vaše zákazníky v Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: davidmu
-ms.openlocfilehash: 5b75455ad604b594a5f85fea8299d35a7d02c848
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: ea8b23618b382f557340643afd62e56932bbfb2d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712092"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Nastavení samoobslužného resetování hesla pro vaše zákazníky
 Funkce resetování hesla pomocí samoobslužné služby s svým zákazníkům, kteří zaregistrovali pro místní účty mohou resetovat svá hesla na své vlastní. To významně snižuje zátěž vašim zaměstnancům technické podpory, zvlášť pokud vaše aplikace nemá miliony zákazníky používající v pravidelných intervalech. V současné době používá ověřenou e-mailovou adresu je metoda pouze podporované obnovení.

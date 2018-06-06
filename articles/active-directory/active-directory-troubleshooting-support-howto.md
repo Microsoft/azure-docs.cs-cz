@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.topic: article
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.workload: identity
 ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 26bf0bcaf2b5da938bcbed0336b742908d13474a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b5afd71e7d359e9765028fbc9de01486d394cdc0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713826"
 ---
 # <a name="how-to-get-support-for-azure-active-directory"></a>Jak získat podporu pro Azure Active Directory
 

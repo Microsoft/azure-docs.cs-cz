@@ -14,23 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 88505126389f51f59cf0538da8b72139f86e58d5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e64cc232aa01a5619a55290f9b07421165a6d5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698726"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Kurz: Konfigurace ServiceNow pro zřizování automatické uživatelů s Azure Active Directory
 
 Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v ServiceNow a Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do ServiceNow.
 
+> [!NOTE]
+> Tento kurz popisuje spojnice postavená na službu zřizování uživatele Azure AD. Důležité informace o jaké této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](./active-directory-saas-app-provisioning.md).
+
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Konfigurace integrace Azure AD s ServiceNow, potřebujete následující položky:
 
-*   Klienta služby Azure Active directory.
-*   Musí mít platný klienta pro ServiceNow práci nebo ServiceNow pro vzdělávací organizace. Bezplatný zkušební účet můžete použít buď služby.
-*   Uživatelský účet v ServiceNow s oprávněními správce týmu.
+- Předplatné služby Azure AD
+- Pro ServiceNow, instanci nebo klienta ServiceNow Calgary verze nebo vyšší
+- Pro instance ServiceNow Express, Helsinkách verze ServiceNow Express nebo vyšší
+
+> [!NOTE]
+> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+
+- Nepoužívejte provozním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+
 
 ## <a name="assigning-users-to-servicenow"></a>Přiřazení uživatelů k ServiceNow
 

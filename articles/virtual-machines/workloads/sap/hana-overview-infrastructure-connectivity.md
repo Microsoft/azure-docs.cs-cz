@@ -4,28 +4,29 @@ description: Konfigurace infrastruktury požadované připojení používat SAP 
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4741cf306aed1c86be1bc4b54fb961383e2f70bd
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763761"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (velké instance) a připojení v Azure 
 
 Definice předem před čtením této příručky. V [přehled SAP HANA (velké instance) a architektura v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) zavedli jsme dvěma různými třídami velké Instance HANA jednotek s:
 
-- S72, S72m, S144, S144m, S192 a S192m, které označujeme jako typu Type I třídy, z jednotky SKU.
-- S384, S384m, S384xm, S576m, S768m a S960m, které označujeme jako typ II třída z jednotky SKU.
+- S72, S72m, S144, S144m, S192, S192m a S192xm, které označujeme jako typu Type I třídy, z jednotky SKU.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m, které označujeme jako typ II třída z jednotky SKU.
 
 Specifikátory třídy se bude používat v dokumentaci velké Instance HANA nakonec odkazovat na různé možnosti a požadavky založené na HANA velké Instance SKU.
 
@@ -213,7 +214,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 V tomto příkladu se použila HighPerformance SKU brány. Vaše možnosti jsou HighPerformance nebo UltraPerformance jako bránu jenom jednotky SKU, které jsou podporovány pro SAP HANA v Azure (velké instance).
 
 > [!IMPORTANT]
-> Pro velké instancí HANA verze SKU typy S384, S384m, S384xm, S576m, S768m a S960m (SKU – třída typu II), využití UltraPerformance SKU brány je povinné.
+> Pro HANA velké instance typu II classs SKU využití UltraPerformance SKU brány je povinné.
 
 ### <a name="linking-vnets"></a>Propojení virtuální sítě
 

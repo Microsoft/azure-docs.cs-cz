@@ -13,19 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b7e794cb08647dde6fe59b6d4b06a9cbfab06e1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cb5b68e7bd0a1b247327e7147fe38eae19395f50
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726529"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Přesunout virtuální počítač s Windows z Amazon Web Services (AWS) do Azure pomocí prostředí PowerShell
 
 Pokud hodnotíte virtuální počítače Azure pro hostování vašich úloh, můžete exportovat existující instanci virtuálního počítače Windows EC2 Amazon Web Services (AWS) pak nahrajte virtuální pevný disk (VHD) do Azure. Po nahrání virtuálního pevného disku můžete vytvořit nový virtuální počítač v Azure z disku VHD. 
 
-Toto téma popisuje přesunutí jeden virtuální počítač z AWS do Azure. Pokud chcete přesunout virtuální počítače z AWS do Azure ve velkém měřítku, přečtěte si téma [migraci virtuálních počítačů v Amazon Web Services (AWS) do Azure s Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+Tento článek se týká přesunu jeden virtuální počítač z AWS do Azure. Pokud chcete přesunout virtuální počítače z AWS do Azure ve velkém měřítku, přečtěte si téma [migraci virtuálních počítačů v Amazon Web Services (AWS) do Azure s Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače 
  
@@ -45,7 +46,7 @@ Specializované i zobecněný virtuální pevné disky můžete nahrát do Azure
 
 ## <a name="export-and-download-the-vhd"></a>Export a stáhnout virtuální pevný disk 
 
-Exportujte EC2 instance virtuálního pevného disku v sady Amazon S3. Postupujte podle kroků popsaných v tématu dokumentace Amazon [export Instance jako virtuálních počítačů pomocí virtuálních počítačů importu a exportu](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spusťte [vytvořit instanci export úkolů](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) příkaz pro export EC2 instance do souboru virtuálního pevného disku. 
+Exportujte EC2 instance virtuálního pevného disku v sady Amazon S3. Postupujte podle kroků v článku dokumentace Amazon [export Instance jako virtuálních počítačů pomocí virtuálních počítačů importu a exportu](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) a spusťte [vytvořit instanci export úkolů](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) příkaz pro export EC2 instance do souboru virtuálního pevného disku. 
 
 Exportovaný soubor virtuálního pevného disku se uloží do sady Amazon S3, které zadáte. Základní syntaxe pro export virtuálního pevného disku je menší než, nahraďte zástupný text v <brackets> s informacemi.
 

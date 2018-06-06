@@ -12,15 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: b642d6de9fd9265d7f7ee11b827a36d20e5bcce7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: eb7576c48d3836eec8051d849cefe4c5ec6658c9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699202"
 ---
-# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Nejčastější dotazy pro Azure Active Directory jednotné přihlašování modulu plug-in 
+# <a name="faq-for-the-azure-active-directory-sso-plug-in"></a>Nejčastější dotazy pro Azure Active Directory jednotné přihlašování modulu plug-in
+
+Pokud máte dotazy týkající se to naleznete níže nejčastější dotazy k modulu plug-in.
 
 ## <a name="what-does-the-plug-in-do"></a>Jaké jsou modulu plug-in proveďte?
 
@@ -38,13 +41,13 @@ Ne. Modul plug-in podporuje pouze místní verze Jira a soutoku.
 
 Modul plug-in podporuje tyto verze:
 
-* Základní Jira a Software: 6.0 na 7.2.2 
-* Jira technickou podporu: 3.2 k 3.0 
+* Základní Jira a Software: 6.0 na 7,8
+* Jira technickou podporu: 3.2 k 3.0
 * Soutoku: 5.0 pro 5.10
 
 ## <a name="is-the-plug-in-free-or-paid"></a>Je bezplatná modul plug-in nebo placené?
 
-Je bezplatné rozšíření. Můžete ho nainstalovat z webu Atlassian Marketplace.
+Je bezplatné rozšíření.
 
 ## <a name="do-i-need-to-restart-jira-or-confluence-after-i-deploy-the-plug-in"></a>Je potřeba restartovat Jira nebo soutoku po nasadit modul plug-in?
 
@@ -52,7 +55,7 @@ Restart není vyžadován. Můžete začít používat okamžitě modulu plug-in
 
 ## <a name="how-do-i-get-support-for-the-plug-in"></a>Jak získat podporu pro modul plug-in?
 
-Oslovení [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Tým odpovídá v 24 48 pracovní dobu. 
+Můžete oslovení [týmu Integrace Azure AD jednotného přihlašování k](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) pro všechny podpory potřebné pro tento modul plug-in. Tým odpovídá v 24 48 pracovní dobu.
 
 Můžete taky zvýšit lístek podpory se společností Microsoft prostřednictvím portálu Azure kanálu.
 

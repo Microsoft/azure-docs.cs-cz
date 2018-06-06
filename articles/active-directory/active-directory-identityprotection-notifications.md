@@ -1,14 +1,15 @@
 ---
-title: "Azure Active Directory Identity Protection oznámení | Microsoft Docs"
-description: "Zjistěte, jak oznámení podporují vaše aktivity šetření."
+title: Azure Active Directory Identity Protection oznámení | Microsoft Docs
+description: Zjistěte, jak oznámení podporují vaše aktivity šetření.
 services: active-directory
-keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení"
-documentationcenter: 
+keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: bea21439afef4fda453732edffc84c62667dfe38
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e72cfab8886f28982e5451362704d6a7a9fe59e4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713809"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure oznámení ochrany identit služby Active Directory
 
@@ -34,7 +36,7 @@ Tento článek vám poskytne přehled obou oznámení e-mailů.
 
 ## <a name="users-at-risk-detected-email"></a>Ohrožených uživatelích zjistil e-mailu
 
-V reakci na zjištěné účtu ohrožený, Azure AD Identity Protection vygeneruje výstrahu e-mailu s **uživatelé hrozí zjistil** jako předmět. E-mailu, zahrnuje odkaz  **[uživatelé označení příznakem rizik](active-directory-reporting-security-user-at-risk.md)**  sestavy. Jako osvědčený postup které byste měli prozkoumat okamžitě ohrožených uživatelích.
+V reakci na zjištěné účtu ohrožený, Azure AD Identity Protection vygeneruje výstrahu e-mailu s **uživatelé hrozí zjistil** jako předmět. E-mailu, zahrnuje odkaz **[uživatelé označení příznakem rizik](active-directory-reporting-security-user-at-risk.md)** sestavy. Jako osvědčený postup které byste měli prozkoumat okamžitě ohrožených uživatelích.
 
 ![Ohrožených uživatelích zjistil e-mailu](./media/active-directory-identityprotection-notifications/01.png)
 
@@ -57,7 +59,7 @@ Otevřete dialogové okno související, klikněte na tlačítko **výstrahy** v
 Týdenní digest e-mailu obsahuje souhrn nových událostí riziko.  
 Obsahuje:
 
-- Ohrožených uživatelích
+- Ohrožení uživatelé
 
 - Podezřelé aktivity
 
@@ -78,6 +80,6 @@ Otevřete dialogové okno související, klikněte na tlačítko **týdenní Dig
 ![Ohrožených uživatelích zjistil e-mailu](./media/active-directory-identityprotection-notifications/04.png)
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Ochrany identit Azure Active Directory](active-directory-identityprotection.md)

@@ -9,15 +9,17 @@ ms.author: jeffgilb
 ms.date: 07/05/2017
 ms.topic: article
 ms.prod: ''
-ms.service: azure
+ms.service: active-directory
+ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 552c777b9ae8b33bc624436aeecc8ef9e097cf3c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713785"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Základy správy identit Azure
 
@@ -30,17 +32,17 @@ Azure AD Premium je cloudových identit a přístupu řešení pro správu pomoc
 Podívejte se na následující krátké video pro rychlý přehled o správu identit Azure AD a ochrany:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Společnost Microsoft poskytuje nejen identitou, která přebírá everywhere, ale taky sadu nástrojů pro automatizaci, zabezpečení a správě IT v rámci vaší organizace. I po nástupem cloud computing přetrvává vyžádání spravovat a řídit IT úkoly, jako je volání na helpdesk k resetování uživatelských hesel, správu skupiny uživatelů a žádosti o aplikace. Komplikují další věci, zaměstnanci teď přináší svá osobní zařízení k práci a používání aplikace SaaS ve snadno dostupné. Díky tomu Údržba kontrolu nad svých aplikací mezi datovými centry podnikové a veřejný cloud platformy významné problémy.
+Společnost Microsoft poskytuje nejen identitou, která přebírá everywhere, ale taky sadu nástrojů pro automatizaci, zabezpečení a správě IT v rámci vaší organizace. I po nástupem cloud computing přetrvává vyžádání spravovat a řídit IT úkoly, jako je volání na helpdesk k resetování uživatelských hesel, správu skupiny uživatelů a žádosti o aplikace. Komplikují další věci, zaměstnanci teď přináší svá osobní zařízení pro práci a pomocí snadno dostupné SaaS aplikace, které umožňuje údržbu ovládat svých aplikací mezi datovými centry podnikové a veřejný cloud platformy významné výzvu.
 
 [!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>Připojit místní službu Active Directory s Azure AD a Office 365
-Organizace, které provedli velké investice v místní službě Active Directory můžete rozšířit tyto investice do cloudu díky integraci svých místních adresářů se Azure AD do [hybridní Správa identit](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Díky tomu umožňuje uživatelům zvýšit produktivitu tím, že poskytuje společnou identitu pro přístup k prostředkům bez ohledu na umístění. Uživatelé a organizace lze potom pomocí jednotného přihlašování na (SSO) přístup k prostředkům i místní a cloudové služby, například Office 365.
+Organizace, které provedli velké investice v místní službě Active Directory můžete rozšířit tyto investice do cloudu díky integraci svých místních adresářů se Azure AD do [hybridní Správa identit](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview). Díky tomu umožňuje uživatelům zvýšit produktivitu tím, že poskytuje společnou identitu pro přístup k prostředkům bez ohledu na umístění. Uživatelé a organizace můžou pak používat jednotné přihlašování (SSO) přístup k prostředkům i místní a cloudové služby, například Office 365.
 
 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) je jediný nástroj je nutné získat integrace provést. Azure AD Connect poskytuje možnosti pro podporu vašich potřeb synchronizace identit a nahrazuje starší verze nástrojů pro integraci identity například DirSync a Azure AD Sync. S Azure AD Connect správu identit a synchronizace mezi místními a Azure AD je povolená díky:
 
 - Synchronizace – tato komponenta odpovídá za vytváření uživatelů, skupin a dalších objektů. Také zajišťuje, aby se informace o identitě místních uživatelů a skupin shodovaly s cloudem. Zpětný zápis hesla můžete také povolit pro synchronizaci místních adresářů když uživatel aktualizuje hesla ve službě Azure AD.
-- Služba AD FS - federace se nachází volitelné funkce poskytované přes Azure AD Connect, který můžete použít ke konfiguraci hybridního prostředí pomocí místní infrastruktury služby AD FS. Federační slouží organizacím řešení komplexních nasazení, jako je například jednotné přihlašování vynucení přihlášení zásady služby Active Directory a čipové karty nebo třetích stran vícefaktorového ověřování.
+- Služba AD FS - federace se nachází volitelné funkce poskytované přes Azure AD Connect, který můžete použít ke konfiguraci hybridního prostředí pomocí místní infrastruktury služby AD FS. Federační slouží organizacím řešení komplexních nasazení, například čipová karta nebo vícefaktorového ověřování jiných výrobců.
 - Monitorování stavu – [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) může poskytovat robustní monitorování a centrální umístění na portálu Azure k zobrazení této aktivity.
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>Zvýšení produktivity a snížit náklady na technickou podporu s samoobslužné služby a jeden přihlašování

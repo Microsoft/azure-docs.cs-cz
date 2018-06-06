@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Migraci uživatelů s identitami, sociálních'
-description: Informace o klíčových konceptech na migraci uživatelů s sociálních identity do Azure AD B2C, pomocí rozhraní Graph API
+title: Migraci uživatelů s sociálních identit v Azure Active Directory B2C | Microsoft Docs
+description: Informace o klíčových konceptech na migraci uživatelů s sociálních identity do Azure AD B2C, pomocí rozhraní Graph API.
 services: active-directory-b2c
-documentationcenter: ''
-author: davidmu
+author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: davidmu
-ms.openlocfilehash: a150d8255171c83334ac4c1f81cbcee39c1df70a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 7c83afba1f027771b3407aecf94fefffdc951664
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710555"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migraci uživatelů s identitami, sociálních
 Při plánování migrace zprostředkovatele identity do Azure AD B2C, může také muset migrovat uživatelé s sociálních identity. Tento článek vysvětluje, jak migrovat existující účty sociálních identity, jako například: Facebook, LinkedIn, Microsoft a Google účtů Azure AD B2C. Tento článek se týká také federované identity, ale tyto migrace jsou méně častých.

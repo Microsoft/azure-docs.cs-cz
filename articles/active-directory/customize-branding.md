@@ -8,17 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
-ms.date: 01/19/2018
+ms.date: 05/23/2018
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: ac8562b77ba43dbb07e886dfa235586198027796
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5573399b33da64df8b9bbf78a9583572cf148d7b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713843"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Rychlé spuštění: Přidání firemního brandingu na přihlašovací stránku ve službě Azure AD
 Mnoho společností chce předcházet zmatení uživatele a upřednostňuje jednotný vzhled všech webů a služeb, které spravují. Azure Active Directory (Azure AD) tuto možnost nabízí a umožňuje přizpůsobení vzhledu stránku přihlášení s svoje firemní logo a vlastní barevná schémata. Na přihlašovací stránce se zobrazí při přihlášení k aplikacím založené na webu, například Office 365, které používají Azure AD jako zprostředkovatele identity. Budete používat tuto stránku k zadání pověření.
@@ -83,24 +84,24 @@ Azure AD přihlášení umožňuje uživateli, které můžete zůstat přihlá�
 ## <a name="add-company-branding-to-your-directory"></a>Přidání firemního brandingu do vašeho adresáře
 
 1. Přihlaste se k [do centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globální správce pro tenanta.
-2. Vyberte **uživatelů a skupin** > **firemní branding** > **upravit**.
+2. Vyberte **Azure Active Directory** > **firemní branding** > **upravit**.
   
   ![Otevírání vlastní branding](./media/customize-branding/navigation-to-branding.png)
 3. Upravte prvky, které chcete přizpůsobit. Všechny prvky jsou volitelné.
   
   ![Upravit vlastní branding](./media/customize-branding/edit-branding.png)
-5. Až budete hotoví, vyberte **Uložit**.
+4. Až budete hotoví, vyberte **Uložit**.
 
 Může trvat až jednu hodinu pro všechny změny, které jste udělali na přihlašovací stránku branding zobrazí.
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>Přidání konkrétní jazyk firemního brandingu do vašeho adresáře
 
 1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **uživatelů a skupin** > **firemní branding** > **nový jazyk**.
+2. Vyberte **Azure Active Directory** > **firemní branding** > **nový jazyk**.
   
   ![Přidání brandingu elementy jazyka](./media/customize-branding/add-language.png)
-5. Upravte prvky, které chcete přizpůsobit. Všechny prvky jsou volitelné.
-6. Až budete hotoví, vyberte **Uložit**.
+3. Upravte prvky, které chcete přizpůsobit. Všechny prvky jsou volitelné.
+4. Až budete hotoví, vyberte **Uložit**.
 
 Může trvat až jednu hodinu pro všechny změny, které jste udělali na přihlašovací stránku branding zobrazí.
 

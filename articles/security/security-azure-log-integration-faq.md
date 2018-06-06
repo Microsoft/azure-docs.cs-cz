@@ -1,6 +1,6 @@
 ---
-title: "Integrace Azure protokolu – nejčastější dotazy | Microsoft Docs"
-description: "Tento článek obsahuje odpovědi na otázky týkající se integrace se službou Azure protokolu."
+title: Integrace Azure protokolu – nejčastější dotazy | Microsoft Docs
+description: Tento článek obsahuje odpovědi na otázky týkající se integrace se službou Azure protokolu.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,25 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 02/16/2018
-ms.author: TomSh
+ms.date: 05/25/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9f270daec40d4b395588c491a7ff88ef6ca45649
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802438"
 ---
 # <a name="azure-log-integration-faq"></a>Integrace Azure protokolu – nejčastější dotazy
 
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) informace o integraci Azure protokolu.
 
->[!IMPORTANT]
->Upřednostňovanou metodou pro integraci Azure protokoly se pomocí svého dodavatele SIEM Azure monitorování konektoru a následující tyto [pokyny](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Ale pokud dodavatele SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné použít protokol integrace se službou Azure jako dočasné řešení (je-li vašeho systému SIEM podporován protokol integrace se službou Azure) dokud takové connector je k dispozici.
-
 Integrace se službou Azure protokolu je služba operačního systému Windows, která můžete integrovat do vaší místní zabezpečení informací a událostí (SIEM) systémy správy nezpracovaná protokoly z vašich prostředků Azure. Tato integrace poskytuje jednotný řídicí panel pro všechny vaše prostředky, místně nebo v cloudu. Můžete pak agregace, korelovat, analyzovat a výstrahy zabezpečení události související s vašimi aplikacemi.
 
+Upřednostňovanou metodou pro integraci Azure protokoly se pomocí svého dodavatele SIEM Azure monitorování konektoru a následující tyto [pokyny](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Ale pokud dodavatele SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné použít protokol integrace se službou Azure jako dočasné řešení (je-li vašeho systému SIEM podporován protokol integrace se službou Azure) dokud takové connector je k dispozici.
+
 ## <a name="is-the-azure-log-integration-software-free"></a>Je software protokolu integrace se službou Azure volné?
+
 Ano. Není nijak zpoplatněn pro software protokolu integrace se službou Azure.
 
 ## <a name="where-is-azure-log-integration-available"></a>Kde je k dispozici protokolu integrace se službou Azure?
@@ -38,6 +39,7 @@ Ano. Není nijak zpoplatněn pro software protokolu integrace se službou Azure.
 Je aktuálně k dispozici v komerčních Azure a Azure Government a není k dispozici v Číně nebo v Německu.
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Jak lze zobrazit účty úložiště, ze kterých je integrace se službou Azure protokolu stahování protokolů virtuálního počítače Azure?
+
 Spusťte příkaz **AzLog zdrojového seznamu**.
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Jak poznám, které předplatné protokoly protokolu integrace se službou Azure jsou z?
@@ -51,6 +53,7 @@ Protokoly auditu Azure Active Directory zahrnují ID klienta v rámci názvu.
 Diagnostické protokoly, které se načítají z centra událostí nebudou obsahovat ID předplatného v rámci názvu. Místo toho obsahují popisný název zadaný jako součást vytvoření zdroje události rozbočovače. 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>Jak můžete aktualizovat konfiguraci proxy serveru?
+
 Pokud vaše nastavení proxy serveru přímo neumožňuje přístup k úložišti Azure, otevřete **AZLOG. SOUBOR EXE. KONFIGURACE** souboru v **c:\Program Files\Microsoft Azure protokolu integrace**. Aktualizace souboru **defaultProxy –** oddíl s adresu proxy serveru v organizaci. Po dokončení aktualizace zastavit a spustit službu pomocí příkazů **net stop AzLog** a **net start AzLog**.
 
     <?xml version="1.0" encoding="utf-8"?>
@@ -61,7 +64,7 @@ Pokud vaše nastavení proxy serveru přímo neumožňuje přístup k úložišt
         </connectionManagement>
         <defaultProxy>
           <proxy usesystemdefault="true"
-          proxyaddress=http://127.0.0.1:8888
+          proxyaddress="http://127.0.0.1:8888"
           bypassonlocal="true" />
         </defaultProxy>
       </system.net>
@@ -70,6 +73,7 @@ Pokud vaše nastavení proxy serveru přímo neumožňuje přístup k úložišt
       </system.diagnostics>   
 
 ## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Jak lze zobrazit informace o předplatném v události systému Windows?
+
 Při přidávání zdroj provést připojení k popisný název ID předplatného:
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
@@ -79,6 +83,7 @@ Událost XML má následující metadata, včetně ID předplatného:
 
 ## <a name="error-messages"></a>Chybové zprávy
 ### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>Při spuštění příkazu ```AzLog createazureid```, proč se zobrazí chybová zpráva?
+
 Chyba:
 
   *Nepodařilo se vytvořit aplikaci AAD - klienta 72f988bf-86f1-41af-91ab-2d7cd011db37-důvod = "Zakázáno" - zpráva = "Dostatečná oprávnění k dokončení operace."*
@@ -86,6 +91,7 @@ Chyba:
 **Azlog createazureid** příkaz se pokouší vytvořit objekt služby v všechny klienty Azure AD pro předplatné, které má přístup k přihlášení k Azure. Pokud vaše Azure přihlášení je pouze uživatel guest v tomto klientovi Azure AD, příkaz selže a "Dostatečná oprávnění k dokončení operace." Požádejte správce klienta pro přidání účtu jako uživatel v klientovi.
 
 ### <a name="when-i-run-the-command-azlog-authorize-why-do-i-get-the-following-error"></a>Při spuštění příkazu **azlog Autorizovat**, proč se zobrazí chybová zpráva?
+
 Chyba:
 
   *Upozornění vytvoření přiřazení Role - AuthorizationFailed: klient janedo@microsoft.com' s objektem id 'fe9e03e4-4dad-4328-910f-fd24a9660bd2, nemá oprávnění k provedení akce 'Microsoft.Authorization/roleAssignments/write' v oboru, nebo odběry / 70d 95299-d689-4c 97-b971-0d8ff0000000'.*
@@ -93,15 +99,18 @@ Chyba:
 **Azlog Autorizovat** příkaz přiřadí roli čtečky objekt služby Azure AD (vytvořené pomocí **azlog createazureid**) zadané předplatným. Pokud Azure přihlášení není společné správce nebo vlastníka předplatného, se nezdaří s chybovou zprávou "Autorizace se nezdařilo". Azure na základě rolí řízení přístupu (RBAC) spolusprávcem nebo vlastník je nutný k dokončení této akce.
 
 ## <a name="where-can-i-find-the-definition-of-the-properties-in-the-audit-log"></a>Kde najdu definici vlastnosti v protokolu auditování?
-Přejděte na téma:
+
+Přečtěte si:
 
 * [Operace auditu pomocí Azure Resource Manageru](../azure-resource-manager/resource-group-audit.md)
 * [Seznam událostí správy v rámci předplatného v monitorování REST API služby Azure](https://msdn.microsoft.com/library/azure/dn931934.aspx)
 
 ## <a name="where-can-i-find-details-on-azure-security-center-alerts"></a>Kde můžete najít podrobnosti o ve výstrahách Azure Security Center?
+
 V tématu [Správa a zpracování výstrah zabezpečení v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md).
 
 ## <a name="how-can-i-modify-what-is-collected-with-vm-diagnostics"></a>Jak lze upravit co je shromažďováno s diagnostikou virtuálního počítače?
+
 Podrobnosti o tom, jak získat, upravit a nastavit konfiguraci Azure Diagnostics najdete v části [pomocí Powershellu povolit v virtuálního počítače se systémem Windows Azure Diagnostics](../virtual-machines/windows/ps-extensions-diagnostics.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 Následující příklad načte konfiguraci Azure Diagnostics:

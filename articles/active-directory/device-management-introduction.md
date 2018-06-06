@@ -8,18 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 6384f63139eb64522409c5922e187afd878ebb09
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714132"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Úvod do správy zařízení v Azure Active Directory
 
@@ -30,9 +32,9 @@ První mobilní, cloudové první světě Azure Active Directory (Azure AD) umo�
 
 Pomocí zařízení jsou vaši uživatelé získání přístupu k firemním majetkem. Pokud chcete ochránit vaše podnikové prostředky, jako správce IT, budete chtít mít řízení těchto zařízení. Díky tomu můžete zajistit, že vaši uživatelé přistupují k prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. 
 
-Správa zařízení je také základem pro [podmíněného přístupu na základě zařízení](active-directory-conditional-access-policy-connected-applications.md). Pomocí podmíněného přístupu podle zařízení můžete zajistit, že přístup k prostředkům ve vašem prostředí je možné pouze s důvěryhodnými zařízeními.   
+Správa zařízení je také základem pro [podmíněného přístupu na základě zařízení](active-directory-conditional-access-policy-connected-applications.md). Pomocí podmíněného přístupu podle zařízení můžete zajistit, že přístup k prostředkům ve vašem prostředí je možné jenom s spravovaných zařízení.   
 
-Toto téma vysvětluje, jak funguje správa zařízení ve službě Azure Active Directory.
+Tento článek vysvětluje, jak funguje správa zařízení ve službě Azure Active Directory.
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Získávání zařízení pod kontrolou Azure AD
 
@@ -122,7 +124,7 @@ Pokud byste měli používat Azure AD hybridní připojené k zařízení:
 
 - Máte Win32 aplikace nasazené do těchto zařízení, které používají protokol NTLM nebo Kerberos.
 
-- Vyžadujete, zásady skupiny nebo SCCM nebo DCM ke správě zařízení.
+- Vyžadujete, aby zásady skupiny pro správu zařízení.
 
 - Chcete nadále používat pro vytváření bitových kopií řešení pro konfiguraci zařízení pro vaši zaměstnanci.
 

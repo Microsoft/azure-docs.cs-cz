@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 05/15/2018
+ms.topic: conceptual
+ms.date: 05/31/2018
 ms.author: carlrab
-ms.openlocfilehash: d225af55a705d56a94bb0e8dcfcc938b64f3633a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 324f9f35de37c717d57e46413cd881dce785f4fd
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737659"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Azure SQL Database vCore na základě nákupu modelu omezení (preview)
 
@@ -49,11 +50,11 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 |||
 
 #### <a name="generation-5-compute-platform"></a>Generování 5 výpočetní platforma
-|Úroveň výkonu|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48| GP_Gen5_80|
+|Úroveň výkonu|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Generování H i zápis|5|5|5|5|5|5|5|
-|Virtuální jádra|2|4|8|16|24|32|48|80|
-|Paměť (GB)|11|22|44|88|132|176|264|440|
+|Virtuální jádra|2|4|8|16|24|32|40|80|
+|Paměť (GB)|11|22|44|88|132|176|220|440|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Typ úložiště|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|
@@ -62,7 +63,7 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 |Maximální velikost protokolu|307|307|461|614|1229|1229|1229|1229|
 |Databáze TempDB size(DB)|64|128|256|384|384|384|384|384|
 |Cíl IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
-|Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|2400|3200|4800|8000|
+|Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolená relací|30000|30000|30000|30000|30000|30000|30000|30000|
 |Počet replik|1|1|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -89,28 +90,28 @@ Pro izolované databáze v následujících tabulkách prostředky k dispozici p
 |Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|3200|4800|
 |Maximální povolená relací|30000|30000|30000|30000|30000|30000|
 |Počet replik|3|3|3|3|3|3|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště záloh|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|
 |||
 
 #### <a name="generation-5-compute-platform"></a>Generování 5 výpočetní platforma
-|Úroveň výkonu|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|Úroveň výkonu|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H i zápis|5|5|5|5|5|5|5|5|
-|Virtuální jádra|2|4|8|16|24|32|48|80|
-|Paměť (GB)|11|22|44|88|132|176|264|440|
+|Virtuální jádra|2|4|8|16|24|32|40|80|
+|Paměť (GB)|11|22|44|88|132|176|220|440|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1.571|3,142|6.284|15.768|25.252|37.936|68.104|131.64|
+|Úložiště OLTP v paměti (GB)|1.571|3,142|6.284|15.768|25.252|37.936|52.22|131.64|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Latence vstupně-výstupní operace (přibližnou)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|2 048|4 096|4 096|4 096|
 |Maximální velikost protokolu|307|307|307|307|614|1229|1229|1229|
 |Databáze TempDB size(DB)|64|128|256|384|384|384|384|384|
-|Cíl IOPS (64 KB)|5000|10000|20000|40000|60000|80000|120000|200000
-|Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|2400|3200|4800|8000|
+|Cíl IOPS (64 KB)|5000|10000|20000|40000|60000|80000|100000.|200000
+|Maximální počet souběžných pracovních procesů (počet požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolená relací|30000|30000|30000|30000|30000|30000|30000|30000|
-|Počet replik|1|1|1|1|1|1|1|1|
+|Počet replik|3|3|3|3|3|3|3|3|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Zahrnuté úložiště záloh|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|
@@ -174,11 +175,11 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 |||
 
 #### <a name="generation-5-compute-platform"></a>Generování 5 výpočetní platforma
-|Úroveň výkonu|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48|GP_Gen5_80|
+|Úroveň výkonu|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H i zápis|5|5|5|5|5|5|5|5|
-|Virtuální jádra|2|4|8|16|24|32|48|80|
-|Paměť (GB)|11|22|44|88|132|176|264|440|
+|Virtuální jádra|2|4|8|16|24|32|40|80|
+|Paměť (GB)|11|22|44|88|132|176|220|440|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Úložiště OLTP v paměti (GB)|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Typ úložiště|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|Storage úrovně Premium (vzdálený)|
@@ -187,10 +188,10 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 |Databáze TempDB size(DB)|64|128|256|384|384|384|384|384|
 |Cíl IOPS (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |Latence vstupně-výstupní operace (přibližnou)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|ms 5 – 7 (zápisu)<br>5 až 10 ms (přečíst)|
-|Maximální počet souběžných pracovních procesů (počet požadavků)|210|420|840|1680|2520|3360|5040|8400
+|Maximální počet souběžných pracovních procesů (počet požadavků)|210|420|840|1680|2520|3360|4200|8400
 |Maximální povolená relací|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet fondu hustotu|100|200|500|500|500|500|500|500|
-|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32.|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32.|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|1|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -217,30 +218,32 @@ Pro databáze SQL elastické fondy následující tabulky popisují dostupné pr
 |Maximální povolená relací|30000|30000|30000|30000|30000|30000|
 |Maximální počet fondu hustotu|neuvedeno|50|100|100|100|100|
 |Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|neuvedeno|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|
+|Počet replik|3|3|3|3|3|3|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště záloh|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|
 |||
 
 #### <a name="generation-5-compute-platform"></a>Generování 5 výpočetní platforma
-|Úroveň výkonu|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|Úroveň výkonu|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H i zápis|5|5|5|5|5|5|5|5|
-|Virtuální jádra|2|4|8|16|24|32|48|80|
-|Paměť (GB)|11|22|44|88|132|176|264|440|
+|Virtuální jádra|2|4|8|16|24|32|40|80|
+|Paměť (GB)|11|22|44|88|132|176|220|440|
 |Podpora Columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|1.571|3,142|6.284|15.768|25.252|37.936|68.104|131.64|
+|Úložiště OLTP v paměti (GB)|1.571|3,142|6.284|15.768|25.252|37.936|52.22|131.64|
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Latence vstupně-výstupní operace (přibližnou)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|1 – 2 ms (zápisu)<br>ms 1 – 2 (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|2 048|4 096|4 096|4 096|
 |Maximální velikost protokolu|307|307|307|307|614|1229|1229|1229|
 |Databáze TempDB size(DB)|64|128|256|384|384|384|384|384|
-|Cíl IOPS (64 KB)|5000|10000|20000|40000|60000|80000|120000|200000
+|Cíl IOPS (64 KB)|5000|10000|20000|40000|60000|80000|100000.|200000
 |Maximální počet souběžných pracovních procesů (počet požadavků)|210|420|840|1680|2520|3360|5040|8400|
 |Maximální povolená relací|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maximální počet fondu hustotu|neuvedeno|50|100|100|100|100|100|100|
-|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|neuvedeno|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32.|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
-|Více AZ|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
+|Klikněte na tlačítko zastaví minimální nebo maximální elastického fondu|neuvedeno|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32.|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Počet replik|3|3|3|3|3|3|3|3|
+|Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
 |Přečtěte si Škálováním na více systémů|Ano|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Zahrnuté úložiště záloh|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|1 X DB velikost|
 |||

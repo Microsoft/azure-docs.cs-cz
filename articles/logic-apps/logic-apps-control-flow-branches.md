@@ -1,29 +1,25 @@
 ---
-title: "Paralelní větve - Azure Logic Apps | Microsoft Docs"
-description: "Vytvořit nebo připojit paralelních větvích v aplikacích logiky"
+title: Vytvořit nebo připojit paralelních větvích - Azure Logic Apps | Microsoft Docs
+description: Jak vytvořit nebo připojit paralelních větvích pro pracovní postupy v Azure Logic Apps
 services: logic-apps
-keywords: "větví, paralelní zpracování"
-documentationcenter: 
-author: ecfan
-manager: anneta
-editor: 
-ms.assetid: 
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 9a836b707a576b9a938f43397ef35c00aeb476bf
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 40af32b1618ee495cff82ed0a588ad620b759e96
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725543"
 ---
-# <a name="create-or-join-parallel-branches-in-your-logic-app"></a>Vytvořit nebo připojit paralelních větvích ve vaší aplikaci logiky
+# <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Vytvořit nebo připojit paralelních větvích pro akce pracovního postupu v Azure Logic Apps
 
-Ve výchozím nastavení akce v aplikaci logiky spouští sekvenčně. K provádění akcí nezávislé ve stejnou dobu, můžete vytvořit [paralelní větve](#parallel-branches)a potom [připojení těchto větví](#join-branches) novější v vaší toku. 
+Ve výchozím vaše akce v pracovních postupech logiku aplikace spouští sekvenčně. K provádění akcí nezávislé ve stejnou dobu, můžete vytvořit [paralelní větve](#parallel-branches)a potom [připojení těchto větví](#join-branches) novější v vaší toku. 
 
 > [!TIP] 
 > Pokud máte aktivační událost, která přijímá pole a chcete spustit pracovní postup pro každou položku pole, můžete *debatch* tohoto pole s [ **SplitOn** aktivovat vlastnost](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch).
@@ -36,7 +32,7 @@ Ve výchozím nastavení akce v aplikaci logiky spouští sekvenčně. K provád
 
 <a name="parallel-branches"></a>
 
-## <a name="add-a-parallel-branch"></a>Přidat paralelní větve
+## <a name="add-a-parallel-branch"></a>Přidat paralelní větev
 
 Ke spuštění nezávislé kroků ve stejnou dobu, můžete přidat paralelních větvích vedle stávající krok. 
 

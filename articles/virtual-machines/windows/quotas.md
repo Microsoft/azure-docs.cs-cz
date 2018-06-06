@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2016
+ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 50f28fcb2d7945949134d89f6bcc4238cf625bd1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dffc76151e0739bf56091d987bf21d02b5bfb1e2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716539"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuální počítač virtuální procesor kvóty
 
-Virtuální procesory kvóty pro virtuální počítače a sady škálování virtuálního počítače jsou uspořádány do dvou vrstev pro každé předplatné, v každé oblasti. První vrstva je celkový počet regionální Vcpu a druhé vrstvy je různých virtuálních počítačů velikost rodiny jádrech například Vcpu standardní D rodiny. Při každém vytvoření nového virtuálního počítače je nasadit Vcpu pro nově nasazené virtuální počítač nesmí být delší než kvóta virtuálních procesorů pro konkrétní rodiny velikost virtuálního počítače nebo kvóta celkový regionální virtuální procesory. Pokud některý z těchto kvót překročení nebudou povolena nasazení virtuálního počítače. Je také kvóty pro celkový počet virtuálních počítačů v oblasti. Informace o každé z těchto kvót si můžete prohlédnout ve **využití + kvóty** části **předplatné** stránky v [portál Azure](https://portal.azure.com), nebo můžete zadat dotaz pro hodnoty pomocí Prostředí PowerShell.
+Virtuální procesory kvóty pro virtuální počítače a sady škálování virtuálního počítače jsou uspořádány do dvou vrstev pro každé předplatné, v každé oblasti. První vrstva je celkový počet regionální Vcpu a druhé vrstvy je různých virtuálních počítačů velikost rodiny jádrech například Vcpu D-series. Při každém vytvoření nového virtuálního počítače je nasadit Vcpu pro virtuální počítač nesmí být delší než kvóta virtuálních procesorů pro rodinu velikost virtuálního počítače nebo kvóta celkový regionální virtuální procesory. Pokud některý z těchto kvót překročení nebudou povolena, nasazení virtuálního počítače. Je také kvóty pro celkový počet virtuálních počítačů v oblasti. Informace o každé z těchto kvót si můžete prohlédnout ve **využití + kvóty** části **předplatné** stránky v [portál Azure](https://portal.azure.com), nebo můžete zadat dotaz pro hodnoty pomocí Prostředí PowerShell.
 
  
 ## <a name="check-usage"></a>Zkontrolujte využití
@@ -74,7 +75,6 @@ Standard NCv3 Family vCPUs                   0     0 Count
 Standard LSv2 Family vCPUs                   0     0 Count
 Standard Storage Managed Disks               2 10000 Count
 Premium Storage Managed Disks                1 10000 Count
-
 ```
 
 

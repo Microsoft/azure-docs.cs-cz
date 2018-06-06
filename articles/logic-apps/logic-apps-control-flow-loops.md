@@ -1,29 +1,25 @@
 ---
-title: Smyčky - proces pole nebo opakování akce - Azure Logic Apps | Microsoft Docs
-description: Pole s "pro každý" zpracování smyčky nebo opakování akce až do splnění určitých podmínek v aplikacích logiky
+title: Přidání smyčky, které opakování akce nebo zpracovat pole - Azure Logic Apps | Microsoft Docs
+description: Vytvoření smyčky, které opakování akce pracovního postupu nebo zpracovat polí v Azure Logic Apps
 services: logic-apps
-keywords: pro každý smyčky
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: cfowler
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 26db63ed7706bdff9eb5c037a906fbc252b83a9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725951"
 ---
-# <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Smyčky: Zpracovat pole nebo opakujte akce, dokud je splněna podmínka
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Vytvoření smyčky, které opakování akce pracovního postupu nebo zpracovat polí v Azure Logic Apps
 
-Chcete-li iterace v polích ve vaší aplikaci logiky, můžete použít [smyčka "Typu Foreach"](#foreach-loop) nebo [sekvenční smyčka "Foreach"](#sequential-foreach-loop). Cykly ve smyčce standardní "Foreach" spuštěna paralelně, zatímco cykly ve smyčce sekvenční "Foreach" spustit po jednom. Maximální počet položek pole, které může zpracovat "Foreach" smyčky v jednom logiku aplikaci spustit, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
+K iteraci v rámci polí v aplikaci logiky, můžete použít [smyčka "Typu Foreach"](#foreach-loop) nebo [sekvenční smyčka "Foreach"](#sequential-foreach-loop). Iterace pro standardní smyčka "Foreach" spuštěna paralelně, zatímco iterace pro sekvenční smyčka "Foreach" spustit po jednom. Maximální počet položek pole, které může zpracovat "Foreach" smyčky v jednom logiku aplikaci spustit, najdete v části [omezení a konfigurace](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP] 
 > Pokud máte aktivační událost, která přijímá pole a chcete spustit pracovní postup pro každou položku pole, můžete *debatch* tohoto pole s [ **SplitOn** aktivovat vlastnost](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). 
@@ -202,7 +198,7 @@ Například v 8:00 AM každý den, tato aplikace logiky zvýší proměnné doku
 
    ![Přírůstek "Limit" o 1](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
-9. V části, ale mimo smyčky přidejte akci, která odešle e-mail. Pokud budete vyzváni, přihlaste se k e-mailový účet.
+9. V části, ale mimo smyčky přidejte akci, která odešle e-mail. Pokud budete vyzváni, přihlaste se k e-mailovému účtu.
 
    ![Přidat akci, která odešle e-mailu](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 

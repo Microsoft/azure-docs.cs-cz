@@ -1,26 +1,22 @@
 ---
-title: "Azure Service Bus nejčastější dotazy (FAQ) | Microsoft Docs"
-description: "Odpovídá na některé často kladené otázky týkající se Azure Service Bus."
+title: Azure Service Bus nejčastější dotazy (FAQ) | Microsoft Docs
+description: Odpovídá na některé často kladené otázky týkající se Azure Service Bus.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: cc75786d-3448-4f79-9fec-eef56c0027ba
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/14/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: ba34938883ee342936b5c7a4568dae5e02684bb2
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802261"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
+
 Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Service Bus. Další informace získáte [podporu nejčastější dotazy k Azure](http://go.microsoft.com/fwlink/?LinkID=185083) obecné Azure – ceny a podporu informace.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Obecné otázky o Azure Service Bus
@@ -37,9 +33,11 @@ A [fronty Service Bus](service-bus-queues-topics-subscriptions.md) je entita, ve
 Téma můžete vizualizovat jako fronty a při použití více předplatných, začne bohatší zasílání zpráv modelu; v podstatě nástroj na více komunikace. Tento model publikování a přihlášení k odběru (nebo *pub nebo sub*) umožňuje aplikaci, která odešle zprávu do tématu s více odběry tak, aby měl tento zpráv přijatých více aplikací.
 
 ### <a name="what-is-a-partitioned-entity"></a>Co je dělené entity?
-Konvenční fronta nebo téma zpracování zprostředkovatelem jedné zprávy a uloženy v úložišti jeden zasílání zpráv. A [oddílů fronta nebo téma](service-bus-partitioning.md) zpracovává více zpráv zprostředkovatelé a uložená v úložištích více zasílání zpráv. To znamená, že celkovou propustnost oddílů fronta nebo téma už není omezené podle výkonu zprostředkovatele jedné zprávy nebo úložišti pro přenos zpráv. Kromě toho dočasnému výpadku zasílání zpráv úložiště nevykresluje oddílů fronta nebo téma není k dispozici.
+Konvenční fronta nebo téma zpracování zprostředkovatelem jedné zprávy a uloženy v úložišti jeden zasílání zpráv. Podporováno pouze v Basic a Standard zasílání zpráv úrovně, [oddílů fronta nebo téma](service-bus-partitioning.md) zpracovává více zpráv zprostředkovatelé a uložená v úložištích více zasílání zpráv. Tato funkce znamená, že celkovou propustnost oddílů fronta nebo téma už není omezené podle výkonu zprostředkovatele jedné zprávy nebo úložišti pro přenos zpráv. Kromě toho dočasnému výpadku zasílání zpráv úložiště nevykresluje oddílů fronta nebo téma není k dispozici.
 
-Všimněte si, že řazení není při použití zajištěn segmentované entity. V případě, že oddíl není k dispozici, můžete i nadále odesílat a přijímat zprávy z jiných oddílů.
+Řazení není zajištěno, že při použití segmentované entity. V případě, že oddíl není k dispozici, můžete i nadále odesílat a přijímat zprávy z jiných oddílů.
+
+ Dělené entity již nejsou podporovány v [skladová položka Premium](service-bus-premium-messaging.md). 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Jaké jsou některé z osvědčených postupů Azure Service Bus?
@@ -74,9 +72,9 @@ Ne, sběrnice není účtují pro úložiště. Je však kvótu omezení maximá
 Seznam kvót a omezení služby Service Bus, najdete v článku [přehled kvóty Service Bus][Quotas overview].
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Má Service Bus žádné kvóty využití?
-Ve výchozím nastavení pro všechny cloudové služby společnosti Microsoft nastaví agregační měsíční využití kvóta, která je vypočtená ve všech předplatných zákazníka. Protože Chápeme, bude pravděpodobně vyžadovat více než tyto limity, obraťte se oddělení služeb zákazníkům kdykoli tak, aby jsme pochopení potřeb a odpovídajícím způsobem nastavit tyto limity. Služba Service Bus kvóty agregační využití je 5 miliardy zpráv za měsíc.
+Ve výchozím nastavení pro všechny cloudové služby společnosti Microsoft nastaví agregační měsíční využití kvóta, která je vypočtená ve všech předplatných zákazníka. Pokud potřebujete více než tyto limity, obraťte se oddělení služeb zákazníkům kdykoli k pochopení potřeb a odpovídajícím způsobem nastavit tyto limity. Služba Service Bus kvóty agregační využití je 5 miliardy zpráv za měsíc.
 
-Když jsme si vyhrazuje právo k zakázání účtu zákazníka, která byla překročena kvóty jeho využití v daném měsíci, jsme zadejte e-mailová oznámení a provádění více pokusů ke kontaktování zákazníka před provedením jakékoli akce. Zákazníci překročení těchto kvót jsou stále zodpovědní za poplatky, které překračují kvóty.
+Když společnost Microsoft si vyhrazuje právo k zakázání účtu zákazníka, která byla překročena kvóty jeho využití v daném měsíci, e-mailová oznámení se odesílají a více pokusů probíhají ke kontaktování zákazníka před provedením jakékoli akce. Zákazníci překročení těchto kvót jsou stále zodpovědní za poplatky, které překračují kvóty.
 
 Stejně jako u jiných služeb v Azure Service Bus vynucuje sadu konkrétní kvóty pro zajištění správného využití prostředků. Můžete najít další podrobnosti o těchto kvót v [přehled kvóty Service Bus][Quotas overview].
 

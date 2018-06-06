@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,11 +16,12 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 04a7736e85c0b149cb627411f61fc147220769ad
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd701b8c6f015afc60b434317d0d7fef0560e9af
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723700"
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Začínáme s podmíněným přístupem v Azure Active Directory
 

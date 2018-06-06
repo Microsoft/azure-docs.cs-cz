@@ -1,12 +1,12 @@
 ---
-title: "Bash v prostředí cloudu Azure funkce | Microsoft Docs"
-description: "Přehled funkcí Bash v prostředí cloudu Azure"
+title: Bash v prostředí cloudu Azure funkce | Microsoft Docs
+description: Přehled funkcí Bash v prostředí cloudu Azure
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 24f656555b9390bb57b9ca511b86c926e27ebdb6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3e71f2307ab68b2bc4694c7782f7a0f0d43b159b
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757038"
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Funkce a nástroje pro Bash v prostředí cloudu Azure
 
@@ -48,9 +49,9 @@ Soubory mimo `$Home` a stav počítače nejsou trvalé napříč relacemi.
 
 [Další informace o zachování souborů v Bash v prostředí cloudu.](persisting-shell-storage.md)
 
-### <a name="deep-integration-with-open-source-tooling"></a>Těsná integrace s otevřeným zdrojem nástrojů
+### <a name="integration-with-open-source-tooling"></a>Integrace s otevřeným zdrojem nástrojů
 
-Bash v prostředí cloudu obsahuje předem nakonfigurovaná ověřování pro open source nástroje, jako je například Terraform a Ansible. Vyzkoušejte si to z návody příklad.
+Bash v prostředí cloudu obsahuje předem nakonfigurovaná ověřování pro open source nástroje, jako je například Terraform, Ansible a Chef InSpec. Vyzkoušejte si to z návody příklad.
 
 ## <a name="tools"></a>Nástroje
 
@@ -60,10 +61,10 @@ Bash v prostředí cloudu obsahuje předem nakonfigurovaná ověřování pro op
 |Nástroje Azure            |[Rozhraní příkazového řádku Azure 2.0](https://github.com/Azure/azure-cli) a [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br> [blobxfer](https://github.com/Azure/blobxfer#blobxfer) |
 |Textové editory           |VIM<br> nano<br> EMACS       |
 |Správa zdrojového kódu         |Git                    |
-|Nástroje sestavení            |make<br> maven<br> npm<br> pip         |
-|Kontejnery             |[Rozhraní příkazového řádku dockeru](https://github.com/docker/cli)/[počítač Docker](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
+|Nástroje sestavení            |Ujistěte se<br> maven<br> npm<br> PIP         |
+|Containers             |[Rozhraní příkazového řádku dockeru](https://github.com/docker/cli)/[počítač Docker](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [ROZHRANÍ PŘÍKAZOVÉHO ŘÁDKU DC/OS](https://github.com/dcos/dcos-cli)         |
 |Databáze              |MySQL klienta<br> PostgreSql klienta<br> [Nástroj SQLCMD](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Ostatní                  |iPython klienta<br> [Cloud Foundry rozhraní příkazového řádku](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)| 
+|Ostatní                  |iPython klienta<br> [Cloud Foundry rozhraní příkazového řádku](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)| 
 
 ## <a name="language-support"></a>Podpora jazyků
 
@@ -73,7 +74,7 @@ Bash v prostředí cloudu obsahuje předem nakonfigurovaná ověřování pro op
 |Přejít         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.0.1](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.0.2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 a 3.5 (výchozí)|
 
 ## <a name="next-steps"></a>Další postup

@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 3adf725f76f744fd1d321668fe892b9703de25de
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 18b47014e6fe3e489f783f675a3498c58981b99f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725526"
 ---
 # <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK webové úlohy pro zpracování na pozadí založeného na událostech
 
@@ -322,7 +323,7 @@ Další informace najdete v tématu [vazby za běhu](../azure-functions/function
 
 Referenční informace o jednotlivých typech vazby najdete v dokumentaci k Azure Functions. Jako příklad použijeme fronty úložiště, najdete následující informace v článku o každé vazby:
 
-* [Balíčky](../azure-functions/functions-bindings-storage-queue.md#packages) -co balíček pro instalaci tak, aby zahrnovaly podporu pro vazbu v projektu WebJobs SDK.
+* [Balíčky](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x) -co balíček pro instalaci tak, aby zahrnovaly podporu pro vazbu v projektu WebJobs SDK.
 * [Příklady](../azure-functions/functions-bindings-storage-queue.md#trigger---example) – C# – třída knihovny příklad se týká WebJobs SDK; právě vynechejte `FunctionName` atribut.
 * [Atributy](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes) – atributy, které se pro typ vazby použít.
 * [Konfigurace](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration) -vysvětlení konstruktor parametrů a vlastností atributu.
@@ -391,6 +392,26 @@ Některé aktivační události mít integrovanou podporu pro správu souběžno
 
 Tato nastavení můžete použít k zajištění, že funkce běží jako typ singleton do jedné instance. Aby webové aplikace horizontálně navýší kapacitu na více instancí je spuštěný pouze jedna instance funkce, použije Singleton zámek úrovně naslouchací proces na funkce (`[Singleton(Mode = SingletonMode.Listener)]`). Při spuštění JobHost jsou získat zámky naslouchací proces. Pokud ve stejnou dobu tři instance upraveným všechny, spusťte jenom jedna z instancí získá zámek a spustí jenom jeden naslouchací proces.
 
+### <a name="scope-values"></a>Hodnoty rozsahu
+
+Můžete zadat **obor nebo hodnota výrazu** na Singleton, která zajistí, že všechny spuštěních funkce v tomto oboru budou serializována. Implementace podrobnější zamykání tímto způsobem můžete povolit pro určité úrovně paralelismus pro funkce, při serializaci další volání, jak je stanoveno podle požadavků. Například v následujícím příkladu výrazu oboru váže `Region` hodnotu příchozí zprávy. Pokud fronty obsahuje 3 zprávy v oblasti "Východ", "Východ" a "Západ" v uvedeném pořadí zprávy, které mají oblast, kterou "Východ" budou prováděny sériově při zprávě s oblast, kterou paralelně s těmi, která bude proveden "Západní".
+
+```csharp
+[Singleton("{Region}")]
+public static async Task ProcessWorkItem([QueueTrigger("workitems")] WorkItem workItem)
+{
+     // Process the work item
+}
+
+public class WorkItem
+{
+     public int ID { get; set; }
+     public string Region { get; set; }
+     public int Category { get; set; }
+     public string Description { get; set; }
+}
+```
+
 ### <a name="singletonscopehost"></a>SingletonScope.Host
 
 Výchozí obor na zámek `SingletonScope.Function` znamená obor zámků (cesta zapůjčení objektů blob) je vázaný na funkce plně kvalifikovaný název. Zamknout mezi funkce, zadejte `SingletonScope.Host` a používat název ID oboru, který je stejný pro všechny funkce, které nechcete spustit současně. V následujícím příkladu, pouze jedna instance `AddItem` nebo `RemoveItem` najednou spuštěna:
@@ -450,7 +471,7 @@ Každý protokol vytvořený `ILogger` má přidruženou instanci `Category` a `
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritická    | 5 |
+|Důležité    | 5 |
 |Žádný        | 6 |
 
 Každou kategorii lze filtrovat nezávisle na konkrétní [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel). Například můžete chtít zobrazit všechny protokoly pro zpracování objektů blob aktivační událost ale jenom `Error` a vyšší všem ostatním.

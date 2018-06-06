@@ -1,31 +1,28 @@
 ---
 title: Připojení k SQL serveru nebo Azure SQL Database – Azure Logic Apps | Microsoft Docs
-description: Umožňuje vytvořit připojení k systému SQL Server, místní a Azure SQL Database v cloudu z Azure Logic Apps
-services: logic-apps
-documentationcenter: ''
+description: Přístup a správě databází SQL místně nebo v cloudu pomocí Automatizace pracovních službou Azure Logic Apps
 author: ecfan
 manager: cfowler
-editor: ''
-tags: connectors
-ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 05/15/2018
 ms.author: estfan
-ms.openlocfilehash: 4917f784c07919155e006711026899ce7712fecb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.date: 05/15/2018
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 73dadb85f3608f863a7fa0227d8e051fc77bb918
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756946"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>Připojení k systému SQL Server nebo databázi Azure SQL z Azure Logic Apps
 
-Tento článek ukazuje, jak můžete přistupovat k datům v databázi SQL z uvnitř aplikace logiky pomocí konektoru systému SQL Server. Tímto způsobem můžete vytvořit logiku aplikace, které automatizaci úloh a pracovní postupy pro správu vaše data. Konektor se dá použít pro obě [SQL Server na místní](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) a [Azure SQL Database v cloudu](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
+Tento článek ukazuje, jak můžete přistupovat k datům v databázi SQL z uvnitř aplikace logiky pomocí konektoru systému SQL Server. Tímto způsobem můžete automatizovat úlohy, procesy a pracovní postupy, které vytvoříte aplikace logiky spravovat vaše SQL data a prostředky. Konektor se dá použít pro obě [SQL Server na místní](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) a [Azure SQL Database v cloudu](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview). 
 
-Můžete vytvořit aplikace logiky, které jsou spuštěny při aktivovaného událostmi ve vaší databázi SQL nebo v jiných systémů, jako je například Dynamics CRM Online. Aplikace logiky můžete také získat, vložit, nebo odstranit data a také spouštět dotazy SQL nebo uložené procedury. Například můžete vytvořit aplikaci logiky, která automaticky vyhledává nové záznamy v aplikaci Dynamics CRM Online, přidává položky k vaší databázi SQL pro všechny nové záznamy a pak odešle e-mailové výstrahy.
+Můžete vytvořit aplikace logiky, které jsou spuštěny při aktivovaného událostmi ve vaší databázi SQL nebo v jiných systémů, jako je například Dynamics CRM Online. Aplikace logiky můžete také získat, insert a odstranění dat společně s provádění dotazů SQL a uložených procedur. Například můžete vytvořit aplikaci logiky, která automaticky vyhledává nové záznamy v aplikaci Dynamics CRM Online, přidává položky k vaší databázi SQL pro všechny nové záznamy a pak odešle e-mailové výstrahy.
 
 Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. Pokud jste nové aplikace logiky, přečtěte si [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý start: vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v tématu <a href="https://docs.microsoft.com/connectors/sql/" target="blank">systému SQL Server konektoru odkaz</a>.
 

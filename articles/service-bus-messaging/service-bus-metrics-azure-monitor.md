@@ -3,22 +3,18 @@ title: Azure Service Bus metriky v nástroji Sledování Azure (preview) | Micro
 description: Použití Azure monitorování ke sledování entit služby Service Bus
 services: service-bus-messaging
 documentationcenter: .NET
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/05/2018
+ms.date: 05/31/2018
 ms.author: sethm
-ms.openlocfilehash: 3660f0a6794a2fd784ec8846177da7effe7fe681
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bb0c9fcc33d6f5b54a8c2c8ad3e356a485d6ccbb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701290"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Service Bus metriky v nástroji Sledování Azure (preview)
 
@@ -64,8 +60,16 @@ Spočítá počet požadavků operations dat a správu.
 | Příchozí žádosti (preview) | Počet žádostí odeslaných do služby Service Bus v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 |Úspěšné požadavky (preview)|Počet úspěšných požadavků provedené ve službě Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 |Chyby serveru (preview)|Počet požadavků nebyl zpracován z důvodu chyby ve službě Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
-|Chyby uživatelského (preview)|Počet požadavků nebyl zpracován z důvodu chyb uživatele v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+|Chyby uživatelského (Náhled – viz následující dílčí části)|Počet požadavků nebyl zpracován z důvodu chyb uživatele v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
 |Omezenému požadavky (preview)|Počet požadavků, které byly omezené, protože byl překročen využití.<br/><br/> Jednotka: počet <br/> Typ agregace: Celkový počet <br/> Dimenze: EntityName|
+
+### <a name="user-errors"></a>Chyby uživatelského
+
+Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
+
+1. Klientské straně chyby (v protokolu HTTP které by 400 chyby).
+2. Těmto chybám dochází při zpracování zprávy, jako například [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
+
 
 ## <a name="message-metrics"></a>Zpráva metriky
 

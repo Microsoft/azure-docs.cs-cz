@@ -1,31 +1,25 @@
 ---
 title: Architektura řešení vzdáleného monitorování - Azure | Microsoft Docs
 description: Návod architektury vzdálené monitorování akcelerátoru řešení.
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3effde81dfa48e9544d89153d40c160ff972d047
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757429"
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>Vzdálené monitorování řešení akcelerátoru architektura
 
 Vzdálené monitorování [řešení akcelerátoru](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) implementuje řešení monitorování v začátku do konce pro víc počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
 
-Tento článek vás provede některými z klíčových prvků řešení vzdáleného monitorování, aby vám pomohl pochopit, jak toto řešení funguje. Díky tomu budete moct:
+Tento článek vás provede procesem některé klíčové prvky řešení vzdáleného monitorování tak, aby vám umožní pochopit, jak funguje. Díky tomu budete moct:
 
 * Odstraňovat potíže v řešení.
 * Naplánujte, jak řešení přizpůsobit podle konkrétních požadavků.
@@ -33,7 +27,7 @@ Tento článek vás provede některými z klíčových prvků řešení vzdálen
 
 ## <a name="logical-architecture"></a>Logická architektura
 
-Následující diagram popisuje logické součásti tohoto vzdáleného monitorování akcelerátoru řešení překrývajícím [architektuře IoT](../iot-accelerators/iot-accelerators-what-is-azure-iot.md):
+Následující diagram popisuje logické součásti tohoto překrývajícím akcelerátoru řešení vzdáleného monitorování [architektuře IoT](../iot-accelerators/iot-accelerators-what-is-azure-iot.md):
 
 ![Logická architektura](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -97,13 +91,13 @@ Mikroslužbu poskytuje RESTful koncový bod pro správu zařízení a dvojčata 
 
 [Telemetrie agenta](https://github.com/Azure/telemetry-agent-dotnet) mikroslužbu:
 
-* Ukládá telemetrická data do databáze. Cosmos.
+* Telemetrie úložiště v Azure Cosmos DB.
 * Analyzuje datový proud telemetrie ze zařízení.
 * Generuje výstrahy podle definovaná pravidla.
 
-Signály jsou uloženy v databázi Cosmos.
+Signály jsou uloženy v databázi Azure Cosmos.
 
-`telemetry-agent` Mikroslužbu umožňuje portálu řešení číst telemetrická data odesílaná ze zařízení. Portál řešení používá také této služby:
+[Telemetrie agenta](https://github.com/Azure/telemetry-agent-dotnet) mikroslužbu umožňuje portálu řešení číst telemetrická data odesílaná ze zařízení. Portál řešení používá také této služby:
 
 * Definovat pravidla monitorování, například prahové hodnoty, které aktivují výstrahy
 * Načtení seznamu posledních výstrahy.
@@ -114,9 +108,9 @@ RESTful koncový bod poskytl tento mikroslužbu použijte ke správě telemetrie
 
 [Adaptéru úložiště](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroslužbu je adaptér před hlavní úložiště službě, kterou používá akcelerátoru řešení. Poskytuje jednoduché kolekce a klíč hodnota úložiště.
 
-Standardní nasazení akcelerátoru řešení používá Cosmos DB jako jeho hlavní úložiště služby.
+Standardní nasazení akcelerátoru řešení používá Azure Cosmos DB jako jeho hlavní úložiště služby.
 
-Databázi Cosmos DB ukládá data do akcelerátoru řešení. **Adaptéru úložiště** mikroslužbu funguje jako adaptér pro ostatní mikroslužeb v řešení pro přístup ke službě úložiště.
+Databázi Azure Cosmos DB ukládá data do akcelerátoru řešení. **Adaptéru úložiště** mikroslužbu funguje jako adaptér pro ostatní mikroslužeb v řešení pro přístup ke službě úložiště.
 
 ## <a name="presentation"></a>Prezentace
 
@@ -141,6 +135,8 @@ Pokud chcete prozkoumat zdrojový kód a vývojáře dokumentaci, začněte s je
 
 * [Akcelerátor řešení pro vzdálené monitorování s Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
 * [Akcelerátor řešení pro vzdálené monitorování s Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
-* [Solution accelerator pro vzdálené monitorování architekturu)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
-Další koncepční informace o vzdálené monitorování akcelerátoru řešení najdete v tématu [přizpůsobit akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
+Podrobné diagramy Architektura řešení:
+* [Accelerator řešení pro vzdálené monitorování architekturu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
+
+Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [přizpůsobit akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).

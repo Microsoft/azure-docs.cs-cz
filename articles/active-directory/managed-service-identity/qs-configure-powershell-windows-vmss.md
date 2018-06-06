@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 97c5e2dde3faeaad13317597bef4f70455d22102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 42fabb9a2ad05dbd6a449f3f9e6a729917750165
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700004"
 ---
 # <a name="configure-a-vmss-managed-service-identity-msi-using-powershell"></a>Konfigurace VMSS spravované služby Identity (MSI) pomocí prostředí PowerShell
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/10/2018
 
 Identita spravované služby poskytuje Azure služby automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
 
-V tomto článku se dozvíte, jak provádět následující operace identita spravované služby v Azure Virtual Machine škálování nastavit (VMSS), pomocí prostředí PowerShell:
+V tomto článku se dozvíte, jak provádět operace identita spravované služby v virtuální počítač škálování nastavit (VMSS), pomocí prostředí PowerShell:
 - Povolení a zákaz systému přiřazené identita na VMSS Azure
 - Přidání a odebrání uživatele přiřazené identita na VMSS Azure
 
@@ -121,8 +122,7 @@ Přiřazení uživatele existující VMSS Azure přiřazen identity:
 
 2. Nejdřív načíst vlastnosti virtuálního počítače pomocí `Get-AzureRmVM` rutiny. Chcete-li přiřadit identitu uživatele přiřazené k Azure VMSS, použijte `-IdentityType` a `-IdentityID` přepínač na [aktualizace-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny. Nahraďte `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, `<USER ASSIGNED ID1>`, `USER ASSIGNED ID2` vlastními hodnotami.
 
-   > [!IMPORTANT]
-   > Vytvoření identity uživatele přiřazené podporuje pouze alfanumerické znaky a spojovníky (0 – 9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení virtuálního počítače nebo VMSS správně fungovat. Vraťte se zpět pro aktualizace. Další informace najdete v tématu [nejčastější dotazy a známé problémy](known-issues.md)
+   [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
    ```powershell

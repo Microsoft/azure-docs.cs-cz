@@ -4,24 +4,25 @@ description: Naučte se registrovat a zrušit registraci serveru systému Window
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 9367b2bdb1bb77725356d2be41d5e44d900cb927
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7385e8b84668facf8bf44f569a611e7dcdba9a1e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738288"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Spravovat registrované servery se synchronizací souboru Azure (preview)
-Azure File Sync (Preview) umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
+Azure File Sync (Preview) umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to pomocí transformace serverech s Windows do rychlé mezipaměti Azure sdílené složky. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
 V následujícím článku ukazuje, jak se zaregistrovat a spravovat server se službou Sync úložiště. V tématu [nasazení synchronizace souboru Azure (preview)](storage-sync-files-deployment-guide.md) informace o tom, jak nasadit synchronizace souboru Azure klient server.
 
@@ -113,14 +114,15 @@ Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - Res
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Zrušte registraci serveru se službou Sync úložiště
 Existuje několik kroků, potřebné ke zrušení registrace serveru se službou Sync úložiště. Podívejme se na to, jak se správně zrušit registraci serveru.
 
-#### <a name="optional-recall-all-tiered-data"></a>(Volitelné) Odvolat vrstvené všechna data
-Když je povolené pro koncový bod serveru, cloudové vrstvení bude *vrstvy* soubory do vaší sdílené složky Azure File. To umožňuje místní sdílené složky tak, aby fungoval jako mezipaměť, nikoli úplnou kopii datovou sadu, aby efektivní využití místa na souborovém serveru. Ale pokud serveru koncového bodu se odebere při vrstvené soubory stále místně na serveru, tyto soubory se stanou nelze získat přístup. Proto v případě, že se požaduje přístup k souborům, je nutné odvolat všechny vrstvené soubory ze souborů Azure před pokračováním v zrušení registrace. 
+> [!Warning]  
+> Nepokoušejte se vyřešit problémy s synchronizace, cloudu vrstvení nebo jiných aspektů synchronizace souboru Azure zrušení registrace a registraci serveru, nebo odebráním a znovu vytvořit koncové body serveru, pokud není výslovně pokyn k pracovníkem společnosti Microsoft. Zrušení registrace serveru a odebírání koncové body serveru je destruktivní operace a vrstvené souborů na svazcích s koncovými body serveru nebude "zopakovat" na jejich umístění na sdílenou složkou Azure po zaregistrovaný server a server koncové body znovu vytvořen, což způsobí synchronizované chyby. Všimněte si také, vrstvené souborů, které existují mimo obor názvů koncový bod serveru může být trvale ztratí. Vrstvené soubory mohou být v rámci serveru koncových bodů, i když cloudové vrstvení nikdy povoleno.
 
-To můžete provést pomocí rutiny prostředí PowerShell, jak je uvedeno níže:
+#### <a name="optional-recall-all-tiered-data"></a>(Volitelné) Odvolat vrstvené všechna data
+Pokud chcete soubory, které jsou aktuálně vrstvené být k dispozici po odebrání synchronizace souboru Azure (tj. Toto je provozní, ne test, prostředí), odvolat všechny soubory na každý svazek obsahující koncové body serveru. Zakázat cloudu vrstvení pro všechny koncové body serveru a pak spusťte následující rutinu Powershellu:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
 > [!Warning]  

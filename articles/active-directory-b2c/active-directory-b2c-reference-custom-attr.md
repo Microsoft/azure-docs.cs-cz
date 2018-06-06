@@ -1,27 +1,27 @@
 ---
-title: 'Azure Active Directory B2C: Vlastní atributy | Microsoft Docs'
-description: Jak používat vlastní atributy ke shromažďování informací o uživatelích v Azure Active Directory B2C
+title: Vlastní atributy Azure Active Directory B2C | Microsoft Docs
+description: Jak používat vlastní atributy v Azure Active Directory B2C ke shromažďování informací o uživatelích.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: davidmu
-ms.openlocfilehash: 6f285c10b7d8ff92c8568c42b6a78dc4ea9bcc74
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 61931be8e50cdc3132e36a63a2fdb059d62ba947
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711871"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Použijte vlastní atributy ke shromažďování informací o uživatelích
 Adresáře Azure Active Directory (Azure AD) B2C se dodává s integrovanou sadu informace (atributy): křestní jméno, příjmení, Město, PSČ a další atributy. Každá aplikace určených však má jedinečné požadavky na atributy, které ke shromáždění od příjemce. S Azure AD B2C můžete rozšířit sadu atributů, které jsou uložené na každý uživatelský účet. Můžete vytvořit vlastní atributy na [portál Azure](https://portal.azure.com/) a použít ho v registraci zásady, jak je uvedeno níže. Můžete také číst a zapsat pomocí těchto atributů [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md).
 
 > [!NOTE]
-> Vlastní atributy použití [Azure AD Graph API rozšíření schématu služby Directory](https://msdn.microsoft.com/library/azure/dn720459.aspx).
+> Vlastní atributy použití [Azure AD Graph API rozšíření schématu služby Directory](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
 > 
 > 
 

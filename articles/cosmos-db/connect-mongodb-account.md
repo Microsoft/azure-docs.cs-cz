@@ -3,22 +3,20 @@ title: MongoDB připojovací řetězec pro účet Azure Cosmos DB | Microsoft Do
 description: Zjistěte, jak připojit aplikace MongoDB k účtu Azure Cosmos DB pomocí připojovacího řetězce MongoDB.
 keywords: mongodb připojovací řetězec
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: e36f7375-9329-403b-afd1-4ab49894f75e
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2017
-ms.author: anhoh
-ms.openlocfilehash: dfdcb458d0f81c0ddb9399ee8b89a52c4cbc6270
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: sngun
+ms.openlocfilehash: 441f6725b96dc7a099304e06db6d46a65e7f9c81
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795954"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>Připojení aplikace MongoDB pro Azure Cosmos DB
 Zjistěte, jak připojit aplikace MongoDB k účtu Azure Cosmos DB pomocí připojovacího řetězce MongoDB. Potom můžete databázi Azure Cosmos DB jako data store pro vaši aplikaci MongoDB. 

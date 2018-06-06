@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 087a0f12f765b55c2e2976abd93d791409ff6d44
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 27c6671c170f4c03c63270772651051830d8e4ec
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757617"
 ---
 # <a name="testability-actions"></a>Testovatelnosti akce
 Chcete-li simulovat nespolehlivé infrastruktury, poskytuje Azure Service Fabric vás jako na vývojáři způsoby pro simulaci různé chyby reálného a přechodů mezi stavy. Tyto jsou zveřejněné jako testovatelnosti akce. Akce jsou nízké úrovně rozhraní API, která způsobí ověření, přechod stavu nebo konkrétní chyby vkládání. Kombinací těchto akcí můžete napsat scénáře komplexní testování pro vaše služby.
@@ -41,8 +42,8 @@ Pro lepší kvalitu ověření spouštění úloh služby a obchodní při vyvol
 | CleanTestState |Odebere všechny stav testu z clusteru v případě, test ovladače chybné vypnutí. |CleanTestStateAsync |Remove-ServiceFabricTestState |Neuvedeno |
 | InvokeDataLoss |Indukuje ztráty dat do oddílu služby. |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |Řádné |
 | InvokeQuorumLoss |Oddíl dané stavové služby umístí do ztrátě kvora. |InvokeQuorumLossAsync |Vyvolání ServiceFabricQuorumLoss |Řádné |
-| Přesunutí primární |Přesune zadaný primární repliky stavové služby do určeného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Řádné |
-| Přesunout sekundární |Aktuální sekundární replika stavové služby se přesune do jiného uzlu clusteru. |MoveSecondaryAsync |Přesunutí ServiceFabricSecondaryReplica |Řádné |
+| Operace MovePrimary |Přesune zadaný primární repliky stavové služby do určeného uzlu clusteru. |MovePrimaryAsync |Move-ServiceFabricPrimaryReplica |Řádné |
+| MoveSecondary |Aktuální sekundární replika stavové služby se přesune do jiného uzlu clusteru. |MoveSecondaryAsync |Přesunutí ServiceFabricSecondaryReplica |Řádné |
 | RemoveReplica |Repliky selhání simuluje odebráním repliku z clusteru. To se zavře repliky a přejde do role 'None', všechny její stav odebrání z clusteru. |RemoveReplicaAsync |Odebrat ServiceFabricReplica |Řádné |
 | RestartDeployedCodePackage |Simuluje selhání procesu balíček kódu restartováním balíček kódu nasazené na uzlu v clusteru. To zruší proces balíčku kódu, který restartuje všechny uživatele repliky služby hostované v tomto procesu. |RestartDeployedCodePackageAsync |Restartování ServiceFabricDeployedCodePackage |Vynuceném |
 | RestartNode |Selhání uzlu clusteru Service Fabric simuluje restartováním uzlu. |RestartNodeAsync |Restartování ServiceFabricNode |Vynuceném |

@@ -1,11 +1,11 @@
 ---
-title: "Vývoj pro Azure soubory s jazykem C++ | Microsoft Docs"
-description: "Další informace jak vyvíjet aplikace C++ a služby, které používají Azure souborů k ukládání dat souborů."
+title: Vývoj pro Azure soubory s jazykem C++ | Microsoft Docs
+description: Další informace jak vyvíjet aplikace C++ a služby, které používají Azure souborů k ukládání dat souborů.
 services: storage
 documentationcenter: .net
 author: renashahmsft
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737567"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Vývoj pro Azure soubory s C++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,15 +27,13 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>O tomto kurzu
-
 V tomto kurzu budete zjistěte, jak provádět základní operace s Azure Files. Prostřednictvím napsané v jazyce C++ – ukázky budete zjistěte, jak vytvářet sdílené složky a adresáře, nahrát, seznamu a odstraňovat soubory. Pokud jste nové soubory Azure, bude užitečné pro porozumění ukázky projít koncepty v následujících částech.
 
-
-* Vytvářet a odstraňovat sdílené složky Azure File
+* Vytvářet a odstraňovat sdílené složky Azure
 * Vytvářet a odstraňovat adresáře
-* Vytvoření výčtu souborů a adresářů v Azure File sdílet
+* Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
 * Odesílání, stahování a odstranění souboru
-* Nastavit kvótu (maximální velikost) pro sdílení souborů Azure
+* Nastavit kvótu (maximální velikost) pro sdílenou složku Azure
 * Vytvořte sdílený přístupový podpis (klíč SAS) pro soubor, který používá zásady sdíleného přístupu definované ve sdílené složce.
 
 > [!Note]  
@@ -78,8 +77,8 @@ azure::storage::cloud_storage_account storage_account =
   azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-## <a name="create-an-azure-file-share"></a>Vytvoření Azure sdílené složky
-Všechny soubory a adresáře do služby Azure sdílené složky jsou umístěny v kontejneru názvem **sdílet**. Váš účet úložiště může mít libovolný počet sdílených složek jako umožňuje kapacitě vašeho účtu. Pokud chcete získat přístup ke sdílené složce a její obsah, budete muset použít Azure soubory klienta.
+## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
+Všechny soubory a adresáře v sdílenou složku Azure nacházet v kontejneru názvem **sdílet**. Váš účet úložiště může mít libovolný počet sdílených složek jako umožňuje kapacitě vašeho účtu. Pokud chcete získat přístup ke sdílené složce a její obsah, budete muset použít Azure soubory klienta.
 
 ```cpp
 // Create the Azure Files client.
@@ -155,7 +154,7 @@ sub_directory.delete_directory_if_exists();
 directory.delete_directory_if_exists();
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v Azure File sdílet
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
 Získání seznamu souborů a adresářů v rámci sdílené složky se snadno provádí voláním **list_files_and_directories** na **cloud_file_directory** odkaz. Pro přístup k bohaté sadě vlastností a metod vrácené **list_file_and_directory_item**, musí volat **list_file_and_directory_item.as_file** metodu za účelem získání **cloud_file** objekt, nebo **list_file_and_directory_item.as_directory** metodu za účelem získání **cloud_file_directory** objektu.
 
 Následující kód ukazuje, jak načíst a získat výstup URI pro každou položku v kořenovém adresáři sdílené složky.
@@ -182,7 +181,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="upload-a-file"></a>Nahrání souboru
-V každém obsahuje sdílenou složku Azure File kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+V každém sdílenou složku Azure obsahuje kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
 
 Prvním krokem při nahrání souboru se má získat odkaz na adresář, kde by měl být umístěn. To provedete pomocí volání **get_root_directory_reference** metodu objektu sdílené složky.
 
@@ -255,7 +254,7 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Nastavit kvótu (maximální velikost) pro sdílení souborů Azure
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Nastavit kvótu (maximální velikost) pro sdílenou složku Azure
 Můžete nastavit kvótu (nebo maximální velikost) pro sdílenou složku, v gigabajtech. Můžete se taky podívat, kolik data je aktuálně uloženo ve sdílené složce.
 
 Pokud nastavíte kvótu sdílené složky, můžete omezit celkovou velikost souborů uložených ve sdílené složce. Pokud celková velikost souborů ve sdílené složce překročí kvótu nastavenou pro sdílenou složku, klienti nebudou moct zvyšovat velikost existujících souborů, s výjimkou situace, když je velikost souborů nulová.
@@ -353,7 +352,7 @@ if (share.exists())
 
 }
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o službě Azure Storage najdete v těchto zdrojích informací:
 
 * [Klientská knihovna pro úložiště pro C++](https://github.com/Azure/azure-storage-cpp)

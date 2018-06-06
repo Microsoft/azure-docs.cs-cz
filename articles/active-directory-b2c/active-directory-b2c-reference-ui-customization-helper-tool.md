@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Nástroj pomocné rutiny pro přizpůsobení uživatelského rozhraní stránky | Microsoft Docs'
-description: Pomocný nástroj demonstrovat funkce přizpůsobení uživatelského rozhraní stránky v Azure Active Directory B2C
+title: Pomocným nástrojem pro přizpůsobení uživatelského rozhraní stránky v Azure Active Directory B2C | Microsoft Docs
+description: Pomocný nástroj demonstrovat funkce přizpůsobení uživatelského rozhraní stránky v Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: davidmu
-ms.openlocfilehash: de3d430ad984c9b173f77138417532badc3a7497
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: d57b8d43b2302a18b9df89eacc8ffd20d1742075
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711990"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Pomocná nástroj používaný k předvedení stránce uživatelské rozhraní (UI) přizpůsobení funkce
 Tento článek je Pomocníka pro [hlavní článek přizpůsobení uživatelského rozhraní](active-directory-b2c-reference-ui-customization.md) v Azure Active Directory (Azure AD) B2C. Následující kroky popisují postup vykonávat funkci přizpůsobení uživatelského rozhraní stránky pomocí ukázkový kód HTML a CSS obsah, který nabízíme.

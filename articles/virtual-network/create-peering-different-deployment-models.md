@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: f4fe93078246bc25eb41a7f8e685d75f8dcb6b7c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bec02b3f3bde9f9cfab615d75cc6f05976ce981a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726216"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Vytvořit virtuální síť partnerský vztah - různé modely nasazení, stejného předplatného.
 
@@ -27,7 +28,7 @@ V tomto kurzu zjistíte vytvořit virtuální síť partnerský vztah mezi virtu
 
 Postup vytvoření virtuální sítě partnerského vztahu se liší v závislosti na tom, jestli virtuální sítě jsou ve stejné nebo jiné, odběry a které [modelu nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuální sítě se vytvářejí pomocí. Naučte se vytvořit virtuální síť partnerský vztah v jiných scénářích kliknutím na scénář z v následující tabulce:
 
-|Model nasazení Azure  | předplatné Azure  |
+|Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
 |[I Resource Manager](tutorial-connect-virtual-networks-portal.md) |stejné|
 |[I Resource Manager](create-peering-different-subscriptions.md) |Odlišné|
@@ -89,7 +90,7 @@ Můžete použít [portál Azure](#portal), Azure [rozhraní příkazového řá
     azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
 
-5. Vytvořte skupinu prostředků a virtuální síť (Resource Manager). Můžete použít rozhraní příkazového řádku 1.0 nebo 2.0 ([nainstalovat](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)). V tomto kurzu se používá 2.0 rozhraní příkazového řádku k vytvoření virtuální sítě (Resource Manager), protože 2.0 je možné použít k vytvoření partnerského vztahu. Provést následující bash rozhraní příkazového řádku skript z místního počítače pomocí rozhraní příkazového řádku verze 2.0.4 nainstalovaný nebo novější. Možnosti na spuštění bash skripty rozhraní příkazového řádku na klientovi Windows, najdete v části [běžící ve Windows Azure CLI](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Můžete také spustit skript prostředí cloudu Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte **vyzkoušet** tlačítko ve skriptu, který způsobem, které vyvolá prostředí cloudu, který vám umožní přihlásit se k účtu Azure s. Chcete-li spustit skript, klikněte na tlačítko **kopie** tlačítko a vložení, její obsah do své cloudové prostředí, stiskněte `Enter`.
+5. Vytvořte skupinu prostředků a virtuální síť (Resource Manager). Můžete použít rozhraní příkazového řádku 1.0 nebo 2.0 ([nainstalovat](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)). V tomto kurzu se používá 2.0 rozhraní příkazového řádku k vytvoření virtuální sítě (Resource Manager), protože 2.0 je možné použít k vytvoření partnerského vztahu. Provést následující bash rozhraní příkazového řádku skript z místního počítače pomocí rozhraní příkazového řádku verze 2.0.4 nainstalovaný nebo novější. Možnosti na spuštění bash skripty rozhraní příkazového řádku na klientovi Windows, najdete v části [nainstalovat rozhraní příkazového řádku Azure v systému Windows](/cli/azure/install-azure-cli-windows). Můžete také spustit skript prostředí cloudu Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte **vyzkoušet** tlačítko ve skriptu, který způsobem, které vyvolá prostředí cloudu, který vám umožní přihlásit se k účtu Azure s. Chcete-li spustit skript, klikněte na tlačítko **kopie** tlačítko a vložení, její obsah do své cloudové prostředí, stiskněte `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash

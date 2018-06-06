@@ -3,7 +3,7 @@ title: 'Přehled: Provádět kontrola přístupu k prostředkům Azure v Privile
 description: Tento dokument popisuje, jak provést kontrola přístupu k prostředkům Azure PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 editor: mwahl
 ms.service: active-directory
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 61be9873cac462c096599680a6e071e104f3a54c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 8ce8ca4cec9852c4453f79aabe84763ae926eaef
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699705"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Pomocí řídicího panelu prostředků provádět kontrola přístupu
 

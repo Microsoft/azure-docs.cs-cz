@@ -4,20 +4,18 @@ description: Referenční dokumentace pro Azure Cosmos DB SQL dotazovací jazyk.
 services: cosmos-db
 author: LalithaMV
 manager: kfile
-documentationcenter: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
 ms.date: 10/18/2017
 ms.author: laviswa
-ms.openlocfilehash: 83ee1d37dd6d79ce26ae95cd1486298f0210f661
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 13337e7979a378382df5e62661b04bac8dffa689
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798827"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB SQL reference syntaxe
 
@@ -246,7 +244,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     {1, 2} pro `input_alias1 = A,`  
   
-    {3} pro `input_alias1 = B,`  
+    {3} Pro `input_alias1 = B,`  
   
     {4, 5} pro `input_alias1 = C,`  
   
@@ -264,7 +262,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     {1, 2} pro `input_alias1 = A,`  
   
-    {3} pro `input_alias1 = B,`  
+    {3} Pro `input_alias1 = B,`  
   
     {4, 5} pro `input_alias1 = C,`  
   
@@ -272,7 +270,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     {100, 200} pro `input_alias2 = 1,`  
   
-    {300} pro `input_alias2 = 3,`  
+    {300} Pro `input_alias2 = 3,`  
   
 - V klauzuli FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` bude mít za následek následující řazené kolekce členů:  
   
@@ -293,7 +291,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     {1, 2} pro `input_alias1 = A,`  
   
-    {3} pro `input_alias1 = B,`  
+    {3} Pro `input_alias1 = B,`  
   
     {4, 5} pro `input_alias1 = C,`  
   
@@ -301,7 +299,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
   
     {100, 200} pro `input_alias2 = A,`  
   
-    {300} pro `input_alias2 = C,`  
+    {300} Pro `input_alias2 = C,`  
   
 - V klauzuli FROM `<from_source1> JOIN <from_source2> JOIN <from_source3>` bude mít za následek následující řazené kolekce členů:  
   
@@ -671,7 +669,7 @@ ORDER BY <sort_specification>
     |\<nonterminal >|Nonterminal, definované samostatně.|  
     |\<nonterminal >:: =|Syntaxe definice nonterminal.|  
     |other_terminal|Terminálové (token), podrobně popsané v slova.|  
-    |identifikátor|Identifikátor. Umožňuje následující pouze znaky: a – z A-Z 0-9 _First znak nemůže být číslice.|  
+    |Identifikátor|Identifikátor. Umožňuje následující pouze znaky: a – z A-Z 0-9 _First znak nemůže být číslice.|  
     |"řetězec"|Řetězec v uvozovkách. Umožňuje libovolný platný řetězec. Viz popis string_literal.|  
     |'symbol.|Literál symbol, který je součástí syntaxe.|  
     |&#124;(svislé čáry)|Alternativy pro položky syntaxe. Můžete vytvořit pouze jeden položky.|  

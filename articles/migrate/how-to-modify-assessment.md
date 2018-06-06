@@ -4,13 +4,14 @@ description: Popisuje, jak nastavit a spustit posouzení pro migraci virtuální
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: raynew
-ms.openlocfilehash: c826453dcbcaf2facfd58daa05b77decda7ae456
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 73dab9c7eca53ecce44d43a9607fcc7426f9de8d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715502"
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
@@ -24,12 +25,12 @@ ms.lasthandoff: 05/16/2018
 
     **Nastavení** | **Podrobnosti** | **Výchozí**
     --- | --- | ---
-    **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure migrací aktuálně podporuje 30 oblastí, včetně Austrálie – východ, Austrálie – jihovýchod, Brazílie – Jih, Střední Kanada, Východní Kanada, střed, střed USA, východní Čína, severní Čína, východní Asie, východní USA, Německo centrální, Německo – severovýchod, východní USA 2, Japonsko – Východ, Japonsko – Západ, Korejská – střed, Korejská – Jih, střed USA – sever, Severní Evropa, střed USA – Jih, jihovýchodní Asie, – Jih, Indie, Spojené království – Jih, Spojené království – Západ, Virginia verze pro státní správu verze pro státní správu Texas, USA verze pro státní správu Arizona, USA USA, střed USA – Západ, západní Evropa, Západní Indie, západní USA a západní US2. |  Západní USA 2 je výchozí umístění.
-    **Redundance úložiště** | Typ redundance úložiště, který budou po migraci využívat virtuální počítače Azure. | Výchozí hodnota je [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md). Azure podporuje pouze migrací spravovaných disků na základě hodnocení a spravované disky se podporují jenom LRS, proto vlastnost aktuálně má jenom možnost LRS.
+    **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. |  Západní USA 2 je výchozí umístění.
+    **Typ úložiště** | Zadaný typ disky, které chcete přidělit v Azure. Tuto vlastnost lze použít při nastavení velikosti kritérium je jako nastavení velikosti na místě. Cílový typ disku můžete zadat buď jako Premium spravované discích spravovaných pomocí disků nebo Standard. Pro nastavení velikosti na základě výkonu, se provádí doporučení disku automaticky na základě dat výkonu virtuálních počítačů. Všimněte si, že Azure migrace podporuje pouze spravované disky posouzení migrace. | Výchozí hodnota je spravovaná prémiové disky (s kritériem pro změnu velikosti jako *jako místní nastavení velikosti*).
     **Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Můžete provést určení velikosti *na základě výkonu* nebo použít velikost virtuálních počítačů *jako v místním prostředí* bez ohledu na historii výkonu. | Výchozí možnost je určení velikosti na základě výkonu.
     **Historie výkonu** | Doba, která se má zohlednit při vyhodnocování výkonu virtuálních počítačů. Tato vlastnost se dá použít pouze v případě, že kritériem určení velikosti je *určení velikosti na základě výkonu*. | Výchozí hodnota je jeden den.
     **Percentilové využití** | Hodnota percentilu sady vzorků výkonu, která se má zohlednit při určování správné velikosti. Tato vlastnost se dá použít pouze v případě, že kritériem určení velikosti je *určení velikosti na základě výkonu*.  | Výchozí hodnota je 95. percentil.
-    **Virtuální počítač řady** | Můžete zadat řady virtuálních počítačů, která se má vzít v úvahu pro optimalizaci velikosti. Například pokud máte provozního prostředí, neplánujete migraci virtuálních počítačů A-series v Azure, A-series můžete vyloučit ze seznamu nebo řad a optimalizaci velikosti bude třeba provést pouze na vybrané řady. | Ve výchozím nastavení jsou vybrané všechny řady virtuálních počítačů.
+    **Řada virtuálních počítačů** | Můžete zadat řadu virtuálních počítačů, pro kterou chcete zvážit nastavení správné velikosti. Pokud máte například produkční prostředí, které se nechystáte migrovat na virtuální počítače řady A v Azure, můžete vyloučit řadu A ze seznamu nebo řad a nastavení správné velikosti se provede jen pro vybrané řady. | Ve výchozím nastavení jsou vybrané všechny řady virtuálních počítačů.
     **Cenová úroveň** | Můžete zadat [cenovou úroveň (Basic nebo Standard)](../virtual-machines/windows/sizes-general.md) cílových virtuálních počítačů Azure. Pokud například plánujete migrovat produkční prostředí, měli byste zvážit úroveň Standard, která poskytuje virtuální počítače s nízkou latencí, ale může být dražší. Na druhou stranu, pokud máte prostředí pro vývoj a testování, měli byste zvážit úroveň Basic s virtuálními počítači s vyšší latencí, která je levnější. | Ve výchozím nastavení se použije úroveň [Standard](../virtual-machines/windows/sizes-general.md).
     **Faktor komfortu** | Azure Migrate při posuzování počítá s rezervou (faktor komfortu). Tato rezerva se použije nad rámec dat o využití počítače pro virtuální počítače (procesor, paměť, disk a síť). Důvodem použití faktoru komfortu jsou problémy, jako jsou sezónní využití, krátká historie výkonu a pravděpodobný růst budoucího využití.<br/><br/> Například z virtuálního počítače s 10 jádry a 20% využitím je normálně ve výsledku virtuální počítač se 2 jádry. S faktorem komfortu 2,0× je však výsledkem virtuální počítač se 4 jádry. | Výchozí nastavení je 1,3×.
     **Nabídka** | [Nabídka Azure](https://azure.microsoft.com/support/legal/offer-details/), kterou máte zaregistrovanou. | Výchozí hodnota je [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/).

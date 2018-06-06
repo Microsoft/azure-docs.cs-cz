@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d93f79874ff65a1b6bb7ddd75932111c5caa6072
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 83204132a7494dc766420520eeaf2362c98d878f
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801809"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -59,7 +60,7 @@ Následující tabulka uvádí seznam podporovaných operačních systémů:
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
-|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
+|Ubuntu 14.04 LTS, 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
 
 ### <a name="unsupported-client-types"></a>Nepodporovaný klient typy
 
@@ -284,7 +285,7 @@ Nasazení aktualizací pomocí klasifikace aktualizace nemusí fungovat na openS
 
 Tato část obsahuje informace, které vám pomohou s řešením potíží s řešením pro správu aktualizací.
 
-Pokud při pokusech o připojení řešení nebo virtuálního počítače dochází k potížím, zkontrolujte, jestli jsou v protokolu událostí **Protokoly aplikací a služeb\Operations Manager** události s ID události 4502 a zprávou události obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. V následující tabulce najdete konkrétní chybové zprávy a možné řešení pro každou z nich.
+Pokud dojde k potížím při pokusu připojit virtuální počítač nebo řešení, podívejte se **aplikace a Správce služby Logs\Operations** protokolu událostí v místním počítači pro události se zpráva ID 4502 a událost události obsahující **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. V následující tabulce najdete konkrétní chybové zprávy a možné řešení pro každou z nich.
 
 | Zpráva | Důvod | Řešení |
 |----------|----------|----------|

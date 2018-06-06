@@ -9,155 +9,30 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a4067db9955b804f126e889fa73641f69fef56ab
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39c43c079ea4d10686bd656ba2d451ff42aac9f6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700226"
 ---
-# <a name="troubleshoot-container-and-deployment-issues-in-azure-container-instances"></a>Řešení problémů kontejneru a nasazení v Azure kontejner instancí
+# <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných problémů s Azure kontejner instancí
 
-Tento článek ukazuje, jak vyřešit problémy při nasazení kontejnerů do Azure kontejner instancí. Také popisuje některé běžné problémy, které můžete narazit na.
+Tento článek ukazuje, jak řešení běžných problémů pro správu nebo nasazení kontejnerů do Azure kontejner instancí.
 
-## <a name="view-logs-and-stream-output"></a>Zobrazit protokoly a výstup datového proudu
+## <a name="naming-conventions"></a>Zásady vytváření názvů
 
-Když máte identifikovala kontejner, spusťte zobrazením protokoly s [az kontejneru protokoly][az-container-logs]a vysílání datového proudu jeho standardní na více systémů a standardní cíl chybové s [az kontejneru připojit] [az-container-attach].
+Při definování specifikaci kontejneru, vyžadují některé parametry a omezení pojmenování. Níže je tabulka s konkrétní požadavky pro kontejner vlastnosti skupiny.
+Další informace o Azure zásady vytváření názvů najdete v tématu [konvence vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions) architektura centra Azure.
 
-### <a name="view-logs"></a>Zobrazení protokolů
-
-Chcete-li zobrazit protokoly z kódu aplikace v rámci kontejneru, můžete použít [az kontejneru protokoly] [ az-container-logs] příkaz.
-
-Protokol výstupu z kontejneru příklad založený na úlohách v [spuštění kontejnerizované úlohy v ACI](container-instances-restart-policy.md)po nutnosti ho dodáni neplatná adresa URL ke zpracování:
-
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
-Traceback (most recent call last):
-  File "wordcount.py", line 11, in <module>
-    urllib.request.urlretrieve (sys.argv[1], "foo.txt")
-  File "/usr/local/lib/python3.6/urllib/request.py", line 248, in urlretrieve
-    with contextlib.closing(urlopen(url, data)) as fp:
-  File "/usr/local/lib/python3.6/urllib/request.py", line 223, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 532, in open
-    response = meth(req, response)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 642, in http_response
-    'http', request, response, code, msg, hdrs)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 570, in error
-    return self._call_chain(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 504, in _call_chain
-    result = func(*args)
-  File "/usr/local/lib/python3.6/urllib/request.py", line 650, in http_error_default
-    raise HTTPError(req.full_url, code, msg, hdrs, fp)
-urllib.error.HTTPError: HTTP Error 404: Not Found
-```
-
-### <a name="attach-output-streams"></a>Připojení výstupních datových proudů
-
-[Az kontejneru připojit] [ az-container-attach] příkaz nabízí diagnostické informace během spouštění kontejneru. Po zahájení kontejneru, proudů STDOUT a STDERR do místní konzoly.
-
-Například je zde výstup z kontejneru založený na úlohách v [spuštění kontejnerizované úlohy v ACI](container-instances-restart-policy.md)po s zadat platnou adresu URL ke zpracování velkých textového souboru:
-
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
-Container 'mycontainer' is in state 'Unknown'...
-Container 'mycontainer' is in state 'Waiting'...
-Container 'mycontainer' is in state 'Running'...
-(count: 1) (last timestamp: 2018-03-09 23:21:33+00:00) pulling image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Successfully pulled image "microsoft/aci-wordcount:latest"
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Created container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-(count: 1) (last timestamp: 2018-03-09 23:21:49+00:00) Started container with id e495ad3e411f0570e1fd37c1e73b0e0962f185aa8a7c982ebd410ad63d238618
-
-Start streaming logs:
-[('the', 22979),
- ('I', 20003),
- ('and', 18373),
- ('to', 15651),
- ('of', 15558),
- ('a', 12500),
- ('you', 11818),
- ('my', 10651),
- ('in', 9707),
- ('is', 8195)]
-```
-
-## <a name="get-diagnostic-events"></a>Získání diagnostických událostí
-
-Pokud vaše kontejneru se nepodaří úspěšně nasadit, budete muset diagnostické informace poskytované poskytovatelem prostředků Azure kontejner instancí. Pokud chcete zobrazit události pro vaše kontejneru, spusťte [az kontejneru zobrazit] [ az-container-show] příkaz:
-
-```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
-```
-
-Výstup obsahuje základní vlastnosti kontejneru, společně s událostí nasazení (viz zde zkrácený):
-
-```JSON
-{
-  "containers": [
-    {
-      "command": null,
-      "environmentVariables": [],
-      "image": "microsoft/aci-helloworld",
-      ...
-        "events": [
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:49+00:00",
-            "lastTimestamp": "2017-12-21T22:50:49+00:00",
-            "message": "pulling image \"microsoft/aci-helloworld\"",
-            "name": "Pulling",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Successfully pulled image \"microsoft/aci-helloworld\"",
-            "name": "Pulled",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Created container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Created",
-            "type": "Normal"
-          },
-          {
-            "count": 1,
-            "firstTimestamp": "2017-12-21T22:50:59+00:00",
-            "lastTimestamp": "2017-12-21T22:50:59+00:00",
-            "message": "Started container with id 2677c7fd54478e5adf6f07e48fb71357d9d18bccebd4a91486113da7b863f91f",
-            "name": "Started",
-            "type": "Normal"
-          }
-        ],
-        "previousState": null,
-        "restartCount": 0
-      },
-      "name": "mycontainer",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": null
-        }
-      ],
-      ...
-    }
-  ],
-  ...
-}
-```
-
-## <a name="common-deployment-issues"></a>Běžné problémy při nasazení
-
-Následující části popisují běžné problémy, tento účet pro většinu chyb v nasazení kontejneru:
-
-* [Nepodporovaná verze bitové kopie](#image-version-not-supported)
-* [Nelze pro vyžádání obsahu image](#unable-to-pull-image)
-* [Ukončení a restartování průběžně kontejneru](#container-continually-exits-and-restarts)
-* [Kontejner trvá dlouhou dobu spuštění](#container-takes-a-long-time-to-start)
-* [Chyba "Prostředek není k dispozici"](#resource-not-available-error)
+| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhované vzor | Příklad: |
+| --- | --- | --- | --- | --- | --- | --- |
+| Název kontejneru skupiny | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli kromě první nebo poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli kromě první nebo poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Porty kontejneru | Mezi 1 a 65535. |Integer |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
+| Popisek názvu DNS | 5 až 63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli kromě první nebo poslední znak |`<name>` |`frontend-site1` |
+| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a chracter '_' kdekoli kromě první nebo poslední znak |`<name>` |`MY_VARIABLE` |
+| Název svazku | 5 až 63 |Malá a velká písmena se nerozlišují. |Malá písmena, číslice a pomlčky kdekoli s výjimkou na první nebo poslední znak. Nemůže obsahovat dvě pomlčky po sobě. |`<name>` |`batch-output-volume` |
 
 ## <a name="image-version-not-supported"></a>Nepodporovaná verze bitové kopie
 
@@ -252,7 +127,7 @@ Dva primární faktory, které přispívají k kontejneru spuštění v Azure ko
 * [Velikost bitové kopie](#image-size)
 * [Umístění bitové kopie](#image-location)
 
-Bitových kopií systému Windows mají [další aspekty](#use-recent-windows-images).
+Bitových kopií systému Windows mají [další aspekty](#cached-windows-images).
 
 ### <a name="image-size"></a>Velikost bitové kopie
 
@@ -272,7 +147,7 @@ Klíč k udržování velikosti obrázků malé zajišťuje, že finální image
 
 Jiný způsob, jak snížit dopad vyžádání obsahu bitové kopie na vaše kontejneru spuštění je pro hostování obrázek kontejneru [registru kontejner Azure](/azure/container-registry/) ve stejné oblasti, kde chcete nasadit instancí kontejnerů. To zkracuje síťové cestě, která bitovou kopii kontejneru je potřeba cestují, výrazně zkrátit dobu stahování.
 
-### <a name="use-recent-windows-images"></a>Použijte poslední bitových kopií systému Windows
+### <a name="cached-windows-images"></a>V mezipaměti bitových kopií systému Windows
 
 Azure instancí kontejnerů používá mechanismus ukládání do mezipaměti ke spuštění rychlost kontejner pro bitové kopie založené na určité bitových kopií systému Windows.
 
@@ -280,6 +155,10 @@ Chcete-li zajistit nejrychlejší čas spuštění kontejneru systému Windows, 
 
 * [Windows Server 2016] [ docker-hub-windows-core] (pouze LTS)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+
+### <a name="windows-containers-slow-network-readiness"></a>Windows kontejnery pomalou síť připravenosti
+
+Kontejnery Windows mohou být účtovány žádná příchozí nebo odchozí připojení pro až 5 sekund na úvodní vytvoření. Po počáteční instalaci by měl správně obnovit kontejner sítě.
 
 ## <a name="resource-not-available-error"></a>Prostředek není k dispozici – chyba
 
@@ -294,12 +173,13 @@ Tato chyba znamená, že kvůli případě velkého zatížení v oblasti, ve kt
 * Nasazení v jiné oblasti Azure
 * Nasazení později
 
+## <a name="next-steps"></a>Další postup
+Zjistěte, jak [načíst kontejneru protokoly & události](container-instances-get-logs.md) pomoci při ladění kontejnerů.
+
 <!-- LINKS - External -->
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/r/microsoft/windowsservercore/
 [docker-hub-windows-nano]: https://hub.docker.com/r/microsoft/nanoserver/
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az_container_attach
-[az-container-logs]: /cli/azure/container#az_container_logs
 [az-container-show]: /cli/azure/container#az_container_show

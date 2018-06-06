@@ -1,27 +1,27 @@
 ---
-title: 'Azure Active Directory B2C: Seznámení vlastní zásady sady starter | Microsoft Docs'
-description: Téma na Azure Active Directory B2C vlastní zásady
+title: Seznámení s aktualizací Service pack vlastní zásady Spouštěče v Azure Active Directory B2C | Microsoft Docs
+description: Téma na Azure Active Directory B2C vlastní zásady.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: eb78e4c2f2e27d59d7925ac9eaffd1cef0924463
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711575"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Seznámení s vlastní zásady Startovní sady Azure AD B2C vlastních zásad
 
 V této části jsou uvedeny všechny základní prvky B2C_1A_base zásad, která se dodává s **Starter Pack** a který je využít k vytváření vlastních zásad pro prostřednictvím dědičnosti třídy *B2C_1A_base_extensions zásad* .
 
-Jako takový ho zejména zaměřen na typy už definované deklarací identity, transformace deklarací, obsahu definice, poskytovatelů deklarací identity s jejich technické profily a cesty uživatele jádra.
+Jako takový zejména zaměřuje se na typy už definované deklarací identity, transformace deklarací, obsahu definice, poskytovatelů deklarací identity s jejich technické profily a cesty uživatele jádra.
 
 > [!IMPORTANT]
 > Společnost Microsoft neposkytuje žádné záruky, vyjádřené nebo předpokládané, s ohledem na informacích uvedených níže. V době GA nebo po může kdykoli před časem GA zavedeny změny.
@@ -49,17 +49,17 @@ Následující deklarace identity jsou požadovány pro uživatele cesty ke spr�
 
 | Typ deklarace identity | Popis |
 |-------------|-------------|
-| *UserId* | Uživatelské jméno |
+| *ID uživatele* | Uživatelské jméno |
 | *signInName* | Přihlaste se název |
-| *tenantId* | Identifikátor klienta (ID) objektu uživatele v Azure AD B2C |
+| *TenantId* | Identifikátor klienta (ID) objektu uživatele v Azure AD B2C |
 | *objectId* | Identifikátor objektu (ID) objektu uživatele v Azure AD B2C |
-| *password* | Heslo |
-| *newPassword* | |
+| *Heslo* | Heslo |
+| *Nové_heslo* | |
 | *reenterPassword* | |
 | *passwordPolicies* | Zásady pro hesla používají Azure AD B2C k určení síly hesla, vypršení platnosti, atd. |
 | *sub* | |
 | *alternativeSecurityId* | |
-| *identityProvider* | |
+| *IdentityProvider* | |
 | *displayName* | |
 | *strongAuthenticationPhoneNumber* | Telefonní číslo uživatele |
 | *Verified.strongAuthenticationPhoneNumber* | |
@@ -80,7 +80,7 @@ Následující deklarace identit vyžadují speciální parametrů (včetně ně
 
 | Typ deklarace identity | Popis |
 |-------------|-------------|
-| *nux* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
+| *Nux* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
 | *nca* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
 | *prompt* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
 | *mkt* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
@@ -88,7 +88,7 @@ Následující deklarace identit vyžadují speciální parametrů (včetně ně
 | *grant_type* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
 | *Obor* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
 | *client_id* | Speciální parametr předaný pro místní účet ověřování login.microsoftonline.com |
-| *objectIdFromSession* | Zadaný parametr výchozí zprostředkovatel správy relace k označení, že id objektu načtení z relace jednotného přihlašování |
+| *objectIdFromSession* | Zadaný parametr výchozí zprostředkovatel správy relace k označení, že ID objektu načtení z relace jednotného přihlašování |
 | *isActiveMFASession* | Zadaný parametr správou relace MFA k označení, že uživatel má aktivní relaci vícefaktorového ověřování |
 
 ### <a name="additional-optional-claims-that-can-be-collected"></a>Další (volitelné) deklarace identity, které se můžou shromažďovat
@@ -98,7 +98,7 @@ Následující deklarace identity jsou další deklarace identity, které může
 | Typ deklarace identity | Popis |
 |-------------|-------------|
 | *givenName* | Křestní jméno uživatele (také označované jako křestní jméno) |
-| *surname* | Přezdívka uživatele (také označované jako název rodiny nebo příjmení) |
+| *Příjmení* | Přezdívka uživatele (také označované jako název rodiny nebo příjmení) |
 | *Extension_picture* | Obrázek uživatele ze sociálních |
 
 ## <a name="claim-transformations"></a>Transformace deklarací identity
@@ -139,7 +139,7 @@ Znázorňuje technické profily už deklarovaný za poskytovatele deklarací ide
 
 | Technické profilu | Popis |
 |-------------------|-------------|
-| *Facebook-OAUTH* | |
+| *OAUTH pro Facebook* | |
 
 ### <a name="technical-profiles-for-local-account-signin"></a>Technické profily pro místní přihlášení účtu
 
@@ -151,8 +151,8 @@ Znázorňuje technické profily už deklarovaný za poskytovatele deklarací ide
 
 | Technické profilu | Popis |
 |-------------------|-------------|
-| *PhoneFactor-Input* | |
-| *PhoneFactor-InputOrVerify* | |
+| *Vstup PhoneFactor* | |
+| *PhoneFactor InputOrVerify* | |
 | *PhoneFactor-Verify* | |
 
 ### <a name="technical-profiles-for-azure-active-directory"></a>Technické profily pro Azure Active Directory
@@ -164,7 +164,7 @@ Znázorňuje technické profily už deklarovaný za poskytovatele deklarací ide
 | *AAD-UserReadUsingAlternativeSecurityId* | Technické profil pro sociálních přihlášení |
 | *AAD-UserReadUsingAlternativeSecurityId-NoError* | Technické profil pro sociálních přihlášení |
 | *AAD-UserWritePasswordUsingLogonEmail* | Technické profil pro místní účty |
-| *AAD-UserReadUsingEmailAddress* | Technické profil pro místní účty |
+| *AAD UserReadUsingEmailAddress* | Technické profil pro místní účty |
 | *AAD-UserWriteProfileUsingObjectId* | Aktualizace záznamu uživatele pomocí objectId technické profilu |
 | *AAD-UserWritePhoneNumberUsingObjectId* | Aktualizace záznamu uživatele pomocí objectId technické profilu |
 | *AAD-UserWritePasswordUsingObjectId* | Aktualizace záznamu uživatele pomocí objectId technické profilu |
@@ -188,12 +188,12 @@ Znázorňuje technické profily už deklarovaný za poskytovatele deklarací ide
 | Technické profilu | Popis |
 |-------------------|-------------|
 | *SM-nedojde k žádné akci* | |
-| *SM-AAD* | |
+| *SM AAD* | |
 | *SM SocialSignup* | Název profilu se používá k rozlišení AAD relace mezi přihlašovací nahoru a přihlášení |
 | *SM-SocialLogin* | |
-| *SM-MFA* | |
+| *SM MFA* | |
 
-### <a name="technical-profiles-for-trustframework-policy-engine-technicalprofiles"></a>Technické profily pro TechnicalProfiles modul zásad Trustframework
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Technické profily pro modul zásad důvěryhodnosti framework
 
 V současné době jsou definovány žádné technické profily pro **TechnicalProfiles modul zásad Trustframework** poskytovatele deklarací identity.
 
@@ -210,7 +210,7 @@ Znázorňuje cesty uživatel již byl deklarován v této části *B2C_1A_base* 
 | Uživatel cesty | Popis |
 |--------------|-------------|
 | *Registrace* | |
-| *SignIn* | |
+| *Přihlášení* | |
 | *SignUpOrSignIn* | |
-| *EditProfile* | |
+| *Úprava profilu* | |
 | *PasswordReset* | |

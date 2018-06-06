@@ -1,24 +1,25 @@
 ---
 title: Jak nasadit Azure Files | Microsoft Docs
-description: "Zjistěte, jak nasadit Azure soubory od začátku do konce."
+description: Zjistěte, jak nasadit Azure soubory od začátku do konce.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 193a403a64cea31a2e4cea21a5838be71af8dd53
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737346"
 ---
 # <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes průmyslový standard protokolu SMB. Tento článek vám ukáže, jak to prakticky nasazení Azure souborů v rámci vaší organizace.
@@ -32,20 +33,20 @@ Tento článek předpokládá, že jste již dokončili následující kroky:
 - Vytvořit sdílenou složku Azure s vaší požadované kvóty ve vašem účtu úložiště. V tématu [vytvoření sdílené složky](storage-how-to-create-file-share.md) pro podrobné pokyny o tom, jak vytvořit sdílenou složku.
 
 ## <a name="transfer-data-into-azure-files"></a>Přenos dat do Azure Files
-Chcete migrovat existující sdílené složky, například těchto uložených místně na novou sdílenou složku Azure File. V této části vám ukáže, jak přesunout data do Azure File sdílet přes několik oblíbených metod z [Příručka pro plánování](storage-files-planning.md#data-transfer-method)
+Můžete migrovat existující sdílené složky, například tyto uložené místně do nové sdílené složky Azure souboru. V této části vám ukáže, jak pro přesun dat do sdílenou složku Azure přes několik oblíbených metod z [Příručka pro plánování](storage-files-planning.md#data-transfer-method)
 
 ### <a name="azure-file-sync-preview"></a>Synchronizace Azure File (Preview)
-Soubor synchronizace služby Azure (Preview) umožňuje centralizovat vaší organizace sdílené složky v souborech Azure bez nutnosti poskytnutí flexibilitu, výkonu a kompatibility pro místní souborový server. Dělá to pomocí transformace serverů Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
+Soubor synchronizace služby Azure (Preview) umožňuje centralizovat vaší organizace sdílené složky v souborech Azure bez nutnosti poskytnutí flexibilitu, výkonu a kompatibility pro místní souborový server. Dělá to pomocí transformace serverech s Windows do rychlé mezipaměti Azure sdílené složky. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
-Synchronizace služby Azure soubor slouží k migraci dat do služby Azure sdílené složky, i když tento synchronizační mechanismus není žádoucí pro dlouhodobé používání. Další informace o tom, jak používat Azure synchronizaci souborů k přenosu dat do sdílené složky Azure File naleznete v [plánování nasazení Azure souboru Sync](storage-sync-files-planning.md) a [jak nasadit Azure souboru Sync](storage-sync-files-deployment-guide.md).
+Synchronizace služby Azure souboru slouží k migraci dat do sdílenou složku Azure, i když tento synchronizační mechanismus není žádoucí pro dlouhodobé používání. Další informace o tom, jak používat Azure souboru Sync k přenosu dat do sdílenou složku Azure naleznete v [plánování nasazení Azure souboru Sync](storage-sync-files-planning.md) a [jak nasadit Azure souboru Sync](storage-sync-files-deployment-guide.md).
 
 ### <a name="azure-importexport"></a>Azure Import/Export
-Služba Azure Import/Export umožňuje bezpečně přenáší velké objemy dat do služby Azure sdílenou přenosů jednotky pevného disku do datového centra Azure. V tématu [používat službu Microsoft Azure Import/Export k přenosu dat do úložiště Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro podrobnější přehled služby.
+Služba Azure Import/Export umožňuje bezpečně přenáší velké objemy dat do sdílenou složku Azure přesouvání pevných disků o datovém centru Azure. V tématu [používat službu Microsoft Azure Import/Export k přenosu dat do úložiště Azure](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) pro podrobnější přehled služby.
 
 > [!Note]  
-> Služba Azure Import/Export export souborů ze služby Azure sdílené složky v tuto chvíli nepodporuje.
+> Služba Azure Import/Export export souborů z sdílenou složku Azure v tuto chvíli nepodporuje.
 
-Následující kroky importovat data z místního umístění na vaši sdílenou složku Azure File.
+Následující kroky importovat data z místního umístění na Azure sdílené složky.
 
 1. Pořídit požadovaný počet pevné disky, aby e-mailu do Azure. Pevné disky může mít libovolnou velikost disku, ale musí být buď 2,5" nebo 3,5" SSD a HDD podporující standard SATA II nebo SATA III. 
 
@@ -62,7 +63,7 @@ Následující kroky importovat data z místního umístění na vaši sdílenou
 
         ![Snímek obrazovky průvodci Nový jednoduchý svazek v konzole MMC Správa disku](media/storage-files-deployment-guide/transferdata-importexport-2.png)
 
-4. Vytvořte soubor CSV datovou sadu. Soubor CSV datové sady je mapování mezi cestu k dat na místě a požadované Azure sdílené složky, které by se měl zkopírovat data do. Například následující soubor CSV datovou sadu mapuje sdílené složky ("F:\shares\scratch") na místní sítě do Azure sdílené složky ("MyAzureFileShare"):
+4. Vytvořte soubor CSV datovou sadu. Požadované sdílenou složkou Azure data by se měl zkopírovat do souboru CSV datovou sadu je mapování mezi cestu k dat na místě. Například následující soubor CSV datovou sadu mapuje sdílené složky ("F:\shares\scratch") na místní sítě do Azure sdílené složky ("MyAzureFileShare"):
     
     ```
     BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -91,18 +92,18 @@ Následující kroky importovat data z místního umístění na vaši sdílenou
     > [!Warning]  
     > Neprovádějte žádné změny dat na jednotky pevného disku nebo souboru deníku po dokončení Příprava disku.
 
-7. [Vytvoření úlohy importu](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-an-export-job).
+7. [Vytvoření úlohy importu](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>Robocopy
 Robocopy je dobře známé kopie nástroj, který se dodává s Windows a Windows Server. Robocopy může sloužit k přenosu dat do Azure souborů připojení sdílené složky místně a následným použitím připojené umístění jako cíl v příkazu Robocopy. Použití Robocopy je poměrně jednoduché:
 
-1. [Připojit vaši sdílenou složku Azure File](storage-how-to-use-files-windows.md). Pro optimální výkon doporučujeme místní připojení Azure sdílené složky na serveru, který obsahuje data. V některých případech, například po souborový server, který slouží data na zařízení NAS nemusí být možné. V takovém případě je zcela přijatelné připojit sdílenou složku Azure File na počítač. V tomto příkladu `net use` se používá v příkazovém řádku k připojení sdílené složky:
+1. [Připojení Azure sdílené složky](storage-how-to-use-files-windows.md). Pro optimální výkon doporučujeme připojení Azure sdílené složky místně na serveru, který obsahuje data. V některých případech, například po souborový server, který slouží data na zařízení NAS nemusí být možné. V takovém případě je zcela přijatelné připojit sdílenou složkou Azure na počítač. V tomto příkladu `net use` se používá v příkazovém řádku k připojení sdílené složky:
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. Použití `robocopy` na příkazovém řádku pro přesun dat do sdílené složky Azure File:
+2. Použití `robocopy` na příkazovém řádku pro přesun dat do Azure sdílené složky:
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -114,7 +115,7 @@ Robocopy je dobře známé kopie nástroj, který se dodává s Windows a Window
 AzCopy je nástroj příkazového řádku pro kopírování dat do a z Azure Files, jakož i úložiště objektů Blob v Azure pomocí jednoduchých příkazů optimální výkon. Pomocí AzCopy je snadné:
 
 1. Stažení [nejnovější verzi AzCopy v systému Windows](http://aka.ms/downloadazcopy) nebo [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy).
-2. Použití `azcopy` na příkazovém řádku pro přesun dat do sdílené složky Azure File. Syntaxe v systému Windows je následující: 
+2. Použití `azcopy` na příkazovém řádku pro přesun dat do Azure sdílené složky. Syntaxe v systému Windows je následující: 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S
@@ -132,7 +133,7 @@ AzCopy je nástroj příkazového řádku pro kopírování dat do a z Azure Fil
 Pokud chcete nahradit místní sdílené složky, je užitečné předem připojit sdílené složky na počítačích, které se budou používat v. To můžete provést automaticky na seznam počítačů.
 
 > [!Note]  
-> Připojení Azure sdílenou vyžaduje použití klíče účtu úložiště jako heslo, tedy pouze doporučujeme připojení v důvěryhodné prostředích. 
+> Připojení sdílenou složku Azure vyžaduje použití klíče účtu úložiště jako heslo, tedy pouze doporučujeme připojení v důvěryhodné prostředích. 
 
 ### <a name="windows"></a>Windows
 Prostředí PowerShell je možné spustit příkaz připojení na víc počítačích. V následujícím příkladu `$computers` je vyplněný ručně, ale můžete vygenerovat seznam počítačů, automaticky připojit. Například můžete naplnit tuto proměnnou s výsledky ze služby Active Directory.

@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 67dff6acff33b548518053ca1f569186d6b5b3ae
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 71adccabc0778e2765c574f3714aab0ed0179deb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724465"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure vazby fronty úložiště pro Azure Functions
 
@@ -28,11 +29,19 @@ Tento článek vysvětluje, jak pracovat s Azure Queue storage vazeb v Azure Fun
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby fronty úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) úložiště GitHub.
+Vazby fronty úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Vazby fronty úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -237,11 +246,13 @@ V jazyce C# a C# skript, přístup k datům zprávu pomocí parametru metody `st
 * `byte[]`
 * [CloudQueueMessage]
 
+Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
+
 V jazyce JavaScript, použijte `context.bindings.<name>` pro přístup k datové položky fronty. Pokud datové části JSON, je deserializovat do objektu.
 
 ## <a name="trigger---message-metadata"></a>Aktivační událost – zpráva metadat
 
-Aktivační událost fronty nabízí několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Hodnoty mají stejnou sémantiku jako [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
+Aktivační událost fronty nabízí několik [metadata vlastnosti](functions-triggers-bindings.md#binding-expressions---trigger-metadata). Tyto vlastnosti lze použít jako součást vazby výrazy v jiných vazby nebo jako parametry v kódu. Tyto vlastnosti jsou [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) třídy.
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
@@ -252,8 +263,6 @@ Aktivační událost fronty nabízí několik [metadata vlastnosti](functions-tr
 |`InsertionTime`|`DateTimeOffset`|Doba, která zpráva byla přidána do fronty.|
 |`NextVisibleTime`|`DateTimeOffset`|Čas, zprávy budou vedle viditelné.|
 |`PopReceipt`|`string`|Pop přijetí zprávy.|
-
-V tématu [příklady kódu pro](#trigger---example) , použijte tyto vlastnosti dříve v tomto článku.
 
 ## <a name="trigger---poison-messages"></a>Aktivační událost - poškozených zpráv
 
@@ -472,6 +481,8 @@ V jazyce C# a C# skript, zápis zpráva s jednou frontou pomocí parametru metod
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
+
+Pokud se pokusíte vytvořit vazbu na `CloudQueueMessage` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 V jazyce C# a C# skript zápis více fronty zpráv pomocí jedné z následujících typů: 
 

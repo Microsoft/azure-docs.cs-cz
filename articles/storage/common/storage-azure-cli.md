@@ -14,11 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
-ms.openlocfilehash: 99e67b9c8469f08f1cbfc980568eec35694d1ae2
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 68e101ebec4a90d8c0f39eedeef33d252c720ed1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737364"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Použití Azure CLI 2.0 s Azure Storage
 
@@ -320,7 +321,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 Soubory Azure nabízí sdílené úložiště pro aplikace, které používají protokol Server Message Block (SMB). Virtuální počítače Microsoft Azure a cloudové služby i místní aplikace můžou sdílet souborová data přes sdílené složky. Můžete spravovat sdílené složky a data souborů prostřednictvím rozhraní příkazového řádku Azure. Další informace o Azure souborů najdete v tématu [Úvod do Azure Files](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Vytvoření sdílené složky
-Azure File sdílená složka je sdílená složka SMB v Azure. Všechny adresáře a soubory musí být vytvořeny ve sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až limity kapacity účtu úložiště. Následující příklad vytvoří sdílenou složku s názvem **název_sdílené_položky**.
+Sdílenou složku Azure je sdílená složka SMB v Azure. Všechny adresáře a soubory musí být vytvořeny ve sdílené složce. Účet může obsahovat neomezený počet sdílených složek a sdílená složka můžete obsahovat neomezený počet souborů až limity kapacity účtu úložiště. Následující příklad vytvoří sdílenou složku s názvem **název_sdílené_položky**.
 
 ```azurecli
 az storage share create --name myshare
@@ -394,7 +395,7 @@ Ukázkový výstup
 }
 ```
 
-### <a name="list-share-snapshots"></a>Snímky sdílené položky seznamu
+### <a name="list-share-snapshots"></a>Výpis snímků sdílené složky
 
 Lze zadat seznam konkrétní sdílenou složku pomocí snímků sdílené složky `az storage share list --include-snapshots`
 
@@ -438,7 +439,7 @@ az storage share list --include-snapshots
 ]
 ```
 
-### <a name="browse-share-snapshots"></a>Procházet snímky sdílené složky
+### <a name="browse-share-snapshots"></a>Procházení snímků sdílené složky
 Může také procházet do konkrétní sdílenou složku snímku na serveru obsahu pomocí `az storage file list`. Je nutné zadat název sdílené složky `--share-name <snare name>` a časové razítko `--snapshot '2017-10-04T19:45:18.0000000Z'`
 
 ```azurecli-interactive

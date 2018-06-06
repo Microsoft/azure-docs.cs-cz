@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: d25709fb4abb1b8a35596c3dc246f7419a99419b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702172"
 ---
-# <a name="about-point-to-site-vpn-routing"></a>O směrování Point-to-Site VPN
+# <a name="about-point-to-site-vpn-routing"></a>Směrování VPN typu Point-to-Site
 
 Tento článek vám pomůže pochopit chování směrování Azure Point-to-Site VPN. Chování směrování P2S VPN je závislá na klientského operačního systému, protokol použitý pro připojení k síti VPN a jak jsou navzájem připojené virtuální sítě (virtuální sítě).
 
@@ -228,7 +229,7 @@ Všichni klienti mají přístup k VNet1 pouze.
 
 ## <a name="multivnets2sbranchbgp"></a>Více virtuálních sítí, které jsou propojeny pomocí S2S a pobočky (BGP)
 
-V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je připojený k VNet2 pomocí připojení Site-to-Site VPN. VNet2 je připojený k VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé partnerský vztah nebo tunelu Site-to-Site VPN mezi sítěmi VNet1 a VNet3. VNet3 je připojený k firemní pobočku (web1) pomocí připojení Site-to-Site VPN. Všechna připojení VPN nejsou spuštěné protokolu BGP. Všechna připojení sítě VPN běží protokolu BGP.
+V tomto příkladu je připojení brány VPN Point-to-Site pro VNet1. VNet1 je připojený k VNet2 pomocí připojení Site-to-Site VPN. VNet2 je připojený k VNet3 pomocí připojení Site-to-Site VPN. Neexistuje žádné přímé partnerský vztah nebo tunelu Site-to-Site VPN mezi sítěmi VNet1 a VNet3. VNet3 je připojený k firemní pobočku (web1) pomocí připojení Site-to-Site VPN. Všechna připojení sítě VPN běží protokolu BGP.
 
 Klienti, kteří používají Windows přístup k virtuálním sítím a lokalit, které jsou připojené pomocí připojení Site-to-Site VPN, ale jsou trasy k VNet2, VNet3 a web1, je třeba ručně přidat do klienta. Klienti jiných systémů než Windows mají přístup k virtuálním sítím a lokalit, které jsou připojené pomocí připojení Site-to-Site VPN bez jakékoli ruční zásah. Přístup je přenositelné a klienti mají přístup k prostředkům v všechny připojené virtuální sítě a lokality (místní).
 

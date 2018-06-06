@@ -1,12 +1,13 @@
 ---
-title: "Ochrany identit Azure Active Directory – nejčastější dotazy | Microsoft Docs"
-description: "Časté otázky k Azure AD Identity Protection"
+title: Ochrany identit Azure Active Directory – nejčastější dotazy | Microsoft Docs
+description: Časté otázky k Azure AD Identity Protection
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,11 +15,12 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 102cf0108aeefa255d40bd932e41f1e7b5536205
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4637420b712f98c3a8bf9d5965704cd043bb9a1c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713435"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Ochrany identit Azure Active Directory – nejčastější dotazy
 
@@ -27,7 +29,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se ochra
 
 ## <a name="why-do-some-risk-events-have-closed-system-status"></a>Proč některé události riziko mají stav "Uzavřeno (systém)"?
 
-**Odpověď:** tyto jsou události, které Azure Active Directory Identity Protection zjištěny a později ukončeno, protože události byly nelze nadále považovat za rizikové. Tyto události není započítávat úroveň rizika uživatele. 
+**Odpověď:** byly tyto rizikových událostí detekovaných službou Identity Protection a později ukončeno, protože události byly nelze nadále považovat za rizikové. Tyto události není započítávat úroveň rizika uživatele. 
 
 ---
 
@@ -44,6 +46,6 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se ochra
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Jak lze seřadit uživatele v "Uživatelé označení příznakem rizik"?
 
-**Odpověď:** stáhnout uživatelé označení příznakem riziko sestavy kliknutím na **Stáhnout** na **uživatelé označení příznakem rizik** stránky. Potom můžete řadit stažená data na základě dostupných polí, včetně poslední aktualizovat (UTC).
+**A:** stáhnout uživatelé označení příznakem riziko sestavy kliknutím **Stáhnout** v horní části **uživatelé označení příznakem rizik** stránky. Potom můžete řadit stažená data na základě dostupných polí, včetně poslední aktualizovat (UTC).
 
 ---

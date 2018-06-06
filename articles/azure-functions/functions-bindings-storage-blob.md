@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: f74a44ed1b26458ad77e5de43a67a961aee70ec1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 85cdce312e141bee9da3b633c45dc770e503abfe
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724794"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob storage vazby pro Azure Functions
 
@@ -34,13 +35,17 @@ Tento článek vysvětluje, jak pro práci s vazbami úložiště objektů Azure
 > [!NOTE]
 > Použijte aktivační událost mřížky INSTEAD úložiště objektů Blob pro účty úložiště pouze objekt blob, pro vysoce Škálované, nebo aby se zabránilo studený start zpožděním. Další informace najdete v tématu [aktivační událost](#trigger) části. 
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby úložiště objektů Blob jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src) úložiště GitHub.
+Vazby úložiště objektů Blob jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Blob) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Vazby úložiště objektů Blob jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Blob) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -262,6 +267,8 @@ V jazyce C# a C# skript můžete použít následující typy parametrů pro spo
 * `CloudAppendBlob`<sup>1</sup>
 
 <sup>1</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
+
+Pokud se pokusíte vytvořit vazbu na jeden z typů sada SDK úložiště a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 Vytvoření vazby na `string`, `Byte[]`, nebo objektů POCO se doporučuje, pouze pokud má malou velikost objektu blob, jako celý objekt blob se obsah načten do paměti. Obecně platí, je vhodnější použít `Stream` nebo `CloudBlockBlob` typu. Další informace najdete v tématu [souběžnosti a použití paměti](#trigger---concurrency-and-memory-usage) dále v tomto článku.
 
@@ -563,6 +570,8 @@ V jazyce C# a C# skript můžete použít následující typy parametrů pro vst
 
 <sup>1</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
 
+Pokud se pokusíte vytvořit vazbu na jeden z typů sada SDK úložiště a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
+
 Vytvoření vazby na `string` nebo `Byte[]` se doporučuje jenom když je velikost objektu blob malé, protože obsah celý objekt blob jsou načtena do paměti. Obecně platí, je vhodnější použít `Stream` nebo `CloudBlockBlob` typu. Další informace najdete v tématu [souběžnosti a použití paměti](#trigger---concurrency-and-memory-usage) výše v tomto článku.
 
 V jazyce JavaScript, přístup k objektu blob dat pomocí `context.bindings.<name from function.json>`.
@@ -776,6 +785,8 @@ V jazyce C# a C# skript můžete vázat na následující typy k zápisu objekt�
 <sup>1</sup> vyžaduje "v" vazba `direction` v *function.json* nebo `FileAccess.Read` v knihovně tříd jazyka C#. Můžete však použít objekt kontejneru, který poskytuje modul runtime k zápisu operace, jako je například nahrávání objektů BLOB do kontejneru.
 
 <sup>2</sup> vyžaduje "inout" vazba `direction` v *function.json* nebo `FileAccess.ReadWrite` v knihovně tříd jazyka C#.
+
+Pokud se pokusíte vytvořit vazbu na jeden z typů sada SDK úložiště a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 Asynchronní funkcí, použití návratovou hodnotu nebo `IAsyncCollector` místo `out` parametr.
 

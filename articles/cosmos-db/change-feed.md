@@ -5,20 +5,17 @@ keywords: Změna kanálu
 services: cosmos-db
 author: rafats
 manager: kfile
-documentationcenter: ''
-ms.assetid: 2d7798db-857f-431a-b10f-3ccbc7d93b50
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f0a646591811e7c965ad7de5201913a43cae54fc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715169"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce se změnami kanálu podpory v Azure Cosmos DB
 
@@ -93,7 +90,7 @@ Pokud používáte Azure Functions, nejjednodušší způsob, jak se připojit k
 Aktivační události lze vytvořit na portálu Azure Functions na portálu Azure Cosmos DB nebo prostřednictvím kódu programu. Další informace najdete v tématu [Cosmos databázi Azure: bez serveru databáze computing pomocí Azure Functions](serverless-computing-database.md).
 
 <a id="rest-apis"></a>
-## <a name="using-the-sdk"></a>Pomocí sady SDK
+## <a name="using-the-sdk"></a>Použití sady SDK
 
 [SQL SDK](sql-api-sdk-dotnet.md) pro Azure Cosmos DB vám dává všechny ke čtení a správa změn, kanálu. Ale s skvělé power obsahuje příliš velké množství odpovědnosti. Pokud chcete spravovat kontrolní body, řeší dokumentu pořadová čísla a mít podrobnou kontrolu nad klíče oddílů, pak pomocí sady SDK může mít správný přístup.
 
@@ -167,7 +164,7 @@ Tato část vás provede jak používat sadu SDK SQL pro práci s změnu informa
 
 Pokud máte více čtenářů, můžete použít **ChangeFeedOptions** čtení rozdělovat do různých vláknech nebo různých klientů.
 
-A je to, tyto několika řádků kódu můžete spouštět čtení změnu informačního kanálu. Kód dokončení použít v tomto článku můžete získat [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
+A je to, tyto několika řádků kódu můžete spouštět čtení změnu informačního kanálu. Kód dokončení použít v tomto článku můžete získat [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
 
 V kódu v kroku 4 výše **ResponseContinuation** v poslední řádek obsahuje poslední logické pořadové číslo (položky LSN) dokumentu, který budete používat při příštím číst nové dokumenty po této pořadové číslo. Pomocí **StartTime** z **ChangeFeedOption** rozšířit vaše net získat dokumenty. Ano, pokud vaše **ResponseContinuation** má hodnotu null, ale vaše **StartTime** přejde zpět v čase a zobrazí se všechny dokumenty, které od změnila **StartTime**. Ale pokud vaše **ResponseContinuation** má hodnotu, pak systém získáte všechny dokumenty od tohoto pořadové číslo položky.
 
@@ -194,7 +191,7 @@ Poznámka: Pokud máte dva bez serveru Azure funkcí monitorování stejné kole
 Existují čtyři hlavní součásti implementace změnu kanálu procesoru: monitorovaných kolekce, kolekce zapůjčení, procesoru hostitele a uživatelé. 
 
 > [!WARNING]
-> Za vytvoření kolekce se hradí poplatky, protože rezervujete propustnost pro komunikaci aplikace se službou Azure Cosmos DB. Další podrobnosti naleznete [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/)
+> Za vytvoření kolekce se hradí poplatky, protože rezervujete propustnost pro komunikaci aplikace se službou Azure Cosmos DB. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 > 
 > 
 
@@ -279,7 +276,7 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 }
 ```
 
-Je to. Po provedení těchto kroků několik spustí dokumenty, než dorazí do **DocumentFeedObserver ProcessChangesAsync** metoda.
+Je to. Po provedení těchto kroků několik spustí dokumenty, než dorazí do **DocumentFeedObserver ProcessChangesAsync** metoda. Výše uvedený kód v [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 
 ## <a name="next-steps"></a>Další postup
 

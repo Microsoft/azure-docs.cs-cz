@@ -16,10 +16,10 @@ ms.date: 05/31/2018
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.openlocfilehash: 00c67503f5b9e0027cbb62520e392f56420a75e6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34701372"
 ---
 # <a name="optimize-sql-server-performance"></a>Optimalizace výkonu serveru SQL

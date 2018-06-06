@@ -1,6 +1,6 @@
 ---
-title: Postup rozšíření (kopie) výstrahy z portálu OMS do Azure | Microsoft Docs
-description: Nástroje a rozhraní API, podle kterého rozšíří výstrahy od OMS do Azure výstrahy, lze provést zákazníci odpojit.
+title: Postup rozšíření výstrahy z protokolu Analytcs do Azure | Microsoft Docs
+description: Tento článek popisuje nástroje a rozhraní API, pomocí kterého můžete rozšířit výstrahy z analýzy protokolů Azure výstrah.
 author: msvijayn
 manager: kmadnani1
 editor: ''
@@ -11,65 +11,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 06/04/2018
 ms.author: vinagara
-ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 0dce6e6772b4efea90df2e095ac0041641d99061
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763523"
 ---
-# <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Postup rozšíření výstrahy (kopie) od OMS do Azure
-Od **14 může 2018**, všechny zákazníky používající výstrahy, které jsou nakonfigurované v [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md), bude rozšířeno do Azure. Výstrahy, které jsou rozšířené Azure chovají stejným způsobem jako v OMS. Možnosti monitorování zůstanou beze změn. Rozšíření výstrahy vytvořené v OMS do Azure poskytuje řadu výhod. Další informace o výhodách a proces prodloužení výstrahy od OMS do Azure najdete v tématu [rozšířit výstrahy z OMS Azure](monitoring-alerts-extend.md).
+# <a name="how-to-extend-alerts-from-log-analytics-into-azure-alerts"></a>Postup rozšíření výstrahy z analýzy protokolů do Azure výstrahy
+Výstrahy v analýzy protokolů pro nahrazení pomocí Azure výstrah a jako součást tento přechod, výstrahy, které jste nakonfigurovali v analýzy protokolů bude rozšířeno do Azure.  Pokud nechcete počkat na jejich automaticky přesunout do Azure, můžete zahájit proces následující jednu z možností:
+
+1. Ručně z portálu OMS 
+2. Programově pomocí rozhraní API AlertsVersion  
 
 > [!NOTE]
-> Spouštění 14 může 2018 - Microsoft zahájíte proces automaticky rozšíření výstrahy do Azure. Ne všechny výstrahy a pracovní prostory bude rozšířeno dne; Místo toho Microsoft zahájíte rozšířit výstrahy automaticky v tranších v nadcházející týdnů. Proto upozornění na portálu OMS nebude automaticky rozšířit do Azure okamžitě na 14 2018 může a uživatele můžete ručně rozšířit jejich výstrah pomocí možnosti níže uvedené podrobnosti.
+> Společnost Microsoft automaticky rozšíří výstrahy vytvořené v analýzy protokolů Azure výstrah, spouštění na **14 2018 může** v rámci fázového přístupu, dokud nebude dokončena. Z tohoto dne Microsoft bude zahájeno při plánování migrace výstrahy na Azure a během tento přechod výstrahy můžete spravovat z portálu OMS a portálu Azure. Tento proces je nedestruktivní a není interruptive.  
 
-Zákazníci chtějí přesunutí výstrahy z OMS do Azure okamžitě, lze provést pomocí jedné z možností uvádí.
+## <a name="option-1---initiate-from-the-oms-portal"></a>Možnost 1 - zahájení na portálu OMS
+Následující kroky popisují, jak rozšířit výstrahy pro pracovní prostor na portálu OMS.  
 
-## <a name="option-1---using-oms-portal"></a>Možnost 1 - portálu OMS
-Pokud chcete odpojit iniciovat rozšíří výstrahy z portálu OMS do Azure, postupujte podle kroků uvedených níže.
+1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+2. V podokně analýzy protokolů předplatných, vyberte pracovní prostor a pak vyberte **portálu OMS** dlaždici.<br><br> ![Tlačítko Prohledávání protokolů](./media/monitor-alerts-extend/azure-portal-01.png)<br><br> 
+3. Až budete přesměrováni na portálu OMS, klikněte na dlaždici nastavení na pravé straně horní části stránky.<br><br> ![Portál OMS možnosti nastavení](./media/monitor-alerts-extend/oms-portal-settings-option.png)<br><br> 
+4. Z **nastavení** vyberte **výstrahy**.  
+5. Klikněte na tlačítko **rozšířit do Azure**.<br><br> ![Stránka portálu nastavení výstrah OMS s možností rozšíření](./media/monitor-alerts-extend/ExtendInto.png)
+6. Průvodce se zobrazí v podokně s první tři kroky, které umožní získat přehled o procesu.  Klikněte na tlačítko **Další** pokračovat.<br><br> ![Rozšířit výstrahy z analýzy protokolů Azure – krok 1](./media/monitor-alerts-extend/ExtendStep1.png)  
+7. V druhém kroku, se zobrazí souhrn navrhované změny, výpis odpovídající [skupiny akcí](monitoring-action-groups.md) pro výstrahy. Pokud jsou podobné akce vidět napříč více než jednu výstrahu, službu navrhne přidružit všechny z nich skupinu jedné akce.  Akce skupiny navrhované, postupujte podle zásad vytváření názvů: *WorkspaceName_AG_ #Number*. Chcete-li pokračovat, klikněte na tlačítko **Další**.<br><br> ![Rozšiřte výstrahy z analýzy protokolů Azure – krok 2](./media/monitor-alerts-extend/ExtendStep2.png)  
+8. V posledním kroku průvodce, klikněte na **Dokončit** a potvrďte po zobrazení výzvy k zahájení procesu.  Volitelně můžete zadat e-mailové adresy tak, aby se oznámení po dokončení procesu a všechny výstrahy byly úspěšně přesunuty do Azure výstrahy.<br><br> ![Rozšířit výstrahy z analýzy protokolů Azure – krok 3](./media/monitor-alerts-extend/ExtendStep3.png)
 
-1. V OMS přehled stránce portálu přejděte do nastavení a pak části výstrahy. Klikněte na tlačítko s názvem "Rozšířit do Azure", zvýrazněných v obrázku níže.
-
-    ![Stránka portálu nastavení výstrah OMS s možností rozšíření](./media/monitor-alerts-extend/ExtendInto.png)
-
-2. Po kliknutí na tlačítko Krok 3 průvodce se zobrazí, s prvním krokem, kterým poskytuje podrobnosti o procesu. Kliknutím na tlačítko Další, aby bylo možné pokračovat.
-
-    ![Rozšíření výstrahy z portálu OMS do Azure – krok 1](./media/monitor-alerts-extend/ExtendStep1.png)
-
-3. V druhém kroku, systém se zobrazí souhrn navrhované změny, pomocí seznamu příslušnou [skupiny akcí](monitoring-action-groups.md), pro výstrahy na portálu OMS. Pokud jsou podobné akce vidět napříč více než jednu výstrahu - systému navrhne přidružit všechny z nich skupinu jedné akce.  Akce skupiny navrhované, postupujte podle zásad vytváření názvů: *WorkspaceName_AG_ #Number*. Aby bylo možné pokračovat, klikněte na tlačítko Další.
-Ukázka obrazovce níže.
-
-    ![Rozšíření výstrahy z portálu OMS do Azure – krok 2](./media/monitor-alerts-extend/ExtendStep2.png)
+Po dokončení průvodce si všimnete na **nastavení výstrah** stránky, která možnost rozšířit výstrahy do Azure se odebere.  Na pozadí vaše výstrahy přesunou do Azure a to může chvíli trvat.  Během operace nebude možné provádět změny výstrahy z portálu OMS.  Z hlavičky v horní části portálu se zobrazí aktuální stav, a pokud jste e-mailovou adresu zadali dříve po úspěšném dokončení procesu se dostanete e-mailu.  
 
 
-4. V posledním kroku průvodce můžete pokládat portálu OMS při plánování rozšíření všechny výstrahy do Azure – vytváření nových skupin akce a přidružení s výstrahami, jak je znázorněno na obrazovce starší. Chcete-li pokračovat, vyberte kliknutím na tlačítko Dokončit a potvrďte příkazového řádku na zahájení procesu. Zákazníci Volitelně můžete zadat taky e-mailové adresy, na které se mu na portálu OMS k odeslání zprávy na dokončení zpracování.
-
-    ![Rozšíření výstrahy z portálu OMS do Azure – krok 3](./media/monitor-alerts-extend/ExtendStep3.png)
-
-5. Po dokončení Průvodce ovládacího prvku se vraťte na stránku nastavení výstrah a možnost "Rozšířit do Azure" bude odebrána. Na pozadí se naplánuje portálu OMS výstrahy v analýzy protokolů na Azure; To může nějakou dobu trvat a při zahájení operace pro krátké doby výstrahy na portálu OMS nebudete mít k dispozici pro úpravy. Prostřednictvím hlavička se zobrazí aktuální stav, a pokud e-mailových adres kde zadaný během kroku 4, budou informace, když proces na pozadí úspěšně rozšiřuje všechny výstrahy do Azure. 
-
-6. Výstrahy budou nadále uvedené na portálu OMS i po získání úspěšně rozšířit do Azure.
-
-    ![Po rozšíření výstrahy na portálu OMS do Azure](./media/monitor-alerts-extend/PostExtendList.png)
+Výstrahy dál uvedené na portálu OMS i poté, co jsou úspěšně přesunuta do Azure.<br><br> ![Po přesunutí výstrahy v analýzy protokolů Azure](./media/monitor-alerts-extend/PostExtendList.png)
 
 
-## <a name="option-2---using-api"></a>Možnost 2 – pomocí rozhraní API
-Pro zákazníky, kteří chtějí prostřednictvím kódu programu řízení nebo automatizovat proces rozšíření výstrahy na portálu OMS do Azure; Společnost Microsoft poskytuje nové rozhraní API AlertsVersion pod analýzy protokolů.
+## <a name="option-2---using-the-alertsversion-api"></a>Možnost 2 – pomocí AlertsVersion rozhraní API
+Log Analytics AlertsVersion API můžete rozšířit výstrahy z analýzy protokolů do Azure výstrahy z libovolného klienta, který můžete volat rozhraní REST API. Máte přístup z prostředí PowerShell pomocí [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API služby Azure Resource Manager. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API.  Pomocí rozhraní API bude výstup výsledků ve formátu JSON.  
 
-Log Analytics AlertsVersion API je dosáhl standardu RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manager. V tomto dokumentu najdete příklady kterých je přístup k rozhraní API z příkazového řádku pomocí prostředí PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API služby Azure Resource Manager. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API. Rozhraní API bude výstup výsledků ve formátu JSON, povolení použití výsledky v mnoha různými způsoby prostřednictvím kódu programu.
-
-Pomocí GET na volání rozhraní API jeden můžete získat ve výsledku souhrn navrhované změny, jako seznam odpovídající [skupiny akcí](monitoring-action-groups.md) pro výstrahy na portálu OMS formátu JSON. Pokud jsou podobné akce vidět napříč více než jednu výstrahu – systém navrhne vytvořit přidružte k všechny z nich skupinu jedné akce.  Akce skupiny navrhované, postupujte podle zásad vytváření názvů: *WorkspaceName_AG_ #Number*.
+Chcete-li použít rozhraní API, nejdřív vytvořit požadavek GET, které vyhodnotí a vrátí souhrn navrhované změny před dalším pokusem o ve skutečnosti rozšířit do Azure pomocí požadavek POST. Výsledky seznam výstrah a navrhované seznam [skupiny akcí](monitoring-action-groups.md) ve formátu JSON.  Podobně jako akce jsou vidět napříč více než jednu výstrahu, službu navrhne přidružení všechny z nich se skupinou jedné akce.  Akce skupiny navrhované postupujte podle zásad vytváření názvů: *WorkspaceName_AG_ #Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-> [!NOTE]
-> ZÍSKAT volání rozhraní API nebude mít za následek výstrahy na portálu OMS získávání rozšířit do Azure. Pouze podrobně jako odpověď souhrn navrhované změny. Pokud chcete potvrdit, tyto změny provést pro rozšíření výstrahy do Azure, příspěvku na volání musí být provedeno do rozhraní API.
-
-Pokud je úspěšné, společně s odpovědi 200 OK GET volání rozhraní API, by je třeba zadat JSON seznam výstrah spolu s navrhovaná akce skupiny. Ukázková odpověď níže:
+Pokud požadavek GET je úspěšné, vrátí se společně s seznam výstrah a navrhovanou akci skupiny v datech JSON stavový kód HTTP 200. Toto je odpověď příklad:
 
 ```json
 {
@@ -126,7 +113,7 @@ Pokud je úspěšné, společně s odpovědi 200 OK GET volání rozhraní API, 
 }
 
 ```
-V případě neexistují žádné výstrahy v pracovním prostoru zadaný, společně s 200 OK odpověď pro tuto operaci GET by byl ve formátu JSON:
+Pokud zadaný prostoru nemá definovaný pravidla výstrah, včetně stavu HTTP 200 OK kódu pro operaci GET JSON data vrátí:
 
 ```json
 {
@@ -135,14 +122,15 @@ V případě neexistují žádné výstrahy v pracovním prostoru zadaný, spole
 }
 ```
 
-Pokud všechny výstrahy v pracovním prostoru zadaný už se rozšířily do Azure – odpověď na volání GET by:
+Pokud již byla všechna pravidla výstrahy v pracovním prostoru zadaný rozšířili k Azure – je odpověď na požadavek GET:
+
 ```json
 {
     "version": 2
 }
 ```
 
-K zahájení plánování rozšíření výstrahy na portálu OMS na Azure, inicializujte metodu POST SMĚŘUJÍCÍ do rozhraní API. Provádění tohoto volání příkazu potvrdí uživatele záměr a také přijetí výstrahy na portálu OMS rozšířit do Azure a provést změny, které je uvedené v odpovědi GET volání rozhraní API. Uživatel může volitelně můžete zadat seznam e-mailové adresy, na které OMS portál bude Poštovní sestavy, až se dokončí proces na pozadí plánované rozšíření výstrahy na portálu OMS na Azure úspěšně.
+K zahájení migrace výstrahy na Azure, inicializujte odpověď POST. Odpověď POST potvrzuje vašeho záměr a také přijetí tak, aby měl výstrahy rozšířené z analýzy protokolů Auzre výstrah.  Je naplánováno aktivity a zpracování výstrah, které je uvedené podle výsledků, pokud jste provedli dříve odpovědi GET.  Volitelně můžete zadat seznam e-mailové adresy, na které analýzy protokolů bude Poštovní sestavu po úspěšném dokončení procesu naplánované pozadí migrace výstrahy.  To se provádí pomocí v následujícím příkladu žádost:
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -150,17 +138,17 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> Výsledkem rozšíření OMS portál výstrahy do Azure, může se lišit souhrn zadaný pomocí GET - na účet všechny změny v systému. Jakmile naplánováno, bude výstrahy na portálu OMS není dočasně k dispozici pro úpravy nebo modifikace - při mohou být vytvořeny nové výstrahy. 
+> Výsledek migrace výstrahy do Azure výstrahy může lišit v závislosti na souhrn poskytované GET odpovědi.  Jakmile naplánováno, bude výstrahy v Log Analytics není dočasně k dispozici pro úpravy nebo modifikace na portálu OMS.  Však mohou být vytvořeny nové výstrahy. 
 
-Pokud je požadavek POST úspěšné, musí vrátit odpovědi 200 OK spolu s:
+Pokud je požadavek POST úspěšné, vrátí stavem HTTP 200 OK společně s následující odpověď:
+
 ```json
 {
     "version": 2
 }
 ```
-Indikující, že výstrahy se rozšířily do Azure, podle verze 2. Tato verze je jenom pro kontrolu, pokud výstrahy se rozšířily do Azure a mít žádný vliv využití s [Log Analytics vyhledávání API](../log-analytics/log-analytics-api-alerts.md). Jakmile výstrahy jsou rozšířené úspěšně do Azure, všechny e-mailové adresy zadané během GET zašle sestavu s podrobnostmi provést změny.
 
-A nakonec, pokud jsou všechny výstrahy v pracovním prostoru zadaný již naplánována na Azure – odpověď na hodnotu POST bude 403 Zakázáno. K zobrazení všech chybová zpráva nebo porozumění, zda rozšíření procesu je zablokované, uživatel provést GET volání a chybové zprávy, pokud žádné bude vrácen společně s souhrn.
+Tato odpovědi vyplývá, že výstrahy se úspěšně rozšířily do Azure výstrahy. Vlastnost verze je určena pouze pro ověřování, zda výstrahy se rozšířily do Azure a mít žádný vztah k [Log Analytics vyhledávání API](../log-analytics/log-analytics-api-alerts.md). Jakmile Azure jsou rozšířené výstrahy úspěšně, všechny e-mailových adres, zadaný v příspěvku jsou požadavek odeslán sestavu s podrobnostmi provést změny.  Pokud jsou všechny výstrahy v pracovním prostoru zadaný již naplánována rozšířit, je odpověď na žádost POST 403 stav kód význam, které bylo zakázáno pokus. K zobrazení všech chybová zpráva nebo pochopit, že pokud proces se zasekne, můžete odeslat požadavek GET a chybovou zprávu, pokud existuje, bude vrácen společně s souhrnné informace.
 
 ```json
 {
@@ -223,18 +211,252 @@ A nakonec, pokud jsou všechny výstrahy v pracovním prostoru zadaný již napl
 
 ```
 
+
+## <a name="option-3---using-custom-powershell-script"></a>Možnost 3 – pomocí vlastního skriptu prostředí PowerShell
+ Po 14 může 2018 – Pokud Microsoft nebylo rozšířeno úspěšně upozornění z portálu OMS do Azure; potom dokud **5 července 2018** -uživatele můžete ručně provést stejný prostřednictvím [možnost 1 - prostřednictvím grafického uživatelského rozhraní](#option-1---initiate-from-the-oms-portal) nebo [možnost 2 – prostřednictvím rozhraní API](#option-2---using-the-alertsversion-api).
+
+Po **5 července 2018** – všechny výstrahy z portálu OMS bude rozšířeno do Azure. Uživatelé, kteří nebyla trvat [navrhované kroky nezbytné nápravy](#troubleshooting), bude mít výstrahy spustíte bez ohlásí akce nebo oznámení z důvodu nedostatku přidružené [akce skupiny](monitoring-action-groups.md). 
+
+Ruční vytvoření [skupiny akcí](monitoring-action-groups.md) pro výstrahy v analýzy protokolů, uživatelé mohou používat následující ukázka skriptu.
+```PowerShell
+########## Input Parameters Begin ###########
+
+
+$subscriptionId = ""
+$resourceGroup = ""
+$workspaceName = "" 
+
+
+########## Input Parameters End ###########
+
+armclient login
+
+try
+{
+    $workspace = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/"$workspaceName"?api-version=2015-03-20 | ConvertFrom-Json
+    $workspaceId = $workspace.properties.customerId
+    $resourceLocation = $workspace.location
+}
+catch
+{
+    "Please enter valid input parameters i.e. Subscription Id, Resource Group and Workspace Name !!"
+    exit
+}
+
+# Get Extend Summary of the Alerts
+"`nGetting Extend Summary of Alerts for the workspace...`n"
+try
+{
+
+    $value = armclient get /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview
+
+    "Extend preview summary"
+    "=========================`n"
+
+    $value
+
+    $result = $value | ConvertFrom-Json
+}
+catch
+{
+
+    $ErrorMessage = $_.Exception.Message
+    "Error occured while fetching/parsing Extend summary: $ErrorMessage"
+    exit 
+}
+
+if ($result.version -eq 2)
+{
+    "`nThe alerts in this workspace have already been extended to Azure."
+    exit
+}
+
+$in = Read-Host -Prompt "`nDo you want to continue extending the alerts to Azure? (Y/N)"
+
+if ($in.ToLower() -ne "y")
+{
+    exit
+} 
+
+
+# Check for resource provider registration
+try
+{
+    $val = armclient get subscriptions/$subscriptionId/providers/microsoft.insights/?api-version=2017-05-10 | ConvertFrom-Json
+    if ($val.registrationState -eq "NotRegistered")
+    {
+        $val = armclient post subscriptions/$subscriptionId/providers/microsoft.insights/register/?api-version=2017-05-10
+    }
+}
+catch
+{
+    "`nThe user does not have required access to register the resource provider. Please try with user having Contributor/Owner role in the subscription"
+    exit
+}
+
+$actionGroupsMap = @{}
+try
+{
+    "`nCreating new action groups for alerts extension...`n"
+    foreach ($actionGroup in $result.migrationSummary.actionGroups)
+    {
+        $actionGroupName = $actionGroup.actionGroupName
+        $actions = $actionGroup.actions
+        if ($actionGroupsMap.ContainsKey($actionGroupName))
+        {
+            continue
+        } 
+        
+        # Create action group payload
+        $shortName = $actionGroupName.Substring($actionGroupName.LastIndexOf("AG_"))
+        $properties = @{"groupShortName"= $shortName; "enabled" = $true}
+        $emailReceivers = New-Object Object[] $actions.emailIds.Count
+        $webhookReceivers = New-Object Object[] $actions.webhookActions.Count
+        
+        $count = 0
+        foreach ($email in $actions.emailIds)
+        {
+            $emailReceivers[$count] = @{"name" = "Email$($count+1)"; "emailAddress" = "$email"}
+            $count++
+        }
+
+        $count = 0
+        foreach ($webhook in $actions.webhookActions)
+        {
+            $webhookReceivers[$count] = @{"name" = "$($webhook.name)"; "serviceUri" = "$($webhook.serviceUri)"}
+            $count++
+        }
+
+        $itsmAction = $actions.itsmAction
+        if ($itsmAction.connectionId -ne $null)
+        {
+            $val = @{
+            "name" = "ITSM"
+            "workspaceId" = "$subscriptionId|$workspaceId"
+            "connectionId" = "$($itsmAction.connectionId)"
+            "ticketConfiguration" = $itsmAction.templateInfo
+            "region" = "$resourceLocation"
+            }
+            $properties["itsmReceivers"] = @($val)  
+        }
+
+        $properties["emailReceivers"] = @($emailReceivers)
+        $properties["webhookReceivers"] = @($webhookReceivers)
+        $armPayload = @{"properties" = $properties; "location" = "Global"} | ConvertTo-Json -Compress -Depth 4
+
+    
+        # ARM call to create action group
+        $response = $armPayload | armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroupName/?api-version=2017-04-01
+
+        "Created Action Group with name $actionGroupName" 
+        $actionGroupsMap[$actionGroupName] = $actionGroup.actionGroupResourceId.ToLower()
+        $index++
+    }
+
+    "`nSuccessfully created all action groups!!"
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message
+
+    #Delete all action groups in case of failure
+    "`nDeleting newly created action groups if any as some error happened..."
+    
+    foreach ($actionGroup in $actionGroupsMap.Keys)
+    {
+        $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+    }
+
+    "`nError: $ErrorMessage"
+    "`nExiting..."
+    exit
+}
+
+# Update all alerts configuration to the new version
+"`nExtending OMS alerts to Azure...`n"
+
+try
+{
+    $index = 1
+    foreach ($alert in $result.migrationSummary.alerts)
+    {
+        $uri = $alert.alertId + "?api-version=2015-03-20"
+        $config = armclient get $uri | ConvertFrom-Json
+        $aznsNotification = @{
+            "GroupIds" = @($actionGroupsMap[$alert.actionGroupName])
+        }
+        if ($alert.customWebhookPayload)
+        {
+            $aznsNotification.Add("CustomWebhookPayload", $alert.customWebhookPayload)
+        }
+        if ($alert.customEmailSubject)
+        {
+            $aznsNotification.Add("CustomEmailSubject", $alert.customEmailSubject)
+        }      
+
+        # Update alert version
+        $config.properties.Version = 2
+
+        $config.properties | Add-Member -MemberType NoteProperty -Name "AzNsNotification" -Value $aznsNotification
+        $payload = $config | ConvertTo-Json -Depth 4
+        $response = $payload | armclient put $uri
+    
+        "Extended alert with name $($alert.alertName)"
+        $index++
+    }
+}
+catch
+{
+    $ErrorMessage = $_.Exception.Message   
+    if ($index -eq 1)
+    {
+        "`nDeleting all newly created action groups as no alerts got extended..."
+        foreach ($actionGroup in $actionGroupsMap.Keys)
+        {
+            $response = armclient delete /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.insights/actionGroups/$actionGroup/?api-version=2017-04-01      
+        }
+        "`nDeleted all action groups."  
+    }
+    
+    "`nError: $ErrorMessage"
+    "`nPlease resolve the issue and try extending again!!"
+    "`nExiting..."
+    exit
+}
+
+"`nSuccessfully extended all OMS alerts to Azure!!" 
+
+# Update version of workspace to indicate extension
+"`nUpdating alert version information in OMS workspace..." 
+
+$response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/alertsversion?api-version=2017-04-26-preview&iversion=2"
+
+"`nExtension complete!!"
+```
+
+
+**Pomocí vlastního skriptu prostředí PowerShell** 
+- Instalace je nezbytné [ARMclient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API služby Azure Resource Manager
+- Uživatel, který spouští skript uvedené musí mít roli Přispěvatel nebo vlastníka v rámci předplatného Azure
+- Tady jsou parametry, které je třeba zadat pro skript:
+    - $subscriptionId: ID předplatného Azure přidružené pracovní prostor OMS/LA
+    - $resourceGroup: Skupina prostředků Azure kde je pracovní prostor OMS/LA
+    - $workspaceName: název pracovního prostoru OMS/LA
+
+**Výstup skriptu prostředí PowerShell, vlastní** skript je podrobné a bude výstup kroky, jak se provede. 
+- Zobrazí souhrn, který obsahuje informace o existující OMS/LA výstrahy v pracovním prostoru a skupiny Azure akcí pro akce spojené s nimi. 
+- Uživatel se vyzve k pokračujte s příponou nebo ukončit po zobrazení souhrnu.
+- Pokud se uživatel vyzve k pokračujte s příponou, vytvoří se nové skupiny Azure akce a všechny existující výstrahy bude spojený s nimi. 
+- V části end ukončí skript tím, že zobrazuje zpráva "rozšíření dokončení!." V případě jakékoli zprostředkující selhání se zobrazí následující chyby.
+
 ## <a name="troubleshooting"></a>Řešení potíží 
 Během procesu rozšíří výstrahy od OMS do Azure, může být občasné problém, který zabrání vytvoření nezbytných systému [skupiny akcí](monitoring-action-groups.md). V takovém případě se zobrazí na portálu OMS prostřednictvím banner v části výstrah a volání GET provádí API chybovou zprávu.
 
-Postup nápravy pro jednotlivé chyby v následujícím seznamu jsou:
-1. **Chyba: Předplatné není zaregistrované používání oboru názvů 'microsoft.insights'**: ![stránky portálu nastavení výstrah OMS s registrace chybová zpráva](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
+> [!WARNING]
+> Pokud uživatel neberou v postupu nápravy precribed uvedeného níže, před **5 července 2018** - pak výstrahy se spustí v Azure, ale bez aktivuje všechny akce nebo oznámení. Dostávat oznámení pro výstrahy, uživatelé musí ručně upravit a přidat [skupiny akcí](monitoring-action-groups.md) nebo použít [vlastní skript prostředí PowerShell](#option-3---using-custom-powershell-script) výše uvedeného.
 
-    a. Předplatné spojené s vaším pracovním prostorem OMS - nebyl registrován používání funkce sledování Azure (microsoft.insights); kvůli které OMS nelze rozšířit výstrahy do Azure monitorování a výstrahy.
-    
-    b. Vyřešit, zaregistrujte pomocí microsoft.insights (Azure monitorování a výstrahy) ve vašem předplatném pomocí prostředí Powershell, rozhraní příkazového řádku Azure nebo portálu Azure. Chcete-li další informace najdete podívejte se na článek [řešení chyb při registraci zprostředkovatele prostředků](../azure-resource-manager/resource-manager-register-provider-errors.md)
-    
-    c. Po vyřešení podle pokynů v článku kroky OMS rozšíří upozornění do Azure v rámci naplánované spuštění následujícího dne; bez nutnosti jakéhokoli akce nebo spuštění.
-2. **Chyba: Obor zámku nachází na úrovni předplatného nebo prostředků skupiny pro operace zápisu**: ![stránky portálu nastavení výstrah OMS s ScopeLock chybová zpráva](./media/monitor-alerts-extend/ErrorScopeLock.png)
+Postup nápravy pro jednotlivé chyby v následujícím seznamu jsou:
+1. **Chyba: Obor zámku nachází na úrovni předplatného nebo prostředků skupiny pro operace zápisu**: ![stránky portálu nastavení výstrah OMS s ScopeLock chybová zpráva](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
     a. Pokud obor uzamknout je povoleno, omezení žádné nové změny v předplatné nebo skupinu prostředků obsahující pracovní prostor analýzy protokolů (OMS); v systému se nepodařilo rozšířit výstrahy (kopie) do Azure a vytvoření skupin potřebné akce.
     
@@ -242,7 +464,7 @@ Postup nápravy pro jednotlivé chyby v následujícím seznamu jsou:
     
     c. Po vyřešení podle pokynů v článku kroky OMS rozšíří upozornění do Azure v rámci naplánované spuštění následujícího dne; bez nutnosti jakéhokoli akce nebo spuštění.
 
-3. **Chyba: Zásady nachází na úrovni předplatného nebo prostředků skupiny**: ![stránky portálu nastavení výstrah OMS s zásad chybová zpráva](./media/monitor-alerts-extend/ErrorPolicy.png)
+2. **Chyba: Zásady nachází na úrovni předplatného nebo prostředků skupiny**: ![stránky portálu nastavení výstrah OMS s zásad chybová zpráva](./media/monitor-alerts-extend/ErrorPolicy.png)
 
     a. Když [zásad Azure](../azure-policy/azure-policy-introduction.md) se použije, omezení nové prostředky v předplatné nebo skupinu prostředků obsahující pracovní prostor analýzy protokolů (OMS); systému se nepodařilo rozšířit výstrahy (kopie) do Azure a vytvoření skupin potřebné akce.
     

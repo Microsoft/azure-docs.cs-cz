@@ -9,18 +9,20 @@ ms.author: jeffgilb
 ms.date: 7/17/2017
 ms.topic: article
 ms.prod: ''
-ms.service: azure
+ms.service: azure-directory
+ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: acd69b6ea4d7a1d5c13cd0172f15b93eac96058e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7bdd2138c861e9fd335b1c579c6ab80400777035
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714795"
 ---
 # <a name="understand-azure-identity-solutions"></a>Princip řešení identit Azure
-Microsoft Azure Active Directory (Azure AD) je identit a přístupu cloudové řešení pro správu poskytující adresářových služeb, zásad správného řízení identity a správa přístupu aplikací. Azure AD rychle [umožňuje jednotné přihlašování (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) na hodnotu 1 000 je předem integrovaných aplikací komerční a vlastní v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Mnoho z těchto aplikací, které pravděpodobně již používáte například Office 365, Salesforce.com, pole, ServiceNow a během pracovního dne.
+Microsoft Azure Active Directory (Azure AD) je cloudové řešení pro správu identit a přístupu, které poskytuje adresářové služby, správu identit a správu přístupu k aplikacím. Azure AD rychle [umožňuje jednotné přihlašování (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) na hodnotu 1 000 je předem integrovaných aplikací komerční a vlastní v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Mnoho z těchto aplikací, které pravděpodobně již používáte například Office 365, Salesforce.com, pole, ServiceNow a během pracovního dne.
 
 Jeden adresář Azure AD se automaticky přidruží předplatné Azure, když je vytvořeno. Jako identity služby v Azure Azure AD poté poskytuje všechny funkce řízení přístupu a správu identit pro cloudové prostředky. Tyto prostředky mohou zahrnovat uživatele, aplikace a skupiny pro jednoho klienta (organizace), jak je znázorněno v následujícím diagramu:
 

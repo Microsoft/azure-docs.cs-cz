@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: b3d9d45da0fb62445867d13c9dff7502af77e8a8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ba557fdae01df4a631c2acff49cc3350fb08ff59
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726233"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -163,7 +164,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 | 1 |GCM AES256    |GCM (AES256)      |Žádný         |
 | 2 |AES256        |SHA1              |Žádný         |
 | 3 |3DES          |SHA1              |Žádný         |
-| 4 |AES256        |SHA256            |Žádné         |
+| 4 |AES256        |SHA256            |Žádný         |
 | 5 |AES128        |SHA1              |Žádný         |
 | 6 |3DES          |SHA256            |Žádný         |
 
@@ -173,10 +174,10 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádný         |
 | 2 |AES256        |SHA1              |Žádný         |
-| 3 |3DES          |SHA1              |Žádné         |
+| 3 |3DES          |SHA1              |Žádný         |
 | 4 |AES256        |SHA256            |Žádný         |
-| 5 |AES128        |SHA1              |Žádné         |
-| 6 |3DES          |SHA256            |Žádné         |
+| 5 |AES128        |SHA1              |Žádný         |
+| 6 |3DES          |SHA256            |Žádný         |
 | 7 |DES           |SHA1              |Žádný         |
 | 8 |AES256        |SHA1              |1            |
 | 9 |AES256        |SHA1              |2            |

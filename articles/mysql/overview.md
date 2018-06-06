@@ -8,25 +8,26 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 06/02/2018
 ms.custom: mvc
-ms.openlocfilehash: 3b7ae08446e672c218e7278cff4f77739286fead
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0ae9c0168d8f4ff7dbea4c21c91fc70a3d355a5f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736469"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co je Azure Database pro databázi MySQL?
 Databáze pro databázi MySQL Azure je služba relační databáze v cloudu Microsoftu na základě [MySQL Community Edition](https://www.mysql.com/products/community/) databázového stroje. Azure Database pro databázi MySQL nabízí:
 
 - Integrovanou vysokou dostupnost bez dalších poplatků.
 - Předvídatelný výkon a všeobecné ceny při průběžných platbách.
-- Průběžné škálování během několika sekund.
+- Škálování podle potřeby během několika sekund.
 - Zabezpečení pro ochranu neaktivních uložených dat i přenášených dat.
 - Automatické zálohování a obnovení k určitému bodu v čase po dobu až 35 dnů.
 - Zabezpečení a dodržování předpisů na podnikové úrovni.
 
-Tyto možnosti vyžadují téměř žádné správy a všechny jsou k dispozici bez dalších poplatků. Umožňují zaměřit na rychlý vývoj aplikací a urychlení doby uvedení na trh než přidělování drahocenný čas a prostředky se správou virtuálních počítačů a infrastruktury. Kromě toho můžete nadále vyvíjet aplikace s otevřeným zdrojem nástroje a platformy zvoleného zajistit vaše obchodní požadavky, všechny bez nutnosti další nové dovednosti s rychlostí a efektivitu.
+Tyto možnosti vyžadují téměř žádné správy a všechny jsou k dispozici bez dalších poplatků. Umožňují zaměřit na rychlý vývoj aplikací a urychlení doby uvedení na trh než přidělování drahocenný čas a prostředky se správou virtuálních počítačů a infrastruktury. Kromě toho můžete nadále vývoj aplikace s nástroji open source a platformy zvoleného zajistit vaše obchodní požadavky, všechny bez nutnosti další nové dovednosti s rychlostí a efektivitu.
 
 ![Databáze Azure pro koncepční diagram MySQL](media/overview/1-azure-db-for-mysql-conceptual-diagram.png)
 
@@ -44,14 +45,22 @@ Databáze Azure pro službu MySQL nabízí několik úrovní služeb: Basic, obe
 Jak se rozhodnout, kdy přidat a kdy odebrat výkon? Můžete použít předdefinované výkonu monitorování a výstrah funkce v kombinaci s hodnocení výkonu podle vCores. Používání těchto nástrojů, můžete rychle posoudit dopad vCores škálování nahoru nebo dolů na základě potřeb aktuální nebo předpokládané výkonu. Podrobnosti najdete v tématu [Upozornění](howto-alert-on-metric.md).
 
 ## <a name="keep-your-app-and-business-running"></a>Udržujte své aplikace a podnikáni v chodu
-Azure špičkové 99,99 % dostupnost smlouvu o úrovni služeb (SLA) používá technologii globální sítě datových center spravovaných společností Microsoft, pomáhá udržet vaše aplikace s 24/7. S každou databází Azure pro server databáze MySQL můžete využít výhod integrované zabezpečení, odolnost proti chybám a ochrany dat, která by jinak muset koupit nebo návrh, vytvářet a spravovat. S Azure Database pro databázi MySQL můžete v okamžiku obnovení obnovit server do předchozího stavu, až 35 dnů.
+Dostupnost služby Azure se smlouvou o úrovní služeb (SLA) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. S každou databází Azure pro server databáze MySQL můžete využít výhod integrované zabezpečení, odolnost proti chybám a ochrany dat, která by jinak muset koupit nebo návrh, vytvářet a spravovat. S Azure Database pro databázi MySQL můžete v okamžiku obnovení obnovit server do předchozího stavu, až 35 dnů.
 
 ## <a name="secure-your-data"></a>Zabezpečení dat
 Služby Azure databáze mít tradici zabezpečení dat, které podporuje Azure Database pro databázi MySQL, s funkcemi, které omezit přístup, ochranu dat na rest a v provozu a vám pomůže sledovat činnost. Informace o zabezpečení platformy Azure najdete v [Centru zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/security).
 
 Databáze Azure pro službu MySQL používá šifrování úložiště pro data na rest. Data, včetně zálohování, jsou zašifrovaná na disku (s výjimkou dočasné soubory, které jsou vytvořené pomocí modulu při spuštění dotazů). Služba používá 256bitové šifrování AES, které je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
-Ve výchozím nastavení je databáze Azure pro službu MySQL nakonfigurovaná tak, aby vyžadovala [zabezpečení připojení SSL](./concepts-ssl-connection-security.md) pro data za provozu v síti. Vynucení připojení SSL mezi databázový server a klientských aplikací pomáhá chránit před útoky "man uprostřed" šifrování datový proud mezi serverem a aplikace.  Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
+Ve výchozím nastavení je databáze Azure pro službu MySQL nakonfigurovaná tak, aby vyžadovala [zabezpečení připojení SSL](./concepts-ssl-connection-security.md) pro data za provozu v síti. Vynucení připojení SSL mezi databázový server a klientských aplikací pomáhá chránit před útoky "man uprostřed" šifrování datový proud mezi serverem a aplikace. Volitelně můžete vyžadování SSL pro připojení k vaší databázové službě zakázat, pokud vaše klientská aplikace nepodporuje připojení SSL.
+
+## <a name="contacts"></a>Kontakty
+Pro jakékoli dotazy nebo návrhy může být o práci s Azure Database pro databázi MySQL, odešlete e-mail na databázi Azure pro MySQL tým ([ @Ask Azure DB pro databázi MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Všimněte si, že se nejedná alias se na technickou podporu.
+
+Kromě toho zvažte následující body kontaktu podle potřeby:
+- Kontaktujte podporu Azure [souboru lístek z portálu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Chcete-li vyřešit problém s vaším účtem, souborů [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) na portálu Azure.
+- K poskytnutí zpětné vazby, nebo požádat o nové funkce, vytvořit položku prostřednictvím [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Další postup
 Teď, když jste si přečetli Úvod do Azure Database pro databázi MySQL a znáte odpověď na otázku "Co je Azure databáze pro MySQL?", jste připraveni:

@@ -14,10 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: danis;cynthn
 ms.openlocfilehash: 8e65b82730884947633688db9ed50080b96e0b8e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "33942743"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Pomocí zásad Azure můžete omezit instalaci rozšíření na virtuální počítače s Linuxem
 

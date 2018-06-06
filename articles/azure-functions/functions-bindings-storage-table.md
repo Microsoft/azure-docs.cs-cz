@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1c8cee149e99786b58e4584e5e7b508b1040389d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 51b9f7bfd25da7dfd4ae9038f8dab70e9232b944
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724577"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table úložiště vazby pro Azure Functions
 
@@ -27,13 +28,17 @@ Tento článek vysvětluje, jak pracovat s Azure Table storage vazeb v Azure Fun
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Balíčky
+## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby tabulky úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/) úložiště GitHub.
+Vazby tabulky úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 2.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
+
+Vazby tabulky úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíček NuGet verze 3.x. Zdrojový kód pro balíček je v [azure webjobs sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Table) úložiště GitHub.
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -104,6 +109,9 @@ public class TableStorage
     }
 }
 ```
+
+  > [!NOTE]
+  > `IQueryable` není podporována v [Functions v2 runtime](functions-versions.md). Alternativou je [pomocí parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) ke čtení tabulky pomocí sady SDK úložiště Azure. Pokud se pokusíte vytvořit vazbu na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 ### <a name="input---c-script-example-1"></a>(Vstup) – příklad skriptu jazyka C# 1
 
@@ -382,8 +390,8 @@ Vstupní vazbu tabulky úložiště podporuje následující scénáře:
 
   Přístup k datům tabulky pomocí parametru metody `IQueryable<T> <paramName>`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` musí být typ, který implementuje `ITableEntity` nebo odvozuje od `TableEntity`. Můžete použít `IQueryable` metod jakéhokoli filtrování vyžaduje. `partitionKey`, `rowKey`, `filter`, A `take` vlastnosti nejsou v tomto scénáři používají.  
 
-> [!NOTE]
-> `IQueryable` není podporována v [Functions v2 runtime](functions-versions.md). Alternativou je [pomocí parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) ke čtení tabulky pomocí sady SDK úložiště Azure.
+  > [!NOTE]
+  > `IQueryable` není podporována v [Functions v2 runtime](functions-versions.md). Alternativou je [pomocí parametru metody paramName CloudTable](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) ke čtení tabulky pomocí sady SDK úložiště Azure. Pokud se pokusíte vytvořit vazbu na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 * **Přečtěte si jeden nebo více řádků v jazyce JavaScript**
 
@@ -640,7 +648,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
   V jazyce C# a C# skript, přístup k entitu výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `IAsyncCollector<T> paramName`. V jazyce C# skript `paramName` je hodnota zadaná v `name` vlastnost *function.json*. `T` Určuje schéma entity, které chcete přidat. Obvykle `T` je odvozena z `TableEntity` nebo implementuje `ITableEntity`, ale nemusí to. Klíč oddílu a řádku klíče hodnoty v *function.json* nebo `Table` nejsou v tomto scénáři používají konstruktoru atributu.
 
-  Další možností je použít `CloudTable paramName` parametru metody k zápisu do tabulky pomocí sady SDK úložiště Azure.
+  Další možností je použít `CloudTable paramName` parametru metody k zápisu do tabulky pomocí sady SDK úložiště Azure. Pokud se pokusíte vytvořit vazbu na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správná verze sady SDK úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 * **Zapisovat jeden nebo více řádků v jazyce JavaScript**
 

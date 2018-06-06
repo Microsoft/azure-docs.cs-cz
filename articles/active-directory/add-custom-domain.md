@@ -6,17 +6,18 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 37890ac856a6b6bd89acc17973327b239a583997
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 32e3fc2db0a88fd004f3ff5c16b96ec282606d6b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714217"
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Rychlý úvod: Přidání vlastního názvu domény do Azure Active Directory
 

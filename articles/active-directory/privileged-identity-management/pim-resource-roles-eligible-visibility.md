@@ -3,7 +3,7 @@ title: Oprávněné přiřazení a viditelnost prostředku pro Azure v Privilege
 description: Popisuje, jak přiřadit členy jako vhodné pro role prostředků při použití PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 editor: mwahl
 ms.service: active-directory
@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 4804d930a98192d64245784058920eeba7d30212
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bb1f9c63d4e01f3927b1c58a68742e107cf9331d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699637"
 ---
 # <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Oprávněné přiřazení a viditelnost prostředku s Privileged Identity Management
 
@@ -41,13 +42,13 @@ Správci prostředků můžete vybrat z dvě možnosti pro každý typ přiřaze
 
 Může správce zvolit jednu z těchto typů přiřazení:
 
-- Povolit trvalé oprávněné přiřazení
-- Povolit aktivní trvalého přiřazení
+- Povolit trvalé přiřazení oprávnění
+- Povolit trvalé aktivní přiřazení
 
 Nebo může správce zvolit jednu z těchto typů přiřazení:
 
 - Oprávněné přiřazení po vypršení platnosti
-- Aktivní přiřazení po vypršení platnosti
+- Ukončit platnost aktivních přiřazení po
 
 Pokud se rozhodne správce prostředků **povolit trvalého přiřazení oprávněné** nebo **povolit trvalého přiřazení active**, všechny správce, kteří členové přiřadit prostředku můžete přiřadit trvalé členství ve skupinách.
 
@@ -62,7 +63,7 @@ Pokud se rozhodne správce prostředků **vyprší oprávněné přiřazení po*
 PIM pro prostředky Azure má dva odlišné přiřazení stavy, které se zobrazují na **aktivní role** ve **Moje role**, **role**, a **členy**zobrazení PIM. Tyto stavy jsou:
 
 - Přiřazené
-- Aktivované
+- Aktivováno
 
 Při prohlížení členství, která je uvedena v **aktivní role**, můžete použít hodnotu v **stavu** sloupec k rozlišení mezi uživatele, kteří jsou **přiřazeno** jako aktivní a Uživatelé, **aktivované** oprávněné přiřazení a jsou teď aktivní.
 

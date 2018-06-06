@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: protection
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -15,11 +16,12 @@ ms.workload: identity
 ms.date: 05/11/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 475b0229b9e627a56b02d2299ee2e5400aa0ede1
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1501ca1c036a8db1d53b9b27170d9ae05d41f797
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724111"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Rychlý úvod: Vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory 
 

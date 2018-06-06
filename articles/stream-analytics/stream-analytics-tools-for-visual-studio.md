@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bcb4302c3a237ec75ff670b322c9d068d8700de9
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738509"
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Použití Azure Stream Analytics tools pro sadu Visual Studio
 Azure Stream Analytics tools pro Visual Studio jsou obecně dostupné. Tyto nástroje povolte bohatší možnosti pro uživatele Stream Analytics k řešení potíží a také zápisu složitých dotazů a i psát dotazy místně. Úloha Stream Analytics také můžete exportovat do projektu sady Visual Studio.
@@ -30,18 +31,17 @@ Po dokončení tohoto kurzu, budete moci:
 * Exportujte stávající úlohy na projekty.
 
 >[!IMPORTANT]
+> Společnost Microsoft doporučuje upgradujte na verzi nástroje Azure Data Lake pro Visual Studio verzi 2.3.3000.4 nebo novější. Předchozí verze již nejsou k dispozici ke stažení a jsou nyní zastaralé. 
 >
->V rámci přípravy pro nové obecné Data Protection nařízení (GDPR) do vliv na 25 může 2018, se doporučuje, aby uživatelé služby Azure Stream Analytics Tools pro sadu Visual Studio upgradovat na verzi 2.3.3000.5 nebo novější. Tato verze zahrnuje změny v závislosti na požadavcích ochrany nejnovější data. Všimněte si, že nejsou k dispozici pro předchozí verze stáhnout a jsou zastaralé. 
->
->**Co je potřeba udělat?**
+>**Co potřeba udělat?**
 >
 >1. Zkontrolujte, pokud používáte starší verze než 2.3.3000.5 Azure Stream Analytics Tools pro sadu Visual Studio. 
 >   
->   ![Zkontrolujte verzi nástroje](./media/stream-analytics-tools-for-vs/about-data-lake.png)
+>   ![Kontrola verze nástrojů](./media/stream-analytics-tools-for-vs/about-data-lake.png)
 > 
 >2. Pokud vaše verze dřívější verzi 2.3.3000.5, aktualizace vašeho nástrojů Azure Data Lake pro Visual Studio pomocí návštěvy webu Stažení softwaru: 
->    - [Pro Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
->    - [Pro Visual Studio 2013 a 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
+>    - [Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Visual Studio 2013 a 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
 
 ## <a name="prerequisites"></a>Požadavky
 Požadovaný k dokončení tohoto kurzu potřebujete:

@@ -1,21 +1,22 @@
 ---
-title: "Plánování nasazení Azure Files | Microsoft Docs"
-description: "Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files."
+title: Plánování nasazení Azure Files | Microsoft Docs
+description: Zjistěte, co je potřeba zvážit při plánování nasazení služby Azure Files.
 services: storage
 author: wmgries
-manager: jeconnoc
+manager: aungoo
 ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: wgries
-ms.openlocfilehash: 017dd79e2d15fdd98ea020c686857d282bad244e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86c577c23c97939a31551734dab9d45837011ffa
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737390"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
-[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes průmyslový standard protokolu SMB. Protože soubory Azure je plně spravovaná, nasazení se v produkčních scénářích je mnohem jednodušší než v nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek se zaměřuje na témata, které je třeba zvážit při nasazení služby Azure sdílenou složku pro použití v provozním prostředí v rámci vaší organizace.
+[Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes průmyslový standard protokolu SMB. Protože soubory Azure je plně spravovaná, nasazení se v produkčních scénářích je mnohem jednodušší než v nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek se zaměřuje na témata, které je třeba zvážit při nasazování sdílenou složku Azure pro použití v provozním prostředí v rámci vaší organizace.
 
 ## <a name="management-concepts"></a>Koncepty správy
  Následující diagram znázorňuje konstrukce správy Azure soubory:
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/09/2018
 
 * **Soubor:** Soubor ve sdílené složce. Soubor může mít velikost až 1 TiB.
 
-* **Formát adresy URL**: pro požadavky do Azure sdílené složky pomocí protokolu souboru REST, soubory jsou adresovatelné v následujícím formátu adresy URL:
+* **Formát adresy URL**: pro požadavky na sdílenou složku Azure pomocí REST souboru protokolu, soubory jsou adresovatelné v následujícím formátu adresy URL:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/directories>/<file>
@@ -47,7 +48,7 @@ Následující tabulka vysvětluje, jak můžete Azure sdílené složce příst
 | | Cloud přímý přístup | Azure File Sync |
 |------------------------|------------|-----------------|
 | Jaké protokoly budete muset použít? | Soubory Azure podporuje SMB 2.1, protokolu SMB 3.0 a rozhraní API REST souboru. | Přístup k vaší Azure sdílenou složku přes libovolný podporovaný protokol na Windows serveru (SMB, systém souborů NFS, FTPS atd.) |  
-| Kde jsou spuštěná vaše úloha? | **V Azure**: soubory Azure nabízí přímý přístup k datům. | **Místně s pomalým síťovým**: klienty systému Windows, Linux a systému macOS můžete připojit místní Windows sdílenou jako rychlé mezipaměti sdílené složky Azure File. |
+| Kde jsou spuštěná vaše úloha? | **V Azure**: soubory Azure nabízí přímý přístup k datům. | **Místně s pomalým síťovým**: klienty systému Windows, Linux a systému macOS můžete připojit místní Windows sdílenou jako rychlé mezipaměti Azure sdílené složky. |
 | Jakou úroveň seznamů řízení přístupu potřebujete? | Sdílenou složku a soubor úroveň. | Sdílené složky, soubory a uživatelské úrovni. |
 
 ## <a name="data-security"></a>Zabezpečení dat
@@ -80,15 +81,15 @@ Soubory Azure podporuje tři možnosti redundanci dat: místně redundantní úl
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Růst vzorek dat
-Maximální velikost pro sdílení souborů Azure v současné době je 5 TiB, která se zaměřuje na sdílené složky snímků. Vzhledem k tomuto aktuální omezení musíte zvážit růst očekávaná data při nasazení služby Azure sdílené složky. Všimněte si, že účet úložiště Azure můžete uložit více sdílených složek s celkem 500 TiB ukládat v rámci všechny sdílené složky.
+Maximální velikost pro sdílenou složku Azure v současné době je 5 TiB, která se zaměřuje na sdílené složky snímků. Vzhledem k tomuto aktuální omezení musíte zvážit růst očekávaná data při nasazování sdílenou složku Azure. Všimněte si, že účet úložiště Azure můžete uložit více sdílených složek s celkem 500 TiB ukládat v rámci všechny sdílené složky.
 
-Je možné synchronizovat více sdílené složky Azure File do jednoho souboru systému Windows Server při synchronizaci souborů Azure. Můžete zajistit, že lze uvést do starší, hodně velký sdílené složky, že máte místní do Azure synchronizace souboru. Najdete v tématu [plánování nasazení synchronizace souboru Azure](storage-files-planning.md) Další informace.
+Je možné provádět synchronizaci více Azure sdílené složky na jeden souborový Server Windows se synchronizací souboru Azure. Můžete zajistit, že lze uvést do starší, hodně velký sdílené složky, že máte místní do Azure synchronizace souboru. Najdete v tématu [plánování nasazení synchronizace souboru Azure](storage-files-planning.md) Další informace.
 
 ## <a name="data-transfer-method"></a>Metoda přenosu dat
 Chcete-li hromadně přenos dat z existujícího souboru sdílet, například místní sdílené složky, do Azure souborů mnoho snadno způsoby. Několik oblíbených ty patří (seznam):
 
-* **Synchronizace služby Azure souboru**: jako součást první synchronizace mezi sdílenou složku Azure File ("koncového bodu cloudu") a obor názvů adresáře systému Windows ("serveru koncový bod"), Azure souboru Sync replikuje všechna data z existující sdílené složky do Azure Files.
-* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Azure Import/Export služba umožňuje bezpečně přenáší velké objemy dat do služby Azure sdílenou přesouvání pevných disků o datovém centru Azure. 
+* **Synchronizace služby Azure souboru**: jako součást první synchronizace mezi sdílenou složku Azure ("koncového bodu cloudu") a obor názvů adresáře systému Windows ("serveru koncový bod"), Azure souboru Sync replikuje všechna data z existující sdílené složky do Azure Files.
+* **[Azure Import/Export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: Azure Import/Export služba umožňuje bezpečně přenáší velké objemy dat do sdílenou složku Azure přesouvání pevných disků o datovém centru Azure. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy je dobře známé kopie nástroj, který se dodává s Windows a Windows Server. Robocopy může sloužit k přenosu dat do Azure souborů připojení sdílené složky místně a následným použitím připojené umístění jako cíl v příkazu Robocopy.
 * **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: AzCopy je nástroj příkazového řádku pro kopírování dat do a z Azure Files, jakož i úložiště objektů Blob v Azure pomocí jednoduchých příkazů optimální výkon. AzCopy je k dispozici pro systém Windows a Linux.
 

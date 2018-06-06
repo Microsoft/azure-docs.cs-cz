@@ -17,11 +17,12 @@ ms.date: 05/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801860"
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
 Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token. 
@@ -55,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | Deklarace identity JWT | Název | Popis |
 | --- | --- | --- |
 | `aud` |Cílová skupina |Zamýšlený příjemce tokenu. Aplikace, která přijme token musí ověřte, zda hodnota cílové skupiny je správný a odmítnout všechny tokeny, určený pro jinou cílovou skupinu. <br><br> **Příklad SAML hodnoty**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **Příklad JWT hodnoty**: <br> `"aud":"https://contoso.com"` |
-| `appidacr` |Application Authentication Context Class Reference |Určuje, jak došlo k ověření klienta. Pro veřejné klienta hodnota je 0. Pokud používáte ID klienta a tajný klíč klienta, hodnota je 1. <br><br> **Příklad JWT hodnoty**: <br> `"appidacr": "0"` |
+| `appidacr` |Application Authentication Context Class Reference |Určuje, jak došlo k ověření klienta. Pro veřejné klienta hodnota je 0. Pokud používáte ID klienta a tajný klíč klienta, hodnota je 1. Pokud se klientský certifikát byl použit pro ověřování, je hodnota 2. <br><br> **Příklad JWT hodnoty**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference |Určuje, jak byla ověřena předmět, na rozdíl od klienta do Application Authentication Context Class Reference deklarace identity. Hodnota 0, označuje, že ověřování koncového uživatele nesplňuje požadavky ISO/IEC 29115. <br><br> **Příklad JWT hodnoty**: <br> `"acr": "0"` |
 | Ověřování prostřednictvím rychlých |Zaznamenává datum a čas, kdy došlo k chybě ověřování. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |Metoda ověřování |Určuje, jak byla ověřena předmět tokenu. <br><br> **Příklad SAML hodnoty**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **Příklad JWT hodnoty**: `“amr”: ["pwd"]` |
@@ -152,21 +153,31 @@ Pokud vaše aplikace získá token zabezpečení (požadavku id_token při přih
 ## <a name="token-revocation"></a>Token zrušení
 
 Aktualizujte tokeny můžete zrušena nebo odvolat kdykoli z různých důvodů. Ty lze rozdělit do dvou hlavních kategorií: vypršení časových limitů a odvolání. 
-* Token vypršení časových limitů
-  * MaxInactiveTime: Pokud token obnovení nebyl použit v čase, závisí na MaxInactiveTime, aktualizovat Token se již nebude platný. 
-  * MaxSessionAge: Pokud MaxAgeSessionMultiFactor nebo MaxAgeSessionSingleFactor byla nastavena na jinou hodnotu než výchozí (dokud odvolat), pak opětovné ověření se bude vyžadovat po uplynutí doby nastavení v MaxAgeSession *. 
-  * Příklady:
-    * Klient má MaxInactiveTime 5 dní a uživatel přešel na dovolenou týden a proto nebylo AAD nikdy nové žádosti o token od uživatele za 7 dnů. Při příštím uživatel požádá o nový token se najdou jejich aktualizace tokenu je odvolaný a musí znovu zadat své přihlašovací údaje. 
-    * K citlivé aplikaci má MaxAgeSessionSingleFactor 1 den. Pokud se uživatel přihlásí v pondělí a úterý (po 25 hodin uplynuly), bude vyžadovat opakované ověření. 
-* Odvolání
-  * Změna hesla dobrovolná: Pokud uživatel změní heslo, pravděpodobně znovu provést ověření v některé z jejich vlastních aplikací, v závislosti na způsob, jakým bylo dosaženo tokenu. Viz poznámky níže výjimky. 
-  * Pohybem Změna hesla: Pokud správce určuje, že uživatel, chcete-li změnit své heslo nebo obnoví jeho, pak tokeny uživatele se zruší, pokud jejich bylo dosaženo pomocí hesla. Viz poznámky níže výjimky. 
-  * Porušení zabezpečení: V případě porušení zabezpečení (například místní úložiště hesel nedodržení) správce můžete odvolat všechny aktuálně vystavené tokeny obnovení. Tato akce vynutí všem uživatelům znovu provést ověření. 
+
+**Token vypršení časových limitů**
+
+* MaxInactiveTime: Pokud token obnovení nebyl použit v čase, závisí na MaxInactiveTime, aktualizovat Token se již nebude platný. 
+* MaxSessionAge: Pokud MaxAgeSessionMultiFactor nebo MaxAgeSessionSingleFactor byla nastavena na jinou hodnotu než výchozí (dokud odvolat), pak opětovné ověření se bude vyžadovat po uplynutí doby nastavení v MaxAgeSession *. 
+* Příklady:
+  * Klient má MaxInactiveTime 5 dní a uživatel přešel na dovolenou týden a proto nebylo AAD nikdy nové žádosti o token od uživatele za 7 dnů. Při příštím uživatel požádá o nový token se najdou jejich aktualizace tokenu je odvolaný a musí znovu zadat své přihlašovací údaje. 
+  * K citlivé aplikaci má MaxAgeSessionSingleFactor 1 den. Pokud se uživatel přihlásí v pondělí a úterý (po 25 hodin uplynuly), bude vyžadovat opakované ověření. 
+
+**Odvolání**
+
+|   | Soubor cookie založené na heslech | Token založené na heslech | Na základě souboru cookie bez hesla | Na základě tokenu non heslo | Token důvěrné klienta| 
+|---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
+|Heslo vyprší| Zůstává aktivní|Zůstává aktivní|Zůstává aktivní|Zůstává aktivní|Zůstává aktivní|
+|Heslo změněno uživatelem| Odvoláno | Odvoláno | Zůstává aktivní|Zůstává aktivní|Zůstává aktivní|
+|Uživatel nemá SSPR|Odvoláno | Odvoláno | Zůstává aktivní|Zůstává aktivní|Zůstává aktivní|
+|Resetovat heslo správce|Odvoláno | Odvoláno | Zůstává aktivní|Zůstává aktivní|Zůstává aktivní|
+|Uživatele odvolá jejich tokeny obnovení [pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Odvoláno | Odvoláno |Odvoláno | Odvoláno |Odvoláno | Odvoláno |
+|Správce odvolá všechny tokeny obnovení pro klienta [pomocí prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Odvoláno | Odvoláno |Odvoláno | Odvoláno |Odvoláno | Odvoláno |
+|[Jednotné přihlašování se](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code#single-sign-out) na webu | Odvoláno | Zůstává aktivní |Odvoláno | Zůstává aktivní |Zůstává aktivní |Zůstává aktivní |
 
 > [!NOTE]
->Pokud byl jiný heslo metoda ověřování (pro Windows Hello, ověřovací aplikaci, biometrika jako vzhled nebo otisků prstů) k dosažení použity token, změna hesla nebude Vynutit opakované ověření uživatele (ale vynutí jejich ověřovací aplikaci opakované ověření). Důvodem je, že jejich zvolené ověřování vstupu (a vzhled, například) se nezměnila a proto lze znovu znovu provést ověření.
+> Přihlášení "založené na heslech bez" jednu je, kde uživatel nebylo zadáno heslo, které ho získat.  Například pomocí vaší vzhled Windows Hello, FIDO klíč nebo kód PIN. 
 >
-> Důvěrné klienti nejsou vliv odvolání změnu hesla. Důvěrné klienta s tokenem aktualizace vydané před změnu hesla budou nadále abl získat další tokeny pomocí tohoto tokenu obnovení. 
+> O známý problém s systému Windows primární aktualizovat Token existuje.  Pokud PRT se získávají pomocí hesla, a pak uživatel přihlásí pomocí Hello, nezmění vzniku PRT a budou odvolané, pokud uživatel změní své heslo. 
 
 ## <a name="sample-tokens"></a>Ukázka tokeny
 

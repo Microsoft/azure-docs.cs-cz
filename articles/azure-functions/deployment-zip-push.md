@@ -1,24 +1,25 @@
 ---
-title: "ZIP nabízené nasazení pro Azure Functions | Microsoft Docs"
-description: "Vlastnosti nasazení soubor .zip služby nasazení Kudu použijte k publikování Azure Functions."
+title: ZIP nabízené nasazení pro Azure Functions | Microsoft Docs
+description: Vlastnosti nasazení soubor .zip služby nasazení Kudu použijte k publikování Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 05/29/2018
 ms.author: glenga
-ms.openlocfilehash: faddb73522200f60f18294dc43e8d235943f8bbb
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 91c16ad5a6bf8babffc0b83d801626932688631e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699950"
 ---
 # <a name="zip-push-deployment-for-azure-functions"></a>ZIP nabízené nasazení pro Azure Functions 
 Tento článek popisuje postup nasazení soubory projektu funkce aplikace do Azure ze souboru ZIP (komprimované). Zjistíte, jak provést nasazení push, pomocí rozhraní příkazového řádku Azure i pomocí rozhraní REST API. 
@@ -40,23 +41,33 @@ Soubor .zip, který používáte pro nasazení nabízené musí obsahovat všech
 >[!IMPORTANT]
 > Pokud použijete nasazení nabízené .zip, se odstraní všechny soubory ze stávajícího nasazení, které se nenacházejí v souboru ZIP z vaší aplikace. funkce.  
 
-### <a name="function-app-folder-structure"></a>Struktura složek aplikace – funkce
-
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-### <a name="download-your-function-app-project"></a>Stáhněte si svůj projekt aplikace – funkce
+Funkce aplikace obsahuje všechny soubory a složky v `wwwroot` adresáře. Nasazení soubor ZIP obsahuje obsah `wwwroot` adresáře, ale ne adresář.  
+
+## <a name="download-your-function-app-files"></a>Stahování souborů aplikace – funkce
 
 Při vývoji na místním počítači, je snadné vytvořit soubor .zip funkce složky projektu aplikace na vašem vývojovém počítači. 
 
-Možná jste ale vytvořili funkcí pomocí editoru na portálu Azure. Stažení projektu funkce aplikace z portálu: 
+Možná jste ale vytvořili funkcí pomocí editoru na portálu Azure. Si můžete stáhnout existující projekt aplikace funkce v jednom z těchto způsobů: 
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com)a poté přejděte k vaší aplikaci funkce.
++ **Z portálu Azure:** 
 
-2. Na **přehled** vyberte **stažení obsahu aplikace**. Vyberte možnosti stahování a pak vyberte **Stáhnout**.     
+    1. Přihlaste se k [portál Azure](https://portal.azure.com)a poté přejděte k vaší aplikaci funkce.
 
-    ![Stáhněte si projekt aplikace – funkce](./media/deployment-zip-push/download-project.png)
+    2. Na **přehled** vyberte **stažení obsahu aplikace**. Vyberte možnosti stahování a pak vyberte **Stáhnout**.     
 
-Soubor stažený .zip je ve správném formátu znovu ji publikovat do funkce aplikace pomocí nabízených nasazení .zip.
+        ![Stáhněte si projekt aplikace – funkce](./media/deployment-zip-push/download-project.png)
+
+    Soubor stažený .zip je ve správném formátu znovu ji publikovat do funkce aplikace pomocí nabízených nasazení .zip. Stažení portálu můžete také přidat soubory potřebné pro otevřete aplikaci funkce přímo v sadě Visual Studio.
+
++ **Pomocí rozhraní REST API:** 
+
+    Použít následující nasazení získat rozhraní API se stáhnout soubory z vaší `<function_app>` projektu: 
+
+        https://<function_app>.scm.azurewebsites.net/api/zip/site/wwwroot/
+
+    Včetně `/site/wwwroot/` zajišťuje, váš soubor zip obsahuje pouze soubory projektu funkce aplikace a není celý web. Pokud už nejste přihlášení do Azure, budete vyzváni k tomu. Všimněte si, že odesláním příspěvku na žádost o `api/zip/` rozhraní API je discoraged považuje metodu nasazení zip popsaných v tomto tématu. 
 
 Soubor ZIP můžete také stáhnout z úložiště Githubu. Uvědomte si, že když si stáhnete úložiště GitHub jako soubor ZIP, Githubu přidá úroveň další složky pro větev. To další složky úrovně znamená, že nemůžete nasadit přímo jako soubor .zip ji stáhnout z webu GitHub. Pokud používáte úložiště GitHub udržovat funkce aplikace, měli byste použít [průběžnou integraci](functions-continuous-deployment.md) k nasazení své aplikace.  
 
@@ -79,7 +90,7 @@ Pokud používáte rozhraní příkazového řádku Azure v místním počítač
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Průběžné nasazování se službou Azure Functions](functions-continuous-deployment.md)

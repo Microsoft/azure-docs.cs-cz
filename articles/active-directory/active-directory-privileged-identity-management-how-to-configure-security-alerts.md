@@ -3,7 +3,7 @@ title: Jak konfigurovat výstrahy zabezpečení | Microsoft Docs
 description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro rozšíření Azure Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 06/06/2017
-ms.author: curtand
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f77567d35d3916ab1660134959d2d26916e08a0a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8dd546b0c3a60a50989b59fa295ceeb49e6b1e9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698005"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak konfigurovat výstrahy zabezpečení v Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
@@ -25,7 +26,7 @@ Azure Správa privilegovaných identit (PIM) generuje výstrahy, když je aktivi
 
 ![Výstrahy zabezpečení PIM řídicí panel – snímek obrazovky][1]
 
-| Výstrahy | Závažnost | Trigger | Doporučení |
+| Výstrahy | Severity | Trigger | Doporučení |
 | --- | --- | --- | --- |
 | **Role se přiřazují mimo PIM** |Vysoký |Uživatel byl trvale přiřadit privilegované role, mimo PIM rozhraní. |Zkontrolujte uživatele v seznamu a zrušte přiřazení, je z privilegované role přiřazené mimo PIM. |
 | **Role jsou příliš často aktivován** |Střednědobé používání |V rámci časový limit v nastavení nebyly příliš mnoho opětovných aktivací stejné role. |Kontaktujte uživatele, který chcete zobrazit, proč se aktivaci role mnoho časy. Možná je příliš krátká pro je k dokončení úkolů, nebo možná používáte skripty mohl automaticky aktivovat roli, časový limit. Ujistěte se, že doba trvání aktivace pro jejich roli je nastaven dostatečně dlouhé, aby se pro ně umožňují vykonávat úkoly. |
@@ -33,7 +34,7 @@ Azure Správa privilegovaných identit (PIM) generuje výstrahy, když je aktivi
 | **Uživatelé nejsou pomocí jejich privilegované role** |Nízká |Existují oprávněné správce, kteří nedávno neaktivovali jejich rolí. |Spusťte kontrola přístupu k určení uživatelů, kteří již nepotřebují přístup. |
 | **Existuje příliš mnoho globální správci** |Nízká |Existuje více globálních správců, než se nedoporučuje. |Pokud máte velký počet globálních správců, je pravděpodobné, že uživatelé jsou stále větší oprávnění než potřebují. Přesunout uživatelé méně privilegované role, nebo vytvořit některé z nich vhodné pro roli místo trvale přiřazená. |
 
-### <a name="severity"></a>Závažnost
+### <a name="severity"></a>Severity
 * **Vysoká**: vyžaduje okamžitý zásah kvůli porušení zásad. 
 * **Střední**: nevyžaduje okamžitý zásah, ale signály potenciálních porušení zásad.
 * **Nízká**: nevyžaduje okamžitý zásah, ale doporučuje změny preferrable zásad.

@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/08/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: b1919037e3a112659a81e9207c842c279734fb48
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0b9a79919a63056bbc17e44ef0da3697001d227f
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802349"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Fronty úložiště a fronty Service Bus - porovnání a na rozdíl od aktualizovaného
 Tento článek analyzuje rozdíly a podobnosti mezi těmito dvěma typy front, které nabízí Microsoft Azure ještě dnes: fronty úložiště a fronty Service Bus. Tyto informace můžete použít ke srovnání příslušných technologií a pomůžou vám kvalifikovaněji se rozhodnout, které řešení nejlíp vyhovuje vašim potřebám.
@@ -47,7 +48,6 @@ Jako řešení architekt nebo vývojáře **měli byste zvážit použití front
 
 * Řešení musí být schopný přijímat zprávy bez nutnosti dotazovat fronty. Službou Service Bus toho lze dosáhnout pomocí cyklického dotazování dlouho přijímat operace pomocí protokolů založených na protokolu TCP, které podporuje Service Bus.
 * Řešení vyžaduje fronty k poskytování zaručenou první in-first-out (FIFO) seřazené doručení.
-* Chcete symetrický prostředí v Azure a v systému Windows Server (privátní cloud). Další informace najdete v tématu [sběrnice služby pro Windows Server](https://msdn.microsoft.com/library/dn282144.aspx).
 * Řešení musí být schopné podporovat automatické zjišťování duplicitní.
 * Má vaše aplikace zpracování zpráv jako paralelní dlouhodobé datové proudy (zprávy jsou spojeny pomocí datového proudu [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) vlastnost zprávy). V tomto modelu bojuje každý uzel v spotřebitelskou aplikací pro datové proudy a zprávy. Pokud datový proud je uděleno náročné uzel, uzel můžete zkontrolovat stav stav datového proudu aplikace použití transakcí.
 * Řešení vyžaduje transakční chování a nedělitelnost při odesílání nebo přijímání více zpráv z fronty.
@@ -65,7 +65,7 @@ Tabulky v následujících částech poskytují možnost logického seskupován�
 ## <a name="foundational-capabilities"></a>Základní možnosti
 Tato část porovná některé základní funkce služby Řízení front poskytované fronty úložiště a fronty Service Bus.
 
-| Kritérií porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritérií porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Řazení záruku |**Ne** <br/><br>Další informace najdete v tématu první Poznámka: v části "Další informace".</br> |**Ano - First-In-First-Out (FIFO)**<br/><br>(prostřednictvím zasílání zpráv relací) |
 | Záruky doručení |**V aspoň jednou** |**V aspoň jednou**<br/><br/>**Jednou na většinu** |
@@ -97,7 +97,7 @@ Tato část porovná některé základní funkce služby Řízení front poskyto
 ## <a name="advanced-capabilities"></a>Rozšířené možnosti
 Tato část porovná pokročilých funkcí poskytovaných fronty úložiště a fronty Service Bus.
 
-| Kritérií porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritérií porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Doručení naplánované |**Ano** |**Ano** |
 | Automatické mrtvou lettering |**Ne** |**Ano** |
@@ -128,7 +128,7 @@ Tato část porovná pokročilých funkcí poskytovaných fronty úložiště a 
 ## <a name="capacity-and-quotas"></a>Kapacity a kvót
 Tato část porovná fronty úložiště a fronty Service Bus z perspektivy [kapacity a kvót](service-bus-quotas.md) , uplatnit.
 
-| Kritérií porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritérií porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Maximální velikost fronty |**500 TB**<br/><br/>(omezený na [jednotné kapacitě účtu úložiště](../storage/common/storage-introduction.md#queue-storage)) |**1 GB až 80 GB**<br/><br/>(definován při vytvoření fronty a [povolení dělení](service-bus-partitioning.md) – najdete v části "Další informace") |
 | Maximální velikost zprávy |**64 KB**<br/><br/>(48 KB při použití **Base64** kódování)<br/><br/>Azure podporuje velké zprávy fronty a objekty BLOB – v tomto okamžiku je možné zařadit kombinují až 200 GB pro jednu položku. |**256 KB** nebo **1 MB**<br/><br/>(včetně záhlaví a text, velikost maximální záhlaví: 64 KB).<br/><br/>Závisí na [vrstvy služby](service-bus-premium-messaging.md). |
@@ -138,7 +138,7 @@ Tato část porovná fronty úložiště a fronty Service Bus z perspektivy [kap
 
 ### <a name="additional-information"></a>Další informace
 * Service Bus vynucuje omezení velikosti fronty. Maximální velikost fronty je zadána při vytvoření fronty a může mít hodnotu mezi 1 a 80 GB. Pokud je dosaženo hodnota velikosti fronty nastavit při vytváření fronty, další příchozí zprávy budou odmítnuty a výjimku dostane volající kód. Další informace o kvótách v Service Bus, najdete v části [Service Bus kvóty](service-bus-quotas.md).
-* V [úrovně Standard](service-bus-premium-messaging.md), vytvořením front Service Bus na 1, 2, 3, 4 nebo 5 GB velikosti (výchozí hodnota je 1 GB). V úrovni Premium, můžete vytvořit fronty až do velikosti 80 GB. Ve verzi Standard úroveň, s dělení povolené (což je výchozí nastavení), Service Bus vytvoří 16 oddíly pro každý GB je zadat. Jako takový, když vytvoříte frontu, který je 5 GB velikost, s 16 oddíly maximální velikost fronty stane (5 * 16) = 80 GB. Zobrazí maximální velikost fronty oddílů nebo téma prohlížením jeho položku [portál Azure][Azure portal]. V úrovni Premium jsou za fronty vytvořit pouze 2 oddíly.
+* Dělení na oddíly není podporována v [úroveň Premium](service-bus-premium-messaging.md). Ve standardní vrstvě můžete vytvořit fronty Service Bus v 1, 2, 3, 4 nebo 5 GB velikosti (výchozí hodnota je 1 GB). Ve verzi Standard úroveň, s dělení povolené (což je výchozí nastavení), Service Bus vytvoří 16 oddíly pro každý GB je zadat. Jako takový, když vytvoříte frontu, který je 5 GB velikost, s 16 oddíly maximální velikost fronty stane (5 * 16) = 80 GB. Zobrazí maximální velikost fronty oddílů nebo téma prohlížením jeho položku [portál Azure][Azure portal].
 * V případě front úložiště, pokud není obsah zprávy XML bezpečné, pak musí být **Base64** kódování. Pokud jste **Base64**-kódování zprávy, uživatel může být až 48 KB místo 64 KB.
 * Pomocí front Service Bus, každá zpráva uložený ve frontě se skládá ze dvou částí: hlavičku a text. Celková velikost zprávy nesmí překročit maximální velikost zprávy nepodporuje danou vrstvu služeb.
 * Pokud klienti komunikují pomocí front Service Bus přes protokol TCP, maximální počet současných připojení ke jedné frontě Service Bus je omezeno na 100. Toto číslo je sdílena mezi odesílateli a příjemci. Pokud je dosaženo této kvóty, odeslání dalších žádostí o další připojení se odmítne a dostane výjimku volající kód. Toto omezení není vynucená pro připojení klientů k fronty pomocí rozhraní API založené na REST.
@@ -171,7 +171,7 @@ Tato část porovnává funkce správy poskytuje úložiště fronty a fronty Se
 ## <a name="authentication-and-authorization"></a>Ověřování a autorizace
 Tato část pojednává o ověřování a autorizace funkcí podporovaných fronty úložiště a fronty Service Bus.
 
-| Kritérií porovnání | Fronty úložiště | Fronty služby Service Bus |
+| Kritérií porovnání | Fronty úložiště | Fronty Service Bus |
 | --- | --- | --- |
 | Authentication |**Symetrický klíč** |**Symetrický klíč** |
 | Model zabezpečení |Delegovaný přístup prostřednictvím tokeny SAS. |SAS |

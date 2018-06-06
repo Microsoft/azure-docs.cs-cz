@@ -1,22 +1,23 @@
 ---
-title: "Kontrolujte přístup pomocí služby Azure AD přístup recenze | Microsoft Docs"
-description: "Zjistěte, jak kontrolovat přístup pomocí služby Azure Active Directory přístup recenze."
+title: Kontrolujte přístup pomocí služby Azure AD přístup recenze | Microsoft Docs
+description: Zjistěte, jak kontrolovat přístup pomocí služby Azure Active Directory přístup recenze.
 services: active-directory
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: billmath
-ms.openlocfilehash: 98658a2b9fdd0ede98b3f6c10a19af527a8677cc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 3688dbc595d7980fee780cac55cb615911b93316
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698046"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>Kontrolujte přístup s Azure AD přístup recenze
 
@@ -40,7 +41,7 @@ Pro každý řádek v seznamu můžete rozhodnout, zda schválit nebo zamítnout
 
 Kontrolorovi může vyžadovat, že zadáte odůvodnění schválení nepřetržitý přístup nebo členství ve skupině.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Odepření přístupu uživatele se neodebere okamžitě. Může být odebrán až po dokončení kontrola nebo když se správce zastaví kontrola. Pokud chcete změnit odpověď a schválit dříve odepření uživatele nebo odepřít dříve schválené uživatele, vyberte řádek, reset odpověď a vyberte novou odpověď. Tento krok můžete provést, dokud nebude dokončeno kontrola přístupu.
 

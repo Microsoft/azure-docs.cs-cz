@@ -3,22 +3,19 @@ title: Azure DB Cosmos zásady indexování | Microsoft Docs
 description: Vysvětluje, jak indexování v Azure Cosmos DB. Zjistěte, jak nakonfigurovat a změnit zásady indexování pro automatické indexování a lepší výkon.
 keywords: jak indexování funguje, automatické indexování, indexování databáze
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 277ddd5777ff8edf5195e79885929e3a8c758d7c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3abae65ccc430c791e289a4767d057cf010b974b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700328"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Jak funguje Azure Cosmos DB data indexu?
 
@@ -79,9 +76,9 @@ Azure Cosmos DB podporuje tři indexování režimy, které můžete nakonfiguro
 
 Konzistentní indexování podporuje konzistentní dotazy za cenu možné snížení zápisu propustnost. Toto snížení je funkce jedinečné cesty, které je třeba zpracovat a "úroveň konzistence". Konzistentní indexování režimu je určená pro "zápisu rychle dotaz okamžitě" úlohy.
 
-**Opožděné**: index se asynchronně aktualizuje, pokud kolekci Azure Cosmos DB tichém, to znamená, pokud kapacita propustnosti kolekce není plně využívat k obsluze požadavků uživatele. Opožděné indexování režim může být vhodný pro "ingestování teď dotaz později" úlohy, které vyžadují přijímání dokumentu. Všimněte si, že se mohou objevit nekonzistentní výsledky, protože data jsou požity a indexované pomalu. To znamená, že počet dotazů nebo konkrétní dotaz výsledky nemusí být konzistentní nebo repeatable v daném okamžiku. 
+**Opožděné**: index se asynchronně aktualizuje, pokud kolekci Azure Cosmos DB tichém, to znamená, pokud kapacita propustnosti kolekce není plně využívat k obsluze požadavků uživatele.  Všimněte si, že se mohou objevit nekonzistentní výsledky, protože data jsou požity a indexované pomalu. To znamená, že počet dotazů nebo výsledky konkrétní dotaz nemusí být konzistentní nebo repeatable v daný čas. 
 
-Index je obvykle v opravný režimu ingestovaný daty. Doba provozu (TTL) s Lazy indexování, změní výsledek v indexu se vyřadit a znovu vytvořit. To usnadňuje výsledky počet a dotaz nekonzistentní v časovém intervalu. Z toho důvodu musí většina účtů Azure Cosmos DB používat konzistentní indexování režim.
+Index je obvykle v opravný režimu ingestovaný daty. Doba provozu (TTL) s Lazy indexování, změní výsledek v indexu se vyřadit a znovu vytvořit. To usnadňuje výsledky počet a dotaz nekonzistentní v časovém intervalu. Většina účtů Azure Cosmos DB musí používat konzistentní indexování režim.
 
 **Žádný**: kolekce, která má žádný index režimu neobsahuje index s ním spojená. To se často používá, pokud Azure Cosmos DB slouží jako úložiště klíč hodnota a dokumenty jsou dostupné jenom přes jejich vlastnost ID. 
 
@@ -195,7 +192,7 @@ Toto jsou typy podporované index a příklady dotazů, které můžou být pou�
 
 | Typ indexu | Popis nebo používají                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Hash       | Hodnoty hash přes/prop /? (nebo /) slouží k efektivní slouží následující dotazy:<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Hodnota hash přes/props / [] /? (nebo / nebo/props /) slouží k efektivní slouží následující dotazy:<br><br>Vyberte označit z kolekce c spojení značky v c.props kde značky = 5                                                                                                                       |
+| Hodnota hash       | Hodnoty hash přes/prop /? (nebo /) slouží k efektivní slouží následující dotazy:<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Hodnota hash přes/props / [] /? (nebo / nebo/props /) slouží k efektivní slouží následující dotazy:<br><br>Vyberte označit z kolekce c spojení značky v c.props kde značky = 5                                                                                                                       |
 | Rozsah      | Rozsah přes/prop /? (nebo /) slouží k efektivní slouží následující dotazy:<br><br>Vyberte z kolekce c WHERE c.prop = "hodnota"<br><br>Vyberte z kolekce c WHERE c.prop > 5<br><br>Vyberte z kolekce c Order c.prop                                                                                                                                                                                                              |
 | Spatial     | Rozsah přes/prop /? (nebo /) slouží k efektivní slouží následující dotazy:<br><br>Vyberte z kolekce c<br><br>KDE ST_DISTANCE (c.prop, {"typ": "Bod", "coordinates": [0.0, 10.0]}) < 40<br><br>Vyberte z kolekce c kde ST_WITHIN(c.prop, {"type": "Polygon",...}) – s v bodech povoleno indexování<br><br>Vyberte z kolekce c kde ST_WITHIN({"type": "Point",...}, c.prop) – s indexování na mnohoúhelníky povoleno              |
 

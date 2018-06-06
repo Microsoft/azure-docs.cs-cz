@@ -4,7 +4,7 @@ description: Synchronizace služby Azure soubor místní konfigurace sítě
 services: storage
 documentationcenter: ''
 author: fauhse
-manager: klaasl
+manager: aungoo
 editor: tamram
 ms.assetid: ''
 ms.service: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 979897e3cb703b36a46e96848a9176d6d4c6cc6a
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738526"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu služby Azure File Sync
 Synchronizace služby Azure souboru se připojí k Azure Files, povolení synchronizace více lokalit a cloudu vrstvení funkce na místní servery. Místní server jako takový musí být připojen k Internetu. Správce IT potřebuje k rozhodování o nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
@@ -64,7 +65,7 @@ Následující tabulka popisuje požadované domén pro komunikace:
 | **Azure Resource Manager** | https://management.azure.com | Volání žádné uživatele (například prostředí PowerShell) přejde prostřednictvím tuto adresu URL, včetně volání registrace počáteční server. |
 | **Azure Active Directory** | https://login.windows.net | Ověřený uživatel musí být provedeny volání Azure Resource Manager. Úspěšné, je tato adresa URL použitá k ověření uživatele. |
 | **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení synchronizace služby Azure souboru bude vytvořen objekt služby v odběru Azure Active Directory. Tato adresa URL se používá pro tento. Tento objekt se používá pro delegování minimální sadu oprávnění ke službě Azure synchronizace souboru. Ověřený uživatel s oprávněními vlastníka předplatného musí být uživatel, provádí počáteční nastavení synchronizace souborů Azure. |
-| **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provádí tento přesun dat další efektivně při posuzování přímo do sdílené složky Azure v účtu úložiště. Server má SAS klíč, který umožňuje pouze pro přístup ke sdílené složce cílový soubor. |
+| **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provádí tento přesun dat efektivněji při posuzování přímo na sdílenou složkou Azure v účtu úložiště. Server má SAS klíč, který umožňuje pouze pro přístup ke sdílené složce cílový soubor. |
 | **Synchronizace Azure File** | &ast;.one.microsoft.com | Po registraci počáteční server server nahlásí místní adresu URL pro instanci služby synchronizace Azure soubor v této oblasti. Server můžete použít adresu URL komunikovat přímo a efektivně s instancí zpracování jeho synchronizace. |
 
 > [!Important]

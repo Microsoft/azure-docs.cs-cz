@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/31/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 968636848b9cba9c0976aa366952e56838623cc4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698811"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect uživatelské možnosti přihlášení
 Připojení služby Azure Active Directory (Azure AD) umožňuje uživatelům přihlásit do cloudu a místní prostředky pomocí stejnými hesly. Tento článek popisuje klíčové koncepty pro každý model identity, které vám pomohou zvolit identity, která chcete použít pro přihlášení ke službě Azure AD.
@@ -39,14 +41,16 @@ Pro většinu organizací, které právě chcete povolit přihlášení uživate
 
 Je nutné | PBS pomocí jednotného přihlašování| PTA pomocí jednotného přihlašování| AD FS |
  --- | --- | --- | --- |
-Automaticky synchronizujte nové, obraťte se na, účty uživatelů a skupin ve službě Active Directory v místě do cloudu.|w|w|w|
-Nastavení klienta pro Office 365 hybridní scénáře.|w|w|w|
-Povolte vlastní uživatelé přihlásit a získat přístup ke službám cloudu pomocí hesla pro místní.|w|w|w|
-Implementaci jednotného přihlašování pomocí podnikové přihlašovací údaje.|w|w|w|
-Ujistěte se, že se žádná hesla ukládat v cloudu.||x*|w|
-Povolte místní služby Multi-Factor authentication řešení.|||w|
+Automaticky synchronizujte nové, obraťte se na, účty uživatelů a skupin ve službě Active Directory v místě do cloudu.|x|x|x|
+Nastavení klienta pro Office 365 hybridní scénáře.|x|x|x|
+Povolte vlastní uživatelé přihlásit a získat přístup ke službám cloudu pomocí hesla pro místní.|x|x|x|
+Implementaci jednotného přihlašování pomocí podnikové přihlašovací údaje.|x|x|x|
+Ujistěte se, že se žádná hesla ukládat v cloudu.||x*|x|
+Povolte místní služby Multi-Factor authentication řešení.|||x|
 
 * Prostřednictvím lightweight agenta.
+
+Podrobné informace o výběru metody ověřování, najdete v části [vyberte způsob správné ověřování pro vaše řešení hybridní identity Azure Active Directory](../../security/azure-ad-choose-authn.md)
 
 ### <a name="password-hash-synchronization"></a>Synchronizace hodnot hash hesel
 S synchronizaci hodnoty hash hesla se synchronizují hodnot hash hesel uživatelů z místní služby Active Directory do Azure AD. Když hesla se změněným nebo resetovaným místní, nové hodnoty hash hesla jsou synchronizovány do Azure AD okamžitě tak, aby vaši uživatelé mohou vždy použít stejné heslo pro cloudové a místní prostředků. Hesla se nikdy odeslat do služby Azure AD nebo uložené ve službě Azure AD ve formátu prostého textu. Synchronizaci hodnoty hash hesla společně s zpětný zápis hesla můžete povolit samoobslužné služby ve službě Azure AD pro vytvoření nového hesla.
@@ -123,7 +127,7 @@ Na přihlašovací stránku služby Azure AD seznam přípon UPN, které jsou de
 
 | Stav | Popis | Akce, které jsou potřeba |
 |:--- |:--- |:--- |
-| Ověřeno |Azure AD Connect nalezena že odpovídající ověření domény ve službě Azure AD. Všechny uživatele pro tuto doménu můžete přihlásit pomocí jejich místních přihlašovacích údajů. |Není vyžadována žádná akce. |
+| Ověřen |Azure AD Connect nalezena že odpovídající ověření domény ve službě Azure AD. Všechny uživatele pro tuto doménu můžete přihlásit pomocí jejich místních přihlašovacích údajů. |Není vyžadována žádná akce. |
 | Nebyla ověřena. |Azure AD Connect v Azure AD najít odpovídající vlastní doménu, ale není ověřen. Přípona UPN uživatelé tuto doménu se změní na výchozí hodnoty. přípona onmicrosoft.com po synchronizaci, pokud není doméně ověřit. | [Ověření vlastní domény ve službě Azure AD.](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
 | Nebyla přidána |Azure AD Connect nenašli vlastní doménu, která odpovídaly příponu UPN. Přípona UPN uživatelé tuto doménu se změní na výchozí hodnoty. přípona onmicrosoft.com, pokud doména není přidat a ověřit v Azure. | [Přidání a ověření vlastní domény, která odpovídá příponu UPN.](../add-custom-domain.md) |
 
@@ -153,7 +157,7 @@ Následující informace Předpokládejme, že nám nevadí contoso.com přípon
 |:---:|:--- |
 | Nebyla přidána |V takovém případě žádné vlastní domény pro doménu contoso.com přidala v adresáři služby Azure AD. Uživatelé, kteří mají UPN místně s příponou @contoso.com nebudou moci používat své místní UPN pro přihlášení k Azure. Místo toho budete muset použít nového názvu UPN, které se službou Azure AD přidáním přípona výchozí adresář Azure AD poskytuje k nim. Například, pokud se synchronizuje uživatelům azurecontoso.onmicrosoft.com adresář Azure AD a místní uživatel user@contoso.com bude mít název UPN user@azurecontoso.onmicrosoft.com. |
 | Nebyla ověřena. |V takovém případě máme vlastní domény contoso.com, který je přidán v adresáři služby Azure AD. Nicméně je ještě nebyl ověřen. Pokud jste pokračujte s synchronizaci uživatelů bez ověření domény uživatele bude přiřazen nový hlavní název uživatele Azure AD, stejně jako ve scénáři "Nepřidáno". |
-| Ověřeno |V takovém případě máme vlastní domény contoso.com, které již přidat a ověřit ve službě Azure AD pro tuto příponu UPN. Uživatelé budou moci používat své místní hlavní název uživatele, například user@contoso.com, pro přihlášení k Azure po se synchronizují do Azure AD. |
+| Ověřen |V takovém případě máme vlastní domény contoso.com, které již přidat a ověřit ve službě Azure AD pro tuto příponu UPN. Uživatelé budou moci používat své místní hlavní název uživatele, například user@contoso.com, pro přihlášení k Azure po se synchronizují do Azure AD. |
 
 ###### <a name="ad-fs-federation"></a>Federaci služby AD FS
 Nelze vytvořit federaci s výchozím. doméně onmicrosoft.com v Azure AD nebo neověřené vlastní domény ve službě Azure AD. Pokud používáte Průvodce službou Azure AD Connect, pokud zvolíte možnost vytvořit federaci s neověřenou doménu, Azure AD Connect vyzve vás s nezbytné záznamy, které chcete vytvořit, je hostitelem serveru DNS pro doménu. Další informace najdete v tématu [Ověřte vybrané pro federaci Azure AD domény](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation).
@@ -164,7 +168,7 @@ Pokud jste vybrali možnost přihlášení uživatele **federační službou AD 
 |:---:|:--- |
 | Nebyla přidána |V takovém případě Azure AD Connect nebyl nalezen odpovídající vlastní domény pro doménu contoso.com příponu UPN v adresáři služby Azure AD. Je nutné přidat vlastní doménu contoso.com, pokud potřebujete uživatelům přihlášení pomocí služby AD FS s jejich místní hlavní název uživatele (například user@contoso.com). |
 | Nebyla ověřena. |Azure AD Connect v takovém případě vyzve příslušné podrobnosti o tom, jak můžete ověřit doménu v pozdější fázi. |
-| Ověřeno |V takovém případě můžete přejít k tématu s konfigurací bez jakékoli další akce. |
+| Ověřen |V takovém případě můžete přejít k tématu s konfigurací bez jakékoli další akce. |
 
 ## <a name="changing-the-user-sign-in-method"></a>Změna metody přihlášení uživatele
 Metoda přihlašování uživatelů můžete změnit z federačního, synchronizaci hodnoty hash hesla nebo předávací ověřování pomocí úlohy, které jsou k dispozici ve službě Azure AD Connect po počáteční konfiguraci služby Azure AD Connect pomocí průvodce. Znovu spusťte Průvodce službou Azure AD Connect a zobrazí se seznam úloh, které můžete provádět. Vyberte **změnit přihlášení uživatele** ze seznamu úloh.

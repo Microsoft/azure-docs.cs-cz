@@ -1,9 +1,9 @@
 ---
-title: Spuštění kontrola přístupu v PIM prostředky Azure | Microsoft Docs
+title: Proveďte recenze přístup v prostředků Azure pomocí Privileged Identity managementu | Microsoft Docs
 description: Vysvětluje, jak spustit kontrola přístupu v Privileged Identity Management pro prostředky Azure
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -11,33 +11,34 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 61ed4e82e0b782b423668564dae6efb272967702
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c47cdeab4edd0b8dbe9cfe7c388253d02a9148c9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699729"
 ---
-# <a name="privileged-identity-management---resource-role---start-access-review"></a>Kontrola přístupu privileged Identity Management - prostředků role - Start
-Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. Chcete-li snížit riziko spojené s přiřazení těchto zastaralých rolí, správci privilegované role by pravidelně zkontrolovat role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění v Privileged Identity Management (PIM) kontrola přístupu k prostředkům Azure.
+# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Proveďte recenze přístup v prostředků Azure pomocí Privileged Identity Management
+Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. Aby se snížilo riziko, že je spojen s přiřazení těchto zastaralých rolí, správci privilegované role by pravidelně zkontrolovat role. Tento dokument popisuje kroky pro spuštění v Privileged Identity Management (PIM) kontrola přístupu k prostředkům Azure.
 
-Na hlavní stránce aplikace PIM přejděte do:
+Na hlavní stránce aplikace PIM přejdete na:
 
 * **Přístup k recenze** > **přidat**
 
-![](media/azure-pim-resource-rbac/rbac-access-review-home.png)
+![Přidat přístup recenze](media/azure-pim-resource-rbac/rbac-access-review-home.png)
 
-Po kliknutí na **přidat** tlačítko **vytvořit kontrola přístupu** otevře se okno. V tomto okně budete konfigurovat kontrola s názvem a časový limit, vyberte roli zkontrolovat a rozhodnout, který provede kontrola.
+Když vyberete **přidat** tlačítko **vytvořit kontrola přístupu** otevře se okno. V tomto okně nakonfigurovat kontrola s názvem a časový limit, vyberte roli zkontrolovat a potom se rozhodnete, který nemá kontrola.
 
-![](media/azure-pim-resource-rbac/rbac-create-access-review.png)
+![Vytvořit kontrolu přístupu](media/azure-pim-resource-rbac/rbac-create-access-review.png)
 
 ### <a name="configure-the-review"></a>Kontrola konfigurace
-Pokud chcete vytvořit kontrola přístupu, potřebujete název a nastavit počáteční a koncové datum.
+Pokud chcete vytvořit kontrola přístupu, nejprve pojmenujte ji a nastavte počáteční a koncové datum.
 
 ![Nakonfigurujte kontrolní – snímek obrazovky](media/azure-pim-resource-rbac/rbac-access-review-setting-1.png)
 
-Ujistěte se, délka dostatečně dlouhé, aby se pro uživatele dokončit, protože se kontrola. Pokud dokončíte před datem ukončení, můžete vždy zastavit kontrola již v rané fázi.
+Ujistěte se, délka dostatečně dlouhé, aby se pro uživatele dokončit, protože se kontrola. Pokud se dokončila před datem ukončení, můžete se vždy již v rané fázi zastavit kontrola.
 
 ### <a name="choose-a-role-to-review"></a>Vyberte role ke kontrole
 Každý revize se zaměřuje na jen jednu roli. Pokud jste začali kontrola přístupu v okně konkrétní roli, musíte teď zvolte roli.
@@ -48,24 +49,24 @@ Každý revize se zaměřuje na jen jednu roli. Pokud jste začali kontrola př�
 2. Vyberte jednu roli ze seznamu.
 
 ### <a name="decide-who-will-perform-the-review"></a>Rozhodněte, který provede kontrola
-Existují tři možnosti pro provádění kontrolu. Kontrola můžete přiřadit někomu jinému k dokončení, můžete provést sami nebo můžete mít každý uživatel, zkontrolujte své vlastní přístup.
+Existují tři možnosti pro provádění kontrolu. Kontrola můžete přiřadit někomu jinému k dokončení, můžete provést sami nebo každého uživatele, můžete zkontrolovat svůj vlastní přístup.
 
 1. Vyberte jednu z možností:
    
    * **Vybraní uživatelé**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit kontrola prostředků vlastníka nebo správce skupiny pro dokončení.
    * **Přiřazené (vlastní)**: tuto možnost použijte, pokud chcete, aby uživatelé Zkontrolujte své vlastní přiřazení rolí.
    
-2. Přejděte do **vyberte**
+2. Přejděte na **vyberte**.
    
     ![Vyberte – snímek obrazovky](media/azure-pim-resource-rbac/rbac-access-review-setting-3.png)
 
 ### <a name="start-the-review"></a>Kontrola spuštění
-Nakonec máte možnost, která vyžaduje, aby uživatelé zadali příslušný důvod. Pokud schválí jejich přístup. Pokud chcete přidat popis kontrola a vyberte **spustit**.
+Nakonec můžete vyžadovat, aby uživatelé zadali důvod pro schvalování přístupu. Pokud chcete přidáte popis kontrola. Potom vyberte **spustit**.
 
 Zajistěte, aby dát uživatelům vědět, že je kontrola přístupu jim a zobrazit je [postup kontrola přístupu](pim-resource-roles-perform-access-review.md).
 
 ## <a name="manage-the-access-review"></a>Spravovat kontrola přístupu
-Průběh můžete sledovat, kontroloři dokončení jejich recenze v řídicím panelu PIM prostředky Azure, v části recenze přístup. Žádné oprávnění se změní v adresáři, dokud [kontrola dokončí](pim-resource-roles-complete-access-review.md).
+Na řídicím panelu PIM Azure prostředků můžete sledovat průběh kontroloři dokončení jejich recenze. Žádné oprávnění došlo ke změně v adresáři, dokud [byla dokončena kontrola](pim-resource-roles-complete-access-review.md).
 
 Dokud zkontrolujte doba je u konce, můžete připomenout uživatelům dokončení jejich kontrola nebo zastavit kontrola již v rané fázi z části recenze přístup.
 

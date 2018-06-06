@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4b1fefafb34dcbfdced5c978aa235e56cb7fa513
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801792"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategií hybridní identity přijetí řešení hybridní identity splňovat obchodní požadavky, které se zabývá:
@@ -32,7 +34,7 @@ V této úloze definujete strategií hybridní identity přijetí řešení hybr
 První úloha adresy určení obchodní organizace potřebuje.  To může být velmi široký a oboru nárůstu může dojít, pokud si nejste opatrní.  Na začátek, jednoduchost ale nezapomeňte vždy plánování návrh, který bude přizpůsobení a usnadnění změn v budoucnu.  Bez ohledu na to, zda je jednoduchý návrhu nebo některého velmi složité, Azure Active Directory je platforma Microsoft Identity, která podporuje Office 365, Microsoft Online Services a cloudových aplikací.
 
 ## <a name="define-an-integration-strategy"></a>Definování strategie integraci
-Microsoft má tři scénáře hlavní integrace, které jsou cloudové identity, synchronizované identity a federované identity.  Měli byste naplánovat na jednu z těchto integračních strategie přijetí.  Strategie, kterou zvolíte, se může lišit a může zahrnovat rozhodnutí, která v zvolili jeden, jaký typ byste chtěli poskytnout, máte k dispozici některé stávající infrastrukturu již místní a co je nákladově nejefektivnější činnost koncového uživatele.  
+Microsoft má tři scénáře hlavní integrace, které jsou cloudové identity, synchronizované identity a federované identity.  Měli byste naplánovat na jednu z těchto integračních strategie přijetí.  Strategie, kterou zvolíte se může lišit a může zahrnovat rozhodnutí, která v zvolili jeden, jaký typ činnost koncového uživatele, které byste chtěli poskytnout, máte existující infrastruktuře, a co je nejvíce nákladově efektivní.  
 
 ![](./media/hybrid-id-design-considerations/integration-scenarios.png)
 
@@ -51,7 +53,7 @@ V následující tabulce pomáhá při určování výhody a nevýhody každé z
 
 | Strategie | Výhody | Nevýhody |
 | --- | --- | --- |
-| **Cloudové identity** |Snazší správa pro menší organizace. <br> Nic k instalaci potřeba další hardware ne na místní<br>Snadno zakázat, pokud uživatel odejde ze společnosti |Uživatelé budou muset přihlásit při přístupu k úlohy v cloudu <br> Hesla mohou nebo nemusí být stejné pro cloudové a místní identity |
+| **Cloudové identity** |Snazší správa pro menší organizace. <br> Nic instalovat místně. Žádný další hardware potřeby<br>Snadno zakázat, pokud uživatel odejde ze společnosti |Uživatelé budou muset přihlásit při přístupu k úlohy v cloudu <br> Hesla mohou nebo nemusí být stejné pro cloudové a místní identity |
 | **Synchronizovat** |Místní heslo ověřuje místní i cloudové adresáře <br>Snazší správa pro malé, střední nebo velké organizace <br>Uživatelé mohou mít jednotné přihlašování (SSO) pro některé zdroje <br> Metoda Microsoft upřednostňovaný pro synchronizaci <br> Snadnější správa |Někteří zákazníci možná nebudete k synchronizaci s cloudem z důvodu konkrétní společnosti dá jejich adresáře |
 | **Federované** |Uživatelé mohou mít jednotné přihlašování (SSO) <br>Pokud uživatel je ukončen nebo opustí, účet můžete okamžitě zakázáno a odvolat přístup,<br> Podporuje rozšířené scénáře, které nelze provést pomocí synchronizovat |Další kroky pro nastavení a konfigurace <br> Vyšší údržby <br> Může vyžadovat další hardware pro infrastrukturu služby tokenů zabezpečení <br> Může vyžadovat další hardware k instalaci federační server. Další software je vyžadován, pokud se používá služba AD FS <br> Vyžadovat rozsáhlé instalační program pro jednotné přihlašování <br> Kritický bod selhání, pokud je federační server je vypnutý, uživatelé nebudou moci ověřit |
 
@@ -119,7 +121,7 @@ Při definování strategie synchronizace, musíte určit topologie, která se p
 
 Scénář s více doménovými strukturami
 
-Pokud to tento případ pak topologie více-forest-jedním Azure AD považovat za pokud platí následující položky:
+Pokud se jedná o tento případ a pak jednou více doménovými strukturami služby Azure AD topologie považovat pokud platí následující položky:
 
 * Uživatelé mají pouze 1 identity v rámci všech doménových struktur – to jednoznačně identifikující uživatelé části popisuje podrobněji.
 * Uživatel se ověřuje na doménové struktury, ve kterém se nachází svou identitu
@@ -149,13 +151,13 @@ Je možné a podporované se připojit jednu místní instanci služby Active Di
 
 **Filtrování scénář jednou doménovou strukturou**
 
-Pokud to chcete provést následující musí být splněné:
+Chcete-li to provést, musí platit následující:
 
 * Azure AD Connect synchronizačních serverů musí nakonfigurovat pro filtrování, každá má vzájemně se vylučuje sadu objektů.  To provést, například rozsahu každý server pro konkrétní doménu nebo organizační jednotku.
 * Doménu DNS se dají registrovat jenom v jedné adresář Azure AD proto UPN uživatelů v místní AD musíte použít samostatné obory názvů
 * Zobrazit uživatele z jejich instance budou pouze uživatelé v jednu instanci Azure AD.  Nebudou moci zobrazit uživatelům v jiné instance
 * Pouze jeden z adresáře služby Azure AD můžete povolit hybridní Exchange s místní AD
-* Vzájemné výhradní právo platí také pro zpětný zápis.  Díky tomu některé funkce zpětný zápis, není podporován s touto topologií, protože se tyto předpokládá jednomu místnímu konfigurace.  To zahrnuje následující:
+* Vzájemné výhradní právo platí také pro zpětný zápis.  Díky tomu některé funkce zpětný zápis, není podporován s touto topologií, protože se tyto předpokládá jednomu místnímu konfigurace.  To zahrnuje:
   * Skupiny s výchozí konfigurací zpětný zápis
   * Zpětný zápis zařízení
 

@@ -8,22 +8,23 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.component: fundamentals
 ms.topic: article
 ms.workload: identity
-ms.date: 03/29/2018
+ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 81d2916709f4d9e88faebc198940ad905705125a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6fe473d606df4ea0c37c2e6b2b1c9146056d0106
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713469"
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Na základě skupiny licencování základy v Azure Active Directory
 
-Použití Microsoft placené cloudové služby, jako je například Office 365, Enterprise Mobility + Security, Dynamics CRM a další podobné produkty, vyžaduje licence. Tyto licence jsou přiřazeny každý uživatel, který potřebuje přístup k těmto službám. Pokud chcete spravovat licence, správci pomocí jedné z portály pro správu (Office nebo Azure) a rutin prostředí PowerShell. Azure Active Directory (Azure AD) je základní infrastruktura, která podporuje správu identit pro všechny cloudové služby Microsoftu. Azure AD ukládá informace o stavu přiřazení licence pro uživatele.
+Microsoft placené cloudové služby, jako je například Office 365, Enterprise Mobility + Security, Dynamics 365 a další podobné produkty, vyžadují licence. Tyto licence jsou přiřazeny každý uživatel, který potřebuje přístup k těmto službám. Pokud chcete spravovat licence, správci pomocí jedné z portály pro správu (Office nebo Azure) a rutin prostředí PowerShell. Azure Active Directory (Azure AD) je základní infrastruktura, která podporuje správu identit pro všechny cloudové služby Microsoftu. Azure AD ukládá informace o stavu přiřazení licence pro uživatele.
 
 Dosud licence lze přiřadit pouze na úrovni jednotlivých uživatelů, což mohou ztížit správu ve velkém měřítku. Například pokud chcete přidat nebo odebrat uživatelských licencí podle změn v organizaci, jako jsou uživatelé propojení nebo bez organizace nebo oddělení, správce často musíte napsat skript prostředí PowerShell komplexní. Tento skript volá jednotlivé cloudové služby.
 
@@ -40,7 +41,7 @@ Zde jsou hlavní funkce na základě skupiny licencí:
 
 - Pokud je licence produktu přiřazen do skupiny, můžete zakázat správce jeden nebo více plánů služby v rámci produktu. Obvykle to se provádí při organizace ještě není připravený k použití služby zahrnuté v produktu. Například správce může přiřadit oddělení služeb Office 365, ale dočasně zakázat službu Yammer.
 
-- Jsou podporovány všem cloudovým službám Microsoftu, které vyžadují individuální licencování. To zahrnuje všechny produkty, Enterprise Mobility + Security a Dynamics CRM v Office 365.
+- Jsou podporovány všem cloudovým službám Microsoftu, které vyžadují individuální licencování. To zahrnuje všechny produkty, Enterprise Mobility + Security a Dynamics 365 v Office 365.
 
 - Na základě skupiny licencí je aktuálně k dispozici pouze prostřednictvím [portálu Azure](https://portal.azure.com). Pokud používáte jiné portály pro správu především pro uživatele a skupiny správy, jako je například portál Office 365, můžete to udělat. Ale byste měli používat portál Azure ke správě licencí na úrovni skupiny.
 
@@ -54,7 +55,7 @@ Zde jsou hlavní funkce na základě skupiny licencí:
 
 ## <a name="your-feedback-is-welcome"></a>Vaše zpětná vazba je Vítejte!
 
-Pokud máte zpětnou vazbu nebo funkce požadavky, prosím sdílet je s ním pomocí [Toto fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/317677-group-based-licensing).
+Pokud máte zpětnou vazbu nebo funkce požadavky, prosím sdílet je s ním pomocí [fórum správce Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
 ## <a name="next-steps"></a>Další postup
 

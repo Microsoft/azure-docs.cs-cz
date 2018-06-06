@@ -1,11 +1,11 @@
 ---
-title: "Koupit vlastní název domény pro Azure Web Apps"
-description: "Zjistěte, jak koupit vlastní doménu s webovou aplikaci v Azure App Service."
+title: Nákup vlastního názvu domény pro Azure Web Apps
+description: Zjistěte, jak koupit vlastní doménu s webovou aplikaci v Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714880"
 ---
-# <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Koupit vlastní název domény pro Azure Web Apps
+# <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Nákup vlastního názvu domény pro Azure Web Apps
 
 Domény nejvyšší úrovně, které jsou spravovány přímo v Azure jsou domény služby App Service (preview). Se snadno spravovat vlastní domény pro [Azure Web Apps](app-service-web-overview.md). V tomto kurzu se dozvíte, jak zakoupit domény služby App Service a názvy DNS přiřadit Azure Web Apps.
 
@@ -57,17 +58,17 @@ V levém navigačním panelu na stránce aplikace se posuňte do části **Nasta
 
 ![Nabídka Vertikálně navýšit kapacitu](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Aktuální úroveň aplikace je zvýrazněná modrým ohraničením. Zkontrolujte, že aplikace není na úrovni **Free**. Vlastní DNS se na úrovni **Free** nepodporuje. 
+Aktuální úroveň aplikace je zvýrazněná modrým ohraničením. Zkontrolujte, zda není v aplikaci **F1** vrstvy. Vlastní DNS není podporována v **F1** vrstvy. 
 
 ![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Pokud plán služby App Service není **volné**ukončit **zvolte cenovou úroveň** stránky a přejít na [koupit domény](#buy-the-domain).
+Pokud plán služby App Service se nenachází ve **F1** vrstvy, zavřete **škálovat** stránky a přejít na [koupit domény](#buy-the-domain).
 
 ### <a name="scale-up-the-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 
-Vyberte některou z placených úrovní (**Shared**, **Basic**, **Standard** nebo **Premium**). 
+Vyberte některé z vrstvy a bezplatnou (**D1**, **B1**, **B2**, **B3**, nebo všechny vrstvy v **produkční** kategorie). Další možnosti, klikněte na tlačítko **najdete v části Další možnosti**.
 
-Klikněte na **Vybrat**.
+Klikněte na tlačítko **Použít**.
 
 ![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -218,7 +219,7 @@ Chcete-li ručně obnovit doménu, vyberte **obnovení domény**. Ale toto tlač
 
 V Azure, záznamy DNS pro doménu služby App Service se spravují pomocí [Azure DNS](https://azure.microsoft.com/services/dns/). Můžete přidat, odebrat a aktualizovat záznamy DNS, stejně jako pro externě zakoupené doménu.
 
-### <a name="open-app-service-domain"></a>Open App Service Domain
+### <a name="open-app-service-domain"></a>Otevřete aplikaci služby domény
 
 Na portálu Azure v levé nabídce vyberte **všechny služby** > **doménami aplikací služby**.
 
@@ -238,7 +239,7 @@ Tato akce otevře [zónu DNS](../dns/dns-zones-records.md) stránku vaší domé
 
 Po zakoupení služby doména aplikace máte zrušit nákup pro vrátit celou částku pět dní. Po pět dní můžete odstranit doménu služby aplikace ale nemůže přijímat náhrada.
 
-### <a name="open-app-service-domain"></a>Open App Service Domain
+### <a name="open-app-service-domain"></a>Otevřete aplikaci služby domény
 
 Na portálu Azure v levé nabídce vyberte **všechny služby** > **doménami aplikací služby**.
 

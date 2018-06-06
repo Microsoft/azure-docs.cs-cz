@@ -4,21 +4,21 @@ description: Řešení běžných problémů s Azure synchronizace souboru.
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 8526918630189824e26b95df7f0560c96392e55d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea05c29bb40b595ad32304df55a79a9cf82acc18
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738434"
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Řešení potíží s synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -29,6 +29,9 @@ Tento článek slouží můžete odstraňovat potíže a řešit problémy, kter
 2. [Fórum pro Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 3. [Soubory Azure UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
 4. podporu Microsoftu. K vytvoření nové žádosti o podporu, na portálu Azure na **pomoci** vyberte **Nápověda a podpora** tlačítko a potom vyberte **nová žádost o podporu**.
+
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Došlo problému se synchronizací souboru Azure na svém serveru (sync, cloudu vrstvení atd). Doporučujeme odebrat a znovu vytvořit koncový bod pro tento server?
+[!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="storage-sync-service-object-management"></a>Správa objektu synchronizační služby úložiště
 Pokud uděláte přesun prostředků z jednoho předplatného do jiného předplatného, souborových prostředků synchronizace (Služba synchronizace úložiště) se bude blokovat přesouvání. 
@@ -154,7 +157,7 @@ Pokud se synchronizace nezdaří na serveru:
     2. Ověřte, zda je na serveru spuštěna služba synchronizace souboru Azure. K tomu, otevřete modul snap-in konzoly MMC služby a ověřte, zda je spuštěna Služba agenta synchronizace úložiště (FileSyncSvc).
 
 <a id="replica-not-ready"></a>**Synchronizace selže s touto chybou: "0x80c8300f - replika není připraven k provedení požadované operace."**  
-Tento problém se očekává, pokud chcete vytvořit koncový bod cloudu a použít sdílenou složku Azure, který obsahuje data. Úlohu detekce změn, která hledá změny do sdílené složky Azure je naplánováno pro jednou za 24 hodin.  Čas dokončení je závislá na velikost oboru názvů do sdílené složky Azure.  Tato chyba by ji okamžitě přejděte po dokončení.
+Tento problém se očekává, pokud chcete vytvořit koncový bod cloudu a použít sdílenou složku Azure, který obsahuje data. Úlohu detekce změn, která kontroluje změny v Azure sdílené složky je naplánováno pro jednou za 24 hodin.  Čas dokončení je závislá na velikost oboru názvů v Azure sdílené složky.  Tato chyba by ji okamžitě přejděte po dokončení.
 
 
     > [!NOTE]

@@ -1,28 +1,24 @@
 ---
-title: Škálování U-SQL místní spuštění a testování pomocí Azure Data Lake U-SQL SDK | Microsoft Docs
-description: Zjistěte, jak používat sadu SDK Azure Data Lake U-SQL k místní úlohy škálování U-SQL, spusťte a testování pomocí příkazového řádku a programovací rozhraní na místní pracovní stanici.
+title: Spustit a otestovat úloh U-SQL místně pomocí sady SDK Azure Data Lake U-SQL
+description: Zjistěte, jak spustit a otestovat úloh U-SQL místně pomocí příkazového řádku a programovací rozhraní na místní pracovní stanici.
 services: data-lake-analytics
-documentationcenter: ''
-author: ''
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/01/2017
+author: yanacai
 ms.author: yanacai
-ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 03/01/2017
+ms.openlocfilehash: 11a2bfdcda09a071667cc034ef1ff42794b73a33
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737067"
 ---
-# <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Škálování U-SQL místní spuštění a testování pomocí Azure Data Lake U-SQL SDK
+# <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Spustit a otestovat U-SQL s Azure Data Lake U-SQL SDK
 
-Při vývoji skript U-SQL, je běžné ke spuštění a testů U-SQL skriptu místně před odešlete ji do cloudu. Azure Data Lake poskytuje balíček Nuget s názvem SDK Azure Data Lake U-SQL pro tento scénář, pomocí kterých lze snadno škálovat U-SQL místní spuštění a testování. Je také možné integrovat tento test U-SQL systému CI (nepřetržité integrace) pro automatizaci kompilaci a testování.
+Při vývoji skript U-SQL, je běžné ke spuštění a testů U-SQL skriptu místně před odešlete ji do cloudu. Azure Data Lake poskytuje balíček Nuget s názvem SDK Azure Data Lake U-SQL pro tento scénář, pomocí kterých lze snadno škálovat spuštění U-SQL a testování. Je také možné integrovat tento test U-SQL systému CI (nepřetržité integrace) pro automatizaci kompilaci a testování.
 
 Pokud vám záleží, jak chcete ručně místní spuštění a ladění skriptu U-SQL pomocí nástrojů s grafickým uživatelským rozhraním, můžete pomocí nástroje Azure Data Lake pro Visual Studio pro tento. Další informace z [zde](data-lake-analytics-data-lake-tools-local-run.md).
 
@@ -72,7 +68,7 @@ Při místním spuštění skriptu U-SQL, vytvoří se během kompilace v aktuá
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Řetězec hash verze modulu runtime|Soubory modulu runtime, které jsou potřebné pro provedení místní stínové kopie|
 | |Script_66AE4909AA0ED06C| |Název skriptu + hash řetězec cestu ke skriptu|Výstupy kompilace a provádění krok protokolování|
-| | |\_script\_.abr|Výstup kompilátoru|Soubor algebra|
+| | |\_skript\_.abr|Výstup kompilátoru|Soubor algebra|
 | | |\_ScopeCodeGen\_. *|Výstup kompilátoru|Vygenerovaný spravovaného kódu|
 | | |\_ScopeCodeGenEngine\_. *|Výstup kompilátoru|Vygenerovaný nativního kódu|
 | | |Odkazovaná sestavení|Odkaz na sestavení|Soubory odkazované sestavení|
@@ -212,12 +208,12 @@ Kompilace skript U-SQL a nastavte pracovní adresář, referenční sestavení a
 
 Toto jsou volitelné argumenty pro **provést**:
 
-|Argument|Popis|
-|--------|-----------|
-|-DataRoot [výchozí hodnota:]|Kořenové datové pro provedení metadat. Výchozí hodnota **LOCALRUN_DATAROOT** proměnné prostředí.|
-|-MessageOut [výchozí hodnota:]|Dump zprávy v konzole do souboru.|
-|-Paralelní [výchozí hodnotu 1.]|Ukazatel ke spuštění generovaného kroků místní spuštění s úrovní zadaný stupně paralelního zpracování.|
-|-Verbose [výchozí hodnotu "False"]|Ukazatel zobrazíte podrobné výstupy z modulu runtime.|
+|Argument|Výchozí hodnota|Popis|
+|--------|-------------|-----------|
+|-DataRoot | '' |Kořenové datové pro provedení metadat. Výchozí hodnota **LOCALRUN_DATAROOT** proměnné prostředí.|
+|-MessageOut | '' |Dump zprávy v konzole do souboru.|
+|-Paralelní | '1' |Ukazatel ke spuštění generovaného kroků místní spuštění s úrovní zadaný stupně paralelního zpracování.|
+|-Verbose | "Nepravda" |Ukazatel zobrazíte podrobné výstupy z modulu runtime.|
 
 Tady je příklad použití:
 
@@ -360,7 +356,7 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 |ParentPid|celá čísla|ID nadřazeného objektu, na kterém služba monitoruje ukončíte, nastavena na hodnotu 0 nebo ignorovat záporná hodnota.|
 |ResultPath|řetězec|Cesta k souboru výpisu výsledek|
 |RuntimeDir|řetězec|Adresář modulu runtime|
-|ScriptPath|řetězec|Kde najít skriptu|
+|scriptPath|řetězec|Kde najít skriptu|
 |Bez podstruktury|BOOL|Nedávná kompilace, nebo ne|
 |TempDir|řetězec|Dočasný adresář|
 |UseDataBase|řetězec|Zadejte databázi, kterou chcete použít pro kódu na pozadí dočasné sestavení registrace, hlavní ve výchozím nastavení|
@@ -369,7 +365,7 @@ veřejné LocalRunHelper ([System.IO.TextWriter messageOutput = null])
 
 **– Metoda**
 
-|Metoda|Popis|Návrat|Parametr|
+|Metoda|Popis|Vrátí|Parametr|
 |------|-----------|------|---------|
 |veřejné bool DoCompile()|Kompilace skript U-SQL|Hodnota TRUE, v případě úspěchu| |
 |veřejné bool DoExec()|Kompilované výsledek spuštění|Hodnota TRUE, v případě úspěchu| |

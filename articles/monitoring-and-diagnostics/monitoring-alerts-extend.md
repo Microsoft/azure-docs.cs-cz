@@ -1,6 +1,6 @@
 ---
-title: Rozšíření výstrahy (kopie) z portálu OMS do Azure – přehled | Microsoft Docs
-description: Přehled procesu výstrah kopírování z portálu OMS do Azure výstrahy, podrobnosti kolem běžné otázky zákazníků.
+title: Rozšíření výstrahy (kopie) analýzy protokolů do Azure upozornění – přehled | Microsoft Docs
+description: Přehled procesu zkopírujte výstrahy z Log Analytics na portálu OMS do Azure výstrahy s podrobnosti adresování běžné otázky zákazníků.
 author: msvijayn
 manager: kmadnani1
 editor: ''
@@ -11,63 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 05/24/2018
 ms.author: vinagara
-ms.openlocfilehash: 25dcbad8607a651a7dd4b79f4f418cc473a2bf0e
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 296bdc6939ef8ab67656e5805cd603b50bce211e
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763149"
 ---
-# <a name="extend-copy-alerts-from-oms-portal-into-azure"></a>Rozšíření výstrahy (kopie) z portálu OMS do Azure
-Portál Operations Management Suite (OMS) zobrazí pouze analýzy protokolů výstrahy.  Nové prostředí výstrahy má teď integrované výstrahy prostředí mezi různé služby a částí v Microsoft Azure. Nové prostředí, které jsou k dispozici jako **výstrahy** v části monitorování Azure ve službě Azure portál obsahuje aktivitu protokolu výstrahy, metriky výstrahy a upozornění protokolu pro analýzy protokolů a Application Insights. 
-
-
-Ale pro některé uživatele, použijte analýzy protokolů a allied funkcí, jako jsou výstrahy, byl prostřednictvím [portál Microsoft operaci Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). A proto a povolení jejich snadno spravovat jejich další prostředky Azure spolu s jejich používání analýzy protokolů - systematičtěji Microsoft má byla zajištění možnosti portálu OMS jsou také k dispozici na portálu Azure. V tomto ohledu Azure výstrahy již umožňuje uživatelům spravovat výstrahy na základě dotazu analýzy protokolů pro další informace najdete v tématu [protokolu výstrahy na Azure výstrahy](monitor-alerts-unified-log.md). V výstrahy pod Azure monitorování výstrahy vytvořeným na portálu OMS již uveden v části pracovní prostor analýzy příslušný protokol. Ale žádné úpravy nebo změnit na tyto výstrahy vytvořeným na portálu OMS, musí uživatel nechte Azure a používat portál OMS; pak se vraťte zpět do Azure potřeby ke správě jinou službu. Pokud chcete zkrátit tento obtížím vzniklým, Microsoft je teď uživatelům umožníte rozšířit jejich výstrahy z portálu OMS do Azure.
+# <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření výstrahy analýzy protokolů Azure výstrah
+Dokud nedávno Azure Log Analytics zahrnuty vlastní výstrah funkce, které může proaktivně oznámíme vám podmínek založených na protokolu analytická data.  Správa pravidla výstrah se prováděly v [portál Microsoft operaci Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Nové prostředí výstrahy má teď integrované výstrahy prostředí mezi různé služby ve službě Microsoft Azure. Nové prostředí je k dispozici jako **výstrahy** v části monitorování Azure na portálu Azure a podporuje výstrahy z aktivity protokoly, metriky a protokoly od analýzy protokolů a Application Insights. 
 
 ## <a name="benefits-of-extending-your-alerts"></a>Výhody rozšíření upozornění
-Kromě benefit kumulovaných v nemusí přejděte mimo portál Azure existují další nejdůležitějšími výhody rozšíření výstrahy z portálu OMS do Azure
+Existuje několik výhod při vytváření a Správa výstrah v Azure port, jako například:
 
 - Na rozdíl od na portálu OMS, kde může být pouze 250 výstrahy vytvořit a zobrazit; ve výstrahách Azure toto omezení není k dispozici
-- Z Azure výstrah všechny typy výstrah lze spravovat, výčet a zobrazit; výstrahy nejen analýzy protokolů, jako je tomu u portálu OMS
+- Z Azure výstrah všechny typy výstrah lze spravovat, výčet a zobrazit; nejen analýzy protokolů výstrahy stejně jako v případě dříve
 - Řízení přístupu uživatelům, aby pouze sledování a výstrah pomocí [role Azure monitorování](monitoring-roles-permissions-security.md)
-- Azure výstrahy využívat [skupiny akcí](monitoring-action-groups.md), které umožňují mít více než jednu akci pro každou výstrahu včetně SMS, hlasový hovor, sady Automation Runbook, Webhooku, ITSM konektoru a dalších. 
+- Azure výstrahy využívat [skupiny akcí](monitoring-action-groups.md), což umožňuje mít více než jednu akci pro každou výstrahu včetně SMS, odeslání telefonní hovor, vyvolání Runbook služby automatizace, vyvolat Webhook, jehož, nakonfigurovat konektor ITSM a další. 
 
 ## <a name="process-of-extending-your-alerts"></a>Proces rozšíření upozornění
-Proces rozšíření výstrahy z portálu OMS do Azure, nemá **není** zahrnuje změnu vaší definice upozornění, dotaz nebo konfigurace žádným způsobem. Jedinou změnou požadované je, že v Azure, všechny akce, jako je například e-mailové oznámení, webhooku hovoru, při spuštění sady automation runbook nebo připojení k nástroji ITSM hotovi prostřednictvím akce skupiny. Proto pokud příslušné akce skupiny jsou přidružené upozornění - jejich bude stát rozšířit do Azure.
-
-Vzhledem k tomu, že proces rozšíření je nedestruktivní a není interruptive, společnost Microsoft rozšíří výstrahy vytvořeným na portálu OMS na Azure výstrahy automaticky – od **14 2018 může**. Z tohoto dne Microsoft zahájíte naplánovat rozšíření výstrahy do Azure a postupně proveďte přítomna na portálu OMS, spravovat z portálu Azure také všechny výstrahy. 
+Proces přesunu výstrahy z analýzy protokolů do Azure výstrahy, nebude **není** zahrnuje změnu vaší definice upozornění, dotaz nebo konfigurace žádným způsobem. Vyžadována pouze změna je, že v Azure, všechny akce, jako je například e-mailové oznámení, volání webhooku systémem runbook služby automatizace nebo připojení k vaší ITSM nástroj se provádí pomocí skupinu akcí. Pokud akce skupiny jsou již přidruženy upozornění - budou zahrnuty při rozšířit do Azure.
 
 > [!NOTE]
-> Spouštění 14 může 2018 - Microsoft zahájíte proces automaticky rozšíření výstrahy do Azure. Ne všechny výstrahy a pracovní prostory bude rozšířeno dne; Místo toho Microsoft zahájíte rozšířit výstrahy automaticky v tranších v nadcházející týdnů. Proto upozornění na portálu OMS nebude automaticky rozšířit do Azure okamžitě na 14 může 2018 a uživatele můžete stále [ručně rozšířit jejich výstrahy](monitoring-alerts-extend-tool.md) během této doby.
+> Společnost Microsoft automaticky rozšíří výstrahy vytvořené v analýzy protokolů Azure výstrah, spouštění na **14 2018 může** v řadě opakování až do dokončení. Pokud dochází k potížím při vytváření [skupiny akcí](monitoring-action-groups.md), uživatel může použít [uvedených kroků nápravy](monitoring-alerts-extend-tool.md#troubleshooting) dokud **5 července 2018** získat automaticky vytvořené skupiny akce. 
+> 
 
-Pokud výstrahy v pracovním prostoru analýzy protokolů získat naplánováno rozšíří do Azure, budou i nadále fungovat a bude **není** žádným způsobem ohrozit monitorování. Při plánování, upozornění pravděpodobně není k dispozici pro úpravy/úpravy dočasně; ale můžou dál nové výstrahy Azure vytvořit v této krátké doby. V tomto krátkém období žádné úpravy nebo vytvoření výstrahy se provádí z portálu OMS, budou mít uživatelé možnost pokračovat do Azure Log Analytics nebo Azure výstrahy.
+Pokud výstrahy v pracovním prostoru analýzy protokolů jsou naplánovány pro rozšíření do Azure, budou i nadále fungovat a bude **není** žádným způsobem ohrozit konfiguraci. Při plánování, upozornění pravděpodobně není k dispozici pro úpravy/úpravy dočasně; ale můžou dál nové výstrahy Azure vytvořit během této doby. Pokud se pokusíte upravovat nebo vytvářet výstrahy z portálu OMS, budete mít možnost pokračovat ve vytváření je z pracovního prostoru analýzy protokolů nebo z Azure výstrah na portálu Azure.
 
  ![Během plánované doby akce uživatele na výstrahy přesměrován na Azure](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> Rozšíření výstrahy z portálu OMS do Azure není účtován a využití Azure výstrahy pro dotaz na základě analýzy protokolů výstrahy nebude platit při použití v rámci omezení a podmínky uvedené v [Azure monitorování cenové zásady](https://azure.microsoft.com/pricing/details/monitor/)  
+> rozšíření výstrahy z analýzy protokolů Azure není platit poplatky pro váš účet a využití Azure výstrah pro dotaz na základě analýzy protokolů výstrahy nebude platit při použití v rámci omezení a podmínky uvádí [Azure monitorování cenové zásady](https://azure.microsoft.com/pricing/details/monitor/)  
 
-Uživatelé mohou využívat výhod rozšíření výstrahy před tímto datem; podle odpojit zvolit možnost, aby se daly spravovat v Azure výstrahy.
+Můžete využívat výhod rozšíření výstrahy před tímto datem podle odpojit vyjádření výslovného přesunout do Azure výstrahy.
 
-### <a name="how-to-voluntarily-extending-your-alerts"></a>Postup odpojit rozšíření upozornění
-Umožníte uživatelům OMS snadno průchodu do Azure výstrahy, společnost Microsoft vytvořila nástroje umožňující rozšíření výstrahy. Zákazníci portálu Microsoft OMS můžete rozšířit jejich výstrahy do Azure buď pomocí Průvodce na portálu OMS (nebo) podle programový přístup pomocí nových rozhraní API. Další informace najdete v tématu [rozšíří výstrahy do Azure pomocí rozhraní API a portálu OMS](monitoring-alerts-extend-tool.md).
+### <a name="how-to-voluntarily-extend-your-alerts"></a>Postup odpojit rozšíření upozornění
+K rozšíření upozornění na výstrahy Azure, jsme zahrnuli dvě metody pro dokončení této úlohy v pracovním prostoru.  To můžete udělat buď pomocí průvodce k dispozici v portálu OMS nebo programově pomocí nové rozhraní API.  Další informace najdete v tématu [rozšíří výstrahy do Azure pomocí rozhraní API a portálu OMS](monitoring-alerts-extend-tool.md).
 
+## <a name="experience-after-extending-your-alerts"></a>Prostředí po rozšíření upozornění
+Po upozornění jsou rozšířené výstrahy Azure, budou k dispozici na portálu OMS pro správu již jinak než dřív.<br><br> ![Výpis výstrahy po protažení na Azure portálu OMS](./media/monitor-alerts-extend/PostExtendList.png)
 
-## <a name="usage-after-extending-your-alerts"></a>Po rozšíření upozornění využití
-Jak jsme uvedli, výstrahách vytvořených v sadě Management operace Microsoft bude rozšířeno do Azure výstrah; Po, což je můžete spravovat z Azure. Výstrahy budou nadále uvedené na portálu OMS - část nastavení výstrah. Jak je uvedeno dále:
-
- ![Portál OMS výpis výstrahy po protažení do Azure](./media/monitor-alerts-extend/PostExtendList.png)
-
-Pro žádnou operaci na výstrahy jako úprava nebo vytvoření udělat na portálu OMS se transparentně přesměruje uživatele na Azure výstrahy. 
+Při pokusu upravit stávající výstrahu nebo vytvořit nové oznámení na portálu OMS budete automaticky přesměrováni na Azure výstrahy.  
 
 > [!NOTE]
-> Jak uživatelé se transparentně provedou do Azure, na všech přidání nebo úprava akce na výstrahu v OMS – Ujistěte se, uživatelé jsou správně mapována s příslušnou [oprávnění pro použití Azure monitorování a výstrahy](monitoring-roles-permissions-security.md)
+> Je nutné zajistit, že se oprávnění přiřazená jednotlivce, kteří potřebují můžete přidat nebo upravit výstrahy přiřazené správně v Azure.  Zkontrolujte, [oprávnění pro použití Azure monitorování a výstrahy](monitoring-roles-permissions-security.md) pochopit, jaká oprávnění je potřeba udělit.  
+> 
 
-Výstrahy, vytvoření bude pokračovat od existující [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) a [Log Analytics prostředků šablony](../monitoring/monitoring-solutions-resources-searches-alerts.md) jako starší s pouze malé změny, který se po výstrahy jsou rozšířené do Azure - akce skupiny by musela být přidružené v plánu.
+Výstrahy vytvoření budou nadále fungovat z [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) a [Log Analytics prostředků šablony](../monitoring/monitoring-solutions-resources-searches-alerts.md), s menšími pouze jeden změnit, že je nutné nainstalovat – akce skupiny musí být zahrnuty.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace z nástrojů, který [inicializace rozšíření výstrahy od OMS do Azure](monitoring-alerts-extend-tool.md)
+* Další informace o nástroje pro [inicializace rozšíření výstrahy z analýzy protokolů do Azure](monitoring-alerts-extend-tool.md)
 * Další informace o nové [prostředí Azure výstrahy](monitoring-overview-unified-alerts.md).
-* Další informace o [protokolu výstrahy ve výstrahách Azure](monitor-alerts-unified-log.md).
+* Naučte se vytvářet [protokolu výstrahy ve výstrahách Azure](monitor-alerts-unified-log.md).

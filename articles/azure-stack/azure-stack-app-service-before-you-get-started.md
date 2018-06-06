@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ae21a7cc5c38fefd40a2676e15308b027c6f95d5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796729"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service v Azure zásobníku
 
@@ -330,7 +331,7 @@ Postupujte následovně:
 | AdminArmEndpoint | Požaduje se | Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
 | TenantARMEndpoint | Požaduje se | Null | Koncový bod tenant Azure Resource Manager. Příkladem je management.local.azurestack.external. |
 | AzureStackAdminCredential | Požaduje se | Null | Pověření správce služby Azure AD. |
-| CertificateFilePath | Požaduje se | Null | Cesta k souboru certifikátu aplikace identity generované dříve. |
+| CertificateFilePath | Požaduje se | Null | **Úplná cesta** soubor certifikátu identity aplikace vygeneruje dříve. |
 | CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Vytvoření aplikace Active Directory Federation Services
@@ -364,7 +365,7 @@ Postupujte následovně:
 | AdminArmEndpoint | Požaduje se | Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
 | PrivilegedEndpoint | Požaduje se | Null | Privilegované koncový bod. Příkladem je AzS ERCS01. |
 | CloudAdminCredential | Požaduje se | Null | Přihlašovací údaje účtu domény pro správce cloudu Azure zásobníku. Příkladem je Azurestack\CloudAdmin. |
-| CertificateFilePath | Požaduje se | Null | Cesta k souboru certifikátu PFX identity aplikace. |
+| CertificateFilePath | Požaduje se | Null | **Úplná cesta** do souboru PFX certifikátu identity aplikace. |
 | CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
 
 ## <a name="next-steps"></a>Další postup

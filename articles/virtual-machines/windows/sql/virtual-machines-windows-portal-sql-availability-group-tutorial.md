@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716716"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurovat vždy na skupiny dostupnosti ve virtuálním počítači Azure ručně
 
@@ -32,7 +33,7 @@ Diagram znázorňuje, co vytvoříte v tomto kurzu.
 
 ![Skupiny dostupnosti](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Kurz předpokládá, že máte základní znalosti o SQL serveru skupin dostupnosti Always On. Pokud potřebujete další informace, přečtěte si [přehled o skupin dostupnosti Always On (SQL Server)](http://msdn.microsoft.com/library/ff877884.aspx).
 
@@ -40,7 +41,7 @@ Následující tabulka uvádí požadavky, které je potřeba provést před zah
 
 |  |Požadavek |Popis |
 |----- |----- |----- |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Two SQL Servers | -V nastavení dostupnosti Azure <br/> -V jedné doméně <br/> -S nainstalovanou funkcí Clustering převzetí služeb při selhání |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Dva servery SQL | -V nastavení dostupnosti Azure <br/> -V jedné doméně <br/> -S nainstalovanou funkcí Clustering převzetí služeb při selhání |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Sdílení souborů pro cluster s kopií clusteru |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby SQL Server | Účet domény |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Účet služby agenta systému SQL Server | Účet domény |  
@@ -57,7 +58,7 @@ Než začnete tento kurz, budete muset [dokončení požadované součásti pro 
 <a name="CreateCluster"></a>
 ## Vytvoření clusteru
 
-Po dokončení požadavky prvním krokem je vytvoření clusteru převzetí služeb při selhání Windows serveru, který obsahuje dva servery SQL Server a server s kopií clusteru.  
+Po dokončení požadavky prvním krokem je vytvoření clusteru převzetí služeb při selhání Windows serveru, který obsahuje dva servery SQL Server a server s kopií clusteru.
 
 1. RDP k první systému SQL Server pomocí účtu domény, který je správcem na serverech SQL i na serveru s kopií clusteru.
 
@@ -85,7 +86,8 @@ Po dokončení požadavky prvním krokem je vytvoření clusteru převzetí slu�
 
    ![Vlastnosti clusteru](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Vyberte **statickou IP adresu** a zadejte dostupnou adresu z podsítě, kde je SQL Server v textovém poli Adresa. Potom klikněte na **OK**.
+3. Vyberte **statickou IP adresu** a zadejte dostupnou adresu od privátní IP adresy () rozsahu AUTOMATIC: 169.254.0.1 až 169.254.255.254 do textového pole adresy. V tomto příkladu můžete použít libovolnou adresu v tomto rozsahu. Například `169.254.0.1`. Potom klikněte na **OK**.
+
 4. V **základní prostředky clusteru** části, klikněte pravým tlačítkem na název clusteru a klikněte na tlačítko **přepnout do režimu Online**. Potom počkejte, dokud jsou obě prostředky online. Při přechodu prostředek názvu clusteru do režimu online, se nový účet počítače AD aktualizuje serveru řadiče domény. Pomocí tohoto účtu AD později spustit služba skupiny dostupnosti v clusteru.
 
 ### <a name="addNode"></a>Přidat SQL Server do clusteru
@@ -355,7 +357,7 @@ Skupinu dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje 
    | **Typ** |Interní |
    | **Virtuální síť** |Použijte název virtuální síť Azure. |
    | **Podsíť** |Použijte název podsítě, která je virtuální počítač.  |
-   | **Přiřazení IP adresy** |Statický |
+   | **Přiřazení IP adresy** |Statická |
    | **IP adresa** |Použijte dostupnou adresu z podsítě. Všimněte si, že se to neliší od vaší IP adresu clusteru |
    | **Předplatné** |Pomocí stejného předplatného jako virtuální počítač. |
    | **Umístění** |Použijte stejné umístění jako virtuální počítač. |
@@ -391,7 +393,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
 
 1. Test stavu nastavte takto:
 
-   | Nastavení | Popis | Příklad
+   | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokol** | Zvolte TCP | TCP |
@@ -406,7 +408,7 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
 1. Klikněte na nástroje pro vyrovnávání zatížení, klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
 
 1. Nastavte pravidla takto Vyrovnávání zatížení.
-   | Nastavení | Popis | Příklad
+   | Nastavení | Popis | Příklad:
    | --- | --- |---
    | **Název** | Text | SQLAlwaysOnEndPointListener |
    | **Adresa IP front-endu** | Zvolte adresu |Použijte adresu, kterou jste vytvořili, když jste vytvořili pro vyrovnávání zatížení. |
@@ -416,10 +418,10 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
    | **Test** |Název, který jste zadali pro kontrolu | SQLAlwaysOnEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **None** |
    | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
-   | **Plovoucí IP adresa (přímá odpověď ze serveru)** | |Povolená |
+   | **Plovoucí IP adresa (přímá odpověď ze serveru)** | |Povoleno |
 
    > [!WARNING]
-   > Přímá odpověď ze serveru se nastavuje během vytváření. Nelze změnit.
+   > Přímá odpověď ze serveru se nastavuje během vytváření. Název není možné změnit.
 
 1. Klikněte na tlačítko **OK** nastavit pravidla Vyrovnávání zatížení.
 

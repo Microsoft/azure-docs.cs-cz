@@ -1,26 +1,19 @@
 ---
 title: Přehled akcelerátorů řešení Azure IoT | Microsoft Docs
 description: Popis akcelerátorů řešení Azure IoT a jejich architektury spolu s odkazy na další prostředky
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 17/01/2018
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
+ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 80192b115f4c6c8f6961fdd4d9fb7f3876fda898
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: 6f23324c697aa181179fd0ba4d81d1502bc5ac83
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362120"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724886"
 ---
 # <a name="what-are-the-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
@@ -32,7 +25,7 @@ _Akcelerátory řešení_ Azure IoT jsou sady řešení s následujícími chara
 
 Všechny akcelerátory řešení jsou navrženy podle stejných principů a se stejným cílem.
 
-Následující video představuje přehled akcelerátorů řešení vzdáleného monitorování:
+Následující video obsahuje přehled nástroje akcelerátoru řešení vzdáleného monitorování:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Meet-the-new-Remote-Monitoring-accelerator-for-Azure-IoT/Player]
 
@@ -54,7 +47,7 @@ Každý akcelerátor řešení je kompletní komplexní implementace, která vyu
 Tři akcelerátory řešení, které jsou dnes k dispozici:
 
 * [Vzdálené monitorování](iot-accelerators-remote-monitoring-explore.md)
-* [Prediktivní údržba](../iot-suite/iot-suite-predictive-overview.md)
+* [Prediktivní údržba](iot-accelerators-predictive-overview.md)
 * [Připojená továrna](iot-accelerators-connected-factory-overview.md)
 
 Následující tabulka ukazuje, jak se řešení mapují na určité funkce IoT.
@@ -62,7 +55,7 @@ Následující tabulka ukazuje, jak se řešení mapují na určité funkce IoT.
 | Řešení | Přijímání dat | Identita zařízení | Správa zařízení | Zpracování hraničních zařízení | Příkazy a ovládání | Pravidla a akce | Prediktivní analýza |
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [Vzdálené monitorování](iot-accelerators-remote-monitoring-explore.md)  |Ano |Ano |Ano |-   |Ano |Ano |-   |
-| [Prediktivní údržba](../iot-suite/iot-suite-predictive-overview.md)   |Ano |Ano |-   |-   |Ano |Ano |Ano |
+| [Prediktivní údržba](iot-accelerators-predictive-overview.md)   |Ano |Ano |-   |-   |Ano |Ano |Ano |
 | [Připojená továrna](iot-accelerators-connected-factory-overview.md) |Ano |- |- |Ano |Ano |Ano |-   |
 
 * *Přijímání dat*: Přijímání škálovaných dat do cloudu.
@@ -73,7 +66,7 @@ Následující tabulka ukazuje, jak se řešení mapují na určité funkce IoT.
 * *Prediktivní analýza:* Back-end řešení analyzuje data typu zařízení-cloud a z nich pak předpovídá, kdy by mělo dojít k určitým událostem. Například může analyzovat telemetrická data motoru letadla a určit, kdy bude zapotřebí provést údržbu.
 
 > [!NOTE]
-> Pokud chcete nasadit akcelerátor řešení a získat další informace o tom, jak ho přizpůsobit, navštivte stránku [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsuite.com/).
+> Pokud chcete nasadit akcelerátor řešení a získat další informace o tom, jak ho přizpůsobit, navštivte stránku [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/).
 
 ## <a name="azure-services"></a>Služby Azure
 
@@ -91,14 +84,14 @@ Když nasadíte akcelerátor řešení, proces zřizování konfiguruje celou ř
 | Azure Storage         |                    | Ano                    | Ano               |
 
 > [!NOTE]
-> Další informace o prostředcích nasazených v akcelerátoru řešení vzdáleného monitorování najdete v tomto [článku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) na GitHubu.
+> Další informace o prostředky nasazené v akcelerátoru řešení vzdáleného monitorování najdete [článku](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) na Githubu.
 
 * [Azure IoT Hub](../iot-hub/index.yml). Tato služba zajišťuje obousměrnou výměnu zpráv mezi zařízením a cloudem a funguje jako brána ke cloudu a ostatním klíčovým službám akcelerátorů řešení. Umožňuje příjem zpráv z vašich zařízení a odesílání příkazů do zařízení. Tato služba také umožňuje [spravovat vaše zařízení](../iot-hub/iot-hub-device-management-overview.md). Můžete třeba nakonfigurovat, restartovat nebo obnovit tovární nastavení na jednom nebo několika zařízeních připojených k rozbočovači.
-* [Azure Event Hubs](../active-directory-domain-services/index.md). Tato služba poskytuje ingestování velkého objemu událostí do cloudu. Další informace najdete v tématu věnovaném [porovnání Azure IoT Hub a Azure Event Hubs](../iot-hub/iot-hub-compare-event-hubs.md).
+* [Azure Event Hubs](../active-directory-domain-services/index.yml). Tato služba poskytuje ingestování velkého objemu událostí do cloudu. Další informace najdete v tématu věnovaném [porovnání Azure IoT Hub a Azure Event Hubs](../iot-hub/iot-hub-compare-event-hubs.md).
 * [Azure Time Series Insights](../time-series-insights/index.yml). Akcelerátory řešení používají tuto službu k analýze a zobrazování telemetrických dat z vašich zařízení.
 * [Azure Container Service](../container-service/index.yml). Tato služba v akcelerátorech řešení hostuje a spravuje mikroslužby.
 * [Azure Cosmos DB](../cosmos-db/index.yml) a [Azure Storage](../storage/index.yml) pro ukládání dat.
-* [Azure Stream Analytics](../stream-analytics/index.yml). Předkonfigurované řešení prediktivní údržby využívá tuto službu ke zpracování příchozích telemetrických dat, vytváření agregací a zjišťování událostí. Toto předkonfigurované řešení dále s využitím analýzy datových proudů zpracovává informační zprávy, které obsahují například metadata nebo odezvy zařízení na příkazy.
+* [Azure Stream Analytics](../stream-analytics/index.yml). Akcelerátoru řešení prediktivní údržby tato služba používá pro zpracování příchozích telemetrických dat, vytváření agregací a zjišťování událostí. Toto předkonfigurované řešení dále s využitím analýzy datových proudů zpracovává informační zprávy, které obsahují například metadata nebo odezvy zařízení na příkazy.
 * [Azure Web Apps](../app-service/index.yml). Tato služba v předkonfigurovaných řešeních hostuje vlastní kód aplikací.
 
 Informace o tom, jak vypadá architektura typického řešení IoT, najdete v tématu [Microsoft Azure a Internet věcí (IoT)](iot-accelerators-what-is-azure-iot.md).
@@ -117,7 +110,7 @@ Následující části popisují, co je u akcelerátorů řešení založených 
 
 ### <a name="microservices"></a>Mikroslužby
 
-Nová verze akcelerátoru řešení vzdáleného monitorování využívá architekturu mikroslužeb. Tento akcelerátor řešení se skládá z několika mikroslužeb, jako je *správce služby IoT Hub* a *správce služby Storage*. Verze jednotlivých mikroslužeb v Javě i v .NET jsou k dispozici ke stažení, společně se související dokumentací pro vývojáře. Další informace o mikroslužbách najdete v tématu věnovaném [architektuře vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Nové verze akcelerátoru řešení vzdáleného monitorování používá architekturu mikroslužeb. Tento akcelerátor řešení se skládá z několika mikroslužeb, jako je *správce služby IoT Hub* a *správce služby Storage*. Verze jednotlivých mikroslužeb v Javě i v .NET jsou k dispozici ke stažení, společně se související dokumentací pro vývojáře. Další informace o mikroslužbách najdete v tématu věnovaném [architektuře vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md).
 
 Tato architektura mikroslužeb představuje ověřený vzor pro cloudová řešení, který:
 
@@ -147,12 +140,12 @@ Pokud byste chtěli implementace v jiných jazycích, zadejte svůj požadavek n
 
 Uživatelské rozhraní je sestavené s využitím javascriptové knihovny [React](https://facebook.github.io/react/). Zdrojový kód je opensourcový a můžete si ho stáhnout a upravit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Seznámili jste se s přehledem akcelerátorů řešení IoT a tady jsou navrhované další kroky pro jednotlivé akcelerátory řešení:
 
 * [Seznámení s řešením vzdáleného monitorování](iot-accelerators-remote-monitoring-explore.md)
-* [Přehled akcelerátorů řešení prediktivní údržby](../iot-suite/iot-suite-predictive-overview.md)
+* [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Začínáme s akcelerátorem řešení připojené továrny](iot-accelerators-connected-factory-overview.md)
 
-Další informace o architekturách řešení IoT najdete v tématu [Služby Microsoft Azure IoT: Referenční architektura](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf).
+Další informace o architekturách řešení IoT najdete v tématu [Služby Microsoft Azure IoT: Referenční architektura](https://aka.ms/iotrefarchitecture).

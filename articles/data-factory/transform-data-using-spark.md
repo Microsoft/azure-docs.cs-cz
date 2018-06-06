@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2018
+ms.topic: conceptual
+ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 52b6489d14c016ce2efdd06614102a40651b94c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 525ad1c83a1982ae5b954b900c5a6c7086544c66
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700532"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Spark v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +51,6 @@ Zde je ukázka definici JSON Spark aktivity:
         },
         "rootPath": "adfspark\\pyFiles",
         "entryFilePath": "test.py",
-        "arguments": [ "arg1", "arg2" ],
         "sparkConfig": {
             "ConfigItem1": "Value"
         },
@@ -72,7 +72,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 | linkedServiceName     | Název propojené služby HDInsight Spark, který je spuštěn Spark program. Další informace o této propojené služby najdete v tématu [výpočetní propojené služby](compute-linked-services.md) článku. | Ano      |
 | SparkJobLinkedService | Azure Storage propojená služba, která obsahuje Spark soubor úlohy, závislosti a protokoly.  Pokud hodnotu pro tuto vlastnost nezadáte, použije se úložiště přidružený k clusteru HDInsight. Hodnota této vlastnosti lze pouze propojenou službu úložiště Azure. | Ne       |
 | rootPath              | Kontejner objektů Blob v Azure a složky, která obsahuje soubor Spark. Název souboru je malá a velká písmena. Struktura složek najdete části (další části) Další informace o struktuře této složky. | Ano      |
-| entryFilePath         | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. | Ano      |
+| entryFilePath         | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. Vstupní soubor musí být soubor Python nebo souboru .jar. | Ano      |
 | Název třídy             | Hlavní třídy aplikace Java/Spark      | Ne       |
 | Argumenty             | Seznam argumentů příkazového řádku pro Spark program. | Ne       |
 | proxyUser             | Uživatelský účet zosobnění spuštění programu Spark | Ne       |

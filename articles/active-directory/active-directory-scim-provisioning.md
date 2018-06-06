@@ -16,13 +16,14 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 19a1ae7ae7acc6fe09a529dd174363735343027e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 756509648638693689c8fc539a660809728cd5d3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698743"
 ---
-# <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro správu identit napříč doménami pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
+# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro napříč doménami Identity Management (SCIM) pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
 
 ## <a name="overview"></a>Přehled
 Azure Active Directory (Azure AD), mohou automaticky poskytovat uživatelé a skupiny do aplikace nebo identity úložiště, který je přední stěnou pomocí webové služby pomocí rozhraní definované v [systému pro protokol napříč doménami Identity Management (SCIM) 2.0 specifikace](https://tools.ietf.org/html/draft-ietf-scim-api-19). Azure Active Directory může odesílat požadavky na vytvořit, upravit nebo odstranit přiřazené uživatelů a skupin k webové službě. Webová služba může překládat pak tyto požadavky do operací na úložiště identit cíl. 
@@ -30,12 +31,13 @@ Azure Active Directory (Azure AD), mohou automaticky poskytovat uživatelé a sk
 ![][0]
 *Obrázek 1: Zřizování z Azure Active Directory k úložišti identity prostřednictvím webové služby*
 
-Tato funkce slouží ve spojení s možností "přineste vlastní aplikace" v Azure AD umožňující jednotného přihlašování a automatické zřizování pro aplikace, které poskytují nebo jsou přední stěnou webovou službou SCIM uživatelů.
+Tato funkce lze použít ve spojení s možností "přineste vlastní aplikace" v Azure AD. Tato funkce umožňuje jednotné přihlašování a automatické zřizování pro aplikace, které jsou přední stěnou webovou službou SCIM uživatelů.
 
 Existují dva případy použití pro pomocí SCIM v Azure Active Directory:
 
-* **Zřizování uživatelů a skupin na aplikace, které podporují SCIM** aplikace, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování pracuje s Azure AD bez konfigurace.
-* **Vytváření vlastních řešení zřizování pro aplikace, které podporují jiné založené na rozhraní API zřizování** pro jiný SCIM aplikace, můžete vytvořit koncový bod SCIM pro převod mezi koncový bod Azure AD SCIM a jakéhokoli rozhraní API aplikace podporuje pro zřizování uživatelů. Můžete vyvíjet koncový bod SCIM, neexistují knihovny společné jazykové infrastruktury (CLI) společně s ukázky kódu, které ukazují, jak k poskytování koncový bod SCIM a převede SCIM zprávy.  
+* **Zřizování uživatelů a skupin na aplikace, které podporují SCIM** – aplikace, které podporují SCIM 2.0 a používala tokeny nosičů OAuth pro ověřování pracuje s Azure AD bez konfigurace.
+  
+* **Vytváření vlastních řešení zřizování pro aplikace, které podporují jiné založené na rozhraní API zřizování** -pro jiný SCIM aplikace, můžete vytvořit koncový bod SCIM pro převod mezi koncový bod Azure AD SCIM a jakéhokoli rozhraní API aplikace podporuje pro zřizování uživatelů. Můžete vyvíjet koncový bod SCIM, neexistují knihovny společné jazykové infrastruktury (CLI) společně s ukázky kódu, které ukazují, jak k poskytování koncový bod SCIM a převede SCIM zprávy.  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Zřizování uživatelů a skupin na aplikace, které podporují SCIM
 Azure AD lze nakonfigurovat, aby automaticky přiřazen zřizování uživatelů a skupin k aplikacím, které implementují [systému pro správu identit napříč doménami 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) webové služby a přijímat tokeny nosičů OAuth pro ověřování. V rámci specifikace SCIM 2.0 aplikace musí splňovat tyto požadavky:
@@ -51,7 +53,7 @@ Azure AD lze nakonfigurovat, aby automaticky přiřazen zřizování uživatelů
 Zeptejte se svého poskytovatele aplikace nebo v dokumentaci poskytovatele aplikace pro příkazy kompatibility s těmito požadavky.
 
 ### <a name="getting-started"></a>Začínáme
-Aplikace, které podporují profilem SCIM popsané v tomto článku může být připojen k Azure Active Directory používá funkci "bez Galerie aplikace" v galerii aplikací Azure AD. Po připojení Azure AD spustí proces synchronizace každých 20 minut, kde se dotazuje aplikace SCIM koncový bod pro přiřazené uživatele a skupiny a vytvoří nebo upraví je na základě podrobností přiřazení.
+Aplikace, které podporují profilem SCIM popsané v tomto článku může být připojen k Azure Active Directory používá funkci "bez Galerie aplikace" v galerii aplikací Azure AD. Po připojení Azure AD spustí proces synchronizace každých 40 minutách, kde se dotazuje aplikace SCIM koncový bod pro přiřazené uživatele a skupiny a vytvoří nebo upraví je na základě podrobností přiřazení.
 
 **Připojení aplikace, která podporuje SCIM:**
 
@@ -85,7 +87,7 @@ Aplikace, které podporují profilem SCIM popsané v tomto článku může být 
 Po dokončení počáteční synchronizace se spustil, můžete **protokoly auditu** a sledovat postup, který zobrazuje všechny akce prováděné při zřizování služby ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 >[!NOTE]
->Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 20 minut, dokud se službou provést. 
+>Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, dokud se službou provést. 
 
 
 ## <a name="building-your-own-provisioning-solution-for-any-application"></a>Vytváření vlastní zřizování řešení pro všechny aplikace
@@ -96,10 +98,10 @@ Zde je, jak to funguje:
 1. Azure AD poskytuje společné jazykové infrastruktury knihovny s názvem [Microsoft.SystemForCrossDomainIdentityManagement](https://www.nuget.org/packages/Microsoft.SystemForCrossDomainIdentityManagement/). Systémoví integrátoři a vývojáři mohou použít tuto knihovnu vytvořit a nasadit koncový bod na základě SCIM webové služby lze připojit k libovolné aplikace úložiště identit Azure AD.
 2. Mapování se implementují ve webové službě k mapování schéma standardizované uživatele na schéma uživatele a protokol požadované aplikací.
 3. Adresa URL koncového bodu je zaregistrován ve službě Azure AD jako součást vlastní aplikaci v galerii aplikací.
-4. Uživatelé a skupiny přiřazené k této aplikaci ve službě Azure AD. Po přiřazení jsou vloženy do fronty na synchronizaci do cílové aplikace. Proces synchronizace zpracování fronty spouští každých 20 minut.
+4. Uživatelé a skupiny přiřazené k této aplikaci ve službě Azure AD. Po přiřazení jsou vloženy do fronty na synchronizaci do cílové aplikace. Proces synchronizace zpracování fronty spouští každých 40 minutách.
 
 ### <a name="code-samples"></a>Ukázky kódů
-Chcete-li tento jednodušší, proces sadu [ukázky kódu jsou](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, vytvořit koncový bod webové služby SCIM a ukázka automatické zřizování. Jeden ukázka je zprostředkovatele, který udržuje soubor s řádky představující uživatele a skupiny hodnot oddělených čárkami.  Druhá je zprostředkovatele, který funguje ve službě Amazon Web Services identita a správa přístupu.  
+V zájmu snazší tento proces [ukázky kódu jsou](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) jsou k dispozici, vytvořit koncový bod webové služby SCIM a ukázka automatické zřizování. Jeden ukázka je zprostředkovatele, který udržuje soubor s řádky představující uživatele a skupiny hodnot oddělených čárkami.  Druhá je zprostředkovatele, který funguje ve službě Amazon Web Services identita a správa přístupu.  
 
 **Požadavky**
 
@@ -107,7 +109,6 @@ Chcete-li tento jednodušší, proces sadu [ukázky kódu jsou](https://github.c
 * [Azure SDK pro .NET](https://azure.microsoft.com/downloads/)
 * Windows počítač, který podporuje technologii ASP.NET 4.5 má být použit jako SCIM koncový bod. Tento počítač musí být přístupné z cloudu
 * [Předplatné Azure zkušební nebo licencovanou verzi Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
-* Ukázka Amazon AWS vyžaduje knihovny z [AWS nástrojů pro Visual Studio](http://docs.aws.amazon.com/AWSToolkitVS/latest/UserGuide/tkv_setup.html). Další informace naleznete v souboru README součástí vzorku.
 
 ### <a name="getting-started"></a>Začínáme
 Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může přijmout zřizování požadavky z Azure AD je sestavení a nasazení ukázka kódu, který produkuje zřízené uživatele do souboru s oddělovači (CSV).
@@ -116,19 +117,16 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
 
 1. Stáhněte si balíček ukázkový kód v [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. Rozbalte balíček a umístěte ji na počítač se systémem Windows v umístění, jako je například C:\AzureAD-BYOA-Provisioning-Samples\.
-3. V této složce spusťte FileProvisioningAgent řešení v sadě Visual Studio.
-4. Vyberte **nástroje > Správce balíčků knihoven > Konzola správce balíčků**a spusťte následující příkazy pro projekt FileProvisioningAgent se vyřešit odkazy na řešení:
+3. V této složce spusťte projekt FileProvisioning\Host\FileProvisioningService.csproj v sadě Visual Studio.
+4. Vyberte **nástroje > Správce balíčků NuGet > Konzola správce balíčků**a spusťte následující příkazy pro projekt FileProvisioningService se vyřešit odkazy na řešení:
   ```` 
-   Install-Package Microsoft.SystemForCrossDomainIdentityManagement
-   Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-   Install-Package Microsoft.Owin.Diagnostics
-   Install-Package Microsoft.Owin.Host.SystemWeb
+   Update-Package -Reinstall
   ````
-5. Sestavení projektu FileProvisioningAgent.
-6. Spuštění aplikace příkazového řádku v systému Windows (jako správce) a použít **cd** příkazu změňte adresář na vaše **\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug** složka.
+5. Sestavení projektu FileProvisioningService.
+6. Spuštění aplikace příkazového řádku v systému Windows (jako správce) a použít **cd** příkazu změňte adresář na vaše **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug**složky.
 7. Spusťte následující příkaz, nahraďte IP adresy nebo domény název počítače Windows < adresa >:
   ````   
-   FileAgnt.exe http://<ip-address>:9000 TargetFile.csv
+   FileSvc.exe http://<ip-address>:9000 TargetFile.csv
   ````
 8. V systému Windows v rámci **nastavení systému Windows > síť a Internet nastavení**, vyberte **brány Windows Firewall > Upřesnit nastavení**a vytvořit **příchozí pravidlo** , umožňuje příchozí přístup k portu 9000.
 9. Pokud je počítač Windows za směrovačem, je potřeba nakonfigurovat k provedení přístup překlad mezi její port 9000, který má přístup k Internetu a port 9000 na počítači Windows směrovači. Tato konfigurace je nutná pro přístup k tomuto koncovému bodu v cloudu Azure AD.
@@ -361,9 +359,9 @@ Skupiny prostředků jsou identifikovány identifikátor schématu http://schema
 | pracovní funkce |název |
 | E-mailu |.value e-mailů [typ eq "práce"] |
 | mailNickname |externalId |
-| Správce |Správce |
+| manažer |manažer |
 | mobilní |.value phoneNumbers [eq typ "mobilní"] |
-| objectId |id |
+| objectId |ID |
 | PSČ |adresy [typ eq "práce"] .postalCode |
 | proxy adresy |[Zadejte eq "ostatní"] e-mailů. Hodnota |
 | fyzický. doručení OfficeName |adresy [Zadejte eq "ostatní"]. Formátu |
@@ -379,7 +377,7 @@ Skupiny prostředků jsou identifikovány identifikátor schématu http://schema
 | E-mailu |.value e-mailů [typ eq "práce"] |
 | mailNickname |displayName |
 | členové |členové |
-| objectId |id |
+| objectId |ID |
 | proxyAddresses |[Zadejte eq "ostatní"] e-mailů. Hodnota |
 
 ## <a name="user-provisioning-and-de-provisioning"></a>Zřizování uživatelů a jeho rušení
@@ -534,18 +532,18 @@ Následující obrázek znázorňuje zprávy, že Azure Active Directory odešle
     GET ~/scim/Users?filter=id eq 54D382A4-2050-4C03-94D1-E769F1D15682 and manager eq 2819c223-7f76-453a-919d-413861904646&attributes=id HTTP/1.1
     Authorization: Bearer ...
   ````
-  Hodnota parametru dotazu atributy "id", znamená, že neexistuje, pokud existuje objekt uživatele, který splňuje výraz zadaný jako hodnota parametru dotazu filtru a pak službu očekává se, že odpoví "urn: ietf:params:scim:schemas:core:2.0: Uživatel"nebo"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"prostředků, včetně pouze hodnotu atributu"id"Tento prostředek.  Hodnota **id** atribut je znám žadatel. Hodnota parametru dotazu filtru; je součástí účelem žádostí o jeho je ve skutečnosti o minimální reprezentace daného prostředku, které splňují výraz filtru jako údaj o tom, zda existuje takový objekt.   
+  Hodnota parametru dotazu atributy "ID", která označuje, pokud existuje objekt uživatele, který splňuje výraz zadaný jako hodnota parametru dotazu filtru a pak službu očekává se, že odpoví "urn: ietf:params:scim:schemas:core:2.0: Uživatel"nebo"urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"prostředků, včetně pouze hodnotu atributu"ID"Tento prostředek.  Hodnota **ID** atribut je znám žadatel. Hodnota parametru dotazu filtru; je součástí účelem žádostí o jeho je ve skutečnosti o minimální reprezentace daného prostředku, které splňují výraz filtru jako údaj o tom, zda existuje takový objekt.   
 
   Pokud služba je vytvořená pomocí knihovny Common Language Infrastructure od společnosti Microsoft pro implementaci služby SCIM, je požadavek přeložit na volání metody dotazu zprostředkovatele služby. Hodnota vlastnosti objektu zadaný jako hodnota argumentu parametry jsou následující: 
   
   * Parametry. AlternateFilters.Count: 2
-  * Parametry. AlternateFilters.ElementAt(x). AttributePath: "id"
+  * Parametry. AlternateFilters.ElementAt(x). AttributePath: "ID"
   * Parametry. AlternateFilters.ElementAt(x). Porovnávací operátor: ComparisonOperator.Equals
   * parameters.AlternateFilter.ElementAt(x).ComparisonValue: "54D382A4-2050-4C03-94D1-E769F1D15682"
   * Parametry. AlternateFilters.ElementAt(y). AttributePath: "správce"
   * Parametry. AlternateFilters.ElementAt(y). Porovnávací operátor: ComparisonOperator.Equals
   * parameters.AlternateFilter.ElementAt(y).ComparisonValue: "2819c223-7f76-453a-919d-413861904646"
-  * Parametry. RequestedAttributePaths.ElementAt(0): "id"
+  * Parametry. RequestedAttributePaths.ElementAt(0): "ID"
   * parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
   Zde hodnotu indexu x může být 0 a hodnotu index y může být 1, nebo může být hodnota parametru x 1 a hodnota y může být 0, v závislosti na pořadí výrazy parametru dotazu filtru.   

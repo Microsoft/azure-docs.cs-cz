@@ -1,11 +1,11 @@
 ---
-title: "Vývoj pro Azure soubory s Pythonem | Microsoft Docs"
-description: "Další informace jak vyvíjet aplikace Python a služby, které používají Azure souborů k ukládání dat souborů."
+title: Vývoj pro Azure soubory s Pythonem | Microsoft Docs
+description: Další informace jak vyvíjet aplikace Python a služby, které používají Azure souborů k ukládání dat souborů.
 services: storage
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1102fd516b5497b4c482986b64fa7c96e9ccc54a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738257"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro Azure soubory s Pythonem
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -27,9 +28,9 @@ ms.lasthandoff: 12/08/2017
 
 V tomto kurzu se ukazují základy používání Python k vývoji aplikací nebo služeb, které používají Azure soubory k ukládání dat souborů. V tomto kurzu jsme vytvořit jednoduché konzolové aplikace a ukazují, jak provést základní operace s Python a Azure souborů:
 
-* Vytvoření sdílené složky Azure File
+* Vytvoření sdílené složky Azure
 * Vytváření adresářů
-* Vytvoření výčtu souborů a adresářů v Azure File sdílet
+* Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
 * Odesílání, stahování a odstranění souboru
 
 > [!Note]  
@@ -69,7 +70,7 @@ from azure.storage.file import FileService
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
-## <a name="create-an-azure-file-share"></a>Vytvoření Azure sdílené složky
+## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
 V následujícím příkladu kódu, můžete použít `FileService` objekt, který chcete vytvořit sdílenou složku, pokud neexistuje.
 
 ```python
@@ -83,8 +84,8 @@ file_service.create_share('myshare')
 file_service.create_directory('myshare', 'sampledir')
 ```
 
-## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v Azure File sdílet
-K zobrazení seznamu souborů a adresářů ve sdílené složce, použijte **seznamu\_adresáře\_a\_soubory** metoda. Tato metoda vrátí generátor. Následující kód výstupy **název** každého souboru a adresáře ve sdílené složce, do konzoly.
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Vytvoření výčtu souborů a adresářů v sdílenou složku Azure
+K zobrazení seznamu souborů a adresářů ve sdílené složce, použijte **seznamu\_adresáře\_a\_soubory** metoda. Tato metoda vrací generátor. Následující kód výstupy **název** každého souboru a adresáře ve sdílené složce, do konzoly.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -93,11 +94,11 @@ for file_or_dir in generator:
 ```
 
 ## <a name="upload-a-file"></a>Nahrání souboru 
-Azure soubor, který obsahuje sdílenou složku v každém, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
+Sdílenou složku Azure obsahuje v každém, kořenový adresář, kde mohou být uloženy soubory. V této části se dozvíte jak nahrát soubor z místního úložiště do kořenového adresáře sdílenou složku.
 
 Chcete-li vytvořit soubor a odesílat data, použijte `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` metody. Jsou nejdůležitější metody, které provádějí potřebné rozdělování, když velikost dat přesáhne 64 MB.
 
-`create_file_from_path`Odešle obsah souboru ze zadané cesty a `create_file_from_stream` odešle obsah z již otevřeného souboru/stream. `create_file_from_bytes`odešle pole bajtů, a `create_file_from_text` odešle zadanou textovou hodnotu pomocí zadaného kódování (výchozí hodnota je UTF-8).
+`create_file_from_path` Odešle obsah souboru ze zadané cesty a `create_file_from_stream` odešle obsah z již otevřeného souboru/stream. `create_file_from_bytes` odešle pole bajtů, a `create_file_from_text` odešle zadanou textovou hodnotu pomocí zadaného kódování (výchozí hodnota je UTF-8).
 
 V následujícím příkladu se uloží obsah **sunset.png** soubor do **myfile** souboru.
 
@@ -178,7 +179,7 @@ Sdílené složky, která obsahuje snímky nelze odstranit, pokud jsou jako prvn
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste se naučili jak pracovat se soubory Azure s Python, postupujte podle následujících odkazech na další informace.
 
 * [Středisko pro vývojáře programující v Pythonu](/develop/python/)

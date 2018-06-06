@@ -3,7 +3,7 @@ title: Použít vlastní role cílový Privileged Identity Management nastavení
 description: Popisuje, jak používat vlastní role pro prostředky Azure s PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
-ms.author: billmath
-ms.openlocfilehash: e3df34e761f17aa3c1949af390e57360d84a304f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: rolyon
+ms.openlocfilehash: fb40c59fde17c742bb9e2bbe5f5f598382248eab
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699348"
 ---
 # <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Použít vlastní role k nastavení cílového Privileged Identity Management
 

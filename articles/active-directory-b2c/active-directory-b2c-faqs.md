@@ -1,20 +1,21 @@
 ---
-title: Nejčastější dotazy – Azure Active Directory B2C
-description: Časté otázky (FAQ) k Azure Active Directory B2C
+title: Nejčastější dotazy pro Azure Active Directory B2C | Microsoft Docs
+description: Časté otázky (FAQ) k Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: d213a3f8bed5af526efba39868855b6f6727a7c0
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: B2C
+ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34710728"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi časté otázky o Azure Active Directory (Azure AD) B2C. Kontrolovat zpět aktualizací.
@@ -43,7 +44,7 @@ Začínáme s vlastními zásadami Vyzkoušejte naše [vlastní zásady starter 
 Ne, ale tato funkce je v našem plán. Výchozí obory, použít pro naše podporované sadu poskytovatelů sociálních identit jsou:
 
 * Facebook: e-mailu
-* Google+: email
+* Google +: e-mailu
 * Účet Microsoft: openid e-mailový profil
 * Amazon: profil
 * LinkedIn: r_emailaddress, r_basicprofile
@@ -118,7 +119,7 @@ Použijte následující postup odstranění vašeho klienta Azure AD B2C:
 4. Vyberte každého uživatele v zapnout (vyloučení, který jste přihlášeni jako správce předplatného uživatele). Klikněte na tlačítko **odstranit** v dolní části stránky a klikněte na tlačítko **Ano** po zobrazení výzvy.
 5. Klikněte **registrace aplikace**.
 6. Vyberte aplikaci s názvem **aplikace b2c rozšíření**. Klikněte na tlačítko **odstranit** a klikněte na tlačítko **Ano** po zobrazení výzvy.
-7. Vyberte **přehled**.
+7. Vyberte **Přehled**.
 8. Klikněte na tlačítko **odstranění adresáře**. Dokončete proces, postupujte podle pokynů na obrazovce.
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Můžete získat Azure AD B2C jako součást sady Enterprise Mobility Suite?

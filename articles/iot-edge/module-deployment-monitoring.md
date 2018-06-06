@@ -1,19 +1,19 @@
 ---
 title: Nasazení moduly pro hraniční Azure IoT | Microsoft Docs
 description: Další informace o získání nasazení modulů do hraniční zařízení
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 880a17b6029dafec9ed41e3a32802dc42b872e77
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725322"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Pochopení IoT Edge nasazení jednoho zařízení nebo ve velkém měřítku – náhled
 
@@ -25,7 +25,7 @@ Postupujte podle Azure IoT hraniční zařízení [životní cyklus zařízení]
 
 Azure IoT Edge nabízí dva způsoby, jak konfigurovat moduly, které ke spuštění na IoT hraniční zařízení: jeden pro vývoj a rychlé opakování na jednom zařízení (který jste použili v kurzů k Azure IoT Edge) a jeden pro správu velké loďstev IoT hraniční zařízení. Oba tyto přístupy jsou k dispozici na webu Azure Portal a programově.
 
-Tento článek se zaměřuje na konfiguraci a monitorování fázích pro loďstva zařízení, souhrnně označovány jako IoT Edge nasazení. Celkové kroky nasazení jsou následující:   
+Tento článek se zaměřuje na konfiguraci a monitorování fázích pro loďstva zařízení, souhrnně označovány jako IoT okraj automatického nasazení. Celkové kroky nasazení jsou následující:   
 
 1. Operátor definuje nasazení, který popisuje sadu moduly, jakož i cílovým zařízením. Každé nasazení má manifestu nasazení, který zobrazuje tyto informace. 
 1. Služba IoT Hub komunikuje se všechna cílová zařízení je nakonfigurovat s požadované moduly. 
@@ -36,7 +36,7 @@ Tento článek vás provede jednotlivé komponenty zahrnutých v konfiguraci a m
 
 ## <a name="deployment"></a>Nasazení
 
-Nasazení přiřadí IoT Edge modulu obrázky ke spuštění jako instance v cílové sadě IoT hraniční zařízení. Funguje díky konfiguraci manifest nasazení IoT Edge zahrnout seznam modulů s odpovídající inicializační parametry. Nasazení lze přiřadit na jedno zařízení (obvykle podle Id zařízení) nebo pro skupinu zařízení (podle značek). Jakmile IoT hraniční zařízení obdrží manifest nasazení, stáhne a nainstaluje modul kontejneru Image z příslušného kontejneru úložiště a nakonfiguruje je odpovídajícím způsobem. Po vytvoření nasazení operátor můžete sledovat stav nasazení zobrazíte, zda jsou správně nakonfigurovány cílová zařízení.   
+Automatické nasazení IoT Edge přiřadí IoT Edge modulu obrázky ke spuštění jako instance v cílové sadě IoT hraniční zařízení. Funguje díky konfiguraci manifest nasazení IoT Edge zahrnout seznam modulů s odpovídající inicializační parametry. Nasazení lze přiřadit na jedno zařízení (obvykle podle Id zařízení) nebo pro skupinu zařízení (podle značek). Jakmile IoT hraniční zařízení obdrží manifest nasazení, stáhne a nainstaluje modul kontejneru Image z příslušného kontejneru úložiště a nakonfiguruje je odpovídajícím způsobem. Po vytvoření nasazení operátor můžete sledovat stav nasazení zobrazíte, zda jsou správně nakonfigurovány cílová zařízení.   
 
 Zařízení musí být zřízená jako IoT hraniční zařízení konfigurovat pomocí nasazení. Následující předpoklady a nejsou zahrnuté v nasazení:
 * Základní operační systém

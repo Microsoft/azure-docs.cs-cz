@@ -1,22 +1,19 @@
 ---
 title: Služba pro zřizování zařízení ze služby IoT Hub – automatické zřizování koncepty
 description: Tento článek obsahuje koncepční přehled fází auto zřizování zařízení, pomocí služby zřizování zařízení IoT, IoT Hub a klienta sady SDK.
-services: iot-dps
-keywords: ''
 author: BryanLa
 ms.author: bryanla
-ms.date: 03/27/2018
+ms.date: 06/01/2018
 ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: e743f40a1f8ff71fe93f14217b410df348d9903d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a5ac8b6116eebb400c12d50de010b93bded268ff
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736402"
 ---
 # <a name="auto-provisioning-concepts"></a>Automatické zřizování koncepty
 
@@ -33,7 +30,7 @@ Azure IoT automatické zřizování možné ho rozdělit do tří fází:
 
 2. **Registrace zařízení** -proces převedení instance služby zřizování zařízení upozornit zařízení, která se pokusí o registraci v budoucnu. [Registrace](concepts-service.md#enrollment) provádí konfigurace informací o identitu zařízení v rámci zřizování služby, jako "jednotlivých zápisu" pro jedno zařízení, nebo "registrace skupiny" pro více zařízení. Je na základě identity [ověření mechanismu](concepts-security.md#attestation-mechanism) zařízení slouží k použití, která umožňuje zřizování služby ověřit identitu pro pravosti zařízení během registrace:
 
-   - **Čip TPM**: nakonfigurovaný jako "jednotlivých zápisu", identitu tohoto zařízení je založeno na ID registrace TPM a veřejné ověřovacího klíče. Vzhledem k tomu, že je čip TPM [specifikace]((https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)), služba očekává pouze ověřit identitu podle specifikace, bez ohledu na čipu TPM implementace (hardwaru nebo softwaru). V tématu [zřizování zařízení: ověření Identity s čipem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) podrobnosti o ověření založené na čipu TPM. 
+   - **Čip TPM**: nakonfigurovaný jako "jednotlivých zápisu", identitu tohoto zařízení je založeno na ID registrace TPM a veřejné ověřovacího klíče. Vzhledem k tomu, že je čip TPM [specifikace](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/), služba očekává pouze ověřit identitu podle specifikace, bez ohledu na čipu TPM implementace (hardwaru nebo softwaru). V tématu [zřizování zařízení: ověření Identity s čipem TPM](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) podrobnosti o ověření založené na čipu TPM. 
 
    - **X509**: nakonfigurovaný jako "jednotlivých registrace" nebo "registrace skupiny", identita zařízení je založena na digitální certifikát X.509, který se nahraje registrace jako soubor .pem nebo .cer.
 
@@ -62,7 +59,7 @@ Automatické zřizování také uvádí požadavky na výrobce zařízení, spec
 
 Následující diagram shrnuje role a pořadí operací během automatického zřizování zařízení:
 <br><br>
-![Automatické zřizování pořadí pro zařízení.](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png) 
+[![Automatické zřizování pořadí pro zařízení.](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > Volitelně výrobce můžete také provést operaci "Registrace identity zařízení" pomocí rozhraní API služby pro zřizování zařízení (ne prostřednictvím operátor). Podrobné informace o této sekvencování a další, najdete v článku [nulové touch registrace zařízení s Azure IoT video](https://myignite.microsoft.com/sessions/55087) (počínaje značky 41:00)

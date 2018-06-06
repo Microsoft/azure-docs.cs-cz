@@ -1,14 +1,15 @@
 ---
-title: "Migraci na portálu Azure classic zásad | Microsoft Docs"
-description: "Zjistěte, co potřebujete vědět o migraci na portálu Azure classic zásad."
+title: Migraci na portálu Azure classic zásad | Microsoft Docs
+description: Zjistěte, co potřebujete vědět o migraci na portálu Azure classic zásad.
 services: active-directory
-keywords: "podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu"
-documentationcenter: 
+keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+documentationcenter: ''
 author: MarkusVi
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 16628bd4fa41d2e7697e1c2501f2ccd31dbd0496
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: b6285381833526cdbdd7c1392894458a47c1cf34
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723724"
 ---
 # <a name="migrate-classic-policies-in-the-azure-portal"></a>Migrace na portálu Azure classic zásady 
 
@@ -39,7 +41,7 @@ Měli byste zvážit, zásady, které jste dosud nevytvořili na portálu Azure,
 
 Tento článek vysvětluje, co potřebujete vědět o migraci stávající zásady podmíněného přístupu na nové architektury.
  
-## <a name="classic-policies"></a>Classic zásady
+## <a name="classic-policies"></a>Klasické zásady
 
 V [portál Azure](https://portal.azure.com), [podmíněný přístup – zásady](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) stránka je zásady vaší vstupní bod do podmíněného přístupu. Ve vašem prostředí, může však také mít zásady podmíněného přístupu, které jste dosud nevytvořili pomocí této stránky. Tyto zásady se označují jako *classic zásady*. Zásady podmíněného přístupu jsou Classic zásady, které jste vytvořili v:
 
@@ -81,7 +83,7 @@ Změnou vybrané skupiny nebo vyloučení konkrétních skupin můžete otestova
 
 Pomocí podmíněného přístupu na portálu Azure můžete spravovat všechny zásady v jednom centrálním místě. Protože se změnil výrazně implementace jak podmíněný přístup, byste si měli přečíst se základními koncepcemi před migrací classic zásad.
 
-Přejděte na téma:
+Přečtěte si:
 
 - [Podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md) Další informace o základních koncepcích a technologiím.
 
@@ -166,7 +168,7 @@ V nové zásady, budete muset vybrat možnost [platformy zařízení](active-dir
  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
 

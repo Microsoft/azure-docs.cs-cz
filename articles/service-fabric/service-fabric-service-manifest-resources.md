@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: ce2bc8cc8d9b149b16aee9c5e601d9872621e277
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f486ce5c058286289873d87767f02bf92f91459e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701438"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Zadání prostředků v manifestu služby
 ## <a name="overview"></a>Přehled
@@ -105,7 +106,10 @@ Protokol HTTPS zajišťuje ověřování na serveru a slouží pro komunikaci kl
 > [!NOTE]
 > Protokol služby nelze změnit během upgradu aplikace. Pokud se změní při upgradu, je narušující změně.
 > 
-> 
+
+> [!WARNING] 
+> Při použití protokolu HTTPS, nepoužívejte stejný port a certifikát pro instance různé služby (nezávisle na aplikaci), které jsou nasazené na stejném uzlu. Upgrade dvě různé služby pomocí stejný port na jinou aplikaci instancí povede selhání při upgradu. Další informace najdete v tématu [upgrade více aplikací s koncovými body HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+>
 
 Tady je příklad ApplicationManifest, který je nutné nastavit pro protokol HTTPS. Kryptografický otisk certifikátu musí být zadán. EndpointRef je odkaz na EndpointResource v ServiceManifest, u kterého jste nastavili protokol HTTPS. Můžete přidat více než jeden EndpointCertificate.  
 
@@ -154,11 +158,11 @@ Pro Linux clusterů **MY** uložení výchozích hodnot do složky **/var/lib/sf
 
 ## <a name="overriding-endpoints-in-servicemanifestxml"></a>Přepsání koncových bodů v ServiceManifest.xml
 
-ApplicationManifest přidejte ResourceOverrides část, která bude na stejné úrovni ConfigOverrides sekci. V této části můžete zadat přepsání pro oddíl koncové body v části prostředky zadané v Service manifest. Přepsání koncových bodů je podporována v modulu runtime 5.7.217/SDK 2.7.217 a vyšší.
+ApplicationManifest přidejte ResourceOverrides oddíl, který bude na stejné úrovni ConfigOverrides sekci. V této části můžete zadat přepsání pro oddíl koncové body v části prostředky zadané v Service manifest. Přepsání koncových bodů je podporována v modulu runtime 5.7.217/SDK 2.7.217 a vyšší.
 
 Chcete-li přepsat koncového bodu v ServiceManifest pomocí ApplicationParameters změn ApplicationManifest jako následující:
 
-V části ServiceManifestImport přidejte novou část "ResourceOverrides"
+V části ServiceManifestImport přidejte novou část "ResourceOverrides".
 
 ```xml
 <ServiceManifestImport>
@@ -188,13 +192,13 @@ V parametrech přidat níže:
   </Parameters>
 ```
 
-Při nasazování aplikace teď můžete předat tyto hodnoty jako ApplicationParameters například:
+Při nasazení aplikace lze předat v tyto hodnoty jako ApplicationParameters.  Příklad:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Poznámka: Pokud příslušná hodnota poskytuje pro prázdný ApplicationParameters jsme přejděte zpět na výchozí hodnotu dostupné ServiceManifest pro odpovídající EndPointName.
+Poznámka: Pokud hodnoty ApplicationParameters je prázdný, jsme přejděte zpět na výchozí hodnotu dostupné ServiceManifest pro odpovídající EndPointName.
 
 Příklad:
 

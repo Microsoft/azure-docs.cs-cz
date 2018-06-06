@@ -9,6 +9,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,11 +17,12 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 842fe8c194f1c88c7dabb073e0fa7b7806d92d44
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 1b3dd172e42ecbaa20bbd3763fa13651e1663adb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725288"
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Podmínky umístění v Azure Active Directory podmíněného přístupu 
 

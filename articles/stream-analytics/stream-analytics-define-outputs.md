@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2f616c5908d8583764425b62acd1650283d0695
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701713"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Pochopení výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupů, které jsou k dispozici pro úlohu služby Azure Stream Analytics. Výstupy umožňují ukládat a uložte výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýza a datových skladů vaše data. 
@@ -27,6 +28,8 @@ Některé typy podporu výstupy [dělení](#partitioning), a [výstup velikosti 
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Stream Analytics podporuje [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake Store je celopodnikové, flexibilně škálovatelné úložiště pro analytické úlohy s velkými objemy dat. Data Lake Store umožňuje ukládání dat z jakékoli velikosti, typu a rychlosti příjmu pro provozní a zjišťovací analýzy. Stream Analytics musí mít oprávnění pro přístup k Data Lake Store.
+
+Azure Data Lake Store výstup ze služby Stream Analytics není momentálně k dispozici v Azure China (21Vianet) a oblastech Azure v Německu (T-systémy mezinárodní).
 
 ### <a name="authorize-an-azure-data-lake-store-account"></a>Autorizace účtu Azure Data Lake Store
 
@@ -44,7 +47,7 @@ Stream Analytics podporuje [Azure Data Lake Store](https://azure.microsoft.com/s
 | --- | --- |
 | Alias pro výstup | Popisný název používaný v dotazech na přesměrujte výstup dotazu do tohoto Data Lake Store. | 
 | Název účtu | Název účtu Data Lake Storage, kde jsou odesílání výstupu. Zobrazí rozevírací seznam účtů Data Lake Store, které jsou k dispozici v rámci vašeho předplatného. |
-| Vzor předpony cesty | Cesta k souboru používaná k zápisu souborů v rámci zadaného účtu Data Lake Store. Můžete určit jeden nebo více instancí {date} a {time} proměnné.</br><ul><li>Příklad 1: složku1/logs / {date} / {time}</li><li>Příklad 2: složku1/logs / {date}</li></ul>Pokud se vzorek cesty soubor neobsahuje koncový znak "/", poslední vzor v cestě k souboru je považován za předponu názvu souboru. </br></br>Za těchto okolností se vytváří nové soubory:<ul><li>Změnit ve výstupu schématu</li><li>Vnější nebo vnitřní restartujte úlohy.</li></ul> |
+| Vzor předpony cesty | Cesta k souboru používaná k zápisu souborů v rámci zadaného účtu Data Lake Store. Můžete určit jeden nebo více instancí {date} a {time} proměnné.</br><ul><li>Příklad 1: složku1/logs / {date} / {time}</li><li>Příklad 2: složku1/logs / {date}</li></ul><br>Časové razítko vytvoření struktura složek následuje místním ČASEM a ne.</br><br>Pokud se vzorek cesty soubor neobsahuje koncový znak "/", poslední vzor v cestě k souboru je považován za předponu názvu souboru. </br></br>Za těchto okolností se vytváří nové soubory:<ul><li>Změnit ve výstupu schématu</li><li>Vnější nebo vnitřní restartujte úlohy.</li></ul> |
 | Formát data | Volitelné. Pokud se v cestě předponu používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány soubory. Příklad: Rrrr/MM/DD |
 |Formát času | Volitelné. Pokud token čas se používá v cestě předponu, zadejte formát času, ve kterém jsou uspořádány soubory. Aktuálně jedinou podporovanou hodnotou je HH. |
 | Formát serializace události | Formát serializace pro výstupní data. Jsou podporovány JSON, CSV a Avro.| 
@@ -67,7 +70,7 @@ Obnovit autorizace, **Zastavit** úlohu > přejděte na výstup do Data Lake Sto
 | Alias pro výstup |Popisný název používaný v dotazech na přesměrujte výstup dotazu do této databáze. |
 | Databáze | Název databáze, kde jsou odesílání výstupu. |
 | Název serveru | Název databáze SQL serveru. |
-| Uživatelské jméno | Uživatelské jméno, který má přístup k zápisu do databas. |
+| Uživatelské jméno | Uživatelské jméno, který má přístup k zápisu do databáze. |
 | Heslo | Heslo pro připojení k databas.e |
 | Table | Název tabulky, kde je zapsán výstup. Název tabulky je malá a velká písmena a schéma této tabulky by se měl shodovat přesně počet polí a jejich typy generovaných výstupu úlohy. |
 
@@ -86,7 +89,7 @@ Následující tabulka uvádí názvy vlastností a jejich popis vytvoření vý
 | Účet úložiště | Název účtu úložiště, kde jsou odesílání výstupu. |
 | Klíč účtu úložiště | Tajný klíč přidružený k účtu úložiště. |
 | Kontejner úložiště | Kontejnery poskytují možnost logického seskupování pro objekty BLOB uložené ve službě Microsoft Azure Blob. Při nahrávání do objektu blob ve službě Blob, je nutné zadat kontejner pro tento objekt blob. |
-| Vzor cesty | Volitelné. Vzor cesty souborů používá k zápisu objektů BLOB v rámci zadaného kontejneru. </br></br> Ve vzoru cestu můžete použít jeden nebo více instancí datum čas proměnných pro určení četnosti, které jsou napsané objekty BLOB: </br> {date}, {time} </br> </br>Pokud si nejste [preview](https://aka.ms/ASAPreview), můžete také určit vlastní {pole} názvů z vašich dat událostí na objekty BLOB oddílu, kde název pole je alfanumerické znaky a může obsahovat mezery, pomlčky a podtržítka. Omezení na vlastních polích, patří: <ul><li>Případ nezaložené (nelze rozdíly mezi sloupci "ID" a sloupec "id")</li><li>Vnořená pole nejsou povolené (místo toho použít alias v dotazu úlohy k "vyrovnání" pole)</li><li>Výrazy nelze použít jako název pole</li></ul>Příklady: <ul><li>Příklad 1: cluster1/logs / {date} / {time}</li><li>Příklad 2: cluster1/logs / {date}</li><li>Příklad 3 (preview): cluster1 / {client_id} / {date} / {time}</li><li>Příklad 4 (preview): cluster1 / {myField} kde je dotaz: Vyberte data.myField jako myField vstup z;</li></ul><BR> Pojmenovávání souborů zahrnuje následující konvence: </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> Příklad výstupní soubory: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| Vzor cesty | Volitelné. Vzor cesty souborů používá k zápisu objektů BLOB v rámci zadaného kontejneru. </br></br> Ve vzoru cestu můžete použít jeden nebo více instancí datum čas proměnných pro určení četnosti, které jsou napsané objekty BLOB: </br> {date}, {time} </br> </br>Pokud si nejste [preview](https://aka.ms/ASAPreview), můžete také určit vlastní {pole} názvů z vašich dat událostí na objekty BLOB oddílu, kde název pole je alfanumerické znaky a může obsahovat mezery, pomlčky a podtržítka. Omezení na vlastních polích, patří: <ul><li>Případ nezaložené (nelze rozlišit mezi sloupci "ID" a sloupec "id")</li><li>Vnořená pole nejsou povolené (místo toho použít alias v dotazu úlohy k "vyrovnání" pole)</li><li>Výrazy nelze použít jako název pole</li></ul>Příklady: <ul><li>Příklad 1: cluster1/logs / {date} / {time}</li><li>Příklad 2: cluster1/logs / {date}</li><li>Příklad 3 (preview): cluster1 / {client_id} / {date} / {time}</li><li>Příklad 4 (preview): cluster1 / {myField} kde je dotaz: Vyberte data.myField jako myField vstup z;</li></ul><br>Časové razítko vytvoření struktura složek následuje místním ČASEM a ne.</br><BR> Pojmenovávání souborů zahrnuje následující konvence: </br> {Path Prefix Pattern}/schemaHashcode_Guid_Number.extension </br></br> Příklad výstupní soubory: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Formát data | Volitelné. Pokud se v cestě předponu používá token kalendářního data, můžete vybrat formát data, ve kterém jsou uspořádány soubory. Příklad: Rrrr/MM/DD |
 | Formát času | Volitelné. Pokud token čas se používá v cestě předponu, zadejte formát času, ve kterém jsou uspořádány soubory. Aktuálně jedinou podporovanou hodnotou je HH. |
 | Formát serializace události | Formát serializace pro výstupní data.  Jsou podporovány JSON, CSV a Avro.
@@ -103,7 +106,7 @@ Při použití úložiště objektů blob jako výstup, je vytvořen nový soubo
 * Pokud soubor nebo kontejneru účtu úložiště je odstraněno uživatelem.  
 * Je-li výstup čas oddíly pomocí předpony vzorek cesty, nový objekt blob se používá při dotaz přesune do příští hodiny.
 * Pokud výstup je rozdělena na oddíly pomocí vlastních polí, vytvoří se nový objekt blob za klíč oddílu, pokud neexistuje.
-*   Pokud výstup je rozdělena na oddíly pomocí vlastního pole, které překročí mohutnost klíče oddílu 8000, mohou být vytvořeny nové objektů blob na klíč oddílu.
+* Pokud výstup je rozdělena na oddíly pomocí vlastního pole, které překročí mohutnost klíče oddílu 8000, mohou být vytvořeny nové objektů blob na klíč oddílu.
 
 ## <a name="event-hub"></a>Centrum událostí
 [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) služba je vysoce škálovatelná publikování a odběru na přijímač událostí. Ho může shromažďovat miliony událostí za sekundu. Jedno použití centra událostí jako výstup je, když se stane vstup streamování jiné úlohy, výstup úlohy Stream Analytics.
@@ -113,7 +116,7 @@ Existuje několik parametrů, které jsou potřeba ke konfiguraci datové proudy
 | Název vlastnosti | Popis |
 | --- | --- |
 | Alias pro výstup | Popisný název používaný v dotazech na přesměrujte výstup dotazu do tohoto centra událostí. |
-| Obor názvů centra událostí |Obor názvů Centrum událostí je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí taky vytvoříte Centrum událostí názvů. |
+| Obor názvů centra událostí |Na obor názvů Centrum událostí je kontejner sady entit pro zasílání zpráv. Při vytváření nového centra událostí vytvořit taky na obor názvů centra událostí. |
 | Název centra událostí | Název výstupu centra událostí. |
 | Název zásad centra událostí | Zásady sdíleného přístupu, které se dají vytvořit na kartě Konfigurace centra událostí. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. |
 | Klíč zásad centra událostí | Sdílený přístupový klíč použitý k ověření přístupu k oboru názvů centra událostí. |
@@ -125,6 +128,8 @@ Existuje několik parametrů, které jsou potřeba ke konfiguraci datové proudy
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) lze použít jako výstup úlohy Stream Analytics k poskytování prostředí bohaté vizualizace výsledků analýzy. Tato funkce slouží pro provozní řídicí panely, generování sestav a metrika řízené generování sestav.
+
+Výstup Power BI ze služby Stream Analytics není momentálně k dispozici v Azure China (21Vianet) a oblastech Azure v Německu (T-systémy mezinárodní).
 
 ### <a name="authorize-a-power-bi-account"></a>Autorizovat účet Power BI
 1. Pokud Power BI je vybraná jako výstupu na portálu Azure, zobrazí se výzva k autorizaci stávajícímu uživateli Power BI nebo vytvořte nový účet Power BI.  
@@ -247,6 +252,8 @@ Počet oddílů je [na základě Service Bus SKU a velikost](../service-bus-mess
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) je globálně distribuované databáze, více modelu služby, aby neomezenou elastické škálování nabízí kolem celém světě, plnohodnotný dotazovací a automatické indexování přes vázané na schéma datové modely, garantované s nízkou latencí a špičkový komplexní SLA. Další informace o možnosti kolekce Cosmos DB Stream Analytics, naleznete [Stream Analytics s DB Cosmos jako výstup](stream-analytics-documentdb-output.md) článku.
 
+Azure Cosmos DB výstup ze služby Stream Analytics není momentálně k dispozici v Azure China (21Vianet) a oblastech Azure v Německu (T-systémy mezinárodní).
+
 > [!Note]
 > V tomto okamžiku Azure Stream Analytics podporuje jenom připojení pomocí CosmosDB **rozhraní SQL API**.
 > Jiná rozhraní API Azure Cosmos DB ještě nejsou podporovány. Pokud bod Azure Stream Analytics k účtům Azure Cosmos DB vytvořené pomocí jiných rozhraní API, data nemusí být uložen správně. 
@@ -267,11 +274,13 @@ Následující tabulka popisuje vlastnosti pro vytvoření výstupu Azure Cosmos
 ## <a name="azure-functions"></a>Azure Functions
 Azure Functions je výpočetní služba bez serveru umožňující spouštění kódu na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Umožňuje implementovat kód, který je aktivovaného událostmi, ke kterým dochází v Azure nebo služby třetích stran.  Tato schopnost Azure Functions reagovat na aktivační události usnadňuje přirozené výstup Azure Stream Analytics. Tento výstup adaptér umožňuje uživatelům připojení k Azure Functions Stream Analytics a spusťte skript nebo část kódu v reakci na celou řadu událostí.
 
+Výstup funkce Azure Stream Analytics není momentálně k dispozici v Azure China (21Vianet) a oblastech Azure v Německu (T-systémy mezinárodní).
+
 Azure Stream Analytics vyvolá Azure Functions prostřednictvím protokolu HTTP aktivační události. Nový adaptér výstup funkce Azure je k dispozici následující konfigurovatelné vlastnosti:
 
 | Název vlastnosti | description |
 | --- | --- |
-| Function app |Název aplikace Azure Functions |
+| Function App |Název aplikace Azure Functions |
 | Funkce |Název funkce v aplikaci funkce Azure |
 | Klíč |Pokud chcete používat funkci Azure z jiné předplatné, můžete tak učinit zadáním klíče pro přístup k vaší – funkce |
 | Maximální velikost dávky |Tuto vlastnost lze nastavit maximální velikost každé dávky výstup, které je odesláno funkce Azure. Ve výchozím nastavení tato hodnota je 256 KB |

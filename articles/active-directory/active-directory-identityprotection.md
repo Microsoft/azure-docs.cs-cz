@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713180"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -206,7 +208,7 @@ Přehled související uživatelské prostředí najdete v tématu:
 
 - Na **Azure AD Identity Protection** okno v **konfigurace** klikněte na tlačítko **zásad přihlašování riziko**.
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/1014.png "ridk zásady uživatele")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1014.png "riziko zásady uživatele")
 
 
 
@@ -306,25 +308,25 @@ Související dialogové okno obsahuje dvě různé metody pro obnovení hesla:
 ### <a name="user-risk-security-policy"></a>Zásada zabezpečení riziko uživatelů
 Zásady uživatele rizik zabezpečení je zásadu podmíněného přístupu, která vyhodnotí úroveň rizika pro konkrétního uživatele a použije nápravy a zmírnění akce na základě předem definované podmínky a pravidla.
 
-![Zásady uživatele ridk](./media/active-directory-identityprotection/1009.png "ridk zásady uživatele")
+![Zásady uživatele riziko](./media/active-directory-identityprotection/1009.png "riziko zásady uživatele")
 
 Azure AD Identity Protection pomáhá spravovat omezení rizik a náprava uživatelé označení příznakem rizik a to:
 
 * Nastavte uživatele a skupiny, které zásady platí pro:
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/1010.png "ridk zásady uživatele")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1010.png "riziko zásady uživatele")
 * Nastavte uživatele riziko úrovně prahovou hodnotu (nízká, střední nebo vysokou), která spustí zásady:
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/1011.png "ridk zásady uživatele")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1011.png "riziko zásady uživatele")
 * Nastavte ovládací prvky vynutit, pokud aktivuje zásady:
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/1012.png "ridk zásady uživatele")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1012.png "riziko zásady uživatele")
 * Přepnutí stavu zásad:
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/403.png "registrace MFA")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/403.png "registrace MFA")
 * Kontrola a vyhodnocení dopad změny před aktivací ho:
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/1013.png "ridk zásady uživatele")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1013.png "riziko zásady uživatele")
 
 Výběr **vysokou** prahová hodnota snižuje počet zásady se aktivuje a minimalizuje dopad na uživatele.
 Ale vyloučí **nízká** a **střední** uživatelé označení příznakem rizik ze zásad, které nemusí zabezpečit identity nebo zařízení, měla by mohly vzbuzovat podezření nebo známé došlo k narušení.
@@ -347,7 +349,7 @@ Přehled související uživatelské prostředí najdete v tématu:
 
 - Na **Azure AD Identity Protection** okno v **konfigurace** klikněte na tlačítko **zásady uživatele riziko**.
 
-    ![Zásady uživatele ridk](./media/active-directory-identityprotection/1009.png "ridk zásady uživatele")
+    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1009.png "riziko zásady uživatele")
 
 ### <a name="mitigating-user-risk-events"></a>Zmírnění rizik událostí uživatele
 Správci mohou nastavit zásady uživatele riziko zabezpečení pro blokování uživatele při přihlášení v závislosti na úroveň rizika.
@@ -366,7 +368,7 @@ Doporučujeme vyžadovat ověřování Azure Multi-Factor authentication pro př
 * Poskytuje silné ověřování s celou řadu možností snadno ověření
 * Hraje důležitou roli při přípravě vaší organizace k ochraně a obnovování z účtu ohrožení
 
-![Zásady uživatele ridk](./media/active-directory-identityprotection/1019.png "ridk zásady uživatele")
+![Zásady uživatele riziko](./media/active-directory-identityprotection/1019.png "riziko zásady uživatele")
 
 Další podrobnosti najdete v tématu [co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
 

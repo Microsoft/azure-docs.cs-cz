@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fd6817e63eea622294bbf766b66beb8bc49bc30c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726053"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akce na portálu Azure
 ## <a name="overview"></a>Přehled ##
-Tento článek ukazuje, jak vytvořit a spravovat skupiny akce na portálu Azure.
+Skupinu akcí je kolekce předvolby oznamování definovaných uživatelem. Azure výstrahy monitorování a stav služby jsou nakonfigurovány pro použití skupinu určité akce, pokud je výstraha. Různé výstrahy může použít stejnou skupinu akce nebo skupiny různé akce v závislosti na požadavcích uživatele.
 
-Seznam akcí, můžete nakonfigurovat skupiny akcí. Tyto skupiny pak může být použit jednotlivé výstrahy, které definujete, zajistíte, že jsou stejné akce trvá pokaždé, když se výstraha.
+Tento článek ukazuje, jak vytvořit a spravovat skupiny akce na portálu Azure.
 
 Každá akce se skládá z následujících vlastností:
 
@@ -44,7 +45,7 @@ Informace o tom, jak pomocí šablony Azure Resource Manager můžete nakonfigur
 3. Vyberte **přidat akci skupinu**a vyplňte příslušná pole.
 
     ![Příkaz "Přidat skupinu akce"](./media/monitoring-action-groups/add-action-group.png)
-4. Zadejte název do pole **název skupiny akce** pole a zadejte název do pole **krátký název** pole. Krátký název se používá namísto názvu skupiny úplné akce při odesílání oznámení pomocí této skupiny.
+4. Zadejte název do pole **název skupiny akce** pole a zadejte název do pole **krátký název** pole. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
       ![Dialogové okno Přidat skupinu akce"](./media/monitoring-action-groups/action-group-define.png)
 
@@ -69,7 +70,14 @@ Informace o tom, jak pomocí šablony Azure Resource Manager můžete nakonfigur
 <dd>V tuto chvíli akce aplikace Azure podporuje pouze ServiceHealth výstrahy. Všechny výstrahy čas se budou ignorovat. V tématu [Konfigurace upozornění pokaždé, když je odeslána oznámení o stavu služby](monitoring-activity-log-alerts-on-service-notifications.md).</dd>
 
 <dt>E-mailu</dt>
-<dd>Může mít až 50 akce e-mailu ve skupině Akce</dd>
+<dd>E-maily se budou odesílat z následující e-mailové adresy. Ujistěte se, že vaše e-mailu, filtrování je správně nakonfigurována
+
+    - azure-noreply@microsoft.com
+    - azureemail-noreply@microsoft.com
+    - alerts-noreply@mail.windowsazure.com
+    
+</dd>
+<dd>Může mít až 1000 akce e-mailu ve skupině Akce</dd>
 <dd>Najdete v článku [míru omezení informací](./monitoring-alerts-rate-limiting.md) článku</dd>
 
 <dt>ITSM</dt>

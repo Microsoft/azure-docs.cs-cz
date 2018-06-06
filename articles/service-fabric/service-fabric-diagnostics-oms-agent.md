@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: af0007daf6cb8a2e17e1806f47587e5958b15bd2
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716070"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Pomocí analýzy protokolů pro sledování výkonu
 
@@ -73,19 +74,27 @@ Můžete stáhnout a upravit tato šablona nasazení clusteru, který nejlépe v
 
 Teď, když jste přidali agenta OMS, head na over na portál analýzy protokolů a zvolte čítače výkonu, které jste chtěli shromažďovat. 
 
-1. Na portálu Azure přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfOMSWorkspace\>**  a přejděte na stránku s jeho Přehled. V horní části klikněte na odkaz přejdete na portál OMS.
+1. Na portálu Azure přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. Jakmile jste na portálu, zobrazí se dlaždice ve formě grafu pro každou z řešení povoleno, včetně jeden pro Service Fabric. Klepněte sem a pokračovat v řešení Service Fabric analýzy. 
+2. Klikněte na tlačítko **pracovním prostorem OMS**.
 
-3. Nyní se zobrazí několik dlaždic s grafy na provozní kanál a spolehlivé služby události. Na pravé straně klikněte na ikonu zařízení přejděte na stránku nastavení.
+3. Klikněte na tlačítko **upřesňující nastavení**.
 
-    ![Nastavení OMS](media/service-fabric-diagnostics-oms-agent/oms-solutions-settings.png)
+4. Klikněte na tlačítko **Data**, pak klikněte na tlačítko **Windows nebo Linux čítače výkonu**. Je seznam Výchozí čítače, které můžete povolit a můžete nastavit interval pro kolekci také. Můžete také přidat [další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromažďování. Správný formát je odkazováno v tomto [článku](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
 
-4. Na stránce nastavení kliknutím na možnost Data a zvolte Windows nebo Linux čítače výkonu. Existují seznam výchozích šablon, které můžete povolit a můžete nastavit interval pro kolekci také. Můžete také přidat [další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromažďování. Správný formát je odkazováno v tomto [článku](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+5. Klikněte na tlačítko **Uložit**, pak klikněte na tlačítko **OK**.
 
-Jakmile jsou nakonfigurované vaše čítače, head zpět na stránku řešení a zobrazí se vám brzo dat odesílaných v a zobrazují se v grafy v části **uzlu metriky**. Můžete taky zadat dotaz na data čítače výkonu podobně jako na clusteru události a na uzly, název čítače výkonu a hodnoty pomocí dotazovacího jazyka pro Kusto filtr. 
+6. Zavřete okno Upřesnit nastavení.
 
-![Dotaz čítače výkonu OMS](media/service-fabric-diagnostics-oms-agent/oms-perf-counter-query.png)
+7. V části Obecné záhlaví, klikněte na **přehled**.
+
+8. Zobrazí se dlaždice ve formě grafu pro každou z řešení povoleno, včetně jeden pro Service Fabric. Klikněte **Service Fabric** grafu nadále řešení Service Fabric analýzy.
+
+9. Zobrazí se několik dlaždic s grafy na provozní kanál a spolehlivé služby události. Grafické znázornění dat odesílaných v pro čítače, které jste vybrali se zobrazí v uzlu metriky. 
+
+10. Klikněte na graf kontejneru metrika zobrazíte další podrobnosti. Můžete taky zadat dotaz na data čítače výkonu podobně jako na clusteru události a na uzly, název čítače výkonu a hodnoty pomocí dotazovacího jazyka pro Kusto filtr.
+
+![Dotaz čítače výkonu OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.png)
 
 ## <a name="next-steps"></a>Další postup
 

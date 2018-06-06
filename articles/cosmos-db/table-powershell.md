@@ -2,28 +2,26 @@
 title: Provádění operací rozhraní API služby Azure Cosmos DB tabulky pomocí prostředí PowerShell | Microsoft Docs
 description: Jak provádět operace rozhraní API služby Azure Cosmos DB tabulky pomocí prostředí PowerShell
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
+author: SnehaGunda
+manager: kfile
 editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: sngun
+ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798640"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Provádění operací rozhraní API služby Azure Cosmos DB tabulky s prostředím Azure PowerShell 
 
 >[!NOTE]
->Rozhraní API tabulky DB Cosmos Azure poskytuje prémiových funkcí pro úložiště table, jako jsou to globální distribuční, nízká latence čtení a zápisy, automatické sekundární indexování a vyhrazenou propustností. Ve většině případů je specifické pro rozhraní API služby Azure Cosmos DB tabulky příkazy prostředí PowerShell v pracovním tohoto článku rozhraní API služby Azure Cosmos DB tabulky a Azure Table storage, ale v tomto článku. Pokud používáte Azure Table storage, najdete v části [operace úložiště Azure Table provést v prostředí Azure PowerShell](table-storage-how-to-use-powershell.md).
+>Rozhraní API tabulky DB Cosmos Azure poskytuje prémiových funkcí pro úložiště table, jako jsou to globální distribuční, nízká latence čtení a zápisy, automatické sekundární indexování a vyhrazenou propustností. Ve většině případů je specifické pro rozhraní API služby Azure Cosmos DB tabulky příkazy prostředí PowerShell v pracovním tohoto článku rozhraní API služby Azure Cosmos DB tabulky a Azure Table storage, ale v tomto článku. Pokud používáte Azure Table storage, najdete v části [operace úložiště Azure Table provést v prostředí Azure PowerShell](../storage/tables/table-storage-how-to-use-powershell.md).
 >
 
 Rozhraní API tabulky databáze Azure Cosmos umožňuje ukládání a dotazování obrovských sad strukturovaných, nerelačních data. Hlavní komponenty služby jsou tabulky, entit a vlastnosti. Tabulka je kolekce entit. Entita je sada vlastností. Každá entita může mít až 252 vlastností, které jsou všechny páry název hodnota. Tento článek předpokládá, že jste již obeznámeni s koncepty rozhraní API služby Azure Cosmos DB tabulky. Podrobné informace najdete v tématu [Úvod do rozhraní API služby Azure Cosmos DB tabulky](table-introduction.md) a [vytvoření aplikace .NET pomocí rozhraní API tabulky](create-table-dotnet.md).

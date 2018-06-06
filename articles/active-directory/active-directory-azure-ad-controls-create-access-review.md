@@ -11,12 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
-ms.author: billmath
-ms.openlocfilehash: 784a461421420af403a43f944d6f63aef3ccc152
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 00d8c7f9c4b335f107f436041b027b4df8845267
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698260"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Vytvoření kontrola přístupu členů skupiny nebo přístup k aplikaci s Azure AD
 
@@ -34,9 +35,9 @@ Přiřazení přístupu stát "zastaralé", když uživatelé mají přístup, k
 
 5. Nastavte počáteční datum. Ve výchozím nastavení kontrola přístupu proběhne jednou, spustí stejnou dobu, kdy je vytvořen a je končí na jeden měsíc. Spuštění, můžete změnit a koncovém datu měli přístup zkontrolujte spuštění v budoucnu a poslední ale chcete počet dní.
 
-6. Aby opakovaného zkontrolujte přístup, změnit frekvenci z jednou týdně, měsíčně, čtvrtletně nebo ročně a definovat, jak dlouho bude každý zkontrolujte řady opakovaných runbe otevřít pro vstup z kontroloři pomocí posuvníku nebo textové pole. Například maximální délka trvání Tnelze pro lze nastavit u měsíční kontrolu 27 dny překrývající se recenze. 
+6. Aby opakovaného zkontrolujte přístup, změnit frekvenci z jednou týdně, měsíčně, čtvrtletně nebo ročně a definovat, jak dlouho bude každý zkontrolujte řady opakovaných otevřené pro vstup z kontroloři pomocí posuvníku nebo textové pole. Maximální délka trvání pro lze nastavit pro měsíční kontrolu je například 27 dnů překrývající se recenze. 
 
-7.  Řada opakovaných kontrola přístupu můžete ukončit způsoby 3: běží nepřetržitě po neomezenou dobu spuštění recenze, nebo do určitého data nebo po definovaný počet výskytů se dokončila. Vy nebo jiný globální správce můžete zastavit řady po vytvoření změnou datum v nastavení tak, aby ho končí na datum.
+7.  Řada opakovaných kontrola přístupu můžete ukončit způsoby 3: běží nepřetržitě zahájíte recenze po neomezenou dobu, až do určitého data, nebo po dokončení definovaný počet výskytů. Vy nebo jiný globální správce můžete zastavit řady po vytvoření změnou datum v nastavení tak, aby ho končí na datum.
 
 8. Recenze přístup může být pro členy skupiny nebo pro uživatele, kteří byly přiřazené k aplikaci. Můžete vytvořit další obor přístupu zkontrolujte kontrola pouze uživatele typu Host kdo jsou členy (nebo přiřazené k aplikaci), namísto kontroly všech uživatelů, kteří jsou členy, nebo kteří mají přístup k aplikaci.
 
@@ -46,11 +47,11 @@ Přiřazení přístupu stát "zastaralé", když uživatelé mají přístup, k
 
 ### <a name="configuring-an-access-review-with-auto-apply"></a>Konfigurace kontrola přístupu s auto-apply
 
-1.  Rozbalte nabídku pro dokončení nastavení, andsettings a povolit automaticky použijí výsledky k prostředku. 
+1.  Po dokončení nastavení a povolit automatické vztahuje výsledky na prostředek, rozbalte nabídku. 
 
-2.  V případech, kde uživatelé nebyly zkontrolovány uživatelem kontrolorovi v období kontrolní, může mít kontrola přístupu buď trvat doporučení systému (Pokud je povoleno) na odepření/schválení nepřetržitý přístup uživatele, nebo nechte jejich přístup beze změny nebo odstraňte jejich přístup. Uživatelé, kteří byly zkontrolovány podle kontroloři ručně – to nemá vliv, pokud poslední kontrolor rozhodnutí odepřít, pak přístupu uživatele se odebere.
+2.  V případech, kde uživatelé nebyly zkontrolovány uživatelem kontrolorovi v období kontrolní, může mít kontrola přístupu buď trvat doporučení systému (Pokud je povoleno) na odepření/schválení nepřetržitý přístup uživatele, ponechejte jejich přístup beze změny nebo odstraňte jejich přístup. Uživatelé, kteří byly zkontrolovány podle kontroloři ručně – to nemá vliv, pokud poslední kontrolor rozhodnutí odepřít, pak přístupu uživatele se odebere.
 
-3.  Pokud chcete povolit možnost provést doporučení by neměly odpovídat kontrolorů, musí být povolena zobrazit doporučení v části Upřesnit nastavení.
+3.  Pokud chcete povolit možnost provést doporučení by neměly odpovídat kontrolorů, rozbalte položku Upřesnit nastavení a povolte zobrazit doporučení.
  
 4.  Nakonec klikněte na **spustit**.
 
@@ -74,5 +75,3 @@ Po spuštění kontrola přístupu Azure AD automaticky odesílá kontroloři e-
 Pokud je to jednorázové kontrolu, po dobu zkontrolujte přístup je nad nebo správce zastaví kontrola přístupu, postupujte podle pokynů v [dokončit kontrola přístupu](active-directory-azure-ad-controls-complete-access-review.md) zobrazit a použít výsledky.  
 
 Pokud je kontrola řady, pak přejděte do **zkontrolujte historii** na stránce řady zkontrolujte přístup k výběru kontrola dokončené přístupu.  Nadcházející recenze, zobrazí se v části **naplánované zkontrolujte**, kde můžete upravit dobu trvání a přidání nebo odebrání revidujících pro jednotlivé recenze.
-
-

@@ -1,13 +1,14 @@
 ---
-title: "Slovník ochrany identit Azure Active Directory | Microsoft Docs"
-description: "Slovník ochrany identit Azure Active Directory"
+title: Slovník ochrany identit Azure Active Directory | Microsoft Docs
+description: Slovník ochrany identit Azure Active Directory
 services: active-directory
-keywords: "ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení, Glosář"
-documentationcenter: 
+keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení, Glosář
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 833119a5-33d6-4482-adda-fa35218c72c3
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 30cf3911d0f22e2d9351fc606cd6697ef437e452
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a9cc4a914091c91f4b2ae1c152644fe8e01747e8
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713387"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Slovník ochrany identit Azure Active Directory
 ### <a name="at-risk-user"></a>Riziko (uživatel)
@@ -32,7 +34,7 @@ Přihlášení z zeměpisné polohy, který není typické pro konkrétního už
 Modul zabezpečení služby Azure Active Directory, která poskytuje ucelený přehled o rizikových událostech a potenciální ohrožení zabezpečení, které ovlivňují identity organizace.
 
 ### <a name="conditional-access"></a>Podmíněný přístup
-Zásadu zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají ve službě Azure Active Directory a vyhodnocují se službou Azure Active Directory před udělením přístupu k prostředku.  Příklad pravidla zahrnují také omezení přístupu podle umístění uživatele, metodu ověřování stavu nebo uživatel zařízení.
+Zásadu zabezpečení přístupu k prostředkům. Pravidla podmíněného přístupu se ukládají ve službě Azure Active Directory a vyhodnocují se službou Azure Active Directory před udělením přístupu k prostředku.  Příklad pravidla zahrnují také omezení přístupu podle umístění uživatele, zařízení stavu nebo metodu ověřování uživatele.
 
 ### <a name="credentials"></a>Přihlašovací údaje
 Informace, které zahrnují identifikace a ověření identifikaci, který slouží k získání přístupu k místním a síťovým prostředkům. Příkladem přihlašovací údaje jsou uživatelská jména a hesla, čipové karty a certifikáty.
@@ -71,7 +73,7 @@ Metoda ověřování, která vyžaduje dva nebo více metod ověřování, kter�
 Detekce anomálií a vyhodnocení rizik na událost, jako je například pokus o přihlášení ve skutečnosti, událost, která již došlo.
 
 ### <a name="policy-condition"></a>Stav zásad
-Část zásad zabezpečení, který definuje entity (skupiny uživatelů, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typů klientů) obsažena v zásadách nebo z něj vyloučeny.
+Část zásad zabezpečení, které definuje entity (skupiny uživatelů, aplikace, platformy zařízení, stavy zařízení, rozsahy IP adres, typů klientů) obsažena v zásadách nebo z něj vyloučeny.
 
 ### <a name="policy-rule"></a>Pravidlo zásad
 Část zásad zabezpečení, která popisuje okolnosti, které by aktivovat zásady a akce prováděné při aktivaci zásady.
@@ -133,11 +135,11 @@ Riziko událost se spustí po úspěšného přihlášení z IP adresy, které b
 ### <a name="sign-in-from-infected-device"></a>Přihlášení z nakažených zařízení
 Událost riziko, aktivuje, když přihlášení pochází z IP adresy, která se označuje použije jeden nebo více ohroženými zařízeními, které jsou aktivně pokouší komunikovat se serverem robota.
 
-### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Přihlášení z IP adres s podezřelou aktivitou
+### <a name="sign-in-from-ip-address-with-suspicious-activity"></a>Přihlásit z IP adres s podezřelou aktivitou
 Riziko události aktivované po úspěšného přihlášení z IP adres s vysoký počet neúspěšných pokusů o přihlášení několika uživatelským účtům během krátké doby času.
 
 ### <a name="sign-in-from-unfamiliar-location"></a>Přihlášení z neznámého umístění
-Událost riziko, aktivuje, když se uživatel úspěšně přihlásí z nového místa (IP adresy, zeměpisnou šířku a délku a ASN).
+Událost riziko, aktivuje, když se uživatel úspěšně přihlásí z nového místa (IP, zeměpisnou šířku a délku a ASN).
 
 ### <a name="sign-in-risk"></a>Riziko přihlášení
 V tématu riziko úroveň (sign-in)
@@ -158,7 +160,7 @@ Zásady podmíněného přístupu, který zvažuje přihlášení a způsoby zm�
 Uživatelé, kteří mají rizikových událostech, které jsou aktivní nebo napravených
 
 ### <a name="vulnerability"></a>Chyba zabezpečení
-Konfigurace nebo podmínku v Azure Active Directory, který adresář náchylné k zneužití nebo hrozeb.
+Konfigurace nebo podmínku v Azure Active Directory, takže adresáři náchylné k zneužití nebo hrozeb.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Ochrany identit Azure Active Directory](active-directory-identityprotection.md)

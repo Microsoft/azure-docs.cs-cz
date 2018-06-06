@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 065ac8b2e9cb48408c7922a1937e541521ccd8cf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 93ecd0264413e0eb719c9d33f0a0b756bcee6552
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726444"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Vytvoření, změnit nebo odstranit tabulku směrování
 
@@ -31,7 +32,7 @@ Před dokončením kroků v žádné části tohoto článku dokončete následu
 
 - Pokud nemáte účet Azure, si zaregistrovat [Bezplatný zkušební účet](https://azure.microsoft.com/free).
 - Pokud používáte portál, otevřete https://portal.azure.coma přihlaste se pomocí účtu Azure.
-- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje prostředí Azure PowerShell verze modulu 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud pomocí příkazů prostředí PowerShell k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/powershell), nebo pomocí spouštění prostředí PowerShell z vašeho počítače. Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Tento kurz vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 - Pokud používáte rozhraní příkazového řádku Azure (CLI) příkazy k dokončení úloh v tomto článku, buď spusťte příkazy [prostředí cloudu Azure](https://shell.azure.com/bash), nebo spuštěním rozhraní příkazového řádku z vašeho počítače. Tento kurz vyžaduje Azure CLI verze 2.0.31 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0](/cli/azure/install-azure-cli). Pokud používáte Azure CLI místně, musíte také spustit `az login` vytvořit připojení s Azure.
 
 Účet přihlásit nebo připojit k Azure, musí být přiřazená k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role nebo [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) přiřazené příslušné akce uvedené v [oprávnění ](#permissions).
@@ -93,6 +94,8 @@ Podsíť může mít žádnou nebo jednu směrovací tabulku přidružené k ně
 3. Vyberte **podsítě** pod **nastavení**.
 4. Vyberte podsíť, které chcete přidružit směrovací tabulka pro.
 5. Vyberte **směrovací tabulku**, vyberte tabulku trasy, které chcete přidružit k podsíti a pak vyberte **Uložit**.
+
+Pokud vaše virtuální síť je připojená k bránu VPN Azure VPN, nepřidružujte tabulka trasy, která se [podsíť brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , který obsahuje trasu s cílovým serverem 0.0.0.0/0. Díky tomu můžete zabránit brána nebude fungovat správně. Další informace o používání 0.0.0.0/0 v trasu najdete v tématu [směrování provozu virtuální sítě](virtual-networks-udr-overview.md#default-route).
 
 **Příkazy**
 
@@ -159,7 +162,7 @@ Směrovací tabulka obsahuje nula nebo víc tras. Další informace o informace 
 - Azure CLI: [seznam az sítě směrovací tabulka trasy](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
 - PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
-## <a name="view-details-of-a-route"></a>Zobrazení podrobností trasu
+## <a name="view-details-of-a-route"></a>Zobrazení podrobností o trase
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *směrovacích tabulek* do vyhledávacího pole. Když **směrovacích tabulek** nezobrazí ve výsledcích hledání, vyberte ho.
 2. Vyberte tabulku trasy, které chcete zobrazit podrobnosti o trasu pro.
@@ -216,7 +219,7 @@ Efektivní trasy pro každé síťové rozhraní, který je připojen k virtuál
 
 Můžete určit typ dalšího směrování mezi virtuálním počítačem a IP adresu jiného prostředku Azure, místnímu prostředku nebo prostředku na Internetu. Určení Azure směrování je užitečné při řešení potíží s problémy se směrováním. Tuto úlohu dokončit, musí mít existující sledovací proces sítě. Pokud nemáte existující sledovací proces sítě, vytvořte ho pomocí kroků v [vytvořit instanci sledovací proces sítě](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-1. Do vyhledávacího pole v horní části portálu, zadejte *sledovací proces sítě* do vyhledávacího pole. Když **sledovací proces sítě** se zobrazí ve výsledcích hledání, vyberte ho.
+1. Do vyhledávacího pole v horní části portálu, zadejte *sledovací proces sítě* do vyhledávacího pole. Jakmile se služba**Network Watcher** zobrazí ve výsledcích hledání, vyberte ji.
 2. Vyberte **dalšího směrování** pod **nástroj pro diagnostiku sítě**.
 3. Vyberte vaše **předplatné** a **skupiny prostředků** zdrojového virtuálního počítače, kterou chcete ověřit směrování z.
 4. Vyberte **virtuálního počítače**, **síťové rozhraní** připojen k virtuálnímu počítači a **IP adresa zdroje** přiřazené síťového rozhraní, které chcete ověřit směrování z.

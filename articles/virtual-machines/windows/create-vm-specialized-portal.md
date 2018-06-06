@@ -1,24 +1,25 @@
 ---
-title: "Vytvoření virtuálního počítače s Windows z specializované virtuálního pevného disku na portálu Azure | Microsoft Docs"
-description: "Vytvořte nový virtuální počítač Windows z disku VHD na portálu Azure."
+title: Vytvoření virtuálního počítače s Windows z specializované virtuálního pevného disku na portálu Azure | Microsoft Docs
+description: Vytvořte nový virtuální počítač Windows z disku VHD na portálu Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 33e94777047ea8a116ae6f393439521356a53509
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 428003747b7c746a2849a042e54647e86361c562
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716556"
 ---
 # <a name="create-a-vm-from-a-vhd-using-the-azure-portal"></a>Vytvoření virtuálního počítače z disku VHD pomocí portálu Azure
 

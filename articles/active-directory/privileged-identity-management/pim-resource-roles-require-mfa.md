@@ -1,9 +1,9 @@
 ---
-title: Privileged Identity Management pro prostředky Azure – vícefaktorové ověřování | Microsoft Docs
+title: Vynutit ověřování Azure Multi-Factor Authentication prostředků Azure pomocí Privileged Identity managementu | Microsoft Docs
 description: Tento dokument popisuje postup povolení vícefaktorového ověřování pro prostředky PIM.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 editor: mwahl
 ms.service: active-directory
@@ -12,48 +12,49 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8d1c05e7f61ed76c47613bfab7bb8afd9b66cbe7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3084ba4f606823f3896f266f64a24c8fe4be1309
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699831"
 ---
-# <a name="privileged-identity-management---resource-roles---mfa"></a>Privileged Identity Management - role prostředků - MFA
+# <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Vynutit ověřování Azure Multi-Factor Authentication prostředků Azure pomocí Privileged Identity Management
 
-PIM pro role prostředků Azure umožňuje správci prostředků a správci identity k ochraně kritické infrastruktury Azure s časově vázaných členství a přístup za běhu. Kromě toho poskytuje PIM volitelné vynucení Azure Multi-Factor Authentication (MFA) pro dva odlišné scénáře.
+Privileged Identity Management (PIM) pro role prostředků Azure umožňuje správci prostředků a správci identity k ochraně kritické infrastruktury Azure s časově vázaných členství a přístup za běhu. Kromě toho poskytuje PIM volitelné vynucení ověřování Azure Multi-Factor Authentication pro dva odlišné scénáře.
 
-## <a name="require-mfa-to-activate"></a>Vyžadovalo aktivovat
+## <a name="require-multi-factor-authentication-to-activate"></a>Vyžadovat Vícefaktorové ověřování k aktivaci
 
-Správci prostředků můžete vyžadovat, vhodné členy role úspěšné Azure MFA, před aktivací. Tento proces zajišťuje, že je aktivace žádajícího uživatele, který říká se, že jsou s dostatečnou jistotou. Vynucování tuto možnost chrání důležitých prostředků v situacích, pokud uživatelský účet ohrožení. 
+Správci prostředků může vyžadovat vhodné členy role spuštění Azure Multi-Factor Authentication před aktivací. Tento proces zajišťuje, že uživatel, který požaduje se, že je aktivace, který říká se, že jsou s dostatečnou jistotou. Vynucování tuto možnost chrání důležitých prostředků v situacích, pokud uživatelský účet může být ohrožena. 
 
-Pokud chcete vynutit tento požadavek, vyberte prostředku ze seznamu spravované prostředky. Z [řídicí panel Přehled](pim-resource-roles-overview-dashboards.md), vyberte roli ze seznamu rolí v pravém dolním rohu obrazovky.
+Pokud chcete vynutit tento požadavek, vyberte prostředku ze seznamu spravované prostředky. Z [řídicí panel Přehled](pim-resource-roles-overview-dashboards.md), vyberte roli ze seznamu rolí v pravé dolní části obrazovky.
 
-Kromě toho získáte nastavení role z buď "role" nebo "Nastavení Role" karty v levé navigační nabídce.
+Kromě toho můžete získat nastavení rolí z buď **role** nebo **nastavení Role** karty v levém podokně.
 
 >[!Note]
->Pokud jsou zobrazena šedě možnosti v nabídce levé navigaci a zobrazí nápis informující o v horní části stránky s oznámením "Máte nárok role, které je možné aktivovat" nejsou aktivní správce a musí [aktivovat](pim-resource-roles-activate-your-roles.md) než budete pokračovat.
+>Pokud jsou zobrazena šedě možnosti v levém podokně a hlavičky v horní části stránky, která uvádí, "Máte nárok role, které je možné aktivovat", nejste správcem aktivní. To znamená, že je potřeba [aktivovat](pim-resource-roles-activate-your-roles.md) než budete pokračovat.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_manage_a_role_v2.png)
+!["Role" a "Nastavení Role" karty ](media/azure-pim-resource-rbac/aadpim_rbac_manage_a_role_v2.png)
 
-Pokud členství role zobrazení, vyberte z panelu v horní části obrazovky otevřete "podrobnosti o nastavení Role" "Nastavení Role".
+Pokud chcete zobrazit členství role, vyberte **nastavení Role** z panelu v horní části obrazovky, otevřete **podrobné nastavení Role**.
 
-Klikněte **upravit** tlačítka v horní části můžete upravit nastavení rolí.
+Chcete-li upravit nastavení rolí, vyberte **upravit** tlačítka v horní části.
 
-V části v rámci **aktivovat**, klikněte na zaškrtávací políčko k **vyžadovat Vícefaktorové ověřování k aktivaci**, pak klikněte na Uložit.
+V části v rámci **aktivovat**, zaškrtněte políčko **vyžadovat Vícefaktorové ověřování u aktivace**. Potom vyberte **Uložit**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa.png)
+![Vyžadovat Multi-Factor Authentication při aktivaci](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa.png)
 
-## <a name="require-mfa-on-assignment"></a>Vyžadovat vícefaktorové ověřování na přiřazení
+## <a name="require-multi-factor-authentication-on-assignment"></a>Požadovat použití vícefaktorového ověřování na přiřazení
 
-V některých případech může správce prostředků chcete členem přiřadit roli krátké doby trvání (například jeden den) a není nutné přiřazené členy a požádají o aktivaci. V tomto scénáři nemůže PIM vynutit vícefaktorové ověřování, pokud člen používá přiřazení role, protože je již v roli od okamžiku, kdy jsou přiřazeny aktivní.
+V některých případech může správce prostředků chcete členem přiřadit roli po krátkou dobu (jeden den, např.). V takovém případě nemusí přiřazené členy a požádají o aktivaci. V tomto scénáři nemůže PIM vynutit ověřování Multi-Factor Authentication, pokud člen používá přiřazení role, protože je již v roli od okamžiku, kdy jsou přiřazeny aktivní.
 
-Zajistit, že je správce prostředků splnění přiřazení, který říká se, že jsou můžete vynutit vícefaktorové ověřování na přiřazení.
+Pro zajištění správce prostředků splnění přiřazení kdo říká se, že jsou, můžete vynutit ověřování Multi-Factor Authentication na přiřazení.
 
-Z stejné Role nastavení obrazovky podrobnosti zaškrtněte políčko "Vyžadovat Vícefaktorové ověřování u přiřazení".
+Z stejné role nastavení obrazovky podrobnosti, zaškrtněte políčko **vyžadovat Vícefaktorové ověřování u přímé přiřazení**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa_on_assignment.png)
+![Požadovat použití vícefaktorového ověřování na přímé přiřazení](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa_on_assignment.png)
 
 ## <a name="next-steps"></a>Další postup
 

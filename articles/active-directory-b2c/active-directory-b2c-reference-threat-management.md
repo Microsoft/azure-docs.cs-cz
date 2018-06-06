@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Hrozby správy | Microsoft Docs'
+title: Hrozby správy v Azure Active Directory B2C | Microsoft Docs
 description: Další informace o zjišťování a ke zmírnění techniky pro útoky DOS a útoky heslo v Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2016
 ms.author: davidmu
-ms.openlocfilehash: 5ab699b0dccd772ec905699d94dedaca0eefcdad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: b2686b4bb2b98d3f79d8087f6857c149cfdeb553
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711259"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: Hrozby správy
 

@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 74b8c6afc5167225414f467f76f08c0e53bbade5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/01/2018
+ms.openlocfilehash: 3f4c813f7c107f769f32cdd6ab66790f937f1c9b
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736989"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migraci databáze MySQL pomocí import a export
 Tento článek vysvětluje dvě běžné přístupy k importu a exportu dat do Azure databáze MySQL serveru pomocí MySQL Workbench. 
@@ -113,4 +114,5 @@ Můžete použít **importování dat** a importujte nebo obnovte exportovat dat
 2. Klikněte na tlačítko **spusťte Import** zahájíte proces importu.
 
 ## <a name="next-steps"></a>Další postup
-Jako další migrace přístup pro čtení [migrací pomocí databáze MySQL dump a obnovení ve službě Azure Database pro databázi MySQL](concepts-migrate-dump-restore.md). 
+- Jako další migrace přístup pro čtení [migrací pomocí databáze MySQL dump a obnovení ve službě Azure Database pro databázi MySQL](concepts-migrate-dump-restore.md).
+- Další informace o migraci databáze pro databázi MySQL, Azure najdete [příručka k migraci databáze](http://aka.ms/datamigration). 

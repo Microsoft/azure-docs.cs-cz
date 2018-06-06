@@ -1,13 +1,14 @@
 ---
 title: Microsoft Graph pro ochrany identit Azure Active Directory | Microsoft Docs
-description: "Zjistěte, jak dotazovat Microsoft Graph seznam rizikových událostech a přidružené informace ze služby Azure Active Directory."
+description: Zjistěte, jak dotazovat Microsoft Graph seznam rizikových událostech a přidružené informace ze služby Azure Active Directory.
 services: active-directory
-keywords: "ochrany identit Azure active directory, riziko událostí, ohrožení zabezpečení, zásady zabezpečení, Microsoft Graph"
-documentationcenter: 
+keywords: ochrany identit Azure active directory, riziko událostí, ohrožení zabezpečení, zásady zabezpečení, Microsoft Graph
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: fa109ba7-a914-437b-821d-2bd98e681386
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,11 +17,12 @@ ms.date: 12/08/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: df0d89fc93f1b9c19d669c29306398a8b25ee425
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c6c59285fbb2c81e5e20d28171abfe806bd51122
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713197"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Začínáme s Azure Active Directory Identity Protection a Microsoft Graph
 Microsoft Graph je Microsoft unified koncový bod rozhraní API a součástí [Azure Active Directory Identity Protection](active-directory-identityprotection.md) rozhraní API. Rozhraní API first **identityRiskEvents**, umožňuje dotazování Microsoft Graph seznam [rizik události](active-directory-identityprotection-risk-events-types.md) a související informace. Tento článek vám pomůže začít dotazování toto rozhraní API. Podrobný úvod, úplnou dokumentaci a přístup do Průzkumníka grafu naleznete v tématu [Microsoft Graph lokality](https://graph.microsoft.io/).
@@ -171,7 +173,7 @@ Pro volání rozhraní API, vytvoří hlavičku s následující parametr:
 
 Při ověřování, můžete najít typ tokenu a přístupový token v vrácený tokenu.
 
-Odeslat tuto hlavičku jako požadavek na následující adresu URL rozhraní API:`https://graph.microsoft.com/beta/identityRiskEvents`
+Odeslat tuto hlavičku jako požadavek na následující adresu URL rozhraní API: `https://graph.microsoft.com/beta/identityRiskEvents`
 
 Odpověď, a to v případě úspěchu je kolekce identity rizikových událostech a přidružená data ve formátu OData JSON, který lze analyzovat a zpracovávají podle svých potřeb.
 

@@ -3,7 +3,7 @@ title: Dokončit kontrola přístupu k prostředkům Azure pomocí Privileged Id
 description: Popisuje, jak provést kontrola přístupu k prostředkům Azure.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -11,13 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ae64d9ebbca80f6c21b8c7f352022a0878518e65
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1dd5eb4a2a0a4edd15e5299754028570806db09b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699450"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Dokončit kontrola přístupu k prostředkům Azure pomocí Privileged Identity Management
 Správce privilegovaných rolí můžete zkontrolovat privilegovaného přístupu po [revize zabezpečení byla spuštěna](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) k prostředkům Azure automaticky odešle e-mail, který vyzve uživatele, aby kontrolovat jejich přístup. Pokud uživatel nebude přijímat e-mailu, můžete jim poslat pokynů [jak provádět kontrolu zabezpečení](pim-resource-roles-perform-access-review.md).
@@ -30,7 +31,7 @@ Po dokončení zkontrolujte období zabezpečení nebo po dokončení své samoo
 2. Vyberte prostředek.
 
 3. Vyberte **přístup recenze** část řídicího panelu.
-![Recenze přístup](media/azure-pim-resource-rbac/rbac-access-review-home-list.png)
+![Kontroly přístupu](media/azure-pim-resource-rbac/rbac-access-review-home-list.png)
 
 4. Vyberte kontrola přístupu, který chcete spravovat.
 

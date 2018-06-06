@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eeb5fd765a6cad10be5706162566605feaa8af4c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802557"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 
@@ -66,11 +67,7 @@ Můžete nasadit [pro vyrovnávání zatížení pro vnitřní Azure](../load-ba
 
 ## <a name="service-endpoints-for-azure-services"></a>Koncové body služby pro služby Azure
 
-Některé Azure služby nelze nasadit ve virtuálních sítích. Pokud si zvolíte, tím, že umožňuje koncového bodu služby virtuální sítě můžete omezit přístup k některým prostředkům služby k podsítím pouze konkrétní virtuální sítě. Další informace o [koncové body služby virtuální sítě](virtual-network-service-endpoints-overview.md).
-
-Koncové body služby v současné době jsou podporovány pro následující služby: 
-- **Úložiště Azure**: [účtů zabezpečení úložiště Azure do virtuálních sítí](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- **Azure SQL Database**: [zabezpečení Azure SQL Database k virtuálním sítím](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Některé Azure služby nelze nasadit ve virtuálních sítích. Pokud si zvolíte, tím, že umožňuje koncového bodu služby virtuální sítě můžete omezit přístup k některým prostředkům služby k podsítím pouze konkrétní virtuální sítě. Další informace o [koncové body služby virtuální sítě](virtual-network-service-endpoints-overview.md), služby a služby, které je možné povolit koncové body pro.
 
 ## <a name="virtual-network-integration-across-multiple-azure-services"></a>Integrace virtuální sítě napříč více službami Azure
 

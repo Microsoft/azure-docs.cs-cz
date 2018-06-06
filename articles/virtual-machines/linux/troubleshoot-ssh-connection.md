@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: e5d9fb76f66ffb98addab24e9e8bf8b82a82af7a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9db1252ffdb705308c6bdaf77f394a0e57145fb5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701917"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Řešení potíží s připojení SSH pro virtuální počítač Azure Linux který selže, chyby, nebo bylo odmítnuto
 Existují různé příčiny, že dojde k chybám Secure Shell (SSH), selhání připojení SSH, nebo SSH bylo odmítnuto, při pokusu o připojení k virtuálnímu počítači (VM) Linux. Tento článek pomůže najít a opravit problémy. Portál Azure, rozhraní příkazového řádku Azure nebo rozšíření pro přístup virtuálních počítačů pro Linux můžete použít k řešení problémů s připojením.
@@ -71,11 +72,11 @@ Můžete také vytvořit uživatele s oprávněními sudo do virtuálního poč�
 
 ### <a name="check-security-rules"></a>Zkontrolujte pravidla zabezpečení
 
-Použití [IP tok ověření](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) potvrďte, zda pravidla v skupinu zabezpečení sítě neblokuje přenosy do nebo z virtuálního počítače. Můžete také zkontrolovat pravidel skupiny zabezpečení efektivní zajistit příchozí "Povolit" NSG pravidlo existuje a prioritu pro SSH port (standardně 22). Další informace najdete v tématu [tok provozu pomocí pravidel efektivní zabezpečení řešení virtuálních počítačů](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow).
+Použití [IP tok ověření](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) potvrďte, zda pravidla v skupinu zabezpečení sítě neblokuje přenosy do nebo z virtuálního počítače. Můžete také zkontrolovat pravidel skupiny zabezpečení efektivní zajistit příchozí "Povolit" NSG pravidlo existuje a prioritu pro SSH port (standardně 22). Další informace najdete v tématu [tok provozu pomocí pravidel efektivní zabezpečení řešení virtuálních počítačů](../../virtual-network/diagnose-network-traffic-filter-problem.md).
 
 ### <a name="check-routing"></a>Zkontrolujte směrování
 
-Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+Použít sledovací proces sítě [dalšího směrování](../../network-watcher/network-watcher-check-next-hop-portal.md) schopnost potvrďte, zda trasa nebrání provoz z směrovány do nebo z virtuálního počítače. Můžete také zkontrolovat efektivní trasy zobrazíte všechny efektivní trasy pro síťové rozhraní. Další informace najdete v tématu [řešení virtuálních počítačů pomocí efektivní směrování provozu toku](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-cli-20"></a>Použití Azure CLI 2.0
 Pokud jste to ještě neudělali, nainstalujte nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a přihlaste se k Azure účet pomocí [az přihlášení](/cli/azure/reference-index#az_login).

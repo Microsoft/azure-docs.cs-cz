@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 44d1dabdb6a9e5f4b405b876f37daa9097c6e7f8
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 09ee4dfc403bf570631f64b0b13d1592a03eed17
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698964"
 ---
 # <a name="configure-managed-service-identity-msi-on-an-azure-vm-using-azure-cli"></a>Konfigurace Identity spravované služby (MSI) na virtuální počítač Azure pomocí rozhraní příkazového řádku Azure
 
@@ -116,35 +117,34 @@ Tato část vás provede procesem vytvoření virtuálního počítače s přiř
 
 2. Vytvoření uživatele přiřazená pomocí identity [vytvoření az identity](/cli/azure/identity#az_identity_create).  `-g` Parametr určuje skupinu prostředků, kde se má vytvořit uživatel s přiřazenou identitu, a `-n` parametr určuje její název.    
     
-    > [!IMPORTANT]
-    > Vytvoření identity uživatele přiřazené podporuje pouze alfanumerické znaky a spojovníky (0 – 9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení virtuálního počítače nebo VMSS správně fungovat. Vraťte se zpět pro aktualizace. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+[!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 
-    ```azurecli-interactive
-    az identity create -g myResourceGroup -n myUserAssignedIdentity
-    ```
+```azurecli-interactive
+az identity create -g myResourceGroup -n myUserAssignedIdentity
+```
 Odpověď obsahuje podrobnosti pro identitu uživatele přiřazené vytvořili, podobný následujícímu. Hodnota id prostředku, který je přiřazen k uživateli přiřadit identity se používá v dalším kroku.
 
-   ```json
-   {
-        "clientId": "73444643-8088-4d70-9532-c3a0fdc190fz",
-        "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
-        "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
-        "location": "westcentralus",
-        "name": "<MSI NAME>",
-        "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
-        "resourceGroup": "<RESOURCE GROUP>",
-        "tags": {},
-        "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533bl",
-        "type": "Microsoft.ManagedIdentity/userAssignedIdentities"    
-   }
-   ```
+```json
+{
+    "clientId": "73444643-8088-4d70-9532-c3a0fdc190fz",
+    "clientSecretUrl": "https://control-westcentralus.identity.azure.net/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>/credentials?tid=5678&oid=9012&aid=73444643-8088-4d70-9532-c3a0fdc190fz",
+    "id": "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>",
+    "location": "westcentralus",
+    "name": "<MSI NAME>",
+    "principalId": "e5fdfdc1-ed84-4d48-8551-fe9fb9dedfll",
+    "resourceGroup": "<RESOURCE GROUP>",
+    "tags": {},
+    "tenantId": "733a8f0e-ec41-4e69-8ad8-971fc4b533bl",
+    "type": "Microsoft.ManagedIdentity/userAssignedIdentities"    
+}
+```
 
 3. Vytvoření virtuálního počítače pomocí [vytvořit virtuální počítač az](/cli/azure/vm/#az_vm_create). Následující příklad vytvoří virtuální počítač spojené s novou identitu uživatele, které jsou přiřazené podle specifikace `--assign-identity` parametr. Nezapomeňte nahradit `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>`, a `<MSI ID>` hodnoty parametrů s vlastními hodnotami. Pro `<MSI ID>`, použijte identitu uživatele přiřazené prostředků `id` vlastnost vytvořili v předchozím kroku: 
 
-   ```azurecli-interactive 
-   az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
-   ```
+```azurecli-interactive 
+az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>
+```
 
 ### <a name="assign-a-user-assigned-identity-to-an-existing-azure-vm"></a>Přiřazení uživatele přiřazené identity existující virtuální počítač Azure
 

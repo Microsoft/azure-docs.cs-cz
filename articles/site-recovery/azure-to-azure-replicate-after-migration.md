@@ -5,18 +5,17 @@ services: site-recovery
 author: ponatara
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 05/31/2018
 ms.author: ponatara
-ms.openlocfilehash: f64d61134f61476bcdd803f92019830b7cecf867
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c42a997560ee40eb0a587b81a6f191f372e0dd26
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716002"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavit zotavení po havárii pro virtuální počítače Azure po migraci na Azure 
 
->[!NOTE]
-> Zotavení po havárii pro virtuální počítače Azure pomocí Azure Site Recovery je aktuálně ve verzi preview.
 
 Pomocí tohoto článku po jste [migrovat místní počítače na virtuálních počítačích Azure](tutorial-migrate-on-premises-to-azure.md) pomocí [Site Recovery](site-recovery-overview.md) služby. Tento článek vám umožňuje připravit virtuální počítače Azure pro nastavení zotavení po havárii sekundární oblasti Azure, pomocí Site Recovery.
 

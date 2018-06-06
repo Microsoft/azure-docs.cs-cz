@@ -10,11 +10,12 @@ ms.date: 05/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: cc15c92037e18800a6f919d0ca18acb20ed5e893
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: ee1c48c4a33d699dcb3da24b2e9a3d6e001b16c5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801469"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Zásobník datacenter integrace se službou Azure - Identity
 Zásobník Azure pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) můžete nasadit jako zprostředkovatele identity. Volba je nutné provést před nasazením Azure zásobníku. Nasazení pomocí služby AD FS se také označuje jako nasazení Azure zásobníku v odpojeném režimu.
@@ -86,14 +87,14 @@ Pro tento postup použijte počítač v síti datového centra, který může ko
 
 2. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními (Spustit jako správce) a připojte na IP adresu privilegované koncového bodu. Použijte pověření pro **CloudAdmin** k ověření.
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 3. Teď, když jste připojení ke koncovému bodu privilegované, spusťte následující příkaz: 
 
-   ```powershell
+   ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
@@ -131,20 +132,20 @@ Pro tento postup použijte počítač, který může komunikovat s privilegovan�
 
 1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a připojení k privilegované koncový bod.
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Teď, když jste připojení ke koncovému bodu privilegované, spusťte následující příkaz pomocí parametrů, které jsou vhodné pro vaše prostředí:
 
-   ```powershell
+   ```PowerShell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
 3. Spusťte následující příkaz k aktualizaci vlastník předplatného poskytovatele výchozí, s parametry, které jsou vhodné pro vaše prostředí:
 
-   ```powershell
+   ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -169,7 +170,7 @@ Pro následující postup musíte použít počítač, který má síťové při
 
 1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkaz, parametry, které jsou vhodné pro vaše prostředí:
 
-   ```powershell
+   ```PowerShell  
    [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
 
    $Metadata.outerxml|out-file c:\metadata.xml
@@ -184,20 +185,20 @@ Pro tento postup použijte počítač, který může komunikovat s privilegovan�
 
 1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a připojení k privilegované koncový bod.
 
-   ```powershell
+   ```PowerShell  
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Teď, když jste připojení ke koncovému bodu privilegované, spusťte následující příkaz pomocí parametrů, které jsou vhodné pro vaše prostředí:
 
-   ```powershell
+   ```PowerShell  
    Register-CustomAdfs -CustomAdfsName Contoso – CustomADFSFederationMetadataFile \\share\metadataexample.xml
    ```
 
 3. Spusťte následující příkaz k aktualizaci vlastník předplatného poskytovatele výchozí, s parametry, které jsou vhodné pro vaše prostředí:
 
-   ```powershell
+   ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -244,7 +245,7 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
 
 2. Pokud chcete povolit ověřování pomocí formulářů Windows, otevřete relaci prostředí Windows PowerShell jako uživatel s oprávněním vyšší úrovně a spusťte následující příkaz:
 
-   ```powershell
+   ```PowerShell  
    Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
    ```
 
@@ -252,13 +253,13 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
 
    **Pro službu AD FS 2016**
 
-   ```powershell
+   ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
    ```
 
    **Pro AD FS 2012 nebo 2012 R2**
 
-   ```powershell
+   ```PowerShell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
    ```
 
@@ -270,13 +271,13 @@ Pokud se rozhodnete ručně spustit příkazy, postupujte takto:
    > [!note]  
    > Tento krok není použitelný, pokud používáte Windows Server 2012 nebo 2012 R2 AD FS. Je bezpečné Přeskočit tento příkaz a pokračujte integrace.
 
-   ```powershell
+   ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
-5. Pokud chcete povolit tokeny obnovení, otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkaz:
+5. Portály zásobník Azure a nástrojů (Visual Studio) vyžadují obnovovacích tokenů. Toto musí být nakonfigurovaný podle vztahu důvěryhodnosti strany. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkaz:
 
-   ```powershell
+   ```PowerShell  
    Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
    ```
 
@@ -304,14 +305,14 @@ Pokud dojde k chybě, který zůstane ve stavu, kde můžete už ověřovat pros
 
 1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkazy:
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Spusťte následující rutinu:
 
-   ```powershell
+   ```PowerShell  
    Reset-DatacenterIntegationConfiguration
    ```
 
@@ -320,7 +321,7 @@ Pokud dojde k chybě, který zůstane ve stavu, kde můžete už ověřovat pros
    > [!IMPORTANT]
    > Je nutné nakonfigurovat původní vlastník předplatného výchozí zprostředkovatel
 
-   ```powershell
+   ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
    ```
 
@@ -330,14 +331,14 @@ Pokud žádné z rutiny selže, můžete shromažďovat další protokoly pomoc�
 
 1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkazy:
 
-   ```powershell
+   ```PowerShell  
    $creds = Get-Credential
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. Potom spusťte následující rutinu:
 
-   ```powershell
+   ```PowerShell  
    Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
    ```
 

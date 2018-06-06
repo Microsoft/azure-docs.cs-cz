@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcc733308f4c0441545dc0d03cca2ca1112812ac
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 045b433fdea2cfb97f3002fbe692ea8e4988fbb4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726410"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvořit virtuální síť partnerský vztah - různé modely nasazení a odběry
 
@@ -27,7 +28,7 @@ V tomto kurzu zjistíte vytvořit virtuální síť partnerský vztah mezi virtu
 
 Postup vytvoření virtuální sítě partnerského vztahu se liší v závislosti na tom, jestli virtuální sítě jsou ve stejné nebo jiné, odběry a které [modelu nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuální sítě se vytvářejí pomocí. Naučte se vytvořit virtuální síť partnerský vztah v jiných scénářích kliknutím na scénář z v následující tabulce:
 
-|Model nasazení Azure  | předplatné Azure  |
+|Model nasazení Azure  | Předplatné Azure  |
 |--------- |---------|
 |[I Resource Manager](tutorial-connect-virtual-networks-portal.md) |stejné|
 |[I Resource Manager](create-peering-different-subscriptions.md) |Odlišné|
@@ -106,7 +107,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. Zbývající kroky musí dokončit pomocí bash skořápce pomocí Azure CLI verze 2.0.4 nebo novější [nainstalován](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo pomocí prostředí cloudové služby Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte **vyzkoušet** tlačítko ve skriptech následujících, což otevře prostředí cloudu, který protokoluje události v účtu Azure. Možnosti na spuštění bash skripty rozhraní příkazového řádku v klientovi Windows, najdete v části [běžící ve Windows Azure CLI](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+5. Zbývající kroky musí dokončit pomocí bash skořápce pomocí Azure CLI verze 2.0.4 nebo novější [nainstalován](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo pomocí prostředí cloudové služby Azure. Služba Azure Cloud Shell je volně dostupné prostředí Bash, které můžete spustit přímo z portálu Azure Portal. Má předinstalované rozhraní Azure CLI, které je nakonfigurované pro použití s vaším účtem. Klikněte **vyzkoušet** tlačítko ve skriptech následujících, což otevře prostředí cloudu, který protokoluje události v účtu Azure. Možnosti na spuštění bash skripty rozhraní příkazového řádku v klientovi Windows, najdete v části [nainstalovat rozhraní příkazového řádku Azure v systému Windows](/cli/azure/install-azure-cli-windows). 
 6. Zkopírujte následující skript do textového editoru ve vašem počítači. Nahraďte `<SubscriptionB-Id>` s vaším ID předplatného. Pokud si nejste jisti Id předplatného, zadejte `az account show` příkaz. Hodnota **id** ve výstupu je ID vašeho předplatného. Zkopírujte skript upravené, vložte jej do relace 2.0 rozhraní příkazového řádku a stiskněte klávesu `Enter`. 
 
     ```azurecli-interactive

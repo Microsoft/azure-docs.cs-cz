@@ -5,20 +5,17 @@ keywords: rozhraní ODBC, ovladače odbc
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 9967f4e5-4b71-4cd7-8324-221a8c789e6b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: rest-api
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 360161ec0485259029be0bbd5194911e484a57e5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725087"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojte se k databázi Cosmos Azure pomocí nástrojů BI analýzy pomocí ovladače ODBC
 
@@ -123,7 +120,7 @@ Následujících kroků vytvořte schéma pro data v jedné nebo více kolekcí 
 Nastavením připojení odkazovaného serveru se můžete dotazovat Azure Cosmos databáze z SQL Server Management Studio (SSMS).
 
 1. Vytvořte zdroj dat systému, jak je popsáno v [kroku 2](#connect)s názvem například `SDS Name`.
-2. [Nainstalujte SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+2. [Nainstalujte SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a připojte se k serveru. 
 3. V editoru dotazů SSMS vytvořit objekt odkazovaný server `DEMOCOSMOS` ke zdroji dat pomocí následujících příkazů. Nahraďte `DEMOCOSMOS` s názvem pro odkazovaný server, a `SDS Name` s názvem zdroje dat systému.
 
     ```sql
@@ -181,7 +178,7 @@ Jak se vám líbí, můžete vytvořit mnoho zobrazení. Po dokončení definov�
 
 Nové DSN můžete použít pro připojení k žádné kompatibilní s rozhraním ODBC nástroje DocumentADB – tento krok jednoduše ukazuje, jak se připojit k Power BI Desktop a vytvořit vizualizaci Power BI.
 
-1. Otevřít Power BI Desktop.
+1. Otevřete Power BI Desktop.
 2. Klikněte na tlačítko **získat Data**.
 3. V **načíst Data** okně klikněte na tlačítko **jiných** | **ODBC** | **Connect**.
 4. V **z rozhraní ODBC** okno, vyberte zdroj dat jste vytvořili a potom klikněte na **OK**. Můžete nechat **pokročilé možnosti** položky, které jsou prázdné.

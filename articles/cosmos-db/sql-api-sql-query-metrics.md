@@ -3,22 +3,20 @@ title: Metriky dotazů SQL pro rozhraní API pro Azure Cosmos databáze SQL | Mi
 description: Další informace o tom, jak instrumentace a ladění výkon dotazů SQL Azure Cosmos DB požadavků.
 keywords: syntaxe SQL, dotaz sql, sql dotazy, json dotazovací jazyk, databázových koncepcí a sql, agregační funkce
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: b2fa8e8f-7291-45a3-9bd1-7284ed9077f8
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: 00e50c3b2f4dc50e43aac03b162bc637f0821656
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ed0008f4b574691387d6e0ee0300b5f05f1ec1b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798691"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Ladění výkonu dotazů s Azure Cosmos DB
 
@@ -174,7 +172,7 @@ Další informace o vytváření oddílů a klíče oddílů, najdete v části 
 V tématu [tipy pro zvýšení výkonu](performance-tips.md) a [testování výkonu](performance-testing.md) pro získání nejlepší výkon klienta z Azure Cosmos DB. To zahrnuje pomocí nejnovější SDK, konfigurace specifických pro platformy konfigurace jako výchozí počet připojení, frekvenci uvolňování paměti a pomocí možnosti lightweight připojení jako přímé/TCP. 
 
 
-#### <a name="max-item-count"></a>Počet položek. maximální počet
+#### <a name="max-item-count"></a>Maximální počet položek
 Pro dotazy, hodnota `MaxItemCount` může mít významný dopad na dobu začátku do konce dotazu. Vrátí maximálně počet položek v každé výměně zpráv serveru `MaxItemCount` (výchozí 100 položek). Toto nastavení na vyšší hodnotu (-1 je maximální a doporučené), který umožní zvýšení celkové doby trvání dotaz tak, že omezí počet zpátečních cest mezi serverem a klientem, zejména pro dotazy s velké množství výsledků.
 
 ```cs

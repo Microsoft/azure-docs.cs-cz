@@ -12,22 +12,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2018
-ms.author: billmath
-ms.openlocfilehash: 7998d69a079c4858c54bea22dbd24e4e84c8c793
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 7e3fbb0f355ff0ffab404af9b7de1a27de02f1fc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34697910"
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Dokončení kontrola přístupu členů skupiny či přístup uživatelů k aplikaci ve službě Azure AD
 
-Správci mohou pomocí Azure Active Directory (Azure AD) [vytvořit kontrola přístupu](active-directory-azure-ad-controls-create-access-review.md) pro členy skupiny nebo uživatelé přiřazení k aplikaci. Azure AD automaticky odesílá kontroloři e-mailu, který zobrazí výzvu k kontrolujte přístup. Pokud uživatel nedostali e-mailu, můžete odeslat je podle pokynů [zkontrolujte přístup k](active-directory-azure-ad-controls-perform-access-review.md). (Všimněte si, že hosté, kteří jsou přiřazeny jako kontrolorů, ale nebyly přijaty pozvání nebudete dostávat e-mailu přístup recenze jako musí nejdřív přijmout pozvání před kontrola.) Po dokončení zkontrolujte období přístup nebo pokud správce zastaví kontrola přístupu, postupujte podle kroků v tomto článku najdete v části a použít výsledky.
+Správci můžou pomocí Azure Active Directory (Azure AD) [vytvořit kontrolu přístupu](active-directory-azure-ad-controls-create-access-review.md) pro členy skupiny nebo uživatele přiřazené k aplikaci. Azure AD automaticky odesílá kontroloři e-mailu, který zobrazí výzvu k kontrolujte přístup. Pokud uživatel nedostali e-mailu, můžete odeslat je podle pokynů [zkontrolujte přístup k](active-directory-azure-ad-controls-perform-access-review.md). (Všimněte si, že hosté, kteří jsou přiřazeny jako kontrolorů, ale nebyly přijaty pozvání nebudete dostávat e-mailu přístup recenze jako musí nejdřív přijmout pozvání před kontrola.) Po dokončení zkontrolujte období přístup nebo pokud správce zastaví kontrola přístupu, postupujte podle kroků v tomto článku najdete v části a použít výsledky.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Zobrazit kontrola přístupu na portálu Azure
 
 1. Přejděte na [přístupu zkontroluje stránky](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), vyberte **programy**a vyberte program, který obsahuje zkontrolujte řízení přístupu.
 
-2. Vyberte **spravovat**a vyberte kontrolní řízení přístupu. Pokud existují mnoho ovládacích prvků v programu, můžete filtrovat pro ovládací prvky konkrétního typu a řazení podle jejich stavu. Také můžete hledat podle názvu zkontrolujte řízení přístupu a zobrazované jméno vlastníka, který ho vytvořil. 
+2. Vyberte **spravovat**a vyberte kontrolní řízení přístupu. Pokud v programu existuje mnoho ovládacích prvků, můžete vyfiltrovat ovládací prvky konkrétního typu a seřadit je podle jejich stavu. Můžete také hledat podle názvu ovládacího prvku kontroly přístupu nebo zobrazovaného názvu vlastníka, který ho vytvořil. 
 
 ## <a name="stop-a-review-that-hasnt-finished"></a>Zastavit kontrolu, která se nedokončila
 

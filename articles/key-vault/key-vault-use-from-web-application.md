@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: adhurwit
-ms.openlocfilehash: de8276b22377db37075c6793d0710bb18625446c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3a191c3ee7eea641aab81008a6da801b609fb4c5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802098"
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Použití Azure Key Vault z webové aplikace
 
@@ -44,7 +45,7 @@ K dokončení tohoto kurzu potřebujete:
 
 Webovou aplikaci, která bude mít přístup k Key Vault je ten, který je zaregistrován ve službě Azure Active Directory a byl poskytnut přístup k trezoru klíč. Pokud tomu tak není, přejděte zpět na zaregistrovat aplikaci v kurzu Začínáme a opakujte kroky uvedené.
 
-Tento kurz je určen pro vývojářům webů, které pochopit základy toho vytváření webových aplikací v Azure. Další informace o službě Azure Web Apps, naleznete v části [přehled Web Apps](../app-service/app-service-web-overview.md).
+Tento kurz je určen pro vývojářům webů, které pochopit základy toho vytváření webových aplikací v Azure. Další informace o Azure Web Apps najdete v [přehledu Web Apps](../app-service/app-service-web-overview.md).
 
 ## <a id="packages"></a>Přidání balíčků NuGet
 
@@ -260,7 +261,7 @@ Místo přímo nahrát certifikát služby webové aplikace, můžete ukládat v
 
 ## <a id="next"></a>Další kroky
 
-Programátorské reference najdete v části [Azure Key Vault C# klienta referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/azure/dn903628.aspx).
+Programátorské reference najdete v části [Azure Key Vault C# klienta referenční dokumentace rozhraní API](https://msdn.microsoft.com/en-us/library/azure/mt430941.aspx).
 
 <!--Image references-->
 [1]: ./media/key-vault-use-from-web-application/PortalAppSettings.png

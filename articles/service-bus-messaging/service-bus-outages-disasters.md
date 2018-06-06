@@ -1,24 +1,19 @@
 ---
-title: "Izolační aplikace Azure Service Bus proti výpadkům a havárií | Microsoft Docs"
-description: "Techniky k ochraně aplikací proti potenciální výpadek služby Service Bus."
+title: Izolační aplikace Azure Service Bus proti výpadkům a havárií | Microsoft Docs
+description: Techniky k ochraně aplikací proti potenciální výpadek služby Service Bus.
 services: service-bus-messaging
-documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802302"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro izolační aplikace proti výpadkům Service Bus a havárií
 
@@ -34,7 +29,9 @@ Service Bus používá několik úložišť pro přenos zpráv k uložení zprá
 Všechny služby Service Bus entit pro zasílání zpráv (fronty, témata, předávání) se nacházejí v oboru názvů služby, který je přidružen k datacentru. Service Bus nyní podporuje [ *geograficky havárii* a *geografická replikace* ](service-bus-geo-dr.md) na úrovni oboru názvů.
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Ochrana fronty a témata proti selhání úložiště pro zasílání zpráv
-Bez oddílů fronta nebo téma je přiřazený k jedné úložišti pro přenos zpráv. Pokud toto úložiště zasílání zpráv není k dispozici, všechny operace v tomto fronta nebo téma se nezdaří. Oddílů fronty, na druhé straně, se skládá z více fragmentů. Každý fragment je uložen v jiném úložišti zasílání zpráv. Pro odeslání zprávy do oddílů fronta nebo téma sběrnice přiřadí zpráva jedním z fragmentů. Pokud odpovídající úložišti pro přenos zpráv není k dispozici, Service Bus zapíše zprávu do různých fragment, pokud je to možné. Další informace o dělené entity najdete v tématu [segmentované entity zasílání zpráv][Partitioned messaging entities].
+Bez oddílů fronta nebo téma je přiřazený k jedné úložišti pro přenos zpráv. Pokud toto úložiště zasílání zpráv není k dispozici, všechny operace v tomto fronta nebo téma se nezdaří. Oddílů fronty, na druhé straně, se skládá z více fragmentů. Každý fragment je uložen v jiném úložišti zasílání zpráv. Pro odeslání zprávy do oddílů fronta nebo téma sběrnice přiřadí zpráva jedním z fragmentů. Pokud odpovídající úložišti pro přenos zpráv není k dispozici, Service Bus zapíše zprávu do různých fragment, pokud je to možné. Dělené entity již nejsou podporovány v [skladová položka Premium](service-bus-premium-messaging.md). 
+
+Další informace o dělené entity najdete v tématu [segmentované entity zasílání zpráv][Partitioned messaging entities].
 
 ## <a name="protecting-against-datacenter-outages-or-disasters"></a>Ochrana proti výpadkům datacenter nebo havárie
 Povolit pro převzetí služeb při selhání dvou Datacenter, můžete vytvořit obor názvů služby Service Bus v každé datové centrum. Například oboru názvů služby Service Bus **contosoPrimary.servicebus.windows.net** může nacházet v oblasti USA, Severní a střední a **contosoSecondary.servicebus.windows.net**může nacházet v oblasti USA – jih a střední. Pokud Service Bus entity pro zasílání zpráv musí zůstat přístupný v případě výpadku datového centra, můžete vytvořit dané entity v oba obory názvů.
@@ -86,7 +83,7 @@ Další informace o zotavení po havárii, najdete v těchto článcích:
 
 * [Azure Service Bus Geo-havárii](service-bus-geo-dr.md)
 * [Kontinuita podnikových procesů Azure SQL Database][Azure SQL Database Business Continuity]
-* [Návrh odolný aplikací pro Azure.][Azure resiliency technical guidance]
+* [Návrh aplikací Azure odolných proti chybám][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md

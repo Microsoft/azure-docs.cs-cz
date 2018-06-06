@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 8a8482fa93ca902746e4fc8ef6d67b274a926bdc
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700188"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé z nejběžnějších omezení Microsoft Azure, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V čase v seznamu rozbalit a aktualizovat tak, aby pokrývalo více platformou.
@@ -73,6 +74,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Služba IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
+* [Spravované Identity](#managed-identity-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Engagement](#mobile-engagement-limits)
 * [Mobilní služby](#mobile-services-limits)
@@ -82,6 +84,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Sledovací proces sítě](#network-watcher-limits)
 * [Služby centra oznámení](#notification-hub-service-limits)
 * [Skupina prostředků](#resource-group-limits)
+* [Řízení přístupu na základě rolí](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
@@ -96,8 +99,8 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 * [Virtual Machines](#virtual-machines-limits)
 * [Škálovací sady virtuálních počítačů](#virtual-machine-scale-sets-limits)
 
-### <a name="subscription-limits"></a>Limity předplatného
-#### <a name="subscription-limits"></a>Limity předplatného
+### <a name="subscription-limits"></a>Omezení předplatného
+#### <a name="subscription-limits"></a>Omezení předplatného
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Limity předplatného – Azure Resource Manager
@@ -314,6 +317,12 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 
 ### <a name="automation-limits"></a>Omezení automatizace
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
+
+### <a name="managed-identity-limits"></a>Spravované omezení Identity
+[!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
+
+### <a name="role-based-access-control-limits"></a>Omezení řízení přístupu podle rolí
+[!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Omezení databáze SQL
 Omezení SQL Database, najdete v části [limitů prostředků databáze SQL](sql-database/sql-database-resource-limits.md).

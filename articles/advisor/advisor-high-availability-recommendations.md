@@ -1,12 +1,12 @@
 ---
-title: "Azure doporučení služby Advisor vysokou dostupnost | Microsoft Docs"
-description: "Pomocí Azure Advisor lze zvýšit vysokou dostupnost vašich Azure nasazení."
+title: Azure doporučení služby Advisor vysokou dostupnost | Microsoft Docs
+description: Pomocí Azure Advisor lze zvýšit vysokou dostupnost vašich Azure nasazení.
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: e1cd7948e1969cd4ddb926e428c09b559190a805
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 23764b476f01c30b1755c507a0cfa5ead27be91e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736547"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Doporučení pro vysokou dostupnost služby Advisor
 
@@ -49,13 +50,16 @@ Pokud vaše disky nevyžadují vysokou IOPS, můžete omezit náklady na údržb
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Virtuální počítač data chránit před nechtěným odstraněním
 Nastavení zálohování virtuálních počítačů zajistíte dostupnost důležitých podnikových dat a poskytuje ochranu před náhodným odstraněním nebo poškození.  Advisor identifikuje virtuální počítače, kde není povolené zálohování, a doporučí povolení zálohování. 
 
+## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ujistěte se, že máte přístup do cloudu Azure Odborníci v případě potřeby
+Při spuštění důležitých zatížení, je důležité mít přístup k technické podpory v případě potřeby. Advisor určí potenciální důležitých podnikových odběry, které nemají součástí jejich plán podpory se na technickou podporu a doporučuje upgrade na možnost, která zahrnuje se na technickou podporu.
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Informace o přístupu k zajištění vysoké dostupnosti doporučení v Advisor
 
 1. Přihlaste se k [portál Azure](https://portal.azure.com)a pak otevřete [Advisor](https://aka.ms/azureadvisordashboard).
 
 2.  Na řídicím panelu služby Advisor, klikněte na **vysokou dostupnost** kartě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 * [Úvod do Azure Advisor](advisor-overview.md)

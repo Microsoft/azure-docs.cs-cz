@@ -1,11 +1,11 @@
 ---
 title: Nasadit soubor synchronizaci Azure (preview) | Microsoft Docs
-description: "Zjistěte, jak nasadit Azure souboru Sync, od začátku do konce."
+description: Zjistěte, jak nasadit Azure souboru Sync, od začátku do konce.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: d5864b8df85a5b3cec086d4cb2edc6d288f1639a
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: a450d3c00627a9b20ff2fe31c4dba49b33352ec1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738377"
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Nasadit soubor synchronizaci Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -33,7 +34,7 @@ Důrazně doporučujeme, abyste si přečetli [plánování nasazení Azure File
 * Alespoň jeden podporované instance systému Windows Server nebo cluster Windows serveru pro synchronizaci se službou Azure synchronizace souboru. Další informace o podporovaných verzích systému Windows Server najdete v tématu [interoperabilita se systémem Windows Server](storage-sync-files-planning.md#azure-file-sync-interoperability).
 
 ## <a name="deploy-the-storage-sync-service"></a>Nasazení služby Sync úložiště 
-Synchronizační služba úložiště je prostředek Azure nejvyšší úrovně pro synchronizaci souborů Azure. Chcete-li nasadit službu úložiště synchronizace, přejděte na [portál Azure](https://portal.azure.com/), klikněte na tlačítko *nový* a vyhledejte soubor synchronizaci Azure. Ve výsledcích hledání vyberte **synchronizace souboru Azure (preview)**a potom vyberte **vytvořit** otevřete **nasazení synchronizace úložiště** kartě.
+Synchronizační služba úložiště je prostředek Azure nejvyšší úrovně pro synchronizaci souborů Azure. Chcete-li nasadit službu úložiště synchronizace, přejděte na [portál Azure](https://portal.azure.com/), klikněte na tlačítko *nový* a vyhledejte soubor synchronizaci Azure. Ve výsledcích hledání vyberte **synchronizace souboru Azure (preview)** a potom vyberte **vytvořit** otevřete **nasazení synchronizace úložiště** kartě.
 
 V podokně, které se otevře zadejte následující informace:
 
@@ -56,13 +57,16 @@ Pro každý server, který chcete používat se synchronizací souboru Azure, v�
     4. V **konfigurace rozšířeného zabezpečení aplikace Internet Explorer** dialogové okno, vyberte **vypnout** pro **správci** a **uživatelé**:  
         ![Vybrané pop okno Konfigurace rozšířeného zabezpečení aplikace Internet Explorer s "Vypnuto"](media/storage-sync-files-deployment-guide/prepare-server-disable-IEESC-3.png)
 
-2. Ujistěte se, že používáte alespoň 5.1 prostředí PowerShell.\* (5.1 prostředí PowerShell je výchozím nastavení v systému Windows Server 2016). Můžete ověřit, že používáte 5.1 prostředí PowerShell. \* pohledem na hodnotu **PSVersion** vlastnost **$PSVersionTable** objektu:
+2. Pokud používáte Windows Server 2012 R2, ujistěte se, že používáte alespoň 5.1 prostředí PowerShell. \*. Tato kontrola na Windows Server 2016, můžete přeskočit bezpečně jako 5.1 prostředí PowerShell je výchozí verze out-of-box. V systému Windows Server 2012 R2 můžete ověřit spuštěný 5.1 prostředí PowerShell. \* pohledem na hodnotu **PSVersion** vlastnost **$PSVersionTable** objektu:
 
     ```PowerShell
     $PSVersionTable.PSVersion
     ```
 
     Pokud vaše PSVersion hodnota je menší než 5.1. \*jako bude v případě u většiny instalací systému Windows Server 2012 R2, budete moci snadno upgradovat stahuje a instaluje [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616). Příslušný balíček ke stažení a instalaci pro Windows Server 2012 R2 je **Win8.1AndW2K12R2 KB\*\*\*\*\*\*\*-x64.msu**.
+
+    > [!Note]  
+    > Synchronizace služby Azure souboru zatím nepodporuje 6 prostředí PowerShell na Windows Server 2012 R2 nebo Windows Server 2016.
 
 3. [Instalace a konfigurace prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Doporučujeme používat nejnovější verzi modulů prostředí Azure PowerShell.
 
@@ -92,6 +96,9 @@ Po přihlášení, budete vyzváni k zadání následujících informací:
 
 Jakmile vyberete příslušné informace, vyberte **zaregistrovat** dokončit registraci serveru. Jako součást procesu registrace budete vyzváni k další sign-in.
 
+> [!Note]  
+> Server se dají registrovat jenom s jeden synchronizační služby úložiště v čase.
+
 ## <a name="create-a-sync-group"></a>Vytvořte skupinu synchronizace
 Synchronizace skupiny definuje topologie synchronizace pro určitou sadu souborů. Koncové body v rámci synchronizace skupiny jsou synchronizovány mezi sebou. Synchronizace skupiny musí obsahovat alespoň jeden cloud koncový bod, který představuje sdílenou složku Azure, a koncový bod, jeden server, který představuje cestu v systému Windows Server. Chcete-li vytvořit skupinu synchronizace v [portál Azure](https://portal.azure.com/), přejděte do vaší služby synchronizace úložiště a potom vyberte **+ skupiny synchronizace**:
 
@@ -102,7 +109,7 @@ V podokně, které se otevře zadejte následující informace a vytvořte skupi
 - **Název skupiny synchronizace**: název skupiny synchronizace, který se má vytvořit. Tento název musí být jedinečný v rámci služby synchronizace úložiště, ale může být jakýkoli název, který je logické za vás.
 - **Předplatné**: předplatné, které jste nasadili synchronizační služby úložiště v [nasazení služby Sync úložiště](#deploy-the-storage-sync-service).
 - **Účet úložiště**: Pokud jste vybrali **vyberte účet úložiště**, zobrazí se další podokno, ve kterém můžete vybrat účet úložiště, který má sdílenou složku Azure, které chcete synchronizovat s.
-- **Azure sdílení souborů**: název sdílené složky Azure file, pro který chcete synchronizovat.
+- **Sdílenou složku Azure**: název sdílené složky Azure file, pro který chcete synchronizovat.
 
 Chcete-li přidat koncový bod serveru, přejděte do skupiny nově vytvořený synchronizace a potom vyberte **přidat koncový bod serveru**.
 

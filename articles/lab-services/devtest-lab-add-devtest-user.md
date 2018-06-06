@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0303f16de143247ac30a7dd4773b4da11f29c9d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736183"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníků a uživatelé v Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -60,25 +61,27 @@ Následující tabulka uvádí akce, které lze provést pomocí uživatelů v k
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>Přidat vlastníkem nebo uživateli na úrovni testovacího prostředí
-Vlastníci a uživatelé mohou být přidány na úrovni testovacího prostředí prostřednictvím portálu Azure. To zahrnuje externí uživatele s platnou [účet Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
+Vlastníci a uživatelé mohou být přidány na úrovni testovacího prostředí prostřednictvím portálu Azure. Uživatel může být externího uživatele s platnou [účet Microsoft (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account).
 Proces přidávání roli vlastníka nebo uživatele do testovacího prostředí v Azure DevTest Labs vás provede následující kroky:
 
 1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a potom vyberte **DevTest Labs** ze seznamu.
 3. Ze seznamu labs vyberte požadované testovací prostředí.
-4. V okně v prostředí, vyberte **konfigurace**. 
-5. Na **konfigurace** vyberte **uživatelé**.
-6. Na **uživatelé** vyberte **+ přidat**.
-   
+4. V okně v prostředí, vyberte **konfiguraci a zásady**. 
+5. Na **konfiguraci a zásady** vyberte **přístup k ovládacímu prvku (IAM)** z nabídky na levé straně. 
+6. Vyberte **přidat** na panelu nástrojů přidat uživatele k roli.
+
     ![Přidání uživatele](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-7. Na **vyberte roli** okno, vyberte požadovanou roli. V části [akce, které mohou být prováděny v každé role](#actions-that-can-be-performed-in-each-role) uvádí různé akce, které lze provést pomocí uživatelé v rolích vlastník, uživatel DevTest a Přispěvatel.
-8. Na **přidat uživatele** okno, zadejte e-mailovou adresu nebo jméno uživatele, který chcete přidat v roli, která jste zadali. Pokud uživatel nebyl nalezen, chybová zpráva popisuje problém. Pokud je uživatel nalezen, je uvedena v seznamu a vybrané tohoto uživatele. 
-9. Vyberte **vyberte**.
-10. Vyberte **OK** zavřete **přidat přístup** okno.
+1. V **přidat oprávnění** okno, proveďte následující akce: 
+    1. Vyberte roli (například: uživatel DevTest Labs). V části [akce, které mohou být prováděny v každé role](#actions-that-can-be-performed-in-each-role) uvádí různé akce, které lze provést pomocí uživatelé v rolích vlastník, uživatel DevTest a Přispěvatel.
+    2. Vyberte uživatele, který se má přidat do role. 
+    3. Vyberte **Uložit**. 
+
+        ![Přidat uživatele k roli](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Když se vrátíte **uživatelé** okně přidal uživatele.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Přidat externího uživatele k testovacím prostředí pomocí prostředí PowerShell
-Kromě přidání uživatelů na portálu Azure, můžete přidat externího uživatele na vašem testovacím prostředí pomocí skriptu prostředí PowerShell. V následujícím příkladu, stačí upravit hodnoty parametru v části **hodnoty změnit** komentář.
+Kromě přidání uživatelů na portálu Azure, můžete přidat externího uživatele na vašem testovacím prostředí pomocí skriptu prostředí PowerShell. V následujícím příkladu upravte hodnoty parametru v části **hodnoty změnit** komentář.
 Můžete získat `subscriptionId`, `labResourceGroup`, a `labName` hodnoty v okně prostředí na portálu Azure.
 
 > [!NOTE]

@@ -1,24 +1,26 @@
 ---
-title: "Azure AD Connect: Pokud už máte Azure AD | Microsoft Docs"
-description: "Toto téma popisuje, jak používat připojení, pokud máte existujícího klienta Azure AD."
+title: 'Azure AD Connect: Pokud už máte Azure AD | Microsoft Docs'
+description: Toto téma popisuje, jak používat připojení, pokud máte existujícího klienta Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa264487c68ea5403300d9b5b9978934a639a2a4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 726d8998d24a630808186eea417f236fdbfb565e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725203"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Pokud máte existující klienta
 Většinu témat, jak používat Azure AD Connect předpokládá začínat nové Azure AD klienta a že nejsou žádní uživatelé nebo existuje jiné objekty. Ale pokud jste spustili s klient Azure AD, naplní uživatelů a dalších objektů a teď chcete použít připojení, pak toto téma je pro vás.
@@ -56,7 +58,7 @@ Poštovní skupiny, a kontakty vám může konfigurace soft-match na základě p
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Vytvoření nové místní Active Directory z dat ve službě Azure AD
 Někteří zákazníci začínat čistě cloudové řešení s Azure AD a nemají místní AD. Později chtějí využívat místních prostředků a chcete vytvořit místní AD podle data služby Azure AD. Azure AD Connect nemůže pomoct pro tento scénář. Nedojde k vytvoření uživatele na místě a nemá žádné možnost nastavit heslo na místě na stejný jako v Azure AD.
 
-Pokud jenom důvod, proč plánujete přidat místní AD má zajistit podporu pro objekty LOBs (-obchodní aplikace), pak možná byste měli zvážit použití [služby Azure AD domain services](../../active-directory-domain-services/index.md) místo.
+Pokud jenom důvod, proč plánujete přidat místní AD má zajistit podporu pro objekty LOBs (-obchodní aplikace), pak možná byste měli zvážit použití [služby Azure AD domain services](../../active-directory-domain-services/index.yml) místo.
 
 ## <a name="next-steps"></a>Další postup
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

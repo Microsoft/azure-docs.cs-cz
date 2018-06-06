@@ -5,20 +5,17 @@ keywords: tom, jak zvýšit výkon databáze
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 94ff155e-f9bc-488f-8c7a-5e7037091bb9
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 767d08c7a148db3e8a6d8b53bd88b154139d981d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fa68711158bea203d4fe1605966363dd2786a038
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715016"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -40,27 +37,28 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     Jak se klient připojí k databázi Cosmos Azure má důležité dopady na výkon, hlavně z hlediska zjištěnou latence klienta. Nejsou k dispozici pro konfiguraci klienta zásady připojení – připojení dvě nastavení konfigurace klíče *režimu* a [připojení *protokol*](#connection-protocol).  Jsou k dispozici dva režimy:
 
-   1. Režim brány (výchozí)
+   * Režim brány (výchozí)
       
-      Režim brány je podporovaná na všech platformách SDK a je nakonfigurované výchozí. Pokud vaše aplikace běží v rámci podnikové sítě s omezeními striktní brány firewall, režimu brány je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Kompromis výkonu, je ale, že brány režimu zahrnuje směrování další síti pokaždé, když je číst nebo zapisovat do databáze Cosmos Azure data. Z toho důvodu přímý režim nabízí lepší výkon z důvodu méně síťové směrování.
+     Režim brány je podporovaná na všech platformách SDK a je nakonfigurované výchozí. Pokud vaše aplikace běží v rámci podnikové sítě s omezeními striktní brány firewall, režimu brány je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Kompromis výkonu, je ale, že brány režimu zahrnuje směrování další síti pokaždé, když je číst nebo zapisovat do databáze Cosmos Azure data. Z toho důvodu přímý režim nabízí lepší výkon z důvodu méně síťové směrování.
 
-   2. Přímý režim
+   * Přímý režim
 
-     Přímý režim podporuje připojení prostřednictvím protokolů TCP a HTTPS. V současné době direct je podporována v rozhraní .NET 2.0 standardní pro platformu Windows jenom.
-      
-<a id="use-tcp"></a>
-2. **Zásady připojení: použití protokolu TCP**
+     Přímý režim podporuje připojení prostřednictvím protokolů TCP a HTTPS. V současné době direct je podporována v rozhraní .NET 2.0 standardní pro platformu Windows jenom. Při použití režimu přímého, existují dvě možnosti protokolu k dispozici:
 
-    Při použití režimu přímého, existují dvě možnosti protokolu k dispozici:
+    * TCP
+    * HTTPS
 
-   * TCP
-   * HTTPS
+    Při použití režimu brány, Azure Cosmos DB používá port 443 a MongoDB API používá 10250, 10255 a 10256 porty. Mapy 10250 portu do výchozí instance Mongodb bez geografická replikace a porty 10255/10256 mapovat do instance Mongodb s geografická replikace funkce. Při použití protokolu TCP v režimu přímého kromě portů brány, je potřeba zajistit port rozsahu 10000 až 20000 je otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud nejsou tyto porty otevřít a pokus o použití protokolu TCP, obdržíte chybu 503 Služba není k dispozici. Následující tabulka uvádí připojení režimy, které jsou k dispozici pro jiné rozhraní API a porty uživatele služby pro každé rozhraní API:
 
-     Azure Cosmos DB nabízí jednoduché a otevřete RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také dosáhl standardu RESTful v jeho komunikace modelu a je k dispozici prostřednictvím klient .NET SDK. Přímé TCP a HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosů. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
+    |Režim připojení  |Podporovaných protokolů  |Podporované sady SDK  |Port rozhraní API/služby  |
+    |---------|---------|---------|---------|
+    |brána  |   HTTPS    |  Všechny sady SDK    |   SQL(443) Mongo (10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |Přímé    |    HTTPS     |  Rozhraní .net a Java SDK    |    SQL(443)   |
+    |Přímé    |     TCP    |  .NET SDK    | Porty v rozsahu 20 10 000 000 |
 
-     Při použití protokolu TCP v režimu brány, TCP Port 443 je port Azure Cosmos DB a 10255 je port, rozhraní API MongoDB. Při použití protokolu TCP v režimu přímého kromě portů brány, je potřeba zajistit port rozsahu 10000 až 20000 je otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud nejsou tyto porty otevřít a pokus o použití protokolu TCP, obdržíte chybu 503 Služba není k dispozici.
+    Azure Cosmos DB nabízí jednoduché a otevřete RESTful programovací model přes protokol HTTPS. Kromě toho nabízí efektivní protokolu TCP, který je také dosáhl standardu RESTful v jeho komunikace modelu a je k dispozici prostřednictvím klient .NET SDK. Přímé TCP a HTTPS používat protokol SSL pro počáteční ověřování a šifrování přenosů. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
 
-     Režim připojení je nakonfigurovat při vytváření instance DocumentClient s parametrem ConnectionPolicy. Pokud se používá přímý režim, můžete v rámci parametr ConnectionPolicy nastavit protokol.
+    Režim připojení je nakonfigurovat při vytváření instance DocumentClient s parametrem ConnectionPolicy. Pokud se používá přímý režim, můžete v rámci parametr ConnectionPolicy nastavit protokol.
 
     ```csharp
     var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -77,19 +75,19 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     ![Obrázek připojení zásad Azure Cosmos DB](./media/performance-tips/connection-policy.png)
 
-3. **Volání OpenAsync, aby se zabránilo zpoždění při spuštění na první požadavek**
+2. **Volání OpenAsync, aby se zabránilo zpoždění při spuštění na první požadavek**
 
     Ve výchozím nastavení první požadavek má vyšší latence, protože má načíst tabulky směrování adres. Abyste se vyhnuli tato čekací doba spuštění na první žádost, měli byste zavolat OpenAsync() jednou během inicializace následujícím způsobem.
 
         await client.OpenAsync();
    <a id="same-region"></a>
-4. **Společně umístit klienty ve stejné oblasti Azure výkonu**
+3. **Společně umístit klienty ve stejné oblasti Azure výkonu**
 
     Pokud je to možné, umístěte všechny aplikace, volání Azure Cosmos DB ve stejné oblasti jako databázi Azure Cosmos DB. Přibližná porovnání najdete dokončí volání do databáze Cosmos Azure v rámci stejné oblasti v rámci ms 1 – 2, ale je latence mezi – západ a východním pobřeží USA > 50 ms. Tato čekací doba můžete z požadavku na žádost pravděpodobně lišit v závislosti na směrování žádosti jako předává z klienta na hranici datového centra Azure. Nejnižší možnou latenci je dosaženo tím zajistíte, že je volající aplikace se nachází v rámci stejné oblasti Azure jako zřízené koncový bod Azure Cosmos DB. Seznam dostupných oblastí najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
     ![Obrázek připojení zásad Azure Cosmos DB](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
-5. **Zvýšit počet vláken/úlohy**
+4. **Zvýšit počet vláken/úlohy**
 
     Vzhledem k tomu, že k databázi Azure Cosmos volání přes síť, musíte ke změně stupně paralelního zpracování žádostí o tak, aby klientská aplikace stráví velmi malé dobu čekání mezi požadavky. Pokud například používáte. NET na [Task Parallel Library](https://msdn.microsoft.com//library/dd460717.aspx), vytvořte v pořadí 100s úloh čtení nebo zápisu do databáze Azure Cosmos.
 

@@ -2,24 +2,22 @@
 title: 'Azure Cosmos DB: Rozhraní API .NET SQL, sadu SDK a prostředky | Microsoft Docs'
 description: Další informace o rozhraní API .NET SQL a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi .NET SDK služby Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: .net
 author: rnagpal
 manager: kfile
 editor: cgronlun
-ms.assetid: 8e239217-9085-49f5-b0a7-58d6e6b61949
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e96c57151899a7365431d0f6f82382d56d81a40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cd460d92430f8ab011e90b969495972b744162df
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798708"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní API pro SQL: stažení a poznámky k verzi
 > [!div class="op_single_selector"]

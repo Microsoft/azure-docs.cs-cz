@@ -1,28 +1,24 @@
 ---
-title: "Zálohování Azure: Obnovovat soubory a složky ze zálohy virtuálního počítače Azure | Microsoft Docs"
-description: "Obnovit soubory z bodu obnovení virtuálního počítače Azure"
+title: 'Zálohování Azure: Obnovovat soubory a složky ze zálohy virtuálního počítače Azure'
+description: Obnovit soubory z bodu obnovení virtuálního počítače Azure
 services: backup
-documentationcenter: dev-center-name
 author: pvrk
 manager: shivamg
-keywords: "obnovení na úrovni položek; obnovení souborů ze zálohy virtuálního počítače Azure; Obnovit soubory z virtuálního počítače Azure"
-ms.assetid: f1c067a2-4826-4da4-b97a-c5fd6c189a77
+keywords: obnovení na úrovni položek; obnovení souborů ze zálohy virtuálního počítače Azure; Obnovit soubory z virtuálního počítače Azure
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: pullabhk;markgal
-ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: pullabhk
+ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737014"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovit soubory ze zálohy virtuálního počítače Azure
 
-Azure Backup poskytuje možnosti obnovení [Azure virtuální počítače (VM) a disky](./backup-azure-arm-restore-vms.md) ze záloh virtuálních počítačů Azure, také známé jako obnovit body. Tento článek vysvětluje, jak obnovit soubory a složky ze zálohy virtuálního počítače Azure. Obnovení souborů a složek je k dispozici pouze pro virtuální počítače Azure nasazení pomocí modelu Resource Manager a chránit do trezoru služeb zotavení.
+Azure Backup poskytuje možnosti obnovení [Azure virtuální počítače (VM) a disky](./backup-azure-arm-restore-vms.md) ze záloh virtuálních počítačů Azure, také známé jako body obnovení. Tento článek vysvětluje, jak obnovit soubory a složky ze zálohy virtuálního počítače Azure. Obnovení souborů a složek je k dispozici pouze pro virtuální počítače Azure nasazení pomocí modelu Resource Manager a chránit do trezoru služeb zotavení.
 
 > [!Note]
 > Tato funkce je k dispozici pro virtuální počítače Azure nasazení pomocí modelu Resource Manager a chránit do trezoru služeb zotavení.
@@ -31,7 +27,7 @@ Azure Backup poskytuje možnosti obnovení [Azure virtuální počítače (VM) a
 
 ## <a name="mount-the-volume-and-copy-files"></a>Připojte svazek a zkopírujte soubory
 
-Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte k virtuálnímu počítači a zvolte s bodem obnovení. 
+Pokud chcete obnovit soubory nebo složky z bodu obnovení, přejděte k virtuálnímu počítači a zvolte bod obnovení požadované. 
 
 1. Přihlaste se k [portál Azure](http://portal.Azure.com) a nabídky na levé straně klikněte na **virtuální počítače**. Seznam virtuálních počítačů vyberte virtuální počítač a otevřete řídicí panel virtuálního počítače. 
 
@@ -164,7 +160,7 @@ $ mount [RAID Disk Path] [/mountpath]
 
 Pokud RAID disk má jiné LVM v nich konfigurovali, použít předchozí postup pro oddíly LVM ale použít název svazku namísto názvu disku diskového pole RAID
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
 ### <a name="for-windows"></a>Pro Windows
 

@@ -1,13 +1,14 @@
 ---
-title: "Připojení k nové zařízení Windows 10 s Azure AD při prvním spuštění | Microsoft Docs"
-description: "Téma, které vysvětluje, jak uživatelé mohou vytvořit připojení ke službě Azure AD během prostředí prvního spuštění."
+title: Připojení k nové zařízení Windows 10 s Azure AD při prvním spuštění | Microsoft Docs
+description: Téma, které vysvětluje, jak uživatelé mohou vytvořit připojení ke službě Azure AD během prostředí prvního spuštění.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0e71df2333dee9c4eb9935d3397d343be246be65
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0341c5b65816cf1c54fe3f2f7781dde46bf084ad
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757388"
 ---
 # <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Připojení k nové zařízení Windows 10 s Azure AD při prvním spuštění
 
@@ -37,6 +39,8 @@ V systému Windows *out-of-box prostředí*, připojení k místní doméně Act
 ## <a name="before-you-begin"></a>Než začnete
 
 K připojení k zařízením s Windows 10, je třeba službu device registration service vám umožní zaregistrovat zařízení. Kromě nutnosti oprávnění k připojení zařízení v klientovi služby Azure AD, musí mít méně zařízení registrovaná než nakonfigurované maximum. Další podrobnosti najdete v tématu [nakonfigurovat nastavení zařízení](device-management-azure-portal.md#configure-device-settings).
+
+Kromě toho pokud váš klient je federovaný, zprostředkovatele Identity musí podporovat WS-Fed a WS-Trust koncový bod uživatelského jména a hesla. To může být verze 1.3 nebo 2005. Tato podpora protokolu je potřeba připojit zařízení k Azure AD i Přihlaste se k zařízení s heslem.
 
 ## <a name="joining-a-device"></a>Připojení zařízení
 

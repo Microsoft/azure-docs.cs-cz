@@ -12,17 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/04/2018
+ms.date: 05/31/2018
 ms.author: maghan
-ms.openlocfilehash: 1bc641e210a5bd965c5cdbf41efe853e9b297132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8d68a950438a332cdf8ddd8d4f13a316c87aa0a5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715917"
 ---
-# <a name="about-power-bi-embedded"></a>O službě Power BI Embedded
+# <a name="what-is-power-bi-embedded"></a>Co je Power BI Embedded?
 
-Power BI Embedded slouží ke zjednodušení jak nezávislí dodavatelé softwaru a vývojáři pomocí funkcí Power BI. Power BI Embedded zjednodušuje možnosti Power BI dokážete rychle přidáte poutavých vizuální prvky, sestavy a řídicí panely do svých aplikací. Podobně jako u aplikace vytvořené na použití služby Microsoft Azure jako Machine Learning a IoT. Povolením zkoumání dat snadno přejděte v svých aplikací povolit ISV zákazníků, abyste měli rychlý a informované rozhodnutí v kontextu.
+Power BI Embedded slouží ke zjednodušení jak nezávislí dodavatelé softwaru a vývojáři pomocí funkcí Power BI. Power BI Embedded zjednodušuje možnosti Power BI dokážete rychle přidáte poutavých vizuální prvky, sestavy a řídicí panely pro vaše aplikace. Podobně jako u aplikace vytvořené na použití služby Microsoft Azure jako Machine Learning a IoT. Povolením zkoumání dat snadno přejděte v svých aplikací povolit ISV zákazníků, abyste měli rychlý a informované rozhodnutí v kontextu.
 
 > [!VIDEO https://www.youtube.com/embed/iEHfUuoZseo]
 
@@ -30,7 +31,7 @@ V květnu 2017 jsme oznámila konvergence služby Power BI a Power BI Embedded. 
 
 S Power BI Embedded nezávislí dodavatelé softwaru a vývojáři přidali flexibilitu v tom, jak se vložit intelligence ve svých aplikacích pomocí rozhraní API Power BI. Nezávislí dodavatelé softwaru a vývojáři mohou využít výhod minimalizovaném okně vývoj ve snaze o dosažení rychlejší dobu uvedení na trh a lépe se prosadit podle infusing modul špičkových analytics společnosti Microsoft ve své aplikaci. Stejným způsobem, mohou vývojáři věnovat času zaměřené na jejich řešení, které splňuje požadavky zákazníků, místo vývoj visual analytics funkce. Kromě toho Power BI Embedded umožňuje pracovat v rámci známého vývojového prostředí – Visual Studio a Azure – už používáte.
 
-Máte stávající aplikace s vložený obsah Power BI pomocí Power BI Premium? Pokud jste ISV nebo vývojáře doručování aplikace nebo organizaci jejich používání, není vyžadována žádná akce. Vám a vašim zákazníkům, můžete pokračovat v použití těchto aplikací bez přerušení. Pokud máte stávající aplikace založená na kolekce pracovních prostorů Power BI a zájem o využívat výhod sblížené plochy rozhraní API a nové kapacity na základě Azure SKU, navštivte dokumentaci pokyny k migraci.
+Máte stávající aplikace s vložený obsah Power BI pomocí Power BI Premium? Pokud jste ISV nebo vývojáře doručování aplikace nebo organizaci jejich používání, není vyžadována žádná akce. Vám a vašim zákazníkům můžete pokračovat v použití těchto aplikací bez přerušení. Pokud máte stávající aplikace založená na kolekce pracovních prostorů Power BI a zájem o využívat výhod sblížené plochy rozhraní API a nové kapacity na základě Azure SKU, navštivte dokumentaci pokyny k migraci.
 
 ## <a name="comparing-power-bi-embedded-with-power-bi-premium"></a>Porovnání Power BI Embedded s Power BI Premium
 
@@ -38,7 +39,7 @@ Power BI Embedded je pro vývojáře, kteří vytvářejí aplikace. Můžete po
 
 ## <a name="easy-to-use-tools"></a>Snadno použitelné nástroje
 
-Power BI Embedded umožňuje zaměřit se na tom, co vám nejlépe: vytváření kvalitních aplikací. Můžete spravovat a vývoji s Power BI Embedded pomocí nástroje a dovednosti, které máte k dispozici.
+Power BI Embedded umožňuje zaměřit se na tom, co vám nejlépe: vytváření kvalitních aplikací. Můžete spravovat a vývoj pomocí Power BI Embedded pomocí nástroje a dovednosti, které máte k dispozici.
 
 * [**Azure Portal:**](https://portal.azure.com/) Webová aplikace pro správu všech služeb Azure.
 * [**Visual Studio Code**](https://code.visualstudio.com/docs): zdarma ke stažení open source, editor kódu pro Windows, systému macOS a Linux, který podporuje rozšíření

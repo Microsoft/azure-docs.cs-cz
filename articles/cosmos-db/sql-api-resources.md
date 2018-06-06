@@ -3,23 +3,21 @@ title: Azure Cosmos DB model prostředků a koncepty | Microsoft Docs
 description: Další informace o databázi Cosmos Azure hierarchické model databáze, kolekce, uživatelem definované funkce (UDF), dokumentů, oprávnění ke správě prostředků a další.
 keywords: Model hierarchické, cosmosdb, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69ee7baeda524647dd259ea22bb948b0168fd913
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 21b1e69573d2ddd31979e6c23dd7f3bd130cadbe
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798012"
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchický model prostředků a základní koncepty databáze Azure Cosmos
 

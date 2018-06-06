@@ -12,19 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ec5947bc68ba95a7b1e1588c444f4b28a7435f1c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801533"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
-Po [instalaci ASDK](asdk-install.md), existuje několik změny doporučené konfigurace po instalaci. 
 
-## <a name="install-azure-stack-powershell"></a>Instalace Azure Stack PowerShellu 
+Po [instalace Azure zásobníku Development Kit (ASDK)](asdk-install.md), budete muset změnit některé doporučené konfigurace po instalaci.
+
+## <a name="install-azure-stack-powershell"></a>Instalace Azure Stack PowerShellu
+
 Azure zásobníku kompatibilní prostředí Azure PowerShell moduly jsou nutné k práci s Azure zásobníku.
 
 Příkazy prostředí PowerShell pro Azure zásobníku jsou nainstalovány v galerii prostředí PowerShell. Pokud chcete zaregistrovat PSGallery úložiště, otevřete relaci prostředí PowerShell zvýšenými oprávněními a spusťte následující příkaz:
@@ -35,9 +38,9 @@ Set-PSRepository `
   -InstallationPolicy Trusted
 ```
 
- Prostřednictvím rozhraní API verze profily jsou nainstalované Azure AzureRM moduly kompatibilní zásobníku. Azure zásobníku vyžaduje profil verze rozhraní API 2017-03-09profil, který je k dispozici po instalaci modulu AzureRM.Bootstrapper. 
- 
- S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete nainstalovat nejnovější modul Azure PowerShell zásobníku:
+Profily verze rozhraní API můžete použít k určení kompatibilní AzureRM moduly Azure zásobníku.  Profily rozhraní API verze poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure zásobníku. Profilem verze rozhraní API je sada modulů Powershellu AzureRM s konkrétní verze rozhraní API. **AzureRM.Bootstrapper** modul, který je k dispozici prostřednictvím Galerie prostředí PowerShell poskytuje rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API.
+
+S nebo bez připojení k Internetu k hostitelskému počítači ASDK můžete nainstalovat nejnovější modul Azure PowerShell zásobníku:
 
 > [!IMPORTANT]
 > Před instalací požadovanou verzi, ujistěte se, že jste [odinstalovat všechny existující modulů prostředí Azure PowerShell](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
@@ -45,7 +48,7 @@ Set-PSRepository `
 - **S připojením k Internetu** od ASDK hostitelského počítače. Spusťte následující skript prostředí PowerShell k instalaci těchto modulů na instalaci development kit:
 
   ``` PowerShell
-  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
+  # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
   Install-Module `
     -Name AzureRm.BootStrapper
 
@@ -53,10 +56,11 @@ Set-PSRepository `
   Use-AzureRmProfile `
     -Profile 2017-03-09-profile -Force
 
-  Install-Module `
-    -Name AzureStack `
-    -RequiredVersion 1.2.11
+  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.
+  Install-Module -Name AzureStack -RequiredVersion 1.3.0 
+
   ```
+
   Pokud je instalace úspěšná, moduly AzureRM a AzureStack se zobrazí ve výstupu.
 
 - **Bez připojení k Internetu** od ASDK hostitelského počítače. Ve scénáři odpojené musíte nejprve stáhnout moduly Powershellu pro počítač, který má připojení k Internetu pomocí těchto příkazů prostředí PowerShell:
@@ -78,11 +82,13 @@ Set-PSRepository `
     -Name AzureStack `
     -Path $Path `
     -Force `
-    -RequiredVersion 1.2.11
+  # Install Azure Stack Module Version 1.3.0. If running a pre-1804 version of Azure Stack, change the -RequiredVersion value to 1.2.11.  
+    -RequiredVersion 1.3.0
   ```
+
   V dalším kroku zkopírujte stažený balíčky do počítače, ASDK a zaregistrujte umístění jako výchozí úložiště a nainstalujte moduly AzureRM a AzureStack z tohoto úložiště:
 
-    ```PowerShell
+    ```PowerShell  
     $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
     $RepoName = "MyNuGetSource"
 
@@ -99,6 +105,7 @@ Set-PSRepository `
     ```
 
 ## <a name="download-the-azure-stack-tools"></a>Stažení nástroje Azure zásobníku
+
 [Nástroje AzureStack](https://github.com/Azure/AzureStack-Tools) je úložiště GitHub, který je hostitelem moduly Powershellu pro správu a nasazení prostředků do protokolů Azure. Pokud chcete získat tyto nástroje, naklonujte úložiště GitHub nebo stáhnout složce AzureStack nástroje spuštěním následujícího skriptu:
 
   ```PowerShell
@@ -123,7 +130,7 @@ Set-PSRepository `
 ## <a name="validate-the-asdk-installation"></a>Ověření instalace ASDK
 Aby se zajistilo, že ASDK nasazení proběhlo úspěšně, můžete použít rutinu Test-AzureStack pomocí následujících kroků:
 
-1. Přihlaste se jako AzureStack\CloudAdmin na hostitelském počítači ASDK.
+1. Přihlaste se jako AzureStack\AzureStackAdmin na hostitelském počítači ASDK.
 2. Otevřete PowerShell jako správce (není prostředí PowerShell ISE).
 3. Spusťte: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
 4. Spusťte: `Test-AzureStack`

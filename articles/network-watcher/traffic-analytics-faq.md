@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f7e456c76dcf67a40777e32b100b900b859e210e
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736792"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -29,7 +30,14 @@ ms.lasthandoff: 04/18/2018
     - Tok protokolů NSG pro skupiny Nsg, kterou chcete sledovat povoleno
     - Účet úložiště Azure pro uložení nezpracovaná flog protokoly
     - Pracovní prostor analýzy protokolů (OMS) s oprávnění ke čtení a zápisu
-    - Musí váš účet přiřazenou na poskytovateli Microsoft.Network následující akce:
+    - Váš účet musí být přiřazená s některý z těchto oprávnění na úrovni předplatného:
+    
+            All permissions *
+            All Read permissions */read
+            All network permissions Microsoft.Network/*
+            All network read permissions Microsoft.Network/*/read
+
+    Nebo musí mít váš účet přiřazenou následující všechny akce na úrovni předplatného: 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read

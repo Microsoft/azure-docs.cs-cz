@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5940be8c13a85e256055d6bd6362c9cd93323ee4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5341df808e65dda9ed68c5cda633d6d8e19d9fc9
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723102"
 ---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-subscription-service-limits.md#networking-limits).
 
@@ -170,4 +171,4 @@ Existují také kurzy o tom, jak virtuální počítače Vyrovnávání zatíže
 
 - Naučte se konfigurovat [trasy definované uživatelem a předávání IP](../articles/virtual-network/virtual-networks-udr-overview.md). 
 - Naučte se konfigurovat [připojení mezi virtuálními sítěmi](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
-- Naučte se [řešit potíže s trasami](../articles/virtual-network/virtual-network-routes-troubleshoot-portal.md).
+- Naučte se [řešit potíže s trasami](../articles/virtual-network/diagnose-network-routing-problem.md).

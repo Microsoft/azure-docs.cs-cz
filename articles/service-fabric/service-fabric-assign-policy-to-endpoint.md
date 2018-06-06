@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: f9de8d213d11a8ccb3ffff484a67560d9e2abe77
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 33d6d83d4dcd0ec9bebf8d4197684e0e52c48ac5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701314"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Přiřadit zásady zabezpečení přístupu pro koncové body HTTP a HTTPS
 Pokud použijete zásadu spustit jako a service manifest deklaruje prostředky koncový bod protokolu HTTP, je nutné zadat **SecurityAccessPolicy**.  **SecurityAccessPolicy** zajistí, že porty přidělené s těmito koncovými body jsou správně omezen na uživatelský účet, který je služba spuštěna jako. V opačném **http.sys** nemá přístup ke službě, a získat selhání pomocí volání z klienta. Následující příklad se týká účet Customer1 koncový bod názvem **EndpointName**, což dává ho úplná přístupová práva.
@@ -42,6 +43,10 @@ Pro koncový bod HTTPS také označení názvu certifikátu se vraťte do klient
   <EndpointBindingPolicy EndpointRef="EndpointName" CertificateRef="Cert1" />
 </Policies
 ```
+
+> [!WARNING] 
+> Při použití protokolu HTTPS, nepoužívejte stejný port a certifikát pro instance různé služby (nezávisle na aplikaci), které jsou nasazené na stejném uzlu. Upgrade dvě různé služby pomocí stejný port na jinou aplikaci instancí povede selhání při upgradu. Další informace najdete v tématu [upgrade více aplikací s koncovými body HTTPS ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 Další kroky přečtěte si následující články:

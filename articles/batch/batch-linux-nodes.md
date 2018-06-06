@@ -12,14 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
-ms.date: 05/22/2017
+ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9aa896bfc4c860c87757f9379fc44cc5ee8d18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: abb822483253fc5fce0e76afc2628806fe4485d8
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801758"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřídit Linux výpočetních uzlů ve fondech Batch
 
@@ -38,7 +39,7 @@ Když vytvoříte fond výpočetních uzlů ve službě Batch, máte dvě možno
 **Konfigurace virtuálního počítače** poskytuje, Linux a Windows Image pro výpočetní uzly. K dispozici výpočetní uzel velikosti jsou uvedeny v [velikosti virtuálních počítačů v Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) a [velikosti virtuálních počítačů v Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows). Když vytvoříte fond, který obsahuje uzly konfigurace virtuálního počítače, je nutné zadat velikost uzlů, odkaz na obrázek virtuálního počítače a agenta uzlu Batch SKU být nainstalovány na uzlu.
 
 ### <a name="virtual-machine-image-reference"></a>Odkaz na obrázek virtuálního počítače
-Použití služby Batch [sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zajistit Linuxových výpočetních uzlů. Můžete zadat bitovou kopii [Azure Marketplace][vm_marketplace], nebo zadejte vlastní obrázek, který jste připravili. Další informace o vlastních imagích najdete v tématu [Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch](batch-api-basics.md#pool).
+Použití služby Batch [sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zajistit výpočetní uzly v konfiguraci virtuálního počítače. Můžete zadat bitovou kopii [Azure Marketplace][vm_marketplace], nebo zadejte vlastní obrázek, který jste připravili. Další informace o vlastních imagí najdete v tématu [vytvoření fondu pomocí vlastní image](batch-custom-images.md).
 
 Když konfigurujete odkaz bitové kopie virtuálního počítače, můžete zadat vlastnosti na bitové kopie virtuálního počítače. Následující vlastnosti jsou požadovány při vytvoření odkaz na obrázek virtuálního počítače:
 
@@ -57,8 +58,8 @@ Když konfigurujete odkaz bitové kopie virtuálního počítače, můžete zada
 ### <a name="node-agent-sku"></a>Uzel agenta SKU
 Agent uzlu Batch je program, který běží na každém uzlu ve fondu a poskytuje rozhraní příkazu a řízení mezi uzlu a služby Batch. Existují různé implementace uzlu agenta, označuje jako SKU, pro různé operační systémy. V podstatě při vytváření konfigurace virtuálního počítače, nejprve zadat odkaz na obrázek virtuálního počítače a pak zadejte uzlu agenta k instalaci na bitovou kopii. Obvykle každého uzlu agenta SKU je kompatibilní s více bitových kopií virtuálního počítače. Tady je několik příkladů uzlu agenta SKU:
 
-* batch.node.ubuntu 14.04
-* batch.node.centos 7
+* batch.Node.Ubuntu 14.04
+* batch.Node.centos 7
 * batch.Node.Windows amd64
 
 > [!IMPORTANT]
@@ -145,7 +146,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Vytvoření fondu Linux: Batch .NET
-Následující fragment kódu ukazuje příklad použití [Batch .NET] [ nuget_batch_net] klientské knihovny vytvořit fond Ubuntu Server výpočetních uzlů. Můžete najít [Batch .NET referenční dokumentaci k nástroji] [ api_net] na webu MSDN.
+Následující fragment kódu ukazuje příklad použití [Batch .NET] [ nuget_batch_net] klientské knihovny vytvořit fond Ubuntu Server výpočetních uzlů. Můžete najít [Batch .NET referenční dokumentaci k nástroji] [ api_net] na docs.microsoft.com.
 
 Následující kód používá fragment kódu [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metoda vyberte ze seznamu aktuálně podporované kombinace SKU agenta Marketplace pro bitové kopie a uzlu. Tento postup je žádoucí, protože seznam podporovaných kombinací může občas změnit. Nejčastěji jsou přidány podporovaných kombinací.
 
@@ -206,7 +207,7 @@ ImageReference imageReference = new ImageReference(
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>Seznam bitové kopie virtuálních počítačů
-Následující tabulka uvádí Marketplace Image virtuálních počítačů, které jsou kompatibilní s dostupných agentů uzlu Batch při poslední aktualizace v tomto článku. Je důležité si uvědomit, že tento seznam není spolehlivý, protože bitové kopie a agenty uzlu může přidat nebo odebrat kdykoli. Doporučujeme vaší aplikací a služeb Batch vždy použít [list_node_agent_skus][py_list_skus] (Python) a [ListNodeAgentSkus][net_list_skus] (Batch .NET), abyste zjistili a vyberte z aktuálně dostupné edice.
+Následující tabulka uvádí Marketplace Image virtuálních počítačů, které jsou kompatibilní s dostupných agentů uzlu Batch při poslední aktualizace v tomto článku. Je důležité si uvědomit, že tento seznam není spolehlivý, protože bitové kopie a agenty uzlu může přidat nebo odebrat kdykoli. Doporučujeme vaší aplikací a služeb Batch vždy použít [list_node_agent_skus] [ py_list_skus] (Python) nebo [ListNodeAgentSkus] [ net_list_skus] () Batch .NET) k určení a vyberte z aktuálně dostupné edice.
 
 > [!WARNING]
 > V následujícím seznamu může kdykoli změnit. Vždy nutné použít **agent uzlu seznamu SKU** metody, které jsou k dispozici v rozhraní API služby Batch k zobrazení seznamu kompatibilní virtuální počítač a uzlu agenta SKU při spuštění úlohy Batch.
@@ -215,26 +216,33 @@ Následující tabulka uvádí Marketplace Image virtuálních počítačů, kte
 
 | **Publisher** | **Nabídka** | **Obrázek SKU** | **Verze** | **Uzel agenta SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 16.04.0-LTS | nejnovější | batch.node.ubuntu 16.04 |
+| dávka | vykreslování centos73 | Vykreslování | nejnovější | batch.Node.centos 7 |
+| dávka | vykreslování windows2016 | Vykreslování | nejnovější | batch.Node.Windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | nejnovější | batch.Node.Ubuntu 16.04 |
+| Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.Node.Ubuntu 14.04 |
+| Credativ | Debian | 9 | nejnovější | batch.Node.debian 9 |
 | Credativ | Debian | 8 | nejnovější | batch.Node.debian 8 |
-| OpenLogic | CentOS | 7.0 | nejnovější | batch.node.centos 7 |
-| OpenLogic | CentOS | 7.1 | nejnovější | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | nejnovější | batch.node.centos 7 |
-| OpenLogic | CentOS | 7.2 | nejnovější | batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.0 | nejnovější | batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.2 | nejnovější | batch.node.centos 7 |
-| SUSE | openSUSE | 13.2 | nejnovější | batch.node.opensuse 13.2 |
-| SUSE | openSUSE přestupného | 42.1 | nejnovější | batch.Node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | nejnovější | batch.Node.opensuse 42.1 |
-| SUSE | SLES-HPC | 12-SP1 | nejnovější | batch.Node.opensuse 42.1 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | nejnovější | batch.node.centos 7 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | nejnovější | batch.Node.centos 7 |
 | microsoft-ads | standard-data-science-vm | standard-data-science-vm | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | nejnovější | batch.Node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | nejnovější | batch.Node.Windows amd64 |
+| Microsoft-azure-batch | kontejner centos | 7 – 4 | nejnovější | batch.Node.centos 7 |
+| Microsoft-azure-batch | centos. kontejneru rdma | 7 – 4 | nejnovější | batch.Node.centos 7 |
+| Microsoft-azure-batch | Ubuntu server – kontejner | 16-04-lts | nejnovější | batch.Node.Ubuntu 16.04 |
+| Microsoft-azure-batch | Ubuntu server kontejneru rdma | 16-04-lts | nejnovější | batch.Node.Ubuntu 16.04 |
+| MicrosoftWindowsServer | WindowsServer | 2016 Datacenter | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016. Datacenter smalldisk | nejnovější | batch.Node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016 datového centra s kontejnery | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012 – Datacenter-smalldisk | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | nejnovější | batch.Node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 smalldisk | nejnovější | batch.Node.Windows amd64 |
+| OpenLogic | CentOS | 7.4 | nejnovější | batch.Node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.4 | nejnovější | batch.Node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.3 | nejnovější | batch.Node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | nejnovější | batch.Node.centos 7 |
+| Oracle | Oracle Linux | 7.4 | nejnovější | batch.Node.centos 7 |
+| SUSE | SLES-HPC | 12 SP2 | nejnovější | batch.Node.opensuse 42.1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Připojení k Linuxových uzlů pomocí protokolu SSH
 Během vývoje nebo při řešení potíží možná bude nutné se přihlásit k uzly ve fondu. Na rozdíl od Windows výpočetní uzly nemůžete použít protokol RDP (Remote Desktop) pro připojení k Linuxových uzlů. Místo toho služba Batch umožňuje přístup k SSH na každém uzlu vzdáleného připojení.

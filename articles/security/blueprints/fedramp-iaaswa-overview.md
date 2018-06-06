@@ -1,6 +1,6 @@
 ---
-title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - webové aplikace pro FedRAMP
-description: Zabezpečení Azure a dodržování předpisů plán, podle kterého - webové aplikace pro FedRAMP
+title: Zabezpečení Azure a dodržování předpisů plán, podle kterého - IaaS webové aplikace pro FedRAMP
+description: Zabezpečení Azure a dodržování předpisů plán, podle kterého - IaaS webové aplikace pro FedRAMP
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: b7a81db6a1caf11ac4a85a5202c5ed943225e849
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 27346d8e2133ea61056817fb48050a4e5c8c3c97
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726478"
 ---
-# <a name="azure-security-and-compliance-blueprint-web-application-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého: webové aplikace pro FedRAMP
+# <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého: IaaS webové aplikace pro FedRAMP
 
 ## <a name="overview"></a>Přehled
 
@@ -149,8 +150,8 @@ Tyto technologie nabízejí identity možnosti správy v prostředí Azure:
 
 OMS poskytuje rozsáhlé protokolování systému a uživatelské aktivity a také stav systému. OMS [analýzy protokolů](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) řešení shromažďuje a analyzuje data generována prostředky ve službě Azure a místní prostředí.
 
-- **Protokoly aktivity:**[protokoly aktivity](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) získat přehled o operace provedené na prostředky v předplatném.   Protokoly aktivity vám mohou pomoci určit operaci iniciátor čas výskytu a stav.
-- **Diagnostické protokoly:**[diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly vygenerované každých prostředkem.   Tyto protokoly zahrnují protokoly událostí systému Windows, protokoly úložiště Azure, protokoly Key Vault auditu a protokolů Application Gateway přístup a brány firewall.
+- **Protokoly aktivity:**[protokoly aktivity](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) získat přehled o operace provedené na prostředky v předplatném. Protokoly aktivity vám mohou pomoci určit operaci iniciátor čas výskytu a stav.
+- **Diagnostické protokoly:**[diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) jsou všechny protokoly vygenerované každých prostředkem. Tyto protokoly zahrnují protokoly událostí systému Windows, protokoly úložiště Azure, protokoly Key Vault auditu a protokolů Application Gateway přístup a brány firewall.
 - **Archivace protokolu:** všechny diagnostické protokoly zápisu na účet úložiště Azure centralizovaný a šifrované pro archivaci. Uchovávání je uživatelsky konfigurovatelného, až do 730 dní, aby splňoval požadavky organizace specifické uchování. Tyto protokoly se připojit k analýze protokolů Azure pro zpracování, ukládání a vytváření sestav řídicího panelu.
 
 Kromě toho následující řešení OMS jsou nainstalované jako součást této architektury. Všimněte si, že se jedná o odpovědnost zákazníka ke konfiguraci těchto řešení, abyste se přiblížili FedRAMP ovládacích prvků zabezpečení:

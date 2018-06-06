@@ -1,21 +1,21 @@
 ---
-title: Vlastní nastavení jazyka v Azure AD B2C | Microsoft Docs
+title: Vlastní nastavení jazyka v Azure Active Directory B2C | Microsoft Docs
 description: Informace o přizpůsobení nastavení jazyka počítače.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.component: B2C
+ms.openlocfilehash: 72a2bd20d08cd12cc1965bd06090d2cd705fc111
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711932"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Vlastní nastavení jazyka v Azure Active Directory B2C
 
@@ -197,7 +197,7 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 | Maďarština             | hu            |
 | italština               | it            |
 | Japonština              | ja            |
-| Kannadština               | kn            |
+| Kannadština               | KN            |
 | Korejština                | ko            |
 | Malajálamština             | ml            |
 | Maráthština               | MR            |
@@ -214,7 +214,7 @@ Chrome a Firefox, které obě žádosti pro své jazykové sady. Pokud je podpor
 | švédština               | sv            |
 | Tamilština                 | tových            |
 | Telugština                | te            |
-| Thajština                  | tý            |
+| Thajština                  | .            |
 | turečtina               | tr            |
 | -Čínština, zjednodušená čínština  | zh-hans       |
 | Tradiční čínština – | zh-hant       |

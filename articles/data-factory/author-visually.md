@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725138"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní prostředí (UX) umožňuje vizuálně vytvořit a nasadit prostředky pro vytváření dat bez nutnosti psaní jakéhokoli kódu. Můžete přetáhněte na plátno kanálu aktivity, proveďte test spustí, interaktivně, ladění a nasadit a monitorovat běží vaše kanálu. Pro použití uživatelského k provedení visual vytváření dvěma způsoby:
@@ -46,8 +47,8 @@ Vytváření Visual s integrací služby VSTS Git podporuje zdrojového kódu a 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště Git služby VSTS s Azure Data Factory
 Úložiště GIT služby VSTS můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
 
-<a name="method1"></a>
-#### <a name="configuration-method-1-lets-get-started-page"></a>Metoda konfigurace 1: Pojďme stránku Začínáme
+#### <a name="method1"></a> Metoda konfigurace 1: Pojďme stránku Začínáme
+
 V Azure Data Factory, přejděte do **můžeme začít** stránky. Vyberte **konfigurace úložiště kódu**:
 
 ![Konfigurace úložiště služby VSTS kódu](media/author-visually/configure-repo.png)
@@ -62,7 +63,7 @@ V podokně se zobrazují následující kód služby VSTS nastavení úložišt�
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště služby VSTS kódu.<br/>**Poznámka:**: Githubu se aktuálně nepodporuje. | Visual Studio Team Services Git |
 | **Azure Active Directory** | Název vašeho klienta Azure AD. | <your tenant name> |
-| **Visual Studio Team Services Account** | Název účtu služby VSTS. Můžete vyhledat název účtu služby VSTS v `https://{account name}.visualstudio.com`. Můžete [přihlásit ke svému účtu služby VSTS](https://www.visualstudio.com/team-services/git/) přístup váš profil Visual Studio a zobrazit projekty a úložiště. | \<název účtu > |
+| **Visual Studio Team Services účtu** | Název účtu služby VSTS. Můžete vyhledat název účtu služby VSTS v `https://{account name}.visualstudio.com`. Můžete [přihlásit ke svému účtu služby VSTS](https://www.visualstudio.com/team-services/git/) přístup váš profil Visual Studio a zobrazit projekty a úložiště. | \<název účtu > |
 | **ProjectName** | Služby VSTS název projektu. Můžete vyhledat název projektu služby VSTS v `https://{account name}.visualstudio.com/{project name}`. | \<služby VSTS název projektu > |
 | **RepositoryName** | Název vaší služby VSTS kód úložiště. Služby VSTS projekty obsahují úložiště Git ke správě zdrojového kódu s růstem projektu. Můžete vytvořit nové úložiště, nebo použití existující úložiště, který už v projektu. | \<název služby VSTS kód úložiště > |
 | **Větev spolupráce** | Větev vaší služby VSTS spolupráce, který se použije pro publikování. Ve výchozím nastavení, je `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | \<název větve spolupráce > |
@@ -75,6 +76,14 @@ V Azure Data Factory UX **vytváření plátno**, vyhledejte datovou továrnu. V
 Zobrazí se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v tématu popisů v <a href="#method1">metoda konfigurace 1</a>.
 
 ![Konfigurovat nastavení úložiště kódu UX pro vytváření obsahu](media/author-visually/configure-repo-2.png)
+
+#### <a name="switch-to-a-different-git-repo"></a>Přepnout na jiný úložiště Git
+
+Přepnout na jiný úložiště Git, vyhledejte na ikonu v pravém horním rohu stránky přehled objektu pro vytváření dat, jak je znázorněno na následujícím snímku obrazovky. Pokud nevidíte ikonu, vymažte mezipaměť místní prohlížeče. Vyberte ikonu k odstranění přidružení s aktuální úložišti.
+
+Po odebrání přidružení k aktuální úložišti, můžete nakonfigurovat nastavení Git na použití různých úložišti. Pak můžete importovat existující prostředky pro vytváření dat do nového úložiště.
+
+![Odeberte přidružení k aktuální úložiště Git.](media/author-visually/remove-repo.png)
 
 ### <a name="use-version-control"></a>Použití správy verzí
 Systémy kontroly verze (také označované jako _ovládací prvek zdroje_) mohli spolupracovat na kód a sledovat změny, které jsou vytvářeny pomocí kódu základní vývojáři. Správa zdrojového kódu je základní nástroj pro projekty více vývojáři.

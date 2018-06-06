@@ -16,10 +16,10 @@ ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
 ms.openlocfilehash: 2c2813a7f2d909a23c8f5d4f5ac0280b3f932ba6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
+ms.lasthandoff: 06/04/2018
 ms.locfileid: "34700120"
 ---
 # <a name="azure-stack-1804-update"></a>Azure aktualizace 1804 zásobníku

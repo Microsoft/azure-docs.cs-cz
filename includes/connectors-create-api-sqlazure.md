@@ -1,42 +1,113 @@
-### <a name="prerequisites"></a>Požadavky
-* Účet Azure; můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Azure SQL Database](../articles/sql-database/sql-database-get-started.md) se svými informacemi o připojení, včetně názvu serveru, názvu databáze a uživatelského jména a hesla. Tato informace je obsažena v připojovacím řetězci SQL Database:
-  
-    Server = tcp:*yoursqlservername*. database.windows.net,1433;Initial katalogu =*yourqldbname*; Zachovat bezpečnostní údaje = False; ID uživatele = {your_username}; Heslo = {your_password}; MultipleActiveResultSets = False; Šifrování = True; TrustServerCertificate = False; Časový limit připojení = 30;
-  
-    Další informace o [databází SQL Azure](https://azure.microsoft.com/services/sql-database).
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: logic-apps
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 05/15/2018
+ms.author: estfan
+ms.custom: include file
+ms.openlocfilehash: 013e230aa7e096f6a90ed7cf9e93a44fbdeb3bd6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34678207"
+---
+* Pokud používáte Azure SQL Database, postupujte podle kroků v části [připojit k databázi SQL Azure](#connect-azure-sql-db). 
 
-> [!NOTE]
-> Při vytváření databáze SQL Azure, můžete také vytvořit ukázkové databáze součástí SQL. 
-> 
-> 
+* Pokud používáte systém SQL Server, postupujte podle kroků v části [připojit k serveru SQL](#connect-sql-server).
 
-Před použitím vaší databázi SQL Azure v aplikaci logiky se připojte k vaší databázi SQL. Můžete k tomu snadno v rámci aplikace logiky na portálu Azure.  
+<a name="connect-azure-sql-db"></a>
 
-Připojte k vaší databázi SQL Azure pomocí následujících kroků:  
+### <a name="connect-to-azure-sql-database"></a>Připojení k databázi Azure SQL
 
-1. Vytvoření aplikace logiky. V Návrháři Logic Apps přidejte aktivační událost a potom přidat akci. Vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu a potom zadejte do vyhledávacího pole "sql". Vyberte jednu z akcí:  
-   
-    ![Krok vytvoření připojení SQL Azure](./media/connectors-create-api-sqlazure/sql-actions.png)
-2. Pokud jste dosud nevytvořili žádné připojení k databázi SQL, budete vyzváni k podrobnosti připojení:  
-   
-    ![Krok vytvoření připojení SQL Azure](./media/connectors-create-api-sqlazure/connection-details.png) 
-3. Zadejte podrobnosti databáze SQL. Vyžadují se vlastnosti s hvězdičkou.
-   
-   | Vlastnost | Podrobnosti |
-   | --- | --- |
-   | Připojit prostřednictvím brány |Nechte zaškrtnuté políčko. Používá se při připojování k serveru SQL na místě. |
-   | Název připojení * |Zadejte libovolný název pro připojení. |
-   | Název systému SQL Server * |Zadejte název serveru; což je něco podobného jako *servername.database.windows.net*. Název serveru se zobrazí ve vlastnostech SQL Database na portálu Azure a zobrazí také v připojovacím řetězci. |
-   | Název databáze SQL * |Zadejte název dáte vaší databázi SQL. Položka je uvedena ve vlastnostech SQL Database v připojovacím řetězci: Initial Catalog =*yoursqldbname*. |
-   | Uživatelské jméno * |Zadejte uživatelské jméno, které jste vytvořili při vytvoření databáze SQL. Položka je uvedena ve vlastnostech SQL Database na portálu Azure. |
-   | Heslo * |Zadejte heslo, které jste vytvořili při vytvoření databáze SQL. |
-   
-    Tyto přihlašovací údaje se používají k autorizaci aplikace logiky připojení a přístup k datům SQL. Po dokončení podrobné informace o připojení vypadat nějak takto:  
-   
-    ![Krok vytvoření připojení SQL Azure](./media/connectors-create-api-sqlazure/sample-connection.png) 
-4. Vyberte **Vytvořit**. 
-5. Všimněte si, že existuje připojení. Nyní pokračujte další kroky v aplikaci logiky: 
-   
-    ![Krok vytvoření připojení SQL Azure](./media/connectors-create-api-sqlazure/table.png)
+1. Když aktivační události SQL nebo akce vás vyzve k zadání informací o připojení, postupujte takto:
 
+   1. Vytvořte název připojení.
+
+   2. Vyberte svůj server SQL a pak vyberte svou databázi. 
+
+      Až po výběru systému SQL server, zobrazí se seznam databází.
+ 
+   3. Zadejte uživatelské jméno a heslo pro váš server.
+
+      Tyto informace můžete najít buď na portálu Azure v rámci vaší vlastnosti databáze SQL nebo v připojovacím řetězci: 
+      
+      "ID uživatele = <*uživatelské_jméno*>"
+      <br>
+      "Heslo = <*yourPassword*>"
+
+   Tento příklad ukazuje, informace o připojení pro aktivační událost, ale tento postup funguje pro akce příliš.
+
+   ![Vytvoření připojení k databázi SQL Azure](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   <br>
+   Hvězdičky (*) ukazují požadované hodnoty.
+
+   | Vlastnost | Hodnota | Podrobnosti | 
+   |----------|-------|---------| 
+   | Název připojení | <*Moje připojení sql.*> | Název připojení | 
+   | Název serveru SQL | <*My sql server*> | Název systému SQL server |
+   | Název databáze SQL | <*Moje databáze sql*>  | Název databáze SQL | 
+   | Uživatelské jméno | <*Moje sql-username*> | Uživatelské jméno pro přístup k vaší databázi |
+   | Heslo | <*Moje heslo sql*> | Heslo pro přístup k vaší databázi | 
+   |||| 
+
+2. Jakmile budete hotoví, vyberte **Vytvořit**.
+
+3. Po vytvoření připojení, pokračujte [aktivační události SQL přidat](#add-sql-trigger) nebo [přidat SQL akce](#add-sql-action).
+
+<a name="connect-sql-server"></a>
+
+### <a name="connect-to-sql-server"></a>Připojení k SQL Serveru
+
+Abyste mohli vybrat bránu, ujistěte se, že jste již [nastavit vaše brána data gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). Tímto způsobem bránu se zobrazí v seznamu brány při vytváření připojení.
+
+1. Když aktivační události SQL nebo akce vás vyzve k zadání informací o připojení, postupujte takto:
+
+   1. V aktivační události nebo akce, vyberte **připojit prostřednictvím brány místní data** tak, aby se zobrazují možnosti serveru SQL.
+
+   2. Vytvořte název připojení.
+
+   3. Zadejte adresu pro SQL server a pak zadejte název pro vaši databázi.
+   
+      Tyto informace můžete najít v připojovacím řetězci: 
+      
+      * "Serveru = <*yourServerAddress*>"
+      * "Databáze = <*yourDatabaseName*>"
+
+   4. Zadejte uživatelské jméno a heslo pro váš server.
+
+      Tyto informace můžete najít v připojovacím řetězci: 
+      
+      * "ID uživatele = <*uživatelské_jméno*>"
+      * "Heslo = <*yourPassword*>"
+
+   5. Pokud SQL server používá Windows nebo základní ověřování, vyberte typ ověřování.
+
+   6. Vyberte název pro bránu místní dat, který jste dříve vytvořili.
+   
+      Pokud vaše brána v seznamu nezobrazí, zkontrolujte, že jste správně [nastavili bránu](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
+
+   Tento příklad ukazuje, informace o připojení pro aktivační událost, ale tento postup funguje pro akce příliš.
+
+   ![Vytvoření připojení serveru SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   <br>
+   Hvězdičky (*) ukazují požadované hodnoty.
+
+   | Vlastnost | Hodnota | Podrobnosti | 
+   |----------|-------|---------| 
+   | Připojit prostřednictvím místní brány | Tuto možnost vyberte nejprve pro nastavení systému SQL Server. | | 
+   | Název připojení | <*Moje připojení sql.*> | Název připojení | 
+   | Název serveru SQL | <*My sql server*> | Název systému SQL server |
+   | Název databáze SQL | <*Moje databáze sql*>  | Název databáze SQL |
+   | Uživatelské jméno | <*Moje sql-username*> | Uživatelské jméno pro přístup k vaší databázi |
+   | Heslo | <*Moje heslo sql*> | Heslo pro přístup k vaší databázi | 
+   | Typ ověření | Windows nebo Basic | Volitelné: Typ ověřování používaný systémem SQL server | 
+   | Brány | <*Moje brány dat*> | Název pro vaše místní brána data gateway | 
+   |||| 
+
+2. Jakmile budete hotoví, vyberte **Vytvořit**. 
+
+3. Po vytvoření připojení, pokračujte [aktivační události SQL přidat](#add-sql-trigger) nebo [přidat SQL akce](#add-sql-action).

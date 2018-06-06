@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/02/2018
+ms.openlocfilehash: 9d9b9b5eda110ad7fa66bb99501936dda5d45e52
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737041"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migraci databáze MySQL do Azure Database pro databázi MySQL pomocí výpisu a obnovení
 Tento článek vysvětluje dvě běžné způsoby zálohování a obnovení databází v Azure Database pro databázi MySQL
@@ -51,6 +52,7 @@ Za účelem optimalizace výkonu, vzít v úvahu tyto aspekty při vypsání vel
 -   Dělené tabulky v případě nutnosti použijte.
 -   Načtení dat paralelně. Vyhněte se příliš mnoho paralelismus, který by vést k dosáhl limitu prostředků a sledování prostředků pomocí metriky, které jsou k dispozici na portálu Azure. 
 -   Použití `defer-table-indexes` možnost v mysqlpump při vypsání databáze, takže vytvoření indexu se stane po načtení dat tabulky.
+-   Zkopírujte záložní soubory do Azure blob nebo úložiště a provést obnovení z tohoto umístění, které by měly být mnohem rychlejší než provedením obnovení přes Internet.
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>Vytvoření záložního souboru z příkazového řádku pomocí mysqldump
 Pokud chcete zálohovat existující databázi MySQL na serveru místní, nebo ve virtuálním počítači, spusťte následující příkaz: 
@@ -74,7 +76,6 @@ Pokud chcete vybrat konkrétní tabulky v databázi zálohovat, seznam názvy ta
 ```bash
 $ mysqldump -u root -p testdb table1 table2 > testdb_tables_backup.sql
 ```
-
 Chcete-li více než jednu databázi zálohovat najednou, použijte--databáze přepínače a seznamu názvy databází, oddělené mezerami. 
 ```bash
 $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql 
@@ -108,21 +109,22 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 
 ## <a name="export-using-phpmyadmin"></a>Exportovat pomocí PHPMyAdmin
 Pokud chcete exportovat, můžete použít běžný phpMyAdmin nástroj, který může již byl nainstalován místně ve vašem prostředí. Export databáze MySQL pomocí PHPMyAdmin:
-- Otevřete phpMyAdmin.
-- Vyberte svou databázi. Klikněte na název databáze v seznamu na levé straně. 
-- Klikněte **exportovat** odkaz. Chcete-li zobrazit výpis databáze, zobrazí se nová stránka.
-- V oblasti exportu, klikněte na **Vybrat vše** odkaz vybrat tabulky v databázi. 
-- V oblasti možnosti SQL klikněte na požadované možnosti. 
-- Klikněte na tlačítko **uložit jako soubor** možnost a odpovídající komprese a potom klikněte na **přejděte** tlačítko. Dialogové okno by se zobrazit požadavkem, abyste uložte soubor místně.
+1. Otevřete phpMyAdmin.
+2. Vyberte svou databázi. Klikněte na název databáze v seznamu na levé straně. 
+3. Klikněte **exportovat** odkaz. Chcete-li zobrazit výpis databáze, zobrazí se nová stránka.
+4. V oblasti exportu, klikněte na **Vybrat vše** odkaz vybrat tabulky v databázi. 
+5. V oblasti možnosti SQL klikněte na požadované možnosti. 
+6. Klikněte na tlačítko **uložit jako soubor** možnost a odpovídající komprese a potom klikněte na **přejděte** tlačítko. Dialogové okno by se zobrazit požadavkem, abyste uložte soubor místně.
 
 ## <a name="import-using-phpmyadmin"></a>Import pomocí PHPMyAdmin
 Import vaše databáze je podobná export. Proveďte následující akce:
-- Otevřete phpMyAdmin. 
-- Na stránce instalace phpMyAdmin klikněte na tlačítko **přidat** přidat databáze Azure pro server databáze MySQL. Zadejte podrobnosti připojení a přihlašovací údaje.
-- Vytvoření příslušně pojmenovaných databáze a vyberte jej na levé straně obrazovky. Přepsání existující databázi, klikněte na název databáze, vyberte všechny zaškrtnutí políček vedle názvů tabulek a vyberte **vyřadit** odstranit existující tabulky. 
-- Klikněte **SQL** odkaz na zobrazení stránky, kde můžete zadat v příkazech SQL nebo nahrát soubor SQL. 
-- Použití **Procházet** tlačítko Najít databázový soubor. 
-- Klikněte **přejděte** tlačítko Exportovat zálohování, spuštěním příkazů SQL a znovu vytvořit databázi.
+1. Otevřete phpMyAdmin. 
+2. Na stránce instalace phpMyAdmin klikněte na tlačítko **přidat** přidat databáze Azure pro server databáze MySQL. Zadejte podrobnosti připojení a přihlašovací údaje.
+3. Vytvoření příslušně pojmenovaných databáze a vyberte jej na levé straně obrazovky. Přepsání existující databázi, klikněte na název databáze, vyberte všechny zaškrtnutí políček vedle názvů tabulek a vyberte **vyřadit** odstranit existující tabulky. 
+4. Klikněte **SQL** odkaz na zobrazení stránky, kde můžete zadat v příkazech SQL nebo nahrát soubor SQL. 
+5. Použití **Procházet** tlačítko Najít databázový soubor. 
+6. Klikněte **přejděte** tlačítko Exportovat zálohování, spuštěním příkazů SQL a znovu vytvořit databázi.
 
 ## <a name="next-steps"></a>Další postup
-[Připojení aplikace k databázi Azure pro databázi MySQL](./howto-connection-string.md)
+- [Připojení aplikace k databázi Azure pro databázi MySQL](./howto-connection-string.md).
+- Další informace o migraci databáze pro databázi MySQL, Azure najdete [příručka k migraci databáze](http://aka.ms/datamigration).

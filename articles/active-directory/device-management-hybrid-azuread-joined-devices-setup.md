@@ -8,6 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,17 +16,18 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 728eb81d360af0d62d22cd6168b9e16edceefd56
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714387"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
 Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují k prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Další podrobnosti najdete v tématu [Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md).
 
-Pokud máte prostředí místní služby Active Directory a chcete pro připojení zařízení připojených k doméně ke službě Azure AD, můžete k tomu lze konfigurace hybridní Azure AD, které jsou připojené k zařízení. Téma vám poskytne související kroky. 
+Pokud máte prostředí místní služby Active Directory a chcete pro připojení zařízení připojených k doméně ke službě Azure AD, můžete k tomu lze konfigurace hybridní Azure AD, které jsou připojené k zařízení. Tento článek vám poskytne související kroky. 
 
 
 ## <a name="before-you-begin"></a>Než začnete
@@ -36,7 +38,7 @@ Pokud se spoléhat na [nástroj pro přípravu systému (Sysprep)](https://docs.
 
 Všechna zařízení připojená k doméně spuštěný Windows 10 Anniversary Update a Windows Server 2016 automatickou registraci v rámci Azure AD při restartování zařízení nebo uživatele přihlásit až po dokončení konfiguračních kroků uvedených níže. **Pokud toto chování automatické registrace není upřednostňovaný nebo pokud se požaduje řízené zavedení**, postupujte podle pokynů v části "Krok 4: řízení nasazení a zavedení" níže nejprve selektivně povolit nebo zakázat automatické zavedení před následující další kroky konfigurace.  
 
-Toto téma ke zlepšení čitelnosti popisy, používá následující období: 
+Pro zlepšení čitelnosti popisy, tento článek používá následující období: 
 
 - **Aktuální zařízení se systémem Windows** -tento termín se vztahuje k doméně, zařízení se systémem Windows 10 nebo Windows Server 2016.
 - **Zařízení se systémem Windows nižší úrovně** -tento termín se vztahuje na všechny **podporované** připojený k doméně zařízení Windows, která nejsou spuštěné Windows 10 ani systému Windows Server 2016.  

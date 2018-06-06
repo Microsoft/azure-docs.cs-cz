@@ -1,27 +1,28 @@
 ---
-title: "Použít soubory Azure s Linuxem | Microsoft Docs"
-description: "Zjistěte, jak připojit sdílenou složku Azure prostřednictvím protokolu SMB v systému Linux."
+title: Použít soubory Azure s Linuxem | Microsoft Docs
+description: Zjistěte, jak připojit sdílenou složku Azure prostřednictvím protokolu SMB v systému Linux.
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: 6edc37ce-698f-4d50-8fc1-591ad456175d
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/29/2018
 ms.author: renash
-ms.openlocfilehash: cca0d315a815faca5db07099b8e8e451ef55fad5
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 667f385e4f157a5e1b9fcaf47b25619eafa8e9e3
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738240"
 ---
 # <a name="use-azure-files-with-linux"></a>Použít soubory Azure s Linuxem
-Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure může být připojen v distribucí Linux pomocí [CIFS jádra klienta](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazů a na spouštění pomocí vytváření položku v `/etc/fstab`.
+Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure může být připojen v distribucí Linux pomocí [klient jádra SMB](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby, jak připojit sdílenou složku Azure: na vyžádání pomocí `mount` příkazů a na spouštění pomocí vytváření položku v `/etc/fstab`.
 
 > [!NOTE]  
 > Aby bylo možné připojit sdílenou složku Azure mimo oblast Azure, které je umístěn v, jako jsou místní nebo v jiné oblasti Azure, operačního systému musí podporovat funkci šifrování protokolu SMB 3.0.
@@ -31,8 +32,8 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
     Následující Linuxových distribucích jsou k dispozici pro použití v galerii Azure:
 
     * Ubuntu Server 14.04 +
-    * RHEL 7+
-    * CentOS 7+
+    * RHEL 7 +
+    * CentOS 7 +
     * Debian 8 +
     * openSUSE 13.2 +
     * SUSE Linux Enterprise Server 12
@@ -42,21 +43,21 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
     Na **Ubuntu** a **na základě Debian** distribuce, použijte `apt-get` Správce balíčků:
 
-    ```
+    ```bash
     sudo apt-get update
     sudo apt-get install cifs-utils
     ```
 
     Na **RHEL** a **CentOS**, použijte `yum` Správce balíčků:
 
-    ```
-    sudo yum install samba-client samba-common cifs-utils
+    ```bash
+    sudo yum install cifs-utils
     ```
 
     Na **openSUSE**, použijte `zypper` Správce balíčků:
 
-    ```
-    sudo zypper install samba*
+    ```bash
+    sudo zypper install cifs-utils
     ```
 
     Na další distribuce pomocí příslušné package manager nebo [zkompilovat ze zdroje](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download).
@@ -68,11 +69,11 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
     - Ubuntu Server 16.04 +
     - openSUSE 42.3 +
-    - SUSE Linux Enterprise Server 12 SP3+
+    - SUSE Linux Enterprise Server 12 SP3 +
     
     Pokud zde není uveden distribuční Linux, můžete zkontrolovat, naleznete v části verze jádra Linux pomocí následujícího příkazu:
 
-    ```
+    ```bash
     uname -r
     ```
 
@@ -84,37 +85,56 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 
 * **Ujistěte se, je otevřený port 445**: SMB komunikuje přes port TCP 445 - zkontrolujte, pokud chcete zobrazit, pokud brána firewall neblokuje TCP porty 445 z klientského počítače.
 
-## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení Azure file sdílenou složku na vyžádání pomocí`mount`
+## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Připojení Azure file sdílenou složku na vyžádání pomocí `mount`
 1. **[Nainstalovat balíček cifs utils pro Linux distribuční](#install-cifs-utils)**.
 
 2. **Vytvořte složku pro přípojného bodu**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je běžné konvence na vytvořte ji v části `/mnt` složky. Příklad:
 
-    ```
+    ```bash
     mkdir /mnt/MyAzureFileShare
     ```
 
 3. **Použijte příkaz připojení připojit sdílenou složkou Azure**: Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>`, a `<mount-point>` odpovídající informace pro vaše prostředí. Pokud distribuční Linux podporuje protokol SMB 3.0 se šifrováním (najdete v části [SMB pochopit požadavky na klienta](#smb-client-reqs) informace), použijte `3.0` pro `<smb-version>`. U Linuxových distribucích, které nepodporují pomocí šifrování protokolu SMB 3.0, použijte `2.1` pro `<smb-version>`. Všimněte si, že sdílenou složku Azure může být připojen pouze mimo oblast Azure (včetně místně nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
 
-    ```
+    ```bash
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
 > Po dokončení pomocí Azure sdílené složky, můžete použít `sudo umount <mount-point>` o odpojení sdílené složky.
 
-## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvořit bod trvalé připojení pro Azure sdílené složky`/etc/fstab`
+## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Vytvořit bod trvalé připojení pro Azure sdílené složky `/etc/fstab`
 1. **[Nainstalovat balíček cifs utils pro Linux distribuční](#install-cifs-utils)**.
 
 2. **Vytvořte složku pro přípojného bodu**: složku pro přípojný bod lze vytvořit kdekoli v systému souborů, ale je běžné konvence na vytvořte ji v části `/mnt` složky. Bez ohledu na to vytvoříte, mějte na paměti absolutní cestu ke složce. Například následující příkaz vytvoří novou složku s `/mnt` (cesta je absolutní cestu).
 
-    ```
+    ```bash
     sudo mkdir /mnt/MyAzureFileShare
     ```
 
-3. **Použijte následující příkaz pro připojení následující řádek do `/etc/fstab`** : Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<smb-version>`, `<storage-account-key>`, a `<mount-point>` odpovídající informace pro vaše prostředí. Pokud distribuční Linux podporuje protokol SMB 3.0 se šifrováním (najdete v části [SMB pochopit požadavky na klienta](#smb-client-reqs) informace), použijte `3.0` pro `<smb-version>`. U Linuxových distribucích, které nepodporují pomocí šifrování protokolu SMB 3.0, použijte `2.1` pro `<smb-version>`. Všimněte si, že sdílenou složku Azure může být připojen pouze mimo oblast Azure (včetně místně nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
+3. **Vytvořte soubor přihlašovacích údajů k ukládání uživatelského jména (název účtu úložiště) a heslo (klíč účtu úložiště) pro sdílené složky.** Nezapomeňte nahradit `<storage-account-name>` a `<storage-account-key>` odpovídající informace pro vaše prostředí. 
 
+    ```bash
+    if [ -d "/etc/smbcredentials" ]; then
+        sudo mkdir /etc/smbcredentials
+    fi
+
+    if [ ! -f "/etc/smbcredentials/<storage-account-name>.cred" ]; then
+        sudo bash -c 'echo "username=<storage-account-name>" >> /etc/smbcredentials/<storage-account-name>.cred'
+        sudo bash -c 'echo "password=<storage-account-key>" >> /etc/smbcredentials/<storage-account-name>.cred'
+    fi
     ```
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+
+4. **Změna oprávnění u souboru přihlašovacích údajů, pouze kořenové můžou číst nebo upravit soubor heslo.** Vzhledem k tomu, že klíč účtu úložiště je v podstatě nadtypem správce heslo pro účet úložiště, nastavení oprávnění u souboru, ke kterým tak, aby se jenom kořenový přístup je důležité, aby nižší oprávnění uživatelé nemůžou načtení klíč účtu úložiště.   
+
+    ```bash
+    sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
+    ```
+
+5. **Použijte následující příkaz pro připojení následující řádek do `/etc/fstab`** : Nezapomeňte nahradit `<storage-account-name>`, `<share-name>`, `<smb-version>`, a `<mount-point>` odpovídající informace pro vaše prostředí. Pokud distribuční Linux podporuje protokol SMB 3.0 se šifrováním (najdete v části [SMB pochopit požadavky na klienta](#smb-client-reqs) informace), použijte `3.0` pro `<smb-version>`. U Linuxových distribucích, které nepodporují pomocí šifrování protokolu SMB 3.0, použijte `2.1` pro `<smb-version>`. Všimněte si, že sdílenou složku Azure může být připojen pouze mimo oblast Azure (včetně místně nebo v jiné oblasti Azure) s protokolem SMB 3.0. 
+
+    ```bash
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-key>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  
@@ -128,6 +148,6 @@ Soubory Azure pro skupiny uživatelů Linux poskytuje fórum můžete sdílet zp
 ## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech.
 * [Úvod do Azure soubory](storage-files-introduction.md)
-* [Plánování nasazení Azure Files](storage-files-planning.md)
+* [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)
 * [Řešení potíží](storage-troubleshoot-linux-file-connection-problems.md)

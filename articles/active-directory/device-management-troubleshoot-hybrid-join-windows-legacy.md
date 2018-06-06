@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,11 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714108"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Nižší úrovně zařízení připojená k řešení potíží s hybridní Azure Active Directory 
 
@@ -49,11 +51,11 @@ Tento článek poskytuje pokyny o tom, jak vyřešit potenciální problémy př
 
 **Co byste měli vědět:** 
 
-- Maximální počet zařízení na uživatele je zaměřená na zařízení. Například pokud *jdoe* a *jharnett* Přihlaste se do zařízení, samostatné registrace (DeviceID) se vytvoří pro každou z nich **uživatele** informace o kartě.  
+- Maximální počet zařízení na uživatele je zaměřená na zařízení. Například pokud *jdoe* a *jharnett* přihlášení do zařízení, samostatné registrace (DeviceID) se vytvoří pro každou z nich **uživatele** informace o kartě.  
 
 - Počáteční registrace / připojení k zařízení, je nakonfigurována se provést k pokusu o přihlášení nebo uzamčení nebo odemčení. Může dojít k 5 minut zpoždění aktivovány úloh služby Plánovač úloh. 
 
-- Opětovné instalace operačního systému nebo ruční opětovná registrace může vytvořit novou registraci na Azure AD, což vede k více položek na kartě informace uživatele na portálu Azure. 
+- Přeinstalování operačního systému nebo ruční opětovná registrace může vytvořit nové registrace ve službě Azure AD, což vede k více položek na kartě informace uživatele na portálu Azure. 
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Krok 1: Načíst stav registrace 
 
@@ -88,7 +90,7 @@ Pokud připojení k Azure AD hybridní nebyla úspěšná, dialogové okno vám 
     
     - Přihlášeného uživatele není uživatelem domény (například místního uživatele). Hybridní připojení k Azure AD na nižší úrovni. zařízení je podporována pouze pro uživatele domény.
     
-    - Autoworkplace.exe není schopen bezobslužně ověření pomocí Azure AD ani AD FS. Může to být způsobeno problémy s připojením odesílací vázané sítě na Azure AD adresy URL (zkontrolujte, zda požadavky). Mohou být také že vícefaktorové ověřování (MFA) je povolen nebo nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaný na federačním serveru (postup kontroly konfigurace). Další možností je této stránce zjišťování domovské sféry čeká pro interakci s uživatelem, což zabraňuje **autoworkplace.exe** bezobslužně získat token.
+    - Autoworkplace.exe není schopen bezobslužně ověření pomocí Azure AD ani AD FS. To může být způsobeno odesílací vázané problémů s připojením k adresám URL, Azure AD. Také je možné, že vícefaktorové ověřování (MFA) je povolen nebo nakonfigurovaný pro tohoto uživatele a WIAORMUTLIAUTHN není nakonfigurovaný na federačním serveru. Další možností je této stránce zjišťování domovské sféry čeká pro interakci s uživatelem, což zabraňuje **autoworkplace.exe** bezobslužně získat token.
     
     - Vaše organizace používá Azure AD bezproblémové jednotné přihlašování, `https://autologon.microsoftazuread-sso.com` nebo `https://aadg.windows.net.nsatc.net` nejsou k dispozici v nastavení intranetu IE zařízení, a **povolit aktualizace stavového řádku pomocí skriptu** není povolena pro zónu intranetu.
 
@@ -104,7 +106,7 @@ Informace o stavu můžete také najít v protokolu událostí v části: **apli
   
 **Nejběžnější příčiny selhání hybridní Azure AD join jsou:** 
 
-- Váš počítač ani připojený k interní síti vaší organizace ani k síti VPN připojení k místní řadič domény AD.
+- Váš počítač není připojený k interní síti vaší organizace nebo k síti VPN připojení k místní řadič domény AD.
 
 - Jste přihlášeni k počítači pomocí účtu místního počítače. 
 
