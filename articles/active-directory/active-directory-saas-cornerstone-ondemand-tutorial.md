@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: df2bc27a5f17120b222e91007a47f85f0566b616
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c609c32e423625c479f3f169da4a31616d200e57
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Kurz: Integrace Azure Active Directory se základním kamenem OnDemand
 
@@ -64,7 +65,7 @@ Při konfiguraci integrace základním kamenem OnDemand do služby Azure AD pot�
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Aplikace][3]
@@ -103,7 +104,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_samlbase.png)
 
 3. Na **základním kamenem OnDemand domény a adresy URL** část, proveďte následující krok:
@@ -115,8 +116,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<company>.csod.com`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory základním kamenem OnDemand klienta](mailTo:moreinfo@csod.com) k získání těchto hodnot. 
- 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory základním kamenem OnDemand klienta](mailTo:moreinfo@csod.com) k získání těchto hodnot.
+
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_cornerstoneondemand_certificate.png) 
@@ -131,9 +132,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 7. Konfigurace jednotného přihlašování na **základním kamenem OnDemand** straně, budete muset odeslat stažené **certifikát**, **Sign-Out URL** a **SAML jeden přihlašování adresa URL služby** k [tým podpory základním kamenem OnDemand](mailTo:moreinfo@csod.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
@@ -143,18 +141,18 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
 1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_01.png) 
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_01.png)
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
+
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_02.png) 
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
- 
-    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_03.png) 
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_03.png)
 
 4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
- 
+
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-cornerstone-ondemand-tutorial/create_aaduser_04.png) 
 
     a. V **název** textovému poli, typ **BrittaSimon**.
@@ -164,10 +162,12 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="creating-a-cornerstone-ondemand-test-user"></a>Vytvoření zkušebního uživatele základním kamenem OnDemand
 
-Pokud chcete povolit uživatelům Azure AD Přihlaste se k základním kamenem OnDemand, musí být zřízená do základním kamenem OnDemand. V případě základním kamenem OnDemand zřizování je ruční úloha.
+Cílem této části je vytvoření uživatele volal Britta Simon v základním kamenem OnDemand. Základním kamenem OnDemand podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-cornerstone-ondemand-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
+
+**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
 Ke konfiguraci zřizování uživatelů, odeslání informací o (například: název, e-mailu) o uživatele Azure AD má účelem zřízení [tým podpory základním kamenem OnDemand](mailTo:moreinfo@csod.com).
 
@@ -215,8 +215,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
-
+* [Konfiguraci zřizování uživatelů](active-directory-saas-cornerstone-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -231,4 +230,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cornerstone-ondemand-tutorial/tutorial_general_203.png
-

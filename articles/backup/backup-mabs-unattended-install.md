@@ -1,22 +1,19 @@
 ---
-title: Tichou instalaci serveru Azure Backup v2 | Microsoft Docs
-description: "Použití skriptu prostředí PowerShell k bezobslužné instalaci serveru Azure Backup v2. Tento typ instalace je také označován bezobslužné instalace."
+title: Tichou instalaci serveru Azure Backup v2
+description: Použití skriptu prostředí PowerShell k bezobslužné instalaci serveru Azure Backup v2. Tento typ instalace je také označován bezobslužné instalace.
 services: backup
-documentationcenter: " "
 author: markgalioto
 manager: carmonm
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 05/30/2017
-ms.author: markgal;masaran
-ms.openlocfilehash: 91778a67f9ef523aa87b7918197e0d0ded0f5702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: 126c1971d83a8874c096caf407231fb6dee2ff59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606405"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server-v2"></a>Spusťte bezobslužnou instalaci serveru Azure Backup v2
 
@@ -63,7 +60,7 @@ Pro instalaci můžete použít tyto příznaky:</br>
 **/i**: Instalační cesta</br>
 **/x**: Odinstalujte cesta</br>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Po instalaci serveru zálohování, zjistěte, jak připravit server nebo začít chránit zatížení.
 
 - [Příprava úlohy zálohování serveru](backup-azure-microsoft-azure-backup.md)

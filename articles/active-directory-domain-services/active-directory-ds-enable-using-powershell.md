@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: d4bc5583-6537-4cd9-bc4b-7712fdd9272a
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 22be243b9da5afd93744ca9410b63a8ec936088a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 386157360e8349c3df3b7351ae25b34ae9bdcc4b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588501"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Povolit Azure Active Directory Domain Services pomocí prostředí PowerShell
 Tento článek ukazuje, jak povolit doménové služby Azure Active Directory (AD) pomocí prostředí PowerShell.

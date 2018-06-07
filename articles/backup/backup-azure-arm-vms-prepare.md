@@ -1,25 +1,20 @@
 ---
-title: 'Zálohování Azure: Příprava k zálohování virtuálních počítačů | Microsoft Docs'
+title: 'Zálohování Azure: Příprava k zálohování virtuálních počítačů'
 description: Ujistěte se, že vaše prostředí je připravený pro zálohování virtuálních počítačů v Azure.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: zálohování; zálohování;
-ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: markgal
+ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606632"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -59,6 +54,7 @@ Než se připravíte prostředí, ujistěte se, že jste pochopili tato omezení
 * Pro vybrané sítě, po dokončení konfigurace nastavení virtuální sítě a brány firewall pro váš účet úložiště, vyberte **Povolit důvěryhodné služby společnosti Microsoft pro přístup k tomuto účtu úložiště** jako výjimku do povolení služby Azure Backup přístup k účtu úložiště sítě omezený. Obnovení na úrovni položek není podporováno pro účty úložiště sítě omezený.
 * Můžete zálohovat virtuální počítače ve všech veřejných oblastech Azure. (Viz [kontrolní seznam](https://azure.microsoft.com/regions/#services) z podporovaných oblastí.) Pokud oblast, kterou hledáte, není podporován dnes, nezobrazí se v rozevíracím seznamu při vytváření trezoru.
 * Obnovení řadiče domény (DC) virtuálního počítače, který je součástí konfigurace více – řadič domény je možné pouze pomocí prostředí PowerShell. Další informace najdete v tématu [obnovení řadiče domény, řadiče domény služby více](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
+* Není podporována snímku na disku akcelerátoru zápis povolen. Toto omezení blokuje schopnost služby Azure Backup provádět snímky konzistentní aplikací všechny disky virtuálního počítače.
 * Obnovení virtuálních počítačů, které mají následující zvláštní síťové konfigurace je podporována pouze pomocí prostředí PowerShell. Po dokončení operace obnovení, nebude mít virtuální počítače vytvořené pomocí obnovení pracovního postupu v uživatelském rozhraní tyto konfigurace sítě. Další informace najdete v tématu [obnovení virtuálních počítačů s konfigurací speciální síťových](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Virtuální počítače v části Konfigurace služby Vyrovnávání zatížení (interních a externích)
   * Virtuální počítače s více vyhrazené IP adresy
@@ -174,7 +170,9 @@ Pokud máte potíže s registrací virtuální počítač, zobrazíte následuj�
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Nainstalujte agenta virtuálního počítače na virtuálním počítači
 Pro rozšíření Backup pracovat, Azure [agenta virtuálního počítače](../virtual-machines/extensions/agent-windows.md) musí být nainstalován na virtuální počítač Azure. Pokud byl váš virtuální počítač vytvořen z Azure Marketplace, agent virtuálního počítače již existuje ve virtuálním počítači. 
 
-Následující informace slouží pro situacích, kdy jsou *není* pomocí virtuální počítač vytvořen z Azure Marketplace. Například jste migrovali virtuální počítač z překážek místní datacentra. V takovém případě musí být nainstalovaný za účelem ochrany virtuálního počítače agenta virtuálního počítače.
+Následující informace slouží pro situacích, kdy jsou *není* pomocí virtuální počítač vytvořen z Azure Marketplace. **Například jste migrovali virtuální počítač z překážek místní datacentra. V takovém případě musí být nainstalovaný za účelem ochrany virtuálního počítače agenta virtuálního počítače.**
+
+**Poznámka:**: Po instalaci agenta virtuálního počítače, musíte taky použít Azure PowerShell k aktualizujte vlastnost parametr ProvisionGuestAgent, aby věděl Azure může virtuální počítač má nainstalovaného agenta. 
 
 Pokud máte problémy se zálohováním virtuálního počítače Azure, zkontrolujte, zda je na virtuálním počítači správně nainstalován agent virtuálního počítače Azure pomocí následující tabulky. Tabulka obsahuje další informace o agenta virtuálního počítače pro systém Windows a virtuální počítače s Linuxem.
 

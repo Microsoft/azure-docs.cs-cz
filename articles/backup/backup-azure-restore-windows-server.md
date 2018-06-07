@@ -1,24 +1,19 @@
 ---
-title: "Obnovení dat v Azure pro Windows Server nebo počítač se systémem Windows | Microsoft Docs"
-description: "Zjistěte, jak obnovit data uložená v Azure a Windows Server nebo počítač se systémem Windows."
+title: Obnovení dat v Azure pro Windows Server nebo počítač se systémem Windows
+description: Zjistěte, jak obnovit data uložená v Azure a Windows Server nebo počítač se systémem Windows.
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
-ms.assetid: 742f4b9e-c0ab-4eeb-8e22-ee29b83c22c4
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/4/2018
-ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 3444b13972ab9e5c435fc009e8ddb51bcafb1a41
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.author: saurse
+ms.openlocfilehash: 16f0460dea75b0dc52c3852d9947db0ad15f8fbe
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606320"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Obnovení souborů na serveru Windows nebo klientském počítači s využitím modelu nasazení Resource Manager
 

@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: Scénáře nasazení | Microsoft Docs"
-description: "Scénáře nasazení služby Azure AD Domain Services"
+title: 'Azure Active Directory Domain Services: Scénáře nasazení | Microsoft Docs'
+description: Scénáře nasazení služby Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: maheshu
-ms.openlocfilehash: 11844fb8fabada9d863fe4adf0839ae6fa2ed101
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ae8485f94a8a86862f09c1776222cb6603967614
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587554"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Scénáře nasazení a případy použití
 V této části se podíváme na několik scénářů a případy použití využívající Azure Active Directory (AD) Domain Services.
@@ -41,7 +43,7 @@ Mějte na paměti následující důležité skutečnosti pro tento scénář na
 * Azure AD Domain Services podporuje základní schématu objektu počítače AD. Objekt počítače schéma nelze rozšířit.
 
 ## <a name="lift-and-shift-an-on-premises-application-that-uses-ldap-bind-authentication-to-azure-infrastructure-services"></a>Navýšení a shift místní aplikace, která používá ověřování vazby LDAP do služby infrastruktury Azure
-![Vazba LDAP](./media/active-directory-domain-services-scenarios/ldap-bind.png)
+![Vázání protokolu LDAP](./media/active-directory-domain-services-scenarios/ldap-bind.png)
 
 Contoso má místní aplikace, který byl zakoupen od nezávislý dodavatel softwaru mnoha lety. Aplikace je aktuálně v režimu údržby pomocí ISV a žádají o změny aplikace je výtažkovými pro společnost Contoso. Tato aplikace má front-end založené na webu, který shromažďuje přihlašovací údaje uživatele pomocí webového formuláře a potom ověřuje uživatele pomocí vazby protokolu LDAP do podnikové služby Active Directory. Contoso chcete migrovat služby infrastruktury Azure v této aplikaci. Je žádoucí, že aplikace funguje podle jsou, bez nutnosti změny. Kromě toho uživatelé by měli být přístup ověřit pomocí jejich existující podnikové přihlašovací údaje a bez nutnosti přeučování uživatelům provádět akce, jinak. Jinými slovy koncoví uživatelé by měli být oblivious o kterém aplikace běží a migrace by měl být průhledná k nim.
 

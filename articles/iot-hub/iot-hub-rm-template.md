@@ -1,24 +1,20 @@
 ---
-title: "Vytvoření služby Azure IoT Hub pomocí šablony (.NET) | Microsoft Docs"
-description: "Postup vytvoření služby IoT Hub s programu v C# pomocí šablony Azure Resource Manager."
-services: iot-hub
-documentationcenter: .net
+title: Vytvoření služby Azure IoT Hub pomocí šablony (.NET) | Microsoft Docs
+description: Postup vytvoření služby IoT Hub s programu v C# pomocí šablony Azure Resource Manager.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: a447b40c-c728-487e-875d-db554db5adc3
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 3f84ab26c43f33827479faed46db1de246920ae5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 1a64749b7218fccfdad6b6eeebfac39a44aa0522
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635538"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Vytvoření služby IoT hub pomocí šablony Azure Resource Manageru (.NET)
 
@@ -202,7 +198,7 @@ Aplikace je nyní možné dokončit voláním **CreateIoTHub** metoda předtím,
 > [!NOTE]
 > Tato ukázková aplikace přidá S1 Standard IoT Hub pro kterou se účtují. Odstraněním služby IoT hub prostřednictvím [portál Azure] [ lnk-azure-portal] nebo pomocí **AzureRmResource odebrat** rutiny prostředí PowerShell po dokončení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní jste nasadili služby IoT hub pomocí šablony Azure Resource Manageru pomocí programu v C#, můžete chtít Další:
 
 * Přečtěte si informace o možnostech [zprostředkovatele prostředků služby IoT Hub REST API][lnk-rest-api].
@@ -215,7 +211,7 @@ Další informace o vývoji pro Centrum IoT, naleznete v následujících člán
 
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

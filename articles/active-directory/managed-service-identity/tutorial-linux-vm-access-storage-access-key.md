@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: af0ddebc79100cbe0ea55e46b825c35ab8a775b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: be350ad153bfcc51eb1198a97eeba01593ccb34e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594240"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-storage-via-access-key"></a>Kurz: Používání Linux virtuálního počítače spravované služby Identity pro přístup k úložišti Azure pomocí přístupového klíče
 
@@ -226,10 +227,7 @@ Odpověď:
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled MSI najdete v tématu [identita spravované služby přehled](overview.md).
-- Další postup Tento stejný kurz pomocí úložiště pověření SAS najdete v tématu [používal Linux virtuálního počítače spravované služby identitu pro přístup k úložišti Azure pomocí pověření SAS](tutorial-linux-vm-access-storage-sas.md)
-- Další informace o funkci SAS účtu Azure Storage najdete v tématu:
-  - [Použití sdílených přístupových podpisů (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1.md)
-  - [Vytváření SAS služby](/rest/api/storageservices/Constructing-a-Service-SAS.md)
+V tomto kurzu jste zjistili, jak spravovat identitu služby pro virtuální počítač s Linuxem používat pro přístup k Azure Storage pomocí přístupový klíč.  Další informace o přístupových klíčů k úložišti Azure najdete:
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+> [!div class="nextstepaction"]
+>[Správa přístupových klíčů k úložišti](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)

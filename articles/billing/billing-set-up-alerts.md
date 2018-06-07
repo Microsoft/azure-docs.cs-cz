@@ -2,13 +2,12 @@
 title: Nastavení výstrah fakturace nebo platební pro předplatná Azure | Microsoft Docs
 description: Popisuje, jak můžete na můžete nastavit výstrahy faktury Azure, se můžete vyhnout fakturace výskyt nečekaných událostí.
 keywords: platební výstraze, fakturace výstrahu
-services: ''
+services: billing
 documentationcenter: ''
 author: adpick
 manager: adpick
 editor: ''
 tags: billing
-ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: adpick
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 981cb1153e0268e6572207f8d2401edb23485863
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607799"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Nastavení výstrah fakturace nebo platební pro vaše předplatné Microsoft Azure
 Pokud jste správce účtů pro předplatné Azure, můžete použít Azure fakturace služby oznámení. Chcete-li vytvořit vlastní fakturace výstrahy, které vám pomůžou monitorovat a spravovat fakturace aktivity pro vaše účty Azure.
 
 Tato služba je ve verzi preview, takže je nutné povolit na stránce funkce verze Preview.
 
-[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>Nastavit výstrahy příjemce prahovou hodnotu a e-mailu
 1. Navštivte [stránce funkce verze Preview](https://account.windowsazure.com/PreviewFeatures) a povolte **fakturace výstrah služby**.
@@ -50,6 +49,11 @@ Azure podporuje všechny e-mailovou adresu, ale není ověřte, že prací e-mai
 ## <a name="check-on-your-alerts"></a>Zkontrolujte na upozornění
 Po nastavení výstrahy centra účtů je uvádí a ukazuje, kolik více můžete nastavit. Pro každou výstrahu zobrazí datum a čas, který byl odeslán, jestli je výstraha fakturace celkový nebo peněžního kreditu, který a omezení, které vytvořili. Datum je formát rrrr mm-dd formát data a času je 24 hodin koordinaci světový čas (UTC). Kliknutím na znaménko plus pro výstrahu v seznamu, pokud ho chcete upravit, nebo klikněte na odpadkový ho odstranit.
 
+## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Odstranit výstrahy nebo e-mailové adresy z Azure fakturace služby oznámení.
+Pokud byste někdy potřebovali odebrat jakékoli informace ze služby, aktualizujte e-mailovou adresu na soubor nebo zcela odstranit výstrahu.
+
+   ![Snímek obrazovky zobrazení výstrah odstranění, kde můžete odebrat osobní údaje.][Image4]
+
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Výstrahy fakturace pro zákazníky Enterprise Agreement (EA)
 EA předplatných nejsou podporované touto službou, místo toho EA zákazníkům můžete získat výstrahy pro každé oddělení v zápisu nastavením výdaje kvóty. V tématu [oddělení výdaje kvóty](https://ea.azure.com/helpdocs/departmentSpendingQuotas) na portálu EA začít pracovat.
 
@@ -63,3 +67,4 @@ Další informace najdete v tématu [Azure náklady správy pokyny](billing-gett
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png 
+[Image4]: ./media/azure-billing-set-up-alerts/AlertsDeleteScreen1.PNG

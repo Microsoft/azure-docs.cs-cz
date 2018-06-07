@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0503b355089fe6bbcc7632ac93fd21e71f268032
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bdff5b188653704cca51f70ab24a32e13f522a66
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615984"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -579,7 +580,7 @@ Při kopírování dat z/do Azure SQL Database, se používají následující m
 | Datový typ DateTimeOffset |Datový typ DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
-| Plovoucí desetinná čárka |Dvojitý |
+| Float |Double |
 | Bitové kopie |Byte] |
 | celá čísla |Int32 |
 | peníze |Decimal |
@@ -593,7 +594,7 @@ Při kopírování dat z/do Azure SQL Database, se používají následující m
 | smallint |Int16 |
 | Smallmoney |Decimal |
 | SQL_VARIANT |Objekt * |
-| Text |Řetězec, Char] |
+| text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
 | tinyint |Bajtů |

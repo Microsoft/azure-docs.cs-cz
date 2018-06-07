@@ -1,25 +1,22 @@
 ---
-title: Konektor MailChimp v Azure Logic Apps | Microsoft Docs
-description: "Vytvoření aplikace logiky službou Azure App service. MailChimp je služba SaaS, která firmám umožňuje spravovat a automatizovat aktivity e-mailového marketingu, včetně posílání marketingových e-mailů, automatických zpráv a zacílených kampaní."
-services: logic-apps
-documentationcenter: .net,nodejs,java
+title: Připojení k MailChimp - Azure Logic Apps | Microsoft Docs
+description: Vytvoření a Správa marketingu e-mailů pomocí rozhraní API REST MailChimp a Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: 36559de2-94f0-4355-b492-2926dfc56486
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 041212771db5b5971ccd220e68d71d59d8220531
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: a11dbee8a0aab70abad60b8b783b2caa4f03c9c9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609324"
 ---
 # <a name="get-started-with-the-mailchimp-connector"></a>Začínáme s konektorem MailChimp
 MailChimp je služba SaaS, která umožňuje podnikům pro správu a automatizaci e-mailové marketingové aktivity, včetně odesílání e-mailů marketing, automatizované zprávy a cílené kampaně.

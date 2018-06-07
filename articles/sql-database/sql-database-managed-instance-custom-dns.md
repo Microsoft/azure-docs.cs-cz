@@ -6,15 +6,16 @@ author: srdjan-bozovic
 manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 3175b99c0e41cedf313115043b09608496adfdca
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 05a7b600ae8672447126b79cda10ca94c6d0fb48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649325"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurace vlastní DNS pro Azure SQL Database spravované Instance
 

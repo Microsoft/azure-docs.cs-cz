@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d0cfce1dfe6482397e421d85d59494e6d75cc441
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591153"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect s použitím SQL delegovaná oprávnění správce
 Před posledním sestavení Azure AD Connect správu delegování, při nasazování konfigurace, které vyžaduje SQL, nepodporuje.  Uživatelé, kteří chtěli nainstalovat Azure AD Connect je potřeba mít oprávnění správce (SA) serveru na serveru SQL server.

@@ -2,17 +2,19 @@
 title: Azure AD UserPrincipalName naplnění
 description: Následující dokument popisuje, jak se naplní atribut UserPrincipalName.
 author: billmath
+ms.component: hybrid
 ms.author: billmath
 ms.date: 02/02/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 73238b1f79e639f832499eed15ac1e4499eb6e84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593385"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD UserPrincipalName naplnění
 
@@ -35,7 +37,7 @@ V tomto článku se používá následující terminologií:
 UserPrincipalName je atribut, který je Internetu stylu přihlašovací jméno pro uživatele podle standardu Internet [RFC 822](http://www.ietf.org/rfc/rfc0822.txt). 
 
 ### <a name="upn-format"></a>Formát UPN
-UPN se skládá z předponu hlavní název uživatele (uživatelské jméno účtu) a příponu UPN (název domény DNS). Předpona, která je spojen s příponou pomocí "@" symbol. Například "someone@example.com". Názvu UPN, musí být jedinečný mezi všechny hlavní objekty zabezpečení v doménové struktuře adresáře. 
+UPN se skládá z předponu hlavní název uživatele (uživatelské jméno účtu) a příponu UPN (název domény DNS). Předpona, která je spojen s příponou pomocí "@" symbol. Například someone@example.com. Názvu UPN, musí být jedinečný mezi všechny hlavní objekty zabezpečení v doménové struktuře adresáře. 
 
 ## <a name="upn-in-azure-ad"></a>Hlavní název uživatele v Azure AD 
 Hlavní název uživatele se používá Azure AD umožnit uživatelům přihlášení.  Názvu UPN, které může uživatel používat, závisí na tom, zda doména byla ověřena.  Pokud byla ověřena domény, uživatel s touto příponou budou mít povolený pro přihlášení ke službě Azure AD.  
@@ -88,7 +90,7 @@ Místní objekt uživatele:
 - mailNickName: &lt;není nastaven.&gt;
 - proxyAddresses: {SMTP:us1@contoso.com}
 - e-mailu: us2@contoso.com
-- userPrincipalName : us3@contoso.com`
+- userPrincipalName: us3@contoso.com.
 
 Synchronizovat první objekt uživatele, který má klienta Azure AD
 - Nastavte atribut Azure AD MailNickName na primární předpona adresy SMTP.
@@ -97,7 +99,7 @@ Synchronizovat první objekt uživatele, který má klienta Azure AD
 
 Objekt uživatele Azure AD klienta:
 - MailNickName: us1           
-- UserPrincipalName : us1@contoso.onmicrosoft.com
+- UserPrincipalName: us1@contoso.onmicrosoft.com
 
 
 ### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>Scénář 2: Příponu UPN neověřený – sadu místní atribut mailNickName
@@ -106,7 +108,7 @@ Místní objekt uživatele:
 - MailNickName: us4
 - proxyAddresses: {SMTP:us1@contoso.com}
 - e-mailu: us2@contoso.com
-- userPrincipalName : us3@contoso.com
+- userPrincipalName: us3@contoso.com
 
 Synchronizovat aktualizace na místní mailNickName atribut klienta Azure AD
 - Aktualizujte atribut Azure AD MailNickName s místními mailNickName atributem.
@@ -114,7 +116,7 @@ Synchronizovat aktualizace na místní mailNickName atribut klienta Azure AD
 
 Objekt uživatele Azure AD klienta:
 - MailNickName: us4
-- UserPrincipalName : us1@contoso.onmicrosoft.com
+- UserPrincipalName: us1@contoso.onmicrosoft.com
 
 ### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Scénář 3: Příponu UPN neověřený – aktualizace místní atribut userPrincipalName
 
@@ -122,7 +124,7 @@ Místní objekt uživatele:
 - MailNickName: us4
 - proxyAddresses: {SMTP:us1@contoso.com}
 - e-mailu: us2@contoso.com
-- userPrincipalName : us5@contoso.com
+- userPrincipalName: us5@contoso.com
 
 Synchronizovat aktualizace na atribut userPrincipalName místní klienta Azure AD
 - Aktualizace na atribut userPrincipalName v místě, spustí MOERA a Azure AD UserPrincipalName atributu.
@@ -131,7 +133,7 @@ Synchronizovat aktualizace na atribut userPrincipalName místní klienta Azure A
 
 Objekt uživatele Azure AD klienta:
 - MailNickName: us4
-- UserPrincipalName : us4@contoso.onmicrosoft.com
+- UserPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Scénář 4: Příponu UPN neověřený – primární adresa SMTP aktualizace a místní poštovní atribut
 
@@ -139,14 +141,14 @@ Místní objekt uživatele:
 - MailNickName: us4
 - proxyAddresses: {SMTP:us6@contoso.com}
 - e-mailu: us7@contoso.com
-- userPrincipalName : us5@contoso.com
+- userPrincipalName: us5@contoso.com
 
 Synchronizovat aktualizace na atribut mail v místě a primární adresa SMTP klienta Azure AD
 - Po počáteční synchronizaci objektu uživatele, aktualizuje místní poštovní atribut a neovlivní primární adresa SMTP atributu Azure AD MailNickName ani UserPrincipalName.
 
 Objekt uživatele Azure AD klienta:
 - MailNickName: us4
-- UserPrincipalName : us4@contoso.onmicrosoft.com
+- UserPrincipalName: us4@contoso.onmicrosoft.com
 
 ### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Scénář 5: Příponu UPN ověřené – aktualizace místní příponu atribut userPrincipalName
 
@@ -154,7 +156,7 @@ Místní objekt uživatele:
 - MailNickName: us4
 - proxyAddresses: {SMTP:us6@contoso.com}
 - e-mailu: us7@contoso.com
-- serPrincipalName  : us5@verified.contoso.com
+- serPrincipalName: us5@verified.contoso.com
 
 Synchronizovat aktualizace na atribut userPrincipalName místně klientovi Azure AD
 - Aktualizace místní userPrincipalName atribut aktivační události přepočítání atributu Azure AD UserPrincipalName.
@@ -162,7 +164,7 @@ Synchronizovat aktualizace na atribut userPrincipalName místně klientovi Azure
 
 Objekt uživatele Azure AD klienta:
 - MailNickName: us4     
-- UserPrincipalName : us5@verified.contoso.com
+- UserPrincipalName: us5@verified.contoso.com
 
 ## <a name="next-steps"></a>Další kroky
 - [Integrace místních adresářů do služby Azure Active Directory](active-directory-aadconnect.md)

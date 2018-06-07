@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Principy deklarativní zřizování | Microsoft Docs"
-description: "Vysvětluje deklarativní zřizování konfigurační model v Azure AD Connect."
+title: 'Azure AD Connect: Principy deklarativní zřizování | Microsoft Docs'
+description: Vysvětluje deklarativní zřizování konfigurační model v Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: bb6a0c16322884afba3d306c491c3cd592fc8595
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593187"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizace Azure AD Connect: Principy deklarativní zřizování
 Toto téma vysvětluje konfigurační model v Azure AD Connect. Model se nazývá deklarativní zřizování a umožňuje snadno změníte konfiguraci. Celou řadu věcí, které jsou popsané v tomto tématu jsou rozšířené a není potřeba pro většinu scénářů zákazníka.
@@ -57,9 +59,9 @@ Modul oboru podporuje následující operace.
 | OBSAHUJE, NOTCONTAINS |Porovnat řetězec, která vyhodnotí Pokud hodnotu lze nalézt někde uvnitř hodnotu v atributu. |
 | STARTSWITH, NOTSTARTSWITH |Porovnat řetězec, který se vyhodnotí jako, pokud hodnota je na začátku hodnotu v atributu. |
 | ENDSWITH, NOTENDSWITH |Porovnat řetězec, který se vyhodnotí jako, pokud hodnota je na konci hodnotu v atributu. |
-| GREATERTHAN, GREATERTHAN_OR_EQUAL |Porovnat řetězec, která vyhodnotí, pokud je hodnota vyšší než hodnota atributu. |
-| ISNULL, ISNOTNULL |Vyhodnotí, jestli je chybí atribut z objektu. Pokud atribut není přítomen a proto hodnotu null, pravidlo je v oboru. |
-| ISIN, ISNOTIN |Vyhodnotí, pokud je hodnota v definovaný atribut. Tato operace je více hodnot variantu ROVNO a NOTEQUAL. Atribut by měl být více hodnot atributů a pokud hodnotu lze najít na žádném ze hodnoty atributu, pak toto pravidlo je v oboru. |
+| GREATERTHAN GREATERTHAN_OR_EQUAL |Porovnat řetězec, která vyhodnotí, pokud je hodnota vyšší než hodnota atributu. |
+| ISNULL ISNOTNULL |Vyhodnotí, jestli je chybí atribut z objektu. Pokud atribut není přítomen a proto hodnotu null, pravidlo je v oboru. |
+| ISIN ISNOTIN |Vyhodnotí, pokud je hodnota v definovaný atribut. Tato operace je více hodnot variantu ROVNO a NOTEQUAL. Atribut by měl být více hodnot atributů a pokud hodnotu lze najít na žádném ze hodnoty atributu, pak toto pravidlo je v oboru. |
 | ISBITSET, ISNOTBITSET |Vyhodnotí, pokud je konkrétní bit nastavený. Například můžete použít k vyhodnocení bity v userAccountControl chcete zobrazit, pokud uživatel povolený nebo zakázaný. |
 | ISMEMBEROF ISNOTMEMBEROF |Hodnota by měla obsahovat rozlišující název pro skupinu v prostoru konektoru. Pokud se objekt členem skupiny zadán, je pravidlo v oboru. |
 

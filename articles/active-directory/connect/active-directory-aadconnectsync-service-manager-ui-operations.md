@@ -1,11 +1,11 @@
 ---
-title: "Operace Správce synchronizace služby Azure AD Connect | Microsoft Docs"
-description: "Porozumět kartu operace ve Správci služby synchronizace Azure AD Connect."
+title: Operace Správce synchronizace služby Azure AD Connect | Microsoft Docs
+description: Porozumět kartu operace ve Správci služby synchronizace Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 97a26565-618f-4313-8711-5925eeb47cdc
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 309a4ca2d5ef929bb50ed899f24709c062d7db29
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8d6a8e10c5b78317ffda0963a13907c4552892e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593465"
 ---
 # <a name="using-the-sync-service-manager-operations-tab"></a>Pomocí karty operace synchronizace Service Manager
 
@@ -35,7 +37,7 @@ V horní polovině ukazuje všechny běží v chronologickém pořadí. Ve vých
 | Status | Poznámka |
 | --- | --- |
 | ukončeno-\* |Spuštění se nepodařilo dokončit. Například pokud vzdálený systém je vypnutý a nelze kontaktovat. |
-| stopped-error-limit |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
+| Zastavit limit chyb |Existuje více než 5 000 chyby. Spustit automaticky zastavila z důvodu velkého počtu chyb. |
 | dokončené -\*– chyby |Spustit dokončilo, ale nejsou chyby (méně než 5 000), které by se měly prozkoumat. |
 | dokončené -\*– upozornění |Spustit dokončena, ale některá data, není v očekávaném stavu. Pokud máte chyby, pak tato zpráva je obvykle jenom příznakem. Dokud nebude mít řešit chyby, by neměl prozkoumat upozornění. |
 | úspěch |Žádné problémy. |

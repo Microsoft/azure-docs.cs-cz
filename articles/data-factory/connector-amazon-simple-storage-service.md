@@ -7,28 +7,29 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
-ms.openlocfilehash: b2f87c965a7c69614d476f0d931802587f0f1297
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 18276b5706caad854c0160044b7e0efff10bc280
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616164"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1 – GA](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Verze 2 – Preview](connector-amazon-simple-storage-service.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat do a z Azure Blob Storage. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Amazon S3. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Amazon S3 connnector v V1](v1/data-factory-amazon-simple-storage-service-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Můžete zkopírovat data z jakékoli úložiště podporované zdroje dat do Azure Data Lake Store nebo kopírování dat z Azure Data Lake Store do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Data Amazon S3 můžete zkopírovat do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
 Konkrétně tento konektor Amazon S3 podporuje kopírování souborů jako-je nebo analýza souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
@@ -51,9 +52,9 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Pro Amazon S3 propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu musí být nastavená na **AmazonS3**. | Ano |
+| type | Vlastnost typu musí být nastavená na **AmazonS3**. | Ano |
 | accessKeyId | ID tajný přístupový klíč. |Ano |
 | secretAccessKey | Tajný přístupový klíč sám sebe. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
@@ -90,13 +91,13 @@ Zde naleznete příklad:
 
 Chcete-li kopírovat data z Amazonu S3, nastavte vlastnost typu datové sady, která **AmazonS3Object**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu datové sady musí být nastavena na: **AmazonS3Object** |Ano |
+| type | Vlastnost typu datové sady musí být nastavena na: **AmazonS3Object** |Ano |
 | bucketName | Název sady S3. Zástupný filtr není podporován. |Ano |
-| klíč | **Název nebo zástupný filtr** S3 objektu klíče v rámci zadané sady. Platí, pouze pokud není zadán vlastnost "předponu". <br/><br/>Zástupný filtr je podporována pouze pro část názvu souboru, ale není součástí složky. Povolené zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Příklad 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
+| key | **Název nebo zástupný filtr** S3 objektu klíče v rámci zadané sady. Platí, pouze pokud není zadán vlastnost "předponu". <br/><br/>Zástupný filtr je podporována pouze pro část názvu souboru, ale není součástí složky. Povolené zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Příklad 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
 | Předpona | Předpona pro klíč objektu S3. Jsou vybrané objekty, jejichž klíče začít s touto předponou. Platí jenom v případě, že není zadána vlastnost "klíč". |Ne |
-| Verze | Verze objektu S3, pokud je povolena Správa verzí S3. |Ne |
+| verze | Verze objektu S3, pokud je povolena Správa verzí S3. |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat nebo vygenerování soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
 
@@ -162,15 +163,15 @@ Chcete-li kopírovat data z Amazonu S3, nastavte vlastnost typu datové sady, kt
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Azure Data Lake zdroj a jímka.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje Amazon S3 zdroje.
 
 ### <a name="amazon-s3-as-source"></a>Amazon S3 jako zdroj
 
 Pokud chcete zkopírovat data z Amazonu S3, nastavit typ zdroje v aktivitě kopírování do **FileSystemSource** (která zahrnuje Amazon S3). Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **FileSystemSource** |Ano |
+| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **FileSystemSource** |Ano |
 | Rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
 
 **Příklad:**

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 88fac41ce2c9fa0c5569beae02ab90a507c89a34
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1800db8cd25aa37bffb76adf00901e11c75d49fe
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604076"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Zkontrolujte vaše šablony zásobník Azure pomocí nástroje ověření šablony
 
@@ -98,7 +99,7 @@ Tento příklad ověří všechny [šablony Azure Quickstart zásobníku](https:
 
 ```PowerShell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
--CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json.json `
+-CapabilitiesPath .\TemplateValidator\AzureStackCloudCapabilities_with_AddOns_20170627.json `
 -TemplatePattern MyStandardTemplateName.json`
 -IncludeComputeCapabilities`
 -Report TemplateReport.html

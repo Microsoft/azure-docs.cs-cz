@@ -4,7 +4,7 @@
 ## [Co je Resource Manager?](resource-group-overview.md)
 ## [Poskytovatelé a typy prostředků](resource-manager-supported-services.md)
 ## [Resource Manager a klasické nasazení](resource-manager-deployment-model.md)
-## [Zásady správného řízení pro předplatná](resource-manager-subscription-governance.md)
+## [Zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance)
 ## [Uspořádání prostředků s využitím skupin pro správu](management-groups-overview.md)
 
 # Začínáme
@@ -50,7 +50,6 @@
 ### [Programové vytváření předplatných EA](programmatically-create-subscription.md)
 ### [Vytvoření skupin pro správu](management-groups-create.md)
 ### [Správa skupin pro správu](management-groups-manage.md)
-### [Příklady zásad správného řízení](resource-manager-subscription-examples.md)
 
 ## Řízení přístupu
 ### Vytvoření instančního objektu

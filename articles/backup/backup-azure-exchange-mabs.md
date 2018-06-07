@@ -1,24 +1,19 @@
 ---
-title: "Zálohování serveru Exchange server Azure Backup pomocí serveru Azure Backup | Microsoft Docs"
-description: "Zjistěte, jak pro zálohování serveru Exchange server do Azure Backup pomocí serveru Azure Backup"
+title: Zálohování serveru Exchange server Azure Backup pomocí serveru Azure Backup
+description: Zjistěte, jak pro zálohování serveru Exchange server do Azure Backup pomocí serveru Azure Backup
 services: backup
-documentationcenter: 
 author: pvrk
 manager: shivamg
-editor: 
-ms.assetid: e46557e8-2eaf-4ee0-99ea-00fbb8687dca
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 60b784fd00013c2b9504f8635c6b5c4c592563be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d64c273a189b1fe2337c4430b156874e0adf54b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605956"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-azure-backup-server"></a>Zálohování serveru Exchange server Azure Backup pomocí serveru Azure Backup
 Tento článek popisuje, jak nakonfigurovat Microsoft Azure Backup Server (MABS) na server Microsoft Exchange zálohovat do Azure.  
@@ -73,10 +68,10 @@ Chcete-li nainstalovat agenta ochrany MABS na serveru Exchange, postupujte takto
 11. Zkontrolujte dostupné místo na disku a pak klikněte na tlačítko **Další**.
 12. Vyberte dobu, kdy serveru MAB bude vytvoření počáteční replikace a pak klikněte na tlačítko **Další**.
 13. Vyberte možnosti kontroly konzistence a pak klikněte na tlačítko **Další**.
-14. Vyberte databázi, která chcete zálohovat do Azure a pak klikněte na tlačítko **Další**. Například:
+14. Vyberte databázi, která chcete zálohovat do Azure a pak klikněte na tlačítko **Další**. Příklad:
 
     ![Zadejte data pro online ochranu](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
-15. Definujte plán pro **Azure Backup**a potom klikněte na **Další**. Například:
+15. Definujte plán pro **Azure Backup**a potom klikněte na **Další**. Příklad:
 
     ![Zadejte plán online zálohování](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
@@ -109,5 +104,5 @@ Pro body obnovení online se pět typů obnovení:
 
     ![Zvolte online replikace](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Azure Backup – nejčastější dotazy](backup-azure-backup-faq.md)

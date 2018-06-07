@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect – přizpůsobení a Správa služby AD FS | Microsoft Docs"
-description: "Správa služby AD FS s Azure AD Connect a přizpůsobení uživatele AD FS přihlašování uživatelů s Azure AD Connect a prostředí PowerShell."
-keywords: "Služba AD FS, služba AD FS, služby AD FS správy, AAD Connect, připojení, přihlášení, služby AD FS přizpůsobení, opravte federačního vztahu důvěryhodnosti, O365, předávající strany"
+title: Azure AD Connect – přizpůsobení a Správa služby AD FS | Microsoft Docs
+description: Správa služby AD FS s Azure AD Connect a přizpůsobení uživatele AD FS přihlašování uživatelů s Azure AD Connect a prostředí PowerShell.
+keywords: Služba AD FS, služba AD FS, služby AD FS správy, AAD Connect, připojení, přihlášení, služby AD FS přizpůsobení, opravte federačního vztahu důvěryhodnosti, O365, předávající strany
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
 ms.workload: identity
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590850"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Spravovat a přizpůsobit Active Directory Federation Services přes Azure AD Connect
 Tento článek popisuje, jak spravovat a přizpůsobit Active Directory Federation Services (AD FS) pomocí služby Azure Active Directory (Azure AD) připojit. Zahrnuje také dalších běžných úkolů služby AD FS, které možná budete muset udělat pro celou konfiguraci farmy služby AD FS.
@@ -29,7 +31,7 @@ Tento článek popisuje, jak spravovat a přizpůsobit Active Directory Federati
 |:--- |:--- |
 | **Správa služby AD FS** | |
 | [Opravit vztah důvěryhodnosti](#repairthetrust) |Jak opravit vztah důvěryhodnosti federace s Office 365. |
-| [Vytvořit federaci s Azure AD pomocí alternativního přihlašovacího ID](#alternateid) | Konfigurace federace pomocí alternativního přihlašovacího ID  |
+| [Vytvořit federaci s Azure AD pomocí alternativního přihlašovacího ID ](#alternateid) | Konfigurace federace pomocí alternativního přihlašovacího ID  |
 | [Přidejte server služby AD FS](#addadfsserver) |Jak rozbalit farmu služby AD FS s dalším serverem služby AD FS. |
 | [Přidat server proxy webové aplikace služby AD FS](#addwapserver) |Jak rozbalit farmu služby AD FS s dalším serverem Proxy webových aplikací (WAP). |
 | [Přidání federované domény](#addfeddomain) |Postup přidání federovanou doménu. |
@@ -223,7 +225,7 @@ Navíc pomocí **přidat** a není **problém**, vyhnete se přidávání odchoz
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Toto pravidlo definuje dočasné příznak **idflag** , je nastaven na **useguid** Pokud neexistuje žádné **ms-ds-consistencyguid** vyplněný pro uživatele. Logika za to je fakt, že služba AD FS neumožňuje prázdné deklarací identity. Takže když přidáte http://contoso.com/ws/2016/02/identity/claims/objectguid deklarace identity a http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid v pravidla 1, v níž se **msdsconsistencyguid** deklarace identity jenom, pokud je hodnota vyplněný pro uživatele. Pokud není vyplněné, služby AD FS uvidí, že bude mít prázdnou hodnotu a okamžitě se zahodí. Všechny objekty se mají **objectGuid**, tak, že deklarace bude vždy existovat po provedení pravidla 1.
+Toto pravidlo definuje dočasné příznak **idflag** , je nastaven na **useguid** Pokud neexistuje žádné **ms-ds-consistencyguid** vyplněný pro uživatele. Logika za to je fakt, že služba AD FS neumožňuje prázdné deklarací identity. Takže když přidání deklarací identity, http://contoso.com/ws/2016/02/identity/claims/objectguid a http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid v pravidlo 1, v níž se **msdsconsistencyguid** deklarace identity jenom, pokud je hodnota vyplněný pro uživatele. Pokud není vyplněné, služby AD FS uvidí, že bude mít prázdnou hodnotu a okamžitě se zahodí. Všechny objekty se mají **objectGuid**, tak, že deklarace bude vždy existovat po provedení pravidla 1.
 
 **Pravidlo 3: Vystavení ms-ds-consistencyguid jako neměnné ID, pokud je k dispozici**
 
@@ -262,7 +264,7 @@ Výchozí pravidlo jednoduše trvá příponu UPN a používá je v deklarace ID
 
     => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
 
-**Hodnoty deklarace identity:** http://sub.contoso.com/adfs/services/trust/
+**Hodnota deklarace identity:**  http://sub.contoso.com/adfs/services/trust/
 
 Pokud chcete, aby kořenové domény v hodnotě vystavitele deklarace, změňte pravidlo deklarace identity tak, aby odpovídala následující:
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: d04bfe601760dcbf832aeec0cc66d8e1eda51178
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ed225206e512ff64835d4d90b35bd44800e0a559
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595372"
 ---
 # <a name="tutorial-use-a-windows-vm-msi-to-access-azure-cosmos-db"></a>Kurz: Použijte pro přístup k databázi Azure Cosmos MSI virtuálních počítačů Windows
 
@@ -209,4 +210,9 @@ Toto rozhraní příkazového řádku příkaz vrátí podrobnosti o kolekci:
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled MSI najdete v tématu [identita spravované služby přehled](overview.md).
+V tomto kurzu jste zjistili, jak vytvořit spravované identitu služby Windows pro přístup k databázi Cosmos.  Další informace o Cosmos DB najdete v tématu:
+
+> [!div class="nextstepaction"]
+>[Přehled služby Azure Cosmos DB](/azure/cosmos-db/introduction)
+
+

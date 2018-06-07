@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: Upgrade z předchozí verze | Microsoft Docs"
-description: "Vysvětluje různé metody pro upgrade na nejnovější verzi Azure Active Directory Connect, včetně místní upgrade a migrace dráha."
+title: 'Azure AD Connect: Upgrade z předchozí verze | Microsoft Docs'
+description: Vysvětluje různé metody pro upgrade na nejnovější verzi Azure Active Directory Connect, včetně místní upgrade a migrace dráha.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4d431a9e0fab8d46b244fd40178ede594c095893
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 1a6fe4fc7fd5f47bfd4bc4d9168f76c31c78b47b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592472"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější
 Toto téma popisuje různé metody, které můžete použít k upgradu vaší instalace služby Azure Active Directory (Azure AD) Connect na nejnovější verzi. Doporučujeme ponechat si sami aktuální verze služby Azure AD Connect. Můžete také použít kroky v [kyvu migrace](#swing-migration) části při provedení podstatných změn v konfiguraci.
@@ -102,7 +104,7 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání proběhla okamžitě po
 
    ![DisableFullSyncAfterUpgrade](./media/active-directory-aadconnect-upgrade-previous-version/disablefullsync01.png)
 
-2. Po dokončení upgradu, spusťte následující rutinu a zjistěte, jaké přepsání byly přidány:`Get-ADSyncSchedulerConnectorOverride | fl`
+2. Po dokončení upgradu, spusťte následující rutinu a zjistěte, jaké přepsání byly přidány: `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > Přepsání jsou specifické pro konektor. V následujícím příkladu kroky úplný Import a úplnou synchronizaci jsou přidané do obou místní konektor AD a Azure AD Connector.
@@ -111,7 +113,7 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání proběhla okamžitě po
 
 3. Poznamenejte si stávající přepsání, které byly přidány.
    
-4. Chcete-li odebrat přepsání pro úplný import a úplnou synchronizaci v libovolné konektoru, spusťte následující rutinu:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. Chcete-li odebrat přepsání pro úplný import a úplnou synchronizaci v libovolné konektoru, spusťte následující rutinu: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    Chcete-li odebrat přepsání na všechny konektory, spusťte následující skript prostředí PowerShell:
 
@@ -122,12 +124,12 @@ Mohou nastat situace, kdy nechcete, aby tato přepsání proběhla okamžitě po
    }
    ```
 
-5. Pokud chcete obnovit Plánovač, spusťte následující rutinu:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Pokud chcete obnovit Plánovač, spusťte následující rutinu: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > Musíte provést kroky požadované synchronizace v nejdřívější usnadnění práce. Můžete buď ručně provést tyto kroky, pomocí Synchronization Service Manager nebo přidat přepsání zpět pomocí rutiny Set-ADSyncSchedulerConnectorOverride.
 
-Přepsání pro úplný import a úplnou synchronizaci v libovolné konektoru, spusťte následující rutinu:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Přepsání pro úplný import a úplnou synchronizaci v libovolné konektoru, spusťte následující rutinu:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [integrace místních identit s Azure Active Directory](active-directory-aadconnect.md).

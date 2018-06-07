@@ -1,24 +1,26 @@
 ---
-title: "Vyřešte chyby neodpovídající directory pro existující spravované domény služby Azure AD Domain Services | Microsoft Docs"
-description: "Rady pro pochopení a řešení chyb neodpovídající directory pro existující spravované domény služby Azure AD Domain Services"
+title: Vyřešte chyby neodpovídající directory pro existující spravované domény služby Azure AD Domain Services | Microsoft Docs
+description: Rady pro pochopení a řešení chyb neodpovídající directory pro existující spravované domény služby Azure AD Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 24e11769e9b403bc00157e3f60869effa6a9633f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: babf7776547ff61794039104df9a2b2d8a0ea546
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34586664"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Vyřešte chyby neodpovídající directory pro existující spravované domény služby Azure AD Domain Services
 Máte existující spravované doméně služby Azure AD Domain Services. Když přejdete na portál Azure a zobrazení spravované doméně, zobrazí se následující chybová zpráva:

@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f65e84bff63bbdb781991ff6648b0fb98ca5208f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592309"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s objekt synchronizace s synchronizace Azure AD Connect
-Tento dokument obsahuje kroky pro řešení potíží s objekt synchronizace pomocí řešení potíží úlohy.
+Tento článek popisuje kroky pro řešení potíží s objekt synchronizace pomocí úloh odstraňování potíží. Najdete v části řešení potíží s jak funguje v Azure Active Directory (Azure AD) připojení, můžete sledovat [následující krátké video](https://aka.ms/AADCTSVideo).
 
 ## <a name="troubleshooting-task"></a>Řešení potíží s úloh
-Pro Azure Active Directory (AAD) připojit nasazení s verzí 1.1.749.0 nebo vyšší, použijte úlohu odstraňování potíží v Průvodci potíží objekt synchronizace. U starších verzí, prosím vyřešit ručně, jak je popsáno [zde](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
+Pro Azure AD nasazení se připojit k verzi 1.1.749.0 nebo vyšší, použít úloh odstraňování potíží v průvodci k řešení potíží objekt synchronizace. U starších verzí, prosím vyřešit ručně, jak je popsáno [zde](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md).
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Spusťte úlohu odstraňování potíží v Průvodci
 Pokud chcete spustit úlohu řešení potíží v průvodci, proveďte následující kroky:

@@ -11,12 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a8b105d7a374e281e46064f83a6e103c2a7cf84f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ad1e5d176caff6553159c5f35fe2b199ba50769f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592377"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s problémy s připojením k SQL službou Azure AD Connect
 Tento článek vysvětluje, jak vyřešit problémy s připojením mezi Azure AD Connect a SQL Server. 
@@ -171,4 +173,4 @@ PS C:\Program Files\Microsoft Azure Active Directory Connect\tools>
 
 ## <a name="next-steps"></a>Další kroky
 - [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md)
--  [Azure AD připojení službou Azure AD Connect](active-directory-aadconnect-troubleshoot-connectivity.md)
+-  [Možnosti připojení Azure AD s využitím služby Azure AD Connect](active-directory-aadconnect-troubleshoot-connectivity.md)

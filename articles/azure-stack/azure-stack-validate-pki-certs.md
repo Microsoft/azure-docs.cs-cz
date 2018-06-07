@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cd917165804314f6ee4ee006e3f29263d8d4b4c5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e381d2ed3c6a972d776dd31f311fcebe2e35823a
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605606"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Ověření Azure zásobníku infrastruktury veřejných KLÍČŮ certifikátů
 
@@ -35,7 +36,7 @@ Nástroj pro kontrolu připravenosti provádí následující ověření certifi
 - **Řetěz certifikátů**  
     Řetěz certifikátů kontroly je v pořádku, včetně kontrolu pro certifikáty podepsané svým držitelem.
 - **Názvy DNS**  
-    Zkontroluje, síť SAN obsahuje relevantní názvy DNS pro každý koncový bod nebo pokud podpůrný nachází zástupný znak.
+    Zkontroluje, síť SAN obsahuje relevantní názvy DNS pro každý koncový bod, nebo pokud podpůrný nachází zástupný znak.
 - **Použití klíče**  
     Zkontroluje, zda obsahuje použití klíče, digitální podpis a šifrování klíče a rozšířené použití klíče obsahuje ověření serveru a ověřování klientů.
 - **Velikost klíče**  
@@ -44,6 +45,8 @@ Nástroj pro kontrolu připravenosti provádí následující ověření certifi
     Ověří pořadí jiných certifikátů ověřuje, zda je správný pořadí.
 - **Další certifikáty**  
     Zkontrolujte, že žádné další certifikáty byly zabaleny v PFX než listu relevantní certifikát a jeho řetězec.
+- **Žádný profil**  
+    Ověří, že nového uživatele můžete načíst PFX data bez profilu uživatele načíst, mimicking chování účty gMSA během obsluhy certifikátu.
 
 > [!IMPORTANT]  
 > Certifikát PKI, je soubor PFX a heslo by měl být považován za citlivé informace.
@@ -57,43 +60,46 @@ Váš systém by měl splňovat následující požadavky před ověřením cert
 - DeploymentData.json
 - Windows 10 nebo Windows Server 2016
 
-## <a name="perform-certificate-validation"></a>Ověření certifikátu
+## <a name="perform-core-services-certificate-validation"></a>Provést základní ověření certifikátu služby
 
-Tyto kroky použijte k přípravě a k ověření certifikátů PKI zásobník Azure:
+Tyto kroky použijte pro přípravu a k ověření certifikátů PKI zásobník Azure pro nasazení a tajný otočení:
 
-1. Instalace AzsReadinessChecker z řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
+1. Nainstalujte **AzsReadinessChecker** z příkazovém řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
 
     ````PowerShell  
-        Install-Module Microsoft.AzureStack.ReadinessChecker 
+        Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ````
 
 2. Vytvořte strukturu adresáře certifikátu. V následujícím příkladu můžete změnit `<c:\certificates>` novou cestu adresáře podle svého výběru.
 
     ````PowerShell  
     New-Item C:\Certificates -ItemType Directory
-
-    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal' 
-
-    $destination = 'c:\certificates' 
-
-    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}  
+    
+    $directories = 'ACSBlob','ACSQueue','ACSTable','ADFS','Admin Portal','ARM Admin','ARM Public','Graph','KeyVault','KeyVaultInternal','Public Portal'
+    
+    $destination = 'c:\certificates'
+    
+    $directories | % { New-Item -Path (Join-Path $destination $PSITEM) -ItemType Directory -Force}
     ````
+    
+    > [!Note]  
+    > Pokud používáte systém identity služby AD FS se vyžaduje služba AD FS a grafu.
+    
+     - Místní certifikátů v příslušné adresáře vytvořené v předchozím kroku. Příklad:  
+        - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx`
+        - `c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx`
 
- - Místní certifikátů v příslušné adresáře vytvořené v předchozím kroku. Příklad:  
-    - c:\certificates\ACSBlob\CustomerCertificate.pfx 
-    - c:\certificates\Certs\Admin Portal\CustomerCertificate.pfx 
-    - c:\certificates\Certs\ARM Admin\CustomerCertificate.pfx 
-    - a tak dále... 
-
-3. V okně prostředí PowerShell, spusťte:
+3. V okně prostředí PowerShell změně hodnot **RegionName** a **plně kvalifikovaný název domény** příslušným do prostředí Azure zásobníku a spusťte následující příkaz:
 
     ````PowerShell  
-    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString
+    $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
-    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
+    Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD 
+
     ````
 
-4. Zkontrolujte výstup k ověření, že všechny certifikáty předána testy. Příklad:
+4. Zkontrolujte výstup a všechny certifikáty projít všemi testy. Příklad:
 
     ````PowerShell
     AzsReadinessChecker v1.1803.405.3 started
@@ -125,7 +131,8 @@ Tyto kroky použijte k přípravě a k ověření certifikátů PKI zásobník A
     Finished Certificate Validation
 
     AzsReadinessChecker Log location: C:\AzsReadinessChecker\AzsReadinessChecker.log
-    AzsReadinessChecker Report location (for OEM): C:\AzsReadinessChecker\AzsReadinessReport.json
+    AzsReadinessChecker Report location: 
+    C:\AzsReadinessChecker\AzsReadinessReport.json
     AzsReadinessChecker Completed
     ````
 
@@ -162,12 +169,87 @@ Tyto kroky použijte k přípravě a k ověření certifikátů PKI zásobník A
 
 **Řešení**: postupujte podle pokynů nástroje v sekci podrobností pod každou sadu testů pro každý certifikát.
 
+## <a name="perform-platform-as-a-service-certificate-validation"></a>Platformy, proveďte ověření certifikátu služby
+
+Pomocí těchto kroků můžete připravit a ověření certifikátů PKI zásobník Azure pro platformu jako certifikáty služby (PaaS), pokud máte v plánu nasazení SQL nebo MySQL nebo aplikační služby.
+
+1.  Nainstalujte **AzsReadinessChecker** z příkazovém řádku prostředí PowerShell (5.1 nebo novější), spuštěním následující rutiny:
+
+    ````PowerShell  
+      Install-Module Microsoft.AzureStack.ReadinessChecker -force
+    ````
+
+2.  Vytvořte vnořené zatřiďovací tabulku obsahující cesty a heslo pro každý certifikát PaaS nutnosti ověření. V okně prostředí PowerShell, spusťte:
+
+    ```PowerShell
+        $PaaSCertificates = @{
+        'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSAPICert' = @{'pfxPath' = '<Path to API PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
+        }
+    ```
+
+3.  Změna hodnot **RegionName** a **plně kvalifikovaný název domény** tak, aby odpovídaly prostředí Azure zásobníku zahájíte ověřování. Potom spusťte:
+
+    ```PowerShell
+    Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
+    ```
+4.  Zkontrolujte výstup a že všechny certifikáty projít všemi testy.
+
+    ```PowerShell
+    AzsReadinessChecker v1.1805.425.2 started
+    Starting PaaS Certificate Validation
+    
+    Starting Azure Stack Certificate Validation 1.0 
+    Testing: PaaSCerts\wildcard.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\api.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\wildcard.dbadapter.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+        Chain Order: OK
+        Other Certificates: OK
+    Testing: PaaSCerts\sso.appservice.pfx
+        Read PFX: OK
+        Signature Algorithm: OK
+        Private Key: OK
+        Cert Chain: OK
+        DNS Names: OK
+        Key Usage: OK
+        Key Size: OK
+    ```
+
 ## <a name="using-validated-certificates"></a>Pomocí ověřovaných certifikátů
 
 Po ověření certifikátů pomocí AzsReadinessChecker jste připraveni používat ve vašem nasazení zásobník Azure nebo Azure zásobníku tajný otočení. 
 
  - Pro nasazení, bylo možné bezpečněji přenášet certifikáty na pracovníka nasazení tak, aby je mohli zkopírovat do hostitele nasazení uvedených v [dokumentace Azure zásobníku infrastruktury veřejných KLÍČŮ požadavky](azure-stack-pki-certs.md).
  - Pro tajný otočení, můžete použít certifikáty a aktualizovat staré certifikáty pro prostředí Azure zásobníku infrastruktury veřejných koncových bodů podle [dokumentace Azure zásobníku tajný klíč otočení](azure-stack-rotate-secrets.md).
+ - Pro služby PaaS, můžete použít certifikáty k instalaci SQL, MySQL a zprostředkovatelé prostředků služeb aplikace v zásobníku Azure pomocí následujících [přehled nabídky služeb v dokumentaci k Azure zásobníku](azure-stack-offer-services-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 

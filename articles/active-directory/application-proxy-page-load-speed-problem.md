@@ -3,21 +3,24 @@ title: Aplikace Proxy aplikací trvá příliš dlouho načíst | Microsoft Docs
 description: Řešení potíží s výkonem načítání stránky s Azure AD Application Proxy
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 34422cb42768ddbc2997da3eec3d35c11e272855
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 1c32015cb5addcb693c1f7b746f26a6373979c14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589929"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Aplikace Proxy aplikací trvá příliš dlouho zatížení
 

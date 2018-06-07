@@ -1,5 +1,5 @@
 ---
-title: Přehled Azure Blockchain Workbench zprávy
+title: Přehled integrace Azure Blockchain Workbench zprávy
 description: Přehled používání zprávy v Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45396c3af285026e16ce641bd37bf0eadcee56d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607596"
 ---
-# <a name="azure-blockchain-workbench-messages-overview"></a>Přehled Azure Blockchain Workbench zprávy
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench integrace pro zasílání zpráv
 
 Kromě rozhraní REST API, Azure Blockchain Workbench také nabízí integraci na základě zasílání zpráv. Workbench publikuje zaměřené na hlavní knihy událostí prostřednictvím Azure událostí mřížky, povolení podřízené příjemcům ingestovat data nebo provést akci na základě těchto událostí. Pro ty klienty, které vyžadují spolehlivé zasílání zpráv Azure Blockchain Workbench přináší zprávy koncový Azure Service Bus.
 
 Vývojáři mají také vyjádřit zájem o schopnost komunikovat inicializace transakce k vytváření uživatelů, vytvoření smluv a aktualizaci kontrakty na hlavní knihy externími systémy. Když tato funkce není aktuálně vystavený ve verzi public preview, vzorku, který poskytuje tuto možnost najdete na [ http://aka.ms/blockchain-workbench-integration-sample ](http://aka.ms/blockchain-workbench-integration-sample).
 
-
 ## <a name="event-notifications"></a>Oznámení událostí
 
-Oznamování událostí lze použít pro upozornění uživatelů a podřízené systémy události, které ve Workbench a, který je připojený k síti blockchain dojde. Oznamování událostí můžete použít přímo v kódu nebo pomocí nástrojů, například Logic Apps a toku používá k aktivaci tok dat pro příjem dat systémy.
+Oznamování událostí lze použít pro upozornění uživatelů a podřízené systémy události, které ve Blockchain Workbench a, který je připojený k síti blockchain dojde. Oznamování událostí můžete použít přímo v kódu nebo pomocí nástrojů, například Logic Apps a toku používá k aktivaci tok dat pro příjem dat systémy.
 
 V tématu [odkaz zprávu oznámení](#notification-message-reference) podrobnosti o různých zprávy, které můžou přijímat.
 
@@ -39,7 +39,7 @@ Pokud chce uživatel použít událost mřížky oznámení o událostech, kter�
 4. Uložte funkce. 
 5. Vyberte události mřížky ze skupiny prostředků Blockchain Workbench.
 
-### <a name="consuming-event-grid-events-with-logic-apps"></a>Využívání událost mřížky události s Logic Apps
+### <a name="consuming-event-grid-events-with-logic-apps"></a>Využívání událostí mřížky události s Logic Apps
 
 1.  Vytvořte novou **aplikace logiky Azure** na portálu Azure.
 2.  Při otevření aplikace logiky Azure na portálu, se zobrazí výzva k výběru aktivační událost. Vyberte **tabulka událostí Azure – Pokud se vyskytne událost prostředků**.
@@ -60,14 +60,14 @@ Témata služby Service Bus slouží k upozornění uživatele o událostech, kt
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Využívání zprávy služby Service Bus s Logic Apps
 
 1. Vytvořte novou **aplikace logiky Azure** na portálu Azure.
-2.  Při otevření aplikace logiky Azure na portálu, se zobrazí výzva k výběru aktivační událost. Typ **Service Bus** do vyhledávacího pole a vyberte vhodné pro typ interakce aktivační událost můžete chtít, aby se Service Bus. Například **Service Bus – při příjmu zprávy v odběru tématu (automatické dokončování)**.
+2. Při otevření aplikace logiky Azure na portálu, se zobrazí výzva k výběru aktivační událost. Typ **Service Bus** do vyhledávacího pole a vyberte vhodné pro typ interakce aktivační událost můžete chtít, aby se Service Bus. Například **Service Bus – při příjmu zprávy v odběru tématu (automatické dokončování)**.
 3. Když se zobrazí Návrháři pracovních postupů, zadejte informace o připojení pro Service Bus.
 4. Vyberte předplatné a zadejte téma **workbench externí**.
 5. Vývoj logiku pro vaše aplikace, která využívá zprávy z této aktivační události.
 
 ## <a name="notification-message-reference"></a>Odkaz na zprávu oznámení
 
-V závislosti na OperationName zprávy s oznámením mít jednu z následujících typů zpráv.
+V závislosti na tom **OperationName**, zprávy s oznámením mít jednu z následujících typů zpráv.
 
 ### <a name="accountcreated"></a>AccountCreated
 
@@ -75,8 +75,8 @@ Označuje, že nový účet má byla pro přidání do zadaného řetězce.
 
 | Název    | Popis  |
 |----------|--------------|
-| UserId  | ID uživatele, který byl vytvořen |
-| ChainIdentifier | Adresa uživatele, který byl vytvořen v síti blockchain. V Ethereum bude adresa "pro řetězec" uživatele. |
+| UserId  | ID uživatele, který byl vytvořen. |
+| ChainIdentifier | Adresa uživatele, který byl vytvořen v síti blockchain. V Ethereum, by to byl uživatele **v řetězu** adresu. |
 
 ``` csharp
 public class NewAccountRequest : MessageModelBase
@@ -93,15 +93,15 @@ Označuje, že žádost o byl proveden vložit nebo aktualizovat kontraktu na di
 | Název | Popis |
 |-----|--------------|
 | ChainID | Jedinečný identifikátor pro řetězec přidružený k požadavku.|
-  Blockid % | Jedinečný identifikátor pro bloku na hlavní knihy.|
-  ContractId | Jedinečný identifikátor pro daný kontrakt.|
-  ContractAddress |       Adresa kontrakt na hlavní knihy.|
-  TransactionHash  |     Hodnota hash transakce na hlavní knihy.|
-  OriginatingAddress |   Adresa původce transakce.|
-  Název akce       |     Název akce.|
-  IsUpdate        |      Označuje, jestli jde o aktualizaci.|
-  Parametry       |     Seznam objektů, které identifikují název, hodnotu a datový typ parametry odeslané akce.|
-  TopLevelInputParams |  Ve scénářích, kde je kontraktu připojené k jedné nebo více smluv jsou tyto parametry z nejvyšší úrovně kontrakt. |
+| Blockid % | Jedinečný identifikátor pro bloku na hlavní knihy.|
+| ContractId | Jedinečný identifikátor pro daný kontrakt.|
+| ContractAddress |       Adresa kontrakt na hlavní knihy.|
+| TransactionHash  |     Hodnota hash transakce na hlavní knihy.|
+| OriginatingAddress |   Adresa původce transakce.|
+| Název akce       |     Název akce.|
+| IsUpdate        |      Označuje, jestli jde o aktualizaci.|
+| Parametry       |     Seznam objektů, které identifikují název, hodnotu a datový typ parametry odeslané akce.|
+| TopLevelInputParams |  Ve scénářích, kde je kontraktu připojené k jedné nebo více smluv jsou tyto parametry z nejvyšší úrovně kontrakt. |
 
 ``` csharp
 public class ContractInsertOrUpdateRequest : MessageModelBase
@@ -241,6 +241,65 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 {
     public int ContractId { get; set; }
     public string ChainIdentifier { get; set; }
+}
+```
+
+## <a name="classes-used-by-message-types"></a>Třídy používané typy zpráv
+
+### <a name="messagemodelbase"></a>MessageModelBase
+
+Základní model pro všechny zprávy.
+
+| Název          | Popis                          |
+|---------------|--------------------------------------|
+| OperationName | Název operace.           |
+| ID žádosti     | Jedinečný identifikátor pro požadavek. |
+
+``` csharp
+public class MessageModelBase
+{
+    public string OperationName { get; set; }
+    public string RequestId { get; set; }
+}
+```
+
+### <a name="contractinputparameter"></a>ContractInputParameter
+
+Obsahuje název, hodnotu a typ parametru.
+
+| Název  | Popis                 |
+|-------|-----------------------------|
+| Název  | Název parametru  |
+| Hodnota | Hodnota parametru. |
+| Typ  | Typ parametru.  |
+
+``` csharp
+public class ContractInputParameter
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string Type { get; set; }
+}
+```
+
+#### <a name="contractproperty"></a>ContractProperty
+
+Obsahuje ID, název, hodnotu a typ vlastnosti.
+
+| Název  | Popis                |
+|-------|----------------------------|
+| ID    | ID vlastnosti.    |
+| Název  | Název vlastnosti.  |
+| Hodnota | Hodnota vlastnosti |
+| Typ  | Typ vlastnosti.  |
+
+``` csharp
+public class ContractProperty
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string DataType { get; set; }
 }
 ```
 

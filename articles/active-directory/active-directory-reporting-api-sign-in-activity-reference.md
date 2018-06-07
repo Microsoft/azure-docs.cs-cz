@@ -3,7 +3,7 @@ title: Přihlašovací aktivity sestav Azure Active Directory referenční dokum
 description: Referenční dokumentace rozhraní API sestavy přihlašovací aktivita služby Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 05/08/2018
-ms.author: dhanyahk;markvi
+ms.author: dhanyahk;rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3831146caad4fe922e482ce782d5d41fb70338f4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c5d5e11c5178e5b90c2970e52dd1e6f47a78204d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588385"
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Přihlašovací aktivity sestav Azure Active Directory referenční dokumentace rozhraní API
 

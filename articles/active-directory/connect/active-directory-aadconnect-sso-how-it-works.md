@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Bezproblémové Single Sign-On - jak to funguje | Microsoft Docs"
-description: "Tento článek popisuje, jak funkce Azure Active Directory bezproblémové jednotné přihlašování funguje."
+title: 'Azure AD Connect: Bezproblémové Single Sign-On - jak to funguje | Microsoft Docs'
+description: Tento článek popisuje, jak funkce Azure Active Directory bezproblémové jednotné přihlašování funguje.
 services: active-directory
-keywords: "Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d17a4038f2171b74c8ba1dbc21e8335e6893691
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bcd9ec44eafd586648ba964c5cba248a184a8ec3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591557"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace
 
@@ -50,7 +52,7 @@ Po dokončení instalace bezproblémové jednotné přihlašování funguje stej
 
 Tok přihlášení ve webovém prohlížeči vypadá takto:
 
-1. Uživatel se pokusí o přístup k webové aplikaci (například aplikaci Outlook Web App - https://outlook.office365.com/owa/) z připojených k doméně podnikové zařízení uvnitř firemní sítě.
+1. Uživatel se pokusí o přístup k webové aplikaci (například aplikaci Outlook Web App - https://outlook.office365.com/owa/) z podnikové zařízení uvnitř firemní sítě připojené k doméně.
 2. Pokud již není přihlášený uživatel, se uživatel přesměruje na přihlašovací stránku služby Azure AD.
 3. Typy uživatelů ve své uživatelské jméno na přihlašovací stránku služby Azure AD.
 

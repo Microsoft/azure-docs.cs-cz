@@ -1,24 +1,19 @@
 ---
-title: "Správa záloh virtuálních počítačů nasazených Resource Managerem | Microsoft Docs"
-description: "Zjistěte, jak spravovat a monitorovat záloh virtuálních počítačů nasazených Resource Managerem"
+title: Správa záloh virtuálních počítačů nasazených Resource Managerem
+description: Zjistěte, jak spravovat a monitorovat záloh virtuálních počítačů nasazených Resource Managerem
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-ms.assetid: f3050283-d60f-472d-b464-cb844e70d67e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk;markgal
-ms.openlocfilehash: f4613746a427e6987366eeb46605524cd3aacbe2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: trinadhk
+ms.openlocfilehash: 4d45db6ba6354f85c3ed67561751720b6f6f4b77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606337"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Správa záloh virtuálních počítačů Azure
 
@@ -137,7 +132,7 @@ Chcete-li spustit zálohování na vyžádání virtuálního počítače:
 
     ![Zálohování teď tlačítko.](./media/backup-azure-manage-vms/backup-now-check.png)
 
-    Úloha zálohování vytváří bod obnovení. Rozsah uchování bodu obnovení je stejný jako rozsah uchování určená v zásadách, které jsou spojené s virtuálním počítačem. Chcete-li sledovat průběh úlohy v řídícím panelu trezoru, klikněte na tlačítko **úlohy zálohování** dlaždici.  
+    Úloha zálohování vytvoří bod obnovení. Rozsah uchování bodu obnovení je stejný jako rozsah uchování určená v zásadách, které jsou spojené s virtuálním počítačem. Chcete-li sledovat průběh úlohy v řídícím panelu trezoru, klikněte na tlačítko **úlohy zálohování** dlaždici.  
 
 ## <a name="stop-protecting-virtual-machines"></a>Zastavte ochranu virtuálních počítačů
 Pokud si zvolíte zastavení ochrany virtuálního počítače, zobrazí se výzva, pokud chcete zachovat body obnovení. Existují dva způsoby, jak zastavit ochranu virtuálních počítačů:
@@ -192,8 +187,8 @@ Chcete-li obnovit ochranu pro virtuální počítač
 
     ![Úspěšně chráněných virtuálních počítačů](./media/backup-azure-manage-vms/success-message.png)
 
-## <a name="delete-backup-data"></a>Odstranění dat zálohy
-Můžete odstranit záložní data související s virtuálním počítačem během **zastavení zálohování** úlohy, nebo kdykoli po zálohování dokončení úlohy. Může být i výhodné počkejte dny nebo týdny před odstraněním bodů obnovení. Na rozdíl od bodů obnovení, obnovení při odstraňování zálohovaná data, nemůžete vybrat konkrétní obnovení body odstranit. Pokud zvolíte možnost odstranit záložní data, odstraňte všechny body obnovení, které jsou přidružené k položce.
+## <a name="delete-backup-data"></a>Odstranění zálohovaných dat
+Můžete odstranit záložní data související s virtuálním počítačem během **zastavení zálohování** úlohy, nebo kdykoli po zálohování dokončení úlohy. Před odstraněním bodů obnovení dokonce může být užitečné několik dnů nebo týdnů počkat. Na rozdíl od obnovování bodů obnovení nemůžete při odstraňování zálohovaných dat zvolit konkrétní body obnovení, které se mají odstranit. Pokud se rozhodnete odstranit zálohovaná data, odstraníte všechny body obnovení přidružené k příslušné položce.
 
 Následující postup předpokládá, úlohy zálohování pro virtuální počítač byla zastavena nebo zakázána. Jakmile úloha zálohování je zakázána, **obnovit zálohu** a **odstranění zálohování** jsou k dispozici v řídícím panelu trezoru položku Možnosti.
 
@@ -218,5 +213,5 @@ Odstranit záložní data na virtuálním počítači s *zálohy zakázané*:
 
     Oznámení umožňuje vědět, že byl odstraněn zálohovaná data.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o opětovné vytvoření virtuálního počítače z bodu obnovení, podívejte se na [obnovení virtuálních počítačů Azure](backup-azure-arm-restore-vms.md). Pokud potřebujete informace o ochraně virtuálních počítačů, přečtěte si [první pohled: zálohování virtuálních počítačů do trezoru služeb zotavení](backup-azure-vms-first-look-arm.md). Informace o sledování událostí najdete v tématu [monitorování výstrahy pro virtuální počítač Azure zálohy](backup-azure-monitor-vms.md).

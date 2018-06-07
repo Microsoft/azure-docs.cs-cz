@@ -1,23 +1,19 @@
 ---
-title: "Zálohujte servery VMware s serveru Azure Backup | Microsoft Docs"
-description: "Používejte Azure Backup Server pro zálohování servery VMware vCenter/ESXi do Azure nebo disk. Tento článek obsahuje krok za krokem instrukce pro zálohování (nebo ochrany) = úlohy VMware."
+title: Zálohování serverů VMware s serveru Azure Backup
+description: Používejte Azure Backup Server pro zálohování servery VMware vCenter/ESXi do Azure nebo disk. Tento článek obsahuje krok za krokem instrukce pro zálohování (nebo ochrany) = úlohy VMware.
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-ms.assetid: 6b131caf-de85-4eba-b8e6-d8a04545cd9d
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 07/24/2017
-ms.author: markgal;
-ms.openlocfilehash: ad331dffb7c31d12290f4223967c568e4535fe3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 9cf3c9d5df11e19045cd47a41d7ab9ac93bdf700
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605419"
 ---
 # <a name="back-up-a-vmware-server-to-azure"></a>Zálohovat VMware server do Azure
 
@@ -139,7 +135,7 @@ Přidání role serveru vCenter a jeho oprávnění pro správce a zálohování
 
 2. V **správy** vyberte **role**a potom v **role** panelu klikněte na ikonu Přidat role (+ symbol).
 
-    ![Přidání role](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
+    ![Přidat roli](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
     **Vytvořit roli** zobrazí se dialogové okno.
 
@@ -380,7 +376,7 @@ Pokud nepoužijete System Center Data Protection Manager nebo serveru Azure Back
 
     ![Souhrn nastavení a člena skupiny ochrany](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud používáte Azure Backup Server k ochraně úloh VMware, může zajímat pomocí serveru Azure Backup k ochraně [Microsoft Exchange server](./backup-azure-exchange-mabs.md), [Microsoft SharePoint farmy](./backup-azure-backup-sharepoint-mabs.md), nebo [databáze systému SQL Server](./backup-azure-sql-mabs.md).
 
 Podrobnosti o problémech s zaregistrováním agenta naleznete v tématu Konfigurace skupiny ochrany nebo zálohování úloh, [řešení potíží s Azure Backup Server](./backup-azure-mabs-troubleshoot.md).

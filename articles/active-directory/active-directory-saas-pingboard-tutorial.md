@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 46d00fdcc535b85754eb2f805d2844e1526f1f86
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 25777001907f705700d1c90e238d19a20242b50d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Kurz: Azure Active Directory integrace s Pingboard
 
@@ -65,7 +66,7 @@ Při konfiguraci integrace Pingboard do služby Azure AD musíte přidat do sezn
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![Podnikové aplikace][2]
-    
+
 3. Klikněte na tlačítko **přidat** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -101,7 +102,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2.  Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_samlbase.png)
 
 3. Na **Pingboard domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
@@ -118,12 +119,12 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
      V **přihlašovací adresa URL** textovému poli, zadejte adresu URL, pomocí následujícího vzorce: `https://<sub-domain>.pingboard.com/sign_in`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Upozorňujeme, že tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Pingboard klienta](https://support.pingboard.com/) k získání těchto hodnot.
 
 5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor XML ve vašem počítači.
 
-    ![Soubor xml s metadaty Pingboard](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_certificate.png) 
+    ![Soubor xml s metadaty Pingboard](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_certificate.png)
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
@@ -135,7 +136,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
 
-9.  Na **integrace** stránky, vyhledejte **"Azure Active Directory"** dlaždici a klikněte na něj.
+9. Na **integrace** stránky, vyhledejte **"Azure Active Directory"** dlaždici a klikněte na něj.
 
     ![Pingboard Single Sign-On integrace](./media/active-directory-saas-pingboard-tutorial/Pingboard_aad.png)
 
@@ -162,16 +163,16 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     ![Tlačítko Azure Active Directory](./media/active-directory-saas-pingboard-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-pingboard-tutorial/create_aaduser_02.png) 
+
+    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-pingboard-tutorial/create_aaduser_02.png)
 
 3. V horní části okna klikněte na položku **přidat** otevřete **uživatele** dialogové okno.
- 
+
     ![Tlačítko Přidat](./media/active-directory-saas-pingboard-tutorial/create_aaduser_03.png) 
 
 4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
- 
-    ![Dialogové okno uživatele](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png) 
+
+    ![Dialogové okno uživatele](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png)
 
     a. V **název** textovému poli, typ **BrittaSimon**.
 
@@ -180,12 +181,12 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-pingboard-test-user"></a>Vytvoření zkušebního uživatele Pingboard
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do Pingboard, musí být zřízená do Pingboard. Pro Pingboard zřizování je ruční úloha.
+Cílem této části je vytvoření uživatele v Pingboard nazývá Britta Simon. Pingboard podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-pingboard-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
 
-**K poskytnutí uživatelského účtu, proveďte následující kroky:**
+**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
 1. Přihlaste se k serveru vaší společnosti Pingboard jako správce.
 
@@ -204,13 +205,13 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Pingboard, musí b�
     c. V **funkce** textovému poli, zadejte název úlohy Britta Simon.
 
     d. V **umístění** rozevíracího seznamu, vyberte umístění Britta Simon.
-    
-    e. Klikněte na tlačítko **Add** (Přidat).   
+
+    e. Klikněte na tlačítko **Add** (Přidat).
 
 4. Obrazovka s potvrzením se dodává potvrďte přidání uživatele.
-    
+
     ![Potvrďte](./media/active-directory-saas-pingboard-tutorial/create_testuser_confirm.png)
-        
+
     > [!NOTE]
     > Držitel účtu Azure Active Directory obdrží e-mailu a dodržuje odkaz potvrďte svůj účet, pak se změní na aktivní.
 
@@ -255,8 +256,7 @@ Když kliknete na dlaždici Pingboard na přístupovém panelu, jste měli získ
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
-
+* [Konfiguraci zřizování uživatelů](active-directory-saas-pingboard-provisioning-tutorial.md)
 
 <!--Image references-->
 

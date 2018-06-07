@@ -1,24 +1,26 @@
 ---
-title: "Služba Azure AD Domain Services – zkontrolujte stav vaší spravované domény | Microsoft Docs"
-description: "Zkontrolujte stav vaší spravované domény pomocí stránky stavu na portálu Azure."
+title: Služba Azure AD Domain Services – zkontrolujte stav vaší spravované domény | Microsoft Docs
+description: Zkontrolujte stav vaší spravované domény pomocí stránky stavu na portálu Azure.
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9421ace7abf1f3d45b1f8cd810067d79faa92ec
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5be6a2c36dfec8c8543f6dcfe252ce01b4c28e50
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587234"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Zkontrolujte stav spravované doméně služby Azure AD Domain Services
 
@@ -41,7 +43,7 @@ Tento stav v horní části stránky napravo od vaší stavu označuje, celkový
 
 | Status | Ikona | Vysvětlení |
 | --- | :----: | --- |
-| Běží | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | Spravované domény běží bez problémů a nemá žádné výstrahy kritický nebo upozornění. Tato doména je pravděpodobně informační výstrahy. |
+| Spuštěno | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | Spravované domény běží bez problémů a nemá žádné výstrahy kritický nebo upozornění. Tato doména je pravděpodobně informační výstrahy. |
 | Vyžaduje pozornost (upozornění) | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | Neexistují žádné kritické výstrahy na vaší spravované domény, ale existují jedné nebo několika výstrah upozornění, které je třeba vzít v úvahu. |
 | Vyžaduje pozornost (kritická) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | Na vaší spravované domény je jeden nebo více kritické výstrahy. Můžete mít rovněž varování nebo informační výstrahy. |
 | Nasazování | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | Vaše doména je právě nasazované. |

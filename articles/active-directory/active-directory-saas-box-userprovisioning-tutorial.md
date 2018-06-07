@@ -13,23 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: d9c615e3d0f144080a02f6f8d95603ecac4341f0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0a6386f9d0207ab71c490801ea995e504825e0c8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589310"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro zřizování automatické uživatelů
 
 Cílem tohoto kurzu je zobrazit kroky že nutné k provedení v poli a Azure AD automaticky zřizovat a deaktivace zřízení uživatelských účtů ze služby Azure AD pole.
 
+> [!NOTE]
+> Tento kurz popisuje spojnice postavená na službu zřizování uživatele Azure AD. Důležité informace o jaké této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](./active-directory-saas-app-provisioning.md).
+
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Konfigurace integrace Azure AD s poli, potřebujete následující položky:
 
-*   Klienta služby Azure Active directory.
-*   Pole jednotného přihlašování povolené předplatné.
-*   Uživatelský účet v poli s oprávněními správce týmu.
+- Klient služby Azure AD
+- Pole obchodní plán nebo lepší
+
+> [!NOTE]
+> Při testování kroky v tomto kurzu, doporučujeme, abyste provedli *není* použít provozním prostředí.
+
+Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+
+- Nepoužívejte provozním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="assigning-users-to-box"></a>Přiřazování uživatelů do pole 
 

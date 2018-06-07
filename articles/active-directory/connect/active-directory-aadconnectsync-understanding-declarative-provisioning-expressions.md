@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 797c0949aceea415652a72df5ee23ef9888ab975
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 12d7e997d82c0ac15d1c81b92491e0a16f4c214e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593669"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizace Azure AD Connect: Principy výrazů deklarativní zřizování
 Synchronizace Azure AD Connect je založený na deklarativní zřizování poprvé dostupné ve verzi produktu Forefront Identity Manager 2010. Umožňuje implementovat obchodní logiku integrace kompletní identity bez nutnosti napsat zkompilovaný kód.
@@ -38,7 +40,7 @@ Atributy jsou silného typu. Funkce přijímá pouze atributy správného typu. 
 * Logické hodnoty jsou vyjádřeny pomocí konstant: True, False.
 * Předdefinované konstanty a literály jsou vyjádřeny se pouze jejich název: NULL, Line FEED, IgnoreThisFlow
 
-### <a name="functions"></a>Funkce
+### <a name="functions"></a>Functions
 Chcete-li povolit možnost transformace hodnot atributů deklarativní zřizování používá mnoho funkcí. Tyto funkce mohou být vnořené, takže výsledek z jednoho funkce je předán v jiné funkci.
 
 `Function1(Function2(Function3()))`

@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 1cfd85eda9ef59a2265a991cabe5f1b6ee83563d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fb4f43dd85f887fa051aaa8050ddf6b37313e376
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594546"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Vynutit zásady pojmenování pro skupiny Office 365 ve službě Azure Active Directory (preview)
 
@@ -189,7 +190,7 @@ Synchronizaci dat školní (SDS) | Skupiny vytvořené prostřednictvím SDS v s
 Správce zákazníka aplikace Outlook (OCM) | Správce zákazníka aplikace Outlook je kompatibilní s pojmenování zásady, které se automaticky použije na skupiny vytvořené v aplikaci Outlook zákazníka správce. Pokud je zjištěn vlastní blokované aplikace word, vytvořit skupinu v OCM je blokovaný a uživatel je blokováno v aplikaci OCM.
 Učebna aplikace | Skupiny vytvořené v aplikaci učebny splňovat pravidla pro názvy, ale není automaticky použita pravidla pro názvy a pojmenování zásad preview není zobrazen uživatelům při zadávání názvu skupiny učebny. Uživatelé musí zadejte název skupiny vynucené učebny s předpony a přípony. Pokud ne, učebny skupiny vytvořte nebo upravte operace selže s chybami.
 Power BI | Zásady pojmenování vyhovují pracovních prostorů Power BI.    
-Yammer | Yammer připojené skupiny nevynucují nakonfigurovaná pravidla pro názvy. Pro organizace s názvy zásad povolená vytvoří Yammer starší verze Yammer skupin, které nejsou připojené k Office 365 pro skupiny, které nebudou vyhovovat pravidla pro názvy.
+Yammer | Když uživatel přihlášení k Yammeru pomocí svého účtu Azure Active Directory vytvoří skupinu nebo upraví název skupiny, je název skupiny dodržovat pojmenování zásad. To platí jak pro Office 365 připojené skupiny a všech ostatních skupin Yammer.<br>Pokud připojené skupiny pro Office 365 byl vytvořen dříve, než pravidla pro názvy je na místě, nebude podle názvu skupiny automaticky pojmenování zásady. Pokud uživatel upravuje název skupiny, se zobrazí výzva k přidání předponu a příponu.
 StaffHub  | Týmy StaffHub nepostupujte podle pravidla pro názvy, ale nemá podkladové skupiny Office 365. Název týmu StaffHub nevztahuje předpony a přípony a nekontroluje vlastní blokované slova. Ale StaffHub použít předpony a přípony a odebere blokované slova z podkladové skupiny Office 365.
 Prostředí PowerShell systému Exchange | Zásady pojmenování vyhovují rutiny Exchange PowerShell. Uživatelé obdrží odpovídající chybové zprávy se navrhované předpony a přípony a pro vlastní blokované slova, pokud nemáte postupují pravidla pro názvy v název skupiny a skupiny alias (mailNickname).
 Rutiny služby Azure Active Directory PowerShell. | Rutiny služby Azure Active Directory PowerShell jsou kompatibilní s názvy zásad. Uživatelé obdrží odpovídající chybové zprávy se navrhované předpony a přípony a pro vlastní blokované slova, pokud nemáte postupují zásady vytváření názvů v názvech skupin a alias skupiny.

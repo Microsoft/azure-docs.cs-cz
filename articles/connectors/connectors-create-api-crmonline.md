@@ -1,25 +1,22 @@
 ---
-title: "Připojit k aplikaci Dynamics 365 (online) z Azure Logic Apps | Microsoft Docs"
-description: "Vytvořit logiku aplikace pracovní postupy, které spravují Dynamics 365 entity (online) prostřednictvím rozhraní API poskytované konektor Dynamics 365"
-services: logic-apps
-cloud: Azure Stack
+title: Připojení k Dynamics 365 - Azure Logic Apps | Microsoft Docs
+description: Vytvořit a spravovat záznamy s Dynamics 365 (online) rozhraní API REST a Azure Logic Apps
 author: Mattp123
-manager: anneta
-documentationcenter: 
-tags: connectors
-ms.assetid: 0dc2abef-7d2c-4a2d-87ca-fad21367d135
-ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+manager: cfowler
+ms.author: matp
 ms.date: 02/10/2017
-ms.author: matp; LADocs
-ms.openlocfilehash: d35647921ff540167a3a591fb489d3bab031a5c1
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 015f587257603330eab9840edf661ba9675f4ba8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609891"
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Připojit k aplikaci Dynamics 365 z pracovní postupy aplikace logiky
 

@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: Připojení virtuálního počítače Windows serveru ke spravované doméně | Microsoft Docs"
-description: "Připojení k virtuálnímu počítači s Windows serverem ve službě Azure AD DS"
+title: 'Azure Active Directory Domain Services: Připojení virtuálního počítače Windows serveru ke spravované doméně | Microsoft Docs'
+description: Připojení k virtuálnímu počítači s Windows serverem ve službě Azure AD DS
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: 7b5c23f1f4b6180d8b664f1371ccfd8a075572e6
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: dadc20cdee68730fa1d81dd86b3ffa0b0022a5b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34586949"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Windows Server ke spravované doméně
 Tento článek ukazuje, jak nasazení virtuálního počítače s Windows serverem pomocí portálu Azure. Potom ukazuje, jak připojit virtuální počítač k spravované doméně služby Azure Active Directory Domain Services (Azure AD DS).
@@ -103,7 +105,7 @@ Pokud chcete připojit k Azure AD DS spravované domény virtuálního počíta�
 
 7. Můžete zadat přihlašovací údaje v některém z následujících způsobů:
 
-   * **Formát UPN**: (doporučeno) zadejte hlavní název uživatele (UPN) příponu pro uživatelský účet, jak nakonfigurovat ve službě Azure AD. V tomto příkladu příponu UPN uživatele *bob* je  *bob@domainservicespreview.onmicrosoft.com* .
+   * **Formát UPN**: (doporučeno) zadejte hlavní název uživatele (UPN) příponu pro uživatelský účet, jak nakonfigurovat ve službě Azure AD. V tomto příkladu příponu UPN uživatele *bob* je *bob@domainservicespreview.onmicrosoft.com*.
 
    * **Formát SAMAccountName**: můžete zadat název účtu ve formátu SAMAccountName. V tomto příkladu uživatel *bob* by bylo potřeba zadejte *CONTOSO100\bob*.
 
@@ -142,7 +144,7 @@ Pokud máte problémy s přihlašovacími údaji a nelze k připojení k domén�
 
 * Ujistěte se, že máte [povolena synchronizace hesel](active-directory-ds-getting-started-password-sync.md) podle kroků uvedených v Průvodci získávání spuštěna.
 
-* Zkontrolujte, jestli hlavní název uživatele uživatele používají jako nakonfigurovaný v Azure AD (například  *bob@domainservicespreview.onmicrosoft.com* ) pro přihlášení.
+* Zkontrolujte, jestli hlavní název uživatele uživatele používají jako nakonfigurovaný v Azure AD (například *bob@domainservicespreview.onmicrosoft.com*) pro přihlášení.
 
 * Ujistěte se, že jste čekali dost dlouho kvůli synchronizaci hesel dokončeno, jak je uvedeno v Příručka Začínáme.
 

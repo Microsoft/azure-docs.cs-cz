@@ -5,21 +5,18 @@ keywords: konzistence typu případné azure cosmos databáze, azure, Microsoft 
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9e60a69e69f13dd6b8b34fafaa384f032f2ece11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611819"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Data přizpůsobitelné úrovně konzistence v Azure Cosmos DB
 Azure Cosmos DB slouží od základů až s globální distribuce v paměti pro každý datový model. Je navržen pro nabízejí předvídatelný s nízkou latencí záruky a více dobře definovaný volný konzistence modelů. V současné době Azure Cosmos DB poskytuje pět úrovně konzistence: silnou, s ohraničenou odolností, založenou relace, konzistentní Předpona a případnou. Typu ohraničenou prošlostí, relace, konzistentní předponu a případné jsou označovány jako "volný konzistence modely", jako poskytují menší konzistence než silné, což je většina vysoce konzistentní modelu, který je k dispozici. 
@@ -121,7 +118,7 @@ Ve výchozím nastavení pro uživatelem definované prostředky úroveň konzis
 | --- | --- | --- |
 | Konzistentní (výchozí) |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Vyberte, ze silného typu s ohraničenou prošlostí, relaci nebo případné |
 | Opožděné |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Nahodilé |
-| Žádný |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Nejde použít |
+| Žádný |Vyberte z typu silné a ohraničenou prošlostí, relace, konzistentní předpony nebo případné |Neuvedeno |
 
 Jako s požadavky na čtení, můžete snížit úroveň konzistence požadavku specifického dotazu v každé rozhraní API.
 

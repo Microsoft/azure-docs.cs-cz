@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 83558b9d8d47ac5e6bd15dd54db38125376d11bd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fd290420c2c755e07f6949750e3a88bcb64682f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656903"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuální sítě
 
@@ -26,7 +27,7 @@ Vytvoření virtuální sítě a experimentovat s je dostatečně snadno, ale pr
 
 ## <a name="naming"></a>Pojmenování
 
-Všechny prostředky Azure mít název. Název musí být jedinečný v rámci oboru, který se mohou lišit pro každý typ prostředku. Název virtuální sítě, například musí být jedinečný v rámci [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale mohou být duplicitní v rámci [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) nebo Azure [oblast](https://azure.microsoft.com/regions/#services). Definování zásady vytváření názvů, který můžete použít konzistentně při pojmenování prostředků je užitečné, pokud správa několika síťovým prostředkům v čase. Návrhy, najdete v části [konvence vytváření názvů](/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Všechny prostředky Azure mít název. Název musí být jedinečný v rámci oboru, který se mohou lišit pro každý typ prostředku. Název virtuální sítě, například musí být jedinečný v rámci [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), ale mohou být duplicitní v rámci [předplatné](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) nebo Azure [oblast](https://azure.microsoft.com/regions/#services). Definování zásady vytváření názvů, který můžete použít konzistentně při pojmenování prostředků je užitečné, pokud správa několika síťovým prostředkům v čase. Návrhy, najdete v části [konvence vytváření názvů](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
 ## <a name="regions"></a>Oblasti
 
@@ -38,7 +39,7 @@ Všechny prostředky Azure jsou vytvořeny do oblasti Azure a předplatné. Pros
 
 ## <a name="subscriptions"></a>Předplatná
 
-Můžete nasadit tolik virtuální sítě podle potřeby v rámci každé předplatné, až [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají třeba různých předplatných pro různá oddělení. Další informace a pokyny ohledně odběry, najdete v části [zásad správného řízení předplatné](../azure-resource-manager/resource-manager-subscription-governance.md?toc=%2fazure%2fvirtual-network%2ftoc.json#define-your-hierarchy).
+Můžete nasadit tolik virtuální sítě podle potřeby v rámci každé předplatné, až [limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Některé organizace mají třeba různých předplatných pro různá oddělení. Další informace a pokyny ohledně odběry, najdete v části [zásad správného řízení předplatné](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 
 ## <a name="segmentation"></a>Segmentace
 
@@ -81,7 +82,7 @@ Můžete zobrazit vzorové návrhy pro implementaci DMZ mezi Azure a internet po
 ### <a name="traffic-routing"></a>směrování provozu
 
 Azure vytvoří několik výchozích tras odchozího provozu z podsítě. Můžete přepsat výchozí Azure směrování vytvořením směrovací tabulku a jeho přidružením k podsíti. Běžných příčin pro přepsání Azure výchozí směrování jsou:
-- Protože chcete, aby provoz mezi podsítěmi, chcete-li procházet skrz hodnocení chyb zabezpečení. Další informace o tom, jak [konfiguraci směrovací tabulky vynutit přenos prostřednictvím hodnocení chyb zabezpečení](tutorial-create-route-table-portal.md)
+- Protože chcete, aby provoz mezi podsítěmi, chcete-li procházet skrz hodnocení chyb zabezpečení. Další informace o tom, jak [konfiguraci směrovací tabulky vynutit přenos prostřednictvím hodnocení chyb zabezpečení](tutorial-create-route-table-portal.md).
 - Vzhledem k tomu, že budete chtít vynutit veškerý provoz vázaný na internet prostřednictvím hodnocení chyb zabezpečení, nebo na místní, prostřednictvím služby Azure VPN gateway. Vynucení internetové přenosy místní pro kontroly a protokolování se často označuje jako vynuceného tunelování. Další informace o tom, jak nakonfigurovat [vynuceného tunelování](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
 
 Pokud potřebujete implementovat vlastní směrování, doporučuje se, že jsou Seznamte se s [směrování v Azure](virtual-networks-udr-overview.md).
@@ -92,7 +93,7 @@ Virtuální síť můžete připojit k jiné virtuální sítě pomocí virtuál
 
 ### <a name="peering"></a>Partnerské vztahy
 
-Při použití [partnerský vztah virtuální sítě](virtual-network-peering-overview.md), virtuální sítě může být ve stejném, nebo jiné, podporované oblasti Azure. Virtuální sítě může být ve stejné nebo různých předplatných Azure, tak dlouho, dokud oba odběry jsou přiřazeny k stejné klienta Azure Active Directory. Před vytvořením partnerský vztah, se doporučuje, seznamte se se všemi partnerského vztahu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Šířku pásma mezi prostředky v peered virtuální sítě je stejný, jako kdyby byly prostředky ve stejné virtuální síti.
+Při použití [partnerský vztah virtuální sítě](virtual-network-peering-overview.md), virtuální sítě může být ve stejném, nebo jiné, podporované oblasti Azure. Virtuální sítě může být ve stejné nebo různých předplatných Azure, tak dlouho, dokud oba odběry jsou přiřazeny k stejné klienta Azure Active Directory. Před vytvořením partnerský vztah, se doporučuje, seznamte se se všemi partnerského vztahu [požadavky a omezení](virtual-network-manage-peering.md#requirements-and-constraints). Šířku pásma mezi prostředky ve virtuálních sítích peered ve stejné oblasti je stejný, jako kdyby byly prostředky ve stejné virtuální síti.
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 
@@ -106,10 +107,14 @@ Prostředky v jedné virtuální síti nelze přeložit názvy prostředků v pe
 
 ## <a name="permissions"></a>Oprávnění
 
-Využívá Azure [řízení přístupu podle rolí](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Jsou přiřazeny oprávnění [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-hierarchy-and-access-inheritance) v následující hierarchie: předplatné, skupinu pro správu, skupinu prostředků a jednotlivých prostředků. Další informace o hierarchii, najdete v části [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro práci s virtuálních sítí Azure a všechny jejich souvisejících funkcí, jako je vytvoření partnerského vztahu, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete přiřadit členy vaší organizace integrované [vlastníka](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Přispěvatel](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor), nebo [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role a potom přiřadit roli tak, aby je vhodný rozsah. Pokud chcete přiřadit specifické oprávnění pro podmnožinu funkcí virtuální sítě, vytvořte [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřadit konkrétní oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [ podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [síťových rozhraní](virtual-network-network-interface.md), [partnerský vztah](virtual-network-manage-peering.md#permissions), [skupin zabezpečení sítě a aplikace](manage-network-security-group.md#permissions), nebo [směrovacích tabulek](manage-route-table.md#permissions) k roli.
+Využívá Azure [řízení přístupu podle rolí](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Jsou přiřazeny oprávnění [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchie: předplatné, skupinu pro správu, skupinu prostředků a jednotlivých prostředků. Další informace o hierarchii, najdete v části [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro práci s virtuálních sítí Azure a všechny jejich souvisejících funkcí, jako je vytvoření partnerského vztahu, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete přiřadit členy vaší organizace integrované [vlastníka](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Přispěvatel](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor), nebo [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) role a potom přiřadit roli tak, aby je vhodný rozsah. Pokud chcete přiřadit specifické oprávnění pro podmnožinu funkcí virtuální sítě, vytvořte [vlastní role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřadit konkrétní oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [ podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [síťových rozhraní](virtual-network-network-interface.md#permissions), [partnerský vztah](virtual-network-manage-peering.md#permissions), [skupin zabezpečení sítě a aplikace](manage-network-security-group.md#permissions), nebo [směrovacích tabulek](manage-route-table.md#permissions) k roli.
 
 ## <a name="policy"></a>Zásada
 
-Azure zásady umožňuje vytvořit, přiřadit a spravovat definice zásady. Definice zásad vynucovat různá pravidla a efekty přes vaše prostředky, takže prostředky zůstanou kompatibilní s vaší organizační standardy a smlouvy o úrovni služeb. Azure zásad běží zkušební verzi vašich prostředků hledání prostředků, které nejsou kompatibilní s definice zásady, které máte. Například může mít zásadu, která umožňuje vytváření virtuálních sítí v jenom určité skupiny zdrojů. Jiné zásady může vyžadovat, že všechny podsítě má skupinu zabezpečení sítě spojenou k němu. Zásady jsou proto vyhodnocována při vytváření nebo aktualizaci prostředky.
+Azure zásady umožňuje vytvořit, přiřadit a spravovat definice zásady. Definice zásad vynutit různá pravidla přes vaše prostředky, takže prostředky zůstanou kompatibilní s vaší organizační standardy a smlouvy o úrovni služeb. Azure zásad běží zkušební verzi vašich prostředků hledání prostředků, které nejsou kompatibilní s definice zásady, které máte. Můžete například definovat a použít zásadu, která umožňuje vytváření virtuálních sítí v jenom určité skupiny zdrojů nebo oblasti. Jiné zásady může vyžadovat, že všechny podsítě má skupinu zabezpečení sítě spojenou k němu. Zásady jsou proto vyhodnocována při vytváření nebo aktualizaci prostředky.
 
 Zásady platí pro následující hierarchie: předplatné, skupinu pro správu a skupina prostředků. Další informace o [Azure zásad](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo nasadit některé virtuální sítě [šablony zásad](policy-samples.md) ukázky.
+
+## <a name="next-steps"></a>Další postup
+
+Další informace o všechny úlohy, nastavení a možnosti [virtuální sítě](manage-virtual-network.md), [podsítě a služby koncový bod](virtual-network-manage-subnet.md), [síťové rozhraní](virtual-network-network-interface.md), [partnerského vztahu](virtual-network-manage-peering.md), [skupinu zabezpečení sítě a aplikace](manage-network-security-group.md), nebo [směrovací tabulku](manage-route-table.md).

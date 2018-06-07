@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7fa8654e413ac337994d35afdce7bd3478127f64
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 88da943224ce9df22a3d3befcb8fae6113986862
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588569"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Proxy aplikace služby Azure Active Directory a Tableau 
 
@@ -43,7 +44,7 @@ V e-mailu:
 -   Povolení Proxy aplikace použít pro Tableau jako předmět
 -   Zahrnout vaše ID klienta v textu    
 
-Až budete připraveni k používání aplikace získáte potvrzení. Obvykle to trvá asi týden. Můžete však dokončit konfiguraci při čekání potvrzení.
+Až budete připraveni k používání aplikace získáte potvrzení. Při čekání potvrzení můžete dokončit konfiguraci.
 
 
  

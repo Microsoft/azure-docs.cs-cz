@@ -1,45 +1,57 @@
 ---
-title: "Azure Active Directory Domain Services: Začínáme | Microsoft Docs"
-description: "Povolit Azure Active Directory Domain Services pomocí portálu Azure"
+title: 'Azure Active Directory Domain Services: Začínáme | Microsoft Docs'
+description: Povolit Azure Active Directory Domain Services pomocí portálu Azure
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ab2897eefd1c394ba0b10ba6fce3e11af4a0b2a5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587956"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure
 Tento článek ukazuje, jak povolit Azure Active Directory Domain Services (Azure AD DS) pomocí portálu Azure.
 
+## <a name="before-you-begin"></a>Než začnete
+K dokončení úlohy uvedené v tomto článku, budete potřebovat:
+
+* Platná **předplatné**.
+* **Adresář Azure AD** – buď synchronizovány s místní adresář nebo výhradně cloudový adresář.
+* **Předplatného Azure musí být přidruženy k adresáři služby Azure AD**.
+* Je třeba **globálního správce** oprávnění v adresáři služby Azure AD pro povolení služby Azure AD Domain Services.
+
+
+## <a name="enable-azure-ad-domain-services"></a>Povolení služby Azure AD Domain Services
 Ke spuštění **povolit Azure AD Domain Services** průvodce proveďte následující kroky:
 
 1. Přejděte na [portál Azure](https://portal.azure.com).
-2. V levém podokně klikněte na **vytvořit prostředek**.
+2. V levém podokně klikněte na **Vytvořit prostředek**.
 3. V **nový** zadejte **Domain Services** do panelu vyhledávání.
 
     ![Vyhledání služeb domény](./media/getting-started/search-domain-services.png)
 
 4. Kliknutím vyberte **Azure AD Domain Services** ze seznamu návrhy vyhledávání. Na **Azure AD Domain Services** klikněte na tlačítko **vytvořit** tlačítko.
 
-    ![Domain services view](./media/getting-started/domain-services-blade.png)
+    ![Zobrazení služeb domény](./media/getting-started/domain-services-blade.png)
 
 5. **Povolit Azure AD Domain Services** se spustí průvodce.
 
 
 ## <a name="task-1-configure-basic-settings"></a>Úloha 1: nakonfigurovali základní nastavení
-V **Základy** stránku průvodce, můžete zadat název domény DNS pro spravovanou doménu. Můžete také zvolit skupinu prostředků a umístění Azure, ke které by měly být nasazeny spravované doméně.
+V **Základy** stránku průvodce, zadejte název domény DNS pro spravovanou doménu. Můžete také zvolit skupinu prostředků a umístění Azure, ke které by měly být nasazeny spravované doméně.
 
 ![Základní informace o konfiguraci](./media/getting-started/domain-services-blade-basics.png)
 
@@ -59,11 +71,11 @@ V **Základy** stránku průvodce, můžete zadat název domény DNS pro spravov
 
 2. Vyberte Azure **předplatné** ve kterém chcete vytvořit spravované domény.
 
-3. Vyberte **skupiny prostředků** k spravované doméně by měly patřit. Můžete buď **vytvořit nový** nebo **použít existující** možnosti vybrat skupinu prostředků.
+3. Vyberte **skupiny prostředků** k spravované doméně by měly patřit. Vyberte buď **vytvořit nový** nebo **použít existující** možnosti vybrat skupinu prostředků.
 
 4. Zvolte Azure **umístění** ve které má být vytvořena spravované domény. Na **sítě** stránky v průvodci zobrazí pouze virtuální sítě, které patří do umístění, které jste vybrali.
 
-5. Až budete hotovi, klikněte na tlačítko **OK** přesunout na **sítě** stránce průvodce.
+5. Klikněte na tlačítko **OK** přesunout na **sítě** stránce průvodce.
 
 
 ## <a name="next-step"></a>Další krok

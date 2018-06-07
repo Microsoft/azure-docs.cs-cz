@@ -1,25 +1,22 @@
 ---
-title: Naučte se používat konektor FTP v aplikace logiky | Microsoft Docs
-description: Vytvoření aplikace logiky službou Azure App service. Připojte k serveru FTP spravovat soubory. Můžete provádět různé akce, jako je například nahrávání, aktualizovat, získání a odstranit soubory v serveru FTP.
-services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: d83c55fe-eb59-4b7b-a5ec-afac5c772616
-ms.service: logic-apps
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+title: Připojení k serveru FTP - Azure Logic Apps | Microsoft Docs
+description: Vytváření, monitorování a správa souborů na serveru FTP službou Azure Logic Apps
+author: ecfan
+manager: cfowler
+ms.author: estfan
 ms.date: 07/22/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 7719e0e90df3a384e870e2e839cb77a27d95ada8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 3bb8c750846ee14331c749aeece4315d5c16d411
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34610561"
 ---
 # <a name="get-started-with-the-ftp-connector"></a>Začínáme s konektor FTP
 Pomocí konektoru serveru FTP monitorovat, spravovat a vytvoření souborů na serveru FTP. 

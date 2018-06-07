@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 6ab0e36fc0b4bd3f04d75499b6dfe734a9f72d4d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8eb629396629a92503907439a64cca9d70747010
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594110"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Publikování aplikací pomocí proxy aplikace služby Azure AD
 
@@ -29,6 +30,9 @@ Tento článek vás provede kroky k publikování aplikace místně pomocí Prox
 
 Pokud jste ještě Proxy aplikace, další informace o této funkci s článkem [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md).
 
+## <a name="before-you-begin"></a>Než začnete
+
+Tento článek předpokládá je již nainstalován a zaregistrován konektor. Pokud stále potřebujete proveďte tyto kroky, přečtěte si [začít pracovat s Proxy aplikace a nainstalujte konektor](application-proxy-enable.md).
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>Publikování aplikace místně pro vzdálený přístup
 

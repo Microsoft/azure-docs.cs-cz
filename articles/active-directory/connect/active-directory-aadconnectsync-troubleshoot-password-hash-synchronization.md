@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bcf266813476c682d47bfd483db77f5d8b73837a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7cc86f56f7f68c70d66407bd44e6368f31f202d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593781"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Řešení potíží s synchronizaci hodnoty hash hesla s synchronizace Azure AD Connect
 Toto téma popisuje kroky pro řešení potíží s synchronizaci hodnoty hash hesla. Pokud hesla se nesynchronizují podle očekávání, může být buď pro podmnožinu uživatelů, nebo pro všechny uživatele.
@@ -324,16 +326,16 @@ Snadno můžete řešit problémy s synchronizací hodnoty hash hesla kontrolou 
 ### <a name="password-sync-log"></a>Protokol synchronizace hesla
 Ve sloupci stav může mít následující hodnoty:
 
-| Stav | Popis |
+| Status | Popis |
 | --- | --- |
-| Úspěšné |Heslo se úspěšně synchronizoval. |
+| Úspěch |Heslo se úspěšně synchronizoval. |
 | FilteredByTarget |Heslo je nastaveno na **musí uživatel změnit heslo při příštím přihlášení**. Heslo nebyl synchronizován. |
 | NoTargetConnection |Žádný objekt v úložišti metaverse nebo v prostoru konektoru služby Azure AD. |
 | SourceConnectorNotPresent |Žádný objekt v prostoru konektoru místní služby Active Directory nalezen. |
 | TargetNotExportedToDirectory |Objekt v prostoru konektoru služby Azure AD nebyl dosud byla exportována. |
 | MigratedCheckDetailsForMoreInfo |Položka protokolu byl vytvořen ještě před sestavení 1.0.9125.0 a je zobrazen v stav starší verze. |
 | Chyba |Služba vrátila neznámou chybu. |
-| Unknown |Došlo k chybě při pokusu o zpracování dávky hodnot hash hesel.  |
+| Neznámé |Došlo k chybě při pokusu o zpracování dávky hodnot hash hesel.  |
 | MissingAttribute |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžaduje Azure AD Domain Services nejsou k dispozici. |
 | RetryRequestedByTarget |Konkrétní atributy (například hodnota hash protokolu Kerberos) vyžaduje Azure AD Domain Services nebyly k dispozici dříve. Je proveden pokus o opakovanou synchronizaci hodnoty hash hesla uživatele. |
 

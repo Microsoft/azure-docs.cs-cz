@@ -8,12 +8,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/19/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e6cf3bb4a691380a5fe22f5afdf749b40f15ef3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2f2b3514d30b3c728832ff074f6657a7c0b2710c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590867"
 ---
 # <a name="synchronizing-guest-user-accounts-that-use-email-for-sign-in-preview"></a>Synchronizace uživatelských účtů hosta, které používají e-mailu pro přihlášení (Preview)
 

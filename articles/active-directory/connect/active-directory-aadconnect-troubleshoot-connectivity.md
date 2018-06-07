@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1c8bbbde653ed8e927ab1550c32ae86a4dc2ffac
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2c12630deb45fd057537c42157d88fdeef22d18b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593009"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením službou Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak vyřešit problémy s připojením. Tyto problémy budou pravděpodobně se zobrazí v prostředí s proxy serverem.
@@ -44,7 +46,7 @@ Tyto adresy URL v následující tabulce je absolutní minimum, abyste mohli př
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Používá ke stahování seznamů CRL. |
 | \*.verisign.com |HTTP/80 |Používá ke stahování seznamů CRL. |
-| \*.entrust.com |HTTP/80 |Používá ke stahování seznamů CRL pro MFA. |
+| \*. entrust.com |HTTP/80 |Používá ke stahování seznamů CRL pro MFA. |
 | \*.windows.net |HTTPS/443 |Použít pro přihlášení k Azure AD. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Použít pro MFA. |
 | \*.microsoftonline.com |HTTPS/443 |Použít ke konfiguraci adresáře služby Azure AD a importu a exportu dat. |
@@ -114,7 +116,7 @@ Tady je výpis z protokolu skutečné proxy serveru a na stránku průvodce inst
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:32 |připojení: / /*bba800 ukotvení*. microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -124,13 +126,13 @@ Tady je výpis z protokolu skutečné proxy serveru a na stránku průvodce inst
 | Čas | zprostředkovatele identity |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:43 |připojení: / /*bba800 ukotvení*. microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://*bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:44 |připojení: / /*bba800 ukotvení*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://*bwsc02-relay*.microsoftonline.com:443 |
@@ -142,7 +144,7 @@ Tady je výpis z protokolu skutečné proxy serveru a na stránku průvodce inst
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
 | 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
+| 1/11/2016 8:49 |připojení: / /*bba800 ukotvení*. microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Chybám při ověřování
 Tato část obsahuje chyby, které mohou být vráceny z ADAL (knihovnu ověřování používá Azure AD Connect) a prostředí PowerShell. Chyba vysvětlené by vám pomůže v pochopit další kroky.

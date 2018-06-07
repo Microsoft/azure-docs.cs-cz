@@ -1,25 +1,20 @@
 ---
-title: Zálohování stavu systému Windows Azure | Microsoft Docs
+title: Zálohování stavu systému Windows Azure
 description: Postup zálohování stavu systému Windows Server nebo Windows počítačů do Azure.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
-manager: carmonm
-editor: ''
+manager: shivamg
 keywords: postup zálohování; zálohování souborů a složek
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 07/31/2017
-ms.author: saurse;markgal
-ms.openlocfilehash: b4847a4b2d8397530d8a6bb4bc4729a6966634f2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 05/23/2018
+ms.author: saurse
+ms.openlocfilehash: 61ee1ce7d5cc6dc2aa4b7a8b02c2e5ba77539725
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606065"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Zálohování stavu systému Windows v nasazení Resource Manager
 Tento článek vysvětluje, jak zálohovat stav systému Windows Server do Azure. Tento kurz vás má provést základy.
@@ -175,6 +170,11 @@ Prvotní záloha zahrnuje dvě úlohy:
 * Zálohování stavu systému poprvé
 
 K dokončení prvotního zálohování použijte agenta Microsoft Azure Recovery Services.
+
+> [!NOTE]
+> Můžete zálohovat stav systému v systému Windows Server 2008 R2 prostřednictvím systému Windows Server 2016. Stav systému zpět na klienta SKU až není podporována. Stav systému není zobrazen jako možnost pro klienty se systémem Windows nebo Windows Server 2008 SP2 počítače.
+>
+>
 
 ### <a name="to-schedule-the-backup-job"></a>Naplánování úlohy zálohování
 

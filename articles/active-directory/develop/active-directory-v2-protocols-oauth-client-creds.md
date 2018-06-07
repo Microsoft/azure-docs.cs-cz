@@ -17,11 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594274"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 Můžete použít [udělení pověření klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) zadaný v dokumentu RFC 6749, někdy označuje jako *s rameny dva OAuth*, přístup k prostředkům hostované webové pomocí identity aplikace. Tento typ udělení běžně se používá pro interakce serveru na server, které musí spustit na pozadí bez okamžitou interakce s uživatelem. Tyto typy aplikací, často se označují jako *démoni* nebo *účtům služby*.
@@ -62,7 +63,7 @@ Pomocí oprávnění aplikací ve vaší aplikaci, proveďte kroky, které se bu
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Žádostí o oprávnění v portálu pro registraci aplikace
 1. Přejděte do vaší aplikace v [portálu pro registraci aplikace](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), nebo [vytvořit aplikaci](active-directory-v2-app-registration.md), pokud jste tak ještě neučinili. Budete muset při vytváření aplikace použijte alespoň jeden tajný klíč aplikace.
-2. Vyhledejte **Mcrosoft grafu oprávnění** části a poté přidejte **oprávnění aplikací** vyžadující vaší aplikace.
+2. Vyhledejte **Microsoft Graph oprávnění** části a poté přidejte **oprávnění aplikací** vyžadující vaší aplikace.
 3. **Uložit** registrace aplikací.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Doporučená: Uživatele přihlaste do aplikace

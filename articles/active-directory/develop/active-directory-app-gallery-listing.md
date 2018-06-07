@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/09/2018
+ms.date: 05/14/2018
 ms.author: celested
+ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 22833851b85427dd8e9583f9c783fd55b9d31414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594076"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -33,20 +35,19 @@ Azure Active Directory (Azure AD) je služba cloudových identit. [Galerii aplik
 
 *  Zákazníci najít optimální jeden přihlašování prostředí.
 
-*  Konfigurace aplikace je jednoduchý a minimální. 
+*  Konfigurace aplikace je jednoduchý a minimální.
 
 *  Rychlé vyhledávání vyhledá aplikace v galerii.
 
-*  Uvolněte, Basic, a všechny Azure AD Premium zákazníci mohou využít této integrace. 
+*  Uvolněte, Basic, a všechny Azure AD Premium zákazníci mohou využít této integrace.
 
-*  Vzájemné zákazníkům získat podrobné konfigurace kurzu. 
+*  Vzájemné zákazníkům získat podrobné konfigurace kurzu.
 
 *  Zákazníci, kteří používají SCIM můžete použít zřizování pro stejnou aplikaci.
 
-
 ##  <a name="prerequisites-implement-federation-protocol"></a>Předpoklady: Protokol federační implementace
 
-Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve implementovat jednu z následujících protokolů federační podporovaný službou Azure AD. Přečtěte si podmínky a ujednání galerii aplikací Azure AD odsud. 
+Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve implementovat jednu z následujících protokolů federační podporovaný službou Azure AD a souhlasím s Azure AD application Gallery podmínky a ujednání. Přečtěte si podmínky a ujednání galerii aplikací Azure AD z [zde](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
 *   **OpenID Connect**: vytvoření víceklientské aplikace ve službě Azure AD a implementaci [framework souhlasu Azure AD](active-directory-integrating-applications.md#overview-of-the-consent-framework) pro vaši aplikaci. Poslat žádost o přihlášení k běžné koncový bod, tak, aby každý zákazník může poskytnout souhlas k aplikaci. Můžete řídit přístup uživatele na základě ID klienta a uživatele (UPN) přijaté v tokenu. Při integraci aplikace s Azure AD, postupujte podle [vývojáře pokyny](active-directory-authentication-scenarios.md).
 

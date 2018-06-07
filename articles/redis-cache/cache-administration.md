@@ -1,6 +1,6 @@
 ---
-title: "Postupy při správě Azure Redis Cache | Microsoft Docs"
-description: "Zjistěte, jak provádět úlohy správy, jako je například restartování a plán aktualizace pro Azure Redis Cache"
+title: Postupy při správě Azure Redis Cache | Microsoft Docs
+description: Zjistěte, jak provádět úlohy správy, jako je například restartování a plán aktualizace pro Azure Redis Cache
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 37e7395a26ead737009ad9e285e9f88372b25d26
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3b62b41fb7b9d7ff6f40191c48d00c1f0a941e48
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639448"
 ---
 # <a name="how-to-administer-azure-redis-cache"></a>Postupy při správě Azure Redis Cache
 Toto téma popisuje, jak provádět úlohy správy, například [restartování](#reboot) a [plánování aktualizace](#schedule-updates) pro vaše instance služby Azure Redis Cache.
@@ -79,7 +80,7 @@ Ano, pro prostředí PowerShell pokyny naleznete v části [restartování mezip
 ### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Jaké cenové úrovně můžete použít funkci restartování počítače?
 Restart je k dispozici pro všechny cenové úrovně.
 
-## <a name="schedule-updates"></a>Aktualizace plánu
+## <a name="schedule-updates"></a>Plán aktualizací
 **Naplánovat aktualizace** okno umožňuje určit údržby pro mezipaměť úrovně Premium. Pokud je zadána pro správu a údržbu, jsou všechny aktualizace serveru Redis provedené během této doby. 
 
 > [!NOTE] 
@@ -87,14 +88,12 @@ Restart je k dispozici pro všechny cenové úrovně.
 > 
 > 
 
-![Aktualizace plánu](./media/cache-administration/redis-schedule-updates.png)
+![Plán aktualizací](./media/cache-administration/redis-schedule-updates.png)
 
 Zadejte časové období údržby, zkontrolujte požadované dny a zadejte hodina spouštění údržby okna pro každý den a klikněte na tlačítko **OK**. Všimněte si, že časového období údržby se ve standardu UTC. 
 
-> [!NOTE]
-> Výchozím okně údržby pro aktualizace je pět hodin. Tato hodnota se nedá konfigurovat na portálu Azure, ale můžete ji nakonfigurovat v prostředí PowerShell pomocí `MaintenanceWindow` parametr [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) rutiny. Další informace najdete v tématu [můžete spravovat plánovaných aktualizací pomocí prostředí PowerShell, rozhraní příkazového řádku nebo jiné nástroje pro správu?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
-> 
-> 
+Okno údržby, default a minimální, aktualizací je pět hodin. Tato hodnota se nedá konfigurovat na portálu Azure, ale můžete ji nakonfigurovat v prostředí PowerShell pomocí `MaintenanceWindow` parametr [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) rutiny. Další informace najdete v tématu [můžete spravovat plánovaných aktualizací pomocí prostředí PowerShell, rozhraní příkazového řádku nebo jiné nástroje pro správu?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+
 
 ## <a name="schedule-updates-faq"></a>Plán aktualizace – nejčastější dotazy
 * [Pokud aktualizace dojít, pokud nepoužívám funkci plán aktualizace?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)

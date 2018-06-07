@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 9924d06f149b0d234cd8f5546cab8abbab740aac
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7041bd19c464c0ce6fb0f3d695a87581fed290e5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592009"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Spravovat certifikáty pro federované jednotné přihlašování v Azure Active Directory
 Tento článek popisuje běžné otázky a informace související s certifikáty, které vytvoří Azure Active Directory (Azure AD) k vytvoření federovaného jednotného přihlašování (SSO) do aplikací SaaS. Přidáte aplikace v galerii aplikací Azure AD nebo pomocí šablony aplikace bez galerie. Konfigurace aplikace s použitím možnosti federované jednotné přihlašování.
@@ -57,6 +58,15 @@ Na snímcích obrazovky používat Salesforce z důvodu příklad, ale tyto krok
 6. Nový certifikát je nyní k dispozici ke stažení. Klikněte **certifikát** odkaz na stažení. V tomto okamžiku by váš certifikát není aktivní. Pokud chcete přejít na tento certifikát, vyberte **aktivujte nový certifikát** zaškrtávací políčko a klikněte na tlačítko **Uložit**. Od tohoto okamžiku spustí Azure AD pomocí nového certifikátu pro podepisování odpovědi.
 
 7.  Informace o tom, na kterou odešlete certifikát k určité aplikaci SaaS, klikněte **kurz konfigurace zobrazení aplikace** odkaz.
+
+## <a name="certificate-expiration-notification-email"></a>E-mailové oznámení pro vypršení platnosti certifikátu
+
+Azure AD bude posílat e-mailové oznámení 60, 30 a 7 dní před vypršením platnosti certifikátu SAML. Zadání e-mailovou adresu pro kam má posílat oznámení:
+
+- V Azure Active Directory jednu přihlašování stránky aplikace přejděte na pole e-mailové oznámení.
+- Zadejte e-mailovou adresu, které by měly dostávat e-mail s oznámením vypršení platnosti certifikátu. Ve výchozím nastavení používá toto pole e-mailovou adresu správce, který přidat aplikaci.
+
+Obdržíte e-mail s oznámením z aadnotification@microsoft.com. Abyste se vyhnuli e-mailu, přejděte do umístění nevyžádané pošty, nezapomeňte přidat tuto e-mailu k vašim kontaktům. 
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>Obnovení certifikátu, kterému brzy vyprší
 Následující kroky obnovení musí mít za následek žádné významné výpadky pro vaše uživatele. Snímky obrazovky v této části funkce Salesforce jako příklad, ale tyto kroky můžete použít na všech federovaných aplikací SaaS.

@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c3fb9eb3e8dd4b8c3add5dcf0436958500aa0189
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2b1b6b8e119cc842ae780cd244ea3b265340fb3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589820"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Azure Active Directory integrace s Slack
 
@@ -138,11 +139,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute1.png)
 
     a. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
-    
+
     b. Z **hodnotu** vyberte hodnotu atributu zobrazený pro tento řádek.
 
     c. Ponechte **Namespace** prázdné.
-    
+
     d. Klikněte na tlačítko **OK**.
 
 6. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
@@ -155,17 +156,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 8. Na **Slack konfigurace** klikněte na tlačítko **konfigurace Slack** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
-    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png)
 
-9.  V okně prohlížeče jiný web Přihlaste se k webu Slack společnosti jako správce.
+9. V okně prohlížeče jiný web Přihlaste se k webu Slack společnosti jako správce.
 
-10.  Přejděte na **Microsoft Azure AD** pak přejděte na **nastavení Team**.
+10. Přejděte na **Microsoft Azure AD** pak přejděte na **nastavení Team**.
 
      ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-slack-tutorial/tutorial_slack_001.png)
 
-11.  V **nastavení Team** klikněte na položku **ověřování** a pak klikněte **změnit nastavení**.
+11. V **nastavení Team** klikněte na položku **ověřování** a pak klikněte **změnit nastavení**.
 
-     ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
+    ![Konfigurace jednotného přihlašování na straně aplikace](./media/active-directory-saas-slack-tutorial/tutorial_slack_002.png)
 
 12. Na **nastavení ověřování SAML** dialogové okno, proveďte následující kroky:
 
@@ -180,10 +181,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     d. Konfiguruje nastavení výše uvedených tří vhodnou pro váš tým Slack. Další informace o nastavení najít **příručce Konfigurace jednotného přihlašování k systému Slack na** sem. `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
     e.  Klikněte na tlačítko **uložte konfiguraci**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -201,12 +198,12 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_02.png) 
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
- 
-    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png) 
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_03.png)
 
 4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
- 
-    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png) 
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png)
 
     a. V **název** textovému poli, typ **BrittaSimon**.
 
@@ -215,12 +212,10 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="creating-a-slack-test-user"></a>Vytváření Slack zkušebního uživatele
 
-Cílem této části je vytvoření uživatele volal Britta Simon v Slack. Slack podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
-
-Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k systému Slack, pokud ještě neexistuje.
+Cílem této části je vytvoření uživatele volal Britta Simon v Slack. Slack podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k systému Slack, pokud ještě neexistuje. Zvětralého také podporují zajišťování, automatické uživatele, můžete najít další podrobnosti o [sem](active-directory-saas-slack-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
 
 > [!NOTE]
 > Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory Slack](https://slack.com/help/contact).
@@ -229,7 +224,7 @@ Neexistuje žádná položka akce pro vás v této části. Nový uživatel se v
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k systému Slack.
 
-![Přiřadit uživatele][200] 
+![Přiřadit uživatele][200]
 
 **Britta Simon přiřadit k systému Slack, proveďte následující kroky:**
 
@@ -265,6 +260,8 @@ Když kliknete na dlaždici Slack na přístupovém panelu jste měli získat au
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Konfiguraci zřizování uživatelů](active-directory-saas-slack-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -279,4 +276,3 @@ Když kliknete na dlaždici Slack na přístupovém panelu jste měli získat au
 [201]: ./media/active-directory-saas-slack-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-slack-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-slack-tutorial/tutorial_general_203.png
-

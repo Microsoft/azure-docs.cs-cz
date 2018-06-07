@@ -1,25 +1,27 @@
 ---
-title: "Nainstalujte Azure AD Connect pomocí existující databáze ADSync | Microsoft Docs"
-description: "Toto téma popisuje postup použití existující databáze ADSync."
+title: Nainstalujte Azure AD Connect pomocí existující databáze ADSync | Microsoft Docs
+description: Toto téma popisuje postup použití existující databáze ADSync.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: cychua
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d65e12350e6302b0f95091f48f71cdc7d4610e2c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b28d4cc6b10b0fd47a67cfefa7cf1022921a5d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591765"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Nainstalujte Azure AD Connect použití existující databáze ADSync
 Azure AD Connect vyžaduje databázi SQL serveru k ukládání dat. Můžete buď použít výchozí nastavení, SQL Server 2012 Express LocalDB nainstalované službou Azure AD Connect nebo používat úplnou verzi systému SQL. Dříve při instalaci Azure AD Connect vytvoření nové databáze s názvem ADSync vždy. S Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect odkazující na existující databáze ADSync.
@@ -60,7 +62,7 @@ Než budete pokračovat, Všimněte si z důležité poznámky pro trvat:
 ![PowerShell](media/active-directory-aadconnect-existing-database/db2.png)
 4.  Se zobrazí s Vítá vás Azure AD Connect obrazovky. Jakmile vyjadřujete souhlas s licenčními podmínkami a Všimněte si, ochrany osobních údajů, klikněte na možnost **pokračovat**.
 ![Vítej](media/active-directory-aadconnect-existing-database/db3.png)
-5.  Na **instalace požadovaných součástí** obrazovky, **použít existující Server SQL** je povolena možnost. Zadejte název serveru SQL Server, který je hostitelem databáze ADSync. Pokud modul instance SQL používané k hostování databáze ADSync není výchozí instance systému SQL server, musíte zadat název instance SQL modul. Dál platí Pokud není povoleno procházení SQL, musí také zadáte číslo portu modul instance SQL. Například:         
+5.  Na **instalace požadovaných součástí** obrazovky, **použít existující Server SQL** je povolena možnost. Zadejte název serveru SQL Server, který je hostitelem databáze ADSync. Pokud modul instance SQL používané k hostování databáze ADSync není výchozí instance systému SQL server, musíte zadat název instance SQL modul. Dál platí Pokud není povoleno procházení SQL, musí také zadáte číslo portu modul instance SQL. Příklad:         
 ![Vítej](media/active-directory-aadconnect-existing-database/db4.png)           
 
 6.  Na **připojit k Azure AD** obrazovky, je nutné zadat přihlašovací údaje globálního správce adresáře Azure AD. Doporučuje se použít účet ve výchozí domény onmicrosoft.com. Tento účet slouží jenom k vytvoření účtu služby v Azure AD, a po dokončení průvodce se už nepoužívá.
@@ -84,7 +86,7 @@ Než budete pokračovat, Všimněte si z důležité poznámky pro trvat:
  
 11. Po dokončení instalace se server Azure AD Connect je automaticky povolené pro pracovní režim. Je vhodné zkontrolovat konfiguraci serveru a čekajících exportů neočekávané změny před jeho zakázáním pracovní režim. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Nyní, když máte nainstalovanou službu Azure AD Connect, můžete si [ověřit instalaci a přiřadit licence](active-directory-aadconnect-whats-next.md).
 - Podrobněji se seznamte s těmito funkcemi, které byly povoleny v rámci instalace: [Prevence náhodného smazání](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) a [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md).

@@ -1,24 +1,19 @@
 ---
-title: Zálohování Azure – zálohování úloh DPM pomocí Powershellu | Microsoft Docs
+title: Zálohování Azure – zálohování úloh DPM pomocí Powershellu
 description: Zjistěte, jak nasadit a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí prostředí PowerShell
 services: backup
-documentationcenter: ''
 author: NKolli1
 manager: shreeshd
-editor: ''
-ms.assetid: e9bd223c-2398-4eb1-9bf3-50e08970fea7
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/23/2017
-ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 89dd965208cd473e47de9e0c9bdbfa3ab986c3d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: adigan
+ms.openlocfilehash: 4a74aa674bd80f3d1297e71873eb9d71e46fd4cb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606915"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 Tento článek ukazuje, jak pomocí prostředí PowerShell instalační program Azure Backup na serveru DPM a ke správě zálohování a obnovení.
@@ -80,7 +75,7 @@ Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor
 4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testVault nastavena na GeoRedundant.
 
    > [!TIP]
-   > Mnoho rutin Azure Backup vyžadují objekt trezoru služeb zotavení jako vstup. Z tohoto důvodu je vhodné pro uložení objektu trezoru služeb zotavení zálohování v proměnné.
+   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
    >
    >
 
@@ -140,7 +135,7 @@ Mezi dostupné možnosti patří:
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa proxy hostitele |- |
 | /Po |Číslo portu proxy hostitele |- |
-| /pu |Uživatelské jméno proxy hostitele |- |
+| /Pu |Uživatelské jméno proxy hostitele |- |
 | /pw |Heslo pro proxy server |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Registrace aplikace DPM k obnovení služby úložiště

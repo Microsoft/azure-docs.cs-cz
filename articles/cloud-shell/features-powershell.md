@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: 209ca603a3826c6516444ea4f3f4fe592e3b3f2e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f099c2dd9b5ab82852f86eb82fb4060321a3d419
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608793"
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Funkce a nástroje pro prostředí PowerShell v prostředí cloudu Azure (Preview)
 
@@ -90,7 +91,7 @@ Tyto příkazy jsou postavená na vzdálenou komunikaci prostředí PowerShell a
 
 |**Kategorie**    |**Název**                                 |
 |----------------|-----------------------------------------|
-|Nástroje Azure     |[Prostředí Azure PowerShell (6.0.1)](https://docs.microsoft.com/powershell/azure/overview)<br> [Rozhraní příkazového řádku Azure (2.0.32)](https://docs.microsoft.com/cli/azure)|
+|Nástroje Azure     |[Prostředí Azure PowerShell (6.1.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Rozhraní příkazového řádku Azure (2.0.33)](https://docs.microsoft.com/cli/azure)|
 |Textové editory    |VIM<br> nano                             |
 |Správce balíčků |PowerShellGet<br> PackageManagement<br> npm<br> PIP |
 |Správa zdrojového kódu  |Git                                      |

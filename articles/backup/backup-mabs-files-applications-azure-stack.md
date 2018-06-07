@@ -1,25 +1,19 @@
 ---
-title: Zálohování Azure zásobníku souborů a aplikací | Microsoft Docs
+title: Zálohování Azure zásobníku souborů a aplikací
 description: Zálohování a obnovení zásobník Azure souborů a aplikací pro vaše prostředí zásobníku Azure pomocí Azure Backup.
 services: backup
-documentationcenter: ''
 author: adiganmsft
 manager: shivamg
-editor: ''
-keyword: ''
-ms.assetid: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 5/11/2018
-ms.author: adigan,markgal
-ms.openlocfilehash: 19067b40e8e87c160515d13bb490e7c1604788b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.date: 5/18/2018
+ms.author: adigan
+ms.openlocfilehash: 6c7fcc0182add05b68a7b41ab6fe50e18427f6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607299"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací v Azure zásobníku
 Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Všechny aplikace spuštěné na jakýkoli server zásobník Azure ve stejné virtuální síti můžete chránit. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
@@ -47,7 +41,7 @@ Azure Backup Server chrání následující úlohy virtuálního počítače Azu
 
 
 ## <a name="install-azure-backup-server"></a>Nainstalujte Azure Backup Server
-K instalaci serveru Azure Backup na virtuálním počítači Azure zásobníku, najdete v článku [Příprava zálohování úloh pomocí serveru Azure Backup](backup-azure-microsoft-azure-backup.md). Před instalací a konfigurací serveru Azure Backup, mějte na paměti z následujících akcí:
+K instalaci serveru Azure Backup na virtuálním počítači Azure zásobníku, najdete v článku [Příprava zálohování úloh pomocí serveru Azure Backup](backup-mabs-install-azure-stack.md). Před instalací a konfigurací serveru Azure Backup, mějte na paměti z následujících akcí:
 
 ### <a name="determining-size-of-virtual-machine"></a>Určení velikost virtuálního počítače
 Azure Backup Server spustit na virtuálním počítači Azure zásobníku, použijte velikosti A2 nebo větší. Pomoc při výběru velikost virtuálního počítače, stáhněte si [kalkulačky velikost virtuálního počítače Azure zásobníku](https://www.microsoft.com/download/details.aspx?id=56832).

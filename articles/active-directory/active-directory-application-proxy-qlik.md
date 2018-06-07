@@ -3,20 +3,22 @@ title: Proxy aplikace Azure AD a Qlik smysl | Microsoft Docs
 description: Zapněte Proxy aplikace na portálu Azure a nainstalujte konektory pro reverzní proxy server.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.topic: article
-ms.date: 04/03/2018
-ms.author: markvi
+ms.date: 05/21/2018
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 350a43dbb96e900c48a4207c808add1484237ef6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589079"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikací a Qlik smysl 
 Azure Proxy aplikace služby Active Directory a Qlik smysl společně společně Ujistěte se, že budete moci snadno poskytnout vzdálený přístup pro vaše nasazení Qlik smysl pomocí Proxy aplikace.  

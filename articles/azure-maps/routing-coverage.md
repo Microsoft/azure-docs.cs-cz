@@ -1,22 +1,19 @@
 ---
 title: Směrování pokrytí v rámci služby Azure Maps | Microsoft Docs
 description: Další informace o směrování pokrytí v rámci služby Azure Maps
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
-ms.date: 3/6/2018
-ms.topic: article
+ms.date: 03/06/2018
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: b924bb2f2000c55f1a5a44dc1644f2b348b2b0cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: aa611b1cc406cd16ffdecb244c3010a7e0318519
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599945"
 ---
 # <a name="azure-maps-routing-coverage"></a>Směrování pokrytí Azure mapy
 
@@ -61,7 +58,7 @@ Následující tabulka obsahuje informace pokrytí pro směrování Azure mapy.
 | Mauritánie                     |        ✓       |
 | Mauricius, Mayotte a Réunion |        ✓       |
 | Maroko                        |        ✓       |
-| Mozambik                     |        ✓       |
+| Mosambik                     |        ✓       |
 | Namibie                        |        ✓       |
 | Niger                          |        ✓       |
 | Nigérie                        |        ✓       |

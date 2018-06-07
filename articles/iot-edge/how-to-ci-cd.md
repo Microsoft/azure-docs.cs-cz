@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Edge průběžnou integraci a průběžné nasazování | Microsoft Docs
 description: Přehled průběžnou integraci a průběžné nasazování pro Azure IoT Edge
-services: iot-Edge
-documentationcenter: ''
 author: shizn
-manager: timlt
+manager: ''
 ms.author: xshi
-ms.date: 4/30/2018
-ms.topic: article
+ms.date: 04/30/2018
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2f635a4c02dd8fd2b58598e53662d1a4d82ea611
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+services: iot-edge
+ms.openlocfilehash: a8b58eae9aa08d8f6539370fa6e78a7a4813c18f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631016"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Průběžnou integraci a průběžné nasazování pro Azure IoT okraj – náhled
 Tento kurz ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování Visual Studio Team Services (VSTS) a Microsoft Team Foundation Server (TFS), pokud chcete vytvořit, otestovat a nasadit aplikace rychle a efektivně do vaší Azure IoT okraj. 

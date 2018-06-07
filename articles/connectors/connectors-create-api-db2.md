@@ -1,25 +1,22 @@
 ---
-title: "Přidejte konektor DB2 ve vašich Logic Apps | Microsoft Docs"
-description: "Přehled konektoru DB2 s parametry rozhraní REST API"
-services: 
-documentationcenter: 
+title: Připojení k DB2 - Azure Logic Apps | Microsoft Docs
+description: Správa prostředků pomocí rozhraní API REST DB2 a Azure Logic Apps
 author: gplarsen
-manager: erikre
-editor: 
-tags: connectors
-ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, estfan
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 9e86273a8b614098aa77608386ab050c20926d23
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609745"
 ---
 # <a name="get-started-with-the-db2-connector"></a>Začínáme s konektorem DB2
 Konektor Microsoft pro DB2 připojí k prostředkům uloženým v databázi IBM DB2 Logic Apps. Tento konektor zahrnuje klienta Microsoft ke komunikaci se vzdálenými počítači server DB2 přes síť TCP/IP. To zahrnuje cloudu databáze, například IBM Bluemix dashDB nebo IBM DB2 pro systém Windows spuštěn v Azure virtualizace a místní databáze, které používají bránu dat na místě. Najdete v článku [podporované seznamu](connectors-create-api-db2.md#supported-db2-platforms-and-versions) IBM DB2 platforem a verzí (v tomto tématu).
@@ -47,13 +44,13 @@ Konektor DB2 podporuje aplikace logiky takto:
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Seznam tabulek
+## <a name="list-tables"></a>Vypíše tabulky
 Vytvoření aplikace logiky pro všechny operace se skládá z mnoho kroků, které se provádí prostřednictvím portálu Microsoft Azure.
 
 V rámci aplikace logiky můžete přidat akci do seznamu tabulek v databázi DB2. Akce dá pokyn konektor zpracování příkazu DB2 schématu, jako je například `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `Db2getTables`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -90,7 +87,7 @@ Tento konektor podporuje připojení databáze hostovaná místně a v cloudu po
 | Ověřování |Volitelné. Přijme hodnotu položky seznamu, Basic nebo Windows (kerberos). |
 | uživatelské jméno |Povinná hodnota. Přijme hodnotu řetězce. DB2 pro z/OS přijme řetězec 8 bajtů. DB2 pro i přijímá řetězec 10 bajtů. DB2 pro Linux nebo UNIX přijme řetězec 8 bajtů. DB2 pro systém Windows přijme řetězec 30 bajtů. |
 | heslo |Povinná hodnota. Přijme hodnotu řetězce. |
-| Brány |Povinná hodnota. Přijme hodnotu položky seznamu reprezentující místní brána dat definované pro Logic Apps v rámci skupiny úložišť. |
+| brána |Povinná hodnota. Přijme hodnotu položky seznamu reprezentující místní brána dat definované pro Logic Apps v rámci skupiny úložišť. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Vytvořit místní připojení brány
 Tento konektor mohou přistupovat k místní databázi DB2 pomocí místní brána. Další informace naleznete v tématech brány. 
@@ -123,7 +120,7 @@ Tento konektor můžete přístup k databázi DB2 cloudu.
 Můžete definovat logiku aplikace akce načíst všechny řádky v tabulce DB2. Tím se nastaví konektor zpracování příkaz DB2 SELECT, jako je například `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `Db2getRows`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -160,7 +157,7 @@ Můžete definovat logiku aplikace akce načíst všechny řádky v tabulce DB2.
 Můžete definovat logiku aplikace akci chcete přidat jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování příkazu DB2 INSERT, jako je například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `Db2insertRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -187,7 +184,7 @@ Můžete definovat logiku aplikace akci chcete přidat jeden řádek v tabulce D
 Můžete definovat logiku aplikace akce načíst jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování příkazu DB2 vyberte kde, jako je například `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název** (např.) "**Db2getRow**"), **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -215,7 +212,7 @@ Můžete definovat logiku aplikace akce načíst jeden řádek v tabulce DB2. Ta
 Můžete definovat akce logiku aplikace změnit jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování výpis DB2 aktualizace, jako je například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `Db2updateRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -242,7 +239,7 @@ Můžete definovat akce logiku aplikace změnit jeden řádek v tabulce DB2. Tat
 Můžete definovat logiku aplikace akce odebrat jeden řádek v tabulce DB2. Tato akce nastaví konektor zpracování výpis DB2 odstranit, jako je například `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `Db2deleteRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce

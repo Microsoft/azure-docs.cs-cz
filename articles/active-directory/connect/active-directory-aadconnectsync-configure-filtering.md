@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0b4b306d1224b5521774b05a110c862b58450eb3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594223"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete řídit objektů, které se zobrazí v Azure Active Directory (Azure AD) z vašeho místního adresáře. Výchozí konfigurace trvá všechny objekty ve všech doménách v doménové struktuře nakonfigurované. Obecně platí to je doporučená konfigurace. Uživatele, kteří používají úlohami Office 365, jako je Exchange Online a Skype pro firmy, těžit z úplný seznam globální adresy tak, aby jejich odeslání e-mailu a volání everyone. U výchozí konfigurace že by měla mít stejné prostředí, které se mají s implementace místní Exchange nebo Lync.
@@ -33,7 +35,7 @@ V některých případech ale jste požadované provedeme některé změny na v�
 Tento článek popisuje postup konfigurace metod filtrování.
 
 > [!IMPORTANT]
-> Microsoft nepodporuje úpravy nebo operační synchronizace Azure AD Connect mimo akce, které jsou popsané dříve. Některé z těchto akcí, může dojít v nekonzistentní nebo v nepodporovaném stavu synchronizace Azure AD Connect. Výsledkem je Microsoft nemůže poskytnout se na technickou podporu takovýchto nasazeních.
+> Microsoft nepodporuje úpravy ani provoz synchronizace služby Azure AD Connect mimo formálně zdokumentované akce. Některé z těchto akcí můžou způsobit nekonzistentní nebo nepodporovaný stav synchronizace služby Azure AD Connect. Microsoft proto nemůže pro taková nasazení poskytovat technickou podporu.
 
 ## <a name="basics-and-important-notes"></a>Základní informace a důležité poznámky
 Synchronizace Azure AD Connect můžete povolit filtrování kdykoli. Pokud spustíte s výchozí konfigurací synchronizace adresářů a pak nakonfigurujte filtrování, objekty, které jsou odfiltrována synchronizovány do Azure AD. Z důvodu této změny se odstraní všechny objekty ve službě Azure AD, které byly dříve synchronizovaných položek, ale pak byly filtrovány ve službě Azure AD.
@@ -67,7 +69,7 @@ Pokud chcete zakázat naplánované úlohy, která aktivuje synchronizační cyk
 
 1. Spustit **Plánovač úloh** z **spustit** nabídky.
 2. Přímo pod **Knihovna plánovače úloh**, najít úloha s názvem **Azure AD Sync Scheduler**, klikněte pravým tlačítkem a vyberte **zakázat**.  
-   ![Task Scheduler](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)  
+   ![Plánovač úloh](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)  
 3. Teď můžete provádět změny konfigurace a spustit ručně z synchronizační modul **Synchronization Service Manager** konzoly.
 
 Po dokončení všech filtrování změny, nezapomeňte se vrátit a **povolit** úlohu opakujte.
@@ -118,9 +120,9 @@ Pokud jste aktualizovali domény filtru, musíte také aktualizovat profilů spu
 2. Vyhledat a identifikovat následující profily:
     * Úplný Import
     * Úplná synchronizace
-    * Delta Import
+    * Rozdílový Import
     * Rozdílová synchronizace
-    * Exportovat
+    * Export
 3. Pro každý profil upravit **přidat** a **odebrat** domén.
     1. Pro každou z pět profilů provést následující kroky pro každý **přidat** domény:
         1. Vyberte profil spuštění a klikněte na tlačítko **nový krok**.

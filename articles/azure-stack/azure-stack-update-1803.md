@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 095356e76dc72c3e549c23ab3855962e9c2f1d26
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 1186776742562566be893c411a642d2feb819a86
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603940"
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
 
@@ -56,7 +57,7 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, znám
 ### <a name="post-update-steps"></a>Postup po aktualizaci
 - Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
 
-  - [KB 4103348 – rozhraní API funkce síťový adaptér služby dojde k chybě při pokusu o instalaci aktualizace Azure zásobníku](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4294441 - operace u klienta, které prostředky se nezdaří a neočekávané Sdílené složky jsou vytvořené na stejném tenantovi nebo svazek infrastruktury](https://support.microsoft.com/en-us/help/4294441)
 
 - Po instalaci této aktualizace, zkontrolujte konfiguraci brány firewall zajistit [nezbytné porty](azure-stack-integrate-endpoints.md) jsou otevřené. Například tato aktualizace zavádí monitorování Azure, která zahrnuje změnu protokolů auditu na protokoly aktivity. Díky této změně portu 13012 se teď používá a je třeba také otevřít.  
 
@@ -110,6 +111,9 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 #### <a name="portal"></a>Portál
+- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+  Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele v zásobníku Azure deklarací](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka předplatného výchozího zprostředkovatele.   
+
 - Možnost [otevřete novou žádost o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) z v rámci správce portálu není k dispozici. Místo toho použijte následující odkaz:     
     - Pro Azure zásobníku integrované systémy, používat https://aka.ms/newsupportrequest.
 
@@ -131,7 +135,23 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
   Tuto výstrahu můžete ignorovat. 
 
 
-<!-- #### Health and monitoring --> 
+#### <a name="health-and-monitoring"></a>Sledování stavu a
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Výstrahy #1:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu prezenčního signálu skener není k dispozici. To může ovlivnit sestavy o stavu a metrik.  
+
+  Výstrahy #2:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu skener chyby není k dispozici. To může ovlivnit sestavy o stavu a metrik.
+
+  Obě výstrahy můžete bezpečně ignorovat. Se automaticky zavře v čase.  
+
 
 #### <a name="marketplace"></a>Marketplace
 - Uživatelé mohou procházet na kompletní nabídku marketplace bez předplatného a uvidí položky pro správu jako plány a nabízí. Tyto položky jsou pro uživatele funkční.
@@ -143,7 +163,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 - Když vytvoříte sadu na portálu přejděte na dostupnosti **nový** > **výpočetní** > **sadu dostupnosti**, můžete vytvořit pouze skupiny dostupnosti s doména selhání a aktualizace domény 1. Jako řešení, při vytváření nového virtuálního počítače, vytvořte skupinu dostupnosti pomocí prostředí PowerShell, rozhraní příkazového řádku, nebo v portálu.
 
-- Když vytvoříte virtuální počítače na portálu pro uživatele Azure zásobníku, portál zobrazí nesprávný počet datových disků, které můžete připojit k řady DS virtuálních počítačů. Řady DS virtuální počítače zvládne tolik datových disků jako konfiguraci Azure.
+- Když vytvoříte virtuální počítače na portálu pro uživatele Azure zásobníku, portál zobrazí nesprávný počet datových disků, které můžete připojit do série D virtuálních počítačů. Všechny podporované řady D virtuální počítače zvládne tolik datových disků jako konfiguraci Azure.
 
 - Když image virtuálního počítače se nepodaří vytvořit, položku se nezdařilo, nelze odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
 
@@ -264,6 +284,8 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 <!--
 #### Identity
 -->
+
+
 
 #### <a name="downloading-azure-stack-tools-from-github"></a>Stažení nástroje Azure zásobníku z Githubu
 - Při použití *vyvolání webrequest* rutiny prostředí PowerShell ke stažení protokolů Azure nástroje z Githubu, obdržíte chybu:     

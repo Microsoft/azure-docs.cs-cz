@@ -1,9 +1,9 @@
 ---
-title: "Azure AD předávací ověřování – rychlý start | Microsoft Docs"
-description: "Tento článek popisuje, jak začít pracovat s Azure Active Directory (Azure AD) předávací ověřování."
+title: Azure AD předávací ověřování – rychlý start | Microsoft Docs
+description: Tento článek popisuje, jak začít pracovat s Azure Active Directory (Azure AD) předávací ověřování.
 services: active-directory
-keywords: "Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: da3d78880a3d389c2a247f9940b708c026c96e03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591326"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -139,7 +141,7 @@ První můžete provést interaktivně právě spuštěním spustitelný soubor 
 Druhý můžete vytvořit a spustit skript bezobslužné nasazení. To je užitečné, pokud chcete nasadit více ověřování agentů najednou, nebo nainstalovat agenty ověřování na serverech Windows, který není k dispozici uživatelské rozhraní, které jsou povolené nebo, ke kterému nelze přistupovat pomocí vzdálené plochy. Zde jsou pokyny pro tento postup:
 
 1. Spusťte následující příkaz pro instalaci agenta ověřování: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
-2. Agent ověřování můžete zaregistrovat v naší službě pomocí prostředí Windows PowerShell. Vytvořit objekt pověření prostředí PowerShell `$cred` obsahující heslo a uživatelské jméno globálního správce pro vašeho klienta. Spusťte následující příkaz, nahraďte  *\<uživatelské jméno\>*  a  *\<heslo\>*:
+2. Agent ověřování můžete zaregistrovat v naší službě pomocí prostředí Windows PowerShell. Vytvořit objekt pověření prostředí PowerShell `$cred` obsahující heslo a uživatelské jméno globálního správce pro vašeho klienta. Spusťte následující příkaz, nahraďte *\<uživatelské jméno\>* a  *\<heslo\>*:
    
         $User = "<username>"
         $PlainPassword = '<password>'

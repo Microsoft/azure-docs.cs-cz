@@ -1,10 +1,10 @@
 ---
-title: "Přidání nabízených oznámení do aplikace Apache Cordova pomocí funkce Mobile Apps služby Azure App Service | Microsoft Docs"
-description: "Naučte se používat k odesílání nabízených oznámení do vaší aplikace Apache Cordova Mobile Apps."
+title: Přidání nabízených oznámení do aplikace Apache Cordova pomocí funkce Mobile Apps služby Azure App Service | Microsoft Docs
+description: Naučte se používat k odesílání nabízených oznámení do vaší aplikace Apache Cordova Mobile Apps.
 services: app-service\mobile
 documentationcenter: javascript
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6af5fa51f2e6553431b9f0aa2dbb368651e7e209
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 13c1a53cfa3f998c9e3fa3ee1ee2dcec37357095
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597990"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Přidání nabízených oznámení do vaší aplikace Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -33,13 +34,13 @@ Tento kurz předpokládá, že máte aplikaci Apache Cordova, která byla vyvinu
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Počítač s nástrojem [Visual Studio Community 2015] [ 2] nebo novější 
-* [Visual Studio Tools for Apache Cordova][4]
+* Počítač s nástrojem [Visual Studio Community 2015] [ 2] nebo novější
+* [Nástroje sady Visual Studio pro Apache Cordova][4]
 * [Aktivní účet Azure][3]
 * Dokončené [rychlý start Apache Cordova] [ 5] projektu
 * (Android) A [účet Google] [ 6] s ověřenou e-mailová adresa
 * (iOS) [Programu pro vývojáře Apple členství] [ 7] a zařízení se systémem iOS (nabízená oznámení nepodporuje simulátoru iOS)
-* (Windows) A [vývojářský účet Windows Store] [ 8] a zařízením s Windows 10
+* (Windows) A [Microsoft úložiště vývojářský účet] [ 8] a zařízením s Windows 10
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]

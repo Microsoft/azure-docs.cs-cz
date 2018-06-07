@@ -12,14 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591170"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Ochrana osobních údajů uživatelů a Azure předávací ověřování služby Active Directory
 
@@ -28,13 +30,13 @@ ms.lasthandoff: 04/28/2018
 
 ## <a name="overview"></a>Přehled
 
-Azure AD předávací ověřování vytvoří následující typy protokolů, které může obsahovat EUII:
+Azure AD předávací ověřování vytvoří následující typ protokolu, která může obsahovat osobní údaje:
 
 - Soubory protokolu trasování Azure AD Connect.
 - Soubory protokolu trasování ověření agenta.
 - Soubory protokolu událostí systému Windows.
 
-Ochrana osobních údajů uživatele pro předávací ověřování dostupný dvěma způsoby:
+Zlepšení ochrany osobních údajů uživatele pro předávací ověřování dvěma způsoby:
 
 1.  Na žádost extrahovat data pro osoby a odstranění dat z osoba ze zařízení.
 2.  Zkontrolujte, že žádná data se uchovávají za 48 hodin.

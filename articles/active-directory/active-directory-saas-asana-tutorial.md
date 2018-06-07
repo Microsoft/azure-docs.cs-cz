@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 2042c1525849696efaf5fda5f35c1abc72839737
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1c4245dbb34fc7e4b3b2722e4a94bffaf4d7f66d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Kurz: Azure Active Directory integrace s Asana
 
@@ -48,7 +49,8 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 - Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Asana z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
@@ -65,7 +67,7 @@ Při konfiguraci integrace Asana do služby Azure AD musíte přidat do seznamu 
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -101,7 +103,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-asana-tutorial/tutorial_asana_samlbase.png)
 
 3. Na **Asana domény a adresy URL** část, proveďte následující kroky:
@@ -111,25 +113,25 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     a. V **přihlašovací adresa URL** textovému poli, zadat adresu URL: `https://app.asana.com/`
 
     b. V **identifikátor** textovému poli, hodnota typu: `https://app.asana.com/`
- 
+
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/active-directory-saas-asana-tutorial/tutorial_asana_certificate.png)
-    
+
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/active-directory-saas-asana-tutorial/tutorial_general_400.png)
 
 6. Na **Asana konfigurace** klikněte na tlačítko **konfigurace Asana** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
-    ![Konfigurace Asana](./media/active-directory-saas-asana-tutorial/tutorial_asana_configure.png) 
+    ![Konfigurace Asana](./media/active-directory-saas-asana-tutorial/tutorial_asana_configure.png)
 
-7. V okně jiný prohlížeč přihlášení do aplikace Asana. Nakonfigurovat jednotné přihlašování v Asana, přístup k nastavení pracovního prostoru klikněte na název pracovního prostoru v pravém horním rohu obrazovky. Potom klikněte na  **\<název pracovního prostoru\> nastavení**. 
-   
+7. V okně jiný prohlížeč přihlášení do aplikace Asana. Nakonfigurovat jednotné přihlašování v Asana, přístup k nastavení pracovního prostoru klikněte na název pracovního prostoru v pravém horním rohu obrazovky. Potom klikněte na  **\<název pracovního prostoru\> nastavení**.
+
     ![Nastavení jednotného přihlašování k Asana](./media/active-directory-saas-asana-tutorial/tutorial_asana_09.png)
 
 8. Na **nastavení organizace** okně klikněte na tlačítko **správy**. Potom klikněte na **členy musí přihlásit pomocí SAML** umožňující jednotného přihlašování k konfigurace. Proveďte následující kroky:
-   
+
     ![Konfigurace nastavení jednotný přihlášení](./media/active-directory-saas-asana-tutorial/tutorial_asana_10.png)  
 
      a. V **přihlašovací adresa URL stránky** textovému poli, Vložit **SAML jeden přihlašování adresa URL služby**.
@@ -137,9 +139,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
      b. Klikněte pravým tlačítkem na certifikát si stáhli z portálu Azure a pak otevřete soubor certifikátu pomocí poznámkového bloku nebo upřednostňovaný textový editor. Kopírovat obsah mezi začátku a název certifikátu end a vložte jej do **certifikát X.509** textové pole.
 
 9. Klikněte na **Uložit**. Přejděte na [Asana Průvodce pro nastavení jednotného přihlašování k](https://asana.com/guide/help/premium/authentication#gl-saml) Pokud potřebujete další pomoc.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -154,16 +153,16 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     ![Tlačítko Azure Active Directory](./media/active-directory-saas-asana-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-asana-tutorial/create_aaduser_02.png) 
+
+    !["Uživatelé a skupiny" a "Všichni uživatelé" odkazy](./media/active-directory-saas-asana-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
- 
-    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asana-tutorial/create_aaduser_03.png) 
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asana-tutorial/create_aaduser_03.png)
 
 4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
- 
-    ![Tlačítko Přidat](./media/active-directory-saas-asana-tutorial/create_aaduser_04.png) 
+
+    ![Tlačítko Přidat](./media/active-directory-saas-asana-tutorial/create_aaduser_04.png)
 
     a. V **název** textovému poli, typ **BrittaSimon**.
 
@@ -172,14 +171,18 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-an-asana-test-user"></a>Vytvořit uživatele s Asana testu
+
+Cílem této části je vytvoření uživatele v Asana nazývá Britta Simon. Asana podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-asana-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
+
+**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
 V této části vytvoříte volal Britta Simon v Asana uživatele.
 
-1. Na **Asana**, přejděte na **týmy** části na levém panelu. Klikněte na tlačítko znaménko plus. 
-   
-    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asana-tutorial/tutorial_asana_12.png) 
+1. Na **Asana**, přejděte na **týmy** části na levém panelu. Klikněte na tlačítko znaménko plus.
+
+    ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-asana-tutorial/tutorial_asana_12.png)
 
 2. Zadejte e-mailu britta.simon@contoso.com v textovém poli a potom vyberte **pozvat**.
 
@@ -195,11 +198,11 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Asana**.
 
-    ![V seznamu aplikací na Asana odkaz](./media/active-directory-saas-asana-tutorial/tutorial_asana_app.png) 
+    ![V seznamu aplikací na Asana odkaz](./media/active-directory-saas-asana-tutorial/tutorial_asana_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
@@ -214,7 +217,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 Cílem této části je pro testování vaší služby Azure AD jednotné přihlašování.
@@ -225,7 +228,7 @@ Přejděte na stránku přihlášení Asana. Do textového pole e-mailovou adres
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
+* [Konfiguraci zřizování uživatelů](active-directory-saas-asana-provisioning-tutorial.md)
 
 <!--Image references-->
 

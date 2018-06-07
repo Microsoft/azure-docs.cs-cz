@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2caf788f1c38c701699e0c275cabe3d12eb75270
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e5b9fb0e1696e83ca4dfc8936613631f4c84ca47
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590778"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Kurz: Azure Active Directory integrace s Salesforce
 
@@ -205,10 +206,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > [!NOTE]
     > Pokud je vybrána více než jedna služba ověřování, jsou uživatelé vyzváni k vyberte služby ověřování, která se má při inicializaci jednotné přihlašování pro vaše prostředí Salesforce přihlásit. Pokud nechcete, aby mohla nastat, pak byste měli **nechte nezaškrtnuté všechny ostatní služby ověřování**.
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -240,27 +237,26 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-salesforce-test-user"></a>Vytvoření zkušebního uživatele Salesforce
 
-V této části se uživatel volá Britta Simon vytvoří v Salesforce. Salesforce podporuje za běhu zřizování, který je ve výchozím nastavení povolené.
-Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v Salesforce ještě neexistuje, vytvoří se nový při pokusu o přístup k Salesforce.
+V této části se uživatel volá Britta Simon vytvoří v Salesforce. Salesforce podporuje za běhu zřizování, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v Salesforce ještě neexistuje, vytvoří se nový při pokusu o přístup k Salesforce. Salesforce podporuje také zřizování automatické uživatelů, můžete najít další podrobnosti o [sem](active-directory-saas-salesforce-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup do služby Salesforce.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Salesforce, proveďte následující kroky:**
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Salesforce**.
 
-    ![V seznamu aplikací na odkaz Salesforce](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png)  
+    ![V seznamu aplikací na odkaz Salesforce](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
@@ -275,7 +271,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
@@ -287,8 +283,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
-
-
+* [Konfiguraci zřizování uživatelů](active-directory-saas-salesforce-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -303,4 +298,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-tutorial/tutorial_general_203.png
-

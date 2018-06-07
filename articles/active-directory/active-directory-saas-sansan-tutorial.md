@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8af15e4751b696a6f30d3dc70556ab856020bedb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f0739c821f1521eb761912e5092661c7b5c0fd78
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591251"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Kurz: Azure Active Directory integrace s Sansan
 
@@ -110,7 +111,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
     
     | Prostředí | zprostředkovatele identity |
     |:--- |:--- |
@@ -118,16 +119,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | Nativní mobilní aplikace |`https://internal.api.sansan.com/saml2/<company name>/acs` |
     | Nastavení mobilní prohlížeče |`https://ap.sansan.com/s/saml2/<company name>/acs` |  
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
-    | Prostředí             | zprostředkovatele identity |
-    | :-- | :-- |
-    | Webové PC                  | `https://ap.sansan.com/v/saml2/<company name>`|
-    | Nativní mobilní aplikace       | `https://internal.api.sansan.com/saml2/<company name>` |
-    | Nastavení mobilní prohlížeče | `https://ap.sansan.com/s/saml2/<company name>` |
-
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Sansan klienta](https://www.sansan.com/form/contact) k získání těchto hodnot. 
-
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Sansan klienta](https://www.sansan.com/form/contact) k získání těchto hodnot. 
+     
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_certificate.png) 
@@ -136,19 +130,77 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sansan-tutorial/tutorial_general_400.png)
 
-6. Na **Sansan konfigurace** klikněte na tlačítko **konfigurace Sansan** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+6. Aplikace Sansan očekává více **identifikátory** a **adresy URL odpovědí** pro podporu prostředí s více (počítač webové, nativní mobilní aplikace, nastavení prohlížeč pro mobilní zařízení), které lze konfigurovat pomocí prostředí PowerShell skript. Podrobné kroky jsou vysvětleny níže.
+
+7. Konfigurace více **identifikátory** a **adresy URL odpovědí** Sansan aplikace pomocí skriptu prostředí PowerShell, proveďte následující kroky:
+
+    ![Konfigurovat jednotné přihlašování obj.](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_objid.png)    
+
+    a. Přejděte na **vlastnosti** stránka **Sansan** aplikace a zkopírujte **ID objektu** pomocí **kopie** tlačítko a vložte do poznámkového bloku.
+
+    b. **ID objektu**, který jste zkopírovali z portálu Azure se používá jako **ServicePrincipalObjectId** ve skriptu PowerShell později v tomto kurzu použili. 
+
+    c. Nyní otevřete příkazový řádek se zvýšenými oprávněními prostředí Windows PowerShell.
+    
+    >[!NOTE] 
+    > Potřebujete nainstalovat modul AzureAD (použijte příkaz `Install-Module -Name AzureAD`). Pokud se zobrazí výzva k instalaci modulu NuGet nebo nového modulu Azure Active Directory V2 PowerShell, zadejte Y a stiskněte klávesu ENTER.
+
+    d. Spustit `Connect-AzureAD` a přihlaste se pomocí uživatelského účtu globálního správce.
+
+    e. Použijte následující skript k aktualizaci více adres URL do aplikace:
+
+    ```poweshell
+     Param(
+    [Parameter(Mandatory=$true)][guid]$ServicePrincipalObjectId,
+    [Parameter(Mandatory=$false)][string[]]$ReplyUrls,
+    [Parameter(Mandatory=$false)][string[]]$IdentifierUrls
+    )
+
+    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
+
+    if($ReplyUrls.Length)
+    {
+    echo "Updating Reply urls"
+    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls $ReplyUrls
+    echo "updated"
+    }
+    if($IdentifierUrls.Length)
+    {
+    echo "Updating Identifier urls"
+    $applications = Get-AzureADApplication -SearchString $servicePrincipal.AppDisplayName 
+    echo "Found Applications =" $applications.Length
+    $i = 0;
+    do
+    {  
+    $application = $applications[$i];
+    if($application.AppId -eq $servicePrincipal.AppId){
+    Set-AzureADApplication -ObjectId $application.ObjectId -IdentifierUris $IdentifierUrls
+    $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId
+    echo "Updated"
+    return;
+    }
+    $i++;
+    }while($i -lt $applications.Length);
+    echo "Not able to find the matched application with this service principal"
+    }
+    ```
+
+8. Po úspěšném dokončení skriptu prostředí PowerShell výsledkem skriptu bude jako to, jak je uvedeno níže a aktualizovat adresu URL hodnoty ale nebude získat projeví na portálu Azure. 
+
+    ![Konfigurovat jednotné přihlašování skriptu](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_powershell.png)
+
+
+9. Na **Sansan konfigurace** klikněte na tlačítko **konfigurace Sansan** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL, SAML Entity ID a SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-sansan-tutorial/tutorial_sansan_configure.png) 
 
-7. Konfigurace jednotného přihlašování na **Sansan** straně, budete muset odeslat stažené **certifikát**, **Sign-Out URL**, **SAML Entity ID**, a **SAML jeden přihlašování adresa URL služby** k [tým podpory Sansan](https://www.sansan.com/form/contact). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+10. Konfigurace jednotného přihlašování na **Sansan** straně, budete muset odeslat stažené **certifikát**, **Sign-Out URL**, **SAML Entity ID**, a **SAML jeden přihlašování adresa URL služby** k [tým podpory Sansan](https://www.sansan.com/form/contact). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 >[!NOTE]
->Nastavení prohlížeče počítače pracovních také pro mobilní aplikace a společně s počítači webový prohlížeč pro mobilní zařízení.  
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+>Nastavení prohlížeče počítače pracovních také pro mobilní aplikace a společně s počítači webový prohlížeč pro mobilní zařízení. 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
+
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
 
 ![Vytvořit uživatele Azure AD][100]
@@ -181,7 +233,7 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
  
 ### <a name="creating-a-sansan-test-user"></a>Vytvoření zkušebního uživatele Sansan
 
-V této části vytvoříte volal Britta Simon v SanSan uživatele. SanSan aplikace, musí uživatel zřídit v aplikaci před provedením jednotné přihlašování. 
+V této části vytvoříte volal Britta Simon v Sansan uživatele. Sansan aplikace, musí uživatel zřídit v aplikaci před provedením jednotné přihlašování. 
 
 >[!NOTE]
 >Pokud potřebujete ručně vytvořte uživatele nebo dávky uživatelů, budete muset kontaktovat [tým podpory Sansan](https://www.sansan.com/form/contact). 

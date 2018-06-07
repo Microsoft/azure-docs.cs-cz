@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658668"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -65,7 +66,7 @@ Do vyhledávacího pole v horní části portálu, zadejte *skupin zabezpečení
 ### <a name="view-details-of-a-network-security-group"></a>Zobrazení podrobností skupiny zabezpečení sítě
 
 1. Do vyhledávacího pole v horní části portálu, zadejte *skupin zabezpečení sítě*. Když **skupin zabezpečení sítě** nezobrazí ve výsledcích hledání, vyberte ho.
-2. V seznamu, který chcete zobrazit podrobnosti, vyberte skupinu zabezpečení sítě. V části **nastavení** můžete zobrazit **příchozí pravidla zabezpečení** a **odchozí pravidla zabezpečení**, **síťových rozhraní** a  **Podsítě** skupinu zabezpečení sítě je přidružen k. Můžete také povolit nebo zakázat **diagnostické protokoly** a zobrazení **pravidla efektivní zabezpečení**. Další informace najdete v tématu [diagnostické protokoly](virtual-network-nsg-manage-log.md) a [zobrazit efektivní zabezpečení pravidla](virtual-network-nsg-troubleshoot-portal.md).
+2. V seznamu, který chcete zobrazit podrobnosti, vyberte skupinu zabezpečení sítě. V části **nastavení** můžete zobrazit **příchozí pravidla zabezpečení** a **odchozí pravidla zabezpečení**, **síťových rozhraní** a  **Podsítě** skupinu zabezpečení sítě je přidružen k. Můžete také povolit nebo zakázat **diagnostické protokoly** a zobrazení **pravidla efektivní zabezpečení**. Další informace najdete v tématu [diagnostické protokoly](virtual-network-nsg-manage-log.md) a [zobrazit efektivní zabezpečení pravidla](diagnose-network-traffic-filter-problem.md).
 3. Další informace o běžných nastavení Azure uvedené, naleznete v následujících článcích:
     *   [Protokol aktivit](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Řízení přístupu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)

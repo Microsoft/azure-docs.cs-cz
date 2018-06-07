@@ -54,6 +54,7 @@
 ### [Sestavování do vlastních aplikací (sada SDK)](../active-directory/authentication/howto-mfa-sdk.md)
 
 ## [Vytváření sestav](../active-directory/authentication/howto-mfa-reporting.md)
+### [Shromažďování dat](../active-directory/authentication/howto-mfa-reporting-datacollection.md)
 
 ## [Uživatelská příručka k MFA](./end-user/multi-factor-authentication-end-user.md)
 

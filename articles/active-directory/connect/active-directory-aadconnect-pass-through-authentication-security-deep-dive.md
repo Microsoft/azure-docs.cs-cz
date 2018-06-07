@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory předávací ověřování zabezpečení podrobné informace | Microsoft Docs"
-description: "Tento článek popisuje, jak předávací ověřování Azure Active Directory (Azure AD) chrání vaše místní účty"
+title: Azure Active Directory předávací ověřování zabezpečení podrobné informace | Microsoft Docs
+description: Tento článek popisuje, jak předávací ověřování Azure Active Directory (Azure AD) chrání vaše místní účty
 services: active-directory
-keywords: "Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování"
-documentationcenter: 
+keywords: Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.service: active-directory
@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595032"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování zabezpečení podrobné informace
 
@@ -181,7 +183,7 @@ Aktualizační aplikace automaticky aktualizuje agenta ověřování při vydán
 
 Azure AD hostitelem novou verzi softwaru jako přihlášeni **balíček služby Windows Installer (MSI)**. Soubor MSI je podepsaná pomocí [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) s SHA256 jako algoritmus digest. 
 
-![Automatické aktualizace](./media/active-directory-aadconnect-pass-through-authentication-security-deep-dive/pta5.png)
+![Automatická aktualizace](./media/active-directory-aadconnect-pass-through-authentication-security-deep-dive/pta5.png)
 
 Pro automatickou aktualizaci agenta ověřování:
 
@@ -203,7 +205,7 @@ Pro automatickou aktualizaci agenta ověřování:
 >
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md): zprovoznění na Azure AD předávací ověřování.
 - [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.

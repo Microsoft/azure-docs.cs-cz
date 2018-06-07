@@ -10,11 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a5b6bb683538bd5359ebcbbe2640216e574b3e00
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: a48298668e2297cb95f2a2f16eac6387ff509781
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608708"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>ID partnera odkaz na vaše účty Azure
 
@@ -32,7 +33,7 @@ Předtím, než se propojíte vaše ID partnera, zákazník musí umožňují p�
 
 - **Instanční objekt:** zákazníkovi můžete přidat aplikace nebo skriptu z vaší organizace v jejich adresář a přiřadit všechny role RBAC. Identita aplikace nebo skriptu, se označuje jako instanční objekt.
 
-## <a name="link-partner-id"></a>ID partnera odkaz
+## <a name="link-partner-id"></a>Propojení ID partnera
 
 Až budete mít přístup k prostředkům zákazníka, použijte portál Azure, PowerShell nebo rozhraní příkazového řádku propojení ID sítě partnera vaší společnosti Microsoft (MPN ID) na vaše ID uživatele nebo instanční objekt. Budete muset propojit ID partnera v každém klientovi zákazníka.
 
@@ -52,7 +53,7 @@ Až budete mít přístup k prostředkům zákazníka, použijte portál Azure, 
 
 ### <a name="use-powershell-to-link-new-partner-id"></a>Pomocí prostředí PowerShell propojení nové ID partnera.
 
-1. Nainstalujte [AzurePartnerRP](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner/0.1.0-preview) modul prostředí PowerShell.
+1. Nainstalujte [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner) modul prostředí PowerShell.
 
 2. Přihlaste se k zákazníka klienta pomocí uživatelského účtu nebo instančního objektu, další informace najdete v tématu [přihlášení pomocí prostředí Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-5.2.0).
  

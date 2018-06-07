@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 4afe9bb36080027ba1873dc6fd3938972044a5d1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f259d8505fab74ea3925eea41ce3861fb239cf46
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Kurz: Azure Active Directory integrace s Replicon
 
@@ -58,14 +59,14 @@ Při konfiguraci integrace Replicon do služby Azure AD musíte přidat do sezna
 
 **Pokud chcete přidat Replicon z galerie, proveďte následující kroky:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -101,7 +102,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/active-directory-saas-replicon-tutorial/tutorial_replicon_samlbase.png)
 
 3. Na **Replicon domény a adresy URL** část, proveďte následující kroky:
@@ -114,7 +115,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://global.replicon.com/!/saml2/<companyname>/sso/post`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory Replicon klienta](https://www.replicon.com/customerzone/contact-support) k získání těchto hodnot. 
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
@@ -128,23 +129,18 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 6. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Replicon.
 
 7. Pokud chcete konfigurovat SAML 2.0, proveďte následující kroky:
-   
+
     ![Povolit ověřování SAML](./media/active-directory-saas-replicon-tutorial/ic777805.png "ověřování povolit SAML")
-    
+
     a. K zobrazení **EnableSAML Authentication2** dialogové okno, připojte na adresu URL, následující po vašeho klíče společnosti: `/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
-    
-    * Následující obrázek znázorňuje schéma úplnou adresu URL:  
-   `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
-   
+
+    * Následující obrázek znázorňuje schéma úplnou adresu URL: `https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
+
    b. Klikněte na tlačítko **+** rozšířit **v20Configuration** části.
 
    c. Klikněte na tlačítko **+** rozšířit **metaDataConfiguration** části.
 
    d. Klikněte na tlačítko **zvolit soubor**, a vyberte soubor XML identity zprostředkovatele metadat, klikněte na tlačítko **odeslání**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -177,31 +173,31 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-replicon-test-user"></a>Vytvoření zkušebního uživatele Replicon
 
-Pokud chcete povolit uživatelům Azure AD přihlášení do Replicon, musí být zřízená do Replicon. V případě Replicon zřizování je ruční úloha.
+Cílem této části je vytvoření uživatele v Replicon nazývá Britta Simon. Replicon podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-replicon-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
 
-**Pokud chcete konfigurovat, zřizování uživatelů, proveďte následující kroky:**
+**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
 1. V okně webového prohlížeče Přihlaste se jako správce k serveru vaší společnosti Replicon.
 
 2. Přejděte na **správy \> uživatelé**.
-   
+
     ![Uživatelé](./media/active-directory-saas-replicon-tutorial/ic777806.png "uživatelů")
 
 3. Klikněte na tlačítko **+ přidat uživatele**.
-   
+
     ![Přidat uživatele](./media/active-directory-saas-replicon-tutorial/ic777807.png "přidat uživatele")
 
 4. V **profil uživatele** část, proveďte následující kroky:
-   
+
     ![Profil uživatele](./media/active-directory-saas-replicon-tutorial/ic777808.png "profil uživatele")
-    
+
     a. V **přihlašovací jméno** textovému poli, typ Azure AD e-mailovou adresu uživatele Azure AD, které chcete zřídit jako **BrittaSimon@contoso.com**.
-    
+
     b. Jako **typ ověřování**, vyberte **jednotného přihlašování k**.
-    
+
     c. V **oddělení** textovému poli, zadejte uživatele oddělení.
 
     d. Jako **typ zaměstnance**, vyberte **správce**.
@@ -215,17 +211,17 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Replicon, musí bý
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Replicon.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Replicon, proveďte následující kroky:**
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Replicon**.
 
-    ![V seznamu aplikací na Replicon odkaz](./media/active-directory-saas-replicon-tutorial/tutorial_replicon_app.png)  
+    ![V seznamu aplikací na Replicon odkaz](./media/active-directory-saas-replicon-tutorial/tutorial_replicon_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
@@ -240,18 +236,19 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Replicon na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Replicon.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md). 
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Konfiguraci zřizování uživatelů](active-directory-saas-replicon-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -266,4 +263,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-replicon-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-replicon-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-replicon-tutorial/tutorial_general_203.png
-

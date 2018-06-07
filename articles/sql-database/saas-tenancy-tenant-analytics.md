@@ -7,15 +7,16 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: ec54e68ee1d0b09b5fb34a2a11c331cb0d478326
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68057a2ae5925aa16288844759a34592aa7c7573
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644956"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics mezi klienta pomocí extrahovaná data
 
@@ -85,7 +86,7 @@ V tomto kurzu provedení analýzy na prodejní data lístku. V aktuální krok g
 Často jsou množství transakcí databáze, které drží všechna data klientů. Musí agregovat data klienta z mnoha transakční databáze do jednoho analytics úložiště. Agregace umožňuje efektivní dotazování data. V tomto kurzu databázi Azure SQL Database slouží k uložení agregovaná data.
 
 V následujících krocích nasazení úložišti analýzy, která se nazývá **tenantanalytics**. Můžete také nasadit předdefinovaných tabulek, které jsou naplněny později v tomto kurzu:
-1. In PowerShell ISE, open *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
+1. V prostředí PowerShell ISE otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Nastavte proměnnou $DemoScenario ve skriptu tak, aby odpovídaly zvoleného analytics úložiště:
     - Chcete-li použít SQL database bez úložiště sloupce, nastavte **$DemoScenario** = **2**
     - Chcete-li použít SQL database s úložištěm sloupce, nastavte **$DemoScenario** = **3**  

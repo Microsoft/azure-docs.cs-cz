@@ -1,24 +1,19 @@
 ---
-title: Zálohování Windows serveru do Azure pomocí prostředí PowerShell | Microsoft Docs
+title: Pomocí prostředí PowerShell pro zálohování Windows serveru do Azure
 description: Zjistěte, jak nasadit a spravovat Azure Backup pomocí prostředí PowerShell
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: 65218095-2996-44d9-917b-8c84fc9ac415
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/28/2016
-ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: 61bb58b2cf0d76f662144cb1911a6521394e92b6
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.topic: conceptual
+ms.date: 5/24/2018
+ms.author: saurse
+ms.openlocfilehash: f69975fc30dfdfbcdd801bcdb552e8b4be948607
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606266"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 Tento článek ukazuje, jak pomocí prostředí PowerShell pro nastavení služby Azure Backup na Windows serveru nebo klienta Windows a Správa zálohování a obnovení.
@@ -57,7 +52,7 @@ Následující kroky vás provedou vytvoření trezoru služeb zotavení. Trezor
 4. Zadejte typ redundance úložiště se použije. můžete použít [místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) nebo [geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md). Následující příklad ukazuje, že je možnost - BackupStorageRedundancy pro testVault nastavena na GeoRedundant.
 
    > [!TIP]
-   > Mnoho rutin Azure Backup vyžadují objekt trezoru služeb zotavení jako vstup. Z tohoto důvodu je vhodné pro uložení objektu trezoru služeb zotavení zálohování v proměnné.
+   > Řada rutin služby Azure Backup vyžaduje jako vstup objekt trezoru služby Recovery Services. Z tohoto důvodu je vhodné uložit objekt trezoru služby Recovery Services do proměnné.
    >
    >
 
@@ -128,7 +123,7 @@ Mezi dostupné možnosti patří:
 | /d |Odinstaluje Agenta Microsoft Azure Recovery Services. |- |
 | /pH |Adresa proxy hostitele |- |
 | /Po |Číslo portu proxy hostitele |- |
-| /pu |Uživatelské jméno proxy hostitele |- |
+| /Pu |Uživatelské jméno proxy hostitele |- |
 | /pw |Heslo pro proxy server |- |
 
 ## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Registrace systému Windows Server a klientský počítač systému Windows do trezoru služeb zotavení
@@ -145,7 +140,7 @@ Tato a další rutiny používané pro zálohování, jsou z MSONLINE modul, kte
 Instalační program agenta nelze aktualizovat $Env: PSModulePath proměnné. To znamená, že automaticky načíst modul selže. Tento problém vyřešíte tak můžete provést následující:
 
 ```
-PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules
+PS C:\>  $Env:psmodulepath += ';C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'
 ```
 
 Alternativně můžete ručně načíst modul ve vašem skriptu následujícím způsobem:
@@ -159,8 +154,8 @@ Po načtení rutiny Online zálohování, zaregistrujte se přihlašovací údaj
 
 
 ```
-PS C:\> $cred = $credspath + $credsfilename
-PS C:\> Start-OBRegistration-VaultCredentials $cred -Confirm:$false
+
+PS C:\> Start-OBRegistration -VaultCredentials $credsfilename.FilePath -Confirm:$false
 CertThumbprint      :7a2ef2caa2e74b6ed1222a5e89288ddad438df2
 SubscriptionID      : ef4ab577-c2c0-43e4-af80-af49f485f3d1
 ServiceResourceName: testvault

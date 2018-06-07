@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: fda195c03c589361b8a798166b0ae4d93611bcd0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7398e01a46b5d296f26905e2063acdb98383f567
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603381"
 ---
 # <a name="manage-azure-resources-through-portal"></a>Spravovat prostředky prostřednictvím portálu Azure
 
@@ -58,7 +59,7 @@ Skupina prostředků ukládá metadata o prostředcích. Při zadávání umíst
    
     ![Skupina prostředků PIN kódu](./media/resource-group-portal/show-resource-group-dashboard.png)
 
-## <a name="tag-resources"></a>Značka prostředky
+## <a name="tag-resources"></a>Označení prostředků
 Značky můžete použít pro skupiny prostředků a prostředky logicky uspořádat vaše prostředky. Informace o práci s značky najdete v tématu [použití značek k uspořádání prostředků Azure](resource-group-using-tags.md).
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
@@ -130,5 +131,5 @@ Odstranění skupiny prostředků se odstraní všechny prostředky, které jsou
 * Chcete-li zobrazit podrobnosti o nasazení, přečtěte si téma [zobrazit operace nasazení](resource-manager-deployment-operations.md).
 * Nasazení prostředků prostřednictvím portálu najdete v tématu [nasazení prostředků pomocí šablony Resource Manageru a portálu Azure](resource-group-template-deploy-portal.md).
 * Pokud chcete spravovat přístup k prostředkům, najdete v části [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
+* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

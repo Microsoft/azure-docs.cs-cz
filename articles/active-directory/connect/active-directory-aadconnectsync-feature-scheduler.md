@@ -1,11 +1,11 @@
 ---
 title: 'Synchronizace Azure AD Connect: Scheduler | Microsoft Docs'
-description: "Toto téma popisuje funkci integrované plánovače v synchronizaci Azure AD Connect."
+description: Toto téma popisuje funkci integrované plánovače v synchronizaci Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6b1a598f-89c0-4244-9b20-f4aaad5233cf
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: df7b16157ccb47a5463570c3ed58b9c44f0b67d0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: fa99de4aac11e7310085cc37e6ebaee441415c61
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594155"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: plánovače
 Toto téma popisuje předdefinované plánovače v synchronizaci Azure AD Connect (také známa jako synchronizační modul).
@@ -68,13 +70,13 @@ V dřívějších sestavení Azure AD Connect **isStagingModeEnabled** byl vysta
 Konfiguraci plánovače, kterou je uložená ve službě Azure AD. Pokud máte na testovacím serveru, všechny změny na primárním serveru také ovlivní pracovní server (s výjimkou IsStagingModeEnabled).
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
-Syntaxe:`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
+Syntaxe: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
 d – počet dnů, HH - hodiny, mm - minuty, ss - sekundy
 
-Příklad:`Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
+Příklad: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 Změní Plánovač každé 3 hodiny.
 
-Příklad:`Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
+Příklad: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0`  
 Změny změnit plánovače na každodenní spouštění.
 
 ### <a name="disable-the-scheduler"></a>Zakázat plánovače  

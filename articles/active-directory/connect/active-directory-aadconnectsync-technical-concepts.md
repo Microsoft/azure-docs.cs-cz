@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: technické koncepty | Microsoft Docs"
-description: "Vysvětluje technické koncepty synchronizace Azure AD Connect."
+title: 'Synchronizace Azure AD Connect: technické koncepty | Microsoft Docs'
+description: Vysvětluje technické koncepty synchronizace Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 731cfeb3-beaf-4d02-aef4-b02a8f99fd11
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi;andkjell
-ms.openlocfilehash: 2cb5143729fa92d12b21701e62416bced31c1fc7
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 591f67747316b950f32c5a113edda1080ed814a0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592836"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Synchronizace služby Azure AD Connect: Technické koncepty
 Tento článek je uveden seznam tématu [Principy architektura](active-directory-aadconnectsync-technical-concepts.md).
@@ -31,13 +33,13 @@ Sestavování na serveru MIIS, ILM a FIM, synchronizaci služby Active Directory
 
 Následující části obsahují další podrobnosti o následující aspekty synchronizační služba FIM:
 
-* Konektor
+* Spojovací čára
 * Toku atributů
 * Prostoru konektoru
 * Úložiště Metaverse
 * Zřizování
 
-## <a name="connector"></a>Konektor
+## <a name="connector"></a>Spojovací čára
 Moduly kódu, které se používají ke komunikaci s připojený adresář se nazývají konektory (dříve označované jako agenti pro správu (MAs)).
 
 Byly nainstalovány na počítači se systémem synchronizace Azure AD Connect. Konektory umožňují bez agentů komunikaci pomocí protokolů vzdáleného systému namísto spoléhání na nasazení specializované agentů. To znamená ke snížení rizika a dobu nasazení, zejména v případě, že zabývající se kritické aplikace a systémy.

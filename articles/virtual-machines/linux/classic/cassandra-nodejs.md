@@ -1,11 +1,11 @@
 ---
-title: "Spusťte Cassandra clusteru v systému Linux v Azure z Node.js"
-description: "Jak spustit Cassandra clusteru v systému Linux v Azure Virtual Machines z aplikace Node.js"
+title: Spusťte Cassandra clusteru v systému Linux v Azure z Node.js
+description: Jak spustit Cassandra clusteru v systému Linux v Azure Virtual Machines z aplikace Node.js
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5d800daa2589effe342cb2bf8b1d59d7bfce6d8c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652834"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Spusťte Cassandra clusteru v systému Linux v Azure pomocí Node.js
 
@@ -117,7 +118,7 @@ Během nasazení se používají následující verze softwaru:
 
 <table>
 <tr><th>Software</th><th>Zdroj</th><th>Verze</th></tr>
-<tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
+<tr><td>PROSTŘEDÍ JRE    </td><td>[PROSTŘEDÍ JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/2.0.8/apache-cassandra-2.0.8-bin.tar.gz)</td><td> 2.0.8</td></tr>
 <tr><td>Ubuntu    </td><td>[Microsoft Azure](https://azure.microsoft.com/) </td><td>14.04 LTS</td></tr>
@@ -157,10 +158,10 @@ Na obrazovce "Konfigurace virtuálního počítače" #2 zadejte následující i
 <tr><th>NÁZEV POLE             </th><th> HODNOTA POLE                       </th><th> POZNÁMKY                                 </th></tr>
 <tr><td> CLOUDOVÉ SLUŽBY    </td><td> Vytvořte novou cloudovou službu    </td><td>Cloudová služba je kontejner výpočetní prostředky, a to jako virtuální počítače</td></tr>
 <tr><td> NÁZEV CLOUDOVÉ SLUŽBY DNS    </td><td>ubuntu-template.cloudapp.net    </td><td>Pojmenujte nástroje pro vyrovnávání zatížení lhostejné počítače</td></tr>
-<tr><td> REGION/AFFINITY GROUP/VIRTUAL NETWORK </td><td>    Západní USA    </td><td> Vyberte oblast, ve kterém webových aplikací přístup ke clusteru Cassandra</td></tr>
-<tr><td>ÚČET ÚLOŽIŠTĚ </td><td>    Použít výchozí    </td><td>Použít výchozí účet úložiště nebo předem vytvořený účet úložiště v určité oblasti.</td></tr>
+<tr><td> OBLASTI NEBO SKUPINY VZTAHŮ NEBO VIRTUÁLNÍ SÍTĚ </td><td>    Západní USA    </td><td> Vyberte oblast, ve kterém webových aplikací přístup ke clusteru Cassandra</td></tr>
+<tr><td>ÚČET ÚLOŽIŠTĚ </td><td>    Použijte výchozí.    </td><td>Použít výchozí účet úložiště nebo předem vytvořený účet úložiště v určité oblasti.</td></tr>
 <tr><td>SADY DOSTUPNOSTI. </td><td>    Žádný </td><td>    Ponechat prázdné</td></tr>
-<tr><td>KONCOVÉ BODY    </td><td>Použít výchozí </td><td>    Použít výchozí konfiguraci SSH </td></tr>
+<tr><td>KONCOVÉ BODY    </td><td>Použijte výchozí. </td><td>    Použít výchozí konfiguraci SSH </td></tr>
 </table>
 
 Klikněte na šipku vpravo, ponechte výchozí nastavení na obrazovce #3. Klikněte na tlačítko "kontrola" k dokončení procesu zřizování virtuálních počítačů. Po několika minutách by měly mít virtuální počítač s názvem "ubuntu šablona" stavu "spuštění".
@@ -279,7 +280,7 @@ Upravte cassandra.yaml na každý virtuální počítač tak, aby odrážela kon
 
 <table>
 <tr><th>Název pole   </th><th> Hodnota  </th><th>    Poznámky </th></tr>
-<tr><td>cluster_name </td><td>    “CustomerService”    </td><td> Použijte název, který se vztahuje k nasazení</td></tr>
+<tr><td>název_clusteru </td><td>    "CustomerService"    </td><td> Použijte název, který se vztahuje k nasazení</td></tr>
 <tr><td>listen_address    </td><td>[necháte prázdné]    </td><td> Odstranit "localhost" </td></tr>
 <tr><td>rpc_addres   </td><td>[necháte prázdné]    </td><td> Odstranit "localhost" </td></tr>
 <tr><td>semen    </td><td>"10.1.2.4, 10.1.2.6, 10.1.2.8"    </td><td>Seznam všech adres IP, které jsou určené jako vstupní.</td></tr>
@@ -309,7 +310,7 @@ Tento proces trvat několik sekund a bitovou kopii, která by měla být k dispo
 <tr><th>Atribut název virtuálního počítače.</th><th>Hodnota</th><th>Poznámky</th></tr>
 <tr><td>Název</td><td>vnet-cass-west-us</td><td></td></tr>
 <tr><td>Oblast</td><td>Západní USA</td><td></td></tr>
-<tr><td>Servery DNS</td><td>Žádné</td><td>Toto ignorovat, protože jsme nejsou pomocí serveru DNS</td></tr>
+<tr><td>Servery DNS</td><td>Žádný</td><td>Toto ignorovat, protože jsme nejsou pomocí serveru DNS</td></tr>
 <tr><td>Adresní prostor</td><td>10.1.0.0/16</td><td></td></tr>    
 <tr><td>Počáteční IP adresu</td><td>10.1.0.0</td><td></td></tr>    
 <tr><td>CIDR </td><td>/16 (65531)</td><td></td></tr>
@@ -355,7 +356,7 @@ Výše uvedené proces lze provést pomocí portálu Azure; počítače s Window
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -441,7 +442,7 @@ Použijte následující postup k testování clusteru:
 
 1. Pomocí příkazu Get-AzureInternalLoadbalancer prostředí PowerShell., získejte IP adresu služby Vyrovnávání zatížení pro vnitřní (například 10.1.2.101). Syntaxe příkazu je zobrazena níže: Get-AzureLoadbalancer – ServiceName "(Hong Kong) c-svc západní USA" [zobrazí podrobnosti o vyrovnávání zatížení pro vnitřní společně s jeho IP adresy]
 2. Přihlaste se k webové farmy virtuálního počítače (například hk-w1 – západní us) pomocí klienta Putty ssh nebo
-3. Execute $CASS_HOME/bin/cqlsh 10.1.2.101 9160
+3. Spuštění $CASS_HOME/bin/cqlsh 10.1.2.101 9160
 4. Chcete-li ověřit, zda je cluster funkční, použijte následující příkazy CQL:
    
      Vytvoření KEYSPACE customers_ks REPLIKACE s = {'class': 'SimpleStrategy', 'replication_factor': 3};   POUŽITÍ customers_ks;   Vytvoření tabulky Customers(customer_id int PRIMARY KEY, firstname text, lastname text);   Vložit do VALUES(1, 'John', 'Doe') Customers(customer_id, firstname, lastname);   Vložit do Customers(customer_id, firstname, lastname) hodnoty (2, 'Jana', 'Doe');
@@ -451,14 +452,14 @@ Použijte následující postup k testování clusteru:
 Měli byste vidět něco podobného jako následující výsledky:
 
 <table>
-  <tr><th> customer_id </th><th> FirstName </th><th> lastname </th></tr>
-  <tr><td> 1 </td><td> Jan </td><td> Novák </td></tr>
-  <tr><td> 2 </td><td> Jana </td><td> Novák </td></tr>
+  <tr><th> customer_id </th><th> FirstName </th><th> Příjmení </th></tr>
+  <tr><td> 1 </td><td> Jan </td><td> Doe </td></tr>
+  <tr><td> 2 </td><td> Jana </td><td> Doe </td></tr>
 </table>
 
 Keyspace vytvořili v kroku 4 používá SimpleStrategy s replication_factor 3. SimpleStrategy se doporučuje pro jednoho datového centra nasazení zatímco NetworkTopologyStrategy pro více data center nasazení. Replication_factor 3 poskytuje odolnost proti selhání uzlu.
 
-## <a id="tworegion"></a>Procesu nasazení s více oblast
+## <a id="tworegion"> </a>Proces nasazení s více oblast
 Využívejte nasazení jedné oblasti bylo úspěšně dokončeno a opakujte stejný postup pro instalaci druhé oblast. Klíčovým rozdílem mezi jednou či více oblastí nasazení je nastavení tunelové propojení VPN pro komunikaci mezi oblast; začít s instalací sítě, zřídíte virtuální počítače a nakonfigurujete Cassandra.
 
 ### <a name="step-1-create-the-virtual-network-at-the-2nd-region"></a>Krok 1: Vytvoření virtuální sítě v oblasti 2.
@@ -527,14 +528,14 @@ Vytvoření bitové kopie Ubuntu, jak je popsáno v oblasti #1 nasazení podle s
 | Název počítače | Podsíť | IP adresa | Skupina dostupnosti | DC/Rack | Počáteční hodnoty? |
 | --- | --- | --- | --- | --- | --- |
 | hk-c1-east-us |data |10.2.2.4 |hk-c-aset-1 |DC = EASTUS rack = rack1 |Ano |
-| hk-c2-east-us |data |10.2.2.5 |hk-c-aset-1 |DC = EASTUS rack = rack1 |Ne |
-| hk-c3-east-us |data |10.2.2.6 |hk-c-aset-1 |DC = EASTUS rack = rack2 |Ano |
-| hk-c5-east-us |data |10.2.2.8 |hk-c-aset-2 |DC = EASTUS rack = rack3 |Ano |
-| hk-c6-east-us |data |10.2.2.9 |hk-c-aset-2 |DC = EASTUS rack = rack3 |Ne |
-| hk-c7-east-us |data |10.2.2.10 |hk-c-aset-2 |DC = EASTUS rack = rack4 |Ano |
-| hk-c8-east-us |data |10.2.2.11 |hk-c-aset-2 |DC = EASTUS rack = rack4 |Ne |
-| hk-w1-east-us |web |10.2.1.4 |hk-w-aset-1 |neuvedeno |neuvedeno |
-| hk-w2-east-us |web |10.2.1.5 |hk-w-aset-1 |neuvedeno |neuvedeno |
+| (Hong Kong) c2-východ nám |data |10.2.2.5 |hk-c-aset-1 |DC = EASTUS rack = rack1 |Ne |
+| (Hong Kong) c3-východ nám |data |10.2.2.6 |hk-c-aset-1 |DC = EASTUS rack = rack2 |Ano |
+| (Hong Kong) c5-východ nám |data |10.2.2.8 |hk-c-aset-2 |DC = EASTUS rack = rack3 |Ano |
+| (Hong Kong) c6-východ nám |data |10.2.2.9 |hk-c-aset-2 |DC = EASTUS rack = rack3 |Ne |
+| (Hong Kong)-s c7 – východ nám |data |10.2.2.10 |hk-c-aset-2 |DC = EASTUS rack = rack4 |Ano |
+| (Hong Kong) c8-východ nám |data |10.2.2.11 |hk-c-aset-2 |DC = EASTUS rack = rack4 |Ne |
+| (Hong Kong) w1 – východ nám |web |10.2.1.4 |hk-w-aset-1 |neuvedeno |neuvedeno |
+| (Hong Kong) w2 – východ nám |web |10.2.1.5 |hk-w-aset-1 |neuvedeno |neuvedeno |
 
 Použijte stejné pokyny jako oblast #1, ale použít 10.2.xxx.xxx adresní prostor.
 
@@ -557,7 +558,7 @@ Nyní Cassandra nasazený na 16 uzlů s 8 uzly v každé oblasti Azure. Tyto uzl
     Poznámka: adresy IP (pro – příklad západ - 10.1.2.101, východ - 10.2.2.101) zobrazí.
 
 ### <a name="step-2-execute-the-following-in-the-west-region-after-logging-into-hk-w1-west-us"></a>Krok 2: Spuštěním následujících v této oblasti po přihlášení na hk-w1 – západní USA
-1. Execute $CASS_HOME/bin/cqlsh 10.1.2.101 9160
+1. Spuštění $CASS_HOME/bin/cqlsh 10.1.2.101 9160
 2. Spuštěním následujících příkazů CQL:
    
      Vytvoření KEYSPACE customers_ks REPLIKACE s = {'class': 'NetworkToplogyStrategy', 'WESTUS': 3, 'EASTUS': 3};   POUŽITÍ customers_ks;   Vytvoření tabulky Customers(customer_id int PRIMARY KEY, firstname text, lastname text);   Vložit do VALUES(1, 'John', 'Doe') Customers(customer_id, firstname, lastname);   Vložit do Customers(customer_id, firstname, lastname) hodnoty (2, 'Jana', 'Doe');   Vyberte * od zákazníků;
@@ -566,26 +567,26 @@ Měli byste vidět zobrazení stejný, jako je nižší než:
 
 | customer_id | FirstName | Příjmení |
 | --- | --- | --- |
-| 1 |Jan |Novák |
-| 2 |Jana |Novák |
+| 1 |Jan |Doe |
+| 2 |Jana |Doe |
 
 ### <a name="step-3-execute-the-following-in-the-east-region-after-logging-into-hk-w1-east-us"></a>Krok 3: Spusťte následující v oblasti Východ po přihlášení na hk-w1 – východ us:
-1. Execute $CASS_HOME/bin/cqlsh 10.2.2.101 9160
+1. Spuštění $CASS_HOME/bin/cqlsh 10.2.2.101 9160
 2. Spuštěním následujících příkazů CQL:
    
-     USE customers_ks;   CREATE TABLE Customers(customer_id int PRIMARY KEY, firstname text, lastname text);   INSERT INTO Customers(customer_id, firstname, lastname) VALUES(1, 'John', 'Doe');   INSERT INTO Customers(customer_id, firstname, lastname) VALUES (2, 'Jane', 'Doe');   SELECT * FROM Customers;
+     POUŽITÍ customers_ks;   Vytvoření tabulky Customers(customer_id int PRIMARY KEY, firstname text, lastname text);   Vložit do VALUES(1, 'John', 'Doe') Customers(customer_id, firstname, lastname);   Vložit do Customers(customer_id, firstname, lastname) hodnoty (2, 'Jana', 'Doe');   Vyberte * od zákazníků;
 
 Jak je vidět pro oblast západní byste měli vidět stejné zobrazení:
 
 | customer_id | FirstName | Příjmení |
 | --- | --- | --- |
-| 1 |Jan |Novák |
-| 2 |Jana |Novák |
+| 1 |Jan |Doe |
+| 2 |Jana |Doe |
 
 Provést několik další vložení a v tématu, aby těch, které se replikovaly západ-nám součástí clusteru.
 
 ## <a name="test-cassandra-cluster-from-nodejs"></a>Test Cassandra Cluster z Node.js
-Pomocí jednoho z virtuálních počítačů Linux vytvářet v dané vrstvě "web" dříve, spustit skript jednoduché Node.js čtení dříve vložených dat
+Pomocí jednoho z virtuálních počítačů Linux předtím vytvořili ve vrstvě "web", spustit skript jednoduché Node.js čtení dříve vložených dat
 
 **Krok 1: Instalace Node.js a Cassandra klienta**
 

@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: adegeo
-ms.openlocfilehash: 0139c42334b53364aee8cfd29cfa771d47e2ccc8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b5d706f82dd41f0c271aa5f67676bba08cceb3b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608589"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Vytvoření chatovací aplikace Node.js pomocí Socket.IO ve službě Azure Cloud Service
 
@@ -28,7 +29,7 @@ Zde je snímek obrazovky dokončené aplikace:
 
 ![Okno prohlížeče zobrazující služby hostované v Azure][completed-app]  
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou nainstalovány následující produkty a verze úspěšné dokončení v příkladu v tomto článku:
 
 * Nainstalovat [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -151,16 +152,16 @@ Vaše aplikace je nyní spuštěna v Azure a může přenášet zprávy chat mez
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit základní chatovací aplikace hostované na cloudové služby Azure. Zjistěte, jak hostovat tuto aplikaci na webu Azure, najdete v tématu [sestavení aplikace Chat v Node.js se Socket.IO na webovou stránku Azure][chatwebsite].
 
-Další informace naleznete také [středisku pro vývojáře Node.js](/develop/nodejs/).
+Další informace naleznete také [středisku pro vývojáře Node.js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
 
-[chatwebsite]: /develop/nodejs/tutorials/website-using-socketio/
+[chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
 [Azure SLA]: http://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
-[úložiště Socket.IO GitHub]: https://github.com/LearnBoost/socket.io/tree/0.9.14
+[Úložiště Socket.IO GitHub]: https://github.com/LearnBoost/socket.io/tree/0.9.14
 [Azure Considerations]: #windowsazureconsiderations
 [Hosting the Chat Example in a Worker Role]: #hostingthechatexampleinawebrole
 [Summary and Next Steps]: #summary

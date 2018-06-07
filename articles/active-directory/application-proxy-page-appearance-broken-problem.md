@@ -3,21 +3,23 @@ title: Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikace | 
 description: Pokyny při stránky není správně zobrazení v aplikaci Proxy aplikací mít integrované s Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
-ms.author: asteen
-ms.openlocfilehash: d15c02d86dc4a61e7e92b4c896cfc13dd0218c61
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: d30f836dd729ea5aaf9cb8e502ab65d2521cf6ab
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591530"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikace
 

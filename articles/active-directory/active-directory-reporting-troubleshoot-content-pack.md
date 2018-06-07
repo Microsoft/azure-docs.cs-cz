@@ -1,25 +1,27 @@
 ---
-title: "Řešení potíží s aktivita služby Azure Active Directory protokolů chyb balíček obsahu | Microsoft Docs"
-description: "Poskytuje seznam chybových zpráv balíček obsahu aktivita služby Azure Active Directory a kroky k jejich řešení."
+title: Řešení potíží s aktivita služby Azure Active Directory protokolů chyb balíček obsahu | Microsoft Docs
+description: Poskytuje seznam chybových zpráv balíček obsahu aktivita služby Azure Active Directory a kroky k jejich řešení.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 01/15/2018
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b22f387a0338246c7586f0f0735b4612a796691a
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 801c425d0d467f8df63f981a1a03c6d202b4c3c5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589215"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Řešení potíží s aktivita služby Azure Active Directory protokolů chyb balíček obsahu 
 

@@ -1,11 +1,11 @@
 ---
-title: "Odolnost identity synchronizace a duplicitní atribut | Microsoft Docs"
-description: "Nové chování o práci s objekty s konflikty UPN nebo ProxyAddress během synchronizace adresářů přes Azure AD Connect."
+title: Odolnost identity synchronizace a duplicitní atribut | Microsoft Docs
+description: Nové chování o práci s objekty s konflikty UPN nebo ProxyAddress během synchronizace adresářů přes Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
+ms.component: hybrid
 ms.author: markvi
-ms.openlocfilehash: 975abed469a78573553c0879b33181d2a58ec48c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: cfed9d32e919cc3c1b7b9c2a6ea5ddb31f2a8fb9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593204"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizace identit a odolnost duplicitních atributů
 Duplicitní atribut odolnosti je funkce v Azure Active Directory, který bude eliminovat třecí způsobené **UserPrincipalName** a **ProxyAddress** konfliktu při spuštění jeden společnosti Microsoft Nástroje pro synchronizaci.
@@ -37,7 +39,7 @@ Pokud dojde pokusu o zřídit nový objekt s hodnotou UPN nebo ProxyAddress, kte
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Chování při odolnosti duplicitní atribut
 Místo zcela neúspěšné zřizovat nebo aktualizovat objekt s duplicitní atribut, Azure Active Directory "umístí do karantény" duplicitní atribut, který by způsobila porušení omezení jedinečnosti. Pokud tento atribut je požadován pro zřizování, jako jsou UserPrincipalName, službu přiřadí hodnotu zástupného symbolu. Formát dočasné hodnoty  
-“***<OriginalPrefix>+<4DigitNumber>@<InitialTenantDomain>.onmicrosoft.com***”.  
+"***<OriginalPrefix>+ < 4DigitNumber > @<InitialTenantDomain>. onmicrosoft.com***".  
 Pokud atribut není potřeba, jako například **ProxyAddress**, Azure Active Directory jednoduše umístí do karantény atribut konfliktu a pokračuje v objektu vytvoření nebo aktualizace.
 
 Při umístění do karantény atribut, informace o konflikt odesílána ve stejné chyba sestav e-mailu, použít v původním chování. Ale tyto informace se zobrazí pouze v zprávy o chybách jednou, když se stane karanténu, ho nebude dále být přihlášení budoucí e-mailů. Navíc vzhledem k tomu exportu pro tento objekt byl úspěšný, klienta synchronizace neprotokoluje chybu a neopakuje vytvořením / aktualizace operace při následné synchronizaci cykly.
@@ -141,9 +143,9 @@ V následujícím článku popisuje různé strategie pro odstraňování potí�
 1. Objektů s určitým atributem konfigurace dál dostávat export chyby oproti duplicitní atributy, které jsou v karanténě.  
    Příklad:
    
-    a. Po vytvoření nového uživatele ve službě AD s název UPN  **Joe@contoso.com**  a ProxyAddress**smtp:Joe@contoso.com**
+    a. Po vytvoření nového uživatele ve službě AD s název UPN **Joe@contoso.com** a ProxyAddress **smtp:Joe@contoso.com**
    
-    b. Vlastnosti tohoto objektu v konfliktu s existující skupiny, kde je ProxyAddress  **SMTP:Joe@contoso.com** .
+    b. Vlastnosti tohoto objektu v konfliktu s existující skupiny, kde je ProxyAddress **SMTP:Joe@contoso.com**.
    
     c. Při exportu **ProxyAddress konflikt** místo nutnosti konflikt atributy v karanténě, je vržena chyba. Operace je opakována při každém cyklu následná synchronizace, jako by byl před povolením funkce odolnost proti chybám.
 2. Pokud se stejnou adresou SMTP se vytvoří místní dvě skupiny, jeden server selže zřídit na první pokus o s standardní duplicitní **ProxyAddress** chyba. Ale duplicitní hodnota je správně umístit do karantény, při příštím synchronizačním cyklu.
@@ -157,16 +159,16 @@ V následujícím článku popisuje různé strategie pro odstraňování potí�
    
     b. **Uživatel B** proveden pokus o synchronizovat až další s **UPN = User@contoso.com** .
    
-    c. **Uživatele B** (UPN) se změní na  **User1234@contoso.onmicrosoft.com**  a  **User@contoso.com**  se přidá do **DirSyncProvisioningErrors**.
+    c. **Uživatele B** (UPN) se změní na **User1234@contoso.onmicrosoft.com** a **User@contoso.com** se přidá do **DirSyncProvisioningErrors**.
    
-    d. Chybová zpráva pro **uživatel B** by měl označuje, že **uživatel A** již  **User@contoso.com**  podle názvu UPN, ale zobrazuje **uživatel B** vlastní displayName.
+    d. Chybová zpráva pro **uživatel B** by měl označuje, že **uživatel A** již **User@contoso.com** podle názvu UPN, ale zobrazuje **uživatel B** vlastní displayName.
 
 **Sestava chyby synchronizace identit**:
 
 Odkaz pro *postup, chcete-li vyřešit tento problém* je nesprávný:  
     ![Aktivní uživatelé](./media/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency/6.png "aktivní uživatelé")  
 
-By měla odkazovat na [https://aka.ms/duplicateattributeresiliency](https://aka.ms/duplicateattributeresiliency).
+By měla odkazovat na [ https://aka.ms/duplicateattributeresiliency ](https://aka.ms/duplicateattributeresiliency).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Synchronizace služby Azure AD Connect](active-directory-aadconnectsync-whatis.md)

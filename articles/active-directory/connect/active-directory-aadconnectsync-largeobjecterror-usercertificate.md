@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect – LargeObject chyby způsobené userCertificate atribut | Microsoft Docs"
-description: "Toto téma obsahuje postup nápravy LargeObject chyby způsobené userCertificate atribut."
+title: Azure AD Connect – LargeObject chyby způsobené userCertificate atribut | Microsoft Docs
+description: Toto téma obsahuje postup nápravy LargeObject chyby způsobené userCertificate atribut.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
 ms.workload: identity
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 9866454735b33239a812dca238006299c74e5ae2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592802"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizace Azure AD Connect: LargeObject zpracování chyb vzniklých při userCertificate atribut
 
@@ -71,7 +73,7 @@ Kroky můžete shrnuto jako:
 Zajistěte, aby že žádná synchronizace bude probíhat, když jste uprostřed implementace nové pravidlo synchronizace, aby se zabránilo neúmyslnému změny se exportují do služby Azure AD. Postup při zakázání plánovače předdefinované synchronizace:
 1. Spusťte relaci prostředí PowerShell na server Azure AD Connect.
 
-2. Zakážete plánované synchronizace spuštěním rutiny:`Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Zakážete plánované synchronizace spuštěním rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
 > Předchozí kroky platí pouze pro novější verze (1.1.xxx.x) služby Azure AD Connect s integrovanou plánovače. Pokud používáte starší verze (1.0.xxx.x) služby Azure AD Connect, který používá plánovače úloh systému Windows nebo používáte vlastní vlastní plánovače (ne běžné) k aktivaci periodickou synchronizaci, musíte je zakázat odpovídajícím způsobem.
@@ -91,8 +93,8 @@ Měla by existovat existující synchronizační pravidlo, které je povolené a
     | --- | --- |
     | Směr |**Odchozí** |
     | Typ objektu MV |**Osoba** |
-    | Konektor |*název vašeho konektoru služby Azure AD* |
-    | Typ objektu konektoru |**user** |
+    | Spojovací čára |*název vašeho konektoru služby Azure AD* |
+    | Typ objektu konektoru |**Uživatel** |
     | Atribut MV |**userCertificate** |
 
 3. Pokud používáte OOB (out-of-box) synchronizační pravidla pro Azure AD connector. Chcete-li exportovat userCertficiate atribut pro uživatelské objekty, měli byste obdržet *"Se do AAD – uživatel ExchangeOnline"* pravidlo.
@@ -117,8 +119,8 @@ Nové pravidlo synchronizace musí mít stejnou **oboru filtru** a **vyšší pr
     | Název | *Zadejte název* | Například *"Se aad – vlastní přepsání pro userCertificate"* |
     | Popis | *Zadejte popis* | Například *"Pokud userCertificate atribut má více než 15 hodnot, export hodnotu NULL."* |
     | Připojený systém | *Vyberte konektoru služby Azure AD* |
-    | Typ objektu systému připojené | **user** | |
-    | Typ objektu úložiště Metaverse | **osoba** | |
+    | Typ objektu systému připojené | **Uživatel** | |
+    | Typ objektu úložiště Metaverse | **Osoba** | |
     | Typ propojení | **Spojení** | |
     | Priorita | *Zvolili číslo mezi 1 a 99* | Číslo zvolený nesmí používat žádné existující pravidlo synchronizace a má nižší hodnotu (a tedy vyšší prioritu) než existující synchronizační pravidlo. |
 
@@ -128,9 +130,9 @@ Nové pravidlo synchronizace musí mít stejnou **oboru filtru** a **vyšší pr
 
     | Atribut | Hodnota |
     | --- | --- |
-    | Typ toku |**Expression** |
+    | Typ toku |**výraz** |
     | Cílový atribut |**userCertificate** |
-    | Zdrojový atribut |*Použijte následující výraz*:`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Zdrojový atribut |*Použijte následující výraz*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
 6. Klikněte **přidat** tlačítko pro vytvoření pravidla synchronizace.
 
@@ -173,7 +175,7 @@ Export změny do Azure AD:
 ### <a name="step-8-re-enable-sync-scheduler"></a>Krok 8. Opětovné povolení plánovače synchronizace
 Teď, když je problém vyřešen, znovu povolte plánovače předdefinované synchronizace:
 1. Spusťte relaci prostředí PowerShell.
-2. Plánované synchronizace znovu povolte spuštěním rutiny:`Set-ADSyncScheduler -SyncCycleEnabled $true`
+2. Plánované synchronizace znovu povolte spuštěním rutiny: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
 > Předchozí kroky platí pouze pro novější verze (1.1.xxx.x) služby Azure AD Connect s integrovanou plánovače. Pokud používáte starší verze (1.0.xxx.x) služby Azure AD Connect, který používá plánovače úloh systému Windows nebo používáte vlastní vlastní plánovače (ne běžné) k aktivaci periodickou synchronizaci, musíte je zakázat odpovídajícím způsobem.

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0660bdb3592e36cb25f68243f16e32d7e51fb85c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4ccb3fd457f9541354281e3dc11dce273f75d9a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Kurz: Azure Active Directory integrace s izolovaného prostoru Salesforce
 
@@ -153,51 +154,48 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     b. V **vystavitele** pole, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure
 
-    c. V **Entity Id** textovému poli, typ `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Pokud je první instance Salesforce izolovaného prostoru, který chcete přidat do vašeho adresáře. Pokud jste již přidali instance Salesforce izolovaného prostoru, pak pro **Entity ID** zadejte **přihlašovací adresa URL**, což by mělo být v tomto formátu: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
- 
-    d. Nahrát **certifikát zprostředkovatele Identity**, klikněte na tlačítko **zvolit soubor** a procházet a vyberte soubor certifikátu, který jste si stáhli z portálu Azure.  
+    c. V **Entity Id** textovému poli, typ `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` Pokud je první instance Salesforce izolovaného prostoru, který chcete přidat do vašeho adresáře. Pokud jste již přidali instance Salesforce izolovaného prostoru, pak pro **Entity ID** zadejte **přihlašovací adresa URL**, což by mělo být v tomto formátu: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`
+
+    d. Nahrát **certifikát zprostředkovatele Identity**, klikněte na tlačítko **zvolit soubor** a procházet a vyberte soubor certifikátu, který jste si stáhli z portálu Azure.
 
     e. Jako **typ Identity SAML**, vyberte jednu z následujících možností:
-    
+
       * Vyberte **kontrolní výraz obsahuje uživatelské jméno Salesforce**, pokud uživatelské jméno uživatele Salesforce je předávána v kontrolního výrazu SAML
 
       * Vyberte **kontrolní výraz obsahuje ID federace z objektu uživatele**, pokud je předávána federace z objektu uživatele v kontrolního výrazu SAML
 
       * Vyberte **kontrolní výraz obsahuje ID použití z objektu uživatele**, pokud ID uživatele z objektu uživatele je předávána v kontrolního výrazu SAML
- 
+
     f. Jako **umístění Identity SAML**, vyberte **identita je v elementu NameIdentifier příkaz subjektu**.
 
-    g. Jako **zprostředkovatele iniciované žádosti vazby služby**, vyberte **HTTP POST**. 
+    g. Jako **zprostředkovatele iniciované žádosti vazby služby**, vyberte **HTTP POST**.
 
-    h. V **adresu URL pro přihlášení zprostředkovatele Identity** textovému poli, vložte hodnotu **jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure. 
+    h. V **adresu URL pro přihlášení zprostředkovatele Identity** textovému poli, vložte hodnotu **jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
 
     i. SFDC nepodporuje SAML odhlášení.  Jako alternativní řešení, vložte `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` ji do **adresa URL odhlašovací zprostředkovatele Identity** textové pole.
 
     j. Klikněte na **Uložit**.
 
 ### <a name="enable-your-domain"></a>Povolit doménu
+
 V této části se předpokládá, že jste již vytvořili domény.  Další informace najdete v tématu [definování váš název domény](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US).
 
 **Pokud chcete povolit doménu, proveďte následující kroky:**
 
 1. V levém navigačním podokně v Salesforce, klikněte na tlačítko **nastavení společnosti** rozbalte související část, a potom klikněte na **Moje domény**.
-   
-     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
-   
+
+    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
+
    >[!NOTE]
-   >Přesvědčte se, že doménu je správně nakonfigurováno. 
+   >Přesvědčte se, že doménu je správně nakonfigurováno.
 
 2. V **konfiguraci ověřování** klikněte na tlačítko **upravit**, pak jako **ověřovací služby**, vyberte název SAML jeden přihlašování nastavení z předchozí část a nakonec klikněte na tlačítko **Uložit**.
-   
+
    ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-edit-auth-config.png)
 
-Jakmile máte doménu nakonfigurovat, uživatelé měli používat adresa URL domény k přihlášení k izolovanému prostoru služby Salesforce.  
+Jakmile máte doménu nakonfigurovat, uživatelé měli používat adresa URL domény k přihlášení k izolovanému prostoru služby Salesforce.
 
 Chcete-li získat hodnotu adresy URL, klikněte na tlačítko jednotného přihlašování k profilu, který jste vytvořili v předchozí části.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -230,17 +228,16 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-salesforce-sandbox-test-user"></a>Vytvoření zkušebního uživatele izolovaného prostoru Salesforce
 
-V této části se uživatel volá Britta Simon vytvoří v izolovaného prostoru služby Salesforce. Izolovaný prostor Salesforce podporuje zřizování za běhu, který je ve výchozím nastavení povolené.
-Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v izolovaném prostoru Salesforce ještě neexistuje, vytvoří se nový při pokusu o přístup k izolovanému prostoru služby Salesforce.
+V této části se uživatel volá Britta Simon vytvoří v izolovaného prostoru služby Salesforce. Izolovaný prostor Salesforce podporuje zřizování za běhu, který je ve výchozím nastavení povolené. Neexistuje žádná položka akce pro vás v této části. Pokud uživatel v izolovaném prostoru Salesforce ještě neexistuje, vytvoří se nový při pokusu o přístup k izolovanému prostoru služby Salesforce. Izolovaný prostor Salesforce podporuje také zřizování automatické uživatelů, můžete najít další podrobnosti o [sem](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování tak, že udělíte přístup k izolovanému prostoru služby Salesforce.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Salesforce izolovaného prostoru, proveďte následující kroky:**
 
@@ -277,6 +274,8 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Konfiguraci zřizování uživatelů](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -291,4 +290,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-salesforce-sandbox-tutorial/tutorial_general_203.png
-

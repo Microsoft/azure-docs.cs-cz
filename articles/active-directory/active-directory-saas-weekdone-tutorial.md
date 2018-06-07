@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 05/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 2889e509d4ba0e055d86a67adaf4bd734f4f9e0c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4f5e0cf0b45e4972cc1c318861025ae4b926a966
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>Kurz: Azure Active Directory integrace s Weekdone
 
@@ -44,7 +45,7 @@ Konfigurace integrace Azure AD s Weekdone, potřebujete následující položky:
 Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 
 - Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat a jeden měsíc zkušební: [nabídka zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
+- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
@@ -82,8 +83,6 @@ V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s
 
 Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Weekdone je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Weekdone musí navázat.
 
-V Weekdone, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
-
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Weekdone, je třeba dokončit následující stavební bloky:
 
 1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
@@ -110,7 +109,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_url1.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://weekdone.com/a/<tenantname>`
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://weekdone.com/a/<tenant>/metadata`
+
+    > [!NOTE]
+    > Soubor metadat z weekdone je možné načíst s použitím stejnou adresu URL.
 
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://weekdone.com/a/<tenantname>`
 
@@ -136,10 +138,6 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_configure.png) 
 
 8. Konfigurace jednotného přihlašování na **Weekdone** straně, budete muset odeslat stažené **soubor XML s metadaty, adresa URL Sign-Out, SAML Entity ID a SAML jeden přihlašování adresa URL služby** k [Weekdone tým podpory ](mailto:hello@weekdone.com).
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -235,4 +233,3 @@ Když kliknete na dlaždici Weekdone na přístupovém panelu, jste měli získa
 [201]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-weekdone-tutorial/tutorial_general_203.png
-

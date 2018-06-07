@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0020ed42baaa32fbc5ae2d62b37558e491842d67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5eae173e02c92bd43faaa9533ce29489d40f1389
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592921"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Synchronizace služby Azure Active Directory Connect: konfigurujte upřednostňovaný data umístění pro prostředky Office 365
 Účelem tohoto tématu je pro vás provede procesem konfigurace atribut pro umístění upřednostňované dat v Azure Active Directory (Azure AD) připojit synchronizace. Když někdo používá více geograficky možnosti v Office 365, můžete použít k určení geografického umístění dat uživatele v Office 365 tento atribut. (Podmínky *oblast* a *geograficky* se zcela zaměnitelným významem používají.)
@@ -42,7 +44,7 @@ Oblastech v Office 365, které jsou k dispozici pro více geograficky jsou:
 | Asie a Tichomoří | APC |
 | Austrálie | AUSTRÁLIE |
 | Kanada | MŮŽETE |
-| Evropské unie | EUR |
+| Evropská unie | EUR |
 | Indie | IND |
 | Japonsko | JPN |
 | Korea | KOR |
@@ -135,7 +137,7 @@ Pravidla synchronizace příchozích dat umožňuje hodnotu atributu mají být 
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    |Přímý | PreferredDataLocation | Vyberte zdrojový atribut | Nezaškrtnuto | Aktualizace |
+    |Přímé | PreferredDataLocation | Vyberte zdrojový atribut | Nezaškrtnuto | Aktualizace |
 
 7. Chcete-li vytvořit příchozí pravidlo, vyberte **přidat**.
 
@@ -172,7 +174,7 @@ Pravidlo odchozí synchronizace umožňuje hodnotu atributu z úložiště metav
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    | Přímý | PreferredDataLocation | PreferredDataLocation | Nezaškrtnuto | Aktualizace |
+    | Přímé | PreferredDataLocation | PreferredDataLocation | Nezaškrtnuto | Aktualizace |
 
 7. Zavřít **přidat** vytvoření odchozí pravidla.
 

@@ -16,11 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 086a2fde5905321da7d5689b6f1ee2f5139209ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588858"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurovat životnosti tokenu v Azure Active Directory (Public Preview)
 Můžete zadat dobu životnosti tokenem vydaným službou Azure Active Directory (Azure AD). Můžete nastavit životnosti tokenu pro všechny aplikace ve vaší organizaci, pro aplikaci víceklientské (více organizace) nebo pro objekt určité služby ve vaší organizaci.
@@ -278,7 +279,7 @@ V tomto příkladu vytvoříte zásadu, která vyžaduje, aby uživatelé ověř
 
 2.  Přiřaďte zásady instančního objektu. Je také nutné získat **ObjectId** z instanční objekt. 
 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat buď [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Navíc můžete otestovat v [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/)a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) pomocí účtu Azure AD.
+    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat buď [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Navíc můžete otestovat v [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) pomocí účtu Azure AD.
 
     2.  Pokud máte **ObjectId** vaše služba objektu zabezpečení, spusťte následující příkaz:
 

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: cf955c15b1dfe3ef0c46ab5023035986da5c5c99
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c75ec11fc11febbd896c715ead9f347062facb44
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591833"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Kurz: Azure Active Directory integrace s ServiceNow
 
@@ -271,10 +272,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > [!NOTE]
     > Můžete konfigurovat Azure AD pro vydávání ID uživatele Azure AD (hlavní název uživatele) nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML přechodem na **ServiceNow > atributy > jednotné přihlašování** části portálu Azure a mapování pro požadované pole **nameidentifier** atribut. Hodnota uložená vybraného atributu ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například uživatelské_jméno)
 
-     e. V části **x509 certifikát**, obsahuje seznam certifikátů, které jste vytvořili v předchozím kroku.
+    e. V části **x509 certifikát**, obsahuje seznam certifikátů, které jste vytvořili v předchozím kroku.
 
-     > [!NOTE]
-     > ServiceNow neumožňuje aktivace rozšíření Idp bez kliknutím na tlačítko Testovat připojení, k přepsání stejné, postupujte níže uvedených pokynů.
+    > [!NOTE]
+    > ServiceNow neumožňuje aktivace rozšíření Idp bez kliknutím na tlačítko Testovat připojení, k přepsání stejné, postupujte níže uvedených pokynů.
 
 22. Klikněte na ikonu nabídky z nového poskytovatele identity, kterou jste vytvořili jako součást konfigurace a ze seznamu vyberte **zkopírujte sys_id**
 
@@ -443,7 +444,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > Můžete konfigurovat Azure AD pro vydávání ID uživatele Azure AD (hlavní název uživatele) nebo e-mailovou adresu jako jedinečný identifikátor v tokenu SAML přechodem na **ServiceNow > atributy > jednotné přihlašování** části portálu Azure a mapování pro požadované pole **nameidentifier** atribut. Hodnota uložená vybraného atributu ve službě Azure AD (například hlavní název uživatele) se musí shodovat s hodnotou uloženou v ServiceNow pro zadané pole (například uživatelské_jméno)
 
     f. Klikněte na **Uložit**.
- 
+
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -475,10 +476,13 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-servicenow-test-user"></a>Vytvoření zkušebního uživatele ServiceNow
 
-V této části vytvoříte uživatele volal Britta Simon v ServiceNow. Pokud si nejste jisti, jak přidat uživatele ve vašem účtu ServiceNow a ServiceNow Express, obraťte se na [tým podpory ServiceNow klienta](https://www.servicenow.com/support/contact-support.html)
+Cílem této části je vytvoření uživatele volal Britta Simon v ServiceNow. ServiceNow podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-servicenow-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
+
+> [!NOTE]
+> Pokud potřebujete ručně vytvořit uživatele, budete muset kontaktovat [tým podpory ServiceNow klienta](https://www.servicenow.com/support/contact-support.html)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
@@ -521,6 +525,8 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Konfiguraci zřizování uživatelů](active-directory-saas-servicenow-provisioning-tutorial.md)
+
 
 <!--Image references-->
 
@@ -535,4 +541,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
-

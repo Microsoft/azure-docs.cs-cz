@@ -1,24 +1,19 @@
 ---
-title: Zálohování Azure – zálohování Offline nebo prvotní synchronizaci pomocí služby Azure Import/Export | Microsoft Docs
+title: Zálohování Azure – zálohování Offline nebo prvotní synchronizaci pomocí služby Azure Import/Export
 description: Zjistěte, jak Azure Backup umožňuje odesílat data mimo síť využívající službu Azure Import/Export. Tento článek vysvětluje, offline synchronizace replik indexů data prvotní zálohy pomocí služby Azure Import exportovat.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 801de343ebb88394f04a65236997f9ec80a2f535
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 05/17/2018
+ms.author: saurse
+ms.openlocfilehash: cb37c94d3ec819823083041708cfc28ead0ed5cf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606133"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Zálohování Azure má několik předdefinovaných efektivitu, která ukládají náklady na síť a úložiště během počáteční úplné zálohy dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžaduje větší šířku pásma sítě ve srovnání s následné zálohy, které přenášejí pouze rozdílů/přírůstková. Proces offline synchronizace replik indexů Azure Backup můžete použít disky k nahrání dat offline zálohování do Azure.
@@ -67,7 +62,7 @@ Před zahájením pracovní postup Offline zálohování, splnit následující 
     4. V seznamu zprostředkovatelů přejděte dolů Microsoft.ImportExport. Pokud je ve stavu NotRegistered, klikněte na tlačítko **zaregistrovat**.
     ![registrace poskytovatele prostředků](./media/backup-azure-backup-import-export/registerimportexport.png)
 * Pracovní umístění, což může být sdílené síťové složky nebo všechny další jednotku na počítači, interní nebo externí, s dostatek místa na disku pro uložení vaší počáteční kopie se vytvoří. Například pokud chcete zálohovat 500 GB souborový server, zajistěte, aby byl v pracovní oblasti alespoň 500 GB. (Menší velikost se používá v důsledku komprese.)
-* Při odesílání disky do Azure, použijte pouze 2,5 SSD nebo 2,5 nebo 3,5 SATA II/III interní pevné disky. Pevné disky můžete použít až do 10 TB. Zkontrolujte [dokumentace ke službě Azure Import/Export](../storage/common/storage-import-export-service.md#hard-disk-drives) pro nejnovější sadu disků, které služba podporuje.
+* Při odesílání disky do Azure, použijte pouze 2,5 SSD nebo 2,5 nebo 3,5 SATA II/III interní pevné disky. Pevné disky můžete použít až do 10 TB. Zkontrolujte [dokumentace ke službě Azure Import/Export](../storage/common/storage-import-export-requirements.md#supported-hardware) pro nejnovější sadu disků, které služba podporuje.
 * Jednotky SATA musí být připojen k počítači (říká *kopie počítače*) odkud kopii zálohovaná data ze *pracovního umístění* k SATA jednotek se provádí. Ujistěte se, že nástroj Bitlocker je povolena v *kopie počítače*.
 
 ## <a name="workflow"></a>Pracovní postup

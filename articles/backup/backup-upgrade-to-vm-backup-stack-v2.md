@@ -1,23 +1,20 @@
 ---
-title: Upgrade na modelu nasazení Azure Resource Manager pro zálohování zásobník virtuálního počítače Azure | Microsoft Docs
+title: Upgrade na modelu nasazení Azure Resource Manager pro zálohování zásobník virtuálního počítače Azure
 description: Upgrade proces a nejčastější dotazy pro zásobník zálohování virtuálních počítačů, modelu nasazení Resource Manager
 services: backup, virtual-machines
-documentationcenter: ''
 author: trinadhk
 manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: ''
 ms.service: backup, virtual-machines
-ms.devlang: na
-ms.topic: article
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 03/08/2018
-ms.author: trinadhk, sogup
-ms.openlocfilehash: 1e5515486afac5a6d84a35bca33f55ae98e287d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: trinadhk
+ms.openlocfilehash: e822e0c354fd671ee2802506e0e268d4078b395e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606898"
 ---
 # <a name="upgrade-to-the-azure-resource-manager-deployment-model-for-azure-vm-backup-stack"></a>Upgrade na modelu nasazení Azure Resource Manager pro zálohování zásobník virtuálního počítače Azure
 Model nasazení Resource Manager pro upgrade na zálohování zásobník virtuálního počítače (VM) obsahuje následující vylepšení funkce:

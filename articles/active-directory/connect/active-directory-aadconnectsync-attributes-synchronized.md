@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4009a35226473cd3ecc68929e53d70f7fb749156
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593431"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -59,7 +61,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | co |X |X | | |
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
-| Oddělení |X |X | | |
+| oddělení |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -82,14 +84,14 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
 | Telefon domů |X |X | | |
-| Informace o |X |X |X |Tento atribut není aktuálně využité pro skupiny. |
-| iniciály |X |X | | |
+| informace |X |X |X |Tento atribut není aktuálně využité pro skupiny. |
+| Iniciály |X |X | | |
 | l |X |X | | |
 | legacyExchangeDN |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Správce |X |X | | |
-| Člen | | |X | |
+| manažer |X |X | | |
+| člen | | |X | |
 | mobilní |X |X | | |
 | msDS-HABSeniorityIndex |X |X |X | |
 | msDS-PhoneticDisplayName |X |X |X | |
@@ -181,7 +183,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | co |X |X | | |
 | Společnosti |X |X | | |
 | CountryCode |X |X | | |
-| Oddělení |X |X | | |
+| oddělení |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -205,15 +207,15 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | Telefon domů |X |X | | |
-| Informace o |X |X |X | |
+| informace |X |X |X | |
 | iniciály |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
 | E-mailu |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
-| Správce |X |X | | |
-| Člen | | |X | |
+| manažer |X |X | | |
+| člen | | |X | |
 | middleName |X |X | | |
 | mobilní |X |X | | |
 | msExchTeamMailboxExpiration |X | | | |
@@ -261,7 +263,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | CN |X | |X | |
 | co |X |X | | |
 | Společnosti |X |X | | |
-| Oddělení |X |X | | |
+| oddělení |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
@@ -272,8 +274,8 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | E-mailu |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| Správce |X |X | | |
-| Člen | | |X | |
+| manažer |X |X | | |
+| člen | | |X | |
 | mobilní |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
 | msRTCSIP-ApplicationOptions |X | | | |
@@ -309,7 +311,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | CN |X | |X |Běžné jméno nebo alias. Předpona, nejčastěji [e-mailu] hodnoty. |
 | displayName |X |X |X |Řetězec, který představuje název často zobrazené jako popisný název (křestní jméno příjmení). |
 | E-mailu |X |X |X |úplné e-mailovou adresu. |
-| Člen | | |X | |
+| člen | | |X | |
 | objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X |mechanických vlastnost. Používá Azure AD. Obsahuje všechny sekundární e-mailové adresy pro uživatele. |
 | pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. |
@@ -328,7 +330,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | displayName |X |X |X | |
 | E-mailu |X |X |X | |
 | mailnickname |X |X |X | |
-| Člen | | |X | |
+| člen | | |X | |
 | objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |
@@ -352,8 +354,8 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | givenName |X |X | | |
 | l |X |X | | |
 | managedBy | | |X | |
-| Správce |X |X | | |
-| Člen | | |X | |
+| manažer |X |X | | |
+| člen | | |X | |
 | mobilní |X |X | | |
 | objectSID |X | |X |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | physicalDeliveryOfficeName |X |X | | |
@@ -387,7 +389,7 @@ Tato skupina je sada atributů, které lze použít, pokud adresář Azure AD se
 | E-mailu |X | |X | |
 | managedBy | | |X | |
 | mailNickName |X |X |X | |
-| Člen | | |X | |
+| člen | | |X | |
 | objectSID |X | | |mechanických vlastnost. Identifikátor uživatele AD používá k udržení synchronizaci mezi Azure AD a AD. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |mechanických vlastnost. Používá se ke zjištění, kdy zneplatní již vystavené tokeny. Používá synchronizace hodnot hash hesel, předávací ověřování a federace. |

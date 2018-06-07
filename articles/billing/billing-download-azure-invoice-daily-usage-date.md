@@ -2,13 +2,12 @@
 title: Stažení Azure fakturace faktury a denní data o využití | Microsoft Docs
 description: Popisuje postup stažení nebo zobrazení Azure fakturace faktury a denní data o využití.
 keywords: fakturace faktury, stažení faktury, faktury azure, azure využití
-services: ''
+services: billing
 documentationcenter: ''
 author: genlin
 manager: tonguyen
 editor: ''
 tags: billing
-ms.assetid: 6d568d1d-3bd6-4348-97d0-1098b5fe0661
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e57e3898c5e843dcc130746a10e78b0681303670
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 59ee992518b5e529f486415f962c6f26881875f1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607408"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturace faktury a dat o denním využití
 Vaše faktura z si můžete stáhnout [portál Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nebo jej odeslat e-mailem. Chcete-li stáhnout denní využití, přejděte na [centra účtů Azure](https://account.azure.com/Subscriptions). Pouze některé role nemáte oprávnění k získání fakturace faktury a informace o využití, jako je správce účtu. Další informace o získání přístupu k fakturační informace najdete v tématu [spravovat přístup k Azure fakturace použití rolí](billing-manage-access.md).
 
 Tento článek se nevztahuje na zákazníky Enterprise Agreement (EA). Pokud jste již EA zákazníka, vaše faktury jsou odesílány přímo správce registrace.
 
-[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Získat faktury v e-mailu (PDF)
 Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro příjem vaší Azure faktury e-mailem. Tato funkce nemusí být dostupné pro určité odběry například nabízí podporu, smlouvy Enterprise nebo Azure v otevřené.
@@ -39,13 +38,18 @@ Můžete vyjádřit výslovný souhlas a nakonfigurovat další příjemce pro p
     
 2. Klikněte na tlačítko **vyjádřit výslovný souhlas** podmínky a přijměte je.
 
-    ![Snímek obrazovky, který zobrazuje tok přihlášení](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+    ![Snímek obrazovky, který zobrazuje tok přihlášení krok 2](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
-3. Jakmile jste přijatá smlouvu, můžete nakonfigurovat další příjemce.
+3. Jakmile jste přijatá smlouvu, můžete nakonfigurovat další příjemce. Při odebrání příjemce e-mailová adresa je už uložený. Pokud změníte své rozhodnutí, musíte je znovu přidat.
 
-    ![Snímek obrazovky, který zobrazuje tok přihlášení](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+    ![Snímek obrazovky, který zobrazuje tok přihlášení krok 3](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
 Pokud neobdržíte e-mail po provedení kroků, zkontrolujte, zda je správný v e-mailovou adresu [předvolby komunikace na váš profil](https://account.windowsazure.com/profile).
+
+### <a name="opt-out-from-getting-your-invoice-in-email"></a>Výslovný nesouhlas získávání faktury v e-mailu
+Pokud nechcete, aby se získat faktury v e-mailu, klikněte na tlačítko nesouhlas poslaného e-mailem faktur. Tím se odeberou všechny e-mailové adresy, nastavte pro příjem faktury v e-mailu. Pokud se přihlásíte zpět v je nutné překonfigurovat příjemce.
+
+ ![Snímek obrazovky, který zobrazuje tok vyjádření výslovného nesouhlasu s](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>Stahovat faktury z portálu Azure (PDF)
 

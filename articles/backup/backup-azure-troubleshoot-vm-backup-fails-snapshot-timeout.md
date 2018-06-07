@@ -1,25 +1,20 @@
 ---
-title: 'Řešení potíží s Azure Backup selhání: hosta stavu agenta není k dispozici | Microsoft Docs'
+title: 'Řešení potíží s Azure Backup selhání: hosta stavu agenta není k dispozici'
 description: Příznaky, příčiny a řešení Azure Backup chyby související s agenta, rozšíření a disky.
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
 keywords: Zálohování Azure; Agent virtuálního počítače; Připojení k síti;
-ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
-ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: genli
+ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606354"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -63,7 +58,7 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Zálohování se nezdaří, protože agent virtuálního počítače je reagovat
 
-Chybová zpráva: "Nelze provést operaci, protože agenta virtuálního počítače není přizpůsobivý" <br>
+Chybová zpráva: "Nemohl komunikovat se serverem agenta virtuálního počítače pro snímek stavu" <br>
 Kód chyby: "GuestAgentSnapshotTaskStatusError"
 
 Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
@@ -91,6 +86,16 @@ Virtuální počítač na požadavcích nasazení nemá přístup k Internetu. N
 
 Správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odešle příkazy do úložiště Azure koncový bod (adresa URL protokolu HTTP) ke správě snímky virtuálního počítače. Pokud rozšíření nemá přístup do veřejného Internetu, zálohování se nakonec nezdaří.
 
+Je možné nasadit proxy server směrovat přenosy virtuálních počítačů.
+##### <a name="create-a-path-for-http-traffic"></a>Vytvoření cesty pro provoz protokolu HTTP
+
+1. Pokud máte omezení síťového na místě (například skupinu zabezpečení sítě), nasazení proxy server HTTP směrovat provoz.
+2. Povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTP, přidejte pravidla na skupinu zabezpečení sítě, pokud nemáte.
+
+Další informace o nastavení proxy serveru HTTP pro zálohování virtuálních počítačů naleznete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+
+Zálohovaná virtuálního počítače nebo serveru proxy, přes který se směruje provoz vyžaduje přístup k Azure veřejné IP adresy
+
 ####  <a name="solution"></a>Řešení
 Chcete-li vyřešit tento problém, zkuste jeden z následujících metod:
 
@@ -104,13 +109,6 @@ Pochopení podrobný postup konfigurace služby značky, můžete sledovat [toto
 
 > [!WARNING]
 > Značky služby úložiště jsou ve verzi preview. Jsou k dispozici pouze v určitých oblastí. Seznam oblastí naleznete v tématu [služby značky pro úložiště](../virtual-network/security-overview.md#service-tags).
-
-##### <a name="create-a-path-for-http-traffic"></a>Vytvoření cesty pro provoz protokolu HTTP
-
-1. Pokud máte omezení síťového na místě (například skupinu zabezpečení sítě), nasazení proxy server HTTP směrovat provoz.
-2. Povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTP, přidejte pravidla na skupinu zabezpečení sítě, pokud nemáte.
-
-Další informace o nastavení proxy serveru HTTP pro zálohování virtuálních počítačů naleznete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Pokud používáte Azure spravované disky, bude pravděpodobně nutné počáteční další port (port 8443) na bránu firewall.
 
@@ -194,6 +192,19 @@ Tento problém je specifická pro spravovaných virtuálních počítačů, ve k
 
 #### <a name="solution"></a>Řešení
 
-Chcete-li problém vyřešit, odebrat zámek ze skupiny prostředků a nechat služba Azure Backup vymazat kolekci bod obnovení a základní snímky v dalším zálohování.
-Po dokončení můžete znovu umístit zpět zámek na skupině prostředků virtuálních počítačů. 
+Chcete-li vyřešit tento problém, odebrat zámek ze skupiny prostředků a proveďte následující kroky odebrání kolekce bodu obnovení: 
+ 
+1. Odebere se zámek ve skupině prostředků, ve kterém je umístěn virtuální počítač. 
+2. Pomocí Chocolatey nainstalujte ARMClient: <br>
+   https://github.com/projectkudu/ARMClient
+3. Přihlaste se k ARMClient: <br>
+    `.\armclient.exe login`
+4. Získání kolekce bodu obnovení, která odpovídá virtuální počítač: <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
+    Příklad: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+5. Odstraňte kolekci bodu obnovení: <br>
+    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+6. Další naplánované zálohování automaticky vytvoří kolekci bod obnovení a nové body obnovení.
+
+Po dokončení můžete znovu umístit zpět zámek na skupině prostředků virtuálních počítačů. 

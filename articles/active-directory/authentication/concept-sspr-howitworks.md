@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593587"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Samoobslužné služby v Azure AD podrobné informace pro vytvoření nového hesla
 
@@ -152,6 +153,8 @@ Předdefinované dotazy, které následují lokalizace do všech jazyků Office 
 Vlastní bezpečnostní otázky nejsou lokalizovány pro různá národní prostředí. Všechny vlastní otázky se zobrazují ve stejném jazyce jako jsou zapsány v rozhraní správce i v případě národního prostředí uživatele prohlížeče se liší. Pokud potřebujete lokalizovaná otázky, měli byste použít předdefinované dotazy.
 
 Maximální délka vlastní bezpečnostní otázku je 200 znaků.
+
+Chcete-li zobrazit portálu pro resetování hesel a dotazy v jiné lokalizované jazyk připojit "? mkt =<Locale>" na konec heslo resetovat URL příklad, který následuje lokalizace do španělštiny [ https://passwordreset.microsoftonline.com/?mkt=es-us ](https://passwordreset.microsoftonline.com/?mkt=es-us).
 
 ### <a name="security-question-requirements"></a>Požadavky na zabezpečení otázku
 

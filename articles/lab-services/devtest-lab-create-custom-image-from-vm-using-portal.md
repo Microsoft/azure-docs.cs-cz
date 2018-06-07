@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 9c98918dcd08c2e8ec72cc995c633b8320da8057
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22f1579b2df2acdc736ed4c1d5cee64d096c320a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635912"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Vytvořit vlastní image z virtuálního počítače
 
@@ -42,7 +43,7 @@ Můžete vytvořit vlastní image ze zřízeného virtuálního počítače a pa
 
     ![Vytvoření vlastní image položky nabídky](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. Na **vlastní image** podokně, zadejte název a popis pro vlastní bitovou kopii. Tyto informace se zobrazí v seznamu základů při vytváření virtuálního počítače.
+1. Na **vlastní image** podokně, zadejte název a popis pro vlastní bitovou kopii. Tyto informace se zobrazí v seznamu základů při vytváření virtuálního počítače. Vlastní image bude obsahovat disk operačního systému a všech datových disků připojených k virtuálnímu počítači.
 
     ![Vytvořit vlastní image podokno](./media/devtest-lab-create-template/create-custom-image-blade.png)
 

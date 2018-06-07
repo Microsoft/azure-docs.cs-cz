@@ -1,26 +1,22 @@
 ---
-title: 'První pohled: chraňte virtuální počítače Azure pomocí trezoru Recovery Services | Dokumentace Microsoftu'
+title: 'První pohled: Ochrana virtuálních počítačů s trezorem Recovery Services'
 description: Virtuální počítače Azure s trezorem Recovery Services. Ochrana dat pomocí záloh virtuálních počítačů nasazených Resource Managerem, virtuálních počítačů nasazených službou Classic, virtuálních počítačů služby Premium Storage, šifrovaných virtuálních počítačů a virtuálních počítačů na spravovaných discích. Vytvoření a registrace trezoru Recovery Services. Registrace virtuálních počítačů, vytváření zásad a ochrana virtuálních počítačů v Azure.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keyword: backups; vm backup
-ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2018
-ms.author: markgal;jimpark;sogup
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 701accb107931bd1f4472d8999102fecb4fd6373
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+keywords: zálohování; zálohování virtuálních počítačů
+ms.openlocfilehash: feae4ac83b637588fe0979a82ce05a56c2d339ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606031"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure do trezoru služeb zotavení
 

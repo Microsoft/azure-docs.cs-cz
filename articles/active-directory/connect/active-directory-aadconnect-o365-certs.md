@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f0435f1c5aae9381c76441b1233a47799af94768
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e8f6b30bb7cbe82159e86fa48721afce3f9477d8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591493"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -149,10 +151,10 @@ Teď by měl být uvedený dva certifikáty, z nichž jeden je **neplatí po** d
 Aktualizace Office 365 s nový token podepisování certifikátů, které se použije pro vztah důvěryhodnosti, následujícím způsobem.
 
 1. Otevřete modul Microsoft Azure Active Directory pro prostředí Windows PowerShell.
-2. Run $cred=Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudové služby.
+2. Spustit $cred = Get-Credential. Když tato rutina vás vyzve k zadání přihlašovacích údajů, zadejte přihlašovací údaje účtu správce cloudové služby.
 3. Spustit Connect-MsolService – $cred na přihlašovací údaje. Tato rutina je připojí ke cloudové službě. Vytváření kontextu, která vás spojí se Cloudová služba se vyžaduje před spuštěním další rutiny nainstalován nástrojem.
 4. Pokud spustíte tyto příkazy v počítači, který není primární federační server služby AD FS, spusťte sadu MSOLAdfscontext-počítače &lt;primární server služby AD FS&gt;, kde &lt;primární server služby AD FS&gt; je interní plně kvalifikovaný název domény název primárního serveru služby AD FS. Tato rutina vytvoří kontext, který vás spojí se služby AD FS.
-5. Run Update-MSOLFederatedDomain –DomainName &lt;domain&gt;. Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
+5. Spuštění aktualizace MSOLFederatedDomain – DomainName &lt;domény&gt;. Tato rutina aktualizuje nastavení ze služby AD FS do cloudové služby a nakonfiguruje vztah důvěryhodnosti mezi nimi.
 
 > [!NOTE]
 > Pokud potřebujete podporu více domén nejvyšší úrovně, jako je například contoso.com a fabrikam.com, musíte použít **SupportMultipleDomain** přepínač s rutiny. Další informace najdete v tématu [podpory pro víc domén nejvyšší úrovně](active-directory-aadconnect-multiple-domains.md).

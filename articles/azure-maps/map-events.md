@@ -1,22 +1,20 @@
 ---
 title: Zpracování událostí myši s Azure mapy | Microsoft Docs
 description: Jak provádět interaktivní mapu Javascript s událostmi mapy
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d0aad8c51ca2927e2ba7daa7a849ecd3f738ad7f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6b673b415b4e93fc7ceb4288b88d6d72740f0259
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600193"
 ---
 # <a name="interacting-with-the-map--mouse-events"></a>Interakci s mapy – události myši 
 
@@ -35,3 +33,8 @@ Další informace o třídy a metody používané v tomto článku:
 
 * [mapy](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
     * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addeventlistener)
+
+Další příklady kódu pro přidání do vaší mapy najdete v následujícím článku: 
+* [Zobrazit výsledky hledání](./map-search-location.md)
+
+Podívejte se na naše [znaková stránka ukázka](http://aka.ms/AzureMapsSamples) pro více scénářů mapování.

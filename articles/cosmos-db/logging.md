@@ -2,23 +2,20 @@
 title: Protokolování diagnostiky Azure Cosmos DB | Microsoft Docs
 description: Pomocí tohoto kurzu můžete začít pracovat s Azure Cosmos DB protokolování.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612210"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky Azure Cosmos DB
 
@@ -47,9 +44,9 @@ Protokol činnosti Azure je protokol odběru, který poskytuje přehled o událo
 
 Protokol aktivity se liší od diagnostické protokoly. Protokol aktivit poskytuje data o operacích na prostředku z vnějšku ( _rovině řízení_). V Azure Cosmos DB kontextu řízení plochy, ve které operace zahrnují vytvořit kolekci, výpis klíčů, odstranění klíče, seznamu databáze a tak dále. Diagnostické protokoly jsou vygenerované prostředek a poskytují informace o operaci prostředku ( _datové roviny_). Některé příklady operace roviny data v protokolů diagnostiky jsou ReadFeed, odstranění a vložení.
 
-Protokoly aktivity (operace ovládacího prvku roviny) může být bohatší ve své podstatě a může obsahovat úplnou e-mailovou adresu volající, volající IP adresu, název prostředku, název operace, TenantId a další. Protokol aktivity obsahuje několik [kategorie](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) dat. Úplné podrobnosti na schémata z těchto kategorií najdete v tématu [schématu události protokol činnosti Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Diagnostické protokoly však může být omezující ve své podstatě jako PII dat je často odstraní z těchto protokolů. Můžete mít IP adresu volajícího, ale je odebrán poslední octant.
+Protokoly aktivity (operace ovládacího prvku roviny) může být bohatší ve své podstatě a může obsahovat úplnou e-mailovou adresu volající, volající IP adresu, název prostředku, název operace, TenantId a další. Protokol aktivity obsahuje několik [kategorie](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema) dat. Úplné podrobnosti na schémata z těchto kategorií najdete v tématu [schématu události protokol činnosti Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema). Diagnostické protokoly však může být omezující ve své podstatě, jak často se odstraní osobní data a z těchto protokolů. Můžete mít IP adresu volajícího, ale je odebrán poslední octant.
 
-### <a name="azure-metrics"></a>Azure metriky
+### <a name="azure-metrics"></a>Metriky Azure
 
 [Azure metriky](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) nejdůležitější typ Azure telemetrická data (také nazývané _čítače výkonu_) je vysílaných prostředků nejvíce Azure. Metriky umožňují zobrazit informace o propustnosti, úložiště, konzistence, dostupnosti a latence vašich prostředků Azure Cosmos DB. Další informace najdete v tématu [sledování a ladění pomocí metriky v Azure Cosmos DB](use-metrics.md).
 
@@ -445,7 +442,7 @@ Následující tabulka popisuje obsah každé položky protokolu.
 | **Čas** | **TimeGenerated** | Datum a čas (UTC) při operaci došlo k chybě. |
 | **ID prostředku** | **Prostředek** | Účet Azure Cosmos DB, pro které jsou povolené protokoly.|
 | **Kategorie** | **Kategorie** | Pro Azure Cosmos DB protokoly **DataPlaneRequests** je k dispozici pouze hodnota. |
-| **OperationName** | **OperationName** | Název operace. Tato hodnota může být libovolná z následujících operací: vytvoření, aktualizace, čtení, ReadFeed, odstranění, nahraďte, spouštění, SqlQuery, dotazu, JSQuery, Head, HeadFeed nebo Upsert.   |
+| **OperationName** | **OperationName** | Název operace Tato hodnota může být libovolná z následujících operací: vytvoření, aktualizace, čtení, ReadFeed, odstranění, nahraďte, spouštění, SqlQuery, dotazu, JSQuery, Head, HeadFeed nebo Upsert.   |
 | **Vlastnosti** | neuvedeno | Obsah tohoto pole jsou popsané v řádky, které následují. |
 | **ID aktivity** | **activityId_g** | Jedinečný identifikátor GUID pro protokolovaných operací. |
 | **userAgent** | **userAgent_s** | Řetězec, který určuje uživatelský agent klienta, který provádí požadavek. Formát je {uživatelské jméno agenta} / {version}.|

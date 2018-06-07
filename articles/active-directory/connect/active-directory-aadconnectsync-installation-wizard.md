@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 56cc38275a23eb4529558b876db619768a885a25
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a33301904cff9a5a396eb6f641b7e3bc6b3e9801
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592530"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizace Azure AD Connect: opětovným spuštěním Průvodce instalací
 Při prvním spuštění Průvodce instalací služby Azure AD Connect, se vás provede procesem konfigurace instalace. Pokud znovu spustíte Průvodce instalací, nabízí možnosti pro údržbu.

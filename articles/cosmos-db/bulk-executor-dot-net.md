@@ -6,19 +6,20 @@ services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 608551090ce10e08ba517def644c72186a6f25e1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611156"
 ---
 # <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny BulkExecutor .NET provádět hromadné operace v Azure Cosmos DB
 
-V tomto kurzu poskytuje pokyny k používání knihovny BulkExecutor .NET Azure Cosmos DB importovat a aktualizovat dokumenty do kolekcí Azure Cosmos DB. Další informace o BulkExecutor knihovny a jak ho pomáhá využívat obrovskou propustnost a úložiště najdete v tématu [přehled knihovny BulkExecutor](bulk-executor-overview.md) článku. Tento kurz vás provede ukázkové aplikace .NET které hromadné importuje náhodně generované dokumenty do kolekci Azure Cosmos DB. Po importu, ukazuje, jak můžete hromadně aktualizujete importovaných dat zadáním opravy jako operace provést na pole konkrétní dokumentu.
+V tomto kurzu poskytuje pokyny k používání knihovny BulkExecutor .NET Azure Cosmos DB importovat a aktualizovat dokumenty do kolekcí Azure Cosmos DB. Další informace o BulkExecutor knihovny a jak ho pomáhá využívat obrovskou propustnost a úložiště najdete v tématu [přehled knihovny BulkExecutor](bulk-executor-overview.md) článku. Tento kurz vás provede ukázkové aplikace .NET, která hromadné importy náhodně vygenerované dokumenty do kolekci Azure Cosmos DB. Po importu, ukazuje, jak můžete hromadně aktualizujete importovaných dat zadáním opravy jako operace provést na pole konkrétní dokumentu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +39,7 @@ Teď umožňuje přepnout do práce s kódem stažením některé ukázkové apl
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-Klonovaný úložiště obsahuje dvě ukázky "BulkImportSample" a "BulkUpdateSample". Můžete buď ukázkové aplikace otevřete, aktualizovat připojovací řetězce v souboru App.config pomocí účtu Azure Cosmos DB připojovací řetězce, sestavte řešení a potom ho spusťte. 
+Klonovaný úložiště obsahuje dvě ukázky "BulkImportSample" a "BulkUpdateSample." Můžete buď ukázkové aplikace otevřete, aktualizovat připojovací řetězce v souboru App.config pomocí účtu Azure Cosmos DB připojovací řetězce, sestavte řešení a potom ho spusťte. 
 
 Aplikace "BulkImportSample" generuje náhodné dokumenty a hromadně importuje je do Azure Cosmos DB. Hromadné aplikace "BulkUpdateSample" aktualizuje importovaných dokumentů zadáním opravy jako operace provést na pole konkrétní dokumentu. V následujících částech zkontrolujete kód v každé z těchto ukázkových aplikací.
 
@@ -169,9 +170,9 @@ Při použití knihovny BulkExecutor, zvažte následující body pro dosažení
 
 * Pro nejlepší výkon spusťte aplikaci z Azure virtuálního počítače, který je ve stejné oblasti jako zápisu oblast účtu Cosmos DB.  
 
-* Doporučujeme vytvořit instanci jednoho objektu BulkExecutor pro celou aplikaci v rámci jednoho virtuálního počítače odpovídající určité kolekci Cosmos DB.  
+* Doporučuje se vytvořit instanci jednoho objektu BulkExecutor pro celou aplikaci v rámci jednoho virtuálního počítače odpovídající určité kolekci Cosmos DB.  
 
-* Vzhledem k tomu, že spuštění jedné hromadné operace rozhraní API spotřebuje velký blok klientský počítač procesoru a sítě vstupně-výstupní operace. To se stane vytvořením několika úloh interně, vyhněte se například více souběžných úloh v rámci procesu vaší aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud volání jedné hromadné operace rozhraní API systémem jeden virtuální počítač nemůže využívat propustnost celou kolekci (Pokud vaše kolekce propustnost > 1 milion RU/s), jeho vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné volání operace rozhraní API.  
+* Vzhledem k tomu, že spuštění jedné hromadné operace rozhraní API spotřebuje velký blok klientský počítač procesoru a sítě vstupně-výstupní operace. To se stane vytvořením několika úloh interně, vyhněte se například více souběžných úloh v rámci procesu vaší aplikace, které volá každé rozhraní API provádění hromadné operace. Pokud volání jedné hromadné operace rozhraní API systémem jeden virtuální počítač nemůže využívat propustnost celou kolekci (Pokud vaše kolekce propustnost > 1 milion RU/s), je vhodnější k vytvoření samostatných virtuálních počítačů současně provést hromadné volání operace rozhraní API.  
 
 * Zajistěte, aby že initializeasync() je volána po vytvoření instance objektu BulkExecutor načíst mapa oddílu cíl Cosmos DB kolekce.  
 

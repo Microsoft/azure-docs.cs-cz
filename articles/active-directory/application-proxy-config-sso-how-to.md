@@ -3,21 +3,24 @@ title: Postup konfigurace jednotného přihlašování k aplikaci Proxy aplikace
 description: Jak můžete nakonfigurovat jednotné přihlašování k vaší aplikaci proxy aplikace rychle
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: c090a3fc36c300a108f10f02d0b663dc1e29f986
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 05/21/2018
+ms.author: barbkess
+ms.reviewer: harshja
+ms.openlocfilehash: 3d7711ac62ebc870b98e2f2696a74f236c2d6a88
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591476"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Postup konfigurace jednotného přihlašování k aplikaci Proxy aplikace
 

@@ -7,18 +7,20 @@ author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 172477af5d5ae19cd0362cb1de0a8c66332cb0bd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587830"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Rozhodování, pokud služba Azure AD Domain Services je nejvhodnější pro váš případ použití
 S Azure AD Domain Services můžete nasadit úlohy ve službách infrastruktury Azure, aniž by museli starosti údržbu infrastruktury identity v Azure. Tato spravované služby se liší od typické nasazení systému Windows Server Active Directory, které můžete nasadit a spravovat sami. Služba nasazení je snadné a poskytuje automatizované stavu monitorování a nápravu. Jsme neustále vyvíjí službu, kterou chcete přidat podporu pro nejčastější scénáře nasazení.
@@ -32,7 +34,7 @@ Chcete-li rozhodnout, zda chcete používat Azure AD Domain Services doporučuje
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Porovnání služby Azure AD Domain Services k doméně DIY AD v Azure
 Následující tabulka vám pomůže zjistit, mezi pomocí Azure AD Domain Services a správu vlastní infrastrukturu AD v Azure.
 
-| **Funkce** | **Azure AD Domain Services** | **'Samoobslužné' AD ve virtuálních počítačích Azure** |
+| **Funkce** | **Služba Azure AD Domain Services** | **'Samoobslužné' AD ve virtuálních počítačích Azure** |
 | --- |:---:|:---:|
 | [**Spravované služby**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Bezpečné nasazení**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Správce musí k zabezpečení nasazení. |

@@ -1,19 +1,19 @@
 ---
 title: Dokumentace k akcelerátorům řešení Azure IoT – kurzy, reference k rozhraní API | Microsoft Docs
 description: Dokumentace k akcelerátorům řešení Azure IoT zahrnuje příručky Začínáme, články s návody, kurzy a referenční materiály k rozhraní API.
-services: iot-suite
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.service: iot-suite
+author: dominicbetts
+manager: timlt
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.topic: landing-page
 ms.date: 11/27/2017
-ms.author: carolz
-ms.openlocfilehash: cacc09cf926c5af9a770e42967a5e6cbbb46bfd7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: dobett
+ms.openlocfilehash: 3e9fe2b67980e83f57732c10da99738a15a5219e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626968"
 ---
 # <a name="iot-solution-accelerators-documentation"></a>Dokumentace k akcelerátorům řešení IoT
 
@@ -30,10 +30,10 @@ Začněte rychle s využitím akcelerátorů řešení IoT při sestavování va
                         <ul>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-what-are-solution-accelerators">Přehled akcelerátorů řešení</a></li>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">Nasazení akcelerátoru řešení</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-explore">Možnosti předem připravených řešení</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-monitor">Možnosti monitorování</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-explore">Možnosti předem připravených řešení</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">Možnosti monitorování</a></li>
                             <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">Možnosti správy pravidel</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-manage">Možnosti správy zařízení</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">Možnosti správy zařízení</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,9 +53,9 @@ Začněte rychle s využitím akcelerátorů řešení IoT při sestavování va
                     <div class="cardText">
                         <p>Další informace o připojení vašich zařízení k akcelerátoru řešení</p>
                         <ul>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-schema">Přehled modelů zařízení</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-remote-monitoring-device-behavior">Přizpůsobení simulovaných zařízení</a></li>
-                            <li><a href="/azure/iot-suite/iot-suite-connecting-devices-node">Připojení fyzických zařízení</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-device-schema">Přehled modelů zařízení</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-device-behavior">Přizpůsobení simulovaných zařízení</a></li>
+                            <li><a href="/azure/iot-accelerators/iot-accelerators-connecting-devices-node">Připojení fyzických zařízení</a></li>
                         </ul>
                     </div>
                 </div>
@@ -95,10 +95,10 @@ Začněte rychle s využitím akcelerátorů řešení IoT při sestavování va
                 <div class="card">
                     <div class="cardText">
                         <h3>Zdroje a prostředky</h3>
-                        <p><a href="/azure/iot-suite/iot-security-architecture">Architektura zabezpečení</a></p>
-                        <p><a href="/azure/iot-suite/iot-security-best-practices">Osvědčené postupy zabezpečení</a></p>
-                        <p><a href="/azure/iot-suite/iot-suite-security-deployment">Zabezpečení nasazení IoT</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Zabezpečení od počátku</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-security-architecture">Architektura zabezpečení</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-security-best-practices">Osvědčené postupy zabezpečení</a></p>
+                        <p><a href="/azure/iot-accelerators/iot-accelerators-security-deployment">Zabezpečení nasazení IoT</a></p>
+                        <p><a href="/azure/iot-accelerators/securing-iot-ground-up">Zabezpečení od počátku</a></p>
                    </div>
                 </div>
             </div>

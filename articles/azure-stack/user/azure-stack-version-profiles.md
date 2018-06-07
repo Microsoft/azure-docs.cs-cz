@@ -10,14 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: e568ffd2c3adb97ed0b727b85e7888fb797db1f9
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: adbe88a44ac38868a68a6845c328ef4cf7fba60c
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604433"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verze rozhraní API v Azure zásobníku
 
@@ -36,7 +37,7 @@ Toto téma vám pomůže:
 ## <a name="summary-of-api-profiles"></a>Souhrn rozhraní API profilů
 
 - Profily rozhraní API se používají k vyjádření sadu zprostředkovatelé prostředků Azure a jejich verze rozhraní API.
-- Profily rozhraní API byly vytvořeny pro vývojáře, mohou vytvářet šablony napříč více Cloudy Azure. Profily jsou navrženy pro splňují požadavky na rozhraní, které je kompatibilní a stabilní.
+- Profily rozhraní API byly vytvořeny pro vytvoření šablony napříč více Azure cloudy. Profily jsou navrženy pro splňují vaše potřeby pro rozhraní kompatibilní a stabilní.
 - Profily jsou vydávány čtyřikrát za rok.
 - Používají se tři profil zásady vytváření názvů:
     - **Nejnovější**  
@@ -66,17 +67,11 @@ Spíše než výzkum každý poskytovatel prostředků a konkrétní verzi podpo
 
 Profily rozhraní API pracovat s nástroji, které používají Azure Resource Manager, například prostředí PowerShell, rozhraní příkazového řádku Azure, kódu, které jsou součástí sady SDK a sadu Microsoft Visual Studio. Nástroje a sady SDK můžete použít profily číst kterou verzi modulů a knihovny, které chcete zahrnout při vytváření aplikace.
 
-**Vývoj pro scénáře použití profilu**  
-Předpokládejme, že používáte prostředí PowerShell vytvořit:
+Například, pokud účet pomocí prostředí PowerShell k vytvoření úložiště pomocí **Microsoft.Storage** poskytovatele prostředků, který podporuje rozhraní api-version 2016-03-30 a virtuální počítač pomocí rozhraní api verze 2015-12-01 zprostředkovateli prostředků Microsoft.Compute. , potřebovali byste k vyhledání který podporuje modul prostředí PowerShell 2016-03-30 pro úložiště a které modul podporuje 2015-02-01 pro výpočet a instalovat je. Místo toho můžete k profilu. Použijte rutinu ** instalace profilu * profilename *** a prostředí PowerShell načte správnou verzi modulů.
 
-* Účet úložiště, který používá **Microsoft.Storage** poskytovatele prostředků, který podporuje rozhraní api-version 2016-03-30.
-* Virtuální počítač, který používá **Microsoft.Compute** poskytovatele prostředků, který podporuje rozhraní api verze 2015-12-01.
+Podobně pokud používáte Python SDK k vytvoření aplikace na základě Python, můžete zadat profil. Sada SDK načte správné moduly pro poskytovatele prostředků, které jste zadali ve vašem skriptu.
 
-Namísto hledání a instalaci prostředí PowerShell moduly, které podporují verze api, které potřebujete pro úložiště a výpočty, můžete k profilu. Použijte rutinu ** instalace profilu * profilename *** a prostředí PowerShell načte správnou verzi moduly.
-
-Podobně pokud používáte Python SDK k vytvoření aplikace na základě Python, můžete k profilu. Sada SDK načte správné moduly pro poskytovatele prostředků, které jste zadali ve vašem skriptu.
-
-Jako vývojář můžete se zaměřit na zápis vašeho řešení. Můžete vytvořit profil, zároveň budete vědět, že váš kód bude fungovat přes všechny cloudy, které podporují tento profil.
+Jako vývojář můžete se zaměřit na zápis vašeho řešení. Místo analýza, které verze api Version, poskytovatel prostředků a které cloudové funguje společně, můžete použít profil a vědět, že váš kód bude fungovat přes všechny cloudy, které podporují tento profil.
 
 ## <a name="api-profile-code-samples"></a>Ukázky kódu rozhraní API profilu
 
@@ -85,11 +80,13 @@ Můžete najít ukázky kódu můžete integrovat řešení preferovaný jazyk z
 - **PowerShell**  
 Můžete použít **AzureRM.Bootstrapper** modulu, které jsou k dispozici prostřednictvím Galerie prostředí PowerShell získat rutiny prostředí PowerShell, které jsou nutné k práci pomocí profilů verze rozhraní API. Informace najdete v tématu [profily verze rozhraní API pomocí prostředí PowerShell pro](azure-stack-version-profiles-powershell.md).
 - **Azure CLI 2.0**  
-Můžete aktualizovat konfiguraci prostředí použít profil pro konkrétní verzi rozhraní API zásobník Azure. Informace v tématu [profily verze pomocí rozhraní API pro Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
+Můžete aktualizovat konfiguraci prostředí použít profil pro konkrétní verzi rozhraní API zásobník Azure. Informace najdete v tématu [profily verze pomocí rozhraní API pro Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md).
 - **GO**  
 V sadě SDK přejděte profil je kombinaci různých typů prostředků s různými verzemi z jiné služby. profily jsou k dispozici v části profily nebo cestu s jejich verze v **rrrr-MM-DD** formátu. Informace najdete v tématu [profily verze pomocí rozhraní API pro přejděte](azure-stack-version-profiles-go.md).
 - **Ruby**  
 Ruby SDK pro Azure Resource Manager zásobníku poskytuje nástroje, které vám pomohou vytvářet a spravovat infrastrukturu. Zprostředkovatelé prostředků v sadě SDK zahrnují výpočty, virtuální sítě a úložiště s Ruby jazyk. Informace najdete v tématu [profily verze rozhraní API pro použití s Ruby](azure-stack-version-profiles-ruby.md)
+- **Python**  
+- Python SDK podporuje profily verze rozhraní API pro platformu jiný cloud, jako je například Azure zásobníku a globální Azure. Pomocí profilů rozhraní API pro vytváření řešení pro hybridní cloud. Informace najdete v tématu [pomocí rozhraní API verze profily s Pythonem](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>Další postup
 

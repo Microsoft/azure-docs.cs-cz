@@ -1,25 +1,20 @@
 ---
-title: "Konfigurace sestav pro zálohování Azure"
-description: "V tomto článku bude zmíněn konfigurace sestavy Power BI pro Azure Backup pomocí trezoru služeb zotavení."
+title: Konfigurace sestav pro zálohování Azure
+description: V tomto článku bude zmíněn konfigurace sestavy Power BI pro Azure Backup pomocí trezoru služeb zotavení.
 services: backup
-documentationcenter: 
 author: JPallavi
 manager: vijayts
-editor: 
-ms.assetid: 86e465f1-8996-4a40-b582-ccf75c58ab87
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b645d12255ab2bd6c3747eb966b2a6ecc3e284b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605225"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 V tomto článku bude zmíněn kroky konfigurace sestav pro Azure Backup pomocí trezoru služeb zotavení a chcete dostat k sestavám pomocí Power BI. Po provedení těchto kroků, můžete přímo přejít k Power BI. Chcete-li zobrazit všechny sestavy, přizpůsobení a vytváření sestav. 
@@ -147,7 +142,7 @@ Po konfiguraci účtu úložiště pro sestavy na základě trezoru služeb zota
 
    Ano, můžete konfigurovat stejný účet úložiště v rámci různých trezory k zobrazení sestav mezi trezoru. Můžete také konfigurovat stejný účet úložiště pro trezorů v rámci předplatných. Pak můžete tento účet úložiště při připojování k balíček obsahu Azure Backup v Power BI k zobrazení sestavy. Vybraný účet úložiště by však být ve stejné oblasti jako trezor služeb zotavení.
    
-## <a name="troubleshooting-errors"></a>Řešení potíží s chybami
+## <a name="troubleshooting-errors"></a>Řešení chyb
 | Detaily chyby | Řešení |
 | --- | --- |
 | Po nastavení účtu úložiště pro zálohování sestavy **účet úložiště** stále zobrazuje **není nakonfigurováno**. | Pokud jste úspěšně nakonfigurovaný účet úložiště, generování sestav dat bude procházet v i přes tento problém. Chcete-li vyřešit tento problém, přejděte na portálu Azure > všechny služby > Nastavení pro diagnostiku > RS trezoru > Upravit nastavení. Odstranit dřív nakonfigurovaná nastavení a vytvořit nové nastavení v okně stejné. Tentokrát nastavte hodnotu pole **název** k **služby**. To by měl zobrazit účet úložiště. |

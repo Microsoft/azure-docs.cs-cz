@@ -1,25 +1,27 @@
 ---
-title: 'Azure zásobník sítě: Rozdíly a důležité informace o'
+title: Azure zásobník sítě rozdíly a důležité informace | Microsoft Docs
 description: Další informace o rozdílech a důležité informace při práci se sítěmi v Azure zásobníku.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 2a4c5bce072970f158a89763ebdf4132eafe9cbe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: faff52ba5b5e2f0d573a67633d3a8411b2d7de74
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606422"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Důležité informace týkající se sítě Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Azure zásobník sítě obsahuje řadu funkcí poskytovaných sítí Azure. Existují však některé hlavní rozdíly, které byste měli vědět před nasazením síť Azure zásobníku.
+Azure zásobník sítě obsahuje řadu funkcí poskytovaných sítě Azure. Existují však některé hlavní rozdíly, které byste měli vědět před nasazením síť Azure zásobníku.
 
 Tento článek obsahuje přehled jedinečné požadavky pro Azure zásobník sítě a jejich funkce. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) tématu.
 

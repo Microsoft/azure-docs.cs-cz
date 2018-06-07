@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: Povolení podpory pro službu SharePoint uživatelský profil | Microsoft Docs"
-description: "Konfigurace Azure Active Directory Domain Services spravovaných domén na podporu synchronizace profilu pro SharePoint Server"
+title: 'Azure Active Directory Domain Services: Povolení podpory pro službu SharePoint uživatelský profil | Microsoft Docs'
+description: Konfigurace Azure Active Directory Domain Services spravovaných domén na podporu synchronizace profilu pro SharePoint Server
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: d98fbe85f35932161476a800a2fd438f0bf2b9ef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 936d760b05fcf48586739bd7538cac3dae2b6b77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587721"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurace spravované doméně kvůli podpoře synchronizace profilu pro SharePoint Server
 SharePoint Server obsahuje služba profilu uživatele, který je používán k synchronizaci profilu uživatele. Pokud chcete nastavit službu profilu uživatele, nutné příslušná oprávnění udělit v doméně služby Active Directory. Další informace najdete v tématu [udělení oprávnění služby Active Directory Domain Services pro profil synchronizace SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).

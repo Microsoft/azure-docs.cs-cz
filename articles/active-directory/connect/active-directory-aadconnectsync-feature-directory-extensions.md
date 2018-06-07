@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: rozšíření adresáře | Microsoft Docs"
-description: "Toto téma popisuje funkce rozšíření adresáře v Azure AD Connect."
+title: 'Synchronizace Azure AD Connect: rozšíření adresáře | Microsoft Docs'
+description: Toto téma popisuje funkce rozšíření adresáře v Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4430f445a836f4baa90511c71bb734eda8674249
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: dda35e63c209951547a667c46639dc0f37c87b43
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593628"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizace Azure AD Connect: rozšíření adresáře
 Rozšíření adresáře můžete rozšířit schéma v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory. Tato funkce umožňuje využívání atributy, které můžete dál spravovat místní stavět obchodní aplikace. Tyto atributy mohou být využívány prostřednictvím [rozšíření adresáře Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graph](https://graph.microsoft.io/). Dostupné atributy můžete zobrazit pomocí [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/en-us/graph/graph-explorer), v uvedeném pořadí.
@@ -56,7 +58,7 @@ Tyto atributy jsou nyní k dispozici prostřednictvím Azure AD Graph API. Dotaz
 Nebo můžete zadat dotaz na atributy prostřednictvím rozhraní Microsoft Graph API pomocí [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/en-us/graph/graph-explorer#).
 
 >[!NOTE]
-> Budete muset požádat o atributy, které má být vrácen. Explicitně vyberte atributy takto: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
+> Budete muset požádat o atributy, které má být vrácen. Explicitně vyberte atributy takto: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
 > Další informace najdete v tématu [Microsoft Graph: použijte parametry dotazu](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter).
 

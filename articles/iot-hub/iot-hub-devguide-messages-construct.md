@@ -1,24 +1,19 @@
 ---
 title: Pochopení formát zprávy Azure IoT Hub | Microsoft Docs
 description: Příručka vývojáře - popisuje formát a očekávaný obsah zprávy IoT Hub.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633923"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv služby IoT Hub
 
@@ -49,7 +44,7 @@ Následující tabulka uvádí sadu vlastností systému ve zprávách služby I
 | ExpiryTimeUtc |Datum a čas vypršení platnosti zprávy. |
 | EnqueuedTime |Datum a čas [Cloud-zařízení] [ lnk-c2d] zpráva byla přijata službou IoT Hub. |
 | CorrelationId |Vlastnosti řetězce v zprávu odpovědi, která obvykle obsahuje MessageId žádosti v vzory požadavku a odpovědi. |
-| ID uživatele |ID používané k určení původu zprávy. Zprávy generované IoT Hub, je nastavený na `{iot hub name}`. |
+| UserId |ID používané k určení původu zprávy. Zprávy generované IoT Hub, je nastavený na `{iot hub name}`. |
 | Potvrzení |Generátor zpráva zpětnou vazbu. Tato vlastnost je v zprávy typu cloud zařízení slouží k vyžádání IoT Hub, která generují zprávy zpětné vazby v důsledku spotřeby zprávy zařízení. Možné hodnoty: **žádné** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: zobrazí zpráva zpětné vazby, pokud zpráva byla dokončena, **záporné**: přijímat zpráva zpětné vazby, pokud platnost zprávy (nebo bylo dosaženo maximální doručení počet) bez jeho dokončení zařízení, nebo **úplné**: kladné a záporné. Další informace najdete v tématu [zprávy zpětné vazby][lnk-feedback]. |
 | ConnectionDeviceId |ID nastavit službou IoT Hub na zpráv typu zařízení cloud. Obsahuje **deviceId** zařízení, která zprávu odeslala. |
 | ConnectionDeviceGenerationId |ID nastavit službou IoT Hub na zpráv typu zařízení cloud. Obsahuje **generationId** (dle [vlastnosti identity zařízení][lnk-device-properties]) zařízení, která zprávu odeslala. |

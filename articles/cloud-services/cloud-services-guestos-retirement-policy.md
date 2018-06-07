@@ -1,11 +1,11 @@
 ---
-title: "Možnosti podpory a zásady vyřazení Průvodce pro Azure hostovaného operačního systému | Microsoft Docs"
-description: "Poskytuje informace o co podpory společnosti Microsoft se s ohledem na Azure hostovaného operačního systému používá cloudové služby."
+title: Možnosti podpory a zásady vyřazení Průvodce pro Azure hostovaného operačního systému | Microsoft Docs
+description: Poskytuje informace o co podpory společnosti Microsoft se s ohledem na Azure hostovaného operačního systému používá cloudové služby.
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 919dd781-4dc6-4e50-bda8-9632966c5458
 ms.service: cloud-services
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
-ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfa3bac95b9827789950b4931e3198237de4a1fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608558"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure zásad možnosti podpory a vyřazení hostovaného operačního systému
 Informace na této stránce má vztah k Azure hostovaného operačního systému ([hostovaného operačního systému](cloud-services-guestos-update-matrix.md)) pro cloudové služby worker a webová role (PaaS). Nevztahuje se na virtuálních počítačích (IaaS).
@@ -33,9 +34,7 @@ Tato zásada je
 
 V některých případech může být podporována více než dvě řady nebo verze. Informace o podpoře oficiální hostovaného operačního systému se zobrazí na [verzí hostovaného operačního systému Azure a kompatibilních sad SDK](cloud-services-guestos-update-matrix.md).
 
-## <a name="when-a-guest-os-family-or-version-is-retired"></a>Když je vyřazeno rodiny hostovaného operačního systému nebo verze
-Nové hostovaného operačního systému **rodiny** uvádíme zopakovat po vydání nové oficiální verze operačního systému Windows Server. Vždy, když je zavádí nové rodiny hostovaného operačního systému, bude Microsoft vyřazení nejstarší rodiny hostovaného operačního systému.
-
+## <a name="when-a-guest-os-version-is-retired"></a>Když je vyřazeno verze hostovaného operačního systému
 Nové hostovaného operačního systému **verze** vydávají o každý měsíc umožňují začlenění nejnovějších aktualizací střediska MSRC. Z důvodu pravidelných měsíčních aktualizací obvykle verze hostovaného operačního systému je zakázána přibližně 60 dnů po jeho vydání. Tato aktivita udržuje alespoň dvě verze hostovaného operačního systému pro každou skupinu, která je k dispozici pro použití.
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>Proces při vyřazení rodiny hostovaného operačního systému
@@ -77,5 +76,5 @@ Doporučujeme vám, že používáte nejnovější rodiny hostovaného operačn�
 
 Pokud architektura vaší webové aplikace, závisí na základní funkce operačního systému, použijte možnosti podporované platformy, jako [spuštění úlohy](cloud-services-startup-tasks.md) nebo jiných mechanismů rozšíření. Alternativně můžete také použít [virtuální počítače Azure](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS – infrastruktura jako služba), kde je zodpovědná za údržbu příslušný operační systém.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Přečtěte si nejnovější [uvolní hostovaného operačního systému](cloud-services-guestos-update-matrix.md).

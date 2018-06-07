@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: Principy výchozí konfigurace | Microsoft Docs"
-description: "Tento článek popisuje výchozí konfigurace v synchronizaci Azure AD Connect."
+title: 'Synchronizace Azure AD Connect: Principy výchozí konfigurace | Microsoft Docs'
+description: Tento článek popisuje výchozí konfigurace v synchronizaci Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f4278dc3af1074b6de299444d2b205396bc0a9c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595304"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizace služby Azure AD Connect: Principy výchozí konfigurace
 Tento článek vysvětluje out-of-box konfigurační pravidla. Ho dokumentů, pravidla a jak tato pravidla vliv na konfiguraci. Je také vás provede výchozí konfigurace synchronizace služby Azure AD Connect. Cílem je, že čtečka plně chápe, jak funguje konfigurační model s názvem deklarativní zřizování v příkladu reálného. Tento článek předpokládá, že jste již nainstalovali a konfigurace synchronizace služby Azure AD Connect pomocí Průvodce instalací.

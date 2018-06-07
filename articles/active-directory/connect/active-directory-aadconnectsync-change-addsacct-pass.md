@@ -1,12 +1,12 @@
 ---
-title: "Synchronizace Azure AD Connect: Změna hesla účtu služby AD DS | Microsoft Docs"
-description: "Tento dokument téma popisuje postup aktualizace Azure AD Connect po změně hesla účtu služby AD DS."
+title: 'Synchronizace Azure AD Connect: Změna hesla účtu služby AD DS | Microsoft Docs'
+description: Tento dokument téma popisuje postup aktualizace Azure AD Connect po změně hesla účtu služby AD DS.
 services: active-directory
-keywords: "AD DS účet, heslo a účet služby Active Directory"
-documentationcenter: 
+keywords: AD DS účet, heslo a účet služby Active Directory
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5bc296b594917f68f35d7d15653b7b0c60cde514
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: a4d0d062b28b03de7f1e606202dddae28bf6a2f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592455"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Změna hesla účtu služby AD DS
 Účet služby AD DS odkazuje na uživatelský účet používaný ke komunikaci s místní služby Active Directory přes Azure AD Connect. Pokud změníte heslo účtu služby AD DS, je třeba aktualizovat službu Azure AD Connect synchronizace pomocí nového hesla. Jinak synchronizace mohou už správně synchronizovat s místní služby Active Directory a bude dojde k následujícím chybám:

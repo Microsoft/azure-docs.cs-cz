@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services pro Azure Cloud poskytovatelů řešení | Microsoft Docs"
-description: "Azure Active Directory Domain Services pro poskytovatelů Azure Cloud Solution Providers."
+title: Azure Active Directory Domain Services pro Azure Cloud poskytovatelů řešení | Microsoft Docs
+description: Azure Active Directory Domain Services pro poskytovatelů Azure Cloud Solution Providers.
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 313c4853b0f585921739779bb764c50036c9ac8a
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: f8a6e73420f1b53b8c253842001e8227e48e7d4a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589521"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Doména služby Azure Active Directory (AD) pro poskytovatelů Azure Cloud Solution Providers (CSP)
 Tento článek vysvětluje, jak můžete použít Azure AD Domain Services v předplatné Azure CSP.
@@ -84,7 +86,7 @@ Při správě spravované domény v předplatné Azure CSP, platí následujíc�
 * **Uživatelský účet vytvořený pro trvalou správu musí být přidaný do skupiny "Administrators řadič domény AAD.:** 'správci AAD řadič domény, skupina má oprávnění k provedení určité delegované správy úloh ve spravované doméně. Tyto úlohy patří konfigurace DNS, vytvoření organizační jednotky, Správa zásad skupiny atd. Uživatelský účet pro CSP partnera k provádění takových úloh ve spravované doméně, musí být vytvořen v rámci zákazníka adresář Azure AD. Pověření pro tento účet musí být sdílená s agenty správce partnera CSP. Navíc musí tento uživatelský účet přidat do skupiny "Administrators AAD řadiče domény" Povolit úlohy konfigurace na spravované domény, ke které se provádí pomocí tohoto uživatelského účtu.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Registrace do programu Azure CSP](https://partnercenter.microsoft.com/partner/programs) a začít vytvářet obchodní prostřednictvím zprostředkovatele kryptografických služeb Azure.
 * Projděte si seznam [služby Azure k dispozici v Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Povolení služby Azure AD Domain Services pomocí PowerShellu](active-directory-ds-enable-using-powershell.md)

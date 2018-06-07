@@ -6,20 +6,17 @@ services: cosmos-db
 author: SnehaGunda
 manager: kfile
 editor: ''
-documentationcenter: ''
-ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: e4995146433d0090849fe17175b152a6e45809f4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ce2c0ddcce3813990bf819477f7db425d70e3595
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612295"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Výkonu a možností škálování testování pomocí Azure Cosmos DB
 

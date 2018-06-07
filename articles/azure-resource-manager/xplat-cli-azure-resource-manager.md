@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 90dd1b6b7e65178f6b339e4ac0bb781fb74a25a6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4111d1d990f3e9efb78fae0476b027d5bae013af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603242"
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Použití rozhraní příkazového řádku Azure ke správě prostředků Azure a skupiny prostředků
 
@@ -215,7 +216,7 @@ Můžete odebrat prostředek nebo skupina prostředků. Když odeberete skupinu 
   az storage account delete -n myuniquestorage -g TestRG1
   ```
 
-* Chcete-li odstranit skupinu prostředků a všechny její prostředky, použijte **odstranění skupiny az** příkaz.
+* Pokud chcete odstranit skupinu prostředků a všechny její prostředky, použijte příkaz **az group delete**.
 
   ```azurecli-interactive
   az group delete -n TestRG1
@@ -227,4 +228,4 @@ Pro oba příkazy zobrazí se výzva k potvrzení, že chcete odebrat prostřede
 * Další informace o vytváření šablon Resource Manageru, najdete v části [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).
 * Další informace o nasazení šablony najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manageru](resource-group-template-deploy-cli.md).
 * Existující prostředky můžete přesunout do nové skupiny prostředků. Příklady najdete v tématu [přesunutí prostředků do nové skupiny prostředků nebo předplatného](resource-group-move-resources.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
+* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

@@ -1,24 +1,20 @@
 ---
-title: "Azure Backup Server chrání stav systému a obnoví holý počítač | Microsoft Docs"
-description: "Použijte Azure Backup Server k zálohování stavu systému a zajištění ochrany úplné obnovení systému (BMR)."
+title: Azure Backup Server chrání stav systému a obnoví holý počítač
+description: Použijte Azure Backup Server k zálohování stavu systému a zajištění ochrany úplné obnovení systému (BMR).
 services: backup
-documentationcenter: 
 author: markgalioto
 manager: carmonm
-keywords: 
-ms.assetid: 
+keywords: ''
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.targetplatform: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: markgal,masaran
-ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: markgal
+ms.openlocfilehash: d35f8667cb1ca9a0b3abd08450ebc647d6d12276
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607204"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Zálohování stavu systému a obnovení na holý počítač pomocí serveru Azure Backup
 
@@ -33,33 +29,33 @@ Azure Backup Server zálohuje stav systému a poskytuje ochranu úplné obnoven�
 
 Následující tabulka shrnuje, co můžete zálohovat a obnovit. Podrobné informace o verzích aplikace, které se dají chránit pomocí stavu systému a úplné obnovení systému najdete v tématu [jaké serveru Azure Backup zálohuje?](backup-mabs-protection-matrix.md).
 
-|Zálohování|Problém|Obnovení ze zálohy Azure Backup Server|Obnovení ze zálohy stavu systému|ÚPLNÉ OBNOVENÍ SYSTÉMU|
+|Backup|Problém|Obnovení ze zálohy Azure Backup Server|Obnovení ze zálohy stavu systému|ÚPLNÉ OBNOVENÍ SYSTÉMU|
 |----------|---------|---------------------------|------------------------------------|-------|
-|**Data souborů**<br /><br />Zálohování regulární dat<br /><br />Zálohu BMR nebo stavu|Soubor ke ztrátě dat|Ano|N|N|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|N|Ano|Ano|
-|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (datové svazky v pořádku)|N|N|Ano|
+|**Data souborů**<br /><br />Zálohování regulární dat<br /><br />Zálohu BMR nebo stavu|Soubor ke ztrátě dat|Ano|Ne|Ne|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|Ne|Ano|Ano|
+|**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (datové svazky v pořádku)|Ne|Ne|Ano|
 |**Data souborů**<br /><br />Azure Backup Server zálohování dat souborů<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (datové svazky ztraceny)|Ano|Ne|Ano (BMR následované pravidelným obnovením zálohovaných souborová data)|
-|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Ke ztrátě lokality, seznamy, položky seznamu, dokumenty|Ano|N|N|
-|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|N|Ano|Ano|
-|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Zotavení po havárii|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě virtuálních počítačů|Ano|N|N|
-|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ztraceného nebo poškozeného operačního systému|N|Ano|Ano|
-|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě hostitele Hyper-V (virtuálních počítačů beze změn)|N|N|Ano|
-|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě hostitele Hyper-V (virtuální počítače ke ztrátě)|N|N|Ano<br /><br />BMR, následované pravidelným obnovením serveru Azure Backup|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Data ke ztrátě aplikací|Ano|N|N|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|N|Y|Ano|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (protokoly databáze nebo transakcí beze změn)|N|N|Ano|
-|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (protokoly transakcí databáze nebo ke ztrátě)|N|N|Ano<br /><br />Obnovení BMR následované pravidelným obnovením serveru Azure Backup|
+|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Ke ztrátě lokality, seznamy, položky seznamu, dokumenty|Ano|Ne|Ne|
+|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|Ne|Ano|Ano|
+|**Data služby SharePoint**:<br /><br />Zálohování Azure záložní Server farmy dat<br /><br />Zálohu BMR nebo stavu|Zotavení po havárii|Ne|Ne|Ne|
+|Windows Server 2012 R2 Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě virtuálních počítačů|Ano|Ne|Ne|
+|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ztraceného nebo poškozeného operačního systému|Ne|Ano|Ano|
+|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě hostitele Hyper-V (virtuálních počítačů beze změn)|Ne|Ne|Ano|
+|Hyper-V<br /><br />Zálohování Azure zálohování serveru hostitele Hyper-V nebo hosta<br /><br />Zálohování BMR nebo systému stav hostitele|Ke ztrátě hostitele Hyper-V (virtuální počítače ke ztrátě)|Ne|Ne|Ano<br /><br />BMR, následované pravidelným obnovením serveru Azure Backup|
+|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Data ke ztrátě aplikací|Ano|Ne|Ne|
+|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztraceného nebo poškozeného operačního systému|Ne|Y|Ano|
+|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (protokoly databáze nebo transakcí beze změn)|Ne|Ne|Ano|
+|SQL Server nebo Exchange<br /><br />Azure zálohování aplikace Zálohování serveru<br /><br />Zálohu BMR nebo stavu|Ztráta serveru (protokoly transakcí databáze nebo ke ztrátě)|Ne|Ne|Ano<br /><br />Obnovení BMR následované pravidelným obnovením serveru Azure Backup|
 
 ## <a name="how-system-state-backup-works"></a>Jak funguje zálohování stavu systému
 
 Při spuštění zálohy stavu systému, Backup Server komunikuje se zálohování serveru o zálohu stavu systému serveru. Ve výchozím nastavení zálohování serveru a zálohování serveru používají na jednotku, která má nejvíce dostupného volného místa. Informace o této jednotky se ukládají do soubor PSDataSourceConfig.xml. Toto je na jednotku, která používá zálohování serveru k zálohování.
 
-Můžete přizpůsobit na jednotku, která používá záložní Server pro zálohování stavu systému. Na chráněném serveru přejděte na C:\Program Files\Microsoft Data Protection Manager\MABS\Datasources. Otevřete soubor PSDataSourceConfig.xml pro úpravy. Změna \<FilesToProtect\> hodnotu pro písmeno jednotky. Uložte a zavřete soubor. Pokud je sada skupiny ochrany k ochraně stav systému počítače, spusťte kontrolu konzistence. Pokud je vygenerována výstraha, vyberte **upravit skupinu ochrany** ve výstraze a pak dokončete průvodce. Pak spusťte další kontrolu konzistence.
+Můžete přizpůsobit na jednotku, která používá záložní Server pro zálohování stavu systému. Na chráněném serveru přejděte na C:\Program Files\Microsoft Data Protection Manager\MABS\Datasources. Otevřete soubor PSDataSourceConfig.xml pro úpravy. Změna \<FilesToProtect\> hodnotu pro písmeno jednotky. Uložte soubor a zavřete ho. Pokud je sada skupiny ochrany k ochraně stav systému počítače, spusťte kontrolu konzistence. Pokud je vygenerována výstraha, vyberte **upravit skupinu ochrany** ve výstraze a pak dokončete průvodce. Pak spusťte další kontrolu konzistence.
 
 Všimněte si, že pokud ochranný server v clusteru, je možné, že disk klastru bude zvolen jako jednotku s největším místem na. Pokud změně vlastnictví této jednotky byla přepnuta na jiný uzel a spuštění zálohy stavu systému, jednotka není k dispozici a zálohování se nezdaří. V tomto scénáři upravte soubor PSDataSourceConfig.xml a nasměrovat na místní disk.
 
-V dalším kroku zálohování serveru vytvoří složku s názvem WindowsImageBackup v kořenové složce obnovení. Jako Zálohování serveru Windows vytváření zálohy se všechna data je umístěn v této složce. Po dokončení zálohování se soubor přenese k počítači zálohování serveru. Vezměte na vědomí následující informace:
+V dalším kroku zálohování serveru vytvoří složku s názvem WindowsImageBackup v kořenové složce obnovení. Jako Zálohování serveru Windows vytváření zálohy se všechna data je umístěn v této složce. Po dokončení zálohování se soubor přenese k počítači zálohování serveru. Všimněte si následujících informací:
 
 * Tato složka a její obsah nejsou vyčistit až po dokončení zálohování nebo přenos. Nejlepší způsob, jak nad tímto problémem přemýšlet je, že pro příští zálohy je dokončena dochází k rezervaci místo.
 * Vytvoření složky se pokaždé, když se provádí zálohu. Razítko času a data reflektovat čas poslední zálohy stavu systému.
@@ -220,9 +216,9 @@ Spusťte zálohování serveru:
 
 5.  Na **potvrzení** vyberte **obnovit**. Po obnovení restartujte server.
 
-6.  Také můžete spustit obnovení stavu systému na příkazovém řádku. K tomu spusťte zálohování serveru v počítači, který chcete obnovit. Chcete-li získat identifikátor verze, na příkazovém řádku, zadejte:```wbadmin get versions -backuptarget \<servername\sharename\>```
+6.  Také můžete spustit obnovení stavu systému na příkazovém řádku. K tomu spusťte zálohování serveru v počítači, který chcete obnovit. Chcete-li získat identifikátor verze, na příkazovém řádku, zadejte: ```wbadmin get versions -backuptarget \<servername\sharename\>```
 
-    Identifikátor verze slouží ke spuštění obnovení stavu systému. Na příkazovém řádku zadejte:```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+    Identifikátor verze slouží ke spuštění obnovení stavu systému. Na příkazovém řádku zadejte: ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
 
     Potvrďte, že chcete spustit obnovení. Zobrazí se v procesu v okně příkazového řádku. Vytvoří se protokol obnovení. Po obnovení restartujte server.
 

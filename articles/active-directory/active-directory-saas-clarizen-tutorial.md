@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2017
+ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 8af9e7023142077fdeed0262e5f39921b158a14f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a77ac397dfca1be948b6d0c05a50c23c0cd7879c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34590643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Kurz: Azure Active Directory integrace s Clarizen
 
@@ -185,6 +186,11 @@ Na portálu Azure vytvořte testovací uživatele volat Britta Simon.
     d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-a-clarizen-test-user"></a>Vytvoření zkušebního uživatele Clarizen
+
+Cílem této části je vytvoření uživatele v Clarizen nazývá Britta Simon. Clarizen podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-clarizen-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
+
+**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
+
 Pokud chcete povolit uživatelům Azure AD přihlášení k Clarizen, je třeba zřídit uživatelské účty. V případě Clarizen zřizování je ruční úloha.
 
 1. Přihlaste se k serveru vaší společnosti Clarizen jako správce.
@@ -244,6 +250,7 @@ Když kliknete na dlaždici Clarizen na přístupovém panelu, můžete by měl 
 
 * [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Konfiguraci zřizování uživatelů](active-directory-saas-clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

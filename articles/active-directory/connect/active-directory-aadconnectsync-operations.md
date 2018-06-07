@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: provozní úlohy a důležité informace | Microsoft Docs"
-description: "Toto téma popisuje provozní úlohy synchronizace Azure AD Connect a postup přípravy operační této součásti."
+title: 'Synchronizace Azure AD Connect: provozní úlohy a důležité informace | Microsoft Docs'
+description: Toto téma popisuje provozní úlohy synchronizace Azure AD Connect a postup přípravy operační této součásti.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0dfdae45ef7508337a1233c651d355d83b9f0430
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 6e35dc0ad8493d2f92b7e81fc66f444048482bd9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592938"
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Synchronizace Azure AD Connect: provozní úlohy a zvážení
 Cílem tohoto tématu je k popisu provozní úlohy pro synchronizaci Azure AD Connect.
@@ -26,7 +28,7 @@ Cílem tohoto tématu je k popisu provozní úlohy pro synchronizaci Azure AD Co
 ## <a name="staging-mode"></a>Pracovní režim
 Pracovní režim lze použít pro několik scénářů, včetně:
 
-* Vysoká dostupnost.
+* Vysoká dostupnost
 * Testování a nasazení nové změny konfigurace.
 * Zavedení nového serveru a vyřadit z provozu starý.
 
@@ -71,7 +73,7 @@ Pokud jste provedli vlastní změny na primární server a chcete porovnání ko
 Nyní máte připravené export změny do Azure AD a místní AD (Pokud používáte hybridní nasazení systému Exchange). Následující kroky umožňují kontrolovat, co se má změnit před zahájením ve skutečnosti exportu do adresáře.
 
 #### <a name="verify"></a>Ověřit
-1. Spusťte příkazový řádek a přejděte na`%ProgramFiles%\Microsoft Azure AD Sync\bin`
+1. Spusťte příkazový řádek a přejděte na `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. Spustit: `csexport "Name of Connector" %temp%\export.xml /f:x` název konektoru najdete v synchronizační služba. Je podobná "contoso.com – AAD" název pro Azure AD.
 3. Spustit: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` soubor v adresáři % temp % s názvem export.csv, který může být prověřen v aplikaci Microsoft Excel. Tento soubor obsahuje všechny změny, které mají být exportovány.
 4. Proveďte potřebné změny na data nebo konfigurace a spusťte tyto kroky opakujte (Import a synchronizaci a ověřte, zda) dokud změny, které mají být exportovány se očekává.
@@ -124,7 +126,7 @@ Pokud nepoužíváte SQL Server Express, která se dodává s Azure AD Connect, 
 
 K Azure AD Connect v verze 1.1.524.0 byla přidána podpora pro SQL AOA. Před instalací Azure AD Connect je nutné povolit SQL AOA. Při instalaci Azure AD Connect zjistí, zda zadaná instance SQL je povoleno pro SQL AOA, nebo ne. Pokud je povoleno SQL AOA, Azure AD Connect další hodnoty, pokud SQL AOA je konfigurovaná pro použití replikace synchronní nebo asynchronní replikaci. Při nastavování naslouchacího procesu skupiny dostupnosti, se doporučuje nastavit vlastnost RegisterAllProvidersIP na 0. Je to proto, že Azure AD Connect aktuálně používá SQL Native Client k připojení k SQL a nativní klient SQL nepodporuje použití vlastnosti MultiSubNetFailover.
 
-## <a name="appendix-csanalyzer"></a>Appendix CSAnalyzer
+## <a name="appendix-csanalyzer"></a>Příloha CSAnalyzer
 Najdete v části [ověřte](#verify) o tom, jak pomocí tohoto skriptu.
 
 ```

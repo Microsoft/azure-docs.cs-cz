@@ -1,24 +1,26 @@
 ---
-title: "Azure Active Directory Domain Services: Začínáme | Microsoft Docs"
-description: "Povolit Azure Active Directory Domain Services pomocí portálu Azure"
+title: 'Azure Active Directory Domain Services: Začínáme | Microsoft Docs'
+description: Povolit Azure Active Directory Domain Services pomocí portálu Azure
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 2a171490faf9804196c93d33c5ee74d22533c044
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f7c0372ec53157d42a229feddb5b3fce92ff4cd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587898"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure
 
@@ -34,22 +36,25 @@ Průvodce automaticky vytvoří skupinu pro správu v adresáři služby Azure A
 
 1. Chcete-li nakonfigurovat členství ve skupině, klikněte na tlačítko **AAD řadič domény správci**.
 
-    ![Nakonfigurujte členství ve skupině](./media/getting-started/domain-services-blade-admingroup.png)
+    ![Konfigurace členství ve skupinách](./media/getting-started/domain-services-blade-admingroup.png)
 
 2. Klikněte **přidat členy** tlačítko Přidat uživatele z adresáře služby Azure AD do skupiny Administrators.
 
 3. Až budete hotovi, klikněte na tlačítko **OK** přesunout na **Souhrn** stránce průvodce.
 
-4. Na **Souhrn** stránky v průvodci zkontrolujte nastavení konfigurace pro spravované domény. Můžete přejít zpět do jakéhokoli kroku průvodce provést změny, v případě potřeby. Až budete hotovi, klikněte na tlačítko **OK** k vytvoření nové spravované domény.
+
+## <a name="deploy-your-managed-domain"></a>Nasadit spravované doméně
+
+1. Na **Souhrn** stránky v průvodci zkontrolujte nastavení konfigurace pro spravované domény. Můžete přejít zpět do jakéhokoli kroku průvodce provést změny, v případě potřeby. Až budete hotovi, klikněte na tlačítko **OK** k vytvoření nové spravované domény.
 
     ![Souhrn](./media/getting-started/domain-services-blade-summary.png)
 
-5. Zobrazí oznámení, že zobrazuje průběh nasazení služby Azure AD Domain Services. Kliknutím na oznámení najdete podrobný průběh nasazení.
+2. Zobrazí oznámení, že zobrazuje průběh nasazení služby Azure AD Domain Services. Kliknutím na oznámení najdete podrobný průběh nasazení.
 
     ![Oznámení – v průběhu nasazení](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
-## <a name="provision-your-managed-domain"></a>Zřídit vaší spravované domény
+## <a name="check-the-deployment-status-of-your-managed-domain"></a>Zkontrolujte stav nasazení vaší spravované domény
 Proces zřizování vaší spravované domény může trvat až jednu hodinu.
 
 1. Během nasazení, můžete vyhledat 'domain services, na **vyhledávání prostředků** vyhledávacího pole. Vyberte **Azure AD Domain Services** z výsledku hledání. **Azure AD Domain Services** okno uvádí spravované domény, který se připravuje.

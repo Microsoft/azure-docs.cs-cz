@@ -1,24 +1,20 @@
 ---
-title: "Začínáme s Azure IoT Hub dvojčata zařízení (uzel) | Microsoft Docs"
-description: "Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. SDK služby Azure IoT pro Node.js použijete k implementaci aplikaci simulovaného zařízení a aplikace služby, které přidá značky a spustí dotaz IoT Hub."
-services: iot-hub
-documentationcenter: node
+title: Začínáme s Azure IoT Hub dvojčata zařízení (uzel) | Microsoft Docs
+description: Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. SDK služby Azure IoT pro Node.js použijete k implementaci aplikaci simulovaného zařízení a aplikace služby, které přidá značky a spustí dotaz IoT Hub.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: 314c88e4-cce1-441c-b75a-d2e08e39ae7d
+manager: ''
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: elioda
-ms.openlocfilehash: df49f054b5eb26c3d68f088bc05f5209cf2ebccf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbb28d7df104887a4056489e9f693ce28ec406df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635096"
 ---
 # <a name="get-started-with-device-twins-node"></a>Začínáme s dvojčata zařízení (uzel)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -192,7 +188,7 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která se při
    
     ![][3]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidat zařízení metadat jako značky z back-end aplikace a zapsal aplikace simulovaného zařízení do sestavy informace o připojení k zařízení v dvojče zařízení. Také jste zjistili, jak dotazovat tyto informace pomocí dotazu jazyka SQL jako IoT Hub.
 
 Použijte v následujících zdrojích informací další postup:

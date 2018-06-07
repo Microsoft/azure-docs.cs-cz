@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604280"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků služby App Service pro odpojené prostředí Azure zásobníku zabezpečeným službou AD FS
 
@@ -81,6 +82,12 @@ Abyste mohli nasadit služby App Service v odpojeném prostředí, musíte nejd�
     1. Klikněte na tlačítko **připojit** vedle položky **předplatných Azure zásobníku** pole.
         - Zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a klikněte na tlačítko **přihlásit**.
     2. V **předplatných Azure zásobníku** vyberte **výchozí předplatné zprostředkovatele**.
+    
+    > [!NOTE]
+    > Aplikace služby lze nasadit pouze do **výchozí zprostředkovatel odběru** v tuto chvíli.  V budoucí aktualizaci služby App Service nasadí do nové předplatné měření byla zavedená v zásobníku 1804 Azure a všechna existující nasazení budou migrovat do této nové předplatné také.
+    >
+    >
+    
     3. V **umístění zásobník Azure** , vyberte umístění, které odpovídá oblast, že nasazujete. Vyberte například **místní** Pokud vaše nasazení do Azure zásobníku Development Kit.
     4. Klikněte na **Další**.
 
@@ -96,12 +103,12 @@ Abyste mohli nasadit služby App Service v odpojeném prostředí, musíte nejd�
 
     ![Instalační program aplikace služby][5]
 
-9. Zadejte informace pro sdílené složky a potom klikněte na **Další**. Plně kvalifikovaný název domény nebo IP adresu svého souborového serveru, musíte použít adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.
+9. Zadejte informace pro sdílené složky a potom klikněte na **Další**. Plně kvalifikovaný název domény nebo IP adresu svého souborového serveru, musíte použít adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites
 
-> [!NOTE]
-> Instalační program se pokusí o test připojení ke sdílení souborů než budete pokračovat.  Ale pokud jste vybrali k nasazení v existující virtuální síť, instalační program nemusí být možné se připojit ke sdílení souborů a zobrazí upozornění, s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o sdílení souborů a pokračovat, pokud jsou správné.
->
->
+    > [!NOTE]
+    > Instalační program se pokusí o test připojení ke sdílení souborů než budete pokračovat.  Ale pokud jste vybrali k nasazení v existující virtuální síť, instalační program nemusí být možné se připojit ke sdílení souborů a zobrazí upozornění, s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o sdílení souborů a pokračovat, pokud jsou správné.
+    >
+    >
 
    ![Instalační program aplikace služby][8]
 
@@ -128,10 +135,10 @@ Abyste mohli nasadit služby App Service v odpojeném prostředí, musíte nejd�
 
 12. Zadejte podrobnosti serveru SQL Server instance serveru použitý pro hostování databází zprostředkovatele prostředků služby App Service a pak klikněte na tlačítko **Další**. Instalační program ověří vlastnosti připojení SQL. Můžete **musí** zadejte interních ip nebo plně kvalifikovaný název domény pro název serveru SQL Server.
 
-> [!NOTE]
-> Instalační program se pokusí o test připojení k systému SQl Server, než budete pokračovat.  Ale pokud jste vybrali k nasazení v existující virtuální síť, instalační program nemusí být možné se připojit k systému SQL Server a zobrazí upozornění s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o systému SQL Server a pokračovat, pokud jsou správné.
->
->
+    > [!NOTE]
+    > Instalační program se pokusí o test připojení k systému SQl Server, než budete pokračovat.  Ale pokud jste vybrali k nasazení v existující virtuální síť, instalační program nemusí být možné se připojit k systému SQL Server a zobrazí upozornění s dotazem, jestli chcete pokračovat.  Zkontrolujte zadané informace o systému SQL Server a pokračovat, pokud jsou správné.
+    >
+    >
    
    ![Instalační program aplikace služby][12]
 

@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 05/22/2018
 ms.author: anwestg
-ms.openlocfilehash: 9554309522e4a1e60fd3599b9a19bcf9cf4bbefb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f44e6e917058306e37b9eb99819afda76a742389
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604263"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků služby App Service se zásobníkem Azure
 
@@ -66,6 +67,12 @@ K nasazení zprostředkovatele prostředků služby App Service, postupujte takt
         * Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure zásobníku. Klikněte na tlačítko **přihlášení**.
         * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například, cloudadmin@azurestack.local. Zadejte své heslo a klikněte na tlačítko **přihlásit**.
     2. V **předplatných Azure zásobníku** vyberte **výchozí předplatné zprostředkovatele**.
+    
+    > [!NOTE]
+    > Aplikace služby lze nasadit pouze do **výchozí zprostředkovatel odběru** v tuto chvíli.  V budoucí aktualizaci služby App Service nasadí do nové předplatné měření byla zavedená v zásobníku 1804 Azure a všechna existující nasazení budou migrovat do této nové předplatné také.
+    >
+    >
+    
     3. V **umístění zásobník Azure** , vyberte umístění, které odpovídá oblast, že nasazujete. Vyberte například **místní** Pokud vaše nasazení do Azure zásobníku Development Kit.
 
     ![Instalační program aplikace služby][3]

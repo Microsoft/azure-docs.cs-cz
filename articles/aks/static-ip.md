@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 2/12/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c250ef3520079f58eea2362212d861fdb134e1af
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9f6c34bd09d022b2453869c048f5f3cda7580b91
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596657"
 ---
 # <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použijte statickou IP adresu s nástrojem pro vyrovnávání zatížení Azure Kubernetes služby (AKS)
 
@@ -21,12 +22,18 @@ V některých případech může například při spouštění služby Kubernete
 
 ## <a name="create-static-ip-address"></a>Vytvořte statické IP adresy
 
-Vytvořte statickou veřejnou IP adresu pro službu Kubernetes. IP adresa musí být vytvořen ve skupině prostředků, který byl vytvořen automaticky během nasazení clusteru. Informace pro různé skupiny prostředků AKS a jak identifikovat automaticky vytvořit skupinu prostředků najdete v tématu [– nejčastější dotazy AKS][aks-faq-resource-group].
+Vytvořte statickou veřejnou IP adresu pro službu Kubernetes. IP adresa musí být vytvořen v AKS **uzlu** skupinu prostředků. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
+
+```azurecli-interactive
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
+
+MC_myResourceGroup_myAKSCluster_eastus
+```
 
 Použití [vytvoření veřejné IP adresy sítě az] [ az-network-public-ip-create] příkaz pro vytvoření IP adresy.
 
 ```azurecli-interactive
-az network public-ip create --resource-group MC_myResourceGRoup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
 ```
 
 Poznamenejte si adresu IP.
@@ -60,7 +67,7 @@ Poznamenejte si adresu IP.
  V případě potřeby adresu můžete načíst pomocí [seznam veřejné ip sítě az] [ az-network-public-ip-list] příkaz.
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGRoup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
 ```
 
 ```console
@@ -122,3 +129,4 @@ Events:
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

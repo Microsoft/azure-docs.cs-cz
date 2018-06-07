@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Connect: Další kroky a postupy pro správu Azure AD Connect | Microsoft Docs"
-description: "Zjistěte, jak rozšířit výchozí konfigurace a provozní úlohy pro Azure AD Connect."
+title: 'Azure AD Connect: Další kroky a postupy pro správu Azure AD Connect | Microsoft Docs'
+description: Zjistěte, jak rozšířit výchozí konfigurace a provozní úlohy pro Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e898ee203276b072605fe0f21af633ecfdaae1fe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f8b73e70606adc2b1fa593745b3ac426c679f417
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592081"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Další kroky a postupy pro správu Azure AD Connect
 Chcete-li přizpůsobit Azure Active Directory (Azure AD) připojit ke splnění potřebám a požadavkům vaší organizace pomocí provozních postupů v tomto článku.  
@@ -70,5 +72,5 @@ Následující tabulka obsahuje souhrn tyto úlohy a stručný popis jednotlivý
 | **Přizpůsobit možnosti synchronizace** |Změňte aktuální konfiguraci jako přidání další doménové struktury služby Active Directory ke konfiguraci nebo povolení možnosti synchronizace, jako je například uživatele, skupiny, zařízení nebo zpětný zápis hesla. |
 | **Zapnout pracovní režim** |Fáze informace, které není synchronizována okamžitě a není exportovány do služby Azure AD nebo místní služby Active Directory.  Pomocí této funkce můžete zobrazit náhled synchronizace předtím, než k nim dojde. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [integrace místních identit s Azure Active Directory](active-directory-aadconnect.md).

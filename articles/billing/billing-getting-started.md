@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 47a0f2e1cdb873dc907748ed2f3def29efccaa98
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 797421e40a5550e1897443f35089838a349ad85a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607391"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zabránit neočekávané poplatky s Azure fakturace a náklady na správu
 
@@ -149,7 +150,7 @@ Obraťte se na vašeho account manažera nebo partnera Azure, abyste mohli zač�
 | Cloud Solution Provider (CSP) | Obraťte se na svého poskytovatele |
 | Sponzorství Azure | [Sponzorství portálu](https://www.microsoftazuresponsorships.com/) |
 
-Pokud spravujete IT ve velkých organizacích doporučujeme čtení [vygenerované uživatelské rozhraní Azure enterprise](../azure-resource-manager/resource-manager-subscription-governance.md) a [enterprise IT dokumentu white paper](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf ke stažení, pouze v angličtině).
+Pokud spravujete IT ve velkých organizacích doporučujeme čtení [vygenerované uživatelské rozhraní Azure enterprise](/azure/architecture/cloud-adoption-guide/subscription-governance) a [enterprise IT dokumentu white paper](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (.pdf ke stažení, pouze v angličtině).
 
 #### <a name="EA"></a> Náklady zobrazení v portálu Azure Preview Enterprise Agreement 
 

@@ -2,19 +2,19 @@
 title: Nastavení řízení přístupu v Azure Cosmos DB | Microsoft Docs
 description: Informace o nastavení řízení přístupu v Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: fae3af3f-4d6e-46d8-9d9b-b80a4218add9
 ms.service: cosmos-db
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 02/06/2018
 ms.author: sngun
-ms.openlocfilehash: 740f1ca560207ada95dd03fbecc7f9940ee7b2a0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2dae2b6291aa7ce18cc6f612b25cd5bdcc1ba753
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611139"
 ---
 # <a name="access-control-in-azure-cosmos-db"></a>Řízení přístupu v Azure Cosmos DB
 

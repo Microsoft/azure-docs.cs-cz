@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 2696be33c97b411a9f4809f0ff6ca56cd2fe6080
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3d2e64a88492db396b1c4771e605245c0cd744f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Azure Active Directory integrace s xMatters OnDemand
 
@@ -103,14 +104,14 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
 3. Na **xMatters OnDemand domény a adresy URL** část, proveďte následující kroky:
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:   
+    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -133,7 +134,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu místně jako **c:\\XMatters OnDemand.cer**.
 
     ![Konfigurovat jednotné přihlašování](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
-    
+
     > [!IMPORTANT]
     > Je třeba předávat certifikát, který chcete [tým podpory xMatters OnDemand](https://www.xmatters.com/company/contact-us/). Certifikát musí být odeslaný tým podpory xMatters předtím, než může dokončení konfigurace přihlášení. 
 
@@ -148,28 +149,24 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 7. V okně prohlížeče jiný web Přihlaste se na váš web společnosti XMatters OnDemand jako správce.
 
 8. Na panelu nástrojů v horní části klikněte na tlačítko **správce**a potom klikněte na **podrobnosti o společnosti** na navigačním panelu na levé straně.
-   
+
     ![Správce](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "správce")
 
 9. Na **konfigurace SAML** proveďte následující kroky:
-   
-    ![Konfigurace SAML](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "konfigurace SAML")
-   
-    a. Vyberte **povolit SAML**.
-   
-    b. Vložení **SAML Entity ID**, který jste zkopírovali z portálu Azure do **ID zprostředkovatele Identity** textové pole.
-   
-    c. Vložení **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure do **jeden přihlašovací adresa URL** textové pole.
-   
-    d. Vložení **Sign-Out URL**, který jste zkopírovali z portálu Azure do **jednu adresu URL odhlašovací** textové pole.
-   
-    e. Na stránce Podrobnosti o společnosti v horní části, klikněte na **uložit změny**.
-    
-    ![Podrobnosti o společnosti](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "společnosti podrobnosti")
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    ![Konfigurace SAML](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "konfigurace SAML")
+
+    a. Vyberte **povolit SAML**.
+
+    b. V **ID zprostředkovatele Identity** textovému poli, vložte **SAML Entity ID** hodnotu, která jste zkopírovali z portálu Azure.
+
+    c. V **jeden přihlašovací adresa URL** textovému poli, vložte **SAML jeden přihlašování adresa URL služby** hodnotu, která jste zkopírovali z portálu Azure.
+
+    d. V **jednu adresu URL odhlašovací** textovému poli, vložte **Sign-Out URL**, který jste zkopírovali z portálu Azure.
+
+    e. Na stránce Podrobnosti o společnosti v horní části, klikněte na **uložit změny**.
+
+    ![Podrobnosti o společnosti](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "společnosti podrobnosti")
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -183,15 +180,15 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
+
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
- 
+
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
 4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
- 
+
     ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
     a. V **název** textovému poli, typ **BrittaSimon**.
@@ -201,32 +198,33 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Vytvoření zkušebního uživatele OnDemand xMatters
 
-Pokud chcete povolit uživatelům Azure AD přihlášení k XMatters OnDemand, musí být zřízená do XMatters OnDemand. V případě XMatters OnDemand zřizování je ruční úloha.
+Cílem této části je vytvoření uživatele volal Britta Simon v xMatters OnDemand. xMatters OnDemand podporuje automatické uživatele zřizování, který je ve výchozím nastavení povolené. Můžete najít další podrobnosti o [sem](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md) na tom, jak nakonfigurovat uživatele automatické zřizování.
 
-### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Ke zřízení uživatelských účtů, proveďte následující kroky:
+**Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
+
 1. Přihlaste se k vaší **XMatters OnDemand** klienta.
 
 2.  Klikněte na tlačítko **uživatelé** kartu a pak klikněte na tlačítko **přidat uživatele**.
-  
+
     ![Uživatelé](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "uživatelů")
 
 3. V **přidat uživatele** část, proveďte následující kroky:
-   
+
     ![Přidat uživatele](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "přidat uživatele")
 
     a. Vyberte **Active**.
 
     b. V **ID uživatele** jako typ id uživatele uživatele k textovému poli, Brittasimon@contoso.com.
-   
+
     c. V **křestní jméno** textovému poli, typ křestní jméno uživatele, jako je Britta.
 
     d. V **příjmení** textovému poli, zadejte příjmení uživatele jako Simon.
-    
+
     e. V **lokality** textovému poli, zadejte platnou lokalitou platný Azure AD účet chcete zřídit.
-    
+
     f. Klikněte na **Uložit**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
@@ -270,6 +268,7 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Konfiguraci zřizování uživatelů](active-directory-saas-xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 
@@ -284,4 +283,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_203.png
-

@@ -1,25 +1,20 @@
 ---
-title: Zálohování souborů a složek z Windows do Azure (Resource Manager) | Dokumentace Microsoftu
+title: Zálohování Windows souborů a složek do Azure (Resource Manager)
 description: Postup zálohování souborů a složek z Windows do Azure v nasazení podle modelu Resource Manager.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: postup zálohování; zálohování souborů a složek
-ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 8/15/2017
-ms.author: markgal;
-ms.openlocfilehash: 55f83bda1a9de9274194ec220fa9a4a5c8b7f0fb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: HT
+ms.author: markgal
+ms.openlocfilehash: 7abdf06d1b5a4361da9ddb75cec01d6fd1630d08
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606966"
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>První pohled: Zálohování souborů a složek v nasazení podle modelu Resource Manager
 Tento článek vysvětluje, jak postupovat při zálohování souborů a složek z Windows Serveru (nebo z počítače s Windows) do Azure pomocí nasazení podle modelu Resource Manager. Tento kurz vás má provést základy. Chcete-li začít používat Azure Backup, jste na správném místě.
@@ -224,7 +219,7 @@ Po dokončení prvotní zálohy se v konzole Zálohování zobrazí stav **Úloh
 ## <a name="questions"></a>Máte dotazy?
 Máte-li nějaké dotazy nebo pokud víte o funkci, kterou byste uvítali, [odešlete nám svůj názor](http://aka.ms/azurebackup_feedback).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zdroj dalších informací o [zálohování počítačů se systémem Windows](backup-configure-vault.md).
 * Teď, když jste zálohovali své soubory a složky, můžete [spravovat svoje trezory a servery](backup-azure-manage-windows-server.md).
 * Potřebujete-li obnovit zálohu, použijte tento článek k [obnovení souborů na počítač se systémem Windows](backup-azure-restore-windows-server.md).

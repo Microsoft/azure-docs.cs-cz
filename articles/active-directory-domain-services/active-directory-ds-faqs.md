@@ -1,30 +1,32 @@
 ---
-title: "Nejčastější dotazy – Azure Active Directory Domain Services | Microsoft Docs"
-description: "Časté otázky k Azure Active Directory Domain Services"
+title: Nejčastější dotazy – Azure Active Directory Domain Services | Microsoft Docs
+description: Časté otázky k Azure Active Directory Domain Services
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 1cfd0570315d5a1c6587ade164edf0a837453406
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: aab6e893a6da1c5b877498f2bf6cbeaa6d0a5c2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34587779"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Časté otázky (FAQ)
 Tato stránka odpovědi časté otázky o Azure Active Directory Domain Services. Kontrolovat zpět aktualizací.
 
 ## <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
-Odkazovat [Průvodce odstraňováním potíží](active-directory-ds-troubleshooting.md) pro řešení běžných problémů při konfiguraci nebo jejich správě Azure AD Domain Services.
+Odkazovat [Průvodce odstraňováním potíží](active-directory-ds-troubleshooting.md) pro řešení pro běžné problémy s konfigurací nebo jejich správě Azure AD Domain Services.
 
 ## <a name="configuration"></a>Konfigurace
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>Můžete vytvořit více spravovaných domén pro jeden adresář Azure AD?
@@ -55,7 +57,7 @@ Ano. V tématu [jak povolit Azure AD Domain Services pomocí prostředí PowerSh
 Ne. Domény, které poskytuje Azure AD Domain Services je spravovaná doména. Není potřeba zřizovat, konfigurovat nebo jinak spravovat řadiče domény pro tuto doménu - tyto aktivity správy jsou poskytovány jako služba společnosti Microsoft. Proto nelze přidat další řadiče domény (pro čtení a zápis nebo jen pro čtení) pro spravovanou doménu.
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Můžete použít uživatele typu Host pozvánku, abyste složku adresář Azure AD Domain Services?
-Ne. Uživatele typu Host pozvánku, abyste pomocí adresář Azure AD [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) pozvání procesu jsou sycned do vaší spravované domény služby Azure AD Domain Services. Hesla pro tyto uživatele však nejsou uložené v adresáři služby Azure AD. Proto služba Azure AD Domain Services má žádný způsob, jak synchronizovat NTLM a Kerberos vytvoří hodnotu hash pro tyto uživatele do vaší spravované domény. V důsledku toho nelze takové uživatelé přihlášení k spravované doméně nebo připojení počítače k spravované doméně.
+Ne. Uživatele typu Host pozvánku, abyste pomocí adresář Azure AD [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) pozvání procesu jsou synchronizovány do vaší spravované domény služby Azure AD Domain Services. Hesla pro tyto uživatele však nejsou uložené v adresáři služby Azure AD. Proto služba Azure AD Domain Services má žádný způsob, jak synchronizovat NTLM a Kerberos vytvoří hodnotu hash pro tyto uživatele do vaší spravované domény. V důsledku toho nelze takové uživatelé přihlásit k spravované doméně nebo připojení počítačů k spravované doméně.
 
 ## <a name="administration-and-operations"></a>Operace a Správa
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Možné připojit k řadiči domény pro moje spravované doméně pomocí vzdálené plochy?
@@ -65,13 +67,13 @@ Ne. Nemáte oprávnění pro připojení k řadičům domény k spravované dom�
 Členové skupiny pro správu 'správci AAD řadič domény, můžete počítače připojení k doméně. Kromě toho členy této skupiny mají přístup ke vzdálené ploše počítače, které byly připojené k doméně.
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>Je nutné oprávnění správce domény pro spravovanou doménu poskytované Azure AD Domain Services?
-Ne. Nejsou udělena administrativní oprávnění na spravované domény. Oprávnění správce domény a správce podnikové sítě nejsou k dispozici pro použití v rámci domény. Správce stávající domény nebo skupiny správce rozlehlé sítě v rámci adresáře služby Azure AD také nejsou udělena oprávnění správce domény nebo enterprise v doméně.
+Ne. Nejsou udělena administrativní oprávnění na spravované domény. Oprávnění správce domény a správce podnikové sítě nejsou k dispozici pro použití v rámci domény. Členové správce domény nebo skupiny enterprise správce ve vaší místní službě Active Directory nejsou také udělit oprávnění správce domény nebo enterprise na spravované domény.
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>Můžete upravit členství ve skupinách pomocí protokolu LDAP nebo jiné nástroje pro správu služby AD na spravované domény?
 Ne. V doménách, které jsou obsluhovány pomocí Azure AD Domain Services nelze upravit členství ve skupinách. Totéž platí i pro atributy uživatele. Ale může změnit členství ve skupině nebo uživatelské atributy buď ve službě Azure AD, nebo v místní doméně. Tyto změny jsou automaticky synchronizovány do Azure AD Domain Services.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak dlouho bude trvat, změny I provést Moje adresář Azure AD mají být zobrazeny v mé spravované domény?
-Změny provedené v adresáři služby Azure AD pomocí Azure AD uživatelského rozhraní nebo Powershellu jsou synchronizovány do vaší spravované domény. Tento proces synchronizace běží na pozadí. Po dokončení jednorázové počáteční synchronizace adresáře se obvykle trvá přibližně 20 minut, než změny provedené ve službě Azure AD se projeví ve vaší spravované domény.
+Změny provedené v adresáři služby Azure AD pomocí Azure AD uživatelského rozhraní nebo Powershellu jsou synchronizovány do vaší spravované domény. Tento proces synchronizace běží na pozadí. Po dokončení počáteční synchronizace obvykle trvá přibližně 20 minut, než změny provedené ve službě Azure AD se projeví ve vaší spravované domény.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Můžete rozšířit schéma spravované domény poskytované Azure AD Domain Services?
 Ne. Schéma je spravovaný společností Microsoft pro spravovanou doménu. Rozšíření schématu nejsou podporovány službou Azure AD Domain Services.
@@ -81,6 +83,9 @@ Ano. Členy skupiny "Správci AAD řadič domény, jsou udělena oprávnění Sp
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Co je doba platnosti zásady hesel ve spravované doméně?
 Výchozí doba života heslo na Azure AD Domain Services spravované domény je 90 dnů. Tato doba platnosti hesla není synchronizován s životnost heslo nakonfigurovat ve službě Azure AD. Proto může dojít k situaci, kdy vyprší platnost ve vaší spravované domény hesla uživatelů, ale musí být stále platné ve službě Azure AD. V takových scénářů uživatelé musí změnit své heslo ve službě Azure AD a nové heslo bude synchronizovat s vaší spravované domény. Kromě toho '-nepodporuje není – konec platnosti hesla' a 'user-must-change-password-at-next-logon' atributy pro uživatelské účty nejsou synchronizovány do vaší spravované domény.
+
+### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Poskytuje Azure AD Domain Services ochrany uzamčení účtu služby AD?
+Ano. Pět neplatné pokusy o přihlášení během 2 minut na spravované doméně způsobit, že uživatelský účet bude uzamčen po dobu 30 minut. Po 30 minutách je automaticky odemkne uživatelský účet. Neplatné pokusy o hesla na spravované domény není zablokovat uživatelský účet ve službě Azure AD. Uživatelský účet je uzamčen pouze ve vaší doméně Azure AD Domain Services spravovat.
 
 ## <a name="billing-and-availability"></a>Fakturace a dostupnost
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Je, že služba Azure AD Domain Services placené služby?

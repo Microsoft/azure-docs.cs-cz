@@ -3,25 +3,22 @@ title: Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
 description: Zjistěte, jak spravovat službu Azure Cosmos DB v Průzkumníku služby Azure Storage.
 Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
 services: cosmos-db
-documentationcenter: ''
 author: Jejiang
 manager: omafnan
 editor: ''
 tags: Azure Cosmos DB
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB active
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jejiang
-ms.openlocfilehash: ff4ee0a47129be5df03112006dcd45a62ad410af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 3b870ed638656ee3b1b0e46fe9bac44e4436f154
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612839"
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
 
@@ -222,7 +219,7 @@ Než budete pokračovat, zkuste svou aplikaci restartovat a podívejte se, jestl
 
 Tato chyba se může zobrazit z několika důvodů, z nichž dva nejčastější jsou tyto:
 
-+ Nacházíte se za transparentním proxy serverem, což znamená, že někdo (například vaše IT oddělení) zachycuje přenosy HTTP, dešifruje je a pak je šifruje pomocí certifikátu podepsaného svým držitelem.
++ Jste za *transparentní proxy*, což znamená, že někdo (například oddělení IT) brání komunikaci přes protokol HTTPS, dešifrování ho a pak šifrování pomocí certifikát podepsaný svým držitelem.
 
 + Používáte software, jako je například antivirový software, který do přijímaných zpráv protokolu HTTPS vkládá certifikát SSL podepsaný svým držitelem.
 
@@ -311,7 +308,7 @@ Vyzkoušejte následující návrhy:
 
 Pokud vám žádné z předchozích řešení nepomohlo, požádejte o pomoc s řešením problému odesláním e-mailu s podrobnostmi o problému týmu vývojářských nástrojů pro službu Azure Cosmos DB ([cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Podívejte se na následující video a zjistěte, jak používat službu Azure Cosmos DB v Průzkumníku služby Azure Storage: [Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).

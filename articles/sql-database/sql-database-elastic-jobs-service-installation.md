@@ -6,14 +6,15 @@ manager: craigg
 author: ddove
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4aeb18a4cdd0fc115c0d604797cf60c867455337
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645608"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalace úlohy elastické databáze – přehled
 [**Elastické databáze úlohy** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí prostředí PowerShell nebo prostřednictvím portálu Azure. Můžete získat přístup k vytvářet a spravovat úlohy pomocí rozhraní API prostředí PowerShell, pouze v případě, že budete instalovat balíček prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než portálu v daném okamžiku.
