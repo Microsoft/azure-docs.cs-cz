@@ -54,7 +54,7 @@
 ### [Podpora více domén pro federaci](active-directory-aadconnect-multiple-domains.md)
 ### [Automatický upgrade](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [Použití zprostředkovatele identity (IdP) SAML 2.0 pro Jednotné přihlašování](active-directory-aadconnect-federation-saml-idp.md)
-### [Synchronizace uživatelských účtů uživatelů typu host, kteří se přihlašují pomocí e-mailu](active-directory-aadconnect-guest-sync.md)
+
 
 
 ## Správa synchronizace Azure AD Connect
