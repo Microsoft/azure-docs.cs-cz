@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dbe6f5f6f3aa128b3180c1b7aecb17853aa6a0aa
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 4cef685d71a64f8a6681a3449e4fe0b67899c67c
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801394"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808600"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Nejčastější dotazy pro Azure Active Directory Connect
 
@@ -28,7 +28,7 @@ ms.locfileid: "34801394"
 S sestavení z února 2016 tento scénář se podporuje.
 
 **Otázka: je způsob, jak nainstalovat Azure AD Connect bezobslužné?**  
-Je podporován pouze pro instalaci Azure AD Connect s použitím Průvodce instalací. Bezobslužné a bezobslužné instalace není podporována.
+Je podporován pouze pro instalaci Azure AD Connect s použitím Průvodce instalací. Nejsou podporovány bezobslužných a bezobslužné instalace.
 
 **Otázka: je nutné do doménové struktury, kde nelze kontaktovat jednu doménu. Instalace Azure AD Connect**  
 S sestavení z února 2016 tento scénář se podporuje.
@@ -41,7 +41,17 @@ Ano. Po instalaci agenta, můžete dokončit proces registrace pomocí následuj
 **Otázka: AADConnect podporuje synchronizace ze dvou domén na Azure AD?**</br>
 Ano, tento scénář se podporuje. Odkazovat na [více domén](active-directory-aadconnect-multiple-domains.md)
  
-**Otázka: je možné mít více konektorů pro stejné domény služby Active Directory ve službě Azure AD connect?**</br> Ne, více konektorů pro ve stejné doméně AD není podporována. 
+**Otázka: je možné mít více konektorů pro stejné domény služby Active Directory ve službě Azure AD connect?**</br> Ne, více konektorů pro ve stejné doméně AD nejsou podporovány. 
+
+**Otázka: lze přesunout databázi Azure AD Connect z místní databáze na vzdálený server SQL?**</br> Ano, bude následující kroky obsahují obecné pokyny o tom, jak to udělat.  Právě pracujeme na podrobnější dokument, který bude brzy k dispozici.
+
+
+   1. Zálohování databáze LocalDB "ADSync" nejjednodušší způsob, jak to udělat, je použít SQL Server Management Studio instalovaného na stejném počítači jako Azure AD Connect. Připojit k "(localdb)\.\ADSync" – pak zálohujte databázi ADSync
+   2. Obnovit databázi "ADSync" k instanci vzdáleného SQL
+   3. Nainstalujte Azure AD Connect s existující [vzdálené databáze SQL](active-directory-aadconnect-existing-database.md) odkaz ukazuje na kroky potřebné při migraci pomocí místní databáze SQL. Pokud provádíte migraci k použití vzdáleného SQL Database pak v kroku 5 tohoto procesu taky musíte zadat existující účet služby, který synchronizační služby systému Windows se spustí jako. Tento účet služby synchronizační modul je popsaný tady:</br></br>
+   **Použít existující účet služby**– ve výchozím nastavení Azure AD Connect používá účet virtuální služby pro synchronizační služby používat. Pokud používáte vzdálený SQL server nebo použít proxy server, který vyžaduje ověření, musíte použít účet spravované služby nebo použijte účet služby v doméně a znát heslo. V těchto případech zadejte účet, který chcete použít. Ujistěte se, jestli uživatel, který provádí instalaci, je SA v SQL, aby bylo možné vytvořit přihlašovací jméno pro účet služby. Viz téma [Účty a oprávnění Azure AD Connect](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-account).</br></br> S nejnovějším sestavením teď může databáze vzdáleně zřizovat správce SQL a pak je instalovat správce služby Azure AD Connect s oprávněními vlastníka databáze. Další informace najdete v tématu [Instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](active-directory-aadconnect-sql-delegation.md).
+
+Pro zjednodušení doporučuje se, že uživatel instalaci Azure AD Connect je SA v SQL. (Ale s poslední sestavení teď můžete použít delegovaný správce SQL, jak je popsáno [zde](active-directory-aadconnect-sql-delegation.md).
 
 ## <a name="network"></a>Síť
 **Otázka: je nutné bránu firewall, síťové zařízení, nebo něco jiného, který omezuje maximální dobu, po připojení můžete zůstat otevřené v mé síti. Jak dlouho mají Moje prahová hodnota vypršení časového limitu klienta se při použití Azure AD Connect?**  

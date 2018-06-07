@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 3492f73b4e376bfd6cc069a97e935442da99dcfb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d63cb26acdc0a8b6c8435167b1043428de9f0729
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807614"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopírování dat z Google BigQuery pomocí Azure Data Factory
 
@@ -45,7 +46,7 @@ Následující vlastnosti jsou podporovány pro Google BigQuery propojené služ
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavená na **GoogleBigQuery**. | Ano |
-| Projekt | ID projektu výchozí projekt BigQuery k dotazu vůči.  | Ano |
+| projekt | ID projektu výchozí projekt BigQuery k dotazu vůči.  | Ano |
 | additionalProjects | Čárkami oddělený seznam ID projektů z veřejné BigQuery projektů přístup.  | Ne |
 | requestGoogleDriveScope | Určuje, zda chcete požadovat přístup k Google Drive. Povolení přístupu Google Drive umožňuje podporu pro federované tabulky, které spojují BigQuery dat s daty z Google Drive. Výchozí hodnota je **false**.  | Ne |
 | authenticationType. | Metoda ověřování OAuth 2.0, používá k ověřování. ServiceAuthentication lze použít pouze v Self-hosted integrace Runtime. <br/>Povolené hodnoty jsou **UserAuthentication** a **ServiceAuthentication**. Naleznete v části dál v této tabulce na další vlastnosti a ukázky JSON pro tyto typy ověřování v uvedeném pořadí. | Ano |
@@ -58,7 +59,7 @@ Nastavte vlastnost "authenticationType" na **UserAuthentication**a zadejte násl
 |:--- |:--- |:--- |
 | clientId | ID aplikace sloužící k vygenerování tokenu obnovení. | Ne |
 | clientSecret | Tajný klíč aplikace použít k vygenerování tokenu obnovení. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| refreshToken | Aktualizace tokenu získaného z Google použitý k autorizaci přístupu k BigQuery. Další informace o získání jednoho z [přístupových tokenů OAuth 2.0 získání](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| refreshToken | Aktualizace tokenu získaného z Google použitý k autorizaci přístupu k BigQuery. Další informace o získání jednoho z [přístupových tokenů OAuth 2.0 získání](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) a [tomto blogu komunity](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 
 **Příklad:**
 

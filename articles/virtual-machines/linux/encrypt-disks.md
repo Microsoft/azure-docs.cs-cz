@@ -1,11 +1,11 @@
 ---
-title: "Šifrování disky na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Postup zašifrování virtuální disky na virtuální počítač s Linuxem pro zvýšení zabezpečení pomocí Azure CLI 2.0"
+title: Šifrování disky na virtuální počítač s Linuxem v Azure | Microsoft Docs
+description: Postup zašifrování virtuální disky na virtuální počítač s Linuxem pro zvýšení zabezpečení pomocí Azure CLI 2.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
 ms.service: virtual-machines-linux
@@ -15,14 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: b87d187eadff98ba84aa6478c2d233f2ec1c203c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c35cd220eab26300404a039467e1a0b35592f23d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824774"
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Postup zašifrování virtuální disky na virtuální počítač s Linuxem
 Pro lepší virtuální počítač (VM) zabezpečení a dodržování předpisů se můžou šifrovat virtuální disky a virtuální počítač. Virtuální počítače jsou šifrované pomocí kryptografických klíčů, které jsou zabezpečené v Azure Key Vault. Řízení těchto kryptografické klíče a můžete auditovat jejich použití. Tento článek podrobně popisují zašifrovat virtuální disky na virtuální počítač s Linuxem pomocí Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+> [!NOTE]
+> Ujistěte se, že máte ovladač vfat povolené ve virtuálním počítačům s Linuxem. Některé zabezpečení postupů, jako je srovnávacích testů položek konfigurace požádejte o ovladač vfat zakázat. Vyžaduje šifrování funguje po dokončení tohoto procesu se tento ovladač.
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 Pokud potřebujete rychle provedení úlohy, následující část podrobně popisuje základní příkazy pro zašifrování virtuální disky na virtuální počítač. Podrobnější informace a kontext pro každý krok naleznete zbývající části dokumentu, [od zde](#overview-of-disk-encryption).
@@ -146,6 +150,7 @@ Podporované scénáře a požadavky na šifrování disku:
 * Všechny prostředky (například Key Vault, účet úložiště a virtuálních počítačů) musí být ve stejné oblasti Azure a předplatné.
 * Standardní A, D, DS, G, GS, atd, virtuální počítače řady.
 * Aktualizuje se kryptografické klíče na virtuální počítač již šifrované Linux.
+* Ovladač VFAT je povolený v virtuálního počítače s Linuxem.
 
 Šifrování disku není aktuálně podporováno v následujících scénářích:
 

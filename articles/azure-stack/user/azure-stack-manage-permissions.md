@@ -15,21 +15,22 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 4f9354426ba584b26213f8a104c14122a831a453
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 026c686b1d5654aa50dd63b9addd619dd5322da0
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808141"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Spravovat přístup k prostředkům pomocí řízení přístupu Azure Stack Role-Based
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Azure zásobníku podporuje řízení přístupu na základě role (RBAC), stejné [model zabezpečení pro správu přístupu](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) používající Microsoft Azure. RBAC můžete spravovat uživatele, skupiny nebo přístup k aplikaci odběry, prostředky a službám.
+Azure zásobníku podporuje řízení přístupu na základě role (RBAC), stejné [model zabezpečení pro správu přístupu](https://docs.microsoft.com/azure/role-based-access-control/overview) používající Microsoft Azure. RBAC můžete spravovat uživatele, skupiny nebo přístup k aplikaci odběry, prostředky a službám.
 
 ## <a name="basics-of-access-management"></a>Základní informace o řízení přístupu
 
-Řízení přístupu na základě rolí poskytuje řízení podrobných přístupu, který vám pomůže zabezpečit vaše prostředí. Uživatelům udělíte přesný oprávnění, které potřebují přiřazením role RBAC u určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role. Pro čtení [řízení přístupu na základě rolí na portálu Azure](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview) článku získat podrobnější informace o správě přístupu.
+Řízení přístupu na základě rolí poskytuje řízení podrobných přístupu, který vám pomůže zabezpečit vaše prostředí. Uživatelům udělíte přesný oprávnění, které potřebují přiřazením role RBAC u určité oboru. Předplatné, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role. Pro čtení [řízení přístupu na základě rolí na portálu Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) článku získat podrobnější informace o správě přístupu.
 
 ### <a name="built-in-roles"></a>Vestavěné role
 
@@ -59,7 +60,7 @@ Můžete přiřadit více než jedné role pro uživatele a každou roli, mohou 
 * Role čtenáře TestUser-A je přiřadit k předplatnému 1.
 * Přiřadíte roli TestUser-A Owner TestVM-1.
 
-Azure [přiřazení rolí](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) článek obsahuje podrobné informace o zobrazení, přiřazení nebo odstranění rolí.
+Azure [přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) článek obsahuje podrobné informace o zobrazení, přiřazení nebo odstranění rolí.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Hierarchie prostředků a dědičnost
 
@@ -81,14 +82,14 @@ Můžete přiřadit více než jedné role pro uživatele a každou roli, mohou 
 * Role čtenáře TestUser-A je přiřadit k předplatnému 1.
 * Přiřadíte roli TestUser-A Owner TestVM-1.
 
-Azure [přiřazení rolí](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) článek obsahuje podrobné informace o zobrazení, přiřazení nebo odstranění rolí.
+Azure [přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) článek obsahuje podrobné informace o zobrazení, přiřazení nebo odstranění rolí.
 
 ## <a name="set-access-permissions-for-a-user"></a>Nastavte přístupová oprávnění pro uživatele
 
 Následující kroky popisují, jak nakonfigurovat oprávnění pro uživatele.
 
 1. Přihlaste se pomocí účtu, který má oprávnění vlastníka prostředku, který chcete spravovat.
-2. V levém navigačním podokně zvolte **skupiny prostředků**.
+2. V levém navigačním podokně zvolte **Skupiny prostředků**.
 3. Vyberte název skupiny prostředků, kterou chcete nastavit oprávnění.
 4. V navigačním podokně prostředku skupiny zvolte **přístup k ovládacímu prvku (IAM)**. **Řízení přístupu** zobrazení obsahuje seznam položek, které mají přístup ke skupině prostředků. Můžete filtrovat tyto výsledky a pomocí nabídky panelu Přidat nebo odebrat oprávnění.
 5. Na **řízení přístupu** nabídky panel, vyberte **+ přidat**.

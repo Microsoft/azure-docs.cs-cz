@@ -1,5 +1,5 @@
 ---
-title: Novější metriky výstrah v monitorování Azure podporované prostředky | Microsoft Docs
+title: Podporované prostředky pro novější metriky výstrahy monitorování Azure | Microsoft Docs
 description: Odkaz na podporu metriky a protokoly pro novější Azure téměř v reálném čase metriky výstrahy.
 author: snehithm
 manager: kmadnani1
@@ -15,24 +15,15 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e09cc1a91daf2e6a043d73ef1f41aa265334dec2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809824"
 ---
-# <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Novější metriky výstrahy pro služby Azure na portálu Azure
-Azure monitorování teď podporuje nový typ metriky výstrahy. Novější výstrahy se liší od [classic metriky výstrahy](insights-alerts-portal.md) několika způsoby:
-
-- **Vylepšené latence**: novější metriky výstrahy můžete spustit často každou minutu. Starší metriky výstrahy vždy spustit v intervalu 5 minut. Výstrahy protokolu ještě delší než 1 minuta zpoždění kvůli době je potřeba k ingestování protokoly. 
-- **Podpora pro multidimenzionální metriky**: můžete výstrahy na dimenzí metriky, které umožňuje sledovat jenom segment zajímavé metriky. 
-- **Větší kontrolu nad metriky podmínky**: můžete definovat bohatší pravidla výstrah. Výstrahy novější podporují monitorování maximální, minimální, průměrná a celkové hodnoty metrik. 
-- **Kombinaci monitorování více metrik**: můžete sledovat více metriky (v současné době až dvě metriky) s jedním pravidlem. Výstraha se spustí, pokud obě metriky narušit jejich příslušné prahové hodnoty pro zadané časové období. 
-- **Lepší oznámení systému**: použijte všechny novější výstrahy [skupiny akcí](monitoring-action-groups.md), které jsou s názvem skupiny oznámení a akce, které lze znovu použít ve více výstrah. Classic metriky výstrahy a starší výstrahy analýzy protokolů nepoužívejte skupiny akcí. 
-- **Metriky z protokolů** (verze public preview omezené): protokolu dat přejdete do analýzy protokolů můžete nyní extrahována a převést do Azure monitorování metriky a potom zobrazí upozornění na stejně jako jiné metriky. 
-
-Naučte se vytvářet upozornění na novější metriky na portálu Azure, najdete v tématu [vytvořit pravidlo výstrahy na portálu Azure](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal). Po vytvoření, můžete spravovat výstrahy pomocí kroků popsaných v [oznámení na portálu Azure spravovat](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal).
-
+# <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Podporované metody metriky a vytvoření nových metriky výstrah
+Azure nyní podporuje monitorování [nové metriky typu výstrahy](monitoring-overview-unified-alerts.md) který má významné výhody přes starší [classic metriky výstrahy](insights-alerts-portal.md). Podporují starší výstrahy [velké seznam metriky](monitoring-supported-metrics.md). Výstrahy novější podporují podmnožinou tohoto seznamu, větší (rostoucí). Tento článek obsahuje seznam tuto podmnožinu. 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portálu, prostředí PowerShell, rozhraní příkazového řádku, REST podporu
 V současné době můžete vytvořit novější metriky výstrahy pouze na portálu Azure [REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) nebo [šablony Resource Manageru](monitoring-create-metric-alerts-with-templates.md). Podpora konfigurace novější výstrah pomocí prostředí PowerShell a rozhraní příkazového řádku Azure (Azure CLI 2.0) je již brzy.
@@ -65,7 +56,7 @@ Tady je úplný seznam Azure monitorování metriky zdroje nepodporuje novějš�
 |Microsoft.PowerBIDedicated/capacities | neuvedeno | [Kapacity](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   neuvedeno      |[Služby vyhledávání](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ano       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
-|Microsoft.Storage/storageAccounts.     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts     |    Ano     | [Účty úložiště](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services     |     Ano    | [Objekt BLOB služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [pro služby souborového](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [fronty služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) a [tabulky služby](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  neuvedeno       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 |Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|

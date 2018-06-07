@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 41a62c0c77b177179907d8e4a7631af889cd8bd6
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798810"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824583"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Průvodce návrhem tabulky úložiště Azure: Návrh škálovatelné a původce tabulky
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -523,7 +523,7 @@ Povolte nakonec byl konzistentní chování mezi hranice oddílů nebo hranice s
 #### <a name="context-and-problem"></a>Kontext a problém
 EGTs povolit jednotlivé transakce mezi více entit, které sdílejí stejný klíč oddílu. Pro výkon a škálovatelnost, můžete rozhodnout pro ukládání entit, které mají požadavky konzistence v samostatné oddíly nebo v samostatné úložiště systému: v takové situaci nelze použít EGTs k zachování konzistence. Například můžete mít požadavek zachování konzistence typu případné mezi:  
 
-* Entity uložené ve dvou různých oddílů ve stejné tabulce v různých tabulek ve v jiným účtům úložiště.  
+* Entity uložené ve dvou různých oddílů, které jsou ve stejné tabulce, různých tabulek nebo jiným účtům úložiště.  
 * Entity uložené ve službě Table a objekt blob uložené ve službě Blob.  
 * Entity uložené ve službě Table a soubor v systému souborů.  
 * Úložišti entity ve službě Table ještě indexovat pomocí služby Azure Search.  
@@ -1059,7 +1059,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 #### <a name="server-side-projection"></a>Projekce na straně serveru
-Jedna entita může mít maximálně 255 vlastnosti a mít velikost až 1 MB. Při dotazování tabulky a načtení entit, možná nebudete potřebovat všechny vlastnosti a přenosu dat zbytečně (Pokud chcete snížit latenci a náklady) se můžete vyhnout. Projekce na straně serveru může použít k přenosu pouze vlastnosti, které potřebujete. V následujícím příkladu se načte jenom na **e-mailu** vlastnost (spolu s **PartitionKey**, **RowKey**, **časové razítko**, a **značka ETag**) z entit vybrána v dotazu.  
+Jedna entita může mít maximálně 255 vlastnosti a mít velikost až 1 MB. Při dotazování tabulky a načtení entit, možná nebudete potřebovat všechny vlastnosti a přenosu dat zbytečně (Pokud chcete snížit latenci a náklady) se můžete vyhnout. Projekce na straně serveru může použít k přenosu pouze vlastnosti, které potřebujete. Následující příklad načte jenom **e-mailu** vlastnost (spolu s **PartitionKey**, **RowKey**, **časové razítko**a **Značka ETag**) z entit vybrána v dotazu.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(

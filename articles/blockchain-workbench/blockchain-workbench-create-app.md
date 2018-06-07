@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a4b704f433f02afcff7b94f98c19a478caaa02b2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808056"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Vytvoření aplikace blockchain v Azure Blockchain Workbench
 
@@ -237,7 +238,7 @@ Přidejte následující – direktiva pragma verze v horní části `HelloBlock
 
 ### <a name="base-class"></a>Base – třída
 
-**WorkbenchBase** základní třída umožňuje Blockchain Workbench vytvořit aktualizaci kontrakt. Základní třída je vyžadována pro kód konkrétní inteligentní smluv Blockchain Workbench. Smlouva musí dědit z **WorkbenchBase** základní třídy.
+**WorkbenchBase** základní třída umožňuje Blockchain Workbench k vytváření a aktualizaci kontrakt. Základní třída je vyžadována pro kód konkrétní inteligentní smluv Blockchain Workbench. Smlouva musí dědit z **WorkbenchBase** základní třídy.
 
 V `HelloBlockchain.sol` inteligentní souboru kódu kontrakt, přidejte **WorkbenchBase** třídy na začátku souboru. 
 
@@ -374,7 +375,7 @@ Před ukončením funkce, volání `ContractUpdated()` funkce. Funkce upozorní 
 Přidat aplikaci blockchain k Blockchain Workbench, nahrajte konfigurace a soubory inteligentního kontrakt k definování aplikace.
 
 1. Ve webovém prohlížeči přejděte na webovou adresu Blockchain Workbench. Například `https://{workbench URL}.azurewebsites.net/` webové aplikace se vytvoří, když nasazujete Blockchain Workbench. Informace o tom, jak najít webovou adresu vaší Blockchain Workbench najdete v tématu [Blockchain Workbench webové adresy URL](blockchain-workbench-deploy.md#blockchain-workbench-web-url)
-2. Přihlaste se jako správce Blockchain Workbench. Další informace o správě uživatelů najdete v tématu [spravovat uživatele v Azure Blockchain Workbench](blockchain-workbench-manage-users.md).
+2. Přihlaste se jako [Blockchain Workbench správce](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
 3. Vyberte **aplikace** > **nové**. **Novou aplikaci** podokně se zobrazí.
 4. Vyberte **nahrát konfigurace kontrakt** > **Procházet** najít **HelloBlockchain.json** konfigurační soubor, které jste vytvořili. Konfigurační soubor je automaticky ověřit. Vyberte **zobrazit** odkaz na zobrazení chyb ověřování. Před nasazením aplikace, opravte chyby ověření.
 5. Vyberte **nahrát kód kontraktu** > **Procházet** najít **HelloBlockchain.sol** souboru kódu inteligentní kontrakt. K souboru kódu je automaticky ověřit. Vyberte **zobrazit** odkaz na zobrazení chyb ověřování. Před nasazením aplikace, opravte chyby ověření.

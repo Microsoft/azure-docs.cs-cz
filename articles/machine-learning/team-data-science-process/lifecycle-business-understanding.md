@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: b406a0cd3e5176649b33d6ad8f41facb7043952d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c851a9a5c20c3f658e8681a4178ebe67294fd773
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808073"
 ---
 # <a name="business-understanding"></a>Principy podniku
 
@@ -80,7 +81,7 @@ Například je možné, že existující systémy nutné shromažďovat a protok
 Zde jsou dodávky v této fázi:
 
    * [Dokument titulů](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardní šablona je součástí definice struktury TDSP projektu. Dokument titulů je dokument životností. Můžete aktualizovat šablonu v rámci projektu jako provedete nové zjišťování a jako obchodní požadavky se změní. Klíč je k iteraci na tento dokument, přidání další podrobnosti, jako průběh procesu zjišťování. Ponechte zákazníka a ostatní účastníci součástí provádění požadovaných změn a zřetelněji sdělují důvody pro změny k nim.  
-   * [Zdroje dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): **zdroje dat ve formátu Raw** části **definice dat** sestavu, která se nachází v projektu TDSP **sestavu dat** složka obsahuje data zdroje. V této části Určuje původní a cílové umístění nezpracovaná data. Ve fázích novější je zadat další podrobnosti, třeba skripty pro přesun dat do prostředí analýzy.  
+   * [Zdroje dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **zdroje dat ve formátu Raw** části **definice dat** sestavu, která se nachází v projektu TDSP **sestavu dat** složka obsahuje data zdroje. V této části Určuje původní a cílové umístění nezpracovaná data. Ve fázích novější je zadat další podrobnosti, třeba skripty pro přesun dat do prostředí analýzy.  
    * [Slovník dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Tento dokument obsahuje popis dat, která je zadaných klientem. Tyto popisy obsahují informace o schématu (datové typy a informace o ověřovacích pravidel, pokud existuje) a entity-relation diagramy, pokud je k dispozici.
 
 ## <a name="next-steps"></a>Další postup

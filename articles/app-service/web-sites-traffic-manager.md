@@ -1,8 +1,8 @@
 ---
-title: "Kontrole přenosů dat v Azure App Service pomocí nástroje Azure Traffic Manager"
-description: "Tento článek obsahuje souhrnné informace pro Azure Traffic Manager, protože se týká služby Azure App Service."
+title: Kontrole přenosů dat v Azure App Service pomocí nástroje Azure Traffic Manager
+description: Tento článek obsahuje souhrnné informace pro Azure Traffic Manager, protože se týká služby Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.openlocfilehash: efb732e9be62313eb199cb2cfbb1fa4d2cde0282
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 92ab7bf64445ff772f33a18e7f7946a7e0be333a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824036"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Kontrole přenosů dat v Azure App Service pomocí nástroje Azure Traffic Manager
 > [!NOTE]
@@ -30,13 +31,13 @@ ms.lasthandoff: 11/29/2017
 ## <a name="introduction"></a>Úvod
 Azure Traffic Manageru můžete použít k řízení rozdělení požadavky od klientů webové aplikace v Azure App Service. Když koncové body služby App Service jsou přidány do profilu Azure Traffic Manager, Azure Traffic Manager uchovává informace o stavu aplikace služby App Service (spuštěna, zastavena nebo odstraněné) tak, aby se můžete rozhodnout, která z těchto koncových bodů musí přijímat přenosy.
 
-## <a name="routing-methods"></a>metody směrování
+## <a name="routing-methods"></a>Metody směrování
 Azure Traffic Manager používá čtyři různé metody směrování. Tyto metody jsou popsané v následujícím seznamu, podle kterých se týkají služby Azure App Service.
 
-* **[Priorita](#priority):** používal pro veškeré přenosy primární aplikace a zadejte zálohování v případě, že primární nebo aplikace pro zálohování jsou k dispozici.
-* **[Vážené](#weighted):** distribuci přenosů mezi sadu aplikací, rovnoměrně nebo podle váhy, které definujete.
-* **[Výkon](#performance):** v různých geografických polohách. máte aplikace, použijte "nejbližší" aplikaci z hlediska nejnižší latenci sítě.
-* **[Zeměpisná](#geographic):** uživatelé na konkrétní aplikace na základě, na které zeměpisné umístění svého dotazu DNS pochází z. 
+* **[Priorita](../traffic-manager/traffic-manager-routing-methods.md#priority):** používal pro veškeré přenosy primární aplikace a zadejte zálohování v případě, že primární nebo aplikace pro zálohování jsou k dispozici.
+* **[Vážené](../traffic-manager/traffic-manager-routing-methods.md#weighted):** distribuci přenosů mezi sadu aplikací, rovnoměrně nebo podle váhy, které definujete.
+* **[Výkon](../traffic-manager/traffic-manager-routing-methods.md#performance):** v různých geografických polohách. máte aplikace, použijte "nejbližší" aplikaci z hlediska nejnižší latenci sítě.
+* **[Zeměpisná](../traffic-manager/traffic-manager-routing-methods.md#geographic):** uživatelé na konkrétní aplikace na základě, na které zeměpisné umístění svého dotazu DNS pochází z. 
 
 Další informace najdete v tématu [metody směrování Traffic Manageru](../traffic-manager/traffic-manager-routing-methods.md).
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: ryanwi
-ms.openlocfilehash: b2b3562f65e7e861b7e4dff7b7c26d58081ff29e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c8b6bc791700e6811f5681ee70329e4d2ac05991
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824607"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Zobrazit protokoly pro službu kontejneru Service Fabric
 Azure Service Fabric je kontejner orchestrator a podporuje obě [Linux a Windows kontejnery](service-fabric-containers-overview.md).  Tento článek popisuje, jak zobrazit protokoly kontejneru spuštěnou službu kontejneru nebo kontejner neaktivní, aby mohli diagnostice a řešení problémů.
@@ -34,6 +35,14 @@ Ve stromovém zobrazení najít balíček kódu na *_lnxvm_0* uzlu rozšíření
 
 ## <a name="access-the-logs-of-a-dead-or-crashed-container"></a>Přístup k protokolům neaktivní nebo zhroucené kontejneru
 Počínaje v6.2, může také načíst protokoly pro kontejner neaktivní nebo zhroucené pomocí [rozhraní REST API](/rest/api/servicefabric/sfclient-index) nebo [Service Fabric rozhraní příkazového řádku (SFCTL)](service-fabric-cli.md) příkazy.
+
+### <a name="set-container-retention-policy"></a>Nastavení zásad uchovávání informací kontejneru
+Jako pomoc s diagnostikou selhání spuštění kontejneru Service Fabric (verze 6.1 nebo vyšší) podporuje zachování kontejnerů, které se ukončily nebo které se nepovedlo spustit. Tuto zásadu je možné nastavit v souboru **ApplicationManifest.xml**, jak ukazuje následující fragment kódu:
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+ ```
+
+Nastavení **ContainersRetentionCount** určuje počet kontejnerů, které se při svém selhání zachovají. Pokud je zadaná hodnota záporná, zachovají se všechny kontejnery, které selhaly. Když **ContainersRetentionCount** atribut nezadáte, budou se uchovávat žádné kontejnery. Atribut **ContainersRetentionCount** také podporuje parametry aplikace, takže uživatelé mohou zadat různé hodnoty pro testovací a produkční clustery. Při použití této funkce použijte omezení umístění, aby služba kontejneru cílila na konkrétní uzel. Zabrání se tak přesunu služby kontejneru na jiné uzly. Všechny kontejnery zachované pomocí této funkce je nutné ručně odebrat.
 
 ### <a name="rest"></a>REST
 Použití [získat nasadit kontejner protokoly na uzlu](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) operace k získání protokoly pro kontejner zhroucené. Zadejte název tohoto uzlu, spuštěné v kontejneru, název aplikace, manifest název služby a název balíčku kódu.  Zadejte `&Previous=true`. Odpověď bude obsahovat protokoly kontejner pro neaktivní kontejner instance balíček kódu.

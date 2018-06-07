@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 685998729e9aa01f60c80735b5f2f4d278769bdb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9075c774d0b56b6609616205e30b5a7d484fa031
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808090"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat pomocí Azure Data Factory z databáze MySQL
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +43,7 @@ Vyžaduje se brána, i když je databáze MySQL hostované ve virtuálním poč�
 > V tématu [potíží brány](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tipy k řešení potíží s připojení nebo brány související s problémy.
 
 ## <a name="supported-versions-and-installation"></a>Podporované verze a instalaci
-Pro bránu pro správu dat pro připojení k databázi MySQL, je potřeba nainstalovat [MySQL Connector/Net pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (verze 6.6.5 nebo vyšší) ve stejném systému jako brána pro správu dat. Tento ovladač 32bitové je kompatibilní s Brána pro správu dat 64 bitů. MySQL verze 5.1 a vyšší je podporovaná.
+Pro bránu pro správu dat pro připojení k databázi MySQL, je potřeba nainstalovat [MySQL Connector/Net pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (verze mezi 6.6.5 a 6.10.7) ve stejném systému jako brána pro správu dat. Tento ovladač 32bitové je kompatibilní s Brána pro správu dat 64 bitů. MySQL verze 5.1 a vyšší je podporovaná.
 
 > [!TIP]
 > Jestli jste nedosáhli chyba "Ověřování se nezdařilo, protože je uzavřený vzdálené strany přenosu datového proudu.", zvažte MySQL Connector/Net upgradu na vyšší verzi.
@@ -71,7 +72,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost typu musí být nastavena na: **OnPremisesMySql** |Ano |
 | server |Název serveru databáze MySQL. |Ano |
 | databáze |Název databáze MySQL. |Ano |
-| schema |Název schématu v databázi. |Ne |
+| Schéma |Název schématu v databázi. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
 | uživatelské jméno |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
@@ -304,37 +305,37 @@ Při přesunu dat do databáze MySQL, se používají následující mapování 
 | bigint bez znaménka |Decimal |
 | bigint |Int64 |
 | Bit |Decimal |
-| Objekt blob |Byte[] |
+| Objekt blob |Byte] |
 | BOOL |Logická hodnota |
 | Char |Řetězec |
 | datum |Datum a čas |
 | datetime |Datum a čas |
 | Decimal |Decimal |
-| Dvojitá přesnost |Dvojitý |
-| Double |Dvojitý |
+| Dvojitá přesnost |Double |
+| double |Double |
 | výčet |Řetězec |
-| Plovoucí desetinná čárka |Svobodný/svobodná |
+| float |Jednoduchá |
 | int bez znaménka |Int64 |
 | celá čísla |Int32 |
 | celé číslo bez znaménka |Int64 |
-| celé číslo |Int32 |
-| dlouhé varbinary |Byte[] |
+| integer |Int32 |
+| dlouhé varbinary |Byte] |
 | dlouhé varchar |Řetězec |
-| longblob |Byte[] |
-| longtext |Řetězec |
-| mediumblob |Byte[] |
+| longblob |Byte] |
+| LONGTEXT |Řetězec |
+| mediumblob |Byte] |
 | mediumint bez znaménka |Int64 |
 | mediumint |Int32 |
 | mediumtext |Řetězec |
 | číselné |Decimal |
-| skutečné |Dvojitý |
+| skutečné |Double |
 | nastavení |Řetězec |
 | smallint bez znaménka |Int32 |
 | smallint |Int16 |
-| Text |Řetězec |
-| time |TimeSpan |
+| text |Řetězec |
+| time |Časový interval |
 | časové razítko |Datum a čas |
-| tinyblob |Byte[] |
+| tinyblob |Byte] |
 | tinyint bez znaménka |Int16 |
 | tinyint |Int16 |
 | tinytext |Řetězec |

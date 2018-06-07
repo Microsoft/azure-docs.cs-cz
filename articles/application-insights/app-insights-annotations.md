@@ -1,6 +1,6 @@
 ---
-title: "Verze poznámky pro službu Application Insights | Microsoft Docs"
-description: "Přidání nasazení nebo vytvořit značek do grafů Průzkumníku metrik ve službě Application Insights."
+title: Verze poznámky pro službu Application Insights | Microsoft Docs
+description: Přidání nasazení nebo vytvořit značek do grafů Průzkumníku metrik ve službě Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
 ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807794"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky u metriky grafů ve službě Application Insights
 Poznámky na [Průzkumníku metrik](app-insights-metrics-explorer.md) grafy zobrazují, kde jste nasadili nového sestavení nebo jinou významnou událost. Ujistěte se snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří pomocí [Visual Studio Team Services sestavení systému](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Můžete také vytvořit poznámky pro všechny události, které si přejete, a příznak [jejich vytváření z prostředí PowerShell](#create-annotations-from-powershell).
@@ -102,7 +103,7 @@ Můžete také vytvořit poznámky z jakýkoli proces, který chcete (bez použi
 
 Je snadné a upravte skript, například vytvořit poznámky za poslední.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vytváření pracovních položek](app-insights-diagnostic-search.md#create-work-item)
 * [Automatizace v prostředí PowerShell](app-insights-powershell.md)

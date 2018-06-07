@@ -12,28 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 06/05/2018
 ms.author: ancav
-ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ceabefa47b7627b8a9f952d487f78a96e338838d
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824740"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Přehled metriky v Microsoft Azure
 Tento článek popisuje, co metriky jsou ve službě Microsoft Azure jejich výhody a jak je začít používat.  
 
 ## <a name="what-are-metrics"></a>Jaké jsou metriky?
 Azure monitorování umožňuje využívat telemetrie a získáte přehled o výkonu a stavu úlohy v Azure. Nejdůležitější typ Azure telemetrická data je metriky (také nazývané čítače výkonu) vysílaných prostředků nejvíce Azure. Monitorování Azure poskytuje několik způsobů, jak nakonfigurovat a využívat tyto metriky pro monitorování a řešení potíží.
-
-## <a name="what-can-you-do-with-metrics"></a>Co se děje s metriky?
-Metriky jsou cenné zdroj telemetrie a vám umožňují provádět následující úlohy:
-
-* **Sledovat výkon** vaše prostředku (například počítač, web nebo logiku aplikace) vykreslení jeho metriky na portálu graf a Připnutí tento graf na řídicí panel.
-* **Upozorňování problému** , ovlivňuje výkon prostředku, když metriky překračuje určitou mez.
-* **Konfigurovat automatické akce**, jako je automatické škálování prostředku nebo když metriky překračuje určité prahovou hodnotu, která iniciovala sady runbook.
-* **Provádět pokročilé analýzy** nebo generování sestav na trendy výkonu a využití vaší prostředku.
-* **Archiv** historii výkon nebo stav prostředku **pro dodržování předpisů nebo auditování** účely.
 
 ## <a name="what-are-the-characteristics-of-metrics"></a>Jaké jsou charakteristiky metrik?
 Metriky mít následující vlastnosti:
@@ -43,19 +35,17 @@ Metriky mít následující vlastnosti:
 * Dostanete **93 dny historie** pro jednotlivé metriky. Můžete rychle zobrazit poslední a měsíční trendy v výkon nebo stav prostředku.
 * Některé metriky můžou mít atributy dvojice název hodnota volána **dimenze**. Ty umožňují další segment a zkoumat metriky smysluplnější způsobem.
 
-Rovněž můžete:
+## <a name="what-can-you-do-with-metrics"></a>Co se děje s metriky?
+Metriky vám umožňují provádět následující úlohy:
 
-* Konfigurovat metriku **výstraha pravidla, které odešle oznámení nebo trvá automatizované akce** když metrika protne prahovou hodnotu, kterou jste nastavili. Při automatickém škálování je zvláštní automatizované akce, které umožňuje škálovat prostředek ke splnění příchozí požadavky nebo načte na vašem webu nebo výpočetních prostředků. Můžete nakonfigurovat pravidlo škálování nastavení škálování příchozí nebo odchozí podle metriky při překročení prahové hodnoty.
 
-* **Trasy** všechny metriky Application Insights nebo analýzy protokolů, které umožní rychlé analýzy, vyhledávání a vlastní výstrahy na metriky data z vašich prostředků. Můžete také stream metriky do centra událostí, které umožňují směrovat je do služby Azure Stream Analytics a vlastních aplikací pro analýzu skoro v reálném čase. Nastavíte centra událostí streamování pomocí nastavení pro diagnostiku.
-
-* **Archivovat metriky pro úložiště** pro uchování delší nebo je používat pro offline generování sestav. Při konfiguraci nastavení diagnostiky pro prostředek, můžete směrovat vaše metriky do úložiště objektů Blob Azure.
-
-* Snadno zjistit, přístup, a **zobrazit všechny metriky** prostřednictvím portálu Azure, když vyberte prostředek a vykreslení metriky pro graf.
-
-* **Využívat** metriky prostřednictvím nových rozhraní REST API pro Azure monitorování.
-
-* **Dotaz** metriky pomocí rutin prostředí PowerShell nebo rozhraní REST API napříč platformami.
+- Konfigurovat metriku **výstraha pravidla, které odešle oznámení nebo trvá automatizované akce** když metrika protne prahovou hodnotu, kterou jste nastavili. Akce jsou řízena pomocí [skupiny akcí](monitoring-action-groups.md). Příklad akce zahrnují e-mailu, phone a oznámení SMS, volání webhooku, spouštění sady runbook a další. **Škálování** je zvláštní automatizované akce, které umožňuje škálování, které jste zdroj nahoru a dolů k zvládání zatížení ještě není v případě zatížení zachovat nižší náklady. Můžete nakonfigurovat pravidlo škálování nastavení škálování příchozí nebo odchozí podle metriky při překročení prahové hodnoty.
+- **Trasy** všechny metriky na *Application Insights* nebo *analýzy protokolů* povolit rychlé analýzy, vyhledávání a vlastní výstrahy na metriky data z vašich prostředků. Můžete také stream metrik *centra událostí*, což umožňuje pak směrovat je do služby Azure Stream Analytics a vlastních aplikací pro analýzu skoro v reálném čase. Nastavíte centra událostí streamování pomocí nastavení pro diagnostiku.
+- **Archiv** historii výkon nebo stav prostředku pro dodržování předpisů, auditování, nebo do offline režimu účely vytváření sestav.  Při konfiguraci nastavení diagnostiky pro prostředek, můžete směrovat vaše metriky do úložiště objektů Blob Azure.
+- Použití **portál Azure** Pokud chcete zjistit, přístup a zobrazit všechny metriky, když vyberte prostředek a vykreslení metriky pro graf. Připnutí tento graf na řídicí panel, můžete sledovat výkon prostředku (například počítač, web nebo aplikaci logiky).  
+- **Provádět pokročilé analýzy** nebo generování sestav na trendy výkonu a využití vaší prostředku.
+- **Dotaz** metriky pomocí rutin prostředí PowerShell nebo rozhraní REST API napříč platformami.
+- **Využívat** metriky prostřednictvím nových rozhraní REST API pro Azure monitorování.
 
   ![Směrování metriky v Azure monitorování](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 
@@ -107,9 +97,9 @@ Můžete přejít na **nastavení diagnostiky** okno pod **monitorování** kart
 To můžete nakonfigurovat pomocí šablony Resource Manageru, [prostředí PowerShell](insights-powershell-samples.md), [rozhraní příkazového řádku Azure](insights-cli-samples.md), nebo [rozhraní REST API](https://msdn.microsoft.com/library/dn931943.aspx).
 
 > [!NOTE]
-> Odesílání vícerozměrných metriky prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzí jsou exportovány jako plochou jeden dimenzí metriky agregovat napříč hodnoty dimenze.
+> Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
-> *Například*: metrika 'Příchozích zpráv' centra událostí můžete prozkoumali a grafu zobrazena v úrovni fronty. Ale při exportu prostřednictvím nastavení pro diagnostiku metriku bude reprezentována jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
+> *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Pokud se však metrika exportuje přes nastavení diagnostiky, bude reprezentovaná jako všechny příchozí zprávy ve všech frontách v centru událostí.
 >
 >
 

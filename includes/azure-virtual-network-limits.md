@@ -1,4 +1,21 @@
-<a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné.
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: networking
+author: jimdial
+ms.service: networking
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: f4071f2555607b6035352a2aec38c986941c41a9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826527"
+---
+<a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazení vašeho aktuálního využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -18,7 +35,7 @@
 | Seznamy řízení přístupu (ACL) koncového bodu |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Síťová omezení – Azure Resource Manager
-Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné.
+Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazení vašeho aktuálního využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |

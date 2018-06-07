@@ -11,17 +11,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/08/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: f5da2a74b3a399c60c518f386ccf2e60a617aeda
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 494526ae2084053f23bb3a096ac7d089c47a731a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823431"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Vyřešte chyby nenalezení pro prostředky Azure
 
-Tento článek popisuje chyb, které může dojít, pokud prostředek nelze nalézt během nasazení.
+Tento článek popisuje chyby, mohou se zobrazit, pokud nelze najít prostředek během nasazení.
 
 ## <a name="symptom"></a>Příznaky
 
@@ -32,7 +33,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Pokud pokus o použití [odkaz](resource-group-template-functions-resource.md#reference) nebo [listKeys](resource-group-template-functions-resource.md#listkeys) funkce s prostředky, které nelze vyřešit, zobrazí se následující chyba:
+Pokud použijete [odkaz](resource-group-template-functions-resource.md#reference) nebo [listKeys](resource-group-template-functions-resource.md#listkeys) funkce s prostředky, které nelze vyřešit, zobrazí se následující chyba:
 
 ```
 Code=ResourceNotFound;
@@ -59,9 +60,9 @@ Pokud se pokoušíte nasadit chybějící prostředek v šabloně, zkontrolujte,
 }
 ```
 
-Ale budete chtít vyhnout nastavení závislosti, které nejsou potřebné. Až budete mít nepotřebné závislosti, můžete prodloužit doba trvání nasazení tím, že prostředky, které nejsou na sobě navzájem závislé z nasazuje paralelně. Kromě toho můžete vytvořit cyklické závislosti, které blokují nasazení. [Odkaz](resource-group-template-functions-resource.md#reference) funkce vytvoří implicitní závislostí v odkazovaném prostředku, když tento prostředek je nasazen do stejné šablony. Proto můžete mít další závislosti, než je určeno závislosti **dependsOn** vlastnost. [ResourceId](resource-group-template-functions-resource.md#resourceid) funkce vytvořit implicitní závislostí nebo ověřit, zda prostředek existuje.
+Ale budete chtít vyhnout nastavení závislosti, které nejsou potřebné. Až budete mít nepotřebné závislosti, můžete prodloužit doba trvání nasazení tím, že prostředky, které nejsou na sobě navzájem závislé z nasazuje paralelně. Kromě toho můžete vytvořit cyklické závislosti, které blokují nasazení. [Odkaz](resource-group-template-functions-resource.md#reference) funkce a [seznamu *](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) funkce vytvoří implicitní závislostí v odkazovaném prostředku, když tento prostředek je nasazen do stejné šablony a je odkazován objektem svůj název (není ID prostředku ). Proto můžete mít další závislosti, než je určeno závislosti **dependsOn** vlastnost. [ResourceId](resource-group-template-functions-resource.md#resourceid) funkce nepodporuje vytvoření implicitní závislosti nebo ověřit, zda prostředek existuje. [Odkaz](resource-group-template-functions-resource.md#reference) funkce a [seznamu *](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) funkce nevytvářejte implicitní závislost, pokud prostředek je odkazuje jeho ID prostředku. Chcete-li vytvořit implicitní závislostí, předejte název prostředku, který je nasazen do stejné šablony.
 
-Pokud narazíte na potíže závislostí, budete muset získat přehled o pořadí nasazení prostředků. Chcete-li zobrazit pořadí operace nasazení:
+Když se závislostí problémy, budete muset získat přehled o pořadí nasazení prostředků. Chcete-li zobrazit pořadí operace nasazení:
 
 1. Vyberte historii nasazení skupiny prostředků.
 
@@ -92,7 +93,7 @@ Pokud existuje v jiné skupině prostředků než ten, který provádí jeho nas
 
 ## <a name="solution-3---check-reference-function"></a>Řešení 3 – odkaz funkce kontroly
 
-Vyhledat výraz, který zahrnuje [odkaz](resource-group-template-functions-resource.md#reference) funkce. Hodnoty, které zadáte lišit v závislosti na tom, zda prostředek je ve stejné šablony, skupinu prostředků a předplatného. Zkontrolujte, že poskytnete požadovaný parametr hodnoty pro váš scénář. Pokud je v jiné skupině prostředků, zadejte ID úplné prostředku. Chcete-li účet úložiště v jiné skupině prostředků, například použijte:
+Vyhledat výraz, který zahrnuje [odkaz](resource-group-template-functions-resource.md#reference) funkce. Hodnoty, které zadáte lišit v závislosti na tom, zda prostředek je ve stejné šablony, skupinu prostředků a předplatného. Zkontrolujte, že zadáváte požadovaný parametr hodnoty pro váš scénář. Pokud je v jiné skupině prostředků, zadejte ID úplné prostředku. Chcete-li účet úložiště v jiné skupině prostředků, například použijte:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

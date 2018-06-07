@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 29abd62b0602686c912f022ec8870dcb6f1b39eb
-ms.sourcegitcommit: 0a7c9629dea6f5eb52cc45a1e31112def210dfc2
+ms.openlocfilehash: 4b90d1b9b2ee64722d3c92bcbd8fa205c9b59ebd
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34730879"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809603"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
@@ -59,7 +59,7 @@ Další informace o tom, jak nakonfigurovat automatizované zálohování pro vi
 - **SQL Server 2016 nebo 2017**: [automatizované zálohování v2 pro virtuální počítače Azure ](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**: [automatizované zálohování pro virtuální počítače se systémem SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Zálohování Azure pro virtuální počítače SQL
+## <a id="azbackup"></a> Zálohování Azure pro virtuální počítače SQL (verze Public Preview)
 
 [Zálohování Azure](/azure/backup/) poskytuje možnost zálohování podnikové třídy pro SQL Server běžící ve virtuálních počítačích Azure. Všechny zálohy ukládání a správy v trezoru služeb zotavení. Existuje několik výhod, které poskytuje toto řešení, zejména pro podniky:
 
@@ -128,7 +128,7 @@ Další informace najdete v jednom z následujících článků založené na va
 
 V následující tabulce najdete souhrn možností jednotlivých možností zálohování a obnovení pro virtuální počítače systému SQL Server v Azure.
 
-|| **Automatizované zálohování** | **Zálohování Azure pro virtuální počítače SQL** | **Ruční zálohy** |
+|| **Automatizované zálohování** | **Zálohování Azure SQL** | **Ruční zálohy** |
 |---|---|---|---|
 | Vyžaduje další služby Azure |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Nakonfigurujte zásady zálohování na portálu Azure | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
@@ -139,11 +139,13 @@ V následující tabulce najdete souhrn možností jednotlivých možností zál
 | Krátkodobé zásady uchovávání záloh (dny) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Dlouhodobé uchovávání záloh zásad (měsíců, roky) |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Integrovaná podpora pro SQL serveru Always On |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Konsolidované e-mailové výstrahy pro selhání |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Řízení přístupu na základě role |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Zálohování do trezoru služeb zotavení |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Zálohování k účtům Azure Storage | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Zálohování k účtům Azure Storage | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automaticky) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(automaticky) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png)(spravovaný zákazníkem) |
+| Správa úložiště a zálohování souborů | | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |  |
 | Zálohování na připojené disky na virtuálním počítači |   |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| Centrální upravitelné zálohování sestavy |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Konsolidované e-mailové výstrahy pro selhání |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Přizpůsobit sledování založené na OMS |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Monitorování úloh zálohování pomocí aplikace SSMS nebo Transact-SQL skriptů | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Obnovení databáze pomocí aplikace SSMS nebo Transact-SQL skriptů | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Ano](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 
 ## <a name="next-steps"></a>Další postup

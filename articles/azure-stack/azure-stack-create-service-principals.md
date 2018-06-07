@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: c2e18f30e55007a0625a19258ec3745f64dc25da
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dd43d567a9839ae38c5b5eb4cdb851f8b80dcfff
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824566"
 ---
-# <a name="provide-applications-access-to-azure-stack"></a>Uveďte přístup aplikace k Azure zásobníku
+# <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
@@ -29,7 +30,7 @@ Například můžete mít nástroj pro správu konfigurace pomocí Azure Resourc
 
 Objekty služby, je vhodnější spuštění aplikace vlastní oprávnění, protože:
 
-* Můžete přiřadit oprávnění do objektu, který se liší od vlastní oprávnění účtu služby. Tato oprávnění jsou obvykle omezené na přesně co aplikaci je třeba provést.
+* Můžete přiřadit oprávnění do objektu, který se liší od vlastní oprávnění účtu služby. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
 * Nemáte ke změně pověření aplikace, pokud vaše odpovědnosti změnit.
 * Certifikát můžete použít k automatizaci ověřování při provádění bezobslužného skriptu.  
 
@@ -50,7 +51,7 @@ V této části vytvoříte aplikaci (instanční objekt) ve službě Azure AD, 
 
 Vytvořili jste objekt služby pro vaši aplikaci.
 
-### <a name="get-credentials"></a>Získání přihlašovacích údajů
+### <a name="get-credentials"></a>Získat přihlašovací údaje
 Při prostřednictvím kódu programu přihlášení, abyste používali ID pro vaši aplikaci a pro webovou aplikaci nebo rozhraní API, ověřovací klíč. K získání těchto hodnot použijte následující postup:
 
 1. Z **registrace aplikace** ve službě Active Directory, vyberte svou aplikaci.
@@ -76,7 +77,7 @@ Z koncového bodu privilegované spuštění skriptu na virtuálním počítači
 
 
 Požadavky:
-- Certifikovaných je povinný.
+- Je vyžadován certifikát.
 
 **Parametry**
 

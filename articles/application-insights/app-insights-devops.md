@@ -1,8 +1,8 @@
 ---
-title: "Webové funkce application performance monitoring - Azure Application Insights | Microsoft Docs"
-description: "Jak Application Insights zapadá do devOps cyklu"
+title: Webové funkce application performance monitoring - Azure Application Insights | Microsoft Docs
+description: Jak Application Insights zapadá do devOps cyklu
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
 ms.openlocfilehash: 24e249bb515c509f2fba1f943ac5e23a1ea9965e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808474"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč musím Application Insights?
@@ -104,7 +105,7 @@ V obou případech výstrahy nejen zjistíte příznaky není zjištěna, ale ta
 
 Zákazník Samtec uvedená: "během posledních funkci cutover jsme našli databázi škálovat, který byl nedosáhli limitů jeho prostředků a způsobuje vypršení časových limitů. Výstrahy proaktivní zjišťování byla přijata oznámena jako inzerované jsme byly triaging problém velmi v reálném čase. Tato výstraha doplněná s výstrahami platformy Azure pomohl nám prakticky okamžitě vyřešte problém. Celkové prostoje < 10 minut."
 
-## <a name="live-metrics-stream"></a>Živý datový proud metriky
+## <a name="live-metrics-stream"></a>Live Metrics Stream
 Nasazení na nejnovější verzi může být usilujíce prostředí. Pokud se vyskytnou potíže, budete chtít vědět o nich hned, takže můžete zálohovat v případě potřeby. Živý datový proud metriky vám dává klíčové metriky s latencí přibližně jednu sekundu.
 
 ![Metriky za provozu](./media/app-insights-devops/040.png)
@@ -168,7 +169,7 @@ Pokud je vyvolána výstraha, Application Insights do systému pro sledování p
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Začínáme s Application Insights je snadné. Hlavní možnosti jsou:
 
 * Instrumentace webové aplikace už spuštěná. To vám dává všechny předdefinované výkonu telemetrie. Je k dispozici pro [Java](app-insights-java-live.md) a [servery služby IIS](app-insights-monitor-performance-live-website-now.md)a také pro [webové aplikace Azure](app-insights-azure.md).

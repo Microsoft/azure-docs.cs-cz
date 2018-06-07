@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 06/05/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807529"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure funkce škálování a hostování
 
@@ -43,10 +44,10 @@ Na plán služby App Service je možné škálovat mezi vrstvami přidělit jino
 
 ## <a name="consumption-plan"></a>Plán Consumption
 
-Pokud používáte plánu spotřeby, instance hostitele Azure Functions dynamicky přidat nebo odebrat závislosti na počtu příchozích událostí. Tento plán automaticky přizpůsobí a musíte platit za výpočetní prostředky jenom v případě, že funkce běží. V plánu spotřeby funkci můžete používat maximálně 10 minut. 
+Pokud používáte plánu spotřeby, instance hostitele Azure Functions dynamicky přidat nebo odebrat závislosti na počtu příchozích událostí. Tento plán automaticky přizpůsobí a musíte platit za výpočetní prostředky jenom v případě, že funkce běží. V plánu spotřeby spuštění funkce vyprší po nastaveném časovém intervalu. 
 
 > [!NOTE]
-> Výchozí hodnota časového limitu pro funkce na plánu spotřeby je 5 minut. Hodnota je možné zvýšit na 10 minut pro aplikaci funkce Změna vlastnosti `functionTimeout` v [host.json](functions-host-json.md#functiontimeout) souboru projektu.
+> Výchozí hodnota časového limitu pro funkce na plánu spotřeby je 5 minut. Hodnota je možné zvýšit pro funkce aplikace až 10 minut Změna vlastnosti `functionTimeout` v [host.json](functions-host-json.md#functiontimeout) souboru projektu.
 
 Fakturace je založena na počet spuštěních, čas spuštění a paměti. Fakturace je agregovat přes všechny funkce v rámci funkce aplikace. Další informace najdete v tématu [Azure Functions stránce s cenami].
 
@@ -54,7 +55,7 @@ Spotřeba plán je výchozí plán hostování a nabízí následující výhody
 - Platí se pouze až nebudou spuštěny funkcí.
 - Automaticky škálovat, i během období vysoké zatížení.
 
-## <a name="app-service-plan"></a>plán služby App Service
+## <a name="app-service-plan"></a>Plán služby App Service
 
 V plánu služby App Service vaše funkce aplikace běží na vyhrazených virtuálních počítačích na Basic, Standard, Premium a izolované SKU, podobně jako webové aplikace, rozhraní API Apps a Mobile Apps. Vyhrazených virtuálních počítačích jsou přiděleny aplikace služby App Service, což znamená, že na hostiteli funkce vždy běží. Plány služby App Service podporovat Linux.
 
@@ -90,7 +91,7 @@ Další informace o typech účtu úložiště najdete v tématu [Představení 
 
 ## <a name="how-the-consumption-plan-works"></a>Jak funguje s plánem spotřeba
 
-V plánu spotřeby řadičem škálování automaticky přizpůsobí prostředků procesoru a paměti přidáním další instance funkce hostitele, na základě počtu událostí, které jsou aktivována jeho funkce. Každá instance hostitele funkce je omezený na 1,5 GB paměti.  Instance hostitele je funkce aplikace, což znamená všechny funkce v rámci funkce aplikace sdílet zdroje v rámci služby instance a škálování ve stejnou dobu.
+V plánu spotřeby řadičem škálování automaticky přizpůsobí prostředků procesoru a paměti přidáním další instance funkce hostitele, na základě počtu událostí, které jsou aktivována jeho funkce. Každá instance hostitele funkce je omezený na 1,5 GB paměti.  Instance hostitele je funkce aplikace, což znamená všechny funkce v rámci funkce aplikace sdílet zdroje v rámci služby instance a škálování ve stejnou dobu. Funkce aplikace, které sdílejí stejný plán, který spotřeby jsou škálovat nezávisle.  
 
 Při spotřeby hostování plán, jsou uloženy soubory kódu funkce na Azure sdílených složek v účtu úložiště hlavní funkce. Pokud odstraníte účet úložiště hlavní funkce aplikace, soubory kódu funkce jsou odstraněny a nelze jej obnovit.
 

@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 1ebbdb22698ec1eab76b6b6b504fe27a6f0b28bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4da848b9d7765b11db67973226a056e73ca5cced
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824757"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Začněte používat Azure Stream Analytics: odhalování podvodů v reálném čase
 
@@ -35,7 +36,7 @@ Společnost telecommunications má velký objem dat pro příchozí volání. Sp
 
 V tomto kurzu budete simulovat telefonní hovor dat pomocí klientskou aplikaci, která generuje ukázka telefonní hovor metadat. Některé záznamy, které vytváří aplikace vypadat jako podvodné volání. 
 
-Než začnete, ujistěte se, že máte následující:
+Než začnete, ujistěte se, že jste provedli následující akce:
 
 * Účet Azure.
 * Generátor aplikace události volání. To můžete získat tak, že stáhnete [TelcoGenerator.zip soubor](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) z webu Microsoft Download Center. Rozbalte tento balíček do složky v počítači. Pokud chcete zobrazit zdrojový kód a spusťte aplikaci v ladicí program, můžete získat zdrojovém kódu aplikace z [Githubu](https://aka.ms/azure-stream-analytics-telcogenerator). 
@@ -75,9 +76,9 @@ V tomto postupu vytvoříte na obor názvů centra událostí a poté přidejte 
     
  
 7. Klikněte na možnost **Vytvořit**.
-### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udělit přístup k Centru událostí a získat připojovací řetězec
+### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Udělení přístupu k centru událostí a získání připojovacího řetězce
 
-Předtím, než se proces může odesílat data do centra událostí, musí mít centra událostí zásadu, která umožňuje odpovídající přístup. Zásady přístupu vytvoří připojovací řetězec, který obsahuje informace o ověření.
+Předtím, než se proces může odesílat data do centra událostí, musí mít centra událostí zásadu, která umožňuje odpovídající přístup. Zásady přístupu vytváří připojovací řetězec, který obsahuje informace o autorizaci.
 
 1.  V podokně oboru názvů událostí, klikněte na tlačítko **Event Hubs** a pak klikněte na název vašeho nového centra událostí.
 
@@ -131,26 +132,26 @@ Než začnete TelcoGenerator aplikace, musíte ho nakonfigurovat tak, aby se bud
 1.  Otevřete okno příkazového řádku a přejděte do složky, kde je rozbalené TelcoGenerator aplikace.
 2.  Zadejte následující příkaz:
 
-        telcodatagen.exe 1000 .2 2
+        telcodatagen.exe 1000 0.2 2
 
     Parametry jsou: 
 
     * Počet disky CDR za hodinu. 
-    * SIM karta podvod pravděpodobnosti: Jak často jako procento všechna volání, že aplikace má simulovat podvodné volání. Hodnota.2 znamená, že který přibližně 20 % záznamy volání bude vypadat podvodné.
+    * SIM karta podvod pravděpodobnosti: Jak často jako procento všechna volání, že aplikace má simulovat podvodné volání. Hodnota 0,2 znamená, že který přibližně 20 % záznamy volání bude vypadat podvodné.
     * Doba v hodinách. Počet hodin, které by měla spustit aplikace. Můžete také zastavit aplikaci kdykoli stisknutím kombinace kláves Ctrl + C na příkazovém řádku.
 
-    Za několik sekund spuštění aplikace zobrazení záznamů telefonního hovoru na obrazovce, jako je odešle do centra událostí.
+    Po několika sekundách aplikace začne zobrazovat záznamy telefonních hovorů na obrazovce, když je odešle do centra událostí.
 
 Některá pole klíče, které budete používat v této aplikaci zjišťování podvodů v reálném čase jsou následující:
 
-|**záznam**|**Definice**|
+|**Záznam**|**Definice**|
 |----------|--------------|
-|`CallrecTime`|Časové razítko pro volání počáteční čas. |
-|`SwitchNum`|Přepínač telefonní používaná k připojení volání. V tomto příkladu přepínače jsou řetězce, které představují země původu (USA, Čína, UK, Německu nebo Austrálie). |
+|`CallrecTime`|Časové razítko pro počáteční čas volání. |
+|`SwitchNum`|Telefonní ústředna použitá pro spojení volání. V tomto příkladu jsou ústředny řetězce, které představují zemi původu (USA, Čína, VB, Německo nebo Austrálie). |
 |`CallingNum`|Telefonní číslo volajícího. |
-|`CallingIMSI`|Mezinárodní mobilní odběratele Identity (IMSI). Toto je jedinečný identifikátor volajícím. |
+|`CallingIMSI`|IMSI (International Mobile Subscriber Identity). Toto je jedinečný identifikátor volajícím. |
 |`CalledNum`|Telefonní číslo příjemce volání. |
-|`CalledIMSI`|Mezinárodní mobilní odběratele Identity (IMSI). Toto je jedinečný identifikátor hovoru příjemce. |
+|`CalledIMSI`|IMSI (International Mobile Subscriber Identity). Toto je jedinečný identifikátor hovoru příjemce. |
 
 
 ## <a name="create-a-stream-analytics-job-to-manage-streaming-data"></a>Vytvořit úlohu služby Stream Analytics ke správě dat
@@ -171,7 +172,7 @@ Teď, když máte datový proud událostí volání, můžete nastavit úlohu sl
 
     Vytvoření úlohy a na portálu se zobrazí podrobnosti úlohy. Nic běží ještě, přestože – budete muset nakonfigurovat úloha může být zahájena.
 
-### <a name="configure-job-input"></a>Konfigurace úlohy vstup
+### <a name="configure-job-input"></a>Konfigurace vstupu úlohy
 
 1. Na řídicím panelu nebo **všechny prostředky** , vyhledejte a vyberte `sa_frauddetection_job_demo` úlohy služby Stream Analytics. 
 2. V **úlohy topologie** části podokno úlohy Stream Analytics, klikněte na tlačítko **vstup** pole.
@@ -221,7 +222,7 @@ TelcoGenerator aplikace odesílá záznamy volání do centra událostí a vaše
 
     Azure ukázky data z vstupního datového proudu za 3 minuty a vás upozorní, jakmile je připraven ukázková data. (To trvá nějakou dobu.) 
 
-Ukázková data jsou ukládána dočasně a je k dispozici při otevření okna dotazu. Pokud zavřete okno dotazu se zahodí ukázkových dat a budete muset vytvořit novou sadu ukázková data. 
+Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud okno dotazu zavřete, budou ukázková data odstraněna a budete muset vytvořit novou sadu ukázkových dat. 
 
 Jako alternativu můžete získat soubor .json, který se nachází ukázková data [z Githubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json)a pak tento soubor .json, který bude použit jako ukázková data pro nahrajte `CallStream` vstupní. 
 
@@ -289,7 +290,7 @@ Tato transformace se má pořadí dočasné Windows, které nepřekrývaly – k
  
 ### <a name="detect-sim-fraud-using-a-self-join"></a>Odhalování podvodů SIM pomocí vlastní spojení
 
-V tomto příkladu jsme Zvažte podvodné použití být volání, které pocházejí ze stejného uživatele, ale v různých umístěních do 5 sekund od sebe navzájem. Například stejného uživatele nelze vytvořit legálně volání z USA a Austrálie ve stejnou dobu. 
+V tomto příkladu jsme Zvažte podvodné použití být volání, které pocházejí ze stejného uživatele, ale v různých umístěních do 5 sekund od sebe navzájem. Například stejný uživatel nemůže legitimně uskutečnit volání z USA a Austrálie současně. 
 
 Pokud chcete zkontrolovat pro tyto případy, můžete vlastní spojení dat spojení, datový proud na základě `CallRecTime` hodnotu. Potom můžete vyhledat volání záznamy, kde `CallingIMSI` hodnotu (výchozí číslo) je stejné, ale `SwitchNum` hodnotu (země původu) není stejný.
 

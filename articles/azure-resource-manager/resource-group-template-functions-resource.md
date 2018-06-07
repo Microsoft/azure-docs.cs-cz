@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/22/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ba4c9d9cd5f8a43be0f97053c02798e3b84a5f7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f1271a6afba91cf75820f2e4b973b7cd42782449
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824332"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkce prostředků pro šablony Azure Resource Manager
 
@@ -95,7 +96,7 @@ Pokud chcete zjistit, jaké typy prostředků obsahovat operaci seznamu, máte n
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Zadejte prostředek pomocí [resourceId funkce](#resourceid), formát nebo `{providerNamespace}/{resourceType}/{resourceName}`.
+Zadejte prostředek pomocí názvu prostředku nebo [resourceId funkce](#resourceid). Při použití této funkce do stejné šablony, která nasazuje odkazovaných prostředků, použijte název prostředku.
 
 ### <a name="example"></a>Příklad:
 
@@ -257,7 +258,7 @@ Každý typ prostředku vrátí různé vlastnosti pro odkaz funkce. Funkce nevr
 
 Funkce odkaz odvozuje svou hodnotu z stav modulu runtime a proto jej nelze použít v sekci proměnných. Je možné v části výstupů šablony nebo [propojené šablony](resource-group-linked-templates.md#link-or-nest-a-template). Nelze zadat v části výstupy [vnořené šablony](resource-group-linked-templates.md#link-or-nest-a-template). K návratu hodnot pro prostředek nasazené v šabloně vnořené, převeďte na šablonu propojené vnořené šablony. 
 
-Pomocí funkce odkaz je implicitně deklarovat, že jeden prostředek závisí na jiný prostředek, pokud odkazovaného prostředku je zřízený v rámci stejné šablony. Není nutné také používat vlastnost dependsOn. Funkce, nebude hodnocen až odkazovaných prostředků po dokončení nasazení.
+Pomocí funkce odkaz je implicitně deklarovat, že jeden prostředek závisí na jiný prostředek, pokud odkazovaného prostředku je zřízený v rámci stejné šablony a odkazů na prostředek pomocí svůj název (není ID prostředku). Není nutné také používat vlastnost dependsOn. Funkce, nebude hodnocen až odkazovaných prostředků po dokončení nasazení.
 
 Pokud chcete zobrazit názvy a hodnoty pro typ prostředku, vytvořte šablonu, která vrací objekt v části výstupy. Pokud máte existující prostředek daného typu, šablony vrátí objekt bez nasazení žádné nové prostředky. 
 

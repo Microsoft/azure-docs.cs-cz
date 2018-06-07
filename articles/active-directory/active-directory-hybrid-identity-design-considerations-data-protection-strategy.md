@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 71a49b3d1ce22906a534a71f745685981b93f594
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801894"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824164"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze určíte strategie ochrany dat pro vaše řešení hybridní identity k splňovat obchodní požadavky definovaný v:
@@ -117,22 +117,21 @@ Po ověření uživatele pomocí služby Azure AD, je důležité vyhodnotit úr
 
 Všechny interakce v diagramu vám obrázek X představuje jeden scénář řízení přístupu, která mohou být předmětem Azure AD. Zde máte popis jednotlivých scénářů:
 
-1. Podmíněný přístup k aplikacím, které jsou hostované na místě: registrovaná zařízení se zásadami přístupu můžete použít pro aplikace, které jsou nakonfigurovány pro použití služby AD FS v systému Windows Server 2012 R2. Další informace o nastavení podmíněného přístupu pro místní úložiště naleznete v tématu [Nastavení místního podmíněného přístupu pomocí nástroje Registrace zařízení služby Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+  1. Podmíněný přístup k aplikacím, které jsou hostované na místě: registrovaná zařízení se zásadami přístupu můžete použít pro aplikace, které jsou nakonfigurovány pro použití služby AD FS v systému Windows Server 2012 R2. Další informace o nastavení podmíněného přístupu pro místní úložiště naleznete v tématu [Nastavení místního podmíněného přístupu pomocí nástroje Registrace zařízení služby Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
-2. Řízení přístupu na portál Azure: Azure také umožňuje řídit přístup k portálu pomocí řízení přístupu na základě role (RBAC)). Tato metoda umožňuje společnosti umožní omezit počet operací, které konkrétního lze na portálu Azure. Pomocí RBAC pro řízení přístupu na portál, můžete správci IT delegovat přístup pomocí následujících postupů správy přístupu:
+  2. Řízení přístupu na portál Azure: Azure také umožňuje řídit přístup k portálu pomocí řízení přístupu na základě role (RBAC)). Tato metoda umožňuje společnosti umožní omezit počet operací, které konkrétního lze na portálu Azure. Pomocí RBAC pro řízení přístupu na portál, můžete správci IT delegovat přístup pomocí následujících postupů správy přístupu:
 
-    * Přiřazení role na základě skupiny: můžete přiřadit přístup ke skupinám Azure AD, které mohou být synchronizovány z místní služby Active Directory. Díky tomu můžete využít stávající investice, které vaše organizace má provést v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny správy služby Azure AD Premium.
-    * Použít předdefinované role v Azure: tři role je možné použít – vlastník, Přispěvatel a čtečky, ujistěte se, že uživatelé a skupiny mají oprávnění k provádět jenom úkoly, které potřebují svou práci.
-    * Podrobné přístup k prostředkům: můžete přiřadit role pro uživatele a skupiny pro určitý odběr, skupinu prostředků nebo jednotlivých prostředků Azure, jako je například na webu nebo v databázi. Tímto způsobem zajistíte, že uživatelé mají přístup ke všem prostředkům, které potřebují a bez přístupu k prostředkům, které není potřeba spravovat.
+   - Přiřazení role na základě skupiny: můžete přiřadit přístup ke skupinám Azure AD, které mohou být synchronizovány z místní služby Active Directory. Díky tomu můžete využít stávající investice, které vaše organizace má provést v nástrojů a procesů pro správu skupin. Můžete také použít funkci delegované skupiny správy služby Azure AD Premium.
+   - Použít předdefinované role v Azure: tři role je možné použít – vlastník, Přispěvatel a čtečky, ujistěte se, že uživatelé a skupiny mají oprávnění k provádět jenom úkoly, které potřebují svou práci.
+   -  Podrobné přístup k prostředkům: můžete přiřadit role pro uživatele a skupiny pro určitý odběr, skupinu prostředků nebo jednotlivých prostředků Azure, jako je například na webu nebo v databázi. Tímto způsobem zajistíte, že uživatelé mají přístup ke všem prostředkům, které potřebují a bez přístupu k prostředkům, které není potřeba spravovat.
 
-> [!NOTE]
-> Pokud vytváříte aplikace a chcete přizpůsobit řízení přístupu pro ně, je také možné použít Azure AD aplikační role pro autorizaci. Zkontrolovat to [WebApp. RoleClaims DotNet příklad](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) o tom, jak sestavit aplikaci použít tuto funkci.
->
->
+   > [!NOTE]
+   > Pokud vytváříte aplikace a chcete přizpůsobit řízení přístupu pro ně, je také možné použít Azure AD aplikační role pro autorizaci. Zkontrolovat to [WebApp. RoleClaims DotNet příklad](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) o tom, jak sestavit aplikaci použít tuto funkci.
 
-3. Podmíněný přístup pro aplikace Office 365 s Microsoft Intune: správci IT mohou poskytnout zásady podmíněného přístupu zařízení kvůli zabezpečení prostředků podniku, zatímco ve stejnou dobu umožnili pracovníkům s vhodnými zařízeními přístup ke službám. Další informace najdete v tématu [Zásady podmíněného přístupu zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md).
 
-4. Podmíněný přístup pro aplikace Saas: [tuto funkci](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) umožňuje konfigurovat pravidla přístupu k jednotlivým aplikacím služby Multi-Factor authentication a možnost blokovat přístup pro uživatele není v důvěryhodné síti. Pravidla vícefaktorového ověřování můžete použít pro všechny uživatele, které jsou přiřazené k aplikaci nebo jenom pro uživatele v rámci určených skupinách zabezpečení. Uživatelé mohou být vyjmuty z požadavku vícefaktorového ověřování, pokud uživatelé přistupují aplikace z IP adresy, která v rámci organizace sítě.
+  3. Podmíněný přístup pro aplikace Office 365 s Microsoft Intune: správci IT mohou poskytnout zásady podmíněného přístupu zařízení kvůli zabezpečení prostředků podniku, zatímco ve stejnou dobu umožnili pracovníkům s vhodnými zařízeními přístup ke službám. Další informace najdete v tématu [Zásady podmíněného přístupu zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md).
+
+  4. Podmíněný přístup pro aplikace Saas: [tuto funkci](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) umožňuje konfigurovat pravidla přístupu k jednotlivým aplikacím služby Multi-Factor authentication a možnost blokovat přístup pro uživatele není v důvěryhodné síti. Pravidla vícefaktorového ověřování můžete použít pro všechny uživatele, které jsou přiřazené k aplikaci nebo jenom pro uživatele v rámci určených skupinách zabezpečení. Uživatelé mohou být vyjmuty z požadavku vícefaktorového ověřování, pokud uživatelé přistupují aplikace z IP adresy, která v rámci organizace sítě.
 
 Vzhledem k tomu použít s vícevrstvých možnosti pro řízení přístupu, se nedají použít pro tuto úlohu porovnání mezi těmito možnostmi. Ujistěte se, že se využívá všechny možnosti, které jsou dostupné pro každý scénář, který vyžaduje, abyste řízení přístupu k prostředkům.
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: b2e2e7dcc26bece79ae0423d55b08416065d599e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ad2faabbab74ba343328b6fe30e09c87520e7019
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809790"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Pravidelné zálohování a obnovení v Azure Service Fabric (Preview)
 > [!div class="op_single_selector"]
@@ -119,11 +120,11 @@ Prvním krokem je vytvoření zásady zálohování popisující plán zálohov�
 
 Pro úložiště záloh použijte účet vytvořili výše úložiště Azure. Tento příklad předpokládá účtu úložiště Azure s názvem `sfbackupstore`. Kontejner `backup-container` je nakonfigurován pro ukládání záloh, je vytvořit kontejner s tímto názvem, pokud ještě není přítomný, během nahrávání zálohování. Naplnění `ConnectionString` s platný připojovací řetězec pro účet úložiště Azure.
 
-Spusťte následující skript prostředí PowerShell pro vyvolání požadované rozhraní REST API pro vytvoření nové zásady.
+Spusťte následující skript prostředí PowerShell pro vyvolání požadované rozhraní REST API pro vytvoření nové zásady. Nahraďte `account-name` s názvem svého účtu úložiště a `account-key` nahraďte svým klíčem účtu úložiště.
 
 ```powershell
 $StorageInfo = @{
-    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=sfbackupstore;AccountKey=64S+3ykBgOuKhd2DK1qHJJtDml3NtRzgaZUa+8iwwBAH4EzuGt95JmOm7mp/HOe8V3l645iv5l8oBfnhhc7dJA==;EndpointSuffix=core.windows.net'
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
     ContainerName = 'backup-container'
     StorageKind = 'AzureBlobStore'
 }

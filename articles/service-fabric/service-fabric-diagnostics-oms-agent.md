@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: af0007daf6cb8a2e17e1806f47587e5958b15bd2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 74a738f85a969e3c3451dc326de9b4284c0984c8
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716070"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809569"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Pomocí analýzy protokolů pro sledování výkonu
 
@@ -94,7 +94,7 @@ Teď, když jste přidali agenta OMS, head na over na portál analýzy protokol�
 
 10. Klikněte na graf kontejneru metrika zobrazíte další podrobnosti. Můžete taky zadat dotaz na data čítače výkonu podobně jako na clusteru události a na uzly, název čítače výkonu a hodnoty pomocí dotazovacího jazyka pro Kusto filtr.
 
-![Dotaz čítače výkonu OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.png)
+![Dotaz čítače výkonu OMS](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>Další postup
 

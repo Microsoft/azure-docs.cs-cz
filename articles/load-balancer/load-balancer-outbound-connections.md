@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2e6b8dd5e0ec0ae73fff4a25ad79045e3414e9cc
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824995"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -140,7 +141,7 @@ Stejný počet překládat pomocí SNAT porty jsou souhrnů ještě neumístěn�
 >[!IMPORTANT]
 >Standardní SKU SNAT programování je za přenosový protokol IP a jsou odvozené z pravidlo Vyrovnávání zatížení.  Pokud pravidlo Vyrovnávání zatížení TCP existuje pouze, je k dispozici pro TCP pouze překládat pomocí SNAT. Pokud máte pouze TCP pravidlo Vyrovnávání zatížení a nutnost UDP odchozí překládat pomocí SNAT, vytvořte pravidla ze stejné front-endu do stejného fondu back-end pro vyrovnávání zatížení UDP.  Tím se aktivuje programování pro UDP překládat pomocí SNAT.  Pracovní pravidlo nebo stav testu se nevyžaduje.  Základní SKU překládat pomocí SNAT vždy programů překládat pomocí SNAT pro obě transportního protokolu IP, bez ohledu na přenosový protokol zadaný v pravidlo Vyrovnávání zatížení.
 
-Azure preallocates překládat pomocí SNAT porty ke konfiguraci IP adresy síťového adaptéru každý virtuální počítač. Při konfiguraci IP adres je přidán do fondu, jsou porty překládat pomocí SNAT souhrnů ještě neumístěných pro tuto konfiguraci IP adresy na základě velikosti fondu back-end. Když se vytváří odchozí toky, [PAT](#pat) dynamicky využívá (až předběžně přidělené limit) a uvolní tyto porty toku zavře nebo [časové limity nečinnosti](#ideltimeout) dojít.
+Azure preallocates překládat pomocí SNAT porty ke konfiguraci IP adresy síťového adaptéru každý virtuální počítač. Při konfiguraci IP adres je přidán do fondu, jsou porty překládat pomocí SNAT souhrnů ještě neumístěných pro tuto konfiguraci IP adresy na základě velikosti fondu back-end. Když se vytváří odchozí toky, [PAT](#pat) dynamicky využívá (až předběžně přidělené limit) a uvolní tyto porty toku zavře nebo [časové limity nečinnosti](#idletimeout) dojít.
 
 V následující tabulce jsou uvedeny preallocations port překládat pomocí SNAT pro úrovně velikosti fondu back-end:
 

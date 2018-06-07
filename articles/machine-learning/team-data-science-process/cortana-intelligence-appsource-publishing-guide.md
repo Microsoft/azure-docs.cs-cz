@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams
 ms.openlocfilehash: 3817d58cd61fb349d7815984420d0deb1ae0edd9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808124"
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Průvodce publikování webu Cortana Intelligence AppSource
 
@@ -49,7 +50,7 @@ Tady je seznam kritéria, které aplikace potřebuje ke splnění
     - Machine Learning
     - Data Lake Analytics
     - Stream Analytics
-    - Kognitivní služby
+    - Cognitive Services
     - Architektura robotů
     - Analysis Services
     - Samostatná Microsoft R Server

@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5a9bde85e894f2f4283348771dc5cacc7a08f23
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824651"
 ---
-# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků v šablonách Azure Resource Manager
+# <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definovat pořadí pro nasazení prostředků v šablonách Azure Resource Manageru
 Pro daný prostředek může být další prostředky, které musí existovat před nasazením prostředku. Například SQL server, musí existovat před pokusem o nasazení databáze SQL. Tento vztah definujete označením jeden prostředek jako závislý na jiných prostředku. Můžete definovat závislosti s **dependsOn** element, nebo pomocí **odkaz** funkce. 
 
 Správce prostředků vyhodnotí závislosti mezi prostředky a nasadí je v pořadí podle jejich závislé. Pokud nejsou na sobě navzájem závislé prostředky, Resource Manager je nasadí současně. Stačí definování závislostí u prostředků, které jsou nasazeny do stejné šablony. 
@@ -59,7 +60,7 @@ Při definování závislostí, můžete použít obor názvů zprostředkovatel
 ]
 ``` 
 
-Když jste sklon nesmí být používat dependsOn mapovat vztahy mezi prostředky, je důležité pochopit, proč vaše změny. Například k dokumentu, způsobu vzájemného propojení prostředků, dependsOn není správný přístup. Nemůže zadat dotaz, které prostředky byly definovány v elementu dependsOn po nasazení. Pomocí dependsOn můžete případně ovlivnit času nasazení protože Resource Manager není nasazen v paralelní dva prostředky, které jsou závislé. K dokumentu vztahy mezi prostředky, místo toho použít [propojování prostředků](/rest/api/resources/resourcelinks).
+Když jste sklon nesmí být používat dependsOn mapovat vztahy mezi prostředky, je důležité pochopit, proč vaše změny. K dokumentu, způsobu vzájemného propojení prostředků, například dependsOn není správný přístup. Nemůže zadat dotaz, které prostředky byly definovány v elementu dependsOn po nasazení. Pomocí dependsOn můžete případně ovlivnit času nasazení protože Resource Manager nepodporuje nasazení v paralelní dva prostředky, které jsou závislé. K dokumentu vztahy mezi prostředky, místo toho použít [propojování prostředků](/rest/api/resources/resourcelinks).
 
 ## <a name="child-resources"></a>Podřízené prostředky
 Vlastnost prostředků můžete zadat podřízené prostředky, které se vztahují k prostředku definovaný. Podřízené prostředky se dají jenom definované pěti úrovněmi. Je důležité si uvědomit, že nebyl vytvořen implicitní závislost mezi podřízených prostředků a nadřazený prostředek. Pokud potřebujete podřízených prostředků k nasazení po nadřazeném prostředku, musí explicitně stavu této závislosti s vlastností dependsOn. 
@@ -106,11 +107,19 @@ Následující příklad ukazuje systému SQL server a SQL database. Všimněte 
 ]
 ```
 
-## <a name="reference-function"></a>Reference – funkce
-[Odkazu funkci](resource-group-template-functions-resource.md#reference) umožňuje výrazu odvození svou hodnotu z dalších dvojice název a hodnota JSON nebo modul runtime prostředky. Odkaz na výrazy implicitně deklarovat, že jeden prostředek závisí na jiném. Obecný formát je:
+## <a name="reference-and-list-functions"></a>referenční dokumentace a seznam funkcí
+[Odkazu funkci](resource-group-template-functions-resource.md#reference) umožňuje výrazu odvození svou hodnotu z dalších dvojice název a hodnota JSON nebo modul runtime prostředky. [Seznamu * funkce](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list) návratové hodnoty pro prostředek z operace seznamu.  Referenční dokumentace a seznam výrazů implicitně deklarovat, jeden prostředek závisí na jiném, při nasazení odkazovaného prostředku do stejné šablony a odkazuje svůj název (není ID prostředku). Pokud předáte ID prostředku do odkaz nebo seznamu funkcí, implicitní odkaz se nevytvoří.
+
+Obecný formát odkaz funkce je:
 
 ```json
 reference('resourceName').propertyPath
+```
+
+Obecný formát funkce listKeys je:
+
+```json
+listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
 V následujícím příkladu koncový bod CDN explicitně závisí na profil CDN a implicitně závisí na webovou aplikaci.
@@ -130,7 +139,7 @@ V následujícím příkladu koncový bod CDN explicitně závisí na profil CDN
     }
 ```
 
-Tento element nebo dependsOn element můžete použít k určení závislostí, ale není potřeba použít pro stejné závislý prostředek. Kdykoli je to možné, vyhněte se přidávání nepotřebné závislostí pomocí implicitní odkaz.
+Tento element nebo dependsOn element můžete použít k určení závislostí, ale nemusíte používat pro stejné závislý prostředek. Kdykoli je to možné, vyhněte se přidávání nepotřebné závislostí pomocí implicitní odkaz.
 
 Další informace najdete v tématu [odkazu funkci](resource-group-template-functions-resource.md#reference).
 
@@ -140,12 +149,12 @@ Při rozhodování, jakou závislosti nastavit, použijte následující pokyny:
 
 * Nastavte jako několik závislosti míře.
 * Nastavte podřízených prostředků jako závislý na prostředku jeho nadřazený.
-* Použití **odkaz** funkce nastavit implicitní závislosti mezi prostředky, které je potřeba sdílet vlastnost. Nepřidávejte explicitní závislosti (**dependsOn**) Pokud jste již definována implicitní závislostí. Tento přístup snižuje riziko použití nepotřebné závislosti. 
-* Nastaví závislost, pokud prostředek nemůže být **vytvořit** bez funkce z jiného prostředku. Nenastavujte závislost, pokud prostředky komunikovat po nasazení.
-* Umožňují závislosti cascade bez nastavení je explicitně. Například virtuálního počítače závisí na rozhraní virtuální sítě a virtuální síťové rozhraní závisí na virtuální síť a veřejné IP adresy. Proto tento virtuální počítač je nasazené po všech tří prostředky, ale nenastavíte explicitně virtuální počítač jako závislé na prostředcích všechny tři. Tento postup vysvětluje, pak pořadí závislostí a usnadňuje později změnit šablonu.
-* Pokud hodnota se dá určit před nasazením, zkuste nasazení prostředků bez závislosti. Například pokud hodnota konfigurace potřebuje název jiného prostředku, nemusí závislost. V tomto návodu nefunguje vždy vzhledem k tomu, že některé prostředky, ověřte existenci jiný prostředek. Pokud narazíte na chyby, přidejte závislosti. 
+* Použití **odkaz** funkce a předávat název prostředku nastavit implicitní závislosti mezi prostředky, které je potřeba sdílet vlastnost. Nepřidáte explicitní závislosti (**dependsOn**) Pokud jste již definována implicitní závislostí. Tento přístup snižuje riziko použití nepotřebné závislosti. 
+* Nastaví závislost, pokud prostředek nemůže být **vytvořit** bez funkce z jiného prostředku. Není nastavený závislost, pokud prostředky komunikovat po nasazení.
+* Umožňují závislosti cascade bez nastavení je explicitně. Například virtuálního počítače závisí na rozhraní virtuální sítě a virtuální síťové rozhraní závisí na virtuální síť a veřejné IP adresy. Proto tento virtuální počítač je nasazené po všech tří prostředky, ale není explicitně nastavit virtuální počítač jako závislé na prostředcích všechny tři. Tento postup vysvětluje, pak pořadí závislostí a usnadňuje později změnit šablonu.
+* Pokud hodnota se dá určit před nasazením, zkuste nasazení prostředků bez závislosti. Například pokud hodnota konfigurace potřebuje název jiného prostředku, nemusí závislost. Tyto pokyny vždycky nefunguje, protože některé prostředky, ověřte existenci jiný prostředek. Pokud narazíte na chyby, přidejte závislosti. 
 
-Správce prostředků identifikuje cyklické závislosti během ověřování šablony. Pokud se zobrazí chyba oznamující, že existuje cyklická závislost, vyhodnoťte šablony zda všechny závislosti nejsou potřebné, a může být odebrán. Pokud odebrání závislostí nefunguje, se můžete vyhnout cyklické závislosti přesunutím některé operace nasazení do podřízené prostředky, které jsou nasazeny po prostředky, které mají cyklickou závislost. Předpokládejme například, kterou nasazujete dva virtuální počítače, ale je nutné nastavit vlastnosti u každé z nich odkazovat na druhý. Je můžete nasadit v následujícím pořadí:
+Správce prostředků identifikuje cyklické závislosti během ověřování šablony. Pokud se zobrazí chyba oznamující, že existuje cyklická závislost, vyhodnoťte šablony zda všechny závislosti nejsou potřebné, a může být odebrán. Pokud odebrání závislostí nefunguje, se můžete vyhnout cyklické závislosti přesunutím některé operace nasazení do podřízené prostředky, které jsou nasazeny po prostředky, které mají cyklickou závislost. Předpokládejme například, že nasazujete dva virtuální počítače, ale je nutné nastavit vlastnosti u každé z nich odkazovat na druhý. Je můžete nasadit v následujícím pořadí:
 
 1. vm1
 2. vm2

@@ -1,6 +1,23 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: rogara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 06/03/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: bf0853b137e65ddd6ad40483c50fc8debb62f920
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34826544"
+---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovanými a nespravovanými prémiové disky
 
-Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure spravované disky a Azure Premium Storage.
+Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure spravované disky a Azure Premium SSD disky.
 
 ## <a name="managed-disks"></a>Managed Disks
 
@@ -46,7 +63,7 @@ Spravované disky eliminuje omezení spojená s účty úložiště. Maximální
 
 **Může trvat přírůstkový snímek spravovaného disku?**
 
-Ne. Aktuální vytváření snímků provede úplnou kopii se spravovaným diskem. Doporučujeme však hodláte podporují přírůstkové snímky v budoucnu.
+Ne. Aktuální vytváření snímků provede úplnou kopii se spravovaným diskem.
 
 **Virtuální počítače v nastavení dostupnosti se může skládat z kombinace spravovanými a nespravovanými disky?**
 
@@ -66,7 +83,7 @@ V závislosti na oblasti, kde se nachází skupiny dostupnosti, který použív�
 
 **Jak je účet standardního úložiště pro diagnostiku nastavení?**
 
-Nastavit účet privátní úložiště pro diagnostiku virtuálního počítače. V budoucnu plánujeme také přepnout diagnostiky spravované disky.
+Nastavit účet privátní úložiště pro diagnostiku virtuálního počítače.
 
 **Jaký druh řízení přístupu na základě Role podpora je k dispozici pro spravované disky?**
 
@@ -86,7 +103,7 @@ Zákazníci můžete pořízení snímku jejich spravované disky a potom pomoc�
 
 **Jsou nespravované disky stále podporovány?**
 
-Ano. Podporujeme nespravované a spravované disky. Doporučujeme používat spravované disky pro nové úlohy a migraci vašich aktuální zatížení na spravované disky.
+Ano, jsou podporovány nespravované a spravované disky. Doporučujeme používat spravované disky pro nové úlohy a migraci vašich aktuální zatížení na spravované disky.
 
 
 **Je-li vytvořit 128 GB disk a poté zvýšit velikost 130 GB, bude I vám účtována další velikost disku (512 GB)?**
@@ -113,6 +130,39 @@ Ne. Nelze aktualizovat vlastnosti název počítače. Nový virtuální počíta
 * [Seznam šablon pomocí spravovaných disků](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
+## <a name="standard-ssd-disks-preview"></a>Standardní disky SSD (Preview)
+
+**Co jsou disky SSD standardní Azure?**
+Standardní disky SSD jsou standardní disky založenou na SSD média, optimalizované jako nákladově efektivní úložiště pro úlohy, které je třeba konzistentní výkon na nižších úrovních IOPS. Ve verzi preview jsou k dispozici pro omezený počet oblastí se omezené možnosti správy (k dispozici prostřednictvím šablon Resource Manager).
+
+<a id="standard-ssds-azure-regions"></a>**Jaké jsou oblasti, které aktuálně podporuje standardní SSD disků (Preview)?**
+* Severní Evropa
+
+**Jak vytvořit standardní SSD disky?**
+V současné době můžete vytvořit standardní SSD disky pomocí šablony Azure Resource Manager. V následující tabulce jsou potřebné v šabloně Resource Manager vytvořit standardní disky SSD parametry:
+
+* *apiVersion* pro Microsoft.Compute musí být nastavené jako `2018-04-01` (nebo novější)
+* Zadejte *managedDisk.storageAccountType* jako `StandardSSD_LRS`
+
+Následující příklad ukazuje *properties.storageProfile.osDisk* části pro virtuální počítač, který používá standardní disky SSD:
+
+```json
+"osDisk": {
+    "osType": "Windows",
+    "name": "myOsDisk",
+    "caching": "ReadWrite",
+    "createOption": "FromImage",
+    "managedDisk": {
+        "storageAccountType": "StandardSSD_LRS"
+    }
+}
+```
+
+Úplnou šablonu příklad toho, jak vytvořit standardní SSD disk s využitím šablony najdete v tématu [vytvořte virtuální počítač z bitové kopie systému Windows s standardní datových disků SSD](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+
+**Můžete použít standardní SSD jako nespravované disky?**
+Ne, standardní SSD disky jsou dostupné jen jako spravované disky.
+
 ## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky 
 
 **Jaké změny jsou potřeba v existující Azure Backup service před nebo za migraci konfigurace na spravovaných disky?**
@@ -127,9 +177,9 @@ Ano, zálohování funguje bez problémů.
 
 Nejsou vyžadovány žádné změny. 
 
-**Je automatické migrace z existující virtuální počítač škálování sady (VMSS) z nespravovaných disků spravované disky podporovány?**
+**Je automatické migrace existující virtuální počítač měřítka sad z nespravovaných disky na disky spravované podporovány?**
 
-Ne. Nové VMSS můžete vytvořit s disky spravované pomocí bitové kopie z vašeho původního VMSS nespravované disky. 
+Ne. Můžete vytvořit nové škálování nastavit s disky spravované pomocí bitové kopie z vašeho původního sad s nespravované disky škálování. 
 
 **Můžete vytvořit na Disk spravovaný ze snímku objekt blob stránky prováděné před migrací na spravované disky?**
 
@@ -139,9 +189,9 @@ Ne. Můžete exportovat snímek objekt blob stránky jako objekt blob stránky a
 
 Ano, můžete k převzetí služeb při selhání pro virtuální počítač s spravované disky.
 
-**Je k dispozici žádný vliv migrace na virtuálních počítačích Azure, které jsou chráněné pomocí Azure lokality Recovery (ASR) prostřednictvím replikace Azure do Azure?**
+**Je k dispozici žádný vliv migrace na virtuálních počítačích Azure, které jsou chráněné službou Azure Site Recovery prostřednictvím replikace Azure do Azure?**
 
-Ano. V současné době automatické obnovení systému Azure do Azure ochranu virtuálních počítačů s spravované disky je k dispozici pouze jako služby ve verzi public preview.
+Ano. V současné době Azure do Azure ochrany Azure Site Recovery pro virtuální počítače s spravované disky je k dispozici pouze jako služby ve verzi public preview.
 
 **Můžete migrovat virtuální počítače s nespravované disky, které se nacházejí na účtech úložiště, které jsou nebo byly dříve šifrovaná na spravované disky?**
 
@@ -163,7 +213,7 @@ Ne.
 
 **Je šifrování služby úložiště k dispozici pouze v určitých oblastí?**
 
-Ne. Je k dispozici ve všech oblastech, kde je k dispozici spravované disky. Spravované disků je k dispozici ve všech veřejných oblastí a Německu.
+Ne. Je k dispozici ve všech oblastech, kde spravované disky jsou dostupné. Spravované disků je k dispozici ve všech veřejných oblastí a Německu.
 
 **Jak můžete zjistit, pokud je zašifrovaná Moje spravovaných disků?**
 
@@ -190,19 +240,19 @@ Ne. Pokud exportujete virtuální pevný disk k účtu úložiště šifrované 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Pro prémiové disky: spravovaných a nespravovaných
 
-**Pokud virtuální počítač používá velikost série, která podporuje službu Premium Storage, jako je například DSv2, můžu připojit premium a standard datové disky?** 
+**Pokud virtuální počítač používá velikost série, která podporuje Premium SSD disky, například DSv2, můžu připojit premium a standard datové disky?** 
 
 Ano.
 
-**Můžete připojit premium a standard datových disků pro velikost série, která nepodporuje Storage úrovně Premium, jako je například D Dv2, G nebo F řady?**
+**Můžete připojit premium a standard datových disků pro velikost série, která nepodporuje Premium SSD disky, například D Dv2, G nebo F řady?**
 
-Ne. Pouze standardní datových disků můžete připojit k virtuálním počítačům, které nepoužívají velikost série, která podporuje službu Premium Storage.
+Ne. Pouze standardní datových disků můžete připojit k virtuálním počítačům, které nepoužívají velikost série, která podporuje Premium SSD disky.
 
 **Když vytvořím premium datový disk z existujícího VHD, který byl 80 GB, kolik bude která stojí?**
 
 Datový disk premium vytvořen z disku VHD 80 GB je považována za velikost disku k dispozici další premium, což je P10 disku. Že se vám účtovat podle P10 disku ceny.
 
-**Existují transakce náklady na použití služby Premium Storage?**
+**Existují transakce náklady na Premium SSD disky používat?**
 
 Není opravené náklady pro každou velikost disku, která pochází zřízené pomocí omezení na IOPS a propustnosti. Další náklady jsou šířky odchozího pásma a kapacity snímku, pokud je k dispozici. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
 
@@ -226,7 +276,7 @@ Typ oddílu, který podporuje Azure pro disk operačního systému je hlavní sp
 
 **Co je největší velikost objektu blob stránky, která je podporována?**
 
-Největší velikost objektu blob stránky, který podporuje Azure je 8 TB (8 191 GB). Nepodporujeme objekty BLOB stránky větší než 4 TB (4095 GB) připojené k virtuálnímu počítači jako data nebo disky operačního systému.
+Největší velikost objektu blob stránky, který podporuje Azure je 8 TB (8 191 GB). Velikost maxmium stránky blogu při připojené k virtuálnímu počítači jako data nebo disky operačního systému je 4 TB (4095 GB).
 
 **Je potřeba použít novou verzi nástroje Azure vytvořit, připojení, přizpůsobit a odeslat disky, které jsou větší než 1 TB?**
 
@@ -235,7 +285,7 @@ Není nutné upgradovat existující nástroje Azure k vytvoření, připojit ne
 |Nástroje Azure      | Podporované verze                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Číslo verze 4.1.0: červen 2017 verzi nebo novější|
-|Azure CLI v1     | Číslo verze 0.10.13: pravděpodobně 2017 verzi nebo novější|
+|Rozhraní příkazového řádku Azure v1     | Číslo verze 0.10.13: pravděpodobně 2017 verzi nebo novější|
 |AzCopy           | Číslo verze 6.1.0: červen 2017 verzi nebo novější|
 
 Podpora rozhraní příkazového řádku Azure v2 a Azure Storage Explorer tu bude brzo dostupná. 

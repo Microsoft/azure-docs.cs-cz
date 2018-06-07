@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: pabutler
-ms.openlocfilehash: 48b0b4177dad6262105bf30be2b8714f6ea1228f
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 2ac8119e36843e38e334fb5772ea4ade9962b4f9
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809467"
 ---
 # <a name="saas-applications-technical-publishing-guide"></a>Aplikace SaaS, které se technické publikování průvodce
 
@@ -50,7 +51,7 @@ Aplikace SaaS jsou k dispozici v obou obchodní poutače Azure následující ta
 | **PowerBI nebo Dynamics** | Ano | Ano (integrace Azure AD) |  
 | **Aplikace SaaS**| Ano | Ano (integrace Azure AD) |     
 
-Další informace o obchodní poutače Marketplace a popis jednotlivých možností publikování najdete v tématu [Marketplace vydavatele průvodce](https://aka.ms/sellerguide) a [možnosti publikování](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
+Další informace o obchodní poutače Marketplace a popis jednotlivých možností publikování najdete v tématu [Marketplace vydavatele průvodce](https://aka.ms/sellerguide) a [možnosti publikování](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#select-a-publishing-option).
 
 ## <a name="business-requirements"></a>Obchodní požadavky
 SaaS nabízejí obchodní požadavky můžete dokončit paralelně s technickými požadavky. Většina obchodních požadavků a informace se shromažďují při vytváření této nabídky SaaS v cloudu portál pro partnery. Obchodní požadavky jsou následující: 
@@ -61,7 +62,7 @@ SaaS nabízejí obchodní požadavky můžete dokončit paralelně s technickým
 * Nastavení zásad ochrany osobních údajů a podmínky použití
 * Definování kontakty podpory  
 
-Další informace můžete najít v tématu [požadavky pro publikování na webu marketplace](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
+Další informace můžete najít v tématu [požadavky pro publikování na webu marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide#prerequisites-for-marketplace-publishing)
 
 ## <a name="technical-requirements"></a>Technické požadavky
 
@@ -71,11 +72,11 @@ Pokud chcete spustit, doporučujeme, abyste měli předplatné vyhrazené pro pu
 
 Nejlepší dokumentaci služby Azure Active Directory, ukázky a pokyny jsou umístěny na následující servery: 
 
-* [Příručka pro vývojáře Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+* [Příručka pro vývojáře Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
-* [Integrace se službou Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-how-to-integrate)
+* [Integrace se službou Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
 
-* [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+* [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 * [Průvodce Azure – zabezpečení a identita](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -124,7 +125,7 @@ Následující tabulka popisuje všechny publikování hlavní kroky:
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Pomocí služby Azure Active Directory povolit zkušební verze  
 
-Microsoft ověří všichni uživatelé Marketplace s Azure AD, proto pokud ověřený uživatel klikne na tlačítko prostřednictvím vaše zkušební verze výpis v Marketplace. a je přesměrován na prostředí zkušební verzi, bez nutnosti můžete zřídit uživatele přímo do bezplatnou zkušební verzí Krok další přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování zahrnuje cenné uživatelské informace, které můžete použít k vytvoření uživatelského účtu v aplikaci, umožňuje automatizovat zřizování prostředí a zvýšit pravděpodobnost převod. Další informace o tokenu najdete v tématu [ukázka tokeny](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft ověří všichni uživatelé Marketplace s Azure AD, proto pokud ověřený uživatel klikne na tlačítko prostřednictvím vaše zkušební verze výpis v Marketplace. a je přesměrován na prostředí zkušební verzi, bez nutnosti můžete zřídit uživatele přímo do bezplatnou zkušební verzí Krok další přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování zahrnuje cenné uživatelské informace, které můžete použít k vytvoření uživatelského účtu v aplikaci, umožňuje automatizovat zřizování prostředí a zvýšit pravděpodobnost převod. Další informace o tokenu najdete v tématu [ukázka tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
 
 Pomocí služby Azure AD povolit 1 kliknutím ověřování do aplikace nebo zkušební verze provede následující akce:  
 * Zjednodušuje zkušeností zákazníků z Marketplace na zkušební verzi.  
@@ -140,15 +141,15 @@ Můžete certifikovat svoji integraci služby Azure AD několika různými způs
 
 Pokud jste již podporují Azure AD, postupujte takto:
 1.  Registrace vaší aplikace na portálu Azure
-2.  Povolte funkci podpory víceklientské ve službě Azure AD získat zkušební prostředí jedním kliknutím. Podrobnější informace můžete najít [zde](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications).  
+2.  Povolte funkci podpory víceklientské ve službě Azure AD získat zkušební prostředí jedním kliknutím. Podrobnější informace můžete najít [zde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
 
 Pokud jste ještě Federovanému služby Azure AD, postupujte takto: 
 1.  Registrace vaší aplikace na portálu Azure
-2.  Vývoj s Azure AD pomocí jednotného přihlašování k [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Povolit podporu víceklientské funkce v AAD získat zkušební prostředí jedním kliknutím podrobnější informace můžete najít [zde](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
+2.  Vývoj s Azure AD pomocí jednotného přihlašování k [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
+3.  Povolit podporu víceklientské funkce v AAD získat zkušební prostředí jedním kliknutím podrobnější informace můžete najít [zde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
 
 **Pro jednoho klienta aplikace použijte některou z následujících možností:**  
-* Přidání uživatelů do vašeho adresáře jako uživatele typu Host pomocí [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+* Přidání uživatelů do vašeho adresáře jako uživatele typu Host pomocí [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 * Ručně poskytnout zkušební verze pro zákazníky, obraťte se na mě.
 * Vývoj na zákazníka, Test jednotky.
 * Vytvoření ukázkové víceklientské ukázkovou aplikaci pomocí jednotného přihlašování

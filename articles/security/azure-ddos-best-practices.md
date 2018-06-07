@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824706"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Ochrana proti útoku DDoS Azure: Osvědčené postupy a referenční architektury
 
@@ -291,18 +292,9 @@ Přenosy určené do clusteru HDInsight z Internetu se v této architektuře sm�
 
 Další informace o této referenční architektuře, najdete v článku [rozšíření Azure HDInsight pomocí Azure Virtual Network](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) dokumentaci.
 
-### <a name="azure-api-management"></a>Azure API Management
-
-Tento referenční architektuře, která pomáhá chránit veřejný koncový bod [Azure API Management](../api-management/api-management-key-concepts.md) prostředků publikování rozhraní API pro zákazníky mimo organizaci. Nasazení v externí virtuální síť k povolení ochrany DDoS API Management.
-
-![Diagram architektury reference pro API Management](media/azure-ddos-best-practices/image15.png)
-
-Při konfiguraci externí virtuální síť, jsou přístupné z veřejného Internetu prostřednictvím Vyrovnávání zatížení veřejnou API brány a vývojáře portálu pro správu. V této architektuře DDoS ochrany standardní Management je povolená na externí virtuální sítě pro rozhraní API. Provoz se směruje z Internetu na veřejnou IP adresu služby API Management, který je chráněn před útoky ze sítě na vrstvy 3 a 4. Chránit před útoky vrstvy 7 protokolu HTTP nebo HTTPS, můžete nakonfigurovat Aplikační brána v režimu firewall webových aplikací.
-
-Seznam dalších služeb, které jsou nasazeny ve virtuální síti a mohou být konfigurovány pro standardní DDoS ochrany najdete v tématu [v tomto článku](../virtual-network/virtual-network-for-azure-services.md). Standardní ochrany DDoS podporuje pouze prostředky Azure Resource Manager. 
 
 > [!NOTE]
-> Vložený nasazení App Service Environment pro PowerApps ve virtuální síti s veřejnou IP adresu není nativně podporované. Podrobné informace o ochraně App Service Environment najdete v této části.
+> Azure App Service Environment pro PowerApps nebo API pro správu ve virtuální síti s veřejnou IP adresu jsou podporované nativně.
 
 ## <a name="next-steps"></a>Další postup
 

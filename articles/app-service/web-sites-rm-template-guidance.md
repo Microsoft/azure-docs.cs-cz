@@ -1,6 +1,6 @@
 ---
-title: "Pokyny k nasazení webové aplikace Azure pomocí šablon | Microsoft Docs"
-description: "Doporučení pro vytváření šablon Azure Resource Manager k nasazení webové aplikace."
+title: Pokyny k nasazení webové aplikace Azure pomocí šablon | Microsoft Docs
+description: Doporučení pro vytváření šablon Azure Resource Manager k nasazení webové aplikace.
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc816bb6e95d2800d79124dfac60b55e88eaa500
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8c29cf5a65e9587b281a6000b5b4eff47f11da91
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807318"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Pokyny k nasazení webové aplikace s použitím šablon Azure Resource Manageru
 
@@ -58,19 +59,20 @@ Můžete nasadit prostředky v následujícím pořadí:
 
 Řešení obvykle obsahuje jenom některé z těchto zdrojů a vrstvy. Pro chybějící úrovně mapovat nižší prostředky na další vyšší úroveň.
 
-Následující příklad ukazuje částí šablony. Hodnota konfigurace řetězec připojení závisí na MSDeploy rozšíření. Rozšíření MSDeploy závisí na webovou aplikaci a databázi.
+Následující příklad ukazuje částí šablony. Hodnota konfigurace řetězec připojení závisí na MSDeploy rozšíření. Rozšíření MSDeploy závisí na webovou aplikaci a databázi. 
 
 ```json
 {
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Web/sites",
+    "name": "[parameters('appName')]",
+    "type": "Microsoft.Web/Sites",
+    ...
     "resources": [
       {
           "name": "MSDeploy",
           "type": "Extensions",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'))]",
-            "[concat('SuccessBricks.ClearDB/databases/', parameters('databaseName'))]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'))]",
+            "[concat('Microsoft.Sql/servers/', parameters('dbServerName'), '/databases/', parameters('dbName'))]",
           ],
           ...
       },
@@ -78,13 +80,15 @@ Následující příklad ukazuje částí šablony. Hodnota konfigurace řetěze
           "name": "connectionstrings",
           "type": "config",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'), '/Extensions/MSDeploy')]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'), '/Extensions/MSDeploy')]"
           ],
           ...
       }
     ]
 }
 ```
+
+Připravené ke spuštění ukázky, která používá výše uvedený kód, najdete v části [šablony: vytvoření jednoduché webové aplikace Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Najít informace o chybách MSDeploy
 

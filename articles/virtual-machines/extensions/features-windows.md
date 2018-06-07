@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88852fe7843e24fde50749e2f994bcfeb596305d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e9e147e2cbe5ff42562d6fcfab62460df48f3d65
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809722"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření virtuálního počítače a funkce pro Windows
 
@@ -67,7 +68,7 @@ Rozšiřující balíčky budou staženy z rozšíření úložiště Azure Stor
 > [!IMPORTANT]
 > Pokud mají blokovaný přístup k *168.63.129.1* použití brány firewall hosta, potom rozšíření nezdaří bez ohledu na výše.
 
-Agenti slouží pouze ke stažení rozšíření balíčky a vytváření sestav stavu. Například pokud instalaci rozšíření je nutné stáhnout skript z webu GitHub (vlastní skript) nebo potřebují přístup ke službě Azure Storage (Azure Backup), pak další brány firewall nebo síťových zabezpečení muset otevřít porty skupiny. Různá rozšíření mají různé požadavky, protože jsou aplikace samy. Pro rozšíření, které vyžadují přístup k úložišti Azure, můžete povolit přístup pomocí značek služby Azure skupina NSG pro [úložiště](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Agenti slouží pouze ke stažení rozšíření balíčky a vytváření sestav stavu. Například pokud instalaci rozšíření je nutné stáhnout skript z webu GitHub (vlastní skript) nebo potřebují přístup ke službě Azure Storage (Azure Backup), pak další brány firewall nebo síťových zabezpečení muset otevřít porty skupiny. Různá rozšíření mají různé požadavky, protože jsou aplikace samy. Pro rozšíření, které vyžadují přístup k úložišti Azure, můžete povolit přístup pomocí značek služby Azure skupina NSG pro [úložiště](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 Agent hosta Windows nemá podporu pro vás k přesměrování agenta požadavky na provoz prostřednictvím proxy serveru.
 
@@ -134,7 +135,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-`Set-AzureRmVMExtension` Příkaz můžete použít ke spuštění všech rozšíření virtuálního počítače. Další informace najdete v tématu [odkaz na sadu AzureRmVMExtension](https://msdn.microsoft.com/en-us/library/mt603745.aspx).
+`Set-AzureRmVMExtension` Příkaz můžete použít ke spuštění všech rozšíření virtuálního počítače. Další informace najdete v tématu [odkaz na sadu AzureRmVMExtension](https://msdn.microsoft.com/library/mt603745.aspx).
 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -419,7 +420,7 @@ Můžete také odebrat rozšíření na portálu Azure následujícím způsobem
 | Rozšíření vlastních skriptů pro Windows |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Windows](custom-script-windows.md) |
 | Rozšíření DSC pro Windows |Rozšíření prostředí PowerShell DSC (Desired State Configuration) |[Rozšíření DSC pro Windows](dsc-overview.md) |
 | Rozšíření Azure Diagnostics |Správa Azure Diagnostics |[Rozšíření diagnostiky Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Rozšíření pro přístup virtuálních počítačů Azure |Spravovat uživatele a přihlašovací údaje |[Rozšíření pro přístup virtuálních počítačů pro Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Rozšíření pro přístup virtuálních počítačů Azure |Spravovat uživatele a přihlašovací údaje |[Rozšíření pro přístup virtuálních počítačů pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>Další postup
 

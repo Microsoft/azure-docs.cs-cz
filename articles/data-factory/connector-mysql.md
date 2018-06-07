@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
-ms.openlocfilehash: d7dea9a3d9eabdc9e4cdf21e6e584b745d22a54e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808719"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z databáze MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +41,7 @@ Konkrétně tento konektor MySQL podporuje MySQL **verze 5.1 a vyšší**.
 Chcete-li použít tento konektor MySQL, budete muset:
 
 - Nastavte Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku.
-- Nainstalujte [MySQL Connector/Net pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verze 6.6.5 nebo vyšší na počítači integrace modulu Runtime. Tento ovladač 32bitové je kompatibilní s 64bitové infračerveného signálu.
+- Nainstalujte [MySQL Connector/Net pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verze mezi 6.6.5 a 6.10.7 na počítači integrace modulu Runtime. Tento ovladač 32bitové je kompatibilní s 64bitové infračerveného signálu.
 
 > [!TIP]
 > Jestli jste nedosáhli chyba "Ověřování se nezdařilo, protože je uzavřený vzdálené strany přenosu datového proudu.", zvažte MySQL Connector/Net upgradu na vyšší verzi.
@@ -60,7 +61,7 @@ Pro službu MySQL propojené jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **MySql** | Ano |
 | server | Název serveru databáze MySQL. | Ano |
 | databáze | Název databáze MySQL. | Ano |
-| schema | Název schématu v databázi. | Ne |
+| Schéma | Název schématu v databázi. | Ne |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi MySQL. | Ano |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |

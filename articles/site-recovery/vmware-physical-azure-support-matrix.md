@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1557567170654506c0010fafea7b035a2535aaeb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 5db7d57045acea3ded82e880169ebf02f4151ec5
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643725"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824723"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -205,7 +205,7 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 
 **Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated machines). | Kontrola selže, pokud není podporován.
+Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated-machines). | Kontrola selže, pokud není podporován.
 Architektura operačního systému hosta | 64bitová verze. | Kontrola selže, pokud není podporován.
 Velikost disku operačního systému | Až 2 048 GB. | Kontrola selže, pokud není podporován.
 Počet disků operačního systému | 1 | Kontrola selže, pokud není podporován.  

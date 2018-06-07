@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: d81b6fc89c90b769650505e845d6d6c6cd70049f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616922"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824927"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různé výpočetní prostředí, které můžete použít k datům procesu nebo transformace. Obsahuje také podrobnosti o různých konfiguracích (na vyžádání oproti přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojených služeb propojení tyto výpočetní prostředí s objektem pro vytváření dat Azure.
@@ -38,8 +38,6 @@ V tomto typu konfigurace je plně spravovaná výpočetní prostředí pomocí s
 
 > [!NOTE]
 > V konfiguraci na vyžádání v současné době podporuje pouze pro clustery služby Azure HDInsight.
->
-> 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Azure propojená služba HDInsight na vyžádání
 Služba Azure Data Factory umožňuje automatické vytvoření clusteru HDInsight na vyžádání k datům procesu. Cluster se vytvoří ve stejné oblasti jako účet úložiště (vlastnost linkedServiceName v kódu JSON) přidružen ke clusteru. Účet úložiště musí být účet úložiště Azure pro obecné účely úrovně standard. 
@@ -49,11 +47,14 @@ Vezměte na vědomí následující **důležité** body o HDInsight na vyžád�
 * Cluster HDInsight na vyžádání se vytvořil v rámci vašeho předplatného Azure. Budete moci zobrazit clusteru na portálu Azure, když je cluster v provozu a spuštěná. 
 * Protokoly pro úlohy, které se spouštějí v clusteru HDInsight na vyžádání se zkopírují do účtu úložiště přidruženého ke clusteru HDInsight. ClusterUserName, clusterPassword, clusterSshUserName, clusterSshPassword definované v definice propojené služby se používají k přihlášení do clusteru pro podrobné řešení potíží během životního cyklu clusteru. 
 * Musíte platit pouze za čas, kdy se HDInsight cluster je nahoru a spuštěné úlohy.
+* Akce skriptu nelze použít s propojené služby Azure HDInsight na vyžádání. Pokud musíte nainstalovat další závislosti, například zvažte použití Azure Automation. Chcete-li spustit skript prostředí PowerShell, který provede následující akce:  
+  a. Vytvoření clusteru HDInsight.  
+  b. Spusťte skript akce třeba nainstalovat další závislosti.  
+  c. Objekt pro vytváření dat kanál spouštět.  
+  d. Odstranění clusteru.  
 
 > [!IMPORTANT]
 > Obvykle trvá **20 minut** nebo více ke zřízení clusteru Azure HDInsight na vyžádání.
->
-> 
 
 ### <a name="example"></a>Příklad:
 Následující kód JSON určuje základě Linux na vyžádání propojené služby HDInsight. Služba Data Factory automaticky vytvoří **systémem Linux** clusteru HDInsight ke zpracování požadované aktivity. 

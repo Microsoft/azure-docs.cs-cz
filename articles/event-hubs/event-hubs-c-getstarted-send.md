@@ -14,18 +14,19 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
 ms.author: sethm
-ms.openlocfilehash: 430135113f4b26db6690feb6bc6ddcc0700c6d11
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: e3267b54fa0c8593e0f9366c009656f36e4094ef
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807811"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do centra událostí Azure pomocí jazyka C
 
 ## <a name="introduction"></a>Úvod
 Event Hubs je vysoce škálovatelná služba, kterou lze přijímat miliony událostí za sekundu, povolení aplikaci zpracovávat a analyzovat masivní objemy dat vytvářených připojených zařízení a aplikací. Až se shromáždí do centra událostí, můžete transformovat a ukládat data pomocí úložného clusteru nebo všechny zprostředkovatele datové analýzy v reálném čase.
 
-Další informace najdete v tématu [Přehled služby Event Hubs](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview).
+Další informace najdete v tématu [Přehled služby Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview).
 
 Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v C. Další informace o příjem událostí, klikněte na příslušný jazyk přijímající v levé tabulce obsahu.
 

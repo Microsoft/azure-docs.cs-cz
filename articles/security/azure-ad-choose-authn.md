@@ -9,15 +9,16 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 6d107b9264a80c7b280ffed9a50b7bb0ffe354be
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809256"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte způsob správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
-Tento článek začne řadu články, které pomůžou organizacím implementaci kompletního řešení hybridní identity Azure Active Directory (Azure AD). Toto řešení se uvedené jako rozhraní digitální transformace hybridní Identity. Pokrývá výstupy obchodní a cíle organizace můžou zaměřit na implementovat robustní a zabezpečené hybridní řešení identit. 
+Tento článek začne řadu články, které pomůžou organizacím implementaci kompletního řešení hybridní identity Azure Active Directory (Azure AD). Toto řešení se uvedené jako [hybridní Identity digitální transformace Framework](https://aka.ms/aadframework). Pokrývá výstupy obchodní a cíle organizace můžou zaměřit na implementovat robustní a zabezpečené hybridní řešení identit. 
 
 První výsledek obchodní rozhraní hláskuje požadavky pro organizace k zabezpečení procesu ověřování, když uživatelé přistupují k cloudových aplikací. Prvním cílem obchodní v zabezpečené obchodní výsledek ověřování je možnost uživatelů přihlásit do cloudových aplikací pomocí jejich místní uživatelských jmen a hesel. Tento proces přihlášení k a jak se uživatelé ověřují, umožní všechno, co v cloudu.
 
@@ -166,7 +167,7 @@ Následující diagramy popisují základní architektura součásti požadovan�
 |Jaké jsou možnosti vícefaktorového ověřování?|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)|[Azure MFA](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)<br><br>[Azure MFA serveru](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[MFA třetích stran](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)|
 |Jaké stavy účet uživatele jsou podporovány?|Zakázané účty<br>(až 30 minut zpoždění)|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|Zakázané účty<br><br>Účet uzamčen<br><br>Platnost hesla vypršela.<br><br>Přihlašovací hodiny|
 |Jaké jsou možnosti podmíněného přístupu?|[Podmíněný přístup pro Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup pro Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)|[Podmíněný přístup pro Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-azure-portal)<br><br>[Pravidla deklarace identity služby AD FS](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Blokuje starších protokolů, které jsou podporovány?|Ne|Ne|[Ano](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Blokuje starších protokolů, které jsou podporovány?|[Ano](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication)|[Ano](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Můžete upravit loga, obrázku a popis na stránkách přihlášení?|[Ano, s Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Ano, s Azure AD Premium](https://docs.microsoft.com/en-us/azure/active-directory/customize-branding)|[Ano](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-management#customlogo)|
 |Jaké pokročilé scénáře jsou podporovány?|[Inteligentní heslo uzamčení](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-secure-passwords)<br><br>[Úniku přihlašovacích údajů sestavy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-risk-events)|[Inteligentní heslo uzamčení](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-smart-lockout)|Nasazení ve více lokalitách s nízkou latencí ověřování systému<br><br>[Uzamčení extranetu služby AD FS](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection)<br><br>[Integrace se systémy jiných výrobců identit](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility)|
 

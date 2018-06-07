@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 6/1/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 160055e4fdc6a5dfa401eaa3dc44427d13af22a8
-ms.sourcegitcommit: 0a7c9629dea6f5eb52cc45a1e31112def210dfc2
+ms.openlocfilehash: f48cbdb41f8ad7a3bad4546fa5cb77cf66780bed
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34730893"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808498"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Zálohování databáze systému SQL Server v Azure
 
@@ -47,6 +47,34 @@ Následující položky jsou známá omezení pro verzi Public Preview.
 - [Distribuované dostupnosti skupiny zálohování má omezení](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017).
 - SQL instance pro Cluster převzetí služeb při selhání (FCI) nejsou podporovány.
 - Použití portálu Azure ke konfiguraci Azure Backup pro ochranu databází systému SQL Server. Podpora pro Azure PowerShell, rozhraní příkazového řádku a rozhraní REST API není aktuálně k dispozici.
+
+## <a name="supported-azure-geos"></a>Podporované oblastech Azure
+
+- Austrálie – jihovýchod (ASE) 
+- Brazílie – jih (BRS)
+- Kanada – střed (CNC)
+- Kanada – východ (CE)
+- USA – střed (CUS)
+- Východní Asie (EA)
+- Východní Austrálie (AE) 
+- USA – východ (EUS)
+- USA – východ 2 (EUS2)
+- Japonsko – východ (JPE)
+- Japonsko – západ (JPW)
+- Indie – střed (INC) 
+- Indie – jih (INS)
+- Korea – střed (KRC)
+- Korea – jih (KRS)
+- Střed USA – sever (NCUS) 
+- Severní Evropa (NE) 
+- Střed USA – jih (SCUS) 
+- Jihovýchodní Asie (SEA)
+- Velká Británie – jih (UKS) 
+- Velká Británie – západ (UKW) 
+- Západní Evropa (WE) 
+- USA – západ (WUS)
+- Střed USA – západ (WCUS)
+- USA – západ 2 (WUS 2) 
 
 ## <a name="supported-operating-systems-and-versions-of-sql-server"></a>Podporované operační systémy a verze systému SQL server
 

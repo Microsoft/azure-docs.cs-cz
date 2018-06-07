@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807454"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Koupě a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -26,7 +27,7 @@ V tomto kurzu se dozvíte, jak zabezpečit webové aplikace prostřednictvím za
 
 ## <a name="step-1---log-in-to-azure"></a>Krok 1 – přihlášení do Azure
 
-Přihlaste se k portálu Azure v http://portal.azure.com
+Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="step-2---place-an-ssl-certificate-order"></a>Krok 2 – umístit pořadí certifikát SSL
 
@@ -196,13 +197,24 @@ Klikněte na tlačítko **změna hodnoty klíče** tlačítko na zahájení proc
 
 Obnovení klíčů vašeho certifikátu vrátí certifikát s nový certifikát vydaný certifikační autority.
 
+## <a name="renew-the-certificate"></a>Obnovení certifikátu
+
+Chcete-li při kdykoli zapnout automatické obnovení certifikátu, klikněte na tlačítko **nastavení automatického obnovení** na stránce Správa certifikátů. Vyberte **na** a klikněte na tlačítko **Uložit**.
+
+![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+
+Chcete-li jako ruční obnovení certifikátu, klikněte na tlačítko **ruční obnovení** místo.
+
+> [!NOTE]
+> Certifikát s prodlouženou platností není vázán automaticky do vaší aplikace, ať už ručně obnovit nebo obnovují automaticky. Pro vytvoření vazby do vaší aplikace, najdete v části [obnovení certifikátů](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+
 <a name="notrenewed"></a>
-## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>Proč můj certifikát SSL auto neobnovíte?
+## <a name="why-is-my-certificate-not-auto-renewed"></a>Proč není můj auto obnovit certifikát?
 
-Pokud váš certifikát SSL je nakonfigurovaný pro automatické obnovení, ale nebude automaticky obnovena, bude pravděpodobně ověření čekající domény. Je třeba počítat s následujícím: 
+Pokud váš certifikát SSL je nakonfigurovaný pro automatické obnovení, ale nebude automaticky obnovena, bude pravděpodobně ověření čekající domény. Poznámky: 
 
-- GoDaddy, který generuje certifikáty App Service, vyžaduje ověření domény jednou za tři roky. Správce domény obdrží e-mail, jednou za tři roky ověřit doménu. Selhání zkontrolujte e-mailu nebo ověřte svoji doménu zabrání certifikát služby App Service se automaticky obnovují vždy. 
-- Všechny služby App Service certifikáty vydané před 2017 31. března vyžadují reverification domény v době obnovení Další (i když je povolená automatického obnovení certifikátu). Toto je výsledek změny v zásadách GoDaddy. Zkontrolujte e-mailu a dokončit ověření jednorázové domény, chcete-li pokračovat automatického obnovení certifikátu služby App Service. 
+- GoDaddy, který generuje certifikáty App Service, vyžaduje ověření domény jednou za dva roky. Správce domény obdrží e-mail, jednou za tři roky ověřit doménu. Selhání zkontrolujte e-mailu nebo ověřte svoji doménu zabrání certifikát služby App Service se automaticky obnovují vždy. 
+- Z důvodu změny v zásadách GoDaddy vyžadují všechny služby App Service certifikáty vydané před 1. března 2018 reverification domény v době obnovení Další (i když je povolená automatického obnovení certifikátu). Zkontrolujte e-mailu a dokončit ověření jednorázové domény, chcete-li pokračovat automatického obnovení certifikátu služby App Service. 
 
 ## <a name="more-resources"></a>Další zdroje informací
 

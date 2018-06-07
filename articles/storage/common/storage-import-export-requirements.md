@@ -6,14 +6,14 @@ manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 06/06/2018
 ms.author: alkohli
-ms.openlocfilehash: eb50846bd838597a6f1e9a0b6550595866e05edc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 4c6e22f50f4550cb4a6e25960bcc13a4d92e9819
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660745"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825063"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -79,7 +79,7 @@ Pro import úlohy jsou zpracovávány pouze první datový svazek na disku. Dato
 
 ### <a name="supported-external-usb-adaptors"></a>Podporované externí adaptéry USB
 
-Tady je seznam externích adaptéry USB použít ke zkopírování dat do interní pevné disky. 
+Při přípravě pevné disky a kopírování dat pomocí nástroje WAImportExport, můžete použít následující externí adaptéry USB (vypnout the-shelp): 
 - Anker 68UPSATAA - 02BU
 - Anker 68UPSHHDS-BU
 - Startech SATADOCK22UE

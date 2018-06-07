@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: fdb3ebe3820191a642c4503851b04dd5fc5e6048
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bb532f5e249947534ba44a41edfadac22ef9e217
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824910"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování  
 
@@ -50,7 +51,7 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
     ![Vytvořit pravidlo](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  Definovat podmínka upozornění pomocí **vyberte prostředek** odkaz a určení cílového výběrem prostředku. Filtrovat podle výběru *předplatné* , *typ prostředku* , a nakonec vyberte požadované *prostředků*.
+4.  Definovat podmínka upozornění pomocí **vyberte prostředek** odkaz a určení cílového výběrem prostředku. Filtrovat podle výběru * předplatného, * typ prostředku a nakonec vyberte požadované *prostředků*.
 
     >[!NOTE]
 
@@ -67,7 +68,7 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
     > Aktivity protokolu výstrahy jsou také podporovány, ale jsou ve verzi preview. [Další informace](monitoring-activity-log-alerts-new-experience.md).
 
-5. *Metriky výstrahy* : Zkontrolujte **typ prostředku** je vybrána s typem signál jako **metrika**, pak jednou odpovídající **prostředků** je zvolen klikněte na tlačítko  *Provádí* tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
+5. * Metriky výstrahy: Zkontrolujte **typ prostředku** je vybrána s typem signál jako **metrika**, pak jednou odpovídající **prostředků** je zvolen klikněte na tlačítko *provádí*tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
 
     ![Vybrat prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -83,9 +84,9 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
     a. Vyberte dobu trvání z **zobrazit historii** rozevírací k vizualizaci jiné časové období. Můžete zvolit dimenze pro podporované metriky pro filtrování časové řady; Výběr dimenze je volitelný a až pět dimenze mohou být použity. 
 
-    b. **Výstrahy logiku** je možné vybrat z zobrazené možnosti *podmínku*, *agregace* a *prahová hodnota*. Jako verze preview poskytuje logiku podmínku se zobrazí v vizualizaci společně s signál historie signalizují, že výstraha by byla spuštěna v minulosti. 
+    b. **Výstrahy logiku** je možné vybrat z zobrazené možnosti *podmínku*, * agregace, a *prahová hodnota*. Jako verze preview poskytuje logiku podmínku se zobrazí v vizualizaci společně s signál historie signalizují, že výstraha by byla spuštěna v minulosti. 
 
-    c. K určení doby trvání zvolili **období** společně s jak často má výstraha spustit výběrem **frekvence**.
+    c. K určení doby trvání, zvolte **období** společně s jak často má výstraha spustit výběrem **frekvence**.
 
     ![Konfigurovat logiku signál pro multidimenzionální metrika](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
@@ -125,14 +126,20 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 
         ![Potlačit oznámení pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
 
+        > [!TIP]
+        > Zadejte potlačit výstrahy hodnotu větší než četnost upozornění Ujistěte se, že oznámení jsou zastaveny bez překrytí
+
 12. Jako třetí a poslední krok, zadejte případných **akce skupiny** musí aktivuje pro pravidlo výstrahy, když je splněna podmínka výstrahy. Můžete vybrat všechny existující skupiny akce s výstraha nebo vytvořte novou skupinu akce. Podle vybrané akce skupiny, když je výstraha bude aktivace Azure: Odeslat email(s), odeslání SMS(s), volání Webhook(s), opravit pomocí Azure Runbooků, nabízené ITSM nástroj, atd. Další informace o [skupiny akcí](monitoring-action-groups.md).
 
     Pro **protokolu výstrahy** některé další funkce, je možné přepsat výchozí akce:
 
-    - **Oznámení e-mailem**: přepsání *předmět e-mailu* v e-mailu, odeslána prostřednictvím akce skupiny; Pokud jeden nebo více e-mailu akce neexistuje ve skupině dané akce. Nelze upravit text e-mailu a toto pole je **není** pro e-mailovou adresu.
-    - **Zahrnout vlastní datovou část Json**: přepsání webhooku JSON používané skupiny akcí; Pokud jeden nebo více akce webhooku neexistuje ve skupině dané akce. Uživatel může určením formát JSON, který se má použít pro všechny webhooků, které jsou nakonfigurované ve skupině přidružené akce; Další informace o formátech webhooku najdete v tématu [akce webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md). Test Webhooku možnost je k dispozici Zkontrolujte formát a zpracování cílová pomocí ukázkových JSON a tuto možnost, jak je označené jako určená pouze pro **testování** účely.
+    - **Oznámení e-mailem**: přepsání *předmět e-mailu* v e-mailu, odeslána prostřednictvím akce skupiny; Pokud jeden nebo více akcí e-mailu neexistuje ve skupině dané akce. Nelze upravit text e-mailu a toto pole je **není** pro e-mailovou adresu.
+    - **Zahrnout vlastní datovou část Json**: přepsání webhooku JSON používané skupiny akcí; Pokud jeden nebo více akcí webhooku neexistuje ve skupině dané akce. Uživatel může určit formát JSON, který se má použít pro všechny webhooků, které jsou nakonfigurované ve skupině přidružené akce; Další informace o formátech webhooku najdete v tématu [akce webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md). Test Webhooku možnost je k dispozici Zkontrolujte formát a zpracování cílová pomocí ukázkových JSON a tuto možnost jako označený určená pouze pro **testování** účely.
 
         ![Akce přepsání pro výstrahy protokolu](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+
+        > [!NOTE]
+        > Pro **Test Webhooku** možnost pracovat, by měly podporovat koncový bod [křížové sdílení prostředků zdroji (CORS)](https://www.w3.org/TR/cors/) a uživatele můžete použít CORS proxy k vyřešení problému "Žádné hlavičky Access-Control-Allow-Origin"
 
 13. Pokud všechna pole jsou platné a s zelená značka **vytvořit pravidlo výstrahy** kliknutí na tlačítko a výstraha je vytvořen v Azure monitorování – výstrahy. Z výstrah řídicího panelu lze zobrazit všechny výstrahy.
 
