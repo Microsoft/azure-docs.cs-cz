@@ -12,10 +12,10 @@ ms.date: 04/10/2018
 ms.author: bonova
 manager: craigg
 ms.openlocfilehash: ff605b7512a27f81b111560f5d151010dbb62273
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
+ms.lasthandoff: 06/07/2018
 ms.locfileid: "31425856"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Obnovení zálohy databáze do Azure SQL Database Managed Instance
