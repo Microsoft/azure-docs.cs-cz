@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 5d13c711d7d71df7469e6408ce78cf0df611632b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e447c04f4a94f2fb534ecb0605595a90816431e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638292"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódování s žebříku automaticky generovaný přenosovou rychlostí
 
@@ -27,18 +28,18 @@ Tento článek vysvětluje, jak používat standardní kodér ve službě Media 
 
 ### <a name="encoding-for-streaming"></a>Kódování pro streamování
 
-Jako název doporučuje, pokud použijete **AdaptiveStreaming** přednastavení při vytváření kódování transformace, zobrazí se výstup, který je vhodný pro doručení pomocí vysílání datového proudu protokoly jako HLS, DASH, CMAF atd. Při použití tohoto **AdaptiveStreaming** předvolby, kodér inteligentně Určuje, kolik vrstvy videa pro generování na jaké přenosovou rychlostí a řešení. Výstupní Asset obsahuje soubory MP4, kde není prokládaný kódováním AAC audio a video kódováním H.264.
+Při použití **AdaptiveStreaming** přednastavené v **transformace**, získat výstup, který je vhodný pro doručení pomocí vysílání datového proudu protokoly jako HLS a POMLČKY. Při použití této přednastavených, službu inteligentně Určuje, kolik vrstvy videa pro generování na jaké přenosovou rychlostí a řešení. Výstup obsahu obsahuje soubory MP4, kde není prokládaný kódováním AAC audio a video kódováním H.264.
 
 Příklad použití tato předvolba najdete v sekci [datového proudu souboru](stream-files-dotnet-quickstart.md).
 
 ## <a name="output"></a>Výstup
 
-Tato část uvádí příklady tři vrstvy výstupu videa vytvořeného pomocí kodéru Media Services v důsledku kódování s **AdaptiveStreaming** přednastavené. Ve všech případech bude výstup obsahovat pouze zvukový soubor MP4 s stereofonní zvuk kódovaný v 128 kb/s.
+Tato část uvádí příklady tři vrstvy výstupu videa vytvořeného pomocí kodéru Media Services v důsledku kódování s **AdaptiveStreaming** přednastavené. Výstup ve všech případech, obsahuje pouze zvukový soubor MP4 s stereofonní zvuk kódovaný v 128 kb/s.
 
 ### <a name="example-1"></a>Příklad 1
 Zdroj s výšky "1080" a "29.970" kmitočet snímků vytváří 6 video vrstvy:
 
-|Vrstva|Výška|Šířka|Bitrate(Kbps)|
+|Vrstva|Výška|Šířka|Přenosovou rychlostí (kbps)|
 |---|---|---|---|
 |1|1080|1920|6780|
 |2|720|1280|3520|
@@ -50,7 +51,7 @@ Zdroj s výšky "1080" a "29.970" kmitočet snímků vytváří 6 video vrstvy:
 ### <a name="example-2"></a>Příklad 2
 Zdroj s výšky "720" a "23.970" kmitočet snímků vytváří 5 video vrstvy:
 
-|Vrstva|Výška|Šířka|Bitrate(Kbps)|
+|Vrstva|Výška|Šířka|Přenosovou rychlostí (kbps)|
 |---|---|---|---|
 |1|720|1280|2940|
 |2|540|960|1850|
@@ -61,7 +62,7 @@ Zdroj s výšky "720" a "23.970" kmitočet snímků vytváří 5 video vrstvy:
 ### <a name="example-3"></a>Příklad 3
 Zdroj s výšky "360" a "29.970" kmitočet snímků vytváří vrstvy 3 videa:
 
-|Vrstva|Výška|Šířka|Bitrate(Kbps)|
+|Vrstva|Výška|Šířka|Přenosovou rychlostí (kbps)|
 |---|---|---|---|
 |1|360|640|700|
 |2|270|480|440|
@@ -70,4 +71,4 @@ Zdroj s výšky "360" a "29.970" kmitočet snímků vytváří vrstvy 3 videa:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Datový proud souboru](stream-files-dotnet-quickstart.md)
+> [Streamování souboru](stream-files-dotnet-quickstart.md)

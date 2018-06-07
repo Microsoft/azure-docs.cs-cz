@@ -1,10 +1,10 @@
 ---
 title: Synchronizaci dat offline v Azure Mobile Apps | Microsoft Docs
-description: "Reference konceptu a Přehled funkce synchronizace offline dat pro Azure Mobile Apps"
+description: Reference konceptu a Přehled funkce synchronizace offline dat pro Azure Mobile Apps
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.service: app-service-mobile
@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597973"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Offline synchronizace dat pro Azure Mobile Apps
 ## <a name="what-is-offline-data-sync"></a>Co je offline synchronizací dat?
@@ -42,7 +43,7 @@ Následující kurzy ukazují, jak přidat offline synchronizace mobilním klien
 * [Xamarin iOS: zapnutí offline synchronizace]
 * [Xamarin Android: Zapnutí offline synchronizace]
 * [Xamarin.Forms: Offline synchronizace povolit](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [univerzální platformu Windows: zapnutí offline synchronizace]
+* [Univerzální platformu Windows: Zapnutí offline synchronizace]
 
 ## <a name="what-is-a-sync-table"></a>Co je synchronizace tabulky?
 Pro přístup k "/ tabulky" koncový bod, klient sady SDK pro Azure Mobile poskytují rozhraní, jako `IMobileServiceTable` (klient .NET SDK) nebo `MSTable` (iOS klienta). Tato rozhraní API připojit přímo k back-end mobilní aplikace Azure a selhat, pokud zařízení klienta nemá připojení k síti.
@@ -52,7 +53,7 @@ Pro podporu použití v offline režimu, musí aplikace místo toho používat *
 ## <a name="what-is-a-local-store"></a>Co je místní úložiště?
 Místní úložiště je vrstvu trvalosti dat v klientském zařízení. Klientské sady SDK Azure Mobile Apps zadejte výchozí implementaci místního úložiště. V systému Windows, Xamarin a Android je založena na SQLite. V systému iOS je založena na základní Data.
 
-Pokud chcete použít implementací na základě SQLite na Windows Phone nebo Windows Store 8.1, musíte nainstalovat rozšíření SQLite. Další informace najdete v tématu [univerzální platformu Windows: zapnutí offline synchronizace]. Android a iOS se dodávají spolu s verzi SQLite operačního systému zařízení samostatně, takže není nutné k odkazování svou vlastní verzi SQLite.
+Pokud chcete použít implementací na základě SQLite na Windows Phone nebo Microsoft Store, musíte nainstalovat rozšíření SQLite. Další informace najdete v tématu [univerzální platformu Windows: zapnutí offline synchronizace]. Android a iOS se dodávají spolu s verzi SQLite operačního systému zařízení samostatně, takže není nutné k odkazování svou vlastní verzi SQLite.
 
 Vývojářům můžete taky implementovat vlastní místní úložiště. Například pokud chcete k ukládání dat v šifrovaném formátu v mobilního klienta, můžete definovat místní úložiště, které používá SQLCipher pro šifrování.
 
@@ -92,12 +93,12 @@ Při použití synchronizace tabulky, váš klientský kód řídí, kdy místn�
 * [iOS: zapnutí offline synchronizace]
 * [Xamarin iOS: zapnutí offline synchronizace]
 * [Xamarin Android: Zapnutí offline synchronizace]
-* [univerzální platformu Windows: zapnutí offline synchronizace]
+* [Univerzální platformu Windows: Zapnutí offline synchronizace]
 
 <!-- Links -->
-[klient .NET SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Klient .NET SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
 [Android: Zapnutí offline synchronizace]: app-service-mobile-android-get-started-offline-data.md
 [iOS: zapnutí offline synchronizace]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: zapnutí offline synchronizace]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: Zapnutí offline synchronizace]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[univerzální platformu Windows: zapnutí offline synchronizace]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[Univerzální platformu Windows: Zapnutí offline synchronizace]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

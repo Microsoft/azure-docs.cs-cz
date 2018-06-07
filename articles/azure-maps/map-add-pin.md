@@ -1,28 +1,26 @@
 ---
 title: Přidat pin s Azure mapy | Microsoft Docs
 description: Postup přidání PIN kódu Javascript mapy
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 189b30ff0b5c47d0a4bd3181c8eb2143213ad6cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dc9649e94f5d1757e5ec65098ccc7e4ffa927bf0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599853"
 ---
 # <a name="add-pins-to-the-map"></a>Přidání kódů PIN do mapy
 
 Tento článek ukazuje, jak přidat kód pin na mapu.  
 
-## <a name="understand-the-code"></a>Pochopení kódu
+## <a name="understand-the-code"></a>Vysvětlení kódu
 
 <iframe height='500' scrolling='no' title='Přidat kód pin na mapu' src='//codepen.io/azuremaps/embed/ZrVpEa/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu pera <a href='https://codepen.io/azuremaps/pen/ZrVpEa/'>přidat pin na mapu</a> pomocí Azure mapy (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>

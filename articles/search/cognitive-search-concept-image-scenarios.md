@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 77fbd69aad6c78ecd5c933d8017c980afaa661a3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640196"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak zpracovat a extrahovat informace z bitových kopií ve scénářích kognitivní vyhledávání
 
@@ -44,7 +45,7 @@ Nastavte **parsingMode** parametru `json` (do indexu každý objekt blob jako je
 Výchozí 2000 pixelů pro bitových kopií normalizovaných maximální šířku a výšku je založena na maximální velikosti podporované [rozpoznávání znaků odborností](cognitive-search-skill-ocr.md) a [image analysis odborností](cognitive-search-skill-image-analysis.md). Pokud můžete zvýšit maximální limit, může na větší bitové kopie nezdaří zpracování.
 
 
-Zadejte imageAction ve vaší [indexer definice](ref-create-indexer.md) následujícím způsobem:
+Zadejte imageAction ve vaší [indexer definice](https://docs.microsoft.com/rest/api/searchservice/create-indexer) následujícím způsobem:
 
 ```json
 {
@@ -217,7 +218,7 @@ Pokud potřebujete transformace normalizovaný souřadnice k původní souřadni
 ```
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-+ [Vytvoření indexer (REST)](ref-create-indexer.md)
++ [Vytvoření indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Analýza dovedností bitové kopie](cognitive-search-skill-image-analysis.md)
 + [Odborností rozpoznávání znaků](cognitive-search-skill-ocr.md)
 + [Sloučení odborností textu](cognitive-search-skill-textmerger.md)

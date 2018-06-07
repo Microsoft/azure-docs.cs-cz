@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 3779b32aa1397b2ca0e05e2627241c0bfb7a8622
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b7c1d4f1b8ca0f8899ebff8178a481c7dd1d5779
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648883"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI používá Azure pro zvýšení jeho cyklu vývoje a ke zvýšení jeho zákaznické a výkonu
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -68,7 +69,7 @@ SpectrumNG používá webové role. Protože aplikace je více klientů, služby
 
 Pro webovou vrstvu svou službu CSI softwaru využívá Azure automatické škálování podle den a čas. Dostupné prostředky jsou automaticky skutečnost zohlednit zvýšením vyšší využití během pracovní doby, podle časového pásma každý místní datacentra. Prostředky jsou nastaveny také pro škálování směrem dolů na víkendy, kdy jsou nižší požadavky zákazníka.
 
-![Daxko/CSI Architecture](./media/sql-database-implementation-daxko/figure1.png)
+![Architektura Daxko/CSI](./media/sql-database-implementation-daxko/figure1.png)
 
 Obrázek 1. Cloudové služby rolí pracovního procesu nevykresluje strukturovaných dat z Azure SQL Database a částečně strukturovaných dat z úložiště tabulek. SpectrumNG uživatelé komunikovat s že dat přes cloud services webové role.
 

@@ -1,26 +1,23 @@
 ---
-title: "Rozšíření skriptů U-SQL pomocí R v Azure Data Lake Analytics | Microsoft Docs"
-description: "Informace o spouštění kódu jazyka R v skriptů U-SQL"
+title: Rozšíření skriptů U-SQL pomocí R v Azure Data Lake Analytics
+description: Informace o spouštění kódu jazyka R v skriptů U-SQL pomocí Azure Data Lake Analytics
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: sukvg
-editor: cgronlun
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/20/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
+ms.topic: conceptual
+ms.date: 06/20/2017
+ms.openlocfilehash: 8b22b4238b20f56727d1c7858094328ab8817dad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624920"
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Kurz: Začínáme s jazykem U-SQL pomocí R rozšíření
+# <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Rozšíření skriptů U-SQL pomocí R kódu v Azure Data Lake Analytics
 
 Následující příklad ukazuje základní kroky pro nasazování kódu jazyka R:
 * Použití `REFERENCE ASSEMBLY` příkaz umožňující rozšíření R skript U-SQL.
@@ -97,7 +94,7 @@ K nasazení tohoto skriptu jazyka R s příkazem nasazení prostředků pomocí 
 ### <a name="datatypes"></a>Datové typy
 * Řetězec a číselné sloupce z U-SQL se převedou jako-mezi R DataFrame a jazykem U-SQL [podporované typy: `double`, `string`, `bool`, `integer`, `byte`].
 * `Factor` Datový typ není podporován v U-SQL.
-* `byte[]`musí být serializován jako kódováním base64 `string`.
+* `byte[]` musí být serializován jako kódováním base64 `string`.
 * Řetězce U-SQL můžete převést na faktory v kódu jazyka R, jakmile U-SQL vytvořit vstupní dataframe R nebo nastavením parametru reduktorem `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Schémata
@@ -166,7 +163,7 @@ Je podporován pouze R 3.2.2.
 ### <a name="input-and-output-size-limitations"></a>Vstup a výstup omezení velikosti
 Všechny vrcholy má omezené množství paměti přidělené k němu. Vzhledem k tomu, že vstupní a výstupní DataFrames musí existovat v paměti v kódu jazyka R, celková velikost vstupní a výstupní nemůže překročit 500 MB.
 
-### <a name="sample-code"></a>Ukázkový kód
+### <a name="sample-code"></a>Vzorový kód
 Další ukázkový kód je k dispozici v účtu Data Lake Store, po instalaci rozšíření Advanced Analytics U-SQL. Cesta pro další ukázkový kód je: `<your_account_address>/usqlext/samples/R`. 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Nasazení vlastní R modulů s jazykem U-SQL

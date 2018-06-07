@@ -14,11 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 18a3f3080c58e01117e0fc73adad76d28c298536
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 110f393e723c7e784a4bd7e79559dd9d55147140
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599428"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkonu a možností škálování trvanlivý funkcí (Azure Functions)
 
@@ -161,7 +162,7 @@ Při plánování použití trvanlivý funkce pro produkční aplikace, je důle
 > [!TIP]
 > Na rozdíl od fan-out fan-in operace jsou omezená na jeden virtuální počítač. Pokud vaše aplikace používá fan-out, fan-in vzor a máte obavy o fan-in výkonu, zvažte dílčí dělení fan-out funkce aktivity napříč více [dílčí orchestrations](durable-functions-sub-orchestrations.md).
 
-V následující tabulce jsou uvedeny očekávané *maximální* čísla propustnost pro dříve popsané scénáře. "Instance" odkazuje na jednu instanci orchestrator funkce spuštěné v jednom malá ([A1](../virtual-machines/windows/sizes-general.md#a-series)) virtuálních počítačů v Azure App Service. Ve všech případech se předpokládá, že [rozšířené relace](#orchestrator-function-replay) jsou povoleny. Skutečný výsledek se může lišit v závislosti na procesor nebo vstupy/výstupy práce prováděné kód funkce.
+V následující tabulce jsou uvedeny očekávané *maximální* čísla propustnost pro dříve popsané scénáře. "Instance" odkazuje na jednu instanci orchestrator funkce spuštěné v jednom malá ([A1](../virtual-machines/windows/sizes-previous-gen.md#a-series)) virtuálních počítačů v Azure App Service. Ve všech případech se předpokládá, že [rozšířené relace](#orchestrator-function-replay) jsou povoleny. Skutečný výsledek se může lišit v závislosti na procesor nebo vstupy/výstupy práce prováděné kód funkce.
 
 | Scénář | Maximální propustnost |
 |-|-|

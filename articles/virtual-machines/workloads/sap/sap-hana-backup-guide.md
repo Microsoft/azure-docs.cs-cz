@@ -4,7 +4,7 @@ description: Zálohování Příručka pro SAP HANA obsahuje dvě hlavní možno
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
@@ -13,11 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9346ed6b26b4fa4a7875354153b6847938253d1e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657005"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA na Azure Virtual Machines
 
@@ -227,7 +228,7 @@ Založené na výsledky testů, které následující tabulky popisují výhody 
 
 |Řešení                                           |Odborníci na                                 |Nevýhody                                  |
 |---------------------------------------------------|-------------------------------------|--------------------------------------|
-|Azure Backup Service                               | Umožňuje zálohování virtuálních počítačů podle snímky objektů blob | Pokud nepoužíváte obnovení na úrovni souborů, vyžaduje vytvoření nového virtuálního počítače pro obnovení procesu, který pak znamená potřeba nový licenční klíč SAP HANA|
+|Služby zálohování Azure                               | Umožňuje zálohování virtuálních počítačů podle snímky objektů blob | Pokud nepoužíváte obnovení na úrovni souborů, vyžaduje vytvoření nového virtuálního počítače pro obnovení procesu, který pak znamená potřeba nový licenční klíč SAP HANA|
 |Snímky ruční objektů blob                              | Flexibilita pro vytvoření a obnovení konkrétní disky virtuálních počítačů, aniž byste museli měnit jedinečné ID virtuálního počítače|Všechny ručního nastavení, které je nutné provést zákazníkem|
 
 ## <a name="next-steps"></a>Další postup

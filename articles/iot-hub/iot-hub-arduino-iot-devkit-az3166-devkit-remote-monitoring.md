@@ -1,24 +1,20 @@
 ---
-title: 'IoT DevKit do cloudu: připojit IoT MXChip DevKit do služby Azure IoT Hub | Microsoft Docs'
+title: IoT DevKit do cloudu – IoT MXChip DevKit připojit ke službě Azure IoT Hub | Microsoft Docs
 description: V tomto kurzu zjistěte, jak odeslat stav senzorů na IoT DevKit AZ3166 k akcelerátoru řešení vzdáleného monitorování Azure IoT.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d3de8241b42aff63faaf04477a58c5564407ac8b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 6c5c12ffeacad9a3dd56ac561d9b4fe1a6e67eea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631492"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojit MXChip IoT DevKit k akcelerátoru řešení Azure IoT vzdálené monitorování
 
@@ -40,7 +36,7 @@ Aktivní předplatné Azure. Pokud jeden nemáte, můžete zaregistrovat pomocí
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Vytvoření akcelerátor řešení Azure IoT vzdálené monitorování
 
-1. Přejděte na [lokality acclerators řešení Azure IoT](https://www.azureiotsuite.com/) a klikněte na tlačítko **vytvořte nové řešení**.
+1. Přejděte na [lokality akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/) a klikněte na tlačítko **vytvořte nové řešení**.
   ![Vyberte typ akcelerátoru řešení Azure IoT](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
   > Ve výchozím nastavení tato ukázka vytvoří Centrum IoT S2 po vytvoření jednoho akcelerátoru řešení vzdáleného sledování IoT. Pokud toto centrum IoT se nepoužívá s ohromnou počet zařízení, důrazně doporučujeme ho starší verzi z S2 S1 a odstranit akcelerátoru řešení vzdáleného sledování IoT tak související IoT Hub se taky dají odstranit, pokud ji už nepotřebujete. 

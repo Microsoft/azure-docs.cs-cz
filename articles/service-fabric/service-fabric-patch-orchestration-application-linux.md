@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/22/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea999945ace53099eb9dec15397310c9b5d1b904
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643120"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Linux v clusteru Service Fabric
 
@@ -61,9 +62,9 @@ Oprava aplikace orchestration se skládá z následujících tyto dílčí souč
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>Ujistěte se, že virtuální počítače Azure používají Ubuntu 16.04
 V době psaní tohoto dokumentu Ubuntu 16.04 (`Xenial Xerus`) je jediná podporovaná verze.
 
-### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-61x-and-above"></a>Zajistěte, aby byl service fabric linux cluster verze 6.1.x a vyšší
+### <a name="ensure-that-the-service-fabric-linux-cluster-is-version-62x-and-above"></a>Zajistěte, aby byl service fabric linux cluster verze 6.2.x a vyšší
 
-Oprava orchestration aplikace linux používá určité funkce modulu runtime, které jsou dostupné ve verzi modulu runtime service fabric jenom 6.1.x a vyšší.
+Oprava orchestration aplikace linux používá určité funkce modulu runtime, které jsou dostupné ve verzi modulu runtime service fabric jenom 6.2.x a vyšší.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Povolit službu opravy správce (Pokud již není spuštěn)
 
@@ -118,7 +119,9 @@ Pro Ubuntu [bezobslužné upgrady](https://help.ubuntu.com/community/AutomaticSe
 
 ## <a name="download-the-app-package"></a>Stáhněte si balíček aplikace
 
-Stažení aplikace z [stáhnout odkaz](https://go.microsoft.com/fwlink/?linkid=867984).
+Aplikaci společně s skripty instalace si můžete stáhnout z [archivu odkaz](https://go.microsoft.com/fwlink/?linkid=867984).
+
+Aplikace ve formátu sfpkg si můžete stáhnout z [sfpkg odkaz](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg). To je užitečné, [Azure Resource Manager na základě nasazení aplikace](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurace aplikace
 
@@ -319,6 +322,10 @@ OTÁZKY. **Po upgradu oprava orchestration aplikace provádějí čištění nep
 
 A. Ano, čištění probíhá v rámci kroků po instalaci. 
 
+OTÁZKY. **Oprava Orchestration aplikace umožňuje oprava Moje dev clusteru (jednouzlového clusteru)?**
+
+A. Ne, nelze použít oprava orchestration aplikace do clusteru s jedním uzlem opravy. Toto omezení je navržena tak, jako [služby fabric systémových služeb](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) nebo všechny aplikace zákazníka bude směřovat výpadek a proto všechny opravy úlohy pro opravy by získat schválení nikdy správcem opravy.
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="a-node-is-not-coming-back-to-up-state"></a>Uzel není vracející se zpět do až stavu
@@ -360,5 +367,8 @@ Oprava aplikace orchestration shromažďuje telemetrická data pro sledování v
 ### <a name="version-010"></a>Verze 0.1.0
 - Privátní preview verzi
 
-### <a name="version-200-latest"></a>Verze 2.0.0 (nejnovější)
+### <a name="version-200"></a>Verze 2.0.0
 - Veřejné verze
+
+### <a name="version-201-latest"></a>Verze 2.0.1 (nejnovější)
+- Překompilovat aplikace pomocí nejnovější Service Fabric SDK

@@ -1,24 +1,19 @@
 ---
-title: " Odstranit trezor služeb zotavení v Azure | Microsoft Docs "
-description: "Tento článek vysvětluje, jak odstranit trezor služeb zotavení. Článek obsahuje kroky řešení potíží, když se pokuste odstranit trezor, ale nemůže."
+title: Odstranit trezor služeb zotavení v Azure.
+description: Tento článek vysvětluje, jak odstranit trezor služeb zotavení. Článek obsahuje kroky řešení potíží, když se pokuste odstranit trezor, ale nemůže.
 services: service-name
-documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
-ms.assetid: 5fa08157-2612-4020-bd90-f9e3c3bc1806
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk
-ms.openlocfilehash: 4f4a92159b01b197984130c15195419e1b166fd3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: markgal
+ms.openlocfilehash: 844a70aa6fe003c6ad5816aaec9c32db9104c620
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605336"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 Tento článek vysvětluje, jak odstranit trezor služeb zotavení na portálu Azure. Pokud jste měli trezory Backup, byla převedena do trezory služeb zotavení.   
@@ -34,7 +29,7 @@ Pokud již máte otevřete trezor služeb zotavení, pokračujte druhém kroku.
 
 1. Otevřete portál Azure a na řídicím panelu otevřete úložišti, které chcete odstranit.
 
-   Pokud nemáte trezor služeb zotavení připnuli k řídicímu panelu, v nabídce centra klikněte na tlačítko **více služeb** a v seznamu prostředků zadejte **služeb zotavení**. Seznam se průběžně filtruje podle zadávaného textu. Klikněte na tlačítko **trezory služeb zotavení**.
+   Pokud nemáte trezor služeb zotavení připnuli k řídicímu panelu, v nabídce centra klikněte na tlačítko **více služeb** a v seznamu prostředků zadejte **služeb zotavení**. Seznam se průběžně filtruje podle zadávaného textu. Klikněte na **Trezory služby Recovery Services**.
 
    ![Vytvoření trezoru Recovery Services – krok 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
@@ -165,4 +160,4 @@ Pokud máte více serverů registrovaný k trezoru, může být obtížné mějt
     ![seznam serverů pro správu zálohování](./media/backup-azure-delete-vault/list-of-backup-management-servers.png)
 5. Odstranění serveru ze seznamu, klikněte pravým tlačítkem na název serveru a pak klikněte na **odstranit**.
     **Odstranit** otevře se nabídka.
-6. Na **odstranit** nabídky, zadejte název serveru. Pokud je dlouhý název, můžete zkopírovat a vložit ze seznamu serverů pro správu zálohování. Pak klikněte na tlačítko **odstranit**.  
+6. Na **odstranit** nabídky, zadejte název serveru. Pokud je dlouhý název, můžete zkopírovat a vložit ze seznamu serverů pro správu zálohování. Potom klikněte na **Odstranit**.  

@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7bebe1948d26b26716262cafb92e3563f5c6b349
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7b339c989a21abff34b885a8cba219aba701ca79
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624246"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>Ověřování koncového uživatele s Data Lake Store pomocí rozhraní REST API
 > [!div class="op_single_selector"]

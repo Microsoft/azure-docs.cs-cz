@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 03d785898398cb0bcd7b43e8d7feab705bce4b34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598466"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení import rozhraní API a známé problémy
 ## <a name="about-this-list"></a>O tomto seznamu
 Při importu rozhraní API, můžete setkat při určitá omezení a identifikovat problémy, které musí být opravena, aby bylo možné úspěšně naimportovat. Tento článek dokumenty, tyto uspořádané podle formát import rozhraní API.
 
-## <a name="open-api"> </a>Otevřete rozhraní API/Swagger
-Pokud obdržíte chyby import dokumentu otevřené rozhraní API, ujistěte se, jste ověřili jeho – buď pomocí návrháře na portálu Azure (návrhu - Front-endu - otevřené rozhraní API specifikace Editor), nebo s třetích stran nástroje, jako <a href="http://www.swagger.io">editoru Swagger</a>.
+## <a name="open-api"> </a>OpenAPI/Swagger
+Pokud se vám import dokumentu OpenAPI chyby, ujistěte se, jste ověřili jeho – buď pomocí návrháře na portálu Azure (návrhu - Front-endu - OpenAPI specifikace Editor), nebo s třetích stran nástroje, jako <a href="http://www.swagger.io">editoru Swagger</a>.
 
 * Je podporován pouze formátu JSON pro OpenAPI.
+* Požadované parametry napříč cesta a dotaz musí mít jedinečné názvy. (V OpenAPI název parametru pouze musí být jedinečný v rámci umístění, například cestu, dotaz, záhlaví.  Nicméně ve službě API Management povolujeme operace, které mají být rozlišované cesta a dotaz parametry (které OpenAPI nepodporuje). Proto je nutné, názvy parametrů být jedinečný v rámci celého šablony adresy URL.)
 * Schémata odkazovat pomocí **$ref** vlastnosti nemůže obsahovat jiné **$ref** vlastnosti.
 * **$ref** ukazatele nemůže odkazovat na externí soubory.
 * **x-ms cesty** a **x servery** jsou pouze podporované přípony.

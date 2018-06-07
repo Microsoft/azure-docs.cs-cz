@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38c1611c0404202be2e100d3059b4ba1ed1a9236
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6debc77bf7232f5ee5d7e638ee25b5eccdbdeeef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622073"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Přesun dat z SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +39,7 @@ Tento konektor podporuje verze SAP Business Warehouse 7.x. Podporuje kopírován
 
 Pokud chcete povolit připojení k instanci SAP BW, nainstalujte následující součásti:
 - **Brána pro správu dat**: podporuje služby Data Factory připojení k datům místní úložiště (včetně SAP Business Warehouse) pomocí součásti názvem Brána pro správu dat. Další informace o Brána pro správu dat a podrobné pokyny pro nastavení brány najdete v tématu [přesouvání dat mezi místní data uložit do cloudu úložiště dat](data-factory-move-data-between-onprem-and-cloud.md) článku. Vyžaduje se brána, i když SAP Business Warehouse je hostovaná ve virtuálním počítači Azure IaaS (VM). Bránu můžete nainstalovat na stejný virtuální počítač jako úložiště dat nebo na jiný virtuální počítač, dokud brána se může připojit k databázi.
-- **Knihovna SAP NetWeaver** na počítači s bránou. Knihovna SAP Netweaver získáte od správce SAP, nebo přímo z [SAP služby Stažení softwaru](https://support.sap.com/swdc). Vyhledejte **&#1025361; Poznámka SAP** získat umístění stahování na nejnovější verzi. Ujistěte se, že architektura pro knihovnu SAP NetWeaver (32bitová nebo 64bitová verze) odpovídá vaší instalace brány. Nainstalujte všechny soubory, které jsou součástí sady SDK SAP NetWeaver RFC podle Poznámka SAP. Knihovna SAP NetWeaver jsou také obsaženy v nástrojích klienta SAP instalace.
+- **Knihovna SAP NetWeaver** na počítači s bránou. Knihovna SAP Netweaver získáte od správce SAP, nebo přímo z [SAP služby Stažení softwaru](https://support.sap.com/swdc). Vyhledejte **1025361 # Poznámka SAP** získat umístění stahování na nejnovější verzi. Ujistěte se, že architektura pro knihovnu SAP NetWeaver (32bitová nebo 64bitová verze) odpovídá vaší instalace brány. Nainstalujte všechny soubory, které jsou součástí sady SDK SAP NetWeaver RFC podle Poznámka SAP. Knihovna SAP NetWeaver jsou také obsaženy v nástrojích klienta SAP instalace.
 
 > [!TIP]
 > Uveďte knihovny DLL do složky system32 extrahována ze sady SDK NetWeaver RFC.
@@ -297,17 +298,17 @@ CLNT | Řetězec
 AKTUÁLNÍ | Decimal
 CUKY | Řetězec
 DEC | Decimal
-FLTP | Dvojitý
+FLTP | Double
 INT1 | Bajtů
 INT2 | Int16
 INT4 | Int
 JAZYK | Řetězec
 LCHR | Řetězec
-LRAW | Byte[]
+LRAW | Byte]
 PREC | Int16
 QUAN | Decimal
-NEZPRACOVANÁ | Byte[]
-RAWSTRING | Byte[]
+NEZPRACOVANÁ | Byte]
+RAWSTRING | Byte]
 ŘETĚZEC | Řetězec
 JEDNOTKA | Řetězec
 SOUBORY DAT | Řetězec

@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/25/2018
 ms.author: sachins
-ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625334"
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Doporučené postupy pro používání Azure Data Lake Store
 V tomto článku se dozvíte o osvědčených postupech a důležité informace týkající se práce s Azure Data Lake Store. Tento článek obsahuje informace o zabezpečení, výkonu, odolnost proti chybám a monitorování pro Data Lake Store. Před Data Lake Store práci s skutečně velkých objemů dat v služby, jako je Azure HDInsight byl složitý. Bylo sdílení dat mezi více účtů úložiště Blob tak, aby bylo možné dosáhnout petabajty úložiště a optimální výkon v tomto měřítku. S Data Lake Store jsou odstraněna většina pevných limitů pro velikost a výkon. Existují však stále některé aspekty, které tento článek se týká, abyste měli k dosažení nejlepšího výkonu s Data Lake Store. 
@@ -65,9 +66,9 @@ POSIX oprávnění a auditování v Data Lake Store se dodává s režijní nák
 * Rychlejší kopírování/replikaci
 * Méně soubory ke zpracování při aktualizaci Data Lake Store POSIX oprávnění 
 
-V závislosti na tom, jaké služby a úlohy používají data je dobré rozsah vzít v úvahu pro velikosti souborů 256 MB na 1 GB, ideálně nenastavovat menší než 100 MB nebo vyšší než 2 GB. Pokud velikosti souborů nelze zpracovat v dávce při úvodní v Data Lake Store, můžete mít samostatné komprimace úlohu, která spojuje tyto soubory do těch větší. Další informace a doporučení o velikosti souborů a uspořádání dat v Data Lake Store najdete v tématu [struktury sadu dat](data-lake-store-performance-tuning-guidance.md#structure-your-data-set). 
+V závislosti na tom, jaké služby a úlohy používají data, je dobré velikost vzít v úvahu pro soubory 256 MB nebo vyšší. Pokud velikosti souborů nelze zpracovat v dávce při úvodní v Data Lake Store, můžete mít samostatné komprimace úlohu, která spojuje tyto soubory do těch větší. Další informace a doporučení o velikosti souborů a uspořádání dat v Data Lake Store najdete v tématu [struktury sadu dat](data-lake-store-performance-tuning-guidance.md#structure-your-data-set).
 
-### <a name="large-file-sizes-and-potential-performance-impact"></a>Velké soubory a potenciálního vlivu na výkon 
+### <a name="large-file-sizes-and-potential-performance-impact"></a>Velké soubory a potenciálního vlivu na výkon
 
 I když se Data Lake Store podporuje velkých souborů až petabajtů velikosti, pro zajištění optimálního výkonu a v závislosti na proces čtení dat, nemusí být ideální v průměru přejděte výše 2 GB. Například při použití **Distcp** ke kopírování dat mezi umístění nebo jiným účtům úložiště, soubory jsou nejlepší úrovně podrobností, které používá k určení mapy úlohy. Ano Pokud kopírujete 10 souborů, které jsou 1 TB, maximálně 10 mappers jsou přiděleny. Navíc pokud máte velký počet souborů s mappers přiřazen, původně mappers fungovat paralelně přesunout velkých souborů. Jako úloha spustí brání jenom pár mappers zůstanou přidělené a vám může zablokuje se jeden mapper přiřazené velkého souboru. Vylepšení Distcp Chcete-li vyřešit tento problém v budoucích verzích systému Hadoop byla odeslána společnosti Microsoft.  
 

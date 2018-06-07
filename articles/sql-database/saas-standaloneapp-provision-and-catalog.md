@@ -1,20 +1,21 @@
 ---
-title: "Kurz SaaS víceklientské – Azure SQL Database | Microsoft Docs"
-description: "Zřizování a katalog nové klienty pomocí samostatné aplikace vzoru"
+title: Kurz SaaS víceklientské – Azure SQL Database | Microsoft Docs
+description: Zřizování a katalog nové klienty pomocí samostatné aplikace vzoru
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: SaaS
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: 148a50d07d4cea7adda493b283766d22d26b81e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0f2495ddc5d5053582d67bd44cdf80d018f79e42
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646149"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Zřizování a katalog nové klienty používání aplikace pro každého klienta vzor SaaS
 
@@ -70,7 +71,7 @@ V této úloze zjistěte, jak zřídit katalogu používá k registraci všech d
 * **Zřídit databázi katalogu** pomocí šablony správu prostředků Azure. Databáze je inicializován importováním souboru bacpac souboru.  
 * **Zaregistrovat ukázkových aplikací klienta** který jste dříve nasadili.  Každý klient je zaregistrován pomocí klíče vytvářejí na základě hodnota hash název klienta.  Název klienta je také uložené v tabulce rozšíření v katalogu.
 
-1. V prostředí PowerShell ISE otevřete *...\Learning Modules\UserConfig.psm* a aktualizovat  **\<uživatele\>**  hodnotu s hodnotou nepoužívá při nasazení tři ukázkové aplikace.  **Uložte soubor**.  
+1. V prostředí PowerShell ISE otevřete *...\Learning Modules\UserConfig.psm* a aktualizovat **\<uživatele\>** hodnotu s hodnotou nepoužívá při nasazení tři ukázkové aplikace.  **Uložte soubor**.  
 1. V prostředí PowerShell ISE otevřete *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* a nastavte **$Scenario = 1**. Nasazení klienta katalogu a zaregistrujte předem definované klienty.
 
 1. Přidejte zarážku kdekoli umístěním kurzor na řádek s informacemi o tom, `& $PSScriptRoot\New-Catalog.ps1`a potom stiskněte klávesu **F9**.
@@ -87,7 +88,7 @@ Po dokončení skriptu, kde budou existovat katalogu a všichni klienti ukázka 
 Nyní se podívejte na prostředky, které jste vytvořili.
 
 1. Otevřete [portál Azure](https://portal.azure.com/) a procházet skupiny prostředků.  Otevřete **wingtip-sa-katalogu -\<uživatele\>**  prostředků skupiny a poznamenejte si server katalogu a databáze.
-1. Otevřít databázi v portálu a vyberte *Průzkumníku dat* z nabídky na levé straně.  Klikněte na příkaz přihlášení a pak zadejte heslo =  **P@ssword1** .
+1. Otevřít databázi v portálu a vyberte *Průzkumníku dat* z nabídky na levé straně.  Klikněte na příkaz přihlášení a pak zadejte heslo = **P@ssword1**.
 
 
 1. Prozkoumejte schéma *tenantcatalog* databáze.  
@@ -134,7 +135,7 @@ Po dokončení zkoumat ukázku odstraňte všechny skupiny prostředků, který 
 
 - Další informace o víceklientské SaaS databázových aplikací najdete v tématu [vzory pro víceklientské aplikace SaaS návrhu](saas-tenancy-app-design-patterns.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli:
 

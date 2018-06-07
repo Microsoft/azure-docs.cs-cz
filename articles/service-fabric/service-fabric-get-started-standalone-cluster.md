@@ -1,24 +1,25 @@
 ---
-title: "Nastavení samostatného clusteru Azure Service Fabric | Dokumentace Microsoftu"
-description: "Můžete vytvořit samostatný vývojový cluster se třemi uzly spuštěnými ve stejném počítači. Po dokončení tohoto nastavení budete umět sestavit cluster s více počítači."
+title: Nastavení samostatného clusteru Azure Service Fabric | Dokumentace Microsoftu
+description: Můžete vytvořit samostatný vývojový cluster se třemi uzly spuštěnými ve stejném počítači. Po dokončení tohoto nastavení budete umět sestavit cluster s více počítači.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5438d8d366ef989d5ae29581477513f8c884c4b3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
-ms.translationtype: HT
+ms.openlocfilehash: 93c921e54c69693ed02c122a2491b0942f550126
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643460"
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Vytvoření vašeho prvního samostatného clusteru Service Fabric
 Samostatný cluster Service Fabric můžete vytvořit v každém virtuálním nebo fyzickém počítači se systémem Windows Server 2012 R2 nebo Windows Server 2016, a to místně nebo v cloudu. Tento rychlý postup vám pomůže vytvořit samostatný vývojový cluster za několik minut.  Po provedení postupu budete mít cluster se třemi uzly, který běží v jednom počítači a do kterého můžete nasazovat aplikace.
@@ -66,7 +67,7 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
 ```
 
 ## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Vizualizace clusteru pomocí Service Fabric Exploreru
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která běží v clusteru. Můžete k ní přistupovat prostřednictvím prohlížeče, pokud přejdete na adresu [http://localhost:19080/Explorer](http://localhost:19080/Explorer). 
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) je nástroj vhodný pro vizualizaci clusteru a správu aplikací.  Service Fabric Explorer je služba, která běží v clusteru, kterým můžete přistupovat pomocí prohlížeče přechodem na [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer). 
 
 Řídicí panel clusteru poskytuje přehled o clusteru včetně souhrnu stavu aplikací a uzlů. Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete zjistit, které aplikace mají v uzlu nasazený kód.
 
@@ -87,7 +88,7 @@ Pokud chcete z počítače odebrat modul runtime Service Fabric, spusťte násle
 .\CleanFabric.ps1
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste nastavili samostatný vývojový cluster, zkuste následující články:
 * [Nastavení samostatného clusteru s více počítači](service-fabric-cluster-creation-for-windows-server.md) a povolení zabezpečení
 * [Nasazení aplikací s použitím prostředí PowerShell](service-fabric-deploy-remove-applications.md)

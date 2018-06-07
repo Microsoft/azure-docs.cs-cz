@@ -1,24 +1,20 @@
 ---
 title: Aktualizace firmwaru zařízení s Azure IoT Hub (Python) | Microsoft Docs
 description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. SDK služby Azure IoT pro jazyk Python použijete k implementaci aplikace simulovaného zařízení a aplikaci služby, která spustí aktualizaci firmwaru.
-services: iot-hub
-documentationcenter: .net
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: python
+ms.topic: conceptual
 ms.date: 02/16/2018
-ms.author: v-masebo;kgremban
-ms.openlocfilehash: 4a042723e6bebebb891640950e579e031e27e61d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: kgremban
+ms.openlocfilehash: d2ebdf54e595c2f02464c0c2446a6e5f5feefb9c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634637"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-pythonpython"></a>Použití správy zařízení za účelem zahájení firmwaru zařízení aktualizovat (Python nebo Python)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]

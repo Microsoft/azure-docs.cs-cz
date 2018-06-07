@@ -5,20 +5,17 @@ keywords: databáze nosql zabezpečení, informace o zabezpečení, zabezpečen�
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: a02a6a82-3baf-405c-9355-7a00aaa1a816
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 2b0cb1ed92694a7859912dfe0339ef719c0d15ef
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: aa04ae8d5bdccb52e3f63fb2dfb3c75df83b7a54
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611615"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -73,10 +70,10 @@ Pojďme proniknout do každé z nich podrobně.
 |Místní replikaci|I v rámci jednoho datového centra Azure Cosmos DB automaticky replikuje data pro zajištění vysoké dostupnosti, která poskytuje možnost [úrovně konzistence](consistency-levels.md). Zaručí se tím 99,99 % [smlouva SLA o dostupnosti](https://azure.microsoft.com/support/legal/sla/cosmos-db) pro všechny účty jedné oblasti a všechny oblasti s více účty s zmírnit konzistence a 99.999 % čtení dostupnosti pro všechny účty databáze více oblast.|
 |Automatizované zálohování online|Azure Cosmos DB databáze jsou pravidelně zálohovány a uloženy v úložišti georedundant. <br><br>Další informace v [automatické online zálohování a obnovení Azure Cosmos DB](online-backup-and-restore.md).|
 |Obnovení odstraněných dat|Automatizované zálohování online lze použít k obnovení dat, které jste omylem odstranili až ~ 30 dnů po události. <br><br>Další informace v [automatické online zálohování a obnovení databáze Cosmos Azure](online-backup-and-restore.md)|
-|Chránit a izolovat citlivá data|Všechna data v oblasti uvedené v [co je nového?](#whats-new) je nyní v zašifrované podobě.<br><br>PII a jiné důvěrné údaje lze izolovat konkrétní kolekce a čtení a zápis, nebo jen pro čtení může být omezen na konkrétní uživatele.|
+|Chránit a izolovat citlivá data|Všechna data v oblasti uvedené v [co je nového?](#whats-new) je nyní v zašifrované podobě.<br><br>Osobní údaje a jiné důvěrné údaje lze izolovat konkrétní kolekce a čtení a zápis, nebo jen pro čtení může být omezen na konkrétní uživatele.|
 |Monitorování útokům.|Pomocí [protokolování a aktivity protokoly auditu](logging.md), můžete monitorovat váš účet pro běžné a neobvyklé aktivity. Můžete zobrazit, jaké operace měla provést na vašich prostředků, kteří iniciované operace, při operaci došlo k chybě, stav operace a víc jako zobrazené na snímku obrazovky za touto tabulkou.|
 |Reakce na útoky|Jakmile máte kontaktovat podporu Azure o ohlásit možný útok, proces reakcí na incidenty krok 5 je spuštěna. Cílem procesu krok 5 je po došlo k potížím se zamykáním a jestli je spuštěná šetření co nejdříve obnovit normální služby zabezpečení a operace.<br><br>Další informace v [odpověď zabezpečení společnosti Microsoft Azure v cloudu](https://aka.ms/securityresponsepaper).|
-|Geografického vymezení|Azure Cosmos DB zajišťuje řízení dat a dodržování předpisů pro svrchovaných oblasti (například Německo, Čína, nám verze pro státní správu).|
+|Geografického vymezení|Azure Cosmos DB zajišťuje řízení dat pro svrchovaných oblasti (například Německo, Čína, nám verze pro státní správu).|
 |Chráněné pracoviště|Data v Azure Cosmos DB se ukládají na jednotkách SSD v chráněných datových centrech Azure.<br><br>Další informace v [globálních datových centrech společnosti Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |Šifrování protokolu HTTPS, SSL/TLS|Všechny interakce klienta služby Azure Cosmos DB jsou podporující protokol SSL/TLS 1.2. Všechny uvnitř datového centra a mezi replikace datacenter je také SSL/TLS 1.2 vynucené.|
 |Šifrování v klidovém stavu|Všechna data uložena do Azure Cosmos DB zašifrovaná přinejmenším. Další informace v [Azure Cosmos DB šifrování v klidovém stavu](.\database-encryption-at-rest.md)|

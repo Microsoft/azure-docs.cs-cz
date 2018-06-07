@@ -3,17 +3,18 @@ title: Konfigurace modulu Runtime Azure SSIS integrace pro vysoký výkon | Micr
 description: Zjistěte, jak konfigurovat vlastnosti Runtime integrace Azure SSIS pro vysoký výkon
 services: data-factory
 ms.date: 01/10/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: data-factory
 ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: ed5d1740f1d68db5ad42266c3fc2dcc983682774
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 876f68d232e5f171f0c03b653d56f2351ffb2c7d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617123"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace modulu Runtime Azure SSIS integrace pro vysoký výkon
 
@@ -60,7 +61,7 @@ $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Verzi public preview služby Azure Data Factory v2, včetně Azure SSIS IR, podporuje následující možnosti:
 -   Standardní\_A4\_v2
--   Standard\_A8\_v2
+-   Standardní\_A8\_v2
 -   Standardní\_D1\_v2
 -   Standardní\_D2\_v2
 -   Standardní\_D3\_v2
@@ -100,7 +101,7 @@ Chcete-li odhadnout odpovídající hodnotu na základě nákladů vašeho balí
 | Standardní\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8×500                         | 4 / 3 000                                       |
 | Standardní\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16×500                       | 8 / 6 000                                       |
 | Standardní\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8×500                         | 4 / 1 000                                       |
-| Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
+| Standardní\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16×500                       | 8 / 2 000                                       |
 
 Tady najdete pokyny pro nastavení správné hodnoty **AzureSSISMaxParallelExecutionsPerNode** vlastnost: 
 

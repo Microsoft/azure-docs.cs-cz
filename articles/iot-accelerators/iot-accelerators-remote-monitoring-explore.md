@@ -1,24 +1,21 @@
 ---
 title: Začínáme s řešení vzdáleného monitorování - Azure | Microsoft Docs
 description: Tento kurz používá simulované scénáře zavádět vzdálené monitorování akcelerátoru řešení. Tyto scénáře jsou vytvořeny při nasazení vzdálené monitorování akcelerátoru řešení poprvé.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c8a055dd0dc8e2d9a9a64b492fb134caaacda489
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e354e110df8d168e153c50de6f7aad08dd416464
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627803"
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Prozkoumejte možnosti vzdáleného monitorování řešení akcelerátoru
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování
 
 Tento kurz ukazuje klíčové funkce řešení vzdáleného monitorování. K zavedení tyto možnosti, kurz umožňující prezentovat běžné scénáře zákazníka pomocí simulované aplikace IoT pro společnosti nazývané Contoso.
 
@@ -33,19 +30,19 @@ V tomto kurzu se naučíte:
 > * Uspořádání vaše prostředky
 > * Zastavit a spustit Simulovaná zařízení
 
-Následující video ukazuje návod řešení vzdáleného monitorování:
+Následující video ukazuje postup řešení vzdáleného monitorování:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
+K dokončení tohoto kurzu potřebujete nasazenou instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Nasazení IoT ukázkové společnosti Contoso
 
-Můžete použít Contoso ukázka IoT nasazení k pochopení základních scénářů vzdáleném řešení monitorování, poskytuje se na pole. Tyto scénáře jsou založeny na skutečném IoT nasazení. S největší pravděpodobností zvolíte přizpůsobení řešení vzdáleného monitorování podle specifických požadavků, ale ukázkové společnosti Contoso umožňuje získejte základní informace.
+Contoso ukázka IoT nasazení můžete použít k pochopení základních scénářů vzdálené monitorování řešení poskytuje se na pole. Tyto scénáře jsou založeny na skutečném IoT nasazení. S největší pravděpodobností zvolíte přizpůsobit podle konkrétních požadavků řešení vzdáleného monitorování, ale ukázkové společnosti Contoso umožňuje získejte základní informace.
 
 > [!NOTE]
 > Pokud jste použili rozhraní příkazového řádku k nasazení řešení akcelerátoru, soubor `deployment-{your deployment name}-output.json` obsahuje informace o nasazení, jako je například adresa URL pro přístup k nasazené vzorku.
@@ -136,7 +133,7 @@ Nakonec ověřte, zda hodnoty telemetrie z chladič zpět na normální.
 
 ## <a name="update-device-firmware"></a>Aktualizaci firmwaru zařízení
 
-Contoso je testování nový typ zařízení, v poli. V rámci testování cyklus potřebujete zajistěte, aby byl že tento firmwaru zařízení aktualizuje pracovní správně. Následující kroky ukazují, jak používat řešení vzdáleného monitorování k aktualizaci firmwaru na několika zařízeních.
+Contoso je testování nový typ zařízení, v poli. V rámci testování cyklus potřebujete zajistěte, aby byl že tento firmwaru zařízení aktualizuje pracovní správně. Následující kroky ukazují, jak k aktualizaci firmwaru na několika zařízeních použít řešení vzdáleného monitorování.
 
 K provádění úloh správy nutné zařízení, použijte **zařízení** stránky. Spusťte filtrování pro všechna zařízení při vytváření prototypu:
 

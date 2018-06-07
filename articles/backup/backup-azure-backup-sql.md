@@ -1,29 +1,24 @@
 ---
-title: "Zálohování Azure pro úlohy SQL serveru pomocí aplikace DPM | Microsoft Docs"
-description: "Úvod k zálohování databází systému SQL Server pomocí služby zálohování Azure"
+title: Azure Backup pro úlohy SQL Serveru využívající DPM
+description: Úvod k zálohování databází systému SQL Server pomocí služby zálohování Azure
 services: backup
-documentationcenter: 
 author: adigan
 manager: Nkolli
-editor: 
-ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
-ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: c9edc066ea2edc9cd4b8453047d5584a588174dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: cebbe532b5d1b13588604c61ac10bf3c56a85e07
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604960"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování serveru SQL do Azure jako zatížení aplikace DPM
 Tento článek vás provede kroky konfigurace pro zálohování databází systému SQL Server pomocí služby Azure Backup.
 
-K zálohování databází systému SQL Server do Azure, potřebujete účet Azure. Pokud nemáte účet, můžete jenom několika minut vytvořit Bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+K zálohování databází systému SQL Server do Azure, potřebujete účet Azure. Pokud nemáte účet, můžete jenom několika minut vytvořit Bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 Správa zálohování databáze serveru SQL Server do Azure a obnovení z Azure zahrnuje tři kroky:
 

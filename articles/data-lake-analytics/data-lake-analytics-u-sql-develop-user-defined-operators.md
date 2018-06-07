@@ -1,29 +1,24 @@
 ---
-title: Vývoj uživatelem definované operátory U-SQL (UDO) | Microsoft Docs
-description: 'Další informace jak vyvíjet uživatelem definované operátory k použití a znovu použít v úloh Data Lake Analytics. '
+title: Vývoj U-SQL uživatelem definované operátory (UDO) v Azure Data Lake Analytics
+description: Další informace jak vyvíjet uživatelem definované operátory k použití a znovu použít v úlohách Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: c0164d9f1e40778d3ce0dc7e947f6d2807234468
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+manager: kfile
+editor: jasonwhowell
+ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 8d8937a6132f770e989d7595883b2c5cf804c44f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623851"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Vývoj uživatelem definované operátory U-SQL (UDO)
-Další informace jak vyvíjet uživatelem definované operátory při zpracování dat v rámci úlohy U-SQL.
-
-Pokyny týkající se vývoje pro obecné účely sestavení pro U-SQL najdete v tématu [sestavení vyvíjet U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-assemblies.md)
+Tento článek popisuje, jak vyvíjet uživatelem definované operátory při zpracování dat v rámci úlohy U-SQL.
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>Definice a používání uživatelem definovaný operátor v U-SQL
 **K vytvoření a odeslání úlohy U-SQL**

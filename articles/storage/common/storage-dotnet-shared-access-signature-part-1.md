@@ -2,23 +2,18 @@
 title: Použití sdílené přístupové podpisy (SAS) ve službě Azure Storage | Microsoft Docs
 description: Naučte se používat sdílené přístupové podpisy (SAS) pro delegování přístupu k prostředkům Azure Storage, včetně objektů BLOB, fronty, tabulky a soubory.
 services: storage
-documentationcenter: ''
 author: craigshoemaker
 manager: jeconnoc
-editor: tysonn
-ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cshoe
-ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4f20e79ea6cb2d9d403f4451f595516d5c2e9373
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650736"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Použití sdílených přístupových podpisů (SAS)
 
@@ -117,7 +112,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | --- | --- | --- |
 | Identifikátor URI objektu BLOB |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |Adresa objektu blob. Všimněte si, že pomocí protokolu HTTPS se důrazně doporučuje. |
 | Verze služby úložiště |`sv=2015-04-05` |Pro úložiště služby verze 2012-02-12 a novější, tento parametr určuje verze se má použít. |
-| Čas zahájení |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete SAS platit okamžitě, vynechejte čas spuštění. |
+| Čas spuštění |`st=2015-04-29T22%3A18%3A26Z` |Zadat ve formátu času UTC. Pokud chcete SAS platit okamžitě, vynechejte čas spuštění. |
 | Doba konce platnosti |`se=2015-04-30T02%3A23%3A26Z` |Zadat ve formátu času UTC. |
 | Prostředek |`sr=b` |Daný prostředek k objektu blob. |
 | Oprávnění |`sp=rw` |Oprávnění udělená pomocí sdíleného přístupového podpisu zahrnout Read (r) a zápis (w). |

@@ -6,15 +6,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6ac4b26e1b014da792791ca657c9f51230a135b5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba59d39fb07dfe9c9772fa4bea6922df052f0385
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645207"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Obnova databáze SQL Azure nebo převzetí služeb při selhání na sekundární
 Azure SQL Database nabízí následující možnosti pro zotavení po výpadku:

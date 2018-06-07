@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e597574c1993e2f2a5421d24063cf9f42a7e57b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622019"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z DB2 pomocí Azure Data Factory kopie aktivity
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -81,13 +82,13 @@ Následující tabulka uvádí vlastnosti JSON, které jsou specifické pro DB2 
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Typ** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
-| **server** |Název serveru DB2. |Ano |
+| **type** |Tato vlastnost musí být nastavená na **OnPremisesDb2**. |Ano |
+| **Server** |Název serveru DB2. |Ano |
 | **database** |Název databáze DB2. |Ano |
 | **schema** |Název schématu v databázi DB2. Tato vlastnost je malá a velká písmena. |Ne |
 | **authenticationType.** |Typ ověřování, který se používá k připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a systému Windows. |Ano |
-| **username** |Název pro uživatelský účet, pokud používáte ověřování Basic nebo Windows. |Ne |
-| **password** |Heslo pro uživatelský účet. |Ne |
+| **Uživatelské jméno** |Název pro uživatelský účet, pokud používáte ověřování Basic nebo Windows. |Ne |
+| **Heslo** |Heslo pro uživatelský účet. |Ne |
 | **gatewayName** |Název brány, kterou služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -311,42 +312,42 @@ Aktivita kopírování převádí data z typu DB2 na typ .NET jsou použity nás
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Real |Svobodný/svobodná |
-| Dvojitý |Dvojitý |
-| Plovoucí desetinná čárka |Dvojitý |
+| Real |Jednoduchá |
+| Double |Double |
+| Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| číselné |Decimal |
+| Čísla |Decimal |
 | Datum |DateTime |
-| Čas |TimeSpan |
+| Čas |Časový interval |
 | Časové razítko |DateTime |
-| Xml |Byte[] |
+| XML |Byte] |
 | Char |Řetězec |
 | VarChar |Řetězec |
 | LongVarChar |Řetězec |
 | DB2DynArray |Řetězec |
-| Binární hodnota |Byte[] |
-| VarBinary |Byte[] |
-| LongVarBinary |Byte[] |
+| Binární hodnota |Byte] |
+| VarBinary |Byte] |
+| LongVarBinary |Byte] |
 | Obrázek |Řetězec |
 | VarGraphic |Řetězec |
 | LongVarGraphic |Řetězec |
 | Datový typ CLOB |Řetězec |
-| Objekt blob |Byte[] |
+| Objekt blob |Byte] |
 | DbClob |Řetězec |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
-| Real |Svobodný/svobodná |
-| Dvojitý |Dvojitý |
-| Plovoucí desetinná čárka |Dvojitý |
+| Real |Jednoduchá |
+| Double |Double |
+| Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| číselné |Decimal |
+| Čísla |Decimal |
 | Datum |DateTime |
-| Čas |TimeSpan |
+| Čas |Časový interval |
 | Časové razítko |DateTime |
-| Xml |Byte[] |
+| XML |Byte] |
 | Char |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců

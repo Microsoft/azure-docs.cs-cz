@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e113d2b62311eae0eba091e59edd08ddb8582b1b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cc9dad4584c8edc47181e4a73ffe11a2e08de2f1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620808"
 ---
 # <a name="use-case---customer-profiling"></a>Příklad použití – profilace zákazníka
 Azure Data Factory je jedním z mnoha služby použít k implementaci řešení akcelerátorů Cortana Intelligence Suite.  Další informace o Cortana Intelligence najdete v článku [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics). V tomto dokumentu jsme popisují případu použití jednoduchého můžete začít pracovat s pochopení, jak Azure Data Factory můžete řešení běžných potíží analytics.

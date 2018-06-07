@@ -9,11 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: bd9f01e76c68fa41616818251b5b54553059cbcc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637731"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Sestavení a nasazení bitové kopie klasifikační modely pomocí Azure Machine Learning
 
@@ -227,7 +228,6 @@ else:
 ## <a name="define-dnn-models"></a>Definovat DNN modely
 
 S tímto balíčkem jsou podporovány následující pretrained modely hluboké Neuronové sítě: 
-+ AlexNet
 + Resnet 18
 + Resnet 34
 + Resnet – 50
@@ -444,13 +444,9 @@ Pomocí [Azure](https://azure.microsoft.com/) účet s platným předplatným, p
 + Pokud chcete zobrazit aktuální účet správy modelu, použijte příkaz:
   <br>`az ml account modelmanagement show`
 
-**Vytvoření a nastavení prostředí pro nasazení**
+**Vytvoření a nastavení prostředí pro nasazení clusteru**
 
 Stačí nastavit prostředí pro nasazení jednou. Pokud nemáte ještě, nastavit prostředí pro nasazení teď pomocí [tyto pokyny](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup). 
-
-Postupujte podle místního nebo kroky nastavení nasazení clusteru správně podle vašim potřebám.
-+ Místní nasazení jsou podporovány pro počítače se systémy Linux a Windows 10, ale není pro virtuální počítač Windows datové vědy nebo virtuální počítač hloubkového učení. 
-+ Nasazení v prostředí clusteru jsou podporovány pro Linux a Windows. 
 
 Pokud chcete zobrazit prostředí aktivní nasazení, použijte následující příkaz rozhraní příkazového řádku:
 <br>`az ml env show`

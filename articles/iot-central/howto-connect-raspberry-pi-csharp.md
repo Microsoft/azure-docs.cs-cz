@@ -1,18 +1,19 @@
 ---
 title: Spojení jednotlivých malin pí do aplikace Azure IoT centrální (C#) | Microsoft Docs
 description: Jako vývojář zařízení jak připojit malin platformy Azure IoT centrální aplikace pomocí jazyka C#.
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 01/22/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: d09d3de04f8c846eadc7367ca4d4559eb55f995b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 58f363c522f3e5abe6bf49a2aebafe4e953e00df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628585"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Pi malin připojit k aplikaci Azure IoT centrální (C#)
 
@@ -32,7 +33,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **malin p�
 
 ### <a name="telemetry-measurements"></a>Měření telemetrie
 
-| Název pole     | Jednotky  | Minimální | Maximum | Desetinných míst |
+| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkosti       | %      | 0       | 100     | 0              |
 | dočasné           | ° C     | -40     | 120     | 0              |
@@ -51,7 +52,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **malin p�
 
 Číselné nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinných míst | Minimální | Maximum | Počáteční |
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
 | Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
@@ -70,7 +71,7 @@ Přepnutí nastavení
 | Vlastnosti zařízení | Kostka číslo   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |
 
-### <a name="add-a-real-device"></a>Přidání skutečné zařízení
+### <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
 V aplikaci Azure IoT centrální přidat skutečné zařízení z **malin pí** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 674f4ec53300643450d8a576db6fcb50e86dd9d2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652065"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Řízení přístupu na základě rolí pro StorSimple
 
@@ -30,7 +31,7 @@ Tento článek se týká na řadu zařízení StorSimple 8000 spuštění aktual
 
 RBAC lze přiřadit na základě rolí. Role zajistěte určité úrovně oprávnění na základě dostupných prostředků v prostředí. Existují dva typy rolí, které uživatelé StorSimple můžete vybírat z: vestavěná nebo vlastní.
 
-* **Předdefinované role** -integrovaných rolí může být vlastník, Přispěvatel, čtečky nebo správce uživatelského přístupu. Další informace najdete v tématu [předdefinované role pro řízení přístupu na základě Role v Azure](../role-based-access-control/overview.md#built-in-roles).
+* **Předdefinované role** -integrovaných rolí může být vlastník, Přispěvatel, čtečky nebo správce uživatelského přístupu. Další informace najdete v tématu [předdefinované role pro řízení přístupu na základě Role v Azure](../role-based-access-control/built-in-roles.md).
 
 * **Vlastní role** – Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role RBAC pro StorSimple. Pokud chcete vytvořit vlastní role RBAC, začínat předdefinovaná role, upravovat a importujte ji zpět do prostředí. Stažení a nahrání role se spravují pomocí Azure PowerShell nebo rozhraní příkazového řádku Azure. Další informace najdete v tématu [vytvářet vlastní role pro řízení přístupu na základě Role](../role-based-access-control/custom-roles.md).
 
@@ -153,7 +154,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>Přidání uživatelů do vlastní role
 
-Přístup se uděluje z prostředku, skupiny prostředků nebo předplatného, které je v rozsahu platnosti přiřazení role. Při poskytování přístupu, berte v úvahu, že podřízená zdědí přístup udělit na nadřazený uzel. Další informace, přejděte na [prostředků přístupu a hierarchii dědičnosti](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance).
+Přístup se uděluje z prostředku, skupiny prostředků nebo předplatného, které je v rozsahu platnosti přiřazení role. Při poskytování přístupu, berte v úvahu, že podřízená zdědí přístup udělit na nadřazený uzel. Další informace, přejděte na [řízení přístupu na základě role](../role-based-access-control/overview.md).
 
 1. Přejděte na **přístup k ovládacímu prvku (IAM)**. Klikněte na tlačítko **+ přidat** v okně řízení přístupu.
 

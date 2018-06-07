@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/07/2018
+ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 69806520f3d57cb1d383999ba53fefb7e0bd56b4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642807"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -316,6 +317,10 @@ A. Čas potřebný oprava aplikace orchestration je ve většině případů zá
 OTÁZKY. **Proč vidí některé aktualizace ve výsledcích Windows Update získat prostřednictvím REST API, ale ne v historii služby Windows Update v počítači?**
 
 A. Některé aktualizace produktu se objeví jenom v historii jejich příslušné aktualizace nebo opravy. Například aktualizace programu Windows Defender se nezobrazí v historii služby Windows Update v systému Windows Server 2016.
+
+OTÁZKY. **Oprava Orchestration aplikace umožňuje oprava Moje dev clusteru (jednouzlového clusteru)?**
+
+A. Ne, nelze použít oprava orchestration aplikace do clusteru s jedním uzlem opravy. Toto omezení je navržena tak, jako [služby fabric systémových služeb](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-technical-overview#system-services) nebo všechny aplikace zákazníka bude směřovat výpadek a proto všechny opravy úlohy pro opravy by získat schválení nikdy správcem opravy.
 
 ## <a name="disclaimers"></a>Právní omezení
 

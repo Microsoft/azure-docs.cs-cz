@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57e1226a263a045784f0278c68246c0e953f6e22
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1a0f813e1857d2f1c1cc36b34b6339d26fa91c13
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602682"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávané změny 
 
-Jako správce musíte k uzamčení předplatné, skupinu prostředků nebo prostředek zabránit ostatním uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Můžete nastavit zámek na úrovni **CanNotDelete** nebo **jen pro čtení**. Na portálu, se nazývají zámky **odstranit** a **jen pro čtení** v uvedeném pořadí.
+Jako správce musíte k uzamčení předplatné, skupinu prostředků nebo prostředek zabránit ostatním uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Zámek můžete nastavit na úroveň **CanNotDelete** nebo **ReadOnly**. Na portálu, se nazývají zámky **odstranit** a **jen pro čtení** v uvedeném pořadí.
 
 * **CanNotDelete** znamená Autorizovaní uživatelé stále mohou číst a upravovat prostředek, ale jejich nelze odstranit prostředek. 
 * **Jen pro čtení** znamená Autorizovaní uživatelé mohou číst prostředek, ale jejich nelze odstranit nebo aktualizovat prostředek. Je podobná omezení všem oprávněným uživatelům oprávnění udělují použití této zámku **čtečky** role. 
@@ -38,7 +39,7 @@ Zámky správce prostředků se vztahují pouze na operace, které dojít v rovi
 Použití **jen pro čtení** může vést k neočekávaným výsledkům, protože některé operace, které vypadají podobně jako pro čtení, operace ve skutečnosti vyžadují další akce. Například umístění **jen pro čtení** výpis klíčů všem uživatelům zabrání zámku na účet úložiště. Seznam klíčů operaci je zpracováván prostřednictvím požadavek POST, protože vrácený klíče jsou k dispozici pro operace zápisu. Další příklad umístění **jen pro čtení** zámku na prostředek aplikace služby zabrání zobrazení souborů pro daný prostředek, protože interakce vyžaduje oprávnění k zápisu Průzkumníka serveru Visual Studia.
 
 ## <a name="who-can-create-or-delete-locks-in-your-organization"></a>Kdo může vytvářet nebo odstraňovat zámky ve vaší organizaci
-Vytvořit nebo odstranit zámky správy, musíte mít přístup k `Microsoft.Authorization/*` nebo `Microsoft.Authorization/locks/*` akce. Z předdefinovaných rolí pouze **vlastníka** a **správce přístupu uživatelů** mají tyto akce.
+Vytvořit nebo odstranit zámky správy, musíte mít přístup k `Microsoft.Authorization/*` nebo `Microsoft.Authorization/locks/*` akce. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
 
 ## <a name="portal"></a>Portál
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
@@ -218,5 +219,5 @@ V žádosti o zahrnují objekt JSON, který určuje vlastnosti pro zámek.
 * Další informace o logicky organizování vašich prostředků najdete v tématu [pomocí značek k uspořádání prostředků](resource-group-using-tags.md)
 * Ke změně prostředku se nachází v prostředku skupiny, najdete v části [přesunutím prostředků do nové skupiny prostředků](resource-group-move-resources.md)
 * Můžete použít omezení a pravidla týkající se vašeho předplatného pomocí vlastních zásad. Další informace najdete v tématu [Co je Azure Policy?](../azure-policy/azure-policy-introduction.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
+* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).
 

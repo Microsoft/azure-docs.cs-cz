@@ -1,40 +1,41 @@
 ---
-title: 'Zásobník úložiště Azure: Rozdíly a aspekty'
-description: Porozumějte rozdílům mezi zásobník úložiště Azure a Azure Storage, společně s aspekty nasazení Azure zásobníku.
+title: Rozdíly úložiště Azure zásobníku a důležité informace | Microsoft Docs
+description: Porozumějte rozdílům mezi Azure zásobníku úložiště a úložiště Azure, společně s aspekty nasazení Azure zásobníku.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
 manager: femila
-ms.reviwer: xiaofmao
 ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviwer: xiaofmao
+ms.openlocfilehash: 2a6cb3f1a1f8009af411ba4d97a23194f6f089ae
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604456"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Zásobník úložiště Azure: Rozdíly a aspekty
+# <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure zásobník: rozdíly a důležité informace
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
-Azure zásobníku úložiště je sada cloudových služeb úložiště v Microsoft Azure zásobníku. Úložiště Azure zásobníku obsahuje objekt blob, tabulky, fronty a funkce správy účet s Azure konzistentní sémantiku.
+Azure zásobníku úložiště je sada cloudových služeb úložiště v Microsoft Azure zásobníku. Azure zásobníku úložiště obsahuje objekt blob, tabulky, fronty a funkce správy účet s Azure konzistentní sémantiku.
 
-Tento článek shrnuje známé rozdíly zásobník úložiště Azure od služeb úložiště Azure. Uvádí taky zvážit, když nasazujete zásobník Azure. Další informace o nejvýraznějších rozdílů mezi zásobník Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) tématu.
+Tento článek shrnuje známé rozdíly zásobník úložiště Azure od služeb úložiště Azure. Uvádí taky zvážit, když nasazujete zásobník Azure. Další informace o nejvýraznějších rozdílů mezi globální zásobníku Azure a Azure, najdete v článku [klíčové aspekty](azure-stack-considerations.md) tématu.
 
 ## <a name="cheat-sheet-storage-differences"></a>Tahák: rozdíly úložiště
 
 | Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |
 |File Storage|Cloudové sdílené složky SMB podporované|Není dosud podporován.
-|Šifrování služby Azure Storage pro neaktivní uložená data|šifrování AES 256 bitů|Nástroj BitLocker šifrování AES 128-bit
-|Typ účtu úložiště|Účty úložiště Blob pro obecné účely a Azure|Pro obecné účely jenom.
+|Šifrování služby úložiště Azure pro data v klidovém stavu|šifrování AES 256 bitů|Nástroj BitLocker šifrování AES 128-bit
+|Typ účtu úložiště|Účty úložiště pro obecné účely a Azure blob storage|Pro obecné účely jenom.
 |Možnosti replikace|Místně redundantní úložiště, geograficky redundantní úložiště, geograficky redundantní úložiště s přístupem pro čtení a zónově redundantní úložiště|Místně redundantní úložiště.
 |Premium Storage|Plně podporovány.|Může být zřízen, ale žádné omezení výkonu nebo záruk.
 |Managed Disks|Premium a standard podporováno|Není dosud podporován.

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3181ee143ac655606b5e9c98d743e30aef28b8cc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 81da88c019ff46e98e0f8811c846ab7488fa1910
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618136"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Kopírování dat z hranaté pomocí Azure Data Factory (Beta)
 
@@ -48,10 +49,10 @@ Odmocnina propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **hranaté** | Ano |
-| hostitel | Adresa URL odmocnina instance. (i.e. mystore.mysquare.com)  | Ano |
+| hostitel | Adresa URL odmocnina instance. (tj. mystore.mysquare.com)  | Ano |
 | clientId | ID klienta přidružené odmocnina aplikace.  | Ano |
 | clientSecret | Tajný klíč klienta přidružené odmocnina aplikace. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| redirectUri | Adresa URL pro přesměrování přiřazené v řídicím panelu odmocnina aplikace. (tj. http://localhost:2500)  | Ano |
+| redirectUri | Adresa URL pro přesměrování přiřazené v řídicím panelu odmocnina aplikace. (tj.) http://localhost:2500)  | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat jsou šifrované pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli chcete vyžadovat názvu hostitele v certifikátu serveru, aby odpovídal názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
 | usePeerVerification | Určuje, jestli pro ověření totožnosti serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |

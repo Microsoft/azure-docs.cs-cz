@@ -1,24 +1,20 @@
 ---
 title: Začínáme se správou zařízení Azure IoT Hub (.NET/.NET) | Microsoft Docs
 description: Jak používat k zahájení restartu zařízení vzdálenou správou zařízení Azure IoT Hub. Zařízení Azure IoT SDK pro platformu .NET, kterou použijete k implementaci aplikaci ze simulovaného zařízení, která zahrnuje přímá metoda a sady SDK pro .NET k implementaci aplikační služby, která volá metodu přímé služby Azure IoT.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 09/15/2017
-ms.author: v-jamebr;dobett
-ms.openlocfilehash: 44160eeb90f0f65c974b7188dd7c70cce382bf21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: dobett
+ms.openlocfilehash: c1cee32e3ee60ce229308055cca7f0e9832ddc49
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633821"
 ---
 # <a name="get-started-with-device-management-netnet"></a>Začínáme se správou zařízení (.NET/.NET)
 
@@ -30,7 +26,7 @@ V tomto kurzu získáte informace o následujících postupech:
 * Vytvoření aplikace simulovaného zařízení, která obsahuje přímý metodu, která restartování zařízení. Přímé metody jsou vyvolány z cloudu.
 * Vytvoření konzolové aplikace .NET, která volá metodu restartování přímé v aplikaci simulovaného zařízení prostřednictvím služby IoT hub.
 
-Na konci tohoto kurzu máte dvě aplikace konzoly .NET:
+Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 * **SimulateManagedDevice**, který připojí ke službě IoT hub s identitou zařízení vytvořenou dříve, obdrží přímá metoda restartování, simuluje restartu fyzické a sestavy čas posledního restartování.
 * **TriggerReboot**, která volá metodu přímé v aplikaci simulovaného zařízení, zobrazí odpověď a zobrazí aktualizovaná hlášené vlastnosti.
@@ -181,7 +177,7 @@ V této části
             Console.WriteLine("Error in sample: {0}", ex.Message);
         }
         
-8. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na řešení a pak klikněte na tlačítko **nastavit projekty po spuštění...** . Vyberte **jeden projekt po spuštění**a pak vyberte **SimulateManagedDevice** projekt v rozevírací nabídce. Sestavte řešení.       
+8. V Průzkumníku řešení sady Visual Studio klikněte pravým tlačítkem na své řešení a pak klikněte na **Nastavit projekty po spuštění...**. Vyberte **jeden projekt po spuštění**a pak vyberte **SimulateManagedDevice** projekt v rozevírací nabídce. Sestavte řešení.       
 
 > [!NOTE]
 > Za účelem zjednodušení tento kurz neimplementuje žádné zásady opakování. V produkčním kódu byte měli implementovat zásady opakování (například exponenciální opakování), jak je navrženo v článku [Řešení přechodných chyb][lnk-transient-faults] na webu MSDN.

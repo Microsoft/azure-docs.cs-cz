@@ -1,25 +1,22 @@
 ---
-title: "Přidejte konektor Informix ve vašich Logic Apps | Microsoft Docs"
-description: "Přehled konektoru Informix s parametry rozhraní REST API"
-services: 
-documentationcenter: 
+title: Připojení k databázi IBM Informix - Azure Logic Apps | Microsoft Docs
+description: Správa prostředků pomocí rozhraní REST API IBM Informix a Azure Logic Apps
 author: gplarsen
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: ca2393f0-3073-4dc2-8438-747f5bc59689
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: b3b352b185b7dfeee12ac9bee1b72cb740add5b8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: c78c6bb669e0945ba1cbacc3ca808a364f3099a5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609384"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Začínáme s konektorem Informix
 Konektor Microsoft pro Informix připojí k prostředkům uloženým v databázi IBM Informix Logic Apps. Konektor Informix zahrnuje klienta Microsoft ke komunikaci se vzdáleným počítačům serveru Informix přes síť TCP/IP. To zahrnuje cloudu databáze, například IBM Informix pro systém Windows spuštěn v Azure virtualizace a místní databáze, které používají bránu dat na místě. Najdete v článku [podporované seznamu](connectors-create-api-informix.md#supported-informix-platforms-and-versions) IBM Informix platforem a verzí (v tomto tématu).
@@ -47,13 +44,13 @@ Tento konektor podporuje aplikace logiky takto:
 * UpdateRow
 * DeleteRow
 
-## <a name="list-tables"></a>Seznam tabulek
+## <a name="list-tables"></a>Vypíše tabulky
 Vytvoření aplikace logiky pro všechny operace se skládá z mnoho kroků, které se provádí prostřednictvím portálu Microsoft Azure.
 
 V rámci aplikace logiky můžete přidat akci do seznamu tabulek v databázi Informix. Tato akce nastaví konektor zpracování příkazu Informix schématu, jako je například `CALL SYSIBM.SQLTABLES`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `InformixgetTables`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -90,7 +87,7 @@ Tento konektor podporuje připojení k databázi místně a v cloudu pomocí ná
 | Ověřování |Volitelné. Přijme hodnotu položky seznamu, Basic nebo Windows (kerberos). |
 | uživatelské jméno |Povinná hodnota. Přijme hodnotu řetězce. |
 | heslo |Povinná hodnota. Přijme hodnotu řetězce. |
-| Brány |Povinná hodnota. Přijme hodnotu položky seznamu reprezentující místní brána dat definované pro Logic Apps v rámci skupiny úložišť. |
+| brána |Povinná hodnota. Přijme hodnotu položky seznamu reprezentující místní brána dat definované pro Logic Apps v rámci skupiny úložišť. |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>Vytvořit místní připojení brány
 Tento konektor mohou přistupovat k databázi Informix místně pomocí brány data místně. Další informace naleznete v tématech brány. 
@@ -123,7 +120,7 @@ Tento konektor mají přístup k databázi Informix cloudu.
 Můžete vytvořit logiku aplikace akce načíst všechny řádky v tabulce Informix. Tato akce nastaví konektor zpracování příkazu Informix SELECT, jako je například `SELECT * FROM AREA`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název** (např.) "**InformixgetRows**"), **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -160,7 +157,7 @@ Můžete vytvořit logiku aplikace akce načíst všechny řádky v tabulce Info
 Můžete vytvořit logiku aplikace akci chcete přidat jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování příkazu Informix INSERT, jako je například `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `InformixinsertRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -187,7 +184,7 @@ Můžete vytvořit logiku aplikace akci chcete přidat jeden řádek v tabulce I
 Můžete vytvořit logiku aplikace akce načíst jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování příkazu Informix vyberte kde, jako je například `SELECT FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `InformixgetRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -215,7 +212,7 @@ Můžete vytvořit logiku aplikace akce načíst jeden řádek v tabulce Informi
 Můžete vytvořit logiku aplikace akce chcete-li změnit jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování výpis Informix aktualizace, jako je například `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `InformixupdateRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce
@@ -242,7 +239,7 @@ Můžete vytvořit logiku aplikace akce chcete-li změnit jeden řádek v tabulc
 Můžete vytvořit logiku aplikace akce odebrat jeden řádek v tabulce Informix. Tato akce nastaví konektor zpracování příkazu odstranit Informix, jako je například `DELETE FROM AREA WHERE AREAID = '99999'`.
 
 ### <a name="create-a-logic-app"></a>Vytvoření aplikace logiky
-1. V **Tabule start Azure**, vyberte  **+**  (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
+1. V **Tabule start Azure**, vyberte **+** (znaménko plus), **Web + mobilní**a potom **aplikace logiky**.
 2. Zadejte **název**, jako například `InformixdeleteRow`, **předplatné**, **skupiny prostředků**, **umístění**, a **plán služby App Service**. Vyberte **připnout na řídicí panel**a potom vyberte **vytvořit**.
 
 ### <a name="add-a-trigger-and-action"></a>Přidání aktivační události a akce

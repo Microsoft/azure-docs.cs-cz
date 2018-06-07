@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d1de8baf725233bee30a14eca770e4f04e7a70b7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f648bec7530260a6445f74b6d141140f728674ee
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617157"
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Kopírování dat z zdroj OData pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,9 +52,9 @@ Pro OData propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **OData** |Ano |
-| Adresa URL | Adresy URL kořenového adresáře služby OData. |Ano |
+| url | Adresy URL kořenového adresáře služby OData. |Ano |
 | authenticationType. | Typ ověřování používaný pro připojení ke zdroji OData.<br/>Povolené hodnoty jsou: **anonymní**, **základní**, a **Windows**. Poznámka: OAuth není podporována. | Ano |
-| userName | Pokud používáte ověřování Basic nebo Windows, zadejte uživatelské jméno. | Ne |
+| Uživatelské jméno | Pokud používáte ověřování Basic nebo Windows, zadejte uživatelské jméno. | Ne |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 
@@ -133,7 +134,7 @@ Ke zkopírování dat z OData, nastavte vlastnost typu datové sady, která **OD
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na: **ODataResource** | Ano |
-| path | Cesta k prostředku OData. | Ne |
+| path | Cesta k prostředku OData. | Ano |
 
 **Příklad**
 
@@ -206,21 +207,21 @@ Při kopírování dat z OData, se používají následující mapování datov�
 
 | Datový typ OData | Typ průběžných dat objektu pro vytváření dat |
 |:--- |:--- |
-| Edm.Binary | Byte[] |
-| Edm.Boolean | Logická hodnota (Bool) |
-| Edm.Byte | Byte[] |
+| Edm.Binary | Byte] |
+| Edm.Boolean | BOOL |
+| Edm.Byte | Byte] |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
-| Edm.Double | Dvojitý |
-| Edm.Single | Svobodný/svobodná |
+| Edm.Double | Double |
+| Edm.Single | Jednoduchá |
 | Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
 | Edm.String | Řetězec |
-| Edm.Time | TimeSpan |
-| Edm.DateTimeOffset | DateTimeOffset |
+| Edm.Time | Časový interval |
+| Edm.DateTimeOffset | Datový typ DateTimeOffset |
 
 > [!Note]
 > OData komplexními datovými typy (například objekt) nejsou podporovány.

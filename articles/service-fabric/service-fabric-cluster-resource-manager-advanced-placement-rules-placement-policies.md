@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bdf10f1d9199500d4f5bda3c5a05a3d67ff65541
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 66c51b08884c9d7a4d522c94f7b81774ec7a8bda
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641998"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Umístění zásady pro služby service fabric
 Umístění zásady jsou další pravidla, které lze použít k řízení umístění služby v některých scénářích konkrétní, méně běžné. Mezi příklady tyto scénáře patří:
@@ -90,7 +91,7 @@ Upřednostňovaný primární doménu Určuje domény selhání umístit primár
 ```csharp
 ServicePlacementPreferPrimaryDomainPolicyDescription primaryDomain = new ServicePlacementPreferPrimaryDomainPolicyDescription();
 primaryDomain.DomainName = "fd:/EastUS/";
-serviceDescription.PlacementPolicies.Add(invalidDomain);
+serviceDescription.PlacementPolicies.Add(primaryDomain);
 ```
 
 Prostředí PowerShell:

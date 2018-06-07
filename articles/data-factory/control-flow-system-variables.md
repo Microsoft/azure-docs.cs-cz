@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 77285692846d2a301e091426801e20203816181a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 498ca342976888ab4ae67826689bb5e21325b94d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618245"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Systémové proměnné podporovaných službou Azure Data Factory
 Tento článek popisuje systémové proměnné podporovaných službou Azure Data Factory. Tyto proměnné můžete použít ve výrazech při definování entit služby Data Factory. 
@@ -30,13 +31,13 @@ Tento článek popisuje systémové proměnné podporovaných službou Azure Dat
 
 | Název proměnné | Popis |
 | --- | --- |
-| @pipeline().DataFactory |Název objektu pro vytváření dat kanál spustit běží v rámci | 
-| @pipeline().Pipeline |Název kanálu |
+| @pipeline(). Objekt pro vytváření dat |Název objektu pro vytváření dat kanál spustit běží v rámci | 
+| @pipeline(). Kanál |Název kanálu |
 | @pipeline().RunId | ID specifické kanálu spustit | 
-| @pipeline().TriggerType | Typ aktivační událost, která volá kanálu (ruční, Scheduler) | 
-| @pipeline().TriggerId| ID aktivační události, která volá kanálu |
-| @pipeline().TriggerName| Název aktivační události, která volá kanálu |
-| @pipeline().TriggerTime| Čas, kdy aktivační událost, která volá kanálu. Čas aktivace je skutečný čas aktivní, nejsou naplánovaném čase. Například `13:20:08.0149599Z` je vrácena místo `13:20:00.00Z` |
+| @pipeline(). TriggerType | Typ aktivační událost, která volá kanálu (ruční, Scheduler) | 
+| @pipeline(). SpuštěcíID| ID aktivační události, která volá kanálu |
+| @pipeline(). Název aktivační události| Název aktivační události, která volá kanálu |
+| @pipeline(). TriggerTime| Čas, kdy aktivační událost, která volá kanálu. Čas aktivace je skutečný čas aktivní, nejsou naplánovaném čase. Například `13:20:08.0149599Z` je vrácena místo `13:20:00.00Z` |
 
 ## <a name="trigger-scope"></a>Obor aktivační události:
 

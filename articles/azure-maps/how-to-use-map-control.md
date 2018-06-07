@@ -1,18 +1,19 @@
 ---
 title: Jak používat Azure mapy mapový ovládací prvek | Microsoft Docs
 description: Další informace o použití knihovny Javascript klienta Azure mapy mapový ovládací prvek.
-services: azure-maps
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
+services: azure-maps
 manager: timlt
-ms.openlocfilehash: bbd06aad9052d2a775c35dd08f80462f8ea505a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4ba4b9a9f2357d283ddc03a4723cb08b48d40a9b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599207"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>Jak používat Azure mapy mapový ovládací prvek
 Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslení mapy a vložené funkce Azure mapy do webové nebo mobilních aplikací. 

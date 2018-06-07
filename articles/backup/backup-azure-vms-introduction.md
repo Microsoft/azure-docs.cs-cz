@@ -1,25 +1,20 @@
 ---
-title: Plánování infrastruktury zálohování virtuálních počítačů v Azure | Microsoft Docs
+title: Plánování infrastruktury zálohování virtuálních počítačů v Azure
 description: Je důležité zvážit při plánování zálohování virtuálních počítačů v Azure
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: zálohování virtuálních počítačů, zálohování virtuálních počítačů
-ms.assetid: 19d2cf82-1f60-43e1-b089-9238042887a9
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/23/2018
-ms.author: markgal;trinadhk;sogup
-ms.openlocfilehash: 299794b100ed438de2995d70419025dd686d2278
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: markgal
+ms.openlocfilehash: 92122e7dc62e0f402bcddff099984e6e2c605fae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606082"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Plánování infrastruktury zálohování virtuálních počítačů v Azure
 Tento článek obsahuje výkonu a prostředků návrhy vám pomohou naplánovat zálohování infrastrukturu virtuálních počítačů. Definuje také klíčových aspektů služby zálohování; Tyto aspekty může být velmi důležité při určování vaší architektury plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, najdete v článku [virtuální počítače dokumentaci](https://azure.microsoft.com/documentation/services/virtual-machines/).
@@ -27,7 +22,7 @@ Tento článek obsahuje výkonu a prostředků návrhy vám pomohou naplánovat 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Jak funguje Azure zálohuje virtuální počítače?
 Když služba Azure Backup spustí úlohu zálohování v naplánovaném čase, aktivační události služby rozšíření zálohování k pořízení snímku v daném okamžiku. Použití služby Azure Backup _VMSnapshot_ rozšíření v systému Windows a _VMSnapshotLinux_ rozšíření v systému Linux. Rozšíření je nainstalován během první zálohování virtuálních počítačů. Jak rozšíření nainstalovat, musí být virtuální počítač spuštěný. Pokud virtuální počítač není spuštěný, služba Backup pořídí snímek základního úložiště (protože aplikace neprovádí žádné zápisy, když je virtuální počítač zastavený).
 
-Při pořizování snímku virtuálních počítačů Windows, služba zálohování koordinuje s Stínová kopie svazku Service (VSS) získat konzistentního snímku disky virtuálního počítače. Pokud zálohujete virtuální počítače s Linuxem, může zapisovat svých vlastních skriptů na zajištění konzistence při pořizování snímku virtuálního počítače. Podrobnosti o vyvolání tyto skripty jsou uvedeny dále v tomto článku.
+Při pořizování snímku virtuálních počítačů Windows se služba zálohování sladí se službou Stínová kopie svazku k získání konzistentního snímku disků virtuálního počítače. Pokud zálohujete virtuální počítače s Linuxem, může zapisovat svých vlastních skriptů na zajištění konzistence při pořizování snímku virtuálního počítače. Podrobnosti o vyvolání tyto skripty jsou uvedeny dále v tomto článku.
 
 Jakmile služba Azure Backup pořídí snímek, data se přenesou do trezoru. Pro maximalizaci efektivity služba identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
 
@@ -119,7 +114,7 @@ Doporučujeme následující tyto postupy při konfiguraci zálohování pro vir
 * Plánování zálohování virtuálních počítačů v době mimo špičku. Tímto způsobem služba zálohování používá IOPS pro přenos dat z účtu úložiště uživatele do trezoru.
 * Ujistěte se, že je zásada na virtuálních počítačích rozloženy jiným účtům úložiště. Doporučujeme více než 20 celkový disky z jednoho úložiště účtu chráněn stejným plán zálohování. Pokud máte větší než 20 disky v účtu úložiště, rozloženy víc zásad získat požadované IOPS během přenosu fáze procesu zálohování těchto virtuálních počítačů.
 * Neobnovujte virtuálních počítačů spuštěné na storage úrovně Premium stejný účet úložiště. Pokud proces operace obnovení se shoduje se operace zálohování, snižuje dostupné IOPS pro zálohování.
-* Pro zálohování virtuálních počítačů Premium Ujistěte se, tento účet úložiště, hostitelé prémiové disky má alespoň 50 % volného místa pro přípravu snímek pro úspěšnou zálohu. 
+* Pro zálohování virtuálních počítačů Premium v zásobníku zálohování virtuálních počítačů V1 se doporučuje přidělit jen 50 % jeho celkový úložný prostor účet, tak, aby služba Azure Backup můžete zkopírovat snímku do úložiště účet a přenos dat z tohoto umístění zkopírovaný v účtu úložiště do trezoru.
 * Ujistěte se, že danou verzi jazyka python na virtuální počítače s Linuxem povolené pro zálohování je 2.7
 
 ## <a name="data-encryption"></a>Šifrování dat

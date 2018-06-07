@@ -3,16 +3,17 @@ title: Azure zálohování databáze služby Analysis Services a obnovení | Mic
 description: Popisuje, jak zálohovat a obnovit databázi služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ec213d5c223180825ea0eabe95881002432b92e9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07b2cebde40983955c5244ac2b7f0b759dcdbd14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597293"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -44,7 +45,7 @@ Před zahájením zálohování, musíte nakonfigurovat nastavení úložiště 
 
 4. Vyberte kontejner nebo vytvořte novou.
 
-    ![Vyberte kontejner](./media/analysis-services-backup/aas-backup-container.png)
+    ![Výběr kontejneru](./media/analysis-services-backup/aas-backup-container.png)
 
 5. Uložte nastavení zálohování.
 

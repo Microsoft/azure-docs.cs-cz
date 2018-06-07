@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: abnarain
-ms.openlocfilehash: 7e55249ed187ad9fa74a39634bbb254c9b0b8b8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1bf030d7eaba5c8aa608c504f65c5ebf291eab3d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619690"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,11 +40,11 @@ Následující tabulka obsahuje popis obecné vlastnosti používané v definici
 
 | Vlastnost                 | Popis                              | Požaduje se                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **Typ**                 | Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
+| **type**                 | Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. | Ano                                      |
 | **accountName**          | Název účtu Azure Data Lake Analytics.  | Ano                                      |
 | **dataLakeAnalyticsUri** | Identifikátor URI služby Azure Data Lake Analytics.           | Ne                                       |
-| **subscriptionId**       | ID předplatného Azure                    | Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
-| **resourceGroupName**    | Název skupiny prostředků Azure.                | Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
+| **ID předplatného**       | ID předplatného Azure                    | Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
+| **resourceGroupName**    | Název skupiny prostředků Azure                | Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
 
 ### <a name="service-principal-authentication"></a>Ověřování instančních objektů
 Azure Data Lake Analytics propojená služba vyžaduje, aby objekt zabezpečení ověřování služby pro připojení ke službě Azure Data Lake Analytics. Pokud chcete použít ověřování hlavní služby, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD) a jí udělit přístup k Data Lake Analytics a Data Lake Store, používá. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které můžete použít k definování propojené služby:

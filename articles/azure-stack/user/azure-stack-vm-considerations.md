@@ -12,13 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 05/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 324fa19aa97cead44f38d07a2fd0765048cd6238
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605384"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů v Azure zásobníku
 
@@ -102,7 +103,7 @@ Seznam podporovaných prostředků typy a verze rozhraní API se může lišit, 
 Produkty Windows musí být použity v souladu s práva k použití produktu a licenční podmínky společnosti Microsoft. Používá Azure zásobníku [automatická aktivace virtuálního počítače](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) k aktivaci systému Windows Server virtuálních počítačů (VM).
 
 - Hostitele Azure zásobníku aktivuje Windows s klíče AVMA pro Windows Server 2016. Všechny virtuální počítače se systémem Windows Server 2012 nebo novější budou automaticky aktivována.
-- Virtuální počítače, které spuštění systému Windows Server 2008 R2 nejsou aktivovány automaticky a musí být aktivované touto metodou [aktivaci pomocí kódu MAK](https://technet.microsoft.com/library/ff793438.aspx).
+- Virtuální počítače, které spuštění systému Windows Server 2008 R2 nejsou aktivovány automaticky a musí být aktivované touto metodou [aktivaci pomocí kódu MAK](https://technet.microsoft.com/library/ff793438.aspx). Pokud chcete používat klíče k Vícenásobné aktivaci, je nutné zadat vlastní kód product key.
 
 Microsoft Azure aktivace služby správy KLÍČŮ používá k aktivaci virtuální počítače Windows. Pokud přesunete virtuální počítač z Azure zásobníku pro Azure a dojde k aktivaci problémy, projděte si téma [řešení potíží s Windows Azure virtuálního počítače při potížích s aktivací](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Další informace naleznete na [selhání aktivace řešení potíží s Windows na virtuálních počítačích Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) příspěvek blogu týmu podpory Azure.
 

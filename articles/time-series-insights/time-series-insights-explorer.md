@@ -1,22 +1,22 @@
 ---
-title: "Prozkoumejte dat pomocí Průzkumníka Statistika řady čas Azure | Microsoft Docs"
-description: "Tento článek popisuje použití Průzkumníka Azure časové řady Insights ve webovém prohlížeči globální zobrazení velkých objemů dat se krátce zobrazit a ověřit prostředí IoT."
-services: time-series-insights
+title: Prozkoumejte dat pomocí Průzkumníka Statistika řady čas Azure | Microsoft Docs
+description: Tento článek popisuje použití Průzkumníka Azure časové řady Insights ve webovém prohlížeči globální zobrazení velkých objemů dat se krátce zobrazit a ověřit prostředí IoT.
 ms.service: time-series-insights
+services: time-series-insights
 author: MarkMcGeeAtAquent
 ms.author: kfile
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: de676efdd7dd2a4035bbeca4bddd8b1d7ee7e989
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651773"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník Azure Statistika časové řady
 Tento článek popisuje různé funkce a možnosti dostupné v rámci webové aplikace explorer Statistika časové řady. Pomocí Průzkumníka časové řady Insights ve webovém prohlížeči vytvořit vizualizacemi vašich dat.
@@ -57,10 +57,10 @@ V rámci připojení vaší zdroj události pro vaše prostředí časové řady
 
          |Operace  |Podporované typy  |Poznámky  |
          |---------|---------|---------|
-         |<, >, <=, >=     |  Double, DateTime, TimeSpan       |         |
+         |<, >, <=, >=     |  Double, DateTime, časový interval       |         |
          |=, !=, <>     | Řetězec, Bool, Double, DateTime, časový interval, hodnotu NULL        |         |
          |V     | Řetězec, Bool, Double, DateTime, časový interval, hodnotu NULL        |  Všechny operandy musí být stejného typu nebo musí být konstanta NULL.        |
-         |HAS     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní textové literály. Prázdný řetězec a NULL nejsou povoleny.       |
+         |MÁ     | Řetězec        |  Na pravé straně jsou povoleny pouze konstantní textové literály. Prázdný řetězec a NULL nejsou povoleny.       |
 
       - **Příklady dotazů**
       

@@ -7,15 +7,16 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: d19087743740799ec9972bed7a602073afea9f26
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebe6d2b4d3210ad7c02ec2d26a311645660aeab8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647064"
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Navrhování služeb s vysokou dostupností pomocí Azure SQL Database
 
@@ -148,7 +149,7 @@ Ale některé **kompromisy**:
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>Plánování kontinuity obchodních: Zvolte návrh aplikace pro zotavení po havárii cloudu
 Strategie zotavení po havárii konkrétní cloudové můžete kombinovat nebo rozšířit tyto vzory návrhu na nejlépe vyhovovat potřebám vaší aplikace.  Jak už bylo zmíněno dříve, strategie, kterou zvolíte je založena na smlouvě SLA můžete chtít nabízet zákazníkům a topologii nasazení aplikace. Chcete-li Průvodce vaše rozhodnutí, následující tabulka porovnává voleb na základě plánovaného bodu obnovení (RPO) a obnovení odhadovanou dobu (Vložit).
 
-| Vzor | RPO | ERT |
+| Vzor | PLÁNOVANÝ BOD OBNOVENÍ | VLOŽIT |
 |:--- |:--- |:--- |
 | Aktivní – pasivní nasazení pro zotavení po havárii s přístupem společně umístěné databáze |Přístup pro čtení a zápis < 5 s |Čas detekce selhání + TTL pro DNS |
 | Aktivní aktivní nasazení pro aplikaci služby Vyrovnávání zatížení |Přístup pro čtení a zápis < 5 s |Čas detekce selhání + TTL pro DNS |

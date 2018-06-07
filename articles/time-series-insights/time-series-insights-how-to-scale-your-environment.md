@@ -1,22 +1,22 @@
 ---
-title: "Postup škálování Azure časové řady Přehled prostředí | Microsoft Docs"
-description: "Tento článek popisuje postup škálování prostředí Statistika Azure časové řady. Použití portálu Azure přidejte nebo odstraňte kapacity v rámci cenovou SKU."
-services: time-series-insights
+title: Postup škálování Azure časové řady Přehled prostředí | Microsoft Docs
+description: Tento článek popisuje postup škálování prostředí Statistika Azure časové řady. Použití portálu Azure přidejte nebo odstraňte kapacity v rámci cenovou SKU.
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 7e603cc9c130de6b65ae1935ac974557f5e74737
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651987"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Postup škálování prostředí Statistika časové řady
 
@@ -58,6 +58,6 @@ Kapacity lineárně, takže S1 SKU s kapacitou 2 podporuje 2 GB (2 miliony) udá
 
 4. Vyberte **Uložit** škálování prostředí. Dokud nebude změna se potvrdí, na okamžik, zobrazí se indikátor průběhu. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Ověřte, zda je dostačující k zabránění omezení nové kapacity](time-series-insights-diagnose-and-solve-problems.md).

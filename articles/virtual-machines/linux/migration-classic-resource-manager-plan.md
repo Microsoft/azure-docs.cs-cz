@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 586a5590c88ef4124543c47389f62eaa864d2d18
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 19dd6a693daf0b54c7df448f21bdb098d9bbdcac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653497"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace z klasického do Azure Resource Manageru prostředků IaaS
 Zatímco Azure Resource Manager nabízí mnoho úžasné funkcí, je důležité k naplánování vaší cesty migrace zkontrolujte, zda věcí bezproblémové. Výdaje čas na plánování zajistí nedochází chybám při provádění migrace aktivity. 
 
 > [!NOTE] 
-> Následující pokyny se výraznou přispěli k Azure zákazníka poradní tým a práce s zákazníků v migraci velké enviornments architekty cloudové řešení. Jako takový tohoto dokumentu bude nadále získat aktualizovat, protože vznikat nové vzorce úspěšné, tak to zkuste od času na dobu, pokud jsou k dispozici žádná nová doporučení.
+> Následující pokyny se výraznou přispěli k Azure zákazníka poradní tým a řešení cloudové architekty práce s zákazníků v rozsáhlých prostředích migrace. Jako takový tohoto dokumentu bude nadále získat aktualizovat, protože vznikat nové vzorce úspěšné, tak to zkuste od času na dobu, pokud jsou k dispozici žádná nová doporučení.
 
 Existují čtyři obecné fáze migrace cesty:
 
@@ -51,10 +52,10 @@ V závislosti na velikosti technické požadavky, zeměpisných a provozní post
 
 ### <a name="patterns-of-success"></a>Vzory úspěch
 
-Úspěšné zákazníkům obsahují podrobné plány, kde jsou popsané, zdokumentované a řídí na výše uvedené otázky.  Zajistěte, aby že plány migrace se široce předávají u sponzorů a zúčastněnými stranami.  Vybavit sami s informací o možnostech migrace; čtení tímto dokumentem migrace nastavit níže důrazně doporučujeme.
+Úspěšné zákazníkům obsahují podrobné plány, kde jsou popsané, zdokumentované a řídí předchozí dotazy.  Zajistěte, aby že plány migrace se široce předávají u sponzorů a zúčastněnými stranami.  Vybavit sami s informací o možnostech migrace; čtení tímto dokumentem migrace nastavit níže důrazně doporučujeme.
 
 * [Přehled platformy podporované migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Migrace prostředků IaaS z klasického do Azure Resource Manageru pomocí prostředí PowerShell](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Pomocí rozhraní příkazového řádku můžete migrovat prostředky infrastruktury z classic do Azure Resource Manageru](migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -71,7 +72,7 @@ V závislosti na velikosti technické požadavky, zeměpisných a provozní post
 
 ## <a name="lab-test"></a>Testovací laboratoře 
 
-**Replikovat vaše hodnotit a provést migraci testu**
+**Replikovat vaše prostředí a provést migraci testu**
   > [!NOTE]
   > Přesný replikace vaše stávající prostředí se spustí pomocí nástroje podílí komunity, který není oficiálně podporován Microsoft Support. Proto je **volitelné** krok, ale je nejlepší způsob, jak zjistit problémy bez zásahu do provozní prostředí. Pokud pomocí nástroje podílí komunity není možné, přečtěte si o ověření a příprava nebo zrušit vyzkoušet vysílání doporučení níže.
   >
@@ -79,7 +80,7 @@ V závislosti na velikosti technické požadavky, zeměpisných a provozní post
   Provádění testu testovacího prostředí vaší přesný scénář (výpočty, síť a úložiště) je nejlepší způsob, jak zajistit bezproblémovou migraci. To pomůže zajistit:
 
   - Zcela samostatné testovacího prostředí nebo stávajícího mimo produkční prostředí pro testování. Doporučujeme, abyste zcela samostatné testovacím prostředí, které mohou být migrovány opakovaně a nelze jej destructively změnit.  Skripty za účelem shromažďování nebo hydrát metadata z reálného odběry jsou uvedeny níže.
-  - Je vhodné vytvořit testovací prostředí v samostatné předplatné. Důvodem je, že testovací prostředí se opakovaně deaktivuje a s samostatné, izolované předplatné snížíte pravděpodobnost, že něco skutečné získá ať už náhodně odstranit.
+  - Je vhodné vytvořit testovací prostředí v samostatné předplatné. Důvodem je, že testovací prostředí se opakovaně deaktivuje a s samostatné, izolované předplatné snížíte pravděpodobnost, že něco skutečných získat omylem odstraní.
 
   To můžete udělat pomocí nástroje AsmMetadataParser. [Další informace o tomto nástroji sem](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
@@ -110,7 +111,7 @@ Následující byly problémy zjištěné v mnoha větší migrace. Nejedná se 
 - **Azure kvóty správce prostředků** -oblastí Azure mají samostatné kvóty nebo limity pro Classic a Azure Resource Manager. I když ve scénáři migrace není spotřebovávanou nový hardware *(jsme se vzájemná záměna existujících virtuálních počítačů z klasického do Azure Resource Manageru)*, stále musí být v místě s dostatečnou kapacitu než kvóty správce prostředků Azure migrace můžete začít. V následujícím seznamu jsou, že hlavní omezení, které jsme viděli způsobit problémy.  Otevřete lístek podpory kvótu zvýšit limity. 
 
     > [!NOTE]
-    > Tyto limity potřebovat má být aktivována ve stejné oblasti jako vaše aktuální hodnotit migrovat.
+    > Tyto limity potřebovat má být aktivována ve stejné oblasti jako vaše aktuální prostředí a migrovat.
     >
 
     - Síťová rozhraní
@@ -205,7 +206,7 @@ Mějte na paměti, proč jste spustili tento Classic do cesty migrace správce p
 ## <a name="next-steps"></a>Další postup
 
 * [Přehled platformy podporované migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Migrace prostředků IaaS z klasického do Azure Resource Manageru pomocí prostředí PowerShell](../windows/migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Komunita nástroje asistence s migrace z klasického do Azure Resource Manageru prostředků IaaS](../windows/migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

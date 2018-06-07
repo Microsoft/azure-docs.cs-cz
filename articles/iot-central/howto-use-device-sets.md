@@ -1,18 +1,19 @@
 ---
 title: Použití zařízení nastaví v aplikaci Azure IoT centrální | Microsoft Docs
 description: Jako operátor jak používat zařízení nastaví v Azure IoT centrální aplikaci.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932c8315b5af22c3adf18de50cf03deaf6b2a53e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpfr
+ms.openlocfilehash: d27e687acf62e4a1e96f1bb49607618dff45512b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628500"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT centrální
 
@@ -76,7 +77,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
     1. Poskytnout vaše mřížky **název**.
     1. Vyberte sloupce, které chcete zobrazit kliknutím na tlačítko nastavení. V panelu, která se objeví vyberte sloupec mají zobrazit a vybrat na šipku vpravo a vyberte ji.
-    1. Zvolte **OK**.
+    1. Vyberte **OK**.
     1. Zvolte **Uložit**.
 
         ![Uložit mřížka](media/howto-use-device-sets/image9.png)
@@ -106,7 +107,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat **seznamu**. **Seznamu*
 
     ![Vyberte sloupce](media/howto-use-device-sets/image12.png)
 
-1. Zvolte **OK**.
+1. Vyberte **OK**.
 
 ## <a name="analytics"></a>Analýzy
 

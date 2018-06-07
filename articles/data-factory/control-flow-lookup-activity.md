@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: shlo
-ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618653"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
@@ -56,7 +57,7 @@ Následující zdroje dat jsou podporovány pro vyhledávání. Maximální poč
 ```
 
 ## <a name="type-properties"></a>Vlastnosti typu
-Název | Popis | Typ | Požadováno?
+Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
 Datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získáte podrobnosti o z části "Vlastnosti datové sady" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
 source | Obsahuje vlastnosti specifické pro datové sady zdroje, stejný jako zdroj kopie aktivity. Získáte podrobnosti o z části "Zkopírovat vlastnosti aktivity" v jednotlivých odpovídající konektor článků. | Dvojice klíč/hodnota | Ano
@@ -102,7 +103,7 @@ Výsledek vyhledávání je vrácený v `output` části aktivity při spuštěn
     } 
     ```
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 V tomto příkladu aktivity kopírování kopíruje data z tabulky SQL ve vaší instanci databáze SQL Azure do Azure Blob storage. Název tabulky SQL je uložené v souboru JSON v úložišti objektů Blob. Aktivita vyhledávání vyhledá název tabulky za běhu. Tento přístup umožňuje JSON má být změněn dynamicky bez nutnosti znovu nasaďte kanály ani datové sady. 
 
 Tento příklad ukazuje vyhledávání pouze první řádek. Vyhledávání pro všechny řádky a zřetězit výsledky pomocí příkazu ForEach aktivity, najdete v části Ukázky [kopírovat více tabulek hromadné pomocí Azure Data Factory](tutorial-bulk-copy.md).
@@ -278,11 +279,11 @@ Tato instance databáze SQL Azure obsahuje data se zkopírují do úložiště o
 ```json
 {
   "Id": "1",
-  "tableName": "Table1",
+  "tableName": "Table1"
 }
 {
    "Id": "2",
-  "tableName": "Table2",
+  "tableName": "Table2"
 }
 ```
 
@@ -292,11 +293,11 @@ Tato instance databáze SQL Azure obsahuje data se zkopírují do úložiště o
 [ 
     {
         "Id": "1",
-          "tableName": "Table1",
-    }
+        "tableName": "Table1"
+    },
     {
         "Id": "2",
-        "tableName": "Table2",
+        "tableName": "Table2"
     }
 ]
 ```

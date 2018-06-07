@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 1e3ecd27ce7ec2e2763a7249428875e51872bf63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6c352298c701c827cd01c0ed7f427b7ed6015e29
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646673"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Obecné pokyny pro práci s Wingtip lístky ukázkové aplikace SaaS
 
@@ -86,7 +87,7 @@ Aby se zajistilo úspěšné ukázku připojení, všechny servery mají [pravid
 1. Otevřete *SSMS* a připojte se ke klientům. Název serveru, závisí na vzoru databáze klientů, jste vybrali (dole najdete podrobnosti):
     - **Samostatné aplikace:** servery jednotlivých klientů (např. *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
     - **Databáze za klienta:** *tenants1-dpt -&lt;uživatele&gt;. database.windows.net*
-    - **Multi-tenant database:** *tenants1-mt-&lt;User&gt;.database.windows.net* 
+    - **Databáze víceklientské:** *tenants1-mt -&lt;uživatele&gt;. database.windows.net* 
 2. Klikněte na **Připojit** > **Databázový stroj...**:
 
    ![katalogový server](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
@@ -101,7 +102,7 @@ Aby se zajistilo úspěšné ukázku připojení, všechny servery mají [pravid
 4. Opakujte kroky 2 až 3 a připojte se k serveru katalogu (dole najdete názvy konkrétních serverů na základě vzoru pro databáze klientů vybrané)
     - **Samostatné aplikace:** *katalogu-sa -&lt;uživatele&gt;. database.windows.net*
     - **Databáze za klienta:** *katalogu-dpt -&lt;uživatele&gt;. database.windows.net*
-    - **Multi-tenant database:** *catalog-mt-&lt;User&gt;.database.windows.net*
+    - **Databáze víceklientské:** *katalogu-mt -&lt;uživatele&gt;. database.windows.net*
 
 
 Po úspěšném připojení by se zobrazit všechny servery. Seznam databází se může lišit v závislosti na klienty, kterou jste zřídili.

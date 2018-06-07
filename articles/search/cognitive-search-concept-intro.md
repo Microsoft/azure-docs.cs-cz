@@ -8,11 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: cce10ceb190ac90b57e77bfa5903b30b2c249a2c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641107"
 ---
 # <a name="what-is-cognitive-search"></a>Co je kognitivní hledání?
 
@@ -29,7 +30,7 @@ Dovednosti použít během indexování mohou být předdefinované nebo vlastn�
 + [Vlastní dovednosti](cognitive-search-create-custom-skill-example.md) mohou být vytvořeny vámi pro žádné speciální zpracování, které požadujete. Příklady vlastní dovednosti může být vlastní entity modulu nebo dokumentu třídění cílení na konkrétní doméně, jako je třeba finanční, vědecké publikace nebo lékařství.
 
 > [!NOTE]
-> Kognitivní vyhledávání je ve verzi Public Preview a využití jeho dovedností se momentálně nabízí zdarma. Cenu těchto funkcí oznámíme později.
+> Kognitivní vyhledávání je ve verzi Public Preview a využití jeho dovedností se momentálně nabízí zdarma. Cenu této funkce oznámíme později.
 
 ## <a name="components-of-cognitive-search"></a>Součástí kognitivní vyhledávání
 
@@ -61,7 +62,7 @@ Po dokončení zpracování se máte vyhledávání svátek, který se skládá 
 
 Index je jako jakýchkoli jiných můžete vytvořit pro službu Azure Search: můžete doplnit s vlastní analyzátorů, vyvolání přibližné vyhledávací dotazy, přidejte filtrované hledání nebo experimentovat s vyhodnocování profily, aby změna tvaru výsledky hledání.
 
-Indexy se generují z schématu indexu definující pole atributů, a jiných objektů, které připojena do konkrétního indexu, jako je například vyhodnocování profily a synonymum mapy. Jakmile index je definovaný a naplněny, můžete se indexu přírůstkově načíst nové a aktualizované zdrojové dokumenty. Některé změny vyžadují úplné opětovné sestavení. Dokud návrhu schématu je stabilní, měli byste použít malé datové sady. Další informace najdete v tématu [opětovném sestavení indexu](search-howto-reindex.md).
+Indexy se generují z schématu indexu definující pole atributů, a jiných objektů, které připojena do konkrétního indexu, jako je například vyhodnocování profily a synonymum mapy. Jakmile index je definovaný a naplněny, můžete se indexu přírůstkově načíst nové a aktualizované zdrojové dokumenty. Některé změny vyžadují úplné opětovné sestavení. Dokud návrhu schématu je stabilní, měli byste použít malé datové sady. Další informace najdete v článku o tom, [jak znovu sestavit index](search-howto-reindex.md).
 
 <a name="feature-concepts"></a>
 
@@ -102,9 +103,9 @@ V současné době jsou k dispozici pouze rozhraní REST API. Použití `api-ver
 | REST API | Popis |
 |-----|-------------|
 | [Vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Prostředek identifikace externího zdroje dat poskytuje zdroje data použít k vytvoření provádět rozšířené dokumenty.  |
-| [Vytvoření Skillset (api-version = 2017-11-11-Preview)](ref-create-skillset.md)  | Prostředek koordinace použití [předdefinované dovednosti](cognitive-search-predefined-skills.md) a [vlastní kognitivní dovednosti](cognitive-search-custom-skill-interface.md) použít v kanálu obohacení během indexování. |
+| [Vytvoření Skillset (api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek koordinace použití [předdefinované dovednosti](cognitive-search-predefined-skills.md) a [vlastní kognitivní dovednosti](cognitive-search-custom-skill-interface.md) použít v kanálu obohacení během indexování. |
 | [Vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schéma vyjadřující indexu Azure Search. Mapování polí v indexu pole v zdroj dat nebo na pole vyrobila během fáze obohacení (například u pole pro organizaci názvy vytvořené entity rozpoznávání). |
-| [Vytvoření Indexer (api-version = 2017-11-11-Preview)](ref-create-skillset.md)  | Prostředek definování součástí použitých při indexování: včetně zdroje dat, skillset, přidružení pole ze zdroje a zprostředkující datové struktury pro cílový index a index sám sebe. Spuštění indexeru je aktivační událost pro přijímání dat a obohacení. Výstup je vyhledávání svátek, založené na schéma indexu, naplní se zdrojovými daty, obohacená známým prostřednictvím skillsets.  |
+| [Vytvoření Indexer (api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Prostředek definování součástí použitých při indexování: včetně zdroje dat, skillset, přidružení pole ze zdroje a zprostředkující datové struktury pro cílový index a index sám sebe. Spuštění indexeru je aktivační událost pro přijímání dat a obohacení. Výstup je vyhledávání svátek, založené na schéma indexu, naplní se zdrojovými daty, obohacená známým prostřednictvím skillsets.  |
 
 **Kontrolní seznam: Typický pracovní postup**
 
@@ -112,11 +113,11 @@ V současné době jsou k dispozici pouze rozhraní REST API. Použití `api-ver
 
 1. Vytvoření [objekt zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) ve službě Azure Search zadat připojovací řetězec pro načítání dat ze.
 
-1. Vytvoření [skillset](ref-create-skillset.md) s obohacení kroky.
+1. Vytvoření [skillset](https://docs.microsoft.com/rest/api/searchservice/create-skillset) s obohacení kroky.
 
 1. Definování [schéma indexu](https://docs.microsoft.com/rest/api/searchservice/create-index). *Pole* kolekce obsahuje pole z zdrojová data. Se zakázaným inzerováním by také na další pole pro uložení generované hodnoty pro obsah vytvořený během obohacení.
 
-1. Definování [indexer](ref-create-skillset.md) odkazy na zdroje dat, skillset a index.
+1. Definování [indexer](https://docs.microsoft.com/rest/api/searchservice/create-skillset) odkazy na zdroje dat, skillset a index.
 
 1. V rámci indexeru, přidejte *outputFieldMappings*. Tato část mapuje výstup z skillset (v kroku 3) na pole vstupy v schéma indexu (v kroku 4).
 

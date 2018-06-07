@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 22dbaa3d10d09456a972a7991583dc29b7941db1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dbfbafccc1bc735927535a5ee0f8d232be355dca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618619"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schéma mapování v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory aktivity kopírování schéma mapování a mapování datového typu od zdrojových dat za účelem jímky dat při kopírování dat provádění.
@@ -150,17 +151,17 @@ Můžete najít mapování mezi nativní typu dočasné typ v části "Mapován�
 
 Objekt pro vytváření dat podporuje následující typy průběžných dat: můžete zadat následující hodnoty plynoucí z poskytování informací o typu v [strukturu datové sady](concepts-datasets-linked-services.md#dataset-structure) konfigurace:
 
-* Byte[]
+* Byte]
 * Logická hodnota
 * Datum a čas
-* Datetimeoffset
+* Datový typ DateTimeOffset
 * Decimal
-* Dvojitý
+* Double
 * Guid
 * Int16
 * Int32
 * Int64
-* Svobodný/svobodná
+* Jednoduchá
 * Řetězec
 * Časový interval
 

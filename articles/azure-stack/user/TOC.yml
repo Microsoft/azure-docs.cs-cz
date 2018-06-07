@@ -35,9 +35,9 @@
       href: azure-stack-rest-api-use.md
     - name: "Zabezpečení a\_dodržování předpisů"
       items:
-        - name: Správa RBAC
+        - name: Použití řízení přístupu na základě rolí
           href: azure-stack-manage-permissions.md
-        - name: Vytvoření instančních objektů
+        - name: Použít objekty služby
           href: Azure-stack-create-service-principals.md
     - name: Použití služeb
       items:
@@ -107,7 +107,7 @@
           items:
             - name: Instalace Azure Stack PowerShellu
               href: 'https://docs.microsoft.com/azure/azure-stack/user/azure-stack-powershell-install'
-            - name: Stažení nástrojů
+            - name: Stažení nástroje Azure zásobníku
               href: azure-stack-powershell-download.md
             - name: Konfigurace PowerShellu – uživatel
               href: azure-stack-powershell-configure-user.md
@@ -128,13 +128,13 @@
                   href: azure-stack-version-profiles-python.md
                 - name: Rozhraní API podporuje profily poskytovatele prostředků
                   href: azure-stack-profiles-azure-resource-manager-versions.md
-        - name: Použití modulu zásad
+        - name: Použití modulu zásad Azure zásobníku
           href: azure-stack-policy-module.md
         - name: Použití šablon
           items:
             - name: Přehled šablon
               href: azure-stack-arm-templates.md
-            - name: Vývoj šablon
+            - name: Aspekty šablon
               href: azure-stack-develop-templates.md
             - name: Kontrola šablon
               href: azure-stack-validate-templates.md

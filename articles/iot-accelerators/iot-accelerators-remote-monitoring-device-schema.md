@@ -1,22 +1,19 @@
 ---
 title: Schéma zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs
 description: Tento článek popisuje schématu JSON, který definuje simulované zařízení v řešení vzdáleného monitorování.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 186eaee952435573a861d144195c3165e4940cc1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 1ba73d24aaa113a9124e17ea91946c205b21fba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627429"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schéma modelu zařízení
 
@@ -26,7 +23,7 @@ Tento článek popisuje schéma modelu zařízení, který určuje možnosti a c
 
 V následujících článcích se vztahují k aktuální článku:
 
-* [Implementace chování modelu zařízení](../iot-suite/iot-suite-remote-monitoring-device-behavior.md) popisuje soubory JavaScript, kterou použijete k implementaci chování simulované zařízení.
+* [Implementace chování modelu zařízení](iot-accelerators-remote-monitoring-device-behavior.md) popisuje soubory JavaScript, kterou použijete k implementaci chování simulované zařízení.
 * [Vytvoření nového simulovaného zařízení](iot-accelerators-remote-monitoring-test.md) vloží ho všechny společně a ukazuje, jak nasadit nový typ simulované zařízení do řešení.
 
 V tomto článku získáte informace o těchto tématech:

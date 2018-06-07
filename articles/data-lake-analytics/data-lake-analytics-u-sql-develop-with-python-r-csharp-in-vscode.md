@@ -1,23 +1,20 @@
 ---
-title: "Vývoj U-SQL s Python, R a C# pro Azure Data Lake Analytics v sadě Visual Studio Code | Microsoft Docs"
-description: "Další informace o použití kódu na pozadí s Python, R a C# se odeslat úlohu v Azure Data Lake."
+title: Vývoj U-SQL s Python, R a C# pro Azure Data Lake Analytics v kódu aplikace Visual Studio
+description: Další informace o použití kódu na pozadí s Python, R a C# se odeslat úlohu v Azure Data Lake.
 services: data-lake-analytics
-documentationcenter: 
-author: jejiang
-manager: 
-editor: 
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/22/2017
+author: jejiang
 ms.author: jejiang
-ms.openlocfilehash: 8fd8decfde1220be6aaa099c3afb24e8c1eecce4
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+manager: kfile
+editor: jasonwhowell
+ms.topic: conceptual
+ms.date: 11/22/2017
+ms.openlocfilehash: 171aef186fd681adf9b3d92deb8691c852ea1038
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624903"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Vývoj U-SQL s Python, R a C# pro Azure Data Lake Analytics v kódu aplikace Visual Studio
 Naučte se používat Visual Studio Code (VSCode) pro zápis Python, R a C# kódu na pozadí pomocí U-SQL a odesílání úloh do služby Azure Data Lake. Další informace o nástrojů Azure Data Lake pro VSCode najdete v tématu [pomocí nástroje Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -28,7 +25,7 @@ Před zápisem kódu vlastní kód, budete muset otevřít složku nebo pracovn�
 ## <a name="prerequisites-for-python-and-r"></a>Předpoklady pro Python a R
 Zaregistrujte Python a R sestavení rozšíření pro váš účet ADL. 
 1. Otevřete svůj účet na portálu.
-   - Vyberte **přehled**. 
+   - Vyberte **Přehled**. 
    - Klikněte na tlačítko **ukázkový skript**.
 2. Klikněte na tlačítko **Další**.
 3. Vyberte **instalovat rozšíření U-SQL**. 
@@ -182,10 +179,9 @@ Soubor kódu je soubor C# přidružené jednoho skriptu U-SQL. Můžete definova
     ```
 5. Klikněte pravým tlačítkem na **USQL** souboru, můžete kliknout na **zkompilovat skriptu** nebo **odeslat úlohu** spuštěná úloha.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Použití nástrojů Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [U-SQL místní spuštění a místní ladění s kódem jazyka Visual Studio](data-lake-tools-for-vscode-local-run-and-debug.md)
-* [Vývoj sestavení U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-assemblies.md)
 * [Začínáme s Data Lake Analytics pomocí prostředí PowerShell](data-lake-analytics-get-started-powershell.md)
 * [Začínáme s Data Lake Analytics pomocí portálu Azure](data-lake-analytics-get-started-portal.md)
 * [Pomocí nástrojů Data Lake pro Visual Studio pro vývoj aplikací U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

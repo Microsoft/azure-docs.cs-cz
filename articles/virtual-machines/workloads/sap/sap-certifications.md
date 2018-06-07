@@ -4,7 +4,7 @@ description: Aktualizovaný seznam aktuální konfigurace a certifikátů SAP na
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: rclaus
 ms.custom: ''
-ms.openlocfilehash: 1038f0c8a967c05ebf07849619268f22b1eb0c4b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: f2d342558e83c54e101e0ff9128611da9bec1e77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656954"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Certifikace SAP a konfigurace systémem Microsoft Azure
 

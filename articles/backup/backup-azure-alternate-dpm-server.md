@@ -1,30 +1,25 @@
 ---
-title: "Obnovení dat ze serveru Azure Backup | Microsoft Docs"
-description: "Obnovte data, která jste chránili do trezoru služeb zotavení z jakéhokoli serveru zálohování Azure zaregistrovat do tohoto trezoru."
+title: Obnovení dat ze serveru Azure Backup
+description: Obnovte data, která jste chránili do trezoru služeb zotavení z jakéhokoli serveru zálohování Azure zaregistrovat do tohoto trezoru.
 services: backup
-documentationcenter: 
 author: nkolli1
 manager: shreeshd
-editor: 
-ms.assetid: a55f8c6b-3627-42e1-9d25-ed3e4ab17b1f
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/18/2017
-ms.author: adigan;giridham;trinadhk;markgal
-ms.openlocfilehash: 688d155b68bc2d76d53f78d251bc2f659582845f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adigan
+ms.openlocfilehash: 8559532f873e8073e736f881374fec1c080d08c3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604399"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Obnovení dat z Azure Backup Serveru
 Azure Backup Server můžete použít k obnovení dat, které jste zálohovali do trezoru služeb zotavení. Proces pro to, je integrována do konzoly pro správu serveru Azure Backup a je podobný postupu obnovení pro jiné komponenty Azure Backup.
 
 > [!NOTE]
-> Tento článek se použije pro [System Center Data Protection Manager 2012 R2 s kumulativní aktualizací 7 nebo novější] (https://support.microsoft.com/en-us/kb/3065246), v kombinaci s [nejnovější verze agenta Azure Backup](http://aka.ms/azurebackup_agent).
+> Tento článek se použije pro [System Center Data Protection Manager 2012 R2 s kumulativní aktualizací 7 nebo novější] (https://support.microsoft.com/en-us/kb/3065246), kombinované s [nejnovější verze agenta Azure Backup](http://aka.ms/azurebackup_agent).
 >
 >
 
@@ -85,12 +80,12 @@ Chcete-li obnovit data ze serveru Azure Backup:
     ![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## <a name="troubleshooting-error-messages"></a>Řešení potíží s chybové zprávy
-| Ne. | Chybová zpráva | Řešení potíží |
+| Ne. | Chybová zpráva | Postup při řešení potíží |
 |:---:|:--- |:--- |
 | 1. |Tento server není registrovaný k úložišti určenému přihlašovacími údaji úložiště. |**Příčina:** tato chyba se zobrazí, když soubor s přihlašovacími údaji trezoru vybrané nepatří do trezoru služeb zotavení přidružené k serveru Azure Backup Server, na kterém dojde k pokusu o obnovení. <br> **Řešení:** stažení souboru přihlašovacích údajů trezoru služeb zotavení trezoru serveru Azure Backup je zaregistrovaný. |
 | 2. |Buď obnovitelná data nejsou k dispozici nebo vybraný server není DPM server. |**Příčina:** nejsou zaregistrované žádné jiné servery Azure zálohování do trezoru služeb zotavení, nebo servery ještě jste zatím neodeslali metadata nebo vybraný server není Server Azure Backup (neboli systému Windows Server nebo klienta Windows). <br> **Řešení:** Pokud existují, ostatní servery zálohování Azure zaregistrovat do trezoru služeb zotavení, zkontrolujte, zda je nainstalován nejnovější agent Azure Backup. <br>Pokud existují další servery zálohování Azure zaregistrován do trezoru služeb zotavení, počkejte denně po instalaci zahájíte proces obnovení. Na noční úlohu odešlete metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
 | 3. |Žádný jiný server DPM je zaregistrován k tomuto úložišti. |**Příčina:** nejsou žádné další Azure Backup servery, které jsou registrovány k trezoru, ze kterého je probíhají pokusy o obnovení.<br>**Řešení:** Pokud existují, ostatní servery zálohování Azure zaregistrovat do trezoru služeb zotavení, zkontrolujte, zda je nainstalován nejnovější agent Azure Backup.<br>Pokud existují další servery zálohování Azure zaregistrován do trezoru služeb zotavení, počkejte denně po instalaci zahájíte proces obnovení. Na noční úlohu ukládání metadata pro všechny chráněné zálohování do cloudu. Data budou k dispozici pro obnovení. |
-| 4. |Zadaná šifrovací přístupové heslo neodpovídá přístupovému heslu přidruženému k následujícímu serveru:**<server name>** |**Příčina:** používá při šifrování dat ze serveru Azure Backup dat, který obnovuje šifrovací přístupové heslo neodpovídá zadané šifrovací přístupové heslo. Agent se nepodařilo dešifrovat data. Proto se obnovení nezdaří.<br>**Řešení:** zadejte přesně stejný šifrovací přístupové heslo přidružené k serveru Azure Backup, jejichž data obnovena. |
+| 4. |Zadaná šifrovací přístupové heslo neodpovídá přístupovému heslu přidruženému k následujícímu serveru: **<server name>** |**Příčina:** používá při šifrování dat ze serveru Azure Backup dat, který obnovuje šifrovací přístupové heslo neodpovídá zadané šifrovací přístupové heslo. Agent se nepodařilo dešifrovat data. Proto se obnovení nezdaří.<br>**Řešení:** zadejte přesně stejný šifrovací přístupové heslo přidružené k serveru Azure Backup, jejichž data obnovena. |
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -100,7 +95,7 @@ Pro servery aplikace DPM se zdroji dat, které jsou chráněné do cloudu (s pou
 
 ### <a name="what-is-the-minimum-version-of-the-microsoft-azure-recovery-services-agent-needed"></a>Co je minimální verze agenta služeb zotavení Microsoft Azure potřeba?
 
-Minimální verze agenta služeb zotavení Microsoft Azure nebo agenta Azure Backup potřebné k povolení této funkce je 2.0.8719.0.  Chcete-li zobrazit verze agenta: Otevřete ovládací panely  **>**  všechny položky  **>**  programy a funkce  **>**  agenta služeb zotavení Microsoft Azure. Pokud verze je menší než 2.0.8719.0, stáhněte a nainstalujte [nejnovější verze agenta Azure Backup](https://go.microsoft.com/fwLink/?LinkID=288905).
+Minimální verze agenta služeb zotavení Microsoft Azure nebo agenta Azure Backup potřebné k povolení této funkce je 2.0.8719.0.  Chcete-li zobrazit verze agenta: Otevřete ovládací panely **>** všechny položky **>** programy a funkce **>** agenta služeb zotavení Microsoft Azure. Pokud verze je menší než 2.0.8719.0, stáhněte a nainstalujte [nejnovější verze agenta Azure Backup](https://go.microsoft.com/fwLink/?LinkID=288905).
 
 ![Vymazat externí DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
 

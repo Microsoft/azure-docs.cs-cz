@@ -1,28 +1,26 @@
 ---
 title: Zobrazit informace o souřadnice s Azure mapy | Microsoft Docs
 description: Postup zobrazení informací o adresu na mapě, když uživatel vybere souřadnice
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: bb8644724cc872a0a8bc331e76251218492fd93d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3caae47f7f8f5f9c917e3a59513e6cd33cdcaeae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600489"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
 Tento článek ukazuje, jak telefonování adresu zpětného vyhledávání, a při kliknutí myší zobrazit adresu kliknutelnou umístění v místní okno. 
 
-## <a name="understand-the-code"></a>Pochopení kódu
+## <a name="understand-the-code"></a>Vysvětlení kódu
 
 <iframe height='500' scrolling='no' title='Získání informací ze souřadnice' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>V tématu pera <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>získat informace z souřadnice</a> pomocí Azure mapy (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -45,3 +43,7 @@ Další informace o třídy a metody používané v tomto článku:
     * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#setpopupoptions)
     * [Otevřete](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#open)
     * [Zavřete](https://docs.microsoft.com/javascript/api/azure-maps-javascript/popup?view=azure-iot-typescript-latest#close)
+
+Další příklady kódu pro přidání do vaší mapy najdete v následujících článcích: 
+* [Zobrazit pokyny od A do B](./map-route.md)
+* [Zobrazit provoz](./map-show-traffic.md)

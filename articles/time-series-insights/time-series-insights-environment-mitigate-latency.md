@@ -1,22 +1,22 @@
 ---
 title: Postup monitorování a snižování omezení v Azure časové řady přehledy | Microsoft Docs
 description: Tento článek popisuje, jak monitorovat, diagnostikovat a zmírnit problémy s výkonem, které způsobí latenci a omezení v Azure časové řady přehledy.
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a7720934870818a4e13d3d6b5d391d9bd3cddcd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653667"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnit omezení ke snížení latence v Azure časové řady přehledy
 Při konfiguraci vašeho prostředí překračuje příchozích dat, může zaznamenat latenci nebo omezení v Azure časové řady přehledy.
@@ -41,7 +41,7 @@ Výstrahy můžete pomoci diagnostikovat a zmírnit problémy s latencí způsob
 
 2. Klikněte na tlačítko **přidat metriky upozornění**.  
 
-    ![Přidat upozornění metriky](media/environment-mitigate-latency/add-metric-alert.png)
+    ![Přidání metriky upozornění](media/environment-mitigate-latency/add-metric-alert.png)
 
 Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 

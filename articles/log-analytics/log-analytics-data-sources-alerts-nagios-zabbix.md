@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a34a4be75488aca46fe232331e4bac3e0ac414b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637765"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Shromažďovat výstrahy z Nagios a Zabbix v analýzy protokolů z OMS agenta pro Linux 
 [Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou nástroje pro sledování s otevřeným zdrojem. Výstrahy můžete shromáždit z těchto nástrojů do analýzy protokolů, aby bylo možné analyzovat, spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje postup konfigurace agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
@@ -56,7 +57,7 @@ Shromažďovat výstrahy, proveďte následující kroky na serveru Nagios.
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurace shromažďování výstrah Zabbix
-Shromažďovat výstrahy ze serveru Zabbix, budete muset zadat uživatele a heslo v *text vymažte, pokud*.  Když není ideální, doporučujeme vytvořit uživateli a udělte oprávnění ke sledování onlu.
+Shromažďovat výstrahy ze serveru Zabbix, budete muset zadat uživatele a heslo v *text vymažte, pokud*.  Když není ideální, doporučujeme vytvoření Zabbix uživatele s oprávněními jen pro čtení k zachycení příslušné výstrahy.
 
 Ke shromažďování výstrah na serveru Nagios, proveďte následující kroky.
 
@@ -73,7 +74,7 @@ Ke shromažďování výstrah na serveru Nagios, proveďte následující kroky.
 
 2. Restartujte démon omsagent
 
-    sudo dílet /opt/microsoft/omsagent/bin/service_control restartovat
+    `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>Výstrahy záznamů

@@ -1,21 +1,21 @@
 ---
-title: "Postup přidání zdroje událostí služby IoT Hub ke statistice řady čas Azure | Microsoft Docs"
-description: "Tento článek popisuje postup přidání připojeném do služby IoT Hub pro vaše prostředí časové řady Statistika zdroje událostí"
-services: time-series-insights
+title: Postup přidání zdroje událostí služby IoT Hub ke statistice řady čas Azure | Microsoft Docs
+description: Tento článek popisuje postup přidání připojeném do služby IoT Hub pro vaše prostředí časové řady Statistika zdroje událostí
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 01ab5017a5f16a0c46ea2bc600cef6bbf81de963
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652521"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Postup přidání zdroje událostí služby IoT Hub časové řady Přehled prostředí
 Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí, který čte data ze služby IoT Hub do vašeho prostředí Statistika časové řady.
@@ -34,7 +34,7 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
 3. V části **prostředí topologie** záhlaví, klikněte na tlačítko **zdroje událostí**.
    ![Zdroje událostí + přidat](media/time-series-insights-how-to-add-an-event-source-iothub/1-event-sources.png)
 
-4. Klikněte na tlačítko **+ přidat**.
+4. Klikněte na tlačítko **+ Přidat**.
 
 5. Zadejte **název zdroje událostí** jedinečné pro toto časové řady Statistika prostředí, například **datového proudu událostí**.
 
@@ -57,7 +57,7 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
    | Název zásady služby IoT Hub | Vyberte zásady sdíleného přístupu, které lze najít na kartě nastavení služby IoT Hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásada sdíleného přístupu ke zdroji událostí *musí* mít **služba připojit** oprávnění.
    | Klíč služby IoT Hub zásad | Klíč je předem.
    | Skupiny uživatelů služby IoT Hub | Skupiny příjemců číst události ze služby IoT Hub. Důrazně doporučujeme použít vyhrazenou skupinu spotřebitelů zdroje událostí.
-   | Formát serializace událostí | JSON je k dispozici pouze serializace v současné době. Zprávy událostí musí být ve formátu, nebo žádná data lze číst. |
+   | Formát serializace události | JSON je k dispozici pouze serializace v současné době. Zprávy událostí musí být ve formátu, nebo žádná data lze číst. |
    | Název vlastnosti časové razítko | Chcete-li tuto hodnotu určit, je potřeba pochopit formát zprávy zpráva dat odesílaných do služby IoT Hub. Tato hodnota je **název** vlastnosti konkrétní události v daty zprávy, kterou chcete použít jako události časové razítko. Hodnota je malá a velká písmena. Pokud je ponecháno prázdné, **zařazování čas události** v rámci události zdroj se používá jako časové razítko události. |
 
 9. Pokud jste vybrali **nastavení zadejte centra IoT ručně** možnost, následující tabulka vysvětluje všechny požadované vlastnosti:
@@ -70,7 +70,7 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
    | Název zásady služby IoT Hub | Zásady sdíleného přístupu, které se dají vytvořit na kartě nastavení služby IoT Hub. Každá zásada sdíleného přístupu má název, že je nastavená oprávnění a přístupové klíče. Zásada sdíleného přístupu ke zdroji událostí *musí* mít **služba připojit** oprávnění.
    | Klíč služby IoT Hub zásad | Sdílený přístupový klíč používaný k ověření přístupu k oboru názvů Service Bus. Primární nebo sekundární klíč zadejte sem.
    | Skupiny uživatelů služby IoT Hub | Skupiny příjemců číst události ze služby IoT Hub. Důrazně doporučujeme použít vyhrazenou skupinu spotřebitelů zdroje událostí.
-   | Formát serializace událostí | JSON je k dispozici pouze serializace v současné době. Zprávy událostí musí být ve formátu, nebo žádná data lze číst. |
+   | Formát serializace události | JSON je k dispozici pouze serializace v současné době. Zprávy událostí musí být ve formátu, nebo žádná data lze číst. |
    | Název vlastnosti časové razítko | Chcete-li tuto hodnotu určit, je potřeba pochopit formát zprávy zpráva dat odesílaných do služby IoT Hub. Tato hodnota je **název** vlastnosti konkrétní události v daty zprávy, kterou chcete použít jako události časové razítko. Hodnota je malá a velká písmena. Pokud je ponecháno prázdné, **zařazování čas události** v rámci události zdroj se používá jako časové razítko události. |
 
 10. Vyberte **vytvořit** přidat nový zdroj událostí.
@@ -95,7 +95,7 @@ Chcete-li přidat novou skupinu uživatelů do služby IoT Hub, postupujte takto
 
 5. Vyberte **Uložit** uložit do nové skupiny příjemců.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Definovat zásady přístupu k datům](time-series-insights-data-access.md) zabezpečit data.
 - [Odesílání událostí](time-series-insights-send-events.md) ke zdroji událostí.
 - Přístup k prostředí v [explorer časové řady Insights](https://insights.timeseries.azure.com).

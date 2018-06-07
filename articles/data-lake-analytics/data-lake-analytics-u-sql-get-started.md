@@ -1,26 +1,23 @@
 ---
-title: Začínáme s jazykem U-SQL | Microsoft Docs
-description: Naučte se základy jazyka U-SQL.
+title: Začínáme s jazykem U-SQL v Azure Data Lake Analytics
+description: Naučte se základy jazyka U-SQL v Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
-manager: saveenr
-editor: cgronlun
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
 ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 06/23/2017
-ms.author: saveenr
-ms.openlocfilehash: e7efdac8b032055b5344f34f5f9ad2679bddb107
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2903046154808da5113f7b32a04bbfba254a07ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623447"
 ---
-# <a name="get-started-with-u-sql"></a>Začínáme s jazykem U-SQL
+# <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Začínáme s jazykem U-SQL v Azure Data Lake Analytics
 U-SQL je jazyk, který kombinuje deklarativní SQL s imperativní jazyka C# k umožňují zpracování dat v jakémkoli měřítku. Prostřednictvím funkce škálovatelné a distribuovaných dotazů U-SQL můžete efektivně analyzovat data napříč relační úložiště, jako je například Azure SQL Database. Pomocí U-SQL můžete zpracovat nestrukturovaných dat tak, že použití schématu na čtení a vložení vlastní logiky a funkcí UDF. Navíc U-SQL zahrnuje rozšíření, která poskytuje jemně odstupňovanou kontrolu nad postup provést ve velkém měřítku. 
 
 ## <a name="learning-resources"></a>Studijní materiály

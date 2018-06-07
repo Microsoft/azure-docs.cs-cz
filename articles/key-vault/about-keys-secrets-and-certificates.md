@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 2c7dd89d9c2e5d50f2533101499a6e50e52047b3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636602"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných klíčů a certifikátů
 Azure Key Vault umožňuje uživatelům ukládat a používat kryptografické klíče v rámci prostředí Microsoft Azure. Key Vault podporuje více typy klíčů a algoritmy a umožňuje použití z modulů hardwarového zabezpečení (HSM) pro vysoká hodnota klíče. Kromě toho Key Vault umožňuje uživatelům bezpečně uložit tajných klíčů. Tajné klíče jsou omezené velikost octet objekty s žádné konkrétní sémantiku. Key Vault podporuje také certifikáty, které jsou vytvořeny na základě klíčů a tajných klíčů a přidejte funkci automatického obnovení.
@@ -327,7 +328,7 @@ Certifikát atributy jsou zrcadleny atributy adresovatelné klíč a vytvoří, 
 
 Key Vault certifikát má následující atributy:  
 
--   *Povolit*: logická hodnota, volitelné, výchozí hodnota je **true**. Tento atribut lze k označení, pokud lze načíst data certifikátu jako tajný rukou nebo jako klíč. To se používá ve spojení s *nbf* a*exp*když probíhá operace mezi *nbf* a exp, se bude povoleno pouze pokud je povoleno nastavena na hodnotu true. Operace mimo *nbf* a*exp*okno automaticky nejsou povoleny.  
+-   *Povolit*: logická hodnota, volitelné, výchozí hodnota je **true**. Tento atribut lze k označení, pokud lze načíst data certifikátu jako tajný rukou nebo jako klíč. To se používá ve spojení s *nbf* a *exp* když probíhá operace mezi *nbf* a *exp*, ji budou pouze povoleny Pokud je povoleno je nastaven na hodnotu true. Operace mimo *nbf* a *exp* okno automaticky nejsou povoleny.  
 
 Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi:
 
@@ -374,14 +375,14 @@ Následující tabulka představuje mapování x509 zásady použití klíče pr
 
 |**X509 flags použití klíče**|**Klíče ops Key Vault**|**Výchozí chování**|
 |----------|--------|--------|
-|DataEncipherment|šifrování, dešifrování| Není k dispozici |
-|DecipherOnly|Dešifrování| Není k dispozici  |
+|DataEncipherment|šifrování, dešifrování| neuvedeno |
+|DecipherOnly|Dešifrování| neuvedeno  |
 |Bity DigitalSignature|podepsání, ověření| Výchozí Key Vault, bez použití specifikace v okamžiku vytvoření certifikátu | 
-|EncipherOnly|encrypt| Není k dispozici |
-|KeyCertSign|podepsání, ověření|Není k dispozici|
+|EncipherOnly|encrypt| neuvedeno |
+|KeyCertSign|podepsání, ověření|neuvedeno|
 |KeyEncipherment|wrapKey unwrapKey| Výchozí Key Vault, bez použití specifikace v okamžiku vytvoření certifikátu | 
-|Nepopiratelnosti odpovědnosti|podepsání, ověření| Není k dispozici |
-|crlsign|podepsání, ověření| Není k dispozici |
+|Nepopiratelnosti odpovědnosti|podepsání, ověření| neuvedeno |
+|crlsign|podepsání, ověření| neuvedeno |
 
 ###  <a name="BKMK_CertificateIssuer"></a> Vystavitel certifikátu
 

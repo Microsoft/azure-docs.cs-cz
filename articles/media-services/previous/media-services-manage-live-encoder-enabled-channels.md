@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5aa6f629b04a4c187a43b13c929a122a6304c575
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639431"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -223,8 +224,8 @@ Všimněte si, že pokud budete potřebovat vlastní přednastavení, měli byst
 | 1350 |704 |396 |30 |Hlavní |Video_704x396_1350kbps |
 | 850 |512 |288 |30 |Hlavní |Video_512x288_850kbps |
 | 550 |384 |216 |30 |Hlavní |Video_384x216_550kbps |
-| 350 |340 |192 |30 |Směrný plán |Video_340x192_350kbps |
-| 200 |340 |192 |30 |Směrný plán |Video_340x192_200kbps |
+| 350 |340 |192 |30 |Reference |Video_340x192_350kbps |
+| 200 |340 |192 |30 |Reference |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Výstupní datový proud zvuk
 Zvuk je zakódován do stereofonním systémem AAC-LC na 64 kb/s, vzorkovací frekvenci 44,1 kHz.
@@ -332,7 +333,7 @@ Následující tabulka uvádí přiřazení stavů kanálu k režimu fakturace.
 * Se účtují pouze pokud je kanál v **systémem** stavu. Další informace najdete v části [to](media-services-manage-live-encoder-enabled-channels.md#states) části.
 * V současné době doporučujeme maximální dobu trvání živé události v délce 8 hodin. Pokud potřebujete, aby kanál běžel delší dobu, kontaktujte nás na adrese amslived@microsoft.com.
 * Zajistěte, aby tak, aby měl koncový bod streamování, ze kterého chcete Streamovat obsah v **systémem** stavu.
-* Předvolby kódování používá pojem "maximální kmitočet" 30 snímků za sekundu. Pokud vstup je 60fps / 59.97i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced na 30/29,97 fps. Pokud vstup je 50fps/50i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced až 25 fps. Pokud vstupní 25 snímků za sekundu, zůstane výstup 25 snímků za sekundu.
+* Předvolby kódování používá pojem "maximální kmitočet" 30 snímků za sekundu. Pokud vstup je 60fps / 59.94i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced na 30/29,97 fps. Pokud vstup je 50fps/50i, Vstupní rámce jsou vyřazeny nebo deaktivuje-interlaced až 25 fps. Pokud vstupní 25 snímků za sekundu, zůstane výstup 25 snímků za sekundu.
 * Nezapomeňte si zastavení YOUR kanály po dokončení. Pokud ne, bude pokračovat fakturace.
 
 ## <a name="known-issues"></a>Známé problémy

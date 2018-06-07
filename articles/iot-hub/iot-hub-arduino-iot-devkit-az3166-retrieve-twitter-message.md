@@ -1,24 +1,20 @@
 ---
 title: Načtení služby Twitter zprávu s Azure Functions | Microsoft Docs
-description: Použijte snímač pohybu a zjistit, že zatřesete používat Azure Functions najít náhodných tweet s hashtagu, který určíte.
-services: iot-hub
-documentationcenter: ''
+description: Použít snímač pohybu a zjistit, že zatřesete najít náhodných tweet s hashtagu, který zadáte pomocí Azure Functions
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0c3df0642d36aa1c4471c433fe9c1d3fa3b0880d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631757"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Zatřesením, zatřesením pro Tweet – načíst zprávu Twitter s funkcemi Azure!
 

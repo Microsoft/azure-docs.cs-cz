@@ -1,28 +1,26 @@
 ---
-title: "Správa Azure Data Lake Analytics pomocí sady Azure Java SDK | Microsoft Docs"
-description: "Použití sady Java SDK Azure Data Lake Analytics k vývoji aplikací"
+title: Správa Azure Data Lake Analytics pomocí sady Azure Java SDK
+description: Tento článek popisuje způsob použití sady Java SDK Azure pro zápis aplikace, které spravovat úlohy Data Lake Analytics, zdroje dat a uživatelů.
 services: data-lake-analytics
-documentationcenter: 
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
+ms.topic: conceptual
+ms.date: 06/18/2017
+ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624229"
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Správa Azure Data Lake Analytics pomocí sady Java SDK
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace v jazyce Java
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-V tomto kurzu budete vyvíjet konzolovou aplikaci Java, která provádí běžných operací pro Azure Data Lake.
+Tento článek popisuje, jak pro správu účtů Azure Data Lake Analytics, zdroje dat, uživatelů a úloh pomocí aplikace napsané v jazyce Java SDK služby Azure. 
 
 ## <a name="prerequisites"></a>Požadavky
 * **Java Development Kit (JDK) 8** (využívající jazyk Java verze 1.8).
@@ -377,7 +375,7 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md) a [Referenční informace pro jazyk U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).

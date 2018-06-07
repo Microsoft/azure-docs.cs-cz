@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
-ms.openlocfilehash: 12066fe622ec3ed2eded74ecf7b791689ed873d5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fa6c95c3986a398bdb4593235116b305a80616fb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653789"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Zásady použít pro virtuální počítače s Linuxem pomocí Azure Resource Manageru
 Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při přispívání do úspěch organizace. V tomto článku jsme popisují, jak lze pomocí Azure Resource Manager zásad můžete určit požadované chování pro virtuální počítače vaší organizace.
@@ -211,4 +212,4 @@ Můžete chtít nezakazuje využití určitých typů rozšíření. Například
 ## <a name="next-steps"></a>Další postup
 * Po definování zásad pravidlo (jak je znázorněno v předchozích ukázkách), musíte k vytvoření definice zásady a přiřadit obor. Obor může být předplatné, skupinu prostředků nebo prostředek. K přiřazení zásady, najdete v části [portálu Azure použijte přiřadit a spravovat zásady prostředků](../../azure-policy/assign-policy-definition.md), [prostředí PowerShell použít k přiřazení zásad](../../azure-policy/assign-policy-definition-ps.md), nebo [použití Azure CLI k přiřazení zásad](../../azure-policy/assign-policy-definition-cli.md).
 * Úvod do zásad prostředků, najdete v části [co je Azure zásad?](../../azure-policy/azure-policy-introduction.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](../../azure-resource-manager/resource-manager-subscription-governance.md).
+* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

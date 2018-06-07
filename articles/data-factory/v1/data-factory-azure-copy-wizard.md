@@ -1,25 +1,26 @@
 ---
-title: "Průvodce kopírováním Azure | Microsoft Docs"
-description: "Další informace o tom, jak pomocí Průvodce kopírováním Azure Data Factory ke zkopírování dat z podporovaných zdrojů dat do jímky."
+title: Průvodce kopírováním Azure | Microsoft Docs
+description: Další informace o tom, jak pomocí Průvodce kopírováním Azure Data Factory ke zkopírování dat z podporovaných zdrojů dat do jímky.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 0974eb40-db98-4149-a50d-48db46817076
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aeed2b2413f14b60d018ebd4f09293d6c41554d2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: ebd8abf8c34be1fa6fcd282c9bfbc63d81a56239
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621128"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním služby Azure Data Factory
 > [!NOTE]
@@ -75,11 +76,11 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
     2016/03/01/03
     ...
 
-Klikněte na tlačítko **Procházet** tlačítko pro **souboru nebo složky**, přejděte do jednoho z těchto složek (například 2016 -> 03 -> 01 -> 02) a klikněte na tlačítko **zvolte**. Měli byste vidět `2016/03/01/02` v textovém poli. Nyní, nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}**, a **02** s **{hodinu}**a stiskněte klávesu **kartě** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
+Klikněte na tlačítko **Procházet** tlačítko pro **souboru nebo složky**, přejděte do jednoho z těchto složek (například 2016 -> 03 -> 01 -> 02) a klikněte na tlačítko **zvolte**. Měli byste vidět `2016/03/01/02` v textovém poli. Nyní, nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}**, a **02** s **{hodinu}** a stiskněte klávesu **kartě** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
 
 ![Pomocí systémové proměnné](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
-Jak je znázorněno na následujícím snímku obrazovky, můžete použít také **vlastní** proměnné a všechny [podporované řetězce formátu](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Chcete-li vybrat jinou složku s této struktury, použijte **Procházet** nejprve tlačítko. Potom můžete nahradit hodnotu s **{vlastní}**a stiskněte klávesu **kartě** klíč najdete v části textového pole, můžete zadat řetězec formátu.     
+Jak je znázorněno na následujícím snímku obrazovky, můžete použít také **vlastní** proměnné a všechny [podporované řetězce formátu](https://msdn.microsoft.com/library/8kb3ddd4.aspx). Chcete-li vybrat jinou složku s této struktury, použijte **Procházet** nejprve tlačítko. Potom můžete nahradit hodnotu s **{vlastní}** a stiskněte klávesu **kartě** klíč najdete v části textového pole, můžete zadat řetězec formátu.     
 
 ![Použití vlastní proměnné](./media/data-factory-copy-wizard/blob-custom-variables-in-folder-path.png)
 

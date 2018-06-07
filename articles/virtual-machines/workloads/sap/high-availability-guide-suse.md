@@ -4,7 +4,7 @@ description: Vysoká dostupnost příručce pro SAP NetWeaver na SUSE Linux Ente
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: f1d2725237d2cf059450ce7e2c1600b24d17f35c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 12efeba68f30aa8723acc32449ae05ffac4c1ac4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658753"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -96,15 +97,15 @@ Na serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a data
 * Port testu
   * Port 620**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
-  * 32**&lt;nr&gt;** TCP
-  * 36**&lt;nr&gt;** TCP
-  * 39**&lt;nr&gt;** TCP
-  * 81**&lt;nr&gt;** TCP
-  * 5**&lt;nr&gt;**13 TCP
-  * 5**&lt;nr&gt;**14 TCP
-  * 5**&lt;nr&gt;**16 TCP
+  * 32**&lt;nr&gt;**  TCP
+  * 36**&lt;nr&gt;**  TCP
+  * 39**&lt;nr&gt;**  TCP
+  * 81**&lt;nr&gt;**  TCP
+  * 5**&lt;nr&gt;** 13 TCP
+  * 5**&lt;nr&gt;** 14 TCP
+  * 5**&lt;nr&gt;** 16 TCP
 
-### <a name="ers"></a>ERS
+### <a name="ers"></a>YBRAT
 
 * Front-endovou konfiguraci
   * IP adresa 10.0.0.8
@@ -113,10 +114,10 @@ Na serveru NFS, SAP NetWeaver ASC, SAP NetWeaver SCS, SAP NetWeaver YBRAT a data
 * Port testu
   * Port 621**&lt;nr&gt;**
 * Pravidla Vyrovnávání zatížení
-  * 33**&lt;nr&gt;** TCP
-  * 5**&lt;nr&gt;**13 TCP
-  * 5**&lt;nr&gt;**14 TCP
-  * 5**&lt;nr&gt;**16 TCP
+  * 33**&lt;nr&gt;**  TCP
+  * 5**&lt;nr&gt;** 13 TCP
+  * 5**&lt;nr&gt;** 14 TCP
+  * 5**&lt;nr&gt;** 16 TCP
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>Nastavení serveru s vysokou dostupností systému souborů NFS
 
@@ -142,7 +143,7 @@ Můžete jeden z šablony rychlý start na githubu nasadit všechny požadované
       Vyberte typ SAP NetWeaver zásobníku
    5. Typ operačního systému  
       Vyberte jednu z distribucích systému Linux. V tomto příkladu vyberte SLES 12 BYOS
-   6. Typ databáze  
+   6. Typ databázového  
       Vyberte HANA
    7. Velikost systému SAP  
       Množství protokoly SAP poskytuje nový systém. Pokud si nejste jisti kolik protokoly SAP vyžaduje systém, obraťte se na partnera technologie SAP nebo systémový integrátor
@@ -264,9 +265,9 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
    </code></pre>
@@ -349,7 +350,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    sudo crm node standby <b>nw1-cl-1</b>
    
    sudo crm configure primitive vip_<b>NW1</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
+     params ip=<b>10.0.0.7</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ASCS anything \
@@ -379,7 +380,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
 
 1. **[1]**  Nainstalovat SAP NetWeaver ASC  
 
-   Instalace SAP NetWeaver ASC jako kořenového na prvním uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro ASC, například <b>nw1 Asc</b>, <b>10.0.0.11</b> a instance číslo, které jste použili pro kontrolu služby Vyrovnávání zatížení, například <b>00</b>.
+   Instalace SAP NetWeaver ASC jako kořenového na prvním uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro ASC, například <b>nw1 Asc</b>, <b>10.0.0.7</b> a instance číslo, které jste použili pro kontrolu služby Vyrovnávání zatížení, například <b>00</b>.
 
    Parametr sapinst SAPINST_REMOTE_ACCESS_USER můžete povolit uživateli nekořenovými pro připojení k sapinst.
 
@@ -401,7 +402,7 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    sudo crm node standby <b>nw1-cl-0</b>
    
    sudo crm configure primitive vip_<b>NW1</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.12</b> cidr_netmask=<b>24</b> \
+     params ip=<b>10.0.0.8</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
    sudo crm configure primitive nc_<b>NW1</b>_ERS anything \
@@ -434,9 +435,9 @@ Následující položky jsou předponou buď **[A]** – platí pro všechny uzl
    #      vip_NW1_ERS        (ocf::heartbeat:IPaddr2):       <b>Started nw1-cl-1</b>
    </code></pre>
 
-1. **[2]** Install SAP NetWeaver ERS  
+1. **[2]**  Nainstalovat SAP NetWeaver YBRAT  
 
-   Instalace SAP NetWeaver YBRAT jako kořenového na druhém uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro YBRAT, například <b>nw1 aers</b>, <b>10.0.0.12</b> a instance číslo, které jste použili pro kontrolu služby Vyrovnávání zatížení, například <b>02</b>.
+   Instalace SAP NetWeaver YBRAT jako kořenového na druhém uzlu pomocí virtuální název hostitele, který se mapuje na adresu IP front-endové konfigurace služby Vyrovnávání zatížení pro YBRAT, například <b>nw1 aers</b>, <b>10.0.0.8</b> a instance číslo, které jste použili pro kontrolu služby Vyrovnávání zatížení, například <b>02</b>.
 
    Parametr sapinst SAPINST_REMOTE_ACCESS_USER můžete povolit uživateli nekořenovými pro připojení k sapinst.
 
@@ -581,14 +582,14 @@ Mocí následujících kroky předpokládají, nainstalovat aplikační server n
    # IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
-   <b>10.0.0.11 nw1-ascs</b>
+   <b>10.0.0.7 nw1-ascs</b>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ERS
-   <b>10.0.0.12 nw1-aers</b>
+   <b>10.0.0.8 nw1-aers</b>
    # IP address of the load balancer frontend configuration for database
    <b>10.0.0.13 nw1-db</b>
    # IP address of all application servers
-   <b>10.0.0.8 nw1-di-0</b>
-   <b>10.0.0.7 nw1-di-1</b>
+   <b>10.0.0.20 nw1-di-0</b>
+   <b>10.0.0.21 nw1-di-1</b>
    </code></pre>
 
 1. Vytvoření adresáře sapmnt

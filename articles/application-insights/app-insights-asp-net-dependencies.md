@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 05/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 7023ce1c9d8a115ae791d40c5d40a5b5d1fabed9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598381"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavte Application Insights: sledování závislostí
 A *závislostí* je externí komponenta, která je volána aplikace. Obvykle se jedná o službu volat pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří, jak dlouho aplikace čeká závislosti a jak často závislostí volání selže. Můžete prozkoumat konkrétní volání a propojovat je na požadavky a výjimkami.
@@ -41,7 +42,7 @@ Můžete taky napsat vlastní volání sady SDK k monitorování Další závisl
 ## <a name="set-up-dependency-monitoring"></a>Nastavení monitorování závislostí
 Částečné závislostí informace jsou shromažďovány automaticky pomocí [Application Insights SDK](app-insights-asp-net.md). Chcete-li získat kompletní datový, nainstalujte příslušné agenta pro hostitelský server.
 
-| Platforma | Instalovat |
+| Platforma | Instalace |
 | --- | --- |
 | Server služby IIS |Buď [nainstalujte monitorování stavu na serveru](app-insights-monitor-performance-live-website-now.md) nebo [upgradu vaší aplikace rozhraní .NET Framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
 | Webové aplikace Azure |Ve webové aplikaci ovládacího panelu [otevřete okno Application Insights ve webové aplikaci ovládacího panelu](app-insights-azure-web-apps.md) a instalace zvolte, pokud se zobrazí výzva. |
@@ -116,7 +117,7 @@ V případě různých je volání žádné závislosti, které je zvláště dl
 
 ![Najít volání vzdálené závislosti, identifikovat neobvyklé doba trvání](./media/app-insights-asp-net-dependencies/04-1.png)
 
-Nejspíš big mezera po první závislost volat, proto jsme by měl vypadat v našem kódu, uvidíte, proč je.
+Nejspíš velké mezery po volání první závislost, takže by měl podíváme na našem kódu, uvidíte, proč je.
 
 ### <a name="profile-your-live-site"></a>Profil živý web
 
@@ -131,7 +132,7 @@ Proklikejte se k výskytu chybné žádosti a podívejte se na jeho přidružen�
 
 ![Klikněte na typ požadavku, klikněte na instanci systému na získat do jiného zobrazení stejné instance, klikněte na něj získat podrobnosti o výjimce.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
-## <a name="analytics"></a>Analýza
+## <a name="analytics"></a>Analýzy
 Můžete sledovat v závislosti [analýzy protokolů dotazu jazyka](https://docs.loganalytics.io/). Zde je několik příkladů:
 
 * Najděte žádné volání se nezdařilo závislost:
@@ -195,17 +196,18 @@ Například pokud vytvoříte kódu se sestavením, které nebylo napsat sami, m
 
 Pokud chcete vypnout modul sledování standardní závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 *Závislost úspěch příznak vždycky zobrazí hodnotu PRAVDA nebo NEPRAVDA.*
 
 *Úplné to není znázorněné dotazu SQL.*
 
-* Upgrade na nejnovější stabilní verze Application Insights SDK.
+Projděte si následující tabulky a zajistěte, že jste vybrali správnou konfiguraci chcete-li povolit monitorování závislostí pro vaši aplikaci.
 
- Pokud vaše verze .NET je menší než 4.6:
-
-* Hostitele služby IIS: Nainstalujte [agenta Application Insights](app-insights-monitor-performance-live-website-now.md) na hostitelských serverech.
-* Webové aplikace Azure: Otevřete Application Insights v Ovládacích panelech webové aplikace a nainstalujte službu Application Insights.
+| Platforma | Instalace |
+| --- | --- |
+| Server služby IIS |Buď [nainstalujte monitorování stavu na serveru](app-insights-monitor-performance-live-website-now.md). Nebo [upgradu vaší aplikace rozhraní .NET Framework 4.6 nebo novější](http://go.microsoft.com/fwlink/?LinkId=528259) a nainstalujte [Application Insights SDK](app-insights-asp-net.md) ve vaší aplikaci. |
+| Webové aplikace Azure |Ve webové aplikaci ovládacího panelu [otevřete okno Application Insights ve webové aplikaci ovládacího panelu](app-insights-azure-web-apps.md) a instalace zvolte, pokud se zobrazí výzva. |
+| Cloudové služby Azure |[Úloha spuštění použití](app-insights-cloudservices.md) nebo [nainstalovat rozhraní .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="video"></a>Video
 

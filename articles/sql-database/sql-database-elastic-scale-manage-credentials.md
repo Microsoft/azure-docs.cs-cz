@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: c18e5da04fd92fed2cb9e93d13b5f3ecdeaac1a1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3a371a2c055ed2d5c3c5c2ddf825bea4ad7e33f0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646318"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Pověření použitá pro přístup k klientské knihovny pro elastické databáze
 [Klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md) používá tři různé druhy přihlašovací údaje pro přístup [správce mapy horizontálního oddílu](sql-database-elastic-scale-shard-map-management.md). Podle potřeb s nejnižší úroveň přístupu je možné použijte přihlašovací údaje.

@@ -3,16 +3,17 @@ title: 'Kurz služby Azure Analysis Services – Doplňková lekce: Nepravideln�
 description: Popisuje, jak opravit nepravidelné hierarchie v kurzu služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 955bc57bbf5f8bc3f0d91350f885d5dc77db93a8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9882b2b1855db72101a5a9cf75a309d05167b093
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597480"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Doplňková lekce – Nepravidelné hierarchie
 

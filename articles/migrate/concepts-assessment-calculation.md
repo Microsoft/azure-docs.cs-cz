@@ -4,13 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 05/28/2018
 ms.author: raynew
-ms.openlocfilehash: be4fb15d96f5598d4b1ddbbaa4befe7f6530152c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e815ff3340a9ef6c56e43d3276a28619d2f008a9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639142"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -68,12 +69,12 @@ Zadaný operační systém jako *jiných* v systému vCenter Server | Azure migr
 
 ## <a name="sizing"></a>Velikost
 
-Po počítač je označena jako připravena pro Azure, Azure migrovat velikostí virtuálního počítače a jeho disky pro Azure. Je-li toto nastavení velikosti kritérium zadána ve vlastnostech assessment uděláte na základě výkonu nastavení velikosti, migrovat Azure za historie výkonu počítače k identifikaci velikost virtuálního počítače v Azure. Tato metoda je užitečná ve scénářích, kde jste přidělili přepsání místní virtuální počítač, ale je nízkou využití a byste chtěli optimální velikost virtuálních počítačů v Azure se uložit náklady.
+Po počítač je označena jako připravena pro Azure, Azure migrovat velikostí virtuálního počítače a jeho disky pro Azure. Je-li toto nastavení velikosti kritérium zadána ve vlastnostech assessment uděláte na základě výkonu nastavení velikosti, migrovat Azure za historie výkonu počítače k identifikaci typ velikosti a disku virtuálního počítače v Azure. Tato metoda je užitečná ve scénářích, kde jste přidělili přepsání místní virtuální počítač, ale je nízkou využití a byste chtěli optimální velikost virtuálních počítačů v Azure se uložit náklady.
 
 > [!NOTE]
 > Azure migrací shromažďuje historie výkonu místní virtuálních počítačů ze serveru vCenter Server. Aby přesné optimalizaci velikosti, zkontrolujte, že nastavení statistiky v systému vCenter Server je nastavená na úroveň 3 a počkejte alespoň jeden den před si to chtěl / vypnutí zjišťování místní virtuální počítače. Pokud nastavení statistiky v systému vCenter Server je nižší než úroveň 3, není shromažďovat údaje o výkonu pro disk a síť.
 
-Pokud nechcete, zvažte historie výkonu pro virtuální počítač sizing a chcete převzít virtuální počítač jako-je do Azure, můžete zadat kritéria pro změnu velikosti jako *jako místní* a migrovat Azure bude potom velikost založené na místní virtuální počítače konfigurace bez ohledu data o využití. Změna velikosti disku, v takovém případě budou stále založeny na údaje o výkonu.
+Pokud nechcete, zvažte historie výkonu pro virtuální počítač sizing a chcete převzít virtuální počítač jako-je do Azure, můžete zadat kritéria pro změnu velikosti jako *jako místní* a migrovat Azure bude potom velikost založené na místní virtuální počítače konfigurace bez ohledu data o využití. Změna velikosti disku, v takovém případě bude provedeno na základě typu úložiště, které určíte ve vlastnostech assessment (Standard disk nebo Premium)
 
 ### <a name="performance-based-sizing"></a>Nastavení velikosti na základě výkonu
 
@@ -102,25 +103,13 @@ Pro nastavení velikosti na základě výkonu, síťové adaptéry a potom migro
     - Pokud existuje více vhodných velikostí virtuálních počítačů Azure, doporučí se virtuální počítač s nejnižšími náklady.
 
 ### <a name="as-on-premises-sizing"></a>Jako místní Změna velikosti
-Pokud je toto nastavení velikosti kritérium *jako místní nastavení velikosti*, migrovat Azure nebere v úvahu historie výkonu virtuálních počítačů a přiděluje podle velikost přidělenou místní virtuální počítače. Ale pro nastavení velikosti disku, zvažte historie výkonu disků doporučit disky Standard nebo Premium.  
-- **Úložiště**: migrace Azure mapuje všechny disky připojené k počítači na disk v Azure.
-
-    > [!NOTE]
-    > Azure migrací podporuje pouze spravované disky pro vyhodnocení.
-
-    - Pokud chcete získat efektivní diskové vstupně-výstupních operací za sekundu (IOPS) a propustnost (MB/s), Azure migrovat vynásobí disku IOPS a propustnost s Multi-Factor pohodlí. Na základě efektivní IOPS a hodnoty propustnosti, migrovat Azure označuje, jestli disk by měly být namapované na standard nebo premium disk v Azure.
-    - Pokud migrace Azure nemůže najít disk s požadované IOPS & propustnost, označí počítač jako není vhodný pro Azure. [Další informace](../azure-subscription-service-limits.md#storage-limits) o Azure omezuje na disk a virtuální počítač.
-    - Pokud najde sadu vhodné disky, Azure migrace vybere ty, které podporují metodu redundance úložiště a k umístění zadanému v nastavení hodnocení.
-    - Pokud existují oprávněné víc disků, vybere jeden s nejnižší náklady.
-    - Pokud se údaje o výkonu pro disky v není k dispozici, všechny disky jsou namapované na standardní disky v Azure.
-- **Sítě**: pro každý síťový adaptér, se doporučuje síťový adaptér v Azure.
-- **Výpočetní**: Azure migraci zjistí počet jader a velikost paměti virtuálního počítače na místě a doporučuje virtuální počítač Azure se stejnou konfigurací. Pokud existuje více vhodných velikostí virtuálních počítačů Azure, doporučí se virtuální počítač s nejnižšími náklady. Data o využití procesoru a paměti se nepovažuje pro jako nastavení velikosti na místě.
+Pokud je toto nastavení velikosti kritérium *jako místní nastavení velikosti*, migrovat Azure nebere v úvahu historie výkonu virtuálních počítačů a disky a přiděluje SKU virtuálních počítačů v Azure, v závislosti na velikosti přidělené místně. Podobně platí pro nastavení velikosti disku, zjistí zadaný ve vlastnostech assessment (Standard nebo Premium) typ úložiště a odpovídajícím způsobem doporučuje typ disku. Výchozí typ úložiště je prémiové disky.
 
 ### <a name="confidence-rating"></a>Hodnocení spolehlivosti
 
 Ke každému posouzení ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate.
 
-K určení velikosti virtuálního počítače na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti. Navíc pro velikost každého disku připojen k virtuálnímu počítači, musí pro čtení a zápis IOPS a propustnosti. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. V závislosti na procento datové body k dispozici je k dispozici hodnocení spolehlivosti pro posouzení jak je uvedeno níže:
+Jistotou posouzení je užitečnější pro posuzování s kritériem pro změnu velikosti jako "nastavení velikosti na základě výkonu. Pro nastavení velikosti na základě výkonu, musí Azure migrovat data o využití pro procesor, paměť virtuálního počítače. Kromě toho pro každý disk připojený k virtuálnímu počítači, je disk IOPS a dat propustnosti. Podobně pro každý síťový adaptér připojený k virtuálnímu počítači Azure migrovat musí sítě a konec provést nastavení velikosti na základě výkonu. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
 
    **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
    --- | ---
@@ -131,7 +120,7 @@ K určení velikosti virtuálního počítače na základě výkonu potřebuje A
    81 až 100 % | 5 hvězdiček
 
 Posouzení nemusí mít k dispozici všechny datové body z některého z následujících důvodů:
-- Nastavení statistiky v systému vCenter Server není nastaveno na úroveň 3. Pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, data o výkonu disku a sítě se ze systému vCenter Server neshromažďují. V takovém případě není doporučení služby Azure Migrate týkající se disku a sítě založené na využití. Bez ohledu IOPS nebo propustnost disku, migrovat Azure nemůže určit, zda disk potřebovat disk v Azure premium, proto v tomto případě Azure migrovat doporučuje standardní disky pro všechny disky.
+- Statistika v systému vCenter Server není nastavena na úroveň 3. Pokud je nastavení statistiky v systému vCenter Server nižší než úroveň 3, data o výkonu disku a sítě se ze systému vCenter Server neshromažďují. V takovém případě není doporučení služby Azure Migrate týkající se disku a sítě založené na využití. Bez zohlednění vstupně-výstupních operacích za sekundu a propustnosti disku nemůže Azure Migrate určit, jestli disk bude v Azure potřebovat disk Premium, a proto v tomto případě Azure Migrate doporučí pro všechny disky použít disky Standard.
 - Nastavení statistiky v systému vCenter Server bylo před zahájením zjišťování nastavené na úroveň 3 po kratší dobu. Zvažme například scénář, kdy dnes změníte nastavení statistiky na úroveň 3 a zítra (za 24 hodin) zahájíte zjišťování pomocí zařízení kolektoru. Pokud vytváříte posouzení za jeden den, máte všechny datové body a hodnocení spolehlivosti posouzení bude 5 hvězdiček. Pokud však změníte dobu trvání výkonu ve vlastnostech posouzení na jeden měsíc, hodnocení spolehlivosti se sníží, protože data o výkonu disku a sítě za poslední měsíc nebudou k dispozici. Pokud chcete zohlednit data o výkonu za poslední měsíc, doporučujeme ponechat nastavení statistiky systému vCenter Server na úrovni 3 po dobu jednoho měsíce před zahájením zjišťování.
 - Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, vCenter Server nebude mít za toto období data o výkonu.
 - Během období, pro které se posouzení počítá, se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takových případech nebude k dispozici historie výkonu nových virtuálních počítačů za celé období.

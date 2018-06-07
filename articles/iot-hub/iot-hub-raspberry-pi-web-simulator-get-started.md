@@ -1,24 +1,21 @@
 ---
 title: Simulated malin pí do cloudu (Node.js) – simulátoru webové platformy malin připojit ke službě Azure IoT Hub | Microsoft Docs
 description: Simulátor webové platformy malin připojte ke službě Azure IoT Hub malin pí k odesílání dat do cloudu Azure.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timtl
-tags: ''
+manager: ''
 keywords: Simulátor Malinová pi, platformy azure iot Malinová, malinová platformy iot hub, malinová pí odesílání dat do cloudu, malinová pí do cloudu
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: fe953b56e0a4dbbf7aaaa81d5b8ac6e31bb6bc4d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc8216f6b0a610b556b94637970bfd3e721f38d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636218"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojení k Azure IoT Hub (Node.js) online simulátoru malin platformy
 

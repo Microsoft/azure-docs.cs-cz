@@ -1,9 +1,9 @@
 ---
-title: "Oracle řešení v Microsoft Azure | Microsoft Docs"
-description: "Další informace o podporovaných konfiguracích a omezeních Oracle řešení v Microsoft Azure."
+title: Oracle řešení v Microsoft Azure | Microsoft Docs
+description: Další informace o podporovaných konfiguracích a omezeních Oracle řešení v Microsoft Azure.
 services: virtual-machines-linux
-documentationcenter: 
-manager: timlt
+documentationcenter: ''
+manager: jeconnoc
 author: rickstercdn
 tags: azure-resource-management
 ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 1bc03d15096e7f1d4538d6642a61aaee9bb572f7
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: daed709b4b4be87ba75f5539bd31c666b3a37414
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656342"
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Řešení Oracle a jejich nasazení v Microsoft Azure
 Tento článek se zabývá požadované informace o úspěšně nasadit různá řešení Oracle na Microsoft Azure. Tato řešení jsou založené na bitové kopie virtuálních počítačů, které zveřejnil Oracle v Azure Marketplace. Chcete-li získat seznam aktuálně dostupných imagí, spusťte následující příkaz:
@@ -102,6 +103,6 @@ Související informace najdete v článku **860340.1** v <http://support.oracle
    K dispozici v této JDK 6 a 7 Image a virtuální počítače a bitové kopie z nich, odvozené JDK dá použít jenom v rámci Azure.
 * **64bitová verze JDK.** Oracle WebLogic Server Image virtuálních počítačů a bitové kopie virtuálních počítačů Oracle JDK poskytovaný platformou Azure obsahují 64bitové verze systému Windows Server a sadu JDK.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď máte přehled o aktuální řešení Oracle na Microsoft Azure. Dalším krokem je nasazení první databáze Oracle na platformě Azure.
 - Zkuste [vytvořit databázi Oracle na platformě Azure](oracle-database-quick-create.md) kurz a začněte.

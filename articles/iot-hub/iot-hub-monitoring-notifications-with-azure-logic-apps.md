@@ -1,25 +1,21 @@
 ---
 title: Vzdálené sledování IoT a oznámení službou Azure Logic Apps | Microsoft Docs
 description: Použít Azure Logic Apps pro IoT teploty sledování ve službě IoT hub a automaticky odesílat e-mailová oznámení do poštovní schránky pro případných zjištěných.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: IOT iot oznámení monitorování monitorování teploty iot
-ms.assetid: 43043067-2e1f-42c9-953d-e2dce8fd86df
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e54c36d0cfbaedb93db86ad6ce5f99b288b63c9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e59577e99114f1b2061a2f9075976da3f0b1811f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634450"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT pro vzdálené monitorování a oznámení službou Azure Logic Apps připojení služby IoT hub a poštovní schránky
 
@@ -51,7 +47,7 @@ Zjistíte, jak vytvořit aplikaci logiky, která se připojuje služby IoT hub a
 ### <a name="create-a-service-bus-namespace"></a>Vytvořit obor názvů sběrnice služby
 
 1. Na [portál Azure](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek** > **Enterprise integrace** > **Service Bus**.
-1. Zadejte následující informace:
+1. Zadejte tyto informace:
 
    **Název**: název služby service bus.
 

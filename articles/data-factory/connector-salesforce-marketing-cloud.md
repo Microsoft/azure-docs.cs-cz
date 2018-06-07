@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jingwang
-ms.openlocfilehash: b8de35aef53458142e24224deb9886548fab221c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 59ad27a8609b4491ba131649b574d2a3bf55309b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617925"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-beta"></a>Kopírování dat ze služby Salesforce Marketing cloudu pomocí Azure Data Factory (Beta)
 

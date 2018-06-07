@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2c560bf9eeac5f9aed1024bd87d450f7aee7ce05
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 996b1e5cbc477bf8a67a8cbb118961aaedf151fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621502"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z Azure Table pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -473,12 +474,12 @@ Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.m
 
 Při přesunu dat do a z Azure Table, následující [mapování definovaná službou Azure Table](https://msdn.microsoft.com/library/azure/dd179338.aspx) se používají ve typy OData tabulky Azure na typ .NET a naopak.
 
-| Typ dat OData | .NET Type | Podrobnosti |
+| Typ dat OData | Typ formátu .NET | Podrobnosti |
 | --- | --- | --- |
 | Edm.Binary |Byte |Pole bajtů až 64 KB. |
 | Edm.Boolean |BOOL |Logická hodnota. |
 | Edm.DateTime |DateTime |Hodnota 64-bit, vyjádřené jako koordinovaný světový čas (UTC). Podporovaný rozsah datum a čas zahájení z 12:00 hodin, 1, 1601. ledna (C.E.), UTC. Rozsah končí u 31. prosince 9999. |
-| Edm.Double |Double |Hodnota 64-bit plovoucí bodu. |
+| Edm.Double |double |Hodnota 64-bit plovoucí bodu. |
 | Edm.Guid |Guid |Globálně jedinečný identifikátor 128-bit. |
 | Edm.Int32 |Int32 |32bitové celé číslo. |
 | Edm.Int64 |Int64 |64bitové celé číslo. |

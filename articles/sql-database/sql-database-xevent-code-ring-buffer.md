@@ -6,14 +6,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: ee6181baf7a16bc827d35aaf5d18b281bcf9c3f7
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ce5fe97a54b96d410d9f904231ff8ff39914d644
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649478"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Prstence kódu cílové vyrovnávací paměti pro rozšířené události v databázi SQL
 
@@ -53,7 +54,7 @@ Toto téma představuje ukázku kódu jazyka Transact-SQL, který:
 
 S velmi malé změny můžete spustit následující ukázka kódu cyklické vyrovnávací paměti na Azure SQL Database nebo Microsoft SQL Server. Rozdíl je přítomnost uzlu '_databáze' názvu některá zobrazení dynamické správy (zobrazení dynamické správy), použít v klauzuli FROM v kroku 5. Příklad:
 
-* sys.dm_xe**_database**_session_targets
+* sys.dm_xe **_database**_session_targets
 * sys.dm_xe_session_targets
 
 &nbsp;

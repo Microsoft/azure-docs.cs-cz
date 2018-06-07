@@ -1,26 +1,23 @@
 ---
-title: Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics | Microsoft Docs
-description: 'Naučte se používat prohlížeč úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics. '
+title: Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics
+description: Tento článek popisuje, jak používat prohlížeč úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+editor: jasonwhowell
+ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
+ms.topic: conceptual
 ms.date: 08/02/2017
-ms.author: jgao
-ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d7ebc8d14e82281e074ff52abd41a16871470c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623226"
 ---
-# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data lake Analytics
+# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úlohy a zobrazení úloh pro Azure Data Lake Analytics
 Služba Azure Data Lake Analytics archivy odeslaná úloh v [úložiště dotazů](#query-store). V tomto článku zjistěte, jak používat prohlížeč úlohy a zobrazení úloh v nástrojů Azure Data Lake pro Visual Studio k nalezení informací o historie úlohy. 
 
 Ve výchozím nastavení služba Data Lake Analytics archivy úlohy po dobu 30 dnů. Je doba vypršení platnosti lze nakonfigurovat z portálu Azure tak, že nakonfigurujete zásady přizpůsobené vypršení platnosti. Nebudete mít přístup k informacím úlohy po vypršení platnosti. 

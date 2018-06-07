@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/24/2018
 ms.author: brenduns
-ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4c5b53a46792e31316f752f8902d7a05554b57d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604144"
 ---
 # <a name="azure-stack-1712-update"></a>Azure aktualizace 1712 zásobníku
 
@@ -116,7 +117,25 @@ Tato část obsahuje po instalaci Známé problémy s sestavení **180106.1**.
 
 #### <a name="health-and-monitoring"></a>Sledování stavu a
 
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Výstrahy #1:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu prezenčního signálu skener není k dispozici. To může ovlivnit sestavy o stavu a metrik.  
+
+  Výstrahy #2:
+   - Název: Infrastruktury role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - SOUČÁSTÍ: Řízení stavu
+   - Popis: Řadičem stavu skener chyby není k dispozici. To může ovlivnit sestavy o stavu a metrik.
+
+  Obě výstrahy můžete bezpečně ignorovat. Se automaticky zavře v čase.  
+
 - Pokud restartujete instance role infrastruktury, zobrazí se zpráva s oznámením, že restartování se nezdařilo. Ale restartování ve skutečnosti bylo úspěšné.
+
+
 
 #### <a name="marketplace"></a>Marketplace
 - Některé položky marketplace jsou odebírána v této verzi z důvodu kompatibility. Toto bude znovu povolit po další ověření.

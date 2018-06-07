@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8643e75a24ff7840b71dfaceae9934cdda566d30
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604416"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
 Pomocí zprostředkovatele prostředků Azure zásobníku SQL serveru ke zveřejnění databází SQL jako služba Azure zásobníku. Služba zprostředkovatele prostředků SQL běží na poskytovateli prostředků SQL virtuální počítač, který je virtuálního počítače jádra serveru systému Windows.
@@ -29,10 +30,14 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
 - Pokud jste zatím žádný nevytvořili, [zaregistrovat Azure zásobníku](.\azure-stack-registration.md) s Azure tak, aby si můžete stáhnout položky Azure marketplace.
 - Přidejte požadované jádra serveru systému Windows virtuálního počítače do zásobníku Azure marketplace stažením **jádra Windows Server 2016 serveru** bitové kopie. Pokud potřebujete nainstalovat aktualizace, můžete umístit jedné. Balíček MSU v cestě místní závislostí. Pokud je více než jeden. MSU nalezeno, instalace zprostředkovatele prostředků SQL se nezdaří.
 - Zprostředkovatel prostředků SQL binární stažení a spuštění Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure zásobníku sestavení. Ujistěte se, že jste stáhnout správné binární pro verzi Azure zásobníku, kterou používáte:
-    - Azure zásobníku verze 1802 (1.0.180302.1): [SQL RP verze 1.1.18.0](https://aka.ms/azurestacksqlrp1802).
-    - Azure zásobníku verze 1712 (1.0.180102.3, 1.0.180103.2 nebo 1.0.180106.1 (integrované systémy)): [SQL RP verze 1.1.14.0](https://aka.ms/azurestacksqlrp1712).
+
+    |Verze Azure zásobníku|Verze SQL RP|
+    |-----|-----|
+    |Verze 1804 (1.0.180513.1)|[SQL RP verze 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
+    |Verze 1802 (1.0.180302.1)|[SQL RP verze 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |Verze 1712 (1.0.180102.3, 1.0.180103.2 nebo 1.0.180106.1 (integrované systémy))|[SQL RP verze 1.1.14.0](https://aka.ms/azurestacksqlrp1712)|
+    |     |     |
 - Integrované systémy jenom pro instalace, musíte zadat certifikát SQL PaaS PKI, jak je popsáno v části volitelné certifikáty PaaS z [požadavky na Azure zásobníku nasazení infrastruktury veřejných KLÍČŮ](.\azure-stack-pki-certs.md#optional-paas-certificates), umístěním soubor .pfx do umístění specifikace **DependencyFilesLocalPath** parametr.
-- Zajistěte, abyste měli [nejnovější verzi Azure PowerShell zásobníku](.\azure-stack-powershell-install.md) nainstalovaný (v1.2.11). 
 
 ## <a name="deploy-the-sql-resource-provider"></a>Nasazení poskytovatele prostředků SQL
 Jakmile úspěšně dokončíte přípravu na nainstalovat poskytovatele prostředků SQL tak, že splňuje všechny požadavky, teď můžete spustit **DeploySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků SQL. DeploySqlProvider.ps1 skript se extrahuje jako součást poskytovatele prostředků SQL binární, který jste si stáhli odpovídající vaší verzí zásobník Azure. 
@@ -81,10 +86,9 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 Abyste se vyhnuli, při spuštění skriptu DeploySqlProvider.ps1 ručním zadáním požadované informace, můžete přizpůsobit následující ukázkový skript změnou výchozí informace o účtu a hesla podle potřeby:
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
+# Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
@@ -113,12 +117,13 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
-. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
-  -VMLocalCredential $vmLocalAdminCreds `
-  -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint $privilegedEndpoint `
-  -DefaultSSLCertificatePassword $PfxPass `
-  -DependencyFilesLocalPath $tempDir\cert
+$tempDir\DeploySQLProvider.ps1 `
+    -AzCredential $AdminCreds `
+    -VMLocalCredential $vmLocalAdminCreds `
+    -CloudAdminCredential $cloudAdminCreds `
+    -PrivilegedEndpoint $privilegedEndpoint `
+    -DefaultSSLCertificatePassword $PfxPass `
+    -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Ověření nasazení pomocí portálu Azure zásobníku

@@ -1,22 +1,19 @@
 ---
 title: Postup disenroll zařízení z Azure IoT Hub zařízení zřizování služby
 description: Postup disenroll zařízení, aby se zabránilo zřizování prostřednictvím Azure IoT Hub zařízení zřizování služby
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr;bryanla
+ms.author: bryanla
 ms.date: 04/05/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 50074eaecacf603d2bc6170183fd632b4a1ab2d1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b6c948765575c92c962999fe394ffaf1a0d22f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628840"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Postup disenroll zařízení z Azure IoT Hub zařízení zřizování služby
 

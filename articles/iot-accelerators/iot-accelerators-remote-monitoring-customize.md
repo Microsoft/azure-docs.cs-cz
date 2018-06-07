@@ -1,22 +1,19 @@
 ---
 title: Přizpůsobení vzdálené monitorování řešení uživatelské rozhraní – Azure | Microsoft Docs
 description: Tento článek obsahuje informace o tom, jak můžete přístup ke zdrojovému kódu pro řešení akcelerátoru vzdálené monitorování uživatelského rozhraní a provádět některé úpravy.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/17/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 94bd864215ad80b299db09b6237f2cebe63feb88
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 6e791051fb82197a770bff05f636159c638e3b9a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627847"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 

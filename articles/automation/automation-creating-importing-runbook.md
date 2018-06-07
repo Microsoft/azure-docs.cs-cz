@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac7b050bf96401d33254dedad5035e43850ecc52
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ea03f34a2e709fe6f6d8d2f7e13798cf6dcd1e34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598238"
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Vytvoření nebo import runbooku ve službě Azure Automation
 Přidáním sady runbook do Azure Automation a to buď [vytvořením nového](#creating-a-new-runbook) nebo importováním existujícího runbooku ze souboru nebo z [Galerie Runbooků](automation-runbook-gallery.md). Tento článek obsahuje informace o vytvoření a import sad runbook ze souboru.  Můžete získat všechny podrobnosti o přístupu k komunity runbooky a moduly v [Galerie Runbooků a modulů pro Azure Automation](automation-runbook-gallery.md).
@@ -33,8 +34,10 @@ Můžete použít [New-AzureRmAutomationRunbook](https://msdn.microsoft.com/libr
 
 Následující vzorové příkazy ukazují, jak vytvořit novou prázdnou sadu runbook.
 
-    New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
-    -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+```azurepowershell-interactive
+New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
+-Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
+```
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>Import runbooku ze souboru do Azure Automation.
 Můžete vytvořit novou sadu runbook ve službě Azure Automation importováním skript prostředí PowerShell nebo pracovního postupu Powershellu (soubory s příponou .ps1), exportovaný grafický runbook (.graphrunbook) nebo skript Python 2 (.py rozšíření).  Je nutné zadat [typ runbooku](automation-runbook-types.md) vytvořený během importu, vezme v úvahu následující aspekty.
@@ -70,15 +73,16 @@ Můžete použít [Import AzureRMAutomationRunbook](https://msdn.microsoft.com/l
 
 Následující vzorové příkazy ukazují, jak importovat soubor skriptu do runbooku.
 
-    $automationAccountName =  "AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-    $RGName = "ResourceGroup"
+```azurepowershell-interactive
+$automationAccountName =  "AutomationAccount"
+$runbookName = "Sample_TestRunbook"
+$scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
+$RGName = "ResourceGroup"
 
-    Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
-    -ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
-    -Type PowerShellWorkflow 
-
+Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
+-ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
+-Type PowerShellWorkflow
+```
 
 ## <a name="publishing-a-runbook"></a>Publikování runbooku
 Při vytváření nebo importovat nové sady runbook, musíte publikovat předtím, než můžete ji spustit.  Každá sada runbook ve službě Automation má koncept a publikovanou verzi. Je možné spustit jenom publikovaná verze a lze upravovat pouze verzi konceptu. Publikovaná verze neovlivní změny na verzi konceptu. Pokud má být k dispozici koncept, publikujete ho. publikovaná verze přepíše konceptem.
@@ -91,13 +95,14 @@ Při vytváření nebo importovat nové sady runbook, musíte publikovat předt�
 ## <a name="to-publish-a-runbook-using-windows-powershell"></a>Chcete-li publikovat sady runbook pomocí prostředí Windows PowerShell
 Můžete použít [publikovat AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603705.aspx) rutiny publikování sady runbook pomocí prostředí Windows PowerShell. Následující vzorové příkazy znázorňují postup publikování ukázkové sady runbook.
 
-    $automationAccountName =  AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $RGName = "ResourceGroup"
+```azurepowershell-interactive
+$automationAccountName =  "AutomationAccount"
+$runbookName = "Sample_TestRunbook"
+$RGName = "ResourceGroup"
 
-    Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
-    -Name $runbookName -ResourceGroupName $RGName
-
+Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
+-Name $runbookName -ResourceGroupName $RGName
+```
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o tom, jak můžete využívat výhod sadu Runbook a modul Galerie prostředí PowerShell najdete v tématu [Galerie Runbooků a modulů pro Azure Automation.](automation-runbook-gallery.md)

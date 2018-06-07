@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
 ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c00ebcb771081f8e35c67bf384f5f6822e16f268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652987"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Instalace a konfigurace Ansible ke správě virtuálních počítačů v Azure
 
@@ -149,7 +150,7 @@ Nyní se přesunout na [přihlašovací údaje Azure vytvořit](#create-azure-cr
 
 Ansible komunikuje se službou Azure pomocí uživatelského jména a hesla nebo hlavní název služby. Objektu zabezpečení služby Azure je identita zabezpečení, která můžete použít s aplikací, služeb a automatizace nástroje, například Ansible. Můžete řídit a definovat oprávnění, jaké operace objektu služby můžete provádět v Azure. Pokud chcete zvýšit zabezpečení přes právě poskytnutí uživatelského jména a hesla, tento příklad vytvoří základní služby hlavní.
 
-Na hostitelském počítači nebo v prostředí cloudu Azure, vytvořit službu objektu zabezpečení pomocí [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#create-for-rbac). Přihlašovací údaje, které potřebuje Ansible se zobrazují na obrazovce:
+Na hostitelském počítači nebo v prostředí cloudu Azure, vytvořit službu objektu zabezpečení pomocí [az ad sp vytvořit pro rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Přihlašovací údaje, které potřebuje Ansible se zobrazují na obrazovce:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -165,7 +166,7 @@ Příklad výstupu z předchozích příkazů vypadá takto:
 }
 ```
 
-K ověření do Azure, musíte také získat ID vašeho předplatného Azure pomocí [az účet zobrazit](/cli/azure/account#az_account_show):
+K ověření do Azure, musíte také získat ID vašeho předplatného Azure pomocí [az účet zobrazit](/cli/azure/account#az-account-show):
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

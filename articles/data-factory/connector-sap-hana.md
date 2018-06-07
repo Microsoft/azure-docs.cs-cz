@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 96d9da90114ae392c3a9e1c22d8e993fd787ada8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3afdcbfc2d1d6f40db0f0336be161a06908cb883
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617993"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,7 +65,7 @@ Pro SAP HANA propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **SapHana** | Ano |
 | server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k databázi SAP HANA.<br/>Povolené hodnoty jsou: **základní**, a **Windows** | Ano |
-| userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| Uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | heslo | Heslo pro uživatele. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
@@ -167,18 +168,18 @@ Při kopírování dat z SAP HANA, se používají následující mapování SAP
 |:--- |:--- |
 | ALPHANUM | Řetězec |
 | BIGINT | Int64 |
-| OBJEKT BLOB | Byte[] |
+| OBJEKT BLOB | Byte] |
 | LOGICKÁ HODNOTA | Bajtů |
-| DATOVÝ TYP CLOB | Byte[] |
+| DATOVÝ TYP CLOB | Byte] |
 | DATE (Datum) | DateTime |
 | DECIMAL | Decimal |
-| DOUBLE | Svobodný/svobodná |
+| DOUBLE | Jednoduchá |
 | INT | Int32 |
 | NVARCHAR | Řetězec |
-| SKUTEČNÉ | Svobodný/svobodná |
+| SKUTEČNÉ | Jednoduchá |
 | SECONDDATE | DateTime |
 | SMALLINT | Int16 |
-| ČAS | TimeSpan |
+| ČAS | Časový interval |
 | ČASOVÉ RAZÍTKO | DateTime |
 | TINYINT | Bajtů |
 | VARCHAR | Řetězec |

@@ -1,29 +1,28 @@
 ---
-title: Správa Azure Data Lake Analytics pomocí Python | Microsoft Docs
-description: 'Zjistěte, jak pomocí Pythonu vytvořit účet Data Lake Store a odesílat úlohy. '
+title: Správa Azure Data Lake Analytics používá Python
+description: Tento článek popisuje, jak používat Python ke správě účtů Data Lake Analytics, zdroje dat, uživatele a úlohy.
 services: data-lake-analytics
-documentationcenter: ''
-author: matt1883
-manager: jhubbard
-editor: cgronlun
-ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/18/2017
+author: matt1883
 ms.author: saveenr
-ms.custom: devcenter
-ms.openlocfilehash: 0182a14979550c880904ec829f6b59dee016cad2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+manager: kfile
+editor: jasonwhowell
+ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
+ms.topic: conceptual
+ms.date: 06/18/2017
+ms.openlocfilehash: 4df5d4294708f2b475adf3fff87b122f261f8fc8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623124"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics používá Python
+[!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-## <a name="python-versions"></a>Verze jazyka Python
+Tento článek popisuje, jak pro správu účtů Azure Data Lake Analytics, zdroje dat, uživatelů a úloh s použitím jazyka Python.
+
+## <a name="supported-python-versions"></a>Podporované verze Python
 
 * Použijte 64bitovou verzi jazyka Python.
 * Můžete použít standardní distribuci jazyka Python nalezený na  **[Python.org stáhne](https://www.python.org/downloads/)**. 

@@ -1,24 +1,19 @@
 ---
 title: Vytvoření služby IoT Hub pomocí portálu Azure | Microsoft Docs
 description: Postup vytvoření, správě a odstranění služby Azure IoT hubs prostřednictvím portálu Azure. Obsahuje informace o cenových úrovní, škálování, zabezpečení a zasílání zpráv konfigurace.
-services: iot-hub
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 0909cd2b-4c1e-49e0-b68a-75532caf0a6a
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: 6ffde076caff6217bf6255c9294eca63d3e39b85
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ca0eff415c4ba0e887c3999e7a03e3c4fa1cc156
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635929"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Vytvoření služby IoT hub pomocí portálu Azure
 

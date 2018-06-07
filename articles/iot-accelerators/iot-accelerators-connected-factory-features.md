@@ -1,29 +1,23 @@
 ---
 title: Připojen objekt pro vytváření řešení funkce – Azure | Microsoft Docs
 description: Přehled funkcí objektu pro vytváření připojení předkonfigurované řešení.
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: 7ee86a59e7c47406ea1a890f1a9d1eb2ed4ad772
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3478217771418ab31772d6a42a7ed8d8a2e8069a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626492"
 ---
-# <a name="what-is-azure-iot-suite-connected-factory"></a>Co je Azure IoT Suite připojené Factory?
+# <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co je připojen objekt pro vytváření IoT řešení akcelerátoru?
 
-Objekt Factory připojených je implementace referenční architektura IoT průmyslových Azure pomocí programu společnosti Microsoft, zabalené jako na řešení open source. Můžete ho použít jako výchozí bod pro komerční produkt. Předem připravené verzi připojen objekt pro vytváření řešení můžete nasadit do vašeho předplatného Azure z [Azure IoT Suite](https://www.azureiotsuite.com/#solutions/types/CF).
+Objekt Factory připojených je implementace referenční architektura IoT průmyslových Azure pomocí programu společnosti Microsoft, zabalené jako na řešení open source. Můžete ho použít jako výchozí bod pro komerční produkt. Předem připravené verzi připojen objekt pro vytváření řešení můžete nasadit do vašeho předplatného Azure z [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/#solutions/types/CF).
 
 ![Řídicí panel řešení připojených objekt pro vytváření](./media/iot-accelerators-connected-factory-features/dashboard.png)
 
@@ -64,7 +58,7 @@ Připojené Factory zahrnuje následující funkce:
 
 ## <a name="customizability"></a>Možnosti přizpůsobení
 
-- [Přizpůsobení](../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md) řešení podle konkrétních podnikových požadavků.
+- Přizpůsobení řešení podle konkrétních podnikových požadavků.
 - Úplné řešení zdrojového kódu dostupná na Githubu. Najdete v článku [připojen objekt pro vytváření předkonfigurovaného řešení](https://github.com/Azure/azure-iot-connected-factory) úložiště.
 
 ## <a name="next-steps"></a>Další postup

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: c2232e1ce92eb6198b22bad22b8c3e10bab6bf12
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603720"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Nasazení prostředků pomocí šablon Resource Manageru a portálu Azure Portal
 
@@ -85,7 +86,7 @@ Pokud chcete provést nasazení, ale nechcete použít některou z šablon na we
 
 1. Vyberte **Vytvořit**.
 
-   ![Vyberte možnost vytvořit](./media/resource-group-template-deploy-portal/show-template-option.png)
+   ![Výběr možnosti vytvoření](./media/resource-group-template-deploy-portal/show-template-option.png)
 
 1. Zobrazí několik možností pro vytvoření šablony. Vyberte **sestavení vlastní šablonu v editoru**.
 
@@ -113,7 +114,7 @@ Pokud chcete provést nasazení, ale nechcete použít některou z šablon na we
 
 ## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Nasadit prostředky ze šablony do účtu
 
-Na portálu můžete uložit šablonu k účtu Azure a znovu ji nasaďte později. Další informace o práci s těmito uložit šablony [Začínáme se soukromými šablonami na portálu Azure](../marketplace-consumer/mytemplates-getstarted.md).
+Na portálu můžete uložit šablonu k účtu Azure a znovu ji nasaďte později. Další informace o šablonách najdete v tématu [vytvořit a nasadit první šablony Azure Resource Manager](resource-manager-create-first-template.md).
 
 1. Chcete-li najít uložené šablony, vyberte **další služby**.
 
@@ -135,4 +136,4 @@ Na portálu můžete uložit šablonu k účtu Azure a znovu ji nasaďte pozděj
 * Chcete-li zobrazit protokoly auditu, najdete v části [auditovat operace s Resource Managerem](resource-group-audit.md).
 * Chcete-li vyřešit chyby nasazení, přečtěte si téma [zobrazit operace nasazení](resource-manager-deployment-operations.md).
 * Pokud chcete načíst šablonu z nasazení nebo skupinu prostředků, najdete v části [šablony exportovat Azure Resource Manageru ze stávajících prostředků](resource-manager-export-template.md).
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](resource-manager-subscription-governance.md).
+* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

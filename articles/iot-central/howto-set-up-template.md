@@ -1,18 +1,19 @@
 ---
 title: Nastavit šablonu zařízení v aplikaci Azure IoT centrální | Microsoft Docs
 description: Zjistěte, jak nastavit šablonu zařízení s měření, nastavení, vlastnosti, pravidla a řídicí panel.
-services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: c88b27edab71527b4b3eca71c00af2930c22f8cd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629231"
 ---
 # <a name="set-up-a-device-template"></a>Nastavit šablonu zařízení
 
@@ -39,7 +40,7 @@ Z této šablony zařízení můžete vytvořit a připojit zařízení skutečn
 > [!NOTE]
 Pouze počítačů a správce můžete vytvořit, upravit a odstranit zařízení šablony. Kterýkoli uživatel může vytvářet zařízení **Explorer zařízení** stránky ze stávajících šablon zařízení.
 
-## <a name="create-a-new-device-template"></a>Vytvořte novou šablonu zařízení
+## <a name="create-a-new-device-template"></a>Vytvoření nové šablony zařízení
 
 1. Přejděte na **Tvůrce aplikací** stránky.
 
@@ -106,7 +107,7 @@ Když vyberete **Uložit**, **ventilátor režimu** měření stavu se zobrazí 
 
 ![Tabulka stavů měření](./media/howto-set-up-template/statemeasurementschart.png)
 
-V případě, je příliš mnoho datových bodů poslal zařízení v malých doba trvání, je měření stavu zobrazí s jinou visual, jak je uvedeno níže. Pokud kliknete na graf, zobrazí se v chronologickém pořadí datových bodů v daném časovém období. Můžete také zúžit časový rozsah a zobrazte měření na graf vykreslen.
+V případě, že zařízení v krátkém čase pošle příliš mnoho datových bodů, měření stavu se zobrazí s jiným vizuálem, jak je uvedeno níže. Pokud kliknete na graf, zobrazí se v chronologickém pořadí všechny datové body v daném časovém období. Můžete také zúžit časový rozsah a zobrazte měření na graf vykreslen.
 
 ![Podrobnosti o stavu měření](./media/howto-set-up-template/statemeasurementsdetail.png)
 

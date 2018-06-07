@@ -3,16 +3,17 @@ title: 'Kurz služby Azure Analysis Services – Lekce 13: Nasazení | Dokumenta
 description: Popisuje, jak nasadit projekt Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 889cc4224e2ffe31e15590c04c3dbf4b656bc386
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9b953428525e7970fef7224e65200cf9811b6304
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34596276"
 ---
 # <a name="deploy"></a>Nasazení
 

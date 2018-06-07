@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 996bd4b3497861a3bfcbfecebe18a6936f487028
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 24cecdc65c45d5d1ee5443740d9874ccfd74e387
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627711"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v mřížce událostí Azure
 
-Obslužné rutiny události je místem, kde událost je odeslána. Obslužná rutina trvá některé další akce ke zpracování události. Několik služeb Azure se automaticky konfigurují pro zpracování událostí. Můžete taky všechny webhooku pro zpracování událostí. Webhook se nemusí být hostovaná v Azure a zpracování událostí.
+Obslužné rutiny události je místem, kde událost je odeslána. Obslužná rutina trvá některé další akce ke zpracování události. Několik služeb Azure se automaticky konfigurují pro zpracování událostí. Můžete taky všechny webhooku pro zpracování událostí. Webhook se nemusí být hostovaná v Azure a zpracování událostí. Událost mřížky podporuje pouze HTTPS webhooku koncové body.
 
 Tento článek obsahuje odkazy na obsah pro každou obslužnou rutinu události.
 
@@ -31,6 +32,8 @@ Zpracování událostí pomocí automatizované runbooků pomocí Azure Automati
 ## <a name="azure-functions"></a>Azure Functions
 
 Pomocí Azure Functions pro bez serveru reakci na události.
+
+Pokud jako obslužnou rutinu používáte Azure Functions, použijte místo generických aktivačních událostí HTTP aktivační událost Event Gridu. Event Grid automaticky ověřuje aktivační události funkcí Event Grid. U obecných aktivačních událostí HTTP je potřeba implementovat [odpověď ověření](security-authentication.md#webhook-event-delivery).
 
 |Titul  |Popis  |
 |---------|---------|
@@ -65,7 +68,7 @@ Používání úložiště Queue přijímat události, které musí být vyžád
 |---------|---------|
 | [Vlastní události trasy Azure Queue Storage pomocí rozhraní příkazového řádku Azure a událostí mřížky](custom-event-to-queue-storage.md) | Popisuje, jak odeslat vlastní události Queue Storage. |
 
-## <a name="webhooks"></a>WebHooky
+## <a name="webhooks"></a>Webhooky
 
 Pomocí webhooků pro přizpůsobitelné koncové body, které reakce na události.
 
@@ -75,5 +78,5 @@ Pomocí webhooků pro přizpůsobitelné koncové body, které reakce na událos
 
 ## <a name="next-steps"></a>Další postup
 
-* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
 * Chcete-li rychle začít používat událostí mřížky, přečtěte si téma [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md).

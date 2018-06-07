@@ -10,11 +10,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9f0cc6ee06042948442aace05d56fcffa3742a8d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b4fed559b6364149170dc8b1da421c9c3ee1203c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34635759"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidejte klíč trezoru k vaší webové aplikaci pomocí Visual Studio připojené Services
 
@@ -25,7 +26,7 @@ Podrobnosti o změnách, že připojení služby vytvoří ve vašem projektu po
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
-- **Visual Studio 2017 verze 15.7** s **vývoj webů** zatížení nainstalována. [Stáhněte si teď](https://aka.ms/vsdownload).
+- **Visual Studio 2017 verze 15.7** s **vývoj webů** zatížení nainstalována. [Stáhněte si teď](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - Pro technologii ASP.NET (ne jádro) je nutné rozhraní .NET Framework 4.7.1 vývojovými nástroji, které nejsou ve výchozím nastavení nainstalovaná. K instalaci, spusťte instalační program Visual Studio, vyberte **upravit**a potom zvolte **jednotlivých součástí**, na pravé straně, rozbalte položku **ASP.NET a webové vývoj**a zvolte **nástrojů pro vývoj řešení pro rozhraní .NET Framework 4.7.1**.
 - ASP.NET 4.7.1 nebo webový projekt ASP.NET 2.0 základní otevřete.
 

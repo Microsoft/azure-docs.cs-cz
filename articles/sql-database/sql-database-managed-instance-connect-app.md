@@ -5,17 +5,18 @@ ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bea1dc88d66717717cdeacbc8504f5df7e37ba04
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647829"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojení aplikace k provádění příkazu spravované Instance databáze SQL Azure
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Připojit vaši aplikaci ke spravované instanci Azure SQL Database
 
 Dnes mají více možností při rozhodování o tom, jak a kde hostování vaší aplikace. 
  
@@ -39,10 +40,10 @@ Existují dvě možnosti připojení virtuální sítě:
 - [Partnerský vztah Azure virtuální sítě](../virtual-network/virtual-network-peering-overview.md) 
 - Brána sítě VPN VNet-to-VNet ([portál Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [prostředí PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [rozhraní příkazového řádku Azure](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)) 
  
-Možnost partnerského vztahu je vhodnější než ten, protože partnerský vztah používá tedy páteřní síti Microsoft z hlediska připojení, neexistuje žádné významné rozdíly v latenci mezi virtuálními počítači ve virtuální síti peered a ve stejné virtuální síti. VNet peering je omezený na sítí ve stejné oblasti, i když mezi oblastmi partnerského vztahu je povolené v některé oblasti v náhledu.  
+Možnost partnerského vztahu je vhodnější než ten, protože partnerský vztah používá tedy páteřní síti Microsoft z hlediska připojení, neexistuje žádné významné rozdíly v latenci mezi virtuálními počítači ve virtuální síti peered a ve stejné virtuální síti. VNet peering je omezený na sítí ve stejné oblasti.  
  
 > [!IMPORTANT]
-> Virtuální síť partnerských vztahů mezi oblastmi vytvořili nemusí mít stejnou úroveň dostupnost a spolehlivost jako partnerské vztahy v obecné dostupnosti verzi. Virtuální síť partnerských vztahů může mít omezené možnosti a nemusí být k dispozici ve všech oblastech Azure. Nejaktuálnější upozornění na stav této funkce a dostupnost, zkontrolujte [Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network) aktualizací stránky. 
+> Scénář sítě VNet partnerského vztahu pro spravované Instance je omezený na sítí ve stejné oblasti kvůli [omezení globální virtuální sítě partnerského vztahu](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). 
 
 ## <a name="connect-an-on-premises-application"></a>Připojení místní aplikace 
 

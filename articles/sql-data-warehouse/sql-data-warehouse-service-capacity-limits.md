@@ -10,11 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a2a6c78444cb385a2e74b108000555ff056fe9f0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 233cba790aff60121bd1fdf43667ac48a5ef668d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644932"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -29,10 +30,10 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |32<br/><br/> Ve výchozím nastavení můžete spustit SQL Data Warehouse maximálně 32 souběžných dotazů a fronty zbývající dotazy.<br/><br/>Počet souběžných dotazů můžete snížit uživatelé přiřazení k vyšší třídy prostředku nebo když SQL Data Warehouse má nižší [jednotek datových skladů](memory-and-concurrency-limits.md) nastavení. Některé dotazy, jako jsou dotazy DMV, je vždy povoleno spustit. |
 | [databáze tempdb](sql-data-warehouse-tables-temporary.md) |Maximální GB |399 GB za od DW100. Proto v DWU1000, je velikost databáze tempdb 3,99 TB. |
 
-## <a name="database-objects"></a>Objekty databáze.
+## <a name="database-objects"></a>Databázové objekty
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
-| Databáze |Maximální velikost |240 TB komprimované na disku<br/><br/>Tento prostor je nezávislý na prostor tempdb nebo protokolu, a proto je tento prostor vyhrazený pro trvalé tabulky.  Komprese Clusterové columnstore se odhaduje na 5 X.  Tato komprese umožňuje databázi do dosáhnout přibližně 1 PB všech tabulek po clusterových columnstore (výchozí typ tabulky). |
+| Databáze |Maximální velikost | Gen1: 240 TB komprimované na disku. Tento prostor je nezávislý na prostor tempdb nebo protokolu, a proto je tento prostor vyhrazený pro trvalé tabulky.  Komprese Clusterové columnstore se odhaduje na 5 X.  Tato komprese umožňuje databázi do dosáhnout přibližně 1 PB všech tabulek po clusterových columnstore (výchozí typ tabulky). <br/><br/> Gen2: 240TB rowstore a neomezené úložiště pro tabulky columnstore |
 | Table |Maximální velikost |60 TB komprimované na disku |
 | Table |Tabulky na databázi |10 000 |
 | Table |Sloupců v tabulce |1024 sloupců |

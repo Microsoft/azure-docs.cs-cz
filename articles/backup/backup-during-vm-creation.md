@@ -1,23 +1,20 @@
 ---
-title: Povolit zálohování virtuálních počítačů Azure při vytváření | Microsoft Docs
+title: Povolit zálohování virtuálních počítačů Azure při vytváření
 description: Prohlédněte si postup povolení zálohování virtuálního počítače Azure během procesu vytváření.
 services: backup, virtual-machines
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: ''
 ms.service: backup, virtual-machines
-ms.devlang: na
-ms.topic: article
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: e16714eee697d9dc8102b5f29d9639d650517562
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 928481f07875286a21f68dae6556f04eb2b6ae5c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606116"
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Povolit zálohování při vytvoření virtuálního počítače Azure 
 
@@ -69,11 +66,11 @@ Předchozí kroky vysvětlují, jak používat portál Azure k vytvoření virtu
 K povolení zálohování při vytváření virtuálních počítačů jsou podporovány v následujícím seznamu základní Image vydaná společností Microsoft. U ostatních virtuálních počítačů můžete povolit zálohování po vytvoření virtuálního počítače. Další informace [povolit zálohování po vytvoření virtuálního počítače](quick-backup-vm-portal.md) 
 
 - **Windows** -Windows Server 2016 datového centra, jádra Windows Server 2016 datového centra, Windows Server 2012 DataCenter, Windows Server 2012 R2 DataCenter, Windows Server 2008 R2 SP1 
-- **Ubuntu** - Ubuntu Server 1710, Ubuntu Server 1704, UUbuntu Server 1604(LTS), Ubuntu Server 1404(LTS) 
+- **Ubuntu** -Ubuntu Server 1710, Ubuntu Server 1704, UUbuntu Server 1604(LTS) 1404(LTS) Ubuntu Server 
 - **Red Hat** -RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4 
-- **SUSE** - SUSE Linux Enterprise Server 11 SP4, 12 SP2, 12 SP3 
+- **SUSE** -SUSE Linux Enterprise Server 11 SP4, 12 SP2, 12 SP3 
 - **Debian** -Debian 8, Debian 9 
-- **CentOS** - CentOS 6.9, CentOS 7.3 
+- **CentOS** -CentOS 6.9, CentOS 7.3 
 - **Oracle Linux** -Oracle Linux 6.7, 6.8, 6.9, 7.2, 7.3 
  
 ### <a name="is-backup-cost-included-in-the-vm-cost"></a>Je zálohování náklady součástí náklady na virtuální počítač? 

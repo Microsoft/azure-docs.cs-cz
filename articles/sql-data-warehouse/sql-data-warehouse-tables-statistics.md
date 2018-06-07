@@ -10,17 +10,18 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643426"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Vytváření, aktualizaci statistiky pro tabulky v Azure SQL Data Warehouse
 Doporučení a příklady pro vytváření a aktualizaci statistiky optimalizaci dotazu na tabulky v Azure SQL Data Warehouse.
 
 ## <a name="why-use-statistics"></a>Proč používat statistiky?
-Více Azure SQL Data Warehouse ví o vašich dat, tím rychleji se spouštět dotazy na ho. Shromažďování statistik na vaše data a pak ho načítání do SQL Data Warehouse je jedním z nejdůležitějších kroků, které můžete provést za účelem optimalizace své dotazy. Je to proto Optimalizátor dotazů SQL Data Warehouse je na základě nákladů pro optimalizaci. Porovná náklady na různé plány dotazů a potom vybere plán s nejnižší náklady, což je ve většině případů plán, který provede nejrychlejší. Například pokud pro optimalizaci odhadne, že datum, kdy jsou filtrování v dotazu vrátí jeden řádek, ho vyberte jiný plán než pokud odhadne, vybraným datem vrátí 1 milionu řádků.
+Více Azure SQL Data Warehouse ví o vašich dat, tím rychleji se spouštět dotazy na ho. Shromažďování statistik na vaše data a pak ho načítání do SQL Data Warehouse je jedním z nejdůležitějších kroků, které můžete provést za účelem optimalizace své dotazy. Je to proto Optimalizátor dotazů SQL Data Warehouse je na základě nákladů pro optimalizaci. Porovná náklady na různé plány dotazů a potom vybere plán s nejnižšími náklady. ve většině případů je to plán, který běží nejrychleji. Například pokud pro optimalizaci odhadne, že datum, kdy jsou filtrování v dotazu vrátí jeden řádek, ho vyberte jiný plán než pokud odhadne, vybraným datem vrátí 1 milionu řádků.
 
 ## <a name="automatic-creation-of-statistics"></a>Automatické vytváření statistik
 Při vytvoření automatického statistiky možnost na AUTO_CREATE_STATISTICS, SQL Data Warehouse analyzuje příchozí uživatelských dotazů, kde jeden sloupec statistiky jsou vytvořeny pro sloupce, které chybí statistiky. Optimalizátor dotazů vytvoří statistiky na jednotlivých sloupců v dotazu podmínka predikátu nebo připojení k ke zlepšení odhady mohutnost pro plán dotazu. Automatické vytváření statistik je nyní ve výchozím nastavení zapnutá.
@@ -49,11 +50,14 @@ Automatické vytváření statistik se generuje synchronně, pokud vaše sloupce
 > Vytvoření statistiky se taky zaznamená [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) v kontextu jiného uživatele.
 > 
 
-Když se vytváří automatické statistiky, bude mít formu: _WA_Sys_< id sloupce 8 číslic v šestnáctkové soustavě > _ < id tabulky 8 číslic v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny tak, že spustíte následující příkaz:
+Když se vytváří automatické statistiky, bude mít formu: _WA_Sys_< id sloupce 8 číslic v šestnáctkové soustavě > _ < id tabulky 8 číslic v šestnáctkové soustavě >. Můžete zobrazit statistiky, které již byly vytvořeny tak, že spustíte [DBCC SHOW_STATISTICS](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=sql-server-2017) příkaz:
 
 ```sql
 DBCC SHOW_STATISTICS (<tablename>, <targetname>)
 ```
+První argument je tabulka, která obsahuje statistiku k zobrazení. To nemůže být externí tabulky. Druhý argument je název cílový index, statistiky nebo sloupec, pro který chcete zobrazit statistické informace.
+
+
 
 ## <a name="updating-statistics"></a>Aktualizuje statistické údaje
 

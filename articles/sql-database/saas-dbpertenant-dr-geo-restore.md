@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: saas apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: ayolubek
-ms.openlocfilehash: 8fd25e13f6796b8be99ad3efd425bcde7bca3905
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fc28622ad6d2569d455f82a30a84c47647baa1e2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645330"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Pomocí geografické obnovení ze zálohy databáze obnovit víceklientské aplikace SaaS
 
@@ -77,7 +78,7 @@ Zotavení po Havárii skripty použité v tomto kurzu jsou k dispozici v [SaaS l
 ## <a name="review-the-healthy-state-of-the-application"></a>Kontrola stavu v pořádku aplikace
 Před zahájením procesu obnovení, zkontrolujte stav v pořádku normální aplikace.
 
-1. Ve webovém prohlížeči, otevřete Centrum událostí Wingtip lístků (http://events.wingtip-dpt.&lt; Uživatel&gt;. trafficmanager.net, nahraďte &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení).
+1. Ve webovém prohlížeči, otevřete Centrum událostí Wingtip lístků (http://events.wingtip-dpt.&lt; uživatele&gt;. trafficmanager.net, nahraďte &lt;uživatele&gt; s hodnotou uživatele vašeho nasazení).
     
    Přejděte do dolní části stránky a Všimněte si katalogu serveru název a umístění v zápatí. Umístění je oblast, ve kterém je aplikace nasazená.    
 
@@ -197,7 +198,7 @@ Když koncový bod aplikace je v Traffic Manageru zakázán, aplikace není k di
  
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * Pokud otevřete stránku události klienta přímo při klienta je v režimu offline, na stránce se zobrazuje oznámení klienta do režimu offline. Například pokud Contoso vzájemné součinnosti Hall offline, pokusí otevřít http://events.wingtip-dpt.&lt; Uživatel&gt;.trafficmanager.net/contosoconcerthall.
+    * Pokud otevřete stránku události klienta přímo při klienta je v režimu offline, na stránce se zobrazuje oznámení klienta do režimu offline. Například pokud Contoso vzájemné součinnosti Hall offline, pokusí otevřít http://events.wingtip-dpt.&lt; uživatele&gt;.trafficmanager.net/contosoconcerthall.
 
     ![Proces obnovení](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -263,7 +264,7 @@ V této úloze aktualizujete jedna z databází obnovené klienta. Kopie procesu
 
 3. Chcete-li spustit skript, vyberte F5.
 
-4. Aktualizujte stránku události Hall vzájemné součinnosti Contoso (http://events.wingtip-dpt.&lt; Uživatel&gt;.trafficmanager.net/contosoconcerthall) a Všimněte si, že událost vážně Strauss chybí.
+4. Aktualizujte stránku události Hall vzájemné součinnosti Contoso (http://events.wingtip-dpt.&lt; uživatele&gt;.trafficmanager.net/contosoconcerthall) a Všimněte si, že událost vážně Strauss chybí.
 
 V tomto okamžiku v tomto kurzu jste obnovili aplikaci, které je nyní spuštěna v oblasti obnovení. Zřízení nového klienta v oblasti obnovení a upravit data jednoho obnovené klientů.  
 
@@ -327,7 +328,7 @@ Pokud jste postupovali podle kurzu, skript okamžitě znovu aktivuje křížovou
 
     Chcete-li spustit skript obnovení v novém okně prostředí PowerShell, vyberte F5. Navracení trvá několik minut a lze sledovat v okně prostředí PowerShell.
 
-3. Je spuštěn skript, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt; Uživatel&gt;. trafficmanager.net).
+3. Je spuštěn skript, aktualizujte stránku centra událostí (http://events.wingtip-dpt.&lt; uživatele&gt;. trafficmanager.net).
 
     Všimněte si, že všichni klienti jsou online a dostupné v průběhu tohoto procesu.
 

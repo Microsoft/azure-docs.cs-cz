@@ -7,14 +7,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 694c1755b5263d48fdfa5cad3c0b13e42bfb8522
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: bb2090aba61f32e79fe3a9fd950e6e3688193d7d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647081"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení rozdělení sloučení
 Pokud chcete používat službu rozdělení či sloučení, musíte nakonfigurovat správně zabezpečení. Služba je součástí funkce elastické škálování sady Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz služby](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -168,7 +169,7 @@ Toto téma se týká jenom pro referenci. Postupujte podle kroků konfigurace uv
 * Konfigurovat certifikát protokolu SSL
 * Nakonfigurujte klientské certifikáty
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
+## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 Spusťte:
 
     makecert ^
@@ -322,7 +323,7 @@ Každého uživatele, pro kterého klientský certifikát vystavil naimportovat 
 ## <a name="copy-client-certificate-thumbprints"></a>Zkopírujte kryptografické otisky certifikátu klienta
 Každého uživatele, pro kterého klientský certifikát vystavil nutné provést následující kroky, aby bylo možné získat kryptografický otisk his/hers certifikát, který přidá do konfiguračního souboru služby:
 
-* Run certmgr.exe
+* Spustit certmgr.exe
 * Vyberte kartu Osobní
 * Dvakrát klikněte na certifikát klienta, který se má použít pro ověřování
 * V dialogovém okně certifikátů, které se otevře vyberte kartu s podrobnostmi
@@ -380,7 +381,7 @@ Aktualizujte hodnotu kryptografického otisku následující nastavení v konfig
 ## <a name="find-certificate"></a>Najít certifikát
 Postupujte následovně:
 
-1. Run mmc.exe.
+1. Spusťte mmc.exe.
 2. Soubor -> Přidat nebo odebrat modul Snap-in...
 3. Vyberte **certifikáty**.
 4. Klikněte na tlačítko **Add** (Přidat).

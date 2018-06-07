@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: provedení změn v synchronizaci Azure AD Connect v konfiguraci | Microsoft Docs"
-description: "Vás provede procesem jak provést změnu konfigurace v synchronizaci Azure AD Connect."
+title: 'Synchronizace Azure AD Connect: provedení změn v synchronizaci Azure AD Connect v konfiguraci | Microsoft Docs'
+description: Vás provede procesem jak provést změnu konfigurace v synchronizaci Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: bad1cbe0b142e146ada28f2af5d152973100e919
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595100"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: Změňte výchozí konfigurace
 Účelem tohoto článku je vám ukážeme, jak změnit výchozí konfigurace v synchronizaci Azure Active Directory (Azure AD) připojit. Popisuje kroky pro některé běžné scénáře. Replikace byste měli možnost provádět jednoduché změny do vlastní konfigurace založené na vlastní obchodní pravidla.
@@ -204,7 +206,7 @@ Než povolíte synchronizaci atribut UserType nastavený na, je třeba nejprve r
 
     Pokud zvolíte tuto metodu, je třeba zajistit, že je atribut určené naplněný správnou hodnotu pro všechny existující uživatelské objekty ve službě Active Directory v místě, které jsou synchronizovány do Azure AD, než povolíte synchronizaci atribut UserType nastavený na .
 
-- Alternativně můžete hodnotu pro atribut UserType odvozovat od dalších vlastností. Například chcete synchronizovat všechny uživatele jako **hosta** Pokud místních atribut userPrincipalName AD končí část domény  *@partners.fabrikam123.org* . 
+- Alternativně můžete hodnotu pro atribut UserType odvozovat od dalších vlastností. Například chcete synchronizovat všechny uživatele jako **hosta** Pokud místních atribut userPrincipalName AD končí část domény *@partners.fabrikam123.org*. 
 
     Jak je uvedeno nahoře, Azure AD Connect na stávající služby Azure AD uživatelům změnit přes Azure AD Connect atribut UserType nastavený na nepovoluje. Proto musíte zajistit, aby logiku, kterou jste se rozhodli, je v souladu s jak atribut UserType nastavený na už je nakonfigurovaný pro všechny stávající uživatele Azure AD ve vašem klientovi.
 
@@ -280,13 +282,13 @@ Pravidla synchronizace příchozích dat umožňuje hodnota atributu, které jso
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    | Přímý | UserType | extensionAttribute1 | Nezaškrtnuto | Aktualizace |
+    | Přímé | UserType | extensionAttribute1 | Nezaškrtnuto | Aktualizace |
 
-    Jiný příklad chcete odvodit hodnotu pro atribut UserType od dalších vlastností. Například chcete synchronizovat všechny uživatele jako hosta v případě místních atribut userPrincipalName AD končí část domény  *@partners.fabrikam123.org* . Můžete implementovat výraz takto:
+    Jiný příklad chcete odvodit hodnotu pro atribut UserType od dalších vlastností. Například chcete synchronizovat všechny uživatele jako hosta v případě místních atribut userPrincipalName AD končí část domény *@partners.fabrikam123.org*. Můžete implementovat výraz takto:
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    | Přímý | UserType | IIf(IsPresent([userPrincipalName]),IIf(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0), "Člen", "Guest"), chyba ("UserPrincipalName není přítomen k určení UserType")) | Nezaškrtnuto | Aktualizace |
+    | Přímé | UserType | IIf(IsPresent([userPrincipalName]),IIf(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0), "Člen", "Guest"), chyba ("UserPrincipalName není přítomen k určení UserType")) | Nezaškrtnuto | Aktualizace |
 
 7. Klikněte na tlačítko **přidat** k vytvoření příchozího pravidla.
 
@@ -323,7 +325,7 @@ Pravidlo odchozí synchronizace umožňuje hodnota atributu, které jsou předá
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Merge – typ |
     | --- | --- | --- | --- | --- |
-    | Přímý | UserType | UserType | Nezaškrtnuto | Aktualizace |
+    | Přímé | UserType | UserType | Nezaškrtnuto | Aktualizace |
 
 7. Klikněte na tlačítko **přidat** vytvoření odchozí pravidla.
 

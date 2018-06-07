@@ -12,39 +12,42 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 05/25/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 6d91692a64a4d3def80990a439fe0a0898bf2f09
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 04aa713a33ec871821e281ba3b1ea47777fb8b24
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641250"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Úvod do integrace protokolů Azure
 
-Integrace se službou protokolu Azure můžete použít k integraci nezpracovaná protokoly z vašich prostředků Azure s místní informace o zabezpečení a událostí správy (SIEM) systémy. Použijte integrace se službou Azure protokolu pouze v případě, že konektor k [Azure monitorování](../monitoring-and-diagnostics/monitoring-get-started.md) není k dispozici od dodavatele systému SIEM.
+Integrace se službou Azure protokolu byla k dispozici pro zjednodušení úlohy integrace Azure protokoly s místní informace o zabezpečení a událostí správy (SIEM) systému.
 
-Upřednostňovanou metodou pro integrační protokolů Azure je pomocí konektoru Azure monitorování od dodavatele systému SIEM. K používání konektoru, postupujte podle pokynů v [datového proudu monitorování monitorování pro data služby event hubs](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). 
-
-Ale pokud dodavatele SIEM neposkytuje konektor k monitorování Azure, je možné budete moci používat protokol integrace se službou Azure jako dočasné řešení, dokud nebude k dispozici konektor. Integrace se službou Azure protokolu je možnost pouze v případě integrace se službou protokolu Azure podporuje vašeho systému SIEM.
+ Doporučené metody pro integrační Azure protokoly se má používat od dodavatele SIEM konektory. Azure monitorování poskytuje schopnost stream protokoly do centra událostí a dodavatelé SIEM může zapisovat konektory k další integraci protokoly z centra událostí do systému SIEM.  Popis toho, jak to funguje, postupujte podle pokynů v [datového proudu monitorování monitorování pro data služby event hubs](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Článek obsahuje také seznam systémů Siem, pro které přímé Azure konektory jsou již k dispozici.  
 
 > [!IMPORTANT]
 > Pokud vaše primární týkající se shromažďování protokolů virtuálního počítače, většina dodavatelů SIEM zahrnout tuto možnost jejich řešení. Použití systému SIEM dodavatele konektor je vždy upřednostňované alternativní.
+
+V dokumentaci na funkci Integrace protokolu Azure je stále neudržují, dokud je zastaralé funkce.
+
+Přečtěte si další na další informace o funkci Integrace protokolu Azure:
 
 Integrace se službou Azure protokolu událostí systému Windows shromažďuje z protokoly Prohlížeče událostí systému Windows, [protokoly Azure aktivity](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), [výstrahy Azure Security Center](../security-center/security-center-intro.md), a [protokolů Azure Diagnostics](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) z Prostředky Azure. Integrace pomáhá řešení SIEM poskytnout jednotný řídicí panel pro vaše prostředky, jestli místně nebo v cloudu. Řídicí panel můžete přijmout, agregace, korelaci a analyzovat výstrahy pro události zabezpečení.
 
 > [!NOTE]
 > Integrace se službou protokolu Azure v současné době podporuje pouze komerční Azure a Azure Government cloudy. Ostatních cloudů nejsou podporovány.
 
-![Diagram procesu protokolu integrace se službou Azure][1]
+![Proces protokolu integrace se službou Azure][1]
 
-## <a name="what-logs-can-i-integrate"></a>Jaké protokoly můžete integrovat
+## <a name="what-logs-can-i-integrate"></a>Jaké protokoly můžete integrovat?
 
 Azure vytvoří rozsáhlé protokolování pro každou službu Azure. Protokoly představují tři typy protokolu:
 
 * **Řízení nebo protokoly**: poskytují přehled o jednotlivých [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) operace vytvoření, aktualizace a odstranění. Protokol činnosti Azure je příklad tohoto typu protokolu.
-* **Data roviny protokoly**: poskytují přehled o události, které se vyvolá, když používáte prostředek služby Azure. Prohlížeč událostí systému Windows je například tento typ protokolu **systému**, **zabezpečení**, a **aplikace** kanálů v virtuálního počítače s Windows. Dalším příkladem je Azure Diagnostics protokolování, můžete nakonfigurovat pomocí sledování Azure.
+* **Data roviny protokoly**: poskytují přehled o události, které se vyvolá, když používáte prostředek služby Azure. Prohlížeč událostí systému Windows je například tento typ protokolu **systému**, **zabezpečení**, a **aplikace** kanálů v virtuálního počítače s Windows. Dalším příkladem je protokolování diagnostiky Azure, které se konfigurují prostřednictvím Azure monitorování.
 * **Zpracování události**: Zadejte analyzovaných událostí a informace o výstrahách, které jsou zpracovány za vás. Příkladem tohoto typu události je výstrahy Azure Security Center. Azure Security Center zpracovává a analyzuje předplatného poskytují výstrahy, které jsou relevantní pro aktuální lepšímu zabezpečení.
 
 Integrace se službou Azure protokolu podporuje ArcSight, QRadar a Splunk. Poraďte s dodavatelem SIEM k vyhodnocení, zda má dodavatel nativní konektor. Pokud je k dispozici nativní konektor, nepoužívejte protokolu integrace se službou Azure.
@@ -54,8 +57,8 @@ Pokud jsou k dispozici žádné další možnosti, zvažte použití protokolu i
 |SIEM | Zákazník už používá integrátor protokolů Azure | Zákazník pracuje na odstranění příčin možností integrace systému SIEM|
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | Začít s migrací do [rozšíření monitorování Azure pro Splunk](https://splunkbase.splunk.com/app/3534/). | Použití [Splunk konektor](https://splunkbase.splunk.com/app/3534/). |
-|**QRadar** | Migrace na nebo začít používat konektor QRadar popsána v poslední části [data do centra událostí pro používání monitorování pomocí externího nástroje Azure datový proud](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). | Použití konektoru QRadar popsána v poslední části [data do centra událostí pro používání monitorování pomocí externího nástroje Azure datový proud](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). |
-|**ArcSight** | I nadále používat integrátor protokolů Azure, dokud konektor je k dispozici. Potom migrujte na základě konektor řešení.  | Zvažte použití Azure Log Analytics jako alternativu. Program si zaváděním integrace protokolu Azure Pokud chcete absolvovat proces migrace, až konektor k dispozici. |
+|**QRadar** | Migrace na nebo začít používat konektor QRadar, která je popsána v poslední část [data do centra událostí pro používání monitorování pomocí externího nástroje Azure datový proud](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). | Použití QRadar konektoru, která je popsána v poslední části [data do centra událostí pro používání monitorování pomocí externího nástroje Azure datový proud](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). |
+|**ArcSight** | Pokračovat v používání integrátor protokolů Azure, dokud nebude k dispozici konektor a následná migrace na řešení na základě konektor.  | Zvažte použití Azure Log Analytics jako alternativu. Program si zaváděním integrace protokolu Azure Pokud chcete absolvovat proces migrace, až konektor k dispozici. |
 
 > [!NOTE]
 > Přestože se integrace protokolu Azure bezplatné řešení, jsou náklady na úložiště Azure přidružený úložiště informace souboru protokolu.
@@ -64,7 +67,7 @@ Pokud potřebujete pomoc, můžete vytvořit [žádost o podporu](../azure-suppo
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek vás seznámí s protokolu integrace se službou Azure. Další informace o protokolu integrace se službou Azure a typy protokolů, které jsou podporovány, naleznete v následujících článcích:
+Tento článek seznámili protokolu integrace se službou Azure. Další informace o protokolu integrace se službou Azure a typy protokolů, které jsou podporovány, naleznete v následujících článcích:
 
 * [Začínáme s Azure protokolu integrace](security-azure-log-integration-get-started.md). Tento kurz vás provede procesem instalace protokolu integrace se službou Azure. Také popisuje, jak integrovat protokoly z úložiště služby Windows Azure Diagnostics (WAD), protokoly aktivita Azure, Azure Security Center výstrahy a protokoly auditu Azure Active Directory.
 * [Integrace se službou Azure protokolu nejčastější dotazy (FAQ)](security-azure-log-integration-faq.md). Tyto nejčastější dotazy odpovídá na běžné dotazy týkající se integrace se službou Azure protokolu.

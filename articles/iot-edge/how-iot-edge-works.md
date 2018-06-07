@@ -1,25 +1,20 @@
 ---
 title: Co je Azure IoT Edge | Dokumentace Microsoftu
 description: Přehled služby Azure IoT Edge
-services: iot-Edge
-documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: chipalost
-ms.assetid: ''
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.reviewer: chipalost
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.custom: ''
-ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: HT
+ms.openlocfilehash: 52956e9888d67e0502a9ea82657acb9728216111
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630693"
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Co je Azure IoT Edge – Preview
 
@@ -69,7 +64,7 @@ Modul runtime Azure IoT Edge běží ve velké sadě zařízení IoT a díky tom
 
 Správa životního cyklu softwaru u podnikových zařízení je složitá. Správa životního cyklu softwaru u milionů různorodých zařízení IoT je ještě složitější. Úlohy se musí vytvářet a konfigurovat pro konkrétní typ zařízení, nasazovat ve velkém měřítku na miliony zařízení ve vašem řešení a monitorovat, aby se případně zachytila zařízení, která se nechovají podle očekávání. Tyto aktivity není možné provádět pro každé zařízení zvlášť a musí se provádět ve velkém měřítku.
 
-Azure IoT Edge se bezproblémově integruje se sadou Azure IoT Suite a poskytuje tak jedinou rovinu řízení pro všechny požadavky vašeho řešení. Cloudové služby umožňují uživatelům:
+Azure IoT Edge se bezproblémově integruje se akcelerátorů řešení Azure IoT zajistit jedné rovině řízení pro vaše řešení potřebám. Cloudové služby umožňují uživatelům:
 
 * Vytvořit a nakonfigurovat úlohu, která se má spouštět na konkrétním typu zařízení.
 * Odeslat úlohu do sady zařízení.
@@ -77,7 +72,7 @@ Azure IoT Edge se bezproblémově integruje se sadou Azure IoT Suite a poskytuje
 
 ![Telemetrie, přehledy a akce zařízení se koordinují s cloudem][2]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vyzkoušejte si tyto koncepty při [nasazení IoT Edge na simulovaném zařízení][lnk-quickstart].
 

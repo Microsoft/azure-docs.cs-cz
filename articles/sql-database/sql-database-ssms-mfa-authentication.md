@@ -7,14 +7,15 @@ author: GithubMirek
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 8c6472dcde55a7b642ced7bbf0d93893df9208e0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f3c94f41a4f5d7947b862054263ee07ff8ccd98c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650005"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Univerzální ověřování se službou SQL Database a SQL Data Warehouse (SSMS podporu vícefaktorového ověřování)
 Azure SQL Database a Azure SQL Data Warehouse podporují připojení pomocí SQL Server Management Studio (SSMS) *Universal ověřování služby Active Directory*. 
@@ -54,7 +55,7 @@ Uživatele Azure AD, podporuje pro scénáře Azure AD B2B jako uživatele typu 
 - [Konfigurovat a spravovat ověřování Azure Active Directory s SQL Database nebo SQL Data Warehouse](sql-database-aad-authentication-configure.md)  
 - [Architektura aplikace datové vrstvy Microsoft SQL Server (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx)  
-- [Importovat soubor souboru BACPAC pro novou databázi SQL Azure](../sql-database/sql-database-import.md)  
-- [Exportovat do souboru BACPAC souboru Azure SQL database](../sql-database/sql-database-export.md)  
+- [Import souboru BACPAC do nové databáze SQL Azure](../sql-database/sql-database-import.md)  
+- [Export databáze SQL Azure do souboru BACPAC](../sql-database/sql-database-export.md)  
 - C# rozhraní [IUniversalAuthProvider rozhraní](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
 - Při použití **Active Directory - Universal s MFA** ověřování ADAL trasování je k dispozici počínaje [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Vypnout ve výchozím nastavení, můžete zapnout ADAL trasování pomocí **nástroje**, **možnosti** nabídky v části **služeb Azure**, **cloudu Azure**,  **ADAL úroveň trasování okno výstup**, za nímž povolením **výstup** v **zobrazení** nabídky. Trasování jsou k dispozici v okně výstupu. při výběru **možnost Azure Active Directory**.  

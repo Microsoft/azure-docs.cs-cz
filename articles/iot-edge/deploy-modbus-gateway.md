@@ -1,25 +1,19 @@
 ---
-title: "Nasazení zařízení Modbus se službou Azure IoT Edge | Dokumentace Microsoftu"
-description: "Jak umožnit zařízením s protokolem Modbus TCP komunikaci s Azure IoT Hub vytvořením zařízení s bránou IoT Edge"
-services: iot-Edge
-documentationcenter: 
+title: Nasazení zařízení Modbus se službou Azure IoT Edge | Dokumentace Microsoftu
+description: Jak umožnit zařízením s protokolem Modbus TCP komunikaci s Azure IoT Hub vytvořením zařízení s bránou IoT Edge
 author: kgremban
 manager: timlt
-editor: chrisgmsft
-ms.assetid: 
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: e239bde48c3da0d899e3c78bdd39f520c4128b95
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
-ms.translationtype: HT
+ms.openlocfilehash: d6e831cdd7cd18305beb617693ee1026bb6429e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631459"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway---preview"></a>Připojení zařízení Modbus TCP přes zařízení s bránou IoT Edge – preview
 
@@ -104,7 +98,7 @@ docker logs -f modbus
 
 Můžete také zobrazit telemetrická data odeslaná ze zařízení pomocí [nástroje IoT Hub explorer](https://github.com/azure/iothub-explorer). 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o tom, jak zařízení IoT Edge může fungovat jako brána najdete v článku [Vytvoření zařízení IoT Edge které slouží jako transparentní brána](how-to-create-transparent-gateway.md).
 - Další informace o fungování modulů IoT Edge najdete v tématu [Vysvětlení modulů Azure IoT Edge](iot-edge-modules.md).

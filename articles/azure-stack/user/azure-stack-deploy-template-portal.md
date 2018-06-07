@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/24/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 278f15271d3a5443102f5e387d3db1adb53fe7db
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: eea4f568f21693764222c8fdbe3316bf6008cc05
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604229"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Nasazení šablony pomocí portálu Azure zásobníku
 
@@ -27,7 +28,7 @@ ms.lasthandoff: 05/20/2018
 
 Na portálu můžete použít k nasazení šablony Azure Resource Manageru do Azure zásobníku.
 
-Nasazení šablony:
+## <a name="to-deploy-a-template"></a>Pro nasazení šablony
 
 1. Přihlaste se k portálu, vyberte **nový**a potom vyberte **vlastní**.
 2. Vyberte **nasazení šablony**.
@@ -39,4 +40,4 @@ Nasazení šablony:
 
 ## <a name="next-steps"></a>Další postup
 
-[Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
+* [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)

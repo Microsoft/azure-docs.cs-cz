@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 16757af0bab7cfd43488118f62300fb167c193a3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cd3f947bfc44055bfec4198a1e7c6a9bb2fab5d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642620"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Proč mikroslužeb přístupu k sestavení aplikací?
 Jako vývojáři softwaru není nic nového v tom, jak jsme vezměte v úvahu řešení aplikace do součásti aplikace. Je centrální zlepší orientaci objektu, abstrakce softwaru a componentization. V současné době se tento factorization obvykle mít formu třídy a rozhraní mezi sdílené knihovny a technologických vrstev. Vrstvený přístup je obvykle prováděné s back-end úložiště, střední vrstvu obchodní logiky a klientské uživatelské rozhraní (UI). Co *má* změněno v posledních několika letech je, že jsme, jako vývojáři, jsou vytváření distribuované aplikace, které jsou pro cloud a vycházejí z firmy.
@@ -162,7 +163,7 @@ Je nutné zdůraznit znovu, můžete **spuštění a zastavení na kterémkoli z
 - Snížení nákladů buď z důvodu konsolidace a odebrání stávající hardware nebo spuštění aplikací v vyšší hustotu. 
 - Konzistentní nasazení kontrakt mezi vývoj a provoz.
 
-Snížení nákladů jsou srozumitelné a v rámci Microsoftu velkého počtu existujících aplikací jsou právě kontejnerizované jednoduše k uložení milionů dolarů. Těžší k vyhodnocení, ale stejně důležitá je konzistentní nasazení. Zobrazuje, že vývojáři mohou být stále mohou zvolit technologie této sady je, ale operace bude přijímat pouze jeden způsob, jak nasadit a spravovat tyto aplikace. Ho nebude operace z nutnosti složitosti mnoha různých technologií nebo vynucení vývojářům vybrat jenom některé formáty. V podstatě každá aplikace je kontejnerizované do bitové kopie samostatná nasazení.
+Snížení nákladů jsou srozumitelné a v rámci Microsoftu velkého počtu existujících aplikací jsou právě kontejnerizované jednoduše k uložení milionů dolarů. Těžší k vyhodnocení, ale stejně důležitá je konzistentní nasazení. Zobrazuje, že vývojáři mohou být stále mohou zvolit technologie, která vyhovuje, ale operace bude přijímat pouze jeden způsob, jak nasadit a spravovat tyto aplikace. Ho nebude operace z nutnosti složitosti mnoha různých technologií nebo vynucení vývojářům vybrat jenom některé formáty. V podstatě každá aplikace je kontejnerizované do bitové kopie samostatná nasazení.
 
 Mnoho organizací zastavit sem. Už mají výhody kontejnery a Service Fabric nabízí prostředí pro kompletní správu z nasazení, upgrady, Správa verzí, odvolání, stav monitorování atd.
 

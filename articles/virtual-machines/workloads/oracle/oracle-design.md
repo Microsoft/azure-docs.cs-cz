@@ -4,7 +4,7 @@ description: Návrh a implementaci k databázi Oracle v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: b291066137df004625029aef12c3db4d5441a89c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2661c386ea747fc75b67df9a67c7e62ac8c4fea4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658134"
 ---
-# <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementaci k databázi Oracle v Azure
+# <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
 ## <a name="assumptions"></a>Předpoklady
 

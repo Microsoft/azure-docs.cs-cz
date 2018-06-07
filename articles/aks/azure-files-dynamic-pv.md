@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 991db1fc32ae89ab04ca040cfb6e8d59ffe5262f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597497"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Trvalé svazky s soubory Azure
 
@@ -23,29 +24,20 @@ Další informace o Kubernetes trvalé svazky, včetně statické vytváření, 
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Při vytváření dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete použít libovolný účet úložiště, dokud je ve stejné skupině prostředků jako AKS cluster. V případě potřeby vytvořte účet úložiště ve stejné skupině prostředků jako AKS cluster.
-
-Chcete-li identifikovat odpovídající prostředek skupiny, použijte [seznam skupiny az] [ az-group-list] příkaz.
+Při vytváření dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete použít libovolný účet úložiště, dokud se AKS **uzlu** skupinu prostředků. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Vyhledat skupinu prostředků s názvem podobná `MC_clustername_clustername_locaton`.
-
-```
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Použití [vytvořit účet úložiště az] [ az-storage-account-create] příkaz pro vytvoření účtu úložiště.
 
-V tomto příkladu, aktualizovat `--resource-group` s názvem skupiny prostředků a `--name` název svého výběru.
+Aktualizace `--resource-group` s názvem skupiny prostředků získané v posledním kroku, a `--name` název svého výběru.
 
 ```azurecli-interactive
-az storage account create --resource-group MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
+az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
 ## <a name="create-storage-class"></a>Vytvoření třídy úložiště
@@ -76,7 +68,7 @@ kubectl apply -f azure-file-sc.yaml
 
 Trvalé svazku deklarace identity (PVC) používá objektu třídy úložiště pro dynamicky zajišťují sdílenou složku Azure.
 
-Následující YAML lze použít k vytvoření svazku trvalé deklarace `5GB` velikost `ReadWriteOnce` přístup. Další informace o režimy přístupu najdete v tématu [svazku trvalé Kubernetes] [ access-modes] dokumentaci.
+Následující YAML lze použít k vytvoření svazku trvalé deklarace `5GB` velikost `ReadWriteMany` přístup. Další informace o režimy přístupu najdete v tématu [svazku trvalé Kubernetes] [ access-modes] dokumentaci.
 
 Vytvořte soubor s názvem `azure-file-pvc.yaml` a zkopírujte následující YAML. Ujistěte se, že `storageClassName` odpovídá třídy úložiště vytvořili v předchozím kroku.
 
@@ -87,7 +79,7 @@ metadata:
   name: azurefile
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: azurefile
   resources:
     requests:
@@ -209,6 +201,7 @@ Další informace o Kubernetes trvalé svazky s využitím Azure Files.
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show
 [az-storage-account-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list

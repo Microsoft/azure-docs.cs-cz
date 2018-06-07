@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 01a785eab1b31b2943184267a3c6496fefaf44cf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639074"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení pomocí Azure monitorování
 Mnoha týmy musí striktně regulovat přístup k monitorování data a nastavení. Například pokud máte členové týmu, kteří pracují výhradně na monitorování (pracovníci technické podpory, technici devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinovaná role RBAC monitorování na uživatele v Azure nebo vytvořit vlastní vlastní role pro uživatele, který potřebuje monitorování omezenými oprávněními. Potom popisuje aspekty zabezpečení vašich prostředků související s monitorování Azure a jak můžete omezit přístup k datům, která obsahují.
@@ -125,7 +126,7 @@ Všechny tři z těchto typů dat můžete uložený v účtu úložiště nebo 
 
 * Použijte účet jeden vyhrazený úložiště pro data monitorování. Pokud potřebujete oddělit data monitorování do více účtů úložiště, nikdy sdílet využití účtu úložiště mezi monitorování a ty, kteří potřebují pouze přístup k datům (například SIEM třetích stran) monitorování může poskytnout nechtěně-monitoring data, jako to přístup k-monitoring data.
 * Používejte jednu, vyhrazené sběrnice nebo Centrum událostí názvů ve všech nastavení pro diagnostiku ze stejných důvodů jako výš.
-* Omezit přístup k účtům související s monitorování úložiště nebo event hubs tím, že jim skupinu samostatné prostředků a [použít obor](../role-based-access-control/overview.md#basics-of-access-management-in-azure) na monitorování role omezit přístup jenom příslušné skupině prostředků.
+* Omezit přístup k účtům související s monitorování úložiště nebo event hubs tím, že jim skupinu samostatné prostředků a [použít obor](../role-based-access-control/overview.md#scope) na monitorování role omezit přístup jenom příslušné skupině prostředků.
 * Nikdy udělit oprávnění k ListKeys pro účty úložiště nebo služby event hubs v oboru předplatné, když uživatel potřebuje pouze přístup k datům monitorování. Místo toho přidělit tato oprávnění pro uživatele na prostředek nebo skupina prostředků (Pokud máte vyhrazené monitorování skupiny prostředků) oboru.
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Omezení přístupu k účtům úložiště související s monitorování

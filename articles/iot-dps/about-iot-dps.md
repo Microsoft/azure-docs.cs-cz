@@ -1,22 +1,19 @@
 ---
-title: "Přehled Azure IoT Hub zařízení zřizování služby | Microsoft Docs"
-description: "Popisuje zřizování zařízení v Azure pomocí služby zřizování zařízení a služby IoT Hub"
-services: iot-dps
-keywords: 
+title: Přehled Azure IoT Hub zařízení zřizování služby | Microsoft Docs
+description: Popisuje zřizování zařízení v Azure pomocí služby zřizování zařízení a služby IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 12/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: 
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 45f47a553f94da2759c4db2b79c8ef5a1b42b8e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630236"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Zřizování zařízení službou Azure IoT Hub zařízení zřizování
 Microsoft Azure poskytuje bohatou sadu integrovaných veřejné cloudové služby pro všechny vaše potřeby řešení IoT. Zřizování služby zařízení IoT Hub je služba Pomocník pro IoT Hub, která umožňuje nula touch, za běhu zřizování do správné služby IoT hub bez nutnosti lidského zásahu povolení zákazníkům zřídit miliony zařízení zabezpečený a škálovatelné způsobem.

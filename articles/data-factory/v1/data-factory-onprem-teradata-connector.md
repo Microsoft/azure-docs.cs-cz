@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a9d8d0daae3fd35cd8a2527a3a29da235424830e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 62b838212f94c48e39daf31877aeb5b344836571
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622556"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Přesun dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -290,31 +291,31 @@ Při přesunu dat na Teradata, se používají následující mapování z typu 
 | Obrázek |Řetězec |
 | VarChar |Řetězec |
 | VarGraphic |Řetězec |
-| Objekt blob |Byte[] |
-| Bajtů |Byte[] |
-| VarByte |Byte[] |
+| Objekt blob |Byte] |
+| Bajtů |Byte] |
+| VarByte |Byte] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
 | Decimal |Decimal |
-| Dvojitý |Dvojitý |
+| Double |Double |
 | Integer |Int32 |
-| Číslo |Dvojitý |
+| Číslo |Double |
 | SmallInt |Int16 |
 | Datum |DateTime |
-| Čas |TimeSpan |
+| Čas |Časový interval |
 | Čas s časovým pásmem |Řetězec |
 | Časové razítko |DateTime |
-| Časové razítko s časovým pásmem |DateTimeOffset |
-| Interval den |TimeSpan |
-| Interval den a hodina |TimeSpan |
-| Denní interval minuty. |TimeSpan |
-| Denní interval sekundy. |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval hodiny, minuty. |TimeSpan |
-| Interval hodinu sekundu |TimeSpan |
-| Interval minutu |TimeSpan |
-| Interval minuty, sekundy. |TimeSpan |
-| Interval druhý |TimeSpan |
+| Časové razítko s časovým pásmem |Datový typ DateTimeOffset |
+| Interval den |Časový interval |
+| Interval den a hodina |Časový interval |
+| Denní interval minuty. |Časový interval |
+| Denní interval sekundy. |Časový interval |
+| Interval hodinu |Časový interval |
+| Interval hodiny, minuty. |Časový interval |
+| Interval hodinu sekundu |Časový interval |
+| Interval minutu |Časový interval |
+| Interval minuty, sekundy. |Časový interval |
+| Interval druhý |Časový interval |
 | Interval roku |Řetězec |
 | Interval rok, měsíc |Řetězec |
 | Interval měsíc |Řetězec |
@@ -323,7 +324,7 @@ Při přesunu dat na Teradata, se používají následující mapování z typu 
 | Období (čas s časovým pásmem) |Řetězec |
 | Period(Timestamp) |Řetězec |
 | Období (časové razítko s časovým pásmem) |Řetězec |
-| Xml |Řetězec |
+| XML |Řetězec |
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
 Další informace o mapování sloupců v datové sadě zdrojového sloupce v datové sadě podřízený najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).

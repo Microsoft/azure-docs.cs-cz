@@ -6,14 +6,15 @@ author: jodebrui
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 0802a3b51847236efb64e628ed259dc7776bac4e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: aff0f82f07e9129c8f7c131f055447ad578ad15b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647336"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitorování OLTP v paměti úložiště
 Při použití [OLTP v paměti](sql-database-in-memory.md), data v paměťově optimalizované tabulky a proměnných tabulek, které se nachází v úložišti OLTP v paměti. Má maximální velikost úložiště OLTP v paměti, která je popsána v jednotlivých úrovních služby Premium a kritické obchodní [limitů prostředků na základě DTU](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore](sql-database-vcore-resource-limits.md). Po překročení tohoto limitu vložení a aktualizace operace může spustit došlo k chybě 41823 pro samostatné databáze a chyba 41840 pro elastické fondy. V tomto okamžiku je nutné odstranit data získat paměť, nebo upgradovat úroveň výkonu databáze.

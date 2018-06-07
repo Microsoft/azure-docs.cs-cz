@@ -6,13 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: f9719bb1f1563c55537c7ef32278411a2034bd75
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 625f3e228bb28c85e68fb592914fb2191baf3e4e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626985"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Monitorování událostí mřížky doručení zpráv 
 
@@ -41,9 +42,15 @@ Pro předplatné jsou metriky:
 
 ## <a name="event-subscription-status"></a>Stav odběru událostí
 
-Metriky pro odběr událostí najdete vyhledejte **odběry mřížky událostí** v dostupné služby a vyberte ho.
+Metriky pro odběr událostí najdete můžete buď hledat typ předplatného, nebo předplatné pro konkrétní zdroje.
 
-![Vyhledejte odběry událostí](./media/monitor-event-delivery/select-event-subscriptions.png)
+Chcete-li vyhledávat podle typu události předplatné, vyberte **všechny služby**.
+
+![Vyberte všechny služby](./media/monitor-event-delivery/all-services.png)
+
+Vyhledejte **událostí mřížky** a vyberte **odběry mřížky událostí** z dostupných možností.
+
+![Vyhledejte odběry událostí](./media/monitor-event-delivery/search-and-select.png)
 
 Filtrovat podle typu události, předplatné a umístění. Vyberte **metriky** pro předplatné, které chcete zobrazit.
 
@@ -53,9 +60,15 @@ Zobrazte metriky pro událost téma a odběr.
 
 ![Zobrazit události metriky](./media/monitor-event-delivery/subscription-metrics.png)
 
+Chcete-li najít metriky pro konkrétní prostředek, vyberte tento prostředek. Pak vyberte **události**.
+
+![Vyberte události pro prostředek](./media/monitor-event-delivery/select-events.png)
+
+Zobrazí metriky pro předplatná pro tento prostředek.
+
 ## <a name="custom-event-status"></a>Stav vlastní události
 
-Pokud jste publikovali vlastní téma, můžete zobrazit metriky pro ni. Vyberte skupinu prostředků obsahující tématu a vyberte tématu.
+Pokud jste publikovali vlastní téma, můžete zobrazit metriky pro ni. Vyberte skupinu prostředků pro téma a vyberte tématu.
 
 ![Vyberte vlastní tématu](./media/monitor-event-delivery/select-custom-topic.png)
 
@@ -66,5 +79,5 @@ Zobrazte metriky pro vlastní události tématu.
 ## <a name="next-steps"></a>Další postup
 
 * Informace o události doručení a opakovaných pokusů [doručení zpráv událostí mřížky a zkuste to znovu](delivery-and-retry.md).
-* Úvod k mřížce událostí, naleznete v části [o mřížky událostí](overview.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
 * Chcete-li rychle začít používat událostí mřížky, přečtěte si téma [vytvořit a směrování vlastních událostí s Azure událostí mřížky](custom-event-quickstart.md).

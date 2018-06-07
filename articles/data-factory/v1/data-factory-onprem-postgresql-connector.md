@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4ee466c85b68ebc72dbd55849db84a473d584ffb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d566a719abaf09146965a677868d363d33d10e5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622760"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Přesun dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -77,7 +78,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost typu musí být nastavena na: **OnPremisesPostgreSql** |Ano |
 | server |Název serveru PostgreSQL. |Ano |
 | databáze |Název databáze PostgreSQL. |Ano |
-| schema |Název schématu v databázi. Název schématu rozlišuje velká a malá písmena. |Ne |
+| Schéma |Název schématu v databázi. Název schématu rozlišuje velká a malá písmena. |Ne |
 | authenticationType. |Typ ověřování používaný pro připojení k databázi PostgreSQL. Možné hodnoty jsou: anonymní, základní a systému Windows. |Ano |
 | uživatelské jméno |Pokud používáte ověřování Basic nebo Windows, zadejte uživatelské jméno. |Ne |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ne |
@@ -321,31 +322,31 @@ Při přesunu dat na PostgreSQL, se používají následující mapování z typ
 | kruhu. | |Byte [] řetězec |&nbsp;
 | datum | |Datum a čas |&nbsp;
 | DateRange | |Řetězec |&nbsp;
-| Dvojitá přesnost |FLOAT8 |Dvojitý |
+| Dvojitá přesnost |FLOAT8 |Double |
 | inet | |Byte [] řetězec |&nbsp;
 | intarry | |Řetězec |&nbsp;
 | int4range | |Řetězec |&nbsp;
 | int8range | |Řetězec |&nbsp;
-| celé číslo |int, int4 |Int32 |
+| integer |int, int4 |Int32 |
 | Interval [pole] [(p)] | |Časový interval |&nbsp;
-| JSON | |Řetězec |&nbsp;
-| jsonb | |Byte[] |&nbsp;
+| json | |Řetězec |&nbsp;
+| jsonb | |Byte] |&nbsp;
 | řádek | |Byte [] řetězec |&nbsp;
 | lseg | |Byte [] řetězec |&nbsp;
 | macaddr | |Byte [] řetězec |&nbsp;
-| money | |Decimal |&nbsp;
-| číselný [(p, s)] |decimal [(p, s)] |Decimal |
+| peníze | |Decimal |&nbsp;
+| číselný [(p, s)] |Decimal [(p, s)] |Decimal |
 | numrange | |Řetězec |&nbsp;
 | OID | |Int32 |&nbsp;
 | path | |Byte [] řetězec |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
 | bod | |Byte [] řetězec |&nbsp;
 | mnohoúhelníku | |Byte [] řetězec |&nbsp;
-| skutečné |FLOAT4 |Svobodný/svobodná |
+| skutečné |FLOAT4 |Jednoduchá |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | sériové |serial4 |Int32 |
-| Text | |Řetězec |&nbsp;
+| text | |Řetězec |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
 Další informace o mapování sloupců v datové sadě zdrojového sloupce v datové sadě podřízený najdete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).

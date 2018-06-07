@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2018
 ms.author: jlian
-ms.openlocfilehash: f55f878d53b3813ea2ff2510998d47820de76a6a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 308202addbca447ee0dab7a55a1ad2b3b6600a10
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603317"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Vytváření předplatných Azure Enterprise (preview) prostřednictvím kódu programu
 
@@ -175,7 +176,7 @@ V odpovědi, můžete se vrátit `subscriptionOperation` objekt pro monitorován
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud chcete používat tento modul preview, nainstalovat spuštěním `Install-Module AzureRM.Subscription -AllowPrerelease` první. Abyste měli jistotu, `-AllowPrerelease` funguje, nainstalujte nejnovější verzi PowerShellGet z [modulu Get PowerShellGet](/powershell/gallery/psget/get_psget_module).
+Pokud chcete používat tento modul preview, nainstalovat spuštěním `Install-Module AzureRM.Subscription -AllowPrerelease` první. Abyste měli jistotu, `-AllowPrerelease` funguje, nainstalujte nejnovější verzi PowerShellGet z [modulu Get PowerShellGet](/powershell/gallery/installing-psget).
 
 Použití [New-AzureRmSubscription](/powershell/module/azurerm.subscription.preview) spolu s `enrollmentAccount` ID jako objektu `EnrollmentAccountObjectId` parametr k vytvoření nové předplatné. 
 
@@ -299,4 +300,4 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 * Příklad k vytvoření odběrů pomocí rozhraní .NET, naleznete v části [ukázkový kód na Githubu](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
 * Další informace o Azure Resource Manager a jejích rozhraní API najdete v tématu [přehled Azure Resource Manageru](resource-group-overview.md).
 * Další informace o správě velkého počtu odběry pomocí skupin pro správu najdete v tématu [uspořádání prostředků s skupin pro správu Azure](management-groups-overview.md)
-* Komplexní osvědčených postupů pokyny pro velké organizace na řízení předplatného najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatného](resource-manager-subscription-governance.md)
+* Komplexní osvědčených postupů pokyny pro velké organizace na řízení předplatného najdete v tématu [Azure enterprise vygenerované uživatelské rozhraní – zásady správného řízení doporučený předplatného](/azure/architecture/cloud-adoption-guide/subscription-governance)

@@ -3,7 +3,7 @@ title: Generování sestav dat využití zásobník Azure do Azure | Microsoft D
 description: Zjistěte, jak nastavit vytváření sestav v Azure zásobníku data o využití.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/30/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603698"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Generování sestav Azure zásobníku využití dat do Azure 
 
@@ -42,7 +43,7 @@ Abyste mohli nastavit generování sestav dat využití, musíte [registraci va�
 - **Množství** – množství využití prostředků.
 - **Umístění** – umístění, kde je nasazená aktuálního prostředku Azure zásobníku.
 - **Identifikátor URI** – plně kvalifikovaný identifikátor URI prostředku, pro kterou je hlášena využití.
-- **ID předplatného** – ID předplatného Azure zásobník uživatele. Toto je místní předplatné (Azure Stack).
+- **ID předplatného** – ID předplatného Azure zásobník uživatele, což je místní předplatné (Azure Stack).
 - **Čas** – počáteční a koncový čas dat o využití. Není některé zpoždění mezi tím, kdy, když jsou tyto prostředky spotřebované v zásobníku Azure a při hlášení dat o využití do obchodu. Generování sestav data o využití do kanálu a obchodu Spojených států v Azure a Azure zásobníku agreguje data o využívání každých 24 hodin trvá jiné několik hodin. Ano použití, který se nachází krátce před půlnoc může zobrazí v Azure následující den.
 
 ## <a name="generate-usage-data-reporting"></a>Generování sestav dat využití
@@ -68,7 +69,7 @@ Pokud jste zaregistrovali do sady Azure pomocí jakékoli jiné předplatné typ
 
    ![fakturace toku](media/azure-stack-usage-reporting/pricing-details.png)
 
-Pro Azure Development Kit zásobníku nejsou účtovat prostředky Azure zásobníku, ceny se zobrazí jako 0,00 Kč. Když je obecně dostupná několika uzly zásobník Azure, uvidíte skutečné náklady pro každý z těchto prostředků.
+Pro Azure Development Kit zásobníku nejsou účtovat prostředky Azure zásobníku, ceny se zobrazí jako 0,00 Kč.
 
 ## <a name="which-azure-stack-deployments-are-charged"></a>Budou se účtovat které nasazení zásobník Azure?
 
@@ -82,7 +83,7 @@ Uživatelům se účtují poplatky pro virtuální počítače, které běží p
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Mám licenci systému Windows Server, který chcete použít v zásobníku Azure, jak se provádí?
 
-Použití existující licence zabraňuje generování využití měřidla. Licence pro existující Server systému Windows lze použít v zásobníku Azure, jak je popsáno v části "Použití existující software s Azure zásobníku" [průvodci licencování Azure zásobníku](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Zákazníci potřebujete nasadit své virtuální počítače Windows serveru, jak je popsáno v [hybridní výhody pro Windows Server licenci](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) tématu, aby bylo možné používat své existující licence.
+Použití existující licence zabraňuje generování využití měřidla. Licence pro existující Server systému Windows lze použít v zásobníku Azure, jak je popsáno v části "Použití existující software s Azure zásobníku" [průvodci licencování Azure zásobníku](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Zákazníci potřebujete nasadit své virtuální počítače Windows serveru, jak je popsáno v [hybridní výhody pro Windows Server licenci](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) článku, aby bylo možné používat své existující licence.
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Jaké předplatné je účtovat poplatek za prostředky spotřebované?
 Odběr, který je k dispozici při [registrace zásobník Azure s Azure](azure-stack-register.md) je účtován.
@@ -101,7 +102,7 @@ Uživatelé mohou vidět data o využití Azure zásobníku v souboru podrobnost
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Proč se využití ohlášena v zásobníku Azure neshoduje se sestava vygenerována z centra účtů Azure?
 
-Je vždy delaybetween, dat o využití hlášené data o využití hlášené centra účtů Azure a použití Azure zásobníku rozhraní API... Toto opoždění je čas potřebný k odeslat data o využití ze zásobníku Azure do Azure commerce. Z důvodu tato prodleva využití, který se nachází krátce před půlnoc může zobrazí v Azure následující den. Pokud použijete [rozhraní API Správce Azure zásobníku využití](azure-stack-provider-resource-api.md)a porovnejte výsledky využití v portálu Azure fakturace, uvidíte rozdíl.
+Vždy dochází ke zpoždění mezi dat o využití hlášené použití Azure zásobníku rozhraní API a dat o využití hlášené centra účtů Azure. Toto opoždění je čas potřebný k odeslat data o využití ze zásobníku Azure do Azure commerce. Z důvodu tato prodleva využití, který se nachází krátce před půlnoc může zobrazí v Azure následující den. Pokud použijete [rozhraní API Správce Azure zásobníku využití](azure-stack-provider-resource-api.md)a porovnejte výsledky využití v portálu Azure fakturace, uvidíte rozdíl.
 
 ## <a name="next-steps"></a>Další postup
 

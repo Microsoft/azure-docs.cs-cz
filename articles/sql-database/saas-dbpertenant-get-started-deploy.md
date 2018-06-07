@@ -7,14 +7,15 @@ author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 84e6f2303bcfd6a2c91f29e9e9afdc2b84f990ca
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 95d4fc1886e16785b6de8f3a395b218b66d193ff
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645357"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasazení a prozkoumejte víceklientské aplikace SaaS, která využívá vzor databáze na klienta s databází SQL
 
@@ -108,7 +109,7 @@ Interně v aplikaci, každý klient získá databázi SQL, který je nasazený d
 
 Centrálního **události rozbočovače** stránka obsahuje seznam odkazů klientům ve vašem nasazení.
 
-1. Použijte adresu URL v prohlížeči otevřete Centrum událostí: http://events.wingtip-dpt.&lt; Uživatel&gt;. trafficmanager.net. SUBSTITUTE &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.
+1. Použijte adresu URL v prohlížeči otevřete Centrum událostí: http://events.wingtip-dpt.&lt; uživatele&gt;. trafficmanager.net. SUBSTITUTE &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.
 
     ![Centra událostí](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -120,14 +121,14 @@ Centrálního **události rozbočovače** stránka obsahuje seznam odkazů klien
 
 Adresář Wingtip aplikace používá [ *Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) k řízení distribuce příchozí požadavky. Adresa URL pro přístup k stránky události pro konkrétní klienta používá následující formát:
 
-- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt; uživatele&gt;.trafficmanager.net/fabrikamjazzclub
 
     V následující tabulce jsou vysvětleny části předchozí formátu.
 
     | Část adresy URL        | Popis       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Části události Wingtip aplikace.<br /><br /> *-dpt* odlišuje *databáze za klienta* implementace Wingtip lístků oproti jiným implementacím. Příklady *samostatné* aplikace za klienta (*-sa*) nebo *víceklientské databáze* (*- mt*) implementace. |
-    | .*&lt;user&gt;* | *af1* v příkladu. |
+    | .  *&lt;uživatele&gt;* | *af1* v příkladu. |
     | .trafficmanager.net/ | Správce provozu základní adresu URL. |
     | fabrikamjazzclub | Identifikuje klienta s názvem křížovou kartou Jazz Fabrikam. |
     | &nbsp; | &nbsp; |
@@ -234,7 +235,7 @@ Teď, když jste spuštění, spuštění zátěžového proti kolekci klientů,
 
 Po *LoadGenerator.ps1* spuštění pro několik minut, dostatek data by měla být k dispozici pro zahájení vyhledávání v některé možnosti monitorování. Tyto možnosti jsou integrovány do fondů a databází.
 
-Přejděte na server **tenants1-dpt -&lt;uživatele&gt;**a vyberte **Pool1** zobrazení využití prostředků pro fond. V následující grafy generátor zatížení spustili jednu hodinu.
+Přejděte na server **tenants1-dpt -&lt;uživatele&gt;** a vyberte **Pool1** zobrazení využití prostředků pro fond. V následující grafy generátor zatížení spustili jednu hodinu.
 
    ![Monitorování fondu](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

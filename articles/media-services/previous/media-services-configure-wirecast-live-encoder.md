@@ -14,11 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 2de7c06f2e03432021eaf6d81d166aadd392a4bf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 25193232263d55cb56c6ca35a8d1a074ce6bb157
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637986"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Pomocí kodéru Wirecast odesílat živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
@@ -69,7 +70,7 @@ Při spouštění kanál můžete [nakonfigurovat kodér](media-services-configu
 >
 >
 
-## <a id=configure_wirecast_rtmp></a>Konfigurace kodér Telestream wirecast
+## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a>< id = "configure_wirecast_rtmp" /a > Konfigurovat kodér Telestream wirecast
 V tomto kurzu se používají následující nastavení výstup. Zbývající část tohoto oddílu popisuje kroky konfigurace podrobněji.
 
 **Video**:
@@ -115,7 +116,7 @@ V tomto kurzu se používají následující nastavení výstup. Zbývající č
    * Vzorkovací frekvence: 44 100 kHz
 
      ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
-6. Stiskněte klávesu **Uložit**.
+6. Stiskněte **Uložit**.
 
     Pole Encoding má nyní k dispozici pro výběr nově vytvořený profil.
 

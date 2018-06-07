@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: srrengar
-ms.openlocfilehash: 4fcf8c514cb785dbb0a149e5b3073fc72937b68a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f7fe07500f877cf34626e53361c9c68dd459a5e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643171"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorovací a diagnostické pro Azure Service Fabric
 
@@ -46,9 +47,6 @@ Service Fabric nabízí komplexní sadu událostí mimo pole. Tyto [události Se
 Doporučujeme pomocí EventStore pro rychlé analýzy a získat snímku představu o tom, jak váš cluster pracuje a pokud událostem dochází jako očekává. Pro shromažďování protokolů a událostí generovaných cluster, obvykle doporučujeme používat [rozšíření Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md). To se integruje s Service Fabric analýzy, analýzy protokolů OMS Service Fabric specifického řešení, které poskytuje vlastní řídicí panel pro monitorování clusterů Service Fabric a umožňuje dotazování události vašeho clusteru a nastavit výstrahy. Další informace o to v [analýza události s OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
  Si můžete přečíst informace o monitorování clusteru na [platformy úrovně událostí a protokolu generování](service-fabric-diagnostics-event-generation-infra.md).
-
-
- ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
 ## <a name="performance-monitoring"></a>Sledování výkonu
 Monitorování infrastruktury základní je klíčovou součástí pochopení stav clusteru a vaše využití prostředků. Měření výkonu systému, závisí na několika faktorech, z nichž každý se většinou měří prostřednictvím klíčových ukazatelů výkonu (KPI). Service Fabric relevantní klíčových ukazatelů výkonu lze mapovat na metriky, které mohou být shromažďovány z uzlů v clusteru, jako čítače výkonu.

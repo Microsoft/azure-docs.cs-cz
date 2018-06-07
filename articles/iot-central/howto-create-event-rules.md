@@ -1,18 +1,19 @@
 ---
 title: Vytvoření a Správa pravidel událostí v aplikaci Azure IoT centrální | Microsoft Docs
 description: Pravidla událostí ve službě Azure IoT střed umožňují sledovat vaše zařízení skoro v reálném čase a automaticky vyvolání akce, například odeslání e-mailu, když se pravidlo spustí.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/29/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932b1906b767ee7676f46ffd7242ad3d478d41c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 30223fdca9d848ddc407981bf4a3ca683a10575a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628364"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvořit pravidlo události a vytvořit oznámení v aplikaci Azure IoT centrální
 
@@ -20,7 +21,7 @@ Microsoft Azure IoT centrální můžete použít pro vzdálené monitorování 
 
 Střed Azure IoT používá [měření událostí](howto-set-up-template.md) k zaznamenání dat o zařízení. Každý typ měření má klíčové atributy, které definují měření. Můžete vytvořit pravidla pro každý typ měření zařízení monitorování a generování výstrah v případě, že pravidlo spustí. Pravidlo událost se aktivuje při události vybrané zařízení je hlášen zařízení.
 
-## <a name="create-an-event-rule"></a>Vytvoření pravidla události
+## <a name="create-an-event-rule"></a>Vytvoření pravidla událostí
 
 V této části se dozvíte, jak vytvořit pravidlo události. Tento příklad používá chladicí prodejních strojové zařízení této sestavy ventilátor motor chybová událost. Pravidlo sleduje události údajů ze zařízení a odešle e-mail, vždy, když se použije v hlášení události.
 

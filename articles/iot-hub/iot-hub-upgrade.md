@@ -1,23 +1,19 @@
 ---
 title: Upgrade služby Azure IoT Hub | Microsoft Docs
 description: Změňte úroveň cen a škálování pro IoT Hub získat další možnosti správy zařízení a zasílání zpráv.
-services: iot-hub
-documentationcenter: ''
 author: kgremban
 manager: timlt
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: d383d26b406c012b6b76225faf89f4b5dbd6bb9c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 472115f166adc5385b6f46b2f3ac5ef75a6cde92
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637272"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Postup upgradu služby IoT hub
 

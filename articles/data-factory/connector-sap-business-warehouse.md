@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 900f6a2a8e75cc43a3cfaa0c9e7b8d91f57ea20d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5af46017dede0deac92ff5a7f35f17e083590d6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618602"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +45,7 @@ Konkrétně tento konektor SAP Business Warehouse podporuje:
 Chcete-li použít tento konektor SAP Business Warehouse, budete muset:
 
 - Nastavte Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku.
-- Nainstalujte **SAP NetWeaver knihovny** na počítači integrace modulu Runtime. Knihovna SAP Netweaver získáte od správce SAP, nebo přímo z [SAP služby Stažení softwaru](https://support.sap.com/swdc). Vyhledejte **&#1025361; Poznámka SAP** získat umístění stahování na nejnovější verzi. Ujistěte se, že vyberete **64-bit** SAP NetWeaver knihovny, která odpovídá vaší instalace integrace modulu CLR. Nainstalujte všechny soubory, které jsou součástí sady SDK SAP NetWeaver RFC podle Poznámka SAP. Knihovna SAP NetWeaver jsou také obsaženy v nástrojích klienta SAP instalace.
+- Nainstalujte **SAP NetWeaver knihovny** na počítači integrace modulu Runtime. Knihovna SAP Netweaver získáte od správce SAP, nebo přímo z [SAP služby Stažení softwaru](https://support.sap.com/swdc). Vyhledejte **1025361 # Poznámka SAP** získat umístění stahování na nejnovější verzi. Ujistěte se, že vyberete **64-bit** SAP NetWeaver knihovny, která odpovídá vaší instalace integrace modulu CLR. Nainstalujte všechny soubory, které jsou součástí sady SDK SAP NetWeaver RFC podle Poznámka SAP. Knihovna SAP NetWeaver jsou také obsaženy v nástrojích klienta SAP instalace.
 
 > [!TIP]
 > Uveďte knihovny DLL do složky system32 extrahována ze sady SDK NetWeaver RFC.
@@ -65,7 +66,7 @@ Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následují
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému SAP BW systému.<br/>Povolené hodnoty: letopočty řetězec desetinné číslo. | Ano |
 | clientId | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: třímístné řetězec desetinné číslo. | Ano |
-| userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| Uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | heslo | Heslo pro uživatele. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
@@ -173,17 +174,17 @@ Při kopírování dat z SAP BW, se používají následující mapování z typ
 | AKTUÁLNÍ | Decimal |
 | CUKY | Řetězec |
 | DEC | Decimal |
-| FLTP | Dvojitý |
+| FLTP | Double |
 | INT1 | Bajtů |
 | INT2 | Int16 |
 | INT4 | Int |
 | JAZYK | Řetězec |
 | LCHR | Řetězec |
-| LRAW | Byte[] |
+| LRAW | Byte] |
 | PREC | Int16 |
 | QUAN | Decimal |
-| NEZPRACOVANÁ | Byte[] |
-| RAWSTRING | Byte[] |
+| NEZPRACOVANÁ | Byte] |
+| RAWSTRING | Byte] |
 | ŘETĚZEC | Řetězec |
 | JEDNOTKA | Řetězec |
 | SOUBORY DAT | Řetězec |

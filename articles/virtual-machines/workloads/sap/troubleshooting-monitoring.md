@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží a monitorování SAP HANA v Azure (velké instance) | Microsoft Docs"
-description: "Řešení potíží a monitorovat SAP HANA na Azure (velké instance)."
+title: Řešení potíží a monitorování SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Řešení potíží a monitorovat SAP HANA na Azure (velké instance).
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 41fbeb848d7d97e5ee41a2221b69cc88380dc1e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657192"
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>Postup řešení potíží a monitorovat SAP HANA (velké instance) na Azure
 
@@ -71,7 +72,7 @@ Jako první krok zkontrolujte aktuální výstrahy protokoly SAP HANA. V systém
 
 ![V systému SAP HANA Studio přejděte do konzoly pro správu: upozornění: zobrazení: všechny výstrahy](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
-**VYUŽITÍ PROCESORU**
+**CPU**
 
 Pro aktivaci z důvodu nesprávné prahová hodnota nastavení výstrahu řešení je resetovat na výchozí hodnotu nebo přijatelnější prahovou hodnotu.
 

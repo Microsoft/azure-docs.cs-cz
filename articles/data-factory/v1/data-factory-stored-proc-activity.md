@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3a0d6998671df7f05d7077da6fffc20a5bf27e8a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622495"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Systému SQL Server uložené procedury aktivity
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -313,7 +314,7 @@ Následující tabulka popisuje tyto vlastnosti JSON:
 | jméno | Název aktivity |Ano |
 | description |Text popisující, co se používá aktivitu pro |Ne |
 | type | Musí být nastavena na: **SqlServerStoredProcedure** | Ano |
-| Vstupy | Volitelné. Pokud zadáte vstupní datové sady, musí být k dispozici (v 'Připravený' stav) se spouští aktivita uložené procedury. Vstupní datové sady nelze zpracovat v uložené proceduře jako parametr. Používá se pouze ke kontrole závislost před zahájením aktivity uložené procedury. |Ne |
+| vstupy | Volitelné. Pokud zadáte vstupní datové sady, musí být k dispozici (v 'Připravený' stav) se spouští aktivita uložené procedury. Vstupní datové sady nelze zpracovat v uložené proceduře jako parametr. Používá se pouze ke kontrole závislost před zahájením aktivity uložené procedury. |Ne |
 | výstupy | Je nutné zadat výstupní datovou sadu aktivity uložené procedury. Určuje výstupní datovou sadu **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně, atd.). <br/><br/>Musíte použít výstupní datovou sadu **propojená služba** který odkazuje na databázi SQL Azure nebo Azure SQL Data Warehouse nebo databázi SQL Server, který chcete spustit uloženou proceduru. <br/><br/>Výstupní datovou sadu může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování pomocí jiné aktivity ([řetězení aktivity](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) v kanálu. Ale objekt pro vytváření dat nelze zapsat automaticky výstup uložené procedury pro tuto datovou sadu. Je uložené procedury, která zapisuje do tabulky SQL, odkazující na výstupní datovou sadu. <br/><br/>V některých případech může být výstupní datovou sadu **fiktivní datovou sadu**, který slouží pouze k určení plánu pro spuštěnou aktivity uložené procedury. |Ano |
 | storedProcedureName |Zadejte název uložené procedury v Azure SQL database nebo databáze Azure SQL Data Warehouse nebo SQL Server, která je reprezentována propojené služby, která používá výstupní tabulka. |Ano |
 | storedProcedureParameters |Zadejte hodnoty pro parametry uložené procedury. Pokud potřebujete předat hodnotu null pro parametr, použijte syntaxi: "param1": null (všechny malá písmena). Viz následující ukázka Další informace o používání této vlastnosti. |Ne |

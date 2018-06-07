@@ -1,22 +1,19 @@
 ---
 title: Služba koncepty ve službě Azure IoT Hub zařízení zřizování Service | Microsoft Docs
 description: Popisuje zřizování koncepty služby specifické pro zařízení s distribučních bodů a IoT Hub
-services: iot-dps
-keywords: ''
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: d2bc58514ea716954ec3ac96151549168fedc2ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628296"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Koncepty služby zřizování zařízení IoT Hub
 
@@ -45,7 +42,7 @@ Služba zřizování zařízení můžete zřídit jenom zařízení do centra I
 * **Nejnižší latenci**: zřízení zařízení do služby IoT hub s nejnižší latencí do zařízení. Více propojené služby IoT hubs by poskytovat stejné nejnižší latenci, zřizování služby hashuje zařízení v těchto rozbočovače
 * **Konfigurace statické prostřednictvím seznamu registrace**: specifikace požadované služby IoT hub v seznamu registrace přednost zásada přidělování úrovně služeb.
 
-## <a name="enrollment"></a>Zápis
+## <a name="enrollment"></a>Registrace
 
 Zápisu je záznam zařízení nebo skupin zařízení, která může zaregistrovat prostřednictvím automatické zřizování. Záznam zápisu obsahuje informace o zařízení nebo skupině zařízení, včetně:
 - [ověření mechanismu](concepts-security.md#attestation-mechanism) používá zařízení

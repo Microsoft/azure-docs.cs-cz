@@ -1,25 +1,22 @@
 ---
-title: "Přidejte konektor Office 365 uživatelé v Logic Apps | Microsoft Docs"
-description: "Přehled konektoru uživatelé služeb Office 365 s parametry rozhraní REST API"
-services: 
-documentationcenter: 
+title: Připojení k Office 365 uživatelé – Azure Logic Apps | Microsoft Docs
+description: Spravovat profily uživatelů pomocí Office 365 uživatelé REST API a Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: b2146481-9105-4f56-b4c2-7ae340cb922f
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 3d281bcb8e1d0ba4d1eb0b636bdd618340399898
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 92eaa2f323da9a96b0be4379d2dbcea8d90733e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609424"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Začínáme s konektorem uživatelé Office 365.
 Připojte k Office 365 uživatelům profily, uživatelé vyhledávající a další. Uživatelé služeb Office 365 můžete:

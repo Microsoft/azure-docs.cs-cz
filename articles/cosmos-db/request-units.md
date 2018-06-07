@@ -4,20 +4,17 @@ description: Další informace o tom, jak porozumět, zadejte a odhadnout požad
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: d0a3c310-eb63-4e45-8122-b7724095c32f
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: MT
+ms.openlocfilehash: b8084008089225c11c8052c60be3afc152881040
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34614828"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 
@@ -25,7 +22,7 @@ ms.lasthandoff: 05/10/2018
 
 Měna pro Azure Cosmos DB se **jednotka žádosti (RU)**. S RUs není potřeba rezervovat kapacity pro čtení a zápis nebo přidělení procesoru, paměti a procesorů. Azure Cosmos DB podporuje několik rozhraní API s různé operace, od jednoduchého čte a zapisuje do grafu komplexní dotazy. Vzhledem k tomu, že ne všechny požadavky jsou stejné, jsou přiřazeny normalizovaný objemu **požadované jednotky** založenou na velikosti výpočty potřebné k požadavek vyřídit. Počet jednotek žádosti operace je deterministická, a můžete sledovat počet jednotek žádosti spotřebovávají všechny operace v Azure Cosmos DB prostřednictvím hlavičky odpovědi. 
 
-Zajistit předvídatelný výkon, budete muset rezervovat propustnost v jednotkách 100 RU za sekundu. Můžete [odhadnout, musí vaše propustnost](request-units.md#estimating-throughput-needs) pomocí Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
+Pokud chcete zajistit předvídatelný výkon, musíte rezervovat propustnost v jednotkách 100 RU/s. Můžete [odhadnout, musí vaše propustnost](request-units.md#estimating-throughput-needs) pomocí Azure Cosmos DB [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
 
 ![Propustnost kalkulačky][5]
 

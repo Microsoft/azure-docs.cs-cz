@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55fde1a1a61f8ec0479cd264b2ce4dd37789c5a4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b87ed8b9d9b43de81bfe4173d117d9f1e2bd7abd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622002"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Přesun dat z OData zdroje pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,7 +65,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
 | type |Vlastnost typu musí být nastavena na: **OData** |Ano |
-| Adresa URL |Adresa URL služby OData. |Ano |
+| url |Adresa URL služby OData. |Ano |
 | authenticationType. |Typ ověřování používaný pro připojení ke zdroji OData. <br/><br/> Možné hodnoty pro cloudové prostředí OData, jsou anonymní, základní a OAuth (Upozorňujeme, že Azure Active Directory na základě OAuth aktuálně jedinou podpory Azure Data Factory). <br/><br/> Pro místní OData možné hodnoty jsou anonymní, Basic a Windows. |Ano |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (jenom Pokud používáte základní ověřování) |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (jenom Pokud používáte základní ověřování) |
@@ -159,7 +160,7 @@ Pokud je zdroj typu **RelationalSource** (která zahrnuje OData) následující 
 
 | Vlastnost | Popis | Příklad: | Požaduje se |
 | --- | --- | --- | --- |
-| query |Čtení dat pomocí vlastního dotazu. |"?$select=Name, Description&$top=5" |Ne |
+| query |Čtení dat pomocí vlastního dotazu. |"? $select = název, popis a $top = 5" |Ne |
 
 ## <a name="type-mapping-for-odata"></a>Mapování typu pro OData
 Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.md) článku aktivita kopírování provádí automatické typ převody z typů zdroje do jímky typů s následující postup ve dvou krocích.
@@ -169,23 +170,23 @@ Jak je uvedeno v [aktivity přesunu dat](data-factory-data-movement-activities.m
 
 Při přesouvání dat od OData, se používají následující mapování z typů OData k typ formátu .NET.
 
-| Typ dat OData | .NET Type |
+| Typ dat OData | Typ formátu .NET |
 | --- | --- |
-| Edm.Binary |Byte[] |
-| Edm.Boolean |Logická hodnota (Bool) |
-| Edm.Byte |Byte[] |
+| Edm.Binary |Byte] |
+| Edm.Boolean |BOOL |
+| Edm.Byte |Byte] |
 | Edm.DateTime |DateTime |
 | Edm.Decimal |Decimal |
-| Edm.Double |Dvojitý |
-| Edm.Single |Svobodný/svobodná |
+| Edm.Double |Double |
+| Edm.Single |Jednoduchá |
 | Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
 | Edm.String |Řetězec |
-| Edm.Time |TimeSpan |
-| Edm.DateTimeOffset |DateTimeOffset |
+| Edm.Time |Časový interval |
+| Edm.DateTimeOffset |Datový typ DateTimeOffset |
 
 > [!Note]
 > Komplexní data OData typy například objekt nejsou podporovány.

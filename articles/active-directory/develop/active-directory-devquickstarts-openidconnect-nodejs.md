@@ -17,11 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 90c70837b3afb589e5a503681aa9cd7cf1dae930
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594106"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Začínáme se službou Azure AD Node.js webové aplikace
 Tady používáme Passport:
@@ -61,6 +62,10 @@ Dokončená aplikace je k dispozici na konci tohoto kurzu také.
 
 6. Po registraci, Azure AD přiřadí vaší aplikace ID jedinečný aplikace. Je třeba tuto hodnotu v následujících částech, zkopírujte jej ze stránky aplikace.
 7. Z **nastavení** -> **vlastnosti** stránky pro aplikace, aktualizujte identifikátor ID URI aplikace. **Identifikátor ID URI aplikace** je jedinečný identifikátor pro vaši aplikaci. Konvence, je použít formát `https://<tenant-domain>/<app-name>`, například: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+8. Pokud chcete vytvořit tajný klíč, postupujte podle kroku 4 v [přidat přihlašovací údaje aplikací nebo oprávnění pro přístup k webové rozhraní API](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis).
+
+   > [!IMPORTANT]
+   > Zkopírujte hodnotu klíče aplikace. Toto je hodnota `clientSecret`, které budete potřebovat pro **krok 3** níže. 
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>Krok 2: Přidání požadovaných součástí do adresáře
 1. Z příkazového řádku, změňte adresáře na kořenové složky a pokud si nejste již existuje, a poté spusťte následující příkazy:

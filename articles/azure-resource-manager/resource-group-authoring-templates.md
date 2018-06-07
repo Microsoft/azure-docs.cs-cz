@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/01/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4fa610f144277b73bb6d555d46e63a01c413e07e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f7dfdc4319e50e7a6c1c6032c27de5c76397e8de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603072"
 ---
-# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu a syntaxe šablon Azure Resource Manager
+# <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu a syntaxe šablon Azure Resource Manageru
 Tento článek popisuje strukturu šablony Azure Resource Manager. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto částech. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Formát šablony
-Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
+Ve své nejjednodušší struktuře šablona má následující prvky:
 
 ```json
 {
@@ -41,14 +42,14 @@ Ve své nejjednodušší struktuře šablonu obsahuje následující prvky:
 | Název elementu | Požaduje se | Popis |
 |:--- |:--- |:--- |
 | $schema |Ano |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony. Použijte adresu URL v předchozím příkladu. |
-| contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Můžete zadat jakoukoli hodnotu pro tento element. Při nasazení prostředků pomocí šablony, tuto hodnotu lze zajistit, aby se používal správnou šablonu. |
+| contentVersion |Ano |Verze šablony (jako je například 1.0.0.0). Můžete zadat jakoukoli hodnotu pro tento element. Použijte tuto hodnotu zdokumentovat významné změny v šabloně. Při nasazení prostředků pomocí šablony, tuto hodnotu lze zajistit, aby se používal správnou šablonu. |
 | parameters |Ne |Hodnoty, které jsou k dispozici při nasazení pro přizpůsobení nasazení prostředků. |
 | proměnné |Ne |Hodnoty, které se používá jako fragmenty JSON v šabloně, které zjednodušují výrazy jazyka šablony. |
 | functions |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
 | zdroje |Ano |Typy prostředků, které jsou nasazené nebo aktualizovány v skupinu prostředků. |
 | výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
 
-Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příklad obsahuje úplnou syntaxí šablony:
+Každý prvek obsahuje vlastnosti, které můžete zadat. Následující příklad ukazuje úplnou syntaxí šablony:
 
 ```json
 {
@@ -194,7 +195,7 @@ Následující příklad ukazuje definici jednoduchého parametr:
 Informace o definování parametrů najdete v tématu [oddílu parametry šablon Azure Resource Manager](resource-manager-templates-parameters.md).
 
 ## <a name="variables"></a>Proměnné
-V sekci proměnných můžete vytvořit hodnoty, které lze použít v celé vaší šablony. Není potřeba definovat proměnné, ale jejich často zjednodušit vaše šablony snížením složité výrazy.
+V sekci proměnných můžete vytvořit hodnoty, které lze použít v celé vaší šablony. Nemusíte definovat proměnné, ale jejich často zjednodušit vaše šablony snížením složité výrazy.
 
 Následující příklad ukazuje definici jednoduché proměnné:
 
@@ -208,7 +209,7 @@ Informace o definování proměnné najdete v tématu [části proměnných šab
 
 ## <a name="functions"></a>Functions
 
-V rámci šablony můžete vytvořit své vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Obvykle můžete definovat složitý výraz, který nechcete opakování v celé vaší šablony. Vytvořit uživatelsky definované funkce z výrazů a [funkce](resource-group-template-functions.md) jsou podporovány v šablonách.
+V rámci šablony můžete vytvořit své vlastní funkce. Tyto funkce jsou k dispozici pro použití ve vaší šabloně. Obvykle můžete definovat složitý výraz, který nechcete, aby opakování v celé vaší šablony. Vytvořit uživatelsky definované funkce z výrazů a [funkce](resource-group-template-functions.md) jsou podporovány v šablonách.
 
 Při definování uživatele funkce, platí určitá omezení:
 

@@ -1,6 +1,6 @@
 ---
-title: "Testovací převzetí služeb při selhání do Azure ve službě Azure Site Recovery | Microsoft Docs"
-description: "Další informace o spouštění testovací převzetí služeb z místního do Azure pomocí služby Azure Site Recovery."
+title: Testovací převzetí služeb při selhání do Azure ve službě Azure Site Recovery | Microsoft Docs
+description: Další informace o spouštění testovací převzetí služeb z místního do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: raynew
-ms.openlocfilehash: bfc9df3c1190d9b94f5e8d726665acb7f999311f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bdbeee0e0caaa0e6db7249c2f4aeaa19d5d2ed0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643647"
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Testovací převzetí služeb při selhání do Azure ve službě Site Recovery
 
@@ -40,7 +41,7 @@ Tento postup popisuje, jak spouštět testovací převzetí služeb při selhán
 
     - Pokusy o obnovení lokality vytvořit testovací virtuální počítače v podsíti se stejným názvem a stejné IP adresy, který je součástí **výpočty a síť** nastavení virtuálního počítače.
     - Pokud se stejným názvem podsíť není k dispozici ve virtuální síti Azure, použít pro testovací převzetí služeb při selhání, pak testovací virtuální počítač je vytvořený na první podsíť abecedně.
-    - Pokud stejnou IP adresu není dostupná v podsíti, virtuální počítač přijímá další dostupnou IP adresu v podsíti. [Další informace](#creating-a-network-for-test-failover).
+    - Pokud stejnou IP adresu není dostupná v podsíti, virtuální počítač přijímá další dostupnou IP adresu v podsíti. [Další informace](#create-a-network-for-test-failover).
 4. Pokud jste selhání do Azure a je-li povoleno šifrování dat, v **šifrovací klíč**, vyberte certifikát, který byl vydán, když je povolené šifrování během instalace zprostředkovatele. Můžete tento krok ignorovat šifrování není povoleno.
 5. Sledovat průběh převzetí služeb při selhání **úlohy** kartě. Nyní byste měli mít najdete v části testovací počítač repliky na portálu Azure.
 6. Chcete-li iniciovat připojení ke vzdálené ploše virtuálního počítače Azure, je potřeba [přidejte veřejnou IP adresu](https://aka.ms/addpublicip) v síťovém rozhraní selhání virtuálního počítače. 
@@ -70,7 +71,7 @@ V následujících scénářích převzetí služeb při selhání vyžaduje vel
     * VMBus
     * storflt
     * Intelide
-    * atapi
+    * ATAPI
 * VMware virtuální počítač, který není k dispozici server DHCP, rrespective, jestli jsou použití DHCP nebo statické IP adresy.
 
 Ve všech ostatních případech žádný zprostředkující krok není povinný a převzetí služeb při selhání zabere to výrazně méně času.

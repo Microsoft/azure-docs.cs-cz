@@ -12,13 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1d0ae04bee6d50456949529449b658907d338f91
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 96cc7aeb5fd1c64dc3793a801a4a5b759e7558b9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652868"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -50,7 +51,7 @@ Následující Linuxových distribucích jsou aktuálně podporovány ve verzi P
 
 Ve verzi Preview této funkce jsou aktuálně podporovány následující oblasti:
 
-- Všechny veřejné oblasti Azure
+- Všechny globální oblasti Azure
 
 >[!IMPORTANT]
 > Chcete-li použít tuto funkci verze preview, se nasadit jenom podporované distro Linux a v podporované oblasti Azure. Funkce není podporována v Azure Government nebo svrchovaných cloudy.
@@ -74,7 +75,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-Jak dlouho trvá několik minut pro vytvoření virtuálního počítače a doprovodné materiály.
+Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Instalace Azure AD přihlášení rozšíření virtuálního počítače
 
@@ -111,6 +112,9 @@ az role assignment create \
     --assignee $username \
     --scope $vm
 ```
+
+> [!NOTE]
+> Pokud AAD domény a přihlašovací uživatelské jméno domény se neshodují, je nutné zadat ID objektu váš uživatelský účet s *– id objektu zmocněnec*, ne jenom uživatelské jméno pro *– zmocněnec*. ID objektu můžete získat pro váš uživatelský účet s [seznam uživatelů ad az](/cli/azure/ad/user#az-ad-user-list).
 
 Další informace o tom, jak používat funkci RBAC můžete spravovat přístup k prostředkům na předplatné Azure, najdete v části pomocí [Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md), [portál Azure](../../role-based-access-control/role-assignments-portal.md), nebo [prostředí Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
@@ -167,6 +171,10 @@ Pokud úspěšně dokončit krok ověřování ve webovém prohlížeči, může
 - Ověřte, zda je správný název přihlášení, který jste zadali na řádku SSH. Máte překlep v názvu přihlášení může způsobit neshodu mezi název přihlášení, který jste zadali na řádku SSH a účet, který jste přihlášení ke službě Azure AD s. Například jste zadali *azuresuer@contoso.onmicrosoft.com* místo *azureuser@contoso.onmicrosoft.com*.
 - Pokud máte víc uživatelských účtů, ujistěte se, že neposkytnete jiného uživatelského účtu v okně prohlížeče se při přihlášení do služby Azure AD.
 - Linux je malá a velká písmena operační systém. Existuje rozdíl mezi 'Azureuser@contoso.onmicrosoft.com'a'azureuser@contoso.onmicrosoft.com", což může způsobit neshodu. Zajistěte, aby zadejte hlavní název uživatele s správné rozlišování řádku SSH.
+
+## <a name="preview-feedback"></a>Zpětná vazba Preview
+
+Sdílet vaši zpětnou vazbu o této verzi preview funkce nebo sestava problémy pomocí na [fóru pro zpětnou vazbu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)
 
 ## <a name="next-steps"></a>Další postup
 

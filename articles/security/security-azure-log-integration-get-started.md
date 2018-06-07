@@ -12,21 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/20/2018
-ms.author: TomSh
+ms.date: 05/25/2018
+ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 3e229c4db44fc3c8d16aa2bd0a014fb1acc64a5e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8ceffb666eb18ee7b087ad1e1dbc27b57388ee49
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641192"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Protokol integrace se službou Azure s Azure Diagnostics protokolování a předávání událostí systému Windows
 
-Integrace se službou Azure protokolu poskytuje zákazníkům s alternativní Pokud [Azure monitorování](../monitoring-and-diagnostics/monitoring-get-started.md) konektor není k dispozici od jejich dodavatele incidentu zabezpečení a událostí správy (SIEM). Integrace se službou Azure protokolu zpřístupní Azure protokoly do vašeho systému SIEM, můžete vytvořit řídicí panel jednotná zabezpečení pro všechny prostředky.
+Integrace Azure protokolu měli používat jenom v případě [Azure monitorování](../monitoring-and-diagnostics/monitoring-get-started.md) konektor není k dispozici od dodavatele incidentu zabezpečení a událostí správy (SIEM).
 
-> [!NOTE]
-> Další informace o monitorování Azure najdete v tématu [Začínáme s Azure monitorování](../monitoring-and-diagnostics/monitoring-get-started.md). Další informace o stavu konektoru služby Azure monitorování obraťte se na dodavatele systému SIEM.
+Integrace se službou Azure protokolu zpřístupní Azure protokoly do vašeho systému SIEM, můžete vytvořit řídicí panel jednotná zabezpečení pro všechny prostředky.
+Další informace o stavu konektoru služby Azure monitorování obraťte se na dodavatele systému SIEM.
 
 > [!IMPORTANT]
 > Pokud vaše primární týkající se shromažďování protokolů virtuálního počítače, většina dodavatelů SIEM zahrnout tuto možnost jejich řešení. Použití systému SIEM dodavatele konektor je vždy upřednostňované alternativní.
@@ -118,7 +119,7 @@ Po dokončení základní nastavení, jste připraveni k provedení kroků po in
   > [!NOTE]
   > Při úspěšném provedení příkazu není zobrazí zpětnou vazbu. 
 
-4. Aby bylo možné sledovat systému, je třeba název účtu úložiště, který se používá pro Azure Diagnostics. V portálu Azure přejděte do **virtuální počítače**. Vyhledejte virtuální počítač, který můžete monitorovat. V **vlastnosti** vyberte **nastavení pro diagnostiku**.  Pak vyberte **agenta**. Poznamenejte si název účtu úložiště, který je zadán. Je třeba tento název účtu pro později.
+4. Aby bylo možné sledovat systému, je třeba název účtu úložiště, který se používá pro Azure Diagnostics. V portálu Azure přejděte do **virtuální počítače**. Vyhledejte virtuálního počítače s Windows, který budete sledovat. V **vlastnosti** vyberte **nastavení pro diagnostiku**.  Pak vyberte **agenta**. Poznamenejte si název účtu úložiště, který je zadán. Je třeba tento název účtu pro později.
 
   ![Snímek obrazovky podokna nastavení diagnostiky Azure](./media/security-azure-log-integration-get-started/storage-account-large.png) 
 
@@ -134,14 +135,14 @@ Po dokončení základní nastavení, jste připraveni k provedení kroků po in
   4. Přihlaste se k Azure.
   5. Ověřte, zda se zobrazí účet úložiště, který jste nakonfigurovali pro Azure Diagnostics: 
 
-    ![Snímek obrazovky účty úložiště ve Storage Exploreru](./media/security-azure-log-integration-get-started/storage-explorer.png)
+   ![Snímek obrazovky účty úložiště ve Storage Exploreru](./media/security-azure-log-integration-get-started/storage-explorer.png)
 
   6. Tyto možnosti se zobrazí pod účty úložiště. V části **tabulky**, měli byste vidět tabulce s názvem **WADWindowsEventLogsTable**.
 
   Pokud při vytvoření virtuálního počítače není zapnuté monitorování, můžete ji můžete povolit, jak bylo popsáno výše.
 
 
-## <a name="integrate-azure-diagnostics-logging"></a>Integrovat Azure Diagnostics protokolování
+## <a name="integrate-windows-vm-logs"></a>Integrovat protokoly systému Windows virtuálního počítače
 
 V tomto kroku nakonfigurujete počítači spuštěna služba integrace se službou Azure protokol pro připojení k účtu úložiště, který obsahuje soubory protokolu.
 
@@ -178,7 +179,7 @@ Získat klíč úložiště, proveďte následující kroky:
 
   `Azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>`
   
-  Příklad: 
+  Příklad:
   
   `Azlog source add Azlogtest.YourSubscriptionID WAD Azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==`
 
@@ -207,8 +208,37 @@ Pokud narazíte na potíže během instalace a konfigurace, můžete vytvořit [
 
 Další možností podpory je [fórum MSDN integrace protokolu Azure](https://social.msdn.microsoft.com/Forums/home?forum=AzureLogIntegration). Ve fóru MSDN komunity zajistí podporu odpovědi na otázky a sdílení tipy a triky o tom, jak co nejlépe využít protokolu integrace se službou Azure. Integrace se službou Azure protokolu team také monitoruje tomto fóru. Mohou pomoci při každém mohou.
 
+## <a name="integrate-azure-activity-logs"></a>Integrovat protokoly Azure aktivity
+
+Protokol činnosti Azure je protokol odběru, který poskytuje přehled o události na úrovni předplatného, k nimž došlo v Azure. To zahrnuje celou řadu dat z provozních dat Azure Resource Manager aktualizací na události stavu služby. Azure Security Center výstrahy jsou také uvedené v tomto protokolu.
+> [!NOTE]
+> Před provedením kroků v tomto článku, je nutné si [Začínáme](security-azure-log-integration-get-started.md) článek a dokončete existuje.
+
+### <a name="steps-to-integrate-azure-activity-logs"></a>Kroky pro integraci protokoly aktivita služby Azure
+
+1. Otevřete příkazový řádek a spusťte tento příkaz:  ```cd c:\Program Files\Microsoft Azure Log Integration```
+2. Spusťte tento příkaz:  ```azlog createazureid```
+
+    Tento příkaz zobrazí výzvu k přihlášení Azure. Příkaz vytvoří Azure Active Directory instančního objektu v klienty Azure AD, které jsou hostiteli předplatná Azure, ve kterých přihlášený uživatel je správce, spolusprávce nebo vlastníka. Příkaz se nezdaří, pokud je uživatel přihlášený pouze uživatel guest v klientovi Azure AD. Ověřování do Azure se provádí prostřednictvím služby Azure AD. Vytvoření objektu služby pro integraci protokolu Azure vytvoří Azure AD identity, který je přiřazen přístup ke čtení z předplatných Azure.
+3.  Spusťte následující příkaz k autorizaci objekt služby protokolu integrace se službou Azure vytvořili v předchozí krok přístup ke čtení protokol aktivit pro předplatné. Musíte být vlastníkem u předplatného ke spuštění příkazu.
+
+    ```Azlog.exe authorize subscriptionId``` Příklad:
+
+```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+4.  Zkontrolujte následující složky pro potvrzení, že jsou v nich vytvořeny soubory JSON protokolů auditu Azure Active Directory:
+    - C:\Users\azlog\AzureResourceManagerJson
+    - C:\Users\azlog\AzureResourceManagerJsonLD
+
+> [!NOTE]
+> Konkrétní pokyny k uvedení informací v souborech JSON do své informace o zabezpečení a událostí systému pro správu (SIEM) obraťte se na dodavatele systému SIEM.
+
+Komunita pomoc je k dispozici prostřednictvím [fórum MSDN integrace protokolu Azure](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration). Toto fórum umožňuje členové komunity protokolu integrace se službou Azure pro podporu navzájem otázky, odpovědi, tipy a triky. Kromě toho týmem protokolu integrace se službou Azure sleduje toto fórum a pomáhá vždy, když je to možné.
+
+Můžete také otevřít [žádost o podporu](../azure-supportability/how-to-create-azure-support-request.md). Vyberte protokol integrace jako službu, pro kterou jsou žádosti o podporu.
+
 ## <a name="next-steps"></a>Další postup
-Další informace o protokolu integrace se službou Azure, najdete v následujících článcích:
+
+Další informace o protokolu integrace se službou Azure, najdete v následujících článcích: před provedením kroků v tomto článku, musí si přečtěte článek Začínáme Get a dokončete existuje.
 
 * [Azure protokolu integrace pro Azure protokoly](https://www.microsoft.com/download/details.aspx?id=53324). Stažení softwaru zahrnuje podrobnosti, požadavky na systém a pokyny k integraci Azure protokolu.
 * [Úvod do integrace Azure protokolu](security-azure-log-integration-overview.md). Tento článek vás seznámí s protokolu integrace se službou Azure, jejích klíčových funkcích a jak to funguje.

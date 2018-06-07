@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 2d332ce0da8622441d31a16a0addb9c06058998c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: df1bb64d0d753ae1853a2212c7c89d2e1613b8bc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657311"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Instalace agenta virtuálního počítače Azure v offline režimu 
 
@@ -108,7 +109,7 @@ Použijte následující postup k instalaci agenta virtuálního počítače v r
 
 Pokud jste vytvořili virtuální počítač pomocí modelu nasazení Resource Manager nasazení, jste hotovi.
 
-### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>Použijte parametr ProvisionGuestAgent vlastnost pro virtuální počítače vytvořené pomocí Azure Resource Manageru
+### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>Použijte parametr ProvisionGuestAgent vlastnost pro klasické virtuální počítače
 
 Pokud vytvoříte virtuální počítač pomocí klasického modelu, použijte modul Azure PowerShell k aktualizaci **parametr ProvisionGuestAgent** vlastnost. Vlastnost informuje Azure, že virtuální počítač má nainstalovaný Agent virtuálního počítače.
 

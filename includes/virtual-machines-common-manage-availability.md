@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8173a5abbbeea38bc831b7cc76898714cd4dd4d4
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dc54c232b972c25e6b21dbbb8a91a0218f17d584
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34670203"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Vysvětlení restartování virtuálních počítačů – údržba vs. výpadek
 Existují tři scénáře, které můžou vést k virtuálnímu počítači v Azure ovlivněný: neplánované hardwaru údržby, nečekané výpadky a plánované údržby.
@@ -20,7 +21,7 @@ Existují tři scénáře, které můžou vést k virtuálnímu počítači v Az
 * K **neplánovaným událostem údržby hardwaru** dochází v případě, kdy platforma Azure předpoví, že dojde k selhání hardwaru nebo jakékoli komponenty platformy přidružené k fyzickému počítači. Když platforma předpoví selhání, vydá událost neplánované údržby hardwaru, aby se snížil dopad na virtuální počítače hostované na tomto hardwaru. Azure s využitím technologie Migrace za provozu migruje službu Virtual Machines z hardwaru, který selhává, na fyzický počítač, který je v pořádku. Migrace za provozu je operace zachovávající virtuální počítač, který pozastaví jenom na krátkou dobu. Paměť, otevřené soubory a síťová připojení se zachovají, ale výkon se může před událostí a/nebo po ní snížit. V případech, kdy není možné použít Migraci za provozu, dojde k neočekávanému výpadku virtuálního počítače, jak je popsáno níže.
 
 
-* **Neočekávaný výpadek** zřídka nastává v případě, že dojde k nějakému selhání hardwaru nebo základní fyzické infrastruktury, na které stojí virtuální počítač. To může zahrnovat selhání místní sítě, selhání místního disku nebo další selhání na úrovni racku. Když se taková selhání detekuje, platformu Azure automaticky migruje (heals) virtuálního počítače do pořádku fyzického počítače ve stejném datovém centru. Během opravné procedury jsou virtuální počítače odstavené (restartují se) a v některých případech dojde ke ztrátě dočasné jednotky. Připojené disky s operačním systémem a datové disky se vždy zachovají. 
+* **Nečekané výpadky** je, když hardware nebo fyzické infrastruktuře pro virtuální počítač neočekávaně selže. To může zahrnovat selhání k místní síti, selhání místní disk nebo jiné chyby úrovně racku. Při zjištění, platformu Azure automaticky migruje (heals) virtuálního počítače do pořádku fyzického počítače ve stejném datovém centru. Během opravné procedury jsou virtuální počítače odstavené (restartují se) a v některých případech dojde ke ztrátě dočasné jednotky. Připojené disky s operačním systémem a datové disky se vždy zachovají. 
 
   Virtuální počítače můžete také plánovaná odstávka k nepravděpodobnému výpadku nebo po havárii, ovlivní celého datového centra nebo i celou oblast. Pro tyto scénáře Azure poskytuje možnosti ochrany včetně [dostupnost zóny](../articles/availability-zones/az-overview.md) a [spárovat oblasti](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions).
 
@@ -40,7 +41,7 @@ Pokud chcete snížit dopad výpadků kvůli jedné nebo několika takovým udá
 Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Tato konfigurace v datacentru zajišťuje, že během buď plánované i neplánované údržby alespoň jeden virtuální počítač je k dispozici a splňuje podmínku 99.95 % smlouva Azure SLA. Další informace najdete v tématu [SLA pro virtuální počítače](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Nenechávejte ve skupině dostupnosti samostatné instance virtuálních počítačů. Na virtuální počítače v takové konfiguraci se nevztahuje garance SLA a během plánovaných událostí údržby čelí výpadkům, kromě případu, kdy samostatný virtuální počítač využívá službu [Storage úrovně Premium](../articles/virtual-machines/windows/premium-storage.md). Na samostatné virtuální počítače, které využívají službu Storage úrovně Premium, se Azure SLA vztahuje.
+> Nenechávejte ve skupině dostupnosti samostatné instance virtuálních počítačů. Na virtuální počítače v takové konfiguraci se nevztahuje garance SLA a během plánovaných událostí údržby čelí výpadkům, kromě případu, kdy samostatný virtuální počítač využívá službu [Premium Storage](../articles/virtual-machines/windows/premium-storage.md). Na samostatné virtuální počítače, které využívají službu Premium Storage, se Azure SLA vztahuje.
 
 Základní platforma Azure každému virtuálnímu počítači ve skupině dostupnosti přiřadí **aktualizační doménu** a **doménu selhání**. Dané skupině dostupnosti se ve výchozím nastavení přiřadí pět aktualizačních domén (u nasazení podle modelu Resource Manager je pak možné počet aktualizačních domén navýšit až na 20), které uživatel nemůže konfigurovat a které představují skupiny virtuálních počítačů a základního fyzického hardwaru, které lze restartovat současně. Pokud je v rámci jedné skupiny dostupnosti nakonfigurováno více než 5 virtuálních počítačů, šestý virtuální počítač se umístí do stejné aktualizační domény jako první virtuální počítač, sedmý se umístí do stejné aktualizační domény jako druhý atd. Restartování aktualizačních domén během plánované údržby nemusí probíhat sekvenčně, ale vždycky se restartuje jenom jedna aktualizační doména. Restartovaná aktualizační doména má 30 minut na zotavení, než se zahájí údržba na jiné aktualizační doméně.
 
@@ -83,7 +84,7 @@ Pokud nástroj pro vyrovnávání zatížení není nakonfigurovaný k vyrovnáv
 
 [Dostupnost zóny](../articles/availability-zones/az-overview.md), nastaví alternativu k dostupnosti, rozbalte položku úroveň řízení, budete muset zachovat dostupnost aplikace a data na virtuální počítače. Zóna dostupnosti je fyzicky oddělená zóna v oblasti Azure. Existují tři zóny dostupnosti za podporovanou oblast Azure. Každou zónu dostupnosti má samostatnou spotřeby zdroje, sítě a chlazení a logicky oddělené od dalších dostupnost zóny v rámci oblasti Azure. Pomocí architektury řešení pro použití replikované virtuální počítače v zóny, můžete chránit vaše aplikace a data před ztrátou datacentru. Pokud dojde k narušení jednu zónu, pak replikované aplikace a data jsou okamžitě dostupné v jiné zóně. 
 
-![Dostupnost zóny](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![Zóny dostupnosti](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
 
 Další informace o nasazení [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) nebo [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) virtuálního počítače v zóně dostupnosti.
 

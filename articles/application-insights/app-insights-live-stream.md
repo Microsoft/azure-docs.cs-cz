@@ -11,15 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 05/24/2018
 ms.author: mbullwin; Soubhagya.Dash
-ms.openlocfilehash: 0c3662984c63195d8fc903c66b27aa253ce419cb
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: 352fff53d9e35ddd8d8e0c107e969357d9c766b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599231"
 ---
-# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Živý datový proud metriky: Diagnostikujte s latencí 1 sekundu & monitorovat 
+# <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Živý datový proud metriky: Diagnostikujte s latencí 1 sekundu & monitorovat
 
 Probe prezenční signál za provozu, v produkční webové aplikace pomocí živý datový proud metriky z [Application Insights](app-insights-overview.md). Vyberte a filtrovat metriky a výkonu čítače pro sledování v reálném čase, bez narušení k službě. Zkontrolujte trasování zásobníku z ukázkové se nezdařilo požadavky a výjimkami. Společně s [profileru](app-insights-profiler.md), [ladicí program snímku](app-insights-snapshot-debugger.md), a [testování výkonu](app-insights-monitor-web-app-availability.md#performance-tests), živý datový proud metriky poskytuje výkonný a neinvazivní nástroj pro diagnostiku pro váš web za provozu lokalita.
 
@@ -34,8 +35,6 @@ Probe prezenční signál za provozu, v produkční webové aplikace pomocí ži
 * Snadno Identifikujte server, který má problémy a filtr, který všechny klíčový ukazatel výkonu nebo live kanálu právě daného serveru.
 
 [![Za provozu metriky streamování videa](./media/app-insights-live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
-
-Živý datový proud metriky je aktuálně k dispozici pro aplikace ASP.NET z běžících místně nebo v cloudu. 
 
 ## <a name="get-started"></a>Začínáme
 
@@ -128,9 +127,37 @@ V souboru applicationinsights.config soubor přidejte AuthenticationApiKey Quick
 ```
 Nebo v kódu, nastavte ji na QuickPulseTelemetryModule:
 
-``` C#
+```csharp
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using Microsoft.ApplicationInsights.Extensibility;
 
-    module.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+             TelemetryConfiguration configuration = new TelemetryConfiguration();
+            configuration.InstrumentationKey = "YOUR-IKEY-HERE";
+
+            QuickPulseTelemetryProcessor processor = null;
+
+            configuration.TelemetryProcessorChainBuilder
+                .Use((next) =>
+                {
+                    processor = new QuickPulseTelemetryProcessor(next);
+                    return processor;
+                })
+                        .Build();
+
+            var QuickPulse = new QuickPulseTelemetryModule()
+            {
+
+                AuthenticationApiKey = "YOUR-API-KEY"
+            };
+            QuickPulse.Initialize(configuration);
+            QuickPulse.RegisterTelemetryProcessor(processor);
+            foreach (var telemetryProcessor in configuration.TelemetryProcessors)
+                {
+                if (telemetryProcessor is ITelemetryModule telemetryModule)
+                    {
+                    telemetryModule.Initialize(configuration);
+                    }
+                }
 
 ```
 

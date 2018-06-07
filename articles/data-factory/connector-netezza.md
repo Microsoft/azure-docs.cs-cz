@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617888"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopírování dat z Netezza pomocí Azure Data Factory (Beta)
 
@@ -56,7 +57,7 @@ Typické připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | Úroveň zabezpečení (SSL/TLS), který používá ovladač pro připojení k úložišti dat. Například `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>-Pouze nezabezpečené (**onlyUnSecured**): ovladač nepoužívá protokol SSL.<br/>- **Upřednostňovaný nezabezpečená (preferredUnSecured) (výchozí)**: Pokud server nabízí výběr, ovladače není používat protokol SSL. <br/>- **Upřednostňovaný zabezpečené (preferredSecured)**: Pokud server nabízí výběr, ovladač používá protokol SSL. <br/>- **Pouze zabezpečené (onlySecured)**: ovladač nepřipojí, pokud je k dispozici připojení SSL | Ne |
-| Soubor_certifikátu_cú | Úplná cesta k certifikátu SSL, který se používá serverem. Například `UseSystemTrustStore=<cert path>;`| Ano, pokud je povolen protokol SSL |
+| Soubor_certifikátu_cú | Úplná cesta k certifikátu SSL, který se používá serverem. Například `CaCertFile=<cert path>;`| Ano, pokud je povolen protokol SSL |
 
 **Příklad:**
 

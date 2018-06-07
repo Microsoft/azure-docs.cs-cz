@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bf94e99d84b7f5b727b185209ba0288096b30607
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: af0cb98d679125d20b3f4b7819012bee70e04cd1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645493"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: Databáze chyb připojení a další problémy
 
@@ -46,7 +47,7 @@ Popis *blokování období* pro klienty, kteří používají ADO.NET je k dispo
 ### <a name="transient-fault-error-codes"></a>Kódy chyb přechodná chyba
 Tyto chyby jsou přechodné a v logiku aplikace je třeba opakovat: 
 
-| Kód chyby | Závažnost | Popis |
+| Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
 | 4060 |16 |Databázi nelze otevřít "%.&#x2a;ls" požadovaný v přihlášení. Přihlášení se nezdařilo. |
 | 40197 |17 |Služby došlo k chybě při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby: %d.<br/><br/>Tato chyba se zobrazí, pokud je služba dolů z důvodu softwaru nebo hardwaru upgrady, selhání hardwaru nebo jiných problémů převzetí služeb při selhání. Kód chyby (%d) vloženým do zprávy chyby 40197 poskytuje další informace o druh selhání nebo převzetí služeb při selhání došlo k chybě. Některé příklady, které jsou ve zprávě chyby 40197 vložených kódy chyby jsou 40020, 40143, 40166 a 40540.<br/><br/>Připojení k vaší databázi SQL serveru automaticky připojí k kopii databáze v pořádku. Aplikace musí catch protokolu chyb 40197, kód chyby embedded (%d) ve zprávě pro řešení potíží s a opakujte pokus o připojení k databázi SQL, dokud prostředky jsou k dispozici a je znovu navázat připojení. |
@@ -60,7 +61,7 @@ Tyto chyby jsou přechodné a v logiku aplikace je třeba opakovat:
 ## <a name="database-copy-errors"></a>Chyby kopie databáze
 Při kopírování databáze Azure SQL Database může být zjištěny následující chyby. Další informace najdete v tématu [Kopírování databáze služby Azure SQL Database](sql-database-copy.md).
 
-| Kód chyby | Závažnost | Popis |
+| Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
 | 40635 |16 |Klient s IP adresou '%.&#x2a;ls' je dočasně zakázána. |
 | 40637 |16 |Vytvoření kopie databáze je aktuálně zakázáno. |
@@ -88,7 +89,7 @@ Související témata:
 
 * Podrobnější informace jsou k dispozici zde: [limitů prostředků Azure SQL Database](sql-database-service-tiers-dtu.md).
 
-| Kód chyby | Závažnost | Popis |
+| Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
 | 10928 |20 |ID zdroje: %d. Limit %s pro databázi je %d a byl dosažen. Další informace najdete na adrese [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637).<br/><br/>ID prostředku označuje prostředek, který byl dosažen limit. Pro pracovních vláken, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a jak ho vyřešit najdete v části:<br/>• [Limitů prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 10929 |20 |ID zdroje: %d. Minimální záruka %s je %d, maximální limit je %d a aktuální využití databáze je %d. Server je však aktuálně zaneprázdněn pro podporu požadavků, které jsou větší než %d pro tuto databázi. Další informace najdete na adrese [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637). Jinak zkuste to prosím znovu později.<br/><br/>ID prostředku označuje prostředek, který byl dosažen limit. Pro pracovních vláken, ID zdroje = 1. Pro relace, ID zdroje = 2.<br/><br/>Další informace o této chybě a jak ho vyřešit najdete v části:<br/>• [Limitů prostředků azure SQL Database](sql-database-service-tiers-dtu.md). |
@@ -135,7 +136,7 @@ Související témata:
 ## <a name="general-errors"></a>Obecné chyby
 Následující chyby nespadají do všech předchozích kategorií.
 
-| Kód chyby | Závažnost | Popis |
+| Kód chyby | Severity | Popis |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) není platný název, protože obsahuje neplatné znaky. |
 | 18452 |14 |Přihlášení se nezdařilo. Přihlášení proběhlo z nedůvěryhodné domény a nelze použít s Windows authentication.%.&#x2a;ls (přihlášení systému Windows není podporováno v této verzi systému SQL Server). |

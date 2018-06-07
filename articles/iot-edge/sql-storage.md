@@ -1,20 +1,20 @@
 ---
 title: Modul Azure IoT Edge SQL | Microsoft Docs
 description: Ukládání dat na hranici s Microsoft SQL modulů s Azure Functions k formátování data.
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: ebertrams
 ms.date: 02/21/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 9c90cc28956e4dd7730cc7ba09a173f505f056fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632396"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Ukládání dat na hranici s databází serveru SQL Server
 

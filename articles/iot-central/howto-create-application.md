@@ -1,18 +1,19 @@
 ---
 title: Vytvoření aplikace Azure IoT centrální | Microsoft Docs
 description: Jako správce jak vytvořit Azure IoT centrální aplikaci.
-services: iot-central
-author: TanmayBhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 03/20/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 83879c6b81985f61b9fcff665e9f764c1346592e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 39992a1cc36d00a64ee6430cad5f24af3e1e1157
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629282"
 ---
 # <a name="create-your-azure-iot-central-application"></a>Vytvoření aplikace Azure IoT – střed
 

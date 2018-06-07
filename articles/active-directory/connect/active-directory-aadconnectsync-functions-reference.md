@@ -1,11 +1,11 @@
 ---
-title: "Synchronizace Azure AD Connect: referenční dokumentace funkcí | Microsoft Docs"
-description: "Odkaz výrazů deklarativního zřizování v synchronizaci Azure AD Connect."
+title: 'Synchronizace Azure AD Connect: referenční dokumentace funkcí | Microsoft Docs'
+description: Odkaz výrazů deklarativního zřizování v synchronizaci Azure AD Connect.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ce27ca217f99b4f12ca1af0b5a178f5d61a1c89
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4814d53a86b0d90cf16f76e75c7044448cf791eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595151"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: odkaz na funkce
 Ve službě Azure AD Connect funkce se používají k manipulaci s hodnotou atributu během synchronizace.  
@@ -56,7 +58,7 @@ Funkce s typy **mvbin**, **mvstr**, a **mvref** můžete používat jenom u víc
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
 | [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
+[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Převod** | | | | |
 | [CBool –](#cbool) |[CDate –](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
@@ -76,12 +78,12 @@ Funkce s typy **mvbin**, **mvstr**, a **mvref** můžete používat jenom u víc
 | [Obsahuje](#contains) |[Počet](#count) |[Položka](#item) |[ItemOrNull](#itemornull) | |
 | [Spojení](#join) |[Removeduplicates –](#removeduplicates) |[Rozdělení](#split) | | |
 | **Tok programu** | | | | |
-| [Chyba](#error) |[IIF](#iif) |[Výběr](#select) |[Přepínače](#switch) | |
-| [Kde](#where) |[S](#with) | | | |
+| [Chyba](#error) |[IIF](#iif) |[Výběr](#select) |[přepínače](#switch) | |
+| [kde](#where) |[S](#with) | | | |
 | **Text** | | | | |
-| [IDENTIFIKÁTOR GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
+| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
 | [Vlevo](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid –](#mid) | |
-| [PadLeft](#padleft) |[PadRight –](#padright) |[PCase](#pcase) |[Nahradit](#replace) | |
+| [padLeft](#padleft) |[PadRight –](#padright) |[PCase](#pcase) |[Nahradit](#replace) | |
 | [ReplaceChars](#replacechars) |[Vpravo](#right) |[RTrim](#rtrim) |[Uvolnění dočasné paměti](#trim) | |
 | [UCase](#ucase) |[Aplikace Word](#word) | | | |
 
@@ -364,9 +366,9 @@ Funkce CGuid převede řetězcovou reprezentaci identifikátor GUID jeho binárn
 Obsahuje funkce najde řetězec uvnitř vícehodnotového atributu
 
 **Syntaxe:**  
-`num Contains (mvstring attribute, str search)`-malá a velká písmena  
+`num Contains (mvstring attribute, str search)` -malá a velká písmena  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`-malá a velká písmena
+`num Contains (mvref attribute, str search)` -malá a velká písmena
 
 * Atribut: více hodnot atributů pro vyhledávání.
 * hledání: řetězec, který má v atributu najít.
@@ -388,7 +390,7 @@ Pokud má atribut proxyAddresses primární e-mailovou adresu (indikován velká
 Funkce ConvertFromBase64 převede hodnotu zadaného kódováním base64 regulární řetězec.
 
 **Syntaxe:**  
-`str ConvertFromBase64(str source)`-předpokládá pro kódování Unicode  
+`str ConvertFromBase64(str source)` -předpokládá pro kódování Unicode  
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Zdroj: řetězec kódování Base64  
@@ -952,7 +954,7 @@ Vrátí "hn proveďte".
 Vrátí "Doe"
 
 - - -
-### <a name="now"></a>Teď
+### <a name="now"></a>Ihned
 **Popis:**  
 Funkce nyní vrací hodnotu DateTime, zadáte aktuální datum a čas podle systémového data a času v počítači.
 
@@ -1180,7 +1182,7 @@ Proces všech hodnot v více hodnot atributů (nebo výstupní výrazu) založen
 Vrátí všechny hodnoty ve více hodnot atributů otherPhone po odebrání pomlčky (-).
 
 - - -
-### <a name="split"></a>Rozdělit
+### <a name="split"></a>Rozdělení
 **Popis:**  
 Funkce rozdělení přebírá řetězec oddělené s oddělovačem a udělá z něj řetězec s více hodnotami.
 

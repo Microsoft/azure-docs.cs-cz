@@ -12,11 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: a4a7c59e93b860245d67695de90fbae2becac3e9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9295c3f9dfabc8ef7749758e926df443843720a1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639771"
 ---
 # <a name="access-azure-media-services-api-with-cli-20"></a>Přístup k Azure Media Services rozhraní API pomocí rozhraní příkazového řádku 2.0
  
@@ -35,7 +36,7 @@ Vytvořit nový účet Azure Media Services, jak je popsáno v [tento rychlý St
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portál Azure](http://portal.azure.com) a spusťte **CloudShell** provést příkazy rozhraní příkazového řádku, jak je znázorněno v dalších krocích.
+Přihlaste se k webu [Azure Portal](http://portal.azure.com) a spusťte **CloudShell**, abyste mohli provést příkazy CLI, jak můžete vidět v dalších krocích.
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -46,4 +47,8 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Datový proud souboru](stream-files-dotnet-quickstart.md)
+> [Streamování souboru](stream-files-dotnet-quickstart.md)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

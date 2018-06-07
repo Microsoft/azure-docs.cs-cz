@@ -1,25 +1,26 @@
 ---
-title: "Kopírování dat z úložiště objektů Blob do SQL Database – Azure | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak pomocí aktivity kopírování v kanál služby Azure Data Factory ke zkopírování dat z úložiště objektů Blob do databáze SQL."
+title: Kopírování dat z úložiště objektů Blob do SQL Database – Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak pomocí aktivity kopírování v kanál služby Azure Data Factory ke zkopírování dat z úložiště objektů Blob do databáze SQL.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: e4035060-93bf-4e8d-bf35-35e2d15c51e0
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3135c8bf6316125a164c06630bc7607a92621b26
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6575a68423df97d7727401b79ded44545a43afca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621101"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: Kopírování dat z úložiště objektů Blob do SQL Database pomocí objektu pro vytváření dat
 > [!div class="op_single_selector"]

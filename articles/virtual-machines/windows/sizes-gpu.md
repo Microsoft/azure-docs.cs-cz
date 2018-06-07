@@ -1,6 +1,6 @@
 ---
-title: Azure Windows VM sizes - GPU | Microsoft Docs
-description: Lists the different GPU optimized sizes available for Windows virtual machines in Azure. Lists information about the number of vCPUs, data disks and NICs as well as storage throughput and network bandwidth for sizes in this series.
+title: Azure velikosti virtuálních počítačů Windows - GPU | Microsoft Docs
+description: Seznamy různých GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Windows v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jonbeck
-ms.openlocfilehash: d7f4bbe5e9950f864c6998b6a7c8844503083559
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5cc8db11e61eba1c5a366ac9816a472e8b692360
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654211"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimized virtual machine sizes
+# <a name="gpu-optimized-virtual-machine-sizes"></a>Grafický procesor optimalizované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
@@ -29,17 +30,18 @@ ms.lasthandoff: 04/24/2018
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
-For driver installation and verification steps, see [N-series driver setup for Windows](n-series-driver-setup.md).
+Postup instalace a ověření ovladačů najdete v tématu [N-series instalace ovladače pro Windows](n-series-driver-setup.md).
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-## <a name="other-sizes"></a>Other sizes
-- [General purpose](sizes-general.md)
-- [Compute optimized](sizes-compute.md)
-- [High performance compute](sizes-hpc.md)
-- [Memory optimized](sizes-memory.md)
-- [Storage optimized](sizes-storage.md)
+## <a name="other-sizes"></a>Další velikosti
+- [Obecné účely](sizes-general.md)
+- [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
+- [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+- [Optimalizované z hlediska paměti](sizes-memory.md)
+- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Starší generace](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Next steps
-Learn more about how [Azure compute units (ACU)](acu.md) can help you compare compute performance across Azure SKUs.
+## <a name="next-steps"></a>Další postup
+Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
 

@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 05/23/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604212"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integrace brány firewall Azure zásobníku
 Doporučuje se použít zařízení brány firewall ke zvýšení zabezpečení Azure zásobníku. I když se třeba distribuované útokům (DDOS) odmítnutí služby, zjišťování neoprávněných vniknutí a prověřování obsahu vám může pomoci brány firewall, budou také k propustnost úzkým místem pro služby Azure storage jako objekty BLOB, tabulek a front.
@@ -48,7 +49,7 @@ V nasazení okraj je zásobník Azure nasadit přímo za hraniční směrovač n
 
 Obvykle jsou veřejné směrovatelné IP adresy zadané pro veřejné fondu virtuálních IP adres z externí sítě v době nasazení. Ve scénáři s edge není doporučeno používat veřejné směrovatelné IP adresy v jiné síti z bezpečnostních důvodů. Tento scénář umožňuje uživatelům mít úplná samoobslužné řízené cloudové prostředí jako veřejný cloud, jako je například Azure.  
 
-![Azure zásobníku hraniční brány firewall příklad](.\media\azure-stack-firewall\edge-firewall-scenario.png)
+![Azure zásobníku hraniční brány firewall příklad](.\media\azure-stack-firewall\firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Podnikového intranetu nebo hraniční síti firewall scénáře
 V podnikovém intranetu nebo hraniční nasazení je nasadit Azure zásobníku na bráně firewall více zóně nebo mezi hraniční bráně firewall a brány firewall interní podnikové síti. Jeho provoz je poté distribuován mezi zabezpečený a hraniční síti (nebo DMZ) a nezabezpečená zóny jako popsané dál:

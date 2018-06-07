@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d4c679722e36eb9533b65037a488fb9af9a5bc80
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: dddb29d2a796449d6a2c9b68e01e94f32d3022e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621985"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -288,15 +289,15 @@ V tématu [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezn
 | --- | --- |
 | Automatické číslování |Řetězec |
 | Zaškrtávací políčko |Logická hodnota |
-| Měna |Dvojitý |
+| Měna |Double |
 | Datum |DateTime |
 | Datum/čas |DateTime |
-| E-mail |Řetězec |
+| Email |Řetězec |
 | ID |Řetězec |
 | Relace hledání |Řetězec |
 | Vybrat víc rozevíracího seznamu |Řetězec |
-| Číslo |Dvojitý |
-| Procento |Dvojitý |
+| Číslo |Double |
+| Procento |Double |
 | Telefon |Řetězec |
 | Rozevírací seznam |Řetězec |
 | Text |Řetězec |

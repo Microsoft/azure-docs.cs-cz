@@ -1,11 +1,11 @@
 ---
-title: "Přidání nabízených oznámení do aplikace pro univerzální platformu Windows (UWP) | Microsoft Docs"
-description: "Naučte se používat Azure App Service Mobile Apps a Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro univerzální platformu Windows (UWP)."
+title: Přidání nabízených oznámení do aplikace pro univerzální platformu Windows (UWP) | Microsoft Docs
+description: Naučte se používat Azure App Service Mobile Apps a Azure Notification Hubs k odesílání nabízených oznámení do aplikace pro univerzální platformu Windows (UWP).
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: d51fa215ace8b33acb5d36b98e9a1a86e3296a65
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9e3ed6d19b0f830923745ad0263c5c4f920c0f51
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597854"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -32,18 +33,18 @@ Pokud použijete serverový projekt stažené rychlý start, budete potřebovat 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrace aplikace pro nabízená oznámení
-Budete muset odeslat v aplikaci Windows Store a pak nakonfigurujete svůj projekt server k integraci s Windows oznámení služby (WNS) k odesílání nabízených.
+Budete muset odeslat v aplikaci Microsoft Store a pak nakonfigurujete svůj projekt server k integraci s Windows oznámení služby (WNS) k odesílání nabízených.
 
 1. V Průzkumníku řešení Visual Studio, klikněte pravým tlačítkem na projekt aplikace UPW, klikněte na tlačítko **úložiště** > **přidružit aplikaci ve Store...** .
 
-    ![Přidružit aplikace Windows Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
+    ![Propojit aplikaci se Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 2. V průvodci klikněte na tlačítko **Další**, přihlaste se pomocí účtu Microsoft, zadejte název aplikace v rámci **rezervovat nový název aplikace**, pak klikněte na tlačítko **rezervy**.
-3. Po registraci aplikace je úspěšně vytvořen, vyberte nový název aplikace, klikněte na **Další**a potom klikněte na **přidružit**. Tento postup přidá požadované informace o registraci Windows Store do manifestu aplikace.  
+3. Po registraci aplikace je úspěšně vytvořen, vyberte nový název aplikace, klikněte na **Další**a potom klikněte na **přidružit**. Tento postup přidá požadované informace o registraci Microsoft Store do manifestu aplikace.
 4. Přejděte na [Windows Dev Center](https://dev.windows.com/en-us/overview), přihlaste se pomocí účtu Microsoft, klikněte na novou registraci aplikace v **Moje aplikace**, pak rozbalte **služby**  >   **Nabízená oznámení**.
 5. V **nabízená oznámení** klikněte na tlačítko **Web služeb Live Services** pod **mobilní služby Microsoft Azure**.
 6. Na stránce registrace si poznamenejte hodnoty v části **tajné klíče aplikace** a **SID balíčku**, které budou vedle použít ke konfiguraci váš back-end mobilní aplikace.
 
-    ![Přidružit aplikace Windows Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
+    ![Propojit aplikaci se Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/app-service-mobile-uwp-app-push-auth.png)
 
    > [!IMPORTANT]
    > Tajný klíč klienta a SID balíčku jsou důležitá pověření zabezpečení. Tyto hodnoty s nikým nesdílejte ani je nedistribuujte s vaší aplikací. **Id aplikace** ke konfiguraci ověřování Account Microsoft se používá s tajným klíčem.
@@ -185,17 +186,13 @@ V dalším kroku musí aplikaci zaregistrovat pro nabízená oznámení na spuš
 ## <a id="more"></a>Další kroky
 Další informace o nabízených oznámení:
 
-* [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications)  
-  Šablony poskytují flexibilitu k odesílání nabízených oznámení napříč platformami a lokalizované nabízených oznámení. Zjistěte, jak zaregistrovat šablony.
-* [Diagnostikovat problémy nabízená oznámení](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Existují různé důvody, proč oznámení může získat vyřadit ani nekončí na zařízení. Toto téma ukazuje, jak analyzovat a zjistěte příčinu selhání nabízená oznámení.
+* [Jak používat spravovaného klienta pro Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md#pushnotifications) šablony poskytují flexibilitu k odesílání nabízených oznámení napříč platformami a lokalizované nabízených oznámení. Zjistěte, jak zaregistrovat šablony.
+* [Diagnostikovat problémy nabízená oznámení](../notification-hubs/notification-hubs-push-notification-fixer.md) existuje různých důvodů, proč oznámení může získat vyřadit ani nekončí na zařízení. Toto téma ukazuje, jak analyzovat a zjistěte příčinu selhání nabízená oznámení.
 
 Vezměte v úvahu pokračovat na jednu z následujících kurzů:
 
-* [Přidání ověřování do aplikace](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
-* [Povolení offline synchronizace u aplikace](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Naučte se, jak pomocí back-endu mobilní aplikace přidat do aplikace podporu offline režimu. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací &mdash; zobrazovat, přidávat a upravovat data &mdash; i v případě, že nemají připojení k síti.
+* [Přidání ověřování do aplikace](app-service-mobile-windows-store-dotnet-get-started-users.md) zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
+* [Zapnutí offline synchronizace pro vaši aplikaci](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) informace o postupu přidání vaší aplikace pomocí back-end mobilní aplikace podporu offline režimu. Offline synchronizace umožňuje koncovým uživatelům pracovat s mobilní aplikací &mdash; zobrazovat, přidávat a upravovat data &mdash; i v případě, že nemají připojení k síti.
 
 <!-- Anchors. -->
 

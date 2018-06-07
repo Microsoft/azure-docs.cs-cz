@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20bcb822ff39b9587a479fd6cc43b7daa9b83627
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 807af10c0655d9d1728a80a47d1f8f9c2a16fb84
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654279"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalace ovladačů NVIDIA GPU v N-series virtuální počítače se systémem Linux
 
@@ -30,7 +31,7 @@ Virtuální počítač N-series specifikace, kapacity úložiště a disku podro
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>Instalace ovladačů CUDA NC, NCv2, NCv3 a virtuální počítače a series
+## <a name="install-cuda-drivers-on-n-series-vms"></a>Instalace ovladačů CUDA na virtuálních počítačích N-series
 
 Tady jsou kroky pro instalaci ovladače CUDA z nástrojů CUDA NVIDIA na virtuálních počítačích N-series. 
 
@@ -155,7 +156,7 @@ Pokud je nainstalovaný ovladač, zobrazí se výstup podobný následujícímu.
 
 ## <a name="rdma-network-connectivity"></a>Připojení k síti RDMA
 
-Síťové připojení RDMA se dá nastavit na virtuálních počítačích podporující RDMA N-series, jako je NC24r nasazené ve stejné skupině dostupnosti nebo sadu škálování virtuálního počítače. Síť RDMA podporuje rozhraní MPI (Message Passing) provozu pro aplikace spuštěné s Intel MPI 5.x nebo novější. Následují další požadavky:
+Síťové připojení RDMA se dá nastavit na virtuálních počítačích podporující RDMA N-series, jako je NC24r nasadit ve stejné sadě dostupnosti nebo v jednom umístění skupiny ve škálovací sadě virtuálních počítačů. Síť RDMA podporuje rozhraní MPI (Message Passing) provozu pro aplikace spuštěné s Intel MPI 5.x nebo novější. Následují další požadavky:
 
 ### <a name="distributions"></a>Distribuce
 
@@ -167,7 +168,7 @@ Nasazení podporující RDMA N-series virtuálních počítačů z jedné bitov�
 
 * **Na základě centOS 7.4 HPC** -RDMA ovladače a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.
 
-## <a name="install-grid-drivers-for-nv-series-vms"></a>Instalace ovladačů mřížky pro virtuální počítače vs series
+## <a name="install-grid-drivers-on-nv-series-vms"></a>Instalace ovladačů mřížky na virtuálních počítačích vs series
 
 K instalaci ovladačů NVIDIA mřížky na virtuálních počítačích vs series, zkontrolujte připojení SSH pro každý virtuální počítač a postupujte podle kroků pro vaše distribuci systému Linux. 
 
@@ -330,7 +331,7 @@ BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 |
 if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
 ```
 
-Pak vytvořte záznam pro váš skript restartovat v `/etc/rc.d/rc3.d` tak skript je vyvolána jako kořenová na spuštění.
+Pak vytvořte záznam pro váš skript aktualizace v `/etc/rc.d/rc3.d` tak skript je vyvolána jako kořenová na spuštění.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

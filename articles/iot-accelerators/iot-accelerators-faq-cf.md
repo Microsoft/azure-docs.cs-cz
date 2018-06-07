@@ -1,25 +1,19 @@
 ---
 title: Připojen objekt pro vytváření řešení časté otázky – Azure | Microsoft Docs
 description: Nejčastější dotazy pro akcelerátoru řešení připojen objekt pro vytváření
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 4ed0cd413480e717e686f7e52123102e1a838f19
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dbdd9c70fc135561eb0e60e5932e446bcfa3759b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627497"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy pro připojení objektu pro vytváření řešení akcelerátoru
 
@@ -67,7 +61,7 @@ Máte dvě možnosti pro IP adresu odeberte:
 
 Přihlášení k simulaci virtuálního počítače je podporována, pouze pokud jste nasadili řešení pomocí skriptu prostředí PowerShell `build.ps1` v [úložiště](https://github.com/Azure/azure-iot-connected-factory).
 
-Pokud jste nasadili řešení od www.azureiotsuite.com, nemůžete se přihlásit k virtuálnímu počítači. Nemůžete se přihlásit, protože je náhodně vygenerované heslo a nelze ho obnovit.
+Pokud jste nasadili řešení od www.azureiotsolutions.com, nemůžete se přihlásit k virtuálnímu počítači. Nemůžete se přihlásit, protože je náhodně vygenerované heslo a nelze ho obnovit.
 
 1. Přidejte veřejnou IP adresu do virtuálního počítače. V tématu [jak přidám veřejnou IP adresu pro simulaci virtuálního počítače?](#how-do-i-remove-the-public-ip-address-to-the-simulation-vm)
 1. Vytvořte relace SSH do virtuálního počítače pomocí IP adresy virtuálního počítače.
@@ -148,11 +142,11 @@ Pokud se žádná data, odeslané do služby IoT Hub, nastane problém s simulac
 
 Pokud chcete povolit interaktivní mapu ve vašem řešení připojen objekt pro vytváření, musí mít existující rozhraní API map Bing pro plán Enterprise.
 
-Při nasazení z [www.azureiotsuite.com](http://www.azureiotsuite.com), proces nasazení ověří, že vaše předplatné má povoleno rozhraní API map Bing pro plán Enterprise a interaktivní mapu automaticky nasadí do připojen objekt pro vytváření. Pokud tomu tak není, můžete stále povolit interaktivní mapu ve vašem nasazení následujícím způsobem:
+Při nasazení z [www.azureiotsolutions.com](http://www.azureiotsolutions.com), proces nasazení ověří, že vaše předplatné má povoleno rozhraní API map Bing pro plán Enterprise a interaktivní mapu automaticky nasadí do připojen objekt pro vytváření. Pokud tomu tak není, můžete stále povolit interaktivní mapu ve vašem nasazení následujícím způsobem:
 
 Při nasazení pomocí `build.ps1` skript v Githubu objekt pro vytváření připojení úložiště a mít rozhraní API map Bing pro plán Enterprise, nastavte proměnnou prostředí `$env:MapApiQueryKey` v okně sestavení na klíč dotazu plánu. Interaktivní mapu se pak automaticky povolí.
 
-Pokud nemáte rozhraní API map Bing pro plán Enterprise, nasaďte řešení připojen objekt pro vytváření z [www.azureiotsuite.com](http://www.azureiotsuite.com) nebo pomocí `build.ps1` skriptu. Pak přidejte rozhraní API map Bing pro plánu podnikového do vašeho předplatného, jak je popsáno v [vytvoření rozhraní API map Bing pro účet organizace?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Vyhledání klíče dotazu tohoto účtu, jak je popsáno v [získání rozhraní API map Bing pro Enterprise QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) a uložte tento klíč. Přejděte na portál Azure a přístup k prostředku služby App Service ve vašem nasazení připojen objekt pro vytváření. Přejděte na **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** na klíč dotazu, který jste získali. Uložte nastavení a potom přejděte na **přehled** a restartujte službu aplikace.
+Pokud nemáte rozhraní API map Bing pro plán Enterprise, nasaďte řešení připojen objekt pro vytváření z [www.azureiotsolutions.com](http://www.azureiotsolutions.com) nebo pomocí `build.ps1` skriptu. Pak přidejte rozhraní API map Bing pro plánu podnikového do vašeho předplatného, jak je popsáno v [vytvoření rozhraní API map Bing pro účet organizace?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Vyhledání klíče dotazu tohoto účtu, jak je popsáno v [získání rozhraní API map Bing pro Enterprise QueryKey](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) a uložte tento klíč. Přejděte na portál Azure a přístup k prostředku služby App Service ve vašem nasazení připojen objekt pro vytváření. Přejděte na **nastavení aplikace**, kde najít oddíl **nastavení aplikace**. Nastavte **MapApiQueryKey** na klíč dotazu, který jste získali. Uložte nastavení a potom přejděte na **přehled** a restartujte službu aplikace.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Vytvoření rozhraní API map Bing pro účet Enterprise
 
@@ -212,6 +206,6 @@ Chcete-li Neodesílat telemetrická data z jiných OPC UA zařízení k vytvář
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Přehled akcelerátorů řešení prediktivní údržby](../iot-suite/iot-suite-predictive-overview.md)
+* [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Připojené přehled akcelerátoru objekt pro vytváření řešení](iot-accelerators-connected-factory-overview.md)
-* [Zabezpečení IoT od základů](../iot-suite/securing-iot-ground-up.md)
+* [Zabezpečení IoT od základů](securing-iot-ground-up.md)

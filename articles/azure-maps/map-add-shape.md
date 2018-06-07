@@ -1,22 +1,20 @@
 ---
 title: Přidat obrazce pomocí mapy Azure | Microsoft Docs
 description: Postup přidání obrazce mapy Javascript
-services: azure-maps
-keywords: ''
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
+services: azure-maps
+manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fb9ec0713d3db465cf835346465e70c4455b38ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: dec9b7289927365faa9c58522df2571db99f0494
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34599367"
 ---
 # <a name="add-a-shape-to-a-map"></a>Přidání obrazce mapy
 
@@ -59,3 +57,10 @@ Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobra
 V druhé bloku kódu se vytvoří mnohoúhelníku. Je mnohoúhelníku [funkce](https://docs.microsoft.com/javascript/api/azure-maps-javascript/feature?view=azure-iot-typescript-latest) z [mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygon?view=azure-iot-typescript-latest) s [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonproperties?view=azure-iot-typescript-latest) jako jeho vlastnost funkce. Použití `new atlas.data.Feature(new atlas.data.Polygon())` mnohoúhelníku vytvořit a definovat jeho vlastnosti. Zadejte seřazené souřadnice mnohoúhelníku cesty v konstruktoru mnohoúhelníku.
 
 Vrstva mnohoúhelníku je pole mnohoúhelníky. Používá posledního bloku kódu [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addpolygons) funkce třídy map přidat vrstvě mnohoúhelníku mapy a definovat jeho vlastnosti. Informace naleznete ve vlastnostech vrstvy mnohoúhelníku na [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/polygonlayeroptions?view=azure-iot-typescript-latest). 
+
+## <a name="next-steps"></a>Další postup
+Další příklady kódu pro přidání do vaší mapy najdete v následujících článcích:
+* [Přidat vlastní HTML](./map-add-custom-html.md)
+* [Zobrazit výsledky hledání](./map-search-location.md)
+
+

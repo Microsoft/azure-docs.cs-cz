@@ -1,22 +1,19 @@
 ---
 title: Vykreslení pokrytí v rámci služby Azure Maps | Microsoft Docs
 description: Další informace o vykreslení pokrytí v rámci služby Azure Maps
-services: azure-maps
-keywords: ''
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/07/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: azure-maps
-documentationcenter: ''
-manager: timlt
-ms.devlang: na
-ms.custom: ''
-ms.openlocfilehash: ab05277c4541ae859f79b1108c4cf8a7beb29271
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+services: azure-maps
+manager: ''
+ms.openlocfilehash: c973897015df978f31d267ec6f2a20812d9d541c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600574"
 ---
 # <a name="azure-maps-render-coverage"></a>Vykreslení pokrytí Azure mapy
 
@@ -51,7 +48,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Kongo                            | ✓ | ✓ |
 | Demokratická republika Kongo | ✓ | ✓ |
 | Pobřeží slonoviny                    |   | Ø |
-| Džibutsko                         |   | Ø |
+| Džibuti                         |   | Ø |
 | Egypt                            | ✓ | ✓ |
 | Rovníková Guinea                |   | Ø |
 | Eritrea                          |   | Ø |
@@ -72,13 +69,13 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Mauricius                        | ✓ | ✓ |
 | Mayotte                          | ✓ | ✓ |
 | Maroko                          | ✓ | ✓ |
-| Mozambik                       | ✓ | ✓ |
+| Mosambik                       | ✓ | ✓ |
 | Namibie                          | ✓ | ✓ |
 | Niger                            | ✓ | ✓ |
 | Nigérie                          | ✓ | ✓ |
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
-| Svatá Helena, Ascension a Tristan da Cunha |   | Ø |
+| Svatá Helena, Ascensión a Tristan da Cunha |   | Ø |
 | Svatý Tomáš a Princův ostrov            |   | Ø |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     |   | Ø |
@@ -87,7 +84,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Jižní Súdán                      |   | Ø |
 | Súdán                            |   | Ø |
 | Svazijsko                        | ✓ | ✓ |
-| Tanzanská sjednocená republika      | ✓ | ✓ |
+| Sjednocená tanzanská republika      | ✓ | ✓ |
 | Togo                             | ✓ | ✓ |
 | Tunisko                          | ✓ | ✓ |
 | Uganda                           | ✓ | ✓ |
@@ -203,7 +200,7 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Tchaj-wan                    | ✓ | ✓ |
 | Tádžikistán                |   | Ø |
 | Thajsko                  | ✓ | ✓ |
-| Timor-Leste               |   | Ø |
+| Východní Timor               |   | Ø |
 | Turkmenistán              |   | Ø |
 | Spojené arabské emiráty      | ✓ | ✓ |
 | Menší odlehlé ostrovy Spojených států amerických |   | Ø |
@@ -230,8 +227,8 @@ Mapy však nemá stejnou úroveň informací a přesnost pro všechny oblasti. N
 | Niue                      |   | Ø |
 | Norfolk (ostrov)            |   | Ø |
 | Palau                     |   | Ø |
-| Papua - Nová Guinea          |   | Ø |
-| Ostrovy Pitcairn                  |   | Ø |
+| Papua-Nová Guinea          |   | Ø |
+| Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Šalamounovy ostrovy           |   | Ø|
 | Tokelau                   |   | Ø |

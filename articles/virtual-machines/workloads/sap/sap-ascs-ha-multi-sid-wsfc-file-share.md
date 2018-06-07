@@ -1,13 +1,13 @@
 ---
-title: "SAP ASC nebo SCS instance více SID vysoká dostupnost s Windows Server Failover Clustering a sdílení souborů v Azure | Microsoft Docs"
-description: "Vysoká dostupnost více SID pro instance SAP ASC nebo SCS pomocí služby Windows Server Failover Clustering a soubor sdílet v Azure"
+title: SAP ASC nebo SCS instance více SID vysoká dostupnost s Windows Server Failover Clustering a sdílení souborů v Azure | Microsoft Docs
+description: Vysoká dostupnost více SID pro instance SAP ASC nebo SCS pomocí služby Windows Server Failover Clustering a soubor sdílet v Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3522e7ef0e3d49ce1bd8bed750b239fa384af8b8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 604179ec856d21dce51101fdafa5d51eed08f89f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657209"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -447,7 +448,7 @@ Použít stejný postup instalace a konfigurace, jak je popsáno výše pro jede
 ### <a name="install-dbms-and-sap-application-servers"></a>Instalace databázového systému a SAP aplikační servery
 Instalace databázového systému a SAP aplikační servery, jak je popsáno výše.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nainstalujte instanci ASC nebo SCS na clusteru s podporou převzetí služeb při selhání bez sdílených disků][sap-official-ha-file-share-document]: oficiální SAP pokyny pro sdílení souborů HA
 

@@ -1,19 +1,20 @@
 ---
-title: "Škálování Azure SQL database | Microsoft Docs"
-description: "Jak používat ShardMapManager, klientské knihovny pro elastické databáze"
+title: Škálování Azure SQL database | Microsoft Docs
+description: Jak používat ShardMapManager, klientské knihovny pro elastické databáze
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: sstein
-ms.openlocfilehash: cf8d4427cddbe6368ac265fe9ecc0f408f7fb1fb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e156142a68b30471646ea3a9181ce7d0097e626
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646989"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontální navýšení kapacity databáze pomocí Správce horizontálního oddílu mapy
 Chcete-li snadno škálovat databáze na SQL Azure, použijte správce mapy horizontálního oddílu. Mapa správce horizontálního oddílu je speciální databáze, která uchovává globální mapování informace o všech horizontálních oddílů (databáze) v sadě horizontálního oddílu. Metadata umožňuje aplikaci připojit ke správné databázi na základě hodnotu **horizontálního dělení klíč**. Kromě toho každých horizontálního oddílu v sadě obsahuje mapy, které sledují místní sdílení dat (označované jako **shardlets**). 
@@ -47,13 +48,13 @@ Elastické škálování podporují následující typy jako horizontálního d�
 
 | .NET | Java |
 | --- | --- |
-| celé číslo |celé číslo |
-| dlouhá |dlouhá |
+| integer |integer |
+| zem. šířka |zem. šířka |
 | Identifikátor GUID |UUID |
 | Byte  |Byte |
 | datetime | časové razítko |
-| Časový interval | Doba trvání|
-| datetimeoffset |offsetdatetime |
+| Časový interval | doba trvání|
+| Datový typ DateTimeOffset |offsetdatetime |
 
 ### <a name="list-and-range-shard-maps"></a>Seznam a rozsah horizontálního oddílu mapy
 Mapování horizontálních se dá vytvořit pomocí **seznam jednotlivých horizontálního dělení hodnoty klíče**, nebo se dá vytvořit pomocí **rozsahy horizontálního dělení hodnoty klíče**. 

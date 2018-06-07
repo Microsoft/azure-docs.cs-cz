@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 36d4e897952e7ecb0297cc8c0ba159f728fd1213
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 68ba76ee18b3acc1c2825a217641c21a799132c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638584"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Formáty Media Encoder Premium pracovního postupu a kodeky
 > [!NOTE]
@@ -53,6 +54,7 @@ V následující části jsou uvedeny kodeky a soubor formátů, které podporuj
 * AVC 8-bit nebo 10-bit, až 4:2:2, včetně AVCIntra
 * Avid DNxHD (v MXF)
 * DVCPro/DVCProHD (v MXF)
+* HEVC/H.265, hlavní a hlavní 10 profil
 * JPEG2000
 * MPEG-2 (až 422 profil a vysokou úroveň, včetně například XDCAM, XDCAM HD, XDCAM IMX, CableLabs® a D10 variant)
 * MPEG-1

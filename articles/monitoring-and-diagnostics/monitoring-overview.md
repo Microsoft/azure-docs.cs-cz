@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 27d3835b5574492fdb62df0131ca3a542dd21ec3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 354aadd4377e054bc9c10561bbda8fc8009a98a7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640094"
 ---
-# <a name="monitoring-azure-applications-and-resources"></a>Monitorování aplikací Azure a prostředky
+# <a name="monitoring-azure-applications-and-resources"></a>Monitorování prostředků a aplikací Azure
 
 Sledování je v rámci shromažďování a analýzy dat o výkonu, stavu a dostupnosti obchodní aplikace a prostředky, které závisí na. Účinné strategie sledování vám pomůže pochopit podrobné činnost součástí vaší aplikace. Také pomáhá zvýšit vaši provozu proaktivně vás upozorní na zásadních problémů, aby předtím, než začnou způsobovat problémy, můžete je vyřešit.
 
@@ -117,9 +118,9 @@ Existuje několik nástrojů, které vzájemně spolupracují a sledování růz
 
 [Sledovací proces sítě](../network-watcher/network-watcher-monitoring-overview.md) poskytuje na základě scénáře monitorování a Diagnostika pro jinou síť scénáře v Azure. Ukládá data do Azure metriky a diagnostiky k další analýze. Funguje s následující řešení pro monitorování různých aspektů vaší sítě.
 
-[Sítě monitorování výkonu (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) je to síť cloudové řešení monitorování, které monitoruje připojení mezi veřejných cloudů, datovými centry a místními prostředími.
+[Sítě monitorování výkonu (NPM)](../log-analytics/log-analytics-network-performance-monitor.md) je to síť cloudové řešení monitorování, které monitoruje připojení mezi veřejných cloudů, datovými centry a místními prostředími.
 
-[Monitorování ExpressRoute](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) je NPM funkci, která monitoruje připojení klient server a výkonu u okruhu Azure ExpressRoute.
+[Monitorování ExpressRoute](../expressroute/how-to-npm.md) je NPM funkci, která monitoruje připojení klient server a výkonu u okruhu Azure ExpressRoute.
 
 [Analýza DNS](../log-analytics/log-analytics-dns.md) je řešení, které poskytuje zabezpečení, výkonu a operací souvisejících přehledy založené na vaše servery DNS.
 

@@ -8,11 +8,12 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 2762466c0130ead36372a93f4c3b852cb378a02a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db062fc36478d6ba2cf0f00544793f635ccdbb06
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650124"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktivní události úložiště objektů Blob
 
@@ -46,7 +47,7 @@ Další informace o použití vlastností události mřížky událostí je pops
 > |eventTime|řetězec|Datum a čas, který byl vytvořen události ve formátu ISO 8601|
 > |Typ události|řetězec|"Microsoft.Storage.BlobCreated" nebo "Microsoft.Storage.BlobDeleted"|
 > |ID|řetězec|Jedinečný identifikátor, pokud událost|
-> |dataVersion|řetězec|Verze schématu datového objektu.|
+> |dataVersion|řetězec|Verze schématu datového objektu|
 > |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
 > |data|objekt|Kolekce dat události specifické pro úložiště objektů blob|
 > |data.contentType|řetězec|Typ obsahu objektu blob, jako by vrácená v hlavičce Content-Type z objektu blob|
@@ -118,7 +119,7 @@ Vyhledat události z objektů BLOB, které jsou vytvořené v určitém kontejne
 
 Vyhledat události z objektů BLOB, které jsou vytvořené v konkrétním kontejneru sdílení příponu objektů blob, použijte `subjectEndsWith` filtru jako ".log" nebo ".jpg"
 
-Další informace najdete v tématu [událostí mřížky koncepty](../../event-grid/concepts.md#filters).
+Další informace najdete v tématu [událostí mřížky koncepty](../../event-grid/concepts.md#event-subscriptions).
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro použití události
 Aplikace, které zpracování událostí úložiště objektů Blob postupujte několik doporučených postupů:

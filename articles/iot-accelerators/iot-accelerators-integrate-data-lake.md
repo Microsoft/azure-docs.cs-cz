@@ -1,19 +1,19 @@
 ---
 title: Integrovat řešení vzdáleného monitorování s Azure Data Lake Store | Microsoft Docs
 description: Zjistěte, jak integrovat řešení vzdáleného monitorování s Azure Data Lake Store pomocí úlohu služby Azure Stream Analytics.
-+services: ''
-+suite: iot-suite
-+author: philmea
-+manager: timlt
-+ms.author: philmea
-+ms.date: 04/029/2018
-+ms.topic: article
-+ms.service: iot-suite
-ms.openlocfilehash: 426ded8079ba5d6de4c186a8d18dd284082b0c1c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+author: philmea
+manager: timlt
+ms.author: philmea
+ms.date: 04/29/2018
+ms.topic: conceptual
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.openlocfilehash: 3bd29e348fd067c12def8ca36fbdc1d7e35b2874
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627582"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrovat řešení vzdáleného monitorování s Azure Data Lake Store
 
@@ -25,7 +25,7 @@ V tento postup použijete úlohu služby Azure Stream Analytics k vysílání da
 
 Abyste mohli dokončit tento postup, budete potřebovat následující:
 
-* [Nasadit předkonfigurované řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy.md).
+* [Nasazení řešení akcelerátoru vzdálené monitorování](iot-accelerators-remote-monitoring-deploy.md).
   * Řešení vzdáleného monitorování nasadí IoT hub a úlohy Azure Stream Analytics používá v tomto článku do vašeho předplatného Azure.
 * [Nasazení Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md)
   * Data Lake Store, musí být nasazené do stejné oblasti jako vaše řešení vzdáleného monitorování.

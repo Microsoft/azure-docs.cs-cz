@@ -1,12 +1,12 @@
 ---
-title: "Připojení počítače se systémem Windows k analýze protokolů Azure | Microsoft Docs"
-description: "Tento článek popisuje postup připojení počítače se systémem Windows hostované v ostatních cloudů nebo místními k analýze protokolů s monitorování agenta MMA (Microsoft)."
+title: Připojení počítače se systémem Windows k analýze protokolů Azure | Microsoft Docs
+description: Tento článek popisuje postup připojení počítače se systémem Windows hostované v ostatních cloudů nebo místními k analýze protokolů s monitorování agenta MMA (Microsoft).
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: magoedte
-ms.openlocfilehash: 778810001952daf9ac63a7f1f880b05234549965
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 342387edb3793358d041702eaa6d76b462aef527
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637408"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítače se systémem Windows do služby analýzy protokolů Azure
 
@@ -33,7 +34,7 @@ Agent může být nainstalovaná pomocí jedné z následujících metod. Větš
 * Skript prostředí PowerShell.
 * Šablony Resource Manageru pro virtuální počítače běžící v Azure zásobníku Windows místní.  
 
-Pochopit požadavky na sítě a systému nasazení agenta systému Windows, přečtěte si [požadavky pro systém Windows počítače](log-analytics-concept-hybrid.md#prerequisites).
+Pochopit požadavky na podporovanou konfiguraci, zkontrolujte [podporované operační systémy Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) a [konfiguraci brány firewall sítě](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Získání ID a klíče pracovního prostoru
 Před instalací agenta Microsoft Monitoring Agent pro Windows potřebujete ID a klíč vašeho pracovního prostoru Log Analytics.  Tyto informace jsou nezbytné při instalaci z každé metody instalace správně nakonfigurovat agenta a zajistěte, aby že mohla úspěšně komunikovat s analýzy protokolů v komerčních Azure a cloudu US Government.  
@@ -72,7 +73,7 @@ Následující tabulka obsahuje konkrétní parametry analýzy protokolů nepodp
 
 |MMA specifické možnosti                   |Poznámky         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikací .NET.|   
+| NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikací .NET.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurace agenta tak, aby odesílaly pracovního prostoru                |
 |OPINSIGHTS_WORKSPACE_ID                | Id pracovního prostoru (guid) pro pracovní prostor pro přidání                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru se používá k ověření původně s pracovním prostoru |
@@ -175,6 +176,6 @@ Hledání jednoduchého protokolů můžete také provést na portálu Azure.
 
 Ve výsledcích vyhledávání vrátí měli byste vidět záznamy prezenčního signálu pro počítač, což značí, že je připojený a vytváření sestav ke službě.   
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Zkontrolujte [správu a údržbu agenta analýzy protokolů pro systém Windows a Linux](log-analytics-agent-manage.md) Další informace o tom, jak Správa agenta během životního cyklu nasazení na vašich počítačích.  

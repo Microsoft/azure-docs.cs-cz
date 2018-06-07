@@ -2,23 +2,19 @@
 title: Odesílání událostí do centra událostí Azure pomocí Java | Microsoft Docs
 description: Začínáme odesílá do centra událostí se používá Java
 services: event-hubs
-documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.workload: core
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/30/2018
 ms.author: sethm
-ms.openlocfilehash: 5dd0c88dab9ff4b7073a9acf6872b4c3ff085586
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6d3bf0b8ac5c5bdc7bf3deda21e800fe3cc6be2e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626407"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Odesílání událostí do centra událostí Azure používá Java
 
@@ -28,12 +24,14 @@ Další informace najdete v tématu [Přehled služby Event Hubs][Event Hubs ove
 
 Tento kurz ukazuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce Java. Chcete-li přijímat události pomocí knihovny Java Event Processor Host, přečtěte si téma [v tomto článku](event-hubs-java-get-started-receive-eph.md), nebo klikněte na příslušný jazyk přijímající v levé tabulce obsahu.
 
-K dokončení tohoto kurzu budete potřebovat následující:
+## <a name="prerequisites"></a>Požadavky
 
-* Vývojové prostředí Java. V tomto kurzu budeme předpokládat [Eclipse](https://www.eclipse.org/).
+K dokončení tohoto kurzu potřebujete následující požadavky:
+
+* Vývojové prostředí Java. Tento kurz používá [Eclipse](https://www.eclipse.org/).
 * Aktivní účet Azure. Pokud nemáte předplatné Azure, vytvořte [bezplatný účet][] před zahájením.
 
-Kód v tomto kurzu vychází z [Githubu odeslání vzorku](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/Send), který můžete zkontrolovat zobrazíte kompletní funkční aplikaci.
+Kód v tomto kurzu vychází z [SimpleSend Githubu ukázka](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend), který můžete zkontrolovat zobrazíte kompletní funkční aplikaci.
 
 ## <a name="send-events-to-event-hubs"></a>Odesílání událostí do centra událostí
 
@@ -94,7 +92,7 @@ Třída ConnectionStringBuilder slouží k vytvoření připojení řetězcovou 
 
 ### <a name="send-events"></a>Odesílání událostí
 
-Pak vytvořte singulární událostí pomocí transformace řetězec na jeho kódování bajtů ve formátu UTF-8. Poté vytvořte novou instanci služby Event Hubs klienta z připojovacího řetězce a odeslat zprávu.   
+Vytvořte singulární událostí transformace řetězec na jeho kódování bajtů ve formátu UTF-8. Pak vytvořte novou instanci služby Event Hubs klienta z připojovacího řetězce a odeslat zprávu:   
 
 ```java 
 byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");

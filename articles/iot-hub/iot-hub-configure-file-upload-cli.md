@@ -1,24 +1,19 @@
 ---
-title: "Konfigurace nahrávání souborů do služby IoT Hub pomocí rozhraní příkazového řádku Azure (az.py) | Microsoft Docs"
-description: "Postup konfigurace fileuploads ke službě Azure IoT Hub pomocí Azure CLI a platformy 2.0 (az.py)."
-services: iot-hub
-documentationcenter: 
+title: Konfigurace nahrávání souborů do služby IoT Hub pomocí rozhraní příkazového řádku Azure (az.py) | Microsoft Docs
+description: Postup konfigurace fileuploads ke službě Azure IoT Hub pomocí Azure CLI a platformy 2.0 (az.py).
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6b100e65aba604fd8becb02c3a205b3348872bc4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 378fb06f7ac9cbb6dc645994682786f474077d03
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633848"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurace centra IoT nahrávání souborů pomocí rozhraní příkazového řádku Azure
 
@@ -31,27 +26,27 @@ Pro absolvování tohoto kurzu potřebujete:
 * Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
 * [Rozhraní příkazového řádku Azure 2.0][lnk-CLI-install].
 * Centrum Azure IoT. Pokud nemáte Centrum IoT, můžete použít `az iot hub create` [příkaz] [ lnk-cli-create-iothub] vytvořit nebo použít na portálu pro [vytvoření služby IoT hub] [lnk-portal-hub].
-* Účet úložiště Azure. Pokud nemáte účet úložiště Azure, můžete použít [Azure CLI 2.0 - spravovat účty úložiště] [ lnk-manage-storage] vytvořit nebo použít portálu [vytvořit účet úložiště][lnk-portal-storage].
+* Účet služby Azure Storage. Pokud nemáte účet úložiště Azure, můžete použít [Azure CLI 2.0 - spravovat účty úložiště] [ lnk-manage-storage] vytvořit nebo použít portálu [vytvořit účet úložiště][lnk-portal-storage].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavit váš účet Azure
 
-Přihlaste se k účtu Azure a vybrat své předplatné.
+Přihlaste se ke svému účtu Azure a vyberte své předplatné.
 
-1. Na příkazovém řádku, spusťte [přihlášení příkaz][lnk-login-command]:
+1. Na příkazovém řádku spusťte [příkaz pro přihlášení][lnk-login-command]:
 
     ```azurecli
     az login
     ```
 
-    Postupujte podle pokynů k ověření pomocí kódu a přihlaste se k účtu Azure prostřednictvím webového prohlížeče.
+    Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 
-1. Pokud máte víc předplatných Azure, přihlášení do Azure uděluje přístup k Azure účty přidružené přihlašovací údaje. Použijte následující [seznam účtů Azure příkazu] [ lnk-az-account-command] k dispozici pro použití:
+1. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu zobrazte výpis účtů Azure][lnk-az-account-command], které můžete použít:
 
     ```azurecli
     az account list
     ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření služby IoT hub. Z výstupu předchozí příkaz můžete použít buď název odběru nebo ID:
+    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření centra IoT. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
@@ -83,7 +78,7 @@ Můžete použít existující kontejner objektů blob pro vaše nahrávání so
     az storage container create --name {container name} --connection-string "{your storage account connection string}"
     ```
 
-## <a name="file-upload"></a>Nahrávání souborů
+## <a name="file-upload"></a>Nahrání souboru
 
 Teď můžete nakonfigurovat službu IoT hub, chcete-li povolit [souboru nahrávání funkce] [ lnk-upload] pomocí údaje o vašem účtu úložiště.
 
@@ -131,7 +126,7 @@ Konfigurace nahrávání souborů můžete zkontrolovat ve službě IoT hub pomo
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o možnostech nahrávání souboru Centrum IoT najdete v tématu [nahrání souborů ze zařízení][lnk-upload].
 
@@ -144,7 +139,7 @@ Další informace o správě Azure IoT Hub na následujících odkazech:
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 * [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png

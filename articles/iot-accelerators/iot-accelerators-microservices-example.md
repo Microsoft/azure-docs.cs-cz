@@ -1,22 +1,19 @@
 ---
 title: Změnit a znovu nasaďte mikroslužbu | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak změnit a znovu nasaďte mikroslužbu ve vzdálené monitorování
-services: ''
-suite: iot-suite
 author: giyeh
 manager: hegate
 ms.author: giyeh
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 04/19/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3d79c085d10515183a5ddcc12ecac503915eb2e2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: de42e68116c147d81ed0211426bfa813d070b121
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627990"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Upravit a znovu nasaďte mikroslužbu
 
@@ -38,7 +35,7 @@ V tomto kurzu se naučíte:
 Chcete-li v tomto kurzu, je třeba:
 
 >[!div class="checklist"]
-> * [Nasazení předkonfigurovaného řešení vzdáleného monitorování místně](iot-accelerators-remote-monitoring-deploy-local.md)
+> * [Nasazení akcelerátoru řešení vzdáleného monitorování místně](iot-accelerators-remote-monitoring-deploy-local.md)
 > * [Účet Docker](https://hub.docker.com/)
 > * [Postman](https://www.getpostman.com/) – potřeby si zobrazte odezvu rozhraní API
 

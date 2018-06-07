@@ -8,11 +8,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a295bf741862bb58a86234b5c85f48d7a1b52be7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 056cff192b25068fa2e895fd46d143a834b7af0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641080"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Příklad: Vytvoření vlastní odborností pomocí rozhraní API převede Text
 
@@ -321,5 +322,5 @@ Blahopřejeme! Vytvoření vaší první vlastní enricher. Nyní můžete podle
 
 + [Přidat vlastní dovednosti pro kanál kognitivní vyhledávání](cognitive-search-custom-skill-interface.md)
 + [Jak definovat skillset](cognitive-search-defining-skillset.md)
-+ [Vytvoření Skillset (REST)](ref-create-skillset.md)
++ [Vytvoření Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Postup mapování provádět rozšířené pole](cognitive-search-output-field-mapping.md)

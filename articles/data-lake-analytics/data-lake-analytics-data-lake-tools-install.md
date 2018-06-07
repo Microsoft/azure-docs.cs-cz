@@ -1,24 +1,21 @@
 ---
-title: Nástroje instalace Azure Data Lake pro Visual Studio | Microsoft Docs
-description: Naučte se nainstalovat nástroje Azure Data Lake pro Visual Studio.
+title: Instalace nástrojů Azure Data Lake pro Visual Studio
+description: Tento článek popisuje postup instalace nástroje Azure Data Lake pro Visual Studio.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
+ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: saveenr, yanacai
-ms.openlocfilehash: 37b01c404006bbba79b185049aea6c7f77ce3c68
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c520c437212c23cc9dc8327c95b9f2a77b08e1ac
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622866"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Data Lake Tools pro Visual Studio
 

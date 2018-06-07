@@ -6,14 +6,15 @@ manager: craigg
 author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: 6367418fb07b2ab5b425609540c653678a207ebc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 43a25d30fbec9327e24230165abd73260397ff14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646469"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Elastické dotazu Přehled služby Azure SQL Database (preview)
 Funkce elastické dotazu (ve verzi preview) umožňuje spuštění dotazu jazyka Transact-SQL, která přesahuje více databází ve službě Azure SQL Database. Umožňuje provádět dotazy mezidatabázové přístup do vzdálených tabulek, připojovat a nástroje Microsoft a třetích stran (aplikace Excel, PowerBI, Tableau atd.) k dotazování mezi datové vrstvy s více databází. Pomocí této funkce můžete škálovat dotazy do vrstev velkých objemů dat v databázi SQL a zobrazit výsledky v sestavách business intelligence (BI).

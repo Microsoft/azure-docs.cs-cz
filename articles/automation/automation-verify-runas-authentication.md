@@ -9,17 +9,18 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9bf5a3a1dc67752e3f911d07f23c7b408e6d38c3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c1ac698a1774a7a6242506ec65193434bb81cc25
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598765"
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Test ověření účtu Azure Automation Spustit jako
 Po úspěšném vytvoření účtu Automation můžete provést jednoduchý test a zkontrolovat, že se jde úspěšně ověřit v nasazení Azure Resource Manager nebo Azure Classic pomocí nově vytvořeného nebo aktualizovaného účtu Automation Spustit jako.    
 
 ## <a name="automation-run-as-authentication"></a>Ověření pomocí účtu Automation Spustit jako
-Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](automation-creating-importing-runbook.md), který bude kontrolovat ověřování pomocí účtu Spustit jako a také ve vašich vlastních runboocích ověřovat a spravovat prostředky Resource Manageru pomocí vašeho účtu služby Automation.   
+Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](automation-creating-importing-runbook.md), který bude kontrolovat ověřování pomocí účtu Spustit jako a také ve vašich vlastních runboocích ověřovat a spravovat prostředky Resource Manageru pomocí vašeho účtu služby Automation.
 
     $connectionName = "AzureRunAsConnection"
     try
@@ -60,6 +61,9 @@ Pomocí níže uvedeného ukázkového kódu [vytvořte powershellový runbook](
     } 
 
 Všimněte si, rutina, kterou používá pro ověřování v sadě runbook - **Connect-AzureRmAccount**, používá *ServicePrincipalCertificate* sadu parametrů.  Ověřování provádí pomocí certifikátu objektu služby a ne pomocí přihlašovacích údajů.  
+
+> [!IMPORTANT]
+> **Přidat-AzureRmAccount** je nyní alias **Connect-AzureRMAccount**. Pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo můžete aktualizovat moduly v účtu Automation.
 
 Při můžete [spuštění sady runbook](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal) k ověření účtu spustit jako [úlohy runbooku](automation-runbook-execution.md) vytvoření úlohy se zobrazí stránka a stav úlohy se zobrazí v **Souhrn úlohy** dlaždici. Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Když pracovní proces úlohu přijme, změní se stav na *Spouštění*, a když se runbook skutečně spustí, změní se na *Spuštěno*.  Po dokončení úlohy runbooku by se měla zobrazit zpráva **Dokončeno**.
 

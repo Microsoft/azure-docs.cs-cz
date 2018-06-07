@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 41948d8141d0f3c0e41b95f169bcec6c4b641106
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3328a7c80a05a48b3c04ad5492a7eafe62059681
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622461"
 ---
 # <a name="use-case---product-recommendations"></a>Příklad použití – doporučení produktu
 Azure Data Factory je jedním z mnoha služby použít k implementaci řešení akcelerátorů Cortana Intelligence Suite.  V tématu [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) stránku Podrobnosti o této sady. V tomto dokumentu jsme popisují běžné případ použití, který Azure uživatelé už vyřeší a implementovaná pomocí Azure Data Factory a dalším službám součásti Cortana Intelligence.

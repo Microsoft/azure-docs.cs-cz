@@ -1,24 +1,19 @@
 ---
 title: Import a export identit zařízení Azure IoT Hub | Microsoft Docs
 description: Jak používat sady SDK služby Azure IoT provádět hromadné operace proti registru identit pro import a export identit zařízení. Operace importu umožňují vytvářet, aktualizovat a odstraňovat identit zařízení hromadně.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 2ade1494-45ea-46a7-ade7-cf6e11ce62da
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 97b0e4c4dd8c67fdcd422fb04b7c32815b6c3fdb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 63e7fd5807f0cf6d05d81af138d649b75024d9bb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634018"
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Spravovat vaše identit zařízení IoT Hub hromadně
 
@@ -60,7 +55,7 @@ RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{y
 
 Najít připojovací řetězec pro službu IoT hub v portálu Azure:
 
-- Přejděte do služby IoT hub.
+- Přejděte do svého centra IoT.
 - Vyberte **zásady sdíleného přístupu**.
 - Vyberte zásadu, vezme v úvahu oprávnění, která potřebujete.
 - Zkopírujte connectionstring z panelu na pravé straně obrazovky.
@@ -247,7 +242,7 @@ Pokud soubor importu obsahuje twin metadata, tato metadata přepíše existujíc
 
 Použít nepovinný **režimem importu** vlastnost importovat data serializace pro každé zařízení k řízení import proces za zařízení. **Režimem importu** vlastnost obsahuje následující možnosti:
 
-| importMode | Popis |
+| režimem importu | Popis |
 | --- | --- |
 | **createOrUpdate** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, dojde k přepsání zadaný vstupní data bez ohledem na stávající informace o **značka ETag** hodnotu. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |
 | **vytvoření** |Pokud zařízení se zadaným neexistuje **id**, bude nově zaregistrovaný. <br/>Pokud už zařízení existuje, je zapíše chybu do souboru protokolu. <br> Uživatel Volitelně můžete zadat data twin spolu s daty zařízení. Značka etag twin,-li zadána, je zpracovat nezávisle ze zařízení etag. Pokud se neshodují s existující twin etag, do souboru protokolu se zapíše chyba. |

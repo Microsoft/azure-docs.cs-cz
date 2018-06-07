@@ -1,22 +1,19 @@
 ---
 title: Rozšířené monitorování v řešení vzdáleného monitorování - Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak monitorování zařízení s řídicím panelu řešení vzdáleného monitorování.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 02/22/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 0456594a4a7776175781968779b4540a98070b78
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 4d2dabd348d7fda4fa7ca3aac9975fd4179400c5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627395"
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Proveďte pokročilé monitorování pomocí řešení vzdáleného monitorování
 
@@ -35,9 +32,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li v tomto kurzu, je třeba nasazené instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
+Chcete-li v tomto kurzu, je třeba nasazenou instanci řešení vzdáleného monitorování ve vašem předplatném Azure.
 
-Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy.md) kurzu.
+Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 ## <a name="choose-the-devices-to-display"></a>Vyberte zařízení k zobrazení
 
@@ -103,7 +100,7 @@ Můžete použít **řídicí panel** filtru upravit časové rozpětí pro agre
 
 ## <a name="next-steps"></a>Další postup
 
-Tento kurz vám ukázal, jak používat **řídicí panel** stránky k filtrování a monitorovat simulované dodávky zřízené v řešení vzdáleného monitorování:
+Tento kurz vám ukázal, jak používat **řídicí panel** stránky k filtrování a monitorovat simulované dodávky zřízené v řešení pro vzdálené monitorování:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]

@@ -1,25 +1,21 @@
 ---
 title: Počasí prognózy pomocí Azure Machine Learning s daty ze služby IoT Hub | Microsoft Docs
 description: Použití Azure Machine Learning k předvídání riziko déšť podle služby IoT hub shromažďuje ze senzoru teploty a vlhkosti data.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
+manager: ''
 keywords: předpověď počasí machine learning
-ms.assetid: 8ba7d9e7-699c-4448-b353-0f3e1429d198
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 453b4de8a93e897b4455403855438d7705945514
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637663"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Počasí prognózy používající senzor data ze služby IoT hub v Azure Machine Learning
 
@@ -80,10 +76,10 @@ Naučte se používat Azure Machine Learning na informace o počasí prognózy (
 
 ### <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 
-1. V [portál Azure](https://portal.azure.com/), klikněte na tlačítko **vytvořit prostředek** > **Internet věcí** > **úlohy služby Stream Analytics**.
-1. Zadejte následující informace pro úlohu.
+1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Vytvořit prostředek** > **Internet věcí** > **Úloha Stream Analytics**.
+1. Zadejte o úloze následující informace.
 
-   **Název úlohy**: název úlohy. Název musí být globálně jedinečný.
+   **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný.
 
    **Skupina prostředků**: použijte stejnou skupinu prostředků, která používá službu IoT hub.
 
@@ -95,10 +91,10 @@ Naučte se používat Azure Machine Learning na informace o počasí prognózy (
 
 1. Klikněte na možnost **Vytvořit**.
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidat vstup do úlohy Stream Analytics
+### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
 1. Spusťte úlohu služby Stream Analytics.
-1. V části **úlohy topologie**, klikněte na tlačítko **vstupy**.
+1. V části **Topologie úlohy** klikněte na **Vstupy**.
 1. V **vstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
 
    **Vstupní alias**: jedinečný odkaz pro vstup.
@@ -111,12 +107,12 @@ Naučte se používat Azure Machine Learning na informace o počasí prognózy (
 
 1. Klikněte na možnost **Vytvořit**.
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidat výstup do úlohy Stream Analytics
+### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
-1. V části **úlohy topologie**, klikněte na tlačítko **výstupy**.
+1. V části **Topologie úlohy** klikněte na **Výstupy**.
 1. V **výstupy** podokně klikněte na tlačítko **přidat**a potom zadejte následující informace:
 
-   **Alias pro výstup**: jedinečný alias pro výstup.
+   **Alias pro výstup:** Jedinečný alias pro výstup.
 
    **Jímky**: vyberte **úložiště objektů Blob**.
 
@@ -149,9 +145,9 @@ Naučte se používat Azure Machine Learning na informace o počasí prognózy (
 
 1. Klikněte na možnost **Vytvořit**.
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu úlohy Stream Analytics
+### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
-1. V části **úlohy topologie**, klikněte na tlačítko **dotazu**.
+1. V části **Topologie úlohy** klikněte na **Dotaz**.
 1. Existujícího kódu nahraďte následujícím kódem:
 
    ```sql
@@ -163,17 +159,17 @@ Naučte se používat Azure Machine Learning na informace o počasí prognózy (
    From machinelearning
    ```
 
-   Nahraďte `[YourInputAlias]` s alias vstupu úlohy.
+   Nahraďte `[YourInputAlias]` názvem aliasu pro vstup úlohy.
 
-   Nahraďte `[YourOutputAlias]` s aliasem výstupu úlohy.
+   Nahraďte `[YourOutputAlias]` názvem aliasu pro výstup.
 
 1. Klikněte na **Uložit**.
 
-### <a name="run-the-stream-analytics-job"></a>Spustit úlohu služby Stream Analytics
+### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
-V úloze Stream Analytics, klikněte na tlačítko **spustit** > **nyní** > **spustit**. Jakmile se úloha úspěšně spustí, stav úlohy změní z **Zastaveno** k **systémem**.
+V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
-![Spustit úlohu služby Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Spuštění úlohy Stream Analytics](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
 ## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Použít Microsoft Azure Storage Explorer zobrazíte předpovědi počasí
 

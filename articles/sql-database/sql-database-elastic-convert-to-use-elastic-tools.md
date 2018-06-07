@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 41652717417f47858698b80eac83a4022dcfe13b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 99b315c96e6decbc3bd7622835ba0639e9560164
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34645935"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrovat existující databáze chcete škálovat.
 Snadno spravovat existující upraveným horizontálně dělené databáze pomocí nástrojů databáze Azure SQL Database (například [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md)). Nejdřív převést stávající sadu databází, které chcete použít [správce mapy horizontálního oddílu](sql-database-elastic-scale-shard-map-management.md). 

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: c43973a7e5070676fc0f32a4c8923d57a479f884
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619248"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Zkopírujte aktivity výkonu a vyladění Průvodce
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -63,11 +64,11 @@ Všimněte si body:
 * Pro hybridní kopírování mezi místními a cloudovými úložiště dat, každý uzel Self-hosted integrace Runtime byla spuštěna na počítači, který byl samostatné z úložiště dat s níže specifikace. Pokud byla spuštěna jediné aktivity, operace kopírování spotřebováno pouze malou část CPU, paměť či šířku pásma sítě testovací počítač.
     <table>
     <tr>
-        <td>CPU</td>
+        <td>Procesor</td>
         <td>32 jader 2,20 GHz Intel Xeon E5-2660 v2</td>
     </tr>
     <tr>
-        <td>Paměť</td>
+        <td>Memory (Paměť)</td>
         <td>128 GB</td>
     </tr>
     <tr>
@@ -191,11 +192,11 @@ V současné době nelze kopírovat data mezi dvěma místní úložišti dat po
 
 Konfigurace **enableStaging** nastavení k určení, zda chcete data, která mají být dvoufázové instalace v úložišti objektů Blob před načtením do cílového úložiště dat v aktivitě kopírování. Když nastavíte **enableStaging** k `TRUE`, zadejte další vlastnosti, které jsou uvedené v další tabulce. Pokud nemáte, je také potřeba vytvořit Azure Storage nebo úložiště sdíleného přístupu podpis propojené služby pro přípravu.
 
-| Vlastnost | Popis | Výchozí hodnota | Požadováno |
+| Vlastnost | Popis | Výchozí hodnota | Požaduje se |
 | --- | --- | --- | --- |
 | **enableStaging** |Zadejte, zda chcete zkopírovat data prostřednictvím jako dočasné pracovní úložiště. |False |Ne |
-| **linkedServiceName** |Zadejte název [azurestorage](connector-azure-blob-storage.md#linked-service-properties) propojené služby, která odkazuje na instanci úložiště, který používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště nelze použít s sdílený přístupový podpis načíst data do SQL Data Warehouse pomocí PolyBase. Můžete ji v jiných scénářích. |Nevztahuje se. |Ano, když **enableStaging** nastaven na hodnotu TRUE |
-| **path** |Zadejte cestu úložiště objektů Blob, která má obsahovat pracovních dat. Pokud nezadáte cestu, služba vytvoří kontejner pro uložení dočasná data. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště s sdílený přístupový podpis, nebo vyžadujete dočasná data v konkrétní umístění. |Nevztahuje se. |Ne |
+| **linkedServiceName** |Zadejte název [azurestorage](connector-azure-blob-storage.md#linked-service-properties) propojené služby, která odkazuje na instanci úložiště, který používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště nelze použít s sdílený přístupový podpis načíst data do SQL Data Warehouse pomocí PolyBase. Můžete ji v jiných scénářích. |neuvedeno |Ano, když **enableStaging** nastaven na hodnotu TRUE |
+| **Cesta** |Zadejte cestu úložiště objektů Blob, která má obsahovat pracovních dat. Pokud nezadáte cestu, služba vytvoří kontejner pro uložení dočasná data. <br/><br/> Zadejte cestu, pouze v případě, že používáte úložiště s sdílený přístupový podpis, nebo vyžadujete dočasná data v konkrétní umístění. |neuvedeno |Ne |
 | **enableCompression** |Určuje, zda data by měl být komprimují předtím, než je zkopírován do cílové. Toto nastavení snižuje objem přenášených dat. |False |Ne |
 
 Zde je ukázka definice aktivitou kopírování pomocí vlastnosti, které jsou popsané v předchozí tabulce:
@@ -250,7 +251,7 @@ Doporučujeme, aby je provést tyto kroky pro optimalizaci výkonu služby Data 
      * [Škálovatelnost vlastním hostováním integrace modulu Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Integrace s vlastním hostováním Runtime](#considerations-for-self-hosted-integration-runtime)
    * [Zdroj](#considerations-for-the-source)
-   * [Sink](#considerations-for-the-sink)
+   * [podřízený](#considerations-for-the-sink)
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupce](#considerations-for-column-mapping)

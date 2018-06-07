@@ -1,24 +1,21 @@
 ---
-title: "Analýza webových protokolů pomocí Azure Data Lake Analytics | Microsoft Docs"
-description: "Naučte se analýza webových protokolů pomocí Data Lake Analytics. "
+title: Analýza webových protokolů pomocí Azure Data Lake Analytics
+description: Naučte se analýza webových protokolů pomocí Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
 manager: saveenr
-editor: cgronlun
+editor: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8cb8e0f683c2790d7aebb87a684798ea0a36417f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623362"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analýza webových protokolů pomocí Azure Data Lake Analytics
 Naučte se analýza webových protokolů pomocí Data Lake Analytics, hlavně o nalezení které odkazující servery nastaly chyby při pokusu o navštívit webovou stránku.
@@ -172,7 +169,7 @@ Přidání uživatelem definované operátory můžete přidat do aplikace.  Dal
 3. Klikněte dvakrát na **UnsuccessfulResponsees.log**.
 4. Dvakrát klikněte na výstupní soubor uvnitř zobrazení grafu úlohy aby bylo možné přejít přímo do výstupu.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Pokud chcete začít s Data Lake Analytics pomocí různých nástrojů, projděte si témata:
 
 * [Začínáme se službou Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-get-started-portal.md)

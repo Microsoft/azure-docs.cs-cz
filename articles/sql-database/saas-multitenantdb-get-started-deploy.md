@@ -8,14 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646452"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumejte horizontálně dělené víceklientské aplikace, která používá Azure SQL Database
 
@@ -123,7 +124,7 @@ Každý místo získá přizpůsobené webové aplikace do seznamu svoje událos
 Centrálního **události rozbočovače** webová stránka obsahuje seznam odkazů na klienty v konkrétní nasazení. Použijte následující postup můžete vyzkoušet **události rozbočovače** webové stránky a jednotlivé webové aplikace:
 
 1. Otevřete **události rozbočovače** ve webovém prohlížeči:
-    - http://events.wingtip-mt. &lt;uživatele&gt;. trafficmanager.net &nbsp; *(Nahraďte &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.)*
+    - http://events.wingtip-mt.&lt; uživatele&gt;. trafficmanager.net &nbsp; *(Nahraďte &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.)*
 
     ![centrum akcí](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,7 +136,7 @@ Centrálního **události rozbočovače** webová stránka obsahuje seznam odkaz
 
 K řízení distribuce příchozích požadavků, Wingtip aplikace používá [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Stránka události pro každého klienta zahrnuje název klienta v jeho adresa URL. Každou adresu URL také obsahuje konkrétní hodnota uživatele. Každou adresu URL dodržuje uvedené formát pomocí následujících kroků:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt; uživatele&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikace události analyzuje název klienta z adresy URL. Je název klienta *fabrikamjazzclub* v předchozí příklad adresy URL.
 2. Aplikace pak hashuje název klienta pro vytvoření klíče pro přístup k katalogu pomocí [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md).

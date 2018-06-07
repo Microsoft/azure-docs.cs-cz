@@ -1,13 +1,13 @@
 ---
-title: "Testování SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux | Microsoft Docs"
-description: "Testování SAP NetWeaveru na virtuálních počítačích Microsoft Azure se SUSE Linuxem"
+title: Testování SAP NetWeaver na virtuálních počítačích Microsoft Azure SUSE Linux | Microsoft Docs
+description: Testování SAP NetWeaveru na virtuálních počítačích Microsoft Azure se SUSE Linuxem
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 645e358b-3ca1-4d3d-bf70-b0f287498d7a
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: 072a70c1da74b3b50ad8c0a93ee3c079a724d81f
-ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
+ms.openlocfilehash: 9bb13cde07141c576a0ec78c3b48c5a20d6dbb67
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657651"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Provoz SAP NetWeaveru na virtuálních počítačích Microsoft Azure se SUSE Linuxem
 Tento článek popisuje různé co je třeba zvážit při spuštěné SAP NetWeaver v Microsoft Azure SUSE Linux virtuální počítače (VM). Od 19. května 2016 je SAP NetWeaver oficiálně podporována na virtuálních počítačích SUSE Linux v Azure. Všechny podrobnosti týkající se verze Linux, verze SAP jádra a další požadavky naleznete v 1928533 Poznámka SAP "SAP aplikace v Azure: podporované produkty a typy virtuálních počítačů Azure".
@@ -69,7 +70,7 @@ I když je stále možné používat standardní Image SLES pro SAP instalace, s
 ## <a name="installing-walinuxagent-in-a-suse-vm"></a>Instalace WALinuxAgent ve virtuálním počítači SUSE
 Agent názvem WALinuxAgent je součástí bitové kopie SLES v Azure Marketplace. Informace o instalaci ručně (například při nahrávání operačním systémem SLES virtuální pevný disk (VHD) z místní) najdete v tématu:
 
-* [OpenSUSE](http://software.opensuse.org/package/WALinuxAgent)
+* [openSUSE](http://software.opensuse.org/package/WALinuxAgent)
 * [Azure](../../linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SUSE](https://www.suse.com/communities/blog/suse-linux-enterprise-server-configuration-for-windows-azure/)
 

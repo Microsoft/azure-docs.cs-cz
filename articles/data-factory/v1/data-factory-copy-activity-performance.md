@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b54138c5197d1c5870eed6fd4782e47c6a8b0300
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27d74ce2cf8fdc4434c48c36dd0c0751dbbab232
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622308"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Zkopírujte aktivity výkonu a vyladění Průvodce
 
@@ -102,8 +103,8 @@ A **jednotky přesun dat cloudu (DMU)** je míra, která reprezentuje výkon (ko
 
 | Kopírování | Výchozí DMUs určit službou |
 |:--- |:--- |
-| Kopírování dat mezi úložišti na základě souborů | Mezi 2 a 16 v závislosti na počtu a velikosti souborů. |
-| Všechny ostatní kopie scénáře | 2 |
+| Kopírování dat mezi úložišti na základě souborů | Mezi 4 a 16 v závislosti na počtu a velikosti souborů. |
+| Všechny ostatní kopie scénáře | 4 |
 
 Pokud chcete přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMovementUnits** vlastnost následujícím způsobem. **Povolené hodnoty** pro **cloudDataMovementUnits** vlastnost jsou 2, 4, 8, 16, 32. **Skutečný počet cloudu DMUs** že kopírování se používá v době běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vaší vzorek dat. Informace o úrovni výkonnější se mohou objevit, když konfigurujete další jednotky pro konkrétní kopie zdroj a jímka najdete v tématu [referenční dokumentace výkonu](#performance-reference).
 

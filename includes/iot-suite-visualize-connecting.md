@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: f6986df19482800ff676c0e05ad680e14dfeca1f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665996"
 ---
 ## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
@@ -57,4 +58,4 @@ Chcete-li volat metody na zařízení, použijte **zařízení** stránky v ře�
 
 ## <a name="next-steps"></a>Další postup
 
-Článek [přizpůsobit vzdálené monitorování akcelerátoru řešení](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) popisuje několik způsobů, jak přizpůsobit akcelerátoru řešení.
+Článek [přizpůsobit akcelerátoru řešení vzdáleného monitorování](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) popisuje několik způsobů, jak přizpůsobit akcelerátoru řešení.

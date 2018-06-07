@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/14/2018
+ms.date: 05/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd70636a40ac08fb4b47c6ea53ae3c702d271ea8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: f128947cf3ac0a2afab23d41f101c1b0d7624397
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204895"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641947"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -64,8 +64,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 * [Instalace sady Microsoft Azure Service Fabric SDK][core-sdk]
 
 Aktuální verze jsou:
-* Sada Service Fabric SDK a Service Fabric Tools 3.1.274
-* Modul runtime Service Fabric 6.2.274
+* Service Fabric SDK a nástroje 3.1.283
+* 6.2.283 modulu runtime Service Fabric
 * Service Fabric Tools for Visual Studio 2015 2.1.20180510.2
 * Visual Studio 2017 15.7 obsahuje Service Fabric Tools for Visual Studio 2.1.20180423.1 
 
@@ -78,7 +78,7 @@ Platforma Service Fabric používá skripty prostředí Windows PowerShell k vyt
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když jste dokončili nastavení vývojového prostředí, můžete začít sestavovat a spouštět aplikace.
 
 * [Vytvořte první aplikaci Service Fabric v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)

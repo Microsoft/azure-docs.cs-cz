@@ -11,19 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 12a176a6eba3b6dd83ef7fb97f89ecfe99083059
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1ddc74b1960095509a77d4b3072017847df42d90
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637357"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkce dat zákazníka Azure Key Vault
 
 Azure Key Vault obdrží data zákazníků během vytvoření či aktualizaci trezory, klíčů, tajné klíče, certifikáty a účty úložiště spravovaný. Tato data zákazníků je přímo viditelný na portálu Azure a přes rozhraní REST API. Zákaznická data, můžete upravit nebo odstranit, aktualizace nebo odstranění objektu, který obsahuje data.
 
 Přístup k protokolům systému jsou generovány, pokud uživatele nebo aplikace přistupuje k Key Vault. Přístup podrobné protokoly jsou dostupné pro zákazníky používající Statistika Azure.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="identifying-customer-data"></a>Identifikace data zákazníků
 

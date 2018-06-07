@@ -5,25 +5,25 @@ services: storage,event-grid
 keywords: ''
 author: david-stanford
 ms.author: dastanfo
-ms.date: 01/30/2018
+ms.date: 05/24/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: b6764ffa0e7cfbc888f11c22af855d48d8160372
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650498"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Události úložiště objektů Blob trasy pro koncový bod vlastní webové pomocí prostředí PowerShell
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí prostředí Azure PowerShell přihlásit k odběru událostí úložiště objektů Blob, aktivační události a zobrazit výsledek. 
 
-Obvykle odesíláte události do koncového bodu, který na událost reaguje například webhookem nebo funkcí Azure Functions. Pro zjednodušení z příkladu v tomto článku, jsou události odeslané na adresu URL, jenom shromažďující zprávy. Tuto adresu URL vytvoříte pomocí nástroje třetí strany z webu [Hookbin](https://hookbin.com/).
+Obvykle odesílat události pro koncový bod, který zpracovává data události a provede akce. Ale zjednodušit v tomto článku, odeslání události do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
-> [!NOTE]
-> **Hookbin** není určen pro použití vysoké propustnosti. Použití tohoto nástroje je čistě demonstrativní. Pokud najednou nabídnete více než jednu událost, možná se v nástroji nezobrazí všechny. Navíc mějte na paměti, **Hookbin** získá [zvláštní zacházení](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint) pomocí Azure událostí mřížky. Usnadňuje testování mřížky událostí odesílá události existuje bez nutnosti správné odpovědí na požadavky na ověření předplatného (což by mohlo dojít [jinak](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details)).
+Pokud budete hotovi, uvidíte, že data události byl odeslán do webové aplikace.
 
-Po dokončení kroků popsaných v tomto článku uvidíte, že se data událostí odeslala do koncového bodu.
+![Zobrazit výsledky](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
 ## <a name="setup"></a>Nastavení
 
@@ -82,23 +82,41 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>Vytvoření koncového bodu zpráv
 
-Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Místo psaní kódu, který by na událost reagoval, vytvoříme koncový bod, který bude shromažďovat zprávy, abyste je mohli zobrazit. Hookbin je nástroj třetí strany, který umožňuje vytvořit koncový bod a zobrazit požadavky, které se do něj odesílají. Přejděte na web [Hookbin](https://hookbin.com/) a klikněte na **Create New Endpoint** (Vytvořit nový koncový bod). Zkopírujte adresu URL Koš a nahraďte `<bin URL>` v následující skript.
+Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy události. Obvykle se koncový bod provede akce podle data události. Pro zjednodušení tento rychlý start, nasazení [předem připravené webové aplikace](https://github.com/dbarkol/azure-event-grid-viewer) který zobrazí zprávy událostí. Nasazené řešení zahrnuje plán služby App Service, webové aplikace App Service a zdrojového kódu z Githubu.
+
+Nahraďte `<your-site-name>` s jedinečným názvem pro vaši webovou aplikaci. Název webové aplikace musí být jedinečný, protože je součástí položky DNS.
 
 ```powershell
-$binEndPoint = "<bin URL>"
+$sitename="<your-site-name>"
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $resourceGroup `
+  -TemplateUri "https://raw.githubusercontent.com/dbarkol/azure-event-grid-viewer/master/azuredeploy.json" `
+  -siteName $sitename `
+  -hostingPlanName viewerhost
 ```
+
+Nasazení může trvat několik minut. Po nasazení proběhla úspěšně, zobrazit vaší webové aplikace na Ujistěte se, zda je spuštěná. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
+
+Měli byste vidět web bez zpráv aktuálně zobrazený.
 
 ## <a name="subscribe-to-your-storage-account"></a>Přihlásit k účtu úložiště
 
-K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. V následujícím příkladu se přihlásí k účtu úložiště, které jste vytvořili a předává adresu URL z Hookbin jako koncový bod pro oznámení o události. 
+K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat. V následujícím příkladu se přihlásí k účtu úložiště, které jste vytvořili a předá adresu URL z vaší webové aplikace jako koncový bod pro oznámení o události. Koncový bod pro webové aplikace musí obsahovat příponu `/api/updates/`.
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
+$endpoint="https://$sitename.azurewebsites.net/api/updates"
+
 New-AzureRmEventGridSubscription `
   -EventSubscriptionName gridBlobQuickStart `
-  -Endpoint $binEndPoint `
+  -Endpoint $endpoint `
   -ResourceId $storageId
 ```
+
+Znovu zobrazit vaší webové aplikace a Všimněte si, že k němu byl odeslán událost ověření předplatného. Vyberte ikonu oka rozbalte data události. Událost mřížky odešle událost ověření, koncový bod, můžete ověřit, jestli chce přijímat data události. Webová aplikace obsahuje kód pro ověření předplatného.
+
+![Zobrazení odběru událostí](./media/storage-blob-event-quickstart-powershell/view-subscription-event.png)
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Aktivace události ze služby Blob Storage
 
@@ -113,7 +131,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Přejděte na adresu URL koncového bodu, kterou jste vytvořili dříve. Nebo v otevřeném prohlížeči klikněte na tlačítko pro obnovení. Zobrazí se událost, kterou jste právě odeslali. 
+Právě jste aktivovali událost a služba Event Grid odeslala zprávu do koncového bodu, který jste nakonfigurovali při přihlášení k odběru. Zobrazení vaší webové aplikace na výskyt události, které jste poslali.
 
 ```json
 [{

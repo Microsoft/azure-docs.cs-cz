@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/25/2018
+ms.author: msangapu
+ms.openlocfilehash: c1dbcf83927da23ceab652f8bc4dbe8d6343c1a8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598398"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>V systému Linux nejčastější dotazy týkající se služby Azure App Service
 
@@ -47,8 +48,8 @@ Tato akce je stejná jako Docker restartování.
 
 Ano, můžete to udělat pomocí zdrojové lokality řízení správy (SCM).
 
-> [!NOTE] 
-> Můžete také připojit ke kontejneru aplikaci přímo z místní vývojovém počítači pomocí protokolu SSH, SFTP nebo Visual Studio Code (pro živé ladění aplikace Node.js). Další informace najdete v tématu [vzdálené ladění a SSH ve službě App Service v systému Linux](https://aka.ms/linux-debug).
+> [!NOTE]
+> Ke kontejneru aplikace se můžete připojit také přímo z místního vývojového počítače pomocí SSH, SFTP nebo Visual Studio Code (pro živé ladění aplikací Node.js). Další informace najdete v tématu [Vzdálené ladění a SSH ve službě App Service v Linuxu](https://aka.ms/linux-debug).
 >
 
 **Jak můžete vytvořit plán služby App Service Linux prostřednictvím sady SDK nebo šablonu Azure Resource Manager?**
@@ -113,7 +114,7 @@ Můžete to udělat nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení
 
 **Mé vlastní kontejner trvá dlouhou dobu spuštění a platformou restartuje kontejner před dokončením spuštění.**
 
-Můžete nakonfigurovat množství času, kterou platformu bude čekat před jeho restartování vašeho kontejneru. Chcete-li tak učinit, nastavte `WEBSITES_CONTAINER_START_TIME_LIMIT` nastavení aplikace nastavte na hodnotu, kterou chcete. Výchozí hodnota je 230 sekund a maximální hodnota je 600 sekund.
+Můžete nakonfigurovat množství času, kterou platformu bude čekat před jeho restartování vašeho kontejneru. Chcete-li tak učinit, nastavte `WEBSITES_CONTAINER_START_TIME_LIMIT` nastavení aplikace nastavte na hodnotu, kterou chcete. Výchozí hodnota je 230 sekund a maximální hodnota je 1 800 sekund.
 
 **Co je formát pro adresu URL serveru privátní registru?**
 

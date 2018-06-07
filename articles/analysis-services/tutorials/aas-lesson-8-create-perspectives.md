@@ -3,16 +3,17 @@ title: 'Kurz služby Azure Analysis Services – Lekce 8: Vytvoření perspektiv
 description: Popisuje, jak vytvořit perspektivy v projektu Kurz služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bb6599fefaa03e2ca0fec2788dca27240dbad8c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 865959a5595de7b5ac65a9915e484182a820b5b4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598704"
 ---
 # <a name="create-perspectives"></a>Vytvoření perspektiv
 

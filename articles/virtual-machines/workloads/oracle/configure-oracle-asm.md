@@ -1,13 +1,13 @@
 ---
-title: "Nastavit Oracle ASM na virtuálním počítači Azure Linux | Microsoft Docs"
-description: "Rychle získáte Oracle ASM nahoru a spouštění v prostředí Azure."
+title: Nastavit Oracle ASM na virtuálním počítači Azure Linux | Microsoft Docs
+description: Rychle získáte Oracle ASM nahoru a spouštění v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: RicksterCDN
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,15 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cc75235680eeace5107ef6ac0380e8b7a42974fc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656105"
 ---
-# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavit Oracle ASM na virtuálním počítači Azure Linux  
+# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Nastavte Oracle ASM na linuxovém virtuálním počítači Azure  
 
-Virtuální počítače Azure, zadejte plně konfigurovatelné a flexibilní výpočetního prostředí. Tento kurz se zaměřuje na základní virtuální počítač Azure nasazení v kombinaci s instalaci a konfiguraci systému Oracle automatizované úložiště ASM (Správa).  Získáte informace o těchto tématech:
+Virtuální počítače Azure poskytují plně konfigurovatelné a flexibilní výpočetní prostředí. Tento kurz se zaměřuje na základní virtuální počítač Azure nasazení v kombinaci s instalaci a konfiguraci systému Oracle automatizované úložiště ASM (Správa).  Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořit a připojit na virtuální počítač databázi Oracle
@@ -200,7 +201,7 @@ V tomto kurzu je výchozí uživatelská *mřížky* a je do výchozí skupiny *
    ```
 
 3. Formát disku */dev/sdc* spuštěním následujícího příkazu a odpovědi na výzvy s:
-   - *n*pro nový oddíl
+   - *n* pro nový oddíl
    - *p* pro primární oddíl
    - *1* vyberte první oddíl
    - stiskněte klávesu `enter` pro první cylindr výchozí

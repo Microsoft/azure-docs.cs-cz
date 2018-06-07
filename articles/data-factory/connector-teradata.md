@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 287fc502a0a538660da86e028a81fba04bcac903
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4360ff12a435afc4347fa97bba4506ccd81618aa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618976"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -167,44 +168,44 @@ Při kopírování dat z Teradata, se používají následující mapování Ter
 | Datový typ Teradata | Typ průběžných dat objektu pro vytváření dat |
 |:--- |:--- |
 | BigInt |Int64 |
-| Objekt blob |Byte[] |
-| Bajtů |Byte[] |
+| Objekt blob |Byte] |
+| Bajtů |Byte] |
 | ByteInt |Int16 |
 | Char |Řetězec |
 | Datový typ CLOB |Řetězec |
 | Datum |DateTime |
 | Decimal |Decimal |
-| Dvojitý |Dvojitý |
+| Double |Double |
 | Obrázek |Řetězec |
 | Integer |Int32 |
-| Interval den |TimeSpan |
-| Interval den a hodina |TimeSpan |
-| Denní interval minuty. |TimeSpan |
-| Denní interval sekundy. |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval hodiny, minuty. |TimeSpan |
-| Interval hodinu sekundu |TimeSpan |
-| Interval minutu |TimeSpan |
-| Interval minuty, sekundy. |TimeSpan |
+| Interval den |Časový interval |
+| Interval den a hodina |Časový interval |
+| Denní interval minuty. |Časový interval |
+| Denní interval sekundy. |Časový interval |
+| Interval hodinu |Časový interval |
+| Interval hodiny, minuty. |Časový interval |
+| Interval hodinu sekundu |Časový interval |
+| Interval minutu |Časový interval |
+| Interval minuty, sekundy. |Časový interval |
 | Interval měsíc |Řetězec |
-| Interval druhý |TimeSpan |
+| Interval druhý |Časový interval |
 | Interval roku |Řetězec |
 | Interval rok, měsíc |Řetězec |
-| Číslo |Dvojitý |
+| Číslo |Double |
 | Period(Date) |Řetězec |
 | Period(Time) |Řetězec |
 | Období (čas s časovým pásmem) |Řetězec |
 | Period(Timestamp) |Řetězec |
 | Období (časové razítko s časovým pásmem) |Řetězec |
 | SmallInt |Int16 |
-| Čas |TimeSpan |
+| Čas |Časový interval |
 | Čas s časovým pásmem |Řetězec |
 | Časové razítko |DateTime |
-| Časové razítko s časovým pásmem |DateTimeOffset |
-| VarByte |Byte[] |
+| Časové razítko s časovým pásmem |Datový typ DateTimeOffset |
+| VarByte |Byte] |
 | VarChar |Řetězec |
 | VarGraphic |Řetězec |
-| Xml |Řetězec |
+| XML |Řetězec |
 
 
 ## <a name="next-steps"></a>Další postup

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7dc4af39a659a9c3c910c835265886b79ad5cf62
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5787f944211c5dd6c0c83e7dc10170d8a0cd9a23
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616606"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -217,9 +218,9 @@ Při kopírování dat z Amazon Redshift, se používají následující mapová
 | CHAR – |Řetězec |
 | DATE (Datum) |DateTime |
 | DECIMAL |Decimal |
-| DVOJITÁ PŘESNOST |Dvojitý |
+| DVOJITÁ PŘESNOST |Double |
 | CELÉ ČÍSLO |Int32 |
-| SKUTEČNÉ |Svobodný/svobodná |
+| SKUTEČNÉ |Jednoduchá |
 | SMALLINT |Int16 |
 | TEXT |Řetězec |
 | ČASOVÉ RAZÍTKO |DateTime |

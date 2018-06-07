@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7457a820d9179248eab976ceec64f6b7a4a38563
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643334"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric pomocí metrik
 *Metriky* jsou prostředky, které vaše služby péče o a které jsou k dispozici na uzlech v clusteru. Metrika je všechno, co chcete spravovat pro zlepšení nebo sledovat výkon vašich služeb. Například je může sledovat využití paměti vědět, pokud je přetížena služby. Použití jiné je zjistit, jestli může služba přesunout jinde kde paměti je že menší omezené, aby bylo možné získat lepší výkon.
@@ -32,11 +33,12 @@ Příklady metriky jsou věci jako využití paměti, disku a procesoru. Tyto me
   - ReplicaCount - počet celkový stavová repliky na uzlu
   - Počet - počet všech objektů služby (bezstavové a stavové) na uzlu
 
-| Metrika | Bezstavové Instance zatížení | Stavová zatížení sekundární | Stavová zatížení primární |
-| --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |
-| ReplicaCount |0 |1 |1 |
-| Počet |1 |1 |1 |
+| Metrika | Bezstavové Instance zatížení | Stavová zatížení sekundární | Stavová zatížení primární | Váha |
+| --- | --- | --- | --- | --- |
+| PrimaryCount |0 |0 |1 |0 |
+| ReplicaCount |0 |1 |1 |0 |
+| Počet |1 |1 |1 |0 |
+
 
 Pro základní úlohy výchozích metrik zadejte dostatečnou distribuční práce v clusteru. V následujícím příkladu se podíváme, co se stane, když jsme vytvořit dvě služby a spoléhají na výchozích metrik pro vyrovnávání. Repliku cíl nastavit velikost tří první službě je stavové služby s tři oddíly. Druhý služba je bezstavové služby s jedním oddílem a počet instancí tří.
 

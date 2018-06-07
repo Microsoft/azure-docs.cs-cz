@@ -1,11 +1,11 @@
 ---
-title: "Jak používat fronty Service Bus v Node.js | Microsoft Docs"
-description: "Naučte se používat fronty Service Bus v Azure z aplikace Node.js."
+title: Jak používat fronty Service Bus v Node.js | Microsoft Docs
+description: Naučte se používat fronty Service Bus v Azure z aplikace Node.js.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 5b309534f7aef602610cfdb6aa784d180551e1ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bc291c3a453b4dec5e6c47ab4a7f2e2ac2b9967
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641437"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Jak používat fronty Service Bus s Node.js
 
@@ -64,8 +65,6 @@ var azure = require('azure');
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Nastavit připojení k Azure Service Bus
 Azure modul čte proměnnou prostředí `AZURE_SERVICEBUS_CONNECTION_STRING` získat informace požadované pro připojení k Service Bus. Pokud není nastavena tato proměnná prostředí, musíte zadat informace o účtu při volání metody `createServiceBusService`.
-
-Příklad nastavení proměnných prostředí v konfiguračním souboru pro cloudové služby Azure, naleznete v části [Node.js Cloudová služba se úložiště][Node.js Cloud Service with Storage].
 
 Příklad nastavení proměnných prostředí [portál Azure] [ Azure portal] web Azure, najdete v části [webovou aplikaci Node.js s úložištěm][Node.js Web Application with Storage].
 
@@ -177,7 +176,7 @@ Je také vypršení časového limitu přidružené zpráva uzamčená ve front�
 
 V případě, že aplikace spadne po zpracování zprávy, ale předtím, než `deleteMessage` metoda je volána, pak zpráva bude vysláním do aplikace odešle znovu. To se často označuje jako *zpracování nejméně jednou*, který je každá zpráva se zpracuje alespoň jednou, ale v některých situacích může doručit víckrát stejnou zprávu. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často opírá **MessageId** vlastnosti zprávy, která zůstane konstantní mezi pokusy o doručení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o frontách, najdete v následujících materiálech.
 
 * [Fronty, témata a odběry][Queues, topics, and subscriptions]
@@ -190,6 +189,5 @@ Další informace o frontách, najdete v následujících materiálech.
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
-[Node.js Cloud Service with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
 [Service Bus quotas]: service-bus-quotas.md

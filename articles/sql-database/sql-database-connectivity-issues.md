@@ -7,14 +7,15 @@ author: dalechen
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: daleche
-ms.openlocfilehash: 27e565845ec538a1982ec0742d7ca723fa9c348c
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 37cd099e6efe44ee70dc1799ef4b2b4377c571d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647253"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Oprava a diagnostika chyb připojení SQL a přechodných chyb služby SQL Database a jejich předcházení
 Tento článek popisuje, jak zabránit, odstraňování, diagnostikovat a opravit chyby připojení a přechodné chyby, které klientské aplikace, zaznamená při komunikuje se službou Azure SQL Database. Zjistěte, jak nakonfigurovat logika opakovaných pokusů, sestavení připojovacího řetězce a další nastavení připojení.
@@ -125,7 +126,7 @@ Při vytváření [připojovací řetězec](http://msdn.microsoft.com/library/Sy
 
 Konkrétně vybrané hodnoty měli následující true rovnosti:
 
-Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
+Časový limit připojení = ConnectRetryCount * ConnectionRetryInterval
 
 Například pokud je počet rovná 3 a interval rovná 10 sekund, vypršení časového limitu jenom 29 sekund nedává systému dostatek času pro jeho třetí a finální opakovat, pokud chcete připojit: 29 < 3 * 10.
 
@@ -328,7 +329,7 @@ V oboru názvů **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**
 
 V oboru názvů **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**:
 
-* **AlwaysTransientErrorDetectionStrategy** class
+* **AlwaysTransientErrorDetectionStrategy** – třída
 * **NeverTransientErrorDetectionStrategy** – třída
 
 Zde jsou některé odkazy na informace o EntLib60:

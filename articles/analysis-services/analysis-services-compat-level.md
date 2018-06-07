@@ -3,26 +3,27 @@ title: Datový model úroveň kompatibility v Azure Analysis Services | Microsof
 description: Seznámení s úrovní kompatibility tabulková data modelu.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 231a7ea42560aac3fba0ccf27e27123320f219a3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d68d544a66448fbbf193ff53fa43e179b1edb706
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602063"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Úroveň kompatibility pro tabulkové modely služby Analysis Services
 
-*Úroveň kompatibility* odkazuje na konkrétní verzi chování v rámci stroje služby Analysis Services. Změny úrovně kompatibility se obvykle shodují s hlavní verze systému SQL Server. Tyto změny jsou také implementované v Azure Analysis Services k udržování rozdíly mezi obě platformy. Kompatibilita úrovně ovlivní také funkce dostupné v tabulkové modely. Například DirectQuery a metadat pro tabulkový objektový mají různé implementace v závislosti na úrovni kompatibility. 
+*Úroveň kompatibility* odkazuje na konkrétní verzi chování v rámci stroje služby Analysis Services. Změny úrovně kompatibility se obvykle shodují s hlavní verze systému SQL Server. Tyto změny jsou také implementované v Azure Analysis Services k udržování rozdíly mezi obě platformy. Úroveň kompatibility změní také vliv funkce dostupné v tabulkové modely. Například DirectQuery a metadat pro tabulkový objektový mají různé implementace v závislosti na úrovni kompatibility. Úroveň kompatibility je zadána v projektu tabulkového modelu v aplikaci Visual Studio (SSDT). Tabulkové modely vytvořené v a importovat z Power BI Desktop se pouze na úrovni 1400 kompatibility.
 
-Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo 1400.
+Azure Analysis Services podporuje tabulkové modely na úrovni kompatibility 1200 nebo 1400. 
 
 Nejnovější úroveň kompatibility je 1400. Tato úroveň se shoduje s SQL Server 2017 Analysis Services. Mezi hlavní funkce na úrovni kompatibility 1400 patří:
 
-*  Novou infrastrukturu pro datové připojení a import do tabulkové modely s podporou pro rozhraní API TNÍ a TMSL skriptování. Tato nová funkce umožňuje podporu pro další datové zdroje, jako je například úložiště objektů Blob v Azure.
+*  Nové funkce pro datové připojení a import s podporou pro rozhraní API TNÍ a TMSL skriptování. 
 *  Transformace dat a možnosti data hybridní webové aplikace pomocí výrazy načíst Data a M.
 *  Míry podporovat vlastnost řádky s podrobnostmi s výraz DAX. Tato vlastnost umožňuje nástroje klienta, například aplikace Microsoft Excel k podrobnostem podrobná data ze souhrnné sestavy. Když uživatelé zobrazit celkový prodej oblasti a měsíc, mohou prohlížet podrobnosti související pořadí. 
 *  Zabezpečení na úrovni objektu pro názvy tabulek a sloupců, kromě dat mezi nimi.

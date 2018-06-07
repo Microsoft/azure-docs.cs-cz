@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jingwang
-ms.openlocfilehash: 629c1e071f475ab1d3ae3bf25839d6832b416264
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3d4c36578402d5a31464bc8a1c77f60cba9104c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617398"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-beta"></a>Kopírování dat z Responsys Oracle pomocí Azure Data Factory (Beta)
 

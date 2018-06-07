@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 44c157334306f81a8c9850cfa53e139139ff1db6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618884"
 ---
 # <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Spusťte balíček SSIS pomocí aktivity uložené procedury v Azure Data Factory
 Tento článek popisuje způsob spouštění balíčku služby SSIS z kanál služby Azure Data Factory pomocí aktivity uložené procedury. 

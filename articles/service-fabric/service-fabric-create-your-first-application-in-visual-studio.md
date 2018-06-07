@@ -9,17 +9,17 @@ editor: vturecek
 ms.assetid: c3655b7b-de78-4eac-99eb-012f8e042109
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/14/2018
+ms.date: 05/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7e64bc34f5c39edaf87cc732d7c4702655df0e3e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 7dadaadd0e6a6e6d71685356568076ad26305cc2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212666"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642219"
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Vytvoření první stavové aplikace Reliable Services pro Service Fabric v jazyce C#
 
@@ -68,12 +68,15 @@ Přehled obsahu projektu služby najdete v tématu [Začínáme se službami Rel
 
 Když teď máte aplikaci, můžete ji pomocí následujících kroků spustit, nasadit a ladit.
 
-1. Stisknutím klávesy F5 v sadě Visual Studio aplikaci nasadíte pro ladění.
+1. V sadě Visual Studio, vyberte **F5** k nasazení aplikace pro ladění.  Klikněte na tlačítko **Ano** Pokud zobrazí se okno se zprávou požádá o udělte "ServiceFabricAllowedUsers" pro čtení a spuštění oprávnění k adresáři projektu sady Visual Studio.
 
     >[!NOTE]
     >Při prvním místním spuštění a nasazení aplikace sada Visual Studio vytvoří místní cluster pro účely ladění. To může nějakou dobu trvat. Stav vytváření clusteru se zobrazí v okně výstupu sady Visual Studio.
-
-    Až bude cluster připravený, aplikace pro správu na hlavním panelu systému místního clusteru, která je součástí sady SDK, zobrazí upozornění.
+    
+     Až bude cluster připravený, aplikace pro správu na hlavním panelu systému místního clusteru, která je součástí sady SDK, zobrazí upozornění.
+     
+    >[!NOTE]
+    >Toto cvičení reqires uzlem 5 (vs. 1 uzel) clusteru. Můžete to ověřit následujícím způsobem: Spusťte nástroj Service Fabric Exploreru kliknete pravým tlačítkem **Service Fabric Local Cluster Manager** aplikace na hlavním panelu systému a pak klikněte na tlačítko **přepínače clusteru režimu**. Klikněte na tlačítko **5 uzlu** Pokud 1 uzel není vybraná.
     
     ![Upozornění na hlavním panelu systému místního clusteru][4]
 
@@ -107,7 +110,7 @@ Když teď máte aplikaci, můžete ji pomocí následujících kroků spustit, 
 
     ![Zarážka v metodě RunAsync stavové služby][7]
 
-7. Spusťte nástroj Service Fabric Explorer kliknutím pravým tlačítkem na aplikaci **Local Cluster Manager** na hlavním panelu systému a výběrem možnosti **Manage Local Cluster** (Správa místního clusteru).
+7. Spusťte nástroj Service Fabric Exploreru kliknete pravým tlačítkem **Service Fabric Local Cluster Manager** aplikace na hlavním panelu systému a potom vyberete **spravovat místní Cluster**.
 
     ![Spuštění nástroje Service Fabric Explorer z aplikace Local Cluster Manager][systray-launch-sfx]
 
@@ -117,7 +120,7 @@ Když teď máte aplikaci, můžete ji pomocí následujících kroků spustit, 
 
     ![Zastavení uzlu v Service Fabric Exploreru][sfx-stop-node]
 
-    Na okamžik byste měli zahlédnout, jak Visual Studio dojde k vaší zarážce a výpočet probíhající na jednom uzlu plynule převezme jiný uzel.
+    Na okamžik byste měli zahlédnout, jak Visual Studio dojde k vaší zarážce a výpočet probíhající na jednom uzlu plynule převezme jiný uzel. Stiskněte klávesu **F5** pokračujte.
 
 9. Dále se vraťte do prohlížeče diagnostických událostí a podívejte se na zprávy. Hodnota čítače pořád roste, i když události ve skutečnosti přicházejí z jiného uzlu.
 
@@ -137,7 +140,7 @@ Odeberte cluster kliknutím pravým tlačítkem na aplikaci **Local Cluster Mana
 
 Pokud zvolíte tuto možnost, sada Visual Studio cluster znovu nasadí při příštím spuštění aplikace. Zvolte tuto možnost v případě, že se místní cluster nechystáte nějakou dobu používat nebo potřebujete uvolnit prostředky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o [Reliable Services](service-fabric-reliable-services-introduction.md).
 <!-- Image References -->
 

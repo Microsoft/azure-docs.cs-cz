@@ -1,13 +1,13 @@
 ---
-title: "SAP ASC nebo SCS instance více SID vysoká dostupnost s Windows Server Failover Clustering a sdíleného disku v Azure | Microsoft Docs"
-description: "Vysoká dostupnost více SID pro instance SAP ASC nebo SCS s Windows Server Failover Clustering a sdíleného disku na Azure"
+title: SAP ASC nebo SCS instance více SID vysoká dostupnost s Windows Server Failover Clustering a sdíleného disku v Azure | Microsoft Docs
+description: Vysoká dostupnost více SID pro instance SAP ASC nebo SCS s Windows Server Failover Clustering a sdíleného disku na Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82cc943f983b3dedfc0f64f2eec5b4425a4bf81
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656726"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -248,7 +249,7 @@ Dokončení na šířku s dvěma systémy SAP vysoké dostupnosti bude vypadat t
 
 ![Nastavení vysoké dostupnosti více SID SAP s dvě systému SAP identifikátorů SID][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a>Příprava infrastruktury scénář více SID SAP
+## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> Příprava infrastruktury scénář více SID SAP
 
 Příprava infrastruktury, můžete nainstalovat další instance SAP ASC nebo SCS s následujícími parametry:
 
@@ -256,7 +257,7 @@ Příprava infrastruktury, můžete nainstalovat další instance SAP ASC nebo S
 | --- | --- |
 | SAP ASC NEBO SCS SID |PR1-lb ASC |
 | Databázového systému SAP interní nástroj pro vyrovnávání zatížení | PR5 |
-| Název virtuálního hostitele SAP | pr5. sap cl |
+| Název virtuálního hostitele SAP | pr5-sap-cl |
 | SAP ASC nebo SCS virtuální hostitele IP adresu (IP adresa služby Vyrovnávání zatížení Další Azure) | 10.0.0.50 |
 | Čísla instance SAP ASC nebo SCS | 50 |
 | Port testu ILB pro další instance SAP ASC nebo SCS | 62350 |
@@ -270,8 +271,8 @@ V existujícím clusteru služby WSFC s dvěma uzly můžete nainstalovat dalš�
 
 | Role virtuálního počítače | Název hostitele virtuálního počítače | Statická IP adresa |
 | --- | --- | --- |
-| Prvním uzlu clusteru pro instanci ASC nebo SCS |PR1-ASC-0 |10.0.0.10 |
-| Druhý uzel clusteru pro instanci ASC nebo SCS |PR1-ASC-1 |10.0.0.9 |
+| Prvním uzlu clusteru pro instanci ASC nebo SCS |pr1-ascs-0 |10.0.0.10 |
+| Druhý uzel clusteru pro instanci ASC nebo SCS |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Vytvořte název virtuálního hostitele pro skupinu prostředků clusteru SAP ASC nebo SCS na serveru DNS
 
@@ -279,7 +280,7 @@ Položku DNS pro název virtuálního hostitele instance ASC nebo SCS můžete v
 
 | Nový název virtuálního hostitele SAP ASC nebo SCS | Přidružené IP adresu |
 | --- | --- | --- |
-|pr5. sap cl |10.0.0.50 |
+|pr5-sap-cl |10.0.0.50 |
 
 Novým názvem hostitele a IP adresa se zobrazí ve Správci DNS, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -432,7 +433,7 @@ Podrobný postup je následující:
 
 10. [Testovací převzetí služeb při selhání SAP ASC nebo SCS instance a replikace SIOS][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Omezení sítě: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Nástroj pro vyrovnávání zatížení několika virtuálními IP adresami pro Azure.][load-balancer-multivip-overview]

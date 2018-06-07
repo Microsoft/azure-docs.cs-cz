@@ -9,15 +9,16 @@ ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 09568dcbbec90bcba2f2782072b83cc04d9e8a87
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621747"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 > [!NOTE]
@@ -131,7 +132,7 @@ Následující kód JSON určuje základě Linux na vyžádání propojené slu�
 | osType                       | Typ operačního systému. Povolené hodnoty jsou **Linux** a **Windows**. Pokud tato hodnota není zadaná, **Linux** se používá.  <br /><br />Důrazně doporučujeme používat clustery HDInsight se systémem Linux. Datum vyřazení pro HDInsight v systému Windows je 31 července 2018. | Ne       |
 | hcatalogLinkedServiceName    | Název SQL Azure, propojené služby, která odkazuje na databázi HCatalog. Cluster HDInsight na vyžádání je vytvořená pomocí SQL database jako metaúložiště. | Ne       |
 
-#### <a name="example-linkedservicenames-json"></a>Example: LinkedServiceNames JSON
+#### <a name="example-linkedservicenames-json"></a>Příklad: LinkedServiceNames JSON
 
 ```json
 "additionalLinkedServiceNames": [
@@ -307,7 +308,7 @@ Další možností je zajistit **batchUri** koncový bod. Příklad:
 | Vlastnost          | Popis                              | Požaduje se |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Nastavte vlastnost type na **AzureBatch**. | Ano      |
-| accountName       | Název účtu Batch.         | Ano      |
+| název účtu       | Název účtu Batch.         | Ano      |
 | accessKey         | Přístupový klíč pro účet Batch.  | Ano      |
 | poolName          | Název fondu virtuálních počítačů.    | Ano      |
 | linkedServiceName | Název úložiště, propojené služby, který je spojen s tuto dávku propojená služba. Tato propojená služba se používá pro pracovní soubory, které jsou nutné ke spuštění aktivity a k ukládání protokolů provádění aktivity. | Ano      |
@@ -345,7 +346,7 @@ Následující tabulka popisuje obecné vlastnosti, které se používají v def
 | Vlastnost                 | Popis                              | Požaduje se                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | Nastavte vlastnost type na **AzureDataLakeAnalytics**. | Ano                                      |
-| accountName          | Název účtu Data Lake Analytics.  | Ano                                      |
+| název účtu          | Název účtu Data Lake Analytics.  | Ano                                      |
 | dataLakeAnalyticsUri | Identifikátor URI Data Lake Analytics.           | Ne                                       |
 | subscriptionId       | ID předplatného Azure.                    | Ne<br /><br />(Pokud není zadaný, předplatné objekt pro vytváření dat se používá.) |
 | resourceGroupName    | Název skupiny prostředků Azure.                | Ne<br /><br /> (Pokud není zadaný, skupinu prostředků objekt pro vytváření dat se používá.) |
@@ -454,7 +455,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 Podrobnosti o třídy objektu pro vytváření dat, které se používají v tomto příkladu kódu najdete v tématu:
-* [AzureDataLakeStoreLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
+* [Třída azuredatalakestorelinkedservice.](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx)
 * [AzureDataLakeAnalyticsLinkedService class](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx)
 * [AuthorizationSessionGetResponse – třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx)
 

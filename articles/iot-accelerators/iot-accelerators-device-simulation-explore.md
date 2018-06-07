@@ -1,22 +1,19 @@
 ---
 title: Začínáme s řešením zařízení simulace - Azure | Microsoft Docs
 description: Simulace řešení IoT řešení akcelerátorů je nástroj, který lze použít pro vývoj a testování řešení IoT. Služba simulace je samostatný nabídka, která používá ve spojení s další řešení akcelerátorů nebo použít s vlastní řešení.
-services: iot device simulation
-suite: iot-suite
 author: troyhopwood
-manager: timlt
+manager: ''
 ms.author: troyhop
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 12/15/2017
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 742998dce07f6ceef0ad906831c60f11a7d08bd9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: c427f2640e605533324eb349579c6a40a2a6a47f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627121"
 ---
 # <a name="device-simulation-walkthrough"></a>Návod simulace zařízení
 
@@ -39,7 +36,7 @@ Pokud jste nenasadili simulace zařízení ještě by se měla Dokončit [nasaze
 
 ## <a name="configuring-device-simulation"></a>Konfigurace simulace zařízení
 
-Můžete nakonfigurovat a spustit simulaci zařízení zcela od v řídicím panelu. Otevřete řídicí panel z akcelerátorů řešení IoT [zřízení řešení](https://www.azureiotsuite.com/) stránky. Klikněte na tlačítko **spusťte** v rámci vaší nové zařízení simulace nasazení.
+Můžete nakonfigurovat a spustit simulaci zařízení zcela od v řídicím panelu. Otevřete řídicí panel z akcelerátorů řešení IoT [zřízení řešení](https://www.azureiotsolutions.com/) stránky. Klikněte na tlačítko **spusťte** v rámci vaší nové zařízení simulace nasazení.
 
 ### <a name="target-iot-hub"></a>Cíl služby IoT Hub
 
@@ -77,7 +74,7 @@ Následující tabulka uvádí seznam konfigurace pro každý model předem nako
 | -------------| ------ | -----| 
 | Chladič | vlhkosti | % |
 | | pressure | psig | 
-| | Teplotní | F | 
+| | Teplota | F | 
 | Hodnocení | Floor | 
 | | vibrace | mm | 
 | | Teplota | F | 

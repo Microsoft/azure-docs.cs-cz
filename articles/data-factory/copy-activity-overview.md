@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 8ae1402b6821d1b42fa8f2bf9c2f6453a5ce7109
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c5ec07603088edd3f95f08f12b6982022b396d05
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618483"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
@@ -133,7 +134,7 @@ Následující šablony aktivity kopírování obsahuje úplný seznam podporova
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu aktivity kopírování musí být nastavena na: **kopie** | Ano |
-| Vstupy | Zadejte datovou sadu, která jste vytvořili, které body ke zdrojovým datům. Aktivita kopírování podporuje pouze jeden vstup. | Ano |
+| vstupy | Zadejte datovou sadu, která jste vytvořili, které body ke zdrojovým datům. Aktivita kopírování podporuje pouze jeden vstup. | Ano |
 | výstupy | Zadejte datovou sadu jste vytvořili, které body k datům jímky. Aktivita kopírování podporuje pouze jediného výstupu. | Ano |
 | typeProperties | Skupina vlastností konfigurace aktivity kopírování. | Ano |
 | source | Zadejte typ zdroje kopie a odpovídající vlastnosti o tom, jak načíst data.<br/><br/>Další informace v článku konektor uvedené v části "Zkopírovat vlastnosti aktivity" [podporované úložiště dat a formáty](#supported-data-stores-and-formats). | Ano |

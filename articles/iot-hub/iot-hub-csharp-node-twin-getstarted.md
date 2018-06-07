@@ -1,24 +1,20 @@
 ---
-title: "Začínáme s Azure IoT Hub dvojčata zařízení (.NET nebo uzel) | Microsoft Docs"
-description: "Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. Použití zařízení Azure IoT SDK pro Node.js implementovat aplikaci simulovaného zařízení a sady SDK pro .NET k implementaci aplikační služby, které přidá značky a spustí dotaz IoT Hub služby Azure IoT."
-services: iot-hub
-documentationcenter: node
+title: Začínáme s Azure IoT Hub dvojčata zařízení (.NET nebo uzel) | Microsoft Docs
+description: Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. Použití zařízení Azure IoT SDK pro Node.js implementovat aplikaci simulovaného zařízení a sady SDK pro .NET k implementaci aplikační služby, které přidá značky a spustí dotaz IoT Hub služby Azure IoT.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: f7e23b6e-bfde-4fba-a6ec-dbb0f0e005f4
+manager: ''
 ms.service: iot-hub
-ms.devlang: node
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: nodejs
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: elioda
-ms.openlocfilehash: 4cf607e8e0ccd3aab06be54d715c2bf3777caeb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2d78fe3f43c493eb126af86580ee473a6aa18c2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634416"
 ---
 # <a name="get-started-with-device-twins-netnode"></a>Začínáme s dvojčata zařízení (.NET nebo uzel)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -166,7 +162,7 @@ V této části vytvoříte konzolovou aplikaci softwaru Node.js, která se při
    
     ![][img-addtagapp2]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nakonfigurovali novou službu IoT Hub na webu Azure Portal a potom jste vytvořili identitu zařízení v registru identit ve službě IoT Hub. Přidat zařízení metadat jako značky z back-end aplikace a zapsal aplikace simulovaného zařízení do sestavy informace o připojení k zařízení v dvojče zařízení. Také jste zjistili, jak dotazovat tyto informace pomocí dotazu jazyka SQL jako IoT Hub.
 
 Použijte v následujících zdrojích informací další postup:

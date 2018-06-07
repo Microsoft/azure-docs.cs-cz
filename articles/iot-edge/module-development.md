@@ -1,19 +1,19 @@
 ---
-title: "Vývoj modulů pro hraniční Azure IoT | Microsoft Docs"
-description: "Informace o vytváření vlastních modulů pro Azure IoT Edge"
-services: iot-edge
-keywords: 
+title: Vývoj modulů pro hraniční Azure IoT | Microsoft Docs
+description: Informace o vytváření vlastních modulů pro Azure IoT Edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 95b1d5d4e5e11f96b6abb17f0aeba935cc65512d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+services: iot-edge
+ms.openlocfilehash: bf6a14020f26691195963a210d668912705f3b8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631713"
 ---
 # <a name="understand-the-requirements-and-tools-for-developing-iot-edge-modules---preview"></a>Pochopení požadavků a nástrojů pro vývoj modulů IoT Edge – náhled
 
@@ -72,7 +72,7 @@ Tento kurz [vývoj a nasazení modul IoT Edge simulované zařízení] [ lnk-tut
 Okraj IoT moduly jsou dodávány s imagí Dockeru.
 Jak je znázorněno v tomto kurzu můžete použít přímo nástrojů Docker nebo Visual Studio Code [vývoj a nasazení modul IoT Edge simulované zařízení][lnk-tutorial2].
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po vyvíjíte modul, zjistěte, jak [nasadit a monitorovat moduly IoT Edge ve velkém měřítku][lnk-howto-deploy].
 

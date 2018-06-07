@@ -7,14 +7,15 @@ manager: craigg
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
-ms.openlocfilehash: f3ace9d178fdfa90130e4436722e1e36cedc7e50
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: a911ed9777e1a63e1fc1776fb6a8c1ab98bc6820
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647499"
 ---
 # <a name="intelligent-insights"></a>Užitečné přehledy
 
@@ -53,7 +54,7 @@ Identifikovat SQL Database degradations výkonu se zaznamenávají v protokolu d
 | Ovlivněné metriky | Metriky, které způsobily vygenerování přehledu: <ul><li>Doba trvání zvýšit [sekund] dotaz.</li><li>Nadměrné čekání [sekund].</li><li>Vypršení časového limitu požadavků [procento].</li><li>Počet požadavků s chybou [procento].</li></ul>|
 | Hodnota dopad | Měří hodnota metriky. |
 | Ovlivněné dotazy a kódy chyb | Dotaz na hodnotu hash nebo chybový kód. Ty lze snadno korelovat ovlivněných dotazy. Metriky, které se skládají z dotazu zvyšte dobu trvání, doba čekání, počty vypršení časového limitu nebo kódy chyb jsou k dispozici. |
-| Detekce | Detekce identifikovat v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [řešení potíží s výkonem databáze s inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
+| Zjištění | Detekce identifikovat v databázi v době události. Existují 15 detekce vzory. Další informace najdete v tématu [řešení potíží s výkonem databáze s inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md). |
 | Analýza hlavní příčiny | Příčina analýzu problém uvedený v čitelném formátu. Některé insights může obsahovat doporučení zlepšování výkonu, kde je to možné. |
 |||
 

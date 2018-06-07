@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 417517cbbd187d32b84cc0a78f7b68a5fcf8eb23
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f63ccd62136fe8d556a4cfb591e3294f3751dfb3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652242"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Dotaz příkladů běžných vzorů využití Stream Analytics
 
@@ -117,7 +118,7 @@ Zadejte například, že řetězec popis Ujistěte se, kolik aut stejného byla 
         Make,
         TumblingWindow(second, 10)
 
-**Vysvětlení**: **případ** klauzule umožňuje, abychom mohli poskytovat různé výpočtů, na základě některé kritérií (v našem případě počet aut v okně agregační).
+**Vysvětlení**: **případ** výraz porovná výraz, který se sada jednoduché výrazů, chcete-li zjistit výsledek. V tomto příkladu se vytváří vehicle s počtem 1 vrátilo popis jiný text než vehicle díky s počtem než 1. 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Příklad dotazu: odesílání dat do několik výstupů
 **Popis**: posílat data do více cílů výstup z jediné úlohy.
@@ -173,7 +174,7 @@ Například analyzovat data pro upozornění na základě prahové hodnoty a arc
         [Count] >= 3
 
 **Vysvětlení**: **INTO** klauzule informuje Stream Analytics který výstupy zapsat data do tohoto příkazu.
-První dotazu je průchozí dat jsme dostali výstupu, který jsme pojmenovali **ArchiveOutput**.
+První dotazu je průchozí dat přijatých výstupu, který s názvem **ArchiveOutput**.
 Druhý dotaz nemá některé jednoduché agregace a filtrování a odesílá výsledky na příjem dat výstrah systém.
 
 Všimněte si, že můžete také znovu použít výsledky běžných výrazech tabulky (odkazu Cte) (například **WITH** příkazy) ve více příkazů výstup. Tato možnost má výhodu v podobě otevírání méně uživatelům vstupního zdroje.
@@ -418,7 +419,7 @@ Například 2 po sobě jdoucích aut ze stejné zkontrolujte zadali silniční p
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Příklad dotazu: zjistit dobu trvání podmínku
 **Popis**: Najít se na jak dlouho podmínku došlo k chybě.
-Předpokládejme například, že chyby výsledkem všechny aut, které mají nesprávné váhu (nad 20 000 libra). Chceme výpočetní trvání chybě.
+Předpokládejme například, že chyby výsledkem všechny aut, které mají nesprávné váhu (nad 20 000 libra) a musí být vypočteny dobu trvání této chyby.
 
 **Vstup**:
 
@@ -506,8 +507,8 @@ Například generovat událost každých 5 sekund, která generuje sestavy napos
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Příklad dotazu: korelovat dva typy událostí v rámci stejného datového proudu
-**Popis**: v některých případech je potřeba Generovat výstrahy na základě více typů událostí, ke kterým došlo v určitý čas rozsah.
-Například v domácí trouby scénáře IoT, chceme vygenerovat výstrahu, pokud je menší než 40 ventilátor teploty a maximálního výkonu během posledních 3 minut byl menší než 10.
+**Popis**: někdy výstrahy muset vygenerovat na základě více typů událostí, ke kterým došlo v určitý čas rozsah.
+Například ve scénáři s IoT pro domácí trouby, musí být vygenerována výstraha když teplota ventilátor je menší než 40 a maximální výkon během posledních 3 minut je menší než 10.
 
 **Vstup**:
 
@@ -577,6 +578,46 @@ WHERE
 ````
 
 **Vysvětlení**: první dotaz `max_power_during_last_3_mins`, používá [posuvné okno](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) najít maximální hodnotu senzoru napájení pro každé zařízení během posledních 3 minut. Druhý dotazu je připojený k první dotaz, který vyhledá power hodnotu v okně nejnovější relevantní pro aktuální událost. A pak zadaný podmínky jsou splněny, je vygenerována výstraha pro zařízení.
+
+## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Příklad dotazu: zpracování událostí, které jsou nezávislé na zařízení hodin zkreslit (substreams)
+**Popis**: můžete události dorazí pozdní nebo mimo pořadí z důvodu zkosí hodin mezi událostí producenti hodiny zkosí mezi oddílů nebo latence sítě. V následujícím příkladu hodiny zařízení pro TollID 2 je deset sekund za TollID 1 a hodiny zařízení pro TollID 3 je pět sekund za TollID 1. 
+
+
+**Vstup**:
+| LicensePlate | Ujistěte se | Čas | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Honda |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |BMW |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Toyota |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Honda |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |BMW |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
+
+**Výstup**:
+| TollID | Počet |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Řešení**:
+
+````
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+
+````
+
+**Vysvětlení**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/en-us/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzule vypadá na každé zařízení časová osa samostatně pomocí substreams. Výstup události pro každý TollID jsou generovány, jak se vypočítávají, což znamená, že tyto události jsou v pořadí s ohledem na každý TollID místo pořadí měnit, jako kdyby byla všechna zařízení na stejném hodiny.
 
 
 ## <a name="get-help"></a>Podpora

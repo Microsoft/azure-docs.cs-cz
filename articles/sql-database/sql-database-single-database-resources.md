@@ -6,14 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: c1fe162beca258fe8ec3d03ce2844c1abe3176dc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 274b8cfa28b684d14779b26e1e96f650a57ae0e6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649750"
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Spravovat prostředky pro jednu databázi v databázi SQL Azure
 

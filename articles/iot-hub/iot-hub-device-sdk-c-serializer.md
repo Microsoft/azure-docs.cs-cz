@@ -1,24 +1,20 @@
 ---
 title: Pro zařízení Azure IoT SDK pro jazyk C - serializátor | Microsoft Docs
 description: Jak používat knihovnu serializátor v zařízení Azure IoT SDK pro jazyk C vytvoření aplikace pro zařízení, které komunikují pomocí služby IoT hub.
-services: iot-hub
-documentationcenter: ''
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
+manager: arjmands
 ms.service: iot-hub
-ms.devlang: cpp
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: c
+ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
-ms.openlocfilehash: 04b5ebf6d8c568fbfd9b291bef95af973ec5d6d7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a724fa5acc930475bdbe4ffcc74141470a92326c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34634140"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>Pro zařízení Azure IoT SDK pro jazyk C – informace o serializátor
 [Nejprve článek](iot-hub-device-sdk-c-intro.md) této série zavedená **zařízení Azure IoT SDK pro jazyk C**. Další článek poskytuje podrobnější popis [ **IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md). Tento článek poskytuje podrobnější popis zbývající součásti dokončí pokrytí sady SDK: **serializátor** knihovny.
@@ -68,18 +64,18 @@ Jsou podporovány následující typy dat v modelů vytvořených pomocí **seri
 
 | Typ | Popis |
 | --- | --- |
-| Double |Dvojitá přesnost číslo s plovoucí desetinnou |
+| double |Dvojitá přesnost číslo s plovoucí desetinnou |
 | celá čísla |32bitové celé číslo |
-| Plovoucí desetinná čárka |číslo s plovoucí desetinnou jednoduchou přesností |
-| dlouhá |dlouhé celé číslo |
+| float |číslo s plovoucí desetinnou jednoduchou přesností |
+| zem. šířka |dlouhé celé číslo |
 | int8\_t |8bitové celé číslo |
 | Int16\_t |16bitové celé číslo |
-| int32\_t |32bitové celé číslo |
-| int64\_t |64bitové celé číslo |
+| Int32\_t |32bitové celé číslo |
+| Int64\_t |64bitové celé číslo |
 | BOOL |Boolean |
 | ascii\_char\_ptr |Řetězec ASCII |
 | EDM\_DATUM\_ČAS\_POSUNUTÍ |Datum čas posunutí |
-| EDM\_GUID |IDENTIFIKÁTOR GUID |
+| EDM\_GUID |GUID |
 | EDM\_BINÁRNÍ |Binární |
 | DEKLAROVAT\_– STRUKTURA |Komplexní datový typ |
 
@@ -626,7 +622,7 @@ K dispozici je také podobá sadu rozhraní API nižší úrovně.
 
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
-* IoTHubClient\_LL\_SetMessageCallback
+* IoTHubClient\_UDOU\_SetMessageCallback
 * IoTHubClient\_UDOU\_Destroy
 
 Některé nižší úrovně rozhraní API funkční stejným způsobem, jak je popsáno v předchozí článcích. První sadu rozhraní API můžete použít, pokud chcete, aby vlákna na pozadí pro zpracování událostí odesílání a příjmu zprávy. Druhá sada rozhraní API použijte, pokud chcete, aby explicitní ovládat, kdy odesílat a přijímat data ze služby IoT Hub. Buď sadu rozhraní API pracovní stejnou měrou i s **serializátor** knihovny.

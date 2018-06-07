@@ -16,11 +16,12 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 93de62a21ca1d3b8c88715fc9207a583920ac33e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a01c5bc2ca6310ee87f2ead1ea590987c854e733
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595321"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k Azure Active Directory webových aplikací pomocí toku OAuth 2.0 kód grant
 Azure Active Directory (Azure AD) používá OAuth 2.0 umožnit autorizace přístupu k webové aplikace a webové rozhraní API v klientovi služby Azure AD. Tento průvodce je závislý na jazyce a popisuje, jak odesílat a přijímat zprávy HTTP bez použití některé z našich [knihovny open-source](active-directory-authentication-libraries.md).
@@ -59,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |Doporučená |Hodnota součástí požadavek, který je také vrácený v odpovědi tokenu. Náhodně generované jedinečné hodnoty se obvykle používá u [prevence útoků padělání požadavku posílaného mezi weby](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci, než k žádosti o ověření, například stránky nebo zobrazení, které byly na. |
 | prostředek | Doporučená |Identifikátor URI aplikace ID cílové webové rozhraní API (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace na portálu Azure, klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikace**, otevřít aplikaci **nastavení** stránky a pak klikněte na  **Vlastnosti**. Může být také jako externí prostředek `https://graph.microsoft.com`. To je nutné v jednom autorizace nebo žádostí o token. K zajištění méně ověřování výzvy je uložit žádost o ověření a zda je souhlasu přijat od uživatele. |
 | scope | **Ignorovat** | Pro aplikace Azure AD v1, musí být staticky konfigurované obory v portálu Azure v rámci aplikace **nastavení**, **požadovaných oprávnění**. |
-| řádku |nepovinné |Označuje typ interakci s uživatelem, který je vyžadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel měla zobrazit výzva k novému ověření. <p> *souhlas*: souhlas uživatele byla udělena, ale je třeba aktualizovat. Uživatel měla zobrazit výzva k souhlas. <p> *admin_consent*: Správce měla zobrazit výzva k souhlas jménem všichni uživatelé v organizaci |
+| řádku |nepovinné |Označuje typ interakci s uživatelem, který je vyžadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel měla zobrazit výzva k novému ověření. <p> *select_account*: uživatel je vyzván k výběru účtu, přerušení jednotného přihlašování na. Uživatel může vybrat existující účet přihlášeného, zadejte své přihlašovací údaje pro účet zapamatovaných nebo zcela použijete jiný účet. <p> *souhlas*: souhlas uživatele byla udělena, ale je třeba aktualizovat. Uživatel měla zobrazit výzva k souhlas. <p> *admin_consent*: Správce měla zobrazit výzva k souhlas jménem všichni uživatelé v organizaci |
 | login_hint |nepovinné |Slouží k předem vyplnit pole uživatelské jméno nebo e-mailové adresy na stránce přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem. Tento parametr použijte často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 | domain_hint |nepovinné |Poskytuje informace o klientovi nebo doménu, která uživatel by měl použít pro přihlášení. Hodnota domain_hint je registrované domény pro klienta. Pokud klient federovaný na místní adresář, AAD přesměruje na federační server zadaného klienta. |
 | code_challenge_method | nepovinné    | Metoda použitá ke kódování `code_verifier` pro `code_challenge` parametr. Může být jedna z `plain` nebo `S256`. Pokud vyloučená, `code_challenge` bude ve formátu prostého textu, pokud hodnota `code_challenge` je součástí. Azure verze 1.0 AAD podporuje obě `plain` a `S256`. Další informace najdete v tématu [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
@@ -217,7 +218,7 @@ Další informace o webových tokenů JSON najdete v tématu [specifikaci JWT IE
 | IAT |Vydané v čase. Čas, kdy byl vydán token JWT. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku byl token vydán. |
 | iss |Identifikuje vydavatel tokenu |
 | nbf |Neplatný před čas. Čas, kdy začne platit token. Pro token, který má být platný aktuální datum a čas musí být větší než nebo rovna hodnotě Nbf. Čas je reprezentován jako počet sekund od 1. ledna 1970 (pod hodnotou 1970-01-01T0:0:0Z) UTC až do okamžiku byl token vydán. |
-| OID |Identifikátor objektu (ID) objektu uživatele ve službě Azure AD. |
+| OID |Identifikátor (ID) objektu uživatele v Azure AD |
 | Sub – |Identifikátor tokenu subjektu. Toto je trvalé a nezměnitelné identifikátor pro uživatele, který popisuje token. Použijte tuto hodnotu v ukládání do mezipaměti logiku. |
 | TID |Identifikátor klienta (ID) klienta Azure AD, která vydala token. |
 | unique_name |Jedinečný identifikátor, který lze zobrazit uživateli. Je to obvykle hlavní název uživatele (UPN). |

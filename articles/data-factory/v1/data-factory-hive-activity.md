@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c37ab34b241e59f70b6417036506dd132ce9aa43
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6826d87e5613ce4892e9fd839c66ec26282ad188
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622121"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformace dat pomocí Hive aktivity v Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -78,10 +79,10 @@ Aktivity HDInsight Hive v datové továrně [kanálu](data-factory-create-pipeli
 | jméno |Název aktivity |Ano |
 | description |Text popisující, co se používá aktivitu pro |Ne |
 | type |HDinsightHive |Ano |
-| Vstupy |Vstupy spotřebovávané aktivitou Hive |Ne |
+| vstupy |Vstupy spotřebovávané aktivitou Hive |Ne |
 | výstupy |Výstupy produkované aktivitou Hive |Ano |
 | linkedServiceName |Referenční dokumentace ke clusteru HDInsight registrován jako propojené služby v datové továrně |Ano |
-| skript |Zadejte vloženého skriptu Hive |Ne |
+| Skript |Zadejte vloženého skriptu Hive |Ne |
 | cestu ke skriptu |Uložení skriptu Hive v Azure blob storage a zadejte cestu k souboru. Pomocí vlastnosti 'skript' nebo 'scriptPath'. Obě nelze použít společně. Název souboru je malá a velká písmena. |Ne |
 | definuje |Zadejte parametry dvojic klíč/hodnota pro odkazování v rámci skriptu Hive pomocí 'hiveconf. |Ne |
 

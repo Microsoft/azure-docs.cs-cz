@@ -3,23 +3,24 @@ title: Importovat soubor Power BI Desktop do Azure Analysis Services | Microsoft
 description: Popisuje, jak importovat soubor Power BI Desktop (soubor pbix) pomocí portálu Azure.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/22/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 35bf2ba85017de43788f802b6244d61ed2bb62df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aea6f3efcf3740527c43b75a30caadf6b2a8b623
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601067"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Importovat soubor Power BI Desktop
 
-Můžete vytvořit nový model v Azure AS importováním souboru Power BI Desktop soubor (soubor pbix). Metadata modelu, data uložená v mezipaměti a připojení zdroje dat jsou importovány. Nelze importovat, sestavy a vizualizací.
+Datový model v souboru Power BI Desktop (soubor pbix) můžete importovat do služby Azure Analysis Services. Metadata modelu, data uložená v mezipaměti a připojení zdroje dat jsou importovány. Nelze importovat, sestavy a vizualizací. Importovat data, která nejsou na úrovni kompatibility 1400 modely z Power BI Desktop.
 
 **Omezení**   
-- Soubor pbix modelu může připojit k Azure SQL Database a Azure SQL Data Warehouse zdroje dat pouze. 
+- Soubor pbix modelu se může připojit k **Azure SQL Database** a **Azure SQL Data Warehouse** pouze zdroje dat. 
 - Soubor pbix model nemůže mít za provozu nebo DirectQuery připojení. 
 - Import se nemusí podařit, pokud váš model dat soubor pbix obsahuje metadata, která není podporována ve službě Analysis Services.
 

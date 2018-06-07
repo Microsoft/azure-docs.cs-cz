@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 68e3775be36b434acb5c25b522f9e28bec1b6125
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 95b0440dbec1a13096928bdefd31383d07a1f86d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618568"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopírování dat z SAP ECC pomocí Azure Data Factory
 
@@ -165,11 +166,11 @@ Při kopírování dat z SAP ECC, následující mapování se používají ODat
 | Datový typ OData | Typ průběžných dat objektu pro vytváření dat |
 |:--- |:--- |:--- |
 | Edm.Binary | Řetězec |
-| Edm.Boolean | Logická hodnota (Bool) |
+| Edm.Boolean | BOOL |
 | Edm.Byte | Řetězec |
 | Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
-| Edm.Double | Dvojitý |
+| Edm.Double | Double |
 | Edm.Single | Jednoduchá |
 | Edm.Guid | Řetězec |
 | Edm.Int16 | Int16 |

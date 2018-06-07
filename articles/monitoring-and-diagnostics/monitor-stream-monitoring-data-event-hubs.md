@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 9cc4eb8d8f1494a7ea7a63297751f8e251aedf05
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 35cdd157469556c071b03a0f25184df141057554
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639057"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Monitorování data do centra událostí pro používání pomocí externího nástroje Azure datového proudu
 
@@ -97,7 +98,7 @@ Aplikace data monitorování vyžaduje, že kódu je instrumentovány pomocí sa
 
 1. [Nastavit průběžné export](../application-insights/app-insights-export-telemetry.md) dat Application Insights na účet úložiště.
 
-2. Nastavení aplikace logiky aktivovaného časovačem, [získává data z úložiště objektů blob](../connectors/connectors-create-api-azureblobstorage.md#use-an-action) a [sami jako zprávy do centra událostí](../connectors/connectors-create-api-azure-event-hubs.md#send-events-to-your-event-hub-from-your-logic-app).
+2. Nastavení aplikace logiky aktivovaného časovačem, [získává data z úložiště objektů blob](../connectors/connectors-create-api-azureblobstorage.md#add-action) a [sami jako zprávy do centra událostí](../connectors/connectors-create-api-azure-event-hubs.md#add-action).
 
 ## <a name="what-can-i-do-with-the-monitoring-data-being-sent-to-my-event-hub"></a>Jak se data sledování odesílána Moje centra událostí?
 

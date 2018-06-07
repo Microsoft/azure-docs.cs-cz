@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 74bc28619996b7cd52d2280d4d8b6288aa7c904f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 280b1340c094a89ad5980178947045b707128807
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595015"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Kurz: Použijte pro přístup k Azure Key Vault Linux virtuálního počítače spravované služby Identity (MSI) 
 
@@ -134,12 +135,12 @@ K dokončení těchto kroků, potřebujete klientem SSH.  Pokud používáte sys
     
 Jakmile jste načíst tajného klíče z trezoru klíčů, můžete ke svému ověření u služby, která vyžaduje zadání jména a hesla.
 
+## <a name="next-steps"></a>Další postup
 
-## <a name="related-content"></a>Související obsah
+V tomto kurzu jste zjistili, jak používat Identity spravované služby na virtuální počítač s Linuxem pro přístup k Azure Key Vault.  Další informace o Azure Key Vault najdete v tématu:
 
-- Přehled MSI najdete v tématu [identita spravované služby přehled](overview.md).
-
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+> [!div class="nextstepaction"]
+>[Azure Key Vault](/azure/key-vault/key-vault-whatis)
 
 
 

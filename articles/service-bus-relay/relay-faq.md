@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 05/21/2018
 ms.author: sethm
-ms.openlocfilehash: d433fb916280e98dd0f2af61728596b8566be71b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1795c1ec0b4129e3c99fff3fc893148e191ce83e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641488"
 ---
 # <a name="azure-relay-faqs"></a>Nejčastější dotazy k Azure předávání
 
-Tento článek obsahuje odpovědi na některé nejčastější dotazy (FAQ) o [předávání přes Azure](https://azure.microsoft.com/services/service-bus/). Obecné Azure – ceny a podporu informace najdete v tématu [podporu nejčastější dotazy k Azure](https://azure.microsoft.com/en-in/support/faq/).
+Tento článek obsahuje odpovědi na některé nejčastější dotazy (FAQ) o [předávání přes Azure](https://azure.microsoft.com/services/service-bus/). Obecné Azure – ceny a podporu informace najdete v tématu [podporu nejčastější dotazy k Azure](https://azure.microsoft.com/support/faq/).
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-relay"></a>Co je Azure Relay?
@@ -35,7 +36,7 @@ A [obor názvů](relay-create-namespace-portal.md) je kontejner oboru, který m�
 Dříve pojmenované služby předávání přes Service Bus se nyní označuje jako [WCF předávání](relay-wcf-dotnet-get-started.md). Můžete tuto službu využívat jako obvykle. Funkce hybridní připojení je aktualizovaná verze služby, která je byla transplantované ze služby Azure BizTalk Services. Předávání WCF a hybridní připojení i nadále podporována.
 
 ## <a name="pricing"></a>Ceny
-Tato část odpovídá na některé nejčastější dotazy týkající se předávání cenové struktury. Můžete také zobrazit [Azure podporu nejčastější dotazy k](http://go.microsoft.com/fwlink/?LinkID=185083) pro obecné Azure informace o cenách. Úplné informace o cenách předávání najdete v tématu [Service Bus podrobnosti o cenách][Pricing overview].
+Tato část odpovídá na některé nejčastější dotazy týkající se předávání cenové struktury. Také se zobrazí [Azure podporu nejčastější dotazy k](https://azure.microsoft.com/support/faq/) pro obecné Azure informace o cenách. Úplné informace o cenách předávání najdete v tématu [Service Bus podrobnosti o cenách][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Jak se vám účtují pro hybridní připojení a přenosu WCF?
 Úplné informace o cenách předávání, najdete v článku [hybridní připojení a předávací službu WCF] [ Pricing overview] tabulky v Service Bus, podrobnosti o stránce s cenami. Kromě ceny uvedené na této stránce budou se vám účtovat pro přenosy přidružená data o sazbách za odchozí mimo datové centrum, ve kterém je aplikace zřízený.
@@ -81,8 +82,8 @@ Předávání, které jsou otevřené pomocí **netTCPRelay** vazby WCF považov
 | Souběžné moduly pro naslouchání na přenos |Entita |Odeslání dalších žádostí o další připojení odmítnuty a volající kód přijme výjimku. |25 |
 | Připojení souběžných předávání za všechny koncové body předávání v oboru názvů služby |Obor názvů |- |5 000 |
 | Předávání koncových bodů na jeden obor názvů služby |Obor názvů |- |10 000 |
-| Velikost zprávy [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) a [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) předává |Obor názvů |Odmítne příchozí zprávy, které překračují těchto kvót a volající kód přijme výjimku. |64 kB |
-| Velikost zprávy [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) a [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) předává |Obor názvů |Velikost zprávy není nijak omezena. |Unlimited |
+| Velikost zprávy [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) předává |Obor názvů |Odmítne příchozí zprávy, které překračují těchto kvót a volající kód přijme výjimku. |64 kB |
+| Velikost zprávy [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) předává |Obor názvů |Velikost zprávy není nijak omezena. |Unlimited |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Má předávání žádné kvóty využití?
 Ve výchozím nastavení pro všechny cloudové služby společnosti Microsoft nastaví agregační měsíční využití kvóta, která je vypočtená ve všech předplatných zákazníka. Chápeme, že v některých případech potřeb může tato omezení překročí. Kontaktovat oddělení služeb zákazníkům kdykoli, proto jsme pochopení potřeb a odpovídajícím způsobem nastavit tyto limity. Agregační využití kvóty pro Service Bus, jsou následující:
@@ -108,7 +109,7 @@ Pomocí portálu Azure pro migraci oborů názvů předávání přes Azure z je
 
 Pomocí prostředí PowerShell pro přesun oboru názvů z jedno předplatné do jiného předplatného, použijte následující sekvence příkazů. K provedení této operace, obor názvů musí již být aktivní, a uživatel, který spouští příkazy prostředí PowerShell musí být uživatel s oprávněním správce na zdrojovém i cílovém odběry.
 
-```powershell
+```azurepowershell-interactive
 # Create a new resource group in the target subscription.
 Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
@@ -136,4 +137,4 @@ Ano. Přenosový klient vytvoří připojení ke službě předávání přes Az
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md
-[Shared access signatures]: ../service-bus-messaging/service-bus-sas.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md

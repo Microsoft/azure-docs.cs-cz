@@ -6,14 +6,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 90f758bf5bc979dc4bc173b08dadaceeaa077317
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 51a5f70cc56b2a4196ee7b151be0af3a9e16fc4f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646928"
 ---
 # <a name="deploy-a-split-merge-service"></a>Nasazení služby dělení a slučování
 Nástroj pro rozdělení sloučení umožňuje přesun dat mezi horizontálně dělené databáze. V tématu [přesouvání dat mezi instancemi cloudu databáze](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -33,8 +34,8 @@ Soubory jsou umístěny v adresáři s názvem **Microsoft.Azure.SqlDatabase.Ela
 2. Zajistěte, aby váš server Azure SQL DB povolovalo Azure Services pro připojení k němu. Na portálu v **nastavení brány Firewall**, zkontrolujte **povolit přístup ke službám Azure** nastavení je **na**. Klikněte na ikonu "uložit".
    
    ![Povolené služby][1]
-3. Vytvoření účtu úložiště Azure, který se použije pro výstup diagnostiky. Přejděte na portálu Azure. V levém panelu klikněte na **vytvořit prostředek**, klikněte na tlačítko **Data + úložiště**, pak **úložiště**.
-4. Vytvoření cloudové služby Azure, která bude obsahovat služby rozdělení sloučení.  Přejděte na portálu Azure. V levém panelu klikněte na **vytvořit prostředek**, pak **výpočetní**, **Cloudová služba**, a **vytvořit**. 
+3. Vytvoření účtu úložiště Azure, který se použije pro výstup diagnostiky. Přejděte na web Azure Portal. V levém panelu klikněte na **vytvořit prostředek**, klikněte na tlačítko **Data + úložiště**, pak **úložiště**.
+4. Vytvoření cloudové služby Azure, která bude obsahovat služby rozdělení sloučení.  Přejděte na web Azure Portal. V levém panelu klikněte na **vytvořit prostředek**, pak **výpočetní**, **Cloudová služba**, a **vytvořit**. 
 
 ## <a name="configure-your-split-merge-service"></a>Konfigurace služby rozdělení sloučení
 ### <a name="split-merge-service-configuration"></a>Konfigurace služby rozdělení sloučení
@@ -59,7 +60,7 @@ Podrobné pokyny ke konfiguraci zabezpečení služby, najdete v části [konfig
 
 Pro účely jednoduchá testovací nasazení pro tento kurz minimální sadu konfiguračních kroků bude provádět ke zprovoznění služby a spuštěná. Tyto kroky aktivují jenom jeden nebo účet počítače, aby mohla komunikovat se službou provádění.
 
-### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
+### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 Vytvořte nový adresář a z tohoto adresáře spusťte následující příkaz pomocí [příkazový řádek vývojáře pro sadu Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) okno:
 
    ```

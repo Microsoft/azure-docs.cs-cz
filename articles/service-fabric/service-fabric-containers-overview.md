@@ -12,22 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/20/2017
+ms.date: 5/21/2018
 ms.author: msfussell
-ms.openlocfilehash: c70db92d6071a295dfc329768ab8a0fd561f8ce5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641907"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric a kontejnery
-> [!NOTE]
-> Nasazení kontejnerů do clusteru Service Fabric v systému Windows 10 nebo s Docker CE není podporována. 
->   
-
-> [!NOTE]
-> Service Fabric verze 6.1 nabízí podporu verze Preview pro Windows Server verze 1709. Otevřené sítě a služba DNS Service Fabricu s Windows Serverem verze 1709 nefungují. 
-> 
 
 ## <a name="introduction"></a>Úvod
 Azure Service Fabric je [orchestrator](service-fabric-cluster-resource-manager-introduction.md) služeb mezi clustery počítačů za několik let využití a optimalizace v masivním měřítku služeb společnosti Microsoft. Služby mohou být vytvořeny v mnoha směrech pomocí [Service Fabric programovací modely](service-fabric-choose-framework.md) nasazení [spustitelné soubory hosta](service-fabric-guest-executables-introduction.md). Ve výchozím nastavení Service Fabric nasadí a aktivuje tyto služby jako procesy. Procesy poskytují nejrychlejší aktivace a nejvyšší hustotu využití prostředků v clusteru. Service Fabric lze také nasadit services v kontejneru bitové kopie. Je důležité je možné kombinovat služby v procesy a služby v kontejnerech ve stejné aplikaci.   
@@ -44,10 +38,6 @@ Kontejnery jsou technologie virtualizace, která Virtualizuje příslušný oper
 
 ## <a name="container-types-and-supported-environments"></a>Typy kontejneru a podporovaných prostředí
 Service Fabric podporuje kontejnery na Linuxu a Windows a na k tomu také podporuje technologie Hyper-V izolovaném režimu. 
-
-> [!NOTE]
-> Nasazení kontejnerů do clusteru Service Fabric na Windows 10 se aktuálně nepodporuje. 
-> 
 
 ### <a name="docker-containers-on-linux"></a>Kontejnery docker v systému Linux
 Docker poskytuje vysoké úrovně rozhraní API pro vytváření a Správa kontejnerů nad kontejnery jádra systému Linux. Úložiště docker Hub je centrální úložiště pro ukládání a načítání obrázků kontejneru.

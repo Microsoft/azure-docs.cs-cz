@@ -7,14 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/29/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: a724057981b5b389011ffc4c2fc93994c2b8be9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8206c076f9e89753adb16854a7d981c0f80c4a3a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640332"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Připojování Cosmos databáze s Azure Search pomocí indexerů
 
@@ -96,7 +97,7 @@ Text žádosti obsahuje definice zdroje dat, která by měla obsahovat následuj
 * **typ**: musí být `documentdb`.
 * **přihlašovací údaje**:
   
-  * **connectionString**: vyžaduje. Zadejte informace o připojení k databázi Azure Cosmos DB v následujícím formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` kolekcí pro MongoDB, přidejte **ApiKind = MongoDB** připojovací řetězec: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
+  * **connectionString**: vyžaduje. Zadejte informace o připojení k databázi Azure Cosmos DB v následujícím formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>` kolekcí pro MongoDB, přidejte **ApiKind = MongoDb** připojovací řetězec: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb` 
 * **kontejner**:
   
   * **název**: vyžaduje. Zadejte id kolekce databáze pro indexování.
@@ -177,7 +178,7 @@ Zajistěte, aby schéma cílový index kompatibilní s schéma dokumentů JSON z
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>Mapování mezi JSON datové typy a typy dat vyhledávání systému Azure
 | JSON datového typu | Typy polí kompatibilní cílový index |
 | --- | --- |
-| Logická hodnota (Bool) |Edm.Boolean Edm.String |
+| BOOL |Edm.Boolean Edm.String |
 | Čísla, která vypadat podobně jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
 | Čísla této vypadají plovoucí body |Edm.Double, Edm.String |
 | Řetězec |Edm.String |

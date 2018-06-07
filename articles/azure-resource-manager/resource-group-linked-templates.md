@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2018
+ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: b01df5d89784c9982ebbf2351ae61a5d9f79aee8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 17f40790343181c592eca7bf6337b0f37d3ec20c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602811"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Pomocí propojená a vnořené šablony při nasazování prostředků Azure
 
-K nasazení řešení, můžete použít jednu šablonu nebo hlavní šablonu s více souvisejících šablon. Související šablonou může být buď samostatný soubor, který je propojený s z hlavní šablony, nebo šablonu, která je vnořená v rámci hlavní šablony.
+K nasazení řešení, můžete použít jednu šablonu nebo šablonu hlavní související šablonami. Související šablonou může být buď samostatný soubor, který je propojený s z hlavní šablony, nebo šablonu, která je vnořená v rámci hlavní šablony.
 
-Pro malé a střední řešení je jednou šablonou snadněji pochopit a spravovat. Budete moci zobrazit všechny prostředky a hodnot v jednom souboru. Pro pokročilé scénáře propojených šablon umožňují rozdělení řešení do cílové součásti a opakovaně používat šablony.
+Pro malé a střední řešení je jednou šablonou snadněji pochopit a spravovat. Zobrazí se všechny prostředky a hodnoty v jednom souboru. Pro pokročilé scénáře propojených šablon umožňují rozdělení řešení do cílové součásti a opakovaně používat šablony.
 
 Při použití propojených šablon, vytvoříte hlavní šablonu, která přijímá hodnot parametrů během nasazování. Hlavní šablona obsahuje všechny propojené šablony a předá tyto šablony podle potřeby hodnoty.
 
@@ -85,6 +86,8 @@ Pokud chcete vnořit šablony v rámci hlavní šablony, pomocí **šablony** vl
 >
 > Nelze použít `reference` funkce v části výstupy vnořené šablony. K návratu hodnot pro prostředek nasazené v šabloně vnořené, převeďte na šablonu propojené vnořené šablony.
 
+Vnořené šablona vyžaduje [stejné vlastnosti](resource-group-authoring-templates.md) jako standardní šablona.
+
 ### <a name="external-template-and-external-parameters"></a>Externí šablony a externí parametry
 
 Odkaz na externí šablonu a soubor parametrů, použijte **templateLink** a **parametersLink**. Při propojení s šablonu, musí být služby Správce prostředků k němu přístup. Nelze zadat místní soubor nebo soubor, který je k dispozici ve vaší místní síti. Můžete pouze zadat hodnotu identifikátoru URI, která zahrnuje buď **http** nebo **https**. Jednou z možností je umístit propojené šablony v účtu úložiště, a použijte identifikátor URI pro tuto položku.
@@ -109,6 +112,8 @@ Odkaz na externí šablonu a soubor parametrů, použijte **templateLink** a **p
   }
 ]
 ```
+
+Nemáte zajistit `contentVersion` vlastnost pro šablony nebo parametry. Pokud nechcete zadat hodnotu verze obsahu, aktuální verze šablony nasazení. Pokud zadáte hodnotu pro verze obsahu, se musí shodovat s verzí v šabloně propojené; nasazení, jinak selže s chybou.
 
 ### <a name="external-template-and-inline-parameters"></a>Externí parametry šablony a vložené
 
@@ -136,7 +141,7 @@ Nebo můžete zadat vložený parametr. Chcete-li předat hodnotu z hlavní šab
 
 ## <a name="using-variables-to-link-templates"></a>Použití proměnných propojení šablony
 
-Předchozí příklady nám ukázaly pevně definovaných hodnot adresu URL pro odkazy. šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nebude fungovat správně při práci s velké sady modulární šablony. Místo toho můžete vytvořit statickou proměnné, která ukládá základní adresu URL pro hlavní šablonu a dynamicky vytvářet adresy URL pro propojené šablony z této základní adresu URL. Výhodou tohoto přístupu je snadno přesunout nebo rozvětvit šablony, protože potřebujete změnit statické proměnné v šabloně hlavní. Hlavní šablonu předá správné identifikátory URI v rámci rozložená šablony.
+Předchozí příklady nám ukázaly pevně definovaných hodnot adresu URL pro odkazy. šablony. Tento přístup může fungovat pro jednoduchou šablonu, ale nebude fungovat, i při práci s velké sady modulární šablony. Místo toho můžete vytvořit statickou proměnné, která ukládá základní adresu URL pro hlavní šablonu a dynamicky vytvářet adresy URL pro propojené šablony z této základní adresu URL. Výhodou tohoto přístupu je snadno přesunout nebo rozvětvit šablony, protože potřebujete změnit statické proměnné v šabloně hlavní. Hlavní šablonu předá správné identifikátory URI v rámci rozložená šablony.
 
 Následující příklad ukazuje, jak použít základní adresu URL k vytvoření dvou adres URL pro propojených šablon (**sharedTemplateUrl** a **vmTemplate**).
 
@@ -148,7 +153,7 @@ Následující příklad ukazuje, jak použít základní adresu URL k vytvořen
 }
 ```
 
-Můžete také použít [deployment()](resource-group-template-functions-deployment.md#deployment) získat základní adresu URL pro aktuální šablony a použít k získání adresy URL pro další šablony ve stejném umístění. Tento přístup je užitečný, pokud se změní vaši polohu šablony (možná z důvodu Správa verzí) nebo chcete vyhnout pevného kódování adresy URL v souboru šablony. Vlastnost templateLink je vrácena pouze při připojování ke vzdálené šablony s adresou URL. Pokud používáte šablonu místní, že vlastnost není k dispozici.
+Můžete také použít [deployment()](resource-group-template-functions-deployment.md#deployment) získat základní adresu URL pro aktuální šablony a použít k získání adresy URL pro další šablony ve stejném umístění. Tento přístup je užitečné, pokud změny umístění šablony nebo můžete chtít vyhnout pevného kódování adresy URL v souboru šablony. Vlastnost templateLink je vrácena pouze při připojování ke vzdálené šablony s adresou URL. Pokud používáte šablonu místní, tuto vlastnost není k dispozici.
 
 ```json
 "variables": {
@@ -414,7 +419,7 @@ done
 
 ## <a name="securing-an-external-template"></a>Externí šablony zabezpečení
 
-I když propojené šablony musí být externě k dispozici, nemusí být obecně dostupné pro veřejnost. Šablony můžete přidat na účet privátní úložiště, které je přístupné pouze majiteli účtu úložiště. Pak vytvořte token sdílený přístupový podpis (SAS) pro povolení přístupu během nasazení. Přidejte tento token SAS URI propojené šablony. I když token, je předaná jako zabezpečený řetězec, je identifikátor URI propojené šablony, včetně tokenu SAS, přihlášení operace nasazení. K omezení rizika, nastavte vypršení platnosti pro daný token.
+I když propojené šablony musí být externě dostupný, nepotřebuje být obecně dostupné pro veřejnost. Šablony můžete přidat na účet privátní úložiště, které je přístupné pouze majiteli účtu úložiště. Pak vytvořte token sdílený přístupový podpis (SAS) pro povolení přístupu během nasazení. Přidejte tento token SAS URI propojené šablony. I když token, je předaná jako zabezpečený řetězec, je identifikátor URI propojené šablony, včetně tokenu SAS, přihlášení operace nasazení. K omezení rizika, nastavte vypršení platnosti pro daný token.
 
 Soubor parametrů také možné omezit přístup pomocí tokenu SAS.
 
@@ -446,7 +451,7 @@ Následující příklad ukazuje, jak předat SAS token při propojení do šabl
 }
 ```
 
-V prostředí PowerShell můžete získat token pro kontejner a nasazení šablon pomocí následujících příkazů. Všimněte si, že **containerSasToken** parametru je definováno v šabloně. Se nejedná o parametr v **New-AzureRmResourceGroupDeployment** příkaz.
+V prostředí PowerShell můžete získat token pro kontejner a nasazení šablon pomocí následujících příkazů. Všimněte si, že **containerSasToken** parametru je definováno v šabloně. Není parametr v **New-AzureRmResourceGroupDeployment** příkaz.
 
 ```powershell
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -486,7 +491,7 @@ Následující příklady ukazují běžná použití propojených šablon.
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[Propojené šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Nástroj pro vyrovnávání zatížení s veřejnou IP adresu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[Propojené šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastavuje tuto hodnotu nástroji pro vyrovnávání zatížení. |
-|[Několik IP adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [Propojené šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Vytvoří víc veřejných IP adres v propojené šablony.  |
+|[Několik IP adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [Propojené šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Vytvoří několik veřejných IP adres v propojené šablony.  |
 
 ## <a name="next-steps"></a>Další postup
 

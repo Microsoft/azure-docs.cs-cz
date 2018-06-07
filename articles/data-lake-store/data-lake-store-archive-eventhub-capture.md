@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cff2ca87ab2916c9d5aa8bb308325cb7a0227d75
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624657"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Použití Azure Data Lake Store k zaznamenání dat ze služby Event Hubs
 
@@ -56,12 +57,12 @@ V této části vytvoříte složku v rámci účtu, ve které chcete zaznamenat
 
     c. V části **přiřadit oprávnění**, klikněte na tlačítko **vyberte oprávnění**. Nastavit **oprávnění** k **provést**. Nastavit **přidat do** k **tuto složku a všechny podřízené objekty**. Nastavit **přidat jako** k **položka oprávnění k přístupu a výchozí položku oprávnění**.
 
-> [!IMPORTANT]
-> Při vytváření nové hierarchii složek pro zaznamenání dat přijatých Azure Event Hubs, to je snadný způsob, jak zajistit přístup k cílové složce.  Přidání oprávnění pro všechny podřízené objekty složku nejvyšší úrovně s mnoha podřízené soubory a složky, může trvat dlouhou dobu.  Kořenová složka obsahuje velký počet souborů a složek, může být rychlejší přidat **Execute** oprávnění pro `Microsoft.EventHubs` jednotlivě na všechny složky v cestě ke složce konečného cíle. 
+    > [!IMPORTANT]
+    > Při vytváření nové hierarchii složek pro zaznamenání dat přijatých Azure Event Hubs, to je snadný způsob, jak zajistit přístup k cílové složce.  Přidání oprávnění pro všechny podřízené objekty složku nejvyšší úrovně s mnoha podřízené soubory a složky, může trvat dlouhou dobu.  Kořenová složka obsahuje velký počet souborů a složek, může být rychlejší přidat **Execute** oprávnění pro `Microsoft.EventHubs` jednotlivě na všechny složky v cestě ke složce konečného cíle. 
 
-    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+    ![Přiřazení oprávnění pro Data Lake Store kořenové](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "přiřadit oprávnění pro kořenový adresář Data Lake Store")
 
-    Click **OK**.
+    Klikněte na **OK**.
 
 4. Přiřazení oprávnění pro dílčí složku složky účtu Data Lake Store, ve které chcete zaznamenat data.
 

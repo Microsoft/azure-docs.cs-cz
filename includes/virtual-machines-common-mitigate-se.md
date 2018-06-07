@@ -5,16 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/03/2018
+ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34677355"
 ---
-**Poslední aktualizace dokumentů**: duben 3, 3:00 PM PST.
+**Poslední aktualizace dokumentů**: 21 může 2018 3:00 PM PST.
 
 Poslední zveřejnění [nová třída ohrožení zabezpečení procesoru](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002) se označuje jako spekulativní provádění straně kanál útoky má za následek otázky z zákazníky, kteří potřebují další přehlednost.  
 
@@ -23,6 +24,8 @@ Microsoft nasadil jejich zmírnění napříč naší cloudové služby. Je chr�
 Kromě toho je Azure rozšíření použití [paměti zachování údržby](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) kdykoli je to možné, pozastavení virtuálního počítače pro až 30 sekund při aktualizaci hostitele nebo virtuálního počítače je přesunuta do již aktualizované hostitele.  Zachování údržby další paměť minimalizuje dopad na zákazníka a eliminuje potřebu restartování počítače.  Azure bude využívat tyto metody, při vytváření systémové aktualizace na hostitele.
 
 > [!NOTE] 
+Na 21 může 2018 oznámila nové podtřídou třídy spekulativní straně kanál chyba zabezpečení známé jako spekulativní úložiště vynechat nulou projektu Google a Microsoft. Další obrany v jejich zmírnění hloubka bylo nasazeno v rámci infrastruktury cloudu Microsoft, které přímo řeší chyby zabezpečení spekulativní provádění. Zde jsou k dispozici další informace: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
+>
 > V pozdní února 2018 publikovaná Intel Corporation aktualizované [mikrokódu revize pokyny](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stav mikrokódu verzích, které zlepšení stability a zmírňuje nebezpečí, že poslední ohrožení zabezpečení, budou mít přístup podle [Projektu Google nula](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Jejich zmírnění umístí na místě Azure [3 leden 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nemá vliv aktualizace mikrokódu společnosti Intel. Microsoft už zavedena silné jejich zmírnění pro ochranu Azure zákazníků z jiných virtuálních počítačích Azure.  
 >
 > Společnosti Intel mikrokódu adresy typu variant 2 spektrum ([CVE. 2017 5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) nebo vkládání cíl větev) k ochraně před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
@@ -48,7 +51,7 @@ V následující nabídky Zde jsou naše doporučené akce k aktualizaci operač
 <td>Azure Cloud Services </td>  <td>Povolit automatickou aktualizaci nebo Ujistěte se, že používáte nejnovější hostovaného operačního systému.</td>
 </tr>
 <tr>
-<td>Virtuální počítače s Linuxem v Azure</td> <td>Nainstalujte aktualizace od poskytovatele operačního systému, pokud je k dispozici. </td>
+<td>Linuxové virtuální počítače Azure</td> <td>Nainstalujte aktualizace od poskytovatele operačního systému, pokud je k dispozici. </td>
 </tr>
 <tr>
 <td>Virtuální počítače s Azure Windows </td> <td>Ověřte, že používáte podporovanou antivirový aplikaci před instalací aktualizací operačního systému. Informace o kompatibilitě, obraťte se na dodavatele antivirového softwaru.<p> Nainstalujte [souhrn leden zabezpečení](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002). </p></td>

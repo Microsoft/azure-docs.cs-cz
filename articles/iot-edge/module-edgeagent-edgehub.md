@@ -1,19 +1,19 @@
 ---
 title: Referenční dokumentace Azure IoT EdgeAgent a EdgeHub | Microsoft Docs
 description: Zkontrolujte konkrétní vlastnosti a jejich hodnoty pro modul dvojčata edgeAgent a edgeHub
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/14/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 0971d5bba59ce3c7b1a6409ef3248f33a41e37c9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+services: iot-edge
+ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632903"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Vlastnosti agenta okraj a okraj rozbočovače modul dvojčata
 
@@ -28,7 +28,7 @@ Je volána twin modulu pro agenta hraniční `$edgeAgent` a koordinuje komunikac
 | Vlastnost | Popis | Požaduje se |
 | -------- | ----------- | -------- |
 | schemaVersion | Musí být "1.0" | Ano |
-| runtime.type | Musí být "docker" | Ano |
+| Runtime.Type | Musí být "docker" | Ano |
 | runtime.settings.minDockerVersion | Nastavte na tento – manifest nasazení požadavek na minimální verzi Docker | Ano |
 | runtime.settings.loggingOptions | Stringified JSON obsahující možnosti protokolování pro kontejner agenta okraj. [Možnosti protokolování docker][lnk-docker-logging-options] | Ne |
 | systemModules.edgeAgent.type | Musí být "docker" | Ano |
@@ -41,9 +41,9 @@ Je volána twin modulu pro agenta hraniční `$edgeAgent` a koordinuje komunikac
 | systemModules.edgeHub.settings.image | Identifikátor URI bitovou kopii Edge rozbočovače. | Ano |
 | systemModules.edgeHub.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru Edge rozbočovače. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
 | systemModules.edgeHub.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
-| modules.{moduleId}.version | Uživatelem definované řetězec představující verze tohoto modulu. | Ano |
+| moduly. {moduleId} .version | Uživatelem definované řetězec představující verze tohoto modulu. | Ano |
 | modules.{moduleId}.type | Musí být "docker" | Ano |
-| modules.{moduleId}.restartPolicy | {"nikdy" \| "na-se nezdařilo" \| "na-není v pořádku" \| "vždy"} | Ano |
+| moduly. {moduleId} .restartPolicy | {"nikdy" \| "na-se nezdařilo" \| "na-není v pořádku" \| "vždy"} | Ano |
 | modules.{moduleId}.settings.image | Identifikátor URI pro image modulu. | Ano |
 | modules.{moduleId}.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
 | modules.{moduleId}.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
@@ -68,10 +68,10 @@ V následující tabulce nezahrnuje informace, které budou zkopírována z pož
 | lastDesiredVersion | Toto celé číslo odkazuje na poslední verzi požadované vlastnosti zpracovat agentem okraj. |
 | lastDesiredStatus.code | Toto je kód stavu odkazující na poslední požadované vlastnosti kontaktu s agentem okraj. Povolené hodnoty: `200` úspěch, `400` neplatná konfigurace `412` neplatné schéma verze `417` požadované vlastnosti jsou prázdná, `500` se nezdařilo |
 | lastDesiredStatus.description | Textový popis stavu |
-| deviceHealth | `healthy` Pokud je stav modulu runtime všechny moduly, buď `running` nebo `stopped`, `unhealthy` jinak |
-| configurationHealth.{deploymentId}.health | `healthy` Pokud stav modulu runtime všechny moduly nastavit nasazení {deploymentId} je buď `running` nebo `stopped`, `unhealthy` jinak |
+| DeviceHealth | `healthy` Pokud je stav modulu runtime všechny moduly, buď `running` nebo `stopped`, `unhealthy` jinak |
+| configurationHealth. {deploymentId} .health | `healthy` Pokud stav modulu runtime všechny moduly nastavit nasazení {deploymentId} je buď `running` nebo `stopped`, `unhealthy` jinak |
 | runtime.platform.OS | Vytváření sestav operačního systému spuštěné na zařízení |
-| runtime.platform.architecture | Vytváření sestav architekturu procesoru na zařízení |
+| Runtime.Platform.Architecture | Vytváření sestav architekturu procesoru na zařízení |
 | systemModules.edgeAgent.runtimeStatus | Reportovaný stav agenta Edge: {"spuštění" \| "není v pořádku"} |
 | systemModules.edgeAgent.statusDescription | Textový popis reportovaný stav agenta okraj. |
 | systemModules.edgeHub.runtimeStatus | Aktuální stav rozbočovače Edge: {"spuštění" \| "stopped" \| "se nezdařilo" \| "omezení rychlosti" \| "není v pořádku"} |
@@ -87,7 +87,7 @@ V následující tabulce nezahrnuje informace, které budou zkopírována z pož
 | modules.{moduleId}.startTimeUtc | Čas posledního spuštění modulu |
 | modules.{moduleId}.lastExitTimeUtc | Čas, kdy modul poslední byl ukončen |
 | modules.{moduleId}.lastRestartTimeUtc | Čas, kdy modul posledního restartování |
-| modules.{moduleId}.restartCount | Počet pokusů, které byl tento modul restartován v rámci zásad restartování. |
+| moduly. {moduleId} .restartCount | Počet pokusů, které byl tento modul restartován v rámci zásad restartování. |
 
 ## <a name="edgehub-desired-properties"></a>Vlastnosti EdgeHub potřeby
 
@@ -96,7 +96,7 @@ Je volána twin modulu pro rozbočovač na hraniční `$edgeHub` a koordinuje ko
 | Vlastnost | Popis | Požadované v manifestu nasazení |
 | -------- | ----------- | -------- |
 | schemaVersion | Musí být "1.0" | Ano |
-| routes.{routeName} | Řetězec představující trasu rozbočovače okraj. | `routes` Prvek může být existuje, ale je prázdný. |
+| trasy. {routeName} | Řetězec představující trasu rozbočovače okraj. | `routes` Prvek může být existuje, ale je prázdný. |
 | storeAndForwardConfiguration.timeToLiveSecs | Doba v sekundách, Edge hub uchovává zprávy v případě odpojené směrování koncových bodů, například odpojen od služby IoT Hub, nebo místní modulu | Ano |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub hlášené vlastnosti

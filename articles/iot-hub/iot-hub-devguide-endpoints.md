@@ -1,24 +1,19 @@
 ---
 title: Pochopení koncové body Azure IoT Hub | Microsoft Docs
 description: Příručka vývojáře – referenční informace o IoT Hub směřujících zařízení a služby přístupem koncových bodů.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 57ba52ae-19c6-43e4-bc6c-d8a5c2476e95
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: d9378a084d8ff421539a445986a5a18d073f3ce6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 37e1bd0b479e27f0d871495c0725fc865cbb8572
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632573"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odkaz – koncové body centra IoT
 

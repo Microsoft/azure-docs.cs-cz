@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 2372550548f40ad07b4f76c19bc3bc1cb8380830
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99838a7038672998d4940bfb437bd31311d3600f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653429"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -39,7 +40,7 @@ Tento článek předpokládá, že jste již nainstalovali SUSE nebo openSUSE op
 
 Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, publikuje také Image BYOS (přineste si vlastní předplatné) pro SLES v [VMDepot](https://vmdepot.msopentech.com/User/Show?user=1007).
 
-## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Prepare SUSE Linux Enterprise Server 11 SP4
+## <a name="prepare-suse-linux-enterprise-server-11-sp4"></a>Příprava SUSE Linux Enterprise Server 11 SP4
 1. V prostředním podokně Správce technologie Hyper-V vyberte virtuální počítač.
 2. Klikněte na tlačítko **Connect** a otevřete okno pro virtuální počítač.
 3. Zaregistrujte systému SUSE Linux Enterprise tak, aby ji ke stahování aktualizací a instalaci balíčků.
@@ -81,7 +82,7 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 11. Je doporučené upravit soubor "/ etc a sysconfig nebo sítě nebo dhcp" a změnit `DHCLIENT_SET_HOSTNAME` parametr pro následující:
     
-     DHCLIENT_SET_HOSTNAME="no"
+     DHCLIENT_SET_HOSTNAME = "žádný"
 12. Komentář "/ etc/sudoers", nebo pokud existují, odeberte následující řádky:
     
      Výchozí nastavení targetpw # požádat o heslo cílový uživatel tj kořenové všechny ALL=(ALL) všechny # upozornění! Pouze to používají společně s 'Výchozí hodnoty targetpw'!
@@ -93,9 +94,9 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
      ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Poznámka: tuto možnost nastavíte na ať už budete potřebovat mohla být.
 15. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a jeho přípravu pro zřizování na Azure:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo příkaz waagent-force - deprovision
-    # <a name="export-histsize0"></a>Export HISTSIZE = 0
-    # <a name="logout"></a>odhlásit
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 16. Klikněte na tlačítko **akce -> vypnutí dolů** ve Správci technologie Hyper-V. Svůj disk VHD Linux je nyní připravena k odeslání do Azure.
 
 - - -
@@ -128,7 +129,7 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
         # sudo zypper update
 5. Nainstalujte Azure Linux Agent.
    
-   # <a name="sudo-zypper-install-walinuxagent"></a>instalace zypper sudo WALinuxAgent
+        # sudo zypper install WALinuxAgent
 6. Upravte řádku spouštěcí jádra ve vaší konfiguraci grub pro zahrnutí dalších jádra parametry Azure. Chcete-li to provést, otevřete "/ boot/grub/menu.lst" v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
    
      konzole = ttyS0 earlyprintk = ttyS0 rootdelay = 300
@@ -138,7 +139,7 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
      libata.atapi_enabled=0 reserve=0x1f0,0x8
 7. Je doporučené upravit soubor "/ etc a sysconfig nebo sítě nebo dhcp" a změnit `DHCLIENT_SET_HOSTNAME` parametr pro následující:
    
-     DHCLIENT_SET_HOSTNAME="no"
+     DHCLIENT_SET_HOSTNAME = "žádný"
 8. **Důležité:** komentář "/ etc/sudoers", nebo odeberte následující řádky, pokud existují:
    
      Výchozí nastavení targetpw # požádat o heslo cílový uživatel tj kořenové všechny ALL=(ALL) všechny # upozornění! Pouze to používají společně s 'Výchozí hodnoty targetpw'!
@@ -150,9 +151,9 @@ Jako alternativu k vytvoření vlastního virtuálního pevného disku, SUSE, pu
      ResourceDisk.Format=y ResourceDisk.Filesystem=ext4 ResourceDisk.MountPoint=/mnt/resource ResourceDisk.EnableSwap=y ResourceDisk.SwapSizeMB=2048 ## Poznámka: tuto možnost nastavíte na ať už budete potřebovat mohla být.
 11. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a jeho přípravu pro zřizování na Azure:
     
-    # <a name="sudo-waagent--force--deprovision"></a>sudo příkaz waagent-force - deprovision
-    # <a name="export-histsize0"></a>Export HISTSIZE = 0
-    # <a name="logout"></a>odhlásit
+        # sudo waagent -force -deprovision
+        # export HISTSIZE=0
+        # logout
 12. Zajistěte, aby že Azure Linux Agent spuštěna při spuštění systému:
     
         # sudo systemctl enable waagent.service

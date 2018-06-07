@@ -1,34 +1,35 @@
 ---
-title: Začínáme s Azure Storage zásobníku nástroje pro vývoj
+title: Začínáme s Azure zásobníku úložiště vývojové nástroje | Microsoft Docs
 description: Pokyny, jak začít s pomocí nástrojů pro vývoj Azure zásobník úložiště
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604473"
 ---
-# <a name="get-started-with-azure-stack-storage-development-tools"></a>Začínáme s Azure Storage zásobníku nástroje pro vývoj
+# <a name="get-started-with-azure-stack-storage-development-tools"></a>Začínáme s Azure zásobníku úložiště vývojové nástroje
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
 
 Zásobník Microsoft Azure poskytuje sadu služby úložiště, která obsahuje objekt blob, table a queue storage.
 
-Abyste mohli začít používat nástroje pro vývoj zásobník úložiště Azure, použijte jako vodítko v tomto článku. Podrobnější informace a ukázkový kód můžete najít v odpovídající kurzech Azure Storage.
+Abyste mohli začít používat Azure zásobníku úložiště vývojové nástroje, použijte tento článek jako vodítko. Podrobnější informace a ukázkový kód můžete najít v odpovídající kurzech úložiště Azure.
 
->[!NOTE]
->Existují známé rozdíly mezi zásobník úložiště Azure a Azure Storage, včetně specifické požadavky pro každou platformu. Například existují určité klientské knihovny a konkrétní koncový bod příponu požadavky pro Azure zásobníku. Další informace najdete v tématu [zásobník úložiště Azure: rozdíly a aspekty](azure-stack-acs-differences.md).
+> [!NOTE]  
+> Existují známé rozdíly mezi zásobník Azure storage a Azure storage, včetně specifické požadavky pro každou platformu. Například existují určité klientské knihovny a konkrétní koncový bod příponu požadavky pro Azure zásobníku. Další informace najdete v tématu [Azure zásobníku úložiště: rozdíly a aspekty](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Knihovny klienta Azure
 
-Podporované verze rozhraní REST API pro Azure Storage zásobníku jsou 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 aktualizace nebo novější verze a 2015-04-05 pro předchozí verze. Koncové body Azure zásobníku nemají úplná parita s nejnovější verzi rozhraní API REST úložiště Azure. Pro knihovny klienta úložiště musíte znát verze, která je kompatibilní s rozhraním REST API.
+Podporované verze rozhraní REST API pro Azure zásobníku úložiště jsou 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 1802 aktualizace nebo novější verze a 2015-04-05 pro předchozí verze. Koncové body Azure zásobníku nemají úplná parita s nejnovější verzi rozhraní API REST Azure storage. Pro knihovny klienta úložiště musíte znát verze, která je kompatibilní s rozhraním REST API.
 
 ### <a name="1802-update-or-newer-versions"></a>1802 aktualizace nebo novější verze
 
@@ -209,4 +210,4 @@ Následující kurzy úložiště Azure Table se vztahují na Azure zásobníku.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Úvod do Microsoft Azure Storage](../../storage/common/storage-introduction.md)
+* [Úvod do Microsoft Azure storage](../../storage/common/storage-introduction.md)

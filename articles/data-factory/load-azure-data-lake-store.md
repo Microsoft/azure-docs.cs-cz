@@ -8,14 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: bf0d607d63a68a222a1d44d9cb05253497d12591
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fdfb35b0e1c52ad2aad164a38ae308f9142880a6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619622"
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Store pomocí Azure Data Factory
 

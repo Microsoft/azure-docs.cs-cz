@@ -6,15 +6,16 @@ author: rmatchoro
 manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: ronmat
 ms.reviewer: carlrab
-ms.openlocfilehash: db10bbdd39920b05d9fd8c3907f22c3ee5d08b02
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 09ba4b3b72d5c82dc42199f2f883cedee6609bd2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649539"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb databáze Azure SQL
 

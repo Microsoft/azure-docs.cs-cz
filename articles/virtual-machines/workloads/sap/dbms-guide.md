@@ -4,7 +4,7 @@ description: Nasazení virtuálních počítačů databázového systému Azure 
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c78b764b66e677144186831b6139fd6a0aae7e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656189"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -539,9 +540,10 @@ Jsme setkají poměrně některých scénářích, kde jako zákazník chcete p�
 Pokud používáte spravované disky, můžete migrovat do úložiště úrovně Premium podle:
 
 1. Zrušit přidělení virtuálního počítače
-2. V případě potřeby změnit velikost virtuálního počítače na velikost, která podporuje službu Premium Storage (například DS nebo GS)
-3. Změnit typ účtu spravované disku Premium (SSD)
-4. Spustit virtuální počítač
+1. V případě potřeby změnit velikost virtuálního počítače na velikost, která podporuje službu Premium Storage (například DS nebo GS)
+1. Změnit typ účtu spravované disku Premium (SSD)
+1. Změnit ukládání do mezipaměti datových disků podle doporučení v kapitole [ukládání do mezipaměti pro virtuální počítače a datové disky][dbms-guide-2.1]
+1. Spustit virtuální počítač
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Nasazení virtuálních počítačů pro SAP v Azure
 Microsoft Azure nabízí několik způsobů pro nasazení virtuálních počítačů a přidruženými disky. Tím je důležité pochopit rozdíly, od přípravy virtuálních počítačů se můžou lišit závisí na způsobu nasazení. Obecně platí podíváme do popsané v následujících kapitolách scénáře.

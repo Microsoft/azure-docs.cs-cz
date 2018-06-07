@@ -1,18 +1,19 @@
 ---
 title: Připojení zařízení jádro IoT Windows do aplikace Azure IoT centrální | Microsoft Docs
 description: Jako vývojář zařízení zjistěte, jak se připojit k aplikaci Azure IoT centrální zařízení s MXChip IoT DevKit.
-services: iot-central
 author: miriamb
 ms.author: mriamb
 ms.date: 04/09/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
 manager: peterpr
-ms.openlocfilehash: c38231f97eeb1c4511702bf3e788f72918cab045
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 55c0d9c26cd4e7f8ae9f6ff2359e0f2d2a9970c9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629139"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Jádro IoT Windows zařízení připojit k Azure IoT centrální aplikace
 
@@ -29,7 +30,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **jádro I
 
 ### <a name="telemetry-measurements"></a>Měření telemetrie
 
-| Název pole     | Jednotky  | Minimální | Maximum | Desetinných míst |
+| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkosti       | %      | 0       | 100     | 0              |
 | dočasné           | ° C     | -40     | 120     | 0              |
@@ -39,7 +40,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **jádro I
 
 Číselné nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinných míst | Minimální | Maximum | Počáteční |
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Ventilátor rychlosti    | fanSpeed   | OT. / MIN   | 0              | 0       | 1000    | 0       |
 
@@ -51,7 +52,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **jádro I
 | Vlastnosti zařízení | Kostka číslo   | dieNumber  | číslo    |
 | Text            | Umístění     | location   | neuvedeno       |
 
-## <a name="add-a-real-device"></a>Přidání skutečné zařízení
+## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
 V aplikaci Azure IoT centrální přidat skutečné zařízení z **jádro IoT Windows** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
 
@@ -59,7 +60,7 @@ V aplikaci Azure IoT centrální přidat skutečné zařízení z **jádro IoT W
 
 Nastavit jádro IoT Windows zařízení postupujte podle průvodce krok za krokem v [nastavení zařízení IoT jádro systému Windows] (https://github.com/Microsoft/microsoft-iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device).
 
-### <a name="add-a-real-device"></a>Přidání skutečné zařízení
+### <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
 V aplikaci Azure IoT centrální přidat skutečné zařízení z **jádro IoT Windows** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
 

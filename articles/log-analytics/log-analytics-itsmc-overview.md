@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 8fb75484537d577cb19b04fa091bab69d6723c9b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: da81d1455649f1e3f3ab43016df49953ce90e0ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637612"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru služby správy IT
 
@@ -98,7 +99,7 @@ Jakmile máte prepped vaše ITSM nástrojů, použijte následující postup k v
 
     > [!NOTE]
 
-    > Ve výchozím nastavení aktualizuje ITSMC připojení konfigurační data jednou za každých 24 hodin. Aktualizovat připojení k data okamžitě pro úpravy nebo aktualizace šablony, které provedete, klikněte na tlačítko "Aktualizace" zobrazí vedle připojení.
+    > Ve výchozím nastavení aktualizuje ITSMC připojení konfigurační data jednou za každých 24 hodin. Chcete-li aktualizovat data vaše připojení okamžitě pro úpravy nebo šablony aktualizace, které provedete, klikněte na tlačítko **synchronizace** tlačítka v okně připojení k.
 
     ![Aktualizace připojení](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
 
@@ -137,58 +138,6 @@ Při vytváření nebo úpravách Azure pravidla výstrahy, použijte skupinu ak
 >[!NOTE]
 
 > Informace o cenách ITSM akce najdete v tématu [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) pro akce skupiny.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-alerts"></a>Vytváření pracovních položek ITSM z výstrah analýzy protokolů
-
-Pravidla výstrah můžete nakonfigurovat na portálu Azure Log Analytics k vytváření pracovních položek v nástroji ITSM, pomocí následujícího postupu.
-
-1. Z **hledání protokolů** okně Spustit protokolu vyhledávací dotaz. Chcete-li zobrazit data. Výsledky dotazu jsou zdroj pro pracovní položky.
-2. V **hledání protokolů**, klikněte na tlačítko **výstrahy** otevřete **přidat pravidlo výstrahy** stránky.
-
-    ![Obrazovka analýzy protokolů](./media/log-analytics-itsmc/itsmc-work-items-for-azure-alerts.png)
-
-3. Na **přidat pravidlo výstrahy** okno, zadejte požadované podrobnosti pro **název**, **závažnost**, **vyhledávací dotaz**, a **výstrah kritéria** (časová okna/metrika měří období).
-4. Vyberte **Ano** pro **ITSM akce**.
-5. Vyberte ITSM připojení z **vyberte připojení** seznamu.
-6. Zadejte podrobnosti podle potřeby.
-7. Vytvořit samostatný pracovní položku pro každé položky protokolu této výstrahy, vyberte **vytvořit jednotlivé pracovní položky pro každý záznam protokolu** zaškrtávací políčko.
-
-    Nebo
-
-    nechte toto políčko Zrušit vytvořit pouze jeden pracovní položku pro libovolný počet záznamů protokolu v rámci této výstrahy.
-
-7. Klikněte na **Uložit**.
-
-Můžete zobrazit výstrahy analýzy protokolů, který jste vytvořili v části **Nastavení > výstrahy**. Pracovní položky odpovídající ITSM připojení vytvářejí, když je splněna podmínka zadaný výstrahy.
-
-
-## <a name="create-itsm-work-items-from-log-analytics-log-records"></a>Vytváření pracovních položek ITSM ze záznamů protokolu analýzy protokolů
-
-Můžete také vytvořit pracovní položky v připojených zdrojů ITSM přímo z záznam protokolu. To slouží k otestování, pokud připojení funguje správně.
-
-
-1. Z **hledání protokolů**hledání požadovaných dat, vyberte podrobností a klikněte na tlačítko **vytvořit pracovní položka**.
-
-    **Vytvoření pracovní položky ITSM** zobrazí se okno:
-
-    ![Obrazovka analýzy protokolů](media/log-analytics-itsmc/itsmc-work-items-from-azure-logs.png)
-
-2.   Přidejte následující podrobnosti:
-
-  - **Název pracovní položky**: název pro pracovní položku.
-  - **Pracovní položky Popis**: popis novou pracovní položku.
-  - **Vliv na počítače**: název počítače, kde tato data protokolu byla nalezena.
-  - **Vyberte připojení**: ITSM připojení, ve kterém chcete vytvořit tuto pracovní položku.
-  - **Pracovní položka**: typ pracovní položky.
-
-3. Chcete-li použít existující šablonu pracovní položky pro incidentu, klikněte na tlačítko **Ano** pod **generovat pracovní položka založený na šabloně** a potom klikněte na **vytvořit**.
-
-    Nebo:
-
-    Klikněte na tlačítko **ne** Pokud chcete zadat vlastní hodnoty.
-
-4. Zadejte odpovídající hodnoty v **typu Kontakt**, **dopad**, **naléhavost**, **kategorie**, a **dílčí kategorie** textová pole a pak klikněte na tlačítko **vytvořit**.
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Vizualizace a analyzovat incidentu a změnit data požadavku

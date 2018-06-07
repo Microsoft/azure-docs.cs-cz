@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 2d8760476fd7b8a5a11d01a434a383ec1ba27ef1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4f12c3353ca4949b3c1c031420ec5a0b8fdb2dbf
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34649148"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohami elastické databáze
 Elastické databáze úlohy (preview) pro databázi SQL Azure umožňuje spolehlivě spuštění skriptů T-SQL, které jsou rozmístěny v několika databází při automaticky opakování a poskytování případné dokončení záruky. Další informace o funkci úlohy elastické databáze najdete v tématu [elastické úlohy](sql-database-elastic-jobs-overview.md).

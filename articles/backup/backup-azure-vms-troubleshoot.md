@@ -1,24 +1,19 @@
 ---
-title: Řešení chyb zálohy s virtuální počítač Azure | Microsoft Docs
+title: Řešení chyb zálohy s virtuální počítač Azure
 description: Řešení zálohování a obnovení virtuálních počítačů Azure
 services: backup
-documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: ''
-ms.assetid: 73214212-57a4-4b57-a2e2-eaf9d7fde67f
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/21/2018
-ms.author: trinadhk;markgal;jpallavi;sogup
-ms.openlocfilehash: 25008736dbff87aafe2f2ef2d13bbaf746e95e4d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: trinadhk
+ms.openlocfilehash: d6e78d46f0886b06cb1cf3577c16c8bc4f842bab
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607255"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Odstraňování potíží se zálohováním virtuálních počítačů Azure
 Řešení potíží s chyb zjištěných při pomocí Azure Backup informace uvedené v následující tabulce.
@@ -30,7 +25,7 @@ ms.lasthandoff: 04/28/2018
 | Agent virtuálního počítače se nepodařilo komunikovat se službou Azure Backup. -Zkontrolujte virtuální počítač má síťové připojení a agent virtuálního počítače je nejnovější a spuštěná. Další informace naleznete v  http://go.microsoft.com/fwlink/?LinkId=800034 |Tato chyba se vyvolá, pokud došlo k potížím s agenta virtuálního počítače, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup) o ladění do virtuálních počítačů snímku problémy.<br> Pokud agenta virtuálního počítače není způsobuje problémy, restartujte virtuální počítač. Nesprávný stav virtuálního počítače v některých případech může způsobit problémy a restartování virtuálního počítače obnoví tento "chybný stav". |
 | Virtuální počítač je v chybovém stavu zřizování – restartujte virtuální počítač a ujistěte se, že virtuální počítač je ve stavu spuštění nebo vypnutí pro zálohování | K tomu dochází, pokud jeden z chyby rozšíření vede stav virtuálního počítače ve stavu selhání zřizování. Přejít na seznam rozšíření a jestli je neúspěšné rozšíření, odeberte ji a zkuste restartovat virtuální počítač. Pokud všechna rozšíření je v běžícím stavu, zkontrolujte, zda je spuštěna Služba agenta virtuálního počítače. Pokud ne, restartujte službu agent virtuálního počítače. | 
 | VMSnapshot rozšíření operace se nezdařila pro spravované disky - opakujte operaci zálohování. Pokud se problém opakuje, postupujte podle pokynů v 'http://go.microsoft.com/fwlink/?LinkId=800034'. Pokud selže dál, kontaktujte prosím podporu společnosti Microsoft | Tato chyba, když se nepodaří aktivovat snímek služby zálohování Azure. [Další informace](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed) o ladění virtuální počítač snímek problémy. |
-| Může kopírování snímku virtuálního počítače, z důvodu nedostatku volného místa v účtu úložiště – zkontrolujte, zda má účet úložiště volné místo ekvivalentní data obsažená na prémiových discích úložiště připojených k virtuálnímu počítači | V případě virtuálních počítačů úrovně premium jsme zkopírujte snímku do účtu úložiště. Toto je zajistit, že není správu záloh přenos, který funguje na snímek, omezit počet IOPS, které jsou k dispozici pro aplikaci používáte prémiové disky. Společnost Microsoft doporučuje, že přidělíte jen 50 % jeho celkový úložný prostor účet tak, že služba Azure Backup můžete zkopírovat snímku do úložiště účet a přenos dat z tohoto umístění zkopírovaný v účtu úložiště do trezoru. | 
+| Může kopírování snímku virtuálního počítače, z důvodu nedostatku volného místa v účtu úložiště – zkontrolujte, zda má účet úložiště volné místo ekvivalentní data obsažená na prémiových discích úložiště připojených k virtuálnímu počítači | V případě virtuálních počítačů úrovně premium v zásobníku zálohování virtuálních počítačů V1 jsme zkopírujte snímku do účtu úložiště. Toto je zajistit, že není správu záloh přenos, který funguje na snímek, omezit počet IOPS, které jsou k dispozici pro aplikaci používáte prémiové disky. Společnost Microsoft doporučuje že přidělit jen 50 % (17,5 TB) z celkový úložný prostor účet tak, že služba Azure Backup můžete zkopírovat snímku do úložiště účet a přenos dat z tohoto umístění zkopírovaný v účtu úložiště do trezoru. | 
 | Nelze provést operaci, protože agenta virtuálního počítače není reaguje |Tato chyba se vyvolá, pokud došlo k potížím s agenta virtuálního počítače, nebo blokovaný přístup k síti na infrastrukturu Azure nějakým způsobem. Pro virtuální počítače Windows zkontrolujte stav služby agent virtuálního počítače v služby a zda se zobrazí agenta v programy v Ovládacích panelech. Zkuste odebrat program z ovládacích panelů a opětovné instalaci agenta, jak je uvedeno [pod](#vm-agent). Po opětovné instalaci agenta, spusťte zálohování v režimu ad hoc k ověření. |
 | Obnovení služby rozšíření operace se nezdařila. -Zkontrolujte, že je k dispozici na virtuálním počítači nejnovější agent virtuálního počítače a zda je spuštěna Služba agenta. Opakujte operaci zálohování a pokud se nezdaří, obraťte se na podporu společnosti Microsoft. |Tato chyba se vyvolá, když agenta virtuálního počítače je zastaralý. Najdete v části "Aktualizace virtuálního počítače Agent" aktualizovat agenta virtuálního počítače. |
 | Virtuální počítač neexistuje. -Prosím zkontrolujte, zda že tento virtuální počítač existuje, nebo vyberte jiný virtuální počítač. |To se stane, když dojde k odstranění primární virtuální počítač ale zásady zálohování nadále vypadat pro virtuální počítač k provedení zálohování. Chcete-li vyřešit tuto chybu: <ol><li> Znovu vytvořte virtuální počítač se stejným názvem a stejný název skupiny prostředků [název cloudové služby],<br>(NEBO)<br></li><li>Zastavte ochranu virtuálního počítače bez odstranění zálohovaná data. [Další informace](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |

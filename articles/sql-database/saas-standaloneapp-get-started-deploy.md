@@ -7,14 +7,15 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 86a5bc31639cbbcdac1468f3bc2e35a547068882
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 32cfa2e9bd48dd4e27da5c4010391c032d67d96b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34644718"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Nasazení a prozkoumejte samostatná jednoho klienta aplikace, která používá databázi SQL Azure
 
@@ -73,16 +74,16 @@ Aplikace umožňující prezentovat místa, které jsou hostiteli události.  M�
 
 1. Otevřete stránku události pro všechny tři klienty v záložkách samostatné prohlížeče:
 
-    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
+    - http://events.contosoconcerthall.&lt; uživatele&gt;. trafficmanager.net
+    - http://events.dogwooddojo.&lt; uživatele&gt;. trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt; uživatele&gt;. trafficmanager.net
 
     (V každou adresu URL, nahraďte &lt;uživatele&gt; s hodnotou uživatele vaše nasazení.)
 
    ![Události](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 K řízení distribuce příchozí požadavky a používá aplikace [ *Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Každá instance konkrétního klienta aplikace obsahuje název klienta jako součást názvu domény v adrese URL. Všechny klienta adresy URL zahrnují konkrétní **uživatele** hodnotu. Adresy URL použijte následující formát:
-- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
+- http://events.&lt; venuename&gt;.&lt; Uživatel&gt;. trafficmanager.net
 
 Každý klient databáze **umístění** je zahrnuta v nastavení aplikace odpovídající nasazené aplikace.
 

@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618585"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžnou integraci a nasazení v Azure Data Factory
 

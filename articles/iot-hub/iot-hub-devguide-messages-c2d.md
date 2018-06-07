@@ -1,23 +1,19 @@
 ---
 title: Pochopení zasílání zpráv typu cloud zařízení Azure IoT Hub | Microsoft Docs
 description: Příručka vývojáře - použití službou IoT Hub zasílání zpráv typu cloud zařízení. Obsahuje informace o životní cyklus zpráv a možnosti konfigurace.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d3d8df0d1e00fdff4d0e1e93715e1a408116d1e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632471"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Odesílání zpráv typu cloud zařízení ze služby IoT Hub
 
@@ -88,7 +84,7 @@ Jak je popsáno v [koncové body][lnk-endpoints], IoT Hub zajišťuje zpětnou v
 | Vlastnost     | Popis |
 | ------------ | ----------- |
 | EnqueuedTime | Časové razítko označující při byl zpětnou vazbu zprávy přijaté službou. |
-| ID uživatele       | `{iot hub name}` |
+| UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 Text je serializací JSON pole záznamů, každý s následujícími vlastnostmi:
@@ -97,9 +93,9 @@ Text je serializací JSON pole záznamů, každý s následujícími vlastnostmi
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Časové razítko označující, když se stalo výsledek zprávy. Například rozbočovače zobrazila zpráva zpětnou vazbu nebo vypršela její platnost původní zprávy. |
 | OriginalMessageId  | **MessageId** zprávy cloud zařízení, ke kterému má vztah tyto informace zpětnou vazbu. |
-| statusCode         | Požadovaný řetězec. Použít v zpětnou vazbu zprávy generované IoT Hub. <br/> 'Success' <br/> "Platnost vypršela. <br/> 'DeliveryCountExceeded' <br/> 'Odmítnut. <br/> 'Vyprázdní. |
+| statusCode         | Požadovaný řetězec. Použít v zpětnou vazbu zprávy generované IoT Hub. <br/> 'Success' <br/> "Platnost vypršela. <br/> 'DeliveryCountExceeded. <br/> 'Odmítnut. <br/> 'Vyprázdní. |
 | Popis        | Řetězce hodnoty pro **StatusCode**. |
-| ID zařízení           | **DeviceId** cílového zařízení, k němuž se vztahuje toto připomínek zprávy cloud zařízení. |
+| DeviceId           | **DeviceId** cílového zařízení, k němuž se vztahuje toto připomínek zprávy cloud zařízení. |
 | DeviceGenerationId | **DeviceGenerationId** cílového zařízení, k němuž se vztahuje toto připomínek zprávy cloud zařízení. |
 
 Musíte zadat službu **MessageId** zprávy typu cloud zařízení mohli ke korelaci jeho zpětnou vazbu s původní zprávy.

@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace Python s webovými aplikacemi Azure App Service"
-description: "Tento kurz popisuje možnosti pro vytváření obsahu a konfigurace základní serveru webové aplikace Python kompatibilní s brány rozhraní (WSGI) v Azure App Service Web Apps."
+title: Konfigurace Python s webovými aplikacemi Azure App Service
+description: Tento kurz popisuje možnosti pro vytváření obsahu a konfigurace základní serveru webové aplikace Python kompatibilní s brány rozhraní (WSGI) v Azure App Service Web Apps.
 services: app-service
 documentationcenter: python
 tags: python
 author: huguesv
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: fd00dc91-9935-4331-b955-4bd71e66d518
 ms.service: app-service
 ms.workload: na
@@ -15,11 +15,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 32d9cd6c42387b67881877a1165dfcbcaef405ba
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598636"
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurace Python s webovými aplikacemi Azure App Service
 Tento kurz popisuje možnosti pro vytváření obsahu a konfigurace základní aplikace kompatibilní s Python Webový Server brány rozhraní (WSGI) na [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -29,9 +30,9 @@ Popisuje další funkce nasazení Git, například virtuální prostředí a ins
 ## <a name="bottle-django-or-flask"></a>Bottle, Django nebo Flask?
 Azure Marketplace obsahuje šablony pro rozhraní Bottle, Flask a Django. Pokud vyvíjíte první webové aplikace v Azure App Service, můžete vytvořit jeden rychle z portálu Azure:
 
-* [Vytvoření webové aplikace pomocí Bottle](https://portal.azure.com/#create/PTVS.Bottle)
-* [Vytvoření webové aplikace pomocí rozhraní Django](https://portal.azure.com/#create/PTVS.Django)
-* [Vytvoření webové aplikace pomocí Flask](https://portal.azure.com/#create/PTVS.Flask)
+* [Webové aplikace s Bottle](https://portal.azure.com/#create/PTVS.Bottle)
+* [Webovou aplikaci s rozhraním Django](https://portal.azure.com/#create/PTVS.Django)
+* [Webové aplikace s Flask v systému Linux](https://portal.azure.com/#create/PTVS.FlaskLinux)
 
 ## <a name="web-app-creation-on-azure-portal"></a>Vytvoření webové aplikace v portálu Azure
 Tento kurz předpokládá stávající předplatné Azure a přístup k portálu Azure.
@@ -53,7 +54,7 @@ V následujících částech jsou vytvořeny následující soubory. Musí být 
     ptvs_virtualenv_proxy.py
 
 
-## <a name="wsgi-handler"></a>WSGI Handler
+## <a name="wsgi-handler"></a>Obslužná rutina WSGI
 WSGI je standard Python popsaného [období 3333](http://www.python.org/dev/peps/pep-3333/) definování rozhraní mezi webového serveru a Python. Poskytuje standardizovaná rozhraní pro zápis různé webové aplikace a rozhraní používá Python. Oblíbených webových rozhraní Python v dnešní době používá WSGI. Azure App Service Web Apps nabízí podporu pro tyto architektury; Kromě toho Pokročilí uživatelé můžete i vytvářet své vlastní tak dlouho, dokud vlastní obslužná rutina se řídí WSGI specifikace pokyny.
 
 Tady je příklad `app.py` , který definuje vlastní obslužnou rutinu:
@@ -90,7 +91,7 @@ Příklad `requirements.txt`:
     azure==0.8.4
 
 
-## <a name="python-version"></a>Verze jazyka Python
+## <a name="python-version"></a>Verze Pythonu
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 Příklad `runtime.txt`:

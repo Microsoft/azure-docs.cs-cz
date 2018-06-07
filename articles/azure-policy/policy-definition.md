@@ -4,15 +4,16 @@ description: Popisuje použití zásad definice prostředků zásadami Azure k v
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1937792290d973f3aee7fa3c0714f4667c21e79a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f864cf45b255ac26ccf0efac9a89683d1ae650b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601254"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -63,7 +64,7 @@ Například následujícím kódu JSON zobrazuje zásadu, která omezuje, kdy js
 }
 ```
 
-Všechny ukázky šablony zásad Azure jsou [šablon pro Azure zásad](json-samples.md).
+Všechny ukázky zásad Azure jsou [ukázky zásad](json-samples.md).
 
 ## <a name="mode"></a>Mode
 
@@ -203,7 +204,7 @@ Podporovány jsou následující pole:
 
 - `name`
 - `fullName`
-  - Vrátí úplný název prostředku, včetně všech nadřazených položek (například "myServer/databáze")
+  - Vrátí úplný název prostředku. Úplný název prostředku je název prostředku přidá jako předpona všechny názvy prostředků nadřazené (například "myServer/databáze").
 - `kind`
 - `type`
 - `location`
@@ -250,6 +251,8 @@ Hodnota může být řetězec nebo objekt formátu JSON.
 
 S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci související prostředek a použít pravidlo a odpovídající efekt, pokud tento prostředek neexistuje. Například může vyžadovat, že sledovací proces sítě nasazuje pro všechny virtuální sítě.
 Příklad audit, když není nasazený rozšíření virtuálního počítače, naleznete v části [Audit Pokud rozšíření neexistuje](scripts/audit-ext-not-exist.md).
+
+Kompletní informace o každé vliv pořadí vyhodnocení, vlastnosti a příklady naleznete v tématu [účinky zásad Principy](policy-effects.md).
 
 ## <a name="aliases"></a>Aliasy
 
@@ -391,4 +394,4 @@ Následující příklad ukazuje, jak vytvořit initiative pro zpracování dvě
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si ukázky šablony zásad Azure v [šablon pro Azure zásad](json-samples.md).
+- Přečtěte si další příklady v [ukázky zásad Azure](json-samples.md).

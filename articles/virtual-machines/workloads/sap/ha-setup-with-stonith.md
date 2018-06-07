@@ -1,11 +1,11 @@
 ---
-title: "Vysoká dostupnost nastaven STONITH pro SAP HANA v Azure (velké instance) | Microsoft Docs"
-description: "Vytvoření vysoké dostupnosti pro SAP HANA v Azure (velké instance) ve SUSE pomocí STONITH"
+title: Vysoká dostupnost nastaven STONITH pro SAP HANA v Azure (velké instance) | Microsoft Docs
+description: Vytvoření vysoké dostupnosti pro SAP HANA v Azure (velké instance) ve SUSE pomocí STONITH
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,17 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d710fe24673c6ddc581d36e4f0cacdb750ff74f9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 344a48ff82bd93bf8dc9924e09399e72b9f88e2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656359"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Nastavení v SUSE pomocí STONITH vysokou dostupnost
 Tento dokument obsahuje podrobné pokyny krok za krokem nastavit vysokou dostupnost na SUSE operační systém pomocí STONITH zařízení.
 
-**Právní omezení:** *Tato příručka se vypočítá testování sadu nahoru v prostředí Microsoft HANA velké instancí, které úspěšně funguje. Jako tým správy služby Microsoft pro velké instance HANA nepodporuje operační systém, budete muset kontaktovat SUSE pro všechny další informace o řešení a vysvětlení na vrstvě operačního systému. Tým správy služby Microsoft nastavit STONITH zařízení a plně podporuje a může být zahrnuté pro řešení potíží pro problémy s STONITH zařízení.*
+**Právní omezení:** *Tato příručka se vypočítá testování instalace v prostředí Microsoft HANA velké instancí, které úspěšně funguje. Jako tým správy služby Microsoft pro velké instance HANA nepodporuje operační systém, budete muset kontaktovat SUSE pro všechny další informace o řešení a vysvětlení na vrstvě operačního systému. Tým správy služby Microsoft nastavit STONITH zařízení a plně podporuje a může být zahrnuté pro řešení potíží pro problémy s STONITH zařízení.*
 ## <a name="overview"></a>Přehled
 Pokud chcete nastavit vysokou dostupnost použití clusteringu SUSE, musí splňovat následující požadavky.
 ### <a name="pre-requisites"></a>Požadavky
@@ -32,10 +33,10 @@ Pokud chcete nastavit vysokou dostupnost použití clusteringu SUSE, musí splň
 - HANA velké instancí serverů připojeni k serveru SMT opravy nebo balíčky
 - Nainstalovány nejnovější opravy operačního systému
 - Nastavení protokolu NTP (čas serveru)
-- Čtení a pochopení nejnovější verzi dokumentace SUSE na HA nastavení
+- Čtení a pochopení nejnovější verzi dokumentace SUSE na HA instalace
 
-### <a name="set-up-details"></a>Nastavit podrobnosti
-- V této příručce jsme použili následující nastavení:
+### <a name="setup-details"></a>Podrobnosti nastavení
+Tato příručka používá následující nastavení:
 - Operační systém: SLES 12 SP1 pro SAP
 - Velké instancí HANA: 2xS192 (čtyři soketů, 2 TB)
 - Verze HANA: HANA 2.0 SP1
@@ -50,7 +51,7 @@ Při nastavování HANA velké instancí s HSR, můžete požádat tým správy 
 - Jméno zákazníka (například Microsoft)
 - Identifikátor SID - identifikátor HANA systému (například H11)
 
-Po nakonfigurování zařízení STONITH tým správy služby Microsoft zadejte, název zařízení SBD a IP adresu úložiště iSCSI, které můžete použít ke konfiguraci STONITH nastavení. 
+Po nakonfigurování zařízení STONITH tým správy služby Microsoft poskytují SBD název zařízení a IP adresu úložiště iSCSI, které můžete použít ke konfiguraci nastavení STONITH. 
 
 Pokud chcete nastavit HA koncová pomocí STONITH, musí být sledována následující kroky:
 
@@ -64,7 +65,7 @@ Pokud chcete nastavit HA koncová pomocí STONITH, musí být sledována násled
 8.  Otestujte proces převzetí služeb při selhání
 
 ## <a name="1---identify-the-sbd-device"></a>1.   Identifikaci SBD zařízení
-Tato část popisuje, jak určit SBD zařízení pro vaše sadu až po tým správy služby Microsoft byl nakonfigurován STONITH. **Tato část se týká pouze stávající zákazník**. Pokud jste zákazník s novou, tým správy služby Microsoft poskytuje SBD názvu zařízení vám a vy můžete tuto část přeskočit.
+Tato část popisuje, jak určit SBD zařízení pro vaše instalace po tým správy služby Microsoft byl nakonfigurován STONITH. **Tato část se týká pouze stávající zákazník**. Pokud jste zákazník s novou, tým správy služby Microsoft poskytuje SBD názvu zařízení vám a vy můžete tuto část přeskočit.
 
 1.1 upravit */etc/iscsi/initiatorname.isci* na 
 ``` 
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 nastavení clusteru
-3.2.1, můžete použít *ha-cluster-init* příkazu, nebo pomocí Průvodce yast2 nastavte cluster. V takovém případě jsme použili yast2 průvodce. Provést tento krok **pouze na primárním uzlu**.
+3.2.1, můžete použít *ha-cluster-init* příkazu, nebo pomocí Průvodce yast2 nastavte cluster. V takovém případě se používá Průvodce yast2. Provést tento krok **pouze na primárním uzlu**.
 
 Postupujte podle yast2 > vysokou dostupnost > clusteru ![yast. ovládací prvek center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast. hawk install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-Klikněte na tlačítko **zrušit** jak jsme už máte halk2 balíček nainstalován.
+Klikněte na tlačítko **zrušit** vzhledem k tomu, že halk2 balíček je již nainstalován.
 
 ![yast. hawk continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -163,7 +164,7 @@ Ověřování se provádí pomocí IP adresy a vedlejší shared klíče v Csync
 Klikněte na tlačítko **Další**
 ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
-Výchozí možnost spuštění byl vypnutý, změňte jej na "on", který je kardiostimulátor spuštění na spouštěcí. Můžete nastavit možnost podle vašeho nastavení požadavky.
+Výchozí možnost spuštění byl vypnutý, změňte jej na "on", který je kardiostimulátor spuštění na spouštěcí. Můžete nastavit možnost podle požadavků na instalaci.
 Klikněte na tlačítko **Další** a konfigurace clusteru byla dokončena.
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4.   Nastavení Softdog sledovacího zařízení
@@ -261,7 +262,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurovat vlastnosti clusteru a prostředky 
 Tato část popisuje postup pro konfiguraci prostředků clusteru.
-V tomto příkladu jsme nastavit následující zdroj, zbývající se dá nakonfigurovat (v případě potřeby) odkazující na průvodci SUSE HA. Provedení konfigurace v **jednoho z uzlů** pouze. Proveďte na primárním uzlu.
+V tomto příkladu, nastavte následující zdroj zbývající lze nastavit (v případě potřeby) pod položkou Průvodce SUSE HA. Provedení konfigurace v **jednoho z uzlů** pouze. Proveďte na primárním uzlu.
 
 - Bootstrap clusteru
 - STONITH zařízení
@@ -342,7 +343,7 @@ Nyní, zastavte službu kardiostimulátor na **Uzel2** a prostředky převzal **
 
 
 ## <a name="9-troubleshooting"></a>9. Řešení potíží
-Tato část popisuje několik scénářů selhání, které můžete došlo během nastavení. Nemusí mít nutně tyto potíže.
+Tato část popisuje několik scénářů selhání, které mohou být zjištěny během instalace. Nemusí mít nutně tyto potíže.
 
 ### <a name="scenario-1-cluster-node-not-online"></a>Scénář 1: Uzel clusteru není online
 Pokud některé uzly nejsou zobrazeny ve Správci clusteru online, můžete zkusit následující uvést do režimu online.
@@ -369,7 +370,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>Scénář 2: yast2 nezobrazuje grafické zobrazení
-Použili jsme obrazovce grafické yast2 nastavit vysokou dostupnost clusteru v tomto dokumentu. Pokud yast2 nepodporuje otevře se okno grafické jako na obrázku a throw RT chyby, proveďte kroky jako následující. Pokud se otevře s okno grafického rozhraní, můžete přeskočit kroky.
+Na obrazovce grafické yast2 se používá k nastavení vysokou dostupnost clusteru v tomto dokumentu. Pokud yast2 nepodporuje otevře se okno grafické jako na obrázku a throw RT chyby, proveďte kroky jako následující. Pokud se otevře s okno grafického rozhraní, můžete přeskočit kroky.
 
 **Chyba**
 
@@ -397,7 +398,7 @@ Zkontrolujte změny a klikněte na OK
 
 Balíček bude instalace pokračovat ![yast provádění installation.png](media/HowToHLI/HASetupWithStonith/yast-performing-installation.png)
 
-Klikněte na tlačítko Další
+Kliknutí na Další
 
 ![yast. instalace report.png](media/HowToHLI/HASetupWithStonith/yast-installation-report.png)
 
@@ -533,8 +534,8 @@ Po předchozí opravu Uzel2 by se přidají do clusteru
 
 ![ha-cluster spojení fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
-## <a name="10-general-documentation"></a>10. Obecné dokumentace
-Můžete najít další informace o SUSE HA nastavení v těchto článcích: 
+## <a name="10-general-documentation"></a>10. Obecná dokumentace
+Další informace o instalaci SUSE HA najdete v následujících článcích: 
 
 - [SAP HANA SR výkonu optimalizované scénář](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
 - [Na základě úložiště vymezení](https://www.suse.com/documentation/sle-ha-2/book_sleha/data/sec_ha_storage_protect_fencing.html)

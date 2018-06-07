@@ -15,15 +15,18 @@ ms.date: 05/12/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e75f2cceed83d577730cd29490f80011bdb0a508
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640978"
 ---
 # <a name="create-custom-roles-in-azure"></a>Vytvořit vlastní role v Azure
 
-Pokud [předdefinované role](built-in-roles.md) nevyhovují vašim potřebám konkrétní přístup, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny a objekty služby v odběru, skupinu prostředků a prostředků obory. Vlastní role se ukládají do klienta služby Azure Active Directory (Azure AD) a mohou být sdíleny s odběry. Můžete vytvořit vlastní role pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API. Tento článek popisuje příklad toho, jak začít vytvářet vlastní role pomocí prostředí PowerShell a rozhraní příkazového řádku Azure.
+Pokud [předdefinované role](built-in-roles.md) nevyhovují vašim potřebám konkrétní přístup, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role pro uživatele, skupiny a objekty služby v odběru, skupinu prostředků a prostředků obory. Vlastní role se ukládají do klienta služby Azure Active Directory (Azure AD) a mohou být sdíleny s odběry. Každý klient může mít až 2000 vlastní role. Můžete vytvořit vlastní role pomocí Azure PowerShell, rozhraní příkazového řádku Azure nebo rozhraní REST API.
+
+Tento článek popisuje příklad toho, jak začít vytvářet vlastní role pomocí prostředí PowerShell a rozhraní příkazového řádku Azure.
 
 ## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Vytvořit vlastní roli otevření žádosti o podporu pomocí prostředí PowerShell
 

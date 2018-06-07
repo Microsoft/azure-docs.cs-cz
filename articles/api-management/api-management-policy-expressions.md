@@ -1,11 +1,11 @@
 ---
-title: "Výrazy zásad Azure API Management | Microsoft Docs"
-description: "Další informace o výrazy zásad v Azure API Management."
+title: Výrazy zásad Azure API Management | Microsoft Docs
+description: Další informace o výrazy zásad v Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 0ecfade830b2123257b8039d5f0c26f19f3f3fc6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5943357bc421bbae0caef7f0acd7aa3364813826
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597514"
 ---
 # <a name="api-management-policy-expressions"></a>Výrazy zásad API Management
 Tento článek popisuje zásady výrazy syntaxe je C# 7. Každý výraz má přístup k implicitně poskytnutého [kontextu](api-management-policy-expressions.md#ContextVariables) proměnné a povolení [podmnožina](api-management-policy-expressions.md#CLRTypes) typů rozhraní .NET Framework.  
@@ -86,12 +87,12 @@ Další informace najdete tady:
 |Newtonsoft.Json.Linq.JTokenType|Jsou podporovány všechny metody|  
 |Newtonsoft.Json.Linq.JValue|Jsou podporovány všechny metody|  
 |System.Collections.Generic.IReadOnlyCollection<T\>|Vše|  
-|System.Collections.Generic.IReadOnlyDictionary<TKey,  TValue>|Vše|  
-|System.Collections.Generic.ISet<TKey, TValue>|Vše|  
-|System.Collections.Generic.KeyValuePair<TKey,  TValue>|Klíč, hodnota|  
-|System.Collections.Generic.List<TKey, TValue>|Vše|  
-|System.Collections.Generic.Queue<TKey, TValue>|Vše|  
-|System.Collections.Generic.Stack<TKey, TValue>|Vše|  
+|System.Collections.Generic.IReadOnlyDictionary < TKey, TValue >|Vše|  
+|System.Collections.Generic.ISet < TKey, TValue >|Vše|  
+|System.Collections.Generic.KeyValuePair < TKey, TValue >|Klíč, hodnota|  
+|System.Collections.Generic.List < TKey, TValue >|Vše|  
+|System.Collections.Generic.Queue < TKey, TValue >|Vše|  
+|System.Collections.Generic.Stack < TKey, TValue >|Vše|  
 |System.Convert|Vše|  
 |System.DateTime|Vše|  
 |System.DateTimeKind|Čas UTC|  
@@ -99,8 +100,8 @@ Další informace najdete tady:
 |System.Decimal|Vše|  
 |System.Double|Vše|  
 |System.Guid|Vše|  
-|System.IEnumerable<T\>|Vše|  
-|System.IEnumerator<T\>|Vše|  
+|System.IEnumerable < T\>|Vše|  
+|System.IEnumerator < T\>|Vše|  
 |System.Int16|Vše|  
 |System.Int32|Vše|  
 |System.Int64|Vše|  
@@ -169,13 +170,13 @@ Další informace najdete tady:
   
 |Kontextové proměnné|Povolené metody, vlastnosti a hodnoty parametru|  
 |----------------------|-------------------------------------------------------|  
-|Kontext|Api: IApi<br /><br /> Nasazení<br /><br /> Uplynulá: Časový interval - časový interval mezi hodnotou časového razítka a aktuální čas<br /><br /> Poslední chyba<br /><br /> Operace<br /><br /> Produkt<br /><br /> Žádost<br /><br /> ID žádosti: Guid - požadavek jedinečný identifikátor<br /><br /> Odpověď<br /><br /> Předplatné<br /><br /> Časové razítko: Datum a čas - bodu v čase, kdy byl přijat požadavek<br /><br /> Trasování: bool – označuje, pokud je trasování zapnuto nebo vypnuto <br /><br /> Uživatel<br /><br /> Proměnné: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|  
-|context.Api|ID: řetězec<br /><br /> IsRevisionCurrent: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: IUrl<br /><br /> Verze: řetězec |  
-|context.Deployment|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty: IReadOnlyDictionary < řetězec, X509Certificate2 >|  
-|context.LastError|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Část: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Další informace o kontextu. Poslední chyba, najdete v části [zpracování chyb](api-management-error-handling-policies.md).|  
-|context.Operation|ID: řetězec<br /><br /> Metoda: řetězec<br /><br /> Název: řetězec<br /><br /> UrlTemplate: řetězec|  
+|Kontext|Api: IApi<br /><br /> Nasazení<br /><br /> Uplynulá: Časový interval - časový interval mezi hodnotou časového razítka a aktuální čas<br /><br /> LastError<br /><br /> Operace<br /><br /> Produkt<br /><br /> Žádost<br /><br /> ID žádosti: Guid - požadavek jedinečný identifikátor<br /><br /> Odpověď<br /><br /> Předplatné<br /><br /> Časové razítko: Datum a čas - bodu v čase, kdy byl přijat požadavek<br /><br /> Trasování: bool – označuje, pokud je trasování zapnuto nebo vypnuto <br /><br /> Uživatel<br /><br /> Proměnné: IReadOnlyDictionary < string, object ><br /><br /> void Trace(message: string)|  
+|context.Api|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: IUrl<br /><br /> Verze: řetězec |  
+|kontext. Nasazení|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty: IReadOnlyDictionary < řetězec, X509Certificate2 >|  
+|kontext. Poslední chyba|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Část: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Další informace o kontextu. Poslední chyba, najdete v části [zpracování chyb](api-management-error-handling-policies.md).|  
+|kontext. Operace|ID: řetězec<br /><br /> Metoda: řetězec<br /><br /> Název: řetězec<br /><br /> UrlTemplate: řetězec|  
 |context.Product|Rozhraní API: IEnumerable < IApi\><br /><br /> ApprovalRequired: bool<br /><br /> Skupiny: Rozhraní IEnumerable < IGroup\><br /><br /> ID: řetězec<br /><br /> Název: řetězec<br /><br /> Stav: výčtu ProductState {NotPublished, publikováno}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|  
-|context.Request|Text: IMessageBody<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Hlavičky: IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> IP adresa: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < řetězec, řetězec ><br /><br /> Metoda: řetězec<br /><br /> OriginalUrl:IUrl<br /><br /> Adresa URL: IUrl|  
+|kontext. Požadavek|Text: IMessageBody<br /><br /> Certificate: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Hlavičky: IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> IP adresa: řetězec<br /><br /> MatchedParameters: IReadOnlyDictionary < řetězec, řetězec ><br /><br /> Metoda: řetězec<br /><br /> OriginalUrl:IUrl<br /><br /> Adresa URL: IUrl|  
 |řetězec kontext. Request.Headers.GetValueOrDefault (headerName: string, výchozí hodnota: string)|headerName: řetězec<br /><br /> Výchozí hodnota: string<br /><br /> Vrátí hodnoty hlavičky oddělené čárkami žádost nebo `defaultValue` Pokud hlavička nebyla nalezena.|  
 |kontext. Odpověď|Text: IMessageBody<br /><br /> Hlavičky: IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: řetězec|  
 |řetězec kontext. Response.Headers.GetValueOrDefault (headerName: string, výchozí hodnota: string)|headerName: řetězec<br /><br /> Výchozí hodnota: string<br /><br /> Vrátí textový soubor s oddělovači odpověď hodnoty hlavičky nebo `defaultValue` Pokud hlavička nebyla nalezena.|  
@@ -187,15 +188,15 @@ Další informace najdete tady:
 |IUrl|Hostitele: řetězec<br /><br /> Cesta: řetězec<br /><br /> Port: int<br /><br /> Dotaz: IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> Řetězec dotazu: řetězec<br /><br /> Schéma: řetězec|  
 |IUserIdentity|ID: řetězec<br /><br /> Zprostředkovatel: řetězec|  
 |ISubscriptionKeyParameterNames|Záhlaví: řetězec<br /><br /> Dotaz: řetězec|  
-|string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: řetězec<br /><br /> Výchozí hodnota: string<br /><br /> Vrátí hodnoty parametru dotazu textový soubor s oddělovači nebo `defaultValue` Pokud není nalezen parametr.|  
-|T context.Variables.GetValueOrDefault<T\>(variableName: string, defaultValue: T)|NázevProměnné: řetězec<br /><br /> Výchozí hodnota: T<br /><br /> Vrátí hodnotu proměnné přetypovat na typ `T` nebo `defaultValue` Pokud není nalezena proměnná.<br /><br /> Tato metoda vyvolá výjimku, pokud zadaný typ neodpovídá skutečný typ vrácený proměnné.|  
+|řetězec IUrl.Query.GetValueOrDefault (queryParameterName: string, výchozí hodnota: string)|queryParameterName: řetězec<br /><br /> Výchozí hodnota: string<br /><br /> Vrátí hodnoty parametru dotazu textový soubor s oddělovači nebo `defaultValue` Pokud není nalezen parametr.|  
+|Kontext T. Variables.GetValueOrDefault < T\>(NázevProměnné: string, výchozí hodnota: T)|NázevProměnné: řetězec<br /><br /> Výchozí hodnota: T<br /><br /> Vrátí hodnotu proměnné přetypovat na typ `T` nebo `defaultValue` Pokud není nalezena proměnná.<br /><br /> Tato metoda vyvolá výjimku, pokud zadaný typ neodpovídá skutečný typ vrácený proměnné.|  
 |BasicAuthCredentials AsBasic(input: this string)|vstupní: řetězec<br /><br /> Pokud vstupní parametr obsahuje platnou hodnotu záhlaví autorizace požadavku HTTP základní ověřování, metoda vrátí objekt typu `BasicAuthCredentials`; v opačném případě vrátí metoda hodnotu null.|  
 |BOOL TryParseBasic (vstup: Tento řetězec, výsledek: out BasicAuthCredentials)|vstupní: řetězec<br /><br /> výsledek: out BasicAuthCredentials<br /><br /> Pokud vstupní parametr obsahuje platnou hodnotu autorizace základní ověřování protokolu HTTP v hlavičce požadavku, vrátí metoda `true` a parametr výsledek obsahuje hodnotu typu `BasicAuthCredentials`; v opačném případě vrátí metodu `false`.|  
 |BasicAuthCredentials|Heslo: řetězec<br /><br /> ID uživatele: řetězec|  
 |Jwt AsJwt(input: this string)|vstupní: řetězec<br /><br /> Pokud vstupní parametr obsahuje platnou hodnotu tokenu JWT, metoda vrátí objekt typu `Jwt`; v opačném případě vrátí metodu `null`.|  
 |BOOL TryParseJwt (vstup: Tento řetězec, výsledek: out Jwt)|vstupní: řetězec<br /><br /> výsledek: out Jwt<br /><br /> Pokud vstupní parametr obsahuje platnou hodnotu tokenu JWT, vrátí metoda `true` a parametr výsledek obsahuje hodnotu typu `Jwt`; v opačném případě vrátí metodu `false`.|  
 |Token Jwt|Algoritmus: řetězec<br /><br /> Cílová skupina: IEnumerable < řetězec\><br /><br /> Deklarace identity: IReadOnlyDictionary < řetězec, řetězec [] ><br /><br /> ExpirationTime: data a času?<br /><br /> ID: řetězec<br /><br /> Vystavitel: řetězec<br /><br /> Neplatí před: data a času?<br /><br /> Předmět: řetězec<br /><br /> Typ: řetězec|  
-|string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: řetězec<br /><br /> Výchozí hodnota: string<br /><br /> Vrátí textový soubor s oddělovači hodnot deklarací identity nebo `defaultValue` Pokud hlavička nebyla nalezena.|
+|řetězec Jwt.Claims.GetValueOrDefault (claimName: string, výchozí hodnota: string)|claimName: řetězec<br /><br /> Výchozí hodnota: string<br /><br /> Vrátí textový soubor s oddělovači hodnot deklarací identity nebo `defaultValue` Pokud hlavička nebyla nalezena.|
 |Byte [] šifrování (vstupní: Tento byte [], alg: řetězec, klíč: byte [], iv:byte[])|(vstup) – ve formátu prostého textu k zašifrování<br /><br />alg - název algoritmu symetrického šifrování<br /><br />klíč – šifrovací klíč<br /><br />IV - inicializační vektor<br /><br />Vrátí zašifrovaný prostý text.|
 |Byte [] šifrování (vstupní: Tento byte [], alg: System.Security.Cryptography.SymmetricAlgorithm)|(vstup) – ve formátu prostého textu k zašifrování<br /><br />alg - šifrovacího algoritmu.<br /><br />Vrátí zašifrovaný prostý text.|
 |Byte [] šifrování (vstupní: Tento byte [], alg: System.Security.Cryptography.SymmetricAlgorithm klíč: byte [], iv:byte[])|(vstup) – ve formátu prostého textu k zašifrování<br /><br />alg - šifrovacího algoritmu.<br /><br />klíč – šifrovací klíč<br /><br />IV - inicializační vektor<br /><br />Vrátí zašifrovaný prostý text.|

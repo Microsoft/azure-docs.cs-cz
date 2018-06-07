@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: c90231d58ca8eb562aadb916c8667e2bee700b3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 46f9c6129ccf99fb72a285fa4089b7b3f01f7d7b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643028"
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Zálohování a obnovení Reliable Services a Reliable Actors
 Azure Service Fabric je vysoká dostupnost platforma, která replikuje stav napříč několika uzly udržovat tento vysokou dostupnost.  Proto i v případě, že jeden uzel v clusteru selže, služby nadále k dispozici. Při této redundance v vytvořená poskytované platformou pravděpodobně dostatečná pro některé, v některých případech je žádoucí, aby službu, kterou chcete zálohovat data (na externí úložiště).
@@ -153,7 +154,7 @@ Například, pokud obsahuje úplné zálohování první přírůstkové a třet
 > 
 
 ## <a name="deleted-or-lost-service"></a>Odstraněné nebo ke ztrátě služby
-Pokud je odebrán služby, musíte nejdřív znovu vytvořit službu předtím, než lze obnovit data.  Je důležité vytvořit službu se stejnou konfigurací, například vytváření oddílů schéma, tak, aby bezproblémově lze obnovit data.  Jakmile je služba, rozhraní API k obnovení dat (`OnDataLossAsync` výše) musí být spuštěna v každém oddílu této služby. Jeden ze způsobů dosažení jde pomocí `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` každý oddíl.  
+Pokud je odebrán služby, musíte nejdřív znovu vytvořit službu předtím, než lze obnovit data.  Je důležité vytvořit službu se stejnou konfigurací, například vytváření oddílů schéma, tak, aby bezproblémově lze obnovit data.  Jakmile je služba, rozhraní API k obnovení dat (`OnDataLossAsync` výše) musí být spuštěna v každém oddílu této služby. Jeden ze způsobů dosažení jde pomocí [FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx) každý oddíl.  
 
 Z tohoto bodu implementace je stejný jako výše uvedené scénáře. Každý oddíl musí obnovit poslední relevantní zálohu z externího úložiště. Jeden přímý přístup paměti je, že ID oddílu může mít nyní změněn, vzhledem k tomu, že modul runtime dynamicky vytvoří ID oddílů. Proto služba potřebuje k uložení název oddílu příslušné informace a služby k identifikaci správné nejnovější zálohu k obnovení z pro každý oddíl.
 

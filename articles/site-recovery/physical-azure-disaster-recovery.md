@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/23/2018
 ms.author: raynew
-ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643307"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavit zotavení po havárii do Azure pro místní fyzických serverů
 
@@ -27,18 +28,25 @@ V tomto kurzu se dozvíte, jak nastavit zotavení po havárii v místě fyzický
 > * Vytvoření zásady replikace
 > * Povolení replikace pro server
 
+[Zkontrolujte architekturu](concepts-hyper-v-to-azure-architecture.md) pro tento scénář obnovení po havárii.
+
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Ujistěte se, že rozumíte [komponentám a architektuře řešení](physical-azure-architecture.md).
+- Ujistěte se, že rozumíte [architektura a komponenty](physical-azure-architecture.md) pro tento scénář.
 - Zkontrolujte [požadavky na podporu](vmware-physical-secondary-support-matrix.md) pro všechny komponenty.
 - Ujistěte se, že servery, které chcete replikovat vyhovují [požadavky virtuálního počítače Azure](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Příprava Azure. Potřebujete předplatné Azure, virtuální sítě Azure a účet úložiště.
 - Připravte účet automatická instalace služby Mobility na každém serveru, který chcete replikovat.
 
-> [!NOTE]
-> Než začnete, Všimněte si, že po převzetí služeb při selhání do Azure, fyzických serverů nemůže se zpět na místní fyzických počítačů. Lze pouze neúspěšné zpátky na virtuální počítače VMware. 
+Než začnete, Všimněte si, že:
+
+- Po převzetí služeb při selhání do Azure nemůže se nezdařilo fyzických serverů zpět na místní fyzických počítačů. Lze pouze neúspěšné zpátky na virtuální počítače VMware. 
+- V tomto kurzu nastaví zotavení po havárii fyzického serveru do Azure s nastavením nejjednodušší. Pokud chcete další informace o další možnosti, přečíst naše postupy příručky:
+    - Nastavit [zdroj replikace](physical-azure-set-up-source.md), včetně konfigurace serveru pro obnovení lokality.
+    - Nastavit [cílem replikace](physical-azure-set-up-target.md).
+    - Konfigurace [zásady replikace](vmware-azure-set-up-replication.md), a [povolit replikaci](vmware-azure-enable-replication.md).
 
 
 ### <a name="set-up-an-azure-account"></a>Nastavit účet Azure

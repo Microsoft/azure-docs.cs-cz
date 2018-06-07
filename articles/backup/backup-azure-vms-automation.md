@@ -1,25 +1,20 @@
 ---
-title: Nasadit a spravovat zálohy pro správce prostředků virtuálních počítačů nasazených pomocí prostředí PowerShell | Microsoft Docs
+title: Nasazení a správa zálohování virtuálních počítačů nasazených Resource Managerem pomocí PowerShellu
 description: Pomocí prostředí PowerShell můžete nasadit a spravovat zálohy v Azure pro virtuálních počítačů nasazených Resource Manager
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
-ms.assetid: 68606e4f-536d-4eac-9f80-8a198ea94d52
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: markgal;trinadhk;pullabhk
+ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4d3c0d08b2a34313c10ab89f2972894ffabe19d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606235"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Pomocí rutin AzureRM.RecoveryServices.Backup zálohování virtuálních počítačů
 
@@ -92,19 +87,17 @@ Chcete-li začít:
 
     ```PS
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ```
 
 6. Můžete ověřit, že registrované zprostředkovatele úspěšně, použijte následující příkazy:
     ```PS
     PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    PS C:\> Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Backup"
     ``` 
 Ve výstupu příkazu **RegistrationState** by se nastavit na **registrovaná**. Pokud ne, stačí znovu spustit **[Register-AzureRmResourceProvider](http://docs.microsoft.com/powershell/module/azurerm.resources/register-azurermresourceprovider)** rutiny uvedené výše.
 
 Následující úlohy je možné automatizovat pomocí prostředí PowerShell:
 
-* [Vytvoření trezoru služeb zotavení](backup-azure-vms-automation.md#create-a-recovery-services-vault)
+* [Vytvoření trezoru služby Recovery Services](backup-azure-vms-automation.md#create-a-recovery-services-vault)
 * [Zálohování virtuálních počítačů Azure](backup-azure-vms-automation.md#back-up-azure-vms)
 * [Aktivuje úlohu zálohování](backup-azure-vms-automation.md#trigger-a-backup-job)
 * [Monitorování úlohy zálohování](backup-azure-vms-automation.md#monitoring-a-backup-job)

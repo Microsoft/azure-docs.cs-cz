@@ -1,30 +1,27 @@
 ---
-title: Nasazení řešení – Azure vzdáleného sledování Java | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak zřídit vzdálené monitorování akcelerátoru řešení pomocí rozhraní příkazového řádku.
-services: iot-suite
-suite: iot-suite
+title: Nasazení řešení vzdáleného monitorování Java - Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak zřídit pomocí rozhraní příkazového řádku akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3178d51cd2c04f3be8d4a6284a4f1635845def8c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628119"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení vzdálené monitorování akcelerátoru řešení pomocí rozhraní příkazového řádku
+# <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení pomocí rozhraní příkazového řádku akcelerátoru řešení vzdáleného monitorování
 
-V tomto kurzu se dozvíte, jak zřídit vzdálené monitorování akcelerátoru řešení. Nasazení řešení pomocí rozhraní příkazového řádku. Můžete taky nasadit řešení pomocí rozhraní založené na webu na azureiotsuite.com, další informace o této možnosti najdete [nasazení vzdálené monitorování akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy.md).
+V tomto kurzu se dozvíte, jak zřídit akcelerátoru řešení vzdáleného monitorování. Nasazení řešení pomocí rozhraní příkazového řádku. Můžete taky nasadit řešení pomocí rozhraní založené na webu na azureiotsuite.com, další informace o této možnosti najdete [nasazení akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K nasazení vzdáleného monitorování akcelerátoru řešení, potřebujete aktivní předplatné Azure.
+Chcete-li nasadit akcelerátoru řešení vzdáleného monitorování, potřebujete aktivní předplatné Azure.
 
 Pokud nemáte účet, můžete si během několika minut vytvořit bezplatný účet zkušební. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -96,7 +93,7 @@ Vytváření standardní řešení, bude mít za následek následující služb
 
 ### <a name="example-deploy-net-version"></a>Příklad: nasazení verze rozhraní .NET
 
-Následující příklad ukazuje, jak nasadit basic, rozhraní .NET verze vzdálené monitorování akcelerátoru řešení:
+Následující příklad ukazuje, jak nasadit základní, rozhraní .NET verze akcelerátoru řešení vzdáleného monitorování:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
@@ -104,7 +101,7 @@ pcs -t remotemonitoring -s basic -r dotnet
 
 ### <a name="example-deploy-java-version"></a>Příklad: nasazení verzi Javy
 
-Následující příklad ukazuje, jak nasadit standard, Java verze vzdálené monitorování akcelerátoru řešení:
+Následující příklad ukazuje, jak nasadit standard verze Java akcelerátoru řešení vzdáleného monitorování:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java

@@ -1,13 +1,13 @@
 ---
-title: "Využívat infrastrukturu Azure restartování virtuálního počítače lze dosáhnout \"vyšší dostupnosti\" systému SAP | Microsoft Docs"
-description: "Využívat infrastrukturu Azure restartování virtuálního počítače lze dosáhnout \"vyšší dostupnosti\" aplikací SAP"
+title: Využívat infrastrukturu Azure restartování virtuálního počítače lze dosáhnout "vyšší dostupnosti" systému SAP | Microsoft Docs
+description: Využívat infrastrukturu Azure restartování virtuálního počítače lze dosáhnout "vyšší dostupnosti" aplikací SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be0792affba1eba32c2643344b7e284858adb9d6
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 82396d3a2eadd0257bbe65f36a78cf4e7731ec16
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657549"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Využívat infrastrukturu Azure restartování virtuálního počítače lze dosáhnout "vyšší dostupnosti" systému SAP
 
@@ -125,7 +126,7 @@ ms.lasthandoff: 11/16/2017
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfigurace s vysokou dostupností více SID SAP)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -281,6 +282,6 @@ Za předpokladu, že Azure Typický scénář v virtuálního počítače a jede
   * [Spuštění a zastavení SAP NetWeaver agenti pro správu](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
   * [Postup povolení funkce autostart HANA databáze](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o úplné SAP NetWeaver zohledňující aplikace vysokou dostupnost najdete v tématu [SAP vysoké dostupnosti aplikace na Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].

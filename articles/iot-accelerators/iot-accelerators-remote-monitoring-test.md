@@ -1,26 +1,23 @@
 ---
 title: Simulace zařízení v řešení vzdáleného monitorování - Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s vzdálené monitorování akcelerátoru řešení.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/15/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c10d983ea6b864d21f4589a3cbfdd5def39ac753
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628255"
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
-V tomto kurzu se dozvíte, jak přizpůsobit mikroslužbu simulátoru zařízení ve vzdálené monitorování akcelerátoru řešení. Chcete-li zobrazit možnosti v simulátoru zařízení, tento kurz používá dva scénáře v aplikaci Contoso IoT.
+V tomto kurzu se dozvíte, jak přizpůsobit mikroslužbu simulátoru zařízení v akcelerátoru řešení vzdáleného monitorování. Chcete-li zobrazit možnosti v simulátoru zařízení, tento kurz používá dva scénáře v aplikaci Contoso IoT.
 
 Následující video obsahuje přehled možností pro přizpůsobení mikroslužbu simulátoru zařízení:
 
@@ -72,7 +69,7 @@ Následující tabulka uvádí počáteční stav zařízení:
 
 Druhý scénář, přidáte nový typ telemetrie a Contoso existující **chladič** zařízení.
 
-V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s vzdálené monitorování akcelerátoru řešení:
+V tomto kurzu se dozvíte, jak používat v simulátoru zařízení s akcelerátoru řešení vzdáleného monitorování:
 
 V tomto kurzu se naučíte:
 
@@ -90,7 +87,7 @@ Následující video ukazuje návod simulované a skutečné zařízení připoj
 
 Chcete-li v tomto kurzu, je třeba:
 
-* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení vzdálené monitorování akcelerátoru řešení](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
+* Instance nasazené řešení vzdáleného monitorování ve vašem předplatném Azure. Pokud jste nenasadili řešení vzdáleného monitorování ještě by se měla Dokončit [nasazení akcelerátoru řešení vzdáleného monitorování](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md) kurzu.
 
 * Sada Visual Studio 2017. Pokud nemáte nainstalované Visual Studio 2017, si můžete stáhnout bezplatnou [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) edition.
 
@@ -102,15 +99,15 @@ Chcete-li v tomto kurzu, je třeba:
 
 ## <a name="prepare-your-development-environment"></a>Příprava vývojového prostředí
 
-Proveďte následující úkoly Příprava vývojového prostředí pro přidání nového simulovaného zařízení do řešení vzdáleného monitorování:
+Proveďte následující úkoly Příprava vývojového prostředí pro přidání nového simulovaného zařízení do řešení pro vzdálené monitorování:
 
 ### <a name="configure-ssh-access-to-the-solution-virtual-machine-in-azure"></a>Konfigurace SSH přístup k virtuálnímu počítači řešení v Azure
 
-Při vytváření řešení vzdáleného monitorování v [www.azureiotsuite.com](https://www.azureiotsuite.com), vyberete název řešení. Název řešení se změní na název skupiny prostředků Azure, která obsahuje různé nasazené prostředky, které používá řešení. Následující příkazy použijte skupinu prostředků s názvem **Contoso-01**, měli byste nahradit **Contoso-01** s názvem vaší skupiny prostředků.
+Při vytváření řešení vzdáleného monitorování v [www.azureiotsolutions.com](https://www.azureiotsolutions.com), vyberete název řešení. Název řešení se změní na název skupiny prostředků Azure, která obsahuje různé nasazené prostředky, které používá řešení. Následující příkazy použijte skupinu prostředků s názvem **Contoso-01**, měli byste nahradit **Contoso-01** s názvem vaší skupiny prostředků.
 
 Následující příkazy použijte `az` příkaz [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest). Můžete nainstalovat Azure CLI 2.0 na počítači pro vývoj nebo pomocí [cloudové prostředí](https://docs.microsoft.com/azure/cloud-shell/overview) v [portál Azure](http://portal.azure.com). Azure CLI 2.0 je předinstalován v prostředí cloudu.
 
-1. Pokud chcete ověřit název skupiny prostředků, která obsahuje vaše vzdálené monitorování prostředky, spusťte následující příkaz:
+1. Pokud chcete ověřit název skupiny prostředků, která obsahuje vaše prostředky vzdálené monitorování, spusťte následující příkaz:
 
     ```sh
     az group list | grep "name"
@@ -161,7 +158,7 @@ Následující příkazy použijte `az` příkaz [Azure CLI 2.0](https://docs.mi
     ssh azureuser@public-ip-address
     ```
 
-    Nyní máte přístup k prostředí ve virtuálním počítači, který je spuštěn Docker kontejnery v řešení vzdáleného monitorování. Chcete-li zobrazit spuštěné kontejnery, použijte následující příkaz:
+    Nyní máte přístup k prostředí virtuální počítač, který spustí kontejnery Docker v řešení vzdáleného monitorování. Chcete-li zobrazit spuštěné kontejnery, použijte následující příkaz:
 
     ```sh
     docker ps
@@ -246,7 +243,7 @@ Služba simulace zařízení používá službu úložiště adaptér pro připo
 
 1. Ponechte službu adaptéru úložiště, který je spuštěn místně, dokud jste dokončili kurz.
 
-Nyní máte všechno, co na místě a jste připraveni začít přidávat nový typ simulované zařízení k řešení vzdáleného monitorování.
+Nyní máte všechno, co na místě a jste připraveni začít přidávat nový typ simulované zařízení do řešení vzdáleného monitorování.
 
 ## <a name="create-a-simulated-device-type"></a>Vytvoření simulovaného zařízení typu
 
@@ -488,7 +485,7 @@ Nyní jste připraveni k testování nového typu simulované žárovek spuště
 
     ![Teplotní telemetrie](./media/iot-accelerators-remote-monitoring-test/telemetry.png)
 
-Nyní máte simulaci zařízení žárovek spuštěn místně. Dalším krokem je nasazení aktualizované simulátoru kódu do virtuálního počítače, který spouští vzdálené monitorování mikroslužeb v Azure.
+Nyní máte simulaci zařízení žárovek spuštěn místně. Dalším krokem je nasazení aktualizované simulátoru kódu do virtuálního počítače, který spouští mikroslužeb vzdálené monitorování v Azure.
 
 Než budete pokračovat, můžete zastavit ladění simulace zařízení i úložiště adaptér projekty v sadě Visual Studio.
 
@@ -582,7 +579,7 @@ Následující kroky předpokládají, že byl úložiště volána **žárovek*
     docker logs {container ID}
     ```
 
-Nyní jste dokončili postup nasazení aktualizovanou verzi služby simulace zařízení do řešení vzdáleného monitorování.
+Nyní jste dokončili postup nasazení aktualizované verze služby simulace zařízení do řešení vzdáleného monitorování.
 
 V prohlížeči přejděte na **řídicí panel** pro vaše řešení vzdáleného monitorování. V panelu telemetrii na **řídicí panel**, vyberte **teploty**. Teplotní dvě Simulovaná zařízení zobrazí v grafu:
 
@@ -678,7 +675,7 @@ Následující kroky vám ukážou, jak přidat nové **interní teploty** typ, 
 
 K testování aktualizovaný **chladič** typ zařízení, nejprve spusťte místní kopii **zařízení simulace** služby k testování typu vašeho zařízení chová podle očekávání. Když máte testovat a ladit typu vašeho zařízení aktualizované místně, můžete znovu vytvořit kontejner a znovu nasaďte **zařízení simulace** službu Azure.
 
-Při spuštění **zařízení simulace** služby místně, odešle telemetrie do vašeho řešení vzdáleného monitorování. Na **zařízení** stránky, můžete zřídit instance vaše aktualizované typu.
+Při spuštění **zařízení simulace** místně služby, odešle telemetrie do řešení vzdáleného monitorování. Na **zařízení** stránky, můžete zřídit instance vaše aktualizované typu.
 
 K testování a ladění změny místně, najdete v předchozí části [testování typ zařízení žárovek místně](#test-the-lightbulb-device-type-locally).
 

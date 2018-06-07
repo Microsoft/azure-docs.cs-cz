@@ -1,11 +1,11 @@
 ---
-title: "Zálohování SAP HANA Azure podle úložiště snímků | Microsoft Docs"
-description: "Existují dvě hlavní zálohování možnosti pro SAP HANA na virtuálních počítačích Azure, tento článek se zabývá SAP HANA zálohování podle úložiště snímků"
+title: Zálohování SAP HANA Azure podle úložiště snímků | Microsoft Docs
+description: Existují dvě hlavní zálohování možnosti pro SAP HANA na virtuálních počítačích Azure, tento článek se zabývá SAP HANA zálohování podle úložiště snímků
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -13,11 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.openlocfilehash: f332b8ac091b75a23489ac27f15ad1fd10d24ec6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 819888800b9663f9b920fbaf11b30ad28287a0b5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34658719"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>Zálohování SAP HANA založené na snímcích úložiště
 
@@ -164,7 +165,7 @@ Je možné obnovit pouze datových disků virtuálního počítače Azure, zabra
 
 Pokud bylo možné vypnout SAP HANA před snímky objektů blob, bude postup méně složitých. V takovém případě jeden může přeskočit HANA snímku a, pokud nic jiného se děje v systému, také přeskočit zablokování systému souborů. Náročnost dodává do obrázku, pokud je potřeba udělat snímky, zatímco všechno, co je online. V tématu _konzistenci dat SAP HANA při pořizování snímků úložiště_ v souvisejícím článku [zálohování Průvodce pro SAP HANA ve virtuálních počítačích Azure](sap-hana-backup-guide.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Příručce zálohování pro SAP HANA ve virtuálních počítačích Azure](sap-hana-backup-guide.md) nabízí přehled a informace o zahájení práce.
 * [Na základě SAP HANA zálohování na úrovni souborů](sap-hana-backup-file-level.md) popisuje možnost zálohování na základě souborů.
 * Další informace o vytvoření vysoké dostupnosti a plán pro zotavení po havárii SAP HANA v Azure (velké instance) naleznete v tématu [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md).

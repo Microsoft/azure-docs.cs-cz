@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 53de4afb42e9ea5b7845a9c862dc1e06c6de36df
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e4ce2a17f475fa3e11a4101c448f1c1c60dc66ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604739"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání prostředků s skupin pro správu Azure 
 
@@ -69,7 +70,7 @@ Každý adresář dostane nejvyšší úrovně správy skupinu s názvem "Root" 
 
 Podporuje Azure skupin pro správu [řízení řízení přístupu (RBAC)](../role-based-access-control/overview.md) pro všechny přístupy prostředků a definice rolí. Tato oprávnění zdědí na podřízené prostředky, které existují v hierarchii.   
 
-Při žádné [předdefinovaná role RBAC](../role-based-access-control/overview.md#built-in-roles) lze přiřadit ke skupině pro správu, jsou čtyři role, které se běžně používají: 
+Při žádné [předdefinovaná role RBAC](../role-based-access-control/built-in-roles.md) lze přiřadit ke skupině pro správu, jsou čtyři role, které se běžně používají: 
 - **Vlastník** má úplný přístup ke všem prostředkům, včetně právo delegovat přístup k ostatním. 
 - **Přispěvatel** můžete vytvářet a spravovat všechny typy prostředků Azure, ale nelze udělit přístup ostatním uživatelům.
 - **Přispěvatel zásad prostředků** můžete vytvořit a spravovat zásady v adresáři na prostředky.     

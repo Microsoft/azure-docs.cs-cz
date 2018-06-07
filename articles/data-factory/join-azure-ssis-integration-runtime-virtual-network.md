@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2bb6491a470e7041568bb6b9183e996d2a9119d9
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b998b47cdc65be91f62543369f5c3f18e4f270c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619639"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení modulu runtime integrace Azure SSIS k virtuální síti.
 Vaše Azure SSIS integrace modulu runtime (IR) připojení k virtuální síť Azure v následujících scénářích: 
@@ -86,7 +87,7 @@ Pokud potřebujete implementovat skupinu zabezpečení sítě (NSG) ve virtuáln
 
 | Směr | Přenosový protokol | Zdroj | Rozsah zdrojový Port | Cíl | Rozsah cílový Port | Komentáře |
 |---|---|---|---|---|---|---|
-| Příchozí | TCP | Internet | * | VirtualNetwork | 29876, 29877 (Pokud Reakcí připojíte k virtuální síti Azure Resource Manager) <br/><br/>10100, 20100, 30100 (Pokud se připojíte k klasickou virtuální síť IR)| Služba Data Factory používá tyto porty pro komunikaci s uzly, které vaše integrace modulu runtime Azure SSIS ve virtuální síti. |
+| Příchozí | TCP | Internet | * | VirtualNetwork | 29876, 29877 (Pokud Reakcí připojíte k virtuální síti Azure Resource Manager) <br/><br/>10100, 20100, 30100 (Pokud se připojíte k klasickou virtuální síť IR)| Služba Data Factory používá tyto porty pro komunikaci s uzly, které vaše integrace modulu runtime Azure SSIS ve virtuální síti. <br/><br/> Jestli jste určili skupinu NSG, nebo Ne, Data Factory vždy nakonfiguruje skupinu NSG na úrovni karty síťového rozhraní (NIC) připojených k virtuálním počítačům, které jsou hostiteli infračerveného signálu Azure SSIS. Je povolen pouze příchozí provoz z dat objektu pro vytváření IP adres. I v případě, že otevřete tyto porty pro provoz sítě Internet, je blokován provoz z IP adresy, které nejsou adresy IP objekt pro vytváření dat na úrovni síťový adaptér. |
 | Odchozí | TCP | VirtualNetwork | * | Internet | 443 | Tento port použít uzly vaší runtime integrace Azure SSIS ve virtuální síti přístupu ke službám Azure, například Azure Storage a Azure Event Hubs. |
 | Odchozí | TCP | VirtualNetwork | * | Internet nebo jazyka Sql | 1433, 11000 11999, 14000 14999 | Uzly vaše integrace modulu runtime Azure SSIS ve virtuální síti používat tyto porty pro přístup k SSISDB hostované serverem Azure SQL Database. (Tento účel není použitelná pro SSISDB hostované spravované Instance SQL Database (Preview).) |
 ||||||||

@@ -1,25 +1,22 @@
 ---
-title: "Přidejte konektor Office 365 Outlook ve vašich Logic Apps | Microsoft Docs"
-description: "Vytvoření aplikace logiky s konektor Office 365 Povolit interakci s Office 365. Příklad: vytváření, úpravy a aktualizaci kontakty a položky kalendáře."
-services: 
-documentationcenter: 
+title: Připojit k Office 365 Outlook - Azure Logic Apps | Microsoft Docs
+description: Správa e-mailu, kontaktů a kalendáři pomocí rozhraní REST API Office 365 a Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: 
-tags: connectors
-ms.assetid: b2f6cc2c-bba2-493a-b0ba-841785462a80
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: cfowler
+ms.author: estfan
 ms.date: 10/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: d455f4d9081c1fd448a0d0524c209be305e203be
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609966"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Začínáme s konektor Office 365 Outlook
 Konektor Office 365 Outlook umožňuje interakci s aplikací Outlook v Office 365. Pomocí tohoto konektoru můžete vytvořit, upravit a aktualizovat a položky kalendáře, kontaktů a také získat, odeslání a odpovědi k e-mailu.

@@ -1,33 +1,28 @@
 ---
-title: "Azure IoT Hub komunikační protokoly a porty | Microsoft Docs"
-description: "Příručka vývojáře - popisuje podporované komunikační protokoly komunikace zařízení cloud a z cloudu do zařízení a čísla portů, která musí být otevřený."
-services: iot-hub
-documentationcenter: .net
+title: Azure IoT Hub komunikační protokoly a porty | Microsoft Docs
+description: Příručka vývojáře - popisuje podporované komunikační protokoly komunikace zařízení cloud a z cloudu do zařízení a čísla portů, která musí být otevřený.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0fe3dd719877dac23410ff1ca00d559636a5ed60
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632998"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Reference – volba komunikační protokol
 
 IoT Hub umožňuje zařízení používat následující protokoly pro komunikaci straně zařízení:
 
 * [MQTT][lnk-mqtt]
-* MQTT přes objekty WebSockets
+* MQTT přes WebSockets
 * [AMQP][lnk-amqp]
-* AMQP přes objekty WebSockets
+* AMQP přes WebSockets
 * HTTPS
 
 Informace o tom, jak tyto protokoly podporují konkrétní funkce služby IoT Hub naleznete v tématu [pokyny komunikace zařízení cloud] [ lnk-d2c-guidance] a [Cloud zařízení komunikace pokyny] [lnk-c2d-guidance].
@@ -58,9 +53,9 @@ Zařízení může komunikovat s centrem IoT v Azure pomocí různých protokol�
 | Protocol (Protokol) | Port |
 | --- | --- |
 | MQTT |8883 |
-| MQTT přes objekty WebSockets |443 |
+| MQTT přes WebSockets |443 |
 | AMQP |5671 |
-| AMQP přes objekty WebSockets |443 |
+| AMQP přes WebSockets |443 |
 | HTTPS |443 |
 
 Po vytvoření služby IoT hub v oblasti Azure IoT hub uchovává stejnou IP adresu po dobu jeho existence tohoto centra IoT. Ale pokud Microsoft přesune na jednotky škálování různých udržovat kvalitu služby IoT hub, bude mu přiřazen novou IP adresu.

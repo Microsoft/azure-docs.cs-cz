@@ -1,25 +1,19 @@
 ---
 title: Accelerator řešení vzdáleného monitorování – nejčastější dotazy | Microsoft Docs
 description: Nejčastější dotazy pro vzdálené monitorování řešení akcelerátoru
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: cb537749-a8a1-4e53-b3bf-f1b64a38188a
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: a65f2a90aedf5aa50016a6c5e5019094f202bf55
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 094bb4b781bb554d340580377ec343f33579299e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627650"
 ---
 # <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Nejčastější dotazy pro vzdálené monitorování řešení akcelerátoru
 
@@ -48,7 +42,7 @@ Další informace najdete v tématu [upgradu mapy klíč zobrazit zařízení na
 
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
-* [Prozkoumejte možnosti vzdáleného monitorování řešení akcelerátoru](iot-accelerators-remote-monitoring-explore.md)
-* [Přehled akcelerátorů řešení prediktivní údržby](../iot-suite/iot-suite-predictive-overview.md)
+* [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](iot-accelerators-remote-monitoring-explore.md)
+* [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Připojené přehled akcelerátoru objekt pro vytváření řešení](iot-accelerators-connected-factory-overview.md)
-* [Zabezpečení IoT od základů](../iot-suite/securing-iot-ground-up.md)
+* [Zabezpečení IoT od základů](securing-iot-ground-up.md)

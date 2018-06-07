@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
+ms.date: 05/29/2018
 ms.author: iainfou
-ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f57924bf2197c472d408edc67baf35b18ae45c2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652922"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace na sady škálování virtuálního počítače
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsoby, jak vytvořit vlastní image virtuálního počítače pro instance v škálování nastavit nebo automatické spouštění skriptů instalace v existující instance virtuálních počítačů. Také zjistíte, jak spravovat aplikace nebo aktualizace operačního systému v rámci sady škálování.
@@ -39,6 +40,7 @@ Rozšíření vlastních skriptů stahuje a spouští skripty na virtuálních p
 
 - [Azure CLI 2.0](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
+- [Šablona Azure Resource Manageru](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Instalace aplikace pro Windows virtuálního počítače pomocí prostředí PowerShell DSC
@@ -112,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Instalovat aplikace s aktualizacemi operačního systému
 Když jsou k dispozici nové verze operačního systému, můžete použít nebo vytvořit novou vlastní bitovou kopii a [nasazení upgradu OS](virtual-machine-scale-sets-upgrade-scale-set.md) na měřítko nastavit. Každá instance virtuálního počítače je upgradován na nejnovější bitovou kopii, která zadáte. Vlastní image s předinstalovaným, aplikací rozšíření vlastních skriptů nebo DSC prostředí PowerShell můžete použít tak, aby měl vaší aplikace, které jsou automaticky dostupné, jak provést upgrade. Potřebujete plánu údržby aplikace, jak provést tento postup zajistěte, aby žádná verze problémy s kompatibilitou.
 
-Pokud používáte vlastní image virtuálního počítače s předinstalovaným aplikací, může integrovat kanál nasazení a vytvářet nové bitové kopie nasazení operačního systému upgrady v rámci škálovací sadu aktualizací aplikace. Tento přístup umožňuje kanálu, který má být vyzvednutí nejnovější sestavení aplikace, vytvořit a ověřit image virtuálního počítače a pak upgradovat instance virtuálních počítačů v sadě škálování. Pokud chcete spustit nasazení kanálu, který vytvoří a nasadí aplikaci aktualizace napříč vlastní Image virtuálních počítačů, můžete použít [Visual Studio Team Services](https://www.visualstudio.com/team-services/), [Spinnaker](https://www.spinnaker.io/), nebo [volaných](https://jenkins.io/) .
+Pokud používáte vlastní image virtuálního počítače s předinstalovaným aplikací, může integrovat kanál nasazení a vytvářet nové bitové kopie nasazení operačního systému upgrady v rámci škálovací sadu aktualizací aplikace. Tento přístup umožňuje kanálu, který má být vyzvednutí nejnovější sestavení aplikace, vytvořit a ověřit image virtuálního počítače a pak upgradovat instance virtuálních počítačů v sadě škálování. Pokud chcete spustit nasazení kanálu, který vytvoří a nasadí aplikaci aktualizace napříč vlastní Image virtuálních počítačů, může [bitovou kopii balírna vytvářet a nasazovat s Visual Studio Team Services) [/ služby vsts nebo kanály/aplikace/cd/azure nebo nasazení azure-scaleset], nebo použijte jinou platformu například [Spinnaker](https://www.spinnaker.io/) nebo [volaných](https://jenkins.io/).
 
 
 ## <a name="next-steps"></a>Další postup

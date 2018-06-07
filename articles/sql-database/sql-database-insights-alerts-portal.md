@@ -6,14 +6,15 @@ manager: craigg
 services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: aamalvea
-ms.openlocfilehash: 0c543ccf1d2104a83f7610bc870334b460ec40fb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 349f1bbb0bfcc737d70e32947dd217c2cd51e194
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648019"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Použijte portál Azure k vytvoření výstrahy pro Azure SQL Database a datového skladu
 
@@ -80,7 +81,7 @@ Po vytvoření výstrahy, můžete ji vybrat a:
 | SQL database | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
 | SQL database | úložiště | Velikost celkový databáze | Maximum | 30 minut |
 | SQL database | connection_successful | Úspěšné připojení | Celkem | 10 minut |
-| SQL database | connection_failed | Neúspěšné připojení | Celkem | 10 minut |
+| SQL database | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
 | SQL database | blocked_by_firewall | Blokováno bránou Firewall | Celkem | 10 minut |
 | SQL database | zablokování | Zablokování | Celkem | 10 minut |
 | SQL database | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
@@ -105,7 +106,7 @@ Po vytvoření výstrahy, můžete ji vybrat a:
 | SQL Data Warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
 | SQL Data Warehouse | úložiště | Velikost celkový databáze | Maximum | 10 minut |
 | SQL Data Warehouse | connection_successful | Úspěšné připojení | Celkem | 10 minut |
-| SQL Data Warehouse | connection_failed | Neúspěšné připojení | Celkem | 10 minut |
+| SQL Data Warehouse | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
 | SQL Data Warehouse | blocked_by_firewall | Blokováno bránou Firewall | Celkem | 10 minut |
 | SQL Data Warehouse | service_level_objective | Cíl na úrovni služby databáze | Celkem | 10 minut |
 | SQL Data Warehouse | dwu_limit | dwu limit | Maximum | 10 minut |

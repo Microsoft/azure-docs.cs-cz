@@ -1,24 +1,19 @@
 ---
 title: Pochopení úlohy Azure IoT Hub | Microsoft Docs
 description: Příručka vývojáře - plánování úloh spouštět na několika zařízeních připojení do služby IoT hub. Úlohy můžete aktualizovat značky a požadované vlastnosti a volat přímé metody na několika zařízeních.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 367eb703465b2fbc6f1e06a383bc9df709cabe78
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 35b8536b944df39d0d47bf3529698fc94e51110e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633940"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Plánování úloh na několika zařízeních
 
@@ -105,10 +100,10 @@ Následující seznam obsahuje vlastnosti a odpovídající popisy, které se da
 
 | Vlastnost | Popis |
 | --- | --- |
-| **jobId** |Aplikace zadat ID pro úlohu. |
+| **JobId** |Aplikace zadat ID pro úlohu. |
 | **startTime** |Aplikace zadat čas spuštění (ISO-8601) pro úlohu. |
 | **endTime** |Centrum IoT k dispozici po dokončení úlohy datum (ISO-8601). Platné jenom po úlohu dosáhne stavu 'dokončení'. |
-| **Typ** |Typy úloh: |
+| **type** |Typy úloh: |
 | | **scheduledUpdateTwin**: úlohu použít k aktualizaci sadu požadované vlastnosti a značky. |
 | | **scheduledDeviceMethod**: úloha používá k volání metody zařízení na sadu dvojčata zařízení. |
 | **Stav** |Aktuální stav úlohy. Možné hodnoty pro stav: |

@@ -7,18 +7,19 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/16/2018
+ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f758d6aec25ce0ef6bf9a0ecab34189296c81fc0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fd96a6cfebe44bd02e3f44a44d91119ad1c2c5a9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598748"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
-Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Pomocí [RBAC](../role-based-access-control/role-assignments-portal.md), můžete v rámci týmu oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, skupiny, a aplikace, které potřebují k plnění jejich pracovních úkolů. Přístup na základě role můžete uživatelům udělit pomocí webu Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
+Řízení přístupu na základě role (RBAC) umožňuje správu přístupu k prostředkům Azure. Pomocí [RBAC](../role-based-access-control/overview.md), můžete v rámci týmu oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, skupiny, a aplikace, které potřebují k plnění jejich pracovních úkolů. Přístup na základě role můžete uživatelům udělit pomocí webu Azure Portal, nástrojů příkazového řádku Azure nebo rozhraní API pro správu Azure.
 
 ## <a name="roles-in-automation-accounts"></a>Role v účtech Automation
 
@@ -35,7 +36,7 @@ Ve službě Azure Automation se přístup uděluje přiřazením příslušné r
 | Přispěvatel Log Analytics | Role Přispěvatel Log Analytics umožňuje načíst všechna data monitorování a upravit nastavení monitorování. Úprava nastavení monitorování, zahrnuje přidání rozšíření virtuálního počítače pro virtuální počítače, čtení klíče účtu úložiště, abyste mohli nakonfigurovat shromažďování protokolů ze služby Azure storage, vytváření a konfiguraci účtů Automation, přidání řešení a konfigurace Azure diagnostics pro všechny prostředky Azure.|
 | Čtenář Log Analytics | Role čtenáře analýzy protokolů umožňuje zobrazení a hledání všech monitorování dat a také zobrazení nastavení monitorování. To zahrnuje zobrazení konfigurace Azure diagnostics na všechny prostředky Azure. |
 | Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje načíst všechna data monitorování a aktualizovat nastavení monitorování.|
-| Čtenář monitorování | Role čtenáře Montioring umožňuje načíst všechna data monitorování. |
+| Čtenář monitorování | Role čtenáře monitorování umožňuje načíst všechna data monitorování. |
 | Správce přístupu uživatelů |Role správce přístupu uživatelů umožňuje spravovat přístup uživatelů k účtům Azure Automation. |
 
 ## <a name="role-permissions"></a>Oprávnění role
@@ -70,6 +71,24 @@ Přispěvatel můžou spravovat všechno kromě přístupu. V následující tab
 |---------|---------|
 |Microsoft.Automation/automationAccounts/read|Zobrazte všechny prostředky na účtu Automation. |
 
+### <a name="automation-operator"></a>Operátor služby Automation
+
+Operátor automatizace je schopná vytvořit a spravovat úlohy a číst runbook názvy a vlastnosti pro všechny sady runbook na účtu Automation.  Poznámka: Pokud chcete řídit přístup operátor pro jednotlivé sady runbook pak není nastavena tato role a role "Operátor automatizace úlohy" a "operátor automatizace sady Runbook, místo toho použít v kombinaci. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
+
+|**Akce**  |**Popis**  |
+|---------|---------|
+|Microsoft.Authorization/*/read|Přečtěte si autorizace.|
+|Microsoft.Automation/automationAccounts/jobs/read|Seznam úlohy sady runbook.|
+|Microsoft.Automation/automationAccounts/jobs/resume/action|Obnovte úlohu, která je pozastavena.|
+|Microsoft.Automation/automationAccounts/jobs/stop/action|Zrušte probíhající úlohu.|
+|Microsoft.Automation/automationAccounts/jobs/streams/read|Číst datové proudy úlohy a výstup.|
+|Microsoft.Automation/automationAccounts/jobs/suspend/action|Pozastavení úlohy v průběhu.|
+|Microsoft.Automation/automationAccounts/jobs/write|Vytvořte úlohy.|
+|Microsoft.Resources/subscriptions/resourceGroups/read      |Přečtěte si role a přiřazení rolí.         |
+|Microsoft.Resources/deployments/*      |Vytvořit a spravovat nasazení skupiny prostředků.         |
+|Microsoft.Insights/alertRules/*      | Vytvořit a spravovat pravidla výstrah.        |
+|Microsoft.Support/* |Vytvořit a spravovat lístky žádostí o podporu.|
+
 ### <a name="automation-job-operator"></a>Operátor úloh Automation
 
 Roli operátor automatizace úloh je poskytnuta v rozsahu účtu Automation. To umožňuje operátor oprávnění k vytváření a správě úloh pro všechny runbooky v účtu. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
@@ -92,9 +111,6 @@ Roli operátor automatizace úloh je poskytnuta v rozsahu účtu Automation. T
 
 Roli operátor automatizace sady Runbook je poskytnuta v oboru sady Runbook. Název sady runbook a vlastnosti, můžete zobrazit operátor automatizace sady Runbook.  Tato role v kombinaci s role "operátor automatizace úloh, umožňuje operátorovi také vytvářet a spravovat úlohy pro runbook. V následující tabulce jsou uvedeny oprávnění udělená pro roli:
 
-> [!NOTE]
-> Nenastavujte role "Operátor automatizace", pokud chcete udělit operátor schopnost spravovat úloh pro všechny runbooky v účtu.
-
 |**Akce**  |**Popis**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/runbooks/read     | Zobrazí seznam sady runbook.        |
@@ -103,24 +119,6 @@ Roli operátor automatizace sady Runbook je poskytnuta v oboru sady Runbook. Ná
 |Microsoft.Resources/deployments/*      | Vytvořit a spravovat nasazení skupiny prostředků.         |
 |Microsoft.Insights/alertRules/*      | Vytvořit a spravovat pravidla výstrah.        |
 |Microsoft.Support/*      | Vytvořit a spravovat lístky žádostí o podporu.        |
-
-### <a name="automation-operator"></a>Operátor služby Automation
-
-Operátor automatizace je schopná vytvořit a spravovat úlohy a číst runbook názvy a vlastnosti pro všechny sady runbook na účtu Automation.  Poznámka: Pokud chcete řídit přístup operátor pro jednotlivé sady runbook pak nemáte nastavit tuto roli a místo toho použít role "Operátor automatizace úlohy" a "Operátor automatizace sady Runbook".  V následující tabulce jsou uvedeny oprávnění udělená pro roli:
-
-|**Akce**  |**Popis**  |
-|---------|---------|
-|Microsoft.Authorization/*/read|Přečtěte si autorizace.|
-|Microsoft.Automation/automationAccounts/jobs/read|Seznam úlohy sady runbook.|
-|Microsoft.Automation/automationAccounts/jobs/resume/action|Obnovte úlohu, která je pozastavena.|
-|Microsoft.Automation/automationAccounts/jobs/stop/action|Zrušte probíhající úlohu.|
-|Microsoft.Automation/automationAccounts/jobs/streams/read|Číst datové proudy úlohy a výstup.|
-|Microsoft.Automation/automationAccounts/jobs/suspend/action|Pozastavení úlohy v průběhu.|
-|Microsoft.Automation/automationAccounts/jobs/write|Vytvořte úlohy.|
-|Microsoft.Resources/subscriptions/resourceGroups/read      |Přečtěte si role a přiřazení rolí.         |
-|Microsoft.Resources/deployments/*      |Vytvořit a spravovat nasazení skupiny prostředků.         |
-|Microsoft.Insights/alertRules/*      | Vytvořit a spravovat pravidla výstrah.        |
-|Microsoft.Support/* |Vytvořit a spravovat lístky žádostí o podporu.|
 
 ### <a name="log-analytics-contributor"></a>Přispěvatel Log Analytics
 
@@ -259,14 +257,18 @@ Správa aktualizací dosáhne napříč více službami a zajistit tak jeho slu�
 |Řešení     |Přispěvatel Log Analytics         | Řešení|
 |Virtuální počítač     | Přispěvatel virtuálních počítačů        | Virtuální počítač        |
 
-## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Konfigurace RBAC pro vašeho účtu Automation pomocí portálu Azure
+## <a name="configure-rbac-for-your-automation-account"></a>Konfigurace RBAC pro váš účet Automation.
+
+Následující části se dozvíte, jak nakonfigurovat RBAC na účtu Automation pomocí [portál](#configure-rbac-using-the-azure-portal) a [prostředí PowerShell](#configure-rbac-using-powershell)
+
+### <a name="configure-rbac-using-the-azure-portal"></a>Konfigurace RBAC pomocí portálu Azure
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a na stránce Účty Automation otevřete svůj účet Automation.
 2. Klikněte na **přístup k ovládacímu prvku (IAM)** ovládacího prvku v levém horním rohu. Tím se otevře **přístup k ovládacímu prvku (IAM)** stránky, kde můžete přidat nové uživatele, skupiny, a aplikace pro správu vaší automatizace účtu a zobrazovat existující role, které mohou být konfigurovány pro účet Automation.
 
    ![Tlačítko Přístup](media/automation-role-based-access-control/automation-01-access-button.png)
 
-### <a name="add-a-new-user-and-assign-a-role"></a>Přidání nového uživatele a přiřazení role
+#### <a name="add-a-new-user-and-assign-a-role"></a>Přidání nového uživatele a přiřazení role
 
 1. Z **přístup k ovládacímu prvku (IAM)** klikněte na tlačítko **+ přidat** otevřete **přidat oprávnění** stránky, kde můžete přidat uživatele, skupiny nebo aplikace a k nim přiřadíte roli.
 
@@ -288,7 +290,7 @@ Správa aktualizací dosáhne napříč více službami a zajistit tak jeho slu�
    > [!NOTE]
    > Řízení přístupu na základě rolí lze nastavit pouze v rozsahu účtu Automation a ne u jakéhokoliv prostředku pod účtem Automation.
 
-### <a name="remove-a-user"></a>Odebrání uživatele
+#### <a name="remove-a-user"></a>Odebrání uživatele
 
 Je možné odebrat oprávnění přístupu pro uživatele nespravuje účet Automation nebo už kdo pro organizaci. Uživatele můžete odebrat následujícím postupem:
 
@@ -298,23 +300,7 @@ Je možné odebrat oprávnění přístupu pro uživatele nespravuje účet Auto
 
    ![Odebrání uživatelů](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-## <a name="role-assigned-user"></a>Role přiřazený uživatel
-
-Když uživatel přiřazený k roli přihlásí do Azure a vybere účtu Automation, může vidět účet vlastníka uvedený v seznamu **adresáře**. Aby mohl vidět účet Automation, ke kterému byl přidán, musí přepnout výchozí adresář na výchozí adresář vlastníka.
-
-### <a name="user-experience-for-automation-operator-role"></a>Uživatelské prostředí pro roli operátora služby Automation
-
-Když se uživatel, který je přiřazený k zobrazení roli operátor automatizace, které jsou přiřazeny k účtu Automation, můžete zobrazit jenom seznam runbooků a úlohy a plány na účtu Automation, ale nemůže zobrazit jejich definice. Může spustit, zastavit, pozastavit, obnovit nebo naplánovat úlohu runbooku. Uživatel nemá přístup k dalším prostředkům Automation, jako je například konfigurace, skupinám hybrid worker nebo uzlům DSC.
-
-![Žádný přístup k prostředkům](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
-
-Uživatel má přístup k zobrazení a vytváření plánů, ale nemá přístup k žádným jiným typům assetů.
-
-Tento uživatel také nemá přístup k zobrazení webhooků, které jsou přidružené k runbooku.
-
-![Žádný přístup k webhookům](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)
-
-## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Konfigurace RBAC pro vašeho účtu Automation pomocí prostředí Azure PowerShell
+### <a name="configure-rbac-using-powershell"></a>Konfigurace RBAC pomocí prostředí PowerShell
 
 Je také možné nakonfigurovat na základě rolí přístup k účtu Automation pomocí následujících [rutin prostředí Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -326,7 +312,7 @@ Get-AzureRmRoleDefinition -Name 'Automation Operator'
 
 Následuje příklad výstupu:
 
-```azurepowershell-interactive
+```azurepowershell
 Name             : Automation Operator
 Id               : d3881f73-407a-4167-8283-e981cbba0404
 IsCustom         : False
@@ -387,6 +373,45 @@ Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remov
 ```
 
 V předchozích příkladech nahraďte **přihlašovací Id**, **Id předplatného**, **název skupiny prostředků**, a **název účtu Automation** s vaší Podrobnosti o účtu. Po zobrazení výzvy, která požádá o potvrzení odebrání přiřazené role uživatele, zvolte **Ano**.
+
+### <a name="user-experience-for-automation-operator-role---automation-account"></a>Uživatelské prostředí pro role operátora služby Automation - účet služby Automation
+
+Když se uživatel, kdo je přiřazen k roli operátor automatizace v rozsahu účtu Automation zobrazení účtu služby Automation jsou přiřazeny, mohou pouze prohlížet seznam runbooků, úlohy sady runbook a plány vytvořené v automatizace účet, ale nemůžou si prohlížet jejich definice. Může spustit, zastavit, pozastavit, obnovit nebo naplánovat úlohu runbooku. Uživatel nemá přístup k dalším prostředkům Automation, jako je například konfigurace, skupinám hybrid worker nebo uzlům DSC.
+
+![Žádný přístup k prostředkům](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
+
+## <a name="configure-rbac-for-runbooks"></a>Konfigurace RBAC pro sady Runbook
+
+Automatizace Azure umožňuje přiřadit RBAC pro konkrétní sady runbook. Provedete to spuštěním následujícího skriptu k přidání uživatele do konkrétní sady runbook. Následující skript můžete spustili automatizace účtu správce nebo správce klienta.
+
+```azurepowershell-interactive
+$rgName = "<Resource Group Name>" # Resource Group name for the Automation Account
+$automationAccountName ="<Automation Account Name>" # Name of the Automation Account
+$rbName = "<Name of Runbook>" # Name of the runbook
+$userId = "<User ObjectId>" # Azure Active Directory (AAD) user's ObjectId from the directory
+
+# Gets the Automation Account resource
+$aa = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts" -ResourceName $automationAccountName
+
+# Get the Runbook resource
+$rb = Get-AzureRmResource -ResourceGroupName $rgName -ResourceType "Microsoft.Automation/automationAccounts/runbooks" -ResourceName "$automationAccountName/$rbName"
+
+# The Automation Job Operator role only needs to be ran once per user.
+New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Operator" -Scope $aa.ResourceId
+
+# Adds the user to the Automation Runbook Operator role to the Runbook scope
+New-AzureRmRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
+```
+
+Jednou spustili, mít uživatele, přihlaste se k portálu Azure a zobrazení **všechny prostředky**. V seznamu uvidí sady Runbook, které byly přidány jako **operátor automatizace sady Runbook** pro.
+
+![RBAC Runbook na portálu](./media/automation-role-based-access-control/runbook-rbac.png)
+
+### <a name="user-experience-for-automation-operator-role---runbook"></a>Uživatelské prostředí pro role operátora služby Automation - Runbook
+
+Když se uživatel, který je přiřazený k roli operátor automatizace v oboru zobrazení sady Runbook sady Runbook jsou přiřazeny, mohou pouze spouštět sadu runbook a zobrazit úlohy sady runbook.
+
+![Má přístup pouze k spuštění](media/automation-role-based-access-control/automation-only-start.png)
 
 ## <a name="next-steps"></a>Další postup
 

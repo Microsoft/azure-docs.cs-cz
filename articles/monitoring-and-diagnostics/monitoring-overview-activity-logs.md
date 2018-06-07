@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: 9768fd96b8023ac97d8c5711e0c02f2c147e28f6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 128a16f0fbde87136ca01812b0217523fdbeeeeb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638982"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Sledování aktivity předplatné s protokol činnosti Azure
 
@@ -50,7 +51,7 @@ Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schém
 * **Stav služby** – Tato kategorie obsahuje záznam všechny služby stavu incidentů, kterým došlo v Azure. Je například typ události, které se zobrazí se v této kategorii "SQL Azure v oblasti Východ USA dochází k výpadku." Události stavu služby existují ve pět variantách: je vyžadována akce, jíž obnovení, Incident, údržby, informace nebo zabezpečení a objeví jenom tehdy, pokud máte prostředku v odběru, který bude mít vliv události.
 * **Výstrahy** – Tato kategorie obsahuje záznam všech aktivací Azure výstrah. Je například typ události, které se zobrazí se v této kategorii "% využití procesoru na Můjvp je už více než 80 za posledních 5 minut." Výstrahy koncept mají různé systémy Azure – můžete definovat pravidla nějaká a přijímat oznámení v případě podmínky odpovídají daného pravidla. Pokaždé, když podporovaných Azure typu výstrahy, aktivuje,' nebo ke splnění podmínek pro generování oznámení, záznam aktivace také vložena do této kategorie protokolu činnosti.
 * **Škálování** – Tato kategorie obsahuje záznam všechny události související s operací škálování stroje podle nastavení automatického škálování, který jste definovali ve vašem předplatném. Je například typ události, které se zobrazí se v této kategorii "Škálování rozšiřování škálování využívajících akce se nezdařila." Použití automatického škálování, můžete automaticky škálovat nebo škálovat počet instancí v typu prostředku podporované na základě času, den nebo zatížení (metriky) dat, na které se používá nastavení automatického škálování. Pokud jsou splněny podmínky škálování nahoru nebo dolů, spuštění a úspěšné nebo neúspěšné události se zaznamenávají v této kategorii.
-* **Doporučení** – Tato kategorie obsahuje doporučení události z určité typy prostředků, jako jsou webové servery a servery SQL Server. Tyto události nabízet doporučení, jak lépe využívat zdroje. Pokud máte prostředky, které emitování doporučení pouze zobrazí události tohoto typu.
+* **Doporučení** – Tato kategorie obsahuje doporučení události z Azure Advisor.
 * **Zabezpečení** – Tato kategorie obsahuje záznam všech výstrah generovaných Azure Security Center. Je například typ události, které se zobrazí se v této kategorii "soubor podezřelé dvojité rozšíření spustit."
 * **Zásady a stav prostředků** -tyto kategorie neobsahují žádné události; jsou vyhrazené pro budoucí použití.
 
@@ -60,7 +61,7 @@ Protokol aktivit obsahuje několik kategorií data. Úplné podrobnosti o schém
 ## <a name="what-you-can-do-with-the-activity-log"></a>Co můžete dělat s protokolu aktivit
 Tady jsou některé z akcí, které můžete provést pomocí protokolu aktivit:
 
-![Azure protokol aktivit](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
+![Protokol aktivit v Azure](./media/monitoring-overview-activity-logs/Activity_Log_Overview_v3.png)
 
 
 * Dotazování a ji zobrazit v **portál Azure**.
@@ -103,7 +104,7 @@ A **profil protokolu** řídí, jak je export protokolu aktivit. Použití profi
 * Jak dlouho se uchovávají v účtu úložiště protokol aktivit.
     - Uchování nulový počet dnů znamená, že jsou protokoly v nekonečné smyčce. Hodnota, jinak hodnota může být libovolný počet dnů od 1 do 2147483647.
     - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud jenom jsou vybrané možnosti služby Event Hubs nebo analýzy protokolů), zásady uchovávání informací nemají žádný vliv.
-    - Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn.
+    - Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn. Proces odstraňování začíná na půlnoc UTC, ale Všimněte si, že může trvat až 24 hodin protokolů k odstranění z vašeho účtu úložiště.
 
 Můžete použít úložiště účet nebo události rozbočovače obor názvů, který není ve stejném předplatném jako jeden emitování protokoly. Uživatel, který konfiguruje nastavení, musí mít odpovídající RBAC přístup na oba odběry.
 

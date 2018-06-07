@@ -1,30 +1,25 @@
 ---
-title: "Pomocí portálu Azure ke konfiguraci nahrávání souborů | Microsoft Docs"
-description: "Postup konfigurace služby IoT hub, chcete-li povolit nahrávání souborů z připojených zařízení pomocí portálu Azure. Obsahuje informace o konfiguraci cílového účtu úložiště Azure."
-services: iot-hub
-documentationcenter: 
+title: Pomocí portálu Azure ke konfiguraci nahrávání souborů | Microsoft Docs
+description: Postup konfigurace služby IoT hub, chcete-li povolit nahrávání souborů z připojených zařízení pomocí portálu Azure. Obsahuje informace o konfiguraci cílového účtu úložiště Azure.
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 915f1597-272d-4fd4-8c5b-a0ccb1df0d91
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 2d875947297be5d47362369b96bc6ab0d90b3c93
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0100cbe4bbc66d0c4ef940cc40f4fa3441176a1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633202"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurace centra IoT nahrávání souborů pomocí portálu Azure
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-## <a name="file-upload"></a>Nahrávání souborů
+## <a name="file-upload"></a>Nahrání souboru
 
 Použít [souboru nahrávání funkce IoT hub][lnk-upload], je třeba nejprve přidružit účet služby Azure Storage pomocí centra. Vyberte **nahrávání souborů** zobrazíte seznam vlastností nahrávání souboru pro službu IoT hub, která je upravována.
 
@@ -44,7 +39,7 @@ Použít [souboru nahrávání funkce IoT hub][lnk-upload], je třeba nejprve p�
 
 ![Konfigurace služby IoT Hub nahrávání souborů na portálu][15]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o možnostech nahrávání souboru Centrum IoT najdete v tématu [nahrání souborů ze zařízení] [ lnk-upload] v příručce pro vývojáře IoT Hub.
 
@@ -57,7 +52,7 @@ Další informace o správě Azure IoT Hub na následujících odkazech:
 Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
 
 * [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
-* [Nasazení AI do hraniční zařízení s Azure IoT Edge][lnk-iotedge]
+* [Nasazení AI do hraničních zařízení s použitím Azure IoT Edge][lnk-iotedge]
 * [Zabezpečení řešení IoT od základů nahoru][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png

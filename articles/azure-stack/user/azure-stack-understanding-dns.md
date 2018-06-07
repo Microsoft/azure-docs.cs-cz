@@ -6,19 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: df9c22877eeac381d936f2fb86f5720c9cc9c930
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724254"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Představení IDN pro Azure zásobníku
 
@@ -30,9 +31,9 @@ IDN je zásobník Azure síťové funkce, která umožňuje překládat externí
 
 S IDN v zásobníku Azure získáte následující možnosti, aniž byste museli zadat vlastní položky serveru DNS:
 
-* Sdílené služby překladu názvů DNS pro úlohy klientů.
-* Autoritativní služby DNS pro rozlišení názvů a registraci DNS v rámci virtuální sítě klienta.
-* Služba DNS rekurzivní pro překlad názvů v síti Internet z klientské virtuální počítače. Klienti se již muset zadat vlastní záznamy DNS pro překlad názvů v Internetu (například www.bing.com.)
+- Sdílené služby překladu názvů DNS pro úlohy klientů.
+- Autoritativní služby DNS pro rozlišení názvů a registraci DNS v rámci virtuální sítě klienta.
+- Služba DNS rekurzivní pro překlad názvů v síti Internet z klientské virtuální počítače. Klienti se již muset zadat vlastní záznamy DNS pro překlad názvů v Internetu (například www.bing.com.)
 
 Můžete stále přineste si vlastní DNS a použít vlastní servery DNS. Ale pomocí IDN může překládat názvy DNS pro Internet a připojte se k jiné virtuální počítače ve stejné virtuální síti, nemusíte vytvářet vlastní položky DNS.
 
@@ -48,10 +49,10 @@ Jak ukazuje předchozí obrázek, Azure vytvoří záznam "A" ve službě DNS pr
 
 Azure zásobníku IDN podporuje pouze pro interní název registraci, proto nelze provést následující:
 
-* Vytvořit záznam DNS v rámci stávající hostované zónu DNS (například local.azurestack.external.)
-* Vytvoření zóny DNS (například Contoso.com).
-* Vytvořte záznam v části vlastní zónu DNS.
-* Podpora nákupu názvů domén.
+- Vytvořit záznam DNS v rámci stávající hostované zónu DNS (například local.azurestack.external.)
+- Vytvoření zóny DNS (například Contoso.com).
+- Vytvořte záznam v části vlastní zónu DNS.
+- Podpora nákupu názvů domén.
 
 ## <a name="next-steps"></a>Další postup
 

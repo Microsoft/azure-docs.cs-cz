@@ -6,14 +6,15 @@ author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: e4c3a2c1f21bf14bfc75f20dd18cefca68fd2067
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4d3b7f54c7393b57339ea149e8a79f97891dc20
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646027"
 ---
 # <a name="enable-automatic-tuning"></a>Povolení automatického ladění
 
@@ -23,36 +24,40 @@ Databáze SQL Azure je služba automaticky spravovaná data, která neustále mo
 Na úrovni serveru můžete nastavit dědění automatickou konfiguraci ladění z "Azure je výchozí" nebo zdědit konfiguraci. Azure výchozí hodnoty jsou FORCE_LAST_GOOD_PLAN je povoleno, je povoleno CREATE_INDEX a DROP_INDEX je zakázána.
 
 ### <a name="azure-portal"></a>Azure Portal
-Chcete-li povolit automatické ladění na Azure SQL Database **server**, přejděte na server na portálu Azure a pak vyberte **automatické ladění** v nabídce. Vyberte možnost Automatické ladění možnosti, které chcete povolit a vyberte **použít**.
+Chcete-li povolit automatické ladění na Azure SQL Database logické **server**, přejděte na server na portálu Azure a pak vyberte **automatické ladění** v nabídce.
 
 ![Server](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Pamatujte, že **DROP_INDEX** možnost v tuto chvíli není kompatibilní s aplikací pomocí pomocné parametry přepínání a index oddílu a nesmí být zapnut v těchto případech.
+> Pamatujte, že **DROP_INDEX** možnost v tuto chvíli není kompatibilní s aplikací pomocí pomocné parametry přepínání a index oddílu a nemělo by být povolené v těchto případech.
 >
 
-Automatické možnosti ladění na serveru se použijí pro všechny databáze na serveru. Ve výchozím nastavení všechny databáze Zdědit konfiguraci z jejich nadřízeného serveru, ale to můžete přepsat a zadat pro každou databázi jednotlivě.
+Vyberte možnost Automatické ladění možnosti, které chcete povolit a vyberte **použít**.
+
+Automatické možnosti ladění na serveru se použijí pro všechny databáze na tomto serveru. Ve výchozím nastavení všechny databáze Zdědit konfiguraci z jejich nadřízeného serveru, ale to můžete přepsat a zadat pro každou databázi jednotlivě.
 
 ### <a name="rest-api"></a>REST API
 [Klikněte sem, chcete-li další informace o tom, jak povolit automatické ladění na úrovni serveru pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Povolit automatické ladění na jednotlivé databáze
 
-Databáze SQL Azure umožňuje jednotlivě zadat automatickou konfiguraci ladění na každou databázi. Na úrovni databáze můžete nastavit dědění automatickou konfiguraci ladění z nadřízeného serveru, "Azure je výchozí" nebo zdědit konfiguraci. Azure výchozí hodnoty jsou povolené FORCE_LAST_GOOD_PLAN, CREATE_INDEX povolené a zakázané DROP_INDEX.
+Databáze SQL Azure umožňuje jednotlivě zadat automatickou konfiguraci ladění pro každou databázi. Na úrovni databáze můžete nastavit dědění automatickou konfiguraci ladění z nadřízeného serveru, "Azure je výchozí" nebo zdědit konfiguraci. Azure výchozí hodnoty jsou nastaveny na FORCE_LAST_GOOD_PLAN je povoleno, je povoleno CREATE_INDEX a DROP_INDEX je zakázána.
 
 > [!NOTE]
-> Obecné doporučení je spravovat konfiguraci automatické ladění na úrovni serveru, aby stejné nastavení konfigurace můžete použít na každou databázi automaticky. Konfigurujte automatické ladění na jednotlivé databáze Pokud databázi se liší jiné na stejném serveru.
+> Obecné doporučení je Správa automatickou konfiguraci ladění na **úrovni serveru** tak stejné nastavení konfigurace můžete použít na každou databázi automaticky. Konfigurovat automatické ladění na jednotlivé databáze jenom v případě, že je nutné tuto databázi má jiné nastavení než jiná nastavení, která dědí ze stejného serveru.
 >
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Chcete-li povolit automatické ladění na **jedné databáze**, přejděte do databáze na portálu Azure a pak vyberte **automatické ladění**. Můžete nakonfigurovat jednu databázi pro dědění nastavení ze serveru tak, že vyberete možnost nebo můžete zadat konfiguraci pro databázi jednotlivě.
+Chcete-li povolit automatické ladění na **jedné databáze**, přejděte do databáze na portálu Azure a vyberte **automatické ladění**.
+
+Jednotlivé automatické ladění nastavení můžete nakonfigurovat samostatně pro každou databázi. Můžete ručně konfigurovat jednotlivé možnosti automatické ladění nebo zadat, že možnost dědí nastavení ze serveru.
 
 ![Databáze](./media/sql-database-automatic-tuning-enable/database.png)
 
-Jakmile vyberete odpovídající konfiguraci, klikněte na tlačítko **použít**.
+Upozorňujeme, že možnost DROP_INDEX v tuto chvíli není kompatibilní s aplikací pomocí pomocné parametry přepínání a index oddílu a nemělo by být povolené v těchto případech.
 
-Upozorňujeme, že možnost DROP_INDEX v tuto chvíli není kompatibilní s aplikací pomocí pomocné parametry přepínání a index oddílu a nesmí být zapnut v těchto případech.
+Jakmile vyberete požadovanou konfiguraci, klikněte na tlačítko **použít**.
 
 ### <a name="rest-api"></a>Rest API
 [Kliknutím na další informace o tom, jak povolit automatické ladění na jedné databáze pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning)

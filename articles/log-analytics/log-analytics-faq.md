@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 22da58df653b31c46145ebbbd1f6f6a26b0e9f29
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637170"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je seznam často kladené otázky týkající se analýzy protokolů v Microsoft Azure. Pokud máte další dotazy o analýzy protokolů, přejděte k [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte svoje otázky. Dotaz je dotaz, často, přidáme ji k tomuto článku tak, aby se nachází snadno a rychle.
@@ -96,7 +97,7 @@ A. Ne, není aktuálně možné číst z libovolné tabulky nebo kontejnery v ú
 
 A. Službu analýzy protokolů je postavená na Azure. Log Analytics IP adresy jsou v [Microsoft Azure Datacenter rozsahy IP adres](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Podle nasazení služby jsou vytvářeny, skutečný IP adresy služby analýzy protokolů se nezmění. Názvy DNS umožňuje prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na systém](log-analytics-concept-hybrid.md#prerequisites).
+Podle nasazení služby jsou vytvářeny, skutečný IP adresy služby analýzy protokolů se nezmění. Názvy DNS umožňuje prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na síťovou](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>OTÁZKY. Je možné použít ExpressRoute pro připojení k Azure. Používá Moje analýzy protokolů přenosů Moje připojení ExpressRoute?
 

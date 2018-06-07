@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/25/2018
 ms.author: bwren
-ms.openlocfilehash: d42069e8ed72a834973b56df55488955d62e71f2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 33b98c56cde8d4a876f217d0bbdd716d3a336260
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636728"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Odesílání dat k analýze protokolů s rozhraním API týkající se kolekce dat protokolu HTTP (verze public preview)
 Tento článek ukazuje, jak používat rozhraní API sady kolekcí dat protokolu HTTP k odesílání dat k analýze protokolů z klienta pro REST API.  Popisuje, jak formátu data shromažďovaná společností skriptu nebo aplikaci, její zahrnutí do žádost a mít této žádosti autorizovat analýzy protokolů.  Příklady jsou uvedené pro prostředí PowerShell, C# a Python.
@@ -59,7 +60,7 @@ Chcete-li použít rozhraní API sady kolekcí dat protokolu HTTP, vytvořte po�
 | Autorizace |Podpis autorizace. Dále v tomto článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC SHA256. |
 | Typ protokolu |Zadejte typ záznamu dat, která je odesílána. Typ protokolu v současné době podporuje pouze alfanumerické znaky. Nepodporuje se číslice nebo speciální znaky. Omezení velikosti pro tento parametr je 100 znaků. |
 | x-ms-date |Datum, kdy byl požadavek zpracovat, v dokumentu RFC 1123 formátu. |
-| čas generované pole |Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole a její obsah se používají pro **TimeGenerated**. Pokud toto pole není určena, výchozí hodnota pro **TimeGenerated** je čas, který je konzumována zprávy. Obsah zprávy pole by mělo vyhovovat formátu ISO 8601 rrrr-MM-ddTHH. |
+| čas generované pole |Název pole v datech, která obsahuje časové razítko datová položka. Pokud určíte pole a její obsah se používají pro **TimeGenerated**. Nesmí mít hodnotu null a musí obsahovat platné datum čas. Pokud toto pole není určena, výchozí hodnota pro **TimeGenerated** je čas, který je konzumována zprávy. Obsah zprávy pole by mělo vyhovovat formátu ISO 8601 rrrr-MM-ddTHH. |
 
 ## <a name="authorization"></a>Autorizace
 Každá žádost o Log Analytics HTTP dat kolekce API musí obsahovat hlavičku autorizace. K ověření požadavku, musíte se odhlásit požadavek s primární nebo sekundární klíč pro pracovní prostor, který je vytvoření požadavku. Pak předejte tento podpis jako součást požadavku.   
@@ -136,9 +137,9 @@ Pokud chcete identifikovat datový typ vlastnost, analýzy protokolů přidá p�
 |:--- |:--- |
 | Řetězec |_s |
 | Logická hodnota |_b |
-| Dvojitý |_d |
+| Double |_d |
 | Datum a čas |_t |
-| IDENTIFIKÁTOR GUID |_g |
+| GUID |_g |
 
 Datový typ, který používá analýzy protokolů pro každou vlastnost závisí na tom, jestli typ záznamu pro nový záznam již existuje.
 
@@ -187,8 +188,8 @@ Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit služ
 | 400 |Nesprávná žádost |UnsupportedContentType |Typ obsahu, který nebyl nastaven na **application/json**. |
 | 403 |Zakázáno |InvalidAuthorization |Službě se nepodařilo ověřit žádost. Ověření platnosti připojení ID a klíč pracovního prostoru. |
 | 404 |Nenalezené | | Buď je zadaná adresa URL nesprávná nebo požadavku je příliš velký. |
-| 429 |Příliš mnoho požadavků | | Služba dochází k velkému počtu data z účtu. Opakujte požadavek později. |
-| 500 |Vnitřní chyba serveru |UnspecifiedError |Služba zjistila vnitřní chybu. Opakujte žádost. |
+| 429 |Příliš mnoho žádostí | | Služba dochází k velkému počtu data z účtu. Opakujte požadavek později. |
+| 500 |Vnitřní chyba serveru |UnspecifiedError |U této služby došlo k vnitřní chybě. Opakujte žádost. |
 | 503 |Služba není dostupná |ServiceUnavailable |Služba je momentálně nedostupný a nepřijímá požadavky. Opakujte žádost. |
 
 ## <a name="query-data"></a>Dotazování dat
@@ -211,7 +212,7 @@ Pro každý vzorek proveďte tyto kroky nastavit proměnné pro hlavičku autori
 
 Alternativně můžete změnit proměnné pro typ protokolu a JSON data.
 
-### <a name="powershell-sample"></a>Ukázkové prostředí PowerShell
+### <a name="powershell-sample"></a>Ukázka PowerShellu
 ```
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  

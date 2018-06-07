@@ -11,14 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617976"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
 GetMetaData – aktivita slouží k načtení **metadata** všech dat v Azure Data Factory. Tato aktivita je podporována pouze pro datové továrny verze 2. Dá se v následujících scénářích:
@@ -48,11 +49,11 @@ GetMetaData – aktivity trvá datovou sadu jako požadované vstup a výstupy j
 | Konektor nebo Metadata | Název položky<br>(soubor nebo složku) | itemType<br>(soubor nebo složku) | velikost<br>(soubor) | vytvořené<br>(soubor nebo složku) | Změněno<br>(soubor nebo složku) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | Počet sloupců<br>(soubor) | existuje<br>(soubor nebo složku) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | w | √ | √ | √/√ |
-| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | w | √ | √ | √/√ |
-| Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | w | √ | √ | √/√ |
-| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | w | √ | √ | √/√ |
-| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | w | √ | √ | √/√ |
+| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
 **Relační databáze:**
 
@@ -126,7 +127,7 @@ V seznamu polí GetMetaData – aktivita načíst lze zadat následující typy 
 
 GetMetaData – aktivita aktuálně můžete získat následující typy informací metadat.
 
-Vlastnost | Popis | Požadované
+Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 Seznam polí | Seznam typů požadované informace metadat. Zobrazit podrobnosti v [Metadata možnosti](#metadata-options) části na podporované metadat. | Ano 
 Datové sady | Referenční datová sada je jejichž metadat aktivity mají být načteny aktivitou GetMetaData –. V tématu [podporované schopnosti](#supported-capabilities) části na podporované konektory a odkazovat na konektoru téma na datovou sadu syntaxe podrobnosti. | Ano

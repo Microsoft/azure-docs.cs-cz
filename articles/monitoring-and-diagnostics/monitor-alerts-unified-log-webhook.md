@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 981b6b65675550fd1403064ad3113c2dca0c3f6e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638666"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla výstrah protokolu
 Když [v Azure se vytvoří výstraha ](monitor-alerts-unified-usage.md), máte možnost [konfigurace pomocí akce skupiny](monitoring-action-groups.md) provést několik akcí.  Tento článek popisuje různé webhooku akce, které jsou k dispozici a podrobnosti o konfiguraci vlastních webhooku založenými na JSON.
@@ -32,7 +33,7 @@ Akce Webhooku vyžadovat vlastnosti v následující tabulce:
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Adresa URL Webhooku |Adresa URL webhooku. |
+| Adresa URL webhooku |Adresa URL webhooku. |
 | Vlastní datovou část JSON |Vlastní datovou část odeslat spolu s webhook, když zvolíte tuto možnost během vytváření výstrahy. Podrobnosti jsou dostupné v [Správa výstrah pomocí Azure výstrahy ](monitor-alerts-unified-usage.md) |
 
 > [!NOTE]
@@ -44,14 +45,14 @@ Webhooky zahrnují adresu URL a datovou část ve formátu JSON, který se data 
 | Parametr | Proměnná | Popis |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |Název pravidla výstrahy. |
-| Závažnost |#severity |Závažnost nastavit výstrahy přímým protokolu. |
+| Severity |#severity |Závažnost nastavit výstrahy přímým protokolu. |
 | AlertThresholdOperator |#thresholdoperator |Operátor prahová hodnota pro pravidlo výstrahy.  *Větší než* nebo *menší než*. |
 | AlertThresholdValue |#thresholdvalue |Prahová hodnota pro pravidlo výstrahy. |
-| LinkToSearchResults |#linktosearchresults |Propojit vyhledávání protokolu analýzy protokolů, který vrátí záznamy v dotazu, který vytvořili výstrahu. |
+| LinkToSearchResults |#linktosearchresults |Odkaz na portálu analýza, který vrátí záznamy v dotazu, který vytvořili výstrahu. |
 | Element resultcount element |#searchresultcount |Počet záznamů ve výsledcích hledání. |
-| Čas ukončení Interval vyhledávání |#searchintervalendtimeutc |Koncový čas pro dotaz ve formátu UTC. |
-| Interval vyhledávání |#searchinterval |Časový interval pro pravidlo výstrahy. |
-| StartTime Interval vyhledávání |#searchintervalstarttimeutc |Počáteční čas pro dotaz ve formátu UTC. 
+| Čas ukončení Interval vyhledávání |#searchintervalendtimeutc |Koncový čas pro dotaz ve standardu UTC, formátu – mm/dd/rrrr hh: mm: ss dop. / odp. |
+| Interval vyhledávání |#searchinterval |Časový interval pro výstrahu pravidla, formát: hh: mm:. |
+| StartTime Interval vyhledávání |#searchintervalstarttimeutc |Počáteční čas pro dotaz ve standardu UTC, formátu – mm/dd/rrrr hh: mm: ss dop. / odp... 
 | SearchQuery |#searchquery |Vyhledávací dotaz protokolu používá pravidlo výstrahy. |
 | SearchResults |"IncludeSearchResults": true|Záznamů vrácených dotazem jako tabulku JSON, omezen na prvních 1000 záznamů; Pokud "IncludeSearchResults": true je přidaný do vlastní definici JSON webhooku jako vlastnost nejvyšší úrovně. |
 | ID pracovního prostoru |#workspaceid |ID pracovního prostoru analýzy protokolů. |
@@ -74,6 +75,7 @@ Tato datová část příkladu by odkazující na něco jako následující odes
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 ```
+Všechny proměnné v vlastní webhooku se musí zadat v rámci JSON skříň jako "#searchinterval", výsledná webhook má také proměnné datové uvnitř skříň jako "00: 05:00".
 
 Zahrnout vlastní datovou část výsledky hledání, ujistěte se, že **IncudeSearchResults** je nastaven jako vlastnost nejvyšší úrovně v datové části json. 
 

@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 3aca66d6922273e78b5100948f1b868c6c9b56af
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: f7c82b3aa88e874328452aae46dc14972d63192f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616939"
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Kopírování dat z koncový bod HTTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,11 +55,11 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Pro HTTP propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu musí být nastavena na: **HttpServer**. | Ano |
-| Adresa URL | Základní adresu URL na webový server | Ano |
-| enableServerCertificateValidation | Určete, zda chcete povolit ověřování certifikátu serveru SSL při připojení ke koncovému bodu HTTP. | Ne, výchozí hodnota je true |
+| type | Vlastnost typu musí být nastavena na: **HttpServer**. | Ano |
+| url | Základní adresu URL na webový server | Ano |
+| enableServerCertificateValidation | Určete, zda chcete povolit ověřování certifikátu serveru SSL při připojení ke koncovému bodu HTTP. Pokud váš server HTTPS používá certifikát podepsaný svým držitelem, nastavte na hodnotu false. | Ne, výchozí hodnota je true |
 | authenticationType. | Určuje typ ověřování. Povolené hodnoty jsou: **anonymní**, **základní**, **Digest**, **Windows**, **ClientCertificate**. <br><br> Naleznete v části dál v této tabulce na další vlastnosti a ukázky JSON pro tyto typy ověřování v uvedeném pořadí. | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 
@@ -66,9 +67,9 @@ Pro HTTP propojené služby jsou podporovány následující vlastnosti:
 
 Nastavte vlastnost "authenticationType" na **základní**, **Digest**, nebo **Windows**a zadejte následující vlastnosti společně s obecné vlastnosti, které jsou popsané v předchozí části:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| userName | Uživatelské jméno pro přístup k koncový bod HTTP. | Ano |
+| Uživatelské jméno | Uživatelské jméno pro přístup k koncový bod HTTP. | Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad**
@@ -99,10 +100,10 @@ Nastavte vlastnost "authenticationType" na **základní**, **Digest**, nebo **Wi
 
 Chcete-li použít ověřování ClientCertificate, nastavte vlastnost "authenticationType" na **ClientCertificate**a zadejte následující vlastnosti společně s obecné vlastnosti, které jsou popsané v předchozí části:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | embeddedCertData | Data certifikátu kódováním base64. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
-| certThumbprint | Kryptografický otisk certifikátu, který je nainstalován v úložišti certifikátů počítače Self-hosted integrace Runtime. Platí jenom v případě, že je zadán vlastním hostováním typ integrace Runtime v connectVia. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
+| CertThumbprint | Kryptografický otisk certifikátu, který je nainstalován v úložišti certifikátů počítače Self-hosted integrace Runtime. Platí jenom v případě, že je zadán vlastním hostováním typ integrace Runtime v connectVia. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
 | heslo | Heslo přidružené k certifikátu. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 
 Pokud používáte "certThumbprint" pro ověřování a je certifikát nainstalován v osobním úložišti místního počítače, je třeba udělit oprávnění ke čtení modulu runtime Self-hosted integrace:
@@ -162,9 +163,9 @@ Pokud používáte "certThumbprint" pro ověřování a je certifikát nainstalo
 
 Ke zkopírování dat z protokolu HTTP, nastavte vlastnost typu datové sady, která **HttpFile**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu datové sady musí být nastavena na: **HttpFile** | Ano |
+| type | Vlastnost typu datové sady musí být nastavena na: **HttpFile** | Ano |
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když není tato vlastnost určena, použije se jenom adresu URL, zadaný v definici propojené služby. | Ne |
 | requestMethod | Metoda HTTP.<br/>Povolené hodnoty jsou **získat** (výchozí) nebo **Post**. | Ne |
 | additionalHeaders | Další hlavičky žádosti HTTP. | Ne |
@@ -219,9 +220,9 @@ Ke zkopírování dat z protokolu HTTP, nastavte vlastnost typu datové sady, kt
 
 Ke zkopírování dat z protokolu HTTP, nastavte typ zdroje v aktivitě kopírování do **HttpSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požadováno |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HttpSource** | Ano |
+| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HttpSource** | Ano |
 | httpRequestTimeout | Časový limit (TimeSpan) pro získání odezvy požadavku HTTP. Získání odezvy, není časový limit číst data odpovědi je časový limit.<br/> Výchozí hodnota je: 00:01:40  | Ne |
 
 **Příklad:**

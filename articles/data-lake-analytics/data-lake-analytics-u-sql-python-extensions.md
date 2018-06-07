@@ -1,26 +1,23 @@
 ---
-title: "Rozšíření skriptů U-SQL s Pythonem v Azure Data Lake Analytics | Microsoft Docs"
-description: "Postup spuštění kódu jazyka Python v skriptů U-SQL"
+title: Rozšíření skriptů U-SQL s Pythonem v Azure Data Lake Analytics
+description: Postup spuštění kódu jazyka Python v skriptů U-SQL pomocí Azure Data Lake Analytics
 services: data-lake-analytics
-documentationcenter: 
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/20/2017
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: a8acaa16265070308753c2a0df3a9e7b8a3a841a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+manager: kfile
+editor: jasonwhowell
+ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
+ms.topic: conceptual
+ms.date: 06/20/2017
+ms.openlocfilehash: 3e895a6ea9bccc0d210f43748edb3eea80ddc6ad
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625076"
 ---
-# <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>Kurz: Začínáme s jazykem U-SQL s Pythonem rozšíření
+# <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozšíření skriptů U-SQL s kódem jazyka Python v Azure Data Lake Analytics
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -104,7 +101,7 @@ V současné době výjimku v kódu jazyka Python objeví jako obecný vrchol se
 ### <a name="input-and-output-size-limitations"></a>Vstup a výstup omezení velikosti
 Všechny vrcholy má omezené množství paměti přidělené k němu. V současné době je tento limit pro AU 6 GB. Vzhledem k tomu, že vstupní a výstupní DataFrames musí existovat v paměti v kódu jazyka Python, celková velikost vstupní a výstupní nesmí překročit 6 GB.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Pro úlohy Azure Data Lake Analytics pomocí U-SQL okno funkce](data-lake-analytics-use-window-functions.md)

@@ -12,13 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/28/2018
+ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: db06614ebd7dee4b0a320737ea8f575b3a3be70f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651201"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Úvod do pole virtuální zařízení StorSimple
 
@@ -206,10 +207,9 @@ StorSimple používá komprese dat a odstranění duplicit Pokud chcete dál sn�
 
 Funkce ochrany dat StorSimple umožňují vytvářet zálohy na vyžádání. Výchozí plán zálohování také zajišťuje, že data zálohovat denně. Zálohy jsou převzaty ve formě přírůstkové snímky, které jsou uložené v cloudu. Snímky, které záznam pouze změny od poslední zálohy, můžete vytvořit a rychle obnovit. Tyto snímky může být důležité ve scénářích zotavení po havárii, protože nahradit sekundární úložných systémů (například zálohování na pásku) a umožňují obnovit data do datového centra nebo do alternativní lokality v případě potřeby.
 
-## <a name="gdpr-compliance"></a>GDPR dodržování předpisů
-[Obecné Data Protection nařízení (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) je data protection a o ochraně osobních údajů zákon Evropské unie (EU). GDPR obsahuje mnoho požadavky na to, jak shromažďování, ukládání a používat osobní údaje. Pravidla GDPR jsou vynucená pro společnosti, vládních organizací a dalšími organizacemi, které fungují v Evropa a shromažďovat, analyzovat data svázané s obyvatele Evropské unie.
+## <a name="managing-personal-information"></a>Správa osobní údaje
 
-Správce zařízení StorSimple řady, virtuální je GDPR kompatibilní. Existují dva klíče instance, kde je osobní údaje shromážděné a zobrazí v rámci služby:
+Správce zařízení StorSimple řady, virtuální shromažďuje osobní údaje v dvě instance klíče:
  - Výstraha uživatelská nastavení, které jsou nakonfigurované e-mailové adresy uživatelů. Tyto informace může být zrušena správcem. 
  - Uživatelé, kteří měli přístup k datům, které se nacházejí na sdílené složky. Seznam uživatelů, kteří měli přístup k datům sdílenou složku se zobrazí a je možné exportovat. Tento seznam je taky odstranit po odstranění sdílené složky.
 

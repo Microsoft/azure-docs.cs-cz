@@ -1,23 +1,19 @@
 ---
-title: "Volání operace Azure Storage Services REST API, včetně ověřování | Microsoft Docs"
-description: "Volání operace Azure Storage Services REST API, včetně ověřování"
+title: Volání operace Azure Storage Services REST API, včetně ověřování | Microsoft Docs
+description: Volání operace Azure Storage Services REST API, včetně ověřování
 services: storage
-documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
+author: tamram
+manager: twooley
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 11/27/2017
-ms.author: robinsh
-ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.date: 05/22/2018
+ms.author: tamram
+ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650447"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Použití rozhraní REST API pro službu Azure Storage
 
@@ -48,19 +44,17 @@ git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 
 Tento příkaz naklonuje úložiště do vaší místní složky gitu. Otevřete řešení sady Visual Studio, vyhledejte složku storage-dotnet-rest-api-with-auth, otevřete ho a dvakrát klikněte na StorageRestApiAuth.sln. 
 
-## <a name="why-do-i-need-to-know-rest"></a>Proč je potřeba vědět REST?
-
-Zároveň budete vědět, jak používat REST je užitečné znalostí. Azure produktový tým často uvolní nové funkce. Kolikrát, nové funkce jsou dostupné přes rozhraní REST, ale ještě nebyly byla prezentované prostřednictvím **všechny** knihovny klienta úložiště nebo uživatelského rozhraní (například portál Azure). Pokud chcete vždy použít nejnovější a největší, učení REST je požadavek. Navíc pokud chcete napsat vlastní knihovny pro interakci s Azure Storage, nebo chcete pro přístup k úložišti Azure pomocí programovacího jazyka, který nemá klientské knihovny SDK nebo úložiště, můžete použít rozhraní REST API.
-
 ## <a name="what-is-rest"></a>Co je REST?
 
 REST znamená *přenosu representational stavu*. Pro konkrétní definici, podívejte se na [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
 
 V podstatě, REST je architekturu můžete použít při volání rozhraní API nebo vytváření pro volání rozhraní API. Je nezávislý na co se děje na obou stranách a jaké další software se používá při odesílání nebo přijímání ZBÝVAJÍCÍ volání. Můžete napsat aplikaci, která běží na Macu, Windows, Linux, telefon se systémem Android nebo tabletu, iPhone, iPod nebo webový server a použít stejné rozhraní REST API pro všechny tyto platformy. Data mohou být předána nebo se při volání rozhraní REST API. Rozhraní REST API nepodporuje stará z jaké platformy, se označuje jako – co je důležité, je předaná v žádosti o informace a data poskytnutá v odpovědi.
 
-## <a name="heres-the-plan"></a>Zde je plán
+Zároveň budete vědět, jak používat REST je užitečné znalostí. Azure produktový tým často uvolní nové funkce. Kolikrát, nové funkce jsou dostupné přes rozhraní REST, ale ještě nebyly byla prezentované prostřednictvím **všechny** knihovny klienta úložiště nebo uživatelského rozhraní (například portál Azure). Pokud chcete vždy použít nejnovější a největší, učení REST je požadavek. Navíc pokud chcete napsat vlastní knihovny pro interakci s Azure Storage, nebo chcete pro přístup k úložišti Azure pomocí programovacího jazyka, který nemá klientské knihovny SDK nebo úložiště, můžete použít rozhraní REST API.
 
-Příklad projektu uvádí kontejnery v účtu úložiště. Jakmile budete rozumět tomu, jak informace v dokumentaci rozhraní REST API koreluje s skutečné kódu, se snadněji a pokuste se zjistit jiná volání REST. 
+## <a name="about-the-sample-application"></a>O ukázkové aplikace
+
+Ukázková aplikace zobrazí seznam kontejnery v účtu úložiště. Jakmile budete rozumět tomu, jak informace v dokumentaci rozhraní REST API koreluje s skutečné kódu, se snadněji a pokuste se zjistit jiná volání REST. 
 
 Pokud si prohlédnete [rozhraní API REST služby objektů Blob](/rest/api/storageservices/fileservices/Blob-Service-REST-API), uvidíte všechny operace můžete provádět na úložiště objektů blob. Knihovny klienta úložiště jsou obálky kolem rozhraní REST API – se snadno můžete získávat přístup k úložišti bez použití rozhraní REST API přímo. Ale uvedených výše, někdy budete chtít použít rozhraní API REST místo Klientská knihovna pro úložiště.
 
@@ -141,7 +135,7 @@ Přidání hlavičky požadavku pro x-ms-date a x-ms-version. Toto místo v kód
     // Add the request headers for x-ms-date and x-ms-version.
     DateTime now = DateTime.UtcNow;
     httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-04-17");
+    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
     // If you need any additional headers, add them here before creating
     //   the authorization header. 
 ```
@@ -205,7 +199,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 3e889876-001e-0039-6a3a-5f4396000000
-x-ms-version: 04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
@@ -271,6 +265,9 @@ Teď, když chápete, jak vytvořit požadavek, zavolá službu a analyzovat vý
 
 ## <a name="creating-the-authorization-header"></a>Vytváření autorizační hlavičky
 
+> [!TIP]
+> Úložiště Azure nyní podporuje integraci služby Azure Active Directory (Azure AD) pro služby objektů Blob a fronty (Preview). Azure AD nabízí mnohem jednodušší prostředí pro ověřování požadavek do služby Azure Storage. Další informace o autorizaci operace REST pomocí Azure AD najdete v tématu [ověřit s Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory). Přehled integrace Azure AD s Azure Storage najdete v tématu [ověření přístupu k úložišti Azure pomocí služby Azure Active Directory (Preview)](storage-auth-aad.md).
+
 Je článek, který vysvětluje koncepčně (žádný kód) jak provádět [ověřování pro služby Azure Storage](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services).
 Umožňuje generovat tohoto článku dolů na přesně je nezbytné a kód.
 
@@ -312,7 +309,7 @@ Začněme s tyto dvě kanonizovaného pole, protože jsou vyžadovány k vytvoř
 Chcete-li vytvořit tuto hodnotu, načíst seznam hlaviček, které začínat "x - ms-" a seřadit je a pak je do řetězce formátu `[key:value\n]` instance, zřetězen do jednoho řetězce. V tomto příkladu kanonizovaného hlavičky vypadat například takto: 
 
 ```
-x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 Tady je kód používaný k vytvoření tento výstup:
@@ -417,7 +414,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 Když spustíte tento kód, výsledná MessageSignature vypadá takto:
 
 ```
-GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-04-17\n/contosorest/\ncomp:list
+GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 01:07:37 GMT\nx-ms-version:2017-07-29\n/contosorest/\ncomp:list
 ```
 
 Tady je konečná hodnota pro AuthorizationHeader:
@@ -463,7 +460,7 @@ Když tuto ukázku spustit, zobrazí výsledky takto:
 **Kanonizovaného hlavičky:**
 
 ```
-x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
+x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-07-29\n
 ```
 
 **Kanonizovaného prostředků:**
@@ -476,7 +473,7 @@ x-ms-date:Fri, 17 Nov 2017 05:16:48 GMT\nx-ms-version:2017-04-17\n
 
 ```
 GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
-  \nx-ms-version:2017-04-17\n/contosorest/container-1\ncomp:list\nrestype:container
+  \nx-ms-version:2017-07-29\n/contosorest/container-1\ncomp:list\nrestype:container
 ```
 
 **AuthorizationHeader:**
@@ -497,7 +494,7 @@ GET http://contosorest.blob.core.windows.net/container-1?restype=container&comp=
 
 ```
 x-ms-date: Fri, 17 Nov 2017 05:16:48 GMT
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Authorization: SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 Host: contosorest.blob.core.windows.net
 Connection: Keep-Alive
@@ -510,7 +507,7 @@ HTTP/1.1 200 OK
 Content-Type: application/xml
 Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
 x-ms-request-id: 7e9316da-001e-0037-4063-5faf9d000000
-x-ms-version: 2017-04-17
+x-ms-version: 2017-07-29
 Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```

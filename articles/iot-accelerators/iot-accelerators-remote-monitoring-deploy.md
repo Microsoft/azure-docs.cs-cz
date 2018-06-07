@@ -1,26 +1,23 @@
 ---
 title: Nasazení řešení vzdáleného monitorování - Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak zřídit vzdálené monitorování akcelerátoru řešení z azureiotsuite.com.
-services: iot-suite
-suite: iot-suite
+description: V tomto kurzu se dozvíte, jak zřídit akcelerátoru řešení vzdáleného monitorování z azureiotsuite.com.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 8738fbfc29f6776a091cdc2b872eab88abd195cd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 42f6afcd3cb6880ba6c9cdd2a51e2a3e9ff2c2d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626849"
 ---
-# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>Nasazení vzdálené monitorování řešení akcelerátoru
+# <a name="deploy-the-remote-monitoring-solution-accelerator"></a>Nasazení řešení akcelerátoru vzdálené monitorování
 
-V tomto kurzu se dozvíte, jak zřídit vzdálené monitorování akcelerátoru řešení. Nasazení řešení od azureiotsuite.com. Můžete taky nasadit řešení pomocí rozhraní příkazového řádku, další informace o této možnosti najdete [nasadit řešení akcelerátoru z příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md).
+V tomto kurzu se dozvíte, jak zřídit akcelerátoru řešení vzdáleného monitorování. Nasazení řešení od azureiotsuite.com. Můžete taky nasadit řešení pomocí rozhraní příkazového řádku, další informace o této možnosti najdete [nasadit řešení akcelerátoru z příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md).
 
 V tomto kurzu se naučíte:
 
@@ -45,7 +42,7 @@ Před nasazením řešení akcelerátoru k předplatnému Azure, musíte zvolit 
 
     ![Zvolte vzdálené monitorování](./media/iot-accelerators-remote-monitoring-deploy/remotemonitoring.png)
 
-1. Na **vytvořit vzdálené monitorování řešení** stránky, zadejte **název řešení** pro vaše vzdálené monitorování akcelerátoru řešení.
+1. Na **vytvořit vzdálené monitorování řešení** stránky, zadejte **název řešení** pro vaše akcelerátoru řešení vzdáleného monitorování.
 
 1. Vyberte **základní** nebo **standardní** nasazení. Pokud nasazujete řešení se dozvíte, jak to funguje nebo chcete spustit ukázku, zvolte **základní** možnost minimalizovat náklady.
 
@@ -63,9 +60,9 @@ Informace o odstraňování potíží, najdete v části [co dělat, když se na
 
 ## <a name="sign-in-to-the-solution-accelerator"></a>Přihlaste se k řešení akcelerátoru
 
-Po dokončení procesu zřizování přihlášením k vaší vzdálené monitorování akcelerátoru řešení.
+Po dokončení procesu zřizování přihlášením k vaší akcelerátoru řešení vzdáleného monitorování.
 
-1. Na **zřízení řešení** vyberte vaší nové řešení vzdáleného monitorování:
+1. Na **zřízení řešení** vyberte nové řešení vzdáleného monitorování:
 
     ![Zvolte nové řešení](./media/iot-accelerators-remote-monitoring-deploy/choosenew.png)
 
@@ -76,7 +73,7 @@ Po dokončení procesu zřizování přihlášením k vaší vzdálené monitoro
 
     ![Panel řešení](./media/iot-accelerators-remote-monitoring-deploy/solutionpanel.png)
 
-1. Řídicím panelu řešení vzdáleného monitorování se zobrazí v prohlížeči.
+1. Řídicí panel řešení vzdáleného monitorování se zobrazí v prohlížeči.
 
 ## <a name="next-steps"></a>Další postup
 

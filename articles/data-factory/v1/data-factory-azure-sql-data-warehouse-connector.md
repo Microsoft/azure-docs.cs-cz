@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df8fe611c762421f3a963340b24df74a80a20160
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621730"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -308,8 +309,8 @@ Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdr
 | TinyInt | TinyInt |
 | Bit | Bit |
 | Decimal | Decimal |
-| číselné | Decimal |
-| Plovoucí desetinná čárka | Plovoucí desetinná čárka |
+| Čísla | Decimal |
+| Float | Float |
 | peníze | peníze |
 | Real | Real |
 | SmallMoney | SmallMoney |
@@ -355,7 +356,7 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | Datový typ DateTimeOffset |Datový typ DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
-| Plovoucí desetinná čárka |Dvojitý |
+| Float |Double |
 | Bitové kopie |Byte] |
 | celá čísla |Int32 |
 | peníze |Decimal |
@@ -369,7 +370,7 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | smallint |Int16 |
 | Smallmoney |Decimal |
 | SQL_VARIANT |Objekt * |
-| Text |Řetězec, Char] |
+| text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
 | tinyint |Bajtů |

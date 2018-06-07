@@ -6,13 +6,14 @@ author: luiscabrer
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 3ab35cfd8ce5cf54a68473736fe05b78d26850de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 816951ac128fb76d748262cfbc5f064a44e6376c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640922"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Postup vytvoření skillset v kanálu obohacení
 
@@ -51,7 +52,7 @@ V diagramu *hádání dokumentu toho* krok probíhá automaticky. V podstatě Az
 
 ## <a name="skillset-definition-in-rest"></a>Definice Skillset v REST
 
-Skillset je definován jako pole znalostí. Každou dovednosti definuje zdroj vstupy a výstupy vytváří název. Pomocí [vytvořit Skillset REST API](ref-create-skillset.md), můžete definovat skillset, která odpovídá předchozímu diagramu: 
+Skillset je definován jako pole znalostí. Každou dovednosti definuje zdroj vstupy a výstupy vytváří název. Pomocí [vytvořit Skillset REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset), můžete definovat skillset, která odpovídá předchozímu diagramu: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
@@ -103,7 +104,7 @@ Content-Type: application/json
      "description": "Calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       },
       "context": "/document/content/organizations/*",
       "inputs": [
@@ -123,7 +124,7 @@ Content-Type: application/json
 }
 ```
 
-## <a name="create-a-skillset"></a>Vytvoření skillset
+## <a name="create-a-skillset"></a>Vytvoření sady dovedností
 
 Při vytváření skillset, můžete zadat popis aby dokumentace samoobslužné skillset. Popis je volitelný, ale užitečná pro udržování přehledu o jaké skillset. Protože skillset je dokument JSON, který neumožňuje komentáře, je nutné použít `description` pro tento element.
 
@@ -152,8 +153,7 @@ Podívejme se na první dovedností, což je předdefinovanou [s názvem entity 
           "name": "text",
           "source": "/document/content"
         }
-      ],
-      "outputs": [
+      ],      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -208,7 +208,7 @@ Odvolat strukturu vlastní enricher vyhledávání entity Bing:
      "description": "This skill calls an Azure function, which in turn calls Bing Entity Search",
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
-          "Ocp-Apim-Subscription-Key": "foobar",
+          "Ocp-Apim-Subscription-Key": "foobar"
       }
       "context": "/document/content/organizations/*",
       "inputs": [

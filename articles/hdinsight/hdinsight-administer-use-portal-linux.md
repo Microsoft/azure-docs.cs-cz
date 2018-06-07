@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b672b777e9a60f2f3d978947c06290db48e6766c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627019"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure
 
@@ -61,7 +62,7 @@ Předplatné Azure je třeba zadat při vytváření clusteru HDInsight. Cluster
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Klikněte na tlačítko **předplatné** v levé nabídce. Obsahuje žlutou ikonu klíče. Zobrazí se seznam předplatných.
     3. Klikněte na předplatné, který použijete k vytvoření clusterů. 
-    4. Klikněte na tlačítko **Moje oprávnění**.  Zobrazuje vaše [role](../role-based-access-control/overview.md#built-in-roles) u předplatného. Musí být minimálně Přispěvatel přístup k vytvoření clusteru HDInsight.
+    4. Klikněte na tlačítko **Moje oprávnění**.  Zobrazuje vaše [role](../role-based-access-control/built-in-roles.md) u předplatného. Musí být minimálně Přispěvatel přístup k vytvoření clusteru HDInsight.
 
 - Chcete-li použít existující skupinu prostředků:
 

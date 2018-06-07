@@ -1,25 +1,20 @@
 ---
-title: "Nejčastější dotazy k agentovi Azure Backup | Dokumentace Microsoftu"
-description: "Odpovědi na běžné dotazy týkající se fungování agenta Azure Backup a omezení zálohování a uchovávání."
+title: Agent Azure Backup – nejčastější dotazy
+description: Odpovědi na běžné dotazy týkající se fungování agenta Azure Backup a omezení zálohování a uchovávání.
 services: backup
-documentationcenter: 
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "zálohování a zotavení po havárii; služba zálohování"
-ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
+keywords: zálohování a zotavení po havárii; služba zálohování
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 7/18/2017
-ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: trinadhk
+ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605527"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám agenta Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).

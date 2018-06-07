@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641165"
 ---
 # <a name="service-limits-in-azure-search"></a>Omezení služby ve službě Azure Search
 Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a další objekty závisí na tom, zda jste [zřízení Azure Search](search-create-service-portal.md) v **volné**, **základní**, nebo **Standardní** cenové úrovně.
@@ -30,7 +31,7 @@ Maximální omezení na úložiště, úlohy a počty indexů, dokumentů, a dal
 > Služba se zřídí v konkrétní úroveň. Přechod k získání kapacity vrstvy zahrnuje zřizování (neexistuje žádné místní upgrade) nové služby. Další informace najdete v tématu [zvolte SKU nebo vrstvě](search-sku-tier.md). Další informace o úpravě kapacity v rámci služby jste už zřízené, najdete v části [škálovat prostředek úrovně pro dotaz a indexování úlohy](search-capacity-planning.md).
 >
 
-## <a name="subscription-limits"></a>Limity předplatného
+## <a name="subscription-limits"></a>Omezení předplatného
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
 ## <a name="storage-limits"></a>Limity úložiště
@@ -92,13 +93,16 @@ Snížení velikosti dokumentu, nezapomeňte vyloučit-dotazovatelný data z po�
 
 Základní služby vytvořené po pozdní 2017 mít zvýšená maximálně 15 indexy, zdrojů dat, skillsets a indexery.
 
+Náročná operace, například analýzy bitové kopie v Azure blob indexování nebo zpracování přirozeného jazyka ve kognitivní vyhledávání obsahují kratší časy maximální spuštěné, aby kódováním jiné indexování úlohy. Pokud úlohu indexování nelze dokončit v rámci maximální dobu povolenou, pokuste se spustit podle plánu. Plánovač uchovává informace o stavu indexování. Pokud z nějakého důvodu dojde k přerušení indexování naplánovanou úlohu, můžete tam, kde je poslední skončil v další naplánované spuštění vyberte indexeru.
+
 | Prostředek | Volné&nbsp;<sup>1</sup> | Základní&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |neuvedeno |
 | Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
 | Maximální skillsets <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |neuvedeno |
 | Maximální indexování zatížení na vyvolání |10 000 dokumentů |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |Omezeno pouze maximální dokumenty |neuvedeno |
-| Maximální dobu běhu | 1 – 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |
+| Maximální dobu spuštění <sup>5</sup> | 1 – 3 minut |24 hodin |24 hodin |24 hodin |24 hodin |neuvedeno  |
+| Maximální doby pro skillsets kognitivní hledání nebo objekt blob indexování image analýzy spuštění <sup>5</sup> | 3 až 10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |neuvedeno  |
 | Indexer objektů blob: velikost maximální objektu blob, MB |16 |16 |128 |256 |256 |neuvedeno  |
 | Indexer objektů blob: maximální počet znaků z objektu blob extrahovat obsahu |32,000 |64,000 |4 miliony |4 miliony |4 miliony |neuvedeno |
 
@@ -109,6 +113,8 @@ Základní služby vytvořené po pozdní 2017 mít zvýšená maximálně 15 in
 <sup>3</sup> služby S3 HD Nezahrnovat podpora indexeru.
 
 <sup>4</sup> maximálně 30 dovednosti za skillset.
+
+<sup>5</sup> kognitivní hledání úloh a analýza obrázků v Azure blob indexování mít kratší časy spuštěné než běžný text indexování. Obrázek analýzy a zpracování přirozeného jazyka jsou výpočetně náročné a využívat nesoustředil příliš velký množství dostupné výpočetní výkon. Doby spuštění byla snížena na poskytnout příležitost ke spuštění jiných úloh ve frontě.  
 
 ## <a name="queries-per-second-qps"></a>Dotazy na za sekundu (QPS)
 
@@ -123,7 +129,7 @@ Odhadne jsou předvídatelnější při počítaného na služby spuštěné na 
 * Maximální 32 polí v klauzuli $orderby
 * Maximální hledání termín velikost je 32 766 bajtů (32 KB minus 2 bajtů) textu ve formátu UTF-8
 
-<sup>1</sup> ve službě Azure Search je text požadavku podléhá horní limit 16 MB, nastavení praktické omezení na obsah jednotlivých polí nebo kolekce, které nejsou v opačném případě omezené teoretické omezení (viz [podporované dat typy](https://msdn.microsoft.com/library/azure/dn798938.aspx) Další informace o omezení a pole složení).
+<sup>1</sup> ve službě Azure Search je text požadavku podléhá horní limit 16 MB, nastavení praktické omezení na obsah jednotlivých polí nebo kolekce, které nejsou v opačném případě omezené teoretické omezení (viz [podporované dat typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) Další informace o omezení a pole složení).
 
 ## <a name="api-response-limits"></a>Omezení odpovědi rozhraní API
 * Maximální 1000 dokumenty vrácené na stránku výsledků hledání

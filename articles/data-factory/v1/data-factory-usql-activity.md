@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622849"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,11 +49,11 @@ Následující tabulka obsahuje popis obecné vlastnosti používané v definici
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Typ** |Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. |Ano |
+| **type** |Vlastnost typu musí být nastavená na: **AzureDataLakeAnalytics**. |Ano |
 | **accountName** |Název účtu Azure Data Lake Analytics. |Ano |
 | **dataLakeAnalyticsUri** |Identifikátor URI služby Azure Data Lake Analytics. |Ne |
-| **subscriptionId** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
-| **resourceGroupName** |Název skupiny prostředků Azure. |Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
+| **ID předplatného** |Id předplatného Azure |Ne (když není určeno, předplatné objektu pro vytváření dat se používá). |
+| **resourceGroupName** |Název skupiny prostředků Azure |Ne (když není určeno, skupinu prostředků objektu pro vytváření dat se používá). |
 
 ### <a name="service-principal-authentication-recommended"></a>Objekt zabezpečení ověřování služby (doporučeno)
 Pokud chcete použít ověřování hlavní služby, zaregistrujte entitu aplikace v Azure Active Directory (Azure AD) a jí udělit přístup k Data Lake Store. Podrobné pokyny najdete v tématu [Service-to-service ověřování](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Poznamenejte si následující hodnoty, které můžete použít k definování propojené služby:
@@ -212,7 +213,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | linkedServiceName   | Referenční dokumentace k Azure Data Lake Analytics registrován jako propojené služby v datové továrně | Ano                                      |
 | scriptPath          | Cesta ke složce, který obsahuje skript U-SQL. Název souboru je malá a velká písmena. | Ne (když používáte skript)                   |
 | scriptLinkedService | Propojené služby, který odkazuje úložiště, který obsahuje skript pro vytváření dat. | Ne (když používáte skript)                   |
-| skript              | Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když používáte scriptPath a scriptLinkedService) |
+| Skript              | Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když používáte scriptPath a scriptLinkedService) |
 | degreeOfParallelism | Maximální počet uzlů současně slouží ke spuštění úlohy. | Ne                                       |
 | priorita            | Určuje, jaké úlohy mimo všechny, které jsou zařazeny do fronty, měla by být vybrána má spustit jako první. Čím nižší je číslo, tím vyšší je priorita. | Ne                                       |
 | parameters          | Parametry pro skript U-SQL          | Ne                                       |

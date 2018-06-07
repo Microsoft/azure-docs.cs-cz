@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: cdb406c5a0a314562ae886c797c5ebd9dc5f8796
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 66843a5dda9f7b31b2b4c79df895eaff904513e6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595576"
 ---
 # <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Řídicí panel Kubernetes s Azure Kubernetes služby (AKS)
 
@@ -37,7 +38,7 @@ Tento příkaz vytvoří server proxy mezi váš vývojový systém a rozhraní 
 
 ## <a name="run-an-application"></a>Spuštění aplikace
 
-Na řídicím panelu Kubernetes klikněte na tlačítko **vytvořit** tlačítko v horním pravém okně. Zadejte název nasazení `nginx` a zadejte `nginx:latest` pro název bitové kopie. V části **služby**, vyberte **externí** a zadejte `80` pro port a cílový port.
+Na řídicím panelu Kubernetes klikněte na tlačítko **vytvořit** tlačítko v horním pravém okně. Zadejte název nasazení `nginx` a zadejte `nginx:latest` pro název kontejneru bitové kopie. V části **služby**, vyberte **externí** a zadejte `80` pro port a cílový port.
 
 Až budete připravení, klikněte na tlačítko **nasadit** vytvořte nasazení.
 

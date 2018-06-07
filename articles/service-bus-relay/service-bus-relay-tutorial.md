@@ -1,11 +1,11 @@
 ---
-title: "Kurz pro Azure předávání přes Service Bus WCF | Microsoft Docs"
-description: "Vytvoření aplikace klienta a služby pomocí přenosového WCF."
+title: Kurz pro Azure předávání přes Service Bus WCF | Microsoft Docs
+description: Vytvoření aplikace klienta a služby pomocí přenosového WCF.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: a0b06c32cf5f154cf5eb01842d9b917dcb35f7b3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642304"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Kurz pro Azure předávání WCF
 
-Tento kurz popisuje, jak sestavit jednoduchý klient WCF předávání aplikace a služby pomocí předávání přes Azure. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Tento kurz popisuje, jak sestavit jednoduchý klient WCF předávání aplikace a služby pomocí předávání přes Azure. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
 Absolvování tohoto kurzu pochopíte kroky, které jsou potřeba k vytvoření aplikace klienta a služby WCF předávání. Stejně jako jejich původní protějšky WCF je služba konstrukce, která vystavuje jeden nebo více koncových bodů, každý z nich vystavuje jednu nebo víc operací služeb. Koncový bod služby specifikuje adresu, kde se dá služba najít, vazbu, která obsahuje informaci, že klient musí komunikovat se službou, a kontrakt, který definuje funkci, kterou služba klientovi poskytuje. Hlavní rozdíl mezi WCF a předávací WCF je, že koncový bod vystavený v cloudu, a ne místně na vašem počítači.
 
@@ -48,7 +49,7 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
 ### <a name="create-a-relay-contract-with-an-interface"></a>Vytvoření kontraktu předávání s rozhraním
 
 1. Otevřete Visual Studio jako správce tak, že v nabídce **Start** kliknete na program pravým tlačítkem a vyberete možnost **Spustit jako správce**.
-2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogu **Nový projekt** klikněte na **Visual C#** (pokud se **Visual C#** nezobrazí, podívejte se do části **Jiné jazyky**). Klikněte **konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoService**. Kliknutím na tlačítko **OK** vytvořte projekt.
+2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogu **Nový projekt** klikněte na **Visual C#** (pokud se **Visual C#** nezobrazí, podívejte se do části **Jiné jazyky**). Klikněte **konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoService**. Projekt vytvoříte kliknutím na **OK**.
 
     ![][2]
 
@@ -98,7 +99,7 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
     Kanál je objekt WCF, kterým si hostitel a klient navzájem posílají informace. Později napíšete kód na kanál, aby se informace zrcadlily mezi oběma aplikacemi.
 10. V nabídce **Sestavení** můžete kliknout na **Sestavit řešení** nebo stisknout **Ctrl+Shift+B** a potvrdit přesnost své dosavadní práce.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující kód ukazuje základní rozhraní, které definuje kontrakt předávání WCF.
 
@@ -192,7 +193,7 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
     Koncový bod definuje, kde bude klient hledat hostitelskou aplikaci. Kurz později použije tento krok k vytvoření adresu URI, která plně vystavuje hostitele přes předávání přes Azure. Vazba deklaruje, že se používá TCP jako protokol pro komunikaci se službou předávání přes.
 7. V nabídce **Sestavení** klikněte na **Sestavit řešení** a zkontrolujte přesnost své práce.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující kód ukazuje implementaci kontraktu služby.
 
@@ -327,7 +328,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
     ```
 4. Stisknutím kláves **CTRL+SHIFT+B** sestavte projekt.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Kódu dokončené služby by měl vypadat takto. Kód obsahuje kontrakt a implementaci služby z předchozích kroků tohoto kurzu a hostuje službu v konzolové aplikaci.
 
@@ -439,7 +440,7 @@ Dalším krokem je vytvoření klientskou aplikaci a definování kontraktu slu�
     ```
 7. Stisknutím kláves **CTRL+SHIFT+B** sestavte klienta.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následující kód ukazuje aktuální stav souboru Program.cs v **EchoClient** projektu.
 
@@ -500,7 +501,7 @@ V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, 
     Tento krok definuje název koncového bodu, kontrakt definovaný ve službě a fakt, že klientská aplikace používá TCP ke komunikaci s předávání přes Azure. Název koncového bodu se použije v následujícím kroku k propojení této konfigurace koncového bodu s URI služby.
 5. Klikněte na tlačítko **soubor**, pak klikněte na tlačítko **Uložit vše**.
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Následující kód ukazuje soubor App.config pro klienta Echo.
 
@@ -606,7 +607,7 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál,
     channelFactory.Close();
     ```
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 
 Dokončený kód by měly vypadat následovně, jak vytvořit klientskou aplikaci, jak volat operace služby a jak zavřít klienta po volání operace je dokončena.
 
@@ -712,9 +713,9 @@ namespace Microsoft.ServiceBus.Samples
     `Server echoed: My sample text`
 12. Tímto způsobem můžete dál posílat textové zprávy z klienta do služby. Když skončíte, stiskněte Enter v oknech konzoly klienta a služby a obě aplikace se ukončí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Tento kurz vám ukázal, jak vytvářet klientem předávání přes Azure aplikace a služby pomocí možnosti WCF předávání přes Service Bus. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Tento kurz vám ukázal, jak vytvářet klientem předávání přes Azure aplikace a služby pomocí možnosti WCF předávání přes Service Bus. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
 Další informace o předávání přes Azure, naleznete v následujících tématech.
 

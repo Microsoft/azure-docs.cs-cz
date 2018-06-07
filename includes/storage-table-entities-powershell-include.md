@@ -56,7 +56,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 
 Tento příkaz dává výsledky podobně jako v následující tabulce:
 
-| ID uživatele | uživatelské jméno | Oddíl | rowkey |
+| ID uživatele | uživatelské jméno | oddíl | rowkey |
 |----|---------|---------------|----|
 | 1 | Jan | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
@@ -72,7 +72,7 @@ Get-AzureStorageTableRowByPartitionKey -table $storageTable -partitionKey $parti
 ```
 Výsledky vypadat podobně jako v následující tabulce:
 
-| ID uživatele | uživatelské jméno | Oddíl | rowkey |
+| ID uživatele | uživatelské jméno | oddíl | rowkey |
 |----|---------|---------------|----|
 | 1 | Jan | Oddíl1 | CA |
 | 3 | Jana | Oddíl1 | WA |
@@ -168,7 +168,7 @@ Pokud chcete odstranit jedné entity, získat odkaz na dané entity a zřetězit
 # Retrieve entity to be deleted, then pipe it into the remove cmdlet.
 $userToDelete = Get-AzureStorageTableRowByCustomFilter `
     -table $storageTable `
-    -customFilter 
+    -customFilter $filter
 $userToDelete | Remove-AzureStorageTableRow -table $storageTable 
 
 # Retrieve entities from table and see that Jessie2 has been deleted.

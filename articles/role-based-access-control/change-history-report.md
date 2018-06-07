@@ -11,36 +11,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2017
+ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e48ea2293c186bbc337f9d70464df374d64b5e61
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 737f8d49d8254806891d3177cde59187cd8e1f2e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640179"
 ---
 # <a name="view-activity-logs-for-role-based-access-control-changes"></a>Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí
 
-Vždy, když někdo provede změny definice rolí nebo přiřazení rolí v rámci vašich předplatných, změny se budou protokolovat [protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) v administrativní kategorie. Můžete zobrazit protokoly aktivity zobrazíte všechny změny přístupu na základě rolí k řízení (RBAC) za posledních 90 dnů.
+Někdy musíte informace o změnách přístupu na základě rolí k řízení (RBAC), například pro auditování nebo účely odstraňování potíží. Vždy, když někdo nějaký provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny se budou protokolovat [protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Můžete zobrazit protokoly aktivity zobrazíte všechny změny RBAC za posledních 90 dnů.
 
 ## <a name="operations-that-are-logged"></a>Operace, které se protokolují
 
 Zde jsou operací souvisejících s RBAC, které se zaznamenávají v protokolu aktivit:
 
-- Vytvořit nebo aktualizovat vlastní definici role
-- Odstranit definice rolí
 - Vytvořit přiřazení role
 - Odstranit přiřazení role
+- Vytvořit nebo aktualizovat vlastní definici role
+- Odstranit definice rolí
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Nejjednodušší způsob, jak začít pracovat se má zobrazit protokoly aktivity pomocí portálu Azure. Následující snímek obrazovky ukazuje příklad protokol činnosti filtrovanou zobrazíte **správy** kategorie spolu s definice role a operace přiřazení role. Zahrnuje také odkaz ke stažení protokolů do souboru CSV.
+Nejjednodušší způsob, jak začít pracovat se má zobrazit protokoly aktivity pomocí portálu Azure. Následující snímek obrazovky ukazuje příklad protokol činnosti filtrovanou zobrazíte operace definice role a přiřazení role. Zahrnuje také odkaz ke stažení protokolů do souboru CSV.
 
 ![Protokoly aktivity portálu – snímek obrazovky](./media/change-history-report/activity-log-portal.png)
 
-Další informace najdete v tématu [zobrazit události v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Protokol aktivit v portálu má několik filtrů. Zde jsou filtry související RBAC:
+
+|Filtr  |Hodnota  |
+|---------|---------|
+|Kategorie události     | <ul><li>Správa</li></ul>         |
+|Operace     | <ul><li>Vytvořit přiřazení role</li> <li>Odstranit přiřazení role</li> <li>Vytvořit nebo aktualizovat vlastní definici role</li> <li>Odstranit definice rolí</li></ul>      |
+
+
+Další informace o protokoly aktivity najdete v tématu [zobrazit události v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -99,7 +108,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete shromažďovat a analyzovat změny řízení přístupu na základě rolí pro všechny prostředky Azure. Analýzy protokolů má následující výhody:
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete shromažďovat a analyzovat změny RBAC pro všechny prostředky Azure. Analýzy protokolů má následující výhody:
 
 - Zápis složitých dotazů a logiku
 - Integrovat výstrahy, Power BI a další nástroje

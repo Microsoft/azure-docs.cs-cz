@@ -10,11 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 15fc879958bfd886210a90239e0247c60fe231f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640961"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipy k řešení potíží pro kognitivní vyhledávání
 
@@ -53,15 +54,15 @@ V takovém případě můžete zjistit indexeru ignorování chyb. Udělat nasta
 ## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Tip 4: Prohlížení provádět rozšířené dokumenty pod pokličkou 
 Provádět rozšířené dokumenty jsou dočasné struktury vytvořené během obohacení a poté odstranit po dokončení zpracování.
 
-Když Pokud chcete zachytit snímek provádět rozšířené dokument vytvořený během indexování, přidat pole s názvem ```enriched``` do indexu. Do pole indexeru automaticky vypíše řetězcovou reprezentaci všech enrichments pro tento dokument.
+Pokud chcete zachytit snímek rozšířeného dokumentu vytvořeného během indexování, přidejte do indexu pole s názvem ```enriched```. Indexer do tohoto pole automaticky vypíše řetězcovou reprezentaci všech rozšíření daného dokumentu.
 
-```enriched``` Pole bude obsahovat řetězec, který je logická reprezentace provádět rozšířené dokumentu v paměti ve formátu JSON.  Hodnota pole je ale na platný dokument JSON. Uvozovky jsou uvozeny uvozovacím znakem, budete muset nahradit `\"` s `"` Chcete-li zobrazit dokumentu jako formátu JSON. 
+Pole ```enriched``` bude obsahovat řetězec, který je logickou reprezentací rozšířeného dokumentu uloženého v paměti ve formátu JSON.  Hodnota pole je ale platný dokument JSON. Abyste si mohli dokument zobrazit jako formátovaný dokument JSON, bude nutné nahradit `\"` za `"`, protože pro uvozovky se používají řídicí sekvence. 
 
 Pole provádět rozšířené je určený pro účely, vám pomohou pochopit logický obrazec obsah, který se se vyhodnotí výrazy proti ladění. Neměli závisí na toto pole pro účely indexování.
 
 Přidat ```enriched``` pole jako součást definice indexu pro účely ladění:
 
-#### <a name="request-body-syntax"></a>Syntaxe požadavku textu
+#### <a name="request-body-syntax"></a>Syntaxe textu požadavku
 ```json
 {
   "fields": [
@@ -98,7 +99,7 @@ Pro založené na portálu indexování (jak je popsáno v rychlý start), výb�
 
 ## <a name="tip-7-increase-indexing-throughput"></a>Tip 7: Zvýšit propustnost indexování
 
-Pro [paralelní indexování](search-howto-reindex.md#parallel-indexing), umístit data do několika kontejnerů nebo více virtuálních složek ve stejném kontejneru. Pak vytvořte více párů zdroj dat a indexeru. Všechny indexery, můžete použít stejné skillset a zapisovat do stejné cílový index vyhledávání, hledání aplikace nemusí mít na paměti Toto rozdělení do oddílů.
+Pro [paralelní indexování](search-howto-large-index.md), umístit data do několika kontejnerů nebo více virtuálních složek ve stejném kontejneru. Pak vytvořte více párů zdroj dat a indexeru. Všechny indexery, můžete použít stejné skillset a zapisovat do stejné cílový index vyhledávání, hledání aplikace nemusí mít na paměti Toto rozdělení do oddílů.
 Další informace najdete v tématu [indexování rozsáhlých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Další informace najdete v tématech

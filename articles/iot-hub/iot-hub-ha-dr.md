@@ -1,24 +1,19 @@
 ---
-title: "Azure IoT Hub vysoké dostupnosti a zotavení po havárii | Microsoft Docs"
-description: "Popisuje funkce Azure a IoT Hub, které pomáhají při vytváření vysoce dostupné řešení Azure IoT se po havárii možnosti obnovení."
-services: iot-hub
-documentationcenter: 
+title: Azure IoT Hub vysoké dostupnosti a zotavení po havárii | Microsoft Docs
+description: Popisuje funkce Azure a IoT Hub, které pomáhají při vytváření vysoce dostupné řešení Azure IoT se po havárii možnosti obnovení.
 author: fsautomata
-manager: timlt
-editor: 
-ms.assetid: ae320e58-aa20-45b9-abdc-fa4faae8e6dd
+manager: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: ecc5da8daf0f5c93dffc93798f40507f8eac48be
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 428209defa554599c01789e6f2a8b62f155b0f2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633702"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub vysoké dostupnosti a zotavení po havárii
 Jako služby Azure IoT Hub poskytuje vysokou dostupnost (HA) pomocí redundance na úrovni oblasti Azure bez další zátěže vyžadují řešení. Platforma Microsoft Azure také obsahuje funkce, které pomáhají při vytváření řešení pomocí možnosti zotavení po havárii nebo mezi oblastmi dostupnosti. Pokud chcete zajistit globální, mezi oblastmi vysoká dostupnost pro zařízení nebo uživatelů, využít výhod těchto funkcí Azure zotavení po Havárii. Článek [Azure obchodní kontinuity technické pokyny](../resiliency/resiliency-technical-guidance.md) popisuje integrované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. [Zotavení po havárii a vysoká dostupnost pro aplikace Azure] [ Disaster recovery and high availability for Azure applications] dokument obsahuje pokyny k architektura s strategie pro aplikace Azure a dosáhnout HA a zotavení po Havárii.
@@ -26,7 +21,7 @@ Jako služby Azure IoT Hub poskytuje vysokou dostupnost (HA) pomocí redundance 
 ## <a name="azure-iot-hub-dr"></a>Azure IoT Hub DR
 Kromě HA uvnitř oblasti IoT Hub implementuje mechanismy převzetí služeb při selhání pro zotavení po havárii, které vyžadují od uživatele žádný zásah. IoT Hub DR samoobslužné inicializaci a má cíli času obnovení (RTO), 2-26 hodin a tyto cíle bodu obnovení (rpo):
 
-| Funkce | RPO |
+| Funkce | PLÁNOVANÝ BOD OBNOVENÍ |
 | --- | --- |
 | Dostupnost služeb pro operace registru a komunikace |Případné ztrátě CName |
 | Data identit v registru identit |0 – 5 minut ztrátě dat. |

@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: skwan
-ms.openlocfilehash: 27c4f35cbd8cc69e689b26078d5a07c8558d8e2a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.author: daveba
+ms.openlocfilehash: 5805dbc0a4831f14a4f9a98943a7611fa49961eb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594947"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-msi-to-access-azure-sql"></a>Kurz: Použití Windows virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure SQL
 
@@ -269,11 +270,9 @@ Případně je rychlý způsob, jak otestovat koncová nastavení bez nutnosti p
 
 Zkontrolujte hodnotu `$DataSet.Tables[0]` pro zobrazení výsledků dotazu.  Blahopřejeme, jste dotaz databáze pomocí MSI virtuálního počítače a bez nutnosti zadat přihlašovací údaje!
 
-## <a name="related-content"></a>Související obsah
+## <a name="next-steps"></a>Další postup
 
-- Přehled MSI najdete v tématu [identita spravované služby přehled](overview.md).
-- Další informace o [podporu Azure SQL pro ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication).
-- Další informace o [konfigurace podpory Azure SQL pro ověřování Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).
-- Další informace o [ověřování a přístup v systému SQL server](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions).
+V tomto kurzu jste zjistili, jak vytvořit identitu služby spravovat přístup k serveru Azure SQL.  Další informace o Azure SQL Server najdete v tématu:
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.
+> [!div class="nextstepaction"]
+>[Služba Azure SQL Database](/azure/sql-database/sql-database-technical-overview)

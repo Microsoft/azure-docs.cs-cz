@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f1a2ec3bdf77e6f4f433c88b470e108b734fc4c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 67a91f8b61c1a0783d2075a13cc8cf2701496c88
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34622376"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Přesun dat do a z místní SQL Server nebo na IaaS (virtuální počítač Azure) pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -654,37 +655,37 @@ Mapování je stejný jako mapování SQL Server datového typu pro technologii 
 | Typ databázového stroje SQL Server | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte[] |
+| Binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
 | datum |DateTime |
 | Datum a čas |DateTime |
 | datetime2 |DateTime |
-| Datetimeoffset |DateTimeOffset |
+| Datový typ DateTimeOffset |Datový typ DateTimeOffset |
 | Decimal |Decimal |
-| Atribut FILESTREAM (varbinary(max)) |Byte[] |
-| Plovoucí desetinná čárka |Dvojitý |
-| Bitové kopie |Byte[] |
+| Atribut FILESTREAM (varbinary(max)) |Byte] |
+| Float |Double |
+| Bitové kopie |Byte] |
 | celá čísla |Int32 |
-| money |Decimal |
+| peníze |Decimal |
 | nchar |Řetězec, Char] |
 | ntext |Řetězec, Char] |
 | číselné |Decimal |
 | nvarchar |Řetězec, Char] |
-| skutečné |Svobodný/svobodná |
-| ROWVERSION |Byte[] |
+| skutečné |Jednoduchá |
+| ROWVERSION |Byte] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | Smallmoney |Decimal |
-| sql_variant |Objekt * |
-| Text |Řetězec, Char] |
-| time |TimeSpan |
-| časové razítko |Byte[] |
+| SQL_VARIANT |Objekt * |
+| text |Řetězec, Char] |
+| time |Časový interval |
+| časové razítko |Byte] |
 | tinyint |Bajtů |
 | Typ UniqueIdentifier |Guid |
-| varbinary |Byte[] |
+| varbinary |Byte] |
 | varchar |Řetězec, Char] |
-| xml |Xml |
+| xml |XML |
 
 ## <a name="mapping-source-to-sink-columns"></a>Mapování zdroje jímky sloupců
 Mapování sloupců z datové sady zdroje na sloupce ze sady jímku dat naleznete v tématu [mapování sloupců datovou sadu v Azure Data Factory](data-factory-map-columns.md).

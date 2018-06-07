@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6052dae1321e8ac8238ec2994886de30db27551e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0149b15fdfbd9fd7a3c9f9c099db9d505d27d1c5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623056"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Přesun dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -288,17 +289,17 @@ TINYINT | Bajtů
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-SKUTEČNÉ | Svobodný/svobodná
-DOUBLE | Svobodný/svobodná
+SKUTEČNÉ | Jednoduchá
+DOUBLE | Jednoduchá
 DECIMAL | Decimal
 LOGICKÁ HODNOTA | Bajtů
 VARCHAR | Řetězec
 NVARCHAR | Řetězec
-DATOVÝ TYP CLOB | Byte[]
+DATOVÝ TYP CLOB | Byte]
 ALPHANUM | Řetězec
-OBJEKT BLOB | Byte[]
+OBJEKT BLOB | Byte]
 DATE (Datum) | DateTime
-ČAS | TimeSpan
+ČAS | Časový interval
 ČASOVÉ RAZÍTKO | DateTime
 SECONDDATE | DateTime
 

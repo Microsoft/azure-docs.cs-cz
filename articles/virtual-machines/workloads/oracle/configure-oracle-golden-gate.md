@@ -1,13 +1,13 @@
 ---
-title: "Implementace Oracle Golden brány ve virtuálním počítači Azure Linux | Microsoft Docs"
-description: "Rychle získáte bránou Golden Oracle nahoru a spouštění v prostředí Azure."
+title: Implementace Oracle Golden brány ve virtuálním počítači Azure Linux | Microsoft Docs
+description: Rychle získáte bránou Golden Oracle nahoru a spouštění v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: c99023d794dfb3b78b26ef721d89302e126f5cb1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 568ec352101cb555e295327bc11f1940da57d9f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656376"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementace Oracle Golden brány ve virtuálním počítači Azure Linux 
 
@@ -40,7 +41,7 @@ Následuje souhrn konfigurace prostředí:
 > |  | **Primární lokalita** | **Replikace webu** |
 > | --- | --- | --- |
 > | **Databázi Oracle** |Oracle 12c verze 2 – (12.1.0.2) |Oracle 12c verze 2 – (12.1.0.2)|
-> | **Název počítače** |myVM1 |myVM2 |
+> | **Název počítače** |myVM1 |Můjvp2 |
 > | **Operační systém** |Oracle Linux 6.x |Oracle Linux 6.x |
 > | **Oracle SID** |CDB1 |CDB1 |
 > | **Schéma replikace** |TEST|TEST |

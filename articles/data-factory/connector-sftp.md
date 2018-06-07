@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d6e66104e602d7e5cbfadab004a4f9547c9b6c7
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 0cabb2f5618ef5179e2a25278fa2460556036d77
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618408"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopírování dat ze serveru pomocí protokolu SFTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,11 +49,11 @@ Následující části obsahují podrobnosti o vlastnosti, které slouží k ur�
 
 Pro SFTP propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu musí být nastavena na: **Sftp**. |Ano |
+| type | Vlastnost typu musí být nastavena na: **Sftp**. |Ano |
 | hostitel | Název nebo IP adresa serveru pomocí protokolu SFTP. |Ano |
-| Port | Port, na kterém naslouchá server pomocí protokolu SFTP.<br/>Povolené hodnoty jsou: výchozí hodnota je celé číslo, **22**. |Ne |
+| port | Port, na kterém naslouchá server pomocí protokolu SFTP.<br/>Povolené hodnoty jsou: výchozí hodnota je celé číslo, **22**. |Ne |
 | skipHostKeyValidation | Určete, zda chcete přeskočit ověření klíče hostitele.<br/>Povolené hodnoty jsou: **true**, **false** (výchozí).  | Ne |
 | hostKeyFingerprint | Zadejte prstu klíče hostitele. | Ano, pokud "skipHostKeyValidation" je nastavena na hodnotu false.  |
 | authenticationType. | Zadejte typ ověřování.<br/>Povolené hodnoty jsou: **základní**, **parametru SshPublicKey**. Odkazovat na [základní ověřování pomocí](#using-basic-authentication) a [pomocí SSH ověření veřejného klíče](#using-ssh-public-key-authentication) částech na další vlastnosti a ukázky JSON v uvedeném pořadí. |Ano |
@@ -62,7 +63,7 @@ Pro SFTP propojené služby jsou podporovány následující vlastnosti:
 
 Chcete-li základní ověřování použijte, nastavte vlastnost "authenticationType" na **základní**a zadejte následující vlastnosti kromě konektor SFTP obecné ty, které jsou zavedené v poslední části:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | Uživatelské jméno | Uživatel, který má přístup k serveru pomocí protokolu SFTP. |Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -100,7 +101,7 @@ Chcete-li základní ověřování použijte, nastavte vlastnost "authentication
 
 Chcete-li použít ověření veřejného klíče SSH, nastavte vlastnost "authenticationType" jako **parametru SshPublicKey**a zadejte následující vlastnosti kromě konektor SFTP obecné ty, které jsou zavedené v poslední části:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | Uživatelské jméno | Uživatel, který má přístup k serveru pomocí protokolu SFTP |Ano |
 | privateKeyPath | Zadejte absolutní cestu k souboru privátního klíče, který přístup integrace modulu Runtime. Platí jenom v případě, že je zadán vlastním hostováním typ integrace Runtime v "connectVia". | Zadejte buď `privateKeyPath` nebo `privateKeyContent`.  |
@@ -177,9 +178,9 @@ Chcete-li použít ověření veřejného klíče SSH, nastavte vlastnost "authe
 
 Ke zkopírování dat z protokolu SFTP, nastavte vlastnost typu datové sady, která **sdílení souborů**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu datové sady musí být nastavena na: **sdílení souborů** |Ano |
+| type | Vlastnost typu datové sady musí být nastavena na: **sdílení souborů** |Ano |
 | folderPath | Cesta ke složce. Zástupný filtr není podporován. Příklad: složku nebo podsložku / |Ano |
 | fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
@@ -229,9 +230,9 @@ Ke zkopírování dat z protokolu SFTP, nastavte vlastnost typu datové sady, kt
 
 Ke zkopírování dat z protokolu SFTP, nastavte typ zdroje v aktivitě kopírování do **FileSystemSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **FileSystemSource** |Ano |
+| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **FileSystemSource** |Ano |
 | Rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
 
 **Příklad:**

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 66d3ee76308573bb5672ffa8eeedcc4aca4c0cc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638343"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení monitorování kontejneru v analýzy protokolů
 
@@ -52,7 +53,7 @@ Následující tabulka popisuje Docker orchestration a monitorování podporu ko
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| Služba<br>Prostředky infrastruktury | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Služba<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Otevřete Red Hat<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(samostatně) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux Server<br>(samostatně) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -90,7 +91,7 @@ Následující tabulka popisuje Docker orchestration a monitorování podporu ko
 - Docker 17.03.0 a novější
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
-Použijte následující informace k instalaci a konfiguraci řešení.
+K instalaci a konfiguraci řešení můžete použít následující informace.
 
 1. Přidat kontejner monitorování řešení do pracovního prostoru analýzy protokolů z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
 
@@ -528,7 +529,7 @@ Můžete ověřit, jestli je řešení monitorování kontejneru správně nasta
 
 ## <a name="solution-components"></a>Součásti řešení
 
-Pokud používáte agenty se systémem Windows, je při přidání tohoto řešení následující sady management pack nainstalované na každém počítači s agentem. Je požadován pro sadu management pack bez konfigurace nebo údržby.
+Z portálu OMS, přejděte na *řešení Galerie* a přidejte **řešení monitorování kontejner**. Pokud používáte agenty se systémem Windows, je při přidání tohoto řešení následující sady management pack nainstalované na každém počítači s agentem. Je požadován pro sadu management pack bez konfigurace nebo údržby.
 
 - *ContainerManagement.xxx* nainstalované v C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management SP
 
@@ -546,7 +547,7 @@ Data jsou shromažďována každé tři minuty následující typy agenta.
 
 V následující tabulce jsou uvedeny příklady záznamů shromážděných řešením pro monitorování kontejneru a datové typy, které se zobrazí ve výsledcích hledání protokolu.
 
-| Typ dat | Datový typ v hledání protokolů | Pole |
+| Typ dat | Datový typ v hledání protokolů | Fields (Pole) |
 | --- | --- | --- |
 | Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, název_čítače &#40;% času procesoru, disku čte MB, zapíše MB, MB využití paměti, disku sítě přijatých bajtů, sítě odesílat bajtů, procesor doba využití, sítě&#41;, přepočtené, TimeGenerated, Cesta_k_čítači, SourceSystem |
 | Kontejner inventáře | `ContainerInventory` | TimeGenerated, počítače a název kontejneru, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, příkazu, CreatedTime, StartedTime, FinishedTime, SourceSystem, identifikátor ContainerID, ID obrázku |
@@ -563,6 +564,7 @@ Popisky připojenou k *PodLabel* datové typy jsou vlastní štítky. Připojen�
 
 ## <a name="monitor-containers"></a>Monitorování kontejnerů
 Až budete mít povoleno na portálu analýzy protokolů řešení **kontejnery** dlaždice se zobrazí souhrnné informace o kontejneru hostitelů a kontejnerů, které jsou spuštěné v hostitelích.
+
 
 ![Dlaždice kontejnery](./media/log-analytics-containers/containers-title.png)
 

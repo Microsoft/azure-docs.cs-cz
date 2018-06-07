@@ -1,18 +1,19 @@
 ---
 title: Připojení zařízení DevKit do aplikace Azure IoT centrální | Microsoft Docs
 description: Jako vývojář zařízení zjistěte, jak se připojit k aplikaci Azure IoT centrální zařízení s MXChip IoT DevKit.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 4c7074e5e7d3858919f3fc17005fea4f8dce1560
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: af5cfc2f598893328bc8d4acc979f6d777114f99
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628789"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojte zařízení MXChip IoT DevKit do aplikace Azure IoT centrální
 
@@ -29,7 +30,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **MXChip**
 
 ### <a name="telemetry-measurements"></a>Měření telemetrie
 
-| Název pole     | Jednotky  | Minimální | Maximum | Desetinných míst |
+| Název pole     | Jednotky  | Minimální | Maximum | Desetinná místa |
 | -------------- | ------ | ------- | ------- | -------------- |
 | vlhkosti       | %      | 0       | 100     | 0              |
 | dočasné           | ° C     | -40     | 120     | 0              |
@@ -48,7 +49,7 @@ Aplikace vytvořené z **ukázka Devkits** obsahuje šablony aplikace **MXChip**
 
 Číselné nastavení
 
-| Zobrazované jméno | Název pole | Jednotky | Desetinných míst | Minimální | Maximum | Počáteční |
+| Zobrazované jméno | Název pole | Jednotky | Desetinná místa | Minimální | Maximum | Počáteční |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Napětí      | setVoltage | Intenzita | 0              | 0       | 240     | 0       |
 | Aktuální      | setCurrent | A  | 0              | 0       | 100     | 0       |
@@ -79,7 +80,7 @@ Přepnutí nastavení
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Bylo stisknuto tlačítko B  | 
 
-### <a name="add-a-real-device"></a>Přidání skutečné zařízení
+### <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
 V aplikaci Azure IoT centrální přidat skutečné zařízení z **MXChip** šablona zařízení a je zaznamenána připojovací řetězec zařízení. Další informace najdete v tématu [přidat skutečné zařízení Azure IoT centrální aplikace](tutorial-add-device.md).
 
@@ -200,4 +201,4 @@ Informace o tom, jak změnit, vytvoření a odeslání ukázkového kódu do va�
 
 Teď, když jste se naučili jak se připojit k aplikaci Azure IoT centrální DevKit zařízení, tady jsou navrhované další kroky:
 
-* [Příprava a připojte malin platformy](howto-connect-raspberry-pi-python.md)
+* [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
