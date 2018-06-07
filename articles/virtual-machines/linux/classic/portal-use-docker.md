@@ -4,7 +4,7 @@ description: Popisuje Docker a rozšíření Azure virtuálních počítačů a 
 services: virtual-machines-linux
 documentationcenter: ''
 author: squillace
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: 19cf64e8-f92c-43ad-a120-8976cd9102ac
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.openlocfilehash: 674bc870bbbf4e076fbd1d88fcc3bf299eccde84
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 76497f58678e5ecfbab7d263b3adb4c475763cd8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653582"
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-portal"></a>Pomocí Docker rozšíření virtuálního počítače pomocí portálu Azure
 > [!IMPORTANT] 
@@ -29,7 +30,7 @@ ms.lasthandoff: 05/10/2018
 [Docker](https://www.docker.com/) je jednou z nejčastěji používané virtualizace přístupy, které používá [Linux kontejnery](http://en.wikipedia.org/wiki/LXC) místo virtuální počítače jako způsob oddělením dat a výpočty na sdílených prostředků. Můžete použít rozšíření virtuálního počítače Docker spravuje [Azure Linux Agent] vytvoření Docker virtuálního počítače, který je hostitelem libovolný počet kontejnerů pro vaše aplikace v Azure.
 
 > [!NOTE]
-> Toto téma popisuje, jak vytvořit virtuální počítač Docker z portálu Azure. Jak vytvořit virtuální počítač Docker na příkazovém řádku, najdete v sekci [jak používat rozšíření virtuálního počítače z rozhraní příkazového řádku (Azure CLI) Docker]. Podrobný popis kontejnery a jejich výhody, najdete v sekci [Docker vysokou úroveň tabulí](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
+> Toto téma popisuje, jak vytvořit virtuální počítač Docker z portálu Azure. Jak vytvořit virtuální počítač Docker na příkazovém řádku, najdete v sekci [Jak používat rozšíření virtuálního počítače Docker z rozhraní příkazového řádku (Azure CLI)]. Podrobný popis kontejnery a jejich výhody, najdete v sekci [Docker vysokou úroveň tabulí](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
 > 
 > 
 
@@ -46,7 +47,7 @@ Prvním krokem vyžaduje virtuální počítač Azure z Linux bitovou kopii, kte
 ## <a name="create-docker-certificates"></a>Vytvoření Docker certifikátů
 Po vytvoření virtuálního počítače, zkontrolujte, zda je na klientském počítači nainstalovaný Docker. (Podrobnosti najdete v tématu [pokyny k instalaci Docker](https://docs.docker.com/installation/#installation).)
 
-Vytvořte certifikát a klíč soubory pro komunikaci Docker podle [systémem Docker s protokolem https] a umístěte je do **`~/.docker`** adresář na klientském počítači.
+Vytvořte certifikát a klíč soubory pro komunikaci Docker podle [Spuštění Docker s protokolem https] a umístěte je do **`~/.docker`** adresář na klientském počítači.
 
 > [!NOTE]
 > Rozšíření virtuálního počítače Docker portálu aktuálně vyžaduje přihlašovací údaje, které kódováním base64.
@@ -130,7 +131,7 @@ Po dokončení výše uvedené kroky máte nyní plně funkční Docker hostitel
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
-Jste připravení přejít ke [Docker uživatelská příručka] a používat virtuální počítač Docker. Pokud chcete automatizovat vytváření hostitelů Docker na virtuálních počítačích Azure prostřednictvím rozhraní příkazového řádku, přečtěte si téma [jak používat rozšíření virtuálního počítače z rozhraní příkazového řádku (Azure CLI) Docker]
+Jste připravení přejít ke [Uživatelská příručka docker] a používat virtuální počítač Docker. Pokud chcete automatizovat vytváření hostitelů Docker na virtuálních počítačích Azure prostřednictvím rozhraní příkazového řádku, přečtěte si téma [jak používat rozšíření virtuálního počítače Docker z rozhraní příkazového řádku (Azure CLI)]
 
 <!--Anchors-->
 [Create a new VM from the Image Gallery]:#createvm
@@ -153,9 +154,9 @@ Jste připravení přejít ke [Docker uživatelská příručka] a používat vi
 
 
 <!--Link references-->
-[jak používat rozšíření virtuálního počítače z rozhraní příkazového řádku (Azure CLI) Docker]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
+[Jak používat rozšíření virtuálního počítače Docker z rozhraní příkazového řádku (Azure CLI)]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-xplat-cli/
 [Azure Linux Agent]:../../extensions/agent-linux.md
 [Link 3 to another azure.microsoft.com documentation topic]:../storage-whatis-account.md
 
-[systémem Docker s protokolem https]:http://docs.docker.com/articles/https/
-[Docker uživatelská příručka]:https://docs.docker.com/userguide/
+[Spuštění Docker s protokolem https]:http://docs.docker.com/articles/https/
+[Uživatelská příručka docker]:https://docs.docker.com/userguide/

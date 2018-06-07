@@ -16,11 +16,12 @@ ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 325ef42d72970f4e0962a9b1a81b78bbd39585d4
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: a093e60718881b2fe9ca70df7596e8963dc55d9f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808039"
 ---
 # <a name="tutorial-add-an-azure-stack-marketplace-item-from-a-local-source"></a>Kurz: Přidání položky marketplace zásobník Azure z místního zdroje
 
@@ -48,85 +49,82 @@ Zásobník Azure marketplace můžete publikovat bitovou kopii systému Windows 
 
 Tuto možnost použijte, pokud jste nasadili zásobník Azure ve scénáři odpojené nebo ve scénářích s omezené připojení.
 
-1. Import v Azure zásobníku `Connect` a `ComputeAdmin` moduly Powershellu, které jsou zahrnuty v adresáři nástroje zásobník Azure pomocí následujících příkazů:
+1. [Instalace prostředí PowerShell pro Azure zásobníku](../azure-stack-powershell-install.md).
 
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned
+  ```PowerShell  
+    # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+    Add-AzureRMEnvironment `
+      -Name "AzureStackAdmin" `
+      -ArmEndpoint $ArmEndpoint
 
-   # Import the Connect and ComputeAdmin modules.   
-   Import-Module .\Connect\AzureStack.Connect.psm1
-   Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
+    Set-AzureRmEnvironment `
+      -Name "AzureStackAdmin" `
+      -GraphAudience $GraphAudience
 
-   ```
+    $TenantID = Get-AzsDirectoryTenantId `
+      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
+      -EnvironmentName AzureStackAdmin
 
-2. Spusťte jeden z následujících skriptů na hostitelském počítači ASDK v závislosti na tom, jestli jste nasadili prostředí zásobníku Azure pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS):
+    Add-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID
+  ```
 
-  - Příkazy pro **nasazení služby Azure AD**: 
+2. Pokud používáte **Active Directory Federation Services**, použijte následující rutinu:
 
-      ```PowerShell
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
+  ```PowerShell
+  # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+  $ArmEndpoint = "<Resource Manager endpoint for your environment>"
 
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $GraphAudience = "https://graph.windows.net/"
-      
-      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-      Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" `
-        -ArmEndpoint $ArmEndpoint
+  # For Azure Stack Development Kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+  $GraphAudience = "<GraphAuidence endpoint for your environment>"
 
-      Set-AzureRmEnvironment `
-        -Name "AzureStackAdmin" `
-        -GraphAudience $GraphAudience
-
-      $TenantID = Get-AzsDirectoryTenantId `
-      # Replace the AADTenantName value to reflect your Azure AD tenant name.
-        -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
-        -EnvironmentName AzureStackAdmin
-
-      Add-AzureRmAccount `
-        -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
-      ```
-
-  - Příkazy pro **nasazení služby AD FS**:
-      
-      ```PowerShell
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $ArmEndpoint = "https://adminmanagement.local.azurestack.external"
-
-      # To get this value for Azure Stack integrated systems, contact your service provider.
-      $GraphAudience = "https://graph.local.azurestack.external/"
-
-      # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
-      Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" `
-        -ArmEndpoint $ArmEndpoint
-
-      Set-AzureRmEnvironment `
-        -Name "AzureStackAdmin" `
-        -GraphAudience $GraphAudience `
-        -EnableAdfsAuthentication:$true
-
-      $TenantID = Get-AzsDirectoryTenantId `
-      -ADFS `
-      -EnvironmentName "AzureStackAdmin" 
-
-      Add-AzureRmAccount `
-        -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
-      ```
-   
-3. Přidejte bitovou kopii systému Windows Server 2016 do zásobníku Azure marketplace. (Nahraďte *fully_qualified_path_to_ISO* cestou k Windows serveru 2016 ISO, který jste si stáhli.)
-
-    ```PowerShell
-    $ISOPath = "<fully_qualified_path_to_ISO>"
-
-    # Add a Windows Server 2016 Evaluation VM image.
-    New-AzsServer2016VMImage `
-      -ISOPath $ISOPath
-
+  # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
+  Add-AzureRMEnvironment `
+    -Name "AzureStackAdmin" `
+    -ArmEndpoint $ArmEndpoint
     ```
+
+3. Přihlaste se k Azure zásobníku jako operátor. Pokyny najdete v tématu [Přihlaste se k Azure zásobníku jako operátor](../azure-stack-powershell-configure-admin.md).
+
+   ````PowerShell  
+    Add-AzureRmAccount `
+      -EnvironmentName "AzureStackAdmin" `
+      -TenantId $TenantID
+  ````
+
+4. Přidejte bitovou kopii systému Windows Server 2016 do zásobníku Azure marketplace.
+
+    **Přidat AzsPlatformimage** rutina, kterou používá k přidání bitové kopie určuje hodnoty, které slouží k odkazování image virtuálního počítače pomocí šablony Azure Resource Manager.
+    
+    Hodnoty patří:
+    
+  - **publisher**  
+    Příklad: `Microsoft`  
+    Segment název vydavatele bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii. Příkladem je **Microsoft**. V tomto poli nezahrnují mezery nebo speciální znaky.  
+  - **Nabídka**  
+    Příklad: `WindowsServer`  
+    Segment nabídka název bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Příkladem je **Windows Server**. V tomto poli nezahrnují mezery nebo speciální znaky.  
+  - **sku**  
+    Příklad: `Datacenter2016`  
+    Segment SKU název bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Příkladem je **Datacenter2016**. V tomto poli nezahrnují mezery nebo speciální znaky.  
+  - **Verze**  
+    Příklad: `1.0.0`  
+    Verze bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezery nebo speciální znaky.  
+  - **osType**  
+    Příklad: `Windows`  
+    OsType bitové kopie musí být buď **Windows** nebo **Linux**. Nahraďte *fully_qualified_path_to_ISO* cestou k Windows serveru 2016 ISO, který jste si stáhli. 
+  - **OSUri**  
+    Příklad: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
+    Můžete zadat úložiště objektů blob identifikátor URI pro `osDisk`. V případě jeho zadáte umístění, kam jste uložili bitovou kopii, která jste si stáhli.
+
+    Další informace najdete v tématu odkaz na prostředí PowerShell pro [přidat AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) rutiny.
+
+    Otevřete prostředí PowerShell s řádku se zvýšenými oprávněními a spusťte:
+
+      ````PowerShell  
+        Add-AzsPlatformimage -publisher "Microsoft" -offer "WindowsServer" -sku "Datacenter2016" -version "1.0.0” -OSType "Windows" -OSUri "<fully_qualified_path_to_ISO>"
+      ````  
 
 ## <a name="verify-the-marketplace-item-is-available"></a>Ověřte, zda že je k dispozici položku marketplace.
 Tyto kroky použijte k ověření, že nová bitová kopie virtuálního počítače je k dispozici v zásobníku Azure marketplace.

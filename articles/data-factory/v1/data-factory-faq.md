@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 387b5e944b0fd198e37a35d7bf1c54f7795c9f21
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 12422a1123673feac1977fa5f52f49b2cdfda777
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621342"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Pro vytváření dat Azure – nejčastější dotazy
 > [!NOTE]
@@ -40,7 +41,7 @@ V tématu [stránku Podrobnosti o cenách na Data Factory] [ adf-pricing-details
 * Kurz o tom, jak **zkopírovat nebo přesunout data** pomocí aktivity kopírování, najdete v tématu [kopírování dat z Azure Blob Storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Kurz o tom, jak **transformovat data** pomocí aktivity HDInsight Hive. V tématu [zpracování dat pomocí skriptu Hive v clusteru Hadoop](data-factory-build-your-first-pipeline.md)
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Co je dostupnost služby Data Factory v oblastech?
+### <a name="what-is-the-data-factorys-region-availability"></a>Co je dostupnost služby Data Factory v oblastech s?
 Objekt pro vytváření dat je k dispozici v **USA – západ** a **Severní Evropa**. Výpočetní a úložné služby používá objekty pro vytváření dat může být v jiných oblastech. V tématu [podporované oblasti](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení počtu data Factory/kanálů nebo aktivity nebo datových sad?

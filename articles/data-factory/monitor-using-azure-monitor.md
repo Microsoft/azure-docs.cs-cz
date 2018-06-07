@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620336"
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Monitorovat pomocí monitorování Azure data Factory  
 Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou. Kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Tato znalostní báze můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -106,7 +107,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
 | StorageAccountId |Řetězec | ID prostředku účtu úložiště, do kterého chcete odesílání diagnostických protokolů |
-| serviceBusRuleId |Řetězec | Sběrnice služby pravidlo ID oboru názvů sběrnice služby, ve kterém chcete mít centra událostí vytvořit pro streamování diagnostické protokoly. Pravidlo ID je ve formátu: "{service bus ID prostředku} /authorizationrules/ {název klíče}".|
+| serviceBusRuleId |Řetězec | Sběrnice služby pravidlo ID oboru názvů sběrnice služby, ve kterém chcete mít centra událostí vytvořit pro streamování diagnostické protokoly. Pravidlo ID je ve formátu: {service bus ID prostředku} /authorizationrules/ {název klíče}.|
 | ID pracovního prostoru | Komplexní typ | Pole zrna metriky čas a jejich zásady uchovávání informací. V současné době je tato vlastnost prázdná. |
 |Průzkumníku metrik| Hodnoty parametru kanálu spustit mají být předány vyvolaná kanálu| Objekt JSON mapování názvy parametrů pro argument hodnoty | 
 | Protokoly| Komplexní typ| Název kategorie protokolů diagnostiky pro typ prostředku. Pokud chcete získat seznam kategorií protokolů diagnostiky pro prostředek, nejprve proveďte nastavení pro diagnostiku operaci GET. |
@@ -412,7 +413,7 @@ Můžete také přihlásit k portálu Azure a klikněte na tlačítko **monitoro
 
 ![Výstrahy v nabídce portálu](media/monitor-using-azure-monitor/alerts_image3.png)
 
-### <a name="create-alerts"></a>Vytvářet výstrahy
+### <a name="create-alerts"></a>Vytvořit výstrahy
 
 1.  Klikněte na tlačítko **+ nové pravidlo výstrahy** vytvořit nové oznámení.
 

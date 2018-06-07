@@ -15,11 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 314c5b51608192719c77ce143b3530f0bb310bc2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.openlocfilehash: 6364c0bec8437ba0dfa195c6532b26ec506a2e90
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807427"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Zřízení disku úložiště virtuálního počítače v Azure zásobníku
 
@@ -61,26 +62,26 @@ Po vytvoření virtuálního počítače, můžete na portálu:
 Každý nespravované disku, které přidáte měly být umístěny v samostatných kontejneru.
 
 >[!NOTE]
->Disky vytvořen a spravován společností Azure se nazývají [discích spravovaných](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview).
+>Disky vytvořen a spravován společností Azure se nazývají [discích spravovaných](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Použití portálu a vytvořte nový datový disk
 
-1.  Na portálu, klikněte na tlačítko **virtuální počítače**.    
+1.  Na portálu, zvolte **virtuální počítače**.    
     ![Příklad: Virtuálních počítačů řídicí panel](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  Vyberte virtuální počítač, který má dříve zajištěny.   
     ![Příklad: Vyberte virtuální počítač v řídicím panelu](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Virtuální počítač, klikněte na tlačítko **disky** > **připojit nový**.       
+3.  Pro virtuální počítač, vyberte **disky** > **připojit nový**.       
     ![Příklad: Připojte nový disk k virtuálnímu počítači](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  V **připojit nový disk** podokně klikněte na tlačítko **umístění**. Ve výchozím umístění nastavena do kontejneru, která obsahuje disk operačního systému.      
+4.  V **připojit nový disk** podokně, vyberte **umístění**. Ve výchozím umístění nastavena do kontejneru, která obsahuje disk operačního systému.      
     ![Příklad: Nastavte na místo na disku](media/azure-stack-manage-vm-disks/disk-location.png)
 
-5.  Vyberte **účet úložiště** používat. Potom vyberte **kontejneru** místo, kam chcete umístit datový disk. Z **kontejnery** stránky, pokud chcete, můžete vytvořit nový kontejner. Pro vlastní kontejner můžete změnit umístění pro nový disk. Pokud použijete samostatné kontejner pro každý disk, je třeba distribuovat umístění datový disk, který může zlepšit výkon. Klikněte na tlačítko **vyberte** uložení výběru.     
+5.  Vyberte **účet úložiště** používat. Potom vyberte **kontejneru** místo, kam chcete umístit datový disk. Z **kontejnery** stránky, pokud chcete, můžete vytvořit nový kontejner. Pro vlastní kontejner můžete změnit umístění pro nový disk. Pokud použijete samostatné kontejner pro každý disk, je třeba distribuovat umístění datový disk, který může zlepšit výkon. Zvolte **vyberte** uložení výběru.     
     ![Příklad: Vyberte kontejner](media/azure-stack-manage-vm-disks/select-container.png)
 
-6.  V **připojit nový disk** stránky, aktualizovat **název**, **typ**, **velikost**, a **použití mezipaměti u hostitele** nastavení disku. Pak klikněte na tlačítko **OK** uložíte novou konfiguraci disku pro virtuální počítač.  
+6.  V **připojit nový disk** stránky, aktualizovat **název**, **typ**, **velikost**, a **použití mezipaměti u hostitele** nastavení disku. Potom vyberte **OK** uložíte novou konfiguraci disku pro virtuální počítač.  
     ![Příklad: Dokončení disku přílohy](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  Po zásobník Azure vytvoří disk a připojí jej k virtuálnímu počítači, na nový disk, je uvedena v nastavení disku virtuálního počítače v části **datových disků**.   
@@ -94,22 +95,22 @@ Každý nespravované disku, které přidáte měly být umístěny v samostatn�
   Chcete použít jiný kontejner pro uložení souboru VHD než kontejner, který obsahuje disk operačního systému.   
   ![Příklad: Nahrát soubor virtuálního pevného disku](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2.  Po odeslání souboru VHD, jste připraveni připojit virtuální pevný disk k virtuálnímu počítači. V nabídce na levé straně klikněte na tlačítko **virtuální počítače**.  
+2.  Po odeslání souboru VHD, jste připraveni připojit virtuální pevný disk k virtuálnímu počítači. V nabídce na levé straně vyberte **virtuální počítače**.  
  ![Příklad: Vyberte virtuální počítač v řídicím panelu](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-3.  Ze seznamu vyberte virtuální počítač.    
+3.  Vyberte virtuální počítač ze seznamu.    
   ![Příklad: Vyberte virtuální počítač v řídicím panelu](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4.  Na stránce pro virtuální počítač, klikněte na **disky** > **připojit existující**.   
+4.  Na stránce pro virtuální počítač, vyberte možnost **disky** > **připojit existující**.   
   ![Příklad: Připojit stávající disk](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
-5.  V **připojit stávající disk** klikněte na tlačítko **souboru virtuálního pevného disku**. **Účty úložiště** otevře se stránka.    
+5.  V **připojit stávající disk** vyberte **souboru virtuálního pevného disku**. **Účty úložiště** otevře se stránka.    
   ![Příklad: Vyberte soubor virtuálního pevného disku](media/azure-stack-manage-vm-disks/select-vhd.png)
 
-6.  V části **účty úložiště**, vyberte účet, který chcete použít a pak vyberte kontejner, který obsahuje soubor VHD, který jste dříve nahráli. Vyberte soubor VHD a pak klikněte na tlačítko **vyberte** uložení výběru.    
+6.  V části **účty úložiště**, vyberte účet, který chcete použít a potom vyberte kontejner, který obsahuje soubor VHD, který jste dříve nahráli. Vyberte soubor VHD a potom zvolte **vyberte** uložení výběru.    
   ![Příklad: Vyberte kontejner](media/azure-stack-manage-vm-disks/select-container2.png)
 
-7.  V části **připojit stávající disk**, vybraný soubor je uveden v části **souboru virtuálního pevného disku**. Aktualizace **použití mezipaměti u hostitele** nastavení disku a pak klikněte na **OK** uložíte novou konfiguraci disku pro virtuální počítač.    
+7.  V části **připojit stávající disk**, vybraný soubor je uveden v části **souboru virtuálního pevného disku**. Aktualizace **použití mezipaměti u hostitele** nastavení disku a pak vyberte **OK** uložíte novou konfiguraci disku pro virtuální počítač.    
   ![Příklad: Připojení souboru VHD](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  Po zásobník Azure vytvoří disk a připojí jej k virtuálnímu počítači, na nový disk, je uvedena v nastavení disku virtuálního počítače v části **datových disků**.   

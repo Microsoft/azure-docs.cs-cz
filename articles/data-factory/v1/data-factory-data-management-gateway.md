@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: abc542f79d722f24ff6a6e9d96d12364ed76894b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621179"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -45,7 +46,7 @@ Brána pro správu dat poskytuje následující možnosti:
 * Spravovat přístup k místním zdrojům dat bezpečně.
   * Žádné změny do podnikové brány firewall. Brána je pouze odchozí připojení k Internetu otevřete založené na protokolu HTTP.
   * Šifrování přihlašovacích údajů pro vaše místní data úložiště pomocí certifikátu.
-* Přesun dat efektivně – data se přenáší paralelně, odolné vůči přerušované sítě problémy s automatickým logika opakovaných pokusů.
+* Přesun dat efektivně data se přenáší paralelně, odolné vůči přerušované sítě problémy s automatickým logika opakovaných pokusů.
 
 ### <a name="command-flow-and-data-flow"></a>Příkaz a tok dat
 Pokud použijete aktivitu kopírování ke kopírování dat mezi místními a cloudovými, aktivita používá bránu k přenosu dat z místního zdroje dat do cloudu a naopak.
@@ -123,7 +124,7 @@ Vytvoření brány na portálu a získání klíče z **konfigurace** stránky, 
     ![Znovu vytvořte klíč](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Klikněte na tlačítko Kopírovat vedle klíč. Klíč je zkopírován do schránky.
 
-    ![Zkopírovat klíč](media/data-factory-data-management-gateway/copy-gateway-key.png)
+    ![Kopírování klíče](media/data-factory-data-management-gateway/copy-gateway-key.png)
 
 ### <a name="system-tray-icons-notifications"></a>Systémové ikony oznamovací oblasti nebo oznámení
 Následující obrázek ukazuje některé ikony oznamovací oblasti, které vidíte.
@@ -183,7 +184,7 @@ Existují tři možnosti konfigurace:
 
 * **Nepoužívejte proxy**: Brána pro připojení ke cloudovým službám explicitně nepoužívá jakýkoli proxy server.
 * **Použít proxy server systému**: Brána používá proxy server, který je nastavení nakonfigurované v diahost.exe.config a diawp.exe.config.  Pokud žádný proxy server je nakonfigurován v diahost.exe.config a diawp.exe.config, brána připojí ke cloudové službě přímo bez proxy serveru.
-* **Používat vlastní proxy server**: Konfigurace nastavení pro bránu, místo použití konfigurace v diahost.exe.config a diawp.exe.config proxy protokolu HTTP.  Adresa a Port jsou povinné.  Uživatelské jméno a heslo jsou volitelné v závislosti na nastavení vašeho proxy ověřování.  Všechna nastavení jsou šifrován certifikát přihlašovacích údajů brány a jsou uložené místně na hostitelském počítači brány.
+* **Používat vlastní proxy server**: Konfigurace nastavení pro bránu, místo použití konfigurace v diahost.exe.config a diawp.exe.config proxy protokolu HTTP.  Adresa a Port jsou povinné.  Uživatelské jméno a heslo jsou volitelné v závislosti na vaše nastavení proxy serveru s ověřování.  Všechna nastavení jsou šifrován certifikát přihlašovacích údajů brány a jsou uložené místně na hostitelském počítači brány.
 
 Brána pro správu dat hostitelská služba restartuje automaticky po uložení aktualizované nastavení proxy serveru.
 
@@ -207,7 +208,7 @@ Můžete zobrazit a aktualizovat server proxy protokolu HTTP pomocí nástroje C
 Pokud vyberete **používat proxy server systému** nastavení pro proxy server HTTP, brána používá nastavení proxy v diahost.exe.config a diawp.exe.config.  Pokud žádný proxy server je zadané v diahost.exe.config a diawp.exe.config, brána připojí ke cloudové službě přímo bez proxy serveru. Následující postup obsahuje pokyny pro aktualizaci souboru diahost.exe.config.  
 
 1. V Průzkumníku souborů vytvořte bezpečné kopii C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config zálohování původní soubor.
-2. Spusťte Notepad.exe spuštění jako správce a otevřete textový soubor "C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config. Najít výchozí značka pro system.net, jak je znázorněno v následujícím kódu:
+2. Spusťte Notepad.exe spuštění jako správce a otevřete textový soubor C:\Program Files\Microsoft Data správy Gateway\2.0\Shared\diahost.exe.config. Najít výchozí značka pro system.net, jak je znázorněno v následujícím kódu:
 
          <system.net>
              <defaultProxy useDefaultCredentials="true" />
@@ -230,13 +231,13 @@ Pokud vyberete **používat proxy server systému** nastavení pro proxy server 
 > Nezapomeňte aktualizovat **i** diahost.exe.config a diawp.exe.config.  
 
 
-Kromě těchto bodů musíte také zkontrolujte, zda že je v seznamu povolených IP adres vaší společnosti Microsoft Azure. Seznam platných Microsoft Azure IP adres si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
+Kromě těchto bodů musíte také zkontrolujte, zda že je v seznamu povolených serverů společnosti s Microsoft Azure. Seznam platných Microsoft Azure IP adres si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Možné příznaky brány firewall a proxy server s problémy
 Pokud narazíte na chyby, které jsou podobné těm, které jsou následující, je pravděpodobně z důvodu nesprávné konfigurace brány firewall nebo proxy serveru, která blokuje brány v připojení k objektu pro vytváření dat ke svému ověření. Podívejte se na předchozí část, aby brána firewall a proxy serveru jsou správně nakonfigurovány.
 
 1. Při pokusu o registraci brány se zobrazí následující chyba: "se nepodařilo zaregistrovat klíč brány. Než se pokusíte znovu zaregistrujte klíč brány, potvrďte, že je brána pro správu dat v připojeném stavu a je spuštěna hostitelská služba brány správy dat."
-2. Když otevřete nástroje Configuration Manager, uvidíte stav jako "Odpojeno" nebo "Připojení". Při zobrazení protokoly událostí systému Windows, v části "Prohlížeč událostí" > "Aplikace a služby Logs" > "Brána pro správu dat", se zobrazí chybové zprávy, jako je například k následující chybě: `Unable to connect to the remote server`
+2. Při otevření nástroje Configuration Manager, můžete zobrazit stav jako odpojeno nebo připojení. při zobrazení protokoly událostí systému Windows v prohlížeči událostí > protokoly aplikací a služeb > Brána pro správu dat, se zobrazí chybové zprávy, jako je například k následující chybě: `Unable to connect to the remote server`
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Otevřete port 8050 pro šifrování přihlašovacích údajů.
@@ -368,7 +369,7 @@ Dostupná paměť | Dostupná paměť na uzel brány. Tato hodnota je snímku ne
 Využití procesoru | Využití procesoru uzlu brány. Tato hodnota je snímku near v reálném čase. 
 Sítě (vstup/výstup) | Využití uzlu brány sítě. Tato hodnota je snímku near v reálném čase. 
 Souběžné úlohy (spuštění / omezit) | Počet úlohy nebo úlohy na jednotlivých uzlech spuštěné. Tato hodnota je snímku near v reálném čase. Limit označuje, že maximální souběžných úloh pro každý uzel. Tato hodnota je definována v závislosti na velikosti počítače. Můžete zvýšit limit škálování provádění souběžné úlohy v pokročilých scénářích, kde procesoru a paměti nebo síťových je v části využívat, ale aktivity jsou vypršení časového limitu. Tato funkce je také dostupná s jedním uzlem bránou (i když není povolená funkce škálovatelnost a dostupnost).  
-Role | Existují dva typy rolí v několika uzly brány – dispečera a pracovního procesu. Všechny uzly jsou pracovníci, což znamená, že se všechny slouží k provedení úlohy. Je pouze jeden uzel dispečera, který se používá k přijetí změn úlohy nebo úlohy z cloudové služby a jejich odesílání na jiný pracovní uzly (včetně samotného).
+Role | Existují dva typy rolí v několika uzly brány dispečera a pracovního procesu. Všechny uzly jsou pracovníci, což znamená, že se všechny slouží k provedení úlohy. Je pouze jeden uzel dispečera, který se používá k přijetí změn úlohy nebo úlohy z cloudové služby a jejich odesílání na jiný pracovní uzly (včetně samotného).
 
 Na této stránce se zobrazí některá nastavení, která dávat větší smysl, pokud jsou dostupné dva nebo víc uzlů (škálování scénář) v bráně. V tématu [Brána pro správu dat – vysokou dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md) podrobnosti o nastavení brány více uzly.
 
@@ -489,12 +490,12 @@ Tato část popisuje, jak vytvořit a registrovat bránu pomocí rutin prostřed
 3. Použití **New-AzureRmDataFactoryGateway** rutiny pro vytvoření logické brány následujícím způsobem:
 
     ```PowerShell
-    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
+    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF �Description <desc>
     ```
     **Ukázkový příkaz a výstupní**:
 
     ```
-    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF �Description �gateway for walkthrough�
 
     Name              : MyGateway
     Description       : gateway for walkthrough
