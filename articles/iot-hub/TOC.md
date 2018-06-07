@@ -151,11 +151,6 @@
 #### [Použití serializátoru](iot-hub-device-sdk-c-serializer.md)
 ### [Vývoj pro zařízení s omezením](iot-hub-devguide-develop-for-constrained-devices.md)
 ### [Vývoj pro mobilní zařízení](iot-hub-how-to-develop-for-mobile-devices.md)
-### Směrování zpráv
-#### [.NET](iot-hub-csharp-csharp-process-d2c.md)
-#### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.js](iot-hub-node-node-process-d2c.md)
-#### [Python](iot-hub-python-python-process-d2c.md)
 ### [Dotazování na data Avro ze směrování Hubu](iot-hub-query-avro-data.md)
 ### Odesílání zpráv z cloudu do zařízení
 #### [.NET](iot-hub-csharp-csharp-c2d.md)

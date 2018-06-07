@@ -15,10 +15,11 @@ ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "32191542"
 ---
 # <a name="storsimple-solution-support"></a>Podpora řešení StorSimple
 
@@ -44,7 +45,7 @@ Společnost Microsoft nabízí možnosti flexibilní podporu pro zařízení Sto
 | HelpDesk počáteční reakce čas 24 x 7 podporu lístku odeslání <br> Počáteční doba odezvy na základě jejich závažnosti <sup>2 | Závažnost A: do 2 hodin <br> Závažnost b do 4 hodin <br> Závažnost C: v rámci 8 hodin | Závažnost A: v rámci 60 minut <br> Závažnost b do 2 hodin <br> Závažnost C: do 4 hodin |
 | Telefonickou podporu (zpětných volání)                                                                               | ✓                                                                               | ✓                                                                              |
 | Rozšířené části nahrazení (pouze řady StorSimple 8000) <sup>3</sup>                                              | Následujícího pracovního dne <sup>4                                                              | V rámci 4 hodiny                                                                 |
-| Na místě pole pracovníkům služeb (pouze řady StorSimple 8000) <sup>3</sup>                                         | Není k dispozici                                                                   | V rámci 4 hodiny                                                                 |
+| Na místě pole pracovníkům služeb (pouze řady StorSimple 8000) <sup>3</sup>                                         | Není k dispozici.                                                                   | V rámci 4 hodiny                                                                 |
 | Pole virtuální zařízení StorSimple <sup>5</sup>                                                                              | ✓                                                                               | ✓                                                                              |
 | Instance pole virtuální zařízení StorSimple <sup>5</sup>                                                                 | Bez omezení                                                                        | Bez omezení                                                                       |
 

@@ -81,6 +81,8 @@
               href: n-series-driver-setup.md
         - name: Vysokovýkonné výpočetní prostředí
           href: sizes-hpc.md
+        - name: Předchozí generace
+          href: sizes-previous-gen.md
         - name: Výpočetní jednotky Azure (ACU)
           href: acu.md
         - name: Výsledky srovnávacích testů
@@ -190,7 +192,12 @@
         - name: Označení virtuálního počítače
           href: tag.md
         - name: Spouštění skriptů na virtuálním počítači
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Rozšíření vlastních skriptů
+              href: ../extensions/custom-script-windows.md
+            - name: Spuštění příkazu
+              href: run-command.md
         - name: Změna písmena dočasné jednotky
           href: change-drive-letter.md
         - name: Změna skupiny dostupnosti
@@ -329,41 +336,7 @@
         - name: Překlad DNS
           href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Použití rozšíření virtuálních počítačů
-      items:
-        - name: Přehled rozšíření virtuálních počítačů
-          href: extensions-features.md
-        - name: Rozšíření vlastních skriptů
-          href: extensions-customscript.md
-        - name: Rozšíření agenta OMS
-          href: extensions-oms.md
-        - name: Rozšíření prostředí PowerShell DSC
-          href: extensions-dsc-overview.md
-          items:
-            - name: Zpracování přihlašovacích údajů rozšíření prostředí PowerShell DSC
-              href: extensions-dsc-credentials.md
-            - name: DSC a VMSS se šablonami
-              href: extensions-dsc-template.md
-        - name: Rozšíření Azure Log Collector
-          href: log-collector-extension.md
-        - name: Rozšíření diagnostiky Azure
-          href: extensions-diagnostics.md
-          items:
-            - name: Schéma rozšíření
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
-            - name: Povolení s využitím PowerShellu
-              href: ps-extensions-diagnostics.md
-            - name: Povolení s využitím šablon
-              href: extensions-diagnostics-template.md
-            - name: Řešení potíží
-              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
-        - name: Export rozšíření virtuálních počítačů
-          href: extensions-export-templates.md
-        - name: Poradce při potížích s rozšířeními
-          href: extensions-troubleshoot.md
-        - name: Agent Network Watcher
-          href: extensions-nwa.md
-        - name: Omezení instalace rozšíření
-          href: ../extensions/extensions-rmpolicy-howto-ps.md
+      href: ../extensions/overview.md
     - name: Migrace virtuálních počítačů
       items:
         - name: Migrace AWS a místních virtuálních počítačů

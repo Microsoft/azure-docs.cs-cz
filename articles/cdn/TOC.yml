@@ -10,10 +10,12 @@
   items:
     - name: Vytvoření koncového bodu a profilu
       href: cdn-create-new-endpoint.md
+    - name: Integrace účtu úložiště
+      href: cdn-create-a-storage-account-with-cdn.md
 - name: Kurzy
   items:
     - name: Přidání Azure CDN do webové aplikace
-      href: app-service-web-tutorial-content-delivery-network.md
+      href: cdn-add-to-web-app.md
     - name: Přidání vlastní domény
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurace HTTPS pro vlastní doménu
@@ -28,29 +30,21 @@
   items:
     - name: Jak funguje ukládání do mezipaměti
       href: cdn-how-caching-works.md
+    - name: Doručování obsahu v Číně
+      href: cdn-china-delivery.md
+    - name: Podpora HTTP/2
+      href: cdn-http2.md
 - name: Návody
   items:
-    - name: Integrace
-      items:
-        - name: Úložiště
-          items:
-            - name: Integrace účtu úložiště
-              href: cdn-create-a-storage-account-with-cdn.md
-            - name: Podpora úložiště SAS
-              href: cdn-sas-storage-support.md
-        - name: Sdílení prostředků různého původu
-          href: cdn-cors.md
     - name: Optimalizace obsahu
+      href: cdn-optimization-overview.md
       items:
-        - name: Přehled optimalizace
-          href: cdn-optimization-overview.md
-          items:
-            - name: Optimalizace velkých souborů
-              href: cdn-large-file-optimization.md
-            - name: Optimalizace streamování médií
-              href: cdn-media-streaming-optimization.md
-            - name: Akcelerace dynamických webů
-              href: cdn-dynamic-site-acceleration.md
+        - name: Optimalizace velkých souborů
+          href: cdn-large-file-optimization.md
+        - name: Optimalizace streamování médií
+          href: cdn-media-streaming-optimization.md
+        - name: Akcelerace dynamických webů
+          href: cdn-dynamic-site-acceleration.md
     - name: Spravovat
       items:
         - name: Správa pomocí Azure PowerShellu
@@ -61,8 +55,6 @@
           href: cdn-improve-performance.md
         - name: Řízení chování při ukládání do mezipaměti
           items:
-            - name: Jak funguje ukládání do mezipaměti
-              href: cdn-how-caching-works.md
             - name: Řízení chování při ukládání do mezipaměti s využitím pravidel ukládání do mezipaměti
               href: cdn-caching-rules.md
             - name: Ukládání obsahu do mezipaměti podle řetězců dotazu
@@ -83,35 +75,35 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Ověření tokenu
           href: cdn-token-auth.md
+        - name: Podpora úložiště SAS
+          href: cdn-sas-storage-support.md
+        - name: Sdílení prostředků různého původu
+          href: cdn-cors.md
         - name: Sledování prostředků
           href: cdn-resource-health.md
         - name: Potlačení chování pomocí pravidel
           href: cdn-rules-engine.md
-        - name: Získávání výstrah v reálném čase
-          href: cdn-real-time-alerts.md
-        - name: Podpora HTTP/2
-          href: cdn-http2.md
     - name: Analýza
+      href: cdn-log-analysis.md
       items:
-        - name: Analýza vzorů využití Azure CDN
-          href: cdn-log-analysis.md
+        - name: Diagnostické protokoly Azure
+          href: cdn-azure-diagnostic-logs.md
+        - name: Analytické nástroje pro Azure CDN od Verizonu
           items:
-            - name: Diagnostické protokoly Azure
-              href: cdn-azure-diagnostic-logs.md
-            - name: Analytické nástroje pro Azure CDN od Verizonu
-              items:
-                - name: Základní sestavy od Verizonu
-                  href: cdn-analyze-usage-patterns.md
-                - name: Vlastní sestavy od Verizonu
-                  href: cdn-verizon-custom-reports.md
-            - name: Analytické nástroje pro Azure CDN Premium od Verizonu
-              items:
-                - name: Generování pokročilých sestav HTTP
-                  href: cdn-advanced-http-reports.md
-                - name: Zobrazení statistik v reálném čase
-                  href: cdn-real-time-stats.md
-                - name: Analýza výkonu hraničních uzlů
-                  href: cdn-edge-performance.md
+            - name: Základní sestavy od Verizonu
+              href: cdn-analyze-usage-patterns.md
+            - name: Vlastní sestavy od Verizonu
+              href: cdn-verizon-custom-reports.md
+        - name: Analytické nástroje pro Azure CDN Premium od Verizonu
+          items:
+            - name: Generování pokročilých sestav HTTP
+              href: cdn-advanced-http-reports.md
+            - name: Zobrazení statistik v reálném čase
+              href: cdn-real-time-stats.md
+            - name: Analýza výkonu hraničních uzlů
+              href: cdn-edge-performance.md
+            - name: Získávání výstrah v reálném čase
+              href: cdn-real-time-alerts.md
     - name: Vývoj
       items:
         - name: .NET

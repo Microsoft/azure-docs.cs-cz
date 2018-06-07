@@ -1,6 +1,6 @@
 ---
 title: Nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs | Microsoft Docs
-description: Zjistěte, jak odesílat nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs.
+description: Zjistěte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům.
 documentationcenter: ios
 author: dimazaid
 manager: kpiteira
@@ -15,24 +15,25 @@ ms.topic: article
 ms.date: 04/13/2018
 ms.author: dimazaid
 ms.openlocfilehash: 36d70c40e3de7bd38cdfc566da37060cdcea9060
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "33777531"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: Nabízená oznámení pro konkrétní uživatele pomocí Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-V tomto kurzu se dozvíte, jak se dají pomocí Azure Notification Hubs posílat nabízená oznámení specifickým uživatelům aplikace na specifickém zařízení. Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+V tomto kurzu se dozvíte, jak pomocí služby Azure Notification Hubs posílat nabízená oznámení konkrétním uživatelům aplikace na konkrétním zařízení. Backendu ASP.NET WebAPI slouží k ověřování klientů a ke generování oznámení, jak je znázorněno v tématu pokyny [registrace z back-end aplikace](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
-V tomto kurzu proveďte následující kroky:
+V tomto kurzu provedete následující kroky:
 
 > [!div class="checklist"]
 > * Vytvoření projektu WebAPI
-> * Ověřování klientů na back-end WebAPI
-> * Registrace pro oznámení pomocí back-end WebAPI
-> * Odesílání oznámení z back-end WebAPI
-> * Publikování nový back-end WebAPI
+> * Ověřování klientů v back-endu WebAPI
+> * Registrace oznámení pomocí back-endu WebAPI
+> * Odesílání oznámení z back-endu WebAPI
+> * Publikování nového back-endu WebAPI
 > * Upravit aplikaci s iOS
 > * Testování aplikace
 
@@ -82,7 +83,7 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
    
         - (IBAction)LogInAction:(id)sender;
     ```
-2. V ViewController.h, přidejte následující `#define` po příkazy pro import. Nahraďte *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol cílová adresa URL můžete použít k nasazení vašeho back-end aplikace v předchozí části. Například *http://you_backend.azurewebsites.net*.
+2. V ViewController.h, přidejte následující `#define` po příkazy pro import. Nahraďte *< Zadejte koncový bod vašeho back-end\>*  zástupný symbol cílová adresa URL můžete použít k nasazení vašeho back-end aplikace v předchozí části. Příklad: *http://you_backend.azurewebsites.net*.
    
     ```obj-c
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
@@ -478,10 +479,10 @@ Pokud chcete použít jako back-end služby Mobile Apps, najdete v článku [mob
     ![][4]
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste zjistili, jak pro nabízená oznámení pro konkrétní uživatele, kteří mají značkám přidruženým jejich registrace. Informace o tom pro nabízená oznámení na základě polohy, přechodu na následující kurzu: 
+V tomto kurzu jste zjistili, jak posílat nabízená oznámení konkrétním uživatelům, k jejichž registracím jsou přidružené značky. V dalším kurzu se dozvíte, jak posílat nabízená oznámení na základě polohy: 
 
 > [!div class="nextstepaction"]
->[Nabízená oznámení na základě polohy](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
+>[Odesílání oznámení na základě polohy](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
 
 
 [1]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-interface.png

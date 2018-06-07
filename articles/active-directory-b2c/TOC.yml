@@ -58,10 +58,10 @@
               href: 'https://github.com/Azure-Samples/active-directory-b2c-android-native-msal'
             - name: Android s využitím ověřování aplikace
               href: active-directory-b2c-devquickstarts-android.md
-            - name: .NET
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
-            - name: Xamarin
-              href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
+        - name: .NET
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop'
+        - name: Xamarin
+          href: 'https://github.com/Azure-Samples/active-directory-b2c-xamarin-native'
         - name: Přihlašovací údaje vlastníka prostředku s heslem
           href: configure-ropc.md
     - name: Webové aplikace
@@ -268,7 +268,7 @@
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c'
+      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: Podpora
       href: active-directory-b2c-support.md
     - name: Videa

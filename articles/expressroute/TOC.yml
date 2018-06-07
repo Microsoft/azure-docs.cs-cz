@@ -1,5 +1,5 @@
 - name: Dokumentace ke službě ExpressRoute
-  href: index.md
+  href: index.yml
 - name: Přehled
   items:
     - name: Co je ExpressRoute?

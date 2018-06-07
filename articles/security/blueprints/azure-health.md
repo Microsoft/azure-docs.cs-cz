@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "33894309"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
 
@@ -368,7 +369,7 @@ Podporuje řešení Azure událostí mřížky, jedinou službu pro správu smě
 ### <a name="application-insights"></a>Application Insights
 - [Application Insights](/azure/application-insights/app-insights-overview) je rozšiřitelný služba Správa výkonu aplikace (APM) pro vývojáře, kteří ve více platformách. Slouží k monitorování živé webové aplikace. Zjistí anomálie výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají. Je navržena tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití.
 
-### <a name="azure-alerts"></a>Azure výstrahy
+### <a name="azure-alerts"></a>Upozornění Azure
 - [Výstrahy nabízejí metoda monitorování služby Azure a umožňují konfigurovat podmínky nad daty. Výstrahy obsahují i oznámení, když výstražný stav odpovídá data monitorování.
 
 ### <a name="operations-management-suite-oms"></a>Služby Operations Management Suite (OMS)
@@ -382,7 +383,7 @@ Podporuje řešení Azure událostí mřížky, jedinou službu pro správu smě
 
     -   Identita a přístup
 
-    -   Zabezpečení a Audit
+    -   Zabezpečení a audit
 
     -   Analýza Azure SQL DB
 

@@ -81,7 +81,7 @@
   items:
     - name: Řešení
       items:
-        - name: Předkonfigurovaná řešení IoT Suite
+        - name: Akcelerátory řešení IoT
           href: /azure/iot-suite
         - name: IoT Central
           href: /microsoft-iot-central

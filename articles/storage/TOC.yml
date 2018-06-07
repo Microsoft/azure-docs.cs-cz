@@ -13,7 +13,7 @@
 - name: Fronty
   href: ./queues/storage-queues-introduction.md
 - name: Tabulky
-  href: ../cosmos-db/table-storage-overview.md
+  href: ./tables/table-storage-overview.md
 - name: Disky
   items:
     - name: Windows

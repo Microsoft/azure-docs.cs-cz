@@ -1,3 +1,4 @@
+metadata: {}
 items:
   - name: Dokumentace k databázi Azure Cosmos
     href: index.yml
@@ -70,6 +71,8 @@ items:
     items:
       - name: Globální distribuce
         href: distribute-data-globally.md
+      - name: Nastavení s několika hlavními databázemi
+        href: multi-region-writers.md
       - name: Dělení
         href: partition-data.md
       - name: Propustnost
@@ -165,8 +168,6 @@ items:
                 href: sql-api-resources.md
               - name: Modelování dat dokumentů
                 href: modeling-data.md
-              - name: Nastavení s několika hlavními databázemi
-                href: multi-region-writers.md
           - name: Průvodce postupy
             items:
               - name: BulkExecutor – .NET
@@ -397,8 +398,6 @@ items:
                 href: table-storage-how-to-use-dotnet.md
               - name: 'F#'
                 href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-              - name: Node.js
-                href: table-storage-cloud-service-nodejs.md
               - name: Java
                 href: table-storage-how-to-use-java.md
               - name: Node.js
@@ -411,8 +410,6 @@ items:
                 href: table-storage-how-to-use-python.md
               - name: Ruby
                 href: table-storage-how-to-use-ruby.md
-              - name: PowerShell
-                href: table-storage-how-to-use-powershell.md
           - name: Referenční informace
             items:
               - name: .NET
