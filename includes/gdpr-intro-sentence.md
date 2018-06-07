@@ -1,8 +1,8 @@
 ---
- Title: zahrnují popis souboru: zahrnují souborové služby: zásad azure Autor: eross msft
+ title: include file description: include file services: active-directory author: eross-msft
  
-MS.Service: zásad azure ms.topic: zahrnují ms.date: 04/24/2018 ms.author: lizross ms.custom: zahrnout soubor
+ms.service: active-directory ms.topic: include ms.date: 04/24/2018 ms.author: lizross ms.custom: include file
 ---
 
 >[!Note] 
-> Tento článek popisuje kroky, jak odstranit osobní data ze zařízení nebo služby a slouží k podpoře vaší povinností podle GDPR. Pokud hledáte obecné informace o GDPR, přečtěte si téma [GDPR části portálu služby důvěřovat](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+> Tento článek obsahuje postup pro odstranění osobních údajů ze zařízení nebo služby a je možné ho využít jako podporu vašich závazků v rámci GDPR. Pokud hledáte obecné informace o GDPR, přečtěte si [část věnovanou GDPR na portálu Service Trust](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

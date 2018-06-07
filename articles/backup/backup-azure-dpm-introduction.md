@@ -1,25 +1,20 @@
 ---
-title: Pomocí aplikace DPM zálohovat úlohy na portálu Azure | Microsoft Docs
+title: Pomocí aplikace DPM zálohovat úlohy na portál Azure
 description: Úvod k zálohování serverů aplikace DPM pomocí služby zálohování Azure
 services: backup
-documentationcenter: ''
 author: adigan
 manager: nkolli
-editor: ''
 keywords: System Center Data Protection Manager, nástroje data protection manager, zálohy aplikace dpm
-ms.assetid: c8c322cf-f5eb-422c-a34c-04a4801bfec7
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/15/2017
-ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 05917705264965afda873fb32a28b70e4da87aa3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: adigan
+ms.openlocfilehash: ffb3a5a5729e97e1a9b00072624d7e51842f61f8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605045"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Příprava zálohování úloh do Azure pomocí DPM
 > [!div class="op_single_selector"]

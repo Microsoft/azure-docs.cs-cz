@@ -51,6 +51,8 @@
           href: container-instances-exec.md
         - name: Monitorování využití procesoru a paměti
           href: container-instances-monitor.md
+        - name: Protokolování s využitím Azure Log Analytics
+          href: container-instances-log-analytics.md
     - name: Spouštění úloh
       items:
         - name: Spouštění kontejnerizovaných úloh

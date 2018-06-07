@@ -204,11 +204,17 @@
 ##### [Bezobslužná instalace](manage-apps/application-proxy-register-connector-powershell.md)
 ##### [Vlastní domovská stránka](manage-apps/application-proxy-configure-custom-home-page.md)
 ##### [Převod vložených odkazů](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
+##### [Zástupné znaky](active-directory-application-proxy-wildcard.md)
+##### [Odebrání osobních údajů](manage-apps/application-proxy-remove-personal-data.md)
+
+
 #### Názorné postupy publikování
 ##### [Vzdálená plocha](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
+##### [Qlik](active-directory-application-proxy-qlik.md)
+
 
 #### [Řešení problémů](active-directory-application-proxy-troubleshoot.md)
 
@@ -303,7 +309,7 @@
 ##### [Nastavení podmíněného přístupu na základě zařízení](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Nastavení podmíněného přístupu na základě aplikace](active-directory-conditional-access-mam.md)
 ##### [Podmínky použití pro uživatele a aplikace](active-directory-tou.md)
-##### [Nastavení možností připojení sítě VPN](active-directory-conditional-access-vpn-connectivity-windows10.md)
+##### [Nastavení možností připojení sítě VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Nastavení SharePointu a Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Nápravy](active-directory-conditional-access-device-remediation.md)
 #### [Technické referenční informace](active-directory-conditional-access-technical-reference.md)
@@ -335,7 +341,8 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
 

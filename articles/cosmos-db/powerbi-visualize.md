@@ -5,20 +5,17 @@ keywords: Power bi kurzu, vizualizaci dat, power bi connector
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: cd1b7f70-ef99-40b7-ab1c-f5f3e97641f7
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: sngun
-ms.openlocfilehash: 8a0f50ad6df1135e05cd69be78e6b7f7820f90c6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 67ea7a9ea1a1be4fd0780f8b8ce22f1a133615e0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34615865"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Power BI kurz pro Azure Cosmos DB: vizualizovat data pomocí Power BI connector
 [PowerBI.com](https://powerbi.microsoft.com/) je online služba, kde můžete vytvářet a sdílet řídicí panely a sestavy s daty, která je pro vás i vaši organizaci důležité.  Power BI Desktop je vyhrazené sestavy vývojového nástroje, která umožňuje načíst data z různých zdrojů dat, sloučení a transformaci dat, vytvářet výkonné sestavy a vizualizací a publikovat sestavy do Power BI.  Pomocí nejnovější verze Power BI Desktop můžete teď připojit k účtu Azure Cosmos DB prostřednictvím konektoru Azure Cosmos DB pro Power BI.   
@@ -85,7 +82,7 @@ Jste připravení a vyzkoušejte ho? Můžeme začít.
    
     ![Power BI Desktop zobrazení sestavy - Power BI connector](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 4. Vyberte **Domů** pásu karet, a potom klikněte na **načíst Data**.  **Načíst Data** okno by se měla objevit.
-5. Klikněte na **Azure**, vyberte **Azure DB Cosmos (Beta)**a potom klikněte na **Connect**. 
+5. Klikněte na **Azure**, vyberte **Azure DB Cosmos (Beta)** a potom klikněte na **Connect**. 
 
     ![Power BI Desktop získat Data - Power BI connector](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
 6. Na **Preview konektor** klikněte na tlačítko **pokračovat**. **Azure Cosmos DB** se zobrazí v okně.

@@ -73,6 +73,8 @@
           href: batch-custom-images.md
         - name: Vytvoření fondu ve virtuální síti
           href: batch-virtual-network.md
+        - name: Připojení sdílené složky Azure
+          href: pool-file-shares.md
         - name: Použití virtuálních počítačů náročných na výpočetní výkon
           href: batch-pool-compute-intensive-sizes.md
         - name: Použití výpočetních uzlů s Linuxem

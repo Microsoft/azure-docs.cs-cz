@@ -63,6 +63,8 @@
           items:
             - name: Příprava úloh Azure Backup Serveru na webu Azure Portal
               href: backup-azure-microsoft-azure-backup.md
+            - name: Instalace Azure Backup Serveru v Azure Stacku
+              href: backup-mabs-install-azure-stack.md
             - name: Přidání úložiště do Azure Backup Serveru
               href: backup-mabs-add-storage.md
             - name: Upgrade Azure Backup Serveru na v.2
@@ -157,12 +159,10 @@
           href: backup-dpm-automation.md
         - name: Windows Server na webu Azure Portal
           href: backup-client-automation.md
-    - name: Azure SQL Database
+    - name: SQL na virtuálních počítačích Azure
       items:
-        - name: Konfigurace a obnovení záloh SQL Database – úložiště SQL
-          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: Konfigurace a obnovení záloh SQL Database – trezor služby Recovery Services
-          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Zálohování databáze SQL v Azure
+          href: backup-azure-sql-database.md
     - name: Windows Server
       items:
         - name: Zálohování souborů a složek Windows Serveru

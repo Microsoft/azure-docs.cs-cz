@@ -1,0 +1,50 @@
+- name: Dokumentace ke službě Lab Services
+  href: /azure/lab-services
+- name: Přehled
+  items:
+    - name: Informace o testovacích prostředích v učebnách
+      href: classroom-labs-overview.md
+    - name: Porovnání typů testovacího prostředí
+      href: ../compare-lab-types.md
+- name: Kurzy
+  items:
+    - name: 1. Nastavení účtu testovacího prostředí
+      href: tutorial-setup-lab-account.md
+    - name: 2. Nastavení testovacího prostředí v učebně
+      href: tutorial-setup-classroom-lab.md
+    - name: 3. Přístup k testovacímu prostředí v učebně
+      href: tutorial-connect-virtual-machine-classroom-lab.md
+- name: Návody
+  items:
+    - name: Správa účtů testovacího prostředí
+      href: how-to-manage-lab-accounts.md
+    - name: Správa testovacích prostředí v učebnách
+      href: how-to-manage-classroom-labs.md
+    - name: Přístup k testovacím prostředím v učebnách
+      href: how-to-use-classroom-lab.md
+- name: Referenční informace
+  items:
+    - name: CLI 2.0
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/dtl/'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
+    - name: Blog týmu
+      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'

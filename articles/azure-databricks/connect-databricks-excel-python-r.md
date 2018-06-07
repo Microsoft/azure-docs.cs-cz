@@ -1,8 +1,8 @@
 ---
-title: "Připojit k Azure Databricks z aplikace Excel, Python nebo R | Microsoft Docs"
-description: "Další informace o použití Simba ovladač pro připojení k Excelu, Python nebo R. Azure Databricks"
+title: Připojit k Azure Databricks z aplikace Excel, Python nebo R | Microsoft Docs
+description: Další informace o použití Simba ovladač pro připojení k Excelu, Python nebo R. Azure Databricks
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,13 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 9daa7d30036d0a0f98d079e03a69c29d11e49664
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: bbf75a03fb771aa415a26e151614cecfaa14c485
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598874"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Připojit k Azure Databricks z aplikace Excel, Python nebo R
 
@@ -60,7 +61,7 @@ Název zdroje dat (DSN) obsahuje informace o konkrétní zdroj dat. Ovladač ODB
     |Pole  | Hodnota  |
     |---------|---------|
     |**Název zdroje dat**     | Zadejte název pro zdroj dat.        |
-    |**Host(s)**     | Zadejte hodnotu, kterou jste zkopírovali z pracovního prostoru Databricks pro *název hostitele serveru*.        |
+    |**Hostitel**     | Zadejte hodnotu, kterou jste zkopírovali z pracovního prostoru Databricks pro *název hostitele serveru*.        |
     |**Port**     | Zadejte *443*.        |
     |**Ověřování** > **mechanismus**     | Vyberte *uživatelské jméno a heslo*.        |
     |**Uživatelské jméno**     | Zadejte *tokenu*.        |
@@ -102,7 +103,7 @@ Až budete mít data v sešitu aplikace Excel, analytické operace na něm lze p
 V této části použijte jazyk R IDE pro referenční data k dispozici v Azure Databricks. Než začnete, musíte mít následující v počítači nainstalována.
 
 * Rozhraní IDE pro jazyk R. Tento článek používá Rstudia pro plochu. Můžete nainstalovat z [stažení R Studio](https://www.rstudio.com/products/rstudio/download/).
-* Pokud používáte Rstudia pro plochu jako vaše IDE, také nainstalovat klienta Microsoft R [http://aka.ms/rclient/](http://aka.ms/rclient/). 
+* Pokud používáte Rstudia pro plochu jako vaše IDE, také nainstalovat klienta Microsoft R [ http://aka.ms/rclient/ ](http://aka.ms/rclient/). 
 
 Otevřete Rstudia a proveďte následující kroky:
 

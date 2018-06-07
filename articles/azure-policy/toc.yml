@@ -17,26 +17,50 @@
   items:
     - name: Vytvoření a správa zásad Azure
       href: create-manage-policy.md
+    - name: Seznámení s Azure Policy (praktická cvičení)
+      href: 'https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: Ukázky
   items:
-    - name: Šablony zásad
+    - name: Ukázky Azure Policy
       href: json-samples.md
 - name: Koncepty
   items:
     - name: Struktura definic Azure Policy
       href: policy-definition.md
+    - name: Vysvětlení efektu Policy
+      href: policy-effects.md
 - name: Návody
   items:
     - name: Programové vytváření zásad
       href: policy-insights.md
+    - name: Shromažďování dat dodržování předpisů
+      href: policy-compliance.md
 - name: Referenční informace
   items:
     - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.resources/#policies'
+    - name: REST API
+      items:
+        - name: Události
+          href: /rest/api/policy-insights/policyevents
+        - name: Stavy
+          href: /rest/api/policy-insights/policystates
+        - name: Přiřazení
+          href: /rest/api/resources/policyassignments
+        - name: Definice zásad
+          href: /rest/api/resources/policydefinitions
+        - name: Definice iniciativ
+          href: /rest/api/resources/policysetdefinitions
 - name: Zdroje a prostředky
   items:
+    - name: GitHub – Ukázky Azure Policy
+      href: 'https://github.com/Azure/azure-policy'
+    - name: Video – Build 2018
+      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: Video – Ignite 2017
+      href: 'https://myignite.microsoft.com/videos/54781'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cenová kalkulačka

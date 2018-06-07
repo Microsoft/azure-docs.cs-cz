@@ -4,7 +4,7 @@ description: Popisuje Docker a rozšíření Azure Virtual Machines a ukazuje, j
 services: virtual-machines-linux
 documentationcenter: ''
 author: squillace
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
 ms.assetid: eaff75e3-d929-4931-a4a1-8c377a8e7302
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: 91f7ea54afce0e94953d4bb01bbb1b33f167fe22
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2a8672ab6a37eb383d35ad71384bb47cc3767a6d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34653140"
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Použití rozšíření Docker VM z rozhraní příkazového řádku Azure (Azure CLI)
 > [!IMPORTANT] 
@@ -157,8 +158,8 @@ Démon Docker v hostiteli je nakonfigurován k naslouchání a ověření připo
 > 
 
 ## <a name="next-steps"></a>Další postup
-* Jste připravení přejít ke [Docker uživatelská příručka] a používat virtuální počítač Docker. Vytvoření virtuálního počítače s povoleným Docker v nového portálu, najdete v tématu [jak používat rozšíření virtuálního počítače Docker s portálem].
-* Rozšíření virtuálního počítače Azure Docker podporuje také Docker Compose, která používá soubor deklarativní YAML trvat aplikaci na vývojáře modelován v každém prostředí a generování konzistentní nasazení. V tématu [začít pracovat s Docker a vytvářené definovat a spusťte aplikaci služby kontejneru na virtuální počítač Azure].  
+* Jste připravení přejít ke [Uživatelská příručka docker] a používat virtuální počítač Docker. Vytvoření virtuálního počítače s povoleným Docker v nového portálu, najdete v tématu [Jak používat rozšíření virtuálního počítače Docker pomocí portálu].
+* Rozšíření virtuálního počítače Azure Docker podporuje také Docker Compose, která používá soubor deklarativní YAML trvat aplikaci na vývojáře modelován v každém prostředí a generování konzistentní nasazení. V tématu [Začínáme s Docker a vytvářené definovat a spusťte aplikaci služby kontejneru na virtuální počítač Azure].  
 
 <!--Anchors-->
 [Subheading 1]:#subheading-1
@@ -176,8 +177,8 @@ Démon Docker v hostiteli je nakonfigurován k naslouchání a ověření připo
 [Link 1 to another azure.microsoft.com documentation topic]:../../virtual-machines-windows-hero-tutorial.md
 [Link 2 to another azure.microsoft.com documentation topic]:../../../app-service-web/web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]:../storage-whatis-account.md
-[jak používat rozšíření virtuálního počítače Docker s portálem]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
+[Jak používat rozšíření virtuálního počítače Docker pomocí portálu]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
-[Docker uživatelská příručka]:https://docs.docker.com/userguide/
+[Uživatelská příručka docker]:https://docs.docker.com/userguide/
 
-[začít pracovat s Docker a vytvářené definovat a spusťte aplikaci služby kontejneru na virtuální počítač Azure]:../docker-compose-quickstart.md
+[Začínáme s Docker a vytvářené definovat a spusťte aplikaci služby kontejneru na virtuální počítač Azure]:../docker-compose-quickstart.md

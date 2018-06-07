@@ -89,6 +89,8 @@
               href: n-series-driver-setup.md
         - name: Vysokovýkonné výpočetní prostředí
           href: sizes-hpc.md
+        - name: Předchozí generace
+          href: sizes-previous-gen.md
         - name: Výpočetní jednotky Azure (ACU)
           href: acu.md
         - name: Výsledky srovnávacích testů
@@ -140,6 +142,8 @@
           href: create-cli-complete.md
         - name: Použití šablony
           href: create-ssh-secured-vm-from-template.md
+        - name: Použití rozhraní REST API
+          href: create-vm-rest-api.md
         - name: Kopírování nebo klonování virtuálního počítače
           href: copy-vm.md
     - name: Zabezpečení virtuálních počítačů
@@ -188,7 +192,12 @@
         - name: Označení virtuálního počítače
           href: tag.md
         - name: Spouštění skriptů na virtuálním počítači
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Rozšíření vlastních skriptů
+              href: ../extensions/custom-script-linux.md
+            - name: Spuštění příkazu
+              href: run-command.md
         - name: Použití Vzdálené plochy
           href: use-remote-desktop.md
         - name: Připojení virtuálního počítače k Azure Active Directory
@@ -416,21 +425,7 @@
             - name: Použití interního serveru DNS
               href: static-dns-name-resolution-for-linux-on-azure.md
     - name: Použití rozšíření virtuálních počítačů
-      items:
-        - name: Přehled rozšíření virtuálních počítačů
-          href: extensions-features.md
-        - name: Rozšíření vlastních skriptů
-          href: extensions-customscript.md
-        - name: Rozšíření agenta OMS
-          href: extensions-oms.md
-        - name: Diagnostické rozšíření Linuxu
-          href: diagnostic-extension.md
-        - name: Agent Network Watcher
-          href: extensions-nwa.md
-        - name: Rozšíření VMAccess
-          href: using-vmaccess-extension.md
-        - name: Omezení instalace rozšíření
-          href: ../extensions/extensions-rmpolicy-howto-cli.md
+      href: ../extensions/overview.md
     - name: Migrace virtuálních počítačů
       items:
         - name: Migrace AWS a místních virtuálních počítačů

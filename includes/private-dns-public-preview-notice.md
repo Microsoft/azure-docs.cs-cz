@@ -1,6 +1,6 @@
 ---
-title: Zahrnout soubor pro verzi public preview oznámení zóny DNS privátní Azure
-description: Zahrnout soubor pro verzi public preview oznámení zóny DNS privátní Azure
+title: Soubor include pro upozornění na funkci Azure DNS Private Zone ve verzi Public Preview
+description: Soubor include pro upozornění na funkci Azure DNS Private Zone ve verzi Public Preview
 services: dns
 author: subsarma
 ms.service: dns
@@ -8,15 +8,16 @@ ms.topic: include file for Azure DNS Private Zone public preview notice
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for Azure DNS Private Zone public preview notice
-ms.openlocfilehash: 28b828f48e90c1e273dc3626b2b0e70260d6eacd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d00b0e26591e2c0def95e0c3b69c89b567dceddd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34702529"
 ---
 > [!IMPORTANT]
-> Funkce zóny DNS privátní Azure je aktuálně ve verzi Public Preview. 
+> Funkce Azure DNS Private Zone je teď ve verzi Public Preview. 
 >
-> Tato verze Preview je k dispozici bez smlouvu o úrovni služeb a se nedoporučuje pro produkční zatížení. Některé funkce nemusí být podporována nebo může mít omezené možnosti. 
-> Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

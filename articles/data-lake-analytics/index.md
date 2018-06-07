@@ -1,26 +1,24 @@
 ---
-title: "Dokumentace ke službě Azure Data Lake Analytics – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se analyzovat velké objemy dat s použitím služby Data Lake Analytics. V kurzech se naučíte spouštět dávkové analýzy, analýzy v reálném čase a interaktivní analýzy a psát dotazy v jazyce U-SQL."
+title: Dokumentace ke službě Azure Data Lake Analytics – kurzy, reference k rozhraní API
+description: Naučte se analyzovat velké objemy dat s použitím služby Azure Data Lake Analytics. V kurzech se naučíte spouštět dávkové analýzy, analýzy v reálném čase a interaktivní analýzy a psát dotazy v jazyce U-SQL.
 services: data-lake-analytics
-author: czeumault
-manager: carolz
-layout: LandingPage
-ms.assetid: 
 ms.service: data-lake-analytics
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
+layout: LandingPage
 ms.topic: landing-page
 ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc7b85e5a5f6173572e390c1073971d927aa7df
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624212"
 ---
-# <a name="data-lake-analytics-documentation"></a>Dokumentace ke službě Data Lake Analytics
+# <a name="azure-data-lake-analytics-documentation"></a>Dokumentace Azure Data Lake Analytics
 
-Naučte se používat službu Data Lake Analytics ke spouštění analytických úloh pro velké objemy dat, které se přizpůsobí obrovským datovým sadám. V kurzech a další dokumentaci se naučíte vytvářet a spravovat úlohy dávkové analýzy, analýzy v reálném čase a interaktivní analýzy a zadávat dotazy s použitím jazyka U-SQL.
+Naučte se používat službu Azure Data Lake Analytics ke spouštění analytických úloh pro velké objemy dat, které se přizpůsobí obrovským datovým sadám. V kurzech a další dokumentaci se naučíte vytvářet a spravovat úlohy dávkové analýzy, analýzy v reálném čase a interaktivní analýzy a zadávat dotazy s použitím jazyka U-SQL.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -98,7 +96,6 @@ Naučte se používat službu Data Lake Analytics ke spouštění analytických 
         <td><a href="data-lake-analytics-manage-use-cli.md">Azure CLI</a></td>
         <td><a href="data-lake-analytics-manage-use-dotnet-sdk.md">.NET SDK</a></td>
         <td><a href="data-lake-analytics-get-started-python.md">Python SDK</a></td>
-        <td><a href="data-lake-analytics-get-started-java-sdk.md">Java SDK</a></td>
     </tr>
 </table>
 

@@ -15,6 +15,7 @@
 ### [Vytváření řídicích panelů Azure prostřednictvím kódu programu](azure-portal-dashboards-create-programmatically.md)
 ## Spravovat
 ### [Zapnutí vysokého kontrastu nebo změna motivu](azure-portal-change-theme-high-contrast.md)
+### [Export nebo odstranění uživatelských nastavení](azure-portal-export-delete-settings.md)
 ### [Použití portálu ke správě prostředků](../azure-resource-manager/resource-group-portal.md)
 ### [Správa přístupu prostřednictvím řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md)
 ### [Sdílení řídicích panelů prostřednictvím řízení přístupu na základě role](azure-portal-dashboard-share-access.md)

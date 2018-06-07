@@ -3,13 +3,13 @@
 
 # Přehled
 ## [Koncepce architektury IoT](iot-accelerators-what-is-azure-iot.md)
-## [Porovnání možností Azure IoT](../iot-suite/iot-suite-options.md)
+## [Porovnání možností Azure IoT](iot-accelerators-options.md)
 ## [Přehled akcelerátorů řešení](iot-accelerators-what-are-solution-accelerators.md)
 
 # Začínáme
 ## Vzdálené monitorování
 ### [Nasazení akcelerátoru řešení](iot-accelerators-remote-monitoring-deploy.md)
-### [Provozování akcelerátoru řešení](../iot-suite/iot-suite-remote-monitoring-explore.md)
+### [Provozování akcelerátoru řešení](iot-accelerators-remote-monitoring-explore.md)
 
 ## Vzdálené monitorování (předchozí verze)
 ### [Co jsou akcelerátory řešení?](../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md)
@@ -43,8 +43,8 @@
 
 
 ## Prediktivní údržba
-### [Přehled akcelerátorů řešení prediktivní údržby](../iot-suite/iot-suite-predictive-overview.md)
-### [Seznámení s akcelerátory řešení prediktivní údržby](../iot-suite/iot-suite-predictive-walkthrough.md)
+### [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
+### [Seznámení s akcelerátory řešení prediktivní údržby](iot-accelerators-predictive-walkthrough.md)
 
 ## Propojená továrna
 ### [Co je propojená továrna?](iot-accelerators-connected-factory-features.md)
@@ -70,7 +70,7 @@
 ### [Přizpůsobení a opakované nasazení mikroslužby](iot-accelerators-microservices-example.md)
 ### [Nasazení pomocí rozhraní příkazového řádku](iot-accelerators-remote-monitoring-deploy-cli.md)
 ### [Místní nasazení](iot-accelerators-remote-monitoring-deploy-local.md)
-### [Vizualizace dat s využitím Time Series Insights](../iot-suite/iot-suite-time-series-insights.md)
+### [Vizualizace dat s využitím Time Series Insights](iot-accelerators-time-series-insights.md)
 ### [Integrace se službou Data Lake Store](iot-accelerators-integrate-data-lake.md)
 ### Připojení fyzického zařízení
 #### [C ve Windows](iot-accelerators-connecting-devices.md)
@@ -78,7 +78,7 @@
 #### [Node.js (obecné)](iot-accelerators-connecting-devices-node.md)
 #### [Node.js v Raspberry Pi](iot-accelerators-connecting-pi-node.md)
 #### [C v Raspberry Pi](iot-accelerators-connecting-pi-c.md)
-#### [MX Chip AZ3166 DevKit](../iot-suite/iot-suite-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
+#### [MX Chip AZ3166 DevKit](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md)
 
 ### Koncepty
 #### [Podrobnosti o implementaci vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md)
@@ -89,19 +89,19 @@
 ### [Přizpůsobení propojené továrny](iot-accelerators-connected-factory-customize.md)
 ### [Použití vydavatele OPC pro propojenou továrnu](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [Konfigurace propojené továrny](iot-accelerators-connected-factory-configure.md)
-## [Oprávnění na webu azureiotsuite.com](../iot-suite/iot-suite-permissions.md)
+## [Oprávnění na webu azureiotsuite.com](iot-accelerators-permissions.md)
 
 # Referenční informace
 ## [Referenční příručka pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [Průvodce řešením potíží pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [Architektura zabezpečení](../iot-suite/iot-security-architecture.md)
-## [Osvědčené postupy zabezpečení](../iot-suite/iot-security-best-practices.md)
-## [Zabezpečení nasazení IoT](../iot-suite/iot-suite-security-deployment.md)
-## [Zabezpečení od počátku](../iot-suite/securing-iot-ground-up.md)
+## [Architektura zabezpečení](iot-security-architecture.md)
+## [Osvědčené postupy zabezpečení](iot-security-best-practices.md)
+## [Zabezpečení nasazení IoT](iot-accelerators-security-deployment.md)
+## [Zabezpečení od počátku](securing-iot-ground-up.md)
 
 # Související
 ## Řešení 
-### [Předkonfigurovaná řešení IoT Suite](/azure/iot-suite) 
+### [Akcelerátory řešení IoT](/azure/iot-suite) 
 ### [IoT Central](https://docs.microsoft.com/microsoft-iot-central/) 
 ## Služby platformy 
 ### [IoT Hub](/azure/iot-hub) 

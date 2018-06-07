@@ -3,16 +3,19 @@ title: Kurz – Poskytnutí přístupu k webovému rozhraní API ASP.NET Core z 
 description: Kurz popisující použití Active Directory B2C k ochraně webového rozhraní API .NET Core a jeho volání z jednostránkové aplikace.
 services: active-directory-b2c
 author: davidmu1
+manager: mtillman
 ms.author: davidmu
 ms.date: 3/02/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 0e9e3074e2cdd9ec3adc814779811d150cd11010
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: 5b99f60c1bd81b77a5fc2be5575f65fc63eb0c11
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34711089"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API ASP.NET Core z jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -155,13 +158,15 @@ Pokud chcete své jednostránkové aplikaci povolit volání webového rozhraní
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
+3. Otevřete soubor **launchSettings.json** v části **Vlastnosti**, vyhledejte nastavení *applicationURL* a poznamenejte si tuto hodnotu pro použití v další části.
+
 ### <a name="configure-the-single-page-app"></a>Konfigurace jednostránkové aplikace
 
 Jednostránková aplikace používá Azure AD B2C k registraci a přihlašování uživatelů a volání chráněného webového rozhraní API ASP.NET Core. Jednostránkovou aplikaci je potřeba aktualizovat tak, aby volala webové rozhraní API .NET Core.
 Nastavení aplikace můžete změnit následujícím způsobem:
 
 1. Otevřete soubor `index.html` v ukázce jednostránkové aplikace Node.js.
-2. Nakonfigurujte ukázku s použitím informací o registraci tenanta Azure AD B2C. V následujících řádcích kódu změňte hodnoty **b2cScopes** a **webApi**:
+2. Nakonfigurujte ukázku s použitím informací o registraci tenanta Azure AD B2C. V následujícím kódu přidejte název tenanta do **b2cScopes** a změňte hodnotu **webApi** na hodnotu *applicationURL*, kterou jste si předtím poznamenali:
 
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -169,7 +174,7 @@ Nastavení aplikace můžete změnit následujícím způsobem:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:58553/api/values',
+        webApi: 'http://localhost:64791/api/values',
     };
     ```
 

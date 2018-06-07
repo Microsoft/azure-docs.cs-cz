@@ -14,17 +14,103 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657566"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Poznámky k verzi Microsoft Azure Storage Explorer
 
 Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi, a také poznámky k verzi pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadno pracovat s daty Azure Storage ve Windows, systému macOS a Linux.
+
+## <a name="version-110"></a>Verze 1.1.0
+05/09/2018
+
+### <a name="download-azure-storage-explorer-110"></a>Stažení Azure Storage Explorer 1.1.0
+- [Azure Storage Explorer 1.1.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.1.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.1.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Nová
+* Storage Explorer teď podporuje použití Azurite. Poznámka: připojení k Azurite je pevně zakódované do jsou výchozí koncové body vývoj.
+* Storage Explorer teď podporuje úrovní přístupu pro objekt Blob pouze účty a účty úložiště GPV2. Další informace o úrovních přístupu [zde](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
+* Čas spuštění se už nevyžaduje při generování SAS.
+
+### <a name="fixes"></a>Opravy
+* Načítání z předplatných pro účty US Government bylo přerušeno. To byl opraven. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* Čas vypršení platnosti pro zásady přístupu nebyl uložen správně. To byl opraven. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* Při generování adresy URL SAS pro položku v kontejneru, název položky nebyla je připojena k adrese URL. To byl opraven. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* Při vytváření SAS, časy vypršení platnosti, které jsou v minulosti by někdy výchozí hodnota. Důvodem byla Storage Explorer pomocí poslední čas spuštění a vypršení platnosti použita jako výchozí hodnoty. Nyní při každém otevření dialogu SAS se generuje novou sadu výchozích hodnot. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* Při kopírování souborů mezi účty úložiště, se vygeneruje SAS 24 hodin. Pokud bude pro kopii už bylo víc než 24 hodin, kopie selže. Zvětšili jsme SAS na na poslední 1 týden může snížit pravděpodobnost kopii neúspěšné kvůli vypršela platnost SAS. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* U některých aktivit, kliknutím na "Zrušit" by vždy fungovat. To byl opraven. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* U některých aktivit rychlost přenosu je nesprávná. To byl opraven. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* Pravopisu "Předchozí" v nabídce zobrazení je nesprávná. Je nyní správně zadána. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* Na poslední stránku Instalační služby systému Windows bylo tlačítko "Další". Změnil se na tlačítko "Dokončit". [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* Karta fokus nebyla viditelné pro tlačítek v dialogových oknech, při použití HC černé motivu. Teď je viditelné. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* Malá a velká písmena "Automaticky vyřešit" pro akce v protokolu aktivit je nesprávná. Nyní je správná. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* Při odstraňování entity z tabulky, dialogovém okně s dotazem na potvrzení zobrazí ikona chyby. Dialogové okno teď používá ikona upozornění. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>Známé problémy
+* Pokud používáte VS pro počítače Mac a někdy vytvořili vlastní konfiguraci AAD, nebudete možná moct přihlásit. Chcete-li tento problém obejít, odstranit obsah ~ /. IdentityService/AadConfigurations. Pokud to není blokování můžete, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může existovat neočekávaným chybám nebo chování při použití Azurite pro vývoj úložiště.
+* Ve výjimečných případech můžou uváznout stromu zaměřit na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Odesílání ze složky OneDrive nefunguje, pokud je z důvodu chyby v NodeJS. Chybě byla pevné, ale ještě nebyla integrována do elektronovým.
+* Pokud je cílem zásobník Azure, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtru Storno [zde](https://github.com/Azure/azure-storage-node/issues/317). 
+* Pokud si zvolíte nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby bylo možné používat Storage Explorer zapomněli rozhodnutí.
+* Přejmenování objekty BLOB (samostatně nebo v kontejneru objektů blob přejmenovat) nezachovává snímky. Během přejmenovat se zachovají všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity.
+* I když zásobník Azure aktuálně nepodporuje sdílených složek, sdílených složek uzel se objeví stále v připojené účtu úložiště Azure zásobníku.
+* Prostředí elektronovým používáno Průzkumníkem úložiště má potíže s hardwarovou akceleraci některé grafický procesor (grafický procesor). Pokud Storage Explorer je zobrazení prázdné hlavní okno (prázdná), můžete zkusit spustit Průzkumníka úložiště z příkazového řádku a zákaz akcelerace GPU přidáním `--disable-gpu` přepínače:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Pro uživatele, Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset zajistit RSZ je aktuální – tento krok můžete provést spuštěním následujících příkazů a restartujte svůj počítač:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete provést spuštěním následujících příkazů a restartujte svůj počítač:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Předchozí verze
+
+* [Verze 1.0.0](#version-100)
+* [Verze 0.9.6](#version-096)
+* [Verze 0.9.5](#version-095)
+* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
+* [Verze 0.9.2](#version-092)
+* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
+* [Verze 0.8.16](#version-0816)
+* [Verze 0.8.14](#version-0814)
+* [Verze 0.8.13](#version-0813)
+* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
+* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
+* [Verze 0.8.7](#version-087)
+* [Verze 0.8.6](#version-086)
+* [Verze 0.8.5](#version-085)
+* [Verze 0.8.4](#version-084)
+* [Verze 0.8.3](#version-083)
+* [Verze 0.8.2](#version-082)
+* [Verze 0.8.0](#version-080)
+* [Verze 0.7.20160509.0](#version-07201605090)
+* [Verze 0.7.20160325.0](#version-07201603250)
+* [Verze 0.7.20160129.1](#version-07201601291)
+* [Verze 0.7.20160105.0](#version-07201601050)
+* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-100"></a>Verze 1.0.0
 16/04/2018
@@ -44,7 +130,7 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 * Vylepšení přístupu a podporu čtečky obrazovky. Pokud byste tedy spoléhat na funkce pro usnadnění přístupu, přečtěte si naše [usnadnění dokumentaci](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) Další informace.
 * Storage Explorer teď používá elektronovým 1.8.3
 
-### <a name="breaking-changes"></a>Nejnovější změny
+### <a name="breaking-changes"></a>Zásadní změny
 * Storage Explorer přepnul do nové knihovny ověřování. Jako součást přepínače do knihovny budete muset znovu přihlášení k vašemu účtům a znovu nastavte předplatné filtrované
 * Metoda použitá k šifrování citlivých dat došlo ke změně. To může vést k některé z položek rychlý přístup museli jej znovu přidat, nebo někteří z vás připojit prostředky museli být znovu připojit.
 
@@ -95,31 +181,6 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Předchozí verze
-
-* [Verze 0.9.6](#version-096)
-* [Verze 0.9.5](#version-095)
-* [Verze 0.9.4 a 0.9.3](#version-094-and-093)
-* [Verze 0.9.2](#version-092)
-* [Verze 0.9.1 a 0.9.0](#version-091-and-090)
-* [Verze 0.8.16](#version-0816)
-* [Verze 0.8.14](#version-0814)
-* [Verze 0.8.13](#version-0813)
-* [Verze 0.8.12 a 0.8.11 a 0.8.10](#version-0812-and-0811-and-0810)
-* [Verze 0.8.9 a 0.8.8](#version-089-and-088)
-* [Verze 0.8.7](#version-087)
-* [Verze 0.8.6](#version-086)
-* [Verze 0.8.5](#version-085)
-* [Verze 0.8.4](#version-084)
-* [Verze 0.8.3](#version-083)
-* [Verze 0.8.2](#version-082)
-* [Verze 0.8.0](#version-080)
-* [Verze 0.7.20160509.0](#version-07201605090)
-* [Verze 0.7.20160325.0](#version-07201603250)
-* [Verze 0.7.20160129.1](#version-07201601291)
-* [Verze 0.7.20160105.0](#version-07201601050)
-* [Verze 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>Verze 0.9.6
 02/28/2018

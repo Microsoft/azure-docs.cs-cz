@@ -9,6 +9,7 @@
 ## [Odesílání telemetrie (.NET)](quickstart-send-telemetry-dotnet.md)
 ## [Odesílání telemetrie (Java)](quickstart-send-telemetry-java.md)
 ## [Odesílání telemetrie (Java)](quickstart-send-telemetry-python.md)
+## [Odesílání telemetrie (iOS)](quickstart-send-telemetry-ios.md)
 ## [Řízení zařízení (Node.js)](quickstart-control-device-node.md)
 ## [Řízení zařízení (.NET)](quickstart-control-device-dotnet.md)
 ## [Řízení zařízení (Java)](quickstart-control-device-java.md)
@@ -18,29 +19,19 @@
 
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Směrování zpráv](tutorial-routing.md)
+## [Konfigurace vašich zařízení](tutorial-device-twins.md)
+## [Testování připojení zařízení](tutorial-connectivity.md)
 ## Odesílání zpráv z cloudu do zařízení
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
 ### [Java](iot-hub-java-java-c2d.md)
 ### [Node.js](iot-hub-node-node-c2d.md)
 ### [Python](iot-hub-python-python-c2d.md)
-## Začínáme s dvojčaty zařízení
-### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-twin-getstarted.md)
-### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-twin-getstarted.md)
-### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-getstarted.md)
-### [Java back-end / zařízení Java](iot-hub-java-java-twin-getstarted.md)
-### [Back-end Python / zařízení Python](iot-hub-python-twin-getstarted.md)
 ## Začínáme se správou zařízení
 ### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-device-management-get-started.md)
 ### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-device-management-get-started.md)
 ### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-device-management-get-started.md)
 ### [Java back-end / zařízení Java](iot-hub-java-java-device-management-getstarted.md)
 ### [Back-end Python / zařízení Python](iot-hub-python-python-device-management-get-started.md)
-## Jak používat vlastnosti dvojčat
-### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-twin-how-to-configure.md)
-### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-twin-how-to-configure.md)
-### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-how-to-configure.md)
-### [Java back-end / zařízení Java](iot-hub-java-java-twin-how-to-configure.md)
-### [Back-end Python / zařízení Python](iot-hub-python-python-twin-how-to-configure.md)
 ## Použití úloh zařízení k aktualizaci firmwaru zařízení
 ### [Back-end Node / zařízení Node](iot-hub-node-node-firmware-update.md)
 ### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-firmware-update.md)
@@ -80,6 +71,8 @@
 ### [Kvóty a omezování](iot-hub-devguide-quotas-throttling.md)
 ### [Příklady cen](iot-hub-devguide-pricing.md)
 ### [Sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md)
+### [Vývoj pro zařízení s omezením](iot-hub-devguide-develop-for-constrained-devices.md)
+### [Vývoj pro mobilní zařízení](iot-hub-how-to-develop-for-mobile-devices.md)
 ### [Podpora MQTT](iot-hub-mqtt-support.md)
 ### [Glosář](iot-hub-devguide-glossary.md)
 
@@ -89,7 +82,6 @@
 #### [Java](iot-hub-java-java-getstarted.md)
 #### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
-#### [iOS (Swift)](quickstart-send-telemetry-ios.md)
 ## [Použití sady SDK pro zařízení IoT pro C](iot-hub-device-sdk-c-intro.md)
 ### [Použití IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [Použití serializátoru](iot-hub-device-sdk-c-serializer.md)
@@ -157,17 +149,26 @@
 ### [Použití sady SDK pro zařízení IoT pro C](iot-hub-device-sdk-c-intro.md)
 #### [Použití IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 #### [Použití serializátoru](iot-hub-device-sdk-c-serializer.md)
+### [Vývoj pro zařízení s omezením](iot-hub-devguide-develop-for-constrained-devices.md)
+### [Vývoj pro mobilní zařízení](iot-hub-how-to-develop-for-mobile-devices.md)
 ### Směrování zpráv
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
+### [Dotazování na data Avro ze směrování Hubu](iot-hub-query-avro-data.md)
 ### Odesílání zpráv z cloudu do zařízení
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.js](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
 #### [iOS](iot-hub-ios-swift-c2d.md)
+### Začínáme s dvojčaty zařízení
+#### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-twin-getstarted.md)
+#### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-twin-getstarted.md)
+#### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java back-end / zařízení Java](iot-hub-java-java-twin-getstarted.md)
+#### [Back-end Python / zařízení Python](iot-hub-python-twin-getstarted.md)
 ### Nahrání souborů ze zařízení
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
@@ -217,13 +218,6 @@
 ### [Java](iot-hub-java-java-file-upload.md)
 ### [Node.js](iot-hub-node-node-file-upload.md)
 ### [Python](iot-hub-python-python-file-upload.md)
-
-## Úlohy vysílání a plánování
-### [Back-end Node.js / zařízení Node.js](iot-hub-node-node-schedule-jobs.md)
-### [Back-end .NET / zařízení Node.js](iot-hub-csharp-node-schedule-jobs.md)
-### [Back-end .NET / zařízení .NET](iot-hub-csharp-csharp-schedule-jobs.md)
-### [Java back-end / zařízení Java](iot-hub-java-java-schedule-jobs.md)
-### [Back-end Python / zařízení Python](iot-hub-python-python-schedule-jobs.md)
 
 ## Vytvoření centra IoT 
 ### [Použití webu Azure Portal](iot-hub-create-through-portal.md)

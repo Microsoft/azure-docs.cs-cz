@@ -6,17 +6,18 @@ author: joesackmsft
 manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 96bc75e15c99897414fad8c138c8a34ef790af21
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650107"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – správu databáze v databázi SQL Azure
 
@@ -38,7 +39,7 @@ Obchodní kontinuitu a po havárii obnovení dalo umožňují pokračovat vaší
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Jak vytvořit a spravovat zálohy pro službu SQL Database?
 Nemusíte vytvářet zálohy na databázi SQL Azure a je to způsobeno nemusíte. Databáze SQL automaticky vytvoří zálohu databáze, takže už se musí starat o plánování, přičemž a správu zálohování. Platforma trvá úplné zálohování každý týden, rozdílové že zálohování každých několik hodin a protokolu zálohování každých 5 minut, aby zajistil zotavení po havárii efektivní a ztrátě dat, která je minimální. Při vytváření databáze se stane první úplné zálohování. Tyto zálohy jsou k dispozici po určitou dobu názvem "Doba uchování" a se liší podle úroveň výkonu, které zvolíte.  SQL Database nabízí možnost obnovit do libovolného bodu v čase v rámci doby uchování pomocí [bodu v možnosti doba obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Konfigurovat výkon|Doba uchování ve dnech|
+|Úroveň výkonu|Doba uchování ve dnech|
 |---|:---:|
 |Basic|7|
 |Standard|35|
@@ -162,7 +163,7 @@ Následující diagram znázorňuje možnosti úložiště klíčů pro hlavníh
 Síťový provoz mezi vaší organizací a SQL Database by získat obecně směrován přes veřejnou síť. Ale pokud zvolíte možnost Optimalizovat tuto cestu a zvyšuje zabezpečení, můžete zobrazit do Express Route. Expresní trasy v podstatě umožňuje rozšířit vaší podnikové síti do platformy Azure přes privátní připojení. Díky tomu můžete se nepřenášejí prostřednictvím veřejného Internetu. Můžete také získat vyšší zabezpečení, spolehlivost a optimalizace směrování, která znamená, že je na nižší latenci sítě a mnohem vyšší rychlost, než jste by normálně zaznamenat budete prostřednictvím veřejného Internetu. Pokud plánujete přenosu významné bloku dat mezi vaší organizace a Azure, pomocí Express Route přispět nákladů. Do Azure můžete vybírat tři modely jiné připojení pro připojení z vaší organizace: 
 - [Společné umístění Exchange cloudu](../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Typu point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Express Route také umožňuje burst až 2 x limit šířky pásma, kterou jste si koupili pro bez dalších poplatků. Je také možné nakonfigurovat pro různé oblasti připojení pomocí Express route. Seznam zprostředkovatelů ER připojení najdete v tématu: [Express partnery trasy a umístění partnerského vztahu](../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
 - [Úvod na Express Route](../expressroute/expressroute-introduction.md)

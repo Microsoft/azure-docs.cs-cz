@@ -12,9 +12,15 @@
 - name: Kurzy
   items:
     - name: 'Nahrávání, kódování a streamování'
-      href: stream-files-tutorial-with-api.md
+      items:
+        - name: S využitím .NET
+          href: stream-files-tutorial-with-api.md
+        - name: S využitím REST
+          href: stream-files-tutorial-with-rest.md
     - name: Analýza videa
-      href: analyze-videos-tutorial-with-api.md
+      items:
+        - name: S využitím .NET
+          href: analyze-videos-tutorial-with-api.md
 - name: Ukázky
   items:
     - name: Ukázky kódu Azure
@@ -25,18 +31,24 @@
   items:
     - name: Prostředky
       href: assets-concept.md
-    - name: Adaptivní žebříček přenosových rychlostí Autogen
-      href: autogen-bitrate-ladder.md
+    - name: Kódování
+      items:
+        - name: Přehled
+          href: encoding-concept.md
+        - name: Adaptivní žebříček přenosových rychlostí Autogen
+          href: autogen-bitrate-ladder.md
     - name: Inteligentní funkce médií
       href: intelligence-concept.md
+    - name: Reakce na události
+      href: reacting-to-media-services-events.md
     - name: Účty úložiště
       href: storage-account-concept.md
     - name: Transformace a úlohy
       href: transform-concept.md
-    - name: Reakce na události
-      href: reacting-to-media-services-events.md
 - name: Návody
   items:
+    - name: Migrace z v2 v3
+      href: migrate-from-v2-to-v3.md
     - name: Vytvoření účtu – rozhraní příkazového řádku
       href: create-account-cli-how-to.md
     - name: Přístup k rozhraním API – rozhraní příkazového řádku
@@ -49,8 +61,14 @@
           href: job-input-from-http-how-to.md
         - name: Z místního souboru
           href: job-input-from-local-file-how-to.md
+    - name: Přizpůsobení přednastavení transformace
+      items:
+        - name: S využitím .NET Core
+          href: customize-encoder-presets-how-to.md
 - name: Referenční informace
   items:
+    - name: Specifikace OpenAPI (Swagger)
+      href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview'
     - name: Azure CLI 2.0
       href: 'https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest'
     - name: REST
@@ -61,6 +79,8 @@
       href: 'https://docs.microsoft.com/java/api/overview/azure/mediaservices'
     - name: Python
       href: 'https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Schémata událostí
       href: media-services-event-schemas.md
 - name: Zdroje a prostředky
@@ -77,3 +97,5 @@
       href: release-notes.md
     - name: Kvóty a omezení
       href: limits-quotas-constraints.md
+    - name: Nejčastější dotazy
+      href: frequently-asked-questions.md

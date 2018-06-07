@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: be60e79d9e5a57cd93a4aa57efdbb3e4c034d064
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 07572e11a0856c05e173c6ccda2a7c89d75625ef
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616273"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírování dat z HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +41,7 @@ Konkrétně tento konektor HDFS podporuje:
 - Kopírování souborů pomocí **webhdfs** protokolu nebo **předdefinované DistCp** podporovat.
 - Kopírování souborů jako-je nebo analýza nebo generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Ke kopírování dat ze HDFS, který není veřejně přístupný, musíte nastavit Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](concepts-integration-runtime.md) článku se dozvíte podrobnosti.
 
@@ -54,10 +55,10 @@ Následující části obsahují podrobnosti o vlastnosti, které se používaj�
 
 Pro HDFS propojené služby jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu musí být nastavena na: **Hdfs**. | Ano |
-| Adresa URL |Adresa URL HDFS |Ano |
+| type | Vlastnost typu musí být nastavena na: **Hdfs**. | Ano |
+| url |Adresa URL HDFS |Ano |
 | authenticationType. | Povolené hodnoty jsou: **anonymní**, nebo **Windows**. <br><br> Použít **ověřování protokolem Kerberos** HDFS konektor, najdete v části [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
 | Uživatelské jméno |Ověřování uživatelského jména pro systém Windows. Pro ověřování pomocí protokolu Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování systému Windows. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
@@ -113,9 +114,9 @@ Pro HDFS propojené služby jsou podporovány následující vlastnosti:
 
 Chcete-li zkopírovat data z HDFS, nastavte vlastnost typu datové sady, která **sdílení souborů**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typu datové sady musí být nastavena na: **sdílení souborů** |Ano |
+| type | Vlastnost typu datové sady musí být nastavena na: **sdílení souborů** |Ano |
 | folderPath | Cesta ke složce. Zástupný filtr není podporován. Příklad: složku nebo podsložku / |Ano |
 | fileName |  **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
@@ -160,9 +161,9 @@ Chcete-li zkopírovat data z HDFS, nastavte vlastnost typu datové sady, která 
 
 Pokud chcete zkopírovat data z HDFS, nastavte typ zdroje v aktivitě kopírování do **HdfsSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
-| Vlastnost | Popis | Požadované |
+| Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| typ | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HdfsSource** |Ano |
+| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HdfsSource** |Ano |
 | Rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
 | distcpSettings | Skupina vlastností při použití HDFS DistCp. | Ne |
 | resourceManagerEndpoint | Koncový bod Yarn ResourceManager | Ano, při použití DistCp |

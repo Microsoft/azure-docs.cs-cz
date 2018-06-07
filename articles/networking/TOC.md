@@ -43,11 +43,9 @@
 ### [Vytvoření vyhrazeného privátního připojení (ExpressRoute)](../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Správa
+### [Přehled sledování sítě](network-monitoring-overview.md)
+### [Kontrola využití prostředků na základě omezení Azure](check-usage-against-limits.md)
 ### [Zobrazení topologie sítě](../network-watcher/network-watcher-topology-powershell.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Správa zachytávání paketů](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Určení směrování dalšího segmentu směrování](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Ověření toků protokolu IP pro virtuální počítač](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Přehled sledování sítě](network-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## Ukázkové skripty
 ### [Azure CLI](cli-samples.md)

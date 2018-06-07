@@ -10,7 +10,7 @@
       href: tutorial-assessment-vmware.md
 - name: Koncepty
   items:
-    - name: Koncepty kolektoru
+    - name: Informace o kolektoru
       href: concepts-collector.md
     - name: Výpočty hodnocení
       href: concepts-assessment-calculation.md
@@ -18,13 +18,15 @@
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
-    - name: Migrace místních prostředků do Azure
+    - name: Seriál o migraci Contoso
       items:
-        - name: Přehled scénáře – Migrace místních prostředků do Azure
-          href: migrate-scenarios-overview.md
-        - name: Scénář 1 – Posouzení vhodnosti místních prostředků k migraci do Azure
+        - name: 1. Contoso – Přehled migrace
+          href: contoso-migration-overview.md
+        - name: 2. Contoso –Nastavení infrastruktury Azure
+          href: contoso-migration-infrastructure.md
+        - name: 3. Contoso – Posouzení vhodnosti místních prostředků k migraci do Azure
           href: migrate-scenarios-assessment.md
-        - name: Scénář 2 – Migrace do Azure metodou „lift and shift“
+        - name: 4. Contoso – Změna hostitele pro virtuální počítače Azure a spravovanou instanci Azure SQL
           href: migrate-scenarios-lift-and-shift.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: 66340e690e5a6ac3e440b8b4d26e1a8b2abab266
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640468"
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Další odpovědi na časté otázky, vzorce a osvědčené postupy pro Azure Redis Cache.
@@ -31,7 +32,7 @@ Pokud váš dotaz není zde uvedeno, dejte nám vědět, a pomůžeme vám nají
 * Pokud chcete, aby se žádosti o funkci, můžete odeslat požadavky a nápady, jak [Azure Redis Cache User Voice](https://feedback.azure.com/forums/169382-cache).
 * Můžete také odeslat e-mailu na nás na adrese [externí zpětnou vazbu mezipaměti Azure](mailto:azurecache@microsoft.com).
 
-## <a name="azure-redis-cache-basics"></a>Azure Redis Cache basics
+## <a name="azure-redis-cache-basics"></a>Základy služby Azure Redis Cache
 Nejčastější dotazy v této části se věnují některé základní informace o Azure Redis Cache.
 
 * [Co je Azure Redis Cache?](#what-is-azure-redis-cache)
@@ -82,7 +83,7 @@ Nejčastější dotazy v této části se věnují běžné monitorování a ře
 * [Jaké nabídky Azure Cache je pro mě nejlepší?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-redis-cache"></a>Co je Azure Redis Cache?
-Azure Redis Cache je založená na populární open-source [Redis cache](http://redis.io). Umožňuje přístup do zabezpečené, vyhrazené mezipaměti Redis, spravované společností Microsoft a přístupná ze všech aplikací v rámci Azure. Podrobnější přehled najdete [Azure Redis Cache](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
+Služba Azure Redis Cache je založená na oblíbené opensourcové [mezipaměti Redis Cache](http://redis.io). Umožňuje přístup do zabezpečené, vyhrazené mezipaměti Redis, spravované společností Microsoft a přístupná ze všech aplikací v rámci Azure. Podrobnější přehled najdete [Azure Redis Cache](https://azure.microsoft.com/services/cache/) stránky produktu na Azure.com.
 
 ### <a name="how-can-i-get-started-with-azure-redis-cache"></a>Jak můžete můžu začít pracovat s Azure Redis Cache?
 Existuje několik způsobů, které můžete začít používat s Azure Redis Cache.
@@ -137,10 +138,10 @@ Z této tabulky jsme kreslení následující závěry:
 | **Standardní mezipaměti velikosti** | | |**Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Požadavky na druhý bez SSL (RPS)** |**Požadavky na druhý protokol SSL (RPS)** |
 | C0 |250 MB |Shared |100 / 12.5 |15,000 |7 500 |
 | C1 |1 GB |1 |500 / 62.5 |38,000 |20,720 |
-| C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
+| C2 |2,5 GB |2 |500 / 62.5 |41,000 |37 000 |
 | C3 |6 GB |4 |1000 / 125 |100,000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
-| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
+| C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
 | **Velikost mezipaměti Premium** | |**Jader procesoru na horizontální oddíl** | **Megabity za sekundu (Mb/s) nebo megabajtů za sekundu (MB/s)** |**Počet požadavků za druhé (RPS) bez SSL, na horizontální oddíl** |**Požadavky na druhý protokol SSL (RPS), na horizontální oddíl** |
 | P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
@@ -165,7 +166,7 @@ Ano, Azure Redis Cache je dostupná v cloudu Azure Government, Čína cloudu Azu
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Veřejné  | *.redis.cache.windows.net       |
+| Public  | *.redis.cache.windows.net       |
 | Vláda USA  | *.redis.cache.usgovcloudapi.net |
 | Německo | *.redis.cache.cloudapi.de       |
 | Čína   | *.redis.cache.chinacloudapi.cn  |
@@ -385,7 +386,7 @@ Zvážení všech informací, důrazně doporučujeme, aby zákazníci nastavte 
 
 Postup konfigurace tohoto nastavení:
 
-* V technologii ASP.NET, použijte [nastavení konfigurace "minIoThreads"] [ "minIoThreads" configuration setting] pod `<processModel>` konfiguračního prvku v souboru web.config. Pokud používáte uvnitř weby Azure, toto nastavení nebude vystavena prostřednictvím možnosti konfigurace. Ale nyní byste měli stále mít ke konfiguraci tohoto nastavení prostřednictvím kódu programu (viz níže) z metodu Application_Start v global.asax.cs.
+* V technologii ASP.NET, použijte ["minIoThreads" nebo "minWorkerThreads" nastavení konfigurace] [ "minIoThreads" configuration setting] pod `<processModel>` konfiguračního prvku v souboru web.config. Pokud používáte uvnitř weby Azure, toto nastavení nebude vystavena prostřednictvím možnosti konfigurace. Ale nyní byste měli stále mít ke konfiguraci tohoto nastavení prostřednictvím kódu programu (viz níže) z metodu Application_Start v global.asax.cs.
 
   > [!NOTE] 
   > Hodnota zadaná v tomto elementu konfigurace je *za jádra* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads na 200 za běhu, byste použili `<processModel minIoThreads="50"/>`.

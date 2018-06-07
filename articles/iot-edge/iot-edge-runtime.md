@@ -1,19 +1,19 @@
 ---
-title: "Pochopení runtime Azure IoT Edge | Microsoft Docs"
-description: "Další informace o modulu runtime Azure IoT okraj a jak ji umožňuje hraniční zařízení"
-services: iot-edge
-keywords: 
+title: Pochopení runtime Azure IoT Edge | Microsoft Docs
+description: Další informace o modulu runtime Azure IoT okraj a jak ji umožňuje hraniční zařízení
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 02/15/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8bd725e2201cb08853f4fb63d156b6359427663b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+services: iot-edge
+ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632070"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Pochopení modulu runtime Azure IoT okraj a jeho architektura – náhled
 
@@ -93,7 +93,7 @@ Každá položka ve slovníku moduly obsahuje konkrétní informace o modulu a j
 * **Settings.Image** – kontejner bitové kopie, Edge agent používá ke spuštění modulu. Agent okraje musí být nakonfigurované přihlašovací údaje pro kontejner registru Pokud bitovou kopii je chráněný heslem. Ke konfiguraci agenta Edge, použijte následující příkaz: `azure-iot-edge-runtime-ctl.py –configure`
 * **settings.createOptions** – řetězec, který je předán přímo démon Docker při spouštění modulu kontejneru. Přidání možnosti Docker v této vlastnosti umožňuje rozšířené možnosti, jako je port, předávání nebo připojení svazků do kontejneru modulu.  
 * **Stav** – stavu, ve kterém Edge agent umístí modul. Tato hodnota se obvykle nastavuje *systémem* jako většina lidí má agent Edge k okamžitému spuštění všech modulů na zařízení. Můžete však zadat počáteční stav modulu do zastaveny a čekat na datum v budoucnosti říct Edge agenta spusťte modul. Edge agent hlásí stav každého modulu zpět cloudu ve vlastnostech hlášené. Rozdíl mezi požadovanou vlastnost a vlastnost hlášené je slouží jako ukazatel nebo identifikovala zařízení. Jsou podporované stavy:
-   * Stahování
+   * Stahuje se
    * Spuštěno
    * Není v pořádku
    * Selhalo
@@ -105,7 +105,7 @@ Každá položka ve slovníku moduly obsahuje konkrétní informace o modulu a j
    * Vždy – pokud modul dojde k chybě, se považují za není v pořádku nebo ukončí žádným způsobem, Edge agent restartuje ho. 
 
 Okraj IoT agent odešle odpověď runtime do služby IoT Hub. Tady je seznam možných odpovědí:
-  * 200 - OK
+  * 200 – OK
   * 400 - konfigurace nasazení je chybný nebo není platný.
   * 417 – zařízení nemá nastavit konfiguraci nasazení.
   * 412 – verze schématu v konfiguraci nasazení je neplatný.

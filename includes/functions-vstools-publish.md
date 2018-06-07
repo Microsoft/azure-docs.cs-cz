@@ -1,25 +1,42 @@
-1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**. Zvolte **vytvořit nový** a potom **publikování**. 
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: functions
+author: ggailey777
+ms.service: functions
+ms.topic: include
+ms.date: 05/22/2018
+ms.author: glenga
+ms.custom: include file
+ms.openlocfilehash: 6cbf24c56458ab8b3b6c7b44bedbd8b48d4677b3
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34702413"
+---
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
-    ![Publikování a vytvoření nové aplikace funkcí](./media/functions-vstools-publish/functions-vstools-publish-new-function-app.png)
+2. Vyberte **Aplikace Azure Function**, zvolte **Vytvořit novou** a potom vyberte **Publikovat**.
 
-2. Pokud jste již nepřipojili Visual Studio k účtu Azure, vyberte **přidat účet...** .  
+    ![Výběr cíle publikování](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
 
-3. V dialogovém okně **Vytvořit službu App Service** použijte nastavení **Hostování**, jak je uvedeno v následující tabulce: 
+2. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet...** .
 
-    ![Místní modul runtime Azure](./media/functions-vstools-publish/functions-vstools-publish.png)
+3. V dialogovém okně **Vytvořit App Service** použijte nastavení **Hostování** podle tabulky pod obrázkem:
+
+    ![Dialogové okno Vytvořit službu App Service](./media/functions-vstools-publish/functions-vstools-publish.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Název aplikace** | Globálně jedinečný název | Název jednoznačně identifikující novou aplikaci funkcí. |
     | **Předplatné** | Vaše předplatné | Předplatné Azure, které se má použít. |
-    | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Název skupiny prostředků, ve které chcete vytvořit aplikaci funkcí. Zvolte **nový** vytvořit novou skupinu prostředků.|
-    | **[Plán služby App Service](../articles/azure-functions/functions-scale.md)** | Plán Consumption | Ujistěte se, že jste vybrali **spotřeba** pod **velikost** po kliknutí na tlačítko **nový** k vytvoření nového plánu. Také vyberte **umístění** v [oblast](https://azure.microsoft.com/regions/) okolo vás nebo v blízkosti dalších služeb funkcí přístup.  |
+    | **[Skupina prostředků](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Název skupiny prostředků, ve které chcete vytvořit aplikaci funkcí. Pokud chcete vytvořit novou skupinu prostředků, zvolte **Nová**.|
+    | **[Plán služby App Service](../articles/azure-functions/functions-scale.md)** | Plán Consumption | Po vytvoření nového plánu kliknutím na **Nový** nezapomeňte vybrat **Spotřeba** v části **Velikost**. Zvolte také [umístění](https://azure.microsoft.com/regions/) v **oblasti** ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají.  |
+    | **[Účet úložiště](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** | Účet úložiště pro obecné účely | Modul runtime Functions vyžaduje účet úložiště Azure. Kliknutím na **Nový** vytvořte účet úložiště pro obecné účely, nebo použijte už existující účet.  |
 
-    >[!NOTE]
-    >Functions runtime je požadován účet úložiště Azure. Z toho důvodu se vytvoří nový účet úložiště Azure za vás při vytvoření aplikace pro funkce.
+4. Kliknutím na **Vytvořit** vytvořte aplikaci funkce a související prostředky v Azure a nasaďte kód projektu funkce. 
 
-4. Klikněte na tlačítko **vytvořit** vytvořte aplikaci funkce a související prostředky v Azure s těmito nastaveními a nasazení projektu kódu funkce. 
+5. Jakmile se nasazení dokončí, poznamenejte si hodnotu **Adresa URL webu**. Je to adresa vaší aplikace funkcí v Azure.
 
-5. Po dokončení nasazení poznamenejte **adresa URL webu** hodnotu, která je adresa funkce aplikace v Azure.
-
-    ![Místní modul runtime Azure](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
+    ![Zpráva o úspěšném publikování](./media/functions-vstools-publish/functions-vstools-publish-profile.png)

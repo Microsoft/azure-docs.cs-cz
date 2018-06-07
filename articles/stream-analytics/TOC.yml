@@ -50,8 +50,6 @@
   items:
     - name: Spravovat
       items:
-        - name: Aktualizace úlohy
-          href: stream-analytics-job-reliability.md
         - name: Aktualizace přihlašovacích údajů
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurace upozornění
@@ -60,6 +58,10 @@
           href: stream-analytics-test-query.md
         - name: Zobrazení výsledků na řídicím panelu
           href: stream-analytics-power-bi-dashboard.md
+        - name: Vyčištění úlohy
+          href: stream-analytics-clean-up-your-job.md
+        - name: Párování úloh z důvodů spolehlivosti
+          href: stream-analytics-job-reliability.md
     - name: Vytváření řešení
       items:
         - name: Analýza subjektivního hodnocení na Twitteru

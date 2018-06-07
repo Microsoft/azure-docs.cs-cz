@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 8bf534177e8236a7d72d6dfdd4612b5f6f492b17
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 175e512d0bdaa84d5251f4bbdb09aed3aed436f9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638717"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokol výstrah v monitorování Azure – výstrahy 
 Tento článek obsahuje podrobnosti o výstrahách protokolu se jeden z typů výstrah, které jsou podporovány v rámci nové [Azure výstrahy](monitoring-overview-unified-alerts.md) a povolit uživatelům analytické platformě Azure, je použít jako základ pro zobrazení výstrah... Podrobnosti o výstrahách metrika pomocí protokolů [téměř upozornění v reálném čase metrika](monitoring-near-real-time-metric-alerts.md)
@@ -35,7 +36,7 @@ Vyhledat pravidla protokolu jsou definovány následující podrobnosti:
 - **Protokolu dotazu**.  Dotaz, který se spustí pokaždé, když se aktivuje pravidlo výstrahy.  Vrácené tímto dotazem záznamy se používají k určení, jestli se má vytvořit výstrahu. *Azure Application Insights* dotaz může také obsahovat [volání mezi aplikacemi](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), pokud uživatel nemá přístupová práva k externím aplikacím. 
 
     > [!IMPORTANT]
-    > Podpora systému [křížové dotazu aplikace pro službu Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) je ve verzi preview – funkce a činnost koncového uživatele mohou podléhat změnám. Použití [křížové prostoru dotazu](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) a [dotazu mezi prostředky pro analýzy protokolů](../log-analytics/log-analytics-cross-workspace-search.md) je aktuálně **nepodporuje** ve výstrahách Azure.
+    > Podpora systému [křížové dotazu aplikace pro službu Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) je ve verzi preview – omezené funkce pro použití s 2 nebo více aplikací a činnost koncového uživatele mohou podléhat změnám. Použití [křížové prostoru dotazu](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) a [dotazu mezi prostředky pro analýzy protokolů](../log-analytics/log-analytics-cross-workspace-search.md) je aktuálně **nepodporuje** ve výstrahách Azure.
 
 - **Časové období**.  Určuje časový rozsah pro dotaz. Dotaz vrátí pouze záznamy vytvořené v tomto rozsahu před aktuálním časem. Časové období omezuje dat načtených pro dotaz protokolu, aby se zabránilo zneužití a by se obešla libovolný příkaz čas (například před) používaných v dotazu protokolu. <br>*Například pokud časové období nastavena na 60 minut a spuštění dotazu: 15: 00, vrátí se k provedení dotazu protokolu pouze záznamy vytvořené 12:15:00 až 1:15 hodin. Nyní, pokud dotaz protokolu používá čas příkaz jako před (7d), protokolu by spustí dotaz pouze pro data mezi 12:15:00 a času 1:15 - jakoby dat existuje pro pouze za posledních 60 minut. A ne pro sedm dní dat uvedených v protokolu dotazu.*
 - **Frekvence**.  Určuje, jak často se má spustit dotaz. Může být libovolná hodnota 5 minut až 24 hodin. Musí být rovna nebo menší než časové období.  Pokud hodnota je větší než časové období, riskujete záznamů je vynechán.<br>*Představte si třeba časové období 30 minut a četnost 60 minut.  Pokud je v 1:00 spustit dotaz, vrátí záznamy 12:30 až 1:00 PM.  Při příštím spuštění dotazu by je 2:00, když měla by vrátit záznamy 1:30 až 2:00.  Všechny záznamy vytvořené 1:00 až 1:30 by nikdy vyhodnotí.*
@@ -60,7 +61,7 @@ Chcete-li výstraha na jednu událost, nastavit počet výsledků na hodnotu vě
 
 V některých případech můžete vytvořit výstrahu při absenci událost.  Tento proces se může například protokolu běžné události indikující, že funguje správně.  Pokud není některá z těchto událostí protokolu v konkrétním časovém období, je třeba vytvořit výstrahu.  V takovém případě by nastavit prahovou hodnotu **menší než 1**.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Představte si třeba situaci, kdy budete chtít vědět, když aplikace založené na webu poskytuje odpověď pro uživatele s kódem 500 (tj.) vnitřní chyba serveru. Vytvoříte pravidlo výstrahy s následujícími podrobnostmi:  
 - **Dotaz:** požadavky | kde resultCode == "500"<br>
 - **Časové období:** 30 minut<br>
@@ -85,7 +86,7 @@ Výstraha by spusťte dotaz každých 5 minut, 30 minut dat – má být vyhled�
     
 - **Prahová hodnota**: prahová hodnota pro pravidla výstrah metriky měření je definována agregovaná hodnota a celou řadu.  Pokud žádné datového bodu v hledání protokolů překročí tuto hodnotu, považuje za porušení.  Pokud počet porušení v u všech objektů ve výsledcích překročí zadanou hodnotu, se vytvoří výstraha pro tento objekt.
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 Vezměte v úvahu scénář, kde jste chtěli výstrahu překračování libovolného počítače využití procesoru 90 % třikrát více než 30 minut.  Vytvoříte pravidlo výstrahy s následujícími podrobnostmi:  
 
 - **Dotaz:** výkonu | kde ObjectName == "Procesor" a název_čítače == "% času procesoru" | shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 5 m), počítač<br>
@@ -125,7 +126,7 @@ Rozhraní API poskytuje pro protokol výstrah se dosáhl standardu RESTful a je 
 
 Podrobnosti a také příklady na pomocí rozhraní REST API, najdete v části:
 - [Protokolu analýzy výstraha REST API](../log-analytics/log-analytics-api-alerts.md) – Pokud chcete vytvořit a spravovat pravidla výstrah vyhledávání protokolu pro Azure Log Analytics
-- [Azure monitorování naplánované dotazu pravidla REST API](https://docs.microsoft.com/en-us/rest/api/monitorr/scheduledqueryrules/) – Pokud chcete vytvořit a spravovat pravidla výstrah vyhledávání protokolu pro službu Azure Application Insights
+- [Azure monitorování naplánované dotazu pravidla REST API](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) – Pokud chcete vytvořit a spravovat pravidla výstrah vyhledávání protokolu pro službu Azure Application Insights
 
 ### <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 Uživatelé můžou použít taky poskytuje flexibilitu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) k vytváření a aktualizaci prostředků – k vytvoření nebo aktualizaci protokolu výstrahy.

@@ -95,11 +95,11 @@
           href: security-internet-of-things-overview.md
           items:
             - name: Osvědčené postupy zabezpečení IoT
-              href: ../iot-suite/iot-security-best-practices.md
+              href: ../iot-accelerators/iot-security-best-practices.md
             - name: Zabezpečení IoT
-              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+              href: '../iot-accelerators/iot-security-architecture.md#security-in-iot'
             - name: Zabezpečení nasazení IoT
-              href: ../iot-suite/iot-suite-security-deployment.md
+              href: ../iot-accelerators/iot-accelerators-security-deployment.md
     - name: Zabezpečení služby Azure Service Fabric
       href: azure-service-fabric-security-overview.md
       items:
@@ -159,6 +159,8 @@
           href: ./blueprints/fedramp-datawarehouse-overview.md
         - name: Webová aplikace IaaS
           href: ./blueprints/fedramp-iaaswa-overview.md
+        - name: Webová aplikace PaaS
+          href: ./blueprints/fedramp-paaswa-overview.md
     - name: PCI DSS
       href: ./blueprints/payment-processing-blueprint.md
       items:
@@ -197,6 +199,8 @@
       href: ./blueprints/azure-health.md
 - name: Dokumenty white paper
   href: security-white-papers.md
+- name: Služby zabezpečení Azure
+  href: azure-security-services-technologies.md
 - name: Technické přehledy
   href: security-overviews.md
 - name: Osvědčené postupy

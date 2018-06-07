@@ -3,7 +3,7 @@ title: Cloud Foundry v Azure
 description: Cloud Foundry v Azure
 services: multiple
 author: czeumault
-manager: carolz
+manager: jeconnoc
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
@@ -11,17 +11,19 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: b36e04e00d4942539b121a83e320f1e92aac6ac2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 307f9988246f94c26e63bf8a26052890867aabbc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608980"
 ---
 <div class="content">
     <h1>Cloud Foundry v Azure</h1>
     <div class="introHolder" style="justify-content: space-between;">
     <div class="intro" style="min-width: 200px">
-    <img src="media/cloudfoundry.png" align="right" alt="Cloud Foundry Logo"> Cloud Foundry je opensourcová služba typu PaaS (platforma jako služba) pro vytváření, nasazování a provozování aplikací typu 12-Factor vyvinutých v různých jazycích a architekturách.  Naučte se prostřednictvím našich šablon Rychlý start a kurzů využívat Cloud Foundry v Azure.
+    <img src="media/cloudfoundry.png" align="right" alt="Cloud Foundry Logo">
+Cloud Foundry je opensourcová služba typu PaaS (platforma jako služba) pro vytváření, nasazování a provozování aplikací typu 12-Factor vyvinutých v různých jazycích a architekturách.  Naučte se prostřednictvím našich šablon Rychlý start a kurzů využívat Cloud Foundry v Azure.
         </div>
     </div>
 <h2>Zprovoznění během 5 minut</h2>
@@ -34,6 +36,7 @@ ms.lasthandoff: 10/11/2017
 <h2>Zdroje a prostředky</h2>
 <p>Další referenční materiály a nástroje pro práci s Cloud Foundry v Azure můžete získat prostřednictvím následujících odkazů.<p>
 <a href="https://pivotal.io/partners/microsoft">Pivotal Cloud Foundry v Azure</a><br/>
+<a href="/azure/cloudfoundry/how-cloud-foundry-integrates-with-azure">Integrace Cloud Foundry s Azure</a><br/>
 <a href="https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html">Instalace Cloud Foundry v Azure</a><br/>
 <a href="https://github.com/Microsoft/vsts-cloudfoundry">Plug-in Visual Studio Team Services pro Cloud Foundry</a><br/>
 <a href="https://github.com/Azure/oms-log-analytics-firehose-nozzle">Microsoft Log Analytics Nozzle pro Cloud Foundry</a><br/>

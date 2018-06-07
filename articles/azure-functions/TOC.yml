@@ -141,6 +141,8 @@
           href: functions-run-local.md
         - name: Vývoj sady Visual Studio
           href: functions-develop-vs.md
+        - name: Správa připojení
+          href: manage-connections.md
         - name: Zpracování chyb
           href: functions-bindings-error-pages.md
     - name: Nasazení
@@ -200,7 +202,11 @@
         - name: Blob Storage
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
-          href: functions-bindings-cosmosdb.md
+          items:
+            - name: Functions 1.x
+              href: functions-bindings-cosmosdb.md
+            - name: Functions 2.x
+              href: functions-bindings-cosmosdb-v2.md
         - name: Event Grid
           href: functions-bindings-event-grid.md
         - name: Event Hubs

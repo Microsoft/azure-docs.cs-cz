@@ -19,7 +19,8 @@
 #### [Integrace se službou Azure Key Vault](virtual-machines-windows-ps-sql-keyvault.md)
 ## Zálohování a obnovení
 ### [Zálohování a obnovení](virtual-machines-windows-sql-backup-recovery.md)
-### [Automatizované zálohování](virtual-machines-windows-sql-automated-backup.md)
+### [Automatizovaná záloha pro SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+### [Automatizovaná záloha pro SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
 ### [Použití služby Azure Storage pro zálohování a obnovení](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # Návody
