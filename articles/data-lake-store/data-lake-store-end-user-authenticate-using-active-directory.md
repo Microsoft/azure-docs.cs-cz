@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 11aed2ee2af239b02375a2d90e2544b4b45b2d41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7280cd971e9857c494dfd1cb77d528e4737ed9d2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624144"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Ověření koncových uživatelů s Data Lake Store pomocí Azure Active Directory
 > [!div class="op_single_selector"]

@@ -1,18 +1,19 @@
 ---
 title: Připojení zařízení v Azure IoT centrální | Microsoft Docs
 description: Tento článek představuje klíčové koncepty týkající se připojení zařízení v Azure IoT centrální
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: conceptual
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
 manager: timlt
-ms.openlocfilehash: 00b621a4635ef1ceda26772ac5876fa2599b56f8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: dc9fe144c2258f33ce59c61ce63c15835cc3fa53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628330"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT centrální
 
@@ -49,7 +50,7 @@ Následující tabulka shrnuje, jak Azure IoT centrální funkcí zařízení ma
 
 Další informace o použití sady SDK zařízení, najdete v jednom z následujících článků například kódu:
 
-- [Obecné Node.js klienta připojit k Azure IoT centrální aplikace](howto-connect-nodejs.md)
+- [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)
 - [Připojit k aplikaci Azure IoT centrální malin platformy zařízení](howto-connect-raspberry-pi-python.md)
 - [Připojení zařízení kit DevDiv do aplikace Azure IoT centrální](howto-connect-devkit.md).
 
@@ -81,5 +82,5 @@ Všechna data, které se vyměňují mezi zařízením a vaší Azure IoT centr�
 Teď, když jste se naučili o připojení zařízení v Azure IoT centrální, tady jsou navrhované další kroky:
 
 - [Příprava a připojení zařízení DevKit](howto-connect-devkit.md)
-- [Příprava a připojte malin platformy](howto-connect-raspberry-pi-python.md)
-- [Obecné Node.js klienta připojit k Azure IoT centrální aplikace](howto-connect-nodejs.md)
+- [Příprava a připojení Raspberry Pi](howto-connect-raspberry-pi-python.md)
+- [Připojení obecného klienta Node.js k aplikaci Azure IoT Central](howto-connect-nodejs.md)

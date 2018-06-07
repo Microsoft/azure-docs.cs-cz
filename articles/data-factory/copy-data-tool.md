@@ -8,14 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: b82ee060ff3f25e7a92c85114d457ecb349159b3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5180a490a543b6cfc2a8129423f0e663de2e06e1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619418"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Nástroj pro kopírování dat v Azure Data Factory
 Nástroj Azure Data Factory kopírování dat usnadňuje a optimalizuje proces příjem dat do úložiště data lake, což je většinou první krok v případě integrace pomocí dat začátku do konce.  Ho šetří čas, zejména při použití Azure Data Factory pro načítání dat ze zdroje dat pro první. Některé z výhod použití tohoto nástroje jsou:
@@ -90,7 +91,7 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
 
 Klikněte na tlačítko **Procházet** tlačítko pro **souboru nebo složky**, přejděte do jednoho z těchto složek (například 2016 -> 03 -> 01 -> 02) a klikněte na tlačítko **zvolte**. Měli byste vidět 2016/03/01/02 v textovém poli. 
 
-Potom nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}** , a **02** s **{hodinu}**a stiskněte klávesu **kartě** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
+Potom nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}** , a **02** s **{hodinu}** a stiskněte klávesu **kartě** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
 
 ![Filtr souboru nebo složky](./media/copy-data-tool/filter-file-or-folder.png)
 

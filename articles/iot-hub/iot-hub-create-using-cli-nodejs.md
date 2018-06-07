@@ -1,24 +1,19 @@
 ---
 title: Vytvoření služby IoT hub pomocí rozhraní příkazového řádku Azure (azure.js) | Microsoft Docs
 description: Postup vytvoření služby Azure IoT hub pomocí Azure CLI (azure.js) napříč platformami.
-services: iot-hub
-documentationcenter: .net
 author: kgremban
 manager: timlt
-editor: ''
-ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 7e761ba66f4b28dd7cc59dc8998c23810dd2b7d1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5b8a7ded940f59bba63556e844c45bd7cfb8eb63
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632087"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Vytvoření služby IoT hub pomocí rozhraní příkazového řádku Azure
 
@@ -90,7 +85,7 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 * **Skupina prostředků**. Název skupiny prostředků. Formát je malá a velká písmena alfanumerické znaky, podtržítka a pomlčky, délka 1-64.
 * **name**. Název služby IoT hub, který se má vytvořit. Formát je malá a velká písmena alfanumerické znaky a spojovníky, délku 3 až 50.
 * **Umístění**. Umístění (oblast/datové centrum azure) ke zřízení služby IoT hub.
-* **sku-name**. Název sku, jeden z: [F1, S1, S2, S3]. Podrobnosti o každém sku najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/). V současné době základní úrovně jsou dostupné jenom přes portál. 
+* **Název SKU**. Název sku, jeden z: [F1, S1, S2, S3]. Podrobnosti o každém sku najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/). V současné době základní úrovně jsou dostupné jenom přes portál. 
 * **jednotky**. Počet jednotek zřízené. Podrobnosti o omezeních jednotky najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]

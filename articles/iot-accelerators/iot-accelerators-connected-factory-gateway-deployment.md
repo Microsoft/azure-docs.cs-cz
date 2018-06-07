@@ -1,24 +1,19 @@
 ---
 title: Nasazení brány připojené Factory - Azure | Microsoft Docs
 description: Postup nasazení brány na pro umožnění připojení k akcelerátoru řešení připojen objekt pro vytváření systému Windows nebo Linux.
-services: iot-suite
-suite: iot-suite
-documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 829b2031458b78a1046e900dbf37028ac9eb4dc8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626900"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Nasazení vstupní brána pro připojení objektu pro vytváření řešení akcelerátor v systému Windows nebo Linux
 
@@ -170,6 +165,6 @@ Přidání vlastního OPC UA serverů do akcelerátor připojen objekt pro vytv�
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o architektuře akcelerátor připojen objekt pro vytváření řešení najdete v tématu [připojen objekt pro vytváření řešení akcelerátoru návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+Další informace o architektuře akcelerátor připojen objekt pro vytváření řešení najdete v tématu [připojen objekt pro vytváření řešení akcelerátoru návod](iot-accelerators-connected-factory-sample-walkthrough.md).
 
 Další informace o [OPC vydavatele odkaz na implementaci](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

@@ -1,24 +1,19 @@
 ---
 title: Příručka vývojáře pro Azure IoT Hub | Microsoft Docs
 description: Příručka pro vývojáře Azure IoT Hub obsahuje diskusí koncových bodů, zabezpečení, registru identit, správu zařízení, přímé metody, dvojčata zařízení, nahrávání souborů, úlohy, dotazovací jazyk IoT Hub a zasílání zpráv.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: d534ff9d-2de5-4995-bb2d-84a02693cb2e
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 31ccf65ccd2ab4e9673900efb1de357ab450b799
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1871ae68008f9fe9b3cb201a7b5f205792bc0817
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632971"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Příručka vývojáře pro službu Azure IoT Hub
 

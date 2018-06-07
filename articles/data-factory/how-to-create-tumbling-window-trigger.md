@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: shlo
-ms.openlocfilehash: 312072a5de21ff1c6b602fed93b77c564b15a9f1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61d53e0d5f32f40b67f5b2d4ce888b047f8c4cea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619707"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvořit aktivační událost, která běží na přeskakující okno kanálu
 Tento článek obsahuje kroky k vytvoření, spuštění a monitorování aktivační událost přeskakující okno. Obecné informace o aktivační události a podporované typy najdete v tématu [kanálu spouštěcí a aktivační události](concepts-pipeline-execution-triggers.md).
@@ -74,7 +75,7 @@ Následující tabulka obsahuje přehled hlavních prvků JSON, které se vztahu
 
 | Element JSON | Popis | Typ | Povolené hodnoty | Požaduje se |
 |:--- |:--- |:--- |:--- |:--- |
-| **Typ** | Typ aktivační události. Typ je pevná hodnota "TumblingWindowTrigger." | Řetězec | "TumblingWindowTrigger" | Ano |
+| **type** | Typ aktivační události. Typ je pevná hodnota "TumblingWindowTrigger." | Řetězec | "TumblingWindowTrigger" | Ano |
 | **runtimeState** | Aktuální stav, čas spuštění aktivační události.<br/>**Poznámka:**: Tento element má \<jen pro čtení >. | Řetězec | "Spustit", "Stopped," "Zakázat" | Ano |
 | **frequency** | Řetězec, který představuje jednotku frekvenci (minut nebo hodin), kdy dojde znovu aktivační událost. Pokud **startTime** hodnoty data jsou podrobnější než **frekvence** hodnota, **startTime** data jsou považovány za, když se vypočítávají v hranicích okno. Například pokud **frekvence** hodnota je každou hodinu a **startTime** hodnota je 2016-04-01T10:10:10Z, je první okno (2017-09-01T10:10:10Z 2017-09-01T11:10:10Z). | Řetězec | "minut", "hodina"  | Ano |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Například pokud **interval** 3 a **frekvence** je "hodina," aktivační událost opakovat každých 3 hodiny. | Integer | Kladné celé číslo. | Ano |

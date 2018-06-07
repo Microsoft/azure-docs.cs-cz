@@ -1,24 +1,19 @@
 ---
 title: Pochopení dotazovací jazyk Azure IoT Hub | Microsoft Docs
 description: Příručka vývojáře – popis IoT Hub SQL jako dotaz jazyk používaný k načtení informací o úlohách a dvojčata zařízení a modulem ze služby IoT hub.
-services: iot-hub
-documentationcenter: .net
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 851a9ed3-b69e-422e-8a5d-1d79f91ddf15
+manager: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 663277bfe347f42fa7ee241f5acddf4a3dca9268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633508"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub dotazovacího jazyka pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -440,7 +435,7 @@ FROM <from_specification>
 [GROUP BY <group_specification>]
 ```
 
-## <a name="from-clause"></a>klauzule FROM
+## <a name="from-clause"></a>FROM – klauzule
 **z < from_specification >** klauzule můžete předpokládat pouze dvě hodnoty: **ze zařízení** k dvojčata zařízení dotaz, nebo **z devices.jobs** dotazu úlohy podle zařízení podrobnosti o.
 
 ## <a name="where-clause"></a>Klauzule WHERE
@@ -448,7 +443,7 @@ FROM <from_specification>
 
 Povolené podmínky jsou popsány v části [výrazy a podmínky][lnk-query-expressions].
 
-## <a name="select-clause"></a>klauzule SELECT
+## <a name="select-clause"></a>Klauzule SELECT
 **Vyberte < select_list >** je povinná a určuje, jaké hodnoty jsou načteny z dotazu. Určuje hodnoty JSON, které mají být použita ke generování nových objektů JSON.
 Pro každý prvek filtrované (a volitelně seskupené) podmnožinu kolekce FROM fázi projekce generuje nový objekt JSON. Tento objekt je vytvořený pomocí hodnot zadaných v klauzuli SELECT.
 
@@ -478,7 +473,7 @@ SELECT [TOP <max number>] <projection list>
 
 V současné době výběr klauzule liší od **vyberte*** jsou podporovány pouze v agregační dotazy na dvojčata zařízení.
 
-## <a name="group-by-clause"></a>klauzule GROUP BY
+## <a name="group-by-clause"></a>Klauzule GROUP BY
 **GROUP BY < group_specification >** klauzule je volitelný krok, který provádí po filtr zadaný v klauzuli WHERE a před projekce určená v SELECT. Seskupuje dokumentů na základě hodnoty atributu. Tyto skupiny se používají ke generování agregované hodnoty zadané v klauzuli SELECT.
 
 Příklad dotazu pomocí skupiny je:
@@ -557,7 +552,7 @@ Podporovány jsou následující operátory:
 | --- | --- |
 | Aritmetické operace |+, -, *, /, % |
 | Logické |A, NEBO NE |
-| Porovnání |=, !=, <, >, <=, >=, <> |
+| porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 Při dotazování dvojčata a úlohám, které jediný podporovaný je funkce:

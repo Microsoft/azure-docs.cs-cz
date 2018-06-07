@@ -1,25 +1,20 @@
 ---
-title: 'M0 do cloudu: prolnutí M0 Wi-Fi připojení ke službě Azure IoT Hub | Microsoft Docs'
+title: M0 do cloudu--prolnutí M0 Wi-Fi připojení ke službě Azure IoT Hub | Microsoft Docs
 description: Zjistěte, jak nastavit a Adafruit prolnutí M0 Wi-Fi připojení ke službě Azure IoT Hub k odesílání dat do Azure Cloudová platforma v tomto kurzu.
-services: iot-hub
-documentationcenter: ''
 author: rangv
-manager: timlt
-tags: ''
-keywords: ''
-ms.assetid: 51befcdb-332b-416f-a6a1-8aabdb67f283
+manager: nasing
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 4/11/2018
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
+ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 2a6a65a3c4a69a49788ce9799ceed53d53edcd77
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a6899bbd294a16dee3a767e976a92deaa00f0e2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631866"
 ---
 # <a name="connect-adafruit-feather-m0-wifi-to-azure-iot-hub-in-the-cloud"></a>Připojení ke službě Azure IoT Hub v cloudu Adafruit prolnutí M0 Wi-Fi
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ab21eaf935ed03b6f34af00f69e993eaffdad1db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5731e4249c94e77846f07870e4bba28aab70682e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34619520"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,12 +63,12 @@ Následující tabulka obsahuje popis elementy JSON, které jsou specifické pro
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Typ** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Ano |
-| **server** |IP adresu nebo název hostitele serveru Amazon Redshift. |Ano |
+| **type** |Tato vlastnost musí být nastavená na **AmazonRedshift**. |Ano |
+| **Server** |IP adresu nebo název hostitele serveru Amazon Redshift. |Ano |
 | **port** |Číslo portu TCP, který používá server Amazon Redshift naslouchat pro připojení klientů. |Ne (výchozí hodnota je 5439) |
 | **database** |Název databáze Amazon Redshift. |Ano |
-| **username** |Jméno uživatele, který má přístup k databázi. |Ano |
-| **password** |Heslo pro uživatelský účet. |Ano |
+| **Uživatelské jméno** |Jméno uživatele, který má přístup k databázi. |Ano |
+| **Heslo** |Heslo pro uživatelský účet. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
@@ -334,8 +335,8 @@ Aktivita kopírování převádí data z typ Amazon Redshift na typ .NET jsou po
 | CELÉ ČÍSLO |Int32 |
 | BIGINT |Int64 |
 | DECIMAL |Decimal |
-| SKUTEČNÉ |Svobodný/svobodná |
-| DVOJITÁ PŘESNOST |Dvojitý |
+| SKUTEČNÉ |Jednoduchá |
+| DVOJITÁ PŘESNOST |Double |
 | LOGICKÁ HODNOTA |Řetězec |
 | CHAR – |Řetězec |
 | VARCHAR |Řetězec |

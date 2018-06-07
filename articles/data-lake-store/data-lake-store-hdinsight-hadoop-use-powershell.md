@@ -9,13 +9,14 @@ ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 4c08dac95a2d2b52f1a1d28f6933b94ad4db10b7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a68e6a076bb27626c100594de011cf07ff361768
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627378"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Pomocí prostředí Azure PowerShell k vytvoření clusteru HDInsight s Data Lake Store (jako další úložiště)
 
@@ -126,10 +127,10 @@ Každé předplatné služby Azure souvisí s Azure Active Directory. Uživatel�
 
 Nastavení ověřování služby Active Directory pro Azure Data Lake, musíte provést následující úlohy.
 
-* Vytvořit certifikát podepsaný svým držitelem
+* Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 * Vytvoření aplikace v Azure Active Directory a objektu služby
 
-### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem
+### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
 Zajistěte, aby byla [Windows SDK](https://dev.windows.com/en-us/downloads) nainstalovat před provedením kroků v této části. Musíte také vytvořit adresář, jako například **C:\mycertdir**, kde bude certifikát vytvořen.
 
