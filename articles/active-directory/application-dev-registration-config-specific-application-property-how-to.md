@@ -14,10 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34055613"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Postup vyplňte konkrétní pole vyvinul vlastní aplikace
 
@@ -53,7 +54,7 @@ Jakmile jste vyplnili pole výše, aplikace je zaregistrován na portálu Azure 
 | Adresa URL domovské stránky   | Toto je přihlašovací adresa URL zadaná při registraci aplikace.                                                                                                                                                                                                                                              |
 | Adresa URL – odhlášení      | Tuto adresu URL odhlásit jediné odhlášení. Azure AD odešle žádost o odhlášení tato adresa URL Pokud uživatel zruší zaškrtnutí jejich relace s Azure AD pomocí jiných zaregistrovanou aplikaci.                                                                                                                                       |
 | Více tenantů  | Tento přepínač určuje, zda aplikace mohou být využívána víc klientů. Obvykle to znamená, že externími organizacemi moci používat vaši aplikaci zaregistrujete na jejich klienta a udělení přístupu k datům jejich organizace.                                                                   |
-| Adresy URL pro odpověď      | Odpověď se adresy URL koncových bodů kde Azure AD vrátí všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
+| Adresy URL odpovědí      | Odpověď se adresy URL koncových bodů kde Azure AD vrátí všechny tokeny, které vaše aplikace požaduje.                                                                                                                                                                                                          |
 | Identifikátory URI pro přesměrování   | U nativních aplikací je to kam je uživateli odeslána po úspěšném ověření. Azure kontrolu služby Active Directory, který poskytuje identifikátor URI aplikace přesměrování v požadavku OAuth 2.0 odpovídá jednomu z registrovaných hodnoty na portálu.                                                            |
 | Klíče            | Můžete vytvořit klíče prostřednictvím kódu programu přístup k webovému rozhraní API pro zabezpečené službou Azure AD bez nutnosti zásahu uživatele. Z \* \*klíče\* \* stránky, zadejte klíče popis a datum vypršení platnosti a uložte ke generování klíče. Zajistěte, aby ji uložit někde bezpečný, protože nebudete moci později přístup.             |
 

@@ -9,18 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2018
+ms.date: 06/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34735137"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Podmínky v Azure Active Directory podmíněného přístupu 
 
@@ -148,7 +150,7 @@ Podmínka aplikace klienta můžete použít zásady pro různé typy aplikací,
 - Weby a služby
 - Mobilní aplikace a aplikací klasické pracovní plochy. 
 
-![Podmínky](./media/active-directory-conditional-access-conditions/04.png)
+
 
 Aplikace se označuje jako:
 
@@ -156,7 +158,7 @@ Aplikace se označuje jako:
 
 - A mobilní aplikace nebo plochy aplikace, pokud mobilní aplikace, OpenID Connect používá pro nativní klienta.
 
-Úplný seznam klientských aplikací v požadované zásady podmíněného přístupu můžete použít, najdete v článku [technické informace o Azure Active Directory podmíněného přístupu](active-directory-conditional-access-technical-reference.md#client-apps-condition).
+Úplný seznam klientských aplikací v požadované zásady podmíněného přístupu můžete použít, najdete v části [klienta aplikace podmínky](active-directory-conditional-access-technical-reference.md#client-apps-condition) v technické dokumentaci Azure Active Directory podmíněného přístupu.
 
 Běžné případy použití pro tuto podmínku jsou zásady, které:
 
@@ -166,6 +168,20 @@ Běžné případy použití pro tuto podmínku jsou zásady, které:
 
 Kromě používat protokoly moderní ověřování a jednotné přihlašování k webu, můžete použít tuto podmínku pro e-mailové aplikace, které používají protokol Exchange ActiveSync, jako je nativní e-mailové aplikace na většině smartphony. V současné době klientské aplikace pomocí starší verze protokolů je potřeba zabezpečit pomocí služby AD FS.
 
+Tuto podmínku lze vybrat pouze pokud **Office 365 Exchange Online** je pouze cloudové aplikace, které jste vybrali.
+
+![Cloudové aplikace](./media/active-directory-conditional-access-conditions/32.png)
+
+Výběr **Exchange ActiveSync** jako klientských aplikací podmínka je podporována pouze pokud nemáte další podmínky v zásada nakonfigurovaná. Můžete však zúžit obor Tento stav se vztahují jenom na podporovaných platformách.
+
+ 
+![Podporované platformy](./media/active-directory-conditional-access-conditions/33.png)
+
+Použití tuto podmínku jenom na podporovaných platformách se o ekvivalent ve všech platformách zařízení [podmínku platformy zařízení](active-directory-conditional-access-conditions.md#device-platforms).
+
+![Podporované platformy](./media/active-directory-conditional-access-conditions/34.png)
+
+
  Další informace naleznete v tématu:
 
 - [Nastavení služby SharePoint Online a Exchange Online pro Azure Active Directory podmíněného přístupu](active-directory-conditional-access-no-modern-authentication.md)
@@ -173,9 +189,53 @@ Kromě používat protokoly moderní ověřování a jednotné přihlašování 
 - [Azure Active Directory, na základě aplikace podmíněného přístupu](active-directory-conditional-access-mam.md) 
 
 
+### <a name="legacy-authentication"></a>Starší verze ověřování  
+
+Podmíněný přístup se teď platí pro starší klienty Office, které nepodporují moderní ověřování, jakož i klienty, kteří používají protokoly e-mailu POP, IMAP, SMTP, atd. To umožňuje konfigurovat zásady jako **blokovat přístup z jiných klientů**.
+
+
+![Starší verze ověřování](./media/active-directory-conditional-access-conditions/160.png)
+ 
 
 
 
+#### <a name="known-issues"></a>Známé problémy
+
+- Konfigurace zásad pro **ostatní klienty** blokuje z určité klientů jako SPConnect v celé organizaci. Toto je z důvodu těchto starších klientů ověřování neočekávaným způsobem. Tento problém se nevztahuje na hlavní aplikace Office jako starší klienty Office. 
+
+- Může trvat až 24 hodin pro zásady tak, aby vstoupila v platnost. 
+
+
+#### <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
+**To bude blokovat webových služeb systému Exchange (EWS)?**
+
+To závisí na ověřovací protokol, který používá EWS. Pokud aplikace EWS používá moderní ověřování, bude o něm zmínka pomocí klientské aplikace "mobilní aplikace a klienti vzdálené plochy". Pokud aplikace EWS používá základní ověřování, bude možné předmětem "Ostatní klienty" klientské aplikace.
+
+
+**Jaké ovládací prvky můžete použít pro ostatní klienty**
+
+Libovolný ovládací prvek mohou být konfigurovány pro "Ostatní klienty". Činnost koncového uživatele, ale bude blokovat přístup pro všechny případy. "Ostatní klienty" nepodporují ovládací prvky jako MFA, kompatibilní zařízení, připojení k doméně, atd. 
+ 
+**Jaké podmínky lze použít pro ostatní klienty?**
+
+Veškeré podmínky lze nakonfigurovat pro "Ostatní klienty".
+
+**Podporuje protokolu Exchange ActiveSync všech podmínek a ovládací prvky?**
+
+Ne. Zde je souhrn podporu protokolu Exchange ActiveSync (EAS):
+
+- EAS podporuje pouze uživatele a skupiny cílení. Nepodporuje hosta, role. Pokud je nakonfigurovaná podmínku hosta nebo role, všichni uživatelé získat zablokuje, vzhledem k tomu, že jsme nemůže zjistit, pokud mají zásady platit pro uživatele, nebo ne.
+
+- EAS pracuje pouze s Exchange jako cloudové aplikace. 
+
+- EAS nepodporuje žádné podmínky s výjimkou klientské aplikace.
+
+- EAS se dá nakonfigurovat s libovolný ovládací prvek (všechny kromě dodržování předpisů zařízení povede k bloku).
+
+**Se zásady vztahují na všechny klientské aplikace ve výchozím nastavení do budoucna?**
+
+Ne. Neexistuje žádná změna v chování výchozí zásady. Zásady pokračuje v používání prohlížeče a mobilní aplikace nebo plochy klientům ve výchozím nastavení.
 
 
 

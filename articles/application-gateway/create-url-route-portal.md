@@ -12,10 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
 ms.openlocfilehash: 6b45b00de53822224afbfb3a15dbc6790deb11ce
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34356337"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s cesta pravidla založená na směrování pomocí portálu Azure
 
@@ -30,77 +31,77 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořit naslouchací proces back-end
 > * Vytvoření pravidla směrování na základě cesty
 
-![Příklad směrování URL](./media/create-url-route-portal/scenario.png)
+![Příklad směrování na základě adresy URL](./media/create-url-route-portal/scenario.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure v [http://portal.azure.com](http://portal.azure.com)
+Přihlaste se k portálu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jednu pro aplikační bránu a druhou pro back-end serverů. Můžete vytvořit virtuální síť ve stejnou dobu, kterou vytvoříte službu application gateway.
+Virtuální síť je požadován pro komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
 
 1. Klikněte na tlačítko **nový** najít v levém horním rohu portálu Azure.
-2. Vyberte **sítě** a pak vyberte **Application Gateway** v seznamu doporučený.
-3. Pro aplikační bránu, zadejte tyto hodnoty:
+2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
+3. Pro aplikační bránu zadejte tyto hodnoty:
 
-    - *myAppGateway* – pro název služby application gateway.
-    - *myResourceGroupAG* – pro novou skupinu prostředků.
+    - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
+    - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
 
-    ![Vytvořte novou aplikační bránu](./media/create-url-route-portal/application-gateway-create.png)
+    ![Vytvoření nové aplikační brány](./media/create-url-route-portal/application-gateway-create.png)
 
-4. Přijměte výchozí hodnoty u ostatních nastavení a potom klikněte na **OK**.
+4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 5. Klikněte na tlačítko **vyberte virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
 
-    - *myVNet* – pro název virtuální sítě.
-    - *10.0.0.0/16* – pro adresní prostor virtuální sítě.
-    - *myAGSubnet* – název podsítě.
-    - *10.0.0.0/24* – adresního prostoru podsítě.
+    - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
+    - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
+    - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
+    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
 
     ![Vytvoření virtuální sítě](./media/create-url-route-portal/application-gateway-vnet.png)
 
-6. Klikněte na tlačítko **OK** k vytvoření virtuální sítě a podsítě.
-7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu je název veřejné IP adresy *myAGPublicIPAddress*. Přijměte výchozí hodnoty u ostatních nastavení a potom klikněte na **OK**.
+6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
+7. Klikněte na tlačítko **zvolte veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 8. Přijměte výchozí hodnoty pro konfiguraci naslouchacího procesu nechte zakázáno brány firewall webových aplikací a pak klikněte na tlačítko **OK**.
 9. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **OK** vytvoření síťové prostředky a aplikační brány. Ho může trvat několik minut, než aplikační brány, aby lze vytvořit, počkejte na dokončení nasazení přejde k další části úspěšně.
 
-### <a name="add-a-subnet"></a>Přidat podsíť
+### <a name="add-a-subnet"></a>Přidání podsítě
 
-1. Klikněte na tlačítko **všechny prostředky** v levé nabídce a pak klikněte na tlačítko **myVNet** ze seznamu prostředků.
+1. V nabídce nalevo klikněte na **Všechny prostředky** a potom v seznamu prostředků klikněte na **myVNet**.
 2. Klikněte na tlačítko **podsítě**a potom klikněte na **podsítě**.
 
     ![Vytvoření podsítě](./media/create-url-route-portal/application-gateway-subnet.png)
 
-3. Zadejte *myBackendSubnet* pro název podsítě a pak klikněte na tlačítko **OK**.
+3. Jako název podsítě zadejte *myBackendSubnet* a potom klikněte na **OK**.
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-V tomto příkladu můžete vytvořit tři virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Je také nainstalovat službu IIS na virtuálních počítačích, chcete-li ověřit, že aplikační brány byl úspěšně vytvořen.
+V tomto příkladu můžete vytvořit tři virtuální počítače, který se má použít jako back-end serverů pro službu application gateway. Na virtuální počítače také nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
 
 1. Klikněte na možnost **Nové**.
 2. Klikněte na tlačítko **výpočetní** a pak vyberte **Windows Server 2016 Datacenter** v seznamu doporučený.
-3. Pro virtuální počítač, zadejte tyto hodnoty:
+3. Zadejte pro virtuální počítač tyto hodnoty:
 
     - *myVM1* – název virtuálního počítače.
     - *azureuser* – uživatelské jméno správce.
-    - *Azure123456!* pro heslo.
-    - Vyberte **použít existující**a potom vyberte *myResourceGroupAG*.
+    - *Azure123456!* – heslo.
+    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
 
 4. Klikněte na **OK**.
 5. Vyberte velikost virtuálního počítače **DS1_V2** a klikněte na **Vybrat**.
-6. Ujistěte se, že **myVNet** je vybraná pro virtuální síť a podsíť je **myBackendSubnet**. 
+6. Zkontrolujte, že u virtuální sítě je vybrána možnost **myVNet** a u podsítě **myBackendSubnet**. 
 7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
-1. Otevřete prostředí pro interaktivní a ujistěte se, že je nastavena na **prostředí PowerShell**.
+1. Otevřete interaktivní prostředí a zkontrolujte, že je nastaveno na **PowerShell**.
 
-    ![Instalace vlastní rozšíření](./media/create-url-route-portal/application-gateway-extension.png)
+    ![Instalace vlastního rozšíření](./media/create-url-route-portal/application-gateway-extension.png)
 
-2. Spusťte následující příkaz pro instalaci služby IIS na virtuálním počítači: 
+2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
@@ -120,10 +121,10 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Vytvoření back-endové fondy s virtuálními počítači
 
 1. Klikněte na tlačítko **všechny prostředky** a pak klikněte na **myAppGateway**.
-2. Klikněte na tlačítko **back-endové fondy**. Výchozí fond byl automaticky vytvořen s aplikační brány. Klikněte na tlačítko **appGateayBackendPool**.
+2. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na tlačítko **appGateayBackendPool**.
 3. Klikněte na tlačítko **přidat cíl** přidat *myVM1* k appGatewayBackendPool.
 
-    ![Přidat back-end serverů](./media/create-url-route-portal/application-gateway-backend.png)
+    ![Přidání back-endových serverů](./media/create-url-route-portal/application-gateway-backend.png)
 
 4. Klikněte na **Uložit**.
 5. Klikněte na tlačítko **back-endové fondy** a pak klikněte na **přidat**.
@@ -148,23 +149,23 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 
 5. Klikněte na **OK**.
 
-## <a name="test-the-application-gateway"></a>Testování služby application gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na **myAGPublicIPAddress**.
 
-    ![Zaznamenejte veřejná IP adresa brány aplikace](./media/create-url-route-portal/application-gateway-record-ag-address.png)
+    ![Záznam veřejné IP adresy aplikační brány](./media/create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například http://http://40.121.222.19.
+2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Příklad: http://http://40.121.222.19.
 
-    ![Otestovat základní adresu URL v aplikační brány](./media/create-url-route-portal/application-gateway-iistest.png)
+    ![Otestování základní adresy URL v aplikační bráně](./media/create-url-route-portal/application-gateway-iistest.png)
 
 3. Změňte adresu URL k http://&lt;ip adresu&gt;: 8080/video/test.htm, nahraďte &lt;ip adresu&gt; s IP adresu a měli vidět něco podobného jako v následujícím příkladu:
 
-    ![Testovací adresu URL bitové kopie v aplikační brány](./media/create-url-route-portal/application-gateway-iistest-images.png)
+    ![Testování adresy URL obrázků v aplikační bráně](./media/create-url-route-portal/application-gateway-iistest-images.png)
 
 4. Změňte adresu URL k http://&lt;ip adresu&gt;: 8080/video/test.htm, nahraďte &lt;ip adresu&gt; s IP adresu a měli vidět něco podobného jako v následujícím příkladu:
 
-    ![Adresa URL videa testu v aplikační brány](./media/create-url-route-portal/application-gateway-iistest-video.png)
+    ![Testování adresy URL videa v aplikační bráně](./media/create-url-route-portal/application-gateway-iistest-video.png)
 
 ## <a name="next-steps"></a>Další postup
 

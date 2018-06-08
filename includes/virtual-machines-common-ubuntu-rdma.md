@@ -26,8 +26,10 @@
 4. Nainstalujte Intel MPI knihovny. Buď [zakoupit a stáhnout](https://software.intel.com/intel-mpi-library/) knihovně z Intel nebo stahování [bezplatné zkušební verze](https://registrationcenter.intel.com/en/forms/?productid=1740).
 
   ```bash
- wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/11595/l_mpi_2017.3.196.tgz
+ wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
    ```
+ 
+ Jsou podporovány pouze moduly runtime 5.x Intel MPI.
  
  Postup instalace najdete v tématu [příručku Intel MPI knihovny instalace](http://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html).
 
