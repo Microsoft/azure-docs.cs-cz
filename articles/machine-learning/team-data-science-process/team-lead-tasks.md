@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
 ms.openlocfilehash: 9d2043808cbd61d5e2a69cbe0f2a5a611e3afa31
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "34839754"
 ---
 # <a name="team-lead-tasks"></a>Tým realizace úlohy
@@ -66,7 +66,7 @@ Názvy zadané pro úložiště a adresářů v tomto kurzu byly zadány na pře
 V každém případě týmů třeba dát členy týmu vědět, které šablony a nástroje pro úložiště přijmout při jejich nastavení a klonování úložiště projektů a nástroje. Projekt zájemců byste měli postupovat podle [projektu vést úlohy pro tým datové vědy](project-lead-tasks.md) k vytvoření projektu úložiště, jestli samostatné týmové projekty, nebo v rámci jedné týmového projektu. 
 
 
-## <a name="0-prerequisites"></a>0. Požadavky
+## <a name="0-prerequisites"></a>0. Požadované součásti
 
 Požadavky jsou uspokojit dokončení úkolů, které správce vaší skupiny uvedených v [úlohy správce skupiny pro tým datové vědy](group-manager-tasks.md). To Shrneme zde, budou muset splnit před zahájením úloh realizace team následující požadavky: 
 

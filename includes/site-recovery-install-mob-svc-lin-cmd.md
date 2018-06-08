@@ -25,9 +25,9 @@ Usage:
 |Parametr|Typ|Popis|Možné hodnoty|
 |-|-|-|-|
 |-r |Povinné|Určuje, zda by měly být nainstalovány služby Mobility (MS), nebo by měly být nainstalovány MT MasterTarget (–).|MS </br> MT –|
-|-d |Nepovinné|Umístění, kde je nainstalovaná služba Mobility.|/usr/local/ASR|
+|-d |Volitelné|Umístění, kde je nainstalovaná služba Mobility.|/usr/local/ASR|
 |-v|Povinné|Určuje platformu, na kterém je nainstalována služba Mobility. </br> </br>- **VMware**: tuto hodnotu použijte, pokud instalaci služby Mobility na virtuálním počítači systémem *hostitelích ESXi VMware vSphere*, *hostitelů Hyper-V*, a *fyzických serverů*. </br> - **Azure**: tuto hodnotu použijte, pokud instalujete agenta na virtuálním počítači Azure IaaS.| VMware </br> Azure|
-|-q|Nepovinné|Určuje, spusťte instalační program v bezobslužném režimu.| neuvedeno|
+|-q|Volitelné|Určuje, spusťte instalační program v bezobslužném režimu.| Není k dispozici|
 
 
 #### <a name="mobility-service-configuration-command-line"></a>Nastavení mobilních zařízení služby konfigurace příkazového řádku

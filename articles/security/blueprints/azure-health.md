@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
 ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "33894309"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
@@ -301,7 +301,7 @@ K dosažení úložiště dat, společné schéma rozhraní API implementovat n�
 
 
 
-### <a name="event-grid"></a>Event Grid
+### <a name="event-grid"></a>Mřížka událostí
 
 
 Podporuje řešení Azure událostí mřížky, jedinou službu pro správu směrování pro všechny události z jakéhokoli zdroje do žádné cíle, pokud:

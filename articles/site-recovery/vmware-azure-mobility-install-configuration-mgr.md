@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
 ms.openlocfilehash: 50328fc3b594a9162ffb9f82f699f43f9106640f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
+ms.lasthandoff: 06/08/2018
 ms.locfileid: "33942509"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizaci instalace služby Mobility pomocí nástroje System Center Configuration Manager
@@ -28,7 +28,7 @@ Tento článek používá System Center Configuration Manager 2012 R2 k předved
 
 Alternativně můžete automatizovat instalace služby Mobility s [Azure Automation DSC ](vmware-azure-mobility-deploy-automation-dsc.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Požadované součásti
 
 1. Nástroj nasazení softwaru, jako jsou nástroje Configuration Manager, který je už nasazená ve vašem prostředí.
 2. Je třeba vytvořit dva [kolekce zařízení](https://technet.microsoft.com/library/gg682169.aspx), jeden pro všechny **servery Windows**a druhou pro všechny **servery se systémem Linux**, které chcete chránit pomocí Site Recovery.
