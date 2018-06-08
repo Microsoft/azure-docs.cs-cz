@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 02c3a3d996fa253cf56e551a37e098639bf73533
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "32151939"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Pro delegování uživatele registrace a produktu předplatného
 Delegování umožňuje použít existující web pro zpracování vývojáře sign v nebo registrace-množství a předplatné produkty oproti pomocí integrované funkce v portálu pro vývojáře. To umožňuje webu do vlastní data uživatele a provést ověření z těchto kroků vlastní způsobem.
@@ -67,7 +68,7 @@ Teď je potřeba vytvořit **koncový bod delegování**. Je třeba provést ně
 5. Pokud je uživatel zaregistrovali budete muset vytvořit účet odpovídající pro ně ve službě API Management. [Vytvoření uživatele] pomocí rozhraní API REST API pro správu. Když to uděláte, zkontrolujte, že je nastavená ID uživatele stejná, který je v úložišti uživatele nebo ID, které můžete sledovat určité.
 6. Když je uživatel úspěšně ověřen:
    
-   * [žádosti o token jednotného přihlašování (SSO)] prostřednictvím rozhraní API REST API pro správu
+   * [žádost o token jednotného přihlašování (SSO)] prostřednictvím rozhraní API REST API pro správu
    * parametr dotazu returnUrl připojte k adrese URL jednotné přihlašování jste dostali od volání rozhraní API výše:
      
      > Například https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
@@ -172,7 +173,7 @@ Další informace o delegování najdete v následujícím videu:
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[žádosti o token jednotného přihlašování (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
+[žádost o token jednotného přihlašování (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
 [Vytvoření uživatele]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
 [volání rozhraní REST API pro odběr produktů]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps

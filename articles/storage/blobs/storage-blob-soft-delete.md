@@ -6,19 +6,20 @@ author: MichaelHauss
 manager: vamshik
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/31/2018
 ms.author: mihauss
-ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 93b60f8957a6ae225dbc5beb33a7de817ffc5bc2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34701679"
 ---
-# <a name="soft-delete-for-azure-storage-blobs-preview"></a>Obnovitelného odstranění pro objekty BLOB Azure Storage (Preview)
+# <a name="soft-delete-for-azure-storage-blobs"></a>Soft odstranění objektů BLOB služby Azure Storage
 
 ## <a name="overview"></a>Přehled
 
-Azure Storage teď nabízí obnovitelného odstranění (Preview) pro objekty blob, takže můžete snadno obnovit data, pokud je chybně upravit nebo odstranit, aplikaci nebo jiný uživatel účet úložiště.
+Azure Storage teď nabízí obnovitelného odstranění objektů blob, takže můžete snadno obnovit data, pokud je chybně upravit nebo odstranit, aplikaci nebo jiný uživatel účet úložiště.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
@@ -29,10 +30,6 @@ Můžete nakonfigurovat množství času, které je logicky odstraněná data ob
 
 Obnovitelného odstranění je zpětně kompatibilní; Nemáte žádné změny pro vaše aplikace využívat výhod ochrany, které tato funkce poskytuje. Ale [obnovení dat](#recovery) představuje novou **zrušení odstranění objektů Blob** rozhraní API.
 
-> [!NOTE]
-> Chcete-li verzi Public Preview je zakázaná volání nastavit úroveň objektů Blob na objekt blob se snímky.
-Obnovitelného odstranění generuje snímky chránit vaše data, kdy je přepsán. Aktivně pracujeme na řešení umožňující vrstvení objektů BLOB s snímky.
-
 ### <a name="configuration-settings"></a>Nastavení konfigurace
 
 Když vytvoříte nový účet, obnovitelného odstranění vypnuté ve výchozím nastavení. Obnovitelného odstranění vypnuté také ve výchozím nastavení pro existující účty úložiště. Tuto funkci zapnout a vypnout můžete přepínat kdykoli během doby platnosti účtu úložiště.
@@ -41,7 +38,7 @@ Budou mít pořád povolený přístup a obnovit logicky odstraněná data, poku
 
 Doba uchování určuje množství času, které je logicky odstraněná data uložená a k dispozici pro obnovení. Pro objekty BLOB a snímky objektů blob, které jsou explicitně odstranit hodiny doby uchování spustí, když data se odstraní. Hodiny pro logicky odstraněné snímky vytvářené funkci obnovitelného odstranění, když se přepíšou data, spustí při vygenerování snímku. Nyní můžete zachovat logicky odstraněná data pro rozmezí 1 až 365 dnů.
 
-Doba uchování obnovitelného odstranění kdykoli, můžete změnit. Po dobu uchování aktualizované se uplatní jenom na nově odstraněná data. Dřív odstraněná data vypršení platnosti na základě na dobu uchování, která se nakonfigurovala při dat byla odstraněna.
+Doba uchování obnovitelného odstranění kdykoli, můžete změnit. Po dobu uchování aktualizované se uplatní jenom na nově odstraněná data. Dřív odstraněná data vypršení platnosti na základě na dobu uchování, která se nakonfigurovala při dat byla odstraněna. Probíhá pokus o odstranění logicky odstraněný objekt nebude mít vliv na jeho čas vypršení platnosti.
 
 ### <a name="saving-deleted-data"></a>Ukládání odstraněná data
 
@@ -106,7 +103,7 @@ Chcete-li obnovit objekt blob konkrétní logicky odstraněného snímku můžet
 
 Pokud chcete zobrazit doporučené odstraněné objekty BLOB a objektů blob snímky, můžete zahrnout odstraněná data v **seznamu objektů blob**. Můžete zobrazit jenom logicky odstraněné základní objektů BLOB nebo zahrnují také snímky logicky odstraněných objektů blob. Pro všechny logicky odstraněná data můžete zobrazit čas, kdy byla odstraněna data a také počet dní, než bude trvale platnost data.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 Následuje výstup konzoly .NET skript, který odešle, přepíše, snímky, odstranění a obnovení odstranit objekt blob s názvem "HelloWorld", když logicky zapnutá:
 
@@ -140,7 +137,7 @@ Copy a snapshot over the base blob:
 - HelloWorld (is soft deleted: False, is snapshot: False)
 ```
 
-Najdete v článku [další kroky](#Next steps) části ukazatel k aplikaci, která vytváří tento výstup.
+Najdete v článku [další kroky](#next-steps) části ukazatel k aplikaci, která vytváří tento výstup.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
@@ -183,7 +180,7 @@ Jakmile jste zrušení odstranění snímků objekt blob, můžete kliknout na *
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-### <a name="powershell"></a>Prostředí Power Shell
+### <a name="powershell"></a>PowerShell
 Pokud chcete povolit obnovitelného odstranění, aktualizujte vlastnosti služby klienta objektů blob. Následující příklad povolí obnovitelného odstranění pro podmnožinu účtů v předplatném:
 
 ```powershell
@@ -204,6 +201,19 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
+### <a name="azure-cli"></a>Azure CLI 
+Pokud chcete povolit obnovitelného odstranění, aktualizujte vlastnosti služby klienta objektů blob:
+
+```azurecli-interactive
+az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+```
+
+Chcete-li ověřit soft je zapnuta odstranit, použijte následující příkaz: 
+
+```azurecli-interactive
+az storage blob service-properties delete-policy show --account-name mystorageaccount 
+```
+
 ### <a name="python-client-library"></a>Klientská knihovna pro Python
 
 Pokud chcete povolit obnovitelného odstranění, aktualizujte vlastnosti služby klienta objektů blob:
@@ -276,11 +286,15 @@ V současné době obnovitelného odstranění je k dispozici pouze pro úloži�
 
 **Je k dispozici pro všechny typy účtů úložiště obnovitelného odstranění?**
 
-Ano, je k dispozici pro účty úložiště blob také jako objekty BLOB v účtech úložiště pro obecné účely obnovitelného odstranění. To platí pro účty standard a premium. Není k dispozici pro spravované disky obnovitelného odstranění.
+Ano, je k dispozici pro účty úložiště blob také jako objekty BLOB ve pro obecné účely obnovitelného odstranění (GPv1 i GPv2) účty úložiště. To platí pro účty standard a premium. Není k dispozici pro spravované disky obnovitelného odstranění.
 
 **Je k dispozici pro všechny vrstvy úložiště obnovitelného odstranění?**
 
 Ano, je k dispozici pro všechny vrstvy úložiště, včetně aktivní, nástrojů a archivu obnovitelného odstranění. Ale obnovitelného odstranění neposkytuje ochranu pro objekty BLOB ve vrstvě archivu přepsat.
+
+**Můžete použít rozhraní API vrstvy objektu Blob nastavit úroveň objektů BLOB s logicky odstraněné snímky?**
+
+Ano. Logicky odstraněné snímky zůstanou v původní vrstvy, ale základní objekt blob se přesune do nové vrstvy. 
 
 **Mít prémiové účty úložiště na omezení počtu snímků blob 100. Do tohoto limitu počítají logicky odstraněné snímky?**
 

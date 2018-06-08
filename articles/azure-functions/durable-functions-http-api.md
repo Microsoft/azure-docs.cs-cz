@@ -15,10 +15,11 @@ ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
 ms.openlocfilehash: aa5c46a4d0ca55339e8f26a3e577d03bf4b504b2
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "32309976"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API HTTP trvanlivý funkcí (Azure Functions)
 
@@ -130,7 +131,7 @@ Pro datové části odpovědi **HTTP 200** a **HTTP 202** případech je objekt 
 | Pole           | Typ dat | Popis |
 |-----------------|-----------|-------------|
 | runtimeStatus   | řetězec    | Stav běhu instance. Hodnoty zahrnují *systémem*, *čekající*, *se nezdařilo*, *zrušeno*, *ukončeno*, *Dokončit*. |
-| Vstup           | JSON      | Data JSON, která používá k inicializaci instance. |
+| vstup           | JSON      | Data JSON, která používá k inicializaci instance. |
 | customStatus    | JSON      | Data JSON pro vlastní orchestration stavu. Toto pole je `null` není-li nastavit. |
 | output          | JSON      | Výstup JSON instance. Toto pole je `null` Pokud instance není ve stavu dokončení. |
 | createdTime     | řetězec    | Čas vytvoření instance. Využívá rozšířené zápis ISO 8601. |

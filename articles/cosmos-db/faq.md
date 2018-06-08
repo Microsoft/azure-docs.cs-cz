@@ -5,20 +5,17 @@ keywords: Otázky k databázi, často kladené otázky, documentdb, azure, Micro
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34735160"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -61,6 +58,9 @@ Neexistuje žádné omezení na celkovém množství dat, která kontejner můž
 
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Jaká jsou omezení propustnosti databáze Cosmos Azure?
 Neexistuje žádné omezení na celkovém množství propustnosti, kterou kontejner může podporovat v Azure Cosmos DB. Klíče Rada je distribuovat vaši úlohu přibližně rovnoměrně mezi dostatečně velký počet klíčů oddílů.
+
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Se šifrují přímo a brány režimy připojení? 
+Ano jsou vždy plně zašifrované oba režimy. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Kolik Azure Cosmos DB stojí?
 Podrobnosti najdete [podrobnosti o cenách Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/) stránky. Poplatky za používání služby Azure Cosmos DB určuje počet zřízené kontejnerů, počet hodin kontejnery byly online, a zřízené propustnosti pro každý kontejner. Termín *kontejnery* zde označují rozhraní API pro SQL shromažďování, grafu rozhraní Graph API, rozhraní API MongoDB kolekce a Table API tabulky. 
@@ -164,6 +164,10 @@ Vám může hromadného vložení dokumenty do Azure Cosmos DB v některém ze d
 * Nástroj pro migraci dat, jak je popsáno v [nástroj pro migraci databáze pro databázi Azure Cosmos](import-data.md).
 * Uložené procedury, jak je popsáno v [programování v jazyce JavaScript na straně serveru pro databázi Azure Cosmos](programming.md).
 
+### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Instalační program mám mé kolekce používat Opožděné indexování, zobrazuje, že dotazy nevrátí očekávané výsledky. 
+Jak je popsáno v části indexování, opožděné indexování může způsobit toto chování. Vždy byste měli používat, konzistentní indexování pro všechny aplikace. 
+
+
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Využívá rozhraní SQL API podporu prostředků odkaz ukládání do mezipaměti?
 Ano, protože Azure Cosmos DB je služba RESTful, odkazy na zdroje jsou neměnné a mohou být uloženy v mezipaměti. Rozhraní SQL API klientů můžete zadat hlavičku "If-None-Match" pro čtení pro všechny prostředků jako dokumentu nebo kolekci a pak aktualizujte své místní kopie po změně verze serveru.
 
@@ -171,7 +175,12 @@ Ano, protože Azure Cosmos DB je služba RESTful, odkazy na zdroje jsou neměnn�
 Ano. [Emulátoru DB Cosmos Azure](local-emulator.md) poskytuje zachováním emulace služby Cosmos DB. Podporuje funkce, které jsou shodné s Azure Cosmos databáze, včetně podpory pro vytváření a dotazování dokumentů JSON, zřizování a škálování kolekce a provádění uložené procedury a triggery. Můžete vyvíjet a testovat aplikace pomocí emulátoru DB Cosmos Azure a jejich nasazení do Azure v globálním měřítku tím, že změníte koncového bodu připojení pro Azure Cosmos DB jednu konfiguraci.
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Proč se dlouho s plovoucí desetinnou čárkou v dokumentu zaokrouhlené při pohledu z Průzkumníku dat na portálu. 
-Toto je omezení jazyka JavaScript. JavaScript používá jako zadaný v IEEE 754 čísla s plovoucí desetinnou čárkou formát s dvojitou přesností a bezpečně může představovat hodnoty mezi-(253 - 1) a 253 – 1 (tj, 9007199254740991) jenom.
+Toto je omezení jazyka JavaScript. JavaScript používá jako zadaný v IEEE 754 čísla s plovoucí desetinnou čárkou formát s dvojitou přesností a bezpečně může představovat hodnoty mezi-(253 - 1) a 253-1 (tj, 9007199254740991) jenom.
+
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Kde jsou v hierarchii objekt povoleno oprávnění?
+
+Vytváření oprávnění pomocí ResourceTokens je povoleno na úrovni kolekce a na jeho následníky (jako jsou dokumenty, přílohy). To znamená, že pokusu o vytvoření oprávnění v databázi nebo úrovni účtu není aktuálně povoleno.
+
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Vývoj pro rozhraní API pro MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Co je Azure API DB Cosmos pro MongoDB?
@@ -213,7 +222,7 @@ Existují určité rozdíly chování, které uživatelé pocházejících z Azu
 * CORS není aktuálně podporováno.
 * Názvy tabulek ve službě Azure Table storage nejsou malá a velká písmena, ale jsou v rozhraní API služby Azure Cosmos DB tabulky
 * Některé z Azure Cosmos DB interní formátů kódování informace, například binární pole nejsou aktuálně efektivní, jako jeden mohly líbit. Proto to může způsobit neočekávané omezení na velikost dat. Například jeden nelze používají úplné 1 MB tabulka entity k uložení binární data, protože kódování zvyšuje velikost data.
-* Název vlastnosti entity "Id" aktuálně není podporována
+* Název vlastnosti entity Id aktuálně není podporována
 * TableQuery TakeCount není omezen na 1000
 
 Z hlediska rozhraní REST API existuje několik možností koncových bodů nebo dotazu, které nepodporuje rozhraní API služby Azure Cosmos DB tabulky:
@@ -414,7 +423,7 @@ Pomocí specifikace propustnost pružně můžete využívat sezónnosti vaší 
 
 Azure Cosmos DB je navržený jako globálně distribuované, na základě smlouvy SLA systému se záruky dostupnosti, latence a propustnosti. Při rezervaci propustnost v Azure Cosmos DB tak, aby zajistil, na rozdíl od jiných systémů propustnost. Azure Cosmos DB poskytuje další funkce, které zákazníci požadovali, jako je například sekundární indexy a globální distribuci.  
 
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Nikdy zobrazí oznámení "kvóta úplné" (což znamená, že oddíl je úplná) při načítání dat do Azure Table storage. S rozhraním API pro tabulky zobrazí se tato zpráva. Tato nabídka je omezení mi a vynucení mi změnit mé existující aplikace?
+### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Nikdy zobrazí úplný kvótu"oznámení (což znamená, že oddíl je úplná) při načítání dat do Azure Table storage. S rozhraním API pro tabulky zobrazí se tato zpráva. Tato nabídka je omezení mi a vynucení mi změnit mé existující aplikace?
 
 Azure Cosmos DB je systém na základě smlouvy o úrovni služeb, který poskytuje neomezené škálování záruky latence, propustnost, dostupnosti a konzistence. K zajištění výkonu zaručenou premium, ujistěte se, že velikost dat a index jsou spravovat a škálovatelné. 10 GB limitu počet entit nebo počet položek na klíč oddílu je zajistit, že můžeme poskytnout vynikající výkon vyhledávání a dotazů. K zajištění, dobře škáluje aplikace i pro Azure Storage, doporučujeme, aby vám *není* vytvořit aktivní oddíl ukládání všechny informace v jednom oddílu a dotazování ho. 
 
@@ -475,7 +484,7 @@ Diagnostické protokoly jsou vysvětlené v [protokolování diagnostiky Azure C
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Nemá primární klíče mapy pro koncept klíče oddílu databáze Cosmos Azure?
 Ano, klíč oddílu se používá k umístění entity správné místo. V Azure Cosmos DB je použít k vyhledání právo logický oddíl, který je uložený na fyzickém oddílu. Rozdělení koncept a podrobně [oddílu a škálování v Azure Cosmos DB](partition-data.md) článku. Základní proveďte rychle tady je, že logický oddíl dnes by neměl překročit omezení na 10 GB. 
 
-### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Co se stane při doručení oznámení "kvóta úplné" označující, že oddíl je plný?
+### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Co se stane, když se zobrazí úplný kvótu"oznámení o tom, že oddíl je úplná?
 Azure Cosmos DB je systém na základě smlouvy o úrovni služeb, který poskytuje neomezené škálování záruky latence, propustnost, dostupnosti a konzistence. Cassandra API umožňuje příliš neomezené úložiště dat. Tato neomezené úložiště je založena na vodorovné škálování dat pomocí dělení jako klíče koncept. Rozdělení koncept a podrobně [oddílu a škálování v Azure Cosmos DB](partition-data.md) článku.
 
 10 GB limitu počtu entit nebo položek na logický oddíl měli byste dodržovat. Aby se dobře škáluje vaší aplikace, doporučujeme, aby vám *není* vytvořit aktivní oddíl ukládání všechny informace v jednom oddílu a dotazování ho. Tato chyba může obsahovat jenom přijde, pokud se vám data nesouměrně rozdělí –, můžete je mít velké množství dat pro jeden oddíl klíč – tj, více než 10 GB. Můžete najít distribuci dat pomocí portálu pro úložiště. Způsob, jak opravit tuto chybu je recrete tabulky a zvolte granulární primární (klíč oddílu), což umožňuje lepší distribuci dat.

@@ -1,4 +1,4 @@
-1. Přihlaste se na [portál Azure].
+1. Přihlaste se na [Azure Portal].
 2. Vyberte **+ nový** > **Web + mobilní** > **mobilní aplikace**a pak zadejte název pro back-end mobilní aplikace.
 3. Pro **skupiny prostředků**, vyberte existující skupinu prostředků nebo vytvořte novou (pomocí stejný název jako vaše aplikace). 
 4. Pro **plán služby App Service**, výchozí plán (v [úrovně Standard](https://azure.microsoft.com/pricing/details/app-service/)) je vybrána. Můžete také vybrat jiný plán nebo [vytvořte novou](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
@@ -18,4 +18,4 @@
    Počkejte několik minut databáze, která se úspěšně nasazena, než budete pokračovat.
 
 <!-- URLs. -->
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

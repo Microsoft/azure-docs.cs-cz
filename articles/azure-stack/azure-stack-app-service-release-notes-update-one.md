@@ -16,10 +16,11 @@ ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
 ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "34358077"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Aplikační služby na Azure zásobníku update 1 poznámky
 

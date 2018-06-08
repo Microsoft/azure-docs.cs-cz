@@ -16,10 +16,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "31589624"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -35,7 +36,7 @@ Toto téma ukazuje, jak používat rozhraní .NET back-end serveru SDK v klíčo
 Referenční dokumentaci k nástroji pro server SDK se nachází zde: [Azure Mobile Apps .NET – referenční informace][1].
 
 ## <a name="create-app"></a>Postupy: vytvoření back-endu mobilní aplikace .NET
-Pokud spouštíte nový projekt, můžete vytvořit buď pomocí aplikace služby App Service [portál Azure] nebo Visual Studio. Můžete spustit aplikace služby App Service místně nebo publikování tohoto projektu cloudové mobilní aplikace služby App Service.
+Pokud spouštíte nový projekt, můžete vytvořit buď pomocí aplikace služby App Service [Azure Portal] nebo Visual Studio. Můžete spustit aplikace služby App Service místně nebo publikování tohoto projektu cloudové mobilní aplikace služby App Service.
 
 Pokud přidáváte mobilní funkce do existujícího projektu, najdete v článku [stáhnout a inicializujte sadu SDK](#install-sdk) části.
 
@@ -468,7 +469,7 @@ Zajistěte, aby mobilního back-endu [Microsoft.Azure.Mobile.Server.Authenticati
 V předchozím příkladu, měli byste nakonfigurovat *authAudience* a *authIssuer* nastavení aplikace v souboru Web.config souboru pro každý být adresa URL kořenového adresáře aplikace pomocí schéma HTTPS. Podobně byste měli nastavit *authSigningKey* jako hodnota vaší aplikace je podpisový klíč.
 Postup získání podpisový klíč:
 
-1. Přejděte do vaší aplikace v rámci [portál Azure]
+1. Přejděte do vaší aplikace v rámci [Azure Portal]
 2. Klikněte na tlačítko **nástroje**, **Kudu**, **přejděte**.
 3. V modulu Kudu správy lokality, klikněte na **prostředí**.
 4. Najít hodnotu pro *webu\_AUTH\_PODPISOVÁNÍ\_klíč*.
@@ -481,7 +482,7 @@ Podpisový klíč pro použití *authSigningKey* parametr v konfiguraci vaší m
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [NuGet.org]: http://www.nuget.org/
 [Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
