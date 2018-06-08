@@ -1,5 +1,7 @@
 - name: Dokumentace ke službě Data Factory V1
   href: null
+- name: Přepnout na aktuální verzi dokumentaci
+  href: ../index.yml
 - name: Přehled
   items:
     - name: Úvod do Azure Data Factory
@@ -20,7 +22,7 @@
       items:
         - name: Průvodce kopírováním
           href: data-factory-copy-data-wizard-tutorial.md
-        - name: portál Azure
+        - name: Azure Portal
           href: data-factory-copy-activity-tutorial-using-azure-portal.md
         - name: Visual Studio
           href: data-factory-copy-activity-tutorial-using-visual-studio.md
@@ -33,7 +35,7 @@
     - name: Vytvoření kanálu pro transformaci dat
       href: data-factory-build-your-first-pipeline.md
       items:
-        - name: portál Azure
+        - name: Azure Portal
           href: data-factory-build-your-first-pipeline-using-editor.md
         - name: Visual Studio
           href: data-factory-build-your-first-pipeline-using-vs.md
@@ -193,7 +195,7 @@
       href: /rest/api/datafactory/
     - name: JSON
       href: data-factory-json-scripting-reference.md
-- name: Zdroje
+- name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'

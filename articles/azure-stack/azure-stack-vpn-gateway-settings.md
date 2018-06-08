@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/18/2018
+ms.date: 06/05/2018
 ms.author: brenduns
-ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 94cabb73406619b95147595127e97a27aed762f9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849745"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení brány sítě VPN pro Azure zásobníku
 
@@ -157,7 +158,10 @@ Na rozdíl od Azure, která podporuje více nabízí jako iniciátor i respondé
 |Verze IKE |IKEv2 |
 |Šifrování a použití algoritmu hash algoritmy (šifrování)     | GCMAES256|
 |Šifrování a použití algoritmu hash algoritmy (ověřování) | GCMAES256|
-|Životnost SA (čas)  | 27 000 sekund |
-|Životnost SA (bajty) | 819,200       |
+|Životnost SA (čas)  | 27 000 sekund<sup>viz poznámka 1</sup> |
+|Životnost SA (bajty) | 33,553,408<sup>viz poznámka 2</sup>     |
 |Metoda Perfect Forward Secrecy (PFS) |PFS2048 |
 |Detekce mrtvých partnerských zařízení | Podporováno|  
+
+*Poznámka 1:* starší než verze 1803 zásobník Azure používá hodnotu 14 400 baudů životnost přidružení zabezpečení (čas). 
+*Poznámka 2:* starší než verze 1803 zásobník Azure používá hodnotu 819,200 životnost přidružení zabezpečení (v bajtech).

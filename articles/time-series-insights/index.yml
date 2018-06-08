@@ -1,42 +1,52 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Azure Time Series Insights"
+title: Dokumentace ke službě Azure Time Series Insights
 metadata:
-  title: "Dokumentace ke službě Azure Time Series Insights – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Naučte se spouštět analýzy IoT v cloudu s plně spravovaným zpracováním událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů."
+  title: Dokumentace ke službě Azure Time Series Insights – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Naučte se spouštět analýzy IoT v cloudu s plně spravovaným zpracováním událostí. Analyzujte data v reálném čase z aplikací, senzorů, zařízení a dalších zdrojů.
   services: time-series-insights
-  author: kfile
-  manager: jhubbard
+  author: bryanla
+  manager: timlt
   ms.service: time-series-insights
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/13/2017
-  ms.author: kfile
-  ms.openlocfilehash: 8ccc0fe8ca23fabb6d2cb697836e8f402dbaf672
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.date: 05/16/2018
+  ms.author: bryanla
+  ms.openlocfilehash: 5ea126c2095e6bada8752f4b4187f504bbd67a46
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34651018"
 abstract:
-  description: "Zjistěte, jak nastavit prostředí služby Time Series Insights, zkoumat a analyzovat data časových řad řešení IoT nebo připojených věcí. Dokumentace popisuje požadavky, návody, reference k rozhraní API a další články, které vám pomůžou začít pracovat během několika minut."
+  description: Zjistěte, jak nastavit prostředí služby Time Series Insights, zkoumat a analyzovat data časových řad řešení IoT nebo připojených věcí. Dokumentace popisuje požadavky, návody, reference k rozhraní API a další články, které vám pomůžou začít pracovat během několika minut.
+  aside:
+    image:
+      alt: Úvodní video k funkcím službě Azure IoT Time Series Insights
+      height: 110
+      src: media/index/tsi-intro-shannon-bloch.png
+      width: 250
+    title: Time Series Insights pro aplikace IoT (16:09)
+    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Time-Series-Insight-for-IoT-apps/player
+    width: 250
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se, jak nasadit Log Analytics a konfigurovat shromažďování dat z Azure, dalších poskytovatelů cloudových služeb a místních prostředků."
+    text: Naučte se, jak nasadit Log Analytics a konfigurovat shromažďování dat z Azure, dalších poskytovatelů cloudových služeb a místních prostředků.
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
-      text: "Prozkoumat službu Azure Time Series Insights"
+      text: Prozkoumat službu Azure Time Series Insights
       href: /azure/time-series-insights/time-series-quickstart
-- title: Odkaz
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Rozhraní API"
-      html: "<p><a href=\"/rest/api/time-series-insights-management\">Rozhraní API pro správu prostředků</a></p>   <p><a href=\"/rest/api/time-series-insights/time-series-insights-reference-queryapi\">Rozhraní API pro dotazy</a></p><p><a href=\"/rest/api/time-series-insights/time-series-insights-reference-query-syntax\">Syntaxe dotazů</a></p>"
+    - title: Rozhraní API
+      html: <p><a href="/rest/api/time-series-insights-management">Rozhraní API pro správu prostředků</a></p>   <p><a href="/rest/api/time-series-insights/time-series-insights-reference-queryapi">Rozhraní API pro dotazy</a></p><p><a href="/rest/api/time-series-insights/time-series-insights-reference-query-syntax">Syntaxe dotazů</a></p>

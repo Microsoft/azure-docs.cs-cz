@@ -9,17 +9,19 @@ editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 421af12da6d207a50d12dcbf64aac51aba06b196
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ae8c8ed9d397df0c82b74f051ff14729c0f41623
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837272"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznávání biolékařského entity pomocí šablony tým datové vědy procesu (TDSP)
 
@@ -104,7 +106,7 @@ Toto je odkaz na veřejné úložiště GitHub reálného scénáře, který obs
     * Pracovní uzly: minimálně 4 v [D12_V2](https://azure.microsoft.com/pricing/details/hdinsight/). V našem pracovní jsme použili 11 uzlů pracovního procesu D12_V2 velikosti.
 * [NC6 datové vědy virtuálního počítače (DSVM)](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-linux-dsvm-intro) pro výpočty škálování.
 
-### <a name="python-packages"></a>Balíčky Python
+### <a name="python-packages"></a>Balíčky Pythonu
 
 Všechny požadované závislosti jsou definovány v souboru aml_config/conda_dependencies.yml ve složce projektu scénář. Závislosti definované v tomto souboru jsou automaticky zřízené pro spuštění před docker a virtuálních počítačů a HDI clusteru cíle. Podrobnosti o formátu souborů prostředí Conda [zde](https://conda.io/docs/using/envs.html#create-environment-file-by-hand).
 

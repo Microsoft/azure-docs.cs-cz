@@ -5,6 +5,7 @@
     - name: Co jsou škálovací sady virtuálních počítačů?
       href: overview.md
 - name: Šablony Rychlý start
+  expanded: true
   items:
     - name: Vytvoření na webu Azure Portal
       href: quick-create-portal.md
@@ -64,6 +65,102 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+- name: Koncepty
+  items:
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+      maintainContext: true
+    - name: Oblasti a dostupnost
+      href: ../virtual-machines/windows/regions-and-availability.md
+      maintainContext: true
+    - name: Velikosti a typy virtuálních počítačů
+      href: ../virtual-machines/windows/sizes.md
+      maintainContext: true
+      items:
+        - name: Obecné účely
+          href: ../virtual-machines/windows/sizes-general.md
+          maintainContext: true
+          items:
+            - name: B-Series s možností zvládání výkonových špiček
+              href: ../virtual-machines/windows/b-series-burstable.md
+              maintainContext: true
+        - name: Optimalizované z hlediska výpočetních služeb
+          href: ../virtual-machines/windows/sizes-compute.md
+          maintainContext: true
+        - name: Optimalizované z hlediska paměti
+          href: ../virtual-machines/windows/sizes-memory.md
+          maintainContext: true
+          items:
+            - name: Virtuální procesory s omezením
+              href: ../virtual-machines/windows/constrained-vcpu.md
+              maintainContext: true
+        - name: Optimalizované z hlediska úložiště
+          href: ../virtual-machines/windows/sizes-storage.md
+          maintainContext: true
+        - name: Optimalizované z hlediska GPU
+          href: ../virtual-machines/windows/sizes-gpu.md
+          maintainContext: true
+          items:
+            - name: Nastavení ovladačů GPU
+              href: ../virtual-machines/windows/n-series-driver-setup.md
+              maintainContext: true
+        - name: Vysokovýkonné výpočetní prostředí
+          href: ../virtual-machines/windows/sizes-hpc.md
+          maintainContext: true
+        - name: Výpočetní jednotky Azure (ACU)
+          href: ../virtual-machines/windows/acu.md
+          maintainContext: true
+        - name: Výsledky srovnávacích testů
+          href: ../virtual-machines/windows/compute-benchmark-scores.md
+          maintainContext: true
+    - name: Schválené linuxové distribuce
+      href: ../virtual-machines/linux/endorsed-distros.md
+      maintainContext: true
+    - name: Údržba a aktualizace
+      href: ../virtual-machines/windows/maintenance-and-updates.md
+      maintainContext: true
+    - name: Diskové úložiště
+      href: ../virtual-machines/windows/about-disks-and-vhds.md
+      maintainContext: true
+      items:
+        - name: Managed Disks
+          href: ../virtual-machines/windows/managed-disks-overview.md
+          maintainContext: true
+        - name: Premium Storage
+          href: ../virtual-machines/windows/premium-storage.md
+          maintainContext: true
+        - name: Výkon Premium Storage
+          href: ../virtual-machines/windows/premium-storage-performance.md
+          maintainContext: true
+        - name: Storage úrovně Standard
+          href: ../virtual-machines/windows/standard-storage.md
+          maintainContext: true
+        - name: Cíle škálovatelnosti pro disky
+          href: ../virtual-machines/windows/disk-scalability-targets.md
+          maintainContext: true
+        - name: Zálohování a zotavení po havárii pro disky
+          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          maintainContext: true
+    - name: Sítě
+      href: ../virtual-machines/windows/network-overview.md
+      maintainContext: true
+    - name: Automatizace infrastruktury
+      href: ../virtual-machines/windows/infrastructure-automation.md
+      maintainContext: true
+    - name: Zabezpečení a zásady
+      href: ../virtual-machines/windows/security-policy.md
+      maintainContext: true
+    - name: Monitorování
+      href: ../virtual-machines/windows/monitor.md
+      maintainContext: true
+    - name: Vysokovýkonné výpočetní prostředí (HPC)
+      href: ../virtual-machines/windows/high-performance-computing.md
+      maintainContext: true
+    - name: Aspekty nasazování
+      items:
+        - name: Kvóty virtuálních procesorů
+          href: ../virtual-machines/windows/quotas.md
+          maintainContext: true
 - name: Postup
   items:
     - name: Plánování a návrh

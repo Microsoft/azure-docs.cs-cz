@@ -129,6 +129,8 @@
           href: monitoring-rest-api-walkthrough.md
         - name: Ukázky Azure PowerShellu
           href: insights-powershell-samples.md
+        - name: Ukázky Azure CLI
+          href: insights-cli-samples.md
     - name: Použití rozšíření diagnostiky Azure
       items:
         - name: Odeslání do Azure Storage

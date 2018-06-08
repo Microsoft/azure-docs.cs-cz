@@ -63,6 +63,8 @@
               href: deploy-with-resource-manager-template.md
             - name: Vytvoření v jiné oblasti
               href: multi-geo.md
+            - name: Zobrazení a odstranění dat účtu sady Studio
+              href: export-delete-personal-data-dsr.md
     - name: Získání dat a jejich pochopení
       items:
         - name: Import trénovacích dat
@@ -215,6 +217,8 @@
           href: gallery-collections.md
         - name: Vlastní moduly
           href: gallery-custom-modules.md
+        - name: Zobrazení a odstranění dat účtu
+          href: ai-gallery-control-personal-data-dsr.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

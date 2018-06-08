@@ -48,24 +48,39 @@
     - name: Podpora přesměrování
       href: redirect-overview.md
     - name: Podpora více tenantů
+      href: application-gateway-web-app-overview.md
     - name: Monitorování stavu
       href: application-gateway-probe-overview.md
     - name: Podpora protokolu WebSocket
       href: application-gateway-websocket.md
 - name: Návody
   items:
-    - name: Vytvoření služby Application Gateway
+    - name: Správa webového provozu
       items:
+        - name: Azure PowerShell
+          href: tutorial-manage-web-traffic-powershell.md
         - name: Šablona
           href: create-vmss-template.md
-        - name: Webové aplikace – PowerShell
-          href: create-web-app.md
-        - name: Konfigurace interního nástroje pro vyrovnávání zatížení
-          href: application-gateway-ilb.md
-    - name: Konfigurace ukončení protokolu SSL – portál
-      href: create-ssl-portal.md
-    - name: Hostování několika webů – portál
-      href: create-multiple-sites-portal.md
+    - name: Konfigurace interního nástroje pro vyrovnávání zatížení
+      items:
+        - name: Azure PowerShell
+          href: application-gateway-ilb-arm.md
+    - name: Konfigurace ukončení protokolu SSL
+      items:
+        - name: Ukončení protokolu SSL s využitím webu Azure Portal
+          href: create-ssl-portal.md
+        - name: Ukončení protokolu SSL s využitím Azure PowerShellu
+          href: tutorial-ssl-powershell.md
+        - name: Obnovení certifikátů
+          href: renew-certificates.md
+        - name: Konfigurace zásad SSL
+          href: application-gateway-configure-ssl-policy-powershell.md
+    - name: Konfigurace Firewallu webových aplikací
+      items:
+        - name: Azure Portal
+          href: application-gateway-web-application-firewall-portal.md
+        - name: Azure PowerShell
+          href: tutorial-restrict-web-traffic-powershell.md
     - name: Přizpůsobení pravidel WAF
       items:
         - name: Azure Portal
@@ -74,40 +89,36 @@
           href: application-gateway-customize-waf-rules-powershell.md
         - name: Azure CLI
           href: application-gateway-customize-waf-rules-cli.md
-    - name: Přesměrování externího provozu
+    - name: Směrování podle adres URL
       items:
+        - name: Azure Portal
+          href: create-url-route-portal.md
         - name: Azure PowerShell
-          href: redirect-external-site-powershell.md
-        - name: Azure CLI
-          href: redirect-external-site-cli.md
-    - name: Přesměrování HTTP na HTTPS
+          href: tutorial-url-route-powershell.md
+    - name: Hostování několika webů
       items:
+        - name: Azure Portal
+          href: create-multiple-sites-portal.md
         - name: Azure PowerShell
-          href: redirect-http-to-https-powershell.md
-        - name: Azure CLI
-          href: redirect-http-to-https-cli.md
-    - name: Přesměrování interního provozu
+          href: tutorial-multiple-sites-powershell.md
+    - name: Přesměrování provozu
       items:
-        - name: Azure PowerShell
-          href: redirect-internal-site-powershell.md
-        - name: Azure CLI
-          href: redirect-internal-site-cli.md
-    - name: Omezení webového provozu – portál
-      href: create-waf-portal.md
-    - name: Směrování na základě adresy URL – portál
-      href: create-url-route-portal.md
-    - name: Správa webového provozu s využitím Azure Powershellu
-      href: tutorial-manage-web-traffic-powershell.md
-    - name: Omezení webového provozu s využitím Azure Powershellu
-      href: tutorial-restrict-web-traffic-powershell.md
-    - name: Ukončení protokolu SSL s využitím Azure PowerShellu
-      href: tutorial-ssl-powershell.md
-    - name: Obnovení certifikátů
-      href: renew-certificates.md
-    - name: Hostování několika webů s využitím Azure PowerShell
-      href: tutorial-multiple-sites-powershell.md
-    - name: Směrování webového provozu s využitím Azure Powershellu
-      href: tutorial-url-route-powershell.md
+        - name: HTTP do HTTPS
+          items:
+            - name: Azure PowerShell
+              href: redirect-http-to-https-powershell.md
+            - name: Azure CLI
+              href: redirect-http-to-https-cli.md
+        - name: Přesměrování interního provozu
+          items:
+            - name: Azure PowerShell
+              href: redirect-internal-site-powershell.md
+            - name: Azure CLI
+              href: redirect-internal-site-cli.md
+    - name: Podpora více tenantů
+      items:
+        - name: Konfigurace podpory více tenantů
+          href: create-web-app.md
     - name: Přesměrování webového provozu s využitím Azure Powershellu
       href: tutorial-url-redirect-powershell.md
     - name: Vytvoření zónově redundantní brány Application Gateway

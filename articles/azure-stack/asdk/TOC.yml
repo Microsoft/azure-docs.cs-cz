@@ -9,27 +9,11 @@
       href: asdk-release-notes.md
 - name: Kurzy
   items:
-    - name: 1. Nasazení ASDK
-      items:
-        - name: Nasazení ASDK – instalační program
-          href: asdk-deploy.md
-        - name: Nasazení ASDK – prostředí PowerShell
-          href: asdk-deploy-powershell.md
-        - name: Znovu nasaďte ASDK
-          href: asdk-redeploy.md
-    - name: 2. Přidat položku marketplace.
-      items:
-        - name: Stáhnout ze služby Azure
-          href: asdk-marketplace-item.md
-        - name: Přidat z místního zdroje
-          href: asdk-marketplace-item-offline.md
-    - name: 3. Nabídka služeb IaaS
-      href: asdk-offer-services.md
-    - name: 4. Přihlášení k odběru nabídky
+    - name: Přihlášení k odběru nabídky
       href: asdk-subscribe-services.md
-    - name: 5. Aktualizace nabídky a plány
+    - name: Aktualizace nabídky a plány
       href: asdk-update-offers.md
-    - name: 6. Vytvoření virtuálního počítače ze šablony
+    - name: Vytvoření virtuálního počítače ze šablony
       href: asdk-create-vm-template.md
 - name: Koncepty
   items:
@@ -49,10 +33,14 @@
           href: asdk-download.md
         - name: Příprava na hostitelském počítači ASDK
           href: asdk-prepare-host.md
-        - name: Nainstalujte ASDK
+        - name: Nasazení ASDK – instalační program
           href: asdk-install.md
+        - name: Nasazení ASDK – prostředí PowerShell
+          href: asdk-deploy-powershell.md
         - name: Po nasazení konfigurace
           href: asdk-post-deploy.md
+        - name: Znovu nasaďte ASDK
+          href: asdk-redeploy.md
     - name: Registrace ASDK
       href: asdk-register.md
     - name: Konfigurace nastavení telemetrie Azure zásobníku

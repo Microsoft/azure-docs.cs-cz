@@ -75,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: Konfigurace SSL
           href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
     - name: Kontinuita podnikových procesů
       items:
         - name: Přehled
@@ -89,6 +91,10 @@
           href: concepts-compatibility.md
         - name: Vývoj aplikací
           href: concepts-database-application-development.md
+    - name: Replikace
+      items:
+        - name: Replikace příchozích dat
+          href: concepts-data-in-replication.md
 - name: Návody
   items:
     - name: Správa serveru
@@ -141,18 +147,30 @@
       items:
         - name: Vytváření upozornění na metriky
           href: howto-alert-on-metric.md
+    - name: Replikace
+      items:
+        - name: Konfigurace replikace příchozích dat
+          href: howto-data-in-replication.md
     - name: Řešení potíží
       items:
         - name: Řešení potíží s výkonem dotazů
           href: howto-troubleshoot-query-performance.md
         - name: Použití zobrazení ve schématu sys
           href: howto-troubleshoot-sys-schema.md
+    - name: Virtual Network
+      items:
+        - name: Azure Portal
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
 - name: Referenční informace
   items:
     - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST API
       href: /rest/api/mysql
+    - name: Uložené procedury replikace příchozích dat
+      href: reference-data-in-stored-procedures.md
 - name: Zdroje a prostředky
   items:
     - name: Šablony nasazení

@@ -1,0 +1,74 @@
+- name: Přehled
+  items:
+    - name: Co jsou kolekce pracovních prostorů Power BI?
+      href: what-are-power-bi-workspace-collections.md
+    - name: Novinky v kolekcích pracovních prostorů Power BI
+      href: whats-new.md
+- name: Začínáme
+  items:
+    - name: Začínáme s kolekcemi pracovních prostorů Power BI
+      href: get-started.md
+    - name: Začínáme s pomocí ukázky
+      href: get-started-sample.md
+    - name: Nejčastější dotazy
+      href: faq.md
+- name: Postup
+  items:
+    - name: Plánování a návrh
+      items:
+        - name: Obvyklé scénáře
+          href: scenarios.md
+    - name: Spravovat
+      items:
+        - name: Připojení ke zdroji dat
+          href: connect-datasource.md
+        - name: Vložení sestavy Power BI
+          href: embed-report.md
+        - name: Interakce se sestavami
+          href: interact-with-reports.md
+        - name: Vytvoření nové sestavy z datové sady
+          href: create-report-from-dataset.md
+        - name: Ukládání sestav
+          href: save-reports.md
+        - name: Přepínání mezi zobrazením a úpravami
+          href: toggle-mode.md
+    - name: Zabezpečení
+      items:
+        - name: Ověření a autorizace
+          href: app-token-flow.md
+        - name: Zabezpečení na úrovni řádků s kolekcemi pracovních prostorů Power BI
+          href: row-level-security.md
+- name: Referenční informace
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?service=power-bi-embedded'
+    - name: PowerShell
+      href: /powershell/module/azurerm.powerbiembedded
+    - name: .NET Azure Resource Manager
+      href: /dotnet/api/microsoft.azure.management.powerbiembedded
+    - name: Stažení sady .NET SDK
+      href: 'https://www.nuget.org/profiles/powerbi'
+    - name: JavaScript
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript/wiki'
+    - name: Rozhraní REST API pro správu
+      href: /rest/api/powerbiembedded/
+    - name: Rozhraní REST API
+      href: 'https://msdn.microsoft.com/library/azure/mt711507.aspx'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Vložená ukázka JavaScriptu
+      href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/'
+    - name: Úložiště Git JavaScriptu
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+    - name: 'Úložiště Git Power BI C#'
+      href: 'https://github.com/Microsoft/PowerBI-CSharp'
+    - name: Komunita Power BI
+      href: 'http://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Ukázková aplikace
+      href: 'https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/powerbi'

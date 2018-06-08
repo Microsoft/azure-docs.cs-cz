@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: Adaptivní řízení aplikací
           href: security-center-adaptive-application.md
+        - name: Monitorování integrity souborů
+          href: security-center-file-integrity-monitoring.md
     - name: Správa řešení zabezpečení
       href: security-center-partner-integration.md
       items:
@@ -145,6 +147,8 @@
           href: security-center-threat-intel.md
         - name: Šetření
           href: security-center-investigation.md
+        - name: Správa uživatelských dat šetření
+          href: security-center-investigation-user-data.md
     - name: Automatizace pracovních postupů zabezpečení
       items:
         - name: Playbooky Logic Apps
@@ -169,6 +173,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: Zdroje a prostředky
   items:
+    - name: Správa uživatelských dat
+      href: security-center-privacy.md
     - name: Nejčastější dotazy
       href: security-center-faq.md
     - name: Podporované platformy

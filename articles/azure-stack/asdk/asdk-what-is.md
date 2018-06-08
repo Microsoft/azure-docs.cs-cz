@@ -1,26 +1,27 @@
 ---
-title: "Úvod do Azure zásobníku Development Kit (ASDK) | Microsoft Docs"
-description: "Popisuje, co je ASDK a běžné případy použití pro vyhodnocení zásobníku Microsoft Azure."
+title: Úvod do Azure zásobníku Development Kit (ASDK) | Microsoft Docs
+description: Popisuje, co je ASDK a běžné případy použití pro vyhodnocení zásobníku Microsoft Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5a268a29c7a767084049bf56270aa8bc9d2ccc3f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850623"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Co je Azure zásobníku Development Kit?
 [Microsoft Azure zásobníku integrované systémy](.\.\azure-stack-poc.md) rozsahu velikost z uzlů 4-12 a společně podporuje hardwaru partnera a společnosti Microsoft. Použití Azure zásobníku integrované systémy, které umožňují nové scénáře pro produkční zatížení. Pokud jste Azure zásobníku subjektu, který spravuje infrastrukturu integrované systémy a nabízí služby, přečtěte si naše [operátor dokumentaci](https://docs.microsoft.com/azure/azure-stack).
@@ -79,4 +80,4 @@ Přidání podpory pro další služby Azure bude Azure zásobníku. Další inf
 
 
 ## <a name="next-steps"></a>Další postup
-Abyste mohli začít, vyhodnocení zásobník Azure, je nutné připravit hostitele development kit počítač serveru a potom [nainstalovat ASDK](asdk-deploy.md). Potom můžete přihlásit k portálů správce a uživatele a začít používat Azure zásobníku.
+Abyste mohli začít, vyhodnocení zásobník Azure, je nutné připravit hostitele development kit počítač serveru a potom [nainstalovat ASDK](asdk-install.md). Potom můžete přihlásit k portálů správce a uživatele a začít používat Azure zásobníku.

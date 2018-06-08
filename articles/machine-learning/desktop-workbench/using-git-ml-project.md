@@ -7,14 +7,16 @@ ms.author: haining
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 6d244e990552ac4899361360efb44be140b06fe8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 134e02f976f1ed0084e24ddbda06ba70b237edad
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833236"
 ---
 # <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>Použít úložiště Git s projektem Machine Learning Workbench
 Zjistěte, jak Azure Machine Learning Workbench využívá Git k poskytování správy verzí a zajistěte reprodukovatelnosti v experimentu vědecké účely data. Zjistěte, jak přidružit projektu cloudové úložiště Git (úložiště).

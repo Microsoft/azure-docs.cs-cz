@@ -37,6 +37,8 @@
           href: tutorial-nodejs-mongodb-app.md
         - name: Vlastní kontejner Pythonu s PostgreSQL
           href: tutorial-docker-python-postgresql-app.md
+    - name: Vícekontejnerová aplikace
+      href: tutorial-multi-container-app.md
     - name: Vlastní image Dockeru
       href: tutorial-custom-docker-image.md
     - name: Mapování vlastní domény
@@ -44,7 +46,7 @@
     - name: Vytvoření vazby certifikátu SSL
       href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Přidání sítě CDN
-      href: ../../cdn/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Ověřování uživatelů
       href: tutorial-auth-aad.md
 - name: Ukázky
@@ -129,6 +131,8 @@
           href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Monitorování aplikace
       items:
+        - name: Připojení k aplikaci přes SSH
+          href: app-service-linux-ssh-support.md
         - name: Kvóty a výstrahy
           href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Povolení protokolů

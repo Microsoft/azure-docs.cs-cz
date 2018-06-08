@@ -39,7 +39,9 @@
   items:
     - name: Nasazení
       items:
-        - name: Nasazení skupin více kontejnerů
+        - name: Skupina více kontejnerů – YAML
+          href: container-instances-multi-container-yaml.md
+        - name: Skupina více kontejnerů – Resource Manager
           href: container-instances-multi-container-group.md
         - name: Nasazení ze služby Azure Container Registry
           href: container-instances-using-azure-container-registry.md

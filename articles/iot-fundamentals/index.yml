@@ -4,20 +4,19 @@ title: Základy Azure IoT
 metadata:
   title: Základy Azure IoT
   description: Azure IoT je kolekce cloudových služeb spravovaných Microsoftem, která připojuje, monitoruje a řídí miliardy prostředků Internetu věcí.
-  services: iot
   author: BryanLa
   manager: timlt
-  ms.service: iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: iot-fundamentals
+  services: iot-fundamentals
   ms.topic: landing-page
-  ms.date: 04/20/2018
+  ms.date: 05/18/2018
   ms.author: bryanla
-  ms.openlocfilehash: 0a5f1d482b0298ddd65746783e3744728b1a5da5
-  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.openlocfilehash: 32db74234f05fcf76c8ccfe18ce295fd30a15b58
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/16/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34631152"
 abstract:
   description: Vítejte v tématu Microsoft Azure a internet věcí (IoT). Azure IoT je komplexní kolekce služeb a řešení navržených k tomu, aby vám pomohly vytvářet kompletní aplikace IoT v Azure. Azure IoT nabízí širokou škálu možností a nástrojů, které jsou přizpůsobené potřebám vašeho oboru a firemním prostředkům a dovednostem, od plně hostovaných a spravovaných řešení SaaS (Software as a Service) a specializovaných nabídek PaaS (Platform as a Service) až po technologie pro sestavování inteligentních hraničních zařízení.
 sections:
@@ -29,7 +28,7 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">Další informace o vytvoření nové aplikace Azure IoT Central</a>
-    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">Postup při nasazení akcelerátoru řešení vzdáleného monitorování</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">Postup při nasazení akcelerátoru řešení vzdáleného monitorování</a>
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">Vytvoření centra IoT a připojení vašeho prvního simulovaného zařízení do Azure (Node.js)</a>
     - html: <a href="/azure/iot-edge/quickstart-linux">Nasazení prvního modulu IoT Edge a zpracování dat v simulovaném zařízení se systémem Windows, Linux nebo Mac</a>
     - html: <a href="/azure/azure-maps/quick-demo-map-app">Spuštění aplikace hledání v mapách s využitím Azure Mapa</a>

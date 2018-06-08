@@ -13,6 +13,8 @@
       href: /azure/virtual-machines/linux/cloudfoundry-get-started
     - name: Nasazení CF OMS Nozzle
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: Integrace Cloud Foundry s Azure
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

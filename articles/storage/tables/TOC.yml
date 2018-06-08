@@ -1,0 +1,69 @@
+- name: Dokumentace ke službě Azure Table Storage
+  items:
+    - name: Přehled služby Azure Table Storage
+      href: table-storage-overview.md
+    - name: Volba Table Storage nebo Table API
+      href: /azure/cosmos-db/table-support
+      maintainContext: true
+- name: Šablony Rychlý start
+  items:
+    - name: vytvořit účet úložiště
+      href: /azure/storage/common/storage-quickstart-create-account
+      maintainContext: true
+    - name: Vytvoření tabulky na webu Azure Portal
+      href: table-storage-quickstart-portal.md
+- name: Ukázky
+  items:
+    - name: .NET
+      href: /azure/cosmos-db/table-storage-how-to-use-dotnet
+      maintainContext: true
+    - name: 'F#'
+      href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+      maintainContext: true
+    - name: Java
+      href: /azure/cosmos-db/table-storage-how-to-use-java
+      maintainContext: true
+    - name: Node.js
+      href: /azure/cosmos-db/table-storage-how-to-use-nodejs
+      maintainContext: true
+    - name: C++
+      href: /azure/cosmos-db/table-storage-how-to-use-c-plus
+      maintainContext: true
+    - name: PHP
+      href: /azure/cosmos-db/table-storage-how-to-use-php
+      maintainContext: true
+    - name: Python
+      href: /azure/cosmos-db/table-storage-how-to-use-python
+      maintainContext: true
+    - name: Ruby
+      href: /azure/cosmos-db/table-storage-how-to-use-ruby
+      maintainContext: true
+    - name: PowerShell
+      href: /azure/storage/tables/table-storage-how-to-use-powershell
+      maintainContext: true
+- name: Koncepty
+  items:
+    - name: Návrh škálovatelných a výkonných tabulek
+      href: table-storage-design.md
+    - name: Pokyny pro návrh tabulek
+      href: table-storage-design-guidelines.md
+    - name: Návrh pro dotazování
+      href: table-storage-design-for-query.md
+    - name: Návrh pro úpravu dat
+      href: table-storage-design-for-modification.md
+    - name: Šifrování dat tabulky
+      href: table-storage-design-encrypt-data.md
+    - name: Modelování relací
+      href: table-storage-design-modeling.md
+    - name: Způsoby návrhu tabulek
+      href: table-storage-design-patterns.md
+- name: Návody
+  items:
+    - name: Použití emulátoru úložiště
+      href: /azure/storage/common/storage-use-emulator
+      maintainContext: true
+- name: Zdroje a prostředky
+  items:
+    - name: Rozhraní REST API služby Table Storage
+      href: 'https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api'
+      maintainContext: true

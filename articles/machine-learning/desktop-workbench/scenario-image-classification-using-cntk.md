@@ -8,15 +8,16 @@ ms.author: pabuehle
 manager: mwinkle
 ms.reviewer: marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 8bf5cd802198cba48a99c029d0c75c25dd5f6d84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5ff6502b0ed023f6fe8a9475a0e81991a9918cc5
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31607858"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850167"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Pomocí Azure Machine Learning Workbench klasifikace bitové kopie
 
@@ -243,15 +244,20 @@ Na snímku obrazovky první upřesnění DNN vede k lepší přesnostmi než SVM
 
 
 ### <a name="parameter-tuning"></a>Parametr ladění
+
 Stejně jako u většina strojového učení projekty, získávání dobré výsledky pro nová datová sada vyžaduje pečlivě parametr ladění a také vyhodnocení různých rozhodnutí. Abyste tyto úlohy jsou zadány všechny důležité parametry a krátký vysvětlení dostupné na jednom místě: `PARAMETERS.py` souboru.
 
 Mezi nejslibnějším cesty pro vylepšení patří:
 
 - Data quality: Zkontrolujte učení a testovací sady mají vysoké kvality. To znamená, jsou obrázky správně opatřen poznámkami, nejednoznačný bitové kopie odebrat (například oblečení položky s rozděluje a tečky) a atributy se vzájemně vylučují (to znamená, vybrali tak, aby každý image patří do přesně jeden atribut).
+
 - Pokud je objekt-vás zajímají malá v bitové kopii jsou známé přístupy klasifikace bitové kopie nepracuje správně. V takových případech zvažte použití přístup zjišťování objektu, jak je popsáno v tomto [kurzu](https://github.com/Azure/ObjectDetectionUsingCntk).
 - Upřesnění DNN: pravděpodobně nejdůležitější parametr získat správné je rychlost učení `rf_lrPerMb`. Pokud přesnost na školení nastavený (první obrázek v část 2) se nenachází v blízkosti 0 – 5 %, pravděpodobně je z důvodu nesprávnou hodnotu rychlost učení. Ostatní parametry počínaje `rf_` méně důležité. Chyba školení by měl obvykle snížení exponenciálnímu a být blížící se 0 % po školení.
+
 - Vstupní řešení: výchozí rozlišení obrázku je 224 x 224 pixelů. Pomocí vyšší rozlišení obrázku (parametr: `rf_inputResoluton`), například 448 x 448 nebo 896 x 896 pixelů často významné zlepšuje přesnost, ale zpomaluje DNN vylepšení. **Pomocí vyšší rozlišení obrázku je téměř oběd zdarma a téměř vždy zvyšuje přesnost**.
+
 - Přizpůsobování přečerpání DNN: Vyhněte se velké mezery mezi školení a testovací přesnost během DNN upřesnění (první obrázek v část 2). Během této poměrně lze snížit pomocí Odpadlík sazby `rf_dropoutRate` 0,5 nebo více a zvýšením váhy regularizer `rf_l2RegWeight`. Míra vysoké Odpadlík může být obzvláště užitečné, pokud rozlišení DNN vstupní obrázku je vysoká.
+
 - Zkuste použít hlubší DNNs změnou `rf_pretrainedModelFilename` z `ResNet_18.model` buď `ResNet_34.model` nebo `ResNet_50.model`. Model Resnet – 50 není pouze hlubší, ale jeho výstup předposlední vrstvy je velikost 2048 obtékaných objektů (vs. 512 obtékaných objektů ResNet 18 a ResNet 34 modely). Tato vyšší dimenze může být obzvláště užitečné, když cvičení třídění SVM.
 
 ## <a name="part-3---custom-dataset"></a>Část 3 - vlastní datové sady

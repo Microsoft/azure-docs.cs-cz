@@ -10,6 +10,8 @@
       href: cache-web-app-howto.md
     - name: Vytvoření aplikace v .NET
       href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Vytvoření aplikace v .NET Core
+      href: cache-dotnet-core-quickstart.md
     - name: Vytvoření aplikace v Node.js
       href: cache-nodejs-get-started.md
     - name: Vytvoření aplikace v Javě
@@ -48,6 +50,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Distribuovaná mezipaměť pomocí clusterování
           href: cache-how-to-premium-clustering.md
+        - name: Migrace ze služby Managed Cache Service
+          href: cache-migrate-to-redis.md
     - name: Automatizace
       items:
         - name: Nasazení a správa s využitím Azure PowerShellu

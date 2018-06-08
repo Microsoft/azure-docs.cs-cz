@@ -8,17 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830533"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Datové vědy virtuálního počítače na základě analýzy týmu a prostředí AI 
 [Datové vědy virtuální počítač](overview.md) (DSVM) poskytuje bohaté prostředí v cloudu Azure s předem připravené software pro analýzu AI a data. Tradičně DSVM byla použita jako jednotlivé analytics plochy a jednotlivých datových vědců získat produktivitu s tento sdílený představu o jejich prostředí předdefinovaných analytics. Jak velké analytics týmy naplánovat jejich prostředí analytics jejich datových vědců a vývojářů AI, jednu opakující motivů je pro sdílené analytics vývoj a experimentování infrastrukturu, která je spravovaných podle organizace IT zásad který také usnadňuje spolupráce a konzistence napříč celou datové vědy / analytics týmy. Taky umožňuje sdílené infrastruktury IT, abyste mohli lépe využívat analytics prostředí. Vědecké zpracování týmu dat / infrastruktury analýzy se také označuje některé organizace jako "Izolovaného Analytics" datových vědců a rychle pochopit dat, spusťte experimenty, ověřte předpoklad, sestavení prediktivní modely bezpečným způsobem, který umožňuje bez dopadu na produkční prostředí přitom má přístup k různým datovým prostředkům. 

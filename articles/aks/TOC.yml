@@ -63,6 +63,8 @@
           href: internal-lb.md
         - name: Ingress a protokol TLS
           href: ingress.md
+        - name: Výchozí přenos
+          href: egress.md
         - name: Směrování aplikace HTTP
           href: http-application-routing.md
     - name: Zabezpečení a ověřování

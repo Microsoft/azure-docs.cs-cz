@@ -25,9 +25,11 @@
         - name: 2. Contoso –Nastavení infrastruktury Azure
           href: contoso-migration-infrastructure.md
         - name: 3. Contoso – Posouzení vhodnosti místních prostředků k migraci do Azure
-          href: migrate-scenarios-assessment.md
-        - name: 4. Contoso – Změna hostitele pro virtuální počítače Azure a spravovanou instanci Azure SQL
-          href: migrate-scenarios-lift-and-shift.md
+          href: contoso-migration-assessment.md
+        - name: 4. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a spravovanou instanci Azure SQL
+          href: contoso-migration-rehost-vm-sql-managed-instance.md
+        - name: 5. Contoso – Změna hostitele aplikace pro virtuální počítače Azure
+          href: contoso-migration-rehost-vm.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md
     - name: Seskupení počítačů
@@ -48,3 +50,5 @@
       href: 'https://azure.microsoft.com/migrate'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Nejčastější dotazy
+      href: resources-faq.md

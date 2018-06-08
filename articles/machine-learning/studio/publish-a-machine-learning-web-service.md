@@ -9,17 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 73a3e9c6-00d0-41d4-8cf1-2ec87713867e
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 3ce4104040e90a4740442d7692b3bf4a0789bde0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 86e018a3f8eedecbb60614b0f1226b088ebb18fc
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "30185199"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837928"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Nasazení webové služby Azure Machine Learning
 Azure Machine Learning můžete vytvářet, testovat a nasazovat řešení prediktivní analýzy.
