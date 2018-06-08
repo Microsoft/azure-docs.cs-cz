@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 6610777ff4ad3a04f9d0d5b47f402aea7db59d9b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 68e2f72dfd8cc58d42263f4b6378d89304aaaa4d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834188"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning
 Excel usnadňuje volání webové služby přímo bez nutnosti psaní jakéhokoli kódu.

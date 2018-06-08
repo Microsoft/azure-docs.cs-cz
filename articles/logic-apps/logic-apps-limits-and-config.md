@@ -2,23 +2,20 @@
 title: Omezení a konfigurace – Azure Logic Apps | Microsoft Docs
 description: Služba omezení a hodnoty konfigurace pro Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
 author: ecfan
 manager: cfowler
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/14/2018
 ms.author: estfan
-ms.openlocfilehash: 8c2ac4b8f55d25d5d3fcfdd6a9bcb6f6c8cfc201
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.topic: article
+ms.date: 05/30/2018
+ms.service: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 713312725c92c6c78241e1cdcaa06280282c7777
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831842"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci pro Azure Logic Apps
 
@@ -65,7 +62,7 @@ Zde jsou limity pro spuštění aplikace logiky jeden:
 
 ### <a name="change-run-duration-and-storage-retention"></a>Změna spustit uchovávání doba trvání a ukládání
 
-Tuto mez můžete změnit na hodnotu 7 dní až 90 dní. Nicméně, delší než maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+Tuto mez můžete změnit na hodnotu 7 dní až 90 dní. Přejít nad maximální limit [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 1. Na portálu Azure, v nabídce aplikace logiky, vyberte **nastavení pracovních postupů**. 
 
@@ -83,7 +80,7 @@ Zde jsou limity pro spuštění aplikace logiky jeden:
 | ---- | ----- | ----- | 
 | Dokud iterací | 5 000 | | 
 | Foreach – položky | 100,000 | Můžete použít [dotaz akce](../connectors/connectors-native-query.md) vyfiltrujete větší pole, podle potřeby. | 
-| ForEach paralelismus | 50 | Výchozí hodnota je 20. <p>Konkrétní úroveň paralelního zpracování v smyčka typu ForEach, nastavit `runtimeConfiguration` vlastnost `foreach` akce. <p>Postupně spustit smyčka typu ForEach, nastavte `operationOptions` vlastnost "Sekvenční" v `foreach` akce. | 
+| ForEach paralelismus | 50 | Výchozí hodnota je 20. <p>Chcete-li změnit toto výchozí úroveň v smyčka typu ForEach, nastavte `runtimeConfiguration` vlastnost `foreach` akce. <p>Postupně spustit smyčka typu ForEach, nastavte `operationOptions` vlastnost "Sekvenční" v `foreach` akce. | 
 | SplitOn položky | 100,000 | | 
 |||| 
 
@@ -95,14 +92,14 @@ Zde jsou limity pro spuštění aplikace logiky jeden:
 
 | Název | Omezení | Poznámky | 
 | ----- | ----- | ----- | 
-| Akce spuštěních za 5 minut | 100,000 | Pokud chcete zvýšit limit než 300 000, můžete spustit aplikace logiky `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režimu vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení mezi více aplikacemi v případě potřeby. | 
+| Akce spuštěních za 5 minut | 100,000 | Pokud chcete zvýšit limit než 300 000, můžete spustit aplikace logiky `High Throughput` režimu. Ke konfiguraci režimu vysoké propustnosti, v části `runtimeConfiguration` prostředku pracovního postupu, nastavte `operationOptions` vlastnost `OptimizedForHighThroughput`. <p>**Poznámka:**: režimu vysoké propustnosti je ve verzi preview. Navíc můžete distribuovat zatížení napříč více než jednu aplikaci podle potřeby. | 
 | Souběžných volání odchozí akce | ~2,500 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 | Koncový bod modulu runtime: souběžných příchozí volání | ~1,000 | Snižte počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
-| Modul runtime koncový bod: počet volání za 5 minut pro čtení  | 60,000 | Můžete rozdělit zatížení mezi více aplikacemi podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 |Můžete rozdělit zatížení mezi více aplikacemi podle potřeby. | 
+| Modul runtime koncový bod: počet volání za 5 minut pro čtení  | 60,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
+| Koncový bod modulu runtime: vyvolat volání za 5 minut| 45,000 | Můžete rozdělit zatížení mezi více než jednu aplikaci, podle potřeby. | 
 |||| 
 
-Překročení těchto mezních hodnot v normálním zpracování nebo spuštění zátěžové testování, které může tato omezení překročí [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
+Přejděte výše těchto mezních hodnot v normálním zpracování nebo spuštění testování zatížení, které může přejděte výše tyto limity [obraťte se na tým Logic Apps](mailto://logicappsemail@microsoft.com) nápovědu k vašim požadavkům.
 
 <a name="request-limits"></a>
 
@@ -125,7 +122,7 @@ Některé operace konektor asynchronní volání nebo naslouchat žádostem webh
 | Název | Omezení | Poznámky | 
 | ---- | ----- | ----- | 
 | Velikost zpráv | 100 MB | Chcete-li toto omezení obejít, přečtěte si téma [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). Ale některé konektory a rozhraní API nemusí podporovat rozdělování nebo dokonce výchozí limit. | 
-| Velikost zprávy s rozdělování | 1 GB | Toto omezení se vztahuje na akce, které nativně podporují rozdělování, nebo můžete rozdělování podpora povolená ve své konfiguraci modulu runtime. Další informace najdete v tématu [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). | 
+| Velikost zprávy s rozdělování | 1 GB | Toto omezení se vztahuje na akce, které nativně podporují rozdělování nebo umožňují povolit rozdělování ve své konfiguraci modulu runtime. Další informace najdete v tématu [zpracování velkých zprávy s rozdělování](../logic-apps/logic-apps-handle-large-messages.md). | 
 | Limit vyhodnocení výrazu | 131 072 znaků | `@concat()`, `@base64()`, `@string()` Výrazy nesmí být delší než toto omezení. | 
 |||| 
 
@@ -158,9 +155,11 @@ Tady jsou limity pro vlastní konektory, které můžete vytvořit z webových r
 
 ### <a name="artifact-limits-per-integration-account"></a>Omezení artefaktů každý účet integrace
 
-Tady jsou omezení počtu artefaktů pro každý účet integrace. Další informace najdete v tématu [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
+Tady jsou omezení počtu artefaktů pro každý účet integrace. Další informace najdete v tématu [ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 *Úroveň Free*
+
+Úroveň free používejte jenom pro scénáře nahodilého, není produkčních scénářích. Tato úroveň omezuje propustnost a využití a nemá žádné smlouvu úrovně služeb (SLA).
 
 | Artefaktů | Omezení | Poznámky | 
 |----------|-------|-------| 
@@ -207,9 +206,9 @@ Tady jsou omezení počtu artefaktů pro každý účet integrace. Další infor
 | ---- | ----- | ----- | 
 | Schéma | 8 MB | Pokud chcete nahrát soubory větší než 2 MB, použijte [identifikátor URI objektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Mapu (soubor XSLT) | 2 MB | | 
-| Modul runtime koncový bod: počet volání za 5 minut pro čtení | 60,000 | Můžete distribuovat zatížení napříč více účtů podle potřeby. | 
-| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Můžete distribuovat zatížení napříč více účtů podle potřeby. | 
-| Modul runtime koncový bod: počet volání za 5 minut pro sledování | 45,000 | Můžete distribuovat zatížení napříč více účtů podle potřeby. | 
+| Modul runtime koncový bod: počet volání za 5 minut pro čtení | 60,000 | Můžete distribuovat zatížení napříč více než jeden účet podle potřeby. | 
+| Koncový bod modulu runtime: vyvolat volání za 5 minut | 45,000 | Můžete distribuovat zatížení napříč více než jeden účet podle potřeby. | 
+| Modul runtime koncový bod: počet volání za 5 minut pro sledování | 45,000 | Můžete distribuovat zatížení napříč více než jeden účet podle potřeby. | 
 | Koncový bod modulu runtime: blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo zkrátit dobu trvání podle potřeby. | 
 ||||  
 
@@ -232,8 +231,7 @@ Zde jsou omezení, která se týkají B2B protokoly:
 
 ### <a name="azure-logic-apps-service"></a>Služba Azure Logic Apps
 
-Všechny aplikace logiky v oblasti, použijte stejný rozsah IP adres.
-Volání, které přímo díky logic apps s [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) nebo jiné požadavky HTTP pocházet z IP adresy v tomto seznamu. 
+Všechny aplikace logiky v oblasti použít stejné rozsahy IP adres. Pro podporu volání, které přímo díky logic apps s [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)a další požadavky HTTP, nastavením vaše konfigurace brány firewall tak, že obsahují tyto odchozí a příchozí IP adresy, na základě na logic apps, kde existují:
 
 | Oblasti aplikace logiky | Odchozí IP |
 |-------------------|-------------|
@@ -264,7 +262,7 @@ Volání, které přímo díky logic apps s [HTTP](../connectors/connectors-nati
 | | |
 
 | Oblasti aplikace logiky | Příchozí IP |
-|-------------------|-------------|
+|-------------------|------------|
 | Austrálie – východ | 3.75.153.66, 104.210.89.222, 104.210.89.244 |
 | Austrálie – jihovýchod | 13.73.115.153, 40.115.78.70, 40.115.78.237 |
 | Brazílie – jih | 191.235.86.199, 191.235.95.229, 191.235.94.220 |
@@ -293,37 +291,41 @@ Volání, které přímo díky logic apps s [HTTP](../connectors/connectors-nati
 
 ### <a name="connectors"></a>Konektory
 
-Volání, [konektory](../connectors/apis-list.md) zkontrolujte pocházet z IP adresy v tomto seznamu.
+Pro podporu volání, [konektory](../connectors/apis-list.md) zpřístupnění, nastavením vaše konfigurace brány firewall tak, že obsahují tyto odchozí IP adresy podle oblasti, kde existují logic apps.
 
-| Oblasti aplikace logiky | Odchozí IP |
-|-------------------|-------------|
-| Austrálie – východ | 40.126.251.213 |
-| Austrálie – jihovýchod | 40.127.80.34 |
-| Brazílie – jih | 191.232.38.129 |
-| Střední Kanada | 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 |
-| Východní Kanada | 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 |
-| Střed Indie | 104.211.98.164 |
-| Střed USA | 40.122.49.51 |
-| Východní Asie | 23.99.116.181 |
-| Východ USA | 191.237.41.52 |
-| Východní USA 2 | 104.208.233.100 |
-| Japonsko – východ | 40.115.186.96 |
-| Japonsko – západ | 40.74.130.77 |
-| Střed USA – sever | 65.52.218.230 |
-| Severní Evropa | 104.45.93.9 |
-| Střed USA – jih | 104.214.70.191 |
-| Indie – jih | 104.211.227.225 |
-| Jihovýchodní Asie | 13.76.231.68 |
-| Západní Evropa | 40.115.50.13 |
-| Indie – západ | 104.211.161.203 |
-| Západní USA | 104.40.51.248 |
-| Spojené království – jih | 51.140.80.51 |
-| Spojené království – západ | 51.141.47.105 |
+> [!IMPORTANT]
+>
+> Pokud máte existující konfigurace, aktualizujte je **co nejdříve před 1. září 2018** vždy zahrnovat a shodují s IP adresou v tomto seznamu pro oblasti, kde existují logic apps. 
+
+| Oblasti aplikace logiky | Odchozí IP | 
+|-------------------|-------------|  
+| Austrálie – východ | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
+| Austrálie – jihovýchod | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
+| Brazílie – jih | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
+| Střední Kanada | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
+| Východní Kanada | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Střed Indie | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
+| Střed USA | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
+| Východní Asie | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
+| Východ USA | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 | 
+| Východní USA 2 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100 | 
+| Japonsko – východ | 13.78.108.0 - 13.78.108.15, 13.71.153.19, 40.115.186.96 | 
+| Japonsko – západ | 40.74.100.224 - 40.74.100.239, 104.215.61.248, 40.74.130.77 | 
+| Střed USA – sever | 52.162.107.160 - 52.162.107.175, 52.162.242.161, 65.52.218.230 | 
+| Severní Evropa | 13.69.227.208 - 13.69.227.223, 52.178.150.68, 104.45.93.9 | 
+| Střed USA – jih | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
+| Indie – jih | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
+| Jihovýchodní Asie | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
+| Západní střed USA | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| Západní Evropa | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
+| Indie – západ | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
+| Západní USA | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
+| Západní USA 2 | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
+| Spojené království – jih | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
+| Spojené království – západ | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>Další postup  
 
-* [Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
-* [Běžných příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Video: Automatizovat firemní procesy s Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
-* [Video: Integrovat systémy s Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
+* Zjistěte, jak [vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
+* Další informace o [běžných příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md)

@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 555672df5b0b86858d460ff7606bc6ca23f4f103
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834351"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Vytváření vlastních modulů R ve službě Azure Machine Learning
 Toto téma popisuje, jak vytvořit a nasadit vlastní modul R v Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k definovat. Ukazuje, jak vytvořit soubory, které definují modul a jak registrace modulu pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy používané v definici vlastní modul jsou pak popsány podrobněji. Postup použití pomocného funkce a soubory a několik výstupů také popsané. 
@@ -285,7 +287,7 @@ Parametr modulu je definován pomocí **Arg** podřízený element **argumenty**
   
   * **allowedTypes** -filtry typy sloupci, ze kterého můžete vybrat. Platné hodnoty patří: 
     
-    * číselné
+    * Čísla
     * Logická hodnota
     * Kategorické
     * Řetězec

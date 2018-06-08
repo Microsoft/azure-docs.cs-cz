@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 1552fbe66f7bad219d8aea8a3f208b0fe69cdf2b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716053"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839584"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analýza události a vizualizace s analýzy protokolů
 
@@ -54,19 +54,19 @@ Na obrázku výše je domovské stránce řešení Service Fabric analýzy. Toto
 * [Spolehlivé služby programovací model události](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Kromě provozní kanál, může shromáždit podrobnější systémové události [aktualizace konfigurace vaší rozšíření diagnostiky](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)
+>Kromě provozní kanál, může shromáždit podrobnější systémové události [aktualizace konfigurace vaší rozšíření diagnostiky](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit události prostředků infrastruktury služby včetně akce na uzlech
 
 1. Na stránce služby Fabric Analytics klikněte na graf pro **události služby Fabric**.
 
-    ![Provozní kanál OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
+    ![Provozní kanál OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. Klikněte na tlačítko tabulky k zobrazení událostí, v seznamu. Jakmile se v tomto poli se zobrazí všechny události systému, které byly shromážděny. Pro odkaz jedná se o z WADServiceFabricSystemEventsTable v účtu úložiště Azure a podobně reliable services a aktéři události, které se zobrazí vedle jsou z těchto příslušných tabulek.
+2. Klikněte na tlačítko **seznamu** k zobrazení událostí, v seznamu. Jakmile se v tomto poli se zobrazí všechny události systému, které byly shromážděny. Pro odkaz jedná se o z WADServiceFabricSystemEventsTable v účtu úložiště Azure a podobně reliable services a aktéři události, které se zobrazí vedle jsou z těchto příslušných tabulek.
     
-    ![Provozní kanál OMS dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
+    ![Provozní kanál OMS dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
-Můžete případně klikněte na tlačítko lupy na levé straně a použít Kusto dotazovací jazyk najít, co hledáte. Například pokud chcete vyhledat všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí použít níže se nacházejí v [reference pro provozní kanál události](service-fabric-diagnostics-event-generation-operational.md)
+Můžete případně klikněte na tlačítko lupy na levé straně a použít Kusto dotazovací jazyk najít, co hledáte. Například pokud chcete vyhledat všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí použít níže se nacházejí v [reference pro provozní kanál události](service-fabric-diagnostics-event-generation-operational.md).
 
 ```kusto
 ServiceFabricOperationalEvent
@@ -79,13 +79,13 @@ Můžete zadat dotaz na mnoho další pole, jako je například konkrétním uzl
 
 1. Na stránce služby Fabric Analytics klikněte na graf pro **spolehlivé služby**.
 
-    ![OMS SF řešení spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+    ![OMS SF řešení spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. Klikněte na tlačítko tabulky k zobrazení událostí, v seznamu. Zde můžete zobrazit události z spolehlivé služby. Různé událostí pro můžete zobrazit, když runasync služby je spuštěno a dokončeno, což obvykle se odehrává na nasazení a upgrady. 
+2. Klikněte na tlačítko **seznamu** k zobrazení událostí, v seznamu. Zde můžete zobrazit události z spolehlivé služby. Různé událostí pro můžete zobrazit, když runasync služby je spuštěno a dokončeno, což obvykle se odehrává na nasazení a upgrady. 
 
-    ![OMS dotaz spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+    ![OMS dotaz spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
-Spolehlivé objektu actor události lze zobrazit podobným způsobem. Ke konfiguraci podrobnější události reliable actors, budete muset změnit `scheduledTransferKeywordFilter` v konfiguraci rozšíření diagnostiky (zobrazené dole). Podrobnosti na hodnoty pro tyto jsou v [spolehlivé aktéři události odkaz](service-fabric-reliable-actors-diagnostics.md#keywords)
+Spolehlivé objektu actor události lze zobrazit podobným způsobem. Ke konfiguraci podrobnější události reliable actors, budete muset změnit `scheduledTransferKeywordFilter` v konfiguraci rozšíření diagnostiky (zobrazené dole). Podrobnosti na hodnoty pro tyto jsou v [spolehlivé aktéři události odkaz](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [
@@ -99,9 +99,9 @@ Spolehlivé objektu actor události lze zobrazit podobným způsobem. Ke konfigu
                 },
 ```
 
-Dotazovací jazyk Kusto je výkonný. Jiné cenné dotaz, který můžete spustit je a zjistěte, uzlů, které generují nejvíce událostem. Dotaz na tomto snímku obrazovky zobrazí agregovat pomocí konkrétní službu a uzel událostí spolehlivé služby
+Dotazovací jazyk Kusto je výkonný. Jiné cenné dotaz, který můžete spustit je a zjistěte, uzlů, které generují nejvíce událostem. Dotaz na tomto snímku obrazovky zobrazuje provozní události Service Fabric agregovat pomocí konkrétní službu a uzel.
 
-![Události OMS dotaz na uzel](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
+![Události OMS dotaz na uzel](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Další postup
 

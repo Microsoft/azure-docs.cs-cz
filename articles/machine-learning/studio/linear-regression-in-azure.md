@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 2ea5a2720542217d3bb6a0a2b1309312fb74a953
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836221"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Používání lineární regrese ve službě Azure Machine Learning
 > *Kate Baroni* a *Ben Boatman* jsou podnikové řešení architekty ve společnosti Microsoft Data Statistika špičkové Center. V tomto článku popisují jejich prostředí migrace sady analysis existující regrese na cloudové řešení pomocí Azure Machine Learning. 
@@ -81,7 +83,7 @@ Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výk
 | --- |:---:|:---:|:---:|
 | Hodnota s popiskem |Skutečné hodnoty (číslice) |stejné |stejné |
 | Student |Excel -> datové analýzy -> regrese |Lineární regrese. |Lineární regrese |
-| Možnosti student |neuvedeno |Výchozí hodnoty |obyčejnou nejmenší čtverce<br />L2 = 0,005 |
+| Možnosti student |neuvedeno |Výchozí nastavení |obyčejnou nejmenší čtverce<br />L2 = 0,005 |
 | Datové sady |26 řádky, funkce 3, 1 popisek. Všechny číselný. |stejné |stejné |
 | Rozdělení: Train |Excel trénink na první 18 řádky, otestovali na poslední 8 řádky. |stejné |stejné |
 | Rozdělení: Test |Vzorec regrese použitý pro poslední 8 řádky v aplikaci Excel |stejné |stejné |

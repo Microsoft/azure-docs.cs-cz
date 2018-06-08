@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4cef685d71a64f8a6681a3449e4fe0b67899c67c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2e5a7cab5c9db0c13ca0c0986c18c86adf675562
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808600"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850282"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Nejčastější dotazy pro Azure Active Directory Connect
 
@@ -121,7 +121,11 @@ Proces automatického upgradu vždy nejprve vytvoří, jestli má tento nárok p
 V závislosti na velikosti prostředí proces může trvat několik hodin a při upgradu se stane, bude provedena žádná synchronizace mezi Windows Server AD a Azure AD.
 
 **Otázka: zobrazila e-mailu zobrazuje oznámení, který již nefunguje Moje automatický upgrade a potřebuji nainstalovat novou verzi. Proč je potřeba to udělat?**</br>
-Poslední rok, na verzi služby Azure AD Connect, který za určitých okolností může mít zakázán funkci automatického upgradu na vašem serveru byl vydán. Tento problém byl opraven v Azure AD Connect verze 1.1.750.0. Zákazníci, kteří mohou mít vliv tento problém je třeba ručně upgradovat na nejnovější verzi služby Azure AD Connect zmírnit problém. Postup při ručním upgradu, musíte stáhnout a spustit nejnovější verzi souboru AADConnect.msi.
+Poslední rok, na verzi služby Azure AD Connect, který za určitých okolností může mít zakázán funkci automatického upgradu na vašem serveru byl vydán. Tento problém byl opraven v Azure AD Connect verze 1.1.750.0. Zákazníci, kteří mohou mít vliv tento problém, musíte spustit skript prostředí PowerShell to opravit nebo ručně upgradovat na nejnovější verzi služby Azure AD Connect zmírnit problém. 
+
+Chcete-li spustit skript prostředí PowerShell, stáhněte skript z [zde](https://aka.ms/repairaadconnect) a spusťte skript na serveru služby AADConnect v okně prostředí PowerShell pro správu. [Toto je krátké video](https://aka.ms/repairaadcau) , podrobně vysvětluje, jak to provést.
+
+Postup při ručním upgradu, musíte stáhnout a spustit nejnovější verzi souboru AADConnect.msi.
  
 -  Pokud vaše aktuální verze je starší než 1.1.750.0, musíte provést upgrade na nejnovější verzi [který můžete stáhnout zde](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
 - Pokud vaše verze Azure AD Connect je 1.1.750.0 nebo novější, není nutné provádět žádnou akci zmírnit upgradu problém automaticky, jak jste už na verzi, která má pro tuto opravu. 
@@ -165,7 +169,7 @@ Automatický upgrade je prvním krokem v procesu verze na novější verzi, tak 
 **Otázka: automatický upgrade upgradu AAD Connect Health?**</br>   Ano, upgrade automaticky upgraduje i AAD Connect Health
 
 **Otázka: máte také automatický upgrade AAD Connect servery v pracovní režimu?**</br>   
-Ne, které nelze automatický upgrade server služby Azure AD Connect, který je v pracovním režimu.
+Ano, vám může automatický upgrade server služby Azure AD Connect, který je v pracovním režimu.
 
 **Otázka: Pokud automatický Upgrade selže a server AAD Connect se nespustí, co je třeba udělat?**</br>   
 Ve výjimečných případech se nespustí služba Azure AD Connect po provedení upgradu. V těchto případech restartujte server, které obvykle opravy problému. Pokud služba Azure AD Connect stále nespustí, otevřete lístek podpory. Tady je [odkaz](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/) to vysvětluje, jak to provést. 

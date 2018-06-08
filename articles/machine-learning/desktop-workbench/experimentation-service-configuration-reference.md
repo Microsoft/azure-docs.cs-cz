@@ -7,14 +7,16 @@ ms.author: gokhanu
 manager: haining
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 8ea7e7453ba49b17560b7c2147dd6c71c6c1a7a0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1a4b6b803687b2c433ad94a54f076f23fe63c350
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831308"
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning experimentování služby konfigurační soubory
 

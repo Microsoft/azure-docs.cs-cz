@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/07/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: afd29c83a69742d17e7cadda50c0054133458b68
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1c21c915bc0a83cdafb221a2cd592890577437ee
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736605"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849521"
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Nakonfigurujte zásady podmíněného přístupu na základě zařízení služby Azure Active Directory
 
@@ -68,7 +68,7 @@ V zásadách podmíněného přístupu můžete vybrat **vyžadují zařízení 
 
 ![Podmínek založených na zařízení](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Toto nastavení platí pouze pro zařízení s Windows 10, které jsou připojeny k místní službě Azure AD. Tato zařízení lze zaregistrovat pouze s Azure AD pomocí připojení k hybridní Azure AD, která je [automatizované procesu](device-management-hybrid-azuread-joined-devices-setup.md) zaregistrované zařízení Windows 10. 
+Toto nastavení platí pouze pro zařízení s Windows 10, které jsou připojeny k místní AD. Tato zařízení lze zaregistrovat pouze s Azure AD pomocí připojení k hybridní Azure AD, která je [automatizované procesu](device-management-hybrid-azuread-joined-devices-setup.md) zaregistrované zařízení Windows 10. 
 
 ![Podmínek založených na zařízení](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: c1b04968f83271006240fc0e099175e9017574ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cea2fb3069ff69130720049c002e19fa14266b9f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831968"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure funkcí jazyka C# referenční informace pro vývojáře
 
@@ -61,7 +62,7 @@ public static class SimpleExample
 } 
 ```
 
-`FunctionName` Atribut určí metodu jako vstupní bod funkce. Název musí být jedinečný v rámci projektu. Šablony projektů často vytvořte metodu s názvem `Run`, ale název metody může být jakýkoli platný C# metoda název.
+`FunctionName` Atribut určí metodu jako vstupní bod funkce. Název musí být jedinečný v rámci projektu, začínat písmenem a obsahovat pouze písmena, číslice, `_` a `-`, až 127 znaků. Šablony projektů často vytvořte metodu s názvem `Run`, ale název metody může být jakýkoli platný C# metoda název.
 
 Aktivační událost atribut určuje typ aktivační události a sváže vstupní data parametru metody. Příklad funkce se aktivuje zprávu fronty a zprávy ve frontě, je předaná metodě v `myQueueItem` parametr.
 
@@ -384,23 +385,7 @@ public static class IBinderExampleMultipleAttributes
 
 ## <a name="triggers-and-bindings"></a>Triggery a vazby 
 
-Následující tabulka uvádí aktivační události a vazba atributy, které jsou k dispozici v projektu knihovny tříd Azure Functions. Všechny atributy jsou v oboru názvů `Microsoft.Azure.WebJobs`.
-
-| Trigger | Vstup | Výstup|
-|------   | ------    | ------  |
-| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)| [Objekt BLOB](functions-bindings-storage-blob.md#input---attributes)| [Objekt BLOB](functions-bindings-storage-blob.md#output---attributes)|
-| [CosmosDBTrigger](functions-bindings-cosmosdb.md#trigger---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#input---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#output---attributes) |
-| [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [Centrum EventHub](functions-bindings-event-hubs.md#output---attributes) |
-| [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||
-| [QueueTrigger](functions-bindings-storage-queue.md#trigger---attributes)|| [Fronty](functions-bindings-storage-queue.md#output---attributes) |
-| [ServiceBusTrigger](functions-bindings-service-bus.md#trigger---attributes)|| [Sběrnice](functions-bindings-service-bus.md#output---attributes) |
-| [TimerTrigger](functions-bindings-timer.md#attributes) | ||
-| |[ApiHubFile](functions-bindings-external-file.md)| [ApiHubFile](functions-bindings-external-file.md)|
-| |[MobileTable](functions-bindings-mobile-apps.md#input---attributes)| [MobileTable](functions-bindings-mobile-apps.md#output---attributes) | 
-| |[Tabulka](functions-bindings-storage-table.md#input---attributes)| [Tabulka](functions-bindings-storage-table.md#output---attributes)  | 
-| ||[NotificationHub](functions-bindings-notification-hubs.md#attributes) |
-| ||[SendGrid](functions-bindings-sendgrid.md#attributes) |
-| ||[Twilio](functions-bindings-twilio.md#attributes)| 
+[!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
 ## <a name="next-steps"></a>Další postup
 

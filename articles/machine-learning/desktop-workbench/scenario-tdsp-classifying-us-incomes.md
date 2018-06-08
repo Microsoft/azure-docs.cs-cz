@@ -9,17 +9,19 @@ editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: 48c88f541f650fac3bdec431f3164138fb0f3205
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832675"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasifikace příjem s projektem tým datové vědy procesu (TDSP)
 

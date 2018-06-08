@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 302049003e9bebe48d70bf800baaa98b951abbeb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 989bf010320501050a37fbf2f0799f50a5a3e2ba
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835769"
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Řešení potíží s retraining webové služby Azure Machine Learning Classic
 ## <a name="retraining-overview"></a>Retraining – přehled

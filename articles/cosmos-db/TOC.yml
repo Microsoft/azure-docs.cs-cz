@@ -162,6 +162,8 @@ items:
                 href: sql-api-python-samples.md
               - name: Ukázky Java
                 href: sql-api-java-samples.md
+              - name: Ukázky Async Java
+                href: sql-api-async-java-samples.md
           - name: Koncepty
             items:
               - name: Zdroje a prostředky
@@ -472,6 +474,8 @@ items:
         href: manage-account-with-powershell.md
       - name: Správa s využitím Průzkumníka služby Azure Storage
         href: storage-explorer.md
+      - name: Zapisovači pro více oblastí
+        href: multi-master-workaround.md
   - name: Zdroje a prostředky
     items:
       - name: Správa s využitím Průzkumníka služby Azure Storage

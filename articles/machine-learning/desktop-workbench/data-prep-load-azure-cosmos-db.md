@@ -7,16 +7,18 @@ ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: d36b394a528dc4bc1b6e0a9e0e5dbde728cbee1b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 20e23f41310b90c62eacb7279ea3da0eec376683
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830686"
 ---
 # <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Připojení k databázi Azure Cosmos jako zdroj dat
 Tento článek obsahuje python ukázka umožňuje připojit k databázi Cosmos v nástroji Azure Machine Learning Workbench.

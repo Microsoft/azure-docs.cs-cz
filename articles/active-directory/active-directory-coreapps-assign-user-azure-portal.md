@@ -12,19 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 06/06/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: 1609942269a0c737239cf4198289fdc44ade2b32
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d7e237e1e9daae3830f9a9943d54bc6bfa90a34c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830822"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory
 Přiřadit uživatele nebo skupiny do podnikové aplikace, musí mít příslušná oprávnění ke správě firemní aplikace a musí být globální správce adresáře.
+
+> [!NOTE]
+> Funkce popsané v tomto článku vyžadují licenci Azure Active Directory Premium P1 nebo Premium P2. Další informace najdete v tématu [Azure Active Directory, na stránce s cenami](https://azure.microsoft.com/pricing/details/active-directory).
+
 > [!NOTE]
 > Pro Microsoft Applications (například aplikace Office 365) pomocí prostředí PowerShell přiřazovat uživatele k podnikové aplikace.
+
 
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Přiřazení přístupu uživatelů k aplikaci podnikové na portálu Azure
 1. Přihlaste se k [portál Azure](https://portal.azure.com) pomocí účtu, který je globální správce adresáře.
@@ -76,7 +82,7 @@ Pokud chcete přiřadit skupinu firemní aplikace, je třeba nahradit `Get-Azure
 
 ### <a name="example"></a>Příklad:
 
-Tento příklad přiřadí uživatele Britta Simon k [Microsoft Analytics síti na pracovišti](https://products.office.com/en-us/business/workplace-analytics) aplikace pomocí prostředí PowerShell.
+Tento příklad přiřadí uživatele Britta Simon k [Microsoft Analytics síti na pracovišti](https://products.office.com/business/workplace-analytics) aplikace pomocí prostředí PowerShell.
 
 1. V prostředí PowerShell přiřaďte odpovídající hodnoty pro proměnné $username, $app_name a $app_role_name. 
 

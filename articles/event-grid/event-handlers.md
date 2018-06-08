@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 06/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24cecdc65c45d5d1ee5443740d9874ccfd74e387
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7c012bdf025a352788aec2d2d70bab33d7914577
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627711"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849538"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí v mřížce událostí Azure
 
@@ -42,6 +42,14 @@ Pokud jako obslužnou rutinu používáte Azure Functions, použijte místo gene
 | [Streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) | Když Event Hubs vytvoří soubor zachycení, odešle událostí mřížky událost do aplikaci funkce. Aplikace načte soubor zachycení a migraci dat do datového skladu. |
 | [Azure Service Bus příklady integrace Azure událostí mřížky](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Událost mřížky odešle zprávy ze tématu Service Bus fungování aplikace a aplikace logiky. |
 
+## <a name="event-hubs"></a>Event Hubs
+
+Event Hubs použijte, pokud vaše řešení získá události rychleji, než může zpracovat události. Vaše aplikace zpracovává události ze služby Event Hubs v jeho vlastní plán. Je možné škálovat událost zpracování pro zpracování příchozí události.
+
+|Titul  |Popis  |
+|---------|---------|
+| [Vlastní události trasy k Azure Event Hubs pomocí rozhraní příkazového řádku Azure a událostí mřížky](custom-event-to-eventhub.md) | Odešle vlastní události do centra událostí pro zpracování jiná aplikace. |
+
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
 Hybridní připojení předávání přes Azure použijte k odesílání událostí do aplikace, které jsou v podnikové síti a nemáte veřejně přístupném koncovém bodu.
@@ -62,7 +70,7 @@ Použití aplikace logiky k automatizaci obchodních procesů pro reagování na
 
 ## <a name="queue-storage"></a>Queue Storage
 
-Používání úložiště Queue přijímat události, které musí být vyžádány.
+Používání úložiště Queue přijímat události, které musí být vyžádány. Queue storage můžete použít, když máte dlouhotrvající proces, který trvá příliš dlouho. Pomocí odesílání událostí do fronty úložiště, můžete načítat aplikace a zpracování události na svůj vlastní plán.
 
 |Titul  |Popis  |
 |---------|---------|

@@ -113,6 +113,8 @@
       href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: Referenční informace
   items:
+    - name: Scénáře automatizace služby Billing
+      href: billing-cost-management-automation-scenarios.md
     - name: Přehled rozhraní API služby Azure Billing
       href: billing-usage-rate-card-overview.md
       items:
@@ -120,7 +122,8 @@
           href: 'https://docs.microsoft.com/rest/api/billing'
         - name: Partnerské řešení – Cloud Cruiser
           href: billing-usage-rate-card-partner-solution-cloudcruiser.md
-    - name: Rozhraní API služby Azure Consumption
+    - name: Přehled rozhraní API služby Azure Consumption
+      href: billing-consumption-api-overview.md
       items:
         - name: Rozhraní REST API služby Azure Consumption
           href: 'https://docs.microsoft.com/rest/api/consumption'

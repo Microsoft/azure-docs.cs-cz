@@ -4,17 +4,19 @@ description: Tento scénář popisuje, jak to provést, distribuované ladění 
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 70baa1160e9f521ac5533eaa15d4a9ab57433a49
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c6eccda4329572a181b6a7e7e3870ace4bfac13b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832743"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Distribuované ladění z hyperparameters pomocí Azure Machine Learning Workbench
 
@@ -107,7 +109,7 @@ V následujících dvou částech ukážeme, jak k dokončení konfigurace vzdá
 
 IP adresa, uživatelské jméno a heslo v DSVM. IP adresa DSVM naleznete v části Přehled DSVM stránky na portálu Azure:
 
-![VIRTUÁLNÍ POČÍTAČ IP](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
+![IP adresa virtuálního počítače](media/scenario-distributed-tuning-of-hyperparameters/vm_ip.png)
 
 #### <a name="configuration-of-spark-cluster"></a>Konfigurace clusteru Spark
 

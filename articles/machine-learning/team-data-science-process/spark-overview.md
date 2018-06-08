@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: a4e1de99-a554-4240-9647-2c6d669593c8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: d7b4a87b72349375df71a5dd47c2bb544f3b4e3b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: f15596bbd8a9b8bab96eeae738b63df934620648
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838489"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Přehled vědecké zpracování dat pomocí Spark v Azure HDInsight
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]

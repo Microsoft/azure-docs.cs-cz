@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 21de94d2d0d3cc12aabcb8e9e8b0eec39b0a2710
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fa2a8710f4dc12fab1efe34aa11398b937878692
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831747"
 ---
 # <a name="expand-json-transformation"></a>Rozbalte JSON transformace
 **Rozbalte JSON** transformace umožňuje uživatelům rozbalte jako existující sloupec, který obsahuje platný text JSON do více sloupců.

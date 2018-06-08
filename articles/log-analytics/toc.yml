@@ -27,6 +27,8 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Přechod na portál OMS
+      href: log-analytics-oms-portal-faq.md
     - name: Upgrade pracovního prostoru
       items:
         - name: Přehled upgradu

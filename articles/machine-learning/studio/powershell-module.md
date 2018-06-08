@@ -10,16 +10,18 @@ manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.openlocfilehash: c9553e372f4d1cb5c60935fae5a7af61806ea6d4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6ecd2d9a1519cd89058385ad1e40aee9b3fc9082
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835691"
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Modul PowerShell pro Microsoft Azure Machine Learning
 Modul prostředí PowerShell pro Azure Machine Learning je výkonný nástroj, který umožňuje spravovat pracovní prostory, experimenty, datové sady, Classic webové služby a další pomocí prostředí Windows PowerShell.

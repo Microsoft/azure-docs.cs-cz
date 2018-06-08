@@ -7,15 +7,16 @@ ms.author: haining
 manager: cgronlun
 ms.reviewer: garyericson, mldocs
 ms.service: machine-learning
-ms.component: core
+ms.component: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: bbb8deeab8368d9c0e6d29c8d7e1e2e0a8805d60
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d3cb1a9f10d82eb1df585ae03adf4130888bd84c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832896"
 ---
 # <a name="other-machine-learning-products-and-services-from-microsoft"></a>Další machine learning produkty a služby od Microsoftu
 

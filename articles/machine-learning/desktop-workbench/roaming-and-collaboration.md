@@ -7,14 +7,16 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: b587f5dcc9558ec52b85e4b53dae0e31ad475a4e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: dd83fe3659779e7d49c36e6d906cc3b8019099a1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834205"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Roaming a spolupráce v Azure Machine Learning Workbench
 Tento článek popisuje, jak můžete použít Azure Machine Learning Workbench nastavit projekty pro roaming mezi počítači a spolupráci s členy týmu. 

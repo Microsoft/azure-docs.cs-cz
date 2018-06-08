@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 06151b211a03a971e549e88817770ef096f3f603
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839422"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 
@@ -43,7 +44,7 @@ Základní architektura se skládá z následujících součástí:
 - **Nasazení šablony**. V tomto nasazení [šablon Azure Resource Manageru](/azure/azure-resource-manager/resource-group-overview#template-deployment) se používají k automaticky nasazení komponent architektury do Microsoft Azure tak, že zadáte parametry konfigurace během instalace.
 - **Automatizované skripty nasazení**. Tyto skripty pomoct nasadit řešení začátku do konce. Skripty se zabývají:
     - Instalace modulu a [globálního správce](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) instalační skript se používá k instalaci a ověřte, zda jsou správně nakonfigurovány požadované moduly prostředí PowerShell a rolí globálního správce.
-    - Instalace skriptu prostředí PowerShell slouží k nasazení řešení začátku do konce, poskytnuto prostřednictvím soubor .zip a souboru .bacpac, které obsahují předdefinovaných ukázkovou webovou aplikaci s [ukázkové databáze SQL](https://github.com/Microsoft/azure-sql-security-sample). obsah. Zdrojový kód pro toto řešení je k dispozici ke kontrole [úložiště kódu plán, podle kterého] [kódu úložišti]. 
+    - Instalace skriptu prostředí PowerShell slouží k nasazení řešení začátku do konce, poskytnuto prostřednictvím soubor .zip a souboru .bacpac, které obsahují předdefinovaných ukázkovou webovou aplikaci s [ukázkové databáze SQL](https://github.com/Microsoft/azure-sql-security-sample) obsah. Zdrojový kód pro toto řešení je k dispozici pro si na [Githubu](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms). 
 
 ## <a name="architectural-diagram"></a>Diagram architektury
 

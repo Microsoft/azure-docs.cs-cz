@@ -3,18 +3,18 @@ title: Co je FPGA? – Projekt Brainwave – Azure Machine Learning
 description: Zjistěte, jak zrychlit modely a hluboké neuronové sítě s FPGAs.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.component: service
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/31/2018
-ms.openlocfilehash: ace39e415bc06013008091a43d37a992a984e46b
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 18b0ee143443ecf128bdfe57adb61cc22f95db87
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736707"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832580"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co je FPGA a Brainwave projektu?
 

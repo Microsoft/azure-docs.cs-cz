@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: cb37c94d3ec819823083041708cfc28ead0ed5cf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606133"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831446"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování ve službě Azure Backup
 Zálohování Azure má několik předdefinovaných efektivitu, která ukládají náklady na síť a úložiště během počáteční úplné zálohy dat do Azure. Počáteční úplné zálohování obvykle přenos velkých objemů dat a vyžaduje větší šířku pásma sítě ve srovnání s následné zálohy, které přenášejí pouze rozdílů/přírůstková. Proces offline synchronizace replik indexů Azure Backup můžete použít disky k nahrání dat offline zálohování do Azure.
@@ -51,7 +51,7 @@ Následující funkce Azure Backup nebo úlohy podporovat použití Offline zál
 Před zahájením pracovní postup Offline zálohování, splnit následující požadavky: 
 * Vytvoření [trezor služeb zotavení](backup-azure-recovery-services-vault-overview.md). Pro vytvoření trezoru, naleznete postup v [v tomto článku](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault)
 * Ujistěte se, že pouze [nejnovější verzi agenta Azure Backup](https://aka.ms/azurebackup_agent) byla nainstalována do klienta systému Windows Server a Windows, podle vhodnosti a počítač je zaregistrován k trezoru služeb zotavení.
-* Prostředí Azure PowerShell 3.7.0 nebo vyšší se vyžaduje na počítači se systémem agenta Azure Backup. Doporučujeme vám [nainstalujte nejnovější verzi prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+* Prostředí Azure PowerShell 3.7.0 se vyžaduje na počítači se systémem agenta Azure Backup. Doporučujeme, abyste si stáhli a [nainstalujte 3.7.0 verzi prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).
 * Na počítače se systémem agenta Azure Backup Přesvědčte se, zda je nainstalovaný Microsoft Edge nebo Internet Explorer 11 a je povolen jazyk JavaScript. 
 * Vytvoření účtu úložiště Azure ve stejném předplatném jako trezor služeb zotavení. 
 * Zajistěte, aby byla [potřebná oprávnění](../azure-resource-manager/resource-group-create-service-principal-portal.md) k vytvoření aplikace Azure Active Directory. Pracovní postup Offline zálohování vytvoří aplikaci služby Azure Active Directory v rámci předplatného přidružené k účtu úložiště Azure. Cílem aplikace je poskytnout Azure Backup zabezpečení a oboru přístupu ke službě Azure Import, vyžaduje se pro pracovní postup Offline zálohování. 
@@ -108,7 +108,7 @@ Tato část popisuje pracovní postup offline zálohování tak, aby vaše data 
 
     * Kopírování počítače mají přístup ke pracovní umístění pro pracovní postup offline synchronizace replik indexů pomocí stejné síťové cestě, která byla součástí **zahájit zálohování offline** pracovního postupu.
     * Nástroj BitLocker je povolen v počítači kopie.
-    * Prostředí Azure PowerShell 3.7.0, nebo novější, je nainstalována.
+    * Azure PowerShell 3.7.0 je nainstalován.
     * Jsou nainstalované s nejnovějšími prohlížeči kompatibilní (hraniční nebo Internet Explorer 11) a je povolen jazyk JavaScript. 
     * Kopírování počítače získat přístup k portálu Azure. V případě potřeby kopie počítač může být stejný jako zdrojový počítač.
     

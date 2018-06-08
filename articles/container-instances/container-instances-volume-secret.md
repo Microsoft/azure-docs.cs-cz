@@ -8,18 +8,19 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: marsma
-ms.openlocfilehash: 47abb4c305b1997fa3f44c07aa85dd01e5a94f1f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a030582c885dd0a5680bd23046ea2a9c0329701a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830067"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Připojení tajný svazku v Azure kontejner instancí
 
 Zjistěte, jak se připojit *tajný klíč* svazku v vaše instance kontejner pro ukládání a načítání citlivé informace podle kontejnerů ve skupinách kontejneru.
 
 > [!NOTE]
-> Připojení *tajný klíč* svazek je aktuálně omezeno na kontejnery Linux. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
+> Připojení *tajný klíč* svazek je aktuálně omezeno na kontejnery Linux. Zjistěte, jak předat proměnné zabezpečeném prostředí pro systém Windows a Linux kontejnery v [nastavení proměnných prostředí](container-instances-environment-variables.md). Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="secret-volume"></a>tajný svazku
 

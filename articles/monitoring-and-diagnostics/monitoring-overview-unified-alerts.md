@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 06/07/2018
 ms.author: mamit,bwren
 ms.custom: ''
-ms.openlocfilehash: dac8052a96c98130891a9ea31994198e331e314d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 699dff42846ee1f9d42980feca55d8a79e2514e3
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726461"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839839"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Jednotná výstrah v monitorování Azure
 
@@ -104,6 +104,8 @@ Výstrahy jsou k dispozici v rámci několik Azure monitorování služeb. Infor
 | Application Insights | Testy dostupnosti webu | Nepodporované ve jednotná výstrahy.  V tématu [webového testu výstrahy](../application-insights/app-insights-monitor-web-app-availability.md). Chcete-li k dispozici na žádné web instrumentovány k odesílání dat do služby Application Insights. Přijímat oznámení v případě dostupnosti nebo odezvy webu je nižší než očekávání. |
 
 ## <a name="enhanced-unified-alerts-public-preview"></a>Rozšířené jednotná výstrahy (Public Preview)
+> [!NOTE]
+>  Funkce v této části je již brzy. Se nesmí objevit ještě ve vaší verzi portálu. 
 
 Rozšířené výstrahy jednotné prostředí byla vydaná ve verzi public preview pro monitorování Azure na 1. června 2018. Toto prostředí je založena na výhody [unified výstrahy](#overview) vydané března 2018 a umožňuje spravovat a agregovat jednotlivé výstrahy kromě úpravy stav výstrahy. Tato část popisuje nové funkce a jak se orientovat nové výstrahy stránky na portálu Azure.
 

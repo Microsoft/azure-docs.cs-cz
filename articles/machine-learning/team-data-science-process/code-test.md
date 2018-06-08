@@ -8,18 +8,19 @@ manager: deguhath
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: f9465eadfea97ffb721a2bac2c9845460d566fd1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: de1ed0b85957413a254503fc72375866dfd1bea1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654856"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837153"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Testování s datovou sadou UCI pro dospělé příjem předpovědi data vědecké účely kód
 Tento článek popisuje předběžné pokyny pro testování kódu v pracovním postupu vědecké účely data. Takové testování dává datových vědců systematicky a efektivní způsob, jak zkontrolovat kvality a očekávaný výsledek svůj kód. Používáme tým datové vědy procesu (TDSP) [projekt, který používá datovou sadu pro dospělé příjem UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) které jsme dříve publikované zobrazit, jak kód testování lze provést. 

@@ -8,21 +8,25 @@ editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 06/06/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 42c30a825e44c289c42d0fb0a40a442c4ac950d7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9065d237057bf47d469b6f6fbf5b588c7e348232
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839353"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Kurz pro Azure integrace protokolu: proces Azure Key Vault událostí pomocí služby Event Hubs
 
-Integrace se službou protokolu Azure slouží k načtení protokolované události a zpřístupněte je váš systém zabezpečení informací a událostí správy (SIEM). Tento kurz ukazuje příklad použití Azure integrace protokolu ke zpracování protokoly, které jsou získány prostřednictvím Azure Event Hubs.
 
 >[!IMPORTANT]
->Upřednostňovanou metodou pro integraci Azure protokoly se pomocí svého dodavatele SIEM Azure monitorování konektoru a následující tyto [pokyny](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Ale pokud dodavatele SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné použít protokol integrace se službou Azure jako dočasné řešení (je-li vašeho systému SIEM podporován protokol integrace se službou Azure) dokud takové connector je k dispozici.
+> Funkce integrace protokolu Azure bude 06/01/2019 zastaralá.  AzLog stahování bude ve 27. června 2018 zakázáno. Pokyny k tomu, co udělat přesunutí dopředného zkontrolujte v příspěvku [monitorování pomocí Azure, který chcete integrovat s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
+
+Integrace se službou protokolu Azure slouží k načtení protokolované události a zpřístupněte je váš systém zabezpečení informací a událostí správy (SIEM). Tento kurz ukazuje příklad použití Azure integrace protokolu ke zpracování protokoly, které jsou získány prostřednictvím Azure Event Hubs.
+
+Upřednostňovanou metodou pro integraci Azure protokoly se pomocí svého dodavatele SIEM Azure monitorování konektoru a následující tyto [pokyny](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md). Ale pokud dodavatele SIEM neposkytuje konektor k monitorování Azure, bude pravděpodobně možné použít protokol integrace se službou Azure jako dočasné řešení (je-li vašeho systému SIEM podporován protokol integrace se službou Azure) dokud takové connector je k dispozici.
 
  
 Tento kurz použijte k se seznámit s jak integrace se službou protokolu Azure a Event Hubs spolupracují podle následujících kroků příklad a pochopíte, jak každý krok podporuje řešení. Potom můžete využít, co jste se naučili tady vytvořit vlastní postup pro podporu jedinečným požadavkům vaší společnosti.

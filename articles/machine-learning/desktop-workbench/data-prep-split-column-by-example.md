@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 497c1725fc4554792add11c0ec069d1628a89fbd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cc53fc52590bc9991dcfd4730d9e4cb03e05efd5
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831478"
 ---
 # <a name="split-column-by-example-transformation"></a>Rozdělit sloupec podle příkladu transformace
 Tato transformace predictively rozdělí obsah sloupce na smysluplný hranicích bez zásahu uživatele. Algoritmus rozdělení vybere hranice po analýze obsahu sloupce. Může být definovaná tyto hranice
@@ -102,16 +104,16 @@ Hodnoty v následujícím *časování* sloupec získat predictively rozdělit n
 
 |Timings_1|Timings_2|Timings_3|Timings_4|Timings_5|Timings_6|Timings_7|Timings_8|Timings_9|
 |:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|:-----|
-|Pondělí|Pátek|7:00:00|18:00:00|Sobota|9:00|17:00:00|Neděle|Uzavřeno|
-|Pondělí|Pátek|9:00|18:00:00|Sobota|4:00:00|4:00 pm|Neděle|Uzavřeno|
-|Pondělí|Pátek|8:30:00|19:00:00|Sobota|3:00:00|14:30:00|Neděle|Uzavřeno|
-|Pondělí|Pátek|8:00:00|18:00:00|Sobota|2:00:00|3:00 pm|Neděle|Uzavřeno|
-|Pondělí|Pátek|4:00:00|19:00:00|Sobota|9:00|4:00 pm|Neděle|Uzavřeno|
-|Pondělí|Pátek|8:30:00|4:30 pm|Sobota|9:00|17:00:00|Neděle|Uzavřeno|
-|Pondělí|Pátek|5:30:00|18:30:00|Sobota|5:00:00|4:00 pm|Neděle|Uzavřeno|
-|Pondělí|Pátek|8:30:00|20:30:00|Sobota|6:00:00|17:00:00|Neděle|Uzavřeno|
-|Pondělí|Pátek|8:00:00|21:00:00|Sobota|9:00|8:00 pm|Neděle|Uzavřeno|
-|Pondělí|Pátek|10:00 am|9:30 pm|Sobota|9:30:00|3:00 pm|Neděle|Uzavřeno|
+|Pondělí|Pátek|7:00:00|18:00:00|Sobota|9:00|17:00:00|Neděle|Zavřeno|
+|Pondělí|Pátek|9:00|18:00:00|Sobota|4:00:00|4:00 pm|Neděle|Zavřeno|
+|Pondělí|Pátek|8:30:00|19:00:00|Sobota|3:00:00|14:30:00|Neděle|Zavřeno|
+|Pondělí|Pátek|8:00:00|18:00:00|Sobota|2:00:00|3:00 pm|Neděle|Zavřeno|
+|Pondělí|Pátek|4:00:00|19:00:00|Sobota|9:00|4:00 pm|Neděle|Zavřeno|
+|Pondělí|Pátek|8:30:00|4:30 pm|Sobota|9:00|17:00:00|Neděle|Zavřeno|
+|Pondělí|Pátek|5:30:00|18:30:00|Sobota|5:00:00|4:00 pm|Neděle|Zavřeno|
+|Pondělí|Pátek|8:30:00|20:30:00|Sobota|6:00:00|17:00:00|Neděle|Zavřeno|
+|Pondělí|Pátek|8:00:00|21:00:00|Sobota|9:00|8:00 pm|Neděle|Zavřeno|
+|Pondělí|Pátek|10:00 am|9:30 pm|Sobota|9:30:00|3:00 pm|Neděle|Zavřeno|
 
 ### <a name="splitting-iis-log"></a>Rozdělení protokolu služby IIS
 
@@ -176,7 +178,7 @@ V následujícím příkladu jsme chtěli oddělte hodnoty váhy z měrné jedno
 |2KG|2|KG|
 |125G|125|G|
 |500G|500|G|
-|1.5KGA|1.5|KGA|
+|1.5KGA|1,5|KGA|
 
 ## <a name="technical-notes"></a>Technické poznámky
 

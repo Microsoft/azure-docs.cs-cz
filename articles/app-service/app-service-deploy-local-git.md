@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: 842cd6f67a04bec0ed06282bdeeea8b8a51c0667
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 88cc9ff4979c2e6a4a14a7d531054c1a842deaf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849799"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -38,36 +39,21 @@ Použití ukázkové úložiště se podle nich zorientujete, spusťte následuj
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-## <a name="prepare-your-repository"></a>Příprava úložiště
-
-Ujistěte se, že kořenového adresáře úložiště má správné soubory v projektu.
-
-| Modul runtime | Soubory kořenového adresáře |
-|-|-|
-| ASP.NET (jenom Windows) | _*.sln_, _*.csproj_, nebo _default.aspx_ |
-| Jádro ASP.NET | _*.sln_ nebo _*.csproj_ |
-| PHP | _index.php_ |
-| Ruby (pouze Linux) | _Gemfile_ |
-| Node.js | _Server.js_, _app.js_, nebo _package.json_ pomocí spuštění skriptu |
-| Python (jenom Windows) | _\*.PY_, _requirements.txt_, nebo _souboru runtime.txt_ |
-| HTML | _default.htm_, _default.html_, _default.asp_, _index.htm_, _index.html_, nebo  _iisstart.htm_ |
-| Webové úlohy | _\<job_name > / run. \<rozšíření >_ pod _aplikace\_Data/úlohy/průběžné_ (pro nepřetržité webové úlohy) nebo _aplikace\_dat, úlohy nebo aktivaci_ (pro aktivaci Webové úlohy). Další informace najdete v tématu [Kudu WebJobs dokumentace](https://github.com/projectkudu/kudu/wiki/WebJobs) |
-| Funkce | V tématu [průběžné nasazování pro Azure Functions](../azure-functions/functions-continuous-deployment.md#continuous-deployment-requirements). |
-
-Chcete-li přizpůsobit vaše nasazení, můžete zahrnout _.deployment_ soubor v kořenovém adresáři úložiště. Další informace najdete v tématu [přizpůsobení nasazení](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) a [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
-
-> [!NOTE]
-> Nezapomeňte `git commit` všechny změny, které chcete nasadit.
->
->
+[!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user.md)]
+## <a name="deploy-from-local-git-with-kudu-builds"></a>Nasazení z místní Git s Kudu sestavení
 
-## <a name="enable-git-for-your-app"></a>Povolit Git pro vaši aplikaci.
+Nejjednodušší způsob, jak povolit místní nasazení Git pro vaši aplikaci se serverem Kudu sestavení se má používat cloudové prostředí.
 
-Pokud chcete povolit nasazení Git pro existující aplikace služby App Service, spusťte [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) v prostředí cloudu.
+### <a name="create-a-deployment-user"></a>Vytvoření uživatele nasazení
+
+[!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
+
+### <a name="enable-local-git-with-kudu"></a>Povolit místní Git s Kudu
+
+Chcete-li povolit místní nasazení Git pro vaši aplikaci se serverem Kudu sestavení, spusťte [ `az webapp deployment source config-local-git` ](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) v prostředí cloudu.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -97,7 +83,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-## <a name="deploy-your-project"></a>Nasazení projektu
+### <a name="deploy-your-project"></a>Nasazení projektu
 
 Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte  _\<adresa url >_ s adresou URL vzdálené Git, které jste získali z [povolit Git pro vaši aplikaci](#enable-git-for-you-app).
 
@@ -113,13 +99,56 @@ git push azure master
 
 Mohou se zobrazit specifické pro modul runtime automatizace ve výstupu, jako je například MSBuild pro technologii ASP.NET, `npm install` pro Node.js, a `pip install` pro jazyk Python. 
 
-Po dokončení nasazení aplikace na portálu Azure nyní měli záznam vaše `git push` v **možnosti nasazení** stránky.
+Přejděte do své aplikace a ověřte, zda je obsah nasazeny.
 
-![](./media/app-service-deploy-local-git/deployment_history.png)
+## <a name="deploy-from-local-git-with-vsts-builds"></a>Nasazení z místní Git s služby VSTS sestavení
+
+> [!NOTE]
+> Pro vytvoření nezbytné sestavení a verze definice ve vašem účtu služby VSTS App Service, musí mít váš účet Azure role **vlastníka** ve vašem předplatném Azure.
+>
+
+Chcete-li povolit místní nasazení Git pro vaši aplikaci se serverem Kudu sestavení, přejděte na aplikace v rámci [portál Azure](https://portal.azure.com).
+
+V levém navigačním panelu stránky aplikace, klikněte na tlačítko **centrum nasazení** > **místní Git** > **pokračovat**. 
+
+![](media/app-service-deploy-local-git/portal-enable.png)
+
+Klikněte na tlačítko **nastavené průběžné doručování služby VSTS** > **pokračovat**.
+
+![](media/app-service-deploy-local-git/vsts-build-server.png)
+
+V **konfigurace** stránky, konfigurace nového účtu služby VSTS nebo zadat účet existujícího. Po dokončení klikněte na tlačítko **pokračovat**.
+
+> [!NOTE]
+> Pokud chcete použít existující účet služby VSTS, který není uveden, budete muset [propojit účet služby VSTS k předplatnému Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+
+V **Test** vyberte, zda povolit zátěžových testů a pak klikněte na **pokračovat**.
+
+V závislosti na tom [cenová úroveň](/pricing/details/app-service/plans/) vašeho plánu služby App Service, může se také zobrazit **nasadit do pracovní** stránky. Vyberte, zda chcete povolit nasazovací sloty a pak klikněte na **pokračovat**.
+
+V **Souhrn** , zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
+
+Jak dlouho trvá několik minut, než účet služby VSTS bude připravená. Až to bude hotové, zkopírujte adresu URL úložiště Git v Centru pro nasazení.
+
+![](media/app-service-deploy-local-git/vsts-repo-ready.png)
+
+Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte  _\<adresa url >_ s adresou URL, které jste získali z poslední krok.
+
+```bash
+git remote add vsts <url>
+```
+
+Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy správce přihlašovacích Git, přihlaste se pomocí svého visualstudio.com uživatele. Další metody ověřování, najdete v části [Přehled ověřování služby VSTS](/vsts/git/auth-overview?view=vsts).
+
+```bash
+git push vsts master
+```
+
+Po dokončení nasazení můžete najít v průběhu sestavení `https://<vsts_account>.visualstudio.com/<project_name>/_build` a průběh nasazení v `https://<vsts_account>.visualstudio.com/<project_name>/_release`.
 
 Přejděte do své aplikace a ověřte, zda je obsah nasazeny.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting-kudu-deployment"></a>Řešení potíží s nasazením Kudu
 
 Tady jsou běžné chyby nebo problémy při použití Git pro publikování do aplikace služby App Service v Azure:
 

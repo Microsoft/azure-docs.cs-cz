@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fbedf355c6b1c45d581408a962b875544838087f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836085"
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Strojového učení kódy chyb rozhraní API REST
  
@@ -50,7 +52,7 @@ Tato třída chyb znamená, že argument zadaný někde byl neplatný. To může
 | InputBlobRelativeLocationInvalid | K dispozici žádný název objektu blob úložiště Azure. Zadejte platný objekt blob název a akci opakujte. |
 | InvalidBlob | Specifikace neplatný objekt blob pro objekt blob: {0}. Ověřte, že připojovací řetězec / relativní cestu nebo specifikace token SAS je správný a zkuste to znovu. |
 | InvalidBlobConnectionString | Z připojovacího řetězce zadaného pro jeden z objektů BLOB vstupu a výstupu neplatné: {0}. To opravte a zkuste to znovu. |
-| InvalidBlobExtension | Odkaz na objekt blob: {0} má neplatný nebo chybějící souboru rozšíření. Podporovaný přípony souborů pro tento typ výstupu jsou: "{1}". |
+| InvalidBlobExtension | Odkaz na objekt blob: {0} má příponu neplatného nebo chybějícího souboru. Podporovaný přípony souborů pro tento typ výstupu jsou: "{1}". |
 | InvalidInputNames | Neplatná služba vstupní názvy zadané v žádosti: {0}. Mapování vstupní data na vstupy správné služby a akci opakujte. |
 | InvalidOutputOverrideName | Název přepsání neplatný výstup: {0}. Služba nemá do uzlu výstup s tímto názvem. Předejte prosím název uzlu správný výstup přepsat (platí malá a velká písmena). |
 | InvalidQueryParameter | Neplatný parametr dotazu '{0}'. {1} |
@@ -61,7 +63,7 @@ Tato třída chyb znamená, že argument zadaný někde byl neplatný. To může
 | MissingOutputOverrideSpecification | V požadavku chybí specifikace objektů blob pro výstup přepsání {0}. Zadejte platný objekt blob umístění s požadavkem, nebo odeberte výstupu, pokud se požaduje přepsání není umístění. |
 | MissingRequestInput | Webová služba očekává vstup, ale nebyl poskytnut žádný vstup. Ujistěte se, že jsou k dispozici platné vstupní hodnoty podle publikované vstupních portů v modelu a zkuste to znovu. |
 | MissingRequiredGlobalParameters | Ne všechny požadované parametry webové služby poskytuje. Ověřte správnost parametry očekává u modulů a akci opakujte. |
-| MissingRequiredOutputOverrides | Při volání metody koncový bod šifrované služby, které je nutné předat výstup přepsání pro všechny služby výstupy. Chybí přepsání v tuto chvíli pro tyto výstupy: {0} |
+| MissingRequiredOutputOverrides | Při volání metody koncový bod šifrované služby, které je nutné předat výstup přepsání pro všechny služby výstupy. Chybějící přepsání v tuto chvíli pro tyto výstupy: {0} |
 | MissingWebServiceGroupId | Zadané Id žádná skupina webové služby. Zadejte Id platný webové služby skupiny a zkuste to znovu. |
 | MissingWebServiceId | Zadané Id žádné webové služby. Zadejte platný webovou službu Id a zkuste to znovu. |
 | MissingWebServicePackage | Žádný balíček služby web poskytuje. Zadejte balíček platný webové služby a zkuste to znovu. |
@@ -73,9 +75,9 @@ Tato třída chyb znamená, že argument zadaný někde byl neplatný. To může
 | UnexpectedParameter | Neočekávané parametry zadané. Ověřte všechny názvy parametrů jsou správně zadané, pouze očekávané parametrů a zkuste to znovu. |
 | Neznámé chyby | Neznámá chyba |
 | UserParameterInvalid | {0} |
-| WebServiceConcurrentRequestRequirementInvalid | Nelze změnit požadavky souběžných požadavků pro webovou službu {0}. |
+| WebServiceConcurrentRequestRequirementInvalid | Nelze změnit požadavky souběžných požadavků pro {0} webové služby. |
 | WebServiceIdInvalid | Zadané id neplatný webové služby. Id webové služby musí být platný identifikátor guid. |
-| WebServiceTooManyConcurrentRequestRequirement | Nelze nastavit požadavek na počtu souběžných požadavků na více než {0}. |
+| WebServiceTooManyConcurrentRequestRequirement | Nelze nastavit požadavek počtu souběžných požadavků na více než {0}. |
 | WebServiceTypeInvalid | Zadaný typ neplatný webové služby. Ověřte, zda že je správný typ platný webové služby a akci opakujte. Typy platný webové služby: {0}. |
  
 ## <a name="baduserargument-http-status-code-400"></a>BadUserArgument (kód stavu HTTP 400)
@@ -96,7 +98,7 @@ Zadán neplatný uživatel argument.
  
 | Kód chyby | Zpráva uživatele |
 | ---------- |--------------|
-| CannotStartJob | Úlohu nelze spustit, protože je ve stavu {0}. |
+| CannotStartJob | Úlohu nelze spustit, protože je v {0} stavu. |
 | IncompatibleModel | Model je kompatibilní s verzí požadavku. Verze žádosti podporuje pouze jeden element datatable výstup modely. |
 | MultipleInputsNotAllowed | Model nepovoluje více vstupů. |
  
@@ -164,7 +166,7 @@ Model překročil přidělenou kvótu paměti.
  
 | Kód chyby | Zpráva uživatele |
 | ---------- |--------------|
-| OutOfMemoryLimit | Model využívat více paměti, než byla přidělena pro ni. Maximální povolená velikost paměti pro model je {0} MB. Zkontrolujte prosím váš model problémů. |
+| OutOfMemoryLimit | Model využívat více paměti, než byla přidělena pro ni. Maximální povolené využití paměti pro model je {0} MB. Zkontrolujte prosím váš model problémů. |
  
 ## <a name="internalerror-http-status-code-500"></a>InternalError (kód stavu HTTP 500)
  
@@ -193,7 +195,7 @@ Spuštění došlo k vnitřní chybě.
 | ModuleLoadFailed |  |
 | ModuleObjectCloneFailed |  |
 | OutputConversionFailed |  |
-| PortDataTypeNotSupported | Id portu = {0} má nepodporovaný datový typ: {1}. |
+| PortDataTypeNotSupported | Id portu ={0} má nepodporovaný datový typ: {1}. |
 | ResourceDownload |  |
 | ResourceLoadFailed |  |
 | ServiceUrisNotFound |  |
@@ -201,7 +203,7 @@ Spuštění došlo k vnitřní chybě.
 | UnexpectedScoreStatus |  |
 | UnknownBackendErrorResponse |  |
 | Neznámé chyby |  |
-| UnknownJobStatusCode | Neznámá úloha kódem stavu {0}. |
+| UnknownJobStatusCode | Neznámá úloha stavový kód {0}. |
 | UnknownModuleError |  |
 | UpdateWebServiceResourceFailed |  |
 | WebServiceGroupNotFound |  |
@@ -239,7 +241,7 @@ Služba je dočasně nedostupná.
 | Kód chyby | Zpráva uživatele |
 | ---------- |--------------|
 | NoMoreResources | Pro požadavek k dispozici žádné prostředky. |
-| RequestThrottled | Žádost byla omezena pro koncový bod {0}. Maximální souběžnosti pro koncový bod je {1}. |
+| RequestThrottled | Žádost byla omezena pro {0} koncový bod. Maximální souběžnosti pro koncový bod je {1}. |
 | TooManyConcurrentRequests | Moc souběžných žádostí, které jsou odeslána. |
 | TooManyHostsBeingInitialized | Příliš mnoho hostitelé během inicializace ve stejnou dobu. Vezměte v úvahu omezení / opakování. |
 | TooManyHostsBeingInitializedPerModel | Příliš mnoho hostitelé během inicializace ve stejnou dobu. Vezměte v úvahu omezení / opakování. |

@@ -7,14 +7,16 @@ ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: dddf6af506269c7f22cea69e39b55effa2f14d63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831860"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Postup použití historie spouštění a metrik Model v Azure Machine Learning Workbench
 
@@ -113,7 +115,7 @@ Průběh a výsledky sledovaných spustí jsou k dispozici pro analýzu v Azure 
 **Historie spouštění** poskytuje tři různá zobrazení:
 - Řídicí panel
 - Podrobnosti
-- Porovnání
+- porovnání
 
 **Řídicí panel** zobrazení ukazuje údaje o mezi všechny spustí skript dané vykresluje ve formulářích grafického rozhraní i tabulkových.
 **Podrobnosti** zobrazení zobrazí všechny údaje získané z konkrétní spuštění dané skriptu, včetně protokolu metriky a výstupní soubory (například vykresluje znázorněním.) **Porovnání** zobrazení umožňuje výsledky dvě nebo tři běží jako zobrazenou-souběžného, také včetně zaznamenána metriky a výstupní soubory.

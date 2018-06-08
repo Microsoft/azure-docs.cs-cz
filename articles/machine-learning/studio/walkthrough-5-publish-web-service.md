@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 3fca74a3-c44b-4583-a218-c14c46ee5338
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 6472b795c9b3651160af4d1520bfd1c90a500b5f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7a0dc7e92df342789d2c498479aa54b94070c9f4
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835939"
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Krok 5 průvodce: Nasazení webové služby Azure Machine Learning
 Toto je pátý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)

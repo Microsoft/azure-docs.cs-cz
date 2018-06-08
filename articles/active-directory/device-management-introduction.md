@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6384f63139eb64522409c5922e187afd878ebb09
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8bcc89f9ec7c73fd1f690e00e831fbd5b960eef9
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714132"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850004"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Úvod do správy zařízení v Azure Active Directory
 
@@ -70,12 +70,16 @@ Pro zjednodušení je cílem Azure AD, které jsou připojené k zařízení:
 
 - Zařízení ve vlastnictví pracovní nasazení systému Windows 
 - Přístup k organizační aplikacím a prostředkům z libovolného zařízení Windows
+- Cloudová Správa zařízení vlastněných pracovní
 
 ![Azure AD registrované zařízení](./media/device-management-introduction/02.png)
 
+Připojení k Azure AD můžete nasadit pomocí některé z následujících metod: 
+ - [Windows Autopilot](https://docs.microsoft.com/en-us/windows/deployment/windows-autopilot/windows-10-autopilot)
+ - [Hromadné nasazení](https://docs.microsoft.com/en-us/intune/windows-bulk-enroll)
+ - [Samoobslužné prostředí](device-management-azuread-joined-devices-frx.md) 
 
-Jsou těchto cílů dosáhnout tím, že poskytuje uživatelům samoobslužné služby prostředí pro získání zařízení ve vlastnictví pracovní řídí služby Azure AD.  
-**Azure AD Join** je určená pro organizace, které chcete být první cloudu nebo jenom pro cloud. Neexistuje žádné omezení velikosti nebo typu organizace, které můžete nasadit připojení ke službě Azure AD. Azure AD Join funguje i i v hybridním prostředí a můžete povolit přístup k místním aplikacím a prostředkům.
+**Azure AD Join** je určená pro organizace, které mají být včasného cloudu (to znamená, především použití cloudových služeb, s cílem ke snížení využití na místní infrastrukturu) nebo jenom pro cloud (bez místní infrastruktury). Neexistují žádná omezení velikosti nebo typu organizace, které můžete nasadit připojení ke službě Azure AD. Azure AD Join funguje dobře i v hybridním prostředí, povolení přístupu k cloudové i místní aplikacím a prostředkům.
 
 Implementace zařízení připojených k Azure AD poskytuje následující výhody:
 
@@ -89,10 +93,12 @@ Implementace zařízení připojených k Azure AD poskytuje následující výho
 
 - **Omezení přístupu** k aplikacím z jenom zařízení, které splňují zásady dodržování předpisů.
 
-- **Bezproblémový přístup k lokálním prostředkům** při zařízení má směrem pohledu na místní řadič domény.
+- **Bezproblémový přístup k lokálním prostředkům** při zařízení má směrem pohledu na místní řadič domény. 
 
 
-Při připojení k Azure AD je primárně určený pro organizace, které nemají místní infrastrukturu Windows Server Active Directory, jistě můžete také použít ve scénářích kde:
+Při připojení k Azure AD je primárně určený pro organizace, které nemají místní infrastrukturu Windows Server Active Directory, můžete určitě ji použít ve scénářích kde:
+
+- Chcete-li přechodu na infrastrukturu cloudu pomocí služby Azure AD a správu mobilních zařízení, jako je Intune.
 
 - Pokud potřebujete získat mobilní zařízení, jako jsou tablety a telefony pod kontrolou nelze například použít připojení k místní doméně.
 
@@ -122,7 +128,7 @@ Pokud vaše prostředí disponuje místní AD nároky a vy chcete také výhody 
 
 Pokud byste měli používat Azure AD hybridní připojené k zařízení:
 
-- Máte Win32 aplikace nasazené do těchto zařízení, které používají protokol NTLM nebo Kerberos.
+- Máte Win32 aplikace nasazené do těchto zařízení, které jsou závislé na ověřování počítače služby Active Directory.
 
 - Vyžadujete, aby zásady skupiny pro správu zařízení.
 

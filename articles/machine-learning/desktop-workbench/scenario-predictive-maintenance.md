@@ -7,19 +7,21 @@ ms.author: jehrling
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 791c34785fa817fd68d0bec8111bf23e606c9b64
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f3f24a9b269205dd77ec3301b2650ee7a03f435b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832692"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Prediktivní údržby pro scénářích reálného světa
 
-Dopad výpadek neplánovanou zařízení může být škodlivé pro všechny firmy. Je důležité zachovat pole zařízení s chcete maximalizovat využití a výkonu a chcete-li minimalizovat nákladná, neplánované výpadky. Časná identifikaci problémů může pomoci přidělení prostředků omezené údržby v nákladově efektivní způsob, jak a vylepšení kvality a zadat řetězec procesy. 
+Neplánované prostoje zařízení můžou mít pro řadu firem vážné důsledky. Je důležité zachovat pole zařízení s chcete maximalizovat využití a výkonu a chcete-li minimalizovat nákladná, neplánované výpadky. Časná identifikaci problémů může pomoci přidělení prostředků omezené údržby v nákladově efektivní způsob, jak a vylepšení kvality a zadat řetězec procesy. 
 
 Jsou zde popsány v tomto scénáři relativně [rozsáhlých datových sad simulované](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) vás provede projektu vědecké účely prediktivní údržby dat z přijímání dat funkci analýzy, vytváření modelů a operationalization modelu a nasazení. Kód pro celý proces je zapsán do poznámkového bloku Jupyter s použitím PySpark v nástroji Azure Machine Learning Workbench. Nasazení konečné modelu provádět předpovědi selhání zařízení v reálném čase pomocí Azure Machine Learning modelu správy.   
 

@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 3953a398-6174-4d2d-8bbd-e55cf1639415
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 865243a10bd5043ca04c392c043b37772271f68f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8ead74be1c1749d2c40d265af7c596e7a180a057
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835357"
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Přeučování nového správce prostředků na základě webové službě pomocí rutin prostředí PowerShell správu Machine Learning
 Pokud jste přeučování novou webovou službu, je aktualizovat definice prediktivní webové služby, chcete-li nový trained model.

@@ -8,17 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 431d3079c0d942c15ccbc8352261ccfe1f5f6e47
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 70c6b8cd147cefaa3128bc1e6a414a6fa61dba6d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830890"
 ---
 # <a name="setup-common-identity-on-the-data-science-vm"></a>Instalační program společnou identitu ve virtuálním počítači Data vědecké účely
 

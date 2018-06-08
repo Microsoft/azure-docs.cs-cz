@@ -7,16 +7,18 @@ ms.author: jehrling
 manager: ireiter
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 005470298a115a822350f345cdab6e9cafb15eda
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 26b061c6bd6ff3ec9d1edbb7d99053d17db9b773
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832597"
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Hloubkové learning pro scénářích reálného světa prediktivní údržby
 
@@ -27,7 +29,7 @@ Hloubkové learning je jednou z nejčastěji používané trendy v machine learn
 
 Také označuje jako hluboké neuronové sítě (DNN), tyto metody jsou INSPIROVANÉ jednotlivých neurons, které jsou v rámci mozku (biologické neuronové sítě).
 
-Dopad výpadek neplánovanou zařízení může být škodlivé pro všechny firmy. Je důležité zachovat pole zařízení s maximalizovat využití a výkonu a minimalizovat prostoje nákladná, neplánované. Časná identifikaci problémů může pomoci přidělení prostředků omezené údržby v nákladově efektivní způsob, jak a vylepšení kvality a zadat řetězec procesy. 
+Neplánované prostoje zařízení můžou mít pro řadu firem vážné důsledky. Je důležité zachovat pole zařízení s maximalizovat využití a výkonu a minimalizovat prostoje nákladná, neplánované. Časná identifikaci problémů může pomoci přidělení prostředků omezené údržby v nákladově efektivní způsob, jak a vylepšení kvality a zadat řetězec procesy. 
 
 Strategie prediktivní údržby (odp) používá k určení stavu zařízení ho preventivně provádění údržby, aby se zabránilo výkon nežádoucí počítače machine learning metody. V PM data se shromažďují průběžně monitorovat stav počítače a potom analyzovat najít vzory k předvídání selhání. [Dlouhé paměti krátké termín (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) sítě jsou atraktivní pro toto nastavení vzhledem k tomu, že jsou navržené dozvědět se od pořadí dat.
 

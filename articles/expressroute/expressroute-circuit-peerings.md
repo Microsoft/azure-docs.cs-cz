@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849926"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Okruhy ExpressRoute a domény směrování
  Musíte uspořádat *okruh ExpressRoute* pro připojení k místní infrastruktuře společnosti Microsoft prostřednictvím poskytovatele připojení. Následující obrázek ukazuje vytvoření logického vyjádření připojení mezi vaší sítě WAN a společnosti Microsoft.
@@ -86,6 +87,11 @@ Následující tabulka porovnává tři domény směrování:
 Můžete povolit jeden nebo více domén směrování v rámci okruhu ExpressRoute. Můžete mít všechny domény směrování umístit na stejnou síť VPN, pokud chcete sloučit je do jedné domény směrování. Můžete je také umístit na různé domény směrování, podobně jako na obrázku. Doporučená konfigurace je soukromého partnerského vztahu je připojený přímo k základní síti, a veřejných a odkazy partnerského vztahu Microsoftu jsou připojené k vaší hraniční sítě.
 
 Pokud je se rozhodli pro všechny tři relace partnerského vztahu, musí obsahovat tři dvojici relací protokolu BGP (jednu dvojici pro každý typ partnerského vztahu). Páry relace protokolu BGP poskytovat vysoce dostupné odkaz. Pokud se připojujete pomocí poskytovatelů vrstvy 2 připojení, jste zodpovědní za konfiguraci a správu směrování. Další informace najdete [pracovních](expressroute-workflows.md) pro nastavení ExpressRoute.
+
+## <a name="expressroute-health"></a>ExpressRoute stavu
+Okruhy ExpressRoute může být monitorovaná dostupnost, připojení k virtuálním sítím a používání využití šířky pásma [sledování výkonu sítě](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) (NPM).
+
+NPM sleduje stav Azure soukromého partnerského vztahu a partnerského vztahu Microsoftu.  Podívejte se na naše [post](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) Další informace.
 
 ## <a name="next-steps"></a>Další postup
 * Vyhledejte poskytovatele služeb. V tématu [ExpressRoute služby poskytovatelé a umístění](expressroute-locations.md).

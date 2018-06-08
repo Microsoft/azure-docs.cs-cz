@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/23/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 43cfb16e9471736c0f112ef879faaf01badebc4f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d336b0a4c1de069fccce21a370ca64dc9e9359c9
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824944"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831689"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -166,6 +166,8 @@ Toto zobrazení obsahuje informace o vašich počítačů, chybějící aktualiz
 
 Můžete spustit protokolu vyhledávání, který vrátí informace na počítači, aktualizace nebo nasazení tak, že vyberete položku v seznamu. Tím se otevře **hledání protokolů** stránku pomocí dotazu pro vybranou položku.
 
+![Aktualizace správy výchozí zobrazení](media/automation-update-management/update-management-view.png)
+
 ## <a name="installing-updates"></a>Instalace aktualizací
 
 Po posouzení aktualizací pro všechny počítače s Linuxem a Windows ve vašem prostředí můžete nechat nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Kromě počítače nebo skupiny počítačů, které mají být součástí rozsahu nasazení, zadáte datum a čas nasazení. Další informace o skupinách počítačů najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md). Pokud zahrnete skupiny počítačů ve vašem nasazení aktualizace, členství ve skupině je pouze jednou vyhodnocena v době vytvoření plánu. Další změny ve skupině se neprojeví. Můžete to obejít tak, že naplánované nasazení aktualizací odstraníte a znovu vytvoříte.
@@ -197,9 +199,8 @@ Kliknutím na vytvořit nové nasazení aktualizace **nasazení aktualizace plá
 |Operační systém| Linux nebo Windows|
 | Počítače, které chcete aktualizovat |Zvolte hledání, uloženo nebo vyberte počítač z rozevíracího seznamu a vyberte jednotlivé počítače |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které budete potřebovat|
-|Aktualizace k vyloučení|Zadejte všechny články znalostní báze vyloučit bez předpony 'KB.|
-|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně opakování|
-| Časové období údržby |Počet minut nastavit pro aktualizace. Hodnota nemůže být menší než 30 minut a více než 6 hodin |
+|Aktualizace k vyloučení|Zadejte aktualizace, které chcete vyloučit. Pro systém Windows zadejte KB bez předpony 'KB'. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
+|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně opakování|| Časové období údržby |Počet minut nastavit pro aktualizace. Hodnota nemůže být menší než 30 minut a více než 6 hodin |
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
 

@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849504"
 ---
 # <a name="asdk-administration-basics"></a>Základy správy ASDK 
 Existuje několik věcí, které potřebujete vědět, pokud začínáte správy Azure zásobníku Development Kit (ASDK). V tomto návodu obsahuje přehled role jako operátor Azure zásobníku v prostředí pro testování a jak ověřit testovací uživatele může být produktivní rychle.
@@ -28,7 +29,7 @@ Nejdřív byste měli zkontrolovat [co je Azure zásobníku Development Kit?](as
 
 Jako je například Azure Azure zásobníku innovates rychle, jsme budete pravidelně sestavení pro vydání nové služby ASDK. Však nelze upgradovat ASDK jako můžete zásobník Azure integrované systémy nasazení. Ano, pokud chcete přesunout na nejnovější verzi, musíte úplně [znovu nasaďte ASDK](asdk-redeploy.md). Nelze použít balíčky aktualizací. Tento proces trvá určitou dobu, ale výhodou je, že můžete vyzkoušet nejnovější funkce Jakmile budou k dispozici. 
 
-## <a name="what-account-should-i-use"></a>Který účet mám použít?
+## <a name="what-account-should-i-use"></a>Jaký účet mám použít?
 Existuje několik, které byste měli vědět při správě Azure zásobníku důležité informace o účtu. Zejména v nasazení používáte Windows Server Active Directory Federation Services (AD FS) jako zprostředkovatele identity místo Azure Active Directory (Azure AD). Zásobník Azure integrované systémy a ASDK nasazení, platí následující aspekty účet:
 
 |Účet|Azure AD|AD FS|
@@ -64,5 +65,5 @@ Pro development kit je klást otázky týkající se podpory ve vaší jedinou m
 > ASDK je zkušební prostředí, a proto není žádná oficiální podporu nabízených prostřednictvím Microsoft podporu služby zákazníkům (CSS).
 
 ## <a name="next-steps"></a>Další postup
-[Nasazení ASDK](asdk-deploy.md)
+[Nasazení ASDK](asdk-install.md)
 

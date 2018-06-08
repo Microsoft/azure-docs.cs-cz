@@ -6,31 +6,39 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/29/2018
+ms.date: 06/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8cbf379e167f854d495704bc0919789dcbafd8e1
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850565"
 ---
 # <a name="deploy-a-container-group"></a>Nasazení kontejneru skupiny
 
 Podporuje nasazení několika kontejnerů do jednoho hostitele pomocí Azure instancí kontejnerů [skupina kontejneru](container-instances-container-groups.md). To je užitečné při sestavování něho aplikace pro protokolování, sledování nebo jakoukoli jinou konfiguraci, které služba potřebuje druhý připojené procesu.
 
-Tento dokument vás provede službou Jednoduché něho více kontejneru konfigurace a nasazení šablonu Azure Resource Manager.
+Existují dvě metody pro nasazení pomocí rozhraní příkazového řádku Azure skupiny více kontejnerů:
+
+* Nasazení šablony Resource Manageru (v tomto článku)
+* [Nasazení YAML souborů](container-instances-multi-container-yaml.md)
+
+Nasazení pomocí šablony Resource Manageru se doporučuje, když potřebujete nasadit další služby Azure prostředky (například sdílení souborů Azure) v době nasazení instance kontejneru. Z důvodu YAML formátu přesnější povahy, se doporučuje nasazení se souborem YAML Pokud nasazení obsahuje *pouze* instancí kontejnerů.
 
 > [!NOTE]
 > Více kontejner skupiny jsou aktuálně omezeno na kontejnery Linux. Pracujeme na tom, aby všechny funkce byly dostupné i pro kontejnery Windows. Aktuální rozdíly pro tyto platformy najdete v tématu věnovaném [kvótám a dostupnosti oblastí pro Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="configure-the-template"></a>Konfigurace šablony
 
-Vytvořte soubor s názvem `azuredeploy.json` a zkopírujte do ní následující kód JSON.
+Části v tomto článku vás provede procesem službou Jednoduché něho více kontejneru konfigurace a nasazení šablonu Azure Resource Manager.
 
-V této ukázce skupina kontejneru s dvěma kontejnery veřejnou IP adresu, porty a dva zveřejněné je definována. První kontejner ve skupině běží Internetové aplikace. Druhý kontejneru něho, zašle požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny.
+Začněte vytvořením soubor s názvem `azuredeploy.json`, zkopírujte do ní následující kód JSON.
 
-```json
+Tato šablona Resource Manager definuje skupinu kontejner s dvěma kontejnery, veřejnou IP adresu a dva porty zveřejněné. První kontejner ve skupině běží Internetové aplikace. Druhý kontejneru něho, zašle požadavek HTTP do hlavní webové aplikace prostřednictvím místní sítě skupiny.
+
+```JSON
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -118,7 +126,7 @@ V této ukázce skupina kontejneru s dvěma kontejnery veřejnou IP adresu, port
 
 Použít privátní kontejneru registru bitovou kopii, přidáte objekt v dokumentu JSON v následujícím formátu. Příklad implementace této konfigurace, najdete v článku [odkaz na šablonu ACI Resource Manager] [ template-reference] dokumentaci.
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "[parameters('imageRegistryLoginServer')]",
@@ -146,13 +154,13 @@ Během několika sekund by se měla zobrazit první odezva z Azure.
 
 ## <a name="view-deployment-state"></a>Zobrazení stavu nasazení
 
-Chcete-li zobrazit stav nasazení, použijte [az kontejneru zobrazit] [ az-container-show] příkaz. Tento příkaz vrátí zřízené veřejnou IP adresu pomocí kterého můžete s aplikací pracovalo.
+Chcete-li zobrazit stav nasazení, použijte následující [az kontejneru zobrazit] [ az-container-show] příkaz:
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Výstup:
+Pokud chcete zobrazit běžící aplikaci, přejděte na jeho IP adresu v prohlížeči. Například IP adresa je `52.168.26.124` v tomto příkladu výstupu:
 
 ```bash
 Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location

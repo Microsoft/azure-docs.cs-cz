@@ -7,14 +7,16 @@ ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 45ddd4dc6fb5559c020706e2784158b1319f9b52
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6802d1dfc360a48d8085ff07a8d4488ee1751e33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832097"
 ---
 # <a name="model-management-setup"></a>Nastavení modelu správce
 
@@ -146,7 +148,7 @@ az ml env set -n [environment name] -g [resource group]
 >[!NOTE] 
 >Pokud chcete vytvořit koncový bod HTTPS, zadejte certifikát SSL při vytváření clusteru pomocí--název certifikátu a--cert pem možnosti v instalačním programu env ml az. Toto nastaví clusteru tak, aby obsluhovat požadavky na protokol https, zabezpečené pomocí k zadanému certifikátu. Po dokončení instalace vytvořte záznam CNAME DNS, který odkazuje na plně kvalifikovaný název domény clusteru.
 
-### <a name="create-an-account"></a>Vytvoření účtu
+### <a name="create-an-account"></a>Vytvořit účet
 Účet je vyžadována pro nasazení modelů. Je potřeba udělat to jednou každý účet a můžete znovu použít stejný účet ve více nasazení.
 
 Pokud chcete vytvořit nový účet, použijte následující příkaz:

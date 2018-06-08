@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 701b93fe-765b-4d15-a1cf-9b607f17add6
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 5882f79b6479f71cfd1df503f55703e6177c072b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ab806f8191bc8edc4d5be6003cd177d8c24d71e7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834671"
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Import dat do nástroje Azure Machine Learning Studio z různých online zdrojů dat pomocí modulu Import Dat
 Tento článek popisuje podporu pro import dat online z různých zdrojů a informace potřebné pro přesun dat z těchto zdrojů do experimentu Azure Machine Learning.
@@ -64,7 +66,7 @@ Azure Machine Learning **importovat Data** modul podporuje následující zdroje
 
 | Zdroj dat | Popis | Parametry |
 | --- | --- | --- |
-| Web URL via HTTP |Čte data hodnot oddělených čárkami (CSV), hodnoty oddělené tabulátory (TSV), formát souboru atribut vztah (ARFF) a formáty Support Vector počítače (SVM-light) z jakékoli webové adresy URL, která používá protokol HTTP |<b>Adresa URL</b>: Určuje úplný název souboru, včetně názvu souboru s jakoukoli příponou a adresu URL webu. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných datových formátů: CSV, TSV, ARFF nebo SVM-light. Pokud data má řádek záhlaví, je použít k přiřazování názvy sloupců. |
+| Adresa URL webové prostřednictvím protokolu HTTP |Čte data hodnot oddělených čárkami (CSV), hodnoty oddělené tabulátory (TSV), formát souboru atribut vztah (ARFF) a formáty Support Vector počítače (SVM-light) z jakékoli webové adresy URL, která používá protokol HTTP |<b>Adresa URL</b>: Určuje úplný název souboru, včetně názvu souboru s jakoukoli příponou a adresu URL webu. <br/><br/><b>Formát dat</b>: Určuje jeden z podporovaných datových formátů: CSV, TSV, ARFF nebo SVM-light. Pokud data má řádek záhlaví, je použít k přiřazování názvy sloupců. |
 | Hadoop/HDFS |Čte data z distribuovaného úložiště v Hadoop. Můžete zadat data, která chcete pomocí HiveQL, jako SQL dotazovací jazyk. HiveQL lze také provést filtrování předtím, než přidáte data do nástroje Machine Learning Studio dat a agregovat data. |<b>Databázový dotaz Hive</b>: Určuje dotaz Hive sloužící ke generování data.<br/><br/><b>Identifikátor URI serveru HCatalog </b> : Zadaný název clusteru formátu  *&lt;název clusteru&gt;. azurehdinsight.net.*<br/><br/><b>Název uživatelského účtu Hadoop</b>: Určuje název účtu uživatele Hadoop používají ke zřízení clusteru.<br/><br/><b>Heslo uživatelského účtu Hadoop</b> : Určuje, že pověření použitá při zřizování clusteru. Další informace najdete v tématu [vytvoření Hadoop clusterů v HDInsight](../../hdinsight/hdinsight-provision-clusters.md).<br/><br/><b>Umístění výstupu dat</b>: Určuje, zda jsou data uložená v Hadoop distributed file system (HDFS) nebo v Azure. <br/><ul>Pokud ukládáte výstupní data v HDFS, zadejte identifikátor URI serveru HDFS. (Nezapomeňte použít název clusteru HDInsight bez předponu HTTPS://). <br/><br/>Pokud výstupní data ukládáte v Azure, musíte zadat název účtu úložiště Azure, přístupový klíč k úložišti a název kontejneru úložiště.</ul> |
 | SQL database |Čte data, která je uložená v databázi Azure SQL nebo v databázi systému SQL Server spuštěna na virtuálním počítači Azure. |<b>Název databázového serveru</b>: Určuje název serveru, na kterém běží databáze.<br/><ul>V případě Azure SQL Database zadejte název serveru, aby se vygenerovala. Obvykle je formulář  *&lt;generated_identifier&gt;. database.windows.net.* <br/><br/>V případě systému SQL server, který je hostitelem je Azure virtuálního počítače zadejte *tcp:&lt;název DNS virtuálního počítače&gt;, 1433*</ul><br/><b>Název databáze </b>: Určuje název databáze na serveru. <br/><br/><b>Název uživatelského účtu serveru</b>: Určuje uživatelské jméno pro účet, který má přístupová oprávnění k databázi. <br/><br/><b>Heslo uživatelského účtu serveru</b>: Určuje heslo pro uživatelský účet.<br/><br/><b>Databázový dotaz</b>: Zadejte příkaz SQL, který popisuje data chcete číst. |
 | Místní databáze SQL |Čte data, která je uložená v místní databázi. |<b>Brána data gateway</b>: Určuje název brány pro správu dat nainstalovat do počítače, kde má přístup k databázi SQL serveru. Informace o nastavení brány najdete v tématu [provést pokročilou analýzu pomocí Azure Machine Learning pomocí dat z SQL serveru místní](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Název databázového serveru</b>: Určuje název serveru, na kterém běží databáze.<br/><br/><b>Název databáze </b>: Určuje název databáze na serveru. <br/><br/><b>Název uživatelského účtu serveru</b>: Určuje uživatelské jméno pro účet, který má přístupová oprávnění k databázi. <br/><br/><b>Uživatelské jméno a heslo</b>: klikněte na tlačítko <b>zadejte hodnoty</b> zadat přihlašovací údaje databáze. Můžete použít integrované ověřování systému Windows nebo ověřování systému SQL Server v závislosti na konfiguraci vaší místní SQL Server.<br/><br/><b>Databázový dotaz</b>: Zadejte příkaz SQL, který popisuje data chcete číst. |

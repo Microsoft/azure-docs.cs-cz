@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db8718b60cdd934e3301479489f21fe45f5578cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ff80130ebb9c4095d4a20202cdfabd9aaf1b1992
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832002"
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure Machine Learning modelu dat kolekce API – referenční informace
 
@@ -63,7 +65,7 @@ Zobrazit podrobnosti třídy a parametr:
 | Název | Typ | Popis |
 |-------------|------------|-------------------------|
 | model_name | řetězec | Název modelu, která data se shromažďují pro |
-| identifikátor | řetězec | umístění v kódu, který identifikuje tato data, tj. 'RawInput' nebo 'předpovědi. |
+| Identifikátor | řetězec | umístění v kódu, který identifikuje tato data, tj. 'RawInput' nebo 'předpovědi. |
 | feature_names | seznam řetězců | seznam názvů funkcí, které se stanou csv záhlaví při zadaný |
 | model_management_account_id | řetězec | identifikátor pro účet správy modelu se uloží tento model. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |
 | webservice_name | řetězec | Název webové služby, ke kterému je tento model aktuálně nasazená. To je naplněny automaticky při modely jsou operationalized prostřednictvím AML |

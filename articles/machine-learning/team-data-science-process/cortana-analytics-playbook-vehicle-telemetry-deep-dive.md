@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: d8866fa6-aba6-40e5-b3b3-33057393c1a8
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 10fe87757a6da8a64e4fbd7fb624fef3e666714c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a856c59191a1e35b78d1ab6c2c88ab5288ea1419
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836479"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle řešení analýzy Telemetrie playbook: přímý ponořte do řešení
 Této nabídky odkazy na části této playbook: 

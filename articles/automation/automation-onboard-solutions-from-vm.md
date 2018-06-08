@@ -4,36 +4,37 @@ description: Zjistěte, jak zařadit do služby Azure virtuální počítač s �
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830557"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Zařadit řešení správy aktualizací, sledování změn a inventáře z virtuální počítač Azure
 
-Azure Automation nabízí řešení pro správu aktualizací zabezpečení operačního systému, sledování změn a inventáře nainstalovaných v počítačích. Existuje více způsobů zařadit počítače, můžete zaváděním řešení z virtuálního počítače, [z vašeho účtu Automation](automation-onboard-solutions-from-automation-account.md), nebo pomocí [runbook](automation-onboard-solutions.md). Tento článek se zabývá registrace těchto řešení z virtuální počítač Azure.
+Azure Automation nabízí řešení pro správu aktualizací zabezpečení operačního systému, sledování změn a inventáře nainstalovaných v počítačích. Existuje více způsobů zařadit počítače, můžete zaváděním řešení z virtuálního počítače, [z vašeho účtu Automation](automation-onboard-solutions-from-automation-account.md), [z procházení více počítačů](automation-onboard-solutions-from-browse.md), nebo pomocí [runbook](automation-onboard-solutions.md). Tento článek se zabývá registrace těchto řešení z virtuální počítač Azure.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure v https://portal.azure.com
+Přihlaste se k Azure na adrese https://portal.azure.com.
 
 ## <a name="enable-the-solutions"></a>Povolit řešení
 
 Přejděte do existujícího virtuálního počítače a vyberte buď **Správa aktualizací**, **inventáře**, nebo **sledování změn** pod **OPERATIONS**.
+
+Chcete-li povolit pouze řešení pro virtuální počítač zkontrolujte **povolit pro tento virtuální počítač** přepínače, chcete-li připojit více počítačů k řešení vyberte **povolit pro virtuální počítače v tomto předplatném** a klikněte na tlačítko **Kliknutím vyberte počítače, které chcete povolit**. Zobrazit, [zařadit správy aktualizací, sledování změn a inventáře řešení](automation-onboard-solutions-from-automation-account.md) zobrazíte kroky o tom, jak připojit více počítačů najednou.
 
 Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
 
 ![Začlenění řešení Update Management](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 Přejděte do jiných řešení a klikněte na tlačítko **povolit**, analýzy protokolů a účet Automation, rozevírací seznamy jsou zakázané, které používají stejný účet prostoru a automatizace jako dříve povoleno řešení.
-
-![Začlenění řešení Update Management](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > **Sledování změn** a **inventáře** použít stejné řešení, když je povolena jedna dalších je povolen také.

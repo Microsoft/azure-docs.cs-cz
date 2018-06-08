@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 127c51b9a2617c6b8520d972a3cd4b6c3bbcddd1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837690"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Úlohy k přípravě dat pro rozšířené strojové učení
 Předběžné zpracování a vyčištění dat jsou důležité úkoly, které obvykle musí být provedeny před datové sady je možné efektivně pro machine learning. Nezpracovaná data, je často aktivní nebo nespolehlivé a může být chybějící hodnoty. Pomocí těchto údajů pro modelování může vytvářet zavádějící výsledky. Tyto úlohy jsou součástí nástroje Team Data vědecké účely procesu (TDSP) a obvykle postupujte podle počáteční zkoumání použito k vyhledávání a plánování předběžné zpracování požadované datové sady. Podrobné pokyny k procesu TDSP, najdete v části podle kroků uvedených v [proces vědecké účely dat Team](overview.md).

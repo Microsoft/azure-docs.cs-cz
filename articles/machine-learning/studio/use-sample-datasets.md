@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 03a0b844-e8a7-4896-996f-d3c7a0db7a50
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 38f31220b7cf4624367d872df152ef9e1304e841
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836296"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets

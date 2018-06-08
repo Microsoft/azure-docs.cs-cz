@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 7b8d2f4fb52c6d4faed8e813779e3b01d1817355
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df0328e5519f3b5d0e3df9300dc7195eaf798975
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831162"
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Nasazení služby a nastavení prostředí pro řešení potíží
 Následující informace vám mohou pomoci určit příčinu chyby při nastavování prostředí správy modelu.

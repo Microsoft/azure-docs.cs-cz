@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3fe2dbab876d1ef55ff05315cf7c823d0444663a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bd1b52dd32976ce65458e1dfe1b50d228fbd6d0e
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808668"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850521"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Oddíl a škálování v Azure Cosmos DB
 
@@ -64,15 +64,16 @@ Azure Cosmos DB používá algoritmus HMAC rozdělení do oddílů. Při zápisu
 
 Volba klíč oddílu je důležité rozhodnutí, která je nutné provést v době návrhu. Vyberte název vlastnosti, která má široký rozsah hodnot a má i přístupové vzorce. Je vhodné mít klíč oddílu s velkým počtem jedinečných hodnot (např. stovkami nebo tisíci). Umožňuje rovnoměrně rozdělit vaše zatížení mezi tyto hodnoty. Klíč ideální oddílu je ten, který se často zobrazí jako filtr ve své dotazy a má dostatek mohutnost zajistit, že vaše řešení je škálovatelná.
 
-Pokud fyzickém oddílu dosáhne limitu úložiště a data v oddílu se stejným klíčem oddílu, vrátí Azure Cosmos DB *"klíč oddílu dosáhl maximální velikosti 10 GB"* zprávu a oddíl není rozdělení. Výběr vhodným klíčem oddílu je velmi důležité rozhodnutí. Oddíly jsou interní konceptu Azure Cosmos DB a přechodný. Předpokladu kolik oddíly jsou přiděleny na určité propustnost je poměrně nesprávné. Azure Cosmos DB bude automaticky škálovat podle velikosti pracovní zátěže oddíly. Proto by nemělo corelate návrhu databáze na základě počtu oddílů místo toho byste měli vybrat klíč správné oddílu. 
+Pokud fyzickém oddílu dosáhne limitu úložiště a data v oddílu se stejným klíčem oddílu, vrátí Azure Cosmos DB *"klíč oddílu dosáhl maximální velikosti 10 GB"* zprávu a oddíl není rozdělení. Výběr vhodným klíčem oddílu je velmi důležité rozhodnutí. Fyzické oddíly jsou interní konceptu Azure Cosmos DB a přechodný. Azure Cosmos DB bude automaticky škálovat počet fyzických oddílů podle velikosti pracovní zátěže. Proto by nemělo corelate návrhu databáze na základě počtu fyzických oddíly místo toho byste měli vybrat klíč oddílu vpravo (logické oddíly). 
 
 Vyberte klíč oddílu tak, aby:
 
-* Distribuci dat je i přes všechny klíče.
-* Zatížení je i přes všechny klíče.
-* Je preference mají sadu klíčů jako klíče oddílů než jeden klíč.  Rozdělení pracovního vytížení i za následek větší počet klíčů.
+* Rozdělení úložiště je i přes všechny klíče.
+* Distribuce svazku požadavků k danému bodu v čase je i přes všechny klíče.
+* Dotazy, které jsou spuštěny se vysoké souběžnosti může efektivně směrovat tak, že začleníte klíč oddílu v predikátu filtru.  
+* Výběr klíč oddílu s vyšší Mohutnost je obecně upřednostňované – becaue je obvykle poskytuje lepší škálovatelnost a distribuce. Složený klíč může být například tvořena zřetězením hodnoty z více vlastností zvýšit na kardinalitu. 
 
-Když zvolíte klíč oddílu s výše aspekty, nemusíte starat o počet oddílů nebo jakou propustnost je přidělený na fyzickém oddílu škály každý oddíl samostatně a lineárně podle potřeby.
+Když zvolíte klíč oddílu s výše aspekty, nemusíte starat o počet oddílů nebo jakou propustnost je přidělený na fyzickém oddílu, protože Azure Cosmos DB škáluje snížit počet fyzických oddíly a můžete škálovat také jednotlivé oddíly podle potřeby.
 
 Kontejnery Azure Cosmos DB se dá vytvořit jako *pevné* nebo *neomezená* na portálu Azure. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner jako neomezená, je nutné zadat klíč oddílu a minimální propustnost 1000 RU/s. Kontejnery Azure Cosmos DB lze rovněž konfigurovat sdílení propustnost mezi sadu kontejnery, ve kterých musí každý kontejner určením oddíl klíče a můžou růst neomezená.
 

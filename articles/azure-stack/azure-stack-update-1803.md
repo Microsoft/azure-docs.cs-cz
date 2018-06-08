@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 1186776742562566be893c411a642d2feb819a86
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: f7f459404b5a759bef9eb8f37141bbd4c9eae3e5
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603940"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849619"
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
 
@@ -82,7 +82,7 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 
 - <!-- 1739988 --> Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
 
-- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure.  The values now match the values in Azure. 
+- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure. The values for SALifetime (Time) and SALiftetime (Bytes) were not compatible with Azure and have changed in 1803 to match the Azure settings. The value for SALifetime (Seconds) prior to 1803 was 14,400 and now changes to 27,000 in 1803. The value for SALifetime (Bytes) prior to 1803 was 819,200 and changes to 33,553,408 in 1803.
 
 - <!-- 2209262 --> The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
 

@@ -5,23 +5,24 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 2f5d664b660d43e61dba46d13aff1ced796de884
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0174e2a3c0b14c52b5750e343932a5df39d18976
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833354"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Zařadit řešení správy aktualizací, sledování změn a inventáře
 
-Azure Automation nabízí řešení pro správu aktualizací zabezpečení operačního systému, sledování změn a inventáře nainstalovaných v počítačích. Existuje více způsobů zařadit počítače, můžete zaváděním řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), z vašeho účtu Automation, nebo pomocí [runbook](automation-onboard-solutions.md). Tento článek se zabývá registrace těchto řešení z vašeho účtu Automation.
+Azure Automation nabízí řešení pro správu aktualizací zabezpečení operačního systému, sledování změn a inventáře nainstalovaných v počítačích. Existuje více způsobů zařadit počítače, můžete zaváděním řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [z procházení více počítačů](automation-onboard-solutions-from-browse.md), z vašeho účtu Automation, nebo pomocí [runbook](automation-onboard-solutions.md). Tento článek se zabývá registrace těchto řešení z vašeho účtu Automation.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k Azure v https://portal.azure.com
+Přihlaste se k Azure na adrese https://portal.azure.com.
 
 ## <a name="enable-solutions"></a>Povolení řešení
 
@@ -68,29 +69,27 @@ Vyberte buď uloženého hledání, chcete-li zobrazit dotaz používá k napln�
 
 ![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
-## <a name="onboard-an-azure-machine"></a>Zařadit počítač Azure
+## <a name="onboard-azure-vms"></a>Připojit virtuální počítače Azure
 
 Účet, vyberte z vaší automatizace **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **správy aktualizací**.
 
-Klikněte na tlačítko **+ přidat virtuální počítač Azure**, vyberte virtuální počítač ze seznamu. Na **správy aktualizací** klikněte na tlačítko **povolit**. Tento postup přidá aktuální virtuální počítač do skupiny počítačů, které jsou uložené hledání řešení.
+Klikněte na tlačítko **+ přidat virtuální počítače Azure**, vyberte jeden nebo více virtuálních počítačů ze seznamu. Virtuální počítače, které nelze povolit jsou aktivní, out a nemůže být vybrána. Na **povolit správu aktualizace** klikněte na tlačítko **povolit**. Tento postup přidá vybrané virtuální počítače do skupiny počítačů, které jsou uložené hledání řešení.
+
+![Povolit virtuální počítače Azure](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
 ## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
 
-Účet, vyberte z vaší automatizace **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **správy aktualizací**.
+Třeba ručně přidat počítače není v Azure. Účet, vyberte z vaší automatizace **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **správy aktualizací**.
 
-Klikněte na tlačítko **počítače mimo Azure přidat**. Otevře se nové okno prohlížeče s pokyny k instalaci a konfiguraci agenta Microsoft Monitoring Agent na počítači, na počítač, můžete začít vytváření sestav k řešení. Pokud se registrace počítače, který v současné době spravovány nástrojem System Center Operations Manager, bude nový agent není vyžadováno, je zadání informací o prostoru do existujícího agenta.
+Klikněte na tlačítko **počítače mimo Azure přidat**. Otevře se nové okno prohlížeče s [pokyny o tom, jak nainstalovat a nakonfigurovat službu Microsoft Monitoring Agent na počítači](../log-analytics/log-analytics-concept-hybrid.md) tak, že počítač může začít vytváření sestav k řešení. Pokud se registrace počítače, který v současné době spravovány nástrojem System Center Operations Manager, bude nový agent není vyžadováno, je zadání informací o prostoru do existujícího agenta.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Zařadit počítačů v pracovním prostoru
 
-Účet, vyberte z vaší automatizace **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **správy aktualizací**.
+Ručně nainstalovat počítače nebo počítače již vytváření sestav pro potřeby vašeho pracovního prostoru pro přidání do Azure Automation řešení, aby byl povolen. Účet, vyberte z vaší automatizace **inventáře** nebo **sledování změn** pod **CONFIGURATION MANAGEMENT**, nebo **Správa aktualizací** v části **správy aktualizací**.
 
 Vyberte **spravovat počítače**. Otevře **spravovat počítače** stránky. Tato stránka umožňuje povolit řešení na vybranou skupinu počítačů, všechny dostupné počítače, nebo povolit řešení pro všechny aktuální počítače a jeho povolení pro všechny budoucí počítače.
 
 ![Uložené výsledky hledání](media/automation-onboard-solutions-from-automation-account/managemachines.png)
-
-### <a name="selected-machines"></a>Vybrané počítače
-
-Chcete-li řešení pro jeden nebo více počítačů, vyberte **povolit na vybrané počítače** a klikněte na tlačítko **přidat** vedle každého počítače, které chcete přidat do řešení. Tato úloha přidá názvy vybraných počítačů do skupiny počítačů, které jsou uložené vyhledávací dotaz pro řešení.
 
 ### <a name="all-available-machines"></a>Všechny počítače k dispozici
 
@@ -99,6 +98,10 @@ Chcete-li řešení pro všechny počítače k dispozici, vyberte **povolit na v
 ### <a name="all-available-and-future-machines"></a>Všechny dostupné a budoucí počítače
 
 Chcete-li řešení pro všechny dostupné počítače a všechny budoucí počítače, vyberte **povolit na všech počítačích k dispozici a budoucí**. Tahle možnost odstraní uložená hledání a konfigurace oboru z pracovního prostoru. Otevře se řešení, aby všechny Azure a počítače mimo Azure, které podávají zprávy do pracovního prostoru.
+
+### <a name="selected-machines"></a>Vybrané počítače
+
+Chcete-li řešení pro jeden nebo více počítačů, vyberte **povolit na vybrané počítače** a klikněte na tlačítko **přidat** vedle každého počítače, které chcete přidat do řešení. Tato úloha přidá názvy vybraných počítačů do skupiny počítačů, které jsou uložené vyhledávací dotaz pro řešení.
 
 ## <a name="next-steps"></a>Další postup
 

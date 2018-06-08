@@ -8,6 +8,7 @@ editor: mezmicrosoft
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
-ms.openlocfilehash: 081ca444aee5cd3d426ee569a98bf54c7923af79
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3695657d819f52ef04468a0f1a44828403c65373
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835096"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Q & párování pomocí Azure Machine Learning workbench
 Když otevřete zakončeno otázky odpovíte je obtížné a často vyžaduje úsilí od odborníků (malé a střední podniky). Chcete-li snížit požadavky na interní malé a střední podniky, společnosti často vytvořit seznam – nejčastější dotazy (FAQ) jako prostředek, které uživatelé. Tento příklad umožňující prezentovat různé metody efektivní machine learning tak, aby odpovídaly otevřete zakončeno dotazy na existující nejčastější dotazy k odpovědi na otázky nebo páry. Tento příklad ukazuje o snadný vývoj proces pro sestavování řešení pomocí nástroje Azure Machine Learning Workbench. 

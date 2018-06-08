@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: iainfou
-ms.openlocfilehash: e06db46d5e1d7862f7b47b75e38d0b10df628f48
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d84e8d41d79d9800c952ba3ef0e89e0cdfbdd8dd
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850640"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak používat balírna k vytváření bitových kopií systému Windows virtuálního počítače v Azure
 Každý virtuální počítač (VM) v Azure je vytvořený z image, která definuje distribuci systému Windows a verze operačního systému. Bitové kopie může zahrnovat předinstalované aplikace a konfigurace. Azure Marketplace poskytuje celou řadu imagí první a třetí strany pro nejběžnější operačního systému a aplikací prostředí, nebo můžete vytvořit vlastní vlastních bitových kopií přizpůsobit svým potřebám. Tento článek popisuje, jak používat nástroj open-source [balírna](https://www.packer.io/) definovat a vytvářet vlastní bitové kopie v Azure.
@@ -41,7 +42,7 @@ Balírna ověřuje s Azure pomocí objektu služby. Objektu zabezpečení služb
 Vytvoření služby hlavní s [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) a přiřaďte oprávnění pro objekt služby vytvořit a spravovat prostředky s [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
 ```powershell
-$sp = New-AzureRmADServicePrincipal -DisplayName "Azure Packer" `
+$sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
     -Password (ConvertTo-SecureString "P@ssw0rd!" -AsPlainText -Force)
 Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId

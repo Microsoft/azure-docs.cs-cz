@@ -1,39 +1,30 @@
 ---
-title: "Nasazení Azure zásobníku – prostředí PowerShell | Microsoft Docs"
-description: "V tomto kurzu nainstalujte ASDK z příkazového řádku."
+title: Nasazení Azure zásobníku – prostředí PowerShell | Microsoft Docs
+description: V tomto článku nainstalujte ASDK z příkazového řádku pomocí prostředí PowerShell.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 48ccccaba6b7f5780f1d42dfbe5d9747c5e30292
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849953"
 ---
-# <a name="tutorial-deploy-the-asdk-from-the-command-line"></a>Kurz: nasazení ASDK z příkazového řádku
-V tomto kurzu nasadíte Azure zásobníku Development Kit (ASDK) z příkazového řádku v testovacím prostředí. 
-
+# <a name="deploy-the-asdk-from-the-command-line"></a>Nasazení ASDK z příkazového řádku
 ASDK je testovací a vývojové prostředí, kterou můžete nasadit k vyhodnocení a předvedení funkcí Azure zásobníku a služby. Se dá stáhnout spuštěná, musíte připravit prostředí hardwaru a spustit některé skripty (bude to trvat i několik hodin). Potom můžete přihlásit k portálů správců a uživatelů a začít používat Azure zásobníku.
-
-V tomto kurzu se naučíte:
-
-> [!div class="checklist"]
-> * Stažení a extrakci balíčku pro nasazení
-> * Příprava hostitelský počítač development kit 
-> * Provede konfigurace po nasazení
-> * Zaregistrovat Azure
 
 ## <a name="prerequisites"></a>Požadavky 
 Připravte development kit hostitelský počítač. Plánování hardwaru, softwaru a síti. Počítač, který je hostitelem development kit (hostitel development kit) musí splňovat požadavky na hardware, software a síť. Také musí zvolit pomocí Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS). Ujistěte se, že jste před spuštěním nasazení tak, aby proces instalace plynule v souladu se tyto požadavky. 
@@ -61,7 +52,7 @@ Konfigurace hostitelského počítače ASDK spouštění z CloudBuilder.vhdx:
 
   1. Spusťte příkazový řádek jako správce.
   2. Spusťte `bcdedit /copy {current} /d "Azure Stack"`.
-  3. Kopírování (CTRL + C) hodnotu CLSID vrátí, včetně požadované {} "s. Tato hodnota se označuje jako {CLSID} a bude nutné vložit (CTRL + V nebo klikněte pravým tlačítkem) v zbývající kroky.
+  3. Kopírování (CTRL + C) hodnotu CLSID vrátí, včetně požadované {}' s. Tato hodnota se označuje jako {CLSID} a bude nutné vložit (CTRL + V nebo klikněte pravým tlačítkem) v zbývající kroky.
   4. Spusťte `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx`. 
   5. Spustit `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` 
   6. Spustit `bcdedit /set {CLSID} detecthal on` 
@@ -176,16 +167,5 @@ Je nutné, aby bylo možné zaregistrovat zásobník Azure s Azure [stažení po
 ## <a name="next-steps"></a>Další postup
 Blahopřejeme! Po dokončení těchto kroků, budete mít vývojovém prostředí sady s oběma [správce](https://adminportal.local.azurestack.external) a [uživatele](https://portal.local.azurestack.external) portálů. 
 
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Stažení a extrakci balíčku pro nasazení
-> * Příprava hostitelský počítač development kit 
-> * Provede konfigurace po nasazení
-> * Zaregistrovat Azure
-
-Přechodu na v dalším kurzu se dozvíte, jak přidat položku zásobník Azure marketplace.
-
-> [!div class="nextstepaction"]
-> [Přidání položky zásobníku Azure marketplace.](asdk-marketplace-item.md)
+[Po dokončení instalace ASDK úlohy konfigurace](asdk-post-deploy.md)
 

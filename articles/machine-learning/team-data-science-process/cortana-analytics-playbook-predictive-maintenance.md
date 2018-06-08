@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 581e9d586f007fe0cd28d60b5558594777656ca8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e069a7d16fa56f2c7590edbda8339182835ef367
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837255"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI Příručka pro řešení prediktivní údržby
 

@@ -6,14 +6,16 @@ author: hning86
 ms.author: haining
 manager: mwinkle
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6085762f9f3874df8dd90866e387a581915dbbaf
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831597"
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Novinky ve službě Azure Machine Learning
 
@@ -26,9 +28,9 @@ V této verzi Azure Machine Learning můžete:
 + Obrázky Featurize quantized verzi ResNet 50 cvičení třídění na základě těchto funkcí a [nasazení tohoto modelu na FPGA v Azure](../service/how-to-deploy-fpga-web-service.md) pro inferencing s velmi nízkou latencí.
 
 + Rychle sestavení a nasazení vysoce přesné strojového učení a modely hloubkové learning pomocí [vlastní Azure Machine Learning balíčky](../service/reference-python-package-overview.md) pro následující domény:
-  + [Vize počítače](../service/how-to-build-deploy-image-classification-models.md)
+  + [Počítačové zpracování obrazu](../service/how-to-build-deploy-image-classification-models.md)
   + [Analýza textu](../service/how-to-build-deploy-text-classification-models.md)
-  + [Prognózy](../service/how-to-build-deploy-forecast-models.md)
+  + [Prognózování](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (sprintu 4)
 **Číslo verze**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
@@ -222,7 +224,7 @@ Další informace o vytváření výpočetní cíle, najdete v části [konfigur
 ### <a name="sample-projects"></a>Ukázkové projekty
 - [Iris](https://github.com/Azure/MachineLearningSamples-Iris) a [MMLSpark](https://github.com/Azure/mmlspark) ukázky aktualizovat pomocí nové verze sady SDK Azure ML
 
-### <a name="breaking-changes"></a>Nejnovější změny
+### <a name="breaking-changes"></a>Změny způsobující chyby
 - Povýší `--type` přepínač ve `az ml computetarget attach` na dílčí příkaz a. 
 
     - `az ml computetarget attach --type remotedocker` je nyní `az ml computetarget attach remotedocker`

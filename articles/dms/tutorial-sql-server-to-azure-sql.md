@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/06/2018
-ms.openlocfilehash: 823f785bf33fd4d227fbdbb0f3c6b5eec914e08c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 06/08/2018
+ms.openlocfilehash: f64b2922818eddcab02f7d1c7b8f97671d92589e
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808005"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850249"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-using-dms"></a>Migrace systému SQL Server do Azure SQL Database pomocí DMS
 Můžete používat službu Azure databáze migrace k migraci databáze z místní instance systému SQL Server na [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/). V tomto kurzu, migrovat **Adventureworks2012** databáze obnovena do místní instance systému SQL Server 2016 (nebo novější) do Azure SQL Database pomocí služby Azure databáze migrace.
@@ -217,7 +217,7 @@ Po vytvoření služby najít na portálu Azure, otevřete ho a pak vytvořte no
 
 4. Vyberte **Uložit**na **vyberte tabulky** obrazovky, rozbalte tabulku se seznamem a poté zkontrolovat seznam ovlivněných polí.
 
-    Všimněte si, že služba migrace databáze Azure automaticky vybere všechny prázdné zdrojové tabulky, které existují v cílové instance databáze SQL Azure. Pokud chcete znovu migrovat tabulek, které již obsahují data, budete muset vybrat explicitně tabulky v tomto okně.
+    Všimněte si, že služba migrace databáze Azure automaticky vybere všechny prázdné zdrojové tabulky, které existují v cílové instance databáze SQL Azure. Pokud chcete znovu přenést tabulek, které již obsahují data, je nutné explicitně vybrat tabulky v tomto okně.
 
     ![Výběr tabulek](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity1.png)
 

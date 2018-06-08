@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831631"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasazení Azure Blockchain Workbench
 
@@ -72,7 +73,7 @@ Nasazení Blockchain Workbench vyžaduje registraci aplikace Azure AD. Je nutné
 Dále musíte upravit manifest aplikace pro použití aplikační role v rámci Azure AD k určení Blockchain Workbench správci.  Další informace o manifestů aplikace najdete v tématu [manifest aplikace Azure Active Directory](../active-directory/develop/active-directory-application-manifest.md).
 
 1. Pro aplikaci jste zaregistrovali, vyberte **Manifest** v podokně podrobností zaregistrovanou aplikaci.
-2. Generovat identifikátor GUID. Můžete použít příkaz prostředí PowerShell `[guid]::NewGuid()` nebo online nástroje generovat identifikátor GUID. 
+2. Generovat identifikátor GUID. Můžete vygenerovat identifikátor GUID pomocí příkazu Powershellu [identifikátor guid]:: NewGuid () nebo rutinu New-GUID. Další možností je použít web generátor identifikátor GUID.
 3. Chcete-li aktualizovat **appRoles** oddílu manifest. V podokně manifestu upravit, vyberte **upravit** a nahraďte `"appRoles": []` s zadaný formát JSON. Nezapomeňte nahradit hodnotu **id** pole s identifikátorem GUID jste vygenerovali. 
 
     ``` json
@@ -116,7 +117,7 @@ Rozhraní API aplikace musí požádat o oprávnění uživatele pro přístup k
 
 3. V **požadovaná oprávnění**, vyberte **udělit oprávnění** vyberte **Ano** pro výzvu ověření.
 
-   ![Udělit oprávnění](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
+   ![Udělení oprávnění](media/blockchain-workbench-deploy/client-app-grant-permissions.png)
 
    Udělení oprávnění umožňuje Blockchain Workbench pro přístup uživatelé v adresáři. Vyhledávání a přidání členů do Blockchain Workbench je potřeba oprávnění ke čtení.
 

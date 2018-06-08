@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 4c9e7ec65db80e0af91645d70cea39bb1a396791
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: ff658fd14700e9fdf66b9d929da133f7a3b3f3a0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831781"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 Rozhraní API pro vytváření sestav umožňují zákazníky, kteří Enterprise Azure prostřednictvím kódu programu vyžádání využívání a fakturační údaje do nástrojů pro analýzu dat upřednostňované. 
@@ -30,7 +31,7 @@ Rozhraní API pro vytváření sestav umožňují zákazníky, kteří Enterpris
 
 |Klíč hlavičky požadavku | Hodnota|
 |-|-|
-|Autorizace| Zadejte hodnotu v tomto formátu: **nosiče {API_KEY}** <br/> Příklad: nosiče eyr... 09|
+|Autorizace| Zadejte hodnotu v tomto formátu: **nosiče {API_KEY}** <br/> Příklad: nosiče eyr... 09| 
 
 ## <a name="consumption-apis"></a>Rozhraní API spotřeba
 Koncový bod Swagger je k dispozici [sem](https://consumption.azure.com/swagger/ui/index) pro rozhraní API popsané, pod kterou by měl povolit snadno introspection rozhraní API a generovat klientské sady SDK, pomocí [AutoRest](https://github.com/Azure/AutoRest) nebo [Swagger CodeGen](http://swagger.io/swagger-codegen/). Data od 1 pravděpodobně 2014 je k dispozici prostřednictvím tohoto rozhraní API. 
@@ -50,7 +51,7 @@ Značky etag binárním rozsáhlým, bude vrácen v odpovědi všechny výše uv
  **Seznam fakturační období** – [fakturační období API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) vrátí seznam hodnot fakturační období, která mají data energie pro zadanou registraci v obráceném chronologickém pořadí. Každé období obsahuje vlastnost odkazuje na trasu rozhraní API pro čtyři sady dat – BalanceSummary, UsageDetails, Marketplace poplatky a ceníku.
 
 
-## <a name="api-response-codes"></a>Kódy odpovědí rozhraní API  
+## <a name="api-response-codes"></a>Kódy odpovědí rozhraní API   
 |Stavový kód odpovědi|Zpráva|Popis|
 |-|-|-|
 |200| OK|Bez chyby|

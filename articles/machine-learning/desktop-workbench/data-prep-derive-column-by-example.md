@@ -7,15 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 201492f033ad3e2508bc75c0865036e7c83a652a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8b85f57f79cad0a01d3c5499383108450babd507
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833759"
 ---
 # <a name="derive-column-by-example-transformation"></a>Odvození sloupec podle příkladu transformace
 
@@ -152,7 +154,7 @@ Počet příklady, které byly požadované pro tento případ: 1
 |Dana Marie|W|Petr|Dana Marie· W· Petr|
 |Portoriku||Ropp|Rico·· Ropp|
 |Může Lauren||Fullmer|Lauren May·· Fullmer|
-|Matolin|út|Maine|Marc· T· Maine|
+|Matolin|T|Maine|Marc· T· Maine|
 |Angie||Adelman|Angie·· Adelman|
 |Jan Paul||Smith|Jan Paul·· Smith|
 |Skladbu|W|Staller|Song· W· Staller|
@@ -190,11 +192,11 @@ Počet příklady, které byly požadované pro tento případ: 3
 |:-----|:-----:|
 |Muž|**0**|
 |Žena|**1**|
-|Neznámý|**2**|
+|Neznámé|**2**|
 |Žena|1|
 |Žena|1|
 |Muž|0|
-|Neznámý|2|
+|Neznámé|2|
 |Muž|0|
 |Žena|1|
 
@@ -307,7 +309,7 @@ Tyto části datum byly extrahovat pomocí různých podle příkladu transforma
 |28. listopadu 2006 14:19:15|Út|28|Lis|2006|14|19|15|
 |29. dubna 2031 04:59:45|Út|29|Dub|2031|4|59|45|
 |. 2032 29 ledna 02:38:36|Čt|29|Led|2032|2|38|36|
-|11. pravděpodobně 2028 15:31:52|Čt|11|Květen|2028|15|31|52|
+|11. pravděpodobně 2028 15:31:52|Čt|11|květen|2028|15|31|52|
 |15. července 1977 12:45:39|Pá|15|Čec|1977|12|45|39|
 |27. ledna 2029 05:55:41|So|27|Led|2029|5|55|41|
 |03. března 2024 10:17:49|Ne|3|Bře|2024|10|17|49|

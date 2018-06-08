@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 537839295deb631c3b9811c8d40db8608954e8a1
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835249"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 

@@ -7,17 +7,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: 5c617c60ff51d0b1e7717b28b0372efe63c1ee18
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ed402f9730136fdb8a4d07dd291599c567637600
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838377"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úlohy vědecké účely dat: zkoumání, modelování a nasazení
 
@@ -92,14 +94,17 @@ Existují různé přístupy a platformy pro modely uvedení do produkčního pr
 - [Nasazení modelu v systému SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
+> [!NOTE]
+> Před nasazením jeden má zajistit, že je latence modelu vyhodnocování nízké používat v produkčním prostředí.
 >
->
->Poznámka: Před nasazením, jeden má zajistit, že je latence modelu vyhodnocování nízké používat v produkčním prostředí.
 >
 
 Další příklady jsou k dispozici v návody, které ukazují všechny kroky v procesu pro **konkrétních scénářů**. Jsou uvedena v seznamu a propojené s miniatur popisy v [příklad návody](walkthroughs.md) článku. Se ukazují, jak kombinovat cloud, místní nástroje a služby do pracovního postupu nebo kanálu vytvoření inteligentního aplikace.
 
-Poznámka: Pro nasazení pomocí Azure Machine Learning Studio, najdete v části [nasazení webové služby Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+> [!NOTE]
+> Nasazení pomocí Azure Machine Learning Studio, najdete v tématu [nasazení webové služby Azure Machine Learning](../studio/publish-a-machine-learning-web-service.md).
+>
+>
 
 ### <a name="ab-testing"></a>A / B testování
 Když více modelů v produkčním prostředí, může být užitečné k provedení [A / B testování](https://en.wikipedia.org/wiki/A/B_testing) k porovnání výkonu modelů. 
@@ -108,6 +113,7 @@ Když více modelů v produkčním prostředí, může být užitečné k proved
 ## <a name="next-steps"></a>Další postup
 
 [Sledovat průběh datové vědy projekty](track-progress.md) ukazuje, jak vědecký pracovník dat můžete sledovat průběh projektu vědecké účely data.
- 
+
+[Model operace a CI/CD](ci-cd-flask.md) ukazuje, jak lze provést CI/CD vyvinuté modelů.
 
 

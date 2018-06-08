@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: a07c517ac3bfeabc1fe87ead07083c9b8b61dc7f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 19861955dcf82d0ffae674400552ca1f0c439a81
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834877"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Hledání řešení v galerii Azure AI
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]

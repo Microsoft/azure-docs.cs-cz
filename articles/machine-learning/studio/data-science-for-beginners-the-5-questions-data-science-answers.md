@@ -10,16 +10,18 @@ manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 494c8293a1dbfccbfe2df1e2f48f770edb6452dc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d004eb16fcac13d6ba7592cbe432cbeac0401e8
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834147"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
 Rychlý úvod k vědecké zpracování dat z *vědecké zpracování dat pro začátečníky* v pěti krátké videa z vědecký pracovník hlavní data. Tyto videa jsou základní ale užitečná, ať už vás zajímá provádění vědecké zpracování dat nebo práci s datových vědců.

@@ -10,16 +10,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 81b89a1f8a053fd3b1d0d6a0a1bcc5c67d2ba728
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 03729a5b94b355869367e7f356e299f9afe38f75
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34834994"
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Pomocí šablony webové aplikace využívají webové služby Azure Machine Learning
 

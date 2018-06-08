@@ -3,17 +3,18 @@ title: Sestavení a nasazení modelu prognózy lze pomocí Azure Machine Learnin
 description: Zjistěte, jak pro vytváření, trénování, otestovat a nasadit model prognózy lze pomocí Azure Machine Learning balíčku pro vytváření prognóz.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.component: service
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 160ea82177368ce9b47f298cca661c40599b3bbe
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833525"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognózy lze pomocí Azure Machine Learning
 
@@ -121,7 +122,7 @@ whole_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>obchod</th>
+      <th>úložiště</th>
       <th>značky</th>
       <th>týden</th>
       <th>logmove</th>
@@ -277,7 +278,7 @@ whole_df[['store','brand','WeekLastDay','Quantity']].head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>obchod</th>
+      <th>úložiště</th>
       <th>značky</th>
       <th>WeekLastDay</th>
       <th>Množství</th>
@@ -367,7 +368,7 @@ whole_tsdf[['Quantity']].head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>obchod</th>
+      <th>úložiště</th>
       <th>značky</th>
       <th></th>
     </tr>
@@ -432,7 +433,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>obchod</th>
+      <th>úložiště</th>
       <th>značky</th>
       <th></th>
     </tr>
@@ -731,7 +732,7 @@ whole_tsdf.head()
     </tr>
     <tr>
       <th>WeekLastDay</th>
-      <th>obchod</th>
+      <th>úložiště</th>
       <th>značky</th>
       <th></th>
       <th></th>

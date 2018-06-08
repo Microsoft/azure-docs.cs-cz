@@ -8,18 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: c851a9a5c20c3f658e8681a4178ebe67294fd773
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 6d8eedbbf4a682443e73ecb9cf9496f3cdd1cd9d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808073"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837197"
 ---
 # <a name="business-understanding"></a>Principy podniku
 

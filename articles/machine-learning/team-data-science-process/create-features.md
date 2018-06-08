@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 3fde69e8-5e7b-49ad-b3fb-ab8ef6503a4d
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: 0fcd17a5db1c5500c1b1591da52ba946188e8946
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b4194ef5ab1c2c09206ea0acf78cb539bc2fc0b7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836513"
 ---
 # <a name="feature-engineering-in-data-science"></a>Funkce analýzy v vědecké zpracování dat
 Tento článek popisuje účely funkce inženýrství a obsahuje příklady jeho role v proces vylepšení dat machine learning. V příkladech používají pro ilustraci tohoto procesu jsou vykreslovány z Azure Machine Learning Studio. 

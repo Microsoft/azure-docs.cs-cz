@@ -1,3 +1,5 @@
+# [Dokumentace k Azure Active Directory](index.md)
+
 # Přehled
 ## [Představení služby Azure Active Directory](active-directory-whatis.md)
 ## [Správa identit Azure](identity-fundamentals.md)
@@ -46,6 +48,7 @@
 ### [Správa uživatelských profilů](active-directory-users-profile-azure-portal.md)
 ### [Sdílení účtů](active-directory-sharing-accounts.md)
 ### [Přiřazení uživatelů k rolím správce](active-directory-users-assign-role-azure-portal.md)
+### [Obnovení odstraněného uživatele](active-directory-users-restore.md)
 ### [Přidání uživatelů typu host z jiného adresáře (B2B)](b2b/what-is-b2b.md)
 #### [Správci přidávají uživatele B2B](b2b/add-users-administrator.md)
 #### [Informační pracovníci přidávají uživatele B2B](b2b/add-users-information-worker.md)
@@ -80,7 +83,8 @@
 ## [Správa skupin a členů](active-directory-manage-groups.md)
 ### Správa skupin
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell pro Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Správa členů skupin](active-directory-groups-members-azure-portal.md)
 ### [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
 ### [Správa členství ve skupinách](active-directory-groups-membership-azure-portal.md)
@@ -88,16 +92,16 @@
 #### [Přiřazení licencí ke skupině](active-directory-licensing-group-assignment-azure-portal.md)
 #### [Identifikace a řešení potíží s licencemi ve skupině](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupin](active-directory-licensing-group-migration-azure-portal.md)
+#### [Migrace uživatelů mezi licencemi produktů](active-directory-licensing-group-product-migration.md)
 #### [Další scénáře pro licencování na základě skupin](active-directory-licensing-group-advanced.md)
 #### [Příklady Azure PowerShellu pro licencování na základě skupin](active-directory-licensing-ps-examples.md)
 #### [Referenční informace k produktům a plánům služeb v Azure AD](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Nastavení vypršení platnosti skupin Office 365](active-directory-groups-lifecycle-azure-portal.md)
+### [Vynucení zásad pojmenování pro skupiny](groups-naming-policy.md)
 ### [Zobrazení všech skupin](active-directory-groups-view-azure-portal.md)
 ### [Přidání skupiny k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md)
 ### [Obnovení odstraněné skupiny Office 365](active-directory-groups-restore-azure-portal.md)
-### Správa nastavení skupin
-#### [Azure Portal](active-directory-groups-settings-azure-portal.md)
-#### [Rutiny](active-directory-accessmanagement-groups-settings-cmdlets.md)
+### [Správa nastavení skupin](active-directory-groups-settings-azure-portal.md) 
 ### Vytváření rozšířených pravidel
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [Vytvoření samoobslužných skupin](active-directory-accessmanagement-self-service-group-management.md)
@@ -114,13 +118,17 @@
 #### [Konfigurace pojmenovaných umístění](active-directory-named-locations.md)
 #### [Vyhledávání sestav aktivit](active-directory-reporting-migration.md)
 #### [Použití sady Azure Active Directory Power BI Content Pack](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Oprava uživatelů označených příznakem rizika](active-directory-report-security-user-at-risk-remediation.md)
 ### Referenční informace
 #### [Uchování](active-directory-reporting-retention.md)
 #### [Latence](active-directory-reporting-latencies-azure-portal.md)
 #### [Oznámení](active-directory-reporting-notifications.md)
 #### [Reference k aktivitě auditování](active-directory-reporting-activity-audit-reference.md)
 #### [Kódy chyb aktivit přihlašování](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
+#### [Multi-factor authentication](active-directory-reporting-activity-sign-ins-mfa.md
+
+
+
 ### Řešení potíží
 #### [Chybějící data auditu](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Chybějící data v souborech ke stažení](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -178,6 +186,14 @@
 #### [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Použití vlastního analyzátoru protokolů](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
+### [Zřizování a rušení zřízení uživatelů pro aplikace SaaS](active-directory-saas-app-provisioning.md) 
+#### [Kurzy integrace aplikací](active-directory-saas-tutorial-list.md) 
+#### [Automatizace zřizování pro aplikace s podporou SCIM](active-directory-scim-provisioning.md) 
+#### [Přizpůsobení mapování atributů](active-directory-saas-customizing-attribute-mappings.md) 
+#### [Zápis výrazů pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md) 
+#### [Použití filtrů oborů](active-directory-saas-scoping-filters.md) 
+#### [Sestavy pro automatické zřizování uživatelů](active-directory-saas-provisioning-reporting.md) 
+#### [Řešení potíží se zřizováním uživatelů](active-directory-application-provisioning-content-map.md) 
 
 ### [Vzdálený přístup k aplikací s App Proxy](manage-apps/application-proxy.md)
 #### Začínáme
@@ -214,7 +230,7 @@
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
 ##### [Qlik](active-directory-application-proxy-qlik.md)
-
+#### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
 #### [Řešení problémů](active-directory-application-proxy-troubleshoot.md)
 
@@ -227,9 +243,9 @@
 #### [Správa zřizování uživatelských účtů](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Správa jednotného přihlašování pro podnikové aplikace](active-directory-enterprise-apps-manage-sso.md)
 #### [Pokročilé podepisování certifikátů pro aplikace SAML](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [Skrytí aplikace třetí strany před uživatelem](active-directory-coreapps-hide-third-party-app.md)
+#### [Skrytí aplikace v uživatelském prostředí](active-directory-coreapps-hide-third-party-app.md)
 ### [Konfigurace automatického zrychlení přihlašování pomocí zásad HRD](active-directory-auto-acceleration-using-hrd.md)
-
+### [Migrace aplikací AD FS do Azure AD](migrate-adfs-apps-to-azure.md) 
 ### [Správa přístupu k aplikacím](active-directory-managing-access-to-apps.md)
 #### [Přístup s jednotným přihlašováním](manage-apps/what-is-single-sign-on.md)
 #### [Certifikáty pro jednotné přihlašování](active-directory-sso-certs.md)
@@ -244,6 +260,15 @@
 ##### [Konfigurace](active-directory-application-config-content-map.md)
 ##### [Přihlášení](active-directory-application-sign-in-content-map.md)
 ##### [Zřizování](active-directory-application-provisioning-content-map.md)
+
+###### [Ověření zřízení uživatele](application-provisioning-when-will-provisioning-finish-specific-user.md) 
+###### [Zřizování trvá příliš dlouho](application-provisioning-when-will-provisioning-finish.md) 
+###### [Postup konfigurace zřizování uživatelů](application-provisioning-config-how-to.md) 
+###### [Problém konfigurace zřizování](application-provisioning-config-problem.md) 
+###### [Problém s uložením přihlašovacích údajů správce](application-provisioning-config-problem-storage-limit.md) 
+###### [Neprobíhá zřizování žádných uživatelů](application-provisioning-config-problem-no-users-provisioned.md) 
+###### [Probíhá zřizování nesprávných uživatelů](application-provisioning-config-problem-wrong-users-provisioned.md) 
+
 ##### [Správa přístupu](active-directory-application-access-content-map.md)
 ##### [Přístupový panel](active-directory-application-access-panel-content-map.md)
 ##### [Proxy soubor aplikace](active-directory-application-proxy-content-map.md)
@@ -274,11 +299,15 @@
 
 ## Delegování přístupu k prostředkům
 ### [Role správce](active-directory-assign-admin-roles-azure-portal.md)
-#### [Přiřazení rolí správce](active-directory-users-assign-role-azure-portal.md)
+#### [Přiřazení role správce uživateli](active-directory-users-assign-role-azure-portal.md) 
+#### [Porovnání oprávnění pro členy a uživatele typu host](users-default-permissions.md) 
+### [Zabezpečení privilegovaného přístupu](admin-roles-best-practices.md)  
+### [Vytvoření účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md) 
+
+
 #### [Výchozí uživatelská oprávnění](users-default-permissions.md)
 ### [Jednotky pro správu](active-directory-administrative-units-management.md)
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
-### [Správa účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Zabezpečení privilegovaných rolí](admin-roles-best-practices.md)
 
 ## Kontroly přístupu
@@ -315,9 +344,7 @@
 #### [Technické referenční informace](active-directory-conditional-access-technical-reference.md)
 #### [Nejčastější dotazy](active-directory-conditional-faqs.md)
 
-### Windows Hello
-#### [Ověření bez hesla](active-directory-azureadjoin-passport.md)
-#### [Povolení Windows Hello pro firmy](active-directory-azureadjoin-passport-deployment.md)
+
 ### Ověřování pomocí certifikátů
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
@@ -336,12 +363,13 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
-## [Integrace ostatních služeb s Azure AD]()
-### [Povolení integrace LinkedIn](linkedin-integration.md)
+## Integrace ostatních služeb s Azure AD 
+### [Integrace LinkedInu s Azure AD](linkedin-integration.md)
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
 

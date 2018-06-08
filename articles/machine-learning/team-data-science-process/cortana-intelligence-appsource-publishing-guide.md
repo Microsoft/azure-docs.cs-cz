@@ -7,18 +7,19 @@ author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams
-ms.openlocfilehash: 3817d58cd61fb349d7815984420d0deb1ae0edd9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 9f4e88be7b9b8e3ed7f6a2bbd299fd1e92f9c7af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808124"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836615"
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Průvodce publikování webu Cortana Intelligence AppSource
 

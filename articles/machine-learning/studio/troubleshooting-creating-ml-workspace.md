@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 1a8aec4b-35f9-44e8-9570-2575b8979ab1
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 5c265b14a88e993512811de365f1ba51f7ba6028
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 262c9af4e0f3ee34dc89986affacb6c0d8a0d801
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835718"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Průvodce odstraňováním potíží: Vytvoření pracovního prostoru Machine Learning a připojení k němu
 Tato příručka poskytuje řešení pro některé nejčastější problémy při se nastavování pracovních prostorů Azure Machine Learning.
@@ -30,7 +32,7 @@ Otevřete pracovní prostor v nástroji Machine Learning Studio, musíte být p�
 
 Další informace o pracovním prostoru Správa, najdete v části [spravovat pracovní prostor služby Azure Machine Learning].
 
-[spravovat pracovní prostor služby Azure Machine Learning]: manage-workspace.md
+[Spravovat pracovní prostor služby Azure Machine Learning]: manage-workspace.md
 
 ## <a name="allowed-regions"></a>Povolených oblastí
 Machine Learning je aktuálně k dispozici pro omezený počet oblastí. Pokud vaše předplatné neobsahuje jednu z těchto oblastí, mohou se zobrazit chybová zpráva, "V povolených oblastí používat žádná předplatná."

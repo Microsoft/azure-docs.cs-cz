@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c9ef1d3-4f5c-4b1f-bf06-223646c8af06
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 56a03347556f9ae3452548e85ce5d46f3961ed93
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 229e2c07a3e8d83fc01dc5f1542fd250cb4678f7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838972"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
 Toto téma popisuje možnosti pro přesun dat z plochých souborů (formáty CSV nebo TSV) nebo z místního serveru SQL do systému SQL Server na virtuální počítač Azure. Tyto úlohy pro přesun dat do cloudu jsou součástí procesu Team dat vědecké účely.

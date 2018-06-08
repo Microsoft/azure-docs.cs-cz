@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 658686bec41fe1a6cfa8ca4ba6fe61d2e559297c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833715"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -34,31 +35,16 @@ Pokud chcete použít správu aktualizací, budete potřebovat:
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Správa aktualizací je podporována v následujících operačních systémech.
+Správa aktualizací je podporován v následujících operačních systémů:
 
-### <a name="windows"></a>Windows
-
-- Windows Server 2008 nebo novější a nasazení aktualizací do Windows Serveru 2008 R2 SP1 a novějšího Nano Server není podporován.
-
-  Podpora pro nasazování aktualizací do Windows Serveru 2008 R2 SP1 vyžaduje .NET Framework 4.5 a Windows Management Framework 5.0 nebo novější.
-
-- Klientské operační systémy Windows nejsou podporované.
-
-Agenti Windows musí být buď nakonfigurovaní na komunikaci se službou Windows Server Update Services (WSUS), nebo musí mít přístup ke službě Microsoft Update.
-
-> [!NOTE]
-> Agenta Windows není možné spravovat současně s nástrojem System Center Configuration Manager.
->
-
-### <a name="linux"></a>Linux
-
-- CentOS 6 (x86/x64) a 7 (x64)
-
-- Red Hat Enterprise 6 (x86/x64) a 7 (x64)
-
-- SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)
-
-- Ubuntu 12.04 LTS a novější (x86/x64)
+|Operační systém  |Poznámky  |
+|---------|---------|
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat vyhodnocování         |
+|Windows Server 2008 R2 SP1 a vyšší     |Prostředí Windows PowerShell 4.0 nebo vyšší se vyžaduje ([stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Windows PowerShell 5.1 ([stáhnout 5.1 WMF](https://www.microsoft.com/download/details.aspx?id=54616)) se doporučuje pro větší spolehlivost.         |
+|CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací.        |
+|Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
+|SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Agenty Linux musí mít přístup k úložišti aktualizací.         |
 
 > [!NOTE]
 > Pokud se chcete zabránit tomu, aby se aktualizace používaly mimo časové období údržby v Ubuntu, změňte konfiguraci balíčku Unattended-Upgrade tak, aby automatické aktualizace byly zakázány. Další informace najdete v [tématu věnovaném automatickým aktualizacím v příručce k Ubuntu Serveru](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
@@ -142,7 +128,7 @@ V podokně **Nové nasazení aktualizace** zadejte následující údaje:
 
   ![Podokno Nové nasazení aktualizace](./media/manage-update-multi/update-select-computers.png)
 
-- **Klasifikace aktualizací:** Vyberte typy softwaru, které bude nasazení aktualizace zahrnovat. Popis typů klasifikace najdete v tématu [klasifikace aktualizací](automation-update-management.md#update-classifications). Typy klasifikace jsou:
+- **Klasifikace aktualizací:** Vyberte typy softwaru, které bude nasazení aktualizace zahrnovat. Popis typů klasifikace najdete v tématu popisujícím [klasifikace aktualizací](automation-update-management.md#update-classifications). Typy klasifikace jsou:
   - Důležité aktualizace
   - Aktualizace zabezpečení
   - Kumulativní aktualizace
@@ -151,6 +137,9 @@ V podokně **Nové nasazení aktualizace** zadejte následující údaje:
   - Aktualizace definic
   - Nástroje
   - Aktualizace
+
+- **Aktualizace pro vyloučení** – tím se otevře **vyloučit** stránky. Zadejte následující články znalostní báze nebo balíček názvy, které chcete vyloučit.
+
 - **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete ale zadat i jiný čas.
    Můžete také určit, jestli nasazení proběhne jednou nebo opakovaně. Pokud chcete nastavit plán opakování, klikněte na možnost **Opakuje se** v části **Opakování**.
 

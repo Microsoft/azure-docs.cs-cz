@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c7c2b72b3a164e35c464a92f82cddb3329250283
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 27f0c49913b424a6bd77b7cb6f7d6e97598c2157
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650056"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839805"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 Od zahájení nabídky PaaS databáze SQL Azure společnost Microsoft vyvinula potenciálu svým zákazníkům, které vysoké dostupnosti (HA) je součástí služby a zákazníků nemusejí fungovat, přidejte speciální logiku pro nebo rozhodnutí ohledně HA. Společnost Microsoft udržuje plnou kontrolu nad konfigurace systému HA a operace, zákazníkům nabídnout SLA. HA SLA platí pro databáze SQL v oblasti a neposkytuje ochranu v případě selhání celkový oblasti, které je faktory, které mimo Microsoft nemohla ovlivnit (například přírodní katastrofě, war, jednání teroristický útok, povstáním, government akci, nebo síťové zařízení selhání nebo externí vzhledem k datových centrech společnosti Microsoft, včetně v lokalitách zákazníka nebo mezi lokalitami zákazníka a datového centra společnosti Microsoft).
@@ -79,7 +79,7 @@ Ve výchozím nastavení jsou kvora sady replik pro místní úložiště konfig
 Protože zóny redundantní kvora set má repliky v různých datových centrech s některé vzdálenost mezi nimi, latence sítě vyšší může prodloužit doba potvrzení a proto mít dopad na výkon některé úlohy OLTP. Ke konfiguraci zóny jedním může vždy vrátit zakázáním nastavení redundance zóny. Tento proces je velikost operace dat a je podobná aktualizace cíle na úrovni (SLO) regulární služby. Na konci procesu je databáze nebo fondu migrovat z prstenec redundantní zóny v jedné oblasti prstenec nebo naopak.
 
 > [!IMPORTANT]
-> Zóny redundantní databáze i elastické fondy jsou podporovány pouze v Premium a kritické obchodní (preview) úrovních služeb. Během verzi public preview, zálohování a audit záznamy jsou uloženy v úložišti RA-GRS a proto nemusí být automaticky k dispozici v případě výpadku celou zónu. 
+> Zóny redundantní databáze i elastické fondy jsou aktuálně podporuje jenom ve vrstvě služeb Premium. Během verzi public preview, zálohování a audit záznamy jsou uloženy v úložišti RA-GRS a proto nemusí být automaticky k dispozici v případě výpadku celou zónu. 
 
 Zóny redundantní verzi Architektura vysoké dostupnosti je zobrazená ve následující diagram:
  

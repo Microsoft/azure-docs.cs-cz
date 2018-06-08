@@ -21,6 +21,8 @@
       href: custom-event-quickstart-portal.md
     - name: Odesílání událostí do služby Queue Storage
       href: custom-event-to-queue-storage.md
+    - name: Odesílání událostí do služby Event Hubs
+      href: custom-event-to-eventhub.md
 - name: Kurzy
   items:
     - name: E-mail při změně virtuálního počítače

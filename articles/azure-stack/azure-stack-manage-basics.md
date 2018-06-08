@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: mabrigg
-ms.openlocfilehash: df4a5a17ad034ae5d6ab82791c020634a8758b71
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283d1c2a7ef3484cb4fd4d9a53b543a093e9baf8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850299"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure zásobníku
 Existuje několik věcí, které potřebujete vědět, pokud začínáte Azure zásobníku správy. V tomto návodu najdete přehled role jako operátor zásobník Azure a co je potřeba říct uživatelům pro ně k produktivní rychle.
@@ -31,7 +32,7 @@ Pokud používáte Azure zásobníku integrované systému, aktualizovaných ver
  
 ### <a name="development-kit"></a>Development kit
 
-Pokud používáte Azure zásobníku Development Kit, přečtěte si [co je Azure zásobníku?](.\asdk\asdk-what-is.md) článek a ujistěte se, pochopit účel development kit a její omezení. Měli byste použít development kit jako "izolovaném prostoru," kde může vyhodnotit Azure zásobníku a vývoj a testování vaší aplikace v testovacím prostředí. (Informace o nasazení naleznete v tématu [nasazení Azure zásobníku Development Kit](.\asdk\asdk-deploy.md) kurzu.)
+Pokud používáte Azure zásobníku Development Kit, přečtěte si [co je Azure zásobníku?](.\asdk\asdk-what-is.md) článek a ujistěte se, pochopit účel development kit a její omezení. Měli byste použít development kit jako "izolovaném prostoru," kde může vyhodnotit Azure zásobníku a vývoj a testování vaší aplikace v testovacím prostředí. (Informace o nasazení naleznete v tématu [nasazení Azure zásobníku Development Kit](.\asdk\asdk-install.md) článek.)
 
 Jako je například Azure jsme inovacemi. Zajistěte rychle. Jsme budete pravidelně sestavení pro vydání nové. Pokud používáte sadě pro vývoj a chcete přesunout na nejnovější verzi, musíte [znovu nasadit Azure zásobníku](.\asdk\asdk-redeploy.md). Nelze použít balíčky aktualizací. Tento proces trvá určitou dobu, ale výhodou je, že můžete vyzkoušet nejnovější funkce. Dokumentaci k sadě development kit na našem webu odráží nejnovější verzi sestavení.
 
@@ -64,7 +65,7 @@ Tyto služby vyžadují další konfiguraci, než jste je zpřístupnit uživate
 
 Azure zásobníku budou nadále přidat podporu pro služby Azure. Předpokládané plán, najdete v článku [Azure zásobník: rozšíření Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) dokument White Paper. Také můžete monitorovat [příspěvcích na blogu Azure zásobníku](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) pro nové oznámení.
 
-## <a name="what-account-should-i-use"></a>Který účet mám použít?
+## <a name="what-account-should-i-use"></a>Jaký účet mám použít?
 Existuje několik, které byste měli vědět při správě Azure zásobníku důležité informace o účtu. Zejména v nasazení používáte Windows Server Active Directory Federation Services (AD FS) jako zprostředkovatele identity místo Azure Active Directory (Azure AD). Zásobník Azure integrované systémy a ASDK nasazení, platí následující aspekty účet:
 
 

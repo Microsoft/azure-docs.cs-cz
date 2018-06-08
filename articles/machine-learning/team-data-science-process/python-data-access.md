@@ -8,17 +8,19 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 9ab42272-c30c-4b7e-8e66-d64eafef22d0
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: f97fbb76ddf48fb3c7ec79b6b2ed8cee3e0ceabb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9f84686f8689a40cf002035053236b415481488f
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34838346"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Ve verzi preview Klientská knihovna pro Microsoft Azure Machine Learning Python můžete povolit zabezpečený přístup k vaší Azure Machine Learning datové sady z místního prostředí Python a umožňuje vytváření a správu datových sad v pracovním prostoru.
@@ -40,7 +42,7 @@ Klientská knihovna Python byl testován v následujících prostředích:
 
 Má závislost na následujících balíčků:
 
-* žádostí
+* požadavků
 * Python dateutil
 * pandas
 
@@ -132,7 +134,7 @@ Následující postup ukazuje příklad, který vytvoří experimentu, ji spust�
 6. Klikněte na uzel výstup na [převést na sdílený svazek clusteru] [ convert-to-csv] modulu.
 7. Po zobrazení v místní nabídce vyberte **generování dat přístupového kódu**.
    
-    ![Kontextové nabídky][experiment]
+    ![Kontextová nabídka][experiment]
 8. Vyberte fragmentu kódu a zkopírujte jej do schránky z okna, který se zobrazí.
    
     ![Přístupový kód][intermediate-dataset-access-code]

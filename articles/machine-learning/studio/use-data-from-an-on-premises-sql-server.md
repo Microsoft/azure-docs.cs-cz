@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 08e4610d-02b6-4071-aad7-a2340ad8e2ea
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 73b68ec612f10fabe0891bfddfa7783b981642bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c3402c824b70d357b68e71ed7cb5783a7489b2b0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34837374"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>Provádění pokročilých analýz dat místní databáze SQL Serveru pomocí služby Azure Machine Learning
 

@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 233cba790aff60121bd1fdf43667ac48a5ef668d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b79d928f3c1c3d81fbca0b8d676d4a4cbf83369a
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644932"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839635"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -24,7 +24,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální počet DWU pro jeden datový sklad SQL | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí počet jednotek DTU na server |54,000<br></br>Ve výchozím nastavení má každého serveru SQL server (například myserver.database.windows.net) DTU kvótu 54 000, což umožňuje až DW6000c. Tato kvóta je jednoduše bezpečnostní omezení. Můžete zvýšit kvótu podle [vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md) a výběrem *kvóty* jako typ požadavku.  K výpočtu vaší DTU potřebuje, celkový počet DWU potřeby vynásobit 7.5 nebo 9.0 vynásobit celkový cDWU potřeby. Příklad:<br></br>DW6000 x 7.5 = 45,000 Dtu<br></br>DW600c x 9.0 = 54 000 Dtu.<br></br>Vaše aktuální spotřeba DTU z možnost SQL serveru můžete zobrazit na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
+| [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Výchozí počet jednotek DTU na server |54,000<br></br>Ve výchozím nastavení má každého serveru SQL server (například myserver.database.windows.net) DTU kvótu 54 000, což umožňuje až DW6000c. Tato kvóta je jednoduše bezpečnostní omezení. Můžete zvýšit kvótu podle [vytvoření lístku podpory](sql-data-warehouse-get-started-create-support-ticket.md) a výběrem *kvóty* jako typ požadavku.  K výpočtu vaší DTU potřebuje, celkový počet DWU potřeby vynásobit 7.5 nebo 9.0 vynásobit celkový cDWU potřeby. Příklad:<br></br>DW6000 x 7.5 = 45,000 Dtu<br></br>DW6000c x 9.0 = 54 000 Dtu.<br></br>Vaše aktuální spotřeba DTU z možnost SQL serveru můžete zobrazit na portálu. Pozastavené i nepozastavené databáze se započítávají do kvóty DTU. |
 | Připojení databáze |Souběžné otevřených relací |1024<br/><br/>Všechny aktivní relace 1024 mohou odesílat požadavky na databázi SQL Data Warehouse ve stejnou dobu. Všimněte si, existují omezení počtu dotazy, které mohou být prováděny současně. Při překročení limitu souběžnosti, žádost přejde do vnitřní fronty, kde se čeká na zpracování. |
 | Připojení databáze |Maximální velikost paměti pro připravené příkazy |20 MB |
 | [Správa úloh](resource-classes-for-workload-management.md) |Maximální počet souběžných dotazů |32<br/><br/> Ve výchozím nastavení můžete spustit SQL Data Warehouse maximálně 32 souběžných dotazů a fronty zbývající dotazy.<br/><br/>Počet souběžných dotazů můžete snížit uživatelé přiřazení k vyšší třídy prostředku nebo když SQL Data Warehouse má nižší [jednotek datových skladů](memory-and-concurrency-limits.md) nastavení. Některé dotazy, jako jsou dotazy DMV, je vždy povoleno spustit. |

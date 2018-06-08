@@ -8,15 +8,17 @@ manager: hjerez
 editor: jasonwhowell
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 3efc351861a7d5b3c02c08b96494e83a3ccb99f6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 233ae50246619c3e503e42081c3b4de88090f411
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835028"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning Model správy účtu API – referenční informace
 

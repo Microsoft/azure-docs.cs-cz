@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 8f104ab046fad8dfd9086525b8f942f3d2941821
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 57747e21cf4b5b32fc5b0ddeaf151a538337afba
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34852071"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -30,5 +31,5 @@ ms.lasthandoff: 05/20/2018
 
 <sup>1</sup>navíc malé počet instancí jako jednoho jádra směrem limitu jader navzdory pomocí částečné jádra.
 
-<sup>2</sup>limit účet úložiště obsahuje účty úložiště Standard a Premium. Pokud potřebujete více než 200 účty úložiště v jedné oblasti, vytvořte žádost na prostřednictvím [podporu Azure](https://azure.microsoft.com/support/faq/). Tým Azure Storage se na váš obchodní případ podívá a může schválit až 250 účtů úložiště. 
+<sup>2</sup>limit účet úložiště obsahuje účty úložiště Standard a Premium. Pokud potřebujete více než 200 účty úložiště v dané oblasti, vytvořte žádost na prostřednictvím [podporu Azure](https://azure.microsoft.com/support/faq/). Tým služby Azure Storage bude zkontrolovat váš případ obchodní a může schválit až 250 účty úložiště pro příslušnou oblast. 
 

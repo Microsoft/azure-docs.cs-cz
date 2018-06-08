@@ -7,15 +7,17 @@ ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 58709b5a5b060552e1bc349a6f720d3f45348ba0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1f8dbe5ccae34ab185cbe5105ac793a0d401b48e
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831662"
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Škálování clusteru spravovat propustnost webové služby
 
@@ -86,10 +88,10 @@ Například nastavení `autoscale-min-replicas` 5 vytvoří pět repliky. K dosa
 | Název parametru | Typ | Popis |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | Boolean | Určuje, zda je povoleno automatické škálování. Výchozí: true |
-| `autoscale-min-replicas` | celé číslo | Určuje minimální počet pracovními stanicemi soustředěnými kolem. Musí být 0 nebo větší. Výchozí: 1 |
-| `autoscale-max-replicas` | celé číslo | Určuje maximální počet pracovními stanicemi soustředěnými kolem. Musí být 1 nebo vyšší. Je-li škálování. maximální počet replik je menší než škálování min repliky, automatické škálování. maximální počet replik budou ignorovány. Výchozí: 10 |
-| `autoscale-refresh-period-seconds` | celé číslo | Určuje dobu v sekundách mezi aktualizacemi škálování. Výchozí: 1 |
-| `autoscale-target-utilization` | celé číslo | Určuje procento využití s cílem škálování, od 1 do 100. Výchozí: 70 |
+| `autoscale-min-replicas` | integer | Určuje minimální počet pracovními stanicemi soustředěnými kolem. Musí být 0 nebo větší. Výchozí: 1 |
+| `autoscale-max-replicas` | integer | Určuje maximální počet pracovními stanicemi soustředěnými kolem. Musí být 1 nebo vyšší. Je-li škálování. maximální počet replik je menší než škálování min repliky, automatické škálování. maximální počet replik budou ignorovány. Výchozí: 10 |
+| `autoscale-refresh-period-seconds` | integer | Určuje dobu v sekundách mezi aktualizacemi škálování. Výchozí: 1 |
+| `autoscale-target-utilization` | integer | Určuje procento využití s cílem škálování, od 1 do 100. Výchozí: 70 |
 
 Škálování funguje zajistit tyto dvě podmínky:
 

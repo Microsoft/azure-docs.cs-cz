@@ -8,17 +8,19 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
+ms.component: team-data-science-process
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 7633d2bd15e5bc4620a4980623f3883c162f4331
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34836462"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Strojového učení detekce anomálií rozhraní API
 ## <a name="overview"></a>Přehled
@@ -120,13 +122,13 @@ Podrobnější informace o těchto vstupních parametrů jsou uvedeny v následu
 
 | Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navržená oblast |
 | --- | --- | --- | --- | --- | --- |
-| detectors.historyWindow |Historie (v počet datových bodů), které jsou používány pro výpočty anomálií skóre |500 |celé číslo |10-2000 |Závislé na časové řady |
+| detectors.historyWindow |Historie (v počet datových bodů), které jsou používány pro výpočty anomálií skóre |500 |integer |10-2000 |Závislé na časové řady |
 | detectors.spikesdips | Jestli se má zjišťovat pouze špičky, pouze vyhrazené IP adresy, nebo obojí |Obojí |vytvořit její výčet. |Obě špičky, vyhrazené IP adresy |Obojí |
 | bileveldetector.Sensitivity |Velkých a malých písmen pro úroveň obousměrného změnit detektor. |3.25 |double |Žádný |3,25-5 (hodnoty menší význam citlivější) |
 | trenddetector.Sensitivity |Velkých a malých písmen pro pozitivní trend detektor. |3.25 |double |Žádný |3,25-5 (hodnoty menší význam citlivější) |
-| tspikedetector.Sensitivity |Velkých a malých písmen pro TSpike detektor |3 |celé číslo |1-10 |3 až 5 (hodnoty menší význam citlivější) |
-| zspikedetector.Sensitivity |Velkých a malých písmen pro ZSpike detektor |3 |celé číslo |1-10 |3 až 5 (hodnoty menší význam citlivější) |
-| postprocess.tailRows |Počet nejnovější datových bodů budou muset zůstat ve výsledcích výstup |0 |celé číslo |0 (uchovávejte všechny datové body), nebo zadejte počet bodů pro uchování v výsledky |neuvedeno |
+| tspikedetector.Sensitivity |Velkých a malých písmen pro TSpike detektor |3 |integer |1-10 |3 až 5 (hodnoty menší význam citlivější) |
+| zspikedetector.Sensitivity |Velkých a malých písmen pro ZSpike detektor |3 |integer |1-10 |3 až 5 (hodnoty menší význam citlivější) |
+| postprocess.tailRows |Počet nejnovější datových bodů budou muset zůstat ve výsledcích výstup |0 |integer |0 (uchovávejte všechny datové body), nebo zadejte počet bodů pro uchování v výsledky |neuvedeno |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory na datové řady čas a vrátí anomálií skóre a binární Špička indikátory pro každý bod v čase. Následující tabulka uvádí výstupy z rozhraní API. 
@@ -156,20 +158,20 @@ Podrobnější informace o těchto vstupních parametrů jsou uvedeny v následu
 
 | Vstupní parametry | Popis | Výchozí nastavení | Typ | Platný rozsah | Navržená oblast |
 | --- | --- | --- | --- | --- | --- |
-| preprocess.aggregationInterval |Agregace interval v sekundách pro agregaci vstupní časové řady |0 (žádné agregace se provádí) |celé číslo |0: jinak přeskočit agregace > 0 |5 minut až 1 den, závislé na časové řady |
+| preprocess.aggregationInterval |Agregace interval v sekundách pro agregaci vstupní časové řady |0 (žádné agregace se provádí) |integer |0: jinak přeskočit agregace > 0 |5 minut až 1 den, závislé na časové řady |
 | preprocess.aggregationFunc |Funkce použitá pro agregaci dat do zadané AggregationInterval |střední |vytvořit její výčet. |Střední, sum, délka |neuvedeno |
 | preprocess.replaceMissing |Hodnoty použité k dává chybějící data |lkv (poslední známá hodnota) |vytvořit její výčet. |nula, lkv, střední |neuvedeno |
-| detectors.historyWindow |Historie (v počet datových bodů), které jsou používány pro výpočty anomálií skóre |500 |celé číslo |10-2000 |Závislé na časové řady |
+| detectors.historyWindow |Historie (v počet datových bodů), které jsou používány pro výpočty anomálií skóre |500 |integer |10-2000 |Závislé na časové řady |
 | detectors.spikesdips | Jestli se má zjišťovat pouze špičky, pouze vyhrazené IP adresy, nebo obojí |Obojí |vytvořit její výčet. |Obě špičky, vyhrazené IP adresy |Obojí |
 | bileveldetector.Sensitivity |Velkých a malých písmen pro úroveň obousměrného změnit detektor. |3.25 |double |Žádný |3,25-5 (hodnoty menší význam citlivější) |
 | postrenddetector.Sensitivity |Velkých a malých písmen pro pozitivní trend detektor. |3.25 |double |Žádný |3,25-5 (hodnoty menší význam citlivější) |
 | negtrenddetector.Sensitivity |Velkých a malých písmen pro detektor negativní trend. |3.25 |double |Žádný |3,25-5 (hodnoty menší význam citlivější) |
-| tspikedetector.Sensitivity |Velkých a malých písmen pro TSpike detektor |3 |celé číslo |1-10 |3 až 5 (hodnoty menší význam citlivější) |
-| zspikedetector.Sensitivity |Velkých a malých písmen pro ZSpike detektor |3 |celé číslo |1-10 |3 až 5 (hodnoty menší význam citlivější) |
+| tspikedetector.Sensitivity |Velkých a malých písmen pro TSpike detektor |3 |integer |1-10 |3 až 5 (hodnoty menší význam citlivější) |
+| zspikedetector.Sensitivity |Velkých a malých písmen pro ZSpike detektor |3 |integer |1-10 |3 až 5 (hodnoty menší význam citlivější) |
 | seasonality.enable |Zda je analýza sezónnosti provést |true (pravda) |Boolean |Hodnota TRUE, false |Závislé na časové řady |
-| seasonality.numSeasonality |Maximální počet cyklů pravidelné rozpoznána |1 |celé číslo |1, 2 |1-2 |
+| seasonality.numSeasonality |Maximální počet cyklů pravidelné rozpoznána |1 |integer |1, 2 |1-2 |
 | seasonality.Transform |Jestli sezónní (a) trend součásti se musí odebrat před použitím detekce anomálií |deseason |vytvořit její výčet. |NONE, deseason, deseasontrend |neuvedeno |
-| postprocess.tailRows |Počet nejnovější datových bodů budou muset zůstat ve výsledcích výstup |0 |celé číslo |0 (uchovávejte všechny datové body), nebo zadejte počet bodů pro uchování v výsledky |neuvedeno |
+| postprocess.tailRows |Počet nejnovější datových bodů budou muset zůstat ve výsledcích výstup |0 |integer |0 (uchovávejte všechny datové body), nebo zadejte počet bodů pro uchování v výsledky |neuvedeno |
 
 ### <a name="output"></a>Výstup
 Rozhraní API spustí všechny detektory na datové řady čas a vrátí anomálií skóre a binární Špička indikátory pro každý bod v čase. Následující tabulka uvádí výstupy z rozhraní API. 

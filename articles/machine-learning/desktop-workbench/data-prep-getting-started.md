@@ -7,14 +7,16 @@ ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: b0fbb0af433cfad6693b022d7a00373dc39533aa
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6bfa02bc098cdc8a9f37d238761dd44202e57ae6
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831213"
 ---
 # <a name="getting-started-with-data-preparation"></a>Začínáme s data přípravy
 

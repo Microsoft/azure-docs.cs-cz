@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: 2d00bed1544bc8dcb17af0d35c9c17f1c3113990
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 82d2316b3f72fbb0c5c3ee1ea9424afcc7661361
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833967"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Machine Learning pomocí Azure Resource Manageru
 ## <a name="introduction"></a>Úvod
@@ -79,7 +81,7 @@ Následující šablona používá název skupiny prostředků můžete vygenero
 Uložte jako soubor mlworkspace.json pod c:\temp\ této šablony.
 
 ### <a name="deploy-the-resource-group-based-on-the-template"></a>Nasazení skupiny prostředků, na základě šablony
-* Otevřete prostředí PowerShell
+* Otevření Powershellu
 * Instalace modulů pro správu služby Azure a Azure Resource Manager  
 
 ```

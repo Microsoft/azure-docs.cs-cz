@@ -7,21 +7,23 @@ ms.author: serinak
 manager: hjerez
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: 81649277c0cb2f4b00ce856be5efcce6121b1be4
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 14f8dd29b7d4185d01529631333de045ad23cdd0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831450"
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Povolit protokol SSL v clusteru Azure Machine Learning výpočetní (MLC) 
 
 Tyto pokyny umožňují nastavení protokolu SSL pro vyhodnocování volání na Machine Learning výpočetní (MLC) clusteru. 
 
-## <a name="prerequisites"></a>Požadované součásti 
+## <a name="prerequisites"></a>Požadavky 
 
 1. Použít při volání v reálném čase vyhodnocování rozhodnete na záznam CNAME (název DNS).
 

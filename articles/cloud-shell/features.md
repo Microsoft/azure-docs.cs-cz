@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 3e71f2307ab68b2bc4694c7782f7a0f0d43b159b
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: b61dda5b56ca3cc8ef827a06aaedac701ca79f8f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757038"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850198"
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Funkce a nástroje pro Bash v prostředí cloudu Azure
 
@@ -58,7 +58,7 @@ Bash v prostředí cloudu obsahuje předem nakonfigurovaná ověřování pro op
 |Kategorie   |Název   |
 |---|---|
 |Nástroje pro Linux            |Bash<br> Zo<br> tmux<br> dig<br>               |
-|Nástroje Azure            |[Rozhraní příkazového řádku Azure 2.0](https://github.com/Azure/azure-cli) a [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br> [blobxfer](https://github.com/Azure/blobxfer#blobxfer) |
+|Nástroje Azure            |[Rozhraní příkazového řádku Azure 2.0](https://github.com/Azure/azure-cli) a [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |Textové editory           |VIM<br> nano<br> EMACS       |
 |Správa zdrojového kódu         |Git                    |
 |Nástroje sestavení            |Ujistěte se<br> maven<br> npm<br> PIP         |

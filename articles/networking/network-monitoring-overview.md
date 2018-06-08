@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850133"
 ---
 # <a name="network-monitoring-solutions"></a>Řešení pro monitorování sítě 
 
@@ -40,11 +41,11 @@ Sledování výkonu, ExpressRoute sledování a monitorování koncového bodu s
 
 Sledování výkonu je součástí NPM a je monitorování sítě pro cloud, hybridní a místními prostředími. Připojení k síti můžete sledovat v rámci firemní pobočky ve vzdálených a pole pobočky, umístění úložiště, datovými centry a cloudy. Můžete zjistit problémy se síťovým před stížnost vaši uživatelé. Jsou klíčové výhody:
 
-* Sledovat ztrátě a latence v rámci různých podsítí a nastavit upozornění
+* Monitorování ztrát a latence mezi různými podsítěmi a nastavování upozornění
 * Monitorovat všechny cesty (včetně redundantní cesty) v síti
 * Řešení problémů přechodný a v daném okamžiku sítě, které je obtížné replikovat
 * Určit konkrétní segmentu v síti, která je odpovědná za snížení výkonu
-* Monitorování stavu sítě, bez nutnosti SNMP
+* Monitorování stavu sítě bez nutnosti používat protokol SNMP
 
 ![Mapy topologie NPM](./media/network-monitoring-overview/npm-topology-map.png) 
 
@@ -54,14 +55,15 @@ Další informace zobrazení v následujících článcích:
 * [Případy použití](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 *  Aktualizace produktu: [února 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [2017 srpen](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 
-## <a name="expressroute-monitor"></a>Monitorování ExpressRoute
+## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
-NPM pro ExpressRoute nabízí rozsáhlé sledování ExpressRoute pro privátní připojení partnerského vztahu. Můžete monitorovat E2E připojení a výkon mezi pobočkami a Azure prostřednictvím ExpressRoute. Klíčové funkce jsou:
+NPM pro ExpressRoute nabízí komplexní ExpressRoute monitorování Azure soukromého partnerského vztahu a partnerského vztahu připojení společnosti Microsoft. Můžete monitorovat E2E připojení a výkon mezi pobočkami a Azure prostřednictvím ExpressRoute. Klíčové funkce jsou:
 
 * Automatické zjišťování ER okruhů spojené s vaším předplatným
 * Zjišťování topologie sítě z místního pro cloudové aplikace
-* Plánování kapacity, analýzy využití, využití šířky pásma na jednu virtuální síť
+* Plánování kapacity, analýza využití šířky pásma
 * Monitorování a výstrahy na primární i sekundární cesty
+* Monitorování připojení k Azure službami, jako je Office 365, Dynamics 365... přes ExpressRoute
 * Zjištění snížení připojení k virtuálním sítím
 
 ![Geografické mapy znázorňující provoz v oblastech](./media/network-monitoring-overview/expressroute-topology-map.png) 

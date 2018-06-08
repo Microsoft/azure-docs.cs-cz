@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 04/10/2018
+ms.date: 06/07/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: 2680ee2354a8cf76491a8a3b63e14d91b4c6cbd6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6e58d3ed84771cedda126511e868ad264db88606
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645823"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850487"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastických fondů pomáhají spravovat a škálování více databází Azure SQL
 
@@ -104,7 +104,7 @@ Velikost doporučené pro fond závisí na agregační prostředky potřebné pr
 
 Úrovně služeb dostupné pro každý model prostředků, najdete v článku [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) nebo [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
 
-SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Kromě těchto doporučení integrované prostředí odhaduje využití eDTU pro vlastní skupinu databází na serveru. Interaktivním přidáváním databází do fondu a jejich odebíráním díky tomu můžete prostřednictvím citlivostních analýz získat analýzy využití prostředků a rady týkající se požadované velikosti dřív, než potvrdíte požadované změny. Postupy najdete v tématu [Monitorování, správa a nastavení velikosti elastického fondu](sql-database-elastic-pool-manage-portal.md).
+SQL Database automaticky vyhodnotí historické údaje používání prostředků databází na existujícím serveru SQL Database a doporučí odpovídající konfigurace fondu na webu Azure Portal. Kromě těchto doporučení integrované prostředí odhaduje využití eDTU pro vlastní skupinu databází na serveru. Interaktivním přidáváním databází do fondu a jejich odebíráním díky tomu můžete prostřednictvím citlivostních analýz získat analýzy využití prostředků a rady týkající se požadované velikosti dřív, než potvrdíte požadované změny. Postupy najdete v tématu [Monitorování, správa a nastavení velikosti elastického fondu](#monitor-an-elastic-pool-and-its-databases).
 
 V případech, kdy nejde používat nástroje, vám při odhadování, jestli je fond cenově výhodnější než izolované databáze, pomůže následující postup:
 

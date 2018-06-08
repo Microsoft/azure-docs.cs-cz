@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 44777946fdc829da222ffdd67dfecfa3bf240be7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2eefabcc0484fca0e6e3ad1dd5037684a759d010
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850442"
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Průvodce řešením potíží pro Azure Stream Analytics
 
@@ -41,6 +42,7 @@ Chcete-li dosáhnout nejlepších výsledků při řešení potíží úlohu slu
 
 5.  Eliminovat běžné nástrahy, jako například:
     - A [ **kde** ](https://msdn.microsoft.com/library/azure/dn835048.aspx) klauzule dotazu odfiltrovat všechny události, brání generován žádný výstup.
+    - A [ **PŘETYPOVÁNÍ** ](https://msdn.microsoft.com/azure/stream-analytics/reference/cast-azure-stream-analytics) funkce selže, která způsobila selhání úlohy. Aby se zabránilo selhání přetypování typ, použijte [ **TRY_CAST** ](https://msdn.microsoft.com/azure/stream-analytics/reference/try-cast-azure-stream-analytics) místo.
     - Při použití funkce okno, počkejte, než po dobu trvání celé okno zobrazíte výstup z dotazu.
     - Časové razítko pro události předchází čas spuštění úlohy, a proto jsou vyřazována události.
 

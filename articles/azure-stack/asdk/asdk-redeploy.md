@@ -1,6 +1,6 @@
 ---
 title: Znovu nasaďte Azure zásobníku Development Kit (ASDK) | Microsoft Docs
-description: V tomto kurzu zjistěte, jak znovu nainstalovat ASDK.
+description: V tomto článku zjistěte, jak znovu nainstalovat ASDK.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -11,28 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 03/16/2018
+ms.topic: article
+ms.custom: ''
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fcf1abfe574dd3067f00df7c5ff2632b9cc2ec4f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91b8a936215e906e6e5b7e6a4fcd0dc88bef6009
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850316"
 ---
-# <a name="tutorial-redeploy-the-asdk"></a>Kurz: znovu nasaďte ASDK
-V tomto kurzu zjistěte, jak se znovu nasadit Azure zásobníku Development Kit (ASDK) v testovacím prostředí. Protože upgrade ASDK není podporován, budete muset zcela znovu nasaďte ho přesunout na novější verzi. Můžete také znovu nasadit ASDK kdykoli, který chcete začít znovu od začátku.
+# <a name="redeploy-the-asdk"></a>Znovu nasaďte ASDK
+V tomto článku zjistěte, jak se znovu nasadit Azure zásobníku Development Kit (ASDK) v testovacím prostředí. Protože upgrade ASDK není podporován, budete muset zcela znovu nasaďte ho přesunout na novější verzi. Můžete také znovu nasadit ASDK kdykoli, který chcete začít znovu od začátku.
 
 > [!IMPORTANT]
 > Upgrade ASDK na novou verzi není podporován. Budete muset znovu nasaďte ASDK na hostitelském počítači development kit pokaždé, když chcete vyhodnotit na novější verzi Azure zásobníku.
-
-V tomto kurzu se naučíte:
-
-> [!div class="checklist"]
-> * Odebrání registrace Azure 
-> * Znovu nasaďte ASDK
 
 ## <a name="remove-azure-registration"></a>Odebrání registrace Azure 
 Pokud jste již dříve zaregistrovali ASDK instalace s Azure, byste měli odebrat před opětovného nasazení ASDK registrace prostředků. Opakujte registraci ASDK při opětovném ASDK povolit syndikace marketplace. Pokud ve vašem předplatném Azure nejsou dříve registrován ASDK, můžete tuto část přeskočit.
@@ -55,7 +50,7 @@ Pokud chcete odstranit prostředek registrace, použijte **odebrat AzsRegistrati
 
   # Unregister Azure Stack
   Remove-AzsRegistration `
-      -CloudAdminCredential $YourCloudAdminCredential `
+      -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint AzS-ERCS01
 
   # Remove the Azure Stack resource group
@@ -71,7 +66,7 @@ Pokud chcete odstranit prostředek registrace, použijte **odebrat AzsRegistrati
 
 Azure zásobníku by měl nyní úspěšně se zrušit registraci ze svého předplatného Azure. Kromě toho azurestack skupinu prostředků, vytvořen po registraci ASDK s Azure, má být rovněž odstraněn.
 
-## <a name="redeploy-the-asdk"></a>Znovu nasaďte ASDK
+## <a name="deploy-the-asdk"></a>Nasazení ASDK
 K opětovnému nasazení zásobník Azure, musíte spustit přes od začátku níže popsané. Postup se liší v závislosti na tom, jestli použít skript instalačního programu (asdk-installer.ps1) zásobníku Azure k instalaci ASDK.
 
 ### <a name="redeploy-the-asdk-using-the-installer-script"></a>Znovu nasaďte ASDK pomocí skriptu Instalační program
@@ -85,7 +80,7 @@ K opětovnému nasazení zásobník Azure, musíte spustit přes od začátku n�
 
 3. Po hostitele development kit restartuje do základního operačního systému, přihlaste se jako místní správce. Vyhledejte a odstraňte **C:\CloudBuilder.vhdx** soubor, který byl použit v rámci předchozí nasazení. 
 
-4. Opakujte stejný postup, které jste si pro první [nasadit ASDK](asdk-deploy.md).
+4. Opakujte stejný postup, které jste si pro první [nasadit ASDK](asdk-install.md).
 
 ### <a name="redeploy-the-asdk-without-using-the-installer"></a>Znovu nasaďte ASDK bez použití Instalační program
 Pokud jste nepoužili asdk installer.ps1 skript k instalaci ASDK, je nutné ručně překonfigurovat development kit hostitelský počítač před opětovného nasazení ASDK.
@@ -100,16 +95,7 @@ Pokud jste nepoužili asdk installer.ps1 skript k instalaci ASDK, je nutné ruč
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jste se naučili:
-
-> [!div class="checklist"]
-> * Odebrání registrace Azure 
-> * Znovu nasaďte ASDK
-
-Přechodu na v dalším kurzu se dozvíte, jak přidat položku zásobník Azure marketplace.
-
-> [!div class="nextstepaction"]
-> [Přidání položky zásobníku Azure marketplace.](asdk-marketplace-item.md)
+[Po dokončení instalace ASDK úlohy konfigurace](asdk-post-deploy.md)
 
 
 

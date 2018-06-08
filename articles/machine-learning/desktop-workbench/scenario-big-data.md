@@ -9,17 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: desktop-workbench
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 424af2ffd1b7931701036aeb819cbb8879cb7a41
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34832658"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognózování úloh serveru s terabajty dat
 
@@ -104,17 +106,17 @@ Celkové velikosti dat je přibližně 1 TB. Každý soubor je přibližně 1 �
 1  | `SessionStart` | Datum a čas |    Čas spuštění relace
 2  |`SessionEnd`    | Datum a čas | Čas ukončení relace
 3 |`ConcurrentConnectionCounts` | Integer | Počet souběžných připojení
-4 | `MbytesTransferred` | Dvojitý | Normalizovaný data přenesená v megabajtech
+4 | `MbytesTransferred` | Double | Normalizovaný data přenesená v megabajtech
 5 | `ServiceGrade` | Integer |  Úrovni služby pro relaci
 6 | `HTTP1` | Integer|  Relace používá HTTP1 nebo HTTP2
 7 |`ServerType` | Integer   |Typ serveru
-8 |`SubService_1_Load` | Dvojitý |   Zatížení subservice 1
-9 | `SubService_2_Load` | Dvojitý |  Zatížení subservice 2
-10 | `SubService_3_Load` | Dvojitý |     Zatížení subservice 3
-11 |`SubService_4_Load` | Dvojitý |  Zatížení subservice 4
-12 | `SubService_5_Load`| Dvojitý |      Zatížení subservice 5
-13 |`SecureBytes_Load`  | Dvojitý | Zabezpečené bajtů zatížení
-14 |`TotalLoad` | Dvojitý | Celkový počet zatížení na serveru
+8 |`SubService_1_Load` | Double |   Zatížení subservice 1
+9 | `SubService_2_Load` | Double |  Zatížení subservice 2
+10 | `SubService_3_Load` | Double |     Zatížení subservice 3
+11 |`SubService_4_Load` | Double |  Zatížení subservice 4
+12 | `SubService_5_Load`| Double |      Zatížení subservice 5
+13 |`SecureBytes_Load`  | Double | Zabezpečené bajtů zatížení
+14 |`TotalLoad` | Double | Celkový počet zatížení na serveru
 15 |`ClientIP` | Řetězec|    IP adresa klienta
 16 |`ServerIP` | Řetězec|    IP adresa serveru
 
@@ -164,7 +166,7 @@ Měli byste použít jeden kontejner pro experimenty na jeden měsíc datové sa
 | stringIndexModel | Parquet | Řetězec indexer model pro jiné než číselné funkce.|
 | oneHotEncoderModel|Parquet | Kodér horkou jeden model pro kategorií funkce. |
 | mlModel | Parquet | Model vyškolení strojového učení. |
-| Informace o| Soubor okurky Python | Informace o Transformovaná data, včetně počáteční školení, konec učení, doba trvání, časové razítko pro train-test rozdělení a sloupce pro indexování a jeden horkou kódování.
+| informace| Soubor okurky Python | Informace o Transformovaná data, včetně počáteční školení, konec učení, doba trvání, časové razítko pro train-test rozdělení a sloupce pro indexování a jeden horkou kódování.
 
 Všechny soubory a objekty BLOB v předchozí tabulce se používají pro operationalization.
 
@@ -190,7 +192,7 @@ První argument `configFilename`, je místní konfigurační soubor, kam ukláda
 | storageContainer | Řetězec | Kontejneru v účtu Azure Storage k ukládání mezilehlých výsledků |
 | klíč úložiště | Řetězec |Azure přístupový klíč účtu úložiště |
 | datový soubor|Řetězec | Soubory zdroje dat  |
-| Doba trvání| Řetězec | Doba trvání dat v soubory zdroje dat|
+| doba trvání| Řetězec | Doba trvání dat v soubory zdroje dat|
 
 Změňte oba `Config/storageconfig.json` a `Config/fulldata_storageconfig.json` ke konfiguraci účtu úložiště, klíč úložiště a kontejneru objektů blob k ukládání mezilehlých výsledků. Ve výchozím kontejneru objektů blob pro jeden měsíc data spustit je `onemonthmodel`, a je kontejner objektů blob pro úplnou datovou sadu spustit `fullmodel`. Ujistěte se, že vytvoříte tyto dvě kontejnery v účtu úložiště. `dataFile` Pole [ `Config/fulldata_storageconfig.json` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) nakonfiguruje, jaká data je načten do [ `Code/etl.py` ](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Code/etl.py). `duration` Pole konfiguruje rozsah obsahuje data. Pokud doba trvání je nastavené na ONE_MONTH, třeba data načíst jenom jeden soubor .csv mezi sedm soubory dat z června 2016. Pokud doba trvání je plná, je načten úplné datové sady (1 TB). Není třeba měnit `dataFile` a `duration` v těchto dvou konfiguračních souborech.
 

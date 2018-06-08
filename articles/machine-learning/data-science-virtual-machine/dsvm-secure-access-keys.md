@@ -8,21 +8,23 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 4eb1d657adc37ef0d1e4055573b174d58baf2e0e
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ec734cf456050250396b00aa09b61bace7e9aa0
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830260"
 ---
 # <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Uložení přístup bezpečně přihlašovací údaje na Data virtuálního počítače vědecké účely
 
-Běžné výzvu, při vytváření cloudové aplikace je Správa přihlašovacích údajů, musí být v kódu ověřování pro cloudové služby. Zachování zabezpečení těchto přihlašovacích údajů je důležitá úloha. V ideálním případě by se nikdy se zobrazí na pracovních stanicích vývojáře nebo získat změnami do správy zdrojového kódu. 
+Běžnou výzvou při vytváření cloudových aplikací je, jak spravovat přihlašovací údaje, které je potřeba mít v kódu kvůli ověřování u cloudových služeb. Zajištění zabezpečení těchto přihlašovacích údajů je důležitý úkol. V ideálním případě by se nikdy neměly nacházet na vývojářských pracovních stanicích ani se vracet se změnami do správy zdrojového kódu. 
 
 [Spravovat Identity služby (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) díky řešení tohoto problému jednodušší tím, že Azure services automaticky spravované identity v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, bez nutnosti všechny přihlašovací údaje ve vašem kódu. Jeden běžný vzor zabezpečené přihlašovací údaje je použití Instalační služby MSI je v kombinaci s [Azure Keyvault](https://docs.microsoft.com/azure/key-vault/), spravované služby Azure k bezpečnému ukládání tajných klíčů a kryptografické klíče. Můžete používat pomocí identity spravované služby Key vault a načíst autorizovaný tajných klíčů a kryptografické klíče z trezoru klíčů. 
 

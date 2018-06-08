@@ -10,16 +10,18 @@ editor: cgronlun
 keywords: Azure machine learningu, webové služby, operationalization, škálování, koncový bod, souběžnosti
 ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
 ms.service: machine-learning
+ms.component: studio
 ms.devlang: NA
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.openlocfilehash: 946e13c42213090fff0cd8648687ee523af51c42
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2f950d93c0d923e20451eb1622dd4b1393f343a7
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34835895"
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Škálování webové služby Azure Machine Learning přidáním další koncové body
 > [!NOTE]

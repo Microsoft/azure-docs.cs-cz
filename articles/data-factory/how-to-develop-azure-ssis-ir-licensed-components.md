@@ -1,6 +1,6 @@
 ---
-title: Vývoj placené nebo licencovanou komponenty pro modul runtime integrace Azure SSIS | Microsoft Docs
-description: Tento článek popisuje, jak můžete vyvíjet nezávislý dodavatel softwaru a nainstalujte placené nebo licencovaná vlastní komponenty pro modul runtime integrace Azure SSIS
+title: Instalace placené nebo licencovaná komponenty pro modul runtime integrace Azure SSIS | Microsoft Docs
+description: Zjistěte, jak můžete vyvíjet nezávislý dodavatel softwaru a nainstalujte placené nebo licencovaná vlastní komponenty pro modul runtime integrace Azure SSIS
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,26 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: 42f1bb247533fafbc6947e77cc1a1f07a482fd45
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e2e000df2933b8fa08bf98ef55b12f90de6a5e51
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700498"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830839"
 ---
 # <a name="develop-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Vývoj placené nebo licencovanou vlastní komponenty pro modul runtime integrace Azure SSIS
 
-## <a name="problem---the-azure-ssis-ir-requires-a-different-approach"></a>Problém - IR Azure SSIS vyžaduje jiný přístup
+Tento článek popisuje, jak vyvíjet a nainstalovat placené nebo licencovanou vlastní součásti pro integraci služby SSIS (SQL Server) balíčky, které spustit v Azure v modulu runtime integrace Azure SSIS ISV.
 
-Povaha runtime integrace Azure SSIS uvede několik problémů, které typické licencování metody použité pro místní instalaci součástí vlastní nedostatečné.
+## <a name="the-problem"></a>Problém
+
+Povaha runtime integrace Azure SSIS uvede několik problémů, které typické licencování metody použité pro místní instalaci součástí vlastní nedostatečné. V důsledku toho IR Azure SSIS vyžaduje jiný přístup.
 
 -   Uzly IR Azure SSIS se dynamicky mění a mohou být přiděleny nebo vydané kdykoli. Můžete například spuštění nebo zastavení uzly ke správě náklady nebo škálovat nahoru a dolů pomocí různých velikostí uzlu. V důsledku toho vazba komponenty třetích stran licenci na konkrétním uzlu pomocí informace specifické pro počítač, třeba adresu MAC nebo ID procesoru již přijatelná.
 
 -   IR Azure SSIS příchozí nebo odchozí, můžete škálovat také tak, aby počet uzlů můžete zmenšit nebo rozšířit kdykoli.
 
-## <a name="solution---windows-environment-variables-and-ssis-system-variables-for-license-binding-and-validation"></a>Řešení – proměnné prostředí systému Windows a systémové proměnné SSIS pro vazbu licence a ověření
+## <a name="the-solution"></a>Řešení
 
-V důsledku omezení tradiční licencování metody popsané v předchozí části IR Azure SSIS poskytuje proměnné prostředí systému Windows a systémové proměnné SSIS pro vazbu licence a ověření komponenty jiných výrobců. Nezávislí výrobci softwaru můžete použít tyto proměnné získat informace o jedinečný a trvalé IR Azure SSIS, jako je například ID clusteru a počet uzlů clusteru. Tyto informace o ISV možné svázat licence k jejich součástí s Reakcí Azure SSIS *jako cluster s podporou*, s ID, které se nezmění. když zákazníci spuštění nebo zastavení, vertikální navýšení kapacity nebo dolů, škálovat příchozí nebo odchozí nebo překonfigurujte IR Azure SSIS žádným způsobem.
+V důsledku omezení tradiční licencování metody popsané v předchozí části IR Azure SSIS poskytuje nové řešení. Toto řešení používá proměnné prostředí systému Windows a systémové proměnné SSIS pro vazbu licence a ověření komponenty jiných výrobců. Nezávislí výrobci softwaru můžete použít tyto proměnné získat informace o jedinečný a trvalé IR Azure SSIS, jako je například ID clusteru a počet uzlů clusteru. Pomocí těchto informací můžete vázat nezávislí výrobci softwaru pak licence k jejich součástí na Azure SSIS IR *jako cluster s podporou*. Tato vazba používá ID, které se nezmění. když zákazníci spustit nebo zastavit, škálovat nahoru nebo dolů škálování příchozí nebo odchozí nebo překonfigurujte IR Azure SSIS žádným způsobem.
 
 Následující diagram znázorňuje typické instalace, aktivace a licencí vazby a tok ověření pro komponenty jiných výrobců, které používají tyto nové proměnné:
 
@@ -71,6 +73,7 @@ Následující diagram znázorňuje typické instalace, aktivace a licencí vazb
                                                                                                                                
     }
     ```
+
 ## <a name="isv-partners"></a>ISV partnery
 
 Můžete najít seznam ISV partnerů, kteří mají přizpůsobit jejich součástí a rozšíření Azure SSIS Reakcí na konci tohoto příspěvku na blogu - [Enterprise Edition, vlastní instalace a 3. stran rozšiřitelnost SSIS v ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/).

@@ -10,12 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/25/2018
-ms.openlocfilehash: 85052e1363ebbfe21cd7d6d5b3720f79cec7c417
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/08/2018
+ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850068"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Nejčastější dotazy o použití služby Azure databáze migrace
 V tomto článku jsou uvedené nejčastější dotazy týkající se používání služby Azure databáze migrace společně s související odpovědi.
@@ -34,6 +35,9 @@ Služba Azure databáze migrace je upřednostňovanou metodou pro migrace datab�
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-the-azure-migrate-offering"></a>OTÁZKY. Jak služba Azure databáze migrace porovnat nabídku Azure migrovat?
 Migrace služby Azure pomáhá s migrací místní virtuální počítače Azure IaaS. Služba vyhodnocuje vhodnosti migrace a výkonu na základě velikosti a poskytuje odhadované náklady na spuštění místní virtuální počítače v Azure. Azure migrací jsou užitečné pro navýšení a shift migrace místních virtuálních počítačů na základě úloh virtuálních počítačů Azure IaaS. Ale na rozdíl od migrace službu Azure databáze Azure migrace není služby migrace specializované databáze nabídky pro platformy Azure PaaS relační databáze jako je například Azure SQL Database nebo SQL Azure nebo Azure SQL Database spravované Instance.
+
+### <a name="q-what-versions-of-sql-server-does-the-azure-database-migration-service-support-as-a-source"></a>OTÁZKY. Jako zdroj jakou verzi systému SQL Server podporuje službu Azure databáze migrace?
+Při migraci ze systému SQL Server, podporuje službu migrace databáze Azure SQL Server 2005 prostřednictvím SQL Server 2017.
 
 ### <a name="q-what-is-a-summary-of-the-steps-required-to-use-the-azure-database-migration-service-to-perform-a-database-migration"></a>OTÁZKY. Co je uveden seznam kroků potřebných k provedení migrace databáze používat službu Azure databáze migrace?
 Během migrace typické, je databáze můžete:
