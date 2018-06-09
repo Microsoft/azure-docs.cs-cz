@@ -7,14 +7,6 @@
       href: asdk-what-is.md
     - name: Poznámky k verzi ASDK
       href: asdk-release-notes.md
-- name: Kurzy
-  items:
-    - name: Přihlášení k odběru nabídky
-      href: asdk-subscribe-services.md
-    - name: Aktualizace nabídky a plány
-      href: asdk-update-offers.md
-    - name: Vytvoření virtuálního počítače ze šablony
-      href: asdk-create-vm-template.md
 - name: Koncepty
   items:
     - name: Informace o plánování nasazení

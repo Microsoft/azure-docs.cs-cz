@@ -27,6 +27,10 @@
       href: azure-stack-solution-hybrid-identity.md
     - name: Konfigurace připojení hybridního cloudu
       href: azure-stack-solution-hybrid-connectivity.md
+    - name: Přihlášení k odběru nabídky
+      href: azure-stack-subscribe-services.md
+    - name: Vytvoření virtuálního počítače ze šablony
+      href: azure-stack-create-vm-template.md
 - name: Návody
   items:
     - name: Použití portálu Azure Stack
@@ -93,7 +97,7 @@
               href: azure-stack-kv-push-secret-into-vm.md
             - name: Ukázková aplikace služby KeyVault
               href: azure-stack-kv-sample-app.md
-        - name: Řešení šablon
+        - name: Šablony řešení
           items:
             - name: Nasazení clusteru Service Fabric
               href: azure-stack-solution-template-service-fabric-cluster.md

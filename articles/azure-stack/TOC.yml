@@ -6,14 +6,14 @@
       href: azure-stack-poc.md
     - name: "Poznámky k\_verzi"
       items:
+        - name: 1805 aktualizace
+          href: azure-stack-update-1805.md
         - name: 1804 aktualizace
           href: azure-stack-update-1804.md
         - name: 1803 aktualizace
           href: azure-stack-update-1803.md
         - name: 1802 aktualizace
           href: azure-stack-update-1802.md
-        - name: aktualizace 1712
-          href: azure-stack-update-1712.md
 - name: Šablony Rychlý start
   expanded: true
   items:
@@ -52,6 +52,12 @@
               items:
                 - name: Publikování koncových bodů
                   href: azure-stack-integrate-endpoints.md
+        - name: Integrace identit
+          items:
+            - name: Vyberte zprostředkovatele identity
+              href: azure-stack-integrate-identity.md
+            - name: Ověření identit Azure
+              href: azure-stack-validate-identity.md
         - name: Požadavky nasazení infrastruktury veřejných KLÍČŮ pro Azure zásobníku
           href: azure-stack-pki-certs.md
           items:
@@ -63,20 +69,17 @@
               href: azure-stack-validate-pki-certs.md
             - name: Opravit certifikáty PKI
               href: azure-stack-remediate-certs.md
-            - name: Materiály pro nasazení
-              items:
-                - name: Rutiny Start-AzsReadiness – reference
-                  href: azure-stack-azsreadiness-cmdlet.md
-                - name: Podívejte se na sestavu připravenosti
-                  href: azure-stack-validation-report.md
-            - name: Integrace identit
-              items:
-                - name: Vyberte zprostředkovatele identity
-                  href: azure-stack-integrate-identity.md
-                - name: Ověření identit Azure
-                  href: azure-stack-validate-identity.md
+        - name: Materiály pro nasazení
+          items:
+            - name: O možnostech nasazení sítě
+              href: deployment-networking.md
         - name: Ověření registrace Azure
           href: azure-stack-validate-registration.md
+          items:
+            - name: Rutiny Start-AzsReadiness – reference
+              href: azure-stack-azsreadiness-cmdlet.md
+            - name: Podívejte se na sestavu připravenosti
+              href: azure-stack-validation-report.md
         - name: Externí monitorování
           href: azure-stack-integrate-monitor.md
         - name: Integrace zabezpečení
@@ -196,6 +199,8 @@
               href: azure-stack-plan-offer-quota-overview.md
             - name: Vytvoření plánu
               href: azure-stack-create-plan.md
+            - name: Vytváření rozšíření schématu
+              href: create-add-on-plan.md
             - name: Vytvoření nabídky
               href: azure-stack-create-offer.md
             - name: Přihlášení k odběru nabídky
