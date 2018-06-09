@@ -17,6 +17,10 @@
           href: stream-files-tutorial-with-api.md
         - name: S využitím REST
           href: stream-files-tutorial-with-rest.md
+    - name: Živé streamování
+      items:
+        - name: S využitím .NET Core
+          href: stream-live-tutorial-with-api.md
     - name: Analýza videa
       items:
         - name: S využitím .NET
@@ -37,6 +41,8 @@
           href: encoding-concept.md
         - name: Adaptivní žebříček přenosových rychlostí Autogen
           href: autogen-bitrate-ladder.md
+    - name: Živé streamování
+      href: live-streaming-overview.md
     - name: Inteligentní funkce médií
       href: intelligence-concept.md
     - name: Reakce na události

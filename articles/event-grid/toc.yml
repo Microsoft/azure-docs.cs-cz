@@ -49,6 +49,8 @@
       href: powershell-samples.md
     - name: Šablony Resource Manageru
       href: template-samples.md
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid'
 - name: Koncepty
   items:
     - name: Koncepty Event Grid
