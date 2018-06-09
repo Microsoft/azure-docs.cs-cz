@@ -2,7 +2,6 @@
 title: Řídicí panel Power BI pro vehicle stavu a řídí zvyklosti - Azure | Microsoft Docs
 description: Pomocí možnosti Cortana Intelligence získat přehledy v reálném čase a prediktivní na vehicle stavu a řídí zvyklosti.
 services: machine-learning
-documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
@@ -15,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 462f5d15e7a39d282bca59f96166cc809447ee14
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 8544c400fdb7d4f00a4946aba321fec3568d024a
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837119"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248448"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Pokyny k instalaci vehicle Telemetrie Analytics řešení šablony Power BI řídicí panel
 Tato nabídka odkazy na kapitoly v této playbook: 

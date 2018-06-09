@@ -10,15 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 1dd5eb4a2a0a4edd15e5299754028570806db09b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2e6556d3bac386bff26f9a5ce8f599e099fdb6c4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699450"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233797"
 ---
 # <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Dokončit kontrola přístupu k prostředkům Azure pomocí Privileged Identity Management
 Správce privilegovaných rolí můžete zkontrolovat privilegovaného přístupu po [revize zabezpečení byla spuštěna](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) k prostředkům Azure automaticky odešle e-mail, který vyzve uživatele, aby kontrolovat jejich přístup. Pokud uživatel nebude přijímat e-mailu, můžete jim poslat pokynů [jak provádět kontrolu zabezpečení](pim-resource-roles-perform-access-review.md).

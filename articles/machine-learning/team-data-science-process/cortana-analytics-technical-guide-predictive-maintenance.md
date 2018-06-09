@@ -1,24 +1,25 @@
 ---
 title: V letecký s Azure – technické příručce Cortana Intelligence řešení prediktivní údržby | Microsoft Docs
 description: Technické příručce k šabloně řešení s Microsoft Cortana Intelligence pro prediktivní údržby v letecký, nástrojů a Transport.
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
-ms.service: cortana-analytics
+ms.component: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c3e9b27784a1c0671ca3c87f9a7c55a288362299
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248380"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technické příručce k šabloně Cortana Intelligence řešení pro prediktivní údržby v letecký a jiné firmy
 
@@ -57,7 +58,7 @@ Pokyny ke stažení a instalaci této aplikace, vyberete prvního uzlu generáto
 
 Aplikace generování událostí naplní centra událostí Azure pouze tehdy, když je prováděna v počítači.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+### <a name="azure-event-hub"></a>Centrum událostí Azure
 [Centra událostí Azure](https://azure.microsoft.com/services/event-hubs/) příjemce vstup syntetické zdroj dat je služba.
 
 ## <a name="data-preparation-and-analysis"></a>Příprava dat a analýzy
@@ -85,7 +86,7 @@ Není pravděpodobné, že datovou sadu odpovídá datové sady používané [Tu
 
 Následující části popisují části šablony, které vyžadují změny, pokud je zavedená nová datová sada.
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+### <a name="azure-event-hub"></a>Centrum událostí Azure
 Azure Centrum událostí je obecný; data můžete publikované v centru ve formátu CSV nebo formátu JSON. Žádné speciální zpracování dojde v Centru událostí Azure, ale je důležité, abyste rozuměli tomu data, která je dodáni do ní.
 
 Tento dokument nepopisuje ingestovat data, ale můžete snadno odesílat události nebo data do centra událostí Azure pomocí rozhraní API centra událostí.

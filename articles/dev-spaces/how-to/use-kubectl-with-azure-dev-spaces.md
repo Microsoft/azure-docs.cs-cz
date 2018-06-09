@@ -8,20 +8,21 @@ author: ghogen
 ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: article
-description: Rychlý vývoj Kubernetes s kontejnery a mikroslužeb v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Kubernetes služby Azure, kontejnery
+description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 38a433a14ab977fb56a8331a057d27241f1d9783
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3dc0dd4b571f716bcabb67c4cbef1ea6d762eb94
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248654"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Použití kubectl s prostorem Dev Azure
 
 Má přístup ke clusteru Kubernetes v rámci Dev místa Azure a pomocí stávající Kubernetes nástrojů, jako `kubectl`.
 
-Spuštění `azds resource create` nebo `azds resource select` automaticky přidá `kubectl` kontextu konfigurace pro vás, tak kubectl by měly být již připojené ke clusteru Azure Dev prostory Kubernetes. Příklady:
+Spuštění `az aks use-dev-spaces` příkaz automaticky přidá `kubectl` kontextu konfigurace pro vás, tak kubectl by měly být již připojené ke clusteru Azure Dev prostory Kubernetes. Příklady:
 - Potvrďte aktuální kontext: `kubectl config current-context`
 - Zobrazí seznam všech dostupných kontextů: `kubectl config get-contexts`. 
 - Změna kontextu: `kubectl config use-context <context-name>`

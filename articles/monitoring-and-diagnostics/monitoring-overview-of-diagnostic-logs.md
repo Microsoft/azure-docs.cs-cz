@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/07/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: 7d1ab75146c9899bf2699309cd5dd4ed523096ef
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6017052db3e6c3f0cfc22b18263727e997944483
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638802"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236412"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a využití dat protokolu z vašich prostředků Azure
 
@@ -45,6 +45,9 @@ Tady jsou některé z akcí, které můžete provést prostředků diagnostický
 * Analyzovat, s [analýzy protokolů](../log-analytics/log-analytics-azure-storage.md)
 
 Můžete vytvořit účet úložiště nebo obor názvů služby Event Hubs, který není ve stejném předplatném jako emitování protokoly. Uživatel, který konfiguruje nastavení, musí mít odpovídající RBAC přístup na oba odběry.
+
+> [!NOTE]
+>  Nelze archivovat aktuálně dat do úložiště účtu, který za zabezpečené virtuální sítě.
 
 ## <a name="resource-diagnostic-settings"></a>Nastavení diagnostiky pro prostředek
 

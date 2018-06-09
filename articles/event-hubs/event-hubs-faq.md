@@ -5,20 +5,16 @@ services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: bfa10984-eb22-4671-861a-f377a90d9372
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2018
+ms.date: 06/07/2018
 ms.author: sethm
-ms.openlocfilehash: 8a30b8cb92b98606ca3d859ada329b8301806b10
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4c28f1ae5517e54fab259e680128d6c666c82fbe
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235307"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Služba Event Hubs a nejčastější dotazy
 
@@ -30,7 +26,7 @@ ms.lasthandoff: 05/11/2018
 * Uchování delší událostí
 * Další zprostředkovaná připojení s Nadlimitní poplatek za více než číslo zahrnuté
 * Více než jedné skupiny příjemců
-* [Zachycení](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [Zachycení](event-hubs-capture-overview.md)
 
 Další informace o cenových úrovní, včetně vyhrazené centra událostí, najdete v článku [podrobnosti o cenách služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -58,9 +54,10 @@ Pomocí [zvýšilo automaticky](event-hubs-auto-inflate.md) funkce, můžete aut
 Ano, pokud jsou všechny služby event hubs ve stejném oboru názvů.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Jaký je interval maximální doba uchování pro události?
-Maximální doba uchování období 7 dní v současné době podporuje úrovně Standard centra událostí. Centra událostí nejsou určená k trvalému ukládání dat. Období uchovávání dat kratší než 24 hodin, které jsou určené pro scénáře, ve kterých je vhodné o přehrání datového proudu událostí do stejné systémy; Chcete-li například cvičení nebo ověřte nový model strojového učení na existující data. Pokud třeba zprávy uchování za 7 dní, povolení [zaznamenat centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) na událost rozbočovače získává data ze Centrum událostí k účtu úložiště nebo účet služby Azure Data Lake dle vlastního výběru. Povolení zachycení způsobuje poplatků, na základě vaší zakoupené jednotky propustnosti.
+Maximální doba uchování období 7 dní v současné době podporuje úrovně Standard centra událostí. Centra událostí nejsou určená k trvalému ukládání dat. Období uchovávání dat kratší než 24 hodin, které jsou určené pro scénáře, ve kterých je vhodné o přehrání datového proudu událostí do stejné systémy; Chcete-li například cvičení nebo ověřte nový model strojového učení na existující data. Pokud třeba zprávy uchování za 7 dní, povolení [zaznamenat centra událostí](event-hubs-capture-overview.md) na událost rozbočovače získává data ze Centrum událostí k účtu úložiště nebo účet služby Azure Data Lake dle vlastního výběru. Povolení zachycení způsobuje poplatků, podle vašeho zakoupené jednotky propustnosti.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Kde je k dispozici Azure Event Hubs?
+
 Azure Event Hubs je k dispozici ve všech oblastech podporovaných Azure. Seznam, naleznete [oblastí Azure](https://azure.microsoft.com/regions/) stránky.  
 
 ## <a name="best-practices"></a>Osvědčené postupy
@@ -101,22 +98,27 @@ Zachycení používá účet úložiště, který zadáte, pokud je povoleno v C
 ## <a name="quotas"></a>Kvóty
 
 ### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Existují žádné kvóty přidružené služby Event Hubs?
+
 Seznam všech kvót služby Event Hubs naleznete v tématu [kvóty](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované centrům událostí a jejich doporučované akce?
+
 Seznam možných centra událostí výjimek najdete v tématu [výjimky přehled](event-hubs-messaging-exceptions.md).
 
 ### <a name="diagnostic-logs"></a>Diagnostické protokoly
+
 Služba Event Hubs podporuje dva typy [protokolů diagnostiky](event-hubs-diagnostic-logs.md) -zaznamenat protokoly chyb a operační protokoly – které jsou reprezentované ve formátu json i lze zapnout prostřednictvím portálu Azure.
 
 ### <a name="support-and-sla"></a>Podpora a SLA
+
 Technická podpora pro Event Hubs je k dispozici prostřednictvím [komunitní fóra](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus). Podpora k fakturaci a správě předplatného se poskytuje zadarmo.
 
 Další informace o naší smlouvě SLA najdete v tématu [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/) stránky.
 
 ## <a name="next-steps"></a>Další postup
+
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
 * [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)

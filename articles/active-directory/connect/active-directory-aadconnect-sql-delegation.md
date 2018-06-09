@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d0cfce1dfe6482397e421d85d59494e6d75cc441
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 198ecdbf81c2b8efeec23da2c5d5d087128b20e9
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591153"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233559"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalace služby Azure AD Connect s použitím SQL delegovaná oprávnění správce
 Před posledním sestavení Azure AD Connect správu delegování, při nasazování konfigurace, které vyžaduje SQL, nepodporuje.  Uživatelé, kteří chtěli nainstalovat Azure AD Connect je potřeba mít oprávnění správce (SA) serveru na serveru SQL server.
@@ -48,7 +48,7 @@ K poskytnutí databáze vzdálené správy a nainstalujte Azure AD Connect s opr
 2.  Přidělte správce Azure AD Connect a účet služby domény následující oprávnění:
     - Přihlášení k SQL serveru 
     - **databáze owner(dbo)** práva.  </br>
-![Oprávnění](media/active-directory-aadconnect-sql-delegation/sql3.png)
+![Oprávnění](media/active-directory-aadconnect-sql-delegation/sql3a.png)
 3.  Odešlete e-mail na správce Azure AD Connect, která udává název SQL serveru a instance, který se má použít při instalaci Azure AD Connect.
 
 ## <a name="additional-information"></a>Další informace

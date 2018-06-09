@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: d7ec3a3fe26600e69a7e4f511c01006a97cbe12c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 07299b960747528dde8dcefc70055442c2150486
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839477"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235987"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrovat protokolů auditu Azure Active Directory
 
@@ -28,7 +28,7 @@ Události auditování Azure Active Directory (Azure AD) pomáhá identifikovat 
 
 
 >[!IMPORTANT]
-> Funkce integrace protokolu Azure bude 06/01/2019 zastaralá. AzLog stahování bude ve 27. června 2018 zakázáno. Pokyny k tomu, co udělat přesunutí dopředného zkontrolujte v příspěvku [monitorování pomocí Azure, který chcete integrovat s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/preview/?cdn=disable) 
+> Funkce integrace protokolu Azure bude 06/01/2019 zastaralá. AzLog stahování bude ve 27. června 2018 zakázáno. Pokyny k tomu, co udělat přesunutí dopředného zkontrolujte v příspěvku [monitorování pomocí Azure, který chcete integrovat s nástroji SIEM](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Protokoly auditu kroky pro integraci služby Azure Active Directory
 

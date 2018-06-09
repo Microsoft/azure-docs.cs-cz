@@ -1,28 +1,27 @@
 ---
-title: "Přehled funkcí Azure Event Hubs | Microsoft Docs"
-description: "Přehled a podrobnosti o funkcích Azure Event Hubs"
+title: Přehled funkcí Azure Event Hubs | Microsoft Docs
+description: Přehled a podrobnosti o funkcích Azure Event Hubs
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/02/2018
+ms.date: 06/08/2018
 ms.author: sethm
-ms.openlocfilehash: aaedb8ed2be85017b17a2015ff2fcaaf76c20058
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248737"
 ---
 # <a name="event-hubs-features-overview"></a>Přehled funkcí služby Event Hubs
 
-Azure Event Hubs je škálovatelnou událostí zpracování služba, která ingestuje a zpracovává velké objemy události a data, s nízkou latencí a vysokou spolehlivostí. V tématu [co je Služba Event Hubs?](event-hubs-what-is-event-hubs.md) souhrnné informace služby.
+Azure Event Hubs je škálovatelnou událostí zpracování služba, která ingestuje a zpracovává velké objemy události a data, s nízkou latencí a vysokou spolehlivostí. V tématu [co je Služba Event Hubs?](event-hubs-what-is-event-hubs.md) souhrnné informace.
 
 Tento článek vychází informace v [článek s přehledem](event-hubs-what-is-event-hubs.md)a poskytuje implementace a technické podrobnosti o Event Hubs komponenty a funkce.
 
@@ -44,7 +43,7 @@ Služba Event Hubs zajišťuje, aby se všechny události, které sdílejí hodn
 
 Služba Event Hubs umožňuje podrobnou kontrolu nad zdroji událostí prostřednictvím *zásad zdroje*. Zásady zdroje jsou běhové funkce, které byly navržené pro usnadnění kontroly nad velkým množstvím nezávislých zdrojů událostí. Zásady zdroje poskytují s použitím následujícího mechanismu každému zdroji vlastní identifikátor, který se používá při publikování událostí do centra událostí:
 
-```
+```http
 //[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
 ```
 
@@ -123,7 +122,7 @@ Všichni příjemci Event Hubs připojení přes relaci protokolu AMQP 1.0, stav
 
 #### <a name="connect-to-a-partition"></a>Připojení k oddílu
 
-Při přímém připojení k oddílům se obvykle používá mechanismus „pronájmu“, aby se připojení čtenářů ke konkrétním oddílům koordinovala. Díky tomu je možné mít u každého oddílu ve skupině příjemců pouze jednoho aktivního čtenáře. Použití kontrolních bodů, pronájem a správu čtenářů zjednodušuje použití třídy [EventProcessorHost](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost) pro klienty .NET. EventProcessorHost je inteligentní agent příjemce.
+Při přímém připojení k oddílům se obvykle používá mechanismus „pronájmu“, aby se připojení čtenářů ke konkrétním oddílům koordinovala. Díky tomu je možné mít u každého oddílu ve skupině příjemců pouze jednoho aktivního čtenáře. Použití kontrolních bodů, pronájem a správu čtenářů zjednodušuje použití třídy [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) pro klienty .NET. EventProcessorHost je inteligentní agent příjemce.
 
 #### <a name="read-events"></a>Čtení událostí
 
@@ -149,11 +148,11 @@ Kapacita propustnosti je ve službě Event Hubs řízená prostřednictvím *jed
 * Příchozí data: Až 1 MB za sekundu nebo 1000 událostí za sekundu (podle toho, co nastane dříve)
 * Odchozí data: Až 2 MB za sekundu
 
-Nad rámec kapacity zakoupených jednotek propustnosti je příjem příchozích dat omezen a vrátí se výjimka [ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Odchozí data nezpůsobují takové výjimky, ale jsou omezená na objem přenosu dat, který poskytují zakoupené jednotky propustnosti. Pokud se vám objevují výjimky související s frekvencí publikování nebo v budoucnu očekáváte větší objem odchozích dat, zkontrolujte, kolik jednotek propustnosti jste pro konkrétní obor názvů zakoupili. Jednotky propustnosti můžete spravovat na **škálování** okno obory názvů v [portál Azure](https://portal.azure.com). Můžete také spravovat jednotky propustnosti programově pomocí [rozhraní API centra událostí](event-hubs-api-overview.md).
+Nad rámec kapacity zakoupených jednotek propustnosti je příjem příchozích dat omezen a vrátí se výjimka [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception). Odchozí data nezpůsobují takové výjimky, ale jsou omezená na objem přenosu dat, který poskytují zakoupené jednotky propustnosti. Pokud se vám objevují výjimky související s frekvencí publikování nebo v budoucnu očekáváte větší objem odchozích dat, zkontrolujte, kolik jednotek propustnosti jste pro konkrétní obor názvů zakoupili. Jednotky propustnosti můžete spravovat na **škálování** okno obory názvů v [portál Azure](https://portal.azure.com). Můžete také spravovat jednotky propustnosti programově pomocí [rozhraní API centra událostí](event-hubs-api-overview.md).
 
-Jednotky propustnosti se kupují předem a účtují se po hodinách. Zakoupené jednotky propustnosti se účtují minimálně za jednu hodinu. Pro obor názvů služby Event Hubs můžete zakoupit až 20 jednotek propustnosti, které se sdílejí napříč všemi centry událostí v tomto oboru názvů.
+Jednotky propustnosti jsou předem zakoupené a fakturují se za hodinu. Zakoupené jednotky propustnosti se účtují minimálně za jednu hodinu. Až 20 propustnost jednotky můžete zakoupili pro obor názvů Event Hubs a jsou sdíleny ve všech centrech událostí v daném oboru názvů.
 
-Další jednotky propustnosti je možné zakoupit v blocích po 20 jednotkách propustnosti (maximálně 100) po domluvě s pracovníky podpory Azure. Navíc si můžete taky zakoupit bloky, které obsahují sto jednotek propustnosti.
+Další jednotky propustnosti je možné zakoupit v blocích po 20 jednotkách propustnosti (maximálně 100) po domluvě s pracovníky podpory Azure. Kromě toho si můžete zakoupit bloky 100 jednotek propustnosti.
 
 Doporučujeme vám, že můžete vyrovnávat jednotky propustnosti a oddíly, abyste dosáhli optimálního škálování. Škálování jednoho oddílu dovoluje maximálně jednu jednotku propustnosti. Počet jednotek propustnosti by měl být menší nebo roven počtu oddílů v centru událostí.
 

@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e6b9bf194da17ebd03389829ba594bf3fbf1e64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 01ac558ec032d2da8026ce48923d839bd05e85c1
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622097"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235460"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Přesun dat z databáze Cassandra místně pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Fact
 Z úložiště dat Cassandra místní může kopírovat data do úložiště dat žádné podporované jímky. Seznam úložišť dat jako jímky nepodporuje aktivitě kopírování najdete v tématu [podporovanými úložišti dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Objekt pro vytváření dat aktuálně podporuje pouze přesunutí dat z jiného úložiště dat Cassandra k jiným úložištím dat, ale ne pro přesun dat z jiných úložišť dat do úložiště dat Cassandra. 
 
 ## <a name="supported-versions"></a>Podporované verze
-Cassandra konektor podporuje následující verze systému Cassandra: 2.X.
+Cassandra konektor podporuje následující verze systému Cassandra: 2.x a 3.x. Aktivity systémem Self-hosted integrace Runtime, Cassandra 3.x je podporována, protože IR verze 3.7 a vyšší.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro službu Azure Data Factory být schopni připojit k vaší databázi Cassandra místní musíte nainstalovat brána pro správu dat na stejném počítači, který je hostitelem databáze nebo na samostatný počítač, aby se zabránilo neslučitelných pro prostředky s databází. Brána pro správu dat je komponenta, která připojuje místní zdroje dat do cloudové služby v zabezpečený a spravovaný. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) podrobnosti o Brána pro správu dat najdete v článku. V tématu [přesun dat z lokálního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) podrobné pokyny o nastavení brány datovém kanálu pro přesun dat najdete v článku.
@@ -75,6 +75,9 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | heslo |Zadejte heslo pro uživatelský účet. |Ano, pokud authenticationType je nastaven na Basic. |
 | gatewayName |Název brány, která se používá pro připojení k místní databázi Cassandra. |Ano |
 | encryptedCredential |Přihlašovací údaje zašifrovaná pomocí brány. |Ne |
+
+>[!NOTE]
+>Připojení k Cassandra pomocí protokolu SSL není aktuálně podporována.
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů & vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Oddíly, jako je například struktura, dostupnost a zásad JSON datové sady jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, tabulky Azure, atd.).

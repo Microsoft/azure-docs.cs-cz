@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8dd546b0c3a60a50989b59fa295ceeb49e6b1e9a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9b1779ed409a01356615561b1eb6fea0235529f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698005"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233916"
 ---
 # <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Jak konfigurovat výstrahy zabezpečení v Azure AD Privileged Identity Management
 ## <a name="security-alerts"></a>Výstrahy zabezpečení

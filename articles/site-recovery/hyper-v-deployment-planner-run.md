@@ -1,6 +1,6 @@
 ---
-title: "Plánovač nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure| Dokumentace Microsoftu"
-description: "Tento článek popisuje režim spuštění plánovače nasazení služby Azure Site Recovery při přechodu z Hyper-V do Azure."
+title: Plánovač nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure| Dokumentace Microsoftu
+description: Tento článek popisuje režim spuštění plánovače nasazení služby Azure Site Recovery při přechodu z Hyper-V do Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: ae539f136578c6461ef7f680d553fbd76b10ae98
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 49243eaa4d3413509e569a88e1d7a2f6359d7876
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236225"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure
 
@@ -95,7 +96,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|Typ virtualizace (VMware nebo Hyper-V).|
 |-Directory|(Volitelné) Název UNC nebo cesta k místnímu adresáři, do kterého se během profilace budou ukládat data profilace. Pokud název není zadaný, jako výchozí se použije adresář ProfiledData v aktuální cestě.|
 |-Password|(Volitelné) Heslo pro připojení k hostiteli Hyper-V. Pokud ho neurčíte jako parametr, budete k tomu vyzváni při spuštění příkazu.|
-|-StorageAccountName|(Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být verze 1 pro obecné účely nebo verze 2 pro obecné účely.|
+|-StorageAccountName|(Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být pro obecné účely v1 typu (GPv1).|
 |-StorageAccountKey|(Volitelné) Klíč, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal a vyberte **Účty úložiště** > *název účtu úložiště* > **Nastavení** > **Přístupové klíče** > **Klíč1** (nebo primární přístupový klíč pro klasický účet úložiště).|
 |-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může mít jednu ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud je vaší cílovou oblastí Azure US Government nebo Azure China.|
 
@@ -245,8 +246,8 @@ Je důležité počítat s nárůstem v charakteristikách vašich úloh v důsl
 Řekněme například, že dnes se váš virtuální počítač vejde do účtu replikace služby Storage úrovně Standard. Během následujících tří měsíců pravděpodobně dojde k těmto změnám:
 
 1. Zvýší se počet uživatelů aplikace spuštěné na virtuálním počítači.
-2. Zvýšená četnost změn na virtuálním počítači bude vyžadovat přesun virtuálního počítače do účtu služby Storage úrovně Premium, aby replikace Azure Site Recovery mohla s touto četností změn držet krok.
-3. Budete muset zakázat a znovu povolit ochranu účtu služby Storage úrovně Premium.
+2. Zvýšená četnost změn na virtuálním počítači bude vyžadovat přesun virtuálního počítače do účtu služby Premium Storage, aby replikace Azure Site Recovery mohla s touto četností změn držet krok.
+3. Budete muset zakázat a znovu povolit ochranu účtu služby Premium Storage.
 
 Důrazně doporučujeme, abyste při plánování nasazení počítali s růstem. Přestože je výchozí hodnota 30 %, sami nejlépe znáte vzorce používání vaší aplikace a očekávaný růst. Během generování sestav můžete toto číslo odpovídajícím způsobem měnit. Navíc můžete generovat více sestav s různými faktory růstu se stejnými profilovanými daty. Můžete určit, která doporučení pro zdrojovou šířku pásma a cílové úložiště vám nejvíc vyhovují. 
 
@@ -277,7 +278,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -Operation | GetThroughput |
 |-Virtualization|Typ virtualizace (VMware nebo Hyper-V).|
 |-Directory|(Volitelné) Název UNC nebo cesta k místnímu adresáři, ve kterém jsou uložena profilovaná data (soubory vytvořené během profilace). Tato data jsou vyžadovaná k vygenerování sestavy. Pokud název není zadaný, jako výchozí se použije adresář ProfiledData v aktuální cestě.|
-| -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být verze 1 pro obecné účely nebo verze 2 pro obecné účely.|
+| -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být pro obecné účely v1 typu (GPv1).|
 | -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal a vyberte **Účty úložiště** > *název účtu úložiště* > **Nastavení** > **Přístupové klíče** > **Klíč1**.|
 | -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci pro výpočet využité šířky pásma. Cesta k souboru může být absolutní nebo relativní. Pro Hyper-V je tento soubor výstupním souborem operace GetVMList. Pokud provádíte přípravu ručně, měl by tento soubor obsahovat jednu IP adresu nebo název serveru, následované názvem virtuálního počítače (oddělené \ na každém řádku). Název virtuálního počítače zadaný v souboru se musí shodovat s názvem virtuálního počítače na hostiteli Hyper-V.<br><br>**Příklad:** Soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|(Volitelné) Cílové prostředí pro účet úložiště Azure. Může mít jednu ze tří hodnot: AzureCloud, AzureUSGovernment nebo AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou Azure US Government nebo Azure China.|

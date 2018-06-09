@@ -1,26 +1,28 @@
 ---
-title: "Volání funkce z PowerApps | Microsoft Docs"
-description: "Vytvořte vlastní konektor pak volání funkce pomocí tohoto konektoru."
+title: Volání funkce z PowerApps | Microsoft Docs
+description: Vytvořte vlastní konektor pak volání funkce pomocí tohoto konektoru.
 services: functions
-keywords: "cloudových aplikací, cloudových služeb, PowerApps, obchodní procesy, obchodní aplikace"
-documentationcenter: 
-author: mgblythe
+keywords: cloudových aplikací, cloudových služeb, PowerApps, obchodní procesy, obchodní aplikace
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 02cd491be5336abe708cce0f6e268b38514d4e88
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234950"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy je určená pro obchodní specialisté můžete vytvářet aplikace, bez kódu tradiční aplikace. Profesionální vývojáře můžete použít Azure Functions k rozšíření možností PowerApps, při stínění Tvůrce aplikací PowerApps z technické podrobnosti.
@@ -71,7 +73,7 @@ Vlastní rozhraní API (také označované jako vlastní konektor) je k dispozic
 ## <a name="create-an-app-and-add-data-sources"></a>Vytvořte aplikaci a přidejte zdroje dat
 Nyní jste připraveni vytvořit aplikaci v PowerApps a přidejte data z aplikace Excel a vlastní rozhraní API jako zdroje dat pro aplikaci.
 
-1. V [web.powerapps.com](https://web.powerapps.com), zvolte **zahájení z prázdné** > ![ikonu telefonní aplikace](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **zkontrolujte tuto aplikaci**.
+1. Na webu [web.powerapps.com](https://web.powerapps.com) zvolte **Začít od začátku** > ![ikona mobilní aplikace](media/functions-powerapps-scenario/icon-phone-app.png) (telefon) > **Vytvořit tuto aplikaci**.
 
     ![Spuštění z prázdné - telefonní aplikace](media/functions-powerapps-scenario/create-phone-app.png)
 
@@ -97,7 +99,7 @@ Nyní jste připraveni vytvořit aplikaci v PowerApps a přidejte data z aplikac
 
     ![Chcete-li importovat data z Excelu.](media/functions-powerapps-scenario/excel-table.png)
 
-    1. Na plátně aplikace, vyberte **připojit k datům**.
+    1. Na plátně aplikace zvolte **připojit k datům**.
 
     1. Na **Data** panelu, klikněte na tlačítko **přidání statických dat do aplikace**.
 
@@ -218,7 +220,7 @@ Máte kompletní aplikace! Nyní je čas a potom ho spusťte najdete v části f
 
 1. Zkuste jiné turbín chcete zobrazit, co je vrácené funkcí pokaždé, když.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto tématu, jste zjistili, jak:
 
 > [!div class="checklist"]

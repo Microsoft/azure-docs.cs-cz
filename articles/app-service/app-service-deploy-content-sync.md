@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: d456ae2ffbd3745ef976ad94219a3f998838066b
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3781010c74daa51c92813db85ee03eaa4c02a4cf
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850215"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233583"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizace obsahu ze složky cloudu do služby Azure App Service
 Tento článek ukazuje, jak synchronizovat svůj obsah do [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) z Dropbox a OneDrive. 
@@ -64,6 +64,8 @@ Chcete-li zakázat obsahu synchronizaci, přejděte na stránku aplikace služby
 V nabídce vlevo klikněte na **centrum nasazení** > **OneDrive** nebo **Dropbox** > **odpojení**.
 
 ![](media/app-service-deploy-content-sync/disable.png)
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="next-steps"></a>Další postup
 

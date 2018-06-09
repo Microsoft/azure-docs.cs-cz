@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 94062c69a1de32d061b97bbaae0d7028b0424feb
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 4dddc4c4e4bd34f5e9d7054f1311e13113fce52d
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757668"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234609"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -42,15 +42,15 @@ Následující role správce jsou k dispozici:
   > [!NOTE]
   > Nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, uživatel musí být také globálního správce.
   
-* **Správce Dynamics 365**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Dynamics 365, když se služba nachází, a také možnost spravovat lístky žádostí o podporu a sledovat stav služeb. Další informace v [role Správce služeb Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
-
-* **Správci zařízení**: uživatelé s touto rolí stane správci místního počítače na všech zařízeních Windows 10, které jsou připojeny k Azure Active Directory. Nemají možnost spravovat objekty zařízení v Azure Active Directory.
+* **Správci zařízení**: Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí se na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory, stávají správci místních počítačů. Nemají možnost spravovat objekty zařízení v Azure Active Directory.
 
 * **Directory čtečky**: to je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](active-directory-integrating-applications.md). Neměla být přiřazena pro všechny uživatele.
 
 * **Účty synchronizace adresáře**: nepoužívejte. Tato role se automaticky přiřadí k službě Azure AD Connect a není určena nebo podporována pro jiné použití.
 
 * **Directory zapisovače**: to je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](active-directory-integrating-applications.md). Neměla být přiřazena pro všechny uživatele.
+
+* **Správce Dynamics 365**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Dynamics 365, když se služba nachází, a také možnost spravovat lístky žádostí o podporu a sledovat stav služeb. Další informace v [role Správce služeb Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Správce služby Exchange**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Exchange Online, když se služba nachází. Další informace v [role Správce služeb Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 

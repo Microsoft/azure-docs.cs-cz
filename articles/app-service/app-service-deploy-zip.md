@@ -1,11 +1,11 @@
 ---
-title: "Nasazení aplikace do Azure App Service pomocí souboru ZIP nebo válečných | Microsoft Docs"
-description: "Informace o nasazení aplikace do služby Azure App Service se soubor ZIP (nebo soubor WAR pro vývojáře v jazyce Java)."
+title: Nasazení aplikace do Azure App Service pomocí souboru ZIP nebo válečných | Microsoft Docs
+description: Informace o nasazení aplikace do služby Azure App Service se soubor ZIP (nebo soubor WAR pro vývojáře v jazyce Java).
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: 6ecbf111bad96bce310109ac1a3e8f3bb846be6c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3178d5cb09087a243a51e20567895d03ce1f7fb
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234130"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Nasazení aplikace do Azure App Service pomocí souboru ZIP nebo WAR
 
@@ -82,7 +83,7 @@ Tento příkaz nasadí soubory a adresáře ze souboru ZIP do vaší výchozí s
 
 ## <a name="deploy-war-file"></a>Nasazení souboru WAR
 
-K nasazení souboru WAR do služby App Service, poslat https://<app_name>.scm.azurewebsites.net/api/wardeploy požadavek POST. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje nasazení pro vaši aplikaci jsou uvedeny v požadavku pomocí ověřování HTTP BASIC. 
+K nasazení souboru WAR do služby App Service, poslat https://<app_name>.scm.azurewebsites.net/api/wardeploy požadavek POST. Požadavek POST musí obsahovat soubor .war v textu zprávy. Přihlašovací údaje pro nasazení vaší aplikace jsou zahrnuté v požadavku s použitím HTTP BASIC Authentication. 
 
 Pro ověřování HTTP BASIC budete potřebovat přihlašovací údaje nasazení služby App Service. Chcete-li zjistit, jak nastavit přihlašovací údaje nasazení, přečtěte si téma [nastavit a resetovat přihlašovací údaje individuální](app-service-deployment-credentials.md#userscope).
 
@@ -106,6 +107,8 @@ $apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
 Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
 ```
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="next-steps"></a>Další postup
 

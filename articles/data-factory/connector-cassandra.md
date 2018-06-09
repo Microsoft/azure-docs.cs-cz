@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1ad7b9d16e00319320f638593c9f24ccb75c2bb9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616147"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235273"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,8 +37,11 @@ Z databáze Cassandra může kopírovat data do úložiště dat žádné podpor
 
 Konkrétně tento konektor Cassandra podporuje:
 
-- Cassandra **verze 2.X**.
+- Cassandra **verze 2.x a 3.x**.
 - Kopírování dat pomocí **základní** nebo **anonymní** ověřování.
+
+>[!NOTE]
+>Aktivity systémem Self-hosted integrace Runtime, Cassandra 3.x je podporována, protože IR verze 3.7 a vyšší.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,6 +66,9 @@ Pro Cassandra propojené služby jsou podporovány následující vlastnosti:
 | uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano, pokud authenticationType je nastaven na Basic. |
 | heslo |Zadejte heslo pro uživatelský účet. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano, pokud authenticationType je nastaven na Basic. |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+
+>[!NOTE]
+>Připojení k Cassandra pomocí protokolu SSL není aktuálně podporována.
 
 **Příklad:**
 

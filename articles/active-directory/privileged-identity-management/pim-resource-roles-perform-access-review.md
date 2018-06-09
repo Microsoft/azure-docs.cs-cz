@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 43245907a16019ac5396c41db036c3160359270f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 794875cbee91c8aa4c926dbaa6931b250201a1bd
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699603"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233950"
 ---
 # <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Provést kontrola přístupu v PIM, podle role prostředků
 Privileged Identity Management (PIM) k prostředkům Azure zjednodušuje, jak spravovat podniky privilegovaného přístupu k prostředkům v Azure. 

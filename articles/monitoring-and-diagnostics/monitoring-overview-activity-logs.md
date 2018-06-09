@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.openlocfilehash: 128a16f0fbde87136ca01812b0217523fdbeeeeb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 060f91e4bdd1dd2690a3e1f148f7c5e5e13d13ef
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638982"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235660"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Sledování aktivity předplatné s protokol činnosti Azure
 
@@ -107,6 +107,9 @@ A **profil protokolu** řídí, jak je export protokolu aktivit. Použití profi
     - Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn. Proces odstraňování začíná na půlnoc UTC, ale Všimněte si, že může trvat až 24 hodin protokolů k odstranění z vašeho účtu úložiště.
 
 Můžete použít úložiště účet nebo události rozbočovače obor názvů, který není ve stejném předplatném jako jeden emitování protokoly. Uživatel, který konfiguruje nastavení, musí mít odpovídající RBAC přístup na oba odběry.
+
+> [!NOTE]
+>  Nelze archivovat aktuálně dat do úložiště účtu, který za zabezpečené virtuální sítě.
 
 Tato nastavení lze nakonfigurovat pomocí možnosti "Export" v okně Protokol aktivit na portálu. Je také možné nakonfigurovat prostřednictvím kódu programu [pomocí rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/dn931927.aspx), rutiny prostředí PowerShell nebo rozhraní příkazového řádku. Předplatné může mít pouze jeden profil protokolu.
 

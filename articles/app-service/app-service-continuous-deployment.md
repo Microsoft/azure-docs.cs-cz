@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: e587edeef1cfa080a81f523f63678a645b514c57
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d83d1ad74d04356f73f18a744c2d1509b5efc280
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849487"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233840"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
 V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [Azure App Service](app-service-web-overview.md). Služby App Service umožňuje průběžné nasazování z BitBucket, Githubu, a [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) přidáváním v nejnovější aktualizace z existující úložiště v jednom z těchto služeb.
@@ -134,6 +134,8 @@ Chcete-li zakázat průběžné nasazování, přejděte na stránku aplikace sl
 V nabídce vlevo klikněte na **centrum nasazení** > **Githubu** nebo **služby VSTS** nebo **BitBucket**  >  **Odpojit**.
 
 ![](media/app-service-continuous-deployment/disable.png)
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="additional-resources"></a>Další prostředky
 

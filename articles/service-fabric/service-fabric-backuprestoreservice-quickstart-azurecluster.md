@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: ad2faabbab74ba343328b6fe30e09c87520e7019
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809790"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236116"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Pravidelné zálohování a obnovení v Azure Service Fabric (Preview)
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ Pojďme provede kroky k povolení pravidelné zálohování služby spolehlivé 
 
 Prvním krokem je vytvoření zásady zálohování popisující plán zálohování, cílového úložiště pro zálohovaná data, název zásady a maximální přírůstkové zálohování smí před spuštěním úplného zálohování. 
 
-Pro úložiště záloh použijte účet vytvořili výše úložiště Azure. Tento příklad předpokládá účtu úložiště Azure s názvem `sfbackupstore`. Kontejner `backup-container` je nakonfigurován pro ukládání záloh, je vytvořit kontejner s tímto názvem, pokud ještě není přítomný, během nahrávání zálohování. Naplnění `ConnectionString` s platný připojovací řetězec pro účet úložiště Azure.
+Pro úložiště záloh použijte účet vytvořili výše úložiště Azure. Kontejner `backup-container` je nakonfigurovaná pro ukládání záloh. Kontejner s tímto názvem je vytvořen, pokud již neexistuje, během nahrávání zálohování. Naplnění `ConnectionString` s platný připojovací řetězec pro účet úložiště Azure, nahraďte `account-name` s názvem svého účtu úložiště a `account-key` nahraďte svým klíčem účtu úložiště.
 
 Spusťte následující skript prostředí PowerShell pro vyvolání požadované rozhraní REST API pro vytvoření nové zásady. Nahraďte `account-name` s názvem svého účtu úložiště a `account-key` nahraďte svým klíčem účtu úložiště.
 

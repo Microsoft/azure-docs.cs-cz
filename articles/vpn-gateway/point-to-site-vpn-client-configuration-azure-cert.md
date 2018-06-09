@@ -13,17 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9b9528aba0be8fd46087d97bc294552db608f1c1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2ae16d76dce01488403e9f13684e719f92eb80c5
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235827"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-point-to-site-configurations"></a>Vytvoření a instalace VPN konfigurace Point-to-Site ověřování certifikátu klienta konfigurační soubory pro nativní Azure
 
 Soubory konfigurace klienta VPN jsou obsaženy v souboru zip. Konfigurační soubory, zadejte požadované nastavení pro nativní klient systému Windows, Mac IKEv2 VPN nebo Linux se připojit k virtuální síti přes připojení Point-to-Site, která používá ověřování certifikátem. nativní Azure.
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 ### <a name="workflow"></a>Pracovní postup P2S
 

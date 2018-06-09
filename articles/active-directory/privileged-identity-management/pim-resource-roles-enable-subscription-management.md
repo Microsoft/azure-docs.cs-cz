@@ -10,15 +10,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 22e735fc10f314e47c00795bf993b5502f639c84
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 628ee70f7eb59673d4229441e3c4242e1ef8e0d3
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699797"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234268"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>Povolení správy předplatného ve vašem klientovi
 

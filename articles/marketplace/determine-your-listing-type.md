@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8e9781f97c7d605a5249fcc1684dc2f72cb1e3ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824427"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235803"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>Určuje typ výpis pro vaše řešení  
 Obchodní poutače podporují mnoho možností publikování: výpis typy a typy nabízet. Vyberte typ nabídky, který nejlépe představuje podrobností o řešení a služby. Všechny možnosti publikování poskytují že přístup k vést sdílení.   
@@ -209,10 +209,11 @@ Společnost Microsoft podporuje aktuálně volné a přineste si vlastníte lice
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-| Fakturace a měření | Podpora buď volné nebo fakturační model BYOL. |  
-|Bitové kopie z soubor Docker    |   Kontejner Image musí být založený na specifikaci Docker bitové kopie a z soubor Docker musí být sestaven. Další informace o vytváření bitových kopií docker [sem]. (https://docs.docker.com/engine/reference/builder/#usage) |
-|Hostování v ACR    |   Kontejner imagí musí být hostované v úložišti Azure kontejneru registru (ACR). Další informace o práci s ACR [sem]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)   |
-|Označování bitové kopie    |   Kontejner imagí musí obsahovat alespoň 1 značky (maximální značky: 16). Další informace o označování bitovou kopii [sem]. (https://docs.docker.com/engine/reference/commandline/tag/)    |
+|Fakturace a měření  |  Vaše kontejneru musí podporovat buď uvolněte nebo Bring Your Own License modely fakturace.       |  
+|Bitové kopie z soubor Docker   |   Kontejner Image musí být založený na specifikaci Docker bitové kopie a z soubor Docker musí být sestaven. Další informace o vytváření bitových kopií docker [sem]. (https://docs.docker.com/engine/reference/builder/#usage)
+|Hostování v ACR   |   Kontejner imagí musí být hostované v úložišti Azure kontejneru registru (ACR). Další informace o práci s ACR [sem]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     
+|Označování bitové kopie   |   Kontejner imagí musí obsahovat alespoň 1 značky (maximální značky: 16). Další informace o označování bitovou kopii [sem]. (https://docs.docker.com/engine/reference/commandline/tag/)     | 
+
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Požadavky na: Azure Marketplace: Transact: SaaS aplikace  
@@ -224,10 +225,11 @@ Microsoft je hostitelem transakce commerce. Microsoft bills zákazníkovi vaší
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-| Fakturace a měření | Vaši nabídku je cenově paušálně měsíční. Na základě využití cenové a na základě využití *true-up* v tuto chvíli nepodporuje možnosti. |  
-| Zrušení | Kdykoli je možné zrušit zákazník vaši nabídku. |  
-|Cílová stránka transakce     |   Hostujete stránku cílová Azure související transakci, kde uživatelé mohou vytvářet a spravovat své účty služby SaaS.      |    Transakce     |
-|Předplatné rozhraní API    |   Vystavit služby, které mohou komunikovat s předplatným SaaS vytvářet, aktualizovat a odstraňovat plán uživatelského účtu a služby. Důležité změny rozhraní API musí podporovat do 24 hodin. Méně závažné změny rozhraní API, budou vydané pravidelně.      |     Transakce    |
+|Fakturace a měření   |   Vaši nabídku je cenově paušálně měsíční. V tuto chvíli nejsou podporovány na základě využití ceny a na základě využití možnosti "true-up".      |  
+|Zrušení  |   Kdykoli je možné zrušit zákazník vaši nabídku.      |  
+|Cílová stránka transakce   |   Hostujete stránku cílová Azure související transakci, kde uživatelé mohou vytvářet a spravovat své účty služby SaaS.      |   
+|Předplatné rozhraní API    |   Vystavit služby, které mohou komunikovat s předplatným SaaS vytvářet, aktualizovat a odstraňovat plán uživatelského účtu a služby. Důležité změny rozhraní API musí podporovat do 24 hodin. Méně závažné změny rozhraní API, budou vydané pravidelně.      | 
+
 
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Požadavky na: Azure Marketplace: Transact: virtuálního počítače  

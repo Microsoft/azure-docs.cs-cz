@@ -9,14 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
-ms.openlocfilehash: cf6b357da176ee42068d031b333fdf8464e2c34e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 779f462edee42272320dd828b084bbff7629904c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34697845"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233695"
 ---
 # <a name="review-your-access"></a>Zkontrolujte váš přístup
 

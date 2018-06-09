@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/07/2018
 ms.author: johnkem
-ms.openlocfilehash: 32360a1af25b92fe232e3e504cb6587dcb364f48
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a9bd197ff03ec0c1f9a320a721f69f2efc6a73b4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638761"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235970"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat Azure diagnostických protokolů
 
@@ -28,6 +28,9 @@ V tomto článku jsme ukazují, jak pomocí portálu Azure, rutiny prostředí P
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete muset [vytvořit účet úložiště](../storage/storage-create-storage-account.md) ke kterému archivujete diagnostické protokoly. Důrazně doporučujeme nepoužívejte stávající účet úložiště, který má jiné, -monitoring data v ní uloženy, takže může lépe řídit přístup k datům monitorování. Ale pokud jsou také archivaci protokolu aktivit a diagnostiky metriky na účet úložiště, má smysl pro použití tohoto účtu úložiště pro svoje diagnostické protokoly pro monitorování všech dat v centrálním umístění. Účet úložiště, které používáte, musí být účet úložiště obecné účely, nikoli účet úložiště objektů blob.
+
+> [!NOTE]
+>  Nelze archivovat aktuálně dat do úložiště účtu, který za zabezpečené virtuální sítě.
 
 ## <a name="diagnostic-settings"></a>Nastavení diagnostiky
 

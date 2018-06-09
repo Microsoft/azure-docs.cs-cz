@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 6/1/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: f48cbdb41f8ad7a3bad4546fa5cb77cf66780bed
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808498"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235409"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Zálohování databáze systému SQL Server v Azure
 
@@ -103,6 +103,10 @@ Předtím, než můžete zálohovat databázi SQL serveru, zkontrolujte následu
 - Identifikovat nebo [vytvoření trezoru služeb zotavení](backup-azure-sql-database.md#create-a-recovery-services-vault) ve stejné oblasti, nebo národní prostředí, jako virtuální počítač hostitelem SQL serveru.
 - [Zkontrolujte oprávnění na virtuálním počítači](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) potřebné k zálohování databází SQL.
 - [SQL virtuální stroj má síťové připojení](backup-azure-sql-database.md#establish-network-connectivity).
+
+> [!NOTE]
+> Může mít pouze jeden řešení zálohování najednou k zálohování databází systému SQL Server. Před použitím této funkce, zakažte jiné zálohování SQL, else zálohování bude konfliktu a selhání. Můžete povolit zálohování Azure pro virtuální počítač IaaS společně s zálohování SQL bez jakéhokoli konfliktu 
+>
 
 Pokud tyto podmínky existují ve vašem prostředí, přejít k části [nakonfigurovat svůj trezor chránit databázi SQL](backup-azure-sql-database.md#configure-your-vault-to-protect-a-sql-database). Pokud některé požadované součásti nejsou k dispozici, pokračujte ve čtení v této části.
 
@@ -253,7 +257,13 @@ Při použití **zjistit databází** nástroj Azure Backup provede následujíc
 
 ## <a name="configure-backup-for-sql-server-database"></a>Konfigurace zálohování pro databázi systému SQL Server
 
-Azure Backup poskytuje služby správy k ochraně vašich databází systému SQL Server a spravovat úlohy zálohování. Správa a monitorování možnosti závisí na svůj trezor služeb zotavení. Konfigurace ochrany pro vaši databázi SQL:
+Azure Backup poskytuje služby správy k ochraně vašich databází systému SQL Server a spravovat úlohy zálohování. Správa a monitorování možnosti závisí na svůj trezor služeb zotavení. 
+
+> [!NOTE]
+> Může mít pouze jeden řešení zálohování najednou k zálohování databází systému SQL Server. Před použitím této funkce, zakažte jiné zálohování SQL, else zálohování bude konfliktu a selhání. Můžete povolit zálohování Azure pro virtuální počítač IaaS společně s zálohování SQL bez jakéhokoli konfliktu 
+>
+
+Konfigurace ochrany pro vaši databázi SQL:
 
 1. Otevřený trezor služeb zotavení registrován u virtuálního počítače systému SQL.
 

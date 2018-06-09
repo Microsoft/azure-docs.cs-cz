@@ -1,35 +1,35 @@
 ---
 title: Porovnání funkcí Azure SQL Database | Microsoft Docs
-description: Tento článek porovnává funkce Azure SQL Database a spravované instancí mezi sebou a se systémem SQL Server.
+description: Tento článek obsahuje porovnání funkcí systému SQL Server, které jsou k dispozici v různých typů databáze SQL Azure.
 services: sql-database
 author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: eaaadd48c92ef79964f712dae9bffb24dac271cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646717"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248805"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
-Azure SQL Database sdílí společný kód základní s SQL serverem. Funkce systému SQL Server nepodporuje Azure SQL Database, závisí na typu databáze Azure SQL, který vytvoříte. S Azure SQL Database, můžete buď vytvořit databázi jako součást [spravované instance](sql-database-managed-instance.md) (momentálně ve verzi public preview) nebo můžete vytvořit databázi, která je jednu databázi nebo databázi, která je součástí fondu elastické databáze. 
+Azure SQL Database sdílí společný kód základní s SQL serverem. Funkce systému SQL Server nepodporuje Azure SQL Database, závisí na typu databáze Azure SQL, který vytvoříte. S Azure SQL Database, můžete buď vytvořit databázi jako součást [spravované instance](sql-database-managed-instance.md) (momentálně ve verzi public preview) nebo můžete vytvořit databázi, která je součástí logického serveru a volitelně umístěný v Elastickém fondu. 
 
 Microsoft dál pro přidání funkcí do Azure SQL Database. Naleznete na webové stránce služby aktualizace pro Azure nejnovější aktualizace pomocí tyto filtry:
 
 * Filtrování na [službu SQL Database](https://azure.microsoft.com/updates/?service=sql-database)
 * Filtrování na [oznámení všeobecné dostupnosti ](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) pro funkce služby SQL Database
 
-## <a name="sql-server-and-sql-database-feature-support"></a>Funkce Podpora systému SQL Server a databáze SQL
+## <a name="sql-server-feature-support-in-azure-sql-database"></a>Podpora funkcí systému SQL Server v Azure SQL Database
 
 V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a poskytuje informace o tom, jestli tyto funkce částečně nebo zcela podporuje a odkaz na další informace o funkci. 
 
-| **Funkce SQL** | **Podporované služby Azure SQL Database** | **Spravované Instance (preview)** |
+| **Funkce SQL** | **Podporované v databázi nebo logického serveru Azure SQL** | **Podporované v Azure SQL Database nebo spravované Instance (preview)** |
 | --- | --- | --- |
 | [Funkce Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ano – viz [úložiště certifikátů](sql-database-always-encrypted.md) a [Key vault](sql-database-always-encrypted-azure-key-vault.md) | Ano – viz [úložiště certifikátů](sql-database-always-encrypted.md) a [Key vault](sql-database-always-encrypted-azure-key-vault.md) |
 | [Skupiny dostupnosti AlwaysOn](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) |
@@ -40,7 +40,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Automatické ladění (vynucení plánu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| [Ano](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatické ladění (indexy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| Ne |
 | [Soubor souboru BACPAC (exportovat)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano – najdete v části [export databáze SQL](sql-database-export.md) | Ano |
-| [Soubor souboru BACPAC (Importovat)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano – najdete v části [import databáze SQL](sql-database-import.md) | Ano |
+| [Soubor souboru BACPAC (Importovat)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano – najdete v části [import databáze SQL](sql-database-import.md) | Ne |
 | [Příkaz BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Ne, najdete v článku pouze spouštěná systému automatické zálohování - [automatizované zálohování](sql-database-automated-backups.md) | Spouštěná systému zálohy pro automatické a uživatel inicioval pouze kopie zálohy – viz [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Integrované funkce](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina - jednotlivých funkcí najdete v části | Ano – najdete v části [uložené procedury, funkce, aktivuje rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Funkce Change data capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |
@@ -137,7 +137,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 |Detekce hrozeb|  [Ano](sql-database-threat-detection.md)|[Ano](sql-database-managed-instance-threat-detection.md)|
 | [Příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Ne | Ne |
 | [Proměnné](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ano | Ano |
-| [Transparentní šifrování dat (šifrování TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ano | Ne, není ve verzi Public Preview |
+| [Transparentní šifrování dat (šifrování TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ano | Partial pouze s službu spravovat šifrování |
 [Virtuální síť](../virtual-network/virtual-networks-overview.md) | Částečné - najdete v části [koncové body virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md) | Ano, pouze modelu Resource Manager |
 | [Windows Server Failover Clustering](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) | [Vysoká dostupnost](sql-database-high-availability.md) je součástí každé databázi. Zotavení po havárii je popsána v [přehled kontinuity podnikových procesů s Azure SQL Database](sql-database-business-continuity.md) |
 | [Indexy XML](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Ano | Ano |

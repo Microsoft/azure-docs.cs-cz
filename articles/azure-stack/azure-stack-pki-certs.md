@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: faf85c34c527dd72889f0fcb5021925b79481163
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823845"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234837"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku
 
@@ -30,7 +30,7 @@ Sada Azure má síť infrastruktury veřejných pomocí externě dostupný veře
 - Proces získání certifikátů odpovídající tyto specifikace
 - Jak připravit, ověření a použití těchto certifikátů během nasazování
 
-> [!NOTE]
+> [!Note]  
 > Během nasazení je nutné zkopírovat certifikáty do složky nasazení, která odpovídá zprostředkovatele identity, které nasazujete proti (Azure AD ani AD FS). Pokud použijete jeden certifikát pro všechny koncové body, je nutné zkopírovat tento soubor certifikátu do každé složky pro nasazení, jak je uvedeno v následujících tabulkách. Struktura složek je předem součástí nasazení virtuálního počítače a naleznete na adrese: C:\CloudDeployment\Setup\Certificates. 
 
 ## <a name="certificate-requirements"></a>Požadavky na certifikát
@@ -47,12 +47,12 @@ Následující seznam popisuje požadavky na certifikát, které jsou nutné k n
 - Tento certifikát "vystaveno pro:" pole nesmí být stejné jako jeho "vydaný:" pole.
 - Hesla, aby všechny soubory pfx certifikátů musí být stejný v době nasazení
 - Heslo pro soubor pfx certifikátu musí být složité heslo.
-- Zajistěte, aby názvy subjektu a alternativní názvy předmětu certifikátů odpovídaly specifikace popsané v tomto článku, aby se zabránilo selhání nasazení.
+- Zajistěte, aby názvy subjektu a alternativní názvy subjektu v rozšíření (x509v3_config) shody alternativní název subjektu. Pole alternativní název subjektu umožňuje zadat názvy další hostitelů (weby, IP adresy, názvy společných) byly chráněny jeden certifikát SSL.
 
-> [!NOTE]
+> [!NOTE]  
 > Vlastní certifikáty podepsaná nejsou podporovány.
 
-> [!NOTE]
+> [!NOTE]  
 > Přítomnost prostředník certifikačních autorit v řetězu vztahy důvěryhodnosti je certifikát na podporována. 
 
 ## <a name="mandatory-certificates"></a>Povinné certifikáty

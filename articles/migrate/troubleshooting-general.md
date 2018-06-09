@@ -4,14 +4,14 @@ description: Poskytuje přehled o známé problémy ve službě Azure migrovat a
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 05/31/2018
+ms.date: 06/08/2018
 ms.author: raynew
-ms.openlocfilehash: d53dec3794a414f61b9bfca3e9715607de448bbf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c717cfdac83ec8d85b1fa0a874e5573a40dd4611
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716199"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235623"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Řešení problémů s Azure Migrate
 
@@ -19,13 +19,29 @@ ms.locfileid: "34716199"
 
 [Azure migrací](migrate-overview.md) vyhodnocuje místní úlohy pro migraci do Azure. V tomto článku použijte k řešení potíží při nasazení a používání Azure migrovat.
 
-**Vytvoření projektu migrace se nezdařila s chybou *požadavky musí obsahovat záhlaví identity uživatele***
+### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Vytvoření projektu migrace se nezdařila s chybou *požadavky musí obsahovat záhlaví identity uživatele*
 
 Tento problém může dojít, pro uživatele, kteří nemají přístup k klienta Azure Active Directory (Azure AD) organizace. Pokud uživatel přidá do klienta služby Azure AD poprvé, si obdrží pozvání e-mailu pro připojení klienta. Uživatelé musí přejít na e-mailu a přijetí pozvánky získat úspěšně přidán do klienta. Pokud nelze zobrazit e-mailu, oslovení uživatele, který již má přístup k klienta a požádejte je o odeslání pozvánky pro vás postupem zadaný [zde](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users).
 
 Po přijetí e-mailová pozvánka je budete muset otevřít e-mailu a klikněte na odkaz v e-mailu pro přijetí pozvánky. Až bude vše Hotovo, je nutné se odhlásit z portálu Azure a přihlásit znovu, aktualizace prohlížeče nebude fungovat. Potom můžete zkusit vytvořit projekt migrace.
 
-**Kolekce není možné se připojit k Internetu**
+### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Zobrazuje data výkonu u disků a sítě adaptéry jako nuly
+
+Tato situace může nastat, pokud úroveň statistiky nastavení na serveru vCenter je nastavena na méně než tři. Na úrovni tři nebo vyšší ukládá vCenter historie výkonu virtuálního počítače pro výpočty, úložiště a sítě. Pro menší než úrovně tři není vCenter uložit úložiště a sítě dat, ale pouze data procesoru a paměti. V tomto scénáři výkonu zobrazí data jako nula v Azure migrovat a migrovat Azure poskytuje velikost doporučení pro disky a na základě metadat shromážděná z počítačů místní sítě.
+
+Chcete-li povolit shromažďování dat výkonu diskových a síťových, změňte úroveň nastavení statistiky na tři. Potom počkejte aspoň jeden den ke zjištění prostředí a vyhodnocení ho.
+
+### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>I nainstalovali agenty a vizualizaci závislostí použitý k vytvoření skupin. Nyní post převzetí služeb při selhání, na počítače zobrazit akci "Instalace agenta" místo "Zobrazení závislosti"
+* POST plánované nebo neplánované převzetí služeb při selhání, na místní počítače jsou vypnuté a ekvivalentní počítače jsou spuštěné v Azure. Tyto počítače získat jinou adresu MAC. Se může získat jinou IP adresu založené na tom, jestli se uživatel rozhodl zachovat místní IP adresu, nebo ne. Pokud MAC a IP adresy liší, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
+* Odeslat testovací převzetí služeb při selhání, místní počítače zůstaly zapnuté podle očekávání. Ekvivalentní počítače spuštěné v Azure získat jinou adresu MAC a mohou získat jinou IP adresu. Pokud uživatel blokuje odchozí provoz analýzy protokolů z těchto počítačů, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
+
+## <a name="collector-errors"></a>Kolekce chyb
+
+### <a name="deployment-of-collector-ova-failed"></a>Nasazení kolekce vajíčka se nezdařilo
+
+Pokud používáte k nasazení vajíčka vSphere webovému klientovi, toto může nastat pokud vajíčka je částečně stažen nebo kvůli prohlížeče. Ujistěte se, že po dokončení stahování a zkuste nasazení vajíčka s jiném prohlížeči.
+
+### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Kolekce není možné se připojit k Internetu
 
 To může dojít, pokud je počítač, který používáte za proxy server. Zkontrolujte, zda že je zadat přihlašovací údaje pro autorizaci, pokud potřebovat proxy server.
 Pokud používáte žádné brány firewall založená na adresu URL proxy serveru k řízení odchozí připojení, nezapomeňte seznamu povolených IP adres, že následující požadované adresy URL:
@@ -48,7 +64,7 @@ Ujistěte se, že jste se zkopírovat a vložit správné informace. Chcete-li v
 7. Ověřte, zda agent může připojit k projektu. Pokud ne, ověřte nastavení. Pokud se mohou připojit agenta však nemůže kolekce, kontaktujte podporu.
 
 
-**Chyba 802: zobrazí chyba synchronizace datum a čas.**
+### <a name="error-802-date-and-time-synchronization-error"></a>Chyba 802: Data a času Chyba synchronizace
 
 Hodiny serveru může být se na synchronizaci s aktuálním časem o víc než pět minut. Změňte čas hodiny v kolekci virtuálních počítačů tak, aby odpovídaly aktuálního času, následujícím způsobem:
 
@@ -56,20 +72,32 @@ Hodiny serveru může být se na synchronizaci s aktuálním časem o víc než 
 2. Chcete-li zkontrolovat časové pásmo, spusťte w32tm /tz.
 3. Chcete-li synchronizovat čas, spusťte w32tm/resync.
 
-**Moje projektu klíč má "==" symboly ke konci. Tyto jsou zakódovány na jiné alfanumerických znaků pomocí kolekce. Je to očekávané?**
+### <a name="vmware-powercli-installation-failed"></a>VMware PowerCLI instalace se nezdařila.
 
-Ano, každý projekt klíč končí "==". Kolekce zašifruje klíč projektu před zpracováním ho.
+Kolekce Azure migrací PowerCLI stáhne a nainstaluje na zařízení. Selhání v PowerCLI instalace může být z důvodu nedostupný koncové body pro PowerCLI úložiště. Chcete-li vyřešit, zkuste ruční instalaci PowerCLI v kolekci virtuálních počítačů pomocí následující krok:
 
-**Zobrazuje data výkonu u disků a sítě adaptéry jako nuly**
+1. Otevřete prostředí Windows PowerShell v režimu správce.
+2. Přejděte do adresáře C:\ProgramFiles\ProfilerService\VMWare\Scripts\
+3. Spusťte skript InstallPowerCLI.ps1
 
-Tato situace může nastat, pokud úroveň statistiky nastavení na serveru vCenter je nastavena na méně než tři. Na úrovni tři nebo vyšší ukládá vCenter historie výkonu virtuálního počítače pro výpočty, úložiště a sítě. Pro menší než úrovně tři není vCenter uložit úložiště a sítě dat, ale pouze data procesoru a paměti. V tomto scénáři výkonu zobrazí data jako nula v Azure migrovat a migrovat Azure poskytuje velikost doporučení pro disky a na základě metadat shromážděná z počítačů místní sítě.
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Došlo k chybě UnhandledException vnitřní chyba: System.IO.FileNotFoundException
 
-Chcete-li povolit shromažďování dat výkonu diskových a síťových, změňte úroveň nastavení statistiky na tři. Potom počkejte aspoň jeden den ke zjištění prostředí a vyhodnocení ho.
+K těmto potížím dochází u Collectoru verze nižší než 1.0.9.5. S těmito potížemi se setkáte, pokud používáte Collector verze 1.0.9.2 nebo verze před GA, jako je 1.0.8.59. [Podrobnou odpověď najdete pomocí uvedeného odkazu na fóra](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
 
-**I nainstalovali agenty a vizualizaci závislostí použitý k vytvoření skupin. Nyní post převzetí služeb při selhání, na počítače zobrazit akci "Instalace agenta" místo "Zobrazení závislosti"**
-* POST plánované nebo neplánované převzetí služeb při selhání, na místní počítače jsou vypnuté a ekvivalentní počítače jsou spuštěné v Azure. Tyto počítače získat jinou adresu MAC. Se může získat jinou IP adresu založené na tom, jestli se uživatel rozhodl zachovat místní IP adresu, nebo ne. Pokud MAC a IP adresy liší, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
-* Odeslat testovací převzetí služeb při selhání, místní počítače zůstaly zapnuté podle očekávání. Ekvivalentní počítače spuštěné v Azure získat jinou adresu MAC a mohou získat jinou IP adresu. Pokud uživatel blokuje odchozí provoz analýzy protokolů z těchto počítačů, Azure migrovat žádná data závislostí mapy služeb nepřidruží místní počítače a požádá uživatele k instalaci agentů místo zobrazení závislostí.
+[Pokud chcete tyto potíže vyřešit, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates).
 
+### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
+
+Nelze se připojit k systému vCenter Server "Servername.com:9443" kvůli chybě: koncový bod, naslouchá na https://Servername.com:9443/sdk , může přijímat zprávy.
+
+Zkontrolujte, jestli jste používají nejnovější verzi kolekce zařízení, pokud ne, upgrade zařízení na [nejnovější verzi](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
+
+Pokud problém stále probíhá na nejnovější verzi, je možné, protože kolekce počítač se nepodařilo vyřešit zadaný název serveru vCenter nebo zadaný port je nesprávný. Ve výchozím nastavení Pokud není port určen, kolekce se pokusí připojit k číslo portu 443.
+
+1. Zkuste příkaz ping Servername.com z počítače kolekce.
+2. Pokud krok 1 selže, zkuste se k serveru vCenter připojit přes IP adresu.
+3. Zjistěte správné číslo portu pro připojení k serveru vCenter.
+4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
 
 ## <a name="troubleshoot-readiness-issues"></a>Řešení potíží s problémy připravenosti
 
@@ -130,26 +158,6 @@ Chcete-li shromažďovat trasování událostí pro Windows, postupujte takto:
  - V prohlížeči Chrome klikněte pravým tlačítkem na libovolné místo v protokolu konzoly. Vyberte **uložit jako**, abyste mohli exportovat a zip v protokolu.
  - V hraniční nebo IE, klikněte pravým tlačítkem na tyto chyby a vyberte **zkopírujte všechny**.
 7. Zavřete nástroje pro vývojáře.
-
-
-## <a name="vcenter-errors"></a>vCenter chyby
-
-### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Došlo k chybě UnhandledException vnitřní chyba: System.IO.FileNotFoundException
-
-K těmto potížím dochází u Collectoru verze nižší než 1.0.9.5. S těmito potížemi se setkáte, pokud používáte Collector verze 1.0.9.2 nebo verze před GA, jako je 1.0.8.59. [Podrobnou odpověď najdete pomocí uvedeného odkazu na fóra](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
-
-[Pokud chcete tyto potíže vyřešit, upgradujte Collector](https://aka.ms/migrate/col/checkforupdates).
-
-### <a name="error-unabletoconnecttoserver"></a>Chyba UnableToConnectToServer
-
-Nelze se připojit k systému vCenter Server "Servername.com:9443" kvůli chybě: koncový bod, naslouchá na https://Servername.com:9443/sdk , může přijímat zprávy.
-
-K této situaci dojde, když je počítač s Collectorem nemůže přeložit název serveru vCenter nebo pokud zadaný port je chybný. Pokud není zadaný žádný port, Collector se ve výchozím nastavení pokusí připojit k portu číslo 443.
-
-1. Zkuste v počítači s Collectorem použít pro Servername.com příkaz ping.
-2. Pokud krok 1 selže, zkuste se k serveru vCenter připojit přes IP adresu.
-3. Zjistěte správné číslo portu pro připojení k serveru vCenter.
-4. Nakonec zkontrolujte, jestli server vCenter je spuštěný.
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>Kódy chyb kolekce a doporučené akce
 

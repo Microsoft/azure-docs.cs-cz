@@ -1,5 +1,5 @@
 ---
-title: Postup použití ke zpracování na pozadí událostmi řízené - Azure WebJobs SDK
+title: Jak používat Azure WebJobs SDK
 description: Další informace o tom, jak napsat kód pro WebJobs SDK. Událostmi řízené pozadí vytvořte úlohy zpracování, které přístup k datům v Azure služby a služby třetích stran.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,16 +13,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 18b47014e6fe3e489f783f675a3498c58981b99f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 08272ba7d828f744336723f25b482bf06b9e43dc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725526"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234646"
 ---
-# <a name="how-to-use-the-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK webové úlohy pro zpracování na pozadí založeného na událostech
+# <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat Azure WebJobs SDK pro zpracování na pozadí založeného na událostech
 
-Tento článek obsahuje pokyny o tom, jak napsat kód pro [WebJobs SDK](webjobs-sdk-get-started.md). V dokumentaci platí pro verze 2.x a 3.x, pokud není uvedeno jinak jinak. Hlavní změna zaváděné 3.x je použití .NET Core místo rozhraní .NET Framework.
+Tento článek obsahuje pokyny o tom, jak napsat kód pro [Azure WebJobs SDK](webjobs-sdk-get-started.md). V dokumentaci platí pro verze 2.x a 3.x, pokud není uvedeno jinak jinak. Hlavní změna zaváděné 3.x je použití .NET Core místo rozhraní .NET Framework.
 
 >[!NOTE]
 > [Azure Functions](../azure-functions/functions-overview.md) je založený na WebJobs SDK a tento článek obsahuje odkazy na Azure Functions dokumentaci pro některá témata. Vezměte na vědomí následující rozdíly mezi funkcemi a WebJobs SDK:

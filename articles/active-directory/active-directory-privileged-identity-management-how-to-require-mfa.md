@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: protection
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 6e773c0609a0d6a4c7ebf20ddfdcfcdd08d9a786
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: d0a9abc145a4d108e48bc81cbb6a849c62e5862b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698369"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234008"
 ---
 # <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Jak vyžadovat vícefaktorové ověřování v Azure AD Privileged Identity Management
 Doporučujeme vyžadovat vícefaktorové ověřování (MFA) pro všechny správce. Tím se snižuje riziko útoků z důvodu ohroženými heslo.

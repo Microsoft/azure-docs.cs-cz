@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/12/2018
+ms.date: 6/08/2018
 ms.author: johnkem
-ms.openlocfilehash: 91c3f1507bb4fb64d5395917e8e431951f77e72b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20f148988191c130d8e10f1776f3bbe1612a8c17
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248172"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Podporované služby, schémat a kategorie pro diagnostických protokolů Azure.
 
@@ -29,30 +30,34 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 
 | Služba | Schéma & dokumentace |
 | --- | --- |
-| Analysis Services | Schéma není k dispozici. |
+| Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [Diagnostické protokoly rozhraní API pro správu](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Brány Application Gateway |[Protokolování diagnostiky pro službu Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Analýzy protokolů pro Azure Automation.](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Protokolování diagnostiky Azure Batch](../batch/batch-diagnostics.md) |
-| Customer Insights | Schéma není k dispozici. |
-| Content Delivery Network | Schéma není k dispozici. |
+| Content Delivery Network | [Azure diagnostické protokoly pro CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Protokolování Azure Cosmos DB](../cosmos-db/logging.md) |
+| Data Factory | [Monitorovat pomocí monitorování Azure Data Factory](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Přístup k protokolům diagnostiky pro Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Přístup k diagnostickým protokolům pro Azure Data Lake Store](../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| DB pro PostgreSQL |  Schéma není k dispozici. |
 | Event Hubs |[Diagnostické protokoly služby Azure Event Hubs](../event-hubs/event-hubs-diagnostic-logs.md) |
+| ExpressRoute | Schéma není k dispozici. |
 | IoT Hub | [Operace služby IoT Hub](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Protokolování v Azure Key Vault](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Log Analytics pro Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Vlastní schéma sledování B2B Logic Apps](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Network Security Groups (Skupiny zabezpečení sítě) |[Analýza protokolu pro skupiny zabezpečení sítě (NSG)](../virtual-network/virtual-network-nsg-manage-log.md) |
-| Ochrana před útoky DDoS | Schéma není k dispozici. |
+| DDOS Protection | [Správa Azure DDoS ochrany Standard](../virtual-network/manage-ddos-protection.md) |
+| Vyhrazené PowerBI | Schéma není k dispozici. |
 | Recovery Services | [Datový Model pro zálohování Azure](../backup/backup-azure-reports-data-model.md)|
 | Search |[Povolení a používání Analýza provozu vyhledávání](../search/search-traffic-analytics.md) |
-| Správa serveru | Schéma není k dispozici. |
 | Service Bus |[Diagnostické protokoly služby Azure Service Bus](../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| Databáze SQL | [Protokolování diagnostiky Azure SQL Database](../sql-database/sql-database-metrics-diag-logging.md) |
+| SQL Database | [Protokolování diagnostiky Azure SQL Database](../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Diagnostické protokoly úlohy](../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| Traffic Manager | Schéma není k dispozici. |
 | Virtuální sítě | Schéma není k dispozici. |
+| Brány virtuálních sítí | Schéma není k dispozici. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Podporované kategorií protokolu na typ prostředku
 |Typ prostředku|Kategorie|Zobrazovaný název kategorie|
@@ -74,6 +79,7 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 |Microsoft.DataLakeStore/accounts|Auditování|Protokoly auditu|
 |Microsoft.DataLakeStore/accounts|Požadavky|Žádost o protokoly|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|Protokoly serveru PostgreSQL|
+|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|Události PostgreSQL zálohování|
 |Microsoft.Devices/IotHubs|Připojení|Připojení|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Zařízení Telemetrie|
 |Microsoft.Devices/IotHubs|C2DCommands|Příkazy C2D|
@@ -90,6 +96,7 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 |Microsoft.Devices/provisioningServices|Operací služeb|Operace služby|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
+|Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Protokoly archivu|
 |Microsoft.EventHub/namespaces|OperationalLogs|Operační protokoly|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Automatické škálování protokoly|
@@ -112,6 +119,7 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|Diagnostické protokoly P2S|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Událost výsledky testu stavu Traffic Manageru|
 |Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabulka GWM čítačů|
+|Microsoft.PowerBIDedicated/capacities|Modul|Modul|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Zálohování Azure Data pro vytváření sestav|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Úlohy Azure Site Recovery|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery události|
@@ -128,7 +136,7 @@ Schéma pro prostředek diagnostických protokolů se liší v závislosti na ka
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Databáze statistiky čekání|
 |Microsoft.Sql/servers/databases|Časové limity|Časové limity|
 |Microsoft.Sql/servers/databases|Bloky|Bloky|
-|Microsoft.Sql/servers/databases|SQLInsights|Statistika SQL|
+|Microsoft.Sql/servers/databases|SQLInsights|Přehledy SQL|
 |Microsoft.Sql/servers/databases|Auditování|Protokoly auditu|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|Události auditu zabezpečení SQL|
 |Microsoft.StreamAnalytics/streamingjobs|Spouštěcí|Spouštěcí|

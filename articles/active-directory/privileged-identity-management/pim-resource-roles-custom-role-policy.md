@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: fb40c59fde17c742bb9e2bbe5f5f598382248eab
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 03904990d54db0dd39ed7059f57a0a13efe0aaca
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699348"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233375"
 ---
 # <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Použít vlastní role k nastavení cílového Privileged Identity Management
 

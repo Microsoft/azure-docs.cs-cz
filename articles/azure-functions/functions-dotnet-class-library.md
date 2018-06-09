@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: cea2fb3069ff69130720049c002e19fa14266b9f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 53eaef775647795acf3e8e6fcd127181414b1c0e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831968"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234491"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure funkcí jazyka C# referenční informace pro vývojáře
 
@@ -311,6 +311,8 @@ public static class EnvironmentVariablesExample
     }
 }
 ```
+
+[System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) vlastnost je alternativní rozhraní API pro získání hodnoty nastavení aplikace, ale doporučujeme vám, že používáte `GetEnvironmentVariable` jak je vidět tady.
 
 ## <a name="binding-at-runtime"></a>Vazba za běhu
 

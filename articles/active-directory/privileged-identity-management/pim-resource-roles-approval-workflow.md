@@ -10,15 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 481e4a020f7143c070fabf183e8376f3862c7470
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: de15a02e706ec7f7b4cff0af303ea30fc87b8f34
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699501"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233763"
 ---
 # <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Pracovní postup schválení pro prostředků Azure role v Privileged Identity Management
 

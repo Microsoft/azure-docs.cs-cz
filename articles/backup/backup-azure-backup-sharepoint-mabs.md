@@ -6,14 +6,14 @@ author: pvrk
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/24/2017
+ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: f7b69e2558234159075161be7d58cc3695dfbbaf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4dff27d8ef7357e5af3635cc39fb52963689e7bb
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606048"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247961"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Zálohování sharepointové farmy do Azure
 Zálohujete farmy služby SharePoint do služby Microsoft Azure pomocí služby Microsoft Azure Backup Server (MABS) v mnohem stejným způsobem, který zálohujete jiných zdrojů dat. Azure Backup poskytuje flexibilitu při plán zálohování k vytvoření denní, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body zálohy. Poskytuje taky možnost k uložení kopie místního disku pro rychlé cíle doba obnovení (RTO) a slouží k uložení kopie do Azure pro ekonomické, dlouhodobé uchovávání.
@@ -32,13 +32,13 @@ Existuje několik věcí, které je potřeba potvrdit před Zálohování farmy 
 Než budete pokračovat, ujistěte se, že máte [nainstalované a připravené serveru Azure Backup](backup-azure-microsoft-azure-backup.md) chránit úlohy.
 
 ### <a name="protection-agent"></a>Agent ochrany
-Na serveru, na kterém běží SharePoint, serverech se systémem SQL Server a všechny ostatní servery, které jsou součástí farmy služby SharePoint musí být nainstalován agent ochrany. Další informace o tom, jak nastavit agenta ochrany najdete v tématu [instalace agenta ochrany](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedinou výjimkou je, že instalujete agenta pouze na jednom webovém serveru front-end (WFE). Aplikace DPM vyžaduje agenta na jednom serveru WFE pouze sloužit jako vstupní bod pro ochranu.
+Agent Azure Backup musí být nainstalován na serveru, na kterém běží SharePoint, serverech se systémem SQL Server a všechny ostatní servery, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany najdete v tématu [instalace agenta ochrany](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedinou výjimkou je, že instalujete agenta pouze na jednom webovém serveru front-end (WFE). Azure Backup Server musí agenta na jednom serveru WFE pouze sloužit jako vstupní bod pro ochranu.
 
 ### <a name="sharepoint-farm"></a>Farmy služby SharePoint
 Pro každých 10 milionů položek ve farmě musí být alespoň 2 GB místa na svazku, kde je umístěna složka MABS. Tento prostor je nezbytné pro generování katalogu. Pro MABS obnovit konkrétní položky (kolekce webů, weby, seznamy, knihovny dokumentů, složky, jednotlivé dokumenty a položky seznamu) generování katalogu vytvoří seznam adres URL, které jsou obsaženy v jednotlivých databázích obsahu. Seznam adres URL můžete zobrazit v podokně obnovitelných položek **obnovení** oblasti konzoly pro správu MABS úlohy.
 
 ### <a name="sql-server"></a>SQL Server
-MABS běží pod účtem LocalSystem. Zálohování databází systému SQL Server, musí MABS oprávnění sysadmin na tento účet pro server, který se systémem SQL Server. Nastavte NT AUTHORITY\SYSTEM na *sysadmin* na serveru, který je spuštěn SQL Server předtím, než ho zálohovat.
+Azure Backup Server se spouští jako účet LocalSystem. Zálohování databází systému SQL Server, musí MABS oprávnění sysadmin na tento účet pro server, který se systémem SQL Server. Nastavte NT AUTHORITY\SYSTEM na *sysadmin* na serveru, který je spuštěn SQL Server předtím, než ho zálohovat.
 
 Pokud farmy služby SharePoint databáze systému SQL Server, které jsou nakonfigurovány s aliasy systému SQL Server, nainstalujte komponenty klienta systému SQL Server na front-end webovém serveru, který bude chránit MABS.
 
@@ -231,5 +231,7 @@ Odpověď: Ano, položka je možné obnovit do původního webu služby SharePoi
 Otázka: je možné obnovit databázi služby SharePoint do původního umístění, pokud je služba SharePoint nakonfigurována pomocí technologie AlwaysOn serveru SQL?<br>
 Odpověď: protože databáze služby SharePoint jsou konfigurované v SQL AlwaysOn, nemůže být upraven Pokud skupina dostupnosti je odebrána. V důsledku toho MABS nelze obnovit databázi do původního umístění. Můžete obnovit databázi systému SQL Server do jiné instance systému SQL Server.
 
-## <a name="next-steps"></a>Další postup
-* Další informace o MABS ochrany služby SharePoint – viz [řady Video - DPM ochrany služby SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+## <a name="next-steps"></a>Další kroky
+
+Najdete v článku [zálohování systému Exchange server](backup-azure-exchange-mabs.md) článku.
+Najdete v článku [zálohování systému SQL Server](backup-azure-sql-mabs.md) článku.

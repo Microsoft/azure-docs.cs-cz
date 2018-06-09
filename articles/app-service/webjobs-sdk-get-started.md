@@ -1,5 +1,5 @@
 ---
-title: Začínáme s WebJobs SDK – Azure
+title: Začínáme se sadou Azure WebJobs SDK
 description: Úvod do WebJobs SDK pro zpracování na pozadí založeného na událostech. Zjistěte, jak získat přístup k datům v Azure služby a služby třetích stran.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234511"
 ---
-# <a name="get-started-with-the-webjobs-sdk"></a>Začínáme s WebJobs SDK
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s Azure WebJobs SDK pro zpracování na pozadí založeného na událostech
 
-Tento článek ukazuje, jak vytvořit projekt WebJobs SDK, ji spustit místně a nasadíte ho do Azure.
+Tento článek ukazuje postup vytvoření projektu Azure WebJobs SDK, ji spustit místně a nasadíte ho do služby Azure App Service.
 
 Tyto pokyny jsou pro [Visual Studio 2017](https://www.visualstudio.com/vs/), ale stejné úlohy, můžete provést pomocí jiných nástrojů, jako například [Visual Studio Code](https://code.visualstudio.com/).
 
-## <a name="what-is-the-webjobs-sdk"></a>Co je sada WebJobs SDK
+## <a name="what-is-the-azure-webjobs-sdk"></a>Co je Azure WebJobs SDK
 
 Sada Azure WebJobs SDK je rozhraní, které usnadňuje psaní kódu zpracování pozadí, který přistupuje k datům v Azure services. Sada SDK funkce deklarativní syntaxe pro určení události, které by měly aktivovat funkci, jako je například novou zprávu přidán do fronty. Podobně jako deklarativní syntaxe řídí čtení a zápis dat po funkce byla spuštěna. Tento systém triggerů a vazeb postará pro většinu nízké úrovně kódování úkoly spojené s přístupem do služby Azure a služby třetích stran.
 

@@ -11,20 +11,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: it-pro
-ms.date: 11/09/2017
+ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 5df12f905595c9b3e8caa8f372b9ba7b54672f81
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bc1f0341f4e1c07dc16522f5a2ae36fa2e64d1fb
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248771"
 ---
-# <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace přihlášení automaticky zrychlení pro aplikace s použitím zásad zjišťování domovské sféry
+# <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Nakonfigurovat chování pro aplikaci Azure Active Directory přihlašování s použitím zásad zjišťování domovské sféry
 
-Následující dokument obsahuje úvodní informace o zjišťování domovské sféry a automaticky akcelerace.
+Následující dokument obsahuje úvodní informace ke konfiguraci Azure Active Directory chování ověřování pro federované uživatele.   Pokrývá konfigurace omezení automaticky akcelerace a ověřování pro uživatele ve federované domény.
 
 ## <a name="home-realm-discovery"></a>Zjišťování domovské sféry
-Zjišťování domovské sféry (HRD) je proces, který umožňuje Azure Active Directory (Azure AD) k určení, během přihlášení, kde uživatel potřebuje k ověření.  Když se uživatel přihlásí do klienta služby Azure AD pro přístup k prostředkům, nebo na Azure AD běžné přihlašovací stránku, jejich zadejte uživatelské jméno (UPN). Azure AD, využívá k vyhledávání, kde uživatel musí přihlásit. 
+Zjišťování domovské sféry (HRD) je proces, který umožňuje Azure Active Directory (Azure AD) k určení, kde uživatel potřebuje k ověření v době přihlášení.  Když se uživatel přihlásí do klienta služby Azure AD pro přístup k prostředkům, nebo na Azure AD běžné přihlašovací stránku, jejich zadejte uživatelské jméno (UPN). Azure AD, využívá k vyhledávání, kde uživatel musí přihlásit. 
 
 Uživatel může být nutné přesměrováni na jednu z následujících umístění ověřovány:
 
@@ -32,16 +33,16 @@ Uživatel může být nutné přesměrováni na jednu z následujících umíst�
 
 - Účet Microsoft.  Uživatel je hostovaný v klientovi prostředků.
 
-- Jiný zprostředkovatel identity, který je Federovaná pomocí klienta Azure AD.
-
 -  Zprostředkovatele identity místní například Active Directory Federation Services (AD FS).
 
+- Jiný zprostředkovatel identity, který je Federovaná pomocí klienta Azure AD.
+
 ## <a name="auto-acceleration"></a>Akcelerace automaticky 
-Některé organizace nakonfigurovat jejich klienta Azure Active Directory vytvořit federaci s jinou IdP, například služby AD FS pro ověření uživatele.  
+Některé organizace konfigurace domén v jejich klienta Azure Active Directory vytvořit federaci s jinou IdP, například služby AD FS pro ověření uživatele.  
 
-V těchto případech když se uživatel přihlásí do aplikace, nejprve nejprve zobrazí se přihlašovací stránku služby Azure AD. Po jejich zadali jejich UPN, jsou pak přesměrováni na přihlašovací stránce deklarací identity. Za určitých okolností může správce chtít nasměrovat uživatele na přihlašovací stránku, když jste přihlášení k určité aplikace. 
+Pokud se uživatel přihlásí do aplikace, se nejprve zobrazí s přihlašovací stránku služby Azure AD. Po jejich zadali jejich UPN, pokud jsou ve federované domény jsou pak přesměrováni na stránku přihlášení rozšíření IdP obsluhující tuto doménu. Za určitých okolností může správce chtít nasměrovat uživatele na přihlašovací stránku, když jste přihlášení k určité aplikace. 
 
-To znamená, že uživatelé, můžete přeskočit úvodní stránky Azure Active Directory. Tento proces se označuje jako "přihlášení automaticky zrychlení."
+V důsledku uživatelů, můžete přeskočit úvodní stránky Azure Active Directory. Tento proces se označuje jako "přihlášení automaticky zrychlení."
 
 V případech, kde je federovaného klienta k jiné poskytovatelů identity pro přihlášení automaticky akcelerace díky uživatele přihlásit více zjednodušený.  Můžete nakonfigurovat automatické akcelerace pro jednotlivé aplikace.
 
@@ -53,7 +54,7 @@ Existují dva způsoby, jak řídit automaticky akcelerace k federované IdP:
 - Použijte pomocný parametr domény na žádosti o ověření pro aplikaci. 
 - Konfigurace zjišťování domovské sféry zásadu k zapnutí automatického akcelerace.
 
-## <a name="domain-hints"></a>Pomocné parametry domény 
+### <a name="domain-hints"></a>Pomocné parametry domény    
 Pomocné parametry domény jsou direktivy, které jsou zahrnuty v žádosti o ověření z aplikace. Můžete se používají k urychlit uživatele na jejich federované IdP přihlašovací stránku. Nebo můžete používají víceklientské aplikace pro urychlení uživatele rovnou na partnerské Azure AD přihlašovací stránka pro svého tenanta.  
 
 Například může aplikace "largeapp.com" povolit zákazníkům pro přístup k aplikaci na vlastní adresu URL "contoso.largeapp.com." Aplikace také mohou zahrnovat nápovědu domény contoso.com v žádosti o ověření. 
@@ -73,24 +74,31 @@ Pokud pomocný parametr domény neodkazuje na ověřené federované domény, je
 Další informace o automatické zrychlení použití pomocných parametrů domény, které jsou podporovány službou Azure Active Directory najdete v tématu [Enterprise Mobility and Security blog](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/11/using-azure-ad-to-land-users-on-their-custom-login-page-from-within-your-app/).
 
 >[!NOTE]
->Pokud požadavek na ověření je součástí domény nápovědu, přednost před jeho přítomnosti žádné zásady připojení, které jsou nastaveny pro aplikaci.
+>Pokud požadavek na ověření je součástí domény nápovědu, přepíše jeho přítomnosti automaticky akcelerace, který je nastavený pro aplikaci v HRD zásad.
 
-## <a name="home-realm-discovery-policy"></a>Domovské sféry zjišťování zásad
+### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Domácí zjišťování sféry zásady pro automatické akcelerace
 Některé aplikace neposkytují způsob, jak nakonfigurovat požadavek na ověření, které se budou posílat. V těchto případech je možné použít k řízení automaticky akcelerace pomocné parametry domény. Auto akcelerace je možné nakonfigurovat přes zásadu, abyste dosáhli stejné chování.  
 
-### <a name="set-hrd-policy"></a>Nastavení zásad HRD
-Existují tři kroky nastavení přihlášení automaticky akcelerace aplikace:
+## <a name="enable-direct-authentication-for-legacy-applications"></a>Povolení přímé ověřování pro starší verze aplikace
+Osvědčeným postupem je pro aplikace pro použití knihovny AAD a interaktivní přihlášení k ověřování uživatelů. V knihovnách postará toků federovaného uživatele.  Někdy starších verzí aplikací nezapisují pochopit federace. Se neprovádí zjišťování domovské sféry a nespolupracuje s správné federované koncový bod k ověření uživatele. Pokud zvolíte možnost, můžete použít zásady HRD konkrétní starší verze aplikace, které odesílají přihlašovací údaje uživatelského jména a hesla k ověřování přímo s Azure Active Directory. Musí být povolena synchronizace hodnot Hash hesel. 
 
+> [!IMPORTANT]
+> Povolte přímý ověřování, pouze pokud je zapnuta synchronizace hodnot Hash hesel a víte, že je to v pořádku pro ověření této aplikace bez všechny zásady implementované vaše místní IdP. Pokud vypnout synchronizace hodnot Hash hesel nebo vypnout synchronizace adresáře se AD Connect z jakéhokoli důvodu, byste měli odebrat tuto zásadu, aby se předešlo možné přímé ověřování pomocí hodnoty hash hesla zastaralé.
 
-1. Vytváření zásad HRD pro akcelerace automaticky.
+## <a name="set-hrd-policy"></a>Nastavení zásad HRD
+Existují tři kroky nastavení HRD zásad na aplikaci pro federované přihlašování automaticky zrychlení nebo přímé cloudové aplikace:
 
-2. Vyhledání objektu služby, ke kterému chcete připojit zásady.
+1. Vytvoření zásady připojení.
 
-3. Zásady se připojuje k instanční objekt. Zásady pravděpodobně byl vytvořen v klientovi, ale nemají nijak neprojeví, dokud jsou připojené k entitě. 
+2. Vyhledejte objekt služby, ke kterému chcete připojit zásady.
 
-Zásadu HRD lze připojit k hlavní název služby a v jednom okamžiku může být pouze jedna zásada HRD aktivní na danou entitu.  
+3. Zásady se připojte k objektu služby. 
 
-Microsoft Azure Active Directory Graph API přímo nebo Azure Active Directory PowerShell rutiny můžete nastavit automatické akcelerace pomocí HRD zásad.
+Zásady pouze se projeví pro konkrétní aplikaci, když jsou připojené k objektu služby. 
+
+V jednom okamžiku může být aktivní na hlavní název služby pouze jedna zásada HRD.  
+
+Microsoft Azure Active Directory Graph API přímo nebo Azure Active Directory PowerShell rutiny můžete vytvářet a spravovat zásady připojení.
 
 Rozhraní Graph API, které pracují se zásady je podrobněji popsaná [operací na zásady](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) článku na webu MSDN.
 
@@ -101,24 +109,27 @@ Tady je příklad HRD definice zásady:
     "HomeRealmDiscoveryPolicy":
     {  
     "AccelerateToFederatedDomain":true,
-    "PreferredDomain":"federated.example.edu"
+    "PreferredDomain":"federated.example.edu",
+    "AllowCloudPasswordValidation":true
     }
    }
 ```
 
 Typ zásad se "HomeRealmDiscoveryPolicy."
 
-Pokud **AccelerateToFederatedDomain** je nastavena hodnota false, zásada nemá žádný vliv.
+**AccelerateToFederatedDomain** je volitelný. Pokud **AccelerateToFederatedDomain** je nastavena hodnota false, zásada nemá žádný vliv na akcelerace automaticky. Pokud **AccelerateToFederatedDomain** je nastavena hodnota true a existuje pouze jeden ověření a federovanou doménu v klientovi a potom uživatelé se provedou přímých k federované rozšíření IdP pro přihlášení. Pokud je true a v klientovi, je více než jedna ověřená doména **PreferredDomain** musí být zadán.
 
-**PreferredDomain** by měl být uveden domény, ke kterému chcete zrychlit. Můžete vynechat, pokud klient má jenom jeden federovanou doménu.  Pokud je tento parametr vynechán a je více než jeden ověřit federovanou doménu, zásada nemá žádný vliv.
+**PreferredDomain** je volitelný. **PreferredDomain** by měl být uveden domény, ke kterému chcete zrychlit. Můžete vynechat, pokud klient má jenom jeden federovanou doménu.  Pokud je tento parametr vynechán a je více než jeden ověřit federovanou doménu, zásada nemá žádný vliv.
 
-Pokud **PreferredDomain** není zadaný, musí se shodovat ověřené, federované domény pro klienta. Všichni uživatelé aplikace musí umět Přihlaste se k této doméně.
+ Pokud **PreferredDomain** není zadaný, musí se shodovat ověřené, federované domény pro klienta. Všichni uživatelé aplikace musí umět Přihlaste se k této doméně.
+
+**AllowCloudPasswordValidation** je volitelný. Pokud **AllowCloudPasswordValidation** má hodnotu true, pak aplikace je povolené ověřování federovaného uživatele prezentací přihlašovací údaje uživatelského jména a hesla přímo na koncový bod tokenu Azure Active Directory. Funguje pouze pokud je povolená synchronizace hodnot Hash hesel.
 
 ### <a name="priority-and-evaluation-of-hrd-policies"></a>Prioritu a vyhodnocení zásad HRD
 HRD zásady můžete vytvořit a posléze přiřazeny k určité organizace a objekty služby. To znamená, že je možné pro víc zásad, které chcete použít pro konkrétní aplikaci. Zásady HRD, projeví se řídí následujícími pravidly:
 
 
-- Pokud je k dispozici v žádosti o ověření domény nápovědu, se ignoruje žádné zásady připojení. Chování, které je zadaném v pomocném parametru domény se používá.
+- Pokud je k dispozici v žádosti o ověření domény nápovědu, se ignoruje žádné zásady připojení pro automatické akcelerace. Chování, které je zadaném v pomocném parametru domény se používá.
 
 - Jinak Pokud zásady je explicitně přiřazen k objektu služby, vynuceno. 
 
@@ -126,15 +137,18 @@ HRD zásady můžete vytvořit a posléze přiřazeny k určité organizace a ob
 
 - Pokud neexistuje žádné pomocný parametr domény a byla přiřazena žádná zásada instanční objekt nebo organizace, použije se výchozí chování HRD.
 
-## <a name="tutorial-for-setting-sign-in-auto-acceleration-on-an-application-by-using-an-hrd-policy"></a>Kurz pro nastavení přihlášení automaticky akcelerace aplikace pomocí zásad HRD
+## <a name="tutorial-for-setting-hrd-policy-on-an-application"></a>Kurz pro nastavení zásad HRD aplikace 
 Pomocí rutin prostředí Azure AD PowerShell vás provede několik scénářů, včetně:
 
 
-- Nastavení akcelerace automaticky pro aplikaci pro klienta s jednou doménou federované.
+- Nastavení zásad HRD udělat automaticky akcelerace pro aplikaci v klientovi s jednou doménou federované.
 
-- Nastavení akcelerace automaticky pro aplikaci na jednu z několika domén, které je ověřeno pro vašeho klienta.
+- Nastavení zásad HRD udělat automaticky akcelerace pro aplikaci na jednu z několika domén, které je ověřeno pro vašeho klienta.
+
+- Nastavení zásad HRD povolit starší verzi aplikace pro přesměrování ověřování uživatelského jména a hesla do Azure Active Directory pro federované uživatele.
 
 - Výpis aplikace, pro které je nakonfigurované zásady.
+
 
 ### <a name="prerequisites"></a>Požadavky
 V následujících příkladech vytvářet, aktualizovat, propojení a odstranit zásady na objekty služby aplikace ve službě Azure AD.
@@ -154,15 +168,32 @@ V následujících příkladech vytvářet, aktualizovat, propojení a odstranit
 
 Když se nic nevrátí, znamená to, že nemáte žádné zásady vytvořené v klientovi.
 
-### <a name="example-set-auto-acceleration-for-an-application"></a>Příklad: Nastavit automatické akcelerace pro aplikaci 
-V tomto příkladu vytvoříte zásadu, která automaticky zrychluje uživatele na přihlašovací obrazovku AD FS při jsou přihlášení k aplikaci. Uživatelé se můžete přihlásit do služby AD FS bez nutnosti nejprve zadejte uživatelské jméno na přihlašovací stránce služby Azure AD. 
+### <a name="example-set-hrd-policy-for-an-application"></a>Příklad: Nastavení zásad HRD pro aplikaci 
+
+V tomto příkladu vytvoříte zásadu, když je přiřazen k aplikaci buď: 
+- Auto zrychluje uživatele na přihlašovací obrazovku AD FS po se váš klient je na jednu doménu-li přihlášení k aplikaci. 
+- Je automaticky zrychluje uživatele na služby AD FS přihlašovací obrazovku existuje více než jeden federovanou doménu ve vašem klientovi.
+- Umožňuje přihlašovací neinteraktivní uživatelského jména a hesla přímo do Azure Active Directory pro federované uživatele pro aplikace, které je přiřazená zásady.
 
 #### <a name="step-1-create-an-hrd-policy"></a>Krok 1: Vytvoření zásady HRD
+
+Tyto zásady auto zrychluje uživatele na přihlašovací obrazovku AD FS po se váš klient je na jednu doménu-li přihlášení k aplikaci.
+
 ``` powershell
 New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
+Tyto zásady auto zrychluje uživatele do služby AD FS přihlašovací obrazovky je více než jeden federovanou doménu ve vašem klientovi. Pokud máte více než jedné federované domény, který ověřuje uživatele pro aplikace, je nutné zadat domény pro automatické zvýšení.
 
-Pokud máte jeden federované domény, který ověřuje uživatele pro aplikace, budete muset vytvořit jednu zásadu HRD.  
+``` powershell
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true, "PreferredDomain":"federated.example.edu"}}") -DisplayName MultiDomainAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+```
+
+Pokud chcete vytvořit zásadu k zapnutí ověřování uživatelského jména a hesla pro federované uživatele přímo v Azure Active Directory pro konkrétní aplikace, spusťte následující příkaz:
+
+``` powershell
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuthPolicy -Type HomeRealmDiscoveryPolicy
+```
+
 
 Chcete zobrazit nové zásady a získat jeho **ObjectID**, spusťte následující příkaz:
 
@@ -171,7 +202,7 @@ Get-AzureADPolicy
 ```
 
 
-Pokud chcete povolit automatické akcelerace až budete mít zásadu HRD, je možné ji přiřadit několik hlavních objektů aplikace služby.
+Použití zásady HRD, jakmile ho vytvoříte, je možné ji přiřadit několik hlavních objektů aplikace služby.
 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Vyhledejte hlavní název služby ke kterému chcete přiřadit zásady  
 Je nutné **ObjectID** objektů služby, ke kterým chcete přiřadit zásady. Existuje několik způsobů, jak najít **ObjectID** objektů služby.    
@@ -187,8 +218,10 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectID of the Service Principal> -RefOb
 
 Tento příkaz můžete opakovat pro každý instanční objekt, do které chcete přidat zásadu.
 
-#### <a name="step-4-check-which-application-service-principals-your-auto-acceleration-policy-is-assigned-to"></a>Krok 4: Zkontrolujte, jaké objekty služby aplikace vaší automaticky akcelerace zásady přiřazeny ke
-Ke kontrole aplikací, které mají nakonfigurované zásady automaticky akcelerace, použijte **Get-AzureADPolicyAppliedObject** rutiny. Předejte ji **ObjectID** zásady, které chcete zkontrolovat.
+V případě, kde aplikace již má zásady HomeRealmDiscovery přiřazená nebudete moct přidat druhá.  V takovém případě změňte definici zásady zjišťování domovské sféry, který je přiřazen do aplikace přidat další parametry.
+
+#### <a name="step-4-check-which-application-service-principals-your-hrd-policy-is-assigned-to"></a>Krok 4: Kontrola objekty služby aplikace, které vaše HRD zásady přiřazeny ke
+Ke kontrole aplikací, které mají nakonfigurované zásady HRD, použijte **Get-AzureADPolicyAppliedObject** rutiny. Předejte ji **ObjectID** zásady, které chcete zkontrolovat.
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
@@ -196,7 +229,7 @@ Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 #### <a name="step-5-youre-done"></a>Krok 5: Hotovo!
 Zkuste aplikace a zjistit, zda je funkční nové zásady.
 
-### <a name="example-list-the-applications-for-which-an-auto-acceleration-policy-is-configured"></a>Příklad: Seznam aplikací, pro které je nakonfigurované zásady protokolu auto akcelerace
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Příklad: Seznam aplikací, pro které HRD jsou nakonfigurované zásady
 
 #### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>Krok 1: Seznam všech zásad, které byly vytvořeny ve vaší organizaci 
 
@@ -212,7 +245,7 @@ Poznámka: **ObjectID** zásad, který chcete seznam přiřazení pro.
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-auto-acceleration-policy-for-an-application"></a>Příklad: Odebrání zásad protokolu auto akcelerace pro aplikace
+### <a name="example-remove-an-hrd-policy-for-an-application"></a>Příklad: Odeberte zásadu HRD pro aplikaci
 #### <a name="step-1-get-the-objectid"></a>Krok 1: Získání ObjectID
 Získat pomocí předchozího příkladu **ObjectID** zásady, a u hlavní služba aplikace, ze kterého chcete odebrat. 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: f7e456c76dcf67a40777e32b100b900b859e210e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736792"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236395"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -30,14 +30,14 @@ ms.locfileid: "34736792"
     - Tok protokolů NSG pro skupiny Nsg, kterou chcete sledovat povoleno
     - Účet úložiště Azure pro uložení nezpracovaná flog protokoly
     - Pracovní prostor analýzy protokolů (OMS) s oprávnění ke čtení a zápisu
-    - Váš účet musí být přiřazená s některý z těchto oprávnění na úrovni předplatného:
+    - Uživatel musí mít přiřazenou s jednu z následujících rolí na úrovni předplatného:
     
             All permissions *
             All Read permissions */read
             All network permissions Microsoft.Network/*
             All network read permissions Microsoft.Network/*/read
 
-    Nebo musí mít váš účet přiřazenou následující všechny akce na úrovni předplatného: 
+    Nebo, uživatel musí mít přiřazenou následující všech rolí na úrovni předplatného: 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
@@ -49,6 +49,19 @@ ms.locfileid: "34736792"
         - Microsoft.Network/routeTables/read
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
+        
+Pokud chcete zkontrolovat role přiřazené uživateli pro předplatné, postupujte podle níže kroky:
+
+Přihlášení k Azure pomocí Login-AzureRmAccount 
+
+Vyberte požadované předplatné pomocí Select-AzureRmSubscription 
+
+Teď k zobrazení seznamu všech rolí, které jsou přiřazeny pro zadaného uživatele, použijte Get-AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators 
+
+Pokud nevidíte žádný výstup po provedení uděluje pochvalu pak kontaktujte příslušného správce předplatného, získat přístup k spuštěním příkazů.  
+
+Pro další podrobnosti naleznete v [Správa řízení přístupu na základě rolí pomocí Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+
 
 2.  Které oblasti jsou k dispozici v provozu analytics?
 
@@ -114,11 +127,11 @@ ms.locfileid: "34736792"
 
 14. Můžete nakonfigurovat analytics provozu pomocí prostředí PowerShell nebo šablonu Azure Resource Manager?
 
-    Ne, analýza provozu se dá nakonfigurovat jenom pomocí portálu Azure.
+Ano, konfigurace analýzy provozu pomocí windows powershell je podporována verze 6.2.1 a vyšší, ale není k dispozici v podpora šablony Azure Resource Manager k dispozici. Další informace, jak lze pomocí prostředí PowerShell nakonfigurovat provoz analytics naleznete v následujících [dokumentaci](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Jak je cenově Analýza provozu?
 
-        Analýza provozu je – měření podle objemu rozšíření snížené protokoly a ukládání rozšířené protokolů v pracovním prostoru analýzy protokolů. Zatímco ve verzi preview, není účtován Analýza provozu rozšíření snížené protokoly, ale uchovávání dat v pracovním prostoru podléhá fakturace publikované tempem. Tato odpověď bude aktualizován, jakmile ceny pro provoz analytics je k dispozici.
+Analýza provozu je – měření podle objemu dat protokolu toku zpracovaných službou a ukládání resulted rozšířené protokolů v pracovním prostoru analýzy protokolů. Další informace o cenách plán prosím vědět [, klikněte sem](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  Jak můžete přejít pomocí klávesnice v zobrazení mapy geograficky?
 

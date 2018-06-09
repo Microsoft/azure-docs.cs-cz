@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: f19be17cccc3d1bf0e94fe1c156afb546909d565
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 304a06dee04b405c7e7acb2c73b31af426591d1d
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699219"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233284"
 ---
 # <a name="pim-for-azure-resources"></a>Pro prostředky Azure PIM
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 7e05e06a5abd02dd67f58a8e01bb246e318f51de
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 2ec08b45fab9987e9271c1ff3101eaf321dc84be
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850232"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234219"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -75,6 +75,8 @@ Zakázat nezašifrované FTP, vyberte **FTPS pouze**. Chcete-li zcela zakázat F
 Pro nasazení pomocí FTP [rozhraní příkazového řádku Azure](/cli/azure), najdete v části [vytvoření webové aplikace a nasazení souborů pomocí protokolu FTP (Azure CLI)](./scripts/app-service-cli-deploy-ftp.md).
 
 Pro nasazení pomocí FTP [prostředí Azure PowerShell](/cli/azure), najdete v části [nahrání souborů do webové aplikace pomocí protokolu FTP (PowerShell)](./scripts/app-service-powershell-deploy-ftp.md).
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
 ## <a name="troubleshoot-ftp-deployment"></a>Řešení potíží s FTP nasazení
 

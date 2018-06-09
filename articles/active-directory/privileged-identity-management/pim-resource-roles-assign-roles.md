@@ -10,15 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: c27f5432facc34384fce72ffff26e414cbeb7d96
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 246467d5eeebd43b8d89d98a30fdfc1c5ca0909a
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699304"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233651"
 ---
 # <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Přiřazení role pro prostředků Azure pomocí Privileged Identity Management
 

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 2597b434bc6db0d5639709a9ce869462c3e47f56
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235936"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů
 
@@ -40,12 +41,9 @@ Agenta pro Linux a Windows komunikuje přes port 443 protokolu TCP odchozí slu�
 
 Pokud sledujete počítači pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2, může být vícedomé službou analýzy protokolů pro shromažďování dat a předání do služby a bude i nadále monitorovat pomocí [nástroje Operations Manager ](log-analytics-om-agents.md). Počítače se systémem Linux monitorovány podle skupiny pro správu nástroje Operations Manager integrovaný s analýzy protokolů neobdrží konfigurace pro zdroje dat a dál shromážděná data prostřednictvím skupiny pro správu. Agent služby Windows může hlásit až čtyři pracovní prostory, zatímco agenta systému Linux podporuje pouze do jednoho pracovního prostoru generování sestav.  
 
-Agenta pro Linux a Windows není jenom pro připojení k analýze protokolů, ale také podporuje Azure Automation hostitelů role pracovního procesu Hybrid Runbook a řešení pro správu jako je sledování změn a Správa aktualizací.  Další informace o roli hybridní pracovní proces Runbooku najdete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).
+Agenta pro Linux a Windows není jenom pro připojení k analýze protokolů, ale také podporuje Azure Automation hostitelů role pracovního procesu Hybrid Runbook a řešení pro správu jako je sledování změn a Správa aktualizací.  Další informace o roli hybridní pracovní proces Runbooku najdete v tématu [Azure Automation Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).  
 
-## <a name="prerequisites"></a>Požadavky
-Než začnete, zkontrolujte následující podrobnosti k ověření, že splňují minimální požadavky na systém.
-
-### <a name="windows-operating-system"></a>Operační systém Windows
+## <a name="supported-windows-operating-systems"></a>Podporované operační systémy Windows
 Pro agenta Windows oficiálně jsou podporovány následující verze operačního systému Windows:
 
 * Windows Server 2008 Service Pack 1 (SP1) nebo novější
@@ -54,17 +52,7 @@ Pro agenta Windows oficiálně jsou podporovány následující verze operační
 > [!NOTE]
 > Agenta pro Windows podporuje jenom zabezpečení TLS (Transport Layer) 1.0 a 1.1.  
 
-#### <a name="network-configuration"></a>Konfigurace sítě
-Informace o následující seznam konfigurace proxy a firewall informace požadované pro agenta systému Windows ke komunikaci s analýzy protokolů. Přenosy jsou odchozí z vaší sítě ke službě Analýza protokolů. 
-
-| Prostředek agenta | Porty | Obejít kontrolu protokolu HTTPS|
-|----------------|-------|------------------------|
-|*.ods.opinsights.azure.com |443 | Ano |
-|*.oms.opinsights.azure.com | 443 | Ano | 
-|*.blob.core.windows.net | 443 | Ano | 
-|*.azure-automation.net | 443 | Ano | 
-
-### <a name="linux-operating-systems"></a>Operační systémy Linux
+## <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 Následující Linuxových distribucích jsou oficiálně podporované.  Agenta systému Linux mohou však spustit také na dalších distribuce, které nejsou uvedené.  Pokud není uvedeno jinak, jsou podporovány všechny verze menší pro každou hlavní verzi uvedené.  
 
 * Linux Amazon 2012.09 k 2015.09 (x86/x64)
@@ -75,19 +63,22 @@ Následující Linuxových distribucích jsou oficiálně podporované.  Agenta 
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
-#### <a name="network-configuration"></a>Konfigurace sítě
-Informace o následující seznam konfigurace proxy a firewall informace požadované pro Linux agenta pro komunikaci s analýzy protokolů.  
+## <a name="network-firewall-requirements"></a>Požadavky na brány firewall sítě
+Informace o následující seznam konfigurace proxy a firewall informace požadované pro Linux a Windows agenta pro komunikaci s analýzy protokolů.  
 
-|Prostředek agenta| Porty | Směr |  
-|------|---------|--------|  
-|*.ods.opinsights.azure.com | Port 443 | Příchozí a odchozí|  
-|*.oms.opinsights.azure.com | Port 443 | Příchozí a odchozí|  
-|*.blob.core.windows.net | Port 443 | Příchozí a odchozí|  
-|*.azure-automation.net | Port 443 | Příchozí a odchozí|  
+|Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
+|------|---------|--------|--------|   
+|*.ods.opinsights.azure.com |Port 443 |Příchozí a odchozí|Ano |  
+|*.oms.opinsights.azure.com |Port 443 |Příchozí a odchozí|Ano |  
+|*.blob.core.windows.net |Port 443 |Příchozí a odchozí|Ano |  
+|*.azure-automation.net |Port 443 |Příchozí a odchozí|Ano |  
 
-Agenta systému Linux podporuje komunikaci prostřednictvím serveru proxy nebo brány OMS ke službě Analýza protokolů pomocí protokolu HTTPS.  Anonymní i základní ověřování (uživatelské jméno a heslo) jsou podporovány.  Proxy server lze zadat během instalace nebo úpravou konfiguračního souboru proxy.conf po instalaci.  
 
-Hodnota konfigurace proxy serveru má následující syntaxi:
+Pokud máte v plánu používat Azure Automation Hybrid Runbook Worker pro připojení k a zaregistrovat službu automatizace použití sad runbook ve vašem prostředí, musí mít přístup k číslo portu a adresy URL popisované v [konfigurace sítě pro Hybridní pracovní proces Runbooku](../automation/automation-hybrid-runbook-worker.md#network-planning). 
+
+Agent Windows a Linux podporuje komunikaci prostřednictvím serveru proxy nebo brány OMS ke službě Analýza protokolů pomocí protokolu HTTPS.  Anonymní i základní ověřování (uživatelské jméno a heslo) jsou podporovány.  Pro připojení přímo ke službě Windows agent je konfiguraci proxy serveru zadané během instalace nebo [po nasazení](log-analytics-agent-manage.md#update-proxy-settings) v Ovládacích panelech nebo v prostředí PowerShell.  
+
+Pro agenta systému Linux, je proxy serveru zadané během instalace nebo [po instalaci](/log-analytics-agent-manage.md#update-proxy-settings) úpravou konfiguračního souboru proxy.conf.  Hodnota konfigurace proxy agenta systému Linux má následující syntaxi:
 
 `[protocol://][user:password@]proxyhost[:port]`
 

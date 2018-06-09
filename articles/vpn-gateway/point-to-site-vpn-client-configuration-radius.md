@@ -1,31 +1,36 @@
 ---
-title: "Vytvoření a instalace souborů konfigurace klienta VPN pro připojení P2S RADIUS: prostředí PowerShell: Azure | Microsoft Docs"
-description: "Vytvoření klienta Windows a Mac OS X, Linux VPN konfigurační soubory pro připojení, které používají ověřování pomocí protokolu RADIUS."
+title: 'Vytvoření a instalace souborů konfigurace klienta VPN pro připojení P2S RADIUS: prostředí PowerShell: Azure | Microsoft Docs'
+description: Vytvoření klienta Windows a Mac OS X, Linux VPN konfigurační soubory pro připojení, které používají ověřování pomocí protokolu RADIUS.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1d57537428f5ac1085b6cbae93be6f77c71b12e7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 19b1090a37ae1f97537fcabe128e7958fc26a96a
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235885"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace souborů konfigurace klienta VPN pro ověřování pomocí protokolu RADIUS P2S
 
 Připojení k virtuální síti přes point-to-site (P2S), musíte nakonfigurovat klientského zařízení, které budete připojení z. Můžete vytvořit připojení k síti VPN P2S z Windows, Mac OS X a Linux klientských zařízení. 
 
 Pokud používáte ověřování pomocí protokolu RADIUS, existuje více možností ověřování: ověřování uživatelského jména a hesla, ověřování pomocí certifikátu a dalších typů ověřování. Konfigurace klienta VPN se liší pro jednotlivé typy ověřování. Ke konfiguraci klienta VPN, je použít klienta konfigurační soubory, které obsahují požadovaná nastavení. Tento článek vám pomůže vytvořit a instalovat konfigurace klienta VPN pro typ ověřování RADIUS, který chcete použít.
+
+>[!IMPORTANT]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
 
 Pracovní postup konfigurace ověřování P2S RADIUS vypadá takto:
 
@@ -153,6 +158,10 @@ Prostřednictvím strongSwan 5.5.1 na Ubuntu 17.0.4 byly vytvořeny následujíc
  
 Klient VPN můžete vytvořit konfigurační soubory pro ověřování protokolu RADIUS certifikát, který používá protokol EAP-TLS. Certifikát vydaný enterprise se obvykle používá k ověření uživatele pro síť VPN. Ujistěte se, zda všichni uživatelé připojující certifikátu nainstalovaného na jejich zařízení, a že váš server RADIUS můžete ověřit certifikát.
 
+>[!NOTE]
+>[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
+>
+
 V příkazech `-AuthenticationMethod` je `EapTls`. Při ověřování certifikátu klienta ověří RADIUS server ověřením svůj certifikát. `-RadiusRootCert` je soubor .cer, který obsahuje kořenový certifikát, který slouží k ověření serveru RADIUS.
 
 Každé zařízení klient VPN vyžaduje certifikát nainstalovaného klienta. V některých případech zařízení se systémem Windows má více klientských certifikátů. Při ověřování to může způsobit automaticky otevírané okno dialogové okno se zobrazí všechny certifikáty. Uživatel pak musí vybrat certifikát, který chcete použít. Správný certifikát můžete odfiltrovat zadáním kořenový certifikát, který by měly být zřetězené klientský certifikát. 
@@ -210,7 +219,7 @@ Pomocí následujícího postupu můžete nakonfigurovat Nativní klient VPN v s
 
    ![Přidání certifikátu RadiusServerRoot](./media/point-to-site-vpn-client-configuration-radius/radiusrootcert.png)
 2. Každý klient vyžaduje klientský certifikát pro ověřování. Nainstalujte certifikát klienta v klientském zařízení.
-3. Otevřete **sítě** dialogové okno pod **předvolby sítě**. Vyberte  **+**  k vytvoření nového profilu připojení VPN klienta pro připojení P2S k virtuální síti Azure.
+3. Otevřete **sítě** dialogové okno pod **předvolby sítě**. Vyberte **+** k vytvoření nového profilu připojení VPN klienta pro připojení P2S k virtuální síti Azure.
 
    **Rozhraní** hodnota je **VPN**a **typ sítě VPN** hodnota je **IKEv2**. Zadejte název pro profil v **název služby** a pak vyberte **vytvořit** k vytvoření profilu připojení klienta VPN.
 

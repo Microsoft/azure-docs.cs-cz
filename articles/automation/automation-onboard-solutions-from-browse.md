@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 6d0109b9043b48fbbbeeaccea6c798eaa547a056
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0a624d850b8c3260acb24cb17566090e8ad0043e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839853"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233933"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, sledování změn a inventáře řešení na víc virtuálních počítačů
 
@@ -63,7 +63,7 @@ Při připojování více počítačů, může být počítače, které se zobra
 
 **Příčina**: Tato chyba ukazuje, že virtuální počítač, který se pokoušíte připojit sestavy do jiného pracovního prostoru.
 
-**Řešení**: Změňte pracovní prostor, který cílení kliknutím v vložený odkaz nebo klikněte na **změnit**. Tyto skripty můžete taky změnit pracovním prostoru na určený jednu pro každý počítač.
+**Řešení**: klikněte na tlačítko **používat jako konfigurace** Změna cílové pracovní účet Automation a analýzy protokolů.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>Sestavy virtuálních počítačů do pracovního prostoru, který není k dispozici v tomto předplatném
 

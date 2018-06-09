@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ce8ca4cec9852c4453f79aabe84763ae926eaef
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e7fa85b4c6c84792a77972e2ad75ebaaf63a0e4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699705"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233712"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Pomocí řídicího panelu prostředků provádět kontrola přístupu
 

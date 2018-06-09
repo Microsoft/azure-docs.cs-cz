@@ -1,26 +1,28 @@
 ---
-title: "Volání funkce jazyka Azure z Microsoft Flow | Microsoft Docs"
-description: "Vytvořte vlastní konektor pak volání funkce pomocí tohoto konektoru."
+title: Volání funkce jazyka Azure z Microsoft Flow | Microsoft Docs
+description: Vytvořte vlastní konektor pak volání funkce pomocí tohoto konektoru.
 services: functions
-keywords: "cloudových aplikací, cloud services, Microsoft Flow obchodních procesů, obchodní aplikace"
-documentationcenter: 
-author: mgblythe
+keywords: cloudových aplikací, cloud services, Microsoft Flow obchodních procesů, obchodní aplikace
+documentationcenter: ''
+author: ggailey777
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
-ms.author: mblythe
-ms.custom: 
-ms.openlocfilehash: 38d2e3f2f2aa057b50ba12138cafc512ac110f9b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: glenga
+ms.reviewer: sunayv
+ms.custom: ''
+ms.openlocfilehash: 57d80ad836a16b8821ba0cce42c822728c654dfd
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234797"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Volání funkce z Microsoft Flow
 
@@ -58,11 +60,11 @@ Můžete začít tak, že vytváření seznamu, který používáte jako zdroj d
 
 1. Na webu služby SharePoint klikněte nebo klepněte na **nový**, pak **seznamu**.
 
-    ![Vytvoření nového seznamu služby SharePoint](./media/functions-flow-scenario/new-list.png)
+    ![Vytvoření nového seznamu SharePointu](./media/functions-flow-scenario/new-list.png)
 
 2. Zadejte název `Turbines`, klikněte nebo klepněte na **vytvořit**.
 
-    ![Zadejte název nového seznamu](./media/functions-flow-scenario/create-list.png)
+    ![Zadání názvu nového seznamu](./media/functions-flow-scenario/create-list.png)
 
     **Turbín** vytvoření seznamu s výchozím **název** pole.
 
@@ -70,7 +72,7 @@ Můžete začít tak, že vytváření seznamu, který používáte jako zdroj d
 
 3. Klikněte nebo klepněte na ![nové ikony položky](./media/functions-flow-scenario/icon-new.png) pak **datum**.
 
-    ![Přidat jednořádkové textové pole](./media/functions-flow-scenario/add-column.png)
+    ![Přidání pole s jedním řádkem textu](./media/functions-flow-scenario/add-column.png)
 
 4. Zadejte název `LastServiceDate`, klikněte nebo klepněte na **vytvořit**.
 
@@ -123,13 +125,13 @@ Vytvoření tokem z prázdné (bez šablony) a přidejte *aktivační událost* 
 
 2. Klikněte na aktivační událost SharePoint **vytvoření položky**.
 
-    ![Zvolte aktivační událost](media/functions-flow-scenario/choose-trigger.png)
+    ![Zvolte aktivační událost.](media/functions-flow-scenario/choose-trigger.png)
 
     Pokud jste již přihlášení do služby SharePoint, budete vyzváni k tomu.
 
 3. Pro **adresu webu**, zadejte název lokality služby SharePoint a pro **název seznamu**, zadejte seznam, který obsahuje data turbína.
 
-    ![Zvolte aktivační událost](media/functions-flow-scenario/site-list.png)
+    ![Zvolte aktivační událost.](media/functions-flow-scenario/site-list.png)
 
 4. Klikněte na tlačítko **nový krok**, pak **přidat podmínku**.
 
@@ -153,7 +155,7 @@ Vytvoření tokem z prázdné (bez šablony) a přidejte *aktivační událost* 
 
 Pro všechny položky vytvořené v seznamu, tok ověří, zda **ServiceRequired** je nastaveno na `Yes`, potom přejde na **Pokud Ano** firemní pobočky nebo **Pokud žádné** větev jako vhodné. Chcete-li ušetřit čas, v tomto tématu můžete určit pouze akce pro **Pokud Ano** firemní pobočky.
 
-### <a name="add-the-custom-connector"></a>Přidat vlastní konektor
+### <a name="add-the-custom-connector"></a>Přidání vlastního konektoru
 
 Teď můžete přidat vlastní konektor, který volá funkci v Azure. Přidejte vlastní konektor toku stejně jako standardní konektor. 
 
@@ -163,7 +165,7 @@ Teď můžete přidat vlastní konektor, který volá funkci v Azure. Přidejte 
 
 2. V **vybrat akci** dialogové okno, vyhledejte `Turbine Repair`, pak vyberte akci, která **turbína Repair - vypočítá náklady**.
 
-    ![Vybrat akci](media/functions-flow-scenario/choose-turbine-repair.png)
+    ![Zvolte akci.](media/functions-flow-scenario/choose-turbine-repair.png)
 
     Následující obrázek znázorňuje karty, které se přidají do toku. Pole a popisy pocházet z definice OpenAPI pro konektor.
 
@@ -173,7 +175,7 @@ Teď můžete přidat vlastní konektor, který volá funkci v Azure. Přidejte 
 
     Pro **hodin**, vyberte **EstimatedEffort**a pro **kapacity**, vyberte **MaxOutput**.
 
-    ![Vybrat akci](media/functions-flow-scenario/calculates-costs-fields.png)
+    ![Zvolte akci.](media/functions-flow-scenario/calculates-costs-fields.png)
 
      Teď můžete přidat další podmínku podle výstup funkce.
 
@@ -237,7 +239,7 @@ Teď, tok je dokončili, řádek přidáte do seznamu služby SharePoint a najde
 
 3. Klikněte na **Done** (Hotovo).
 
-    ![Rychlé úpravy byly dokončeny](media/functions-flow-scenario/quick-edit-done.png)
+    ![Rychlé úpravy – Hotovo](media/functions-flow-scenario/quick-edit-done.png)
 
     Když přidáte položku, aktivuje tok, který jste podívejte se na další.
 
@@ -247,7 +249,7 @@ Teď, tok je dokončili, řádek přidáte do seznamu služby SharePoint a najde
 
 5. V části **HISTORII BĚHŮ**, klikněte na tlačítko Spustit toku.
 
-    ![Historie spouštění](media/functions-flow-scenario/run-history.png)
+    ![Historie spuštění](media/functions-flow-scenario/run-history.png)
 
     Pokud spustit byl úspěšný, můžete zkontrolovat průběh operace na další stránce. Pokud z nějakého důvodu se nezdařilo spustit, na další stránku poskytuje informace o odstraňování potíží.
 
@@ -261,7 +263,7 @@ Teď, tok je dokončili, řádek přidáte do seznamu služby SharePoint a najde
 
     Uvidíte, jak tokeny nahradil správné hodnoty z seznamu služby SharePoint a funkce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto tématu, jste zjistili, jak:
 
 > [!div class="checklist"]

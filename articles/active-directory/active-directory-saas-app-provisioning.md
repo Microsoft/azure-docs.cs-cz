@@ -12,17 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2017
+ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 6189038a338a9151b23dbdad11d86e43709a96a0
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247940"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
 Azure Active Directory (Azure AD) umožňuje automatizovat vytváření, údržbu a odebírání uživatelských identit v cloudu ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) aplikace, jako je Dropbox, Salesforce, ServiceNow a další.
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
 **Tady jsou některé příklady co tato funkce umožňuje, abyste mohli provádět:**
 
@@ -77,6 +80,8 @@ Kontaktujte Azure AD technickému týmu požádat o zřizování podporu další
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak je nastavit automatické zřizování pro aplikace?
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 Konfigurace služby Azure AD pro vybrané aplikace se spustí v zřizování služby  **[portál Azure](https://portal.azure.com)**. V **Azure Active Directory > podnikové aplikace, které** vyberte **přidat**, pak **všechny**a poté přidejte následující v závislosti na vašem scénáři:
 
@@ -170,31 +175,50 @@ Když do karantény, četnost přírůstkové synchronizace postupně snížena 
 Úlohy zřizování se odeberou z karantény po všech problematické chyb opravována a spustí příštím synchronizačním cyklu. Je-li úlohu zřizování do karantény pro více než čtyři týdny, zřizování úloha je zakázána.
 
 
+## <a name="how-long-will-it-take-to-provision-users"></a>Jak dlouho bude trvat zřízení uživatelů?
+
+Výkon závisí na tom, jestli je vaše úlohy zřizování provádění počáteční synchronizace nebo přírůstkové synchronizace, jak je popsáno v předchozí části.
+
+Pro **počáteční synchronizace**, čas úlohy závisí na různých faktorech, například počet uživatelů a skupin v oboru pro zřizování a celkový počet uživatelů a skupin ve zdrojovém systému. Úplný seznam faktorů, které mají vliv na výkon počáteční synchronizace jsou shrnuté později v této části.
+
+Pro **přírůstkové synchronizace**, čas úlohy závisí na počtu změn v tomto synchronizačním cyklu. Pokud jsou méně než 5 000 uživatelů nebo změn členství ve skupinách, můžete dokončit úlohy v rámci jedné přírůstkové synchronizace cyklu. 
+
+Následující tabulka shrnuje časů synchronizace pro běžné scénáře zřizování. V těchto scénářích zdrojovém systému je Azure AD a cílovém systému je k aplikaci SaaS. Časy synchronizace jsou odvozeny od statistické analýzy úloh synchronizace pro aplikace SaaS ServiceNow, síti na pracovišti, Salesforce a Google Apps.
+
+
+| Konfigurace oboru | Uživatelům, skupinám a členům v oboru | Počáteční synchronizaci času | Čas přírůstkové synchronizace |
+| -------- | -------- | -------- | -------- |
+| Přiřadit uživatele a skupiny pouze synchronizace |  < 1 000 |  < 30 minut | < 30 minut |
+| Přiřadit uživatele a skupiny pouze synchronizace |  1,000 - 10,000 | 142 - 708 minut | < 30 minut |
+| Přiřadit uživatele a skupiny pouze synchronizace |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
+| Synchronizaci všech uživatelů a skupin ve službě Azure AD |  < 1 000 | < 30 minut  | < 30 minut |
+| Synchronizaci všech uživatelů a skupin ve službě Azure AD |  1,000 - 10,000 | < 30 120 minut | < 30 minut |
+| Synchronizaci všech uživatelů a skupin ve službě Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
+| Synchronizace všech uživatelů ve službě Azure AD|  < 1 000  | < 30 minut | < 30 minut |
+| Synchronizace všech uživatelů ve službě Azure AD | 1,000 - 10,000  | 43 - 86 minut | < 30 minut |
+
+
+Pro konfiguraci **synchronizaci přiřadit uživatele a skupiny pouze**, následující vzorce slouží k určení přibližnou minimální a maximální očekává **počáteční synchronizace** časy:
+
+    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
+    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
+    
+Souhrn faktorů, které ovlivňují doby potřebné k dokončení **počáteční synchronizace**:
+
+* Celkový počet uživatelů a skupin v oboru pro zřizování
+
+* Celkový počet uživatelů, skupin a členy skupiny nachází ve zdrojovém systému (Azure AD)
+
+* Uživatelé v oboru pro zřizování, jestli se shodují se stávající uživatelé v cílové aplikaci nebo třeba vytvořit první. Úloh synchronizace, pro které všichni uživatelé jsou vytvořeni poprvé trvat přibližně *dvakrát stejně dlouho* jako synchronizovat úlohy, pro které se shodují všichni uživatelé se stávající uživatele.
+
+* Počet chyb v [protokoly auditu](active-directory-saas-provisioning-reporting.md). Výkon je nižší, pokud je mnoho chyb a zřizování služby přešel do stavu umístění do karantény   
+
+* Požádat o omezení přenosové rychlosti a omezování implementována cílovým systémem. Některé cílové systémy implementují omezení míry požadavků a omezení, což může ovlivnit výkon při velkých synchronizační operace. Za těchto podmínek aplikaci, která obdrží příliš rychlé příliš mnoho žádostí o mohou zpomalit jeho rychlost odezvy nebo ukončení připojení. Pokud chcete zvýšit výkon, je potřeba upravit pomocí není rychleji, než aplikace dokáže zpracovat zasílání požadavků aplikace konektor. Zřizování konektory vytvořené Microsoft učinit této úpravy. 
+
+* Počet a velikost přiřazených skupin. Synchronizuje se přiřazeny skupiny trvá déle než synchronizaci uživatelů. Počet a velikost přiřazené skupiny dopad na výkon. Pokud má aplikace [mapování povolena pro skupinu objekt synchronizace](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), vlastnosti skupiny jako názvy skupin a členství ve skupinách se synchronizují kromě uživatelů. Tyto další synchronizace bude trvat déle než jenom synchronizaci uživatelských objektů.
+ 
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-
-**Jak dlouho bude trvat ke zřízení Moji uživatelé?**
-
-Výkon se liší v závislosti na tom, jestli je vaše úlohy zřizování provádění počáteční synchronizace nebo přírůstkové synchronizace.
-
-U počáteční synchronizace bude v době potřebné k dokončení přímo závislé na tom, kolik uživatelů, skupin a členy skupiny se nacházejí ve zdrojovém systému. Velmi malé zdrojových systémů se stovkami objektů může dokončení počáteční synchronizace v řádu minut. Zdrojových systémů s stovky tisíc nebo milióny kombinované objektů však bude trvat déle.
-
-Pro přírůstkové synchronizace době potřebné závisí na číslo v tomto synchronizačním cyklu byly zjištěny změny. Pokud jsou menší než 5 000 uživatele nebo byly zjištěny změny členství ve skupině, můžete tyto často synchronizovat v rámci cyklu 40 minutu. 
-
-Všimněte si, že celkový výkon je závislá na zdrojovém i cílovém systémy. Některé cílové systémy implementují omezení míry požadavků a omezení, že můžete dopad výkonu během velké synchronizační operace a předem připraveného Azure AD zřizování konektory pro tyto systémy vzít v úvahu.
-
-Výkon je taky pomalejší, pokud je mnoho chyb (zaznamenávají [protokoly auditu](active-directory-saas-provisioning-reporting.md)) a službu zřizování přešel do stavu "karantény".
-
-**Jak může zvýšit výkon synchronizace?**
-
-Většina problémy s výkonem, ke kterým došlo během počáteční synchronizace systémy, které mají velký počet skupin a členy skupiny.
-
-Pokud synchronizace skupiny nebo členství ve skupinách není potřeba, může synchronizace výkon výrazně zvýšit podle:
-
-1. Nastavení **zřizování > Nastavení > oboru** nabídku **synchronizaci všech**, místo synchronizuje přiřazené uživatele a skupiny.
-2. Použití [filtry oborů](active-directory-saas-scoping-filters.md) místo přiřazení pro filtrování seznamu uživatelů zřízený.
-
-> [!NOTE]
-> Pro aplikace, které podporují zřizování skupiny názvy a vlastnosti skupiny (například ServiceNow a Google Apps) vypnutí to také snižuje čas potřebný pro dokončení počáteční synchronizaci. Pokud nechcete zřídit názvy skupin a členství ve skupinách do vaší aplikace, můžete zakázat v [mapování atributů](active-directory-saas-customizing-attribute-mappings.md) zřizování konfigurace.
 
 **Jak můžete sledovat průběh úlohy aktuální zřizování?**
 

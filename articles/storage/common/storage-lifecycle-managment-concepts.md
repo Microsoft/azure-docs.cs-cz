@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: b141adc9025f2f40acdfbd1f2d7f378173463956
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34804785"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248465"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
@@ -70,7 +70,7 @@ Pokud funkci schválení a řádně zaregistrován, měli byste obdržet stavu "
 
 ## <a name="add-or-remove-policies"></a>Přidání nebo odebrání zásady 
 
-Můžete přidat, upravit nebo odebrat zásadu pomocí nástroje Azure portal, prostředí PowerShell, rozhraní REST API nebo klienta v těchto jazycích: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Můžete přidat, upravit nebo odebrat zásadu pomocí portálu Azure, [prostředí PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview), REST API nebo nástrojích klienta v těchto jazycích: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [ Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0), [Ruby]( https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -121,7 +121,7 @@ V rámci zásady jsou vyžadovány dva parametry:
 | Název parametru | Typ parametru | Poznámky |
 |----------------|----------------|-------|
 | verze        | Vyjádřený jako řetězec `x.x` | Číslo verze preview je 0,5 |
-| pravidla          | Pole objektů pravidlo | V každé zásadě je vyžadován alespoň jedno pravidlo. Verzi Preview můžete zadat až 10 pravidla podle zásad. |
+| pravidla          | Pole objektů pravidlo | V každé zásadě je vyžadován alespoň jedno pravidlo. Verzi Preview můžete zadat až 4 pravidla podle zásad. |
 
 Parametry, které jsou potřeba v rámci pravidla jsou:
 
@@ -169,7 +169,7 @@ Každé pravidlo definice zahrnuje sadu filtrů a sadu akce. Následující uká
 
 ```
 
-## <a name="rule-filters"></a>Pravidlo filtry
+### <a name="rule-filters"></a>Pravidlo filtry
 
 Filtry omezují pravidla akce podmnožinu objektů BLOB v rámci účtu úložiště. Pokud jsou definovány více filtrů, logickou `AND` provádí na všechny filtry.
 
@@ -191,6 +191,9 @@ Ve verzi preview Správa životního cyklu podporuje tvorbu vrstev a odstraněn�
 | tierToCool    | Podpora objektů BLOB aktuálně na aktivní vrstvy         | Nepodporuje se |
 | tierToArchive | Podpora objektů BLOB aktuálně při horká nebo nástrojů vrstvy | Nepodporuje se |
 | odstraňovat        | Podporováno                                   | Podporováno     |
+
+>[!NOTE] 
+Pokud na stejný objekt blob je definováno více než jednu akci, Správa životního cyklu platí nejlevnější akce na objekt blob. (například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.)
 
 Ve verzi preview jsou podmínky provádění akce založené na stáří. Základní objekt blob používá čas a sledovat stáří objektu blob čas vytvoření snímku snímky používá ke sledování stáří poslední změny.
 
