@@ -14,7 +14,7 @@
       href: concepts-collector.md
     - name: Výpočty hodnocení
       href: concepts-assessment-calculation.md
-    - name: Vizualizace závislostí
+    - name: Informace o vizualizaci závislostí
       href: concepts-dependency-visualization.md
 - name: Návody
   items:
@@ -30,6 +30,8 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso – Změna hostitele aplikace pro virtuální počítače Azure
           href: contoso-migration-rehost-vm.md
+        - name: 6. Contoso – Změna hostitele aplikace pro virtuální počítače Azure a Azure SQL AlwaysOn
+          href: contoso-migration-rehost-vm-sql-ag.md
     - name: Zkoumání a posouzení rozsáhlého prostředí
       href: how-to-scale-assessment.md
     - name: Seskupení počítačů

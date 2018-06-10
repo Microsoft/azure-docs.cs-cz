@@ -29,6 +29,8 @@
   items:
     - name: Onboarding
       items:
+        - name: Onboarding několika virtuálních počítačů z portálu
+          href: automation-onboard-solutions-from-browse.md
         - name: Připojení z virtuálního počítače Azure
           href: automation-onboard-solutions-from-vm.md
         - name: Připojení z účtu služby Automation
@@ -159,14 +161,12 @@
       items:
         - name: Galerie runbooků
           href: automation-runbook-gallery.md
-        - name: Monitorování runbooků s využitím protokolů aktivit
-          href: automation-alert-activity-log.md
+        - name: Monitorování runbooků s upozorněními metrik
+          href: automation-alert-metric.md
         - name: Spuštění runbooku z výstrah Azure
           href: automation-create-alert-triggered-runbook.md
         - name: Vytvoření virtuálního počítače webové služby Amazon
           href: automation-scenario-aws-deployment.md
-        - name: Náprava výstrah virtuálních počítačů Azure
-          href: automation-azure-vm-alert-integration.md
         - name: Spuštění/zastavení virtuálních počítačů mimo špičku
           href: automation-solution-vm-management.md
         - name: Odebrání skupiny prostředků
@@ -215,16 +215,12 @@
   items:
     - name: Úvodní video ke službě Automation
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
-    - name: Školení pro Azure Automation
-      href: 'https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382'
     - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
-    - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/automation/'
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
     - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)'
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
     - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/automation/)'
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: "Poznámky k\_verzi"
