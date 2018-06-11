@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace webových aplikací v prostředí Azure App Service"
-description: "Postup konfigurace webové aplikace v Azure App Services"
+title: Konfigurace webových aplikací v prostředí Azure App Service
+description: Postup konfigurace webové aplikace v Azure App Services
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234512"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
 
-Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci pomocí [portálu Azure].
+Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci pomocí [Azure Portal].
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="application-settings"></a>Nastavení aplikace
-1. V [portálu Azure], otevře se okno pro webovou aplikaci.
+1. V [Azure Portal], otevře se okno pro webovou aplikaci.
 3. Klikněte na možnost **Nastavení aplikace**.
 
 ![Nastavení aplikace][configure01]
@@ -49,7 +50,7 @@ Technické z důvodů povolení pro aplikace Java zakáže možnosti .NET, PHP a
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Webové sokety**. Nastavit **ON** povolit protokol WebSocket; například, pokud vaše webová aplikace používá [ASP.NET SignalR] nebo [socket.io](https://socket.io/).
+**Webové sokety**. Nastavit **ON** povolit protokol WebSocket; například, pokud vaše webová aplikace používá [Funkce SignalR technologie ASP.NET] nebo [socket.io](https://socket.io/).
 
 <a name="alwayson"></a>
 **Always On**. Ve výchozím nastavení jsou uvolněna webové aplikace, pokud jsou některé dobu nečinnosti. To umožňuje ušetřit prostředky systému. V režimu Basic nebo Standard, povolit **Always On** udržovat aplikaci načíst vždy. Pokud vaše aplikace běží nepřetržité webové úlohy nebo běží webové úlohy aktivaci pomocí výrazu CRON, měli byste povolit **Always On**, nebo nemusí spolehlivě spuštění webové úlohy.
@@ -67,6 +68,8 @@ Tato část obsahuje dvojice název/hodnota, které webové aplikace se načte p
 * Pro aplikace .NET, tato nastavení jsou vloženy do vaší konfigurace .NET `AppSettings` v době běhu přepsání stávajícího nastavení. 
 * Aplikace PHP, Python, Java a uzel mají přístup k tato nastavení jako proměnné prostředí za běhu. Pro každé nastavení aplikace jsou vytvořeny dvou proměnných prostředí; jednu s názvem zadaným v položce nastavení aplikace a druhý s předponou APPSETTING_. Oba obsahují stejnou hodnotu.
 
+Nastavení aplikace se vždy šifrují, pokud uložená (šifrované na rest).
+
 ### <a name="connection-strings"></a>Připojovací řetězce
 Připojovací řetězce pro odkazované zdroje. 
 
@@ -80,6 +83,8 @@ Pro aplikace PHP, Python, Java a uzel budou tato nastavení k dispozici jako pro
 * Vlastní: `CUSTOMCONNSTR_`
 
 Například, pokud byly s názvem připojovací řetězec databáze MySql `connectionstring1`, by přístupná prostřednictvím proměnné prostředí `MYSQLCONNSTR_connectionString1`.
+
+Připojovací řetězce jsou zašifrované vždy, když uložené (šifrované na rest).
 
 ### <a name="default-documents"></a>Výchozí dokumenty
 Výchozí dokument je webové stránky, která se zobrazí na adresy URL kořenového adresáře pro web.  První odpovídající soubor v seznamu se používá. 
@@ -140,14 +145,14 @@ Chcete-li zobrazit názvy domén, klikněte na tlačítko **všechna nastavení*
 
 ### <a name="deployments"></a>Nasazení
 * Nastavte průběžné nasazování. V tématu [pomocí Git, jak nasadit webové aplikace v Azure App Service](app-service-deploy-local-git.md).
-* Nasazovací sloty. V tématu [nasazování do pracovní prostředí pro webové aplikace v Azure App Service].
+* Nasazovací sloty. V tématu [Nasazení do pracovní prostředí pro webové aplikace v Azure App Service].
 
 Chcete-li zobrazit nasazovací sloty, klikněte na tlačítko **všechna nastavení** > **nasazovací sloty**.
 
 ### <a name="monitoring"></a>Monitorování
 V režimu Basic nebo Standard můžete otestovat dostupnost protokolu HTTP nebo HTTPS koncových bodů, z umístění až tři zeměpisné polohy. Monitorování test se nezdaří, pokud kód odpovědi HTTP dojde k chybě (4xx nebo 5xx) nebo odpověď trvá déle než 30 sekund. Koncový bod je považován za dostupný, pokud monitorovací testy úspěšné z určitých umístění. 
 
-Další informace najdete v tématu [postupy: sledování stavu koncový bod webové].
+Další informace najdete v tématu [Postupy: sledování stavu webových koncový bod].
 
 > [!NOTE]
 > Pokud chcete začít používat službu Azure App Service před registrací k účtu Azure, přejděte k možnosti [Vyzkoušet službu App Service], kde můžete okamžitě vytvořit krátkodobou úvodní webovou aplikaci. Není vyžadována platební karta a nevzniká žádný závazek.
@@ -162,12 +167,12 @@ Další informace najdete v tématu [postupy: sledování stavu koncový bod web
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: http://www.asp.net/signalr
-[portálu Azure]: https://portal.azure.com/
+[Funkce SignalR technologie ASP.NET]: http://www.asp.net/signalr
+[Azure Portal]: https://portal.azure.com/
 [Konfigurace vlastní domény ve službě Azure App Service]: ./app-service-web-tutorial-custom-domain.md
-[nasazování do pracovní prostředí pro webové aplikace v Azure App Service]: ./web-sites-staged-publishing.md
+[Nasazení do pracovní prostředí pro webové aplikace v Azure App Service]: ./web-sites-staged-publishing.md
 [Povolit HTTPS pro aplikace v Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[postupy: sledování stavu koncový bod webové]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Postupy: sledování stavu webových koncový bod]: http://go.microsoft.com/fwLink/?LinkID=279906
 [Základní informace o monitorování pro webové aplikace v Azure App Service]: ./web-sites-monitor.md
 [režim kanálů]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Škálování webové aplikace v Azure App Service]: ./web-sites-scale.md

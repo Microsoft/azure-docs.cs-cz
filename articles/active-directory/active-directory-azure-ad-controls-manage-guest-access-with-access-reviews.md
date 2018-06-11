@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: compliance-reports
 ms.date: 05/16/2018
 ms.author: rolyon
-ms.openlocfilehash: 4a61bb418083bafe9e00a76147ab9bfdcdb0b0ce
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: dbb139081e1eb84ea64a187b7fec0d9cb159653c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713503"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235001"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Správa přístupu k hostované službě Azure AD přístup recenze
 
