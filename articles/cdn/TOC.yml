@@ -116,6 +116,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: Komprese souborů
           href: cdn-troubleshoot-compression.md
+        - name: Povolené certifikační autority
+          href: cdn-troubleshoot-allowed-ca.md
 - name: Referenční informace
   items:
     - name: Referenční informace ke stroji pravidel

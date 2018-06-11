@@ -40,6 +40,8 @@
       href: dns-alerts-metrics.md
     - name: Reverzní DNS
       href: dns-reverse-dns-overview.md
+    - name: Zotavení po havárii s využitím Azure DNS a Traffic Manageru
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
 - name: Postup
   items:
     - name: Vytvoření vlastní zóny DNS a záznamu – Azure CLI

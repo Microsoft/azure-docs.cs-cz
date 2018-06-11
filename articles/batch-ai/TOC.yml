@@ -11,6 +11,10 @@
       href: quickstart-cli.md
     - name: Spuštění trénovací úlohy – Python
       href: quickstart-python.md
+- name: Návody
+  items:
+    - name: Migrace na aktualizované rozhraní API
+      href: migrate-to-new-api.md
 - name: Referenční informace
   items:
     - name: Azure CLI

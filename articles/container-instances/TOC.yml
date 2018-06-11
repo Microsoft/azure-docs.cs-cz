@@ -47,6 +47,8 @@
           href: container-instances-using-azure-container-registry.md
         - name: Nastavení proměnných prostředí (env)
           href: container-instances-environment-variables.md
+        - name: Konfigurace testů aktivity
+          href: container-instances-liveness-probe.md
     - name: Spravovat
       items:
         - name: Spuštění příkazu (exec)

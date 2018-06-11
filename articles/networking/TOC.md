@@ -8,6 +8,7 @@
 ### [Osvědčené postupy zabezpečení sítě](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Vysoce dostupná virtuální síťová zařízení](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [Kombinace metod vyrovnávání zatížení](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Zotavení po havárii s využitím Azure DNS a Traffic Manageru](disaster-recovery-dns-traffic-manager.md)
 ## Plánování a návrh
 ### [Virtuální sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Připojení mezi místními sítěmi – síť VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)

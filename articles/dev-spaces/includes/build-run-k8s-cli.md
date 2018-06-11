@@ -10,32 +10,33 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: f77a036d41ce551d9eab0250eaf4dc16444b24da
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.openlocfilehash: 484567dd9d9c3d050e7be25bd685a5b8d3de0687
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825505"
 ---
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
-Umožňuje spustit naše kód! V okně terminálu, spusťte tento příkaz z **kořenové složky kód**, webfrontend:
+Teď spustíme náš kód! V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend:
 
 ```cmd
 azds up
 ```
 
-Dohlížet na výstup příkazu, můžete si všimnout několik věcí průběhu:
-- Zdrojový kód je synchronizované s vývojového prostředí v Azure.
-- Bitovou kopii kontejneru je vytvořen v Azure, podle specifikace Docker prostředky ve složce kódu.
-- Jsou vytvořeny Kubernetes objekty, které využívají bitovou kontejneru jako zadaný Helm grafu ve složce kódu.
-- Zobrazí se informace o koncové kontejneru. V našem případě jsme se očekává veřejnou adresu URL protokolu HTTP.
-- Za předpokladu, že výše fázích úspěšně dokončit, měli byste začít zobrazíte `stdout` (a `stderr`) výstup jako kontejner spuštění.
+Sledujte výstup příkazu. Během jeho zpracování si můžete všimnout několika věcí:
+- Zdrojový kód je synchronizovaný s vývojářským prostorem v Azure.
+- V Azure se vytvoří image kontejneru, jak určuje prostředek Docker ve složce kódu.
+- Vytvoří se objekty Kubernetes, které využívají image kontejneru podle specifikace Helm Chart ve složce kódu.
+- Zobrazí se informace o koncových bodech kontejneru. V našem případě očekáváme veřejnou adresu URL protokolu HTTP.
+- Za předpokladu, že se výše uvedené fáze úspěšně dokončily, měl by se začít zobrazovat výstup `stdout` (a `stderr`), jak se kontejner spouští.
 
 > [!Note]
-> Tyto kroky bude trvat déle poprvé `up` příkaz spustí, ale při dalším spuštění by měl být rychlejší.
+> Při prvním spuštění příkazu `up` budou tyto kroky trvat déle, ale následná spuštění by měla být rychlejší.
 
-## <a name="test-the-web-app"></a>Test webové aplikace
-Kontrola bude výstup konzoly informace o veřejnou adresu URL, který byl vytvořen `up` příkaz. Bude ve tvaru: 
+### <a name="test-the-web-app"></a>Test webové aplikace
+Ve výstupu konzoly vyhledejte informace o veřejné adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
 
-`Running at public URL: http://<servicename>-<environmentname>.<guid>.<region>.aksapp.io` 
+`Running at public URL: http://<servicename>-<cluster-name>.<guid>.<region>.aksapp.io` 
 
-V okně prohlížeče otevřete tuto adresu URL a měli byste vidět webové aplikace načíst. Jako kontejner provede, `stdout` a `stderr` prostřednictvím výstupního datového proudu do okna terminálu.
+Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.

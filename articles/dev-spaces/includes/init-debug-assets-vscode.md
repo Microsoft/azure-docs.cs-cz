@@ -10,20 +10,18 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: e4bde4f521e0e19e7acd36260c98cfe80973e284
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.openlocfilehash: 0d0ec1520c91c0c1dcdac4660130917bb63065cc
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825512"
 ---
-## <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicializovat debug prostředky s příponou VS Code
-Nejdřív musíte nakonfigurovat projektu kódu, takže VS Code budou komunikovat s našeho vývojového prostředí v Azure. Rozšíření VS Code prostory Dev Azure poskytuje pomocníka příkaz nastavit konfiguraci ladění. 
+### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicializace prostředků ladění s využitím rozšíření VS Code
+Nejdřív musíte nakonfigurovat projekt kódu tak, aby editor VS Code komunikoval s naším vývojářským prostorem v Azure. Rozšíření VS Code pro Azure Dev Spaces poskytuje pomocný příkaz pro nastavení konfigurace ladění. 
 
-Otevřete **příkaz palety** (pomocí **zobrazení | Příkaz palety** nabídky) a používání automatické doplňování a vyberte tento příkaz: `Azure Dev Spaces: Create configuration files for connected development`. 
+Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Create configuration files for connected development`. 
 
-Tento postup Přidá konfiguraci ladění pro Azure Dev prostory v části `.vscode` složky.
+Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`.
 
 ![](../media/common/command-palette.png)
-
-> [!Important]
-> Z důvodu chyby zavřete a znovu ho otevřete VS Code než budete pokračovat.

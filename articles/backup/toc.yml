@@ -63,8 +63,6 @@
           items:
             - name: Příprava úloh Azure Backup Serveru na webu Azure Portal
               href: backup-azure-microsoft-azure-backup.md
-            - name: Instalace Azure Backup Serveru v Azure Stacku
-              href: backup-mabs-install-azure-stack.md
             - name: Přidání úložiště do Azure Backup Serveru
               href: backup-mabs-add-storage.md
             - name: Upgrade Azure Backup Serveru na v.2
@@ -83,10 +81,18 @@
               href: backup-azure-sql-mabs.md
             - name: Ochrana stavu systému a úplné obnovení systému
               href: backup-mabs-system-state-and-bmr.md
-            - name: Soubory a aplikace v Azure Stacku
-              href: backup-mabs-files-applications-azure-stack.md
         - name: Obnovení dat z Azure Backup Serveru
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure Backup Server v Azure Stacku
+      items:
+        - name: Instalace Azure Backup Serveru
+          href: backup-mabs-install-azure-stack.md
+        - name: Ochrana souborů a aplikací
+          href: backup-mabs-files-applications-azure-stack.md
+        - name: Ochrana sharepointové farmy
+          href: backup-mabs-sharepoint-azure-stack.md
+        - name: Ochrana databáze SQL Serveru
+          href: backup-mabs-sql-azure-stack.md
     - name: Sdílená složky Azure
       items:
         - name: Zálohování sdílených složek Azure

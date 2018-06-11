@@ -125,7 +125,7 @@
 #### [Oznámení](active-directory-reporting-notifications.md)
 #### [Reference k aktivitě auditování](active-directory-reporting-activity-audit-reference.md)
 #### [Kódy chyb aktivit přihlašování](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Multi-factor authentication](active-directory-reporting-activity-sign-ins-mfa.md
+#### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
 
@@ -326,6 +326,7 @@
 #### [Podmínky](active-directory-conditional-access-conditions.md)
 #### [Podmínky umístění](active-directory-conditional-access-locations.md)
 #### [Ovládací prvky](active-directory-conditional-access-controls.md)
+#### [Základní ochrana](active-directory-conditional-access-baseline-protection.md)
 #### [Začínáme](active-directory-conditional-access-azure-portal-get-started.md)
 #### [Osvědčené postupy](active-directory-conditional-access-best-practices.md)
 #### [Vysvětlení zásad zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md)
@@ -368,7 +369,8 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
 
