@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 20897137c617ddf9a33a8f4966bcd7e30ac7c60c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261929"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Přehled služby Azure standardní nástroje pro vyrovnávání zatížení
 
@@ -32,7 +33,7 @@ Nástroj pro vyrovnávání zatížení je nový produkt nástroj pro vyrovnáv�
 
 Nástroj pro vyrovnávání zatížení můžete použít jako veřejný nebo interní Vyrovnávání zatížení. A virtuální počítač může být připojený k veřejné a jeden interní nástroj pro vyrovnávání zatížení prostředků.
 
-Funkce Vyrovnávání zatížení prostředků jsou vždy vyjádřené jako front-end, pravidlo, test stavu a definici fondu back-end.  Prostředek může obsahovat více pravidel. Virtuální počítače můžete umístit do fondu back-end zadáním fondu back-end z prostředku Síťový adaptér virtuálního počítače.  V případě škálovací sadu virtuálních počítačů je tento parametr předána profilu sítě a rozšířit.
+Funkce Vyrovnávání zatížení prostředků jsou vždy vyjádřené jako front-end, pravidlo, test stavu a definici fondu back-end.  Prostředek může obsahovat více pravidel. Virtuální počítače můžete umístit do fondu back-end zadáním fondu back-end z prostředku Síťový adaptér virtuálního počítače.  Tento parametr je předána profilu sítě a rozšířit při použití sady škálování virtuálního počítače.
 
 Jeden aspekt klíče je pro prostředek oboru virtuální sítě.  Existuje základní nástroj pro vyrovnávání zatížení v rámci oboru skupiny dostupnosti, standardní Vyrovnávání zatížení jsou plně integrované s oboru virtuální sítě a použít všechny koncepce virtuální sítě.
 
@@ -43,7 +44,7 @@ Prostředky nástroje pro vyrovnávání zatížení jsou objekty v rámci kter�
 
 ## <a name="why-use-standard-load-balancer"></a>Proč používat nástroj pro vyrovnávání zatížení?
 
-Nástroj pro vyrovnávání zatížení umožňuje škálování aplikací a vytvoření vysoké dostupnosti pro nasazení v menším měřítku do zóny s více architekturami velké a komplexní.
+Standard Load Balancer umožňuje škálovat aplikace a zajistit vysokou dostupnost pro nasazení v malém měřítku až po rozsáhlé a složité architektury s více zónami.
 
 Projděte si v následující tabulce základní informace o rozdílech mezi nástroj pro vyrovnávání zatížení a základní nástroj pro vyrovnávání zatížení:
 
@@ -71,7 +72,7 @@ Zkontrolujte [omezení služby pro vyrovnávání zatížení](https://aka.ms/lb
 
 Standardní nástroj pro vyrovnávání zatížení back-endové fondy rozšíří k jakémukoli prostředku virtuálního počítače ve virtuální síti.  Může obsahovat až 1000 instance back-end.  Instance back-end je konfiguraci IP adresy, což je vlastnost prostředku Síťový adaptér.
 
-Back-endový fond může obsahovat samostatné virtuální počítače, skupiny dostupnosti nebo sady škálování virtuálního počítače.  Můžete inovativně prostředky ve fondu back-end a může obsahovat libovolnou kombinaci těchto prostředků až 150 celkový.
+Back-endový fond může obsahovat samostatné virtuální počítače, skupiny dostupnosti nebo sady škálování virtuálního počítače.  Můžete také přizpůsobte prostředky ve fondu back-end. Můžete kombinovat až 150 prostředky ve fondu back-end pro vyrovnávání zatížení prostředků.
 
 Při zvažování návrhu back-endového fondu, můžete navrhnout pro nejmenší počet jednotlivých back-end fondu prostředků optimalizovat trvání operace správy.  Není žádný rozdíl ve výkonu roviny dat nebo určený počet číslic.
 
@@ -89,7 +90,7 @@ Zkontrolujte [podrobnou diskuzi o dostupnosti zóny související dalo](load-bal
 
 ### <a name="diagnostics"></a> Diagnostika
 
-Nástroj pro vyrovnávání zatížení poskytuje vícerozměrných metriky prostřednictvím Azure monitorování.  Tyto metriky lze filtrovat, seskupené a zadejte aktuální a historický přehled o výkonu a stavu služby.  Stav prostředku je také podporována.  Toto je stručný přehled podporovaných diagnostiky:
+Nástroj pro vyrovnávání zatížení poskytuje vícerozměrných metriky prostřednictvím Azure monitorování.  Tyto metriky můžete filtrovat, seskupené a rozdělená pro danou dimenzi.  Obsahují aktuální a historický přehled o výkonu a stavu služby.  Stav prostředku je také podporována.  Toto je stručný přehled podporovaných diagnostiky:
 
 | Metrika | Popis |
 | --- | --- |
@@ -117,7 +118,7 @@ Zkontrolujte [podrobné diskuzi o HA porty](load-balancer-ha-ports-overview.md).
 
 ### <a name="securebydefault"></a>Ve výchozím nastavení zabezpečení
 
-Nástroj pro vyrovnávání zatížení je plně zařazený, nemá k virtuální síti.  Virtuální síť je uzavřené, privátní síť.  Protože nástroje pro vyrovnávání zatížení a veřejné IP adresy jsou navržená tak, aby této virtuální síti nelze přistupovat ze mimo virtuální síť, tyto prostředky teď výchozí uzavřen, pokud je otevřete. To znamená, že skupiny zabezpečení sítě (Nsg) se nyní používají tak, aby výslovně povolovala a seznam povolených adres povolené přenosy.  Můžete vytvořit vaše virtuální celého datového centra a rozhodnout prostřednictvím NSG, co a pokud by měl být k dispozici.  Pokud nemáte skupinu NSG na podsítě nebo síťová karta tohoto prostředku virtuálního počítače, jsme nebude povolit provoz k dosažení tohoto prostředku.
+Nástroj pro vyrovnávání zatížení je plně zařazený, nemá k virtuální síti.  Virtuální síť je uzavřené, privátní síť.  Protože nástroje pro vyrovnávání zatížení a veřejné IP adresy jsou navržená tak, aby této virtuální síti nelze přistupovat ze mimo virtuální síť, tyto prostředky teď výchozí uzavřen, pokud je otevřete. To znamená, že skupiny zabezpečení sítě (Nsg) se nyní používají tak, aby výslovně povolovala a seznam povolených adres povolené přenosy.  Můžete vytvořit vaše virtuální celého datového centra a rozhodnout prostřednictvím NSG, co a pokud by měl být k dispozici.  Pokud nemáte skupinu NSG na podsítě nebo síťová karta tohoto prostředku virtuálního počítače, komunikace není k dosažení tohoto prostředku povolená.
 
 Další informace o skupiny Nsg a způsobu jejich použití pro váš scénář naleznete v tématu [skupin zabezpečení sítě](../virtual-network/security-overview.md).
 
@@ -202,7 +203,7 @@ SKU nejsou měnitelný. Postupujte podle kroků v této části přesunuty z jed
 >
 >Základní a standardní SKU mít počet rozdíly, jak je uvedeno v tomto článku.  Zajistěte, aby pochopení a příprava pro ně.
 >
->Odpovídající identifikátory SKU musí použít pro nástroj pro vyrovnávání zatížení a veřejnou IP adresu prostředky. Nemůžete mít směs základní SKU a standardní SKU prostředků. Nelze připojit samostatné virtuální počítače, virtuální počítače v prostředek sadu dostupnosti nebo škálování virtuálního počítače nastavte prostředky na obě položky současně.
+>Odpovídající identifikátory SKU musí použít pro nástroj pro vyrovnávání zatížení a veřejnou IP adresu prostředky. Nemůžete mít směs základní SKU a standardní SKU prostředků. Samostatné virtuální počítače, virtuální počítače v prostředku skupiny dostupnosti ani prostředky škálovacích sad virtuálních počítačů není možné připojit k oběma SKU zároveň.
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 

@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/18/2018
+ms.date: 06/06/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 365959a588dc48e7991efea239ba823c3ca65e7a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640536"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267369"
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrované role pro řízení přístupu na základě role Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které můžete přiřadit uživatele, skupiny a objekty služby. Přiřazení role představují způsob, jak můžete řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastní role](custom-roles.md).
@@ -39,7 +39,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [AcrImageSigner](#acrimagesigner) | podepisující osoba image ACR |
 | [AcrQuarantineReader](#acrquarantinereader) | čtenář dat karantény ACR |
 | [AcrQuarantineWriter](#acrquarantinewriter) | zapisovatel dat karantény ACR |
-| [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) | Může spravovat službu a rozhraní API |
+| [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) | Můžete spravovat služby a rozhraní API |
 | [Role operátora služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. |
 | [Role čtenáře služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen ke čtení |
 | [Application Insights součást Přispěvatel](#application-insights-component-contributor) | Může spravovat součásti Application Insights. |
@@ -63,7 +63,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [Přispěvatel Classic virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
 | [Databáze MySQL cleardb – DB přispěvatele](#cleardb-mysql-db-contributor) | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
 | [Role čtenáře účet cosmos DB](#cosmos-db-account-reader-role) | Můžete číst data účtu Azure Cosmos DB. V tématu [Přispěvatel účet DocumentDB](#documentdb-account-contributor) pro správu účtů Azure Cosmos DB. |
-| [Přispěvatel objekt pro vytváření dat](#data-factory-contributor) | Umožňuje vytvářet a spravovat datové továrny i podřízené prostředky v nich. |
+| [Přispěvatel objekt pro vytváření dat](#data-factory-contributor) | Vytvoření a Správa objektů pro vytváření dat, jakož i podřízené prostředky v nich. |
 | [Data Lake Analytics vývojáře](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
 | [Purger dat](#data-purger) | Můžete vyprázdnit analytická data |
 | [Uživatel DevTest Labs](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
@@ -133,6 +133,8 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | Microsoft.Authorization/*/Delete | Nelze odstranit role a přiřazení rolí |
 > | Microsoft.Authorization/*/Write | Nelze vytvořit role a přiřazení rolí |
 > | Microsoft.Authorization/elevateAccess/Action | Udělí volajícímu přístup Správce uživatelských přístupů v oboru tenanta. |
+> | Microsoft.Blueprint/blueprintAssignments/write |  |
+> | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
 ## <a name="reader"></a>Čtenář
 > [!div class="mx-tableFixed"]
@@ -176,7 +178,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Může spravovat službu a rozhraní API |
+> | **Popis** | Můžete spravovat služby a rozhraní API |
 > | **ID** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akce** |  |
 > | Microsoft.ApiManagement/service/* | Vytvářet a spravovat služby API Management |
@@ -658,7 +660,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje vytvářet a spravovat datové továrny i podřízené prostředky v nich. |
+> | **Popis** | Vytvoření a Správa objektů pro vytváření dat, jakož i podřízené prostředky v nich. |
 > | **ID** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Čtení role a role přiřazení |
@@ -709,7 +711,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | **ID** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Akce** |  |
 > | Microsoft.Insights/components/*/read |  |
-> | Microsoft.Insights/components/purge/action |  |
+> | Microsoft.Insights/components/purge/action | Vyprázdní data z Application Insights. |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Odstranit zadaná data z pracovního prostoru |
 
@@ -1108,7 +1110,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | Microsoft.Security/policies/write | Aktualizace nastavení zásad zabezpečení |
 > | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
 
-## <a name="security-manager-legacy"></a>Správce zabezpečení (starší verze)
+## <a name="security-manager-legacy"></a>Správce zabezpečení (zastaralé)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

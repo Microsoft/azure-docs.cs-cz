@@ -6,20 +6,17 @@ keywords: jedinečné klíče omezení, porušení omezení jedinečnosti klíč
 author: rafats
 manager: kfile
 editor: monicar
-documentationcenter: ''
-ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: dd23f24fd817bfc443457dee30d2f3091c0d9f6b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d12109efbb157b1e0c15b1a4c0d005fa98c44858
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261096"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Jedinečné klíče v Azure Cosmos DB
 
@@ -34,7 +31,7 @@ Jedinečné klíče poskytne vývojářům možnost přidávat vrstvu integritu 
 
 Jako příklad podíváme, jak se uživatel databáze přidružený [sociálních aplikace](use-cases.md#web-and-mobile-applications) přínos s jedinečné klíče zásady na e-mailové adresy. Tím, že uživatele e-mailová adresa jedinečný klíč, zkontrolujte každý záznam má jedinečnou e-mailovou adresu a možné vytvářet žádné nové záznamy s duplicitní e-mailové adresy. 
 
-Pokud mají uživatelé mohli vytvářet více záznamů se stejnou e-mailová adresa, ale není stejné křestní jméno, příjmení a e-mailovou adresu, můžete přidat další cesty k jedinečné klíče zásady. Místo vytvoření jedinečný klíč jednoduše podle e-mailovou adresu, takže můžete vytvořit jedinečný klíč, který je kombinací křestní jméno, příjmení a e-mailu. V takovém případě je povoleno každou jedinečnou kombinaci tři cesty, takže databáze může obsahovat položky, které mají následující hodnoty cestu. Všechny tyto záznamy by úspěšně prošel zpracováním jedinečné klíče zásady.  
+Pokud mají uživatelé mohli vytvářet více záznamů se stejnou e-mailová adresa, ale není stejné křestní jméno, příjmení a e-mailovou adresu, můžete přidat další cesty k jedinečné klíče zásady. Místo vytvoření jedinečné klíče založeného na e-mailovou adresu, takže můžete vytvořit jedinečný klíč, který je kombinací křestní jméno, příjmení a e-mailu. V takovém případě je povoleno každou jedinečnou kombinaci tři cesty, takže databáze může obsahovat položky, které mají následující hodnoty cestu. Všechny tyto záznamy by úspěšně prošel zpracováním jedinečné klíče zásady.  
 
 **Povolené hodnoty pro jedinečný klíč firstName, lastName a e-mailu**
 
@@ -46,13 +43,13 @@ Pokud mají uživatelé mohli vytvářet více záznamů se stejnou e-mailová a
 |    |Duperre|gaby@fabrikam.com|
 |    |       |gaby@fabraikam.com|
 
-Pokud jste se pokusili vložit jiný záznam s jakoukoli kombinací uvedené v předchozí tabulce, by se zobrazit chyba oznamující, že nebyla splněna jedinečné omezení klíče. Chyba, kterou vrátí Azure Cosmos DB je "Prostředek se zadaným id nebo názvem již existuje." nebo "Prostředek se zadaným id, jedinečný index nebo název již existuje." 
+Pokud jste se pokusili vložit jiný záznam s jakoukoli kombinací uvedené v předchozí tabulce, by se zobrazit chyba oznamující, že nebyla splněna jedinečné omezení klíče. Chyba, kterou vrátil Azure Cosmos DB je "Prostředek se zadaným id nebo názvem již existuje." nebo "Prostředek se zadaným id, jedinečný index nebo název již existuje." 
 
 ## <a name="using-unique-keys"></a>Pomocí jedinečné klíče
 
 Jedinečné klíče musí být definován, když se kontejner vytvoří, a jedinečný klíč je vymezen na klíč oddílu. Pokud chcete pracovat s předchozího příkladu, pokud oddílu podle PSČ, můžete mít záznamy z tabulky duplicitní v každém oddílu.
 
-Existující kontejnery nelze aktualizovat, a použít jedinečné klíče.
+Nelze aktualizovat existující kontejner používat jedinečné klíče.
 
 Po vytvoření kontejneru zásadám jedinečné klíče nelze změnit zásady, pokud je znovu vytvořit kontejner. Pokud máte existující data, která chcete implementovat jedinečné klíče na, vytvořte nový kontejner a potom pomocí nástroje Migrace příslušná data pro přesun dat do nového kontejneru. Pro kontejnery SQL, použijte [nástroj pro migraci dat](import-data.md). Pro MongoDB kontejnery, použijte [mongoimport.exe nebo mongorestore.exe](mongodb-migrate.md).
 
@@ -90,9 +87,8 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
                 new Collection<UniqueKey>
                 {
                     new UniqueKey { Paths = new Collection<string> { "/firstName" , "/lastName" , "/email" }}
-                    new UniqueKey { Paths = new Collection<string> { "/address/zipCode" } },
-
-                }
+                    new UniqueKey { Paths = new Collection<string> { "/address/zipcode" } },
+          }
             };
             await client.CreateDocumentCollectionAsync(
                 UriFactory.CreateDatabaseUri(dataBase),
@@ -115,17 +111,20 @@ Ukázka dokumentu JSON.
     "firstName": "Gaby",
     "lastName": "Duperre",
     "email": "gaby@contoso.com",
-    "address": [
+    "address": 
         {            
             "line1": "100 Some Street",
             "line2": "Unit 1",
             "city": "Seattle",
             "state": "WA",
-            "zipCode": 98012
+            "zipcode": 98012
         }
-    ],
+    
 }
 ```
+> [!NOTE]
+> Poznámka: jedinečný název klíče je prosím velká a malá písmena. Jak je znázorněno v výše příklad, je pro /address/zipcode nastaven jedinečný název. Pokud vaše data ZipCode, pak vloží "null" v jedinečný klíč jako zipcode není roven ZipCode. A z důvodu tohoto rozlišování všechny záznamy s ZipCode nebude možné vložit jako duplicitní "null" nesplňují omezení jedinečné klíče.
+
 ## <a name="mongodb-api-sample"></a>Ukázka rozhraní API MongoDB
 
 Následující ukázkový příkaz ukazuje, jak vytvořit jedinečný index na jméno, příjmení a e-mailu pole kolekce uživatelů pro rozhraní API MongoDB. Tím se zajistí jedinečnosti pro kombinaci všechna tři pole na všech dokumentech v kolekci. Pro rozhraní API MongoDB kolekce se vytvoří jedinečný index po vytvoření kolekce, ale před naplnění kolekce.
@@ -133,6 +132,20 @@ Následující ukázkový příkaz ukazuje, jak vytvořit jedinečný index na j
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
+## <a name="configure-unique-keys-by-using-azure-portal"></a>Konfigurace jedinečné klíče pomocí portálu Azure
+
+V části výše můžete najdete ukázek kódu, které vám ukáže, jak můžete definovat jedinečné omezení klíčů při kolekce je vytvořený pomocí rozhraní API pro SQL nebo MongoDB API. Ale je také možné definovat jedinečné klíče při vytváření kolekce prostřednictvím webového uživatelského rozhraní na portálu Azure. 
+
+- Přejděte na **Průzkumníku dat** ve vašem účtu Cosmos DB
+- Klikněte na tlačítko **nové kolekce**
+- V části jedinečné klíče ** kliknutím můžete přidat požadované jedinečné omezení klíčů **přidat jedinečný klíč.**
+
+![Zadejte jedinečné klíče v Průzkumníku dat](./media/unique-keys/unique-keys-azure-portal.png)
+
+- Pokud chcete vytvořit jedinečné klíče omezení na cestě lastName, přidáte `/lastName`.
+- Pokud chcete vytvořit jedinečné omezení klíče pro kombinaci firstName lastName, přidáte `/lastName,/firstName`
+
+Po dokončení klikněte na tlačítko **OK** k vytvoření této kolekce.
 
 ## <a name="next-steps"></a>Další postup
 

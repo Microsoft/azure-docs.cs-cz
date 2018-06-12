@@ -1,25 +1,19 @@
 ---
-title: Vytvořit, zobrazit a spravovat výstrahy monitorování pomocí Azure | Microsoft Docs
+title: Vytvořit, zobrazit a spravovat výstrahy monitorování pomocí Azure
 description: Pomocí nové sjednocené Azure výstrahy prostředí vytvořit, zobrazit a spravovat metrika a protokolu pravidla výstrah na jednom místě.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: bb532f5e249947534ba44a41edfadac22ef9e217
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.component: alerts
+ms.openlocfilehash: 51912bab0a038e99ecf77b8012c4087b029d4508
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824910"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264336"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování  
 
@@ -49,7 +43,7 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
 3. V části Vytvoření upozornění se zobrazí se tří částí, který se skládá z: *definovat výstrahy podmínku*, *definovat podrobnosti výstrahy*, a *definovat akce skupiny*.
 
-    ![Vytvořit pravidlo](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![Vytvoření pravidla](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
 4.  Definovat podmínka upozornění pomocí **vyberte prostředek** odkaz a určení cílového výběrem prostředku. Filtrovat podle výběru * předplatného, * typ prostředku a nakonec vyberte požadované *prostředků*.
 
@@ -70,7 +64,7 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
 5. * Metriky výstrahy: Zkontrolujte **typ prostředku** je vybrána s typem signál jako **metrika**, pak jednou odpovídající **prostředků** je zvolen klikněte na tlačítko *provádí*tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
 
-    ![Vybrat prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
+    ![Vyberte prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
     > [!NOTE]
 
@@ -170,7 +164,7 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 
 6. Pomocí horním panelu, změny výstrahy může být odrážející včetně: **Uložit** potvrzení změny provést s výstrahou, **zahodit** a vraťte se bez potvrzení změny provedené v výstrahy **zakázat**  deaktivovat výstrahu - po jejímž uplynutí ho už běží nebo se aktivuje žádnou akci. A nakonec **odstranit** trvale odeberete celý pravidlo výstrahy z Azure.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Další informace o nové [téměř v reálném čase metriky výstrahy](monitoring-near-real-time-metric-alerts.md)
 - Získat [přehled metriky kolekce](insights-how-to-customize-monitoring.md) zkontrolovat služby je k dispozici a dobře reagovaly.

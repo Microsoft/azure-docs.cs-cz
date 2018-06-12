@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 06/11/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 61ff91709b52f7378bbc320524781dca7faf2204
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 5c6d6b9580b123dafb03af2acc885d2416ca2a56
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248873"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292537"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s proxy aplikace služby Azure AD
 
@@ -51,7 +51,7 @@ V nasazení služby Vzdálená plocha VP webovou roli a roli služby Brána VP s
 
 - Tento scénář předpokládá, že vaši koncoví uživatelé projít Internet Exploreru na stolní počítače Windows 7 nebo Windows 10, které se připojují prostřednictvím vzdálené plochy webové stránky. Pokud potřebujete podporovat jiné operační systémy, přečtěte si téma [podporu pro ostatní konfigurace klienta](#support-for-other-client-configurations).
 
-- Při publikování s RD Web, je nejvhodnější použít stejné interních a externích FQDN. Pokud se plně kvalifikované názvy domény interních a externích liší měli byste zakázat žádosti o překlad záhlaví, aby se zabránilo přijímání neplatné odkazy. 
+- Při publikování webové VP, se doporučuje použít stejné interních a externích FQDN. Pokud se plně kvalifikované názvy domény interních a externích liší měli byste zakázat žádosti o překlad hlaviček předejdete klienta přijetí neplatné odkazy. 
 
 - V Internet Exploreru povolte rozšíření ActiveX vzdálené plochy.
 

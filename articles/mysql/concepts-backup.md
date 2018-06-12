@@ -1,19 +1,20 @@
 ---
-title: "Zálohování a obnovení ve službě Azure Database pro databázi MySQL"
-description: "Další informace o automatické zálohování a obnovení databáze Azure pro server databáze MySQL."
+title: Zálohování a obnovení ve službě Azure Database pro databázi MySQL
+description: Další informace o automatické zálohování a obnovení databáze Azure pro server databáze MySQL.
 services: mysql
 author: kamathsun
 ms.author: sukamat
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 1cc2c6ccb4459c5c942297cab46378502b63c5bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: bdc9a0ef393b55563691d7a52f8fa074eacc4594
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264472"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Zálohování a obnovení ve službě Azure Database pro databázi MySQL
 

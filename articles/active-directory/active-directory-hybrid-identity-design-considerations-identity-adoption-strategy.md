@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 4b1fefafb34dcbfdced5c978aa235e56cb7fa513
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 9107464acefe75141950c0d07298c8ad946e0ddc
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801792"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260358"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategií hybridní identity přijetí řešení hybridní identity splňovat obchodní požadavky, které se zabývá:
@@ -67,7 +67,7 @@ Strategie, kterou použijete, bude určovat přihlášení uživatele.  Následu
 | Webové prohlížeče |Ověřování pomocí formulářů |jednotné přihlašování, někdy požádáni o zadání ID organizace |
 | Outlook |Výzva k zadání přihlašovacích údajů |Výzva k zadání přihlašovacích údajů |
 | Skype pro firmy (Lync) |Výzva k zadání přihlašovacích údajů |jednotné přihlašování pro aplikace Lync, výzva přihlašovací údaje pro Exchange |
-| SkyDrive Pro |Výzva k zadání přihlašovacích údajů |Jednotné přihlašování |
+| OneDrive pro firmy |Výzva k zadání přihlašovacích údajů |Jednotné přihlašování |
 | Office Pro Plus předplatného |Výzva k zadání přihlašovacích údajů |Jednotné přihlašování |
 
 **Externí nebo nedůvěryhodných zdrojů**:
@@ -75,7 +75,7 @@ Strategie, kterou použijete, bude určovat přihlášení uživatele.  Následu
 |  | Synchronizované Identity | Federated Identity |
 | --- | --- | --- |
 | Webové prohlížeče |Ověřování pomocí formulářů |Ověřování pomocí formulářů |
-| Outlook, Skype pro firmy (Lync) Skydrive Pro předplatného systému Office |Výzva k zadání přihlašovacích údajů |Výzva k zadání přihlašovacích údajů |
+| Outlook, Skype pro firmy (Lync), Onedrivu pro firmy, předplatného systému Office |Výzva k zadání přihlašovacích údajů |Výzva k zadání přihlašovacích údajů |
 | Exchange ActiveSync |Výzva k zadání přihlašovacích údajů |jednotné přihlašování pro aplikace Lync, výzva přihlašovací údaje pro Exchange |
 | Mobilní aplikace |Výzva k zadání přihlašovacích údajů |Výzva k zadání přihlašovacích údajů |
 

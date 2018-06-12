@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293105"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o koncept playbook: stavební bloky
 
@@ -140,7 +141,7 @@ Přibližná doba na dokončeno: 60 minut
 | --- | --- |
 | Testovací prostředí aplikace SaaS, která je k dispozici. V této příručce použijeme ServiceNow jako příklad.<br/>Důrazně doporučujeme používat testovací instance minimalizovat tření na navigace existující data kvality a mapování. | Přejděte na https://developer.servicenow.com/app.do#! / domácí zahájíte proces získávání testovací instance |
 | Přístup správce ke konzole pro správu ServiceNow | [Kurz: Azure Active Directory integrace s ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Cíl nastaví uživatelů přiřazení aplikace k. Skupinu zabezpečení obsahující uživatele PoC se doporučuje. <br/>Pokud vytváření skupiny není vhodná, přiřadíte přímo k aplikaci ve fázi poc pak uživatelům | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Cíl nastaví uživatelů přiřazení aplikace k. Skupinu zabezpečení obsahující uživatele PoC se doporučuje. <br/>Pokud vytváření skupiny není vhodná, přiřadíte přímo k aplikaci ve fázi poc pak uživatelům | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Kroky
 
@@ -148,13 +149,13 @@ Přibližná doba na dokončeno: 60 minut
 | --- | --- |
 | Sdílet kurzu pro všechny účastníky z Documentation společnosti Microsoft  | [Kurz: Azure Active Directory integrace s ServiceNow](active-directory-saas-servicenow-tutorial.md) |
 | Nastavit pracovní schůzku a postupujte podle kroků kurzu s každou objektu actor. | [Kurz: Azure Active Directory integrace s ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Přiřadíte skupinu určené v požadavky aplikace. Pokud ve fázi POC podmíněného přístupu v oboru, můžete později, pokroku a přidat vícefaktorového ověřování a podobné. <br/>Všimněte si, že to bude nové proces zajišťování (Pokud je nakonfigurováno) |  [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Přiřadíte skupinu určené v požadavky aplikace. Pokud ve fázi POC podmíněného přístupu v oboru, můžete později, pokroku a přidat vícefaktorového ověřování a podobné. <br/>Všimněte si, že to bude nové proces zajišťování (Pokud je nakonfigurováno) |  [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](active-directory-groups-create-azure-portal.md) |
 | Pomocí Azure AD management Portal můžete přidat ServiceNow aplikace z Galerie| [Správa služby Azure AD portál: podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Co je nového v nástroji Správa podniková aplikace v Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | V okně "Jednotného přihlašování" aplikace ServiceNow povolte "na základě SAML přihlašování" |  |
 | Vyplňte pole "Přihlašovací adresa URL" a "Identifikátor" s ServiceNow adresu URL<br/>Zaškrtněte políčko "Aktivujte nový certifikát"<br/>a uložte nastavení |  |
 | Otevřete okno "Konfigurace ServiceNow" v dolní části panelu vlastní pokyny pro konfiguraci ServiceNow |  |
 | Postupujte podle pokynů ke konfiguraci ServiceNow |  |
-| V okně "Zřizování" aplikace ServiceNow povolte zřizování "Automatické" | [Správa zřizování pro podnikové aplikace na portálu Azure nový uživatelský účet](active-directory-enterprise-apps-manage-provisioning.md) |
+| V okně "Zřizování" aplikace ServiceNow povolte zřizování "Automatické" | [Správa zřizování pro podnikové aplikace na portálu Azure nový uživatelský účet](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Zatímco bude zřizování dokončeno, počkejte několik minut.  Do té doby můžete zkontrolovat na zřizování sestavy |  |
 | Přihlaste se k https://myapps.microsoft.com/ jako testovacího uživatele, který má přístup | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 | Klikněte na dlaždici pro aplikaci, kterou jste právě vytvořili. Potvrďte volbu přístup |  |
@@ -175,7 +176,7 @@ Přibližná doba na dokončeno: 15 minut
 | --- | --- |
 | Testovací prostředí pro aplikace SaaS. Příklad přihlašování heslo je HipChat a Twitter. Pro všechny ostatní aplikace budete potřebovat přesnou adresu URL stránky s přihlášení formuláře html. | [Twitter na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | Testovací účty pro aplikace. | [Zaregistrujte si služby Twitter.](https://twitter.com/signup?lang=en)<br/>[Zaregistrujte se zdarma: HipChat](https://www.hipchat.com/sign_up) |
-| Cíl nastaví uživatelů přiřazení aplikace k. Skupiny zabezpečení obsažené uživatele se nedoporučuje. | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Cíl nastaví uživatelů přiřazení aplikace k. Skupiny zabezpečení obsažené uživatele se nedoporučuje. | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Místní správce přístupu k počítači a nasazení rozšíření Panel přístupu pro Internet Explorer, Chrome nebo Firefox | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Kroky
@@ -184,8 +185,8 @@ Přibližná doba na dokončeno: 15 minut
 | --- | --- |
 | Nainstalujte rozšíření prohlížeče | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Nakonfigurovat aplikaci z Galerie | [Co je nového v nástroji Správa podniková aplikace v Azure Active Directory: galerii nových a vylepšených aplikací](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurace hesla jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na portálu Azure nové: založené na heslech přihlašování](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Přiřadit skupinu určené v požadované součásti aplikace | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Konfigurace hesla jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na portálu Azure nové: založené na heslech přihlašování](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Přiřadit skupinu určené v požadované součásti aplikace | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se k https://myapps.microsoft.com/ jako testovacího uživatele, který má přístup |  |
 | Klikněte na dlaždici pro aplikaci, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Zadejte přihlašovací údaje aplikací | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -210,7 +211,7 @@ Přibližná doba na dokončeno: 30 minut
 | --- | --- |
 | Seznam cíl aplikací a přesně přihlašovací adresy URL předem. Jako příklad můžete Twitter. | [Twitter na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Zaregistrujte si služby Twitter.](https://twitter.com/signup?lang=en) |
 | Sdílené přihlašovací údaje pro tuto aplikaci SaaS. | [Sdílení účtů pomocí služby Azure AD](active-directory-sharing-accounts.md)<br/>[Heslo převrácení pro Facebook, Twitter a LinkedIn nyní ve verzi preview služby azure AD automatizované! -Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
-| Přihlašovací údaje pro alespoň dva členy týmu, kteří budou mít přístup stejný účet. Musí být součástí skupiny zabezpečení. | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Přihlašovací údaje pro alespoň dva členy týmu, kteří budou mít přístup stejný účet. Musí být součástí skupiny zabezpečení. | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Místní správce přístupu k počítači a nasazení rozšíření Panel přístupu pro Internet Explorer, Chrome nebo Firefox | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Kroky
@@ -219,8 +220,8 @@ Přibližná doba na dokončeno: 30 minut
 | --- | --- |
 | Nainstalujte rozšíření prohlížeče | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Nakonfigurovat aplikaci z Galerie | [Co je nového v nástroji Správa podniková aplikace v Azure Active Directory: galerii nových a vylepšených aplikací](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurace hesla jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na portálu Azure nové: založené na heslech přihlašování](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Aplikace přiřadit skupinu určené v požadavky při přiřazování jejich přihlašovací údaje | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Konfigurace hesla jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na portálu Azure nové: založené na heslech přihlašování](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Aplikace přiřadit skupinu určené v požadavky při přiřazování jejich přihlašovací údaje | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Přihlaste se jako různým uživatelům přístup k aplikaci jako **stejné sdílené účtu.**  |  |
 | Volitelně můžete zkontrolovat sestavy využití aplikace. Všimněte si, že se některé latenci, takže budete muset počkat, než určitou dobu sledovat provoz v sestavách. | [Přihlašovací aktivity sestav na portálu Azure Active Directory: využití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
 

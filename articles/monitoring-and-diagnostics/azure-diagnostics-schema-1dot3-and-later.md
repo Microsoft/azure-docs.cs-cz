@@ -1,30 +1,26 @@
 ---
-title: Rozšíření Azure Diagnostics 1.3 a novější schéma konfigurace | Microsoft Docs
+title: Rozšíření Azure Diagnostics 1.3 a novější schéma konfigurace
 description: Verze schématu 1.3 a novější Azure diagnostics dodávána jako součást Microsoft Azure SDK 2.4 a později.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4fba492a57471df737896956e0b37e3da772cce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262371"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
 > [!NOTE]
 > Rozšíření diagnostiky Azure je komponenta, kterou používá ke shromažďování čítačů výkonu a další statistiky z:
 > - Azure Virtual Machines 
-> - Škálovací sady virtuálních počítačů
+> - Virtual Machine Scale Sets
 > - Service Fabric 
 > - Cloud Services 
 > - Network Security Groups (Skupiny zabezpečení sítě)
@@ -384,7 +380,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**PublicConfig**|Povinná hodnota. Na této stránce najdete v popisu jinde.|  
 |**PrivateConfig**|Volitelné. Na této stránce najdete v popisu jinde.|  
-|**IsEnabled**|Logická hodnota. Na této stránce najdete v popisu jinde.|  
+|**Hodnotu IsEnabled**|Logická hodnota. Na této stránce najdete v popisu jinde.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig Element  
  *Stromové struktury: PublicConfig kořenové - DiagnosticsConfiguration-*
@@ -592,7 +588,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**Sink**|Na této stránce najdete v popisu jinde.|  
+|**podřízený**|Na této stránce najdete v popisu jinde.|  
 
 ## <a name="sink-element"></a>Jímky – Element
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - jímka*
@@ -603,7 +599,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**name**|řetězec|Řetězec identifikující sinkname.|  
+|**Jméno**|řetězec|Řetězec identifikující sinkname.|  
 
 |Element|Typ|Popis|  
 |-------------|----------|-----------------|  
@@ -619,7 +615,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Channel**|řetězec|Na této stránce najdete v popisu jinde.|  
+|**Kanál**|řetězec|Na této stránce najdete v popisu jinde.|  
 
 ## <a name="channel-element"></a>Element kanálu
  *Strom: Kořenové - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - jímka - kanály - kanál*
@@ -630,8 +626,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atributy|Typ|Popis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**Řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**name**|**Řetězec**|Jedinečný název kanálu k odkazování na|  
+|**LogLevel**|**Řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**Jméno**|**Řetězec**|Jedinečný název kanálu k odkazování na|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig Element 

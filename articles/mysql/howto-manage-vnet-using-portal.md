@@ -6,15 +6,15 @@ author: mbolz
 ms.author: mbolz
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 06/01/2018
-ms.openlocfilehash: 8e4a14eb796875848406b4fc4ff39b90b9a691e9
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7520868fd6bd349043ad2c53e62de5db978db8b1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736435"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267216"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Vytvářet a spravovat databáze Azure pro koncové body služby MySQL virtuální sítě a pravidla virtuální sítě pomocí portálu Azure
 Koncové body služby virtuální sítě (VNet) a pravidla rozšířit privátního adresního prostoru virtuální sítě k vaší databázi Azure pro server databáze MySQL. Přehled Azure databáze pro koncové body služby MySQL virtuální sítě, včetně omezení, najdete v části [databáze Azure pro koncové body služby serveru VNet MySQL](concepts-data-access-and-security-vnet.md). Koncové body služby virtuální sítě jsou k dispozici ve verzi public preview ve všech oblastech podporovaných pro databázi Azure pro databázi MySQL.

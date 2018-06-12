@@ -1,13 +1,13 @@
 ---
-title: "Připojení počítače k virtuální síti pomocí ověřování Point-to-Site a protokolu RADIUS: prostředí PowerShell | Azure"
-description: "Zabezpečené připojení klientů systému Windows a Mac OS X k virtuální netowrk pomocí ověřování P2S a protokolu RADIUS."
+title: 'Připojení počítače k virtuální síti pomocí ověřování Point-to-Site a protokolu RADIUS: prostředí PowerShell | Azure'
+description: Zabezpečené připojení klientů systému Windows a Mac OS X k virtuální netowrk pomocí ověřování P2S a protokolu RADIUS.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2018
 ms.author: anzaman
-ms.openlocfilehash: 3b7315aaa57d1387e3cea31e8b306131a59a7006
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: df7afe9324831ffb8e79d7320f2c716ed18a7b4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267345"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurace připojení typu Point-to-Site k virtuální síti pomocí ověřování protokolu RADIUS: prostředí PowerShell
 
@@ -134,7 +135,7 @@ Před vytvoření a konfiguraci brány virtuální sítě, by měl být serveru 
 
 1. Pokud nemáte server RADIUS nasazené, nasaďte jednu. Kroky nasazení naleznete v Průvodci instalací poskytované dodavatelem protokolu RADIUS.  
 2. Nakonfigurujte bránu VPN jako klienta protokolu RADIUS na POLOMĚR. Při přidávání tohoto klienta RADIUS, zadejte virtuální síť GatewaySubnet, kterou jste vytvořili. 
-3. Až nastavíte používat RADIUS získáte IP adresu serveru RADIUS a sdílený tajný klíč, který by měl klientů RADIUS použít ke komunikaci se serverem RADIUS. Pokud RADIUS server ve virtuální síti Azure, použijte certifikační Autority IP ze serveru RADIUS virtuálních počítačů.
+3. RADIUS server je nastaveno, získáte IP adresu serveru RADIUS a sdílený tajný klíč, který by měl klientů RADIUS použít ke komunikaci se serverem RADIUS. Pokud RADIUS server ve virtuální síti Azure, použijte certifikační Autority IP ze serveru RADIUS virtuálních počítačů.
 
 [Server NPS (Network Policy Server)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) článek obsahuje pokyny týkající se konfigurace Windows RADIUS serveru (NPS Server) pro ověřování v doméně AD.
 

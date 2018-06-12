@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: c818ff0df5cb1f1b3d20c726b20b30c418f53061
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266957"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Podporu pro replikaci technologie Hyper-V do Azure.
 
@@ -44,7 +45,7 @@ Následující tabulka shrnuje podporu virtuálních počítačů. Site Recovery
  **Komponenta** | **Podrobnosti**
 --- | ---
 Konfigurace virtuálního počítače | Virtuální počítače, které se replikují do Azure, musí splňovat [požadavky pro Azure](#failed-over-azure-vm-requirements).
-Hostovaný operační systém | Všechny hostovaný operační systém [nepodporuje v Azure](https://technet.microsoft.com/library/cc794868.aspx).<br/><br/> Windows Server 2016 Nano Server není podporována.
+Hostovaný operační systém | Všechny hostovaný operační systém nepodporuje v Azure.<br/><br/> Windows Server 2016 Nano Server není podporována.
 
 
 
@@ -86,7 +87,7 @@ Akcelerované síťové služby | Ne | Ne
 
 **Úložiště** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | --- | ---
-NFS | není k dispozici | není k dispozici
+NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ano | Ano
 SÍŤ SAN (ISCSI) | Ano | Ano
 S více cestami (MPIO). Test se:<br></br> Microsoft DSM EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM pro CLARiiON | Ano | Ano
@@ -95,15 +96,15 @@ S více cestami (MPIO). Test se:<br></br> Microsoft DSM EMC PowerPath 5.7 SP4<br
 
 **Úložiště** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | ---
-VMDK | není k dispozici | není k dispozici
+VMDK | Není k dispozici | Není k dispozici
 VHD/VHDX | Ano | Ano
 2. generace virtuálních počítačů | Ano | Ano
 ROZHRANÍM EFI/UEFI| Ano | Ano
 Sdílený disk clusteru | Ne | Ne
 Šifrované disku | Ne | Ne
-NFS | není k dispozici | není k dispozici
+NFS | Není k dispozici | Není k dispozici
 SMB 3.0 | Ne | Ne
-RDM | není k dispozici | není k dispozici
+RDM | Není k dispozici | Není k dispozici
 Disk > 1 TB | Ano, až 4095 GB | Ano, až 4095 GB
 Disku: logický a fyzický sektor 4 kB | Není podporováno: FIN 1 nebo generace 2 | Není podporováno: FIN 1 nebo generace 2
 Disku: 4K logické a fyzického sektoru 512 bajtů | Ano |  Ano
@@ -113,7 +114,7 @@ Přidat nebo odebrat aktivní disku | Ne | Ne
 Vyloučení disku | Ano | Ano
 S více cestami (MPIO) | Ano | Ano
 
-## <a name="azure-storage"></a>Účet Azure
+## <a name="azure-storage"></a>Azure Storage
 
 **Komponenta** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | ---
@@ -133,7 +134,7 @@ Azure Storage brány firewall pro virtuální sítě, které jsou nakonfigurovan
 
 **Funkce** | **Technologie Hyper-V s nástrojem Virtual Machine Manager** | **Technologie Hyper-V bez nástroje Virtual Machine Manager**
 --- | --- | ---
-Sady dostupnosti | Ano | Ano
+Skupiny dostupnosti | Ano | Ano
 ROZBOČOVAČE | Ano | Ano  
 Managed Disks | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků není podporována. | Ano, pro převzetí služeb při selhání.<br/><br/> Navrácení služeb po obnovení spravovaných disků není podporována.
 
@@ -154,7 +155,7 @@ Sdílený virtuální pevný disk | Nepodporuje se | Pokud nepodporované Kontro
 FC disku | Nepodporuje se | Pokud nepodporované Kontrola předpokladů selže.
 Formát pevného disku | VIRTUÁLNÍ PEVNÝ DISK <br/><br/> VHDX | Při selhání do Azure, Site Recovery automaticky převede na virtuální pevný disk VHDX. Pokud žádnou zpět na místní, virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Než povolíte replikaci pro virtuální počítač, musí se zakázat nástroj BitLocker.
-Název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
+název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače ve službě Site Recovery.
 Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače generace 2 se typ disku operačního systému basic (která zahrnuje jednu nebo dvě datové svazky naformátované jako VHDX) a menší než 300 GB místa na disku jsou podporovány.<br></br>Virtuální počítače s Linuxem generace 2 nejsou podporované. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Trezor služeb zotavení

@@ -17,11 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261147"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení ve službě Azure Active Directory
 
@@ -79,7 +80,7 @@ Za určitých podmínek Enterprise State Roaming může selhat synchronizaci dat
 **Potenciální problém**: synchronizace může selhat, pokud správce nakonfiguruje zásady podmíněného přístupu Active Directory Federation služby Multi-Factor Authentication a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro pracovní PIN kód nebo dokončení služby Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
 
 ### <a name="event-viewer"></a>Prohlížeč událostí
-Pro pokročilé řešení problémů s prohlížeči událostí můžete použít k vyhledání konkrétní chyby. Ty jsou popsané v následující tabulce. Události lze nalézt v prohlížeči událostí > protokoly aplikací a služeb > **Microsoft** > **Windows** > **SettingSync** a pro problémy související s identity se synchronizací **Microsoft** > **Windows** > **Azure AD**.
+Pro pokročilé řešení problémů s prohlížeči událostí můžete použít k vyhledání konkrétní chyby. Ty jsou popsané v následující tabulce. Události lze nalézt v prohlížeči událostí > protokoly aplikací a služeb > **Microsoft** > **Windows** > **SettingSync** a pro problémy související s identity se synchronizací **Microsoft** > **Windows** > **AAD**.
 
 
 ## <a name="known-issues"></a>Známé problémy

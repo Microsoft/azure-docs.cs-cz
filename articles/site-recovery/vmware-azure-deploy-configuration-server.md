@@ -2,17 +2,18 @@
 title: Nasazení se konfigurační server pro obnovení po havárii VMware s Azure Site Recovery | Microsoft Docs
 description: Tento článek popisuje, jak nasadit konfigurační server pro obnovení po havárii VMware s Azure Site Recovery
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/06/2018
+ms.author: raynew
+ms.openlocfilehash: 3e7a9196d928fb8a5d12647e1916b046ebedd261
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267505"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -20,11 +21,19 @@ Při použití se nasadit server konfigurace místní [Azure Site Recovery](site
 
 ## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme nasadit jako vysoce dostupný virtuální počítač VMware konfigurační server. Minimální požadavky na hardware jsou shrnuté v následující tabulce.
+Doporučujeme nasadit jako vysoce dostupný virtuální počítač VMware konfigurační server. V následující tabulce jsou shrnuté požadavky na konfiguraci serveru.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+
+### <a name="prepare-for-mysql-installation"></a>Příprava pro instalaci databáze MySQL
+
+MySQL musí být nainstalován na konfiguračním serveru. To provedete pomocí jedné z následujících metod:
+
+- Let – Site Recovery, stáhněte a nainstalujte ho při, když spustí Průvodce konfigurací serveru správy. Není nutné provádět žádnou zvláštní akci.
+- Ručně stáhnout MySQL a umístěte jej do složky C:\Temp\ASRSetup. Spusťte instalaci. Site Recovery rozpozná, že je nainstalováno, když spustíte průvodce.
+- Ručně stáhnout MySQL a umístěte jej do složky C:\Temp\ASRSetup. Když spustíte Průvodce bude Najděte instalační soubor a nainstalujte ji z tohoto umístění. 
 
 
 ## <a name="capacity-planning"></a>Plánování kapacity
@@ -100,7 +109,7 @@ Pokud chcete přidat další síťový adaptér na konfiguračním serveru, při
 
 1. V Průvodci konfigurací serveru správy vyberte **nastavení připojení**. Vyberte síťový adaptér a příjem přenosů replikace a pak vyberte **Uložit**. Po dokončení konfigurace není možné toto nastavení změnit.
 2. V části **Vyberte trezor služby Recovery Services** vyberte své předplatné Azure a příslušnou skupinu prostředků a trezor.
-3. V části **Nainstalovat software třetí strany** přijměte licenční smlouvu. Vyberte **Stáhnout a nainstalovat** a nainstalujte MySQL Server.
+3. V části **Nainstalovat software třetí strany** přijměte licenční smlouvu. Nainstalujte MySQL v souladu s [metoda používáte k instalaci MySQL](#prepare-for-mysql-installation).
 4. Vyberte **nainstalovat VMware PowerLCI**. Ujistěte se, že všechna okna prohlížeče jsou uzavřeny před provedením tohoto kroku. Potom vyberte **Pokračovat**.
 5. Než budete pokračovat, v části **Ověřit konfiguraci zařízení** se ověří požadavky.
 6. V části **Konfigurovat vCenter Server nebo server vSphere ESXi** zadejte plně kvalifikovaný název domény nebo IP adresu vCenter Serveru nebo hostitele vSphere, na kterém jsou umístěné virtuální počítače, které chcete replikovat. Zadejte port, kterém naslouchá server a popisný název serveru VMware server v trezoru.

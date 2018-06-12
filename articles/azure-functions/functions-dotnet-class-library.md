@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 53eaef775647795acf3e8e6fcd127181414b1c0e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: e521ef29a338d0c7d80493f92acff4758a091359
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234491"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261283"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure funkcí jazyka C# referenční informace pro vývojáře
 
@@ -311,6 +311,8 @@ public static class EnvironmentVariablesExample
     }
 }
 ```
+
+Nastavení aplikace lze číst z proměnné prostředí při vývoji místně i při spuštění v Azure. Při vývoji místně, nastavení aplikace pocházet z `Values` kolekce *local.settings.json* souboru. V obou prostředích místní a Azure, `GetEnvironmentVariable("<app setting name>")` načte hodnotu nastavení s názvem aplikace. Například když spouštíte místně, "My název lokality" by vrácena v případě vaší *local.settings.json* soubor obsahuje `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
 
 [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/en-us/dotnet/api/system.configuration.configurationmanager.appsettings) vlastnost je alternativní rozhraní API pro získání hodnoty nastavení aplikace, ale doporučujeme vám, že používáte `GetEnvironmentVariable` jak je vidět tady.
 

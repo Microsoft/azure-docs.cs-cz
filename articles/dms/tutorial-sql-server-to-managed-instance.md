@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 05/07/2018
-ms.openlocfilehash: bb7cc17c36809975e26c8da8beda004a0b0cfd9e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 86af0101d84fe9cd44211a931567a85d7b5166e0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261606"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-using-dms"></a>Migrace systému SQL Server do Azure SQL Database spravované instanci pomocí DMS
 Můžete používat službu Azure databáze migrace k migraci databáze z místní instance systému SQL Server do [Azure SQL Database spravované Instance](../sql-database/sql-database-managed-instance.md). Pro další metody, které mohou vyžadovat některé úsilí, najdete v článku [migrace instance systému SQL Server do Azure SQL Database spravované Instance](../sql-database/sql-database-managed-instance-migrate.md).
@@ -118,7 +119,7 @@ Po vytvoření služby najít na portálu Azure, otevřete ho a pak vytvořte no
     Když není nainstalován důvěryhodný certifikát, SQL Server vygeneruje certifikát podepsaný svým držitelem při spuštění instance. Tento certifikát se používá k šifrování přihlašovacích údajů pro připojení klientů.
 
     > [!CAUTION]
-    > Připojení SSL, které jsou encyopted používá certifikát podepsaný svým držitelem neposkytuje silné zabezpečení. Jsou náchylné k útokům man-in-the-middle. Neměli byste tedy spoléhat na certifikáty podepsané svým držitelem v produkčním prostředí pomocí SSL nebo na serverech, které jsou připojené k Internetu.
+    > Připojení SSL, které jsou šifrované pomocí certifikát podepsaný svým držitelem neposkytuje silné zabezpečení. Jsou náchylné k útokům man-in-the-middle. Neměli byste tedy spoléhat na certifikáty podepsané svým držitelem v produkčním prostředí pomocí SSL nebo na serverech, které jsou připojené k Internetu.
 
    ![Podrobnosti zdroje](media\tutorial-sql-server-to-managed-instance\dms-source-details1.png)
 

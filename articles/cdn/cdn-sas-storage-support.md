@@ -4,7 +4,7 @@ description: Azure CDN podporuje použití z sdíleného přístupového podpisu
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: ''
+manager: cfowler
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
-ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ea779f4f809e51b57d36cd44f9c6674340d665a2
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261164"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Pomocí SAS Azure CDN
 
@@ -70,7 +71,7 @@ Tato možnost je nejjednodušší a používá jeden token SAS, která je předa
  
 Tato možnost je dostupná pouze pro **Azure CDN Premium od společnosti Verizon** profily. Pomocí této možnosti můžete zabezpečit úložiště objektů blob na původním serveru. Chcete tuto možnost použijte, pokud nepotřebujete omezení přístupu konkrétním souboru, ale chcete zabránit uživatelům v přístupu k počátku úložiště přímo na vylepšovat dobu snižování zátěže Azure CDN. Token SAS, který neznámý uživateli, je vyžadována pro každý, kdo přístup k souborům v zadaném kontejneru na zdrojový server. Z důvodu pravidlo přepisování adres URL, ale tokenu SAS není vyžadován na koncový bod CDN.
  
-1. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL. Nová pravidla trvat asi 90 minut rozšíření.
+1. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL. Nová pravidla trvat asi 10 minut rozšíření.
 
    ![Tlačítko Spravovat CDN](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
@@ -112,7 +113,7 @@ Chcete-li použít ověření tokenu zabezpečení Azure CDN, musíte mít **Azu
        
    Parametr možnosti pro ověření tokenu zabezpečení jsou jiné než parametr možnosti pro SAS token. Pokud chcete použít při vytváření tokenu zabezpečení čas vypršení platnosti, byste měli nastavit na stejnou hodnotu jako dobu vypršení platnosti tokenu SAS. Tím zajistíte, že doba vypršení platnosti je předvídatelný. 
  
-2. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL pro povolení SAS tokenu přístupu pro všechny objekty BLOB v kontejneru. Nová pravidla trvat asi 90 minut rozšíření.
+2. Použití [stroj pravidel](cdn-rules-engine.md) k vytvoření pravidla přepisování adres URL pro povolení SAS tokenu přístupu pro všechny objekty BLOB v kontejneru. Nová pravidla trvat asi 10 minut rozšíření.
 
    Následující ukázka pravidla přepisování adres URL používá vzor regulárního výrazu s skupinu zachycení a koncový bod s názvem *storagedemo*:
    

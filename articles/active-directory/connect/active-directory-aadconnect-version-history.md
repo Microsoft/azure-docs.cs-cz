@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c2eb59024e0e1ef773901b3f91ae7221c95d4414
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: c2a830fa873f7277440d1baa9049a9c8eafcbf55
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801996"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261776"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkce. Ne všechny dodatky platí pro všechny cílové skupiny.
 
 
-Tento článek je určen, abyste mohli sledovat verze, které byly vydány a zjistit, jestli je potřeba aktualizovat na nejnovější verzi, nebo ne.
+Tento článek je navržená tak, abyste mohli sledovat verze, které byly vydány a pochopit, jaké změny jsou v nejnovější verzi.
 
 V této tabulce je seznam Příbuzná témata:
 
@@ -1071,5 +1071,5 @@ Vydáno: Září 2014
 
 **Počáteční verzi Azure AD Sync.**
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md).

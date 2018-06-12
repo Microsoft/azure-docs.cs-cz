@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd1b52dd32976ce65458e1dfe1b50d228fbd6d0e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850521"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261074"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Oddíl a škálování v Azure Cosmos DB
 
@@ -47,7 +47,7 @@ Stručně řečeno zde je Princip vytváření oddílů v Azure Cosmos DB:
 
 * Zřizovat sadu Azure Cosmos DB kontejnery s **T** propustnost RU/s (počet požadavků za sekundu).
 * Na pozadí Azure Cosmos DB zřídí fyzické oddíly, které jsou potřebné k obsluze **T** požadavků za sekundu. Pokud **T** je vyšší než maximální propustnost za fyzickém oddílu **t**, pak Azure Cosmos DB zřizuje **N = T/t** fyzické oddíly. Hodnota maximální propustnost za partition(t) se nakonfiguruje prostřednictvím Azure Cosmos DB, tato hodnota je přiřazen na základě celkové zřízené propustnosti a používá konfiguraci hardwaru. 
-* Azure Cosmos DB přiděluje místo na klíče oddílu klíče hash rovnoměrně napříč **N** fyzické oddíly. Ano, každý fyzických hostitelů oddílu **1 nebo N** oddílu hodnoty klíče (logické oddíly).
+* Azure Cosmos DB přiděluje místo na klíče oddílu klíče hash rovnoměrně napříč **N** fyzické oddíly. Tak počet logické oddíly jednotlivých hostitelů fyzickém oddílu je **1 nebo N** * počet hodnoty klíče oddílu.
 * Při fyzickém oddílu **p** dosáhnou limitu úložiště Azure Cosmos DB bezproblémově rozdělí **p** do dvou nových oddílů fyzické **p1** a **p2**. Distribuuje hodnoty odpovídající přibližně polovinu klíče pro každý z nové fyzické oddíly. Toto rozdělení operace je pro vaše aplikace úplně skrytá. Pokud fyzickém oddílu dosáhne limitu úložiště a všechna data na fyzickém oddílu patří do stejného klíče logický oddíl, neproběhne operaci rozdělení. Je to proto, že všechna data pro klíč jeden logický oddíl se musí nacházet v jednom fyzickém oddílu. V takovém případě měly by být použity strategie klíče jiný oddíl.
 * Pokud zřídíte propustnost vyšší než **t * N**, Azure Cosmos DB rozdělí jeden nebo více fyzických oddíly mohou podporovat vyšší propustnost.
 
@@ -61,6 +61,8 @@ Sémantika pro klíče oddílů je mírně odlišný tak, aby odpovídaly séman
 | Table | Oprava `PartitionKey` | Oprava `RowKey` | 
 
 Azure Cosmos DB používá algoritmus HMAC rozdělení do oddílů. Při zápisu položky Azure Cosmos DB hashuje hodnotu klíče oddílu a hash výsledek používá k určení oddíl, který k uložení položky v. Azure Cosmos DB ukládá všechny položky se stejným klíčem oddílu v jednom fyzickém oddílu. 
+
+## <a name="best-practices-when-choosing-a-partition-key"></a>Osvědčené postupy při výběru klíč oddílu
 
 Volba klíč oddílu je důležité rozhodnutí, která je nutné provést v době návrhu. Vyberte název vlastnosti, která má široký rozsah hodnot a má i přístupové vzorce. Je vhodné mít klíč oddílu s velkým počtem jedinečných hodnot (např. stovkami nebo tisíci). Umožňuje rovnoměrně rozdělit vaše zatížení mezi tyto hodnoty. Klíč ideální oddílu je ten, který se často zobrazí jako filtr ve své dotazy a má dostatek mohutnost zajistit, že vaše řešení je škálovatelná.
 

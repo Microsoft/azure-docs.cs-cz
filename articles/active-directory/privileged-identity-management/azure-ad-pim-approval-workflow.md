@@ -1,26 +1,27 @@
 ---
-title: "Azure Privileged Identity Management schválení pracovních | Microsoft Docs"
-description: "Další informace o schválení pracovních postupů v Privileged Identity Management (PIM)"
+title: Azure Privileged Identity Management schválení pracovních | Microsoft Docs
+description: Další informace o schválení pracovních postupů v Privileged Identity Management (PIM)
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
-ms.author: barclayn
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f30dd06417d9ce4d71c88ba170a4f3169b5fccd7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6e14d91eae367ef62d1ff2e4cb6ddeb47c9fbbea
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261011"
 ---
-# <a name="approvals"></a>Schválení
+# <a name="approvals"></a>Schvalování
 
 ## <a name="overview"></a>Přehled
 
@@ -51,15 +52,15 @@ Privátní preview podporuje následující scénáře:
 
 -   [Schválit nebo odmítnout žádosti o zvýšení oprávnění role (jeden nebo hromadně)](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
 
--   [uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
+-   [Uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
 
 **Jako oprávněný uživatel roli můžete:**
 
--   [žádost o aktivaci role, který vyžaduje schválení](#request-activation-of-a-role-that-requires-approval)
+-   [Žádost o aktivaci role, který vyžaduje schválení](#request-activation-of-a-role-that-requires-approval)
 
 -   [Zobrazení stavu vaši žádost o aktivaci](#view-the-status-of-your-request-to-activate)
 
--   [dokončení úkolu ve službě Azure AD, pokud byla schválena aktivace](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [Dokončení úkolu ve službě Azure AD, pokud byla schválena aktivace](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Navigace
 
@@ -187,6 +188,6 @@ Po schválení žádosti role je aktivní a veškerou práci, kterou vyžaduje t
 
 ![](media/azure-ad-pim-approval-workflow/image043.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Je vhodné nám svůj názor. Prosím Nebojte se zde sdílet komentáře nebo zpětnou vazbu s námi!

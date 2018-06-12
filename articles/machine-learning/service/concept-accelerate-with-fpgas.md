@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/31/2018
-ms.openlocfilehash: 18b0ee143443ecf128bdfe57adb61cc22f95db87
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5ed94c3b750c927ec48959c12388bd22de3d3df4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832580"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261946"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co je FPGA a Brainwave projektu?
 
@@ -62,7 +62,7 @@ Následující scénáře použijte FPGA na architektuře Brainwave projektu:
 - Automatizované systém optické kontroly. V tématu [AI v reálném čase: Microsoft oznamuje preview projektu Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/).
 - Krajině titulní mapování. V tématu [použití FPGAs pro odvození hloubkové Learning k provedení krajině titulní mapování na terabajtů leteckou image](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/).
 
-## <a name="how-to-create-an-fpga-service"></a>Postup vytvoření služby FPGA?
+## <a name="how-to-deploy-a-web-service-to-an-fpga"></a>Postup nasazení webové služby na FPGA?
 
 Podrobný postup pro vytvoření služby rozpoznávání bitové kopie v Azure pomocí ResNet50 featurizer vypadá takto:
 
@@ -70,7 +70,8 @@ Podrobný postup pro vytvoření služby rozpoznávání bitové kopie v Azure p
 2. Registraci modelu Azure ML modelu Management API pomocí souboru zip v úložišti objektů Blob.
 3. Nasazení služby s modelem registrovaný pomocí rozhraní API služby Azure ML modelu správy.
 
-Podívejte se kurz [Azure ML hardwaru Accelerated modely Quickstart](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/resnet50/00_QuickStart.ipynb).
+Další informace o tomto procesu v článku, [nasadit model jako webovou službu na FPGA pomocí Azure Machine Learning](how-to-deploy-fpga-web-service.md).
+
 
 ## <a name="start-using-fpga"></a>Začít používat FPGA
 

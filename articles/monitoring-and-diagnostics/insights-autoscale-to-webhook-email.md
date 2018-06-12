@@ -1,24 +1,19 @@
 ---
-title: "Akce škálování použijte k odesílání e-mailu a webhooku oznámení výstrah. | Dokumentace Microsoftu"
-description: "Zjistit, jak používat akce škálování adres URL webových zavolat nebo poslat e-mailová oznámení v nástroji Sledování Azure. "
+title: Používat automatické škálování k odesílání e-mailu a webhooku oznámení výstrah
+description: 'Zjistit, jak používat akce škálování adres URL webových zavolat nebo poslat e-mailová oznámení v nástroji Sledování Azure. '
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: eb9a4c98-0894-488c-8ee8-5df0065d094f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.openlocfilehash: 16caf14028494800e9259f0296c292b606d0210a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 65405a6d7f1d49911da1e2a5d26b02098a261c01
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262218"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Akce škálování používat k odesílání e-mailu a webhooku oznámení výstrah v monitorování Azure
 Tento článek ukazuje, jak nastavíte aktivační události tak, aby můžete volat konkrétní webové adresy URL nebo poslat e-mailů podle akce škálování v Azure.  
@@ -26,7 +21,7 @@ Tento článek ukazuje, jak nastavíte aktivační události tak, aby můžete v
 ## <a name="webhooks"></a>Webhooky
 Webhooky umožňují směrovat Azure oznámení výstrah do jiných systémů pro následné zpracování nebo vlastních oznámení. Například směrování upozornění do služby, které může zpracovávat příchozí webové žádosti pro odeslání že SMS, protokolu chyb, upozornění, že tým pomocí chatu nebo zasílání zpráv služby atd. Webhook identifikátor URI musí být platný koncový bod HTTP nebo HTTPS.
 
-## <a name="email"></a>E-mail
+## <a name="email"></a>Email
 Všechny platné e-mailovou adresu nelze odesílat e-mailu. Správci a spolusprávci předplatného, kde je spuštěno pravidlo bude také upozorněni.
 
 ## <a name="cloud-services-and-web-apps"></a>Cloudové služby a webové aplikace
@@ -72,10 +67,10 @@ Při použití šablony REST API nebo Resource Manager, obsahovat element oznám
 | customEmails |ano |Hodnota může být null [] nebo pole řetězců e-mailů |
 | Webhooky |ano |Hodnota může být null nebo platný identifikátor Uri |
 | serviceUri |ano |platný https identifikátor Uri |
-| properties |ano |Hodnota musí být prázdný {} nebo může obsahovat páry klíč hodnota |
+| properties |ano |Hodnota musí být prázdná. {} nebo může obsahovat páry klíč hodnota |
 
 ## <a name="authentication-in-webhooks"></a>Ověřování v webhooky
-Webhooku můžete ověřit pomocí ověřování založeného na token, kam jste uložili webhooku identifikátor URI s tokenu ID jako parametr dotazu. Například https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+Webhooku můžete ověřit pomocí ověřování založeného na token, kam jste uložili webhooku identifikátor URI s tokenu ID jako parametr dotazu. Například https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue.
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>Škálování oznámení webhooku datové části schématu
 Když se vygeneruje oznámení škálování, je následující metadata zahrnuty do datové části webhooku:
@@ -117,7 +112,7 @@ Když se vygeneruje oznámení škálování, je následující metadata zahrnut
 | jméno |Ano |Název nastavení automatického škálování |
 | Podrobnosti |Ano |Vysvětlení akci, kterou trvalo službu automatické škálování a změna v počet instancí |
 | subscriptionId |Ano |ID předplatného cílového prostředku, který bude změněno měřítko |
-| Název skupiny prostředků |Ano |Název skupiny prostředků cílového prostředku, který bude změněno měřítko |
+| resourceGroupName |Ano |Název skupiny prostředků cílového prostředku, který bude změněno měřítko |
 | resourceName |Ano |Název cílového prostředku, který bude změněno měřítko |
 | Typ prostředku |Ano |Tři podporované hodnoty: "microsoft.classiccompute/domainnames/slots/roles" – cloudové služby rolí, "microsoft.compute/virtualmachinescalesets" - sady škálování virtuálního počítače a "Microsoft.Web/serverfarms" - webové aplikace |
 | resourceId |Ano |Správce prostředků ID cílového prostředku, který bude změněno měřítko |

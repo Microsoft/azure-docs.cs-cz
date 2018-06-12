@@ -1,19 +1,20 @@
 ---
-title: "Postup řešení potíží s výkonem dotazu v Azure databáze pro databázi MySQL"
-description: "Tento článek popisuje, jak používat VYSVĚTLIT k řešení potíží s výkonem dotazu v databázi Azure pro databázi MySQL."
+title: Postup řešení potíží s výkonem dotazu v Azure databáze pro databázi MySQL
+description: Tento článek popisuje, jak používat VYSVĚTLIT k řešení potíží s výkonem dotazu v databázi Azure pro databázi MySQL.
 services: mysql
 author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3af6ad347cec171132ddfbec21137775c0f71245
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 72b047c37ac88e4b33c8723f8df14c6794e84399
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266172"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Jak používat VYSVĚTLIT k profilu výkon dotazů v databázi Azure pro databázi MySQL
 **VYSVĚTLUJÍ** je užitečný nástroj pro optimalizaci dotazů. VYSVĚTLUJÍ, že příkaz lze použít k načtení informací o tom, jak jsou vykonány příkazů SQL. Tento výstup ukazuje příklad spuštění příkazu VYSVĚTLIT.

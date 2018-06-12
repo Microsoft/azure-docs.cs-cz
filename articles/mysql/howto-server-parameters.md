@@ -6,14 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 6865663bebc84df288f4c7e2564ddb4870667c6f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 32414cb034bf6ee95a284021111759959054c00e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267301"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Postup konfigurace serveru parametry v Azure Database pro databázi MySQL pomocí portálu Azure
 
@@ -61,7 +62,7 @@ InnoDB fondu vyrovnávací paměti a maximální počet připojení nejsou konfi
 
 Tyto další server parametry nejsou konfigurovatelné v systému:
 
-|**Parameter**|**Pevná hodnota**|
+|**Parametr**|**Pevná hodnota**|
 | :------------------------ | :-------- |
 |innodb_file_per_table v základní vrstvě|OFF|
 |innodb_flush_log_at_trx_commit|1|

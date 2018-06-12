@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 98c2934800c739b463b168786e14f6a2a9cb47e7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d8df5e4992cd8d51f1b5259947139d3b180ec82
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660786"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267042"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Spouštět skripty ve vaší virtuální počítač s Windows
 
@@ -31,14 +31,14 @@ K automatizaci úloh nebo řešení problémů, musíte ke spuštění příkaz�
 
 ## <a name="run-command"></a>Spusťte příkaz
 
-[Spustit příkaz](run-command.md) funkce umožňuje virtuálního počítače a Správa aplikací a řešení problémů pomocí skriptů a je k dispozici i v případě, že tento počítač není sítě připojený.
+[Spustit příkaz](run-command.md) funkce umožňuje virtuálního počítače a Správa aplikací a řešení problémů pomocí skriptů a je k dispozici, i když počítač není dosažitelný, například pokud brána firewall hosta nemá port protokolu RDP nebo SSH Otevřete.
 
 * Spouštět skripty ve virtuálních počítačích Azure.
 * Lze spouštět s využitím [portál Azure](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [rozhraní příkazového řádku Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), nebo [prostředí PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)
 * Rychle spustit výstup skriptu a zobrazení a opakujte podle potřeby na portálu Azure.
 * Skript lze zadat přímo, nebo můžete spustit jeden z předdefinovaných skriptů.
 * Spustit skript prostředí PowerShell v počítačích s Windows a Bash skript v počítačích s Linuxem.
-* Užitečné pro virtuální počítač a Správa aplikací a ke spouštění skriptů ve virtuálních počítačích, které nejsou připojené sítě.
+* Užitečné pro virtuální počítač a Správa aplikací a ke spouštění skriptů ve virtuálních počítačích, které nejsou dostupné.
 
 ## <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 

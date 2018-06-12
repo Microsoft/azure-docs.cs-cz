@@ -1,24 +1,19 @@
 ---
-title: "Průzkumníku metrik Azure monitorování | Microsoft Docs"
-description: "Další informace o nových funkcích v Průzkumníku metrik Azure monitorování"
+title: Azure Průzkumníku metrik monitorování
+description: Další informace o nových funkcích v Průzkumníku metrik Azure monitorování
 author: vgorbenko
-manager: Victor.Mushkatin
-editor: mrbullwinkle
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2397596a-071f-4d49-8893-bec5f735bd7b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264084"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumníku metrik Azure monitorování
 
@@ -43,7 +38,7 @@ Následující příklad ukazuje dvě datové sady pro hypotetické metriku náz
 ### <a name="network-throughput"></a>Propustnost sítě
 (Tato metrika nemá žádné dimenze)
 
- |časové razítko        | Hodnota metriky | 
+ |Časové razítko        | Hodnota metriky | 
    | ------------- |:-------------| 
    | 8/9/2017 8:14 | 1,331.8 kb/s | 
    | 8/9/2017 8:15 | 1,141.4 kb/s |
@@ -53,7 +48,7 @@ Tato metrika dimenzí může obsahovat jenom jako odpověď základní otázku "
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Propustnost sítě + dvěma rozměry ("IP adresy" a "Směr")
 
-| časové razítko          | Dimenze "IP adresy" | Dimenze "Směr" | Hodnota metriky| 
+| Časové razítko          | Dimenze "IP adresy" | Dimenze "Směr" | Hodnota metriky| 
    | ------------- |:-----------------|:------------------- |:-----------|  
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Směr = "Odeslat"    | 646.5 kb/s |
    | 8/9/2017 8:14 | IP = "192.168.5.2" | Směr = "Zobrazit" | 420.1 kB/s |
@@ -156,6 +151,6 @@ Po dokončení konfigurace grafu, klikněte na **grafu akce** nabídky v pravém
 
    ![metriky bitové kopie](./media/monitoring-metric-charts/013.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
   Čtení [vytváření vlastní řídicí panely klíčového ukazatele výkonu](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) Další informace o osvědčené postupy pro vytváření řešitelné řídicích panelů s metriky.

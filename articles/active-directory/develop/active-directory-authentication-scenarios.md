@@ -17,11 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0f535e8a74822319d472c62fe1b65e5145e58a74
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261640"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scénáře ověřování pro Azure AD
 
@@ -137,7 +138,7 @@ Tato část popisuje aplikaci, která ověřuje uživatele ve webovém prohlíž
 1. Pokud uživatel navštíví aplikace a musí se přihlásit, je přesměrován prostřednictvím přihlašovací požadavek na koncový bod ověřování ve službě Azure AD.
 1. Na stránce přihlášení přihlášení uživatele.
 1. Pokud je ověření úspěšné, Azure AD vytvoří ověřovací token a vrátí odpověď přihlašovací adresa URL odpovědi aplikace, který byl nakonfigurován na portálu Azure. Pro produkční aplikace musí být tato adresa URL odpovědi protokolu HTTPS. Vrácený token obsahuje deklarace identity o uživateli a Azure AD, které jsou požadované aplikací k ověření tokenu.
-1. Aplikace ověří token pomocí veřejného podpisového klíče a vystavitele informace, které jsou k dispozici na dokument federačních metadat pro Azure AD. Po aplikaci ověří token, Azure AD spustí novou relaci s uživatelem. Tato relace umožňuje uživatelům přístup k aplikaci do vypršení jeho platnosti.
+1. Aplikace ověří token pomocí veřejného podpisového klíče a vystavitele informace, které jsou k dispozici na dokument federačních metadat pro Azure AD. Po aplikaci ověří token, spustí novou relaci s uživatelem. Tato relace umožňuje uživatelům přístup k aplikaci do vypršení jeho platnosti.
 
 #### <a name="code-samples"></a>Ukázky kódů
 

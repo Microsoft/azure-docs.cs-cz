@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4009a35226473cd3ecc68929e53d70f7fb749156
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 973b11cd7bcb46bfb113998ff4a4e0b9c6317042
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593431"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261759"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory
 Toto téma obsahuje seznam atributy, které jsou synchronizovány pomocí synchronizace Azure AD Connect.  
@@ -207,14 +207,14 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | givenName |X |X | | |
 | hideDLMembership | | |X | |
 | Telefon domů |X |X | | |
-| informace |X |X |X | |
+| Informace o |X |X |X | |
 | iniciály |X |X | | |
 | ipPhone |X |X | | |
 | l |X |X | | |
 | E-mailu |X |X |X | |
 | mailnickname |X |X |X | |
 | managedBy | | |X | |
-| manažer |X |X | | |
+| Správce |X |X | | |
 | člen | | |X | |
 | middleName |X |X | | |
 | mobilní |X |X | | |
@@ -274,7 +274,7 @@ V takovém případě začínat v seznamu atributů v tomto tématu a identifiku
 | E-mailu |X |X |X | |
 | mailNickname |X |X |X | |
 | managedBy | | |X | |
-| manažer |X |X | | |
+| Správce |X |X | | |
 | člen | | |X | |
 | mobilní |X |X | | |
 | msExchHideFromAddressLists |X |X |X | |
@@ -419,6 +419,7 @@ Tyto atributy pro **uživatele** jsou kromě dalších aplikací, které jste vy
 | --- |:---:| --- |
 | domainFQDN |X |Zkratka Název_domény_dns. Například contoso.com. |
 | domainNetBios |X |Volá se také název pro rozhraní NetBIOS. Například CONTOSO. |
+| msDS-KeyCredentialLink |X |Jakmile uživatel je registrovaný ve Windows Hello pro firmy. | 
 
 ## <a name="exchange-hybrid-writeback"></a>Zpětný zápis hybridní Exchange
 Tyto atributy se zapisují zpět z Azure AD do místní služby Active Directory při výběru povolit **Exchange hybridní**. V závislosti na vaší verzi Exchange méně atributy synchronizováni.

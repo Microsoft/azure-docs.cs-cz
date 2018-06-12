@@ -1,24 +1,19 @@
 ---
-title: Stream monitorování data do centra událostí Azure | Microsoft Docs
+title: Monitorování data do centra událostí Azure datového proudu
 description: Naučte se všechna vaše Azure monitorování data do centra událostí k získání dat do partnerský server SIEM nebo nástroj pro analýzu datového proudu.
 author: johnkemnetz
-manager: robb
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: 35cdd157469556c071b03a0f25184df141057554
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: ''
+ms.openlocfilehash: 091076a86c7f1c3f83f20a47b8f351d050350c9a
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639057"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263459"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Monitorování data do centra událostí pro používání pomocí externího nástroje Azure datového proudu
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 728eb81d360af0d62d22cd6168b9e16edceefd56
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fabe19a7348591b4a299868dfc3e618c049198c3
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714387"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261181"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Postup konfigurace hybridní Azure Active Directory připojené zařízení
 
@@ -57,7 +57,8 @@ Pro zlepšení čitelnosti popisy, tento článek používá následující obdo
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- Registrace zařízení se systémem Windows nižší úrovně **je** podporované v prostředích nefederovaných prostřednictvím bezproblémové jednotné přihlašování [Azure Active Directory bezproblémové jednotné přihlašování](https://aka.ms/hybrid/sso).
+- Registrace zařízení se systémem Windows nižší úrovně **je** podporované v prostředích nefederovaných prostřednictvím bezproblémové jednotné přihlašování [Azure Active Directory bezproblémové jednotné přihlašování](https://aka.ms/hybrid/sso). 
+- Registrace zařízení se systémem Windows nižší úrovně **není** podporována při použití Azure AD předávací ověřování.
 - Registrace zařízení se systémem Windows nižší úrovně **není** podporovaná pro zařízení s použitím profilů roamingu. Pokud se spoléháte na cestovních profilů nebo nastavení, používají systém Windows 10.
 
 
@@ -81,8 +82,7 @@ Ujistěte se, že následující adresy URL jsou přístupné z počítače v s�
 
 - https://enterpriseregistration.windows.net
 
-- https://login.microsoftonline.com
-
+- https://login.microsoftonline.com Povolit
 - https://device.login.microsoftonline.com
 
 - Služba tokenů zabezpečení vaší organizace (federované domény)

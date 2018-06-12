@@ -15,11 +15,12 @@ ms.date: 10/12/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 16f008c6a6f97a791122a3b441c4c09eaf7eadde
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293003"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Pochopení konektory proxy aplikace služby Azure AD
 
@@ -164,6 +165,6 @@ Můžete zkontrolovat stav služby v okně služby. Tento konektor zahrnuje dvě
 
 * [Publikování aplikací na samostatných sítí a umístění pomocí konektoru skupin](application-proxy-connector-groups.md)
 * [Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
-* [Řešení potíží s Proxy aplikace a konektor chyby](../active-directory-application-proxy-troubleshoot.md)
+* [Řešení potíží s Proxy aplikace a konektor chyby](application-proxy-troubleshoot.md)
 * [Postup při bezobslužné instalaci konektoru Proxy aplikace Azure AD](application-proxy-register-connector-powershell.md)
 

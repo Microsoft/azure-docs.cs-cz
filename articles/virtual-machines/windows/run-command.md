@@ -5,25 +5,25 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/02/2018
+ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0bc23c033e868f3cf72256318f0fb129c853e19d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a2a1c916543da07f25b2b9727e309709632afe00
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660789"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267267"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spusťte skripty prostředí PowerShell v systému Windows virtuálního počítače se spustit příkaz
 
-Spusťte příkaz umožňuje spouštět skripty prostředí PowerShell v rámci virtuálního počítače Windows Azure bez ohledu na připojení k síti. Tyto skripty lze použít obecné počítače nebo Správa aplikací a umožňuje rychle diagnostikovat a opravit problémy přístup a síť virtuálních počítačů a získat zpět na dobrý stav virtuálního počítače.
+Spusťte příkaz používá agent virtuálního počítače ke spouštění skriptů prostředí PowerShell v rámci virtuálního počítače Windows Azure. Tyto skripty lze použít obecné počítače nebo Správa aplikací a umožňuje rychle diagnostikovat a opravit problémy přístup a síť virtuálních počítačů a získat zpět na dobrý stav virtuálního počítače.
 
 ## <a name="benefits"></a>Výhody
 
-Nejsou k dispozici více možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz můžete spustit skripty na virtuální počítače bez ohledu na připojení k síti a je k dispozici ve výchozím nastavení (bez instalace požadované). Spusťte příkaz lze použít prostřednictvím portálu Azure [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [rozhraní příkazového řádku Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), nebo [prostředí PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+Nejsou k dispozici více možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz může spouštět skripty na virtuální počítače vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz lze použít prostřednictvím portálu Azure [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [rozhraní příkazového řádku Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), nebo [prostředí PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Tato možnost je užitečná ve všech scénářích, kde chcete spustit skript witin virtuální počítače a jeden jediný způsob, jak vyřešit a opravte virtuální počítač, který není připojený k síti z důvodu nesprávné sítě nebo správce konfigurace.
+Tato možnost je užitečná ve všech scénářích, kdy chcete spustit skript witin virtuální počítače a jeden jediný způsob, jak vyřešit a opravte virtuální počítač, který nemá protokol RDP nebo SSH port otevřít z důvodu nesprávné sítě nebo správce konfigurace.
 
 ## <a name="restrictions"></a>Omezení
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2aeaacbc48c8b49b967241522daf90e8fb228073
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 791181f11af38e4b78743ddb372207bd21893a6b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713608"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260925"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Zařízení připojená k nastavení Azure Active Directory
 
@@ -48,6 +48,10 @@ K připojení k zařízením s Windows 10, je třeba službu device registration
 - Pokud jste spravované uživatel, Windows přejdete na ploše prostřednictvím automatického přihlášení.
 
 - Pokud se Federovaný uživatel, budete muset přihlásit pomocí svých přihlašovacích údajů.
+
+- Pokud jste se federovaný, musí podporovat zprostředkovatele Identity WS-Fed a WS-Trust koncový bod uživatelského jména a hesla. To může být verze 1.3 nebo 2005. Tato podpora protokolu je potřeba připojit zařízení k Azure AD i Přihlaste se k zařízení s heslem. 
+
+
 
 
 ## <a name="joining-a-device"></a>Připojení zařízení

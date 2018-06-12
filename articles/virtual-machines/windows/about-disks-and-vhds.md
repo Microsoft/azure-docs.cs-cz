@@ -10,12 +10,12 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: e95b5a6037c791f501a04ebe468b1c781805f693
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 4323f4fd9b94c38d99557f1d4426682a8c16dd9b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32313507"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267090"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>O disky úložiště pro virtuální počítače Windows Azure
 Stejně jako všechny ostatní počítače virtuálních počítačů v Azure používat disky jako místo pro uložení operačního systému, aplikace a data. Všechny virtuální počítače Azure mít aspoň dva disky – disk operačního systému Windows a dočasný disk. Vytváření disku operačního systému z bitové kopie a disku operačního systému a image jsou virtuální pevné disky (VHD) uložené v účtu úložiště Azure. Virtuální počítače také může mít jeden nebo více datových disků, které jsou také uloženy jako virtuální pevné disky. 
@@ -32,7 +32,7 @@ Podívejme se na tom, jak jsou disky používány virtuálních počítačů.
 Každý virtuální počítač má jeden disk připojené operačního systému. Má registrován jako jednotky SATA a označené jako jednotky C: ve výchozím nastavení. Tento disk má maximální kapacita 2 048 gigabajtů (GB). 
 
 ### <a name="temporary-disk"></a>Dočasné disku
-Každý virtuální počítač obsahuje dočasné disk. Dočasné disku poskytuje krátkodobé úložiště pro aplikace a procesy a slouží k uložení pouze data, jako jsou soubory stránky nebo odkládacího souboru. Data na dočasné disku mohou být ztraceny při [údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [znovu nasadit virtuální počítač](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Během restartu standardní virtuální počítač by měl uchovat data na dočasné jednotce.
+Každý virtuální počítač obsahuje dočasné disk. Dočasné disku poskytuje krátkodobé úložiště pro aplikace a procesy a slouží k uložení pouze data, jako jsou soubory stránky nebo odkládacího souboru. Data na dočasné disku mohou být ztraceny při [údržby](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) nebo když jste [znovu nasadit virtuální počítač](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Během úspěšné standardní restartování virtuálního počítače bude uchovávat data na dočasné jednotce. 
 
 Dočasné disku je označený jako jednotka D: výchozí a používá se pro ukládání pagefile.sys. Přemapování tento disk k jiné písmeno jednotky, najdete v části [změnit písmeno jednotky dočasné disk systému Windows](change-drive-letter.md). Velikost dočasné disku se liší, na základě velikosti virtuálního počítače. Další informace najdete v tématu [virtuální počítače s velikostí pro Windows](sizes.md).
 

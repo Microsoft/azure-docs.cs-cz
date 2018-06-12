@@ -11,11 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: e35a33cbe77d9d29b975ede8535abbded2cde4c3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 04fa23e059ee676ba0e7c48eeea3361b85af5415
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261199"
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Deklarace identity mapování v Azure Active Directory (verze public preview)
 
@@ -67,7 +68,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |app_res|
 |appctx|
 |appctxsender|
-|appid|
+|AppID|
 |appidacr|
 |Kontrolní výraz|
 |at_hash|
@@ -79,16 +80,16 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |azpacr|
 |c_hash|
 |ca_enf|
-|cc|
+|Kopie|
 |cert_token_use|
 |client_id|
 |cloud_graph_host_name|
 |cloud_instance_name|
 |možností cnf|
-|kód|
+|Kód|
 |ovládací prvky|
 |credential_keys|
-|csr|
+|oddělení služeb zákazníkům|
 |csr_type|
 |ID zařízení|
 |dns_names|
@@ -116,10 +117,10 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier|
 |IAT|
 |identityprovider|
-|idp|
+|deklarací identity|
 |in_corp|
 |instance|
-|ipaddr|
+|IPADDR|
 |isbrowserhostedapp|
 |iss|
 |jwk|
@@ -157,7 +158,7 @@ Pomocí zásad nemůže být upraven deklarace identity s omezeným přístupem.
 |prostředek|
 |role|
 |role|
-|Obor|
+|scope|
 |scp|
 |identifikátor SID|
 |Podpis|
@@ -282,16 +283,16 @@ ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro dekla
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: Hodnoty platné ID na zdroj
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-|Uživatel|surname|Příjmení|
+|Uživatel|Příjmení|Příjmení|
 |Uživatel|givenName|jméno|
-|Uživatel|displayname|Zobrazovaný název|
+|Uživatel|DisplayName|Zobrazovaný název|
 |Uživatel|objectid|ObjectID|
-|Uživatel|mail|E-mailová adresa|
+|Uživatel|E-mailu|E-mailová adresa|
 |Uživatel|userprincipalname|Hlavní název uživatele (UPN)|
-|Uživatel|Oddělení|Oddělení|
+|Uživatel|oddělení|Oddělení|
 |Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
 |Uživatel|název pro rozhraní NetBIOS|Název pro rozhraní NetBios|
-|Uživatel|dnsdomainname|Dns Domain Name|
+|Uživatel|název_domény_DNS|Dns Domain Name|
 |Uživatel|onpremisesecurityidentifier|Identifikátor zabezpečení na místě|
 |Uživatel|NázevSpolečnosti|Název organizace|
 |Uživatel|streetAddress|Ulice|
@@ -321,7 +322,7 @@ ID elementu identifikuje, jehož vlastnost ve zdroji poskytuje hodnotu pro dekla
 |Uživatel|pracovní funkce|Funkce|
 |Uživatel|Číslo zaměstnance|ID zaměstnance|
 |Uživatel|facsimiletelephonenumber|Faxem telefonní číslo|
-|aplikace, prostředků, cílová skupina|displayname|Zobrazovaný název|
+|aplikace, prostředků, cílová skupina|DisplayName|Zobrazovaný název|
 |aplikace, prostředků, cílová skupina|proti|ObjectID|
 |aplikace, prostředků, cílová skupina|tags|Značka instančního objektu|
 |Společnost|tenantcountry|Země klienta|
@@ -356,7 +357,7 @@ Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou d
 |TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovače|outputClaim|Spojení vstup řetězce s použitím oddělovače v rozmezí. Příklad: řetězec1: "foo@bar.com", řetězec2: "izolovaného prostoru", oddělovač: "." výsledkem outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|Extrahuje místní část e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne @ přihlašovací je nainstalován, pak bude vrácen orignal vstupní řetězec, jako je.|
+|ExtractMailPrefix|E-mailu|outputClaim|Extrahuje místní část e-mailovou adresu. Příklad: e-mailu: "foo@bar.com" výsledkem outputClaim: "foo". Pokud ne @ přihlašovací je nainstalován, pak bude vrácen orignal vstupní řetězec, jako je.|
 
 **InputClaims:** použít InputClaims element k předání dat z položky schématu deklarace identity transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -380,7 +381,7 @@ Založené na metodě vybrali, se očekává sadu vstupy a výstupy. Tyto jsou d
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: Atributy povolena jako zdroj dat pro SAML NameID
 |Zdroj|ID|Popis|
 |-----|-----|-----|
-|Uživatel|mail|E-mailová adresa|
+|Uživatel|E-mailu|E-mailová adresa|
 |Uživatel|userprincipalname|Hlavní název uživatele (UPN)|
 |Uživatel|onpremisessamaccountname|Na místní název účtu Sam|
 |Uživatel|Číslo zaměstnance|ID zaměstnance|
@@ -467,7 +468,7 @@ V tomto příkladu vytvoříte zásadu, která přidá EmployeeID a TenantCountr
     1. Chcete-li vytvořit zásadu, spusťte tento příkaz:  
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
     ```
     
     2. Chcete zobrazit nové zásady a získat zásady ObjectId, spusťte následující příkaz:

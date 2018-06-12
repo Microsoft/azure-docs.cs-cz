@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 94db54f35b7871407368b174536dc6454775779c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: b59173259aa86a429b9f926a8e5ffbfd046451a1
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249255"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294873"
 ---
 # <a name="migrate-to-the-updated-batch-ai-api"></a>Migrovat aktualizované Batch API AI
 
@@ -110,28 +110,28 @@ az batchai cluster delete -g resource-group-name -w migrated-<region> -n cluster
 #### <a name="get-old-file-server"></a>Získat staré souborového serveru
 
 ```azurecli
-az batchai fileserver show -g resource-group-name -w migrated-<region> -n fileserver-name
+az batchai file-server show -g resource-group-name -w migrated-<region> -n fileserver-name
 ```
 
 
 #### <a name="delete-old-file-server"></a>Odstranit staré souborového serveru 
 
 ```azurecli
-az batchai fileserver delete -g resource-group-name -w migrated-<region> -n fileserver-name
+az batchai file-server delete -g resource-group-name -w migrated-<region> -n fileserver-name
 ``` 
 
 
 #### <a name="get-old-job"></a>Získat staré úlohu
 
 ```azurecli
-az batchai fileserver show -g resource-group-name -w migrated-<region> -e migrated -n job-name
+az batchai job show -g resource-group-name -w migrated-<region> -e migrated -n job-name
 ```
 
 
 #### <a name="delete-old-job"></a>Odstranit staré úlohy 
 
 ```azurecli
-az batchai fileserver delete -g resource-group-name -w migrated-<region> -e migrated -n job-name
+az batchai job delete -g resource-group-name -w migrated-<region> -e migrated -n job-name
 ``` 
 
 ## <a name="create-batch-ai-resources"></a>Vytvořit prostředky Batch AI 

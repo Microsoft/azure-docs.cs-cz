@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261212"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Aspekty Datacenter integrace pro Azure zásobníku integrované systémy
 Pokud byste chtěli v systému Azure zásobníku integrované, byste měli porozumět některé hlavní informace o plánování řešení nasazení a jak systému zapadá do vašeho datového centra. Tento článek obsahuje přehled těchto aspektů, který vám pomůže provádět rozhodnutí důležité infrastruktury pro systém Azure zásobníku více uzly. Pochopení těchto aspektů pomáhá při práci s dodavatele hardwaru, od výrobců OEM jako jejich nasazení do vašeho datového centra Azure zásobníku.  
@@ -134,9 +135,9 @@ Následující tabulka shrnuje hybridní scénáře připojení s výhody, nevý
 
 | Scénář | Metoda připojení | Odborníci na | Nevýhody | Je vhodný pro |
 | -- | -- | --| -- | --|
-| Jeden klient Azure zásobník nasazení v síti intranet | Odchozí NAT | Lepší šířku pásma pro přenosy na rychlejší. Jednoduchá implementace; nemá žádné brány vyžaduje. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování nad rámec TOR. | Podnikové nasazení, kde jsou rovnoměrně důvěryhodné všichni klienti.<br><br>Podnikům, které mají okruh Azure ExpressRoute do Azure. |
+| Jeden klient Azure zásobník nasazení v síti intranet | Odchozí NAT | Lepší šířku pásma pro přenosy na rychlejší. Jednoduchá implementace; nemá žádné brány vyžaduje. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování mimo zásobníku. | Podnikové nasazení, kde jsou rovnoměrně důvěryhodné všichni klienti.<br><br>Podnikům, které mají okruh Azure ExpressRoute do Azure. |
 | Víceklientské Azure zásobník nasazení v síti intranet | Site-to-site VPN | Je bezpečné provoz z virtuální sítě klienta do cílové. | Tunelové propojení VPN typu site-to-site je omezena šířka pásma.<br><br>Vyžaduje bránu virtuální sítě a zařízení v cílové síti VPN. | Musí být zabezpečená podnikového nasazení, kde některé přenosy dat klientů od ostatních klientů. |
-| Jeden klient Azure zásobník internet nasazení | Odchozí NAT | Lepší šířku pásma pro přenosy na rychlejší. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování nad rámec TOR. | Hostování scénáře, kde klient získá vlastní nasazení Azure zásobníku a vyhrazené okruhu do prostředí Azure zásobníku. Například ExpressRoute a Multiprotocol Label přepínání (MPLS).
+| Jeden klient Azure zásobník internet nasazení | Odchozí NAT | Lepší šířku pásma pro přenosy na rychlejší. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování mimo zásobníku. | Hostování scénáře, kde klient získá vlastní nasazení Azure zásobníku a vyhrazené okruhu do prostředí Azure zásobníku. Například ExpressRoute a Multiprotocol Label přepínání (MPLS).
 | Víceklientské Azure zásobník internet nasazení | Site-to-site VPN | Je bezpečné provoz z virtuální sítě klienta do cílové. | Tunelové propojení VPN typu site-to-site je omezena šířka pásma.<br><br>Vyžaduje bránu virtuální sítě a zařízení v cílové síti VPN. | Scénáře, kde chce víceklientská Cloudová nabízejí poskytovatele hostování, kde není klienti důvěřovat navzájem a přenosy dat musí být zašifrován.
 |  |  |  |  |  |
 

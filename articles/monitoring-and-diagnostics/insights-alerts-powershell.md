@@ -1,24 +1,19 @@
 ---
-title: Vytvořte výstrahy pro služby Azure – prostředí PowerShell | Microsoft Docs
+title: Vytvoření klasického upozornění pro služby Azure – prostředí PowerShell
 description: Aktivační událost e-mailů, oznámení, weby adresy URL (webhooky), nebo volat automatizace při splnění zadané podmínky.
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d26ab15b-7b7e-42a9-81c8-3ce9ead5d252
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: robb
-ms.openlocfilehash: ca9df36c642334d9323736abb51a931a6610fd3e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: alerts
+ms.openlocfilehash: bf9535c53b006469ef93bf7e3b947edd97e9efc7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262150"
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---powershell"></a>Vytvoření klasického metriky výstrahy v Azure monitorování pro služby Azure – prostředí PowerShell
 > [!div class="op_single_selector"]

@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 4dddc4c4e4bd34f5e9d7054f1311e13113fce52d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234609"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260409"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -54,7 +54,7 @@ Následující role správce jsou k dispozici:
 
 * **Správce služby Exchange**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Exchange Online, když se služba nachází. Další informace v [role Správce služeb Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **Globální správce nebo správce společnosti**: uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory, stejně jako služby, které vytvořit federaci s Azure Active Directory, jako je Exchange Online, SharePoint Online, a Online Skype pro firmy. Osoba, která se zaregistruje klienta Azure Active Directory se změní na globálního správce. Jenom globální správci můžete přiřadit další role správců. Ve vaší společnosti může být více než jeden globální správce. Globální správci můžete resetovat heslo pro všechny uživatele a všechny ostatní správce.
+* **Globální správce nebo správce společnosti nebo správce klienta**: uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory, stejně jako služby, které vytvořit federaci s Azure Active Directory, jako je Exchange Online SharePoint Online a Online Skype pro firmy. Osoba, která se zaregistruje klienta Azure Active Directory se změní na globálního správce. Jenom globální správci můžete přiřadit další role správců. Ve vaší společnosti může být více než jeden globální správce. Globální správci můžete resetovat heslo pro všechny uživatele a všechny ostatní správce.
 
   > [!NOTE]
   > Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označený "Správce společnosti". Je "Globální správce" v [portál Azure](https://portal.azure.com).

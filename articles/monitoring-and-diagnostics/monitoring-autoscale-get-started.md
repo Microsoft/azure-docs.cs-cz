@@ -1,24 +1,19 @@
 ---
-title: "Začínáme s škálování v Azure | Microsoft Docs"
-description: "Informace o škálování prostředku v Azure."
+title: Začínáme s škálování v Azure
+description: Zjistěte, jak se škálovat prostředek webové aplikace, Cloudová služba, virtuálního počítače nebo virtuálního počítače nastavit v Azure.
 author: rajram
-manager: rboucher
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
-ms.openlocfilehash: 84ce3af2bef1e3204ad91567d155d7cbf90e9c7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263642"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Začínáme s škálování v Azure
 Tento článek popisuje, jak nastavit nastavení automatického škálování prostředku na portálu Microsoft Azure.
@@ -93,7 +88,7 @@ Kromě škálování podle využití procesoru můžete nastavit vaše škálov�
 ### <a name="view-the-scale-history-of-your-resource"></a>Zobrazení historie škálování prostředku
 Vždy, když prostředek je škálovat nahoru nebo dolů, se zaprotokoluje událost v protokolu aktivit. Můžete zobrazit historii škálování prostředku za posledních 24 hodin při přechodu **historie spouštění** kartě.
 
-![Historie spouštění][11]
+![Historie spuštění][11]
 
 Pokud chcete zobrazit historii dokončení škálování (po dobu 90 dnů), vyberte **kliknutím sem zobrazíte další podrobnosti**. Protokol aktivit otevře s škálování předem vybraná pro prostředek a kategorie.
 

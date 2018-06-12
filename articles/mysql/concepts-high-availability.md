@@ -1,19 +1,20 @@
 ---
-title: "Koncepty vysoké dostupnosti v Azure Database pro databázi MySQL"
-description: "Toto téma obsahuje informace o vysoké dostupnosti při použití Azure databáze pro databázi MySQL"
+title: Koncepty vysoké dostupnosti v Azure Database pro databázi MySQL
+description: Toto téma obsahuje informace o vysoké dostupnosti při použití Azure databáze pro databázi MySQL
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 58f10f0a0938da5887d44959f65b9016dfa88f2c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 90dc603c0ee520774bd22531c7136e0949f6cf90
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264176"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Koncepty vysoké dostupnosti v Azure Database pro databázi MySQL
 Databáze Azure pro službu MySQL poskytuje zaručené vysokou dostupnost. Finančně zálohovány smlouvu o úrovni služeb (SLA) je 99,99 % při obecné dostupnosti. Není prakticky žádná aplikace výpadek při používání této služby.

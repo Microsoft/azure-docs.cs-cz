@@ -1,24 +1,20 @@
 ---
-title: "Verze rozšíření schéma konfigurace Azure Diagnostics a historie | Microsoft Docs"
-description: "Relevantní pro shromažďování čítače výkonu ve virtuálních počítačích Azure, škálovatelné sady virtuálních počítačů, Service Fabric a cloudové služby."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Azure Diagnostics rozšíření konfigurace schématu verze historie
+description: Relevantní pro shromažďování čítače výkonu ve virtuálních počítačích Azure, škálovatelné sady virtuálních počítačů, Service Fabric a cloudové služby.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/16/2017
 ms.author: robb
-ms.openlocfilehash: 45a092452bc702a6a593cd6c21a8d2eaf4ff44bd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.component: diagnostic-extension
+ms.openlocfilehash: 47fb598e9a0e722d51493fda1ff5180d4b022524
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262194"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Verze rozšíření schéma konfigurace Azure Diagnostics a historie
 Tato stránka indexy verze schématu rozšíření Azure Diagnostics dodávána jako součást nástroje Microsoft Azure SDK.  
@@ -26,7 +22,7 @@ Tato stránka indexy verze schématu rozšíření Azure Diagnostics dodávána 
 > [!NOTE]
 > Rozšíření diagnostiky Azure je komponenta, kterou používá ke shromažďování čítačů výkonu a další statistiky z:
 > - Azure Virtual Machines 
-> - Škálovací sady virtuálních počítačů
+> - Virtual Machine Scale Sets
 > - Service Fabric 
 > - Cloud Services 
 > - Network Security Groups (Skupiny zabezpečení sítě)

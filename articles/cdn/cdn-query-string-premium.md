@@ -4,7 +4,7 @@ description: Azure CDN při ukládání řetězců dotazů ovládací prvky ukl�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
 ms.service: cdn
@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: mazha
-ms.openlocfilehash: a1ef5f3e502b5383343dbec2c427d36054a3edc4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: 3777689af72f580645826a1ca4e31ca84bd65dab
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260830"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Ovládací prvek Azure CDN ukládání do mezipaměti chování řetězce dotazu - úrovni premium
 > [!div class="op_single_selector"]
 > * [Úroveň Standard](cdn-query-string.md)
 > * [Úroveň Premium](cdn-query-string-premium.md)
-> 
 > 
 
 ## <a name="overview"></a>Přehled
@@ -63,6 +63,6 @@ K dispozici jsou tři režimy řetězec dotazu:
 3. Vyberte režim řetězec dotazu a pak klikněte na **aktualizace**.
 
 > [!IMPORTANT]
-> Protože trvá, než se registrace rozšíří v rámci CDN, změny nastavení mezipaměti řetězec nemusí být okamžitě viditelné. Pro **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle dokončení během 90 minut.
+> Protože trvá, než se registrace rozšíří v rámci CDN, změny nastavení mezipaměti řetězec nemusí být okamžitě viditelné. Šíření obvykle dokončí za 10 minut.
  
 

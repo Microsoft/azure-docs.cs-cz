@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: 35b4343bac033708a0912f1e129cdfef146e0603
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 933a5c8a9cde9134071a12dd0aed684358cc8696
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698777"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292850"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikace
 
@@ -70,9 +70,9 @@ Obě tyto Image zobrazit stejné příznaky: jednotného přihlašování k selh
 
 Jak řešit závisí na problém a příznaky, které můžete sledovat. Před přechodem žádné dále, prozkoumejte v následujících článcích. Poskytují užitečné informace o odstraňování potíží:
 
--   [Řešení potíží s Proxy aplikace problémy a chybové zprávy](active-directory-application-proxy-troubleshoot.md)
+-   [Řešení potíží s Proxy aplikace problémy a chybové zprávy](manage-apps/application-proxy-troubleshoot.md)
 
--   [Chyby protokolu Kerberos a symptomy](active-directory-application-proxy-troubleshoot.md#kerberos-errors)
+-   [Chyby protokolu Kerberos a symptomy](manage-apps/application-proxy-troubleshoot.md#kerberos-errors)
 
 -   [Práce s SSO při místní a cloudové identity nejsou identické](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 

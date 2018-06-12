@@ -15,12 +15,12 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 96f6e2cc9b137de48a1d186739a8c76e2f1d18c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590116"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293190"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurovat jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
@@ -32,7 +32,7 @@ Zákazníci s [Azure Active Directory Premium](active-directory-whatis.md) licen
 
 * Samoobslužné integrace každou aplikaci, která podporuje poskytovatele identity SAML 2.0 (spouštěná SP nebo spouštěná IdP)
 * Samoobslužné integrace webové aplikace, který má k HTML na přihlašovací stránce pomocí [jednotné přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
-* Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([zde popsané](active-directory-scim-provisioning.md))
+* Připojení aplikace, které používají protokol SCIM pro zřizování uživatelů samoobslužné služby ([zde popsané](manage-apps/use-scim-to-provision-users-and-groups.md))
 * Umožňuje přidat odkazy na všechny aplikace v [Spouštěč aplikace Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) nebo [přístupový panel Azure AD](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
 
 To může zahrnovat pouze aplikace SaaS, které můžete použít, ale nebyly dosud byl na zahrnuté pro galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené servery, které řídíte, buď v cloudu nebo místně.
@@ -123,7 +123,7 @@ Ověřte, zda že je certifikát:
 - Ve stavu aktivní. Pokud je ve stavu neaktivní, stav změníte na aktivní. Chcete-li změnit stav, zkontrolujte **Active** a pak konfiguraci uložte. 
 - E-mailové oznámení správné. Pokud aktivní certifikát se blíží datum vypršení platnosti, Azure AD bude odesláno upozornění e-mailovou adresu nakonfigurované v tomto poli.  
 
-Další informace najdete v tématu [spravovat certifikáty pro federované jednotné přihlašování v Azure Active Directory](active-directory-sso-certs.md).
+Další informace najdete v tématu [spravovat certifikáty pro federované jednotné přihlašování v Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md).
 
 ### <a name="set-up-target-application"></a>Nastavení cílové aplikace
 

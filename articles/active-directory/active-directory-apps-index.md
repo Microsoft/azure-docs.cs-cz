@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ed1179663823bc5a16f3ef348a649731814cdd5a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293088"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam každému dokumentu zapsána o různých funkcích týkající se aplikace v Azure Active Directory (Azure AD).
@@ -32,7 +33,7 @@ Je stručný úvod do každé oblasti hlavní funkce, jakož i pokyny na článk
 |:---:| --- |
 | Úvod do správy problémů aplikace, které řeší Azure AD |[Správa aplikací pomocí služby Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Přehled různých funkcí ve službě Azure AD, vztahuje k povolování jednotné přihlašování, definovat, kdo má přístup k aplikacím a jak uživatelé spustí aplikace |[Přístup k aplikaci a jednotné přihlašování v Azure Active Directory](manage-apps/what-is-single-sign-on.md) |
-| Podívejte se na různé kroky při integraci aplikace do služby Azure AD |[Integrace s aplikacemi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Povolení jednotného přihlašování k aplikacím SaaS](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Správa přístupu k aplikacím](active-directory-managing-access-to-apps.md) |
+| Podívejte se na různé kroky při integraci aplikace do služby Azure AD |[Integrace s aplikacemi Azure Active Directory](manage-apps/plan-an-application-integration.md)<br /><br />[Povolení jednotného přihlašování k aplikacím SaaS](manage-apps/configure-single-sign-on-portal.md)<br /><br />[Správa přístupu k aplikacím](manage-apps/what-is-access-management.md) |
 | Technické vysvětlení, jak jsou reprezentována aplikací ve službě Azure AD |[Jak a proč se aplikace přidávají do služby Azure AD](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Řešení potíží s články
@@ -42,7 +43,7 @@ Tato část poskytuje rychlý přístup k příslušné příručky pro řešen�
 |:---:| --- |
 | Federované jednotné přihlašování |[Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md) |
 | Založené na heslech jednotné přihlašování |[Řešení potíží s příponou Panel přístupu pro Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
-| Proxy aplikací |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
+| Proxy aplikací |[Průvodce odstraňováním potíží Proxy aplikace](manage-apps/application-proxy-troubleshoot.md) |
 | Jednotné přihlašování mezi místní AD a Azure AD |[Řešení potíží s synchronizaci hodnoty Hash hesla](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Řešení potíží s zpětný zápis hesla](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamické členství ve skupinách |[Řešení potíží s dynamické členství ve skupinách](active-directory-accessmanagement-troubleshooting.md) |
 
@@ -57,7 +58,7 @@ Jednotné přihlašování umožňuje uživatelům přístup k celou řadu aplik
 | Víc než 150 aplikace kurzy o tom, jak nakonfigurovat jednotné přihlašování pro aplikace, jako například [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md)a mnoho dalších |[Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](active-directory-saas-tutorial-list.md) |
 | Ruční nastavení a konfiguraci jednoho přihlášení přizpůsobit |[Jak na nakonfigurovat federovaného jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Postup přizpůsobení deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md) |
 | Příručka pro řešení potíží pro federované aplikace, které používají protokol SAML |[Řešení potíží s na základě SAML jednotné přihlašování](active-directory-saml-debugging.md) |
-| Postup konfigurace datum vypršení platnosti certifikátu vaší aplikace a jak obnovit certifikáty |[Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](active-directory-sso-certs.md) |
+| Postup konfigurace datum vypršení platnosti certifikátu vaší aplikace a jak obnovit certifikáty |[Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Federované jednotné přihlašování je k dispozici pro všechny edice Azure AD pro až deset aplikace na uživatele. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) podporuje neomezená aplikace. Pokud má vaše organizace [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) nebo [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), pak můžete [použití skupin pro přidělit přístup k federovaným aplikacím](#managing-access-to-applications).
 
@@ -82,7 +83,7 @@ Pokud máte aplikace ve vaší privátní sítě, které je nutné mít přístu
 | Kurzy o tom, jak nakonfigurovat Proxy aplikace a jak publikovat první aplikace |[Jak vytvořit Proxy aplikace Azure AD](manage-apps/application-proxy-enable.md)<br /><br />[Postup při bezobslužné instalaci konektoru Proxy aplikace](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Postup publikování aplikací pomocí Proxy aplikace](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Jak používat vlastní název domény](manage-apps/application-proxy-configure-custom-domain.md) |
 | Postup povolení jednoho přihlášení a podmíněného přístupu pro aplikace publikované s Proxy aplikace |[Jednotné přihlášení pomocí Proxy aplikace](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Podmíněný přístup a Proxy aplikací](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Pokyny k použití aplikace Proxy pro tyto scénáře |[Jak podporovat nativní klientské aplikace](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Jak podporovat deklaracemi identity aplikace](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Jak podporovat aplikace, které jsou publikovány v samostatných sítí a umístění](manage-apps/application-proxy-connector-groups.md) |
-| Průvodce řešením potíží pro Proxy aplikace |[Průvodce odstraňováním potíží Proxy aplikace](active-directory-application-proxy-troubleshoot.md) |
+| Průvodce řešením potíží pro Proxy aplikace |[Průvodce odstraňováním potíží Proxy aplikace](manage-apps/application-proxy-troubleshoot.md) |
 
 Proxy aplikace je k dispozici pro všechny edice Azure AD pro až deset aplikace na uživatele. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) podporuje neomezená aplikace. Pokud má vaše organizace [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) nebo [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), pak můžete [použití skupin pro přiřazení přístupu k aplikacím](#managing-access-to-applications).
 
@@ -136,7 +137,7 @@ Automatizovat vytváření, údržbu a odebírání uživatelských identit v ap
 |:---:| --- |
 | Další informace o tom, jak funguje a najděte odpovědi na nejčastější dotazy |[Automatizovat uživatele zřizování & zrušení zřízení k aplikacím SaaS](active-directory-saas-app-provisioning.md) |
 | Nakonfigurujte, jak je namapovaný informace mezi službou Azure AD a aplikace SaaS |[Přizpůsobení mapování atributů](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
-| Postup povolení automatického zřizování do žádné aplikace, který podporuje protokol SCIM |[Nastavit automatické zřizování uživatelů do všech aplikací SCIM-Enabled](active-directory-scim-provisioning.md) |
+| Postup povolení automatického zřizování do žádné aplikace, který podporuje protokol SCIM |[Nastavit automatické zřizování uživatelů do všech aplikací SCIM-Enabled](manage-apps/use-scim-to-provision-users-and-groups.md) |
 | Vytvoření sestavy a odstraňování souvisejících potíží zřizování uživatelů |[Zprávy o zřizování automatické uživatelů](active-directory-saas-provisioning-reporting.md)<br><br>[Řešení potíží s zřizování uživatelů](active-directory-application-provisioning-content-map.md) |
 | Omezení, kdo získá zřídit aplikace na základě jejich hodnot atributů |[Filtry oborů](active-directory-saas-scoping-filters.md) |
 
@@ -159,7 +160,7 @@ Můžete spravovat, kdo by měl mít přístup k jakým prostředkům, Azure Act
 
 | Článek Průvodce |  |
 |:---:| --- |
-| Přehled funkcí řízení přístupu Azure AD |[Úvod do správy přístupu k aplikacím](active-directory-managing-access-to-apps.md)<br /><br />[Jak funguje správa přístupu ve službě Azure AD](active-directory-manage-groups.md)<br /><br />[Postup použití skupin pro správu přístupu k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md) |
+| Přehled funkcí řízení přístupu Azure AD |[Úvod do správy přístupu k aplikacím](manage-apps/what-is-access-management.md)<br /><br />[Jak funguje správa přístupu ve službě Azure AD](active-directory-manage-groups.md)<br /><br />[Postup použití skupin pro správu přístupu k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md) |
 | Povolení samoobslužné správy skupin a aplikací |[Správa aplikací samoobslužné služby](active-directory-self-service-application-access.md)<br /><br />[Samoobslužná správa skupin](active-directory-accessmanagement-self-service-group-management.md) |
 | Pokyny k nastavení skupin ve službě Azure AD |[Postup vytvoření skupin zabezpečení](active-directory-groups-create-azure-portal.md)<br /><br />[Postup určení vlastníků pro skupinu](active-directory-accessmanagement-managing-group-owners.md)<br /><br />[Jak používat skupiny "Všichni uživatelé"](active-directory-accessmanagement-dedicated-groups.md) |
 | Použití dynamických skupin se automaticky naplňte členství skupiny pomocí pravidla členství na základě atributů |[Členství ve skupině dynamické: Rozšířená pravidla](active-directory-groups-dynamic-membership-azure-portal.md)<br /><br />[Řešení potíží s dynamické členství ve skupinách](active-directory-accessmanagement-troubleshooting.md) |

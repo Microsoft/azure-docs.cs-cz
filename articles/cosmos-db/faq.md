@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34735160"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261555"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -159,8 +159,9 @@ Chcete-li použít optimistickou metodu souběžného v rozhraní .NET, použijt
 Rozhraní SQL API podporuje transakce integrované do jazyka prostřednictvím JavaScript uložených procedur a aktivačních událostí. Všechny databázové operace ve skriptech se spouští v izolaci snímku. Pokud je kolekci s jedním oddílem, provádění je vymezen na kolekci. Pokud je kolekce rozdělena na oddíly, provádění je vymezen na dokumenty se stejnou hodnotou klíče oddílu v rámci kolekce. Na začátku transakce se pořídí snímek verzí dokumentů (ETagy) a k potvrzení dojde pouze v případě, že skript uspěje. Pokud JavaScript vyvolá chybu, transakce se vrátí zpět. Další informace najdete v tématu [programování v jazyce JavaScript na straně serveru pro databázi Azure Cosmos](programming.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak můžete I hromadného vložení dokumenty do Cosmos DB?
-Vám může hromadného vložení dokumenty do Azure Cosmos DB v některém ze dvou způsobů:
+Vám může hromadného vložení dokumenty do Azure Cosmos DB v jednom z následujících způsobů:
 
+* Nástroj vykonavatele hromadně, jak je popsáno v [knihovny .NET vykonavatele pomocí hromadné](bulk-executor-dot-net.md) a [pomocí hromadné vykonavatele Java knihovny](bulk-executor-java.md)
 * Nástroj pro migraci dat, jak je popsáno v [nástroj pro migraci databáze pro databázi Azure Cosmos](import-data.md).
 * Uložené procedury, jak je popsáno v [programování v jazyce JavaScript na straně serveru pro databázi Azure Cosmos](programming.md).
 

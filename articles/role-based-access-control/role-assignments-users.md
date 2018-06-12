@@ -14,11 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: rolyon
-ms.openlocfilehash: 94662c99ace749f50deccf4c8cbcd9d42fee75e1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: bagovind
+ms.openlocfilehash: d1f9dc8e5ad853cdc68b7a19f92c88076941d770
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267420"
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Zobrazení přiřazení přístupu pro uživatele a skupiny na portálu Azure
 > [!div class="op_single_selector"]

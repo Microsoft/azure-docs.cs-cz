@@ -1,24 +1,25 @@
 ---
-title: "Potlačení chování HTTP pomocí stroj pravidel Azure CDN | Microsoft Docs"
-description: "Stroj pravidel umožňuje přizpůsobit způsob zpracování požadavků HTTP pomocí Azure CDN, třeba blokování doručování určité typy obsahu, definovat zásady ukládání do mezipaměti a změnit hlavičky protokolu HTTP."
+title: Potlačení chování HTTP pomocí stroj pravidel Azure CDN | Microsoft Docs
+description: Stroj pravidel umožňuje přizpůsobit způsob zpracování požadavků HTTP pomocí Azure CDN, třeba blokování doručování určité typy obsahu, definovat zásady ukládání do mezipaměti a změnit hlavičky protokolu HTTP.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: akucer
-editor: 
+manager: cfowler
+editor: ''
 ms.assetid: 625a912b-91f2-485d-8991-128cc194ee71
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
-ms.author: mazha
-ms.openlocfilehash: fe3df703f7eb244a52756c4d015e9ea598224ce1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: df8114aaf5b4672ea51482978abde6f0ce724528
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261045"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Potlačení chování HTTP pomocí stroj pravidel Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -26,7 +27,7 @@ ms.lasthandoff: 03/02/2018
 ## <a name="overview"></a>Přehled
 Stroj pravidel Azure CDN umožňuje přizpůsobit způsob zpracování požadavků HTTP. Například blokování doručování určité typy obsahu, definování zásady ukládání do mezipaměti nebo úprava záhlaví HTTP. Tento kurz ukazuje, jak vytvořit pravidlo, které změní chování ukládání do mezipaměti CDN prostředků. Další informace o syntaxi stroj pravidel najdete v tématu [odkaz na modul Azure CDN pravidla](cdn-rules-engine-reference.md).
 
-## <a name="access"></a>Přístup
+## <a name="access"></a>Access
 Pro přístup k stroj pravidel, musíte nejdřív vybrat **spravovat** z horní části **profil CDN** stránky pro přístup na stránce Správa Azure CDN. V závislosti na tom, jestli váš koncový bod je optimalizovaná pro dynamických webů akcelerace (DSA) pak přístup stroj pravidel s sadu pravidel, které jsou vhodné pro váš typ koncového bodu:
 
 - Koncové body optimalizované pro doručení obecné webové nebo další optimalizace agenta DSA: 
@@ -43,12 +44,13 @@ Pro přístup k stroj pravidel, musíte nejdřív vybrat **spravovat** z horní 
 
     ![Stroj pravidel pro agenta DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
-## <a name="tutorial"></a>Tutoriál
+## <a name="tutorial"></a>Kurz
 1. Z **profil CDN** vyberte **spravovat**.
    
     ![Tlačítko Spravovat profil CDN](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     Otevře se na portálu pro správu CDN.
+
 2. Vyberte **HTTP velké** a potom vyberte **stroj pravidel**.
    
     Zobrazí se možnosti pro nové pravidlo.
@@ -58,7 +60,9 @@ Pro přístup k stroj pravidel, musíte nejdřív vybrat **spravovat** z horní 
    > [!IMPORTANT]
    > Pořadí, ve kterém jsou uvedeny víc pravidel, ovlivňuje způsob zpracování. Následující pravidlo může přepsat akce zadané předchozí pravidlem.
    > 
+
 3. Zadejte název do pole **název nebo popis** textové pole.
+
 4. Určete typ požadavků, které se pravidlo vztahuje. Použít výchozí podmínku shoda, **vždy**. 
    
    ![Stav shody pravidlo CDN](./media/cdn-rules-engine/cdn-request-type.png)
@@ -71,7 +75,8 @@ Pro přístup k stroj pravidel, musíte nejdřív vybrat **spravovat** z horní 
    > Podrobný seznam podmínky shody, najdete v části [pravidla podmínky shody modul](cdn-rules-engine-reference-match-conditions.md).
    > 
    > 
-1. Chcete-li přidat nové funkce, vyberte  **+**  vedle položky **funkce**.  V rozevírací nabídce na levé straně vyberte **Force interní Max-Age**.  Do textového pole, která se zobrazí, zadejte **300**. Neměňte zbývající výchozí hodnoty.
+
+5. Chcete-li přidat nové funkce, vyberte **+** vedle položky **funkce**.  V rozevírací nabídce na levé straně vyberte **Force interní Max-Age**.  Do textového pole, která se zobrazí, zadejte **300**. Neměňte zbývající výchozí hodnoty.
    
    ![Funkce pravidlo CDN](./media/cdn-rules-engine/cdn-new-feature.png)
    
@@ -83,17 +88,18 @@ Pro přístup k stroj pravidel, musíte nejdřív vybrat **spravovat** z horní 
    > Podrobný seznam funkcí najdete v tématu [pravidla modul funkce](cdn-rules-engine-reference-features.md).
    > 
    > 
-1. Klikněte **přidat** tlačítko pro uložení nové pravidlo.  Nové pravidlo je nyní čeká na schválení. Po schválení, stav se změní z **čekající XML** k **Active XML**.
+
+6. Vyberte **přidat** uložit nové pravidlo.  Nové pravidlo je nyní čeká na schválení. Po schválení, stav se změní z **čekající XML** k **Active XML**.
    
    > [!IMPORTANT]
-   > Změny pravidel může trvat až 90 minut rozšíří v rámci CDN.
+   > Změny pravidel může trvat až 10 minut rozšíří v rámci Azure CDN.
    > 
    > 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 * [Přehled služby Azure CDN](cdn-overview.md)
-* [Referenční dokumentace pravidel modulu](cdn-rules-engine-reference.md)
-* [Stav shody motoru pravidla](cdn-rules-engine-reference-match-conditions.md)
-* [Podmíněné výrazy stroj pravidel](cdn-rules-engine-reference-conditional-expressions.md)
-* [Funkce modulu pravidla](cdn-rules-engine-reference-features.md)
+* [Referenční informace ke stroji pravidel](cdn-rules-engine-reference.md)
+* [Podmínky shody stroje pravidel](cdn-rules-engine-reference-match-conditions.md)
+* [Podmíněné výrazy stroje pravidel](cdn-rules-engine-reference-conditional-expressions.md)
+* [Funkce stroje pravidel](cdn-rules-engine-reference-features.md)
 * [Azure pátek: Azure CDN výkonné nové prémiové funkce](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)
