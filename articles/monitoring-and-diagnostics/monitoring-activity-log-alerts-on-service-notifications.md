@@ -1,22 +1,19 @@
 ---
-title: Výstrahy v protokolu aktivit na oznámení služby Azure | Microsoft Docs
+title: Výstrahy v protokolu aktivit na oznámení služby Azure
 description: SMS, e-mailem nebo webhooku dostat upozornění, když dojde k služby Azure.
 author: johnkemnetz
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/09/2018
 ms.author: johnkem
-ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: alerts
+ms.openlocfilehash: 01dc3a3c6489b694af26c78ae3b4756f3e8f00b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263112"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření aktivity protokolu upozornění na oznámení o službách
 ## <a name="overview"></a>Přehled
@@ -51,17 +48,22 @@ Informace o tom, jak nakonfigurovat služby stavu oznámení výstrah pomocí š
 
     ![Příkaz "Vytvoření služby stavu upozornění"](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Zadejte název do pole **výstrahy název aktivity protokolu** pole a zadejte **popis**.
+4. Vyberte **předplatné**, **služby**, a **oblasti** chcete generovat výstrahy pro.
 
-    ![Dialogové okno "Přidat aktivitu protokolu upozornění"](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-service-notification-new-action-group-sh.png)
+    ![Dialogové okno "Přidat aktivitu protokolu upozornění"](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
-5. **Předplatné** pole autofills s vaším aktuálním předplatným. Toto předplatné se používá pro uložení výstraha aktivity protokolu. Výstrahy prostředků je nasazen na toto předplatné a sleduje události v protokolu aktivit pro ni.
+> [!NOTE]
+> Toto předplatné se používá pro uložení výstraha aktivity protokolu. Výstrahy prostředků je nasazen na toto předplatné a sleduje události v protokolu aktivit pro ni.
 
-6. Vyberte **skupiny prostředků** v výstrahy prostředek je vytvořen. Tato akce není skupině prostředků, který je monitorován výstraha. Místo toho je skupina prostředků, kde je umístěný prostředek výstrahy.
+5. Vyberte **typů událostí** chcete generovat výstrahy pro: *služby problém*, *plánované údržby*, a *zpravodaje stavu* 
 
-7. **Kategorie události** pole se automaticky nastaví na **stav služby**. Volitelně vyberte **služby**, **oblast**, a **typ** z oznámení o stavu služby, které chcete dostávat.
+6. Definovat zadáním podrobností o výstrahách **název pravidla výstrahy** a **popis**.
 
-8. V části **výstrahy prostřednictvím**, vyberte **nový** tlačítko akce skupiny. Zadejte název do pole **název skupiny akce** pole a zadejte název do pole **krátký název** pole. Krátký název je odkazováno na oznámení, která se posílají, když se aktivuje se tato výstraha.
+7. Vyberte **skupiny prostředků** místo, kam chcete výstrahu, kterou chcete uložit.
+
+8. Vytvořit novou skupinu akce výběrem **nové skupiny akce**. Zadejte název do pole **název skupiny akce** pole a zadejte název do pole **krátký název** pole. Krátký název je odkazováno na oznámení, která se posílají, když se aktivuje se tato výstraha.
+
+    ![Vytvořit novou skupinu akce](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
 9. Definujte seznam příjemců tím, že poskytuje příjemce:
 
@@ -71,7 +73,7 @@ Informace o tom, jak nakonfigurovat služby stavu oznámení výstrah pomocí š
 
     c. **Podrobnosti o**: v závislosti na typu akce vybrali, zadejte telefonní číslo, e-mailovou adresu, webhooku identifikátor URI, atd.
 
-10. Vyberte **OK** vytvořit výstrahu.
+10. Vyberte **OK** se vytvořit skupinu akce a potom **vytvořit pravidlo výstrahy** k dokončení upozornění.
 
 Během několika minut výstraha je aktivní a začne k aktivaci na základě podmínek, které jste zadali při vytváření.
 
@@ -86,9 +88,9 @@ Zjistěte, jak [nakonfigurovat oznámení webhooku pro existující systémy spr
 
 1. Postupujte podle kroků 1 až 7 v předchozí části, chcete-li vytvořit oznámení služby stavu. 
 
-2. V části **výstrahy prostřednictvím**, vyberte **existující** tlačítko akce skupiny. Vyberte skupinu příslušnou akci.
+2. V části **definovat akce skupiny**, klikněte na tlačítko **vyberte akce skupiny** tlačítko. Vyberte skupinu příslušnou akci.
 
-3. Vyberte **OK** vytvořit výstrahu.
+3. Vyberte **přidat** k přidání skupiny akce a potom **vytvořit pravidlo výstrahy** k dokončení upozornění.
 
 Během několika minut výstraha je aktivní a začne k aktivaci na základě podmínek, které jste zadali při vytváření.
 

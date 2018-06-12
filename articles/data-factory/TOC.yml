@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
 - name: Kurzy
   items:
-    - name: 1. Nasazení balíčků SSIS do Azure
+    - name: 1. Vytvoření prostředí Azure-SSIS Integration Runtime
       items:
         - name: Uživatelské rozhraní
           href: tutorial-deploy-ssis-packages-azure.md
@@ -362,7 +362,7 @@
           href: monitor-integration-runtime.md
         - name: Monitorování prostředí Azure-SSIS Integration Runtime
           href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
-        - name: Správa prostředí Azure-SSIS Integration Runtime
+        - name: Změna konfigurace prostředí Azure-SSIS Integration Runtime
           href: manage-azure-ssis-integration-runtime.md
     - name: Vytvoření prostředí Integration Runtime
       items:

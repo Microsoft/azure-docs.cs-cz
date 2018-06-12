@@ -1,24 +1,19 @@
 ---
-title: "Přehled automatického škálování ve virtuálních počítačích Microsoft Azure, cloudové služby a webové aplikace | Microsoft Docs"
-description: "Přehled automatického škálování v Microsoft Azure. Platí pro virtuální počítače, cloudové služby a webové aplikace."
+title: Přehled automatického škálování virtuálních počítačů, cloudové služby a webové aplikace
+description: Škálování v Microsoft Azure. Platí pro virtuální počítače, virtuální počítač sadách škálování, cloudové služby a webové aplikace.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 74bf03be-e658-4239-a214-c12424b53e4c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.component: autoscale
+ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264666"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování ve virtuálních počítačích Microsoft Azure, cloudové služby a webové aplikace
 Tento článek popisuje, jaké škálování Microsoft Azure je, její výhody a jak začít používat.  
@@ -116,7 +111,7 @@ Můžete nastavit automatické škálování prostřednictvím
 | Virtuálních počítačů: Nastaví Linux škálování |[Škálování virtuálního počítače nastaví v systému Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | Virtuálních počítačů: Příklad Windows |[Upřesňující konfigurace automatického škálování pro škálovatelné sady virtuálních počítačů pomocí šablony Resource Manageru](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o škálování, použijte postupy škálování uvedených výše nebo naleznete v následujících materiálech:
 
 * [Azure monitorování běžné metriky automatického škálování](insights-autoscale-common-metrics.md)

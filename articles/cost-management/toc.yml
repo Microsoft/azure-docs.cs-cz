@@ -43,6 +43,8 @@
       href: storage-accounts.md
     - name: Použití sestav Cost Managementu
       href: use-reports.md
+    - name: Použití řídicích panelů
+      href: dashboards.md
 - name: Zdroje a prostředky
   items:
     - name: Videa ke správě nákladů

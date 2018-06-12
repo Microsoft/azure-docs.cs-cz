@@ -1,24 +1,19 @@
 ---
-title: "Principy nastavení škálování v Azure | Microsoft Docs"
-description: "Podrobné rozpis nastavení automatického škálování a jak pracují."
+title: Principy nastavení škálování v Azure monitorování
+description: Podrobné rozpis nastavení automatického škálování a jak pracují. Platí pro virtuální počítače, cloudové služby, webové aplikace
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ce2930aa-fc41-4b81-b0cb-e7ea922467e1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.openlocfilehash: 73c79ec4ee1beb5220e088421c78ffffd932eef1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.component: autoscale
+ms.openlocfilehash: 982bc43fd86a808da07833d77bde17e17789b2d6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264992"
 ---
 # <a name="understand-autoscale-settings"></a>Vysvětlení nastavení automatického škálování
 Nastavení automatického škálování pomáhají zajistit, že máte správného množství prostředků pro zpracování kolísání zátěže vaší aplikace spuštěna. Můžete nakonfigurovat nastavení automatického škálování, aby se spouštěly podle metriky, které znamenat výkon nebo zatížení nebo spouštěná v naplánované datum a čas. V tomto článku se podíváme podrobné na anatomy nastavení automatického škálování. Článek začíná schéma a vlastnosti nastavení a potom provede jiný profil typy, které lze konfigurovat. Nakonec článek popisuje, jak funkce škálování v Azure vyhodnotí který profil provést v daném okamžiku.
@@ -101,17 +96,17 @@ Pro ilustraci schéma nastavení automatického škálování, je použít násl
 | Nastavení | location | Umístění, nastavení automatického škálování. Toto umístění se může lišit od umístění prostředku se škálovat. |
 | properties | targetResourceUri | ID prostředku se škálovat prostředek. Může mít pouze jeden nastavení automatického škálování na prostředku. |
 | properties | Profily | Nastavení automatického škálování se skládá z nejméně jeden profil. Pokaždé, když modul škálování běží, provede jeden profil. |
-| Profil | jméno | Název profilu. Můžete použít libovolný název, který pomáhá identifikovat profil. |
-| Profil | Capacity.maximum | Maximální kapacita povoleny. Zajišťuje, že škálování při provádění tento profil, není škálovat prostředek výše toto číslo. |
-| Profil | Capacity.minimum | Minimální kapacita povoleny. Zajišťuje, že škálování při provádění tento profil, není škálování prostředku pod tuto hodnotu. |
-| Profil | Capacity.default | Pokud dojde k problému čtení metrika prostředků (v tomto případě procesoru "vmss1"), a aktuální kapacita je nižší než výchozí, automatické škálování horizontálně navýší kapacitu na výchozí hodnoty. To je potřeba zajistit dostupnost prostředku. Pokud je aktuální kapacita již vyšší než výchozí kapacita, automatické škálování se nedá použít v. |
-| Profil | pravidla | Škálování automaticky přizpůsobí mezi maximální a minimální kapacitou, která pomocí pravidel v profilu. Můžete mít více pravidel v profilu. Obvykle existují dvě pravidla: jeden k určení, kdy chcete škálovat a druhým k určení, kdy škálovat v. |
+| profil | jméno | Název profilu. Můžete použít libovolný název, který pomáhá identifikovat profil. |
+| profil | Capacity.maximum | Maximální kapacita povoleny. Zajišťuje, že škálování při provádění tento profil, není škálovat prostředek výše toto číslo. |
+| profil | Capacity.minimum | Minimální kapacita povoleny. Zajišťuje, že škálování při provádění tento profil, není škálování prostředku pod tuto hodnotu. |
+| profil | Capacity.default | Pokud dojde k problému čtení metrika prostředků (v tomto případě procesoru "vmss1"), a aktuální kapacita je nižší než výchozí, automatické škálování horizontálně navýší kapacitu na výchozí hodnoty. To je potřeba zajistit dostupnost prostředku. Pokud je aktuální kapacita již vyšší než výchozí kapacita, automatické škálování se nedá použít v. |
+| profil | pravidla | Škálování automaticky přizpůsobí mezi maximální a minimální kapacitou, která pomocí pravidel v profilu. Můžete mít více pravidel v profilu. Obvykle existují dvě pravidla: jeden k určení, kdy chcete škálovat a druhým k určení, kdy škálovat v. |
 | pravidlo | metricTrigger | Definuje metriky podmínku pravidla. |
 | metricTrigger | metricName | Název metriky. |
 | metricTrigger |  metricResourceUri | ID prostředku prostředek, který vysílá metriku. Ve většině případů je stejný jako prostředek se škálovat. V některých případech může být různé. Například je možné škálovat škálovací sadu virtuálních počítačů, na základě počtu zpráv ve frontě úložiště. |
 | metricTrigger | Časovými úseky | Doba trvání metriky vzorkování. Například **časovými úseky = "PT1M"** znamená, že podle metrik, které by měl agregovat každých 1 minuta, pomocí metody agregace zadaný v elementu statistiky. |
 | metricTrigger | statistiky | Metoda agregace v období časovými úseky. Například **statistiky = "Střední"** a **časovými úseky = "PT1M"** znamená, že metriky by měl být agregován každých 1 minuta, provedením průměr. Tato vlastnost určuje, jak je metrika vzorků. |
-| metricTrigger | timeWindow | Množství času do minulosti metrik. Například **hodnota timeWindow = "PT10M"** znamená, že pokaždé, když spustí škálování, dotazuje metriky pro za posledních 10 minut. Časový interval umožňuje vaše metriky budou normalizovány a zabraňuje reagovat na přechodný špičky. |
+| metricTrigger | Hodnota timeWindow | Množství času do minulosti metrik. Například **hodnota timeWindow = "PT10M"** znamená, že pokaždé, když spustí škálování, dotazuje metriky pro za posledních 10 minut. Časový interval umožňuje vaše metriky budou normalizovány a zabraňuje reagovat na přechodný špičky. |
 | metricTrigger | Agregace času | Metoda agregace použitá k agregaci jen Vzorkovaná metriky. Například **agregace času = "Střední"** by měl agregovat jen Vzorkovaná metriky provedením průměr. V předchozím případě vzorky deseti 1 minutu a průměrné je. |
 | pravidlo | scaleAction | Akce, který se má provést, když se aktivuje metricTrigger pravidla. |
 | scaleAction | směr | "Zvýšit" horizontální navýšení kapacity, nebo "Snížíte" škálování v.|

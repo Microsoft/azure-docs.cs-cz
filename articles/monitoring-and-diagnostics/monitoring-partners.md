@@ -1,24 +1,19 @@
 ---
-title: "Integrace v rámci partnera Azure monitorování | Microsoft Docs"
-description: "Další informace o monitorování Azure partnery a přístupu k dokumentaci pro integraci s nimi."
+title: Partnery, kteří intergrate s monitorováním Azure
+description: Další informace o monitorování Azure partnery a přístupu k dokumentaci pro integraci s nimi.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 01ee13ac-66fc-4edc-8b0c-32f69b986a26
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
-ms.openlocfilehash: 44315b88d55d370c8200952dc2ff9d64d64cf524
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.component: ''
+ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265279"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace v rámci partnera Azure monitorování
 | Partneři |  |  |
@@ -146,7 +141,7 @@ Sumo logiku je služba analýzy dat zabezpečené, cloudu nativní, počítače,
 [Víc se uč.][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
-Turbonomic přináší automatizace pracovního vytížení pro cloudy, hybridní pomocí současně optimalizace výkonu, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím být elastické v jejich Azure majetku podle nepřetržitě optimalizace majetku zajistit, že aplikace neustále získají prostředky, které potřebují k poskytování jejich SLA a nic další napříč výpočty, úložiště a sítě pro IaaS a PaaS vrstva. Organizace můžete simulovat migrace, správně škálování zatížení a vyřazení prostředky datacentra jeho zodpovědné migrace na Azure v době, v rámci rozpočtu, přičemž musí být zajištěno výkon a dodržování předpisů. Turbonomic je rozhraní API řízené a spouští jako agenta virtuálního počítače v Azure a místní.
+Turbonomic přináší automatizace pracovního vytížení pro cloudy, hybridní pomocí současně optimalizace výkonu, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím být elastické v jejich Azure majetku podle nepřetržitě optimalizace majetku zajistit, že aplikace neustále získají prostředky, které potřebují k poskytování jejich SLA a nic další napříč výpočty, úložiště a sítě pro IaaS a PaaS vrstva. Organizace můžete simulovat migrace, správně škálování zatížení a vyřazení prostředky datacentra jeho zodpovědné migrace na Azure v době, v rámci rozpočtu, přičemž musí být zajištěno výkon a dodržování předpisů. Turbonomic je založený na rozhraní API a běží jako virtuální počítač bez agentů v Azure i v místním prostředí.
 
 [Víc se uč.][turbonomic-doc]
 

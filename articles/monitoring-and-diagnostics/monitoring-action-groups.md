@@ -1,25 +1,19 @@
 ---
-title: Vytvoření a Správa skupin akce na portálu Azure | Microsoft Docs
+title: Vytvoření a Správa skupin akce na portálu Azure
 description: Naučte se vytvářet a spravovat skupiny akce na portálu Azure.
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: fd6817e63eea622294bbf766b66beb8bc49bc30c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.component: alerts
+ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726053"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263061"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akce na portálu Azure
 ## <a name="overview"></a>Přehled ##

@@ -1,24 +1,19 @@
 ---
-title: Přehled classic výstrah v Microsoft Azure a Azure monitorování | Microsoft Docs
+title: Přehled classic výstrah v Microsoft Azure a monitorování Azure
 description: Výstrahy umožňují sledovat metriky prostředků Azure, události nebo protokoly a být upozorněni, když je splněna podmínka, které zadáte.
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: a6dea224-57bf-43d8-a292-06523037d70b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: robb
-ms.openlocfilehash: 039ab7226b4ea7e011e1c0cbb4cac528b5237483
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 89c3975a1212aa991e42e0cce4fe5521b53bd373
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263666"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Jaké jsou classic výstrah v Microsoft Azure?
 

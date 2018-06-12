@@ -1,23 +1,24 @@
 ---
-title: "Import dat k analýze ve službě Azure Application Insights | Microsoft Docs"
-description: "Importovat statických dat pro připojení s telemetrií aplikace, nebo importovat samostatné datový proud do dotazu s Analytics."
+title: Import dat k analýze ve službě Azure Application Insights | Microsoft Docs
+description: Importovat statických dat pro připojení s telemetrií aplikace, nebo importovat samostatné datový proud do dotazu s Analytics.
 services: application-insights
-keywords: "Otevřete schéma, import dat"
-documentationcenter: 
+keywords: Otevřete schéma, import dat
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293617"
 ---
 # <a name="import-data-into-analytics"></a>Importovat data do Analytics
 
@@ -144,7 +145,7 @@ Můžete provést následující proces ručně, nebo nastavit automatizovaný s
 2. [Vytvoření klíče sdíleného přístupového podpisu pro tento objekt blob](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md). Klíč by měl mít jeden den po dobu vypršení platnosti a poskytovat přístup pro čtení.
 3. Volání REST oznámit Application Insights, čekající data.
 
- * Koncový bod:`https://dc.services.visualstudio.com/v2/track`
+ * Koncový bod: `https://dc.services.visualstudio.com/v2/track`
  * Metoda HTTP: POST
  * Datové části:
 
@@ -172,7 +173,7 @@ Zástupné symboly jsou:
 * `Blob URI with Shared Access Key`: Zobrazí to v postupu pro vytváření klíčů. Je specifická pro objekt blob.
 * `Schema ID`: ID schématu vygenerované definované schéma. Data v tohoto objektu blob musí být v souladu schématu.
 * `DateTime`: Čas, kdy je odeslána žádost, UTC. Můžeme přijmout tyto formáty: ISO8601 (jako je "2016-01-01 13:45:01"); Rfc822 ("ST, 14 16 DEC – 14:57:01 + 0000"); RFC850 ("středa, 14. prosince 16 UTC 14:57:00"); RFC1123 ("st 14 Dec 2016 14:57:00 + 0000").
-* `Instrumentation key`z prostředku Application Insights.
+* `Instrumentation key` z prostředku Application Insights.
 
 Data jsou k dispozici v Analytics po několika minutách.
 

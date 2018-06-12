@@ -1,24 +1,19 @@
 ---
-title: Stream protokol činnosti Azure do centra událostí | Microsoft Docs
+title: Datový proud protokolu Azure činnosti do centra událostí
 description: Zjistěte, jak k vysílání datového proudu protokol činnosti Azure do centra událostí.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ec4c2d2c-8907-484f-a910-712403a06829
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2018
 ms.author: johnkem
-ms.openlocfilehash: 8a599558fc35ca2bf48ce2a5f11ec4978bf10277
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: activitylog
+ms.openlocfilehash: 1f1a131d4e0cf900d04acc9730b04e1375f396a6
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264295"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Datový proud protokolu Azure činnosti do centra událostí
 Dá Streamovat [protokol činnosti Azure](monitoring-overview-activity-logs.md) skoro v reálném čase pro všechny aplikace, a to buď:
@@ -88,7 +83,7 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
-### <a name="via-azure-cli"></a>Via Azure CLI
+### <a name="via-azure-cli"></a>Prostřednictvím rozhraní příkazového řádku Azure
 Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový profil protokolu.
 
 1. Použití `az monitor log-profiles list` a zjistit, zda existuje profil protokolu.

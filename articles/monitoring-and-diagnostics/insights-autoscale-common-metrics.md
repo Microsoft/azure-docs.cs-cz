@@ -1,24 +1,19 @@
 ---
-title: "Azure běžné metriky automatického škálování monitorování | Microsoft Docs"
-description: "Další informace, které metriky běžně se používají pro automatické škálování cloudové služby, virtuální počítače a webové aplikace."
+title: Běžné metriky automatického škálování
+description: Další informace, které metriky běžně se používají pro automatické škálování cloudové služby, virtuální počítače a webové aplikace.
 author: anirudhcavale
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 189b2a13-01c8-4aca-afd5-90711903ca59
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: autoscale
+ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262235"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure monitorování běžné metriky automatického škálování
 Automatické škálování Azure monitorování umožňuje škálovat počet spuštěných instancích směrem nahoru nebo dolů na základě telemetrických dat (metriky). Tento dokument popisuje běžné metriky, které chcete použít. Na portálu Azure pro cloudové služby a serverové farmy můžete prostředku škálovat podle metriky. Můžete však žádné metrika z různých prostředků škálovat podle.
@@ -63,11 +58,11 @@ Můžete vytvořit výstrahu pro následující metriky:
 | Počet \Thread \Process (_celkem) |Počet |
 | Počet \Handle \Process (_celkem) |Počet |
 | \Memory\% využití potvrzených bajtů |Procento |
-| \Memory\Available Bytes |Bajty |
-| \Memory\Committed bajtů |Bajty |
-| \Memory\Commit limit |Bajty |
-| \Memory\Pool stránkovaného fondu |Bajty |
-| \Memory\Pool nestránkovaného fondu |Bajty |
+| \Memory\Available Bytes |B |
+| \Memory\Committed bajtů |B |
+| \Memory\Commit limit |B |
+| \Memory\Pool stránkovaného fondu |B |
+| \Memory\Pool nestránkovaného fondu |B |
 | \PhysicalDisk(_Total)\% čas na disku |Procento |
 | \PhysicalDisk(_Total)\% čas čtení disku |Procento |
 | \PhysicalDisk(_Total)\% doba zápisu na disku |Procento |
@@ -96,17 +91,17 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 
 | Název metriky | Jednotka |
 | --- | --- |
-| \Memory\AvailableMemory |Bajty |
+| \Memory\AvailableMemory |B |
 | \Memory\PercentAvailableMemory |Procento |
-| \Memory\UsedMemory |Bajty |
+| \Memory\UsedMemory |B |
 | \Memory\PercentUsedMemory |Procento |
 | \Memory\PercentUsedByCache |Procento |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
-| \Memory\AvailableSwap |Bajty |
+| \Memory\AvailableSwap |B |
 | \Memory\PercentAvailableSwap |Procento |
-| \Memory\UsedSwap |Bajty |
+| \Memory\UsedSwap |B |
 | \Memory\PercentUsedSwap |Procento |
 | \Processor\PercentIdleTime |Procento |
 | \Processor\PercentUserTime |Procento |
@@ -126,11 +121,11 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk\AverageWriteTime |Sekundy |
 | \PhysicalDisk\AverageTransferTime |Sekundy |
 | \PhysicalDisk\AverageDiskQueueLength |Počet |
-| \NetworkInterface\BytesTransmitted |Bajty |
-| \NetworkInterface\BytesReceived |Bajty |
+| \NetworkInterface\BytesTransmitted |B |
+| \NetworkInterface\BytesReceived |B |
 | \NetworkInterface\PacketsTransmitted |Počet |
 | \NetworkInterface\PacketsReceived |Počet |
-| \NetworkInterface\BytesTotal |Bajty |
+| \NetworkInterface\BytesTotal |B |
 | \NetworkInterface\TotalRxErrors |Počet |
 | \NetworkInterface\TotalTxErrors |Počet |
 | \NetworkInterface\TotalCollisions |Počet |
@@ -153,8 +148,8 @@ Můžete výstrahy na nebo škálovat podle tyto metriky.
 | MemoryPercentage |Procento |
 | DiskQueueLength |Počet |
 | HttpQueueLength |Počet |
-| BytesReceived |Bajty |
-| BytesSent |Bajty |
+| BytesReceived |B |
+| BytesSent |B |
 
 ## <a name="commonly-used-storage-metrics"></a>Běžně používané metriky úložiště
 Je možné škálovat podle délka fronty úložiště, což je počet zpráv ve frontě úložiště. Délka fronty úložiště je speciální metriky a prahová hodnota je počet zpráv na jednu instanci. Například pokud existují dvě instance, a pokud je prahová hodnota nastavená na 100, škálování nastane, když je celkový počet zpráv ve frontě 200. Který může být 100 zprávy na jednu instanci, 120 a 80 nebo jakoukoli jinou kombinaci, přidá až 200 nebo víc.

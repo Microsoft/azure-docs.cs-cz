@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: harshja
-ms.openlocfilehash: c2571a7ca9e92c5088aec600f1865f84736c5bfa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1c6c6f56f8e4d8d1d7a10bd07679732d64b86e23
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592506"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292299"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Chyba "Nelze podnikové k této aplikaci přístup" při použití aplikace Proxy aplikace
 
@@ -110,7 +110,7 @@ Nyní otevřete prohlížeč a snaží o přístup k aplikaci znovu. Měla zobra
 
 Pokud budete pokračovat zobrazí chyba, přejděte k počítači, kde je konektor nainstalovaný, spusťte prohlížeč a se pokoušejí připojit interní adresa URL pro aplikaci. Konektor funguje jako jiného klienta ze stejného počítače. Pokud aplikace není možné dosáhnout, zjistěte, proč tento počítač se nepodařilo dosáhnout aplikace, nebo použít konektor na serveru, který se bude moct získat přístup k aplikaci.
 
-Pokud chcete vyhledat potíže či chyby s konektor sám aplikace z počítače, může dosáhnout. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](active-directory-application-proxy-troubleshoot.md#connector-errors). Můžete také zobrazit přímo v protokolech konektoru k identifikaci případné chyby. Mnoho z našich chybových zpráv moci sdílet více konkrétní doporučení pro opravy. Další postupy k zobrazení protokolů najdete v tématu [dokumentaci konektory](manage-apps/application-proxy-connectors.md#under-the-hood).
+Pokud chcete vyhledat potíže či chyby s konektor sám aplikace z počítače, může dosáhnout. Zobrazí se některé běžné chyby v [Poradce při potížích dokumentu](manage-apps/application-proxy-troubleshoot.md#connector-errors). Můžete také zobrazit přímo v protokolech konektoru k identifikaci případné chyby. Mnoho z našich chybových zpráv moci sdílet více konkrétní doporučení pro opravy. Další postupy k zobrazení protokolů najdete v tématu [dokumentaci konektory](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 ## <a name="next-steps"></a>Další postup
 [Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md)

@@ -6,15 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 05/18/2018
-ms.openlocfilehash: 8683aacb2ae41cb4c57aa70b375eca9db6106492
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d62cd693d7a67faf836c645f8bd33de9afca949
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654872"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266104"
 ---
 # <a name="azure-database-for-mysql-data-in-replication-stored-procedures"></a>Databáze pro replikaci dat MySQL v Azure uložené procedury
 

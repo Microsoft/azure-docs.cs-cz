@@ -1,24 +1,20 @@
 ---
-title: "Řešení potíží s Azure Diagnostics | Microsoft Docs"
-description: "Vyřešení problémů při používání Azure diagnostics v Azure Virtual Machines, Service Fabric nebo cloudové služby."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Řešení potíží s Azure Diagnostics rozšíření
+description: Vyřešení problémů při používání Azure diagnostics v Azure Virtual Machines, Service Fabric nebo cloudové služby.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 66469bce-d457-4d1e-b550-a08d2be4d28c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: e194c2898616d5a19782039d38592c59f6b0c576
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.component: diagnostic-extension
+ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263842"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které se týkají pomocí Azure Diagnostics. Další informace o Azure diagnostics najdete v tématu [přehled Azure Diagnostics](azure-diagnostics.md).
@@ -71,15 +67,15 @@ Pokud nejsou žádná data pro konkrétní metriku, zkontrolujte **konfigurace d
 - \ASP.NET\Requests zařazených do fronty
 - \ASP.NET\Requests odmítl
 - \Processor(W3wp)\% času procesoru
-- \Process(w3wp)\Private Bytes
+- Bajty \Private \Process (w3wp)
 - \Process(WaIISHost)\% času procesoru
-- \Process(WaIISHost)\Private Bytes
+- Bajty \Private \Process (WaIISHost)
 - \Process(WaWorkerHost)\% času procesoru
-- \Process(WaWorkerHost)\Private Bytes
+- Bajty \Private \Process (WaWorkerHost)
 - \Memory\Page chyby/s
 - \.NET CLR paměti (_globální_)\% čas
-- \LogicalDisk(C:)\Disk Write Bytes/sec
-- \LogicalDisk(C:)\Disk Read Bytes/sec
+- Zápis \Disk \LogicalDisk (C:) bajty/s
+- \Disk \LogicalDisk (C:) přečtených bajtů/s
 - Zápis \Disk \LogicalDisk (D:) bajty/s
 - \Disk \LogicalDisk (D:) přečtených bajtů/s
 
@@ -207,7 +203,7 @@ Tento kód generuje čtyři tabulky:
 
 | Událost | Název tabulky |
 | --- | --- |
-| Zprostředkovatel = "prov1" &lt;událost s id = "1" nebo&gt; |WADEvent+MD5(“prov1”)+”1” |
+| Zprostředkovatel = "prov1" &lt;událost s id = "1" nebo&gt; |WADEvent + MD5("prov1") + "1" |
 | Zprostředkovatel = "prov1" &lt;událost s id = "2" eventDestination = "dest1" /&gt; |WADdest1 |
 | Zprostředkovatel = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
 | Zprostředkovatel = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |

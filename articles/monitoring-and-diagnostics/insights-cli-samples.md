@@ -1,31 +1,26 @@
 ---
-title: Ukázek Azure rychlý start monitorování 2.0 rozhraní příkazového řádku. | Dokumenty Microsoft
+title: Ukázek Azure CLI monitorování rychlý start
 description: Vzorové příkazy rozhraní příkazového řádku 2.0 pro funkce monitorování Azure. Azure monitorování je služba Microsoft Azure, který umožňuje odeslat oznámení o výstrahách, volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data a škálování cloudové služby, virtuální počítače a webové aplikace.
-author: kamathashwin
-manager: ''
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 1653aa81-0ee6-4622-9c65-d4801ed9006f
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/09/2018
-ms.author: ashwink
-ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+author: rboucher
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 05/16/2018
+ms.author: robb
+ms.component: ''
+ms.openlocfilehash: 0b98cc29325310cfc0c7a62de693c309b6731447
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262398"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>Ukázek Azure rychlý start monitorování 2.0 rozhraní příkazového řádku
 Tento článek ukazuje ukázku, že příkazy rozhraní příkazového řádku (CLI) můžete získat přístup k funkcím Azure monitorování. Azure monitorování umožňuje škálování cloudové služby, virtuální počítače a webových aplikací a odesílat oznámení o výstrahách nebo volání webové adresy URL založené na hodnotách nakonfigurované telemetrická data.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-Pokud jste ještě nenainstalovali rozhraní příkazového řádku Azure, postupujte podle pokynů pro [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli). Můžete také použít [prostředí cloudu Azure](/azure/cloud-shell) spustit rozhraní příkazového řádku jako interaktivní možnosti v prohlížeči. 
+Pokud jste ještě nenainstalovali rozhraní příkazového řádku Azure, postupujte podle pokynů pro [nainstalovat Azure CLI 2.0](/cli/azure/install-azure-cli). Můžete také použít [prostředí cloudu Azure](/azure/cloud-shell) spustit rozhraní příkazového řádku jako interaktivní možnosti v prohlížeči. Viz úplný přehled všechny dostupné příkazy k dispozici v [referenční dokumentace rozhraní příkazového řádku Azure monitorování](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Prvním krokem je přihlášení k účtu Azure.
@@ -90,7 +85,8 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="work-with-alerts"></a>Práce s výstrahami 
-[!NOTE] Pouze výstrahy (klasické) je v současné době podporovaný v rozhraní příkazového řádku. 
+> [!NOTE]
+> Pouze výstrahy (klasické) je v současné době podporovaný v rozhraní příkazového řádku. 
 
 ### <a name="get-alert-classic-rules-in-a-resource-group"></a>Získat pravidla výstrah (klasické) ve skupině prostředků
 

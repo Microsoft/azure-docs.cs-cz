@@ -1,24 +1,19 @@
 ---
-title: "Konfigurace webhooky na Azure metriky výstrahy | Microsoft Docs"
-description: "Zjistěte, jak přesměrovat Azure výstrahy k systémům jiných, mimo Azure."
+title: Classic metriky upozornit, upozornit mimo Azure systému pomocí webhook, jehož
+description: Zjistěte, jak přesměrovat Azure metriky výstrahy k systémům jiných, mimo Azure.
 author: johnkemnetz
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 8b3ae540-1d19-4f3d-a635-376042f8a5bb
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 049803e7701c68559103d9b1fa5dfacf820d0548
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: 9cc017aad7fbdc740ab3fa3af5603223e5b844ce
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262347"
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurace webhook, jehož na výstrahu Azure metriky
 Webhooky můžete používat ke směrování Azure oznámení výstrahy k jiným systémům pro následné zpracování nebo vlastní akce. Webhook, jehož na výstrahu můžete použít ke směrování ke službám, které odesílají zprávy SMS, do protokolu chyb, upozornit na tým prostřednictvím chatu nebo služby zasílání zpráv nebo pro různé další akce. 
@@ -88,7 +83,7 @@ Operaci POST obsahuje následující datové části JSON a schéma pro všechny
 | conditionType |Ano |Metrika událostí |Podporuje dva typy výstrah: metriky a události. Metriky výstrahy jsou založené na podmínce metriky. Událost výstrahy jsou založené na události v protokolu aktivit. Tato hodnota se používá ke kontrole, jestli je výstraha založené na metriky nebo na událost. |
 | podmínka |Ano | |Na základě konkrétních polí zkontrolujte **conditionType** hodnotu. |
 | metricName |Metriky výstrahy | |Název metriky, která definuje, co pravidlo monitoruje. |
-| metricUnit |Metriky výstrahy |Bytes, BytesPerSecond, Count, CountPerSecond, Percent, Seconds |Jednotka v metriku povoleny. V tématu [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricUnit |Metriky výstrahy |Počet bajtů, BytesPerSecond, Count, CountPerSecond, procent, sekund |Jednotka v metriku povoleny. V tématu [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Metriky výstrahy | |Aktuální hodnota metriku, která způsobila výstrahu. |
 | Prahová hodnota |Metriky výstrahy | |Prahová hodnota, na které se aktivuje výstrahu. |
 | velikost_okna |Metriky výstrahy | |Časový interval, který se používá k monitorování výstrah aktivity podle prahovou hodnotu. Hodnota musí být mezi 5 minutami a 1 den. Hodnota musí být ve formátu ISO 8601 doba trvání. |
@@ -97,11 +92,11 @@ Operaci POST obsahuje následující datové části JSON a schéma pro všechny
 | subscriptionId |Ano | |ID předplatného Azure. |
 | resourceGroupName |Ano | |Název skupiny prostředků pro ovlivněných prostředků. |
 | resourceName |Ano | |Název prostředku ovlivněných prostředků. |
-| resourceType |Ano | |Typ prostředku ovlivněných prostředků. |
+| Typ prostředku |Ano | |Typ prostředku ovlivněných prostředků. |
 | resourceId |Ano | |ID prostředku ovlivněných prostředků. |
 | resourceRegion |Ano | |Oblast nebo umístění zdroje. |
 | portalLink |Ano | |Přímý odkaz na stránce Souhrn portálu prostředků. |
-| properties |N |Nepovinné |Sada dvojic klíč/hodnota, který obsahuje podrobnosti o události. Například, `Dictionary<String, String>`. Vlastnosti pole je nepovinné. Do vlastní uživatelské rozhraní nebo pracovních postupů založených na aplikaci logiky mohou uživatelé zadat dvojice klíč/hodnota, které lze předat prostřednictvím datové části. Jiný způsob, jak předat vlastní vlastnosti webhooku je prostřednictvím webhooku URI samotné (jako parametry dotazu). |
+| properties |Ne |Nepovinné |Sada dvojic klíč/hodnota, který obsahuje podrobnosti o události. Například, `Dictionary<String, String>`. Vlastnosti pole je nepovinné. Do vlastní uživatelské rozhraní nebo pracovních postupů založených na aplikaci logiky mohou uživatelé zadat dvojice klíč/hodnota, které lze předat prostřednictvím datové části. Jiný způsob, jak předat vlastní vlastnosti webhooku je prostřednictvím webhooku URI samotné (jako parametry dotazu). |
 
 > [!NOTE]
 > Můžete nastavit **vlastnosti** pole pouze pomocí [rozhraní REST API Azure monitorování](https://msdn.microsoft.com/library/azure/dn933805.aspx).

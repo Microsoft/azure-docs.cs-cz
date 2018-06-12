@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 8fa98ff4cee206894c35f84cca3f3b4c43e2e5ce
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4d483f045a8e778953ddb578dd7bb81fdb05fdf2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292404"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro zřizování automatické uživatelů
 
@@ -42,7 +43,7 @@ Azure AD používá koncept označované jako "úlohy" k určení uživatelů, k
 
 Než začnete konfigurovat a povolit zřizování služby, musíte se rozhodnout, které uživatelé ve službě Azure AD potřebovat přístup k vaší aplikaci Pingboard. Pak můžete přiřadit těmto uživatelům aplikace Pingboard podle pokynů tady:
 
-[Přiřazení uživatele k aplikaci enterprise](active-directory-coreapps-assign-user-azure-portal.md)
+[Přiřazení uživatele k aplikaci enterprise](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-pingboard"></a>Důležité tipy pro přiřazování uživatelů do Pingboard
 
@@ -99,6 +100,6 @@ Další informace o tom, jak číst zřizování protokoly služby Azure AD najd
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Spravovat uživatele zřizování účtu pro podnikové aplikace](active-directory-enterprise-apps-manage-provisioning.md)
+* [Spravovat uživatele zřizování účtu pro podnikové aplikace](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurovat jednotné přihlašování](active-directory-saas-pingboard-tutorial.md)

@@ -1,24 +1,20 @@
 ---
-title: "Schéma konfigurace Azure Diagnostics 1.0 | Microsoft Docs"
-description: "Platí pouze pokud používáte Azure SDK 2.4 a pod s Azure virtuálních počítačů sady škálování virtuálního počítače, Service Fabric nebo cloudové služby."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Schéma konfigurace Azure Diagnostics 1.0
+description: Platí pouze pokud používáte Azure SDK 2.4 a pod s Azure virtuálních počítačů sady škálování virtuálního počítače, Service Fabric nebo cloudové služby.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: a8fdfb52d5091d3fc9779657737c7430fcfada51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: diagnostic-extension
+ms.openlocfilehash: 916e2123262402e23f35778e66683ecce2cec4b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262581"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schéma konfigurace Azure Diagnostics 1.0
 > [!NOTE]
@@ -107,7 +103,7 @@ Atributy:
 
 |Atribut  |Typ   |Požaduje se| Výchozí | Popis|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|Doba trvání|Nepovinné | PT1M| Určuje interval, ve kterém se monitorování diagnostiky dotazuje změny konfigurace diagnostiky.|  
+|**configurationChangePollInterval**|doba trvání|Nepovinné | PT1M| Určuje interval, ve kterém se monitorování diagnostiky dotazuje změny konfigurace diagnostiky.|  
 |**overallQuotaInMB**|celé číslo bez znaménka|Nepovinné| 4000 MB. Pokud zadáte hodnotu, nesmí být delší než toto množství |Celkové množství přidělené všechny vyrovnávací paměti protokolování úložiště systému souborů.|  
 
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs Element  
@@ -120,8 +116,8 @@ Atributy:
 |Atribut|Typ|Popis|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|Řetězec|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**. Další možné hodnoty jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**scheduledTransferPeriod**|Doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**scheduledTransferLogLevelFilter**|řetězec|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**. Další možné hodnoty jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 
 ## <a name="logs-element"></a>Element protokoly  
  Definuje konfiguraci vyrovnávací paměti pro základní Azure protokoly.
@@ -133,8 +129,8 @@ Atributy:
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|Řetězec|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**. Další možné hodnoty jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**scheduledTransferPeriod**|Doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**scheduledTransferLogLevelFilter**|řetězec|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**. Další možné hodnoty jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 
 ## <a name="directories-element"></a>Element adresáře  
 Definuje konfiguraci vyrovnávací paměti na základě souborů protokolů, které můžete definovat.
@@ -147,7 +143,7 @@ Atributy:
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferPeriod**|Doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 
 ## <a name="crashdumps-element"></a>CrashDumps Element  
  Definuje adresář výpisy havárií.
@@ -158,7 +154,7 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**kontejner**|Řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
+|**kontejner**|řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
 |**directoryQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs Element  
@@ -170,7 +166,7 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**kontejner**|Řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
+|**kontejner**|řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
 |**directoryQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
 
 ##  <a name="iislogs-element"></a>IISLogs Element  
@@ -182,7 +178,7 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**kontejner**|Řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
+|**kontejner**|řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
 |**directoryQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
 
 ## <a name="datasources-element"></a>Element zdrojů dat  
@@ -199,7 +195,7 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**kontejner**|Řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
+|**kontejner**|řetězec|Název kontejneru, kde je obsah adresáře, které se mají přenést.|  
 |**directoryQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální velikost adresáře v megabajtech.<br /><br /> Výchozí hodnota je 0.|  
 
 ## <a name="absolute-element"></a>Absolutní – Element  
@@ -211,8 +207,8 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Cesta**|Řetězec|Povinná hodnota. Absolutní cesta k adresáři pro monitorování.|  
-|**expandEnvironment**|Logická hodnota|Povinná hodnota. Pokud nastavena na **true**, jsou-li rozbalit proměnné prostředí v cestě.|  
+|**Cesta**|řetězec|Povinná hodnota. Absolutní cesta k adresáři pro monitorování.|  
+|**expandEnvironment**|Boolean|Povinná hodnota. Pokud nastavena na **true**, jsou-li rozbalit proměnné prostředí v cestě.|  
 
 ## <a name="localresource-element"></a>LocalResource Element  
  Definuje cestu k místních prostředků v definici služby.
@@ -223,8 +219,8 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|Řetězec|Povinná hodnota. Název místní prostředek, který obsahuje adresář, který chcete monitorovat.|  
-|**relativePath**|Řetězec|Povinná hodnota. Cesta relativní k místní prostředek pro monitorování.|  
+|**Jméno**|řetězec|Povinná hodnota. Název místní prostředek, který obsahuje adresář, který chcete monitorovat.|  
+|**RelativePath**|řetězec|Povinná hodnota. Cesta relativní k místní prostředek pro monitorování.|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters – Element  
  Definuje cestu k čítači výkonu ke shromažďování.
@@ -237,7 +233,7 @@ Atributy:
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferPeriod**|Doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  Definuje čítač výkonu ke shromažďování.
@@ -248,8 +244,8 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|Řetězec|Povinná hodnota. Cesta ke shromažďování čítače výkonu.|  
-|**sampleRate**|Doba trvání|Povinná hodnota. Rychlost, jakou by měly být shromažďovány čítače výkonu.|  
+|**counterSpecifier**|řetězec|Povinná hodnota. Cesta ke shromažďování čítače výkonu.|  
+|**sampleRate**|doba trvání|Povinná hodnota. Rychlost, jakou by měly být shromažďovány čítače výkonu.|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  Definuje protokoly událostí k monitorování.
@@ -261,8 +257,8 @@ Atributy:
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|celé číslo bez znaménka|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilter**|Řetězec|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**. Další možné hodnoty jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
-|**scheduledTransferPeriod**|Doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
+|**scheduledTransferLogLevelFilter**|řetězec|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**. Další možné hodnoty jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**scheduledTransferPeriod**|doba trvání|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 
 ## <a name="datasource-element"></a>Element zdroje dat  
  Definuje protokol událostí a monitorování.
@@ -273,4 +269,4 @@ Atributy:
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|Řetězec|Povinná hodnota. Výraz XPath určující protokolu, který chcete shromáždit.|  
+|**Jméno**|řetězec|Povinná hodnota. Výraz XPath určující protokolu, který chcete shromáždit.|  

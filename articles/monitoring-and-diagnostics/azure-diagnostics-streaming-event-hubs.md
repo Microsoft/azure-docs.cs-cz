@@ -1,24 +1,20 @@
 ---
-title: "Streamování dat diagnostiky Azure v aktivní trase pomocí služby Event Hubs | Microsoft Docs"
-description: "Konfigurace Azure Diagnostics službou Event Hubs začátku do konce, včetně pokyny pro běžné scénáře."
-services: event-hubs
-documentationcenter: na
+title: Datový proud Azure diagnostická data do centra událostí
+description: Konfigurace Azure Diagnostics službou Event Hubs začátku do konce, včetně pokyny pro běžné scénáře.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: edeebaac-1c47-4b43-9687-f28e7e1e446a
-ms.service: monitoring-and-diagnostics
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: diagnostic-extension
+ms.openlocfilehash: 98e788d87b0ce03eece35868391aadd5233217b0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267709"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamování dat diagnostiky Azure v aktivní trase pomocí služby Event Hubs
 Azure Diagnostics poskytuje flexibilní způsoby, jak shromažďovat metriky a protokoly z cloudové služby virtuálních počítačů (VM) a přenos výsledků do služby Azure Storage. Spouštění v časovém intervalu. března 2016 (SDK 2.9), můžete odeslání diagnostiky do vlastní zdroje dat a přenos dat aktivní trase v sekundách pomocí [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -27,9 +23,9 @@ Podporované datové typy patří:
 
 * Události Trasování událostí pro Windows
 * Čítače výkonu
-* Protokoly událostí systému Windows
+* Protokoly událostí Windows
 * Protokoly aplikací
-* Protokoly infrastruktury Azure Diagnostics
+* Protokolů infrastruktury Azure Diagnostics
 
 Tento článek ukazuje, jak nakonfigurovat Azure Diagnostics službou Event Hubs a provést tak kompletní. Příručka je taky pokyny pro následující běžné scénáře:
 
@@ -322,7 +318,7 @@ namespace EventHubListener
 
     Podívejte se do v Azure Storage tabulka, která obsahuje chyby a protokolování Azure Diagnostics samotné: **WADDiagnosticInfrastructureLogsTable**. Jednou z možností je použít nástroj, jako například [Azure Storage Explorer](http://www.storageexplorer.com) se pokud chcete připojit k tomuto účtu úložiště, zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Nástroj můžete exportovat soubor .csv a otevře ji v aplikaci, jako je například aplikace Microsoft Excel. Excel usnadňuje hledat řetězce volací karty, například **EventHubs**, pokud chcete zobrazit, jaké se chybová zpráva.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 • [Další informace o službě Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
 ## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Dodatek: Dokončení příkladu Azure Diagnostics konfigurační soubor (.wadcfgx)
@@ -504,7 +500,7 @@ Ekvivalentní Json na základě nastavení pro virtuální počítače je násle
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
 * [Přehled služby Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)

@@ -1,24 +1,19 @@
 ---
-title: Vytvořit výstrahu pro classic metriky v Azure pomocí šablony Resource Manageru | Microsoft Docs
+title: Vytvořit výstrahu pro classic metriky v Azure pomocí šablony Resource Manageru
 description: Naučte se vytvořit klasického metriky výstrahu pro příjem oznámení e-mailem nebo webhooku pomocí šablony Resource Manageru.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 41d62044-6bc5-4674-b277-45b919f58efe
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
-ms.openlocfilehash: c83eeaf6c26aca3acdd43a767aa11357fa502544
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: metric
+ms.openlocfilehash: 67dac4f8d9b66f4b5f2654ffb16d9829387fc060
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263292"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
 Tento článek ukazuje, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci Azure metriky výstrahy. To umožňuje automaticky nastavit výstrahy na vaše prostředky při jejich vytváření zajistit, že všechny prostředky jsou monitorovány správně.

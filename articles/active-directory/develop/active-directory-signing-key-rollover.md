@@ -16,11 +16,12 @@ ms.date: 07/18/2016
 ms.author: celested
 ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 29ac254bf3b0e8decb26452fc36112af0a3970af
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 02d7cb28411e0baec20d334994b385dcd3b06451
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293377"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Podepisování výměna klíče v Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejné klíče, které se používají v Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů v pravidelných intervalech a v případě nouze, může být převracet okamžitě. Všechny aplikace, které používají Azure AD by mohli prostřednictvím kódu programu zpracování procesu výměna klíče nebo vytvořit proces periodické ruční výměny. Materiály, abyste pochopili, jak funguje klíče, jak posoudit dopad výměny do vaší aplikace a jak aktualizovat aplikaci nebo vytvořit proces periodické ruční výměna pro zpracování výměny klíčů, v případě potřeby.
@@ -50,7 +51,7 @@ Jak vaše aplikace zpracovává výměny klíčů, závisí na proměnné, jako 
 
 V tomto návodu je **není** platí pro:
 
-* Aplikace přidána z Azure AD Application Gallery (včetně vlastní) mají zvláštní pokyny s ohledem na podpisových klíčů. [Další informace.](../active-directory-sso-certs.md)
+* Aplikace přidána z Azure AD Application Gallery (včetně vlastní) mají zvláštní pokyny s ohledem na podpisových klíčů. [Další informace.](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 * Místní aplikacích publikovaných prostřednictvím proxy aplikace nemusíte si dělat starosti o podpisových klíčů.
 
 ### <a name="nativeclient"></a>Nativní klientské aplikace přístup k prostředkům

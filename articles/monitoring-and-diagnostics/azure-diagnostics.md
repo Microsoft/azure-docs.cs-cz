@@ -1,24 +1,20 @@
 ---
-title: Přehled rozšíření diagnostiky Azure | Microsoft Docs
+title: Přehled rozšíření diagnostiky Azure
 description: Použití Azure diagnostics pro ladění, měření výkonu, monitorování, analýza provozu v cloudových služeb, virtuální počítače a služby infrastruktury
-services: multiple
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: ''
-editor: ''
-ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
-ms.service: multiple
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: robb
-ms.openlocfilehash: daeaddefa461e71fcc62af4efc4fb7084b237cf9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: diagnostic-extension
+ms.openlocfilehash: b4ec82112ea0defcea4f687abaad7d96627cb902
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267675"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co je Azure Diagnostics rozšíření
 Rozšíření Azure Diagnostics není agenta v rámci Azure, která umožňuje shromažďování diagnostických dat na nasazené aplikace. Můžete použít rozšíření diagnostiky z mnoha různých zdrojů. Aktuálně podporované jsou cloudové služby Azure (klasický) Web a rolí pracovního procesu, virtuální počítače sady škálování virtuálního počítače a Service Fabric. Jinými službami Azure mají různé diagnostiky metody. V tématu [Přehled monitorování v Azure](monitoring-overview.md). 
@@ -33,7 +29,7 @@ Rozšíření diagnostiky Azure může shromažďovat následující typy dat:
 | --- | --- |
 | Čítače výkonu |Operační systém a vlastní čítače výkonu |
 | Protokoly aplikací |Trasování zpráv zapsaných správcem vaší aplikace |
-| Protokoly událostí systému Windows |Informace odesílané do systému protokolování událostí Windows |
+| Protokoly událostí Windows |Informace odesílané do systému protokolování událostí Windows |
 | Zdroj události rozhraní .NET |Kód zápisu událostí pomocí .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) – třída |
 | Protokoly služby IIS |Informace o webů služby IIS |
 | Manifest na základě trasování událostí pro Windows |Události trasování pro Windows události vygenerované modulem jakýkoli proces |

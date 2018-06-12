@@ -1,19 +1,20 @@
 ---
-title: "Konfigurace výstrah metriky pro databázi Azure pro databázi MySQL na portálu Azure"
-description: "Tento článek popisuje postup konfigurace a výstrahy metriky přístup pro databázi Azure pro databázi MySQL z portálu Azure."
+title: Konfigurace výstrah metriky pro databázi Azure pro databázi MySQL na portálu Azure
+description: Tento článek popisuje postup konfigurace a výstrahy metriky přístup pro databázi Azure pro databázi MySQL z portálu Azure.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3accc31f433e6db40c7d1de2b56dfbd4180b4933
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265166"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Nastavit výstrahy na metriky pro databázi Azure pro databázi MySQL pomocí portálu Azure 
 
@@ -27,7 +28,7 @@ Můžete nakonfigurovat výstrahu při aktivaci provést následující akce:
 * Volání webhooku
 
 Můžete nakonfigurovat a získat informace o pravidla výstrah pomocí:
-* [portál Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [Rozhraní příkazového řádku (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Rozhraní API REST Azure monitorování](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -55,7 +56,7 @@ Můžete nakonfigurovat a získat informace o pravidla výstrah pomocí:
    | Prostředek | Toto pole je naplněna název vaší databáze Azure pro databázi MySQL. |
    | Metrika | Vyberte metriku, kterou chcete vydat výstrahu pro. Například **procento úložiště**. |
    | Podmínka | Vyberte podmínku pro metriku, který se má porovnat s. Například **větší než**. |
-   | Mezní hodnota | Prahová hodnota pro metriku, například 85 (v procentech). |
+   | Prahová hodnota | Prahová hodnota pro metriku, například 85 (v procentech). |
    | Období | Časový interval, který metriky pravidlo je nutné splnit před výstrahy aktivačních událostí. Například **za posledních 30 minut**. |
 
    Založena na příkladu, výstraha vyhledává procento úložiště než 85 % za období 30 minut. Výstrahy se aktivuje při průměrnou procentuální hodnotu úložiště jsou vyšší než 85 % po dobu 30 minut. Jakmile dojde k první aktivační událost, aktivuje znovu při průměrnou procentuální hodnotu úložiště je nižší než 85 % více než 30 minut.

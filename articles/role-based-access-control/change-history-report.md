@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 737f8d49d8254806891d3177cde59187cd8e1f2e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 03961de233861baf923402cc96ab8174b3233bd0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640179"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266644"
 ---
 # <a name="view-activity-logs-for-role-based-access-control-changes"></a>Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí
 

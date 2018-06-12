@@ -1,25 +1,19 @@
 ---
-title: Archivovat protokol činnosti Azure | Microsoft Docs
-description: Zjistěte, jak k archivaci váš protokol činnosti Azure pro dlouhodobé uchovávání v účtu úložiště.
+title: Archiv protokol činnosti Azure
+description: Archivujte váš protokol činnosti Azure pro dlouhodobé uchovávání v účtu úložiště.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: d37d3fda-8ef1-477c-a360-a855b418de84
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.openlocfilehash: e401d22dbcf5074f4652fb60ee5eeec1d31ef164
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.component: activitylog
+ms.openlocfilehash: 508b2f615819f20a717065d8fff25beff64957d5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235596"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263425"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiv protokol činnosti Azure
 V tomto článku jsme ukazují, jak pomocí portálu Azure, rutiny prostředí PowerShell nebo rozhraní příkazového řádku a platformy pro archivaci vaše [ **protokol činnosti Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud chcete uchovat déle, než 90 dní (s plnou kontrolu nad zásady uchovávání informací) pro audit, statické analýzy nebo zálohování aktivity protokolu. Pokud potřebujete události uchovávány 90 dnů nebo méně není nutné nastavit archivace na účet úložiště, protože aktivity protokolu události se zachovají v platformy Azure za 90 dnů bez povolení archivace.

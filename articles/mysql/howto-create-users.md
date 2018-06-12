@@ -1,19 +1,20 @@
 ---
-title: "Vytvořte uživatele v databázi Azure pro server databáze MySQL"
-description: "Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database pro server databáze MySQL."
+title: Vytvořte uživatele v databázi Azure pro server databáze MySQL
+description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database pro server databáze MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 9fd592efe48adefc6aca7a6caea24f546da23fa5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: ee74ea9e114f6401bfcafe44ca3caedfcd0005c5
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265614"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Vytvořte uživatele v databázi Azure pro server databáze MySQL 
 Tento článek popisuje, jak můžete vytvořit uživatele v databázi Azure pro server databáze MySQL.

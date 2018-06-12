@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-editor: rqureshi
+editor: bagovind
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: role-based-access-control
 ms.devlang: na
@@ -14,11 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/11/2018
 ms.author: rolyon
-ms.openlocfilehash: b671ff6b473093e59bce18c7bf98b32e9849bbb0
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.reviewer: bagovind
+ms.openlocfilehash: e1e46d5fb786b09a4c006b61f52b3ac99aafd555
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266496"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení oprávnění přístupu pro globálního správce ve službě Azure Active Directory
 
@@ -32,6 +34,8 @@ Pokud jste [globálního správce](../active-directory/active-directory-assign-a
 Ve výchozím nastavení řízení rolí Správce služby Azure AD a přístupu na základě role Azure role (RBAC) není rozpětí Azure AD a Azure. Pokud jste globálním správcem ve službě Azure AD, můžete však zvýšení oprávnění přístup ke správě předplatných Azure a skupiny pro správu. Pokud jste zvýšení vaší přístupu, udělí se vám [správce přístupu uživatelů](built-in-roles.md#user-access-administrator) role (RBAC role) na všechny odběry pro konkrétního klienta. Role správce přístupu uživatelů umožňuje jiných uživatelům uděluje přístup k prostředkům Azure v kořenovém oboru (`/`).
 
 Toto zvýšení úrovně oprávnění by měl být dočasné a pouze v případě potřeby.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Zvýšení oprávnění přístupu pro globálního správce pomocí portálu Azure
 
@@ -75,9 +79,9 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="delete-a-role-assignment-at-the-root-scope--using-powershell"></a>Umožňuje odstranit přiřazení role v kořenovém oboru (/) pomocí prostředí PowerShell
+## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>Odebrat přiřazení role v kořenovém oboru (/) pomocí prostředí PowerShell
 
-Chcete-li odstranit přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkaz.
+Chcete-li odebrat přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkaz.
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
@@ -109,14 +113,23 @@ Použijte následující základní kroky ke zvýšení oprávnění přístupu 
    }
    ```
 
-1. Při správce přístupu uživatelů, můžete také odstranit přiřazení role v kořenovém oboru (`/`).
+1. Při správce přístupu uživatelů, můžete také odebrat přiřazení rolí v kořenovém oboru (`/`).
 
-1. Vaše oprávnění správce přístupu uživatelů odvolat, dokud se znovu požadován.
+1. Vaše oprávnění správce přístupu uživatelů odeberte, dokud se znovu požadován.
 
+## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>Seznam přiřazení rolí v kořenovém oboru (/) pomocí rozhraní REST API
 
-## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>Vrácení zpět elevateAccess akce s rozhraní REST API
+Můžete vytvořit seznam všechna přiřazení role pro uživatele v kořenovém oboru (`/`).
 
-Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže k odvolání těchto oprávnění byste měli odstranit přiřazení.
+- Volání [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope) kde `{objectIdOfUser}` je ID objektu uživatele, jehož přiřazení rolí můžete obnovit.
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
+   ```
+
+## <a name="remove-elevated-access-using-the-rest-api"></a>Odebrat přístup se zvýšeným oprávněním pomocí rozhraní REST API
+
+Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, tak k odvolání těchto oprávnění je třeba odebrat přiřazení.
 
 1. Volání [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) kde `roleName` rovná správce přístupu uživatelů k určení ID názvu role uživatele přístup správce.
 
@@ -170,7 +183,7 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže k od
     >[!NOTE] 
     >Správce klienta by neměl mít mnoho přiřazení, pokud předchozí dotaz vrátí příliš mnoho přiřazení, se můžete dotazovat i pro všechna přiřazení právě na úrovni oboru klienta a pak filtrovat výsledky: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Předchozí volání vrátí seznam přiřazení rolí. Najít přiřazení role, kde je oboru "/" a `roleDefinitionId` končí ID název role, který jste získali v kroku 1 a `principalId` odpovídá objectId správce klienta. 
+    2. Předchozí volání vrátí seznam přiřazení rolí. Najít přiřazení role, kde je oboru `"/"` a `roleDefinitionId` končí ID název role, který jste získali v kroku 1 a `principalId` odpovídá objectId správce klienta. 
     
     Ukázka přiřazení role:
 
@@ -198,7 +211,7 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže k od
         
     Znovu uložit ID z `name` parametr, v takovém případě e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-    3. Nakonec pomocí ID přiřazení role můžete odstranit přiřazení přidal `elevateAccess`:
+    3. Nakonec pomocí ID přiřazení role přiřazení přidal odebrat `elevateAccess`:
 
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01

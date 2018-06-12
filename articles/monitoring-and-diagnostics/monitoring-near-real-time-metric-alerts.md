@@ -1,26 +1,19 @@
 ---
-title: Podporované prostředky pro novější metriky výstrahy monitorování Azure | Microsoft Docs
+title: Podporované prostředky pro novější Azure monitorování metriky výstrah
 description: Odkaz na podporu metriky a protokoly pro novější Azure téměř v reálném čase metriky výstrahy.
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/27/2018
-ms.author: snmuvva, vinagara
-ms.custom: ''
-ms.openlocfilehash: e09cc1a91daf2e6a043d73ef1f41aa265334dec2
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.author: snmuvva
+ms.component: alerts
+ms.openlocfilehash: d5eaa4dafc9c155d3e6f85bc67c578c8a12da7cf
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809824"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264506"
 ---
 # <a name="supported-metrics-and-creation-methods-for-new-metric-alerts"></a>Podporované metody metriky a vytvoření nových metriky výstrah
 Azure nyní podporuje monitorování [nové metriky typu výstrahy](monitoring-overview-unified-alerts.md) který má významné výhody přes starší [classic metriky výstrahy](insights-alerts-portal.md). Podporují starší výstrahy [velké seznam metriky](monitoring-supported-metrics.md). Výstrahy novější podporují podmnožinou tohoto seznamu, větší (rostoucí). Tento článek obsahuje seznam tuto podmnožinu. 

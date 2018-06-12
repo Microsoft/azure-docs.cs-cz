@@ -1,24 +1,19 @@
 ---
-title: Úložiště a zobrazení diagnostických dat v úložišti Azure | Microsoft Docs
+title: Ukládání a zobrazení diagnostických dat v Azure Storage
 description: Získat Azure diagnostická data do úložiště Azure a jeho zobrazení
-services: cloud-services
-documentationcenter: .net
+services: azure-monitor
 author: thraka
-manager: timlt
-editor: tysonn
-ms.assetid: 18e0780d-43e7-41e4-b8e9-f1fb9a36eb03
-ms.service: cloud-services
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: adegeo
-ms.openlocfilehash: 248e1c87ec244649a296233bf2aaa323d3475a79
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.component: diagnostic-extension
+ms.openlocfilehash: 6590e6991f07b7315c09a995152879c991fafcef
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267658"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Úložiště a zobrazení diagnostických dat ve službě Azure Storage
 Diagnostických dat není uložena trvale, pokud ho přenést na emulátor úložiště Microsoft Azure nebo do úložiště Azure. Jednou v úložišti, prohlížení s jedním z několika dostupných nástrojů.
@@ -42,7 +37,7 @@ V závislosti na typu diagnostických dat, jež jsou shromažďována používá
 | Protokoly služby IIS 7.0 |Objekt blob |
 | Protokolů infrastruktury Azure Diagnostics |Table |
 | Protokoly trasování požadavku se nezdařilo |Objekt blob |
-| Protokoly událostí systému Windows |Table |
+| Protokoly událostí Windows |Table |
 | Čítače výkonu |Table |
 | Výpisy stavu systému |Objekt blob |
 | Vlastní protokoly chyb |Objekt blob |

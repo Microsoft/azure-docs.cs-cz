@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 38586763c8bf80ac4ebf2e26b4db935289b88cbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac3ea6d696eaf5ba4b2554f416118718271526a8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589045"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292462"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure AD Application Proxy na spravované doméně služby Azure AD Domain Services
 Proxy aplikace služby Azure Active Directory (AD) umožňuje podporují zaměstnanci na vzdálených pracovištích a publikování aplikací místní přístup přes internet. S Azure AD Domain Services můžete nyní navýšení a shift starší aplikace spuštěné místně službám infrastruktury Azure. Potom můžete publikovat tyto aplikace pomocí Azure AD Application Proxy poskytnout zabezpečený vzdálený přístup na uživatele ve vaší organizaci.
@@ -77,7 +77,7 @@ Dříve zřízení virtuálního počítače s Windows serverem a připojený k 
     * Zadejte vaše **přihlašovací údaje Azure AD globálního správce**. Klient globálního správce se může lišit od vašich přihlašovacích údajů ke službě Microsoft Azure.
     * Účet správce použitý k registraci konektoru musí patřit do stejného adresáře, kde jste povolili službu Proxy aplikace. Například, pokud doména klienta je contoso.com, Správce by měl být admin@contoso.com nebo jiný platný alias v této doméně.
     * Pokud konfigurace rozšířeného zabezpečení aplikace Internet Explorer je zapnutá pro server který konektor instalujete, mohou být blokovány na obrazovce pro registraci. Chcete-li povolit přístup, postupujte podle pokynů v chybové zprávě. Ujistěte se, že je rozšířené zabezpečení aplikace Internet Explorer vypnuto.
-    * Pokud registrace konektoru selže, podívejte se do článku [Poradce při potížích s proxy aplikace](../active-directory/active-directory-application-proxy-troubleshoot.md).
+    * Pokud registrace konektoru selže, podívejte se do článku [Poradce při potížích s proxy aplikace](../active-directory/manage-apps/application-proxy-troubleshoot.md).
 
     ![Nainstalovaný konektor](./media/app-proxy/app-proxy-connector-installed.png)
 4. Aby konektor funguje správně, spusťte Azure AD Application Proxy Connector Poradce při potížích. Měli byste vidět úspěšné sestavy po spuštění Poradce při potížích.

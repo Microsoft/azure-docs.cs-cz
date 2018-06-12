@@ -1,26 +1,19 @@
 ---
-title: Unified výstrah v monitorování Azure | Microsoft Docs
+title: Jednotná výstrah v monitorování Azure
 description: Popis jednotná výstrah v Azure, které vám umožní spravovat výstrahy a pravidla výstrah napříč službami Azure.
 author: manishsm-msft
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: mamit,bwren
-ms.custom: ''
-ms.openlocfilehash: 699dff42846ee1f9d42980feca55d8a79e2514e3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.author: mamit
+ms.component: alerts
+ms.openlocfilehash: ff2650ec7d4c2c1fffd57176327b56199335fa9d
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839839"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264812"
 ---
 # <a name="unified-alerts-in-azure-monitor"></a>Jednotná výstrah v monitorování Azure
 

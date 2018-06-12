@@ -6,15 +6,15 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 05/18/2018
-ms.openlocfilehash: 4929c770bf21ddf660ccff4720f17f9bb3136ead
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654869"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265747"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure databáze
 

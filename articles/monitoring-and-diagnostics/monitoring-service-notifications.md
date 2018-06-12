@@ -1,24 +1,19 @@
 ---
-title: Co jsou oznámení o stavu služby Azure? | Dokumenty Microsoft
+title: Co jsou oznámení o stavu služby Azure?
 description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby, které zveřejnil Microsoft Azure.
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 4/12/2017
 ms.author: dukek
-ms.openlocfilehash: 6821828d3e39a87b8c93f74e7e0583bf9fe1fe4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: activitylog
+ms.openlocfilehash: d6a87b17041c4ce6cf41da863354ef5a2a37141c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264438"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazit oznámení o stavu služby pomocí portálu Azure
 

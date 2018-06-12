@@ -1,24 +1,19 @@
 ---
-title: Vytvořit výstrahu protokolu pomocí šablony Resource Manageru | Microsoft Docs
+title: Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 description: Naučte se vytvořit výstrahu protokolu pomocí služby šablony Azure Resource Manageru a rozhraní API.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 14a2560d91fd0f8dcc729b32c7155c4b74aa8aa1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.component: alerts
+ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263197"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 Tento článek ukazuje, jak můžete spravovat [protokolu výstrahy](monitor-alerts-unified-log.md) prostřednictvím kódu programu ve velkém měřítku, v Azure pomocí [šablony Azure Resource Manageru](..//azure-resource-manager/resource-group-authoring-templates.md) prostřednictvím [prostředí Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) a [Rozhraní příkazového řádku azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Aktuálně Azure výstrahy, podporuje protokolu výstrahy na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).

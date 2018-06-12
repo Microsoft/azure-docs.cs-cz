@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření nového prostředku Azure Application Insights | Microsoft Docs"
-description: "Ručně nastavte Application Insights monitorování nové aplikace za provozu."
+title: Vytvoření nového prostředku Azure Application Insights | Microsoft Docs
+description: Ručně nastavte Application Insights monitorování nové aplikace za provozu.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9023f3d9ae3ddd4d75b5853a08177cba7718cec1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294713"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytvoření nového prostředku, proto je součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete provést automaticky rozhraní IDE. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkční sestavení vaší aplikace.
@@ -29,7 +30,7 @@ Pokud jste to ještě získali [Microsoft account, pořiďte si ho](http://live.
 
 Potřebujete předplatné [Microsoft Azure](http://azure.com). Pokud váš tým nebo společnost má předplatné Azure, vlastník můžete přidat můžete, pomocí účtu Windows Live ID. Se účtují poplatky se používá. Základní plán výchozí umožňuje určité množství experimentální použití zdarma.
 
-Pokud máte k dispozici přístup do předplatného, přihlaste se k Application Insights na [http://portal.azure.com](https://portal.azure.com)a používat svůj Live ID k přihlášení.
+Pokud máte k dispozici přístup do předplatného, přihlaste se k Application Insights na [ http://portal.azure.com ](https://portal.azure.com)a používat svůj Live ID k přihlášení.
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 V [portal.azure.com](https://portal.azure.com), přidejte prostředek Application Insights:
@@ -68,7 +69,7 @@ Pokud očekáváte více dat, klikněte na tlačítko **aktualizovat** za někol
 ## <a name="creating-a-resource-automatically"></a>Vytvoření prostředku automaticky
 Můžete napsat [skript prostředí PowerShell](app-insights-powershell.md) automaticky vytvoření prostředku.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Vytvoření řídicího panelu](app-insights-dashboards.md)
 * [Diagnostické vyhledávání](app-insights-diagnostic-search.md)
 * [Zkoumání metrik](app-insights-metrics-explorer.md)

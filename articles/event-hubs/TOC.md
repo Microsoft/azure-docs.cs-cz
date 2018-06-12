@@ -33,6 +33,8 @@
 ### [Vytvoření Event Hubs s podporou Kafka](event-hubs-create-kafka-enabled.md) 
 ### [Streamování do Azure Event Hubs pro ekosystém Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 ### [Použití Kafka MirrorMakeru s Azure Event Hubs pro ekosystém Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
+### [Použití Apache Flinku se službou Event Hubs pro ekosystém Kafka](event-hubs-kafka-flink-tutorial.md)
+### [Použití Akka Streams se službou Event Hubs pro ekosystém Kafka](event-hubs-kafka-akka-streams-tutorial.md)
 ## Vývoj
 ### [Odesílání událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Příjem událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)

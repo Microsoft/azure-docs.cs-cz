@@ -1,19 +1,20 @@
 ---
-title: "Protokoly serveru pro databázi Azure pro databázi MySQL"
-description: "Popisuje protokolů dostupných v databázi Azure pro MySQL a dostupné parametry pro povolení protokolování různé úrovně."
+title: Protokoly serveru pro databázi Azure pro databázi MySQL
+description: Popisuje protokolů dostupných v databázi Azure pro MySQL a dostupné parametry pro povolení protokolování různé úrovně.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: ce6b6208b74063ea5d6e9868ca414f833b1a2045
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 50e4b9b8b8f9433ec725aaa982e969cec7afb91c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265781"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>V protokolech serveru v Azure databáze pro databázi MySQL
 V databázi Azure pro databázi MySQL je k dispozici uživatelům protokol pomalé dotazu. Přístup k protokolu transakcí není podporována. Protokol pomalé dotazu slouží k identifikaci kritické body pro řešení potíží. 

@@ -6,15 +6,15 @@ author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 05/18/2018
-ms.openlocfilehash: 0778492e6ff63bc80e9fc9d2c252f19d4ff78529
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: bbd38380370821c749a70d59a819a84ed06458a7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757481"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264795"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 

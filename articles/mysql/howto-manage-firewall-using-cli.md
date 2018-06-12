@@ -1,20 +1,21 @@
 ---
-title: "Vytvářet a spravovat databáze Azure pro pravidla brány firewall MySQL pomocí rozhraní příkazového řádku Azure"
-description: "Tento článek popisuje postup vytvoření a správě Azure databáze MySQL pravidla brány firewall pomocí příkazového řádku Azure CLI."
+title: Vytvářet a spravovat databáze Azure pro pravidla brány firewall MySQL pomocí rozhraní příkazového řádku Azure
+description: Tento článek popisuje postup vytvoření a správě Azure databáze MySQL pravidla brány firewall pomocí příkazového řádku Azure CLI.
 services: mysql
 author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: b142d08379f8a8fde20178668a4c1343f08aedbc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1bb60a1d6f14f0dc81047a2ffdd514724954fb14
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266053"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Vytvářet a spravovat databáze Azure pro pravidla brány firewall MySQL pomocí rozhraní příkazového řádku Azure
 Pravidla brány firewall na úrovni serveru umožňují správcům řídit přístup k databázi Azure pro Server databáze MySQL z konkrétní IP adresu nebo rozsah IP adres. Pomocí vhodného rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznamu a zobrazit pravidla brány firewall ke správě serveru. Přehled informací o Azure databáze MySQL brány firewall, najdete v článku [databáze Azure pro pravidla brány firewall serveru MySQL](./concepts-firewall-rules.md)
@@ -42,7 +43,7 @@ az login
 ```
 Tento příkaz vypíše kódu pro použití v dalším kroku.
 
-2. Použít webový prohlížeč otevře se stránka [https://aka.ms/devicelogin](https://aka.ms/devicelogin)a pak zadejte kód.
+2. Použít webový prohlížeč otevře se stránka [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin)a pak zadejte kód.
 
 3. V příkazovém řádku se přihlaste pomocí vašich přihlašovacích údajů Azure.
 

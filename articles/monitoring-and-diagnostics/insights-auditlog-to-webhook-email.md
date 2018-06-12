@@ -1,24 +1,19 @@
 ---
-title: "Volat webhook, jehož na výstrahu protokolu aktivita Azure | Microsoft Docs"
-description: "Zjistěte, jak směrování aktivity protokolu události do jiných služeb pro vlastní akce. Můžete například posílat zprávy SMS, protokolu chyby nebo upozornění tým prostřednictvím chatu nebo službou zasílání zpráv."
+title: Volat webhook, jehož u protokolu upozornění aktivita Azure (klasické)
+description: Zjistěte, jak směrování aktivity protokolu události do jiných služeb pro vlastní akce. Můžete například posílat zprávy SMS, protokolu chyby nebo upozornění tým prostřednictvím chatu nebo službou zasílání zpráv.
 author: johnkemnetz
-manager: orenr
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 64d333d1-7f37-4a00-9d16-dda6e69a113b
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.component: alerts
+ms.openlocfilehash: e825d0f2487c20c8c7f3d210d7180b07742d7173
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262456"
 ---
 # <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>Volat webhook, jehož na výstrahu protokolu aktivita Azure
 Webhooky můžete používat ke směrování Azure oznámení výstrahy k jiným systémům pro následné zpracování nebo pro vlastní akce. Webhook, jehož na výstrahu můžete použít ke směrování ke službám, které odesílají zprávy SMS, do protokolu chyb, upozornit na tým prostřednictvím chatu nebo služby zasílání zpráv nebo pro různé další akce. Můžete také nastavit tak výstrahu protokolu aktivit k odeslání e-mailu, když se aktivuje výstrahu.
@@ -111,7 +106,7 @@ Operaci POST obsahuje následující datové části JSON a schéma pro všechny
 | activityLog | Vlastnosti protokolu události.|
 | Autorizace |Řízení přístupu na základě rolí (RBAC) vlastnosti události. Tyto vlastnosti obvykle zahrnují **akce**, **role**, a **oboru**. |
 | akce | Akce zachycenou výstrahy. |
-| Obor | Rozsah výstrahy (tedy prostředků).|
+| scope | Rozsah výstrahy (tedy prostředků).|
 | kanály | Operace. |
 | Deklarace identity | Soubor informací, protože má vztah k deklarace identity. |
 | volající |Identifikátor GUID nebo uživatelské jméno uživatele, který provedl operaci, deklaraci nebo deklarace hlavní název služby, na základě dostupnosti. Může být pro určité systémová volání hodnotu null. |
@@ -127,10 +122,10 @@ Operaci POST obsahuje následující datové části JSON a schéma pro všechny
 | resourceGroupName |Název skupiny prostředků pro ovlivněných prostředků. |
 | resourceProviderName |Poskytovatel prostředků ovlivněných prostředků. |
 | status |Hodnotu řetězce, které uvádí stav operace. Běžné hodnoty zahrnují Začínáme, probíhá, bylo úspěšné, neúspěšné, aktivní a vyřešeno. |
-| subStatus |Obvykle zahrnuje stavový kód HTTP odpovídající volání REST. Může také obsahovat další řetězce, které popisují podřízeného stavu. Běžné substatus hodnoty zahrnují OK (stavový kód HTTP: 200), které byly vytvořeny (stavový kód HTTP: 201), platné (stavový kód HTTP: 202), ne obsahu (stavový kód HTTP: 204), chybný požadavek (stavový kód HTTP: 400), nebyl nalezen (stavový kód HTTP: 404), konflikt (stavový kód HTTP: 409 ), Vnitřní chybu serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a vypršel časový limit brány (kód stavu HTTP: 504). |
+| Podřízený stav |Obvykle zahrnuje stavový kód HTTP odpovídající volání REST. Může také obsahovat další řetězce, které popisují podřízeného stavu. Běžné substatus hodnoty zahrnují OK (stavový kód HTTP: 200), které byly vytvořeny (stavový kód HTTP: 201), platné (stavový kód HTTP: 202), ne obsahu (stavový kód HTTP: 204), chybný požadavek (stavový kód HTTP: 400), nebyl nalezen (stavový kód HTTP: 404), konflikt (stavový kód HTTP: 409 ), Vnitřní chybu serveru (kód stavu HTTP: 500), služba není k dispozici (kód stavu HTTP: 503) a vypršel časový limit brány (kód stavu HTTP: 504). |
 | subscriptionId |ID předplatného Azure. |
 | submissionTimestamp |Čas, kdy byla generována událost pomocí služby Azure, který požadavek zpracoval. |
-| resourceType | Typ prostředku, které vygenerovalo událost.|
+| Typ prostředku | Typ prostředku, které vygenerovalo událost.|
 | properties |Sada dvojic klíč/hodnota, který obsahuje podrobnosti o události. Například, `Dictionary<String, String>`. |
 
 ## <a name="next-steps"></a>Další postup

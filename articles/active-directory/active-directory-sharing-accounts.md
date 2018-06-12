@@ -14,11 +14,12 @@ ms.date: 11/13/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: b97ec4ffacead7630c267284f79f954ef03eff61
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1bdc7a4d50b81c615d9aca651c897796d9f60c00
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292272"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů s Azure AD
 ## <a name="overview"></a>Přehled
@@ -46,7 +47,7 @@ Uživatelé přihlašovat jednou pro účet své organizace. Tento účet je ste
 
 Sdílené účty nejen zvýšit dohledu a zlepšit použitelnost, budou také zvýšit zabezpečení. Uživatelé s oprávněními k použití pověření nevidíte sdílené heslo, ale spíše získání oprávnění používat heslo jako součást tok orchestrovat ověřování. Navíc některé aplikace jednotného přihlašování k heslo získáte možnost pomocí služby Azure AD pravidelně hesla výměny (update). Systém použije složitých hesel, která zvyšuje zabezpečení účtu. Správce můžete snadno udělit nebo odvolat přístup k aplikaci vědět, kdo má přístup k účtu, a který přistupoval v minulosti.
 
-Azure AD podporuje sdílené účty pro všechny Enterprise Mobility Suite (EMS), Premium nebo Basic licenci uživatelů, všech typů heslo jeden přihlašování aplikací. Účty pro všechny tisícům předem integrovaných aplikací v galerii aplikací můžete sdílet a můžete přidat vlastní aplikaci ověřování hesla s [vlastních aplikací jednotné přihlašování](active-directory-enterprise-apps-manage-sso.md).
+Azure AD podporuje sdílené účty pro všechny Enterprise Mobility Suite (EMS), Premium nebo Basic licenci uživatelů, všech typů heslo jeden přihlašování aplikací. Účty pro všechny tisícům předem integrovaných aplikací v galerii aplikací můžete sdílet a můžete přidat vlastní aplikaci ověřování hesla s [vlastních aplikací jednotné přihlašování](manage-apps/configure-single-sign-on-portal.md).
 
 Azure AD funkce, které umožňují sdílení účet:
 

@@ -1,23 +1,19 @@
 ---
-title: Vytvoření klasického aktivity protokolu výstrahy | Microsoft Docs
+title: Vytvoření klasického aktivity protokolu výstrahy
 description: Informování prostřednictvím serveru SMS, webhooku a e-mailu při určité události v protokolu aktivit.
 author: johnkemnetz
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/18/2017
 ms.author: johnkem
-ms.openlocfilehash: e0d92fcd6d3cbd50a2bcb8166b27b11bc86aad83
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 84bd82f479ce516152f50d5753e8d91940724c93
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263520"
 ---
 # <a name="create-activity-log-alerts-classic"></a>Vytvořit aktivitu protokolu výstrahy (klasické)
 
@@ -84,7 +80,7 @@ Další informace o oznámení o stavu služby najdete v tématu [výstrahy v pr
     >
     >
 
-8. Zadejte název do pole **název skupiny akce** pole a zadejte název do pole **krátký název** pole. Krátký název se používá namísto názvu skupiny úplné akce při odesílání oznámení pomocí této skupiny.
+8. Zadejte název do pole **název skupiny akce** pole a zadejte název do pole **krátký název** pole. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
 9.  Definujte seznam akcí, tím, že poskytuje akce:
 
