@@ -2,7 +2,7 @@
 title: Připojení k Dynamics 365 - Azure Logic Apps | Microsoft Docs
 description: Vytvořit a spravovat záznamy s Dynamics 365 (online) rozhraní API REST a Azure Logic Apps
 author: Mattp123
-manager: cfowler
+manager: jeconnoc
 ms.author: matp
 ms.date: 02/10/2017
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 015f587257603330eab9840edf661ba9675f4ba8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6ac45d45ed1df0e89eb27657a064a8c95ad4be79
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609891"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294839"
 ---
 # <a name="connect-to-dynamics-365-from-logic-app-workflows"></a>Připojit k aplikaci Dynamics 365 z pracovní postupy aplikace logiky
 

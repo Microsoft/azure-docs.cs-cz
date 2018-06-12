@@ -2,7 +2,7 @@
 title: Připojení k Dropboxu - Azure Logic Apps | Microsoft Docs
 description: Odesílat a spravovat soubory s Dropbox REST API a Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 07/15/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: b383dd89536ac8a67943b1b4ebf57229102f76cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 77203788a6329ed4c5b58419fbcf48a48da91b30
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609626"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295043"
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Začínáme s konektorem Dropbox
 Připojení k Dropboxu ke správě souborů. Můžete provádět různé akce, jako je například nahrávání, aktualizovat, získání a odstranit soubory v Dropbox.

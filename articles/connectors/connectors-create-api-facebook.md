@@ -2,7 +2,7 @@
 title: Připojení k síti Facebook - Azure Logic Apps | Microsoft Docs
 description: Spravovat časového harmonogramu a stránka s rozhraní REST API sítě Facebook a Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 11/07/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 5ee3ba9b15c4184b522a67b8bfbfe6a6c70c12b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 985f3cf70a07b3080f34181e64c5bb1419d530bd
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609110"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295002"
 ---
 # <a name="get-started-with-the-facebook-connector"></a>Začínáme s konektorem služby Facebook
 Připojení k síti Facebook a příspěvků na timeline, získat kanálů stránek a další. Facebook můžete:

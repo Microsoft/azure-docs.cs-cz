@@ -4,7 +4,7 @@ description: Naučte se zlepšit rychlost přenosu souborů a zvýšit výkon na
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
 ms.service: cdn
@@ -12,27 +12,28 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
-ms.author: mazha
-ms.openlocfilehash: 41e40c7e740e06654e7660c208db52fc2617d4b5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: bdff57275cf123079004ada732fe782d98399d71
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260392"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Zvýšení výkonu komprimací souborů v Azure CDN
 Kompresí souborů je jednoduchá ale účinná metoda a zvýšit rychlost přenosu souborů zvyšuje výkon načtení stránky snižuje velikost souboru před odesláním ze serveru. Kompresí souborů může snížit náklady na šířku pásma a poskytnout rychlejšího prostředí pro vaše uživatele.
 
 Existují dva způsoby, jak povolit kompresi souboru:
 
-- Povolte kompresi na původním serveru. V takovém případě CDN předá podél komprimovaných souborů a doručí aktualizace na klienty, kteří požadují je.
-- Povolte kompresi přímo na serveru CDN POP ("komprese za chodu"). V takovém případě CDN komprimaci soubory a slouží pro koncového uživatele, i v případě, že nebyly komprimované serverem původu.
+- Povolte kompresi na původním serveru. V takovém případě Azure CDN předá podél komprimovaných souborů a doručí aktualizace na klienty, kteří požadují je.
+- Povolit kompresi přímo na serveru CDN POP (*komprese za chodu*). V takovém případě CDN komprimaci soubory a slouží pro koncového uživatele, i v případě, že nebyly komprimované serverem původu.
 
 > [!IMPORTANT]
-> Změny konfigurace CDN může trvat nějakou dobu rozšíří v rámci sítě: 
-- Pro **Azure CDN Standard od společnosti Microsoft** profily, šíření obvykle dokončení dobu 10 minut. 
-- Pro **Azure CDN Standard od společnosti Akamai** profily, šíření obvykle dokončení během jedné minuty. 
-- Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle dokončení během 90 minut. 
+> Změny konfigurace Azure CDN může trvat nějakou dobu rozšíří v rámci sítě: 
+- Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
+- V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
+- Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle se dokončí za 10 minut. 
 >
 > Pokud jste nastavení komprese pro koncový bod CDN poprvé, zvažte, zda nevyčkat 1 – 2 hodiny, než při řešení problému Ujistěte se, že rozšíření nastavení komprese do bodů POP.
 > 
@@ -75,7 +76,7 @@ CDN úrovně standard a premium poskytují stejnou funkcionalitu kompresi, ale u
 
 1. Na stránce profil CDN vyberte **spravovat**.
    
-    ![Výběr spravovat CDN](./media/cdn-file-compression/cdn-manage-btn.png)
+    ![Vyberte spravovat CDN](./media/cdn-file-compression/cdn-manage-btn.png)
    
     Otevře se na portálu pro správu CDN.
 2. Najeďte myší **HTTP velké** a potom přejděte myší **nastavení mezipaměti** plovoucím panelem. Vyberte **komprese**.

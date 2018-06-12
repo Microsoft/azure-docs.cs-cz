@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 6189038a338a9151b23dbdad11d86e43709a96a0
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247940"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293292"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
@@ -71,7 +71,7 @@ Funkce Azure AD předem integrované podpory pro různé oblíbených aplikací 
 
 Seznam všech aplikací, pro kterou Azure AD podporuje předem integrovaných zřizování konektor, naleznete [seznam kurzů aplikace pro zřizování uživatelů](active-directory-saas-tutorial-list.md).
 
-Informace o tom, jak přidat podporu pro Azure AD zřizování uživatelů k aplikaci najdete v tématu [pomocí SCIM pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](active-directory-scim-provisioning.md).
+Informace o tom, jak přidat podporu pro Azure AD zřizování uživatelů k aplikaci najdete v tématu [pomocí SCIM pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](manage-apps/use-scim-to-provision-users-and-groups.md).
 
 Kontaktujte Azure AD technickému týmu požádat o zřizování podporu dalších aplikací, odeslání zprávy prostřednictvím [fóru pro zpětnou vazbu Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
 
@@ -106,7 +106,7 @@ Na obrazovce správy aplikací, zřizování je nakonfigurovaný v **zřizován�
 
     * **Filtr pro hodnoty atributu** -nabídky "Zdrojového objektu obor" v mapování atributů umožňuje filtrování na konkrétní atribut hodnoty. Například můžete zadat, že by měl být jenom uživatelé s atributem "Oddělení" "Prodeje" v oboru pro zřizování. Další informace najdete v tématu [pomocí oboru filtrů](active-directory-saas-scoping-filters.md).
 
-    * **Filtr pro přiřazení** -nabídky "Obor" v funkce zřizování > portálu v oddílu nastavení umožňuje určit, jestli by měl být pouze "přiřazené" Uživatelé a skupiny v oboru pro zřizování, nebo pokud by měly být všechny uživatele v adresáři služby Azure AD zřízení. Informace o "přiřazení" uživatelů a skupin najdete v tématu [přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md).
+    * **Filtr pro přiřazení** -nabídky "Obor" v funkce zřizování > portálu v oddílu nastavení umožňuje určit, jestli by měl být pouze "přiřazené" Uživatelé a skupiny v oboru pro zřizování, nebo pokud by měly být všechny uživatele v adresáři služby Azure AD zřízení. Informace o "přiřazení" uživatelů a skupin najdete v tématu [přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md).
     
 * **Nastavení** řízení operaci zřizování služby pro aplikaci, včetně toho, jestli je aktuálně spuštěna, nebo ne.
 
@@ -126,7 +126,7 @@ Pokud Azure AD je zdrojovém systému, služba zřizování používá [rozdílo
 Při spuštění zřizování služby, bude první synchronizace někdy provést:
 
 1. Dotaz na všechny uživatele a skupiny ze zdrojového systému, všechny atributy, které jsou definované v načítání [mapování atributů](active-directory-saas-customizing-attribute-mappings.md).
-2. Filtrování uživatelů a skupin, vrátí, pomocí kteréhokoli nakonfigurované [přiřazení](active-directory-coreapps-assign-user-azure-portal.md) nebo [na základě atributů filtry oborů](active-directory-saas-scoping-filters.md).
+2. Filtrování uživatelů a skupin, vrátí, pomocí kteréhokoli nakonfigurované [přiřazení](manage-apps/assign-user-or-group-access-portal.md) nebo [na základě atributů filtry oborů](active-directory-saas-scoping-filters.md).
 3. Pokud uživatel je nalezen přiřazení nebo v oboru pro zřizování, dotazuje službu cílovém systému pro odpovídající uživatele s využitím určené [odpovídající atributy](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties). Příklad: Pokud je odpovídající atribut název userPrincipal ve zdrojovém systému který mapuje uživatelské jméno v cílovém systému a pak službu zřizování dotazuje cílovém systému pro uživatelská jména, které se shodují s hodnotami název userPrincipal ve zdrojovém systému.
 4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen pomocí atributů vrácených ze zdrojového systému.
 5. Pokud je nalezen odpovídající uživatele, jsou aktualizovány pomocí atributů poskytované zdrojovém systému.
@@ -139,7 +139,7 @@ Některé aplikace, jako je podpora ServiceNow, Google Apps a pole pouze zřizov
 Po počáteční synchronizaci budou všechny následné synchronizace:
 
 1. Dotaz na zdrojovém systému pro všechny uživatele a skupiny, které byly aktualizovány od posledního vodoznak uložil.
-2. Filtrování uživatelů a skupin, vrátí, pomocí kteréhokoli nakonfigurované [přiřazení](active-directory-coreapps-assign-user-azure-portal.md) nebo [na základě atributů filtry oborů](active-directory-saas-scoping-filters.md).
+2. Filtrování uživatelů a skupin, vrátí, pomocí kteréhokoli nakonfigurované [přiřazení](manage-apps/assign-user-or-group-access-portal.md) nebo [na základě atributů filtry oborů](active-directory-saas-scoping-filters.md).
 3. Pokud uživatel je nalezen přiřazení nebo v oboru pro zřizování, dotazuje službu cílovém systému pro odpovídající uživatele s využitím určené [odpovídající atributy](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties).
 4. Pokud odpovídající uživatel nebyl nalezen v cílovém systému, je vytvořen pomocí atributů vrácených ze zdrojového systému.
 5. Pokud je nalezen odpovídající uživatele, jsou aktualizovány pomocí atributů poskytované zdrojovém systému.
@@ -242,7 +242,7 @@ Kontaktujte nás prostřednictvím [fóru pro zpětnou vazbu Azure Active Direct
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
 * [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
-* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](active-directory-scim-provisioning.md)
+* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Přehled synchronizace rozhraní API služby Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 * [Podrobný postup nasazení plán pro zřizování odchozí uživatelů aplikace](https://aka.ms/userprovisioningdeploymentplan)
 

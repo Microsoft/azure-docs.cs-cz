@@ -6,14 +6,14 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 6/08/2018
 ms.author: nepeters
-ms.openlocfilehash: ca8d883add04d623c17390a0b5031aaf08be0429
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596493"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260788"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes služby (AKS)
 
@@ -49,7 +49,7 @@ Když AKS zůstává ve verzi preview, ale doporučujeme vytvářet produkčníc
 
 ## <a name="when-will-acs-be-deprecated"></a>Pokud bude ACS zastaralá?
 
-Služba ACS přestanou přibližně v okamžiku, kdy AKS stane všeobecné Budete mít dobu 12 měsíců po tomto datu migrace clusterů do AKS. Během 12 měsíců můžete spustit všechny operace služby ACS.
+Služba ACS přestanou v době AKS, který se stane všeobecné Budete mít dobu 12 měsíců po tomto datu migrace clusterů do AKS. Během 12 měsíců můžete spustit všechny operace služby ACS.
 
 ## <a name="does-aks-support-node-autoscaling"></a>Podporuje AKS automatické škálování uzlu?
 
@@ -76,6 +76,10 @@ Pokud chcete spustit Windows Server kontejnery, musíte spustit uzly se systéme
 Každé nasazení AKS zahrnuje dvě skupiny prostředků. První je vytvořené vámi a obsahuje pouze AKS prostředek. Zprostředkovatel prostředků AKS automaticky vytvoří druhý během nasazení s názvem, jako je *MC_myResourceGroup_myAKSCluster_eastus*. Druhý skupina prostředků obsahuje všechny prostředky infrastruktury spojené s clusterem, jako jsou virtuální počítače, sítě a úložiště. Vytváří se ke zjednodušení vyčištění prostředků.
 
 Pokud vytváříte prostředky, které budou použity s AKS cluster, například účty úložiště nebo vyhrazené veřejné IP adresy, měli byste je umístit ve skupině automaticky generované prostředků.
+
+## <a name="does-aks-offer-a-service-level-agreement"></a>Nabízí AKS smlouvu o úrovni služeb?
+
+Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazník nákladů na služby by neměl být splněny úrovně publikované služby. Totiž volné AKS sám sebe není k dispozici uhradit bez nákladů a proto žádné formální SLA. Ale jsme snaží zachovat dostupnost alespoň podmínku 99.5 % serveru Kubernetes rozhraní API.
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

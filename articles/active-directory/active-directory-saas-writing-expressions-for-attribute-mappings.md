@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293156"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zapisují se výrazy pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování k aplikaci SaaS, je jeden z typů mapování atributů, které můžete zadat mapování u výrazu. Pro tyto musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů do formátů, které jsou více přijatelné pro aplikace SaaS.
@@ -91,8 +92,8 @@ Pokud je jedna z hodnot zdroj vícehodnotový atribut, pak každá hodnota v ten
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu. |
-| **start** |Požaduje se |celé číslo |V indexu **zdroj** řetězec, kde by se měl spustit dílčí řetězec. První znak v řetězci bude mít index 1, druhý znak bude mít index 2 a tak dále. |
-| **Délka** |Požaduje se |celé číslo |Délka dílčí řetězec. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **spustit** indexu do konce **zdroj** řetězec. |
+| **start** |Požaduje se |integer |V indexu **zdroj** řetězec, kde by se měl spustit dílčí řetězec. První znak v řetězci bude mít index 1, druhý znak bude mít index 2 a tak dále. |
+| **Délka** |Požaduje se |integer |Délka dílčí řetězec. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **spustit** indexu do konce **zdroj** řetězec. |
 
 - - -
 ### <a name="not"></a>není
@@ -175,7 +176,7 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |**Zdroj** hodnotu aktualizovat. |
 | **Výchozí hodnota** |Nepovinné |Řetězec |Výchozí hodnota má být použit při zdroj neodpovídá žádné klíče. Může být prázdný řetězec (""). |
-| **Klíč** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu s. |
+| **key** |Požaduje se |Řetězec |**Klíč** k porovnání **zdroj** hodnotu s. |
 | **value** |Požaduje se |Řetězec |Nahrazující hodnotou pro **zdroj** odpovídající klíč. |
 
 ## <a name="examples"></a>Příklady
@@ -256,7 +257,7 @@ Pokud kód stavu neodpovídá žádné předdefinované možnosti, použijte vý
 * [Automatizovat uživatele zřízení nebo zrušení zřízení k aplikacím SaaS](active-directory-saas-app-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
-* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](active-directory-scim-provisioning.md)
+* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Účet zřizování oznámení](active-directory-saas-account-provisioning-notifications.md)
 * [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
 

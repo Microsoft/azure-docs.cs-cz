@@ -1,8 +1,8 @@
 ---
-title: "Zřizování aplikací s filtry oborů | Microsoft Docs"
-description: "Další informace o použití oboru filtrů objekty v aplikacích, které podporují zřizování automatizované uživatelů z se zřídí, pokud objekt nemá splňují vaše podnikové požadavky."
+title: Zřizování aplikací s filtry oborů | Microsoft Docs
+description: Další informace o použití oboru filtrů objekty v aplikacích, které podporují zřizování automatizované uživatelů z se zřídí, pokud objekt nemá splňují vaše podnikové požadavky.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: bcfbda74-e4d4-4859-83bc-06b104df3918
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7a2322239945a529a544054c2273e37a3d65abf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d6f4f257d380d6521774afd23dbeaf6a94711c6d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293071"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikace na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlují, jak definovat pravidla na základě atributů, které určují, kteří uživatelé jsou zřízené do aplikace pomocí oboru filtrů.
@@ -29,7 +30,7 @@ Oboru filtr umožňuje Azure Active Directory (Azure AD) zřizování služby za
 
 Filtry oborů lze použít odlišně v závislosti na typu zřizování konektor:
 
-* **Odchozí zřizování z Azure AD pro aplikace SaaS**. Pokud Azure AD je zdrojovém systému [přiřazení uživatelů a skupin](active-directory-coreapps-assign-user-azure-portal.md) jsou nejběžnější metodou pro určení uživatelů, kteří jsou v oboru pro zřizování. Tato přiřazení také se používají pro povolení jednotného přihlašování a zadat jednu metodu pro správu přístupu a zřizování. Filtry oborů lze volitelně můžete kromě přiřazení nebo místo nich, k filtrování uživatelů podle hodnot atributů.
+* **Odchozí zřizování z Azure AD pro aplikace SaaS**. Pokud Azure AD je zdrojovém systému [přiřazení uživatelů a skupin](manage-apps/assign-user-or-group-access-portal.md) jsou nejběžnější metodou pro určení uživatelů, kteří jsou v oboru pro zřizování. Tato přiřazení také se používají pro povolení jednotného přihlašování a zadat jednu metodu pro správu přístupu a zřizování. Filtry oborů lze volitelně můžete kromě přiřazení nebo místo nich, k filtrování uživatelů podle hodnot atributů.
 
     >[!TIP]
     > Můžete zakázat zřizování na základě přiřazení pro podniková aplikace změnou nastavení v [oboru](active-directory-saas-app-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) nabídky v části Možnosti zřizování **synchronizaci všech uživatelů a skupin**. Pomocí této možnosti plus založená na atributu oboru filtrů nabízí vyšší výkon než pomocí přiřazení na základě skupiny.  
@@ -113,8 +114,8 @@ Oboru filtry jsou nakonfigurovány jako součást mapování atributů pro každ
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 * [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS](active-directory-saas-app-provisioning.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
-* [Zápis výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+* [Zápis výrazů pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Účet zřizování oznámení](active-directory-saas-account-provisioning-notifications.md)
-* [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](active-directory-scim-provisioning.md)
+* [Pomocí SCIM zapněte automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
 

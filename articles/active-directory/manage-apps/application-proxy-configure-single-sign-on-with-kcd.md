@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: ae79d081cc171fe904bf50b2341d7abd8f58e4f5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e3cc261576e38cc304dc740f89582f7fd857e1a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594495"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293030"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování Kerberos pro jednotné přihlašování pro vaše aplikace s Proxy aplikace
 
@@ -141,7 +141,7 @@ Ale v některých případech je požadavek úspěšně odeslán do back-end apl
 ## <a name="next-steps"></a>Další postup
 
 * [Postup konfigurace aplikace Proxy aplikace pro použití omezeného delegování protokolu Kerberos](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Řešení problémů, které máte s pomocí Proxy aplikace](../active-directory-application-proxy-troubleshoot.md)
+* [Řešení problémů, které máte s pomocí Proxy aplikace](application-proxy-troubleshoot.md)
 
 
 Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)

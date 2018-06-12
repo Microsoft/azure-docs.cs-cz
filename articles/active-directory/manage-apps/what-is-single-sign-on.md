@@ -14,11 +14,12 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b185f53f8f13ebbe1efc57a99b7d65269f5559c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292887"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená schopnost přístup ke všem aplikacím a prostředkům, které musíte udělat podnikání, po přihlášení pouze po pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, bez nutnosti ověřování (zadejte například heslo) ještě jednou.
@@ -58,7 +59,7 @@ Pokud jste již byly zaprotokolovány do služby Azure AD, a chcete pro přístu
 
 Federované jednotné přihlašování s aplikacemi, které podporují 2.0 SAML, WS-Federation, může podporovat Azure AD nebo OpenID connect protokoly.
 
-Viz také: [Správa certifikátů pro federované jednotné přihlašování](../active-directory-sso-certs.md)
+Viz také: [Správa certifikátů pro federované jednotné přihlašování](manage-certificates-for-federated-single-sign-on.md)
 
 ### <a name="password-based-single-sign-on"></a>Jednotné přihlašování pomocí hesla
 Konfigurace založené na heslech jednotné přihlašování umožňuje uživatelům ve vaší organizaci být automaticky přihlášeni k aplikaci SaaS jiných výrobců službou Azure AD pomocí informací o účtu uživatele z aplikace SaaS jiných výrobců. Když povolíte tuto funkci, Azure AD shromažďuje a bezpečně ukládá informace o uživatelském účtu a související heslo.
@@ -193,7 +194,7 @@ Tyto odkazy použít stejné mechanismy řízení přístupu jako panel přístu
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](../active-directory-saas-tutorial-list.md)
 * [Vyhledání aplikace neschválená cloudových aplikací s Cloud App Discovery](cloud-app-discovery.md)
-* [Úvod do správy přístupu k aplikacím](../active-directory-managing-access-to-apps.md)
+* [Úvod do správy přístupu k aplikacím](what-is-access-management.md)
 * [Porovnání funkcí pro správu externí identity ve službě Azure AD](../active-directory-b2b-compare-b2c.md)
 
 

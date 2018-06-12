@@ -15,11 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c3f07aa0ef4fea773e214e3e161a61e9337dc617
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 673f41e368d54aeed903400179a818e534845860
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292734"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekty topologie sítě při použití aplikace Proxy Azure Active Directory
 
@@ -175,4 +176,4 @@ Můžete také použít jeden další variant v této situaci. Pokud většina u
 - [Povolení Proxy aplikace](application-proxy-enable.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolení podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
-- [Řešení problémů, které máte s pomocí Proxy aplikace](../active-directory-application-proxy-troubleshoot.md)
+- [Řešení problémů, které máte s pomocí Proxy aplikace](application-proxy-troubleshoot.md)

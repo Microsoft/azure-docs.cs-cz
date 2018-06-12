@@ -4,7 +4,7 @@ description: Azure CDN při ukládání řetězců dotazů ovládací prvky ukl�
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: mazha
-ms.openlocfilehash: fcb4676325066dd6960070d996b1779fb3471dd9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: aa553dfc04a755be1169fa117ec66dd10ea75b54
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260426"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Ovládací prvek Azure CDN ukládání do mezipaměti chování řetězce dotazu - úrovně standard
 > [!div class="op_single_selector"]
@@ -50,17 +51,17 @@ K dispozici jsou tři režimy řetězec dotazu:
    
 2. V levém podokně v části nastavení, klikněte na tlačítko **ukládání do mezipaměti pravidla**.
    
-    ![Ukládání do mezipaměti CDN tlačítko pravidla](./media/cdn-query-string/cdn-caching-rules-btn.png)
+    ![Tlačítko Pravidla ukládání do mezipaměti CDN](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
 3. V **chování ukládání řetězců s dotazy** seznam, vyberte režim řetězec dotazu a pak klikněte na tlačítko **Uložit**.
    
    ![Řetězec dotazu CDN možnosti ukládání do mezipaměti](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
-> Protože trvá, než se registrace rozšíří v rámci CDN, nemusí být okamžitě viditelné změny nastavení mezipaměti řetězec:
-> - Pro **Azure CDN Standard od společnosti Microsoft** profily, šíření obvykle dokončení dobu 10 minut. 
-> - Pro **Azure CDN Standard od společnosti Akamai** profily, šíření obvykle dokončení během jedné minuty. 
-> - Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle dokončení během 90 minut. 
+> Protože trvá, než se registrace rozšíří v rámci Azure CDN, nemusí být okamžitě viditelné změny nastavení mezipaměti řetězec:
+> - Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
+> - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
+> - Pro **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon** profily, šíření obvykle se dokončí za 10 minut. 
 
 
 

@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: ccc876b2421641271e73ad72ec0c00a10792f8b3
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3a77393f01fd5b6e2d2280b52bd45c6b6f61f7d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293054"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace LucidChart pro zřizování automatické uživatelů
 
@@ -39,7 +40,7 @@ Azure Active Directory používá koncept označované jako "úlohy" k určení 
 
 Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci LucidChart. Jakmile se rozhodli, můžete přiřadit těmto uživatelům aplikace LucidChart podle pokynů tady:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](active-directory-coreapps-assign-user-azure-portal.md)
+[Přiřazení uživatele nebo skupiny do aplikace enterprise](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Důležité tipy pro přiřazování uživatelů do LucidChart
 
@@ -94,7 +95,7 @@ Další informace o tom, jak číst zřizování protokoly služby Azure AD najd
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa uživatelů zřizování účtu pro podnikové aplikace](active-directory-enterprise-apps-manage-provisioning.md)
+* [Správa uživatelů zřizování účtu pro podnikové aplikace](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další postup

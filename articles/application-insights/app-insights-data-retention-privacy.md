@@ -1,8 +1,8 @@
 ---
-title: "Uchovávání dat a úložiště v Azure Application Insights | Microsoft Docs"
-description: "Prohlášení o zásadách uchovávání dat a ochrana osobních údajů"
+title: Uchovávání dat a úložiště v Azure Application Insights | Microsoft Docs
+description: Prohlášení o zásadách uchovávání dat a ochrana osobních údajů
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: a6268811-c8df-42b5-8b1b-1d5a7e94cbca
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294062"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -161,7 +162,7 @@ Sady SDK se liší mezi platformami a je několik součástí, které můžete n
 | [Přidání Application Insights SDK do projektu webové rozhraní .NET][greenbrown] |ServerContext<br/>Odvodit<br/>Čítače výkonu<br/>Požadavky<br/>**Výjimky**<br/>Relace<br/>uživatelé |
 | [Nainstalujte monitorování stavu ve službě IIS][redfield] |Závislosti<br/>ServerContext<br/>Odvodit<br/>Čítače výkonu |
 | [Přidejte Application Insights SDK do webové aplikace Java][java] |ServerContext<br/>Odvodit<br/>Žádost<br/>Relace<br/>uživatelé |
-| [Přidá do webové stránky JavaScript SDK][client] |ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>Ajax |
+| [Přidá do webové stránky JavaScript SDK][client] |ClientContext <br/>Odvodit<br/>Stránka<br/>ClientPerf<br/>AJAX |
 | [Definovat výchozí vlastnosti][apiproperties] |**Vlastnosti** na všechny standardní a vlastní události |
 | [Volání TrackMetric][api] |Číselné hodnoty.<br/>**Vlastnosti** |
 | [Volání sledovat *][api] |Název události<br/>**Vlastnosti** |
@@ -183,11 +184,11 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v části své dokumenty.
 | Události |Název události a hodnotu |
 | PageViews |Název adresy URL a stránky nebo obrazovky |
 | Výkonu klienta |Název adresy URL/stránky, čas načítání prohlížeče |
-| Ajax |Volání protokolu HTTP z webové stránky k serveru |
+| AJAX |Volání protokolu HTTP z webové stránky k serveru |
 | Požadavky |Adresa URL, doba trvání, kód odpovědi |
 | Závislosti |Typ (SQL, protokolu HTTP,...), připojovací řetězec nebo identifikátor URI, synchronizace nebo asynchronní, doba trvání, úspěch, příkaz jazyka SQL (s monitorování stavu) |
 | **Výjimky** |Typ, **zpráva**, zpětná volání, zdrojového souboru a řádku číslo id vlákna |
-| Havárie |Id procesu, id nadřazeného procesu havárií id vlákna; Oprava aplikace, id, sestavení;  Typ výjimky, adresu, důvod; zakódovaná symboly a registrů, binární počáteční a koncové adresy, binární název a cesta, typ procesoru |
+| Chyby |Id procesu, id nadřazeného procesu havárií id vlákna; Oprava aplikace, id, sestavení;  Typ výjimky, adresu, důvod; zakódovaná symboly a registrů, binární počáteční a koncové adresy, binární název a cesta, typ procesoru |
 | Trasování |**Zpráva** a úroveň závažnosti |
 | Čítače výkonu |Čas procesoru, dostupná paměť, rychlost požadavků, výjimka sazba, proces nesdílených bajtů, vstupně-výstupní operace sazba, doba trvání požadavku, délka fronty požadavků |
 | Dostupnost |Kód odpovědi webového testu, doba trvání jednotlivých test krok, název testu, časové razítko, úspěch, doby odezvy, umístění testu |
@@ -195,8 +196,8 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v části své dokumenty.
 
 Můžete [vypnout některá data pomocí úpravy souboru ApplicationInsights.config][config]
 
-## <a name="credits"></a>Kredity
-Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici z [http://www.maxmind.com](http://www.maxmind.com).
+## <a name="credits"></a>Závěrečné titulky
+Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici z [ http://www.maxmind.com ](http://www.maxmind.com).
 
 
 

@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 53ade76b9dbdc27df90da1f7e197464816529d1d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295757"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorování Docker aplikací ve službě Application Insights
 Události životního cyklu a výkonu čítače z [Docker](https://www.docker.com/) kontejnery může být v grafu zobrazena na Application Insights. Nainstalujte [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) bitové kopie v kontejneru v hostiteli a zobrazí čítače výkonu pro hostitele, a také pro jiné bitové kopie.

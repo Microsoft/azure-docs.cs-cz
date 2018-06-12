@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d27e687acf62e4a1e96f1bb49607618dff45512b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628500"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261674"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT centrální
 
@@ -86,10 +86,40 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
     > [!NOTE]
     > Můžete přidat více bitových kopií, odkazy a mřížky.
-
-1. Vypnout **režimu návrhu**.
+  
+    1. Vypnout **režimu návrhu**.
 
     ![Návrh režimu mimo](media/howto-use-device-sets/image10.png)
+
+
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace Mapa umístění ve vašem zařízení nastaví řídicí panel 
+Můžete přidat sady umístění mapu, která bude vizualizovat umístění zařízení na mapě. 
+
+Chcete-li přidat Mapa umístění na vašem zařízení nastaví řídicí panel, musí mít vlastnost umístění nakonfigurované v šabloně zařízení, najdete v části [vytvořit vlastnost umístění používá technologii Azure mapy](howto-set-up-template.md).
+
+
+1. Na zařízení nastaví řídicí panel vyberte mapu z knihovny. 
+
+    ![Zařízení nastaví mapy řídicí panel](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. Zadejte název a zvolte vlastnost umístění, které jste dříve nakonfigurovali jako součást vlastností vaše zařízení.
+
+    ![Konfigurace mapy řídicí panel](media/howto-use-device-sets/LocationMaps2.png)
+
+3. Uložit a zobrazí mapy dlaždici zobrazení umístění zařízení v nastavení zařízení.
+
+    ![Uložení řídicího panelu mapy](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. Nyní když operátor zobrazení řídicího panelu sady zařízení, tak může vidět všechny dlaždice jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna zařízení umístění na první pohled!
+
+    ![Operátor mapy zobrazení řídicího panelu](media/howto-use-device-sets/LocationMaps4.png)
+
+    Bude moct změnit velikost mapy požadovaná velikost.
+
+
+
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurace seznamu pro vaše zařízení sadu
 
