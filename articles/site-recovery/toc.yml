@@ -235,6 +235,8 @@
               href: vmware-azure-manage-configuration-server.md
             - name: Správa konfiguračního serveru pro replikaci fyzických serverů
               href: physical-manage-configuration-server.md
+            - name: Správa procesních serverů
+              href: vmware-azure-manage-process-server.md
             - name: Správa serverů vCenter
               href: vmware-azure-manage-vcenter.md
             - name: Odebrání serverů a zakázání ochrany

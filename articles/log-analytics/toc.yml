@@ -28,7 +28,11 @@
 - name: Koncepty
   items:
     - name: Přechod na portál OMS
-      href: log-analytics-oms-portal-faq.md
+      items:
+        - name: Přehled
+          href: log-analytics-oms-portal-transition.md
+        - name: Časté dotazy
+          href: log-analytics-oms-portal-faq.md
     - name: Upgrade pracovního prostoru
       items:
         - name: Přehled upgradu
