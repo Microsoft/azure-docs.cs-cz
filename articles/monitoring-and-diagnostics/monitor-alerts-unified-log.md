@@ -1,25 +1,19 @@
 ---
-title: Přihlášení výstrahy monitorování Azure – výstrahy | Microsoft Docs
+title: Výstrahy protokolu v nástroji Sledování Azure
 description: Aktivační událost e-mailů, oznámení, adresy URL weby volání (webhooky) nebo při splnění zadané podmínky analytické dotazu pro výstrahy Azure automation.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: monitoring
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: 175e512d0bdaa84d5251f4bbdb09aed3aed436f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: alerts
+ms.openlocfilehash: aab3c843493048291583bea111a52fe3356dc0f0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638717"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264370"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokol výstrah v monitorování Azure – výstrahy 
 Tento článek obsahuje podrobnosti o výstrahách protokolu se jeden z typů výstrah, které jsou podporovány v rámci nové [Azure výstrahy](monitoring-overview-unified-alerts.md) a povolit uživatelům analytické platformě Azure, je použít jako základ pro zobrazení výstrah... Podrobnosti o výstrahách metrika pomocí protokolů [téměř upozornění v reálném čase metrika](monitoring-near-real-time-metric-alerts.md)

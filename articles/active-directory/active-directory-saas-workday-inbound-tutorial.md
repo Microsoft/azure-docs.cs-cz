@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: daeb41d9094077950223820f8580ae057d039ef0
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261232"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -372,7 +373,7 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **PreferredNameData**  |  displayName |     |   Vytvoření + aktualizace |
 | **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
 | **SupervisoryOrganization**  | oddělení  |     |  Vytvoření + aktualizace |
-| **ManagerReference**   | Správce  |     |  Vytvoření + aktualizace |
+| **ManagerReference**   | manažer  |     |  Vytvoření + aktualizace |
 | **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace | 
 | **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
 | **Okres**   |   l   |     | Vytvoření + aktualizace |
@@ -397,7 +398,7 @@ Po instalaci agenta, spusťte příkazy prostředí Powershell následující ko
 
 **Příkaz #1**
 
-> CD "C:\Program Files\Microsoft Azure AD Connect, zřizování Agent\Modules\AADSyncAgent" agenta\\moduly\\AADSyncAgent
+> CD "C:\Program Files\Microsoft Azure AD Connect zřizování Agent\Modules\AADSyncAgent"
 
 > Import-Module "C:\Program Files\Microsoft Azure AD Connect zřizování Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
