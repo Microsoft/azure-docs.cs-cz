@@ -1,10 +1,10 @@
 ---
-title: "Ověření XML - Azure Logic Apps | Microsoft Docs"
-description: "Ověření XML s schémata pro scénáře Azure Logic Apps a B2B pomocí Enterprise integračního balíčku"
+title: Ověření XML - Azure Logic Apps | Microsoft Docs
+description: Ověření XML s schémata pro scénáře Azure Logic Apps a B2B pomocí Enterprise integračního balíčku
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
-manager: anneta
+manager: jeconnoc
 editor: cgronlun
 ms.assetid: d700588f-2d8a-4c92-93eb-e1e6e250e760
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 9c4b2c1b2fdd9bf70775e5fd4369d1633258ae2a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 901f0e576d28ab163fe2c46dff0594a338fbaf73
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299595"
 ---
 # <a name="validate-xml-for-enterprise-integration"></a>Ověření XML pro integraci enterprise
 
@@ -58,6 +59,6 @@ Nyní jste hotovi s nastavením vašeho konektoru ověření. V reálné aplikac
 
 Pokud chcete otestovat ověření akci, vytvořte žádost na koncový bod HTTP.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Další informace o integračního balíčku Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")   
 

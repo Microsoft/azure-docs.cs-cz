@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 0c18fc065ae4d9a9401a8d603f051e9d6236c538
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2c7ea043d2da41442829321ac663325f30ff066
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297324"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Připojit účtu Amazon Web Services
 
@@ -91,7 +92,7 @@ Následující části vás provede procesem vytvoření jen pro čtení uživat
 
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>Konfigurace přístupu na základě uživatele AWS IAM v náklady na správu
 
-1. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com/ a přihlásit se.
+1. Otevřete portál Cloudyn z portálu Azure nebo přejděte na https://azure.cloudyn.com/ a přihlaste se.
 2. Kliknutím na ikonu symbol a pak vyberte **cloudové účty**.
 3. Ve správě účtů, vyberte **AWS účty** a pak klikněte **přidat nové +**.
 4. Pro **název účtu**, zadejte název účtu.

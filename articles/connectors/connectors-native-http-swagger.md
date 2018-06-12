@@ -1,11 +1,11 @@
 ---
-title: "Volání REST koncové body pomocí protokolu HTTP + Swagger konektor pro Azure Logic Apps | Microsoft Docs"
-description: "Připojit k koncové body REST z aplikace logiky prostřednictvím Swagger pomocí protokolu HTTP + Swagger konektoru"
+title: Volání REST koncové body pomocí protokolu HTTP + Swagger konektor pro Azure Logic Apps | Microsoft Docs
+description: Připojit k koncové body REST z aplikace logiky prostřednictvím Swagger pomocí protokolu HTTP + Swagger konektoru
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: 0487dbedddee684c75420bd66effe2c963a18624
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296515"
 ---
 # <a name="get-started-with-the-http--swagger-action"></a>Začínáme s HTTP + Swagger akce
 
@@ -79,25 +80,25 @@ Aktivační událost je událost, která můžete použít ke spuštění pracov
 
 | Trigger | Popis |
 | --- | --- |
-| HTTP + swagger |Ujistěte se, volání protokolu HTTP a vrátit obsahu odpovědi |
+| HTTP + Swagger |Ujistěte se, volání protokolu HTTP a vrátit obsahu odpovědi |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger akce
 Akce je operace, která se provádí v pracovním postupu, který je definován v aplikaci logiky. [Další informace o akcích.](connectors-overview.md) HTTP + Swagger konektor má jednu možné akci.
 
 | Akce | Popis |
 | --- | --- |
-| HTTP + swagger |Ujistěte se, volání protokolu HTTP a vrátit obsahu odpovědi |
+| HTTP + Swagger |Ujistěte se, volání protokolu HTTP a vrátit obsahu odpovědi |
 
 ### <a name="action-details"></a>Detaily akce
 HTTP + Swagger konektor se dodává s možné jednu akci. Dále najdete informace o jednotlivých akce, jejich povinné a nepovinné vstupní pole a odpovídající výstup podrobnosti, které jsou spojeny s jejich využití.
 
-#### <a name="http--swagger"></a>HTTP + swagger
+#### <a name="http--swagger"></a>HTTP + Swagger
 Pomoc při metadat Swagger Zkontrolujte odchozí požadavku HTTP.
 Znak hvězdičky (*) znamená povinné pole.
 
 | Zobrazované jméno | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Metoda * |metoda |Příkaz HTTP, používat. |
+| Metoda * |method |Příkaz HTTP, používat. |
 | IDENTIFIKÁTOR URI * |identifikátor uri |Identifikátor URI pro požadavek HTTP. |
 | Záhlaví |hlavičky |Objekt JSON hlaviček HTTP, které chcete zahrnout. |
 | Tělo |hlavní část |Požadavek HTTP. |
@@ -105,13 +106,13 @@ Znak hvězdičky (*) znamená povinné pole.
 
 **Podrobnosti o výstupu**
 
-Odpověď HTTP
+Odpověď protokolu HTTP
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Záhlaví |Objekt |Hlavičky odpovědi |
-| Tělo |Objekt |Objekt odpovědi |
-| Stavový kód |celá čísla |Stavový kód protokolu HTTP |
+| Záhlaví |objekt |Hlavičky odpovědi |
+| Tělo |objekt |Objekt odpovědi |
+| Stavový kód |celá čísla |Stavový kód HTTP |
 
 ### <a name="http-responses"></a>Odpovědi HTTP
 Při volání různé akce, může být určité odpovědi. Následuje tabulka, která popisuje odpovídající odpovědi a popisy.

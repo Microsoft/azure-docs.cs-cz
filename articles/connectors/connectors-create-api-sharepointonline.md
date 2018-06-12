@@ -1,11 +1,11 @@
 ---
-title: "Naučte se používat konektor služby SharePoint Online v aplikace logiky | Microsoft Docs"
-description: "Vytvoření aplikace logiky s konektorem služby SharePoint Online ke správě seznamů na webu služby SharePoint."
+title: Naučte se používat konektor služby SharePoint Online v aplikace logiky | Microsoft Docs
+description: Vytvoření aplikace logiky s konektorem služby SharePoint Online ke správě seznamů na webu služby SharePoint.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/19/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 9fdd5ff83bee974953331791f38e1ce8ba8b6dc3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: be104080e1056fa2181e54919d014154d16a60a4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296454"
 ---
 # <a name="get-started-with-the-sharepoint-online-connector"></a>Začínáme s konektorem služby SharePoint Online
 Konektor služby SharePoint Online použijte ke správě seznamy služby SharePoint.  

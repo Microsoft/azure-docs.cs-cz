@@ -1,11 +1,11 @@
 ---
-title: "Zpracování typy obsahu – Azure Logic Apps | Microsoft Docs"
-description: "Jak se má Azure Logic Apps zacházet s typy obsahu v návrhu a prostředí runtime"
+title: Zpracování typy obsahu – Azure Logic Apps | Microsoft Docs
+description: Jak se má Azure Logic Apps zacházet s typy obsahu v návrhu a prostředí runtime
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cd1f08fd-8cde-4afc-86ff-2e5738cc8288
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ac67838344bbd10384299c086ff096fbe5dec6a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 809cc8524bf0d9922aec1f88aa5bfe3b8f2f4d78
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297117"
 ---
 # <a name="handle-content-types-in-logic-apps"></a>Zpracování typů obsahu v aplikace logiky
 
@@ -55,7 +56,7 @@ Aktivační událost požadavku umožňuje zadejte schéma JSON pro datové čá
 
 `Parse JSON` Akce umožňuje analyzovat obsah JSON do popisný tokenů pro používání aplikace logiky. Podobně jako na žádost o aktivaci, tato akce vám umožní zadat nebo Generovat schéma JSON pro obsah, který chcete analyzovat. Tento nástroj umožňuje využívání data ze služby Service Bus, Azure Cosmos DB a tak dále, mnohem jednodušší.
 
-![Analyzovat JSON](./media/logic-apps-content-type/ParseJSON.png)
+![Parsovat JSON](./media/logic-apps-content-type/ParseJSON.png)
 
 ## <a name="textplain"></a>text/plain
 
@@ -72,15 +73,15 @@ Pokud v další akci, odešlete žádost jako text jinou žádost (`@body('flatf
 
 Modul aplikace logiky vždy zachovává `Content-Type` přijatou v požadavku HTTP nebo odpovědi. Pokud modul přijímá obsah s `Content-Type` z `application/octet-stream`, a uvedete, že obsah v rámci následné akce bez přetypování, odchozí žádost má `Content-Type`: `application/octet-stream`. Tímto způsobem modul může zaručit, že data nejsou ztraceny při přesouvání v pracovním postupu. Však stavu akce (vstupy a výstupy) je uložena v objektu JSON, protože stav prochází přes pracovního postupu. Takže pokud chcete zachovat některé typy dat, modul převede obsah do binární kódováním base64 řetězec s příslušnou metadata, která chrání i `$content` a `$content-type`, které jsou automaticky převést. 
 
-* `@json()`-vrhá dat`application/json`
-* `@xml()`-vrhá dat`application/xml`
-* `@binary()`-vrhá dat`application/octet-stream`
-* `@string()`-vrhá dat`text/plain`
-* `@base64()`-Převede obsah na řetězec ve formátu base64
-* `@base64toString()`-Převede řetězec s kódováním base64 do`text/plain`
-* `@base64toBinary()`-Převede řetězec s kódováním base64 do`application/octet-stream`
-* `@encodeDataUri()`-kóduje řetězce jako bajtové pole dataUri
-* `@decodeDataUri()`-dekóduje dataUri do bajtového pole
+* `@json()` -vrhá dat `application/json`
+* `@xml()` -vrhá dat `application/xml`
+* `@binary()` -vrhá dat `application/octet-stream`
+* `@string()` -vrhá dat `text/plain`
+* `@base64()` -Převede obsah na řetězec ve formátu base64
+* `@base64toString()` -Převede řetězec s kódováním base64 do `text/plain`
+* `@base64toBinary()` -Převede řetězec s kódováním base64 do `application/octet-stream`
+* `@encodeDataUri()` -kóduje řetězce jako bajtové pole dataUri
+* `@decodeDataUri()` -dekóduje dataUri do bajtového pole
 
 Například, pokud se vám zobrazila požadavek HTTP s `Content-Type`: `application/xml`:
 

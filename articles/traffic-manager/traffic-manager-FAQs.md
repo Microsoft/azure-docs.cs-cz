@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 29c7994485eeb2b3fdde52d1794704ecb51d65e5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301061"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager nejčastější dotazy (FAQ)
 
@@ -85,10 +86,18 @@ Pokud dotaz DNS pojmenováváme v Traffic Manageru, nastaví hodnotu v odpovědi
 
 Můžete nastavit, v na úrovni profilu, TTL DNS v rozsahu od 0 sekund a až 2 147 483 647 sekund (maximální rozsah, který je kompatibilní s [definicí RFC 1035](https://www.ietf.org/rfc/rfc1035.txt )). Hodnota TTL 0 znamená, že podřízené překladače služby DNS Neukládat do mezipaměti odpovědi na dotazy a všechny dotazy se očekává k dosažení servery pro překlad DNS Traffic Manageru.
 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Jak můžete porozumět svazku dotazů přicházející do mého profilu? 
+Zadat jednu z metriky položek Traffic Managerem je počet dotazů profil odpověděl. Tyto informace můžete získat na úrovni agregace profil, nebo můžete rozdělit ho dále najdete objem dotazy, které byly vráceny specifické koncové body. Kromě toho můžete nastavit upozornění pro upozornění, pokud odpověď svazku dotazu protne podmínky, že jste nastavili. Další podrobnosti [Traffic Manager metriky a výstrahy](traffic-manager-metrics-alerts.md).
+
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Metodu směrování provozu Traffic Manageru Geographic
 
 ### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Jaké jsou některé případy použití, kde geografické směrování je užitečné? 
 Zeměpisná typ směrování lze použít v žádném scénáři, kde Azure zákazníků potřebuje k rozlišení uživatelů podle zeměpisné oblasti. Například používáte metodu směrování provozu geografické, můžete uživatelům z určitých oblastí v jiné uživatelské rozhraní než ty, které z jiných oblastí. Dalším příkladem je dodržování vyžaduje suverenity místní data, které vyžadují, aby uživatelé z určité oblasti zpracovat pouze pomocí koncových bodů v této oblasti.
+
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Jak rozhodnout, pokud mám by měl použít metody směrování podle výkonu nebo geografické metody směrování? 
+Klíčovým rozdílem mezi tyto dvě metody oblíbených směrování je, že v výkonu směrování hlavním cílem je odesílat provoz do koncového bodu, který může poskytnout nejnižší latenci volajícího, že v Geographic směrování hlavním cílem je k vynucení geografická – metoda plotu pro své volající, takže je možné úmyslně směrovat na konkrétní. Překrytí se stane vzhledem k tomu, že existuje korelace mezi zeměpisné míru a nižší latenci, i když to není vždy hodnotu true. Může být koncový bod jiném datovém typu geography, který může poskytovat lepší latence pro volající a v takovém případě směrování výkonu bude uživateli odeslat do tohoto koncového bodu, ale geografické směrování vždycky odešlou je ke koncovému bodu namapování pro jejich geografické oblasti. Chcete-li ji vymazat, podívejte se na následující příklad - s Geographic další směrování můžete provádět neobvyklé mapování jako odesílat veškerý přenos z Asie do koncových bodů v USA a veškerý provoz USA s koncovými body v Asii. V takovém případě geografické směrování záměrně provede přesně co jste nakonfigurovali na práci a optimalizace výkonu není potřeba rozlišovat. 
+>[!NOTE]
+>Mohou existovat scénáře, kde může být nutné i výkon a geografické směrování možnosti pro tyto scénáře vnořených profilů může být služba skvělou volbou. Například můžete nastavit profil nadřazené s geografické směrování, kde odesílat veškerý přenos z USA a Kanady vnořené profil, který má koncové body v USA a používat výkonu směrování odesílat tyto provoz do nejlepší koncový bod v dané sadě. 
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Jaké jsou oblasti, které jsou podporovány nástrojem Traffic Manager pro zeměpisnou směrování? 
 Hierarchie země nebo oblast, která se používá Traffic Managerem najdete [zde](traffic-manager-geographic-regions.md). Při této stránky je udržováno odpovídalo nejnovějším změnám, můžete také programově načíst stejné informace pomocí [REST API služby Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
@@ -330,6 +339,9 @@ Klikněte na tlačítko [zde](https://azuretrafficmanagerdata.blob.core.windows.
 Počet stavů Traffic Manager zkontroluje, že dosažení váš koncový bod, závisí na následujících:
 - hodnota, která jste nastavili pro monitorování intervalu (interval menší znamená další požadavky cílová stránka na váš koncový bod v jakékoli dané časové období).
 - počet umístění, ze kterých kontroly stavu pocházejí (IP adresy, kde může být těmito kontrolami je uveden v části Nejčastější dotazy pro předchozí).
+
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Jak mohu získat oznamování Pokud jeden z mých koncových bodů výpadku? 
+Jedním z metriky zadaný správcem provoz je stav koncových bodů v profilu. Můžete to vidět jako agregace všechny koncové body v profilu (například 75 % koncové body jsou v pořádku), nebo v na úrovni koncového bodu. Metriky Traffic Manageru se zveřejňují přes Azure monitorování a můžete použít jeho [výstrahy možnosti](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) dostávat oznámení, když dojde ke změně v stav váš koncový bod. Další podrobnosti najdete v tématu [Traffic Manager metriky a výstrahy](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Správce provozu vnořených profilů
 

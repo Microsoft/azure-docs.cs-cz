@@ -1,11 +1,11 @@
 ---
-title: "Plán úlohy a pravidelně spouštění pracovních postupů – Azure Logic Apps | Microsoft Docs"
-description: "Vytvoření a plánování pravidelně spuštěné úlohy, akce, pracovní postupy, procesy a úloh s logic apps"
+title: Plán úlohy a pravidelně spouštění pracovních postupů – Azure Logic Apps | Microsoft Docs
+description: Vytvoření a plánování pravidelně spuštěné úlohy, akce, pracovní postupy, procesy a úloh s logic apps
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 3bd396355681cdde486cfbea7004c9c1aece09da
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296783"
 ---
 # <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Vytvoření a naplánovat pravidelné spuštěné úlohy službou Azure Logic Apps
 
@@ -147,7 +148,7 @@ Tady je příklad [definici aktivace opakování](../logic-apps/logic-apps-workf
 **Otázka:** co jsou další příklad opakování plány? </br>
 **Odpověď:** Zde jsou další příklady:
 
-| Opakování | Interval | Frekvence | Čas zahájení | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
+| Opakování | Interval | Frekvence | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
 | ---------- | -------- | --------- | ---------- | ------------- | -------------- | ---------------- | ---- |
 | Spustit každých 15 minut (žádné počáteční datum a čas) | 15 | Minuta | {none} | {není k dispozici} | {none} | {none} | Tento plán okamžitě spustí a pak vypočítá budoucí opakování podle času posledního spuštění. | 
 | Spustit každých 15 minut (s počáteční datum a čas) | 15 | Minuta | *startDate*T*startTime*Z | {není k dispozici} | {none} | {none} | Nelze spustit tento plán *všechny dřív* než zadaná počáteční datum a čas, pak vypočítá budoucí opakování podle času posledního spuštění. | 
@@ -177,7 +178,7 @@ Tady je příklad [definici aktivace opakování](../logic-apps/logic-apps-workf
 **Otázka:** co jsou způsoby, které lze použít počáteční datum a čas? </br>
 **Odpověď:** tady jsou některé vzorů, které ukazují, jak můžete řídit opakování s počáteční datum a čas, a jak modul Logic Apps provede tyto opakování:
 
-| Čas zahájení | Opakování bez plánu | Opakování s plánem | 
+| Čas spuštění | Opakování bez plánu | Opakování s plánem | 
 | ---------- | --------------------------- | ------------------------ | 
 | {none} | První úlohy se spustí okamžitě. <p>Běží budoucí úlohy podle času posledního spuštění. | První úlohy se spustí okamžitě. <p>Spustí budoucí úlohy podle zadaného plánu. | 
 | Počáteční čas v minulosti. | Vypočítá doby běhu na základě zadaným časem spuštění a časy zahození za posledních spustit. V další budoucí běh spustí první zatížení. <p>Spustí budoucí úlohy podle na výpočty z času posledního spuštění. <p>Další vysvětlení najdete v příkladu za touto tabulkou. | Spustí první úloha *již dříve* než čas zahájení, na základě plánu vypočítaných z čas spuštění. <p>Spustí budoucí úlohy podle zadaného plánu. <p>**Poznámka:** Pokud zadat plán opakování, ale nezadávejte hodinách nebo minutách pro plán, pak budoucí doby běhu se počítají pomocí hodinách nebo minutách, v uvedeném pořadí, od prvního spuštění. | 
@@ -186,14 +187,14 @@ Tady je příklad [definici aktivace opakování](../logic-apps/logic-apps-workf
 
 **Příklad pro poslední čas spuštění s opakování, ale žádný plán** 
 
-| Čas zahájení | Aktuální čas | Opakování | Plán |
+| Čas spuštění | Aktuální čas | Opakování | Plán |
 | ---------- | ------------ | ---------- | -------- | 
 | 2017-09-**07**T14:00:00Z | 2017-09-**08**T13:00:00Z | Za dva dny | {none} | 
 ||||| 
 
 V tomto scénáři Logic Apps modul počítá podle času zahájení času spuštění zahodí uplynula doby běhu a používá další budoucí počáteční čas pro během prvního spuštění. Po této první běh jsou budoucí spustí podle plánu vypočítaných z čas spuštění. Zde je, jak vypadá toto opakování:
 
-| Čas zahájení | První běhu | Budoucí času spuštění | 
+| Čas spuštění | První běhu | Budoucí času spuštění | 
 | ---------- | ------------ | ---------- | 
 | 2017-09 -**07** ve 2:00 | 2017-09 -**09** ve 2:00 | 2017-09 -**11** ve 2:00 </br>2017-09 -**13** ve 2:00 </br>2017-09 -**15** ve 2:00 </br>a tak dále...
 ||||| 

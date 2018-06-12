@@ -1,11 +1,11 @@
 ---
 title: Konektor Webhooku pro Azure Logic Apps | Microsoft Docs
-description: "Jak používat akce webhooku a aktivačních událostí k provádění akcí jako pole filtru z aplikace logiky"
+description: Jak používat akce webhooku a aktivačních událostí k provádění akcí jako pole filtru z aplikace logiky
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 tags: connectors
 ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 647dcebdd8d66ca49e14b51633e6a4a3ce6cb32b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296556"
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Začínáme s konektorem webhooku
 
@@ -81,20 +82,20 @@ Zde jsou další informace o aktivační události a akce se tento webhook podpo
 
 | Akce | Popis |
 | --- | --- |
-| Webhook HTTP |Přihlášení k odběru adresu URL zpětné volání pro službu, která můžete volat adresu URL aplikace logiky podle potřeby aktivovat. |
+| HTTP Webhook |Přihlášení k odběru adresu URL zpětné volání pro službu, která můžete volat adresu URL aplikace logiky podle potřeby aktivovat. |
 
 ### <a name="trigger-details"></a>Podrobnosti o aktivační události
 
-#### <a name="http-webhook"></a>Webhook HTTP
+#### <a name="http-webhook"></a>HTTP Webhook
 
 Přihlášení k odběru adresu URL zpětné volání pro službu, která můžete volat adresu URL aplikace logiky podle potřeby aktivovat.
 * Znamená povinné pole.
 
 | Zobrazovaný název | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Přihlášení k odběru metoda * |metoda |Metoda HTTP pro žádost o přihlásit k odběru |
+| Přihlášení k odběru metoda * |method |Metoda HTTP pro žádost o přihlásit k odběru |
 | Přihlášení k odběru URI * |identifikátor uri |Identifikátor URI HTTP má pro požadavek přihlásit k odběru |
-| Odhlášení metoda * |metoda |Metoda HTTP pro žádosti o odhlášení odběru |
+| Odhlášení metoda * |method |Metoda HTTP pro žádosti o odhlášení odběru |
 | Odhlášení URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o odhlášení odběru |
 | Přihlášení k odběru textu |hlavní část |Požadavku HTTP pro přihlásit k odběru |
 | Přihlášení k odběru hlavičky |hlavičky |Hlavičky požadavku HTTP pro přihlásit k odběru |
@@ -109,28 +110,28 @@ Přihlášení k odběru adresu URL zpětné volání pro službu, která může
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Záhlaví |Objekt |Hlavičky žádosti Webhooku |
-| Tělo |Objekt |Objekt žádosti Webhooku |
+| Záhlaví |objekt |Hlavičky žádosti Webhooku |
+| Tělo |objekt |Objekt žádosti Webhooku |
 | Stavový kód |celá čísla |Stavový kód žádosti o Webhooku |
 
 ## <a name="webhook-actions"></a>Akce Webhooku
 
 | Akce | Popis |
 | --- | --- |
-| Webhook HTTP |Přihlášení k odběru adresu URL zpětné volání pro službu, která můžete volat adresu URL k obnovení pracovního postupu krok podle potřeby. |
+| HTTP Webhook |Přihlášení k odběru adresu URL zpětné volání pro službu, která můžete volat adresu URL k obnovení pracovního postupu krok podle potřeby. |
 
 ### <a name="action-details"></a>Detaily akce
 
-#### <a name="http-webhook"></a>Webhook HTTP
+#### <a name="http-webhook"></a>HTTP Webhook
 
 Přihlášení k odběru adresu URL zpětné volání pro službu, která můžete volat adresu URL k obnovení pracovního postupu krok podle potřeby.
 * Znamená povinné pole.
 
 | Zobrazovaný název | Název vlastnosti | Popis |
 | --- | --- | --- |
-| Přihlášení k odběru metoda * |metoda |Metoda HTTP pro žádost o přihlásit k odběru |
+| Přihlášení k odběru metoda * |method |Metoda HTTP pro žádost o přihlásit k odběru |
 | Přihlášení k odběru URI * |identifikátor uri |Identifikátor URI HTTP má pro požadavek přihlásit k odběru |
-| Odhlášení metoda * |metoda |Metoda HTTP pro žádosti o odhlášení odběru |
+| Odhlášení metoda * |method |Metoda HTTP pro žádosti o odhlášení odběru |
 | Odhlášení URI * |identifikátor uri |Identifikátor URI HTTP pro žádosti o odhlášení odběru |
 | Přihlášení k odběru textu |hlavní část |Požadavku HTTP pro přihlásit k odběru |
 | Přihlášení k odběru hlavičky |hlavičky |Hlavičky požadavku HTTP pro přihlásit k odběru |
@@ -145,8 +146,8 @@ Přihlášení k odběru adresu URL zpětné volání pro službu, která může
 
 | Název vlastnosti | Typ dat | Popis |
 | --- | --- | --- |
-| Záhlaví |Objekt |Hlavičky žádosti Webhooku |
-| Tělo |Objekt |Objekt žádosti Webhooku |
+| Záhlaví |objekt |Hlavičky žádosti Webhooku |
+| Tělo |objekt |Objekt žádosti Webhooku |
 | Stavový kód |celá čísla |Stavový kód žádosti o Webhooku |
 
 ## <a name="next-steps"></a>Další postup

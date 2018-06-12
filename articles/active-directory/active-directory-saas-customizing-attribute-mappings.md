@@ -1,11 +1,11 @@
 ---
-title: "Přizpůsobení mapování atributů Azure AD | Microsoft Docs"
-description: "Zjistěte, co mapování atributů pro aplikace SaaS ve službě Azure Active Directory se, jak je vyřešit obchodních potřeb můžete upravit."
+title: Přizpůsobení mapování atributů Azure AD | Microsoft Docs
+description: Zjistěte, co mapování atributů pro aplikace SaaS ve službě Azure Active Directory se, jak je vyřešit obchodních potřeb můžete upravit.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 549e0b8c-87ce-4c9b-b487-b7bf0155dc77
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78d971b47ffceb8d845f21a731176834f004f12c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295621"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
 Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS jiných výrobců jako Salesforce, Google Apps a dalších. Pokud máte uživatele zřizování pro aplikace SaaS třetích stran povoleno, portálu Azure prvky jeho hodnot atributů v podobě konfigurace s názvem "mapování atributů."
@@ -83,7 +84,7 @@ Zřizování skupiny můžete volitelně můžete povolit nebo zakázat tak, že
 Atributy zřízené v rámci skupiny objektů můžete přizpůsobit stejným způsobem jako uživatelské objekty, popsané. 
 
 >[!TIP]
->Zřizování objektů skupiny (vlastnosti a členy) je odlišné koncept z [přiřazení skupiny](active-directory-coreapps-assign-user-azure-portal.md) k aplikaci. Je možné přiřadit skupinu k aplikaci, ale pouze zřízení uživatelských objektů obsažených ve skupině. K používání skupin v přiřazení není potřeba zřizování úplné skupiny objektů.
+>Zřizování objektů skupiny (vlastnosti a členy) je odlišné koncept z [přiřazení skupiny](manage-apps/assign-user-or-group-access-portal.md) k aplikaci. Je možné přiřadit skupinu k aplikaci, ale pouze zřízení uživatelských objektů obsažených ve skupině. K používání skupin v přiřazení není potřeba zřizování úplné skupiny objektů.
 
 
 ## <a name="editing-the-list-of-supported-attributes"></a>Úpravy seznam podporovaných atributů
@@ -149,7 +150,7 @@ Výběrem této možnosti bude efektivně vynutit opětovnou synchronizaci všec
 * [Automatizovat uživatele zřízení nebo zrušení zřízení k aplikacím SaaS](active-directory-saas-app-provisioning.md)
 * [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
-* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](active-directory-scim-provisioning.md)
+* [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
 
 <!--Image references-->

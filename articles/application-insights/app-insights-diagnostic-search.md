@@ -1,8 +1,8 @@
 ---
-title: "Pomocí vyhledávání ve službě Azure Application Insights | Microsoft Docs"
-description: "Hledat a filtr nezpracovaná telemetrická data odesílaná vaší webové aplikace."
+title: Pomocí vyhledávání ve službě Azure Application Insights | Microsoft Docs
+description: Hledat a filtr nezpracovaná telemetrická data odesílaná vaší webové aplikace.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce2fd9ed1ce796762cc15622cb1c59a316c1909d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294380"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](app-insights-overview.md) můžete použít k vyhledání a prozkoumejte telemetrie jednotlivých položek, například zobrazení stránky, výjimky nebo k webové požadavky. A můžete zobrazit protokol trasování a události, které mají programového.
@@ -113,9 +114,9 @@ Můžete chtít nastavit čas rozsah vyhledávání za kratší rozsah jsou stej
 
 Hledat celá slova, není dílčích řetězců. Použijte speciální znaky, uzavřete do uvozovek.
 
-| Řetězec | je *není* nalezena. | ale tyto ji najít |
+| řetězec | je *není* nalezena. | ale tyto ji najít |
 | --- | --- | --- |
-| HomeController.About |domácí<br/>Řadiče<br/>na více systémů | homecontroller<br/>o<br/>"homecontroller.about"|
+| HomeController.About |Domovská složka<br/>Řadiče<br/>na více systémů | homecontroller<br/>o produktu<br/>"homecontroller.about"|
 |Spojené státy|UNI<br/>Tomáš|Spojené<br/>stavy<br/>Spojené státy a<br/>"Spojené státy"
 
 Zde jsou vyhledávacích výrazech, které můžete použít:
@@ -136,7 +137,7 @@ Pokud vaše aplikace generuje mnoho telemetrie (a používáte 2.0.0-beta3 verze
 
 
 
-## <a name="create-work-item"></a>Vytvoření pracovní položky
+## <a name="create-work-item"></a>Vytvořit pracovní položku
 Chyby v Githubu nebo Visual Studio Team Services můžete vytvořit s podrobnostmi z libovolné položce telemetrie. 
 
 ![Klikněte na novou pracovní položku, upravte pole a pak klikněte na tlačítko OK.](./media/app-insights-diagnostic-search/42.png)

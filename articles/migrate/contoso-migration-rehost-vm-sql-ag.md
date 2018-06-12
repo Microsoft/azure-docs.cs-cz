@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/07/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 97c8430ab5d4e08e52790b898051d5985c3df03c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 03e3aaad810f6ccd5fb376765ddbada072dedb06
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839865"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301299"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: opětovným hostováním místní aplikace do skupiny dostupnosti AlwaysOn SQL serveru a virtuální počítače Azure
 
-Tento článek ukazuje, jak Contoso opětovným hostováním jejich SmartHotel aplikaci v Azure. Front-endu aplikace virtuálních počítačů se migrovat virtuální počítač Azure a databázi aplikace do Azure SQL serveru virtuálního počítače, s v clusteru s podporou převzetí služeb při selhání systému Windows Server se skupinami dostupnosti AlwaysOn serveru SQL.
+Tento článek ukazuje, jak Contoso opětovným hostováním jejich SmartHotel aplikaci v Azure. Front-endu aplikace virtuálních počítačů se migrovat virtuální počítač Azure a databáze aplikace služby Azure SQL serveru virtuálního počítače, v clusteru s podporou převzetí služeb při selhání systému Windows Server se skupinami dostupnosti AlwaysOn serveru SQL.
 
 Tento dokument je jedním z řady články, které ukazují, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Řada obsahuje základní informace a scénáře, které ilustrují nastavení infrastruktury a migrace, vyhodnocování místních prostředků pro migraci a s určitými typy migrace. Scénáře růst v složitost a přidáme další články v čase.
 
@@ -29,8 +29,9 @@ Tento dokument je jedním z řady články, které ukazují, jak fiktivní spole
 [Článek 4: Opětovným hostováním aplikace pro virtuální počítače Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak Contoso běží navýšení a shift migrace do Azure pro aplikaci SmartHotel. Contoso migruje virtuální počítač front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databázi aplikace do spravované Instance SQL, pomocí [služba migrace databáze Azure](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.
 [Článek 5: Opětovným hostováním aplikace pro virtuální počítače Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak migrovat Contoso aplikace SmartHotel virtuální počítače pouze pomocí Site Recovery.
 Článek 6: Opětovným hostováním aplikace na virtuálních počítačích Azure a SQL Server vždy na skupiny dostupnosti (v tomto článku) | Ukazuje, jak Contoso migruje SmartHotel aplikace. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů a aplikace službu migrace databáze k databázi aplikace migraci na cluster serveru SQL Server, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
-Článek 7: Opětovným hostováním Linux aplikace pro virtuální počítače Azure a Azure MySQL Server | Ukazuje, jak Contoso migruje aplikace osTicket Linux. Migrace virtuálního počítače pomocí Site Recovery front-endu a migrovat (zálohování a obnovení) databáze na instanci serveru MySQL Azure pomocí MySQL Workbench | Plánováno
-Článek 8: Opětovným hostováním Linux aplikace pro virtuální počítače Azure | Ukazuje, jak Contoso nepodporuje migraci za navýšení a shift osTicket další aplikace virtuálních počítačů do Azure, pomocí Site Recovery | Plánováno
+[Článek 7: Opětovným hostováním Linux aplikace pro virtuální počítače Azure](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso nemá navýšení a shift migrace aplikace osTicket Linux na virtuálních počítačích Azure, pomocí Site Recovery | Plánováno
+[Článek 8: Opětovným hostováním Linux aplikace pro virtuální počítače Azure a Azure MySQL Server](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak Contoso migruje aplikace osTicket Linux k virtuálním počítačům Azure pomocí Site Recovery a migraci databáze aplikace na instanci serveru MySQL Azure pomocí MySQL Workbench. | K dispozici.
+
 
 
 V tomto článku migrovat Contoso dvouvrstvá Windows. NET SmartHotel aplikace běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, je poskytována jako s otevřeným zdrojem a si můžete stáhnout z [Githubu](https://github.com/Microsoft/SmartHotel360).
@@ -52,7 +53,7 @@ Tým cloudu Contoso má připnuli dolů cíle pro migraci. Tyto cíle se použí
 - Contoso nechce investovat do této aplikace.  Je důležité pro jejich podnikání, ale v současné podobě jednoduše chtějí bezpečně ho přesunout do cloudu.
 - Problémy s dostupností má neprobíhala v místní databázi pro aplikaci. Jejich rádi viděli, že se nasadit v Azure jako cluster s podporou vysoká dostupnost s funkcí převzetí služeb při selhání.
 - Contoso chce upgradovat ze své aktuální platformě SQL Server 2008 R2, na SQL serveru 2017.
-- Contoso nechce používat Azure SQL Database pro tuto aplikaci, a hledá alternativy.
+- Contoso nechce používat Azure SQL Database pro tuto aplikaci a hledá alternativy.
 
 ## <a name="proposed-architecture"></a>Navrhované architektura
 
@@ -168,7 +169,7 @@ Zde je, jak Contoso nastavit clusteru:
 
 ### <a name="set-up-a-storage-account-as-cloud-witness"></a>Nastavit účet úložiště jako určující cloudu
 
-Nastavení určujícího cloudu, musí Contoso účet úložiště Azure, který bude obsahovat soubor blob použitý pro arbitrážního clusteru. Stejný účet úložiště lze nastavit určující cloudu pro víc clusterů. 
+Nastavení určujícího cloudu, musí Contoso účtu Azure Storage, který bude obsahovat soubor blob použitý pro arbitrážního clusteru. Stejný účet úložiště lze nastavit určující cloudu pro víc clusterů. 
 
 Contoso vytvoří účet úložiště následujícím způsobem:
 
@@ -277,7 +278,7 @@ Nyní Contoso potřebám pravidlo Vyrovnávání zatížení do defins, jak se p
 Uživatel vytvořit pravidlo následujícím způsobem:
 
 1. V nastavení nástroje pro vyrovnávání zatížení portálu si přidat nové pravidlo Vyrovnávání zatížení: **SQLAlwaysOnEndPointListener**.
-2. Contoso nastaví naslouchací proces front-endu přijímat příchozí provoz klienta SQL na portu TCP 1433.
+2. Contoso nastaví front-end naslouchací proces přijímat příchozí provoz klienta SQL na portu TCP 1433.
 3. Určí fond back-end, který má jaký provoz, budou směrovány a port, na kterém virtuální počítače naslouchat provoz.
 4. Contoso umožňuje plovoucí IP (přímá odpověď ze serveru). To je vždy nutné SQL AlwaysOn.
 
@@ -305,7 +306,7 @@ Nastavené tyto následujícím způsobem:
     - Aplikace SmartHotel je produkční aplikace a WEBVM se budou migrovat do produkční sítě Azure (VNET-PRODUKČNÍMU-EUS2) v primární oblasti Východ US2.
     - WEBVM bude umístěna ve skupině prostředků ContosoRG, který se používá pro produkční prostředky, a v podsíti produkční (PRODUKČNÍMU-FE – EUS2).
 
-2. Contoso vytvoří účet Azure storage (contosovmsacc20180528) v primární oblasti.
+2. Contoso vytvoří účet úložiště Azure (contosovmsacc20180528) v primární oblasti.
 
     - Účet pro obecné účely, používají se standardní úložiště a LRS replikace.
     - Účet musí být ve stejné oblasti jako trezor.
@@ -401,7 +402,7 @@ Chcete-li pokračovat, potřebují potvrďte, že se dokončila plánování nas
 
 ### <a name="set-up-the-source-environment"></a>Nastavení zdrojového prostředí
 
-Contoso je potřeba nakonfigurovat jejich zdrojové prostředí. K tomuto účelu se stáhnout šablonu OVF a použijte jej k nasazení Site Recovery konfigurační server jako vysoce dostupný, místní virtuální počítač VMware. Po konfiguraci serveru je spuštěný a funkční, se zaregistrovat v trezoru tuto.
+Contoso je potřeba nakonfigurovat jejich zdrojové prostředí. K tomuto účelu se stáhnout šablonu OVF a použijte jej k nasazení Site Recovery konfigurační server jako vysoce dostupný, místní virtuální počítač VMware. Po konfiguraci serveru je spuštěný a funkční, se zaregistrovat v trezoru.
 
 Konfigurační server běží počet součástí:
 
@@ -435,7 +436,7 @@ Contoso následujícím způsobem proveďte tyto kroky:
 
 10. Se pak stáhněte a nainstalujte MySQL Server a VMWare PowerCLI. 
 11. Po ověření že zadejte plně kvalifikovaný název domény nebo IP adresa vCenter server nebo vSphere hostitele. Ponechte výchozí port a zadejte popisný název pro vCenter server.
-12. Určí účet vytvořený pro automatické zjišťování a přihlašovací údaje, které slouží k můžete automaticky nainstalovat službu Mobility. Pro počítače s Windows že účet potřebuje oprávnění místního správce na virtuálních počítačích.
+12. Určí účet vytvořený pro automatické zjišťování a přihlašovací údaje, které se používají k automatické instalaci služby Mobility. Pro počítače s Windows že účet potřebuje oprávnění místního správce na virtuálních počítačích.
 
     ![vCenter](./media/contoso-migration-rehost-vm-sql-ag/cswiz2.png)
 
@@ -532,11 +533,11 @@ DMS připojení k virtuální počítač místní SQL Server přes připojení s
 
 ## <a name="step-7-protect-the-database"></a>Krok 7: Chránit databázi
 
-S databází aplikace spuštěné v **SQLAOG1**, Contoso teď mohou chránit pomocí skupin dostupnosti AlwaysOn. Konfigurace Alwayson pomocí aplikace SQL Management Studio a pak mu přiřaďte naslouchací proces použití clusteringu Windows. 
+S databází aplikace spuštěné v **SQLAOG1**, Contoso teď mohou chránit pomocí skupin dostupnosti AlwaysOn. Konfigurace AlwaysOn pomocí aplikace SQL Management Studio a pak mu přiřaďte naslouchací proces použití clusteringu Windows. 
 
 ### <a name="create-an-alwayson-availability-group"></a>Vytvořit skupinu dostupnosti AlwaysOn
 
-1. V aplikaci SQL Management Studio, že klikněte pravým tlačítkem na **vždy na vysokou dostupnost** spustit **Průvodce novou skupinou dostupnosti**.
+1. V aplikaci SQL Management Studio, že pravým tlačítkem na **vždy na vysokou dostupnost** spustit **Průvodce novou skupinou dostupnosti**.
 2. V **zadat možnosti**, že název skupiny dostupnosti **SHAOG**. V **vyberte databáze**, vyberou SmartHotel databáze.
 
     ![Skupiny dostupnosti AlwaysOn](media/contoso-migration-rehost-vm-sql-ag/aog-1.png)
@@ -624,7 +625,7 @@ Jako poslední krok v procesu migrace Contoso aktualizovat připojovací řetěz
     ![Převzetí služeb při selhání](./media/contoso-migration-rehost-vm-sql-ag/failover4.png)  
 
 2. Po aktualizaci souboru a uložíte, budou restartujte službu IIS na WEBVM. Budou to provést pomocí IISRESET /RESTART z příkazový řádek.
-2. Po restartování služby IIS, aplikace je nyní používat databázi systémem SQL MI.
+2. Po restartování služby IIS, aplikace teď používá databázi systémem SQL MI.
 
 
 **Potřebujete další pomoc?**

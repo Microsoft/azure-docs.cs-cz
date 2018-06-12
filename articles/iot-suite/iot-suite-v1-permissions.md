@@ -1,12 +1,12 @@
 ---
 title: Azure IoT Suite a Azure Active Directory | Microsoft Docs
-description: "Popisuje, jak Azure IoT Suite využívá Azure Active Directory ke správě oprávnění."
-services: 
+description: Popisuje, jak Azure IoT Suite využívá Azure Active Directory ke správě oprávnění.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: a032fc4332c697748e658ad2615ed5b0915c56c1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4d0c7aff54ee20cf9ae4e6cdf2fc0718cd0b2f2a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35303370"
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Oprávnění na webu azureiotsuite.com
 
@@ -97,7 +98,7 @@ Musí být globální správce AAD změnit role uživatele:
 4. Klikněte na tlačítko **podnikové aplikace, které**, pak **všechny aplikace**.
 4. Zobrazit **všechny aplikace** s **žádné** stavu. Poté vyhledejte aplikaci s názvem předkonfigurované řešení.
 5. Klikněte na název aplikace, která odpovídá názvu vašeho předkonfigurované řešení.
-6. Klikněte na tlačítko **uživatelů a skupin**.
+6. Klikněte na **Uživatelé a skupiny**.
 7. Vyberte uživatele, kterého chcete přepnout role.
 8. Klikněte na tlačítko **přiřadit** a vyberte roli (například **správce**) chcete uživateli přiřadit ručně, klikněte na zatržítko.
 
@@ -116,7 +117,7 @@ Požádejte o globální správce a zkontrolujte globální správce v tenantovi
 Můžete spustit nasazení cloudu z <https://github.com/Azure/azure-iot-remote-monitoring> a znovu nasaďte s nově vytvořený klienta AAD. Protože jsou ve výchozím globálním správcem při vytváření klienta služby AAD máte oprávnění k přidání uživatelů a přiřazování rolí pro tyto uživatele.
 
 1. Vytvořte adresář služby AAD v [portál Azure][lnk-portal].
-2. Přejděte na <https://github.com/Azure/azure-iot-remote-monitoring>.
+2. Přejděte do části <https://github.com/Azure/azure-iot-remote-monitoring> (Soubor > Nový > Jiné).
 3. Spustit `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` (například `build.cmd cloud debug myRMSolution`)
 4. Po zobrazení výzvy, nastavte **tenantid** být klientovi nově vytvořený místo předchozí klienta.
 
@@ -137,7 +138,7 @@ Podívejte se na následující diagram pokyny:
 
 Pokud jste si jisti, že máte předplatné Azure, ověření klienta mapování pro vaše předplatné a ujistěte se, že je vybrána správná klienta v rozevírací nabídce. Pokud jste ověřit správnost požadované klienta, postupujte podle na předchozím obrázku a ověřit mapování vaše předplatné a tohoto klienta AAD.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokračujte ve čtení o IoT Suite, najdete v tématu jak můžete [přizpůsobení předkonfigurovaného řešení][lnk-customize].
 
 [img-flowchart]: media/iot-suite-v1-permissions/flowchart.png
@@ -149,7 +150,7 @@ Pokračujte ve čtení o IoT Suite, najdete v tématu jak můžete [přizpůsobe
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
-[lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md
+[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs

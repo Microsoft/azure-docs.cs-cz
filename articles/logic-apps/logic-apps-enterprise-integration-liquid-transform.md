@@ -1,12 +1,12 @@
 ---
-title: "Převést data JSON s kapaliny transformací - Azure Logic Apps | Microsoft Docs"
-description: "Vytvořte transformací nebo mapy pro pokročilé transformace JSON pomocí Logic Apps a kapaliny šablony."
+title: Převést data JSON s kapaliny transformací - Azure Logic Apps | Microsoft Docs
+description: Vytvořte transformací nebo mapy pro pokročilé transformace JSON pomocí Logic Apps a kapaliny šablony.
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: divyaswarnkar
-manager: anneta
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: integration
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 4bb003afd757faac675a9af8599a781247717a64
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 42a102c9b2663380a93d56cc5f8fb82abaa83b74
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299507"
 ---
 # <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Proveďte pokročilé transformace JSON s šablonu kapaliny
 
@@ -126,7 +127,7 @@ Kapaliny není omezen na pouze JSON transformace. Zde jsou další akce k dispoz
   
    ![Příklad výstupu JSON na text](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
 
-* Transformace XML do formátu JSON
+* Převést XML na JSON
   
   Tady je kapaliny šablony použité v tomto příkladu:
    

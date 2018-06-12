@@ -1,6 +1,6 @@
 ---
-title: "Diagnostikovat chyby a výjimky v webové aplikace pomocí služby Azure Application Insights | Microsoft Docs"
-description: "Zachytit výjimky z aplikací ASP.NET společně s telemetrická žádost."
+title: Diagnostikovat chyby a výjimky v webové aplikace pomocí služby Azure Application Insights | Microsoft Docs
+description: Zachytit výjimky z aplikací ASP.NET společně s telemetrická žádost.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a3dcf4211df5d40c4b174fd9a818d3268ffaa3a0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295706"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostikovat výjimky ve webových aplikacích pomocí služby Application Insights
 Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insights-overview.md). Neúspěšných požadavků mohou korelovat s výjimky a dalších událostí na klienta a serveru, takže můžete rychle diagnostikovat příčin.
@@ -32,8 +33,8 @@ Výjimky v svou živou webovou aplikaci oznamuje [Application Insights](app-insi
 * Některé architektury aplikace nebo s některými nastaveními budete muset provést některé další kroky pro zachycení více výjimek:
   * [Webové formuláře](#web-forms)
   * [MVC](#mvc)
-  * [Web API 1.*](#web-api-1x)
-  * [Web API 2.*](#web-api-2x)
+  * [1.* webové rozhraní API](#web-api-1x)
+  * [2.* webové rozhraní API](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostikování výjimky pomocí sady Visual Studio
@@ -345,7 +346,7 @@ Můžete přidat tento atribut přepsaného na konkrétní řadiče, nebo ho př
 
 [Ukázka](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-#### <a name="web-api-2x"></a>Web API 2.x
+#### <a name="web-api-2x"></a>Webové rozhraní API 2.x
 Přidání implementace IExceptionLogger:
 
 ```csharp

@@ -1,12 +1,12 @@
 ---
-title: "Volání, aktivační události nebo vnořit pracovních s koncovými body HTTP - Azure Logic Apps | Microsoft Docs"
-description: "Nastavit koncové body HTTP zavolat, aktivaci nebo vnořit pracovní postupy pro Azure Logic Apps"
+title: Volání, aktivační události nebo vnořit pracovních s koncovými body HTTP - Azure Logic Apps | Microsoft Docs
+description: Nastavit koncové body HTTP zavolat, aktivaci nebo vnořit pracovní postupy pro Azure Logic Apps
 services: logic-apps
-keywords: "pracovní postupy, koncových bodů protokolu HTTP"
+keywords: pracovní postupy, koncových bodů protokolu HTTP
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: klam; LADocs
-ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 9c02a0f540f52007412a850b9d69e337743fc35f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300194"
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Volání, aktivaci nebo vnořit pracovních s koncovými body HTTP v aplikacích logiky
 
@@ -157,7 +158,7 @@ Pokud chcete, aby vaše adresa URL koncového bodu protokolu HTTP tak, aby přij
 
     Vaše adresa URL koncového bodu protokolu HTTP nyní zahrnuje relativní cesta, například: 
 
-    https&#58;//prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
+    HTTPS&#58;/ / prod-00.southcentralus.logic.azure.com/workflows/f90cb66c52ea4e9cabe0abf4e197deff/triggers/manual/paths/invoke/customers/{customerID}...
 
 7. Pokud chcete otestovat váš koncový bod protokolu HTTP, zkopírujte a vložte adresu URL aktualizované do jiného okna prohlížeče, ale nahraďte `{customerID}` s `123456`, a stiskněte klávesu Enter.
 

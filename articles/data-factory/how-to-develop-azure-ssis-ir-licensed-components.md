@@ -1,5 +1,5 @@
 ---
-title: Instalace placené nebo licencovaná komponenty pro modul runtime integrace Azure SSIS | Microsoft Docs
+title: Nainstalovat licencovanou součásti pro integraci modulu runtime Azure SSIS | Microsoft Docs
 description: Zjistěte, jak můžete vyvíjet nezávislý dodavatel softwaru a nainstalujte placené nebo licencovaná vlastní komponenty pro modul runtime integrace Azure SSIS
 services: data-factory
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: e2e000df2933b8fa08bf98ef55b12f90de6a5e51
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6351381e525d256ef5e9693ea1fb5e3a6f4e5ea3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830839"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298572"
 ---
-# <a name="develop-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Vývoj placené nebo licencovanou vlastní komponenty pro modul runtime integrace Azure SSIS
+# <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Instalovat placené nebo licencovanou vlastní komponenty modulu runtime integrace Azure SSIS
 
 Tento článek popisuje, jak vyvíjet a nainstalovat placené nebo licencovanou vlastní součásti pro integraci služby SSIS (SQL Server) balíčky, které spustit v Azure v modulu runtime integrace Azure SSIS ISV.
 

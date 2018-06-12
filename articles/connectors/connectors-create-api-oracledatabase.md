@@ -2,7 +2,7 @@
 title: Připojení k databázi Oracle - Azure Logic Apps | Microsoft Docs
 description: Vložení a spravovat záznamy s Oracle Database REST API a Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 03/29/2017
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: be099cb8c2a36fa8bc09a5a30fca1785dd3933db
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e83a246c815a01b417f7658535906c396bf5996
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609552"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296015"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem databáze Oracle
 

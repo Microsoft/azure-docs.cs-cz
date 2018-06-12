@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: aa8f5e3b78a65c42840bbe831f5a4f2984a4a357
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 18177e0671ddf36d0e02e6b943467d703f78ffd0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650396"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301044"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL (Preview)
 
@@ -82,6 +82,8 @@ Vzhledem k tomu, že synchronizace dat je na základě aktivační události, ne
 
 #### <a name="performance-impact"></a>Vliv na výkon
 Synchronizace dat se používají vložit, aktualizovat a odstranit aktivačních událostí ke sledování změn. Vytvoří straně tabulky v databázi uživatelů pro sledování změn. Tyto aktivity sledování změn mají vliv na vaše zatížení databáze. Vyhodnocení vašeho vrstvy služeb a upgradujte v případě potřeby.
+
+Zajišťování a rušení zajištění během vytváření skupiny synchronizace, aktualizace a odstranění může také mít vliv na výkon databáze. 
 
 ### <a name="general-requirements"></a>Obecné požadavky
 

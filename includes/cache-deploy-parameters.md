@@ -53,5 +53,5 @@ Velikost novou instanci služby Azure Redis Cache.
     }
 
 
-Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1, 2, 3, 4, 5 nebo 6) a přiřadí výchozí hodnotu (1) Pokud není zadaná žádná hodnota. Tyto čísla odpovídají následující velikosti mezipaměti: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
+Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1, 2, 3, 4, 5 nebo 6) a přiřadí výchozí hodnota (0), pokud není zadaná žádná hodnota. Tyto čísla odpovídají následující velikosti mezipaměti: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 

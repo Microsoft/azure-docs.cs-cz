@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/21/2018
+ms.date: 06/11/2018
 ms.author: raynew
-ms.openlocfilehash: 5db7d57045acea3ded82e880169ebf02f4151ec5
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: d78980b69e6598dff349c75527fc27d8a04dfa18
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824723"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301180"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Podporu pro VMware a fyzické serveru replikaci do Azure.
 
@@ -40,7 +40,7 @@ Konfigurační server je na místním počítači, který spouští součásti S
 **Komponenta** | **Požadavky**
 --- |---
 Procesorová jádra | 8
-Paměť RAM | 12 GB
+Paměť RAM | 16 GB
 Počet disků | 3 disky<br/><br/> Disky zahrnují disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení.
 Volné místo na disku | 600 GB místa na požadované pro proces mezipaměti serveru.
 Volné místo na disku | 600 GB místa vyžaduje jednotka pro uchování.
@@ -205,7 +205,7 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 
 **Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated-machines). | Kontrola selže, pokud není podporován.
+Hostovaný operační systém | Ověřte [podporované operační systémy](#replicated-machines) pro replikovat počítače. | Kontrola selže, pokud není podporován.
 Architektura operačního systému hosta | 64bitová verze. | Kontrola selže, pokud není podporován.
 Velikost disku operačního systému | Až 2 048 GB. | Kontrola selže, pokud není podporován.
 Počet disků operačního systému | 1 | Kontrola selže, pokud není podporován.  

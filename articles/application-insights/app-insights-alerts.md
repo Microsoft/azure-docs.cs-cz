@@ -1,8 +1,8 @@
 ---
-title: "Nastavit výstrahy ve službě Azure Application Insights | Microsoft Docs"
-description: "Upozorňování o pomalé odezvy, výjimky a další výkonu nebo použití změn ve vaší webové aplikaci."
+title: Nastavit výstrahy ve službě Azure Application Insights | Microsoft Docs
+description: Upozorňování o pomalé odezvy, výjimky a další výkonu nebo použití změn ve vaší webové aplikaci.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: b0e4828b2cb6bbcb4329381e77db3b187d659706
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 87be1a48a6c3320187243e549a8fb8e5ecc9e006
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293599"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavit výstrahy ve službě Application Insights
 [Azure Application Insights] [ start] vás může upozornit na změny v metriky výkonu a využití ve vaší webové aplikaci. 
@@ -98,7 +99,7 @@ Nezapomeňte, že [proaktivní selhání míra diagnostiky](app-insights-proacti
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * [Testy dostupnosti webu](app-insights-monitor-web-app-availability.md)
 * [Automatizovat nastavení výstrah](app-insights-powershell-alerts.md)
 * [Proaktivní diagnostiky](app-insights-proactive-diagnostics.md) 

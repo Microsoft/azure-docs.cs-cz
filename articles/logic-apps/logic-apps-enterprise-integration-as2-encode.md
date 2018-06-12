@@ -1,11 +1,11 @@
 ---
-title: "Kódování zprávy AS2 – Azure Logic Apps | Microsoft Docs"
-description: "Jak používat kodér AS2 v podniku integrační balíček pro Azure Logic Apps"
+title: Kódování zprávy AS2 – Azure Logic Apps | Microsoft Docs
+description: Jak používat kodér AS2 v podniku integrační balíček pro Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 332fb9e3-576c-4683-bd10-d177a0ebe9a3
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bccc8f81a3a664e090796ae8a3cbb38c890c0479
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: fe8a2b00f15fa737c8ed343a47e1cab1c260346b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297926"
 ---
 # <a name="encode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Kódování zprávy AS2 pro Azure Logic Apps s Enterprise integračního balíčku
 

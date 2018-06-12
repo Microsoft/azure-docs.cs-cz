@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: Evgeny.Ternovsky;mbullwin
-ms.openlocfilehash: 1f9f7d53fc09111e0060c934e3869326fcaadb7e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: Evgeny.Ternovsky
+ms.author: mbullwin
+ms.openlocfilehash: 95e421278b46015e761764792e11dec0351b9785
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654787"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294417"
 ---
 # <a name="guidance-for-personal-data-stored-in-application-insights"></a>Pokyny pro osobní data uložená ve službě Application Insights
 

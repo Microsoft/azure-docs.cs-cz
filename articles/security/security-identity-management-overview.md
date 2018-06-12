@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 22b233e23c5c4609990bb6ba6148fe24d3d82c4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8763f1dca110a43586619c09f5d25c340c177b09
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641345"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300653"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
 Microsoft identit a přístupu řešení Nápověda pro správu IT chránit přístup k aplikacím a prostředkům v podnikové datovém centru a do cloudu. Tato ochrana umožňuje další úrovně ověřování, jako je Vícefaktorové ověřování a zásady podmíněného přístupu. Monitorování podezřelé aktivity přes pokročilé zabezpečení vytváření sestav, auditování a upozornění, že pomáhá zmírnit potenciální potíže se zabezpečením. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování (SSO) k tisícům cloud software jako služba (SaaS) aplikace a přístup k webové aplikace, kterou jste spustit místně.
@@ -58,7 +58,7 @@ Další informace:
 
 * [Přehled jednotného přihlašování](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Integrovat Azure Active Directory jednotné přihlašování s aplikacemi SaaS](../active-directory/active-directory-enterprise-apps-manage-sso.md)
+* [Integrovat Azure Active Directory jednotné přihlašování s aplikacemi SaaS](../active-directory/manage-apps/configure-single-sign-on-portal.md)
 
 ## <a name="reverse-proxy"></a>Reverzní proxy server
 Proxy aplikace služby Azure AD umožňuje publikovat místní aplikace, jako například [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) lokalit, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), a [IIS](http://www.iis.net/)-aplikací uvnitř vaší privátní sítě a zajišťuje zabezpečený přístup pro uživatele mimo vaši síť. Proxy aplikací poskytuje vzdáleného přístupu a jednotné přihlašování pro mnoho typů místní webové aplikace s tisíci aplikace SaaS, které podporuje Azure AD. Zaměstnanci můžou přihlásit k aplikacím z domácí na jejich vlastní zařízení a ověřování prostřednictvím této cloudové proxy.

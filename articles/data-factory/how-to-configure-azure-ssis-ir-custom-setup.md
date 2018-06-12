@@ -1,6 +1,6 @@
 ---
-title: Vlastní instalace pro modul runtime integrace Azure SSIS | Microsoft Docs
-description: Tento článek popisuje, jak použít vlastní instalační program rozhraní pro modul runtime integrace Azure SSIS
+title: Přizpůsobení nastavení pro modul runtime integrace Azure SSIS | Microsoft Docs
+description: Tento článek popisuje, jak k instalaci dalších součástí nebo změnit nastavení použít rozhraní vlastní instalace pro modul runtime integrace Azure SSIS
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: cce41a7529367d2e26b89a40593f9564d7e539b6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7b6cae9eaa4674e60edfae13c571d89153c9b498
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619581"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298388"
 ---
-# <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Vlastní instalace pro modul runtime integrace Azure SSIS
+# <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro modul runtime integrace Azure SSIS
 
-Vlastní instalace rozhraní pro modul Runtime integrace Azure SSIS umožňuje změnit výchozí operační konfigurace nebo prostředí (například spustit další služby systému Windows) nebo nainstalovat další součásti (například sestavení, ovladače, nebo rozšíření) na každém uzlu vaší Azure SSIS infračerveného signálu. Obecně platí poskytuje rozhraní pro přidání kroků vlastní instalační program během zřizování nebo rekonfigurace vaší Azure SSIS infračerveného signálu.
+Vlastní instalace rozhraní pro modul Runtime integrace Azure SSIS poskytuje rozhraní pro přidání kroků vlastní instalační program během zřizování nebo rekonfigurace vaší Azure SSIS infračerveného signálu. Vlastní instalace vám umožňuje změnit výchozí operační konfigurace nebo prostředí (například spustit další služby systému Windows) nebo nainstalovat další součásti (například sestavení, ovladače nebo rozšíření) na každém uzlu vaší Azure SSIS infračerveného signálu.
 
 Konfigurujete vlastní instalace a příprava skript a jeho přidružené soubory a uložte je do kontejneru objektů blob v účtu úložiště Azure. Zadejte sdíleného přístupového podpisu (SAS) identifikátor URI (Uniform Resource) pro váš kontejner při zřízení nebo změnit konfiguraci vašeho Azure SSIS infračerveného signálu. Každý uzel vaší Azure SSIS IR potom stáhne skript a jeho přidružené soubory z vašeho kontejneru a spustí vlastní instalace se zvýšenými oprávněními. Po dokončení vlastní instalace ukládání každý uzel ve standardním výstupu spouštění a další protokoly do vašeho kontejneru.
 

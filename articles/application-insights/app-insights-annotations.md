@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: fb4bcd57062017c0d7ee802ba1f46660476f6af2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807794"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293431"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky u metriky grafů ve službě Application Insights
 Poznámky na [Průzkumníku metrik](app-insights-metrics-explorer.md) grafy zobrazují, kde jste nasadili nového sestavení nebo jinou významnou událost. Ujistěte se snadno zjistit, zda změny měla vliv na výkon vaší aplikace. Můžete být automaticky vytvoří pomocí [Visual Studio Team Services sestavení systému](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs). Můžete také vytvořit poznámky pro všechny události, které si přejete, a příznak [jejich vytváření z prostředí PowerShell](#create-annotations-from-powershell).

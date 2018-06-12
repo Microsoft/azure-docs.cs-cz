@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: db7663623ada5d7799c46018be9e3b66afd004ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1a2067228629b04f1ef2cc407a28f379acc75f60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297511"
 ---
 # <a name="use-cost-management-reports"></a>Použití sestav Cost Managementu
 
@@ -23,6 +24,8 @@ Tento článek popisuje použití různých náklady na správu sestav na portá
 ## <a name="cost-analysis-reports"></a>Náklady sestavy analýzy
 
 Analýza sestavy zobrazit fakturační data z vašeho poskytovatele cloudových nákladů. Pomocí sestav, můžete skupiny a potom přejít do různých datových segmentů uvedeno v souboru fakturace. Sestavy povolit podrobné náklady navigace mezi nezpracovaná data fakturace na cloudu dodavatele.
+
+Při zobrazení jako graf, sestavy analýzy mít ose y *náklady* a osou x tvořenou hodnotami pro *kategorie nebo značky* který zvolíte. I když je rozsah v grafu, za posledních 30 dní například rozsahu slouží jako filtr. Sestavy analýzy jsou ideální pro porovnání kategorií. Například náklady na každý odběr za posledních 30 dní. Nebo, náklady na služby, jako je úložiště nebo výpočetní za určité období.
 
 Cenově sestavy analýzy není skupiny náklady podle značky. Vytváření sestav založené na značky je k dispozici pouze v sestavách přidělení nákladů nastavit po vytvoření modelu náklady pomocí 360 přidělení náklady.
 
@@ -50,6 +53,8 @@ Klikněte pravým tlačítkem výsledky sestavy je k podrobnostem a zobrazit pod
 ### <a name="actual-cost-over-time"></a>Skutečné náklady v čase
 
 Sestava skutečné náklady v čase je standardní náklady sestavy analýzy distribuce náklady přes řešení definované časové. Sestava zobrazí výdaje časem vám umožní sledovat trendy a zjistit útraty nesrovnalosti. Tato sestava zobrazí vaše náklady na hlavní přispěvatele, včetně průběžných nákladů a poplatků jednorázové vyhrazená instance, které jsou stráveno během vybraný časový rámec.
+
+Při zobrazení jako graf, náklady na přes čas sestavy mít ose y *náklady* a osy x *časové období*. Tyto sestavy zobrazit náklady na vývoj nad v časovém intervalu.
 
 Pomocí sestavy skutečné náklady v čase do:
 
@@ -162,4 +167,4 @@ Tady je příklad sestavy.
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud jste ještě nedokončili první kurz pro náklady na správu, přečtěte si ho na [zkontrolujte využití a náklady na](tutorial-review-usage.md).
+- Pokud jste ještě nedokončili první kurz ke službě Cost Management, přečtěte si část o [kontrole využití a nákladů](tutorial-review-usage.md).

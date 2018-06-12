@@ -1,8 +1,8 @@
 ---
-title: "Řešení potíží s Analytics ve službě Azure Application Insights | Microsoft Docs"
-description: "Problémy s Application Insights analytics? Začněte tady. "
+title: Řešení potíží s Analytics ve službě Azure Application Insights | Microsoft Docs
+description: 'Problémy s Application Insights analytics? Začněte tady. '
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9bbd5859-3584-4d80-9b6d-d5910fa48baa
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3ef9150cad62e9f9fc43f7afcbbbc01d89884a12
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294155"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](app-insights-analytics.md)? Začněte tady. Analytics je nástroj výkonné vyhledávání systému Azure Application Insights.
@@ -31,7 +32,7 @@ Problémy s [Application Insights Analytics](app-insights-analytics.md)? Začně
 
 Rozšíření zakázat, nebo použijte jiný prohlížeč.
 
-## <a name="e-a"></a>"Neočekávané error.
+## <a name="e-a"></a> "Neočekávané error.
 ![Došlo k neočekávané chybě obrazovky](./media/app-insights-analytics-troubleshooting/010.png)
 
 Běhovém portálu – neošetřené výjimky došlo k vnitřní chybě.
@@ -46,7 +47,7 @@ Došlo k chybě související s ověřováním (během ověřování nebo při g
 * Ověřte [jsou povolené soubory cookie třetích stran](#cookies) v prohlížeči. 
 
 ## <a name="authentication"></a>403... Ověřte zóny zabezpečení
-![403 ...verify zóny zabezpečení](./media/app-insights-analytics-troubleshooting/030.png)
+![403.. .verify zóny zabezpečení](./media/app-insights-analytics-troubleshooting/030.png)
 
 Došlo k chybě související s ověřováním (během ověřování nebo při generování přístupového tokenu). Na portálu může mít žádný způsob, jak obnovit beze změny nastavení prohlížeče.
 
@@ -54,7 +55,7 @@ Došlo k chybě související s ověřováním (během ověřování nebo při g
 2. Použili jste k otevření portálu Analytics oblíbenou položku, záložku nebo uložený odkaz? Jste přihlášeni s použitím jiných přihlašovacích údajů než těch, které jste použili při uložení odkazu?
 3. Zkuste se přihlásit v soukromém nebo anonymním okně prohlížeče (před tím všechna taková okna zavřete). Budete muset zadat své přihlašovací údaje. 
 4. Otevře další okno (obyčejnou) prohlížeče a přejděte na [Azure](https://portal.azure.com). Odhlaste se. Pak otevřete svůj odkaz a přihlaste se pomocí správných přihlašovacích údajů.
-5. Uživatelům používajícím Edge a Internet Explorer se tato chyba může zobrazit i v případě, že nejsou podporována nastavení důvěryhodné zóny.
+5. Uživatelům používajícím Microsoft Edge a Internet Explorer se tato chyba může zobrazit i v případě, že nejsou podporována nastavení důvěryhodné zóny.
    
     Ověřte obě [portálu analýza](https://analytics.applicationinsights.io) a [portál Azure Active Directory](https://portal.azure.com) jsou ve stejné zóny zabezpečení:
    

@@ -1,12 +1,12 @@
 ---
-title: "Přidání ověřování do vlastní rozhraní API – Azure Logic Apps | Microsoft Docs"
-description: "Nastavení ověřování pro volání pro vaše vlastní rozhraní API z aplikace logiky"
+title: Přidání ověřování do vlastní rozhraní API – Azure Logic Apps | Microsoft Docs
+description: Nastavení ověřování pro volání pro vaše vlastní rozhraní API z aplikace logiky
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -14,15 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 705abb2a3cc25c965bdce364eb169b4e3a814bff
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298545"
 ---
 # <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>Zabezpečená volání pro vaše vlastní rozhraní API z aplikace logiky
 
-K zabezpečení volání pro vaše rozhraní API, můžete nastavit ověřování Azure Active Directory (Azure AD) prostřednictvím portálu Azure, nemusíte aktualizace kódu. Nebo můžete požadovat a vynutit ověřování prostřednictvím kódu vaše rozhraní API.
+K zabezpečení volání pro vaše rozhraní API, můžete nastavit ověřování Azure Active Directory (Azure AD) prostřednictvím portálu Azure, nemusíte aktualizace kódu. Nebo můžete vyžádat a vynutit ověřování prostřednictvím kódu API.
 
 ## <a name="authentication-options-for-your-api"></a>Možnosti ověřování pro vaše rozhraní API
 
@@ -33,7 +34,7 @@ Můžete zabezpečit volání vlastního rozhraní API těmito způsoby:
   > [!NOTE]
   > Ve výchozím nastavení ověřování Azure AD, které můžete zapnout na portálu Azure neposkytuje podrobné autorizace. Toto ověřování například zamkne rozhraní API k jenom konkrétní klienta, nikoli k konkrétního uživatele nebo aplikace. 
 
-* [Aktualizujte kód vaše rozhraní API](#update-code): ochrana rozhraní API vynucením [ověřování pomocí certifikátu](#certificate), [základní ověřování](#basic), nebo [ověřování Azure AD](#azure-ad-code) prostřednictvím kódu.
+* [Aktualizujte kód vaše rozhraní API](#update-code): ochrana rozhraní API vynucením [ověřování pomocí certifikátu](#certificate), [základní ověřování](#basic), nebo [ověřování Azure AD](#azure-ad-code) prostřednictvím kód.
 
 <a name="no-code"></a>
 
@@ -126,7 +127,7 @@ Pokud webovou aplikaci nebo aplikaci API je už nasazená, můžete zapnout ově
 
    ![Vytvoření identity aplikací pro webovou aplikaci nebo aplikace API](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
-4. Na **ověřování / autorizace** vyberte **Uložit**.
+4. Na stránce **Ověřování / autorizace** zvolte **Uložit**.
 
 Nyní musí najít klienta ID a ID klienta pro identitu aplikací, který je spojen s webovou aplikaci nebo aplikaci API. Použijte tyto identifikátory v části 3. Pokračujte tak tyto kroky na portálu Azure.
 
@@ -134,7 +135,7 @@ Nyní musí najít klienta ID a ID klienta pro identitu aplikací, který je spo
 
 1. V části **zprostředkovatele ověřování**, zvolte **Azure Active Directory**. 
 
-   ![Zvolte "Azure Active Directory"](./media/logic-apps-custom-api-authentication/custom-api-app-identity-client-id-tenant-id.png)
+   ![Volba možnosti Azure Active Directory](./media/logic-apps-custom-api-authentication/custom-api-app-identity-client-id-tenant-id.png)
 
 2. Na **nastavení Azure Active Directory** nastavte **režim správy** k **Upřesnit**.
 
@@ -145,7 +146,7 @@ Nyní musí najít klienta ID a ID klienta pro identitu aplikací, který je spo
 
 4. V části **Url vystavitele**, zkopírujte a uložte jenom identifikátor GUID pro část 3. Můžete také použít tento identifikátor GUID ve vaší webové aplikace nebo aplikace API šablonu nasazení, v případě potřeby.
 
-   Tento identifikátor GUID je GUID konkrétní klienta ("ID klienta") a by se zobrazit v této adresy URL:`https://sts.windows.net/{GUID}`
+   Tento identifikátor GUID je GUID konkrétní klienta ("ID klienta") a by se zobrazit v této adresy URL: `https://sts.windows.net/{GUID}`
 
 5. Bez uložení změn, zavřete **nastavení Azure Active Directory** stránky.
 
@@ -192,14 +193,14 @@ Otevřete svou definici. aplikaci logiky v zobrazení kódu, přejděte na **HTT
 
 | Element | Požaduje se | Popis | 
 | ------- | -------- | ----------- | 
-| Klienta | Ano | Identifikátor GUID pro klienta služby Azure AD | 
+| tenant | Ano | Identifikátor GUID pro klienta služby Azure AD | 
 | Cílová skupina | Ano | Identifikátor GUID pro cílový prostředek, který chcete získat přístup, což je ID klienta z identity aplikací pro webovou aplikaci nebo aplikace API | 
 | clientId | Ano | Identifikátor GUID pro klienta žádají o přístup, což je ID klienta z aplikací identity pro svou aplikaci logiky | 
-| tajný klíč | Ano | Klíč nebo heslo z identity aplikace pro klienta, který požaduje přístupový token | 
+| Tajný kód | Ano | Klíč nebo heslo z identity aplikace pro klienta, který požaduje přístupový token | 
 | type | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth hodnota je `ActiveDirectoryOAuth`. | 
 |||| 
 
-Například:
+Příklad:
 
 ``` json
 {
@@ -228,7 +229,7 @@ Například:
 
 <a name="certificate"></a>
 
-#### <a name="certificate-authentication"></a>Ověřování pomocí certifikátu
+#### <a name="certificate-authentication"></a>Ověřování certifikátem
 
 K ověření příchozích požadavků z aplikace logiky webovou aplikaci nebo aplikaci API, můžete použít klientské certifikáty. Chcete-li nastavit kód, zjistěte další [konfiguraci vzájemné ověřování TLS](../app-service/app-service-web-configure-tls-mutual-auth.md).
 
@@ -275,6 +276,6 @@ and not use the Azure portal, learn how to
 To create an application identity for your logic app and use that identity to call your API, 
 you must follow the previous steps. -->
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nasazení a volání vlastním rozhraním API z logiky pracovní postupy aplikace](../logic-apps/logic-apps-custom-api-host-deploy-call.md)

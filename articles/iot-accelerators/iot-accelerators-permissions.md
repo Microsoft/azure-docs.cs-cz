@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 51d55d20f905c3677bdb98cb25d305f5152aa52c
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: aa4e1d1f78549a8d1955def7a1c57e61d405e347
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735880"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297134"
 ---
 # <a name="permissions-on-the-azureiotsolutionscom-site"></a>Oprávnění na webu azureiotsolutions.com
 
@@ -99,7 +99,7 @@ Pokračujte ve čtení o akcelerátorů řešení IoT, najdete v tématu jak mů
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles-azure-portal.md
 [lnk-portal]: https://portal.azure.com
 [lnk-create-edit-users]: ../active-directory/active-directory-users-profile-azure-portal.md
-[lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md
+[lnk-assign-app-roles]:../active-directory/manage-apps/assign-user-or-group-access-portal.md
 [lnk-service-admins]: https://azure.microsoft.com/support/changing-service-admin-and-co-admin
 [lnk-admin-roles]: ../billing/billing-add-change-azure-subscription-administrator.md
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs

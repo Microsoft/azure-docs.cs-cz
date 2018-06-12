@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 0742e1e96e03840f138dde2bca7b2bcda1e49dfe
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298405"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Nejčastější dotazy pro Azure náklady na správu
 
@@ -28,23 +29,23 @@ Při prvním použití portálu Cloudyn, může zobrazit následující zprávy,
 - "Přímá registrace – ne" zobrazí na portálu smlouvy Enterprise.
 - "Za posledních 30 dní nebyla nalezena žádná data o využití. Obraťte se na vaše distributora a ujistěte se, že jste povolili značek k účtu Azure"zobrazí na portálu Cloudyn.
 
-Předchozí zprávy naznačují, že jste zakoupili smlouvu Enterprise Agreement Azure přes prodejce nebo poskytovatel CSP. Svého prodejce nebo zprostředkovatele kryptografických služeb je potřeba povolit _značek_ pro vaši Azure účet tak, aby vaše data můžete zobrazit v Cloudyn.
+Z předchozích zpráv vyplývá, že jste si smlouvu Azure Enterprise zakoupili přes prodejce nebo poskytovatele CSP. Svého prodejce nebo zprostředkovatele kryptografických služeb je potřeba povolit _značek_ pro vaši Azure účet tak, aby vaše data můžete zobrazit v Cloudyn.
 
-Chcete-li opravit problémy:
+Tady je postup řešení těchto potíží:
 
-1. Váš prodejce je potřeba povolit _značek_ pro váš účet. Pokyny najdete v tématu [nepřímých Průvodce registrací ve službě zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
+1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
 2. Vygenerování klíče smlouvou Azure Enterprise pro použití s Cloudyn. Pokyny najdete v tématu [přidání vaše EA Azure](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA) nebo [jak najít vaše EA registrace ID a klíč rozhraní API](https://youtu.be/u_phLs_udig).
 
-Pouze správce služby Azure můžete povolit náklady na správu. Oprávnění správce společné nestačí.
+Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí.
 
 Než můžete vygenerovat klíč rozhraní API smlouvy Enterprise Azure nastavit Cloudyn, musíte povolit fakturace rozhraní API služby Azure podle těchto pokynů:
 
 - [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](../billing/billing-enterprise-api.md)
-- [Portál Microsoft Azure enterprise rozhraní API pro vytváření sestav](https://ea.azure.com/helpdocs/reportingAPI) pod **povolení přístupu k rozhraní API datům**
+- [Rozhraní API pro vytváření sestav na podnikovém portálu Microsoft Azure](https://ea.azure.com/helpdocs/reportingAPI) v části o **povolení přístupu k datům pro rozhraní API**
 
 
-Také možná budete muset poskytnout správci oddělení, účet vlastníků a enterprise administrators oprávnění k _zobrazit poplatky_ s rozhraním API fakturace.
+Také může být potřeba, abyste udělili oprávnění _zobrazovat poplatky_ v rozhraní API pro fakturaci správcům oddělení, vlastníkům účtů a podnikovým správcům.
 
 ## <a name="why-dont-i-see-optimizer-recommendations"></a>Proč nevidím doporučení pro optimalizaci?
 
@@ -71,16 +72,20 @@ Po dokončení předchozího postupu můžete zobrazit doporučení pro optimali
 
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Jak povolit odloženou nebo zamčený uživatelů?
 
+Nejprve Podívejme nejvíce běžný scénář, který způsobuje, že uživatelské účty získat *initiallySuspended*.
+
+> Admin1 může být Microsoft Cloud Solution Provider nebo Enterprise Agreement uživatele. Jeho organizace je připraven k použití náklady na správu.  Zadá zaregistruje prostřednictvím portálu Azure a přihlásí k portálu Cloudyn. Jako osobě, která registruje náklady na správu služby a přihlásí k portálu Cloudyn, se *primární správce*. Admin1 nevytváří uživatelské účty. Však pomocí portálu Cloudyn, mohl vytvořit účty Azure a nastavuje hierarchie entit. Admin1 informuje Admin2, správce klienta, který potřebné informace pro registraci s náklady na správu a přihlaste se k portálu Cloudyn.
+
+> Admin2 zaregistruje prostřednictvím portálu Azure. Ale když mu pokusí přihlásit k portálu Cloudyn, mohl získá zobrazí chyba s oznámením, je jeho účtu **pozastaveno**. Primární správce Admin1, je oznámení o pozastavení účtu. Admin1 musí aktivovat Admin2 na účet a udělte *přístup správce entity* pro odpovídající entity a umožňuje přístup pro správu uživatelů a aktivní uživatelský účet.
+
+
 Pokud obdržíte výstrahu s požadavkem pro povolení přístupu pro uživatele, musíte aktivovat uživatelský účet.
 
 Chcete-li aktivovat uživatelský účet:
 
 1. Přihlaste se k Cloudyn pomocí účtu Azure administrativní uživatel, který jste použili k nastavení Cloudyn. Nebo, přihlaste se pomocí uživatelského účtu, který byl udělen přístup správce.
-
 2. Vyberte symbol ozubené kolečko v pravém horním rohu a vyberte **Správa uživatelů**.
-
 3. Vyhledejte uživatele, vyberte symbol tužky a pak upravte uživatele.
-
 4. V části **stav uživatele**, změnit stav z **pozastaveno** k **Active**.
 
 Uživatelské účty Cloudyn připojit pomocí jednotného přihlašování z Azure. Pokud uživatel mistypes své heslo, se může zamknout z Cloudyn, i když se pořád přístup k Azure.

@@ -1,12 +1,12 @@
 ---
-title: "Vlastní konektor tématu odkazy - Azure Logic Apps | Microsoft Docs"
-description: "Odkazy na témata o tom, jak vytvořit, používat, sdílet a certifikovat vlastní konektory"
+title: Vlastní konektor tématu odkazy - Azure Logic Apps | Microsoft Docs
+description: Odkazy na témata o tom, jak vytvořit, používat, sdílet a certifikovat vlastní konektory
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/30/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 301a6547590acbb689c190dc713535f53b61cbf5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5d8442b4de4d8e251793f82a204ef7e285cdb94d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297202"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Vlastní konektorů v Logic Apps
 

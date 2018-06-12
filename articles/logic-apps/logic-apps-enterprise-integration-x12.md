@@ -1,11 +1,11 @@
 ---
-title: "X12 zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs"
-description: "Exchange X12 zprávy ve formátu EDI B2B enterprise integraci s Azure Logic Apps"
+title: X12 zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs
+description: Exchange X12 zprávy ve formátu EDI B2B enterprise integraci s Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b269a5171dcb8867f7ea40215d6b8a75d5d918bc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299075"
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Exchange X12 zprávy pro podnikové integrace s logic apps
 
@@ -235,7 +236,7 @@ Nyní je připraven pro zpracování odchozích zpráv, které v souladu s vámi
 
 | Vlastnost | Popis |
 | --- | --- |
-| Číslo verze ovládacího prvku (ISA12) |Vyberte verzi standardní X12 |
+| Kontrolní číslo verze (ISA12) |Vyberte verzi standardní X12 |
 | Použití ukazatele (ISA15) |Vyberte kontextu výměnu.  Hodnoty jsou informace, provozními daty, nebo testovacích dat |
 | Schéma |Generuje GS a ST segmenty pro výměnu kódováním X12, který odešle do kanálu odesílání |
 | GS1 |Volitelné, vyberte hodnotu pro funkční kód z rozevíracího seznamu |

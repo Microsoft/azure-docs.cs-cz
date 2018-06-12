@@ -2,7 +2,7 @@
 title: Připojte se ke Onedrivu pro firmy - Azure Logic Apps | Microsoft Docs
 description: Odesílat a spravovat soubory s Onedrivem pro firmy REST API a Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 08/18/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: cf0541fc4271766ed5fe2e9720c6312f229bc450
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 63cb02c52b5def12675ccca4f2cd292a8ad4bb66
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609590"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295638"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Začínáme s Onedrivu pro firmy konektoru
 Připojte k Onedrivu pro firmy a správa souborů. Můžete provádět různé akce, jako je například nahrávání, aktualizace, získání a odstranění na soubory.

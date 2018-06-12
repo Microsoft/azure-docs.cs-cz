@@ -1,6 +1,6 @@
 ---
-title: Spusťte balíček SSIS pomocí spuštění aktivity balíčku služby SSIS v Azure Data Factory | Microsoft Docs
-description: Tento článek popisuje, jak spouštět balíček integrační služby SSIS (SQL Server) ze kanál služby Azure Data Factory pomocí aktivity spuštění balíčku služby SSIS.
+title: Spusťte balíček SSIS s provést SSIS balíček aktivita – Azure | Microsoft Docs
+description: Tento článek popisuje způsob spouštění balíčku integrační služby SSIS (SQL Server) v kanál služby Azure Data Factory pomocí aktivity spuštění balíčku služby SSIS.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,15 +12,15 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: douglasl
-ms.openlocfilehash: fed4e10fcaaa5282c37b175f355b94522c3b2b46
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ce041813d52e645c336869ef04c9522962c80cf5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700481"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297151"
 ---
-# <a name="run-an-ssis-package-using-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS pomocí aktivity balíčku služby SSIS spustit v Azure Data Factory
-Tento článek popisuje způsob spouštění balíčku služby SSIS z kanál služby Azure Data Factory pomocí spuštění balíčku služby SSIS aktivitu. 
+# <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s spuštění aktivity balíčku služby SSIS v Azure Data Factory
+Tento článek popisuje způsob spouštění balíčku služby SSIS v kanál služby Azure Data Factory pomocí spuštění balíčku služby SSIS aktivitu. 
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Aktivita provedení balíčku služby SSIS není k dispozici v verze 1 služby Data Factory, který je všeobecně dostupná (GA). Alternativní metoda pro balíček služby SSIS verze 1 služby Data Factory, najdete v části [balíčky SSIS spustit pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).

@@ -4,7 +4,7 @@ description: Vzory pro chybové události a zpracování výjimek v Logic Apps.
 services: logic-apps
 documentationcenter: ''
 author: dereklee
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ee2c4f1408dcb6527220cd3870ab00d83987f471
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300058"
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Zpracování chyb a výjimek v Logic Apps
 
@@ -105,7 +106,7 @@ Tato tabulka ukazuje způsob, jakým jednoznačnou náhodnou proměnnou v uveden
 
 | Opakujte číslo | Minimální interval | Maximální interval |
 | ------------ | ---------------- | ---------------- |
-| 1 | Max(0, **minimumInterval**) | Min (interval, **maximumInterval**) |
+| 1 | Maximální počet (0, **minimumInterval**) | Min (interval, **maximumInterval**) |
 | 2 | Maximální počet (interval, **minimumInterval**) | Min (2 * interval **maximumInterval**) |
 | 3 | Maximální počet (2 * interval **minimumInterval**) | Min (4 * interval **maximumInterval**) |
 | 4 | Maximální počet (4 * interval **minimumInterval**) | Min (8 * interval **maximumInterval**) |
@@ -173,9 +174,9 @@ Omezení u oborů, najdete v části [omezení a konfigurace](../logic-apps/logi
 
 ### <a name="get-context-and-results-for-failures"></a>Získání kontextu a výsledky pro selhání
 
-I když zachytávání chyb z oboru je užitečné, můžete také kontextu, které vám pomohou pochopit, přesně plus žádné chyby nebo stavové kódy, které byly vráceny akce, které se nezdařilo.  **@result()** Funkce workflowu poskytuje kontext o výsledek všechny akce v oboru.
+I když zachytávání chyb z oboru je užitečné, můžete také kontextu, které vám pomohou pochopit, přesně plus žádné chyby nebo stavové kódy, které byly vráceny akce, které se nezdařilo. **@result()** Funkce workflowu poskytuje kontext o výsledek všechny akce v oboru.
 
- **@result()** Funkce přijímá jeden parametr (oboru názvu) a vrátí pole všech akce výsledků v rámci tohoto oboru. Tyto objekty akce zahrnují stejné atributy, jako  **@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupy, ID korelace a výstupy akce. Kontext pro všechny akce, které se nezdařilo odeslat v rámci oboru, můžete snadno spárujte  **@result()** fungovat s **runAfter** vlastnost.
+**@result()** Funkce přijímá jeden parametr (oboru názvu) a vrátí pole všech akce výsledků v rámci tohoto oboru. Tyto objekty akce zahrnují stejné atributy, jako  **@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupy, ID korelace a výstupy akce. Kontext pro všechny akce, které se nezdařilo odeslat v rámci oboru, můžete snadno spárujte  **@result()** fungovat s **runAfter** vlastnost.
 
 Ke spuštění akce *pro každou* akce v oboru, který má **se nezdařilo** výsledek, a pokud chcete filtrovat pole výsledky dolů akce se nezdařila, pair  **@result()** s **[pole filtru](../connectors/connectors-native-query.md)** akce a **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** smyčky. Můžete provést pole filtrované výsledek a provedení akce pro každé selhání pomocí **ForEach** smyčky. 
 
@@ -231,7 +232,7 @@ Zde je podrobný návod, který popisuje, co se stane, že v tomto příkladu:
    Pokud se nezdařila jednu akci v oboru, akce v **foreach** spustit jenom jednou. 
    Několik neúspěšných akce způsobí, že jednu akci za selhání.
 
-4. Odeslání požadavku HTTP POST na **foreach** položky text odpovědi, což je  **@item() ['výstupy'] ['text']**.  **@result()** Tvar položka je stejný jako  **@actions()** utvářejí a lze analyzovat stejným způsobem.
+4. Odeslání požadavku HTTP POST na **foreach** položky text odpovědi, což je  **@item() ['výstupy'] ['text']**. **@result()** Tvar položka je stejný jako  **@actions()** utvářejí a lze analyzovat stejným způsobem.
 
 5. Patří dva vlastní hlavičky s názvem selhání akce  **@item() [name]** a neúspěšný spusťte klienta, ID sledování  **@item() [clientTrackingId]**.
 

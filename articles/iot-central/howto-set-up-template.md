@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c88b27edab71527b4b3eca71c00af2930c22f8cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629231"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261980"
 ---
 # <a name="set-up-a-device-template"></a>Nastavit šablonu zařízení
 
@@ -161,6 +161,59 @@ Po výběru **Uložit**, zobrazí se umístění zařízení jako dlaždici:
 > [!NOTE]
 > Po vytvoření nová dlaždice, můžete změnit hodnotu vlastnosti. Nejprve vypnout režimu návrhu v horní pravé části obrazovky.
 
+### <a name="create-a-location-property-powered-by-azure-maps"></a>Vytvořit vlastnost umístění používá technologii Azure mapy
+Může poskytnout kontext geografické umístění data z Azure IoT centrální a mapovat všechny zeměpisnou šířku a zeměpisnou délku souřadnice adresu nebo jednoduše souřadnice zeměpisné šířky a délky. Tato funkce v Azure IoT centrální používá technologii Azure mapy.
+
+Existují dva typy vlastností umístění, které lze přidat:
+- **Umístění jako vlastnost aplikací** kterém bude uložena výhradně v aplikaci. Zařízení nemá žádné informace o vlastnosti aplikace.
+- **Umístění jako vlastnost zařízení** které se ohlásí zařízení.
+
+####<a name="adding-location-as-an-application-property"></a>Přidání umístění jako vlastnost aplikací 
+Můžete vytvořit umístění vlastnost jako vlastnost aplikací pomocí Azure mapuje v Azure IoT centrální aplikaci. Například můžete přidat adresu instalace zařízení. 
+
+1. Přejděte na kartu vlastností zařízení; Zkontrolujte, zda že je zapnutý režim návrhu.
+
+![Vlastnost umístění](./media/howto-set-up-template/locationcloudproperty1.png)
+
+2. Na kartě vlastností klikněte na umístění.
+3. Volitelně můžete nakonfigurujte zobrazované jméno, název pole a počáteční hodnota umístění. 
+
+![Umístění vlastnosti formuláře](./media/howto-set-up-template/locationcloudproperty2.png)
+
+Existují dvě podporované formáty přidat umístění:
+- **Umístění jako adresa**
+- **Umístění jako souřadnice** 
+
+4. Klikněte na tlačítko Uložit. 
+
+![Pole vlastnosti umístění](./media/howto-set-up-template/locationcloudproperty3.png)
+
+Operátor teď můžete aktualizovat hodnotu umístění ve formě pole umístění. 
+
+####<a name="adding-location-as-a-device-property"></a>Přidání umístění jako vlastnost zařízení 
+
+Vytvořit vlastnost umístění jako vlastnosti zařízení, který je hlášen zařízení.
+Například chcete sledovat umístění zařízení.
+
+1.  Přejděte na kartu vlastností zařízení; Zkontrolujte, zda že je zapnutý režim návrhu.
+2.  Klikněte na tlačítko Vlastnosti zařízení z knihovny.
+
+![Pole vlastnosti umístění](./media/howto-set-up-template/locationdeviceproperty1.png)
+
+3.  Nakonfigurujte zobrazovaného jména, názvu pole a zvolte "umístění" jako datový typ. 
+
+> [!NOTE]
+Název pole musí přesně shodovat na název vlastnosti zařízení sestavy. 
+
+![Pole vlastnosti umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+![Zobrazení operátora vlastnost umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+Teď, když jste nakonfigurovali vaší vlastnost umístění, budete moci přidat mapu, která bude vizualizovat umístění v řídicím panelu zařízení. V tématu Jak [přidat umístění Azure mapy na řídicím panelu](howto-set-up-template.md).
+
+
+
+
 ## <a name="rules"></a>Pravidla
 
 Pravidla umožňují operátory monitorování zařízení skoro v reálném čase. Pravidla automaticky vyvolání **akce** například odeslání e-mailu, když se pravidlo spustí. Je jeden typ pravidla k dispozici dnes:
@@ -178,6 +231,31 @@ Například můžete přidat **nastavení a vlastností** dlaždice zobrazíte v
 Nyní když operátor zobrazení řídicího panelu, uvidí tuto dlaždici, která zobrazuje vlastnosti a nastavení zařízení:
 
 ![Dlaždice řídicího panelu](./media/howto-set-up-template/dashboardtile.png)
+
+### <a name="add-location-azure-map-in-dashboard"></a>Přidat umístění Azure mapy ve řídicí panel
+
+Pokud jste nakonfigurovali vlastnost umístění jako kroky [vytvoření vlastnosti umístění používá technologii Azure Maps]((howto-set-up-template.md), bude možné vizualizovat umístění pomocí mapy přímo na řídicím panelu zařízení.
+
+1.  Přejděte na kartu řídicí panel zařízení; Zkontrolujte, zda že je zapnutý režim návrhu.
+2.  Na řídicím panelu zařízení vyberte mapování z knihovny. 
+
+![Vyberte řídicí panel Azure Mapa umístění](./media/howto-set-up-template/locationcloudproperty4map.png)
+
+3.  Zadejte název a zvolte vlastnost umístění, které jste dříve nakonfigurovali jako součást vlastností vaše zařízení.
+
+![Konfigurace Azure Mapa umístění řídicího panelu](./media/howto-set-up-template/locationcloudproperty5map.png)
+
+4.  Uložit a zobrazí mapy dlaždici zobrazení umístění, které jste vybrali. 
+
+![Řídicí panel umístění vizualizovat Azure mapy](./media/howto-set-up-template/locationcloudproperty6map.png) 
+
+Bude moct změnit velikost mapy požadovaná velikost.
+
+Nyní když operátor zobrazení řídicího panelu, uvidí tento všechny řídicí panel dlaždice jste nakonfigurovali, včetně umístění mapy!
+
+![Řídicí panel Azure Mapa umístění řídicí panel](./media/howto-set-up-template/locationcloudproperty7map.png) 
+
+
 
 ## <a name="next-steps"></a>Další postup
 

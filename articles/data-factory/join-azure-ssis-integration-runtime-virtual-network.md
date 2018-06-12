@@ -12,18 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: douglasl
-ms.openlocfilehash: b998b47cdc65be91f62543369f5c3f18e4f270c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 344bd9beff03f423d3dc3431dec56334e721d811
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619639"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298062"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení modulu runtime integrace Azure SSIS k virtuální síti.
 Vaše Azure SSIS integrace modulu runtime (IR) připojení k virtuální síť Azure v následujících scénářích: 
 
-- Jsou hostiteli databáze katalogu integrační služby SSIS (SQL Server) na Azure SQL Database spravované Instance (Preview) ve virtuální síti.
 - Z balíčků SSIS spuštěných v prostředí Azure SSIS Integration Runtime se chcete připojit k místním úložištím dat.
+
+- Jsou hostiteli databáze katalogu integrační služby SSIS (SQL Server) na Azure SQL Database spravované Instance (Preview) ve virtuální síti.
 
  Azure Data Factory verze 2 (Preview) umožňuje připojení k vaší runtime integrace Azure SSIS k virtuální síti vytvořené pomocí modelu nasazení classic nebo modelu nasazení Azure Resource Manager. 
 
@@ -52,7 +53,7 @@ Další podrobnosti naleznete v následujících částech.
 
 ## <a name="requirements-for-virtual-network-configuration"></a>Požadavky pro konfiguraci virtuální sítě
 
--   Ujistěte se, že `Microsoft.Batch` je registrovaný poskytovatel v rámci předplatného podsítě vaší virtuální sítě, který hostuje infračerveného signálu Azure SSIS. Pokud používáte klasické virtuální sítě, také připojit `MicrosoftAzureBatch` k roli Přispěvatel Classic virtuálních počítačů pro tuto virtuální síť.
+-   Ujistěte se, že `Microsoft.Batch` je registrovaný poskytovatel v rámci předplatného vaše podsíť virtuální sítě, který hostuje infračerveného signálu Azure SSIS. Pokud používáte klasické virtuální síti, také připojit `MicrosoftAzureBatch` k roli Přispěvatel Classic virtuálních počítačů pro tuto virtuální síť.
 
 -   Vyberte správnou podsíť k hostování infračerveného signálu Azure SSIS. V tématu [vyberte podsíť](#subnet).
 
@@ -78,7 +79,7 @@ Doporučujeme následující kroky:
 
 -   Nakonfigurujte vlastní DNS pro předávání požadavků do Azure DNS. Na serveru DNS, může předat nerozpoznané záznamy DNS na IP adresu překladače rekurzivní Azure (168.63.129.16).
 
--   Nastavte vlastní DNS jako primární a Azure DNS jako sekundární sítě vnet. Zaregistrujte Azure rekurzivní překladače (168.63.129.16) na IP adresu jako sekundární server DNS v případě, že DNS server není k dispozici.
+-   Nastavte vlastní DNS jako primární a Azure DNS jako sekundární virtuální sítě. Zaregistrujte Azure rekurzivní překladače (168.63.129.16) na IP adresu jako sekundární server DNS v případě, že DNS server není k dispozici.
 
 Další informace najdete v tématu [překlad, který používá DNS server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
@@ -109,11 +110,11 @@ Pokud máte obavy o ztráty možnosti Zkontrolujte odchozí internetové přenos
 V tématu [tento skript prostředí PowerShell](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) příklad. Budete muset spustit skript každý týden k zachování aktualizovaného stavu seznamu IP adres center dat Azure.
 
 ### <a name="resource-group"></a> Požadavky pro skupinu prostředků
-IR Azure SSIS potřebuje k vytvoření určité síťové prostředky v rámci stejné skupině prostředků jako virtuální síť, včetně Vyrovnávání zatížení Azure, Azure veřejnou IP adresu a pracovní skupina zabezpečení sítě.
+IR Azure SSIS potřebuje k vytvoření určitým síťovým prostředkům ve stejné skupině prostředků jako virtuální síť, včetně Vyrovnávání zatížení Azure, Azure veřejnou IP adresu a pracovní skupina zabezpečení sítě.
 
--   Ujistěte se, že nemáte žádné Zámek prostředků ve skupině prostředků nebo předplatného, do které patří virtuální sítě. Pokud nakonfigurujete zámek jen pro čtení nebo odstranění zámku, spuštění a zastavení IR může selhat nebo zablokuje.
+-   Ujistěte se, že nemáte žádné Zámek prostředků ve skupině prostředků nebo předplatného, do které patří virtuální síť. Pokud nakonfigurujete zámek jen pro čtení nebo odstranění zámku, spuštění a zastavení IR může selhat nebo zablokuje.
 
--   Ujistěte se, že nemáte zásady služby Azure, který zabraňuje v následujících zdrojích informací se vytvořil v rámci skupiny prostředků nebo předplatného, do které patří virtuální sítě:
+-   Ujistěte se, že nemáte zásady služby Azure, který zabraňuje v následujících zdrojích informací se vytvořil v rámci skupiny prostředků nebo předplatného, do které patří virtuální síť:
     -   Microsoft.Network/LoadBalancers
     -   Microsoft.Network/NetworkSecurityGroups
     -   Microsoft.Network/PublicIPAddresses
@@ -228,7 +229,7 @@ Musíte nakonfigurovat virtuální síť, než bude možné připojit Azure SSIS
 
 ```powershell
 # Register to the Azure Batch resource provider
-# Make sure to run this script against the subscription to which the VNet belongs.
+# Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
@@ -282,7 +283,7 @@ Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupNam
 
 ```powershell
 # Register to the Azure Batch resource provider
-# Make sure to run this script against the subscription to which the VNet belongs.
+# Make sure to run this script against the subscription to which the virtual network belongs.
 if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName "MicrosoftAzureBatch").Id

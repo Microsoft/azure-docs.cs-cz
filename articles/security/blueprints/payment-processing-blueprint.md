@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 06151b211a03a971e549e88817770ef096f3f603
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839422"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301367"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 
@@ -169,8 +169,6 @@ Každý z úrovně sítě má skupina zabezpečení vyhrazené sítě (NSG):
 - Skupina zabezpečení sítě hraniční sítě pro brány firewall a aplikace brány firewall webových aplikací
 - Skupina NSG pro správu jumpbox (bastionu hostitel)
 - Skupina NSG pro app service environment
-
-Každý z skupin Nsg mít určité porty a protokoly otevřené pro operaci zabezpečení a správné řešení. Další informace najdete v tématu [pokyny PCI - skupiny zabezpečení sítě](#network-security-groups).
 
 Každý z skupin Nsg mít určité porty a protokoly otevřené pro zabezpečení a správné fungování řešení. Kromě toho tyto konfigurace jsou povolené pro jednotlivé skupiny NSG:
 - Povolit [diagnostické protokoly a události](/azure/virtual-network/virtual-network-nsg-manage-log) jsou uložené v účtu úložiště 

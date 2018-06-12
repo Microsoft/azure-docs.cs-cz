@@ -1,18 +1,19 @@
 ---
-title: "Nastavit procesní server v Azure pro virtuální počítač VMware a fyzické server navrácení služeb po obnovení s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit procesní server v Azure, pro navrácení služeb po obnovení virtuálních počítačů Azure k VMware."
+title: Nastavit procesní server v Azure pro virtuální počítač VMware a fyzické server navrácení služeb po obnovení s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak nastavit procesní server v Azure, pro navrácení služeb po obnovení virtuálních počítačů Azure k VMware.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: c6ef0ae663727c519f9b6a8a56027a3dd8a9503d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.date: 06/10/2018
+ms.author: raynew
+ms.openlocfilehash: 1a6a1276d1a63971fba68dc868aa56ce687a6cc2
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300918"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesní server v Azure pro navrácení služeb po obnovení
 
@@ -26,7 +27,7 @@ Další informace o [vytvoření](vmware-azure-reprotect.md) a [navrácení slu�
 
 ## <a name="deploy-a-process-server-in-azure"></a>Nasadit procesový server v Azure
 
-1. V trezoru > **infrastruktura Site Recovery**> **Mnaage** > **konfigurační servery**, vyberte konfigurační server.
+1. V trezoru > **infrastruktura Site Recovery**> **spravovat** > **konfigurační servery**, vyberte konfigurační server.
 2. Na stránce serveru klikněte na tlačítko **+ procesového serveru**
 3. V **přidat procesový server** stránku a vyberte, které chcete nasadit procesový server v Azure.
 4. Zadejte nastavení Azure, včetně předplatné použité pro převzetí služeb při selhání, skupinu prostředků, oblast Azure pro převzetí služeb při selhání a virtuální síť, ve které se nacházejí virtuální počítače Azure. Pokud jste použili více sítí Azure, je třeba procesový server v každé z nich.

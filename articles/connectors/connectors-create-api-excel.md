@@ -2,7 +2,7 @@
 title: Připojit k aplikaci Microsoft Excel - Azure Logic Apps | Microsoft Docs
 description: Správa dat pomocí rozhraní API REST Microsoft Excel a Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 08/23/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 6de26803d37efad80df5a001d33afc8d2d767bc1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 41406f793dd5cce2963f438517a6ecd6cb82e029
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610408"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295267"
 ---
 # <a name="get-started-with-the-excel-connector"></a>Začínáme s konektor aplikace Excel
 Neexistuje žádný konektor aplikace Excel v Logic Apps. 

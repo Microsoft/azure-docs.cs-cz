@@ -1,11 +1,11 @@
 ---
-title: "Přidejte konektor Yammer v Azure Logic Apps | Microsoft Docs"
-description: "Přehled konektoru Yammer s parametry rozhraní REST API"
+title: Přidejte konektor Yammer v Azure Logic Apps | Microsoft Docs
+description: Přehled konektoru Yammer s parametry rozhraní REST API
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 7f1758e9b95f534b23188f427ae0edaddbb29a48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63f7b341b456d51cbde523684275a99632a672ed
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296471"
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Začínáme s konektorem Yammer
 Připojení k Yammeru k přístupu konverzací v podnikové síti. Yammer můžete:

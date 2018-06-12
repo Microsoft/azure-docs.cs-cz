@@ -3,7 +3,7 @@ title: Funkce jazyka pro definici pracovního postupu - Azure Logic Apps | Micro
 description: Další informace o funkce pro vytváření aplikací logiky s jazykem definice pracovního postupu
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6f1871e1e135ecb9e7cb37c0bedff3737d3febb7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301384"
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Referenční dokumentace funkcí Definition Language pracovního postupu pro Azure Logic Apps
 
@@ -1450,7 +1451,7 @@ equals('<object1>', '<object2>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*1*>, <*object2*> | Ano | Různé | Hodnoty, výrazy nebo objekty k porovnání | 
+| <*1*>, <*object2*> | Ano | různé | Hodnoty, výrazy nebo objekty k porovnání | 
 ||||| 
 
 | Návratová hodnota | Typ | Popis | 
@@ -1509,7 +1510,7 @@ A tyto výsledky:
 
 <a name="float"></a>
 
-## <a name="float"></a>Plovoucí desetinná čárka
+## <a name="float"></a>float
 
 Převeďte řetězec verze pro číslo s plovoucí desetinnou čárkou skutečné číslo s plovoucí desetinnou čárkou. Tuto funkci můžete použít jenom v případě, že předávání vlastních parametrů do aplikace, jako je například aplikace logiky.
 
@@ -1524,7 +1525,7 @@ float('<value>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*float – hodnota*> | Plovoucí desetinná čárka | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec | 
+| <*float – hodnota*> | Float | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec | 
 |||| 
 
 *Příklad*
@@ -1825,7 +1826,7 @@ A vrátí výsledek tohoto: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
 
 <a name="if"></a>
 
-## <a name="if"></a>if
+## <a name="if"></a>Pokud
 
 Zkontrolujte, zda je výraz true nebo false. Na základě výsledku, vrátí zadanou hodnotu.
 
@@ -1967,7 +1968,7 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-## <a name="json"></a>JSON
+## <a name="json"></a>json
 
 Vrátí hodnotu typu JavaScript Object Notation (JSON) nebo objekt pro řetězec nebo XML.
 
@@ -2444,7 +2445,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-## <a name="not"></a>není
+## <a name="not"></a>ne
 
 Zkontrolujte, zda výraz je hodnota false. Vrátí hodnotu PRAVDA, pokud výraz je hodnota false, nebo hodnotu NEPRAVDA, pokud je hodnota true, vrátí.
 
@@ -3109,7 +3110,7 @@ A tyto výsledky:
 
 <a name="ticks"></a>
 
-## <a name="ticks"></a>rysky
+## <a name="ticks"></a>impulzy
 
 Vrátí `ticks` hodnota vlastnosti pro zadané časové razítko. A *značek* je 100 nanosekund interval.
 

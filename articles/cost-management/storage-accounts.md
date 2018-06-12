@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 76a9fc586a1932b8b5e664b6c964f0c7d3eac4d4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297831"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>Konfigurace účtů úložiště pro náklady na správu
 
@@ -39,7 +40,7 @@ Konfigurace, můžete je jednoduchá úložiště Azure za účelem použití n�
 3. Na stránce účet úložiště v rámci **nastavení**, klikněte na tlačítko **přístupové klíče**.
 4. Kopie vašeho **název účtu úložiště** a **připojovací řetězec** pod key1.  
 ![Přístupové klíče k úložišti Azure](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com a přihlásit se.
+5. Otevřete portál Cloudyn z portálu Azure nebo přejděte na https://azure.cloudyn.com a přihlaste se.
 6. Kliknutím na ikonu symbol a pak vyberte **Správa sestav úložišť**.
 7. Klikněte na tlačítko **přidat nové +** a ujistěte se, že je vybraný Microsoft Azure. Vložte název účtu úložiště Azure v **název** oblasti. Vložení vaše **připojovací řetězec** v odpovídající oblasti. Zadejte název kontejneru a pak klikněte na tlačítko **Uložit**.  
 ![Úložiště Cloudyn nakonfigurován pro Azure.](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +148,7 @@ Můžete také nastavit oprávnění k vytvoření sestavy v vaší sady S3 pomo
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>Přidání úložiště AWS sestavy do Cloudyn
 
-1. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com a přihlásit se.
+1. Otevřete portál Cloudyn z portálu Azure nebo přejděte na https://azure.cloudyn.com a přihlaste se.
 2. Kliknutím na ikonu symbol a pak vyberte **Správa sestav úložišť**.
 3. Klikněte na tlačítko **přidat nové +** a ujistěte se, že je vybraný AWS.
 4. Vyberte sady účtu a úložiště. Název sady úložiště AWS je automaticky vyplněné.  

@@ -1,11 +1,11 @@
 ---
-title: "Vytvořte partnery pro business-to-business (B2B) zprávy – Azure Logic Apps | Microsoft Docs"
-description: "Informace o postupu přidání partnery ke svému účtu integrace s Logic Apps a Enterprise integračního balíčku"
+title: Vytvořte partnery pro business-to-business (B2B) zprávy – Azure Logic Apps | Microsoft Docs
+description: Informace o postupu přidání partnery ke svému účtu integrace s Logic Apps a Enterprise integračního balíčku
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: divyaswarnkar
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17f15c49e0f8137d5f11c57fa600588cda791c28
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 4abfdaa8145f14bc6496e57ebce0da10cdd2c365
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299735"
 ---
 # <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>Přidat nebo aktualizovat partnery ve smlouvách business-to-business v pracovním postupu
 

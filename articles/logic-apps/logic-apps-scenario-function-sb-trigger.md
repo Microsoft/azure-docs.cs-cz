@@ -1,11 +1,11 @@
 ---
-title: "Scénář – aplikace logiky aktivační událost s funkcemi Azure a Azure Service Bus | Microsoft Docs"
-description: "Vytvořit funkci pro aktivaci aplikace logiky pomocí funkce Azure a Azure Service Bus"
+title: Scénář – aplikace logiky aktivační událost s funkcemi Azure a Azure Service Bus | Microsoft Docs
+description: Vytvořit funkci pro aktivaci aplikace logiky pomocí funkce Azure a Azure Service Bus
 services: logic-apps,functions
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 088f10bc32dd492f82f0a10a7e5829e76f588758
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299789"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>Scénář: Aktivovat aplikaci logiky s funkcemi Azure a Azure Service Bus
 

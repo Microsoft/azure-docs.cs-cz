@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření webové rozhraní API a rozhraní REST API pro Azure Logic Apps | Microsoft Docs"
-description: "Vytváření webového rozhraní API a rozhraní REST API volat vaše rozhraní API, služby nebo systémy z pracovních aplikace logiky pro integrace systému"
-keywords: "webové rozhraní API, rozhraní REST API, pracovních postupů, integrace systému"
+title: Vytvoření webové rozhraní API a rozhraní REST API pro Azure Logic Apps | Microsoft Docs
+description: Vytváření webového rozhraní API a rozhraní REST API volat vaše rozhraní API, služby nebo systémy z pracovních aplikace logiky pro integrace systému
+keywords: webové rozhraní API, rozhraní REST API, pracovních postupů, integrace systému
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299524"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Vytvořte vlastní rozhraní API, která můžete volat z pracovních aplikace logiky
 
@@ -79,7 +80,7 @@ Pro standardní akci můžete napsat metodu požadavku HTTP v rozhraní API a po
 
 ![Vzor standardní akce](./media/logic-apps-create-api-app/standard-action.png)
 
-<a name="pattern-overview"></a>Chcete-li aplikace logiky, počkejte na dokončení delší úloh rozhraní API, můžete postupovat podle rozhraní API [dotazování asynchronní vzor](#async-pattern) nebo [webhooku asynchronní vzor](#webhook-actions) popsaných v tomto tématu. Analogie, který pomáhá vizualizovat tyto vzory různé chování Představte si proces pro řazení vlastní dort z Pekárna. Vzor dotazování zrcadlí chování, kde zavoláte Pekárna každých 20 minut a zkontrolujte, zda dort připraven. Vzor webhooku zrcadlí chování, kde Pekárna se vás zeptá na vaše telefonní číslo, můžou můžete volat při dort je připraven.
+<a name="pattern-overview"></a> Chcete-li aplikace logiky, počkejte na dokončení delší úloh rozhraní API, můžete postupovat podle rozhraní API [dotazování asynchronní vzor](#async-pattern) nebo [webhooku asynchronní vzor](#webhook-actions) popsaných v tomto tématu. Analogie, který pomáhá vizualizovat tyto vzory různé chování Představte si proces pro řazení vlastní dort z Pekárna. Vzor dotazování zrcadlí chování, kde zavoláte Pekárna každých 20 minut a zkontrolujte, zda dort připraven. Vzor webhooku zrcadlí chování, kde Pekárna se vás zeptá na vaše telefonní číslo, můžou můžete volat při dort je připraven.
 
 Ukázky, najdete v článku [úložiště GitHub aplikace logiky](https://github.com/logicappsio). Také další informace o [měření využití pro akce](logic-apps-pricing.md).
 
@@ -95,7 +96,7 @@ Tady je obecný vzor:
 2. Pokud modul provede odeslání dalších žádostí o stav úlohy, umožní modul vědět, pokud se vaše rozhraní API dokončení úlohy.
 3. Vrátí relevantní data do modulu, aby mohl pokračovat pracovní postup aplikace logiky.
 
-<a name="bakery-polling-action"></a>Teď použít předchozí analogie Pekárna se vzorem cyklického dotazování a Představte si, že zavoláte Pekárna a pořadí vlastní dort pro doručení. Proces pro provedení dort trvá určitou dobu, a nechcete počkejte Pekárna funguje na dort na telefonu. Pekárna potvrzuje vaši objednávku a má můžete volat každých 20 minut, než dort stavu. Po předat 20 minut, volání Pekárna, ale jejich zjistíte, že vaše dort neuděláte a že by měly volat v jiném 20 minut. Tento proces a zpět pokračuje, dokud zavoláte a Pekárna znamená, že vaši objednávku je připraven a přináší vaší dort. 
+<a name="bakery-polling-action"></a> Teď použít předchozí analogie Pekárna se vzorem cyklického dotazování a Představte si, že zavoláte Pekárna a pořadí vlastní dort pro doručení. Proces pro provedení dort trvá určitou dobu, a nechcete počkejte Pekárna funguje na dort na telefonu. Pekárna potvrzuje vaši objednávku a má můžete volat každých 20 minut, než dort stavu. Po předat 20 minut, volání Pekárna, ale jejich zjistíte, že vaše dort neuděláte a že by měly volat v jiném 20 minut. Tento proces a zpět pokračuje, dokud zavoláte a Pekárna znamená, že vaši objednávku je připraven a přináší vaší dort. 
 
 Proto umožňuje mapovat tento vzor dotazování zpět. Pekárna představuje vlastního rozhraní API, zatímco budete dort zákazníka, představují modul Logic Apps. Když modul volá rozhraní API s žádostí, rozhraní API potvrdí žádosti a odpoví časový interval, když modul můžete zkontrolovat stav úlohy. Modul pokračuje, dokud vaše rozhraní API odpoví, že úloha probíhá kontrola stavu úloh a vrací data do aplikace logiky, která pak bude pokračovat pracovního postupu. 
 
@@ -130,16 +131,16 @@ Pokud vaše rozhraní API následuje tento vzor, nemusíte dělat nic v definici
 
 Jako alternativu můžete vzoru webhooku dlouhotrvající úlohy a asynchronní zpracování. Tento vzor má aplikace logiky, pozastavení a počkejte "zpětného volání" z rozhraní API dokončí zpracování, než budete pokračovat pracovního postupu. Je toto zpětné volání HTTP POST, který odešle zprávu na adresu URL, když se stane událost. 
 
-<a name="bakery-webhook-action"></a>Teď použít předchozí analogie Pekárna se vzorem webhooku a Představte si, že zavoláte Pekárna a pořadí vlastní dort pro doručení. Proces pro provedení dort trvá určitou dobu, a nechcete počkejte Pekárna funguje na dort na telefonu. Pekárna potvrzuje vaši objednávku, ale tentokrát, můžete jim poskytnout vaše telefonní číslo, se může zavolat, pokud se provádí dort. Tentokrát Pekárna poznáte, když vaši objednávku je připraven a doručí vaší dort.
+<a name="bakery-webhook-action"></a> Teď použít předchozí analogie Pekárna se vzorem webhooku a Představte si, že zavoláte Pekárna a pořadí vlastní dort pro doručení. Proces pro provedení dort trvá určitou dobu, a nechcete počkejte Pekárna funguje na dort na telefonu. Pekárna potvrzuje vaši objednávku, ale tentokrát, můžete jim poskytnout vaše telefonní číslo, se může zavolat, pokud se provádí dort. Tentokrát Pekárna poznáte, když vaši objednávku je připraven a doručí vaší dort.
 
 Když jsme mapovat tento vzor webhooku zpět, Pekárna představuje vlastního rozhraní API, zatímco budete dort zákazníka, představují modul Logic Apps. Modul volá rozhraní API se žádostí a zahrne adresu URL "zpětného volání".
 Pokud se provádí úlohy, rozhraní API používá adresu URL Pokud chcete upozornit modul a vrátit data do aplikace logiky, která pak bude pokračovat pracovního postupu. 
 
-Pro tento vzor nastavit dva koncové body na vašem řadiči: `subscribe` a`unsubscribe`
+Pro tento vzor nastavit dva koncové body na vašem řadiči: `subscribe` a `unsubscribe`
 
-*  `subscribe`koncový bod: při provádění dosáhne vaše rozhraní API akce v pracovním postupu, Logic Apps modul volání `subscribe` koncový bod. Tento krok způsobí, že aplikace logiky vytvořit adresu URL zpětné volání, která ukládá vaše rozhraní API a potom počkejte zpětného volání z rozhraní API, když je práce dokončena. Rozhraní API pak zavolá zpátky s HTTP POST na adresu URL a předá všechny vrácený obsah a hlavičky jako vstup pro logiku aplikace.
+*  `subscribe` koncový bod: při provádění dosáhne vaše rozhraní API akce v pracovním postupu, Logic Apps modul volání `subscribe` koncový bod. Tento krok způsobí, že aplikace logiky vytvořit adresu URL zpětné volání, která ukládá vaše rozhraní API a potom počkejte zpětného volání z rozhraní API, když je práce dokončena. Rozhraní API pak zavolá zpátky s HTTP POST na adresu URL a předá všechny vrácený obsah a hlavičky jako vstup pro logiku aplikace.
 
-* `unsubscribe`koncový bod: Pokud zrušení spusťte aplikaci logiky Logic Apps modul volání `unsubscribe` koncový bod. Rozhraní API můžete zrušit registraci adresy URL zpětného volání a ukončení všech procesů podle potřeby.
+* `unsubscribe` koncový bod: Pokud zrušení spusťte aplikaci logiky Logic Apps modul volání `unsubscribe` koncový bod. Rozhraní API můžete zrušit registraci adresy URL zpětného volání a ukončení všech procesů podle potřeby.
 
 ![Vzor akce Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -199,9 +200,9 @@ Například může pravidelně zkontrolujte vaši službu pro nové soubory, ses
 Aktivační události webhooku je *aktivační událost nabízené* které vyčká a čeká na nová data nebo události na váš koncový bod služby. Pokud nová data nebo událost splňuje zadanou podmínku, aktivační událost se aktivuje a vytvoří instanci aplikace logiky, která pak zpracovává data jako vstup.
 Aktivační události Webhooku fungují podobně jako [akce webhooku](#webhook-actions) dříve popsané v tomto tématu a nastavení je `subscribe` a `unsubscribe` koncové body. 
 
-* `subscribe`koncový bod: při přidání a uložit aktivační události webhooku aplikace logiky, Logic Apps modul volání `subscribe` koncový bod. Tento krok způsobí, že aplikace logiky vytvořit adresu URL zpětné volání, která ukládá vaše rozhraní API. Když je nová data nebo událost, která splňuje zadanou podmínku, zavolá rozhraní API zpět pomocí HTTP POST na adresu URL. Datová část obsahu a hlavičky předat jako vstup pro logiku aplikace.
+* `subscribe` koncový bod: při přidání a uložit aktivační události webhooku aplikace logiky, Logic Apps modul volání `subscribe` koncový bod. Tento krok způsobí, že aplikace logiky vytvořit adresu URL zpětné volání, která ukládá vaše rozhraní API. Když je nová data nebo událost, která splňuje zadanou podmínku, zavolá rozhraní API zpět pomocí HTTP POST na adresu URL. Datová část obsahu a hlavičky předat jako vstup pro logiku aplikace.
 
-* `unsubscribe`koncový bod: Pokud odstranění aktivační události webhooku nebo celý logiku aplikace Logic Apps modul volání `unsubscribe` koncový bod. Rozhraní API můžete zrušit registraci adresy URL zpětného volání a ukončení všech procesů podle potřeby.
+* `unsubscribe` koncový bod: Pokud odstranění aktivační události webhooku nebo celý logiku aplikace Logic Apps modul volání `unsubscribe` koncový bod. Rozhraní API můžete zrušit registraci adresy URL zpětného volání a ukončení všech procesů podle potřeby.
 
 ![Vzor aktivační události Webhooku](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

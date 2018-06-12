@@ -4,7 +4,7 @@ description: Přesunutí nebo migraci na Azure Logic Apps služby Azure BizTalk 
 services: logic-apps
 documentationcenter: ''
 author: jonfancey
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: logic-apps
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: jonfan; LADocs
-ms.openlocfilehash: f5ad003189d70216198f2d5c7719a971c16d5479
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 846386172c0221c217430e62c8560484f799fa7f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299541"
 ---
 # <a name="move-from-biztalk-services-to-azure-logic-apps"></a>Přesunutí ze služby BizTalk Azure Logic Apps
 
@@ -39,7 +40,7 @@ Tato tabulka mapuje funkce BizTalk Services Logic Apps.
 
 | BizTalk Services   | Logic Apps            | Účel                      |
 | ------------------ | --------------------- | ---------------------------- |
-| Konektor          | Konektor             | Odesílat a přijímat data   |
+| Spojovací čára          | Spojovací čára             | Odesílat a přijímat data   |
 | Most             | Aplikace logiky             | Procesor kanálu           |
 | Ověření fáze     | Ověření XML akce | Ověření dokument XML pro schéma. | 
 | Zlepšit komunikaci oddělení fáze       | Tokeny dat           | Povyšte vlastnosti do zprávy nebo pro rozhodnutí o směrování |

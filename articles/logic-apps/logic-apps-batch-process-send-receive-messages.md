@@ -1,13 +1,13 @@
 ---
-title: "Zpracování zpráv služby batch jako skupiny nebo kolekce - Azure Logic Apps | Microsoft Docs"
-description: "Odesílat a přijímat zprávy pro dávkové zpracování v aplikacích logiky"
-keywords: "dávkové zpracování balíku"
+title: Zpracování zpráv služby batch jako skupiny nebo kolekce - Azure Logic Apps | Microsoft Docs
+description: Odesílat a přijímat zprávy pro dávkové zpracování v aplikacích logiky
+keywords: dávkové zpracování balíku
 author: jonfancey
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: de519084a4f172ad984c78727123835eeb9deaef
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2815ce7fe0e10aadb60eaa77b58e5395fb5c98d8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298011"
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>Odesílání, příjem a zpracování zpráv v aplikacích logiky služby batch
 
@@ -77,7 +78,7 @@ Aplikace logiky odesílatele potřebovat věděli, kde k odeslání položek, za
 
    1. V části aktivační událost batch, zvolte **+ nový krok** > **přidat akci**.
 
-   2. Do vyhledávacího pole zadejte "e-mailu" jako filtr.
+   2. Do vyhledávacího pole zadejte jako filtr „e-mail“.
    Založená na zprostředkovateli e-mailu, vyberte konektor e-mailu.
    
       Například pokud máte pracovní nebo školní účet, vyberte konektor Office 365 Outlook. 
@@ -131,7 +132,7 @@ Aplikace logiky odesílatele potřebovat věděli, kde k odeslání položek, za
 1. Vytvořit jinou aplikaci logiky s tímto názvem: "BatchSender"
 
    1. Do vyhledávacího pole zadejte "recurrence" jako filtr. 
-   Vyberte této aktivační události: **plán - opakování**
+   Vyberte tento trigger: **Plán – Opakování**
 
       ![Přidat aktivační události "Plán-Recurrence"](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-receiver.png)
 
@@ -168,7 +169,7 @@ Aplikace logiky odesílatele potřebovat věděli, kde k odeslání položek, za
    V tomto příkladu přidejte tento výraz, který se vloží do obsah zprávy, který odešlete do dávky k aktuálnímu datu a času:
 
      1. Když **dynamický obsah** seznamu se zobrazí, zvolte **výraz**. 
-     2. Zadejte výraz **utcnow()**a zvolte **OK**. 
+     2. Zadejte výraz **utcnow()** a zvolte **OK**. 
 
         ![V "Zpráva obsah" Vyberte "Výraz". Zadejte "utcnow()".](./media/logic-apps-batch-process-send-receive-messages/send-batch-receiver-details.png)
 

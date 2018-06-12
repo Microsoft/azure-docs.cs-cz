@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/23/2017
 ms.author: douglasl
-ms.openlocfilehash: 763b13849470079e24aac6aff45584bac33403f0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 956bd89a993a019d7a5a4dd28efec4116b174334
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620533"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297253"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování modulu runtime integrace v Azure Data Factory  
 **Integrace runtime** je na výpočetní infrastruktuře používá k zajištění různé funkce integrace dat různých prostředích sítě Azure Data Factory. Existují tři typy integrační moduly runtime nabízené službou Data Factory:
@@ -167,7 +167,7 @@ Modul runtime integrace Azure SSIS je plně spravovaný cluster Azure virtuáln�
 | CatalogAdminUserName | Uživatelské jméno správce serveru existující databáze nebo spravované Instance SQL Azure (Preview). Služba data Factory používá tyto informace k přípravě a spravovat SSISDB vaším jménem. |
 | CatalogAdminPassword | Heslo správce existujícího serveru Azure SQL Database nebo spravované Instance (Preview). |
 | CatalogPricingTier | Cenovou úroveň pro SSISDB hostované existujícího serveru Azure SQL Database.  Neplatí pro Azure spravované Instance SQL (Preview) hostování SSISDB. |
-| VNetId | Virtuální síť (VNet) ID prostředku pro vaše runtime integrace Azure SSIS pro připojení. |
+| VNetId | Virtuální síť ID prostředku pro vaše runtime integrace Azure SSIS pro připojení. |
 | Podsíť | Název podsítě pro vaše integrace Azure SSIS modulu runtime pro připojení. |
 | ID | ID prostředku vaší runtime integrace Azure SSIS. |
 | Typ | Typ (spravované nebo samoobslužných-Hosted) vaší runtime integrace Azure SSIS. |
@@ -200,9 +200,9 @@ Najdete další informace o běhu integrace Azure SSIS v následujících člán
 
 - [Modul Runtime integrace Azure SSIS](concepts-integration-runtime.md#azure-ssis-integration-runtime). Tento článek obsahuje koncepční informace o integraci runtimes obecně včetně infračerveného signálu Azure SSIS. 
 - [Kurz: Nasazení balíčků SSIS do Azure](tutorial-create-azure-ssis-runtime-portal.md) Tento článek obsahuje podrobné pokyny pro vytvoření Azure-SSIS IR a využívá databázi Azure SQL k hostování katalogu SSIS. 
-- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek dál navazuje na tento kurz a obsahuje pokyny k použití spravované instance SQL Azure (Preview) a připojení IR k virtuální síti. 
+- [Postup: Vytvoření prostředí Azure-SSIS Integration Runtime](create-azure-ssis-integration-runtime.md) Tento článek rozšíří na kurz a poskytuje pokyny o používání spravované Instance Azure SQL (Preview) a připojení k virtuální síti reakcí na Incidenty. 
 - [Správa Azure-SSIS IR](manage-azure-ssis-integration-runtime.md). Tento článek ukazuje, jak zastavit, spustit nebo odebrat Azure-SSIS IR. Ukazuje také postup horizontálního navýšení kapacity Azure-SSIS IR přidáním více uzlů. 
-- [Připojení Azure-SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md) Tento článek obsahuje koncepční informace o připojení Azure-SSIS IR k virtuální síti Azure (VNet). Poskytuje také kroky pro využití webu Azure Portal ke konfiguraci virtuální sítě, aby se k ní prostředí Azure-SSIS IR mohlo připojit. 
+- [Připojení Azure SSIS IR k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md). Tento článek obsahuje koncepční informace o připojení Azure SSIS Reakcí do virtuální sítě Azure. Poskytuje také kroky konfigurace virtuální sítě, aby IR Azure SSIS možné připojit virtuální sítě pomocí portálu Azure. 
 
 ## <a name="next-steps"></a>Další postup
 Najdete v následujících článcích pro monitorování kanály různými způsoby: 

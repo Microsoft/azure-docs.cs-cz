@@ -1,6 +1,6 @@
 ---
-title: Používání databáze SQL v Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak můžete nasadit databází SQL jako služba na Azure zásobníku a rychlé kroky k nasazení adaptér zprostředkovatele prostředků systému SQL Server.
+title: Aktualizace zprostředkovatele prostředků Azure SQL zásobníku | Microsoft Docs
+description: Zjistěte, jak můžete aktualizovat zprostředkovatele prostředků zásobníku SQL Azure.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: fd1c2241fe22dc35ceb09e0ba3650fa0000a77b1
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603612"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294856"
 ---
-# <a name="update-the-sql-resource-provider-adapter"></a>Aktualizovat adaptér zprostředkovatele prostředků SQL
-Nový adaptér zprostředkovatele prostředků SQL může vydala, když jsou aktualizovány sestavení Azure zásobníku. Zatímco existující adaptér fungovat, doporučujeme aktualizovat na nejnovější verzi co nejdříve. Aktualizace musí být nainstalované v pořadí: nedá přeskočit verze (najdete v seznamu verzí v [nasazení požadavky na poskytovatele prostředků](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
+# <a name="update-the-sql-resource-provider"></a>Aktualizujte zprostředkovatele prostředků SQL
+Nový zprostředkovatel prostředků SQL může vydala, když jsou aktualizovány sestavení Azure zásobníku. Zatímco existující adaptér fungovat, doporučujeme aktualizovat na nejnovější verzi co nejdříve. Aktualizace musí být nainstalované v pořadí: nedá přeskočit verze (najdete v seznamu verzí v [nasazení požadavky na poskytovatele prostředků](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
 
 Aktualizovat zprostředkovatele prostředků použijete *UpdateSQLProvider.ps1* skriptu. Proces je podobný procesu použitý k instalaci zprostředkovatele prostředků, jak je popsáno v [nasazení poskytovatele prostředků](.\azure-stack-sql-resource-provider-deploy.md) článku. Skript je součástí stahování poskytovatele prostředků.
 

@@ -11,17 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2808847642639069e60102b195ac97957c8593f0
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b9f92b4d85e17bc848d82be413df1d0dad7c8548
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294934"
 ---
 # <a name="create-sql-databases"></a>Vytvoření databáze SQL
-Databáze samoobslužné služby je zajišťována prostřednictvím portálu činnost koncového uživatele. Uživatel potřebuje odběr, který má nabídku, který obsahuje službu databáze.
+Databáze samoobslužné služby je zajišťována prostřednictvím portálu user portal. Uživatel s Azure zásobníku musí odběr, který má nabídku, který obsahuje službu SQL database.
 
 1. Přihlaste se k [zásobník Azure](azure-stack-poc.md) portálu user portal (Správci služby můžete také použít portál pro správu).
 

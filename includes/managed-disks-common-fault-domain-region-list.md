@@ -10,7 +10,7 @@
 | Střed USA – sever    | 3                       |
 | Střed USA – jih    | 3                       |
 | Západní střed USA     | 2                       |
-| Střední Kanada      | 2                       |
+| Střední Kanada      | 3                      |
 | Východní Kanada         | 2                       |
 |                     |                         |
 | Severní Evropa        | 3                       |

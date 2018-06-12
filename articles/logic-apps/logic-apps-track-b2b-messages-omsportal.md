@@ -2,7 +2,7 @@
 title: Sledování zpráv B2B s Azure Log Analytics - Azure Logic Apps | Microsoft Docs
 description: Sledování komunikace B2B pro integraci účet a logiku aplikace s Azure Log Analytics
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 48523e1f1bc8d5b810cc7c9d1a7308f1aaadf8bb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299973"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Sledování komunikace B2B s Azure Log Analytics
 
@@ -150,7 +151,7 @@ Tady jsou popisy vlastností pro každou zprávu AS2.
 | Vlastnost | Popis |
 | --- | --- |
 | Odesílatel | Partnerovi hosta zadaný v **přijímat nastavení**, nebo hostitele partnera zadaný v **odeslat nastavení** pro smlouvy AS2 |
-| Příjemce | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy AS2 |
+| Přijímač | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy AS2 |
 | Aplikace logiky | Aplikace logiky, kde se nastaví AS2 akce |
 | Status | Stav zpráv AS2 <br>Úspěch = přijatých nebo odeslaných zprávu platný AS2. Žádné MDN je nastavený. <br>Úspěch = přijatých nebo odeslaných zprávu platný AS2. Nastavení a obdrží MDN nebo odesílání MDN. <br>Se nezdařilo = přijatá neplatná zpráva AS2. Žádné MDN je nastavený. <br>Čekající = přijatých nebo odeslaných zprávu platný AS2. MDN nastavení a MDN se očekává. |
 | Potvrzení | Stav zpráv MDN <br>Přijatá = přijatých nebo odeslaných kladné MDN. <br>Čekající na vyřízení = čekání na příjem nebo odeslání MDN. <br>Odmítl = přijatých nebo odeslaných záporné MDN. <br>Není vyžadována = MDN není nastavený smlouvy. |
@@ -181,7 +182,7 @@ Zde je uveden popis vlastnost pro každý X12 zprávy.
 | Vlastnost | Popis |
 | --- | --- |
 | Odesílatel | Partnerovi hosta zadaný v **přijímat nastavení**, nebo hostitele partnera zadaný v **odeslat nastavení** pro X12 smlouvy |
-| Příjemce | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro X12 smlouvy |
+| Přijímač | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro X12 smlouvy |
 | Aplikace logiky | Aplikace logiky kde X12 jsou nastavení akce |
 | Status | X12 zprávy stav <br>Úspěch = přijatých nebo odeslaných platný X12 zprávy. Je nastavený žádný funkční potvrzení. <br>Úspěch = přijatých nebo odeslaných platný X12 zprávy. Funkční potvrzení se nastavení služby a přijímají nebo odesílání funkční potvrzení. <br>Se nezdařilo = přijatých nebo odeslaných neplatný X12 zprávy. <br>Čekající = přijatých nebo odeslaných platný X12 zprávy. Funkční potvrzení nastavení a funkční potvrzení se očekává. |
 | Potvrzení | Funkční stav Ack (997) <br>Přijatá = přijatých nebo odeslaných kladné funkční ack. <br>Odmítl = přijatých nebo odeslaných záporné funkční ack. <br>Čekající na vyřízení = očekává funkční potvrzení, ale nebyl přijat. <br>Čekající na vyřízení = generované funkční potvrzení, ale nelze odeslat na partnera. <br>Není vyžadována = funkčnosti ack není nastaven. |
@@ -214,7 +215,7 @@ Tady jsou popisy vlastností pro každou zprávu EDIFACT.
 | Vlastnost | Popis |
 | --- | --- |
 | Odesílatel | Partnerovi hosta zadaný v **přijímat nastavení**, nebo hostitele partnera zadaný v **odeslat nastavení** pro smlouvy EDIFACT |
-| Příjemce | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy EDIFACT |
+| Přijímač | Hostitele partnera, zadaný v **přijímat nastavení**, nebo partnera hosta zadaný v **odeslat nastavení** pro smlouvy EDIFACT |
 | Aplikace logiky | Aplikace logiky, kde se nastaví EDIFACT akce |
 | Status | Stav zpráv EDIFACT <br>Úspěch = přijatých nebo odeslaných zprávu platný EDIFACT. Je nastavený žádný funkční potvrzení. <br>Úspěch = přijatých nebo odeslaných zprávu platný EDIFACT. Funkční potvrzení se nastavení služby a přijímají nebo odesílání funkční potvrzení. <br>Se nezdařilo = přijatých nebo odeslaných neplatná zpráva EDIFACT <br>Čekající = přijatých nebo odeslaných zprávu platný EDIFACT. Funkční potvrzení nastavení a funkční potvrzení se očekává. |
 | Potvrzení | Funkční stav Ack (997) <br>Přijatá = přijatých nebo odeslaných kladné funkční ack. <br>Odmítl = přijatých nebo odeslaných záporné funkční ack. <br>Čekající na vyřízení = očekává funkční potvrzení, ale nebyl přijat. <br>Čekající na vyřízení = generované funkční potvrzení, ale nelze odeslat na partnera. <br>Není vyžadována = funkční Ack není nastaven. |

@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: virtual-machines
+author: sdwheeler
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 04/18/2018
+ms.author: kirpas;iainfou;sewhee
+ms.custom: include file
+ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35323795"
+---
 ## <a name="overview"></a>Přehled
 Při vytváření nového virtuálního počítače (VM) ve skupině prostředků nasazením bitové kopie z [Azure Marketplace](https://azure.microsoft.com/marketplace/), výchozí jednotce operačního systému je často 127 GB (některé obrázky, mívají menší velikost disku operačního systému ve výchozím nastavení). I když je možné k virtuálnímu počítači přidat datové disky (počet závisí na zvolené skladové položce) a navíc se na tyto dodatečné disky doporučuje instalovat aplikace a úlohy náročné na procesor, zákazníci často potřebují rozšířit jednotku operačního systému pro zajištění podpory určitých scénářů, jako jsou například tyto:
 
@@ -13,7 +30,7 @@ Při vytváření nového virtuálního počítače (VM) ve skupině prostředk�
 >
 
 ## <a name="resize-the-os-drive"></a>Změna velikosti jednotky operačního systému
-V tomto článku provedeme změnu velikosti jednotky operačního systému pomocí modulů Resource Manageru v [Azure PowerShellu](/powershell/azureps-cmdlets-docs). Ukážeme Změna velikosti disku operačního systému pro Unamanged a spravované disky vzhledem k tomu, že přístup ke změně velikosti disků, na které se liší oba typy disku.
+V tomto článku provedeme změnu velikosti jednotky operačního systému pomocí modulů Resource Manageru v [Azure PowerShellu](/powershell/azureps-cmdlets-docs). Ukážeme Změna velikosti disku operačního systému pro nespravované a spravované disky vzhledem k tomu, že přístup ke změně velikosti disků, na které se liší oba typy disku.
 
 ### <a name="for-resizing-unmanaged-disks"></a>Pro změnu velikosti nespravované disky:
 
@@ -106,7 +123,7 @@ A to je vše! Teď se pomocí RDP připojte k virtuálnímu počítači, otevře
 ## <a name="summary"></a>Souhrn
 V tomto článku jsme pomocí modulů Azure Resource Manageru v PowerShellu rozšířili jednotku operačního systému virtuálního počítače IaaS. Opakuje níže je celý skript pro vaši informaci pro nespravované a spravované disky:
 
-Unamanged disky:
+Nespravované disky:
 
 ```Powershell
 Connect-AzureRmAccount
@@ -134,10 +151,10 @@ Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="next-steps"></a>Další kroky
-Když v tomto článku jsme zaměřuje především na rozšiřování Unamanged/spravované OS disku virtuálního počítače, může vyvinuté skriptu použít také pro rozšíření datových disků připojených k virtuálnímu počítači. Pokud například chcete rozšířit datový disk připojený k virtuálnímu počítači, nahraďte objekt ```OSDisk``` v části ```StorageProfile``` polem ```DataDisks``` a použijte číselný index k získání odkazu na první připojený datový disk, jak je znázorněno níže:
+## <a name="for-resizing-data-disks"></a>Pro změnu velikosti datových disků
+Když v tomto článku jsme zaměřuje především na rozšiřování nespravovaný/spravované OS disku virtuálního počítače, může vyvinuté skriptu použít také pro rozšíření datových disků připojených k virtuálnímu počítači. Pokud například chcete rozšířit datový disk připojený k virtuálnímu počítači, nahraďte objekt ```OSDisk``` v části ```StorageProfile``` polem ```DataDisks``` a použijte číselný index k získání odkazu na první připojený datový disk, jak je znázorněno níže:
 
-Unamanged Disk:
+Nespravované Disk:
 ```Powershell
 $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 ```
@@ -149,11 +166,11 @@ $disk.DiskSizeGB = 1023
 
 Podobným způsobem můžete odkazovat na další datové disky připojené k virtuálnímu počítači, buď pomocí výše uvedeného indexu, nebo pomocí vlastnosti ```Name``` disku, jak je znázorněno níže:
 
-Unamanged Disk:
+Nespravované Disk:
 ```Powershell
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
-Spravovat Disk:
+Spravovaný Disk:
 ```Powershell
 (Get-AzureRmDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```

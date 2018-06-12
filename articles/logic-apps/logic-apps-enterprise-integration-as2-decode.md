@@ -1,11 +1,11 @@
 ---
-title: "Dekódovat AS2 zprávy – Azure Logic Apps | Microsoft Docs"
-description: "Jak používat dekodér AS2 v podniku integrační balíček pro Azure Logic Apps"
+title: Dekódovat AS2 zprávy – Azure Logic Apps | Microsoft Docs
+description: Jak používat dekodér AS2 v podniku integrační balíček pro Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4acae9f1837069c494985ff1456979490485f609
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: a5ca615d984d07513b12399b6f7e7901490f2e41
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298827"
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Dekódovat AS2 zprávy pro Azure Logic Apps s Enterprise integračního balíčku 
 

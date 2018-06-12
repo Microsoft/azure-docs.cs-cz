@@ -1,11 +1,11 @@
 ---
-title: "Sendgrid vám umožňuje | Microsoft Docs"
-description: "Vytvoření aplikace logiky službou Azure App service. Poskytovatel připojení SendGrid umožňuje odesílání e-mailů a správu seznamů příjemců."
+title: Sendgrid vám umožňuje | Microsoft Docs
+description: Vytvoření aplikace logiky službou Azure App service. Poskytovatel připojení SendGrid umožňuje odesílání e-mailů a správu seznamů příjemců.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: e87173b4a31a721ca3cd5af41d4a6d725c46c972
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0b34a76ecaf4997cbf66c3d026cd770aa8aa080d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295835"
 ---
 # <a name="get-started-with-the-sendgrid-connector"></a>Začínáme s konektor sendgrid vám umožňuje
 Poskytovatel připojení SendGrid umožňuje odesílání e-mailů a správu seznamů příjemců.
@@ -31,7 +32,7 @@ K vytvoření aplikace logiky sendgridu, musíte nejdřív vytvořit **připojen
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| ApiKey |Ano |Zadejte svůj klíč k rozhraní API SendGrid. |
+| apiKey |Ano |Zadejte svůj klíč k rozhraní API SendGrid. |
 
 > [!INCLUDE [Steps to create a connection to SendGrid](../../includes/connectors-create-api-sendgrid.md)]
 > 

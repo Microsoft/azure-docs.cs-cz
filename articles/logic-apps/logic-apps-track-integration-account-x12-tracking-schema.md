@@ -2,7 +2,7 @@
 title: X12 sledování schémata B2B monitorování - Azure Logic Apps | Microsoft Docs
 description: Ke sledování zpráv B2B z transakcí v účtu Azure integrace použít X12 sledování schémat.
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5a43b9bdf522b6b26f27c082f5cb623f7a76a8b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 385ff73d780f62f19af2face591cd0b2291ef396
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300969"
 ---
 # <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Počáteční nebo povolit sledování X12 zprávy k úspěchu monitorování, chyb a vlastnosti zprávy
 Můžete použít tyto X12 sledování schémata ve vašem účtu integrace se službou Azure vám pomohou monitorovat transakce business-to-business (B2B):

@@ -1,11 +1,11 @@
 ---
 title: Konektor Wunderlist i n Azure logic apps | Microsoft Docs
-description: "Umožňuje vytvořit připojení k Wunderlist a používají toto připojení k vytvoření pracovního postupu v aplikacích logiky."
+description: Umožňuje vytvořit připojení k Wunderlist a používají toto připojení k vytvoření pracovního postupu v aplikacích logiky.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 4d1ae30724faa59dcdeffd21be9c67d280d574f6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ed9b19700157abca6e5ac4265f1e8c99a3d846d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296369"
 ---
 # <a name="get-started-with-the-wunderlist-connector"></a>Začínáme s konektorem Wunderlist
 Wunderlist je manager todo seznam a úloh pomoci uživatelům s dokončení úloh.  Zda sdílíte seznam na nákup práce na projektu nebo plánování dovolenou, Wunderlist usnadňuje zachycení, sdílet a položky seznamu dokončení. Wunderlist okamžitě synchronizuje mezi telefon, tablet a počítač, se všechny úlohy nabízí přístup odkudkoli.

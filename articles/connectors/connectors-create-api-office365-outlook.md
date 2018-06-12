@@ -2,7 +2,7 @@
 title: Připojit k Office 365 Outlook - Azure Logic Apps | Microsoft Docs
 description: Správa e-mailu, kontaktů a kalendáři pomocí rozhraní REST API Office 365 a Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 10/18/2016
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: d455f4d9081c1fd448a0d0524c209be305e203be
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aa900a486b9b0bd0f570da866f3d0ab78c31bc6e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609966"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296148"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Začínáme s konektor Office 365 Outlook
 Konektor Office 365 Outlook umožňuje interakci s aplikací Outlook v Office 365. Pomocí tohoto konektoru můžete vytvořit, upravit a aktualizovat a položky kalendáře, kontaktů a také získat, odeslání a odpovědi k e-mailu.

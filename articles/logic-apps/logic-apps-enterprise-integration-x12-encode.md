@@ -1,11 +1,11 @@
 ---
-title: "Kódování X12 zprávy – Azure Logic Apps | Microsoft Docs"
-description: "Ověření EDI a převést kódováním XML zprávy s X12 zprávy kodér v podniku integrační balíček pro Azure Logic Apps"
+title: Kódování X12 zprávy – Azure Logic Apps | Microsoft Docs
+description: Ověření EDI a převést kódováním XML zprávy s X12 zprávy kodér v podniku integrační balíček pro Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f7408f240a1b05e0d53716764a9f8d1e19229ebe
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ec350560f4aca4e9a0b4f00892b690012c9f08dd
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299003"
 ---
 # <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Kódování X12 zprávy pro Azure Logic Apps s Enterprise integračního balíčku
 

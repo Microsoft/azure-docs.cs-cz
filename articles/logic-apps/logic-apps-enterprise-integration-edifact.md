@@ -1,11 +1,11 @@
 ---
-title: "EDIFACT zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs"
-description: "Exchange EDIFACT zprávy ve formátu EDI B2B enterprise integraci s Azure Logic Apps"
+title: EDIFACT zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs
+description: Exchange EDIFACT zprávy ve formátu EDI B2B enterprise integraci s Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d85db6f5be487578ceab261d2779589439bfad31
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300092"
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Zprávy Exchange EDIFACT pro podnikové integrace s logic apps
 

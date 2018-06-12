@@ -1,11 +1,11 @@
 ---
 title: Konektor SMTP v Azure Logic Apps | Microsoft Docs
-description: "Vytvoření aplikace logiky službou Azure App service. Připojení k SMTP pro odeslání e-mailu."
+description: Vytvoření aplikace logiky službou Azure App service. Připojení k SMTP pro odeslání e-mailu.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 tags: connectors
 ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: 9bf7c9b7c3e775ab03b071d13d792f4b2d8fb3e3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 516110abc1786d99bc719d47d61475cdc2ebcc4b
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35296063"
 ---
 # <a name="get-started-with-the-smtp-connector"></a>Začínáme s konektor SMTP
 Připojení k SMTP pro odeslání e-mailu.
