@@ -3,19 +3,19 @@ title: Vytváření proměnných pro ukládání hodnoty - Azure Logic Apps | Mi
 description: Uložení a správě hodnoty tak, že vytvoříte proměnné v Azure Logic Apps
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.topic: article
 ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: cc464edf416a2b036d84e65e05810104d2706041
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0efce9fbbbd241f335f08bb258b6ba343982fdb9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654850"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299184"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Vytváření proměnných pro ukládání a správě hodnot v Azure Logic Apps
 

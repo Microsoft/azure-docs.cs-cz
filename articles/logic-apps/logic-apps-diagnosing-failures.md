@@ -1,24 +1,25 @@
 ---
-title: "Odstraňovat a diagnostikovat chyby - Azure Logic Apps | Microsoft Docs"
-description: "Pochopit, jak a proč aplikací logiky nezdaří"
+title: Odstraňovat a diagnostikovat chyby - Azure Logic Apps | Microsoft Docs
+description: Pochopit, jak a proč aplikací logiky nezdaří
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 10/15/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: de706f711e9c57b2e575d130a2a0cfd0bdc907a1
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5af99821305fe6daab8a213d0351c5a1c5936461
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298786"
 ---
 # <a name="troubleshoot-and-diagnose-logic-app-failures"></a>Řešení potíží a diagnostikování selhání aplikace logiky
 
@@ -44,7 +45,7 @@ Každá aplikace logiky začíná aktivační události. Pokud není fire aktiva
    | Status | Popis | 
    | ------ | ----------- | 
    | **Bylo úspěšné** | Aktivační událost zaškrtnutí koncový bod a nalézt dostupná data. Obvykle "Fired" stav se zobrazí také společně se tento stav. Pokud ne, definici aktivace může obsahovat podmínku, nebo `SplitOn` příkaz, který nebyl splněn. <p>Tento stav může použít pro ruční aktivační událost, opakování aktivační události nebo cyklického dotazování aktivační události. Aktivační událost můžete spustit úspěšně, ale samotné spustit může stále selhat, když akce, které generují neošetřené chyby. | 
-   | **Přeskočena** | Aktivační událost zaškrtnutí koncový bod, ale najít žádná data. | 
+   | **Vynecháno** | Aktivační událost zaškrtnutí koncový bod, ale najít žádná data. | 
    | **Se nezdařilo** | Došlo k chybě. Chcete-li zkontrolovat generovaného chybové zprávy pro aktivační procedury se nezdařilo, vyberte tento pokus aktivační událost a zvolte **výstupy**. Můžete například zjistit vstupních hodnot, které nejsou platné. | 
    ||| 
 
@@ -98,7 +99,7 @@ Každý přímým trigger spouští pracovní postup spustit. Můžete zkontrolo
 
    ![Zobrazení podrobností o spuštění aplikace logiky](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. K prozkoumání vstupy, výstupy a chybové zprávy pro konkrétní krok, zvolte tak, aby tvar, který rozbalí a zobrazí podrobnosti tohoto kroku. Například:
+3. K prozkoumání vstupy, výstupy a chybové zprávy pro konkrétní krok, zvolte tak, aby tvar, který rozbalí a zobrazí podrobnosti tohoto kroku. Příklad:
 
    ![Zobrazení podrobností o kroku](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
@@ -114,6 +115,6 @@ Usnadní ladění, můžete přidat diagnostiky kroky do pracovního postupu, sp
 
 4. Chcete-li zkontrolovat, jak je žádost o formátu při vygenerování z modulu Logic Apps, spusťte aplikaci logiky a aktualizujte vaše RequestBin.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Sledování aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)

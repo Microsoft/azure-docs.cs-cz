@@ -1,12 +1,12 @@
 ---
-title: "Zpracovávání výjimek v jazyce & scénář protokolování chyb – Azure Logic Apps | Microsoft Docs"
-description: "Popisuje případu použití skutečné o pokročilé zpracování výjimek a protokolování chyb pro Azure Logic Apps"
-keywords: 
+title: Zpracovávání výjimek v jazyce & scénář protokolování chyb – Azure Logic Apps | Microsoft Docs
+description: Popisuje případu použití skutečné o pokročilé zpracování výjimek a protokolování chyb pro Azure Logic Apps
+keywords: ''
 services: logic-apps
 author: hedidin
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: cb80423266d3e9c0b3cac31821965ad92c0420d9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299354"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scénář: Zpracování výjimek a protokolování chyb pro logic apps
 
@@ -58,7 +59,7 @@ Prvním krokem je vytvoření aplikace logiky a otevřete aplikaci v návrháři
 
 Vzhledem k tomu, že přidáme protokolu záznam vycházejících z Dynamics CRM Online, Začněme v horní části. Musí používáme **požadavku** aktivovat, protože aplikace logiky nadřazené aktivuje tohoto dítěte.
 
-### <a name="logic-app-trigger"></a>Aktivační událostí aplikace logiky
+### <a name="logic-app-trigger"></a>Trigger aplikace logiky
 
 Používáme **požadavku** spustit jak je znázorněno v následujícím příkladu:
 
@@ -486,7 +487,7 @@ Vyhledá výraz v předchozím příkladu kódu *Create_NewPatientRecord* stav *
 
 Zdrojový kód pro správu výjimek aplikace logiky aplikace rozhraní API je k dispozici v tomto [úložiště GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "rozhraní API pro správu aplikace logiky aplikace výjimka").
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Zobrazit další logiku aplikace příkladů a scénářů](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Další informace o sledování aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)

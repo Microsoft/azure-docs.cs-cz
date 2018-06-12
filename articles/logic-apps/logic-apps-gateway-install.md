@@ -5,7 +5,7 @@ keywords: přístup k datům na místní, přenos dat, šifrování, zdroje dat
 services: logic-apps
 documentationcenter: ''
 author: jeffhollan
-manager: anneta
+manager: jeconnoc
 editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 63ec26325e045d2ddc027194377e1604d083d82c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300533"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Nainstalujte bránu dat na místě pro Azure Logic Apps
 

@@ -1,11 +1,11 @@
 ---
-title: "Příklady & běžné scénáře - Azure Logic Apps | Microsoft Docs"
-description: "Další informace o aplikacích logiky s příklady, scénáře, kurzy a návody"
+title: Příklady & běžné scénáře - Azure Logic Apps | Microsoft Docs
+description: Další informace o aplikacích logiky s příklady, scénáře, kurzy a návody
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.service: logic-apps
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 02690284e5487dba8e5fb5d973958f944bfa339f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8b340db5f89f93869486bf7541acbc3d580868a3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300034"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, příklady, kurzy a návody pro Azure Logic Apps
 

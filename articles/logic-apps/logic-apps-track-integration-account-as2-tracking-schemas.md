@@ -2,7 +2,7 @@
 title: Schémata sledování AS2 pro monitorování B2B - Azure Logic Apps | Microsoft Docs
 description: Ke sledování zpráv B2B z transakcí v účtu Azure integrace použijte schémata sledování AS2.
 author: padmavc
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8605950f3cc07730ee13b91999076e3a093e8d92
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 48e39fd20716e962c4a3e367fdff18e0b4fba32d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300877"
 ---
 # <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a>Spuštění nebo povolení sledování AS2 zpráv a MDNs k úspěchu monitorování, chyb a vlastnosti zprávy
 Tato schémata sledování AS2 můžete ve vašem účtu integrace se službou Azure vám pomohou monitorovat business-to-business transakce (B2B):
