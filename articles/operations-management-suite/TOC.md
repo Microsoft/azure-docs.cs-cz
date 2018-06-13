@@ -45,7 +45,6 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Analýza služby Service Fabric](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Mapa služeb
-##### [Názorný postup](../monitoring/monitoring-walkthrough-servicemap.md)
 ##### [Použití](../monitoring/monitoring-service-map.md)
 ##### [Konfigurace](../monitoring/monitoring-service-map-configure.md)
 ##### [Integrace s nástrojem Operations Manager](../monitoring/monitoring-service-map-scom.md)
