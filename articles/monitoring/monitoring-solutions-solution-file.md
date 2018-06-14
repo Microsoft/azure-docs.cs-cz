@@ -17,9 +17,10 @@ ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 46e6ea791752045b0f1afbf1e83e43f498415e54
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887885"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytvoření souboru sady management řešení v Azure (Preview)
 > [!NOTE]

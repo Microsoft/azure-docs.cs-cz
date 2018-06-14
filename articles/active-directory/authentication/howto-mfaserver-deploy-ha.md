@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33882894"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Nakonfigurujte Server Azure Multi-Factor Authentication pro zajištění vysoké dostupnosti
 

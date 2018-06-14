@@ -1,12 +1,12 @@
 ---
-title: "Azure zásobníku Development Kit architektura | Microsoft Docs"
-description: "Popisuje architekturu Azure zásobníku Development Kit (ASDK)."
+title: Azure zásobníku Development Kit architektura | Microsoft Docs
+description: Popisuje architekturu Azure zásobníku Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29975864"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura Microsoft Azure zásobníku Development Kit
 Azure zásobníku Development Kit (ASDK) je jedním uzlem nasazení Azure zásobníku. Všechny součásti jsou nainstalovány v virtuální počítače běžící na jeden hostitelský počítač. 
