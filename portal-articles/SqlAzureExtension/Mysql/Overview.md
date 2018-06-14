@@ -1,6 +1,6 @@
 ---
-title: "Přehled služby Azure Database for MySQL | Dokumentace Microsoftu"
-description: "Přehled obsahu nápovědy pro službu Azure Database for MySQL na webu Azure Portal"
+title: Přehled služby Azure Database for MySQL | Dokumentace Microsoftu
+description: Přehled obsahu nápovědy pro službu Azure Database for MySQL na webu Azure Portal
 services: mysql
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073890"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>Dokumentace k Azure Database for MySQL
 

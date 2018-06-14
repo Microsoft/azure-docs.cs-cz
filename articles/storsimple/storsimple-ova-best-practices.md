@@ -1,11 +1,11 @@
 ---
-title: "Osvědčené postupy pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje osvědčené postupy pro nasazení a Správa pole virtuální zařízení StorSimple."
+title: Osvědčené postupy pro pole virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje osvědčené postupy pro nasazení a Správa pole virtuální zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 57ac6eeb-c47c-442d-a5f4-b360d81a76a6
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29972836"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>Osvědčené postupy pole virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled
