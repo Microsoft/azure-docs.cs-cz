@@ -1,11 +1,11 @@
 ---
-title: "Příklad infrastruktury Azure návod | Microsoft Docs"
-description: "Další informace o klíčových návrhu a implementace pokyny pro nasazení infrastruktury příklad v Azure."
-documentationcenter: 
+title: Příklad infrastruktury Azure návod | Microsoft Docs
+description: Další informace o klíčových návrhu a implementace pokyny pro nasazení infrastruktury příklad v Azure.
+documentationcenter: ''
 services: virtual-machines-linux
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
 ms.service: virtual-machines-linux
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745771"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Příklad infrastruktury Azure návod pro virtuální počítače s Linuxem
 Tento článek vás provede vytváření infrastruktury příklad aplikace. Jsme podrobnosti navrhování infrastruktury pro jednoduché online obchodu, která spojuje všechny pokyny a rozhodnutí, která kolem názvů, skupiny dostupnosti, virtuální sítě a nástroje pro vyrovnávání zatížení a ve skutečnosti nasazení virtuálních počítačů (VM).
@@ -53,7 +54,7 @@ Všechny výše použijte tyto zásady vytváření názvů:
 
 * Adventure Works Cycles používá **[IT zatížení]-[umístění] – [prostředků Azure]** jako předponu
   * V tomto příkladu "**azos**" (online úložiště Azure) je název úlohy IT a "**použít**" (východní USA 2) je umístění
-* Virtuální sítě pomocí AZOS. POUŽIJTE VN**[číslo]**
+* Virtuální sítě pomocí AZOS. POUŽIJTE VN **[číslo]**
 * Pomocí sad dostupnosti azos-použít-jako-**[role]**
 * Názvy virtuálních počítačů pomocí azos-použít-vm -**[vmname]**
 

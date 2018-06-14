@@ -1,13 +1,13 @@
 ---
-title: "Převést Azure spravované disky úložiště ze standardní, Premium a naopak | Microsoft Docs"
-description: "Postup převedení Azure spravované disky úložiště ze standardní, Premium a naopak, pomocí rozhraní příkazového řádku Azure."
+title: Převést Azure spravované disky úložiště ze standardní, Premium a naopak | Microsoft Docs
+description: Postup převedení Azure spravované disky úložiště ze standardní, Premium a naopak, pomocí rozhraní příkazového řádku Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ramankum
 manager: kavithag
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23950508"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Převést Azure spravované disky úložiště ze standardní, Premium a naopak
 

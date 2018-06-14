@@ -1,11 +1,11 @@
 ---
-title: "Migrace ze služby Řízení přístupu Azure ve službě Active Directory do sdíleného přístupového podpisu autorizace | Microsoft Docs"
-description: "Migrace aplikací z služby Řízení přístupu na SAS"
+title: Migrace ze služby Řízení přístupu Azure ve službě Active Directory do sdíleného přístupového podpisu autorizace | Microsoft Docs
+description: Migrace aplikací z služby Řízení přístupu na SAS
 services: service-bus-relay
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26855378"
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrace ze služby Řízení přístupu Azure ve službě Active Directory do sdíleného přístupového podpisu autorizace
 

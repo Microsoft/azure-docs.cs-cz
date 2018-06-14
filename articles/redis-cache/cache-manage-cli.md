@@ -1,11 +1,11 @@
 ---
-title: "Správa Azure Redis Cache pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat rozhraní příkazového řádku Azure na jakékoli platformě, jak používat pro připojení k účtu Azure a jak vytvořit a spravovat mezipaměti Redis z příkazového řádku Azure."
+title: Správa Azure Redis Cache pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak nainstalovat rozhraní příkazového řádku Azure na jakékoli platformě, jak používat pro připojení k účtu Azure a jak vytvořit a spravovat mezipaměti Redis z příkazového řádku Azure.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911274"
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Jak vytvořit a spravovat Azure Redis Cache pomocí rozhraní příkazového řádku Azure (Azure CLI)
 > [!div class="op_single_selector"]

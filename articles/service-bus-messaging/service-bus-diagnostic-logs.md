@@ -1,13 +1,13 @@
 ---
-title: "Diagnostické protokoly služby Azure Service Bus | Microsoft Docs"
-description: "Zjistěte, jak pro nastavení diagnostické protokoly pro Service Bus v Azure."
-keywords: 
+title: Diagnostické protokoly služby Azure Service Bus | Microsoft Docs
+description: Zjistěte, jak pro nastavení diagnostické protokoly pro Service Bus v Azure.
+keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
 author: banisadr
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29122170"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Diagnostické protokoly služby Service Bus
 

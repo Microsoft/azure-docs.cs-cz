@@ -1,7 +1,7 @@
 ---
-title: "Terraform pomocí prostředí cloudu Azure"
-description: "Použití Terraform s prostředí cloudu Azure ke zjednodušení ověřování a konfigurace šablony."
-keywords: "terraform, devops, škálovat nastaveno, virtuální počítače, sítě, úložiště, moduly"
+title: Terraform pomocí prostředí cloudu Azure
+description: Použití Terraform s prostředí cloudu Azure ke zjednodušení ověřování a konfigurace šablony.
+keywords: terraform, devops, škálovat nastaveno, virtuální počítače, sítě, úložiště, moduly
 ms.service: virtual-machines-linux
 author: dcaro
 ms.author: dcaro
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121521"
 ---
 # <a name="terraform-cloud-shell-development"></a>Vývoj Terraform cloudové prostředí 
 

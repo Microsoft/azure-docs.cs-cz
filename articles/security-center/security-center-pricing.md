@@ -1,11 +1,11 @@
 ---
-title: "Upgradujte na plán úrovně Standard Centrum zabezpečení pro zvýšení zabezpečení | Microsoft Docs"
-description: "Tento článek obsahuje informace o cenách pro Azure Security Center."
+title: Upgradujte na plán úrovně Standard Centrum zabezpečení pro zvýšení zabezpečení | Microsoft Docs
+description: Tento článek obsahuje informace o cenách pro Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/20/2017
+ms.locfileid: "23931916"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgradujte na úroveň Standard Centrum zabezpečení pro zvýšení zabezpečení
 Azure Security Center nabízí jednotnou zabezpečení správy a rozšířené hrozba ochrany pro úlohy běžící v Azure, místně a v ostatních cloudů. Poskytuje přehled a kontrolu nad hybridní Cloudová pracovní active obrany, které snížení vystavení hrozbám a inteligentní detekce, které vám pomůžou držet krok se vznikajícími rychle internetovými útoky.

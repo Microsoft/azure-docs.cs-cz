@@ -1,11 +1,11 @@
 ---
 title: Tom, jak monitorovat Azure Redis Cache | Microsoft Docs
-description: "Naučte se monitorovat stav a výkon vaší instance služby Azure Redis Cache"
+description: Naučte se monitorovat stav a výkon vaší instance služby Azure Redis Cache
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910645"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Jak monitorovat Azure Redis Cache
 Používá Azure Redis Cache [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) zajistit několik možností pro monitorování vaše instance mezipaměti. Můžete zobrazit metriky, připnout grafy metriky na úvodní panel, přizpůsobení datum a čas rozsah monitorování grafy, přidat a metriky odebrání grafy a nastavit upozornění, pokud jsou splněny určité podmínky. Tyto nástroje vám umožňují sledovat stav vaší instance služby Azure Redis Cache a vám pomohou při správě aplikace ukládání do mezipaměti.

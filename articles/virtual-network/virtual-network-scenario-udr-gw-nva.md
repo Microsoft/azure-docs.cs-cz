@@ -1,6 +1,6 @@
 ---
-title: "Hybridní připojení s aplikaci na vrstvě 2 | Microsoft Docs"
-description: "Informace o nasazení virtuální zařízení a UDR k vytvoření prostředí vícevrstvé aplikace v Azure"
+title: Hybridní připojení s aplikaci na vrstvě 2 | Microsoft Docs
+description: Informace o nasazení virtuální zařízení a UDR k vytvoření prostředí vícevrstvé aplikace v Azure
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/31/2017
+ms.locfileid: "23943221"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuální zařízení
 Běžný scénář mezi větší Azure zákazníků se musí zajistit Dvojúrovňová aplikace, přístup k Internetu, při umožňuje přístup k vrstvě zpět z překážek místní datacentra. Tento dokument vás provede procesem scénář používající uživatele definované trasy (UDR), brána sítě VPN a virtuální síťové zařízení k nasazení dvouvrstvé prostředí, které splňuje následující požadavky:

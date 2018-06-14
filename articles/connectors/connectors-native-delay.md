@@ -1,11 +1,11 @@
 ---
-title: "Přidání zpoždění v aplikace logiky | Microsoft Docs"
-description: "Přehled zpoždění a zpoždění – dokud akcí a jejich použití s aplikací Azure logiku."
-services: 
-documentationcenter: 
+title: Přidání zpoždění v aplikace logiky | Microsoft Docs
+description: Přehled zpoždění a zpoždění – dokud akcí a jejich použití s aplikací Azure logiku.
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 915f48bf-3bd8-4656-be73-91a941d0afcd
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27963668"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>Začínáme s zpoždění a zpoždění – dokud akce
 Pomocí zpoždění a "zpoždění – dokud" akce, můžete dokončit scénáře pracovního postupu.

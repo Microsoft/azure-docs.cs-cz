@@ -1,6 +1,6 @@
 ---
-title: "Zásobník datacenter integrace se službou Azure - zabezpečení"
-description: "Zjistěte, jak integrovat Azure zásobníku zabezpečení zabezpečení vašeho datového centra"
+title: Zásobník datacenter integrace se službou Azure - zabezpečení
+description: Zjistěte, jak integrovat Azure zásobníku zabezpečení zabezpečení vašeho datového centra
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 8ce9045a3e4fd12d61e9b1600ee98880762bc544
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29734423"
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Zásobník datacenter integrace se službou Azure - zabezpečení
 Azure zásobníku byl navržen a sestaven s důrazem na bezpečnost. Azure zásobníku je uzamčené systém, proto není podporována instalace agenta zabezpečení softwaru.

@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s výkonem virtuální síť Azure | Microsoft Docs"
-description: "Tato stránka obsahuje standardizované metody testování výkonu odkaz síť Azure."
+title: Řešení potíží s výkonem virtuální síť Azure | Microsoft Docs
+description: Tato stránka obsahuje standardizované metody testování výkonu odkaz síť Azure.
 services: expressroute
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27318980"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkon sítě
 ## <a name="overview"></a>Přehled

@@ -1,11 +1,11 @@
 ---
-title: "Aktualizace zařízení StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak používat funkci aktualizace zařízení StorSimple k instalaci aktualizací režimu regular a údržbu a opravy hotfix."
+title: Aktualizace zařízení StorSimple | Microsoft Docs
+description: Vysvětluje, jak používat funkci aktualizace zařízení StorSimple k instalaci aktualizací režimu regular a údržbu a opravy hotfix.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103604"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualizace zařízení StorSimple řady 8000
 > [!NOTE]
