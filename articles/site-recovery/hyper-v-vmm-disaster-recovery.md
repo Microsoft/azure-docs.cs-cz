@@ -1,6 +1,6 @@
 ---
-title: "Nastavení zotavení po havárii pro virtuální počítače Hyper-V mezi místními lokalitami s Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Hyper-V mezi vaší místní sítí pomocí Azure Site Recovery."
+title: Nastavení zotavení po havárii pro virtuální počítače Hyper-V mezi místními lokalitami s Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak nastavit zotavení po havárii pro virtuální počítače Hyper-V mezi vaší místní sítí pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843455"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Nastavení zotavení po havárii pro virtuální počítače Hyper-V do sekundárního místního lokality
 

@@ -1,11 +1,11 @@
 ---
-title: "Ukázka skriptu Azure CLI - získáte podrobnosti Azure Redis Cache | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - získáte podrobnosti Azure Redis Cache"
+title: Ukázka skriptu Azure CLI - získáte podrobnosti Azure Redis Cache | Microsoft Docs
+description: Ukázka skriptu Azure CLI - získáte podrobnosti Azure Redis Cache
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 155924e6-00d5-4a8c-ba99-5189f300464a
 ms.service: cache-redis
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846243"
 ---
 # <a name="get-details-of-an-azure-redis-cache"></a>Podrobnosti o Azure Redis Cache
 

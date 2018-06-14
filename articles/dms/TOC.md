@@ -13,11 +13,11 @@
 
 # Zdroje a prostředky
 ## [Zpětná vazba na webu User Voice](https://feedback.azure.com/forums/906100-azure-database-migration-service)
-## [Plány Azure do budoucna](https://azure.microsoft.com/en-us/roadmap/)
+## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Průvodce migrací databáze](https://aka.ms/datamigration)
 ## [Pomocník s migrací dat](https://aka.ms/dma)
 ## [Ceny](https://aka.ms/dms-pricing)
 ## [Přehled požadavků](pre-reqs.md)
 ## [Nejčastější dotazy](faq.md)
-## [Aktualizace služeb](https://azure.microsoft.com/en-us/updates/?product=database-migration)
+## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=database-migration)
 ## [Síťové topologie pro migrace Azure SQL DB MI](resource-network-topologies.md)

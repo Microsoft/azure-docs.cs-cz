@@ -1,11 +1,11 @@
 ---
-title: "Jak mít verze modulu runtime Azure Functions"
-description: "Azure Functions podporuje více verzí modulu runtime. Zjistěte, jak určit verzi modulu runtime funkce aplikace hostované v Azure."
+title: Jak mít verze modulu runtime Azure Functions
+description: Azure Functions podporuje více verzí modulu runtime. Zjistěte, jak určit verzi modulu runtime funkce aplikace hostované v Azure.
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843387"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak mít verze modulu runtime Azure Functions
 

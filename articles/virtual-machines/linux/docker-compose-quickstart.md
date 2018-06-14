@@ -1,11 +1,11 @@
 ---
-title: "Pomocí Docker Compose na virtuální počítač s Linuxem v Azure | Microsoft Docs"
-description: "Jak používat Docker a vytvářené na virtuální počítače s Linuxem pomocí rozhraní příkazového řádku Azure"
+title: Pomocí Docker Compose na virtuální počítač s Linuxem v Azure | Microsoft Docs
+description: Jak používat Docker a vytvářené na virtuální počítače s Linuxem pomocí rozhraní příkazového řádku Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29848402"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s Docker a vytvářené definovat a spuštění aplikace s více kontejnerů v Azure
 S [vytvářené](http://github.com/docker/compose), používáte k definování aplikace, který se skládá z několika kontejnerů Docker jednoduchý textový soubor. Pak začne pracovat aplikace v jednom příkaz, který nemá všechno k nasazení prostředí definované. Jako příklad Tento článek ukazuje, jak rychle nastavit blog WordPress pomocí MariaDB SQL database na virtuálního počítače s Ubuntu back-end. Můžete taky vytvořit složitější aplikace můžete nastavit.

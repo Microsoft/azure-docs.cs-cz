@@ -1,6 +1,6 @@
 ---
-title: "Virtuální síť Azure – nejčastější dotazy | Microsoft Docs"
-description: "Odpovědi na nejčastější dotazy týkající se virtuálních sítí Microsoft Azure."
+title: Virtuální síť Azure – nejčastější dotazy | Microsoft Docs
+description: Odpovědi na nejčastější dotazy týkající se virtuálních sítí Microsoft Azure.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854185"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Virtuální síť Azure nejčastější dotazy (FAQ)
 

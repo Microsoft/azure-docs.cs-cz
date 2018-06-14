@@ -1,12 +1,12 @@
 ---
-title: "Nahraďte PCM na vašem zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Vysvětluje, jak odeberete a nahradíte energii a chlazení modulu (PCM) v zařízení StorSimple"
+title: Nahraďte PCM na vašem zařízení řady StorSimple 8000 | Microsoft Docs
+description: Vysvětluje, jak odeberete a nahradíte energii a chlazení modulu (PCM) v zařízení StorSimple
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875057"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Nahrazení energii a chlazení modulu zařízení StorSimple
 ## <a name="overview"></a>Přehled

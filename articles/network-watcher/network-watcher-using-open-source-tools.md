@@ -1,11 +1,11 @@
 ---
-title: "Vizualizace typy provozu sítě s otevřeným zdrojem nástroje a sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka popisuje, jak použít zachytáváním paketů sledovací proces sítě s Capanalysis k vizualizaci vzory přenosů dat do a z virtuálních počítačů."
+title: Vizualizace typy provozu sítě s otevřeným zdrojem nástroje a sledovací proces sítě Azure | Microsoft Docs
+description: Tato stránka popisuje, jak použít zachytáváním paketů sledovací proces sítě s Capanalysis k vizualizaci vzory přenosů dat do a z virtuálních počítačů.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 936d881b-49f9-4798-8e45-d7185ec9fe89
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23864011"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace vzorky síťového provozu do a z virtuálních počítačů pomocí nástroje s otevřeným zdrojem
 

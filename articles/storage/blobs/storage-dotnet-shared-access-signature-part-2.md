@@ -1,8 +1,8 @@
 ---
-title: "Vytváření a používání sdíleného přístupového podpisu (SAS) s Azure Blob storage | Microsoft Docs"
-description: "Tento kurz ukazuje, jak vytvořit sdílené přístupové podpisy pro použití s úložištěm Blob a jak využívat v klientských aplikacích."
+title: Vytváření a používání sdíleného přístupového podpisu (SAS) s Azure Blob storage | Microsoft Docs
+description: Tento kurz ukazuje, jak vytvořit sdílené přístupové podpisy pro použití s úložištěm Blob a jak využívat v klientských aplikacích.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -16,9 +16,10 @@ ms.date: 05/15/2017
 ms.author: tamram
 ms.openlocfilehash: 9dde12acde748c48b56f9f96ee772fca49954358
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873209"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm Blob
 
@@ -478,7 +479,7 @@ static void Main(string[] args)
 ```
 
 ### <a name="add-a-method-to-try-blob-operations-using-a-shared-access-signature"></a>Přidání metody pokusit operace objektů blob pomocí sdíleného přístupového podpisu
-Nakonec přidáme metodu, která se testuje některé operace objektů blob pomocí sdíleného přístupového podpisu u objektu blob. V tomto případě používáme konstruktoru **CloudBlockBlob(String)**a předejte sdílený přístupový podpis vrací odkaz na objekt blob. Další ověřování není vyžadováno; je založena na podpis samostatně.
+Nakonec přidáme metodu, která se testuje některé operace objektů blob pomocí sdíleného přístupového podpisu u objektu blob. V tomto případě používáme konstruktoru **CloudBlockBlob(String)** a předejte sdílený přístupový podpis vrací odkaz na objekt blob. Další ověřování není vyžadováno; je založena na podpis samostatně.
 
 Do souboru Program.cs přidejte následující metodu:
 

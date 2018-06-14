@@ -1,11 +1,11 @@
 ---
-title: "Přehled síťové architektury ve službě App Service Environment"
-description: "Přehled architektury ofApp topologie sítě služby prostředí."
+title: Přehled síťové architektury ve službě App Service Environment
+description: Přehled architektury ofApp topologie sítě služby prostředí.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836823"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Přehled síťové architektury ve službě App Service Environment
 ## <a name="introduction"></a>Úvod

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23873986"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z Node.js
 Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou zapsány pomocí rozhraní API Node.js. Pokryté scénáře zahrnují **vytváření e-mailu**, **odesílání e-mailu**, **přidávání příloh**, **pomocí filtrů**, a **aktualizace vlastností**. Další informace o sendgrid vám umožňuje a odesílání e-mailu, najdete v článku [další kroky](#next-steps) části.

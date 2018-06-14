@@ -1,11 +1,11 @@
 ---
-title: "Kurz zálohování Microsoft Azure StorSimple virtuální pole | Microsoft Docs"
-description: "Popisuje, jak vytvořit zálohu StorSimple virtuální pole složkami a svazky."
+title: Kurz zálohování Microsoft Azure StorSimple virtuální pole | Microsoft Docs
+description: Popisuje, jak vytvořit zálohu StorSimple virtuální pole složkami a svazky.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e3cdcd9e-33b1-424d-82aa-b369d934067e
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875645"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Zálohování sdílené složky nebo svazky na pole virtuální zařízení StorSimple
 
