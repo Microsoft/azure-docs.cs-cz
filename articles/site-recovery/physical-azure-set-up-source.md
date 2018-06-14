@@ -1,8 +1,8 @@
 ---
-title: "Nastavení prostředí pro zdroj (fyzických serverů do Azure) | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit v místním prostředí k zahájení replikace fyzických serverů s Windows nebo Linuxem do Azure."
+title: Nastavení prostředí pro zdroj (fyzických serverů do Azure) | Microsoft Docs
+description: Tento článek popisuje, jak nastavit v místním prostředí k zahájení replikace fyzických serverů s Windows nebo Linuxem do Azure.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812688"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Nastavení prostředí pro zdroj (fyzického serveru do Azure)
 

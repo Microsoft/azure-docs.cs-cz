@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797698"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core v Service Fabric
 Tento kurz je pátou částí série. Prochází kroky k nastavení monitorování a diagnostiky pro aplikaci ASP.NET Core spuštěnou v clusteru Service Fabric pomocí Application Insights. Budeme shromažďovat telemetrii z aplikace vyvinuté v první části kurzu [Sestavení aplikace .NET pro Service Fabric](service-fabric-tutorial-create-dotnet-app.md). 

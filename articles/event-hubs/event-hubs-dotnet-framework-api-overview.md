@@ -1,11 +1,11 @@
 ---
-title: "Přehled služby Azure Event Hubs rozhraní API technologie .NET Framework | Microsoft Docs"
-description: "Souhrn některých klíče rozhraní API klienta rozhraní .NET Framework centra událostí."
+title: Přehled služby Azure Event Hubs rozhraní API technologie .NET Framework | Microsoft Docs
+description: Souhrn některých klíče rozhraní API klienta rozhraní .NET Framework centra událostí.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781890"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Přehled služby Event Hubs rozhraní .NET Framework API
 

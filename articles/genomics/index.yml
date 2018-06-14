@@ -18,17 +18,18 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 12/13/2017
+  ms.locfileid: "26684581"
 abstract:
-  description: "Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy."
+  description: Seznamte se s tím, jak Microsoft Genomics může zajistit výkonné sekvenování genomu s využitím cloudové implementace nástrojů Burrows-Wheeler Aligner (BWA) a Genome Analysis Toolkit (GATK) pro sekundární analýzy.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Odešlete pracovní postup prostřednictvím služby Microsoft Genomics."
+    text: Odešlete pracovní postup prostřednictvím služby Microsoft Genomics.
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/helix-blue-orange.svg
-      text: "Odeslání pracovního postupu"
+      text: Odeslání pracovního postupu
       href: quickstart-run-genomics-workflow-portal

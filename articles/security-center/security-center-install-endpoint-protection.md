@@ -1,11 +1,11 @@
 ---
-title: "Správa služby endpoint protection problémy s Azure Security Center | Microsoft Docs"
-description: "Zjistěte, jak spravovat problémy ochrany koncového bodu v Azure Security Center."
+title: Správa služby endpoint protection problémy s Azure Security Center | Microsoft Docs
+description: Zjistěte, jak spravovat problémy ochrany koncového bodu v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2017
+ms.locfileid: "23936291"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Správa služby endpoint protection problémy s Azure Security Center
 Azure Security Center sledovat stav ochrany proti malwaru a sestavách to v okně Endpoint protection problémy. Security Center označuje problémy, jako je například zjištěných hrozeb a nedostatečnou ochranou, které můžete k ohrožení své virtuální počítače (VM) a počítače antimalwarových hrozeb. Podle informací uvedených v části **potíže s ochranou koncového bodu**, můžete identifikovat plán veškeré zjištěné potíže vyřešit.

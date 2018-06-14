@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure předávání WCF předává v rozhraní .NET | Microsoft Docs"
-description: "Zjistěte, jak používat předávací službu WCF předávání přes Azure pro připojení dvě aplikace, které jsou hostované v různých umístěních."
+title: Začínáme s Azure předávání WCF předává v rozhraní .NET | Microsoft Docs
+description: Zjistěte, jak používat předávací službu WCF předávání přes Azure pro připojení dvě aplikace, které jsou hostované v různých umístěních.
 services: service-bus-relay
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
 ms.service: service-bus-relay
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26856078"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Jak používat Azure předávání WCF předává s rozhraním .NET
 Tento článek popisuje, jak používat službu předávání přes Azure. Ukázky jsou napsané v C# a používají API Windows Communication Foundation (WCF) s rozšířeními, které jsou součástí sestavení Service Bus. Další informace o předávání přes Azure najdete v tématu [předávání přes Azure přehled](relay-what-is-it.md).

@@ -1,15 +1,15 @@
 ---
-title: "Pochopení využití virtuálního počítače Azure | Microsoft Docs"
-description: "Pochopení podrobnosti o použití virtuálního počítače"
+title: Pochopení využití virtuálního počítače Azure | Microsoft Docs
+description: Pochopení podrobnosti o použití virtuálního počítače
 services: virtual-machines
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-virtual-machine
-ms.assetid: 
-ms.service: 
-ms.devlang: 
+ms.assetid: ''
+ms.service: ''
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345450"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Porozumění využití virtuálního počítače Azure
 Analýzou data o využití Azure, může být získávají efektivní využívání Statistika – přehledy, které umožňují lépe náklady správy a přidělení v celé organizaci. Tento dokument obsahuje podrobné informace do vaší spotřeby podrobnosti Azure Compute. Další informace o využití obecné Azure, přejděte na [pochopení vaše faktura](/billing/billing-understand-your-bill.md).
