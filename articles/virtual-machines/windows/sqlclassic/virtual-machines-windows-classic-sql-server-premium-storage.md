@@ -1,8 +1,8 @@
 ---
-title: "Použití Azure Premium Storage s SQL serverem | Microsoft Docs"
-description: "Tento článek používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a poskytuje pokyny k používání Azure Premium Storage s SQL Server běžící na virtuálních počítačích Azure."
+title: Použití Azure Premium Storage s SQL serverem | Microsoft Docs
+description: Tento článek používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a poskytuje pokyny k používání Azure Premium Storage s SQL Server běžící na virtuálních počítačích Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: danielsollondon
 manager: craigg
 editor: monicar
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400609"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
 ## <a name="overview"></a>Přehled

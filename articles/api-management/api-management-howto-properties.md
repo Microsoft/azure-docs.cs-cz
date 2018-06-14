@@ -1,11 +1,11 @@
 ---
-title: "Použití vlastností v zásadách Azure API Management"
-description: "Další informace o použití vlastnosti zásad Azure API Management."
+title: Použití vlastností v zásadách Azure API Management
+description: Další informace o použití vlastnosti zásad Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197108"
 ---
 # <a name="how-to-use-properties-in-azure-api-management-policies"></a>Použití vlastností v zásadách Azure API Management
 Zásady služby API Management jsou vynikající funkcí systému, který povolí portálu Azure můžete změnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Příkazy zásad se dá vytvořit pomocí literálu textové hodnoty, výrazy zásad a vlastnosti. 

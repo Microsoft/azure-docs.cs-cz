@@ -1,11 +1,11 @@
 ---
-title: "Nesprávný sadu uživatelů jsou se zřídí k aplikaci Galerie Azure AD | Microsoft Docs"
-description: "Zjistěte, jak zjistit, proč jsou se zřídí jinou sadu uživatelů do aplikace než ty, které jste očekávali"
+title: Nesprávný sadu uživatelů jsou se zřídí k aplikaci Galerie Azure AD | Microsoft Docs
+description: Zjistěte, jak zjistit, proč jsou se zřídí jinou sadu uživatelů do aplikace než ty, které jste očekávali
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29383133"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Nesprávný sadu uživatelů jsou se zřídí k aplikaci Galerie Azure AD
 
