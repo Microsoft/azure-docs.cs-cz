@@ -1,14 +1,14 @@
 ---
-title: "Převzetí služeb při selhání a škálování aplikace Azure Service Fabric typu kontejner | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak se v aplikaci Azure Service Fabric typu kontejner zpracovává převzetí služeb při selhání.  Také se naučíte škálovat kontejnery a služby spuštěné v clusteru."
+title: Převzetí služeb při selhání a škálování aplikace Azure Service Fabric typu kontejner | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak se v aplikaci Azure Service Fabric typu kontejner zpracovává převzetí služeb při selhání.  Také se naučíte škálovat kontejnery a služby spuštěné v clusteru.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, kontejnery, mikroslužby, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, kontejnery, mikroslužby, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29555477"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Kurz: Ukázka převzetí služeb při selhání a škálování služeb kontejneru pomocí Service Fabric
 

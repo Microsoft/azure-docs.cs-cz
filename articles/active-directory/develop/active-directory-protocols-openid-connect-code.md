@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157311"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a službou Azure Active Directory
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je vrstva jednoduché identity postavená na protokol OAuth 2.0. OAuth 2.0 definuje mechanismy pro získání a používání **přístup tokeny** pro přístup k chráněným prostředkům, ale nejsou definovány standardní metody, které poskytují informace o identitě. Jako rozšíření pro proces autorizace OAuth 2.0, OpenID Connect implementuje ověřování. Poskytuje informace o koncového uživatele ve formě `id_token` který ověřuje identitu uživatele a poskytuje základní profil informace o uživateli.

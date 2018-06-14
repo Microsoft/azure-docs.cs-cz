@@ -1,11 +1,11 @@
 ---
-title: "Replikovat vícevrstvé Citrix XenDesktop a XenApp nasazení pomocí Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje, jak k ochraně a obnovování Citrix XenDesktop a XenApp nasazení pomocí Azure Site Recovery."
+title: Replikovat vícevrstvé Citrix XenDesktop a XenApp nasazení pomocí Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje, jak k ochraně a obnovování Citrix XenDesktop a XenApp nasazení pomocí Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559702"
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replikovat vícevrstvé Citrix XenApp a XenDesktop nasazení pomocí Azure Site Recovery
 

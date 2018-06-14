@@ -20,6 +20,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34058059"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Časté otázky o virtuálních počítačích s Windows
 Tento článek se zaměřuje na některé běžné dotazy týkající se virtuální počítače s Windows, které jsou vytvořené v Azure pomocí modelu nasazení Resource Manager. Linux verzi tohoto tématu naleznete v části [často kladené otázky o virtuálních počítačích s Linuxem](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

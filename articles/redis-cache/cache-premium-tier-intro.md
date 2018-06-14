@@ -1,11 +1,11 @@
 ---
-title: "Úvod do Azure Redis Cache Premium vrstvy | Microsoft Docs"
-description: "Zjistěte, jak vytvořit a spravovat trvalost Redis, Redis clustering a podpora virtuální sítě pro vaše instance služby Azure Redis Cache úrovně Premium"
+title: Úvod do Azure Redis Cache Premium vrstvy | Microsoft Docs
+description: Zjistěte, jak vytvořit a spravovat trvalost Redis, Redis clustering a podpora virtuální sítě pro vaše instance služby Azure Redis Cache úrovně Premium
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911199"
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Představení služby Azure Redis Cache na úrovni Premium
 Azure Redis Cache je mezipaměť distribuovaná, kterou spravuje vám usnadní vytváření vysoce škálovatelné a dobře reagovaly aplikací tím, že poskytuje extrémně rychlého přístup k datům. 

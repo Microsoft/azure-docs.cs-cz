@@ -19,6 +19,7 @@ ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/29/2018
+ms.locfileid: "30261717"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Víc konfigurací IP adres pomocí prostředí PowerShell pro vyrovnávání zatížení
 

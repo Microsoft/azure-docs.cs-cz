@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204203"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>Přizpůsobení pravidla brány firewall webových aplikací pomocí Azure CLI 2.0
 

@@ -17,9 +17,10 @@ ms.date: 11/03/2017
 ms.author: cjiang
 ms.openlocfilehash: dfb39b809f9a1082682d269d8bd4c180c8a264ce
 ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204560"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Zaregistrujte si předplatné Azure pomocí svého účtu Office 365
 Pokud máte předplatné služeb Office 365, můžete předplatné Azure, vytvořte účtu služeb Office 365. Přihlaste se k [portál Azure](https://portal.azure.com/) pomocí Office 365 uživatelské jméno a heslo. Pokud chcete nastavit virtuální počítače nebo použijte jinými službami Azure, musíte se musí zaregistrovat pro předplatné Azure. Vaše předplatné Azure můžete sdílet s ostatními a [pomocí řízení přístupu na základě Role můžete spravovat přístup k vašemu předplatnému Azure a prostředky](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

@@ -1,6 +1,6 @@
 ---
-title: "Povolit veřejný přístup pro čtení pro kontejnery a objekty BLOB v Azure Blob storage | Microsoft Docs"
-description: "Zjistěte, jak zpřístupnit kontejnery a objekty BLOB pro anonymní přístup a jak přistupovat k nim prostřednictvím kódu programu."
+title: Povolit veřejný přístup pro čtení pro kontejnery a objekty BLOB v Azure Blob storage | Microsoft Docs
+description: Zjistěte, jak zpřístupnit kontejnery a objekty BLOB pro anonymní přístup a jak přistupovat k nim prostřednictvím kódu programu.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29557057"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
 Můžete povolit anonymní, veřejný přístup pro čtení kontejner a jeho objekty BLOB v Azure Blob storage. Díky tomu můžete udělit přístup jen pro čtení k těmto prostředkům bez sdílení klíč účtu a bez nutnosti sdílený přístupový podpis (SAS).
