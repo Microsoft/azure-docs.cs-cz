@@ -1,11 +1,11 @@
 ---
-title: "Přidání ověřování v systému Android s Mobile Apps | Microsoft Docs"
-description: "Další informace o použití funkce Mobile Apps služby Azure App Service ověřovat uživatele vaší aplikace pro Android prostřednictvím řady různých zprostředkovatelů identity, včetně Google, Facebook, Twitter a společnosti Microsoft."
+title: Přidání ověřování v systému Android s Mobile Apps | Microsoft Docs
+description: Další informace o použití funkce Mobile Apps služby Azure App Service ověřovat uživatele vaší aplikace pro Android prostřednictvím řady různých zprostředkovatelů identity, včetně Google, Facebook, Twitter a společnosti Microsoft.
 services: app-service\mobile
 documentationcenter: android
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27595223"
 ---
 # <a name="add-authentication-to-your-android-app"></a>Přidání ověřování do aplikace pro Android
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

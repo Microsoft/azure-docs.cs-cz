@@ -1,12 +1,12 @@
 ---
-title: "Instalaci aktualizace 1.0 v poli virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje způsob použití pole virtuální zařízení StorSimple webového uživatelského rozhraní na aktualizace pomocí metody Azure portal a opravy hotfix"
+title: Instalaci aktualizace 1.0 v poli virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje způsob použití pole virtuální zařízení StorSimple webového uživatelského rozhraní na aktualizace pomocí metody Azure portal a opravy hotfix
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24012075"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Nainstalujte aktualizace 1.0 na pole virtuální zařízení StorSimple
 

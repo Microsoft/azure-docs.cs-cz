@@ -1,13 +1,13 @@
 ---
-title: "Nastavení clusteru HPC Pack hybridní v Azure | Microsoft Docs"
-description: "Zjistěte, jak nastavit malá, hybridní s vysokým výkonem (HPC) clusteru pomocí sady Microsoft HPC Pack a Azure"
+title: Nastavení clusteru HPC Pack hybridní v Azure | Microsoft Docs
+description: Zjistěte, jak nastavit malá, hybridní s vysokým výkonem (HPC) clusteru pomocí sady Microsoft HPC Pack a Azure
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: hpc-pack
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23985302"
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Nastavení hybridní vysokovýkonného výpočetního prostředí (HPC) clusteru pomocí sady Microsoft HPC Pack a na vyžádání Azure výpočetních uzlů
 Nastavit malé, hybridní vysokovýkonného výpočetního prostředí (HPC) clusteru pomocí Microsoft HPC Pack 2012 R2 a Azure. Cluster, uvidíte v tomto článku se skládá z hlavního uzlu místními HPC Pack a některé výpočetní uzly, které nasazujete na vyžádání v Azure cloud service. Když pak spustíte výpočetní úlohy v hybridní clusteru.

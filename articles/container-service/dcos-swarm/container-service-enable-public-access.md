@@ -1,6 +1,6 @@
 ---
-title: "Povolit přístup k aplikaci kontejner Azure DC/OS"
-description: "Postup povolení veřejný přístup k DC/OS kontejnerů v Azure Container Service."
+title: Povolit přístup k aplikaci kontejner Azure DC/OS
+description: Postup povolení veřejný přístup k DC/OS kontejnerů v Azure Container Service.
 services: container-service
 author: sauryadas
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26332275"
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Povolit veřejný přístup k aplikaci Azure Container Service
 

@@ -1,11 +1,11 @@
 ---
-title: "Komunikace pro role v cloudové služby | Microsoft Docs"
-description: "Instance role v cloudové služby může mít koncové body (http, https, tcp, udp) definované pro ně komunikující s vnější nebo mezi dalších instancí rolí."
+title: Komunikace pro role v cloudové služby | Microsoft Docs
+description: Instance role v cloudové služby může mít koncové body (http, https, tcp, udp) definované pro ně komunikující s vnější nebo mezi dalších instancí rolí.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27701886"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Povolit komunikaci pro instance rolí v azure
 Role cloudové služby komunikují prostřednictvím interní a externí připojení. Externí připojení se nazývají **vstupní koncové body** při se označují jako vnitřní připojení **vnitřních koncových bodů**. Toto téma popisuje postup úpravy [služby definice](cloud-services-model-and-package.md#csdef) k vytvoření koncových bodů.
