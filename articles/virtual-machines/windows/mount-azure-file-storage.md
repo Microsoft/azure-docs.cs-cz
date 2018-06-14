@@ -1,15 +1,15 @@
 ---
-title: "Připojení Azure úložiště file z virtuálního počítače Windows Azure | Microsoft Docs"
-description: "Uložte soubor v cloudu s Azure file storage a připojte svou cloudovou sdílenou z Azure virtuálního počítače (VM)."
-documentationcenter: 
+title: Připojení Azure úložiště file z virtuálního počítače Windows Azure | Microsoft Docs
+description: Uložte soubor v cloudu s Azure file storage a připojte svou cloudovou sdílenou z Azure virtuálního počítače (VM).
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577547"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Použít sdílené složky Azure s virtuálními počítači Windows 
 

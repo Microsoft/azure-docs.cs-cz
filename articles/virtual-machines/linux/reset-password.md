@@ -1,13 +1,13 @@
 ---
-title: "Jak obnovit heslo místního Linux na virtuálních počítačích Azure | Microsoft Docs"
-description: "Zavést postup obnovit heslo místního Linux na virtuálním počítači Azure"
+title: Jak obnovit heslo místního Linux na virtuálních počítačích Azure | Microsoft Docs
+description: Zavést postup obnovit heslo místního Linux na virtuálním počítači Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: cshepard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27578358"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Jak obnovit heslo místního Linux na virtuálních počítačích Azure
 

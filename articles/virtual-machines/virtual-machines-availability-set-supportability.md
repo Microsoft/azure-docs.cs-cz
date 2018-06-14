@@ -1,12 +1,12 @@
 ---
-title: "Nastavit možnosti přidávání virtuálních počítačích Azure do existující dostupnosti | Microsoft Docs"
-description: "Možnosti podpory přidávání virtuálních počítačích Azure do stávající sadu dostupnosti."
+title: Nastavit možnosti přidávání virtuálních počítačích Azure do existující dostupnosti | Microsoft Docs
+description: Možnosti podpory přidávání virtuálních počítačích Azure do stávající sadu dostupnosti.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: cshepard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-machines
 ms.workload: virtual-machines
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23987716"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Možnosti podpory přidávání virtuálních počítačích Azure do stávající sadu dostupnosti
 
