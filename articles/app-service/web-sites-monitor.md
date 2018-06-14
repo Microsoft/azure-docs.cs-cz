@@ -1,11 +1,11 @@
 ---
-title: "Monitorování aplikací v Azure App Service | Microsoft Docs"
-description: "Informace o monitorování aplikací v Azure App Service pomocí portálu Azure."
+title: Monitorování aplikací v Azure App Service | Microsoft Docs
+description: Informace o monitorování aplikací v Azure App Service pomocí portálu Azure.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29573799"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Postupy: monitorování aplikací v Azure App Service
 [Služby App Service](http://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované monitorování funkce v [portál Azure](https://portal.azure.com).

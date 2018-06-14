@@ -1,12 +1,12 @@
 ---
-title: "Nahraďte skříň na zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje, jak odeberete a nahradíte skříň pro StorSimple primární skříň nebo EBOD skříň."
+title: Nahraďte skříň na zařízení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje, jak odeberete a nahradíte skříň pro StorSimple primární skříň nebo EBOD skříň.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874798"
 ---
 # <a name="replace-the-chassis-on-your-storsimple-device"></a>Nahraďte skříň zařízení StorSimple
 ## <a name="overview"></a>Přehled

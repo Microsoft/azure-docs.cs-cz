@@ -1,13 +1,13 @@
 ---
-title: "Přidat bránu virtuální sítě k virtuální síti pro ExpressRoute: portál: Azure | Microsoft Docs"
-description: "Tento článek vás provede přidáním bránu virtuální sítě k již vytvořené virtuální sítě Resource Manageru pro ExpressRoute."
+title: 'Přidat bránu virtuální sítě k virtuální síti pro ExpressRoute: portál: Azure | Microsoft Docs'
+description: Tento článek vás provede přidáním bránu virtuální sítě k již vytvořené virtuální sítě Resource Manageru pro ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850865"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí webu Azure portal
 > [!div class="op_single_selector"]

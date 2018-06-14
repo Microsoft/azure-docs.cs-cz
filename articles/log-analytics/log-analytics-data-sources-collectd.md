@@ -1,8 +1,8 @@
 ---
-title: "Shromažďování dat z CollectD v OMS Log Analytics | Microsoft Docs"
-description: "CollectD je démon Linux s otevřeným zdrojem, který pravidelně shromažďuje data z aplikace a informace o úrovni systému.  Tento článek obsahuje informace o shromažďování dat z CollectD v analýzy protokolů."
+title: Shromažďování dat z CollectD v OMS Log Analytics | Microsoft Docs
+description: CollectD je démon Linux s otevřeným zdrojem, který pravidelně shromažďuje data z aplikace a informace o úrovni systému.  Tento článek obsahuje informace o shromažďování dat z CollectD v analýzy protokolů.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855205"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Shromažďování dat z CollectD na agentech Linux v analýzy protokolů
 [CollectD](https://collectd.org/) je démon Linux s otevřeným zdrojem, který pravidelně shromažďuje metriky výkonu z aplikace a informace o úrovni systému. Příklad aplikace patří Java Virtual Machine (JVM), MySQL Server a Nginx. Tento článek obsahuje informace o shromažďování dat výkonu z CollectD v analýzy protokolů.

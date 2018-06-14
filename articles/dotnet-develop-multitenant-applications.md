@@ -1,11 +1,11 @@
 ---
-title: "Vzor víceklientské webových aplikací | Microsoft Docs"
-description: "Vyhledá architektury přehledy a vzory návrhu, které popisují, jak implementovat víceklientské webovou aplikaci na platformě Azure."
-services: 
+title: Vzor víceklientské webových aplikací | Microsoft Docs
+description: Vyhledá architektury přehledy a vzory návrhu, které popisují, jak implementovat víceklientské webovou aplikaci na platformě Azure.
+services: ''
 documentationcenter: .net
 author: wadepickett
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 4f0281d2-1555-42b0-a99d-1222fade0b0f
 ms.service: active-directory
 ms.workload: identity
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850711"
 ---
 # <a name="multitenant-applications-in-azure"></a>Víceklientské aplikace v Azure
 Víceklientské aplikace je sdílený prostředek, který umožňuje samostatné uživatelům, nebo "klienty," Zobrazit aplikace, jako kdyby byla svoje vlastní. Typický scénář, který slouží k víceklientské aplikace je jedním ve které všichni uživatelé aplikace může přát přizpůsobit činnost koncového uživatele, ale jinak mají stejné základní obchodní požadavky. Příkladem velké víceklientské aplikace jsou Office 365, Outlook.com a visualstudio.com.

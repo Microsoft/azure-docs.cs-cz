@@ -1,11 +1,11 @@
 ---
-title: "Spustit spuštění úlohy v cloudových služeb Azure | Microsoft Docs"
-description: "Spuštění úlohy pomůže připravit vaše prostředí cloudové služby pro vaši aplikaci. To se naučíte, jak fungují spuštění úlohy a postupy, aby byly"
+title: Spustit spuštění úlohy v cloudových služeb Azure | Microsoft Docs
+description: Spuštění úlohy pomůže připravit vaše prostředí cloudové služby pro vaši aplikaci. To se naučíte, jak fungují spuštění úlohy a postupy, aby byly
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 886939be-4b5b-49cc-9a6e-2172e3c133e9
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843676"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Jak nakonfigurovat a spustit úlohy spuštění pro cloudové služby
 Spuštění úlohy můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnovat instalaci komponenty, registraci komponenty modelu COM, nastavení klíče registru nebo dlouhotrvající proces.

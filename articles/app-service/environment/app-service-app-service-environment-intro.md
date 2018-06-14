@@ -1,11 +1,11 @@
 ---
-title: "Úvod do aplikace služby prostředí v1"
-description: "Další informace o funkci v1 App Service Environment, která poskytuje jednotek škálování zabezpečené, připojený k virtuální síti, vyhrazené pro spuštění všech aplikací."
+title: Úvod do aplikace služby prostředí v1
+description: Další informace o funkci v1 App Service Environment, která poskytuje jednotek škálování zabezpečené, připojený k virtuální síti, vyhrazené pro spuštění všech aplikací.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836781"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Úvod do aplikace služby prostředí v1
 

@@ -1,11 +1,11 @@
 ---
-title: "Příklad DMZ – sestavení DMZ k ochraně sítě s bránu Firewall, UDR a NSG | Microsoft Docs"
-description: "Sestavení DMZ s bránou Firewall, uživatelem definované směrování (UDR) a skupiny zabezpečení sítě (NSG)"
+title: Příklad DMZ – sestavení DMZ k ochraně sítě s bránu Firewall, UDR a NSG | Microsoft Docs
+description: Sestavení DMZ s bránou Firewall, uživatelem definované směrování (UDR) a skupiny zabezpečení sítě (NSG)
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: dc01ccfb-27b0-4887-8f0b-2792f770ffff
 ms.service: virtual-network
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885242"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Příklad 3 – vytvoření DMZ k ochraně sítě s bránu Firewall, UDR a NSG
 [Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
