@@ -1,6 +1,6 @@
 ---
-title: "Informace o zabezpečení Microsoft Trust Center a Azure | Microsoft Docs"
-description: "V centru Microsoft Trust poskytuje informace, že budete muset být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám."
+title: Informace o zabezpečení Microsoft Trust Center a Azure | Microsoft Docs
+description: V centru Microsoft Trust poskytuje informace, že budete muset být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25541566"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zabezpečení Microsoftu
 Informace o zabezpečení Azure lokality na Azure.com obsahuje informace, budete potřebovat k plánování, návrh, nasazení, konfigurovat a spravovat řešení cloudové bezpečně. Ve službě Microsoft Trust center máte také informace, které musíte být jisti, že je zabezpečený platformy Azure, na kterém jste spustili vašim službám.

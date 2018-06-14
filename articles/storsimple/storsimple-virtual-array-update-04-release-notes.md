@@ -1,12 +1,12 @@
 ---
-title: "Poznámky k verzi 0,4 aktualizace pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje důležité otevřené problémy a řešení pro pole virtuální zařízení StorSimple spuštění Update 0.4."
+title: Poznámky k verzi 0,4 aktualizace pole virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje důležité otevřené problémy a řešení pro pole virtuální zařízení StorSimple spuštění Update 0.4.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927758"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>Poznámky k verzi 0,4 aktualizace pole virtuální zařízení StorSimple
 

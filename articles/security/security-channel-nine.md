@@ -1,6 +1,6 @@
 ---
-title: "Zabezpečení Azure videa na webu Channel 9 | Microsoft Docs"
-description: "Tento článek obsahuje seznam zabezpečení Azure prezentací kurátorované na webu Channel 9. Kanál 9 je komunity, který se připojuje uživatelé, kteří používají našich produktů s uživateli, kteří za našich produktů."
+title: Zabezpečení Azure videa na webu Channel 9 | Microsoft Docs
+description: Tento článek obsahuje seznam zabezpečení Azure prezentací kurátorované na webu Channel 9. Kanál 9 je komunity, který se připojuje uživatelé, kteří používají našich produktů s uživateli, kteří za našich produktů.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540131"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Zabezpečení Azure videa na webu Channel 9
 [Channel 9](https://channel9.msdn.com/) je komunita, která přináší dál osoby za našich produktů a připojí je u zákazníků.

@@ -1,11 +1,11 @@
 ---
-title: "Odchozí ověření scheduleru"
-description: "Odchozí ověření scheduleru"
+title: Odchozí ověření scheduleru
+description: Odchozí ověření scheduleru
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926505"
 ---
 # <a name="scheduler-outbound-authentication"></a>Odchozí ověření scheduleru
 Plánovač úloh možná muset volat na služby, které vyžadují ověřování. Tímto způsobem názvem služby můžete určit Pokud úlohy plánovače může přistupovat k prostředkům. Některé z těchto služeb zahrnují dalším službám Azure, Salesforce.com, Facebook a zabezpečené vlastní weby.

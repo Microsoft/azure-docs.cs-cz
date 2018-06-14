@@ -1,12 +1,12 @@
 ---
-title: "Přehled služby Azure plán služby App Service | Microsoft Docs"
-description: "Zjistěte, jak plánů služby App Service pro pracovní Azure App Service a jak budou využívat vaše prostředí pro správu."
-keywords: "služby App service, služby azure app service, měřítko, škálovatelná, škálovatelnost, plán služby app service, náklady na aplikaci služby"
+title: Přehled služby Azure plán služby App Service | Microsoft Docs
+description: Zjistěte, jak plánů služby App Service pro pracovní Azure App Service a jak budou využívat vaše prostředí pro správu.
+keywords: služby App service, služby azure app service, měřítko, škálovatelná, škálovatelnost, plán služby app service, náklady na aplikaci služby
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862355"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled služby Azure plán služby App Service
 

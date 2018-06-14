@@ -1,6 +1,6 @@
 ---
-title: "Auditování a protokolování Azure - modelování nástroj Microsoft Threat - | Microsoft Docs"
-description: "způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb"
+title: Auditování a protokolování Azure - modelování nástroj Microsoft Threat - | Microsoft Docs
+description: způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926743"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Zabezpečení rámce: Auditování a protokolování | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |

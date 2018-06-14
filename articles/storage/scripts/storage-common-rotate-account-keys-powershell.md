@@ -1,12 +1,12 @@
 ---
-title: "Azure ukázkový skript prostředí PowerShell - přístupový klíč účtu úložiště otáčení | Microsoft Docs"
-description: "Vytvoření účtu úložiště Azure potom načíst a otočit jeden z jeho přístupových klíčů k účtu."
+title: Azure ukázkový skript prostředí PowerShell - přístupový klíč účtu úložiště otáčení | Microsoft Docs
+description: Vytvoření účtu úložiště Azure potom načíst a otočit jeden z jeho přístupových klíčů k účtu.
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 06/13/2017
 ms.author: tamram
 ms.openlocfilehash: a7aaacf316799540a6a72b699ba8ea8bb389c8a8
 ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25984158"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Vytvoření účtu úložiště a otočit jeho přístupových klíčů k účtu
 

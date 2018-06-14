@@ -1,11 +1,11 @@
 ---
-title: "Asymetrické směrování | Dokumentace Microsoftu"
-description: "Tento článek vás provede problémy, se kterými se může setkat zákazník s asymetrickým směrováním v síti s více propojeními k cíli."
+title: Asymetrické směrování | Dokumentace Microsoftu
+description: Tento článek vás provede problémy, se kterými se může setkat zákazník s asymetrickým směrováním v síti s více propojeními k cíli.
 documentationcenter: na
 services: expressroute
 author: osamazia
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a754bff9-95c9-44b5-9796-377fc21e8322
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710010"
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymetrické směrování s několika síťovými cestami
 Tento článek vysvětluje, jak může dopředný a zpětný síťový provoz využívat různé trasy, pokud je mezi zdrojem a cílem v síti k dispozici více cest.

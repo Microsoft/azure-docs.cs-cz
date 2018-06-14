@@ -1,12 +1,12 @@
 ---
-title: "Modely připojení ExpressRoute: Připojení k Microsoft Azure prostřednictvím poskytovatelů síťových služeb, výměn a poskytovatelů ethernetových připojení | Dokumentace Microsoftu"
-description: "Tento článek popisuje různé režimy připojení mezi sítí zákazníka a službami Microsoft Azure, Office 365 a Dynamics 365. Zákazníci mohou využívat poskytovatele MPLS, cloudové výměny a poskytovatele ethernetových připojení."
+title: 'Modely připojení ExpressRoute: Připojení k Microsoft Azure prostřednictvím poskytovatelů síťových služeb, výměn a poskytovatelů ethernetových připojení | Dokumentace Microsoftu'
+description: Tento článek popisuje různé režimy připojení mezi sítí zákazníka a službami Microsoft Azure, Office 365 a Dynamics 365. Zákazníci mohou využívat poskytovatele MPLS, cloudové výměny a poskytovatele ethernetových připojení.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22709891"
 ---
 # <a name="expressroute-connectivity-models"></a>Modely připojení ExpressRoute
 Připojení mezi místní sítí a cloudem Microsoftu můžete vytvořit třemi různými způsoby: [společné umístění CloudExchange](#CloudExchange), [ethernetové připojení typu point-to-point](#Ethernet) a [připojení typu any-to-any (IPVPN)](#IPVPN). Poskytovatelé připojení můžou nabízet jeden nebo víc modelů připojení. Můžete ve spolupráci s poskytovatelem připojení vybrat model, který vám bude nejlépe vyhovovat.
