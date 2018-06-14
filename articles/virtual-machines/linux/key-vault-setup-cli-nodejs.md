@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911498"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager-with-the-azure-cli-10"></a>Nastavení pro virtuální počítače ve Správci prostředků pomocí Azure CLI 1.0 Azure Key Vault
 V zásobníku Azure Resource Manager tajných klíčů nebo certifikáty jsou modelovat jako prostředky, které jsou poskytovány zprostředkovatele prostředku Key Vault. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md) V pořadí pro Key Vault pro použití s Azure Resource Manager virtuální počítače *EnabledForDeployment* vlastnost v Key Vault musí být nastavena na hodnotu true. To provedete v různých klientech. Tento článek ukazuje, jak nastavit Key Vault pro použití s virtuálními počítači Azure.
