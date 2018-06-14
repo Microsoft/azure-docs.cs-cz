@@ -41,6 +41,12 @@
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Správa rezervovaných instancí
           href: billing-manage-reserved-vm-instance.md
+    - name: Příklady REST
+      items:
+        - name: Kontrola podnikových nákladů
+          href: billing-review-enterprise-billing.md
+        - name: Kontrola využití předplatného
+          href: billing-review-subscription-billing.md
 - name: Správa účtu
   items:
     - name: Bezplatný účet

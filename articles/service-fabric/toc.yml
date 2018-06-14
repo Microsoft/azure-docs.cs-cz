@@ -163,6 +163,13 @@
           href: service-fabric-application-model.md
         - name: Manifesty služby a aplikace
           href: service-fabric-application-and-service-manifests.md
+        - name: Příklady manifestu služby a aplikace
+          href: service-fabric-manifest-examples.md
+          items:
+            - name: Příklady manifestu služeb a aplikace Reliable Services
+              href: service-fabric-manifest-example-reliable-services-app.md
+            - name: Příklady manifestu služeb a vícekontejnerové aplikace
+              href: service-fabric-manifest-example-container-app.md
         - name: Model hostingu
           href: service-fabric-hosting-model.md
         - name: Zabezpečení aplikací
@@ -399,6 +406,8 @@
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: Sestavení služby ASP.NET Core
           href: service-fabric-add-a-web-frontend.md
+        - name: Sestavení kontejneru serveru Apache Tomcat na Linuxu
+          href: service-fabric-get-started-tomcat.md
         - name: Konfigurace zabezpečení
           items:
             - name: Správa tajných klíčů aplikací
