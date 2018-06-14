@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409546"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Nástroje Machine learning a data vědecké účely
 Datové vědy virtuálního počítače (DSVM) obsahuje bohatou sadu nástrojů a knihoven pro machine learning v oblíbených jazyků jako Dita Python, R, k dispozici. 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527908"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Provedení analýzy postojích pomocí Azure Stream Analytics nebo Azure Machine Learning
 Tento článek popisuje, jak rychle nastavit jednoduchou úlohu Azure Stream Analytics, která integruje Azure Machine Learning. Používáte model Machine Learning postojích analytics z webu Cortana Intelligence Gallery a analyzovat data streamovaná text určení skóre postojích v reálném čase. Pomocí Cortana Intelligence Suite umožňuje provedení této úlohy bez obav o rozbor všech vytváření model postojích analytics.

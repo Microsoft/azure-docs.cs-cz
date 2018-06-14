@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406554"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
 > [!div class="op_single_selector"]
