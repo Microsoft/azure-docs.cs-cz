@@ -1,11 +1,11 @@
 ---
-title: "Zobrazit veřejnou IP adresu spotřebu v zásobníku Azure | Microsoft Docs"
-description: "Správci mohou prohlížet spotřeby veřejné IP adresy v oblasti."
+title: Zobrazit veřejnou IP adresu spotřebu v zásobníku Azure | Microsoft Docs
+description: Správci mohou prohlížet spotřeby veřejné IP adresy v oblasti.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0f77be49-eafe-4886-8c58-a17061e8120f
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742454"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Zobrazení veřejnou IP adresu energie v zásobníku Azure
 

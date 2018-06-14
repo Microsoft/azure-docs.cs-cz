@@ -1,6 +1,6 @@
 ---
-title: "Rozhraní příkazového řádku Azure vzorky – Azure spravovaných aplikací | Microsoft Docs"
-description: "Rozhraní příkazového řádku Azure vzorky – Azure spravované aplikace"
+title: Rozhraní příkazového řádku Azure vzorky – Azure spravovaných aplikací | Microsoft Docs
+description: Rozhraní příkazového řádku Azure vzorky – Azure spravované aplikace
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -14,9 +14,10 @@ ms.date: 10/25/2017
 ms.author: tomfitz
 ms.openlocfilehash: 38ebea86783970e0b045dcf5a8a91f54ae6c6d6a
 ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23939931"
 ---
 # <a name="azure-cli-samples"></a>Ukázky rozhraní příkazového řádku Azure
 

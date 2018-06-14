@@ -1,8 +1,8 @@
 ---
-title: "Účty úložiště v Azure zásobníku | Microsoft Docs"
-description: "Zjistěte, jak vytvořit účet úložiště Azure zásobníku."
+title: Účty úložiště v Azure zásobníku | Microsoft Docs
+description: Zjistěte, jak vytvořit účet úložiště Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733719"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Účty úložiště v Azure Stack
 Účty úložiště zahrnují služby Blob a Table a unikátní obor názvů pro datové objekty úložiště. Ve výchozím nastavení jsou data ve vašem účtu dostupná pouze pro vás, vlastníka účtu úložiště.
