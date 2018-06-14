@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844064"
 ---
 Můžete vytvořit více služeb v rámci předplatného, každé z nich zřízené v konkrétní úroveň, omezena pouze počet služeb v každé úrovni povoleno. Například můžete vytvořit až 12 services na úroveň Basic a jiné 12 services na vrstvě S1 v rámci stejného předplatného. Další informace o úrovních najdete v tématu [zvolte SKU nebo vrstvy pro službu Azure Search](../articles/search/search-sku-tier.md).
 

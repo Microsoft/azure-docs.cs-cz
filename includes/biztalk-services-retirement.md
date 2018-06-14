@@ -10,9 +10,10 @@ ms.author: mandia
 ms.custom: include file
 ms.openlocfilehash: 81e053c8258d24177d5c7ea499595c4dd4a3b0f0
 ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29765930"
 ---
 > [!IMPORTANT]
 > Microsoft Azure BizTalk Services (MABS), která má být vyřazeno a nahradí Azure Logic Apps.

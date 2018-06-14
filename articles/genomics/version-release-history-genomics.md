@@ -1,7 +1,7 @@
 ---
-title: "Historie verzí | Microsoft Docs"
+title: Historie verzí | Microsoft Docs
 titleSuffix: Azure
-description: "Genomics Microsoft pravidelně aktualizuje klientem Microsoft Genomics Python pro opravy a nové funkce."
+description: Genomics Microsoft pravidelně aktualizuje klientem Microsoft Genomics Python pro opravy a nové funkce.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802923"
 ---
 # <a name="version-release-history"></a>Historie vydaných verzí
 Tým Microsoft Genomics pravidelně aktualizuje klientem Microsoft Genomics Python pro opravy a nové funkce. 

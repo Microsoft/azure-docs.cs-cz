@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31403930"
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Protokoly YARN aplikace přístup na HDInsight se systémem Windows
 Tento dokument vysvětluje, jak získat přístup v souborech protokolů YARN aplikace, které dokončily na cluster Hadoop založených na systému Windows v Azure HDInsight

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31517433"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky HTTP X-ES-Debug pro stroj pravidel Azure CDN
 Hlavička požadavku mezipaměti ladění, `X-EC-Debug`, poskytuje další informace o mezipaměti zásad, které se použijí pro požadovaný prostředek. Jsou tyto hlavičky specifické pro **Azure CDN Premium od společnosti Verizon** produkty.
