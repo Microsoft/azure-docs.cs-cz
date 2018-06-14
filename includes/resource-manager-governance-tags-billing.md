@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 7843410043b726526380b2a916d96f414a2decda
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29532321"
 ---
 Po použití značek k prostředkům, můžete zobrazit náklady na prostředky s těmito značkami. Pro analýzu náklady zobrazíte nejnovější využití, se nemusí zobrazovat náklady na ještě chvíli trvá. Když náklady jsou k dispozici, můžete zobrazit náklady pro prostředky ve skupinách prostředků ve vašem předplatném. Uživatelé musí mít [přístupu na úrovni předplatného na fakturační informace](../articles/billing/billing-manage-access.md) zobrazení nákladů.
 

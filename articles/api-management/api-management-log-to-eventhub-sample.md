@@ -1,11 +1,11 @@
 ---
-title: "Sledování rozhraní API pomocí Azure API Management, Event Hubs a Runscope | Microsoft Docs"
-description: "Ukázkovou aplikaci ukázka zásad protokolu eventhub připojování Azure API Management, Azure Event Hubs a Runscope pro protokol HTTP, protokolování a monitorování"
+title: Sledování rozhraní API pomocí Azure API Management, Event Hubs a Runscope | Microsoft Docs
+description: Ukázkovou aplikaci ukázka zásad protokolu eventhub připojování Azure API Management, Azure Event Hubs a Runscope pro protokol HTTP, protokolování a monitorování
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: darrelmiller
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c528cf6f-5f16-4a06-beea-fa1207541a47
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117064"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Sledovat vaše rozhraní API s Azure API Management, Event Hubs a Runscope
 [Služba API Management](api-management-key-concepts.md) poskytuje mnoho možností pro zlepšení zpracování požadavky HTTP odeslané na rozhraní API HTTP. Je však přechodný existenci požadavky a odpovědi. Zadání požadavku a ven prochází přes službu API Management na váš back-end rozhraní API. Rozhraní API zpracuje požadavek a odpověď toků zpátky pomocí rozhraní API příjemci. Služba API Management zajišťuje některých důležitých statistik o rozhraní API pro zobrazení řídicí panel portálu Azure, ale i mimo, že podrobnosti jsou pryč.

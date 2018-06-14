@@ -1,6 +1,6 @@
 ---
 title: Docker v Azure
-description: "Nasazení a integrace Dockeru s Azure"
+description: Nasazení a integrace Dockeru s Azure
 services: multiple
 author: czeumault
 manager: carolz
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23069099"
 ---
 <div class="content">
    <h1>Docker v Azure</h1>   

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD: Resetování hesla | Microsoft Docs"
-description: "Použít samoobslužné resetování hesel k znovu získat přístup ke své práci nebo škole uživatelský účet"
+title: 'Azure AD: Resetování hesla | Microsoft Docs'
+description: Použít samoobslužné resetování hesel k znovu získat přístup ke své práci nebo škole uživatelský účet
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29463774"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetovat heslo pracovního nebo školního účtu
 

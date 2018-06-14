@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797715"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak používat témata a odběry Service Bus s Pythonem
 

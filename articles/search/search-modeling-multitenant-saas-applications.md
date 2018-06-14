@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797171"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Vzory pro víceklientské aplikace SaaS a Azure Search návrhu
 Víceklientské aplikace je ten, který poskytuje stejné funkce a služby pro libovolný počet klientů, kteří se nedají zobrazit ani sdílet data žádným jiným klientem. Tento dokument popisuje strategie izolace klienta pro víceklientské aplikace sestavené s Azure Search.

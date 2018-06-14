@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 2c16e82ccf259a4cc5ae8fcf35b2dd6b5d50ee2d
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29528340"
 ---
 Při nasazování prostředků do Azure, máte značnou flexibilitu při rozhodování, jaké typy prostředků pro nasazení, tam, kde jsou umístěné a jak je nastavit. Tuto flexibilitu však může otevřít další možnosti, než byste chtěli povolit ve vaší organizaci. Jako uvažujete o nasazení prostředků do Azure, možná se ptáte:
 

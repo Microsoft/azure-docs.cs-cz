@@ -1,6 +1,6 @@
 ---
-title: "Plánovač nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure | Microsoft Docs"
-description: "Tento článek popisuje analýzu sestavy vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure."
+title: Plánovač nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure | Microsoft Docs
+description: Tento článek popisuje analýzu sestavy vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467209"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovače nasazení služby Azure Site Recovery
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.

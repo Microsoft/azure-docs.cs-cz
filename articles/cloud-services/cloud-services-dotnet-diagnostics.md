@@ -1,11 +1,11 @@
 ---
-title: "Jak používat s cloudovými službami Azure diagnostics (.NET) | Microsoft Docs"
-description: "Pomocí Azure diagnostics ke shromažďování dat od cloudových služeb Azure pro ladění, měření výkonu, monitorování, analýza provozu a další."
+title: Jak používat s cloudovými službami Azure diagnostics (.NET) | Microsoft Docs
+description: Pomocí Azure diagnostics ke shromažďování dat od cloudových služeb Azure pro ladění, měření výkonu, monitorování, analýza provozu a další.
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460891"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolení Azure Diagnostics v cloudové služby Azure
 V tématu [přehled Azure Diagnostics](../azure-diagnostics.md) pozadí na Azure Diagnostics.
