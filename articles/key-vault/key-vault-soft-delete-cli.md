@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault - Použití obnovitelného odstranění pomocí rozhraní příkazového řádku"
-description: "Pomocí rozhraní příkazového řádku výstřižků kódu případu příklady konfigurace soft odstranění"
+ms.assetid: ''
+title: Azure Key Vault - Použití obnovitelného odstranění pomocí rozhraní příkazového řádku
+description: Pomocí rozhraní příkazového řádku výstřižků kódu případu příklady konfigurace soft odstranění
 author: lleonard-msft
 manager: mbaldwin
 ms.service: key-vault
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927970"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat Key Vault konfigurace soft odstranění pomocí rozhraní příkazového řádku
 

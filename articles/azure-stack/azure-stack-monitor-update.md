@@ -1,11 +1,11 @@
 ---
-title: "Monitorování aktualizací v zásobníku Azure pomocí privilegované koncový bod | Microsoft Docs"
-description: "Naučte se používat privilegované koncový bod monitorovat stav aktualizace pro Azure zásobníku integrované systémy."
+title: Monitorování aktualizací v zásobníku Azure pomocí privilegované koncový bod | Microsoft Docs
+description: Naučte se používat privilegované koncový bod monitorovat stav aktualizace pro Azure zásobníku integrované systémy.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621857"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorování aktualizací v zásobníku Azure pomocí privilegované koncový bod
 

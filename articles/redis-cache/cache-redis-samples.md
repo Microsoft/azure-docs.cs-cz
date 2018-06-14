@@ -1,11 +1,11 @@
 ---
-title: "Ukázek Azure Redis Cache | Microsoft Docs"
-description: "Další informace o použití Azure Redis Cache"
+title: Ukázek Azure Redis Cache | Microsoft Docs
+description: Další informace o použití Azure Redis Cache
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1f8d210c-ee09-4fe2-b63f-1e69246a27d8
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909692"
 ---
 # <a name="azure-redis-cache-samples"></a>Ukázek Azure Redis Cache
 Toto téma obsahuje seznam ukázek Azure Redis Cache, pokrývajících scénáře, jako je připojení k mezipaměti, čtení a zápisu dat do a z mezipaměti a pomocí poskytovatelů ASP.NET Redis Cache. Některé z ukázky ke stažení projekty jsou a některé poskytují podrobné pokyny a součástí jsou fragmenty kódu ale nejsou připojeny k dispozici ke stažení projektu.

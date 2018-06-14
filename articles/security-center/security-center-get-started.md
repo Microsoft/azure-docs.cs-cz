@@ -1,11 +1,11 @@
 ---
-title: "Rychlý start Azure Security Center – Připojení předplatného Azure ke službě Security Center úrovně Standard | Microsoft Docs"
-description: "V tomto rychlém startu se dozvíte, jak upgradovat službu Security Center na cenovou úroveň Standard, která poskytuje dodatečné zabezpečení."
+title: Rychlý start Azure Security Center – Připojení předplatného Azure ke službě Security Center úrovně Standard | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak upgradovat službu Security Center na cenovou úroveň Standard, která poskytuje dodatečné zabezpečení.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29531668"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rychlý start: Připojení předplatného Azure ke službě Security Center úrovně Standard
 Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Službu Security Center v cenové úrovni Standard si můžete zdarma vyzkoušet na 60 dní.

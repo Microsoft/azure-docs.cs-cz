@@ -1,11 +1,11 @@
 ---
-title: "Zřídit Redis Cache pomocí Azure Resource Manager | Microsoft Docs"
-description: "Šablona Azure Resource Manager k nasazení Azure Redis Cache."
+title: Zřídit Redis Cache pomocí Azure Resource Manager | Microsoft Docs
+description: Šablona Azure Resource Manager k nasazení Azure Redis Cache.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910737"
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>Vytvoření mezipaměti Redis Cache pomocí šablony
 V tomto tématu se dozvíte, jak vytvořit šablonu Azure Resource Manager, která nasazuje Azure Redis Cache. Mezipaměti umožňuje s existujícím účtem úložiště zachovat diagnostická data. Také zjistíte, jak definovat prostředky, ke kterým nasazených a jak definovat parametry, které jsou zadané, když se spustí nasazení. Tuto šablonu můžete použít pro vlastní nasazení nebo ji upravit, aby splňovala vaše požadavky.

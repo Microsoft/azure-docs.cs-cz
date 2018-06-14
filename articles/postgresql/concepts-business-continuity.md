@@ -1,6 +1,6 @@
 ---
-title: "Přehled kontinuity podnikových procesů pomocí databáze Azure pro PostgreSQL"
-description: "Přehled kontinuity podnikových procesů pomocí databáze Azure pro PostgreSQL."
+title: Přehled kontinuity podnikových procesů pomocí databáze Azure pro PostgreSQL
+description: Přehled kontinuity podnikových procesů pomocí databáze Azure pro PostgreSQL.
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29693407"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Přehled kontinuity podnikových procesů pomocí databáze Azure pro PostgreSQL
 
