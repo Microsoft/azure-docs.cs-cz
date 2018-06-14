@@ -1,11 +1,11 @@
 ---
-title: "Dokumentace ke službě Azure Cloud Services – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využívat Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API."
+title: Dokumentace ke službě Azure Cloud Services – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Kurzy, reference k rozhraní API a další dokumentace ukazují, jak využívat Cloud Services k hostování a spouštění vysoce dostupných a škálovatelných cloudových aplikací a rozhraní API.
 services: cloud-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: cloud-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24101878"
 ---
 # <a name="cloud-services-documentation"></a>Dokumentace ke službě Cloud Services
 

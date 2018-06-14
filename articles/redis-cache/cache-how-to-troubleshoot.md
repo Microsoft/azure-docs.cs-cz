@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s Azure Redis Cache | Microsoft Docs"
-description: "Zjistěte, jak řešit obvyklé problémy s Azure Redis Cache."
+title: Řešení potíží s Azure Redis Cache | Microsoft Docs
+description: Zjistěte, jak řešit obvyklé problémy s Azure Redis Cache.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984567"
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Řešení potíží s Azure Redis Cache
 Tento článek obsahuje pokyny pro řešení potíží s následující kategorie problémy s Azure Redis Cache.

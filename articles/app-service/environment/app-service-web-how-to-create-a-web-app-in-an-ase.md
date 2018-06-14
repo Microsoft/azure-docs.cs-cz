@@ -1,11 +1,11 @@
 ---
-title: "Vytvořit webovou aplikaci App Service Environment v1"
-description: "Naučte se vytvářet webové aplikace a aplikace plány služeb v v1 App Service Environment"
+title: Vytvořit webovou aplikaci App Service Environment v1
+description: Naučte se vytvářet webové aplikace a aplikace plány služeb v v1 App Service Environment
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386907"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvořit webovou aplikaci App Service Environment v1
 

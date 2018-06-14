@@ -1,11 +1,11 @@
 ---
-title: "Skupina zabezpečení sítě Azure visualizing toku protokoly s Power BI | Microsoft Docs"
-description: "Tato stránka popisuje, jak k vizualizaci protokolů NSG toku s Power BI."
+title: Skupina zabezpečení sítě Azure visualizing toku protokoly s Power BI | Microsoft Docs
+description: Tato stránka popisuje, jak k vizualizaci protokolů NSG toku s Power BI.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24878577"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Skupina zabezpečení sítě visualizing toku protokoly s Power BI
 

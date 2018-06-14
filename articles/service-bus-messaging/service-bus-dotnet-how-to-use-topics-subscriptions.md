@@ -1,12 +1,12 @@
 ---
-title: "Začínáme s tématy a odběry služby Azure Service Bus | Dokumentace Microsoftu"
-description: "Napíšeme konzolovou aplikaci C# .NET Core využívající témata a odběry zasílání zpráv služby Service Bus."
+title: Začínáme s tématy a odběry služby Azure Service Bus | Dokumentace Microsoftu
+description: Napíšeme konzolovou aplikaci C# .NET Core využívající témata a odběry zasílání zpráv služby Service Bus.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: tbd
 ms.topic: hero-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29396937"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Začínáme s tématy služby Service Bus
 

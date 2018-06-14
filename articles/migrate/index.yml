@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentace k Azure Migrate
 metadata:
-  title: 'Dokumentace k Azure Migrate – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
+  title: Dokumentace k Azure Migrate – kurzy, reference k rozhraní API | Dokumentace Microsoftu
   description: Informace o posouzení místních počítačů pro migraci do Azure
   services: migration-planner
   author: rayne-wiselman
@@ -13,14 +13,20 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/22/2017
   ms.author: raynew
+  ms.openlocfilehash: 64e5293473dd9b5d4b55088e447a5ec3a289372d
+  ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/27/2017
+  ms.locfileid: "25927114"
 abstract:
   description: Azure Migrate pomáhá zkoumat a posuzovat vhodnost místních počítačů pro migraci do Azure a odhaduje velikost a náklady na provoz virtuálních počítačů Azure.
 sections:
-  - title: Podrobné kurzy
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Informace o posouzení virtuálních počítačů VMware pro migraci do Azure
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: Informace o posouzení virtuálních počítačů VMware pro migraci do Azure
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-assessment-vmware">Zkoumání a posouzení místních virtuálních počítačů VMware</a>
+    - html: <a href="tutorial-assessment-vmware">Zkoumání a posouzení místních virtuálních počítačů VMware</a>

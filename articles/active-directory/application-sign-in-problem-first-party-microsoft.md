@@ -1,11 +1,11 @@
 ---
-title: "Potíže při přihlašování k aplikaci Microsoft | Microsoft Docs"
-description: "Řešení běžných potíží potýkají při přihlašování k Applications Microsoft první strany pomocí služby Azure AD (např. Office 365)"
+title: Potíže při přihlašování k aplikaci Microsoft | Microsoft Docs
+description: Řešení běžných potíží potýkají při přihlašování k Applications Microsoft první strany pomocí služby Azure AD (např. Office 365)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384207"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoft
 

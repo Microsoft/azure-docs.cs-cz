@@ -1,12 +1,12 @@
 ---
-title: "Plánování kapacity pro role serveru služby Azure App Service v zásobníku Azure | Microsoft Docs"
-description: "Plánování kapacity pro role serveru služby Azure App Service v Azure zásobníku"
+title: Plánování kapacity pro role serveru služby Azure App Service v zásobníku Azure | Microsoft Docs
+description: Plánování kapacity pro role serveru služby Azure App Service v Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29388579"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Plánování kapacity pro role serveru služby Azure App Service v Azure zásobníku
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*

@@ -1,8 +1,8 @@
 ---
-title: "Nasazení s Terraform z Bash v prostředí cloudu Azure | Microsoft Docs"
-description: "Nasazení s Terraform z Bash v prostředí cloudu Azure"
+title: Nasazení s Terraform z Bash v prostředí cloudu Azure | Microsoft Docs
+description: Nasazení s Terraform z Bash v prostředí cloudu Azure
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: tomarcher
 manager: routlaw
 tags: azure-cloud-shell
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386516"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Nasazení s Terraform z Bash v prostředí cloudu Azure
 Tento článek vás provede procesem vytvoření skupiny prostředků pomocí [Terraform AzureRM zprostředkovatele](https://www.terraform.io/docs/providers/azurerm/index.html). 

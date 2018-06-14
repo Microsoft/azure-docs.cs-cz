@@ -1,8 +1,8 @@
 ---
-title: "Škálování volaných nasazení s agenty, virtuální počítač Azure."
-description: "Přidáte dodatečnou kapacitu pro kanály volaných virtuální počítače Azure pomocí agenta virtuálního počítače Azure volaných modulu plug-in."
+title: Škálování volaných nasazení s agenty, virtuální počítač Azure.
+description: Přidáte dodatečnou kapacitu pro kanály volaných virtuální počítače Azure pomocí agenta virtuálního počítače Azure volaných modulu plug-in.
 services: multiple
-documentationcenter: 
+documentationcenter: ''
 author: rloutlaw
 manager: justhe
 ms.service: multiple
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29392636"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Škálování vašeho nasazení volaných potřeby s agenty, virtuální počítač Azure
 
