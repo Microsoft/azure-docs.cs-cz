@@ -1,6 +1,6 @@
 ---
-title: "Šifrování na straně klienta s Python pro Microsoft Azure Storage | Microsoft Docs"
-description: "Klientská knihovna pro úložiště Azure pro jazyk Python podporuje šifrování na straně klienta pro maximální zabezpečení pro vaše aplikace Azure Storage."
+title: Šifrování na straně klienta s Python pro Microsoft Azure Storage | Microsoft Docs
+description: Klientská knihovna pro úložiště Azure pro jazyk Python podporuje šifrování na straně klienta pro maximální zabezpečení pro vaše aplikace Azure Storage.
 services: storage
 documentationcenter: python
 author: lakasa
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742638"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Šifrování na straně klienta s Python pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]

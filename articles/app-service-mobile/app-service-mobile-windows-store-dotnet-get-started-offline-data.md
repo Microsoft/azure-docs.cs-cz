@@ -1,10 +1,10 @@
 ---
-title: "Zapnutí offline synchronizace pro vaši aplikaci pro univerzální platformu Windows (UWP) s Mobile Apps | Microsoft Docs"
-description: "Další informace o použití služby Azure Mobile Apps do mezipaměti a synchronizaci dat offline v aplikaci pro univerzální platformu Windows (UWP)."
+title: Zapnutí offline synchronizace pro vaši aplikaci pro univerzální platformu Windows (UWP) s Mobile Apps | Microsoft Docs
+description: Další informace o použití služby Azure Mobile Apps do mezipaměti a synchronizaci dat offline v aplikaci pro univerzální platformu Windows (UWP).
 documentationcenter: windows
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594475"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Zapnutí offline synchronizace u aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

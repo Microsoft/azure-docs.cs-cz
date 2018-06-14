@@ -1,11 +1,11 @@
 ---
-title: "Pole virtuální zařízení StorSimple po havárii obnovení a zařízení převzetí služeb při selhání | Microsoft Docs"
-description: "Další informace o tom, jak převzetí služeb při selhání pole virtuální zařízení StorSimple."
+title: Pole virtuální zařízení StorSimple po havárii obnovení a zařízení převzetí služeb při selhání | Microsoft Docs
+description: Další informace o tom, jak převzetí služeb při selhání pole virtuální zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927765"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Po havárii obnovení a zařízení převzetí služeb při selhání pro virtuální zařízení StorSimple pole prostřednictvím portálu Azure
 

@@ -1,6 +1,6 @@
 ---
-title: "Ukázek Azure PowerShell - spravovaných aplikací Azure | Microsoft Docs"
-description: "Ukázek Azure PowerShell – Azure spravované aplikace"
+title: Ukázek Azure PowerShell - spravovaných aplikací Azure | Microsoft Docs
+description: Ukázek Azure PowerShell – Azure spravované aplikace
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -14,9 +14,10 @@ ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 54663282f0a7c9491c0f6501af74eca1a907c44a
 ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23940946"
 ---
 # <a name="azure-powershell-samples"></a>Ukázky Azure PowerShellu
 

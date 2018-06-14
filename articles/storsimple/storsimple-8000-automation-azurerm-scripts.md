@@ -1,12 +1,12 @@
 ---
-title: "Ke správě zařízení StorSimple použít skripty Azure Resource Manager | Microsoft Docs"
-description: "Naučte se používat Azure Resource Manager skripty pro automatizaci úloh StorSimple"
+title: Ke správě zařízení StorSimple použít skripty Azure Resource Manager | Microsoft Docs
+description: Naučte se používat Azure Resource Manager skripty pro automatizaci úloh StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26373937"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Použití skriptů založených na Azure Resource Manager SDK ke správě zařízení StorSimple
 

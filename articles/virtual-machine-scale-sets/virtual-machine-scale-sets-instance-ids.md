@@ -1,11 +1,11 @@
 ---
-title: "Pochopení ID instance pro virtuální počítače sady škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Srozumitelná že ID instance pro škálování virtuálního počítače Azure nastavit virtuální počítače"
+title: Pochopení ID instance pro virtuální počítače sady škálování virtuálního počítače Azure | Microsoft Docs
+description: Srozumitelná že ID instance pro škálování virtuálního počítače Azure nastavit virtuální počítače
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742773"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Srozumitelná že ID instance pro škálování virtuálního počítače Azure nastavit virtuální počítače
 Tento článek popisuje ID instance pro sady škálování a různé způsoby, jejich surface.

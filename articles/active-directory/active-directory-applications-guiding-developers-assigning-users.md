@@ -1,11 +1,11 @@
 ---
-title: "Azure AD a aplikace: přiřazování uživatelů k aplikaci | Microsoft Docs"
-description: "Popisuje, jak implementovat přiřazení uživatelů pro aplikace Azure."
+title: 'Azure AD a aplikace: přiřazování uživatelů k aplikaci | Microsoft Docs'
+description: Popisuje, jak implementovat přiřazení uživatelů pro aplikace Azure.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 97ce69c1-4034-4e38-bd82-8caf984f6b98
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598620"
 ---
 # <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD a aplikace: přiřazování uživatelů k aplikaci
 Než uživatelé a skupiny můžete přiřadit k aplikaci, musí vyžadovat přiřazení uživatelů.  Další informace o tom, jak vyžadovat přiřazení uživatelských najdete [nutnosti přiřazení uživatelských](active-directory-applications-guiding-developers-requiring-user-assignment.md) článku.

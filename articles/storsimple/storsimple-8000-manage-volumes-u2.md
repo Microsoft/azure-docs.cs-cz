@@ -1,12 +1,12 @@
 ---
-title: "Spravovat svazky zařízení StorSimple (Update 3) | Microsoft Docs"
-description: "Vysvětluje, jak přidat, upravit, sledovat a odstraňovat svazky zařízení StorSimple a jak je převést do režimu offline, v případě potřeby."
+title: Spravovat svazky zařízení StorSimple (Update 3) | Microsoft Docs
+description: Vysvětluje, jak přidat, upravit, sledovat a odstraňovat svazky zařízení StorSimple a jak je převést do režimu offline, v případě potřeby.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26578869"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použít službu StorSimple Manager zařízení ke správě svazky (Update 3 nebo novější)
 

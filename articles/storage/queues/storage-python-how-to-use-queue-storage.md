@@ -1,6 +1,6 @@
 ---
-title: "Používání úložiště Queue z Pythonu | Microsoft Docs"
-description: "Naučte se používat službu Azure Queue z Pythonu vytvářet a odstraňovat fronty a vložit, získání a odstranění zprávy."
+title: Používání úložiště Queue z Pythonu | Microsoft Docs
+description: Naučte se používat službu Azure Queue z Pythonu vytvářet a odstraňovat fronty a vložit, získání a odstranění zprávy.
 services: storage
 documentationcenter: python
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25986745"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Používání úložiště Queue z Pythonu
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

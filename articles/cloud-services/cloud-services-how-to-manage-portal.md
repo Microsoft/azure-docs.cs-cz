@@ -1,11 +1,11 @@
 ---
-title: "Běžné úlohy správy cloudové služby | Microsoft Docs"
-description: "Naučte se spravovat cloudové služby na portálu Azure. Tyto příklady použití portálu Azure."
+title: Běžné úlohy správy cloudové služby | Microsoft Docs
+description: Naučte se spravovat cloudové služby na portálu Azure. Tyto příklady použití portálu Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121191"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Spravovat cloudové služby na portálu Azure
 V **cloudové služby** oblasti portálu Azure, můžete:
