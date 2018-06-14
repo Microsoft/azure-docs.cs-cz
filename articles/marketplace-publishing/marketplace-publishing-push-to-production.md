@@ -1,11 +1,11 @@
 ---
-title: "Nasadit vaši nabídku do Azure Marketplace | Microsoft Docs"
-description: "Další informace o a provede pokyny k nasazení vaši nabídku – bitovou kopii virtuálního počítače, služby pro vývojáře, data služby atd. – v Azure Marketplace."
+title: Nasadit vaši nabídku do Azure Marketplace | Microsoft Docs
+description: Další informace o a provede pokyny k nasazení vaši nabídku – bitovou kopii virtuálního počítače, služby pro vývojáře, data služby atd. – v Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 8f79b891-84e2-4f41-ba0d-66420e2c6b2e
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943237"
 ---
 # <a name="deploy-your-offer-to-the-azure-marketplace"></a>Nasadit vaši nabídku do Azure Marketplace
 Až budete spokojeni s vaši nabídku (tedy testování zákazníka scénáře marketingové obsah, atd.) a budete chtít spustit, žádosti o **Push do produkčního prostředí** na **publikovat** kartě.  

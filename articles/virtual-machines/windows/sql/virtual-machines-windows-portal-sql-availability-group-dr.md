@@ -1,6 +1,6 @@
 ---
-title: "Skupiny dostupnosti SQL serveru – virtuální počítače Azure - zotavení po havárii | Microsoft Docs"
-description: "Tento článek vysvětluje, jak konfigurovat skupinu dostupnosti systému SQL Server na virtuálních počítačích Azure s replikou v jiné oblasti."
+title: Skupiny dostupnosti SQL serveru – virtuální počítače Azure - zotavení po havárii | Microsoft Docs
+description: Tento článek vysvětluje, jak konfigurovat skupinu dostupnosti systému SQL Server na virtuálních počítačích Azure s replikou v jiné oblasti.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852825"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurace skupiny dostupnosti Always On na virtuálních počítačích, které jsou v různých oblastech Azure
 

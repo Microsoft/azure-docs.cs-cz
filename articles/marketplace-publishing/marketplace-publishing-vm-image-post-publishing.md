@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "29949017"
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Po Provozní příručka pro virtuální počítač nabídky v Azure Marketplace
 Tento článek vysvětluje, jak můžete aktualizovat nabídka migraci virtuálního počítače v Azure Marketplace. Provede vás provede procesem přidání jeden nebo více nových SKU pro existující nabídku. Také provede vás provede procesem odebrání nabídka migraci virtuálního počítače nebo SKU z Marketplace.

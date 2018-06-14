@@ -1,11 +1,11 @@
 ---
-title: "Propojení virtuální sítě k okruhu ExpressRoute: portálu Azure | Microsoft Docs"
-description: "Připojte virtuální sítě k okruhu Azure ExpressRoute. Postupy: kroky."
+title: 'Propojení virtuální sítě k okruhu ExpressRoute: portálu Azure | Microsoft Docs'
+description: 'Připojte virtuální sítě k okruhu Azure ExpressRoute. Postupy: kroky.'
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874548"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojit virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]

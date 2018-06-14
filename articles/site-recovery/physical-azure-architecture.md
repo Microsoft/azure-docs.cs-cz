@@ -1,6 +1,6 @@
 ---
-title: "Fyzický server do architektury Azure replikace v Azure Site Recovery | Microsoft Docs"
-description: "Tento článek obsahuje přehled součásti a architektura používá při replikace místní fyzických serverů do Azure se službou Azure Site Recovery"
+title: Fyzický server do architektury Azure replikace v Azure Site Recovery | Microsoft Docs
+description: Tento článek obsahuje přehled součásti a architektura používá při replikace místní fyzických serverů do Azure se službou Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
@@ -11,6 +11,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874888"
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Fyzický server do architektury Azure replikace
 

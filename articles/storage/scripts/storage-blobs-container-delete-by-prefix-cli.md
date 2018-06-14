@@ -1,12 +1,12 @@
 ---
-title: "Ukázkový skript Azure CLI – Odstranění kontejnerů na základě předpony | Microsoft Docs"
-description: "Kontejnery objektů blob ve službě Azure Storage můžete odstranit na základě předpony názvu kontejneru."
+title: Ukázkový skript Azure CLI – Odstranění kontejnerů na základě předpony | Microsoft Docs
+description: Kontejnery objektů blob ve službě Azure Storage můžete odstranit na základě předpony názvu kontejneru.
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29848283"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Odstranění kontejnerů na základě předpony názvu kontejneru
 

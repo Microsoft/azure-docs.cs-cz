@@ -1,13 +1,13 @@
 ---
-title: "Propojení virtuální sítě k okruhu ExpressRoute: rozhraní příkazového řádku: Azure | Microsoft Docs"
-description: "Tento dokument obsahuje přehled o tom, jak propojit virtuální sítě (virtuální sítě) pro okruhy ExpressRoute pomocí modelu nasazení Resource Manager a rozhraní příkazového řádku."
+title: 'Propojení virtuální sítě k okruhu ExpressRoute: rozhraní příkazového řádku: Azure | Microsoft Docs'
+description: Tento dokument obsahuje přehled o tom, jak propojit virtuální sítě (virtuální sítě) pro okruhy ExpressRoute pomocí modelu nasazení Resource Manager a rozhraní příkazového řádku.
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlit
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875398"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Připojit virtuální sítě k okruhu ExpressRoute pomocí rozhraní příkazového řádku
 

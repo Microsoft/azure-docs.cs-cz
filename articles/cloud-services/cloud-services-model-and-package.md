@@ -1,11 +1,11 @@
 ---
-title: "Co je Cloudová služba modelu a balíček | Microsoft Docs"
-description: "Popisuje model cloudové služby (.csdef, .cscfg) a balíčku (.cspkg) v Azure"
+title: Co je Cloudová služba modelu a balíček | Microsoft Docs
+description: Popisuje model cloudové služby (.csdef, .cscfg) a balíčku (.cspkg) v Azure
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4ce2feb5-0437-496c-98da-1fb6dcb7f59e
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,9 +19,10 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876555"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je Cloudová služba modelu a jak ho balíček?
-Cloudová služba je vytvořená z tří součástí definice služby *(.csdef)*, konfigurace služby *(.cscfg)*a balíček služby *(.cspkg)*. Obě **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory formátu XML a popisují strukturu cloudové služby a jak jsou nakonfigurované; se nazývají modelu. **ServicePackage.cspkg** je soubor zip, který se generují z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti na základě binární. Azure vytvoří cloudové služby i **ServicePackage.cspkg** a **ServiceConfig.cscfg**.
+Cloudová služba je vytvořená z tří součástí definice služby *(.csdef)*, konfigurace služby *(.cscfg)* a balíček služby *(.cspkg)*. Obě **ServiceDefinition.csdef** a **ServiceConfig.cscfg** soubory formátu XML a popisují strukturu cloudové služby a jak jsou nakonfigurované; se nazývají modelu. **ServicePackage.cspkg** je soubor zip, který se generují z **ServiceDefinition.csdef** a mimo jiné obsahuje všechny požadované závislosti na základě binární. Azure vytvoří cloudové služby i **ServicePackage.cspkg** a **ServiceConfig.cscfg**.
 
 Jakmile Cloudová služba běží v Azure, můžete ji prostřednictvím překonfigurovat **ServiceConfig.cscfg** soubor, ale nelze změnit definici.
 

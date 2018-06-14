@@ -1,7 +1,7 @@
 ---
-title: "Použijte moduly Terraform k vytvoření clusteru virtuálních počítačů v Azure"
-description: "Další informace o použití modulů Terraform k vytvoření virtuálního počítače clusteru systému Windows v Azure"
-keywords: "terraform, devops, virtuálního počítače, sítě, moduly"
+title: Použijte moduly Terraform k vytvoření clusteru virtuálních počítačů v Azure
+description: Další informace o použití modulů Terraform k vytvoření virtuálního počítače clusteru systému Windows v Azure
+keywords: terraform, devops, virtuálního počítače, sítě, moduly
 author: rloutlaw
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952213"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Vytvoření clusteru s podporou virtuálních počítačů s Terraform pomocí klíče registru modulu
 

@@ -1,11 +1,11 @@
 ---
-title: "Průvodce vytvořením šablony řešení pro Marketplace | Microsoft Docs"
-description: "Podrobné pokyny o tom, jak vytvářet, certifikovat a nasadit šablonu více virtuálních počítačů bitové kopie řešení pro zakoupit na webu Azure Marketplace."
+title: Průvodce vytvořením šablony řešení pro Marketplace | Microsoft Docs
+description: Podrobné pokyny o tom, jak vytvářet, certifikovat a nasadit šablonu více virtuálních počítačů bitové kopie řešení pro zakoupit na webu Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937304"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Průvodce Vytvořit šablonu řešení pro Azure Marketplace
 Po dokončení kroku 1, [vytváření účtů a registrace][link-acct-creation], jsme vám na základě na vytvoření šablony řešení kompatibilní s Azure v [technické požadavky pro vytvoření šablony řešení](marketplace-publishing-solution-template-creation-prerequisites.md). Nyní jsme vás provede kroky pro vytvoření šablony řešení pro víc virtuálních počítačů na [publikování portál] [ link-pubportal] pro Azure Marketplace.

@@ -1,11 +1,11 @@
 ---
-title: "Zákazník fakturace a vrácení peněz v Azure zásobníku | Microsoft Docs"
-description: "Zjistěte, jak načíst informace o využití prostředků z Azure zásobníku."
+title: Zákazník fakturace a vrácení peněz v Azure zásobníku | Microsoft Docs
+description: Zjistěte, jak načíst informace o využití prostředků z Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877479"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Využití a cenách služby Azure zásobníku
 

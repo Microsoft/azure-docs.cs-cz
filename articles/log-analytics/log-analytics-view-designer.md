@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření zobrazení k analýze dat v Azure Log Analytics | Microsoft Docs"
-description: "Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení, která se zobrazí na portálu Azure a obsahují řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek obsahuje přehled Návrhář zobrazení a uvede postupy pro vytváření a úpravy vlastních zobrazení."
+title: Vytvoření zobrazení k analýze dat v Azure Log Analytics | Microsoft Docs
+description: Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení, která se zobrazí na portálu Azure a obsahují řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek obsahuje přehled Návrhář zobrazení a uvede postupy pro vytváření a úpravy vlastních zobrazení.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939865"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních pohledů pomocí návrháře zobrazení v analýzy protokolů
 Pomocí zobrazení návrhu v [Azure Log Analytics](log-analytics-overview.md), různých vlastních zobrazení můžete vytvořit na portálu Azure, který můžete vizualizovat data v pracovním prostoru analýzy protokolů. Tento článek obsahuje přehled Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.

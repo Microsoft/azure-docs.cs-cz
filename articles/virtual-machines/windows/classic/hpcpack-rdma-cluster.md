@@ -1,11 +1,11 @@
 ---
-title: "Nastavení clusteru s podporou Windows RDMA ke spouštění aplikací MPI | Microsoft Docs"
-description: "Zjistěte, jak vytvořit cluster Windows HPC Pack s velikostí H16r, H16mr, A8 nebo A9 virtuálních počítačů, které se použije ke spuštění aplikací MPI sítě Azure RDMA."
+title: Nastavení clusteru s podporou Windows RDMA ke spouštění aplikací MPI | Microsoft Docs
+description: Zjistěte, jak vytvořit cluster Windows HPC Pack s velikostí H16r, H16mr, A8 nebo A9 virtuálních počítačů, které se použije ke spuštění aplikací MPI sítě Azure RDMA.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-service-management,hpc-pack
 ms.assetid: 7d9f5bc8-012f-48dd-b290-db81c7592215
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852536"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Nastavení clusteru s podporou Windows RDMA pomocí sady HPC Pack ke spouštění aplikací MPI
 Nastavení clusteru s podporou Windows RDMA v Azure pomocí [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) a [velikosti virtuálních počítačů podporující RDMA HPC](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances) ke spouštění paralelních aplikací Message Passing Interface (MPI). Při nastavování podporu rdma, systémem Windows Server uzly v clusteru služby HPC Pack aplikací MPI efektivně komunikují přes nízkou latencí a vysokou propustnost sítě v Azure, která je založena na technologii do paměti vzdáleného přímý přístup do (počítače RDMA).

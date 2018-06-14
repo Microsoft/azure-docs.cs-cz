@@ -1,11 +1,11 @@
 ---
-title: "Testování vaši nabídku šablony řešení pro Marketplace | Microsoft Docs"
-description: "Pochopit, jak otestovat vaši nabídku řešení šablony pro Azure Marketplace."
+title: Testování vaši nabídku šablony řešení pro Marketplace | Microsoft Docs
+description: Pochopit, jak otestovat vaši nabídku řešení šablony pro Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: ef8f9b5e-b98c-49f3-913f-cdf772c14c12
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937831"
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>Otestovat vaši nabídku šablony řešení v pracovní
 Pracovní znamená nasazení vaši nabídku v soukromé "izolovaného", kde můžete otestovat a ověřit jeho funkčnost před odesláním do produkčního prostředí. Nabídka se zobrazí v pracovním stejně, jako by zákazníkovi, který je nasazena. Chcete-li být vložena do přípravy, musí mít certifikovanou vaši nabídku.

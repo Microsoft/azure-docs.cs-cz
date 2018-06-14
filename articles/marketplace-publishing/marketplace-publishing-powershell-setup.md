@@ -1,11 +1,11 @@
 ---
-title: "Nastavení prostředí PowerShell pro vytvoření virtuálního počítače pro Marketplace | Microsoft Docs"
-description: "Pokyny pro nastavení prostředí Azure PowerShell a jeho použití jako volitelný proces toku k vytvoření Image virtuálních počítačů k nasazení a prodeje na Azure Marketplace"
+title: Nastavení prostředí PowerShell pro vytvoření virtuálního počítače pro Marketplace | Microsoft Docs
+description: Pokyny pro nastavení prostředí Azure PowerShell a jeho použití jako volitelný proces toku k vytvoření Image virtuálních počítačů k nasazení a prodeje na Azure Marketplace
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: e19d6cda-76df-4e42-be84-c9fe47a636db
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937395"
 ---
 # <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>Nastavení prostředí Azure PowerShell k vytvoření nabídky pro Azure Marketplace
 Podrobné informace o tom, jak nastavit prostředí PowerShell v Azure najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview). Jednoduché možných přístupů je použít metody certifikátu, která se stáhne a importuje certifikát potřebný pro ověřování. Chcete-li získat potřebný certifikát, použijte **Get-AzurePublishSettingsFile** rutiny. Když se zobrazí výzva, uložte soubor. Chcete-li import certifikátu do relace prostředí PowerShell, použijte **Import AzurePublishSettingsFile** rutiny.

@@ -1,11 +1,11 @@
 ---
-title: "Přehled podpory init cloudu pro virtuální počítače s Linuxem v Azure | Microsoft Docs"
-description: "Přehled možností init cloudu v Microsoft Azure"
+title: Přehled podpory init cloudu pro virtuální počítače s Linuxem v Azure | Microsoft Docs
+description: Přehled možností init cloudu v Microsoft Azure
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
 ms.service: virtual-machines-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29763141"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora init cloudu pro virtuální počítače v Azure
 Tento článek vysvětluje, zda existuje pro podporu [cloudu init](https://cloudinit.readthedocs.io) ke konfiguraci virtuálního počítače (VM) nebo virtuální počítač sadách škálování (VMSS) na zřizování čas v Azure. Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure.  

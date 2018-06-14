@@ -1,11 +1,11 @@
 ---
-title: "Připojování Microsoft Azure Application Gateway do Azure Security Center | Microsoft Docs"
-description: "Zjistěte, jak integrovat aplikační brány a posílení celkového zabezpečení vašich prostředků Azure Security Center."
+title: Připojování Microsoft Azure Application Gateway do Azure Security Center | Microsoft Docs
+description: Zjistěte, jak integrovat aplikační brány a posílení celkového zabezpečení vašich prostředků Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29854490"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Připojování Microsoft Azure Application Gateway do Azure Security Center
 Tento dokument vám pomůže nakonfigurovat integraci s Centrem zabezpečení a brány firewall Application Gateway webových aplikací (firewall webových aplikací).

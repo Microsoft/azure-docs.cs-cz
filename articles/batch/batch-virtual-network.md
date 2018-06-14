@@ -1,6 +1,6 @@
 ---
-title: "Zřízení fondu Azure Batch ve virtuální síti | Microsoft Docs"
-description: "Fondu služby Batch můžete vytvořit ve virtuální síti, aby výpočetní uzly bezpečně komunikovat s ostatních virtuálních počítačů v síti, jako je například souborový server."
+title: Zřízení fondu Azure Batch ve virtuální síti | Microsoft Docs
+description: Fondu služby Batch můžete vytvořit ve virtuální síti, aby výpočetní uzly bezpečně komunikovat s ostatních virtuálních počítačů v síti, jako je například souborový server.
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29846804"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 

@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření bitové kopie virtuálního počítače místní pro Azure Marketplace | Microsoft Docs"
-description: "Pochopení a provést kroky pro vytvoření image virtuálního počítače místní a nasadit do Azure Marketplace pro ostatní k nákupu."
+title: Vytvoření bitové kopie virtuálního počítače místní pro Azure Marketplace | Microsoft Docs
+description: Pochopení a provést kroky pro vytvoření image virtuálního počítače místní a nasadit do Azure Marketplace pro ostatní k nákupu.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 26dfbd5a-8685-4b19-987e-c20ca60540ec
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944427"
 ---
 # <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Vytvořte bitovou kopii virtuálního počítače místní pro Azure Marketplace
 Důrazně doporučujeme vývoji Azure virtuální pevné disky (VHD) přímo v cloudu pomocí protokolu RDP. Ale pokud je potřeba, je možné stáhnout virtuální pevný disk a vytvořte ho pomocí místní infrastruktury.  

@@ -1,12 +1,12 @@
 ---
-title: "Identita spravované služby s verzí preview služby Azure Service Bus | Microsoft Docs"
-description: "Identita spravované služby pomocí služby Azure Service Bus"
+title: Identita spravované služby s verzí preview služby Azure Service Bus | Microsoft Docs
+description: Identita spravované služby pomocí služby Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874648"
 ---
 # <a name="managed-service-identity-preview"></a>Identita spravované služby (preview)
 

@@ -1,8 +1,8 @@
 ---
-title: "Řešení chyb během navrácení služeb po obnovení virtuálních počítačů Azure do místní VMware s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje způsoby řešení běžných chyb navrácení služeb po obnovení a vytvoření během navrácení služeb po obnovení do VMware z Azure pomocí Azure Site Recovery."
+title: Řešení chyb během navrácení služeb po obnovení virtuálních počítačů Azure do místní VMware s Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje způsoby řešení běžných chyb navrácení služeb po obnovení a vytvoření během navrácení služeb po obnovení do VMware z Azure pomocí Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941020"
 ---
 # <a name="troubleshoot-failback-from-azure-to-vmware"></a>Řešení potíží s navrácení služeb po obnovení z Azure do VMware
 

@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace cloudové služby (portál) | Microsoft Docs"
-description: "Zjistěte, jak nakonfigurovat cloudové služby v Azure. Naučte se aktualizovat konfiguraci této cloudové služby a konfigurace vzdáleného přístupu k instancí rolí. Tyto příklady použití portálu Azure."
+title: Postup konfigurace cloudové služby (portál) | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat cloudové služby v Azure. Naučte se aktualizovat konfiguraci této cloudové služby a konfigurace vzdáleného přístupu k instancí rolí. Tyto příklady použití portálu Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7308f3c0-825e-499d-bfa5-c60f86371921
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874317"
 ---
 # <a name="how-to-configure-cloud-services"></a>Postup konfigurace cloudové služby
 

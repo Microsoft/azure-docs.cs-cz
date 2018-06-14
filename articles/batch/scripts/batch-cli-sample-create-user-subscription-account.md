@@ -1,12 +1,12 @@
 ---
-title: "Ukázkový skript Azure CLI – Vytvoření účtu Batch – Předplatné uživatele | Microsoft Docs"
-description: "Ukázkový skript Azure CLI – Vytvoření účtu Batch v režimu předplatného uživatele"
+title: Ukázkový skript Azure CLI – Vytvoření účtu Batch – Předplatné uživatele | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření účtu Batch v režimu předplatného uživatele
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29848820"
 ---
 # <a name="cli-example-create-a-batch-account-in-user-subscription-mode"></a>Příklad rozhraní příkazového řádku: Vytvoření účtu Batch v režimu předplatného uživatele
 

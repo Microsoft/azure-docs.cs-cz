@@ -1,11 +1,11 @@
 ---
-title: "Propojení virtuální sítě k okruhu ExpressRoute: prostředí PowerShell: classic: Azure | Microsoft Docs"
-description: "Tento dokument obsahuje přehled o tom, jak propojit virtuální sítě (virtuální sítě) pro okruhy ExpressRoute pomocí modelu nasazení classic a prostředí PowerShell."
+title: 'Propojení virtuální sítě k okruhu ExpressRoute: prostředí PowerShell: classic: Azure | Microsoft Docs'
+description: Tento dokument obsahuje přehled o tom, jak propojit virtuální sítě (virtuální sítě) pro okruhy ExpressRoute pomocí modelu nasazení classic a prostředí PowerShell.
 services: expressroute
 documentationcenter: na
 author: ganesr
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 9b53fd72-9b6b-4844-80b9-4e1d54fd0c17
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874993"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Připojit virtuální sítě k okruhu ExpressRoute pomocí prostředí PowerShell (klasické)
 > [!div class="op_single_selector"]
