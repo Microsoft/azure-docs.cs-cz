@@ -1,11 +1,11 @@
 ---
-title: "Cloudové služby řešení problémů s nasazením | Microsoft Docs"
-description: "Existuje několik běžných problémů, které může nastat při nasazení cloudové služby Azure. Tento článek poskytuje řešení na některé z nich."
+title: Cloudové služby řešení problémů s nasazením | Microsoft Docs
+description: Existuje několik běžných problémů, které může nastat při nasazení cloudové služby Azure. Tento článek poskytuje řešení na některé z nich.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26408175"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Cloudové služby řešení problémů s nasazením
 Při nasazení balíčku aplikace cloudové služby Azure, můžete získat informace o nasazení z **vlastnosti** podokně na portálu Azure. Podrobné informace v tomto podokně můžete použít k vyřešení problémů s cloudovou službou a může poskytnout tyto informace k podpoře Azure, při otevření nové žádosti o podporu.

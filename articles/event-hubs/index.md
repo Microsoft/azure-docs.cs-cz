@@ -1,11 +1,11 @@
 ---
-title: "Dokumentace ke službě Azure Event Hubs – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se využívat službu Event Hubs k ingestování milionů událostí za sekundu z připojených aplikací a zařízení IoT na široké škále platformy."
+title: Dokumentace ke službě Azure Event Hubs – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Naučte se využívat službu Event Hubs k ingestování milionů událostí za sekundu z připojených aplikací a zařízení IoT na široké škále platformy.
 services: event-hubs
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: event-hubs
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/28/2017
+ms.locfileid: "25945750"
 ---
 # <a name="event-hubs-documentation"></a>Dokumentace ke službě Event Hubs
 

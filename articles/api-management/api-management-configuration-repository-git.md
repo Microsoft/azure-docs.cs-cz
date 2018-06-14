@@ -1,8 +1,8 @@
 ---
-title: "Konfigurace služby API Management pomocí Git - Azure | Microsoft Docs"
-description: "Zjistěte, jak uložit a nakonfigurovat konfigurace služby API Management pomocí Git."
+title: Konfigurace služby API Management pomocí Git - Azure | Microsoft Docs
+description: Zjistěte, jak uložit a nakonfigurovat konfigurace služby API Management pomocí Git.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
 editor: mattfarm
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29117533"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložte a konfiguraci konfigurace služby API Management pomocí Git
 

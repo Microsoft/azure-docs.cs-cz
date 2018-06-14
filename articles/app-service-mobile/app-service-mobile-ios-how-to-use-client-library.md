@@ -1,11 +1,11 @@
 ---
-title: "Postup použití iOS SDK pro Azure Mobile Apps"
-description: "Postup použití iOS SDK pro Azure Mobile Apps"
+title: Postup použití iOS SDK pro Azure Mobile Apps
+description: Postup použití iOS SDK pro Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: ios
 author: ysxu
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: 4e8e45df-c36a-4a60-9ad4-393ec10b7eb9
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26660137"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Postup použití iOS Klientská knihovna pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]

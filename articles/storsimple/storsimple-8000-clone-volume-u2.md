@@ -1,12 +1,12 @@
 ---
-title: "Klonování svazku na řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje různé klon typy a využití a vysvětluje, jak můžete pomocí zálohovacího skladu klonování svazku na zařízení řady StorSimple 8000."
+title: Klonování svazku na řady StorSimple 8000 | Microsoft Docs
+description: Popisuje různé klon typy a využití a vysvětluje, jak můžete pomocí zálohovacího skladu klonování svazku na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26333198"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Použít službu StorSimple Manager zařízení na portálu Azure ke klonování svazku
 

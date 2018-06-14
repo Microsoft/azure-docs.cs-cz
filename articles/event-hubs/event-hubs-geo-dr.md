@@ -1,11 +1,11 @@
 ---
-title: "Obnovení geograficky havárie Azure Event Hubs | Microsoft Docs"
-description: "Jak používat zeměpisné oblasti převzetí služeb při selhání a proveďte obnovení po havárii v Azure Event Hubs"
+title: Obnovení geograficky havárie Azure Event Hubs | Microsoft Docs
+description: Jak používat zeměpisné oblasti převzetí služeb při selhání a proveďte obnovení po havárii v Azure Event Hubs
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745890"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs Geo-havárii
 

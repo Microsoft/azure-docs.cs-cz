@@ -1,11 +1,11 @@
 ---
-title: "Rychlý start Azure Security Center – Připojení počítačů s Linuxem ke službě Security Center | Microsoft Docs"
-description: "V tomto rychlém startu se dozvíte, jak připojit počítače s Linuxem ke službě Security Center."
+title: Rychlý start Azure Security Center – Připojení počítačů s Linuxem ke službě Security Center | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak připojit počítače s Linuxem ke službě Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29530162"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
 Po připojení předplatných Azure můžete zřízením agenta pro Linux povolit službu Security Center pro prostředky Linuxu spuštěné mimo Azure, například v místním prostředí nebo jiných cloudech.

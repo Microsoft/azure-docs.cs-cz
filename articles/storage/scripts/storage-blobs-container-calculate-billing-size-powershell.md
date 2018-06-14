@@ -1,12 +1,12 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – vypočítat celkové velikosti fakturace kontejner objektů blob | Microsoft Docs"
-description: "Vypočítejte celková velikost kontejner v úložišti objektů Blob v Azure pro účely fakturace."
+title: Azure skript prostředí PowerShell ukázkový – vypočítat celkové velikosti fakturace kontejner objektů blob | Microsoft Docs
+description: Vypočítejte celková velikost kontejner v úložišti objektů Blob v Azure pro účely fakturace.
 services: storage
 documentationcenter: na
 author: fhryo-msft
 manager: cbrooks
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 11/07/2017
 ms.author: fryu
 ms.openlocfilehash: c37b416578a76e9b12e29d68e413d851796ccc6f
 ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26368540"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Vypočítat celkové velikosti fakturace kontejner objektů blob
 

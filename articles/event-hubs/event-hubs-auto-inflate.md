@@ -1,12 +1,12 @@
 ---
-title: "Automaticky škálovat jednotky propustnosti Azure Event Hubs | Microsoft Docs"
-description: "Povolit automatické zvýšilo u oboru názvů automaticky škálování jednotky propustnosti"
+title: Automaticky škálovat jednotky propustnosti Azure Event Hubs | Microsoft Docs
+description: Povolit automatické zvýšilo u oboru názvů automaticky škálování jednotky propustnosti
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28018605"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky škálovat jednotky propustnosti Azure Event Hubs
 

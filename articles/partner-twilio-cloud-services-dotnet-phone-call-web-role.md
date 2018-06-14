@@ -1,11 +1,11 @@
 ---
-title: "Postup telefonní hovor z Twilio (.NET) | Microsoft Docs"
-description: "Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu jsou vytvořené v rozhraní .NET."
-services: 
+title: Postup telefonní hovor z Twilio (.NET) | Microsoft Docs
+description: Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu jsou vytvořené v rozhraní .NET.
+services: ''
 documentationcenter: .net
 author: devinrader
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26366000"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Postup telefonní hovor pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak používat Twilio k volání z webové stránky hostované v Azure. Výsledná aplikace vyzve uživatele, aby volání s danou číslo a zprávy, jak je znázorněno na následujícím snímku obrazovky.

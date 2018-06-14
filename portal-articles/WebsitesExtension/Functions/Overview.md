@@ -1,6 +1,6 @@
 ---
-title: "Přehled Azure Functions | Dokumentace Microsoftu"
-description: "Přehled obsahu nápovědy pro službu Azure Functions na webu Azure Portal"
+title: Přehled Azure Functions | Dokumentace Microsoftu
+description: Přehled obsahu nápovědy pro službu Azure Functions na webu Azure Portal
 services: functions
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073805"
 ---
 # <a name="azure-functions-documentation"></a>Dokumentace ke službě Azure Functions
 

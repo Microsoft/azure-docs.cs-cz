@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30833995"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Úvod do připojení řešení v sledovací proces sítě Azure
 

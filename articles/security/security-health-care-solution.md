@@ -1,5 +1,5 @@
 ---
-title: "Praktické příručka k návrhu bezpečné zdravotní péče řešení v Azure | Microsoft Docs"
+title: Praktické příručka k návrhu bezpečné zdravotní péče řešení v Azure | Microsoft Docs
 description: " Tento článek pomáhá pochopit, jak zlepšit zabezpečení vašich zdravotní péče řešení pomocí služby Azure a funkce, které nakonfigurujete. "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540971"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktické příručka k návrhu bezpečné zdravotní péče řešení v Azure
 Startupy stavu odvětví, systémových integrátorech (si), nezávislí dodavatelé softwaru (ISV) a zdravotnická zvažování přesunu do Azure hledáte pokyny, které pomáhá je začlenit ovládacích prvků zabezpečení ke splnění svých povinností dodržování předpisů.

@@ -1,6 +1,6 @@
 ---
-title: "Ukázkový skript Azure PowerShellu – Migrace objektů blob mezi účty úložiště pomocí AzCopy ve Windows | Microsoft Docs"
-description: "Pomocí AzCopy se zkopíruje obsah objektů blob v jednom účtu úložiště Azure do jiného."
+title: Ukázkový skript Azure PowerShellu – Migrace objektů blob mezi účty úložiště pomocí AzCopy ve Windows | Microsoft Docs
+description: Pomocí AzCopy se zkopíruje obsah objektů blob v jednom účtu úložiště Azure do jiného.
 services: storage
 documentationcenter: na
 author: roygara
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "29360713"
 ---
 # <a name="migrate-blobs-across-storage-accounts-using-azcopy-on-windows"></a>Migrace objektů blob mezi účty úložiště pomocí AzCopy ve Windows
 

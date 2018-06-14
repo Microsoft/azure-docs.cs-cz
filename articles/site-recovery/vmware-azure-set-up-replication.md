@@ -1,6 +1,6 @@
 ---
-title: "Konfigurovat a spravovat zásady replikace pro VMware replikaci s Azure Site Recovery | Microsoft Docs"
-description: "Popisuje postup konfigurace nastavení replikace pro VMware replikaci do Azure s Azure Site Recovery."
+title: Konfigurovat a spravovat zásady replikace pro VMware replikaci s Azure Site Recovery | Microsoft Docs
+description: Popisuje postup konfigurace nastavení replikace pro VMware replikaci do Azure s Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812667"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>Konfigurovat a spravovat zásady replikace pro VMware replikace
 Tento článek popisuje, jak nakonfigurovat zásadu replikace, když se replikace virtuálních počítačů VMware do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).

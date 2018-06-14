@@ -1,12 +1,12 @@
 ---
-title: "Zpracování pokyny Azure funkce chyb | Microsoft Docs"
-description: "Obsahuje obecné pokyny pro zpracování chyb vzniklých v při spuštění funkce a odkazy na témata vazby konkrétních chyb."
+title: Zpracování pokyny Azure funkce chyb | Microsoft Docs
+description: Obsahuje obecné pokyny pro zpracování chyb vzniklých v při spuštění funkce a odkazy na témata vazby konkrétních chyb.
 services: functions
-cloud: 
-documentationcenter: 
+cloud: ''
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-ms.assetid: 
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118486"
 ---
 # <a name="azure-functions-error-handling"></a>Zpracování chyb Azure funkce
 

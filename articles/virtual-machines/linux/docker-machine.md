@@ -1,8 +1,8 @@
 ---
-title: "Použít počítač Docker v Azure vytvořit hostitele systému Linux | Microsoft Docs"
-description: "Popisuje, jak použít počítač Docker k vytvoření hostitelů Docker v Azure."
+title: Použít počítač Docker v Azure vytvořit hostitele systému Linux | Microsoft Docs
+description: Popisuje, jak použít počítač Docker k vytvoření hostitelů Docker v Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29125499"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Jak vytvořit hostitele v Azure pomocí počítač Docker
 Tento článek popisuje, jak používat [počítač Docker](https://docs.docker.com/machine/) v Azure vytvořit hostitele. `docker-machine` Příkaz vytvoří virtuální počítač (VM) s Linuxem v Azure, pak nainstaluje Docker. Pak můžete spravovat hostitelů Docker v Azure pomocí stejných místní nástrojů a pracovních postupů. Použití docker počítače v systému Windows 10, musíte použít Linux bash.

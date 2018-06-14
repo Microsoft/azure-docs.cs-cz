@@ -1,13 +1,13 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – nasazení aplikace do clusteru s podporou | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – nasazení aplikace do clusteru Service Fabric."
+title: Azure skript prostředí PowerShell ukázkový – nasazení aplikace do clusteru s podporou | Microsoft Docs
+description: Azure skript prostředí PowerShell ukázkový – nasazení aplikace do clusteru Service Fabric.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -17,9 +17,10 @@ ms.author: ryanwi
 ms.custom: mvc
 ms.openlocfilehash: c81514fb4b1c1da483ebd55deae149caf22d4b63
 ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927596"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Nasazení aplikace do clusteru Service Fabric
 

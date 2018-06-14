@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace MSI se přiřazené pro virtuální počítač Azure pomocí šablony Azure"
-description: "Krok podle podrobné pokyny pro konfiguraci přiřazený uživatelem spravované služby Identity (MSI) pro virtuální počítač Azure, pomocí šablony Azure Resource Manager."
+title: Postup konfigurace MSI se přiřazené pro virtuální počítač Azure pomocí šablony Azure
+description: Krok podle podrobné pokyny pro konfiguraci přiřazený uživatelem spravované služby Identity (MSI) pro virtuální počítač Azure, pomocí šablony Azure Resource Manager.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984035"
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-an-azure-template"></a>Konfigurace přiřazený uživatelem spravované služby Identity (MSI) pro virtuální počítač pomocí šablony Azure
 

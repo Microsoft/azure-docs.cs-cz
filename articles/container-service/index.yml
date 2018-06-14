@@ -2,9 +2,9 @@
 documentType: LandingData
 title: Dokumentace ke službě Container Service
 metadata:
-  document_id: null
-  title: 'Dokumentace ke službě Azure Container Service – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
-  meta.description: 'Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
+  document_id: 
+  title: Dokumentace ke službě Azure Container Service – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  meta.description: Azure Container Service allows you to quickly deploy a production ready Kubernetes, DC/OS, or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.
   services: container-service
   author: czeumault
   manager: carolz
@@ -14,22 +14,28 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
+  ms.openlocfilehash: 7625fbb02a1ede91c01c35cddd286f4c26ad77be
+  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/11/2017
+  ms.locfileid: "23068368"
 abstract:
-  description: 'Azure Container Service umožňuje rychle nastavit cluster Kubernetes, DC/OS nebo Docker Swarm připravený pro produkční prostředí. Naučte se používat službu Azure Container Service prostřednictvím těchto šablon Rychlý start, kurzů a ukázek.'
+  description: Azure Container Service umožňuje rychle nastavit cluster Kubernetes, DC/OS nebo Docker Swarm připravený pro produkční prostředí. Naučte se používat službu Azure Container Service prostřednictvím těchto šablon Rychlý start, kurzů a ukázek.
 sections:
-  - title: null
+- title: 
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
     items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Začínáme s clustery Kubernetes
-            href: /azure/container-service/kubernetes
-            image:
-              src: media/index/get-started.svg
-              href: /azure/container-service/kubernetes
-          - title: Začínáme s clustery DC/OS a Docker Swarm
-            href: /azure/container-service/dcos-swarm
-            image:
-              src: media/index/get-started.svg
-              href: /azure/container-service/dcos-swarm
+    - title: Začínáme s clustery Kubernetes
+      href: /azure/container-service/kubernetes
+      image:
+        src: media/index/get-started.svg
+        href: /azure/container-service/kubernetes
+    - title: Začínáme s clustery DC/OS a Docker Swarm
+      href: /azure/container-service/dcos-swarm
+      image:
+        src: media/index/get-started.svg
+        href: /azure/container-service/dcos-swarm

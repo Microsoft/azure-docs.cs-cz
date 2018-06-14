@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29574959"
 ---
 Pokud nebudete tuto aplikace nadále používat, odstraňte na základě následujícího postupu všechny prostředky vytvořené podle tohoto rychlého startu, aby se vám neúčtovaly žádné poplatky:
 
