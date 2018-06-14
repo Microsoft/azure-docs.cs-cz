@@ -1,8 +1,8 @@
 ---
-title: "Vlastní pole v Azure Log Analytics | Microsoft Docs"
-description: "Vlastní pole funkci analýzy protokolů můžete vytvořit vlastní prohledávatelné pole ze záznamů analýzy protokolů, které přidávají do vlastností shromážděných záznamu.  Tento článek popisuje postup, jak vytvořit vlastní pole a poskytuje podrobný návod s událost vzorku."
+title: Vlastní pole v Azure Log Analytics | Microsoft Docs
+description: Vlastní pole funkci analýzy protokolů můžete vytvořit vlastní prohledávatelné pole ze záznamů analýzy protokolů, které přidávají do vlastností shromážděných záznamu.  Tento článek popisuje postup, jak vytvořit vlastní pole a poskytuje podrobný návod s událost vzorku.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030689"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Vlastní pole v analýzy protokolů
 **Vlastní pole** funkce analýzy protokolů můžete rozšířit existující záznamy v analýzy protokolů přidat vlastní prohledávatelné pole.  Vlastní pole se vyplní automaticky ze dat extrahovaných z dalších vlastností ve stejném záznamu.

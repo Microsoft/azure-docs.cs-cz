@@ -1,8 +1,8 @@
 ---
-title: "Aplikace Microsoft Authenticator pro mobilních telefonů | Microsoft Docs"
-description: "Naučte se upgradovat na nejnovější verzi Azure Authenticator."
+title: Aplikace Microsoft Authenticator pro mobilních telefonů | Microsoft Docs
+description: Naučte se upgradovat na nejnovější verzi Azure Authenticator.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200993"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Začínáme s aplikací Microsoft Authenticator
 Aplikace Microsoft Authenticator poskytuje další úroveň zabezpečení v pracovní nebo školní účet (například bsimon@contoso.com) nebo účtu Microsoft (například bsimon@outlook.com).
