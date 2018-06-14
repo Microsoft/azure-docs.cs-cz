@@ -1,8 +1,8 @@
 ---
-title: "Rychlý start pro Azure Application Insights | Dokumentace Microsoftu"
-description: "Pokyny pro rychlé nastavení webové aplikace Node.js pro monitorování s využitím Application Insights"
+title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
+description: Pokyny pro rychlé nastavení webové aplikace Node.js pro monitorování s využitím Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386533"
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Zahájení monitorování webové aplikace Node.js
 

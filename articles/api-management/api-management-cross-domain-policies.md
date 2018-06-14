@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management napříč zásady domény | Microsoft Docs"
-description: "Další informace o k dispozici pro použití v Azure API Management napříč doménami zásady."
+title: Azure API Management napříč zásady domény | Microsoft Docs
+description: Další informace o k dispozici pro použití v Azure API Management napříč doménami zásady.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129030"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s rozšíření virtuálního počítače Azure Log Analytics | Microsoft Docs"
-description: "Popisují příznaky, příčiny a řešení nejběžnějších problémů s rozšířením VM analýzy protokolů pro systém Windows a Linux virtuálních počítačích Azure."
+title: Řešení potíží s rozšíření virtuálního počítače Azure Log Analytics | Microsoft Docs
+description: Popisují příznaky, příčiny a řešení nejběžnějších problémů s rozšířením VM analýzy protokolů pro systém Windows a Linux virtuálních počítačích Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394982"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače analýzy protokolů
 Tento článek obsahuje nápovědu k odstraňování potíží chyby setkat s rozšířením VM analýzy protokolů pro Windows a Linux virtuální počítače běžící v Microsoft Azure a navrhne možná řešení jejich řešení.

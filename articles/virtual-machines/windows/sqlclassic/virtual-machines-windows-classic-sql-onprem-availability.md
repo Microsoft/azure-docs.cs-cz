@@ -1,11 +1,11 @@
 ---
-title: "Rozšířit místní vždy na skupiny dostupnosti do Azure | Microsoft Docs"
-description: "Tento kurz používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a popisuje, jak pomocí průvodce přidat repliky v serveru SQL Server Management Studio (SSMS) přidejte repliku vždy na skupiny dostupnosti v Azure."
+title: Rozšířit místní vždy na skupiny dostupnosti do Azure | Microsoft Docs
+description: Tento kurz používá prostředky, které jsou vytvořené pomocí modelu nasazení classic a popisuje, jak pomocí průvodce přidat repliky v serveru SQL Server Management Studio (SSMS) přidejte repliku vždy na skupiny dostupnosti v Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400473"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozšířit místní vždy na skupiny dostupnosti do Azure
 Skupiny dostupnosti Always On zajištění vysoké dostupnosti pro skupiny databáze přidáním sekundární repliky. Povolit tyto repliky přebírání služeb při selhání databáze v případě selhání. Kromě toho může být používají k přesměrování zpracování úloh pro čtení nebo úlohy zálohování.
