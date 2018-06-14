@@ -1,11 +1,11 @@
 ---
-title: "Nainstalujte MongoDB na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs"
-description: "Zjistěte, jak nainstalovat a nakonfigurovat MongoDB na iusing Linux virtuálního počítače Azure CLI 2.0"
+title: Nainstalujte MongoDB na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak nainstalovat a nakonfigurovat MongoDB na iusing Linux virtuálního počítače Azure CLI 2.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852230"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Postup instalace a konfigurace MongoDB na virtuální počítač s Linuxem
 [MongoDB](http://www.mongodb.org) je Oblíbené databáze NoSQL open source a vysoce výkonné. Tento článek ukazuje, jak nainstalovat a nakonfigurovat MongoDB na virtuální počítač s Linuxem pomocí Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](install-mongodb-nodejs.md). Příklady jsou uvedeny této podrobnosti o tom, jak na:

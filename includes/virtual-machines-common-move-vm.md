@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958703"
 ---
 ## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Přesunout virtuální počítač do jiného předplatného pomocí portálu
 Můžete přesunout virtuální počítač a je přiřazen prostředky do jiného předplatného pomocí portálu.

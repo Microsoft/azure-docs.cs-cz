@@ -1,10 +1,10 @@
 ---
-title: "Nasazení webové aplikace do Azure pomocí volaných | Microsoft Docs"
-description: "Nastavte průběžnou integraci z Githubu do služby Azure App Service pro webové aplikace Java pomocí volaných a Docker."
+title: Nasazení webové aplikace do Azure pomocí volaných | Microsoft Docs
+description: Nastavte průběžnou integraci z Githubu do služby Azure App Service pro webové aplikace Java pomocí volaných a Docker.
 author: rloutlaw
 manager: douge
 ms.service: jenkins
-ms.search.scope: 
+ms.search.scope: ''
 ms.devlang: java
 ms.topic: article
 ms.workload: web
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852995"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Nastavte průběžnou integraci a nasazení do Azure App Service pomocí volaných
 
