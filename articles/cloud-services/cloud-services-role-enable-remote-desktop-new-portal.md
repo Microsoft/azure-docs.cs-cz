@@ -1,11 +1,11 @@
 ---
-title: "Povolit připojení ke vzdálené ploše pro roli v cloudových služeb Azure | Microsoft Docs"
-description: "Postup konfigurace aplikace služby azure cloud umožňující připojení ke vzdálené ploše"
+title: Povolit připojení ke vzdálené ploše pro roli v cloudových služeb Azure | Microsoft Docs
+description: Postup konfigurace aplikace služby azure cloud umožňující připojení ke vzdálené ploše
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 73ea1d64-1529-4d72-b58e-f6c10499e6bb
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877360"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Povolit připojení ke vzdálené ploše pro roli v cloudové služby Azure
 

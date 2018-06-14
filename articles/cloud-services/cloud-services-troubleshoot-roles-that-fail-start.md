@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s rolí, které se nepodařilo spustit | Microsoft Docs"
-description: "Tady jsou některé běžné příčiny, proč nemusí podařit spustit roli cloudové služby. K dispozici jsou taky řešení těchto problémů."
+title: Řešení potíží s rolí, které se nepodařilo spustit | Microsoft Docs
+description: Tady jsou některé běžné příčiny, proč nemusí podařit spustit roli cloudové služby. K dispozici jsou taky řešení těchto problémů.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875330"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Řešení potíží s cloudové služby role, které se nepodařilo spustit
 Tady jsou některé běžné problémy a řešení souvisejících s Azure Cloud Services rolí, které se nepodařilo spustit.

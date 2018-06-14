@@ -1,11 +1,11 @@
 ---
-title: "Přehled různých portálů bylo nutné vytvořit nabídku pro Marketplace | Microsoft Docs"
-description: "Přehled různých portálů bylo nutné vytvořit nabídku pro Marketplace."
+title: Přehled různých portálů bylo nutné vytvořit nabídku pro Marketplace | Microsoft Docs
+description: Přehled různých portálů bylo nutné vytvořit nabídku pro Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 89ce82b3-c28a-4b0d-b37a-db3112160a4e
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29938640"
 ---
 # <a name="portals-you-will-need"></a>Portály, které budete potřebovat
 Před zahájením procesu publikování nabídky, Pojďme vás seznámili různými portály, které budete potřebovat. Níže je krátký souhrn o portálů – středisku pro vývojáře, publikování portálu Azure a portálu Azure – v pořadí, že bude komunikovat s nimi.                                                                            

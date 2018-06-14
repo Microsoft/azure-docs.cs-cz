@@ -1,11 +1,11 @@
 ---
-title: "Referenční příručka k zobrazení návrhu dlaždice v Azure Log Analytics | Microsoft Docs"
-description: "Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení na portálu Azure, který zobrazí celou řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení."
+title: Referenční příručka k zobrazení návrhu dlaždice v Azure Log Analytics | Microsoft Docs
+description: Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení na portálu Azure, který zobrazí celou řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947312"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenční příručka k zobrazení návrhu dlaždice v analýzy protokolů
 Pomocí zobrazení návrhu v Azure Log Analytics můžete vytvořit vlastní zobrazení na portálu Azure k dispozici různé vizualizace dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro dlaždice, které jsou k dispozici do vlastních zobrazení.

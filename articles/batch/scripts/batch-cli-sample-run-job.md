@@ -1,12 +1,12 @@
 ---
-title: "Ukázkový skript Azure CLI – Spuštění úlohy Batch | Microsoft Docs"
-description: "Ukázkový skript Azure CLI – Spuštění úlohy pomocí služby Batch"
+title: Ukázkový skript Azure CLI – Spuštění úlohy Batch | Microsoft Docs
+description: Ukázkový skript Azure CLI – Spuštění úlohy pomocí služby Batch
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: sample
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843608"
 ---
 # <a name="cli-example-run-a-job-and-tasks-with-azure-batch"></a>Příklad rozhraní příkazového řádku: Spuštění úlohy a úkolů pomocí služby Azure Batch
 

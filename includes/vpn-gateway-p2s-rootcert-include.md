@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197026"
 ---
 Můžete použít buď kořenový certifikát vygenerovaný pomocí podnikového řešení (doporučeno), nebo můžete vygenerovat certifikát podepsaný svým držitelem. Po vytvoření kořenového certifikátu vyexportujte data veřejného certifikátu (ne privátní klíč) jako soubor .cer X.509 v kódování Base-64 nahrajte data veřejného certifikátu do Azure.
 

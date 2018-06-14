@@ -1,11 +1,11 @@
 ---
-title: "Využití prostředků poskytovatele rozhraní API | Microsoft Docs"
-description: "Odkaz pro rozhraní API, využití prostředků, který načte informace o využití Azure zásobníku"
+title: Využití prostředků poskytovatele rozhraní API | Microsoft Docs
+description: Odkaz pro rozhraní API, využití prostředků, který načte informace o využití Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877275"
 ---
 # <a name="provider-resource-usage-api"></a>Rozhraní API využití prostředků poskytovatele
 Termín *zprostředkovatele* platí pro správce služeb a zprostředkovatelů delegovaní. Operátory Azure zásobníku a delegované zprostředkovatelé můžete použít rozhraní API pro využití zprostředkovatele a zobrazte tak použití jejich přímé klientů. Například jak je vidět v diagramu, P0 můžete volat zprostředkovatele rozhraní API se získat informace o využití na na P1 a P2 společnosti přímý využití a P1 můžete volat pro informace o využití na P3 a P4.

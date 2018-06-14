@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s agenta systému Linux Azure Log Analytics | Microsoft Docs"
-description: "Popisují příznaky, příčiny a řešení nejběžnějších problémů s agentem Log Analytics Linux."
+title: Řešení potíží s agenta systému Linux Azure Log Analytics | Microsoft Docs
+description: Popisují příznaky, příčiny a řešení nejběžnějších problémů s agentem Log Analytics Linux.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936471"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>Řešení potíží s agentem systému Linux pro analýzy protokolů
 

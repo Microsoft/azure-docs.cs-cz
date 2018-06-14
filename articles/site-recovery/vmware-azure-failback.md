@@ -1,6 +1,6 @@
 ---
-title: "Zpět z Azure se nepodařilo VMware s Azure Site Recovery | Microsoft Docs"
-description: "Po převzetí služeb při selhání virtuálních počítačů do Azure můžete spustit navrácení služeb po obnovení, aby virtuální počítače zpět do místní. Přečtěte si postup pro navrácení služeb po obnovení."
+title: Zpět z Azure se nepodařilo VMware s Azure Site Recovery | Microsoft Docs
+description: Po převzetí služeb při selhání virtuálních počítačů do Azure můžete spustit navrácení služeb po obnovení, aby virtuální počítače zpět do místní. Přečtěte si postup pro navrácení služeb po obnovení.
 services: site-recovery
 author: nsoneji
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29944003"
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Selhání zpět z Azure do místního serveru
 

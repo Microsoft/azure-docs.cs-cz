@@ -13,6 +13,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312639"
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>Počet úloh podle stavu můžete sledovat průběh úlohy (Preview)
 

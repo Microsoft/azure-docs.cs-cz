@@ -1,13 +1,13 @@
 ---
-title: "Azure omezené velikosti virtuálních procesorů - Linux | Microsoft Docs"
-description: "Uvádí velikosti virtuálních počítačů, které podporují toho, že počet virtuálních procesorů omezené."
+title: Azure omezené velikosti virtuálních procesorů - Linux | Microsoft Docs
+description: Uvádí velikosti virtuálních počítačů, které podporují toho, že počet virtuálních procesorů omezené.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: jonbeck7
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874085"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Omezené virtuálních procesorů podporující velikosti virtuálních počítačů
 

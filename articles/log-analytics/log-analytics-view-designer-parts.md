@@ -1,11 +1,11 @@
 ---
-title: "Referenční příručka Návrhář zobrazení částí v Azure Log Analytics | Microsoft Docs"
-description: "Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení na portálu Azure, který zobrazí celou řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení."
+title: Referenční příručka Návrhář zobrazení částí v Azure Log Analytics | Microsoft Docs
+description: Pomocí zobrazení návrhu v analýzy protokolů můžete vytvořit vlastní zobrazení na portálu Azure, který zobrazí celou řadu vizualizaci dat v pracovním prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949527"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka Návrhář zobrazení vizualizace částí v analýzy protokolů
 Pomocí zobrazení návrhu v Azure Log Analytics můžete vytvořit vlastní zobrazení na portálu Azure k dispozici různé vizualizace dat z pracovního prostoru analýzy protokolů. Tento článek je referenční příručka k nastavení pro vizualizaci částí, které jsou k dispozici do vlastních zobrazení.

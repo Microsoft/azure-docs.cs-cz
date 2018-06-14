@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření aplikace funkcí a nasazení kódu funkce z GitHubu | Microsoft Docs"
-description: "Ukázkový skript Azure CLI – Vytvoření aplikace funkcí a nasazení kódu funkce z GitHubu"
+title: Vytvoření aplikace funkcí a nasazení kódu funkce z GitHubu | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření aplikace funkcí a nasazení kódu funkce z GitHubu
 services: functions
-keywords: 
+keywords: ''
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/27/2017
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29842656"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-github"></a>Vytvoření aplikace funkcí a nasazení kódu funkce z GitHubu
 

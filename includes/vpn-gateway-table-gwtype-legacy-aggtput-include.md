@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197170"
 ---
 Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost podle SKU brány. Tato tabulka platí pro správce prostředků a modely nasazení classic. 
 

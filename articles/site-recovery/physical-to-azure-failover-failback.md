@@ -1,6 +1,6 @@
 ---
-title: "Převzetí služeb při selhání a selhání zpět fyzických serverů, které se replikují do Azure pomocí Site Recovery | Microsoft Docs"
-description: "Naučte se vrátí zpátky na místní lokalitu s Azure Site Recovery a selhání fyzických serverů do Azure"
+title: Převzetí služeb při selhání a selhání zpět fyzických serverů, které se replikují do Azure pomocí Site Recovery | Microsoft Docs
+description: Naučte se vrátí zpátky na místní lokalitu s Azure Site Recovery a selhání fyzických serverů do Azure
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29876004"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a selhání zpět fyzických serverů replikovat do Azure
 
