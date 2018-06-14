@@ -1,12 +1,12 @@
 ---
-title: "Uživatelské rozhraní aplikace Microsoft Azure StorSimple Manager dat | Microsoft Docs"
-description: "Popisuje způsob použití služby StorSimple Data Manager uživatelského rozhraní"
+title: Uživatelské rozhraní aplikace Microsoft Azure StorSimple Manager dat | Microsoft Docs
+description: Popisuje způsob použití služby StorSimple Data Manager uživatelského rozhraní
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862253"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Spravovat službu StorSimple Manager dat na portálu Azure
 

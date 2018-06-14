@@ -1,11 +1,11 @@
 ---
-title: "Migrace aplikací logiky na schéma verze 2015-08-01-preview | Dokumentace Microsoftu"
-description: "Aplikace logiky můžete snadno migrovat na schéma nejnovější verze. Postupujte podle těchto kroků."
+title: Migrace aplikací logiky na schéma verze 2015-08-01-preview | Dokumentace Microsoftu
+description: Aplikace logiky můžete snadno migrovat na schéma nejnovější verze. Postupujte podle těchto kroků.
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: MSFTMAN
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 3e177e49-fd69-43e9-9b9b-218abb250c31
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22707120"
 ---
 # <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>Migrace aplikací logiky na schéma verze 2015-08-01-preview
 Pokud chcete stávající aplikaci logiky migrovat na nové schéma, postupujte následovně:  
