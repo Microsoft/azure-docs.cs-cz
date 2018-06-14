@@ -1,11 +1,11 @@
 ---
-title: "Azure Event Hubs zaznamenat návod | Microsoft Docs"
-description: "Ukázka pomocí sady Azure SDK pro Python, která demonstruje použití funkci zachycení centra událostí."
+title: Azure Event Hubs zaznamenat návod | Microsoft Docs
+description: Ukázka pomocí sady Azure SDK pro Python, která demonstruje použití funkci zachycení centra událostí.
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016453"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Názorný postup zachycení centra událostí: Python
 

@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Site Recovery"
+title: Dokumentace ke službě Site Recovery
 metadata:
-  title: "Dokumentace ke službě Azure Site Recovery – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
+  title: Dokumentace ke službě Azure Site Recovery – kurzy, reference k rozhraní API | Dokumentace Microsoftu
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
   author: czeumault
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 01/10/2018
+  ms.locfileid: "27740073"
 abstract:
-  description: "Azure Site Recovery orchestruje a spravuje zotavení po havárii pro virtuální počítače Azure a místní virtuální počítače a fyzické servery. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak replikovat, převzít služby při selhání a navrátit služby po obnovení."
+  description: Azure Site Recovery orchestruje a spravuje zotavení po havárii pro virtuální počítače Azure a místní virtuální počítače a fyzické servery. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak replikovat, převzít služby při selhání a navrátit služby po obnovení.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Rychlé nastavení zotavení po havárii pro virtuální počítač Azure"
+    text: Rychlé nastavení zotavení po havárii pro virtuální počítač Azure
   - type: list
     style: icon48
     items:
@@ -32,53 +33,53 @@ sections:
         src: /azure/site-recovery/media/index/portal.svg
       text: Azure Portal
       href: /azure/site-recovery/azure-to-azure-quickstart
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučíte se, jak nastavit zotavení po havárii pro virtuální počítače a fyzické servery."
+    text: Naučíte se, jak nastavit zotavení po havárii pro virtuální počítače a fyzické servery.
   - type: text
     html: <h3>Azure do Azure</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"azure-to-azure-tutorial-enable-replication\">Nastavení zotavení po havárii</a>"
-    - html: "<a href=\"azure-to-azure-tutorial-dr-drill\">Spuštění postupu zotavení po havárii</a>"
-    - html: "<a href=\"azure-to-azure-tutorial-failover-failback\">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>"
+    - html: <a href="azure-to-azure-tutorial-enable-replication">Nastavení zotavení po havárii</a>
+    - html: <a href="azure-to-azure-tutorial-dr-drill">Spuštění postupu zotavení po havárii</a>
+    - html: <a href="azure-to-azure-tutorial-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
   - type: text
     html: <h3>VMware</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-prepare-azure\">Příprava Azure</a>"
-    - html: "<a href=\"tutorial-prepare-on-premises-vmware\">Příprava VMware v místním prostředí</a>"
-    - html: "<a href=\"tutorial-vmware-to-azure\">Nastavení zotavení po havárii</a>"
-    - html: "<a href=\"tutorial-dr-drill-azure\">Spuštění postupu zotavení po havárii</a>"
-    - html: "<a href=\"tutorial-vmware-to-azure-failover-failback\">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>"
+    - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
+    - html: <a href="tutorial-prepare-on-premises-vmware">Příprava VMware v místním prostředí</a>
+    - html: <a href="tutorial-vmware-to-azure">Nastavení zotavení po havárii</a>
+    - html: <a href="tutorial-dr-drill-azure">Spuštění postupu zotavení po havárii</a>
+    - html: <a href="tutorial-vmware-to-azure-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-prepare-azure\">Příprava Azure</a>"
-    - html: "<a href=\"tutorial-prepare-on-premises-hyper-v\">Příprava místního Hyper-V</a>"
-    - html: "<a href=\"tutorial-hyper-v-to-azure\">Nastavení zotavení po havárii pro virtuální počítače Hyper-V</a>"
-    - html: "<a href=\"tutorial-hyper-v-vmm-to-azure\">Nastavení zotavení po havárii pro virtuální počítače Hyper-V, které spravuje System Center VMM</a>"
-    - html: "<a href=\"tutorial-dr-drill-azure\">Spuštění postupu zotavení po havárii</a>"
-    - html: "<a href=\"tutorial-hyper-v-to-azure-failover-failback\">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>"
+    - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
+    - html: <a href="tutorial-prepare-on-premises-hyper-v">Příprava místního Hyper-V</a>
+    - html: <a href="tutorial-hyper-v-to-azure">Nastavení zotavení po havárii pro virtuální počítače Hyper-V</a>
+    - html: <a href="tutorial-hyper-v-vmm-to-azure">Nastavení zotavení po havárii pro virtuální počítače Hyper-V, které spravuje System Center VMM</a>
+    - html: <a href="tutorial-dr-drill-azure">Spuštění postupu zotavení po havárii</a>
+    - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
   - type: text
     html: <h3>Migrace do Azure</h3>
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-prepare-azure\">Příprava Azure</a>"
-    - html: "<a href=\"tutorial-migrate-on-premises-to-azure\">Migrace místních počítačů</a> nebo <a href=\"tutorial-migrate-aws-to-azure\">instancí AWS do Azure</a>"
+    - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
+    - html: <a href="tutorial-migrate-on-premises-to-azure">Migrace místních počítačů</a> nebo <a href="tutorial-migrate-aws-to-azure">instancí AWS do Azure</a>
 - title: Odkaz
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/site-recovery/\">Reference k rozhraní REST API</a></p>"
+      html: <p><a href="/rest/api/site-recovery/">Reference k rozhraní REST API</a></p>

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914931"
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Správa počtu a dostupnosti výpočetních uzlů v clusteru HPC Pack v Azure
 Pokud jste vytvořili clusteru HPC Pack 2012 R2 ve virtuálních počítačích Azure, můžete chtít způsoby, jak snadno přidat, odebrat, (zřídit) spuštění nebo zastavení (deprovision) některé výpočetní uzel virtuální počítače v clusteru. Chcete-li provést tyto úlohy, spusťte prostředí Azure PowerShell skripty, které jsou nainstalované na hlavního uzlu virtuálního počítače. Tyto skripty vám pomůžou usnadnit řízení číslo a dostupnost prostředků clusteru HPC Pack, můžete řídit náklady.

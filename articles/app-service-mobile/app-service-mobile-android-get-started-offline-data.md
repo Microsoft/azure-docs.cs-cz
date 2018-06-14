@@ -1,6 +1,6 @@
 ---
-title: "Zapnutí offline synchronizace pro mobilní aplikace Azure (Android)"
-description: "Naučte se používat App Service Mobile Apps do mezipaměti a synchronizaci dat offline vaší aplikace Android"
+title: Zapnutí offline synchronizace pro mobilní aplikace Azure (Android)
+description: Naučte se používat App Service Mobile Apps do mezipaměti a synchronizaci dat offline vaší aplikace Android
 documentationcenter: android
 author: conceptdev
 manager: crdun
@@ -18,6 +18,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27594185"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Zapnutí offline synchronizace pro mobilní aplikaci s Androidem
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

@@ -1,10 +1,10 @@
 ---
-title: "Přidání nabízených oznámení do vaší aplikace pomocí mobilních aplikací pro Android | Microsoft Docs"
-description: "Naučte se používat Mobile Apps k odesílání nabízených oznámení do aplikace pro Android."
+title: Přidání nabízených oznámení do vaší aplikace pomocí mobilních aplikací pro Android | Microsoft Docs
+description: Naučte se používat Mobile Apps k odesílání nabízených oznámení do aplikace pro Android.
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593024"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Přidání nabízených oznámení do vaší aplikace pro Android
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

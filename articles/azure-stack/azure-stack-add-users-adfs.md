@@ -1,11 +1,11 @@
 ---
-title: "Přidat uživatele pro AD FS zásobník Azure | Microsoft Docs"
-description: "Zjistěte, jak přidat uživatele pro nasazení služby AD FS Azure zásobníku"
+title: Přidat uživatele pro AD FS zásobník Azure | Microsoft Docs
+description: Zjistěte, jak přidat uživatele pro nasazení služby AD FS Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29554562"
 ---
 # <a name="add-users-in-the-azure-stack-development-kit"></a>Přidat uživatele v Azure zásobníku Development Kit
 

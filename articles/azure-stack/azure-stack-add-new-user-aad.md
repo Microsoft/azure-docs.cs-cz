@@ -1,11 +1,11 @@
 ---
-title: "Přidat nový účet klienta Azure zásobníku v Azure Active Directory | Microsoft Docs"
-description: "Po nasazení Microsoft Azure zásobníku Development Kit, musíte vytvořit alespoň jeden klienta uživatelský účet, abyste jej mohli prozkoumat portál klienta."
+title: Přidat nový účet klienta Azure zásobníku v Azure Active Directory | Microsoft Docs
+description: Po nasazení Microsoft Azure zásobníku Development Kit, musíte vytvořit alespoň jeden klienta uživatelský účet, abyste jej mohli prozkoumat portál klienta.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
 ms.service: azure-stack
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29553201"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Přidat nový účet klienta Azure zásobníku v Azure Active Directory
 Po [nasazení Azure zásobníku Development Kit](azure-stack-run-powershell-script.md), budete potřebovat uživatelského účtu klienta, abyste mohli prozkoumat portál pro klienty a testování nabídky a plány. Můžete vytvořit účet klienta podle [pomocí portálu Azure](#create-an-azure-stack-tenant-account-using-the-azure-portal) nebo [pomocí prostředí PowerShell](#create-an-azure-stack-tenant-account-using-powershell).

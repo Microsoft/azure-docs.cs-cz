@@ -1,11 +1,11 @@
 ---
-title: "Nové hledání protokolu log Analytics nejčastější dotazy | Microsoft Docs"
-description: "Tento článek obsahuje nejčastější dotazy týkající se upgradu analýzy protokolů pro nové dotazovací jazyk."
+title: Nové hledání protokolu log Analytics nejčastější dotazy | Microsoft Docs
+description: Tento článek obsahuje nejčastější dotazy týkající se upgradu analýzy protokolů pro nové dotazovací jazyk.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993865"
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Nejčastější dotazy k vyhledávání a známé problémy protokolu nové analýzy protokolů
 

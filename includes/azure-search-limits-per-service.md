@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30844061"
 ---
 Úložiště je omezené místa na disku nebo pevný limit na *maximální počet* indexy, dokumentu nebo jiným prostředkům vysoké úrovně, nastane dříve. Následující tabulka obsahuje informace o omezení úložiště. Maximální omezení pro indexy, dokumenty a další objekty, najdete v části [omezení prostředkem](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
