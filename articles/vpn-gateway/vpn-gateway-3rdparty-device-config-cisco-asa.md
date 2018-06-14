@@ -1,12 +1,12 @@
 ---
-title: "Ukázková konfigurace pro zařízení Cisco ASA připojovat k Azure VPN Gateway | Microsoft Docs"
-description: "Tento článek obsahuje ukázková konfigurace pro zařízení Cisco ASA připojovat k Azure VPN Gateway."
+title: Ukázková konfigurace pro zařízení Cisco ASA připojovat k Azure VPN Gateway | Microsoft Docs
+description: Tento článek obsahuje ukázková konfigurace pro zařízení Cisco ASA připojovat k Azure VPN Gateway.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910754"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Ukázková konfigurace: Cisco ASA zařízení (BGP IKEv2/ne)
 Tento článek obsahuje ukázkové konfigurace pro připojování zařízení Cisco adaptivní zabezpečení zařízení (ASA) do Azure VPN Gateway. Příklad se týká se zařízení Cisco ASA, systémem IKEv2 bez protokol BGP (Border Gateway). 

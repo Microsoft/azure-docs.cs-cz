@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentace k Azure Database for MySQL
 metadata:
   document_id: 8d915ae6-9101-ad37-0736-3eaa59c2dd34
-  title: 'Dokumentace k Azure MySQL – kurzy, reference k rozhraní API | Dokumentace Microsoftu'
+  title: Dokumentace k Azure MySQL – kurzy, reference k rozhraní API | Dokumentace Microsoftu
   description: Azure Database for MySQL je služba relačních databází v cloudu Microsoftu vytvořená pro vývojáře na základě open source databázového stroje MySQL.
   services: mysql
   author: czeumault
@@ -14,38 +14,44 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2017
   ms.author: carolz
+  ms.openlocfilehash: 817fc211b6296490af0a873a88eb76215b44c2dd
+  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 10/11/2017
+  ms.locfileid: "23070799"
 abstract:
-  description: 'Azure Database for MySQL je služba relačních databází založená na open source modulu MySQL Server.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for MySQL s využitím open source nástrojů a platformy podle vašeho výběru. Naučte se používat Azure Database for MySQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.'
+  description: Azure Database for MySQL je služba relačních databází založená na open source modulu MySQL Server.  Je to nabídka plně spravované databáze jako služby schopné spravovat důležité úlohy s předvídatelným výkonem a možností dynamického škálování. Vyvíjejte aplikace pomocí Azure Database for MySQL s využitím open source nástrojů a platformy podle vašeho výběru. Naučte se používat Azure Database for MySQL prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
 sections:
-  - title: Zprovoznění během 5 minut
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Naučte se vytvářet databáze MySQL v Azure s použitím:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Naučte se vytvářet databáze MySQL v Azure s použitím:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
-  - title: Podrobné kurzy
+    - image:
+        src: /azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-portal
+    - image:
+        src: /azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/mysql/quickstart-create-mysql-server-database-using-azure-cli
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se navrhovat databáze a vyvíjet aplikace:'
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'Naučte se navrhovat databáze a vyvíjet aplikace:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Návrh databáze&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Web Azure Portal</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>'
-          - html: 'Vytvoření webové aplikace&#58; <a href="https://portal.azure.com/#create/hub">Wordpress – Portal</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP – Azure CLI</a>'
-  - title: Referenční informace
+    - html: Návrh databáze&#58; <a href="/azure/mysql/tutorial-design-database-using-portal">Web Azure Portal</a> | <a href="/azure/mysql/tutorial-design-database-using-cli">Azure CLI</a>
+    - html: Vytvoření webové aplikace&#58; <a href="https://portal.azure.com/#create/hub">Wordpress – Portal</a> | <a href="../app-service-web/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json">PHP – Azure CLI</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Příkazový řádek
-            html: <p><a href="/cli/azure/mysql">Azure CLI</a></p>
+    - title: Příkazový řádek
+      html: <p><a href="/cli/azure/mysql">Azure CLI</a></p>

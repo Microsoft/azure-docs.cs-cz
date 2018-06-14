@@ -1,11 +1,11 @@
 ---
-title: "Řada SKU není k dispozici | Microsoft Docs"
-description: "Některé řada SKU nejsou k dispozici pro vybrané předplatné pro tuto oblast."
+title: Řada SKU není k dispozici | Microsoft Docs
+description: Některé řada SKU nejsou k dispozici pro vybrané předplatné pro tuto oblast.
 services: Azure Supportability
-documentationcenter: 
+documentationcenter: ''
 author: stevendotwang
 manager: rajatk
-editor: 
+editor: ''
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24870574"
 ---
 # <a name="region-or-sku-unavailable"></a>Oblast nebo SKU, které jsou k dispozici
 Tento článek popisuje, jak k vyřešení problému předplatné Azure, které nemají přístup k oblasti nebo SKU virtuálních počítačů.

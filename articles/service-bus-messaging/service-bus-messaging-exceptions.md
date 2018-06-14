@@ -1,11 +1,11 @@
 ---
-title: "Výjimky pro zasílání zpráv Azure Service Bus | Microsoft Docs"
-description: "Seznam výjimky zasílání zpráv Service Bus a doporučované akce."
+title: Výjimky pro zasílání zpráv Azure Service Bus | Microsoft Docs
+description: Seznam výjimky zasílání zpráv Service Bus a doporučované akce.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28930146"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Výjimky zasílání zpráv Service Bus
 V tomto článku jsou uvedené některé výjimky generované zasílání zpráv na úrovni rozhraní API Microsoft Azure Service Bus. Tento odkaz se může změnit, tak to zkuste znovu aktualizací.

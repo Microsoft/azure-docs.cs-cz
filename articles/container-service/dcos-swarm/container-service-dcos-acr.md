@@ -1,6 +1,6 @@
 ---
-title: "Použití služby ACR s clusterem Azure DC/OS"
-description: "Použití služby Azure Container Registry s clusterem DC/OS ve službě Azure Container Service"
+title: Použití služby ACR s clusterem Azure DC/OS
+description: Použití služby Azure Container Registry s clusterem DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28922888"
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Použití služby ACR s clusterem DC/OS k nasazení aplikace
 

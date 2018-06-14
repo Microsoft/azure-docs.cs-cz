@@ -1,6 +1,6 @@
 ---
-title: "Komunikace zabezpečení – nástroj Microsoft Threat modelování – Azure | Microsoft Docs"
-description: "způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb"
+title: Komunikace zabezpečení – nástroj Microsoft Threat modelování – Azure | Microsoft Docs
+description: způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019479"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Zabezpečení rámce: Zabezpečení komunikace | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |

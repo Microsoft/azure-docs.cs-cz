@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace trvalosti dat pro mezipaměť Azure Redis Cache Premium"
-description: "Zjistěte, jak konfigurovat a spravovat vaše instance Azure Redis Cache Premium vrstvu trvalosti dat"
+title: Postup konfigurace trvalosti dat pro mezipaměť Azure Redis Cache Premium
+description: Zjistěte, jak konfigurovat a spravovat vaše instance Azure Redis Cache Premium vrstvu trvalosti dat
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910840"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Postup konfigurace trvalosti dat pro mezipaměť Azure Redis Cache Premium
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce, včetně funkce úrovně Premium, jako je clustering, trvalosti a podpory služby virtual network. Tento článek popisuje postup konfigurace trvalosti v instanci služby Azure Redis Cache premium.

@@ -1,12 +1,12 @@
 ---
-title: "Změna cesty objektu blob z výchozího | Microsoft Docs"
-description: "Zjistěte, jak nastavit Azure funkce přejmenování cestu k objektu blob souboru"
+title: Změna cesty objektu blob z výchozího | Microsoft Docs
+description: Zjistěte, jak nastavit Azure funkce přejmenování cestu k objektu blob souboru
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862396"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Změňte cestu k objektu blob z výchozí cestu
 

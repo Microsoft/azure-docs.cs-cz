@@ -1,9 +1,9 @@
 ---
-title: "Nastavit dvoustupňové ověřování pro pracovní nebo školní účet | Microsoft Docs"
-description: "Pokud vaše společnost konfiguruje Azure Multi-Factor Authentication, zobrazí se výzva k zaregistrovat pro dvoustupňové ověření. Zjistěte, jak ho nastavit. "
+title: Nastavit dvoustupňové ověřování pro pracovní nebo školní účet | Microsoft Docs
+description: 'Pokud vaše společnost konfiguruje Azure Multi-Factor Authentication, zobrazí se výzva k zaregistrovat pro dvoustupňové ověření. Zjistěte, jak ho nastavit. '
 services: multi-factor-authentication
-keywords: "jak používat azure, active directory v cloudu, služby active directory kurzu"
-documentationcenter: 
+keywords: jak používat azure, active directory v cloudu, služby active directory kurzu
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28201251"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Nastavit účtu pro dvoustupňové ověření
 Dvoustupňové ověření je na další bezpečnostní krok, který pomáhá chránit váš účet tak, že těžší jiní proniknout. Pokud přečtení tohoto článku pravděpodobně tu e-mailu ze svého pracovního nebo školního správce o službě Multi-Factor Authentication. Nebo možná pokusili přihlásit a zobrazí chybové hlášení výzvou k nastavení dalšího ověření zabezpečení. Pokud je to tento případ **nemůžete se přihlásit před dokončením procesu automatické registrace**.

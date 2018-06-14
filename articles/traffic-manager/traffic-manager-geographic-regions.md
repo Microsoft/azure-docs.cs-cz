@@ -1,12 +1,12 @@
 ---
-title: "Země nebo oblast hierarchii používá Azure Traffic Manager geografické typ směrování | Microsoft Docs"
-description: "Tento článek obsahuje seznam země nebo oblast hierarchii používá Azure Traffic Manager geografické typ směrování"
+title: Země nebo oblast hierarchii používá Azure Traffic Manager geografické typ směrování | Microsoft Docs
+description: Tento článek obsahuje seznam země nebo oblast hierarchii používá Azure Traffic Manager geografické typ směrování
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28201492"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Pomocí Azure Traffic Manager používá pro metodu směrování provozu geografické hierarchie země nebo oblast
 

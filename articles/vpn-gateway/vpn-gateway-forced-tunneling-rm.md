@@ -1,11 +1,11 @@
 ---
-title: "Nakonfigurujte vynucené tunelování pro připojení Azure Site-to-Site: Resource Manager | Microsoft Docs"
-description: "Postup přesměrování nebo \"Vynutit\" veškerý provoz vázaný na Internet na vaše místní umístění."
+title: 'Nakonfigurujte vynucené tunelování pro připojení Azure Site-to-Site: Resource Manager | Microsoft Docs'
+description: Postup přesměrování nebo "Vynutit" veškerý provoz vázaný na Internet na vaše místní umístění.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: cbe58db8-b598-4c9f-ac88-62c865eb8721
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984137"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manageru
 
