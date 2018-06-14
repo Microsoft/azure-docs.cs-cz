@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "29378152"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Referenční model dat šablony Azure API Management
 Toto téma popisuje reprezentace entitu a typ pro běžné položky použít v modelech dat pro vývojáře šablony portálu v Azure API Management.  

@@ -1,12 +1,12 @@
 ---
-title: "Poznámky k verzi zařízení StorSimple 8000 řady aktualizací 5 | Microsoft Docs"
-description: "Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizací 5."
+title: Poznámky k verzi zařízení StorSimple 8000 řady aktualizací 5 | Microsoft Docs
+description: Popisuje nové funkce, problémy a řešení pro zařízení StorSimple 8000 řady aktualizací 5.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518915"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Poznámky k verzi zařízení StorSimple 8000 řady aktualizací 5
 

@@ -1,5 +1,5 @@
 ---
-title: "Integrované zabezpečení do Azure architektury návrhů | Microsoft Docs"
+title: Integrované zabezpečení do Azure architektury návrhů | Microsoft Docs
 description: " Tento článek vám pomůže pochopit architektuře aplikace a služby v Azure, aby bylo snazší integrovat do návrh a implementaci zabezpečení. "
 services: security
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/23/2017
+ms.locfileid: "25549415"
 ---
 # <a name="application-architecture-on-azure"></a>Aplikační architektura v Azure
 K zabezpečení vašich cloudových řešení v Microsoft Azure, silné architektury foundation je velmi důležité. Architekti, Designer a implementátory informačních technologií využívat silné znalostní báze architektury aplikací a služeb. Tyto základní znalosti pomáhá seznámení s komponentami cloudového řešení a usnadňují integraci zabezpečení do všech aspektů návrhu a implementace.

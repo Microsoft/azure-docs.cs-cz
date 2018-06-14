@@ -1,8 +1,8 @@
 ---
-title: "Monitorování webové aplikace v ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu"
-description: "Pokyny pro rychlé nastavení webové aplikace v ASP.NET pro monitorování s využitím Application Insights"
+title: Monitorování webové aplikace v ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Pokyny pro rychlé nastavení webové aplikace v ASP.NET pro monitorování s využitím Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/14/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23947673"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Zahájení monitorování webové aplikace v ASP.NET
 

@@ -1,7 +1,7 @@
 ---
-title: "Vytvoření clusteru s podporou virtuálních počítačů s Terraform a kompatibilního hardwaru"
-description: "Použití Terraform a jazyk kompatibilního (HashiCorp konfigurace hardwaru), chcete-li vytvořit virtuální počítač s Linuxem clusteru pro vyrovnávání zatížení v Azure"
-keywords: "terraform, devops, virtuálního počítače, sítě, moduly"
+title: Vytvoření clusteru s podporou virtuálních počítačů s Terraform a kompatibilního hardwaru
+description: Použití Terraform a jazyk kompatibilního (HashiCorp konfigurace hardwaru), chcete-li vytvořit virtuální počítač s Linuxem clusteru pro vyrovnávání zatížení v Azure
+keywords: terraform, devops, virtuálního počítače, sítě, moduly
 author: tomarcher
 manager: routlaw
 ms.service: virtual-machines-linux
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/13/2017
+ms.locfileid: "24518796"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru s podporou virtuálních počítačů s Terraform a kompatibilního hardwaru
 

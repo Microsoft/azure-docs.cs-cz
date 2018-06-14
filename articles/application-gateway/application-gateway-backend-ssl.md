@@ -1,6 +1,6 @@
 ---
-title: "Povolení koncového šifrování protokolu SSL ve službě Azure Application Gateway | Dokumentace Microsoftu"
-description: "Tato stránka poskytuje přehled podpory koncového šifrování protokolu SSL ve službě Application Gateway."
+title: Povolení koncového šifrování protokolu SSL ve službě Azure Application Gateway | Dokumentace Microsoftu
+description: Tato stránka poskytuje přehled podpory koncového šifrování protokolu SSL ve službě Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704706"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Přehled koncového šifrování protokolu SSL pomocí služby Application Gateway
 
