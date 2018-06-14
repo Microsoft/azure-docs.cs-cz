@@ -1,11 +1,11 @@
 ---
-title: "K odeslání | Microsoft Azure"
-description: "K odeslání"
+title: K odeslání | Microsoft Azure
+description: K odeslání
 services: azure supportability
-documentationcenter: 
+documentationcenter: ''
 author: czeumault
 manager: carolz
-editor: 
+editor: ''
 tags: billing
 ms.assetid: db07d696-4c3d-415c-8977-a226c58e25c0
 ms.service: azure-supportability
@@ -20,5 +20,6 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23067688"
 ---
 # <a name="to-be-submitted"></a>K odeslání

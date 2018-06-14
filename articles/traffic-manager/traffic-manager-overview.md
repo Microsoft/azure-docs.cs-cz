@@ -1,11 +1,11 @@
 ---
 title: Co je Traffic Manageru | Microsoft Docs
-description: "Tento článek vám pomůže pochopit, co je Traffic Manager, a zda je volba správné provoz směrování pro vaši aplikaci"
+description: Tento článek vám pomůže pochopit, co je Traffic Manager, a zda je volba správné provoz směrování pro vaši aplikaci
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877052"
 ---
 # <a name="overview-of-traffic-manager"></a>Přehled Traffic Manageru
 

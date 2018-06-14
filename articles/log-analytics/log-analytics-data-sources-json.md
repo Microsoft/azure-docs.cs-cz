@@ -1,8 +1,8 @@
 ---
-title: "Shromažďování vlastní data JSON v OMS Log Analytics | Microsoft Docs"
-description: "Vlastní zdroje dat JSON je možné sbírat do analýzy protokolů pro Linux pomocí agenta OMS.  Tyto zdroje dat vlastní může být jednoduché skripty vrácení JSON například curl nebo jeden z FluentD na 300 + modulů plug-in. Tento článek popisuje konfigurace požadované pro tuto kolekci data."
+title: Shromažďování vlastní data JSON v OMS Log Analytics | Microsoft Docs
+description: Vlastní zdroje dat JSON je možné sbírat do analýzy protokolů pro Linux pomocí agenta OMS.  Tyto zdroje dat vlastní může být jednoduché skripty vrácení JSON například curl nebo jeden z FluentD na 300 + modulů plug-in. Tento článek popisuje konfigurace požadované pro tuto kolekci data.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855219"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Shromažďování vlastní zdroje dat JSON s agentem OMS pro Linux v analýzy protokolů
 Vlastní zdroje dat JSON je možné sbírat do analýzy protokolů pro Linux pomocí agenta OMS.  Tyto zdroje dat vlastní může být jednoduché skripty, jako vrácení JSON [curl](https://curl.haxx.se/) nebo jeden z [FluentD na 300 + modulů plug-in](http://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.

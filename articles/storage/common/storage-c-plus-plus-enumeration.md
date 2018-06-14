@@ -1,6 +1,6 @@
 ---
-title: "Seznam prostředků úložiště Azure s knihovnou klienta úložiště pro jazyk C++ | Microsoft Docs"
-description: "Naučte se používat rozhraní API seznamu v Microsoft Azure Klientská knihovna pro úložiště pro jazyk C++ výčet kontejnerů, objektů BLOB, fronty, tabulky a entity."
+title: Seznam prostředků úložiště Azure s knihovnou klienta úložiště pro jazyk C++ | Microsoft Docs
+description: Naučte se používat rozhraní API seznamu v Microsoft Azure Klientská knihovna pro úložiště pro jazyk C++ výčet kontejnerů, objektů BLOB, fronty, tabulky a entity.
 documentationcenter: .net
 services: storage
 author: dineshmurthy
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873867"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Seznam prostředků úložiště Azure v jazyce C++
 Seznam operací jsou klíčem k mnoha vývojové scénáře s Azure Storage. Tento článek popisuje postup nejvíce efektivně zobrazení výčtu objektů ve službě Azure Storage pomocí rozhraní API, které jsou součástí Klientská knihovna pro úložiště Microsoft Azure pro jazyk C++ výpis.

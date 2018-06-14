@@ -1,11 +1,11 @@
 ---
-title: "Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager | Dokumentace Microsoftu"
-description: "Tato stránka obsahuje přehled toho, co potřebujete vědět o přemostění modelů nasazení Classic a Resource Manager."
+title: Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager | Dokumentace Microsoftu
+description: Tato stránka obsahuje přehled toho, co potřebujete vědět o přemostění modelů nasazení Classic a Resource Manager.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22710061"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager
 Tento článek obsahuje přehled toho, co znamená přesun okruhu Azure ExpressRoute z modelu nasazení Classic do Azure Resource Manager.

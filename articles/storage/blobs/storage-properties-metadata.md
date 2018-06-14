@@ -1,8 +1,8 @@
 ---
-title: "Nastavit a načíst vlastnosti objektu a metadata ve službě Azure Storage | Microsoft Docs"
-description: "Ukládat vlastní metadata pro objekty v Azure Storage a nastavit a načíst vlastnosti systému."
+title: Nastavit a načíst vlastnosti objektu a metadata ve službě Azure Storage | Microsoft Docs
+description: Ukládat vlastní metadata pro objekty v Azure Storage a nastavit a načíst vlastnosti systému.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873027"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Nastavení a načtení vlastností a metadat
 

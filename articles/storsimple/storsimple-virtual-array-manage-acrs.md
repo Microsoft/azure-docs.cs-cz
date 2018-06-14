@@ -1,11 +1,11 @@
 ---
-title: "Spravovat záznamy řízení přístupu pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak spravovat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v poli virtuální zařízení StorSimple."
+title: Spravovat záznamy řízení přístupu pro pole virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje, jak spravovat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v poli virtuální zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875939"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple Spravovat záznamy řízení přístupu pro pole virtuální zařízení StorSimple
 

@@ -1,11 +1,11 @@
 ---
-title: "Geograficky distribuované škálování v prostředí App Service Environments"
-description: "Zjistěte, jak vodorovně škálování aplikace pomocí Traffic Manageru a prostředí App Service geo rozdělení."
+title: Geograficky distribuované škálování v prostředí App Service Environments
+description: Zjistěte, jak vodorovně škálování aplikace pomocí Traffic Manageru a prostředí App Service geo rozdělení.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836830"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geograficky distribuované škálování v prostředí App Service Environments
 ## <a name="overview"></a>Přehled
