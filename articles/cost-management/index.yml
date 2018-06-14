@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace k řešení Azure Cost Management"
+title: Dokumentace k řešení Azure Cost Management
 metadata:
-  title: "Dokumentace ke správě nákladů – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Azure Cost Management je multicloudové řešení správy nákladů, které pomáhá využívat Azure a další cloudové prostředky. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady."
+  title: Dokumentace ke správě nákladů – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Azure Cost Management je multicloudové řešení správy nákladů, které pomáhá využívat Azure a další cloudové prostředky. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady.
   services: cost-management
   author: bandersmsft
   manager: carmonm
@@ -18,29 +18,30 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 03/16/2018
+  ms.locfileid: "29935328"
 abstract:
-  description: "Multicloudové řešení správy nákladů Azure Cost Management, které licencuje pobočka Microsoftu Cloudyn, pomáhá co nejlépe využívat a spravovat Azure a další cloudové prostředky. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady."
+  description: Multicloudové řešení správy nákladů Azure Cost Management, které licencuje pobočka Microsoftu Cloudyn, pomáhá co nejlépe využívat a spravovat Azure a další cloudové prostředky. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se, jak zaregistrovat informace o předplatném nebo smlouvě Azure s využitím Cost Managementu a začněte sledovat informace o cenách."
+    text: Naučte se, jak zaregistrovat informace o předplatném nebo smlouvě Azure s využitím Cost Managementu a začněte sledovat informace o cenách.
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: "Zobrazit informace o cenách"
+      text: Zobrazit informace o cenách
       href: quick-register-azure-sub
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady pomocí Cost Managementu."
+    text: Naučte se kontrolovat využití a náklady, aktivně spravovat náklady, odhadovat útratu a optimalizovat náklady pomocí Cost Managementu.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"tutorial-review-usage\">Kontrola využití a nákladů a rozpoznávání anomálií a efektivity</a>"
-    - html: "<a href=\"tutorial-forecast-spending\">Odhad budoucích výdajů</a>"
-    - html: "<a href=\"tutorial-manage-costs\">Správa nákladů s přidělováním nákladů a sestavami metod showback a chargeback</a>"
-    - html: "<a href=\"tutorial-optimize-reserved-instances\">Optimalizace rezervovaných instancí</a>"
-    - html: "<a href=\"tutorial-user-access\">Přiřazení přístupu k datům Cost Managementu</a>"
+    - html: <a href="tutorial-review-usage">Kontrola využití a nákladů a rozpoznávání anomálií a efektivity</a>
+    - html: <a href="tutorial-forecast-spending">Odhad budoucích výdajů</a>
+    - html: <a href="tutorial-manage-costs">Správa nákladů s přidělováním nákladů a sestavami metod showback a chargeback</a>
+    - html: <a href="tutorial-optimize-reserved-instances">Optimalizace rezervovaných instancí</a>
+    - html: <a href="tutorial-user-access">Přiřazení přístupu k datům Cost Managementu</a>

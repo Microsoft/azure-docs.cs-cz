@@ -1,12 +1,12 @@
 ---
-title: "Řešení potíží s převzetí služeb při selhání do Azure selhání | Microsoft Docs"
-description: "Tento článek popisuje způsoby řešení běžných chyb v převzetí služeb při selhání do Azure"
+title: Řešení potíží s převzetí služeb při selhání do Azure selhání | Microsoft Docs
+description: Tento článek popisuje způsoby řešení běžných chyb v převzetí služeb při selhání do Azure
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29874355"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při přebírání služeb při selhání virtuálního počítače do Azure
 Zobrazí jednu z těchto chyb při provádění převzetí služeb při selhání virtuálního počítače do Azure. K odstraňování, použijte popisuje kroky pro všechny chybové stavy.

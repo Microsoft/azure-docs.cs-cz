@@ -1,18 +1,18 @@
 ---
-title: "Vytvoření funkce Azure, která se připojuje ke službě Azure Storage | Microsoft Docs"
-description: "Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se připojuje ke službě Azure Storage"
+title: Vytvoření funkce Azure, která se připojuje ke službě Azure Storage | Microsoft Docs
+description: Ukázkový skript Azure CLI – Vytvoření funkce Azure, která se připojuje ke službě Azure Storage
 services: functions
 documentationcenter: functions
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 tags: functions
-ms.assetid: 
+ms.assetid: ''
 ms.service: functions
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29843574"
 ---
 # <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Vytvoření aplikace funkcí, která se připojuje k účtu služby Azure Storage
 

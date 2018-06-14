@@ -1,12 +1,12 @@
 ---
-title: "Získat předem schválené prostřednictvím programu Microsoft Azure certifikované | Microsoft Docs"
-description: "Další informace o programu partnera Microsoft Azure Certified a jak získat prodej bitovou kopii virtuálního počítače, šablony řešení, vývojáře služby nebo dat služby v Azure Marketplace"
+title: Získat předem schválené prostřednictvím programu Microsoft Azure certifikované | Microsoft Docs
+description: Další informace o programu partnera Microsoft Azure Certified a jak získat prodej bitovou kopii virtuálního počítače, šablony řešení, vývojáře služby nebo dat služby v Azure Marketplace
 services: marketplace-publishing
 documentationcenter: na
 author: msmbaldwin
 manager: mbaldwin
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 7e9ebf17-07a1-4796-921f-d1d62046892d
 ms.service: marketplace
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29939004"
 ---
 # <a name="get-pre-approved-via-the-microsoft-azure-certified-program"></a>Získat předem schválené prostřednictvím programu Microsoft Azure Certified
 Tento článek obsahuje pokyny k certifikaci Microsoft Azure, aby mohli publikovat řešení do Azure Marketplace a kvalifikaci pro marketing výhody. Podrobný přehled o programu Microsoft Azure Certified a jeho výhody, najdete v článku [ http://azure.com/certified ](http://azure.com/certified).

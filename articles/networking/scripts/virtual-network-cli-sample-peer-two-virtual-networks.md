@@ -1,17 +1,17 @@
 ---
-title: "Ukázka skriptu Azure CLI - sdílené dvě virtuální sítě | Microsoft Docs"
-description: "Ukázka skriptu Azure CLI - sdílené dvě virtuální sítě"
+title: Ukázka skriptu Azure CLI - sdílené dvě virtuální sítě | Microsoft Docs
+description: Ukázka skriptu Azure CLI - sdílené dvě virtuální sítě
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
 manager: timlt
 editor: tysonn
-tags: 
-ms.assetid: 
+tags: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852366"
 ---
 # <a name="peer-two-virtual-networks"></a>Peer dvě virtuální sítě
 

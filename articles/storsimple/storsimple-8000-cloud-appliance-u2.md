@@ -1,12 +1,12 @@
 ---
-title: "StorSimple Cloud Appliance s aktualizací Update 3| Dokumentace Microsoftu"
-description: "Naučte se vytvářet, nasazovat a spravovat řešení StorSimple Cloud Appliance ve virtuální síti Microsoft Azure. (Platí pro StorSimple s aktualizací Update 3 a novější)."
+title: StorSimple Cloud Appliance s aktualizací Update 3| Dokumentace Microsoftu
+description: Naučte se vytvářet, nasazovat a spravovat řešení StorSimple Cloud Appliance ve virtuální síti Microsoft Azure. (Platí pro StorSimple s aktualizací Update 3 a novější).
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852332"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
 

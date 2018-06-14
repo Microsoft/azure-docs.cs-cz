@@ -1,11 +1,11 @@
 ---
-title: "Propojení virtuální sítě k okruhu ExpressRoute: prostředí PowerShell: Azure | Microsoft Docs"
-description: "Tento dokument obsahuje přehled o tom, jak propojit virtuální sítě (virtuální sítě) pro okruhy ExpressRoute pomocí modelu nasazení Resource Manager a prostředí PowerShell."
+title: 'Propojení virtuální sítě k okruhu ExpressRoute: prostředí PowerShell: Azure | Microsoft Docs'
+description: Tento dokument obsahuje přehled o tom, jak propojit virtuální sítě (virtuální sítě) pro okruhy ExpressRoute pomocí modelu nasazení Resource Manager a prostředí PowerShell.
 services: expressroute
 documentationcenter: na
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: daacb6e5-705a-456f-9a03-c4fc3f8c1f7e
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877547"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Připojit virtuální sítě k okruhu ExpressRoute
 > [!div class="op_single_selector"]

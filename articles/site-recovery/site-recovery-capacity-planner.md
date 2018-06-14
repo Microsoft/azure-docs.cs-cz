@@ -1,11 +1,11 @@
 ---
 title: Odhad replikace kapacity v Azure | Microsoft Docs
-description: "Použijte tento článek k zjištění přibližné hodnoty kapacity při replikaci pomocí Azure Site Recovery"
+description: Použijte tento článek k zjištění přibližné hodnoty kapacity při replikaci pomocí Azure Site Recovery
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875901"
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Plánování kapacity pro ochranu virtuálních počítačů Hyper-V pomocí Site Recovery
 

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření snímku jen pro čtení objektu blob ve službě Azure Storage | Microsoft Docs"
-description: "Naučte se vytvořit snímek objektů blob k zálohování dat objektů blob v daném okamžiku v čase. Pochopit, jak se účtují snímky a jak pomocí nich můžete minimalizovat náklady na kapacitu."
+title: Vytvoření snímku jen pro čtení objektu blob ve službě Azure Storage | Microsoft Docs
+description: Naučte se vytvořit snímek objektů blob k zálohování dat objektů blob v daném okamžiku v čase. Pochopit, jak se účtují snímky a jak pomocí nich můžete minimalizovat náklady na kapacitu.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852927"
 ---
 # <a name="create-a-blob-snapshot"></a>Vytvoření snímku objektu blob
 

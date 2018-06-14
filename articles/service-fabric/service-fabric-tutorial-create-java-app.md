@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949884"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro Javu a stavovou back-end službou
 Tento kurz je první částí série. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v Javě, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Tato série kurzů vyžaduje funkční vývojový počítač se systémem Mac OSX nebo Linuxem. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód dokončené aplikace](https://github.com/Azure-Samples/service-fabric-java-quickstart) a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application).
