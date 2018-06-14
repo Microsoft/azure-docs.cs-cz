@@ -1,11 +1,11 @@
 ---
-title: "Dokumentace ke službě Azure BizTalk Services – kurzy | Dokumentace Microsoftu"
-description: "Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikových aplikací pro SAP, Oracle EBS, SQL Server a PeopleSoft spouštěných místně i v cloudu."
+title: Dokumentace ke službě Azure BizTalk Services – kurzy | Dokumentace Microsoftu
+description: Podívejte se, jak jde pomocí BizTalk Services poskytovat integraci podnikových aplikací pro SAP, Oracle EBS, SQL Server a PeopleSoft spouštěných místně i v cloudu.
 services: biztalk-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: biztalk-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26625092"
 ---
 # <a name="biztalk-services-documentation"></a>Dokumentace ke službě BizTalk Services
 

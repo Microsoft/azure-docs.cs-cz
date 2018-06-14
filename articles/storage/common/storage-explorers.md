@@ -1,8 +1,8 @@
 ---
-title: "Nástroje pro práci s Azure Storage | Microsoft Docs"
-description: "Seznam nástrojů, které vám umožní zobrazit nebo práci s daty Azure Storage."
+title: Nástroje pro práci s Azure Storage | Microsoft Docs
+description: Seznam nástrojů, které vám umožní zobrazit nebo práci s daty Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: dineshmurthy
 manager: jahogg
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/21/2017
+ms.locfileid: "23933386"
 ---
 # <a name="azure-storage-client-tools"></a>Klientské nástroje pro Azure Storage
 Uživatelé Azure Storage se často chtějí mít možnost k zobrazení nebo interakci s jejich daty pomocí klienta nástroje Azure Storage. V následujících tabulkách jsme seznam několik nástrojů, které vám umožní to. Můžeme uvést "X" v každém bloku pokud poskytuje možnost vytvořit výčet nebo přístup k abstrakci data. V tabulce také ukazuje, zda je volné nástroje, či nikoliv. "Zkušební verze" znamená, že je bezplatná zkušební verze, ale kompletní produkt není volné. "Y/N" označuje, že verze je k dispozici zdarma, zatímco jiné verze je možné zakoupit.

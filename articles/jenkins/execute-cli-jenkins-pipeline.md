@@ -1,12 +1,12 @@
 ---
-title: "Spuštění rozhraní Azure CLI s volaných | Microsoft Docs"
-description: "Naučte se používat rozhraní příkazového řádku Azure k nasazení webové aplikace v jazyce Java do Azure v volaných kanálu"
+title: Spuštění rozhraní Azure CLI s volaných | Microsoft Docs
+description: Naučte se používat rozhraní příkazového řádku Azure k nasazení webové aplikace v jazyce Java do Azure v volaných kanálu
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: jenkins
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28926926"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Nasazení do Azure App Service pomocí volaných a rozhraní příkazového řádku Azure CLI
 Chcete-li nasadit webovou aplikaci Java do Azure, můžete použít rozhraní příkazového řádku Azure v [volaných kanálu](https://jenkins.io/doc/book/pipeline/). V tomto kurzu vytvoříte kanál CI/CD na virtuálním počítači Azure a také se naučíte:

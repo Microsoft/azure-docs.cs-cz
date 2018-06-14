@@ -1,12 +1,12 @@
 ---
-title: "Použití Azure Automation Runbook ke správě zařízení StorSimple | Microsoft Docs"
-description: "Naučte se používat Azure Automation Runbook k automatizaci úloh StorSimple"
+title: Použití Azure Automation Runbook ke správě zařízení StorSimple | Microsoft Docs
+description: Naučte se používat Azure Automation Runbook k automatizaci úloh StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/24/2017
+ms.locfileid: "23934828"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Používat Azure Automation. runbooky ke správě zařízení StorSimple
 

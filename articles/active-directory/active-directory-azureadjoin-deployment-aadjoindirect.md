@@ -1,11 +1,11 @@
 ---
-title: "Scénáře využití a aspekty nasazení pro připojení ke službě Azure AD | Microsoft Docs"
-description: "Vysvětluje, jak mohou správci nastavit službu Azure AD Join pro své koncové uživatele (zaměstnanci, studenty, ostatní uživatelé). Popisuje také různé reálných scénářů pro použití připojení ke službě Azure AD."
+title: Scénáře využití a aspekty nasazení pro připojení ke službě Azure AD | Microsoft Docs
+description: Vysvětluje, jak mohou správci nastavit službu Azure AD Join pro své koncové uživatele (zaměstnanci, studenty, ostatní uživatelé). Popisuje také různé reálných scénářů pro použití připojení ke službě Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: femila
 manager: mtillman
-editor: 
+editor: ''
 tags: azure-classic-portal
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
 ms.service: active-directory
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26602428"
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Scénáře využití a aspekty nasazení pro Azure AD Join
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Scénáře použití pro připojení ke službě Azure AD

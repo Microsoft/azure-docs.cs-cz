@@ -1,9 +1,9 @@
 ---
-title: "Nastavení MDM a zásad skupiny | Microsoft Docs"
-description: "Poskytuje informace o zásadách skupiny a mobilních zařízení nastavení správy (MDM), které se mají použít na zařízeních vlastněných společností. Tyto zásady platí pro uživatele zařízení."
+title: Nastavení MDM a zásad skupiny | Microsoft Docs
+description: Poskytuje informace o zásadách skupiny a mobilních zařízení nastavení správy (MDM), které se mají použít na zařízeních vlastněných společností. Tyto zásady platí pro uživatele zařízení.
 services: active-directory
-keywords: "Co jsou zásady skupiny a nastavení MDM Enterprise State Roaming, Enterprise State Roaming, cloudu systému windows"
-documentationcenter: 
+keywords: Co jsou zásady skupiny a nastavení MDM Enterprise State Roaming, Enterprise State Roaming, cloudu systému windows
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614904"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení zásad skupiny a správu mobilních zařízení
 Používejte tyto zásady skupiny a nastavení správy mobilních zařízení jenom na zařízení ve vlastnictví firmy, protože tyto zásady se použijí pro uživatele zařízení. Zásady pro správu mobilních zařízení pro zakázat synchronizaci nastavení pro osobní použití, zařízení ve vlastnictví uživatele bude mít negativní vliv na používání těchto zařízení. Kromě toho by jiné uživatelské účty v zařízení nebude mít vliv také zásady.

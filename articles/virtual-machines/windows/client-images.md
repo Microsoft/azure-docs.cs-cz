@@ -1,11 +1,11 @@
 ---
-title: "Použít Image klientů Windows ve službě Azure | Microsoft Docs"
-description: "Jak používat výhody předplatné sady Visual Studio k nasazení systému Windows 7, Windows 8 nebo Windows 10 v Azure pro scénáře vývoje/testování"
+title: Použít Image klientů Windows ve službě Azure | Microsoft Docs
+description: Jak používat výhody předplatné sady Visual Studio k nasazení systému Windows 7, Windows 8 nebo Windows 10 v Azure pro scénáře vývoje/testování
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103672"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Pomocí klienta systému Windows v Azure pro scénáře vývoje/testování
 Můžete použít systém Windows 7, Windows 8 nebo Windows 10 Enterprise (x64) v Azure pro scénáře vývoje/testování za předpokladu, že máte příslušné předplatné sady Visual Studio (dříve MSDN). Tento článek popisuje požadavky na vhodnost systémem Windows 7, Windows 8.1, Windows 10 Enterprise ve službě Azure a použití na následujících obrázcích v Azure Gallery.

@@ -1,12 +1,12 @@
 ---
-title: "Integrovat mřížky událostí služby Azure Automation | Microsoft Docs"
-description: "Zjistěte, jak se automaticky při vytvoření nového virtuálního počítače přidat značku a odeslat oznámení Teams společnosti Microsoft."
-keywords: "automatizace sady runbook, týmů, události mřížky, virtuálního počítače,"
+title: Integrovat mřížky událostí služby Azure Automation | Microsoft Docs
+description: Zjistěte, jak se automaticky při vytvoření nového virtuálního počítače přidat značku a odeslat oznámení Teams společnosti Microsoft.
+keywords: automatizace sady runbook, týmů, události mřížky, virtuálního počítače,
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: eamonoreilly
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.service: automation
 ms.devlang: na
 ms.topic: tutorial
@@ -16,9 +16,10 @@ ms.date: 12/06/2017
 ms.author: eamono
 ms.openlocfilehash: 9a4d6ecf19fc96a9c7b92cf246effbf3948fb478
 ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26349065"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Integrovat událostí mřížky a týmy pro Microsoft Azure Automation.
 

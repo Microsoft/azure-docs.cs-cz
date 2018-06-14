@@ -1,11 +1,11 @@
 ---
-title: "Dokumentace ke službě Azure Multi-Factor Authentication – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-description: "Naučte se nasazovat vícefaktorové ověřování pomocí široké škály metod ověřování, které poskytují jednoduchý přihlašovací proces. Kurzy, sada SDK a další zdroje informací"
+title: Dokumentace ke službě Azure Multi-Factor Authentication – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+description: Naučte se nasazovat vícefaktorové ověřování pomocí široké škály metod ověřování, které poskytují jednoduchý přihlašovací proces. Kurzy, sada SDK a další zdroje informací
 services: multi-factor-authentication
 author: czeumault
 manager: mtillman
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26630814"
 ---
 # <a name="multi-factor-authentication-documentation"></a>Dokumentace ke službě Multi-factor Authentication
 

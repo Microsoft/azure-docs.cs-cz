@@ -1,12 +1,12 @@
 ---
-title: "Požadavky na systém řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje softwaru, sítě a vysokou dostupnost požadavky a osvědčené postupy pro řešení Microsoft Azure StorSimple."
+title: Požadavky na systém řady StorSimple 8000 | Microsoft Docs
+description: Popisuje softwaru, sítě a vysokou dostupnost požadavky a osvědčené postupy pro řešení Microsoft Azure StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2018
+ms.locfileid: "28011057"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software řady StorSimple 8000, vysokou dostupnost a požadavky na síť
 

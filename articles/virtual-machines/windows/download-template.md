@@ -1,11 +1,11 @@
 ---
-title: "Stáhnout šablonu pro virtuální počítač Azure | Microsoft Docs"
-description: "Stáhněte si templatefor virtuálního počítače můžete k automatizaci nasazení v modelu nasazení Resource Manager"
+title: Stáhnout šablonu pro virtuální počítač Azure | Microsoft Docs
+description: Stáhněte si templatefor virtuálního počítače můžete k automatizaci nasazení v modelu nasazení Resource Manager
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/02/2017
+ms.locfileid: "26055785"
 ---
 # <a name="download-the-template-for-a-vm"></a>Stažení šablony pro virtuální počítač
 Při vytváření virtuálního počítače v Azure pomocí portálu nebo prostředí PowerShell, je pro vás automaticky vytvoří šablonu Resource Manager. Tuto šablonu můžete použít k rychlé duplicitní nasazení. Šablona obsahuje informace o všechny prostředky ve skupině prostředků. Pro virtuální počítač to znamená, že šablona obsahuje všechno, která je vytvořena na podporu virtuálních počítačů v příslušné skupině prostředků, včetně síťových prostředků.
