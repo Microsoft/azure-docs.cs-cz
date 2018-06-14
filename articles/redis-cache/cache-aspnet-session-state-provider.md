@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31518752"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Redis Cache
 Azure Redis Cache poskytuje poskytovatele stavu relace, který můžete použít k uložení vaší relace stavu v paměti s Redis Cache místo databázi systému SQL Server. Pokud chcete používat ukládání do mezipaměti poskytovatele stavu relace, nejdřív nakonfigurovat mezipaměť a pak nakonfigurujte aplikace ASP.NET pro mezipaměť pomocí balíčku Redis Cache relace stavu NuGet.

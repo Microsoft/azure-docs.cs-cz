@@ -1,8 +1,8 @@
 ---
-title: "Možnosti výpočtů Azure - Azure Cloud Services | Microsoft Docs"
-description: "Další informace o Azure výpočetní hostování možnosti a funkce: aplikační služby Azure Cloud Services a virtuálních počítačů"
+title: Možnosti výpočtů Azure - Azure Cloud Services | Microsoft Docs
+description: 'Další informace o Azure výpočetní hostování možnosti a funkce: aplikační služby Azure Cloud Services a virtuálních počítačů'
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120280"
 ---
 # <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Mám zvolit Azure Cloud Services nebo něco jiného?
 Můžete je volba Azure Cloud Services? Azure poskytuje různé hostování modely pro spouštění aplikací. Každé z nich poskytuje jinou sadu služeb. Jeden, který zvolíte, závisí na přesně co se pokoušíte provést.

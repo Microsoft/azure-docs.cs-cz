@@ -1,11 +1,11 @@
 ---
-title: "Trezor klíčů integraci se službou SQL Server na virtuálních počítačích Windows v Azure (klasický) | Microsoft Docs"
-description: "Zjistěte, jak k automatizaci konfigurace systému SQL Server šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak používat Azure Key Vault integrace s SQL serverem v modelu nasazení classic vytvořit virtuální počítače."
+title: Trezor klíčů integraci se službou SQL Server na virtuálních počítačích Windows v Azure (klasický) | Microsoft Docs
+description: Zjistěte, jak k automatizaci konfigurace systému SQL Server šifrování pro použití s Azure Key Vault. Toto téma vysvětluje, jak používat Azure Key Vault integrace s SQL serverem v modelu nasazení classic vytvořit virtuální počítače.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: ab8d41a7-1971-4032-ab71-eb435c455dc1
 ms.service: virtual-machines-sql
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399725"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (klasický)
 > [!div class="op_single_selector"]

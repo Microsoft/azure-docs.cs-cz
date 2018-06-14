@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523519"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Běžné problémy při Stream Analytics a kroky pro řešení potíží
 

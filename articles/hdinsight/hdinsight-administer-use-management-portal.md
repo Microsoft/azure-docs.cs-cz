@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31405360"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop založených na systému Windows v prostředí HDInsight pomocí portálu Azure
 
@@ -82,7 +83,7 @@ Instalace vlastních softwaru v clusteru pomocí připojení ke vzdálené ploš
 
    * Upravit nabídku, klikněte pravým tlačítkem na libovolné místo v nabídce a pak klikněte na tlačítko **přizpůsobit**.
    * **Nastavení** a **všechna nastavení**: zobrazí **nastavení** okno pro cluster, který umožňuje zobrazit podrobné informace o konfiguraci pro cluster.
-   * **Řídicí panel**, **řídicí panel clusteru** a **adresy URL: Toto jsou všechny způsoby, jak přístup k řídicímu panelu clusteru, který je Ambari Web pro clustery se systémem Linux. -**Zabezpečené prostředí **: Zobrazí pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH).
+   * **Řídicí panel**, **řídicí panel clusteru** a **adresy URL: Toto jsou všechny způsoby, jak přístup k řídicímu panelu clusteru, který je Ambari Web pro clustery se systémem Linux. -** Zabezpečené prostředí **: Zobrazí pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH).
    * **Škálování clusteru**: umožňuje změnit počet uzlů pracovního procesu pro tento cluster.
    * **Odstranit**: Odstraní clusteru.
    * **Rychlý Start**: Zobrazí informace, které vám pomohou začněte používat HDInsight.
