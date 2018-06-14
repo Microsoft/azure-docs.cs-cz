@@ -1,11 +1,11 @@
 ---
-title: "Přehled Azure verze modulu runtime funkce"
-description: "Azure Functions podporuje více verzí modulu runtime. Přečtěte si rozdíly mezi nimi a jak zvolit ten, který je pro vás nejvhodnější."
+title: Přehled Azure verze modulu runtime funkce
+description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si rozdíly mezi nimi a jak zvolit ten, který je pro vás nejvhodnější.
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919351"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Přehled Azure verze modulu runtime funkce
 

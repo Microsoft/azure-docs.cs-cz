@@ -1,12 +1,12 @@
 ---
-title: "Pro spuštění úlohy StorSimple Data Manager použijte Azure Automation | Microsoft Docs"
-description: "Naučte se používat Azure Automation pro spuštění úlohy Data Manager zařízení StorSimple"
+title: Pro spuštění úlohy StorSimple Data Manager použijte Azure Automation | Microsoft Docs
+description: Naučte se používat Azure Automation pro spuštění úlohy Data Manager zařízení StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862192"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Použít k aktivaci úlohy automatizace Azure.
 

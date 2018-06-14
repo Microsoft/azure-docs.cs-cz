@@ -1,5 +1,5 @@
 ---
-ms.assetid: 
+ms.assetid: ''
 title: Azure Key Vault architektury security World | Microsoft Docs
 ms.service: key-vault
 author: lleonard-msft
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27928096"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault architektury security World a geografické hranice.
 

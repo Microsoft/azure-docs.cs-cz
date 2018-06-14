@@ -1,11 +1,11 @@
 ---
-title: "Import a Export dat ve službě Azure Redis Cache | Microsoft Docs"
-description: "Postup importu a exportu dat do a z úložiště objektů blob s vaší instancí Azure Redis Cache premium"
+title: Import a Export dat ve službě Azure Redis Cache | Microsoft Docs
+description: Postup importu a exportu dat do a z úložiště objektů blob s vaší instancí Azure Redis Cache premium
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 4a68ac38-87af-4075-adab-569d37d7cc9e
 ms.service: cache
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27910083"
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Import a Export dat ve službě Azure Redis Cache
 Import a Export je operace Azure Redis Cache dat správy, který umožňuje importovat data do Azure Redis Cache nebo exportovat data z Azure Redis Cache pomocí import a Export snímku databáze Redis Cache (RDB) z mezipaměti premium do objektu blob v Azure Účet úložiště. 

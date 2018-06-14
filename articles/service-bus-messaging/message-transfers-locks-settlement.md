@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus zprávu přenosy, zámků a vyrovnání | Microsoft Docs"
-description: "Přehled přenosu zpráv Service Bus a vyrovnání operací"
+title: Azure Service Bus zprávu přenosy, zámků a vyrovnání | Microsoft Docs
+description: Přehled přenosu zpráv Service Bus a vyrovnání operací
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28199028"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Přenosy, zámky a vyrovnání zpráv
 

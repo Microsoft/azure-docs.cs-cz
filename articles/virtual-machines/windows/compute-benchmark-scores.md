@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424688"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Výpočetní srovnávacího testu skóre pro virtuální počítače Windows
 Následující skóre srovnávacího testu SPECInt zobrazit výpočetní výkon pro Azure a vysoce výkonných virtuálních počítačů řazení systémem Windows Server. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuální počítače s Linuxem](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 

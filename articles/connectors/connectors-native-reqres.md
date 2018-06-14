@@ -1,11 +1,11 @@
 ---
-title: "Použít požadavek a odpověď akce | Microsoft Docs"
-description: "Přehled žádostí a odpovědí aktivační události a akce v aplikaci Azure logiky"
-services: 
-documentationcenter: 
+title: Použít požadavek a odpověď akce | Microsoft Docs
+description: Přehled žádostí a odpovědí aktivační události a akce v aplikaci Azure logiky
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27960557"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Začínáme s komponentami žádosti a odpovědi
 S žádostí a odpovědí komponenty aplikace logiky můžete v reálném čase reakce na události.

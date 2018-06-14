@@ -1,7 +1,7 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault - použití konfigurace soft odstranění pomocí prostředí PowerShell"
-description: "Pomocí prostředí PowerShell výstřižků kódu případu příklady konfigurace soft odstranění"
+ms.assetid: ''
+title: Azure Key Vault - použití konfigurace soft odstranění pomocí prostředí PowerShell
+description: Pomocí prostředí PowerShell výstřižků kódu případu příklady konfigurace soft odstranění
 services: key-vault
 author: lleonard-msft
 manager: mbaldwin
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927987"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat Key Vault konfigurace soft odstranění pomocí prostředí PowerShell
 

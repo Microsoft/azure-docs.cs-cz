@@ -1,11 +1,11 @@
 ---
-title: "Automatické škálování cloudové služby na portálu | Microsoft Docs"
-description: "Další informace o použití portálu ke konfiguraci pravidel automatického škálování pro cloudové služby webovou roli nebo role pracovního procesu v Azure."
+title: Automatické škálování cloudové služby na portálu | Microsoft Docs
+description: Další informace o použití portálu ke konfiguraci pravidel automatického škálování pro cloudové služby webovou roli nebo role pracovního procesu v Azure.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 701d4404-5cc0-454b-999c-feb94c1685c0
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27992268"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Postup konfigurace automatického škálování pro cloudové služby na portálu
 

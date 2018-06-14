@@ -1,12 +1,12 @@
 ---
-title: "Přizpůsobení operačního systému konfigurace zabezpečení v Azure Security Center (Preview) | Microsoft Docs"
-description: "Tento článek ukazuje, jak přizpůsobit hodnocení security center"
+title: Přizpůsobení operačního systému konfigurace zabezpečení v Azure Security Center (Preview) | Microsoft Docs
+description: Tento článek ukazuje, jak přizpůsobit hodnocení security center
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200006"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Přizpůsobení operačního systému konfigurace zabezpečení v Azure Security Center (Preview)
 

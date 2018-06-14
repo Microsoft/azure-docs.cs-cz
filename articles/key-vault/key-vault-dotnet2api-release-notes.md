@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "27909750"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault rozhraní .NET 2.0 – poznámky k verzi a Průvodci migrací
 Následující informace pomáhají migrace na verzi 2.0 knihovny Azure Key Vault pro C# a rozhraní .NET.  Aplikací napsaných pro starší verze je třeba, že se aktualizuje na podporu nejnovější verze.  Tyto změny jsou potřeba pro úplnou podporu nových a vylepšených funkcích, jako například **Key Vault certifikáty**.

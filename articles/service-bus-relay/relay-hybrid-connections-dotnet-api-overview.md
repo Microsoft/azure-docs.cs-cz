@@ -1,11 +1,11 @@
 ---
-title: "Přehled Azure předávání přes standardní API technologie .NET | Microsoft Docs"
-description: "Přehled služby Azure API standardní předávání přes rozhraní .NET"
+title: Přehled Azure předávání přes standardní API technologie .NET | Microsoft Docs
+description: Přehled služby Azure API standardní předávání přes rozhraní .NET
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016429"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Přehled služby Azure předávání hybridní připojení .NET standardní API
 
